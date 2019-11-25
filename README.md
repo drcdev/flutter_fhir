@@ -1,6 +1,6 @@
 # flutter_fhir
 
-Trying to HTTP
+First attempt at a flutter app for FHIR.
 
 ## Getting Started
 
