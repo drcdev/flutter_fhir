@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'dart:async';
@@ -13,7 +15,7 @@ void main() {
 }
 
 class Home extends StatelessWidget {
-  final postURL = "https://dbhifhir.aidbox.app/auth/token?client_id=greyfhir&client_secret=verysecret&grant_type=client_credentials";
+  final postURL = "https://dbhifhir.aidbox.app";
   Map<String, String> headers = {"Content-type": "application/json"};
 
   @override
@@ -50,9 +52,11 @@ class Home extends StatelessWidget {
 
   Future<String> getFutureData(String postURL,
       Map<String, String> headers) async {
-    Response response = await post(postURL, headers: headers);
-    var body = response.body;
-    var parsedbody = json.decode(body);
-    return parsedbody['token_type'] + " " + parsedbody['access_token'];
+    Response response = await post(postURL+"/auth/token?client_id=greyfhir&client_secret=verysecret&grant_type=client_credentials", headers: headers);
+    var parsedbody = json.decode(response.body);
+    var token = parsedbody['token_type'] + " " + parsedbody['access_token'];
+    headers.putIfAbsent("Authorization", () => token);
+    Response patients = await get(postURL + "/Patient", headers: headers);
+    return patients.body;
   }
 }
