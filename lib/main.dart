@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'dart:async';
+import 'dart:convert';
 
 void main() {
   runApp(
@@ -50,7 +51,8 @@ class Home extends StatelessWidget {
   Future<String> getFutureData(String postURL,
       Map<String, String> headers) async {
     Response response = await post(postURL, headers: headers);
-    String body = response.body;
-    return body;
+    var body = response.body;
+    var parsedbody = json.decode(body);
+    return parsedbody['token_type'] + " " + parsedbody['access_token'];
   }
 }
