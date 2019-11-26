@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
+import 'package:intl/intl.dart';
+import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -98,30 +100,6 @@ class Intro extends StatelessWidget {
   }
 }
  
-class Register extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Register Patients"),
-      ),
-      body: new Column(
-        children: <Widget>[
-
-          new RaisedButton(
-            onPressed: () {
-            Navigator.pop(context); // Navigate back to opening screen when tapped.
-            },
-            child: Text('Return to Opening Page'),
-          ),
-
-          new MyCustomForm(),
-        ],
-      ),
-    );
-  }
-}
-
 class SyncServer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -141,7 +119,7 @@ class SyncServer extends StatelessWidget {
 
           new Container(
             child: FutureBuilder(            
-              future: getPatientList(),
+              future: patientList("get"),
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (snapshot.hasData) {
                   return Center(
@@ -202,7 +180,7 @@ class Vaccinations extends StatelessWidget {
   }
 }
 
-Future<String> getPatientList() async {
+Future<String> patientList(String action, {String givenName,String familyName, String birthDate} ) async {
   Map<String, String> headers = {"Content-type": "application/json"};
   Response response = await post(
       "https://dbhifhir.aidbox.app/auth/token?client_id=greyfhir&client_secret=verysecret&grant_type=client_credentials",
@@ -210,18 +188,36 @@ Future<String> getPatientList() async {
   var parsedbody = json.decode(response.body);
   var token = parsedbody['token_type'] + " " + parsedbody['access_token'];
   headers.putIfAbsent("Authorization", () => token);
-  Response patients =
-      await get("https://dbhifhir.aidbox.app/Patient", headers: headers);
-  var parsedString = json.decode(patients.body).toString();
-  var expression = RegExp("name((.(?!name))+?)\]\,");
-  Iterable matches = expression.allMatches(parsedString);
-  var end = "";
+  if(action == "get") {
+    Response patients = await get("https://dbhifhir.aidbox.app/Patient", headers: headers);
+    var parsedString = json.decode(patients.body).toString();
+    var expression = RegExp("name((.(?!name))+?)\]\,");
+    Iterable matches = expression.allMatches(parsedString);
+    var end = "";
 
-  matches.forEach((match) { 
-    end = end + "\n" + parsedString.substring(match.start, match.end); 
-  });
+    matches.forEach((match) { 
+      end = end + "\n" + parsedString.substring(match.start, match.end); 
+    });
 
-  return end;
+    return end;
+  } else if (action == "post") {
+    var body = '{\n  "resourceType": "Patient",\n  "name": [\n    {\n      "family": "';
+    body = body + familyName + '",\n      "given": [\n        "' + givenName + '"\n';
+    body = body + '      ]\n    }\n  ],\n  "birthDate": "' + birthDate + '"\n}';  
+    Response response = await post("https://dbhifhir.aidbox.app/Patient", headers: headers, body: body);
+    return "All sent.";
+  } else {
+    return "Well, that didn't work.";
+  }
+}
+
+class Register extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: MyCustomForm(),
+    );
+  }
 }
 
 class MyCustomForm extends StatefulWidget {
@@ -229,17 +225,16 @@ class MyCustomForm extends StatefulWidget {
   _MyCustomFormState createState() => _MyCustomFormState();
 }
 
-// Define a corresponding State class.
-// This class holds the data related to the Form.
 class _MyCustomFormState extends State<MyCustomForm> {
-  // Create a text controller and use it to retrieve the current value
-  // of the TextField.
-  final myController = TextEditingController();
-
+  final myController1 = TextEditingController();
+  final myController2 = TextEditingController();
+  DateTime birthdate;
+  String response = "";
+ 
   @override
   void dispose() {
-    // Clean up the controller when the widget is disposed.
-    myController.dispose();
+    myController1.dispose();
+    myController2.dispose();
     super.dispose();
   }
 
@@ -247,31 +242,62 @@ class _MyCustomFormState extends State<MyCustomForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Retrieve Text Input'),
+        title: Text('Register Patient'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: TextField(
-          controller: myController,
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        // When the user presses the button, show an alert dialog containing
-        // the text that the user has entered into the text field.
-        onPressed: () {
-          return showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                // Retrieve the text the that user has entered by using the
-                // TextEditingController.
-                content: Text(myController.text),
+      body: new Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+
+          new TextField(
+            decoration: new InputDecoration(
+              hintText: "Given Names"),
+            controller: myController1,
+          ),
+
+          new TextField(
+            decoration: new InputDecoration(
+              hintText: "Family Names"),
+            controller: myController2,
+          ),
+
+          new DateTimePickerFormField(
+            inputType: InputType.date,
+            format: DateFormat("yyyy-MM-dd"),
+            initialDate: DateTime.now(),
+            editable: true,
+            decoration: InputDecoration(
+              labelText: 'BirthDate',
+              hasFloatingPlaceholder: false
+            ),
+            onChanged: (birthday) {
+              setState(() => birthdate = birthday);
+            },
+          ),
+
+          new Center(
+            child: Text(
+              response
+            )
+          ),
+
+          new RaisedButton(
+            onPressed: () {
+              patientList("post", givenName: myController1.text, familyName: myController2.text, birthDate: birthdate.toString());
+              setState(() => response = "Patient Sent.");
+            },
+            child: Text('Register Patient'),
+          ),
+
+          new RaisedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Intro()),
               );
             },
-          );
-        },
-        tooltip: 'Show me the value!',
-        child: Icon(Icons.text_fields),
+            child: Text('Return to Opening Page'),
+          ),
+        ],
       ),
     );
   }
