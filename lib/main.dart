@@ -4,7 +4,6 @@ import 'dart:convert';
 import 'package:intl/intl.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:flutter/foundation.dart';
-import 'dart:developer';
 
 void main() {
   runApp(MaterialApp(
@@ -23,79 +22,98 @@ class Intro extends StatelessWidget {
         backgroundColor: Colors.blue[900],
       ),
       body: Container(
-        child: new Column(
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
+          children: [
+            Column(
+              children: [
 
-            new RaisedButton(
-              child: new Text(
-                "Register Patient",
-                style: TextStyle(fontSize: 30),
-              ),
-              color:  Colors.red,
-              padding: EdgeInsets.all(30.0),
-              elevation: 8,
-              shape: StadiumBorder(),
-              onPressed: () {
-                Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Register()),
-                );
-              }
-            ),
+                FlatButton(
+                  child: Column(
+                    children: <Widget>[
+                      Image.asset(
+                        'images/chop.jpg',
+                        width: 150,
+                        height: 150,
+                        fit: BoxFit.fill,
+                        ),
+                      Text("Register Patient"),
+                    ],
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Register()),
+                    );
+                  }
+                ),
 
-            new RaisedButton(
-              child: new Text(
-                "Vaccinations",
-                style: TextStyle(fontSize: 30),
-              ),
-              color: Colors.deepOrange,
-              padding: EdgeInsets.all(30.0),
-              elevation: 8,
-              shape: StadiumBorder(),
-              onPressed: () {
-                Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Vaccinations()),
-                );
-              }
-            ),
-            
-            new RaisedButton(
-              child: new Text(
-                "Sync with server",
-                style: TextStyle(fontSize: 30),
-              ),
-              color:  Colors.yellow,
-              padding: EdgeInsets.all(30.0),
-              elevation: 8,
-              shape: StadiumBorder(),
-              onPressed: () {
-                Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SyncServer()),
-                );
-              }
+                FlatButton(
+                  child: Column(
+                    children: <Widget>[
+                      Image.asset(
+                        'images/vaccine.jpg',
+                        width: 150,
+                        height: 150,
+                        fit: BoxFit.fill,
+                        ),
+                      Text("Vaccinations"),
+                    ],
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Vaccinations()),
+                    );
+                  }
+                ),
+              ],
             ),
 
-            new RaisedButton(
-              child: new Text(
-                "Deworming",
-                style: TextStyle(fontSize: 30),
-              ),
-              color:  Colors.green,
-              padding: EdgeInsets.all(30.0),
-              elevation: 8,
-              shape: StadiumBorder(),
-              onPressed: () {
-                Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Deworming()),
-                );
-              }
+            Column(   
+              children: [    
+                FlatButton(
+                  child: Column(
+                    children: <Widget>[
+                      Image.asset(
+                        'images/samurai.png',
+                        width: 150,
+                        height: 150,
+                        fit: BoxFit.fill,
+                        ),
+                      Text("Sync with server"),
+                    ],
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SyncServer()),
+                    );
+                  }
+                ),
+
+                RaisedButton(
+                  child: Column(
+                    children: <Widget>[
+                      Image.asset(
+                        'images/deworming.jpg',
+                        width: 150,
+                        height: 150,
+                        fit: BoxFit.fill,
+                        ),
+                      Text("Deworming"),
+                    ],
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Deworming()),
+                    );
+                  }
+                ),
+              ],
             ),
-          ]
+          ],
         ),
       ),
     );
