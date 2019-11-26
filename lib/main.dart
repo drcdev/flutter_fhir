@@ -180,7 +180,7 @@ class Vaccinations extends StatelessWidget {
   }
 }
 
-Future<String> patientList(String action, {String givenName,String familyName, String birthDate} ) async {
+Future<String> patientList(String action, {String body} ) async {
   Map<String, String> headers = {"Content-type": "application/json"};
   Response response = await post(
       "https://dbhifhir.aidbox.app/auth/token?client_id=greyfhir&client_secret=verysecret&grant_type=client_credentials",
@@ -200,10 +200,7 @@ Future<String> patientList(String action, {String givenName,String familyName, S
     });
 
     return end;
-  } else if (action == "post") {
-    var body = '{\n  "resourceType": "Patient",\n  "name": [\n    {\n      "family": "';
-    body = body + familyName + '",\n      "given": [\n        "' + givenName + '"\n';
-    body = body + '      ]\n    }\n  ],\n  "birthDate": "' + birthDate + '"\n}';  
+  } else if (action == "post") { 
     Response response = await post("https://dbhifhir.aidbox.app/Patient", headers: headers, body: body);
     return "All sent.";
   } else {
@@ -228,7 +225,7 @@ class MyCustomForm extends StatefulWidget {
 class _MyCustomFormState extends State<MyCustomForm> {
   final myController1 = TextEditingController();
   final myController2 = TextEditingController();
-  DateTime birthdate;
+  DateTime birthDate;
   String response = "";
  
   @override
@@ -270,7 +267,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
               hasFloatingPlaceholder: false
             ),
             onChanged: (birthday) {
-              setState(() => birthdate = birthday);
+              setState(() => birthDate = birthday);
             },
           ),
 
@@ -281,11 +278,9 @@ class _MyCustomFormState extends State<MyCustomForm> {
           ),
 
           new RaisedButton(
-            onPressed: () {
-              patientList("post", givenName: myController1.text, familyName: myController2.text, birthDate: birthdate.toString());
-              setState(() => response = "Patient Sent.");
-            },
-            child: Text('Register Patient'),
+            onPressed: () => patientList("post", body: '{\n  "resourceType": "Patient",\n  "name": [\n    {\n      "family": "' + myController2.text + '",\n      "given": [\n        "' + myController1.text + '"\n      ]\n    }\n  ],\n  "birthDate": "' + birthDate.toString() + '"\n}'),
+//              setState(() => response = "Patient Sent");
+            child: Text('{\n  "resourceType": "Patient",\n  "name": [\n    {\n      "family": "' + myController2.text + '",\n      "given": [\n        "' + myController1.text + '"\n      ]\n    }\n  ],\n  "birthDate": "' + birthDate.toString() + '"\n}'),
           ),
 
           new RaisedButton(
