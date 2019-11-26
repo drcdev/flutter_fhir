@@ -136,7 +136,7 @@ class SyncServer extends StatelessWidget {
 
           new Container(
             child: FutureBuilder(            
-              future: PatientList(),
+              future: getPatientList(),
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (snapshot.hasData) {
                   return Center(
@@ -207,56 +207,14 @@ Future<String> getPatientList() async {
   headers.putIfAbsent("Authorization", () => token);
   Response patients =
       await get("https://dbhifhir.aidbox.app/Patient", headers: headers);
-  var jsonData = patients.body;
-  var parsedJson = json.decode(jsonData);
-  return parsedJson.toString().replaceAll(",", ",\n          ").replaceAll("{", "{\n     ");
-}
+  var parsedString = json.decode(patients.body).toString();
+  var expression = RegExp("name((.(?!name))+?)\]\,");
+  Iterable matches = expression.allMatches(parsedString);
+  var end = "";
 
-class PatientListState extends State<PatientList> {
-  final _patients = <String>[];
-  final _biggerFont = const TextStyle(fontSize: 18.0);
+  matches.forEach((match) { 
+    end = end + "\n" + parsedString.substring(match.start, match.end); 
+  });
 
-  Widget _buildPatients() {
-    return ListView.builder(
-      padding: const EdgeInsets.all(16.0),
-        itemBuilder: /*1*/ (context, i) {
-          if (i.isOdd) return Divider(); /*2*/
-
-          final index = i ~/ 2; /*3*/
-          if (index >= _suggestions.length) {
-            _suggestions.addAll(generateWordPairs().take(10)); /*4*/
-          }
-          return _buildRow(_patients[index]);
-        }
-    );
-  }
-
-    Widget _buildRow(WordPair pair) {
-    return ListTile(
-      title: Text(
-        pair.asPascalCase,
-        style: _biggerFont,
-      ),
-    );
-  }
-  // #enddocregion _buildRow
-
-  // #docregion RWS-build
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Startup Name Generator'),
-      ),
-      body: _buildSuggestions(),
-    );
-  }
-  // #enddocregion RWS-build
-  // #docregion RWS-var
-}
-}
-
-class PatientList extends StatefulWidget {
-  @override
-  PatientListState createState() => PatientListState();
+  return end;
 }
