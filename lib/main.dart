@@ -136,7 +136,7 @@ class SyncServer extends StatelessWidget {
 
           new Container(
             child: FutureBuilder(            
-              future: getFutureData(),
+              future: PatientList(),
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (snapshot.hasData) {
                   return Center(
@@ -197,8 +197,7 @@ class Vaccinations extends StatelessWidget {
   }
 }
 
-
-Future<String> getFutureData() async {
+Future<String> getPatientList() async {
   Map<String, String> headers = {"Content-type": "application/json"};
   Response response = await post(
       "https://dbhifhir.aidbox.app/auth/token?client_id=greyfhir&client_secret=verysecret&grant_type=client_credentials",
@@ -213,7 +212,7 @@ Future<String> getFutureData() async {
   return parsedJson.toString().replaceAll(",", ",\n          ").replaceAll("{", "{\n     ");
 }
 
-class PatientList {
+class PatientListState extends State<PatientList> {
   final _patients = <String>[];
   final _biggerFont = const TextStyle(fontSize: 18.0);
 
@@ -231,4 +230,33 @@ class PatientList {
         }
     );
   }
+
+    Widget _buildRow(WordPair pair) {
+    return ListTile(
+      title: Text(
+        pair.asPascalCase,
+        style: _biggerFont,
+      ),
+    );
+  }
+  // #enddocregion _buildRow
+
+  // #docregion RWS-build
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Startup Name Generator'),
+      ),
+      body: _buildSuggestions(),
+    );
+  }
+  // #enddocregion RWS-build
+  // #docregion RWS-var
+}
+}
+
+class PatientList extends StatefulWidget {
+  @override
+  PatientListState createState() => PatientListState();
 }
