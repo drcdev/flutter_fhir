@@ -3,6 +3,8 @@ import 'package:http/http.dart';
 import 'dart:convert';
 import 'package:intl/intl.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
+import 'package:flutter/foundation.dart';
+import 'dart:developer';
 
 void main() {
   runApp(MaterialApp(
@@ -201,7 +203,10 @@ Future<String> patientList(String action, {String body} ) async {
 
     return end;
   } else if (action == "post") { 
+    debugPrint('body $body');
     Response response = await post("https://dbhifhir.aidbox.app/Patient", headers: headers, body: body);
+    String responseBody = response.body;
+    debugPrint('response $responseBody');
     return "All sent.";
   } else {
     return "Well, that didn't work.";
@@ -225,7 +230,7 @@ class MyCustomForm extends StatefulWidget {
 class _MyCustomFormState extends State<MyCustomForm> {
   final myController1 = TextEditingController();
   final myController2 = TextEditingController();
-  DateTime birthDate;
+  String birthDate;
   String response = "";
  
   @override
@@ -267,7 +272,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
               hasFloatingPlaceholder: false
             ),
             onChanged: (birthday) {
-              setState(() => birthDate = birthday);
+              setState(() => birthDate = birthday.toString().replaceAll(" 00:00:00.000", "") );
             },
           ),
 
@@ -278,9 +283,9 @@ class _MyCustomFormState extends State<MyCustomForm> {
           ),
 
           new RaisedButton(
-            onPressed: () => patientList("post", body: '{\n  "resourceType": "Patient",\n  "name": [\n    {\n      "family": "' + myController2.text + '",\n      "given": [\n        "' + myController1.text + '"\n      ]\n    }\n  ],\n  "birthDate": "' + birthDate.toString() + '"\n}'),
+            onPressed: () => patientList("post", body: '{\n  "resourceType": "Patient",\n  "name": [\n    {\n      "family": "' + myController2.text + '",\n      "given": [\n        "' + myController1.text + '"\n      ]\n    }\n  ],\n  "birthDate": "' + birthDate + '"\n}'),
 //              setState(() => response = "Patient Sent");
-            child: Text('{\n  "resourceType": "Patient",\n  "name": [\n    {\n      "family": "' + myController2.text + '",\n      "given": [\n        "' + myController1.text + '"\n      ]\n    }\n  ],\n  "birthDate": "' + birthDate.toString() + '"\n}'),
+            child: Text("Press to Upload Patient"),
           ),
 
           new RaisedButton(
