@@ -1,8 +1,8 @@
-import 'Period.dart';
+import 'period.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'humanName.g.dart';
 
-@JsonSerializable
+@JsonSerializable()
 class HumanName {
   String text;
   String family;

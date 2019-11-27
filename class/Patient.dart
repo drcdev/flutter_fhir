@@ -1,5 +1,5 @@
-import 'HumanName.dart';
-import 'Address.dart';
+import 'humanName.dart';
+import 'address.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'patient.g.dart';
 
