@@ -8,16 +8,16 @@ part of 'address.dart';
 
 Address _$AddressFromJson(Map<String, dynamic> json) {
   return Address(
-    json['use'] as String,
-    json['type'] as String,
-    json['text'] as String,
-    json['line'] as String,
-    json['city'] as String,
-    json['district'] as String,
-    json['state'] as String,
-    json['postalCode'] as String,
-    json['country'] as String,
-    json['period'] == null
+    use: json['use'] as String,
+    type: json['type'] as String,
+    text: json['text'] as String,
+    line: json['line'] as String,
+    city: json['city'] as String,
+    district: json['district'] as String,
+    state: json['state'] as String,
+    postalCode: json['postalCode'] as String,
+    country: json['country'] as String,
+    period: json['period'] == null
         ? null
         : Period.fromJson(json['period'] as Map<String, dynamic>),
   );

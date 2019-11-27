@@ -8,12 +8,12 @@ part of 'humanName.dart';
 
 HumanName _$HumanNameFromJson(Map<String, dynamic> json) {
   return HumanName(
-    json['text'] as String,
-    json['family'] as String,
-    (json['given'] as List)?.map((e) => e as String)?.toList(),
-    (json['prefix'] as List)?.map((e) => e as String)?.toList(),
-    (json['suffix'] as List)?.map((e) => e as String)?.toList(),
-    json['period'] == null
+    text: json['text'] as String,
+    family: json['family'] as String,
+    given: (json['given'] as List)?.map((e) => e as String)?.toList(),
+    prefix: (json['prefix'] as List)?.map((e) => e as String)?.toList(),
+    suffix: (json['suffix'] as List)?.map((e) => e as String)?.toList(),
+    period: json['period'] == null
         ? null
         : Period.fromJson(json['period'] as Map<String, dynamic>),
   );

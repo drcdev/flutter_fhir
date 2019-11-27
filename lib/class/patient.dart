@@ -13,7 +13,7 @@ class Patient {
   String birthDate;
   Address address;
 
-  Patient([this.use, this.resourceType, this.id, this.name, this.gender, this.birthDate, this.address]);
+  Patient({this.use, this.resourceType, this.id, this.name, this.gender, this.birthDate, this.address});
 
   factory Patient.fromJson(Map<String, dynamic> json) => _$PatientFromJson(json);
   Map<String, dynamic> toJson() => _$PatientToJson(this);

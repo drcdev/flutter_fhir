@@ -11,7 +11,7 @@ class HumanName {
   List<String> suffix;
   Period period;
 
-  HumanName(this.text, this.family, this.given, this.prefix, this.suffix, this.period);
+  HumanName({this.text, this.family, this.given, this.prefix, this.suffix, this.period});
 
   factory HumanName.fromJson(Map<String, dynamic> json) => _$HumanNameFromJson(json);
   Map<String, dynamic> toJson() => _$HumanNameToJson(this);

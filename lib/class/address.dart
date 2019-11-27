@@ -15,7 +15,7 @@ class Address {
   String country; // Country (e.g. can be ISO 3166 2 or 3 letter code)
   Period period; // Time period when address was/is in use
 
-  Address(this.use, this.type, this.text, this.line, this.city, this.district, this.state, this.postalCode, this.country, this.period);
+  Address({this.use, this.type, this.text, this.line, this.city, this.district, this.state, this.postalCode, this.country, this.period});
 
   factory Address.fromJson(Map<String, dynamic> json) => _$AddressFromJson(json);
   Map<String, dynamic> toJson() => _$AddressToJson(this);

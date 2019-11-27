@@ -8,15 +8,15 @@ part of 'patient.dart';
 
 Patient _$PatientFromJson(Map<String, dynamic> json) {
   return Patient(
-    json['use'] as String,
-    json['resourceType'] as String,
-    json['id'] as String,
-    json['name'] == null
+    use: json['use'] as String,
+    resourceType: json['resourceType'] as String,
+    id: json['id'] as String,
+    name: json['name'] == null
         ? null
         : HumanName.fromJson(json['name'] as Map<String, dynamic>),
-    json['gender'] as String,
-    json['birthDate'] as String,
-    json['address'] == null
+    gender: json['gender'] as String,
+    birthDate: json['birthDate'] as String,
+    address: json['address'] == null
         ? null
         : Address.fromJson(json['address'] as Map<String, dynamic>),
   );
