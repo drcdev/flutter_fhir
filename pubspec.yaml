@@ -23,6 +23,7 @@ dependencies:
   datetime_picker_formfield: ^0.1.8
   json_annotation: ^2.4.0
   cupertino_icons: ^0.1.2
+  grouped_buttons: ^1.0.4
 
 dev_dependencies:
   flutter_test:
@@ -38,7 +39,7 @@ flutter:
   uses-material-design: true
   assets:
     - images/
-    - class/
+    - lib/class/
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 
