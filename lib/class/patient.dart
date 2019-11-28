@@ -18,19 +18,3 @@ class Patient {
   factory Patient.fromJson(Map<String, dynamic> json) => _$PatientFromJson(json);
   Map<String, dynamic> toJson() => _$PatientToJson(this);
 }
-
-
-  // Patient.fromJson(Map<String, dynamic> json)
-  //   : use = json['use'],
-  //     resourceType = json['resourceType'],
-  //     id = json['id'],
-  //     gender  = json['gender'],
-  //     birthDate = json['birthDate'],
-  //     name = json['name'],
-  //     address = json['address'];
-
-  // Map<String, dynamic> toJson() =>
-  //   {
-  //     'name': name,
-  //     'email': email,
-  //   };

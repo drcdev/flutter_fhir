@@ -13,7 +13,7 @@ class Deworming extends StatelessWidget {
             Navigator.pop(context); // Navigate back to opening screen when tapped.
           },
           child: Text('Return to Opening Page'),
-        ),
+        ),     
       ),
     );
   }
