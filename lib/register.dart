@@ -4,6 +4,9 @@ import 'package:intl/intl.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:flutter_fhir/patientList.dart';
 import 'package:flutter_fhir/main.dart';
+import 'package:flutter_fhir/class/patient.dart';
+import 'package:flutter_fhir/class/address.dart';
+import 'package:flutter_fhir/class/humanName.dart';
 
 class Register extends StatelessWidget {
   @override
@@ -24,8 +27,9 @@ class _RegistrationFormState extends State<RegistrationForm> {
   final familyNameController = TextEditingController();
   String birthDate;
   String sexAtBirth;
-  String response = "";
-  String barrio = "";
+  String response = '';
+  String barrio = '';
+  String test = '';
  
   @override
   void dispose() {
@@ -110,8 +114,28 @@ class _RegistrationFormState extends State<RegistrationForm> {
             ],
           ),
 
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              RaisedButton(
+                onPressed: () {
+                  Patient newpt = Patient(resourceType: 'Patient', address: Address(district: barrio), name: HumanName(given: [givenNameController.text], family: familyNameController.text), birthDate: birthDate);
+                  debugPrint(newpt.toJson().toString());
+                  setState(() => test = 'Pressed!');
+                },
+                child: Text('Press to Create Patient'),
+              ),
+
+              Text(test),
+            ],
+          ),
+
           new RaisedButton(
-            onPressed: () => patientList('post', body: '{\n  "resourceType": "Patient",\n  "name": [\n    {\n      "family": "' + familyNameController.text + '",\n      "given": [\n        "' + givenNameController.text + '"\n      ]\n    }\n  ],\n  "birthDate": "' + birthDate + '"\n}'),
+            onPressed: () {
+              Patient newpt = Patient(resourceType: 'Patient', address: Address(district: barrio), name: HumanName(given: [givenNameController.text], family: familyNameController.text), birthDate: birthDate);
+              patientList('post', body: newpt);
+            },
+            //'{\n  "resourceType": "Patient",\n  "name": [\n    {\n      "family": "' + familyNameController.text + '",\n      "given": [\n        "' + givenNameController.text + '"\n      ]\n    }\n  ],\n  "birthDate": "' + birthDate + '"\n}'),
             child: Text('Press to Upload Patient'),
           ),
 

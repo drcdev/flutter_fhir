@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_fhir/class/patient.dart';
 
-Future<String> patientList(String action, {String body} ) async {
+Future<String> patientList(String action, {Patient body} ) async {
   Map<String, String> headers = {"Content-type": "application/json"};
   Response response = await post(
       "https://dbhifhir.aidbox.app/auth/token?client_id=greyfhir&client_secret=verysecret&grant_type=client_credentials",
