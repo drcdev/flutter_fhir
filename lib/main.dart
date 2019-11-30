@@ -4,15 +4,15 @@ import 'package:flutter_fhir/register.dart';
 import 'package:flutter_fhir/syncServer.dart';
 import 'package:flutter_fhir/vaccinations.dart';
 
-
+//Calls menu class
 void main() {
   runApp(MaterialApp(
     title: "CHOP's FHIRflies",
-    home: Intro(),
+    home: Menu(),
   ));
 }
 
-class Intro extends StatelessWidget {
+class Menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,97 +25,54 @@ class Intro extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            //calls MenuButton class for each one, passes image, text, and class to call
             Column(
               children: [
-
-                FlatButton(
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset(
-                        'images/chop.jpg',
-                        width: 150,
-                        height: 150,
-                        fit: BoxFit.fill,
-                        ),
-                      Text("Register Patient"),
-                    ],
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Register()),
-                    );
-                  }
-                ),
-
-                FlatButton(
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset(
-                        'images/vaccine.jpg',
-                        width: 150,
-                        height: 150,
-                        fit: BoxFit.fill,
-                        ),
-                      Text("Vaccinations"),
-                    ],
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Vaccinations()),
-                    );
-                  }
-                ),
+                MenuButton('images/chop.jpg', 'Register Patient', Register()),
+                MenuButton('images/vaccine.jpg', 'Vaccinations', Vaccinations()),
               ],
             ),
-
             Column(   
-              children: [    
-                FlatButton(
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset(
-                        'images/samurai.png',
-                        width: 150,
-                        height: 150,
-                        fit: BoxFit.fill,
-                        ),
-                      Text("Sync with server"),
-                    ],
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SyncServer()),
-                    );
-                  }
-                ),
-
-                RaisedButton(
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset(
-                        'images/deworming.jpg',
-                        width: 150,
-                        height: 150,
-                        fit: BoxFit.fill,
-                        ),
-                      Text("Deworming"),
-                    ],
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Deworming()),
-                    );
-                  }
-                ),
+              children: [   
+                MenuButton('images/samurai.png', 'Sync with server', SyncServer()),
+                MenuButton('images/deworming.jpg', 'Deworming', Deworming()), 
               ],
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+//MenuButton, returns FlatButton with image, text, and link to next class, passed as arguments
+class MenuButton extends StatelessWidget {
+  final String imageDir;
+  final String buttonText;
+  final Widget link;
+
+  MenuButton(this.imageDir, this.buttonText, this.link);
+
+  @override
+  Widget build(context) {
+		return FlatButton(
+      child: Column(
+        children: <Widget>[
+          Image.asset(
+            imageDir,
+            width: 150,
+            height: 150,
+            fit: BoxFit.fill,
+            ),
+          Text(buttonText),
+        ],
+      ),
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => link),
+        );
+      }
     );
   }
 }

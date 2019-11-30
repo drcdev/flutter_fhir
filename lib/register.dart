@@ -119,7 +119,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Intro()),
+                MaterialPageRoute(builder: (context) => Menu()),
               );
             },
             child: Text('Return to Opening Page'),
