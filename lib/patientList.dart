@@ -23,10 +23,7 @@ Future<String> patientList(String action, {Patient body} ) async {
 
     return end;
   } else if (action == 'post') { 
-    print(json.encode(body));
-    Response response = await post('https://dbhifhir.aidbox.app/Patient', headers: headers, body: json.encode(body));
-    String responseBody = response.body.toString();
-    print('response $responseBody');
+    await post('https://dbhifhir.aidbox.app/Patient', headers: headers, body: json.encode(body));
     return 'All sent.';
   } else {
     return 'Well, that didn\'t work.';
