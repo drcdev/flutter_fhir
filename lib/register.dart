@@ -119,7 +119,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
             children: <Widget>[
               RaisedButton(
                 onPressed: () {
-                  Patient newpt = Patient(resourceType: 'Patient', address: Address(district: barrio), name: HumanName(given: [givenNameController.text], family: familyNameController.text), birthDate: birthDate);
+                  Patient newpt = Patient(resourceType: 'Patient', address: [Address(district: barrio)], name: [HumanName(given: [givenNameController.text], family: familyNameController.text)], birthDate: birthDate);
                   debugPrint(newpt.toJson().toString());
                   setState(() => test = 'Pressed!');
                 },
@@ -132,7 +132,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
 
           new RaisedButton(
             onPressed: () {
-              Patient newpt = Patient(resourceType: 'Patient', address: Address(district: barrio), name: HumanName(given: [givenNameController.text], family: familyNameController.text), birthDate: birthDate);
+              Patient newpt = Patient(resourceType: 'Patient', address: [Address(district: barrio)], name: [HumanName(given: [givenNameController.text], family: familyNameController.text)], birthDate: birthDate);
               patientList('post', body: newpt);
             },
             //'{\n  "resourceType": "Patient",\n  "name": [\n    {\n      "family": "' + familyNameController.text + '",\n      "given": [\n        "' + givenNameController.text + '"\n      ]\n    }\n  ],\n  "birthDate": "' + birthDate + '"\n}'),

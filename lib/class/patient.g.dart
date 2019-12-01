@@ -8,26 +8,26 @@ part of 'patient.dart';
 
 Patient _$PatientFromJson(Map<String, dynamic> json) {
   return Patient(
-    use: json['use'] as String,
     resourceType: json['resourceType'] as String,
     id: json['id'] as String,
-    name: json['name'] == null
-        ? null
-        : HumanName.fromJson(json['name'] as Map<String, dynamic>),
+    name: (json['name'] as List)
+        ?.map((e) =>
+            e == null ? null : HumanName.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     gender: json['gender'] as String,
     birthDate: json['birthDate'] as String,
-    address: json['address'] == null
-        ? null
-        : Address.fromJson(json['address'] as Map<String, dynamic>),
+    address: (json['address'] as List)
+        ?.map((e) =>
+            e == null ? null : Address.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
   );
 }
 
 Map<String, dynamic> _$PatientToJson(Patient instance) => <String, dynamic>{
-      'use': instance.use,
       'resourceType': instance.resourceType,
       'id': instance.id,
-      'name': instance.name?.toJson(),
+      'name': instance.name?.map((e) => e?.toJson())?.toList(),
       'gender': instance.gender,
       'birthDate': instance.birthDate,
-      'address': instance.address?.toJson(),
+      'address': instance.address?.map((e) => e?.toJson())?.toList(),
     };

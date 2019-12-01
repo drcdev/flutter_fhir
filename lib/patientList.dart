@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_fhir/class/patient.dart';
 
 Future<String> patientList(String action, {Patient body} ) async {
@@ -25,11 +23,10 @@ Future<String> patientList(String action, {Patient body} ) async {
 
     return end;
   } else if (action == 'post') { 
-    debugPrint(body.toJson().toString());
-    Response response = await post('https://dbhifhir.aidbox.app/Patient', headers: headers, body: body.toJson().toString());
-    debugPrint(response.body.toString());
-    // String responseBody = json.decode(response.body).toString();
-    // debugPrint('response $responseBody');
+    print(json.encode(body));
+    Response response = await post('https://dbhifhir.aidbox.app/Patient', headers: headers, body: json.encode(body));
+    String responseBody = response.body.toString();
+    print('response $responseBody');
     return 'All sent.';
   } else {
     return 'Well, that didn\'t work.';
