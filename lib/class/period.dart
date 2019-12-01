@@ -1,7 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 part 'period.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class Period {
   final DateTime start;
   final DateTime end;

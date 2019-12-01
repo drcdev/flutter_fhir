@@ -3,7 +3,7 @@ import 'address.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'patient.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class Patient {
   String use;
   String resourceType;

@@ -2,7 +2,7 @@ import 'period.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'humanName.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class HumanName {
   String text;
   String family;

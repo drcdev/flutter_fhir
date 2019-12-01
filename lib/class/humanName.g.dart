@@ -25,5 +25,5 @@ Map<String, dynamic> _$HumanNameToJson(HumanName instance) => <String, dynamic>{
       'given': instance.given,
       'prefix': instance.prefix,
       'suffix': instance.suffix,
-      'period': instance.period,
+      'period': instance.period?.toJson(),
     };

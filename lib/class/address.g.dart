@@ -33,5 +33,5 @@ Map<String, dynamic> _$AddressToJson(Address instance) => <String, dynamic>{
       'state': instance.state,
       'postalCode': instance.postalCode,
       'country': instance.country,
-      'period': instance.period,
+      'period': instance.period?.toJson(),
     };

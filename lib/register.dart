@@ -51,26 +51,26 @@ class _RegistrationFormState extends State<RegistrationForm> {
 
           new TextField(
             decoration: new InputDecoration(
-              hintText: "Given Names"),
+              hintText: 'Given Names'),
             controller: givenNameController,
           ),
 
           new TextField(
             decoration: new InputDecoration(
-              hintText: "Family Names"),
+              hintText: 'Family Names'),
             controller: familyNameController,
           ),
 
           new Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              new Text("Sex at birth"),
+              new Text('Sex at birth'),
 
               new RadioButtonGroup(
                 orientation: GroupedButtonsOrientation.HORIZONTAL,
                 labels: <String>[
-                  "Female",
-                  "Male",
+                  'Female',
+                  'Male',
                 ],
                 onSelected: (String selected) {
                   sexAtBirth = selected;
@@ -82,7 +82,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
 
           new DateTimePickerFormField(
             inputType: InputType.date,
-            format: DateFormat("yyyy-MM-dd"),
+            format: DateFormat('yyyy-MM-dd'),
             initialDate: DateTime.now(),
             editable: true,
             decoration: InputDecoration(
@@ -90,7 +90,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
               hasFloatingPlaceholder: false
             ),
             onChanged: (birthday) {
-              setState(() => birthDate = birthday.toString().replaceAll(" 00:00:00.000", "") );
+              setState(() => birthDate = birthday.toString().replaceAll(' 00:00:00.000', '') );
             },
           ),
 
@@ -104,7 +104,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                     child: new Text(value),
                   );
                 }).toList(),
-                hint: Text("Barrio"),
+                hint: Text('Barrio'),
                 onChanged: (newVal) {
                   setState(() => barrio = newVal);
                 },

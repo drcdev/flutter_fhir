@@ -2,7 +2,7 @@ import 'period.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'address.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class Address {
   String use; //home | work | temp | old | billing - purpose of this address
   String type; //postal, physical, both
