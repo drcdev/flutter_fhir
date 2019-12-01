@@ -25,8 +25,7 @@ Future<String> patientList(String action, {Patient body} ) async {
 
     return end;
   } else if (action == "post") { 
-    debugPrint('body $body');
-    Response response = await post("https://dbhifhir.aidbox.app/Patient", headers: headers, body: body);
+    Response response = await post("https://dbhifhir.aidbox.app/Patient", headers: headers, body: body.toString());
     String responseBody = response.body;
     debugPrint('response $responseBody');
     return "All sent.";
