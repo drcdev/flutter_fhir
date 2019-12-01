@@ -1,16 +1,15 @@
 # flutter_fhir
 
 First attempt at a flutter app for FHIR.
+1. Basic Oauth2 access to FHIR server (https://www.health-samurai.io/aidbox).
+2. Can create new patients, download/sync from server.
 
-## Getting Started
+ToDo: Goal is to be able to upload vaccination data.
 
-This project is a starting point for a Flutter application.
+# helpers
+I'm adding a helper folder. This is going to be side projects that are not the primary app,
+but serve some useful (I hope) purpose. 
+1. The first is a basic R script to request patient data from the server with some formatting,
+this will need to be improved with larger and more detailed datasets.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Todo: Would like to make script to easily create JSON classes from HL7 FHIR specifications.
