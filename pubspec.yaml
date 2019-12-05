@@ -24,6 +24,7 @@ dependencies:
   json_annotation: ^2.4.0
   cupertino_icons: ^0.1.2
   grouped_buttons: ^1.0.4
+  shared_preferences: ^0.4.3
 
 dev_dependencies:
   flutter_test:

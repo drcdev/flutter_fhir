@@ -1,0 +1,99 @@
+POST /fhir
+
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+  {
+    "request": {
+    "method": "PUT",
+    "url": "/Practitioner"
+    },
+    "resource": {
+      "id": "1GOy9vxYrIdIB13",
+      "active": true,
+      "name": [
+        {
+          "family": "Dorian",
+          "given": [
+            "John",
+            "Dorian"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "request": {
+    "method": "PUT",
+    "url": "/Practitioner"
+    },
+      "resource": {
+      "id": "KRkLch9GarqMrBa",
+      "active": true,
+      "name": [
+        {
+          "family": "Reed",
+          "given": [
+            "Elliot"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "request": {
+    "method": "PUT",
+    "url": "/Practitioner"
+    },
+      "resource": {
+      "id": "7LGy1U8yLod0ad1",
+      "active": true,
+      "name": [
+        {
+          "family": "Turk",
+          "given": [
+            "Christopher"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "request": {
+    "method": "PUT",
+    "url": "/Practitioner"
+    },
+      "resource": {
+      "id": "w791kPuRXENLaPS",
+      "active": true,
+      "name": [
+        {
+          "family": "Kelso",
+          "given": [
+            "Robert"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "request": {
+    "method": "PUT",
+    "url": "/Practitioner"
+    },
+      "resource": {
+      "id": "iGjWEO7iYoK87ch",
+      "active": true,
+      "name": [
+        {
+          "family": "Cox",
+          "given": [
+            "Percival",
+            "Ulysses"
+          ]
+        }
+      ]
+    }
+  }]
+}
