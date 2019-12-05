@@ -7,9 +7,14 @@ First attempt at a flutter app for FHIR.
 ToDo: Goal is to be able to upload vaccination data.
 
 # helpers
-I'm adding a helper folder. This is going to be side projects that are not the primary app,
+I'm adding a helpers folder. This is going to be side projects that are not the primary app,
 but serve some useful (I hope) purpose. 
 1. The first is a basic R script to request patient data from the server with some formatting,
 this will need to be improved with larger and more detailed datasets.
+2. I've added some fake patients that are structurallly similar to some patients that we have
+in another country, but all data was synthesized anew.
+3. I've also added some completely synthesized patients of various ages. If you're following
+along at home and using Aidbox, they have a nice, easy tutorial here for how to do it.
+(https://docs.aidbox.app/basic-concepts/bulk-api-1/synthea-by-bulk-api)
 
 Todo: Would like to make script to easily create JSON classes from HL7 FHIR specifications.
