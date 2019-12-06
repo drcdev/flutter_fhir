@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 
 import string
 import csv
@@ -7,11 +8,13 @@ import io
 def lowcc(string):
     return string[0].lower()+string[1:len(string)]
 
-url = "C:\\Users\\faulkenbej\\Documents\\flutter_dev\\flutter_fhir\\helpers\\"
+url = "./"
 classfile = "FHIR_to_dart.txt"
+print(url + classfile)
 
-file = open(url + classfile)
-dartclass = file.read()    
+with open(url + classfile, 'rb') as file:
+    dartclass = file.read()   
+print(dartclass)
 fhirclass = re.search('(?<="resourceType" : ").*(?=",)', dartclass).group(0)
 ccaseclass = lowcc(fhirclass)
 restOfClass = dartclass.replace('{doco\n  "resourceType" : "' + fhirclass + '",\n', "")
