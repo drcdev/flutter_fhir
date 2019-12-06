@@ -1,62 +1,55 @@
 #!/usr/bin/env python3
 
-import string
-import csv
 import re
-import io
 
 def lowcc(string):
     return string[0].lower()+string[1:len(string)]
 
-url = "./"
+url = "../"
 classfile = "FHIR_to_dart.txt"
-print(url + classfile)
+args = []
 
-with open(url + classfile, 'rb') as file:
+with open(url + classfile) as file:
     dartclass = file.read()   
-print(dartclass)
 fhirclass = re.search('(?<="resourceType" : ").*(?=",)', dartclass).group(0)
-ccaseclass = lowcc(fhirclass)
-restOfClass = dartclass.replace('{doco\n  "resourceType" : "' + fhirclass + '",\n', "")
-first = restOfClass.split('\n', 1)[0]
-second = restOfClass.split('\n', 1)[1]
+restOfClass = dartclass.replace('{doco\n  "resourceType" : "' + fhirclass + '",\n', "").split('\n', 1)
+first = restOfClass[0]
+second = restOfClass[1]
 
-fullclass = ''
-
-fullclass = fullclass + ("import 'package:json_annotation/json_annotation.dart';\n")
-fullclass = fullclass + ("part '" + ccaseclass + ".g.dart';\n\n")
-fullclass = fullclass + ("@JsonSerializable(explicitToJson: true)\n")
-fullclass = fullclass + ("class " + fhirclass + " {\n")
-fullclass = fullclass + ("  String resourceType;\n")
-while(first):
-    if(re.search('^  //.*', first) != None):
-        fullclass = fullclass + (first + "\n")
-    elif(re.search('^.*".*', first) != None):
-        if(re.search('\[', first) != None):
-            if(re.search('\]', first) == None):
-                second = second.split('}],\n', 1)[1]
-            if(re.search('.*\[\{.*', first) != None):
-                search = re.search('(?<=\[\{ ).*(?= \}\].*)', first).group(0)
-                fullclass = "import '" + lowcc(search) + ".dart';\n" + fullclass
-                fullclass = fullclass + ("  List<" + search + "> " + lowcc(search) + ";\n")
-            elif(re.search('.*\["<.*', first) != None):
-                fullclass = fullclass + (" List<String> " + re.search('(?<=\[ <).*(?=> \])', first).group(0))
-        elif(re.search('\{', first) != None):
-            if(re.search('\}', first) == None):
-                second = second.split('}],\n', 1)[1]
-            if(re.search('(?<= \{ ).*(?= \}, )', first) != None):
-                search = re.search('(?<= \{ ).*(?= \}, )', first).group(0)
-                fullclass = "import '" + lowcc(search) + ".dart';\n" + fullclass
-                fullclass = fullclass + ("  List<" + search + "> " + lowcc(search) + ";\n")
-        elif(re.search('<', first) != None):
-                search = re.search('(?<=<).*(?=>)', first).group(0)
-                fullclass = fullclass + ("  List<" + search + "> " + re.search('(?<=").*(?=" : )', first).group(0) + ";\n")
-            
-            
+fullclass = ''.join(["import 'package:json_annotation/json_annotation.dart';\n", "part '" + lowcc(fhirclass) + ".g.dart';\n\n"])
+fullclass = ''.join([fullclass, "@JsonSerializable(explicitToJson: true)\n", "class " + fhirclass + " {\n", "  String resourceType;\n"])
+while(first != ''):
+    if(re.search(r'^.*".*', first) != None):
+        if(re.search(r'{', first) != None):
+            if(re.search(r'}', first) == None):
+                second = second.split('}],', 1)[1]
+                search = lowcc(re.search(r'(?<=\").*(?=\" : )', first).group(0))
+            elif(re.search(r'\(', first) != None):
+                search = lowcc(re.search(r'(?<={ ).*(?=\()', first).group(0))
+            else:
+                search = lowcc(re.search(r'(?<={ ).*(?= })', first).group(0))
+            namer = lowcc(re.search(r'(?<=\").*(?=\")', first).group(0))
+            fullclass = ''.join(["import '", search, ".dart';\n", fullclass, "  List<", search, "> ", namer, ";"])
+            args.append("this." + namer + ", ")
+        elif(re.search(r'<', first) != None):
+            search = lowcc(re.search(r'(?<=\").*(?=\" :)', first).group(0))
+            types = re.search(r'(?<=<).*(?=>)', first).group(0)
+            fullclass = ''.join([fullclass, "  String ", search, ";"])
+            args.append("this." + search + ", ")
+    fullclass = ''.join([fullclass, "  ", re.search(r'\/\/.*', first).group(0), "\n"])
     first = second.split('\n', 1)[0]
     second = second.split('\n', 1)[1]
-    print("1" + first)
 
-f= open(url+ccaseclass+".dart","w+")
+search = lowcc(re.search(r'(?<=\").*(?=\" : )', second).group(0))
+namer = lowcc(re.search(r'(?<=\").*(?=\")', second).group(0))
+fullclass = ''.join(["import '", search, ".dart';\n", fullclass, "  List<", search, "> ", namer, ";"])
+fullclass = ''.join([fullclass, "  ", re.search(r'\/\/.*', second).group(0), "\n\n  ", fhirclass, "({"])
+args.append("this." + namer + "});\n\n")
+args = ''.join(args)
+fullclass = ''.join([fullclass, args, "  factory ", fhirclass, ".fromJson(Map<String, dynamic> json) => _$"])
+fullclass = ''.join([fullclass, fhirclass, "FromJson(json);\n  Map<String, dynamic> toJson() => _$"])
+fullclass = ''.join([fullclass, fhirclass, "ToJson(this);\n}\n"])
+
+f= open(url+lowcc(fhirclass)+".dart","w+")
 f.write(fullclass)
 f.close()
