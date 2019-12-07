@@ -19,13 +19,15 @@ second = restOfClass[1]
 fullclass = ''.join(["import 'package:json_annotation/json_annotation.dart';\n", "part '" + lowcc(fhirclass) + ".g.dart';\n\n"])
 fullclass = ''.join([fullclass, "@JsonSerializable(explicitToJson: true)\n", "class " + fhirclass + " {\n", "  String resourceType;\n"])
 while(first != ''):
+    addObject = False
     if(re.search(r'^.*".*', first) != None):
         if(re.search(r'{', first) != None):
             if(re.search(r'}', first) == None):
                 second = second.split('}],', 1)[1]
                 search = lowcc(re.search(r'(?<=\").*(?=\" : )', first).group(0))
             elif(re.search(r'\(', first) != None):
-                search = lowcc(re.search(r'(?<={ ).*(?=\()', first).group(0))
+                search = re.search(r'(?<={ ).*(?=\()', first).group(0)
+                addObject = True
             else:
                 search = lowcc(re.search(r'(?<={ ).*(?= })', first).group(0))
             namer = lowcc(re.search(r'(?<=\").*(?=\")', first).group(0))
@@ -36,7 +38,11 @@ while(first != ''):
             types = re.search(r'(?<=<).*(?=>)', first).group(0)
             fullclass = ''.join([fullclass, "  String ", search, ";"])
             args.append("this." + search + ", ")
-    fullclass = ''.join([fullclass, "  ", re.search(r'\/\/.*', first).group(0), "\n"])
+    if(addObject):
+        objectReferenceResource = "//**##oRR##** "
+    else:
+        objectReferenceResource = " "
+    fullclass = ''.join([fullclass, "  ", objectReferenceResource, re.search(r'\/\/.*', first).group(0), "\n"])
     first = second.split('\n', 1)[0]
     second = second.split('\n', 1)[1]
 

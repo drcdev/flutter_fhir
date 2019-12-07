@@ -18,3 +18,15 @@ along at home and using Aidbox, they have a nice, easy tutorial here for how to 
 (https://docs.aidbox.app/basic-concepts/bulk-api-1/synthea-by-bulk-api)
 
 Todo: Would like to make script to easily create JSON classes from HL7 FHIR specifications.
+
+# Formatting
+I'm a newbie at coding, but I've tried to keep naming rules consistent (and consistent from FHIR).
+1. Dart class names: upper camel case.
+2. Variables: lower camel case.
+3. File names: lower camel case.
+4. FHIR json class names: upper camel case.
+5. FHIR complex data type not an official class (but still json class in dart): lower camel case.
+6. FHIR object properties that have a reference to a particular kind of resource (I don't completely
+    understand what that means), are going to be classified as a 'List<Reference>' type. And have the
+    string '**##oRR##**' included as a comment on that line to easy identification when I need to come
+    back and update it.
