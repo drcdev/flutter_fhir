@@ -34,15 +34,22 @@ while(first != ''):
             fullclass = ''.join(["import '", search, ".dart';\n", fullclass, "  List<", search, "> ", namer, ";"])
             args.append("this." + namer + ", ")
         elif(re.search(r'<', first) != None):
-            search = lowcc(re.search(r'(?<=\").*(?=\" :)', first).group(0))
-            types = re.search(r'(?<=<).*(?=>)', first).group(0)
-            fullclass = ''.join([fullclass, "  String ", search, ";"])
-            args.append("this." + search + ", ")
+            if(re.search(r'\[', first) != None):
+                search = ''.join(["  List<", re.search(r'(?<=<).*(?=>)', first).group(0), "> "])
+            else:
+                search = ''.join(["  String ", lowcc(re.search(r'(?<=\").*(?=\" :)', first).group(0))])
+            namer = lowcc(re.search(r'(?<=\").*(?=\" :)', first).group(0))
+            fullclass = ''.join([fullclass, search, ";"])
+            args.append("this." + namer + ", ")
     if(addObject):
         objectReferenceResource = "//**##oRR##** "
     else:
         objectReferenceResource = " "
-    fullclass = ''.join([fullclass, "  ", objectReferenceResource, re.search(r'\/\/.*', first).group(0), "\n"])
+    if(re.search(r'\/\/.*', first) != None):
+        comments = re.search(r'\/\/.*', first).group(0)
+    else:
+        comments = ''
+    fullclass = ''.join([fullclass, "  ", objectReferenceResource, comments, "\n"])
     first = second.split('\n', 1)[0]
     second = second.split('\n', 1)[1]
 

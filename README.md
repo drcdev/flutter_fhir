@@ -28,5 +28,5 @@ I'm a newbie at coding, but I've tried to keep naming rules consistent (and cons
 5. FHIR complex data type not an official class (but still json class in dart): lower camel case.
 6. FHIR object properties that have a reference to a particular kind of resource (I don't completely
     understand what that means), are going to be classified as a 'List<Reference>' type. And have the
-    string '**##oRR##**' included as a comment on that line to easy identification when I need to come
+    string '**##oRR##**' included as a comment on that line for easy identification when I need to come
     back and update it.
