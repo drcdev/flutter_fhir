@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_fhir/class/patient.dart';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
+import 'dart:convert';
+
 
 class Testing extends StatelessWidget {
   @override
@@ -49,17 +51,17 @@ class _Testing extends State<Tests> {
   Future<String> _read() async {
     try {
       final directory = await getApplicationDocumentsDirectory();
-      List<String> numbers;
       final ptList = File('${directory.path}/ptList.txt');
-      String pts = await ptList.readAsString();
-      numbers = pts.split('\n');
-      print(numbers);
+      List<String> ptNumbers = (await ptList.readAsString()).split('\n');
       List<Patient> patientList;
-      for(var i = 0; i < numbers.length; i++){
-        final pt = File('${directory.path}/' + numbers[i] + '.txt');
-        var newpt = Patient.fromJson(await pt.readAsString());
+      for(var i = 0; i < ptNumbers.length; i++){
+        final pt = File('${directory.path}/' + ptNumbers[i] + '.txt');
+        String newpt = await pt. .readAsString();  
+        Patient ptnew = json.encoder.convert(newpt);
+        Map<String, dynamic> map = jsonDecode(newpt); 
+        Patient ptnew = Patient.fromJson(json.encode(newpt)));
+        print(ptnew.name.toString());
       }
-      print(newpt);
       return(newpt);
     } catch (e) {
       print("Couldn't read file");
