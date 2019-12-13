@@ -3,7 +3,21 @@ import 'package:flutter/material.dart';
 class Deworming extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    String savedString = '';
+    return MaterialApp(
+      home: MoreWorms(),
+    );
+  }
+}
+
+class MoreWorms extends StatefulWidget {
+  @override
+  _Deworming createState() => _Deworming();
+}
+
+class _Deworming extends State<MoreWorms> {
+  String savedString = '';
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Deworming"),
@@ -15,13 +29,13 @@ class Deworming extends StatelessWidget {
             children: [
               RaisedButton(
                 onPressed: () {
-                  savedString = "Saved!";
+                   setState(() => savedString = 'Saved!');
                 },
               child: Text('Save'),
               ),
               RaisedButton(
                 onPressed: () {
-                  savedString = "Read!";
+                  setState(() => savedString = 'Read!');
                 },
               child: Text('Read'),
               ),
