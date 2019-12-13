@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fhir/class/patient.dart';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 
@@ -48,15 +49,15 @@ class _Testing extends State<Tests> {
   Future<String> _read() async {
     try {
       final directory = await getApplicationDocumentsDirectory();
-      List<String> patients;
+      List<String> numbers;
       final ptList = File('${directory.path}/ptList.txt');
       String pts = await ptList.readAsString();
-      patients = pts.split('\n');
-      String newpt = '';
-      print(patients);
-      for(var i = 0; i < patients.length; i++){
-        final pt = File('${directory.path}/' + patients[i] + '.txt');
-        newpt = newpt + '\n' + await pt.readAsString();
+      numbers = pts.split('\n');
+      print(numbers);
+      List<Patient> patientList;
+      for(var i = 0; i < numbers.length; i++){
+        final pt = File('${directory.path}/' + numbers[i] + '.txt');
+        var newpt = Patient.fromJson(await pt.readAsString());
       }
       print(newpt);
       return(newpt);
