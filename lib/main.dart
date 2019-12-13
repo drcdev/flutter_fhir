@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_fhir/deworming.dart';
+import 'package:flutter_fhir/testing.dart';
 import 'package:flutter_fhir/register.dart';
 import 'package:flutter_fhir/syncServer.dart';
-import 'package:flutter_fhir/vaccinations.dart';
+import 'package:flutter_fhir/patients.dart';
 
 //Calls menu class
 void main() {
@@ -28,14 +28,14 @@ class Menu extends StatelessWidget {
             //calls MenuButton class for each one, passes image, text, and class to call
             Column(
               children: [
-                MenuButton('images/chop.jpg', 'Register Patient', Register()),
-                MenuButton('images/vaccine.jpg', 'Vaccinations', Vaccinations()),
+                MenuButton('images/chop.jpg', 'New Patient', Register()),
+                MenuButton('images/vaccine.jpg', 'Patient Activities', Patients()),
               ],
             ),
             Column(   
               children: [   
                 MenuButton('images/samurai.png', 'Sync with server', SyncServer()),
-                MenuButton('images/deworming.jpg', 'Deworming', Deworming()), 
+                MenuButton('images/deworming.jpg', 'Testing', Testing()), 
               ],
             ),
           ],

@@ -42,3 +42,13 @@ class SyncServer extends StatelessWidget {
     );
   }
 }
+
+//will use this eventually to sync with server
+          // new RaisedButton(
+          //   onPressed: () {
+          //     Patient newpt = Patient(resourceType: 'Patient', address: [Address(district: barrio)], name: [HumanName(given: [givenNameController.text], family: familyNameController.text)], birthDate: birthDate);
+          //     patientList('post', body: newpt);
+          //   },
+          //   //'{\n  "resourceType": "Patient",\n  "name": [\n    {\n      "family": "' + familyNameController.text + '",\n      "given": [\n        "' + givenNameController.text + '"\n      ]\n    }\n  ],\n  "birthDate": "' + birthDate + '"\n}'),
+          //   child: Text('Press to Upload Patient'),
+          // ),

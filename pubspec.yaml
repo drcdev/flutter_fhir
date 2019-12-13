@@ -26,6 +26,7 @@ dependencies:
   grouped_buttons: ^1.0.4
   shared_preferences: ^0.4.3
   path_provider: ^0.4.1
+  random_string: ^1.1.0
 
 dev_dependencies:
   flutter_test:

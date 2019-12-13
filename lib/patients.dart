@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class Vaccinations extends StatelessWidget {
+class Patients extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Vaccinations"),
+        title: Text("Patient Activities"),
       ),
       body: Center(
         child: RaisedButton(

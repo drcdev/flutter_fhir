@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:grouped_buttons/grouped_buttons.dart';
 import 'package:intl/intl.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
-import 'package:flutter_fhir/patientList.dart';
 import 'package:flutter_fhir/main.dart';
 import 'package:flutter_fhir/class/patient.dart';
 import 'package:flutter_fhir/class/address.dart';
 import 'package:flutter_fhir/class/humanName.dart';
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
+import 'package:random_string/random_string.dart';
 
 class Register extends StatelessWidget {
   @override
@@ -28,7 +30,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
   String birthDate;
   String sexAtBirth;
   String response = '';
-  String barrio = '';
+  String barrio = 'Barrio';
   String test = '';
  
   @override
@@ -104,13 +106,11 @@ class _RegistrationFormState extends State<RegistrationForm> {
                     child: new Text(value),
                   );
                 }).toList(),
-                hint: Text('Barrio'),
+                hint: Text(barrio),
                 onChanged: (newVal) {
                   setState(() => barrio = newVal);
                 },
               ),
-
-              Text(barrio),
             ],
           ),
 
@@ -119,24 +119,11 @@ class _RegistrationFormState extends State<RegistrationForm> {
             children: <Widget>[
               RaisedButton(
                 onPressed: () {
-                  Patient newpt = Patient(resourceType: 'Patient', address: [Address(district: barrio)], name: [HumanName(given: [givenNameController.text], family: familyNameController.text)], birthDate: birthDate);
-                  debugPrint(newpt.toJson().toString());
-                  setState(() => test = 'Pressed!');
+                  _save(Patient(resourceType: 'Patient', address: [Address(district: barrio)], name: [HumanName(given: [givenNameController.text], family: familyNameController.text)], birthDate: birthDate));
                 },
                 child: Text('Press to Create Patient'),
-              ),
-
-              Text(test),
+              )
             ],
-          ),
-
-          new RaisedButton(
-            onPressed: () {
-              Patient newpt = Patient(resourceType: 'Patient', address: [Address(district: barrio)], name: [HumanName(given: [givenNameController.text], family: familyNameController.text)], birthDate: birthDate);
-              patientList('post', body: newpt);
-            },
-            //'{\n  "resourceType": "Patient",\n  "name": [\n    {\n      "family": "' + familyNameController.text + '",\n      "given": [\n        "' + givenNameController.text + '"\n      ]\n    }\n  ],\n  "birthDate": "' + birthDate + '"\n}'),
-            child: Text('Press to Upload Patient'),
           ),
 
           new RaisedButton(
@@ -152,4 +139,21 @@ class _RegistrationFormState extends State<RegistrationForm> {
       ),
     );
   }
-}
+
+  _save(Patient pt) async {
+  pt.id = randomAlphaNumeric(10).toString();
+  final directory = await getApplicationDocumentsDirectory();
+  final ptFile = File('${directory.path}/' + pt.id + '.txt');
+  final text = pt.toJson().toString();
+  await ptFile.writeAsString(text);
+  final ptList = File('${directory.path}/ptList.txt');
+  if(!await ptList.exists()) {
+    await ptList.writeAsString(pt.id);
+  } else {
+      String pts = await ptList.readAsString();
+      pts = pts + '\n' + pt.id;
+      await ptList.writeAsString(pts); 
+  }  
+  print('saved');
+  }
+}          
