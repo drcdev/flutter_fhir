@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 
 class Deworming extends StatelessWidget {
   @override
@@ -29,13 +31,13 @@ class _Deworming extends State<MoreWorms> {
             children: [
               RaisedButton(
                 onPressed: () {
-                   setState(() => savedString = 'Saved!');
+                   _save();
                 },
               child: Text('Save'),
               ),
               RaisedButton(
                 onPressed: () {
-                  setState(() => savedString = 'Read!');
+                  _read();
                 },
               child: Text('Read'),
               ),
@@ -50,5 +52,25 @@ class _Deworming extends State<MoreWorms> {
         ]
       ),
     );
+  }
+
+  _read() async {
+    try {
+      final directory = await getApplicationDocumentsDirectory();
+      final file = File('${directory.path}/my_file.txt');
+      String text = await file.readAsString();
+      print(text);
+    } catch (e) {
+      print("Couldn't read file");
+    }
+  }
+
+  _save() async {
+    final directory = await getApplicationDocumentsDirectory();
+    final file = File('${directory.path}/my_file.txt');
+    final text = 'Hello World!';
+    print('${directory.path}/my_file.txt'.toString());
+    await file.writeAsString(text);
+    print('saved');
   }
 }
