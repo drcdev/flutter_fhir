@@ -56,10 +56,10 @@ class _Testing extends State<Tests> {
       List<Patient> patientList;
       for(var i = 0; i < ptNumbers.length; i++){
         final pt = File('${directory.path}/' + ptNumbers[i] + '.txt');
-        String newpt = await pt. .readAsString();  
-        Patient ptnew = json.encoder.convert(newpt);
-        Map<String, dynamic> map = jsonDecode(newpt); 
-        Patient ptnew = Patient.fromJson(json.encode(newpt)));
+        String newpt = await pt.readAsString();  
+        // Patient ptnew = json.encoder.convert(newpt);
+        // Map<String, dynamic> map = jsonDecode(newpt); 
+        // Patient ptnew = Patient.fromJson(json.encode(newpt)));
         print(ptnew.name.toString());
       }
       return(newpt);
