@@ -3,6 +3,7 @@ import 'package:flutter_fhir/class/patient.dart';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'dart:convert';
+import 'package:flutter_fhir/main.dart';
 
 
 class Testing extends StatelessWidget {
@@ -38,7 +39,10 @@ class _Testing extends State<Tests> {
           ),
           RaisedButton(
             onPressed: () {
-              Navigator.pop(context); // Navigate back to opening screen when tapped.
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Menu()),
+              );
             },
             child: Text('Return to Opening Page'),
           ),
@@ -51,18 +55,15 @@ class _Testing extends State<Tests> {
   Future<String> _read() async {
     try {
       final directory = await getApplicationDocumentsDirectory();
-      final ptList = File('${directory.path}/ptList.txt');
-      List<String> ptNumbers = (await ptList.readAsString()).split('\n');
-      List<Patient> patientList;
+      List<String> ptNumbers = (await File('${directory.path}/ptList.txt').readAsString()).split('\n');
+      List<Patient> ptList = [];
       for(var i = 0; i < ptNumbers.length; i++){
         final pt = File('${directory.path}/' + ptNumbers[i] + '.txt');
-        String newpt = await pt.readAsString();  
-        // Patient ptnew = json.encoder.convert(newpt);
-        // Map<String, dynamic> map = jsonDecode(newpt); 
-        // Patient ptnew = Patient.fromJson(json.encode(newpt)));
-        print(ptnew.name.toString());
+        var newpt = Patient.fromJson(json.decode(await pt.readAsString()));
+        ptList.add(newpt);
+        print(ptList[i].id);
       }
-      return(newpt);
+      return("done");
     } catch (e) {
       print("Couldn't read file");
       return("Couldn't read file");
