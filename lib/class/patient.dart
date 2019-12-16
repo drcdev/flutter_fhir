@@ -13,7 +13,7 @@ class Patient {
   String birthDate;
   List<Address> address;
   String fullUrl;
-  //meta meta;
+  Meta meta;
 
   Patient({this.resourceType, this.id, this.name, this.gender, this.birthDate, this.address});
 

@@ -6,14 +6,15 @@ part of 'meta.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-meta _$metaFromJson(Map<String, dynamic> json) {
-  return meta(
+Meta _$MetaFromJson(Map<String, dynamic> json) {
+  return Meta(
     lastUpdated: json['lastUpdated'] as String,
     createdAt: json['createdAt'] as String,
-  )..versionId = json['versionId'] as String;
+    versionId: json['versionId'] as String,
+  );
 }
 
-Map<String, dynamic> _$metaToJson(meta instance) => <String, dynamic>{
+Map<String, dynamic> _$MetaToJson(Meta instance) => <String, dynamic>{
       'lastUpdated': instance.lastUpdated,
       'createdAt': instance.createdAt,
       'versionId': instance.versionId,
