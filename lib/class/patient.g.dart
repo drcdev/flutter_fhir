@@ -20,7 +20,11 @@ Patient _$PatientFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Address.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-  )..fullUrl = json['fullUrl'] as String;
+    fullUrl: json['fullUrl'] as String,
+    meta: json['meta'] == null
+        ? null
+        : Meta.fromJson(json['meta'] as Map<String, dynamic>),
+  );
 }
 
 Map<String, dynamic> _$PatientToJson(Patient instance) => <String, dynamic>{
@@ -31,4 +35,5 @@ Map<String, dynamic> _$PatientToJson(Patient instance) => <String, dynamic>{
       'birthDate': instance.birthDate,
       'address': instance.address?.map((e) => e?.toJson())?.toList(),
       'fullUrl': instance.fullUrl,
+      'meta': instance.meta?.toJson(),
     };
