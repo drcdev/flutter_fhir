@@ -1,5 +1,6 @@
 import 'humanName.dart';
 import 'address.dart';
+import 'meta.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'patient.g.dart';
 
@@ -11,6 +12,8 @@ class Patient {
   String gender;
   String birthDate;
   List<Address> address;
+  String fullUrl;
+  //meta meta;
 
   Patient({this.resourceType, this.id, this.name, this.gender, this.birthDate, this.address});
 

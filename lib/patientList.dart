@@ -13,6 +13,7 @@ Future<String> patientList(String action, {Patient body} ) async {
   if(action == 'get') {
     Response patients = await get('https://dbhifhir.aidbox.app/Patient', headers: headers);
     var parsedString = json.decode(patients.body).toString();
+    print(parsedString);
     var expression = RegExp('name((.(?!name))+?)\}\]\,');
     Iterable matches = expression.allMatches(parsedString);
     var end = '';
