@@ -32,8 +32,14 @@ class _Testing extends State<Tests> {
         children: [
           RaisedButton(
             onPressed: () async {
-              String pt = await _read();
-              setState(() => newpt = pt);
+              List<Patient> ptList = await _read();
+              String ptnames ='';
+              if(ptList.length > 0){
+                for(var i = 0; i < ptList.length; i++){
+                  ptnames += ptList[i].name[0].given[0] + ' ' + ptList[i].name[0].family + '\n';
+                }
+              } else ptnames = 'No patients';
+              setState(() => newpt = ptnames);
             },
           child: Text('Read'),
           ),
@@ -52,7 +58,7 @@ class _Testing extends State<Tests> {
     );
   }
 
-  Future<String> _read() async {
+  Future<List <Patient>> _read() async {
     try {
       final directory = await getApplicationDocumentsDirectory();
       List<String> ptNumbers = (await File('${directory.path}/ptList.txt').readAsString()).split('\n');
@@ -61,12 +67,11 @@ class _Testing extends State<Tests> {
         final pt = File('${directory.path}/' + ptNumbers[i] + '.txt');
         var newpt = Patient.fromJson(json.decode(await pt.readAsString()));
         ptList.add(newpt);
-        print(ptList[i].id);
       }
-      return("done");
+      return(ptList);
     } catch (e) {
-      print("Couldn't read file");
-      return("Couldn't read file");
+      List<Patient> ptList = [];
+      return(ptList);
     }
   
   }

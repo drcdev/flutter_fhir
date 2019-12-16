@@ -6,10 +6,8 @@ import 'package:flutter_fhir/main.dart';
 import 'package:flutter_fhir/class/patient.dart';
 import 'package:flutter_fhir/class/address.dart';
 import 'package:flutter_fhir/class/humanName.dart';
-import 'dart:io';
-import 'package:path_provider/path_provider.dart';
-import 'package:random_string/random_string.dart';
-import 'dart:convert';
+import 'package:flutter_fhir/savePatient.dart';
+
 
 class Register extends StatelessWidget {
   @override
@@ -32,7 +30,6 @@ class _RegistrationFormState extends State<RegistrationForm> {
   String sexAtBirth;
   String response = '';
   String barrio = 'Barrio';
-  String test = '';
  
   @override
   void dispose() {
@@ -120,7 +117,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
             children: <Widget>[
               RaisedButton(
                 onPressed: () {
-                  _save(Patient(resourceType: 'Patient', address: [Address(district: barrio)], name: [HumanName(given: [givenNameController.text], family: familyNameController.text)], birthDate: birthDate));
+                  savePatient(Patient(resourceType: 'Patient', address: [Address(district: barrio)], name: [HumanName(given: [givenNameController.text], family: familyNameController.text)], birthDate: birthDate));
                 },
                 child: Text('Press to Create Patient'),
               )
@@ -139,20 +136,5 @@ class _RegistrationFormState extends State<RegistrationForm> {
         ],
       ),
     );
-  }
-
-  _save(Patient pt) async {
-    pt.id = randomAlphaNumeric(10).toString();
-    final directory = await getApplicationDocumentsDirectory();
-    await File('${directory.path}/' + pt.id + '.txt').writeAsString(json.encode(pt));
-    final ptList = File('${directory.path}/ptList.txt');
-    if(!await ptList.exists()) {
-      await ptList.writeAsString(pt.id);
-    } else {
-        String pts = await ptList.readAsString();
-        pts = pts + '\n' + pt.id;
-        await ptList.writeAsString(pts); 
-        //await ptList.writeAsString(pt.id);
-    }  
-  }
-}          
+  }        
+}

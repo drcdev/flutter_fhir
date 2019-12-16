@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_fhir/testing.dart';
 import 'package:flutter_fhir/register.dart';
 import 'package:flutter_fhir/syncServer.dart';
-import 'package:flutter_fhir/patients.dart';
+import 'package:flutter_fhir/patientActivity.dart';
 
 //Calls menu class
 void main() {
@@ -29,7 +29,7 @@ class Menu extends StatelessWidget {
             Column(
               children: [
                 MenuButton('images/chop.jpg', 'New Patient', Register()),
-                MenuButton('images/vaccine.jpg', 'Patient Activities', Patients()),
+                MenuButton('images/vaccine.jpg', 'Patient Activities', PatientActivity()),
               ],
             ),
             Column(   
