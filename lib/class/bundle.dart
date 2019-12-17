@@ -1,4 +1,4 @@
-import 'package:flutter_fhir/class/entry.dart';
+import 'entry.dart';
 import 'link.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'bundle.g.dart';

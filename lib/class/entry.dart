@@ -1,4 +1,4 @@
-import 'package:flutter_fhir/class/patient.dart';
+import 'patient.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'entry.g.dart';
 
