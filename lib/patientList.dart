@@ -1,6 +1,7 @@
 import 'package:http/http.dart';
 import 'dart:convert';
 import 'package:flutter_fhir/class/patient.dart';
+import 'package:flutter_fhir/class/bundle.dart';
 
 Future<String> patientList(String action, {Patient body} ) async {
   Map<String, String> headers = {'Content-type': 'application/json'};
@@ -12,16 +13,12 @@ Future<String> patientList(String action, {Patient body} ) async {
   headers.putIfAbsent("Authorization", () => token);
   if(action == 'get') {
     Response patients = await get('https://dbhifhir.aidbox.app/Patient', headers: headers);
-    var bodyString = patients.body.toString();
-    var parsedString = json.decode(patients.body).toString();
-    print(bodyString);
-    var expression = RegExp('name((.(?!name))+?)\}\]\,');
-    Iterable matches = expression.allMatches(parsedString);
+    var myBundle = Bundle.fromJson(json.decode(patients.body));
+    for(var i = 0; i < myBundle.total; i++){
+      print(myBundle.entry[i].resource.id);
+      print(i);
+    }
     var end = '';
-
-    matches.forEach((match) { 
-      end = end + '\n' + parsedString.substring(match.start, match.end); 
-    });
 
     return end;
   } else if (action == 'post') { 

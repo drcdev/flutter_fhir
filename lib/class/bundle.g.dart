@@ -19,11 +19,16 @@ Bundle _$BundleFromJson(Map<String, dynamic> json) {
         ?.map(
             (e) => e == null ? null : Link.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    entry: (json['entry'] as List)
+        ?.map(
+            (e) => e == null ? null : Entry.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
   );
 }
 
 Map<String, dynamic> _$BundleToJson(Bundle instance) => <String, dynamic>{
       'resourceType': instance.resourceType,
+      'entry': instance.entry?.map((e) => e?.toJson())?.toList(),
       'type': instance.type,
       'id': instance.id,
       'timestamp': instance.timestamp?.toIso8601String(),

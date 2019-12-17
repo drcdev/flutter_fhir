@@ -1,3 +1,4 @@
+import 'package:flutter_fhir/class/entry.dart';
 import 'link.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'bundle.g.dart';
@@ -6,7 +7,7 @@ part 'bundle.g.dart';
 class Bundle {
   String resourceType;
    // from Resource: id, meta, implicitRules, and language
-  List<dynamic> entry;
+  List<Entry> entry;
   String type;   // R!  document | message | transaction | transaction-response | batch | batch-response | history | searchset | collection
   String id;   // Persistent identifier for the bundle
   DateTime timestamp;   // When the bundle was assembled
