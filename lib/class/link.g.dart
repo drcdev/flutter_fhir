@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'meta.dart';
+part of 'link.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Meta _$MetaFromJson(Map<String, dynamic> json) {
-  return Meta(
+Link _$LinkFromJson(Map<String, dynamic> json) {
+  return Link(
     lastUpdated: json['lastUpdated'] == null
         ? null
         : DateTime.parse(json['lastUpdated'] as String),
@@ -18,7 +18,7 @@ Meta _$MetaFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$MetaToJson(Meta instance) => <String, dynamic>{
+Map<String, dynamic> _$LinkToJson(Link instance) => <String, dynamic>{
       'lastUpdated': instance.lastUpdated?.toIso8601String(),
       'createdAt': instance.createdAt?.toIso8601String(),
       'versionId': instance.versionId,

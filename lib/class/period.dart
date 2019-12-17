@@ -5,8 +5,9 @@ part 'period.g.dart';
 class Period {
   final DateTime start;
   final DateTime end;
+  final String id;
 
-  Period({this.start, this.end});
+  Period({this.start, this.end, this.id});
   
   factory Period.fromJson(Map<String, dynamic> json) => _$PeriodFromJson(json);
   Map<String, dynamic> toJson() => _$PeriodToJson(this);

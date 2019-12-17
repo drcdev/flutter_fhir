@@ -3,8 +3,8 @@ part 'meta.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Meta {
-  String lastUpdated;
-  String createdAt;
+  DateTime lastUpdated;
+  DateTime createdAt;
   String versionId;
 
   Meta({this.lastUpdated, this.createdAt, this.versionId});
