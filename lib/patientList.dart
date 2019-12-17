@@ -15,7 +15,12 @@ Future<String> patientList(String action, {Patient body} ) async {
     Response patients = await get('https://dbhifhir.aidbox.app/Patient', headers: headers);
     var myBundle = Bundle.fromJson(json.decode(patients.body));
     for(var i = 0; i < myBundle.total; i++){
-      print(myBundle.entry[i].resource.id);
+      if(myBundle.entry[i].resource.name != null){
+        print(myBundle.entry[i].resource.name[0].toJson().toString());
+        if(myBundle.entry[i].resource.name[0].given != null){
+           print(myBundle.entry[i].resource.name[0].given[0].toString());
+        }
+      }
       print(i);
     }
     var end = '';
