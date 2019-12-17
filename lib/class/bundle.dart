@@ -1,4 +1,3 @@
-//import 'entry.dart';
 import 'link.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'bundle.g.dart';
@@ -7,7 +6,7 @@ part 'bundle.g.dart';
 class Bundle {
   String resourceType;
    // from Resource: id, meta, implicitRules, and language
-  //List<Entry> entry;
+  List<dynamic> entry;
   String type;   // R!  document | message | transaction | transaction-response | batch | batch-response | history | searchset | collection
   String id;   // Persistent identifier for the bundle
   DateTime timestamp;   // When the bundle was assembled
@@ -17,7 +16,7 @@ class Bundle {
   // QuertyTimeout queryTimeout;
   // QueryTime queryTime;
 
-  Bundle({this.resourceType, this.id, this.type, this.timestamp, this.total, this.link});
+  Bundle({this.resourceType, this.id, this.type, this.timestamp, this.total, this.link, this.entry});
 
   factory Bundle.fromJson(Map<String, dynamic> json) => _$BundleFromJson(json);
   Map<String, dynamic> toJson() => _$BundleToJson(this);
