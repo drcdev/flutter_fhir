@@ -6,38 +6,27 @@ import 'package:flutter_fhir/patientActivity.dart';
 
 //Calls menu class
 void main() {
-  runApp(MaterialApp(
-    title: "CHOP's FHIRflies",
-    home: Menu(),
-  ));
+  runApp(MainMenu());
 }
 
-class Menu extends StatelessWidget {
+class MainMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.blue[100],
-      appBar: AppBar(
-        title: Text("CHOP's FHIRflies"),
-        backgroundColor: Colors.blue[900],
-      ),
-      body: Container(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            //calls MenuButton class for each one, passes image, text, and class to call
-            Column(
-              children: [
-                MenuButton('images/chop.jpg', 'New Patient', Register()),
-                MenuButton('images/vaccine.jpg', 'Patient Activities', PatientActivity()),
-              ],
-            ),
-            Column(   
-              children: [   
-                MenuButton('images/samurai.png', 'Sync with server', SyncServer()),
-                MenuButton('images/deworming.jpg', 'Testing', Testing()), 
-              ],
-            ),
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.black,
+        appBar: AppBar(
+          title: Text("CHOP's FHIRflies"),
+          backgroundColor: Colors.blue[900],
+        ),
+        body: GridView.count(
+          crossAxisCount: 2,
+          childAspectRatio: 1.5,
+          children: <Widget>[
+            MenuButton('images/patient.jpg', 'New Patient', Register()),
+            MenuButton('images/activity.jpg', 'Patient Activities', PatientActivity()),
+            MenuButton('images/sync.jpg', 'Sync with server', SyncServer()),
+            MenuButton('images/testing.jpg', 'Testing', Testing()),
           ],
         ),
       ),
@@ -58,13 +47,16 @@ class MenuButton extends StatelessWidget {
 		return FlatButton(
       child: Column(
         children: <Widget>[
-          Image.asset(
-            imageDir,
-            width: 150,
-            height: 150,
-            fit: BoxFit.fill,
-            ),
-          Text(buttonText),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(30),
+            child: Image.asset(
+              imageDir,
+              height: 100,
+              width: 100),
+          ),
+          Text(
+            buttonText,
+            style: TextStyle(color: Colors.white),),
         ],
       ),
       onPressed: () {

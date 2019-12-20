@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fhir/main.dart';
 
 class PatientActivity extends StatelessWidget {
   @override
@@ -10,7 +11,10 @@ class PatientActivity extends StatelessWidget {
       body: Center(
         child: RaisedButton(
           onPressed: () {
-            Navigator.pop(context); // Navigate back to opening screen when tapped.
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MainMenu()),
+            );
           },
           child: Text('Return to Opening Page'),
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fhir/patientList.dart';
+import 'package:flutter_fhir/main.dart';
 
 class SyncServer extends StatelessWidget {
   @override
@@ -13,7 +14,10 @@ class SyncServer extends StatelessWidget {
 
           new RaisedButton(
             onPressed: () {
-            Navigator.pop(context); // Navigate back to opening screen when tapped.
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MainMenu()),
+              );
             },
             child: Text('Return to Opening Page'),
           ),

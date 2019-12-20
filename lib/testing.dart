@@ -47,7 +47,7 @@ class _Testing extends State<Tests> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Menu()),
+                MaterialPageRoute(builder: (context) => MainMenu()),
               );
             },
             child: Text('Return to Opening Page'),
