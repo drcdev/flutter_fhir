@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:grouped_buttons/grouped_buttons.dart';
 import 'package:intl/intl.dart';
@@ -80,19 +81,20 @@ class _RegistrationFormState extends State<RegistrationForm> {
             ],
           ),
 
-          new DateTimePickerFormField(
-            inputType: InputType.date,
-            format: DateFormat('yyyy-MM-dd'),
-            initialDate: DateTime.now(),
-            editable: true,
-            decoration: InputDecoration(
-              labelText: 'BirthDate',
-              hasFloatingPlaceholder: false
-            ),
-            onChanged: (birthday) {
-              setState(() => birthDate = birthday.toString().replaceAll(' 00:00:00.000', '') );
-            },
-          ),
+//          DatePickerDateTimeOrder.dayPeriod_time_date
+//          new DateTimePickerFormField(
+//            inputType: InputType.date,
+//            format: DateFormat('yyyy-MM-dd'),
+//            initialDate: DateTime.now(),
+//            editable: true,
+//            decoration: InputDecoration(
+//              labelText: 'BirthDate',
+//              hasFloatingPlaceholder: false
+//            ),
+//            onChanged: (birthday) {
+//              setState(() => birthDate = birthday.toString().replaceAll(' 00:00:00.000', '') );
+//            },
+//          ),
 
           new Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
