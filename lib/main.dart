@@ -19,15 +19,28 @@ class MainMenu extends StatelessWidget {
           title: Text("CHOP's FHIRflies"),
           backgroundColor: Colors.blue[900],
         ),
-        body: GridView.count(
-          crossAxisCount: 2,
-          childAspectRatio: 1.5,
-          children: <Widget>[
-            MenuButton('images/chop.jpg', 'New Patient', Register()),
-            MenuButton('images/vaccine.jpg', 'Patient Activities', PatientActivity()),
-            MenuButton('images/samurai.png', 'Sync with server', SyncServer()),
-            MenuButton('images/deworming.jpg', 'Testing', Testing()),
-          ],
+        body: Container(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+            //calls MenuButton class for each one, passes image, text, and class to call
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  MenuButton('images/patient.png', 'New Patient', Register()),
+                  MenuButton('images/sync.png', 'Sync with server', SyncServer()),
+                ],
+              ),
+
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  MenuButton('images/activities.png', 'Patient Activities', PatientActivity()),
+                  MenuButton('images/testing.png', 'Testing', Testing()),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -48,11 +61,11 @@ class MenuButton extends StatelessWidget {
       child: Column(
         children: <Widget>[
           ClipRRect(
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(60),
             child: Image.asset(
               imageDir,
-              height: 100,
-              width: 100),
+              height: 150,
+              width: 150),
           ),
           Text(
             buttonText,
