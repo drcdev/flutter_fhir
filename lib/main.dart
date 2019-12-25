@@ -60,23 +60,11 @@ class MenuButton extends StatelessWidget {
 		return FlatButton(
       child: Column(
         children: <Widget>[
-          ClipRRect(
-            borderRadius: BorderRadius.circular(60),
-            child: Image.asset(
-              imageDir,
-              height: 150,
-              width: 150),
-          ),
-          Text(
-            buttonText,
-            style: TextStyle(color: Colors.white),),
+          ClipRRect(child: Image.asset(imageDir, height: 150, width: 150),),
+          Text(buttonText, style: TextStyle(color: Colors.white),),
         ],
       ),
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => link),
-        );
+      onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => link),);
       }
     );
   }

@@ -1,14 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:grouped_buttons/grouped_buttons.dart';
-import 'package:intl/intl.dart';
-import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:flutter_fhir/main.dart';
 import 'package:flutter_fhir/class/patient.dart';
 import 'package:flutter_fhir/class/address.dart';
 import 'package:flutter_fhir/class/humanName.dart';
 import 'package:flutter_fhir/savePatient.dart';
-
 
 class Register extends StatelessWidget {
   @override
@@ -81,21 +78,6 @@ class _RegistrationFormState extends State<RegistrationForm> {
             ],
           ),
 
-//          DatePickerDateTimeOrder.dayPeriod_time_date
-//          new DateTimePickerFormField(
-//            inputType: InputType.date,
-//            format: DateFormat('yyyy-MM-dd'),
-//            initialDate: DateTime.now(),
-//            editable: true,
-//            decoration: InputDecoration(
-//              labelText: 'BirthDate',
-//              hasFloatingPlaceholder: false
-//            ),
-//            onChanged: (birthday) {
-//              setState(() => birthDate = birthday.toString().replaceAll(' 00:00:00.000', '') );
-//            },
-//          ),
-
           new Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -138,5 +120,5 @@ class _RegistrationFormState extends State<RegistrationForm> {
         ],
       ),
     );
-  }        
+  }
 }
