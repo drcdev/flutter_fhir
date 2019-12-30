@@ -24,7 +24,7 @@ class RegistrationForm extends StatefulWidget {
 class _RegistrationFormState extends State<RegistrationForm> {
   final givenNameController = TextEditingController();
   final familyNameController = TextEditingController();
-  String birthDate;
+  DateTime _birthDate = DateTime.now();
   String sexAtBirth;
   String response = '';
   String barrio = 'Barrio';
@@ -35,6 +35,18 @@ class _RegistrationFormState extends State<RegistrationForm> {
     familyNameController.dispose();
     super.dispose();
   }
+
+  //select birthdate async function
+  Future _selectDate() async {
+    DateTime picked = await showDatePicker(
+        context: context,
+        initialDate: new DateTime.now(),
+        firstDate: new DateTime(2016),
+        lastDate: new DateTime.now()
+    );
+    if(picked != null) setState(() => _birthDate = picked);
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -72,11 +84,23 @@ class _RegistrationFormState extends State<RegistrationForm> {
                 ],
                 onSelected: (String selected) {
                   sexAtBirth = selected;
-                  debugPrint(sexAtBirth);
                 }
               ),
             ],
           ),
+
+          //Calls above function to select birthdate
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              RaisedButton(
+                onPressed: _selectDate,
+                child: Text('Click to select birthdate'),
+              ),
+              Text(_birthDate.toString()),
+            ]
+          ),
+//            currentTime: DateTime.now(), locale: LocaleType.en);},
 
           new Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -101,7 +125,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
             children: <Widget>[
               RaisedButton(
                 onPressed: () {
-                  savePatient(Patient(resourceType: 'Patient', address: [Address(district: barrio)], name: [HumanName(given: [givenNameController.text], family: familyNameController.text)], birthDate: birthDate));
+                  savePatient(Patient(resourceType: 'Patient', address: [Address(district: barrio)], name: [HumanName(given: [givenNameController.text], family: familyNameController.text)], birthDate: _birthDate.toString()));
                 },
                 child: Text('Press to Create Patient'),
               )
