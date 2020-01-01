@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:grouped_buttons/grouped_buttons.dart';
 import 'package:flutter_fhir/main.dart';
 import 'package:flutter_fhir/class/patient.dart';
 import 'package:flutter_fhir/class/address.dart';
@@ -28,7 +27,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
   String sexAtBirth;
   String response = '';
   String barrio = 'Barrio';
- 
+
   @override
   void dispose() {
     givenNameController.dispose();
@@ -44,7 +43,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
         firstDate: new DateTime(2016),
         lastDate: new DateTime.now()
     );
-    if(picked != null) setState(() => _birthDate = picked);
+    if (picked != null) setState(() => _birthDate = picked);
   }
 
 
@@ -56,57 +55,78 @@ class _RegistrationFormState extends State<RegistrationForm> {
       ),
       body: new Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+//        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
 
           new TextField(
             decoration: new InputDecoration(
-              hintText: 'Given Names'),
+                hintText: 'Given Names'),
             controller: givenNameController,
           ),
 
           new TextField(
             decoration: new InputDecoration(
-              hintText: 'Family Names'),
+                hintText: 'Family Names'),
             controller: familyNameController,
           ),
 
           new Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              new Text('Sex at birth'),
+              new Text(' Sex at birth'),
 
-              new RadioButtonGroup(
-                orientation: GroupedButtonsOrientation.HORIZONTAL,
-                labels: <String>[
-                  'Female',
-                  'Male',
-                ],
-                onSelected: (String selected) {
-                  sexAtBirth = selected;
-                }
+              Radio(
+                value: 'female',
+                groupValue: sexAtBirth,
+                onChanged: (String value) {
+                  setState(() => sexAtBirth = value);
+                },
               ),
+              Text('female'),
+
+              Radio(
+                value: 'male',
+                groupValue: sexAtBirth,
+                onChanged: (String value) {
+                  setState(() => sexAtBirth = value);
+                },
+              ),
+              Text('male'),
             ],
+          ),
+          const Divider(
+            color: Colors.black54,
+            thickness: 1,
           ),
 
           //Calls above function to select birthdate
           new Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              RaisedButton(
-                onPressed: _selectDate,
-                child: Text('Click to select birthdate'),
-              ),
-              Text(_birthDate.toString()),
-            ]
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                FlatButton(
+                  onPressed: _selectDate,
+                  child: Text('Date of Birth'),
+                ),
+                Text(
+                    '${_birthDate.month}-${_birthDate.day}-${_birthDate.year}'),
+              ]
           ),
-//            currentTime: DateTime.now(), locale: LocaleType.en);},
+          const Divider(
+            color: Colors.black54,
+            thickness: 1,
+          ),
 
           new Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               DropdownButton<String>(
-                items: <String>['Filiu', 'La 41', 'Carretera', 'Villa_Verde', 'Cachipero', 'Puerto_Rico', 'Kilombo'].map((String value) {
+                items: <String>[
+                  'Filiu',
+                  'La 41',
+                  'Carretera',
+                  'Villa_Verde',
+                  'Cachipero',
+                  'Puerto_Rico',
+                  'Kilombo'
+                ].map((String value) {
                   return new DropdownMenuItem<String>(
                     value: value,
                     child: new Text(value),
@@ -125,21 +145,27 @@ class _RegistrationFormState extends State<RegistrationForm> {
             children: <Widget>[
               RaisedButton(
                 onPressed: () {
-                  savePatient(Patient(resourceType: 'Patient', address: [Address(district: barrio)], name: [HumanName(given: [givenNameController.text], family: familyNameController.text)], birthDate: _birthDate.toString()));
+                  savePatient(Patient(resourceType: 'Patient',
+                      address: [Address(district: barrio)],
+                      name: [
+                        HumanName(given: [givenNameController.text],
+                            family: familyNameController.text)
+                      ],
+                      birthDate: _birthDate.toString()));
                 },
                 child: Text('Press to Create Patient'),
-              )
-            ],
-          ),
+              ),
 
-          new RaisedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => MainMenu()),
-              );
-            },
-            child: Text('Return to Opening Page'),
+              RaisedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MainMenu()),
+                  );
+                },
+                child: Text('Return to Opening Page'),
+              ),
+            ],
           ),
         ],
       ),
