@@ -26,7 +26,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
   DateTime _birthDate = DateTime.now();
   String sexAtBirth;
   String response = '';
-  String barrio = 'Barrio';
+  String barrio = 'Escoje Barrio';
 
   @override
   void dispose() {
@@ -55,7 +55,6 @@ class _RegistrationFormState extends State<RegistrationForm> {
       ),
       body: new Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
 
           new TextField(
@@ -70,72 +69,107 @@ class _RegistrationFormState extends State<RegistrationForm> {
             controller: familyNameController,
           ),
 
-          new Row(
+          new Column(
             children: <Widget>[
-              new Text(' Sex at birth'),
+              new Row(
+                children: <Widget>[
+                  new Text(' Sex at birth'),
 
-              Radio(
-                value: 'female',
-                groupValue: sexAtBirth,
-                onChanged: (String value) {
-                  setState(() => sexAtBirth = value);
-                },
-              ),
-              Text('female'),
+                  Radio(
+                    value: 'female',
+                    groupValue: sexAtBirth,
+                    onChanged: (String value) {
+                      setState(() => sexAtBirth = value);
+                    },
+                  ),
+                  Text('female'),
 
-              Radio(
-                value: 'male',
-                groupValue: sexAtBirth,
-                onChanged: (String value) {
-                  setState(() => sexAtBirth = value);
-                },
+                  Radio(
+                    value: 'male',
+                    groupValue: sexAtBirth,
+                    onChanged: (String value) {
+                      setState(() => sexAtBirth = value);
+                    },
+                  ),
+                  Text('male'),
+                ],
               ),
-              Text('male'),
+              const Divider(
+                color: Colors.black54,
+                thickness: 1,
+              ),
             ],
-          ),
-          const Divider(
-            color: Colors.black54,
-            thickness: 1,
           ),
 
           //Calls above function to select birthdate
-          new Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                FlatButton(
-                  onPressed: _selectDate,
-                  child: Text('Date of Birth'),
-                ),
-                Text(
-                    '${_birthDate.month}-${_birthDate.day}-${_birthDate.year}'),
-              ]
-          ),
-          const Divider(
-            color: Colors.black54,
-            thickness: 1,
+          new Column(
+            children: <Widget>[
+              new Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    FlatButton(
+                      onPressed: _selectDate,
+                      padding: EdgeInsets.all(0),
+                      child: Text(
+                        'Date of Birth     ',
+                        style: TextStyle(
+                          fontWeight: FontWeight.normal,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      '${_birthDate.month}-${_birthDate.day}-${_birthDate.year}',
+                      style: TextStyle(
+                        fontWeight: FontWeight.normal,
+                        fontSize: 15,
+                      ),
+                    ),
+                  ]
+              ),
+              const Divider(
+                color: Colors.black54,
+                thickness: 1,
+              ),
+            ],
           ),
 
-          new Row(
-            children: <Widget>[
-              DropdownButton<String>(
-                items: <String>[
-                  'Filiu',
-                  'La 41',
-                  'Carretera',
-                  'Villa_Verde',
-                  'Cachipero',
-                  'Puerto_Rico',
-                  'Kilombo'
-                ].map((String value) {
-                  return new DropdownMenuItem<String>(
-                    value: value,
-                    child: new Text(value),
-                  );
-                }).toList(),
-                hint: Text(barrio),
-                onChanged: (newVal) {
-                  setState(() => barrio = newVal);
-                },
+          new Column(
+          children: <Widget>[
+              new Row(
+                children: <Widget>[
+                  Text(
+                    'Barrio     ',
+                    style: TextStyle(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 15,
+                    ),
+                  ),
+                  DropdownButton<String>(
+                    items: <String>[
+                      'Filiu',
+                      'La 41',
+                      'Carretera',
+                      'Villa_Verde',
+                      'Cachipero',
+                      'Puerto_Rico',
+                      'Kilombo'
+                    ].map((String value) {
+                      return new DropdownMenuItem<String>(
+                        value: value,
+                        child: new Text(value),
+                      );
+                    }).toList(),
+                    hint: Text(barrio),
+                    onChanged: (newVal) {
+                      setState(() => barrio = newVal);
+                    },
+                  ),
+                ],
+              ),
+              const Divider(
+                color: Colors.black54,
+                thickness: 1,
               ),
             ],
           ),
