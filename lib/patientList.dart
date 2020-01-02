@@ -1,3 +1,4 @@
+import 'package:flutter_fhir/savePatient.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
 import 'package:flutter_fhir/class/patient.dart';
@@ -14,17 +15,10 @@ Future<String> patientList(String action, {Patient body} ) async {
   if(action == 'get') {
     Response patients = await get('https://dbhifhir.aidbox.app/Patient', headers: headers);
     var myBundle = Bundle.fromJson(json.decode(patients.body));
-    for(var i = 0; i < myBundle.total; i++){
-      if(myBundle.entry[i].resource.name != null){
-        print(myBundle.entry[i].resource.name[0].toJson().toString());
-        if(myBundle.entry[i].resource.name[0].given != null){
-           print(myBundle.entry[i].resource.name[0].given[0].toString());
-        }
-      }
-      print(i);
+    for(var i = 0; i < myBundle.total; i++) {
+      savePatient(Patient.fromJson(myBundle.entry[i].resource.toJson()));
     }
     var end = '';
-
     return end;
   } else if (action == 'post') { 
     await post('https://dbhifhir.aidbox.app/Patient', headers: headers, body: json.encode(body));
