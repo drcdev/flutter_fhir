@@ -4,7 +4,6 @@ import 'package:flutter_fhir/main.dart';
 import 'package:flutter_fhir/class/patient.dart';
 import 'package:flutter_fhir/class/address.dart';
 import 'package:flutter_fhir/class/humanName.dart';
-import 'package:flutter_fhir/savePatient.dart';
 
 class Register extends StatelessWidget {
   @override
