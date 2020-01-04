@@ -36,7 +36,7 @@ class _Testing extends State<Tests> {
               String ptnames ='';
               if(ptList.length > 0){
                 for(var i = 0; i < ptList.length; i++){
-                  ptnames += ptList[i].name[0].given[0] + ' ' + ptList[i].name[0].family + '\n';
+                  print(ptList[i].toJson().toString());
                 }
               } else ptnames = 'No patients';
               setState(() => newpt = ptnames);
@@ -73,6 +73,5 @@ class _Testing extends State<Tests> {
       List<Patient> ptList = [];
       return(ptList);
     }
-  
   }
 }

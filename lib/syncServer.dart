@@ -1,49 +1,28 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_fhir/patientList.dart';
-import 'package:flutter_fhir/main.dart';
+import 'package:http/http.dart';
+import 'dart:convert';
+import 'package:flutter_fhir/class/patient.dart';
+import 'package:flutter_fhir/class/bundle.dart';
 
-class SyncServer extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Sync with server"),
-      ),
-      body: new Column(
-        children: <Widget>[
-
-          new RaisedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => MainMenu()),
-              );
-            },
-            child: Text('Return to Opening Page'),
-          ),
-
-          new Container(
-            child: FutureBuilder(            
-              future: patientList("get"),
-              builder: (BuildContext context, AsyncSnapshot snapshot) {
-                if (snapshot.hasData) {
-                  return Center(
-                    child: Text(
-                      snapshot.data,
-                    ),
-                  );
-                } else {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              },
-            ),
-          ),
-    
-        ],
-      ),
-    );
+syncServer(String action, {Patient body} ) async {
+  Map<String, String> headers = {'Content-type': 'application/json'};
+  Response response = await post(
+      'https://dbhifhir.aidbox.app/auth/token?client_id=greyfhir&client_secret=verysecret&grant_type=client_credentials',
+      headers: headers);
+  var parsedbody = json.decode(response.body);
+  var token = parsedbody['token_type'] + ' ' + parsedbody['access_token'];
+  headers.putIfAbsent("Authorization", () => token);
+  if(action == 'get') {
+    Response patients = await get('https://dbhifhir.aidbox.app/Patient', headers: headers);
+    var myBundle = Bundle.fromJson(json.decode(patients.body));
+    for(var i = 0; i < myBundle.total; i++) {
+      await savePatient(Patient.fromJson(myBundle.entry[i].resource.toJson()));
+    }
+    print('We gots em all!');
+  } else if (action == 'post') {
+    await post('https://dbhifhir.aidbox.app/Patient', headers: headers, body: json.encode(body));
+    print('All sent.');
+  } else {
+    print('Well, that didn\'t work.');
   }
 }
 

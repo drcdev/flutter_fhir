@@ -4,7 +4,7 @@ import 'package:flutter_fhir/testing.dart';
 import 'package:flutter_fhir/register.dart';
 import 'package:flutter_fhir/patientActivity.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:flutter_fhir/patientList.dart';
+import 'package:flutter_fhir/syncServer.dart';
 
 //Calls menu class
 void main() {
@@ -30,8 +30,8 @@ class MainMenu extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   PageButton('images/patient.png', 'New Patient', Register()),
-//                  ActionButton('images/sync.png', 'Sync with server', patientList("get")),
-                  ActionButton('images/chop.png', 'Placeholder', placeHolder()),
+                  ActionButton('images/sync.png', 'Sync with server', syncServer, 'get'),
+                  ActionButton('images/chop.png', 'Placeholder', placeHolder),
                 ],
               ),
 
@@ -40,7 +40,7 @@ class MainMenu extends StatelessWidget {
                 children: <Widget>[
                   PageButton('images/activities.png', 'Patient Activities', PatientActivity()),
                   PageButton('images/testing.png', 'Testing', Testing()),
-                  ActionButton('images/trash.png', 'Delete Files', deleteFiles())
+                  ActionButton('images/trash.png', 'Delete Files', deleteFiles)
                 ],
               ),
             ],
@@ -52,7 +52,7 @@ class MainMenu extends StatelessWidget {
 }
 
 //deletes all files in application document directory ending in .txt
-Future deleteFiles() async{
+deleteFiles() async{
   final directory = await getApplicationDocumentsDirectory(); //get current directory
   directory.list(recursive: false, followLinks: true).listen((FileSystemEntity entity)
   {
@@ -64,7 +64,7 @@ Future deleteFiles() async{
 }
 
 //prints list of files in application document directory
-Future placeHolder() async{
+placeHolder() async{
   final directory = await getApplicationDocumentsDirectory(); //get current directory
   print(directory.list(recursive: false, followLinks: true).listen((FileSystemEntity entity)
   {
@@ -99,23 +99,24 @@ class PageButton extends StatelessWidget {
 class ActionButton extends StatelessWidget {
   final String imageDir;
   final String buttonText;
-  final Future<dynamic> func;
+  final Function func;
+  final String arg1;
 
-  ActionButton(this.imageDir, this.buttonText, this.func);
+  ActionButton(this.imageDir, this.buttonText, this.func, [this.arg1]);
 
   @override
   Widget build(context) {
     return FlatButton(
-      onPressed: () async {
-        await func;
-        setState((){});
+      onPressed: () {
+        if(arg1==null){func();}
+        else{func(arg1);}
       },
-        child: Column(
-          children: <Widget>[
-            ClipRRect(child: Image.asset(imageDir, height: 150, width: 150),),
-            Text(buttonText, style: TextStyle(color: Colors.white),),
-          ],
-        ),
+      child: Column(
+        children: <Widget>[
+          ClipRRect(child: Image.asset(imageDir, height: 150, width: 150),),
+          Text(buttonText, style: TextStyle(color: Colors.white),),
+        ],
+      ),
     );
   }
 }

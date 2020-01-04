@@ -25,15 +25,15 @@ class Patient {
 }
 
 savePatient(Patient pt) async {
-  pt.id = 'flutter' + randomAlphaNumeric(10).toString(); //assign ID
+  if(pt.id == null) { pt.id = 'flutter' + randomAlphaNumeric(10).toString();} //assign ID
   final directory = await getApplicationDocumentsDirectory(); //get current directory
   await File('${directory.path}/' + pt.id + '.txt').writeAsString(json.encode(pt)); //write patient info to file as pt.id
   final ptList = File('${directory.path}/ptList.txt');
   if(!await ptList.exists()) { //if ptList doesn't exist create it
-    await ptList.writeAsString('\n' + pt.id);
+    ptList.writeAsString(pt.id);
   } else { //otherwise, read it, add the new patient, then save the file
       String pts = await ptList.readAsString();
       pts += '\n' + pt.id;
-      await ptList.writeAsString(pts);
+      ptList.writeAsString(pts);
   }
 }
