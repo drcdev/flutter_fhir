@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter_fhir/class/patient.dart';
 import 'package:flutter_fhir/class/bundle.dart';
 
-Future<String> patientList(String action, {Patient body} ) async {
+patientList(String action, {Patient body} ) async {
   Map<String, String> headers = {'Content-type': 'application/json'};
   Response response = await post(
       'https://dbhifhir.aidbox.app/auth/token?client_id=greyfhir&client_secret=verysecret&grant_type=client_credentials',
@@ -17,12 +17,11 @@ Future<String> patientList(String action, {Patient body} ) async {
     for(var i = 0; i < myBundle.total; i++) {
       savePatient(Patient.fromJson(myBundle.entry[i].resource.toJson()));
     }
-    var end = '';
-    return end;
-  } else if (action == 'post') { 
+    print('We gots em all!');
+  } else if (action == 'post') {
     await post('https://dbhifhir.aidbox.app/Patient', headers: headers, body: json.encode(body));
-    return 'All sent.';
+    print('All sent.');
   } else {
-    return 'Well, that didn\'t work.';
+    print('Well, that didn\'t work.');
   }
 }

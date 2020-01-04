@@ -25,26 +25,15 @@ class Patient {
 }
 
 savePatient(Patient pt) async {
-  pt.id = randomAlphaNumeric(10).toString(); //assign ID
+  pt.id = 'flutter' + randomAlphaNumeric(10).toString(); //assign ID
   final directory = await getApplicationDocumentsDirectory(); //get current directory
-  print(directory.list(recursive: false, followLinks: true)
-      .listen((FileSystemEntity entity)
-  {
-    print(entity.path);
-    if (entity.path.contains('.txt')) {
-      print(entity.path);
-      File f = File(entity.path);
-      f.delete();
-    }
-    }));
-//  await File('${directory.path}/' + pt.id + '.txt').writeAsString(json.encode(pt)); //write patient info to file as pt.id
-//  final ptList = File('${directory.path}/ptList.txt');
-//  if(!await ptList.exists()) {
-//    await ptList.writeAsString('\n' + pt.id);
-//  } else {
-////      String pts = await ptList.readAsString();
-////      pts += '\n' + pt.id;
-////      await ptList.writeAsString(pts);
-//    await ptList.writeAsString(pt.id);
-//  }
+  await File('${directory.path}/' + pt.id + '.txt').writeAsString(json.encode(pt)); //write patient info to file as pt.id
+  final ptList = File('${directory.path}/ptList.txt');
+  if(!await ptList.exists()) { //if ptList doesn't exist create it
+    await ptList.writeAsString('\n' + pt.id);
+  } else { //otherwise, read it, add the new patient, then save the file
+      String pts = await ptList.readAsString();
+      pts += '\n' + pt.id;
+      await ptList.writeAsString(pts);
+  }
 }
