@@ -1,5 +1,5 @@
 name: flutter_fhir
-description: Trying to HTTP
+description: Collect Basic Data to FHIR Server
 
 version: 1.0.0+1
 
@@ -16,7 +16,7 @@ dependencies:
   json_annotation: ^2.4.0
   cupertino_icons: ^0.1.2
   grouped_buttons: ^1.0.4
-  shared_preferences: ^0.4.3
+  shared_preferences: ^0.5.5
   path_provider: ^0.4.1
   random_string: ^1.1.0
   intl: ^0.16.0
@@ -31,4 +31,6 @@ flutter:
   uses-material-design: true
   assets:
     - images/
+    - lib/lang/en.json
+    - lib/lang/es.json
     
