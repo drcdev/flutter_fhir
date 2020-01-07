@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_fhir/lang/appLanguage.dart';
 import 'package:flutter_fhir/testing.dart';
 import 'package:flutter_fhir/register.dart';
 import 'package:flutter_fhir/patientActivity.dart';
@@ -22,23 +21,22 @@ class Main extends StatelessWidget {
         Locale('es'), //Spanish
       ],
       localizationsDelegates: [
-        AppLocalizations.delegate,
+        const AppLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
       ],
-//      localeResolutionCallback: (locale, supportedLocales) {
-//        // Check if the current device locale is supported
-//        for (var supportedLocale in supportedLocales) {
-//          if (supportedLocale.languageCode == locale.languageCode &&
-//              supportedLocale.countryCode == locale.countryCode) {
-//            return supportedLocale;
-//          }
-//        }
-//        // If the locale of the device is not supported, use the first one
-//        // from the list (English, in this case).
-//        return supportedLocales.first;
-//      },
+      localeResolutionCallback: (locale, supportedLocales) {
+        // Check if the current device locale is supported
+        for (var supportedLocale in supportedLocales) {
+          if (supportedLocale.languageCode == locale.languageCode &&
+              supportedLocale.countryCode == locale.countryCode) {
+            return supportedLocale;
+          }
+        }
+        // If the locale of the device is not supported, use the first one
+        // from the list (English, in this case).
+        return supportedLocales.first;
+      },
       home: MainMenu(),
     );
   }
@@ -49,10 +47,10 @@ class MainMenu extends StatelessWidget {
   Widget build(BuildContext context) {
       return Scaffold(
         backgroundColor: Colors.black,
-        appBar: AppBar(
-          title: Text(  AppLocalizations.of(context).translate("new_pt")),//"CHOP's FHIRflies"),
-          backgroundColor: Colors.blue[900],
-        ),
+//        appBar: AppBar(
+//          title: Text(  AppLocalizations.of(context).translate("new_pt")),//"CHOP's FHIRflies"),
+//          backgroundColor: Colors.blue[900],
+//        ),
         body: Container(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

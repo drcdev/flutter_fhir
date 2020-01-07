@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fhir/main.dart';
-import 'package:flutter_fhir/lang/appLanguage.dart';
+import 'package:flutter_fhir/appLocalizations.dart';
 
 class Settings extends StatelessWidget {
   @override
@@ -26,29 +26,26 @@ class _Settings extends State<Setting> {
       ),
       body: Column(
         children: [
-          ListTile(
-            title: const Text('English'),
-            leading: Radio(
-              value: 'en',
-              groupValue: Language,
-              onChanged: (String value) async {
-                AppLanguage appLanguage = AppLanguage();
-                appLanguage.changeLanguage(Locale(value));
-              },
-            ),
-          ),
+          Radio(
+            value: 'English',
+            groupValue: Language,
+            onChanged: (String value) async {
+              setState(() {
 
-          ListTile(
-            title: const Text('Español'),
-            leading: Radio(
-              value: 'es',
-              groupValue: Language,
-              onChanged: (String value) async {
-                AppLanguage appLanguage = AppLanguage();
-                appLanguage.changeLanguage(Locale(value));
-              },
-            ),
+              });
+            },
           ),
+          Text('English'),
+
+          Radio(
+            value: 'Español',
+            groupValue: Language,
+            onChanged: (String value) async {
+              setState(() {
+              });
+            },
+          ),
+          Text('Español'),
 
           RaisedButton(
             onPressed: () {
