@@ -1,24 +1,56 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_fhir/lang/appLanguage.dart';
 import 'package:flutter_fhir/testing.dart';
 import 'package:flutter_fhir/register.dart';
 import 'package:flutter_fhir/patientActivity.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_fhir/syncServer.dart';
+import 'package:flutter_fhir/settings.dart';
+import 'package:flutter_fhir/appLocalizations.dart';
 
 //Calls menu class
-void main() {
-  runApp(MainMenu());
+void main() => runApp(Main());
+
+class Main extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      supportedLocales: [
+        Locale('en'), //English
+        Locale('es'), //Spanish
+      ],
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+//      localeResolutionCallback: (locale, supportedLocales) {
+//        // Check if the current device locale is supported
+//        for (var supportedLocale in supportedLocales) {
+//          if (supportedLocale.languageCode == locale.languageCode &&
+//              supportedLocale.countryCode == locale.countryCode) {
+//            return supportedLocale;
+//          }
+//        }
+//        // If the locale of the device is not supported, use the first one
+//        // from the list (English, in this case).
+//        return supportedLocales.first;
+//      },
+      home: MainMenu(),
+    );
+  }
 }
 
 class MainMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+      return Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
-          title: Text("CHOP's FHIRflies"),
+          title: Text(  AppLocalizations.of(context).translate("new_pt")),//"CHOP's FHIRflies"),
           backgroundColor: Colors.blue[900],
         ),
         body: Container(
@@ -29,9 +61,12 @@ class MainMenu extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  PageButton('images/patient.png', 'New Patient', Register()),
+//                  PageButton(
+//                      'images/patient.png',
+//                      AppLocalizations.of(context).translate('new_pt'),
+//                      Register()),
                   ActionButton('images/sync.png', 'Sync with server', syncServer, 'get'),
-                  ActionButton('images/chop.png', 'Placeholder', placeHolder),
+                  PageButton('images/chop.png', 'Settings', Settings()),
                 ],
               ),
 
@@ -46,7 +81,6 @@ class MainMenu extends StatelessWidget {
             ],
           ),
         ),
-      ),
     );
   }
 }
@@ -56,20 +90,12 @@ deleteFiles() async{
   final directory = await getApplicationDocumentsDirectory(); //get current directory
   directory.list(recursive: false, followLinks: true).listen((FileSystemEntity entity)
   {
+    print(entity.path);
     if (entity.path.contains('.txt')) {
       File f = File(entity.path);
       f.delete();
     }
   });
-}
-
-//prints list of files in application document directory
-placeHolder() async{
-  final directory = await getApplicationDocumentsDirectory(); //get current directory
-  print(directory.list(recursive: false, followLinks: true).listen((FileSystemEntity entity)
-  {
-    print(entity.path);
-  }));
 }
 
 //PageButton, returns FlatButton with image, text, and link to next page, passed as arguments
