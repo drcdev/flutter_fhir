@@ -3,40 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_fhir/testing.dart';
 import 'package:flutter_fhir/register.dart';
 import 'package:flutter_fhir/patientActivity.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_fhir/syncServer.dart';
 import 'package:flutter_fhir/settings.dart';
-import 'package:flutter_fhir/appLocalizations.dart';
 
-//Calls menu class
+
 void main() => runApp(Main());
 
 class Main extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      supportedLocales: [
-        Locale('en'), //English
-        Locale('es'), //Spanish
-      ],
-      localizationsDelegates: [
-        const AppLocalizationsDelegate(),
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
-      localeResolutionCallback: (locale, supportedLocales) {
-        // Check if the current device locale is supported
-        for (var supportedLocale in supportedLocales) {
-          if (supportedLocale.languageCode == locale.languageCode &&
-              supportedLocale.countryCode == locale.countryCode) {
-            return supportedLocale;
-          }
-        }
-        // If the locale of the device is not supported, use the first one
-        // from the list (English, in this case).
-        return supportedLocales.first;
-      },
       home: MainMenu(),
     );
   }
@@ -47,10 +24,10 @@ class MainMenu extends StatelessWidget {
   Widget build(BuildContext context) {
       return Scaffold(
         backgroundColor: Colors.black,
-//        appBar: AppBar(
-//          title: Text(  AppLocalizations.of(context).translate("new_pt")),//"CHOP's FHIRflies"),
-//          backgroundColor: Colors.blue[900],
-//        ),
+        appBar: AppBar(
+          title: Text("CHOP's FHIRflies"),
+          backgroundColor: Colors.blue[900],
+        ),
         body: Container(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -59,10 +36,10 @@ class MainMenu extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-//                  PageButton(
-//                      'images/patient.png',
-//                      AppLocalizations.of(context).translate('new_pt'),
-//                      Register()),
+                  PageButton(
+                      'images/patient.png',
+                      'Register New Patient',
+                      Register()),
                   ActionButton('images/sync.png', 'Sync with server', syncServer, 'get'),
                   PageButton('images/chop.png', 'Settings', Settings()),
                 ],

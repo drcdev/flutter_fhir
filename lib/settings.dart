@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fhir/main.dart';
-import 'package:flutter_fhir/appLocalizations.dart';
 
 class Settings extends StatelessWidget {
   @override
@@ -17,7 +16,7 @@ class Setting extends StatefulWidget {
 }
 
 class _Settings extends State<Setting> {
-  String Language;
+  String language;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,32 +25,37 @@ class _Settings extends State<Setting> {
       ),
       body: Column(
         children: [
-          Radio(
-            value: 'English',
-            groupValue: Language,
-            onChanged: (String value) async {
-              setState(() {
+          Row(
+            children: [
+              Radio(
+                value: 'en',
+                groupValue: language,
+                onChanged: (String value) async {
+                  setState(() {
+                    language = value;
+                  });
+                },
+              ),
+              Text('English'),
 
-              });
-            },
+              Radio(
+                value: 'es',
+                groupValue: language,
+                onChanged: (String value) async {
+                  setState(() {
+                    language = value;
+                  });
+                },
+              ),
+              Text('Español'),
+            ],
           ),
-          Text('English'),
-
-          Radio(
-            value: 'Español',
-            groupValue: Language,
-            onChanged: (String value) async {
-              setState(() {
-              });
-            },
-          ),
-          Text('Español'),
 
           RaisedButton(
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => MainMenu()),
+                MaterialPageRoute(builder: (context) => Main()),
               );
             },
             child: Text('Return to Opening Page'),

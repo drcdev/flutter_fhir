@@ -19,8 +19,6 @@ dependencies:
   shared_preferences: ^0.5.5
   path_provider: ^0.4.1
   random_string: ^1.1.0
-  intl: ^0.16.0
-  intl_translation: ^0.17.6
 
 dev_dependencies:
   flutter_test:
@@ -32,5 +30,3 @@ flutter:
   uses-material-design: true
   assets:
     - images/
-    - lib/lang/en.json
-    - lib/lang/es.json
