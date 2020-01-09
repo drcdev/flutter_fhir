@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fhir/main.dart';
 
-class PatientActivity extends StatelessWidget {
+class Vaccine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Patient Activities"),
+        title: Text("Immunizations"),
       ),
       body: Center(
         child: RaisedButton(

@@ -55,7 +55,7 @@ class _Settings extends State<Setting> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Main()),
+                MaterialPageRoute(builder: (context) => MainMenu()),
               );
             },
             child: Text('Return to Opening Page'),

@@ -4,6 +4,7 @@ import 'package:flutter_fhir/main.dart';
 import 'package:flutter_fhir/class/patient.dart';
 import 'package:flutter_fhir/class/address.dart';
 import 'package:flutter_fhir/class/humanName.dart';
+import 'package:flutter_fhir/registerFamily.dart';
 
 class Register extends StatelessWidget {
   @override
@@ -185,6 +186,10 @@ class _RegistrationFormState extends State<RegistrationForm> {
                             family: familyNameController.text)
                       ],
                       birthDate: _birthDate.toString()));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => RegisterFamily()),
+                  );
                 },
                 child: Text('Press to Create Patient'),
               ),
