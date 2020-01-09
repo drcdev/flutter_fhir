@@ -8,6 +8,7 @@ part of 'humanName.dart';
 
 HumanName _$HumanNameFromJson(Map<String, dynamic> json) {
   return HumanName(
+    use: json['use'] as String,
     text: json['text'] as String,
     family: json['family'] as String,
     given: (json['given'] as List)?.map((e) => e as String)?.toList(),
@@ -20,6 +21,7 @@ HumanName _$HumanNameFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$HumanNameToJson(HumanName instance) => <String, dynamic>{
+      'use': instance.use,
       'text': instance.text,
       'family': instance.family,
       'given': instance.given,

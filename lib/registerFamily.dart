@@ -5,20 +5,27 @@ import 'package:flutter_fhir/class/patient.dart';
 import 'package:flutter_fhir/class/humanName.dart';
 
 class RegisterFamily extends StatelessWidget {
+  final Patient pt;
+
+  RegisterFamily({this.pt});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: _RegisterFamily(),
+      home: _RegisterFamily(pt),
     );
   }
 }
 
 class _RegisterFamily extends StatefulWidget {
+  final Patient pt;
+  _RegisterFamily(this.pt);
   @override
-  _RegisterFamilyState createState() => _RegisterFamilyState();
+  _RegisterFamilyState createState() => _RegisterFamilyState(pt);
 }
 
 class _RegisterFamilyState extends State<_RegisterFamily> {
+  final Patient pt;
+  _RegisterFamilyState(this.pt);
   final memberGivenNameController1 = TextEditingController();
   final memberFamilyNameController1 = TextEditingController();
   final String memberRelation1 = null;
@@ -28,9 +35,6 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
   final memberGivenNameController3 = TextEditingController();
   final memberFamilyNameController3 = TextEditingController();
   final String memberRelation3 = null;
-  final memberGivenNameController4 = TextEditingController();
-  final memberFamilyNameController4 = TextEditingController();
-  final String memberRelation4 = null;
 
   @override
   void dispose() {
@@ -40,8 +44,6 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
     memberFamilyNameController2.dispose();
     memberGivenNameController3.dispose();
     memberFamilyNameController3.dispose();
-    memberGivenNameController4.dispose();
-    memberFamilyNameController4.dispose();
     super.dispose();
   }
 
@@ -58,7 +60,7 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
           RelationPicker(memberGivenNameController1, memberFamilyNameController1, memberRelation1),
           RelationPicker(memberGivenNameController2, memberFamilyNameController2, memberRelation2),
           RelationPicker(memberGivenNameController3, memberFamilyNameController3, memberRelation3),
-          RelationPicker(memberGivenNameController4, memberFamilyNameController4, memberRelation4),
+
           RaisedButton(
             onPressed: () {
 //                    savePatient(Patient(resourceType: 'Patient',
@@ -68,8 +70,18 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
 //                              family: familyNameController.text)
 //                        ],
 //                        birthDate: _birthDate.toString()));
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MainMenu()),
+              );
             },
-            child: Text('Press to Save Patient\'s Family Information'),
+            child: Text('Register Another Patient'),
+          ),
+
+          RaisedButton(
+            onPressed: () {
+            },
+            child: Text('Evaluate & Treat Patient'),
           ),
 
           RaisedButton(

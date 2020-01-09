@@ -179,16 +179,19 @@ class _RegistrationFormState extends State<RegistrationForm> {
             children: <Widget>[
               RaisedButton(
                 onPressed: () {
-                  savePatient(Patient(resourceType: 'Patient',
+                  Patient pt = Patient(resourceType: 'Patient',
                       address: [Address(district: barrio)],
                       name: [
                         HumanName(given: [givenNameController.text],
                             family: familyNameController.text)
                       ],
-                      birthDate: _birthDate.toString()));
+                      birthDate: _birthDate.toString());
+                  savePatient(pt);
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => RegisterFamily()),
+                    MaterialPageRoute(builder: (context) => RegisterFamily(
+                      pt: pt,
+                    )),
                   );
                 },
                 child: Text('Press to Create Patient'),

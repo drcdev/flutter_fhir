@@ -3,9 +3,9 @@ part 'period.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Period {
-  final DateTime start;
-  final DateTime end;
-  final String id;
+  DateTime start;
+  DateTime end;
+  String id;
 
   Period({this.start, this.end, this.id});
   

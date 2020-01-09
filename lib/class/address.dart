@@ -7,7 +7,7 @@ class Address {
   String use; //home | work | temp | old | billing - purpose of this address
   String type; //postal, physical, both
   String text; //Text representation of the address
-  String line; //Street name, number, direction & P.O. Box etc. the order address elements should appear on an address label
+  List<String> line; //Street name, number, direction & P.O. Box etc. the order address elements should appear on an address label
   String city; //Name of city, town etc.
   String district; // District name (aka county)
   String state; // Sub-unit of country (abbreviations ok)

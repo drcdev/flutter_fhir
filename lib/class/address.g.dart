@@ -11,7 +11,7 @@ Address _$AddressFromJson(Map<String, dynamic> json) {
     use: json['use'] as String,
     type: json['type'] as String,
     text: json['text'] as String,
-    line: json['line'] as String,
+    line: (json['line'] as List)?.map((e) => e as String)?.toList(),
     city: json['city'] as String,
     district: json['district'] as String,
     state: json['state'] as String,
