@@ -1,11 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_fhir/class/codeableConcept.dart';
+import 'package:flutter_fhir/class/contact.dart';
+import 'package:flutter_fhir/evalRx.dart';
 import 'package:flutter_fhir/main.dart';
 import 'package:flutter_fhir/class/patient.dart';
 import 'package:flutter_fhir/class/humanName.dart';
+import 'package:flutter_fhir/register.dart';
 
 class RegisterFamily extends StatelessWidget {
-  final Patient pt;
+  Patient pt;
 
   RegisterFamily({this.pt});
   @override
@@ -17,14 +21,14 @@ class RegisterFamily extends StatelessWidget {
 }
 
 class _RegisterFamily extends StatefulWidget {
-  final Patient pt;
+  Patient pt;
   _RegisterFamily(this.pt);
   @override
   _RegisterFamilyState createState() => _RegisterFamilyState(pt);
 }
 
 class _RegisterFamilyState extends State<_RegisterFamily> {
-  final Patient pt;
+  Patient pt;
   _RegisterFamilyState(this.pt);
   final memberGivenNameController1 = TextEditingController();
   final memberFamilyNameController1 = TextEditingController();
@@ -47,7 +51,6 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,16 +66,13 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
 
           RaisedButton(
             onPressed: () {
-//                    savePatient(Patient(resourceType: 'Patient',
-//                        address: [Address(district: barrio)],
-//                        name: [
-//                          HumanName(given: [givenNameController.text],
-//                              family: familyNameController.text)
-//                        ],
-//                        birthDate: _birthDate.toString()));
+              pt = addFamily(pt, memberGivenNameController1, memberFamilyNameController1, memberRelation1);
+              pt = addFamily(pt, memberGivenNameController2, memberFamilyNameController2, memberRelation2);
+              pt = addFamily(pt, memberGivenNameController3, memberFamilyNameController3, memberRelation3);
+
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => MainMenu()),
+                MaterialPageRoute(builder: (context) => Register()),
               );
             },
             child: Text('Register Another Patient'),
@@ -80,12 +80,24 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
 
           RaisedButton(
             onPressed: () {
+              pt = addFamily(pt, memberGivenNameController1, memberFamilyNameController1, memberRelation1);
+              pt = addFamily(pt, memberGivenNameController2, memberFamilyNameController2, memberRelation2);
+              pt = addFamily(pt, memberGivenNameController3, memberFamilyNameController3, memberRelation3);
+
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => EvalRx()),
+              );
             },
             child: Text('Evaluate & Treat Patient'),
           ),
 
           RaisedButton(
             onPressed: () {
+              pt = addFamily(pt, memberGivenNameController1, memberFamilyNameController1, memberRelation1);
+              pt = addFamily(pt, memberGivenNameController2, memberFamilyNameController2, memberRelation2);
+              pt = addFamily(pt, memberGivenNameController3, memberFamilyNameController3, memberRelation3);
+
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => MainMenu()),
@@ -162,4 +174,17 @@ class _RelationPickerState extends State <RelationPicker> {
       ]
     );
   }
+}
+
+Patient addFamily(Patient pt, TextEditingController given, TextEditingController family, String relation) {
+  if ((given.text != '' || family.text != '') && relation != null) {
+    pt.contact.add(
+      Contact(
+          relationship: [ CodeableConcept(text: relation)],
+          name: HumanName(given: [given.text],
+              family: family.text)
+      ),
+    );
+  };
+  return pt;
 }

@@ -21,8 +21,8 @@ class RegistrationForm extends StatefulWidget {
 }
 
 class _RegistrationFormState extends State<RegistrationForm> {
-  final givenNameController = TextEditingController();
-  final familyNameController = TextEditingController();
+  var givenNameController = TextEditingController();
+  var familyNameController = TextEditingController();
   DateTime _birthDate = DateTime.now();
   String sexAtBirth;
   String response = '';
