@@ -187,7 +187,6 @@ class _RegistrationFormState extends State<RegistrationForm> {
                       ],
                       birthDate: _birthDate.toString());
                   savePatient(pt);
-                  print(pt.toJson().toString());
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => RegisterFamily(

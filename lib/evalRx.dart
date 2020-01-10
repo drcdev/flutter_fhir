@@ -24,6 +24,18 @@ class _EvalRx extends StatefulWidget {
 }
 
 class _EvalRxState extends State<_EvalRx> {
+  List<Patient> patientList;
+
+  @override
+  void initState() {
+    super.initState();
+    ptList().then((list) {
+      setState(() {
+        patientList = list;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,12 +54,30 @@ class _EvalRxState extends State<_EvalRx> {
             ],
           ),
 
+          Expanded(
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: patientList.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(
+                    '${patientList[index].id.toString()}',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+
+
           RaisedButton(
             onPressed: () {
-//              Navigator.push(
-//                context,
-//                MaterialPageRoute(builder: (context) => MainMenu()),
-//              );
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MainMenu()),
+              );
             },
             child: Text('Return to Opening Page'),
           ),
@@ -67,9 +97,4 @@ Future<List<Patient>> ptList() async {
     ptList.add(newpt);
   }
   return ptList;
-}
-
-void getPtList(List<Patient> ptList) {
-  print('here');
-  print(ptList.length);
 }
