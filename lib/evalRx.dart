@@ -44,7 +44,7 @@ class _EvalRxState extends State<_EvalRx> {
         title: Text("Patient Activities"),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -54,24 +54,27 @@ class _EvalRxState extends State<_EvalRx> {
             ],
           ),
 
+          Padding( padding: const EdgeInsets.all(15.0), ),
           Expanded(
-            child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: patientList.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(
-                    '${patientList[index].id.toString()}',
-                    style: TextStyle(
-                      color: Colors.white,
+            child: Container(
+              decoration: new BoxDecoration(color: Colors.blueGrey),
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: patientList.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(
+                      '${patientList[index].id.toString()}',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
-
-
+          Padding( padding: const EdgeInsets.all(12.0), ),
           RaisedButton(
             onPressed: () {
               Navigator.push(
