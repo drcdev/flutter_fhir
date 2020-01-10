@@ -12,6 +12,20 @@ import 'package:path_provider/path_provider.dart';
 class EvalRx extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    return MaterialApp(
+      home: _EvalRx(),
+    );
+  }
+}
+
+class _EvalRx extends StatefulWidget {
+  @override
+  _EvalRxState createState() => _EvalRxState();
+}
+
+class _EvalRxState extends State<_EvalRx> {
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -30,11 +44,10 @@ class EvalRx extends StatelessWidget {
 
           RaisedButton(
             onPressed: () {
-              ptList();
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => MainMenu()),
-              );
+//              Navigator.push(
+//                context,
+//                MaterialPageRoute(builder: (context) => MainMenu()),
+//              );
             },
             child: Text('Return to Opening Page'),
           ),
@@ -54,4 +67,9 @@ Future<List<Patient>> ptList() async {
     ptList.add(newpt);
   }
   return ptList;
+}
+
+void getPtList(List<Patient> ptList) {
+  print('here');
+  print(ptList.length);
 }
