@@ -30,24 +30,18 @@ class _RegisterFamily extends StatefulWidget {
 class _RegisterFamilyState extends State<_RegisterFamily> {
   Patient pt;
   _RegisterFamilyState(this.pt);
-  final memberGivenNameController1 = TextEditingController();
-  final memberFamilyNameController1 = TextEditingController();
-  final String memberRelation1 = null;
-  final memberGivenNameController2 = TextEditingController();
-  final memberFamilyNameController2 = TextEditingController();
-  final String memberRelation2 = null;
-  final memberGivenNameController3 = TextEditingController();
-  final memberFamilyNameController3 = TextEditingController();
-  final String memberRelation3 = null;
+  var relation1 = RelationPicker(TextEditingController(), TextEditingController(), null);
+  var relation2 = RelationPicker(TextEditingController(), TextEditingController(), null);
+  var relation3 = RelationPicker(TextEditingController(), TextEditingController(), null);
 
   @override
   void dispose() {
-    memberGivenNameController1.dispose();
-    memberFamilyNameController1.dispose();
-    memberGivenNameController2.dispose();
-    memberFamilyNameController2.dispose();
-    memberGivenNameController3.dispose();
-    memberFamilyNameController3.dispose();
+    relation1.given.dispose();
+    relation1.family.dispose();
+    relation2.given.dispose();
+    relation2.family.dispose();
+    relation3.given.dispose();
+    relation3.family.dispose();
     super.dispose();
   }
 
@@ -60,15 +54,16 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
       body: new Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          RelationPicker(memberGivenNameController1, memberFamilyNameController1, memberRelation1),
-          RelationPicker(memberGivenNameController2, memberFamilyNameController2, memberRelation2),
-          RelationPicker(memberGivenNameController3, memberFamilyNameController3, memberRelation3),
+          relation1,
+          relation2,
+          relation3,
 
           RaisedButton(
             onPressed: () {
-              pt = addFamily(pt, memberGivenNameController1, memberFamilyNameController1, memberRelation1);
-              pt = addFamily(pt, memberGivenNameController2, memberFamilyNameController2, memberRelation2);
-              pt = addFamily(pt, memberGivenNameController3, memberFamilyNameController3, memberRelation3);
+              pt = addFamily(pt, relation1);
+              pt = addFamily(pt, relation2);
+              pt = addFamily(pt, relation3);
+              savePatient(pt);
 
               Navigator.push(
                 context,
@@ -80,9 +75,10 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
 
           RaisedButton(
             onPressed: () {
-              pt = addFamily(pt, memberGivenNameController1, memberFamilyNameController1, memberRelation1);
-              pt = addFamily(pt, memberGivenNameController2, memberFamilyNameController2, memberRelation2);
-              pt = addFamily(pt, memberGivenNameController3, memberFamilyNameController3, memberRelation3);
+              pt = addFamily(pt, relation1);
+              pt = addFamily(pt, relation2);
+              pt = addFamily(pt, relation3);
+              savePatient(pt);
 
               Navigator.push(
                   context,
@@ -94,9 +90,10 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
 
           RaisedButton(
             onPressed: () {
-              pt = addFamily(pt, memberGivenNameController1, memberFamilyNameController1, memberRelation1);
-              pt = addFamily(pt, memberGivenNameController2, memberFamilyNameController2, memberRelation2);
-              pt = addFamily(pt, memberGivenNameController3, memberFamilyNameController3, memberRelation3);
+              pt = addFamily(pt, relation1);
+              pt = addFamily(pt, relation2);
+              pt = addFamily(pt, relation3);
+              savePatient(pt);
 
               Navigator.push(
                 context,
@@ -168,7 +165,7 @@ class _RelationPickerState extends State <RelationPicker> {
               borderSide: BorderSide(width: 8.0),
             ),
             ),
-          controller: widget.given,
+          controller: widget.family,
         ),
 
       ]
@@ -176,15 +173,15 @@ class _RelationPickerState extends State <RelationPicker> {
   }
 }
 
-Patient addFamily(Patient pt, TextEditingController given, TextEditingController family, String relation) {
-  if ((given.text != '' || family.text != '') && relation != null) {
-    pt.contact.add(
-      Contact(
-          relationship: [ CodeableConcept(text: relation)],
-          name: HumanName(given: [given.text],
-              family: family.text)
-      ),
+Patient addFamily(Patient pt, RelationPicker relation) {
+  if ((relation.given.text != '' || relation.family.text != '') && relation != null) {
+    final Contact ct = new Contact(
+        relationship: [ CodeableConcept(text: relation.relation)],
+        name: HumanName(given: [relation.given.text],
+            family: relation.family.text)
     );
+    if(pt.contact == null) { pt.contact = new List<Contact>(); };
+    pt.contact.add(ct);
   };
   return pt;
 }

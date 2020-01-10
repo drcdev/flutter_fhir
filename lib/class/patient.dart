@@ -77,7 +77,9 @@ savePatient(Patient pt) async {
     ptList.writeAsString(pt.id);
   } else { //otherwise, read it, add the new patient, then save the file
       String pts = await ptList.readAsString();
-      pts += '\n' + pt.id;
-      ptList.writeAsString(pts);
+      if(!pts.contains(pt.id)) {
+        pts += '\n' + pt.id;
+        ptList.writeAsString(pts);
+      }
   }
 }
