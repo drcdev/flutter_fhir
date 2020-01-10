@@ -29,10 +29,13 @@ class _EvalRxState extends State<_EvalRx> {
   @override
   void initState() {
     super.initState();
-    ptList().then((list) {
-      setState(() {
-        patientList = list;
-      });
+    _getList();
+  }
+
+  Future _getList() async {
+    List<Patient> list = await ptList();
+    setState(() {
+      patientList = list;
     });
   }
 
@@ -44,7 +47,7 @@ class _EvalRxState extends State<_EvalRx> {
         title: Text("Patient Activities"),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -64,7 +67,7 @@ class _EvalRxState extends State<_EvalRx> {
                 itemBuilder: (context, index) {
                   return ListTile(
                     title: Text(
-                      '${patientList[index].id.toString()}',
+                      '${(patientList[index].name?.first?.family?.toString() ?? '') + ', ' + (patientList[index].name?.first?.given?.first?.toString() ?? '')}',
                       style: TextStyle(
                         color: Colors.white,
                       ),
@@ -75,6 +78,7 @@ class _EvalRxState extends State<_EvalRx> {
             ),
           ),
           Padding( padding: const EdgeInsets.all(12.0), ),
+
           RaisedButton(
             onPressed: () {
               Navigator.push(
