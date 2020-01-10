@@ -65,11 +65,14 @@ class _EvalRxState extends State<_EvalRx> {
                 shrinkWrap: true,
                 itemCount: patientList.length,
                 itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(
-                      '${(patientList[index].name?.first?.family?.toString() ?? '') + ', ' + (patientList[index].name?.first?.given?.first?.toString() ?? '')}',
-                      style: TextStyle(
-                        color: Colors.white,
+                  return Card(
+                    color: Colors.blueGrey,
+                    child: ListTile(
+                      title: Text(
+                        '${(patientList[index].name?.first?.family?.toString() ?? '') + ', ' + (patientList[index].name?.first?.given?.first?.toString() ?? '')}',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   );
