@@ -1,0 +1,55 @@
+{
+    "resourceType" : "Encounter",
+    "identifier" : ["Identifier"], 
+    "status" : "<code>", 
+    "statusHistory" : [{ 
+      "status" : "<code>", 
+      "period" : "Period" 
+    }],
+    "class" : "Coding", 
+    "classHistory" : [{ 
+      "class" : "Coding", 
+      "period" : "Period" 
+    }],
+    "type" : ["CodeableConcept"], 
+    "serviceType" : "CodeableConcept", 
+    "priority" : "CodeableConcept", 
+    "subject" : { "Patient" }, 
+    "episodeOfCare" : ["EpisodeOfCare"], 
+    "basedOn" : [{ ServiceRequest }], 
+    "participant" : [{ 
+      "type" : ["CodeableConcept"], 
+      "period" : "Period", 
+      "individual" : { "Practitioner" } //Reference(Practitioner|PractitionerRole|RelatedPerson)
+    }],
+    "appointment" : [{ Appointment }], 
+    "period" : "Period", 
+    "length" : 1.0, 
+    "reasonCode" : ["CodeableConcept"], 
+    "reasonReference" : ["Condition"], 
+    "diagnosis" : [{ 
+      "condition" : "Condition", 
+      "use" : "CodeableConcept", 
+      "rank" : "<positiveInt>" 
+    }],
+    "account" : [{ Account }], 
+    "hospitalization" : { 
+      "preAdmissionIdentifier" : "Identifier", 
+      "origin" : { "Organization" }, //Reference(Location|Organization)
+      "admitSource" : "CodeableConcept", 
+      "reAdmission" : "CodeableConcept", 
+      "dietPreference" : ["CodeableConcept"], 
+      "specialCourtesy" : ["CodeableConcept"], 
+      "specialArrangement" : ["CodeableConcept"], 
+      "destination" : { "Organization" }, //Reference(Location|Organization)
+      "dischargeDisposition" : "CodeableConcept" 
+    },
+    "location" : [{ 
+      "location" : "Location", 
+      "status" : "<code>", 
+      "physicalType" : "CodeableConcept", 
+      "period" : "Period" 
+    }],
+    "serviceProvider" : "Organization", 
+    "partOf" : "Encounter"
+  }

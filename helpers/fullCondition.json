@@ -1,0 +1,57 @@
+{
+    "resourceType" : "Condition",
+     "identifier" : ["Identifier"], 
+    "clinicalStatus" : "CodeableConcept", 
+    "verificationStatus" : "CodeableConcept", 
+    "category" : ["CodeableConcept"], 
+    "severity" : "CodeableConcept", 
+    "code" : "CodeableConcept", 
+    "bodySite" : ["CodeableConcept"], 
+    "subject" : "Patient", 
+    "encounter" : "Encounter", 
+    "onsetDateTime" : "<dateTime>",
+    "onsetAge" : 1.0,
+    "onsetPeriod" : "Period",
+    "onsetRange" : "Range ",
+    "onsetString" : "<string>",
+    "abatementDateTime" : "<dateTime>",
+    "abatementAge" : 1.0,
+    "abatementPeriod" : "Period",
+    "abatementRange" : {
+        "low" : {
+            "value" : 1.0, 
+            "comparator" : "<code>", 
+            "unit" : "<string>", 
+            "system" : "<uri>", 
+            "code" : "<code>" 
+          }, 
+        "high" : {
+            "value" : 1.0, 
+            "comparator" : "<code>", 
+            "unit" : "<string>", 
+            "system" : "<uri>", 
+            "code" : "<code>" 
+          } 
+      },
+    "abatementString" : "<string>",
+    "recordedDate" : "<dateTime>", 
+    "recorder" : "Practitioner", 
+    "asserter" : "Practitioner", 
+    "stage" : [{ 
+      "summary" : "CodeableConcept", 
+      "assessment" : [{ Reference(ClinicalImpression|DiagnosticReport|Observation) }], 
+      "type" : "CodeableConcept" 
+    }],
+    "evidence" : [{ 
+      "code" : ["CodeableConcept"], 
+      "detail" : ["Reference"] 
+    }],
+    "note" : ["Annotation"] 
+  }
+
+  ClinicalImpression
+  DiagnosticReport
+  Observation
+  Appointment
+  ServiceRequest
+  Account
