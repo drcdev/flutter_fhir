@@ -1,3 +1,4 @@
+import 'package:flutter_fhir/class/quantity.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'ratio.g.dart';
 
