@@ -37,8 +37,7 @@ class ActionButton extends StatelessWidget {
   Widget build(context) {
     return FlatButton(
       onPressed: () {
-        if(arg1==null){func();}
-        else{func(arg1);}
+        func(arg1);
       },
       child: Column(
         children: <Widget>[

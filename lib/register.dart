@@ -55,6 +55,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
       ),
       body: new Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
         children: <Widget>[
 
           new TextField(
@@ -103,29 +104,17 @@ class _RegistrationFormState extends State<RegistrationForm> {
 
           //Calls above function to select birthdate
           new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              new Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    FlatButton(
-                      onPressed: _selectDate,
-                      padding: EdgeInsets.all(0),
-                      child: Text(
-                        'Date of Birth     ',
-                        style: TextStyle(
-                          fontWeight: FontWeight.normal,
-                          fontSize: 15,
-                        ),
-                      ),
-                    ),
-                    Text(
-                      '${_birthDate.month}-${_birthDate.day}-${_birthDate.year}',
-                      style: TextStyle(
-                        fontWeight: FontWeight.normal,
-                        fontSize: 15,
-                      ),
-                    ),
-                  ]
+              FlatButton(
+                onPressed: _selectDate,
+                child: Text(
+                  'Date of Birth     ''${_birthDate.month}-${_birthDate.day}-${_birthDate.year}',
+                  style: TextStyle(
+                    fontWeight: FontWeight.normal,
+                    fontSize: 15,
+                  ),
+                ),
               ),
               const Divider(
                 color: Colors.black54,
