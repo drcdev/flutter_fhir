@@ -9,9 +9,18 @@ import 'package:flutter_fhir/settings.dart';
 import 'package:flutter_fhir/buttons.dart';
 
 
-void main() => runApp(MainMenu());
+void main() {
+  runApp(MaterialApp(
+    home: MainMenu(),
+  ));
+}
 
-class MainMenu extends StatelessWidget {
+class MainMenu extends StatefulWidget {
+  @override
+  _MainMenuState createState() => _MainMenuState();
+}
+
+class _MainMenuState extends State<MainMenu> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
