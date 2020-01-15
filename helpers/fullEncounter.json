@@ -14,15 +14,15 @@
     "type" : ["CodeableConcept"], 
     "serviceType" : "CodeableConcept", 
     "priority" : "CodeableConcept", 
-    "subject" : { "Patient" }, 
+    "subject" : "Patient", 
     "episodeOfCare" : ["EpisodeOfCare"], 
-    "basedOn" : [{ ServiceRequest }], 
+    "basedOn" : ["ServiceRequest"], 
     "participant" : [{ 
       "type" : ["CodeableConcept"], 
       "period" : "Period", 
-      "individual" : { "Practitioner" } //Reference(Practitioner|PractitionerRole|RelatedPerson)
+      "individual" : "Practitioner" //Reference(Practitioner|PractitionerRole|RelatedPerson)
     }],
-    "appointment" : [{ Appointment }], 
+    "appointment" : ["Appointment"], 
     "period" : "Period", 
     "length" : 1.0, 
     "reasonCode" : ["CodeableConcept"], 
@@ -32,16 +32,16 @@
       "use" : "CodeableConcept", 
       "rank" : "<positiveInt>" 
     }],
-    "account" : [{ Account }], 
+    "account" : ["Account"], 
     "hospitalization" : { 
       "preAdmissionIdentifier" : "Identifier", 
-      "origin" : { "Organization" }, //Reference(Location|Organization)
+      "origin" : "Organization", //Reference(Location|Organization)
       "admitSource" : "CodeableConcept", 
       "reAdmission" : "CodeableConcept", 
       "dietPreference" : ["CodeableConcept"], 
       "specialCourtesy" : ["CodeableConcept"], 
       "specialArrangement" : ["CodeableConcept"], 
-      "destination" : { "Organization" }, //Reference(Location|Organization)
+      "destination" : "Organization", //Reference(Location|Organization)
       "dischargeDisposition" : "CodeableConcept" 
     },
     "location" : [{ 
