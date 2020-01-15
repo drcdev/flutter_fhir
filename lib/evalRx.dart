@@ -59,25 +59,35 @@ class _EvalRxState extends State<_EvalRx> {
 
           Padding( padding: const EdgeInsets.all(15.0), ),
           Expanded(
-            child: Container(
-              decoration: new BoxDecoration(color: Colors.blueGrey),
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: patientList.length,
-                itemBuilder: (context, index) {
-                  return Card(
-                    color: Colors.blueGrey,
-                    child: ListTile(
-                      title: Text(
-                        '${(patientList[index].name?.first?.family?.toString() ?? '') + ', ' + (patientList[index].name?.first?.given?.first?.toString() ?? '')}',
-                        style: TextStyle(
-                          color: Colors.white,
+            child: FutureBuilder(
+              future: ptList(),
+              builder: (BuildContext context, AsyncSnapshot snapshot) {
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: snapshot.data.length,
+                    itemBuilder: (context, index) {
+                      return Card(
+                        color: Colors.blueGrey,
+                        child: ListTile(
+                          title: Text(
+                            '${(snapshot.data[index].name?.first?.family?.toString() ?? '')}'
+                                ', '
+                                '${(snapshot.data[index].name?.first?.given?.first?.toString() ?? '')}',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
+                      );
+                    },
                   );
-                },
-              ),
+                } else {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              },
             ),
           ),
           Padding( padding: const EdgeInsets.all(12.0), ),
