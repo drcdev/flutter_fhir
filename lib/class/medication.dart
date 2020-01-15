@@ -1,5 +1,7 @@
+import 'package:flutter_fhir/class/batch.dart';
 import 'package:flutter_fhir/class/codeableConcept.dart';
 import 'package:flutter_fhir/class/identifier.dart';
+import 'package:flutter_fhir/class/ingredient.dart';
 import 'package:flutter_fhir/class/ratio.dart';
 import 'package:flutter_fhir/class/reference.dart';
 import 'package:json_annotation/json_annotation.dart';
