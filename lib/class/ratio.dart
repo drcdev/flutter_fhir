@@ -1,8 +1,4 @@
-import 'package:flutter_fhir/class/identifier.dart';
 import 'package:json_annotation/json_annotation.dart';
-part 'reference.g.dart';
-
-@JsonSerializable(explicitToJson: true)
 part 'ratio.g.dart';
 
 @JsonSerializable(explicitToJson: true)
@@ -12,6 +8,6 @@ class Ratio {
 
   Ratio({this.numerator, this.denominator});
 
-  factory Ratio.fromJson(Map<String, dynamic> json) => _$RFromJson(json);
-  Map<String, dynamic> toJson() => _$MedicationToJson(this);
+  factory Ratio.fromJson(Map<String, dynamic> json) => _$RatioFromJson(json);
+  Map<String, dynamic> toJson() => _$RatioToJson(this);
 }
