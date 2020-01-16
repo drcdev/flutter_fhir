@@ -28,7 +28,7 @@ class Appointment {
   String comment;
   String patientInstruction;
   List<Reference> basedOn;
-  List<Participant> participant;
+  List<_Participant> participant;
   List<Period> requestedPeriod;
 
   Appointment(
@@ -58,4 +58,18 @@ class Appointment {
 
   factory Appointment.fromJson(Map<String, dynamic> json) => _$AppointmentFromJson(json);
   Map<String, dynamic> toJson() => _$AppointmentToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class _Participant {
+  List<CodeableConcept> type;
+  Reference actor;
+  String required;
+  String status;
+  Period period;
+
+  _Participant({this.type, this.actor, this.required, this.status, this.period});
+
+  factory _Participant.fromJson(Map<String, dynamic> json) => _$_ParticipantFromJson(json);
+  Map<String, dynamic> toJson() => _$_ParticipantToJson(this);
 }

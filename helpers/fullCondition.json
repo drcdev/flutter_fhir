@@ -48,7 +48,3 @@
     }],
     "note" : ["Annotation"] 
   }
-
-  ServiceRequest
-  Participant
-  Observation

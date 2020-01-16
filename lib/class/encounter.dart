@@ -10,6 +10,7 @@ import 'package:flutter_fhir/class/location.dart';
 import 'package:flutter_fhir/class/patient.dart';
 import 'package:flutter_fhir/class/period.dart';
 import 'package:flutter_fhir/class/reference.dart';
+import 'package:flutter_fhir/class/serviceRequest.dart';
 import 'package:flutter_fhir/class/statusHistory.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'encounter.g.dart';
@@ -28,7 +29,7 @@ class Encounter {
   Patient subject;
   List<EpisodeOfCare> episodeOfCare;
   List<ServiceRequest> basedOn;
-  List<Participant> participant;
+  List<_Participant> participant;
   List<Appointment> appointment;
   Period period;
   int length;
@@ -45,4 +46,16 @@ class Encounter {
 
   factory Encounter.fromJson(Map<String, dynamic> json) => _$EncounterFromJson(json);
   Map<String, dynamic> toJson() => _$EncounterToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class _Participant {
+  List<CodeableConcept> type;
+  Period period;
+  Reference individual;
+
+  _Participant({this.type, this.period, this.individual});
+
+  factory _Participant.fromJson(Map<String, dynamic> json) => _$_ParticipantFromJson(json);
+  Map<String, dynamic> toJson() => _$_ParticipantToJson(this);
 }
