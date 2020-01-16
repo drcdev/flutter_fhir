@@ -20,7 +20,7 @@
     "participant" : [{ 
       "type" : ["CodeableConcept"], 
       "period" : "Period", 
-      "individual" : "Practitioner" //Reference(Practitioner|PractitionerRole|RelatedPerson)
+      "individual" : "Reference"
     }],
     "appointment" : ["Appointment"], 
     "period" : "Period", 
@@ -35,13 +35,13 @@
     "account" : ["Account"], 
     "hospitalization" : { 
       "preAdmissionIdentifier" : "Identifier", 
-      "origin" : "Organization", //Reference(Location|Organization)
+      "origin" : "Reference",
       "admitSource" : "CodeableConcept", 
       "reAdmission" : "CodeableConcept", 
       "dietPreference" : ["CodeableConcept"], 
       "specialCourtesy" : ["CodeableConcept"], 
       "specialArrangement" : ["CodeableConcept"], 
-      "destination" : "Organization", //Reference(Location|Organization)
+      "destination" : "Reference",
       "dischargeDisposition" : "CodeableConcept" 
     },
     "location" : [{ 

@@ -16,7 +16,7 @@
     "managingOrganization" : "Organization", 
     "period" : "Period", 
     "referralRequest" : ["ServiceRequest"], 
-    "careManager" : { "Practitioner" }, 
+    "careManager" : "Practitioner", 
     "team" : ["CareTeam"], 
     "account" : ["Account"] 
   }

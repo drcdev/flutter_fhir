@@ -39,7 +39,7 @@
     "asserter" : "Practitioner", 
     "stage" : [{ 
       "summary" : "CodeableConcept", 
-      "assessment" : [{ Reference(ClinicalImpression|DiagnosticReport|Observation) }], 
+      "assessment" : ["Reference"], 
       "type" : "CodeableConcept" 
     }],
     "evidence" : [{ 
@@ -49,9 +49,6 @@
     "note" : ["Annotation"] 
   }
 
-  ClinicalImpression
-  DiagnosticReport
-  Observation
-  Appointment
   ServiceRequest
-  Account
+  Participant
+  Observation

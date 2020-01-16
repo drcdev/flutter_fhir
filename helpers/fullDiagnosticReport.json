@@ -1,0 +1,25 @@
+{
+    "resourceType" : "DiagnosticReport",
+    "identifier" : ["Identifier"], 
+    "basedOn" : ["Reference"], 
+    "status" : "<code>", 
+    "category" : ["CodeableConcept"], 
+    "code" : "CodeableConcept", 
+    "subject" : "Reference", 
+    "encounter" : "Reference", 
+    "effectiveDateTime" : "<dateTime>",
+    "effectivePeriod" : "Period",
+    "issued" : "<instant>", 
+    "performer" : ["Reference"], 
+    "resultsInterpreter" : ["Reference"], 
+    "specimen" : ["Reference"], 
+    "result" : ["Reference"], 
+    "imagingStudy" : ["Reference"], 
+    "media" : [{ 
+      "comment" : "<string>", 
+      "link" : "Reference" 
+    }],
+    "conclusion" : "<string>", 
+    "conclusionCode" : ["CodeableConcept"], 
+    "presentedForm" : ["Attachment"]  
+  }
