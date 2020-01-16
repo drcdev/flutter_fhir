@@ -7,7 +7,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/position.dart';
 import 'package:flutter_fhir/class/reference.dart';
 import 'package:json_annotation/json_annotation.dart';
-part 'Location.g.dart';
+part 'location.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Location {

@@ -1,0 +1,9 @@
+{
+    "origin" : "Quantity", 
+    "period" : 1.0, 
+    "factor" : 1.0, 
+    "lowerLimit" : 1.0, 
+    "upperLimit" : 1.0, 
+    "dimensions" : "<positiveInt>", 
+    "data" : "<string>" 
+  }
