@@ -5,12 +5,12 @@ part 'attachment.g.dart';
 class Attachment {
   String contentType;
   String language;
-  String data;
+  String data; // Data inline, base64ed
   String url;
-  String size;
-  String hash;
+  int size;
+  String hash; // Hash of the data (sha-1, base64ed)
   String title;
-  String creation;
+  DateTime creation;
 
   Attachment(
       {this.contentType,

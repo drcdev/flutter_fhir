@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_fhir/class/annotation.dart';
 import 'package:flutter_fhir/class/codeableConcept.dart';
 import 'package:flutter_fhir/class/identifier.dart';
@@ -7,6 +6,7 @@ import 'package:flutter_fhir/class/quantity.dart';
 import 'package:flutter_fhir/class/range.dart';
 import 'package:flutter_fhir/class/ratio.dart';
 import 'package:flutter_fhir/class/reference.dart';
+import 'package:flutter_fhir/class/sampledData.dart';
 import 'package:flutter_fhir/class/timing.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'observation.g.dart';
@@ -16,7 +16,7 @@ class Observation {
   String resourceType;
   List<Identifier> identifier;
   List<Reference> basedOn;
-  List<String> partOf;
+  List<Reference> partOf;
   String status;
   List<CodeableConcept> category;
   CodeableConcept code;
@@ -43,10 +43,10 @@ class Observation {
   CodeableConcept dataAbsentReason;
   List<CodeableConcept> interpretation;
   List<Annotation> note;
-  String bodySite;
-  String method;
-  String specimen;
-  String device;
+  CodeableConcept bodySite;
+  CodeableConcept method;
+  Reference specimen;
+  Reference device;
   List<ReferenceRange> referenceRange;
   List<Reference> hasMember;
   List<Reference> derivedFrom;
@@ -149,27 +149,4 @@ class Component {
 
   factory Component.fromJson(Map<String, dynamic> json) => _$ComponentFromJson(json);
   Map<String, dynamic> toJson() => _$ComponentToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class SampledData {
-  Quantity origin;
-  int period;
-  int factor;
-  int lowerLimit;
-  int upperLimit;
-  int dimensions;
-  String data;
-
-  SampledData(
-      {this.origin,
-        this.period,
-        this.factor,
-        this.lowerLimit,
-        this.upperLimit,
-        this.dimensions,
-        this.data});
-
-  factory SampledData.fromJson(Map<String, dynamic> json) => _$SampledDataFromJson(json);
-  Map<String, dynamic> toJson() => _$SampledDataToJson(this);
 }

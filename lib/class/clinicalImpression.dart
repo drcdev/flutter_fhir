@@ -1,8 +1,6 @@
 import 'package:flutter_fhir/class/annotation.dart';
 import 'package:flutter_fhir/class/codeableConcept.dart';
-import 'package:flutter_fhir/class/finding.dart';
 import 'package:flutter_fhir/class/identifier.dart';
-import 'package:flutter_fhir/class/investigation.dart';
 import 'package:flutter_fhir/class/period.dart';
 import 'package:flutter_fhir/class/reference.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -59,4 +57,27 @@ class ClinicalImpression {
 
   factory ClinicalImpression.fromJson(Map<String, dynamic> json) => _$ClinicalImpressionFromJson(json);
   Map<String, dynamic> toJson() => _$ClinicalImpressionToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Investigation {
+  CodeableConcept code;
+  List<Reference> item;
+
+  Investigation({this.code, this.item});
+
+  factory Investigation.fromJson(Map<String, dynamic> json) => _$InvestigationFromJson(json);
+  Map<String, dynamic> toJson() => _$InvestigationToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Finding {
+  CodeableConcept itemCodeableConcept;
+  Reference itemReference;
+  String basis;
+
+  Finding({this.itemCodeableConcept, this.itemReference, this.basis});
+
+  factory Finding.fromJson(Map<String, dynamic> json) => _$FindingFromJson(json);
+  Map<String, dynamic> toJson() => _$FindingToJson(this);
 }

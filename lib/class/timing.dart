@@ -19,7 +19,7 @@ class Timing {
 
 @JsonSerializable(explicitToJson: true)
 class Repeat {
-  Duration boundsDuration;
+  Duration boundsDuration; //ToDo: need to define duration
   Range boundsRange;
   Period boundsPeriod;
   int count;

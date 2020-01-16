@@ -1,11 +1,9 @@
 import 'package:flutter_fhir/class/annotation.dart';
 import 'package:flutter_fhir/class/codeableConcept.dart';
-import 'package:flutter_fhir/class/evidence.dart';
 import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/period.dart';
 import 'package:flutter_fhir/class/range.dart';
 import 'package:flutter_fhir/class/reference.dart';
-import 'package:flutter_fhir/class/stage.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'condition.g.dart';
 
@@ -68,4 +66,27 @@ class Condition {
 
   factory Condition.fromJson(Map<String, dynamic> json) => _$ConditionFromJson(json);
   Map<String, dynamic> toJson() => _$ConditionToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Stage {
+  CodeableConcept summary;
+  List<Reference> assessment;
+  CodeableConcept type;
+
+  Stage({this.summary, this.assessment, this.type});
+
+  factory Stage.fromJson(Map<String, dynamic> json) => _$StageFromJson(json);
+  Map<String, dynamic> toJson() => _$StageToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Evidence {
+  List<CodeableConcept> code;
+  List<Reference> detail;
+
+  Evidence({this.code, this.detail});
+
+  factory Evidence.fromJson(Map<String, dynamic> json) => _$EvidenceFromJson(json);
+  Map<String, dynamic> toJson() => _$EvidenceToJson(this);
 }

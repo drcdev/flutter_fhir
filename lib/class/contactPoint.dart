@@ -7,7 +7,7 @@ class ContactPoint {
   String system;
   String value;
   String use;
-  String rank;
+  int rank;
   Period period;
 
   ContactPoint({this.system, this.value, this.use, this.rank, this.period});

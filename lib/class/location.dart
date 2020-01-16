@@ -2,9 +2,7 @@ import 'package:flutter_fhir/class/codeableConcept.dart';
 import 'package:flutter_fhir/class/coding.dart';
 import 'package:flutter_fhir/class/contactPoint.dart';
 import 'package:flutter_fhir/class/endpoint.dart';
-import 'package:flutter_fhir/class/hoursOfOperation.dart';
 import 'package:flutter_fhir/class/identifier.dart';
-import 'package:flutter_fhir/class/position.dart';
 import 'package:flutter_fhir/class/reference.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'location.g.dart';
@@ -52,4 +50,31 @@ class Location {
 
   factory Location.fromJson(Map<String, dynamic> json) => _$LocationFromJson(json);
   Map<String, dynamic> toJson() => _$LocationToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class HoursOfOperation {
+  List<String> daysOfWeek;
+  bool allDay;
+  DateTime openingTime;
+  DateTime closingTime;
+
+  HoursOfOperation(
+      {this.daysOfWeek, this.allDay, this.openingTime, this.closingTime});
+
+  factory HoursOfOperation.fromJson(Map<String, dynamic> json) =>
+      _$HoursOfOperationFromJson(json);
+  Map<String, dynamic> toJson() => _$HoursOfOperationToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Position {
+  int longitude;
+  int latitude;
+  int altitude;
+
+  Position({this.longitude, this.latitude, this.altitude});
+
+  factory Position.fromJson(Map<String, dynamic> json) => _$PositionFromJson(json);
+  Map<String, dynamic> toJson() => _$PositionToJson(this);
 }

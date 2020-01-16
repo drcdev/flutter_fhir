@@ -1,7 +1,6 @@
 import 'package:flutter_fhir/class/attachment.dart';
 import 'package:flutter_fhir/class/codeableConcept.dart';
 import 'package:flutter_fhir/class/identifier.dart';
-import 'package:flutter_fhir/class/media.dart';
 import 'package:flutter_fhir/class/period.dart';
 import 'package:flutter_fhir/class/reference.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -54,4 +53,15 @@ class DiagnosticReport {
 
   factory DiagnosticReport.fromJson(Map<String, dynamic> json) => _$DiagnosticReportFromJson(json);
   Map<String, dynamic> toJson() => _$DiagnosticReportToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Media {
+  String comment;
+  Reference link;
+
+  Media({this.comment, this.link});
+
+  factory Media.fromJson(Map<String, dynamic> json) => _$MediaFromJson(json);
+  Map<String, dynamic> toJson() => _$MediaToJson(this);
 }

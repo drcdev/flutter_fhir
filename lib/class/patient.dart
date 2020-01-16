@@ -1,12 +1,10 @@
 import 'package:flutter_fhir/class/address.dart';
 import 'package:flutter_fhir/class/attachment.dart';
 import 'package:flutter_fhir/class/codeableConcept.dart';
-import 'package:flutter_fhir/class/communication.dart';
-import 'package:flutter_fhir/class/contact.dart';
 import 'package:flutter_fhir/class/contactPoint.dart';
 import 'package:flutter_fhir/class/identifier.dart';
-import 'package:flutter_fhir/class/link.dart';
 import 'package:flutter_fhir/class/meta.dart';
+import 'package:flutter_fhir/class/period.dart';
 import 'package:flutter_fhir/class/practitioner.dart';
 import 'package:flutter_fhir/class/reference.dart';
 import 'package:flutter_fhir/class/humanName.dart';
@@ -26,19 +24,19 @@ class Patient {
   List<HumanName> name;
   List<ContactPoint> telecom;
   String gender;
-  String birthDate;
+  DateTime birthDate;
   bool deceasedBoolean;
-  String deceasedDateTime;
+  DateTime deceasedDateTime;
   List<Address> address;
   CodeableConcept maritalStatus;
   bool multipleBirthBoolean;
   int multipleBirthInteger;
   List<Attachment> photo;
-  List<Contact> contact;
-  List<Communication> communication;
+  List<_Contact> contact;
+  List<_Communication> communication;
   List<Practitioner> generalPractitioner;
   Reference managingOrganization;
-  List<Link> link;
+  List<_Link> link;
   Meta meta;
 
   Patient(
@@ -82,4 +80,49 @@ savePatient(Patient pt) async {
         ptList.writeAsString(pts);
       }
   }
+}
+
+@JsonSerializable(explicitToJson: true)
+class _Contact {
+  List<CodeableConcept> relationship;
+  HumanName name;
+  List<ContactPoint> telecom;
+  Address address;
+  String gender;
+  Reference organization;
+  Period period;
+
+  _Contact(
+      {this.relationship,
+        this.name,
+        this.telecom,
+        this.address,
+        this.gender,
+        this.organization,
+        this.period});
+
+  factory _Contact.fromJson(Map<String, dynamic> json) => _$_ContactFromJson(json);
+  Map<String, dynamic> toJson() => _$_ContactToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class _Communication {
+  CodeableConcept language;
+  bool preferred;
+
+  _Communication({this.language, this.preferred});
+
+  factory _Communication.fromJson(Map<String, dynamic> json) => _$_CommunicationFromJson(json);
+  Map<String, dynamic> toJson() => _$_CommunicationToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class _Link {
+  Reference other;
+  String type;
+
+  _Link({this.other, this.type});
+
+  factory _Link.fromJson(Map<String, dynamic> json) => _$_LinkFromJson(json);
+  Map<String, dynamic> toJson() => _$_LinkToJson(this);
 }

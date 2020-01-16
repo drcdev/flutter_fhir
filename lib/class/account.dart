@@ -1,6 +1,4 @@
 import 'package:flutter_fhir/class/codeableConcept.dart';
-import 'package:flutter_fhir/class/coverage.dart';
-import 'package:flutter_fhir/class/guarantor.dart';
 import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/period.dart';
 import 'package:flutter_fhir/class/reference.dart';
@@ -38,4 +36,27 @@ class Account {
 
   factory Account.fromJson(Map<String, dynamic> json) => _$AccountFromJson(json);
   Map<String, dynamic> toJson() => _$AccountToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Coverage {
+  Reference coverage;
+  int priority;
+
+  Coverage({this.coverage, this.priority});
+
+  factory Coverage.fromJson(Map<String, dynamic> json) => _$CoverageFromJson(json);
+  Map<String, dynamic> toJson() => _$CoverageToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Guarantor {
+  Reference party;
+  bool onHold;
+  Period period;
+
+  Guarantor({this.party, this.onHold, this.period});
+
+  factory Guarantor.fromJson(Map<String, dynamic> json) => _$GuarantorFromJson(json);
+  Map<String, dynamic> toJson() => _$GuarantorToJson(this);
 }

@@ -1,9 +1,7 @@
 import 'package:flutter_fhir/class/codeableConcept.dart';
-import 'package:flutter_fhir/class/diagnosis.dart';
 import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/period.dart';
 import 'package:flutter_fhir/class/reference.dart';
-import 'package:flutter_fhir/class/statusHistory.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'episodeOfCare.g.dart';
 
@@ -12,9 +10,9 @@ class EpisodeOfCare {
   String resourceType;
   List<Identifier> identifier;
   String status;
-  List<StatusHistory> statusHistory;
+  List<_StatusHistory> statusHistory;
   List<CodeableConcept> type;
-  List<Diagnosis> diagnosis;
+  List<_Diagnosis> diagnosis;
   Reference patient;
   Reference managingOrganization;
   Period period;
@@ -40,4 +38,27 @@ class EpisodeOfCare {
 
   factory EpisodeOfCare.fromJson(Map<String, dynamic> json) => _$EpisodeOfCareFromJson(json);
   Map<String, dynamic> toJson() => _$EpisodeOfCareToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class _StatusHistory {
+  String status;
+  Period period;
+
+  _StatusHistory({this.status, this.period});
+
+  factory _StatusHistory.fromJson(Map<String, dynamic> json) => _$_StatusHistoryFromJson(json);
+  Map<String, dynamic> toJson() => _$_StatusHistoryToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class _Diagnosis {
+  Reference condition;
+  CodeableConcept role;
+  int rank;
+
+  _Diagnosis({this.condition, this.role, this.rank});
+
+  factory _Diagnosis.fromJson(Map<String, dynamic> json) => _$_DiagnosisFromJson(json);
+  Map<String, dynamic> toJson() => _$_DiagnosisToJson(this);
 }
