@@ -33,7 +33,7 @@ class Repeat {
   int periodMax;
   String periodUnit;
   List<String> dayOfWeek;
-  List<TimeOfDay> timeOfDay;
+  List<String> timeOfDay;
   List<String> when;
   int offset;
 
