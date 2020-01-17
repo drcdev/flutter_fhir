@@ -39,7 +39,10 @@ class _EvalRxState extends State<_EvalRx> {
   void initState() {
     super.initState();
     _getList();
-    if(pt != null) search = pt.printName();
+    if(pt != null) {
+      search = pt.printName();
+      searchPt.text = search;
+    }
     searchPt.addListener(() {
       setState(() {
         search = searchPt.text;
@@ -65,7 +68,7 @@ class _EvalRxState extends State<_EvalRx> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text(pt != null ? pt.printName(): "Patient Activities"),
+        title: Text("Patient Activities"),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -77,7 +80,6 @@ class _EvalRxState extends State<_EvalRx> {
               PageButton('images/vaccine.png', 'Immunizations', Vaccine()),
             ],
           ),
-
 
           Padding( padding: const EdgeInsets.all(10.0), ),
           TextField(
@@ -136,11 +138,10 @@ class _EvalRxState extends State<_EvalRx> {
 
           RaisedButton(
             onPressed: () {
-              print(search);
-//              Navigator.push(
-//                context,
-//                MaterialPageRoute(builder: (context) => MainMenu()),
-//              );
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MainMenu()),
+              );
             },
             child: Text('Return to Opening Page'),
           ),
