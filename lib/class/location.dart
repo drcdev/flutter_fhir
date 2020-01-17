@@ -3,6 +3,7 @@ import 'package:flutter_fhir/class/coding.dart';
 import 'package:flutter_fhir/class/contactPoint.dart';
 import 'package:flutter_fhir/class/endpoint.dart';
 import 'package:flutter_fhir/class/identifier.dart';
+import 'package:flutter_fhir/class/meta.dart';
 import 'package:flutter_fhir/class/reference.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'location.g.dart';
@@ -10,6 +11,10 @@ part 'location.g.dart';
 @JsonSerializable(explicitToJson: true)
 class Location {
   String resourceType;
+  String id;
+  Meta meta;
+  String implicitRules;
+  String language;
   List<Identifier> identifier;
   String status;
   Coding operationalStatus;
@@ -30,6 +35,10 @@ class Location {
 
   Location(
       {this.resourceType,
+        this.id,
+        this.meta,
+        this.implicitRules,
+        this.language,
         this.identifier,
         this.status,
         this.operationalStatus,

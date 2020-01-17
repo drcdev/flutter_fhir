@@ -9,6 +9,12 @@ part of 'location.dart';
 Location _$LocationFromJson(Map<String, dynamic> json) {
   return Location(
     resourceType: json['resourceType'] as String,
+    id: json['id'] as String,
+    meta: json['meta'] == null
+        ? null
+        : Meta.fromJson(json['meta'] as Map<String, dynamic>),
+    implicitRules: json['implicitRules'] as String,
+    language: json['language'] as String,
     identifier: (json['identifier'] as List)
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
@@ -57,6 +63,10 @@ Location _$LocationFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$LocationToJson(Location instance) => <String, dynamic>{
       'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'language': instance.language,
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
       'operationalStatus': instance.operationalStatus?.toJson(),
@@ -75,4 +85,39 @@ Map<String, dynamic> _$LocationToJson(Location instance) => <String, dynamic>{
           instance.hoursOfOperation?.map((e) => e?.toJson())?.toList(),
       'availabilityExceptions': instance.availabilityExceptions,
       'endpoint': instance.endpoint?.map((e) => e?.toJson())?.toList(),
+    };
+
+HoursOfOperation _$HoursOfOperationFromJson(Map<String, dynamic> json) {
+  return HoursOfOperation(
+    daysOfWeek: (json['daysOfWeek'] as List)?.map((e) => e as String)?.toList(),
+    allDay: json['allDay'] as bool,
+    openingTime: json['openingTime'] == null
+        ? null
+        : DateTime.parse(json['openingTime'] as String),
+    closingTime: json['closingTime'] == null
+        ? null
+        : DateTime.parse(json['closingTime'] as String),
+  );
+}
+
+Map<String, dynamic> _$HoursOfOperationToJson(HoursOfOperation instance) =>
+    <String, dynamic>{
+      'daysOfWeek': instance.daysOfWeek,
+      'allDay': instance.allDay,
+      'openingTime': instance.openingTime?.toIso8601String(),
+      'closingTime': instance.closingTime?.toIso8601String(),
+    };
+
+Position _$PositionFromJson(Map<String, dynamic> json) {
+  return Position(
+    longitude: json['longitude'] as int,
+    latitude: json['latitude'] as int,
+    altitude: json['altitude'] as int,
+  );
+}
+
+Map<String, dynamic> _$PositionToJson(Position instance) => <String, dynamic>{
+      'longitude': instance.longitude,
+      'latitude': instance.latitude,
+      'altitude': instance.altitude,
     };

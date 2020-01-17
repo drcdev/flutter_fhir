@@ -9,6 +9,12 @@ part of 'practitioner.dart';
 Practitioner _$PractitionerFromJson(Map<String, dynamic> json) {
   return Practitioner(
     resourceType: json['resourceType'] as String,
+    id: json['id'] as String,
+    meta: json['meta'] == null
+        ? null
+        : Meta.fromJson(json['meta'] as Map<String, dynamic>),
+    implicitRules: json['implicitRules'] as String,
+    language: json['language'] as String,
     identifier: (json['identifier'] as List)
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
@@ -40,7 +46,7 @@ Practitioner _$PractitionerFromJson(Map<String, dynamic> json) {
     communication: (json['communication'] as List)
         ?.map((e) => e == null
             ? null
-            : Communication.fromJson(e as Map<String, dynamic>))
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   );
 }
@@ -48,6 +54,10 @@ Practitioner _$PractitionerFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$PractitionerToJson(Practitioner instance) =>
     <String, dynamic>{
       'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'language': instance.language,
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'active': instance.active,
       'name': instance.name?.map((e) => e?.toJson())?.toList(),
@@ -60,4 +70,30 @@ Map<String, dynamic> _$PractitionerToJson(Practitioner instance) =>
           instance.qualification?.map((e) => e?.toJson())?.toList(),
       'communication':
           instance.communication?.map((e) => e?.toJson())?.toList(),
+    };
+
+Qualification _$QualificationFromJson(Map<String, dynamic> json) {
+  return Qualification(
+    identifier: (json['identifier'] as List)
+        ?.map((e) =>
+            e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    code: json['code'] == null
+        ? null
+        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
+    period: json['period'] == null
+        ? null
+        : Period.fromJson(json['period'] as Map<String, dynamic>),
+    issuer: json['issuer'] == null
+        ? null
+        : Reference.fromJson(json['issuer'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$QualificationToJson(Qualification instance) =>
+    <String, dynamic>{
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code?.toJson(),
+      'period': instance.period?.toJson(),
+      'issuer': instance.issuer?.toJson(),
     };

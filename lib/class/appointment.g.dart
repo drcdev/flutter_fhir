@@ -9,6 +9,12 @@ part of 'appointment.dart';
 Appointment _$AppointmentFromJson(Map<String, dynamic> json) {
   return Appointment(
     resourceType: json['resourceType'] as String,
+    id: json['id'] as String,
+    meta: json['meta'] == null
+        ? null
+        : Meta.fromJson(json['meta'] as Map<String, dynamic>),
+    implicitRules: json['implicitRules'] as String,
+    language: json['language'] as String,
     identifier: (json['identifier'] as List)
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
@@ -83,6 +89,10 @@ Appointment _$AppointmentFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$AppointmentToJson(Appointment instance) =>
     <String, dynamic>{
       'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'language': instance.language,
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
       'cancelationReason': instance.cancelationReason?.toJson(),

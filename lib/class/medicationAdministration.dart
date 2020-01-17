@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/class/annotation.dart';
 import 'package:flutter_fhir/class/codeableConcept.dart';
 import 'package:flutter_fhir/class/identifier.dart';
+import 'package:flutter_fhir/class/meta.dart';
 import 'package:flutter_fhir/class/period.dart';
 import 'package:flutter_fhir/class/quantity.dart';
 import 'package:flutter_fhir/class/ratio.dart';
@@ -11,6 +12,10 @@ part 'medicationAdministration.g.dart';
 @JsonSerializable(explicitToJson: true)
 class MedicationAdministration {
   String resourceType;
+  String id;
+  Meta meta;
+  String implicitRules;
+  String language;
   List<Identifier> identifier;
   List<String> instantiates;
   List<Reference> partOf;
@@ -35,6 +40,10 @@ class MedicationAdministration {
 
   MedicationAdministration(
       {this.resourceType,
+        this.id,
+        this.meta,
+        this.implicitRules,
+        this.language,
         this.identifier,
         this.instantiates,
         this.partOf,

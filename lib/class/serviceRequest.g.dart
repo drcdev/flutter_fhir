@@ -9,6 +9,12 @@ part of 'serviceRequest.dart';
 ServiceRequest _$ServiceRequestFromJson(Map<String, dynamic> json) {
   return ServiceRequest(
     resourceType: json['resourceType'] as String,
+    id: json['id'] as String,
+    meta: json['meta'] == null
+        ? null
+        : Meta.fromJson(json['meta'] as Map<String, dynamic>),
+    implicitRules: json['implicitRules'] as String,
+    language: json['language'] as String,
     identifier: (json['identifier'] as List)
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
@@ -139,6 +145,10 @@ ServiceRequest _$ServiceRequestFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$ServiceRequestToJson(ServiceRequest instance) =>
     <String, dynamic>{
       'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'language': instance.language,
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'instantiatesCanonical': instance.instantiatesCanonical,
       'instantiatesUri': instance.instantiatesUri,

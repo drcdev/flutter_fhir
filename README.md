@@ -2,7 +2,10 @@
 
 First attempt at a flutter app for FHIR.
 1. Basic Oauth2 access to FHIR server (https://www.health-samurai.io/aidbox).
-2. Can create new patients, download/sync from server.
+2. Can create new patients, download from server.
+3. Can enter new patients w/ family members.
+4. Currently unable to upload new patients to server.
+5. Added lots of the FHIR json classes (but still more to do).
 
 ToDo: Goal is to be able to upload vaccination data.
 
@@ -17,16 +20,20 @@ in another country, but all data was synthesized anew.
 along at home and using Aidbox, they have a nice, easy tutorial here for how to do it.
 (https://docs.aidbox.app/basic-concepts/bulk-api-1/synthea-by-bulk-api)
 
-Todo: Would like to make script to easily create JSON classes from HL7 FHIR specifications.
-
 # Formatting
 I'm a newbie at coding, but I've tried to keep naming rules consistent (and consistent from FHIR).
 1. Dart class names: upper camel case.
 2. Variables: lower camel case.
 3. File names: lower camel case.
 4. FHIR json class names: upper camel case.
-5. FHIR complex data type not an official class (but still json class in dart): lower camel case.
-6. FHIR object properties that have a reference to a particular kind of resource (I don't completely
-    understand what that means), are going to be classified as a 'List<Reference>' type. And have the
-    string '**##oRR##**' included as a comment on that line for easy identification when I need to come
-    back and update it.
+5. For the json classes that have classes nested, but aren't full FHIR resources (or at least
+    defined like they are) those classes have been placed in the same .dart file as the parent
+    class. If there are more than one of these child classes that are named the same, I've made them
+    private, just to be sure.
+6. Should all of these json children classes be private?
+
+ToDo: add reference arguments to all reference types
+ToDo: define canonical types
+ToDo: see if dates and times can be parsed into json
+ToDo: add comments
+ToDo: understand if domain resources need to be in every resourceType

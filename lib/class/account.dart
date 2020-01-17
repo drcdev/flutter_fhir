@@ -1,5 +1,6 @@
 import 'package:flutter_fhir/class/codeableConcept.dart';
 import 'package:flutter_fhir/class/identifier.dart';
+import 'package:flutter_fhir/class/meta.dart';
 import 'package:flutter_fhir/class/period.dart';
 import 'package:flutter_fhir/class/reference.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -8,6 +9,10 @@ part 'account.g.dart';
 @JsonSerializable(explicitToJson: true)
 class Account {
   String resourceType;
+  String id;
+  Meta meta;
+  String implicitRules;
+  String language;
   List<Identifier> identifier;
   String status;
   CodeableConcept type;
@@ -22,6 +27,10 @@ class Account {
 
   Account(
       {this.resourceType,
+        this.id,
+        this.meta,
+        this.implicitRules,
+        this.language,
         this.identifier,
         this.status,
         this.type,

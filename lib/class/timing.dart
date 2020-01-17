@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_fhir/class/codeableConcept.dart';
 import 'package:flutter_fhir/class/period.dart';
 import 'package:flutter_fhir/class/range.dart';
@@ -24,13 +23,13 @@ class Repeat {
   Period boundsPeriod;
   int count;
   int countMax;
-  int duration;
-  int durationMax;
+  double duration;
+  double durationMax;
   String durationUnit;
   int frequency;
   int frequencyMax;
-  int period;
-  int periodMax;
+  double period;
+  double periodMax;
   String periodUnit;
   List<String> dayOfWeek;
   List<String> timeOfDay;

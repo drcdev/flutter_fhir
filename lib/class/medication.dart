@@ -1,5 +1,6 @@
 import 'package:flutter_fhir/class/codeableConcept.dart';
 import 'package:flutter_fhir/class/identifier.dart';
+import 'package:flutter_fhir/class/meta.dart';
 import 'package:flutter_fhir/class/ratio.dart';
 import 'package:flutter_fhir/class/reference.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -8,6 +9,10 @@ part 'medication.g.dart';
 @JsonSerializable(explicitToJson: true)
 class Medication {
   String resourceType;
+  String id;
+  Meta meta;
+  String implicitRules;
+  String language;
   List<Identifier> identifier;
   CodeableConcept code;
   String status;
@@ -17,8 +22,20 @@ class Medication {
   List<Ingredient> ingredient;
   Batch batch;
 
-  Medication({this.resourceType, this.identifier, this.code, this.status,
-        this.manufacturer, this.form, this.amount, this.ingredient, this.batch});
+  Medication(
+      {this.resourceType,
+        this.id,
+        this.meta,
+        this.implicitRules,
+        this.language,
+        this.identifier,
+        this.code,
+        this.status,
+        this.manufacturer,
+        this.form,
+        this.amount,
+        this.ingredient,
+        this.batch});
 
   factory Medication.fromJson(Map<String, dynamic> json) => _$MedicationFromJson(json);
   Map<String, dynamic> toJson() => _$MedicationToJson(this);

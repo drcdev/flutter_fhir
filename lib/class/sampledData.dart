@@ -5,10 +5,10 @@ part 'sampledData.g.dart';
 @JsonSerializable(explicitToJson: true)
 class SampledData {
   Quantity origin;
-  int period;
-  int factor;
-  int lowerLimit;
-  int upperLimit;
+  double period;
+  double factor;
+  double lowerLimit;
+  double upperLimit;
   int dimensions;
   String data;
 

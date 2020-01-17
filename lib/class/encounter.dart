@@ -2,6 +2,7 @@ import 'package:flutter_fhir/class/codeableConcept.dart';
 import 'package:flutter_fhir/class/coding.dart';
 import 'package:flutter_fhir/class/episodeOfCare.dart';
 import 'package:flutter_fhir/class/identifier.dart';
+import 'package:flutter_fhir/class/meta.dart';
 import 'package:flutter_fhir/class/period.dart';
 import 'package:flutter_fhir/class/reference.dart';
 import 'package:flutter_fhir/class/serviceRequest.dart';
@@ -11,6 +12,10 @@ part 'encounter.g.dart';
 @JsonSerializable(explicitToJson: true)
 class Encounter {
   String resourceType;
+  String id;
+  Meta meta;
+  String implicitRules;
+  String language;
   List<Identifier> identifier;
   String status;
   List<_StatusHistory> statusHistory;
@@ -35,7 +40,35 @@ class Encounter {
   Reference serviceProvider;
   Reference partOf;
 
-  Encounter({this.resourceType, this.identifier, this.status, this.statusHistory, this.classs, this.classHistory, this.type, this.serviceType, this.priority, this.subject, this.episodeOfCare, this.basedOn, this.participant, this.appointment, this.period, this.length, this.reasonCode, this.reasonReference, this.diagnosis, this.account, this.hospitalization, this.location, this.serviceProvider, this.partOf});
+  Encounter(
+      {this.resourceType,
+        this.identifier,
+        this.id,
+        this.meta,
+        this.implicitRules,
+        this.language,
+        this.status,
+        this.statusHistory,
+        this.classs,
+        this.classHistory,
+        this.type,
+        this.serviceType,
+        this.priority,
+        this.subject,
+        this.episodeOfCare,
+        this.basedOn,
+        this.participant,
+        this.appointment,
+        this.period,
+        this.length,
+        this.reasonCode,
+        this.reasonReference,
+        this.diagnosis,
+        this.account,
+        this.hospitalization,
+        this.location,
+        this.serviceProvider,
+        this.partOf});
 
   factory Encounter.fromJson(Map<String, dynamic> json) => _$EncounterFromJson(json);
   Map<String, dynamic> toJson() => _$EncounterToJson(this);

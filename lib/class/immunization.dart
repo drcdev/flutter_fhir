@@ -1,10 +1,7 @@
 import 'package:flutter_fhir/class/annotation.dart';
 import 'package:flutter_fhir/class/codeableConcept.dart';
-import 'package:flutter_fhir/class/encounter.dart';
 import 'package:flutter_fhir/class/identifier.dart';
-import 'package:flutter_fhir/class/location.dart';
-import 'package:flutter_fhir/class/organization.dart';
-import 'package:flutter_fhir/class/patient.dart';
+import 'package:flutter_fhir/class/meta.dart';
 import 'package:flutter_fhir/class/quantity.dart';
 import 'package:flutter_fhir/class/reference.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -13,6 +10,10 @@ part 'immunization.g.dart';
 @JsonSerializable(explicitToJson: true)
 class Immunization {
   String resourceType;
+  String id;
+  Meta meta;
+  String implicitRules;
+  String language;
   List<Identifier> identifier;
   String status;
   CodeableConcept statusReason;
@@ -45,6 +46,10 @@ class Immunization {
 
   Immunization(
       {this.resourceType,
+        this.id,
+        this.meta,
+        this.implicitRules,
+        this.language,
         this.identifier,
         this.status,
         this.statusReason,

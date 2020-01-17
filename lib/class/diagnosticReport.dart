@@ -1,6 +1,7 @@
 import 'package:flutter_fhir/class/attachment.dart';
 import 'package:flutter_fhir/class/codeableConcept.dart';
 import 'package:flutter_fhir/class/identifier.dart';
+import 'package:flutter_fhir/class/meta.dart';
 import 'package:flutter_fhir/class/period.dart';
 import 'package:flutter_fhir/class/reference.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -9,6 +10,10 @@ part 'diagnosticReport.g.dart';
 @JsonSerializable(explicitToJson: true)
 class DiagnosticReport {
   String resourceType;
+  String id;
+  Meta meta;
+  String implicitRules;
+  String language;
   List<Identifier> identifier;
   List<Reference> basedOn;
   String status;
@@ -31,6 +36,10 @@ class DiagnosticReport {
 
   DiagnosticReport(
       {this.resourceType,
+        this.id,
+        this.meta,
+        this.implicitRules,
+        this.language,
         this.identifier,
         this.basedOn,
         this.status,
