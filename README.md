@@ -32,8 +32,9 @@ I'm a newbie at coding, but I've tried to keep naming rules consistent (and cons
     private, just to be sure.
 6. Should all of these json children classes be private?
 
-ToDo: add reference arguments to all reference types
-ToDo: define canonical types
-ToDo: see if dates and times can be parsed into json
-ToDo: add comments
-ToDo: understand if domain resources need to be in every resourceType
+ToDo: define canonical types\n
+ToDo: see if dates and times can be parsed into json\n
+ToDo: add comments\n
+ToDo: understand if domain resources need to be in every resourceType\n
+ToDo: make children json class public\n
+Todo: understand initstate better

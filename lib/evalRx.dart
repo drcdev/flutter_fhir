@@ -32,11 +32,25 @@ class _EvalRxState extends State<_EvalRx> {
   Patient pt;
   _EvalRxState({this.pt});
   List<Patient> patientList;
+  var searchPt = new TextEditingController();
+  String search;
 
   @override
   void initState() {
     super.initState();
     _getList();
+    if(pt != null) search = pt.printName();
+    searchPt.addListener(() {
+      setState(() {
+        search = searchPt.text;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    searchPt.dispose();
+    super.dispose();
   }
 
   Future _getList() async {
@@ -64,7 +78,22 @@ class _EvalRxState extends State<_EvalRx> {
             ],
           ),
 
-          Padding( padding: const EdgeInsets.all(15.0), ),
+
+          Padding( padding: const EdgeInsets.all(10.0), ),
+          TextField(
+            style: TextStyle(
+              color: Colors.white,
+            ),
+            decoration: InputDecoration(
+              labelText: 'Search Patient Name',
+              labelStyle: TextStyle(
+                color: Colors.white,
+              )
+            ),
+            controller: searchPt,
+          ),
+
+          Padding( padding: const EdgeInsets.all(5.0), ),
           Expanded(
             child: FutureBuilder(
               future: ptList(),
@@ -74,19 +103,25 @@ class _EvalRxState extends State<_EvalRx> {
                     shrinkWrap: true,
                     itemCount: snapshot.data.length,
                     itemBuilder: (context, index) {
-                      return Card(
+                      return search == null || search == '' ? new Card(
                         color: Colors.blueGrey,
                         child: ListTile(
-                          title: Text(
-                            '${(snapshot.data[index].name?.first?.family?.toString() ?? '')}'
-                                ', '
-                                '${(snapshot.data[index].name?.first?.given?.first?.toString() ?? '')}',
+                          title: Text(snapshot.data[index].printName(),
                             style: TextStyle(
                               color: Colors.white,
                             ),
                           ),
                         ),
-                      );
+                      ) : snapshot.data[index].printName().contains(search) ? new Card(
+                        color: Colors.blueGrey,
+                        child: ListTile(
+                          title: Text(snapshot.data[index].printName(),
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ) : new Container();
                     },
                   );
                 } else {
@@ -101,10 +136,11 @@ class _EvalRxState extends State<_EvalRx> {
 
           RaisedButton(
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => MainMenu()),
-              );
+              print(search);
+//              Navigator.push(
+//                context,
+//                MaterialPageRoute(builder: (context) => MainMenu()),
+//              );
             },
             child: Text('Return to Opening Page'),
           ),
