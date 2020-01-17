@@ -1,7 +1,7 @@
 import 'package:http/http.dart';
 import 'dart:convert';
 import 'package:flutter_fhir/class/patient.dart';
-import 'package:flutter_fhir/class/bundle.dart';
+import 'package:flutter_fhir/class/bundle.dart' as bundle;
 
 syncServer(String action, {Patient body} ) async {
   Map<String, String> headers = {'Content-type': 'application/json'};
@@ -13,11 +13,11 @@ syncServer(String action, {Patient body} ) async {
   headers.putIfAbsent("Authorization", () => token);
   if(action == 'get') {
     Response patients = await get('https://dbhifhir.aidbox.app/Patient', headers: headers);
-    var myBundle = Bundle.fromJson(json.decode(patients.body));
+    var myBundle = bundle.Bundle.fromJson(json.decode(patients.body));
     for(var i = 0; i < myBundle.total; i++) {
       await savePatient(Patient.fromJson(myBundle.entry[i].resource.toJson()));
     }
-    print('We gots em all!');
+    print('Patients downloaded.');
   } else if (action == 'post') {
     await post('https://dbhifhir.aidbox.app/Patient', headers: headers, body: json.encode(body));
     print('All sent.');

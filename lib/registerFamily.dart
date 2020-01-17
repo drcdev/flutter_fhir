@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_fhir/class/codeableConcept.dart';
-import 'package:flutter_fhir/class/contact.dart';
 import 'package:flutter_fhir/evalRx.dart';
 import 'package:flutter_fhir/main.dart';
 import 'package:flutter_fhir/class/patient.dart';

@@ -22,8 +22,8 @@ Bundle _$BundleFromJson(Map<String, dynamic> json) {
             (e) => e == null ? null : _Link.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     entry: (json['entry'] as List)
-        ?.map(
-            (e) => e == null ? null : Entry.fromJson(e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : _Entry.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     signature: json['signature'] == null
         ? null
@@ -54,8 +54,8 @@ Map<String, dynamic> _$_LinkToJson(_Link instance) => <String, dynamic>{
       'url': instance.url,
     };
 
-Entry _$EntryFromJson(Map<String, dynamic> json) {
-  return Entry(
+_Entry _$_EntryFromJson(Map<String, dynamic> json) {
+  return _Entry(
     link: (json['link'] as List)
         ?.map(
             (e) => e == null ? null : _Link.fromJson(e as Map<String, dynamic>))
@@ -76,7 +76,7 @@ Entry _$EntryFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$EntryToJson(Entry instance) => <String, dynamic>{
+Map<String, dynamic> _$_EntryToJson(_Entry instance) => <String, dynamic>{
       'link': instance.link?.map((e) => e?.toJson())?.toList(),
       'fullUrl': instance.fullUrl,
       'resource': instance.resource?.toJson(),

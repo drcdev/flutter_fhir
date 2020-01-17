@@ -12,7 +12,7 @@ class Bundle {
   DateTime timestamp;
   int total;
   List<_Link> link;
-  List<Entry> entry;
+  List<_Entry> entry;
   Signature signature;
 
   Bundle(
@@ -41,7 +41,7 @@ class _Link {
 }
 
 @JsonSerializable(explicitToJson: true)
-class Entry {
+class _Entry {
   List<_Link> link;
   String fullUrl;
   Resource resource;
@@ -49,7 +49,7 @@ class Entry {
   Request request;
   Response response;
 
-  Entry(
+  _Entry(
       {this.link,
         this.fullUrl,
         this.resource,
@@ -57,8 +57,8 @@ class Entry {
         this.request,
         this.response});
 
-  factory Entry.fromJson(Map<String, dynamic> json) => _$EntryFromJson(json);
-  Map<String, dynamic> toJson() => _$EntryToJson(this);
+  factory _Entry.fromJson(Map<String, dynamic> json) => _$_EntryFromJson(json);
+  Map<String, dynamic> toJson() => _$_EntryToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)

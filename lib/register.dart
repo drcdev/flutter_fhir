@@ -174,7 +174,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                         HumanName(given: [givenNameController.text],
                             family: familyNameController.text)
                       ],
-                      birthDate: _birthDate.toString());
+                      birthDate: _birthDate);
                   savePatient(pt);
                   Navigator.push(
                     context,

@@ -47,7 +47,7 @@ Patient _$PatientFromJson(Map<String, dynamic> json) {
         ?.toList(),
     contact: (json['contact'] as List)
         ?.map((e) =>
-            e == null ? null : _Contact.fromJson(e as Map<String, dynamic>))
+            e == null ? null : Contact.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     communication: (json['communication'] as List)
         ?.map((e) => e == null
@@ -98,8 +98,8 @@ Map<String, dynamic> _$PatientToJson(Patient instance) => <String, dynamic>{
       'meta': instance.meta?.toJson(),
     };
 
-_Contact _$_ContactFromJson(Map<String, dynamic> json) {
-  return _Contact(
+Contact _$ContactFromJson(Map<String, dynamic> json) {
+  return Contact(
     relationship: (json['relationship'] as List)
         ?.map((e) => e == null
             ? null
@@ -125,7 +125,7 @@ _Contact _$_ContactFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$_ContactToJson(_Contact instance) => <String, dynamic>{
+Map<String, dynamic> _$ContactToJson(Contact instance) => <String, dynamic>{
       'relationship': instance.relationship?.map((e) => e?.toJson())?.toList(),
       'name': instance.name?.toJson(),
       'telecom': instance.telecom?.map((e) => e?.toJson())?.toList(),

@@ -32,7 +32,7 @@ class Patient {
   bool multipleBirthBoolean;
   int multipleBirthInteger;
   List<Attachment> photo;
-  List<_Contact> contact;
+  List<Contact> contact;
   List<_Communication> communication;
   List<Practitioner> generalPractitioner;
   Reference managingOrganization;
@@ -83,7 +83,7 @@ savePatient(Patient pt) async {
 }
 
 @JsonSerializable(explicitToJson: true)
-class _Contact {
+class Contact {
   List<CodeableConcept> relationship;
   HumanName name;
   List<ContactPoint> telecom;
@@ -92,7 +92,7 @@ class _Contact {
   Reference organization;
   Period period;
 
-  _Contact(
+  Contact(
       {this.relationship,
         this.name,
         this.telecom,
@@ -101,8 +101,8 @@ class _Contact {
         this.organization,
         this.period});
 
-  factory _Contact.fromJson(Map<String, dynamic> json) => _$_ContactFromJson(json);
-  Map<String, dynamic> toJson() => _$_ContactToJson(this);
+  factory Contact.fromJson(Map<String, dynamic> json) => _$ContactFromJson(json);
+  Map<String, dynamic> toJson() => _$ContactToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
