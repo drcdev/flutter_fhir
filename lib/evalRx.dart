@@ -85,11 +85,13 @@ class _EvalRxState extends State<_EvalRx> {
           TextField(
             style: TextStyle(
               color: Colors.white,
+              fontSize: 20,
             ),
             decoration: InputDecoration(
               labelText: 'Search Patient Name',
               labelStyle: TextStyle(
                 color: Colors.white,
+                fontSize: 20,
               )
             ),
             controller: searchPt,
@@ -114,7 +116,9 @@ class _EvalRxState extends State<_EvalRx> {
                             ),
                           ),
                         ),
-                      ) : snapshot.data[index].printName().contains(search) ? new Card(
+                      ) :
+                      snapshot.data[index].printName().toLowerCase().contains(
+                          search.toLowerCase()) ? new Card(
                         color: Colors.blueGrey,
                         child: ListTile(
                           title: Text(snapshot.data[index].printName(),
