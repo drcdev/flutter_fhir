@@ -62,6 +62,13 @@ class Patient {
         this.link,
         this.meta});
 
+  String printName(){
+    return('${(this.name?.first?.family?.toString() ?? '')}'
+        ', '
+        '${(this.name?.first?.given?.first?.toString() ?? '')}'
+    );
+  }
+
   factory Patient.fromJson(Map<String, dynamic> json) => _$PatientFromJson(json);
   Map<String, dynamic> toJson() => _$PatientToJson(this);
 }

@@ -81,7 +81,7 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
 
               Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => EvalRx()),
+                  MaterialPageRoute(builder: (context) => EvalRx(pt: pt)),
               );
             },
             child: Text('Evaluate & Treat Patient'),

@@ -10,20 +10,27 @@ import 'dart:convert';
 import 'package:path_provider/path_provider.dart';
 
 class EvalRx extends StatelessWidget {
+  Patient pt;
+  EvalRx({this.pt});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: _EvalRx(),
+      home: pt != null ? _EvalRx(pt: pt) : _EvalRx(),
     );
   }
 }
 
 class _EvalRx extends StatefulWidget {
+  Patient pt;
+  _EvalRx({this.pt});
   @override
-  _EvalRxState createState() => _EvalRxState();
+  _EvalRxState createState() => pt != null ? _EvalRxState(pt: pt) : _EvalRxState();
 }
 
 class _EvalRxState extends State<_EvalRx> {
+  Patient pt;
+  _EvalRxState({this.pt});
   List<Patient> patientList;
 
   @override
@@ -44,7 +51,7 @@ class _EvalRxState extends State<_EvalRx> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text("Patient Activities"),
+        title: Text(pt != null ? pt.printName(): "Patient Activities"),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
