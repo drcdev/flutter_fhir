@@ -10,6 +10,18 @@ Patient _$PatientFromJson(Map<String, dynamic> json) {
   return Patient(
     resourceType: json['resourceType'] as String,
     id: json['id'] as String,
+    meta: json['meta'] == null
+        ? null
+        : Meta.fromJson(json['meta'] as Map<String, dynamic>),
+    implicitRules: json['implicitRules'] as String,
+    language: json['language'] as String,
+    text: json['text'] == null
+        ? null
+        : Narrative.fromJson(json['text'] as Map<String, dynamic>),
+    contained: (json['contained'] as List)
+        ?.map((e) =>
+            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     identifier: (json['identifier'] as List)
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
@@ -56,7 +68,7 @@ Patient _$PatientFromJson(Map<String, dynamic> json) {
         ?.toList(),
     generalPractitioner: (json['generalPractitioner'] as List)
         ?.map((e) =>
-            e == null ? null : Practitioner.fromJson(e as Map<String, dynamic>))
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     managingOrganization: json['managingOrganization'] == null
         ? null
@@ -64,17 +76,19 @@ Patient _$PatientFromJson(Map<String, dynamic> json) {
             json['managingOrganization'] as Map<String, dynamic>),
     link: (json['link'] as List)
         ?.map(
-            (e) => e == null ? null : _Link.fromJson(e as Map<String, dynamic>))
+            (e) => e == null ? null : Link.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    meta: json['meta'] == null
-        ? null
-        : Meta.fromJson(json['meta'] as Map<String, dynamic>),
   );
 }
 
 Map<String, dynamic> _$PatientToJson(Patient instance) => <String, dynamic>{
       'resourceType': instance.resourceType,
       'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'language': instance.language,
+      'text': instance.text?.toJson(),
+      'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'active': instance.active,
       'name': instance.name?.map((e) => e?.toJson())?.toList(),
@@ -95,7 +109,6 @@ Map<String, dynamic> _$PatientToJson(Patient instance) => <String, dynamic>{
           instance.generalPractitioner?.map((e) => e?.toJson())?.toList(),
       'managingOrganization': instance.managingOrganization?.toJson(),
       'link': instance.link?.map((e) => e?.toJson())?.toList(),
-      'meta': instance.meta?.toJson(),
     };
 
 Contact _$ContactFromJson(Map<String, dynamic> json) {
@@ -150,8 +163,8 @@ Map<String, dynamic> _$_CommunicationToJson(_Communication instance) =>
       'preferred': instance.preferred,
     };
 
-_Link _$_LinkFromJson(Map<String, dynamic> json) {
-  return _Link(
+Link _$LinkFromJson(Map<String, dynamic> json) {
+  return Link(
     other: json['other'] == null
         ? null
         : Reference.fromJson(json['other'] as Map<String, dynamic>),
@@ -159,7 +172,7 @@ _Link _$_LinkFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$_LinkToJson(_Link instance) => <String, dynamic>{
+Map<String, dynamic> _$LinkToJson(Link instance) => <String, dynamic>{
       'other': instance.other?.toJson(),
       'type': instance.type,
     };

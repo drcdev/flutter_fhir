@@ -15,6 +15,13 @@ Organization _$OrganizationFromJson(Map<String, dynamic> json) {
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
     language: json['language'] as String,
+    text: json['text'] == null
+        ? null
+        : Narrative.fromJson(json['text'] as Map<String, dynamic>),
+    contained: (json['contained'] as List)
+        ?.map((e) =>
+            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     identifier: (json['identifier'] as List)
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
@@ -40,7 +47,7 @@ Organization _$OrganizationFromJson(Map<String, dynamic> json) {
         : Reference.fromJson(json['partOf'] as Map<String, dynamic>),
     contact: (json['contact'] as List)
         ?.map((e) =>
-            e == null ? null : ContactPoint.fromJson(e as Map<String, dynamic>))
+            e == null ? null : Contact.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     endpoint: (json['endpoint'] as List)
         ?.map((e) =>
@@ -56,6 +63,8 @@ Map<String, dynamic> _$OrganizationToJson(Organization instance) =>
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
       'language': instance.language,
+      'text': instance.text?.toJson(),
+      'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'active': instance.active,
       'type': instance.type?.map((e) => e?.toJson())?.toList(),
@@ -66,4 +75,29 @@ Map<String, dynamic> _$OrganizationToJson(Organization instance) =>
       'partOf': instance.partOf?.toJson(),
       'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
       'endpoint': instance.endpoint?.map((e) => e?.toJson())?.toList(),
+    };
+
+Contact _$ContactFromJson(Map<String, dynamic> json) {
+  return Contact(
+    purpose: json['purpose'] == null
+        ? null
+        : CodeableConcept.fromJson(json['purpose'] as Map<String, dynamic>),
+    name: json['name'] == null
+        ? null
+        : HumanName.fromJson(json['name'] as Map<String, dynamic>),
+    telecom: (json['telecom'] as List)
+        ?.map((e) =>
+            e == null ? null : ContactPoint.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    address: json['address'] == null
+        ? null
+        : Address.fromJson(json['address'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$ContactToJson(Contact instance) => <String, dynamic>{
+      'purpose': instance.purpose?.toJson(),
+      'name': instance.name?.toJson(),
+      'telecom': instance.telecom?.map((e) => e?.toJson())?.toList(),
+      'address': instance.address?.toJson(),
     };

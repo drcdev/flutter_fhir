@@ -1,22 +1,37 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_fhir/class/codeableConcept.dart';
-import 'package:flutter_fhir/class/coding.dart';
-import 'package:flutter_fhir/class/period.dart';
-import 'package:flutter_fhir/class/range.dart';
-import 'package:flutter_fhir/class/reference.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import 'package:flutter_fhir/class/coding.dart';
+import 'package:flutter_fhir/class/reference.dart';
+
 part 'signature.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Signature {
+
+  // R!  Indication of the reason the entity signed the object(s)
   List<Coding> type;
+
+  // R!  When the signature was created
   DateTime when;
+
+  // R!  Who signed
+  // Reference(Practitioner|PractitionerRole|RelatedPerson|Patient|
+  //   Device|Organization)
   Reference who;
+
+  // The party represented
+  // Reference(Practitioner|PractitionerRole|RelatedPerson|
+  //   Patient|Device|Organization)
   Reference onBehalfOf;
+
+  // The technical format of the signed resources
   String targetFormat;
+
+  // The technical format of the signature
   String sigFormat;
+
+  // The actual signature content (XML DigSig. JWS, picture, etc.)
   String data; //"<base64Binary>"
-    // The actual signature content (XML DigSig. JWS, picture, etc.)
 
   Signature(
       {this.type,

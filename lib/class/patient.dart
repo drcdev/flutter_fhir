@@ -42,25 +42,58 @@ class Patient {
   // Contained, inline Resources
   List<Resource> contained;
 
+  // An identifier for this patient
   List<Identifier> identifier;
+
+  // Whether this patient's record is in active use
   bool active;
+
+  // A name associated with the patient
   List<HumanName> name;
+
+  // A contact detail for the individual
   List<ContactPoint> telecom;
+
+  // male | female | other | unknown
   String gender;
+
+  // The date of birth for the individual
   DateTime birthDate;
+
+  // deceased[x]: Indicates if the individual is deceased or not. One of these 2:
   bool deceasedBoolean;
   DateTime deceasedDateTime;
+
+  // An address for the individual
   List<Address> address;
+
+  // Marital (civil) status of a patient
   CodeableConcept maritalStatus;
+
+  // multipleBirth[x]: Whether patient is part of a multiple birth. One of these 2:
   bool multipleBirthBoolean;
   int multipleBirthInteger;
+
+  // Image of the patient
   List<Attachment> photo;
+
+  // A contact party (e.g. guardian, partner, friend) for the patient
   List<Contact> contact;
+
+  // A language which may be used to communicate with the patient about
+  // his or her health
   List<_Communication> communication;
-  List<Practitioner> generalPractitioner;
+
+  // Patient's nominated primary care provider
+  // Reference(Organization|Practitioner|PractitionerRole)
+  List<Reference> generalPractitioner;
+
+  // Organization that is the custodian of the patient record
+  // Reference(Organization)
   Reference managingOrganization;
-  List<_Link> link;
-  Meta meta;
+
+  // Link to another patient resource that concerns the same actual person
+  List<Link> link;
 
   Patient(
       {this.resourceType,
@@ -87,8 +120,7 @@ class Patient {
         this.communication,
         this.generalPractitioner,
         this.managingOrganization,
-        this.link,
-        this.meta});
+        this.link});
 
   String printName(){
     return('${(this.name?.first?.family?.toString() ?? '')}'
@@ -137,12 +169,28 @@ Future<List<Patient>> readPtList() async {
 
 @JsonSerializable(explicitToJson: true)
 class Contact {
+
+  // The kind of relationship
   List<CodeableConcept> relationship;
+
+  // A name associated with the contact person
   HumanName name;
+
+  // A contact detail for the person
   List<ContactPoint> telecom;
+
+  // Address for the contact person
   Address address;
+
+  // male | female | other | unknown
   String gender;
+
+  // C? Organization that is associated with the contact
+  // Reference(Organization)
   Reference organization;
+
+  // The period during which this contact person or organization is valid to
+  // be contacted relating to this patient
   Period period;
 
   Contact(
@@ -160,7 +208,13 @@ class Contact {
 
 @JsonSerializable(explicitToJson: true)
 class _Communication {
+
+  // A language which may be used to communicate with the patient about
+  // his or her health
   CodeableConcept language;
+
+  // R!  The language which can be used to communicate with the patient about
+  // his or her health
   bool preferred;
 
   _Communication({this.language, this.preferred});
@@ -170,12 +224,17 @@ class _Communication {
 }
 
 @JsonSerializable(explicitToJson: true)
-class _Link {
+class Link {
+
+  // R!  The other patient or related person resource that the link refers to
+  // Reference(Patient|RelatedPerson)
   Reference other;
+
+  // R!  replaced-by | replaces | refer | seealso
   String type;
 
-  _Link({this.other, this.type});
+  Link({this.other, this.type});
 
-  factory _Link.fromJson(Map<String, dynamic> json) => _$_LinkFromJson(json);
-  Map<String, dynamic> toJson() => _$_LinkToJson(this);
+  factory Link.fromJson(Map<String, dynamic> json) => _$LinkFromJson(json);
+  Map<String, dynamic> toJson() => _$LinkToJson(this);
 }

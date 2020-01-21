@@ -1,12 +1,23 @@
 import 'package:json_annotation/json_annotation.dart';
+
 part 'quantity.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Quantity {
-  String value;
+
+  // Numerical value (with implicit precision)
+  double value;
+
+  // < | <= | >= | > - how to understand the value
   String comparator;
+
+  // Unit representation
   String unit;
+
+  // C? System that defines coded unit form
   String system;
+
+  // Coded form of the unit
   String code;
 
   Quantity({this.value, this.comparator, this.unit, this.system, this.code});

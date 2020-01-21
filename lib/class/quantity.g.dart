@@ -8,7 +8,7 @@ part of 'quantity.dart';
 
 Quantity _$QuantityFromJson(Map<String, dynamic> json) {
   return Quantity(
-    value: json['value'] as String,
+    value: (json['value'] as num)?.toDouble(),
     comparator: json['comparator'] as String,
     unit: json['unit'] as String,
     system: json['system'] as String,

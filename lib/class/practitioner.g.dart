@@ -48,7 +48,14 @@ Practitioner _$PractitionerFromJson(Map<String, dynamic> json) {
             ? null
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-  );
+  )
+    ..text = json['text'] == null
+        ? null
+        : Narrative.fromJson(json['text'] as Map<String, dynamic>)
+    ..contained = (json['contained'] as List)
+        ?.map((e) =>
+            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
+        ?.toList();
 }
 
 Map<String, dynamic> _$PractitionerToJson(Practitioner instance) =>
@@ -58,6 +65,8 @@ Map<String, dynamic> _$PractitionerToJson(Practitioner instance) =>
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
       'language': instance.language,
+      'text': instance.text?.toJson(),
+      'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'active': instance.active,
       'name': instance.name?.map((e) => e?.toJson())?.toList(),
