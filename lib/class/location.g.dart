@@ -15,6 +15,13 @@ Location _$LocationFromJson(Map<String, dynamic> json) {
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
     language: json['language'] as String,
+    text: json['text'] == null
+        ? null
+        : Narrative.fromJson(json['text'] as Map<String, dynamic>),
+    contained: (json['contained'] as List)
+        ?.map((e) =>
+            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     identifier: (json['identifier'] as List)
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
@@ -56,7 +63,7 @@ Location _$LocationFromJson(Map<String, dynamic> json) {
     availabilityExceptions: json['availabilityExceptions'] as String,
     endpoint: (json['endpoint'] as List)
         ?.map((e) =>
-            e == null ? null : Endpoint.fromJson(e as Map<String, dynamic>))
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   );
 }
@@ -67,6 +74,8 @@ Map<String, dynamic> _$LocationToJson(Location instance) => <String, dynamic>{
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
       'language': instance.language,
+      'text': instance.text?.toJson(),
+      'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
       'operationalStatus': instance.operationalStatus?.toJson(),
@@ -85,6 +94,20 @@ Map<String, dynamic> _$LocationToJson(Location instance) => <String, dynamic>{
           instance.hoursOfOperation?.map((e) => e?.toJson())?.toList(),
       'availabilityExceptions': instance.availabilityExceptions,
       'endpoint': instance.endpoint?.map((e) => e?.toJson())?.toList(),
+    };
+
+Position _$PositionFromJson(Map<String, dynamic> json) {
+  return Position(
+    longitude: (json['longitude'] as num)?.toDouble(),
+    latitude: (json['latitude'] as num)?.toDouble(),
+    altitude: (json['altitude'] as num)?.toDouble(),
+  );
+}
+
+Map<String, dynamic> _$PositionToJson(Position instance) => <String, dynamic>{
+      'longitude': instance.longitude,
+      'latitude': instance.latitude,
+      'altitude': instance.altitude,
     };
 
 HoursOfOperation _$HoursOfOperationFromJson(Map<String, dynamic> json) {
@@ -106,18 +129,4 @@ Map<String, dynamic> _$HoursOfOperationToJson(HoursOfOperation instance) =>
       'allDay': instance.allDay,
       'openingTime': instance.openingTime?.toIso8601String(),
       'closingTime': instance.closingTime?.toIso8601String(),
-    };
-
-Position _$PositionFromJson(Map<String, dynamic> json) {
-  return Position(
-    longitude: json['longitude'] as int,
-    latitude: json['latitude'] as int,
-    altitude: json['altitude'] as int,
-  );
-}
-
-Map<String, dynamic> _$PositionToJson(Position instance) => <String, dynamic>{
-      'longitude': instance.longitude,
-      'latitude': instance.latitude,
-      'altitude': instance.altitude,
     };

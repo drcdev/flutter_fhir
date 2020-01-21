@@ -15,6 +15,13 @@ Medication _$MedicationFromJson(Map<String, dynamic> json) {
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
     language: json['language'] as String,
+    text: json['text'] == null
+        ? null
+        : Narrative.fromJson(json['text'] as Map<String, dynamic>),
+    contained: (json['contained'] as List)
+        ?.map((e) =>
+            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     identifier: (json['identifier'] as List)
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
@@ -49,6 +56,8 @@ Map<String, dynamic> _$MedicationToJson(Medication instance) =>
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
       'language': instance.language,
+      'text': instance.text?.toJson(),
+      'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'code': instance.code?.toJson(),
       'status': instance.status,
@@ -57,20 +66,6 @@ Map<String, dynamic> _$MedicationToJson(Medication instance) =>
       'amount': instance.amount?.toJson(),
       'ingredient': instance.ingredient?.map((e) => e?.toJson())?.toList(),
       'batch': instance.batch?.toJson(),
-    };
-
-Batch _$BatchFromJson(Map<String, dynamic> json) {
-  return Batch(
-    lotNumber: json['lotNumber'] as String,
-    expirationDate: json['expirationDate'] == null
-        ? null
-        : DateTime.parse(json['expirationDate'] as String),
-  );
-}
-
-Map<String, dynamic> _$BatchToJson(Batch instance) => <String, dynamic>{
-      'lotNumber': instance.lotNumber,
-      'expirationDate': instance.expirationDate?.toIso8601String(),
     };
 
 Ingredient _$IngredientFromJson(Map<String, dynamic> json) {
@@ -95,4 +90,18 @@ Map<String, dynamic> _$IngredientToJson(Ingredient instance) =>
       'itemReference': instance.itemReference?.toJson(),
       'isActive': instance.isActive,
       'strength': instance.strength?.toJson(),
+    };
+
+Batch _$BatchFromJson(Map<String, dynamic> json) {
+  return Batch(
+    lotNumber: json['lotNumber'] as String,
+    expirationDate: json['expirationDate'] == null
+        ? null
+        : DateTime.parse(json['expirationDate'] as String),
+  );
+}
+
+Map<String, dynamic> _$BatchToJson(Batch instance) => <String, dynamic>{
+      'lotNumber': instance.lotNumber,
+      'expirationDate': instance.expirationDate?.toIso8601String(),
     };

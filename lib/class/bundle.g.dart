@@ -9,6 +9,19 @@ part of 'bundle.dart';
 Bundle _$BundleFromJson(Map<String, dynamic> json) {
   return Bundle(
     resourceType: json['resourceType'] as String,
+    id: json['id'] as String,
+    meta: json['meta'] == null
+        ? null
+        : Meta.fromJson(json['meta'] as Map<String, dynamic>),
+    implicitRules: json['implicitRules'] as String,
+    language: json['language'] as String,
+    text: json['text'] == null
+        ? null
+        : Narrative.fromJson(json['text'] as Map<String, dynamic>),
+    contained: (json['contained'] as List)
+        ?.map((e) =>
+            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     identifier: json['identifier'] == null
         ? null
         : Identifier.fromJson(json['identifier'] as Map<String, dynamic>),
@@ -19,7 +32,7 @@ Bundle _$BundleFromJson(Map<String, dynamic> json) {
     total: json['total'] as int,
     link: (json['link'] as List)
         ?.map(
-            (e) => e == null ? null : _Link.fromJson(e as Map<String, dynamic>))
+            (e) => e == null ? null : Link.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     entry: (json['entry'] as List)
         ?.map((e) =>
@@ -33,6 +46,12 @@ Bundle _$BundleFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$BundleToJson(Bundle instance) => <String, dynamic>{
       'resourceType': instance.resourceType,
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'language': instance.language,
+      'text': instance.text?.toJson(),
+      'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.toJson(),
       'type': instance.type,
       'timestamp': instance.timestamp?.toIso8601String(),
@@ -42,14 +61,14 @@ Map<String, dynamic> _$BundleToJson(Bundle instance) => <String, dynamic>{
       'signature': instance.signature?.toJson(),
     };
 
-_Link _$_LinkFromJson(Map<String, dynamic> json) {
-  return _Link(
+Link _$LinkFromJson(Map<String, dynamic> json) {
+  return Link(
     relation: json['relation'] as String,
     url: json['url'] as String,
   );
 }
 
-Map<String, dynamic> _$_LinkToJson(_Link instance) => <String, dynamic>{
+Map<String, dynamic> _$LinkToJson(Link instance) => <String, dynamic>{
       'relation': instance.relation,
       'url': instance.url,
     };
@@ -58,7 +77,7 @@ _Entry _$_EntryFromJson(Map<String, dynamic> json) {
   return _Entry(
     link: (json['link'] as List)
         ?.map(
-            (e) => e == null ? null : _Link.fromJson(e as Map<String, dynamic>))
+            (e) => e == null ? null : Link.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     fullUrl: json['fullUrl'] as String,
     resource: json['resource'] == null

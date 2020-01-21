@@ -16,6 +16,13 @@ MedicationAdministration _$MedicationAdministrationFromJson(
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
     language: json['language'] as String,
+    text: json['text'] == null
+        ? null
+        : Narrative.fromJson(json['text'] as Map<String, dynamic>),
+    contained: (json['contained'] as List)
+        ?.map((e) =>
+            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     identifier: (json['identifier'] as List)
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
@@ -101,6 +108,8 @@ Map<String, dynamic> _$MedicationAdministrationToJson(
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
       'language': instance.language,
+      'text': instance.text?.toJson(),
+      'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'instantiates': instance.instantiates,
       'partOf': instance.partOf?.map((e) => e?.toJson())?.toList(),
@@ -124,6 +133,23 @@ Map<String, dynamic> _$MedicationAdministrationToJson(
       'note': instance.note?.map((e) => e?.toJson())?.toList(),
       'dosage': instance.dosage?.toJson(),
       'eventHistory': instance.eventHistory?.map((e) => e?.toJson())?.toList(),
+    };
+
+_Performer _$_PerformerFromJson(Map<String, dynamic> json) {
+  return _Performer(
+    function: json['function'] == null
+        ? null
+        : CodeableConcept.fromJson(json['function'] as Map<String, dynamic>),
+    actor: json['actor'] == null
+        ? null
+        : Reference.fromJson(json['actor'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$_PerformerToJson(_Performer instance) =>
+    <String, dynamic>{
+      'function': instance.function?.toJson(),
+      'actor': instance.actor?.toJson(),
     };
 
 Dosage _$DosageFromJson(Map<String, dynamic> json) {
@@ -158,21 +184,4 @@ Map<String, dynamic> _$DosageToJson(Dosage instance) => <String, dynamic>{
       'dose': instance.dose?.toJson(),
       'rateRatio': instance.rateRatio?.toJson(),
       'rateQuantity': instance.rateQuantity?.toJson(),
-    };
-
-_Performer _$_PerformerFromJson(Map<String, dynamic> json) {
-  return _Performer(
-    function: json['function'] == null
-        ? null
-        : CodeableConcept.fromJson(json['function'] as Map<String, dynamic>),
-    actor: json['actor'] == null
-        ? null
-        : Reference.fromJson(json['actor'] as Map<String, dynamic>),
-  );
-}
-
-Map<String, dynamic> _$_PerformerToJson(_Performer instance) =>
-    <String, dynamic>{
-      'function': instance.function?.toJson(),
-      'actor': instance.actor?.toJson(),
     };

@@ -46,7 +46,14 @@ Account _$AccountFromJson(Map<String, dynamic> json) {
     partOf: json['partOf'] == null
         ? null
         : Reference.fromJson(json['partOf'] as Map<String, dynamic>),
-  );
+  )
+    ..text = json['text'] == null
+        ? null
+        : Narrative.fromJson(json['text'] as Map<String, dynamic>)
+    ..contained = (json['contained'] as List)
+        ?.map((e) =>
+            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
+        ?.toList();
 }
 
 Map<String, dynamic> _$AccountToJson(Account instance) => <String, dynamic>{
@@ -55,6 +62,8 @@ Map<String, dynamic> _$AccountToJson(Account instance) => <String, dynamic>{
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
       'language': instance.language,
+      'text': instance.text?.toJson(),
+      'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
       'type': instance.type?.toJson(),

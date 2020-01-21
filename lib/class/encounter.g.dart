@@ -19,11 +19,18 @@ Encounter _$EncounterFromJson(Map<String, dynamic> json) {
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
     language: json['language'] as String,
+    text: json['text'] == null
+        ? null
+        : Narrative.fromJson(json['text'] as Map<String, dynamic>),
+    contained: (json['contained'] as List)
+        ?.map((e) =>
+            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     status: json['status'] as String,
     statusHistory: (json['statusHistory'] as List)
         ?.map((e) => e == null
             ? null
-            : _StatusHistory.fromJson(e as Map<String, dynamic>))
+            : StatusHistory.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     classs: json['classs'] == null
         ? null
@@ -58,7 +65,7 @@ Encounter _$EncounterFromJson(Map<String, dynamic> json) {
         ?.toList(),
     participant: (json['participant'] as List)
         ?.map((e) =>
-            e == null ? null : _Participant.fromJson(e as Map<String, dynamic>))
+            e == null ? null : Participant.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     appointment: (json['appointment'] as List)
         ?.map((e) =>
@@ -79,7 +86,7 @@ Encounter _$EncounterFromJson(Map<String, dynamic> json) {
         ?.toList(),
     diagnosis: (json['diagnosis'] as List)
         ?.map((e) =>
-            e == null ? null : _Diagnosis.fromJson(e as Map<String, dynamic>))
+            e == null ? null : Diagnosis.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     account: (json['account'] as List)
         ?.map((e) =>
@@ -91,7 +98,7 @@ Encounter _$EncounterFromJson(Map<String, dynamic> json) {
             json['hospitalization'] as Map<String, dynamic>),
     location: (json['location'] as List)
         ?.map((e) =>
-            e == null ? null : _Location.fromJson(e as Map<String, dynamic>))
+            e == null ? null : Location.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     serviceProvider: json['serviceProvider'] == null
         ? null
@@ -108,6 +115,8 @@ Map<String, dynamic> _$EncounterToJson(Encounter instance) => <String, dynamic>{
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
       'language': instance.language,
+      'text': instance.text?.toJson(),
+      'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
       'statusHistory':
@@ -136,31 +145,8 @@ Map<String, dynamic> _$EncounterToJson(Encounter instance) => <String, dynamic>{
       'partOf': instance.partOf?.toJson(),
     };
 
-_Participant _$_ParticipantFromJson(Map<String, dynamic> json) {
-  return _Participant(
-    type: (json['type'] as List)
-        ?.map((e) => e == null
-            ? null
-            : CodeableConcept.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    period: json['period'] == null
-        ? null
-        : Period.fromJson(json['period'] as Map<String, dynamic>),
-    individual: json['individual'] == null
-        ? null
-        : Reference.fromJson(json['individual'] as Map<String, dynamic>),
-  );
-}
-
-Map<String, dynamic> _$_ParticipantToJson(_Participant instance) =>
-    <String, dynamic>{
-      'type': instance.type?.map((e) => e?.toJson())?.toList(),
-      'period': instance.period?.toJson(),
-      'individual': instance.individual?.toJson(),
-    };
-
-_StatusHistory _$_StatusHistoryFromJson(Map<String, dynamic> json) {
-  return _StatusHistory(
+StatusHistory _$StatusHistoryFromJson(Map<String, dynamic> json) {
+  return StatusHistory(
     status: json['status'] as String,
     period: json['period'] == null
         ? null
@@ -168,7 +154,7 @@ _StatusHistory _$_StatusHistoryFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$_StatusHistoryToJson(_StatusHistory instance) =>
+Map<String, dynamic> _$StatusHistoryToJson(StatusHistory instance) =>
     <String, dynamic>{
       'status': instance.status,
       'period': instance.period?.toJson(),
@@ -191,8 +177,31 @@ Map<String, dynamic> _$ClassHistoryToJson(ClassHistory instance) =>
       'period': instance.period?.toJson(),
     };
 
-_Diagnosis _$_DiagnosisFromJson(Map<String, dynamic> json) {
-  return _Diagnosis(
+Participant _$ParticipantFromJson(Map<String, dynamic> json) {
+  return Participant(
+    type: (json['type'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    period: json['period'] == null
+        ? null
+        : Period.fromJson(json['period'] as Map<String, dynamic>),
+    individual: json['individual'] == null
+        ? null
+        : Reference.fromJson(json['individual'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$ParticipantToJson(Participant instance) =>
+    <String, dynamic>{
+      'type': instance.type?.map((e) => e?.toJson())?.toList(),
+      'period': instance.period?.toJson(),
+      'individual': instance.individual?.toJson(),
+    };
+
+Diagnosis _$DiagnosisFromJson(Map<String, dynamic> json) {
+  return Diagnosis(
     condition: json['condition'] == null
         ? null
         : Reference.fromJson(json['condition'] as Map<String, dynamic>),
@@ -203,8 +212,7 @@ _Diagnosis _$_DiagnosisFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$_DiagnosisToJson(_Diagnosis instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$DiagnosisToJson(Diagnosis instance) => <String, dynamic>{
       'condition': instance.condition?.toJson(),
       'use': instance.use?.toJson(),
       'rank': instance.rank,
@@ -266,8 +274,8 @@ Map<String, dynamic> _$HospitalizationToJson(Hospitalization instance) =>
       'dischargeDisposition': instance.dischargeDisposition?.toJson(),
     };
 
-_Location _$_LocationFromJson(Map<String, dynamic> json) {
-  return _Location(
+Location _$LocationFromJson(Map<String, dynamic> json) {
+  return Location(
     location: json['location'] == null
         ? null
         : Reference.fromJson(json['location'] as Map<String, dynamic>),
@@ -282,7 +290,7 @@ _Location _$_LocationFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$_LocationToJson(_Location instance) => <String, dynamic>{
+Map<String, dynamic> _$LocationToJson(Location instance) => <String, dynamic>{
       'location': instance.location?.toJson(),
       'status': instance.status,
       'physicalType': instance.physicalType?.toJson(),

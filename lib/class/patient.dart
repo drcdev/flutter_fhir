@@ -1,3 +1,12 @@
+import 'dart:io';
+import 'dart:convert';
+
+import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/resource.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:random_string/random_string.dart';
+import 'package:json_annotation/json_annotation.dart';
+
 import 'package:flutter_fhir/class/address.dart';
 import 'package:flutter_fhir/class/attachment.dart';
 import 'package:flutter_fhir/class/codeableConcept.dart';
@@ -8,17 +17,31 @@ import 'package:flutter_fhir/class/period.dart';
 import 'package:flutter_fhir/class/practitioner.dart';
 import 'package:flutter_fhir/class/reference.dart';
 import 'package:flutter_fhir/class/humanName.dart';
-import 'dart:io';
-import 'dart:convert';
-import 'package:path_provider/path_provider.dart';
-import 'package:random_string/random_string.dart';
-import 'package:json_annotation/json_annotation.dart';
+
 part 'patient.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Patient {
   String resourceType;
+
+  // Logical id of this artifact
   String id;
+
+  // Metadata about the resource
+  Meta meta;
+
+  // A set of rules under which this content was created
+  String implicitRules;
+
+  // Language of the resource content
+  String language;
+
+  // Text summary of the resource, for human interpretation
+  Narrative text;
+
+  // Contained, inline Resources
+  List<Resource> contained;
+
   List<Identifier> identifier;
   bool active;
   List<HumanName> name;
@@ -42,6 +65,11 @@ class Patient {
   Patient(
       {this.resourceType,
         this.id,
+        this.meta,
+        this.implicitRules,
+        this.language,
+        this.text,
+        this.contained,
         this.identifier,
         this.active,
         this.name,

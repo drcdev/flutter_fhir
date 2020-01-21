@@ -15,6 +15,13 @@ Appointment _$AppointmentFromJson(Map<String, dynamic> json) {
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
     language: json['language'] as String,
+    text: json['text'] == null
+        ? null
+        : Narrative.fromJson(json['text'] as Map<String, dynamic>),
+    contained: (json['contained'] as List)
+        ?.map((e) =>
+            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     identifier: (json['identifier'] as List)
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
@@ -77,7 +84,7 @@ Appointment _$AppointmentFromJson(Map<String, dynamic> json) {
         ?.toList(),
     participant: (json['participant'] as List)
         ?.map((e) =>
-            e == null ? null : _Participant.fromJson(e as Map<String, dynamic>))
+            e == null ? null : Participant.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     requestedPeriod: (json['requestedPeriod'] as List)
         ?.map((e) =>
@@ -93,6 +100,8 @@ Map<String, dynamic> _$AppointmentToJson(Appointment instance) =>
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
       'language': instance.language,
+      'text': instance.text?.toJson(),
+      'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
       'cancelationReason': instance.cancelationReason?.toJson(),
@@ -121,8 +130,8 @@ Map<String, dynamic> _$AppointmentToJson(Appointment instance) =>
           instance.requestedPeriod?.map((e) => e?.toJson())?.toList(),
     };
 
-_Participant _$_ParticipantFromJson(Map<String, dynamic> json) {
-  return _Participant(
+Participant _$ParticipantFromJson(Map<String, dynamic> json) {
+  return Participant(
     type: (json['type'] as List)
         ?.map((e) => e == null
             ? null
@@ -139,7 +148,7 @@ _Participant _$_ParticipantFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$_ParticipantToJson(_Participant instance) =>
+Map<String, dynamic> _$ParticipantToJson(Participant instance) =>
     <String, dynamic>{
       'type': instance.type?.map((e) => e?.toJson())?.toList(),
       'actor': instance.actor?.toJson(),

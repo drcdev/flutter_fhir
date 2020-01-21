@@ -15,6 +15,13 @@ EpisodeOfCare _$EpisodeOfCareFromJson(Map<String, dynamic> json) {
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
     language: json['language'] as String,
+    text: json['text'] == null
+        ? null
+        : Narrative.fromJson(json['text'] as Map<String, dynamic>),
+    contained: (json['contained'] as List)
+        ?.map((e) =>
+            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     identifier: (json['identifier'] as List)
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
@@ -23,7 +30,7 @@ EpisodeOfCare _$EpisodeOfCareFromJson(Map<String, dynamic> json) {
     statusHistory: (json['statusHistory'] as List)
         ?.map((e) => e == null
             ? null
-            : _StatusHistory.fromJson(e as Map<String, dynamic>))
+            : StatusHistory.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     type: (json['type'] as List)
         ?.map((e) => e == null
@@ -32,7 +39,7 @@ EpisodeOfCare _$EpisodeOfCareFromJson(Map<String, dynamic> json) {
         ?.toList(),
     diagnosis: (json['diagnosis'] as List)
         ?.map((e) =>
-            e == null ? null : _Diagnosis.fromJson(e as Map<String, dynamic>))
+            e == null ? null : Diagnosis.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     patient: json['patient'] == null
         ? null
@@ -69,6 +76,8 @@ Map<String, dynamic> _$EpisodeOfCareToJson(EpisodeOfCare instance) =>
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
       'language': instance.language,
+      'text': instance.text?.toJson(),
+      'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
       'statusHistory':
@@ -85,8 +94,8 @@ Map<String, dynamic> _$EpisodeOfCareToJson(EpisodeOfCare instance) =>
       'account': instance.account?.map((e) => e?.toJson())?.toList(),
     };
 
-_StatusHistory _$_StatusHistoryFromJson(Map<String, dynamic> json) {
-  return _StatusHistory(
+StatusHistory _$StatusHistoryFromJson(Map<String, dynamic> json) {
+  return StatusHistory(
     status: json['status'] as String,
     period: json['period'] == null
         ? null
@@ -94,14 +103,14 @@ _StatusHistory _$_StatusHistoryFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$_StatusHistoryToJson(_StatusHistory instance) =>
+Map<String, dynamic> _$StatusHistoryToJson(StatusHistory instance) =>
     <String, dynamic>{
       'status': instance.status,
       'period': instance.period?.toJson(),
     };
 
-_Diagnosis _$_DiagnosisFromJson(Map<String, dynamic> json) {
-  return _Diagnosis(
+Diagnosis _$DiagnosisFromJson(Map<String, dynamic> json) {
+  return Diagnosis(
     condition: json['condition'] == null
         ? null
         : Reference.fromJson(json['condition'] as Map<String, dynamic>),
@@ -112,8 +121,7 @@ _Diagnosis _$_DiagnosisFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$_DiagnosisToJson(_Diagnosis instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$DiagnosisToJson(Diagnosis instance) => <String, dynamic>{
       'condition': instance.condition?.toJson(),
       'role': instance.role?.toJson(),
       'rank': instance.rank,

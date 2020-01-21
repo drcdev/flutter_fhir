@@ -15,6 +15,13 @@ Immunization _$ImmunizationFromJson(Map<String, dynamic> json) {
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
     language: json['language'] as String,
+    text: json['text'] == null
+        ? null
+        : Narrative.fromJson(json['text'] as Map<String, dynamic>),
+    contained: (json['contained'] as List)
+        ?.map((e) =>
+            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     identifier: (json['identifier'] as List)
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
@@ -66,7 +73,7 @@ Immunization _$ImmunizationFromJson(Map<String, dynamic> json) {
         : Quantity.fromJson(json['doseQuantity'] as Map<String, dynamic>),
     performer: (json['performer'] as List)
         ?.map((e) =>
-            e == null ? null : _Performer.fromJson(e as Map<String, dynamic>))
+            e == null ? null : Performer.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     note: (json['note'] as List)
         ?.map((e) =>
@@ -119,6 +126,8 @@ Map<String, dynamic> _$ImmunizationToJson(Immunization instance) =>
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
       'language': instance.language,
+      'text': instance.text?.toJson(),
+      'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
       'statusReason': instance.statusReason?.toJson(),
@@ -154,6 +163,22 @@ Map<String, dynamic> _$ImmunizationToJson(Immunization instance) =>
           instance.protocolApplied?.map((e) => e?.toJson())?.toList(),
     };
 
+Performer _$PerformerFromJson(Map<String, dynamic> json) {
+  return Performer(
+    function: json['function'] == null
+        ? null
+        : CodeableConcept.fromJson(json['function'] as Map<String, dynamic>),
+    actor: json['actor'] == null
+        ? null
+        : Reference.fromJson(json['actor'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$PerformerToJson(Performer instance) => <String, dynamic>{
+      'function': instance.function?.toJson(),
+      'actor': instance.actor?.toJson(),
+    };
+
 Education _$EducationFromJson(Map<String, dynamic> json) {
   return Education(
     documentType: json['documentType'] as String,
@@ -172,23 +197,6 @@ Map<String, dynamic> _$EducationToJson(Education instance) => <String, dynamic>{
       'reference': instance.reference,
       'publicationDate': instance.publicationDate?.toIso8601String(),
       'presentationDate': instance.presentationDate?.toIso8601String(),
-    };
-
-_Performer _$_PerformerFromJson(Map<String, dynamic> json) {
-  return _Performer(
-    function: json['function'] == null
-        ? null
-        : CodeableConcept.fromJson(json['function'] as Map<String, dynamic>),
-    actor: json['actor'] == null
-        ? null
-        : Reference.fromJson(json['actor'] as Map<String, dynamic>),
-  );
-}
-
-Map<String, dynamic> _$_PerformerToJson(_Performer instance) =>
-    <String, dynamic>{
-      'function': instance.function?.toJson(),
-      'actor': instance.actor?.toJson(),
     };
 
 Reaction _$ReactionFromJson(Map<String, dynamic> json) {
