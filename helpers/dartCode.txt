@@ -1,0 +1,22 @@
+  
+  List<Identifier> identifier;
+  List<String> instantiates;
+  List<Reference> partOf;
+  String status;
+  List<CodeableConcept> statusReason;
+  CodeableConcept category;
+  CodeableConcept medicationCodeableConcept;
+  Reference medicationReference;
+  Reference subject;
+  Reference context;
+  List<Reference> supportingInformation;
+  DateTime effectiveDateTime;
+  Period effectivePeriod;
+  List<_Performer> performer;
+  List<CodeableConcept> reasonCode;
+  List<Reference> reasonReference;
+  Reference request;
+  List<Reference> device;
+  List<Annotation> note;
+  Dosage dosage;
+  List<Reference> eventHistory;

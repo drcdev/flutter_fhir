@@ -2,11 +2,13 @@ import 'package:flutter_fhir/class/annotation.dart';
 import 'package:flutter_fhir/class/codeableConcept.dart';
 import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/meta.dart';
+import 'package:flutter_fhir/class/narrative.dart';
 import 'package:flutter_fhir/class/period.dart';
 import 'package:flutter_fhir/class/quantity.dart';
 import 'package:flutter_fhir/class/range.dart';
 import 'package:flutter_fhir/class/ratio.dart';
 import 'package:flutter_fhir/class/reference.dart';
+import 'package:flutter_fhir/class/resource.dart';
 import 'package:flutter_fhir/class/sampledData.dart';
 import 'package:flutter_fhir/class/timing.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -15,10 +17,25 @@ part 'observation.g.dart';
 @JsonSerializable(explicitToJson: true)
 class Observation {
   String resourceType;
+
+  // Logical id of this artifact
   String id;
+
+  // Metadata about the resource
   Meta meta;
+
+  // A set of rules under which this content was created
   String implicitRules;
+
+  // Language of the resource content
   String language;
+
+  // Text summary of the resource, for human interpretation
+  Narrative text;
+
+  // Contained, inline Resources
+  List<Resource> contained;
+
   List<Identifier> identifier;
   List<Reference> basedOn;
   List<Reference> partOf;
@@ -63,6 +80,8 @@ class Observation {
         this.meta,
         this.implicitRules,
         this.language,
+        this.text,
+        this.contained,
         this.identifier,
         this.basedOn,
         this.partOf,

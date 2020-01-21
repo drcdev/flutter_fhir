@@ -4,7 +4,11 @@ part 'narrative.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Narrative {
+
+  // R!  generated | extensions | additional | empty
   String status;
+
+  // R!  Limited xhtml content
   String div;
 
   Narrative(
