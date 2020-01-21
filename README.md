@@ -19,6 +19,7 @@ in another country, but all data was synthesized anew.
 3. I've also added some completely synthesized patients of various ages. If you're following
 along at home and using Aidbox, they have a nice, easy tutorial here for how to do it.
 (https://docs.aidbox.app/basic-concepts/bulk-api-1/synthea-by-bulk-api)
+4. I can't ever remember the command for automatic json code: flutter pub run build_runner build
 
 # Formatting
 I'm a newbie at coding, but I've tried to keep naming rules consistent (and consistent from FHIR).

@@ -1,3 +1,5 @@
+import 'package:json_annotation/json_annotation.dart';
+
 import 'package:flutter_fhir/class/annotation.dart';
 import 'package:flutter_fhir/class/codeableConcept.dart';
 import 'package:flutter_fhir/class/identifier.dart';
@@ -11,7 +13,7 @@ import 'package:flutter_fhir/class/reference.dart';
 import 'package:flutter_fhir/class/resource.dart';
 import 'package:flutter_fhir/class/sampledData.dart';
 import 'package:flutter_fhir/class/timing.dart';
-import 'package:json_annotation/json_annotation.dart';
+
 part 'observation.g.dart';
 
 @JsonSerializable(explicitToJson: true)
@@ -36,21 +38,55 @@ class Observation {
   // Contained, inline Resources
   List<Resource> contained;
 
+  // Business Identifier for observation
   List<Identifier> identifier;
+
+  // Fulfills plan, proposal or order
+  // Reference(CarePlan|DeviceRequest|ImmunizationRecommendation|
+  //   MedicationRequest|NutritionOrder|ServiceRequest)
   List<Reference> basedOn;
+
+  // Part of referenced event
+  // Reference(MedicationAdministration|MedicationDispense|
+  //   MedicationStatement|Procedure|Immunization|ImagingStudy)
   List<Reference> partOf;
+
+  // R!  registered | preliminary | final | amended +
   String status;
+
+  // Classification of  type of observation
   List<CodeableConcept> category;
+
+  // R!  registered | preliminary | final | amended +
   CodeableConcept code;
+
+  // Who and/or what the observation is about
+  // Reference(Patient|Group|Device|Location)
   Reference subject;
+
+  // What the observation is about, when it is not about the subject of record
+  // Reference(Any)
   List<Reference> focus;
+
+  // Healthcare event during which this observation is made
+  // Reference(Encounter)
   Reference encounter;
+
+  // effective[x]: Clinically relevant time/time-period for observation. One of these 4:
   DateTime effectiveDateTime;
   Period effectivePeriod;
   Timing effectiveTiming;
   DateTime effectiveInstant;
+
+  // Date/Time this version was made available
   DateTime issued;
-  List<Reference> performer;
+
+  // Who is responsible for the observation
+  // Reference(Practitioner|PractitionerRole|Organization|
+  //   CareTeam|Patient|RelatedPerson)
+  List <Reference> performer;
+
+  // value[x]: Actual result. One of these 11:
   Quantity valueQuantity;
   CodeableConcept valueCodeableConcept;
   String valueString;
@@ -62,16 +98,41 @@ class Observation {
   String valueTime;
   DateTime valueDateTime;
   Period valuePeriod;
+
+  // C? Why the result is missing
   CodeableConcept dataAbsentReason;
+
+  // High, low, normal, etc.
   List<CodeableConcept> interpretation;
+
+  // Comments about the observation
   List<Annotation> note;
+
+  // Observed body part
   CodeableConcept bodySite;
+
+  // How it was done
   CodeableConcept method;
+
+  // Specimen used for this observation
   Reference specimen;
+
+  // (Measurement) Device
   Reference device;
+
+  // Provides guide for interpretation
   List<ReferenceRange> referenceRange;
-  List<Reference> hasMember;
-  List<Reference> derivedFrom;
+
+  // Related resource that belongs to the Observation group
+  // Reference(Observation|QuestionnaireResponse|MolecularSequence)
+  List <Reference> hasMember;
+
+  // Related measurements the observation is made from
+  // Reference(DocumentReference|ImagingStudy|Media|
+  //   QuestionnaireResponse|Observation|MolecularSequence)
+  List <Reference> derivedFrom;
+
+  // Component results
   List<Component> component;
 
   Observation(
@@ -126,11 +187,23 @@ class Observation {
 
 @JsonSerializable(explicitToJson: true)
 class ReferenceRange {
+
+  // C? Low Range, if relevant
   Quantity low;
+
+  // C? High Range, if relevant
   Quantity high;
+
+  // Reference range qualifier
   CodeableConcept type;
+
+  // Reference range population
   List<CodeableConcept> appliesTo;
+
+  // Applicable age range, if relevant
   Range age;
+
+  // Text based reference range in an observation
   String text;
 
   ReferenceRange(
@@ -142,7 +215,11 @@ class ReferenceRange {
 
 @JsonSerializable(explicitToJson: true)
 class Component {
+
+  // R!  Type of component observation (code / type)
   CodeableConcept code;
+
+  // value[x]: Actual component result. One of these 11:
   Quantity valueQuantity;
   CodeableConcept valueCodeableConcept;
   String valueString;
@@ -154,8 +231,14 @@ class Component {
   String valueTime;
   DateTime valueDateTime;
   Period valuePeriod;
+
+  // C? Why the component result is missing
   CodeableConcept dataAbsentReason;
+
+  // High, low, normal, etc.
   List<CodeableConcept> interpretation;
+
+  // Provides guide for interpretation of component result
   List<ReferenceRange> referenceRange;
 
   Component(

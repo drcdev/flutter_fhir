@@ -1,37 +1,69 @@
-  "identifier" : [{ Identifier }], // External identifier
-  "instantiates" : ["<uri>"], // Instantiates protocol or definition
-  "partOf" : [{ Reference(MedicationAdministration|Procedure) }], // Part of referenced event
-  "status" : "<code>", // R!  in-progress | not-done | on-hold | completed | entered-in-error | stopped | unknown
-  "statusReason" : [{ CodeableConcept }], // Reason administration not performed
-  "category" : { CodeableConcept }, // Type of medication usage
-  // medication[x]: What was administered. One of these 2:
-  "medicationCodeableConcept" : { CodeableConcept },
-  "medicationReference" : { Reference(Medication) },
-  "subject" : { Reference(Patient|Group) }, // R!  Who received medication
-  "context" : { Reference(Encounter|EpisodeOfCare) }, // Encounter or Episode of Care administered as part of
-  "supportingInformation" : [{ Reference(Any) }], // Additional information to support administration
-  // effective[x]: Start and end time of administration. One of these 2:
+  "identifier" : [{ Identifier }], // Business Identifier for observation
+  "basedOn" : [{ Reference(CarePlan|DeviceRequest|ImmunizationRecommendation|
+   MedicationRequest|NutritionOrder|ServiceRequest) }], // Fulfills plan, proposal or order
+  "partOf" : [{ Reference(MedicationAdministration|MedicationDispense|
+   MedicationStatement|Procedure|Immunization|ImagingStudy) }], // Part of referenced event
+  "status" : "<code>", // R!  registered | preliminary | final | amended +
+  "category" : [{ CodeableConcept }], // Classification of  type of observation
+  "code" : { CodeableConcept }, // R!  Type of observation (code / type)
+  "subject" : { Reference(Patient|Group|Device|Location) }, // Who and/or what the observation is about
+  "focus" : [{ Reference(Any) }], // What the observation is about, when it is not about the subject of record
+  "encounter" : { Reference(Encounter) }, // Healthcare event during which this observation is made
+  // effective[x]: Clinically relevant time/time-period for observation. One of these 4:
   "effectiveDateTime" : "<dateTime>",
   "effectivePeriod" : { Period },
-  "performer" : [{ // Who performed the medication administration and what they did
-    "function" : { CodeableConcept }, // Type of performance
-    "actor" : { Reference(Practitioner|PractitionerRole|Patient|RelatedPerson|
-    Device) } // R!  Who performed the medication administration
+  "effectiveTiming" : { Timing },
+  "effectiveInstant" : "<instant>",
+  "issued" : "<instant>", // Date/Time this version was made available
+  "performer" : [{ Reference(Practitioner|PractitionerRole|Organization|
+   CareTeam|Patient|RelatedPerson) }], // Who is responsible for the observation
+  // value[x]: Actual result. One of these 11:
+  "valueQuantity" : { Quantity },
+  "valueCodeableConcept" : { CodeableConcept },
+  "valueString" : "<string>",
+  "valueBoolean" : <boolean>,
+  "valueInteger" : <integer>,
+  "valueRange" : { Range },
+  "valueRatio" : { Ratio },
+  "valueSampledData" : { SampledData },
+  "valueTime" : "<time>",
+  "valueDateTime" : "<dateTime>",
+  "valuePeriod" : { Period },
+  "dataAbsentReason" : { CodeableConcept }, // C? Why the result is missing
+  "interpretation" : [{ CodeableConcept }], // High, low, normal, etc.
+  "note" : [{ Annotation }], // Comments about the observation
+  "bodySite" : { CodeableConcept }, // Observed body part
+  "method" : { CodeableConcept }, // How it was done
+  "specimen" : { Reference(Specimen) }, // Specimen used for this observation
+  "device" : { Reference(Device|DeviceMetric) }, // (Measurement) Device
+  "referenceRange" : [{ // Provides guide for interpretation
+    "low" : { Quantity(SimpleQuantity) }, // C? Low Range, if relevant
+    "high" : { Quantity(SimpleQuantity) }, // C? High Range, if relevant
+    "type" : { CodeableConcept }, // Reference range qualifier
+    "appliesTo" : [{ CodeableConcept }], // Reference range population
+    "age" : { Range }, // Applicable age range, if relevant
+    "text" : "<string>" // Text based reference range in an observation
   }],
-  "reasonCode" : [{ CodeableConcept }], // Reason administration performed
-  "reasonReference" : [{ Reference(Condition|Observation|DiagnosticReport) }], // Condition or observation that supports why the medication was administered
-  "request" : { Reference(MedicationRequest) }, // Request administration performed against
-  "device" : [{ Reference(Device) }], // Device used to administer
-  "note" : [{ Annotation }], // Information about the administration
-  "dosage" : { // Details of how medication was taken
-    "text" : "<string>", // Free text dosage instructions e.g. SIG
-    "site" : { CodeableConcept }, // Body site administered to
-    "route" : { CodeableConcept }, // Path of substance into body
-    "method" : { CodeableConcept }, // How drug was administered
-    "dose" : { Quantity(SimpleQuantity) }, // Amount of medication per dose
-    // rate[x]: Dose quantity per unit of time. One of these 2:
-    "rateRatio" : { Ratio }
-    "rateQuantity" : { Quantity(SimpleQuantity) }
-  },
-  "eventHistory" : [{ Reference(Provenance) }] // A list of events of interest in the lifecycle
+  "hasMember" : [{ Reference(Observation|QuestionnaireResponse|
+   MolecularSequence) }], // Related resource that belongs to the Observation group
+  "derivedFrom" : [{ Reference(DocumentReference|ImagingStudy|Media|
+   QuestionnaireResponse|Observation|MolecularSequence) }], // Related measurements the observation is made from
+  "component" : [{ // Component results
+    "code" : { CodeableConcept }, // R!  Type of component observation (code / type)
+    // value[x]: Actual component result. One of these 11:
+    "valueQuantity" : { Quantity },
+    "valueCodeableConcept" : { CodeableConcept },
+    "valueString" : "<string>",
+    "valueBoolean" : <boolean>,
+    "valueInteger" : <integer>,
+    "valueRange" : { Range },
+    "valueRatio" : { Ratio },
+    "valueSampledData" : { SampledData },
+    "valueTime" : "<time>",
+    "valueDateTime" : "<dateTime>",
+    "valuePeriod" : { Period },
+    "dataAbsentReason" : { CodeableConcept }, // C? Why the component result is missing
+    "interpretation" : [{ CodeableConcept }], // High, low, normal, etc.
+    "referenceRange" : [{ Content as for Observation.referenceRange }] // Provides guide for interpretation of component result
+  }]
 }
