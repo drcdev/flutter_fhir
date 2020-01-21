@@ -14,7 +14,6 @@ import 'package:flutter_fhir/class/contactPoint.dart';
 import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/meta.dart';
 import 'package:flutter_fhir/class/period.dart';
-import 'package:flutter_fhir/class/practitioner.dart';
 import 'package:flutter_fhir/class/reference.dart';
 import 'package:flutter_fhir/class/humanName.dart';
 
@@ -129,24 +128,30 @@ class Patient {
     );
   }
 
-  factory Patient.fromJson(Map<String, dynamic> json) => _$PatientFromJson(json);
-  Map<String, dynamic> toJson() => _$PatientToJson(this);
-}
-
-writePatient(Patient pt) async {
-  if(pt.id == null) { pt.id = 'flutter' + randomAlphaNumeric(10).toString();} //assign ID
-  final directory = await getApplicationDocumentsDirectory(); //get current directory
-  await File('${directory.path}/' + pt.id + '.txt').writeAsString(json.encode(pt)); //write patient info to file as pt.id
-  final ptList = File('${directory.path}/ptList.txt');
-  if(!await ptList.exists()) { //if ptList doesn't exist create it
-    ptList.writeAsString(pt.id);
-  } else { //otherwise, read it, add the new patient, then save the file
+  writePatient() async {
+    // assign ID
+    if(this.id == null) { this.id = 'flutter' + randomAlphaNumeric(10).toString();}
+    // get current directory
+    final directory = await getApplicationDocumentsDirectory();
+    // write patient info to file as pt.id
+    await File('${directory.path}/' + this.id + '.txt').writeAsString(json.encode(this));
+    // get list of patients
+    final ptList = File('${directory.path}/ptList.txt');
+    //if ptList doesn't exist create it
+    if(!await ptList.exists()) {
+      ptList.writeAsString(this.id);
+    } else {
+      //otherwise, read it, add the new patient, then save the file
       String pts = await ptList.readAsString();
-      if(!pts.contains(pt.id)) {
-        pts += '\n' + pt.id;
+      if(!pts.contains(this.id)) {
+        pts += '\n' + this.id;
         ptList.writeAsString(pts);
       }
+    }
   }
+
+  factory Patient.fromJson(Map<String, dynamic> json) => _$PatientFromJson(json);
+  Map<String, dynamic> toJson() => _$PatientToJson(this);
 }
 
 Future<Patient> readPatient(String id) async {

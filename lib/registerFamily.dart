@@ -62,7 +62,7 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
               pt = addFamily(pt, relation1);
               pt = addFamily(pt, relation2);
               pt = addFamily(pt, relation3);
-              writePatient(pt);
+              pt.writePatient();
 
               Navigator.push(
                 context,
@@ -77,7 +77,7 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
               pt = addFamily(pt, relation1);
               pt = addFamily(pt, relation2);
               pt = addFamily(pt, relation3);
-              writePatient(pt);
+              pt.writePatient();
 
               Navigator.push(
                   context,
@@ -92,7 +92,7 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
               pt = addFamily(pt, relation1);
               pt = addFamily(pt, relation2);
               pt = addFamily(pt, relation3);
-              writePatient(pt);
+              pt.writePatient();
 
               Navigator.push(
                 context,

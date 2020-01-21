@@ -15,7 +15,7 @@ syncServer(String action, {Patient body} ) async {
     Response patients = await get('https://dbhifhir.aidbox.app/Patient', headers: headers);
     var myBundle = bundle.Bundle.fromJson(json.decode(patients.body));
     for(var i = 0; i < myBundle.total; i++) {
-      await writePatient(Patient.fromJson(myBundle.entry[i].resource.toJson()));
+      await (Patient.fromJson(myBundle.entry[i].resource.toJson())).writePatient();
     }
     print('Patients downloaded.');
   } else if (action == 'post') {
