@@ -175,7 +175,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                             family: familyNameController.text)
                       ],
                       birthDate: _birthDate);
-                  savePatient(pt);
+                  writePatient(pt);
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => RegisterFamily(

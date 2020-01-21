@@ -5,9 +5,6 @@ import 'package:flutter_fhir/buttons.dart';
 import 'package:flutter_fhir/parasite.dart';
 import 'package:flutter_fhir/vaccine.dart';
 import 'package:flutter/cupertino.dart';
-import 'dart:io';
-import 'dart:convert';
-import 'package:path_provider/path_provider.dart';
 
 class EvalRx extends StatelessWidget {
   Patient pt;
@@ -57,7 +54,7 @@ class _EvalRxState extends State<_EvalRx> {
   }
 
   Future _getList() async {
-    List<Patient> list = await ptList();
+    List<Patient> list = await readPtList();
     setState(() {
       patientList = list;
     });
@@ -100,34 +97,40 @@ class _EvalRxState extends State<_EvalRx> {
           Padding( padding: const EdgeInsets.all(5.0), ),
           Expanded(
             child: FutureBuilder(
-              future: ptList(),
+              future: readPtList(),
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (snapshot.hasData) {
                   return ListView.builder(
                     shrinkWrap: true,
                     itemCount: snapshot.data.length,
                     itemBuilder: (context, index) {
+                      String name = snapshot.data[index].printName();
+                      String id = snapshot.data[index].id;
                       return search == null || search == '' ? new Card(
                         color: Colors.blueGrey,
                         child: ListTile(
-                          title: Text(snapshot.data[index].printName(),
+                          title: Text(name,
                             style: TextStyle(
                               color: Colors.white,
                             ),
                           ),
+                          onLongPress: () async {
+                            pt = await readPatient(id);
+                            setState(() => searchPt.text = name);
+                          },
                         ),
                       ) :
                       snapshot.data[index].printName().toLowerCase().contains(
                           search.toLowerCase()) ? new Card(
-                        color: Colors.blueGrey,
-                        child: ListTile(
-                          title: Text(snapshot.data[index].printName(),
-                            style: TextStyle(
-                              color: Colors.white,
+                          color: Colors.blueGrey,
+                            child: ListTile(
+                              title: Text(snapshot.data[index].printName(),
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                      ) : new Container();
+                          ) : new Container();
                     },
                   );
                 } else {
@@ -153,16 +156,4 @@ class _EvalRxState extends State<_EvalRx> {
       ),
     );
   }
-}
-
-Future<List<Patient>> ptList() async {
-  final directory = await getApplicationDocumentsDirectory(); //get current directory
-  List<String> ptNumbers = (await File('${directory.path}/ptList.txt').readAsString()).split('\n');
-  var ptList = new List<Patient>();
-  for(var i = 0; i < ptNumbers.length; i++){
-    final pt = File('${directory.path}/' + ptNumbers[i] + '.txt');
-    var newpt = Patient.fromJson(json.decode(await pt.readAsString()));
-    ptList.add(newpt);
-  }
-  return ptList;
 }

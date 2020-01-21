@@ -73,7 +73,7 @@ class Patient {
   Map<String, dynamic> toJson() => _$PatientToJson(this);
 }
 
-savePatient(Patient pt) async {
+writePatient(Patient pt) async {
   if(pt.id == null) { pt.id = 'flutter' + randomAlphaNumeric(10).toString();} //assign ID
   final directory = await getApplicationDocumentsDirectory(); //get current directory
   await File('${directory.path}/' + pt.id + '.txt').writeAsString(json.encode(pt)); //write patient info to file as pt.id
@@ -87,6 +87,24 @@ savePatient(Patient pt) async {
         ptList.writeAsString(pts);
       }
   }
+}
+
+Future<Patient> readPatient(String id) async {
+  final directory = await getApplicationDocumentsDirectory(); //get current directory
+  Patient pt = Patient.fromJson(jsonDecode(await File('${directory.path}/' + id + '.txt').readAsString())); //read patient from file
+  return(pt);
+}
+
+Future<List<Patient>> readPtList() async {
+  final directory = await getApplicationDocumentsDirectory(); //get current directory
+  List<String> ptNumbers = (await File('${directory.path}/ptList.txt').readAsString()).split('\n');
+  var ptList = new List<Patient>();
+  for(var i = 0; i < ptNumbers.length; i++){
+    final pt = File('${directory.path}/' + ptNumbers[i] + '.txt');
+    var newpt = Patient.fromJson(json.decode(await pt.readAsString()));
+    ptList.add(newpt);
+  }
+  return ptList;
 }
 
 @JsonSerializable(explicitToJson: true)
