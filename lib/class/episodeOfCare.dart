@@ -39,13 +39,13 @@ class EpisodeOfCare {
   String status;
 
   // Past list of status codes (the current status may be included to cover the start date of the status)
-  List<_StatusHistory> statusHistory;
+  List<StatusHistory> statusHistory;
 
   // Type/class  - e.g. specialist referral, disease management
   List<CodeableConcept> type;
 
   // The list of diagnosis relevant to this episode of care
-  List<_Diagnosis> diagnosis;
+  List<Diagnosis> diagnosis;
 
   // R!  The patient who is the focus of this episode of care
   Reference patient;
@@ -94,21 +94,21 @@ class EpisodeOfCare {
 }
 
 @JsonSerializable(explicitToJson: true)
-class _StatusHistory {
+class StatusHistory {
   // R!  planned | waitlist | active | onhold | finished | cancelled | entered-in-error
   String status;
 
   // R!  Duration the EpisodeOfCare was in the specified status
   Period period;
 
-  _StatusHistory({this.status, this.period});
+  StatusHistory({this.status, this.period});
 
-  factory _StatusHistory.fromJson(Map<String, dynamic> json) => _$_StatusHistoryFromJson(json);
-  Map<String, dynamic> toJson() => _$_StatusHistoryToJson(this);
+  factory StatusHistory.fromJson(Map<String, dynamic> json) => _$StatusHistoryFromJson(json);
+  Map<String, dynamic> toJson() => _$StatusHistoryToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class _Diagnosis {
+class Diagnosis {
   // R!  Conditions/problems/diagnoses this episode of care is for
   Reference condition;
 
@@ -118,8 +118,8 @@ class _Diagnosis {
   // Ranking of the diagnosis (for each role type)
   int rank;
 
-  _Diagnosis({this.condition, this.role, this.rank});
+  Diagnosis({this.condition, this.role, this.rank});
 
-  factory _Diagnosis.fromJson(Map<String, dynamic> json) => _$_DiagnosisFromJson(json);
-  Map<String, dynamic> toJson() => _$_DiagnosisToJson(this);
+  factory Diagnosis.fromJson(Map<String, dynamic> json) => _$DiagnosisFromJson(json);
+  Map<String, dynamic> toJson() => _$DiagnosisToJson(this);
 }

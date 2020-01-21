@@ -95,7 +95,7 @@ class Appointment {
   List<Reference> basedOn;
 
   // R!  Participants involved in appointment
-  List<_Participant> participant;
+  List<Participant> participant;
 
   // Potential date/time interval(s) requested to allocate the appointment within
   List<Period> requestedPeriod;
@@ -106,6 +106,8 @@ class Appointment {
         this.meta,
         this.implicitRules,
         this.language,
+        this.text,
+        this.contained,
         this.identifier,
         this.status,
         this.cancelationReason,
@@ -134,7 +136,7 @@ class Appointment {
 }
 
 @JsonSerializable(explicitToJson: true)
-class _Participant {
+class Participant {
   // Role of participant in the appointment
   List<CodeableConcept> type;
 
@@ -152,8 +154,8 @@ class _Participant {
   // Participation period of the actor
   Period period;
 
-  _Participant({this.type, this.actor, this.required, this.status, this.period});
+  Participant({this.type, this.actor, this.required, this.status, this.period});
 
-  factory _Participant.fromJson(Map<String, dynamic> json) => _$_ParticipantFromJson(json);
-  Map<String, dynamic> toJson() => _$_ParticipantToJson(this);
+  factory Participant.fromJson(Map<String, dynamic> json) => _$ParticipantFromJson(json);
+  Map<String, dynamic> toJson() => _$ParticipantToJson(this);
 }

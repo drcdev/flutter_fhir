@@ -3,10 +3,20 @@ part 'coding.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Coding {
+
+  // Identity of the terminology system
   String system;
+
+  // Version of the system - if relevant
   String version;
+
+  // Symbol in syntax defined by the system
   String code;
+
+  // Representation defined by the system
   String display;
+
+  // If this coding was chosen directly by the user
   bool userSelected;
 
   Coding(

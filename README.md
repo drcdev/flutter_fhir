@@ -30,9 +30,9 @@ I'm a newbie at coding, but I've tried to keep naming rules consistent (and cons
     defined like they are) those classes have been placed in the same .dart file as the parent
     class. These are not private classes. Should they be?
 6. Int are ints, DateTimes are DateTimes, otherwise values are strings.
+7. For all references I have tried to include the type of reference which they allow.
+8. There are some json arguments named 'class' in the official documentation, I've renamed them\n 
+    'classs' because that is a reserved word in flutter.
 
 ToDo: define canonical types\n
-ToDo: add comments\n
-ToDo: understand if domain resources need to be in every resourceType\n
-ToDo: make children json class public\n
 Todo: understand initstate better, learn Future, async, await
