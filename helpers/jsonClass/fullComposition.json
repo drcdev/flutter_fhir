@@ -1,0 +1,40 @@
+{
+  "resourceType" : "Composition",
+  "identifier" : "Identifier", 
+  "status" : "<code>", 
+  "type" : "CodeableConcept", 
+  "category" : ["CodeableConcept"], 
+  "subject" : "Reference",
+  "date" : "<dateTime>", 
+  "author" : ["Reference"], 
+  "title" : "<string>", 
+  "confidentiality" : "<code>", 
+  "attester" : [{ 
+    "mode" : "<code>", 
+    "time" : "<dateTime>", 
+    "party" : "Reference"
+  }],
+  "custodian" : "Reference",
+  "relatesTo" : [{ 
+    "code" : "<code>", 
+    "targetIdentifier" : "Identifier",
+    "targetReference" : "Reference"
+  }],
+  "event" : [{ 
+    "code" : ["CodeableConcept"], 
+    "period" : "Period", 
+    "detail" : ["Reference"]
+  }],
+  "section" : [{ 
+    "title" : "<string>", 
+    "code" : "CodeableConcept", 
+    "author" : ["Reference"],
+    "focus" : "Reference",
+    "text" : "Narrative",
+    "mode" : "<code>", 
+    "orderedBy" : "CodeableConcept", 
+    "entry" : ["Reference"], 
+    "emptyReason" : "CodeableConcept", 
+    "section" : ["Section"] 
+  }]
+}

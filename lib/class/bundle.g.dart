@@ -80,9 +80,7 @@ Entry _$EntryFromJson(Map<String, dynamic> json) {
             (e) => e == null ? null : Link.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     fullUrl: json['fullUrl'] as String,
-    resource: json['resource'] == null
-        ? null
-        : Patient.fromJson(json['resource'] as Map<String, dynamic>),
+    resource: json['resource'],
     search: json['search'] == null
         ? null
         : Search.fromJson(json['search'] as Map<String, dynamic>),
@@ -98,7 +96,7 @@ Entry _$EntryFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$EntryToJson(Entry instance) => <String, dynamic>{
       'link': instance.link?.map((e) => e?.toJson())?.toList(),
       'fullUrl': instance.fullUrl,
-      'resource': instance.resource?.toJson(),
+      'resource': instance.resource,
       'search': instance.search?.toJson(),
       'request': instance.request?.toJson(),
       'response': instance.response?.toJson(),
