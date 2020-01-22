@@ -49,3 +49,45 @@ class ActionButton extends StatelessWidget {
     );
   }
 }
+
+//PageButton, returns FlatButton with image, text, and link to next page, passed as arguments
+class ActionPageButton extends StatelessWidget {
+  final String imageDir;
+  final String buttonText;
+  final Widget link;
+  final Patient pt;
+
+  ActionPageButton(this.imageDir, this.buttonText, this.link, this.pt);
+
+  @override
+  Widget build(context) {
+    return FlatButton(
+        child: Column(
+          children: <Widget>[
+            ClipRRect(child: Image.asset(imageDir, height: 150, width: 150),),
+            Text(buttonText, style: TextStyle(color: Colors.white),),
+          ],
+        ),
+        onPressed: () {
+          pt == null ?
+          showDialog(
+              context: context,
+              builder: (BuildContext context){
+                return AlertDialog(
+                  title: Text("Please select a patient first"),
+                  actions:[
+                    FlatButton(
+                      child: Text("OK"),
+                      onPressed: (){
+                        Navigator.of(context).pop();
+                      },
+                    )
+                  ],
+                );
+              }
+          ) :
+          Navigator.push(context, MaterialPageRoute(builder: (context) => link),);
+        }
+    );
+  }
+}
