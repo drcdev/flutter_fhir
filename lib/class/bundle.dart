@@ -1,3 +1,4 @@
+import 'package:flutter_fhir/class/patient.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/class/identifier.dart';
@@ -46,7 +47,7 @@ class Bundle {
   List<Link> link;
 
   // Entry in the bundle - will have a resource or information
-  List<_Entry> entry;
+  List<Entry> entry;
 
   // Digital Signature
   Signature signature;
@@ -87,7 +88,7 @@ class Link {
 }
 
 @JsonSerializable(explicitToJson: true)
-class _Entry {
+class Entry {
 
   // Links related to this entry
   // Content as for Bundle.link
@@ -97,7 +98,7 @@ class _Entry {
   String fullUrl;
 
   // A resource in the bundle
-  Resource resource;
+  var resource;
 
   // C? Search related information
   Search search;
@@ -108,7 +109,7 @@ class _Entry {
   // C? Results of execution (transaction/batch/history)
   Response response;
 
-  _Entry(
+  Entry(
       {this.link,
         this.fullUrl,
         this.resource,
@@ -116,8 +117,8 @@ class _Entry {
         this.request,
         this.response});
 
-  factory _Entry.fromJson(Map<String, dynamic> json) => _$_EntryFromJson(json);
-  Map<String, dynamic> toJson() => _$_EntryToJson(this);
+  factory Entry.fromJson(Map<String, dynamic> json) => _$EntryFromJson(json);
+  Map<String, dynamic> toJson() => _$EntryToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)

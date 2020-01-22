@@ -35,8 +35,8 @@ Bundle _$BundleFromJson(Map<String, dynamic> json) {
             (e) => e == null ? null : Link.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     entry: (json['entry'] as List)
-        ?.map((e) =>
-            e == null ? null : _Entry.fromJson(e as Map<String, dynamic>))
+        ?.map(
+            (e) => e == null ? null : Entry.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     signature: json['signature'] == null
         ? null
@@ -73,8 +73,8 @@ Map<String, dynamic> _$LinkToJson(Link instance) => <String, dynamic>{
       'url': instance.url,
     };
 
-_Entry _$_EntryFromJson(Map<String, dynamic> json) {
-  return _Entry(
+Entry _$EntryFromJson(Map<String, dynamic> json) {
+  return Entry(
     link: (json['link'] as List)
         ?.map(
             (e) => e == null ? null : Link.fromJson(e as Map<String, dynamic>))
@@ -82,7 +82,7 @@ _Entry _$_EntryFromJson(Map<String, dynamic> json) {
     fullUrl: json['fullUrl'] as String,
     resource: json['resource'] == null
         ? null
-        : Resource.fromJson(json['resource'] as Map<String, dynamic>),
+        : Patient.fromJson(json['resource'] as Map<String, dynamic>),
     search: json['search'] == null
         ? null
         : Search.fromJson(json['search'] as Map<String, dynamic>),
@@ -95,7 +95,7 @@ _Entry _$_EntryFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$_EntryToJson(_Entry instance) => <String, dynamic>{
+Map<String, dynamic> _$EntryToJson(Entry instance) => <String, dynamic>{
       'link': instance.link?.map((e) => e?.toJson())?.toList(),
       'fullUrl': instance.fullUrl,
       'resource': instance.resource?.toJson(),

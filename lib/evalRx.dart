@@ -73,7 +73,7 @@ class _EvalRxState extends State<_EvalRx> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              ArgPageButton('images/parasite.png', 'Antiparasite Campaign', Parasite(), pt),
+              PageButton('images/parasite.png', 'Antiparasite Campaign', Parasite()),
               PageButton('images/vaccine.png', 'Immunizations', Vaccine()),
             ],
           ),
