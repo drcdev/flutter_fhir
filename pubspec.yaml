@@ -19,6 +19,8 @@ dependencies:
   shared_preferences: ^0.5.5
   path_provider: ^0.4.1
   random_string: ^1.1.0
+  sqflite:
+  path:
 
 dev_dependencies:
   flutter_test:
