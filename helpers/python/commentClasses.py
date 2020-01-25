@@ -7,17 +7,12 @@ def lowcc(string):
 
 url = "../"
 
-#paste class code from dart class in this file
-dartfile = "dartCode.txt"
-
-#paste json code from FHIR website in this file
-jsonfile = "jsonCode.txt"
-  
-with open(url + dartfile) as file:
-    dartclass = file.read()   
-with open(url+jsonfile) as file:
-    jsonclass = file.read()
+#obtain json schema
+json.schema = "fhir.schema.json"
+with open(url + json.schema) as file:
+    jsonschema = file.read()   
     
+resources = re.search((r'(?<=(Type",\n    "mapping": \{).*?(?\}\n")', first)).*(?=\")', first)))
 #split into the rest of the code, and find individual arguments
 dartstring = re.findall('(?<=\S ).*(?=;)', dartclass); 
 print(dartstring);
