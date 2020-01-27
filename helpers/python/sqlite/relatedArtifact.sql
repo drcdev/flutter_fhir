@@ -1,0 +1,16 @@
+{
+String
+
+RelatedArtifactextension
+List<Extension_type
+Elementlabel
+String_label
+Elementdisplay
+String_display
+Elementcitation
+String_citation
+Elementurl
+String_url
+Elementdocument
+Attachmentresource
+String

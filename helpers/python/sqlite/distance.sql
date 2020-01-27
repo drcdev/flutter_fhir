@@ -1,0 +1,14 @@
+{
+String
+
+Distanceextension
+List<Extensionvalue
+double_value
+Element_comparator
+Elementunit
+String_unit
+Elementsystem
+String_system
+Elementcode
+String_code
+Element

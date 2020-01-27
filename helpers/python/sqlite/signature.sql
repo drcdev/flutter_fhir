@@ -1,0 +1,16 @@
+{
+String
+
+Signatureextension
+List<Extensiontype
+List<Codingwhen
+DateTime_when
+Elementwho
+ReferenceonBehalfOf
+ReferencetargetFormat
+String_targetFormat
+ElementsigFormat
+String_sigFormat
+Elementdata
+String_data
+Element

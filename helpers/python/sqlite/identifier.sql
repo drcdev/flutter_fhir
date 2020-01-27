@@ -1,0 +1,13 @@
+{
+String
+
+Identifierextension
+List<Extension_use
+Elementtype
+CodeableConceptsystem
+String_system
+Elementvalue
+String_value
+Elementperiod
+Periodassigner
+Reference

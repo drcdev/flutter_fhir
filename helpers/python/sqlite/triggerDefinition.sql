@@ -1,0 +1,14 @@
+{
+String
+
+TriggerDefinitionextension
+List<Extension_type
+Elementname
+String_name
+ElementtimingTiming
+TimingtimingReference
+Reference_timingDate
+Element_timingDateTime
+Elementdata
+List<DataRequirementcondition
+Expression

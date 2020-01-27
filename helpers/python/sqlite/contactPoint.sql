@@ -1,0 +1,12 @@
+{
+String
+
+ContactPointextension
+List<Extension_system
+Elementvalue
+String_value
+Element_use
+Elementrank
+int_rank
+Elementperiod
+Period

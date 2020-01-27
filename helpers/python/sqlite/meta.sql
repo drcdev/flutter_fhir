@@ -1,0 +1,14 @@
+{
+String
+
+Metaextension
+List<ExtensionversionId
+String_versionId
+ElementlastUpdated
+DateTime_lastUpdated
+Elementsource
+String_source
+Elementprofile
+List<Stringsecurity
+List<Codingtag
+List<Coding

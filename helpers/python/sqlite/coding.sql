@@ -1,0 +1,15 @@
+{
+String
+
+Codingextension
+List<Extensionsystem
+String_system
+Elementversion
+String_version
+Elementcode
+String_code
+Elementdisplay
+String_display
+ElementuserSelected
+bool_userSelected
+Element

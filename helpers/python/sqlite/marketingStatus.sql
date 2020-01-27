@@ -1,0 +1,12 @@
+{
+String
+
+MarketingStatusextension
+List<ExtensionmodifierExtension
+List<Extensioncountry
+CodeableConceptjurisdiction
+CodeableConceptstatus
+CodeableConceptdateRange
+PeriodrestoreDate
+StringTime_restoreDate
+Element
