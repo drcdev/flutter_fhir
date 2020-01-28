@@ -20,7 +20,15 @@ Endpoint _$EndpointFromJson(Map<String, dynamic> json) {
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     identifier: (json['identifier'] as List)
         ?.map((e) =>
@@ -62,6 +70,9 @@ Map<String, dynamic> _$EndpointToJson(Endpoint instance) => <String, dynamic>{
       'language': instance.language,
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
       'connectionType': instance.connectionType?.toJson(),

@@ -15,47 +15,27 @@ Practitioner _$PractitionerFromJson(Map<String, dynamic> json) {
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
     language: json['language'] as String,
-    identifier: (json['identifier'] as List)
-        ?.map((e) =>
-            e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    text: json['text'] == null
+        ? null
+        : Narrative.fromJson(json['text'] as Map<String, dynamic>),
+    contained: json['contained'],
+    extension: json['extension'],
+    modifierExtension: json['modifierExtension'],
+    identifier: json['identifier'],
     active: json['active'] as bool,
-    name: (json['name'] as List)
-        ?.map((e) =>
-            e == null ? null : HumanName.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    telecom: (json['telecom'] as List)
-        ?.map((e) =>
-            e == null ? null : ContactPoint.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    address: (json['address'] as List)
-        ?.map((e) =>
-            e == null ? null : Address.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    name: json['name'],
+    telecom: json['telecom'],
+    address: json['address'],
     gender: json['gender'] as String,
     birthDate: json['birthDate'] as String,
-    photo: (json['photo'] as List)
-        ?.map((e) =>
-            e == null ? null : Attachment.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    qualification: (json['qualification'] as List)
-        ?.map((e) => e == null
-            ? null
-            : Qualification.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    communication: (json['communication'] as List)
-        ?.map((e) => e == null
-            ? null
-            : CodeableConcept.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    photo: json['photo'],
+    qualification: json['qualification'],
+    communication: json['communication'],
   )
-    ..text = json['text'] == null
-        ? null
-        : Narrative.fromJson(json['text'] as Map<String, dynamic>)
-    ..contained = (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
-        ?.toList();
+    ..addresses = json['addresses']
+    ..not = json['not']
+    ..entered = json['entered']
+    ..as = json['as'];
 }
 
 Map<String, dynamic> _$PractitionerToJson(Practitioner instance) =>
@@ -66,23 +46,37 @@ Map<String, dynamic> _$PractitionerToJson(Practitioner instance) =>
       'implicitRules': instance.implicitRules,
       'language': instance.language,
       'text': instance.text?.toJson(),
-      'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
-      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'contained': instance.contained,
+      'extension': instance.extension,
+      'modifierExtension': instance.modifierExtension,
+      'identifier': instance.identifier,
       'active': instance.active,
-      'name': instance.name?.map((e) => e?.toJson())?.toList(),
-      'telecom': instance.telecom?.map((e) => e?.toJson())?.toList(),
-      'address': instance.address?.map((e) => e?.toJson())?.toList(),
+      'name': instance.name,
+      'telecom': instance.telecom,
+      'addresses': instance.addresses,
+      'not': instance.not,
+      'entered': instance.entered,
+      'as': instance.as,
+      'address': instance.address,
       'gender': instance.gender,
       'birthDate': instance.birthDate,
-      'photo': instance.photo?.map((e) => e?.toJson())?.toList(),
-      'qualification':
-          instance.qualification?.map((e) => e?.toJson())?.toList(),
-      'communication':
-          instance.communication?.map((e) => e?.toJson())?.toList(),
+      'photo': instance.photo,
+      'qualification': instance.qualification,
+      'communication': instance.communication,
     };
 
-Qualification _$QualificationFromJson(Map<String, dynamic> json) {
-  return Qualification(
+Practitioner_Qualification _$Practitioner_QualificationFromJson(
+    Map<String, dynamic> json) {
+  return Practitioner_Qualification(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     identifier: (json['identifier'] as List)
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
@@ -99,8 +93,13 @@ Qualification _$QualificationFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$QualificationToJson(Qualification instance) =>
+Map<String, dynamic> _$Practitioner_QualificationToJson(
+        Practitioner_Qualification instance) =>
     <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'code': instance.code?.toJson(),
       'period': instance.period?.toJson(),

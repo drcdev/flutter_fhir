@@ -20,7 +20,15 @@ ServiceRequest _$ServiceRequestFromJson(Map<String, dynamic> json) {
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     identifier: (json['identifier'] as List)
         ?.map((e) =>
@@ -74,9 +82,7 @@ ServiceRequest _$ServiceRequestFromJson(Map<String, dynamic> json) {
     encounter: json['encounter'] == null
         ? null
         : Reference.fromJson(json['encounter'] as Map<String, dynamic>),
-    occurrenceDateTime: json['occurrenceDateTime'] == null
-        ? null
-        : DateTime.parse(json['occurrenceDateTime'] as String),
+    occurrenceDateTime: json['occurrenceDateTime'] as String,
     occurrencePeriod: json['occurrencePeriod'] == null
         ? null
         : Period.fromJson(json['occurrencePeriod'] as Map<String, dynamic>),
@@ -158,6 +164,9 @@ Map<String, dynamic> _$ServiceRequestToJson(ServiceRequest instance) =>
       'language': instance.language,
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'instantiatesCanonical': instance.instantiatesCanonical,
       'instantiatesUri': instance.instantiatesUri,
@@ -176,7 +185,7 @@ Map<String, dynamic> _$ServiceRequestToJson(ServiceRequest instance) =>
       'quantityRange': instance.quantityRange?.toJson(),
       'subject': instance.subject?.toJson(),
       'encounter': instance.encounter?.toJson(),
-      'occurrenceDateTime': instance.occurrenceDateTime?.toIso8601String(),
+      'occurrenceDateTime': instance.occurrenceDateTime,
       'occurrencePeriod': instance.occurrencePeriod?.toJson(),
       'occurrenceTiming': instance.occurrenceTiming?.toJson(),
       'asNeededBoolean': instance.asNeededBoolean,

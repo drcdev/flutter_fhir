@@ -8,6 +8,11 @@ part of 'annotation.dart';
 
 Annotation _$AnnotationFromJson(Map<String, dynamic> json) {
   return Annotation(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     authorReference: json['authorReference'] == null
         ? null
         : Reference.fromJson(json['authorReference'] as Map<String, dynamic>),
@@ -19,6 +24,8 @@ Annotation _$AnnotationFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$AnnotationToJson(Annotation instance) =>
     <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'authorReference': instance.authorReference?.toJson(),
       'authorString': instance.authorString,
       'time': instance.time?.toIso8601String(),

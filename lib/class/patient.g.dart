@@ -8,7 +8,9 @@ part of 'patient.dart';
 
 Patient _$PatientFromJson(Map<String, dynamic> json) {
   return Patient(
-    resourceType: json['resourceType'] as String,
+    resourceType: json['resourceType'] == null
+        ? null
+        : Patient.fromJson(json['resourceType'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -20,7 +22,15 @@ Patient _$PatientFromJson(Map<String, dynamic> json) {
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     identifier: (json['identifier'] as List)
         ?.map((e) =>
@@ -36,13 +46,9 @@ Patient _$PatientFromJson(Map<String, dynamic> json) {
             e == null ? null : ContactPoint.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     gender: json['gender'] as String,
-    birthDate: json['birthDate'] == null
-        ? null
-        : DateTime.parse(json['birthDate'] as String),
+    birthDate: json['birthDate'] as String,
     deceasedBoolean: json['deceasedBoolean'] as bool,
-    deceasedDateTime: json['deceasedDateTime'] == null
-        ? null
-        : DateTime.parse(json['deceasedDateTime'] as String),
+    deceasedDateTime: json['deceasedDateTime'] as String,
     address: (json['address'] as List)
         ?.map((e) =>
             e == null ? null : Address.fromJson(e as Map<String, dynamic>))
@@ -58,13 +64,14 @@ Patient _$PatientFromJson(Map<String, dynamic> json) {
             e == null ? null : Attachment.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     contact: (json['contact'] as List)
-        ?.map((e) =>
-            e == null ? null : Contact.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : Patient_Contact.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     communication: (json['communication'] as List)
         ?.map((e) => e == null
             ? null
-            : _Communication.fromJson(e as Map<String, dynamic>))
+            : Patient_Communication.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     generalPractitioner: (json['generalPractitioner'] as List)
         ?.map((e) =>
@@ -75,28 +82,31 @@ Patient _$PatientFromJson(Map<String, dynamic> json) {
         : Reference.fromJson(
             json['managingOrganization'] as Map<String, dynamic>),
     link: (json['link'] as List)
-        ?.map(
-            (e) => e == null ? null : Link.fromJson(e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : Patient_Link.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   );
 }
 
 Map<String, dynamic> _$PatientToJson(Patient instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
+      'resourceType': instance.resourceType?.toJson(),
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
       'language': instance.language,
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'active': instance.active,
       'name': instance.name?.map((e) => e?.toJson())?.toList(),
       'telecom': instance.telecom?.map((e) => e?.toJson())?.toList(),
       'gender': instance.gender,
-      'birthDate': instance.birthDate?.toIso8601String(),
+      'birthDate': instance.birthDate,
       'deceasedBoolean': instance.deceasedBoolean,
-      'deceasedDateTime': instance.deceasedDateTime?.toIso8601String(),
+      'deceasedDateTime': instance.deceasedDateTime,
       'address': instance.address?.map((e) => e?.toJson())?.toList(),
       'maritalStatus': instance.maritalStatus?.toJson(),
       'multipleBirthBoolean': instance.multipleBirthBoolean,
@@ -111,8 +121,17 @@ Map<String, dynamic> _$PatientToJson(Patient instance) => <String, dynamic>{
       'link': instance.link?.map((e) => e?.toJson())?.toList(),
     };
 
-Contact _$ContactFromJson(Map<String, dynamic> json) {
-  return Contact(
+Patient_Contact _$Patient_ContactFromJson(Map<String, dynamic> json) {
+  return Patient_Contact(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     relationship: (json['relationship'] as List)
         ?.map((e) => e == null
             ? null
@@ -138,7 +157,12 @@ Contact _$ContactFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ContactToJson(Contact instance) => <String, dynamic>{
+Map<String, dynamic> _$Patient_ContactToJson(Patient_Contact instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'relationship': instance.relationship?.map((e) => e?.toJson())?.toList(),
       'name': instance.name?.toJson(),
       'telecom': instance.telecom?.map((e) => e?.toJson())?.toList(),
@@ -148,8 +172,18 @@ Map<String, dynamic> _$ContactToJson(Contact instance) => <String, dynamic>{
       'period': instance.period?.toJson(),
     };
 
-_Communication _$_CommunicationFromJson(Map<String, dynamic> json) {
-  return _Communication(
+Patient_Communication _$Patient_CommunicationFromJson(
+    Map<String, dynamic> json) {
+  return Patient_Communication(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     language: json['language'] == null
         ? null
         : CodeableConcept.fromJson(json['language'] as Map<String, dynamic>),
@@ -157,14 +191,28 @@ _Communication _$_CommunicationFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$_CommunicationToJson(_Communication instance) =>
+Map<String, dynamic> _$Patient_CommunicationToJson(
+        Patient_Communication instance) =>
     <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'language': instance.language?.toJson(),
       'preferred': instance.preferred,
     };
 
-Link _$LinkFromJson(Map<String, dynamic> json) {
-  return Link(
+Patient_Link _$Patient_LinkFromJson(Map<String, dynamic> json) {
+  return Patient_Link(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     other: json['other'] == null
         ? null
         : Reference.fromJson(json['other'] as Map<String, dynamic>),
@@ -172,7 +220,12 @@ Link _$LinkFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$LinkToJson(Link instance) => <String, dynamic>{
+Map<String, dynamic> _$Patient_LinkToJson(Patient_Link instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'other': instance.other?.toJson(),
       'type': instance.type,
     };

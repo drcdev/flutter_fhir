@@ -21,7 +21,15 @@ MedicationAdministration _$MedicationAdministrationFromJson(
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     identifier: (json['identifier'] as List)
         ?.map((e) =>
@@ -60,15 +68,15 @@ MedicationAdministration _$MedicationAdministrationFromJson(
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    effectiveDateTime: json['effectiveDateTime'] == null
-        ? null
-        : DateTime.parse(json['effectiveDateTime'] as String),
+    effectiveDateTime: json['effectiveDateTime'] as String,
     effectivePeriod: json['effectivePeriod'] == null
         ? null
         : Period.fromJson(json['effectivePeriod'] as Map<String, dynamic>),
     performer: (json['performer'] as List)
-        ?.map((e) =>
-            e == null ? null : _Performer.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : MedicationAdministration_Performer.fromJson(
+                e as Map<String, dynamic>))
         ?.toList(),
     reasonCode: (json['reasonCode'] as List)
         ?.map((e) => e == null
@@ -92,7 +100,8 @@ MedicationAdministration _$MedicationAdministrationFromJson(
         ?.toList(),
     dosage: json['dosage'] == null
         ? null
-        : Dosage.fromJson(json['dosage'] as Map<String, dynamic>),
+        : MedicationAdministration_Dosage.fromJson(
+            json['dosage'] as Map<String, dynamic>),
     eventHistory: (json['eventHistory'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
@@ -110,6 +119,9 @@ Map<String, dynamic> _$MedicationAdministrationToJson(
       'language': instance.language,
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'instantiates': instance.instantiates,
       'partOf': instance.partOf?.map((e) => e?.toJson())?.toList(),
@@ -122,7 +134,7 @@ Map<String, dynamic> _$MedicationAdministrationToJson(
       'context': instance.context?.toJson(),
       'supportingInformation':
           instance.supportingInformation?.map((e) => e?.toJson())?.toList(),
-      'effectiveDateTime': instance.effectiveDateTime?.toIso8601String(),
+      'effectiveDateTime': instance.effectiveDateTime,
       'effectivePeriod': instance.effectivePeriod?.toJson(),
       'performer': instance.performer?.map((e) => e?.toJson())?.toList(),
       'reasonCode': instance.reasonCode?.map((e) => e?.toJson())?.toList(),
@@ -135,8 +147,18 @@ Map<String, dynamic> _$MedicationAdministrationToJson(
       'eventHistory': instance.eventHistory?.map((e) => e?.toJson())?.toList(),
     };
 
-_Performer _$_PerformerFromJson(Map<String, dynamic> json) {
-  return _Performer(
+MedicationAdministration_Performer _$MedicationAdministration_PerformerFromJson(
+    Map<String, dynamic> json) {
+  return MedicationAdministration_Performer(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     function: json['function'] == null
         ? null
         : CodeableConcept.fromJson(json['function'] as Map<String, dynamic>),
@@ -146,14 +168,29 @@ _Performer _$_PerformerFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$_PerformerToJson(_Performer instance) =>
+Map<String, dynamic> _$MedicationAdministration_PerformerToJson(
+        MedicationAdministration_Performer instance) =>
     <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'function': instance.function?.toJson(),
       'actor': instance.actor?.toJson(),
     };
 
-Dosage _$DosageFromJson(Map<String, dynamic> json) {
-  return Dosage(
+MedicationAdministration_Dosage _$MedicationAdministration_DosageFromJson(
+    Map<String, dynamic> json) {
+  return MedicationAdministration_Dosage(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     text: json['text'] as String,
     site: json['site'] == null
         ? null
@@ -173,10 +210,22 @@ Dosage _$DosageFromJson(Map<String, dynamic> json) {
     rateQuantity: json['rateQuantity'] == null
         ? null
         : Quantity.fromJson(json['rateQuantity'] as Map<String, dynamic>),
-  );
+  )
+    ..dosage = json['dosage']
+    ..should = json['should']
+    ..the = json['the'];
 }
 
-Map<String, dynamic> _$DosageToJson(Dosage instance) => <String, dynamic>{
+Map<String, dynamic> _$MedicationAdministration_DosageToJson(
+        MedicationAdministration_Dosage instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'dosage': instance.dosage,
+      'should': instance.should,
+      'the': instance.the,
       'text': instance.text,
       'site': instance.site?.toJson(),
       'route': instance.route?.toJson(),

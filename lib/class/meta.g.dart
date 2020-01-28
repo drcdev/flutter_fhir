@@ -8,6 +8,11 @@ part of 'meta.dart';
 
 Meta _$MetaFromJson(Map<String, dynamic> json) {
   return Meta(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     versionId: json['versionId'] as String,
     lastUpdated: json['lastUpdated'] == null
         ? null
@@ -26,6 +31,8 @@ Meta _$MetaFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$MetaToJson(Meta instance) => <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'versionId': instance.versionId,
       'lastUpdated': instance.lastUpdated?.toIso8601String(),
       'source': instance.source,

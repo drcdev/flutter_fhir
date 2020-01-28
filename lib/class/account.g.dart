@@ -15,6 +15,21 @@ Account _$AccountFromJson(Map<String, dynamic> json) {
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
     language: json['language'] as String,
+    text: json['text'] == null
+        ? null
+        : Narrative.fromJson(json['text'] as Map<String, dynamic>),
+    contained: (json['contained'] as List)
+        ?.map((e) =>
+            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     identifier: (json['identifier'] as List)
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
@@ -32,28 +47,23 @@ Account _$AccountFromJson(Map<String, dynamic> json) {
         ? null
         : Period.fromJson(json['servicePeriod'] as Map<String, dynamic>),
     coverage: (json['coverage'] as List)
-        ?.map((e) =>
-            e == null ? null : Coverage.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : Account_Coverage.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     owner: json['owner'] == null
         ? null
         : Reference.fromJson(json['owner'] as Map<String, dynamic>),
     description: json['description'] as String,
     guarantor: (json['guarantor'] as List)
-        ?.map((e) =>
-            e == null ? null : Guarantor.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : Account_Guarantor.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     partOf: json['partOf'] == null
         ? null
         : Reference.fromJson(json['partOf'] as Map<String, dynamic>),
-  )
-    ..text = json['text'] == null
-        ? null
-        : Narrative.fromJson(json['text'] as Map<String, dynamic>)
-    ..contained = (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
-        ?.toList();
+  );
 }
 
 Map<String, dynamic> _$AccountToJson(Account instance) => <String, dynamic>{
@@ -64,6 +74,9 @@ Map<String, dynamic> _$AccountToJson(Account instance) => <String, dynamic>{
       'language': instance.language,
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
       'type': instance.type?.toJson(),
@@ -77,22 +90,47 @@ Map<String, dynamic> _$AccountToJson(Account instance) => <String, dynamic>{
       'partOf': instance.partOf?.toJson(),
     };
 
-Coverage _$CoverageFromJson(Map<String, dynamic> json) {
-  return Coverage(
-    coverage: json['coverage'] == null
-        ? null
-        : Reference.fromJson(json['coverage'] as Map<String, dynamic>),
+Account_Coverage _$Account_CoverageFromJson(Map<String, dynamic> json) {
+  return Account_Coverage(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    coverage: json['coverage'],
     priority: json['priority'] as int,
-  );
+  )
+    ..only = json['only']
+    ..responsible = json['responsible'];
 }
 
-Map<String, dynamic> _$CoverageToJson(Coverage instance) => <String, dynamic>{
+Map<String, dynamic> _$Account_CoverageToJson(Account_Coverage instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'only': instance.only,
+      'responsible': instance.responsible,
       'coverage': instance.coverage?.toJson(),
       'priority': instance.priority,
     };
 
-Guarantor _$GuarantorFromJson(Map<String, dynamic> json) {
-  return Guarantor(
+Account_Guarantor _$Account_GuarantorFromJson(Map<String, dynamic> json) {
+  return Account_Guarantor(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     party: json['party'] == null
         ? null
         : Reference.fromJson(json['party'] as Map<String, dynamic>),
@@ -103,7 +141,12 @@ Guarantor _$GuarantorFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$GuarantorToJson(Guarantor instance) => <String, dynamic>{
+Map<String, dynamic> _$Account_GuarantorToJson(Account_Guarantor instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'party': instance.party?.toJson(),
       'onHold': instance.onHold,
       'period': instance.period?.toJson(),

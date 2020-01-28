@@ -34,6 +34,9 @@ I'm a newbie at coding, but I've tried to keep naming rules consistent (and cons
 7. For all references I have tried to include the type of reference which they allow.
 8. There are some json arguments named 'class' in the official documentation, I've renamed them\n 
     'classs' because that is a reserved word in flutter.
+9. I had to add a resourceList class - this is not official.
+10. Named optional parameters are not allowed to start with underscores. Will\n
+    need to decided how to change them. 
 
 ToDo: define canonical types\n
 Todo: understand initstate better, learn Future, async, await

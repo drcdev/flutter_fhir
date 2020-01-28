@@ -20,7 +20,15 @@ Organization _$OrganizationFromJson(Map<String, dynamic> json) {
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     identifier: (json['identifier'] as List)
         ?.map((e) =>
@@ -46,12 +54,13 @@ Organization _$OrganizationFromJson(Map<String, dynamic> json) {
         ? null
         : Reference.fromJson(json['partOf'] as Map<String, dynamic>),
     contact: (json['contact'] as List)
-        ?.map((e) =>
-            e == null ? null : Contact.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : Organization_Contact.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     endpoint: (json['endpoint'] as List)
         ?.map((e) =>
-            e == null ? null : Endpoint.fromJson(e as Map<String, dynamic>))
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   );
 }
@@ -65,6 +74,9 @@ Map<String, dynamic> _$OrganizationToJson(Organization instance) =>
       'language': instance.language,
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'active': instance.active,
       'type': instance.type?.map((e) => e?.toJson())?.toList(),
@@ -77,8 +89,17 @@ Map<String, dynamic> _$OrganizationToJson(Organization instance) =>
       'endpoint': instance.endpoint?.map((e) => e?.toJson())?.toList(),
     };
 
-Contact _$ContactFromJson(Map<String, dynamic> json) {
-  return Contact(
+Organization_Contact _$Organization_ContactFromJson(Map<String, dynamic> json) {
+  return Organization_Contact(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     purpose: json['purpose'] == null
         ? null
         : CodeableConcept.fromJson(json['purpose'] as Map<String, dynamic>),
@@ -95,7 +116,13 @@ Contact _$ContactFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ContactToJson(Contact instance) => <String, dynamic>{
+Map<String, dynamic> _$Organization_ContactToJson(
+        Organization_Contact instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'purpose': instance.purpose?.toJson(),
       'name': instance.name?.toJson(),
       'telecom': instance.telecom?.map((e) => e?.toJson())?.toList(),

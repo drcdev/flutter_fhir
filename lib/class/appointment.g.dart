@@ -20,7 +20,15 @@ Appointment _$AppointmentFromJson(Map<String, dynamic> json) {
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     identifier: (json['identifier'] as List)
         ?.map((e) =>
@@ -83,14 +91,15 @@ Appointment _$AppointmentFromJson(Map<String, dynamic> json) {
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     participant: (json['participant'] as List)
-        ?.map((e) =>
-            e == null ? null : Participant.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : Appointment_Participant.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     requestedPeriod: (json['requestedPeriod'] as List)
         ?.map((e) =>
             e == null ? null : Period.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-  );
+  )..also = json['also'];
 }
 
 Map<String, dynamic> _$AppointmentToJson(Appointment instance) =>
@@ -102,6 +111,9 @@ Map<String, dynamic> _$AppointmentToJson(Appointment instance) =>
       'language': instance.language,
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
       'cancelationReason': instance.cancelationReason?.toJson(),
@@ -126,12 +138,23 @@ Map<String, dynamic> _$AppointmentToJson(Appointment instance) =>
       'patientInstruction': instance.patientInstruction,
       'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
       'participant': instance.participant?.map((e) => e?.toJson())?.toList(),
+      'also': instance.also,
       'requestedPeriod':
           instance.requestedPeriod?.map((e) => e?.toJson())?.toList(),
     };
 
-Participant _$ParticipantFromJson(Map<String, dynamic> json) {
-  return Participant(
+Appointment_Participant _$Appointment_ParticipantFromJson(
+    Map<String, dynamic> json) {
+  return Appointment_Participant(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     type: (json['type'] as List)
         ?.map((e) => e == null
             ? null
@@ -148,8 +171,13 @@ Participant _$ParticipantFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ParticipantToJson(Participant instance) =>
+Map<String, dynamic> _$Appointment_ParticipantToJson(
+        Appointment_Participant instance) =>
     <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'type': instance.type?.map((e) => e?.toJson())?.toList(),
       'actor': instance.actor?.toJson(),
       'required': instance.required,

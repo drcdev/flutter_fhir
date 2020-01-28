@@ -8,6 +8,11 @@ part of 'identifier.dart';
 
 Identifier _$IdentifierFromJson(Map<String, dynamic> json) {
   return Identifier(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     use: json['use'] as String,
     type: json['type'] == null
         ? null
@@ -25,6 +30,8 @@ Identifier _$IdentifierFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$IdentifierToJson(Identifier instance) =>
     <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'use': instance.use,
       'type': instance.type?.toJson(),
       'system': instance.system,

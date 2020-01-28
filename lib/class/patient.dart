@@ -7,119 +7,210 @@ import 'package:path_provider/path_provider.dart';
 import 'package:random_string/random_string.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'package:flutter_fhir/class/address.dart';
-import 'package:flutter_fhir/class/attachment.dart';
-import 'package:flutter_fhir/class/codeableConcept.dart';
-import 'package:flutter_fhir/class/contactPoint.dart';
-import 'package:flutter_fhir/class/identifier.dart';
-import 'package:flutter_fhir/class/meta.dart';
 import 'package:flutter_fhir/class/period.dart';
 import 'package:flutter_fhir/class/reference.dart';
+import 'package:flutter_fhir/class/attachment.dart';
+import 'package:flutter_fhir/class/codeableConcept.dart';
+import 'package:flutter_fhir/class/address.dart';
+import 'package:flutter_fhir/class/contactPoint.dart';
 import 'package:flutter_fhir/class/humanName.dart';
+import 'package:flutter_fhir/class/identifier.dart';
+import 'package:flutter_fhir/class/extension.dart';
+import 'package:flutter_fhir/class/resourceList.dart';
+import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
+import 'package:flutter_fhir/class/meta.dart';
 
 part 'patient.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Patient {
-  String resourceType;
 
-  // Logical id of this artifact
-  String id;
 
-  // Metadata about the resource
-  Meta meta;
+// This is a Patient resource
+Patient resourceType;
 
-  // A set of rules under which this content was created
-  String implicitRules;
+// The logical id of the resource, as used in the URL for the resource. Once
+//  assigned, this value never changes.
+String id;
 
-  // Language of the resource content
-  String language;
+// The metadata about the resource. This is content that is maintained by the
+//  infrastructure. Changes to the content might not always be associated with
+//  version changes to the resource.
+Meta meta;
 
-  // Text summary of the resource, for human interpretation
-  Narrative text;
+// A reference to a set of rules that were followed when the resource was
+//  constructed, and which must be understood when processing the content. Often,
+//  this is a reference to an implementation guide that defines the special rules
+//  along with other profiles etc.
+String implicitRules;
 
-  // Contained, inline Resources
-  List<Resource> contained;
+// Extensions for implicitRules
+Element _implicitRules;
 
-  // An identifier for this patient
-  List<Identifier> identifier;
+// The base language in which the resource is written.
+String language;
 
-  // Whether this patient's record is in active use
-  bool active;
+// Extensions for language
+Element _language;
 
-  // A name associated with the patient
-  List<HumanName> name;
+// A human-readable narrative that contains a summary of the resource and can be
+//  used to represent the content of the resource to a human. The narrative need
+//  not encode all the structured data, but is required to contain sufficient
+//  detail to make it "clinically safe" for a human to just read the narrative.
+//  Resource definitions may define what content should be represented in the
+//  narrative to ensure clinical safety.
+Narrative text;
 
-  // A contact detail for the individual
-  List<ContactPoint> telecom;
+// These resources do not have an independent existence apart from the resource
+//  that contains them - they cannot be identified independently, and nor can they
+//  have their own independent transaction scope.
+List<ResourceList> contained;
 
-  // male | female | other | unknown
-  String gender;
+// May be used to represent additional information that is not part of the basic
+//  definition of the resource. To make the use of extensions safe and manageable,
+//  there is a strict set of governance  applied to the definition and use of
+//  extensions. Though any implementer can define an extension, there is a set of
+//  requirements that SHALL be met as part of the definition of the extension.
+List<Extension> extension;
 
-  // The date of birth for the individual
-  DateTime birthDate;
+// May be used to represent additional information that is not part of the basic
+//  definition of the resource and that modifies the understanding of the element
+//  that contains it and/or the understanding of the containing element's
+//  descendants. Usually modifier elements provide negation or qualification. To
+//  make the use of extensions safe and manageable, there is a strict set of
+//  governance applied to the definition and use of extensions. Though any
+//  implementer is allowed to define an extension, there is a set of requirements
+//  that SHALL be met as part of the definition of the extension. Applications
+//  processing a resource are required to check for modifier extensions.
+// Modifier
+//  extensions SHALL NOT change the meaning of any elements on Resource or
+//  DomainResource (including cannot change the meaning of modifierExtension itself).
+List<Extension> modifierExtension;
 
-  // deceased[x]: Indicates if the individual is deceased or not. One of these 2:
-  bool deceasedBoolean;
-  DateTime deceasedDateTime;
+// An identifier for this patient.
+List<Identifier> identifier;
 
-  // An address for the individual
-  List<Address> address;
+// Whether this patient record is in active use. Many systems use this property
+// to mark as non-current patients, such as those that have not been seen for a
+// period of time based on an organization's business rules. It is often used to
+// filter patient lists to exclude inactive patients Deceased patients may also
+//  be marked as inactive for the same reasons, but may be active for some time
+//  after death.
+bool active;
 
-  // Marital (civil) status of a patient
-  CodeableConcept maritalStatus;
+// Extensions for active
+Element _active;
 
-  // multipleBirth[x]: Whether patient is part of a multiple birth. One of these 2:
-  bool multipleBirthBoolean;
-  int multipleBirthInteger;
+// A name associated with the individual.
+List<HumanName> name;
 
-  // Image of the patient
-  List<Attachment> photo;
+// A contact detail (e.g. a telephone number or an email address) by which the
+//  individual may be contacted.
+List<ContactPoint> telecom;
 
-  // A contact party (e.g. guardian, partner, friend) for the patient
-  List<Contact> contact;
+// Administrative Gender - the gender that the patient is considered to have for
+//  administration and record keeping purposes.
+String gender; // <code> enum: male/female/other/unknown;
 
-  // A language which may be used to communicate with the patient about
-  // his or her health
-  List<_Communication> communication;
+// Extensions for gender
+Element _gender;
 
-  // Patient's nominated primary care provider
-  // Reference(Organization|Practitioner|PractitionerRole)
-  List<Reference> generalPractitioner;
+// The date of birth for the individual.
+String birthDate;
 
-  // Organization that is the custodian of the patient record
-  // Reference(Organization)
-  Reference managingOrganization;
+// Extensions for birthDate
+Element _birthDate;
 
-  // Link to another patient resource that concerns the same actual person
-  List<Link> link;
+// Indicates if the individual is deceased or not.
+bool deceasedBoolean; //  pattern: ^true|false$
 
-  Patient(
-      {this.resourceType,
-        this.id,
-        this.meta,
-        this.implicitRules,
-        this.language,
-        this.text,
-        this.contained,
-        this.identifier,
-        this.active,
-        this.name,
-        this.telecom,
-        this.gender,
-        this.birthDate,
-        this.deceasedBoolean,
-        this.deceasedDateTime,
-        this.address,
-        this.maritalStatus,
-        this.multipleBirthBoolean,
-        this.multipleBirthInteger,
-        this.photo,
-        this.contact,
-        this.communication,
-        this.generalPractitioner,
-        this.managingOrganization,
-        this.link});
+// Extensions for deceasedBoolean
+Element _deceasedBoolean;
+
+// Indicates if the individual is deceased or not.
+String deceasedDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+
+// Extensions for deceasedDateTime
+Element _deceasedDateTime;
+
+// An address for the individual.
+List<Address> address;
+
+// This field contains a patient's most recent marital (civil) status.
+CodeableConcept maritalStatus;
+
+// Indicates whether the patient is part of a multiple (boolean) or indicates the
+//  actual birth order (integer).
+bool multipleBirthBoolean; //  pattern: ^true|false$
+
+// Extensions for multipleBirthBoolean
+Element _multipleBirthBoolean;
+
+// Indicates whether the patient is part of a multiple (boolean) or indicates the
+//  actual birth order (integer).
+int multipleBirthInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
+
+// Extensions for multipleBirthInteger
+Element _multipleBirthInteger;
+
+// Image of the patient.
+List<Attachment> photo;
+
+// A contact party (e.g. guardian, partner, friend) for the patient.
+List<Patient_Contact> contact;
+
+// A language which may be used to communicate with the patient about his or her
+//  health.
+List<Patient_Communication> communication;
+
+// Patient's nominated care provider.
+List<Reference> generalPractitioner;
+
+// Organization that is the custodian of the patient record.
+Reference managingOrganization;
+
+// Link to another patient resource that concerns the same actual patient.
+List<Patient_Link> link;
+
+Patient(
+  {this.resourceType,
+    this.id,
+    this.meta,
+    this.implicitRules,
+    this._implicitRules,
+    this.language,
+    this._language,
+    this.text,
+    this.contained,
+    this.extension,
+    this.modifierExtension,
+    this.identifier,
+    this.active,
+    this._active,
+    this.name,
+    this.telecom,
+    this.gender,
+    this._gender,
+    this.birthDate,
+    this._birthDate,
+    this.deceasedBoolean,
+    this._deceasedBoolean,
+    this.deceasedDateTime,
+    this._deceasedDateTime,
+    this.address,
+    this.maritalStatus,
+    this.multipleBirthBoolean,
+    this._multipleBirthBoolean,
+    this.multipleBirthInteger,
+    this._multipleBirthInteger,
+    this.photo,
+    this.contact,
+    this.communication,
+    this.generalPractitioner,
+    this.managingOrganization,
+    this.link
+    });
 
   String printName(){
     return('${(this.name?.first?.family?.toString() ?? '')}'
@@ -173,73 +264,182 @@ Future<List<Patient>> readPtList() async {
 }
 
 @JsonSerializable(explicitToJson: true)
-class Contact {
+class Patient_Contact {
 
-  // The kind of relationship
-  List<CodeableConcept> relationship;
 
-  // A name associated with the contact person
-  HumanName name;
+// Unique id for the element within a resource (for internal references). This may
+//  be any string value that does not contain spaces.
+String id;
 
-  // A contact detail for the person
-  List<ContactPoint> telecom;
+// May be used to represent additional information that is not part of the basic
+//  definition of the element. To make the use of extensions safe and manageable,
+//  there is a strict set of governance  applied to the definition and use of
+//  extensions. Though any implementer can define an extension, there is a set of
+//  requirements that SHALL be met as part of the definition of the extension.
+List<Extension> extension;
 
-  // Address for the contact person
-  Address address;
+// May be used to represent additional information that is not part of the basic
+//  definition of the element and that modifies the understanding of the element in
+//  which it is contained and/or the understanding of the containing element's
+//  descendants. Usually modifier elements provide negation or qualification. To
+//  make the use of extensions safe and manageable, there is a strict set of
+//  governance applied to the definition and use of extensions. Though any
+//  implementer can define an extension, there is a set of requirements that SHALL
+//  be met as part of the definition of the extension. Applications processing a
+//  resource are required to check for modifier extensions.
+// Modifier extensions
+//  SHALL NOT change the meaning of any elements on Resource or DomainResource
+//  (including cannot change the meaning of modifierExtension itself).
+List<Extension> modifierExtension;
 
-  // male | female | other | unknown
-  String gender;
+// The nature of the relationship between the patient and the contact person.
+List<CodeableConcept> relationship;
 
-  // C? Organization that is associated with the contact
-  // Reference(Organization)
-  Reference organization;
+// A name associated with the contact person.
+HumanName name;
 
-  // The period during which this contact person or organization is valid to
-  // be contacted relating to this patient
-  Period period;
+// A contact detail for the person, e.g. a telephone number or an email address.
+List<ContactPoint> telecom;
 
-  Contact(
-      {this.relationship,
-        this.name,
-        this.telecom,
-        this.address,
-        this.gender,
-        this.organization,
-        this.period});
+// Address for the contact person.
+Address address;
 
-  factory Contact.fromJson(Map<String, dynamic> json) => _$ContactFromJson(json);
-  Map<String, dynamic> toJson() => _$ContactToJson(this);
+// Administrative Gender - the gender that the contact person is considered to have
+//  for administration and record keeping purposes.
+String gender; // <code> enum: male/female/other/unknown;
+
+// Extensions for gender
+Element _gender;
+
+// Organization on behalf of which the contact is acting or for which the contact
+//  is working.
+Reference organization;
+
+// The period during which this contact person or organization is valid to be
+//  contacted relating to this patient.
+Period period;
+
+Patient_Contact(
+  {this.id,
+    this.extension,
+    this.modifierExtension,
+    this.relationship,
+    this.name,
+    this.telecom,
+    this.address,
+    this.gender,
+    this._gender,
+    this.organization,
+    this.period
+    });
+
+  factory Patient_Contact.fromJson(Map<String, dynamic> json) => _$Patient_ContactFromJson(json);
+  Map<String, dynamic> toJson() => _$Patient_ContactToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class _Communication {
+class Patient_Communication {
 
-  // A language which may be used to communicate with the patient about
-  // his or her health
-  CodeableConcept language;
 
-  // R!  The language which can be used to communicate with the patient about
-  // his or her health
-  bool preferred;
+// Unique id for the element within a resource (for internal references). This may
+//  be any string value that does not contain spaces.
+String id;
 
-  _Communication({this.language, this.preferred});
+// May be used to represent additional information that is not part of the basic
+//  definition of the element. To make the use of extensions safe and manageable,
+//  there is a strict set of governance  applied to the definition and use of
+//  extensions. Though any implementer can define an extension, there is a set of
+//  requirements that SHALL be met as part of the definition of the extension.
+List<Extension> extension;
 
-  factory _Communication.fromJson(Map<String, dynamic> json) => _$_CommunicationFromJson(json);
-  Map<String, dynamic> toJson() => _$_CommunicationToJson(this);
+// May be used to represent additional information that is not part of the basic
+//  definition of the element and that modifies the understanding of the element in
+//  which it is contained and/or the understanding of the containing element's
+//  descendants. Usually modifier elements provide negation or qualification. To
+//  make the use of extensions safe and manageable, there is a strict set of
+//  governance applied to the definition and use of extensions. Though any
+//  implementer can define an extension, there is a set of requirements that SHALL
+//  be met as part of the definition of the extension. Applications processing a
+//  resource are required to check for modifier extensions.
+// Modifier extensions
+//  SHALL NOT change the meaning of any elements on Resource or DomainResource
+//  (including cannot change the meaning of modifierExtension itself).
+List<Extension> modifierExtension;
+
+// The ISO-639-1 alpha 2 code in lower case for the language, optionally followed
+//  by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g.
+//  "en" for English, or "en-US" for American English versus "en-EN" for England
+//  English.
+CodeableConcept language;
+
+// Indicates whether or not the patient prefers this language (over other languages
+//  he masters up a certain level).
+bool preferred;
+
+// Extensions for preferred
+Element _preferred;
+
+Patient_Communication(
+  {this.id,
+    this.extension,
+    this.modifierExtension,
+    this.language,
+    this.preferred,
+    this._preferred
+    });
+
+  factory Patient_Communication.fromJson(Map<String, dynamic> json) => _$Patient_CommunicationFromJson(json);
+  Map<String, dynamic> toJson() => _$Patient_CommunicationToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class Link {
+class Patient_Link {
 
-  // R!  The other patient or related person resource that the link refers to
-  // Reference(Patient|RelatedPerson)
-  Reference other;
 
-  // R!  replaced-by | replaces | refer | seealso
-  String type;
+// Unique id for the element within a resource (for internal references). This may
+//  be any string value that does not contain spaces.
+String id;
 
-  Link({this.other, this.type});
+// May be used to represent additional information that is not part of the basic
+//  definition of the element. To make the use of extensions safe and manageable,
+//  there is a strict set of governance  applied to the definition and use of
+//  extensions. Though any implementer can define an extension, there is a set of
+//  requirements that SHALL be met as part of the definition of the extension.
+List<Extension> extension;
 
-  factory Link.fromJson(Map<String, dynamic> json) => _$LinkFromJson(json);
-  Map<String, dynamic> toJson() => _$LinkToJson(this);
+// May be used to represent additional information that is not part of the basic
+//  definition of the element and that modifies the understanding of the element in
+//  which it is contained and/or the understanding of the containing element's
+//  descendants. Usually modifier elements provide negation or qualification. To
+//  make the use of extensions safe and manageable, there is a strict set of
+//  governance applied to the definition and use of extensions. Though any
+//  implementer can define an extension, there is a set of requirements that SHALL
+//  be met as part of the definition of the extension. Applications processing a
+//  resource are required to check for modifier extensions.
+// Modifier extensions
+//  SHALL NOT change the meaning of any elements on Resource or DomainResource
+//  (including cannot change the meaning of modifierExtension itself).
+List<Extension> modifierExtension;
+
+// The other patient resource that the link refers to.
+Reference other;
+
+// The type of link between this patient resource and another patient resource.
+String type; // <code> enum: replaced-by/replaces/refer/seealso;
+
+// Extensions for type
+Element _type;
+
+Patient_Link(
+  {this.id,
+    this.extension,
+    this.modifierExtension,
+    this.other,
+    this.type,
+    this._type
+    });
+
+  factory Patient_Link.fromJson(Map<String, dynamic> json) => _$Patient_LinkFromJson(json);
+  Map<String, dynamic> toJson() => _$Patient_LinkToJson(this);
 }
+

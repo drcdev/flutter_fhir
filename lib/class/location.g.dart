@@ -20,7 +20,15 @@ Location _$LocationFromJson(Map<String, dynamic> json) {
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     identifier: (json['identifier'] as List)
         ?.map((e) =>
@@ -43,11 +51,16 @@ Location _$LocationFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : ContactPoint.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    address: json['address'] as String,
-    physicalType: json['physicalType'] as String,
+    address: json['address'] == null
+        ? null
+        : Address.fromJson(json['address'] as Map<String, dynamic>),
+    physicalType: json['physicalType'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['physicalType'] as Map<String, dynamic>),
     position: json['position'] == null
         ? null
-        : Position.fromJson(json['position'] as Map<String, dynamic>),
+        : Location_Position.fromJson(json['position'] as Map<String, dynamic>),
     managingOrganization: json['managingOrganization'] == null
         ? null
         : Reference.fromJson(
@@ -58,7 +71,7 @@ Location _$LocationFromJson(Map<String, dynamic> json) {
     hoursOfOperation: (json['hoursOfOperation'] as List)
         ?.map((e) => e == null
             ? null
-            : HoursOfOperation.fromJson(e as Map<String, dynamic>))
+            : Location_HoursOfOperation.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     availabilityExceptions: json['availabilityExceptions'] as String,
     endpoint: (json['endpoint'] as List)
@@ -76,6 +89,9 @@ Map<String, dynamic> _$LocationToJson(Location instance) => <String, dynamic>{
       'language': instance.language,
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
       'operationalStatus': instance.operationalStatus?.toJson(),
@@ -85,8 +101,8 @@ Map<String, dynamic> _$LocationToJson(Location instance) => <String, dynamic>{
       'mode': instance.mode,
       'type': instance.type?.map((e) => e?.toJson())?.toList(),
       'telecom': instance.telecom?.map((e) => e?.toJson())?.toList(),
-      'address': instance.address,
-      'physicalType': instance.physicalType,
+      'address': instance.address?.toJson(),
+      'physicalType': instance.physicalType?.toJson(),
       'position': instance.position?.toJson(),
       'managingOrganization': instance.managingOrganization?.toJson(),
       'partOf': instance.partOf?.toJson(),
@@ -96,37 +112,62 @@ Map<String, dynamic> _$LocationToJson(Location instance) => <String, dynamic>{
       'endpoint': instance.endpoint?.map((e) => e?.toJson())?.toList(),
     };
 
-Position _$PositionFromJson(Map<String, dynamic> json) {
-  return Position(
+Location_Position _$Location_PositionFromJson(Map<String, dynamic> json) {
+  return Location_Position(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     longitude: (json['longitude'] as num)?.toDouble(),
     latitude: (json['latitude'] as num)?.toDouble(),
     altitude: (json['altitude'] as num)?.toDouble(),
   );
 }
 
-Map<String, dynamic> _$PositionToJson(Position instance) => <String, dynamic>{
+Map<String, dynamic> _$Location_PositionToJson(Location_Position instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'longitude': instance.longitude,
       'latitude': instance.latitude,
       'altitude': instance.altitude,
     };
 
-HoursOfOperation _$HoursOfOperationFromJson(Map<String, dynamic> json) {
-  return HoursOfOperation(
+Location_HoursOfOperation _$Location_HoursOfOperationFromJson(
+    Map<String, dynamic> json) {
+  return Location_HoursOfOperation(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     daysOfWeek: (json['daysOfWeek'] as List)?.map((e) => e as String)?.toList(),
     allDay: json['allDay'] as bool,
-    openingTime: json['openingTime'] == null
-        ? null
-        : DateTime.parse(json['openingTime'] as String),
-    closingTime: json['closingTime'] == null
-        ? null
-        : DateTime.parse(json['closingTime'] as String),
+    openingTime: json['openingTime'] as String,
+    closingTime: json['closingTime'] as String,
   );
 }
 
-Map<String, dynamic> _$HoursOfOperationToJson(HoursOfOperation instance) =>
+Map<String, dynamic> _$Location_HoursOfOperationToJson(
+        Location_HoursOfOperation instance) =>
     <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'daysOfWeek': instance.daysOfWeek,
       'allDay': instance.allDay,
-      'openingTime': instance.openingTime?.toIso8601String(),
-      'closingTime': instance.closingTime?.toIso8601String(),
+      'openingTime': instance.openingTime,
+      'closingTime': instance.closingTime,
     };

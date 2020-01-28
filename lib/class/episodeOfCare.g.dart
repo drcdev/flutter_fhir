@@ -20,7 +20,15 @@ EpisodeOfCare _$EpisodeOfCareFromJson(Map<String, dynamic> json) {
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     identifier: (json['identifier'] as List)
         ?.map((e) =>
@@ -30,7 +38,7 @@ EpisodeOfCare _$EpisodeOfCareFromJson(Map<String, dynamic> json) {
     statusHistory: (json['statusHistory'] as List)
         ?.map((e) => e == null
             ? null
-            : StatusHistory.fromJson(e as Map<String, dynamic>))
+            : EpisodeOfCare_StatusHistory.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     type: (json['type'] as List)
         ?.map((e) => e == null
@@ -38,8 +46,9 @@ EpisodeOfCare _$EpisodeOfCareFromJson(Map<String, dynamic> json) {
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     diagnosis: (json['diagnosis'] as List)
-        ?.map((e) =>
-            e == null ? null : Diagnosis.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : EpisodeOfCare_Diagnosis.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     patient: json['patient'] == null
         ? null
@@ -78,6 +87,9 @@ Map<String, dynamic> _$EpisodeOfCareToJson(EpisodeOfCare instance) =>
       'language': instance.language,
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
       'statusHistory':
@@ -94,8 +106,18 @@ Map<String, dynamic> _$EpisodeOfCareToJson(EpisodeOfCare instance) =>
       'account': instance.account?.map((e) => e?.toJson())?.toList(),
     };
 
-StatusHistory _$StatusHistoryFromJson(Map<String, dynamic> json) {
-  return StatusHistory(
+EpisodeOfCare_StatusHistory _$EpisodeOfCare_StatusHistoryFromJson(
+    Map<String, dynamic> json) {
+  return EpisodeOfCare_StatusHistory(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     status: json['status'] as String,
     period: json['period'] == null
         ? null
@@ -103,14 +125,29 @@ StatusHistory _$StatusHistoryFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$StatusHistoryToJson(StatusHistory instance) =>
+Map<String, dynamic> _$EpisodeOfCare_StatusHistoryToJson(
+        EpisodeOfCare_StatusHistory instance) =>
     <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
       'period': instance.period?.toJson(),
     };
 
-Diagnosis _$DiagnosisFromJson(Map<String, dynamic> json) {
-  return Diagnosis(
+EpisodeOfCare_Diagnosis _$EpisodeOfCare_DiagnosisFromJson(
+    Map<String, dynamic> json) {
+  return EpisodeOfCare_Diagnosis(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     condition: json['condition'] == null
         ? null
         : Reference.fromJson(json['condition'] as Map<String, dynamic>),
@@ -121,7 +158,13 @@ Diagnosis _$DiagnosisFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$DiagnosisToJson(Diagnosis instance) => <String, dynamic>{
+Map<String, dynamic> _$EpisodeOfCare_DiagnosisToJson(
+        EpisodeOfCare_Diagnosis instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'condition': instance.condition?.toJson(),
       'role': instance.role?.toJson(),
       'rank': instance.rank,

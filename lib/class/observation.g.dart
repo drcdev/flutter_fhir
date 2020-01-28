@@ -20,7 +20,15 @@ Observation _$ObservationFromJson(Map<String, dynamic> json) {
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     identifier: (json['identifier'] as List)
         ?.map((e) =>
@@ -53,18 +61,14 @@ Observation _$ObservationFromJson(Map<String, dynamic> json) {
     encounter: json['encounter'] == null
         ? null
         : Reference.fromJson(json['encounter'] as Map<String, dynamic>),
-    effectiveDateTime: json['effectiveDateTime'] == null
-        ? null
-        : DateTime.parse(json['effectiveDateTime'] as String),
+    effectiveDateTime: json['effectiveDateTime'] as String,
     effectivePeriod: json['effectivePeriod'] == null
         ? null
         : Period.fromJson(json['effectivePeriod'] as Map<String, dynamic>),
     effectiveTiming: json['effectiveTiming'] == null
         ? null
         : Timing.fromJson(json['effectiveTiming'] as Map<String, dynamic>),
-    effectiveInstant: json['effectiveInstant'] == null
-        ? null
-        : DateTime.parse(json['effectiveInstant'] as String),
+    effectiveInstant: json['effectiveInstant'] as String,
     issued: json['issued'] == null
         ? null
         : DateTime.parse(json['issued'] as String),
@@ -93,9 +97,7 @@ Observation _$ObservationFromJson(Map<String, dynamic> json) {
         : SampledData.fromJson(
             json['valueSampledData'] as Map<String, dynamic>),
     valueTime: json['valueTime'] as String,
-    valueDateTime: json['valueDateTime'] == null
-        ? null
-        : DateTime.parse(json['valueDateTime'] as String),
+    valueDateTime: json['valueDateTime'] as String,
     valuePeriod: json['valuePeriod'] == null
         ? null
         : Period.fromJson(json['valuePeriod'] as Map<String, dynamic>),
@@ -127,7 +129,7 @@ Observation _$ObservationFromJson(Map<String, dynamic> json) {
     referenceRange: (json['referenceRange'] as List)
         ?.map((e) => e == null
             ? null
-            : ReferenceRange.fromJson(e as Map<String, dynamic>))
+            : Observation_ReferenceRange.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     hasMember: (json['hasMember'] as List)
         ?.map((e) =>
@@ -138,8 +140,9 @@ Observation _$ObservationFromJson(Map<String, dynamic> json) {
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     component: (json['component'] as List)
-        ?.map((e) =>
-            e == null ? null : Component.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : Observation_Component.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   );
 }
@@ -153,6 +156,9 @@ Map<String, dynamic> _$ObservationToJson(Observation instance) =>
       'language': instance.language,
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
       'partOf': instance.partOf?.map((e) => e?.toJson())?.toList(),
@@ -162,10 +168,10 @@ Map<String, dynamic> _$ObservationToJson(Observation instance) =>
       'subject': instance.subject?.toJson(),
       'focus': instance.focus?.map((e) => e?.toJson())?.toList(),
       'encounter': instance.encounter?.toJson(),
-      'effectiveDateTime': instance.effectiveDateTime?.toIso8601String(),
+      'effectiveDateTime': instance.effectiveDateTime,
       'effectivePeriod': instance.effectivePeriod?.toJson(),
       'effectiveTiming': instance.effectiveTiming?.toJson(),
-      'effectiveInstant': instance.effectiveInstant?.toIso8601String(),
+      'effectiveInstant': instance.effectiveInstant,
       'issued': instance.issued?.toIso8601String(),
       'performer': instance.performer?.map((e) => e?.toJson())?.toList(),
       'valueQuantity': instance.valueQuantity?.toJson(),
@@ -177,7 +183,7 @@ Map<String, dynamic> _$ObservationToJson(Observation instance) =>
       'valueRatio': instance.valueRatio?.toJson(),
       'valueSampledData': instance.valueSampledData?.toJson(),
       'valueTime': instance.valueTime,
-      'valueDateTime': instance.valueDateTime?.toIso8601String(),
+      'valueDateTime': instance.valueDateTime,
       'valuePeriod': instance.valuePeriod?.toJson(),
       'dataAbsentReason': instance.dataAbsentReason?.toJson(),
       'interpretation':
@@ -194,8 +200,18 @@ Map<String, dynamic> _$ObservationToJson(Observation instance) =>
       'component': instance.component?.map((e) => e?.toJson())?.toList(),
     };
 
-ReferenceRange _$ReferenceRangeFromJson(Map<String, dynamic> json) {
-  return ReferenceRange(
+Observation_ReferenceRange _$Observation_ReferenceRangeFromJson(
+    Map<String, dynamic> json) {
+  return Observation_ReferenceRange(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     low: json['low'] == null
         ? null
         : Quantity.fromJson(json['low'] as Map<String, dynamic>),
@@ -217,8 +233,13 @@ ReferenceRange _$ReferenceRangeFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ReferenceRangeToJson(ReferenceRange instance) =>
+Map<String, dynamic> _$Observation_ReferenceRangeToJson(
+        Observation_ReferenceRange instance) =>
     <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'low': instance.low?.toJson(),
       'high': instance.high?.toJson(),
       'type': instance.type?.toJson(),
@@ -227,8 +248,18 @@ Map<String, dynamic> _$ReferenceRangeToJson(ReferenceRange instance) =>
       'text': instance.text,
     };
 
-Component _$ComponentFromJson(Map<String, dynamic> json) {
-  return Component(
+Observation_Component _$Observation_ComponentFromJson(
+    Map<String, dynamic> json) {
+  return Observation_Component(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     code: json['code'] == null
         ? null
         : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
@@ -253,9 +284,7 @@ Component _$ComponentFromJson(Map<String, dynamic> json) {
         : SampledData.fromJson(
             json['valueSampledData'] as Map<String, dynamic>),
     valueTime: json['valueTime'] as String,
-    valueDateTime: json['valueDateTime'] == null
-        ? null
-        : DateTime.parse(json['valueDateTime'] as String),
+    valueDateTime: json['valueDateTime'] as String,
     valuePeriod: json['valuePeriod'] == null
         ? null
         : Period.fromJson(json['valuePeriod'] as Map<String, dynamic>),
@@ -271,12 +300,18 @@ Component _$ComponentFromJson(Map<String, dynamic> json) {
     referenceRange: (json['referenceRange'] as List)
         ?.map((e) => e == null
             ? null
-            : ReferenceRange.fromJson(e as Map<String, dynamic>))
+            : Observation_ReferenceRange.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   );
 }
 
-Map<String, dynamic> _$ComponentToJson(Component instance) => <String, dynamic>{
+Map<String, dynamic> _$Observation_ComponentToJson(
+        Observation_Component instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'code': instance.code?.toJson(),
       'valueQuantity': instance.valueQuantity?.toJson(),
       'valueCodeableConcept': instance.valueCodeableConcept?.toJson(),
@@ -287,7 +322,7 @@ Map<String, dynamic> _$ComponentToJson(Component instance) => <String, dynamic>{
       'valueRatio': instance.valueRatio?.toJson(),
       'valueSampledData': instance.valueSampledData?.toJson(),
       'valueTime': instance.valueTime,
-      'valueDateTime': instance.valueDateTime?.toIso8601String(),
+      'valueDateTime': instance.valueDateTime,
       'valuePeriod': instance.valuePeriod?.toJson(),
       'dataAbsentReason': instance.dataAbsentReason?.toJson(),
       'interpretation':

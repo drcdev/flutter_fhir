@@ -9,10 +9,6 @@ part of 'encounter.dart';
 Encounter _$EncounterFromJson(Map<String, dynamic> json) {
   return Encounter(
     resourceType: json['resourceType'] as String,
-    identifier: (json['identifier'] as List)
-        ?.map((e) =>
-            e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -24,89 +20,93 @@ Encounter _$EncounterFromJson(Map<String, dynamic> json) {
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    identifier: (json['identifier'] as List)
+        ?.map((e) =>
+            e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
     statusHistory: (json['statusHistory'] as List)
         ?.map((e) => e == null
             ? null
-            : StatusHistory.fromJson(e as Map<String, dynamic>))
+            : Encounter_StatusHistory.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    classs: json['classs'] == null
-        ? null
-        : Coding.fromJson(json['classs'] as Map<String, dynamic>),
-    classHistory: (json['classHistory'] as List)
-        ?.map((e) =>
-            e == null ? null : ClassHistory.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    type: (json['type'] as List)
+  )
+    ..Coding = json['Coding']
+    ..classHistory = (json['classHistory'] as List)
+        ?.map((e) => e == null
+            ? null
+            : Encounter_ClassHistory.fromJson(e as Map<String, dynamic>))
+        ?.toList()
+    ..type = (json['type'] as List)
         ?.map((e) => e == null
             ? null
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    serviceType: json['serviceType'] == null
+        ?.toList()
+    ..serviceType = json['serviceType'] == null
         ? null
-        : CodeableConcept.fromJson(json['serviceType'] as Map<String, dynamic>),
-    priority: json['priority'] == null
+        : CodeableConcept.fromJson(json['serviceType'] as Map<String, dynamic>)
+    ..priority = json['priority'] == null
         ? null
-        : CodeableConcept.fromJson(json['priority'] as Map<String, dynamic>),
-    subject: json['subject'] == null
+        : CodeableConcept.fromJson(json['priority'] as Map<String, dynamic>)
+    ..subject = json['subject'] == null
         ? null
-        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
-    episodeOfCare: (json['episodeOfCare'] as List)
-        ?.map((e) => e == null
-            ? null
-            : EpisodeOfCare.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    basedOn: (json['basedOn'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ServiceRequest.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    participant: (json['participant'] as List)
-        ?.map((e) =>
-            e == null ? null : Participant.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    appointment: (json['appointment'] as List)
+        : Reference.fromJson(json['subject'] as Map<String, dynamic>)
+    ..episodeOfCare = (json['episodeOfCare'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    period: json['period'] == null
+        ?.toList()
+    ..basedOn = (json['basedOn'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList()
+    ..participant = (json['participant'] as List)
+        ?.map((e) => e == null
+            ? null
+            : Encounter_Participant.fromJson(e as Map<String, dynamic>))
+        ?.toList()
+    ..appointment = (json['appointment'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList()
+    ..period = json['period'] == null
         ? null
-        : Period.fromJson(json['period'] as Map<String, dynamic>),
-    length: json['length'] as int,
-    reasonCode: (json['reasonCode'] as List)
+        : Period.fromJson(json['period'] as Map<String, dynamic>)
+    ..length = json['length']
+    ..reasonCode = (json['reasonCode'] as List)
         ?.map((e) => e == null
             ? null
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    reasonReference: (json['reasonReference'] as List)
+        ?.toList()
+    ..reasonReference = (json['reasonReference'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    diagnosis: (json['diagnosis'] as List)
-        ?.map((e) =>
-            e == null ? null : Diagnosis.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    account: (json['account'] as List)
+        ?.toList()
+    ..diagnosis = (json['diagnosis'] as List)
+        ?.map((e) => e == null
+            ? null
+            : Encounter_Diagnosis.fromJson(e as Map<String, dynamic>))
+        ?.toList()
+    ..account = (json['account'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    hospitalization: json['hospitalization'] == null
+        ?.toList()
+    ..hospitalization = json['hospitalization'] == null
         ? null
-        : Hospitalization.fromJson(
-            json['hospitalization'] as Map<String, dynamic>),
-    location: (json['location'] as List)
-        ?.map((e) =>
-            e == null ? null : Location.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    serviceProvider: json['serviceProvider'] == null
-        ? null
-        : Reference.fromJson(json['serviceProvider'] as Map<String, dynamic>),
-    partOf: json['partOf'] == null
-        ? null
-        : Reference.fromJson(json['partOf'] as Map<String, dynamic>),
-  );
+        : Encounter_Hospitalization.fromJson(
+            json['hospitalization'] as Map<String, dynamic>)
+    ..location = (json['location'] as List)?.map((e) => e == null ? null : Encounter_Location.fromJson(e as Map<String, dynamic>))?.toList()
+    ..serviceProvider = json['serviceProvider'] == null ? null : Reference.fromJson(json['serviceProvider'] as Map<String, dynamic>)
+    ..partOf = json['partOf'] == null ? null : Reference.fromJson(json['partOf'] as Map<String, dynamic>);
 }
 
 Map<String, dynamic> _$EncounterToJson(Encounter instance) => <String, dynamic>{
@@ -117,11 +117,14 @@ Map<String, dynamic> _$EncounterToJson(Encounter instance) => <String, dynamic>{
       'language': instance.language,
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
       'statusHistory':
           instance.statusHistory?.map((e) => e?.toJson())?.toList(),
-      'classs': instance.classs?.toJson(),
+      'Coding': instance.Coding,
       'classHistory': instance.classHistory?.map((e) => e?.toJson())?.toList(),
       'type': instance.type?.map((e) => e?.toJson())?.toList(),
       'serviceType': instance.serviceType?.toJson(),
@@ -145,8 +148,18 @@ Map<String, dynamic> _$EncounterToJson(Encounter instance) => <String, dynamic>{
       'partOf': instance.partOf?.toJson(),
     };
 
-StatusHistory _$StatusHistoryFromJson(Map<String, dynamic> json) {
-  return StatusHistory(
+Encounter_StatusHistory _$Encounter_StatusHistoryFromJson(
+    Map<String, dynamic> json) {
+  return Encounter_StatusHistory(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     status: json['status'] as String,
     period: json['period'] == null
         ? null
@@ -154,31 +167,59 @@ StatusHistory _$StatusHistoryFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$StatusHistoryToJson(StatusHistory instance) =>
+Map<String, dynamic> _$Encounter_StatusHistoryToJson(
+        Encounter_StatusHistory instance) =>
     <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
       'period': instance.period?.toJson(),
     };
 
-ClassHistory _$ClassHistoryFromJson(Map<String, dynamic> json) {
-  return ClassHistory(
-    classs: json['classs'] == null
+Encounter_ClassHistory _$Encounter_ClassHistoryFromJson(
+    Map<String, dynamic> json) {
+  return Encounter_ClassHistory(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  )
+    ..Coding = json['Coding']
+    ..period = json['period'] == null
         ? null
-        : Coding.fromJson(json['classs'] as Map<String, dynamic>),
-    period: json['period'] == null
-        ? null
-        : Period.fromJson(json['period'] as Map<String, dynamic>),
-  );
+        : Period.fromJson(json['period'] as Map<String, dynamic>);
 }
 
-Map<String, dynamic> _$ClassHistoryToJson(ClassHistory instance) =>
+Map<String, dynamic> _$Encounter_ClassHistoryToJson(
+        Encounter_ClassHistory instance) =>
     <String, dynamic>{
-      'classs': instance.classs?.toJson(),
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'Coding': instance.Coding,
       'period': instance.period?.toJson(),
     };
 
-Participant _$ParticipantFromJson(Map<String, dynamic> json) {
-  return Participant(
+Encounter_Participant _$Encounter_ParticipantFromJson(
+    Map<String, dynamic> json) {
+  return Encounter_Participant(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     type: (json['type'] as List)
         ?.map((e) => e == null
             ? null
@@ -193,15 +234,29 @@ Participant _$ParticipantFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ParticipantToJson(Participant instance) =>
+Map<String, dynamic> _$Encounter_ParticipantToJson(
+        Encounter_Participant instance) =>
     <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'type': instance.type?.map((e) => e?.toJson())?.toList(),
       'period': instance.period?.toJson(),
       'individual': instance.individual?.toJson(),
     };
 
-Diagnosis _$DiagnosisFromJson(Map<String, dynamic> json) {
-  return Diagnosis(
+Encounter_Diagnosis _$Encounter_DiagnosisFromJson(Map<String, dynamic> json) {
+  return Encounter_Diagnosis(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     condition: json['condition'] == null
         ? null
         : Reference.fromJson(json['condition'] as Map<String, dynamic>),
@@ -212,14 +267,30 @@ Diagnosis _$DiagnosisFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$DiagnosisToJson(Diagnosis instance) => <String, dynamic>{
+Map<String, dynamic> _$Encounter_DiagnosisToJson(
+        Encounter_Diagnosis instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'condition': instance.condition?.toJson(),
       'use': instance.use?.toJson(),
       'rank': instance.rank,
     };
 
-Hospitalization _$HospitalizationFromJson(Map<String, dynamic> json) {
-  return Hospitalization(
+Encounter_Hospitalization _$Encounter_HospitalizationFromJson(
+    Map<String, dynamic> json) {
+  return Encounter_Hospitalization(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     preAdmissionIdentifier: json['preAdmissionIdentifier'] == null
         ? null
         : Identifier.fromJson(
@@ -258,8 +329,13 @@ Hospitalization _$HospitalizationFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$HospitalizationToJson(Hospitalization instance) =>
+Map<String, dynamic> _$Encounter_HospitalizationToJson(
+        Encounter_Hospitalization instance) =>
     <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'preAdmissionIdentifier': instance.preAdmissionIdentifier?.toJson(),
       'origin': instance.origin?.toJson(),
       'admitSource': instance.admitSource?.toJson(),
@@ -274,8 +350,17 @@ Map<String, dynamic> _$HospitalizationToJson(Hospitalization instance) =>
       'dischargeDisposition': instance.dischargeDisposition?.toJson(),
     };
 
-Location _$LocationFromJson(Map<String, dynamic> json) {
-  return Location(
+Encounter_Location _$Encounter_LocationFromJson(Map<String, dynamic> json) {
+  return Encounter_Location(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     location: json['location'] == null
         ? null
         : Reference.fromJson(json['location'] as Map<String, dynamic>),
@@ -290,7 +375,12 @@ Location _$LocationFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$LocationToJson(Location instance) => <String, dynamic>{
+Map<String, dynamic> _$Encounter_LocationToJson(Encounter_Location instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'location': instance.location?.toJson(),
       'status': instance.status,
       'physicalType': instance.physicalType?.toJson(),

@@ -15,13 +15,6 @@ Bundle _$BundleFromJson(Map<String, dynamic> json) {
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
     language: json['language'] as String,
-    text: json['text'] == null
-        ? null
-        : Narrative.fromJson(json['text'] as Map<String, dynamic>),
-    contained: (json['contained'] as List)
-        ?.map((e) =>
-            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     identifier: json['identifier'] == null
         ? null
         : Identifier.fromJson(json['identifier'] as Map<String, dynamic>),
@@ -31,12 +24,12 @@ Bundle _$BundleFromJson(Map<String, dynamic> json) {
         : DateTime.parse(json['timestamp'] as String),
     total: json['total'] as int,
     link: (json['link'] as List)
-        ?.map(
-            (e) => e == null ? null : Link.fromJson(e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : Bundle_Link.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     entry: (json['entry'] as List)
-        ?.map(
-            (e) => e == null ? null : Entry.fromJson(e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : Bundle_Entry.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     signature: json['signature'] == null
         ? null
@@ -50,8 +43,6 @@ Map<String, dynamic> _$BundleToJson(Bundle instance) => <String, dynamic>{
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
       'language': instance.language,
-      'text': instance.text?.toJson(),
-      'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.toJson(),
       'type': instance.type,
       'timestamp': instance.timestamp?.toIso8601String(),
@@ -61,61 +52,126 @@ Map<String, dynamic> _$BundleToJson(Bundle instance) => <String, dynamic>{
       'signature': instance.signature?.toJson(),
     };
 
-Link _$LinkFromJson(Map<String, dynamic> json) {
-  return Link(
+Bundle_Link _$Bundle_LinkFromJson(Map<String, dynamic> json) {
+  return Bundle_Link(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     relation: json['relation'] as String,
     url: json['url'] as String,
   );
 }
 
-Map<String, dynamic> _$LinkToJson(Link instance) => <String, dynamic>{
+Map<String, dynamic> _$Bundle_LinkToJson(Bundle_Link instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'relation': instance.relation,
       'url': instance.url,
     };
 
-Entry _$EntryFromJson(Map<String, dynamic> json) {
-  return Entry(
+Bundle_Entry _$Bundle_EntryFromJson(Map<String, dynamic> json) {
+  return Bundle_Entry(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     link: (json['link'] as List)
-        ?.map(
-            (e) => e == null ? null : Link.fromJson(e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : Bundle_Link.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     fullUrl: json['fullUrl'] as String,
-    resource: json['resource'],
+    resource: json['resource'] == null
+        ? null
+        : ResourceList.fromJson(json['resource'] as Map<String, dynamic>),
     search: json['search'] == null
         ? null
-        : Search.fromJson(json['search'] as Map<String, dynamic>),
+        : Bundle_Search.fromJson(json['search'] as Map<String, dynamic>),
     request: json['request'] == null
         ? null
-        : Request.fromJson(json['request'] as Map<String, dynamic>),
+        : Bundle_Request.fromJson(json['request'] as Map<String, dynamic>),
     response: json['response'] == null
         ? null
-        : Response.fromJson(json['response'] as Map<String, dynamic>),
-  );
+        : Bundle_Response.fromJson(json['response'] as Map<String, dynamic>),
+  )
+    ..can = json['can']
+    ..empty = json['empty']
+    ..a = json['a']
+    ..not = json['not']
+    ..need = json['need']
+    ..from = json['from'];
 }
 
-Map<String, dynamic> _$EntryToJson(Entry instance) => <String, dynamic>{
+Map<String, dynamic> _$Bundle_EntryToJson(Bundle_Entry instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'link': instance.link?.map((e) => e?.toJson())?.toList(),
+      'can': instance.can,
+      'empty': instance.empty,
+      'a': instance.a,
+      'not': instance.not,
+      'need': instance.need,
+      'from': instance.from,
       'fullUrl': instance.fullUrl,
-      'resource': instance.resource,
+      'resource': instance.resource?.toJson(),
       'search': instance.search?.toJson(),
       'request': instance.request?.toJson(),
       'response': instance.response?.toJson(),
     };
 
-Search _$SearchFromJson(Map<String, dynamic> json) {
-  return Search(
+Bundle_Search _$Bundle_SearchFromJson(Map<String, dynamic> json) {
+  return Bundle_Search(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     mode: json['mode'] as String,
-    score: json['score'] as int,
+    score: (json['score'] as num)?.toDouble(),
   );
 }
 
-Map<String, dynamic> _$SearchToJson(Search instance) => <String, dynamic>{
+Map<String, dynamic> _$Bundle_SearchToJson(Bundle_Search instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'mode': instance.mode,
       'score': instance.score,
     };
 
-Request _$RequestFromJson(Map<String, dynamic> json) {
-  return Request(
+Bundle_Request _$Bundle_RequestFromJson(Map<String, dynamic> json) {
+  return Bundle_Request(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     method: json['method'] as String,
     url: json['url'] as String,
     ifNoneMatch: json['ifNoneMatch'] as String,
@@ -127,7 +183,12 @@ Request _$RequestFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$RequestToJson(Request instance) => <String, dynamic>{
+Map<String, dynamic> _$Bundle_RequestToJson(Bundle_Request instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'method': instance.method,
       'url': instance.url,
       'ifNoneMatch': instance.ifNoneMatch,
@@ -136,8 +197,17 @@ Map<String, dynamic> _$RequestToJson(Request instance) => <String, dynamic>{
       'ifNoneExist': instance.ifNoneExist,
     };
 
-Response _$ResponseFromJson(Map<String, dynamic> json) {
-  return Response(
+Bundle_Response _$Bundle_ResponseFromJson(Map<String, dynamic> json) {
+  return Bundle_Response(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     status: json['status'] as String,
     location: json['location'] as String,
     etag: json['etag'] as String,
@@ -146,11 +216,16 @@ Response _$ResponseFromJson(Map<String, dynamic> json) {
         : DateTime.parse(json['lastModified'] as String),
     outcome: json['outcome'] == null
         ? null
-        : Resource.fromJson(json['outcome'] as Map<String, dynamic>),
+        : ResourceList.fromJson(json['outcome'] as Map<String, dynamic>),
   );
 }
 
-Map<String, dynamic> _$ResponseToJson(Response instance) => <String, dynamic>{
+Map<String, dynamic> _$Bundle_ResponseToJson(Bundle_Response instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
       'location': instance.location,
       'etag': instance.etag,

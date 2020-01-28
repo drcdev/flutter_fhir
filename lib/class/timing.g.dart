@@ -8,12 +8,21 @@ part of 'timing.dart';
 
 Timing _$TimingFromJson(Map<String, dynamic> json) {
   return Timing(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     event: (json['event'] as List)
         ?.map((e) => e == null ? null : DateTime.parse(e as String))
         ?.toList(),
     repeat: json['repeat'] == null
         ? null
-        : Repeat.fromJson(json['repeat'] as Map<String, dynamic>),
+        : Timing_Repeat.fromJson(json['repeat'] as Map<String, dynamic>),
     code: json['code'] == null
         ? null
         : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
@@ -21,16 +30,27 @@ Timing _$TimingFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$TimingToJson(Timing instance) => <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'event': instance.event?.map((e) => e?.toIso8601String())?.toList(),
       'repeat': instance.repeat?.toJson(),
       'code': instance.code?.toJson(),
     };
 
-Repeat _$RepeatFromJson(Map<String, dynamic> json) {
-  return Repeat(
-    boundsDuration: json['boundsDuration'] == null
-        ? null
-        : Duration(microseconds: json['boundsDuration'] as int),
+Timing_Repeat _$Timing_RepeatFromJson(Map<String, dynamic> json) {
+  return Timing_Repeat(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    boundsDuration: json['boundsDuration'],
     boundsRange: json['boundsRange'] == null
         ? null
         : Range.fromJson(json['boundsRange'] as Map<String, dynamic>),
@@ -49,13 +69,17 @@ Repeat _$RepeatFromJson(Map<String, dynamic> json) {
     periodUnit: json['periodUnit'] as String,
     dayOfWeek: (json['dayOfWeek'] as List)?.map((e) => e as String)?.toList(),
     timeOfDay: (json['timeOfDay'] as List)?.map((e) => e as String)?.toList(),
-    when: (json['when'] as List)?.map((e) => e as String)?.toList(),
     offset: json['offset'] as int,
   );
 }
 
-Map<String, dynamic> _$RepeatToJson(Repeat instance) => <String, dynamic>{
-      'boundsDuration': instance.boundsDuration?.inMicroseconds,
+Map<String, dynamic> _$Timing_RepeatToJson(Timing_Repeat instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'boundsDuration': instance.boundsDuration,
       'boundsRange': instance.boundsRange?.toJson(),
       'boundsPeriod': instance.boundsPeriod?.toJson(),
       'count': instance.count,
@@ -70,6 +94,5 @@ Map<String, dynamic> _$RepeatToJson(Repeat instance) => <String, dynamic>{
       'periodUnit': instance.periodUnit,
       'dayOfWeek': instance.dayOfWeek,
       'timeOfDay': instance.timeOfDay,
-      'when': instance.when,
       'offset': instance.offset,
     };

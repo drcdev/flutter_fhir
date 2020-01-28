@@ -8,6 +8,11 @@ part of 'range.dart';
 
 Range _$RangeFromJson(Map<String, dynamic> json) {
   return Range(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     low: json['low'] == null
         ? null
         : Quantity.fromJson(json['low'] as Map<String, dynamic>),
@@ -18,6 +23,8 @@ Range _$RangeFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$RangeToJson(Range instance) => <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'low': instance.low?.toJson(),
       'high': instance.high?.toJson(),
     };

@@ -20,7 +20,15 @@ DiagnosticReport _$DiagnosticReportFromJson(Map<String, dynamic> json) {
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     identifier: (json['identifier'] as List)
         ?.map((e) =>
@@ -45,9 +53,7 @@ DiagnosticReport _$DiagnosticReportFromJson(Map<String, dynamic> json) {
     encounter: json['encounter'] == null
         ? null
         : Reference.fromJson(json['encounter'] as Map<String, dynamic>),
-    effectiveDateTime: json['effectiveDateTime'] == null
-        ? null
-        : DateTime.parse(json['effectiveDateTime'] as String),
+    effectiveDateTime: json['effectiveDateTime'] as String,
     effectivePeriod: json['effectivePeriod'] == null
         ? null
         : Period.fromJson(json['effectivePeriod'] as Map<String, dynamic>),
@@ -75,8 +81,9 @@ DiagnosticReport _$DiagnosticReportFromJson(Map<String, dynamic> json) {
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     media: (json['media'] as List)
-        ?.map(
-            (e) => e == null ? null : Media.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : DiagnosticReport_Media.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     conclusion: json['conclusion'] as String,
     conclusionCode: (json['conclusionCode'] as List)
@@ -100,6 +107,9 @@ Map<String, dynamic> _$DiagnosticReportToJson(DiagnosticReport instance) =>
       'language': instance.language,
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
@@ -107,7 +117,7 @@ Map<String, dynamic> _$DiagnosticReportToJson(DiagnosticReport instance) =>
       'code': instance.code?.toJson(),
       'subject': instance.subject?.toJson(),
       'encounter': instance.encounter?.toJson(),
-      'effectiveDateTime': instance.effectiveDateTime?.toIso8601String(),
+      'effectiveDateTime': instance.effectiveDateTime,
       'effectivePeriod': instance.effectivePeriod?.toJson(),
       'issued': instance.issued?.toIso8601String(),
       'performer': instance.performer?.map((e) => e?.toJson())?.toList(),
@@ -124,8 +134,18 @@ Map<String, dynamic> _$DiagnosticReportToJson(DiagnosticReport instance) =>
           instance.presentedForm?.map((e) => e?.toJson())?.toList(),
     };
 
-Media _$MediaFromJson(Map<String, dynamic> json) {
-  return Media(
+DiagnosticReport_Media _$DiagnosticReport_MediaFromJson(
+    Map<String, dynamic> json) {
+  return DiagnosticReport_Media(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     comment: json['comment'] as String,
     link: json['link'] == null
         ? null
@@ -133,7 +153,13 @@ Media _$MediaFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$MediaToJson(Media instance) => <String, dynamic>{
+Map<String, dynamic> _$DiagnosticReport_MediaToJson(
+        DiagnosticReport_Media instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'comment': instance.comment,
       'link': instance.link?.toJson(),
     };

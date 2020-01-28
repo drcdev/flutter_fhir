@@ -8,6 +8,11 @@ part of 'sampledData.dart';
 
 SampledData _$SampledDataFromJson(Map<String, dynamic> json) {
   return SampledData(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     origin: json['origin'] == null
         ? null
         : Quantity.fromJson(json['origin'] as Map<String, dynamic>),
@@ -22,6 +27,8 @@ SampledData _$SampledDataFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$SampledDataToJson(SampledData instance) =>
     <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'origin': instance.origin?.toJson(),
       'period': instance.period,
       'factor': instance.factor,

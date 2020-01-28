@@ -20,7 +20,15 @@ Condition _$ConditionFromJson(Map<String, dynamic> json) {
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     identifier: (json['identifier'] as List)
         ?.map((e) =>
@@ -56,10 +64,10 @@ Condition _$ConditionFromJson(Map<String, dynamic> json) {
     encounter: json['encounter'] == null
         ? null
         : Reference.fromJson(json['encounter'] as Map<String, dynamic>),
-    onsetDateTime: json['onsetDateTime'] == null
+    onsetDateTime: json['onsetDateTime'] as String,
+    onsetAge: json['onsetAge'] == null
         ? null
-        : DateTime.parse(json['onsetDateTime'] as String),
-    onsetAge: json['onsetAge'] as int,
+        : Age.fromJson(json['onsetAge'] as Map<String, dynamic>),
     onsetPeriod: json['onsetPeriod'] == null
         ? null
         : Period.fromJson(json['onsetPeriod'] as Map<String, dynamic>),
@@ -67,10 +75,10 @@ Condition _$ConditionFromJson(Map<String, dynamic> json) {
         ? null
         : Range.fromJson(json['onsetRange'] as Map<String, dynamic>),
     onsetString: json['onsetString'] as String,
-    abatementDateTime: json['abatementDateTime'] == null
+    abatementDateTime: json['abatementDateTime'] as String,
+    abatementAge: json['abatementAge'] == null
         ? null
-        : DateTime.parse(json['abatementDateTime'] as String),
-    abatementAge: json['abatementAge'] as int,
+        : Age.fromJson(json['abatementAge'] as Map<String, dynamic>),
     abatementPeriod: json['abatementPeriod'] == null
         ? null
         : Period.fromJson(json['abatementPeriod'] as Map<String, dynamic>),
@@ -88,12 +96,14 @@ Condition _$ConditionFromJson(Map<String, dynamic> json) {
         ? null
         : Reference.fromJson(json['asserter'] as Map<String, dynamic>),
     stage: (json['stage'] as List)
-        ?.map(
-            (e) => e == null ? null : Stage.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : Condition_Stage.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     evidence: (json['evidence'] as List)
-        ?.map((e) =>
-            e == null ? null : Evidence.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : Condition_Evidence.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     note: (json['note'] as List)
         ?.map((e) =>
@@ -110,6 +120,9 @@ Map<String, dynamic> _$ConditionToJson(Condition instance) => <String, dynamic>{
       'language': instance.language,
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'clinicalStatus': instance.clinicalStatus?.toJson(),
       'verificationStatus': instance.verificationStatus?.toJson(),
@@ -119,13 +132,13 @@ Map<String, dynamic> _$ConditionToJson(Condition instance) => <String, dynamic>{
       'bodySite': instance.bodySite?.map((e) => e?.toJson())?.toList(),
       'subject': instance.subject?.toJson(),
       'encounter': instance.encounter?.toJson(),
-      'onsetDateTime': instance.onsetDateTime?.toIso8601String(),
-      'onsetAge': instance.onsetAge,
+      'onsetDateTime': instance.onsetDateTime,
+      'onsetAge': instance.onsetAge?.toJson(),
       'onsetPeriod': instance.onsetPeriod?.toJson(),
       'onsetRange': instance.onsetRange?.toJson(),
       'onsetString': instance.onsetString,
-      'abatementDateTime': instance.abatementDateTime?.toIso8601String(),
-      'abatementAge': instance.abatementAge,
+      'abatementDateTime': instance.abatementDateTime,
+      'abatementAge': instance.abatementAge?.toJson(),
       'abatementPeriod': instance.abatementPeriod?.toJson(),
       'abatementRange': instance.abatementRange?.toJson(),
       'abatementString': instance.abatementString,
@@ -137,8 +150,17 @@ Map<String, dynamic> _$ConditionToJson(Condition instance) => <String, dynamic>{
       'note': instance.note?.map((e) => e?.toJson())?.toList(),
     };
 
-Stage _$StageFromJson(Map<String, dynamic> json) {
-  return Stage(
+Condition_Stage _$Condition_StageFromJson(Map<String, dynamic> json) {
+  return Condition_Stage(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     summary: json['summary'] == null
         ? null
         : CodeableConcept.fromJson(json['summary'] as Map<String, dynamic>),
@@ -152,14 +174,28 @@ Stage _$StageFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$StageToJson(Stage instance) => <String, dynamic>{
+Map<String, dynamic> _$Condition_StageToJson(Condition_Stage instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'summary': instance.summary?.toJson(),
       'assessment': instance.assessment?.map((e) => e?.toJson())?.toList(),
       'type': instance.type?.toJson(),
     };
 
-Evidence _$EvidenceFromJson(Map<String, dynamic> json) {
-  return Evidence(
+Condition_Evidence _$Condition_EvidenceFromJson(Map<String, dynamic> json) {
+  return Condition_Evidence(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     code: (json['code'] as List)
         ?.map((e) => e == null
             ? null
@@ -172,7 +208,12 @@ Evidence _$EvidenceFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$EvidenceToJson(Evidence instance) => <String, dynamic>{
+Map<String, dynamic> _$Condition_EvidenceToJson(Condition_Evidence instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'code': instance.code?.map((e) => e?.toJson())?.toList(),
       'detail': instance.detail?.map((e) => e?.toJson())?.toList(),
     };

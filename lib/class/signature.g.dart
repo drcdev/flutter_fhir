@@ -8,6 +8,11 @@ part of 'signature.dart';
 
 Signature _$SignatureFromJson(Map<String, dynamic> json) {
   return Signature(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     type: (json['type'] as List)
         ?.map((e) =>
             e == null ? null : Coding.fromJson(e as Map<String, dynamic>))
@@ -26,6 +31,8 @@ Signature _$SignatureFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$SignatureToJson(Signature instance) => <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'type': instance.type?.map((e) => e?.toJson())?.toList(),
       'when': instance.when?.toIso8601String(),
       'who': instance.who?.toJson(),

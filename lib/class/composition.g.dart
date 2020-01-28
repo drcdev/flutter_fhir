@@ -20,7 +20,15 @@ Composition _$CompositionFromJson(Map<String, dynamic> json) {
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     identifier: json['identifier'] == null
         ? null
@@ -37,6 +45,9 @@ Composition _$CompositionFromJson(Map<String, dynamic> json) {
     subject: json['subject'] == null
         ? null
         : Reference.fromJson(json['subject'] as Map<String, dynamic>),
+    encounter: json['encounter'] == null
+        ? null
+        : Reference.fromJson(json['encounter'] as Map<String, dynamic>),
     date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
     author: (json['author'] as List)
         ?.map((e) =>
@@ -45,27 +56,29 @@ Composition _$CompositionFromJson(Map<String, dynamic> json) {
     title: json['title'] as String,
     confidentiality: json['confidentiality'] as String,
     attester: (json['attester'] as List)
-        ?.map((e) =>
-            e == null ? null : Attester.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : Composition_Attester.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     custodian: json['custodian'] == null
         ? null
         : Reference.fromJson(json['custodian'] as Map<String, dynamic>),
     relatesTo: (json['relatesTo'] as List)
-        ?.map((e) =>
-            e == null ? null : RelatesTo.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : Composition_RelatesTo.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     event: (json['event'] as List)
-        ?.map(
-            (e) => e == null ? null : Event.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : Composition_Event.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     section: (json['section'] as List)
-        ?.map((e) =>
-            e == null ? null : Section.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : Composition_Section.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-  )..encounter = json['encounter'] == null
-      ? null
-      : Reference.fromJson(json['encounter'] as Map<String, dynamic>);
+  );
 }
 
 Map<String, dynamic> _$CompositionToJson(Composition instance) =>
@@ -77,6 +90,9 @@ Map<String, dynamic> _$CompositionToJson(Composition instance) =>
       'language': instance.language,
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.toJson(),
       'status': instance.status,
       'type': instance.type?.toJson(),
@@ -94,8 +110,17 @@ Map<String, dynamic> _$CompositionToJson(Composition instance) =>
       'section': instance.section?.map((e) => e?.toJson())?.toList(),
     };
 
-Attester _$AttesterFromJson(Map<String, dynamic> json) {
-  return Attester(
+Composition_Attester _$Composition_AttesterFromJson(Map<String, dynamic> json) {
+  return Composition_Attester(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     mode: json['mode'] as String,
     time: json['time'] == null ? null : DateTime.parse(json['time'] as String),
     party: json['party'] == null
@@ -104,14 +129,30 @@ Attester _$AttesterFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AttesterToJson(Attester instance) => <String, dynamic>{
+Map<String, dynamic> _$Composition_AttesterToJson(
+        Composition_Attester instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'mode': instance.mode,
       'time': instance.time?.toIso8601String(),
       'party': instance.party?.toJson(),
     };
 
-RelatesTo _$RelatesToFromJson(Map<String, dynamic> json) {
-  return RelatesTo(
+Composition_RelatesTo _$Composition_RelatesToFromJson(
+    Map<String, dynamic> json) {
+  return Composition_RelatesTo(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     code: json['code'] as String,
     targetIdentifier: json['targetIdentifier'] == null
         ? null
@@ -122,14 +163,29 @@ RelatesTo _$RelatesToFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$RelatesToToJson(RelatesTo instance) => <String, dynamic>{
+Map<String, dynamic> _$Composition_RelatesToToJson(
+        Composition_RelatesTo instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'code': instance.code,
       'targetIdentifier': instance.targetIdentifier?.toJson(),
       'targetReference': instance.targetReference?.toJson(),
     };
 
-Event _$EventFromJson(Map<String, dynamic> json) {
-  return Event(
+Composition_Event _$Composition_EventFromJson(Map<String, dynamic> json) {
+  return Composition_Event(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     code: (json['code'] as List)
         ?.map((e) => e == null
             ? null
@@ -145,14 +201,28 @@ Event _$EventFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$EventToJson(Event instance) => <String, dynamic>{
+Map<String, dynamic> _$Composition_EventToJson(Composition_Event instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'code': instance.code?.map((e) => e?.toJson())?.toList(),
       'period': instance.period?.toJson(),
       'detail': instance.detail?.map((e) => e?.toJson())?.toList(),
     };
 
-Section _$SectionFromJson(Map<String, dynamic> json) {
-  return Section(
+Composition_Section _$Composition_SectionFromJson(Map<String, dynamic> json) {
+  return Composition_Section(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     title: json['title'] as String,
     code: json['code'] == null
         ? null
@@ -179,13 +249,20 @@ Section _$SectionFromJson(Map<String, dynamic> json) {
         ? null
         : CodeableConcept.fromJson(json['emptyReason'] as Map<String, dynamic>),
     section: (json['section'] as List)
-        ?.map((e) =>
-            e == null ? null : Section.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : Composition_Section.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   );
 }
 
-Map<String, dynamic> _$SectionToJson(Section instance) => <String, dynamic>{
+Map<String, dynamic> _$Composition_SectionToJson(
+        Composition_Section instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'title': instance.title,
       'code': instance.code?.toJson(),
       'author': instance.author?.map((e) => e?.toJson())?.toList(),

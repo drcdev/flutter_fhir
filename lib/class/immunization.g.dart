@@ -20,7 +20,15 @@ Immunization _$ImmunizationFromJson(Map<String, dynamic> json) {
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     identifier: (json['identifier'] as List)
         ?.map((e) =>
@@ -40,9 +48,7 @@ Immunization _$ImmunizationFromJson(Map<String, dynamic> json) {
     encounter: json['encounter'] == null
         ? null
         : Reference.fromJson(json['encounter'] as Map<String, dynamic>),
-    occurrenceDateTime: json['occurrenceDateTime'] == null
-        ? null
-        : DateTime.parse(json['occurrenceDateTime'] as String),
+    occurrenceDateTime: json['occurrenceDateTime'] as String,
     occurrenceString: json['occurrenceString'] as String,
     recorded: json['recorded'] == null
         ? null
@@ -59,9 +65,7 @@ Immunization _$ImmunizationFromJson(Map<String, dynamic> json) {
         ? null
         : Reference.fromJson(json['manufacturer'] as Map<String, dynamic>),
     lotNumber: json['lotNumber'] as String,
-    expirationDate: json['expirationDate'] == null
-        ? null
-        : DateTime.parse(json['expirationDate'] as String),
+    expirationDate: json['expirationDate'] as String,
     site: json['site'] == null
         ? null
         : CodeableConcept.fromJson(json['site'] as Map<String, dynamic>),
@@ -72,8 +76,9 @@ Immunization _$ImmunizationFromJson(Map<String, dynamic> json) {
         ? null
         : Quantity.fromJson(json['doseQuantity'] as Map<String, dynamic>),
     performer: (json['performer'] as List)
-        ?.map((e) =>
-            e == null ? null : Performer.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : Immunization_Performer.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     note: (json['note'] as List)
         ?.map((e) =>
@@ -95,8 +100,9 @@ Immunization _$ImmunizationFromJson(Map<String, dynamic> json) {
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     education: (json['education'] as List)
-        ?.map((e) =>
-            e == null ? null : Education.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : Immunization_Education.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     programEligibility: (json['programEligibility'] as List)
         ?.map((e) => e == null
@@ -108,13 +114,14 @@ Immunization _$ImmunizationFromJson(Map<String, dynamic> json) {
         : CodeableConcept.fromJson(
             json['fundingSource'] as Map<String, dynamic>),
     reaction: (json['reaction'] as List)
-        ?.map((e) =>
-            e == null ? null : Reaction.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : Immunization_Reaction.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     protocolApplied: (json['protocolApplied'] as List)
         ?.map((e) => e == null
             ? null
-            : ProtocolApplied.fromJson(e as Map<String, dynamic>))
+            : Immunization_ProtocolApplied.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   );
 }
@@ -128,13 +135,16 @@ Map<String, dynamic> _$ImmunizationToJson(Immunization instance) =>
       'language': instance.language,
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
       'statusReason': instance.statusReason?.toJson(),
       'vaccineCode': instance.vaccineCode?.toJson(),
       'patient': instance.patient?.toJson(),
       'encounter': instance.encounter?.toJson(),
-      'occurrenceDateTime': instance.occurrenceDateTime?.toIso8601String(),
+      'occurrenceDateTime': instance.occurrenceDateTime,
       'occurrenceString': instance.occurrenceString,
       'recorded': instance.recorded?.toIso8601String(),
       'primarySource': instance.primarySource,
@@ -142,7 +152,7 @@ Map<String, dynamic> _$ImmunizationToJson(Immunization instance) =>
       'location': instance.location?.toJson(),
       'manufacturer': instance.manufacturer?.toJson(),
       'lotNumber': instance.lotNumber,
-      'expirationDate': instance.expirationDate?.toIso8601String(),
+      'expirationDate': instance.expirationDate,
       'site': instance.site?.toJson(),
       'route': instance.route?.toJson(),
       'doseQuantity': instance.doseQuantity?.toJson(),
@@ -163,8 +173,18 @@ Map<String, dynamic> _$ImmunizationToJson(Immunization instance) =>
           instance.protocolApplied?.map((e) => e?.toJson())?.toList(),
     };
 
-Performer _$PerformerFromJson(Map<String, dynamic> json) {
-  return Performer(
+Immunization_Performer _$Immunization_PerformerFromJson(
+    Map<String, dynamic> json) {
+  return Immunization_Performer(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     function: json['function'] == null
         ? null
         : CodeableConcept.fromJson(json['function'] as Map<String, dynamic>),
@@ -174,13 +194,29 @@ Performer _$PerformerFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$PerformerToJson(Performer instance) => <String, dynamic>{
+Map<String, dynamic> _$Immunization_PerformerToJson(
+        Immunization_Performer instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'function': instance.function?.toJson(),
       'actor': instance.actor?.toJson(),
     };
 
-Education _$EducationFromJson(Map<String, dynamic> json) {
-  return Education(
+Immunization_Education _$Immunization_EducationFromJson(
+    Map<String, dynamic> json) {
+  return Immunization_Education(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     documentType: json['documentType'] as String,
     reference: json['reference'] as String,
     publicationDate: json['publicationDate'] == null
@@ -192,15 +228,31 @@ Education _$EducationFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$EducationToJson(Education instance) => <String, dynamic>{
+Map<String, dynamic> _$Immunization_EducationToJson(
+        Immunization_Education instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'documentType': instance.documentType,
       'reference': instance.reference,
       'publicationDate': instance.publicationDate?.toIso8601String(),
       'presentationDate': instance.presentationDate?.toIso8601String(),
     };
 
-Reaction _$ReactionFromJson(Map<String, dynamic> json) {
-  return Reaction(
+Immunization_Reaction _$Immunization_ReactionFromJson(
+    Map<String, dynamic> json) {
+  return Immunization_Reaction(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
     detail: json['detail'] == null
         ? null
@@ -209,14 +261,30 @@ Reaction _$ReactionFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ReactionToJson(Reaction instance) => <String, dynamic>{
+Map<String, dynamic> _$Immunization_ReactionToJson(
+        Immunization_Reaction instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'date': instance.date?.toIso8601String(),
       'detail': instance.detail?.toJson(),
       'reported': instance.reported,
     };
 
-ProtocolApplied _$ProtocolAppliedFromJson(Map<String, dynamic> json) {
-  return ProtocolApplied(
+Immunization_ProtocolApplied _$Immunization_ProtocolAppliedFromJson(
+    Map<String, dynamic> json) {
+  return Immunization_ProtocolApplied(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     series: json['series'] as String,
     authority: json['authority'] == null
         ? null
@@ -233,8 +301,13 @@ ProtocolApplied _$ProtocolAppliedFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$ProtocolAppliedToJson(ProtocolApplied instance) =>
+Map<String, dynamic> _$Immunization_ProtocolAppliedToJson(
+        Immunization_ProtocolApplied instance) =>
     <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'series': instance.series,
       'authority': instance.authority?.toJson(),
       'targetDisease':

@@ -20,7 +20,15 @@ Medication _$MedicationFromJson(Map<String, dynamic> json) {
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : Resource.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     identifier: (json['identifier'] as List)
         ?.map((e) =>
@@ -40,12 +48,13 @@ Medication _$MedicationFromJson(Map<String, dynamic> json) {
         ? null
         : Ratio.fromJson(json['amount'] as Map<String, dynamic>),
     ingredient: (json['ingredient'] as List)
-        ?.map((e) =>
-            e == null ? null : Ingredient.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : Medication_Ingredient.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     batch: json['batch'] == null
         ? null
-        : Batch.fromJson(json['batch'] as Map<String, dynamic>),
+        : Medication_Batch.fromJson(json['batch'] as Map<String, dynamic>),
   );
 }
 
@@ -58,6 +67,9 @@ Map<String, dynamic> _$MedicationToJson(Medication instance) =>
       'language': instance.language,
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'code': instance.code?.toJson(),
       'status': instance.status,
@@ -68,8 +80,18 @@ Map<String, dynamic> _$MedicationToJson(Medication instance) =>
       'batch': instance.batch?.toJson(),
     };
 
-Ingredient _$IngredientFromJson(Map<String, dynamic> json) {
-  return Ingredient(
+Medication_Ingredient _$Medication_IngredientFromJson(
+    Map<String, dynamic> json) {
+  return Medication_Ingredient(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     itemCodeableConcept: json['itemCodeableConcept'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -84,16 +106,30 @@ Ingredient _$IngredientFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$IngredientToJson(Ingredient instance) =>
+Map<String, dynamic> _$Medication_IngredientToJson(
+        Medication_Ingredient instance) =>
     <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'itemCodeableConcept': instance.itemCodeableConcept?.toJson(),
       'itemReference': instance.itemReference?.toJson(),
       'isActive': instance.isActive,
       'strength': instance.strength?.toJson(),
     };
 
-Batch _$BatchFromJson(Map<String, dynamic> json) {
-  return Batch(
+Medication_Batch _$Medication_BatchFromJson(Map<String, dynamic> json) {
+  return Medication_Batch(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     lotNumber: json['lotNumber'] as String,
     expirationDate: json['expirationDate'] == null
         ? null
@@ -101,7 +137,12 @@ Batch _$BatchFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$BatchToJson(Batch instance) => <String, dynamic>{
+Map<String, dynamic> _$Medication_BatchToJson(Medication_Batch instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'lotNumber': instance.lotNumber,
       'expirationDate': instance.expirationDate?.toIso8601String(),
     };

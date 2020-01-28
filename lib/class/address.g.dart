@@ -8,6 +8,11 @@ part of 'address.dart';
 
 Address _$AddressFromJson(Map<String, dynamic> json) {
   return Address(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     use: json['use'] as String,
     type: json['type'] as String,
     text: json['text'] as String,
@@ -24,6 +29,8 @@ Address _$AddressFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$AddressToJson(Address instance) => <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'use': instance.use,
       'type': instance.type,
       'text': instance.text,
