@@ -197,14 +197,13 @@ for a in schema['definitions']:
     if('properties' in schema['definitions'][a] and str(a) != 'ResourceList'):
         
         if('_' not in a):
-
             #if it's not a subResource, write Dart code for automatic json
             dartCode = ''.join([dartCode, "part '", lowcc(a), ".g.dart';\n\n"])
             
         #add JsonSerializable code at top of Dart class
         dartCode = ''.join([dartCode, 
                             '@JsonSerializable(explicitToJson: true)\nclass ', 
-                            a, ' {\n'])
+                            a, ' {\n\n'])
         
         #Modifier description includes '\n\n' need to change it to a comment
         dartCode = dartCode.replace('\n\nModifier', '\n// Modifier')
@@ -213,10 +212,12 @@ for a in schema['definitions']:
         #it fits and based on that, print out specific information
         for b in schema['definitions'][a]['properties']:
 
+            list = []
+            
             #prints comment to the Dart code, formatted lines <= 80 characters
-            dartCode = ''.join([dartCode, 
-                                less80(schema['definitions'][a]['properties'][b]['description']), 
-                                '\n'])
+            # dartCode = ''.join([dartCode, 
+            #                     less80(schema['definitions'][a]['properties'][b]['description']), 
+            #                     '\n'])
                                         
             #if items is NOT included it means that the item is NOT an array/list
             if('items' not in schema['definitions'][a]['properties'][b]):
@@ -226,6 +227,9 @@ for a in schema['definitions']:
                     ref = schema['definitions'][a]['properties'][b]['$ref']
                     ref = ref.split('/definitions/')[1]
                     dartCode = ''.join([dartCode, primitiveDart(ref), ' ', b, ';\n'])
+                    
+                    if(not isPrimitive(ref)):
+                        list.append()
                     
                 #if  there's a const in it, print out that value
                 elif('const' in schema['definitions'][a]['properties'][b]):  
@@ -266,7 +270,13 @@ for a in schema['definitions']:
                                     primitiveDart(schema['definitions'][a]['properties'][b]['items']['$ref'].split('/definitions/')[1]), 
                                     '> ', b, ';\n'])   
     
-        dartCode = ''.join([dartCode, '\n}\n\n'])
+        dartCode = ''.join([dartCode, '\n', a, '(\n  {'])
+        for b in schema['definitions'][a]['properties']:
+            dartCode = ''.join([dartCode, 'this.', b, ',\n      '])
+        dartCode = ''.join([dartCode, '});\n\n  factory ', a, '.fromJson',
+                            '(Map<String, dynamic> json) => _$', a, 
+                            'FromJson(json);\n  Map<String, dynamic> toJson()',
+                            ' _$', a, 'ToJson(this);\n}\n\n'])
 
 dartCode = dartCode.replace(
     '// Specifies a value that the value in the instance SHALL follow - that is, any\n' +
@@ -304,3 +314,11 @@ dartCode = dartCode.replace(
 with open("dartFhirClasses.dart", "w", encoding="utf-8") as f:
     f.write(dartCode)
 f.close()
+
+dartCode = dartCode.split("part '")
+for code in dartCode:
+    g = re.search(r'(?<=\nclass\s).*(?=\s{)', code)
+    if(g != None):
+        with open("./class/" + lowcc(g.group(0)) + ".dart","w", encoding="utf-8") as f:
+            f.write("part '" + code)
+        f.close()
