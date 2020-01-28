@@ -43,6 +43,8 @@ ObservationDefinition _$ObservationDefinitionFromJson(
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    permittedDataType:
+        (json['permittedDataType'] as List)?.map((e) => e as String)?.toList(),
     multipleResultsAllowed: json['multipleResultsAllowed'] as bool,
     method: json['method'] == null
         ? null
@@ -93,6 +95,7 @@ Map<String, dynamic> _$ObservationDefinitionToJson(
       'category': instance.category?.map((e) => e?.toJson())?.toList(),
       'code': instance.code?.toJson(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'permittedDataType': instance.permittedDataType,
       'multipleResultsAllowed': instance.multipleResultsAllowed,
       'method': instance.method?.toJson(),
       'preferredReportName': instance.preferredReportName,

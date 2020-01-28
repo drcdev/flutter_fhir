@@ -288,11 +288,19 @@ SubstanceSourceMaterial_OrganismGeneral
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    kingdom: json['kingdom'],
-    phylum: json['phylum'],
-  )
-    ..CodeableConcept = json['CodeableConcept']
-    ..order = json['order'];
+    kingdom: json['kingdom'] == null
+        ? null
+        : CodeableConcept.fromJson(json['kingdom'] as Map<String, dynamic>),
+    phylum: json['phylum'] == null
+        ? null
+        : CodeableConcept.fromJson(json['phylum'] as Map<String, dynamic>),
+    classs: json['classs'] == null
+        ? null
+        : CodeableConcept.fromJson(json['classs'] as Map<String, dynamic>),
+    order: json['order'] == null
+        ? null
+        : CodeableConcept.fromJson(json['order'] as Map<String, dynamic>),
+  );
 }
 
 Map<String, dynamic> _$SubstanceSourceMaterial_OrganismGeneralToJson(
@@ -302,10 +310,10 @@ Map<String, dynamic> _$SubstanceSourceMaterial_OrganismGeneralToJson(
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'kingdom': instance.kingdom,
-      'phylum': instance.phylum,
-      'CodeableConcept': instance.CodeableConcept,
-      'order': instance.order,
+      'kingdom': instance.kingdom?.toJson(),
+      'phylum': instance.phylum?.toJson(),
+      'classs': instance.classs?.toJson(),
+      'order': instance.order?.toJson(),
     };
 
 SubstanceSourceMaterial_PartDescription

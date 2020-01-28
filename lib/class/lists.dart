@@ -9,10 +9,10 @@ import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
-part 'list.g.dart';
+part 'lists.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class List {
+class Lists {
 
 //  This is a List resource
 String resourceType;
@@ -117,7 +117,7 @@ List<List_Entry> entry;
 //  If the list is empty, why the list is empty.
 CodeableConcept emptyReason;
 
-List(
+Lists(
   {this.resourceType,
     this.id,
     this.meta,
@@ -142,8 +142,8 @@ List(
     this.emptyReason
     });
 
-  factory List.fromJson(Map<String, dynamic> json) => _$ListFromJson(json);
-  Map<String, dynamic> toJson() => _$ListToJson(this);
+  factory Lists.fromJson(Map<String, dynamic> json) => _$ListsFromJson(json);
+  Map<String, dynamic> toJson() => _$ListsToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)

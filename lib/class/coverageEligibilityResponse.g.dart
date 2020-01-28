@@ -36,6 +36,7 @@ CoverageEligibilityResponse _$CoverageEligibilityResponseFromJson(
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
+    purpose: (json['purpose'] as List)?.map((e) => e as String)?.toList(),
     patient: json['patient'] == null
         ? null
         : Reference.fromJson(json['patient'] as Map<String, dynamic>),
@@ -91,6 +92,7 @@ Map<String, dynamic> _$CoverageEligibilityResponseToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
+      'purpose': instance.purpose,
       'patient': instance.patient?.toJson(),
       'servicedDate': instance.servicedDate,
       'servicedPeriod': instance.servicedPeriod?.toJson(),

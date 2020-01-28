@@ -9,7 +9,6 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
-import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'device.g.dart';
@@ -17,189 +16,157 @@ part 'device.g.dart';
 @JsonSerializable(explicitToJson: true)
 class Device {
 
-
-// This is a Device resource
+//  This is a Device resource
 String resourceType;
 
-// The logical id of the resource, as used in the URL for the resource. Once
-//  assigned, this value never changes.
+//  The logical id of the resource, as used in the URL for the resource.
+// Once assigned, this value never changes.
 String id;
 
-// The metadata about the resource. This is content that is maintained by the
-//  infrastructure. Changes to the content might not always be associated with
-//  version changes to the resource.
+//  The metadata about the resource. This is content that is maintained by
+// the infrastructure. Changes to the content might not always be
+// associated with version changes to the resource.
 Meta meta;
 
-// A reference to a set of rules that were followed when the resource was
-//  constructed, and which must be understood when processing the content. Often,
-//  this is a reference to an implementation guide that defines the special rules
-//  along with other profiles etc.
+//  A reference to a set of rules that were followed when the resource was
+// constructed, and which must be understood when processing the content.
+// Often, this is a reference to an implementation guide that defines the
+// special rules along with other profiles etc.
 String implicitRules;
 
-// Extensions for implicitRules
-Element _implicitRules;
-
-// The base language in which the resource is written.
+//  The base language in which the resource is written.
 String language;
 
-// Extensions for language
-Element _language;
-
-// A human-readable narrative that contains a summary of the resource and can be
-//  used to represent the content of the resource to a human. The narrative need
-//  not encode all the structured data, but is required to contain sufficient
-//  detail to make it "clinically safe" for a human to just read the narrative.
-//  Resource definitions may define what content should be represented in the
-//  narrative to ensure clinical safety.
+//  A human-readable narrative that contains a summary of the resource and
+// can be used to represent the content of the resource to a human. The
+// narrative need not encode all the structured data, but is required to
+// contain sufficient detail to make it "clinically safe" for a human to
+// just read the narrative. Resource definitions may define what content
+// should be represented in the narrative to ensure clinical safety.
 Narrative text;
 
-// These resources do not have an independent existence apart from the resource
-//  that contains them - they cannot be identified independently, and nor can they
-//  have their own independent transaction scope.
+//  These resources do not have an independent existence apart from the
+// resource that contains them - they cannot be identified independently,
+// and nor can they have their own independent transaction scope.
 List<ResourceList> contained;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the resource. To make the use of extensions safe and manageable,
-//  there is a strict set of governance  applied to the definition and use of
-//  extensions. Though any implementer can define an extension, there is a set of
-//  requirements that SHALL be met as part of the definition of the extension.
+//  May be used to represent additional information that is not part of
+// the basic definition of the resource. To make the use of extensions
+// safe and manageable, there is a strict set of governance  applied to
+// the definition and use of extensions. Though any implementer can define
+// an extension, there is a set of requirements that SHALL be met as part
+// of the definition of the extension.
 List<Extension> extension;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the resource and that modifies the understanding of the element
-//  that contains it and/or the understanding of the containing element's
-//  descendants. Usually modifier elements provide negation or qualification. To
-//  make the use of extensions safe and manageable, there is a strict set of
-//  governance applied to the definition and use of extensions. Though any
-//  implementer is allowed to define an extension, there is a set of requirements
-//  that SHALL be met as part of the definition of the extension. Applications
-//  processing a resource are required to check for modifier extensions.
-// Modifier
-//  extensions SHALL NOT change the meaning of any elements on Resource or
-//  DomainResource (including cannot change the meaning of modifierExtension itself).
+//  May be used to represent additional information that is not part of
+// the basic definition of the resource and that modifies the
+// understanding of the element that contains it and/or the understanding
+// of the containing element's descendants. Usually modifier elements
+// provide negation or qualification. To make the use of extensions safe
+// and manageable, there is a strict set of governance applied to the
+// definition and use of extensions. Though any implementer is allowed to
+// define an extension, there is a set of requirements that SHALL be met
+// as part of the definition of the extension. Applications processing a
+// resource are required to check for modifier extensions. Modifier
+// extensions SHALL NOT change the meaning of any elements on Resource or
+// DomainResource (including cannot change the meaning of
+// modifierExtension itself).
 List<Extension> modifierExtension;
 
-// Unique instance identifiers assigned to a device by manufacturers other
-//  organizations or owners.
+//  Unique instance identifiers assigned to a device by manufacturers
+// other organizations or owners.
 List<Identifier> identifier;
 
-// The reference to the definition for the device.
+//  The reference to the definition for the device.
 Reference definition;
 
-// Unique device identifier (UDI) assigned to device label or package.  Note that
-//  the Device may include multiple udiCarriers as it either may include just the
-//  udiCarrier for the jurisdiction it is sold, or for multiple jurisdictions it
-//  could have been sold.
+//  Unique device identifier (UDI) assigned to device label or package. 
+// Note that the Device may include multiple udiCarriers as it either may
+// include just the udiCarrier for the jurisdiction it is sold, or for
+// multiple jurisdictions it could have been sold.
 List<Device_UdiCarrier> udiCarrier;
 
-// Status of the Device availability.
+//  Status of the Device availability.
 String status; // <code> enum: active/inactive/entered-in-error/unknown;
 
-// Extensions for status
-Element _status;
-
-// Reason for the dtatus of the Device availability.
+//  Reason for the dtatus of the Device availability.
 List<CodeableConcept> statusReason;
 
-// The distinct identification string as required by regulation for a human cell,
-//  tissue, or cellular and tissue-based product.
+//  The distinct identification string as required by regulation for a
+// human cell, tissue, or cellular and tissue-based product.
 String distinctIdentifier;
 
-// Extensions for distinctIdentifier
-Element _distinctIdentifier;
-
-// A name of the manufacturer.
+//  A name of the manufacturer.
 String manufacturer;
 
-// Extensions for manufacturer
-Element _manufacturer;
-
-// The date and time when the device was manufactured.
+//  The date and time when the device was manufactured.
 DateTime manufactureDate;
 
-// Extensions for manufactureDate
-Element _manufactureDate;
-
-// The date and time beyond which this device is no longer valid or should not be
-//  used (if applicable).
+//  The date and time beyond which this device is no longer valid or
+// should not be used (if applicable).
 DateTime expirationDate;
 
-// Extensions for expirationDate
-Element _expirationDate;
-
-// Lot number assigned by the manufacturer.
+//  Lot number assigned by the manufacturer.
 String lotNumber;
 
-// Extensions for lotNumber
-Element _lotNumber;
-
-// The serial number assigned by the organization when the device was manufactured.
+//  The serial number assigned by the organization when the device was
+// manufactured.
 String serialNumber;
 
-// Extensions for serialNumber
-Element _serialNumber;
-
-// This represents the manufacturer's name of the device as provided by the device,
-//  from a UDI label, or by a person describing the Device.  This typically would
-//  be used when a person provides the name(s) or when the device represents one of
-//  the names available from DeviceDefinition.
+//  This represents the manufacturer's name of the device as provided by
+// the device, from a UDI label, or by a person describing the Device. 
+// This typically would be used when a person provides the name(s) or when
+// the device represents one of the names available from DeviceDefinition.
 List<Device_DeviceName> deviceName;
 
-// The model number for the device.
+//  The model number for the device.
 String modelNumber;
 
-// Extensions for modelNumber
-Element _modelNumber;
-
-// The part number of the device.
+//  The part number of the device.
 String partNumber;
 
-// Extensions for partNumber
-Element _partNumber;
-
-// The kind or type of device.
+//  The kind or type of device.
 CodeableConcept type;
 
-// The capabilities supported on a  device, the standards to which the device
-//  conforms for a particular purpose, and used for the communication.
+//  The capabilities supported on a  device, the standards to which the
+// device conforms for a particular purpose, and used for the
+// communication.
 List<Device_Specialization> specialization;
 
-// The actual design of the device or software version running on the device.
+//  The actual design of the device or software version running on the
+// device.
 List<Device_Version> version;
 
-// The actual configuration settings of a device as it actually operates, e.g.,
-//  regulation status, time properties.
+//  The actual configuration settings of a device as it actually operates,
+// e.g., regulation status, time properties.
 List<Device_Property> property;
 
-// Patient information, If the device is affixed to a person.
+//  Patient information, If the device is affixed to a person.
 Reference patient;
 
-// An organization that is responsible for the provision and ongoing maintenance of
-//  the device.
+//  An organization that is responsible for the provision and ongoing
+// maintenance of the device.
 Reference owner;
 
-// Contact details for an organization or a particular human that is responsible
-//  for the device.
+//  Contact details for an organization or a particular human that is
+// responsible for the device.
 List<ContactPoint> contact;
 
-// The place where the device can be found.
+//  The place where the device can be found.
 Reference location;
 
-// A network address on which the device may be contacted directly.
+//  A network address on which the device may be contacted directly.
 String url;
 
-// Extensions for url
-Element _url;
-
-// Descriptive information, usage information or implantation information that is
-//  not captured in an existing element.
+//  Descriptive information, usage information or implantation information
+// that is not captured in an existing element.
 List<Annotation> note;
 
-// Provides additional safety characteristics about a medical device.  For example
-//  devices containing latex.
+//  Provides additional safety characteristics about a medical device. 
+// For example devices containing latex.
 List<CodeableConcept> safety;
 
-// The parent device.
+//  The parent device.
 Reference parent;
 
 Device(
@@ -207,9 +174,7 @@ Device(
     this.id,
     this.meta,
     this.implicitRules,
-    this._implicitRules,
     this.language,
-    this._language,
     this.text,
     this.contained,
     this.extension,
@@ -218,25 +183,16 @@ Device(
     this.definition,
     this.udiCarrier,
     this.status,
-    this._status,
     this.statusReason,
     this.distinctIdentifier,
-    this._distinctIdentifier,
     this.manufacturer,
-    this._manufacturer,
     this.manufactureDate,
-    this._manufactureDate,
     this.expirationDate,
-    this._expirationDate,
     this.lotNumber,
-    this._lotNumber,
     this.serialNumber,
-    this._serialNumber,
     this.deviceName,
     this.modelNumber,
-    this._modelNumber,
     this.partNumber,
-    this._partNumber,
     this.type,
     this.specialization,
     this.version,
@@ -246,7 +202,6 @@ Device(
     this.contact,
     this.location,
     this.url,
-    this._url,
     this.note,
     this.safety,
     this.parent
@@ -259,105 +214,75 @@ Device(
 @JsonSerializable(explicitToJson: true)
 class Device_UdiCarrier {
 
-
-// Unique id for the element within a resource (for internal references). This may
-//  be any string value that does not contain spaces.
+//  Unique id for the element within a resource (for internal references).
+// This may be any string value that does not contain spaces.
 String id;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element. To make the use of extensions safe and manageable,
-//  there is a strict set of governance  applied to the definition and use of
-//  extensions. Though any implementer can define an extension, there is a set of
-//  requirements that SHALL be met as part of the definition of the extension.
+//  May be used to represent additional information that is not part of
+// the basic definition of the element. To make the use of extensions safe
+// and manageable, there is a strict set of governance  applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension.
 List<Extension> extension;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element and that modifies the understanding of the element in
-//  which it is contained and/or the understanding of the containing element's
-//  descendants. Usually modifier elements provide negation or qualification. To
-//  make the use of extensions safe and manageable, there is a strict set of
-//  governance applied to the definition and use of extensions. Though any
-//  implementer can define an extension, there is a set of requirements that SHALL
-//  be met as part of the definition of the extension. Applications processing a
-//  resource are required to check for modifier extensions.
-// Modifier extensions
-//  SHALL NOT change the meaning of any elements on Resource or DomainResource
-//  (including cannot change the meaning of modifierExtension itself).
+//  May be used to represent additional information that is not part of
+// the basic definition of the element and that modifies the understanding
+// of the element in which it is contained and/or the understanding of the
+// containing element's descendants. Usually modifier elements provide
+// negation or qualification. To make the use of extensions safe and
+// manageable, there is a strict set of governance applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension. Applications processing a resource are
+// required to check for modifier extensions. Modifier extensions SHALL
+// NOT change the meaning of any elements on Resource or DomainResource
+// (including cannot change the meaning of modifierExtension itself).
 List<Extension> modifierExtension;
 
-// The device identifier (DI) is a mandatory, fixed portion of a UDI that
-//  identifies the labeler and the specific version or model of a device.
+//  The device identifier (DI) is a mandatory, fixed portion of a UDI that
+// identifies the labeler and the specific version or model of a device.
 String deviceIdentifier;
 
-// Extensions for deviceIdentifier
-Element _deviceIdentifier;
-
-// Organization that is charged with issuing UDIs for devices.  For example, the US
-//  FDA issuers include :
-1) GS1: 
-http://hl7.org/fhir/NamingSystem/gs1-di, 
-2)
-//  HIBCC:
-http://hl7.org/fhir/NamingSystem/hibcc-dI, 
-3) ICCBBA for blood
-//  containers:
-http://hl7.org/fhir/NamingSystem/iccbba-blood-di, 
-4) ICCBA for
-//  other devices:
-http://hl7.org/fhir/NamingSystem/iccbba-other-di.
+//  Organization that is charged with issuing UDIs for devices.  For
+// example, the US FDA issuers include : 1) GS1: 
+// http://hl7.org/fhir/NamingSystem/gs1-di,  2) HIBCC:
+// http://hl7.org/fhir/NamingSystem/hibcc-dI,  3) ICCBBA for blood
+// containers: http://hl7.org/fhir/NamingSystem/iccbba-blood-di,  4) ICCBA
+// for other devices: http://hl7.org/fhir/NamingSystem/iccbba-other-di.
 String issuer;
 
-// Extensions for issuer
-Element _issuer;
-
-// The identity of the authoritative source for UDI generation within a 
-//  jurisdiction.  All UDIs are globally unique within a single namespace with the
-//  appropriate repository uri as the system.  For example,  UDIs of devices
-//  managed in the U.S. by the FDA, the value is  http://hl7.org/fhir/NamingSystem/fda-udi.
+//  The identity of the authoritative source for UDI generation within a 
+// jurisdiction.  All UDIs are globally unique within a single namespace
+// with the appropriate repository uri as the system.  For example,  UDIs
+// of devices managed in the U.S. by the FDA, the value is 
+// http://hl7.org/fhir/NamingSystem/fda-udi.
 String jurisdiction;
 
-// Extensions for jurisdiction
-Element _jurisdiction;
-
-// The full UDI carrier of the Automatic Identification and Data Capture (AIDC)
-//  technology representation of the barcode string as printed on the packaging of
-//  the device - e.g., a barcode or RFID.   Because of limitations on character
-//  sets in XML and the need to round-trip JSON data through XML, AIDC Formats
-//  *SHALL* be base64 encoded.
+//  The full UDI carrier of the Automatic Identification and Data Capture
+// (AIDC) technology representation of the barcode string as printed on
+// the packaging of the device - e.g., a barcode or RFID.   Because of
+// limitations on character sets in XML and the need to round-trip JSON
+// data through XML, AIDC Formats *SHALL* be base64 encoded.
 String carrierAIDC;
 
-// Extensions for carrierAIDC
-Element _carrierAIDC;
-
-// The full UDI carrier as the human readable form (HRF) representation of the
-//  barcode string as printed on the packaging of the device.
+//  The full UDI carrier as the human readable form (HRF) representation
+// of the barcode string as printed on the packaging of the device.
 String carrierHRF;
 
-// Extensions for carrierHRF
-Element _carrierHRF;
-
-// A coded entry to indicate how the data was entered.
+//  A coded entry to indicate how the data was entered.
 String entryType; // <code> enum: barcode/rfid/manual/card/self-reported/unknown;
-
-// Extensions for entryType
-Element _entryType;
 
 Device_UdiCarrier(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.deviceIdentifier,
-    this._deviceIdentifier,
     this.issuer,
-    this._issuer,
     this.jurisdiction,
-    this._jurisdiction,
     this.carrierAIDC,
-    this._carrierAIDC,
     this.carrierHRF,
-    this._carrierHRF,
-    this.entryType,
-    this._entryType
+    this.entryType
     });
 
   factory Device_UdiCarrier.fromJson(Map<String, dynamic> json) => _$Device_UdiCarrierFromJson(json);
@@ -367,54 +292,45 @@ Device_UdiCarrier(
 @JsonSerializable(explicitToJson: true)
 class Device_DeviceName {
 
-
-// Unique id for the element within a resource (for internal references). This may
-//  be any string value that does not contain spaces.
+//  Unique id for the element within a resource (for internal references).
+// This may be any string value that does not contain spaces.
 String id;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element. To make the use of extensions safe and manageable,
-//  there is a strict set of governance  applied to the definition and use of
-//  extensions. Though any implementer can define an extension, there is a set of
-//  requirements that SHALL be met as part of the definition of the extension.
+//  May be used to represent additional information that is not part of
+// the basic definition of the element. To make the use of extensions safe
+// and manageable, there is a strict set of governance  applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension.
 List<Extension> extension;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element and that modifies the understanding of the element in
-//  which it is contained and/or the understanding of the containing element's
-//  descendants. Usually modifier elements provide negation or qualification. To
-//  make the use of extensions safe and manageable, there is a strict set of
-//  governance applied to the definition and use of extensions. Though any
-//  implementer can define an extension, there is a set of requirements that SHALL
-//  be met as part of the definition of the extension. Applications processing a
-//  resource are required to check for modifier extensions.
-// Modifier extensions
-//  SHALL NOT change the meaning of any elements on Resource or DomainResource
-//  (including cannot change the meaning of modifierExtension itself).
+//  May be used to represent additional information that is not part of
+// the basic definition of the element and that modifies the understanding
+// of the element in which it is contained and/or the understanding of the
+// containing element's descendants. Usually modifier elements provide
+// negation or qualification. To make the use of extensions safe and
+// manageable, there is a strict set of governance applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension. Applications processing a resource are
+// required to check for modifier extensions. Modifier extensions SHALL
+// NOT change the meaning of any elements on Resource or DomainResource
+// (including cannot change the meaning of modifierExtension itself).
 List<Extension> modifierExtension;
 
-// The name of the device.
+//  The name of the device.
 String name;
 
-// Extensions for name
-Element _name;
-
-// The type of deviceName.
-UDILabelName | UserFriendlyName | PatientReportedName |
-//  ManufactureDeviceName | ModelName.
+//  The type of deviceName. UDILabelName | UserFriendlyName |
+// PatientReportedName | ManufactureDeviceName | ModelName.
 String type; // <code> enum: udi-label-name/user-friendly-name/patient-reported-name/manufacturer-name/model-name/other;
-
-// Extensions for type
-Element _type;
 
 Device_DeviceName(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.name,
-    this._name,
-    this.type,
-    this._type
+    this.type
     });
 
   factory Device_DeviceName.fromJson(Map<String, dynamic> json) => _$Device_DeviceNameFromJson(json);
@@ -424,48 +340,44 @@ Device_DeviceName(
 @JsonSerializable(explicitToJson: true)
 class Device_Specialization {
 
-
-// Unique id for the element within a resource (for internal references). This may
-//  be any string value that does not contain spaces.
+//  Unique id for the element within a resource (for internal references).
+// This may be any string value that does not contain spaces.
 String id;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element. To make the use of extensions safe and manageable,
-//  there is a strict set of governance  applied to the definition and use of
-//  extensions. Though any implementer can define an extension, there is a set of
-//  requirements that SHALL be met as part of the definition of the extension.
+//  May be used to represent additional information that is not part of
+// the basic definition of the element. To make the use of extensions safe
+// and manageable, there is a strict set of governance  applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension.
 List<Extension> extension;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element and that modifies the understanding of the element in
-//  which it is contained and/or the understanding of the containing element's
-//  descendants. Usually modifier elements provide negation or qualification. To
-//  make the use of extensions safe and manageable, there is a strict set of
-//  governance applied to the definition and use of extensions. Though any
-//  implementer can define an extension, there is a set of requirements that SHALL
-//  be met as part of the definition of the extension. Applications processing a
-//  resource are required to check for modifier extensions.
-// Modifier extensions
-//  SHALL NOT change the meaning of any elements on Resource or DomainResource
-//  (including cannot change the meaning of modifierExtension itself).
+//  May be used to represent additional information that is not part of
+// the basic definition of the element and that modifies the understanding
+// of the element in which it is contained and/or the understanding of the
+// containing element's descendants. Usually modifier elements provide
+// negation or qualification. To make the use of extensions safe and
+// manageable, there is a strict set of governance applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension. Applications processing a resource are
+// required to check for modifier extensions. Modifier extensions SHALL
+// NOT change the meaning of any elements on Resource or DomainResource
+// (including cannot change the meaning of modifierExtension itself).
 List<Extension> modifierExtension;
 
-// The standard that is used to operate and communicate.
+//  The standard that is used to operate and communicate.
 CodeableConcept systemType;
 
-// The version of the standard that is used to operate and communicate.
+//  The version of the standard that is used to operate and communicate.
 String version;
-
-// Extensions for version
-Element _version;
 
 Device_Specialization(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.systemType,
-    this.version,
-    this._version
+    this.version
     });
 
   factory Device_Specialization.fromJson(Map<String, dynamic> json) => _$Device_SpecializationFromJson(json);
@@ -475,43 +387,40 @@ Device_Specialization(
 @JsonSerializable(explicitToJson: true)
 class Device_Version {
 
-
-// Unique id for the element within a resource (for internal references). This may
-//  be any string value that does not contain spaces.
+//  Unique id for the element within a resource (for internal references).
+// This may be any string value that does not contain spaces.
 String id;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element. To make the use of extensions safe and manageable,
-//  there is a strict set of governance  applied to the definition and use of
-//  extensions. Though any implementer can define an extension, there is a set of
-//  requirements that SHALL be met as part of the definition of the extension.
+//  May be used to represent additional information that is not part of
+// the basic definition of the element. To make the use of extensions safe
+// and manageable, there is a strict set of governance  applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension.
 List<Extension> extension;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element and that modifies the understanding of the element in
-//  which it is contained and/or the understanding of the containing element's
-//  descendants. Usually modifier elements provide negation or qualification. To
-//  make the use of extensions safe and manageable, there is a strict set of
-//  governance applied to the definition and use of extensions. Though any
-//  implementer can define an extension, there is a set of requirements that SHALL
-//  be met as part of the definition of the extension. Applications processing a
-//  resource are required to check for modifier extensions.
-// Modifier extensions
-//  SHALL NOT change the meaning of any elements on Resource or DomainResource
-//  (including cannot change the meaning of modifierExtension itself).
+//  May be used to represent additional information that is not part of
+// the basic definition of the element and that modifies the understanding
+// of the element in which it is contained and/or the understanding of the
+// containing element's descendants. Usually modifier elements provide
+// negation or qualification. To make the use of extensions safe and
+// manageable, there is a strict set of governance applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension. Applications processing a resource are
+// required to check for modifier extensions. Modifier extensions SHALL
+// NOT change the meaning of any elements on Resource or DomainResource
+// (including cannot change the meaning of modifierExtension itself).
 List<Extension> modifierExtension;
 
-// The type of the device version.
+//  The type of the device version.
 CodeableConcept type;
 
-// A single component of the device version.
+//  A single component of the device version.
 Identifier component;
 
-// The version text.
+//  The version text.
 String value;
-
-// Extensions for value
-Element _value;
 
 Device_Version(
   {this.id,
@@ -519,8 +428,7 @@ Device_Version(
     this.modifierExtension,
     this.type,
     this.component,
-    this.value,
-    this._value
+    this.value
     });
 
   factory Device_Version.fromJson(Map<String, dynamic> json) => _$Device_VersionFromJson(json);
@@ -530,39 +438,40 @@ Device_Version(
 @JsonSerializable(explicitToJson: true)
 class Device_Property {
 
-
-// Unique id for the element within a resource (for internal references). This may
-//  be any string value that does not contain spaces.
+//  Unique id for the element within a resource (for internal references).
+// This may be any string value that does not contain spaces.
 String id;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element. To make the use of extensions safe and manageable,
-//  there is a strict set of governance  applied to the definition and use of
-//  extensions. Though any implementer can define an extension, there is a set of
-//  requirements that SHALL be met as part of the definition of the extension.
+//  May be used to represent additional information that is not part of
+// the basic definition of the element. To make the use of extensions safe
+// and manageable, there is a strict set of governance  applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension.
 List<Extension> extension;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element and that modifies the understanding of the element in
-//  which it is contained and/or the understanding of the containing element's
-//  descendants. Usually modifier elements provide negation or qualification. To
-//  make the use of extensions safe and manageable, there is a strict set of
-//  governance applied to the definition and use of extensions. Though any
-//  implementer can define an extension, there is a set of requirements that SHALL
-//  be met as part of the definition of the extension. Applications processing a
-//  resource are required to check for modifier extensions.
-// Modifier extensions
-//  SHALL NOT change the meaning of any elements on Resource or DomainResource
-//  (including cannot change the meaning of modifierExtension itself).
+//  May be used to represent additional information that is not part of
+// the basic definition of the element and that modifies the understanding
+// of the element in which it is contained and/or the understanding of the
+// containing element's descendants. Usually modifier elements provide
+// negation or qualification. To make the use of extensions safe and
+// manageable, there is a strict set of governance applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension. Applications processing a resource are
+// required to check for modifier extensions. Modifier extensions SHALL
+// NOT change the meaning of any elements on Resource or DomainResource
+// (including cannot change the meaning of modifierExtension itself).
 List<Extension> modifierExtension;
 
-// Code that specifies the property DeviceDefinitionPropetyCode (Extensible).
+//  Code that specifies the property DeviceDefinitionPropetyCode
+// (Extensible).
 CodeableConcept type;
 
-// Property value as a quantity.
+//  Property value as a quantity.
 List<Quantity> valueQuantity;
 
-// Property value as a code, e.g., NTP4 (synced to NTP).
+//  Property value as a code, e.g., NTP4 (synced to NTP).
 List<CodeableConcept> valueCode;
 
 Device_Property(

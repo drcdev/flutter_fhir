@@ -43,6 +43,7 @@ AllergyIntolerance _$AllergyIntoleranceFromJson(Map<String, dynamic> json) {
         : CodeableConcept.fromJson(
             json['verificationStatus'] as Map<String, dynamic>),
     type: json['type'] as String,
+    category: (json['category'] as List)?.map((e) => e as String)?.toList(),
     criticality: json['criticality'] as String,
     code: json['code'] == null
         ? null
@@ -104,6 +105,7 @@ Map<String, dynamic> _$AllergyIntoleranceToJson(AllergyIntolerance instance) =>
       'clinicalStatus': instance.clinicalStatus?.toJson(),
       'verificationStatus': instance.verificationStatus?.toJson(),
       'type': instance.type,
+      'category': instance.category,
       'criticality': instance.criticality,
       'code': instance.code?.toJson(),
       'patient': instance.patient?.toJson(),

@@ -18,24 +18,52 @@ Practitioner _$PractitionerFromJson(Map<String, dynamic> json) {
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
-    contained: json['contained'],
-    extension: json['extension'],
-    modifierExtension: json['modifierExtension'],
-    identifier: json['identifier'],
+    contained: (json['contained'] as List)
+        ?.map((e) =>
+            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    identifier: (json['identifier'] as List)
+        ?.map((e) =>
+            e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     active: json['active'] as bool,
-    name: json['name'],
-    telecom: json['telecom'],
-    address: json['address'],
+    name: (json['name'] as List)
+        ?.map((e) =>
+            e == null ? null : HumanName.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    telecom: (json['telecom'] as List)
+        ?.map((e) =>
+            e == null ? null : ContactPoint.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    address: (json['address'] as List)
+        ?.map((e) =>
+            e == null ? null : Address.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     gender: json['gender'] as String,
     birthDate: json['birthDate'] as String,
-    photo: json['photo'],
-    qualification: json['qualification'],
-    communication: json['communication'],
-  )
-    ..addresses = json['addresses']
-    ..not = json['not']
-    ..entered = json['entered']
-    ..as = json['as'];
+    photo: (json['photo'] as List)
+        ?.map((e) =>
+            e == null ? null : Attachment.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    qualification: (json['qualification'] as List)
+        ?.map((e) => e == null
+            ? null
+            : Practitioner_Qualification.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    communication: (json['communication'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
 }
 
 Map<String, dynamic> _$PractitionerToJson(Practitioner instance) =>
@@ -46,23 +74,22 @@ Map<String, dynamic> _$PractitionerToJson(Practitioner instance) =>
       'implicitRules': instance.implicitRules,
       'language': instance.language,
       'text': instance.text?.toJson(),
-      'contained': instance.contained,
-      'extension': instance.extension,
-      'modifierExtension': instance.modifierExtension,
-      'identifier': instance.identifier,
+      'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'active': instance.active,
-      'name': instance.name,
-      'telecom': instance.telecom,
-      'addresses': instance.addresses,
-      'not': instance.not,
-      'entered': instance.entered,
-      'as': instance.as,
-      'address': instance.address,
+      'name': instance.name?.map((e) => e?.toJson())?.toList(),
+      'telecom': instance.telecom?.map((e) => e?.toJson())?.toList(),
+      'address': instance.address?.map((e) => e?.toJson())?.toList(),
       'gender': instance.gender,
       'birthDate': instance.birthDate,
-      'photo': instance.photo,
-      'qualification': instance.qualification,
-      'communication': instance.communication,
+      'photo': instance.photo?.map((e) => e?.toJson())?.toList(),
+      'qualification':
+          instance.qualification?.map((e) => e?.toJson())?.toList(),
+      'communication':
+          instance.communication?.map((e) => e?.toJson())?.toList(),
     };
 
 Practitioner_Qualification _$Practitioner_QualificationFromJson(

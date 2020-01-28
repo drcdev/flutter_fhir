@@ -101,11 +101,11 @@ Account_Coverage _$Account_CoverageFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    coverage: json['coverage'],
+    coverage: json['coverage'] == null
+        ? null
+        : Reference.fromJson(json['coverage'] as Map<String, dynamic>),
     priority: json['priority'] as int,
-  )
-    ..only = json['only']
-    ..responsible = json['responsible'];
+  );
 }
 
 Map<String, dynamic> _$Account_CoverageToJson(Account_Coverage instance) =>
@@ -114,8 +114,6 @@ Map<String, dynamic> _$Account_CoverageToJson(Account_Coverage instance) =>
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'only': instance.only,
-      'responsible': instance.responsible,
       'coverage': instance.coverage?.toJson(),
       'priority': instance.priority,
     };

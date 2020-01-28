@@ -8,9 +8,7 @@ part of 'patient.dart';
 
 Patient _$PatientFromJson(Map<String, dynamic> json) {
   return Patient(
-    resourceType: json['resourceType'] == null
-        ? null
-        : Patient.fromJson(json['resourceType'] as Map<String, dynamic>),
+    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -89,7 +87,7 @@ Patient _$PatientFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$PatientToJson(Patient instance) => <String, dynamic>{
-      'resourceType': instance.resourceType?.toJson(),
+      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

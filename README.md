@@ -30,13 +30,17 @@ I'm a newbie at coding, but I've tried to keep naming rules consistent (and cons
 5. For the json classes that have classes nested, but aren't full FHIR resources (or at least
     defined like they are) those classes have been placed in the same .dart file as the parent
     class. These are not private classes. Should they be?
-6. Int are ints, DateTimes are DateTimes, otherwise values are strings.
-7. For all references I have tried to include the type of reference which they allow.
-8. There are some json arguments named 'class' in the official documentation, I've renamed them\n 
-    'classs' because that is a reserved word in flutter.
+6. For all references I have tried to include the type of reference, if flutter allows.
+7. 'Class', 'List', 'extends', 'for', 'assert' are reserved words in flutter. I've changed them to\n
+    the following, in the following classes respectively:
+    'classs' - 'Consent_Provision', 'Coverage', 'Encounter', 'Encounter_ClassHistory',\n 
+        'SubstancePlymer', 'SubstanceSourceMaterial_OrganismGeneral'
+    'lists' - 'Lists'
+    'extend' - 'StructureMap_Group'
+    'fore' - 'Task'
+    'asserts' - 'TestReport_Action', 'TestReport_Action1', 'TestScript_Action', 'TestScript_Action1'
 9. I had to add a resourceList class - this is not official.
-10. Named optional parameters are not allowed to start with underscores. Will\n
-    need to decided how to change them. 
+10. Named optional parameters are not allowed to start with underscores. I'm going to omit for now.
 
 ToDo: define canonical types\n
 Todo: understand initstate better, learn Future, async, await

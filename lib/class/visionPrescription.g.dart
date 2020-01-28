@@ -159,7 +159,7 @@ VisionPrescription_Prism _$VisionPrescription_PrismFromJson(
         ?.toList(),
     amount: (json['amount'] as num)?.toDouble(),
     base: json['base'] as String,
-  )..extensions = json['extensions'];
+  );
 }
 
 Map<String, dynamic> _$VisionPrescription_PrismToJson(
@@ -167,7 +167,6 @@ Map<String, dynamic> _$VisionPrescription_PrismToJson(
     <String, dynamic>{
       'id': instance.id,
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
-      'extensions': instance.extensions,
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'amount': instance.amount,

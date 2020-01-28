@@ -106,13 +106,7 @@ Bundle_Entry _$Bundle_EntryFromJson(Map<String, dynamic> json) {
     response: json['response'] == null
         ? null
         : Bundle_Response.fromJson(json['response'] as Map<String, dynamic>),
-  )
-    ..can = json['can']
-    ..empty = json['empty']
-    ..a = json['a']
-    ..not = json['not']
-    ..need = json['need']
-    ..from = json['from'];
+  );
 }
 
 Map<String, dynamic> _$Bundle_EntryToJson(Bundle_Entry instance) =>
@@ -122,12 +116,6 @@ Map<String, dynamic> _$Bundle_EntryToJson(Bundle_Entry instance) =>
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'link': instance.link?.map((e) => e?.toJson())?.toList(),
-      'can': instance.can,
-      'empty': instance.empty,
-      'a': instance.a,
-      'not': instance.not,
-      'need': instance.need,
-      'from': instance.from,
       'fullUrl': instance.fullUrl,
       'resource': instance.resource?.toJson(),
       'search': instance.search?.toJson(),

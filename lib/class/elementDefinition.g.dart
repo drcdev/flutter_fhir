@@ -18,6 +18,8 @@ ElementDefinition _$ElementDefinitionFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     path: json['path'] as String,
+    representation:
+        (json['representation'] as List)?.map((e) => e as String)?.toList(),
     sliceName: json['sliceName'] as String,
     sliceIsConstraining: json['sliceIsConstraining'] as bool,
     label: json['label'] as String,
@@ -478,6 +480,7 @@ Map<String, dynamic> _$ElementDefinitionToJson(ElementDefinition instance) =>
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'path': instance.path,
+      'representation': instance.representation,
       'sliceName': instance.sliceName,
       'sliceIsConstraining': instance.sliceIsConstraining,
       'label': instance.label,
@@ -793,6 +796,8 @@ ElementDefinition_Type _$ElementDefinition_TypeFromJson(
     profile: (json['profile'] as List)?.map((e) => e as String)?.toList(),
     targetProfile:
         (json['targetProfile'] as List)?.map((e) => e as String)?.toList(),
+    aggregation:
+        (json['aggregation'] as List)?.map((e) => e as String)?.toList(),
     versioning: json['versioning'] as String,
   );
 }
@@ -807,6 +812,7 @@ Map<String, dynamic> _$ElementDefinition_TypeToJson(
       'code': instance.code,
       'profile': instance.profile,
       'targetProfile': instance.targetProfile,
+      'aggregation': instance.aggregation,
       'versioning': instance.versioning,
     };
 

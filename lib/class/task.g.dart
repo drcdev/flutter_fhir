@@ -36,11 +36,17 @@ Task _$TaskFromJson(Map<String, dynamic> json) {
         ?.toList(),
     instantiatesCanonical: json['instantiatesCanonical'] as String,
     instantiatesUri: json['instantiatesUri'] as String,
-    basedOn: json['basedOn'] as List,
+    basedOn: (json['basedOn'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     groupIdentifier: json['groupIdentifier'] == null
         ? null
         : Identifier.fromJson(json['groupIdentifier'] as Map<String, dynamic>),
-    partOf: json['partOf'] as List,
+    partOf: (json['partOf'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     status: json['status'] as String,
     statusReason: json['statusReason'] == null
         ? null
@@ -56,48 +62,69 @@ Task _$TaskFromJson(Map<String, dynamic> json) {
         ? null
         : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     description: json['description'] as String,
-    focus: json['focus'],
-  )
-    ..Reference = json['Reference']
-    ..encounter = json['encounter']
-    ..executionPeriod = json['executionPeriod'] == null
+    focus: json['focus'] == null
         ? null
-        : Period.fromJson(json['executionPeriod'] as Map<String, dynamic>)
-    ..authoredOn = json['authoredOn'] == null
+        : Reference.fromJson(json['focus'] as Map<String, dynamic>),
+    fore: json['fore'] == null
         ? null
-        : DateTime.parse(json['authoredOn'] as String)
-    ..lastModified = json['lastModified'] == null
+        : Reference.fromJson(json['fore'] as Map<String, dynamic>),
+    encounter: json['encounter'] == null
         ? null
-        : DateTime.parse(json['lastModified'] as String)
-    ..requester = json['requester']
-    ..performerType = (json['performerType'] as List)
+        : Reference.fromJson(json['encounter'] as Map<String, dynamic>),
+    executionPeriod: json['executionPeriod'] == null
+        ? null
+        : Period.fromJson(json['executionPeriod'] as Map<String, dynamic>),
+    authoredOn: json['authoredOn'] == null
+        ? null
+        : DateTime.parse(json['authoredOn'] as String),
+    lastModified: json['lastModified'] == null
+        ? null
+        : DateTime.parse(json['lastModified'] as String),
+    requester: json['requester'] == null
+        ? null
+        : Reference.fromJson(json['requester'] as Map<String, dynamic>),
+    performerType: (json['performerType'] as List)
         ?.map((e) => e == null
             ? null
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
-        ?.toList()
-    ..owner = json['owner']
-    ..location = json['location']
-    ..reasonCode = json['reasonCode'] == null
+        ?.toList(),
+    owner: json['owner'] == null
         ? null
-        : CodeableConcept.fromJson(json['reasonCode'] as Map<String, dynamic>)
-    ..reasonReference = json['reasonReference']
-    ..insurance = json['insurance'] as List
-    ..note = (json['note'] as List)
+        : Reference.fromJson(json['owner'] as Map<String, dynamic>),
+    location: json['location'] == null
+        ? null
+        : Reference.fromJson(json['location'] as Map<String, dynamic>),
+    reasonCode: json['reasonCode'] == null
+        ? null
+        : CodeableConcept.fromJson(json['reasonCode'] as Map<String, dynamic>),
+    reasonReference: json['reasonReference'] == null
+        ? null
+        : Reference.fromJson(json['reasonReference'] as Map<String, dynamic>),
+    insurance: (json['insurance'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    note: (json['note'] as List)
         ?.map((e) =>
             e == null ? null : Annotation.fromJson(e as Map<String, dynamic>))
-        ?.toList()
-    ..relevantHistory = json['relevantHistory'] as List
-    ..restriction = json['restriction'] == null
+        ?.toList(),
+    relevantHistory: (json['relevantHistory'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    restriction: json['restriction'] == null
         ? null
-        : Task_Restriction.fromJson(json['restriction'] as Map<String, dynamic>)
-    ..input = (json['input'] as List)
+        : Task_Restriction.fromJson(
+            json['restriction'] as Map<String, dynamic>),
+    input: (json['input'] as List)
         ?.map((e) =>
             e == null ? null : Task_Input.fromJson(e as Map<String, dynamic>))
-        ?.toList()
-    ..output = (json['output'] as List)
+        ?.toList(),
+    output: (json['output'] as List)
         ?.map((e) =>
             e == null ? null : Task_Output.fromJson(e as Map<String, dynamic>))
-        ?.toList();
+        ?.toList(),
+  );
 }
 
 Map<String, dynamic> _$TaskToJson(Task instance) => <String, dynamic>{
@@ -114,9 +141,9 @@ Map<String, dynamic> _$TaskToJson(Task instance) => <String, dynamic>{
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'instantiatesCanonical': instance.instantiatesCanonical,
       'instantiatesUri': instance.instantiatesUri,
-      'basedOn': instance.basedOn,
+      'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
       'groupIdentifier': instance.groupIdentifier?.toJson(),
-      'partOf': instance.partOf,
+      'partOf': instance.partOf?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
       'statusReason': instance.statusReason?.toJson(),
       'businessStatus': instance.businessStatus?.toJson(),
@@ -124,22 +151,23 @@ Map<String, dynamic> _$TaskToJson(Task instance) => <String, dynamic>{
       'priority': instance.priority,
       'code': instance.code?.toJson(),
       'description': instance.description,
-      'focus': instance.focus,
-      'Reference': instance.Reference,
-      'encounter': instance.encounter,
+      'focus': instance.focus?.toJson(),
+      'fore': instance.fore?.toJson(),
+      'encounter': instance.encounter?.toJson(),
       'executionPeriod': instance.executionPeriod?.toJson(),
       'authoredOn': instance.authoredOn?.toIso8601String(),
       'lastModified': instance.lastModified?.toIso8601String(),
-      'requester': instance.requester,
+      'requester': instance.requester?.toJson(),
       'performerType':
           instance.performerType?.map((e) => e?.toJson())?.toList(),
-      'owner': instance.owner,
-      'location': instance.location,
+      'owner': instance.owner?.toJson(),
+      'location': instance.location?.toJson(),
       'reasonCode': instance.reasonCode?.toJson(),
-      'reasonReference': instance.reasonReference,
-      'insurance': instance.insurance,
+      'reasonReference': instance.reasonReference?.toJson(),
+      'insurance': instance.insurance?.map((e) => e?.toJson())?.toList(),
       'note': instance.note?.map((e) => e?.toJson())?.toList(),
-      'relevantHistory': instance.relevantHistory,
+      'relevantHistory':
+          instance.relevantHistory?.map((e) => e?.toJson())?.toList(),
       'restriction': instance.restriction?.toJson(),
       'input': instance.input?.map((e) => e?.toJson())?.toList(),
       'output': instance.output?.map((e) => e?.toJson())?.toList(),

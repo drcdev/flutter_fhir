@@ -32,17 +32,17 @@ def isPrimitive(string):
                       'unsignedInt', 'uri', 'url', 'uuid', 'number'])
     
 #returns comments in multiple lines, all <= 80 characters
-def less80(string):   
+def less70(string):   
     new = ''
-    j=0
-    k=0
-    for i in range(1, math.ceil(len(string)/80)):
-        j += 80
-        while(string[j] != ' '):
-            j -= 1
-        new = ''.join([new, '\n// ', string[k:j]])
-        k = j
-    new = ''.join([new, '\n// ', string[j:len(string)]])
+    line = ''
+    strings = string.split(' ')
+    for i in strings:
+        if((len(line) + len(i)) > 70):
+            new += '\n// ' + line
+            line = i
+        else:
+            line += ' ' + i
+    new += '\n// ' + line
     return new  
     
 #open fhir json schema
@@ -68,7 +68,7 @@ for a in schema['definitions']:
         #add JsonSerializable code at top of Dart class
         dartCode = ''.join([dartCode, 
                             '@JsonSerializable(explicitToJson: true)\nclass ', 
-                            a, ' {\n\n'])
+                            a, ' {\n'])
         
         #Modifier description includes '\n\n' need to change it to a comment
         dartCode = dartCode.replace('\n\nModifier', '\n// Modifier')
@@ -77,88 +77,99 @@ for a in schema['definitions']:
         #it fits and based on that, print out specific information
         for b in schema['definitions'][a]['properties']:
             
-            #prints comment to the Dart code, formatted lines <= 80 characters
-
+            
+            if(not b.startswith('_')):
 #******************************************************************************
 #***** This adds comments to the files, but adds notable extra time to run this program *****
-            dartCode = ''.join([dartCode, 
-                                less80(schema['definitions'][a]['properties'][b]['description']), 
-                                '\n'])
+            #prints comment to the Dart code, formatted lines <= 70 characters
+                comments = schema['definitions'][a]['properties'][b]['description']
+                comments = re.sub(r'\n+', ' ', comments)
+                dartCode = ''.join([dartCode, less70(comments), '\n'])
 #******************************************************************************
                                         
-            #if items is NOT included it means that the item is NOT an array/list
-            if('items' not in schema['definitions'][a]['properties'][b]):
-                
-                #if  there's a $ref in it, print out that value
-                if('$ref' in schema['definitions'][a]['properties'][b]):
-                    ref = schema['definitions'][a]['properties'][b]['$ref']
-                    ref = ref.split('/definitions/')[1]
-                    dartCode = ''.join([dartCode, primitiveDart(ref), ' ', b, ';\n'])
+                #if items is NOT included it means that the item is NOT an array/list
+                if('items' not in schema['definitions'][a]['properties'][b]):
                     
-                    if(not isPrimitive(ref) and ref not in importDict[importL]):
-                        importDict[importL].append(ref)
+                    #if  there's a $ref in it, print out that value
+                    if('$ref' in schema['definitions'][a]['properties'][b]):
+                        ref = schema['definitions'][a]['properties'][b]['$ref']
+                        ref = ref.split('/definitions/')[1]
+                        dartCode = ''.join([dartCode, primitiveDart(ref), ' ', b, ';\n'])
+                        
+                        if(not isPrimitive(ref) and ref not in importDict[importL]):
+                            importDict[importL].append(ref)
+                        
+                    #if  there's a const in it, print out that value
+                    elif('const' in schema['definitions'][a]['properties'][b]):  
+                                    
+                        value = schema['definitions'][a]['properties'][b]['const']
+                        if(b == 'resourceType'):
+                            value2 = 'String'
+                        else:
+                            value2 = value
+                        dartCode = ''.join([dartCode, 
+                                            primitiveDart(value2), 
+                                            ' ', b, ';\n'])
+                        
+                        if(not isPrimitive(value) and value not in importDict[importL]):
+                            importDict[importL].append(value)
+                        
+                    #if  there's a pattern in it, print out the type of pattern
+                    elif('pattern' in schema['definitions'][a]['properties'][b]):  
+                        
+                        value = schema['definitions'][a]['properties'][b]
+                        
+                        #if the type is a number, declare it an int or a double
+                        if('number' == value['type']):
+                            if('decimal' in b or 'Decimal' in b):
+                                dartCode = ''.join([dartCode, 'double '])
+                            else:
+                                dartCode = ''.join([dartCode, 'int '])
+                        else:
+                            dartCode = ''.join([dartCode, 
+                                                primitiveDart(value['type']), ' '])
+                            
+                        #include the pattern as a comment
+                        dartCode = ''.join([dartCode, b, '; //  pattern: ', 
+                                            value['pattern'], '\n'])
+                        
+                        if(not isPrimitive(value['type']) and value['type'] not in importDict[importL]):
+                            importDict[importL].append(value['type'])
+                         
+                    #if it's enum, print it as type of enum, and then include the
+                    #possible values as a comment at the end of the line
+                    elif('enum' in schema['definitions'][a]['properties'][b]):
+    
+                        dartCode = ''.join([dartCode, 'String ', b, '; // <code> enum: ',  
+                                            '/'.join(schema['definitions'][a]['properties'][b]['enum']), 
+                                            ';\n'])
+    
+                #if it does include items, it is an array/list
+                elif('$ref' in schema['definitions'][a]['properties'][b]['items']):
                     
-                #if  there's a const in it, print out that value
-                elif('const' in schema['definitions'][a]['properties'][b]):  
-                                
-                    value = schema['definitions'][a]['properties'][b]['const']
-                    if(b == 'resourceType'):
-                        value2 = 'String'
-                    else:
-                        value2 = value
-                    dartCode = ''.join([dartCode, 
-                                        primitiveDart(value2), 
-                                        ' ', b, ';\n'])
+                    value = schema['definitions'][a]['properties'][b]['items']['$ref'].split('/definitions/')[1]
+                    
+                    #make the item a list since it's an array in json
+                    dartCode = ''.join([dartCode,  'List<', primitiveDart(value), 
+                                        '> ', b, ';\n'])   
                     
                     if(not isPrimitive(value) and value not in importDict[importL]):
-                        importDict[importL].append(value)
+                            importDict[importL].append(value)
                     
-                #if  there's a pattern in it, print out the type of pattern
-                elif('pattern' in schema['definitions'][a]['properties'][b]):  
+                                #if it does include items, it is an array/list
+                elif('enum' in schema['definitions'][a]['properties'][b]['items']):
                     
-                    value = schema['definitions'][a]['properties'][b]
-                    
-                    #if the type is a number, declare it an int or a double
-                    if('number' == value['type']):
-                        if('decimal' in b or 'Decimal' in b):
-                            dartCode = ''.join([dartCode, 'double '])
-                        else:
-                            dartCode = ''.join([dartCode, 'int '])
-                    else:
-                        dartCode = ''.join([dartCode, 
-                                            primitiveDart(value['type']), ' '])
-                        
-                    #include the pattern as a comment
-                    dartCode = ''.join([dartCode, b, '; //  pattern: ', 
-                                        value['pattern'], '\n'])
-                    
-                    if(not isPrimitive(value['type']) and value['type'] not in importDict[importL]):
-                        importDict[importL].append(value['type'])
-                     
-                #if it's enum, print it as type of enum, and then include the
-                #possible values as a comment at the end of the line
-                elif('enum' in schema['definitions'][a]['properties'][b]):
-
-                    dartCode = ''.join([dartCode, 'String ', b, '; // <code> enum: ',  
-                                        '/'.join(schema['definitions'][a]['properties'][b]['enum']), 
-                                        ';\n'])
-
-            #if it does include items, it is an array/list
-            elif('$ref' in schema['definitions'][a]['properties'][b]['items']):
-                
-                value = schema['definitions'][a]['properties'][b]['items']['$ref'].split('/definitions/')[1]
-                
-                #make lists if the item is array
-                dartCode = ''.join([dartCode,  'List<', primitiveDart(value), 
-                                    '> ', b, ';\n'])   
-                
-                if(not isPrimitive(value) and value not in importDict[importL]):
-                        importDict[importL].append(value)
-                
+                    #make the item a list since it's an array in json
+                    dartCode = ''.join([dartCode, 'List<String> ', b, '; ',
+                                        '// <code> enum: ', 
+                                        '/'.join(schema['definitions'][a]['properties'][b]['items']['enum']),
+                                        '> ', b, ';\n'])   
+                                        
         #add json factory code
         dartCode = ''.join([dartCode, '\n', a, '(\n  {'])
         for b in schema['definitions'][a]['properties']:
-            dartCode = ''.join([dartCode, 'this.', b, ',\n    '])
+            if(not b.startswith('_')):
+                dartCode = ''.join([dartCode, 'this.', b, ',\n    '])
         dartCode = ''.join([dartCode, '});\n\n  factory ', a, '.fromJson',
                             '(Map<String, dynamic> json) => _$', a, 
                             'FromJson(json);\n  Map<String, dynamic> toJson()',

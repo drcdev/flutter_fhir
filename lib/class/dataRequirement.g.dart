@@ -9,9 +9,12 @@ part of 'dataRequirement.dart';
 DataRequirement _$DataRequirementFromJson(Map<String, dynamic> json) {
   return DataRequirement(
     id: json['id'] as String,
-    extension: json['extension'],
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     type: json['type'] as String,
-    profile: json['profile'],
+    profile: (json['profile'] as List)?.map((e) => e as String)?.toList(),
     subjectCodeableConcept: json['subjectCodeableConcept'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -19,31 +22,40 @@ DataRequirement _$DataRequirementFromJson(Map<String, dynamic> json) {
     subjectReference: json['subjectReference'] == null
         ? null
         : Reference.fromJson(json['subjectReference'] as Map<String, dynamic>),
-    mustSupport: json['mustSupport'],
-    codeFilter: json['codeFilter'],
-    dateFilter: json['dateFilter'],
+    mustSupport:
+        (json['mustSupport'] as List)?.map((e) => e as String)?.toList(),
+    codeFilter: (json['codeFilter'] as List)
+        ?.map((e) => e == null
+            ? null
+            : DataRequirement_CodeFilter.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    dateFilter: (json['dateFilter'] as List)
+        ?.map((e) => e == null
+            ? null
+            : DataRequirement_DateFilter.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     limit: json['limit'] as int,
-    sort: json['sort'],
-  )
-    ..value = json['value']
-    ..be = json['be'];
+    sort: (json['sort'] as List)
+        ?.map((e) => e == null
+            ? null
+            : DataRequirement_Sort.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
 }
 
 Map<String, dynamic> _$DataRequirementToJson(DataRequirement instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'extension': instance.extension,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'type': instance.type,
       'profile': instance.profile,
       'subjectCodeableConcept': instance.subjectCodeableConcept?.toJson(),
       'subjectReference': instance.subjectReference?.toJson(),
-      'value': instance.value,
-      'be': instance.be,
       'mustSupport': instance.mustSupport,
-      'codeFilter': instance.codeFilter,
-      'dateFilter': instance.dateFilter,
+      'codeFilter': instance.codeFilter?.map((e) => e?.toJson())?.toList(),
+      'dateFilter': instance.dateFilter?.map((e) => e?.toJson())?.toList(),
       'limit': instance.limit,
-      'sort': instance.sort,
+      'sort': instance.sort?.map((e) => e?.toJson())?.toList(),
     };
 
 DataRequirement_CodeFilter _$DataRequirement_CodeFilterFromJson(

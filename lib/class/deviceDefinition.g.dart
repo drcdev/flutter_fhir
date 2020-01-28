@@ -201,10 +201,7 @@ DeviceDefinition_DeviceName _$DeviceDefinition_DeviceNameFromJson(
         ?.toList(),
     name: json['name'] as String,
     type: json['type'] as String,
-  )
-    ..UDILabelName = json['UDILabelName']
-    ..UserFriendlyName = json['UserFriendlyName']
-    ..PatientReportedName = json['PatientReportedName'];
+  );
 }
 
 Map<String, dynamic> _$DeviceDefinition_DeviceNameToJson(
@@ -215,9 +212,6 @@ Map<String, dynamic> _$DeviceDefinition_DeviceNameToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'name': instance.name,
-      'UDILabelName': instance.UDILabelName,
-      'UserFriendlyName': instance.UserFriendlyName,
-      'PatientReportedName': instance.PatientReportedName,
       'type': instance.type,
     };
 

@@ -63,6 +63,8 @@ SearchParameter _$SearchParameterFromJson(Map<String, dynamic> json) {
     target: (json['target'] as List)?.map((e) => e as String)?.toList(),
     multipleOr: json['multipleOr'] as bool,
     multipleAnd: json['multipleAnd'] as bool,
+    comparator: (json['comparator'] as List)?.map((e) => e as String)?.toList(),
+    modifier: (json['modifier'] as List)?.map((e) => e as String)?.toList(),
     chain: (json['chain'] as List)?.map((e) => e as String)?.toList(),
     component: (json['component'] as List)
         ?.map((e) => e == null
@@ -106,6 +108,8 @@ Map<String, dynamic> _$SearchParameterToJson(SearchParameter instance) =>
       'target': instance.target,
       'multipleOr': instance.multipleOr,
       'multipleAnd': instance.multipleAnd,
+      'comparator': instance.comparator,
+      'modifier': instance.modifier,
       'chain': instance.chain,
       'component': instance.component?.map((e) => e?.toJson())?.toList(),
     };

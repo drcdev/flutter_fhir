@@ -57,16 +57,22 @@ OperationOutcome_Issue _$OperationOutcome_IssueFromJson(
     Map<String, dynamic> json) {
   return OperationOutcome_Issue(
     id: json['id'] as String,
-    extension: json['extension'],
-    modifierExtension: json['modifierExtension'],
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     severity: json['severity'] as String,
     code: json['code'] as String,
     details: json['details'] == null
         ? null
         : CodeableConcept.fromJson(json['details'] as Map<String, dynamic>),
     diagnostics: json['diagnostics'] as String,
-    location: json['location'],
-    expression: json['expression'],
+    location: (json['location'] as List)?.map((e) => e as String)?.toList(),
+    expression: (json['expression'] as List)?.map((e) => e as String)?.toList(),
   );
 }
 
@@ -74,8 +80,9 @@ Map<String, dynamic> _$OperationOutcome_IssueToJson(
         OperationOutcome_Issue instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'extension': instance.extension,
-      'modifierExtension': instance.modifierExtension,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'severity': instance.severity,
       'code': instance.code,
       'details': instance.details?.toJson(),

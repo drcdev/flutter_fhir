@@ -207,6 +207,7 @@ HealthcareService_AvailableTime _$HealthcareService_AvailableTimeFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    daysOfWeek: (json['daysOfWeek'] as List)?.map((e) => e as String)?.toList(),
     allDay: json['allDay'] as bool,
     availableStartTime: json['availableStartTime'] as String,
     availableEndTime: json['availableEndTime'] as String,
@@ -220,6 +221,7 @@ Map<String, dynamic> _$HealthcareService_AvailableTimeToJson(
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'daysOfWeek': instance.daysOfWeek,
       'allDay': instance.allDay,
       'availableStartTime': instance.availableStartTime,
       'availableEndTime': instance.availableEndTime,

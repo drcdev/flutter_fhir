@@ -12,7 +12,6 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
-import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'explanationOfBenefit.g.dart';
@@ -20,239 +19,224 @@ part 'explanationOfBenefit.g.dart';
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit {
 
-
-// This is a ExplanationOfBenefit resource
+//  This is a ExplanationOfBenefit resource
 String resourceType;
 
-// The logical id of the resource, as used in the URL for the resource. Once
-//  assigned, this value never changes.
+//  The logical id of the resource, as used in the URL for the resource.
+// Once assigned, this value never changes.
 String id;
 
-// The metadata about the resource. This is content that is maintained by the
-//  infrastructure. Changes to the content might not always be associated with
-//  version changes to the resource.
+//  The metadata about the resource. This is content that is maintained by
+// the infrastructure. Changes to the content might not always be
+// associated with version changes to the resource.
 Meta meta;
 
-// A reference to a set of rules that were followed when the resource was
-//  constructed, and which must be understood when processing the content. Often,
-//  this is a reference to an implementation guide that defines the special rules
-//  along with other profiles etc.
+//  A reference to a set of rules that were followed when the resource was
+// constructed, and which must be understood when processing the content.
+// Often, this is a reference to an implementation guide that defines the
+// special rules along with other profiles etc.
 String implicitRules;
 
-// Extensions for implicitRules
-Element _implicitRules;
-
-// The base language in which the resource is written.
+//  The base language in which the resource is written.
 String language;
 
-// Extensions for language
-Element _language;
-
-// A human-readable narrative that contains a summary of the resource and can be
-//  used to represent the content of the resource to a human. The narrative need
-//  not encode all the structured data, but is required to contain sufficient
-//  detail to make it "clinically safe" for a human to just read the narrative.
-//  Resource definitions may define what content should be represented in the
-//  narrative to ensure clinical safety.
+//  A human-readable narrative that contains a summary of the resource and
+// can be used to represent the content of the resource to a human. The
+// narrative need not encode all the structured data, but is required to
+// contain sufficient detail to make it "clinically safe" for a human to
+// just read the narrative. Resource definitions may define what content
+// should be represented in the narrative to ensure clinical safety.
 Narrative text;
 
-// These resources do not have an independent existence apart from the resource
-//  that contains them - they cannot be identified independently, and nor can they
-//  have their own independent transaction scope.
+//  These resources do not have an independent existence apart from the
+// resource that contains them - they cannot be identified independently,
+// and nor can they have their own independent transaction scope.
 List<ResourceList> contained;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the resource. To make the use of extensions safe and manageable,
-//  there is a strict set of governance  applied to the definition and use of
-//  extensions. Though any implementer can define an extension, there is a set of
-//  requirements that SHALL be met as part of the definition of the extension.
+//  May be used to represent additional information that is not part of
+// the basic definition of the resource. To make the use of extensions
+// safe and manageable, there is a strict set of governance  applied to
+// the definition and use of extensions. Though any implementer can define
+// an extension, there is a set of requirements that SHALL be met as part
+// of the definition of the extension.
 List<Extension> extension;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the resource and that modifies the understanding of the element
-//  that contains it and/or the understanding of the containing element's
-//  descendants. Usually modifier elements provide negation or qualification. To
-//  make the use of extensions safe and manageable, there is a strict set of
-//  governance applied to the definition and use of extensions. Though any
-//  implementer is allowed to define an extension, there is a set of requirements
-//  that SHALL be met as part of the definition of the extension. Applications
-//  processing a resource are required to check for modifier extensions.
-// Modifier
-//  extensions SHALL NOT change the meaning of any elements on Resource or
-//  DomainResource (including cannot change the meaning of modifierExtension itself).
+//  May be used to represent additional information that is not part of
+// the basic definition of the resource and that modifies the
+// understanding of the element that contains it and/or the understanding
+// of the containing element's descendants. Usually modifier elements
+// provide negation or qualification. To make the use of extensions safe
+// and manageable, there is a strict set of governance applied to the
+// definition and use of extensions. Though any implementer is allowed to
+// define an extension, there is a set of requirements that SHALL be met
+// as part of the definition of the extension. Applications processing a
+// resource are required to check for modifier extensions. Modifier
+// extensions SHALL NOT change the meaning of any elements on Resource or
+// DomainResource (including cannot change the meaning of
+// modifierExtension itself).
 List<Extension> modifierExtension;
 
-// A unique identifier assigned to this explanation of benefit.
+//  A unique identifier assigned to this explanation of benefit.
 List<Identifier> identifier;
 
-// The status of the resource instance.
+//  The status of the resource instance.
 String status; // <code> enum: active/cancelled/draft/entered-in-error;
 
-// Extensions for status
-Element _status;
-
-// The category of claim, e.g. oral, pharmacy, vision, institutional, professional.
+//  The category of claim, e.g. oral, pharmacy, vision, institutional,
+// professional.
 CodeableConcept type;
 
-// A finer grained suite of claim type codes which may convey additional
-//  information such as Inpatient vs Outpatient and/or a specialty service.
+//  A finer grained suite of claim type codes which may convey additional
+// information such as Inpatient vs Outpatient and/or a specialty service.
 CodeableConcept subType;
 
-// A code to indicate whether the nature of the request is: to request adjudication
-//  of products and services previously rendered; or requesting authorization and
-//  adjudication for provision in the future; or requesting the non-binding
-//  adjudication of the listed products and services which could be provided in the future.
+//  A code to indicate whether the nature of the request is: to request
+// adjudication of products and services previously rendered; or
+// requesting authorization and adjudication for provision in the future;
+// or requesting the non-binding adjudication of the listed products and
+// services which could be provided in the future.
 String use;
 
-// Extensions for use
-Element _use;
-
-// The party to whom the professional services and/or products have been supplied
-//  or are being considered and for whom actual for forecast reimbursement is sought.
+//  The party to whom the professional services and/or products have been
+// supplied or are being considered and for whom actual for forecast
+// reimbursement is sought.
 Reference patient;
 
-// The period for which charges are being submitted.
+//  The period for which charges are being submitted.
 Period billablePeriod;
 
-// The date this resource was created.
+//  The date this resource was created.
 DateTime created;
 
-// Extensions for created
-Element _created;
-
-// Individual who created the claim, predetermination or preauthorization.
+//  Individual who created the claim, predetermination or
+// preauthorization.
 Reference enterer;
 
-// The party responsible for authorization, adjudication and reimbursement.
+//  The party responsible for authorization, adjudication and
+// reimbursement.
 Reference insurer;
 
-// The provider which is responsible for the claim, predetermination or
-//  preauthorization.
+//  The provider which is responsible for the claim, predetermination or
+// preauthorization.
 Reference provider;
 
-// The provider-required urgency of processing the request. Typical values include:
-//  stat, routine deferred.
+//  The provider-required urgency of processing the request. Typical
+// values include: stat, routine deferred.
 CodeableConcept priority;
 
-// A code to indicate whether and for whom funds are to be reserved for future
-//  claims.
+//  A code to indicate whether and for whom funds are to be reserved for
+// future claims.
 CodeableConcept fundsReserveRequested;
 
-// A code, used only on a response to a preauthorization, to indicate whether the
-//  benefits payable have been reserved and for whom.
+//  A code, used only on a response to a preauthorization, to indicate
+// whether the benefits payable have been reserved and for whom.
 CodeableConcept fundsReserve;
 
-// Other claims which are related to this claim such as prior submissions or claims
-//  for related services or for the same event.
+//  Other claims which are related to this claim such as prior submissions
+// or claims for related services or for the same event.
 List<ExplanationOfBenefit_Related> related;
 
-// Prescription to support the dispensing of pharmacy, device or vision products.
+//  Prescription to support the dispensing of pharmacy, device or vision
+// products.
 Reference prescription;
 
-// Original prescription which has been superseded by this prescription to support
-//  the dispensing of pharmacy services, medications or products.
+//  Original prescription which has been superseded by this prescription
+// to support the dispensing of pharmacy services, medications or
+// products.
 Reference originalPrescription;
 
-// The party to be reimbursed for cost of the products and services according to
-//  the terms of the policy.
+//  The party to be reimbursed for cost of the products and services
+// according to the terms of the policy.
 ExplanationOfBenefit_Payee payee;
 
-// A reference to a referral resource.
+//  A reference to a referral resource.
 Reference referral;
 
-// Facility where the services were provided.
+//  Facility where the services were provided.
 Reference facility;
 
-// The business identifier for the instance of the adjudication request: claim
-//  predetermination or preauthorization.
+//  The business identifier for the instance of the adjudication request:
+// claim predetermination or preauthorization.
 Reference claim;
 
-// The business identifier for the instance of the adjudication response: claim,
-//  predetermination or preauthorization response.
+//  The business identifier for the instance of the adjudication response:
+// claim, predetermination or preauthorization response.
 Reference claimResponse;
 
-// The outcome of the claim, predetermination, or preauthorization processing.
+//  The outcome of the claim, predetermination, or preauthorization
+// processing.
 String outcome;
 
-// Extensions for outcome
-Element _outcome;
-
-// A human readable description of the status of the adjudication.
+//  A human readable description of the status of the adjudication.
 String disposition;
 
-// Extensions for disposition
-Element _disposition;
-
-// Reference from the Insurer which is used in later communications which refers to
-//  this adjudication.
+//  Reference from the Insurer which is used in later communications which
+// refers to this adjudication.
 List<String> preAuthRef;
 
-// Extensions for preAuthRef
-List<Element> _preAuthRef;
-
-// The timeframe during which the supplied preauthorization reference may be quoted
-//  on claims to obtain the adjudication as provided.
+//  The timeframe during which the supplied preauthorization reference may
+// be quoted on claims to obtain the adjudication as provided.
 List<Period> preAuthRefPeriod;
 
-// The members of the team who provided the products and services.
+//  The members of the team who provided the products and services.
 List<ExplanationOfBenefit_CareTeam> careTeam;
 
-// Additional information codes regarding exceptions, special considerations, the
-//  condition, situation, prior or concurrent issues.
+//  Additional information codes regarding exceptions, special
+// considerations, the condition, situation, prior or concurrent issues.
 List<ExplanationOfBenefit_SupportingInfo> supportingInfo;
 
-// Information about diagnoses relevant to the claim items.
+//  Information about diagnoses relevant to the claim items.
 List<ExplanationOfBenefit_Diagnosis> diagnosis;
 
-// Procedures performed on the patient relevant to the billing items with the
-//  claim.
+//  Procedures performed on the patient relevant to the billing items with
+// the claim.
 List<ExplanationOfBenefit_Procedure> procedure;
 
-// This indicates the relative order of a series of EOBs related to different
-//  coverages for the same suite of services.
+//  This indicates the relative order of a series of EOBs related to
+// different coverages for the same suite of services.
 int precedence;
 
-// Extensions for precedence
-Element _precedence;
-
-// Financial instruments for reimbursement for the health care products and
-//  services specified on the claim.
+//  Financial instruments for reimbursement for the health care products
+// and services specified on the claim.
 List<ExplanationOfBenefit_Insurance> insurance;
 
-// Details of a accident which resulted in injuries which required the products and
-//  services listed in the claim.
+//  Details of a accident which resulted in injuries which required the
+// products and services listed in the claim.
 ExplanationOfBenefit_Accident accident;
 
-// A claim line. Either a simple (a product or service) or a 'group' of details
-//  which can also be a simple items or groups of sub-details.
+//  A claim line. Either a simple (a product or service) or a 'group' of
+// details which can also be a simple items or groups of sub-details.
 List<ExplanationOfBenefit_Item> item;
 
-// The first-tier service adjudications for payor added product or service lines.
+//  The first-tier service adjudications for payor added product or
+// service lines.
 List<ExplanationOfBenefit_AddItem> addItem;
 
-// The adjudication results which are presented at the header level rather than at
-//  the line-item or add-item levels.
+//  The adjudication results which are presented at the header level
+// rather than at the line-item or add-item levels.
 List<ExplanationOfBenefit_Adjudication> adjudication;
 
-// Categorized monetary totals for the adjudication.
+//  Categorized monetary totals for the adjudication.
 List<ExplanationOfBenefit_Total> total;
 
-// Payment details for the adjudication of the claim.
+//  Payment details for the adjudication of the claim.
 ExplanationOfBenefit_Payment payment;
 
-// A code for the form to be used for printing the content.
+//  A code for the form to be used for printing the content.
 CodeableConcept formCode;
 
-// The actual form, by reference or inclusion, for printing the content or an EOB.
+//  The actual form, by reference or inclusion, for printing the content
+// or an EOB.
 Attachment form;
 
-// A note that describes or explains adjudication results in a human readable form.
+//  A note that describes or explains adjudication results in a human
+// readable form.
 List<ExplanationOfBenefit_ProcessNote> processNote;
 
-// The term of the benefits documented in this response.
+//  The term of the benefits documented in this response.
 Period benefitPeriod;
 
-// Balance by Benefit Category.
+//  Balance by Benefit Category.
 List<ExplanationOfBenefit_BenefitBalance> benefitBalance;
 
 ExplanationOfBenefit(
@@ -260,24 +244,19 @@ ExplanationOfBenefit(
     this.id,
     this.meta,
     this.implicitRules,
-    this._implicitRules,
     this.language,
-    this._language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
-    this._status,
     this.type,
     this.subType,
     this.use,
-    this._use,
     this.patient,
     this.billablePeriod,
     this.created,
-    this._created,
     this.enterer,
     this.insurer,
     this.provider,
@@ -293,18 +272,14 @@ ExplanationOfBenefit(
     this.claim,
     this.claimResponse,
     this.outcome,
-    this._outcome,
     this.disposition,
-    this._disposition,
     this.preAuthRef,
-    this._preAuthRef,
     this.preAuthRefPeriod,
     this.careTeam,
     this.supportingInfo,
     this.diagnosis,
     this.procedure,
     this.precedence,
-    this._precedence,
     this.insurance,
     this.accident,
     this.item,
@@ -326,40 +301,40 @@ ExplanationOfBenefit(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Related {
 
-
-// Unique id for the element within a resource (for internal references). This may
-//  be any string value that does not contain spaces.
+//  Unique id for the element within a resource (for internal references).
+// This may be any string value that does not contain spaces.
 String id;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element. To make the use of extensions safe and manageable,
-//  there is a strict set of governance  applied to the definition and use of
-//  extensions. Though any implementer can define an extension, there is a set of
-//  requirements that SHALL be met as part of the definition of the extension.
+//  May be used to represent additional information that is not part of
+// the basic definition of the element. To make the use of extensions safe
+// and manageable, there is a strict set of governance  applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension.
 List<Extension> extension;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element and that modifies the understanding of the element in
-//  which it is contained and/or the understanding of the containing element's
-//  descendants. Usually modifier elements provide negation or qualification. To
-//  make the use of extensions safe and manageable, there is a strict set of
-//  governance applied to the definition and use of extensions. Though any
-//  implementer can define an extension, there is a set of requirements that SHALL
-//  be met as part of the definition of the extension. Applications processing a
-//  resource are required to check for modifier extensions.
-// Modifier extensions
-//  SHALL NOT change the meaning of any elements on Resource or DomainResource
-//  (including cannot change the meaning of modifierExtension itself).
+//  May be used to represent additional information that is not part of
+// the basic definition of the element and that modifies the understanding
+// of the element in which it is contained and/or the understanding of the
+// containing element's descendants. Usually modifier elements provide
+// negation or qualification. To make the use of extensions safe and
+// manageable, there is a strict set of governance applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension. Applications processing a resource are
+// required to check for modifier extensions. Modifier extensions SHALL
+// NOT change the meaning of any elements on Resource or DomainResource
+// (including cannot change the meaning of modifierExtension itself).
 List<Extension> modifierExtension;
 
-// Reference to a related claim.
+//  Reference to a related claim.
 Reference claim;
 
-// A code to convey how the claims are related.
+//  A code to convey how the claims are related.
 CodeableConcept relationship;
 
-// An alternate organizational reference to the case or file to which this
-//  particular claim pertains.
+//  An alternate organizational reference to the case or file to which
+// this particular claim pertains.
 Identifier reference;
 
 ExplanationOfBenefit_Related(
@@ -378,36 +353,37 @@ ExplanationOfBenefit_Related(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Payee {
 
-
-// Unique id for the element within a resource (for internal references). This may
-//  be any string value that does not contain spaces.
+//  Unique id for the element within a resource (for internal references).
+// This may be any string value that does not contain spaces.
 String id;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element. To make the use of extensions safe and manageable,
-//  there is a strict set of governance  applied to the definition and use of
-//  extensions. Though any implementer can define an extension, there is a set of
-//  requirements that SHALL be met as part of the definition of the extension.
+//  May be used to represent additional information that is not part of
+// the basic definition of the element. To make the use of extensions safe
+// and manageable, there is a strict set of governance  applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension.
 List<Extension> extension;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element and that modifies the understanding of the element in
-//  which it is contained and/or the understanding of the containing element's
-//  descendants. Usually modifier elements provide negation or qualification. To
-//  make the use of extensions safe and manageable, there is a strict set of
-//  governance applied to the definition and use of extensions. Though any
-//  implementer can define an extension, there is a set of requirements that SHALL
-//  be met as part of the definition of the extension. Applications processing a
-//  resource are required to check for modifier extensions.
-// Modifier extensions
-//  SHALL NOT change the meaning of any elements on Resource or DomainResource
-//  (including cannot change the meaning of modifierExtension itself).
+//  May be used to represent additional information that is not part of
+// the basic definition of the element and that modifies the understanding
+// of the element in which it is contained and/or the understanding of the
+// containing element's descendants. Usually modifier elements provide
+// negation or qualification. To make the use of extensions safe and
+// manageable, there is a strict set of governance applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension. Applications processing a resource are
+// required to check for modifier extensions. Modifier extensions SHALL
+// NOT change the meaning of any elements on Resource or DomainResource
+// (including cannot change the meaning of modifierExtension itself).
 List<Extension> modifierExtension;
 
-// Type of Party to be reimbursed: Subscriber, provider, other.
+//  Type of Party to be reimbursed: Subscriber, provider, other.
 CodeableConcept type;
 
-// Reference to the individual or organization to whom any payment will be made.
+//  Reference to the individual or organization to whom any payment will
+// be made.
 Reference party;
 
 ExplanationOfBenefit_Payee(
@@ -425,53 +401,48 @@ ExplanationOfBenefit_Payee(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_CareTeam {
 
-
-// Unique id for the element within a resource (for internal references). This may
-//  be any string value that does not contain spaces.
+//  Unique id for the element within a resource (for internal references).
+// This may be any string value that does not contain spaces.
 String id;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element. To make the use of extensions safe and manageable,
-//  there is a strict set of governance  applied to the definition and use of
-//  extensions. Though any implementer can define an extension, there is a set of
-//  requirements that SHALL be met as part of the definition of the extension.
+//  May be used to represent additional information that is not part of
+// the basic definition of the element. To make the use of extensions safe
+// and manageable, there is a strict set of governance  applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension.
 List<Extension> extension;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element and that modifies the understanding of the element in
-//  which it is contained and/or the understanding of the containing element's
-//  descendants. Usually modifier elements provide negation or qualification. To
-//  make the use of extensions safe and manageable, there is a strict set of
-//  governance applied to the definition and use of extensions. Though any
-//  implementer can define an extension, there is a set of requirements that SHALL
-//  be met as part of the definition of the extension. Applications processing a
-//  resource are required to check for modifier extensions.
-// Modifier extensions
-//  SHALL NOT change the meaning of any elements on Resource or DomainResource
-//  (including cannot change the meaning of modifierExtension itself).
+//  May be used to represent additional information that is not part of
+// the basic definition of the element and that modifies the understanding
+// of the element in which it is contained and/or the understanding of the
+// containing element's descendants. Usually modifier elements provide
+// negation or qualification. To make the use of extensions safe and
+// manageable, there is a strict set of governance applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension. Applications processing a resource are
+// required to check for modifier extensions. Modifier extensions SHALL
+// NOT change the meaning of any elements on Resource or DomainResource
+// (including cannot change the meaning of modifierExtension itself).
 List<Extension> modifierExtension;
 
-// A number to uniquely identify care team entries.
+//  A number to uniquely identify care team entries.
 int sequence;
 
-// Extensions for sequence
-Element _sequence;
-
-// Member of the team who provided the product or service.
+//  Member of the team who provided the product or service.
 Reference provider;
 
-// The party who is billing and/or responsible for the claimed products or
-//  services.
+//  The party who is billing and/or responsible for the claimed products
+// or services.
 bool responsible;
 
-// Extensions for responsible
-Element _responsible;
-
-// The lead, assisting or supervising practitioner and their discipline if a
-//  multidisciplinary team.
+//  The lead, assisting or supervising practitioner and their discipline
+// if a multidisciplinary team.
 CodeableConcept role;
 
-// The qualification of the practitioner which is applicable for this service.
+//  The qualification of the practitioner which is applicable for this
+// service.
 CodeableConcept qualification;
 
 ExplanationOfBenefit_CareTeam(
@@ -479,10 +450,8 @@ ExplanationOfBenefit_CareTeam(
     this.extension,
     this.modifierExtension,
     this.sequence,
-    this._sequence,
     this.provider,
     this.responsible,
-    this._responsible,
     this.role,
     this.qualification
     });
@@ -494,83 +463,77 @@ ExplanationOfBenefit_CareTeam(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_SupportingInfo {
 
-
-// Unique id for the element within a resource (for internal references). This may
-//  be any string value that does not contain spaces.
+//  Unique id for the element within a resource (for internal references).
+// This may be any string value that does not contain spaces.
 String id;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element. To make the use of extensions safe and manageable,
-//  there is a strict set of governance  applied to the definition and use of
-//  extensions. Though any implementer can define an extension, there is a set of
-//  requirements that SHALL be met as part of the definition of the extension.
+//  May be used to represent additional information that is not part of
+// the basic definition of the element. To make the use of extensions safe
+// and manageable, there is a strict set of governance  applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension.
 List<Extension> extension;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element and that modifies the understanding of the element in
-//  which it is contained and/or the understanding of the containing element's
-//  descendants. Usually modifier elements provide negation or qualification. To
-//  make the use of extensions safe and manageable, there is a strict set of
-//  governance applied to the definition and use of extensions. Though any
-//  implementer can define an extension, there is a set of requirements that SHALL
-//  be met as part of the definition of the extension. Applications processing a
-//  resource are required to check for modifier extensions.
-// Modifier extensions
-//  SHALL NOT change the meaning of any elements on Resource or DomainResource
-//  (including cannot change the meaning of modifierExtension itself).
+//  May be used to represent additional information that is not part of
+// the basic definition of the element and that modifies the understanding
+// of the element in which it is contained and/or the understanding of the
+// containing element's descendants. Usually modifier elements provide
+// negation or qualification. To make the use of extensions safe and
+// manageable, there is a strict set of governance applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension. Applications processing a resource are
+// required to check for modifier extensions. Modifier extensions SHALL
+// NOT change the meaning of any elements on Resource or DomainResource
+// (including cannot change the meaning of modifierExtension itself).
 List<Extension> modifierExtension;
 
-// A number to uniquely identify supporting information entries.
+//  A number to uniquely identify supporting information entries.
 int sequence;
 
-// Extensions for sequence
-Element _sequence;
-
-// The general class of the information supplied: information; exception; accident,
-//  employment; onset, etc.
+//  The general class of the information supplied: information; exception;
+// accident, employment; onset, etc.
 CodeableConcept category;
 
-// System and code pertaining to the specific information regarding special
-//  conditions relating to the setting, treatment or patient  for which care is sought.
+//  System and code pertaining to the specific information regarding
+// special conditions relating to the setting, treatment or patient  for
+// which care is sought.
 CodeableConcept code;
 
-// The date when or period to which this information refers.
+//  The date when or period to which this information refers.
 String timingDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
-// Extensions for timingDate
-Element _timingDate;
-
-// The date when or period to which this information refers.
+//  The date when or period to which this information refers.
 Period timingPeriod;
 
-// Additional data or information such as resources, documents, images etc.
-//  including references to the data or the actual inclusion of the data.
+//  Additional data or information such as resources, documents, images
+// etc. including references to the data or the actual inclusion of the
+// data.
 bool valueBoolean; //  pattern: ^true|false$
 
-// Extensions for valueBoolean
-Element _valueBoolean;
-
-// Additional data or information such as resources, documents, images etc.
-//  including references to the data or the actual inclusion of the data.
+//  Additional data or information such as resources, documents, images
+// etc. including references to the data or the actual inclusion of the
+// data.
 String valueString; //  pattern: ^[ \r\n\t\S]+$
 
-// Extensions for valueString
-Element _valueString;
-
-// Additional data or information such as resources, documents, images etc.
-//  including references to the data or the actual inclusion of the data.
+//  Additional data or information such as resources, documents, images
+// etc. including references to the data or the actual inclusion of the
+// data.
 Quantity valueQuantity;
 
-// Additional data or information such as resources, documents, images etc.
-//  including references to the data or the actual inclusion of the data.
+//  Additional data or information such as resources, documents, images
+// etc. including references to the data or the actual inclusion of the
+// data.
 Attachment valueAttachment;
 
-// Additional data or information such as resources, documents, images etc.
-//  including references to the data or the actual inclusion of the data.
+//  Additional data or information such as resources, documents, images
+// etc. including references to the data or the actual inclusion of the
+// data.
 Reference valueReference;
 
-// Provides the reason in the situation where a reason code is required in addition
-//  to the content.
+//  Provides the reason in the situation where a reason code is required
+// in addition to the content.
 Coding reason;
 
 ExplanationOfBenefit_SupportingInfo(
@@ -578,16 +541,12 @@ ExplanationOfBenefit_SupportingInfo(
     this.extension,
     this.modifierExtension,
     this.sequence,
-    this._sequence,
     this.category,
     this.code,
     this.timingDate,
-    this._timingDate,
     this.timingPeriod,
     this.valueBoolean,
-    this._valueBoolean,
     this.valueString,
-    this._valueString,
     this.valueQuantity,
     this.valueAttachment,
     this.valueReference,
@@ -601,55 +560,53 @@ ExplanationOfBenefit_SupportingInfo(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Diagnosis {
 
-
-// Unique id for the element within a resource (for internal references). This may
-//  be any string value that does not contain spaces.
+//  Unique id for the element within a resource (for internal references).
+// This may be any string value that does not contain spaces.
 String id;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element. To make the use of extensions safe and manageable,
-//  there is a strict set of governance  applied to the definition and use of
-//  extensions. Though any implementer can define an extension, there is a set of
-//  requirements that SHALL be met as part of the definition of the extension.
+//  May be used to represent additional information that is not part of
+// the basic definition of the element. To make the use of extensions safe
+// and manageable, there is a strict set of governance  applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension.
 List<Extension> extension;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element and that modifies the understanding of the element in
-//  which it is contained and/or the understanding of the containing element's
-//  descendants. Usually modifier elements provide negation or qualification. To
-//  make the use of extensions safe and manageable, there is a strict set of
-//  governance applied to the definition and use of extensions. Though any
-//  implementer can define an extension, there is a set of requirements that SHALL
-//  be met as part of the definition of the extension. Applications processing a
-//  resource are required to check for modifier extensions.
-// Modifier extensions
-//  SHALL NOT change the meaning of any elements on Resource or DomainResource
-//  (including cannot change the meaning of modifierExtension itself).
+//  May be used to represent additional information that is not part of
+// the basic definition of the element and that modifies the understanding
+// of the element in which it is contained and/or the understanding of the
+// containing element's descendants. Usually modifier elements provide
+// negation or qualification. To make the use of extensions safe and
+// manageable, there is a strict set of governance applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension. Applications processing a resource are
+// required to check for modifier extensions. Modifier extensions SHALL
+// NOT change the meaning of any elements on Resource or DomainResource
+// (including cannot change the meaning of modifierExtension itself).
 List<Extension> modifierExtension;
 
-// A number to uniquely identify diagnosis entries.
+//  A number to uniquely identify diagnosis entries.
 int sequence;
 
-// Extensions for sequence
-Element _sequence;
-
-// The nature of illness or problem in a coded form or as a reference to an
-//  external defined Condition.
+//  The nature of illness or problem in a coded form or as a reference to
+// an external defined Condition.
 CodeableConcept diagnosisCodeableConcept;
 
-// The nature of illness or problem in a coded form or as a reference to an
-//  external defined Condition.
+//  The nature of illness or problem in a coded form or as a reference to
+// an external defined Condition.
 Reference diagnosisReference;
 
-// When the condition was observed or the relative ranking.
+//  When the condition was observed or the relative ranking.
 List<CodeableConcept> type;
 
-// Indication of whether the diagnosis was present on admission to a facility.
+//  Indication of whether the diagnosis was present on admission to a
+// facility.
 CodeableConcept onAdmission;
 
-// A package billing code or bundle code used to group products and services to a
-//  particular health condition (such as heart attack) which is based on a
-//  predetermined grouping code system.
+//  A package billing code or bundle code used to group products and
+// services to a particular health condition (such as heart attack) which
+// is based on a predetermined grouping code system.
 CodeableConcept packageCode;
 
 ExplanationOfBenefit_Diagnosis(
@@ -657,7 +614,6 @@ ExplanationOfBenefit_Diagnosis(
     this.extension,
     this.modifierExtension,
     this.sequence,
-    this._sequence,
     this.diagnosisCodeableConcept,
     this.diagnosisReference,
     this.type,
@@ -672,56 +628,50 @@ ExplanationOfBenefit_Diagnosis(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Procedure {
 
-
-// Unique id for the element within a resource (for internal references). This may
-//  be any string value that does not contain spaces.
+//  Unique id for the element within a resource (for internal references).
+// This may be any string value that does not contain spaces.
 String id;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element. To make the use of extensions safe and manageable,
-//  there is a strict set of governance  applied to the definition and use of
-//  extensions. Though any implementer can define an extension, there is a set of
-//  requirements that SHALL be met as part of the definition of the extension.
+//  May be used to represent additional information that is not part of
+// the basic definition of the element. To make the use of extensions safe
+// and manageable, there is a strict set of governance  applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension.
 List<Extension> extension;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element and that modifies the understanding of the element in
-//  which it is contained and/or the understanding of the containing element's
-//  descendants. Usually modifier elements provide negation or qualification. To
-//  make the use of extensions safe and manageable, there is a strict set of
-//  governance applied to the definition and use of extensions. Though any
-//  implementer can define an extension, there is a set of requirements that SHALL
-//  be met as part of the definition of the extension. Applications processing a
-//  resource are required to check for modifier extensions.
-// Modifier extensions
-//  SHALL NOT change the meaning of any elements on Resource or DomainResource
-//  (including cannot change the meaning of modifierExtension itself).
+//  May be used to represent additional information that is not part of
+// the basic definition of the element and that modifies the understanding
+// of the element in which it is contained and/or the understanding of the
+// containing element's descendants. Usually modifier elements provide
+// negation or qualification. To make the use of extensions safe and
+// manageable, there is a strict set of governance applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension. Applications processing a resource are
+// required to check for modifier extensions. Modifier extensions SHALL
+// NOT change the meaning of any elements on Resource or DomainResource
+// (including cannot change the meaning of modifierExtension itself).
 List<Extension> modifierExtension;
 
-// A number to uniquely identify procedure entries.
+//  A number to uniquely identify procedure entries.
 int sequence;
 
-// Extensions for sequence
-Element _sequence;
-
-// When the condition was observed or the relative ranking.
+//  When the condition was observed or the relative ranking.
 List<CodeableConcept> type;
 
-// Date and optionally time the procedure was performed.
+//  Date and optionally time the procedure was performed.
 DateTime date;
 
-// Extensions for date
-Element _date;
-
-// The code or reference to a Procedure resource which identifies the clinical
-//  intervention performed.
+//  The code or reference to a Procedure resource which identifies the
+// clinical intervention performed.
 CodeableConcept procedureCodeableConcept;
 
-// The code or reference to a Procedure resource which identifies the clinical
-//  intervention performed.
+//  The code or reference to a Procedure resource which identifies the
+// clinical intervention performed.
 Reference procedureReference;
 
-// Unique Device Identifiers associated with this line item.
+//  Unique Device Identifiers associated with this line item.
 List<Reference> udi;
 
 ExplanationOfBenefit_Procedure(
@@ -729,10 +679,8 @@ ExplanationOfBenefit_Procedure(
     this.extension,
     this.modifierExtension,
     this.sequence,
-    this._sequence,
     this.type,
     this.date,
-    this._date,
     this.procedureCodeableConcept,
     this.procedureReference,
     this.udi
@@ -745,61 +693,54 @@ ExplanationOfBenefit_Procedure(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Insurance {
 
-
-// Unique id for the element within a resource (for internal references). This may
-//  be any string value that does not contain spaces.
+//  Unique id for the element within a resource (for internal references).
+// This may be any string value that does not contain spaces.
 String id;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element. To make the use of extensions safe and manageable,
-//  there is a strict set of governance  applied to the definition and use of
-//  extensions. Though any implementer can define an extension, there is a set of
-//  requirements that SHALL be met as part of the definition of the extension.
+//  May be used to represent additional information that is not part of
+// the basic definition of the element. To make the use of extensions safe
+// and manageable, there is a strict set of governance  applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension.
 List<Extension> extension;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element and that modifies the understanding of the element in
-//  which it is contained and/or the understanding of the containing element's
-//  descendants. Usually modifier elements provide negation or qualification. To
-//  make the use of extensions safe and manageable, there is a strict set of
-//  governance applied to the definition and use of extensions. Though any
-//  implementer can define an extension, there is a set of requirements that SHALL
-//  be met as part of the definition of the extension. Applications processing a
-//  resource are required to check for modifier extensions.
-// Modifier extensions
-//  SHALL NOT change the meaning of any elements on Resource or DomainResource
-//  (including cannot change the meaning of modifierExtension itself).
+//  May be used to represent additional information that is not part of
+// the basic definition of the element and that modifies the understanding
+// of the element in which it is contained and/or the understanding of the
+// containing element's descendants. Usually modifier elements provide
+// negation or qualification. To make the use of extensions safe and
+// manageable, there is a strict set of governance applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension. Applications processing a resource are
+// required to check for modifier extensions. Modifier extensions SHALL
+// NOT change the meaning of any elements on Resource or DomainResource
+// (including cannot change the meaning of modifierExtension itself).
 List<Extension> modifierExtension;
 
-// A flag to indicate that this Coverage is to be used for adjudication of this
-//  claim when set to true.
+//  A flag to indicate that this Coverage is to be used for adjudication
+// of this claim when set to true.
 bool focal;
 
-// Extensions for focal
-Element _focal;
-
-// Reference to the insurance card level information contained in the Coverage
-//  resource. The coverage issuing insurer will use these details to locate the
-//  patient's actual coverage within the insurer's information system.
+//  Reference to the insurance card level information contained in the
+// Coverage resource. The coverage issuing insurer will use these details
+// to locate the patient's actual coverage within the insurer's
+// information system.
 Reference coverage;
 
-// Reference numbers previously provided by the insurer to the provider to be
-//  quoted on subsequent claims containing services or products related to the
-//  prior authorization.
+//  Reference numbers previously provided by the insurer to the provider
+// to be quoted on subsequent claims containing services or products
+// related to the prior authorization.
 List<String> preAuthRef;
-
-// Extensions for preAuthRef
-List<Element> _preAuthRef;
 
 ExplanationOfBenefit_Insurance(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.focal,
-    this._focal,
     this.coverage,
-    this.preAuthRef,
-    this._preAuthRef
+    this.preAuthRef
     });
 
   factory ExplanationOfBenefit_Insurance.fromJson(Map<String, dynamic> json) => _$ExplanationOfBenefit_InsuranceFromJson(json);
@@ -809,47 +750,45 @@ ExplanationOfBenefit_Insurance(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Accident {
 
-
-// Unique id for the element within a resource (for internal references). This may
-//  be any string value that does not contain spaces.
+//  Unique id for the element within a resource (for internal references).
+// This may be any string value that does not contain spaces.
 String id;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element. To make the use of extensions safe and manageable,
-//  there is a strict set of governance  applied to the definition and use of
-//  extensions. Though any implementer can define an extension, there is a set of
-//  requirements that SHALL be met as part of the definition of the extension.
+//  May be used to represent additional information that is not part of
+// the basic definition of the element. To make the use of extensions safe
+// and manageable, there is a strict set of governance  applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension.
 List<Extension> extension;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element and that modifies the understanding of the element in
-//  which it is contained and/or the understanding of the containing element's
-//  descendants. Usually modifier elements provide negation or qualification. To
-//  make the use of extensions safe and manageable, there is a strict set of
-//  governance applied to the definition and use of extensions. Though any
-//  implementer can define an extension, there is a set of requirements that SHALL
-//  be met as part of the definition of the extension. Applications processing a
-//  resource are required to check for modifier extensions.
-// Modifier extensions
-//  SHALL NOT change the meaning of any elements on Resource or DomainResource
-//  (including cannot change the meaning of modifierExtension itself).
+//  May be used to represent additional information that is not part of
+// the basic definition of the element and that modifies the understanding
+// of the element in which it is contained and/or the understanding of the
+// containing element's descendants. Usually modifier elements provide
+// negation or qualification. To make the use of extensions safe and
+// manageable, there is a strict set of governance applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension. Applications processing a resource are
+// required to check for modifier extensions. Modifier extensions SHALL
+// NOT change the meaning of any elements on Resource or DomainResource
+// (including cannot change the meaning of modifierExtension itself).
 List<Extension> modifierExtension;
 
-// Date of an accident event  related to the products and services contained in the
-//  claim.
+//  Date of an accident event  related to the products and services
+// contained in the claim.
 String date;
 
-// Extensions for date
-Element _date;
-
-// The type or context of the accident event for the purposes of selection of
-//  potential insurance coverages and determination of coordination between insurers.
+//  The type or context of the accident event for the purposes of
+// selection of potential insurance coverages and determination of
+// coordination between insurers.
 CodeableConcept type;
 
-// The physical location of the accident event.
+//  The physical location of the accident event.
 Address locationAddress;
 
-// The physical location of the accident event.
+//  The physical location of the accident event.
 Reference locationReference;
 
 ExplanationOfBenefit_Accident(
@@ -857,7 +796,6 @@ ExplanationOfBenefit_Accident(
     this.extension,
     this.modifierExtension,
     this.date,
-    this._date,
     this.type,
     this.locationAddress,
     this.locationReference
@@ -870,146 +808,127 @@ ExplanationOfBenefit_Accident(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Item {
 
-
-// Unique id for the element within a resource (for internal references). This may
-//  be any string value that does not contain spaces.
+//  Unique id for the element within a resource (for internal references).
+// This may be any string value that does not contain spaces.
 String id;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element. To make the use of extensions safe and manageable,
-//  there is a strict set of governance  applied to the definition and use of
-//  extensions. Though any implementer can define an extension, there is a set of
-//  requirements that SHALL be met as part of the definition of the extension.
+//  May be used to represent additional information that is not part of
+// the basic definition of the element. To make the use of extensions safe
+// and manageable, there is a strict set of governance  applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension.
 List<Extension> extension;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element and that modifies the understanding of the element in
-//  which it is contained and/or the understanding of the containing element's
-//  descendants. Usually modifier elements provide negation or qualification. To
-//  make the use of extensions safe and manageable, there is a strict set of
-//  governance applied to the definition and use of extensions. Though any
-//  implementer can define an extension, there is a set of requirements that SHALL
-//  be met as part of the definition of the extension. Applications processing a
-//  resource are required to check for modifier extensions.
-// Modifier extensions
-//  SHALL NOT change the meaning of any elements on Resource or DomainResource
-//  (including cannot change the meaning of modifierExtension itself).
+//  May be used to represent additional information that is not part of
+// the basic definition of the element and that modifies the understanding
+// of the element in which it is contained and/or the understanding of the
+// containing element's descendants. Usually modifier elements provide
+// negation or qualification. To make the use of extensions safe and
+// manageable, there is a strict set of governance applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension. Applications processing a resource are
+// required to check for modifier extensions. Modifier extensions SHALL
+// NOT change the meaning of any elements on Resource or DomainResource
+// (including cannot change the meaning of modifierExtension itself).
 List<Extension> modifierExtension;
 
-// A number to uniquely identify item entries.
+//  A number to uniquely identify item entries.
 int sequence;
 
-// Extensions for sequence
-Element _sequence;
-
-// Care team members related to this service or product.
+//  Care team members related to this service or product.
 List<int> careTeamSequence;
 
-// Extensions for careTeamSequence
-List<Element> _careTeamSequence;
-
-// Diagnoses applicable for this service or product.
+//  Diagnoses applicable for this service or product.
 List<int> diagnosisSequence;
 
-// Extensions for diagnosisSequence
-List<Element> _diagnosisSequence;
-
-// Procedures applicable for this service or product.
+//  Procedures applicable for this service or product.
 List<int> procedureSequence;
 
-// Extensions for procedureSequence
-List<Element> _procedureSequence;
-
-// Exceptions, special conditions and supporting information applicable for this
-//  service or product.
+//  Exceptions, special conditions and supporting information applicable
+// for this service or product.
 List<int> informationSequence;
 
-// Extensions for informationSequence
-List<Element> _informationSequence;
-
-// The type of revenue or cost center providing the product and/or service.
+//  The type of revenue or cost center providing the product and/or
+// service.
 CodeableConcept revenue;
 
-// Code to identify the general type of benefits under which products and services
-//  are provided.
+//  Code to identify the general type of benefits under which products and
+// services are provided.
 CodeableConcept category;
 
-// When the value is a group code then this item collects a set of related claim
-//  details, otherwise this contains the product, service, drug or other billing
-//  code for the item.
+//  When the value is a group code then this item collects a set of
+// related claim details, otherwise this contains the product, service,
+// drug or other billing code for the item.
 CodeableConcept productOrService;
 
-// Item typification or modifiers codes to convey additional context for the
-//  product or service.
+//  Item typification or modifiers codes to convey additional context for
+// the product or service.
 List<CodeableConcept> modifier;
 
-// Identifies the program under which this may be recovered.
+//  Identifies the program under which this may be recovered.
 List<CodeableConcept> programCode;
 
-// The date or dates when the service or product was supplied, performed or
-//  completed.
+//  The date or dates when the service or product was supplied, performed
+// or completed.
 String servicedDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
-// Extensions for servicedDate
-Element _servicedDate;
-
-// The date or dates when the service or product was supplied, performed or
-//  completed.
+//  The date or dates when the service or product was supplied, performed
+// or completed.
 Period servicedPeriod;
 
-// Where the product or service was provided.
+//  Where the product or service was provided.
 CodeableConcept locationCodeableConcept;
 
-// Where the product or service was provided.
+//  Where the product or service was provided.
 Address locationAddress;
 
-// Where the product or service was provided.
+//  Where the product or service was provided.
 Reference locationReference;
 
-// The number of repetitions of a service or product.
+//  The number of repetitions of a service or product.
 Quantity quantity;
 
-// If the item is not a group then this is the fee for the product or service,
-//  otherwise this is the total of the fees for the details of the group.
+//  If the item is not a group then this is the fee for the product or
+// service, otherwise this is the total of the fees for the details of the
+// group.
 Money unitPrice;
 
-// A real number that represents a multiplier used in determining the overall value
-//  of services delivered and/or goods received. The concept of a Factor allows for
-//  a discount or surcharge multiplier to be applied to a monetary amount.
+//  A real number that represents a multiplier used in determining the
+// overall value of services delivered and/or goods received. The concept
+// of a Factor allows for a discount or surcharge multiplier to be applied
+// to a monetary amount.
 double factor;
 
-// Extensions for factor
-Element _factor;
-
-// The quantity times the unit price for an additional service or product or
-//  charge.
+//  The quantity times the unit price for an additional service or product
+// or charge.
 Money net;
 
-// Unique Device Identifiers associated with this line item.
+//  Unique Device Identifiers associated with this line item.
 List<Reference> udi;
 
-// Physical service site on the patient (limb, tooth, etc.).
+//  Physical service site on the patient (limb, tooth, etc.).
 CodeableConcept bodySite;
 
-// A region or surface of the bodySite, e.g. limb region or tooth surface(s).
+//  A region or surface of the bodySite, e.g. limb region or tooth
+// surface(s).
 List<CodeableConcept> subSite;
 
-// A billed item may include goods or services provided in multiple encounters.
+//  A billed item may include goods or services provided in multiple
+// encounters.
 List<Reference> encounter;
 
-// The numbers associated with notes below which apply to the adjudication of this
-//  item.
+//  The numbers associated with notes below which apply to the
+// adjudication of this item.
 List<int> noteNumber;
 
-// Extensions for noteNumber
-List<Element> _noteNumber;
-
-// If this item is a group then the values here are a summary of the adjudication
-//  of the detail items. If this item is a simple product or service then this is
-//  the result of the adjudication of this item.
+//  If this item is a group then the values here are a summary of the
+// adjudication of the detail items. If this item is a simple product or
+// service then this is the result of the adjudication of this item.
 List<ExplanationOfBenefit_Adjudication> adjudication;
 
-// Second-tier of goods and services.
+//  Second-tier of goods and services.
 List<ExplanationOfBenefit_Detail> detail;
 
 ExplanationOfBenefit_Item(
@@ -1017,22 +936,16 @@ ExplanationOfBenefit_Item(
     this.extension,
     this.modifierExtension,
     this.sequence,
-    this._sequence,
     this.careTeamSequence,
-    this._careTeamSequence,
     this.diagnosisSequence,
-    this._diagnosisSequence,
     this.procedureSequence,
-    this._procedureSequence,
     this.informationSequence,
-    this._informationSequence,
     this.revenue,
     this.category,
     this.productOrService,
     this.modifier,
     this.programCode,
     this.servicedDate,
-    this._servicedDate,
     this.servicedPeriod,
     this.locationCodeableConcept,
     this.locationAddress,
@@ -1040,14 +953,12 @@ ExplanationOfBenefit_Item(
     this.quantity,
     this.unitPrice,
     this.factor,
-    this._factor,
     this.net,
     this.udi,
     this.bodySite,
     this.subSite,
     this.encounter,
     this.noteNumber,
-    this._noteNumber,
     this.adjudication,
     this.detail
     });
@@ -1059,52 +970,49 @@ ExplanationOfBenefit_Item(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Adjudication {
 
-
-// Unique id for the element within a resource (for internal references). This may
-//  be any string value that does not contain spaces.
+//  Unique id for the element within a resource (for internal references).
+// This may be any string value that does not contain spaces.
 String id;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element. To make the use of extensions safe and manageable,
-//  there is a strict set of governance  applied to the definition and use of
-//  extensions. Though any implementer can define an extension, there is a set of
-//  requirements that SHALL be met as part of the definition of the extension.
+//  May be used to represent additional information that is not part of
+// the basic definition of the element. To make the use of extensions safe
+// and manageable, there is a strict set of governance  applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension.
 List<Extension> extension;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element and that modifies the understanding of the element in
-//  which it is contained and/or the understanding of the containing element's
-//  descendants. Usually modifier elements provide negation or qualification. To
-//  make the use of extensions safe and manageable, there is a strict set of
-//  governance applied to the definition and use of extensions. Though any
-//  implementer can define an extension, there is a set of requirements that SHALL
-//  be met as part of the definition of the extension. Applications processing a
-//  resource are required to check for modifier extensions.
-// Modifier extensions
-//  SHALL NOT change the meaning of any elements on Resource or DomainResource
-//  (including cannot change the meaning of modifierExtension itself).
+//  May be used to represent additional information that is not part of
+// the basic definition of the element and that modifies the understanding
+// of the element in which it is contained and/or the understanding of the
+// containing element's descendants. Usually modifier elements provide
+// negation or qualification. To make the use of extensions safe and
+// manageable, there is a strict set of governance applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension. Applications processing a resource are
+// required to check for modifier extensions. Modifier extensions SHALL
+// NOT change the meaning of any elements on Resource or DomainResource
+// (including cannot change the meaning of modifierExtension itself).
 List<Extension> modifierExtension;
 
-// A code to indicate the information type of this adjudication record. Information
-//  types may include: the value submitted, maximum values or percentages allowed
-//  or payable under the plan, amounts that the patient is responsible for
-//  in-aggregate or pertaining to this item, amounts paid by other coverages, and
-//  the benefit payable for this item.
+//  A code to indicate the information type of this adjudication record.
+// Information types may include: the value submitted, maximum values or
+// percentages allowed or payable under the plan, amounts that the patient
+// is responsible for in-aggregate or pertaining to this item, amounts
+// paid by other coverages, and the benefit payable for this item.
 CodeableConcept category;
 
-// A code supporting the understanding of the adjudication result and explaining
-//  variance from expected amount.
+//  A code supporting the understanding of the adjudication result and
+// explaining variance from expected amount.
 CodeableConcept reason;
 
-// Monetary amount associated with the category.
+//  Monetary amount associated with the category.
 Money amount;
 
-// A non-monetary value associated with the category. Mutually exclusive to the
-//  amount element above.
+//  A non-monetary value associated with the category. Mutually exclusive
+// to the amount element above.
 double value;
-
-// Extensions for value
-Element _value;
 
 ExplanationOfBenefit_Adjudication(
   {this.id,
@@ -1113,8 +1021,7 @@ ExplanationOfBenefit_Adjudication(
     this.category,
     this.reason,
     this.amount,
-    this.value,
-    this._value
+    this.value
     });
 
   factory ExplanationOfBenefit_Adjudication.fromJson(Map<String, dynamic> json) => _$ExplanationOfBenefit_AdjudicationFromJson(json);
@@ -1124,91 +1031,85 @@ ExplanationOfBenefit_Adjudication(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Detail {
 
-
-// Unique id for the element within a resource (for internal references). This may
-//  be any string value that does not contain spaces.
+//  Unique id for the element within a resource (for internal references).
+// This may be any string value that does not contain spaces.
 String id;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element. To make the use of extensions safe and manageable,
-//  there is a strict set of governance  applied to the definition and use of
-//  extensions. Though any implementer can define an extension, there is a set of
-//  requirements that SHALL be met as part of the definition of the extension.
+//  May be used to represent additional information that is not part of
+// the basic definition of the element. To make the use of extensions safe
+// and manageable, there is a strict set of governance  applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension.
 List<Extension> extension;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element and that modifies the understanding of the element in
-//  which it is contained and/or the understanding of the containing element's
-//  descendants. Usually modifier elements provide negation or qualification. To
-//  make the use of extensions safe and manageable, there is a strict set of
-//  governance applied to the definition and use of extensions. Though any
-//  implementer can define an extension, there is a set of requirements that SHALL
-//  be met as part of the definition of the extension. Applications processing a
-//  resource are required to check for modifier extensions.
-// Modifier extensions
-//  SHALL NOT change the meaning of any elements on Resource or DomainResource
-//  (including cannot change the meaning of modifierExtension itself).
+//  May be used to represent additional information that is not part of
+// the basic definition of the element and that modifies the understanding
+// of the element in which it is contained and/or the understanding of the
+// containing element's descendants. Usually modifier elements provide
+// negation or qualification. To make the use of extensions safe and
+// manageable, there is a strict set of governance applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension. Applications processing a resource are
+// required to check for modifier extensions. Modifier extensions SHALL
+// NOT change the meaning of any elements on Resource or DomainResource
+// (including cannot change the meaning of modifierExtension itself).
 List<Extension> modifierExtension;
 
-// A claim detail line. Either a simple (a product or service) or a 'group' of
-//  sub-details which are simple items.
+//  A claim detail line. Either a simple (a product or service) or a
+// 'group' of sub-details which are simple items.
 int sequence;
 
-// Extensions for sequence
-Element _sequence;
-
-// The type of revenue or cost center providing the product and/or service.
+//  The type of revenue or cost center providing the product and/or
+// service.
 CodeableConcept revenue;
 
-// Code to identify the general type of benefits under which products and services
-//  are provided.
+//  Code to identify the general type of benefits under which products and
+// services are provided.
 CodeableConcept category;
 
-// When the value is a group code then this item collects a set of related claim
-//  details, otherwise this contains the product, service, drug or other billing
-//  code for the item.
+//  When the value is a group code then this item collects a set of
+// related claim details, otherwise this contains the product, service,
+// drug or other billing code for the item.
 CodeableConcept productOrService;
 
-// Item typification or modifiers codes to convey additional context for the
-//  product or service.
+//  Item typification or modifiers codes to convey additional context for
+// the product or service.
 List<CodeableConcept> modifier;
 
-// Identifies the program under which this may be recovered.
+//  Identifies the program under which this may be recovered.
 List<CodeableConcept> programCode;
 
-// The number of repetitions of a service or product.
+//  The number of repetitions of a service or product.
 Quantity quantity;
 
-// If the item is not a group then this is the fee for the product or service,
-//  otherwise this is the total of the fees for the details of the group.
+//  If the item is not a group then this is the fee for the product or
+// service, otherwise this is the total of the fees for the details of the
+// group.
 Money unitPrice;
 
-// A real number that represents a multiplier used in determining the overall value
-//  of services delivered and/or goods received. The concept of a Factor allows for
-//  a discount or surcharge multiplier to be applied to a monetary amount.
+//  A real number that represents a multiplier used in determining the
+// overall value of services delivered and/or goods received. The concept
+// of a Factor allows for a discount or surcharge multiplier to be applied
+// to a monetary amount.
 double factor;
 
-// Extensions for factor
-Element _factor;
-
-// The quantity times the unit price for an additional service or product or
-//  charge.
+//  The quantity times the unit price for an additional service or product
+// or charge.
 Money net;
 
-// Unique Device Identifiers associated with this line item.
+//  Unique Device Identifiers associated with this line item.
 List<Reference> udi;
 
-// The numbers associated with notes below which apply to the adjudication of this
-//  item.
+//  The numbers associated with notes below which apply to the
+// adjudication of this item.
 List<int> noteNumber;
 
-// Extensions for noteNumber
-List<Element> _noteNumber;
-
-// The adjudication results.
+//  The adjudication results.
 List<ExplanationOfBenefit_Adjudication> adjudication;
 
-// Third-tier of goods and services.
+//  Third-tier of goods and services.
 List<ExplanationOfBenefit_SubDetail> subDetail;
 
 ExplanationOfBenefit_Detail(
@@ -1216,7 +1117,6 @@ ExplanationOfBenefit_Detail(
     this.extension,
     this.modifierExtension,
     this.sequence,
-    this._sequence,
     this.revenue,
     this.category,
     this.productOrService,
@@ -1225,11 +1125,9 @@ ExplanationOfBenefit_Detail(
     this.quantity,
     this.unitPrice,
     this.factor,
-    this._factor,
     this.net,
     this.udi,
     this.noteNumber,
-    this._noteNumber,
     this.adjudication,
     this.subDetail
     });
@@ -1241,88 +1139,82 @@ ExplanationOfBenefit_Detail(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_SubDetail {
 
-
-// Unique id for the element within a resource (for internal references). This may
-//  be any string value that does not contain spaces.
+//  Unique id for the element within a resource (for internal references).
+// This may be any string value that does not contain spaces.
 String id;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element. To make the use of extensions safe and manageable,
-//  there is a strict set of governance  applied to the definition and use of
-//  extensions. Though any implementer can define an extension, there is a set of
-//  requirements that SHALL be met as part of the definition of the extension.
+//  May be used to represent additional information that is not part of
+// the basic definition of the element. To make the use of extensions safe
+// and manageable, there is a strict set of governance  applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension.
 List<Extension> extension;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element and that modifies the understanding of the element in
-//  which it is contained and/or the understanding of the containing element's
-//  descendants. Usually modifier elements provide negation or qualification. To
-//  make the use of extensions safe and manageable, there is a strict set of
-//  governance applied to the definition and use of extensions. Though any
-//  implementer can define an extension, there is a set of requirements that SHALL
-//  be met as part of the definition of the extension. Applications processing a
-//  resource are required to check for modifier extensions.
-// Modifier extensions
-//  SHALL NOT change the meaning of any elements on Resource or DomainResource
-//  (including cannot change the meaning of modifierExtension itself).
+//  May be used to represent additional information that is not part of
+// the basic definition of the element and that modifies the understanding
+// of the element in which it is contained and/or the understanding of the
+// containing element's descendants. Usually modifier elements provide
+// negation or qualification. To make the use of extensions safe and
+// manageable, there is a strict set of governance applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension. Applications processing a resource are
+// required to check for modifier extensions. Modifier extensions SHALL
+// NOT change the meaning of any elements on Resource or DomainResource
+// (including cannot change the meaning of modifierExtension itself).
 List<Extension> modifierExtension;
 
-// A claim detail line. Either a simple (a product or service) or a 'group' of
-//  sub-details which are simple items.
+//  A claim detail line. Either a simple (a product or service) or a
+// 'group' of sub-details which are simple items.
 int sequence;
 
-// Extensions for sequence
-Element _sequence;
-
-// The type of revenue or cost center providing the product and/or service.
+//  The type of revenue or cost center providing the product and/or
+// service.
 CodeableConcept revenue;
 
-// Code to identify the general type of benefits under which products and services
-//  are provided.
+//  Code to identify the general type of benefits under which products and
+// services are provided.
 CodeableConcept category;
 
-// When the value is a group code then this item collects a set of related claim
-//  details, otherwise this contains the product, service, drug or other billing
-//  code for the item.
+//  When the value is a group code then this item collects a set of
+// related claim details, otherwise this contains the product, service,
+// drug or other billing code for the item.
 CodeableConcept productOrService;
 
-// Item typification or modifiers codes to convey additional context for the
-//  product or service.
+//  Item typification or modifiers codes to convey additional context for
+// the product or service.
 List<CodeableConcept> modifier;
 
-// Identifies the program under which this may be recovered.
+//  Identifies the program under which this may be recovered.
 List<CodeableConcept> programCode;
 
-// The number of repetitions of a service or product.
+//  The number of repetitions of a service or product.
 Quantity quantity;
 
-// If the item is not a group then this is the fee for the product or service,
-//  otherwise this is the total of the fees for the details of the group.
+//  If the item is not a group then this is the fee for the product or
+// service, otherwise this is the total of the fees for the details of the
+// group.
 Money unitPrice;
 
-// A real number that represents a multiplier used in determining the overall value
-//  of services delivered and/or goods received. The concept of a Factor allows for
-//  a discount or surcharge multiplier to be applied to a monetary amount.
+//  A real number that represents a multiplier used in determining the
+// overall value of services delivered and/or goods received. The concept
+// of a Factor allows for a discount or surcharge multiplier to be applied
+// to a monetary amount.
 double factor;
 
-// Extensions for factor
-Element _factor;
-
-// The quantity times the unit price for an additional service or product or
-//  charge.
+//  The quantity times the unit price for an additional service or product
+// or charge.
 Money net;
 
-// Unique Device Identifiers associated with this line item.
+//  Unique Device Identifiers associated with this line item.
 List<Reference> udi;
 
-// The numbers associated with notes below which apply to the adjudication of this
-//  item.
+//  The numbers associated with notes below which apply to the
+// adjudication of this item.
 List<int> noteNumber;
 
-// Extensions for noteNumber
-List<Element> _noteNumber;
-
-// The adjudication results.
+//  The adjudication results.
 List<ExplanationOfBenefit_Adjudication> adjudication;
 
 ExplanationOfBenefit_SubDetail(
@@ -1330,7 +1222,6 @@ ExplanationOfBenefit_SubDetail(
     this.extension,
     this.modifierExtension,
     this.sequence,
-    this._sequence,
     this.revenue,
     this.category,
     this.productOrService,
@@ -1339,11 +1230,9 @@ ExplanationOfBenefit_SubDetail(
     this.quantity,
     this.unitPrice,
     this.factor,
-    this._factor,
     this.net,
     this.udi,
     this.noteNumber,
-    this._noteNumber,
     this.adjudication
     });
 
@@ -1354,123 +1243,109 @@ ExplanationOfBenefit_SubDetail(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_AddItem {
 
-
-// Unique id for the element within a resource (for internal references). This may
-//  be any string value that does not contain spaces.
+//  Unique id for the element within a resource (for internal references).
+// This may be any string value that does not contain spaces.
 String id;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element. To make the use of extensions safe and manageable,
-//  there is a strict set of governance  applied to the definition and use of
-//  extensions. Though any implementer can define an extension, there is a set of
-//  requirements that SHALL be met as part of the definition of the extension.
+//  May be used to represent additional information that is not part of
+// the basic definition of the element. To make the use of extensions safe
+// and manageable, there is a strict set of governance  applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension.
 List<Extension> extension;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element and that modifies the understanding of the element in
-//  which it is contained and/or the understanding of the containing element's
-//  descendants. Usually modifier elements provide negation or qualification. To
-//  make the use of extensions safe and manageable, there is a strict set of
-//  governance applied to the definition and use of extensions. Though any
-//  implementer can define an extension, there is a set of requirements that SHALL
-//  be met as part of the definition of the extension. Applications processing a
-//  resource are required to check for modifier extensions.
-// Modifier extensions
-//  SHALL NOT change the meaning of any elements on Resource or DomainResource
-//  (including cannot change the meaning of modifierExtension itself).
+//  May be used to represent additional information that is not part of
+// the basic definition of the element and that modifies the understanding
+// of the element in which it is contained and/or the understanding of the
+// containing element's descendants. Usually modifier elements provide
+// negation or qualification. To make the use of extensions safe and
+// manageable, there is a strict set of governance applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension. Applications processing a resource are
+// required to check for modifier extensions. Modifier extensions SHALL
+// NOT change the meaning of any elements on Resource or DomainResource
+// (including cannot change the meaning of modifierExtension itself).
 List<Extension> modifierExtension;
 
-// Claim items which this service line is intended to replace.
+//  Claim items which this service line is intended to replace.
 List<int> itemSequence;
 
-// Extensions for itemSequence
-List<Element> _itemSequence;
-
-// The sequence number of the details within the claim item which this line is
-//  intended to replace.
+//  The sequence number of the details within the claim item which this
+// line is intended to replace.
 List<int> detailSequence;
 
-// Extensions for detailSequence
-List<Element> _detailSequence;
-
-// The sequence number of the sub-details woithin the details within the claim item
-//  which this line is intended to replace.
+//  The sequence number of the sub-details woithin the details within the
+// claim item which this line is intended to replace.
 List<int> subDetailSequence;
 
-// Extensions for subDetailSequence
-List<Element> _subDetailSequence;
-
-// The providers who are authorized for the services rendered to the patient.
+//  The providers who are authorized for the services rendered to the
+// patient.
 List<Reference> provider;
 
-// When the value is a group code then this item collects a set of related claim
-//  details, otherwise this contains the product, service, drug or other billing
-//  code for the item.
+//  When the value is a group code then this item collects a set of
+// related claim details, otherwise this contains the product, service,
+// drug or other billing code for the item.
 CodeableConcept productOrService;
 
-// Item typification or modifiers codes to convey additional context for the
-//  product or service.
+//  Item typification or modifiers codes to convey additional context for
+// the product or service.
 List<CodeableConcept> modifier;
 
-// Identifies the program under which this may be recovered.
+//  Identifies the program under which this may be recovered.
 List<CodeableConcept> programCode;
 
-// The date or dates when the service or product was supplied, performed or
-//  completed.
+//  The date or dates when the service or product was supplied, performed
+// or completed.
 String servicedDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
-// Extensions for servicedDate
-Element _servicedDate;
-
-// The date or dates when the service or product was supplied, performed or
-//  completed.
+//  The date or dates when the service or product was supplied, performed
+// or completed.
 Period servicedPeriod;
 
-// Where the product or service was provided.
+//  Where the product or service was provided.
 CodeableConcept locationCodeableConcept;
 
-// Where the product or service was provided.
+//  Where the product or service was provided.
 Address locationAddress;
 
-// Where the product or service was provided.
+//  Where the product or service was provided.
 Reference locationReference;
 
-// The number of repetitions of a service or product.
+//  The number of repetitions of a service or product.
 Quantity quantity;
 
-// If the item is not a group then this is the fee for the product or service,
-//  otherwise this is the total of the fees for the details of the group.
+//  If the item is not a group then this is the fee for the product or
+// service, otherwise this is the total of the fees for the details of the
+// group.
 Money unitPrice;
 
-// A real number that represents a multiplier used in determining the overall value
-//  of services delivered and/or goods received. The concept of a Factor allows for
-//  a discount or surcharge multiplier to be applied to a monetary amount.
+//  A real number that represents a multiplier used in determining the
+// overall value of services delivered and/or goods received. The concept
+// of a Factor allows for a discount or surcharge multiplier to be applied
+// to a monetary amount.
 double factor;
 
-// Extensions for factor
-Element _factor;
-
-// The quantity times the unit price for an additional service or product or
-//  charge.
+//  The quantity times the unit price for an additional service or product
+// or charge.
 Money net;
 
-// Physical service site on the patient (limb, tooth, etc.).
+//  Physical service site on the patient (limb, tooth, etc.).
 CodeableConcept bodySite;
 
-// A region or surface of the bodySite, e.g. limb region or tooth surface(s).
+//  A region or surface of the bodySite, e.g. limb region or tooth
+// surface(s).
 List<CodeableConcept> subSite;
 
-// The numbers associated with notes below which apply to the adjudication of this
-//  item.
+//  The numbers associated with notes below which apply to the
+// adjudication of this item.
 List<int> noteNumber;
 
-// Extensions for noteNumber
-List<Element> _noteNumber;
-
-// The adjudication results.
+//  The adjudication results.
 List<ExplanationOfBenefit_Adjudication> adjudication;
 
-// The second-tier service adjudications for payor added services.
+//  The second-tier service adjudications for payor added services.
 List<ExplanationOfBenefit_Detail1> detail;
 
 ExplanationOfBenefit_AddItem(
@@ -1478,17 +1353,13 @@ ExplanationOfBenefit_AddItem(
     this.extension,
     this.modifierExtension,
     this.itemSequence,
-    this._itemSequence,
     this.detailSequence,
-    this._detailSequence,
     this.subDetailSequence,
-    this._subDetailSequence,
     this.provider,
     this.productOrService,
     this.modifier,
     this.programCode,
     this.servicedDate,
-    this._servicedDate,
     this.servicedPeriod,
     this.locationCodeableConcept,
     this.locationAddress,
@@ -1496,12 +1367,10 @@ ExplanationOfBenefit_AddItem(
     this.quantity,
     this.unitPrice,
     this.factor,
-    this._factor,
     this.net,
     this.bodySite,
     this.subSite,
     this.noteNumber,
-    this._noteNumber,
     this.adjudication,
     this.detail
     });
@@ -1513,71 +1382,67 @@ ExplanationOfBenefit_AddItem(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Detail1 {
 
-
-// Unique id for the element within a resource (for internal references). This may
-//  be any string value that does not contain spaces.
+//  Unique id for the element within a resource (for internal references).
+// This may be any string value that does not contain spaces.
 String id;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element. To make the use of extensions safe and manageable,
-//  there is a strict set of governance  applied to the definition and use of
-//  extensions. Though any implementer can define an extension, there is a set of
-//  requirements that SHALL be met as part of the definition of the extension.
+//  May be used to represent additional information that is not part of
+// the basic definition of the element. To make the use of extensions safe
+// and manageable, there is a strict set of governance  applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension.
 List<Extension> extension;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element and that modifies the understanding of the element in
-//  which it is contained and/or the understanding of the containing element's
-//  descendants. Usually modifier elements provide negation or qualification. To
-//  make the use of extensions safe and manageable, there is a strict set of
-//  governance applied to the definition and use of extensions. Though any
-//  implementer can define an extension, there is a set of requirements that SHALL
-//  be met as part of the definition of the extension. Applications processing a
-//  resource are required to check for modifier extensions.
-// Modifier extensions
-//  SHALL NOT change the meaning of any elements on Resource or DomainResource
-//  (including cannot change the meaning of modifierExtension itself).
+//  May be used to represent additional information that is not part of
+// the basic definition of the element and that modifies the understanding
+// of the element in which it is contained and/or the understanding of the
+// containing element's descendants. Usually modifier elements provide
+// negation or qualification. To make the use of extensions safe and
+// manageable, there is a strict set of governance applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension. Applications processing a resource are
+// required to check for modifier extensions. Modifier extensions SHALL
+// NOT change the meaning of any elements on Resource or DomainResource
+// (including cannot change the meaning of modifierExtension itself).
 List<Extension> modifierExtension;
 
-// When the value is a group code then this item collects a set of related claim
-//  details, otherwise this contains the product, service, drug or other billing
-//  code for the item.
+//  When the value is a group code then this item collects a set of
+// related claim details, otherwise this contains the product, service,
+// drug or other billing code for the item.
 CodeableConcept productOrService;
 
-// Item typification or modifiers codes to convey additional context for the
-//  product or service.
+//  Item typification or modifiers codes to convey additional context for
+// the product or service.
 List<CodeableConcept> modifier;
 
-// The number of repetitions of a service or product.
+//  The number of repetitions of a service or product.
 Quantity quantity;
 
-// If the item is not a group then this is the fee for the product or service,
-//  otherwise this is the total of the fees for the details of the group.
+//  If the item is not a group then this is the fee for the product or
+// service, otherwise this is the total of the fees for the details of the
+// group.
 Money unitPrice;
 
-// A real number that represents a multiplier used in determining the overall value
-//  of services delivered and/or goods received. The concept of a Factor allows for
-//  a discount or surcharge multiplier to be applied to a monetary amount.
+//  A real number that represents a multiplier used in determining the
+// overall value of services delivered and/or goods received. The concept
+// of a Factor allows for a discount or surcharge multiplier to be applied
+// to a monetary amount.
 double factor;
 
-// Extensions for factor
-Element _factor;
-
-// The quantity times the unit price for an additional service or product or
-//  charge.
+//  The quantity times the unit price for an additional service or product
+// or charge.
 Money net;
 
-// The numbers associated with notes below which apply to the adjudication of this
-//  item.
+//  The numbers associated with notes below which apply to the
+// adjudication of this item.
 List<int> noteNumber;
 
-// Extensions for noteNumber
-List<Element> _noteNumber;
-
-// The adjudication results.
+//  The adjudication results.
 List<ExplanationOfBenefit_Adjudication> adjudication;
 
-// The third-tier service adjudications for payor added services.
+//  The third-tier service adjudications for payor added services.
 List<ExplanationOfBenefit_SubDetail1> subDetail;
 
 ExplanationOfBenefit_Detail1(
@@ -1589,10 +1454,8 @@ ExplanationOfBenefit_Detail1(
     this.quantity,
     this.unitPrice,
     this.factor,
-    this._factor,
     this.net,
     this.noteNumber,
-    this._noteNumber,
     this.adjudication,
     this.subDetail
     });
@@ -1604,68 +1467,64 @@ ExplanationOfBenefit_Detail1(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_SubDetail1 {
 
-
-// Unique id for the element within a resource (for internal references). This may
-//  be any string value that does not contain spaces.
+//  Unique id for the element within a resource (for internal references).
+// This may be any string value that does not contain spaces.
 String id;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element. To make the use of extensions safe and manageable,
-//  there is a strict set of governance  applied to the definition and use of
-//  extensions. Though any implementer can define an extension, there is a set of
-//  requirements that SHALL be met as part of the definition of the extension.
+//  May be used to represent additional information that is not part of
+// the basic definition of the element. To make the use of extensions safe
+// and manageable, there is a strict set of governance  applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension.
 List<Extension> extension;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element and that modifies the understanding of the element in
-//  which it is contained and/or the understanding of the containing element's
-//  descendants. Usually modifier elements provide negation or qualification. To
-//  make the use of extensions safe and manageable, there is a strict set of
-//  governance applied to the definition and use of extensions. Though any
-//  implementer can define an extension, there is a set of requirements that SHALL
-//  be met as part of the definition of the extension. Applications processing a
-//  resource are required to check for modifier extensions.
-// Modifier extensions
-//  SHALL NOT change the meaning of any elements on Resource or DomainResource
-//  (including cannot change the meaning of modifierExtension itself).
+//  May be used to represent additional information that is not part of
+// the basic definition of the element and that modifies the understanding
+// of the element in which it is contained and/or the understanding of the
+// containing element's descendants. Usually modifier elements provide
+// negation or qualification. To make the use of extensions safe and
+// manageable, there is a strict set of governance applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension. Applications processing a resource are
+// required to check for modifier extensions. Modifier extensions SHALL
+// NOT change the meaning of any elements on Resource or DomainResource
+// (including cannot change the meaning of modifierExtension itself).
 List<Extension> modifierExtension;
 
-// When the value is a group code then this item collects a set of related claim
-//  details, otherwise this contains the product, service, drug or other billing
-//  code for the item.
+//  When the value is a group code then this item collects a set of
+// related claim details, otherwise this contains the product, service,
+// drug or other billing code for the item.
 CodeableConcept productOrService;
 
-// Item typification or modifiers codes to convey additional context for the
-//  product or service.
+//  Item typification or modifiers codes to convey additional context for
+// the product or service.
 List<CodeableConcept> modifier;
 
-// The number of repetitions of a service or product.
+//  The number of repetitions of a service or product.
 Quantity quantity;
 
-// If the item is not a group then this is the fee for the product or service,
-//  otherwise this is the total of the fees for the details of the group.
+//  If the item is not a group then this is the fee for the product or
+// service, otherwise this is the total of the fees for the details of the
+// group.
 Money unitPrice;
 
-// A real number that represents a multiplier used in determining the overall value
-//  of services delivered and/or goods received. The concept of a Factor allows for
-//  a discount or surcharge multiplier to be applied to a monetary amount.
+//  A real number that represents a multiplier used in determining the
+// overall value of services delivered and/or goods received. The concept
+// of a Factor allows for a discount or surcharge multiplier to be applied
+// to a monetary amount.
 double factor;
 
-// Extensions for factor
-Element _factor;
-
-// The quantity times the unit price for an additional service or product or
-//  charge.
+//  The quantity times the unit price for an additional service or product
+// or charge.
 Money net;
 
-// The numbers associated with notes below which apply to the adjudication of this
-//  item.
+//  The numbers associated with notes below which apply to the
+// adjudication of this item.
 List<int> noteNumber;
 
-// Extensions for noteNumber
-List<Element> _noteNumber;
-
-// The adjudication results.
+//  The adjudication results.
 List<ExplanationOfBenefit_Adjudication> adjudication;
 
 ExplanationOfBenefit_SubDetail1(
@@ -1677,10 +1536,8 @@ ExplanationOfBenefit_SubDetail1(
     this.quantity,
     this.unitPrice,
     this.factor,
-    this._factor,
     this.net,
     this.noteNumber,
-    this._noteNumber,
     this.adjudication
     });
 
@@ -1691,40 +1548,40 @@ ExplanationOfBenefit_SubDetail1(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Total {
 
-
-// Unique id for the element within a resource (for internal references). This may
-//  be any string value that does not contain spaces.
+//  Unique id for the element within a resource (for internal references).
+// This may be any string value that does not contain spaces.
 String id;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element. To make the use of extensions safe and manageable,
-//  there is a strict set of governance  applied to the definition and use of
-//  extensions. Though any implementer can define an extension, there is a set of
-//  requirements that SHALL be met as part of the definition of the extension.
+//  May be used to represent additional information that is not part of
+// the basic definition of the element. To make the use of extensions safe
+// and manageable, there is a strict set of governance  applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension.
 List<Extension> extension;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element and that modifies the understanding of the element in
-//  which it is contained and/or the understanding of the containing element's
-//  descendants. Usually modifier elements provide negation or qualification. To
-//  make the use of extensions safe and manageable, there is a strict set of
-//  governance applied to the definition and use of extensions. Though any
-//  implementer can define an extension, there is a set of requirements that SHALL
-//  be met as part of the definition of the extension. Applications processing a
-//  resource are required to check for modifier extensions.
-// Modifier extensions
-//  SHALL NOT change the meaning of any elements on Resource or DomainResource
-//  (including cannot change the meaning of modifierExtension itself).
+//  May be used to represent additional information that is not part of
+// the basic definition of the element and that modifies the understanding
+// of the element in which it is contained and/or the understanding of the
+// containing element's descendants. Usually modifier elements provide
+// negation or qualification. To make the use of extensions safe and
+// manageable, there is a strict set of governance applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension. Applications processing a resource are
+// required to check for modifier extensions. Modifier extensions SHALL
+// NOT change the meaning of any elements on Resource or DomainResource
+// (including cannot change the meaning of modifierExtension itself).
 List<Extension> modifierExtension;
 
-// A code to indicate the information type of this adjudication record. Information
-//  types may include: the value submitted, maximum values or percentages allowed
-//  or payable under the plan, amounts that the patient is responsible for in
-//  aggregate or pertaining to this item, amounts paid by other coverages, and the
-//  benefit payable for this item.
+//  A code to indicate the information type of this adjudication record.
+// Information types may include: the value submitted, maximum values or
+// percentages allowed or payable under the plan, amounts that the patient
+// is responsible for in aggregate or pertaining to this item, amounts
+// paid by other coverages, and the benefit payable for this item.
 CodeableConcept category;
 
-// Monetary total amount associated with the category.
+//  Monetary total amount associated with the category.
 Money amount;
 
 ExplanationOfBenefit_Total(
@@ -1742,52 +1599,51 @@ ExplanationOfBenefit_Total(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Payment {
 
-
-// Unique id for the element within a resource (for internal references). This may
-//  be any string value that does not contain spaces.
+//  Unique id for the element within a resource (for internal references).
+// This may be any string value that does not contain spaces.
 String id;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element. To make the use of extensions safe and manageable,
-//  there is a strict set of governance  applied to the definition and use of
-//  extensions. Though any implementer can define an extension, there is a set of
-//  requirements that SHALL be met as part of the definition of the extension.
+//  May be used to represent additional information that is not part of
+// the basic definition of the element. To make the use of extensions safe
+// and manageable, there is a strict set of governance  applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension.
 List<Extension> extension;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element and that modifies the understanding of the element in
-//  which it is contained and/or the understanding of the containing element's
-//  descendants. Usually modifier elements provide negation or qualification. To
-//  make the use of extensions safe and manageable, there is a strict set of
-//  governance applied to the definition and use of extensions. Though any
-//  implementer can define an extension, there is a set of requirements that SHALL
-//  be met as part of the definition of the extension. Applications processing a
-//  resource are required to check for modifier extensions.
-// Modifier extensions
-//  SHALL NOT change the meaning of any elements on Resource or DomainResource
-//  (including cannot change the meaning of modifierExtension itself).
+//  May be used to represent additional information that is not part of
+// the basic definition of the element and that modifies the understanding
+// of the element in which it is contained and/or the understanding of the
+// containing element's descendants. Usually modifier elements provide
+// negation or qualification. To make the use of extensions safe and
+// manageable, there is a strict set of governance applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension. Applications processing a resource are
+// required to check for modifier extensions. Modifier extensions SHALL
+// NOT change the meaning of any elements on Resource or DomainResource
+// (including cannot change the meaning of modifierExtension itself).
 List<Extension> modifierExtension;
 
-// Whether this represents partial or complete payment of the benefits payable.
+//  Whether this represents partial or complete payment of the benefits
+// payable.
 CodeableConcept type;
 
-// Total amount of all adjustments to this payment included in this transaction
-//  which are not related to this claim's adjudication.
+//  Total amount of all adjustments to this payment included in this
+// transaction which are not related to this claim's adjudication.
 Money adjustment;
 
-// Reason for the payment adjustment.
+//  Reason for the payment adjustment.
 CodeableConcept adjustmentReason;
 
-// Estimated date the payment will be issued or the actual issue date of payment.
+//  Estimated date the payment will be issued or the actual issue date of
+// payment.
 String date;
 
-// Extensions for date
-Element _date;
-
-// Benefits payable less any payment adjustment.
+//  Benefits payable less any payment adjustment.
 Money amount;
 
-// Issuer's unique identifier for the payment instrument.
+//  Issuer's unique identifier for the payment instrument.
 Identifier identifier;
 
 ExplanationOfBenefit_Payment(
@@ -1798,7 +1654,6 @@ ExplanationOfBenefit_Payment(
     this.adjustment,
     this.adjustmentReason,
     this.date,
-    this._date,
     this.amount,
     this.identifier
     });
@@ -1810,51 +1665,42 @@ ExplanationOfBenefit_Payment(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_ProcessNote {
 
-
-// Unique id for the element within a resource (for internal references). This may
-//  be any string value that does not contain spaces.
+//  Unique id for the element within a resource (for internal references).
+// This may be any string value that does not contain spaces.
 String id;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element. To make the use of extensions safe and manageable,
-//  there is a strict set of governance  applied to the definition and use of
-//  extensions. Though any implementer can define an extension, there is a set of
-//  requirements that SHALL be met as part of the definition of the extension.
+//  May be used to represent additional information that is not part of
+// the basic definition of the element. To make the use of extensions safe
+// and manageable, there is a strict set of governance  applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension.
 List<Extension> extension;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element and that modifies the understanding of the element in
-//  which it is contained and/or the understanding of the containing element's
-//  descendants. Usually modifier elements provide negation or qualification. To
-//  make the use of extensions safe and manageable, there is a strict set of
-//  governance applied to the definition and use of extensions. Though any
-//  implementer can define an extension, there is a set of requirements that SHALL
-//  be met as part of the definition of the extension. Applications processing a
-//  resource are required to check for modifier extensions.
-// Modifier extensions
-//  SHALL NOT change the meaning of any elements on Resource or DomainResource
-//  (including cannot change the meaning of modifierExtension itself).
+//  May be used to represent additional information that is not part of
+// the basic definition of the element and that modifies the understanding
+// of the element in which it is contained and/or the understanding of the
+// containing element's descendants. Usually modifier elements provide
+// negation or qualification. To make the use of extensions safe and
+// manageable, there is a strict set of governance applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension. Applications processing a resource are
+// required to check for modifier extensions. Modifier extensions SHALL
+// NOT change the meaning of any elements on Resource or DomainResource
+// (including cannot change the meaning of modifierExtension itself).
 List<Extension> modifierExtension;
 
-// A number to uniquely identify a note entry.
+//  A number to uniquely identify a note entry.
 int number;
 
-// Extensions for number
-Element _number;
-
-// The business purpose of the note text.
+//  The business purpose of the note text.
 String type; // <code> enum: display/print/printoper;
 
-// Extensions for type
-Element _type;
-
-// The explanation or description associated with the processing.
+//  The explanation or description associated with the processing.
 String text;
 
-// Extensions for text
-Element _text;
-
-// A code to define the language used in the text of the note.
+//  A code to define the language used in the text of the note.
 CodeableConcept language;
 
 ExplanationOfBenefit_ProcessNote(
@@ -1862,11 +1708,8 @@ ExplanationOfBenefit_ProcessNote(
     this.extension,
     this.modifierExtension,
     this.number,
-    this._number,
     this.type,
-    this._type,
     this.text,
-    this._text,
     this.language
     });
 
@@ -1877,67 +1720,59 @@ ExplanationOfBenefit_ProcessNote(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_BenefitBalance {
 
-
-// Unique id for the element within a resource (for internal references). This may
-//  be any string value that does not contain spaces.
+//  Unique id for the element within a resource (for internal references).
+// This may be any string value that does not contain spaces.
 String id;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element. To make the use of extensions safe and manageable,
-//  there is a strict set of governance  applied to the definition and use of
-//  extensions. Though any implementer can define an extension, there is a set of
-//  requirements that SHALL be met as part of the definition of the extension.
+//  May be used to represent additional information that is not part of
+// the basic definition of the element. To make the use of extensions safe
+// and manageable, there is a strict set of governance  applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension.
 List<Extension> extension;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element and that modifies the understanding of the element in
-//  which it is contained and/or the understanding of the containing element's
-//  descendants. Usually modifier elements provide negation or qualification. To
-//  make the use of extensions safe and manageable, there is a strict set of
-//  governance applied to the definition and use of extensions. Though any
-//  implementer can define an extension, there is a set of requirements that SHALL
-//  be met as part of the definition of the extension. Applications processing a
-//  resource are required to check for modifier extensions.
-// Modifier extensions
-//  SHALL NOT change the meaning of any elements on Resource or DomainResource
-//  (including cannot change the meaning of modifierExtension itself).
+//  May be used to represent additional information that is not part of
+// the basic definition of the element and that modifies the understanding
+// of the element in which it is contained and/or the understanding of the
+// containing element's descendants. Usually modifier elements provide
+// negation or qualification. To make the use of extensions safe and
+// manageable, there is a strict set of governance applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension. Applications processing a resource are
+// required to check for modifier extensions. Modifier extensions SHALL
+// NOT change the meaning of any elements on Resource or DomainResource
+// (including cannot change the meaning of modifierExtension itself).
 List<Extension> modifierExtension;
 
-// Code to identify the general type of benefits under which products and services
-//  are provided.
+//  Code to identify the general type of benefits under which products and
+// services are provided.
 CodeableConcept category;
 
-// True if the indicated class of service is excluded from the plan, missing or
-//  False indicates the product or service is included in the coverage.
+//  True if the indicated class of service is excluded from the plan,
+// missing or False indicates the product or service is included in the
+// coverage.
 bool excluded;
 
-// Extensions for excluded
-Element _excluded;
-
-// A short name or tag for the benefit.
+//  A short name or tag for the benefit.
 String name;
 
-// Extensions for name
-Element _name;
-
-// A richer description of the benefit or services covered.
+//  A richer description of the benefit or services covered.
 String description;
 
-// Extensions for description
-Element _description;
-
-// Is a flag to indicate whether the benefits refer to in-network providers or
-//  out-of-network providers.
+//  Is a flag to indicate whether the benefits refer to in-network
+// providers or out-of-network providers.
 CodeableConcept network;
 
-// Indicates if the benefits apply to an individual or to the family.
+//  Indicates if the benefits apply to an individual or to the family.
 CodeableConcept unit;
 
-// The term or period of the values such as 'maximum lifetime benefit' or 'maximum
-//  annual visits'.
+//  The term or period of the values such as 'maximum lifetime benefit' or
+// 'maximum annual visits'.
 CodeableConcept term;
 
-// Benefits Used to date.
+//  Benefits Used to date.
 List<ExplanationOfBenefit_Financial> financial;
 
 ExplanationOfBenefit_BenefitBalance(
@@ -1946,11 +1781,8 @@ ExplanationOfBenefit_BenefitBalance(
     this.modifierExtension,
     this.category,
     this.excluded,
-    this._excluded,
     this.name,
-    this._name,
     this.description,
-    this._description,
     this.network,
     this.unit,
     this.term,
@@ -1964,57 +1796,48 @@ ExplanationOfBenefit_BenefitBalance(
 @JsonSerializable(explicitToJson: true)
 class ExplanationOfBenefit_Financial {
 
-
-// Unique id for the element within a resource (for internal references). This may
-//  be any string value that does not contain spaces.
+//  Unique id for the element within a resource (for internal references).
+// This may be any string value that does not contain spaces.
 String id;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element. To make the use of extensions safe and manageable,
-//  there is a strict set of governance  applied to the definition and use of
-//  extensions. Though any implementer can define an extension, there is a set of
-//  requirements that SHALL be met as part of the definition of the extension.
+//  May be used to represent additional information that is not part of
+// the basic definition of the element. To make the use of extensions safe
+// and manageable, there is a strict set of governance  applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension.
 List<Extension> extension;
 
-// May be used to represent additional information that is not part of the basic
-//  definition of the element and that modifies the understanding of the element in
-//  which it is contained and/or the understanding of the containing element's
-//  descendants. Usually modifier elements provide negation or qualification. To
-//  make the use of extensions safe and manageable, there is a strict set of
-//  governance applied to the definition and use of extensions. Though any
-//  implementer can define an extension, there is a set of requirements that SHALL
-//  be met as part of the definition of the extension. Applications processing a
-//  resource are required to check for modifier extensions.
-// Modifier extensions
-//  SHALL NOT change the meaning of any elements on Resource or DomainResource
-//  (including cannot change the meaning of modifierExtension itself).
+//  May be used to represent additional information that is not part of
+// the basic definition of the element and that modifies the understanding
+// of the element in which it is contained and/or the understanding of the
+// containing element's descendants. Usually modifier elements provide
+// negation or qualification. To make the use of extensions safe and
+// manageable, there is a strict set of governance applied to the
+// definition and use of extensions. Though any implementer can define an
+// extension, there is a set of requirements that SHALL be met as part of
+// the definition of the extension. Applications processing a resource are
+// required to check for modifier extensions. Modifier extensions SHALL
+// NOT change the meaning of any elements on Resource or DomainResource
+// (including cannot change the meaning of modifierExtension itself).
 List<Extension> modifierExtension;
 
-// Classification of benefit being provided.
+//  Classification of benefit being provided.
 CodeableConcept type;
 
-// The quantity of the benefit which is permitted under the coverage.
+//  The quantity of the benefit which is permitted under the coverage.
 int allowedUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
 
-// Extensions for allowedUnsignedInt
-Element _allowedUnsignedInt;
-
-// The quantity of the benefit which is permitted under the coverage.
+//  The quantity of the benefit which is permitted under the coverage.
 String allowedString; //  pattern: ^[ \r\n\t\S]+$
 
-// Extensions for allowedString
-Element _allowedString;
-
-// The quantity of the benefit which is permitted under the coverage.
+//  The quantity of the benefit which is permitted under the coverage.
 Money allowedMoney;
 
-// The quantity of the benefit which have been consumed to date.
+//  The quantity of the benefit which have been consumed to date.
 int usedUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
 
-// Extensions for usedUnsignedInt
-Element _usedUnsignedInt;
-
-// The quantity of the benefit which have been consumed to date.
+//  The quantity of the benefit which have been consumed to date.
 Money usedMoney;
 
 ExplanationOfBenefit_Financial(
@@ -2023,12 +1846,9 @@ ExplanationOfBenefit_Financial(
     this.modifierExtension,
     this.type,
     this.allowedUnsignedInt,
-    this._allowedUnsignedInt,
     this.allowedString,
-    this._allowedString,
     this.allowedMoney,
     this.usedUnsignedInt,
-    this._usedUnsignedInt,
     this.usedMoney
     });
 

@@ -56,6 +56,8 @@ ImplementationGuide _$ImplementationGuideFromJson(Map<String, dynamic> json) {
     copyright: json['copyright'] as String,
     packageId: json['packageId'] as String,
     license: json['license'] as String,
+    fhirVersion:
+        (json['fhirVersion'] as List)?.map((e) => e as String)?.toList(),
     dependsOn: (json['dependsOn'] as List)
         ?.map((e) => e == null
             ? null
@@ -105,6 +107,7 @@ Map<String, dynamic> _$ImplementationGuideToJson(
       'copyright': instance.copyright,
       'packageId': instance.packageId,
       'license': instance.license,
+      'fhirVersion': instance.fhirVersion,
       'dependsOn': instance.dependsOn?.map((e) => e?.toJson())?.toList(),
       'global': instance.global?.map((e) => e?.toJson())?.toList(),
       'definition': instance.definition?.toJson(),
@@ -265,6 +268,8 @@ ImplementationGuide_Resource _$ImplementationGuide_ResourceFromJson(
     reference: json['reference'] == null
         ? null
         : Reference.fromJson(json['reference'] as Map<String, dynamic>),
+    fhirVersion:
+        (json['fhirVersion'] as List)?.map((e) => e as String)?.toList(),
     name: json['name'] as String,
     description: json['description'] as String,
     exampleBoolean: json['exampleBoolean'] as bool,
@@ -281,6 +286,7 @@ Map<String, dynamic> _$ImplementationGuide_ResourceToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'reference': instance.reference?.toJson(),
+      'fhirVersion': instance.fhirVersion,
       'name': instance.name,
       'description': instance.description,
       'exampleBoolean': instance.exampleBoolean,

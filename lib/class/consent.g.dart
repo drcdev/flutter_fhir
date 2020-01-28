@@ -171,40 +171,78 @@ Map<String, dynamic> _$Consent_VerificationToJson(
 Consent_Provision _$Consent_ProvisionFromJson(Map<String, dynamic> json) {
   return Consent_Provision(
     id: json['id'] as String,
-    extension: json['extension'],
-    modifierExtension: json['modifierExtension'],
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     type: json['type'] as String,
     period: json['period'] == null
         ? null
         : Period.fromJson(json['period'] as Map<String, dynamic>),
-    actor: json['actor'],
-    action: json['action'],
-    securityLabel: json['securityLabel'],
-    purpose: json['purpose'],
-  )
-    ..code = json['code']
-    ..dataPeriod = json['dataPeriod'] == null
+    actor: (json['actor'] as List)
+        ?.map((e) => e == null
+            ? null
+            : Consent_Actor.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    action: (json['action'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    securityLabel: (json['securityLabel'] as List)
+        ?.map((e) =>
+            e == null ? null : Coding.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    purpose: (json['purpose'] as List)
+        ?.map((e) =>
+            e == null ? null : Coding.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    classs: (json['classs'] as List)
+        ?.map((e) =>
+            e == null ? null : Coding.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    code: (json['code'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    dataPeriod: json['dataPeriod'] == null
         ? null
-        : Period.fromJson(json['dataPeriod'] as Map<String, dynamic>)
-    ..data = json['data']
-    ..provision = json['provision'];
+        : Period.fromJson(json['dataPeriod'] as Map<String, dynamic>),
+    data: (json['data'] as List)
+        ?.map((e) =>
+            e == null ? null : Consent_Data.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    provision: (json['provision'] as List)
+        ?.map((e) => e == null
+            ? null
+            : Consent_Provision.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
 }
 
 Map<String, dynamic> _$Consent_ProvisionToJson(Consent_Provision instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'extension': instance.extension,
-      'modifierExtension': instance.modifierExtension,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'type': instance.type,
       'period': instance.period?.toJson(),
-      'actor': instance.actor,
-      'action': instance.action,
-      'securityLabel': instance.securityLabel,
-      'purpose': instance.purpose,
-      'code': instance.code,
+      'actor': instance.actor?.map((e) => e?.toJson())?.toList(),
+      'action': instance.action?.map((e) => e?.toJson())?.toList(),
+      'securityLabel':
+          instance.securityLabel?.map((e) => e?.toJson())?.toList(),
+      'purpose': instance.purpose?.map((e) => e?.toJson())?.toList(),
+      'classs': instance.classs?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code?.map((e) => e?.toJson())?.toList(),
       'dataPeriod': instance.dataPeriod?.toJson(),
-      'data': instance.data,
-      'provision': instance.provision,
+      'data': instance.data?.map((e) => e?.toJson())?.toList(),
+      'provision': instance.provision?.map((e) => e?.toJson())?.toList(),
     };
 
 Consent_Actor _$Consent_ActorFromJson(Map<String, dynamic> json) {

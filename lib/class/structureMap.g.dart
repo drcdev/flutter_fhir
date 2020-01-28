@@ -139,7 +139,7 @@ Map<String, dynamic> _$StructureMap_StructureToJson(
 
 StructureMap_Group _$StructureMap_GroupFromJson(Map<String, dynamic> json) {
   return StructureMap_Group(
-    id: json['id'],
+    id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
@@ -148,21 +148,21 @@ StructureMap_Group _$StructureMap_GroupFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    name: json['name'],
-  )
-    ..String = json['String']
-    ..typeMode = json['typeMode']
-    ..documentation = json['documentation']
-    ..input = (json['input'] as List)
+    name: json['name'] as String,
+    extend: json['extend'] as String,
+    typeMode: json['typeMode'] as String,
+    documentation: json['documentation'] as String,
+    input: (json['input'] as List)
         ?.map((e) => e == null
             ? null
             : StructureMap_Input.fromJson(e as Map<String, dynamic>))
-        ?.toList()
-    ..rule = (json['rule'] as List)
+        ?.toList(),
+    rule: (json['rule'] as List)
         ?.map((e) => e == null
             ? null
             : StructureMap_Rule.fromJson(e as Map<String, dynamic>))
-        ?.toList();
+        ?.toList(),
+  );
 }
 
 Map<String, dynamic> _$StructureMap_GroupToJson(StructureMap_Group instance) =>
@@ -172,7 +172,7 @@ Map<String, dynamic> _$StructureMap_GroupToJson(StructureMap_Group instance) =>
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'name': instance.name,
-      'String': instance.String,
+      'extend': instance.extend,
       'typeMode': instance.typeMode,
       'documentation': instance.documentation,
       'input': instance.input?.map((e) => e?.toJson())?.toList(),
@@ -502,6 +502,7 @@ StructureMap_Target _$StructureMap_TargetFromJson(Map<String, dynamic> json) {
     contextType: json['contextType'] as String,
     element: json['element'] as String,
     variable: json['variable'] as String,
+    listMode: (json['listMode'] as List)?.map((e) => e as String)?.toList(),
     listRuleId: json['listRuleId'] as String,
     transform: json['transform'] as String,
     parameter: (json['parameter'] as List)
@@ -523,6 +524,7 @@ Map<String, dynamic> _$StructureMap_TargetToJson(
       'contextType': instance.contextType,
       'element': instance.element,
       'variable': instance.variable,
+      'listMode': instance.listMode,
       'listRuleId': instance.listRuleId,
       'transform': instance.transform,
       'parameter': instance.parameter?.map((e) => e?.toJson())?.toList(),

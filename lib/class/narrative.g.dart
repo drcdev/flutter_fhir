@@ -14,7 +14,7 @@ Narrative _$NarrativeFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
-    div: json['div'],
+    div: json['div'] as String,
   );
 }
 

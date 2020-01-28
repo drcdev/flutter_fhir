@@ -323,6 +323,8 @@ CapabilityStatement_Resource _$CapabilityStatement_ResourceFromJson(
     conditionalRead: json['conditionalRead'] as String,
     conditionalUpdate: json['conditionalUpdate'] as bool,
     conditionalDelete: json['conditionalDelete'] as String,
+    referencePolicy:
+        (json['referencePolicy'] as List)?.map((e) => e as String)?.toList(),
     searchInclude:
         (json['searchInclude'] as List)?.map((e) => e as String)?.toList(),
     searchRevInclude:
@@ -360,6 +362,7 @@ Map<String, dynamic> _$CapabilityStatement_ResourceToJson(
       'conditionalRead': instance.conditionalRead,
       'conditionalUpdate': instance.conditionalUpdate,
       'conditionalDelete': instance.conditionalDelete,
+      'referencePolicy': instance.referencePolicy,
       'searchInclude': instance.searchInclude,
       'searchRevInclude': instance.searchRevInclude,
       'searchParam': instance.searchParam?.map((e) => e?.toJson())?.toList(),

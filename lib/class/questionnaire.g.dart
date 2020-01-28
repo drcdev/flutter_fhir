@@ -135,7 +135,7 @@ Questionnaire_Item _$Questionnaire_ItemFromJson(Map<String, dynamic> json) {
         ?.toList(),
     prefix: json['prefix'] as String,
     text: json['text'] as String,
-    type: json['type'],
+    type: json['type'] as String,
     enableWhen: (json['enableWhen'] as List)
         ?.map((e) => e == null
             ? null
@@ -143,7 +143,7 @@ Questionnaire_Item _$Questionnaire_ItemFromJson(Map<String, dynamic> json) {
         ?.toList(),
     enableBehavior: json['enableBehavior'] as String,
     required: json['required'] as bool,
-    repeats: json['repeats'],
+    repeats: json['repeats'] as bool,
     readOnly: json['readOnly'] as bool,
     maxLength: json['maxLength'] as int,
     answerValueSet: json['answerValueSet'] as String,

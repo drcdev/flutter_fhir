@@ -169,11 +169,7 @@ Device_UdiCarrier _$Device_UdiCarrierFromJson(Map<String, dynamic> json) {
     carrierAIDC: json['carrierAIDC'] as String,
     carrierHRF: json['carrierHRF'] as String,
     entryType: json['entryType'] as String,
-  )
-    ..GS1 = json['GS1']
-    ..ICCBBA = json['ICCBBA']
-    ..ICCBA = json['ICCBA']
-    ..http = json['http'];
+  );
 }
 
 Map<String, dynamic> _$Device_UdiCarrierToJson(Device_UdiCarrier instance) =>
@@ -183,10 +179,6 @@ Map<String, dynamic> _$Device_UdiCarrierToJson(Device_UdiCarrier instance) =>
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'deviceIdentifier': instance.deviceIdentifier,
-      'GS1': instance.GS1,
-      'ICCBBA': instance.ICCBBA,
-      'ICCBA': instance.ICCBA,
-      'http': instance.http,
       'issuer': instance.issuer,
       'jurisdiction': instance.jurisdiction,
       'carrierAIDC': instance.carrierAIDC,
@@ -207,10 +199,7 @@ Device_DeviceName _$Device_DeviceNameFromJson(Map<String, dynamic> json) {
         ?.toList(),
     name: json['name'] as String,
     type: json['type'] as String,
-  )
-    ..UDILabelName = json['UDILabelName']
-    ..UserFriendlyName = json['UserFriendlyName']
-    ..PatientReportedName = json['PatientReportedName'];
+  );
 }
 
 Map<String, dynamic> _$Device_DeviceNameToJson(Device_DeviceName instance) =>
@@ -220,9 +209,6 @@ Map<String, dynamic> _$Device_DeviceNameToJson(Device_DeviceName instance) =>
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'name': instance.name,
-      'UDILabelName': instance.UDILabelName,
-      'UserFriendlyName': instance.UserFriendlyName,
-      'PatientReportedName': instance.PatientReportedName,
       'type': instance.type,
     };
 

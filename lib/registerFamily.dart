@@ -174,12 +174,12 @@ class _RelationPickerState extends State <RelationPicker> {
 
 Patient addFamily(Patient pt, RelationPicker relation) {
   if ((relation.given.text != '' || relation.family.text != '') && relation != null) {
-    final Contact ct = new Contact(
+    final Patient_Contact ct = new Patient_Contact(
         relationship: [ CodeableConcept(text: relation.relation)],
         name: HumanName(given: [relation.given.text],
             family: relation.family.text)
     );
-    if(pt.contact == null) { pt.contact = new List<Contact>(); };
+    if(pt.contact == null) { pt.contact = new List<Patient_Contact>(); };
     pt.contact.add(ct);
   };
   return pt;

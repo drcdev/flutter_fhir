@@ -69,6 +69,7 @@ Timing_Repeat _$Timing_RepeatFromJson(Map<String, dynamic> json) {
     periodUnit: json['periodUnit'] as String,
     dayOfWeek: (json['dayOfWeek'] as List)?.map((e) => e as String)?.toList(),
     timeOfDay: (json['timeOfDay'] as List)?.map((e) => e as String)?.toList(),
+    when: (json['when'] as List)?.map((e) => e as String)?.toList(),
     offset: json['offset'] as int,
   );
 }
@@ -94,5 +95,6 @@ Map<String, dynamic> _$Timing_RepeatToJson(Timing_Repeat instance) =>
       'periodUnit': instance.periodUnit,
       'dayOfWeek': instance.dayOfWeek,
       'timeOfDay': instance.timeOfDay,
+      'when': instance.when,
       'offset': instance.offset,
     };

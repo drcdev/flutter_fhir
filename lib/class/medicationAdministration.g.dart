@@ -210,10 +210,7 @@ MedicationAdministration_Dosage _$MedicationAdministration_DosageFromJson(
     rateQuantity: json['rateQuantity'] == null
         ? null
         : Quantity.fromJson(json['rateQuantity'] as Map<String, dynamic>),
-  )
-    ..dosage = json['dosage']
-    ..should = json['should']
-    ..the = json['the'];
+  );
 }
 
 Map<String, dynamic> _$MedicationAdministration_DosageToJson(
@@ -223,9 +220,6 @@ Map<String, dynamic> _$MedicationAdministration_DosageToJson(
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'dosage': instance.dosage,
-      'should': instance.should,
-      'the': instance.the,
       'text': instance.text,
       'site': instance.site?.toJson(),
       'route': instance.route?.toJson(),

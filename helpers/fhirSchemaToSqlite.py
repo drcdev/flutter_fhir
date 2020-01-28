@@ -141,6 +141,13 @@ for a in schema['definitions']:
                 #if the type isn't a primitive, add it to the foreign keys
                 if(not isPrimitive(schema['definitions'][a]['properties'][b]['items']['$ref'].split('/definitions/')[1])):
                    foreignKeys[sqlString] = sqlStrings(schema['definitions'][a]['properties'][b]['items']['$ref'].split('/definitions/')[1])
+                   
+            elif('enum' in schema['definitions'][a]['properties'][b]['items']):
+                
+                #make the item a list since it's an array in json
+                sqlCode = ''.join([sqlCode, '\t' + sqlString, ' TEXT, --<code> enum: ',  
+                                       '/'.join(schema['definitions'][a]['properties'][b]['items']['enum']), 
+                                       '\n'])
 
         #add SQL code for each table prn
         for key, val in foreignKeys.items():

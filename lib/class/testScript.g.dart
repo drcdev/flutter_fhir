@@ -408,7 +408,10 @@ TestScript_Action _$TestScript_ActionFromJson(Map<String, dynamic> json) {
         ? null
         : TestScript_Operation.fromJson(
             json['operation'] as Map<String, dynamic>),
-  )..TestScript_Assert = json['TestScript_Assert'];
+    asserts: json['asserts'] == null
+        ? null
+        : TestScript_Assert.fromJson(json['asserts'] as Map<String, dynamic>),
+  );
 }
 
 Map<String, dynamic> _$TestScript_ActionToJson(TestScript_Action instance) =>
@@ -418,7 +421,7 @@ Map<String, dynamic> _$TestScript_ActionToJson(TestScript_Action instance) =>
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'operation': instance.operation?.toJson(),
-      'TestScript_Assert': instance.TestScript_Assert,
+      'asserts': instance.asserts?.toJson(),
     };
 
 TestScript_Operation _$TestScript_OperationFromJson(Map<String, dynamic> json) {
@@ -626,7 +629,10 @@ TestScript_Action1 _$TestScript_Action1FromJson(Map<String, dynamic> json) {
         ? null
         : TestScript_Operation.fromJson(
             json['operation'] as Map<String, dynamic>),
-  )..TestScript_Assert = json['TestScript_Assert'];
+    asserts: json['asserts'] == null
+        ? null
+        : TestScript_Assert.fromJson(json['asserts'] as Map<String, dynamic>),
+  );
 }
 
 Map<String, dynamic> _$TestScript_Action1ToJson(TestScript_Action1 instance) =>
@@ -636,7 +642,7 @@ Map<String, dynamic> _$TestScript_Action1ToJson(TestScript_Action1 instance) =>
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'operation': instance.operation?.toJson(),
-      'TestScript_Assert': instance.TestScript_Assert,
+      'asserts': instance.asserts?.toJson(),
     };
 
 TestScript_Teardown _$TestScript_TeardownFromJson(Map<String, dynamic> json) {

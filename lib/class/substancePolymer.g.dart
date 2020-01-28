@@ -30,22 +30,30 @@ SubstancePolymer _$SubstancePolymerFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-  )
-    ..CodeableConcept = json['CodeableConcept']
-    ..geometry = json['geometry']
-    ..copolymerConnectivity = json['copolymerConnectivity'] as List
-    ..modification =
-        (json['modification'] as List)?.map((e) => e as String)?.toList()
-    ..monomerSet = (json['monomerSet'] as List)
+    classs: json['classs'] == null
+        ? null
+        : CodeableConcept.fromJson(json['classs'] as Map<String, dynamic>),
+    geometry: json['geometry'] == null
+        ? null
+        : CodeableConcept.fromJson(json['geometry'] as Map<String, dynamic>),
+    copolymerConnectivity: (json['copolymerConnectivity'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modification:
+        (json['modification'] as List)?.map((e) => e as String)?.toList(),
+    monomerSet: (json['monomerSet'] as List)
         ?.map((e) => e == null
             ? null
             : SubstancePolymer_MonomerSet.fromJson(e as Map<String, dynamic>))
-        ?.toList()
-    ..repeat = (json['repeat'] as List)
+        ?.toList(),
+    repeat: (json['repeat'] as List)
         ?.map((e) => e == null
             ? null
             : SubstancePolymer_Repeat.fromJson(e as Map<String, dynamic>))
-        ?.toList();
+        ?.toList(),
+  );
 }
 
 Map<String, dynamic> _$SubstancePolymerToJson(SubstancePolymer instance) =>
@@ -60,9 +68,10 @@ Map<String, dynamic> _$SubstancePolymerToJson(SubstancePolymer instance) =>
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'CodeableConcept': instance.CodeableConcept,
-      'geometry': instance.geometry,
-      'copolymerConnectivity': instance.copolymerConnectivity,
+      'classs': instance.classs?.toJson(),
+      'geometry': instance.geometry?.toJson(),
+      'copolymerConnectivity':
+          instance.copolymerConnectivity?.map((e) => e?.toJson())?.toList(),
       'modification': instance.modification,
       'monomerSet': instance.monomerSet?.map((e) => e?.toJson())?.toList(),
       'repeat': instance.repeat?.map((e) => e?.toJson())?.toList(),

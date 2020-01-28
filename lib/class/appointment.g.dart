@@ -99,7 +99,7 @@ Appointment _$AppointmentFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Period.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-  )..also = json['also'];
+  );
 }
 
 Map<String, dynamic> _$AppointmentToJson(Appointment instance) =>
@@ -138,7 +138,6 @@ Map<String, dynamic> _$AppointmentToJson(Appointment instance) =>
       'patientInstruction': instance.patientInstruction,
       'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
       'participant': instance.participant?.map((e) => e?.toJson())?.toList(),
-      'also': instance.also,
       'requestedPeriod':
           instance.requestedPeriod?.map((e) => e?.toJson())?.toList(),
     };

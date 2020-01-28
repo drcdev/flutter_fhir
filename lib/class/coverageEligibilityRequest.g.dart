@@ -39,6 +39,7 @@ CoverageEligibilityRequest _$CoverageEligibilityRequestFromJson(
     priority: json['priority'] == null
         ? null
         : CodeableConcept.fromJson(json['priority'] as Map<String, dynamic>),
+    purpose: (json['purpose'] as List)?.map((e) => e as String)?.toList(),
     patient: json['patient'] == null
         ? null
         : Reference.fromJson(json['patient'] as Map<String, dynamic>),
@@ -98,6 +99,7 @@ Map<String, dynamic> _$CoverageEligibilityRequestToJson(
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
       'priority': instance.priority?.toJson(),
+      'purpose': instance.purpose,
       'patient': instance.patient?.toJson(),
       'servicedDate': instance.servicedDate,
       'servicedPeriod': instance.servicedPeriod?.toJson(),
