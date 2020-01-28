@@ -1,0 +1,29 @@
+{
+    "resourceType" : "Location",   
+    "identifier" : ["Identifier"], 
+    "status" : "<code>", 
+    "operationalStatus" : "Coding", 
+    "name" : "<string>", 
+    "alias" : ["<string>"], 
+    "description" : "<string>", 
+    "mode" : "<code>", 
+    "type" : ["Codeableconcept"], 
+    "telecom" : ["ContactPoint"], 
+    "address" : "Address", 
+    "physicalType" : "Codeableconcept", 
+    "position" : { 
+      "longitude" : 1.0, 
+      "latitude" : 1.0, 
+      "altitude" : 1.0 
+    },
+    "managingOrganization" : "Organization", 
+    "partOf" : "Location", 
+    "hoursOfOperation" : [{ 
+      "daysOfWeek" : ["<code>"], 
+      "allDay" : true, 
+      "openingTime" : "<time>", 
+      "closingTime" : "<time>" 
+    }],
+    "availabilityExceptions" : "<string>", 
+    "endpoint" : ["Endpoint"] 
+  }

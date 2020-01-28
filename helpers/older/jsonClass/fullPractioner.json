@@ -1,0 +1,192 @@
+{
+    "resourceType" : "Practitioner",
+    "identifier" : [{
+        "use" : "<code>",
+        "type" : {
+            "coding" : [{ 
+                "system" : "<uri>",
+                "version" : "<string>",
+                "code" : "<code>",
+                "display" : "<string>",
+                "userSelected" : true
+              }],
+            "text" : "<string>"
+            },
+        "system" : "<uri>",
+        "value" : "<string>",
+        "period" : {
+            "start" : "<dateTime>",
+            "end" : "<dateTime>"
+          },
+        "assigner" : {
+            "reference" : "<string>",
+            "type" : "<uri>",
+            "identifier" : {
+                "use" : "<code>",
+                "type" : {
+                    "coding" : [{
+                        "system" : "<uri>",
+                        "version" : "<string>",
+                        "code" : "<code>",
+                        "display" : "<string>",
+                        "userSelected" : true
+                      }],
+                    "text" : "<string>"
+                  },
+                "system" : "<uri>",
+                "value" : "<string>",
+                "period" : {
+                    "start" : "<dateTime>",
+                    "end" : "<dateTime>"
+                  },
+                "assigner" : "<uri>"
+              },
+            "display" : "<string>"
+          }
+      }],
+    "active" : true,
+    "name" : [{
+        "use" : "<code>",
+        "text" : "<string>",
+        "family" : "<string>",
+        "given" : ["<string>"],
+        "prefix" : ["<string>"],
+        "suffix" : ["<string>"],
+        "period" : {
+            "start" : "<dateTime>",
+            "end" : "<dateTime>"
+          }
+      }],
+    "telecom" : [{
+        "system" : "<code>",
+        "value" : "<string>",
+        "use" : "<code>",
+        "rank" : "<positiveInt>",
+        "period" : {
+            "start" : "<dateTime>",
+            "end" : "<dateTime>"
+          }
+      }],
+    "address" : [{
+        "use" : "<code>",
+        "type" : "<code>",
+        "text" : "<string>",
+        "line" : ["<string>"],
+        "city" : "<string>",
+        "district" : "<string>",
+        "state" : "<string>",
+        "postalCode" : "<string>",
+        "country" : "<string>",
+        "period" : {
+            "start" : "<dateTime>",
+            "end" : "<dateTime>"
+          }
+      }],
+    "gender" : "<code>",
+    "birthDate" : "<date>",
+    "photo" : [{
+        "contentType" : "<code>",
+        "language" : "<code>",
+        "data" : "<base64Binary>",
+        "url" : "<url>",
+        "size" : "<unsignedInt>",
+        "hash" : "<base64Binary>",
+        "title" : "<string>",
+        "creation" : "<dateTime>"
+      }],
+    "qualification" : [{
+      "identifier" : [{
+        "use" : "<code>",
+        "type" : {
+            "coding" : [{ 
+                "system" : "<uri>",
+                "version" : "<string>",
+                "code" : "<code>",
+                "display" : "<string>",
+                "userSelected" : true
+              }],
+            "text" : "<string>"
+            },
+        "system" : "<uri>",
+        "value" : "<string>",
+        "period" : {
+            "start" : "<dateTime>",
+            "end" : "<dateTime>"
+          },
+        "assigner" : {
+            "reference" : "<string>",
+            "type" : "<uri>",
+            "identifier" : {
+                "use" : "<code>",
+                "type" : {
+                    "coding" : [{
+                        "system" : "<uri>",
+                        "version" : "<string>",
+                        "code" : "<code>",
+                        "display" : "<string>",
+                        "userSelected" : true
+                      }],
+                    "text" : "<string>"
+                  },
+                "system" : "<uri>",
+                "value" : "<string>",
+                "period" : {
+                    "start" : "<dateTime>",
+                    "end" : "<dateTime>"
+                  },
+                "assigner" : "<uri>"
+              },
+            "display" : "<string>"
+          }
+      }],
+      "code" : {
+        "coding" : [{ 
+            "system" : "<uri>",
+            "version" : "<string>",
+            "code" : "<code>",
+            "display" : "<string>",
+            "userSelected" : true
+          }],
+        "text" : "<string>"
+        },
+      "period" : {
+        "start" : "<dateTime>",
+        "end" : "<dateTime>"
+      },
+      "issuer" : {
+        "reference" : "<string>",
+        "type" : "<uri>",
+        "identifier" : {
+            "use" : "<code>",
+            "type" : {
+                "coding" : [{
+                    "system" : "<uri>",
+                    "version" : "<string>",
+                    "code" : "<code>",
+                    "display" : "<string>",
+                    "userSelected" : true
+                  }],
+                "text" : "<string>"
+              },
+            "system" : "<uri>",
+            "value" : "<string>",
+            "period" : {
+                "start" : "<dateTime>",
+                "end" : "<dateTime>"
+              },
+            "assigner" : "<uri>"
+          },
+        "display" : "<string>"
+      }
+    }],
+    "communication" : [{
+        "coding" : [{ 
+            "system" : "<uri>",
+            "version" : "<string>",
+            "code" : "<code>",
+            "display" : "<string>",
+            "userSelected" : true
+          }],
+        "text" : "<string>"
+        }]
+  }

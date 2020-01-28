@@ -1,0 +1,22 @@
+{
+    "resourceType" : "EpisodeOfCare",
+    "identifier" : ["Identifier"], 
+    "status" : "<code>", 
+    "statusHistory" : [{ 
+      "status" : "<code>", 
+      "period" : "Period" 
+    }],
+    "type" : ["CodeableConcept"], 
+    "diagnosis" : [{ 
+      "condition" : "Condition", 
+      "role" : "CodeableConcept", 
+      "rank" : "<positiveInt>" 
+    }],
+    "patient" : "Patient", 
+    "managingOrganization" : "Organization", 
+    "period" : "Period", 
+    "referralRequest" : ["ServiceRequest"], 
+    "careManager" : "Practitioner", 
+    "team" : ["CareTeam"], 
+    "account" : ["Account"] 
+  }

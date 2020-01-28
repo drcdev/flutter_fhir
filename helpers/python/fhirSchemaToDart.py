@@ -120,9 +120,9 @@ for a in schema['definitions']:
                     
                     #make id the PRIMARY KEY
                     if(b == 'id'):
-                        sqlCode = ''.join([sqlCode, sqlString, ' TEXT PRIMARY KEY,', '\n'])
+                        sqlCode = ''.join([sqlCode, '\t' + sqlString, ' TEXT PRIMARY KEY,', '\n'])
                     else:
-                        sqlCode = ''.join([sqlCode, sqlString, ' ', makePrimSql(ref), ',\n'])
+                        sqlCode = ''.join([sqlCode, '\t' + sqlString, ' ', makePrimSql(ref), ',\n'])
                         #if the type isn't a primitive, add it to the foreign keys
                         if(not isPrimitive(ref)):
                             foreignKeys[sqlString] = sqlStrings(lowcc(ref))
@@ -130,14 +130,14 @@ for a in schema['definitions']:
                 #if  there's a const in it, print out that value
                 elif('const' in schema['definitions'][a]['properties'][b]):
                 
-                    sqlCode = ''.join([sqlCode, sqlString, ' ', 
+                    sqlCode = ''.join([sqlCode, '\t' + sqlString, ' ', 
                                        makePrimSql(schema['definitions'][a]['properties'][b]['const']), 
                                        ',\n'])
 
                 #if  there's a pattern in it, print out the type of pattern
                 elif('pattern' in schema['definitions'][a]['properties'][b]):
                 
-                    sqlCode = ''.join([sqlCode, sqlString, ' ', 
+                    sqlCode = ''.join([sqlCode, '\t' + sqlString, ' ', 
                                        makePrimSql(schema['definitions'][a]['properties'][b]['type']), 
                                        ',\n'])
                     
@@ -149,14 +149,14 @@ for a in schema['definitions']:
                 #possible values as a comment at the end of the line
                 elif('enum' in schema['definitions'][a]['properties'][b]):
                 
-                    sqlCode = ''.join([sqlCode, sqlString, ' TEXT, --<code> enum: ',  
+                    sqlCode = ''.join([sqlCode, '\t' + sqlString, ' TEXT, --<code> enum: ',  
                                        '/'.join(schema['definitions'][a]['properties'][b]['enum']), 
                                        '\n'])
 
             #if it does include items, it is an array/list
             elif('$ref' in schema['definitions'][a]['properties'][b]['items']):
             
-                sqlCode = ''.join([sqlCode,  sqlStrings(b), ' ', 
+                sqlCode = ''.join([sqlCode,  '\t' + sqlString, ' ', 
                                    makePrimSql(schema['definitions'][a]['properties'][b]['items']['$ref'].split('/definitions/')[1]), 
                                    ',\n'])
                 
@@ -166,8 +166,8 @@ for a in schema['definitions']:
 
         #add SQL code for each table prn
         for key, val in foreignKeys.items():
-            sqlCode = ''.join([sqlCode, '\nFOREIGN KEY (', key, ')\n\tREFERENCES ',
-                               sqlStrings(lowcc(val)), ' (id)\n\t\tON DELETE CASCADE',
+            sqlCode = ''.join([sqlCode, '\n\tFOREIGN KEY (', key, ')\n\t\tREFERENCES ',
+                               sqlStrings(lowcc(val)), ' (id)\n\t\t\tON DELETE CASCADE',
                                '\n\t\tON UPDATE NO ACTION,\n'])
         sqlCode = ''.join([sqlCode, '\n)\n\n'])
     
@@ -177,6 +177,12 @@ sqlCode = sqlCode.replace(',\n\nDROP TABLE', '\n\n);\n\nDROP TABLE')
 sqlCode = re.sub(r'DROP\sTABLE\s.*;', '', sqlCode)
 sqlCode = sqlCode.replace(',\n\n);', '\n\n);')
 sqlCode = sqlCode.replace('\n\n\n\n', '\n')
+
+sqlCode = ''.join(['DROP TABLE resourceList;\n',
+                  'CREATE TABLE resourceList(\n\n',
+                  '\tid TEXT PRIMARY KEY,\n',
+                  '\tresourceType TEXT\n\n',
+                  ');\n', sqlCode])
 
 with open("sqliteFhirTables.sql", "w", encoding="utf-8") as f:
     f.write(sqlCode)
@@ -198,7 +204,7 @@ for a in schema['definitions']:
         #add JsonSerializable code at top of Dart class
         dartCode = ''.join([dartCode, 
                             '@JsonSerializable(explicitToJson: true)\nclass ', 
-                            a, ' {\n\n'])
+                            a, ' {\n'])
         
         #Modifier description includes '\n\n' need to change it to a comment
         dartCode = dartCode.replace('\n\nModifier', '\n// Modifier')
@@ -208,9 +214,9 @@ for a in schema['definitions']:
         for b in schema['definitions'][a]['properties']:
 
             #prints comment to the Dart code, formatted lines <= 80 characters
-            # dartCode = ''.join([dartCode, 
-            #                     less80(schema['definitions'][a]['properties'][b]['description']), 
-            #                     '\n'])
+            dartCode = ''.join([dartCode, 
+                                less80(schema['definitions'][a]['properties'][b]['description']), 
+                                '\n'])
                                         
             #if items is NOT included it means that the item is NOT an array/list
             if('items' not in schema['definitions'][a]['properties'][b]):
@@ -231,9 +237,18 @@ for a in schema['definitions']:
                 #if  there's a pattern in it, print out the type of pattern
                 elif('pattern' in schema['definitions'][a]['properties'][b]):  
                     
-                    dartCode = ''.join([dartCode,  
+                    if('number' == schema['definitions'][a]['properties'][b]['type']):
+                        if('decimal' in b or 'Decimal' in b):
+                            dartCode = ''.join([dartCode, 'double '])
+                        else:
+                            dartCode = ''.join([dartCode, 'int '])
+                    else:
+                        dartCode = ''.join([dartCode,  
                                         primitiveDart(schema['definitions'][a]['properties'][b]['type']), 
-                                        ' ', b, ';\n'])
+                                        ' '])
+                    dartCode = ''.join([dartCode, b, '; //  pattern: ', 
+                                        schema['definitions'][a]['properties'][b]['pattern'],
+                                        '\n'])
                      
                 #if it's enum, print it as type of enum, and then include the
                 #possible values as a comment at the end of the line
@@ -252,6 +267,39 @@ for a in schema['definitions']:
                                     '> ', b, ';\n'])   
     
         dartCode = ''.join([dartCode, '\n}\n\n'])
+
+dartCode = dartCode.replace(
+    '// Specifies a value that the value in the instance SHALL follow - that is, any\n' +
+    '//  value in the pattern must be found in the instance. Other additional values may\n' +
+    '//  be found too. This is effectively constraint by example.  \n\n' +
+    'When pattern[x] is\n' +
+    '//  used to constrain a primitive, it means that the value provided in the\n' +
+    '//  pattern[x] must match the instance value exactly.\n\n' +
+    'When pattern[x] is used to\n' +
+    '//  constrain an array, it means that each element provided in the pattern[x] array\n' +
+    '//  must (recursively) match at least one element from the instance array.\n\n' +
+    'When\n' +
+    '//  pattern[x] is used to constrain a complex object, it means that each property\n' +
+    '//  in the pattern must be present in the complex object, and its value must\n' +
+    '//  recursively match -- i.e.,\n\n' +
+    '1. If primitive: it must match exactly the pattern\n//  value\n' +
+    '2. If a complex object: it must match (recursively) the pattern value\n' +
+    '3.\n//  If an array: it must match (recursively) the pattern value.',
+    
+    '// Specifies a value that the value in the instance SHALL follow - that is, any\n' +
+    '//  value in the pattern must be found in the instance. Other additional values may\n' +
+    '//  be found too. This is effectively constraint by example.\n' +
+    '// When pattern[x] is used to constrain a primitive, it means that the value\n'+
+    '//  provided in the pattern[x] must match the instance value exactly.\n' +
+    '// When pattern[x] is used to constrain an array, it means that each element\n' +
+    '//  provided in the pattern[x] array must (recursively) match at least one\n' +
+    '//  element from the instance array.\n' +
+    '// When pattern[x] is used to constrain a complex object, it means that each property\n' +
+    '//  in the pattern must be present in the complex object, and its value must\n' +
+    '//  recursively match -- i.e.,\n' +
+    '// 1. If primitive: it must match exactly the pattern value\n' +
+    '// 2. If a complex object: it must match (recursively) the pattern value\n' +
+    '// 3. If an array: it must match (recursively) the pattern value.')
             
 with open("dartFhirClasses.dart", "w", encoding="utf-8") as f:
     f.write(dartCode)

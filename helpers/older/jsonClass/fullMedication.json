@@ -1,0 +1,100 @@
+{
+    "resourceType" : "Medication",
+    "identifier" : [{
+        "use" : "<code>",
+        "type" : {
+            "coding" : [{ 
+                "system" : "<uri>",
+                "version" : "<string>",
+                "code" : "<code>",
+                "display" : "<string>",
+                "userSelected" : true
+              }],
+            "text" : "<string>"
+            },
+        "system" : "<uri>",
+        "value" : "<string>",
+        "period" : {
+            "start" : "<dateTime>",
+            "end" : "<dateTime>"
+          },
+        "assigner" : {
+            "reference" : "<string>",
+            "type" : "<uri>",
+            "identifier" : {
+                "use" : "<code>",
+                "type" : {
+                    "coding" : [{
+                        "system" : "<uri>",
+                        "version" : "<string>",
+                        "code" : "<code>",
+                        "display" : "<string>",
+                        "userSelected" : true
+                      }],
+                    "text" : "<string>"
+                  },
+                "system" : "<uri>",
+                "value" : "<string>",
+                "period" : {
+                    "start" : "<dateTime>",
+                    "end" : "<dateTime>"
+                  },
+                "assigner" : "<uri>"
+              },
+            "display" : "<string>"
+          }
+      }
+    ],
+    "code" : {     "coding" : [{ 
+        "system" : "<uri>",
+        "version" : "<string>",
+        "code" : "<code>",
+        "display" : "<string>",
+        "userSelected" : true
+      }],
+    "text" : "<string>" },
+    "status" : "<code>", 
+    "manufacturer" : "reference",
+    "form" : "Codeable",
+    "amount" : {
+        "numerator" : {
+            "value" : "number",
+            "comparator" : "<code>",
+            "unit" : "<string>",
+            "system" : "<uri>",
+            "code" : "<code>"
+          },
+        "denominator" : {
+            "value" : "number",
+            "comparator" : "<code>",
+            "unit" : "<string>",
+            "system" : "<uri>",
+            "code" : "<code>"
+          }
+      },
+    "ingredient" : [{ 
+      "itemCodeableConcept" : "codeable",
+      "itemReference" : "refernce",
+      "isActive" : true, 
+      "strength" : {
+        "numerator" : {
+            "value" : "number",
+            "comparator" : "<code>",
+            "unit" : "<string>",
+            "system" : "<uri>",
+            "code" : "<code>"
+          },
+        "denominator" : {
+            "value" : "number",
+            "comparator" : "<code>",
+            "unit" : "<string>",
+            "system" : "<uri>",
+            "code" : "<code>"
+          }
+      }
+    }],
+    "batch" : {
+      "lotNumber" : "<string>",
+      "expirationDate" : "<dateTime>"
+    }
+  }

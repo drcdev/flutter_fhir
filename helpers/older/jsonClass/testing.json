@@ -1,0 +1,10 @@
+{
+    "anyOf": [
+        {
+            "type" : "statusHistory"
+        },
+        {
+            "type" : "status"
+        }
+    ]
+}
