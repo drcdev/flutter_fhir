@@ -31,7 +31,7 @@ def isPrimitive(string):
                       'markdown', 'oid', 'positiveInt', 'string', 'time',
                       'unsignedInt', 'uri', 'url', 'uuid', 'number'])
     
-#returns comments in multiple lines, all <= 80 characters
+#returns comments in multiple lines, all <= 70 characters
 def less70(string):   
     new = ''
     line = ''
