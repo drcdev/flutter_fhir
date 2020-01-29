@@ -10,11 +10,11 @@ def lowcc(string):
 def makePrimSql(string):
     primitivesSql = {'base64Binary': 'TEXT', 'boolean': 'BOOLEAN', 
       'canonical': 'TEXT', 'code': 'TEXT', 'date': 'DATE', 
-      'dateTime': 'DATETIME', 'decimal': 'REAL', 'id': 'TEXT', 
+      'dateTime': 'DATETIME', 'decimal': 'REAL',  
       'instant': 'DATETIME', 'integer': 'INTEGER', 'markdown': 'TEXT', 
       'oid': 'TEXT', 'positiveInt': 'INTEGER', 'string': 'TEXT', 
       'time': 'TIME', 'unsignedInt': 'INTEGER', 'uri': 'TEXT', 
-      'url': 'TEXT', 'uuid': 'TEXT', 'number': 'INTEGER'}
+      'url': 'TEXT', 'uuid': 'TEXT', 'number': 'NUMBER'}
     if(string in primitivesSql):
         return(primitivesSql[string])
     else:
@@ -28,6 +28,29 @@ def isPrimitive(string):
                       'dateTime', 'decimal', 'id', 'instant', 'integer', 
                       'markdown', 'oid', 'positiveInt', 'string', 'time',
                       'unsignedInt', 'uri', 'url', 'uuid', 'number'])
+
+def isGenPurpose(string):
+    if('"' in string):
+        string = string[1:len(string)-1]
+    return(string in ['identifier', 'humanName', 'address', 'contactPoint',
+                      'timing', 'quantity', 'simpleQuantity', 'attachment',
+                      'range', 'period', 'ratio', 'codeableConcept', 'coding',
+                      'sampledData', 'age', 'distance', 'duration', 'count',
+                      'money', 'moneyQuantity', 'annotation', 'signature',
+                      'backboneElement'])
+
+def isMetaData(string):
+    if('"' in string):
+        string = string[1:len(string)-1]
+    return(string in ['contactDetail', 'contributor', 'dataRequirement',
+                      'parameterDefinition', 'relatedArtifact', 'triggerDefinition',
+                      'usageContext', 'expression'])
+
+def isSpecialData(string):
+    if('"' in string):
+        string = string[1:len(string)-1]
+    return(string in ['reference', 'narrative', 'extension', 'meta',
+                      'elementDefinition', 'dosage', 'backboneElement'])
 
 #if it's a reserved word in sql, add quotes
 def sqlStrings(string):
@@ -53,7 +76,7 @@ def sqlStrings(string):
         return('"' + string + '"')
     else:
         return(string)
-    
+       
 #open fhir json schema
 with open('fhir.schema.json', encoding='utf8') as json_file:
     schema = json.load(json_file)
@@ -75,49 +98,99 @@ for table in definitions:
     #ignore any entries that are under 'ResourceList' (names, no definitions)
     #ignore definitions of any of the primitives ToDo: is this appropriate?
     if('properties' in definitions[table] and str(table) != 'ResourceList'):
-        sqlCode = ''.join([sqlCode, table, '\n'])
+        sqlCode = ''.join([sqlCode, 'CREATE TABLE ', lowcc(table), '(\n\n'])
         
+        foreignKeys = {}
         
         #look in the properties section of each table, and based on that print
         #out specific information
         properties = definitions[table]['properties']
         for variable in properties:
             
+            value = properties[variable]
             
             #check if variable is array
             if('type' in properties[variable]):
                 
-                typ = properties[variable]['type']
+                typ = value['type']
                 
                 #check if array or pattern
                 if(typ == 'array'):
                     
                     #Array
-                    sqlCode = ''.join([sqlCode, '  List ', variable, '\n'])
+                    sqlCode = ''.join([sqlCode, '\tList ', variable, ',\n'])
                 
-                #Pattern
+                #if not array, either String, Bool, or Number with pattern
                 else:  
-                    sqlCode = ''.join([sqlCode, '  Pattern ', variable, '\n'])
-                    
-            #check type
-            elif('$ref' in properties[variable]):
-                ref = (properties[variable]['$ref']).split('/definitions/')[1]
-                sqlCode = ''.join([sqlCode, '  ', ref, ' ', variable, '\n'])
-                
-            else:
-                sqlCode = ''.join([sqlCode, '  ', variable, '\n'])
-            
-  
-  # enum
-  # const - almost all resourceType
-            
+                    typer = ('TEXT' if typ == 'string' else
+                             ('BOOLEAN' if typ == 'boolean' else
+                             ('INTEGER' if ('int' in value or 'Int' in value) else
+                             'REAL')))
+                    sqlCode = ''.join([sqlCode, '\t', 
+                                       sqlStrings(variable), ' ',
+                                       typer, ', -- pattern: ', 
+                                       value['pattern'],
+                                       '\n'])
 
+            #id is always the primary key
+            elif(variable == 'id'):
+                sqlCode = ''.join([sqlCode, '\tid TEXT PRIMARY KEY,\n'])
+     
+                #create foreign key to reference parent table if necessary               
+                if('_' in table):
+                    parentID = '"' + lowcc(table.split('_')[0]) + '.id"'
+                    sqlCode = ''.join([sqlCode, '\t', parentID,
+                                       ' TEXT,--FOREIGN KEY\n'])
+                    foreignKeys[parentID] = sqlStrings(lowcc(table.split('_')[0]))
+                                                       
+            #check type
+            elif('$ref' in value):
+                
+                #define $ref type
+                ref = (value['$ref']).split('/definitions/')[1]
+                sqlCode = ''.join([sqlCode, '\t', sqlStrings(variable), ' ',
+                                   makePrimSql(ref) if isPrimitive(ref) else '"ForeignKey"',
+                                   ', -- ', '\n'])
+                
+            #if const = resourceType
+            elif('const' in value):
+                sqlCode = ''.join([sqlCode, '\t', sqlStrings(variable), 
+                                   ' TEXT, -- resourceType: ',  value['const'], '\n'])
+                
+            #otherwise, all are enum
+            elif('enum' in value):
+                sqlCode = ''.join([sqlCode, '\t', sqlStrings(variable), 
+                                   ' TEXT, -- enum: ', 
+                                   '/'.join(value['enum']), '\n'])
+                
+        #print out code for foreign keys for each table
+        for key, val in foreignKeys.items():
+            sqlCode = ''.join([sqlCode, 
+                               '\tFOREIGN KEY (', key, ')\n',
+                               '\t\tREFERENCES ', val, ' (id)\n',
+                               '\t\t\tON DELETE CASCADE',
+                                '\n\t\tON UPDATE NO ACTION,\n\n'])
+        sqlCode = ''.join([sqlCode, ');\n\n'])
+        
+sqlCode = sqlCode.replace(',\n\n);', '\n\n);')
+        
 #write it to a file
 with open("sqliteFhirScript.sql", "w", encoding="utf-8") as f:
     f.write(sqlCode)
 f.close()
+j = ''
+for i in schema['discriminator']['mapping']: 
+    j = ''.join([j, ', ', i])
+print(j)
+# for i in schema['definitions']:
+#     if(i in schema['discriminator']['mapping']):
+#         print(i)
+#     # and '_' not in i and not isPrimitive(i)
+#     #    and not isGenPurpose(lowcc(i)) and not isSpecialData(lowcc(i)) and
+    #    not isMetaData(lowcc(i))):
+    #     print(i)
 
-
+#tables: resourceType, subTables, primitives
 
 # for a in schema['definitions']:
     

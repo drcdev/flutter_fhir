@@ -1,11 +1,8 @@
 # flutter_fhir
-
 First attempt at a flutter app for FHIR.
 1. Basic Oauth2 access to FHIR server (https://www.health-samurai.io/aidbox).
 2. Can create new patients, download from server.
 3. Can enter new patients w/ family members.
-4. Currently unable to upload new patients to server.
-5. Added lots of the FHIR json classes (but still more to do).
 
 ToDo: Goal is to be able to upload vaccination data.
 
@@ -44,3 +41,51 @@ I'm a newbie at coding, but I've tried to keep naming rules consistent (and cons
 
 ToDo: define canonical types\n
 Todo: understand initstate better, learn Future, async, await
+
+# SQLITE
+As this is supposed to be a mobile app, at some point if I'm going to save data on the device, it's
+going to have to make use of sqlite. I've begun to try and design the database with the following
+guidelines:
+1. Each of the fhir datatypes below will be in it's own table except for primitives
+
+3. Any primitive type in a table is a column
+4. Any reference to another table 
+
+# FHIR datatypes
+1. Primitives: base64Binary, boolean, canonical, code, date, dateTime, decimal, id
+    instant, integer, markdown, oid, positiveInt, string, time, unsignedInt,
+    uri, url, uuid
+2. General purpose: identifier, humanName, address, contactPoint, timing, quantity, 
+    simpleQuantity, attachment, range, period, ratio, codeableConcept, coding, sampledData, age, 
+    distance, duration, count, money, moneyQuantity, annotation, signature, backboneElement
+3. Meta data: contactDetail, contributor, dataRequirement, parameterDefinition, relatedArtifact, 
+    triggerDefinition, usageContext, expression
+4. Special Data Types: reference, narrative, extension, meta, elementDefinition, dosage, backboneElement
+5. ResourceTypes: Account, ActivityDefinition, AdverseEvent, AllergyIntolerance, Appointment, 
+    AppointmentResponse, AuditEvent, Basic, Binary, BiologicallyDerivedProduct, BodyStructure, Bundle, 
+    CapabilityStatement, CarePlan, CareTeam, CatalogEntry, ChargeItem, ChargeItemDefinition, Claim, 
+    ClaimResponse, ClinicalImpression, CodeSystem, Communication, CommunicationRequest, CompartmentDefinition, 
+    Composition, ConceptMap, Condition, Consent, Contract, Coverage, CoverageEligibilityRequest, 
+    CoverageEligibilityResponse, DetectedIssue, Device, DeviceDefinition, DeviceMetric, DeviceRequest, 
+    DeviceUseStatement, DiagnosticReport, DocumentManifest, DocumentReference, EffectEvidenceSynthesis, 
+    Encounter, Endpoint, EnrollmentRequest, EnrollmentResponse, EpisodeOfCare, EventDefinition, Evidence, 
+    EvidenceVariable, ExampleScenario, ExplanationOfBenefit, FamilyMemberHistory, Flag, Goal, GraphDefinition, 
+    Group, GuidanceResponse, HealthcareService, ImagingStudy, Immunization, ImmunizationEvaluation, 
+    ImmunizationRecommendation, ImplementationGuide, InsurancePlan, Invoice, Library, Linkage, List, 
+    Location, Measure, MeasureReport, Media, Medication, MedicationAdministration, MedicationDispense, 
+    MedicationKnowledge, MedicationRequest, MedicationStatement, MedicinalProduct, MedicinalProductAuthorization, 
+    MedicinalProductContraindication, MedicinalProductIndication, MedicinalProductIngredient, 
+    MedicinalProductInteraction, MedicinalProductManufactured, MedicinalProductPackaged, 
+    MedicinalProductPharmaceutical, MedicinalProductUndesirableEffect, MessageDefinition, MessageHeader, 
+    MolecularSequence, NamingSystem, NutritionOrder, Observation, ObservationDefinition, OperationDefinition, 
+    OperationOutcome, Organization, OrganizationAffiliation, Parameters, Patient, PaymentNotice, 
+    PaymentReconciliation, Person, PlanDefinition, Practitioner, PractitionerRole, Procedure, Provenance, 
+    Questionnaire, QuestionnaireResponse, RelatedPerson, RequestGroup, ResearchDefinition, 
+    ResearchElementDefinition, ResearchStudy, ResearchSubject, RiskAssessment, RiskEvidenceSynthesis, 
+    Schedule, SearchParameter, ServiceRequest, Slot, Specimen, SpecimenDefinition, StructureDefinition, 
+    StructureMap, Subscription, Substance, SubstanceNucleicAcid, SubstancePolymer, SubstanceProtein, 
+    SubstanceReferenceInformation, SubstanceSourceMaterial, SubstanceSpecification, SupplyDelivery, 
+    SupplyRequest, Task, TerminologyCapabilities, TestReport, TestScript, ValueSet, VerificationResult, 
+    VisionPrescription
+6. Other/in Process: 6. resourceList, element, population, productShelfLife, prodCharacteristic, 
+    marketingStatus, substanceAmount
