@@ -47,6 +47,11 @@ As this is supposed to be a mobile app, at some point if I'm going to save data 
 going to have to make use of sqlite. I've begun to try and design the database with the following
 guidelines:
 1. Each of the fhir datatypes below will be in it's own table except for primitives
+2. Each table will have an id that will be its primary key
+3. All tables with '_' are child tables
+4. Each child table will have 2 columns added, a parentId and a parentTable, which will reference
+    the parent table and its ID
+5. 
 
 3. Any primitive type in a table is a column
 4. Any reference to another table 
