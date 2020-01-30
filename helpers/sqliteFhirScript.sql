@@ -1137,7 +1137,7 @@ CREATE TABLE timing(
 	id TEXT PRIMARY KEY,
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
-	"event" **LIST** dateTime,
+	"event" BOOLEAN, -- true if 1+ rows in dateTime correspond to this entry
 	_event **LIST** Element,
 	"repeat" TEXT, -- Foreign Key to timing_Repeat table
 	"code" TEXT, -- Foreign Key to codeableConcept table
@@ -1184,9 +1184,9 @@ CREATE TABLE timing_Repeat(
 	_periodUnit TEXT, -- Foreign Key to element table
 	dayOfWeek **LIST** code,
 	_dayOfWeek **LIST** Element,
-	timeOfDay **LIST** time,
+	timeOfDay BOOLEAN, -- true if 1+ rows in time correspond to this entry
 	_timeOfDay **LIST** Element,
-	"when" **LIST** enum, -- MORN/MORN.early/MORN.late/NOON/AFT/AFT.early/AFT.late/EVE/EVE.early/EVE.late/NIGHT/PHS/HS/WAKE/C/CM/CD/CV/AC/ACM/ACD/ACV/PC/PCM/PCD/PCV,
+	"when" **LIST** enum, -- enum: MORN/MORN.early/MORN.late/NOON/AFT/AFT.early/AFT.late/EVE/EVE.early/EVE.late/NIGHT/PHS/HS/WAKE/C/CM/CD/CV/AC/ACM/ACD/ACV/PC/PCM/PCD/PCV,
 	_when **LIST** Element,
 	offset INTEGER,
 	_offset TEXT, -- Foreign Key to element table
@@ -1347,11 +1347,11 @@ CREATE TABLE dataRequirement(
 	subjectReference TEXT, -- Foreign Key to reference table
 	mustSupport **LIST** string,
 	_mustSupport **LIST** Element,
-	codeFilter **LIST** DataRequirement_CodeFilter,
-	dateFilter **LIST** DataRequirement_DateFilter,
+	codeFilter BOOLEAN, -- true if 1+ rows in DataRequirement_Sort correspond to this entry
+	dateFilter BOOLEAN, -- true if 1+ rows in DataRequirement_Sort correspond to this entry
 	"limit" INTEGER,
 	_limit TEXT, -- Foreign Key to element table
-	sort **LIST** DataRequirement_Sort,
+	sort BOOLEAN, -- true if 1+ rows in DataRequirement_Sort correspond to this entry
 
 	FOREIGN KEY (_type)
 		REFERENCES element (id)
@@ -1378,6 +1378,7 @@ CREATE TABLE dataRequirement(
 CREATE TABLE dataRequirement_CodeFilter(
 
 	id TEXT PRIMARY KEY,
+	dataRequirement_id TEXT, -- Foreign Key to dataRequirement table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"path" TEXT,
@@ -1386,6 +1387,11 @@ CREATE TABLE dataRequirement_CodeFilter(
 	_searchParam TEXT, -- Foreign Key to element table
 	valueSet TEXT,
 	"code" **LIST** Coding,
+
+	FOREIGN KEY (dataRequirement_id)
+		REFERENCES dataRequirement (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_path)
 		REFERENCES element (id)
@@ -1402,6 +1408,7 @@ CREATE TABLE dataRequirement_CodeFilter(
 CREATE TABLE dataRequirement_DateFilter(
 
 	id TEXT PRIMARY KEY,
+	dataRequirement_id TEXT, -- Foreign Key to dataRequirement table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"path" TEXT,
@@ -1412,6 +1419,11 @@ CREATE TABLE dataRequirement_DateFilter(
 	_valueDateTime TEXT, -- Foreign Key to element table
 	valuePeriod TEXT, -- Foreign Key to period table
 	valueDuration TEXT, -- Foreign Key to duration table
+
+	FOREIGN KEY (dataRequirement_id)
+		REFERENCES dataRequirement (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_path)
 		REFERENCES element (id)
@@ -1443,12 +1455,18 @@ CREATE TABLE dataRequirement_DateFilter(
 CREATE TABLE dataRequirement_Sort(
 
 	id TEXT PRIMARY KEY,
+	dataRequirement_id TEXT, -- Foreign Key to dataRequirement table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"path" TEXT,
 	_path TEXT, -- Foreign Key to element table
 	direction TEXT, -- enum: ascending/descending
 	_direction TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (dataRequirement_id)
+		REFERENCES dataRequirement (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_path)
 		REFERENCES element (id)
@@ -1465,6 +1483,7 @@ CREATE TABLE dataRequirement_Sort(
 CREATE TABLE parameterDefinition(
 
 	id TEXT PRIMARY KEY,
+	library_id TEXT, -- Foreign Key to library table
 	extension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
@@ -1479,6 +1498,11 @@ CREATE TABLE parameterDefinition(
 	"type" TEXT,
 	_type TEXT, -- Foreign Key to element table
 	"profile" TEXT,
+
+	FOREIGN KEY (library_id)
+		REFERENCES library (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_name)
 		REFERENCES element (id)
@@ -1671,7 +1695,7 @@ CREATE TABLE dosage(
 	"site" TEXT, -- Foreign Key to codeableConcept table
 	"route" TEXT, -- Foreign Key to codeableConcept table
 	"method" TEXT, -- Foreign Key to codeableConcept table
-	doseAndRate **LIST** Dosage_DoseAndRate,
+	doseAndRate BOOLEAN, -- true if 1+ rows in Dosage_DoseAndRate correspond to this entry
 	maxDosePerPeriod TEXT, -- Foreign Key to ratio table
 	maxDosePerAdministration TEXT, -- Foreign Key to quantity table
 	maxDosePerLifetime TEXT, -- Foreign Key to quantity table
@@ -1741,6 +1765,7 @@ CREATE TABLE dosage(
 CREATE TABLE dosage_DoseAndRate(
 
 	id TEXT PRIMARY KEY,
+	dosage_id TEXT, -- Foreign Key to dosage table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
@@ -1749,6 +1774,11 @@ CREATE TABLE dosage_DoseAndRate(
 	rateRatio TEXT, -- Foreign Key to ratio table
 	rateRange TEXT, -- Foreign Key to range table
 	rateQuantity TEXT, -- Foreign Key to quantity table
+
+	FOREIGN KEY (dosage_id)
+		REFERENCES dosage (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -2068,7 +2098,7 @@ CREATE TABLE elementDefinition(
 	modifierExtension **LIST** Extension,
 	"path" TEXT,
 	_path TEXT, -- Foreign Key to element table
-	representation **LIST** enum, -- xmlAttr/xmlText/typeAttr/cdaText/xhtml,
+	representation **LIST** enum, -- enum: xmlAttr/xmlText/typeAttr/cdaText/xhtml,
 	_representation **LIST** Element,
 	sliceName TEXT,
 	_sliceName TEXT, -- Foreign Key to element table
@@ -2095,7 +2125,7 @@ CREATE TABLE elementDefinition(
 	base TEXT, -- Foreign Key to elementDefinition_Base table
 	contentReference TEXT,
 	_contentReference TEXT, -- Foreign Key to element table
-	"type" **LIST** ElementDefinition_Type,
+	"type" BOOLEAN, -- true if 1+ rows in ElementDefinition_Mapping correspond to this entry
 	defaultValueBase64Binary TEXT, -- pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
 	_defaultValueBase64Binary TEXT, -- Foreign Key to element table
 	defaultValueBoolean BOOLEAN, -- pattern: ^true|false$
@@ -2307,7 +2337,7 @@ CREATE TABLE elementDefinition(
 	patternUsageContext TEXT, -- Foreign Key to usageContext table
 	patternDosage TEXT, -- Foreign Key to dosage table
 	patternMeta TEXT, -- Foreign Key to meta table
-	example **LIST** ElementDefinition_Example,
+	example BOOLEAN, -- true if 1+ rows in ElementDefinition_Mapping correspond to this entry
 	minValueDate TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 	_minValueDate TEXT, -- Foreign Key to element table
 	minValueDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
@@ -2346,7 +2376,7 @@ CREATE TABLE elementDefinition(
 	_maxLength TEXT, -- Foreign Key to element table
 	"condition" **LIST** id,
 	_condition **LIST** Element,
-	"constraint" **LIST** ElementDefinition_Constraint,
+	"constraint" BOOLEAN, -- true if 1+ rows in ElementDefinition_Mapping correspond to this entry
 	mustSupport BOOLEAN,
 	_mustSupport TEXT, -- Foreign Key to element table
 	isModifier BOOLEAN,
@@ -2356,7 +2386,7 @@ CREATE TABLE elementDefinition(
 	isSummary BOOLEAN,
 	_isSummary TEXT, -- Foreign Key to element table
 	"binding" TEXT, -- Foreign Key to elementDefinition_Binding table
-	mapping **LIST** ElementDefinition_Mapping,
+	mapping BOOLEAN, -- true if 1+ rows in ElementDefinition_Mapping correspond to this entry
 
 	FOREIGN KEY (_path)
 		REFERENCES element (id)
@@ -3310,7 +3340,7 @@ CREATE TABLE elementDefinition_Slicing(
 	id TEXT PRIMARY KEY,
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
-	discriminator **LIST** ElementDefinition_Discriminator,
+	discriminator BOOLEAN, -- true if 1+ rows in ElementDefinition_Discriminator correspond to this entry
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	ordered BOOLEAN,
@@ -3338,12 +3368,18 @@ CREATE TABLE elementDefinition_Slicing(
 CREATE TABLE elementDefinition_Discriminator(
 
 	id TEXT PRIMARY KEY,
+	elementDefinition_Slicing_id TEXT, -- Foreign Key to elementDefinition_Slicing table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- enum: value/exists/pattern/type/profile
 	_type TEXT, -- Foreign Key to element table
 	"path" TEXT,
 	_path TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (elementDefinition_Slicing_id)
+		REFERENCES elementDefinition_Slicing (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_type)
 		REFERENCES element (id)
@@ -3389,16 +3425,22 @@ CREATE TABLE elementDefinition_Base(
 CREATE TABLE elementDefinition_Type(
 
 	id TEXT PRIMARY KEY,
+	elementDefinition_id TEXT, -- Foreign Key to elementDefinition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT,
 	_code TEXT, -- Foreign Key to element table
 	"profile" **LIST** canonical,
 	targetProfile **LIST** canonical,
-	aggregation **LIST** enum, -- contained/referenced/bundled,
+	aggregation **LIST** enum, -- enum: contained/referenced/bundled,
 	_aggregation **LIST** Element,
 	versioning TEXT, -- enum: either/independent/specific
 	_versioning TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (elementDefinition_id)
+		REFERENCES elementDefinition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_code)
 		REFERENCES element (id)
@@ -3415,6 +3457,7 @@ CREATE TABLE elementDefinition_Type(
 CREATE TABLE elementDefinition_Example(
 
 	id TEXT PRIMARY KEY,
+	elementDefinition_id TEXT, -- Foreign Key to elementDefinition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	label TEXT,
@@ -3488,6 +3531,11 @@ CREATE TABLE elementDefinition_Example(
 	valueUsageContext TEXT, -- Foreign Key to usageContext table
 	valueDosage TEXT, -- Foreign Key to dosage table
 	valueMeta TEXT, -- Foreign Key to meta table
+
+	FOREIGN KEY (elementDefinition_id)
+		REFERENCES elementDefinition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_label)
 		REFERENCES element (id)
@@ -3749,6 +3797,7 @@ CREATE TABLE elementDefinition_Example(
 CREATE TABLE elementDefinition_Constraint(
 
 	id TEXT PRIMARY KEY,
+	elementDefinition_id TEXT, -- Foreign Key to elementDefinition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"key" TEXT, -- Foreign Key to id table
@@ -3764,6 +3813,11 @@ CREATE TABLE elementDefinition_Constraint(
 	xpath TEXT,
 	_xpath TEXT, -- Foreign Key to element table
 	"source" TEXT,
+
+	FOREIGN KEY (elementDefinition_id)
+		REFERENCES elementDefinition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("key")
 		REFERENCES id (id)
@@ -3828,6 +3882,7 @@ CREATE TABLE elementDefinition_Binding(
 CREATE TABLE elementDefinition_Mapping(
 
 	id TEXT PRIMARY KEY,
+	elementDefinition_id TEXT, -- Foreign Key to elementDefinition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"identity" TEXT, -- Foreign Key to id table
@@ -3838,6 +3893,11 @@ CREATE TABLE elementDefinition_Mapping(
 	_map TEXT, -- Foreign Key to element table
 	comment TEXT,
 	_comment TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (elementDefinition_id)
+		REFERENCES elementDefinition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("identity")
 		REFERENCES id (id)
@@ -3887,11 +3947,11 @@ CREATE TABLE account(
 	_name TEXT, -- Foreign Key to element table
 	"subject" **LIST** Reference,
 	servicePeriod TEXT, -- Foreign Key to period table
-	coverage **LIST** Account_Coverage,
+	coverage BOOLEAN, -- true if 1+ rows in Account_Guarantor correspond to this entry
 	"owner" TEXT, -- Foreign Key to reference table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	guarantor **LIST** Account_Guarantor,
+	guarantor BOOLEAN, -- true if 1+ rows in Account_Guarantor correspond to this entry
 	partOf TEXT, -- Foreign Key to reference table
 
 	FOREIGN KEY (meta)
@@ -3954,11 +4014,17 @@ CREATE TABLE account(
 CREATE TABLE account_Coverage(
 
 	id TEXT PRIMARY KEY,
+	account_id TEXT, -- Foreign Key to account table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	coverage TEXT, -- Foreign Key to reference table
 	"priority" INTEGER,
 	_priority TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (account_id)
+		REFERENCES account (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (coverage)
 		REFERENCES reference (id)
@@ -3975,12 +4041,18 @@ CREATE TABLE account_Coverage(
 CREATE TABLE account_Guarantor(
 
 	id TEXT PRIMARY KEY,
+	account_id TEXT, -- Foreign Key to account table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	party TEXT, -- Foreign Key to reference table
 	onHold BOOLEAN,
 	_onHold TEXT, -- Foreign Key to element table
 	"period" TEXT, -- Foreign Key to period table
+
+	FOREIGN KEY (account_id)
+		REFERENCES account (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (party)
 		REFERENCES reference (id)
@@ -4074,7 +4146,7 @@ CREATE TABLE activityDefinition(
 	timingRange TEXT, -- Foreign Key to range table
 	timingDuration TEXT, -- Foreign Key to duration table
 	"location" TEXT, -- Foreign Key to reference table
-	participant **LIST** ActivityDefinition_Participant,
+	participant BOOLEAN, -- true if 1+ rows in ActivityDefinition_DynamicValue correspond to this entry
 	productReference TEXT, -- Foreign Key to reference table
 	productCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	quantity TEXT, -- Foreign Key to quantity table
@@ -4084,7 +4156,7 @@ CREATE TABLE activityDefinition(
 	observationRequirement **LIST** Reference,
 	observationResultRequirement **LIST** Reference,
 	transform TEXT,
-	dynamicValue **LIST** ActivityDefinition_DynamicValue,
+	dynamicValue BOOLEAN, -- true if 1+ rows in ActivityDefinition_DynamicValue correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -4276,11 +4348,17 @@ CREATE TABLE activityDefinition(
 CREATE TABLE activityDefinition_Participant(
 
 	id TEXT PRIMARY KEY,
+	activityDefinition_id TEXT, -- Foreign Key to activityDefinition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT,
 	_type TEXT, -- Foreign Key to element table
 	"role" TEXT, -- Foreign Key to codeableConcept table
+
+	FOREIGN KEY (activityDefinition_id)
+		REFERENCES activityDefinition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_type)
 		REFERENCES element (id)
@@ -4297,11 +4375,17 @@ CREATE TABLE activityDefinition_Participant(
 CREATE TABLE activityDefinition_DynamicValue(
 
 	id TEXT PRIMARY KEY,
+	activityDefinition_id TEXT, -- Foreign Key to activityDefinition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"path" TEXT,
 	_path TEXT, -- Foreign Key to element table
 	expression TEXT, -- Foreign Key to expression table
+
+	FOREIGN KEY (activityDefinition_id)
+		REFERENCES activityDefinition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_path)
 		REFERENCES element (id)
@@ -4348,7 +4432,7 @@ CREATE TABLE adverseEvent(
 	outcome TEXT, -- Foreign Key to codeableConcept table
 	recorder TEXT, -- Foreign Key to reference table
 	contributor **LIST** Reference,
-	suspectEntity **LIST** AdverseEvent_SuspectEntity,
+	suspectEntity BOOLEAN, -- true if 1+ rows in AdverseEvent_SuspectEntity correspond to this entry
 	subjectMedicalHistory **LIST** Reference,
 	referenceDocument **LIST** Reference,
 	study **LIST** Reference,
@@ -4443,10 +4527,16 @@ CREATE TABLE adverseEvent(
 CREATE TABLE adverseEvent_SuspectEntity(
 
 	id TEXT PRIMARY KEY,
+	adverseEvent_id TEXT, -- Foreign Key to adverseEvent table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"instance" TEXT, -- Foreign Key to reference table
-	causality **LIST** AdverseEvent_Causality,
+	causality BOOLEAN, -- true if 1+ rows in AdverseEvent_Causality correspond to this entry
+
+	FOREIGN KEY (adverseEvent_id)
+		REFERENCES adverseEvent (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("instance")
 		REFERENCES reference (id)
@@ -4458,6 +4548,7 @@ CREATE TABLE adverseEvent_SuspectEntity(
 CREATE TABLE adverseEvent_Causality(
 
 	id TEXT PRIMARY KEY,
+	adverseEvent_SuspectEntity_id TEXT, -- Foreign Key to adverseEvent_SuspectEntity table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	assessment TEXT, -- Foreign Key to codeableConcept table
@@ -4465,6 +4556,11 @@ CREATE TABLE adverseEvent_Causality(
 	_productRelatedness TEXT, -- Foreign Key to element table
 	author TEXT, -- Foreign Key to reference table
 	"method" TEXT, -- Foreign Key to codeableConcept table
+
+	FOREIGN KEY (adverseEvent_SuspectEntity_id)
+		REFERENCES adverseEvent_SuspectEntity (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (assessment)
 		REFERENCES codeableConcept (id)
@@ -4506,7 +4602,7 @@ CREATE TABLE allergyIntolerance(
 	verificationStatus TEXT, -- Foreign Key to codeableConcept table
 	"type" TEXT, -- enum: allergy/intolerance
 	_type TEXT, -- Foreign Key to element table
-	category **LIST** enum, -- food/medication/environment/biologic,
+	category **LIST** enum, -- enum: food/medication/environment/biologic,
 	_category **LIST** Element,
 	criticality TEXT, -- enum: low/high/unable-to-assess
 	_criticality TEXT, -- Foreign Key to element table
@@ -4527,7 +4623,7 @@ CREATE TABLE allergyIntolerance(
 	lastOccurrence DATETIME,
 	_lastOccurrence TEXT, -- Foreign Key to element table
 	note **LIST** Annotation,
-	reaction **LIST** AllergyIntolerance_Reaction,
+	reaction BOOLEAN, -- true if 1+ rows in AllergyIntolerance_Reaction correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -4634,6 +4730,7 @@ CREATE TABLE allergyIntolerance(
 CREATE TABLE allergyIntolerance_Reaction(
 
 	id TEXT PRIMARY KEY,
+	allergyIntolerance_id TEXT, -- Foreign Key to allergyIntolerance table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	substance TEXT, -- Foreign Key to codeableConcept table
@@ -4646,6 +4743,11 @@ CREATE TABLE allergyIntolerance_Reaction(
 	_severity TEXT, -- Foreign Key to element table
 	exposureRoute TEXT, -- Foreign Key to codeableConcept table
 	note **LIST** Annotation,
+
+	FOREIGN KEY (allergyIntolerance_id)
+		REFERENCES allergyIntolerance (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (substance)
 		REFERENCES codeableConcept (id)
@@ -4716,7 +4818,7 @@ CREATE TABLE appointment(
 	patientInstruction TEXT,
 	_patientInstruction TEXT, -- Foreign Key to element table
 	basedOn **LIST** Reference,
-	participant **LIST** Appointment_Participant,
+	participant BOOLEAN, -- true if 1+ rows in Appointment_Participant correspond to this entry
 	requestedPeriod **LIST** Period,
 
 	FOREIGN KEY (meta)
@@ -4799,6 +4901,7 @@ CREATE TABLE appointment(
 CREATE TABLE appointment_Participant(
 
 	id TEXT PRIMARY KEY,
+	appointment_id TEXT, -- Foreign Key to appointment table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" **LIST** CodeableConcept,
@@ -4808,6 +4911,11 @@ CREATE TABLE appointment_Participant(
 	"status" TEXT, -- enum: accepted/declined/tentative/needs-action
 	_status TEXT, -- Foreign Key to element table
 	"period" TEXT, -- Foreign Key to period table
+
+	FOREIGN KEY (appointment_id)
+		REFERENCES appointment (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (actor)
 		REFERENCES reference (id)
@@ -4934,9 +5042,9 @@ CREATE TABLE auditEvent(
 	outcomeDesc TEXT,
 	_outcomeDesc TEXT, -- Foreign Key to element table
 	purposeOfEvent **LIST** CodeableConcept,
-	agent **LIST** AuditEvent_Agent,
+	agent BOOLEAN, -- true if 1+ rows in AuditEvent_Entity correspond to this entry
 	"source" TEXT, -- Foreign Key to auditEvent_Source table
-	entity **LIST** AuditEvent_Entity,
+	entity BOOLEAN, -- true if 1+ rows in AuditEvent_Entity correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -4998,6 +5106,7 @@ CREATE TABLE auditEvent(
 CREATE TABLE auditEvent_Agent(
 
 	id TEXT PRIMARY KEY,
+	auditEvent_id TEXT, -- Foreign Key to auditEvent table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
@@ -5015,6 +5124,11 @@ CREATE TABLE auditEvent_Agent(
 	media TEXT, -- Foreign Key to coding table
 	network TEXT, -- Foreign Key to auditEvent_Network table
 	purposeOfUse **LIST** CodeableConcept,
+
+	FOREIGN KEY (auditEvent_id)
+		REFERENCES auditEvent (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -5105,6 +5219,7 @@ CREATE TABLE auditEvent_Source(
 CREATE TABLE auditEvent_Entity(
 
 	id TEXT PRIMARY KEY,
+	auditEvent_id TEXT, -- Foreign Key to auditEvent table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	what TEXT, -- Foreign Key to reference table
@@ -5118,7 +5233,12 @@ CREATE TABLE auditEvent_Entity(
 	_description TEXT, -- Foreign Key to element table
 	query TEXT,
 	_query TEXT, -- Foreign Key to element table
-	detail **LIST** AuditEvent_Detail,
+	detail BOOLEAN, -- true if 1+ rows in AuditEvent_Detail correspond to this entry
+
+	FOREIGN KEY (auditEvent_id)
+		REFERENCES auditEvent (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (what)
 		REFERENCES reference (id)
@@ -5160,6 +5280,7 @@ CREATE TABLE auditEvent_Entity(
 CREATE TABLE auditEvent_Detail(
 
 	id TEXT PRIMARY KEY,
+	auditEvent_Entity_id TEXT, -- Foreign Key to auditEvent_Entity table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT,
@@ -5168,6 +5289,11 @@ CREATE TABLE auditEvent_Detail(
 	_valueString TEXT, -- Foreign Key to element table
 	valueBase64Binary TEXT, -- pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
 	_valueBase64Binary TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (auditEvent_Entity_id)
+		REFERENCES auditEvent_Entity (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_type)
 		REFERENCES element (id)
@@ -5319,9 +5445,9 @@ CREATE TABLE biologicallyDerivedProduct(
 	_quantity TEXT, -- Foreign Key to element table
 	parent **LIST** Reference,
 	"collection" TEXT, -- Foreign Key to biologicallyDerivedProduct_Collection table
-	processing **LIST** BiologicallyDerivedProduct_Processing,
+	processing BOOLEAN, -- true if 1+ rows in BiologicallyDerivedProduct_Storage correspond to this entry
 	manipulation TEXT, -- Foreign Key to biologicallyDerivedProduct_Manipulation table
-	storage **LIST** BiologicallyDerivedProduct_Storage,
+	storage BOOLEAN, -- true if 1+ rows in BiologicallyDerivedProduct_Storage correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -5411,6 +5537,7 @@ CREATE TABLE biologicallyDerivedProduct_Collection(
 CREATE TABLE biologicallyDerivedProduct_Processing(
 
 	id TEXT PRIMARY KEY,
+	biologicallyDerivedProduct_id TEXT, -- Foreign Key to biologicallyDerivedProduct table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"description" TEXT,
@@ -5420,6 +5547,11 @@ CREATE TABLE biologicallyDerivedProduct_Processing(
 	timeDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 	_timeDateTime TEXT, -- Foreign Key to element table
 	timePeriod TEXT, -- Foreign Key to period table
+
+	FOREIGN KEY (biologicallyDerivedProduct_id)
+		REFERENCES biologicallyDerivedProduct (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_description)
 		REFERENCES element (id)
@@ -5479,6 +5611,7 @@ CREATE TABLE biologicallyDerivedProduct_Manipulation(
 CREATE TABLE biologicallyDerivedProduct_Storage(
 
 	id TEXT PRIMARY KEY,
+	biologicallyDerivedProduct_id TEXT, -- Foreign Key to biologicallyDerivedProduct table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"description" TEXT,
@@ -5488,6 +5621,11 @@ CREATE TABLE biologicallyDerivedProduct_Storage(
 	scale TEXT, -- enum: farenheit/celsius/kelvin
 	_scale TEXT, -- Foreign Key to element table
 	duration TEXT, -- Foreign Key to period table
+
+	FOREIGN KEY (biologicallyDerivedProduct_id)
+		REFERENCES biologicallyDerivedProduct (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_description)
 		REFERENCES element (id)
@@ -5599,7 +5737,7 @@ CREATE TABLE bundle(
 	total INTEGER,
 	_total TEXT, -- Foreign Key to element table
 	link **LIST** Bundle_Link,
-	entry **LIST** Bundle_Entry,
+	entry BOOLEAN, -- true if 1+ rows in Bundle_Entry correspond to this entry
 	"signature" TEXT, -- Foreign Key to signature table
 
 	FOREIGN KEY (meta)
@@ -5669,6 +5807,7 @@ CREATE TABLE bundle_Link(
 CREATE TABLE bundle_Entry(
 
 	id TEXT PRIMARY KEY,
+	bundle_id TEXT, -- Foreign Key to bundle table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	link **LIST** Bundle_Link,
@@ -5678,6 +5817,11 @@ CREATE TABLE bundle_Entry(
 	"search" TEXT, -- Foreign Key to bundle_Search table
 	request TEXT, -- Foreign Key to bundle_Request table
 	response TEXT, -- Foreign Key to bundle_Response table
+
+	FOREIGN KEY (bundle_id)
+		REFERENCES bundle (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_fullUrl)
 		REFERENCES element (id)
@@ -5871,9 +6015,9 @@ CREATE TABLE capabilityStatement(
 	patchFormat **LIST** code,
 	_patchFormat **LIST** Element,
 	implementationGuide **LIST** canonical,
-	rest **LIST** CapabilityStatement_Rest,
-	messaging **LIST** CapabilityStatement_Messaging,
-	document **LIST** CapabilityStatement_Document,
+	rest BOOLEAN, -- true if 1+ rows in CapabilityStatement_Document correspond to this entry
+	messaging BOOLEAN, -- true if 1+ rows in CapabilityStatement_Document correspond to this entry
+	document BOOLEAN, -- true if 1+ rows in CapabilityStatement_Document correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -6032,6 +6176,7 @@ CREATE TABLE capabilityStatement_Implementation(
 CREATE TABLE capabilityStatement_Rest(
 
 	id TEXT PRIMARY KEY,
+	capabilityStatement_id TEXT, -- Foreign Key to capabilityStatement table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	mode TEXT, -- enum: client/server
@@ -6039,11 +6184,16 @@ CREATE TABLE capabilityStatement_Rest(
 	documentation TEXT,
 	_documentation TEXT, -- Foreign Key to element table
 	"security" TEXT, -- Foreign Key to capabilityStatement_Security table
-	"resource" **LIST** CapabilityStatement_Resource,
-	interaction **LIST** CapabilityStatement_Interaction1,
+	"resource" BOOLEAN, -- true if 1+ rows in CapabilityStatement_Interaction1 correspond to this entry
+	interaction BOOLEAN, -- true if 1+ rows in CapabilityStatement_Interaction1 correspond to this entry
 	searchParam **LIST** CapabilityStatement_SearchParam,
 	operation **LIST** CapabilityStatement_Operation,
 	compartment **LIST** canonical,
+
+	FOREIGN KEY (capabilityStatement_id)
+		REFERENCES capabilityStatement (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_mode)
 		REFERENCES element (id)
@@ -6088,6 +6238,7 @@ CREATE TABLE capabilityStatement_Security(
 CREATE TABLE capabilityStatement_Resource(
 
 	id TEXT PRIMARY KEY,
+	capabilityStatement_Rest_id TEXT, -- Foreign Key to capabilityStatement_Rest table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT,
@@ -6096,7 +6247,7 @@ CREATE TABLE capabilityStatement_Resource(
 	supportedProfile **LIST** canonical,
 	documentation TEXT,
 	_documentation TEXT, -- Foreign Key to element table
-	interaction **LIST** CapabilityStatement_Interaction,
+	interaction BOOLEAN, -- true if 1+ rows in CapabilityStatement_Interaction correspond to this entry
 	versioning TEXT, -- enum: no-version/versioned/versioned-update
 	_versioning TEXT, -- Foreign Key to element table
 	readHistory BOOLEAN,
@@ -6111,7 +6262,7 @@ CREATE TABLE capabilityStatement_Resource(
 	_conditionalUpdate TEXT, -- Foreign Key to element table
 	conditionalDelete TEXT, -- enum: not-supported/single/multiple
 	_conditionalDelete TEXT, -- Foreign Key to element table
-	referencePolicy **LIST** enum, -- literal/logical/resolves/enforced/local,
+	referencePolicy **LIST** enum, -- enum: literal/logical/resolves/enforced/local,
 	_referencePolicy **LIST** Element,
 	searchInclude **LIST** string,
 	_searchInclude **LIST** Element,
@@ -6119,6 +6270,11 @@ CREATE TABLE capabilityStatement_Resource(
 	_searchRevInclude **LIST** Element,
 	searchParam **LIST** CapabilityStatement_SearchParam,
 	operation **LIST** CapabilityStatement_Operation,
+
+	FOREIGN KEY (capabilityStatement_Rest_id)
+		REFERENCES capabilityStatement_Rest (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_type)
 		REFERENCES element (id)
@@ -6170,12 +6326,18 @@ CREATE TABLE capabilityStatement_Resource(
 CREATE TABLE capabilityStatement_Interaction(
 
 	id TEXT PRIMARY KEY,
+	capabilityStatement_Resource_id TEXT, -- Foreign Key to capabilityStatement_Resource table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT, -- enum: read/vread/update/patch/delete/history-instance/history-type/create/search-type
 	_code TEXT, -- Foreign Key to element table
 	documentation TEXT,
 	_documentation TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (capabilityStatement_Resource_id)
+		REFERENCES capabilityStatement_Resource (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_code)
 		REFERENCES element (id)
@@ -6245,12 +6407,18 @@ CREATE TABLE capabilityStatement_Operation(
 CREATE TABLE capabilityStatement_Interaction1(
 
 	id TEXT PRIMARY KEY,
+	capabilityStatement_Rest_id TEXT, -- Foreign Key to capabilityStatement_Rest table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT, -- enum: transaction/batch/search-system/history-system
 	_code TEXT, -- Foreign Key to element table
 	documentation TEXT,
 	_documentation TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (capabilityStatement_Rest_id)
+		REFERENCES capabilityStatement_Rest (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_code)
 		REFERENCES element (id)
@@ -6267,14 +6435,20 @@ CREATE TABLE capabilityStatement_Interaction1(
 CREATE TABLE capabilityStatement_Messaging(
 
 	id TEXT PRIMARY KEY,
+	capabilityStatement_id TEXT, -- Foreign Key to capabilityStatement table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
-	"endpoint" **LIST** CapabilityStatement_Endpoint,
+	"endpoint" BOOLEAN, -- true if 1+ rows in CapabilityStatement_SupportedMessage correspond to this entry
 	reliableCache INTEGER,
 	_reliableCache TEXT, -- Foreign Key to element table
 	documentation TEXT,
 	_documentation TEXT, -- Foreign Key to element table
-	supportedMessage **LIST** CapabilityStatement_SupportedMessage,
+	supportedMessage BOOLEAN, -- true if 1+ rows in CapabilityStatement_SupportedMessage correspond to this entry
+
+	FOREIGN KEY (capabilityStatement_id)
+		REFERENCES capabilityStatement (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_reliableCache)
 		REFERENCES element (id)
@@ -6291,11 +6465,17 @@ CREATE TABLE capabilityStatement_Messaging(
 CREATE TABLE capabilityStatement_Endpoint(
 
 	id TEXT PRIMARY KEY,
+	capabilityStatement_Messaging_id TEXT, -- Foreign Key to capabilityStatement_Messaging table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	protocol TEXT, -- Foreign Key to coding table
 	"address" TEXT,
 	_address TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (capabilityStatement_Messaging_id)
+		REFERENCES capabilityStatement_Messaging (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (protocol)
 		REFERENCES coding (id)
@@ -6312,11 +6492,17 @@ CREATE TABLE capabilityStatement_Endpoint(
 CREATE TABLE capabilityStatement_SupportedMessage(
 
 	id TEXT PRIMARY KEY,
+	capabilityStatement_Messaging_id TEXT, -- Foreign Key to capabilityStatement_Messaging table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	mode TEXT, -- enum: sender/receiver
 	_mode TEXT, -- Foreign Key to element table
 	"definition" TEXT,
+
+	FOREIGN KEY (capabilityStatement_Messaging_id)
+		REFERENCES capabilityStatement_Messaging (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_mode)
 		REFERENCES element (id)
@@ -6328,6 +6514,7 @@ CREATE TABLE capabilityStatement_SupportedMessage(
 CREATE TABLE capabilityStatement_Document(
 
 	id TEXT PRIMARY KEY,
+	capabilityStatement_id TEXT, -- Foreign Key to capabilityStatement table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	mode TEXT, -- enum: producer/consumer
@@ -6335,6 +6522,11 @@ CREATE TABLE capabilityStatement_Document(
 	documentation TEXT,
 	_documentation TEXT, -- Foreign Key to element table
 	"profile" TEXT,
+
+	FOREIGN KEY (capabilityStatement_id)
+		REFERENCES capabilityStatement (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_mode)
 		REFERENCES element (id)
@@ -6388,7 +6580,7 @@ CREATE TABLE carePlan(
 	addresses **LIST** Reference,
 	supportingInfo **LIST** Reference,
 	goal **LIST** Reference,
-	activity **LIST** CarePlan_Activity,
+	activity BOOLEAN, -- true if 1+ rows in CarePlan_Activity correspond to this entry
 	note **LIST** Annotation,
 
 	FOREIGN KEY (meta)
@@ -6461,6 +6653,7 @@ CREATE TABLE carePlan(
 CREATE TABLE carePlan_Activity(
 
 	id TEXT PRIMARY KEY,
+	carePlan_id TEXT, -- Foreign Key to carePlan table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	outcomeCodeableConcept **LIST** CodeableConcept,
@@ -6468,6 +6661,11 @@ CREATE TABLE carePlan_Activity(
 	progress **LIST** Annotation,
 	reference TEXT, -- Foreign Key to reference table
 	detail TEXT, -- Foreign Key to carePlan_Detail table
+
+	FOREIGN KEY (carePlan_id)
+		REFERENCES carePlan (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (reference)
 		REFERENCES reference (id)
@@ -6607,7 +6805,7 @@ CREATE TABLE careTeam(
 	"subject" TEXT, -- Foreign Key to reference table
 	encounter TEXT, -- Foreign Key to reference table
 	"period" TEXT, -- Foreign Key to period table
-	participant **LIST** CareTeam_Participant,
+	participant BOOLEAN, -- true if 1+ rows in CareTeam_Participant correspond to this entry
 	reasonCode **LIST** CodeableConcept,
 	reasonReference **LIST** Reference,
 	managingOrganization **LIST** Reference,
@@ -6664,12 +6862,18 @@ CREATE TABLE careTeam(
 CREATE TABLE careTeam_Participant(
 
 	id TEXT PRIMARY KEY,
+	careTeam_id TEXT, -- Foreign Key to careTeam table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"role" **LIST** CodeableConcept,
 	"member" TEXT, -- Foreign Key to reference table
 	onBehalfOf TEXT, -- Foreign Key to reference table
 	"period" TEXT, -- Foreign Key to period table
+
+	FOREIGN KEY (careTeam_id)
+		REFERENCES careTeam (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("member")
 		REFERENCES reference (id)
@@ -6717,7 +6921,7 @@ CREATE TABLE catalogEntry(
 	_lastUpdated TEXT, -- Foreign Key to element table
 	additionalCharacteristic **LIST** CodeableConcept,
 	additionalClassification **LIST** CodeableConcept,
-	relatedEntry **LIST** CatalogEntry_RelatedEntry,
+	relatedEntry BOOLEAN, -- true if 1+ rows in CatalogEntry_RelatedEntry correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -6779,11 +6983,17 @@ CREATE TABLE catalogEntry(
 CREATE TABLE catalogEntry_RelatedEntry(
 
 	id TEXT PRIMARY KEY,
+	catalogEntry_id TEXT, -- Foreign Key to catalogEntry table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	relationtype TEXT, -- enum: triggers/is-replaced-by
 	_relationtype TEXT, -- Foreign Key to element table
 	item TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (catalogEntry_id)
+		REFERENCES catalogEntry (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_relationtype)
 		REFERENCES element (id)
@@ -6824,7 +7034,7 @@ CREATE TABLE chargeItem(
 	_occurrenceDateTime TEXT, -- Foreign Key to element table
 	occurrencePeriod TEXT, -- Foreign Key to period table
 	occurrenceTiming TEXT, -- Foreign Key to timing table
-	performer **LIST** ChargeItem_Performer,
+	performer BOOLEAN, -- true if 1+ rows in ChargeItem_Performer correspond to this entry
 	performingOrganization TEXT, -- Foreign Key to reference table
 	requestingOrganization TEXT, -- Foreign Key to reference table
 	costCenter TEXT, -- Foreign Key to reference table
@@ -6961,10 +7171,16 @@ CREATE TABLE chargeItem(
 CREATE TABLE chargeItem_Performer(
 
 	id TEXT PRIMARY KEY,
+	chargeItem_id TEXT, -- Foreign Key to chargeItem table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"function" TEXT, -- Foreign Key to codeableConcept table
 	actor TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (chargeItem_id)
+		REFERENCES chargeItem (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("function")
 		REFERENCES codeableConcept (id)
@@ -7025,7 +7241,7 @@ CREATE TABLE chargeItemDefinition(
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"instance" **LIST** Reference,
 	applicability **LIST** ChargeItemDefinition_Applicability,
-	propertyGroup **LIST** ChargeItemDefinition_PropertyGroup,
+	propertyGroup BOOLEAN, -- true if 1+ rows in ChargeItemDefinition_PropertyGroup correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -7146,16 +7362,23 @@ CREATE TABLE chargeItemDefinition_Applicability(
 CREATE TABLE chargeItemDefinition_PropertyGroup(
 
 	id TEXT PRIMARY KEY,
+	chargeItemDefinition_id TEXT, -- Foreign Key to chargeItemDefinition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	applicability **LIST** ChargeItemDefinition_Applicability,
-	priceComponent **LIST** ChargeItemDefinition_PriceComponent
+	priceComponent BOOLEAN, -- true if 1+ rows in ChargeItemDefinition_PriceComponent correspond to this entry
+
+	FOREIGN KEY (chargeItemDefinition_id)
+		REFERENCES chargeItemDefinition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION
 
 );
 
 CREATE TABLE chargeItemDefinition_PriceComponent(
 
 	id TEXT PRIMARY KEY,
+	chargeItemDefinition_PropertyGroup_id TEXT, -- Foreign Key to chargeItemDefinition_PropertyGroup table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT,
@@ -7164,6 +7387,11 @@ CREATE TABLE chargeItemDefinition_PriceComponent(
 	factor REAL,
 	_factor TEXT, -- Foreign Key to element table
 	amount TEXT, -- Foreign Key to money table
+
+	FOREIGN KEY (chargeItemDefinition_PropertyGroup_id)
+		REFERENCES chargeItemDefinition_PropertyGroup (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_type)
 		REFERENCES element (id)
@@ -7216,19 +7444,19 @@ CREATE TABLE claim(
 	"provider" TEXT, -- Foreign Key to reference table
 	"priority" TEXT, -- Foreign Key to codeableConcept table
 	fundsReserve TEXT, -- Foreign Key to codeableConcept table
-	related **LIST** Claim_Related,
+	related BOOLEAN, -- true if 1+ rows in Claim_Item correspond to this entry
 	prescription TEXT, -- Foreign Key to reference table
 	originalPrescription TEXT, -- Foreign Key to reference table
 	payee TEXT, -- Foreign Key to claim_Payee table
 	referral TEXT, -- Foreign Key to reference table
 	facility TEXT, -- Foreign Key to reference table
-	careTeam **LIST** Claim_CareTeam,
-	supportingInfo **LIST** Claim_SupportingInfo,
-	diagnosis **LIST** Claim_Diagnosis,
-	"procedure" **LIST** Claim_Procedure,
-	insurance **LIST** Claim_Insurance,
+	careTeam BOOLEAN, -- true if 1+ rows in Claim_Item correspond to this entry
+	supportingInfo BOOLEAN, -- true if 1+ rows in Claim_Item correspond to this entry
+	diagnosis BOOLEAN, -- true if 1+ rows in Claim_Item correspond to this entry
+	"procedure" BOOLEAN, -- true if 1+ rows in Claim_Item correspond to this entry
+	insurance BOOLEAN, -- true if 1+ rows in Claim_Item correspond to this entry
 	accident TEXT, -- Foreign Key to claim_Accident table
-	item **LIST** Claim_Item,
+	item BOOLEAN, -- true if 1+ rows in Claim_Item correspond to this entry
 	total TEXT, -- Foreign Key to money table
 
 	FOREIGN KEY (meta)
@@ -7351,11 +7579,17 @@ CREATE TABLE claim(
 CREATE TABLE claim_Related(
 
 	id TEXT PRIMARY KEY,
+	claim_id TEXT, -- Foreign Key to claim table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	claim TEXT, -- Foreign Key to reference table
 	relationship TEXT, -- Foreign Key to codeableConcept table
 	reference TEXT, -- Foreign Key to identifier table
+
+	FOREIGN KEY (claim_id)
+		REFERENCES claim (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (claim)
 		REFERENCES reference (id)
@@ -7397,6 +7631,7 @@ CREATE TABLE claim_Payee(
 CREATE TABLE claim_CareTeam(
 
 	id TEXT PRIMARY KEY,
+	claim_id TEXT, -- Foreign Key to claim table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
@@ -7406,6 +7641,11 @@ CREATE TABLE claim_CareTeam(
 	_responsible TEXT, -- Foreign Key to element table
 	"role" TEXT, -- Foreign Key to codeableConcept table
 	qualification TEXT, -- Foreign Key to codeableConcept table
+
+	FOREIGN KEY (claim_id)
+		REFERENCES claim (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_sequence)
 		REFERENCES element (id)
@@ -7437,6 +7677,7 @@ CREATE TABLE claim_CareTeam(
 CREATE TABLE claim_SupportingInfo(
 
 	id TEXT PRIMARY KEY,
+	claim_id TEXT, -- Foreign Key to claim table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
@@ -7454,6 +7695,11 @@ CREATE TABLE claim_SupportingInfo(
 	valueAttachment TEXT, -- Foreign Key to attachment table
 	valueReference TEXT, -- Foreign Key to reference table
 	reason TEXT, -- Foreign Key to codeableConcept table
+
+	FOREIGN KEY (claim_id)
+		REFERENCES claim (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_sequence)
 		REFERENCES element (id)
@@ -7515,6 +7761,7 @@ CREATE TABLE claim_SupportingInfo(
 CREATE TABLE claim_Diagnosis(
 
 	id TEXT PRIMARY KEY,
+	claim_id TEXT, -- Foreign Key to claim table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
@@ -7524,6 +7771,11 @@ CREATE TABLE claim_Diagnosis(
 	"type" **LIST** CodeableConcept,
 	onAdmission TEXT, -- Foreign Key to codeableConcept table
 	packageCode TEXT, -- Foreign Key to codeableConcept table
+
+	FOREIGN KEY (claim_id)
+		REFERENCES claim (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_sequence)
 		REFERENCES element (id)
@@ -7555,6 +7807,7 @@ CREATE TABLE claim_Diagnosis(
 CREATE TABLE claim_Procedure(
 
 	id TEXT PRIMARY KEY,
+	claim_id TEXT, -- Foreign Key to claim table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
@@ -7565,6 +7818,11 @@ CREATE TABLE claim_Procedure(
 	procedureCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	procedureReference TEXT, -- Foreign Key to reference table
 	udi **LIST** Reference,
+
+	FOREIGN KEY (claim_id)
+		REFERENCES claim (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_sequence)
 		REFERENCES element (id)
@@ -7591,6 +7849,7 @@ CREATE TABLE claim_Procedure(
 CREATE TABLE claim_Insurance(
 
 	id TEXT PRIMARY KEY,
+	claim_id TEXT, -- Foreign Key to claim table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
@@ -7604,6 +7863,11 @@ CREATE TABLE claim_Insurance(
 	preAuthRef **LIST** string,
 	_preAuthRef **LIST** Element,
 	claimResponse TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (claim_id)
+		REFERENCES claim (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_sequence)
 		REFERENCES element (id)
@@ -7673,6 +7937,7 @@ CREATE TABLE claim_Accident(
 CREATE TABLE claim_Item(
 
 	id TEXT PRIMARY KEY,
+	claim_id TEXT, -- Foreign Key to claim table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
@@ -7705,7 +7970,12 @@ CREATE TABLE claim_Item(
 	bodySite TEXT, -- Foreign Key to codeableConcept table
 	subSite **LIST** CodeableConcept,
 	encounter **LIST** Reference,
-	detail **LIST** Claim_Detail,
+	detail BOOLEAN, -- true if 1+ rows in Claim_Detail correspond to this entry
+
+	FOREIGN KEY (claim_id)
+		REFERENCES claim (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_sequence)
 		REFERENCES element (id)
@@ -7782,6 +8052,7 @@ CREATE TABLE claim_Item(
 CREATE TABLE claim_Detail(
 
 	id TEXT PRIMARY KEY,
+	claim_Item_id TEXT, -- Foreign Key to claim_Item table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
@@ -7797,7 +8068,12 @@ CREATE TABLE claim_Detail(
 	_factor TEXT, -- Foreign Key to element table
 	net TEXT, -- Foreign Key to money table
 	udi **LIST** Reference,
-	subDetail **LIST** Claim_SubDetail,
+	subDetail BOOLEAN, -- true if 1+ rows in Claim_SubDetail correspond to this entry
+
+	FOREIGN KEY (claim_Item_id)
+		REFERENCES claim_Item (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_sequence)
 		REFERENCES element (id)
@@ -7844,6 +8120,7 @@ CREATE TABLE claim_Detail(
 CREATE TABLE claim_SubDetail(
 
 	id TEXT PRIMARY KEY,
+	claim_Detail_id TEXT, -- Foreign Key to claim_Detail table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
@@ -7859,6 +8136,11 @@ CREATE TABLE claim_SubDetail(
 	_factor TEXT, -- Foreign Key to element table
 	net TEXT, -- Foreign Key to money table
 	udi **LIST** Reference,
+
+	FOREIGN KEY (claim_Detail_id)
+		REFERENCES claim_Detail (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_sequence)
 		REFERENCES element (id)
@@ -7936,18 +8218,18 @@ CREATE TABLE claimResponse(
 	_preAuthRef TEXT, -- Foreign Key to element table
 	preAuthPeriod TEXT, -- Foreign Key to period table
 	payeeType TEXT, -- Foreign Key to codeableConcept table
-	item **LIST** ClaimResponse_Item,
-	addItem **LIST** ClaimResponse_AddItem,
+	item BOOLEAN, -- true if 1+ rows in ClaimResponse_Error correspond to this entry
+	addItem BOOLEAN, -- true if 1+ rows in ClaimResponse_Error correspond to this entry
 	adjudication **LIST** ClaimResponse_Adjudication,
-	total **LIST** ClaimResponse_Total,
+	total BOOLEAN, -- true if 1+ rows in ClaimResponse_Error correspond to this entry
 	payment TEXT, -- Foreign Key to claimResponse_Payment table
 	fundsReserve TEXT, -- Foreign Key to codeableConcept table
 	formCode TEXT, -- Foreign Key to codeableConcept table
 	form TEXT, -- Foreign Key to attachment table
-	processNote **LIST** ClaimResponse_ProcessNote,
+	processNote BOOLEAN, -- true if 1+ rows in ClaimResponse_Error correspond to this entry
 	communicationRequest **LIST** Reference,
-	insurance **LIST** ClaimResponse_Insurance,
-	error **LIST** ClaimResponse_Error,
+	insurance BOOLEAN, -- true if 1+ rows in ClaimResponse_Error correspond to this entry
+	error BOOLEAN, -- true if 1+ rows in ClaimResponse_Error correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -8064,6 +8346,7 @@ CREATE TABLE claimResponse(
 CREATE TABLE claimResponse_Item(
 
 	id TEXT PRIMARY KEY,
+	claimResponse_id TEXT, -- Foreign Key to claimResponse table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	itemSequence INTEGER,
@@ -8071,7 +8354,12 @@ CREATE TABLE claimResponse_Item(
 	noteNumber **LIST** positiveInt,
 	_noteNumber **LIST** Element,
 	adjudication **LIST** ClaimResponse_Adjudication,
-	detail **LIST** ClaimResponse_Detail,
+	detail BOOLEAN, -- true if 1+ rows in ClaimResponse_Detail correspond to this entry
+
+	FOREIGN KEY (claimResponse_id)
+		REFERENCES claimResponse (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_itemSequence)
 		REFERENCES element (id)
@@ -8116,6 +8404,7 @@ CREATE TABLE claimResponse_Adjudication(
 CREATE TABLE claimResponse_Detail(
 
 	id TEXT PRIMARY KEY,
+	claimResponse_Item_id TEXT, -- Foreign Key to claimResponse_Item table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	detailSequence INTEGER,
@@ -8123,7 +8412,12 @@ CREATE TABLE claimResponse_Detail(
 	noteNumber **LIST** positiveInt,
 	_noteNumber **LIST** Element,
 	adjudication **LIST** ClaimResponse_Adjudication,
-	subDetail **LIST** ClaimResponse_SubDetail,
+	subDetail BOOLEAN, -- true if 1+ rows in ClaimResponse_SubDetail correspond to this entry
+
+	FOREIGN KEY (claimResponse_Item_id)
+		REFERENCES claimResponse_Item (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_detailSequence)
 		REFERENCES element (id)
@@ -8135,6 +8429,7 @@ CREATE TABLE claimResponse_Detail(
 CREATE TABLE claimResponse_SubDetail(
 
 	id TEXT PRIMARY KEY,
+	claimResponse_Detail_id TEXT, -- Foreign Key to claimResponse_Detail table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	subDetailSequence INTEGER,
@@ -8142,6 +8437,11 @@ CREATE TABLE claimResponse_SubDetail(
 	noteNumber **LIST** positiveInt,
 	_noteNumber **LIST** Element,
 	adjudication **LIST** ClaimResponse_Adjudication,
+
+	FOREIGN KEY (claimResponse_Detail_id)
+		REFERENCES claimResponse_Detail (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_subDetailSequence)
 		REFERENCES element (id)
@@ -8153,6 +8453,7 @@ CREATE TABLE claimResponse_SubDetail(
 CREATE TABLE claimResponse_AddItem(
 
 	id TEXT PRIMARY KEY,
+	claimResponse_id TEXT, -- Foreign Key to claimResponse table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	itemSequence **LIST** positiveInt,
@@ -8181,7 +8482,12 @@ CREATE TABLE claimResponse_AddItem(
 	noteNumber **LIST** positiveInt,
 	_noteNumber **LIST** Element,
 	adjudication **LIST** ClaimResponse_Adjudication,
-	detail **LIST** ClaimResponse_Detail1,
+	detail BOOLEAN, -- true if 1+ rows in ClaimResponse_Detail1 correspond to this entry
+
+	FOREIGN KEY (claimResponse_id)
+		REFERENCES claimResponse (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (productOrService)
 		REFERENCES codeableConcept (id)
@@ -8243,6 +8549,7 @@ CREATE TABLE claimResponse_AddItem(
 CREATE TABLE claimResponse_Detail1(
 
 	id TEXT PRIMARY KEY,
+	claimResponse_AddItem_id TEXT, -- Foreign Key to claimResponse_AddItem table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	productOrService TEXT, -- Foreign Key to codeableConcept table
@@ -8255,7 +8562,12 @@ CREATE TABLE claimResponse_Detail1(
 	noteNumber **LIST** positiveInt,
 	_noteNumber **LIST** Element,
 	adjudication **LIST** ClaimResponse_Adjudication,
-	subDetail **LIST** ClaimResponse_SubDetail1,
+	subDetail BOOLEAN, -- true if 1+ rows in ClaimResponse_SubDetail1 correspond to this entry
+
+	FOREIGN KEY (claimResponse_AddItem_id)
+		REFERENCES claimResponse_AddItem (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (productOrService)
 		REFERENCES codeableConcept (id)
@@ -8287,6 +8599,7 @@ CREATE TABLE claimResponse_Detail1(
 CREATE TABLE claimResponse_SubDetail1(
 
 	id TEXT PRIMARY KEY,
+	claimResponse_Detail1_id TEXT, -- Foreign Key to claimResponse_Detail1 table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	productOrService TEXT, -- Foreign Key to codeableConcept table
@@ -8299,6 +8612,11 @@ CREATE TABLE claimResponse_SubDetail1(
 	noteNumber **LIST** positiveInt,
 	_noteNumber **LIST** Element,
 	adjudication **LIST** ClaimResponse_Adjudication,
+
+	FOREIGN KEY (claimResponse_Detail1_id)
+		REFERENCES claimResponse_Detail1 (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (productOrService)
 		REFERENCES codeableConcept (id)
@@ -8330,10 +8648,16 @@ CREATE TABLE claimResponse_SubDetail1(
 CREATE TABLE claimResponse_Total(
 
 	id TEXT PRIMARY KEY,
+	claimResponse_id TEXT, -- Foreign Key to claimResponse table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	category TEXT, -- Foreign Key to codeableConcept table
 	amount TEXT, -- Foreign Key to money table
+
+	FOREIGN KEY (claimResponse_id)
+		REFERENCES claimResponse (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (category)
 		REFERENCES codeableConcept (id)
@@ -8395,6 +8719,7 @@ CREATE TABLE claimResponse_Payment(
 CREATE TABLE claimResponse_ProcessNote(
 
 	id TEXT PRIMARY KEY,
+	claimResponse_id TEXT, -- Foreign Key to claimResponse table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	number INTEGER,
@@ -8404,6 +8729,11 @@ CREATE TABLE claimResponse_ProcessNote(
 	"text" TEXT,
 	_text TEXT, -- Foreign Key to element table
 	"language" TEXT, -- Foreign Key to codeableConcept table
+
+	FOREIGN KEY (claimResponse_id)
+		REFERENCES claimResponse (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_number)
 		REFERENCES element (id)
@@ -8430,6 +8760,7 @@ CREATE TABLE claimResponse_ProcessNote(
 CREATE TABLE claimResponse_Insurance(
 
 	id TEXT PRIMARY KEY,
+	claimResponse_id TEXT, -- Foreign Key to claimResponse table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
@@ -8440,6 +8771,11 @@ CREATE TABLE claimResponse_Insurance(
 	businessArrangement TEXT,
 	_businessArrangement TEXT, -- Foreign Key to element table
 	claimResponse TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (claimResponse_id)
+		REFERENCES claimResponse (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_sequence)
 		REFERENCES element (id)
@@ -8471,6 +8807,7 @@ CREATE TABLE claimResponse_Insurance(
 CREATE TABLE claimResponse_Error(
 
 	id TEXT PRIMARY KEY,
+	claimResponse_id TEXT, -- Foreign Key to claimResponse table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	itemSequence INTEGER,
@@ -8480,6 +8817,11 @@ CREATE TABLE claimResponse_Error(
 	subDetailSequence INTEGER,
 	_subDetailSequence TEXT, -- Foreign Key to element table
 	"code" TEXT, -- Foreign Key to codeableConcept table
+
+	FOREIGN KEY (claimResponse_id)
+		REFERENCES claimResponse (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_itemSequence)
 		REFERENCES element (id)
@@ -8533,12 +8875,12 @@ CREATE TABLE clinicalImpression(
 	assessor TEXT, -- Foreign Key to reference table
 	previous TEXT, -- Foreign Key to reference table
 	problem **LIST** Reference,
-	investigation **LIST** ClinicalImpression_Investigation,
+	investigation BOOLEAN, -- true if 1+ rows in ClinicalImpression_Finding correspond to this entry
 	protocol **LIST** uri,
 	_protocol **LIST** Element,
 	summary TEXT,
 	_summary TEXT, -- Foreign Key to element table
-	finding **LIST** ClinicalImpression_Finding,
+	finding BOOLEAN, -- true if 1+ rows in ClinicalImpression_Finding correspond to this entry
 	prognosisCodeableConcept **LIST** CodeableConcept,
 	prognosisReference **LIST** Reference,
 	supportingInfo **LIST** Reference,
@@ -8629,10 +8971,16 @@ CREATE TABLE clinicalImpression(
 CREATE TABLE clinicalImpression_Investigation(
 
 	id TEXT PRIMARY KEY,
+	clinicalImpression_id TEXT, -- Foreign Key to clinicalImpression table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	item **LIST** Reference,
+
+	FOREIGN KEY (clinicalImpression_id)
+		REFERENCES clinicalImpression (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -8644,12 +8992,18 @@ CREATE TABLE clinicalImpression_Investigation(
 CREATE TABLE clinicalImpression_Finding(
 
 	id TEXT PRIMARY KEY,
+	clinicalImpression_id TEXT, -- Foreign Key to clinicalImpression table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	itemCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	itemReference TEXT, -- Foreign Key to reference table
 	basis TEXT,
 	_basis TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (clinicalImpression_id)
+		REFERENCES clinicalImpression (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (itemCodeableConcept)
 		REFERENCES codeableConcept (id)
@@ -8721,8 +9075,8 @@ CREATE TABLE codeSystem(
 	supplements TEXT,
 	"count" INTEGER,
 	_count TEXT, -- Foreign Key to element table
-	"filter" **LIST** CodeSystem_Filter,
-	property **LIST** CodeSystem_Property,
+	"filter" BOOLEAN, -- true if 1+ rows in CodeSystem_Property correspond to this entry
+	property BOOLEAN, -- true if 1+ rows in CodeSystem_Property correspond to this entry
 	concept **LIST** CodeSystem_Concept,
 
 	FOREIGN KEY (meta)
@@ -8835,6 +9189,7 @@ CREATE TABLE codeSystem(
 CREATE TABLE codeSystem_Filter(
 
 	id TEXT PRIMARY KEY,
+	codeSystem_id TEXT, -- Foreign Key to codeSystem table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT,
@@ -8845,6 +9200,11 @@ CREATE TABLE codeSystem_Filter(
 	_operator **LIST** Element,
 	"value" TEXT,
 	_value TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (codeSystem_id)
+		REFERENCES codeSystem (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_code)
 		REFERENCES element (id)
@@ -8866,6 +9226,7 @@ CREATE TABLE codeSystem_Filter(
 CREATE TABLE codeSystem_Property(
 
 	id TEXT PRIMARY KEY,
+	codeSystem_id TEXT, -- Foreign Key to codeSystem table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT,
@@ -8876,6 +9237,11 @@ CREATE TABLE codeSystem_Property(
 	_description TEXT, -- Foreign Key to element table
 	"type" TEXT, -- enum: code/Coding/string/integer/boolean/dateTime/decimal
 	_type TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (codeSystem_id)
+		REFERENCES codeSystem (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_code)
 		REFERENCES element (id)
@@ -8910,8 +9276,8 @@ CREATE TABLE codeSystem_Concept(
 	_display TEXT, -- Foreign Key to element table
 	"definition" TEXT,
 	_definition TEXT, -- Foreign Key to element table
-	designation **LIST** CodeSystem_Designation,
-	property **LIST** CodeSystem_Property1,
+	designation BOOLEAN, -- true if 1+ rows in CodeSystem_Property1 correspond to this entry
+	property BOOLEAN, -- true if 1+ rows in CodeSystem_Property1 correspond to this entry
 	concept **LIST** CodeSystem_Concept,
 
 	FOREIGN KEY (_code)
@@ -8934,6 +9300,7 @@ CREATE TABLE codeSystem_Concept(
 CREATE TABLE codeSystem_Designation(
 
 	id TEXT PRIMARY KEY,
+	codeSystem_Concept_id TEXT, -- Foreign Key to codeSystem_Concept table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"language" TEXT,
@@ -8941,6 +9308,11 @@ CREATE TABLE codeSystem_Designation(
 	"use" TEXT, -- Foreign Key to coding table
 	"value" TEXT,
 	_value TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (codeSystem_Concept_id)
+		REFERENCES codeSystem_Concept (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_language)
 		REFERENCES element (id)
@@ -8962,6 +9334,7 @@ CREATE TABLE codeSystem_Designation(
 CREATE TABLE codeSystem_Property1(
 
 	id TEXT PRIMARY KEY,
+	codeSystem_Concept_id TEXT, -- Foreign Key to codeSystem_Concept table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT,
@@ -8979,6 +9352,11 @@ CREATE TABLE codeSystem_Property1(
 	_valueDateTime TEXT, -- Foreign Key to element table
 	valueDecimal REAL, -- pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
 	_valueDecimal TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (codeSystem_Concept_id)
+		REFERENCES codeSystem_Concept (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_code)
 		REFERENCES element (id)
@@ -9061,7 +9439,7 @@ CREATE TABLE communication(
 	sender TEXT, -- Foreign Key to reference table
 	reasonCode **LIST** CodeableConcept,
 	reasonReference **LIST** Reference,
-	payload **LIST** Communication_Payload,
+	payload BOOLEAN, -- true if 1+ rows in Communication_Payload correspond to this entry
 	note **LIST** Annotation,
 
 	FOREIGN KEY (meta)
@@ -9134,12 +9512,18 @@ CREATE TABLE communication(
 CREATE TABLE communication_Payload(
 
 	id TEXT PRIMARY KEY,
+	communication_id TEXT, -- Foreign Key to communication table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	contentString TEXT, -- pattern: ^[ \r\n\t\S]+$
 	_contentString TEXT, -- Foreign Key to element table
 	contentAttachment TEXT, -- Foreign Key to attachment table
 	contentReference TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (communication_id)
+		REFERENCES communication (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_contentString)
 		REFERENCES element (id)
@@ -9187,7 +9571,7 @@ CREATE TABLE communicationRequest(
 	"subject" TEXT, -- Foreign Key to reference table
 	about **LIST** Reference,
 	encounter TEXT, -- Foreign Key to reference table
-	payload **LIST** CommunicationRequest_Payload,
+	payload BOOLEAN, -- true if 1+ rows in CommunicationRequest_Payload correspond to this entry
 	occurrenceDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 	_occurrenceDateTime TEXT, -- Foreign Key to element table
 	occurrencePeriod TEXT, -- Foreign Key to period table
@@ -9285,12 +9669,18 @@ CREATE TABLE communicationRequest(
 CREATE TABLE communicationRequest_Payload(
 
 	id TEXT PRIMARY KEY,
+	communicationRequest_id TEXT, -- Foreign Key to communicationRequest table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	contentString TEXT, -- pattern: ^[ \r\n\t\S]+$
 	_contentString TEXT, -- Foreign Key to element table
 	contentAttachment TEXT, -- Foreign Key to attachment table
 	contentReference TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (communicationRequest_id)
+		REFERENCES communicationRequest (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_contentString)
 		REFERENCES element (id)
@@ -9346,7 +9736,7 @@ CREATE TABLE compartmentDefinition(
 	_code TEXT, -- Foreign Key to element table
 	"search" BOOLEAN,
 	_search TEXT, -- Foreign Key to element table
-	"resource" **LIST** CompartmentDefinition_Resource,
+	"resource" BOOLEAN, -- true if 1+ rows in CompartmentDefinition_Resource correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -9428,6 +9818,7 @@ CREATE TABLE compartmentDefinition(
 CREATE TABLE compartmentDefinition_Resource(
 
 	id TEXT PRIMARY KEY,
+	compartmentDefinition_id TEXT, -- Foreign Key to compartmentDefinition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT,
@@ -9436,6 +9827,11 @@ CREATE TABLE compartmentDefinition_Resource(
 	_param **LIST** Element,
 	documentation TEXT,
 	_documentation TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (compartmentDefinition_id)
+		REFERENCES compartmentDefinition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_code)
 		REFERENCES element (id)
@@ -9476,10 +9872,10 @@ CREATE TABLE composition(
 	_title TEXT, -- Foreign Key to element table
 	confidentiality TEXT,
 	_confidentiality TEXT, -- Foreign Key to element table
-	attester **LIST** Composition_Attester,
+	attester BOOLEAN, -- true if 1+ rows in Composition_Event correspond to this entry
 	custodian TEXT, -- Foreign Key to reference table
-	relatesTo **LIST** Composition_RelatesTo,
-	"event" **LIST** Composition_Event,
+	relatesTo BOOLEAN, -- true if 1+ rows in Composition_Event correspond to this entry
+	"event" BOOLEAN, -- true if 1+ rows in Composition_Event correspond to this entry
 	section **LIST** Composition_Section,
 
 	FOREIGN KEY (meta)
@@ -9552,6 +9948,7 @@ CREATE TABLE composition(
 CREATE TABLE composition_Attester(
 
 	id TEXT PRIMARY KEY,
+	composition_id TEXT, -- Foreign Key to composition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	mode TEXT, -- enum: personal/professional/legal/official
@@ -9559,6 +9956,11 @@ CREATE TABLE composition_Attester(
 	"time" DATETIME,
 	_time TEXT, -- Foreign Key to element table
 	party TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (composition_id)
+		REFERENCES composition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_mode)
 		REFERENCES element (id)
@@ -9580,12 +9982,18 @@ CREATE TABLE composition_Attester(
 CREATE TABLE composition_RelatesTo(
 
 	id TEXT PRIMARY KEY,
+	composition_id TEXT, -- Foreign Key to composition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT,
 	_code TEXT, -- Foreign Key to element table
 	targetIdentifier TEXT, -- Foreign Key to identifier table
 	targetReference TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (composition_id)
+		REFERENCES composition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_code)
 		REFERENCES element (id)
@@ -9607,11 +10015,17 @@ CREATE TABLE composition_RelatesTo(
 CREATE TABLE composition_Event(
 
 	id TEXT PRIMARY KEY,
+	composition_id TEXT, -- Foreign Key to composition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" **LIST** CodeableConcept,
 	"period" TEXT, -- Foreign Key to period table
 	detail **LIST** Reference,
+
+	FOREIGN KEY (composition_id)
+		REFERENCES composition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("period")
 		REFERENCES period (id)
@@ -9722,7 +10136,7 @@ CREATE TABLE conceptMap(
 	_targetUri TEXT, -- Foreign Key to element table
 	targetCanonical TEXT, -- pattern: ^\S*$
 	_targetCanonical TEXT, -- Foreign Key to element table
-	"group" **LIST** ConceptMap_Group,
+	"group" BOOLEAN, -- true if 1+ rows in ConceptMap_Group correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -9829,6 +10243,7 @@ CREATE TABLE conceptMap(
 CREATE TABLE conceptMap_Group(
 
 	id TEXT PRIMARY KEY,
+	conceptMap_id TEXT, -- Foreign Key to conceptMap table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"source" TEXT,
@@ -9839,8 +10254,13 @@ CREATE TABLE conceptMap_Group(
 	_target TEXT, -- Foreign Key to element table
 	targetVersion TEXT,
 	_targetVersion TEXT, -- Foreign Key to element table
-	element **LIST** ConceptMap_Element,
+	element BOOLEAN, -- true if 1+ rows in ConceptMap_Element correspond to this entry
 	unmapped TEXT, -- Foreign Key to conceptMap_Unmapped table
+
+	FOREIGN KEY (conceptMap_id)
+		REFERENCES conceptMap (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_source)
 		REFERENCES element (id)
@@ -9872,13 +10292,19 @@ CREATE TABLE conceptMap_Group(
 CREATE TABLE conceptMap_Element(
 
 	id TEXT PRIMARY KEY,
+	conceptMap_Group_id TEXT, -- Foreign Key to conceptMap_Group table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT,
 	_code TEXT, -- Foreign Key to element table
 	display TEXT,
 	_display TEXT, -- Foreign Key to element table
-	"target" **LIST** ConceptMap_Target,
+	"target" BOOLEAN, -- true if 1+ rows in ConceptMap_Target correspond to this entry
+
+	FOREIGN KEY (conceptMap_Group_id)
+		REFERENCES conceptMap_Group (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_code)
 		REFERENCES element (id)
@@ -9895,6 +10321,7 @@ CREATE TABLE conceptMap_Element(
 CREATE TABLE conceptMap_Target(
 
 	id TEXT PRIMARY KEY,
+	conceptMap_Element_id TEXT, -- Foreign Key to conceptMap_Element table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT,
@@ -9907,6 +10334,11 @@ CREATE TABLE conceptMap_Target(
 	_comment TEXT, -- Foreign Key to element table
 	dependsOn **LIST** ConceptMap_DependsOn,
 	product **LIST** ConceptMap_DependsOn,
+
+	FOREIGN KEY (conceptMap_Element_id)
+		REFERENCES conceptMap_Element (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_code)
 		REFERENCES element (id)
@@ -10030,8 +10462,8 @@ CREATE TABLE "condition"(
 	_recordedDate TEXT, -- Foreign Key to element table
 	recorder TEXT, -- Foreign Key to reference table
 	asserter TEXT, -- Foreign Key to reference table
-	stage **LIST** Condition_Stage,
-	evidence **LIST** Condition_Evidence,
+	stage BOOLEAN, -- true if 1+ rows in Condition_Evidence correspond to this entry
+	evidence BOOLEAN, -- true if 1+ rows in Condition_Evidence correspond to this entry
 	note **LIST** Annotation,
 
 	FOREIGN KEY (meta)
@@ -10154,11 +10586,17 @@ CREATE TABLE "condition"(
 CREATE TABLE condition_Stage(
 
 	id TEXT PRIMARY KEY,
+	condition_id TEXT, -- Foreign Key to "condition" table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	summary TEXT, -- Foreign Key to codeableConcept table
 	assessment **LIST** Reference,
 	"type" TEXT, -- Foreign Key to codeableConcept table
+
+	FOREIGN KEY (condition_id)
+		REFERENCES "condition" (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (summary)
 		REFERENCES codeableConcept (id)
@@ -10175,10 +10613,16 @@ CREATE TABLE condition_Stage(
 CREATE TABLE condition_Evidence(
 
 	id TEXT PRIMARY KEY,
+	condition_id TEXT, -- Foreign Key to "condition" table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" **LIST** CodeableConcept,
-	detail **LIST** Reference
+	detail **LIST** Reference,
+
+	FOREIGN KEY (condition_id)
+		REFERENCES "condition" (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION
 
 );
 
@@ -10207,9 +10651,9 @@ CREATE TABLE consent(
 	organization **LIST** Reference,
 	sourceAttachment TEXT, -- Foreign Key to attachment table
 	sourceReference TEXT, -- Foreign Key to reference table
-	"policy" **LIST** Consent_Policy,
+	"policy" BOOLEAN, -- true if 1+ rows in Consent_Verification correspond to this entry
 	policyRule TEXT, -- Foreign Key to codeableConcept table
-	verification **LIST** Consent_Verification,
+	verification BOOLEAN, -- true if 1+ rows in Consent_Verification correspond to this entry
 	provision TEXT, -- Foreign Key to consent_Provision table
 
 	FOREIGN KEY (meta)
@@ -10277,12 +10721,18 @@ CREATE TABLE consent(
 CREATE TABLE consent_Policy(
 
 	id TEXT PRIMARY KEY,
+	consent_id TEXT, -- Foreign Key to consent table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	authority TEXT,
 	_authority TEXT, -- Foreign Key to element table
 	uri TEXT,
 	_uri TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (consent_id)
+		REFERENCES consent (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_authority)
 		REFERENCES element (id)
@@ -10299,6 +10749,7 @@ CREATE TABLE consent_Policy(
 CREATE TABLE consent_Verification(
 
 	id TEXT PRIMARY KEY,
+	consent_id TEXT, -- Foreign Key to consent table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	verified BOOLEAN,
@@ -10306,6 +10757,11 @@ CREATE TABLE consent_Verification(
 	verifiedWith TEXT, -- Foreign Key to reference table
 	verificationDate DATETIME,
 	_verificationDate TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (consent_id)
+		REFERENCES consent (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_verified)
 		REFERENCES element (id)
@@ -10327,20 +10783,26 @@ CREATE TABLE consent_Verification(
 CREATE TABLE consent_Provision(
 
 	id TEXT PRIMARY KEY,
+	consent_Provision_id TEXT, -- Foreign Key to consent_Provision table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- enum: deny/permit
 	_type TEXT, -- Foreign Key to element table
 	"period" TEXT, -- Foreign Key to period table
-	actor **LIST** Consent_Actor,
+	actor BOOLEAN, -- true if 1+ rows in Consent_Provision correspond to this entry
 	"action" **LIST** CodeableConcept,
 	securityLabel **LIST** Coding,
 	purpose **LIST** Coding,
 	class **LIST** Coding,
 	"code" **LIST** CodeableConcept,
 	dataPeriod TEXT, -- Foreign Key to period table
-	"data" **LIST** Consent_Data,
-	provision **LIST** Consent_Provision,
+	"data" BOOLEAN, -- true if 1+ rows in Consent_Provision correspond to this entry
+	provision BOOLEAN, -- true if 1+ rows in Consent_Provision correspond to this entry
+
+	FOREIGN KEY (consent_Provision_id)
+		REFERENCES consent_Provision (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_type)
 		REFERENCES element (id)
@@ -10362,10 +10824,16 @@ CREATE TABLE consent_Provision(
 CREATE TABLE consent_Actor(
 
 	id TEXT PRIMARY KEY,
+	consent_Provision_id TEXT, -- Foreign Key to consent_Provision table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"role" TEXT, -- Foreign Key to codeableConcept table
 	reference TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (consent_Provision_id)
+		REFERENCES consent_Provision (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("role")
 		REFERENCES codeableConcept (id)
@@ -10382,11 +10850,17 @@ CREATE TABLE consent_Actor(
 CREATE TABLE consent_Data(
 
 	id TEXT PRIMARY KEY,
+	consent_Provision_id TEXT, -- Foreign Key to consent_Provision table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	meaning TEXT, -- enum: instance/related/dependents/authoredby
 	_meaning TEXT, -- Foreign Key to element table
 	reference TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (consent_Provision_id)
+		REFERENCES consent_Provision (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_meaning)
 		REFERENCES element (id)
@@ -10451,10 +10925,10 @@ CREATE TABLE contract(
 	term **LIST** Contract_Term,
 	supportingInfo **LIST** Reference,
 	relevantHistory **LIST** Reference,
-	signer **LIST** Contract_Signer,
-	friendly **LIST** Contract_Friendly,
-	legal **LIST** Contract_Legal,
-	"rule" **LIST** Contract_Rule,
+	signer BOOLEAN, -- true if 1+ rows in Contract_Rule correspond to this entry
+	friendly BOOLEAN, -- true if 1+ rows in Contract_Rule correspond to this entry
+	legal BOOLEAN, -- true if 1+ rows in Contract_Rule correspond to this entry
+	"rule" BOOLEAN, -- true if 1+ rows in Contract_Rule correspond to this entry
 	legallyBindingAttachment TEXT, -- Foreign Key to attachment table
 	legallyBindingReference TEXT, -- Foreign Key to reference table
 
@@ -10647,10 +11121,10 @@ CREATE TABLE contract_Term(
 	subType TEXT, -- Foreign Key to codeableConcept table
 	"text" TEXT,
 	_text TEXT, -- Foreign Key to element table
-	securityLabel **LIST** Contract_SecurityLabel,
+	securityLabel BOOLEAN, -- true if 1+ rows in Contract_Action correspond to this entry
 	offer TEXT, -- Foreign Key to contract_Offer table
-	asset **LIST** Contract_Asset,
-	"action" **LIST** Contract_Action,
+	asset BOOLEAN, -- true if 1+ rows in Contract_Action correspond to this entry
+	"action" BOOLEAN, -- true if 1+ rows in Contract_Action correspond to this entry
 	"group" **LIST** Contract_Term,
 
 	FOREIGN KEY (identifier)
@@ -10703,6 +11177,7 @@ CREATE TABLE contract_Term(
 CREATE TABLE contract_SecurityLabel(
 
 	id TEXT PRIMARY KEY,
+	contract_Term_id TEXT, -- Foreign Key to contract_Term table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	number **LIST** unsignedInt,
@@ -10710,6 +11185,11 @@ CREATE TABLE contract_SecurityLabel(
 	classification TEXT, -- Foreign Key to coding table
 	category **LIST** Coding,
 	control **LIST** Coding,
+
+	FOREIGN KEY (contract_Term_id)
+		REFERENCES contract_Term (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (classification)
 		REFERENCES coding (id)
@@ -10724,7 +11204,7 @@ CREATE TABLE contract_Offer(
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	identifier **LIST** Identifier,
-	party **LIST** Contract_Party,
+	party BOOLEAN, -- true if 1+ rows in Contract_Party correspond to this entry
 	topic TEXT, -- Foreign Key to reference table
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	decision TEXT, -- Foreign Key to codeableConcept table
@@ -10762,10 +11242,16 @@ CREATE TABLE contract_Offer(
 CREATE TABLE contract_Party(
 
 	id TEXT PRIMARY KEY,
+	contract_Offer_id TEXT, -- Foreign Key to contract_Offer table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	reference **LIST** Reference,
 	"role" TEXT, -- Foreign Key to codeableConcept table
+
+	FOREIGN KEY (contract_Offer_id)
+		REFERENCES contract_Offer (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("role")
 		REFERENCES codeableConcept (id)
@@ -10865,6 +11351,7 @@ CREATE TABLE contract_Answer(
 CREATE TABLE contract_Asset(
 
 	id TEXT PRIMARY KEY,
+	contract_Term_id TEXT, -- Foreign Key to contract_Term table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"scope" TEXT, -- Foreign Key to codeableConcept table
@@ -10872,7 +11359,7 @@ CREATE TABLE contract_Asset(
 	typeReference **LIST** Reference,
 	subtype **LIST** CodeableConcept,
 	relationship TEXT, -- Foreign Key to coding table
-	context **LIST** Contract_Context,
+	context BOOLEAN, -- true if 1+ rows in Contract_ValuedItem correspond to this entry
 	"condition" TEXT,
 	_condition TEXT, -- Foreign Key to element table
 	periodType **LIST** CodeableConcept,
@@ -10885,7 +11372,12 @@ CREATE TABLE contract_Asset(
 	answer **LIST** Contract_Answer,
 	securityLabelNumber **LIST** unsignedInt,
 	_securityLabelNumber **LIST** Element,
-	valuedItem **LIST** Contract_ValuedItem,
+	valuedItem BOOLEAN, -- true if 1+ rows in Contract_ValuedItem correspond to this entry
+
+	FOREIGN KEY (contract_Term_id)
+		REFERENCES contract_Term (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("scope")
 		REFERENCES codeableConcept (id)
@@ -10912,12 +11404,18 @@ CREATE TABLE contract_Asset(
 CREATE TABLE contract_Context(
 
 	id TEXT PRIMARY KEY,
+	contract_Asset_id TEXT, -- Foreign Key to contract_Asset table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	reference TEXT, -- Foreign Key to reference table
 	"code" **LIST** CodeableConcept,
 	"text" TEXT,
 	_text TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (contract_Asset_id)
+		REFERENCES contract_Asset (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (reference)
 		REFERENCES reference (id)
@@ -10934,6 +11432,7 @@ CREATE TABLE contract_Context(
 CREATE TABLE contract_ValuedItem(
 
 	id TEXT PRIMARY KEY,
+	contract_Asset_id TEXT, -- Foreign Key to contract_Asset table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	entityCodeableConcept TEXT, -- Foreign Key to codeableConcept table
@@ -10958,6 +11457,11 @@ CREATE TABLE contract_ValuedItem(
 	_linkId **LIST** Element,
 	securityLabelNumber **LIST** unsignedInt,
 	_securityLabelNumber **LIST** Element,
+
+	FOREIGN KEY (contract_Asset_id)
+		REFERENCES contract_Asset (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (entityCodeableConcept)
 		REFERENCES codeableConcept (id)
@@ -11029,12 +11533,13 @@ CREATE TABLE contract_ValuedItem(
 CREATE TABLE contract_Action(
 
 	id TEXT PRIMARY KEY,
+	contract_Term_id TEXT, -- Foreign Key to contract_Term table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	doNotPerform BOOLEAN,
 	_doNotPerform TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to codeableConcept table
-	"subject" **LIST** Contract_Subject,
+	"subject" BOOLEAN, -- true if 1+ rows in Contract_Subject correspond to this entry
 	intent TEXT, -- Foreign Key to codeableConcept table
 	linkId **LIST** string,
 	_linkId **LIST** Element,
@@ -11063,6 +11568,11 @@ CREATE TABLE contract_Action(
 	note **LIST** Annotation,
 	securityLabelNumber **LIST** unsignedInt,
 	_securityLabelNumber **LIST** Element,
+
+	FOREIGN KEY (contract_Term_id)
+		REFERENCES contract_Term (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_doNotPerform)
 		REFERENCES element (id)
@@ -11119,10 +11629,16 @@ CREATE TABLE contract_Action(
 CREATE TABLE contract_Subject(
 
 	id TEXT PRIMARY KEY,
+	contract_Action_id TEXT, -- Foreign Key to contract_Action table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	reference **LIST** Reference,
 	"role" TEXT, -- Foreign Key to codeableConcept table
+
+	FOREIGN KEY (contract_Action_id)
+		REFERENCES contract_Action (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("role")
 		REFERENCES codeableConcept (id)
@@ -11134,11 +11650,17 @@ CREATE TABLE contract_Subject(
 CREATE TABLE contract_Signer(
 
 	id TEXT PRIMARY KEY,
+	contract_id TEXT, -- Foreign Key to contract table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to coding table
 	party TEXT, -- Foreign Key to reference table
 	"signature" **LIST** Signature,
+
+	FOREIGN KEY (contract_id)
+		REFERENCES contract (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES coding (id)
@@ -11155,10 +11677,16 @@ CREATE TABLE contract_Signer(
 CREATE TABLE contract_Friendly(
 
 	id TEXT PRIMARY KEY,
+	contract_id TEXT, -- Foreign Key to contract table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	contentAttachment TEXT, -- Foreign Key to attachment table
 	contentReference TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (contract_id)
+		REFERENCES contract (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (contentAttachment)
 		REFERENCES attachment (id)
@@ -11175,10 +11703,16 @@ CREATE TABLE contract_Friendly(
 CREATE TABLE contract_Legal(
 
 	id TEXT PRIMARY KEY,
+	contract_id TEXT, -- Foreign Key to contract table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	contentAttachment TEXT, -- Foreign Key to attachment table
 	contentReference TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (contract_id)
+		REFERENCES contract (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (contentAttachment)
 		REFERENCES attachment (id)
@@ -11195,10 +11729,16 @@ CREATE TABLE contract_Legal(
 CREATE TABLE contract_Rule(
 
 	id TEXT PRIMARY KEY,
+	contract_id TEXT, -- Foreign Key to contract table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	contentAttachment TEXT, -- Foreign Key to attachment table
 	contentReference TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (contract_id)
+		REFERENCES contract (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (contentAttachment)
 		REFERENCES attachment (id)
@@ -11239,12 +11779,12 @@ CREATE TABLE coverage(
 	relationship TEXT, -- Foreign Key to codeableConcept table
 	"period" TEXT, -- Foreign Key to period table
 	payor **LIST** Reference,
-	class **LIST** Coverage_Class,
+	class BOOLEAN, -- true if 1+ rows in Coverage_CostToBeneficiary correspond to this entry
 	"order" INTEGER,
 	_order TEXT, -- Foreign Key to element table
 	network TEXT,
 	_network TEXT, -- Foreign Key to element table
-	costToBeneficiary **LIST** Coverage_CostToBeneficiary,
+	costToBeneficiary BOOLEAN, -- true if 1+ rows in Coverage_CostToBeneficiary correspond to this entry
 	subrogation BOOLEAN,
 	_subrogation TEXT, -- Foreign Key to element table
 	contract **LIST** Reference,
@@ -11334,6 +11874,7 @@ CREATE TABLE coverage(
 CREATE TABLE coverage_Class(
 
 	id TEXT PRIMARY KEY,
+	coverage_id TEXT, -- Foreign Key to coverage table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
@@ -11341,6 +11882,11 @@ CREATE TABLE coverage_Class(
 	_value TEXT, -- Foreign Key to element table
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (coverage_id)
+		REFERENCES coverage (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -11362,12 +11908,18 @@ CREATE TABLE coverage_Class(
 CREATE TABLE coverage_CostToBeneficiary(
 
 	id TEXT PRIMARY KEY,
+	coverage_id TEXT, -- Foreign Key to coverage table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	valueQuantity TEXT, -- Foreign Key to quantity table
 	valueMoney TEXT, -- Foreign Key to money table
-	exception **LIST** Coverage_Exception,
+	exception BOOLEAN, -- true if 1+ rows in Coverage_Exception correspond to this entry
+
+	FOREIGN KEY (coverage_id)
+		REFERENCES coverage (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -11389,10 +11941,16 @@ CREATE TABLE coverage_CostToBeneficiary(
 CREATE TABLE coverage_Exception(
 
 	id TEXT PRIMARY KEY,
+	coverage_CostToBeneficiary_id TEXT, -- Foreign Key to coverage_CostToBeneficiary table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	"period" TEXT, -- Foreign Key to period table
+
+	FOREIGN KEY (coverage_CostToBeneficiary_id)
+		REFERENCES coverage_CostToBeneficiary (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -11423,7 +11981,7 @@ CREATE TABLE coverageEligibilityRequest(
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
 	"priority" TEXT, -- Foreign Key to codeableConcept table
-	purpose **LIST** enum, -- auth-requirements/benefits/discovery/validation,
+	purpose **LIST** enum, -- enum: auth-requirements/benefits/discovery/validation,
 	_purpose **LIST** Element,
 	patient TEXT, -- Foreign Key to reference table
 	servicedDate TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
@@ -11435,9 +11993,9 @@ CREATE TABLE coverageEligibilityRequest(
 	"provider" TEXT, -- Foreign Key to reference table
 	insurer TEXT, -- Foreign Key to reference table
 	facility TEXT, -- Foreign Key to reference table
-	supportingInfo **LIST** CoverageEligibilityRequest_SupportingInfo,
-	insurance **LIST** CoverageEligibilityRequest_Insurance,
-	item **LIST** CoverageEligibilityRequest_Item,
+	supportingInfo BOOLEAN, -- true if 1+ rows in CoverageEligibilityRequest_Item correspond to this entry
+	insurance BOOLEAN, -- true if 1+ rows in CoverageEligibilityRequest_Item correspond to this entry
+	item BOOLEAN, -- true if 1+ rows in CoverageEligibilityRequest_Item correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -11514,6 +12072,7 @@ CREATE TABLE coverageEligibilityRequest(
 CREATE TABLE coverageEligibilityRequest_SupportingInfo(
 
 	id TEXT PRIMARY KEY,
+	coverageEligibilityRequest_id TEXT, -- Foreign Key to coverageEligibilityRequest table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
@@ -11521,6 +12080,11 @@ CREATE TABLE coverageEligibilityRequest_SupportingInfo(
 	information TEXT, -- Foreign Key to reference table
 	appliesToAll BOOLEAN,
 	_appliesToAll TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (coverageEligibilityRequest_id)
+		REFERENCES coverageEligibilityRequest (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_sequence)
 		REFERENCES element (id)
@@ -11542,6 +12106,7 @@ CREATE TABLE coverageEligibilityRequest_SupportingInfo(
 CREATE TABLE coverageEligibilityRequest_Insurance(
 
 	id TEXT PRIMARY KEY,
+	coverageEligibilityRequest_id TEXT, -- Foreign Key to coverageEligibilityRequest table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	focal BOOLEAN,
@@ -11549,6 +12114,11 @@ CREATE TABLE coverageEligibilityRequest_Insurance(
 	coverage TEXT, -- Foreign Key to reference table
 	businessArrangement TEXT,
 	_businessArrangement TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (coverageEligibilityRequest_id)
+		REFERENCES coverageEligibilityRequest (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_focal)
 		REFERENCES element (id)
@@ -11570,6 +12140,7 @@ CREATE TABLE coverageEligibilityRequest_Insurance(
 CREATE TABLE coverageEligibilityRequest_Item(
 
 	id TEXT PRIMARY KEY,
+	coverageEligibilityRequest_id TEXT, -- Foreign Key to coverageEligibilityRequest table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	supportingInfoSequence **LIST** positiveInt,
@@ -11581,8 +12152,13 @@ CREATE TABLE coverageEligibilityRequest_Item(
 	quantity TEXT, -- Foreign Key to quantity table
 	unitPrice TEXT, -- Foreign Key to money table
 	facility TEXT, -- Foreign Key to reference table
-	diagnosis **LIST** CoverageEligibilityRequest_Diagnosis,
+	diagnosis BOOLEAN, -- true if 1+ rows in CoverageEligibilityRequest_Diagnosis correspond to this entry
 	detail **LIST** Reference,
+
+	FOREIGN KEY (coverageEligibilityRequest_id)
+		REFERENCES coverageEligibilityRequest (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (category)
 		REFERENCES codeableConcept (id)
@@ -11619,10 +12195,16 @@ CREATE TABLE coverageEligibilityRequest_Item(
 CREATE TABLE coverageEligibilityRequest_Diagnosis(
 
 	id TEXT PRIMARY KEY,
+	coverageEligibilityRequest_Item_id TEXT, -- Foreign Key to coverageEligibilityRequest_Item table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	diagnosisCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	diagnosisReference TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (coverageEligibilityRequest_Item_id)
+		REFERENCES coverageEligibilityRequest_Item (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (diagnosisCodeableConcept)
 		REFERENCES codeableConcept (id)
@@ -11652,7 +12234,7 @@ CREATE TABLE coverageEligibilityResponse(
 	identifier **LIST** Identifier,
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
-	purpose **LIST** enum, -- auth-requirements/benefits/discovery/validation,
+	purpose **LIST** enum, -- enum: auth-requirements/benefits/discovery/validation,
 	_purpose **LIST** Element,
 	patient TEXT, -- Foreign Key to reference table
 	servicedDate TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
@@ -11667,11 +12249,11 @@ CREATE TABLE coverageEligibilityResponse(
 	disposition TEXT,
 	_disposition TEXT, -- Foreign Key to element table
 	insurer TEXT, -- Foreign Key to reference table
-	insurance **LIST** CoverageEligibilityResponse_Insurance,
+	insurance BOOLEAN, -- true if 1+ rows in CoverageEligibilityResponse_Error correspond to this entry
 	preAuthRef TEXT,
 	_preAuthRef TEXT, -- Foreign Key to element table
 	form TEXT, -- Foreign Key to codeableConcept table
-	error **LIST** CoverageEligibilityResponse_Error,
+	error BOOLEAN, -- true if 1+ rows in CoverageEligibilityResponse_Error correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -11758,13 +12340,19 @@ CREATE TABLE coverageEligibilityResponse(
 CREATE TABLE coverageEligibilityResponse_Insurance(
 
 	id TEXT PRIMARY KEY,
+	coverageEligibilityResponse_id TEXT, -- Foreign Key to coverageEligibilityResponse table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	coverage TEXT, -- Foreign Key to reference table
 	inforce BOOLEAN,
 	_inforce TEXT, -- Foreign Key to element table
 	benefitPeriod TEXT, -- Foreign Key to period table
-	item **LIST** CoverageEligibilityResponse_Item,
+	item BOOLEAN, -- true if 1+ rows in CoverageEligibilityResponse_Item correspond to this entry
+
+	FOREIGN KEY (coverageEligibilityResponse_id)
+		REFERENCES coverageEligibilityResponse (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (coverage)
 		REFERENCES reference (id)
@@ -11786,6 +12374,7 @@ CREATE TABLE coverageEligibilityResponse_Insurance(
 CREATE TABLE coverageEligibilityResponse_Item(
 
 	id TEXT PRIMARY KEY,
+	coverageEligibilityResponse_Insurance_id TEXT, -- Foreign Key to coverageEligibilityResponse_Insurance table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	category TEXT, -- Foreign Key to codeableConcept table
@@ -11801,12 +12390,17 @@ CREATE TABLE coverageEligibilityResponse_Item(
 	network TEXT, -- Foreign Key to codeableConcept table
 	unit TEXT, -- Foreign Key to codeableConcept table
 	term TEXT, -- Foreign Key to codeableConcept table
-	benefit **LIST** CoverageEligibilityResponse_Benefit,
+	benefit BOOLEAN, -- true if 1+ rows in CoverageEligibilityResponse_Benefit correspond to this entry
 	authorizationRequired BOOLEAN,
 	_authorizationRequired TEXT, -- Foreign Key to element table
 	authorizationSupporting **LIST** CodeableConcept,
 	authorizationUrl TEXT,
 	_authorizationUrl TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (coverageEligibilityResponse_Insurance_id)
+		REFERENCES coverageEligibilityResponse_Insurance (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (category)
 		REFERENCES codeableConcept (id)
@@ -11868,6 +12462,7 @@ CREATE TABLE coverageEligibilityResponse_Item(
 CREATE TABLE coverageEligibilityResponse_Benefit(
 
 	id TEXT PRIMARY KEY,
+	coverageEligibilityResponse_Item_id TEXT, -- Foreign Key to coverageEligibilityResponse_Item table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
@@ -11881,6 +12476,11 @@ CREATE TABLE coverageEligibilityResponse_Benefit(
 	usedString TEXT, -- pattern: ^[ \r\n\t\S]+$
 	_usedString TEXT, -- Foreign Key to element table
 	usedMoney TEXT, -- Foreign Key to money table
+
+	FOREIGN KEY (coverageEligibilityResponse_Item_id)
+		REFERENCES coverageEligibilityResponse_Item (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -11922,9 +12522,15 @@ CREATE TABLE coverageEligibilityResponse_Benefit(
 CREATE TABLE coverageEligibilityResponse_Error(
 
 	id TEXT PRIMARY KEY,
+	coverageEligibilityResponse_id TEXT, -- Foreign Key to coverageEligibilityResponse table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
+
+	FOREIGN KEY (coverageEligibilityResponse_id)
+		REFERENCES coverageEligibilityResponse (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -11958,12 +12564,12 @@ CREATE TABLE detectedIssue(
 	identifiedPeriod TEXT, -- Foreign Key to period table
 	author TEXT, -- Foreign Key to reference table
 	implicated **LIST** Reference,
-	evidence **LIST** DetectedIssue_Evidence,
+	evidence BOOLEAN, -- true if 1+ rows in DetectedIssue_Mitigation correspond to this entry
 	detail TEXT,
 	_detail TEXT, -- Foreign Key to element table
 	reference TEXT,
 	_reference TEXT, -- Foreign Key to element table
-	mitigation **LIST** DetectedIssue_Mitigation,
+	mitigation BOOLEAN, -- true if 1+ rows in DetectedIssue_Mitigation correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -12035,22 +12641,34 @@ CREATE TABLE detectedIssue(
 CREATE TABLE detectedIssue_Evidence(
 
 	id TEXT PRIMARY KEY,
+	detectedIssue_id TEXT, -- Foreign Key to detectedIssue table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" **LIST** CodeableConcept,
-	detail **LIST** Reference
+	detail **LIST** Reference,
+
+	FOREIGN KEY (detectedIssue_id)
+		REFERENCES detectedIssue (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION
 
 );
 
 CREATE TABLE detectedIssue_Mitigation(
 
 	id TEXT PRIMARY KEY,
+	detectedIssue_id TEXT, -- Foreign Key to detectedIssue table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"action" TEXT, -- Foreign Key to codeableConcept table
 	"date" DATETIME,
 	_date TEXT, -- Foreign Key to element table
 	author TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (detectedIssue_id)
+		REFERENCES detectedIssue (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("action")
 		REFERENCES codeableConcept (id)
@@ -12084,7 +12702,7 @@ CREATE TABLE device(
 	modifierExtension **LIST** Extension,
 	identifier **LIST** Identifier,
 	"definition" TEXT, -- Foreign Key to reference table
-	udiCarrier **LIST** Device_UdiCarrier,
+	udiCarrier BOOLEAN, -- true if 1+ rows in Device_Property correspond to this entry
 	"status" TEXT, -- enum: active/inactive/entered-in-error/unknown
 	_status TEXT, -- Foreign Key to element table
 	statusReason **LIST** CodeableConcept,
@@ -12100,15 +12718,15 @@ CREATE TABLE device(
 	_lotNumber TEXT, -- Foreign Key to element table
 	serialNumber TEXT,
 	_serialNumber TEXT, -- Foreign Key to element table
-	deviceName **LIST** Device_DeviceName,
+	deviceName BOOLEAN, -- true if 1+ rows in Device_Property correspond to this entry
 	modelNumber TEXT,
 	_modelNumber TEXT, -- Foreign Key to element table
 	partNumber TEXT,
 	_partNumber TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to codeableConcept table
-	specialization **LIST** Device_Specialization,
-	"version" **LIST** Device_Version,
-	property **LIST** Device_Property,
+	specialization BOOLEAN, -- true if 1+ rows in Device_Property correspond to this entry
+	"version" BOOLEAN, -- true if 1+ rows in Device_Property correspond to this entry
+	property BOOLEAN, -- true if 1+ rows in Device_Property correspond to this entry
 	patient TEXT, -- Foreign Key to reference table
 	"owner" TEXT, -- Foreign Key to reference table
 	contact **LIST** ContactPoint,
@@ -12224,6 +12842,7 @@ CREATE TABLE device(
 CREATE TABLE device_UdiCarrier(
 
 	id TEXT PRIMARY KEY,
+	device_id TEXT, -- Foreign Key to device table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	deviceIdentifier TEXT,
@@ -12238,6 +12857,11 @@ CREATE TABLE device_UdiCarrier(
 	_carrierHRF TEXT, -- Foreign Key to element table
 	entryType TEXT, -- enum: barcode/rfid/manual/card/self-reported/unknown
 	_entryType TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (device_id)
+		REFERENCES device (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_deviceIdentifier)
 		REFERENCES element (id)
@@ -12274,12 +12898,18 @@ CREATE TABLE device_UdiCarrier(
 CREATE TABLE device_DeviceName(
 
 	id TEXT PRIMARY KEY,
+	device_id TEXT, -- Foreign Key to device table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	"type" TEXT, -- enum: udi-label-name/user-friendly-name/patient-reported-name/manufacturer-name/model-name/other
 	_type TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (device_id)
+		REFERENCES device (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_name)
 		REFERENCES element (id)
@@ -12296,11 +12926,17 @@ CREATE TABLE device_DeviceName(
 CREATE TABLE device_Specialization(
 
 	id TEXT PRIMARY KEY,
+	device_id TEXT, -- Foreign Key to device table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	systemType TEXT, -- Foreign Key to codeableConcept table
 	"version" TEXT,
 	_version TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (device_id)
+		REFERENCES device (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (systemType)
 		REFERENCES codeableConcept (id)
@@ -12317,12 +12953,18 @@ CREATE TABLE device_Specialization(
 CREATE TABLE device_Version(
 
 	id TEXT PRIMARY KEY,
+	device_id TEXT, -- Foreign Key to device table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	component TEXT, -- Foreign Key to identifier table
 	"value" TEXT,
 	_value TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (device_id)
+		REFERENCES device (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -12344,11 +12986,17 @@ CREATE TABLE device_Version(
 CREATE TABLE device_Property(
 
 	id TEXT PRIMARY KEY,
+	device_id TEXT, -- Foreign Key to device table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	valueQuantity **LIST** Quantity,
 	valueCode **LIST** CodeableConcept,
+
+	FOREIGN KEY (device_id)
+		REFERENCES device (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -12371,23 +13019,23 @@ CREATE TABLE deviceDefinition(
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	identifier **LIST** Identifier,
-	udiDeviceIdentifier **LIST** DeviceDefinition_UdiDeviceIdentifier,
+	udiDeviceIdentifier BOOLEAN, -- true if 1+ rows in DeviceDefinition_Material correspond to this entry
 	manufacturerString TEXT, -- pattern: ^[ \r\n\t\S]+$
 	_manufacturerString TEXT, -- Foreign Key to element table
 	manufacturerReference TEXT, -- Foreign Key to reference table
-	deviceName **LIST** DeviceDefinition_DeviceName,
+	deviceName BOOLEAN, -- true if 1+ rows in DeviceDefinition_Material correspond to this entry
 	modelNumber TEXT,
 	_modelNumber TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to codeableConcept table
-	specialization **LIST** DeviceDefinition_Specialization,
+	specialization BOOLEAN, -- true if 1+ rows in DeviceDefinition_Material correspond to this entry
 	"version" **LIST** string,
 	_version **LIST** Element,
 	safety **LIST** CodeableConcept,
 	shelfLifeStorage **LIST** ProductShelfLife,
 	physicalCharacteristics TEXT, -- Foreign Key to prodCharacteristic table
 	languageCode **LIST** CodeableConcept,
-	capability **LIST** DeviceDefinition_Capability,
-	property **LIST** DeviceDefinition_Property,
+	capability BOOLEAN, -- true if 1+ rows in DeviceDefinition_Material correspond to this entry
+	property BOOLEAN, -- true if 1+ rows in DeviceDefinition_Material correspond to this entry
 	"owner" TEXT, -- Foreign Key to reference table
 	contact **LIST** ContactPoint,
 	"url" TEXT,
@@ -12397,7 +13045,7 @@ CREATE TABLE deviceDefinition(
 	note **LIST** Annotation,
 	quantity TEXT, -- Foreign Key to quantity table
 	parentDevice TEXT, -- Foreign Key to reference table
-	material **LIST** DeviceDefinition_Material,
+	material BOOLEAN, -- true if 1+ rows in DeviceDefinition_Material correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -12474,6 +13122,7 @@ CREATE TABLE deviceDefinition(
 CREATE TABLE deviceDefinition_UdiDeviceIdentifier(
 
 	id TEXT PRIMARY KEY,
+	deviceDefinition_id TEXT, -- Foreign Key to deviceDefinition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	deviceIdentifier TEXT,
@@ -12482,6 +13131,11 @@ CREATE TABLE deviceDefinition_UdiDeviceIdentifier(
 	_issuer TEXT, -- Foreign Key to element table
 	jurisdiction TEXT,
 	_jurisdiction TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (deviceDefinition_id)
+		REFERENCES deviceDefinition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_deviceIdentifier)
 		REFERENCES element (id)
@@ -12503,12 +13157,18 @@ CREATE TABLE deviceDefinition_UdiDeviceIdentifier(
 CREATE TABLE deviceDefinition_DeviceName(
 
 	id TEXT PRIMARY KEY,
+	deviceDefinition_id TEXT, -- Foreign Key to deviceDefinition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	"type" TEXT, -- enum: udi-label-name/user-friendly-name/patient-reported-name/manufacturer-name/model-name/other
 	_type TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (deviceDefinition_id)
+		REFERENCES deviceDefinition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_name)
 		REFERENCES element (id)
@@ -12525,12 +13185,18 @@ CREATE TABLE deviceDefinition_DeviceName(
 CREATE TABLE deviceDefinition_Specialization(
 
 	id TEXT PRIMARY KEY,
+	deviceDefinition_id TEXT, -- Foreign Key to deviceDefinition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	systemType TEXT,
 	_systemType TEXT, -- Foreign Key to element table
 	"version" TEXT,
 	_version TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (deviceDefinition_id)
+		REFERENCES deviceDefinition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_systemType)
 		REFERENCES element (id)
@@ -12547,10 +13213,16 @@ CREATE TABLE deviceDefinition_Specialization(
 CREATE TABLE deviceDefinition_Capability(
 
 	id TEXT PRIMARY KEY,
+	deviceDefinition_id TEXT, -- Foreign Key to deviceDefinition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	"description" **LIST** CodeableConcept,
+
+	FOREIGN KEY (deviceDefinition_id)
+		REFERENCES deviceDefinition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -12562,11 +13234,17 @@ CREATE TABLE deviceDefinition_Capability(
 CREATE TABLE deviceDefinition_Property(
 
 	id TEXT PRIMARY KEY,
+	deviceDefinition_id TEXT, -- Foreign Key to deviceDefinition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	valueQuantity **LIST** Quantity,
 	valueCode **LIST** CodeableConcept,
+
+	FOREIGN KEY (deviceDefinition_id)
+		REFERENCES deviceDefinition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -12578,6 +13256,7 @@ CREATE TABLE deviceDefinition_Property(
 CREATE TABLE deviceDefinition_Material(
 
 	id TEXT PRIMARY KEY,
+	deviceDefinition_id TEXT, -- Foreign Key to deviceDefinition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	substance TEXT, -- Foreign Key to codeableConcept table
@@ -12585,6 +13264,11 @@ CREATE TABLE deviceDefinition_Material(
 	_alternate TEXT, -- Foreign Key to element table
 	allergenicIndicator BOOLEAN,
 	_allergenicIndicator TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (deviceDefinition_id)
+		REFERENCES deviceDefinition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (substance)
 		REFERENCES codeableConcept (id)
@@ -12628,7 +13312,7 @@ CREATE TABLE deviceMetric(
 	category TEXT, -- enum: measurement/setting/calculation/unspecified
 	_category TEXT, -- Foreign Key to element table
 	measurementPeriod TEXT, -- Foreign Key to timing table
-	calibration **LIST** DeviceMetric_Calibration,
+	calibration BOOLEAN, -- true if 1+ rows in DeviceMetric_Calibration correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -12695,6 +13379,7 @@ CREATE TABLE deviceMetric(
 CREATE TABLE deviceMetric_Calibration(
 
 	id TEXT PRIMARY KEY,
+	deviceMetric_id TEXT, -- Foreign Key to deviceMetric table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- enum: unspecified/offset/gain/two-point
@@ -12703,6 +13388,11 @@ CREATE TABLE deviceMetric_Calibration(
 	_state TEXT, -- Foreign Key to element table
 	"time" DATETIME,
 	_time TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (deviceMetric_id)
+		REFERENCES deviceMetric (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_type)
 		REFERENCES element (id)
@@ -12749,7 +13439,7 @@ CREATE TABLE deviceRequest(
 	_priority TEXT, -- Foreign Key to element table
 	codeReference TEXT, -- Foreign Key to reference table
 	codeCodeableConcept TEXT, -- Foreign Key to codeableConcept table
-	"parameter" **LIST** DeviceRequest_Parameter,
+	"parameter" BOOLEAN, -- true if 1+ rows in DeviceRequest_Parameter correspond to this entry
 	"subject" TEXT, -- Foreign Key to reference table
 	encounter TEXT, -- Foreign Key to reference table
 	occurrenceDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
@@ -12868,6 +13558,7 @@ CREATE TABLE deviceRequest(
 CREATE TABLE deviceRequest_Parameter(
 
 	id TEXT PRIMARY KEY,
+	deviceRequest_id TEXT, -- Foreign Key to deviceRequest table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
@@ -12876,6 +13567,11 @@ CREATE TABLE deviceRequest_Parameter(
 	valueRange TEXT, -- Foreign Key to range table
 	valueBoolean BOOLEAN, -- pattern: ^true|false$
 	_valueBoolean TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (deviceRequest_id)
+		REFERENCES deviceRequest (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -13034,7 +13730,7 @@ CREATE TABLE diagnosticReport(
 	specimen **LIST** Reference,
 	"result" **LIST** Reference,
 	imagingStudy **LIST** Reference,
-	media **LIST** DiagnosticReport_Media,
+	media BOOLEAN, -- true if 1+ rows in DiagnosticReport_Media correspond to this entry
 	conclusion TEXT,
 	_conclusion TEXT, -- Foreign Key to element table
 	conclusionCode **LIST** CodeableConcept,
@@ -13105,11 +13801,17 @@ CREATE TABLE diagnosticReport(
 CREATE TABLE diagnosticReport_Media(
 
 	id TEXT PRIMARY KEY,
+	diagnosticReport_id TEXT, -- Foreign Key to diagnosticReport table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	comment TEXT,
 	_comment TEXT, -- Foreign Key to element table
 	link TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (diagnosticReport_id)
+		REFERENCES diagnosticReport (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_comment)
 		REFERENCES element (id)
@@ -13151,7 +13853,7 @@ CREATE TABLE documentManifest(
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	content **LIST** Reference,
-	related **LIST** DocumentManifest_Related,
+	related BOOLEAN, -- true if 1+ rows in DocumentManifest_Related correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -13213,10 +13915,16 @@ CREATE TABLE documentManifest(
 CREATE TABLE documentManifest_Related(
 
 	id TEXT PRIMARY KEY,
+	documentManifest_id TEXT, -- Foreign Key to documentManifest table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	identifier TEXT, -- Foreign Key to identifier table
 	ref TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (documentManifest_id)
+		REFERENCES documentManifest (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (identifier)
 		REFERENCES identifier (id)
@@ -13257,11 +13965,11 @@ CREATE TABLE documentReference(
 	author **LIST** Reference,
 	authenticator TEXT, -- Foreign Key to reference table
 	custodian TEXT, -- Foreign Key to reference table
-	relatesTo **LIST** DocumentReference_RelatesTo,
+	relatesTo BOOLEAN, -- true if 1+ rows in DocumentReference_Content correspond to this entry
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	securityLabel **LIST** CodeableConcept,
-	content **LIST** DocumentReference_Content,
+	content BOOLEAN, -- true if 1+ rows in DocumentReference_Content correspond to this entry
 	context TEXT, -- Foreign Key to documentReference_Context table
 
 	FOREIGN KEY (meta)
@@ -13339,11 +14047,17 @@ CREATE TABLE documentReference(
 CREATE TABLE documentReference_RelatesTo(
 
 	id TEXT PRIMARY KEY,
+	documentReference_id TEXT, -- Foreign Key to documentReference table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT, -- enum: replaces/transforms/signs/appends
 	_code TEXT, -- Foreign Key to element table
 	"target" TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (documentReference_id)
+		REFERENCES documentReference (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_code)
 		REFERENCES element (id)
@@ -13360,10 +14074,16 @@ CREATE TABLE documentReference_RelatesTo(
 CREATE TABLE documentReference_Content(
 
 	id TEXT PRIMARY KEY,
+	documentReference_id TEXT, -- Foreign Key to documentReference table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	attachment TEXT, -- Foreign Key to attachment table
 	format TEXT, -- Foreign Key to coding table
+
+	FOREIGN KEY (documentReference_id)
+		REFERENCES documentReference (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (attachment)
 		REFERENCES attachment (id)
@@ -13466,9 +14186,9 @@ CREATE TABLE effectEvidenceSynthesis(
 	exposureAlternative TEXT, -- Foreign Key to reference table
 	outcome TEXT, -- Foreign Key to reference table
 	sampleSize TEXT, -- Foreign Key to effectEvidenceSynthesis_SampleSize table
-	resultsByExposure **LIST** EffectEvidenceSynthesis_ResultsByExposure,
-	effectEstimate **LIST** EffectEvidenceSynthesis_EffectEstimate,
-	certainty **LIST** EffectEvidenceSynthesis_Certainty,
+	resultsByExposure BOOLEAN, -- true if 1+ rows in EffectEvidenceSynthesis_Certainty correspond to this entry
+	effectEstimate BOOLEAN, -- true if 1+ rows in EffectEvidenceSynthesis_Certainty correspond to this entry
+	certainty BOOLEAN, -- true if 1+ rows in EffectEvidenceSynthesis_Certainty correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -13619,6 +14339,7 @@ CREATE TABLE effectEvidenceSynthesis_SampleSize(
 CREATE TABLE effectEvidenceSynthesis_ResultsByExposure(
 
 	id TEXT PRIMARY KEY,
+	effectEvidenceSynthesis_id TEXT, -- Foreign Key to effectEvidenceSynthesis table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"description" TEXT,
@@ -13627,6 +14348,11 @@ CREATE TABLE effectEvidenceSynthesis_ResultsByExposure(
 	_exposureState TEXT, -- Foreign Key to element table
 	variantState TEXT, -- Foreign Key to codeableConcept table
 	riskEvidenceSynthesis TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (effectEvidenceSynthesis_id)
+		REFERENCES effectEvidenceSynthesis (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_description)
 		REFERENCES element (id)
@@ -13653,6 +14379,7 @@ CREATE TABLE effectEvidenceSynthesis_ResultsByExposure(
 CREATE TABLE effectEvidenceSynthesis_EffectEstimate(
 
 	id TEXT PRIMARY KEY,
+	effectEvidenceSynthesis_id TEXT, -- Foreign Key to effectEvidenceSynthesis table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"description" TEXT,
@@ -13662,7 +14389,12 @@ CREATE TABLE effectEvidenceSynthesis_EffectEstimate(
 	"value" REAL,
 	_value TEXT, -- Foreign Key to element table
 	unitOfMeasure TEXT, -- Foreign Key to codeableConcept table
-	precisionEstimate **LIST** EffectEvidenceSynthesis_PrecisionEstimate,
+	precisionEstimate BOOLEAN, -- true if 1+ rows in EffectEvidenceSynthesis_PrecisionEstimate correspond to this entry
+
+	FOREIGN KEY (effectEvidenceSynthesis_id)
+		REFERENCES effectEvidenceSynthesis (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_description)
 		REFERENCES element (id)
@@ -13694,6 +14426,7 @@ CREATE TABLE effectEvidenceSynthesis_EffectEstimate(
 CREATE TABLE effectEvidenceSynthesis_PrecisionEstimate(
 
 	id TEXT PRIMARY KEY,
+	effectEvidenceSynthesis_EffectEstimate_id TEXT, -- Foreign Key to effectEvidenceSynthesis_EffectEstimate table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
@@ -13703,6 +14436,11 @@ CREATE TABLE effectEvidenceSynthesis_PrecisionEstimate(
 	_from TEXT, -- Foreign Key to element table
 	"to" REAL,
 	_to TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (effectEvidenceSynthesis_EffectEstimate_id)
+		REFERENCES effectEvidenceSynthesis_EffectEstimate (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -13729,22 +14467,34 @@ CREATE TABLE effectEvidenceSynthesis_PrecisionEstimate(
 CREATE TABLE effectEvidenceSynthesis_Certainty(
 
 	id TEXT PRIMARY KEY,
+	effectEvidenceSynthesis_id TEXT, -- Foreign Key to effectEvidenceSynthesis table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	rating **LIST** CodeableConcept,
 	note **LIST** Annotation,
-	certaintySubcomponent **LIST** EffectEvidenceSynthesis_CertaintySubcomponent
+	certaintySubcomponent BOOLEAN, -- true if 1+ rows in EffectEvidenceSynthesis_CertaintySubcomponent correspond to this entry
+
+	FOREIGN KEY (effectEvidenceSynthesis_id)
+		REFERENCES effectEvidenceSynthesis (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION
 
 );
 
 CREATE TABLE effectEvidenceSynthesis_CertaintySubcomponent(
 
 	id TEXT PRIMARY KEY,
+	effectEvidenceSynthesis_Certainty_id TEXT, -- Foreign Key to effectEvidenceSynthesis_Certainty table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	rating **LIST** CodeableConcept,
 	note **LIST** Annotation,
+
+	FOREIGN KEY (effectEvidenceSynthesis_Certainty_id)
+		REFERENCES effectEvidenceSynthesis_Certainty (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -13769,25 +14519,25 @@ CREATE TABLE encounter(
 	identifier **LIST** Identifier,
 	"status" TEXT, -- enum: planned/arrived/triaged/in-progress/onleave/finished/cancelled/entered-in-error/unknown
 	_status TEXT, -- Foreign Key to element table
-	statusHistory **LIST** Encounter_StatusHistory,
+	statusHistory BOOLEAN, -- true if 1+ rows in Encounter_Location correspond to this entry
 	class TEXT, -- Foreign Key to coding table
-	classHistory **LIST** Encounter_ClassHistory,
+	classHistory BOOLEAN, -- true if 1+ rows in Encounter_Location correspond to this entry
 	"type" **LIST** CodeableConcept,
 	serviceType TEXT, -- Foreign Key to codeableConcept table
 	"priority" TEXT, -- Foreign Key to codeableConcept table
 	"subject" TEXT, -- Foreign Key to reference table
 	episodeOfCare **LIST** Reference,
 	basedOn **LIST** Reference,
-	participant **LIST** Encounter_Participant,
+	participant BOOLEAN, -- true if 1+ rows in Encounter_Location correspond to this entry
 	appointment **LIST** Reference,
 	"period" TEXT, -- Foreign Key to period table
 	"length" TEXT, -- Foreign Key to duration table
 	reasonCode **LIST** CodeableConcept,
 	reasonReference **LIST** Reference,
-	diagnosis **LIST** Encounter_Diagnosis,
+	diagnosis BOOLEAN, -- true if 1+ rows in Encounter_Location correspond to this entry
 	account **LIST** Reference,
 	hospitalization TEXT, -- Foreign Key to encounter_Hospitalization table
-	"location" **LIST** Encounter_Location,
+	"location" BOOLEAN, -- true if 1+ rows in Encounter_Location correspond to this entry
 	serviceProvider TEXT, -- Foreign Key to reference table
 	partOf TEXT, -- Foreign Key to reference table
 
@@ -13866,11 +14616,17 @@ CREATE TABLE encounter(
 CREATE TABLE encounter_StatusHistory(
 
 	id TEXT PRIMARY KEY,
+	encounter_id TEXT, -- Foreign Key to encounter table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"status" TEXT, -- enum: planned/arrived/triaged/in-progress/onleave/finished/cancelled/entered-in-error/unknown
 	_status TEXT, -- Foreign Key to element table
 	"period" TEXT, -- Foreign Key to period table
+
+	FOREIGN KEY (encounter_id)
+		REFERENCES encounter (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_status)
 		REFERENCES element (id)
@@ -13887,10 +14643,16 @@ CREATE TABLE encounter_StatusHistory(
 CREATE TABLE encounter_ClassHistory(
 
 	id TEXT PRIMARY KEY,
+	encounter_id TEXT, -- Foreign Key to encounter table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	class TEXT, -- Foreign Key to coding table
 	"period" TEXT, -- Foreign Key to period table
+
+	FOREIGN KEY (encounter_id)
+		REFERENCES encounter (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (class)
 		REFERENCES coding (id)
@@ -13907,11 +14669,17 @@ CREATE TABLE encounter_ClassHistory(
 CREATE TABLE encounter_Participant(
 
 	id TEXT PRIMARY KEY,
+	encounter_id TEXT, -- Foreign Key to encounter table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" **LIST** CodeableConcept,
 	"period" TEXT, -- Foreign Key to period table
 	individual TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (encounter_id)
+		REFERENCES encounter (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("period")
 		REFERENCES period (id)
@@ -13928,12 +14696,18 @@ CREATE TABLE encounter_Participant(
 CREATE TABLE encounter_Diagnosis(
 
 	id TEXT PRIMARY KEY,
+	encounter_id TEXT, -- Foreign Key to encounter table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"condition" TEXT, -- Foreign Key to reference table
 	"use" TEXT, -- Foreign Key to codeableConcept table
 	"rank" INTEGER,
 	_rank TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (encounter_id)
+		REFERENCES encounter (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("condition")
 		REFERENCES reference (id)
@@ -14002,6 +14776,7 @@ CREATE TABLE encounter_Hospitalization(
 CREATE TABLE encounter_Location(
 
 	id TEXT PRIMARY KEY,
+	encounter_id TEXT, -- Foreign Key to encounter table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"location" TEXT, -- Foreign Key to reference table
@@ -14009,6 +14784,11 @@ CREATE TABLE encounter_Location(
 	_status TEXT, -- Foreign Key to element table
 	physicalType TEXT, -- Foreign Key to codeableConcept table
 	"period" TEXT, -- Foreign Key to period table
+
+	FOREIGN KEY (encounter_id)
+		REFERENCES encounter (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("location")
 		REFERENCES reference (id)
@@ -14288,9 +15068,9 @@ CREATE TABLE episodeOfCare(
 	identifier **LIST** Identifier,
 	"status" TEXT, -- enum: planned/waitlist/active/onhold/finished/cancelled/entered-in-error
 	_status TEXT, -- Foreign Key to element table
-	statusHistory **LIST** EpisodeOfCare_StatusHistory,
+	statusHistory BOOLEAN, -- true if 1+ rows in EpisodeOfCare_Diagnosis correspond to this entry
 	"type" **LIST** CodeableConcept,
-	diagnosis **LIST** EpisodeOfCare_Diagnosis,
+	diagnosis BOOLEAN, -- true if 1+ rows in EpisodeOfCare_Diagnosis correspond to this entry
 	patient TEXT, -- Foreign Key to reference table
 	managingOrganization TEXT, -- Foreign Key to reference table
 	"period" TEXT, -- Foreign Key to period table
@@ -14349,11 +15129,17 @@ CREATE TABLE episodeOfCare(
 CREATE TABLE episodeOfCare_StatusHistory(
 
 	id TEXT PRIMARY KEY,
+	episodeOfCare_id TEXT, -- Foreign Key to episodeOfCare table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"status" TEXT, -- enum: planned/waitlist/active/onhold/finished/cancelled/entered-in-error
 	_status TEXT, -- Foreign Key to element table
 	"period" TEXT, -- Foreign Key to period table
+
+	FOREIGN KEY (episodeOfCare_id)
+		REFERENCES episodeOfCare (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_status)
 		REFERENCES element (id)
@@ -14370,12 +15156,18 @@ CREATE TABLE episodeOfCare_StatusHistory(
 CREATE TABLE episodeOfCare_Diagnosis(
 
 	id TEXT PRIMARY KEY,
+	episodeOfCare_id TEXT, -- Foreign Key to episodeOfCare table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"condition" TEXT, -- Foreign Key to reference table
 	"role" TEXT, -- Foreign Key to codeableConcept table
 	"rank" INTEGER,
 	_rank TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (episodeOfCare_id)
+		REFERENCES episodeOfCare (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("condition")
 		REFERENCES reference (id)
@@ -14769,7 +15561,7 @@ CREATE TABLE evidenceVariable(
 	relatedArtifact **LIST** RelatedArtifact,
 	"type" TEXT, -- enum: dichotomous/continuous/descriptive
 	_type TEXT, -- Foreign Key to element table
-	characteristic **LIST** EvidenceVariable_Characteristic,
+	characteristic BOOLEAN, -- true if 1+ rows in EvidenceVariable_Characteristic correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -14871,6 +15663,7 @@ CREATE TABLE evidenceVariable(
 CREATE TABLE evidenceVariable_Characteristic(
 
 	id TEXT PRIMARY KEY,
+	evidenceVariable_id TEXT, -- Foreign Key to evidenceVariable table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"description" TEXT,
@@ -14893,6 +15686,11 @@ CREATE TABLE evidenceVariable_Characteristic(
 	timeFromStart TEXT, -- Foreign Key to duration table
 	groupMeasure TEXT, -- enum: mean/median/mean-of-mean/mean-of-median/median-of-mean/median-of-median
 	_groupMeasure TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (evidenceVariable_id)
+		REFERENCES evidenceVariable (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_description)
 		REFERENCES element (id)
@@ -15001,8 +15799,8 @@ CREATE TABLE exampleScenario(
 	_copyright TEXT, -- Foreign Key to element table
 	purpose TEXT,
 	_purpose TEXT, -- Foreign Key to element table
-	actor **LIST** ExampleScenario_Actor,
-	"instance" **LIST** ExampleScenario_Instance,
+	actor BOOLEAN, -- true if 1+ rows in ExampleScenario_Instance correspond to this entry
+	"instance" BOOLEAN, -- true if 1+ rows in ExampleScenario_Instance correspond to this entry
 	process **LIST** ExampleScenario_Process,
 	workflow **LIST** canonical,
 
@@ -15076,6 +15874,7 @@ CREATE TABLE exampleScenario(
 CREATE TABLE exampleScenario_Actor(
 
 	id TEXT PRIMARY KEY,
+	exampleScenario_id TEXT, -- Foreign Key to exampleScenario table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	actorId TEXT,
@@ -15086,6 +15885,11 @@ CREATE TABLE exampleScenario_Actor(
 	_name TEXT, -- Foreign Key to element table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (exampleScenario_id)
+		REFERENCES exampleScenario (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_actorId)
 		REFERENCES element (id)
@@ -15112,6 +15916,7 @@ CREATE TABLE exampleScenario_Actor(
 CREATE TABLE exampleScenario_Instance(
 
 	id TEXT PRIMARY KEY,
+	exampleScenario_id TEXT, -- Foreign Key to exampleScenario table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	resourceId TEXT,
@@ -15122,8 +15927,13 @@ CREATE TABLE exampleScenario_Instance(
 	_name TEXT, -- Foreign Key to element table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	"version" **LIST** ExampleScenario_Version,
-	containedInstance **LIST** ExampleScenario_ContainedInstance,
+	"version" BOOLEAN, -- true if 1+ rows in ExampleScenario_ContainedInstance correspond to this entry
+	containedInstance BOOLEAN, -- true if 1+ rows in ExampleScenario_ContainedInstance correspond to this entry
+
+	FOREIGN KEY (exampleScenario_id)
+		REFERENCES exampleScenario (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_resourceId)
 		REFERENCES element (id)
@@ -15150,12 +15960,18 @@ CREATE TABLE exampleScenario_Instance(
 CREATE TABLE exampleScenario_Version(
 
 	id TEXT PRIMARY KEY,
+	exampleScenario_Instance_id TEXT, -- Foreign Key to exampleScenario_Instance table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	versionId TEXT,
 	_versionId TEXT, -- Foreign Key to element table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (exampleScenario_Instance_id)
+		REFERENCES exampleScenario_Instance (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_versionId)
 		REFERENCES element (id)
@@ -15172,12 +15988,18 @@ CREATE TABLE exampleScenario_Version(
 CREATE TABLE exampleScenario_ContainedInstance(
 
 	id TEXT PRIMARY KEY,
+	exampleScenario_Instance_id TEXT, -- Foreign Key to exampleScenario_Instance table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	resourceId TEXT,
 	_resourceId TEXT, -- Foreign Key to element table
 	versionId TEXT,
 	_versionId TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (exampleScenario_Instance_id)
+		REFERENCES exampleScenario_Instance (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_resourceId)
 		REFERENCES element (id)
@@ -15237,7 +16059,7 @@ CREATE TABLE exampleScenario_Step(
 	pause BOOLEAN,
 	_pause TEXT, -- Foreign Key to element table
 	operation TEXT, -- Foreign Key to exampleScenario_Operation table
-	alternative **LIST** ExampleScenario_Alternative,
+	alternative BOOLEAN, -- true if 1+ rows in ExampleScenario_Alternative correspond to this entry
 
 	FOREIGN KEY (_pause)
 		REFERENCES element (id)
@@ -15330,6 +16152,7 @@ CREATE TABLE exampleScenario_Operation(
 CREATE TABLE exampleScenario_Alternative(
 
 	id TEXT PRIMARY KEY,
+	exampleScenario_Step_id TEXT, -- Foreign Key to exampleScenario_Step table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	title TEXT,
@@ -15337,6 +16160,11 @@ CREATE TABLE exampleScenario_Alternative(
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	step **LIST** ExampleScenario_Step,
+
+	FOREIGN KEY (exampleScenario_Step_id)
+		REFERENCES exampleScenario_Step (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_title)
 		REFERENCES element (id)
@@ -15380,7 +16208,7 @@ CREATE TABLE explanationOfBenefit(
 	"priority" TEXT, -- Foreign Key to codeableConcept table
 	fundsReserveRequested TEXT, -- Foreign Key to codeableConcept table
 	fundsReserve TEXT, -- Foreign Key to codeableConcept table
-	related **LIST** ExplanationOfBenefit_Related,
+	related BOOLEAN, -- true if 1+ rows in ExplanationOfBenefit_BenefitBalance correspond to this entry
 	prescription TEXT, -- Foreign Key to reference table
 	originalPrescription TEXT, -- Foreign Key to reference table
 	payee TEXT, -- Foreign Key to explanationOfBenefit_Payee table
@@ -15395,24 +16223,24 @@ CREATE TABLE explanationOfBenefit(
 	preAuthRef **LIST** string,
 	_preAuthRef **LIST** Element,
 	preAuthRefPeriod **LIST** Period,
-	careTeam **LIST** ExplanationOfBenefit_CareTeam,
-	supportingInfo **LIST** ExplanationOfBenefit_SupportingInfo,
-	diagnosis **LIST** ExplanationOfBenefit_Diagnosis,
-	"procedure" **LIST** ExplanationOfBenefit_Procedure,
+	careTeam BOOLEAN, -- true if 1+ rows in ExplanationOfBenefit_BenefitBalance correspond to this entry
+	supportingInfo BOOLEAN, -- true if 1+ rows in ExplanationOfBenefit_BenefitBalance correspond to this entry
+	diagnosis BOOLEAN, -- true if 1+ rows in ExplanationOfBenefit_BenefitBalance correspond to this entry
+	"procedure" BOOLEAN, -- true if 1+ rows in ExplanationOfBenefit_BenefitBalance correspond to this entry
 	precedence INTEGER,
 	_precedence TEXT, -- Foreign Key to element table
-	insurance **LIST** ExplanationOfBenefit_Insurance,
+	insurance BOOLEAN, -- true if 1+ rows in ExplanationOfBenefit_BenefitBalance correspond to this entry
 	accident TEXT, -- Foreign Key to explanationOfBenefit_Accident table
-	item **LIST** ExplanationOfBenefit_Item,
-	addItem **LIST** ExplanationOfBenefit_AddItem,
+	item BOOLEAN, -- true if 1+ rows in ExplanationOfBenefit_BenefitBalance correspond to this entry
+	addItem BOOLEAN, -- true if 1+ rows in ExplanationOfBenefit_BenefitBalance correspond to this entry
 	adjudication **LIST** ExplanationOfBenefit_Adjudication,
-	total **LIST** ExplanationOfBenefit_Total,
+	total BOOLEAN, -- true if 1+ rows in ExplanationOfBenefit_BenefitBalance correspond to this entry
 	payment TEXT, -- Foreign Key to explanationOfBenefit_Payment table
 	formCode TEXT, -- Foreign Key to codeableConcept table
 	form TEXT, -- Foreign Key to attachment table
-	processNote **LIST** ExplanationOfBenefit_ProcessNote,
+	processNote BOOLEAN, -- true if 1+ rows in ExplanationOfBenefit_BenefitBalance correspond to this entry
 	benefitPeriod TEXT, -- Foreign Key to period table
-	benefitBalance **LIST** ExplanationOfBenefit_BenefitBalance,
+	benefitBalance BOOLEAN, -- true if 1+ rows in ExplanationOfBenefit_BenefitBalance correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -15579,11 +16407,17 @@ CREATE TABLE explanationOfBenefit(
 CREATE TABLE explanationOfBenefit_Related(
 
 	id TEXT PRIMARY KEY,
+	explanationOfBenefit_id TEXT, -- Foreign Key to explanationOfBenefit table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	claim TEXT, -- Foreign Key to reference table
 	relationship TEXT, -- Foreign Key to codeableConcept table
 	reference TEXT, -- Foreign Key to identifier table
+
+	FOREIGN KEY (explanationOfBenefit_id)
+		REFERENCES explanationOfBenefit (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (claim)
 		REFERENCES reference (id)
@@ -15625,6 +16459,7 @@ CREATE TABLE explanationOfBenefit_Payee(
 CREATE TABLE explanationOfBenefit_CareTeam(
 
 	id TEXT PRIMARY KEY,
+	explanationOfBenefit_id TEXT, -- Foreign Key to explanationOfBenefit table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
@@ -15634,6 +16469,11 @@ CREATE TABLE explanationOfBenefit_CareTeam(
 	_responsible TEXT, -- Foreign Key to element table
 	"role" TEXT, -- Foreign Key to codeableConcept table
 	qualification TEXT, -- Foreign Key to codeableConcept table
+
+	FOREIGN KEY (explanationOfBenefit_id)
+		REFERENCES explanationOfBenefit (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_sequence)
 		REFERENCES element (id)
@@ -15665,6 +16505,7 @@ CREATE TABLE explanationOfBenefit_CareTeam(
 CREATE TABLE explanationOfBenefit_SupportingInfo(
 
 	id TEXT PRIMARY KEY,
+	explanationOfBenefit_id TEXT, -- Foreign Key to explanationOfBenefit table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
@@ -15682,6 +16523,11 @@ CREATE TABLE explanationOfBenefit_SupportingInfo(
 	valueAttachment TEXT, -- Foreign Key to attachment table
 	valueReference TEXT, -- Foreign Key to reference table
 	reason TEXT, -- Foreign Key to coding table
+
+	FOREIGN KEY (explanationOfBenefit_id)
+		REFERENCES explanationOfBenefit (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_sequence)
 		REFERENCES element (id)
@@ -15743,6 +16589,7 @@ CREATE TABLE explanationOfBenefit_SupportingInfo(
 CREATE TABLE explanationOfBenefit_Diagnosis(
 
 	id TEXT PRIMARY KEY,
+	explanationOfBenefit_id TEXT, -- Foreign Key to explanationOfBenefit table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
@@ -15752,6 +16599,11 @@ CREATE TABLE explanationOfBenefit_Diagnosis(
 	"type" **LIST** CodeableConcept,
 	onAdmission TEXT, -- Foreign Key to codeableConcept table
 	packageCode TEXT, -- Foreign Key to codeableConcept table
+
+	FOREIGN KEY (explanationOfBenefit_id)
+		REFERENCES explanationOfBenefit (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_sequence)
 		REFERENCES element (id)
@@ -15783,6 +16635,7 @@ CREATE TABLE explanationOfBenefit_Diagnosis(
 CREATE TABLE explanationOfBenefit_Procedure(
 
 	id TEXT PRIMARY KEY,
+	explanationOfBenefit_id TEXT, -- Foreign Key to explanationOfBenefit table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
@@ -15793,6 +16646,11 @@ CREATE TABLE explanationOfBenefit_Procedure(
 	procedureCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	procedureReference TEXT, -- Foreign Key to reference table
 	udi **LIST** Reference,
+
+	FOREIGN KEY (explanationOfBenefit_id)
+		REFERENCES explanationOfBenefit (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_sequence)
 		REFERENCES element (id)
@@ -15819,6 +16677,7 @@ CREATE TABLE explanationOfBenefit_Procedure(
 CREATE TABLE explanationOfBenefit_Insurance(
 
 	id TEXT PRIMARY KEY,
+	explanationOfBenefit_id TEXT, -- Foreign Key to explanationOfBenefit table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	focal BOOLEAN,
@@ -15826,6 +16685,11 @@ CREATE TABLE explanationOfBenefit_Insurance(
 	coverage TEXT, -- Foreign Key to reference table
 	preAuthRef **LIST** string,
 	_preAuthRef **LIST** Element,
+
+	FOREIGN KEY (explanationOfBenefit_id)
+		REFERENCES explanationOfBenefit (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_focal)
 		REFERENCES element (id)
@@ -15875,6 +16739,7 @@ CREATE TABLE explanationOfBenefit_Accident(
 CREATE TABLE explanationOfBenefit_Item(
 
 	id TEXT PRIMARY KEY,
+	explanationOfBenefit_id TEXT, -- Foreign Key to explanationOfBenefit table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
@@ -15910,7 +16775,12 @@ CREATE TABLE explanationOfBenefit_Item(
 	noteNumber **LIST** positiveInt,
 	_noteNumber **LIST** Element,
 	adjudication **LIST** ExplanationOfBenefit_Adjudication,
-	detail **LIST** ExplanationOfBenefit_Detail,
+	detail BOOLEAN, -- true if 1+ rows in ExplanationOfBenefit_Detail correspond to this entry
+
+	FOREIGN KEY (explanationOfBenefit_id)
+		REFERENCES explanationOfBenefit (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_sequence)
 		REFERENCES element (id)
@@ -16020,6 +16890,7 @@ CREATE TABLE explanationOfBenefit_Adjudication(
 CREATE TABLE explanationOfBenefit_Detail(
 
 	id TEXT PRIMARY KEY,
+	explanationOfBenefit_Item_id TEXT, -- Foreign Key to explanationOfBenefit_Item table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
@@ -16038,7 +16909,12 @@ CREATE TABLE explanationOfBenefit_Detail(
 	noteNumber **LIST** positiveInt,
 	_noteNumber **LIST** Element,
 	adjudication **LIST** ExplanationOfBenefit_Adjudication,
-	subDetail **LIST** ExplanationOfBenefit_SubDetail,
+	subDetail BOOLEAN, -- true if 1+ rows in ExplanationOfBenefit_SubDetail correspond to this entry
+
+	FOREIGN KEY (explanationOfBenefit_Item_id)
+		REFERENCES explanationOfBenefit_Item (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_sequence)
 		REFERENCES element (id)
@@ -16085,6 +16961,7 @@ CREATE TABLE explanationOfBenefit_Detail(
 CREATE TABLE explanationOfBenefit_SubDetail(
 
 	id TEXT PRIMARY KEY,
+	explanationOfBenefit_Detail_id TEXT, -- Foreign Key to explanationOfBenefit_Detail table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
@@ -16103,6 +16980,11 @@ CREATE TABLE explanationOfBenefit_SubDetail(
 	noteNumber **LIST** positiveInt,
 	_noteNumber **LIST** Element,
 	adjudication **LIST** ExplanationOfBenefit_Adjudication,
+
+	FOREIGN KEY (explanationOfBenefit_Detail_id)
+		REFERENCES explanationOfBenefit_Detail (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_sequence)
 		REFERENCES element (id)
@@ -16149,6 +17031,7 @@ CREATE TABLE explanationOfBenefit_SubDetail(
 CREATE TABLE explanationOfBenefit_AddItem(
 
 	id TEXT PRIMARY KEY,
+	explanationOfBenefit_id TEXT, -- Foreign Key to explanationOfBenefit table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	itemSequence **LIST** positiveInt,
@@ -16177,7 +17060,12 @@ CREATE TABLE explanationOfBenefit_AddItem(
 	noteNumber **LIST** positiveInt,
 	_noteNumber **LIST** Element,
 	adjudication **LIST** ExplanationOfBenefit_Adjudication,
-	detail **LIST** ExplanationOfBenefit_Detail1,
+	detail BOOLEAN, -- true if 1+ rows in ExplanationOfBenefit_Detail1 correspond to this entry
+
+	FOREIGN KEY (explanationOfBenefit_id)
+		REFERENCES explanationOfBenefit (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (productOrService)
 		REFERENCES codeableConcept (id)
@@ -16239,6 +17127,7 @@ CREATE TABLE explanationOfBenefit_AddItem(
 CREATE TABLE explanationOfBenefit_Detail1(
 
 	id TEXT PRIMARY KEY,
+	explanationOfBenefit_AddItem_id TEXT, -- Foreign Key to explanationOfBenefit_AddItem table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	productOrService TEXT, -- Foreign Key to codeableConcept table
@@ -16251,7 +17140,12 @@ CREATE TABLE explanationOfBenefit_Detail1(
 	noteNumber **LIST** positiveInt,
 	_noteNumber **LIST** Element,
 	adjudication **LIST** ExplanationOfBenefit_Adjudication,
-	subDetail **LIST** ExplanationOfBenefit_SubDetail1,
+	subDetail BOOLEAN, -- true if 1+ rows in ExplanationOfBenefit_SubDetail1 correspond to this entry
+
+	FOREIGN KEY (explanationOfBenefit_AddItem_id)
+		REFERENCES explanationOfBenefit_AddItem (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (productOrService)
 		REFERENCES codeableConcept (id)
@@ -16283,6 +17177,7 @@ CREATE TABLE explanationOfBenefit_Detail1(
 CREATE TABLE explanationOfBenefit_SubDetail1(
 
 	id TEXT PRIMARY KEY,
+	explanationOfBenefit_Detail1_id TEXT, -- Foreign Key to explanationOfBenefit_Detail1 table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	productOrService TEXT, -- Foreign Key to codeableConcept table
@@ -16295,6 +17190,11 @@ CREATE TABLE explanationOfBenefit_SubDetail1(
 	noteNumber **LIST** positiveInt,
 	_noteNumber **LIST** Element,
 	adjudication **LIST** ExplanationOfBenefit_Adjudication,
+
+	FOREIGN KEY (explanationOfBenefit_Detail1_id)
+		REFERENCES explanationOfBenefit_Detail1 (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (productOrService)
 		REFERENCES codeableConcept (id)
@@ -16326,10 +17226,16 @@ CREATE TABLE explanationOfBenefit_SubDetail1(
 CREATE TABLE explanationOfBenefit_Total(
 
 	id TEXT PRIMARY KEY,
+	explanationOfBenefit_id TEXT, -- Foreign Key to explanationOfBenefit table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	category TEXT, -- Foreign Key to codeableConcept table
 	amount TEXT, -- Foreign Key to money table
+
+	FOREIGN KEY (explanationOfBenefit_id)
+		REFERENCES explanationOfBenefit (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (category)
 		REFERENCES codeableConcept (id)
@@ -16391,6 +17297,7 @@ CREATE TABLE explanationOfBenefit_Payment(
 CREATE TABLE explanationOfBenefit_ProcessNote(
 
 	id TEXT PRIMARY KEY,
+	explanationOfBenefit_id TEXT, -- Foreign Key to explanationOfBenefit table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	number INTEGER,
@@ -16400,6 +17307,11 @@ CREATE TABLE explanationOfBenefit_ProcessNote(
 	"text" TEXT,
 	_text TEXT, -- Foreign Key to element table
 	"language" TEXT, -- Foreign Key to codeableConcept table
+
+	FOREIGN KEY (explanationOfBenefit_id)
+		REFERENCES explanationOfBenefit (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_number)
 		REFERENCES element (id)
@@ -16426,6 +17338,7 @@ CREATE TABLE explanationOfBenefit_ProcessNote(
 CREATE TABLE explanationOfBenefit_BenefitBalance(
 
 	id TEXT PRIMARY KEY,
+	explanationOfBenefit_id TEXT, -- Foreign Key to explanationOfBenefit table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	category TEXT, -- Foreign Key to codeableConcept table
@@ -16438,7 +17351,12 @@ CREATE TABLE explanationOfBenefit_BenefitBalance(
 	network TEXT, -- Foreign Key to codeableConcept table
 	unit TEXT, -- Foreign Key to codeableConcept table
 	term TEXT, -- Foreign Key to codeableConcept table
-	financial **LIST** ExplanationOfBenefit_Financial,
+	financial BOOLEAN, -- true if 1+ rows in ExplanationOfBenefit_Financial correspond to this entry
+
+	FOREIGN KEY (explanationOfBenefit_id)
+		REFERENCES explanationOfBenefit (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (category)
 		REFERENCES codeableConcept (id)
@@ -16480,6 +17398,7 @@ CREATE TABLE explanationOfBenefit_BenefitBalance(
 CREATE TABLE explanationOfBenefit_Financial(
 
 	id TEXT PRIMARY KEY,
+	explanationOfBenefit_BenefitBalance_id TEXT, -- Foreign Key to explanationOfBenefit_BenefitBalance table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
@@ -16491,6 +17410,11 @@ CREATE TABLE explanationOfBenefit_Financial(
 	usedUnsignedInt REAL, -- pattern: ^[0]|([1-9][0-9]*)$
 	_usedUnsignedInt TEXT, -- Foreign Key to element table
 	usedMoney TEXT, -- Foreign Key to money table
+
+	FOREIGN KEY (explanationOfBenefit_BenefitBalance_id)
+		REFERENCES explanationOfBenefit_BenefitBalance (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -16573,7 +17497,7 @@ CREATE TABLE familyMemberHistory(
 	reasonCode **LIST** CodeableConcept,
 	reasonReference **LIST** Reference,
 	note **LIST** Annotation,
-	"condition" **LIST** FamilyMemberHistory_Condition,
+	"condition" BOOLEAN, -- true if 1+ rows in FamilyMemberHistory_Condition correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -16695,6 +17619,7 @@ CREATE TABLE familyMemberHistory(
 CREATE TABLE familyMemberHistory_Condition(
 
 	id TEXT PRIMARY KEY,
+	familyMemberHistory_id TEXT, -- Foreign Key to familyMemberHistory table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
@@ -16707,6 +17632,11 @@ CREATE TABLE familyMemberHistory_Condition(
 	onsetString TEXT, -- pattern: ^[ \r\n\t\S]+$
 	_onsetString TEXT, -- Foreign Key to element table
 	note **LIST** Annotation,
+
+	FOREIGN KEY (familyMemberHistory_id)
+		REFERENCES familyMemberHistory (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -16844,7 +17774,7 @@ CREATE TABLE goal(
 	startDate TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 	_startDate TEXT, -- Foreign Key to element table
 	startCodeableConcept TEXT, -- Foreign Key to codeableConcept table
-	"target" **LIST** Goal_Target,
+	"target" BOOLEAN, -- true if 1+ rows in Goal_Target correspond to this entry
 	statusDate DATE,
 	_statusDate TEXT, -- Foreign Key to element table
 	statusReason TEXT,
@@ -16930,6 +17860,7 @@ CREATE TABLE goal(
 CREATE TABLE goal_Target(
 
 	id TEXT PRIMARY KEY,
+	goal_id TEXT, -- Foreign Key to goal table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	measure TEXT, -- Foreign Key to codeableConcept table
@@ -16946,6 +17877,11 @@ CREATE TABLE goal_Target(
 	dueDate TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 	_dueDate TEXT, -- Foreign Key to element table
 	dueDuration TEXT, -- Foreign Key to duration table
+
+	FOREIGN KEY (goal_id)
+		REFERENCES goal (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (measure)
 		REFERENCES codeableConcept (id)
@@ -17125,7 +18061,7 @@ CREATE TABLE graphDefinition_Link(
 	_max TEXT, -- Foreign Key to element table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	"target" **LIST** GraphDefinition_Target,
+	"target" BOOLEAN, -- true if 1+ rows in GraphDefinition_Target correspond to this entry
 
 	FOREIGN KEY (_path)
 		REFERENCES element (id)
@@ -17157,6 +18093,7 @@ CREATE TABLE graphDefinition_Link(
 CREATE TABLE graphDefinition_Target(
 
 	id TEXT PRIMARY KEY,
+	graphDefinition_Link_id TEXT, -- Foreign Key to graphDefinition_Link table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT,
@@ -17164,8 +18101,13 @@ CREATE TABLE graphDefinition_Target(
 	params TEXT,
 	_params TEXT, -- Foreign Key to element table
 	"profile" TEXT,
-	compartment **LIST** GraphDefinition_Compartment,
+	compartment BOOLEAN, -- true if 1+ rows in GraphDefinition_Compartment correspond to this entry
 	link **LIST** GraphDefinition_Link,
+
+	FOREIGN KEY (graphDefinition_Link_id)
+		REFERENCES graphDefinition_Link (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_type)
 		REFERENCES element (id)
@@ -17182,6 +18124,7 @@ CREATE TABLE graphDefinition_Target(
 CREATE TABLE graphDefinition_Compartment(
 
 	id TEXT PRIMARY KEY,
+	graphDefinition_Target_id TEXT, -- Foreign Key to graphDefinition_Target table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"use" TEXT, -- enum: condition/requirement
@@ -17194,6 +18137,11 @@ CREATE TABLE graphDefinition_Compartment(
 	_expression TEXT, -- Foreign Key to element table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (graphDefinition_Target_id)
+		REFERENCES graphDefinition_Target (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_use)
 		REFERENCES element (id)
@@ -17248,8 +18196,8 @@ CREATE TABLE "group"(
 	quantity INTEGER,
 	_quantity TEXT, -- Foreign Key to element table
 	managingEntity TEXT, -- Foreign Key to reference table
-	characteristic **LIST** Group_Characteristic,
-	"member" **LIST** Group_Member,
+	characteristic BOOLEAN, -- true if 1+ rows in Group_Member correspond to this entry
+	"member" BOOLEAN, -- true if 1+ rows in Group_Member correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -17311,6 +18259,7 @@ CREATE TABLE "group"(
 CREATE TABLE group_Characteristic(
 
 	id TEXT PRIMARY KEY,
+	group_id TEXT, -- Foreign Key to "group" table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
@@ -17323,6 +18272,11 @@ CREATE TABLE group_Characteristic(
 	exclude BOOLEAN,
 	_exclude TEXT, -- Foreign Key to element table
 	"period" TEXT, -- Foreign Key to period table
+
+	FOREIGN KEY (group_id)
+		REFERENCES "group" (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -17369,12 +18323,18 @@ CREATE TABLE group_Characteristic(
 CREATE TABLE group_Member(
 
 	id TEXT PRIMARY KEY,
+	group_id TEXT, -- Foreign Key to "group" table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	entity TEXT, -- Foreign Key to reference table
 	"period" TEXT, -- Foreign Key to period table
 	inactive BOOLEAN,
 	_inactive TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (group_id)
+		REFERENCES "group" (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (entity)
 		REFERENCES reference (id)
@@ -17536,15 +18496,15 @@ CREATE TABLE healthcareService(
 	telecom **LIST** ContactPoint,
 	coverageArea **LIST** Reference,
 	serviceProvisionCode **LIST** CodeableConcept,
-	eligibility **LIST** HealthcareService_Eligibility,
+	eligibility BOOLEAN, -- true if 1+ rows in HealthcareService_NotAvailable correspond to this entry
 	program **LIST** CodeableConcept,
 	characteristic **LIST** CodeableConcept,
 	communication **LIST** CodeableConcept,
 	referralMethod **LIST** CodeableConcept,
 	appointmentRequired BOOLEAN,
 	_appointmentRequired TEXT, -- Foreign Key to element table
-	availableTime **LIST** HealthcareService_AvailableTime,
-	notAvailable **LIST** HealthcareService_NotAvailable,
+	availableTime BOOLEAN, -- true if 1+ rows in HealthcareService_NotAvailable correspond to this entry
+	notAvailable BOOLEAN, -- true if 1+ rows in HealthcareService_NotAvailable correspond to this entry
 	availabilityExceptions TEXT,
 	_availabilityExceptions TEXT, -- Foreign Key to element table
 	"endpoint" **LIST** Reference,
@@ -17614,11 +18574,17 @@ CREATE TABLE healthcareService(
 CREATE TABLE healthcareService_Eligibility(
 
 	id TEXT PRIMARY KEY,
+	healthcareService_id TEXT, -- Foreign Key to healthcareService table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	comment TEXT,
 	_comment TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (healthcareService_id)
+		REFERENCES healthcareService (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -17635,9 +18601,10 @@ CREATE TABLE healthcareService_Eligibility(
 CREATE TABLE healthcareService_AvailableTime(
 
 	id TEXT PRIMARY KEY,
+	healthcareService_id TEXT, -- Foreign Key to healthcareService table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
-	daysOfWeek **LIST** enum, -- mon/tue/wed/thu/fri/sat/sun,
+	daysOfWeek **LIST** enum, -- enum: mon/tue/wed/thu/fri/sat/sun,
 	_daysOfWeek **LIST** Element,
 	allDay BOOLEAN,
 	_allDay TEXT, -- Foreign Key to element table
@@ -17645,6 +18612,11 @@ CREATE TABLE healthcareService_AvailableTime(
 	_availableStartTime TEXT, -- Foreign Key to element table
 	availableEndTime TIME,
 	_availableEndTime TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (healthcareService_id)
+		REFERENCES healthcareService (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_allDay)
 		REFERENCES element (id)
@@ -17666,11 +18638,17 @@ CREATE TABLE healthcareService_AvailableTime(
 CREATE TABLE healthcareService_NotAvailable(
 
 	id TEXT PRIMARY KEY,
+	healthcareService_id TEXT, -- Foreign Key to healthcareService table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	during TEXT, -- Foreign Key to period table
+
+	FOREIGN KEY (healthcareService_id)
+		REFERENCES healthcareService (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_description)
 		REFERENCES element (id)
@@ -17721,7 +18699,7 @@ CREATE TABLE imagingStudy(
 	note **LIST** Annotation,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	series **LIST** ImagingStudy_Series,
+	series BOOLEAN, -- true if 1+ rows in ImagingStudy_Series correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -17798,6 +18776,7 @@ CREATE TABLE imagingStudy(
 CREATE TABLE imagingStudy_Series(
 
 	id TEXT PRIMARY KEY,
+	imagingStudy_id TEXT, -- Foreign Key to imagingStudy table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	uid TEXT, -- Foreign Key to id table
@@ -17815,8 +18794,13 @@ CREATE TABLE imagingStudy_Series(
 	specimen **LIST** Reference,
 	"started" DATETIME,
 	_started TEXT, -- Foreign Key to element table
-	performer **LIST** ImagingStudy_Performer,
-	"instance" **LIST** ImagingStudy_Instance,
+	performer BOOLEAN, -- true if 1+ rows in ImagingStudy_Instance correspond to this entry
+	"instance" BOOLEAN, -- true if 1+ rows in ImagingStudy_Instance correspond to this entry
+
+	FOREIGN KEY (imagingStudy_id)
+		REFERENCES imagingStudy (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (uid)
 		REFERENCES id (id)
@@ -17868,10 +18852,16 @@ CREATE TABLE imagingStudy_Series(
 CREATE TABLE imagingStudy_Performer(
 
 	id TEXT PRIMARY KEY,
+	imagingStudy_Series_id TEXT, -- Foreign Key to imagingStudy_Series table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"function" TEXT, -- Foreign Key to codeableConcept table
 	actor TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (imagingStudy_Series_id)
+		REFERENCES imagingStudy_Series (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("function")
 		REFERENCES codeableConcept (id)
@@ -17888,6 +18878,7 @@ CREATE TABLE imagingStudy_Performer(
 CREATE TABLE imagingStudy_Instance(
 
 	id TEXT PRIMARY KEY,
+	imagingStudy_Series_id TEXT, -- Foreign Key to imagingStudy_Series table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	uid TEXT, -- Foreign Key to id table
@@ -17897,6 +18888,11 @@ CREATE TABLE imagingStudy_Instance(
 	_number TEXT, -- Foreign Key to element table
 	title TEXT,
 	_title TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (imagingStudy_Series_id)
+		REFERENCES imagingStudy_Series (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (uid)
 		REFERENCES id (id)
@@ -17963,18 +18959,18 @@ CREATE TABLE immunization(
 	"site" TEXT, -- Foreign Key to codeableConcept table
 	"route" TEXT, -- Foreign Key to codeableConcept table
 	doseQuantity TEXT, -- Foreign Key to quantity table
-	performer **LIST** Immunization_Performer,
+	performer BOOLEAN, -- true if 1+ rows in Immunization_ProtocolApplied correspond to this entry
 	note **LIST** Annotation,
 	reasonCode **LIST** CodeableConcept,
 	reasonReference **LIST** Reference,
 	isSubpotent BOOLEAN,
 	_isSubpotent TEXT, -- Foreign Key to element table
 	subpotentReason **LIST** CodeableConcept,
-	education **LIST** Immunization_Education,
+	education BOOLEAN, -- true if 1+ rows in Immunization_ProtocolApplied correspond to this entry
 	programEligibility **LIST** CodeableConcept,
 	fundingSource TEXT, -- Foreign Key to codeableConcept table
-	reaction **LIST** Immunization_Reaction,
-	protocolApplied **LIST** Immunization_ProtocolApplied,
+	reaction BOOLEAN, -- true if 1+ rows in Immunization_ProtocolApplied correspond to this entry
+	protocolApplied BOOLEAN, -- true if 1+ rows in Immunization_ProtocolApplied correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -18096,10 +19092,16 @@ CREATE TABLE immunization(
 CREATE TABLE immunization_Performer(
 
 	id TEXT PRIMARY KEY,
+	immunization_id TEXT, -- Foreign Key to immunization table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"function" TEXT, -- Foreign Key to codeableConcept table
 	actor TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (immunization_id)
+		REFERENCES immunization (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("function")
 		REFERENCES codeableConcept (id)
@@ -18116,6 +19118,7 @@ CREATE TABLE immunization_Performer(
 CREATE TABLE immunization_Education(
 
 	id TEXT PRIMARY KEY,
+	immunization_id TEXT, -- Foreign Key to immunization table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	documentType TEXT,
@@ -18126,6 +19129,11 @@ CREATE TABLE immunization_Education(
 	_publicationDate TEXT, -- Foreign Key to element table
 	presentationDate DATETIME,
 	_presentationDate TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (immunization_id)
+		REFERENCES immunization (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_documentType)
 		REFERENCES element (id)
@@ -18152,6 +19160,7 @@ CREATE TABLE immunization_Education(
 CREATE TABLE immunization_Reaction(
 
 	id TEXT PRIMARY KEY,
+	immunization_id TEXT, -- Foreign Key to immunization table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"date" DATETIME,
@@ -18159,6 +19168,11 @@ CREATE TABLE immunization_Reaction(
 	detail TEXT, -- Foreign Key to reference table
 	reported BOOLEAN,
 	_reported TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (immunization_id)
+		REFERENCES immunization (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_date)
 		REFERENCES element (id)
@@ -18180,6 +19194,7 @@ CREATE TABLE immunization_Reaction(
 CREATE TABLE immunization_ProtocolApplied(
 
 	id TEXT PRIMARY KEY,
+	immunization_id TEXT, -- Foreign Key to immunization table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	series TEXT,
@@ -18194,6 +19209,11 @@ CREATE TABLE immunization_ProtocolApplied(
 	_seriesDosesPositiveInt TEXT, -- Foreign Key to element table
 	seriesDosesString TEXT, -- pattern: ^[ \r\n\t\S]+$
 	_seriesDosesString TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (immunization_id)
+		REFERENCES immunization (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_series)
 		REFERENCES element (id)
@@ -18369,7 +19389,7 @@ CREATE TABLE immunizationRecommendation(
 	"date" DATETIME,
 	_date TEXT, -- Foreign Key to element table
 	authority TEXT, -- Foreign Key to reference table
-	recommendation **LIST** ImmunizationRecommendation_Recommendation,
+	recommendation BOOLEAN, -- true if 1+ rows in ImmunizationRecommendation_Recommendation correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -18411,6 +19431,7 @@ CREATE TABLE immunizationRecommendation(
 CREATE TABLE immunizationRecommendation_Recommendation(
 
 	id TEXT PRIMARY KEY,
+	immunizationRecommendation_id TEXT, -- Foreign Key to immunizationRecommendation table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	vaccineCode **LIST** CodeableConcept,
@@ -18418,7 +19439,7 @@ CREATE TABLE immunizationRecommendation_Recommendation(
 	contraindicatedVaccineCode **LIST** CodeableConcept,
 	forecastStatus TEXT, -- Foreign Key to codeableConcept table
 	forecastReason **LIST** CodeableConcept,
-	dateCriterion **LIST** ImmunizationRecommendation_DateCriterion,
+	dateCriterion BOOLEAN, -- true if 1+ rows in ImmunizationRecommendation_DateCriterion correspond to this entry
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	series TEXT,
@@ -18433,6 +19454,11 @@ CREATE TABLE immunizationRecommendation_Recommendation(
 	_seriesDosesString TEXT, -- Foreign Key to element table
 	supportingImmunization **LIST** Reference,
 	supportingPatientInformation **LIST** Reference,
+
+	FOREIGN KEY (immunizationRecommendation_id)
+		REFERENCES immunizationRecommendation (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (targetDisease)
 		REFERENCES codeableConcept (id)
@@ -18479,11 +19505,17 @@ CREATE TABLE immunizationRecommendation_Recommendation(
 CREATE TABLE immunizationRecommendation_DateCriterion(
 
 	id TEXT PRIMARY KEY,
+	immunizationRecommendation_Recommendation_id TEXT, -- Foreign Key to immunizationRecommendation_Recommendation table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"value" DATETIME,
 	_value TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (immunizationRecommendation_Recommendation_id)
+		REFERENCES immunizationRecommendation_Recommendation (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -18537,10 +19569,10 @@ CREATE TABLE implementationGuide(
 	_packageId TEXT, -- Foreign Key to element table
 	license TEXT, -- enum: not-open-source/0BSD/AAL/Abstyles/Adobe-2006/Adobe-Glyph/ADSL/AFL-1.1/AFL-1.2/AFL-2.0/AFL-2.1/AFL-3.0/Afmparse/AGPL-1.0-only/AGPL-1.0-or-later/AGPL-3.0-only/AGPL-3.0-or-later/Aladdin/AMDPLPA/AML/AMPAS/ANTLR-PD/Apache-1.0/Apache-1.1/Apache-2.0/APAFML/APL-1.0/APSL-1.0/APSL-1.1/APSL-1.2/APSL-2.0/Artistic-1.0-cl8/Artistic-1.0-Perl/Artistic-1.0/Artistic-2.0/Bahyph/Barr/Beerware/BitTorrent-1.0/BitTorrent-1.1/Borceux/BSD-1-Clause/BSD-2-Clause-FreeBSD/BSD-2-Clause-NetBSD/BSD-2-Clause-Patent/BSD-2-Clause/BSD-3-Clause-Attribution/BSD-3-Clause-Clear/BSD-3-Clause-LBNL/BSD-3-Clause-No-Nuclear-License-2014/BSD-3-Clause-No-Nuclear-License/BSD-3-Clause-No-Nuclear-Warranty/BSD-3-Clause/BSD-4-Clause-UC/BSD-4-Clause/BSD-Protection/BSD-Source-Code/BSL-1.0/bzip2-1.0.5/bzip2-1.0.6/Caldera/CATOSL-1.1/CC-BY-1.0/CC-BY-2.0/CC-BY-2.5/CC-BY-3.0/CC-BY-4.0/CC-BY-NC-1.0/CC-BY-NC-2.0/CC-BY-NC-2.5/CC-BY-NC-3.0/CC-BY-NC-4.0/CC-BY-NC-ND-1.0/CC-BY-NC-ND-2.0/CC-BY-NC-ND-2.5/CC-BY-NC-ND-3.0/CC-BY-NC-ND-4.0/CC-BY-NC-SA-1.0/CC-BY-NC-SA-2.0/CC-BY-NC-SA-2.5/CC-BY-NC-SA-3.0/CC-BY-NC-SA-4.0/CC-BY-ND-1.0/CC-BY-ND-2.0/CC-BY-ND-2.5/CC-BY-ND-3.0/CC-BY-ND-4.0/CC-BY-SA-1.0/CC-BY-SA-2.0/CC-BY-SA-2.5/CC-BY-SA-3.0/CC-BY-SA-4.0/CC0-1.0/CDDL-1.0/CDDL-1.1/CDLA-Permissive-1.0/CDLA-Sharing-1.0/CECILL-1.0/CECILL-1.1/CECILL-2.0/CECILL-2.1/CECILL-B/CECILL-C/ClArtistic/CNRI-Jython/CNRI-Python-GPL-Compatible/CNRI-Python/Condor-1.1/CPAL-1.0/CPL-1.0/CPOL-1.02/Crossword/CrystalStacker/CUA-OPL-1.0/Cube/curl/D-FSL-1.0/diffmark/DOC/Dotseqn/DSDP/dvipdfm/ECL-1.0/ECL-2.0/EFL-1.0/EFL-2.0/eGenix/Entessa/EPL-1.0/EPL-2.0/ErlPL-1.1/EUDatagrid/EUPL-1.0/EUPL-1.1/EUPL-1.2/Eurosym/Fair/Frameworx-1.0/FreeImage/FSFAP/FSFUL/FSFULLR/FTL/GFDL-1.1-only/GFDL-1.1-or-later/GFDL-1.2-only/GFDL-1.2-or-later/GFDL-1.3-only/GFDL-1.3-or-later/Giftware/GL2PS/Glide/Glulxe/gnuplot/GPL-1.0-only/GPL-1.0-or-later/GPL-2.0-only/GPL-2.0-or-later/GPL-3.0-only/GPL-3.0-or-later/gSOAP-1.3b/HaskellReport/HPND/IBM-pibs/ICU/IJG/ImageMagick/iMatix/Imlib2/Info-ZIP/Intel-ACPI/Intel/Interbase-1.0/IPA/IPL-1.0/ISC/JasPer-2.0/JSON/LAL-1.2/LAL-1.3/Latex2e/Leptonica/LGPL-2.0-only/LGPL-2.0-or-later/LGPL-2.1-only/LGPL-2.1-or-later/LGPL-3.0-only/LGPL-3.0-or-later/LGPLLR/Libpng/libtiff/LiLiQ-P-1.1/LiLiQ-R-1.1/LiLiQ-Rplus-1.1/Linux-OpenIB/LPL-1.0/LPL-1.02/LPPL-1.0/LPPL-1.1/LPPL-1.2/LPPL-1.3a/LPPL-1.3c/MakeIndex/MirOS/MIT-0/MIT-advertising/MIT-CMU/MIT-enna/MIT-feh/MIT/MITNFA/Motosoto/mpich2/MPL-1.0/MPL-1.1/MPL-2.0-no-copyleft-exception/MPL-2.0/MS-PL/MS-RL/MTLL/Multics/Mup/NASA-1.3/Naumen/NBPL-1.0/NCSA/Net-SNMP/NetCDF/Newsletr/NGPL/NLOD-1.0/NLPL/Nokia/NOSL/Noweb/NPL-1.0/NPL-1.1/NPOSL-3.0/NRL/NTP/OCCT-PL/OCLC-2.0/ODbL-1.0/OFL-1.0/OFL-1.1/OGTSL/OLDAP-1.1/OLDAP-1.2/OLDAP-1.3/OLDAP-1.4/OLDAP-2.0.1/OLDAP-2.0/OLDAP-2.1/OLDAP-2.2.1/OLDAP-2.2.2/OLDAP-2.2/OLDAP-2.3/OLDAP-2.4/OLDAP-2.5/OLDAP-2.6/OLDAP-2.7/OLDAP-2.8/OML/OpenSSL/OPL-1.0/OSET-PL-2.1/OSL-1.0/OSL-1.1/OSL-2.0/OSL-2.1/OSL-3.0/PDDL-1.0/PHP-3.0/PHP-3.01/Plexus/PostgreSQL/psfrag/psutils/Python-2.0/Qhull/QPL-1.0/Rdisc/RHeCos-1.1/RPL-1.1/RPL-1.5/RPSL-1.0/RSA-MD/RSCPL/Ruby/SAX-PD/Saxpath/SCEA/Sendmail/SGI-B-1.0/SGI-B-1.1/SGI-B-2.0/SimPL-2.0/SISSL-1.2/SISSL/Sleepycat/SMLNJ/SMPPL/SNIA/Spencer-86/Spencer-94/Spencer-99/SPL-1.0/SugarCRM-1.1.3/SWL/TCL/TCP-wrappers/TMate/TORQUE-1.1/TOSL/Unicode-DFS-2015/Unicode-DFS-2016/Unicode-TOU/Unlicense/UPL-1.0/Vim/VOSTROM/VSL-1.0/W3C-19980720/W3C-20150513/W3C/Watcom-1.0/Wsuipa/WTFPL/X11/Xerox/XFree86-1.1/xinetd/Xnet/xpp/XSkat/YPL-1.0/YPL-1.1/Zed/Zend-2.0/Zimbra-1.3/Zimbra-1.4/zlib-acknowledgement/Zlib/ZPL-1.1/ZPL-2.0/ZPL-2.1
 	_license TEXT, -- Foreign Key to element table
-	fhirVersion **LIST** enum, -- 0.01/0.05/0.06/0.11/0.0.80/0.0.81/0.0.82/0.4.0/0.5.0/1.0.0/1.0.1/1.0.2/1.1.0/1.4.0/1.6.0/1.8.0/3.0.0/3.0.1/3.3.0/3.5.0/4.0.0/4.0.1,
+	fhirVersion **LIST** enum, -- enum: 0.01/0.05/0.06/0.11/0.0.80/0.0.81/0.0.82/0.4.0/0.5.0/1.0.0/1.0.1/1.0.2/1.1.0/1.4.0/1.6.0/1.8.0/3.0.0/3.0.1/3.3.0/3.5.0/4.0.0/4.0.1,
 	_fhirVersion **LIST** Element,
-	dependsOn **LIST** ImplementationGuide_DependsOn,
-	"global" **LIST** ImplementationGuide_Global,
+	dependsOn BOOLEAN, -- true if 1+ rows in ImplementationGuide_Global correspond to this entry
+	"global" BOOLEAN, -- true if 1+ rows in ImplementationGuide_Global correspond to this entry
 	"definition" TEXT, -- Foreign Key to implementationGuide_Definition table
 	manifest TEXT, -- Foreign Key to implementationGuide_Manifest table
 
@@ -18644,6 +19676,7 @@ CREATE TABLE implementationGuide(
 CREATE TABLE implementationGuide_DependsOn(
 
 	id TEXT PRIMARY KEY,
+	implementationGuide_id TEXT, -- Foreign Key to implementationGuide table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	uri TEXT,
@@ -18651,6 +19684,11 @@ CREATE TABLE implementationGuide_DependsOn(
 	_packageId TEXT, -- Foreign Key to element table
 	"version" TEXT,
 	_version TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (implementationGuide_id)
+		REFERENCES implementationGuide (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (packageId)
 		REFERENCES id (id)
@@ -18672,11 +19710,17 @@ CREATE TABLE implementationGuide_DependsOn(
 CREATE TABLE implementationGuide_Global(
 
 	id TEXT PRIMARY KEY,
+	implementationGuide_id TEXT, -- Foreign Key to implementationGuide table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT,
 	_type TEXT, -- Foreign Key to element table
 	"profile" TEXT,
+
+	FOREIGN KEY (implementationGuide_id)
+		REFERENCES implementationGuide (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_type)
 		REFERENCES element (id)
@@ -18690,11 +19734,11 @@ CREATE TABLE implementationGuide_Definition(
 	id TEXT PRIMARY KEY,
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
-	grouping **LIST** ImplementationGuide_Grouping,
-	"resource" **LIST** ImplementationGuide_Resource,
+	grouping BOOLEAN, -- true if 1+ rows in ImplementationGuide_Template correspond to this entry
+	"resource" BOOLEAN, -- true if 1+ rows in ImplementationGuide_Template correspond to this entry
 	page TEXT, -- Foreign Key to implementationGuide_Page table
-	"parameter" **LIST** ImplementationGuide_Parameter,
-	template **LIST** ImplementationGuide_Template,
+	"parameter" BOOLEAN, -- true if 1+ rows in ImplementationGuide_Template correspond to this entry
+	template BOOLEAN, -- true if 1+ rows in ImplementationGuide_Template correspond to this entry
 
 	FOREIGN KEY (page)
 		REFERENCES implementationGuide_Page (id)
@@ -18706,12 +19750,18 @@ CREATE TABLE implementationGuide_Definition(
 CREATE TABLE implementationGuide_Grouping(
 
 	id TEXT PRIMARY KEY,
+	implementationGuide_Definition_id TEXT, -- Foreign Key to implementationGuide_Definition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (implementationGuide_Definition_id)
+		REFERENCES implementationGuide_Definition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_name)
 		REFERENCES element (id)
@@ -18728,10 +19778,11 @@ CREATE TABLE implementationGuide_Grouping(
 CREATE TABLE implementationGuide_Resource(
 
 	id TEXT PRIMARY KEY,
+	implementationGuide_Definition_id TEXT, -- Foreign Key to implementationGuide_Definition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	reference TEXT, -- Foreign Key to reference table
-	fhirVersion **LIST** enum, -- 0.01/0.05/0.06/0.11/0.0.80/0.0.81/0.0.82/0.4.0/0.5.0/1.0.0/1.0.1/1.0.2/1.1.0/1.4.0/1.6.0/1.8.0/3.0.0/3.0.1/3.3.0/3.5.0/4.0.0/4.0.1,
+	fhirVersion **LIST** enum, -- enum: 0.01/0.05/0.06/0.11/0.0.80/0.0.81/0.0.82/0.4.0/0.5.0/1.0.0/1.0.1/1.0.2/1.1.0/1.4.0/1.6.0/1.8.0/3.0.0/3.0.1/3.3.0/3.5.0/4.0.0/4.0.1,
 	_fhirVersion **LIST** Element,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
@@ -18743,6 +19794,11 @@ CREATE TABLE implementationGuide_Resource(
 	_exampleCanonical TEXT, -- Foreign Key to element table
 	groupingId TEXT, -- Foreign Key to id table
 	_groupingId TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (implementationGuide_Definition_id)
+		REFERENCES implementationGuide_Definition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (reference)
 		REFERENCES reference (id)
@@ -18784,6 +19840,7 @@ CREATE TABLE implementationGuide_Resource(
 CREATE TABLE implementationGuide_Page(
 
 	id TEXT PRIMARY KEY,
+	implementationGuide_Page_id TEXT, -- Foreign Key to implementationGuide_Page table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	nameUrl TEXT, -- pattern: ^\S*$
@@ -18793,7 +19850,12 @@ CREATE TABLE implementationGuide_Page(
 	_title TEXT, -- Foreign Key to element table
 	generation TEXT, -- enum: html/markdown/xml/generated
 	_generation TEXT, -- Foreign Key to element table
-	page **LIST** ImplementationGuide_Page,
+	page BOOLEAN, -- true if 1+ rows in ImplementationGuide_Page correspond to this entry
+
+	FOREIGN KEY (implementationGuide_Page_id)
+		REFERENCES implementationGuide_Page (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_nameUrl)
 		REFERENCES element (id)
@@ -18820,12 +19882,18 @@ CREATE TABLE implementationGuide_Page(
 CREATE TABLE implementationGuide_Parameter(
 
 	id TEXT PRIMARY KEY,
+	implementationGuide_Definition_id TEXT, -- Foreign Key to implementationGuide_Definition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT, -- enum: apply/path-resource/path-pages/path-tx-cache/expansion-parameter/rule-broken-links/generate-xml/generate-json/generate-turtle/html-template
 	_code TEXT, -- Foreign Key to element table
 	"value" TEXT,
 	_value TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (implementationGuide_Definition_id)
+		REFERENCES implementationGuide_Definition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_code)
 		REFERENCES element (id)
@@ -18842,6 +19910,7 @@ CREATE TABLE implementationGuide_Parameter(
 CREATE TABLE implementationGuide_Template(
 
 	id TEXT PRIMARY KEY,
+	implementationGuide_Definition_id TEXT, -- Foreign Key to implementationGuide_Definition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT,
@@ -18850,6 +19919,11 @@ CREATE TABLE implementationGuide_Template(
 	_source TEXT, -- Foreign Key to element table
 	"scope" TEXT,
 	_scope TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (implementationGuide_Definition_id)
+		REFERENCES implementationGuide_Definition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_code)
 		REFERENCES element (id)
@@ -18875,8 +19949,8 @@ CREATE TABLE implementationGuide_Manifest(
 	modifierExtension **LIST** Extension,
 	rendering TEXT,
 	_rendering TEXT, -- Foreign Key to element table
-	"resource" **LIST** ImplementationGuide_Resource1,
-	page **LIST** ImplementationGuide_Page1,
+	"resource" BOOLEAN, -- true if 1+ rows in ImplementationGuide_Page1 correspond to this entry
+	page BOOLEAN, -- true if 1+ rows in ImplementationGuide_Page1 correspond to this entry
 	"image" **LIST** string,
 	_image **LIST** Element,
 	other **LIST** string,
@@ -18892,6 +19966,7 @@ CREATE TABLE implementationGuide_Manifest(
 CREATE TABLE implementationGuide_Resource1(
 
 	id TEXT PRIMARY KEY,
+	implementationGuide_Manifest_id TEXT, -- Foreign Key to implementationGuide_Manifest table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	reference TEXT, -- Foreign Key to reference table
@@ -18901,6 +19976,11 @@ CREATE TABLE implementationGuide_Resource1(
 	_exampleCanonical TEXT, -- Foreign Key to element table
 	relativePath TEXT,
 	_relativePath TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (implementationGuide_Manifest_id)
+		REFERENCES implementationGuide_Manifest (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (reference)
 		REFERENCES reference (id)
@@ -18927,6 +20007,7 @@ CREATE TABLE implementationGuide_Resource1(
 CREATE TABLE implementationGuide_Page1(
 
 	id TEXT PRIMARY KEY,
+	implementationGuide_Manifest_id TEXT, -- Foreign Key to implementationGuide_Manifest table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"name" TEXT,
@@ -18935,6 +20016,11 @@ CREATE TABLE implementationGuide_Page1(
 	_title TEXT, -- Foreign Key to element table
 	anchor **LIST** string,
 	_anchor **LIST** Element,
+
+	FOREIGN KEY (implementationGuide_Manifest_id)
+		REFERENCES implementationGuide_Manifest (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_name)
 		REFERENCES element (id)
@@ -18973,11 +20059,11 @@ CREATE TABLE insurancePlan(
 	ownedBy TEXT, -- Foreign Key to reference table
 	administeredBy TEXT, -- Foreign Key to reference table
 	coverageArea **LIST** Reference,
-	contact **LIST** InsurancePlan_Contact,
+	contact BOOLEAN, -- true if 1+ rows in InsurancePlan_Plan correspond to this entry
 	"endpoint" **LIST** Reference,
 	network **LIST** Reference,
-	coverage **LIST** InsurancePlan_Coverage,
-	"plan" **LIST** InsurancePlan_Plan,
+	coverage BOOLEAN, -- true if 1+ rows in InsurancePlan_Plan correspond to this entry
+	"plan" BOOLEAN, -- true if 1+ rows in InsurancePlan_Plan correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -19029,12 +20115,18 @@ CREATE TABLE insurancePlan(
 CREATE TABLE insurancePlan_Contact(
 
 	id TEXT PRIMARY KEY,
+	insurancePlan_id TEXT, -- Foreign Key to insurancePlan table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	purpose TEXT, -- Foreign Key to codeableConcept table
 	"name" TEXT, -- Foreign Key to humanName table
 	telecom **LIST** ContactPoint,
 	"address" TEXT, -- Foreign Key to address table
+
+	FOREIGN KEY (insurancePlan_id)
+		REFERENCES insurancePlan (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (purpose)
 		REFERENCES codeableConcept (id)
@@ -19056,11 +20148,17 @@ CREATE TABLE insurancePlan_Contact(
 CREATE TABLE insurancePlan_Coverage(
 
 	id TEXT PRIMARY KEY,
+	insurancePlan_id TEXT, -- Foreign Key to insurancePlan table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	network **LIST** Reference,
-	benefit **LIST** InsurancePlan_Benefit,
+	benefit BOOLEAN, -- true if 1+ rows in InsurancePlan_Benefit correspond to this entry
+
+	FOREIGN KEY (insurancePlan_id)
+		REFERENCES insurancePlan (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -19072,12 +20170,18 @@ CREATE TABLE insurancePlan_Coverage(
 CREATE TABLE insurancePlan_Benefit(
 
 	id TEXT PRIMARY KEY,
+	insurancePlan_Coverage_id TEXT, -- Foreign Key to insurancePlan_Coverage table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	requirement TEXT,
 	_requirement TEXT, -- Foreign Key to element table
-	"limit" **LIST** InsurancePlan_Limit,
+	"limit" BOOLEAN, -- true if 1+ rows in InsurancePlan_Limit correspond to this entry
+
+	FOREIGN KEY (insurancePlan_Coverage_id)
+		REFERENCES insurancePlan_Coverage (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -19094,10 +20198,16 @@ CREATE TABLE insurancePlan_Benefit(
 CREATE TABLE insurancePlan_Limit(
 
 	id TEXT PRIMARY KEY,
+	insurancePlan_Benefit_id TEXT, -- Foreign Key to insurancePlan_Benefit table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"value" TEXT, -- Foreign Key to quantity table
 	"code" TEXT, -- Foreign Key to codeableConcept table
+
+	FOREIGN KEY (insurancePlan_Benefit_id)
+		REFERENCES insurancePlan_Benefit (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("value")
 		REFERENCES quantity (id)
@@ -19114,14 +20224,20 @@ CREATE TABLE insurancePlan_Limit(
 CREATE TABLE insurancePlan_Plan(
 
 	id TEXT PRIMARY KEY,
+	insurancePlan_id TEXT, -- Foreign Key to insurancePlan table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	identifier **LIST** Identifier,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	coverageArea **LIST** Reference,
 	network **LIST** Reference,
-	generalCost **LIST** InsurancePlan_GeneralCost,
-	specificCost **LIST** InsurancePlan_SpecificCost,
+	generalCost BOOLEAN, -- true if 1+ rows in InsurancePlan_SpecificCost correspond to this entry
+	specificCost BOOLEAN, -- true if 1+ rows in InsurancePlan_SpecificCost correspond to this entry
+
+	FOREIGN KEY (insurancePlan_id)
+		REFERENCES insurancePlan (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -19133,6 +20249,7 @@ CREATE TABLE insurancePlan_Plan(
 CREATE TABLE insurancePlan_GeneralCost(
 
 	id TEXT PRIMARY KEY,
+	insurancePlan_Plan_id TEXT, -- Foreign Key to insurancePlan_Plan table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
@@ -19141,6 +20258,11 @@ CREATE TABLE insurancePlan_GeneralCost(
 	cost TEXT, -- Foreign Key to money table
 	comment TEXT,
 	_comment TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (insurancePlan_Plan_id)
+		REFERENCES insurancePlan_Plan (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -19167,10 +20289,16 @@ CREATE TABLE insurancePlan_GeneralCost(
 CREATE TABLE insurancePlan_SpecificCost(
 
 	id TEXT PRIMARY KEY,
+	insurancePlan_Plan_id TEXT, -- Foreign Key to insurancePlan_Plan table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	category TEXT, -- Foreign Key to codeableConcept table
-	benefit **LIST** InsurancePlan_Benefit1,
+	benefit BOOLEAN, -- true if 1+ rows in InsurancePlan_Benefit1 correspond to this entry
+
+	FOREIGN KEY (insurancePlan_Plan_id)
+		REFERENCES insurancePlan_Plan (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (category)
 		REFERENCES codeableConcept (id)
@@ -19182,10 +20310,16 @@ CREATE TABLE insurancePlan_SpecificCost(
 CREATE TABLE insurancePlan_Benefit1(
 
 	id TEXT PRIMARY KEY,
+	insurancePlan_SpecificCost_id TEXT, -- Foreign Key to insurancePlan_SpecificCost table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
-	cost **LIST** InsurancePlan_Cost,
+	cost BOOLEAN, -- true if 1+ rows in InsurancePlan_Cost correspond to this entry
+
+	FOREIGN KEY (insurancePlan_SpecificCost_id)
+		REFERENCES insurancePlan_SpecificCost (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -19197,12 +20331,18 @@ CREATE TABLE insurancePlan_Benefit1(
 CREATE TABLE insurancePlan_Cost(
 
 	id TEXT PRIMARY KEY,
+	insurancePlan_Benefit1_id TEXT, -- Foreign Key to insurancePlan_Benefit1 table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	applicability TEXT, -- Foreign Key to codeableConcept table
 	qualifiers **LIST** CodeableConcept,
 	"value" TEXT, -- Foreign Key to quantity table
+
+	FOREIGN KEY (insurancePlan_Benefit1_id)
+		REFERENCES insurancePlan_Benefit1 (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -19244,10 +20384,10 @@ CREATE TABLE invoice(
 	recipient TEXT, -- Foreign Key to reference table
 	"date" DATETIME,
 	_date TEXT, -- Foreign Key to element table
-	participant **LIST** Invoice_Participant,
+	participant BOOLEAN, -- true if 1+ rows in Invoice_LineItem correspond to this entry
 	issuer TEXT, -- Foreign Key to reference table
 	account TEXT, -- Foreign Key to reference table
-	lineItem **LIST** Invoice_LineItem,
+	lineItem BOOLEAN, -- true if 1+ rows in Invoice_LineItem correspond to this entry
 	totalPriceComponent **LIST** Invoice_PriceComponent,
 	totalNet TEXT, -- Foreign Key to money table
 	totalGross TEXT, -- Foreign Key to money table
@@ -19335,10 +20475,16 @@ CREATE TABLE invoice(
 CREATE TABLE invoice_Participant(
 
 	id TEXT PRIMARY KEY,
+	invoice_id TEXT, -- Foreign Key to invoice table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"role" TEXT, -- Foreign Key to codeableConcept table
 	actor TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (invoice_id)
+		REFERENCES invoice (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("role")
 		REFERENCES codeableConcept (id)
@@ -19355,6 +20501,7 @@ CREATE TABLE invoice_Participant(
 CREATE TABLE invoice_LineItem(
 
 	id TEXT PRIMARY KEY,
+	invoice_id TEXT, -- Foreign Key to invoice table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
@@ -19362,6 +20509,11 @@ CREATE TABLE invoice_LineItem(
 	chargeItemReference TEXT, -- Foreign Key to reference table
 	chargeItemCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	priceComponent **LIST** Invoice_PriceComponent,
+
+	FOREIGN KEY (invoice_id)
+		REFERENCES invoice (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_sequence)
 		REFERENCES element (id)
@@ -19471,7 +20623,7 @@ CREATE TABLE library(
 	reviewer **LIST** ContactDetail,
 	endorser **LIST** ContactDetail,
 	relatedArtifact **LIST** RelatedArtifact,
-	"parameter" **LIST** ParameterDefinition,
+	"parameter" BOOLEAN, -- true if 1+ rows in ParameterDefinition correspond to this entry
 	dataRequirement **LIST** DataRequirement,
 	content **LIST** Attachment,
 
@@ -19608,7 +20760,7 @@ CREATE TABLE linkage(
 	active BOOLEAN,
 	_active TEXT, -- Foreign Key to element table
 	author TEXT, -- Foreign Key to reference table
-	item **LIST** Linkage_Item,
+	item BOOLEAN, -- true if 1+ rows in Linkage_Item correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -19645,11 +20797,17 @@ CREATE TABLE linkage(
 CREATE TABLE linkage_Item(
 
 	id TEXT PRIMARY KEY,
+	linkage_id TEXT, -- Foreign Key to linkage table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- enum: source/alternate/historical
 	_type TEXT, -- Foreign Key to element table
 	"resource" TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (linkage_id)
+		REFERENCES linkage (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_type)
 		REFERENCES element (id)
@@ -19691,7 +20849,7 @@ CREATE TABLE list(
 	"source" TEXT, -- Foreign Key to reference table
 	orderedBy TEXT, -- Foreign Key to codeableConcept table
 	note **LIST** Annotation,
-	entry **LIST** List_Entry,
+	entry BOOLEAN, -- true if 1+ rows in List_Entry correspond to this entry
 	emptyReason TEXT, -- Foreign Key to codeableConcept table
 
 	FOREIGN KEY (meta)
@@ -19769,6 +20927,7 @@ CREATE TABLE list(
 CREATE TABLE list_Entry(
 
 	id TEXT PRIMARY KEY,
+	list_id TEXT, -- Foreign Key to list table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	flag TEXT, -- Foreign Key to codeableConcept table
@@ -19777,6 +20936,11 @@ CREATE TABLE list_Entry(
 	"date" DATETIME,
 	_date TEXT, -- Foreign Key to element table
 	item TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (list_id)
+		REFERENCES list (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (flag)
 		REFERENCES codeableConcept (id)
@@ -19832,7 +20996,7 @@ CREATE TABLE "location"(
 	"position" TEXT, -- Foreign Key to location_Position table
 	managingOrganization TEXT, -- Foreign Key to reference table
 	partOf TEXT, -- Foreign Key to reference table
-	hoursOfOperation **LIST** Location_HoursOfOperation,
+	hoursOfOperation BOOLEAN, -- true if 1+ rows in Location_HoursOfOperation correspond to this entry
 	availabilityExceptions TEXT,
 	_availabilityExceptions TEXT, -- Foreign Key to element table
 	"endpoint" **LIST** Reference,
@@ -19946,6 +21110,7 @@ CREATE TABLE location_Position(
 CREATE TABLE location_HoursOfOperation(
 
 	id TEXT PRIMARY KEY,
+	location_id TEXT, -- Foreign Key to "location" table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	daysOfWeek **LIST** code,
@@ -19956,6 +21121,11 @@ CREATE TABLE location_HoursOfOperation(
 	_openingTime TEXT, -- Foreign Key to element table
 	closingTime TIME,
 	_closingTime TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (location_id)
+		REFERENCES "location" (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_allDay)
 		REFERENCES element (id)
@@ -20045,12 +21215,12 @@ CREATE TABLE measure(
 	clinicalRecommendationStatement TEXT,
 	_clinicalRecommendationStatement TEXT, -- Foreign Key to element table
 	improvementNotation TEXT, -- Foreign Key to codeableConcept table
-	"definition" **LIST** markdown,
+	"definition" BOOLEAN, -- true if 1+ rows in Measure_SupplementalData correspond to this entry
 	_definition **LIST** Element,
 	guidance TEXT,
 	_guidance TEXT, -- Foreign Key to element table
-	"group" **LIST** Measure_Group,
-	supplementalData **LIST** Measure_SupplementalData,
+	"group" BOOLEAN, -- true if 1+ rows in Measure_SupplementalData correspond to this entry
+	supplementalData BOOLEAN, -- true if 1+ rows in Measure_SupplementalData correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -20212,13 +21382,19 @@ CREATE TABLE measure(
 CREATE TABLE measure_Group(
 
 	id TEXT PRIMARY KEY,
+	measure_id TEXT, -- Foreign Key to measure table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	"population" **LIST** Measure_Population,
-	stratifier **LIST** Measure_Stratifier,
+	"population" BOOLEAN, -- true if 1+ rows in Measure_Stratifier correspond to this entry
+	stratifier BOOLEAN, -- true if 1+ rows in Measure_Stratifier correspond to this entry
+
+	FOREIGN KEY (measure_id)
+		REFERENCES measure (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -20235,12 +21411,18 @@ CREATE TABLE measure_Group(
 CREATE TABLE measure_Population(
 
 	id TEXT PRIMARY KEY,
+	measure_Group_id TEXT, -- Foreign Key to measure_Group table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	criteria TEXT, -- Foreign Key to expression table
+
+	FOREIGN KEY (measure_Group_id)
+		REFERENCES measure_Group (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -20262,13 +21444,19 @@ CREATE TABLE measure_Population(
 CREATE TABLE measure_Stratifier(
 
 	id TEXT PRIMARY KEY,
+	measure_Group_id TEXT, -- Foreign Key to measure_Group table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	criteria TEXT, -- Foreign Key to expression table
-	component **LIST** Measure_Component,
+	component BOOLEAN, -- true if 1+ rows in Measure_Component correspond to this entry
+
+	FOREIGN KEY (measure_Group_id)
+		REFERENCES measure_Group (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -20290,12 +21478,18 @@ CREATE TABLE measure_Stratifier(
 CREATE TABLE measure_Component(
 
 	id TEXT PRIMARY KEY,
+	measure_Stratifier_id TEXT, -- Foreign Key to measure_Stratifier table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	criteria TEXT, -- Foreign Key to expression table
+
+	FOREIGN KEY (measure_Stratifier_id)
+		REFERENCES measure_Stratifier (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -20317,6 +21511,7 @@ CREATE TABLE measure_Component(
 CREATE TABLE measure_SupplementalData(
 
 	id TEXT PRIMARY KEY,
+	measure_id TEXT, -- Foreign Key to measure table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
@@ -20324,6 +21519,11 @@ CREATE TABLE measure_SupplementalData(
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	criteria TEXT, -- Foreign Key to expression table
+
+	FOREIGN KEY (measure_id)
+		REFERENCES measure (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -20367,7 +21567,7 @@ CREATE TABLE measureReport(
 	reporter TEXT, -- Foreign Key to reference table
 	"period" TEXT, -- Foreign Key to period table
 	improvementNotation TEXT, -- Foreign Key to codeableConcept table
-	"group" **LIST** MeasureReport_Group,
+	"group" BOOLEAN, -- true if 1+ rows in MeasureReport_Group correspond to this entry
 	evaluatedResource **LIST** Reference,
 
 	FOREIGN KEY (meta)
@@ -20430,12 +21630,18 @@ CREATE TABLE measureReport(
 CREATE TABLE measureReport_Group(
 
 	id TEXT PRIMARY KEY,
+	measureReport_id TEXT, -- Foreign Key to measureReport table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
-	"population" **LIST** MeasureReport_Population,
+	"population" BOOLEAN, -- true if 1+ rows in MeasureReport_Stratifier correspond to this entry
 	measureScore TEXT, -- Foreign Key to quantity table
-	stratifier **LIST** MeasureReport_Stratifier,
+	stratifier BOOLEAN, -- true if 1+ rows in MeasureReport_Stratifier correspond to this entry
+
+	FOREIGN KEY (measureReport_id)
+		REFERENCES measureReport (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -20452,12 +21658,18 @@ CREATE TABLE measureReport_Group(
 CREATE TABLE measureReport_Population(
 
 	id TEXT PRIMARY KEY,
+	measureReport_Group_id TEXT, -- Foreign Key to measureReport_Group table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"count" INTEGER,
 	_count TEXT, -- Foreign Key to element table
 	subjectResults TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (measureReport_Group_id)
+		REFERENCES measureReport_Group (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -20479,22 +21691,34 @@ CREATE TABLE measureReport_Population(
 CREATE TABLE measureReport_Stratifier(
 
 	id TEXT PRIMARY KEY,
+	measureReport_Group_id TEXT, -- Foreign Key to measureReport_Group table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" **LIST** CodeableConcept,
-	stratum **LIST** MeasureReport_Stratum
+	stratum BOOLEAN, -- true if 1+ rows in MeasureReport_Stratum correspond to this entry
+
+	FOREIGN KEY (measureReport_Group_id)
+		REFERENCES measureReport_Group (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION
 
 );
 
 CREATE TABLE measureReport_Stratum(
 
 	id TEXT PRIMARY KEY,
+	measureReport_Stratifier_id TEXT, -- Foreign Key to measureReport_Stratifier table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"value" TEXT, -- Foreign Key to codeableConcept table
-	component **LIST** MeasureReport_Component,
-	"population" **LIST** MeasureReport_Population1,
+	component BOOLEAN, -- true if 1+ rows in MeasureReport_Population1 correspond to this entry
+	"population" BOOLEAN, -- true if 1+ rows in MeasureReport_Population1 correspond to this entry
 	measureScore TEXT, -- Foreign Key to quantity table
+
+	FOREIGN KEY (measureReport_Stratifier_id)
+		REFERENCES measureReport_Stratifier (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("value")
 		REFERENCES codeableConcept (id)
@@ -20511,10 +21735,16 @@ CREATE TABLE measureReport_Stratum(
 CREATE TABLE measureReport_Component(
 
 	id TEXT PRIMARY KEY,
+	measureReport_Stratum_id TEXT, -- Foreign Key to measureReport_Stratum table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"value" TEXT, -- Foreign Key to codeableConcept table
+
+	FOREIGN KEY (measureReport_Stratum_id)
+		REFERENCES measureReport_Stratum (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -20531,12 +21761,18 @@ CREATE TABLE measureReport_Component(
 CREATE TABLE measureReport_Population1(
 
 	id TEXT PRIMARY KEY,
+	measureReport_Stratum_id TEXT, -- Foreign Key to measureReport_Stratum table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"count" INTEGER,
 	_count TEXT, -- Foreign Key to element table
 	subjectResults TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (measureReport_Stratum_id)
+		REFERENCES measureReport_Stratum (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -20732,7 +21968,7 @@ CREATE TABLE medication(
 	manufacturer TEXT, -- Foreign Key to reference table
 	form TEXT, -- Foreign Key to codeableConcept table
 	amount TEXT, -- Foreign Key to ratio table
-	ingredient **LIST** Medication_Ingredient,
+	ingredient BOOLEAN, -- true if 1+ rows in Medication_Ingredient correspond to this entry
 	batch TEXT, -- Foreign Key to medication_Batch table
 
 	FOREIGN KEY (meta)
@@ -20790,6 +22026,7 @@ CREATE TABLE medication(
 CREATE TABLE medication_Ingredient(
 
 	id TEXT PRIMARY KEY,
+	medication_id TEXT, -- Foreign Key to medication table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	itemCodeableConcept TEXT, -- Foreign Key to codeableConcept table
@@ -20797,6 +22034,11 @@ CREATE TABLE medication_Ingredient(
 	isActive BOOLEAN,
 	_isActive TEXT, -- Foreign Key to element table
 	strength TEXT, -- Foreign Key to ratio table
+
+	FOREIGN KEY (medication_id)
+		REFERENCES medication (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (itemCodeableConcept)
 		REFERENCES codeableConcept (id)
@@ -20871,7 +22113,7 @@ CREATE TABLE medicationAdministration(
 	effectiveDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 	_effectiveDateTime TEXT, -- Foreign Key to element table
 	effectivePeriod TEXT, -- Foreign Key to period table
-	performer **LIST** MedicationAdministration_Performer,
+	performer BOOLEAN, -- true if 1+ rows in MedicationAdministration_Performer correspond to this entry
 	reasonCode **LIST** CodeableConcept,
 	reasonReference **LIST** Reference,
 	request TEXT, -- Foreign Key to reference table
@@ -20955,10 +22197,16 @@ CREATE TABLE medicationAdministration(
 CREATE TABLE medicationAdministration_Performer(
 
 	id TEXT PRIMARY KEY,
+	medicationAdministration_id TEXT, -- Foreign Key to medicationAdministration table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"function" TEXT, -- Foreign Key to codeableConcept table
 	actor TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (medicationAdministration_id)
+		REFERENCES medicationAdministration (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("function")
 		REFERENCES codeableConcept (id)
@@ -21048,7 +22296,7 @@ CREATE TABLE medicationDispense(
 	"subject" TEXT, -- Foreign Key to reference table
 	context TEXT, -- Foreign Key to reference table
 	supportingInformation **LIST** Reference,
-	performer **LIST** MedicationDispense_Performer,
+	performer BOOLEAN, -- true if 1+ rows in MedicationDispense_Performer correspond to this entry
 	"location" TEXT, -- Foreign Key to reference table
 	authorizingPrescription **LIST** Reference,
 	"type" TEXT, -- Foreign Key to codeableConcept table
@@ -21171,10 +22419,16 @@ CREATE TABLE medicationDispense(
 CREATE TABLE medicationDispense_Performer(
 
 	id TEXT PRIMARY KEY,
+	medicationDispense_id TEXT, -- Foreign Key to medicationDispense table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"function" TEXT, -- Foreign Key to codeableConcept table
 	actor TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (medicationDispense_id)
+		REFERENCES medicationDispense (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("function")
 		REFERENCES codeableConcept (id)
@@ -21232,23 +22486,23 @@ CREATE TABLE medicationKnowledge(
 	amount TEXT, -- Foreign Key to quantity table
 	"synonym" **LIST** string,
 	_synonym **LIST** Element,
-	relatedMedicationKnowledge **LIST** MedicationKnowledge_RelatedMedicationKnowledge,
+	relatedMedicationKnowledge BOOLEAN, -- true if 1+ rows in MedicationKnowledge_Kinetics correspond to this entry
 	associatedMedication **LIST** Reference,
 	productType **LIST** CodeableConcept,
-	monograph **LIST** MedicationKnowledge_Monograph,
-	ingredient **LIST** MedicationKnowledge_Ingredient,
+	monograph BOOLEAN, -- true if 1+ rows in MedicationKnowledge_Kinetics correspond to this entry
+	ingredient BOOLEAN, -- true if 1+ rows in MedicationKnowledge_Kinetics correspond to this entry
 	preparationInstruction TEXT,
 	_preparationInstruction TEXT, -- Foreign Key to element table
 	intendedRoute **LIST** CodeableConcept,
-	cost **LIST** MedicationKnowledge_Cost,
-	monitoringProgram **LIST** MedicationKnowledge_MonitoringProgram,
-	administrationGuidelines **LIST** MedicationKnowledge_AdministrationGuidelines,
-	medicineClassification **LIST** MedicationKnowledge_MedicineClassification,
+	cost BOOLEAN, -- true if 1+ rows in MedicationKnowledge_Kinetics correspond to this entry
+	monitoringProgram BOOLEAN, -- true if 1+ rows in MedicationKnowledge_Kinetics correspond to this entry
+	administrationGuidelines BOOLEAN, -- true if 1+ rows in MedicationKnowledge_Kinetics correspond to this entry
+	medicineClassification BOOLEAN, -- true if 1+ rows in MedicationKnowledge_Kinetics correspond to this entry
 	packaging TEXT, -- Foreign Key to medicationKnowledge_Packaging table
-	drugCharacteristic **LIST** MedicationKnowledge_DrugCharacteristic,
+	drugCharacteristic BOOLEAN, -- true if 1+ rows in MedicationKnowledge_Kinetics correspond to this entry
 	contraindication **LIST** Reference,
-	regulatory **LIST** MedicationKnowledge_Regulatory,
-	kinetics **LIST** MedicationKnowledge_Kinetics,
+	regulatory BOOLEAN, -- true if 1+ rows in MedicationKnowledge_Kinetics correspond to this entry
+	kinetics BOOLEAN, -- true if 1+ rows in MedicationKnowledge_Kinetics correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -21310,10 +22564,16 @@ CREATE TABLE medicationKnowledge(
 CREATE TABLE medicationKnowledge_RelatedMedicationKnowledge(
 
 	id TEXT PRIMARY KEY,
+	medicationKnowledge_id TEXT, -- Foreign Key to medicationKnowledge table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	reference **LIST** Reference,
+
+	FOREIGN KEY (medicationKnowledge_id)
+		REFERENCES medicationKnowledge (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -21325,10 +22585,16 @@ CREATE TABLE medicationKnowledge_RelatedMedicationKnowledge(
 CREATE TABLE medicationKnowledge_Monograph(
 
 	id TEXT PRIMARY KEY,
+	medicationKnowledge_id TEXT, -- Foreign Key to medicationKnowledge table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	"source" TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (medicationKnowledge_id)
+		REFERENCES medicationKnowledge (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -21345,6 +22611,7 @@ CREATE TABLE medicationKnowledge_Monograph(
 CREATE TABLE medicationKnowledge_Ingredient(
 
 	id TEXT PRIMARY KEY,
+	medicationKnowledge_id TEXT, -- Foreign Key to medicationKnowledge table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	itemCodeableConcept TEXT, -- Foreign Key to codeableConcept table
@@ -21352,6 +22619,11 @@ CREATE TABLE medicationKnowledge_Ingredient(
 	isActive BOOLEAN,
 	_isActive TEXT, -- Foreign Key to element table
 	strength TEXT, -- Foreign Key to ratio table
+
+	FOREIGN KEY (medicationKnowledge_id)
+		REFERENCES medicationKnowledge (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (itemCodeableConcept)
 		REFERENCES codeableConcept (id)
@@ -21378,12 +22650,18 @@ CREATE TABLE medicationKnowledge_Ingredient(
 CREATE TABLE medicationKnowledge_Cost(
 
 	id TEXT PRIMARY KEY,
+	medicationKnowledge_id TEXT, -- Foreign Key to medicationKnowledge table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	"source" TEXT,
 	_source TEXT, -- Foreign Key to element table
 	cost TEXT, -- Foreign Key to money table
+
+	FOREIGN KEY (medicationKnowledge_id)
+		REFERENCES medicationKnowledge (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -21405,11 +22683,17 @@ CREATE TABLE medicationKnowledge_Cost(
 CREATE TABLE medicationKnowledge_MonitoringProgram(
 
 	id TEXT PRIMARY KEY,
+	medicationKnowledge_id TEXT, -- Foreign Key to medicationKnowledge table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (medicationKnowledge_id)
+		REFERENCES medicationKnowledge (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -21426,12 +22710,18 @@ CREATE TABLE medicationKnowledge_MonitoringProgram(
 CREATE TABLE medicationKnowledge_AdministrationGuidelines(
 
 	id TEXT PRIMARY KEY,
+	medicationKnowledge_id TEXT, -- Foreign Key to medicationKnowledge table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
-	dosage **LIST** MedicationKnowledge_Dosage,
+	dosage BOOLEAN, -- true if 1+ rows in MedicationKnowledge_PatientCharacteristics correspond to this entry
 	indicationCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	indicationReference TEXT, -- Foreign Key to reference table
-	patientCharacteristics **LIST** MedicationKnowledge_PatientCharacteristics,
+	patientCharacteristics BOOLEAN, -- true if 1+ rows in MedicationKnowledge_PatientCharacteristics correspond to this entry
+
+	FOREIGN KEY (medicationKnowledge_id)
+		REFERENCES medicationKnowledge (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (indicationCodeableConcept)
 		REFERENCES codeableConcept (id)
@@ -21448,10 +22738,16 @@ CREATE TABLE medicationKnowledge_AdministrationGuidelines(
 CREATE TABLE medicationKnowledge_Dosage(
 
 	id TEXT PRIMARY KEY,
+	medicationKnowledge_AdministrationGuidelines_id TEXT, -- Foreign Key to medicationKnowledge_AdministrationGuidelines table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	dosage **LIST** Dosage,
+
+	FOREIGN KEY (medicationKnowledge_AdministrationGuidelines_id)
+		REFERENCES medicationKnowledge_AdministrationGuidelines (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -21463,12 +22759,18 @@ CREATE TABLE medicationKnowledge_Dosage(
 CREATE TABLE medicationKnowledge_PatientCharacteristics(
 
 	id TEXT PRIMARY KEY,
+	medicationKnowledge_AdministrationGuidelines_id TEXT, -- Foreign Key to medicationKnowledge_AdministrationGuidelines table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	characteristicCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	characteristicQuantity TEXT, -- Foreign Key to quantity table
 	"value" **LIST** string,
 	_value **LIST** Element,
+
+	FOREIGN KEY (medicationKnowledge_AdministrationGuidelines_id)
+		REFERENCES medicationKnowledge_AdministrationGuidelines (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (characteristicCodeableConcept)
 		REFERENCES codeableConcept (id)
@@ -21485,10 +22787,16 @@ CREATE TABLE medicationKnowledge_PatientCharacteristics(
 CREATE TABLE medicationKnowledge_MedicineClassification(
 
 	id TEXT PRIMARY KEY,
+	medicationKnowledge_id TEXT, -- Foreign Key to medicationKnowledge table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	classification **LIST** CodeableConcept,
+
+	FOREIGN KEY (medicationKnowledge_id)
+		REFERENCES medicationKnowledge (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -21520,6 +22828,7 @@ CREATE TABLE medicationKnowledge_Packaging(
 CREATE TABLE medicationKnowledge_DrugCharacteristic(
 
 	id TEXT PRIMARY KEY,
+	medicationKnowledge_id TEXT, -- Foreign Key to medicationKnowledge table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
@@ -21529,6 +22838,11 @@ CREATE TABLE medicationKnowledge_DrugCharacteristic(
 	valueQuantity TEXT, -- Foreign Key to quantity table
 	valueBase64Binary TEXT, -- pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
 	_valueBase64Binary TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (medicationKnowledge_id)
+		REFERENCES medicationKnowledge (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -21560,12 +22874,18 @@ CREATE TABLE medicationKnowledge_DrugCharacteristic(
 CREATE TABLE medicationKnowledge_Regulatory(
 
 	id TEXT PRIMARY KEY,
+	medicationKnowledge_id TEXT, -- Foreign Key to medicationKnowledge table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	regulatoryAuthority TEXT, -- Foreign Key to reference table
-	substitution **LIST** MedicationKnowledge_Substitution,
-	schedule **LIST** MedicationKnowledge_Schedule,
+	substitution BOOLEAN, -- true if 1+ rows in MedicationKnowledge_Schedule correspond to this entry
+	schedule BOOLEAN, -- true if 1+ rows in MedicationKnowledge_Schedule correspond to this entry
 	maxDispense TEXT, -- Foreign Key to medicationKnowledge_MaxDispense table
+
+	FOREIGN KEY (medicationKnowledge_id)
+		REFERENCES medicationKnowledge (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (regulatoryAuthority)
 		REFERENCES reference (id)
@@ -21582,11 +22902,17 @@ CREATE TABLE medicationKnowledge_Regulatory(
 CREATE TABLE medicationKnowledge_Substitution(
 
 	id TEXT PRIMARY KEY,
+	medicationKnowledge_Regulatory_id TEXT, -- Foreign Key to medicationKnowledge_Regulatory table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	allowed BOOLEAN,
 	_allowed TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (medicationKnowledge_Regulatory_id)
+		REFERENCES medicationKnowledge_Regulatory (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -21603,9 +22929,15 @@ CREATE TABLE medicationKnowledge_Substitution(
 CREATE TABLE medicationKnowledge_Schedule(
 
 	id TEXT PRIMARY KEY,
+	medicationKnowledge_Regulatory_id TEXT, -- Foreign Key to medicationKnowledge_Regulatory table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	schedule TEXT, -- Foreign Key to codeableConcept table
+
+	FOREIGN KEY (medicationKnowledge_Regulatory_id)
+		REFERENCES medicationKnowledge_Regulatory (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (schedule)
 		REFERENCES codeableConcept (id)
@@ -21637,11 +22969,17 @@ CREATE TABLE medicationKnowledge_MaxDispense(
 CREATE TABLE medicationKnowledge_Kinetics(
 
 	id TEXT PRIMARY KEY,
+	medicationKnowledge_id TEXT, -- Foreign Key to medicationKnowledge table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	areaUnderCurve **LIST** Quantity,
 	lethalDose50 **LIST** Quantity,
 	halfLifePeriod TEXT, -- Foreign Key to duration table
+
+	FOREIGN KEY (medicationKnowledge_id)
+		REFERENCES medicationKnowledge (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (halfLifePeriod)
 		REFERENCES duration (id)
@@ -22069,10 +23407,10 @@ CREATE TABLE medicinalProduct(
 	masterFile **LIST** Reference,
 	contact **LIST** Reference,
 	clinicalTrial **LIST** Reference,
-	"name" **LIST** MedicinalProduct_Name,
+	"name" BOOLEAN, -- true if 1+ rows in MedicinalProduct_SpecialDesignation correspond to this entry
 	crossReference **LIST** Identifier,
-	manufacturingBusinessOperation **LIST** MedicinalProduct_ManufacturingBusinessOperation,
-	specialDesignation **LIST** MedicinalProduct_SpecialDesignation,
+	manufacturingBusinessOperation BOOLEAN, -- true if 1+ rows in MedicinalProduct_SpecialDesignation correspond to this entry
+	specialDesignation BOOLEAN, -- true if 1+ rows in MedicinalProduct_SpecialDesignation correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -22129,12 +23467,18 @@ CREATE TABLE medicinalProduct(
 CREATE TABLE medicinalProduct_Name(
 
 	id TEXT PRIMARY KEY,
+	medicinalProduct_id TEXT, -- Foreign Key to medicinalProduct table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	productName TEXT,
 	_productName TEXT, -- Foreign Key to element table
-	namePart **LIST** MedicinalProduct_NamePart,
-	countryLanguage **LIST** MedicinalProduct_CountryLanguage,
+	namePart BOOLEAN, -- true if 1+ rows in MedicinalProduct_CountryLanguage correspond to this entry
+	countryLanguage BOOLEAN, -- true if 1+ rows in MedicinalProduct_CountryLanguage correspond to this entry
+
+	FOREIGN KEY (medicinalProduct_id)
+		REFERENCES medicinalProduct (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_productName)
 		REFERENCES element (id)
@@ -22146,11 +23490,17 @@ CREATE TABLE medicinalProduct_Name(
 CREATE TABLE medicinalProduct_NamePart(
 
 	id TEXT PRIMARY KEY,
+	medicinalProduct_Name_id TEXT, -- Foreign Key to medicinalProduct_Name table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	part TEXT,
 	_part TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to coding table
+
+	FOREIGN KEY (medicinalProduct_Name_id)
+		REFERENCES medicinalProduct_Name (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_part)
 		REFERENCES element (id)
@@ -22167,11 +23517,17 @@ CREATE TABLE medicinalProduct_NamePart(
 CREATE TABLE medicinalProduct_CountryLanguage(
 
 	id TEXT PRIMARY KEY,
+	medicinalProduct_Name_id TEXT, -- Foreign Key to medicinalProduct_Name table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	country TEXT, -- Foreign Key to codeableConcept table
 	jurisdiction TEXT, -- Foreign Key to codeableConcept table
 	"language" TEXT, -- Foreign Key to codeableConcept table
+
+	FOREIGN KEY (medicinalProduct_Name_id)
+		REFERENCES medicinalProduct_Name (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (country)
 		REFERENCES codeableConcept (id)
@@ -22193,6 +23549,7 @@ CREATE TABLE medicinalProduct_CountryLanguage(
 CREATE TABLE medicinalProduct_ManufacturingBusinessOperation(
 
 	id TEXT PRIMARY KEY,
+	medicinalProduct_id TEXT, -- Foreign Key to medicinalProduct table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	operationType TEXT, -- Foreign Key to codeableConcept table
@@ -22202,6 +23559,11 @@ CREATE TABLE medicinalProduct_ManufacturingBusinessOperation(
 	confidentialityIndicator TEXT, -- Foreign Key to codeableConcept table
 	manufacturer **LIST** Reference,
 	regulator TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (medicinalProduct_id)
+		REFERENCES medicinalProduct (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (operationType)
 		REFERENCES codeableConcept (id)
@@ -22233,6 +23595,7 @@ CREATE TABLE medicinalProduct_ManufacturingBusinessOperation(
 CREATE TABLE medicinalProduct_SpecialDesignation(
 
 	id TEXT PRIMARY KEY,
+	medicinalProduct_id TEXT, -- Foreign Key to medicinalProduct table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	identifier **LIST** Identifier,
@@ -22244,6 +23607,11 @@ CREATE TABLE medicinalProduct_SpecialDesignation(
 	"date" DATETIME,
 	_date TEXT, -- Foreign Key to element table
 	species TEXT, -- Foreign Key to codeableConcept table
+
+	FOREIGN KEY (medicinalProduct_id)
+		REFERENCES medicinalProduct (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -22311,7 +23679,7 @@ CREATE TABLE medicinalProductAuthorization(
 	internationalBirthDate DATETIME,
 	_internationalBirthDate TEXT, -- Foreign Key to element table
 	legalBasis TEXT, -- Foreign Key to codeableConcept table
-	jurisdictionalAuthorization **LIST** MedicinalProductAuthorization_JurisdictionalAuthorization,
+	jurisdictionalAuthorization BOOLEAN, -- true if 1+ rows in MedicinalProductAuthorization_JurisdictionalAuthorization correspond to this entry
 	holder TEXT, -- Foreign Key to reference table
 	regulator TEXT, -- Foreign Key to reference table
 	"procedure" TEXT, -- Foreign Key to medicinalProductAuthorization_Procedure table
@@ -22401,6 +23769,7 @@ CREATE TABLE medicinalProductAuthorization(
 CREATE TABLE medicinalProductAuthorization_JurisdictionalAuthorization(
 
 	id TEXT PRIMARY KEY,
+	medicinalProductAuthorization_id TEXT, -- Foreign Key to medicinalProductAuthorization table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	identifier **LIST** Identifier,
@@ -22408,6 +23777,11 @@ CREATE TABLE medicinalProductAuthorization_JurisdictionalAuthorization(
 	jurisdiction **LIST** CodeableConcept,
 	legalStatusOfSupply TEXT, -- Foreign Key to codeableConcept table
 	validityPeriod TEXT, -- Foreign Key to period table
+
+	FOREIGN KEY (medicinalProductAuthorization_id)
+		REFERENCES medicinalProductAuthorization (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (country)
 		REFERENCES codeableConcept (id)
@@ -22429,6 +23803,7 @@ CREATE TABLE medicinalProductAuthorization_JurisdictionalAuthorization(
 CREATE TABLE medicinalProductAuthorization_Procedure(
 
 	id TEXT PRIMARY KEY,
+	medicinalProductAuthorization_Procedure_id TEXT, -- Foreign Key to medicinalProductAuthorization_Procedure table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	identifier TEXT, -- Foreign Key to identifier table
@@ -22436,7 +23811,12 @@ CREATE TABLE medicinalProductAuthorization_Procedure(
 	datePeriod TEXT, -- Foreign Key to period table
 	dateDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 	_dateDateTime TEXT, -- Foreign Key to element table
-	application **LIST** MedicinalProductAuthorization_Procedure,
+	application BOOLEAN, -- true if 1+ rows in MedicinalProductAuthorization_Procedure correspond to this entry
+
+	FOREIGN KEY (medicinalProductAuthorization_Procedure_id)
+		REFERENCES medicinalProductAuthorization_Procedure (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (identifier)
 		REFERENCES identifier (id)
@@ -22478,7 +23858,7 @@ CREATE TABLE medicinalProductContraindication(
 	diseaseStatus TEXT, -- Foreign Key to codeableConcept table
 	comorbidity **LIST** CodeableConcept,
 	therapeuticIndication **LIST** Reference,
-	otherTherapy **LIST** MedicinalProductContraindication_OtherTherapy,
+	otherTherapy BOOLEAN, -- true if 1+ rows in MedicinalProductContraindication_OtherTherapy correspond to this entry
 	"population" **LIST** Population,
 
 	FOREIGN KEY (meta)
@@ -22516,11 +23896,17 @@ CREATE TABLE medicinalProductContraindication(
 CREATE TABLE medicinalProductContraindication_OtherTherapy(
 
 	id TEXT PRIMARY KEY,
+	medicinalProductContraindication_id TEXT, -- Foreign Key to medicinalProductContraindication table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	therapyRelationshipType TEXT, -- Foreign Key to codeableConcept table
 	medicationCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	medicationReference TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (medicinalProductContraindication_id)
+		REFERENCES medicinalProductContraindication (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (therapyRelationshipType)
 		REFERENCES codeableConcept (id)
@@ -22558,7 +23944,7 @@ CREATE TABLE medicinalProductIndication(
 	comorbidity **LIST** CodeableConcept,
 	intendedEffect TEXT, -- Foreign Key to codeableConcept table
 	duration TEXT, -- Foreign Key to quantity table
-	otherTherapy **LIST** MedicinalProductIndication_OtherTherapy,
+	otherTherapy BOOLEAN, -- true if 1+ rows in MedicinalProductIndication_OtherTherapy correspond to this entry
 	undesirableEffect **LIST** Reference,
 	"population" **LIST** Population,
 
@@ -22607,11 +23993,17 @@ CREATE TABLE medicinalProductIndication(
 CREATE TABLE medicinalProductIndication_OtherTherapy(
 
 	id TEXT PRIMARY KEY,
+	medicinalProductIndication_id TEXT, -- Foreign Key to medicinalProductIndication table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	therapyRelationshipType TEXT, -- Foreign Key to codeableConcept table
 	medicationCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	medicationReference TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (medicinalProductIndication_id)
+		REFERENCES medicinalProductIndication (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (therapyRelationshipType)
 		REFERENCES codeableConcept (id)
@@ -22648,7 +24040,7 @@ CREATE TABLE medicinalProductIngredient(
 	allergenicIndicator BOOLEAN,
 	_allergenicIndicator TEXT, -- Foreign Key to element table
 	manufacturer **LIST** Reference,
-	specifiedSubstance **LIST** MedicinalProductIngredient_SpecifiedSubstance,
+	specifiedSubstance BOOLEAN, -- true if 1+ rows in MedicinalProductIngredient_SpecifiedSubstance correspond to this entry
 	substance TEXT, -- Foreign Key to medicinalProductIngredient_Substance table
 
 	FOREIGN KEY (meta)
@@ -22696,12 +24088,18 @@ CREATE TABLE medicinalProductIngredient(
 CREATE TABLE medicinalProductIngredient_SpecifiedSubstance(
 
 	id TEXT PRIMARY KEY,
+	medicinalProductIngredient_id TEXT, -- Foreign Key to medicinalProductIngredient table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"group" TEXT, -- Foreign Key to codeableConcept table
 	confidentiality TEXT, -- Foreign Key to codeableConcept table
 	strength **LIST** MedicinalProductIngredient_Strength,
+
+	FOREIGN KEY (medicinalProductIngredient_id)
+		REFERENCES medicinalProductIngredient (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -22732,7 +24130,7 @@ CREATE TABLE medicinalProductIngredient_Strength(
 	measurementPoint TEXT,
 	_measurementPoint TEXT, -- Foreign Key to element table
 	country **LIST** CodeableConcept,
-	referenceStrength **LIST** MedicinalProductIngredient_ReferenceStrength,
+	referenceStrength BOOLEAN, -- true if 1+ rows in MedicinalProductIngredient_ReferenceStrength correspond to this entry
 
 	FOREIGN KEY (presentation)
 		REFERENCES ratio (id)
@@ -22764,6 +24162,7 @@ CREATE TABLE medicinalProductIngredient_Strength(
 CREATE TABLE medicinalProductIngredient_ReferenceStrength(
 
 	id TEXT PRIMARY KEY,
+	medicinalProductIngredient_Strength_id TEXT, -- Foreign Key to medicinalProductIngredient_Strength table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	substance TEXT, -- Foreign Key to codeableConcept table
@@ -22772,6 +24171,11 @@ CREATE TABLE medicinalProductIngredient_ReferenceStrength(
 	measurementPoint TEXT,
 	_measurementPoint TEXT, -- Foreign Key to element table
 	country **LIST** CodeableConcept,
+
+	FOREIGN KEY (medicinalProductIngredient_Strength_id)
+		REFERENCES medicinalProductIngredient_Strength (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (substance)
 		REFERENCES codeableConcept (id)
@@ -22826,7 +24230,7 @@ CREATE TABLE medicinalProductInteraction(
 	"subject" **LIST** Reference,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	interactant **LIST** MedicinalProductInteraction_Interactant,
+	interactant BOOLEAN, -- true if 1+ rows in MedicinalProductInteraction_Interactant correspond to this entry
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	effect TEXT, -- Foreign Key to codeableConcept table
 	incidence TEXT, -- Foreign Key to codeableConcept table
@@ -22882,10 +24286,16 @@ CREATE TABLE medicinalProductInteraction(
 CREATE TABLE medicinalProductInteraction_Interactant(
 
 	id TEXT PRIMARY KEY,
+	medicinalProductInteraction_id TEXT, -- Foreign Key to medicinalProductInteraction table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	itemReference TEXT, -- Foreign Key to reference table
 	itemCodeableConcept TEXT, -- Foreign Key to codeableConcept table
+
+	FOREIGN KEY (medicinalProductInteraction_id)
+		REFERENCES medicinalProductInteraction (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (itemReference)
 		REFERENCES reference (id)
@@ -22983,7 +24393,7 @@ CREATE TABLE medicinalProductPackaged(
 	marketingStatus **LIST** MarketingStatus,
 	marketingAuthorization TEXT, -- Foreign Key to reference table
 	manufacturer **LIST** Reference,
-	batchIdentifier **LIST** MedicinalProductPackaged_BatchIdentifier,
+	batchIdentifier BOOLEAN, -- true if 1+ rows in MedicinalProductPackaged_BatchIdentifier correspond to this entry
 	packageItem **LIST** MedicinalProductPackaged_PackageItem,
 
 	FOREIGN KEY (meta)
@@ -23026,10 +24436,16 @@ CREATE TABLE medicinalProductPackaged(
 CREATE TABLE medicinalProductPackaged_BatchIdentifier(
 
 	id TEXT PRIMARY KEY,
+	medicinalProductPackaged_id TEXT, -- Foreign Key to medicinalProductPackaged table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	outerPackaging TEXT, -- Foreign Key to identifier table
 	immediatePackaging TEXT, -- Foreign Key to identifier table
+
+	FOREIGN KEY (medicinalProductPackaged_id)
+		REFERENCES medicinalProductPackaged (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (outerPackaging)
 		REFERENCES identifier (id)
@@ -23096,8 +24512,8 @@ CREATE TABLE medicinalProductPharmaceutical(
 	unitOfPresentation TEXT, -- Foreign Key to codeableConcept table
 	ingredient **LIST** Reference,
 	device **LIST** Reference,
-	"characteristics" **LIST** MedicinalProductPharmaceutical_Characteristics,
-	routeOfAdministration **LIST** MedicinalProductPharmaceutical_RouteOfAdministration,
+	"characteristics" BOOLEAN, -- true if 1+ rows in MedicinalProductPharmaceutical_RouteOfAdministration correspond to this entry
+	routeOfAdministration BOOLEAN, -- true if 1+ rows in MedicinalProductPharmaceutical_RouteOfAdministration correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -23134,10 +24550,16 @@ CREATE TABLE medicinalProductPharmaceutical(
 CREATE TABLE medicinalProductPharmaceutical_Characteristics(
 
 	id TEXT PRIMARY KEY,
+	medicinalProductPharmaceutical_id TEXT, -- Foreign Key to medicinalProductPharmaceutical table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"status" TEXT, -- Foreign Key to codeableConcept table
+
+	FOREIGN KEY (medicinalProductPharmaceutical_id)
+		REFERENCES medicinalProductPharmaceutical (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -23154,6 +24576,7 @@ CREATE TABLE medicinalProductPharmaceutical_Characteristics(
 CREATE TABLE medicinalProductPharmaceutical_RouteOfAdministration(
 
 	id TEXT PRIMARY KEY,
+	medicinalProductPharmaceutical_id TEXT, -- Foreign Key to medicinalProductPharmaceutical table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
@@ -23162,7 +24585,12 @@ CREATE TABLE medicinalProductPharmaceutical_RouteOfAdministration(
 	maxDosePerDay TEXT, -- Foreign Key to quantity table
 	maxDosePerTreatmentPeriod TEXT, -- Foreign Key to ratio table
 	maxTreatmentPeriod TEXT, -- Foreign Key to duration table
-	targetSpecies **LIST** MedicinalProductPharmaceutical_TargetSpecies,
+	targetSpecies BOOLEAN, -- true if 1+ rows in MedicinalProductPharmaceutical_TargetSpecies correspond to this entry
+
+	FOREIGN KEY (medicinalProductPharmaceutical_id)
+		REFERENCES medicinalProductPharmaceutical (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -23199,10 +24627,16 @@ CREATE TABLE medicinalProductPharmaceutical_RouteOfAdministration(
 CREATE TABLE medicinalProductPharmaceutical_TargetSpecies(
 
 	id TEXT PRIMARY KEY,
+	medicinalProductPharmaceutical_RouteOfAdministration_id TEXT, -- Foreign Key to medicinalProductPharmaceutical_RouteOfAdministration table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
-	withdrawalPeriod **LIST** MedicinalProductPharmaceutical_WithdrawalPeriod,
+	withdrawalPeriod BOOLEAN, -- true if 1+ rows in MedicinalProductPharmaceutical_WithdrawalPeriod correspond to this entry
+
+	FOREIGN KEY (medicinalProductPharmaceutical_RouteOfAdministration_id)
+		REFERENCES medicinalProductPharmaceutical_RouteOfAdministration (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -23214,12 +24648,18 @@ CREATE TABLE medicinalProductPharmaceutical_TargetSpecies(
 CREATE TABLE medicinalProductPharmaceutical_WithdrawalPeriod(
 
 	id TEXT PRIMARY KEY,
+	medicinalProductPharmaceutical_TargetSpecies_id TEXT, -- Foreign Key to medicinalProductPharmaceutical_TargetSpecies table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	tissue TEXT, -- Foreign Key to codeableConcept table
 	"value" TEXT, -- Foreign Key to quantity table
 	supportingInformation TEXT,
 	_supportingInformation TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (medicinalProductPharmaceutical_TargetSpecies_id)
+		REFERENCES medicinalProductPharmaceutical_TargetSpecies (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (tissue)
 		REFERENCES codeableConcept (id)
@@ -23341,10 +24781,10 @@ CREATE TABLE messageDefinition(
 	_eventUri TEXT, -- Foreign Key to element table
 	category TEXT, -- enum: consequence/currency/notification
 	_category TEXT, -- Foreign Key to element table
-	focus **LIST** MessageDefinition_Focus,
+	focus BOOLEAN, -- true if 1+ rows in MessageDefinition_AllowedResponse correspond to this entry
 	responseRequired TEXT, -- enum: always/on-error/never/on-success
 	_responseRequired TEXT, -- Foreign Key to element table
-	allowedResponse **LIST** MessageDefinition_AllowedResponse,
+	allowedResponse BOOLEAN, -- true if 1+ rows in MessageDefinition_AllowedResponse correspond to this entry
 	graph **LIST** canonical,
 
 	FOREIGN KEY (meta)
@@ -23447,6 +24887,7 @@ CREATE TABLE messageDefinition(
 CREATE TABLE messageDefinition_Focus(
 
 	id TEXT PRIMARY KEY,
+	messageDefinition_id TEXT, -- Foreign Key to messageDefinition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT,
@@ -23456,6 +24897,11 @@ CREATE TABLE messageDefinition_Focus(
 	_min TEXT, -- Foreign Key to element table
 	"max" TEXT,
 	_max TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (messageDefinition_id)
+		REFERENCES messageDefinition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_code)
 		REFERENCES element (id)
@@ -23477,11 +24923,17 @@ CREATE TABLE messageDefinition_Focus(
 CREATE TABLE messageDefinition_AllowedResponse(
 
 	id TEXT PRIMARY KEY,
+	messageDefinition_id TEXT, -- Foreign Key to messageDefinition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"message" TEXT,
 	situation TEXT,
 	_situation TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (messageDefinition_id)
+		REFERENCES messageDefinition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_situation)
 		REFERENCES element (id)
@@ -23506,7 +24958,7 @@ CREATE TABLE messageHeader(
 	eventCoding TEXT, -- Foreign Key to coding table
 	eventUri TEXT, -- pattern: ^\S*$
 	_eventUri TEXT, -- Foreign Key to element table
-	destination **LIST** MessageHeader_Destination,
+	destination BOOLEAN, -- true if 1+ rows in MessageHeader_Destination correspond to this entry
 	sender TEXT, -- Foreign Key to reference table
 	enterer TEXT, -- Foreign Key to reference table
 	author TEXT, -- Foreign Key to reference table
@@ -23587,6 +25039,7 @@ CREATE TABLE messageHeader(
 CREATE TABLE messageHeader_Destination(
 
 	id TEXT PRIMARY KEY,
+	messageHeader_id TEXT, -- Foreign Key to messageHeader table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"name" TEXT,
@@ -23595,6 +25048,11 @@ CREATE TABLE messageHeader_Destination(
 	"endpoint" TEXT,
 	_endpoint TEXT, -- Foreign Key to element table
 	receiver TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (messageHeader_id)
+		REFERENCES messageHeader (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_name)
 		REFERENCES element (id)
@@ -23717,15 +25175,15 @@ CREATE TABLE molecularSequence(
 	performer TEXT, -- Foreign Key to reference table
 	quantity TEXT, -- Foreign Key to quantity table
 	referenceSeq TEXT, -- Foreign Key to molecularSequence_ReferenceSeq table
-	variant **LIST** MolecularSequence_Variant,
+	variant BOOLEAN, -- true if 1+ rows in MolecularSequence_StructureVariant correspond to this entry
 	observedSeq TEXT,
 	_observedSeq TEXT, -- Foreign Key to element table
-	quality **LIST** MolecularSequence_Quality,
+	quality BOOLEAN, -- true if 1+ rows in MolecularSequence_StructureVariant correspond to this entry
 	readCoverage INTEGER,
 	_readCoverage TEXT, -- Foreign Key to element table
-	repository **LIST** MolecularSequence_Repository,
+	repository BOOLEAN, -- true if 1+ rows in MolecularSequence_StructureVariant correspond to this entry
 	pointer **LIST** Reference,
-	structureVariant **LIST** MolecularSequence_StructureVariant,
+	structureVariant BOOLEAN, -- true if 1+ rows in MolecularSequence_StructureVariant correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -23870,6 +25328,7 @@ CREATE TABLE molecularSequence_ReferenceSeq(
 CREATE TABLE molecularSequence_Variant(
 
 	id TEXT PRIMARY KEY,
+	molecularSequence_id TEXT, -- Foreign Key to molecularSequence table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"start" INTEGER,
@@ -23883,6 +25342,11 @@ CREATE TABLE molecularSequence_Variant(
 	cigar TEXT,
 	_cigar TEXT, -- Foreign Key to element table
 	variantPointer TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (molecularSequence_id)
+		REFERENCES molecularSequence (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_start)
 		REFERENCES element (id)
@@ -23919,6 +25383,7 @@ CREATE TABLE molecularSequence_Variant(
 CREATE TABLE molecularSequence_Quality(
 
 	id TEXT PRIMARY KEY,
+	molecularSequence_id TEXT, -- Foreign Key to molecularSequence table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- enum: indel/snp/unknown
@@ -23947,6 +25412,11 @@ CREATE TABLE molecularSequence_Quality(
 	fScore REAL,
 	_fScore TEXT, -- Foreign Key to element table
 	roc TEXT, -- Foreign Key to molecularSequence_Roc table
+
+	FOREIGN KEY (molecularSequence_id)
+		REFERENCES molecularSequence (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_type)
 		REFERENCES element (id)
@@ -24050,6 +25520,7 @@ CREATE TABLE molecularSequence_Roc(
 CREATE TABLE molecularSequence_Repository(
 
 	id TEXT PRIMARY KEY,
+	molecularSequence_id TEXT, -- Foreign Key to molecularSequence table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- enum: directlink/openapi/login/oauth/other
@@ -24064,6 +25535,11 @@ CREATE TABLE molecularSequence_Repository(
 	_variantsetId TEXT, -- Foreign Key to element table
 	readsetId TEXT,
 	_readsetId TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (molecularSequence_id)
+		REFERENCES molecularSequence (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_type)
 		REFERENCES element (id)
@@ -24100,6 +25576,7 @@ CREATE TABLE molecularSequence_Repository(
 CREATE TABLE molecularSequence_StructureVariant(
 
 	id TEXT PRIMARY KEY,
+	molecularSequence_id TEXT, -- Foreign Key to molecularSequence table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	variantType TEXT, -- Foreign Key to codeableConcept table
@@ -24109,6 +25586,11 @@ CREATE TABLE molecularSequence_StructureVariant(
 	_length TEXT, -- Foreign Key to element table
 	"outer" TEXT, -- Foreign Key to molecularSequence_Outer table
 	"inner" TEXT, -- Foreign Key to molecularSequence_Inner table
+
+	FOREIGN KEY (molecularSequence_id)
+		REFERENCES molecularSequence (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (variantType)
 		REFERENCES codeableConcept (id)
@@ -24214,7 +25696,7 @@ CREATE TABLE namingSystem(
 	jurisdiction **LIST** CodeableConcept,
 	"usage" TEXT,
 	_usage TEXT, -- Foreign Key to element table
-	uniqueId **LIST** NamingSystem_UniqueId,
+	uniqueId BOOLEAN, -- true if 1+ rows in NamingSystem_UniqueId correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -24286,6 +25768,7 @@ CREATE TABLE namingSystem(
 CREATE TABLE namingSystem_UniqueId(
 
 	id TEXT PRIMARY KEY,
+	namingSystem_id TEXT, -- Foreign Key to namingSystem table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- enum: oid/uuid/uri/other
@@ -24297,6 +25780,11 @@ CREATE TABLE namingSystem_UniqueId(
 	comment TEXT,
 	_comment TEXT, -- Foreign Key to element table
 	"period" TEXT, -- Foreign Key to period table
+
+	FOREIGN KEY (namingSystem_id)
+		REFERENCES namingSystem (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_type)
 		REFERENCES element (id)
@@ -24357,7 +25845,7 @@ CREATE TABLE nutritionOrder(
 	foodPreferenceModifier **LIST** CodeableConcept,
 	excludeFoodModifier **LIST** CodeableConcept,
 	oralDiet TEXT, -- Foreign Key to nutritionOrder_OralDiet table
-	supplement **LIST** NutritionOrder_Supplement,
+	supplement BOOLEAN, -- true if 1+ rows in NutritionOrder_Supplement correspond to this entry
 	enteralFormula TEXT, -- Foreign Key to nutritionOrder_EnteralFormula table
 	note **LIST** Annotation,
 
@@ -24430,8 +25918,8 @@ CREATE TABLE nutritionOrder_OralDiet(
 	modifierExtension **LIST** Extension,
 	"type" **LIST** CodeableConcept,
 	schedule **LIST** Timing,
-	nutrient **LIST** NutritionOrder_Nutrient,
-	texture **LIST** NutritionOrder_Texture,
+	nutrient BOOLEAN, -- true if 1+ rows in NutritionOrder_Texture correspond to this entry
+	texture BOOLEAN, -- true if 1+ rows in NutritionOrder_Texture correspond to this entry
 	fluidConsistencyType **LIST** CodeableConcept,
 	instruction TEXT,
 	_instruction TEXT, -- Foreign Key to element table
@@ -24446,10 +25934,16 @@ CREATE TABLE nutritionOrder_OralDiet(
 CREATE TABLE nutritionOrder_Nutrient(
 
 	id TEXT PRIMARY KEY,
+	nutritionOrder_OralDiet_id TEXT, -- Foreign Key to nutritionOrder_OralDiet table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	modifier TEXT, -- Foreign Key to codeableConcept table
 	amount TEXT, -- Foreign Key to quantity table
+
+	FOREIGN KEY (nutritionOrder_OralDiet_id)
+		REFERENCES nutritionOrder_OralDiet (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (modifier)
 		REFERENCES codeableConcept (id)
@@ -24466,10 +25960,16 @@ CREATE TABLE nutritionOrder_Nutrient(
 CREATE TABLE nutritionOrder_Texture(
 
 	id TEXT PRIMARY KEY,
+	nutritionOrder_OralDiet_id TEXT, -- Foreign Key to nutritionOrder_OralDiet table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	modifier TEXT, -- Foreign Key to codeableConcept table
 	foodType TEXT, -- Foreign Key to codeableConcept table
+
+	FOREIGN KEY (nutritionOrder_OralDiet_id)
+		REFERENCES nutritionOrder_OralDiet (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (modifier)
 		REFERENCES codeableConcept (id)
@@ -24486,6 +25986,7 @@ CREATE TABLE nutritionOrder_Texture(
 CREATE TABLE nutritionOrder_Supplement(
 
 	id TEXT PRIMARY KEY,
+	nutritionOrder_id TEXT, -- Foreign Key to nutritionOrder table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
@@ -24495,6 +25996,11 @@ CREATE TABLE nutritionOrder_Supplement(
 	quantity TEXT, -- Foreign Key to quantity table
 	instruction TEXT,
 	_instruction TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (nutritionOrder_id)
+		REFERENCES nutritionOrder (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -24531,7 +26037,7 @@ CREATE TABLE nutritionOrder_EnteralFormula(
 	_additiveProductName TEXT, -- Foreign Key to element table
 	caloricDensity TEXT, -- Foreign Key to quantity table
 	routeofAdministration TEXT, -- Foreign Key to codeableConcept table
-	administration **LIST** NutritionOrder_Administration,
+	administration BOOLEAN, -- true if 1+ rows in NutritionOrder_Administration correspond to this entry
 	maxVolumeToDeliver TEXT, -- Foreign Key to quantity table
 	administrationInstruction TEXT,
 	_administrationInstruction TEXT, -- Foreign Key to element table
@@ -24581,12 +26087,18 @@ CREATE TABLE nutritionOrder_EnteralFormula(
 CREATE TABLE nutritionOrder_Administration(
 
 	id TEXT PRIMARY KEY,
+	nutritionOrder_EnteralFormula_id TEXT, -- Foreign Key to nutritionOrder_EnteralFormula table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	schedule TEXT, -- Foreign Key to timing table
 	quantity TEXT, -- Foreign Key to quantity table
 	rateQuantity TEXT, -- Foreign Key to quantity table
 	rateRatio TEXT, -- Foreign Key to ratio table
+
+	FOREIGN KEY (nutritionOrder_EnteralFormula_id)
+		REFERENCES nutritionOrder_EnteralFormula (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (schedule)
 		REFERENCES timing (id)
@@ -24668,7 +26180,7 @@ CREATE TABLE observation(
 	referenceRange **LIST** Observation_ReferenceRange,
 	hasMember **LIST** Reference,
 	derivedFrom **LIST** Reference,
-	component **LIST** Observation_Component,
+	component BOOLEAN, -- true if 1+ rows in Observation_Component correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -24860,6 +26372,7 @@ CREATE TABLE observation_ReferenceRange(
 CREATE TABLE observation_Component(
 
 	id TEXT PRIMARY KEY,
+	observation_id TEXT, -- Foreign Key to observation table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
@@ -24882,6 +26395,11 @@ CREATE TABLE observation_Component(
 	dataAbsentReason TEXT, -- Foreign Key to codeableConcept table
 	interpretation **LIST** CodeableConcept,
 	referenceRange **LIST** Observation_ReferenceRange,
+
+	FOREIGN KEY (observation_id)
+		REFERENCES observation (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -24966,7 +26484,7 @@ CREATE TABLE observationDefinition(
 	category **LIST** CodeableConcept,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	identifier **LIST** Identifier,
-	permittedDataType **LIST** enum, -- Quantity/CodeableConcept/string/boolean/integer/Range/Ratio/SampledData/time/dateTime/Period,
+	permittedDataType **LIST** enum, -- enum: Quantity/CodeableConcept/string/boolean/integer/Range/Ratio/SampledData/time/dateTime/Period,
 	_permittedDataType **LIST** Element,
 	multipleResultsAllowed BOOLEAN,
 	_multipleResultsAllowed TEXT, -- Foreign Key to element table
@@ -24974,7 +26492,7 @@ CREATE TABLE observationDefinition(
 	preferredReportName TEXT,
 	_preferredReportName TEXT, -- Foreign Key to element table
 	quantitativeDetails TEXT, -- Foreign Key to observationDefinition_QuantitativeDetails table
-	qualifiedInterval **LIST** ObservationDefinition_QualifiedInterval,
+	qualifiedInterval BOOLEAN, -- true if 1+ rows in ObservationDefinition_QualifiedInterval correspond to this entry
 	validCodedValueSet TEXT, -- Foreign Key to reference table
 	normalCodedValueSet TEXT, -- Foreign Key to reference table
 	abnormalCodedValueSet TEXT, -- Foreign Key to reference table
@@ -25084,6 +26602,7 @@ CREATE TABLE observationDefinition_QuantitativeDetails(
 CREATE TABLE observationDefinition_QualifiedInterval(
 
 	id TEXT PRIMARY KEY,
+	observationDefinition_id TEXT, -- Foreign Key to observationDefinition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	category TEXT, -- enum: reference/critical/absolute
@@ -25097,6 +26616,11 @@ CREATE TABLE observationDefinition_QualifiedInterval(
 	gestationalAge TEXT, -- Foreign Key to range table
 	"condition" TEXT,
 	_condition TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (observationDefinition_id)
+		REFERENCES observationDefinition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_category)
 		REFERENCES element (id)
@@ -25191,7 +26715,7 @@ CREATE TABLE operationDefinition(
 	inputProfile TEXT,
 	outputProfile TEXT,
 	"parameter" **LIST** OperationDefinition_Parameter,
-	overload **LIST** OperationDefinition_Overload,
+	overload BOOLEAN, -- true if 1+ rows in OperationDefinition_Overload correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -25321,7 +26845,7 @@ CREATE TABLE operationDefinition_Parameter(
 	searchType TEXT, -- enum: number/date/string/token/reference/composite/quantity/uri/special
 	_searchType TEXT, -- Foreign Key to element table
 	"binding" TEXT, -- Foreign Key to operationDefinition_Binding table
-	referencedFrom **LIST** OperationDefinition_ReferencedFrom,
+	referencedFrom BOOLEAN, -- true if 1+ rows in OperationDefinition_ReferencedFrom correspond to this entry
 	part **LIST** OperationDefinition_Parameter,
 
 	FOREIGN KEY (_name)
@@ -25385,12 +26909,18 @@ CREATE TABLE operationDefinition_Binding(
 CREATE TABLE operationDefinition_ReferencedFrom(
 
 	id TEXT PRIMARY KEY,
+	operationDefinition_Parameter_id TEXT, -- Foreign Key to operationDefinition_Parameter table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"source" TEXT,
 	_source TEXT, -- Foreign Key to element table
 	sourceId TEXT,
 	_sourceId TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (operationDefinition_Parameter_id)
+		REFERENCES operationDefinition_Parameter (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_source)
 		REFERENCES element (id)
@@ -25407,12 +26937,18 @@ CREATE TABLE operationDefinition_ReferencedFrom(
 CREATE TABLE operationDefinition_Overload(
 
 	id TEXT PRIMARY KEY,
+	operationDefinition_id TEXT, -- Foreign Key to operationDefinition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	parameterName **LIST** string,
 	_parameterName **LIST** Element,
 	comment TEXT,
 	_comment TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (operationDefinition_id)
+		REFERENCES operationDefinition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_comment)
 		REFERENCES element (id)
@@ -25434,7 +26970,7 @@ CREATE TABLE operationOutcome(
 	contained **LIST** ResourceList,
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
-	issue **LIST** OperationOutcome_Issue,
+	issue BOOLEAN, -- true if 1+ rows in OperationOutcome_Issue correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -25461,6 +26997,7 @@ CREATE TABLE operationOutcome(
 CREATE TABLE operationOutcome_Issue(
 
 	id TEXT PRIMARY KEY,
+	operationOutcome_id TEXT, -- Foreign Key to operationOutcome table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	severity TEXT, -- enum: fatal/error/warning/information
@@ -25474,6 +27011,11 @@ CREATE TABLE operationOutcome_Issue(
 	_location **LIST** Element,
 	expression **LIST** string,
 	_expression **LIST** Element,
+
+	FOREIGN KEY (operationOutcome_id)
+		REFERENCES operationOutcome (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_severity)
 		REFERENCES element (id)
@@ -25521,7 +27063,7 @@ CREATE TABLE organization(
 	telecom **LIST** ContactPoint,
 	"address" **LIST** Address,
 	partOf TEXT, -- Foreign Key to reference table
-	contact **LIST** Organization_Contact,
+	contact BOOLEAN, -- true if 1+ rows in Organization_Contact correspond to this entry
 	"endpoint" **LIST** Reference,
 
 	FOREIGN KEY (meta)
@@ -25564,12 +27106,18 @@ CREATE TABLE organization(
 CREATE TABLE organization_Contact(
 
 	id TEXT PRIMARY KEY,
+	organization_id TEXT, -- Foreign Key to organization table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	purpose TEXT, -- Foreign Key to codeableConcept table
 	"name" TEXT, -- Foreign Key to humanName table
 	telecom **LIST** ContactPoint,
 	"address" TEXT, -- Foreign Key to address table
+
+	FOREIGN KEY (organization_id)
+		REFERENCES organization (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (purpose)
 		REFERENCES codeableConcept (id)
@@ -26059,11 +27607,11 @@ CREATE TABLE patient(
 	multipleBirthInteger REAL, -- pattern: ^-?([0]|([1-9][0-9]*))$
 	_multipleBirthInteger TEXT, -- Foreign Key to element table
 	photo **LIST** Attachment,
-	contact **LIST** Patient_Contact,
-	communication **LIST** Patient_Communication,
+	contact BOOLEAN, -- true if 1+ rows in Patient_Link correspond to this entry
+	communication BOOLEAN, -- true if 1+ rows in Patient_Link correspond to this entry
 	generalPractitioner **LIST** Reference,
 	managingOrganization TEXT, -- Foreign Key to reference table
-	link **LIST** Patient_Link,
+	link BOOLEAN, -- true if 1+ rows in Patient_Link correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -26135,6 +27683,7 @@ CREATE TABLE patient(
 CREATE TABLE patient_Contact(
 
 	id TEXT PRIMARY KEY,
+	patient_id TEXT, -- Foreign Key to patient table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	relationship **LIST** CodeableConcept,
@@ -26145,6 +27694,11 @@ CREATE TABLE patient_Contact(
 	_gender TEXT, -- Foreign Key to element table
 	organization TEXT, -- Foreign Key to reference table
 	"period" TEXT, -- Foreign Key to period table
+
+	FOREIGN KEY (patient_id)
+		REFERENCES patient (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("name")
 		REFERENCES humanName (id)
@@ -26176,11 +27730,17 @@ CREATE TABLE patient_Contact(
 CREATE TABLE patient_Communication(
 
 	id TEXT PRIMARY KEY,
+	patient_id TEXT, -- Foreign Key to patient table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"language" TEXT, -- Foreign Key to codeableConcept table
 	preferred BOOLEAN,
 	_preferred TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (patient_id)
+		REFERENCES patient (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("language")
 		REFERENCES codeableConcept (id)
@@ -26197,11 +27757,17 @@ CREATE TABLE patient_Communication(
 CREATE TABLE patient_Link(
 
 	id TEXT PRIMARY KEY,
+	patient_id TEXT, -- Foreign Key to patient table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	other TEXT, -- Foreign Key to reference table
 	"type" TEXT, -- enum: replaced-by/replaces/refer/seealso
 	_type TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (patient_id)
+		REFERENCES patient (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (other)
 		REFERENCES reference (id)
@@ -26351,9 +27917,9 @@ CREATE TABLE paymentReconciliation(
 	_paymentDate TEXT, -- Foreign Key to element table
 	paymentAmount TEXT, -- Foreign Key to money table
 	paymentIdentifier TEXT, -- Foreign Key to identifier table
-	detail **LIST** PaymentReconciliation_Detail,
+	detail BOOLEAN, -- true if 1+ rows in PaymentReconciliation_ProcessNote correspond to this entry
 	formCode TEXT, -- Foreign Key to codeableConcept table
-	processNote **LIST** PaymentReconciliation_ProcessNote,
+	processNote BOOLEAN, -- true if 1+ rows in PaymentReconciliation_ProcessNote correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -26440,6 +28006,7 @@ CREATE TABLE paymentReconciliation(
 CREATE TABLE paymentReconciliation_Detail(
 
 	id TEXT PRIMARY KEY,
+	paymentReconciliation_id TEXT, -- Foreign Key to paymentReconciliation table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	identifier TEXT, -- Foreign Key to identifier table
@@ -26453,6 +28020,11 @@ CREATE TABLE paymentReconciliation_Detail(
 	responsible TEXT, -- Foreign Key to reference table
 	payee TEXT, -- Foreign Key to reference table
 	amount TEXT, -- Foreign Key to money table
+
+	FOREIGN KEY (paymentReconciliation_id)
+		REFERENCES paymentReconciliation (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (identifier)
 		REFERENCES identifier (id)
@@ -26509,12 +28081,18 @@ CREATE TABLE paymentReconciliation_Detail(
 CREATE TABLE paymentReconciliation_ProcessNote(
 
 	id TEXT PRIMARY KEY,
+	paymentReconciliation_id TEXT, -- Foreign Key to paymentReconciliation table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- enum: display/print/printoper
 	_type TEXT, -- Foreign Key to element table
 	"text" TEXT,
 	_text TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (paymentReconciliation_id)
+		REFERENCES paymentReconciliation (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_type)
 		REFERENCES element (id)
@@ -26553,7 +28131,7 @@ CREATE TABLE person(
 	managingOrganization TEXT, -- Foreign Key to reference table
 	active BOOLEAN,
 	_active TEXT, -- Foreign Key to element table
-	link **LIST** Person_Link,
+	link BOOLEAN, -- true if 1+ rows in Person_Link correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -26605,11 +28183,17 @@ CREATE TABLE person(
 CREATE TABLE person_Link(
 
 	id TEXT PRIMARY KEY,
+	person_id TEXT, -- Foreign Key to person table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"target" TEXT, -- Foreign Key to reference table
 	assurance TEXT, -- enum: level1/level2/level3/level4
 	_assurance TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (person_id)
+		REFERENCES person (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("target")
 		REFERENCES reference (id)
@@ -26681,7 +28265,7 @@ CREATE TABLE planDefinition(
 	endorser **LIST** ContactDetail,
 	relatedArtifact **LIST** RelatedArtifact,
 	library **LIST** canonical,
-	goal **LIST** PlanDefinition_Goal,
+	goal BOOLEAN, -- true if 1+ rows in PlanDefinition_Goal correspond to this entry
 	"action" **LIST** PlanDefinition_Action,
 
 	FOREIGN KEY (meta)
@@ -26804,6 +28388,7 @@ CREATE TABLE planDefinition(
 CREATE TABLE planDefinition_Goal(
 
 	id TEXT PRIMARY KEY,
+	planDefinition_id TEXT, -- Foreign Key to planDefinition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	category TEXT, -- Foreign Key to codeableConcept table
@@ -26812,7 +28397,12 @@ CREATE TABLE planDefinition_Goal(
 	"start" TEXT, -- Foreign Key to codeableConcept table
 	addresses **LIST** CodeableConcept,
 	documentation **LIST** RelatedArtifact,
-	"target" **LIST** PlanDefinition_Target,
+	"target" BOOLEAN, -- true if 1+ rows in PlanDefinition_Target correspond to this entry
+
+	FOREIGN KEY (planDefinition_id)
+		REFERENCES planDefinition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (category)
 		REFERENCES codeableConcept (id)
@@ -26839,6 +28429,7 @@ CREATE TABLE planDefinition_Goal(
 CREATE TABLE planDefinition_Target(
 
 	id TEXT PRIMARY KEY,
+	planDefinition_Goal_id TEXT, -- Foreign Key to planDefinition_Goal table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	measure TEXT, -- Foreign Key to codeableConcept table
@@ -26846,6 +28437,11 @@ CREATE TABLE planDefinition_Target(
 	detailRange TEXT, -- Foreign Key to range table
 	detailCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	due TEXT, -- Foreign Key to duration table
+
+	FOREIGN KEY (planDefinition_Goal_id)
+		REFERENCES planDefinition_Goal (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (measure)
 		REFERENCES codeableConcept (id)
@@ -26897,10 +28493,10 @@ CREATE TABLE planDefinition_Action(
 	subjectCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	subjectReference TEXT, -- Foreign Key to reference table
 	"trigger" **LIST** TriggerDefinition,
-	"condition" **LIST** PlanDefinition_Condition,
+	"condition" BOOLEAN, -- true if 1+ rows in PlanDefinition_DynamicValue correspond to this entry
 	"input" **LIST** DataRequirement,
 	"output" **LIST** DataRequirement,
-	relatedAction **LIST** PlanDefinition_RelatedAction,
+	relatedAction BOOLEAN, -- true if 1+ rows in PlanDefinition_DynamicValue correspond to this entry
 	timingDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 	_timingDateTime TEXT, -- Foreign Key to element table
 	timingAge TEXT, -- Foreign Key to age table
@@ -26908,7 +28504,7 @@ CREATE TABLE planDefinition_Action(
 	timingDuration TEXT, -- Foreign Key to duration table
 	timingRange TEXT, -- Foreign Key to range table
 	timingTiming TEXT, -- Foreign Key to timing table
-	participant **LIST** PlanDefinition_Participant,
+	participant BOOLEAN, -- true if 1+ rows in PlanDefinition_DynamicValue correspond to this entry
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	groupingBehavior TEXT, -- enum: visual-group/logical-group/sentence-group
 	_groupingBehavior TEXT, -- Foreign Key to element table
@@ -26925,7 +28521,7 @@ CREATE TABLE planDefinition_Action(
 	definitionUri TEXT, -- pattern: ^\S*$
 	_definitionUri TEXT, -- Foreign Key to element table
 	transform TEXT,
-	dynamicValue **LIST** PlanDefinition_DynamicValue,
+	dynamicValue BOOLEAN, -- true if 1+ rows in PlanDefinition_DynamicValue correspond to this entry
 	"action" **LIST** PlanDefinition_Action,
 
 	FOREIGN KEY (_prefix)
@@ -27038,11 +28634,17 @@ CREATE TABLE planDefinition_Action(
 CREATE TABLE planDefinition_Condition(
 
 	id TEXT PRIMARY KEY,
+	planDefinition_Action_id TEXT, -- Foreign Key to planDefinition_Action table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	kind TEXT, -- enum: applicability/start/stop
 	_kind TEXT, -- Foreign Key to element table
 	expression TEXT, -- Foreign Key to expression table
+
+	FOREIGN KEY (planDefinition_Action_id)
+		REFERENCES planDefinition_Action (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_kind)
 		REFERENCES element (id)
@@ -27059,6 +28661,7 @@ CREATE TABLE planDefinition_Condition(
 CREATE TABLE planDefinition_RelatedAction(
 
 	id TEXT PRIMARY KEY,
+	planDefinition_Action_id TEXT, -- Foreign Key to planDefinition_Action table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	actionId TEXT, -- Foreign Key to id table
@@ -27067,6 +28670,11 @@ CREATE TABLE planDefinition_RelatedAction(
 	_relationship TEXT, -- Foreign Key to element table
 	offsetDuration TEXT, -- Foreign Key to duration table
 	offsetRange TEXT, -- Foreign Key to range table
+
+	FOREIGN KEY (planDefinition_Action_id)
+		REFERENCES planDefinition_Action (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (actionId)
 		REFERENCES id (id)
@@ -27098,11 +28706,17 @@ CREATE TABLE planDefinition_RelatedAction(
 CREATE TABLE planDefinition_Participant(
 
 	id TEXT PRIMARY KEY,
+	planDefinition_Action_id TEXT, -- Foreign Key to planDefinition_Action table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- enum: patient/practitioner/related-person/device
 	_type TEXT, -- Foreign Key to element table
 	"role" TEXT, -- Foreign Key to codeableConcept table
+
+	FOREIGN KEY (planDefinition_Action_id)
+		REFERENCES planDefinition_Action (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_type)
 		REFERENCES element (id)
@@ -27119,11 +28733,17 @@ CREATE TABLE planDefinition_Participant(
 CREATE TABLE planDefinition_DynamicValue(
 
 	id TEXT PRIMARY KEY,
+	planDefinition_Action_id TEXT, -- Foreign Key to planDefinition_Action table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"path" TEXT,
 	_path TEXT, -- Foreign Key to element table
 	expression TEXT, -- Foreign Key to expression table
+
+	FOREIGN KEY (planDefinition_Action_id)
+		REFERENCES planDefinition_Action (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_path)
 		REFERENCES element (id)
@@ -27161,7 +28781,7 @@ CREATE TABLE practitioner(
 	birthDate DATE,
 	_birthDate TEXT, -- Foreign Key to element table
 	photo **LIST** Attachment,
-	qualification **LIST** Practitioner_Qualification,
+	qualification BOOLEAN, -- true if 1+ rows in Practitioner_Qualification correspond to this entry
 	communication **LIST** CodeableConcept,
 
 	FOREIGN KEY (meta)
@@ -27204,12 +28824,18 @@ CREATE TABLE practitioner(
 CREATE TABLE practitioner_Qualification(
 
 	id TEXT PRIMARY KEY,
+	practitioner_id TEXT, -- Foreign Key to practitioner table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	identifier **LIST** Identifier,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"period" TEXT, -- Foreign Key to period table
 	issuer TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (practitioner_id)
+		REFERENCES practitioner (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -27252,8 +28878,8 @@ CREATE TABLE practitionerRole(
 	"location" **LIST** Reference,
 	healthcareService **LIST** Reference,
 	telecom **LIST** ContactPoint,
-	availableTime **LIST** PractitionerRole_AvailableTime,
-	notAvailable **LIST** PractitionerRole_NotAvailable,
+	availableTime BOOLEAN, -- true if 1+ rows in PractitionerRole_NotAvailable correspond to this entry
+	notAvailable BOOLEAN, -- true if 1+ rows in PractitionerRole_NotAvailable correspond to this entry
 	availabilityExceptions TEXT,
 	_availabilityExceptions TEXT, -- Foreign Key to element table
 	"endpoint" **LIST** Reference,
@@ -27308,6 +28934,7 @@ CREATE TABLE practitionerRole(
 CREATE TABLE practitionerRole_AvailableTime(
 
 	id TEXT PRIMARY KEY,
+	practitionerRole_id TEXT, -- Foreign Key to practitionerRole table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	daysOfWeek **LIST** code,
@@ -27318,6 +28945,11 @@ CREATE TABLE practitionerRole_AvailableTime(
 	_availableStartTime TEXT, -- Foreign Key to element table
 	availableEndTime TIME,
 	_availableEndTime TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (practitionerRole_id)
+		REFERENCES practitionerRole (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_allDay)
 		REFERENCES element (id)
@@ -27339,11 +28971,17 @@ CREATE TABLE practitionerRole_AvailableTime(
 CREATE TABLE practitionerRole_NotAvailable(
 
 	id TEXT PRIMARY KEY,
+	practitionerRole_id TEXT, -- Foreign Key to practitionerRole table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	during TEXT, -- Foreign Key to period table
+
+	FOREIGN KEY (practitionerRole_id)
+		REFERENCES practitionerRole (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_description)
 		REFERENCES element (id)
@@ -27392,7 +29030,7 @@ CREATE TABLE "procedure"(
 	performedRange TEXT, -- Foreign Key to range table
 	recorder TEXT, -- Foreign Key to reference table
 	asserter TEXT, -- Foreign Key to reference table
-	performer **LIST** Procedure_Performer,
+	performer BOOLEAN, -- true if 1+ rows in Procedure_FocalDevice correspond to this entry
 	"location" TEXT, -- Foreign Key to reference table
 	reasonCode **LIST** CodeableConcept,
 	reasonReference **LIST** Reference,
@@ -27403,7 +29041,7 @@ CREATE TABLE "procedure"(
 	complicationDetail **LIST** Reference,
 	followUp **LIST** CodeableConcept,
 	note **LIST** Annotation,
-	focalDevice **LIST** Procedure_FocalDevice,
+	focalDevice BOOLEAN, -- true if 1+ rows in Procedure_FocalDevice correspond to this entry
 	usedReference **LIST** Reference,
 	usedCode **LIST** CodeableConcept,
 
@@ -27507,11 +29145,17 @@ CREATE TABLE "procedure"(
 CREATE TABLE procedure_Performer(
 
 	id TEXT PRIMARY KEY,
+	procedure_id TEXT, -- Foreign Key to "procedure" table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"function" TEXT, -- Foreign Key to codeableConcept table
 	actor TEXT, -- Foreign Key to reference table
 	onBehalfOf TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (procedure_id)
+		REFERENCES "procedure" (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("function")
 		REFERENCES codeableConcept (id)
@@ -27533,10 +29177,16 @@ CREATE TABLE procedure_Performer(
 CREATE TABLE procedure_FocalDevice(
 
 	id TEXT PRIMARY KEY,
+	procedure_id TEXT, -- Foreign Key to "procedure" table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"action" TEXT, -- Foreign Key to codeableConcept table
 	manipulated TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (procedure_id)
+		REFERENCES "procedure" (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("action")
 		REFERENCES codeableConcept (id)
@@ -27575,7 +29225,7 @@ CREATE TABLE provenance(
 	reason **LIST** CodeableConcept,
 	activity TEXT, -- Foreign Key to codeableConcept table
 	agent **LIST** Provenance_Agent,
-	entity **LIST** Provenance_Entity,
+	entity BOOLEAN, -- true if 1+ rows in Provenance_Entity correspond to this entry
 	"signature" **LIST** Signature,
 
 	FOREIGN KEY (meta)
@@ -27655,12 +29305,18 @@ CREATE TABLE provenance_Agent(
 CREATE TABLE provenance_Entity(
 
 	id TEXT PRIMARY KEY,
+	provenance_id TEXT, -- Foreign Key to provenance table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"role" TEXT, -- enum: derivation/revision/quotation/source/removal
 	_role TEXT, -- Foreign Key to element table
 	what TEXT, -- Foreign Key to reference table
 	agent **LIST** Provenance_Agent,
+
+	FOREIGN KEY (provenance_id)
+		REFERENCES provenance (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_role)
 		REFERENCES element (id)
@@ -27832,7 +29488,7 @@ CREATE TABLE questionnaire_Item(
 	_text TEXT, -- Foreign Key to element table
 	"type" TEXT, -- enum: group/display/boolean/decimal/integer/date/dateTime/time/string/text/url/choice/open-choice/attachment/reference/quantity
 	_type TEXT, -- Foreign Key to element table
-	enableWhen **LIST** Questionnaire_EnableWhen,
+	enableWhen BOOLEAN, -- true if 1+ rows in Questionnaire_Initial correspond to this entry
 	enableBehavior TEXT, -- enum: all/any
 	_enableBehavior TEXT, -- Foreign Key to element table
 	"required" BOOLEAN,
@@ -27844,8 +29500,8 @@ CREATE TABLE questionnaire_Item(
 	"maxLength" INTEGER,
 	_maxLength TEXT, -- Foreign Key to element table
 	answerValueSet TEXT,
-	answerOption **LIST** Questionnaire_AnswerOption,
-	initial **LIST** Questionnaire_Initial,
+	answerOption BOOLEAN, -- true if 1+ rows in Questionnaire_Initial correspond to this entry
+	initial BOOLEAN, -- true if 1+ rows in Questionnaire_Initial correspond to this entry
 	item **LIST** Questionnaire_Item,
 
 	FOREIGN KEY (_linkId)
@@ -27903,6 +29559,7 @@ CREATE TABLE questionnaire_Item(
 CREATE TABLE questionnaire_EnableWhen(
 
 	id TEXT PRIMARY KEY,
+	questionnaire_Item_id TEXT, -- Foreign Key to questionnaire_Item table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	question TEXT,
@@ -27926,6 +29583,11 @@ CREATE TABLE questionnaire_EnableWhen(
 	answerCoding TEXT, -- Foreign Key to coding table
 	answerQuantity TEXT, -- Foreign Key to quantity table
 	answerReference TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (questionnaire_Item_id)
+		REFERENCES questionnaire_Item (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_question)
 		REFERENCES element (id)
@@ -27992,6 +29654,7 @@ CREATE TABLE questionnaire_EnableWhen(
 CREATE TABLE questionnaire_AnswerOption(
 
 	id TEXT PRIMARY KEY,
+	questionnaire_Item_id TEXT, -- Foreign Key to questionnaire_Item table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	valueInteger REAL, -- pattern: ^-?([0]|([1-9][0-9]*))$
@@ -28006,6 +29669,11 @@ CREATE TABLE questionnaire_AnswerOption(
 	valueReference TEXT, -- Foreign Key to reference table
 	initialSelected BOOLEAN,
 	_initialSelected TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (questionnaire_Item_id)
+		REFERENCES questionnaire_Item (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_valueInteger)
 		REFERENCES element (id)
@@ -28047,6 +29715,7 @@ CREATE TABLE questionnaire_AnswerOption(
 CREATE TABLE questionnaire_Initial(
 
 	id TEXT PRIMARY KEY,
+	questionnaire_Item_id TEXT, -- Foreign Key to questionnaire_Item table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	valueBoolean BOOLEAN, -- pattern: ^true|false$
@@ -28069,6 +29738,11 @@ CREATE TABLE questionnaire_Initial(
 	valueCoding TEXT, -- Foreign Key to coding table
 	valueQuantity TEXT, -- Foreign Key to quantity table
 	valueReference TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (questionnaire_Item_id)
+		REFERENCES questionnaire_Item (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_valueBoolean)
 		REFERENCES element (id)
@@ -28227,7 +29901,7 @@ CREATE TABLE questionnaireResponse_Item(
 	_definition TEXT, -- Foreign Key to element table
 	"text" TEXT,
 	_text TEXT, -- Foreign Key to element table
-	answer **LIST** QuestionnaireResponse_Answer,
+	answer BOOLEAN, -- true if 1+ rows in QuestionnaireResponse_Answer correspond to this entry
 	item **LIST** QuestionnaireResponse_Item,
 
 	FOREIGN KEY (_linkId)
@@ -28250,6 +29924,7 @@ CREATE TABLE questionnaireResponse_Item(
 CREATE TABLE questionnaireResponse_Answer(
 
 	id TEXT PRIMARY KEY,
+	questionnaireResponse_Item_id TEXT, -- Foreign Key to questionnaireResponse_Item table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	valueBoolean BOOLEAN, -- pattern: ^true|false$
@@ -28273,6 +29948,11 @@ CREATE TABLE questionnaireResponse_Answer(
 	valueQuantity TEXT, -- Foreign Key to quantity table
 	valueReference TEXT, -- Foreign Key to reference table
 	item **LIST** QuestionnaireResponse_Item,
+
+	FOREIGN KEY (questionnaireResponse_Item_id)
+		REFERENCES questionnaireResponse_Item (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_valueBoolean)
 		REFERENCES element (id)
@@ -28363,7 +30043,7 @@ CREATE TABLE relatedPerson(
 	"address" **LIST** Address,
 	photo **LIST** Attachment,
 	"period" TEXT, -- Foreign Key to period table
-	communication **LIST** RelatedPerson_Communication,
+	communication BOOLEAN, -- true if 1+ rows in RelatedPerson_Communication correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -28415,11 +30095,17 @@ CREATE TABLE relatedPerson(
 CREATE TABLE relatedPerson_Communication(
 
 	id TEXT PRIMARY KEY,
+	relatedPerson_id TEXT, -- Foreign Key to relatedPerson table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"language" TEXT, -- Foreign Key to codeableConcept table
 	preferred BOOLEAN,
 	_preferred TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (relatedPerson_id)
+		REFERENCES relatedPerson (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("language")
 		REFERENCES codeableConcept (id)
@@ -28555,8 +30241,8 @@ CREATE TABLE requestGroup_Action(
 	_priority TEXT, -- Foreign Key to element table
 	"code" **LIST** CodeableConcept,
 	documentation **LIST** RelatedArtifact,
-	"condition" **LIST** RequestGroup_Condition,
-	relatedAction **LIST** RequestGroup_RelatedAction,
+	"condition" BOOLEAN, -- true if 1+ rows in RequestGroup_RelatedAction correspond to this entry
+	relatedAction BOOLEAN, -- true if 1+ rows in RequestGroup_RelatedAction correspond to this entry
 	timingDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 	_timingDateTime TEXT, -- Foreign Key to element table
 	timingAge TEXT, -- Foreign Key to age table
@@ -28674,11 +30360,17 @@ CREATE TABLE requestGroup_Action(
 CREATE TABLE requestGroup_Condition(
 
 	id TEXT PRIMARY KEY,
+	requestGroup_Action_id TEXT, -- Foreign Key to requestGroup_Action table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	kind TEXT,
 	_kind TEXT, -- Foreign Key to element table
 	expression TEXT, -- Foreign Key to expression table
+
+	FOREIGN KEY (requestGroup_Action_id)
+		REFERENCES requestGroup_Action (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_kind)
 		REFERENCES element (id)
@@ -28695,6 +30387,7 @@ CREATE TABLE requestGroup_Condition(
 CREATE TABLE requestGroup_RelatedAction(
 
 	id TEXT PRIMARY KEY,
+	requestGroup_Action_id TEXT, -- Foreign Key to requestGroup_Action table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	actionId TEXT, -- Foreign Key to id table
@@ -28703,6 +30396,11 @@ CREATE TABLE requestGroup_RelatedAction(
 	_relationship TEXT, -- Foreign Key to element table
 	offsetDuration TEXT, -- Foreign Key to duration table
 	offsetRange TEXT, -- Foreign Key to range table
+
+	FOREIGN KEY (requestGroup_Action_id)
+		REFERENCES requestGroup_Action (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (actionId)
 		REFERENCES id (id)
@@ -28999,7 +30697,7 @@ CREATE TABLE researchElementDefinition(
 	_type TEXT, -- Foreign Key to element table
 	variableType TEXT, -- enum: dichotomous/continuous/descriptive
 	_variableType TEXT, -- Foreign Key to element table
-	characteristic **LIST** ResearchElementDefinition_Characteristic,
+	characteristic BOOLEAN, -- true if 1+ rows in ResearchElementDefinition_Characteristic correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -29131,6 +30829,7 @@ CREATE TABLE researchElementDefinition(
 CREATE TABLE researchElementDefinition_Characteristic(
 
 	id TEXT PRIMARY KEY,
+	researchElementDefinition_id TEXT, -- Foreign Key to researchElementDefinition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	definitionCodeableConcept TEXT, -- Foreign Key to codeableConcept table
@@ -29162,6 +30861,11 @@ CREATE TABLE researchElementDefinition_Characteristic(
 	participantEffectiveTimeFromStart TEXT, -- Foreign Key to duration table
 	participantEffectiveGroupMeasure TEXT, -- enum: mean/median/mean-of-mean/mean-of-median/median-of-mean/median-of-median
 	_participantEffectiveGroupMeasure TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (researchElementDefinition_id)
+		REFERENCES researchElementDefinition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (definitionCodeableConcept)
 		REFERENCES codeableConcept (id)
@@ -29303,8 +31007,8 @@ CREATE TABLE researchStudy(
 	"site" **LIST** Reference,
 	reasonStopped TEXT, -- Foreign Key to codeableConcept table
 	note **LIST** Annotation,
-	arm **LIST** ResearchStudy_Arm,
-	objective **LIST** ResearchStudy_Objective,
+	arm BOOLEAN, -- true if 1+ rows in ResearchStudy_Objective correspond to this entry
+	objective BOOLEAN, -- true if 1+ rows in ResearchStudy_Objective correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -29376,6 +31080,7 @@ CREATE TABLE researchStudy(
 CREATE TABLE researchStudy_Arm(
 
 	id TEXT PRIMARY KEY,
+	researchStudy_id TEXT, -- Foreign Key to researchStudy table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"name" TEXT,
@@ -29383,6 +31088,11 @@ CREATE TABLE researchStudy_Arm(
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (researchStudy_id)
+		REFERENCES researchStudy (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_name)
 		REFERENCES element (id)
@@ -29404,11 +31114,17 @@ CREATE TABLE researchStudy_Arm(
 CREATE TABLE researchStudy_Objective(
 
 	id TEXT PRIMARY KEY,
+	researchStudy_id TEXT, -- Foreign Key to researchStudy table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to codeableConcept table
+
+	FOREIGN KEY (researchStudy_id)
+		REFERENCES researchStudy (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_name)
 		REFERENCES element (id)
@@ -29534,7 +31250,7 @@ CREATE TABLE riskAssessment(
 	reasonCode **LIST** CodeableConcept,
 	reasonReference **LIST** Reference,
 	basis **LIST** Reference,
-	prediction **LIST** RiskAssessment_Prediction,
+	prediction BOOLEAN, -- true if 1+ rows in RiskAssessment_Prediction correspond to this entry
 	mitigation TEXT,
 	_mitigation TEXT, -- Foreign Key to element table
 	note **LIST** Annotation,
@@ -29624,6 +31340,7 @@ CREATE TABLE riskAssessment(
 CREATE TABLE riskAssessment_Prediction(
 
 	id TEXT PRIMARY KEY,
+	riskAssessment_id TEXT, -- Foreign Key to riskAssessment table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	outcome TEXT, -- Foreign Key to codeableConcept table
@@ -29637,6 +31354,11 @@ CREATE TABLE riskAssessment_Prediction(
 	whenRange TEXT, -- Foreign Key to range table
 	rationale TEXT,
 	_rationale TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (riskAssessment_id)
+		REFERENCES riskAssessment (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (outcome)
 		REFERENCES codeableConcept (id)
@@ -29734,7 +31456,7 @@ CREATE TABLE riskEvidenceSynthesis(
 	outcome TEXT, -- Foreign Key to reference table
 	sampleSize TEXT, -- Foreign Key to riskEvidenceSynthesis_SampleSize table
 	riskEstimate TEXT, -- Foreign Key to riskEvidenceSynthesis_RiskEstimate table
-	certainty **LIST** RiskEvidenceSynthesis_Certainty,
+	certainty BOOLEAN, -- true if 1+ rows in RiskEvidenceSynthesis_Certainty correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -29897,7 +31619,7 @@ CREATE TABLE riskEvidenceSynthesis_RiskEstimate(
 	_denominatorCount TEXT, -- Foreign Key to element table
 	numeratorCount INTEGER,
 	_numeratorCount TEXT, -- Foreign Key to element table
-	precisionEstimate **LIST** RiskEvidenceSynthesis_PrecisionEstimate,
+	precisionEstimate BOOLEAN, -- true if 1+ rows in RiskEvidenceSynthesis_PrecisionEstimate correspond to this entry
 
 	FOREIGN KEY (_description)
 		REFERENCES element (id)
@@ -29934,6 +31656,7 @@ CREATE TABLE riskEvidenceSynthesis_RiskEstimate(
 CREATE TABLE riskEvidenceSynthesis_PrecisionEstimate(
 
 	id TEXT PRIMARY KEY,
+	riskEvidenceSynthesis_RiskEstimate_id TEXT, -- Foreign Key to riskEvidenceSynthesis_RiskEstimate table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
@@ -29943,6 +31666,11 @@ CREATE TABLE riskEvidenceSynthesis_PrecisionEstimate(
 	_from TEXT, -- Foreign Key to element table
 	"to" REAL,
 	_to TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (riskEvidenceSynthesis_RiskEstimate_id)
+		REFERENCES riskEvidenceSynthesis_RiskEstimate (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -29969,22 +31697,34 @@ CREATE TABLE riskEvidenceSynthesis_PrecisionEstimate(
 CREATE TABLE riskEvidenceSynthesis_Certainty(
 
 	id TEXT PRIMARY KEY,
+	riskEvidenceSynthesis_id TEXT, -- Foreign Key to riskEvidenceSynthesis table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	rating **LIST** CodeableConcept,
 	note **LIST** Annotation,
-	certaintySubcomponent **LIST** RiskEvidenceSynthesis_CertaintySubcomponent
+	certaintySubcomponent BOOLEAN, -- true if 1+ rows in RiskEvidenceSynthesis_CertaintySubcomponent correspond to this entry
+
+	FOREIGN KEY (riskEvidenceSynthesis_id)
+		REFERENCES riskEvidenceSynthesis (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION
 
 );
 
 CREATE TABLE riskEvidenceSynthesis_CertaintySubcomponent(
 
 	id TEXT PRIMARY KEY,
+	riskEvidenceSynthesis_Certainty_id TEXT, -- Foreign Key to riskEvidenceSynthesis_Certainty table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	rating **LIST** CodeableConcept,
 	note **LIST** Annotation,
+
+	FOREIGN KEY (riskEvidenceSynthesis_Certainty_id)
+		REFERENCES riskEvidenceSynthesis_Certainty (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -30107,13 +31847,13 @@ CREATE TABLE searchParameter(
 	_multipleOr TEXT, -- Foreign Key to element table
 	multipleAnd BOOLEAN,
 	_multipleAnd TEXT, -- Foreign Key to element table
-	comparator **LIST** enum, -- eq/ne/gt/lt/ge/le/sa/eb/ap,
+	comparator **LIST** enum, -- enum: eq/ne/gt/lt/ge/le/sa/eb/ap,
 	_comparator **LIST** Element,
-	modifier **LIST** enum, -- missing/exact/contains/not/text/in/not-in/below/above/type/identifier/ofType,
+	modifier **LIST** enum, -- enum: missing/exact/contains/not/text/in/not-in/below/above/type/identifier/ofType,
 	_modifier **LIST** Element,
 	"chain" **LIST** string,
 	_chain **LIST** Element,
-	component **LIST** SearchParameter_Component,
+	component BOOLEAN, -- true if 1+ rows in SearchParameter_Component correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -30220,11 +31960,17 @@ CREATE TABLE searchParameter(
 CREATE TABLE searchParameter_Component(
 
 	id TEXT PRIMARY KEY,
+	searchParameter_id TEXT, -- Foreign Key to searchParameter table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"definition" TEXT,
 	expression TEXT,
 	_expression TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (searchParameter_id)
+		REFERENCES searchParameter (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_expression)
 		REFERENCES element (id)
@@ -30527,8 +32273,8 @@ CREATE TABLE specimen(
 	parent **LIST** Reference,
 	request **LIST** Reference,
 	"collection" TEXT, -- Foreign Key to specimen_Collection table
-	processing **LIST** Specimen_Processing,
-	container **LIST** Specimen_Container,
+	processing BOOLEAN, -- true if 1+ rows in Specimen_Container correspond to this entry
+	container BOOLEAN, -- true if 1+ rows in Specimen_Container correspond to this entry
 	"condition" **LIST** CodeableConcept,
 	note **LIST** Annotation,
 
@@ -30650,6 +32396,7 @@ CREATE TABLE specimen_Collection(
 CREATE TABLE specimen_Processing(
 
 	id TEXT PRIMARY KEY,
+	specimen_id TEXT, -- Foreign Key to specimen table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"description" TEXT,
@@ -30659,6 +32406,11 @@ CREATE TABLE specimen_Processing(
 	timeDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 	_timeDateTime TEXT, -- Foreign Key to element table
 	timePeriod TEXT, -- Foreign Key to period table
+
+	FOREIGN KEY (specimen_id)
+		REFERENCES specimen (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_description)
 		REFERENCES element (id)
@@ -30685,6 +32437,7 @@ CREATE TABLE specimen_Processing(
 CREATE TABLE specimen_Container(
 
 	id TEXT PRIMARY KEY,
+	specimen_id TEXT, -- Foreign Key to specimen table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	identifier **LIST** Identifier,
@@ -30695,6 +32448,11 @@ CREATE TABLE specimen_Container(
 	specimenQuantity TEXT, -- Foreign Key to quantity table
 	additiveCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	additiveReference TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (specimen_id)
+		REFERENCES specimen (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_description)
 		REFERENCES element (id)
@@ -30747,7 +32505,7 @@ CREATE TABLE specimenDefinition(
 	timeAspect TEXT,
 	_timeAspect TEXT, -- Foreign Key to element table
 	"collection" **LIST** CodeableConcept,
-	typeTested **LIST** SpecimenDefinition_TypeTested,
+	typeTested BOOLEAN, -- true if 1+ rows in SpecimenDefinition_TypeTested correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -30789,6 +32547,7 @@ CREATE TABLE specimenDefinition(
 CREATE TABLE specimenDefinition_TypeTested(
 
 	id TEXT PRIMARY KEY,
+	specimenDefinition_id TEXT, -- Foreign Key to specimenDefinition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	isDerived BOOLEAN,
@@ -30801,7 +32560,12 @@ CREATE TABLE specimenDefinition_TypeTested(
 	_requirement TEXT, -- Foreign Key to element table
 	retentionTime TEXT, -- Foreign Key to duration table
 	rejectionCriterion **LIST** CodeableConcept,
-	handling **LIST** SpecimenDefinition_Handling,
+	handling BOOLEAN, -- true if 1+ rows in SpecimenDefinition_Handling correspond to this entry
+
+	FOREIGN KEY (specimenDefinition_id)
+		REFERENCES specimenDefinition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_isDerived)
 		REFERENCES element (id)
@@ -30849,7 +32613,7 @@ CREATE TABLE specimenDefinition_Container(
 	minimumVolumeQuantity TEXT, -- Foreign Key to quantity table
 	minimumVolumeString TEXT, -- pattern: ^[ \r\n\t\S]+$
 	_minimumVolumeString TEXT, -- Foreign Key to element table
-	additive **LIST** SpecimenDefinition_Additive,
+	additive BOOLEAN, -- true if 1+ rows in SpecimenDefinition_Additive correspond to this entry
 	preparation TEXT,
 	_preparation TEXT, -- Foreign Key to element table
 
@@ -30898,10 +32662,16 @@ CREATE TABLE specimenDefinition_Container(
 CREATE TABLE specimenDefinition_Additive(
 
 	id TEXT PRIMARY KEY,
+	specimenDefinition_Container_id TEXT, -- Foreign Key to specimenDefinition_Container table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	additiveCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	additiveReference TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (specimenDefinition_Container_id)
+		REFERENCES specimenDefinition_Container (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (additiveCodeableConcept)
 		REFERENCES codeableConcept (id)
@@ -30918,6 +32688,7 @@ CREATE TABLE specimenDefinition_Additive(
 CREATE TABLE specimenDefinition_Handling(
 
 	id TEXT PRIMARY KEY,
+	specimenDefinition_TypeTested_id TEXT, -- Foreign Key to specimenDefinition_TypeTested table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	temperatureQualifier TEXT, -- Foreign Key to codeableConcept table
@@ -30925,6 +32696,11 @@ CREATE TABLE specimenDefinition_Handling(
 	maxDuration TEXT, -- Foreign Key to duration table
 	instruction TEXT,
 	_instruction TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (specimenDefinition_TypeTested_id)
+		REFERENCES specimenDefinition_TypeTested (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (temperatureQualifier)
 		REFERENCES codeableConcept (id)
@@ -30990,12 +32766,12 @@ CREATE TABLE structureDefinition(
 	keyword **LIST** Coding,
 	fhirVersion TEXT, -- enum: 0.01/0.05/0.06/0.11/0.0.80/0.0.81/0.0.82/0.4.0/0.5.0/1.0.0/1.0.1/1.0.2/1.1.0/1.4.0/1.6.0/1.8.0/3.0.0/3.0.1/3.3.0/3.5.0/4.0.0/4.0.1
 	_fhirVersion TEXT, -- Foreign Key to element table
-	mapping **LIST** StructureDefinition_Mapping,
+	mapping BOOLEAN, -- true if 1+ rows in StructureDefinition_Context correspond to this entry
 	kind TEXT, -- enum: primitive-type/complex-type/resource/logical
 	_kind TEXT, -- Foreign Key to element table
 	abstract BOOLEAN,
 	_abstract TEXT, -- Foreign Key to element table
-	context **LIST** StructureDefinition_Context,
+	context BOOLEAN, -- true if 1+ rows in StructureDefinition_Context correspond to this entry
 	contextInvariant **LIST** string,
 	_contextInvariant **LIST** Element,
 	"type" TEXT,
@@ -31121,6 +32897,7 @@ CREATE TABLE structureDefinition(
 CREATE TABLE structureDefinition_Mapping(
 
 	id TEXT PRIMARY KEY,
+	structureDefinition_id TEXT, -- Foreign Key to structureDefinition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"identity" TEXT, -- Foreign Key to id table
@@ -31131,6 +32908,11 @@ CREATE TABLE structureDefinition_Mapping(
 	_name TEXT, -- Foreign Key to element table
 	comment TEXT,
 	_comment TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (structureDefinition_id)
+		REFERENCES structureDefinition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("identity")
 		REFERENCES id (id)
@@ -31162,12 +32944,18 @@ CREATE TABLE structureDefinition_Mapping(
 CREATE TABLE structureDefinition_Context(
 
 	id TEXT PRIMARY KEY,
+	structureDefinition_id TEXT, -- Foreign Key to structureDefinition table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- enum: fhirpath/element/extension
 	_type TEXT, -- Foreign Key to element table
 	expression TEXT,
 	_expression TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (structureDefinition_id)
+		REFERENCES structureDefinition (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_type)
 		REFERENCES element (id)
@@ -31238,9 +33026,9 @@ CREATE TABLE structureMap(
 	_purpose TEXT, -- Foreign Key to element table
 	copyright TEXT,
 	_copyright TEXT, -- Foreign Key to element table
-	"structure" **LIST** StructureMap_Structure,
+	"structure" BOOLEAN, -- true if 1+ rows in StructureMap_Group correspond to this entry
 	import **LIST** canonical,
-	"group" **LIST** StructureMap_Group,
+	"group" BOOLEAN, -- true if 1+ rows in StructureMap_Group correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -31322,6 +33110,7 @@ CREATE TABLE structureMap(
 CREATE TABLE structureMap_Structure(
 
 	id TEXT PRIMARY KEY,
+	structureMap_id TEXT, -- Foreign Key to structureMap table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"url" TEXT,
@@ -31331,6 +33120,11 @@ CREATE TABLE structureMap_Structure(
 	_alias TEXT, -- Foreign Key to element table
 	documentation TEXT,
 	_documentation TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (structureMap_id)
+		REFERENCES structureMap (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_mode)
 		REFERENCES element (id)
@@ -31352,6 +33146,7 @@ CREATE TABLE structureMap_Structure(
 CREATE TABLE structureMap_Group(
 
 	id TEXT PRIMARY KEY,
+	structureMap_id TEXT, -- Foreign Key to structureMap table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"name" TEXT, -- Foreign Key to id table
@@ -31362,8 +33157,13 @@ CREATE TABLE structureMap_Group(
 	_typeMode TEXT, -- Foreign Key to element table
 	documentation TEXT,
 	_documentation TEXT, -- Foreign Key to element table
-	"input" **LIST** StructureMap_Input,
+	"input" BOOLEAN, -- true if 1+ rows in StructureMap_Input correspond to this entry
 	"rule" **LIST** StructureMap_Rule,
+
+	FOREIGN KEY (structureMap_id)
+		REFERENCES structureMap (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("name")
 		REFERENCES id (id)
@@ -31400,6 +33200,7 @@ CREATE TABLE structureMap_Group(
 CREATE TABLE structureMap_Input(
 
 	id TEXT PRIMARY KEY,
+	structureMap_Group_id TEXT, -- Foreign Key to structureMap_Group table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"name" TEXT, -- Foreign Key to id table
@@ -31410,6 +33211,11 @@ CREATE TABLE structureMap_Input(
 	_mode TEXT, -- Foreign Key to element table
 	documentation TEXT,
 	_documentation TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (structureMap_Group_id)
+		REFERENCES structureMap_Group (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("name")
 		REFERENCES id (id)
@@ -31445,10 +33251,10 @@ CREATE TABLE structureMap_Rule(
 	modifierExtension **LIST** Extension,
 	"name" TEXT, -- Foreign Key to id table
 	_name TEXT, -- Foreign Key to element table
-	"source" **LIST** StructureMap_Source,
-	"target" **LIST** StructureMap_Target,
+	"source" BOOLEAN, -- true if 1+ rows in StructureMap_Dependent correspond to this entry
+	"target" BOOLEAN, -- true if 1+ rows in StructureMap_Dependent correspond to this entry
 	"rule" **LIST** StructureMap_Rule,
-	"dependent" **LIST** StructureMap_Dependent,
+	"dependent" BOOLEAN, -- true if 1+ rows in StructureMap_Dependent correspond to this entry
 	documentation TEXT,
 	_documentation TEXT, -- Foreign Key to element table
 
@@ -31472,6 +33278,7 @@ CREATE TABLE structureMap_Rule(
 CREATE TABLE structureMap_Source(
 
 	id TEXT PRIMARY KEY,
+	structureMap_Rule_id TEXT, -- Foreign Key to structureMap_Rule table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	context TEXT, -- Foreign Key to id table
@@ -31563,6 +33370,11 @@ CREATE TABLE structureMap_Source(
 	_check TEXT, -- Foreign Key to element table
 	logMessage TEXT,
 	_logMessage TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (structureMap_Rule_id)
+		REFERENCES structureMap_Rule (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (context)
 		REFERENCES id (id)
@@ -31879,6 +33691,7 @@ CREATE TABLE structureMap_Source(
 CREATE TABLE structureMap_Target(
 
 	id TEXT PRIMARY KEY,
+	structureMap_Rule_id TEXT, -- Foreign Key to structureMap_Rule table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	context TEXT, -- Foreign Key to id table
@@ -31889,13 +33702,18 @@ CREATE TABLE structureMap_Target(
 	_element TEXT, -- Foreign Key to element table
 	variable TEXT, -- Foreign Key to id table
 	_variable TEXT, -- Foreign Key to element table
-	listMode **LIST** enum, -- first/share/last/collate,
+	listMode **LIST** enum, -- enum: first/share/last/collate,
 	_listMode **LIST** Element,
 	listRuleId TEXT, -- Foreign Key to id table
 	_listRuleId TEXT, -- Foreign Key to element table
 	transform TEXT, -- enum: create/copy/truncate/escape/cast/append/translate/reference/dateOp/uuid/pointer/evaluate/cc/c/qty/id/cp
 	_transform TEXT, -- Foreign Key to element table
-	"parameter" **LIST** StructureMap_Parameter,
+	"parameter" BOOLEAN, -- true if 1+ rows in StructureMap_Parameter correspond to this entry
+
+	FOREIGN KEY (structureMap_Rule_id)
+		REFERENCES structureMap_Rule (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (context)
 		REFERENCES id (id)
@@ -31947,6 +33765,7 @@ CREATE TABLE structureMap_Target(
 CREATE TABLE structureMap_Parameter(
 
 	id TEXT PRIMARY KEY,
+	structureMap_Target_id TEXT, -- Foreign Key to structureMap_Target table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	valueId TEXT, -- pattern: ^[A-Za-z0-9\-\.]{1,64}$
@@ -31959,6 +33778,11 @@ CREATE TABLE structureMap_Parameter(
 	_valueInteger TEXT, -- Foreign Key to element table
 	valueDecimal REAL, -- pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
 	_valueDecimal TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (structureMap_Target_id)
+		REFERENCES structureMap_Target (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_valueId)
 		REFERENCES element (id)
@@ -31990,12 +33814,18 @@ CREATE TABLE structureMap_Parameter(
 CREATE TABLE structureMap_Dependent(
 
 	id TEXT PRIMARY KEY,
+	structureMap_Rule_id TEXT, -- Foreign Key to structureMap_Rule table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"name" TEXT, -- Foreign Key to id table
 	_name TEXT, -- Foreign Key to element table
 	variable **LIST** string,
 	_variable **LIST** Element,
+
+	FOREIGN KEY (structureMap_Rule_id)
+		REFERENCES structureMap_Rule (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("name")
 		REFERENCES id (id)
@@ -32138,8 +33968,8 @@ CREATE TABLE substance(
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	"instance" **LIST** Substance_Instance,
-	ingredient **LIST** Substance_Ingredient,
+	"instance" BOOLEAN, -- true if 1+ rows in Substance_Ingredient correspond to this entry
+	ingredient BOOLEAN, -- true if 1+ rows in Substance_Ingredient correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -32181,12 +34011,18 @@ CREATE TABLE substance(
 CREATE TABLE substance_Instance(
 
 	id TEXT PRIMARY KEY,
+	substance_id TEXT, -- Foreign Key to substance table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	identifier TEXT, -- Foreign Key to identifier table
 	expiry DATETIME,
 	_expiry TEXT, -- Foreign Key to element table
 	quantity TEXT, -- Foreign Key to quantity table
+
+	FOREIGN KEY (substance_id)
+		REFERENCES substance (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (identifier)
 		REFERENCES identifier (id)
@@ -32208,11 +34044,17 @@ CREATE TABLE substance_Instance(
 CREATE TABLE substance_Ingredient(
 
 	id TEXT PRIMARY KEY,
+	substance_id TEXT, -- Foreign Key to substance table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	quantity TEXT, -- Foreign Key to ratio table
 	substanceCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	substanceReference TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (substance_id)
+		REFERENCES substance (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (quantity)
 		REFERENCES ratio (id)
@@ -32250,7 +34092,7 @@ CREATE TABLE substanceNucleicAcid(
 	areaOfHybridisation TEXT,
 	_areaOfHybridisation TEXT, -- Foreign Key to element table
 	oligoNucleotideType TEXT, -- Foreign Key to codeableConcept table
-	subunit **LIST** SubstanceNucleicAcid_Subunit,
+	subunit BOOLEAN, -- true if 1+ rows in SubstanceNucleicAcid_Subunit correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -32297,6 +34139,7 @@ CREATE TABLE substanceNucleicAcid(
 CREATE TABLE substanceNucleicAcid_Subunit(
 
 	id TEXT PRIMARY KEY,
+	substanceNucleicAcid_id TEXT, -- Foreign Key to substanceNucleicAcid table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	subunit INTEGER,
@@ -32308,8 +34151,13 @@ CREATE TABLE substanceNucleicAcid_Subunit(
 	sequenceAttachment TEXT, -- Foreign Key to attachment table
 	fivePrime TEXT, -- Foreign Key to codeableConcept table
 	threePrime TEXT, -- Foreign Key to codeableConcept table
-	linkage **LIST** SubstanceNucleicAcid_Linkage,
-	sugar **LIST** SubstanceNucleicAcid_Sugar,
+	linkage BOOLEAN, -- true if 1+ rows in SubstanceNucleicAcid_Sugar correspond to this entry
+	sugar BOOLEAN, -- true if 1+ rows in SubstanceNucleicAcid_Sugar correspond to this entry
+
+	FOREIGN KEY (substanceNucleicAcid_id)
+		REFERENCES substanceNucleicAcid (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_subunit)
 		REFERENCES element (id)
@@ -32346,6 +34194,7 @@ CREATE TABLE substanceNucleicAcid_Subunit(
 CREATE TABLE substanceNucleicAcid_Linkage(
 
 	id TEXT PRIMARY KEY,
+	substanceNucleicAcid_Subunit_id TEXT, -- Foreign Key to substanceNucleicAcid_Subunit table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	connectivity TEXT,
@@ -32355,6 +34204,11 @@ CREATE TABLE substanceNucleicAcid_Linkage(
 	_name TEXT, -- Foreign Key to element table
 	residueSite TEXT,
 	_residueSite TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (substanceNucleicAcid_Subunit_id)
+		REFERENCES substanceNucleicAcid_Subunit (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_connectivity)
 		REFERENCES element (id)
@@ -32381,6 +34235,7 @@ CREATE TABLE substanceNucleicAcid_Linkage(
 CREATE TABLE substanceNucleicAcid_Sugar(
 
 	id TEXT PRIMARY KEY,
+	substanceNucleicAcid_Subunit_id TEXT, -- Foreign Key to substanceNucleicAcid_Subunit table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	identifier TEXT, -- Foreign Key to identifier table
@@ -32388,6 +34243,11 @@ CREATE TABLE substanceNucleicAcid_Sugar(
 	_name TEXT, -- Foreign Key to element table
 	residueSite TEXT,
 	_residueSite TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (substanceNucleicAcid_Subunit_id)
+		REFERENCES substanceNucleicAcid_Subunit (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (identifier)
 		REFERENCES identifier (id)
@@ -32424,8 +34284,8 @@ CREATE TABLE substancePolymer(
 	copolymerConnectivity **LIST** CodeableConcept,
 	modification **LIST** string,
 	_modification **LIST** Element,
-	monomerSet **LIST** SubstancePolymer_MonomerSet,
-	"repeat" **LIST** SubstancePolymer_Repeat,
+	monomerSet BOOLEAN, -- true if 1+ rows in SubstancePolymer_Repeat correspond to this entry
+	"repeat" BOOLEAN, -- true if 1+ rows in SubstancePolymer_Repeat correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -32462,10 +34322,16 @@ CREATE TABLE substancePolymer(
 CREATE TABLE substancePolymer_MonomerSet(
 
 	id TEXT PRIMARY KEY,
+	substancePolymer_id TEXT, -- Foreign Key to substancePolymer table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	ratioType TEXT, -- Foreign Key to codeableConcept table
-	startingMaterial **LIST** SubstancePolymer_StartingMaterial,
+	startingMaterial BOOLEAN, -- true if 1+ rows in SubstancePolymer_StartingMaterial correspond to this entry
+
+	FOREIGN KEY (substancePolymer_id)
+		REFERENCES substancePolymer (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (ratioType)
 		REFERENCES codeableConcept (id)
@@ -32477,6 +34343,7 @@ CREATE TABLE substancePolymer_MonomerSet(
 CREATE TABLE substancePolymer_StartingMaterial(
 
 	id TEXT PRIMARY KEY,
+	substancePolymer_MonomerSet_id TEXT, -- Foreign Key to substancePolymer_MonomerSet table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	material TEXT, -- Foreign Key to codeableConcept table
@@ -32484,6 +34351,11 @@ CREATE TABLE substancePolymer_StartingMaterial(
 	isDefining BOOLEAN,
 	_isDefining TEXT, -- Foreign Key to element table
 	amount TEXT, -- Foreign Key to substanceAmount table
+
+	FOREIGN KEY (substancePolymer_MonomerSet_id)
+		REFERENCES substancePolymer_MonomerSet (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (material)
 		REFERENCES codeableConcept (id)
@@ -32510,6 +34382,7 @@ CREATE TABLE substancePolymer_StartingMaterial(
 CREATE TABLE substancePolymer_Repeat(
 
 	id TEXT PRIMARY KEY,
+	substancePolymer_id TEXT, -- Foreign Key to substancePolymer table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	numberOfUnits INTEGER,
@@ -32517,7 +34390,12 @@ CREATE TABLE substancePolymer_Repeat(
 	averageMolecularFormula TEXT,
 	_averageMolecularFormula TEXT, -- Foreign Key to element table
 	repeatUnitAmountType TEXT, -- Foreign Key to codeableConcept table
-	repeatUnit **LIST** SubstancePolymer_RepeatUnit,
+	repeatUnit BOOLEAN, -- true if 1+ rows in SubstancePolymer_RepeatUnit correspond to this entry
+
+	FOREIGN KEY (substancePolymer_id)
+		REFERENCES substancePolymer (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_numberOfUnits)
 		REFERENCES element (id)
@@ -32539,14 +34417,20 @@ CREATE TABLE substancePolymer_Repeat(
 CREATE TABLE substancePolymer_RepeatUnit(
 
 	id TEXT PRIMARY KEY,
+	substancePolymer_Repeat_id TEXT, -- Foreign Key to substancePolymer_Repeat table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	orientationOfPolymerisation TEXT, -- Foreign Key to codeableConcept table
 	repeatUnit TEXT,
 	_repeatUnit TEXT, -- Foreign Key to element table
 	amount TEXT, -- Foreign Key to substanceAmount table
-	degreeOfPolymerisation **LIST** SubstancePolymer_DegreeOfPolymerisation,
-	structuralRepresentation **LIST** SubstancePolymer_StructuralRepresentation,
+	degreeOfPolymerisation BOOLEAN, -- true if 1+ rows in SubstancePolymer_StructuralRepresentation correspond to this entry
+	structuralRepresentation BOOLEAN, -- true if 1+ rows in SubstancePolymer_StructuralRepresentation correspond to this entry
+
+	FOREIGN KEY (substancePolymer_Repeat_id)
+		REFERENCES substancePolymer_Repeat (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (orientationOfPolymerisation)
 		REFERENCES codeableConcept (id)
@@ -32568,10 +34452,16 @@ CREATE TABLE substancePolymer_RepeatUnit(
 CREATE TABLE substancePolymer_DegreeOfPolymerisation(
 
 	id TEXT PRIMARY KEY,
+	substancePolymer_RepeatUnit_id TEXT, -- Foreign Key to substancePolymer_RepeatUnit table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	degree TEXT, -- Foreign Key to codeableConcept table
 	amount TEXT, -- Foreign Key to substanceAmount table
+
+	FOREIGN KEY (substancePolymer_RepeatUnit_id)
+		REFERENCES substancePolymer_RepeatUnit (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (degree)
 		REFERENCES codeableConcept (id)
@@ -32588,12 +34478,18 @@ CREATE TABLE substancePolymer_DegreeOfPolymerisation(
 CREATE TABLE substancePolymer_StructuralRepresentation(
 
 	id TEXT PRIMARY KEY,
+	substancePolymer_RepeatUnit_id TEXT, -- Foreign Key to substancePolymer_RepeatUnit table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	representation TEXT,
 	_representation TEXT, -- Foreign Key to element table
 	attachment TEXT, -- Foreign Key to attachment table
+
+	FOREIGN KEY (substancePolymer_RepeatUnit_id)
+		REFERENCES substancePolymer_RepeatUnit (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -32630,7 +34526,7 @@ CREATE TABLE substanceProtein(
 	_numberOfSubunits TEXT, -- Foreign Key to element table
 	disulfideLinkage **LIST** string,
 	_disulfideLinkage **LIST** Element,
-	subunit **LIST** SubstanceProtein_Subunit,
+	subunit BOOLEAN, -- true if 1+ rows in SubstanceProtein_Subunit correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -32667,6 +34563,7 @@ CREATE TABLE substanceProtein(
 CREATE TABLE substanceProtein_Subunit(
 
 	id TEXT PRIMARY KEY,
+	substanceProtein_id TEXT, -- Foreign Key to substanceProtein table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	subunit INTEGER,
@@ -32682,6 +34579,11 @@ CREATE TABLE substanceProtein_Subunit(
 	cTerminalModificationId TEXT, -- Foreign Key to identifier table
 	cTerminalModification TEXT,
 	_cTerminalModification TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (substanceProtein_id)
+		REFERENCES substanceProtein (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_subunit)
 		REFERENCES element (id)
@@ -32740,10 +34642,10 @@ CREATE TABLE substanceReferenceInformation(
 	modifierExtension **LIST** Extension,
 	comment TEXT,
 	_comment TEXT, -- Foreign Key to element table
-	gene **LIST** SubstanceReferenceInformation_Gene,
-	geneElement **LIST** SubstanceReferenceInformation_GeneElement,
-	classification **LIST** SubstanceReferenceInformation_Classification,
-	"target" **LIST** SubstanceReferenceInformation_Target,
+	gene BOOLEAN, -- true if 1+ rows in SubstanceReferenceInformation_Target correspond to this entry
+	geneElement BOOLEAN, -- true if 1+ rows in SubstanceReferenceInformation_Target correspond to this entry
+	classification BOOLEAN, -- true if 1+ rows in SubstanceReferenceInformation_Target correspond to this entry
+	"target" BOOLEAN, -- true if 1+ rows in SubstanceReferenceInformation_Target correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -32775,11 +34677,17 @@ CREATE TABLE substanceReferenceInformation(
 CREATE TABLE substanceReferenceInformation_Gene(
 
 	id TEXT PRIMARY KEY,
+	substanceReferenceInformation_id TEXT, -- Foreign Key to substanceReferenceInformation table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	geneSequenceOrigin TEXT, -- Foreign Key to codeableConcept table
 	gene TEXT, -- Foreign Key to codeableConcept table
 	"source" **LIST** Reference,
+
+	FOREIGN KEY (substanceReferenceInformation_id)
+		REFERENCES substanceReferenceInformation (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (geneSequenceOrigin)
 		REFERENCES codeableConcept (id)
@@ -32796,11 +34704,17 @@ CREATE TABLE substanceReferenceInformation_Gene(
 CREATE TABLE substanceReferenceInformation_GeneElement(
 
 	id TEXT PRIMARY KEY,
+	substanceReferenceInformation_id TEXT, -- Foreign Key to substanceReferenceInformation table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	element TEXT, -- Foreign Key to identifier table
 	"source" **LIST** Reference,
+
+	FOREIGN KEY (substanceReferenceInformation_id)
+		REFERENCES substanceReferenceInformation (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -32817,12 +34731,18 @@ CREATE TABLE substanceReferenceInformation_GeneElement(
 CREATE TABLE substanceReferenceInformation_Classification(
 
 	id TEXT PRIMARY KEY,
+	substanceReferenceInformation_id TEXT, -- Foreign Key to substanceReferenceInformation table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"domain" TEXT, -- Foreign Key to codeableConcept table
 	classification TEXT, -- Foreign Key to codeableConcept table
 	subtype **LIST** CodeableConcept,
 	"source" **LIST** Reference,
+
+	FOREIGN KEY (substanceReferenceInformation_id)
+		REFERENCES substanceReferenceInformation (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("domain")
 		REFERENCES codeableConcept (id)
@@ -32839,6 +34759,7 @@ CREATE TABLE substanceReferenceInformation_Classification(
 CREATE TABLE substanceReferenceInformation_Target(
 
 	id TEXT PRIMARY KEY,
+	substanceReferenceInformation_id TEXT, -- Foreign Key to substanceReferenceInformation table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"target" TEXT, -- Foreign Key to identifier table
@@ -32852,6 +34773,11 @@ CREATE TABLE substanceReferenceInformation_Target(
 	_amountString TEXT, -- Foreign Key to element table
 	amountType TEXT, -- Foreign Key to codeableConcept table
 	"source" **LIST** Reference,
+
+	FOREIGN KEY (substanceReferenceInformation_id)
+		REFERENCES substanceReferenceInformation (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("target")
 		REFERENCES identifier (id)
@@ -32926,9 +34852,9 @@ CREATE TABLE substanceSourceMaterial(
 	geographicalLocation **LIST** string,
 	_geographicalLocation **LIST** Element,
 	developmentStage TEXT, -- Foreign Key to codeableConcept table
-	fractionDescription **LIST** SubstanceSourceMaterial_FractionDescription,
+	fractionDescription BOOLEAN, -- true if 1+ rows in SubstanceSourceMaterial_PartDescription correspond to this entry
 	organism TEXT, -- Foreign Key to substanceSourceMaterial_Organism table
-	partDescription **LIST** SubstanceSourceMaterial_PartDescription,
+	partDescription BOOLEAN, -- true if 1+ rows in SubstanceSourceMaterial_PartDescription correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -32990,11 +34916,17 @@ CREATE TABLE substanceSourceMaterial(
 CREATE TABLE substanceSourceMaterial_FractionDescription(
 
 	id TEXT PRIMARY KEY,
+	substanceSourceMaterial_id TEXT, -- Foreign Key to substanceSourceMaterial table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	fraction TEXT,
 	_fraction TEXT, -- Foreign Key to element table
 	materialType TEXT, -- Foreign Key to codeableConcept table
+
+	FOREIGN KEY (substanceSourceMaterial_id)
+		REFERENCES substanceSourceMaterial (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_fraction)
 		REFERENCES element (id)
@@ -33019,7 +34951,7 @@ CREATE TABLE substanceSourceMaterial_Organism(
 	intraspecificType TEXT, -- Foreign Key to codeableConcept table
 	intraspecificDescription TEXT,
 	_intraspecificDescription TEXT, -- Foreign Key to element table
-	author **LIST** SubstanceSourceMaterial_Author,
+	author BOOLEAN, -- true if 1+ rows in SubstanceSourceMaterial_Author correspond to this entry
 	hybrid TEXT, -- Foreign Key to substanceSourceMaterial_Hybrid table
 	organismGeneral TEXT, -- Foreign Key to substanceSourceMaterial_OrganismGeneral table
 
@@ -33063,11 +34995,17 @@ CREATE TABLE substanceSourceMaterial_Organism(
 CREATE TABLE substanceSourceMaterial_Author(
 
 	id TEXT PRIMARY KEY,
+	substanceSourceMaterial_Organism_id TEXT, -- Foreign Key to substanceSourceMaterial_Organism table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	authorType TEXT, -- Foreign Key to codeableConcept table
 	authorDescription TEXT,
 	_authorDescription TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (substanceSourceMaterial_Organism_id)
+		REFERENCES substanceSourceMaterial_Organism (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (authorType)
 		REFERENCES codeableConcept (id)
@@ -33158,10 +35096,16 @@ CREATE TABLE substanceSourceMaterial_OrganismGeneral(
 CREATE TABLE substanceSourceMaterial_PartDescription(
 
 	id TEXT PRIMARY KEY,
+	substanceSourceMaterial_id TEXT, -- Foreign Key to substanceSourceMaterial table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	part TEXT, -- Foreign Key to codeableConcept table
 	partLocation TEXT, -- Foreign Key to codeableConcept table
+
+	FOREIGN KEY (substanceSourceMaterial_id)
+		REFERENCES substanceSourceMaterial (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (part)
 		REFERENCES codeableConcept (id)
@@ -33197,14 +35141,14 @@ CREATE TABLE substanceSpecification(
 	"source" **LIST** Reference,
 	comment TEXT,
 	_comment TEXT, -- Foreign Key to element table
-	moiety **LIST** SubstanceSpecification_Moiety,
-	property **LIST** SubstanceSpecification_Property,
+	moiety BOOLEAN, -- true if 1+ rows in SubstanceSpecification_Relationship correspond to this entry
+	property BOOLEAN, -- true if 1+ rows in SubstanceSpecification_Relationship correspond to this entry
 	referenceInformation TEXT, -- Foreign Key to reference table
 	"structure" TEXT, -- Foreign Key to substanceSpecification_Structure table
-	"code" **LIST** SubstanceSpecification_Code,
+	"code" BOOLEAN, -- true if 1+ rows in SubstanceSpecification_Relationship correspond to this entry
 	"name" **LIST** SubstanceSpecification_Name,
-	molecularWeight **LIST** SubstanceSpecification_MolecularWeight,
-	relationship **LIST** SubstanceSpecification_Relationship,
+	molecularWeight BOOLEAN, -- true if 1+ rows in SubstanceSpecification_Relationship correspond to this entry
+	relationship BOOLEAN, -- true if 1+ rows in SubstanceSpecification_Relationship correspond to this entry
 	nucleicAcid TEXT, -- Foreign Key to reference table
 	polymer TEXT, -- Foreign Key to reference table
 	protein TEXT, -- Foreign Key to reference table
@@ -33295,6 +35239,7 @@ CREATE TABLE substanceSpecification(
 CREATE TABLE substanceSpecification_Moiety(
 
 	id TEXT PRIMARY KEY,
+	substanceSpecification_id TEXT, -- Foreign Key to substanceSpecification table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"role" TEXT, -- Foreign Key to codeableConcept table
@@ -33308,6 +35253,11 @@ CREATE TABLE substanceSpecification_Moiety(
 	amountQuantity TEXT, -- Foreign Key to quantity table
 	amountString TEXT, -- pattern: ^[ \r\n\t\S]+$
 	_amountString TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (substanceSpecification_id)
+		REFERENCES substanceSpecification (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("role")
 		REFERENCES codeableConcept (id)
@@ -33354,6 +35304,7 @@ CREATE TABLE substanceSpecification_Moiety(
 CREATE TABLE substanceSpecification_Property(
 
 	id TEXT PRIMARY KEY,
+	substanceSpecification_id TEXT, -- Foreign Key to substanceSpecification table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	category TEXT, -- Foreign Key to codeableConcept table
@@ -33365,6 +35316,11 @@ CREATE TABLE substanceSpecification_Property(
 	amountQuantity TEXT, -- Foreign Key to quantity table
 	amountString TEXT, -- pattern: ^[ \r\n\t\S]+$
 	_amountString TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (substanceSpecification_id)
+		REFERENCES substanceSpecification (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (category)
 		REFERENCES codeableConcept (id)
@@ -33414,10 +35370,10 @@ CREATE TABLE substanceSpecification_Structure(
 	_molecularFormula TEXT, -- Foreign Key to element table
 	molecularFormulaByMoiety TEXT,
 	_molecularFormulaByMoiety TEXT, -- Foreign Key to element table
-	isotope **LIST** SubstanceSpecification_Isotope,
+	isotope BOOLEAN, -- true if 1+ rows in SubstanceSpecification_Representation correspond to this entry
 	molecularWeight TEXT, -- Foreign Key to substanceSpecification_MolecularWeight table
 	"source" **LIST** Reference,
-	representation **LIST** SubstanceSpecification_Representation,
+	representation BOOLEAN, -- true if 1+ rows in SubstanceSpecification_Representation correspond to this entry
 
 	FOREIGN KEY (stereochemistry)
 		REFERENCES codeableConcept (id)
@@ -33449,6 +35405,7 @@ CREATE TABLE substanceSpecification_Structure(
 CREATE TABLE substanceSpecification_Isotope(
 
 	id TEXT PRIMARY KEY,
+	substanceSpecification_Structure_id TEXT, -- Foreign Key to substanceSpecification_Structure table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	identifier TEXT, -- Foreign Key to identifier table
@@ -33456,6 +35413,11 @@ CREATE TABLE substanceSpecification_Isotope(
 	substitution TEXT, -- Foreign Key to codeableConcept table
 	halfLife TEXT, -- Foreign Key to quantity table
 	molecularWeight TEXT, -- Foreign Key to substanceSpecification_MolecularWeight table
+
+	FOREIGN KEY (substanceSpecification_Structure_id)
+		REFERENCES substanceSpecification_Structure (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (identifier)
 		REFERENCES identifier (id)
@@ -33487,11 +35449,17 @@ CREATE TABLE substanceSpecification_Isotope(
 CREATE TABLE substanceSpecification_MolecularWeight(
 
 	id TEXT PRIMARY KEY,
+	substanceSpecification_id TEXT, -- Foreign Key to substanceSpecification table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"method" TEXT, -- Foreign Key to codeableConcept table
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	amount TEXT, -- Foreign Key to quantity table
+
+	FOREIGN KEY (substanceSpecification_id)
+		REFERENCES substanceSpecification (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("method")
 		REFERENCES codeableConcept (id)
@@ -33513,12 +35481,18 @@ CREATE TABLE substanceSpecification_MolecularWeight(
 CREATE TABLE substanceSpecification_Representation(
 
 	id TEXT PRIMARY KEY,
+	substanceSpecification_Structure_id TEXT, -- Foreign Key to substanceSpecification_Structure table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	representation TEXT,
 	_representation TEXT, -- Foreign Key to element table
 	attachment TEXT, -- Foreign Key to attachment table
+
+	FOREIGN KEY (substanceSpecification_Structure_id)
+		REFERENCES substanceSpecification_Structure (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -33540,6 +35514,7 @@ CREATE TABLE substanceSpecification_Representation(
 CREATE TABLE substanceSpecification_Code(
 
 	id TEXT PRIMARY KEY,
+	substanceSpecification_id TEXT, -- Foreign Key to substanceSpecification table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
@@ -33549,6 +35524,11 @@ CREATE TABLE substanceSpecification_Code(
 	comment TEXT,
 	_comment TEXT, -- Foreign Key to element table
 	"source" **LIST** Reference,
+
+	FOREIGN KEY (substanceSpecification_id)
+		REFERENCES substanceSpecification (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -33588,7 +35568,7 @@ CREATE TABLE substanceSpecification_Name(
 	jurisdiction **LIST** CodeableConcept,
 	"synonym" **LIST** SubstanceSpecification_Name,
 	"translation" **LIST** SubstanceSpecification_Name,
-	official **LIST** SubstanceSpecification_Official,
+	official BOOLEAN, -- true if 1+ rows in SubstanceSpecification_Official correspond to this entry
 	"source" **LIST** Reference,
 
 	FOREIGN KEY (_name)
@@ -33616,12 +35596,18 @@ CREATE TABLE substanceSpecification_Name(
 CREATE TABLE substanceSpecification_Official(
 
 	id TEXT PRIMARY KEY,
+	substanceSpecification_Name_id TEXT, -- Foreign Key to substanceSpecification_Name table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	authority TEXT, -- Foreign Key to codeableConcept table
 	"status" TEXT, -- Foreign Key to codeableConcept table
 	"date" DATETIME,
 	_date TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (substanceSpecification_Name_id)
+		REFERENCES substanceSpecification_Name (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (authority)
 		REFERENCES codeableConcept (id)
@@ -33643,6 +35629,7 @@ CREATE TABLE substanceSpecification_Official(
 CREATE TABLE substanceSpecification_Relationship(
 
 	id TEXT PRIMARY KEY,
+	substanceSpecification_id TEXT, -- Foreign Key to substanceSpecification table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	substanceReference TEXT, -- Foreign Key to reference table
@@ -33658,6 +35645,11 @@ CREATE TABLE substanceSpecification_Relationship(
 	amountRatioLowLimit TEXT, -- Foreign Key to ratio table
 	amountType TEXT, -- Foreign Key to codeableConcept table
 	"source" **LIST** Reference,
+
+	FOREIGN KEY (substanceSpecification_id)
+		REFERENCES substanceSpecification (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (substanceReference)
 		REFERENCES reference (id)
@@ -33855,7 +35847,7 @@ CREATE TABLE supplyRequest(
 	itemCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	itemReference TEXT, -- Foreign Key to reference table
 	quantity TEXT, -- Foreign Key to quantity table
-	"parameter" **LIST** SupplyRequest_Parameter,
+	"parameter" BOOLEAN, -- true if 1+ rows in SupplyRequest_Parameter correspond to this entry
 	occurrenceDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 	_occurrenceDateTime TEXT, -- Foreign Key to element table
 	occurrencePeriod TEXT, -- Foreign Key to period table
@@ -33959,6 +35951,7 @@ CREATE TABLE supplyRequest(
 CREATE TABLE supplyRequest_Parameter(
 
 	id TEXT PRIMARY KEY,
+	supplyRequest_id TEXT, -- Foreign Key to supplyRequest table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
@@ -33967,6 +35960,11 @@ CREATE TABLE supplyRequest_Parameter(
 	valueRange TEXT, -- Foreign Key to range table
 	valueBoolean BOOLEAN, -- pattern: ^true|false$
 	_valueBoolean TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (supplyRequest_id)
+		REFERENCES supplyRequest (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -34044,8 +36042,8 @@ CREATE TABLE task(
 	note **LIST** Annotation,
 	relevantHistory **LIST** Reference,
 	restriction TEXT, -- Foreign Key to task_Restriction table
-	"input" **LIST** Task_Input,
-	"output" **LIST** Task_Output,
+	"input" BOOLEAN, -- true if 1+ rows in Task_Output correspond to this entry
+	"output" BOOLEAN, -- true if 1+ rows in Task_Output correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -34199,6 +36197,7 @@ CREATE TABLE task_Restriction(
 CREATE TABLE task_Input(
 
 	id TEXT PRIMARY KEY,
+	task_id TEXT, -- Foreign Key to task table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
@@ -34271,6 +36270,11 @@ CREATE TABLE task_Input(
 	valueUsageContext TEXT, -- Foreign Key to usageContext table
 	valueDosage TEXT, -- Foreign Key to dosage table
 	valueMeta TEXT, -- Foreign Key to meta table
+
+	FOREIGN KEY (task_id)
+		REFERENCES task (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -34532,6 +36536,7 @@ CREATE TABLE task_Input(
 CREATE TABLE task_Output(
 
 	id TEXT PRIMARY KEY,
+	task_id TEXT, -- Foreign Key to task table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
@@ -34604,6 +36609,11 @@ CREATE TABLE task_Output(
 	valueUsageContext TEXT, -- Foreign Key to usageContext table
 	valueDosage TEXT, -- Foreign Key to dosage table
 	valueMeta TEXT, -- Foreign Key to meta table
+
+	FOREIGN KEY (task_id)
+		REFERENCES task (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -34906,7 +36916,7 @@ CREATE TABLE terminologyCapabilities(
 	"implementation" TEXT, -- Foreign Key to terminologyCapabilities_Implementation table
 	lockedDate BOOLEAN,
 	_lockedDate TEXT, -- Foreign Key to element table
-	codeSystem **LIST** TerminologyCapabilities_CodeSystem,
+	codeSystem BOOLEAN, -- true if 1+ rows in TerminologyCapabilities_CodeSystem correspond to this entry
 	expansion TEXT, -- Foreign Key to terminologyCapabilities_Expansion table
 	codeSearch TEXT, -- enum: explicit/all
 	_codeSearch TEXT, -- Foreign Key to element table
@@ -35083,12 +37093,18 @@ CREATE TABLE terminologyCapabilities_Implementation(
 CREATE TABLE terminologyCapabilities_CodeSystem(
 
 	id TEXT PRIMARY KEY,
+	terminologyCapabilities_id TEXT, -- Foreign Key to terminologyCapabilities table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	uri TEXT,
-	"version" **LIST** TerminologyCapabilities_Version,
+	"version" BOOLEAN, -- true if 1+ rows in TerminologyCapabilities_Version correspond to this entry
 	subsumption BOOLEAN,
 	_subsumption TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (terminologyCapabilities_id)
+		REFERENCES terminologyCapabilities (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_subsumption)
 		REFERENCES element (id)
@@ -35100,6 +37116,7 @@ CREATE TABLE terminologyCapabilities_CodeSystem(
 CREATE TABLE terminologyCapabilities_Version(
 
 	id TEXT PRIMARY KEY,
+	terminologyCapabilities_CodeSystem_id TEXT, -- Foreign Key to terminologyCapabilities_CodeSystem table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT,
@@ -35110,9 +37127,14 @@ CREATE TABLE terminologyCapabilities_Version(
 	_compositional TEXT, -- Foreign Key to element table
 	"language" **LIST** code,
 	_language **LIST** Element,
-	"filter" **LIST** TerminologyCapabilities_Filter,
+	"filter" BOOLEAN, -- true if 1+ rows in TerminologyCapabilities_Filter correspond to this entry
 	property **LIST** code,
 	_property **LIST** Element,
+
+	FOREIGN KEY (terminologyCapabilities_CodeSystem_id)
+		REFERENCES terminologyCapabilities_CodeSystem (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_code)
 		REFERENCES element (id)
@@ -35134,12 +37156,18 @@ CREATE TABLE terminologyCapabilities_Version(
 CREATE TABLE terminologyCapabilities_Filter(
 
 	id TEXT PRIMARY KEY,
+	terminologyCapabilities_Version_id TEXT, -- Foreign Key to terminologyCapabilities_Version table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT,
 	_code TEXT, -- Foreign Key to element table
 	op **LIST** code,
 	_op **LIST** Element,
+
+	FOREIGN KEY (terminologyCapabilities_Version_id)
+		REFERENCES terminologyCapabilities_Version (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_code)
 		REFERENCES element (id)
@@ -35159,7 +37187,7 @@ CREATE TABLE terminologyCapabilities_Expansion(
 	_paging TEXT, -- Foreign Key to element table
 	incomplete BOOLEAN,
 	_incomplete TEXT, -- Foreign Key to element table
-	"parameter" **LIST** TerminologyCapabilities_Parameter,
+	"parameter" BOOLEAN, -- true if 1+ rows in TerminologyCapabilities_Parameter correspond to this entry
 	textFilter TEXT,
 	_textFilter TEXT, -- Foreign Key to element table
 
@@ -35188,12 +37216,18 @@ CREATE TABLE terminologyCapabilities_Expansion(
 CREATE TABLE terminologyCapabilities_Parameter(
 
 	id TEXT PRIMARY KEY,
+	terminologyCapabilities_Expansion_id TEXT, -- Foreign Key to terminologyCapabilities_Expansion table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	documentation TEXT,
 	_documentation TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (terminologyCapabilities_Expansion_id)
+		REFERENCES terminologyCapabilities_Expansion (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_name)
 		REFERENCES element (id)
@@ -35279,9 +37313,9 @@ CREATE TABLE testReport(
 	_tester TEXT, -- Foreign Key to element table
 	issued DATETIME,
 	_issued TEXT, -- Foreign Key to element table
-	participant **LIST** TestReport_Participant,
+	participant BOOLEAN, -- true if 1+ rows in TestReport_Test correspond to this entry
 	setup TEXT, -- Foreign Key to testReport_Setup table
-	test **LIST** TestReport_Test,
+	test BOOLEAN, -- true if 1+ rows in TestReport_Test correspond to this entry
 	teardown TEXT, -- Foreign Key to testReport_Teardown table
 
 	FOREIGN KEY (meta)
@@ -35359,6 +37393,7 @@ CREATE TABLE testReport(
 CREATE TABLE testReport_Participant(
 
 	id TEXT PRIMARY KEY,
+	testReport_id TEXT, -- Foreign Key to testReport table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"type" TEXT, -- enum: test-engine/client/server
@@ -35367,6 +37402,11 @@ CREATE TABLE testReport_Participant(
 	_uri TEXT, -- Foreign Key to element table
 	display TEXT,
 	_display TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (testReport_id)
+		REFERENCES testReport (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_type)
 		REFERENCES element (id)
@@ -35390,17 +37430,23 @@ CREATE TABLE testReport_Setup(
 	id TEXT PRIMARY KEY,
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
-	"action" **LIST** TestReport_Action
+	"action" BOOLEAN, -- true if 1+ rows in TestReport_Action correspond to this entry
 
 );
 
 CREATE TABLE testReport_Action(
 
 	id TEXT PRIMARY KEY,
+	testReport_Setup_id TEXT, -- Foreign Key to testReport_Setup table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	operation TEXT, -- Foreign Key to testReport_Operation table
 	assert TEXT, -- Foreign Key to testReport_Assert table
+
+	FOREIGN KEY (testReport_Setup_id)
+		REFERENCES testReport_Setup (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (operation)
 		REFERENCES testReport_Operation (id)
@@ -35475,13 +37521,19 @@ CREATE TABLE testReport_Assert(
 CREATE TABLE testReport_Test(
 
 	id TEXT PRIMARY KEY,
+	testReport_id TEXT, -- Foreign Key to testReport table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	"action" **LIST** TestReport_Action1,
+	"action" BOOLEAN, -- true if 1+ rows in TestReport_Action1 correspond to this entry
+
+	FOREIGN KEY (testReport_id)
+		REFERENCES testReport (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_name)
 		REFERENCES element (id)
@@ -35498,10 +37550,16 @@ CREATE TABLE testReport_Test(
 CREATE TABLE testReport_Action1(
 
 	id TEXT PRIMARY KEY,
+	testReport_Test_id TEXT, -- Foreign Key to testReport_Test table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	operation TEXT, -- Foreign Key to testReport_Operation table
 	assert TEXT, -- Foreign Key to testReport_Assert table
+
+	FOREIGN KEY (testReport_Test_id)
+		REFERENCES testReport_Test (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (operation)
 		REFERENCES testReport_Operation (id)
@@ -35520,16 +37578,22 @@ CREATE TABLE testReport_Teardown(
 	id TEXT PRIMARY KEY,
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
-	"action" **LIST** TestReport_Action2
+	"action" BOOLEAN, -- true if 1+ rows in TestReport_Action2 correspond to this entry
 
 );
 
 CREATE TABLE testReport_Action2(
 
 	id TEXT PRIMARY KEY,
+	testReport_Teardown_id TEXT, -- Foreign Key to testReport_Teardown table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	operation TEXT, -- Foreign Key to testReport_Operation table
+
+	FOREIGN KEY (testReport_Teardown_id)
+		REFERENCES testReport_Teardown (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (operation)
 		REFERENCES testReport_Operation (id)
@@ -35577,14 +37641,14 @@ CREATE TABLE testScript(
 	_purpose TEXT, -- Foreign Key to element table
 	copyright TEXT,
 	_copyright TEXT, -- Foreign Key to element table
-	origin **LIST** TestScript_Origin,
-	destination **LIST** TestScript_Destination,
+	origin BOOLEAN, -- true if 1+ rows in TestScript_Test correspond to this entry
+	destination BOOLEAN, -- true if 1+ rows in TestScript_Test correspond to this entry
 	metadata TEXT, -- Foreign Key to testScript_Metadata table
-	fixture **LIST** TestScript_Fixture,
+	fixture BOOLEAN, -- true if 1+ rows in TestScript_Test correspond to this entry
 	"profile" **LIST** Reference,
-	variable **LIST** TestScript_Variable,
+	variable BOOLEAN, -- true if 1+ rows in TestScript_Test correspond to this entry
 	setup TEXT, -- Foreign Key to testScript_Setup table
-	test **LIST** TestScript_Test,
+	test BOOLEAN, -- true if 1+ rows in TestScript_Test correspond to this entry
 	teardown TEXT, -- Foreign Key to testScript_Teardown table
 
 	FOREIGN KEY (meta)
@@ -35687,11 +37751,17 @@ CREATE TABLE testScript(
 CREATE TABLE testScript_Origin(
 
 	id TEXT PRIMARY KEY,
+	testScript_id TEXT, -- Foreign Key to testScript table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"index" INTEGER,
 	_index TEXT, -- Foreign Key to element table
 	"profile" TEXT, -- Foreign Key to coding table
+
+	FOREIGN KEY (testScript_id)
+		REFERENCES testScript (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_index)
 		REFERENCES element (id)
@@ -35708,11 +37778,17 @@ CREATE TABLE testScript_Origin(
 CREATE TABLE testScript_Destination(
 
 	id TEXT PRIMARY KEY,
+	testScript_id TEXT, -- Foreign Key to testScript table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"index" INTEGER,
 	_index TEXT, -- Foreign Key to element table
 	"profile" TEXT, -- Foreign Key to coding table
+
+	FOREIGN KEY (testScript_id)
+		REFERENCES testScript (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_index)
 		REFERENCES element (id)
@@ -35731,20 +37807,26 @@ CREATE TABLE testScript_Metadata(
 	id TEXT PRIMARY KEY,
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
-	link **LIST** TestScript_Link,
-	capability **LIST** TestScript_Capability
+	link BOOLEAN, -- true if 1+ rows in TestScript_Capability correspond to this entry
+	capability BOOLEAN, -- true if 1+ rows in TestScript_Capability correspond to this entry
 
 );
 
 CREATE TABLE testScript_Link(
 
 	id TEXT PRIMARY KEY,
+	testScript_Metadata_id TEXT, -- Foreign Key to testScript_Metadata table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (testScript_Metadata_id)
+		REFERENCES testScript_Metadata (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_url)
 		REFERENCES element (id)
@@ -35761,6 +37843,7 @@ CREATE TABLE testScript_Link(
 CREATE TABLE testScript_Capability(
 
 	id TEXT PRIMARY KEY,
+	testScript_Metadata_id TEXT, -- Foreign Key to testScript_Metadata table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"required" BOOLEAN,
@@ -35776,6 +37859,11 @@ CREATE TABLE testScript_Capability(
 	link **LIST** uri,
 	_link **LIST** Element,
 	capabilities TEXT,
+
+	FOREIGN KEY (testScript_Metadata_id)
+		REFERENCES testScript_Metadata (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_required)
 		REFERENCES element (id)
@@ -35802,6 +37890,7 @@ CREATE TABLE testScript_Capability(
 CREATE TABLE testScript_Fixture(
 
 	id TEXT PRIMARY KEY,
+	testScript_id TEXT, -- Foreign Key to testScript table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	autocreate BOOLEAN,
@@ -35809,6 +37898,11 @@ CREATE TABLE testScript_Fixture(
 	autodelete BOOLEAN,
 	_autodelete TEXT, -- Foreign Key to element table
 	"resource" TEXT, -- Foreign Key to reference table
+
+	FOREIGN KEY (testScript_id)
+		REFERENCES testScript (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_autocreate)
 		REFERENCES element (id)
@@ -35830,6 +37924,7 @@ CREATE TABLE testScript_Fixture(
 CREATE TABLE testScript_Variable(
 
 	id TEXT PRIMARY KEY,
+	testScript_id TEXT, -- Foreign Key to testScript table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"name" TEXT,
@@ -35848,6 +37943,11 @@ CREATE TABLE testScript_Variable(
 	_path TEXT, -- Foreign Key to element table
 	sourceId TEXT, -- Foreign Key to id table
 	_sourceId TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (testScript_id)
+		REFERENCES testScript (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_name)
 		REFERENCES element (id)
@@ -35901,17 +38001,23 @@ CREATE TABLE testScript_Setup(
 	id TEXT PRIMARY KEY,
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
-	"action" **LIST** TestScript_Action
+	"action" BOOLEAN, -- true if 1+ rows in TestScript_Action correspond to this entry
 
 );
 
 CREATE TABLE testScript_Action(
 
 	id TEXT PRIMARY KEY,
+	testScript_Setup_id TEXT, -- Foreign Key to testScript_Setup table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	operation TEXT, -- Foreign Key to testScript_Operation table
 	assert TEXT, -- Foreign Key to testScript_Assert table
+
+	FOREIGN KEY (testScript_Setup_id)
+		REFERENCES testScript_Setup (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (operation)
 		REFERENCES testScript_Operation (id)
@@ -35951,7 +38057,7 @@ CREATE TABLE testScript_Operation(
 	_origin TEXT, -- Foreign Key to element table
 	params TEXT,
 	_params TEXT, -- Foreign Key to element table
-	requestHeader **LIST** TestScript_RequestHeader,
+	requestHeader BOOLEAN, -- true if 1+ rows in TestScript_RequestHeader correspond to this entry
 	requestId TEXT, -- Foreign Key to id table
 	_requestId TEXT, -- Foreign Key to element table
 	responseId TEXT, -- Foreign Key to id table
@@ -36068,12 +38174,18 @@ CREATE TABLE testScript_Operation(
 CREATE TABLE testScript_RequestHeader(
 
 	id TEXT PRIMARY KEY,
+	testScript_Operation_id TEXT, -- Foreign Key to testScript_Operation table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	field TEXT,
 	_field TEXT, -- Foreign Key to element table
 	"value" TEXT,
 	_value TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (testScript_Operation_id)
+		REFERENCES testScript_Operation (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_field)
 		REFERENCES element (id)
@@ -36262,13 +38374,19 @@ CREATE TABLE testScript_Assert(
 CREATE TABLE testScript_Test(
 
 	id TEXT PRIMARY KEY,
+	testScript_id TEXT, -- Foreign Key to testScript table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	"action" **LIST** TestScript_Action1,
+	"action" BOOLEAN, -- true if 1+ rows in TestScript_Action1 correspond to this entry
+
+	FOREIGN KEY (testScript_id)
+		REFERENCES testScript (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_name)
 		REFERENCES element (id)
@@ -36285,10 +38403,16 @@ CREATE TABLE testScript_Test(
 CREATE TABLE testScript_Action1(
 
 	id TEXT PRIMARY KEY,
+	testScript_Test_id TEXT, -- Foreign Key to testScript_Test table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	operation TEXT, -- Foreign Key to testScript_Operation table
 	assert TEXT, -- Foreign Key to testScript_Assert table
+
+	FOREIGN KEY (testScript_Test_id)
+		REFERENCES testScript_Test (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (operation)
 		REFERENCES testScript_Operation (id)
@@ -36307,16 +38431,22 @@ CREATE TABLE testScript_Teardown(
 	id TEXT PRIMARY KEY,
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
-	"action" **LIST** TestScript_Action2
+	"action" BOOLEAN, -- true if 1+ rows in TestScript_Action2 correspond to this entry
 
 );
 
 CREATE TABLE testScript_Action2(
 
 	id TEXT PRIMARY KEY,
+	testScript_Teardown_id TEXT, -- Foreign Key to testScript_Teardown table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	operation TEXT, -- Foreign Key to testScript_Operation table
+
+	FOREIGN KEY (testScript_Teardown_id)
+		REFERENCES testScript_Teardown (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (operation)
 		REFERENCES testScript_Operation (id)
@@ -36494,8 +38624,8 @@ CREATE TABLE valueSet_Include(
 	_system TEXT, -- Foreign Key to element table
 	"version" TEXT,
 	_version TEXT, -- Foreign Key to element table
-	concept **LIST** ValueSet_Concept,
-	"filter" **LIST** ValueSet_Filter,
+	concept BOOLEAN, -- true if 1+ rows in ValueSet_Filter correspond to this entry
+	"filter" BOOLEAN, -- true if 1+ rows in ValueSet_Filter correspond to this entry
 	valueSet **LIST** canonical,
 
 	FOREIGN KEY (_system)
@@ -36513,6 +38643,7 @@ CREATE TABLE valueSet_Include(
 CREATE TABLE valueSet_Concept(
 
 	id TEXT PRIMARY KEY,
+	valueSet_Include_id TEXT, -- Foreign Key to valueSet_Include table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"code" TEXT,
@@ -36520,6 +38651,11 @@ CREATE TABLE valueSet_Concept(
 	display TEXT,
 	_display TEXT, -- Foreign Key to element table
 	designation **LIST** ValueSet_Designation,
+
+	FOREIGN KEY (valueSet_Include_id)
+		REFERENCES valueSet_Include (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_code)
 		REFERENCES element (id)
@@ -36564,6 +38700,7 @@ CREATE TABLE valueSet_Designation(
 CREATE TABLE valueSet_Filter(
 
 	id TEXT PRIMARY KEY,
+	valueSet_Include_id TEXT, -- Foreign Key to valueSet_Include table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	property TEXT,
@@ -36572,6 +38709,11 @@ CREATE TABLE valueSet_Filter(
 	_op TEXT, -- Foreign Key to element table
 	"value" TEXT,
 	_value TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (valueSet_Include_id)
+		REFERENCES valueSet_Include (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_property)
 		REFERENCES element (id)
@@ -36603,7 +38745,7 @@ CREATE TABLE valueSet_Expansion(
 	_total TEXT, -- Foreign Key to element table
 	offset INTEGER,
 	_offset TEXT, -- Foreign Key to element table
-	"parameter" **LIST** ValueSet_Parameter,
+	"parameter" BOOLEAN, -- true if 1+ rows in ValueSet_Parameter correspond to this entry
 	"contains" **LIST** ValueSet_Contains,
 
 	FOREIGN KEY (_identifier)
@@ -36631,6 +38773,7 @@ CREATE TABLE valueSet_Expansion(
 CREATE TABLE valueSet_Parameter(
 
 	id TEXT PRIMARY KEY,
+	valueSet_Expansion_id TEXT, -- Foreign Key to valueSet_Expansion table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	"name" TEXT,
@@ -36649,6 +38792,11 @@ CREATE TABLE valueSet_Parameter(
 	_valueCode TEXT, -- Foreign Key to element table
 	valueDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 	_valueDateTime TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (valueSet_Expansion_id)
+		REFERENCES valueSet_Expansion (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_name)
 		REFERENCES element (id)
@@ -36773,9 +38921,9 @@ CREATE TABLE verificationResult(
 	nextScheduled DATE,
 	_nextScheduled TEXT, -- Foreign Key to element table
 	failureAction TEXT, -- Foreign Key to codeableConcept table
-	primarySource **LIST** VerificationResult_PrimarySource,
+	primarySource BOOLEAN, -- true if 1+ rows in VerificationResult_Validator correspond to this entry
 	attestation TEXT, -- Foreign Key to verificationResult_Attestation table
-	validator **LIST** VerificationResult_Validator,
+	validator BOOLEAN, -- true if 1+ rows in VerificationResult_Validator correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -36847,6 +38995,7 @@ CREATE TABLE verificationResult(
 CREATE TABLE verificationResult_PrimarySource(
 
 	id TEXT PRIMARY KEY,
+	verificationResult_id TEXT, -- Foreign Key to verificationResult table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	who TEXT, -- Foreign Key to reference table
@@ -36857,6 +39006,11 @@ CREATE TABLE verificationResult_PrimarySource(
 	_validationDate TEXT, -- Foreign Key to element table
 	canPushUpdates TEXT, -- Foreign Key to codeableConcept table
 	pushTypeAvailable **LIST** CodeableConcept,
+
+	FOREIGN KEY (verificationResult_id)
+		REFERENCES verificationResult (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (who)
 		REFERENCES reference (id)
@@ -36942,12 +39096,18 @@ CREATE TABLE verificationResult_Attestation(
 CREATE TABLE verificationResult_Validator(
 
 	id TEXT PRIMARY KEY,
+	verificationResult_id TEXT, -- Foreign Key to verificationResult table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	organization TEXT, -- Foreign Key to reference table
 	identityCertificate TEXT,
 	_identityCertificate TEXT, -- Foreign Key to element table
 	attestationSignature TEXT, -- Foreign Key to signature table
+
+	FOREIGN KEY (verificationResult_id)
+		REFERENCES verificationResult (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (organization)
 		REFERENCES reference (id)
@@ -36989,7 +39149,7 @@ CREATE TABLE visionPrescription(
 	dateWritten DATETIME,
 	_dateWritten TEXT, -- Foreign Key to element table
 	prescriber TEXT, -- Foreign Key to reference table
-	lensSpecification **LIST** VisionPrescription_LensSpecification,
+	lensSpecification BOOLEAN, -- true if 1+ rows in VisionPrescription_LensSpecification correspond to this entry
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -37046,6 +39206,7 @@ CREATE TABLE visionPrescription(
 CREATE TABLE visionPrescription_LensSpecification(
 
 	id TEXT PRIMARY KEY,
+	visionPrescription_id TEXT, -- Foreign Key to visionPrescription table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	product TEXT, -- Foreign Key to codeableConcept table
@@ -37057,7 +39218,7 @@ CREATE TABLE visionPrescription_LensSpecification(
 	_cylinder TEXT, -- Foreign Key to element table
 	axis INTEGER,
 	_axis TEXT, -- Foreign Key to element table
-	prism **LIST** VisionPrescription_Prism,
+	prism BOOLEAN, -- true if 1+ rows in VisionPrescription_Prism correspond to this entry
 	"add" REAL,
 	_add TEXT, -- Foreign Key to element table
 	power REAL,
@@ -37072,6 +39233,11 @@ CREATE TABLE visionPrescription_LensSpecification(
 	brand TEXT,
 	_brand TEXT, -- Foreign Key to element table
 	note **LIST** Annotation,
+
+	FOREIGN KEY (visionPrescription_id)
+		REFERENCES visionPrescription (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (product)
 		REFERENCES codeableConcept (id)
@@ -37138,12 +39304,18 @@ CREATE TABLE visionPrescription_LensSpecification(
 CREATE TABLE visionPrescription_Prism(
 
 	id TEXT PRIMARY KEY,
+	visionPrescription_LensSpecification_id TEXT, -- Foreign Key to visionPrescription_LensSpecification table
 	extension **LIST** Extension,
 	modifierExtension **LIST** Extension,
 	amount REAL,
 	_amount TEXT, -- Foreign Key to element table
 	base TEXT, -- enum: up/down/in/out
 	_base TEXT, -- Foreign Key to element table
+
+	FOREIGN KEY (visionPrescription_LensSpecification_id)
+		REFERENCES visionPrescription_LensSpecification (id)
+			ON DELETE CASCADE
+		ON UPDATE NO ACTION,
 
 	FOREIGN KEY (_amount)
 		REFERENCES element (id)

@@ -54,6 +54,14 @@ guidelines:
 4. Each single primitive will be a column
 5. Each column referring to a single row in another table will have a foreign key corresponding to 
     the id of the row in the other table
+6. Work in progress, obviously, so some of this will change as I learn why not to do some things
+7. 4 primitive tables for lists of same, 
+    -uri with canonical and uri columns
+    -numbers with unsignedInt, positiveInt, decimal and integer columns
+    -times with time and dateTime columns
+    -strings with code, string and markdown columns
+    -all primitive tables will have foreignId and foreignTable added as columns to form a composite
+        foreign key
 6. ToDo: Lists - bools, other tables
 
 # FHIR datatypes

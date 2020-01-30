@@ -93,11 +93,31 @@ with open('fhir.schema.json', encoding='utf8') as json_file:
 #                   '\tresourceType TEXT\n\n',
 #                   ');\n'])
 
+sqlCode = ''
+
+definitions = schema['definitions']
+
+#look at types to see what lists of nested objects are only referenced from one other table
+singles = []
+for table in definitions:
+    if('properties' in definitions[table] and str(table) != 'ResourceList'):
+        for variable in definitions[table]['properties']:
+            if('type' in definitions[table]['properties'][variable]):
+                if('array' == definitions[table]['properties'][variable]['type']):
+                    if('$ref' in definitions[table]['properties'][variable]['items']):
+                        singles.append(table)
+                        singles.append(definitions[table]['properties'][variable]['items']['$ref'].split('/definitions/')[1])
+single = {}
+psingle = {}
+#if a table is a list from one and only one other table, record it here to
+#create foreign key later
+for i in range(0, len(singles), 2):
+    if(singles[1::2].count(singles[i+1]) == 1):
+        single[singles[i+1]] = singles[i]
+        psingle[singles[i]] = singles[i+1]
+
 #iterates through the different entities in fhir.schema.json
 #only looks in definitions (these are mostly resources, not primitives)
-
-sqlCode = ''
-definitions = schema['definitions']
 for table in definitions:
     
     #ignore any entries that are under 'ResourceList' (names, no definitions)
@@ -121,21 +141,39 @@ for table in definitions:
                 
                 #check if array or pattern
                 if(typ == 'array'):
+                    
                     #Array
                     if('$ref' in value['items']):
-                        sqlCode = ''.join([sqlCode, '\t', 
-                                           sqlStrings(variable), ' **LIST** ', 
-                                           value['items']['$ref'].split('/definitions/')[1],
-                                          ',\n'])
+                        
+                        #checks if value is a list in another table that is only
+                        #referenced  by this table, if so, makes value a bool,
+                        #and the other table has this ID as a foreign key
+                        if(table not in psingle.keys() 
+                           or value['items']['$ref'].split('/definitions/')[1] not in single.keys()
+                           or single[value['items']['$ref'].split('/definitions/')[1]] != table):
+                            
+                            sqlCode = ''.join([sqlCode, 
+                                                       '\t', 
+                                                       sqlStrings(variable), 
+                                                       ' **LIST** ', 
+                                                       value['items']['$ref'].split('/definitions/')[1],
+                                                       ',\n'])
+                        else:                            
+                            sqlCode = ''.join([sqlCode, 
+                                               '\t',
+                                               sqlStrings(variable), 
+                                               ' BOOLEAN,',
+                                               ' -- true if 1+ rows in ', 
+                                               psingle[table], 
+                                               ' correspond to this entry\n'])
+
+
                     elif('enum' in value['items']):
-                        sqlCode = ''.join([sqlCode, '\t', 
+                        sqlCode = ''.join([sqlCode, '\t',  
                                            sqlStrings(variable), ' **LIST** ',
-                                           'enum, -- ', '/'.join(value['items']['enum']),
-                                           ',\n'])  
-                    else:
-                        sqlCode = ''.join([sqlCode, '\t', sqlStrings(variable), ' **LIST** ', 
-                                           value['items']['$ref'].split('/definitions/')[1],
-                                          ',\n'])                                
+                                           'enum, -- enum: ', '/'.join(value['items']['enum']),
+                                           ',\n'])
+                    
 
                 #if not array, either String, Bool, or Number with pattern
                 else:  
@@ -152,9 +190,13 @@ for table in definitions:
             #id is always the primary key
             elif(variable == 'id'):
                 sqlCode = ''.join([sqlCode, '\tid TEXT PRIMARY KEY,\n'])
-     
-                    #add to foreign keys dictionary for coding later
-                    #foreignKeys[parentID] = sqlStrings(lowcc(table.split('_')[0]))
+                
+                #add to foreign keys dictionary for coding later
+                if(table in single.keys()):
+                    sqlCode = ''.join([sqlCode, '\t', lowcc(single[table] + '_id'),
+                                       ' TEXT, -- Foreign Key to ', 
+                                       sqlStrings(lowcc(single[table])), ' table\n'])
+                    foreignKeys[lowcc(single[table] + '_id')] = sqlStrings(lowcc(single[table]))
                                                        
             #check type
             elif('$ref' in value):
@@ -195,3 +237,12 @@ sqlCode = sqlCode.replace(',\n\n);', '\n\n);')
 with open("sqliteFhirScript.sql", "w", encoding="utf-8") as f:
     f.write(sqlCode)
 f.close()
+
+#14 enum lists
+
+#2705 lists
+#1435 Extension lists
+#120 Identifier lists
+#397 Coding lists
+#143 ResourceList lists
+#263 Reference Lists
