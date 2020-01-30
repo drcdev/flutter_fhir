@@ -8,6 +8,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'coverageEligibilityResponse.g.dart';
@@ -33,8 +34,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -78,12 +85,18 @@ List<Identifier> identifier;
 //  The status of the resource instance.
 String status;
 
+//  Extensions for status
+Element element_status;
+
 //  Code to specify whether requesting: prior authorization requirements
 // for some service categories or billing codes; benefits for coverages
 // specified or discovered; discovery and return of coverages for the
 // patient; and/or validation that the specified coverage is in-force at
 // the date/period specified or 'now' if not specified.
 List<String> purpose; // <code> enum: auth-requirements/benefits/discovery/validation> purpose;
+
+//  Extensions for purpose
+List<Element> element_purpose;
 
 //  The party who is the beneficiary of the supplied coverage and for whom
 // eligibility is sought.
@@ -93,12 +106,18 @@ Reference patient;
 // or completed.
 String servicedDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
+//  Extensions for servicedDate
+Element element_servicedDate;
+
 //  The date or dates when the enclosed suite of services were performed
 // or completed.
 Period servicedPeriod;
 
 //  The date this resource was created.
 DateTime created;
+
+//  Extensions for created
+Element element_created;
 
 //  The provider which is responsible for the request.
 Reference requestor;
@@ -109,8 +128,14 @@ Reference request;
 //  The outcome of the request processing.
 String outcome; // <code> enum: queued/complete/error/partial;
 
+//  Extensions for outcome
+Element element_outcome;
+
 //  A human readable description of the status of the adjudication.
 String disposition;
+
+//  Extensions for disposition
+Element element_disposition;
 
 //  The Insurer who issued the coverage in question and is the author of
 // the response.
@@ -124,6 +149,9 @@ List<CoverageEligibilityResponse_Insurance> insurance;
 // used on further communication and as proof that the request occurred.
 String preAuthRef;
 
+//  Extensions for preAuthRef
+Element element_preAuthRef;
+
 //  A code for the form to be used for printing the content.
 CodeableConcept form;
 
@@ -135,25 +163,34 @@ CoverageEligibilityResponse(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
+    this.element_status,
     this.purpose,
+    this.element_purpose,
     this.patient,
     this.servicedDate,
+    this.element_servicedDate,
     this.servicedPeriod,
     this.created,
+    this.element_created,
     this.requestor,
     this.request,
     this.outcome,
+    this.element_outcome,
     this.disposition,
+    this.element_disposition,
     this.insurer,
     this.insurance,
     this.preAuthRef,
+    this.element_preAuthRef,
     this.form,
     this.error
     });
@@ -202,6 +239,9 @@ Reference coverage;
 // dates.
 bool inforce;
 
+//  Extensions for inforce
+Element element_inforce;
+
 //  The term of the benefits documented in this response.
 Period benefitPeriod;
 
@@ -215,6 +255,7 @@ CoverageEligibilityResponse_Insurance(
     this.modifierExtension,
     this.coverage,
     this.inforce,
+    this.element_inforce,
     this.benefitPeriod,
     this.item
     });
@@ -273,11 +314,20 @@ Reference provider;
 // coverage.
 bool excluded;
 
+//  Extensions for excluded
+Element element_excluded;
+
 //  A short name or tag for the benefit.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  A richer description of the benefit or services covered.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  Is a flag to indicate whether the benefits refer to in-network
 // providers or out-of-network providers.
@@ -297,6 +347,9 @@ List<CoverageEligibilityResponse_Benefit> benefit;
 // to actual service delivery.
 bool authorizationRequired;
 
+//  Extensions for authorizationRequired
+Element element_authorizationRequired;
+
 //  Codes or comments regarding information or actions associated with the
 // preauthorization.
 List<CodeableConcept> authorizationSupporting;
@@ -304,6 +357,9 @@ List<CodeableConcept> authorizationSupporting;
 //  A web location for obtaining requirements or descriptive information
 // regarding the preauthorization.
 String authorizationUrl;
+
+//  Extensions for authorizationUrl
+Element element_authorizationUrl;
 
 CoverageEligibilityResponse_Item(
   {this.id,
@@ -314,15 +370,20 @@ CoverageEligibilityResponse_Item(
     this.modifier,
     this.provider,
     this.excluded,
+    this.element_excluded,
     this.name,
+    this.element_name,
     this.description,
+    this.element_description,
     this.network,
     this.unit,
     this.term,
     this.benefit,
     this.authorizationRequired,
+    this.element_authorizationRequired,
     this.authorizationSupporting,
-    this.authorizationUrl
+    this.authorizationUrl,
+    this.element_authorizationUrl
     });
 
   factory CoverageEligibilityResponse_Item.fromJson(Map<String, dynamic> json) => _$CoverageEligibilityResponse_ItemFromJson(json);
@@ -364,8 +425,14 @@ CodeableConcept type;
 //  The quantity of the benefit which is permitted under the coverage.
 int allowedUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
 
+//  Extensions for allowedUnsignedInt
+Element element_allowedUnsignedInt;
+
 //  The quantity of the benefit which is permitted under the coverage.
 String allowedString; //  pattern: ^[ \r\n\t\S]+$
+
+//  Extensions for allowedString
+Element element_allowedString;
 
 //  The quantity of the benefit which is permitted under the coverage.
 Money allowedMoney;
@@ -373,8 +440,14 @@ Money allowedMoney;
 //  The quantity of the benefit which have been consumed to date.
 int usedUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
 
+//  Extensions for usedUnsignedInt
+Element element_usedUnsignedInt;
+
 //  The quantity of the benefit which have been consumed to date.
 String usedString; //  pattern: ^[ \r\n\t\S]+$
+
+//  Extensions for usedString
+Element element_usedString;
 
 //  The quantity of the benefit which have been consumed to date.
 Money usedMoney;
@@ -385,10 +458,14 @@ CoverageEligibilityResponse_Benefit(
     this.modifierExtension,
     this.type,
     this.allowedUnsignedInt,
+    this.element_allowedUnsignedInt,
     this.allowedString,
+    this.element_allowedString,
     this.allowedMoney,
     this.usedUnsignedInt,
+    this.element_usedUnsignedInt,
     this.usedString,
+    this.element_usedString,
     this.usedMoney
     });
 

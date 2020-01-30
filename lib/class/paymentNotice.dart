@@ -7,6 +7,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'paymentNotice.g.dart';
@@ -32,8 +33,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -77,6 +84,9 @@ List<Identifier> identifier;
 //  The status of the resource instance.
 String status;
 
+//  Extensions for status
+Element element_status;
+
 //  Reference of resource for which payment is being made.
 Reference request;
 
@@ -85,6 +95,9 @@ Reference response;
 
 //  The date when this resource was created.
 DateTime created;
+
+//  Extensions for created
+Element element_created;
 
 //  The practitioner who is responsible for the services rendered to the
 // patient.
@@ -95,6 +108,9 @@ Reference payment;
 
 //  The date when the above payment action occurred.
 String paymentDate;
+
+//  Extensions for paymentDate
+Element element_paymentDate;
 
 //  The party who will receive or has received payment that is the subject
 // of this notification.
@@ -114,19 +130,24 @@ PaymentNotice(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
+    this.element_status,
     this.request,
     this.response,
     this.created,
+    this.element_created,
     this.provider,
     this.payment,
     this.paymentDate,
+    this.element_paymentDate,
     this.payee,
     this.recipient,
     this.amount,

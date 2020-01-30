@@ -8,6 +8,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'diagnosticReport.g.dart';
@@ -33,8 +34,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -81,6 +88,9 @@ List<Reference> basedOn;
 //  The status of the diagnostic report.
 String status; // <code> enum: registered/partial/preliminary/final/amended/corrected/appended/cancelled/entered-in-error/unknown;
 
+//  Extensions for status
+Element element_status;
+
 //  A code that classifies the clinical discipline, department or
 // diagnostic service that created the report (e.g. cardiology,
 // biochemistry, hematology, MRI). This is used for searching, sorting and
@@ -105,6 +115,9 @@ Reference encounter;
 // of the date/time is not known, only the date/time itself.
 String effectiveDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
+//  Extensions for effectiveDateTime
+Element element_effectiveDateTime;
+
 //  The time or time-period the observed values are related to. When the
 // subject of the report is a patient, this is usually either the time of
 // the procedure or of specimen collection(s), but very often the source
@@ -114,6 +127,9 @@ Period effectivePeriod;
 //  The date and time that this version of the report was made available
 // to providers, typically after the report was reviewed and verified.
 DateTime issued;
+
+//  Extensions for issued
+Element element_issued;
 
 //  The diagnostic service that is responsible for issuing the report.
 List<Reference> performer;
@@ -144,6 +160,9 @@ List<DiagnosticReport_Media> media;
 // (interpretation/impression) of the diagnostic report.
 String conclusion;
 
+//  Extensions for conclusion
+Element element_conclusion;
+
 //  One or more codes that represent the summary conclusion
 // (interpretation/impression) of the diagnostic report.
 List<CodeableConcept> conclusionCode;
@@ -158,7 +177,9 @@ DiagnosticReport(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -166,13 +187,16 @@ DiagnosticReport(
     this.identifier,
     this.basedOn,
     this.status,
+    this.element_status,
     this.category,
     this.code,
     this.subject,
     this.encounter,
     this.effectiveDateTime,
+    this.element_effectiveDateTime,
     this.effectivePeriod,
     this.issued,
+    this.element_issued,
     this.performer,
     this.resultsInterpreter,
     this.specimen,
@@ -180,6 +204,7 @@ DiagnosticReport(
     this.imagingStudy,
     this.media,
     this.conclusion,
+    this.element_conclusion,
     this.conclusionCode,
     this.presentedForm
     });
@@ -222,6 +247,9 @@ List<Extension> modifierExtension;
 // attention to important features.
 String comment;
 
+//  Extensions for comment
+Element element_comment;
+
 //  Reference to the image source.
 Reference link;
 
@@ -230,6 +258,7 @@ DiagnosticReport_Media(
     this.extension,
     this.modifierExtension,
     this.comment,
+    this.element_comment,
     this.link
     });
 

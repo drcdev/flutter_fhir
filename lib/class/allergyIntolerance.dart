@@ -10,6 +10,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'allergyIntolerance.g.dart';
@@ -35,8 +36,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -91,12 +98,21 @@ CodeableConcept verificationStatus;
 // reaction risk.
 String type; // <code> enum: allergy/intolerance;
 
+//  Extensions for type
+Element element_type;
+
 //  Category of the identified substance.
 List<String> category; // <code> enum: food/medication/environment/biologic> category;
+
+//  Extensions for category
+List<Element> element_category;
 
 //  Estimate of the potential clinical harm, or seriousness, of the
 // reaction to the identified substance.
 String criticality; // <code> enum: low/high/unable-to-assess;
+
+//  Extensions for criticality
+Element element_criticality;
 
 //  Code for an allergy or intolerance statement (either a positive or a
 // negated/excluded statement).  This may be a code for a substance or
@@ -126,6 +142,9 @@ Reference encounter;
 // intolerance was identified.
 String onsetDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
+//  Extensions for onsetDateTime
+Element element_onsetDateTime;
+
 //  Estimated or actual date,  date-time, or age when allergy or
 // intolerance was identified.
 Age onsetAge;
@@ -142,10 +161,16 @@ Range onsetRange;
 // intolerance was identified.
 String onsetString; //  pattern: ^[ \r\n\t\S]+$
 
+//  Extensions for onsetString
+Element element_onsetString;
+
 //  The recordedDate represents when this particular AllergyIntolerance
 // record was created in the system, which is often a system-generated
 // date.
 DateTime recordedDate;
+
+//  Extensions for recordedDate
+Element element_recordedDate;
 
 //  Individual who recorded the record and takes responsibility for its
 // content.
@@ -157,6 +182,9 @@ Reference asserter;
 //  Represents the date and/or time of the last known occurrence of a
 // reaction event.
 DateTime lastOccurrence;
+
+//  Extensions for lastOccurrence
+Element element_lastOccurrence;
 
 //  Additional narrative about the propensity for the Adverse Reaction,
 // not captured in other fields.
@@ -171,7 +199,9 @@ AllergyIntolerance(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -180,20 +210,27 @@ AllergyIntolerance(
     this.clinicalStatus,
     this.verificationStatus,
     this.type,
+    this.element_type,
     this.category,
+    this.element_category,
     this.criticality,
+    this.element_criticality,
     this.code,
     this.patient,
     this.encounter,
     this.onsetDateTime,
+    this.element_onsetDateTime,
     this.onsetAge,
     this.onsetPeriod,
     this.onsetRange,
     this.onsetString,
+    this.element_onsetString,
     this.recordedDate,
+    this.element_recordedDate,
     this.recorder,
     this.asserter,
     this.lastOccurrence,
+    this.element_lastOccurrence,
     this.note,
     this.reaction
     });
@@ -252,12 +289,21 @@ List<CodeableConcept> manifestation;
 // the manifestation if required.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  Record of the date and/or time of the onset of the Reaction.
 DateTime onset;
+
+//  Extensions for onset
+Element element_onset;
 
 //  Clinical assessment of the severity of the reaction event as a whole,
 // potentially considering multiple different manifestations.
 String severity; // <code> enum: mild/moderate/severe;
+
+//  Extensions for severity
+Element element_severity;
 
 //  Identification of the route by which the subject was exposed to the
 // substance.
@@ -274,8 +320,11 @@ AllergyIntolerance_Reaction(
     this.substance,
     this.manifestation,
     this.description,
+    this.element_description,
     this.onset,
+    this.element_onset,
     this.severity,
+    this.element_severity,
     this.exposureRoute,
     this.note
     });

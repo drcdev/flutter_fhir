@@ -10,6 +10,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'carePlan.g.dart';
@@ -35,8 +36,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -89,6 +96,9 @@ List<String> instantiatesCanonical;
 // part by this CarePlan.
 List<String> instantiatesUri;
 
+//  Extensions for instantiatesUri
+List<Element> element_instantiatesUri;
+
 //  A care plan that is fulfilled in whole or in part by this care plan.
 List<Reference> basedOn;
 
@@ -104,9 +114,15 @@ List<Reference> partOf;
 // future intentions or is now a historical record.
 String status;
 
+//  Extensions for status
+Element element_status;
+
 //  Indicates the level of authority/intentionality associated with the
 // care plan and where the care plan fits into the workflow chain.
 String intent;
+
+//  Extensions for intent
+Element element_intent;
 
 //  Identifies what "kind" of plan this is to support differentiation
 // between multiple co-existing plans; e.g. "Home health", "psychiatric",
@@ -116,8 +132,14 @@ List<CodeableConcept> category;
 //  Human-friendly name for the care plan.
 String title;
 
+//  Extensions for title
+Element element_title;
+
 //  A description of the scope and nature of the plan.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  Identifies the patient or group whose intended care is described by
 // the plan.
@@ -134,6 +156,9 @@ Period period;
 //  Represents when this particular CarePlan record was created in the
 // system, which is often a system-generated date.
 DateTime created;
+
+//  Extensions for created
+Element element_created;
 
 //  When populated, the author is responsible for the care plan.  The care
 // plan is attributed to the author.
@@ -172,7 +197,9 @@ CarePlan(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -180,18 +207,24 @@ CarePlan(
     this.identifier,
     this.instantiatesCanonical,
     this.instantiatesUri,
+    this.element_instantiatesUri,
     this.basedOn,
     this.replaces,
     this.partOf,
     this.status,
+    this.element_status,
     this.intent,
+    this.element_intent,
     this.category,
     this.title,
+    this.element_title,
     this.description,
+    this.element_description,
     this.subject,
     this.encounter,
     this.period,
     this.created,
+    this.element_created,
     this.author,
     this.contributor,
     this.careTeam,
@@ -310,6 +343,9 @@ List<Extension> modifierExtension;
 // ServiceRequest, or a CommunicationRequest.
 String kind;
 
+//  Extensions for kind
+Element element_kind;
+
 //  The URL pointing to a FHIR-defined protocol, guideline, questionnaire
 // or other definition that is adhered to in whole or in part by this
 // CarePlan activity.
@@ -319,6 +355,9 @@ List<String> instantiatesCanonical;
 // questionnaire or other definition that is adhered to in whole or in
 // part by this CarePlan activity.
 List<String> instantiatesUri;
+
+//  Extensions for instantiatesUri
+List<Element> element_instantiatesUri;
 
 //  Detailed description of the type of planned activity; e.g. what lab
 // test, what procedure, what kind of encounter.
@@ -341,6 +380,9 @@ List<Reference> goal;
 //  Identifies what progress is being made for the specific activity.
 String status; // <code> enum: not-started/scheduled/in-progress/on-hold/completed/cancelled/stopped/unknown/entered-in-error;
 
+//  Extensions for status
+Element element_status;
+
 //  Provides reason why the activity isn't yet started, is on hold, was
 // cancelled, etc.
 CodeableConcept statusReason;
@@ -350,6 +392,9 @@ CodeableConcept statusReason;
 // that the described activity is one that should be engaged in when
 // following the plan.
 bool doNotPerform;
+
+//  Extensions for doNotPerform
+Element element_doNotPerform;
 
 //  The period, timing or frequency upon which the described activity is
 // to occur.
@@ -362,6 +407,9 @@ Period scheduledPeriod;
 //  The period, timing or frequency upon which the described activity is
 // to occur.
 String scheduledString; //  pattern: ^[ \r\n\t\S]+$
+
+//  Extensions for scheduledString
+Element element_scheduledString;
 
 //  Identifies the facility where the activity will occur; e.g. home,
 // hospital, specific clinic, etc.
@@ -392,30 +440,39 @@ Quantity quantity;
 // route, etc.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 CarePlan_Detail(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.kind,
+    this.element_kind,
     this.instantiatesCanonical,
     this.instantiatesUri,
+    this.element_instantiatesUri,
     this.code,
     this.reasonCode,
     this.reasonReference,
     this.goal,
     this.status,
+    this.element_status,
     this.statusReason,
     this.doNotPerform,
+    this.element_doNotPerform,
     this.scheduledTiming,
     this.scheduledPeriod,
     this.scheduledString,
+    this.element_scheduledString,
     this.location,
     this.performer,
     this.productCodeableConcept,
     this.productReference,
     this.dailyAmount,
     this.quantity,
-    this.description
+    this.description,
+    this.element_description
     });
 
   factory CarePlan_Detail.fromJson(Map<String, dynamic> json) => _$CarePlan_DetailFromJson(json);

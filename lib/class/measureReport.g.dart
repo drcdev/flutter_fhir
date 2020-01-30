@@ -14,7 +14,14 @@ MeasureReport _$MeasureReportFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
+    element_implicitRules: json['element_implicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['element_implicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
+    element_language: json['element_language'] == null
+        ? null
+        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
@@ -35,12 +42,21 @@ MeasureReport _$MeasureReportFromJson(Map<String, dynamic> json) {
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
+    element_status: json['element_status'] == null
+        ? null
+        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
     type: json['type'] as String,
+    element_type: json['element_type'] == null
+        ? null
+        : Element.fromJson(json['element_type'] as Map<String, dynamic>),
     measure: json['measure'] as String,
     subject: json['subject'] == null
         ? null
         : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
+    element_date: json['element_date'] == null
+        ? null
+        : Element.fromJson(json['element_date'] as Map<String, dynamic>),
     reporter: json['reporter'] == null
         ? null
         : Reference.fromJson(json['reporter'] as Map<String, dynamic>),
@@ -69,7 +85,9 @@ Map<String, dynamic> _$MeasureReportToJson(MeasureReport instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
+      'element_implicitRules': instance.element_implicitRules?.toJson(),
       'language': instance.language,
+      'element_language': instance.element_language?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -77,10 +95,13 @@ Map<String, dynamic> _$MeasureReportToJson(MeasureReport instance) =>
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
+      'element_status': instance.element_status?.toJson(),
       'type': instance.type,
+      'element_type': instance.element_type?.toJson(),
       'measure': instance.measure,
       'subject': instance.subject?.toJson(),
       'date': instance.date?.toIso8601String(),
+      'element_date': instance.element_date?.toJson(),
       'reporter': instance.reporter?.toJson(),
       'period': instance.period?.toJson(),
       'improvementNotation': instance.improvementNotation?.toJson(),
@@ -148,6 +169,9 @@ MeasureReport_Population _$MeasureReport_PopulationFromJson(
         ? null
         : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     count: json['count'] as int,
+    element_count: json['element_count'] == null
+        ? null
+        : Element.fromJson(json['element_count'] as Map<String, dynamic>),
     subjectResults: json['subjectResults'] == null
         ? null
         : Reference.fromJson(json['subjectResults'] as Map<String, dynamic>),
@@ -163,6 +187,7 @@ Map<String, dynamic> _$MeasureReport_PopulationToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'code': instance.code?.toJson(),
       'count': instance.count,
+      'element_count': instance.element_count?.toJson(),
       'subjectResults': instance.subjectResults?.toJson(),
     };
 
@@ -294,6 +319,9 @@ MeasureReport_Population1 _$MeasureReport_Population1FromJson(
         ? null
         : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     count: json['count'] as int,
+    element_count: json['element_count'] == null
+        ? null
+        : Element.fromJson(json['element_count'] as Map<String, dynamic>),
     subjectResults: json['subjectResults'] == null
         ? null
         : Reference.fromJson(json['subjectResults'] as Map<String, dynamic>),
@@ -309,5 +337,6 @@ Map<String, dynamic> _$MeasureReport_Population1ToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'code': instance.code?.toJson(),
       'count': instance.count,
+      'element_count': instance.element_count?.toJson(),
       'subjectResults': instance.subjectResults?.toJson(),
     };

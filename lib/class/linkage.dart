@@ -4,6 +4,7 @@ import 'package:flutter_fhir/class/reference.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'linkage.g.dart';
@@ -29,8 +30,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -72,6 +79,9 @@ List<Extension> modifierExtension;
 // "in effect".
 bool active;
 
+//  Extensions for active
+Element element_active;
+
 //  Identifies the user or organization responsible for asserting the
 // linkages as well as the user or organization who establishes the
 // context in which the nature of each linkage is evaluated.
@@ -87,12 +97,15 @@ Linkage(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.active,
+    this.element_active,
     this.author,
     this.item
     });
@@ -134,6 +147,9 @@ List<Extension> modifierExtension;
 // are no longer considered to be current representations.
 String type; // <code> enum: source/alternate/historical;
 
+//  Extensions for type
+Element element_type;
+
 //  The resource instance being linked as part of the group.
 Reference resource;
 
@@ -142,6 +158,7 @@ Linkage_Item(
     this.extension,
     this.modifierExtension,
     this.type,
+    this.element_type,
     this.resource
     });
 

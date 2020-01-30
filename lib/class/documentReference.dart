@@ -9,6 +9,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'documentReference.g.dart';
@@ -34,8 +35,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -86,8 +93,14 @@ List<Identifier> identifier;
 //  The status of this document reference.
 String status; // <code> enum: current/superseded/entered-in-error;
 
+//  Extensions for status
+Element element_status;
+
 //  The status of the underlying document.
 String docStatus;
+
+//  Extensions for docStatus
+Element element_docStatus;
 
 //  Specifies the particular kind of document referenced  (e.g. History
 // and Physical, Discharge Summary, Progress Note). This usually equates
@@ -108,6 +121,9 @@ Reference subject;
 //  When the document reference was created.
 DateTime date;
 
+//  Extensions for date
+Element element_date;
+
 //  Identifies who is responsible for adding the information to the
 // document.
 List<Reference> author;
@@ -126,6 +142,9 @@ List<DocumentReference_RelatesTo> relatesTo;
 
 //  Human-readable description of the source document.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  A set of Security-Tag codes specifying the level of privacy/security
 // of the Document. Note that DocumentReference.meta.security contains the
@@ -146,7 +165,9 @@ DocumentReference(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -154,16 +175,20 @@ DocumentReference(
     this.masterIdentifier,
     this.identifier,
     this.status,
+    this.element_status,
     this.docStatus,
+    this.element_docStatus,
     this.type,
     this.category,
     this.subject,
     this.date,
+    this.element_date,
     this.author,
     this.authenticator,
     this.custodian,
     this.relatesTo,
     this.description,
+    this.element_description,
     this.securityLabel,
     this.content,
     this.context
@@ -205,6 +230,9 @@ List<Extension> modifierExtension;
 //  The type of relationship that this document has with anther document.
 String code; // <code> enum: replaces/transforms/signs/appends;
 
+//  Extensions for code
+Element element_code;
+
 //  The target document of this relationship.
 Reference target;
 
@@ -213,6 +241,7 @@ DocumentReference_RelatesTo(
     this.extension,
     this.modifierExtension,
     this.code,
+    this.element_code,
     this.target
     });
 

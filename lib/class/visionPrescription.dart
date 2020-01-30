@@ -8,6 +8,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'visionPrescription.g.dart';
@@ -33,8 +34,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -78,8 +85,14 @@ List<Identifier> identifier;
 //  The status of the resource instance.
 String status;
 
+//  Extensions for status
+Element element_status;
+
 //  The date this resource was created.
 DateTime created;
+
+//  Extensions for created
+Element element_created;
 
 //  A resource reference to the person to whom the vision prescription
 // applies.
@@ -92,6 +105,9 @@ Reference encounter;
 
 //  The date (and perhaps time) when the prescription was written.
 DateTime dateWritten;
+
+//  Extensions for dateWritten
+Element element_dateWritten;
 
 //  The healthcare professional responsible for authorizing the
 // prescription.
@@ -106,17 +122,22 @@ VisionPrescription(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
+    this.element_status,
     this.created,
+    this.element_created,
     this.patient,
     this.encounter,
     this.dateWritten,
+    this.element_dateWritten,
     this.prescriber,
     this.lensSpecification
     });
@@ -161,14 +182,26 @@ CodeableConcept product;
 //  The eye for which the lens specification applies.
 String eye; // <code> enum: right/left;
 
+//  Extensions for eye
+Element element_eye;
+
 //  Lens power measured in dioptres (0.25 units).
 double sphere;
+
+//  Extensions for sphere
+Element element_sphere;
 
 //  Power adjustment for astigmatism measured in dioptres (0.25 units).
 double cylinder;
 
+//  Extensions for cylinder
+Element element_cylinder;
+
 //  Adjustment for astigmatism measured in integer degrees.
 int axis;
+
+//  Extensions for axis
+Element element_axis;
 
 //  Allows for adjustment on two axis.
 List<VisionPrescription_Prism> prism;
@@ -177,14 +210,26 @@ List<VisionPrescription_Prism> prism;
 // units).
 double add;
 
+//  Extensions for add
+Element element_add;
+
 //  Contact lens power measured in dioptres (0.25 units).
 double power;
+
+//  Extensions for power
+Element element_power;
 
 //  Back curvature measured in millimetres.
 double backCurve;
 
+//  Extensions for backCurve
+Element element_backCurve;
+
 //  Contact lens diameter measured in millimetres.
 double diameter;
+
+//  Extensions for diameter
+Element element_diameter;
 
 //  The recommended maximum wear period for the lens.
 Quantity duration;
@@ -192,8 +237,14 @@ Quantity duration;
 //  Special color or pattern.
 String color;
 
+//  Extensions for color
+Element element_color;
+
 //  Brand recommendations or restrictions.
 String brand;
+
+//  Extensions for brand
+Element element_brand;
 
 //  Notes for special requirements such as coatings and lens materials.
 List<Annotation> note;
@@ -204,17 +255,27 @@ VisionPrescription_LensSpecification(
     this.modifierExtension,
     this.product,
     this.eye,
+    this.element_eye,
     this.sphere,
+    this.element_sphere,
     this.cylinder,
+    this.element_cylinder,
     this.axis,
+    this.element_axis,
     this.prism,
     this.add,
+    this.element_add,
     this.power,
+    this.element_power,
     this.backCurve,
+    this.element_backCurve,
     this.diameter,
+    this.element_diameter,
     this.duration,
     this.color,
+    this.element_color,
     this.brand,
+    this.element_brand,
     this.note
     });
 
@@ -254,15 +315,23 @@ List<Extension> modifierExtension;
 //  Amount of prism to compensate for eye alignment in fractional units.
 double amount;
 
+//  Extensions for amount
+Element element_amount;
+
 //  The relative base, or reference lens edge, for the prism.
 String base; // <code> enum: up/down/in/out;
+
+//  Extensions for base
+Element element_base;
 
 VisionPrescription_Prism(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.amount,
-    this.base
+    this.element_amount,
+    this.base,
+    this.element_base
     });
 
   factory VisionPrescription_Prism.fromJson(Map<String, dynamic> json) => _$VisionPrescription_PrismFromJson(json);

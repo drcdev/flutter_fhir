@@ -9,6 +9,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'organization.g.dart';
@@ -34,8 +35,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -80,15 +87,24 @@ List<Identifier> identifier;
 //  Whether the organization's record is still in active use.
 bool active;
 
+//  Extensions for active
+Element element_active;
+
 //  The kind(s) of organization that this is.
 List<CodeableConcept> type;
 
 //  A name associated with the organization.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  A list of alternate names that the organization is known as, or was
 // known as in the past.
 List<String> alias;
+
+//  Extensions for alias
+List<Element> element_alias;
 
 //  A contact detail for the organization.
 List<ContactPoint> telecom;
@@ -111,16 +127,21 @@ Organization(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.active,
+    this.element_active,
     this.type,
     this.name,
+    this.element_name,
     this.alias,
+    this.element_alias,
     this.telecom,
     this.address,
     this.partOf,

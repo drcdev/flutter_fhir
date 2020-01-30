@@ -5,6 +5,7 @@ import 'package:flutter_fhir/class/contactDetail.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'compartmentDefinition.g.dart';
@@ -30,8 +31,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -78,6 +85,9 @@ List<Extension> modifierExtension;
 // same when the compartment definition is stored on different servers.
 String url;
 
+//  Extensions for url
+Element element_url;
+
 //  The identifier that is used to identify this version of the
 // compartment definition when it is referenced in a specification, model,
 // design or instance. This is an arbitrary value managed by the
@@ -87,19 +97,31 @@ String url;
 // versions can be placed in a lexicographical sequence.
 String version;
 
+//  Extensions for version
+Element element_version;
+
 //  A natural language name identifying the compartment definition. This
 // name should be usable as an identifier for the module by machine
 // processing applications such as code generation.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  The status of this compartment definition. Enables tracking the
 // life-cycle of the content.
 String status; // <code> enum: draft/active/retired/unknown;
+
+//  Extensions for status
+Element element_status;
 
 //  A Boolean value to indicate that this compartment definition is
 // authored for testing purposes (or education/evaluation/marketing) and
 // is not intended to be used for genuine usage.
 bool experimental;
+
+//  Extensions for experimental
+Element element_experimental;
 
 //  The date  (and optionally time) when the compartment definition was
 // published. The date must change when the business version changes and
@@ -108,9 +130,15 @@ bool experimental;
 // changes.
 DateTime date;
 
+//  Extensions for date
+Element element_date;
+
 //  The name of the organization or individual that published the
 // compartment definition.
 String publisher;
+
+//  Extensions for publisher
+Element element_publisher;
 
 //  Contact details to assist a user in finding and communicating with the
 // publisher.
@@ -119,6 +147,9 @@ List<ContactDetail> contact;
 //  A free text natural language description of the compartment definition
 // from a consumer's perspective.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  The content was developed with a focus and intent of supporting the
 // contexts that are listed. These contexts may be general categories
@@ -131,11 +162,20 @@ List<UsageContext> useContext;
 // has been designed as it has.
 String purpose;
 
+//  Extensions for purpose
+Element element_purpose;
+
 //  Which compartment this definition describes.
 String code; // <code> enum: Patient/Encounter/RelatedPerson/Practitioner/Device;
 
+//  Extensions for code
+Element element_code;
+
 //  Whether the search syntax is supported,.
 bool search;
+
+//  Extensions for search
+Element element_search;
 
 //  Information about how a resource is related to the compartment.
 List<CompartmentDefinition_Resource> resource;
@@ -145,24 +185,37 @@ CompartmentDefinition(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
+    this.element_url,
     this.version,
+    this.element_version,
     this.name,
+    this.element_name,
     this.status,
+    this.element_status,
     this.experimental,
+    this.element_experimental,
     this.date,
+    this.element_date,
     this.publisher,
+    this.element_publisher,
     this.contact,
     this.description,
+    this.element_description,
     this.useContext,
     this.purpose,
+    this.element_purpose,
     this.code,
+    this.element_code,
     this.search,
+    this.element_search,
     this.resource
     });
 
@@ -202,21 +255,33 @@ List<Extension> modifierExtension;
 //  The name of a resource supported by the server.
 String code;
 
+//  Extensions for code
+Element element_code;
+
 //  The name of a search parameter that represents the link to the
 // compartment. More than one may be listed because a resource may be
 // linked to a compartment in more than one way,.
 List<String> param;
 
+//  Extensions for param
+List<Element> element_param;
+
 //  Additional documentation about the resource and compartment.
 String documentation;
+
+//  Extensions for documentation
+Element element_documentation;
 
 CompartmentDefinition_Resource(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.code,
+    this.element_code,
     this.param,
-    this.documentation
+    this.element_param,
+    this.documentation,
+    this.element_documentation
     });
 
   factory CompartmentDefinition_Resource.fromJson(Map<String, dynamic> json) => _$CompartmentDefinition_ResourceFromJson(json);

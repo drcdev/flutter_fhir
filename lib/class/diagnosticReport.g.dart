@@ -14,7 +14,14 @@ DiagnosticReport _$DiagnosticReportFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
+    element_implicitRules: json['element_implicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['element_implicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
+    element_language: json['element_language'] == null
+        ? null
+        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
@@ -39,6 +46,9 @@ DiagnosticReport _$DiagnosticReportFromJson(Map<String, dynamic> json) {
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
+    element_status: json['element_status'] == null
+        ? null
+        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
     category: (json['category'] as List)
         ?.map((e) => e == null
             ? null
@@ -54,12 +64,19 @@ DiagnosticReport _$DiagnosticReportFromJson(Map<String, dynamic> json) {
         ? null
         : Reference.fromJson(json['encounter'] as Map<String, dynamic>),
     effectiveDateTime: json['effectiveDateTime'] as String,
+    element_effectiveDateTime: json['element_effectiveDateTime'] == null
+        ? null
+        : Element.fromJson(
+            json['element_effectiveDateTime'] as Map<String, dynamic>),
     effectivePeriod: json['effectivePeriod'] == null
         ? null
         : Period.fromJson(json['effectivePeriod'] as Map<String, dynamic>),
     issued: json['issued'] == null
         ? null
         : DateTime.parse(json['issued'] as String),
+    element_issued: json['element_issued'] == null
+        ? null
+        : Element.fromJson(json['element_issued'] as Map<String, dynamic>),
     performer: (json['performer'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
@@ -86,6 +103,9 @@ DiagnosticReport _$DiagnosticReportFromJson(Map<String, dynamic> json) {
             : DiagnosticReport_Media.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     conclusion: json['conclusion'] as String,
+    element_conclusion: json['element_conclusion'] == null
+        ? null
+        : Element.fromJson(json['element_conclusion'] as Map<String, dynamic>),
     conclusionCode: (json['conclusionCode'] as List)
         ?.map((e) => e == null
             ? null
@@ -104,7 +124,9 @@ Map<String, dynamic> _$DiagnosticReportToJson(DiagnosticReport instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
+      'element_implicitRules': instance.element_implicitRules?.toJson(),
       'language': instance.language,
+      'element_language': instance.element_language?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -113,13 +135,16 @@ Map<String, dynamic> _$DiagnosticReportToJson(DiagnosticReport instance) =>
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
+      'element_status': instance.element_status?.toJson(),
       'category': instance.category?.map((e) => e?.toJson())?.toList(),
       'code': instance.code?.toJson(),
       'subject': instance.subject?.toJson(),
       'encounter': instance.encounter?.toJson(),
       'effectiveDateTime': instance.effectiveDateTime,
+      'element_effectiveDateTime': instance.element_effectiveDateTime?.toJson(),
       'effectivePeriod': instance.effectivePeriod?.toJson(),
       'issued': instance.issued?.toIso8601String(),
+      'element_issued': instance.element_issued?.toJson(),
       'performer': instance.performer?.map((e) => e?.toJson())?.toList(),
       'resultsInterpreter':
           instance.resultsInterpreter?.map((e) => e?.toJson())?.toList(),
@@ -128,6 +153,7 @@ Map<String, dynamic> _$DiagnosticReportToJson(DiagnosticReport instance) =>
       'imagingStudy': instance.imagingStudy?.map((e) => e?.toJson())?.toList(),
       'media': instance.media?.map((e) => e?.toJson())?.toList(),
       'conclusion': instance.conclusion,
+      'element_conclusion': instance.element_conclusion?.toJson(),
       'conclusionCode':
           instance.conclusionCode?.map((e) => e?.toJson())?.toList(),
       'presentedForm':
@@ -147,6 +173,9 @@ DiagnosticReport_Media _$DiagnosticReport_MediaFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     comment: json['comment'] as String,
+    element_comment: json['element_comment'] == null
+        ? null
+        : Element.fromJson(json['element_comment'] as Map<String, dynamic>),
     link: json['link'] == null
         ? null
         : Reference.fromJson(json['link'] as Map<String, dynamic>),
@@ -161,5 +190,6 @@ Map<String, dynamic> _$DiagnosticReport_MediaToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'comment': instance.comment,
+      'element_comment': instance.element_comment?.toJson(),
       'link': instance.link?.toJson(),
     };

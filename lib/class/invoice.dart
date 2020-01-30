@@ -8,6 +8,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'invoice.g.dart';
@@ -33,8 +34,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -79,9 +86,15 @@ List<Identifier> identifier;
 //  The current state of the Invoice.
 String status; // <code> enum: draft/issued/balanced/cancelled/entered-in-error;
 
+//  Extensions for status
+Element element_status;
+
 //  In case of Invoice cancellation a reason must be given (entered in
 // error, superseded by corrected invoice etc.).
 String cancelledReason;
+
+//  Extensions for cancelledReason
+Element element_cancelledReason;
 
 //  Type of Invoice depending on domain, realm an usage (e.g.
 // internal/external, dental, preliminary).
@@ -97,6 +110,9 @@ Reference recipient;
 
 //  Date/time(s) of when this Invoice was posted.
 DateTime date;
+
+//  Extensions for date
+Element element_date;
 
 //  Indicates who or what performed or participated in the charged
 // service.
@@ -129,6 +145,9 @@ Money totalGross;
 // deductibles, methods of payment.
 String paymentTerms;
 
+//  Extensions for paymentTerms
+Element element_paymentTerms;
+
 //  Comments made about the invoice by the issuer, subject, or other
 // participants.
 List<Annotation> note;
@@ -138,18 +157,23 @@ Invoice(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
+    this.element_status,
     this.cancelledReason,
+    this.element_cancelledReason,
     this.type,
     this.subject,
     this.recipient,
     this.date,
+    this.element_date,
     this.participant,
     this.issuer,
     this.account,
@@ -158,6 +182,7 @@ Invoice(
     this.totalNet,
     this.totalGross,
     this.paymentTerms,
+    this.element_paymentTerms,
     this.note
     });
 
@@ -247,6 +272,9 @@ List<Extension> modifierExtension;
 //  Sequence in which the items appear on the invoice.
 int sequence;
 
+//  Extensions for sequence
+Element element_sequence;
+
 //  The ChargeItem contains information such as the billing code, date,
 // amount etc. If no further details are required for the lineItem, inline
 // billing codes can be added using the CodeableConcept data type instead
@@ -272,6 +300,7 @@ Invoice_LineItem(
     this.extension,
     this.modifierExtension,
     this.sequence,
+    this.element_sequence,
     this.chargeItemReference,
     this.chargeItemCodeableConcept,
     this.priceComponent
@@ -313,6 +342,9 @@ List<Extension> modifierExtension;
 //  This code identifies the type of the component.
 String type; // <code> enum: base/surcharge/deduction/discount/tax/informational;
 
+//  Extensions for type
+Element element_type;
+
 //  A code that identifies the component. Codes may be used to
 // differentiate between kinds of taxes, surcharges, discounts etc.
 CodeableConcept code;
@@ -320,6 +352,9 @@ CodeableConcept code;
 //  The factor that has been applied on the base price for calculating
 // this component.
 double factor;
+
+//  Extensions for factor
+Element element_factor;
 
 //  The amount calculated for this component.
 Money amount;
@@ -329,8 +364,10 @@ Invoice_PriceComponent(
     this.extension,
     this.modifierExtension,
     this.type,
+    this.element_type,
     this.code,
     this.factor,
+    this.element_factor,
     this.amount
     });
 

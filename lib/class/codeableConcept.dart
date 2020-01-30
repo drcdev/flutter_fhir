@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/coding.dart';
 import 'package:flutter_fhir/class/extension.dart';
 
@@ -28,11 +29,15 @@ List<Coding> coding;
 // represents the intended meaning of the user.
 String text;
 
+//  Extensions for text
+Element element_text;
+
 CodeableConcept(
   {this.id,
     this.extension,
     this.coding,
-    this.text
+    this.text,
+    this.element_text
     });
 
   factory CodeableConcept.fromJson(Map<String, dynamic> json) => _$CodeableConceptFromJson(json);

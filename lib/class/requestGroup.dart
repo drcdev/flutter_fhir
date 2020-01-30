@@ -14,6 +14,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'requestGroup.g.dart';
@@ -39,8 +40,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -87,10 +94,16 @@ List<Identifier> identifier;
 // this request.
 List<String> instantiatesCanonical;
 
+//  Extensions for instantiatesCanonical
+List<Element> element_instantiatesCanonical;
+
 //  A URL referencing an externally defined protocol, guideline, orderset
 // or other definition that is adhered to in whole or in part by this
 // request.
 List<String> instantiatesUri;
+
+//  Extensions for instantiatesUri
+List<Element> element_instantiatesUri;
 
 //  A plan, proposal or order that is fulfilled in whole or in part by
 // this request.
@@ -109,13 +122,22 @@ Identifier groupIdentifier;
 // reflects the status of all the requests in the group.
 String status;
 
+//  Extensions for status
+Element element_status;
+
 //  Indicates the level of authority/intentionality associated with the
 // request and where the request fits into the workflow chain.
 String intent;
 
+//  Extensions for intent
+Element element_intent;
+
 //  Indicates how quickly the request should be addressed with respect to
 // other requests.
 String priority;
+
+//  Extensions for priority
+Element element_priority;
 
 //  A code that identifies what the overall request group is.
 CodeableConcept code;
@@ -128,6 +150,9 @@ Reference encounter;
 
 //  Indicates when the request group was created.
 DateTime authoredOn;
+
+//  Extensions for authoredOn
+Element element_authoredOn;
 
 //  Provides a reference to the author of the request group.
 Reference author;
@@ -151,24 +176,32 @@ RequestGroup(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.instantiatesCanonical,
+    this.element_instantiatesCanonical,
     this.instantiatesUri,
+    this.element_instantiatesUri,
     this.basedOn,
     this.replaces,
     this.groupIdentifier,
     this.status,
+    this.element_status,
     this.intent,
+    this.element_intent,
     this.priority,
+    this.element_priority,
     this.code,
     this.subject,
     this.encounter,
     this.authoredOn,
+    this.element_authoredOn,
     this.author,
     this.reasonCode,
     this.reasonReference,
@@ -212,12 +245,21 @@ List<Extension> modifierExtension;
 //  A user-visible prefix for the action.
 String prefix;
 
+//  Extensions for prefix
+Element element_prefix;
+
 //  The title of the action displayed to a user.
 String title;
+
+//  Extensions for title
+Element element_title;
 
 //  A short description of the action used to provide a summary to display
 // to the user.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  A text equivalent of the action to be performed. This provides a
 // human-interpretable description of the action when the definition is
@@ -225,9 +267,15 @@ String description;
 // dynamically.
 String textEquivalent;
 
+//  Extensions for textEquivalent
+Element element_textEquivalent;
+
 //  Indicates how quickly the action should be addressed with respect to
 // other actions.
 String priority;
+
+//  Extensions for priority
+Element element_priority;
 
 //  A code that provides meaning for the action or action group. For
 // example, a section may have a LOINC code for a section of a
@@ -249,6 +297,9 @@ List<RequestGroup_RelatedAction> relatedAction;
 
 //  An optional value describing when the action should be performed.
 String timingDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+
+//  Extensions for timingDateTime
+Element element_timingDateTime;
 
 //  An optional value describing when the action should be performed.
 Age timingAge;
@@ -274,17 +325,32 @@ CodeableConcept type;
 //  Defines the grouping behavior for the action and its children.
 String groupingBehavior;
 
+//  Extensions for groupingBehavior
+Element element_groupingBehavior;
+
 //  Defines the selection behavior for the action and its children.
 String selectionBehavior;
+
+//  Extensions for selectionBehavior
+Element element_selectionBehavior;
 
 //  Defines expectations around whether an action is required.
 String requiredBehavior;
 
+//  Extensions for requiredBehavior
+Element element_requiredBehavior;
+
 //  Defines whether the action should usually be preselected.
 String precheckBehavior;
 
+//  Extensions for precheckBehavior
+Element element_precheckBehavior;
+
 //  Defines whether the action can be selected multiple times.
 String cardinalityBehavior;
+
+//  Extensions for cardinalityBehavior
+Element element_cardinalityBehavior;
 
 //  The resource that is the target of the action (e.g.
 // CommunicationRequest).
@@ -298,15 +364,21 @@ RequestGroup_Action(
     this.extension,
     this.modifierExtension,
     this.prefix,
+    this.element_prefix,
     this.title,
+    this.element_title,
     this.description,
+    this.element_description,
     this.textEquivalent,
+    this.element_textEquivalent,
     this.priority,
+    this.element_priority,
     this.code,
     this.documentation,
     this.condition,
     this.relatedAction,
     this.timingDateTime,
+    this.element_timingDateTime,
     this.timingAge,
     this.timingPeriod,
     this.timingDuration,
@@ -315,10 +387,15 @@ RequestGroup_Action(
     this.participant,
     this.type,
     this.groupingBehavior,
+    this.element_groupingBehavior,
     this.selectionBehavior,
+    this.element_selectionBehavior,
     this.requiredBehavior,
+    this.element_requiredBehavior,
     this.precheckBehavior,
+    this.element_precheckBehavior,
     this.cardinalityBehavior,
+    this.element_cardinalityBehavior,
     this.resource,
     this.action
     });
@@ -359,6 +436,9 @@ List<Extension> modifierExtension;
 //  The kind of condition.
 String kind;
 
+//  Extensions for kind
+Element element_kind;
+
 //  An expression that returns true or false, indicating whether or not
 // the condition is satisfied.
 Expression expression;
@@ -368,6 +448,7 @@ RequestGroup_Condition(
     this.extension,
     this.modifierExtension,
     this.kind,
+    this.element_kind,
     this.expression
     });
 
@@ -407,8 +488,14 @@ List<Extension> modifierExtension;
 //  The element id of the action this is related to.
 String actionId;
 
+//  Extensions for actionId
+Element element_actionId;
+
 //  The relationship of this action to the related action.
 String relationship;
+
+//  Extensions for relationship
+Element element_relationship;
 
 //  A duration or range of durations to apply to the relationship. For
 // example, 30-60 minutes before.
@@ -423,7 +510,9 @@ RequestGroup_RelatedAction(
     this.extension,
     this.modifierExtension,
     this.actionId,
+    this.element_actionId,
     this.relationship,
+    this.element_relationship,
     this.offsetDuration,
     this.offsetRange
     });

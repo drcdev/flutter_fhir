@@ -11,6 +11,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'claim.g.dart';
@@ -36,8 +37,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -81,6 +88,9 @@ List<Identifier> identifier;
 //  The status of the resource instance.
 String status;
 
+//  Extensions for status
+Element element_status;
+
 //  The category of claim, e.g. oral, pharmacy, vision, institutional,
 // professional.
 CodeableConcept type;
@@ -96,6 +106,9 @@ CodeableConcept subType;
 // services which could be provided in the future.
 String use; // <code> enum: claim/preauthorization/predetermination;
 
+//  Extensions for use
+Element element_use;
+
 //  The party to whom the professional services and/or products have been
 // supplied or are being considered and for whom actual or forecast
 // reimbursement is sought.
@@ -106,6 +119,9 @@ Period billablePeriod;
 
 //  The date this resource was created.
 DateTime created;
+
+//  Extensions for created
+Element element_created;
 
 //  Individual who created the claim, predetermination or
 // preauthorization.
@@ -183,19 +199,24 @@ Claim(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
+    this.element_status,
     this.type,
     this.subType,
     this.use,
+    this.element_use,
     this.patient,
     this.billablePeriod,
     this.created,
+    this.element_created,
     this.enterer,
     this.insurer,
     this.provider,
@@ -353,12 +374,18 @@ List<Extension> modifierExtension;
 //  A number to uniquely identify care team entries.
 int sequence;
 
+//  Extensions for sequence
+Element element_sequence;
+
 //  Member of the team who provided the product or service.
 Reference provider;
 
 //  The party who is billing and/or responsible for the claimed products
 // or services.
 bool responsible;
+
+//  Extensions for responsible
+Element element_responsible;
 
 //  The lead, assisting or supervising practitioner and their discipline
 // if a multidisciplinary team.
@@ -373,8 +400,10 @@ Claim_CareTeam(
     this.extension,
     this.modifierExtension,
     this.sequence,
+    this.element_sequence,
     this.provider,
     this.responsible,
+    this.element_responsible,
     this.role,
     this.qualification
     });
@@ -415,6 +444,9 @@ List<Extension> modifierExtension;
 //  A number to uniquely identify supporting information entries.
 int sequence;
 
+//  Extensions for sequence
+Element element_sequence;
+
 //  The general class of the information supplied: information; exception;
 // accident, employment; onset, etc.
 CodeableConcept category;
@@ -427,6 +459,9 @@ CodeableConcept code;
 //  The date when or period to which this information refers.
 String timingDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
+//  Extensions for timingDate
+Element element_timingDate;
+
 //  The date when or period to which this information refers.
 Period timingPeriod;
 
@@ -435,10 +470,16 @@ Period timingPeriod;
 // data.
 bool valueBoolean; //  pattern: ^true|false$
 
+//  Extensions for valueBoolean
+Element element_valueBoolean;
+
 //  Additional data or information such as resources, documents, images
 // etc. including references to the data or the actual inclusion of the
 // data.
 String valueString; //  pattern: ^[ \r\n\t\S]+$
+
+//  Extensions for valueString
+Element element_valueString;
 
 //  Additional data or information such as resources, documents, images
 // etc. including references to the data or the actual inclusion of the
@@ -464,12 +505,16 @@ Claim_SupportingInfo(
     this.extension,
     this.modifierExtension,
     this.sequence,
+    this.element_sequence,
     this.category,
     this.code,
     this.timingDate,
+    this.element_timingDate,
     this.timingPeriod,
     this.valueBoolean,
+    this.element_valueBoolean,
     this.valueString,
+    this.element_valueString,
     this.valueQuantity,
     this.valueAttachment,
     this.valueReference,
@@ -512,6 +557,9 @@ List<Extension> modifierExtension;
 //  A number to uniquely identify diagnosis entries.
 int sequence;
 
+//  Extensions for sequence
+Element element_sequence;
+
 //  The nature of illness or problem in a coded form or as a reference to
 // an external defined Condition.
 CodeableConcept diagnosisCodeableConcept;
@@ -537,6 +585,7 @@ Claim_Diagnosis(
     this.extension,
     this.modifierExtension,
     this.sequence,
+    this.element_sequence,
     this.diagnosisCodeableConcept,
     this.diagnosisReference,
     this.type,
@@ -580,11 +629,17 @@ List<Extension> modifierExtension;
 //  A number to uniquely identify procedure entries.
 int sequence;
 
+//  Extensions for sequence
+Element element_sequence;
+
 //  When the condition was observed or the relative ranking.
 List<CodeableConcept> type;
 
 //  Date and optionally time the procedure was performed.
 DateTime date;
+
+//  Extensions for date
+Element element_date;
 
 //  The code or reference to a Procedure resource which identifies the
 // clinical intervention performed.
@@ -602,8 +657,10 @@ Claim_Procedure(
     this.extension,
     this.modifierExtension,
     this.sequence,
+    this.element_sequence,
     this.type,
     this.date,
+    this.element_date,
     this.procedureCodeableConcept,
     this.procedureReference,
     this.udi
@@ -646,9 +703,15 @@ List<Extension> modifierExtension;
 // of coverages to convey coordination of benefit order.
 int sequence;
 
+//  Extensions for sequence
+Element element_sequence;
+
 //  A flag to indicate that this Coverage is to be used for adjudication
 // of this claim when set to true.
 bool focal;
+
+//  Extensions for focal
+Element element_focal;
 
 //  The business identifier to be used when the claim is sent for
 // adjudication against this insurance policy.
@@ -664,10 +727,16 @@ Reference coverage;
 // insurer for special business processing purposes.
 String businessArrangement;
 
+//  Extensions for businessArrangement
+Element element_businessArrangement;
+
 //  Reference numbers previously provided by the insurer to the provider
 // to be quoted on subsequent claims containing services or products
 // related to the prior authorization.
 List<String> preAuthRef;
+
+//  Extensions for preAuthRef
+List<Element> element_preAuthRef;
 
 //  The result of the adjudication of the line items for the Coverage
 // specified in this insurance.
@@ -678,11 +747,15 @@ Claim_Insurance(
     this.extension,
     this.modifierExtension,
     this.sequence,
+    this.element_sequence,
     this.focal,
+    this.element_focal,
     this.identifier,
     this.coverage,
     this.businessArrangement,
+    this.element_businessArrangement,
     this.preAuthRef,
+    this.element_preAuthRef,
     this.claimResponse
     });
 
@@ -723,6 +796,9 @@ List<Extension> modifierExtension;
 // contained in the claim.
 String date;
 
+//  Extensions for date
+Element element_date;
+
 //  The type or context of the accident event for the purposes of
 // selection of potential insurance coverages and determination of
 // coordination between insurers.
@@ -739,6 +815,7 @@ Claim_Accident(
     this.extension,
     this.modifierExtension,
     this.date,
+    this.element_date,
     this.type,
     this.locationAddress,
     this.locationReference
@@ -780,18 +857,33 @@ List<Extension> modifierExtension;
 //  A number to uniquely identify item entries.
 int sequence;
 
+//  Extensions for sequence
+Element element_sequence;
+
 //  CareTeam members related to this service or product.
 List<int> careTeamSequence;
+
+//  Extensions for careTeamSequence
+List<Element> element_careTeamSequence;
 
 //  Diagnosis applicable for this service or product.
 List<int> diagnosisSequence;
 
+//  Extensions for diagnosisSequence
+List<Element> element_diagnosisSequence;
+
 //  Procedures applicable for this service or product.
 List<int> procedureSequence;
+
+//  Extensions for procedureSequence
+List<Element> element_procedureSequence;
 
 //  Exceptions, special conditions and supporting information applicable
 // for this service or product.
 List<int> informationSequence;
+
+//  Extensions for informationSequence
+List<Element> element_informationSequence;
 
 //  The type of revenue or cost center providing the product and/or
 // service.
@@ -816,6 +908,9 @@ List<CodeableConcept> programCode;
 //  The date or dates when the service or product was supplied, performed
 // or completed.
 String servicedDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
+
+//  Extensions for servicedDate
+Element element_servicedDate;
 
 //  The date or dates when the service or product was supplied, performed
 // or completed.
@@ -844,6 +939,9 @@ Money unitPrice;
 // to a monetary amount.
 double factor;
 
+//  Extensions for factor
+Element element_factor;
+
 //  The quantity times the unit price for an additional service or product
 // or charge.
 Money net;
@@ -871,16 +969,22 @@ Claim_Item(
     this.extension,
     this.modifierExtension,
     this.sequence,
+    this.element_sequence,
     this.careTeamSequence,
+    this.element_careTeamSequence,
     this.diagnosisSequence,
+    this.element_diagnosisSequence,
     this.procedureSequence,
+    this.element_procedureSequence,
     this.informationSequence,
+    this.element_informationSequence,
     this.revenue,
     this.category,
     this.productOrService,
     this.modifier,
     this.programCode,
     this.servicedDate,
+    this.element_servicedDate,
     this.servicedPeriod,
     this.locationCodeableConcept,
     this.locationAddress,
@@ -888,6 +992,7 @@ Claim_Item(
     this.quantity,
     this.unitPrice,
     this.factor,
+    this.element_factor,
     this.net,
     this.udi,
     this.bodySite,
@@ -932,6 +1037,9 @@ List<Extension> modifierExtension;
 //  A number to uniquely identify item entries.
 int sequence;
 
+//  Extensions for sequence
+Element element_sequence;
+
 //  The type of revenue or cost center providing the product and/or
 // service.
 CodeableConcept revenue;
@@ -966,6 +1074,9 @@ Money unitPrice;
 // to a monetary amount.
 double factor;
 
+//  Extensions for factor
+Element element_factor;
+
 //  The quantity times the unit price for an additional service or product
 // or charge.
 Money net;
@@ -982,6 +1093,7 @@ Claim_Detail(
     this.extension,
     this.modifierExtension,
     this.sequence,
+    this.element_sequence,
     this.revenue,
     this.category,
     this.productOrService,
@@ -990,6 +1102,7 @@ Claim_Detail(
     this.quantity,
     this.unitPrice,
     this.factor,
+    this.element_factor,
     this.net,
     this.udi,
     this.subDetail
@@ -1031,6 +1144,9 @@ List<Extension> modifierExtension;
 //  A number to uniquely identify item entries.
 int sequence;
 
+//  Extensions for sequence
+Element element_sequence;
+
 //  The type of revenue or cost center providing the product and/or
 // service.
 CodeableConcept revenue;
@@ -1065,6 +1181,9 @@ Money unitPrice;
 // to a monetary amount.
 double factor;
 
+//  Extensions for factor
+Element element_factor;
+
 //  The quantity times the unit price for an additional service or product
 // or charge.
 Money net;
@@ -1077,6 +1196,7 @@ Claim_SubDetail(
     this.extension,
     this.modifierExtension,
     this.sequence,
+    this.element_sequence,
     this.revenue,
     this.category,
     this.productOrService,
@@ -1085,6 +1205,7 @@ Claim_SubDetail(
     this.quantity,
     this.unitPrice,
     this.factor,
+    this.element_factor,
     this.net,
     this.udi
     });

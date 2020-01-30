@@ -5,6 +5,7 @@ import 'package:flutter_fhir/class/period.dart';
 import 'package:flutter_fhir/class/coding.dart';
 import 'package:flutter_fhir/class/reference.dart';
 import 'package:flutter_fhir/class/codeableConcept.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/extension.dart';
 
 part 'dataRequirement.g.dart';
@@ -29,6 +30,9 @@ List<Extension> extension;
 // resource of the profile.
 String type;
 
+//  Extensions for type
+Element element_type;
+
 //  The profile of the required data, specified as the uri of the profile
 // definition.
 List<String> profile;
@@ -52,6 +56,9 @@ Reference subjectReference;
 // FHIRPath Profile](fhirpath.html#simple) for full details).
 List<String> mustSupport;
 
+//  Extensions for mustSupport
+List<Element> element_mustSupport;
+
 //  Code filters specify additional constraints on the data, specifying
 // the value set of interest for a particular element of the data. Each
 // code filter defines an additional constraint on the data, i.e. code
@@ -68,6 +75,9 @@ List<DataRequirement_DateFilter> dateFilter;
 // _count search parameter).
 int limit;
 
+//  Extensions for limit
+Element element_limit;
+
 //  Specifies the order of the results to be returned.
 List<DataRequirement_Sort> sort;
 
@@ -75,13 +85,16 @@ DataRequirement(
   {this.id,
     this.extension,
     this.type,
+    this.element_type,
     this.profile,
     this.subjectCodeableConcept,
     this.subjectReference,
     this.mustSupport,
+    this.element_mustSupport,
     this.codeFilter,
     this.dateFilter,
     this.limit,
+    this.element_limit,
     this.sort
     });
 
@@ -128,10 +141,16 @@ List<Extension> modifierExtension;
 // must resolve to an element of type code, Coding, or CodeableConcept.
 String path;
 
+//  Extensions for path
+Element element_path;
+
 //  A token parameter that refers to a search parameter defined on the
 // specified type of the DataRequirement, and which searches on elements
 // of type code, Coding, or CodeableConcept.
 String searchParam;
+
+//  Extensions for searchParam
+Element element_searchParam;
 
 //  The valueset for the code filter. The valueSet and code elements are
 // additive. If valueSet is specified, the filter will return only those
@@ -151,7 +170,9 @@ DataRequirement_CodeFilter(
     this.extension,
     this.modifierExtension,
     this.path,
+    this.element_path,
     this.searchParam,
+    this.element_searchParam,
     this.valueSet,
     this.code
     });
@@ -200,10 +221,16 @@ List<Extension> modifierExtension;
 // Timing.
 String path;
 
+//  Extensions for path
+Element element_path;
+
 //  A date parameter that refers to a search parameter defined on the
 // specified type of the DataRequirement, and which searches on elements
 // of type date, dateTime, Period, Schedule, or Timing.
 String searchParam;
+
+//  Extensions for searchParam
+Element element_searchParam;
 
 //  The value of the filter. If period is specified, the filter will
 // return only those data items that fall within the bounds determined by
@@ -212,6 +239,9 @@ String searchParam;
 // to the specified dateTime. If a Duration is specified, the filter will
 // return only those data items that fall within Duration before now.
 String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+
+//  Extensions for valueDateTime
+Element element_valueDateTime;
 
 //  The value of the filter. If period is specified, the filter will
 // return only those data items that fall within the bounds determined by
@@ -234,8 +264,11 @@ DataRequirement_DateFilter(
     this.extension,
     this.modifierExtension,
     this.path,
+    this.element_path,
     this.searchParam,
+    this.element_searchParam,
     this.valueDateTime,
+    this.element_valueDateTime,
     this.valuePeriod,
     this.valueDuration
     });
@@ -280,15 +313,23 @@ List<Extension> modifierExtension;
 // an integer constant.
 String path;
 
+//  Extensions for path
+Element element_path;
+
 //  The direction of the sort, ascending or descending.
 String direction; // <code> enum: ascending/descending;
+
+//  Extensions for direction
+Element element_direction;
 
 DataRequirement_Sort(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.path,
-    this.direction
+    this.element_path,
+    this.direction,
+    this.element_direction
     });
 
   factory DataRequirement_Sort.fromJson(Map<String, dynamic> json) => _$DataRequirement_SortFromJson(json);

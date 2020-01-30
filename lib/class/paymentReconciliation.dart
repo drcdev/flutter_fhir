@@ -8,6 +8,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'paymentReconciliation.g.dart';
@@ -33,8 +34,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -78,12 +85,18 @@ List<Identifier> identifier;
 //  The status of the resource instance.
 String status;
 
+//  Extensions for status
+Element element_status;
+
 //  The period of time for which payments have been gathered into this
 // bulk payment for settlement.
 Period period;
 
 //  The date when the resource was created.
 DateTime created;
+
+//  Extensions for created
+Element element_created;
 
 //  The party who generated the payment.
 Reference paymentIssuer;
@@ -98,12 +111,21 @@ Reference requestor;
 //  The outcome of a request for a reconciliation.
 String outcome; // <code> enum: queued/complete/error/partial;
 
+//  Extensions for outcome
+Element element_outcome;
+
 //  A human readable description of the status of the request for the
 // reconciliation.
 String disposition;
 
+//  Extensions for disposition
+Element element_disposition;
+
 //  The date of payment as indicated on the financial instrument.
 String paymentDate;
+
+//  Extensions for paymentDate
+Element element_paymentDate;
 
 //  Total payment amount as indicated on the financial instrument.
 Money paymentAmount;
@@ -127,21 +149,28 @@ PaymentReconciliation(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
+    this.element_status,
     this.period,
     this.created,
+    this.element_created,
     this.paymentIssuer,
     this.request,
     this.requestor,
     this.outcome,
+    this.element_outcome,
     this.disposition,
+    this.element_disposition,
     this.paymentDate,
+    this.element_paymentDate,
     this.paymentAmount,
     this.paymentIdentifier,
     this.detail,
@@ -207,6 +236,9 @@ Reference response;
 //  The date from the response resource containing a commitment to pay.
 String date;
 
+//  Extensions for date
+Element element_date;
+
 //  A reference to the individual who is responsible for inquiries
 // regarding the response and its payment.
 Reference responsible;
@@ -228,6 +260,7 @@ PaymentReconciliation_Detail(
     this.submitter,
     this.response,
     this.date,
+    this.element_date,
     this.responsible,
     this.payee,
     this.amount
@@ -269,15 +302,23 @@ List<Extension> modifierExtension;
 //  The business purpose of the note text.
 String type; // <code> enum: display/print/printoper;
 
+//  Extensions for type
+Element element_type;
+
 //  The explanation or description associated with the processing.
 String text;
+
+//  Extensions for text
+Element element_text;
 
 PaymentReconciliation_ProcessNote(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.type,
-    this.text
+    this.element_type,
+    this.text,
+    this.element_text
     });
 
   factory PaymentReconciliation_ProcessNote.fromJson(Map<String, dynamic> json) => _$PaymentReconciliation_ProcessNoteFromJson(json);

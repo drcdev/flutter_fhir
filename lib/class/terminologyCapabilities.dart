@@ -6,6 +6,7 @@ import 'package:flutter_fhir/class/contactDetail.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'terminologyCapabilities.g.dart';
@@ -31,8 +32,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -80,6 +87,9 @@ List<Extension> modifierExtension;
 // servers.
 String url;
 
+//  Extensions for url
+Element element_url;
+
 //  The identifier that is used to identify this version of the
 // terminology capabilities when it is referenced in a specification,
 // model, design or instance. This is an arbitrary value managed by the
@@ -89,23 +99,38 @@ String url;
 // versions can be placed in a lexicographical sequence.
 String version;
 
+//  Extensions for version
+Element element_version;
+
 //  A natural language name identifying the terminology capabilities. This
 // name should be usable as an identifier for the module by machine
 // processing applications such as code generation.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  A short, descriptive, user-friendly title for the terminology
 // capabilities.
 String title;
+
+//  Extensions for title
+Element element_title;
 
 //  The status of this terminology capabilities. Enables tracking the
 // life-cycle of the content.
 String status; // <code> enum: draft/active/retired/unknown;
 
+//  Extensions for status
+Element element_status;
+
 //  A Boolean value to indicate that this terminology capabilities is
 // authored for testing purposes (or education/evaluation/marketing) and
 // is not intended to be used for genuine usage.
 bool experimental;
+
+//  Extensions for experimental
+Element element_experimental;
 
 //  The date  (and optionally time) when the terminology capabilities was
 // published. The date must change when the business version changes and
@@ -114,9 +139,15 @@ bool experimental;
 // changes.
 DateTime date;
 
+//  Extensions for date
+Element element_date;
+
 //  The name of the organization or individual that published the
 // terminology capabilities.
 String publisher;
+
+//  Extensions for publisher
+Element element_publisher;
 
 //  Contact details to assist a user in finding and communicating with the
 // publisher.
@@ -128,6 +159,9 @@ List<ContactDetail> contact;
 // solution, for example as a formal expression of requirements as part of
 // an RFP.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  The content was developed with a focus and intent of supporting the
 // contexts that are listed. These contexts may be general categories
@@ -144,16 +178,25 @@ List<CodeableConcept> jurisdiction;
 // has been designed as it has.
 String purpose;
 
+//  Extensions for purpose
+Element element_purpose;
+
 //  A copyright statement relating to the terminology capabilities and/or
 // its contents. Copyright statements are generally legal restrictions on
 // the use and publishing of the terminology capabilities.
 String copyright;
+
+//  Extensions for copyright
+Element element_copyright;
 
 //  The way that this statement is intended to be used, to describe an
 // actual running instance of software, a particular product (kind, not
 // instance of software) or a class of implementation (e.g. a desired
 // purchase).
 String kind;
+
+//  Extensions for kind
+Element element_kind;
 
 //  Software that is covered by this terminology capability statement.  It
 // is used when the statement describes the capabilities of a particular
@@ -168,6 +211,9 @@ TerminologyCapabilities_Implementation implementation;
 //  Whether the server supports lockedDate.
 bool lockedDate;
 
+//  Extensions for lockedDate
+Element element_lockedDate;
+
 //  Identifies a code system that is supported by the server. If there is
 // a no code system URL, then this declares the general assumptions a
 // client can make about support for any CodeSystem resource.
@@ -180,6 +226,9 @@ TerminologyCapabilities_Expansion expansion;
 //  The degree to which the server supports the code search parameter on
 // ValueSet, if it is supported.
 String codeSearch; // <code> enum: explicit/all;
+
+//  Extensions for codeSearch
+Element element_codeSearch;
 
 //  Information about the
 // [ValueSet/$validate-code](valueset-operation-validate-code.html)
@@ -198,32 +247,48 @@ TerminologyCapabilities(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
+    this.element_url,
     this.version,
+    this.element_version,
     this.name,
+    this.element_name,
     this.title,
+    this.element_title,
     this.status,
+    this.element_status,
     this.experimental,
+    this.element_experimental,
     this.date,
+    this.element_date,
     this.publisher,
+    this.element_publisher,
     this.contact,
     this.description,
+    this.element_description,
     this.useContext,
     this.jurisdiction,
     this.purpose,
+    this.element_purpose,
     this.copyright,
+    this.element_copyright,
     this.kind,
+    this.element_kind,
     this.software,
     this.implementation,
     this.lockedDate,
+    this.element_lockedDate,
     this.codeSystem,
     this.expansion,
     this.codeSearch,
+    this.element_codeSearch,
     this.validateCode,
     this.translation,
     this.closure
@@ -265,15 +330,23 @@ List<Extension> modifierExtension;
 //  Name the software is known by.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  The version identifier for the software covered by this statement.
 String version;
+
+//  Extensions for version
+Element element_version;
 
 TerminologyCapabilities_Software(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.name,
-    this.version
+    this.element_name,
+    this.version,
+    this.element_version
     });
 
   factory TerminologyCapabilities_Software.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_SoftwareFromJson(json);
@@ -313,15 +386,23 @@ List<Extension> modifierExtension;
 // capability statement relates to.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  An absolute base URL for the implementation.
 String url;
+
+//  Extensions for url
+Element element_url;
 
 TerminologyCapabilities_Implementation(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.description,
-    this.url
+    this.element_description,
+    this.url,
+    this.element_url
     });
 
   factory TerminologyCapabilities_Implementation.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_ImplementationFromJson(json);
@@ -367,13 +448,17 @@ List<TerminologyCapabilities_Version> version;
 //  True if subsumption is supported for this version of the code system.
 bool subsumption;
 
+//  Extensions for subsumption
+Element element_subsumption;
+
 TerminologyCapabilities_CodeSystem(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.uri,
     this.version,
-    this.subsumption
+    this.subsumption,
+    this.element_subsumption
     });
 
   factory TerminologyCapabilities_CodeSystem.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_CodeSystemFromJson(json);
@@ -413,14 +498,26 @@ List<Extension> modifierExtension;
 // no identifier.
 String code;
 
+//  Extensions for code
+Element element_code;
+
 //  If this is the default version for this code system.
 bool isDefault;
+
+//  Extensions for isDefault
+Element element_isDefault;
 
 //  If the compositional grammar defined by the code system is supported.
 bool compositional;
 
+//  Extensions for compositional
+Element element_compositional;
+
 //  Language Displays supported.
 List<String> language;
+
+//  Extensions for language
+List<Element> element_language;
 
 //  Filter Properties supported.
 List<TerminologyCapabilities_Filter> filter;
@@ -428,16 +525,24 @@ List<TerminologyCapabilities_Filter> filter;
 //  Properties supported for $lookup.
 List<String> property;
 
+//  Extensions for property
+List<Element> element_property;
+
 TerminologyCapabilities_Version(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.code,
+    this.element_code,
     this.isDefault,
+    this.element_isDefault,
     this.compositional,
+    this.element_compositional,
     this.language,
+    this.element_language,
     this.filter,
-    this.property
+    this.property,
+    this.element_property
     });
 
   factory TerminologyCapabilities_Version.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_VersionFromJson(json);
@@ -476,15 +581,23 @@ List<Extension> modifierExtension;
 //  Code of the property supported.
 String code;
 
+//  Extensions for code
+Element element_code;
+
 //  Operations supported for the property.
 List<String> op;
+
+//  Extensions for op
+List<Element> element_op;
 
 TerminologyCapabilities_Filter(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.code,
-    this.op
+    this.element_code,
+    this.op,
+    this.element_op
     });
 
   factory TerminologyCapabilities_Filter.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_FilterFromJson(json);
@@ -523,11 +636,20 @@ List<Extension> modifierExtension;
 //  Whether the server can return nested value sets.
 bool hierarchical;
 
+//  Extensions for hierarchical
+Element element_hierarchical;
+
 //  Whether the server supports paging on expansion.
 bool paging;
 
+//  Extensions for paging
+Element element_paging;
+
 //  Allow request for incomplete expansions?
 bool incomplete;
+
+//  Extensions for incomplete
+Element element_incomplete;
 
 //  Supported expansion parameter.
 List<TerminologyCapabilities_Parameter> parameter;
@@ -535,15 +657,22 @@ List<TerminologyCapabilities_Parameter> parameter;
 //  Documentation about text searching works.
 String textFilter;
 
+//  Extensions for textFilter
+Element element_textFilter;
+
 TerminologyCapabilities_Expansion(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.hierarchical,
+    this.element_hierarchical,
     this.paging,
+    this.element_paging,
     this.incomplete,
+    this.element_incomplete,
     this.parameter,
-    this.textFilter
+    this.textFilter,
+    this.element_textFilter
     });
 
   factory TerminologyCapabilities_Expansion.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_ExpansionFromJson(json);
@@ -582,15 +711,23 @@ List<Extension> modifierExtension;
 //  Expansion Parameter name.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  Description of support for parameter.
 String documentation;
+
+//  Extensions for documentation
+Element element_documentation;
 
 TerminologyCapabilities_Parameter(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.name,
-    this.documentation
+    this.element_name,
+    this.documentation,
+    this.element_documentation
     });
 
   factory TerminologyCapabilities_Parameter.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_ParameterFromJson(json);
@@ -629,11 +766,15 @@ List<Extension> modifierExtension;
 //  Whether translations are validated.
 bool translations;
 
+//  Extensions for translations
+Element element_translations;
+
 TerminologyCapabilities_ValidateCode(
   {this.id,
     this.extension,
     this.modifierExtension,
-    this.translations
+    this.translations,
+    this.element_translations
     });
 
   factory TerminologyCapabilities_ValidateCode.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_ValidateCodeFromJson(json);
@@ -672,11 +813,15 @@ List<Extension> modifierExtension;
 //  Whether the client must identify the map.
 bool needsMap;
 
+//  Extensions for needsMap
+Element element_needsMap;
+
 TerminologyCapabilities_Translation(
   {this.id,
     this.extension,
     this.modifierExtension,
-    this.needsMap
+    this.needsMap,
+    this.element_needsMap
     });
 
   factory TerminologyCapabilities_Translation.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_TranslationFromJson(json);
@@ -715,11 +860,15 @@ List<Extension> modifierExtension;
 //  If cross-system closure is supported.
 bool translation;
 
+//  Extensions for translation
+Element element_translation;
+
 TerminologyCapabilities_Closure(
   {this.id,
     this.extension,
     this.modifierExtension,
-    this.translation
+    this.translation,
+    this.element_translation
     });
 
   factory TerminologyCapabilities_Closure.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_ClosureFromJson(json);

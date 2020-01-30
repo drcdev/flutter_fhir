@@ -6,6 +6,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'adverseEvent.g.dart';
@@ -31,8 +32,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -80,6 +87,9 @@ Identifier identifier;
 // or how severely.
 String actuality; // <code> enum: actual/potential;
 
+//  Extensions for actuality
+Element element_actuality;
+
 //  The overall type of event, intended for search and filtering purposes.
 List<CodeableConcept> category;
 
@@ -97,13 +107,22 @@ Reference encounter;
 //  The date (and perhaps time) when the adverse event occurred.
 DateTime date;
 
+//  Extensions for date
+Element element_date;
+
 //  Estimated or actual date the AdverseEvent began, in the opinion of the
 // reporter.
 DateTime detected;
 
+//  Extensions for detected
+Element element_detected;
+
 //  The date on which the existence of the AdverseEvent was first
 // recorded.
 DateTime recordedDate;
+
+//  Extensions for recordedDate
+Element element_recordedDate;
 
 //  Includes information about the reaction that occurred as a result of
 // exposure to a substance (for example, a drug or a chemical).
@@ -154,20 +173,26 @@ AdverseEvent(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.actuality,
+    this.element_actuality,
     this.category,
     this.event,
     this.subject,
     this.encounter,
     this.date,
+    this.element_date,
     this.detected,
+    this.element_detected,
     this.recordedDate,
+    this.element_recordedDate,
     this.resultingCondition,
     this.location,
     this.seriousness,
@@ -269,6 +294,9 @@ CodeableConcept assessment;
 //  AdverseEvent.suspectEntity.causalityProductRelatedness.
 String productRelatedness;
 
+//  Extensions for productRelatedness
+Element element_productRelatedness;
+
 //  AdverseEvent.suspectEntity.causalityAuthor.
 Reference author;
 
@@ -281,6 +309,7 @@ AdverseEvent_Causality(
     this.modifierExtension,
     this.assessment,
     this.productRelatedness,
+    this.element_productRelatedness,
     this.author,
     this.method
     });

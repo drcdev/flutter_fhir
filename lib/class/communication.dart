@@ -8,6 +8,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'communication.g.dart';
@@ -33,8 +34,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -87,6 +94,9 @@ List<String> instantiatesCanonical;
 // this Communication.
 List<String> instantiatesUri;
 
+//  Extensions for instantiatesUri
+List<Element> element_instantiatesUri;
+
 //  An order, proposal or plan fulfilled in whole or in part by this
 // Communication.
 List<Reference> basedOn;
@@ -100,6 +110,9 @@ List<Reference> inResponseTo;
 //  The status of the transmission.
 String status;
 
+//  Extensions for status
+Element element_status;
+
 //  Captures the reason for the current state of the Communication.
 CodeableConcept statusReason;
 
@@ -110,6 +123,9 @@ List<CodeableConcept> category;
 //  Characterizes how quickly the planned or in progress communication
 // must be addressed. Includes concepts such as stat, urgent, routine.
 String priority;
+
+//  Extensions for priority
+Element element_priority;
 
 //  A channel that was used for this communication (e.g. email, fax).
 List<CodeableConcept> medium;
@@ -132,8 +148,14 @@ Reference encounter;
 //  The time when this communication was sent.
 DateTime sent;
 
+//  Extensions for sent
+Element element_sent;
+
 //  The time when this communication arrived at the destination.
 DateTime received;
+
+//  Extensions for received
+Element element_received;
 
 //  The entity (e.g. person, organization, clinical information system,
 // care team or device) which was the target of the communication. If
@@ -168,7 +190,9 @@ Communication(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -176,20 +200,25 @@ Communication(
     this.identifier,
     this.instantiatesCanonical,
     this.instantiatesUri,
+    this.element_instantiatesUri,
     this.basedOn,
     this.partOf,
     this.inResponseTo,
     this.status,
+    this.element_status,
     this.statusReason,
     this.category,
     this.priority,
+    this.element_priority,
     this.medium,
     this.subject,
     this.topic,
     this.about,
     this.encounter,
     this.sent,
+    this.element_sent,
     this.received,
+    this.element_received,
     this.recipient,
     this.sender,
     this.reasonCode,
@@ -235,6 +264,9 @@ List<Extension> modifierExtension;
 // of the communication).
 String contentString; //  pattern: ^[ \r\n\t\S]+$
 
+//  Extensions for contentString
+Element element_contentString;
+
 //  A communicated content (or for multi-part communications, one portion
 // of the communication).
 Attachment contentAttachment;
@@ -248,6 +280,7 @@ Communication_Payload(
     this.extension,
     this.modifierExtension,
     this.contentString,
+    this.element_contentString,
     this.contentAttachment,
     this.contentReference
     });

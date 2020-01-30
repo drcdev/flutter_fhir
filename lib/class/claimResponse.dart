@@ -11,6 +11,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'claimResponse.g.dart';
@@ -36,8 +37,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -81,6 +88,9 @@ List<Identifier> identifier;
 //  The status of the resource instance.
 String status;
 
+//  Extensions for status
+Element element_status;
+
 //  A finer grained suite of claim type codes which may convey additional
 // information such as Inpatient vs Outpatient and/or a specialty service.
 CodeableConcept type;
@@ -96,6 +106,9 @@ CodeableConcept subType;
 // services which could be provided in the future.
 String use;
 
+//  Extensions for use
+Element element_use;
+
 //  The party to whom the professional services and/or products have been
 // supplied or are being considered and for whom actual for facast
 // reimbursement is sought.
@@ -103,6 +116,9 @@ Reference patient;
 
 //  The date this resource was created.
 DateTime created;
+
+//  Extensions for created
+Element element_created;
 
 //  The party responsible for authorization, adjudication and
 // reimbursement.
@@ -119,12 +135,21 @@ Reference request;
 // processing.
 String outcome;
 
+//  Extensions for outcome
+Element element_outcome;
+
 //  A human readable description of the status of the adjudication.
 String disposition;
+
+//  Extensions for disposition
+Element element_disposition;
 
 //  Reference from the Insurer which is used in later communications which
 // refers to this adjudication.
 String preAuthRef;
+
+//  Extensions for preAuthRef
+Element element_preAuthRef;
 
 //  The time frame during which this authorization is effective.
 Period preAuthPeriod;
@@ -180,24 +205,32 @@ ClaimResponse(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
+    this.element_status,
     this.type,
     this.subType,
     this.use,
+    this.element_use,
     this.patient,
     this.created,
+    this.element_created,
     this.insurer,
     this.requestor,
     this.request,
     this.outcome,
+    this.element_outcome,
     this.disposition,
+    this.element_disposition,
     this.preAuthRef,
+    this.element_preAuthRef,
     this.preAuthPeriod,
     this.payeeType,
     this.item,
@@ -250,9 +283,15 @@ List<Extension> modifierExtension;
 //  A number to uniquely reference the claim item entries.
 int itemSequence;
 
+//  Extensions for itemSequence
+Element element_itemSequence;
+
 //  The numbers associated with notes below which apply to the
 // adjudication of this item.
 List<int> noteNumber;
+
+//  Extensions for noteNumber
+List<Element> element_noteNumber;
 
 //  If this item is a group then the values here are a summary of the
 // adjudication of the detail items. If this item is a simple product or
@@ -268,7 +307,9 @@ ClaimResponse_Item(
     this.extension,
     this.modifierExtension,
     this.itemSequence,
+    this.element_itemSequence,
     this.noteNumber,
+    this.element_noteNumber,
     this.adjudication,
     this.detail
     });
@@ -325,6 +366,9 @@ Money amount;
 // to the amount element above.
 double value;
 
+//  Extensions for value
+Element element_value;
+
 ClaimResponse_Adjudication(
   {this.id,
     this.extension,
@@ -332,7 +376,8 @@ ClaimResponse_Adjudication(
     this.category,
     this.reason,
     this.amount,
-    this.value
+    this.value,
+    this.element_value
     });
 
   factory ClaimResponse_Adjudication.fromJson(Map<String, dynamic> json) => _$ClaimResponse_AdjudicationFromJson(json);
@@ -371,9 +416,15 @@ List<Extension> modifierExtension;
 //  A number to uniquely reference the claim detail entry.
 int detailSequence;
 
+//  Extensions for detailSequence
+Element element_detailSequence;
+
 //  The numbers associated with notes below which apply to the
 // adjudication of this item.
 List<int> noteNumber;
+
+//  Extensions for noteNumber
+List<Element> element_noteNumber;
 
 //  The adjudication results.
 List<ClaimResponse_Adjudication> adjudication;
@@ -386,7 +437,9 @@ ClaimResponse_Detail(
     this.extension,
     this.modifierExtension,
     this.detailSequence,
+    this.element_detailSequence,
     this.noteNumber,
+    this.element_noteNumber,
     this.adjudication,
     this.subDetail
     });
@@ -427,9 +480,15 @@ List<Extension> modifierExtension;
 //  A number to uniquely reference the claim sub-detail entry.
 int subDetailSequence;
 
+//  Extensions for subDetailSequence
+Element element_subDetailSequence;
+
 //  The numbers associated with notes below which apply to the
 // adjudication of this item.
 List<int> noteNumber;
+
+//  Extensions for noteNumber
+List<Element> element_noteNumber;
 
 //  The adjudication results.
 List<ClaimResponse_Adjudication> adjudication;
@@ -439,7 +498,9 @@ ClaimResponse_SubDetail(
     this.extension,
     this.modifierExtension,
     this.subDetailSequence,
+    this.element_subDetailSequence,
     this.noteNumber,
+    this.element_noteNumber,
     this.adjudication
     });
 
@@ -479,13 +540,22 @@ List<Extension> modifierExtension;
 //  Claim items which this service line is intended to replace.
 List<int> itemSequence;
 
+//  Extensions for itemSequence
+List<Element> element_itemSequence;
+
 //  The sequence number of the details within the claim item which this
 // line is intended to replace.
 List<int> detailSequence;
 
+//  Extensions for detailSequence
+List<Element> element_detailSequence;
+
 //  The sequence number of the sub-details within the details within the
 // claim item which this line is intended to replace.
 List<int> subdetailSequence;
+
+//  Extensions for subdetailSequence
+List<Element> element_subdetailSequence;
 
 //  The providers who are authorized for the services rendered to the
 // patient.
@@ -506,6 +576,9 @@ List<CodeableConcept> programCode;
 //  The date or dates when the service or product was supplied, performed
 // or completed.
 String servicedDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
+
+//  Extensions for servicedDate
+Element element_servicedDate;
 
 //  The date or dates when the service or product was supplied, performed
 // or completed.
@@ -534,6 +607,9 @@ Money unitPrice;
 // to a monetary amount.
 double factor;
 
+//  Extensions for factor
+Element element_factor;
+
 //  The quantity times the unit price for an additional service or product
 // or charge.
 Money net;
@@ -549,6 +625,9 @@ List<CodeableConcept> subSite;
 // adjudication of this item.
 List<int> noteNumber;
 
+//  Extensions for noteNumber
+List<Element> element_noteNumber;
+
 //  The adjudication results.
 List<ClaimResponse_Adjudication> adjudication;
 
@@ -560,13 +639,17 @@ ClaimResponse_AddItem(
     this.extension,
     this.modifierExtension,
     this.itemSequence,
+    this.element_itemSequence,
     this.detailSequence,
+    this.element_detailSequence,
     this.subdetailSequence,
+    this.element_subdetailSequence,
     this.provider,
     this.productOrService,
     this.modifier,
     this.programCode,
     this.servicedDate,
+    this.element_servicedDate,
     this.servicedPeriod,
     this.locationCodeableConcept,
     this.locationAddress,
@@ -574,10 +657,12 @@ ClaimResponse_AddItem(
     this.quantity,
     this.unitPrice,
     this.factor,
+    this.element_factor,
     this.net,
     this.bodySite,
     this.subSite,
     this.noteNumber,
+    this.element_noteNumber,
     this.adjudication,
     this.detail
     });
@@ -638,6 +723,9 @@ Money unitPrice;
 // to a monetary amount.
 double factor;
 
+//  Extensions for factor
+Element element_factor;
+
 //  The quantity times the unit price for an additional service or product
 // or charge.
 Money net;
@@ -645,6 +733,9 @@ Money net;
 //  The numbers associated with notes below which apply to the
 // adjudication of this item.
 List<int> noteNumber;
+
+//  Extensions for noteNumber
+List<Element> element_noteNumber;
 
 //  The adjudication results.
 List<ClaimResponse_Adjudication> adjudication;
@@ -661,8 +752,10 @@ ClaimResponse_Detail1(
     this.quantity,
     this.unitPrice,
     this.factor,
+    this.element_factor,
     this.net,
     this.noteNumber,
+    this.element_noteNumber,
     this.adjudication,
     this.subDetail
     });
@@ -723,6 +816,9 @@ Money unitPrice;
 // to a monetary amount.
 double factor;
 
+//  Extensions for factor
+Element element_factor;
+
 //  The quantity times the unit price for an additional service or product
 // or charge.
 Money net;
@@ -730,6 +826,9 @@ Money net;
 //  The numbers associated with notes below which apply to the
 // adjudication of this item.
 List<int> noteNumber;
+
+//  Extensions for noteNumber
+List<Element> element_noteNumber;
 
 //  The adjudication results.
 List<ClaimResponse_Adjudication> adjudication;
@@ -743,8 +842,10 @@ ClaimResponse_SubDetail1(
     this.quantity,
     this.unitPrice,
     this.factor,
+    this.element_factor,
     this.net,
     this.noteNumber,
+    this.element_noteNumber,
     this.adjudication
     });
 
@@ -847,6 +948,9 @@ CodeableConcept adjustmentReason;
 // payment.
 String date;
 
+//  Extensions for date
+Element element_date;
+
 //  Benefits payable less any payment adjustment.
 Money amount;
 
@@ -861,6 +965,7 @@ ClaimResponse_Payment(
     this.adjustment,
     this.adjustmentReason,
     this.date,
+    this.element_date,
     this.amount,
     this.identifier
     });
@@ -901,11 +1006,20 @@ List<Extension> modifierExtension;
 //  A number to uniquely identify a note entry.
 int number;
 
+//  Extensions for number
+Element element_number;
+
 //  The business purpose of the note text.
 String type; // <code> enum: display/print/printoper;
 
+//  Extensions for type
+Element element_type;
+
 //  The explanation or description associated with the processing.
 String text;
+
+//  Extensions for text
+Element element_text;
 
 //  A code to define the language used in the text of the note.
 CodeableConcept language;
@@ -915,8 +1029,11 @@ ClaimResponse_ProcessNote(
     this.extension,
     this.modifierExtension,
     this.number,
+    this.element_number,
     this.type,
+    this.element_type,
     this.text,
+    this.element_text,
     this.language
     });
 
@@ -957,9 +1074,15 @@ List<Extension> modifierExtension;
 // of coverages to convey coordination of benefit order.
 int sequence;
 
+//  Extensions for sequence
+Element element_sequence;
+
 //  A flag to indicate that this Coverage is to be used for adjudication
 // of this claim when set to true.
 bool focal;
+
+//  Extensions for focal
+Element element_focal;
 
 //  Reference to the insurance card level information contained in the
 // Coverage resource. The coverage issuing insurer will use these details
@@ -971,6 +1094,9 @@ Reference coverage;
 // insurer for special business processing purposes.
 String businessArrangement;
 
+//  Extensions for businessArrangement
+Element element_businessArrangement;
+
 //  The result of the adjudication of the line items for the Coverage
 // specified in this insurance.
 Reference claimResponse;
@@ -980,9 +1106,12 @@ ClaimResponse_Insurance(
     this.extension,
     this.modifierExtension,
     this.sequence,
+    this.element_sequence,
     this.focal,
+    this.element_focal,
     this.coverage,
     this.businessArrangement,
+    this.element_businessArrangement,
     this.claimResponse
     });
 
@@ -1024,15 +1153,24 @@ List<Extension> modifierExtension;
 // structure.
 int itemSequence;
 
+//  Extensions for itemSequence
+Element element_itemSequence;
+
 //  The sequence number of the detail within the line item submitted which
 // contains the error. This value is omitted when the error occurs outside
 // of the item structure.
 int detailSequence;
 
+//  Extensions for detailSequence
+Element element_detailSequence;
+
 //  The sequence number of the sub-detail within the detail within the
 // line item submitted which contains the error. This value is omitted
 // when the error occurs outside of the item structure.
 int subDetailSequence;
+
+//  Extensions for subDetailSequence
+Element element_subDetailSequence;
 
 //  An error code, from a specified code system, which details why the
 // claim could not be adjudicated.
@@ -1043,8 +1181,11 @@ ClaimResponse_Error(
     this.extension,
     this.modifierExtension,
     this.itemSequence,
+    this.element_itemSequence,
     this.detailSequence,
+    this.element_detailSequence,
     this.subDetailSequence,
+    this.element_subDetailSequence,
     this.code
     });
 

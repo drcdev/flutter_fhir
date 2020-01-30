@@ -9,6 +9,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'location.g.dart';
@@ -34,8 +35,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -81,6 +88,9 @@ List<Identifier> identifier;
 // by a schedule/slots if they are configured for the location.
 String status; // <code> enum: active/suspended/inactive;
 
+//  Extensions for status
+Element element_status;
+
 //  The operational status covers operation values most relevant to beds
 // (but can also apply to rooms/units/chairs/etc. such as an isolation
 // unit/dialysis chair). This typically covers concepts such as
@@ -90,17 +100,29 @@ Coding operationalStatus;
 //  Name of the location as used by humans. Does not need to be unique.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  A list of alternate names that the location is known as, or was known
 // as, in the past.
 List<String> alias;
+
+//  Extensions for alias
+List<Element> element_alias;
 
 //  Description of the Location, which helps in finding or referencing the
 // place.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  Indicates whether a resource instance represents a specific location
 // or a class of locations.
 String mode; // <code> enum: instance/kind;
+
+//  Extensions for mode
+Element element_mode;
 
 //  Indicates the type of function performed at the location.
 List<CodeableConcept> type;
@@ -136,6 +158,9 @@ List<Location_HoursOfOperation> hoursOfOperation;
 // opening hours Times.
 String availabilityExceptions;
 
+//  Extensions for availabilityExceptions
+Element element_availabilityExceptions;
+
 //  Technical endpoints providing access to services operated for the
 // location.
 List<Reference> endpoint;
@@ -145,18 +170,25 @@ Location(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
+    this.element_status,
     this.operationalStatus,
     this.name,
+    this.element_name,
     this.alias,
+    this.element_alias,
     this.description,
+    this.element_description,
     this.mode,
+    this.element_mode,
     this.type,
     this.telecom,
     this.address,
@@ -166,6 +198,7 @@ Location(
     this.partOf,
     this.hoursOfOperation,
     this.availabilityExceptions,
+    this.element_availabilityExceptions,
     this.endpoint
     });
 
@@ -206,21 +239,33 @@ List<Extension> modifierExtension;
 // the text of the longitude element in KML (see notes below).
 double longitude;
 
+//  Extensions for longitude
+Element element_longitude;
+
 //  Latitude. The value domain and the interpretation are the same as for
 // the text of the latitude element in KML (see notes below).
 double latitude;
 
+//  Extensions for latitude
+Element element_latitude;
+
 //  Altitude. The value domain and the interpretation are the same as for
 // the text of the altitude element in KML (see notes below).
 double altitude;
+
+//  Extensions for altitude
+Element element_altitude;
 
 Location_Position(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.longitude,
+    this.element_longitude,
     this.latitude,
-    this.altitude
+    this.element_latitude,
+    this.altitude,
+    this.element_altitude
     });
 
   factory Location_Position.fromJson(Map<String, dynamic> json) => _$Location_PositionFromJson(json);
@@ -260,23 +305,39 @@ List<Extension> modifierExtension;
 // end Times.
 List<String> daysOfWeek;
 
+//  Extensions for daysOfWeek
+List<Element> element_daysOfWeek;
+
 //  The Location is open all day.
 bool allDay;
+
+//  Extensions for allDay
+Element element_allDay;
 
 //  Time that the Location opens.
 String openingTime;
 
+//  Extensions for openingTime
+Element element_openingTime;
+
 //  Time that the Location closes.
 String closingTime;
+
+//  Extensions for closingTime
+Element element_closingTime;
 
 Location_HoursOfOperation(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.daysOfWeek,
+    this.element_daysOfWeek,
     this.allDay,
+    this.element_allDay,
     this.openingTime,
-    this.closingTime
+    this.element_openingTime,
+    this.closingTime,
+    this.element_closingTime
     });
 
   factory Location_HoursOfOperation.fromJson(Map<String, dynamic> json) => _$Location_HoursOfOperationFromJson(json);

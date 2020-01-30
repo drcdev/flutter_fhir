@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/period.dart';
 import 'package:flutter_fhir/class/codeableConcept.dart';
 import 'package:flutter_fhir/class/extension.dart';
@@ -70,6 +71,9 @@ Period dateRange;
 // chain.
 DateTime restoreDate;
 
+//  Extensions for restoreDate
+Element element_restoreDate;
+
 MarketingStatus(
   {this.id,
     this.extension,
@@ -78,7 +82,8 @@ MarketingStatus(
     this.jurisdiction,
     this.status,
     this.dateRange,
-    this.restoreDate
+    this.restoreDate,
+    this.element_restoreDate
     });
 
   factory MarketingStatus.fromJson(Map<String, dynamic> json) => _$MarketingStatusFromJson(json);

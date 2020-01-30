@@ -8,6 +8,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'imagingStudy.g.dart';
@@ -33,8 +34,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -79,6 +86,9 @@ List<Identifier> identifier;
 //  The current state of the ImagingStudy.
 String status; // <code> enum: registered/available/cancelled/entered-in-error/unknown;
 
+//  Extensions for status
+Element element_status;
+
 //  A list of all the series.modality values that are actual acquisition
 // modalities, i.e. those in the DICOM Context Group 29 (value set OID
 // 1.2.840.10008.6.1.19).
@@ -93,6 +103,9 @@ Reference encounter;
 
 //  Date and time the study started.
 DateTime started;
+
+//  Extensions for started
+Element element_started;
 
 //  A list of the diagnostic requests that resulted in this imaging study
 // being performed.
@@ -117,11 +130,17 @@ List<Reference> endpoint;
 // present if any series elements are present.
 int numberOfSeries;
 
+//  Extensions for numberOfSeries
+Element element_numberOfSeries;
+
 //  Number of SOP Instances in Study. This value given may be larger than
 // the number of instance elements this resource contains due to resource
 // availability, security, or other factors. This element should be
 // present if any instance elements are present.
 int numberOfInstances;
+
+//  Extensions for numberOfInstances
+Element element_numberOfInstances;
 
 //  The procedure which this ImagingStudy was part of.
 Reference procedureReference;
@@ -149,6 +168,9 @@ List<Annotation> note;
 // description or classification of the Study (component) performed.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  Each study has one or more series of images or other content.
 List<ImagingStudy_Series> series;
 
@@ -157,23 +179,29 @@ ImagingStudy(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
+    this.element_status,
     this.modality,
     this.subject,
     this.encounter,
     this.started,
+    this.element_started,
     this.basedOn,
     this.referrer,
     this.interpreter,
     this.endpoint,
     this.numberOfSeries,
+    this.element_numberOfSeries,
     this.numberOfInstances,
+    this.element_numberOfInstances,
     this.procedureReference,
     this.procedureCode,
     this.location,
@@ -181,6 +209,7 @@ ImagingStudy(
     this.reasonReference,
     this.note,
     this.description,
+    this.element_description,
     this.series
     });
 
@@ -220,8 +249,14 @@ List<Extension> modifierExtension;
 //  The DICOM Series Instance UID for the series.
 String uid;
 
+//  Extensions for uid
+Element element_uid;
+
 //  The numeric identifier of this series in the study.
 int number;
+
+//  Extensions for number
+Element element_number;
 
 //  The modality of this series sequence.
 Coding modality;
@@ -229,11 +264,17 @@ Coding modality;
 //  A description of the series.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  Number of SOP Instances in the Study. The value given may be larger
 // than the number of instance elements this resource contains due to
 // resource availability, security, or other factors. This element should
 // be present if any instance elements are present.
 int numberOfInstances;
+
+//  Extensions for numberOfInstances
+Element element_numberOfInstances;
 
 //  The network service providing access (e.g., query, view, or retrieval)
 // for this series. See implementation notes for information about using
@@ -260,6 +301,9 @@ List<Reference> specimen;
 //  The date and time the series was started.
 DateTime started;
 
+//  Extensions for started
+Element element_started;
+
 //  Indicates who or what performed the series and how they were involved.
 List<ImagingStudy_Performer> performer;
 
@@ -272,15 +316,20 @@ ImagingStudy_Series(
     this.extension,
     this.modifierExtension,
     this.uid,
+    this.element_uid,
     this.number,
+    this.element_number,
     this.modality,
     this.description,
+    this.element_description,
     this.numberOfInstances,
+    this.element_numberOfInstances,
     this.endpoint,
     this.bodySite,
     this.laterality,
     this.specimen,
     this.started,
+    this.element_started,
     this.performer,
     this.instance
     });
@@ -368,23 +417,35 @@ List<Extension> modifierExtension;
 //  The DICOM SOP Instance UID for this image or other DICOM content.
 String uid;
 
+//  Extensions for uid
+Element element_uid;
+
 //  DICOM instance  type.
 Coding sopClass;
 
 //  The number of instance in the series.
 int number;
 
+//  Extensions for number
+Element element_number;
+
 //  The description of the instance.
 String title;
+
+//  Extensions for title
+Element element_title;
 
 ImagingStudy_Instance(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.uid,
+    this.element_uid,
     this.sopClass,
     this.number,
-    this.title
+    this.element_number,
+    this.title,
+    this.element_title
     });
 
   factory ImagingStudy_Instance.fromJson(Map<String, dynamic> json) => _$ImagingStudy_InstanceFromJson(json);

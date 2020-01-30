@@ -7,6 +7,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'molecularSequence.g.dart';
@@ -32,8 +33,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -78,10 +85,16 @@ List<Identifier> identifier;
 //  Amino Acid Sequence/ DNA Sequence / RNA Sequence.
 String type; // <code> enum: aa/dna/rna;
 
+//  Extensions for type
+Element element_type;
+
 //  Whether the sequence is numbered starting at 0 (0-based numbering or
 // coordinates, inclusive start, exclusive end) or starting at 1 (1-based
 // numbering, inclusive start and inclusive end).
 int coordinateSystem;
+
+//  Extensions for coordinateSystem
+Element element_coordinateSystem;
 
 //  The patient whose sequencing results are described by this resource.
 Reference patient;
@@ -114,6 +127,9 @@ List<MolecularSequence_Variant> variant;
 // referenceSeq.windowStart and end by referenceSeq.windowEnd.
 String observedSeq;
 
+//  Extensions for observedSeq
+Element element_observedSeq;
+
 //  An experimental feature attribute that defines the quality of the
 // feature in a quantitative way, such as a phred quality score
 // ([SO:0001686](http://www.sequenceontology.org/browser/current_svn/term/SO:0001686)).
@@ -122,6 +138,9 @@ List<MolecularSequence_Quality> quality;
 //  Coverage (read depth or depth) is the average number of reads
 // representing a given nucleotide in the reconstructed sequence.
 int readCoverage;
+
+//  Extensions for readCoverage
+Element element_readCoverage;
 
 //  Configurations of the external repository. The repository shall store
 // target's observedSeq or records related with target's observedSeq.
@@ -138,14 +157,18 @@ MolecularSequence(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.type,
+    this.element_type,
     this.coordinateSystem,
+    this.element_coordinateSystem,
     this.patient,
     this.specimen,
     this.device,
@@ -154,8 +177,10 @@ MolecularSequence(
     this.referenceSeq,
     this.variant,
     this.observedSeq,
+    this.element_observedSeq,
     this.quality,
     this.readCoverage,
+    this.element_readCoverage,
     this.repository,
     this.pointer,
     this.structureVariant
@@ -205,11 +230,17 @@ CodeableConcept chromosome;
 // of a primary build was used.
 String genomeBuild;
 
+//  Extensions for genomeBuild
+Element element_genomeBuild;
+
 //  A relative reference to a DNA strand based on gene orientation. The
 // strand that contains the open reading frame of the gene is the "sense"
 // strand, and the opposite complementary strand is the "antisense"
 // strand.
 String orientation; // <code> enum: sense/antisense;
+
+//  Extensions for orientation
+Element element_orientation;
 
 //  Reference identifier of reference sequence submitted to NCBI. It must
 // match the type in the MolecularSequence.type field. For example, the
@@ -223,15 +254,24 @@ Reference referenceSeqPointer;
 //  A string like "ACGT".
 String referenceSeqString;
 
+//  Extensions for referenceSeqString
+Element element_referenceSeqString;
+
 //  An absolute reference to a strand. The Watson strand is the strand
 // whose 5'-end is on the short arm of the chromosome, and the Crick
 // strand as the one whose 5'-end is on the long arm.
 String strand; // <code> enum: watson/crick;
 
+//  Extensions for strand
+Element element_strand;
+
 //  Start position of the window on the reference sequence. If the
 // coordinate system is either 0-based or 1-based, then start position is
 // inclusive.
 int windowStart;
+
+//  Extensions for windowStart
+Element element_windowStart;
 
 //  End position of the window on the reference sequence. If the
 // coordinate system is 0-based then end is exclusive and does not include
@@ -239,19 +279,28 @@ int windowStart;
 // inclusive and includes the last position.
 int windowEnd;
 
+//  Extensions for windowEnd
+Element element_windowEnd;
+
 MolecularSequence_ReferenceSeq(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.chromosome,
     this.genomeBuild,
+    this.element_genomeBuild,
     this.orientation,
+    this.element_orientation,
     this.referenceSeqId,
     this.referenceSeqPointer,
     this.referenceSeqString,
+    this.element_referenceSeqString,
     this.strand,
+    this.element_strand,
     this.windowStart,
-    this.windowEnd
+    this.element_windowStart,
+    this.windowEnd,
+    this.element_windowEnd
     });
 
   factory MolecularSequence_ReferenceSeq.fromJson(Map<String, dynamic> json) => _$MolecularSequence_ReferenceSeqFromJson(json);
@@ -292,11 +341,17 @@ List<Extension> modifierExtension;
 // inclusive.
 int start;
 
+//  Extensions for start
+Element element_start;
+
 //  End position of the variant on the reference sequence. If the
 // coordinate system is 0-based then end is exclusive and does not include
 // the last position. If the coordinate system is 1-base, then end is
 // inclusive and includes the last position.
 int end;
+
+//  Extensions for end
+Element element_end;
 
 //  An allele is one of a set of coexisting sequence variants of a gene
 // ([SO:0001023](http://www.sequenceontology.org/browser/current_svn/term/SO:0001023)).
@@ -307,6 +362,9 @@ int end;
 // variant.start and variant.end.
 String observedAllele;
 
+//  Extensions for observedAllele
+Element element_observedAllele;
+
 //  An allele is one of a set of coexisting sequence variants of a gene
 // ([SO:0001023](http://www.sequenceontology.org/browser/current_svn/term/SO:0001023)).
 // Nucleotide(s)/amino acids from start position of sequence to stop
@@ -316,10 +374,16 @@ String observedAllele;
 // variant.start and variant.end.
 String referenceAllele;
 
+//  Extensions for referenceAllele
+Element element_referenceAllele;
+
 //  Extended CIGAR string for aligning the sequence with reference bases.
 // See detailed documentation
 // [here](http://support.illumina.com/help/SequencingAnalysisWorkflow/Content/Vault/Informatics/Sequencing_Analysis/CASAVA/swSEQ_mCA_ExtendedCIGARFormat.htm).
 String cigar;
+
+//  Extensions for cigar
+Element element_cigar;
 
 //  A pointer to an Observation containing variant information.
 Reference variantPointer;
@@ -329,10 +393,15 @@ MolecularSequence_Variant(
     this.extension,
     this.modifierExtension,
     this.start,
+    this.element_start,
     this.end,
+    this.element_end,
     this.observedAllele,
+    this.element_observedAllele,
     this.referenceAllele,
+    this.element_referenceAllele,
     this.cigar,
+    this.element_cigar,
     this.variantPointer
     });
 
@@ -372,6 +441,9 @@ List<Extension> modifierExtension;
 //  INDEL / SNP / Undefined variant.
 String type; // <code> enum: indel/snp/unknown;
 
+//  Extensions for type
+Element element_type;
+
 //  Gold standard sequence used for comparing against.
 CodeableConcept standardSequence;
 
@@ -379,11 +451,17 @@ CodeableConcept standardSequence;
 // 0-based or 1-based, then start position is inclusive.
 int start;
 
+//  Extensions for start
+Element element_start;
+
 //  End position of the sequence. If the coordinate system is 0-based then
 // end is exclusive and does not include the last position. If the
 // coordinate system is 1-base, then end is inclusive and includes the
 // last position.
 int end;
+
+//  Extensions for end
+Element element_end;
 
 //  The score of an experimentally derived feature such as a p-value
 // ([SO:0001685](http://www.sequenceontology.org/browser/current_svn/term/SO:0001685)).
@@ -398,11 +476,17 @@ CodeableConcept method;
 // site, and for which there is an accurate genotype call for the event.
 double truthTP;
 
+//  Extensions for truthTP
+Element element_truthTP;
+
 //  True positives, from the perspective of the query data, i.e. the
 // number of sites in the Query Call Set for which there are paths through
 // the Truth Call Set that are consistent with all of the alleles at this
 // site, and for which there is an accurate genotype call for the event.
 double queryTP;
+
+//  Extensions for queryTP
+Element element_queryTP;
 
 //  False negatives, i.e. the number of sites in the Truth Call Set for
 // which there is no path through the Query Call Set that is consistent
@@ -411,26 +495,44 @@ double queryTP;
 // incorrect genotype are counted here.
 double truthFN;
 
+//  Extensions for truthFN
+Element element_truthFN;
+
 //  False positives, i.e. the number of sites in the Query Call Set for
 // which there is no path through the Truth Call Set that is consistent
 // with this site. Sites with correct variant but incorrect genotype are
 // counted here.
 double queryFP;
 
+//  Extensions for queryFP
+Element element_queryFP;
+
 //  The number of false positives where the non-REF alleles in the Truth
 // and Query Call Sets match (i.e. cases where the truth is 1/1 and the
 // query is 0/1 or similar).
 double gtFP;
 
+//  Extensions for gtFP
+Element element_gtFP;
+
 //  QUERY.TP / (QUERY.TP + QUERY.FP).
 double precision;
+
+//  Extensions for precision
+Element element_precision;
 
 //  TRUTH.TP / (TRUTH.TP + TRUTH.FN).
 double recall;
 
+//  Extensions for recall
+Element element_recall;
+
 //  Harmonic mean of Recall and Precision, computed as: 2 * precision *
 // recall / (precision + recall).
 double fScore;
+
+//  Extensions for fScore
+Element element_fScore;
 
 //  Receiver Operator Characteristic (ROC) Curve  to give
 // sensitivity/specificity tradeoff.
@@ -441,19 +543,30 @@ MolecularSequence_Quality(
     this.extension,
     this.modifierExtension,
     this.type,
+    this.element_type,
     this.standardSequence,
     this.start,
+    this.element_start,
     this.end,
+    this.element_end,
     this.score,
     this.method,
     this.truthTP,
+    this.element_truthTP,
     this.queryTP,
+    this.element_queryTP,
     this.truthFN,
+    this.element_truthFN,
     this.queryFP,
+    this.element_queryFP,
     this.gtFP,
+    this.element_gtFP,
     this.precision,
+    this.element_precision,
     this.recall,
+    this.element_recall,
     this.fScore,
+    this.element_fScore,
     this.roc
     });
 
@@ -494,41 +607,69 @@ List<Extension> modifierExtension;
 // threshold.
 List<int> score;
 
+//  Extensions for score
+List<Element> element_score;
+
 //  The number of true positives if the GQ score threshold was set to
 // "score" field value.
 List<int> numTP;
+
+//  Extensions for numTP
+List<Element> element_numTP;
 
 //  The number of false positives if the GQ score threshold was set to
 // "score" field value.
 List<int> numFP;
 
+//  Extensions for numFP
+List<Element> element_numFP;
+
 //  The number of false negatives if the GQ score threshold was set to
 // "score" field value.
 List<int> numFN;
+
+//  Extensions for numFN
+List<Element> element_numFN;
 
 //  Calculated precision if the GQ score threshold was set to "score"
 // field value.
 List<double> precision;
 
+//  Extensions for precision
+List<Element> element_precision;
+
 //  Calculated sensitivity if the GQ score threshold was set to "score"
 // field value.
 List<double> sensitivity;
 
+//  Extensions for sensitivity
+List<Element> element_sensitivity;
+
 //  Calculated fScore if the GQ score threshold was set to "score" field
 // value.
 List<double> fMeasure;
+
+//  Extensions for fMeasure
+List<Element> element_fMeasure;
 
 MolecularSequence_Roc(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.score,
+    this.element_score,
     this.numTP,
+    this.element_numTP,
     this.numFP,
+    this.element_numFP,
     this.numFN,
+    this.element_numFN,
     this.precision,
+    this.element_precision,
     this.sensitivity,
-    this.fMeasure
+    this.element_sensitivity,
+    this.fMeasure,
+    this.element_fMeasure
     });
 
   factory MolecularSequence_Roc.fromJson(Map<String, dynamic> json) => _$MolecularSequence_RocFromJson(json);
@@ -568,37 +709,61 @@ List<Extension> modifierExtension;
 // authentication / Other ways to see resource.
 String type; // <code> enum: directlink/openapi/login/oauth/other;
 
+//  Extensions for type
+Element element_type;
+
 //  URI of an external repository which contains further details about the
 // genetics data.
 String url;
 
+//  Extensions for url
+Element element_url;
+
 //  URI of an external repository which contains further details about the
 // genetics data.
 String name;
+
+//  Extensions for name
+Element element_name;
 
 //  Id of the variant in this external repository. The server will
 // understand how to use this id to call for more info about datasets in
 // external repository.
 String datasetId;
 
+//  Extensions for datasetId
+Element element_datasetId;
+
 //  Id of the variantset in this external repository. The server will
 // understand how to use this id to call for more info about variantsets
 // in external repository.
 String variantsetId;
 
+//  Extensions for variantsetId
+Element element_variantsetId;
+
 //  Id of the read in this external repository.
 String readsetId;
+
+//  Extensions for readsetId
+Element element_readsetId;
 
 MolecularSequence_Repository(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.type,
+    this.element_type,
     this.url,
+    this.element_url,
     this.name,
+    this.element_name,
     this.datasetId,
+    this.element_datasetId,
     this.variantsetId,
-    this.readsetId
+    this.element_variantsetId,
+    this.readsetId,
+    this.element_readsetId
     });
 
   factory MolecularSequence_Repository.fromJson(Map<String, dynamic> json) => _$MolecularSequence_RepositoryFromJson(json);
@@ -641,8 +806,14 @@ CodeableConcept variantType;
 // meaning.
 bool exact;
 
+//  Extensions for exact
+Element element_exact;
+
 //  Length of the variant chromosome.
 int length;
+
+//  Extensions for length
+Element element_length;
 
 //  Structural variant outer.
 MolecularSequence_Outer outer;
@@ -656,7 +827,9 @@ MolecularSequence_StructureVariant(
     this.modifierExtension,
     this.variantType,
     this.exact,
+    this.element_exact,
     this.length,
+    this.element_length,
     this.outer,
     this.inner
     });
@@ -698,18 +871,26 @@ List<Extension> modifierExtension;
 // 0-based or 1-based, then start position is inclusive.
 int start;
 
+//  Extensions for start
+Element element_start;
+
 //  Structural variant outer end. If the coordinate system is 0-based then
 // end is exclusive and does not include the last position. If the
 // coordinate system is 1-base, then end is inclusive and includes the
 // last position.
 int end;
 
+//  Extensions for end
+Element element_end;
+
 MolecularSequence_Outer(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.start,
-    this.end
+    this.element_start,
+    this.end,
+    this.element_end
     });
 
   factory MolecularSequence_Outer.fromJson(Map<String, dynamic> json) => _$MolecularSequence_OuterFromJson(json);
@@ -749,18 +930,26 @@ List<Extension> modifierExtension;
 // 0-based or 1-based, then start position is inclusive.
 int start;
 
+//  Extensions for start
+Element element_start;
+
 //  Structural variant inner end. If the coordinate system is 0-based then
 // end is exclusive and does not include the last position. If the
 // coordinate system is 1-base, then end is inclusive and includes the
 // last position.
 int end;
 
+//  Extensions for end
+Element element_end;
+
 MolecularSequence_Inner(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.start,
-    this.end
+    this.element_start,
+    this.end,
+    this.element_end
     });
 
   factory MolecularSequence_Inner.fromJson(Map<String, dynamic> json) => _$MolecularSequence_InnerFromJson(json);

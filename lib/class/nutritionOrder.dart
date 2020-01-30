@@ -10,6 +10,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'nutritionOrder.g.dart';
@@ -35,8 +36,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -88,17 +95,29 @@ List<String> instantiatesCanonical;
 // this NutritionOrder.
 List<String> instantiatesUri;
 
+//  Extensions for instantiatesUri
+List<Element> element_instantiatesUri;
+
 //  The URL pointing to a protocol, guideline, orderset or other
 // definition that is adhered to in whole or in part by this
 // NutritionOrder.
 List<String> instantiates;
 
+//  Extensions for instantiates
+List<Element> element_instantiates;
+
 //  The workflow status of the nutrition order/request.
 String status;
+
+//  Extensions for status
+Element element_status;
 
 //  Indicates the level of authority/intentionality associated with the
 // NutrionOrder and where the request fits into the workflow chain.
 String intent;
+
+//  Extensions for intent
+Element element_intent;
 
 //  The person (patient) who needs the nutrition order for an oral diet,
 // nutritional supplement and/or enteral or formula feeding.
@@ -110,6 +129,9 @@ Reference encounter;
 
 //  The date and time that this nutrition order was requested.
 DateTime dateTime;
+
+//  Extensions for dateTime
+Element element_dateTime;
 
 //  The practitioner that holds legal responsibility for ordering the
 // diet, nutritional supplement, or formula feedings.
@@ -158,7 +180,9 @@ NutritionOrder(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -166,12 +190,17 @@ NutritionOrder(
     this.identifier,
     this.instantiatesCanonical,
     this.instantiatesUri,
+    this.element_instantiatesUri,
     this.instantiates,
+    this.element_instantiates,
     this.status,
+    this.element_status,
     this.intent,
+    this.element_intent,
     this.patient,
     this.encounter,
     this.dateTime,
+    this.element_dateTime,
     this.orderer,
     this.allergyIntolerance,
     this.foodPreferenceModifier,
@@ -240,6 +269,9 @@ List<CodeableConcept> fluidConsistencyType;
 // oral diet.
 String instruction;
 
+//  Extensions for instruction
+Element element_instruction;
+
 NutritionOrder_OralDiet(
   {this.id,
     this.extension,
@@ -249,7 +281,8 @@ NutritionOrder_OralDiet(
     this.nutrient,
     this.texture,
     this.fluidConsistencyType,
-    this.instruction
+    this.instruction,
+    this.element_instruction
     });
 
   factory NutritionOrder_OralDiet.fromJson(Map<String, dynamic> json) => _$NutritionOrder_OralDietFromJson(json);
@@ -389,6 +422,9 @@ CodeableConcept type;
 // Protein Shake".
 String productName;
 
+//  Extensions for productName
+Element element_productName;
+
 //  The time period and frequency at which the supplement(s) should be
 // given.  The supplement should be given for the combination of all
 // schedules if more than one schedule is present.
@@ -401,15 +437,20 @@ Quantity quantity;
 // oral supplement.
 String instruction;
 
+//  Extensions for instruction
+Element element_instruction;
+
 NutritionOrder_Supplement(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.type,
     this.productName,
+    this.element_productName,
     this.schedule,
     this.quantity,
-    this.instruction
+    this.instruction,
+    this.element_instruction
     });
 
   factory NutritionOrder_Supplement.fromJson(Map<String, dynamic> json) => _$NutritionOrder_SupplementFromJson(json);
@@ -453,6 +494,9 @@ CodeableConcept baseFormulaType;
 // such as "ACME Adult Standard Formula".
 String baseFormulaProductName;
 
+//  Extensions for baseFormulaProductName
+Element element_baseFormulaProductName;
+
 //  Indicates the type of modular component such as protein, carbohydrate,
 // fat or fiber to be provided in addition to or mixed with the base
 // formula.
@@ -461,6 +505,9 @@ CodeableConcept additiveType;
 //  The product or brand name of the type of modular component to be added
 // to the formula.
 String additiveProductName;
+
+//  Extensions for additiveProductName
+Element element_additiveProductName;
 
 //  The amount of energy (calories) that the formula should provide per
 // specified volume, typically per mL or fluid oz.  For example, an infant
@@ -488,19 +535,25 @@ Quantity maxVolumeToDeliver;
 // instructions or information.
 String administrationInstruction;
 
+//  Extensions for administrationInstruction
+Element element_administrationInstruction;
+
 NutritionOrder_EnteralFormula(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.baseFormulaType,
     this.baseFormulaProductName,
+    this.element_baseFormulaProductName,
     this.additiveType,
     this.additiveProductName,
+    this.element_additiveProductName,
     this.caloricDensity,
     this.routeofAdministration,
     this.administration,
     this.maxVolumeToDeliver,
-    this.administrationInstruction
+    this.administrationInstruction,
+    this.element_administrationInstruction
     });
 
   factory NutritionOrder_EnteralFormula.fromJson(Map<String, dynamic> json) => _$NutritionOrder_EnteralFormulaFromJson(json);

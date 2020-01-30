@@ -15,7 +15,14 @@ SubstanceReferenceInformation _$SubstanceReferenceInformationFromJson(
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
+    element_implicitRules: json['element_implicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['element_implicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
+    element_language: json['element_language'] == null
+        ? null
+        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
@@ -32,6 +39,9 @@ SubstanceReferenceInformation _$SubstanceReferenceInformationFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     comment: json['comment'] as String,
+    element_comment: json['element_comment'] == null
+        ? null
+        : Element.fromJson(json['element_comment'] as Map<String, dynamic>),
     gene: (json['gene'] as List)
         ?.map((e) => e == null
             ? null
@@ -66,13 +76,16 @@ Map<String, dynamic> _$SubstanceReferenceInformationToJson(
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
+      'element_implicitRules': instance.element_implicitRules?.toJson(),
       'language': instance.language,
+      'element_language': instance.element_language?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'comment': instance.comment,
+      'element_comment': instance.element_comment?.toJson(),
       'gene': instance.gene?.map((e) => e?.toJson())?.toList(),
       'geneElement': instance.geneElement?.map((e) => e?.toJson())?.toList(),
       'classification':
@@ -236,6 +249,10 @@ SubstanceReferenceInformation_Target
         ? null
         : Range.fromJson(json['amountRange'] as Map<String, dynamic>),
     amountString: json['amountString'] as String,
+    element_amountString: json['element_amountString'] == null
+        ? null
+        : Element.fromJson(
+            json['element_amountString'] as Map<String, dynamic>),
     amountType: json['amountType'] == null
         ? null
         : CodeableConcept.fromJson(json['amountType'] as Map<String, dynamic>),
@@ -261,6 +278,7 @@ Map<String, dynamic> _$SubstanceReferenceInformation_TargetToJson(
       'amountQuantity': instance.amountQuantity?.toJson(),
       'amountRange': instance.amountRange?.toJson(),
       'amountString': instance.amountString,
+      'element_amountString': instance.element_amountString?.toJson(),
       'amountType': instance.amountType?.toJson(),
       'source': instance.source?.map((e) => e?.toJson())?.toList(),
     };

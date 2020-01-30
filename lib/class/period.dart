@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/extension.dart';
 
 part 'period.g.dart';
@@ -22,17 +23,25 @@ List<Extension> extension;
 //  The start of the period. The boundary is inclusive.
 DateTime start;
 
+//  Extensions for start
+Element element_start;
+
 //  The end of the period. If the end of the period is missing, it means
 // no end was known or planned at the time the instance was created. The
 // start may be in the past, and the end date in the future, which means
 // that period is expected/planned to end at that time.
 DateTime end;
 
+//  Extensions for end
+Element element_end;
+
 Period(
   {this.id,
     this.extension,
     this.start,
-    this.end
+    this.element_start,
+    this.end,
+    this.element_end
     });
 
   factory Period.fromJson(Map<String, dynamic> json) => _$PeriodFromJson(json);

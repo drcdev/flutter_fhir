@@ -7,6 +7,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'composition.g.dart';
@@ -32,8 +33,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -79,6 +86,9 @@ Identifier identifier;
 // marker for the clinical standing of the document.
 String status; // <code> enum: preliminary/final/amended/entered-in-error;
 
+//  Extensions for status
+Element element_status;
+
 //  Specifies the particular kind of composition (e.g. History and
 // Physical, Discharge Summary, Progress Note). This usually equates to
 // the purpose of making the composition.
@@ -103,6 +113,9 @@ Reference encounter;
 // changed by the author.
 DateTime date;
 
+//  Extensions for date
+Element element_date;
+
 //  Identifies who is responsible for the information in the composition,
 // not necessarily who typed it in.
 List<Reference> author;
@@ -110,8 +123,14 @@ List<Reference> author;
 //  Official human-readable label for the composition.
 String title;
 
+//  Extensions for title
+Element element_title;
+
 //  The code specifying the level of confidentiality of the Composition.
 String confidentiality;
+
+//  Extensions for confidentiality
+Element element_confidentiality;
 
 //  A participant who has attested to the accuracy of the
 // composition/document.
@@ -137,21 +156,27 @@ Composition(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
+    this.element_status,
     this.type,
     this.category,
     this.subject,
     this.encounter,
     this.date,
+    this.element_date,
     this.author,
     this.title,
+    this.element_title,
     this.confidentiality,
+    this.element_confidentiality,
     this.attester,
     this.custodian,
     this.relatesTo,
@@ -195,8 +220,14 @@ List<Extension> modifierExtension;
 //  The type of attestation the authenticator offers.
 String mode; // <code> enum: personal/professional/legal/official;
 
+//  Extensions for mode
+Element element_mode;
+
 //  When the composition was attested by the party.
 DateTime time;
+
+//  Extensions for time
+Element element_time;
 
 //  Who attested the composition in the specified way.
 Reference party;
@@ -206,7 +237,9 @@ Composition_Attester(
     this.extension,
     this.modifierExtension,
     this.mode,
+    this.element_mode,
     this.time,
+    this.element_time,
     this.party
     });
 
@@ -247,6 +280,9 @@ List<Extension> modifierExtension;
 // composition or document.
 String code;
 
+//  Extensions for code
+Element element_code;
+
 //  The target composition/document of this relationship.
 Identifier targetIdentifier;
 
@@ -258,6 +294,7 @@ Composition_RelatesTo(
     this.extension,
     this.modifierExtension,
     this.code,
+    this.element_code,
     this.targetIdentifier,
     this.targetReference
     });
@@ -359,6 +396,9 @@ List<Extension> modifierExtension;
 // of contents.
 String title;
 
+//  Extensions for title
+Element element_title;
+
 //  A code identifying the kind of content contained within the section.
 // This must be consistent with the section title.
 CodeableConcept code;
@@ -391,6 +431,9 @@ Narrative text;
 // prepared list where items may be marked as added, modified or deleted.
 String mode;
 
+//  Extensions for mode
+Element element_mode;
+
 //  Specifies the order applied to the items in the section entries.
 CodeableConcept orderedBy;
 
@@ -410,11 +453,13 @@ Composition_Section(
     this.extension,
     this.modifierExtension,
     this.title,
+    this.element_title,
     this.code,
     this.author,
     this.focus,
     this.text,
     this.mode,
+    this.element_mode,
     this.orderedBy,
     this.entry,
     this.emptyReason,

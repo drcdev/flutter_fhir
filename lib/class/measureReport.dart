@@ -8,6 +8,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'measureReport.g.dart';
@@ -33,8 +34,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -81,6 +88,9 @@ List<Identifier> identifier;
 // MeasureReport status is complete.
 String status; // <code> enum: complete/pending/error;
 
+//  Extensions for status
+Element element_status;
+
 //  The type of measure report. This may be an individual report, which
 // provides the score for the measure for an individual member of the
 // population; a subject-listing, which returns the list of members that
@@ -89,6 +99,9 @@ String status; // <code> enum: complete/pending/error;
 // a data-collection, which enables the MeasureReport to be used to
 // exchange the data-of-interest for a quality measure.
 String type; // <code> enum: individual/subject-list/summary/data-collection;
+
+//  Extensions for type
+Element element_type;
 
 //  A reference to the Measure that was calculated to produce this report.
 String measure;
@@ -99,6 +112,9 @@ Reference subject;
 
 //  The date this measure report was generated.
 DateTime date;
+
+//  Extensions for date
+Element element_date;
 
 //  The individual, location, or organization that is reporting the data.
 Reference reporter;
@@ -123,17 +139,22 @@ MeasureReport(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
+    this.element_status,
     this.type,
+    this.element_type,
     this.measure,
     this.subject,
     this.date,
+    this.element_date,
     this.reporter,
     this.period,
     this.improvementNotation,
@@ -240,6 +261,9 @@ CodeableConcept code;
 //  The number of members of the population.
 int count;
 
+//  Extensions for count
+Element element_count;
+
 //  This element refers to a List of subject level MeasureReport
 // resources, one for each subject in this population.
 Reference subjectResults;
@@ -250,6 +274,7 @@ MeasureReport_Population(
     this.modifierExtension,
     this.code,
     this.count,
+    this.element_count,
     this.subjectResults
     });
 
@@ -448,6 +473,9 @@ CodeableConcept code;
 //  The number of members of the population in this stratum.
 int count;
 
+//  Extensions for count
+Element element_count;
+
 //  This element refers to a List of subject level MeasureReport
 // resources, one for each subject in this population in this stratum.
 Reference subjectResults;
@@ -458,6 +486,7 @@ MeasureReport_Population1(
     this.modifierExtension,
     this.code,
     this.count,
+    this.element_count,
     this.subjectResults
     });
 

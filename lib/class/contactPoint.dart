@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/class/period.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/extension.dart';
 
 part 'contactPoint.g.dart';
@@ -24,17 +25,29 @@ List<Extension> extension;
 // is required to make use of the contact.
 String system; // <code> enum: phone/fax/email/pager/url/sms/other;
 
+//  Extensions for system
+Element element_system;
+
 //  The actual contact point details, in a form that is meaningful to the
 // designated communication system (i.e. phone number or email address).
 String value;
 
+//  Extensions for value
+Element element_value;
+
 //  Identifies the purpose for the contact point.
 String use; // <code> enum: home/work/temp/old/mobile;
+
+//  Extensions for use
+Element element_use;
 
 //  Specifies a preferred order in which to use a set of contacts.
 // ContactPoints with lower rank values are more preferred than those with
 // higher rank values.
 int rank;
+
+//  Extensions for rank
+Element element_rank;
 
 //  Time period when the contact point was/is in use.
 Period period;
@@ -43,9 +56,13 @@ ContactPoint(
   {this.id,
     this.extension,
     this.system,
+    this.element_system,
     this.value,
+    this.element_value,
     this.use,
+    this.element_use,
     this.rank,
+    this.element_rank,
     this.period
     });
 

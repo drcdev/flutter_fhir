@@ -4,6 +4,7 @@ import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/signature.dart';
 import 'package:flutter_fhir/class/identifier.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'bundle.g.dart';
@@ -29,8 +30,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A persistent identifier for the bundle that won't change as a bundle
 // is copied from server to server.
@@ -39,15 +46,24 @@ Identifier identifier;
 //  Indicates the purpose of this bundle - how it is intended to be used.
 String type; // <code> enum: document/message/transaction/transaction-response/batch/batch-response/history/searchset/collection;
 
+//  Extensions for type
+Element element_type;
+
 //  The date/time that the bundle was assembled - i.e. when the resources
 // were placed in the bundle.
 DateTime timestamp;
+
+//  Extensions for timestamp
+Element element_timestamp;
 
 //  If a set of search matches, this is the total number of entries of
 // type 'match' across all pages in the search.  It does not include
 // search.mode = 'include' or 'outcome' entries and it does not provide a
 // count of the number of entries in the Bundle.
 int total;
+
+//  Extensions for total
+Element element_total;
 
 //  A series of links that provide context to this bundle.
 List<Bundle_Link> link;
@@ -64,11 +80,16 @@ Bundle(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.identifier,
     this.type,
+    this.element_type,
     this.timestamp,
+    this.element_timestamp,
     this.total,
+    this.element_total,
     this.link,
     this.entry,
     this.signature
@@ -111,15 +132,23 @@ List<Extension> modifierExtension;
 // [http://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1](http://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1).
 String relation;
 
+//  Extensions for relation
+Element element_relation;
+
 //  The reference details for the link.
 String url;
+
+//  Extensions for url
+Element element_url;
 
 Bundle_Link(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.relation,
-    this.url
+    this.element_relation,
+    this.url,
+    this.element_url
     });
 
   factory Bundle_Link.fromJson(Map<String, dynamic> json) => _$Bundle_LinkFromJson(json);
@@ -168,6 +197,9 @@ List<Bundle_Link> link;
 // operations might involve resources that are not identified.
 String fullUrl;
 
+//  Extensions for fullUrl
+Element element_fullUrl;
+
 //  The Resource for the entry. The purpose/meaning of the resource is
 // determined by the Bundle.type.
 ResourceList resource;
@@ -192,6 +224,7 @@ Bundle_Entry(
     this.modifierExtension,
     this.link,
     this.fullUrl,
+    this.element_fullUrl,
     this.resource,
     this.search,
     this.request,
@@ -236,15 +269,23 @@ List<Extension> modifierExtension;
 // warning information about the search process.
 String mode; // <code> enum: match/include/outcome;
 
+//  Extensions for mode
+Element element_mode;
+
 //  When searching, the server's search ranking score for the entry.
 double score;
+
+//  Extensions for score
+Element element_score;
 
 Bundle_Search(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.mode,
-    this.score
+    this.element_mode,
+    this.score,
+    this.element_score
     });
 
   factory Bundle_Search.fromJson(Map<String, dynamic> json) => _$Bundle_SearchFromJson(json);
@@ -285,22 +326,37 @@ List<Extension> modifierExtension;
 // occurred.
 String method; // <code> enum: GET/HEAD/POST/PUT/DELETE/PATCH;
 
+//  Extensions for method
+Element element_method;
+
 //  The URL for this entry, relative to the root (the address to which the
 // request is posted).
 String url;
+
+//  Extensions for url
+Element element_url;
 
 //  If the ETag values match, return a 304 Not Modified status. See the
 // API documentation for ["Conditional Read"](http.html#cread).
 String ifNoneMatch;
 
+//  Extensions for ifNoneMatch
+Element element_ifNoneMatch;
+
 //  Only perform the operation if the last updated date matches. See the
 // API documentation for ["Conditional Read"](http.html#cread).
 DateTime ifModifiedSince;
+
+//  Extensions for ifModifiedSince
+Element element_ifModifiedSince;
 
 //  Only perform the operation if the Etag value matches. For more
 // information, see the API section ["Managing Resource
 // Contention"](http.html#concurrency).
 String ifMatch;
+
+//  Extensions for ifMatch
+Element element_ifMatch;
 
 //  Instruct the server not to perform the create if a specified resource
 // already exists. For further information, see the API documentation for
@@ -308,16 +364,25 @@ String ifMatch;
 // portion of the URL - what follows the "?" (not including the "?").
 String ifNoneExist;
 
+//  Extensions for ifNoneExist
+Element element_ifNoneExist;
+
 Bundle_Request(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.method,
+    this.element_method,
     this.url,
+    this.element_url,
     this.ifNoneMatch,
+    this.element_ifNoneMatch,
     this.ifModifiedSince,
+    this.element_ifModifiedSince,
     this.ifMatch,
-    this.ifNoneExist
+    this.element_ifMatch,
+    this.ifNoneExist,
+    this.element_ifNoneExist
     });
 
   factory Bundle_Request.fromJson(Map<String, dynamic> json) => _$Bundle_RequestFromJson(json);
@@ -358,9 +423,15 @@ List<Extension> modifierExtension;
 // HTTP description associated with the status code.
 String status;
 
+//  Extensions for status
+Element element_status;
+
 //  The location header created by processing this operation, populated if
 // the operation returns a location.
 String location;
+
+//  Extensions for location
+Element element_location;
 
 //  The Etag for the resource, if the operation for the entry produced a
 // versioned resource (see [Resource Metadata and
@@ -368,8 +439,14 @@ String location;
 // Contention](http.html#concurrency)).
 String etag;
 
+//  Extensions for etag
+Element element_etag;
+
 //  The date/time that the resource was modified on the server.
 DateTime lastModified;
+
+//  Extensions for lastModified
+Element element_lastModified;
 
 //  An OperationOutcome containing hints and warnings produced as part of
 // processing this entry in a batch or transaction.
@@ -380,9 +457,13 @@ Bundle_Response(
     this.extension,
     this.modifierExtension,
     this.status,
+    this.element_status,
     this.location,
+    this.element_location,
     this.etag,
+    this.element_etag,
     this.lastModified,
+    this.element_lastModified,
     this.outcome
     });
 

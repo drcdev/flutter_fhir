@@ -7,6 +7,7 @@ import 'package:flutter_fhir/class/contactDetail.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'namingSystem.g.dart';
@@ -32,8 +33,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -76,13 +83,22 @@ List<Extension> modifierExtension;
 // applications such as code generation.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  The status of this naming system. Enables tracking the life-cycle of
 // the content.
 String status; // <code> enum: draft/active/retired/unknown;
 
+//  Extensions for status
+Element element_status;
+
 //  Indicates the purpose for the naming system - what kinds of things
 // does it make unique?
 String kind; // <code> enum: codesystem/identifier/root;
+
+//  Extensions for kind
+Element element_kind;
 
 //  The date  (and optionally time) when the naming system was published.
 // The date must change when the business version changes and it must
@@ -90,9 +106,15 @@ String kind; // <code> enum: codesystem/identifier/root;
 // the substantive content of the naming system changes.
 DateTime date;
 
+//  Extensions for date
+Element element_date;
+
 //  The name of the organization or individual that published the naming
 // system.
 String publisher;
+
+//  Extensions for publisher
+Element element_publisher;
 
 //  Contact details to assist a user in finding and communicating with the
 // publisher.
@@ -103,6 +125,9 @@ List<ContactDetail> contact;
 // non-collision.
 String responsible;
 
+//  Extensions for responsible
+Element element_responsible;
+
 //  Categorizes a naming system for easier search by grouping related
 // naming systems.
 CodeableConcept type;
@@ -111,6 +136,9 @@ CodeableConcept type;
 // consumer's perspective. Details about what the namespace identifies
 // including scope, granularity, version labeling, etc.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  The content was developed with a focus and intent of supporting the
 // contexts that are listed. These contexts may be general categories
@@ -127,6 +155,9 @@ List<CodeableConcept> jurisdiction;
 // of formatting characters, use of upper vs. lower case, etc.
 String usage;
 
+//  Extensions for usage
+Element element_usage;
+
 //  Indicates how the system may be identified when referenced in
 // electronic exchange.
 List<NamingSystem_UniqueId> uniqueId;
@@ -136,23 +167,33 @@ NamingSystem(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.name,
+    this.element_name,
     this.status,
+    this.element_status,
     this.kind,
+    this.element_kind,
     this.date,
+    this.element_date,
     this.publisher,
+    this.element_publisher,
     this.contact,
     this.responsible,
+    this.element_responsible,
     this.type,
     this.description,
+    this.element_description,
     this.useContext,
     this.jurisdiction,
     this.usage,
+    this.element_usage,
     this.uniqueId
     });
 
@@ -193,16 +234,28 @@ List<Extension> modifierExtension;
 // identifier.
 String type; // <code> enum: oid/uuid/uri/other;
 
+//  Extensions for type
+Element element_type;
+
 //  The string that should be sent over the wire to identify the code
 // system or identifier system.
 String value;
+
+//  Extensions for value
+Element element_value;
 
 //  Indicates whether this identifier is the "preferred" identifier of
 // this type.
 bool preferred;
 
+//  Extensions for preferred
+Element element_preferred;
+
 //  Notes about the past or intended usage of this identifier.
 String comment;
+
+//  Extensions for comment
+Element element_comment;
 
 //  Identifies the period of time over which this identifier is considered
 // appropriate to refer to the naming system.  Outside of this window, the
@@ -214,9 +267,13 @@ NamingSystem_UniqueId(
     this.extension,
     this.modifierExtension,
     this.type,
+    this.element_type,
     this.value,
+    this.element_value,
     this.preferred,
+    this.element_preferred,
     this.comment,
+    this.element_comment,
     this.period
     });
 

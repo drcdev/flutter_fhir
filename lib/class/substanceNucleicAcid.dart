@@ -6,6 +6,7 @@ import 'package:flutter_fhir/class/codeableConcept.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'substanceNucleicAcid.g.dart';
@@ -31,8 +32,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -81,12 +88,18 @@ CodeableConcept sequenceType;
 // source, the assumption is that there is 1 subunit.
 int numberOfSubunits;
 
+//  Extensions for numberOfSubunits
+Element element_numberOfSubunits;
+
 //  The area of hybridisation shall be described if applicable for double
 // stranded RNA or DNA. The number associated with the subunit followed by
 // the number associated to the residue shall be specified in increasing
 // order. The underscore “” shall be used as separator as follows:
 // “Subunitnumber Residue”.
 String areaOfHybridisation;
+
+//  Extensions for areaOfHybridisation
+Element element_areaOfHybridisation;
 
 //  (TBC).
 CodeableConcept oligoNucleotideType;
@@ -101,14 +114,18 @@ SubstanceNucleicAcid(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.sequenceType,
     this.numberOfSubunits,
+    this.element_numberOfSubunits,
     this.areaOfHybridisation,
+    this.element_areaOfHybridisation,
     this.oligoNucleotideType,
     this.subunit
     });
@@ -152,13 +169,22 @@ List<Extension> modifierExtension;
 // have sequential subscripts.
 int subunit;
 
+//  Extensions for subunit
+Element element_subunit;
+
 //  Actual nucleotide sequence notation from 5' to 3' end using standard
 // single letter codes. In addition to the base sequence, sugar and type
 // of phosphate or non-phosphate linkage should also be captured.
 String sequence;
 
+//  Extensions for sequence
+Element element_sequence;
+
 //  The length of the sequence shall be captured.
 int length;
+
+//  Extensions for length
+Element element_length;
 
 //  (TBC).
 Attachment sequenceAttachment;
@@ -186,8 +212,11 @@ SubstanceNucleicAcid_Subunit(
     this.extension,
     this.modifierExtension,
     this.subunit,
+    this.element_subunit,
     this.sequence,
+    this.element_sequence,
     this.length,
+    this.element_length,
     this.sequenceAttachment,
     this.fivePrime,
     this.threePrime,
@@ -235,6 +264,9 @@ List<Extension> modifierExtension;
 // If the linkage is either 3’-3’ or 5’-5’ this should be specified.
 String connectivity;
 
+//  Extensions for connectivity
+Element element_connectivity;
+
 //  Each linkage will be registered as a fragment and have an ID.
 Identifier identifier;
 
@@ -242,17 +274,26 @@ Identifier identifier;
 // name. A single name shall be assigned to each linkage.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  Residues shall be captured as described in 5.3.6.8.3.
 String residueSite;
+
+//  Extensions for residueSite
+Element element_residueSite;
 
 SubstanceNucleicAcid_Linkage(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.connectivity,
+    this.element_connectivity,
     this.identifier,
     this.name,
-    this.residueSite
+    this.element_name,
+    this.residueSite,
+    this.element_residueSite
     });
 
   factory SubstanceNucleicAcid_Linkage.fromJson(Map<String, dynamic> json) => _$SubstanceNucleicAcid_LinkageFromJson(json);
@@ -296,10 +337,16 @@ Identifier identifier;
 // nucleotide.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  The residues that contain a given sugar will be captured. The order of
 // given residues will be captured in the 5‘-3‘direction consistent with
 // the base sequences listed above.
 String residueSite;
+
+//  Extensions for residueSite
+Element element_residueSite;
 
 SubstanceNucleicAcid_Sugar(
   {this.id,
@@ -307,7 +354,9 @@ SubstanceNucleicAcid_Sugar(
     this.modifierExtension,
     this.identifier,
     this.name,
-    this.residueSite
+    this.element_name,
+    this.residueSite,
+    this.element_residueSite
     });
 
   factory SubstanceNucleicAcid_Sugar.fromJson(Map<String, dynamic> json) => _$SubstanceNucleicAcid_SugarFromJson(json);

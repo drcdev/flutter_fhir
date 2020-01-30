@@ -9,6 +9,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'specimenDefinition.g.dart';
@@ -34,8 +35,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -85,6 +92,9 @@ List<CodeableConcept> patientPreparation;
 //  Time aspect of specimen collection (duration or offset).
 String timeAspect;
 
+//  Extensions for timeAspect
+Element element_timeAspect;
+
 //  The action to be performed for collecting the specimen.
 List<CodeableConcept> collection;
 
@@ -97,7 +107,9 @@ SpecimenDefinition(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -106,6 +118,7 @@ SpecimenDefinition(
     this.typeCollected,
     this.patientPreparation,
     this.timeAspect,
+    this.element_timeAspect,
     this.collection,
     this.typeTested
     });
@@ -146,11 +159,17 @@ List<Extension> modifierExtension;
 //  Primary of secondary specimen.
 bool isDerived;
 
+//  Extensions for isDerived
+Element element_isDerived;
+
 //  The kind of specimen conditioned for testing expected by lab.
 CodeableConcept type;
 
 //  The preference for this type of conditioned specimen.
 String preference; // <code> enum: preferred/alternate;
+
+//  Extensions for preference
+Element element_preference;
 
 //  The specimen's container.
 SpecimenDefinition_Container container;
@@ -158,6 +177,9 @@ SpecimenDefinition_Container container;
 //  Requirements for delivery and special handling of this kind of
 // conditioned specimen.
 String requirement;
+
+//  Extensions for requirement
+Element element_requirement;
 
 //  The usual time that a specimen of this kind is retained after the
 // ordered tests are completed, for the purpose of additional testing.
@@ -176,10 +198,13 @@ SpecimenDefinition_TypeTested(
     this.extension,
     this.modifierExtension,
     this.isDerived,
+    this.element_isDerived,
     this.type,
     this.preference,
+    this.element_preference,
     this.container,
     this.requirement,
+    this.element_requirement,
     this.retentionTime,
     this.rejectionCriterion,
     this.handling
@@ -230,6 +255,9 @@ CodeableConcept cap;
 //  The textual description of the kind of container.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  The capacity (volume or other measure) of this kind of container.
 Quantity capacity;
 
@@ -239,6 +267,9 @@ Quantity minimumVolumeQuantity;
 //  The minimum volume to be conditioned in the container.
 String minimumVolumeString; //  pattern: ^[ \r\n\t\S]+$
 
+//  Extensions for minimumVolumeString
+Element element_minimumVolumeString;
+
 //  Substance introduced in the kind of container to preserve, maintain or
 // enhance the specimen. Examples: Formalin, Citrate, EDTA.
 List<SpecimenDefinition_Additive> additive;
@@ -246,6 +277,9 @@ List<SpecimenDefinition_Additive> additive;
 //  Special processing that should be applied to the container for this
 // kind of specimen.
 String preparation;
+
+//  Extensions for preparation
+Element element_preparation;
 
 SpecimenDefinition_Container(
   {this.id,
@@ -255,11 +289,14 @@ SpecimenDefinition_Container(
     this.type,
     this.cap,
     this.description,
+    this.element_description,
     this.capacity,
     this.minimumVolumeQuantity,
     this.minimumVolumeString,
+    this.element_minimumVolumeString,
     this.additive,
-    this.preparation
+    this.preparation,
+    this.element_preparation
     });
 
   factory SpecimenDefinition_Container.fromJson(Map<String, dynamic> json) => _$SpecimenDefinition_ContainerFromJson(json);
@@ -360,6 +397,9 @@ Duration maxDuration;
 // the specimen. For instance, 'Protect from light exposure'.
 String instruction;
 
+//  Extensions for instruction
+Element element_instruction;
+
 SpecimenDefinition_Handling(
   {this.id,
     this.extension,
@@ -367,7 +407,8 @@ SpecimenDefinition_Handling(
     this.temperatureQualifier,
     this.temperatureRange,
     this.maxDuration,
-    this.instruction
+    this.instruction,
+    this.element_instruction
     });
 
   factory SpecimenDefinition_Handling.fromJson(Map<String, dynamic> json) => _$SpecimenDefinition_HandlingFromJson(json);

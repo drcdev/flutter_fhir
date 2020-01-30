@@ -7,6 +7,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'catalogEntry.g.dart';
@@ -32,8 +33,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -81,6 +88,9 @@ CodeableConcept type;
 //  Whether the entry represents an orderable item.
 bool orderable;
 
+//  Extensions for orderable
+Element element_orderable;
+
 //  The item in a catalog or definition.
 Reference referencedItem;
 
@@ -94,15 +104,24 @@ List<CodeableConcept> classification;
 // getting list of medications even if not prescribable.
 String status; // <code> enum: draft/active/retired/unknown;
 
+//  Extensions for status
+Element element_status;
+
 //  The time period in which this catalog entry is expected to be active.
 Period validityPeriod;
 
 //  The date until which this catalog entry is expected to be active.
 DateTime validTo;
 
+//  Extensions for validTo
+Element element_validTo;
+
 //  Typically date of issue is different from the beginning of the
 // validity. This can be used to see when an item was last updated.
 DateTime lastUpdated;
+
+//  Extensions for lastUpdated
+Element element_lastUpdated;
 
 //  Used for examplefor Out of Formulary, or any specifics.
 List<CodeableConcept> additionalCharacteristic;
@@ -119,7 +138,9 @@ CatalogEntry(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -127,13 +148,17 @@ CatalogEntry(
     this.identifier,
     this.type,
     this.orderable,
+    this.element_orderable,
     this.referencedItem,
     this.additionalIdentifier,
     this.classification,
     this.status,
+    this.element_status,
     this.validityPeriod,
     this.validTo,
+    this.element_validTo,
     this.lastUpdated,
+    this.element_lastUpdated,
     this.additionalCharacteristic,
     this.additionalClassification,
     this.relatedEntry
@@ -176,6 +201,9 @@ List<Extension> modifierExtension;
 // packageContent, containerPackage, usedIn, uses, requires, etc.
 String relationtype; // <code> enum: triggers/is-replaced-by;
 
+//  Extensions for relationtype
+Element element_relationtype;
+
 //  The reference to the related item.
 Reference item;
 
@@ -184,6 +212,7 @@ CatalogEntry_RelatedEntry(
     this.extension,
     this.modifierExtension,
     this.relationtype,
+    this.element_relationtype,
     this.item
     });
 

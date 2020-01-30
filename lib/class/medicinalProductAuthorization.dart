@@ -7,6 +7,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'medicinalProductAuthorization.g.dart';
@@ -32,8 +33,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -90,9 +97,15 @@ CodeableConcept status;
 //  The date at which the given status has become applicable.
 DateTime statusDate;
 
+//  Extensions for statusDate
+Element element_statusDate;
+
 //  The date when a suspended the marketing or the marketing authorization
 // of the product is anticipated to be restored.
 DateTime restoreDate;
+
+//  Extensions for restoreDate
+Element element_restoreDate;
 
 //  The beginning of the time period in which the marketing authorization
 // is in the specific status shall be specified A complete date consisting
@@ -108,9 +121,15 @@ Period dataExclusivityPeriod;
 // Regulatory Agency.
 DateTime dateOfFirstAuthorization;
 
+//  Extensions for dateOfFirstAuthorization
+Element element_dateOfFirstAuthorization;
+
 //  Date of first marketing authorization for a company's new medicinal
 // product in any country in the World.
 DateTime internationalBirthDate;
+
+//  Extensions for internationalBirthDate
+Element element_internationalBirthDate;
 
 //  The legal framework against which this authorization is granted.
 CodeableConcept legalBasis;
@@ -133,7 +152,9 @@ MedicinalProductAuthorization(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -144,11 +165,15 @@ MedicinalProductAuthorization(
     this.jurisdiction,
     this.status,
     this.statusDate,
+    this.element_statusDate,
     this.restoreDate,
+    this.element_restoreDate,
     this.validityPeriod,
     this.dataExclusivityPeriod,
     this.dateOfFirstAuthorization,
+    this.element_dateOfFirstAuthorization,
     this.internationalBirthDate,
+    this.element_internationalBirthDate,
     this.legalBasis,
     this.jurisdictionalAuthorization,
     this.holder,
@@ -260,6 +285,9 @@ Period datePeriod;
 //  Date of procedure.
 String dateDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
+//  Extensions for dateDateTime
+Element element_dateDateTime;
+
 //  Applcations submitted to obtain a marketing authorization.
 List<MedicinalProductAuthorization_Procedure> application;
 
@@ -271,6 +299,7 @@ MedicinalProductAuthorization_Procedure(
     this.type,
     this.datePeriod,
     this.dateDateTime,
+    this.element_dateDateTime,
     this.application
     });
 

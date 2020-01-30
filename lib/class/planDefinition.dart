@@ -18,6 +18,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'planDefinition.g.dart';
@@ -43,8 +44,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -91,6 +98,9 @@ List<Extension> modifierExtension;
 // definition is stored on different servers.
 String url;
 
+//  Extensions for url
+Element element_url;
+
 //  A formal identifier that is used to identify this plan definition when
 // it is represented in other formats, or referenced in a specification,
 // model, design or an instance.
@@ -109,17 +119,29 @@ List<Identifier> identifier;
 // Note that a version is required for non-experimental active artifacts.
 String version;
 
+//  Extensions for version
+Element element_version;
+
 //  A natural language name identifying the plan definition. This name
 // should be usable as an identifier for the module by machine processing
 // applications such as code generation.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  A short, descriptive, user-friendly title for the plan definition.
 String title;
+
+//  Extensions for title
+Element element_title;
 
 //  An explanatory or alternate title for the plan definition giving
 // additional information about its content.
 String subtitle;
+
+//  Extensions for subtitle
+Element element_subtitle;
 
 //  A high-level category for the plan definition that distinguishes the
 // kinds of systems that would be interested in the plan definition.
@@ -129,10 +151,16 @@ CodeableConcept type;
 // the content.
 String status; // <code> enum: draft/active/retired/unknown;
 
+//  Extensions for status
+Element element_status;
+
 //  A Boolean value to indicate that this plan definition is authored for
 // testing purposes (or education/evaluation/marketing) and is not
 // intended to be used for genuine usage.
 bool experimental;
+
+//  Extensions for experimental
+Element element_experimental;
 
 //  A code or group definition that describes the intended subject of the
 // plan definition.
@@ -148,9 +176,15 @@ Reference subjectReference;
 // change when the substantive content of the plan definition changes.
 DateTime date;
 
+//  Extensions for date
+Element element_date;
+
 //  The name of the organization or individual that published the plan
 // definition.
 String publisher;
+
+//  Extensions for publisher
+Element element_publisher;
 
 //  Contact details to assist a user in finding and communicating with the
 // publisher.
@@ -159,6 +193,9 @@ List<ContactDetail> contact;
 //  A free text natural language description of the plan definition from a
 // consumer's perspective.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  The content was developed with a focus and intent of supporting the
 // contexts that are listed. These contexts may be general categories
@@ -175,24 +212,39 @@ List<CodeableConcept> jurisdiction;
 // designed as it has.
 String purpose;
 
+//  Extensions for purpose
+Element element_purpose;
+
 //  A detailed description of how the plan definition is used from a
 // clinical perspective.
 String usage;
+
+//  Extensions for usage
+Element element_usage;
 
 //  A copyright statement relating to the plan definition and/or its
 // contents. Copyright statements are generally legal restrictions on the
 // use and publishing of the plan definition.
 String copyright;
 
+//  Extensions for copyright
+Element element_copyright;
+
 //  The date on which the resource content was approved by the publisher.
 // Approval happens once when the content is officially approved for
 // usage.
 String approvalDate;
 
+//  Extensions for approvalDate
+Element element_approvalDate;
+
 //  The date on which the resource content was last reviewed. Review
 // happens periodically after approval but does not change the original
 // approval date.
 String lastReviewDate;
+
+//  Extensions for lastReviewDate
+Element element_lastReviewDate;
 
 //  The period during which the plan definition content was or is planned
 // to be in active use.
@@ -241,33 +293,50 @@ PlanDefinition(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
+    this.element_url,
     this.identifier,
     this.version,
+    this.element_version,
     this.name,
+    this.element_name,
     this.title,
+    this.element_title,
     this.subtitle,
+    this.element_subtitle,
     this.type,
     this.status,
+    this.element_status,
     this.experimental,
+    this.element_experimental,
     this.subjectCodeableConcept,
     this.subjectReference,
     this.date,
+    this.element_date,
     this.publisher,
+    this.element_publisher,
     this.contact,
     this.description,
+    this.element_description,
     this.useContext,
     this.jurisdiction,
     this.purpose,
+    this.element_purpose,
     this.usage,
+    this.element_usage,
     this.copyright,
+    this.element_copyright,
     this.approvalDate,
+    this.element_approvalDate,
     this.lastReviewDate,
+    this.element_lastReviewDate,
     this.effectivePeriod,
     this.topic,
     this.author,
@@ -466,12 +535,21 @@ List<Extension> modifierExtension;
 //  A user-visible prefix for the action.
 String prefix;
 
+//  Extensions for prefix
+Element element_prefix;
+
 //  The title of the action displayed to a user.
 String title;
+
+//  Extensions for title
+Element element_title;
 
 //  A brief description of the action used to provide a summary to display
 // to the user.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  A text equivalent of the action to be performed. This provides a
 // human-interpretable description of the action when the definition is
@@ -479,9 +557,15 @@ String description;
 // dynamically.
 String textEquivalent;
 
+//  Extensions for textEquivalent
+Element element_textEquivalent;
+
 //  Indicates how quickly the action should be addressed with respect to
 // other actions.
 String priority;
+
+//  Extensions for priority
+Element element_priority;
 
 //  A code that provides meaning for the action or action group. For
 // example, a section may have a LOINC code for the section of a
@@ -499,6 +583,9 @@ List<RelatedArtifact> documentation;
 //  Identifies goals that this action supports. The reference must be to a
 // goal element defined within this plan definition.
 List<String> goalId;
+
+//  Extensions for goalId
+List<Element> element_goalId;
 
 //  A code or group definition that describes the intended subject of the
 // action and its children, if any.
@@ -528,6 +615,9 @@ List<PlanDefinition_RelatedAction> relatedAction;
 //  An optional value describing when the action should be performed.
 String timingDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
+//  Extensions for timingDateTime
+Element element_timingDateTime;
+
 //  An optional value describing when the action should be performed.
 Age timingAge;
 
@@ -552,27 +642,48 @@ CodeableConcept type;
 //  Defines the grouping behavior for the action and its children.
 String groupingBehavior; // <code> enum: visual-group/logical-group/sentence-group;
 
+//  Extensions for groupingBehavior
+Element element_groupingBehavior;
+
 //  Defines the selection behavior for the action and its children.
 String selectionBehavior; // <code> enum: any/all/all-or-none/exactly-one/at-most-one/one-or-more;
+
+//  Extensions for selectionBehavior
+Element element_selectionBehavior;
 
 //  Defines the required behavior for the action.
 String requiredBehavior; // <code> enum: must/could/must-unless-documented;
 
+//  Extensions for requiredBehavior
+Element element_requiredBehavior;
+
 //  Defines whether the action should usually be preselected.
 String precheckBehavior; // <code> enum: yes/no;
 
+//  Extensions for precheckBehavior
+Element element_precheckBehavior;
+
 //  Defines whether the action can be selected multiple times.
 String cardinalityBehavior; // <code> enum: single/multiple;
+
+//  Extensions for cardinalityBehavior
+Element element_cardinalityBehavior;
 
 //  A reference to an ActivityDefinition that describes the action to be
 // taken in detail, or a PlanDefinition that describes a series of actions
 // to be taken.
 String definitionCanonical; //  pattern: ^\S*$
 
+//  Extensions for definitionCanonical
+Element element_definitionCanonical;
+
 //  A reference to an ActivityDefinition that describes the action to be
 // taken in detail, or a PlanDefinition that describes a series of actions
 // to be taken.
 String definitionUri; //  pattern: ^\S*$
+
+//  Extensions for definitionUri
+Element element_definitionUri;
 
 //  A reference to a StructureMap resource that defines a transform that
 // can be executed to produce the intent resource using the
@@ -597,14 +708,20 @@ PlanDefinition_Action(
     this.extension,
     this.modifierExtension,
     this.prefix,
+    this.element_prefix,
     this.title,
+    this.element_title,
     this.description,
+    this.element_description,
     this.textEquivalent,
+    this.element_textEquivalent,
     this.priority,
+    this.element_priority,
     this.code,
     this.reason,
     this.documentation,
     this.goalId,
+    this.element_goalId,
     this.subjectCodeableConcept,
     this.subjectReference,
     this.trigger,
@@ -613,6 +730,7 @@ PlanDefinition_Action(
     this.output,
     this.relatedAction,
     this.timingDateTime,
+    this.element_timingDateTime,
     this.timingAge,
     this.timingPeriod,
     this.timingDuration,
@@ -621,12 +739,19 @@ PlanDefinition_Action(
     this.participant,
     this.type,
     this.groupingBehavior,
+    this.element_groupingBehavior,
     this.selectionBehavior,
+    this.element_selectionBehavior,
     this.requiredBehavior,
+    this.element_requiredBehavior,
     this.precheckBehavior,
+    this.element_precheckBehavior,
     this.cardinalityBehavior,
+    this.element_cardinalityBehavior,
     this.definitionCanonical,
+    this.element_definitionCanonical,
     this.definitionUri,
+    this.element_definitionUri,
     this.transform,
     this.dynamicValue,
     this.action
@@ -668,6 +793,9 @@ List<Extension> modifierExtension;
 //  The kind of condition.
 String kind; // <code> enum: applicability/start/stop;
 
+//  Extensions for kind
+Element element_kind;
+
 //  An expression that returns true or false, indicating whether the
 // condition is satisfied.
 Expression expression;
@@ -677,6 +805,7 @@ PlanDefinition_Condition(
     this.extension,
     this.modifierExtension,
     this.kind,
+    this.element_kind,
     this.expression
     });
 
@@ -716,8 +845,14 @@ List<Extension> modifierExtension;
 //  The element id of the related action.
 String actionId;
 
+//  Extensions for actionId
+Element element_actionId;
+
 //  The relationship of this action to the related action.
 String relationship; // <code> enum: before-start/before/before-end/concurrent-with-start/concurrent/concurrent-with-end/after-start/after/after-end;
+
+//  Extensions for relationship
+Element element_relationship;
 
 //  A duration or range of durations to apply to the relationship. For
 // example, 30-60 minutes before.
@@ -732,7 +867,9 @@ PlanDefinition_RelatedAction(
     this.extension,
     this.modifierExtension,
     this.actionId,
+    this.element_actionId,
     this.relationship,
+    this.element_relationship,
     this.offsetDuration,
     this.offsetRange
     });
@@ -773,6 +910,9 @@ List<Extension> modifierExtension;
 //  The type of participant in the action.
 String type; // <code> enum: patient/practitioner/related-person/device;
 
+//  Extensions for type
+Element element_type;
+
 //  The role the participant should play in performing the described
 // action.
 CodeableConcept role;
@@ -782,6 +922,7 @@ PlanDefinition_Participant(
     this.extension,
     this.modifierExtension,
     this.type,
+    this.element_type,
     this.role
     });
 
@@ -829,6 +970,9 @@ List<Extension> modifierExtension;
 // Profile](fhirpath.html#simple) for full details).
 String path;
 
+//  Extensions for path
+Element element_path;
+
 //  An expression specifying the value of the customized element.
 Expression expression;
 
@@ -837,6 +981,7 @@ PlanDefinition_DynamicValue(
     this.extension,
     this.modifierExtension,
     this.path,
+    this.element_path,
     this.expression
     });
 

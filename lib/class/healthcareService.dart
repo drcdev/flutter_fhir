@@ -9,6 +9,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'healthcareService.g.dart';
@@ -34,8 +35,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -81,6 +88,9 @@ List<Identifier> identifier;
 // notAvailable period is to be used for this.
 bool active;
 
+//  Extensions for active
+Element element_active;
+
 //  The organization that provides this healthcare service.
 Reference providedBy;
 
@@ -101,14 +111,23 @@ List<Reference> location;
 // consumer while searching.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  Any additional description of the service and/or any specific issues
 // not covered by the other attributes, which can be displayed as further
 // detail under the serviceName.
 String comment;
 
+//  Extensions for comment
+Element element_comment;
+
 //  Extra details about the service that can't be placed in the other
 // fields.
 String extraDetails;
+
+//  Extensions for extraDetails
+Element element_extraDetails;
 
 //  If there is a photo/symbol associated with this HealthcareService, it
 // may be included here to facilitate quick identification of the service
@@ -152,6 +171,9 @@ List<CodeableConcept> referralMethod;
 // this service.
 bool appointmentRequired;
 
+//  Extensions for appointmentRequired
+Element element_appointmentRequired;
+
 //  A collection of times that the Service Site is available.
 List<HealthcareService_AvailableTime> availableTime;
 
@@ -165,6 +187,9 @@ List<HealthcareService_NotAvailable> notAvailable;
 // Times.
 String availabilityExceptions;
 
+//  Extensions for availabilityExceptions
+Element element_availabilityExceptions;
+
 //  Technical endpoints providing access to services operated for the
 // specific healthcare services defined at this resource.
 List<Reference> endpoint;
@@ -174,21 +199,27 @@ HealthcareService(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.active,
+    this.element_active,
     this.providedBy,
     this.category,
     this.type,
     this.specialty,
     this.location,
     this.name,
+    this.element_name,
     this.comment,
+    this.element_comment,
     this.extraDetails,
+    this.element_extraDetails,
     this.photo,
     this.telecom,
     this.coverageArea,
@@ -199,9 +230,11 @@ HealthcareService(
     this.communication,
     this.referralMethod,
     this.appointmentRequired,
+    this.element_appointmentRequired,
     this.availableTime,
     this.notAvailable,
     this.availabilityExceptions,
+    this.element_availabilityExceptions,
     this.endpoint
     });
 
@@ -244,12 +277,16 @@ CodeableConcept code;
 //  Describes the eligibility conditions for the service.
 String comment;
 
+//  Extensions for comment
+Element element_comment;
+
 HealthcareService_Eligibility(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.code,
-    this.comment
+    this.comment,
+    this.element_comment
     });
 
   factory HealthcareService_Eligibility.fromJson(Map<String, dynamic> json) => _$HealthcareService_EligibilityFromJson(json);
@@ -289,26 +326,42 @@ List<Extension> modifierExtension;
 // end Times.
 List<String> daysOfWeek; // <code> enum: mon/tue/wed/thu/fri/sat/sun> daysOfWeek;
 
+//  Extensions for daysOfWeek
+List<Element> element_daysOfWeek;
+
 //  Is this always available? (hence times are irrelevant) e.g. 24 hour
 // service.
 bool allDay;
+
+//  Extensions for allDay
+Element element_allDay;
 
 //  The opening time of day. Note: If the AllDay flag is set, then this
 // time is ignored.
 String availableStartTime;
 
+//  Extensions for availableStartTime
+Element element_availableStartTime;
+
 //  The closing time of day. Note: If the AllDay flag is set, then this
 // time is ignored.
 String availableEndTime;
+
+//  Extensions for availableEndTime
+Element element_availableEndTime;
 
 HealthcareService_AvailableTime(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.daysOfWeek,
+    this.element_daysOfWeek,
     this.allDay,
+    this.element_allDay,
     this.availableStartTime,
-    this.availableEndTime
+    this.element_availableStartTime,
+    this.availableEndTime,
+    this.element_availableEndTime
     });
 
   factory HealthcareService_AvailableTime.fromJson(Map<String, dynamic> json) => _$HealthcareService_AvailableTimeFromJson(json);
@@ -348,6 +401,9 @@ List<Extension> modifierExtension;
 // not available.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  Service is not available (seasonally or for a public holiday) from
 // this date.
 Period during;
@@ -357,6 +413,7 @@ HealthcareService_NotAvailable(
     this.extension,
     this.modifierExtension,
     this.description,
+    this.element_description,
     this.during
     });
 

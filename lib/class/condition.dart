@@ -10,6 +10,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'condition.g.dart';
@@ -35,8 +36,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -111,6 +118,9 @@ Reference encounter;
 // opinion of the clinician.
 String onsetDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
+//  Extensions for onsetDateTime
+Element element_onsetDateTime;
+
 //  Estimated or actual date or date-time  the condition began, in the
 // opinion of the clinician.
 Age onsetAge;
@@ -127,11 +137,17 @@ Range onsetRange;
 // opinion of the clinician.
 String onsetString; //  pattern: ^[ \r\n\t\S]+$
 
+//  Extensions for onsetString
+Element element_onsetString;
+
 //  The date or estimated date that the condition resolved or went into
 // remission. This is called "abatement" because of the many overloaded
 // connotations associated with "remission" or "resolution" - Conditions
 // are never really resolved, but they can abate.
 String abatementDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+
+//  Extensions for abatementDateTime
+Element element_abatementDateTime;
 
 //  The date or estimated date that the condition resolved or went into
 // remission. This is called "abatement" because of the many overloaded
@@ -157,9 +173,15 @@ Range abatementRange;
 // are never really resolved, but they can abate.
 String abatementString; //  pattern: ^[ \r\n\t\S]+$
 
+//  Extensions for abatementString
+Element element_abatementString;
+
 //  The recordedDate represents when this particular Condition record was
 // created in the system, which is often a system-generated date.
 DateTime recordedDate;
+
+//  Extensions for recordedDate
+Element element_recordedDate;
 
 //  Individual who recorded the record and takes responsibility for its
 // content.
@@ -187,7 +209,9 @@ Condition(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -202,16 +226,21 @@ Condition(
     this.subject,
     this.encounter,
     this.onsetDateTime,
+    this.element_onsetDateTime,
     this.onsetAge,
     this.onsetPeriod,
     this.onsetRange,
     this.onsetString,
+    this.element_onsetString,
     this.abatementDateTime,
+    this.element_abatementDateTime,
     this.abatementAge,
     this.abatementPeriod,
     this.abatementRange,
     this.abatementString,
+    this.element_abatementString,
     this.recordedDate,
+    this.element_recordedDate,
     this.recorder,
     this.asserter,
     this.stage,

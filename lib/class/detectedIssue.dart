@@ -7,6 +7,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'detectedIssue.g.dart';
@@ -32,8 +33,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -77,6 +84,9 @@ List<Identifier> identifier;
 //  Indicates the status of the detected issue.
 String status;
 
+//  Extensions for status
+Element element_status;
+
 //  Identifies the general type of issue identified.
 CodeableConcept code;
 
@@ -84,12 +94,18 @@ CodeableConcept code;
 // issue based on the potential impact on the patient.
 String severity; // <code> enum: high/moderate/low;
 
+//  Extensions for severity
+Element element_severity;
+
 //  Indicates the patient whose record the detected issue is associated
 // with.
 Reference patient;
 
 //  The date or period when the detected issue was initially identified.
 String identifiedDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+
+//  Extensions for identifiedDateTime
+Element element_identifiedDateTime;
 
 //  The date or period when the detected issue was initially identified.
 Period identifiedPeriod;
@@ -111,9 +127,15 @@ List<DetectedIssue_Evidence> evidence;
 //  A textual explanation of the detected issue.
 String detail;
 
+//  Extensions for detail
+Element element_detail;
+
 //  The literature, knowledge-base or similar reference that describes the
 // propensity for the detected issue identified.
 String reference;
+
+//  Extensions for reference
+Element element_reference;
 
 //  Indicates an action that has been taken or is committed to reduce or
 // eliminate the likelihood of the risk identified by the detected issue
@@ -126,23 +148,30 @@ DetectedIssue(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
+    this.element_status,
     this.code,
     this.severity,
+    this.element_severity,
     this.patient,
     this.identifiedDateTime,
+    this.element_identifiedDateTime,
     this.identifiedPeriod,
     this.author,
     this.implicated,
     this.evidence,
     this.detail,
+    this.element_detail,
     this.reference,
+    this.element_reference,
     this.mitigation
     });
 
@@ -234,6 +263,9 @@ CodeableConcept action;
 //  Indicates when the mitigating action was documented.
 DateTime date;
 
+//  Extensions for date
+Element element_date;
+
 //  Identifies the practitioner who determined the mitigation and takes
 // responsibility for the mitigation step occurring.
 Reference author;
@@ -244,6 +276,7 @@ DetectedIssue_Mitigation(
     this.modifierExtension,
     this.action,
     this.date,
+    this.element_date,
     this.author
     });
 

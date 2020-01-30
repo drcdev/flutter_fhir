@@ -12,6 +12,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'insurancePlan.g.dart';
@@ -37,8 +38,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -84,6 +91,9 @@ List<Identifier> identifier;
 //  The current state of the health insurance product.
 String status; // <code> enum: draft/active/retired/unknown;
 
+//  Extensions for status
+Element element_status;
+
 //  The kind of health insurance product.
 List<CodeableConcept> type;
 
@@ -91,9 +101,15 @@ List<CodeableConcept> type;
 // owner.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  A list of alternate names that the product is known as, or was known
 // as in the past.
 List<String> alias;
+
+//  Extensions for alias
+List<Element> element_alias;
 
 //  The period of time that the health insurance product is available.
 Period period;
@@ -134,16 +150,21 @@ InsurancePlan(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
+    this.element_status,
     this.type,
     this.name,
+    this.element_name,
     this.alias,
+    this.element_alias,
     this.period,
     this.ownedBy,
     this.administeredBy,
@@ -303,6 +324,9 @@ CodeableConcept type;
 //  The referral requirements to have access/coverage for this benefit.
 String requirement;
 
+//  Extensions for requirement
+Element element_requirement;
+
 //  The specific limits on the benefit.
 List<InsurancePlan_Limit> limit;
 
@@ -312,6 +336,7 @@ InsurancePlan_Benefit(
     this.modifierExtension,
     this.type,
     this.requirement,
+    this.element_requirement,
     this.limit
     });
 
@@ -468,6 +493,9 @@ CodeableConcept type;
 //  Number of participants enrolled in the plan.
 int groupSize;
 
+//  Extensions for groupSize
+Element element_groupSize;
+
 //  Value of the cost.
 Money cost;
 
@@ -475,14 +503,19 @@ Money cost;
 // plan.
 String comment;
 
+//  Extensions for comment
+Element element_comment;
+
 InsurancePlan_GeneralCost(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.type,
     this.groupSize,
+    this.element_groupSize,
     this.cost,
-    this.comment
+    this.comment,
+    this.element_comment
     });
 
   factory InsurancePlan_GeneralCost.fromJson(Map<String, dynamic> json) => _$InsurancePlan_GeneralCostFromJson(json);

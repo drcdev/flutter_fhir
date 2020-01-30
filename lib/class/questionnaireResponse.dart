@@ -8,6 +8,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'questionnaireResponse.g.dart';
@@ -33,8 +34,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -95,6 +102,9 @@ String questionnaire;
 // lifecycle.
 String status; // <code> enum: in-progress/completed/amended/entered-in-error/stopped;
 
+//  Extensions for status
+Element element_status;
+
 //  The subject of the questionnaire response.  This could be a patient,
 // organization, practitioner, device, etc.  This is who/what the answers
 // apply to, but is not necessarily the source of information.
@@ -106,6 +116,9 @@ Reference encounter;
 
 //  The date and/or time that this set of answers were last changed.
 DateTime authored;
+
+//  Extensions for authored
+Element element_authored;
 
 //  Person who received the answers to the questions in the
 // QuestionnaireResponse and recorded them in the system.
@@ -123,7 +136,9 @@ QuestionnaireResponse(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -133,9 +148,11 @@ QuestionnaireResponse(
     this.partOf,
     this.questionnaire,
     this.status,
+    this.element_status,
     this.subject,
     this.encounter,
     this.authored,
+    this.element_authored,
     this.author,
     this.source,
     this.item
@@ -178,13 +195,22 @@ List<Extension> modifierExtension;
 // QuestionnaireResponse resource.
 String linkId;
 
+//  Extensions for linkId
+Element element_linkId;
+
 //  A reference to an [[[ElementDefinition]]] that provides the details
 // for the item.
 String definition;
 
+//  Extensions for definition
+Element element_definition;
+
 //  Text that is displayed above the contents of the group or as the text
 // of the question being answered.
 String text;
+
+//  Extensions for text
+Element element_text;
 
 //  The respondent's answer(s) to the question.
 List<QuestionnaireResponse_Answer> answer;
@@ -197,8 +223,11 @@ QuestionnaireResponse_Item(
     this.extension,
     this.modifierExtension,
     this.linkId,
+    this.element_linkId,
     this.definition,
+    this.element_definition,
     this.text,
+    this.element_text,
     this.answer,
     this.item
     });
@@ -240,33 +269,57 @@ List<Extension> modifierExtension;
 // question.
 bool valueBoolean; //  pattern: ^true|false$
 
+//  Extensions for valueBoolean
+Element element_valueBoolean;
+
 //  The answer (or one of the answers) provided by the respondent to the
 // question.
 double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+
+//  Extensions for valueDecimal
+Element element_valueDecimal;
 
 //  The answer (or one of the answers) provided by the respondent to the
 // question.
 int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
 
+//  Extensions for valueInteger
+Element element_valueInteger;
+
 //  The answer (or one of the answers) provided by the respondent to the
 // question.
 String valueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
+
+//  Extensions for valueDate
+Element element_valueDate;
 
 //  The answer (or one of the answers) provided by the respondent to the
 // question.
 String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
+//  Extensions for valueDateTime
+Element element_valueDateTime;
+
 //  The answer (or one of the answers) provided by the respondent to the
 // question.
 String valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
+
+//  Extensions for valueTime
+Element element_valueTime;
 
 //  The answer (or one of the answers) provided by the respondent to the
 // question.
 String valueString; //  pattern: ^[ \r\n\t\S]+$
 
+//  Extensions for valueString
+Element element_valueString;
+
 //  The answer (or one of the answers) provided by the respondent to the
 // question.
 String valueUri; //  pattern: ^\S*$
+
+//  Extensions for valueUri
+Element element_valueUri;
 
 //  The answer (or one of the answers) provided by the respondent to the
 // question.
@@ -292,13 +345,21 @@ QuestionnaireResponse_Answer(
     this.extension,
     this.modifierExtension,
     this.valueBoolean,
+    this.element_valueBoolean,
     this.valueDecimal,
+    this.element_valueDecimal,
     this.valueInteger,
+    this.element_valueInteger,
     this.valueDate,
+    this.element_valueDate,
     this.valueDateTime,
+    this.element_valueDateTime,
     this.valueTime,
+    this.element_valueTime,
     this.valueString,
+    this.element_valueString,
     this.valueUri,
+    this.element_valueUri,
     this.valueAttachment,
     this.valueCoding,
     this.valueQuantity,

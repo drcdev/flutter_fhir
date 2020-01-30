@@ -7,6 +7,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'account.g.dart';
@@ -32,8 +33,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -78,12 +85,18 @@ List<Identifier> identifier;
 //  Indicates whether the account is presently used/usable or not.
 String status; // <code> enum: active/inactive/entered-in-error/on-hold/unknown;
 
+//  Extensions for status
+Element element_status;
+
 //  Categorizes the account for reporting and searching purposes.
 CodeableConcept type;
 
 //  Name used for the account when displaying it to humans in reports,
 // etc.
 String name;
+
+//  Extensions for name
+Element element_name;
 
 //  Identifies the entity which incurs the expenses. While the immediate
 // recipients of services or goods might be entities related to the
@@ -106,6 +119,9 @@ Reference owner;
 // it is used.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  The parties responsible for balancing the account if other payment
 // options fall short.
 List<Account_Guarantor> guarantor;
@@ -118,20 +134,25 @@ Account(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
+    this.element_status,
     this.type,
     this.name,
+    this.element_name,
     this.subject,
     this.servicePeriod,
     this.coverage,
     this.owner,
     this.description,
+    this.element_description,
     this.guarantor,
     this.partOf
     });
@@ -178,12 +199,16 @@ Reference coverage;
 //  The priority of the coverage in the context of this account.
 int priority;
 
+//  Extensions for priority
+Element element_priority;
+
 Account_Coverage(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.coverage,
-    this.priority
+    this.priority,
+    this.element_priority
     });
 
   factory Account_Coverage.fromJson(Map<String, dynamic> json) => _$Account_CoverageFromJson(json);
@@ -226,6 +251,9 @@ Reference party;
 // temporarily suspended.
 bool onHold;
 
+//  Extensions for onHold
+Element element_onHold;
+
 //  The timeframe during which the guarantor accepts responsibility for
 // the account.
 Period period;
@@ -236,6 +264,7 @@ Account_Guarantor(
     this.modifierExtension,
     this.party,
     this.onHold,
+    this.element_onHold,
     this.period
     });
 

@@ -7,6 +7,7 @@ import 'package:flutter_fhir/class/reference.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'provenance.g.dart';
@@ -32,8 +33,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -82,13 +89,22 @@ Period occurredPeriod;
 //  The period during which the activity occurred.
 String occurredDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
+//  Extensions for occurredDateTime
+Element element_occurredDateTime;
+
 //  The instant of time at which the activity was recorded.
 DateTime recorded;
+
+//  Extensions for recorded
+Element element_recorded;
 
 //  Policy or plan the activity was defined by. Typically, a single
 // activity may have multiple applicable policy documents, such as patient
 // consent, guarantor funding, etc.
 List<String> policy;
+
+//  Extensions for policy
+List<Element> element_policy;
 
 //  Where the activity occurred, if relevant.
 Reference location;
@@ -117,7 +133,9 @@ Provenance(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -125,8 +143,11 @@ Provenance(
     this.target,
     this.occurredPeriod,
     this.occurredDateTime,
+    this.element_occurredDateTime,
     this.recorded,
+    this.element_recorded,
     this.policy,
+    this.element_policy,
     this.location,
     this.reason,
     this.activity,
@@ -227,6 +248,9 @@ List<Extension> modifierExtension;
 //  How the entity was used during the activity.
 String role; // <code> enum: derivation/revision/quotation/source/removal;
 
+//  Extensions for role
+Element element_role;
+
 //  Identity of the  Entity used. May be a logical or physical uri and
 // maybe absolute or relative.
 Reference what;
@@ -242,6 +266,7 @@ Provenance_Entity(
     this.extension,
     this.modifierExtension,
     this.role,
+    this.element_role,
     this.what,
     this.agent
     });

@@ -9,6 +9,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'medicationDispense.g.dart';
@@ -34,8 +35,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -86,6 +93,9 @@ List<Reference> partOf;
 
 //  A code specifying the state of the set of dispense events.
 String status;
+
+//  Extensions for status
+Element element_status;
 
 //  Indicates the reason why a dispense was not performed.
 CodeableConcept statusReasonCodeableConcept;
@@ -145,9 +155,15 @@ Quantity daysSupply;
 //  The time when the dispensed product was packaged and reviewed.
 DateTime whenPrepared;
 
+//  Extensions for whenPrepared
+Element element_whenPrepared;
+
 //  The time the dispensed product was provided to the patient or their
 // representative.
 DateTime whenHandedOver;
+
+//  Extensions for whenHandedOver
+Element element_whenHandedOver;
 
 //  Identification of the facility/location where the medication was
 // shipped to, as part of the dispense event.
@@ -186,7 +202,9 @@ MedicationDispense(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -194,6 +212,7 @@ MedicationDispense(
     this.identifier,
     this.partOf,
     this.status,
+    this.element_status,
     this.statusReasonCodeableConcept,
     this.statusReasonReference,
     this.category,
@@ -209,7 +228,9 @@ MedicationDispense(
     this.quantity,
     this.daysSupply,
     this.whenPrepared,
+    this.element_whenPrepared,
     this.whenHandedOver,
+    this.element_whenHandedOver,
     this.destination,
     this.receiver,
     this.note,
@@ -305,6 +326,9 @@ List<Extension> modifierExtension;
 // was prescribed.
 bool wasSubstituted;
 
+//  Extensions for wasSubstituted
+Element element_wasSubstituted;
+
 //  A code signifying whether a different drug was dispensed from what was
 // prescribed.
 CodeableConcept type;
@@ -322,6 +346,7 @@ MedicationDispense_Substitution(
     this.extension,
     this.modifierExtension,
     this.wasSubstituted,
+    this.element_wasSubstituted,
     this.type,
     this.reason,
     this.responsibleParty

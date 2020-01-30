@@ -3,6 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/class/reference.dart';
 import 'package:flutter_fhir/class/period.dart';
 import 'package:flutter_fhir/class/codeableConcept.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/extension.dart';
 
 part 'identifier.g.dart';
@@ -25,6 +26,9 @@ List<Extension> extension;
 //  The purpose of this identifier.
 String use; // <code> enum: usual/official/temp/secondary/old;
 
+//  Extensions for use
+Element element_use;
+
 //  A coded type for the identifier that can be used to determine which
 // identifier to use for a specific purpose.
 CodeableConcept type;
@@ -33,9 +37,15 @@ CodeableConcept type;
 // describes a set values that are unique.
 String system;
 
+//  Extensions for system
+Element element_system;
+
 //  The portion of the identifier typically relevant to the user and which
 // is unique within the context of the system.
 String value;
+
+//  Extensions for value
+Element element_value;
 
 //  Time period during which identifier is/was valid for use.
 Period period;
@@ -47,9 +57,12 @@ Identifier(
   {this.id,
     this.extension,
     this.use,
+    this.element_use,
     this.type,
     this.system,
+    this.element_system,
     this.value,
+    this.element_value,
     this.period,
     this.assigner
     });

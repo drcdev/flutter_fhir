@@ -7,6 +7,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'schedule.g.dart';
@@ -32,8 +33,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -78,6 +85,9 @@ List<Identifier> identifier;
 // (such as was entered in error).
 bool active;
 
+//  Extensions for active
+Element element_active;
+
 //  A broad categorization of the service that is to be performed during
 // this appointment.
 List<CodeableConcept> serviceCategory;
@@ -104,24 +114,31 @@ Period planningHorizon;
 // Such as custom constraints on the slots that may be associated.
 String comment;
 
+//  Extensions for comment
+Element element_comment;
+
 Schedule(
   {this.resourceType,
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.active,
+    this.element_active,
     this.serviceCategory,
     this.serviceType,
     this.specialty,
     this.actor,
     this.planningHorizon,
-    this.comment
+    this.comment,
+    this.element_comment
     });
 
   factory Schedule.fromJson(Map<String, dynamic> json) => _$ScheduleFromJson(json);

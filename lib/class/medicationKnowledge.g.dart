@@ -14,7 +14,14 @@ MedicationKnowledge _$MedicationKnowledgeFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
+    element_implicitRules: json['element_implicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['element_implicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
+    element_language: json['element_language'] == null
+        ? null
+        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
@@ -34,6 +41,9 @@ MedicationKnowledge _$MedicationKnowledgeFromJson(Map<String, dynamic> json) {
         ? null
         : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     status: json['status'] as String,
+    element_status: json['element_status'] == null
+        ? null
+        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
     manufacturer: json['manufacturer'] == null
         ? null
         : Reference.fromJson(json['manufacturer'] as Map<String, dynamic>),
@@ -44,6 +54,10 @@ MedicationKnowledge _$MedicationKnowledgeFromJson(Map<String, dynamic> json) {
         ? null
         : Quantity.fromJson(json['amount'] as Map<String, dynamic>),
     synonym: (json['synonym'] as List)?.map((e) => e as String)?.toList(),
+    element_synonym: (json['element_synonym'] as List)
+        ?.map((e) =>
+            e == null ? null : Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     relatedMedicationKnowledge: (json['relatedMedicationKnowledge'] as List)
         ?.map((e) => e == null
             ? null
@@ -71,6 +85,11 @@ MedicationKnowledge _$MedicationKnowledgeFromJson(Map<String, dynamic> json) {
                 e as Map<String, dynamic>))
         ?.toList(),
     preparationInstruction: json['preparationInstruction'] as String,
+    element_preparationInstruction:
+        json['element_preparationInstruction'] == null
+            ? null
+            : Element.fromJson(
+                json['element_preparationInstruction'] as Map<String, dynamic>),
     intendedRoute: (json['intendedRoute'] as List)
         ?.map((e) => e == null
             ? null
@@ -134,7 +153,9 @@ Map<String, dynamic> _$MedicationKnowledgeToJson(
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
+      'element_implicitRules': instance.element_implicitRules?.toJson(),
       'language': instance.language,
+      'element_language': instance.element_language?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -142,10 +163,13 @@ Map<String, dynamic> _$MedicationKnowledgeToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'code': instance.code?.toJson(),
       'status': instance.status,
+      'element_status': instance.element_status?.toJson(),
       'manufacturer': instance.manufacturer?.toJson(),
       'doseForm': instance.doseForm?.toJson(),
       'amount': instance.amount?.toJson(),
       'synonym': instance.synonym,
+      'element_synonym':
+          instance.element_synonym?.map((e) => e?.toJson())?.toList(),
       'relatedMedicationKnowledge': instance.relatedMedicationKnowledge
           ?.map((e) => e?.toJson())
           ?.toList(),
@@ -155,6 +179,8 @@ Map<String, dynamic> _$MedicationKnowledgeToJson(
       'monograph': instance.monograph?.map((e) => e?.toJson())?.toList(),
       'ingredient': instance.ingredient?.map((e) => e?.toJson())?.toList(),
       'preparationInstruction': instance.preparationInstruction,
+      'element_preparationInstruction':
+          instance.element_preparationInstruction?.toJson(),
       'intendedRoute':
           instance.intendedRoute?.map((e) => e?.toJson())?.toList(),
       'cost': instance.cost?.map((e) => e?.toJson())?.toList(),
@@ -259,6 +285,9 @@ MedicationKnowledge_Ingredient _$MedicationKnowledge_IngredientFromJson(
         ? null
         : Reference.fromJson(json['itemReference'] as Map<String, dynamic>),
     isActive: json['isActive'] as bool,
+    element_isActive: json['element_isActive'] == null
+        ? null
+        : Element.fromJson(json['element_isActive'] as Map<String, dynamic>),
     strength: json['strength'] == null
         ? null
         : Ratio.fromJson(json['strength'] as Map<String, dynamic>),
@@ -275,6 +304,7 @@ Map<String, dynamic> _$MedicationKnowledge_IngredientToJson(
       'itemCodeableConcept': instance.itemCodeableConcept?.toJson(),
       'itemReference': instance.itemReference?.toJson(),
       'isActive': instance.isActive,
+      'element_isActive': instance.element_isActive?.toJson(),
       'strength': instance.strength?.toJson(),
     };
 
@@ -294,6 +324,9 @@ MedicationKnowledge_Cost _$MedicationKnowledge_CostFromJson(
         ? null
         : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     source: json['source'] as String,
+    element_source: json['element_source'] == null
+        ? null
+        : Element.fromJson(json['element_source'] as Map<String, dynamic>),
     cost: json['cost'] == null
         ? null
         : Money.fromJson(json['cost'] as Map<String, dynamic>),
@@ -309,6 +342,7 @@ Map<String, dynamic> _$MedicationKnowledge_CostToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'type': instance.type?.toJson(),
       'source': instance.source,
+      'element_source': instance.element_source?.toJson(),
       'cost': instance.cost?.toJson(),
     };
 
@@ -328,6 +362,9 @@ MedicationKnowledge_MonitoringProgram
         ? null
         : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     name: json['name'] as String,
+    element_name: json['element_name'] == null
+        ? null
+        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
   );
 }
 
@@ -340,6 +377,7 @@ Map<String, dynamic> _$MedicationKnowledge_MonitoringProgramToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'type': instance.type?.toJson(),
       'name': instance.name,
+      'element_name': instance.element_name?.toJson(),
     };
 
 MedicationKnowledge_AdministrationGuidelines
@@ -446,6 +484,10 @@ MedicationKnowledge_PatientCharacteristics
         : Quantity.fromJson(
             json['characteristicQuantity'] as Map<String, dynamic>),
     value: (json['value'] as List)?.map((e) => e as String)?.toList(),
+    element_value: (json['element_value'] as List)
+        ?.map((e) =>
+            e == null ? null : Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
   );
 }
 
@@ -460,6 +502,8 @@ Map<String, dynamic> _$MedicationKnowledge_PatientCharacteristicsToJson(
           instance.characteristicCodeableConcept?.toJson(),
       'characteristicQuantity': instance.characteristicQuantity?.toJson(),
       'value': instance.value,
+      'element_value':
+          instance.element_value?.map((e) => e?.toJson())?.toList(),
     };
 
 MedicationKnowledge_MedicineClassification
@@ -551,10 +595,17 @@ MedicationKnowledge_DrugCharacteristic
         : CodeableConcept.fromJson(
             json['valueCodeableConcept'] as Map<String, dynamic>),
     valueString: json['valueString'] as String,
+    element_valueString: json['element_valueString'] == null
+        ? null
+        : Element.fromJson(json['element_valueString'] as Map<String, dynamic>),
     valueQuantity: json['valueQuantity'] == null
         ? null
         : Quantity.fromJson(json['valueQuantity'] as Map<String, dynamic>),
     valueBase64Binary: json['valueBase64Binary'] as String,
+    element_valueBase64Binary: json['element_valueBase64Binary'] == null
+        ? null
+        : Element.fromJson(
+            json['element_valueBase64Binary'] as Map<String, dynamic>),
   );
 }
 
@@ -568,8 +619,10 @@ Map<String, dynamic> _$MedicationKnowledge_DrugCharacteristicToJson(
       'type': instance.type?.toJson(),
       'valueCodeableConcept': instance.valueCodeableConcept?.toJson(),
       'valueString': instance.valueString,
+      'element_valueString': instance.element_valueString?.toJson(),
       'valueQuantity': instance.valueQuantity?.toJson(),
       'valueBase64Binary': instance.valueBase64Binary,
+      'element_valueBase64Binary': instance.element_valueBase64Binary?.toJson(),
     };
 
 MedicationKnowledge_Regulatory _$MedicationKnowledge_RegulatoryFromJson(
@@ -635,6 +688,9 @@ MedicationKnowledge_Substitution _$MedicationKnowledge_SubstitutionFromJson(
         ? null
         : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     allowed: json['allowed'] as bool,
+    element_allowed: json['element_allowed'] == null
+        ? null
+        : Element.fromJson(json['element_allowed'] as Map<String, dynamic>),
   );
 }
 
@@ -647,6 +703,7 @@ Map<String, dynamic> _$MedicationKnowledge_SubstitutionToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'type': instance.type?.toJson(),
       'allowed': instance.allowed,
+      'element_allowed': instance.element_allowed?.toJson(),
     };
 
 MedicationKnowledge_Schedule _$MedicationKnowledge_ScheduleFromJson(

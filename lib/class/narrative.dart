@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/extension.dart';
 
 part 'narrative.g.dart';
@@ -24,6 +25,9 @@ List<Extension> extension;
 // authored it and it may contain additional data.
 String status; // <code> enum: generated/extensions/additional/empty;
 
+//  Extensions for status
+Element element_status;
+
 //  The actual narrative content, a stripped down version of XHTML.
 String div;
 
@@ -31,6 +35,7 @@ Narrative(
   {this.id,
     this.extension,
     this.status,
+    this.element_status,
     this.div
     });
 

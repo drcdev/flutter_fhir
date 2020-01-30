@@ -9,6 +9,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'coverage.g.dart';
@@ -34,8 +35,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -79,6 +86,9 @@ List<Identifier> identifier;
 //  The status of the resource instance.
 String status;
 
+//  Extensions for status
+Element element_status;
+
 //  The type of coverage: social program, medical plan, accident coverage
 // (workers compensation, auto), group health or payment by an individual
 // or organization.
@@ -95,12 +105,18 @@ Reference subscriber;
 //  The insurer assigned ID for the Subscriber.
 String subscriberId;
 
+//  Extensions for subscriberId
+Element element_subscriberId;
+
 //  The party who benefits from the insurance coverage; the patient when
 // products and/or services are provided.
 Reference beneficiary;
 
 //  A unique identifier for a dependent under the coverage.
 String dependent;
+
+//  Extensions for dependent
+Element element_dependent;
 
 //  The relationship of beneficiary (patient) to the subscriber.
 CodeableConcept relationship;
@@ -123,11 +139,17 @@ List<Coverage_Class> classs;
 // specific positioning of coverages depends upon the episode of care.
 int order;
 
+//  Extensions for order
+Element element_order;
+
 //  The insurer-specific identifier for the insurer-defined network of
 // providers to which the beneficiary may seek treatment which will be
 // covered at the 'in-network' rate, otherwise 'out of network' terms and
 // conditions apply.
 String network;
+
+//  Extensions for network
+Element element_network;
 
 //  A suite of codes indicating the cost category and associated amount
 // which have been detailed in the policy and may have been  included on
@@ -139,6 +161,9 @@ List<Coverage_CostToBeneficiary> costToBeneficiary;
 // costs.
 bool subrogation;
 
+//  Extensions for subrogation
+Element element_subrogation;
+
 //  The policy(s) which constitute this insurance coverage.
 List<Reference> contract;
 
@@ -147,27 +172,35 @@ Coverage(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
+    this.element_status,
     this.type,
     this.policyHolder,
     this.subscriber,
     this.subscriberId,
+    this.element_subscriberId,
     this.beneficiary,
     this.dependent,
+    this.element_dependent,
     this.relationship,
     this.period,
     this.payor,
     this.classs,
     this.order,
+    this.element_order,
     this.network,
+    this.element_network,
     this.costToBeneficiary,
     this.subrogation,
+    this.element_subrogation,
     this.contract
     });
 
@@ -213,8 +246,14 @@ CodeableConcept type;
 // label.
 String value;
 
+//  Extensions for value
+Element element_value;
+
 //  A short description for the class.
 String name;
+
+//  Extensions for name
+Element element_name;
 
 Coverage_Class(
   {this.id,
@@ -222,7 +261,9 @@ Coverage_Class(
     this.modifierExtension,
     this.type,
     this.value,
-    this.name
+    this.element_value,
+    this.name,
+    this.element_name
     });
 
   factory Coverage_Class.fromJson(Map<String, dynamic> json) => _$Coverage_ClassFromJson(json);

@@ -9,6 +9,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'testScript.g.dart';
@@ -34,8 +35,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -82,6 +89,9 @@ List<Extension> modifierExtension;
 // script is stored on different servers.
 String url;
 
+//  Extensions for url
+Element element_url;
+
 //  A formal identifier that is used to identify this test script when it
 // is represented in other formats, or referenced in a specification,
 // model, design or an instance.
@@ -96,22 +106,37 @@ Identifier identifier;
 // sequence.
 String version;
 
+//  Extensions for version
+Element element_version;
+
 //  A natural language name identifying the test script. This name should
 // be usable as an identifier for the module by machine processing
 // applications such as code generation.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  A short, descriptive, user-friendly title for the test script.
 String title;
+
+//  Extensions for title
+Element element_title;
 
 //  The status of this test script. Enables tracking the life-cycle of the
 // content.
 String status; // <code> enum: draft/active/retired/unknown;
 
+//  Extensions for status
+Element element_status;
+
 //  A Boolean value to indicate that this test script is authored for
 // testing purposes (or education/evaluation/marketing) and is not
 // intended to be used for genuine usage.
 bool experimental;
+
+//  Extensions for experimental
+Element element_experimental;
 
 //  The date  (and optionally time) when the test script was published.
 // The date must change when the business version changes and it must
@@ -119,9 +144,15 @@ bool experimental;
 // the substantive content of the test script changes.
 DateTime date;
 
+//  Extensions for date
+Element element_date;
+
 //  The name of the organization or individual that published the test
 // script.
 String publisher;
+
+//  Extensions for publisher
+Element element_publisher;
 
 //  Contact details to assist a user in finding and communicating with the
 // publisher.
@@ -130,6 +161,9 @@ List<ContactDetail> contact;
 //  A free text natural language description of the test script from a
 // consumer's perspective.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  The content was developed with a focus and intent of supporting the
 // contexts that are listed. These contexts may be general categories
@@ -146,10 +180,16 @@ List<CodeableConcept> jurisdiction;
 // designed as it has.
 String purpose;
 
+//  Extensions for purpose
+Element element_purpose;
+
 //  A copyright statement relating to the test script and/or its contents.
 // Copyright statements are generally legal restrictions on the use and
 // publishing of the test script.
 String copyright;
+
+//  Extensions for copyright
+Element element_copyright;
 
 //  An abstract server used in operations within this test script in the
 // origin element.
@@ -189,26 +229,39 @@ TestScript(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
+    this.element_url,
     this.identifier,
     this.version,
+    this.element_version,
     this.name,
+    this.element_name,
     this.title,
+    this.element_title,
     this.status,
+    this.element_status,
     this.experimental,
+    this.element_experimental,
     this.date,
+    this.element_date,
     this.publisher,
+    this.element_publisher,
     this.contact,
     this.description,
+    this.element_description,
     this.useContext,
     this.jurisdiction,
     this.purpose,
+    this.element_purpose,
     this.copyright,
+    this.element_copyright,
     this.origin,
     this.destination,
     this.metadata,
@@ -257,6 +310,9 @@ List<Extension> modifierExtension;
 // is provided as a number starting at 1.
 int index;
 
+//  Extensions for index
+Element element_index;
+
 //  The type of origin profile the test system supports.
 Coding profile;
 
@@ -265,6 +321,7 @@ TestScript_Origin(
     this.extension,
     this.modifierExtension,
     this.index,
+    this.element_index,
     this.profile
     });
 
@@ -305,6 +362,9 @@ List<Extension> modifierExtension;
 // name is provided as a number starting at 1.
 int index;
 
+//  Extensions for index
+Element element_index;
+
 //  The type of destination profile the test system supports.
 Coding profile;
 
@@ -313,6 +373,7 @@ TestScript_Destination(
     this.extension,
     this.modifierExtension,
     this.index,
+    this.element_index,
     this.profile
     });
 
@@ -401,15 +462,23 @@ List<Extension> modifierExtension;
 // specification.
 String url;
 
+//  Extensions for url
+Element element_url;
+
 //  Short description of the link.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 TestScript_Link(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.url,
-    this.description
+    this.element_url,
+    this.description,
+    this.element_description
     });
 
   factory TestScript_Link.fromJson(Map<String, dynamic> json) => _$TestScript_LinkFromJson(json);
@@ -449,23 +518,41 @@ List<Extension> modifierExtension;
 // of the server in order for this test script to execute.
 bool required;
 
+//  Extensions for required
+Element element_required;
+
 //  Whether or not the test execution will validate the given capabilities
 // of the server in order for this test script to execute.
 bool validated;
+
+//  Extensions for validated
+Element element_validated;
 
 //  Description of the capabilities that this test script is requiring the
 // server to support.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  Which origin server these requirements apply to.
 List<int> origin;
+
+//  Extensions for origin
+List<Element> element_origin;
 
 //  Which server these requirements apply to.
 int destination;
 
+//  Extensions for destination
+Element element_destination;
+
 //  Links to the FHIR specification that describes this interaction and
 // the resources involved in more detail.
 List<String> link;
+
+//  Extensions for link
+List<Element> element_link;
 
 //  Minimum capabilities required of server for test script to execute
 // successfully.   If server does not meet at a minimum the referenced
@@ -477,11 +564,17 @@ TestScript_Capability(
     this.extension,
     this.modifierExtension,
     this.required,
+    this.element_required,
     this.validated,
+    this.element_validated,
     this.description,
+    this.element_description,
     this.origin,
+    this.element_origin,
     this.destination,
+    this.element_destination,
     this.link,
+    this.element_link,
     this.capabilities
     });
 
@@ -524,11 +617,17 @@ List<Extension> modifierExtension;
 // the TestScript.setup section.
 bool autocreate;
 
+//  Extensions for autocreate
+Element element_autocreate;
+
 //  Whether or not to implicitly delete the fixture during teardown. If
 // true, the fixture is automatically deleted on each server being tested
 // during teardown, therefore no delete operation is required for this
 // fixture in the TestScript.teardown section.
 bool autodelete;
+
+//  Extensions for autodelete
+Element element_autodelete;
 
 //  Reference to the resource (containing the contents of the resource
 // needed for operations).
@@ -539,7 +638,9 @@ TestScript_Fixture(
     this.extension,
     this.modifierExtension,
     this.autocreate,
+    this.element_autocreate,
     this.autodelete,
+    this.element_autodelete,
     this.resource
     });
 
@@ -579,47 +680,79 @@ List<Extension> modifierExtension;
 //  Descriptive name for this variable.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  A default, hard-coded, or user-defined value for this variable.
 String defaultValue;
+
+//  Extensions for defaultValue
+Element element_defaultValue;
 
 //  A free text natural language description of the variable and its
 // purpose.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  The FHIRPath expression to evaluate against the fixture body. When
 // variables are defined, only one of either expression, headerField or
 // path must be specified.
 String expression;
 
+//  Extensions for expression
+Element element_expression;
+
 //  Will be used to grab the HTTP header field value from the headers that
 // sourceId is pointing to.
 String headerField;
 
+//  Extensions for headerField
+Element element_headerField;
+
 //  Displayable text string with hint help information to the user when
 // entering a default value.
 String hint;
+
+//  Extensions for hint
+Element element_hint;
 
 //  XPath or JSONPath to evaluate against the fixture body.  When
 // variables are defined, only one of either expression, headerField or
 // path must be specified.
 String path;
 
+//  Extensions for path
+Element element_path;
+
 //  Fixture to evaluate the XPath/JSONPath expression or the headerField 
 // against within this variable.
 String sourceId;
+
+//  Extensions for sourceId
+Element element_sourceId;
 
 TestScript_Variable(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.name,
+    this.element_name,
     this.defaultValue,
+    this.element_defaultValue,
     this.description,
+    this.element_description,
     this.expression,
+    this.element_expression,
     this.headerField,
+    this.element_headerField,
     this.hint,
+    this.element_hint,
     this.path,
-    this.sourceId
+    this.element_path,
+    this.sourceId,
+    this.element_sourceId
     });
 
   factory TestScript_Variable.fromJson(Map<String, dynamic> json) => _$TestScript_VariableFromJson(json);
@@ -753,23 +886,41 @@ Coding type;
 // http://build.fhir.org/resourcelist.html.
 String resource;
 
+//  Extensions for resource
+Element element_resource;
+
 //  The label would be used for tracking/logging purposes by test engines.
 String label;
+
+//  Extensions for label
+Element element_label;
 
 //  The description would be used by test engines for tracking and
 // reporting purposes.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  The mime-type to use for RESTful operation in the 'Accept' header.
 String accept;
+
+//  Extensions for accept
+Element element_accept;
 
 //  The mime-type to use for RESTful operation in the 'Content-Type'
 // header.
 String contentType;
 
+//  Extensions for contentType
+Element element_contentType;
+
 //  The server where the request message is destined for.  Must be one of
 // the server numbers listed in TestScript.destination section.
 int destination;
+
+//  Extensions for destination
+Element element_destination;
 
 //  Whether or not to implicitly send the request url in encoded format.
 // The default is true to match the standard RESTful client behavior. Set
@@ -777,17 +928,29 @@ int destination;
 // url paths.
 bool encodeRequestUrl;
 
+//  Extensions for encodeRequestUrl
+Element element_encodeRequestUrl;
+
 //  The HTTP method the test engine MUST use for this operation regardless
 // of any other operation details.
 String method; // <code> enum: delete/get/options/patch/post/put/head;
+
+//  Extensions for method
+Element element_method;
 
 //  The server where the request message originates from.  Must be one of
 // the server numbers listed in TestScript.origin section.
 int origin;
 
+//  Extensions for origin
+Element element_origin;
+
 //  Path plus parameters after [type].  Used to set parts of the request
 // URL explicitly.
 String params;
+
+//  Extensions for params
+Element element_params;
 
 //  Header elements would be used to set HTTP headers.
 List<TestScript_RequestHeader> requestHeader;
@@ -795,18 +958,33 @@ List<TestScript_RequestHeader> requestHeader;
 //  The fixture id (maybe new) to map to the request.
 String requestId;
 
+//  Extensions for requestId
+Element element_requestId;
+
 //  The fixture id (maybe new) to map to the response.
 String responseId;
 
+//  Extensions for responseId
+Element element_responseId;
+
 //  The id of the fixture used as the body of a PUT or POST request.
 String sourceId;
+
+//  Extensions for sourceId
+Element element_sourceId;
 
 //  Id of fixture used for extracting the [id],  [type], and [vid] for GET
 // requests.
 String targetId;
 
+//  Extensions for targetId
+Element element_targetId;
+
 //  Complete request URL.
 String url;
+
+//  Extensions for url
+Element element_url;
 
 TestScript_Operation(
   {this.id,
@@ -814,21 +992,36 @@ TestScript_Operation(
     this.modifierExtension,
     this.type,
     this.resource,
+    this.element_resource,
     this.label,
+    this.element_label,
     this.description,
+    this.element_description,
     this.accept,
+    this.element_accept,
     this.contentType,
+    this.element_contentType,
     this.destination,
+    this.element_destination,
     this.encodeRequestUrl,
+    this.element_encodeRequestUrl,
     this.method,
+    this.element_method,
     this.origin,
+    this.element_origin,
     this.params,
+    this.element_params,
     this.requestHeader,
     this.requestId,
+    this.element_requestId,
     this.responseId,
+    this.element_responseId,
     this.sourceId,
+    this.element_sourceId,
     this.targetId,
-    this.url
+    this.element_targetId,
+    this.url,
+    this.element_url
     });
 
   factory TestScript_Operation.fromJson(Map<String, dynamic> json) => _$TestScript_OperationFromJson(json);
@@ -867,15 +1060,23 @@ List<Extension> modifierExtension;
 //  The HTTP header field e.g. "Accept".
 String field;
 
+//  Extensions for field
+Element element_field;
+
 //  The value of the header e.g. "application/fhir+xml".
 String value;
+
+//  Extensions for value
+Element element_value;
 
 TestScript_RequestHeader(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.field,
-    this.value
+    this.element_field,
+    this.value,
+    this.element_value
     });
 
   factory TestScript_RequestHeader.fromJson(Map<String, dynamic> json) => _$TestScript_RequestHeaderFromJson(json);
@@ -914,113 +1115,201 @@ List<Extension> modifierExtension;
 //  The label would be used for tracking/logging purposes by test engines.
 String label;
 
+//  Extensions for label
+Element element_label;
+
 //  The description would be used by test engines for tracking and
 // reporting purposes.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  The direction to use for the assertion.
 String direction; // <code> enum: response/request;
+
+//  Extensions for direction
+Element element_direction;
 
 //  Id of the source fixture used as the contents to be evaluated by
 // either the "source/expression" or "sourceId/path" definition.
 String compareToSourceId;
+
+//  Extensions for compareToSourceId
+Element element_compareToSourceId;
 
 //  The FHIRPath expression to evaluate against the source fixture. When
 // compareToSourceId is defined, either compareToSourceExpression or
 // compareToSourcePath must be defined, but not both.
 String compareToSourceExpression;
 
+//  Extensions for compareToSourceExpression
+Element element_compareToSourceExpression;
+
 //  XPath or JSONPath expression to evaluate against the source fixture.
 // When compareToSourceId is defined, either compareToSourceExpression or
 // compareToSourcePath must be defined, but not both.
 String compareToSourcePath;
 
+//  Extensions for compareToSourcePath
+Element element_compareToSourcePath;
+
 //  The mime-type contents to compare against the request or response
 // message 'Content-Type' header.
 String contentType;
+
+//  Extensions for contentType
+Element element_contentType;
 
 //  The FHIRPath expression to be evaluated against the request or
 // response message contents - HTTP headers and payload.
 String expression;
 
+//  Extensions for expression
+Element element_expression;
+
 //  The HTTP header field name e.g. 'Location'.
 String headerField;
+
+//  Extensions for headerField
+Element element_headerField;
 
 //  The ID of a fixture.  Asserts that the response contains at a minimum
 // the fixture specified by minimumId.
 String minimumId;
 
+//  Extensions for minimumId
+Element element_minimumId;
+
 //  Whether or not the test execution performs validation on the bundle
 // navigation links.
 bool navigationLinks;
+
+//  Extensions for navigationLinks
+Element element_navigationLinks;
 
 //  The operator type defines the conditional behavior of the assert. If
 // not defined, the default is equals.
 String operator; // <code> enum: equals/notEquals/in/notIn/greaterThan/lessThan/empty/notEmpty/contains/notContains/eval;
 
+//  Extensions for operator
+Element element_operator;
+
 //  The XPath or JSONPath expression to be evaluated against the fixture
 // representing the response received from server.
 String path;
+
+//  Extensions for path
+Element element_path;
 
 //  The request method or HTTP operation code to compare against that used
 // by the client system under test.
 String requestMethod; // <code> enum: delete/get/options/patch/post/put/head;
 
+//  Extensions for requestMethod
+Element element_requestMethod;
+
 //  The value to use in a comparison against the request URL path string.
 String requestURL;
+
+//  Extensions for requestURL
+Element element_requestURL;
 
 //  The type of the resource.  See
 // http://build.fhir.org/resourcelist.html.
 String resource;
+
+//  Extensions for resource
+Element element_resource;
 
 //  okay | created | noContent | notModified | bad | forbidden | notFound
 // | methodNotAllowed | conflict | gone | preconditionFailed |
 // unprocessable.
 String response; // <code> enum: okay/created/noContent/notModified/bad/forbidden/notFound/methodNotAllowed/conflict/gone/preconditionFailed/unprocessable;
 
+//  Extensions for response
+Element element_response;
+
 //  The value of the HTTP response code to be tested.
 String responseCode;
+
+//  Extensions for responseCode
+Element element_responseCode;
 
 //  Fixture to evaluate the XPath/JSONPath expression or the headerField 
 // against.
 String sourceId;
 
+//  Extensions for sourceId
+Element element_sourceId;
+
 //  The ID of the Profile to validate against.
 String validateProfileId;
+
+//  Extensions for validateProfileId
+Element element_validateProfileId;
 
 //  The value to compare to.
 String value;
 
+//  Extensions for value
+Element element_value;
+
 //  Whether or not the test execution will produce a warning only on error
 // for this assert.
 bool warningOnly;
+
+//  Extensions for warningOnly
+Element element_warningOnly;
 
 TestScript_Assert(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.label,
+    this.element_label,
     this.description,
+    this.element_description,
     this.direction,
+    this.element_direction,
     this.compareToSourceId,
+    this.element_compareToSourceId,
     this.compareToSourceExpression,
+    this.element_compareToSourceExpression,
     this.compareToSourcePath,
+    this.element_compareToSourcePath,
     this.contentType,
+    this.element_contentType,
     this.expression,
+    this.element_expression,
     this.headerField,
+    this.element_headerField,
     this.minimumId,
+    this.element_minimumId,
     this.navigationLinks,
+    this.element_navigationLinks,
     this.operator,
+    this.element_operator,
     this.path,
+    this.element_path,
     this.requestMethod,
+    this.element_requestMethod,
     this.requestURL,
+    this.element_requestURL,
     this.resource,
+    this.element_resource,
     this.response,
+    this.element_response,
     this.responseCode,
+    this.element_responseCode,
     this.sourceId,
+    this.element_sourceId,
     this.validateProfileId,
+    this.element_validateProfileId,
     this.value,
-    this.warningOnly
+    this.element_value,
+    this.warningOnly,
+    this.element_warningOnly
     });
 
   factory TestScript_Assert.fromJson(Map<String, dynamic> json) => _$TestScript_AssertFromJson(json);
@@ -1060,9 +1349,15 @@ List<Extension> modifierExtension;
 // engines.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  A short description of the test used by test engines for tracking and
 // reporting purposes.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  Action would contain either an operation or an assertion.
 List<TestScript_Action1> action;
@@ -1072,7 +1367,9 @@ TestScript_Test(
     this.extension,
     this.modifierExtension,
     this.name,
+    this.element_name,
     this.description,
+    this.element_description,
     this.action
     });
 

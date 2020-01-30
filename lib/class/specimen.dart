@@ -10,6 +10,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'specimen.g.dart';
@@ -35,8 +36,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -85,6 +92,9 @@ Identifier accessionIdentifier;
 //  The availability of the specimen.
 String status; // <code> enum: available/unavailable/unsatisfactory/entered-in-error;
 
+//  Extensions for status
+Element element_status;
+
 //  The kind of material that forms the specimen.
 CodeableConcept type;
 
@@ -95,6 +105,9 @@ Reference subject;
 
 //  Time when specimen was received for processing or testing.
 DateTime receivedTime;
+
+//  Extensions for receivedTime
+Element element_receivedTime;
 
 //  Reference to the parent (source) specimen which is used when the
 // specimen was either derived from or a component of another specimen.
@@ -127,7 +140,9 @@ Specimen(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -135,9 +150,11 @@ Specimen(
     this.identifier,
     this.accessionIdentifier,
     this.status,
+    this.element_status,
     this.type,
     this.subject,
     this.receivedTime,
+    this.element_receivedTime,
     this.parent,
     this.request,
     this.collection,
@@ -187,6 +204,9 @@ Reference collector;
 // relevant time.
 String collectedDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
+//  Extensions for collectedDateTime
+Element element_collectedDateTime;
+
 //  Time when specimen was collected from subject - the physiologically
 // relevant time.
 Period collectedPeriod;
@@ -221,6 +241,7 @@ Specimen_Collection(
     this.modifierExtension,
     this.collector,
     this.collectedDateTime,
+    this.element_collectedDateTime,
     this.collectedPeriod,
     this.duration,
     this.quantity,
@@ -266,6 +287,9 @@ List<Extension> modifierExtension;
 //  Textual description of procedure.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  A coded value specifying the procedure used to process the specimen.
 CodeableConcept procedure;
 
@@ -277,6 +301,9 @@ List<Reference> additive;
 // sample was in formalin.
 String timeDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
+//  Extensions for timeDateTime
+Element element_timeDateTime;
+
 //  A record of the time or period when the specimen processing occurred. 
 // For example the time of sample fixation or the period of time the
 // sample was in formalin.
@@ -287,9 +314,11 @@ Specimen_Processing(
     this.extension,
     this.modifierExtension,
     this.description,
+    this.element_description,
     this.procedure,
     this.additive,
     this.timeDateTime,
+    this.element_timeDateTime,
     this.timePeriod
     });
 
@@ -334,6 +363,9 @@ List<Identifier> identifier;
 //  Textual description of the container.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  The type of container associated with the specimen (e.g. slide,
 // aliquot, etc.).
 CodeableConcept type;
@@ -359,6 +391,7 @@ Specimen_Container(
     this.modifierExtension,
     this.identifier,
     this.description,
+    this.element_description,
     this.type,
     this.capacity,
     this.specimenQuantity,

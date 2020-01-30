@@ -10,6 +10,7 @@ import 'package:flutter_fhir/class/codeableConcept.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'medicationKnowledge.g.dart';
@@ -35,8 +36,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -86,6 +93,9 @@ CodeableConcept code;
 // to its medicinal properties.
 String status;
 
+//  Extensions for status
+Element element_status;
+
 //  Describes the details of the manufacturer of the medication product. 
 // This is not intended to represent the distributor of a medication
 // product.
@@ -105,6 +115,9 @@ Quantity amount;
 // medication in different countries.  For example, acetaminophen and
 // paracetamol or salbutamol and albuterol.
 List<String> synonym;
+
+//  Extensions for synonym
+List<Element> element_synonym;
 
 //  Associated or related knowledge about a medication.
 List<MedicationKnowledge_RelatedMedicationKnowledge> relatedMedicationKnowledge;
@@ -127,6 +140,9 @@ List<MedicationKnowledge_Ingredient> ingredient;
 
 //  The instructions for preparing the medication.
 String preparationInstruction;
+
+//  Extensions for preparationInstruction
+Element element_preparationInstruction;
 
 //  The intended or approved route of administration.
 List<CodeableConcept> intendedRoute;
@@ -168,23 +184,28 @@ MedicationKnowledge(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.code,
     this.status,
+    this.element_status,
     this.manufacturer,
     this.doseForm,
     this.amount,
     this.synonym,
+    this.element_synonym,
     this.relatedMedicationKnowledge,
     this.associatedMedication,
     this.productType,
     this.monograph,
     this.ingredient,
     this.preparationInstruction,
+    this.element_preparationInstruction,
     this.intendedRoute,
     this.cost,
     this.monitoringProgram,
@@ -337,6 +358,9 @@ Reference itemReference;
 // of the drug.
 bool isActive;
 
+//  Extensions for isActive
+Element element_isActive;
+
 //  Specifies how many (or how much) of the items there are in this
 // Medication.  For example, 250 mg per tablet.  This is expressed as a
 // ratio where the numerator is 250mg and the denominator is 1 tablet.
@@ -349,6 +373,7 @@ MedicationKnowledge_Ingredient(
     this.itemCodeableConcept,
     this.itemReference,
     this.isActive,
+    this.element_isActive,
     this.strength
     });
 
@@ -392,6 +417,9 @@ CodeableConcept type;
 //  The source or owner that assigns the price to the medication.
 String source;
 
+//  Extensions for source
+Element element_source;
+
 //  The price of the medication.
 Money cost;
 
@@ -401,6 +429,7 @@ MedicationKnowledge_Cost(
     this.modifierExtension,
     this.type,
     this.source,
+    this.element_source,
     this.cost
     });
 
@@ -443,12 +472,16 @@ CodeableConcept type;
 //  Name of the reviewing program.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 MedicationKnowledge_MonitoringProgram(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.type,
-    this.name
+    this.name,
+    this.element_name
     });
 
   factory MedicationKnowledge_MonitoringProgram.fromJson(Map<String, dynamic> json) => _$MedicationKnowledge_MonitoringProgramFromJson(json);
@@ -601,13 +634,17 @@ Quantity characteristicQuantity;
 //  The specific characteristic (e.g. height, weight, gender, etc.).
 List<String> value;
 
+//  Extensions for value
+List<Element> element_value;
+
 MedicationKnowledge_PatientCharacteristics(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.characteristicCodeableConcept,
     this.characteristicQuantity,
-    this.value
+    this.value,
+    this.element_value
     });
 
   factory MedicationKnowledge_PatientCharacteristics.fromJson(Map<String, dynamic> json) => _$MedicationKnowledge_PatientCharacteristicsFromJson(json);
@@ -750,11 +787,17 @@ CodeableConcept valueCodeableConcept;
 //  Description of the characteristic.
 String valueString; //  pattern: ^[ \r\n\t\S]+$
 
+//  Extensions for valueString
+Element element_valueString;
+
 //  Description of the characteristic.
 Quantity valueQuantity;
 
 //  Description of the characteristic.
 String valueBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
+
+//  Extensions for valueBase64Binary
+Element element_valueBase64Binary;
 
 MedicationKnowledge_DrugCharacteristic(
   {this.id,
@@ -763,8 +806,10 @@ MedicationKnowledge_DrugCharacteristic(
     this.type,
     this.valueCodeableConcept,
     this.valueString,
+    this.element_valueString,
     this.valueQuantity,
-    this.valueBase64Binary
+    this.valueBase64Binary,
+    this.element_valueBase64Binary
     });
 
   factory MedicationKnowledge_DrugCharacteristic.fromJson(Map<String, dynamic> json) => _$MedicationKnowledge_DrugCharacteristicFromJson(json);
@@ -864,12 +909,16 @@ CodeableConcept type;
 // dispensing.
 bool allowed;
 
+//  Extensions for allowed
+Element element_allowed;
+
 MedicationKnowledge_Substitution(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.type,
-    this.allowed
+    this.allowed,
+    this.element_allowed
     });
 
   factory MedicationKnowledge_Substitution.fromJson(Map<String, dynamic> json) => _$MedicationKnowledge_SubstitutionFromJson(json);

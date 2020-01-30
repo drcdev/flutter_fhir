@@ -14,7 +14,14 @@ EnrollmentRequest _$EnrollmentRequestFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
+    element_implicitRules: json['element_implicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['element_implicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
+    element_language: json['element_language'] == null
+        ? null
+        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
@@ -35,9 +42,15 @@ EnrollmentRequest _$EnrollmentRequestFromJson(Map<String, dynamic> json) {
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
+    element_status: json['element_status'] == null
+        ? null
+        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
     created: json['created'] == null
         ? null
         : DateTime.parse(json['created'] as String),
+    element_created: json['element_created'] == null
+        ? null
+        : Element.fromJson(json['element_created'] as Map<String, dynamic>),
     insurer: json['insurer'] == null
         ? null
         : Reference.fromJson(json['insurer'] as Map<String, dynamic>),
@@ -59,7 +72,9 @@ Map<String, dynamic> _$EnrollmentRequestToJson(EnrollmentRequest instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
+      'element_implicitRules': instance.element_implicitRules?.toJson(),
       'language': instance.language,
+      'element_language': instance.element_language?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -67,7 +82,9 @@ Map<String, dynamic> _$EnrollmentRequestToJson(EnrollmentRequest instance) =>
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
+      'element_status': instance.element_status?.toJson(),
       'created': instance.created?.toIso8601String(),
+      'element_created': instance.element_created?.toJson(),
       'insurer': instance.insurer?.toJson(),
       'provider': instance.provider?.toJson(),
       'candidate': instance.candidate?.toJson(),

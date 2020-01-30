@@ -9,6 +9,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'communicationRequest.g.dart';
@@ -34,8 +35,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -94,6 +101,9 @@ Identifier groupIdentifier;
 //  The status of the proposal or order.
 String status;
 
+//  Extensions for status
+Element element_status;
+
 //  Captures the reason for the current state of the CommunicationRequest.
 CodeableConcept statusReason;
 
@@ -105,9 +115,15 @@ List<CodeableConcept> category;
 // concepts such as stat, urgent, routine.
 String priority;
 
+//  Extensions for priority
+Element element_priority;
+
 //  If true indicates that the CommunicationRequest is asking for the
 // specified action to *not* occur.
 bool doNotPerform;
+
+//  Extensions for doNotPerform
+Element element_doNotPerform;
 
 //  A channel that was used for this communication (e.g. email, fax).
 List<CodeableConcept> medium;
@@ -130,12 +146,18 @@ List<CommunicationRequest_Payload> payload;
 //  The time when this communication is to occur.
 String occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
+//  Extensions for occurrenceDateTime
+Element element_occurrenceDateTime;
+
 //  The time when this communication is to occur.
 Period occurrencePeriod;
 
 //  For draft requests, indicates the date of initial creation.  For
 // requests with other statuses, indicates the date of activation.
 DateTime authoredOn;
+
+//  Extensions for authoredOn
+Element element_authoredOn;
 
 //  The device, individual, or organization who initiated the request and
 // has responsibility for its activation.
@@ -165,7 +187,9 @@ CommunicationRequest(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -175,18 +199,23 @@ CommunicationRequest(
     this.replaces,
     this.groupIdentifier,
     this.status,
+    this.element_status,
     this.statusReason,
     this.category,
     this.priority,
+    this.element_priority,
     this.doNotPerform,
+    this.element_doNotPerform,
     this.medium,
     this.subject,
     this.about,
     this.encounter,
     this.payload,
     this.occurrenceDateTime,
+    this.element_occurrenceDateTime,
     this.occurrencePeriod,
     this.authoredOn,
+    this.element_authoredOn,
     this.requester,
     this.recipient,
     this.sender,
@@ -232,6 +261,9 @@ List<Extension> modifierExtension;
 // portion of the communication).
 String contentString; //  pattern: ^[ \r\n\t\S]+$
 
+//  Extensions for contentString
+Element element_contentString;
+
 //  The communicated content (or for multi-part communications, one
 // portion of the communication).
 Attachment contentAttachment;
@@ -245,6 +277,7 @@ CommunicationRequest_Payload(
     this.extension,
     this.modifierExtension,
     this.contentString,
+    this.element_contentString,
     this.contentAttachment,
     this.contentReference
     });

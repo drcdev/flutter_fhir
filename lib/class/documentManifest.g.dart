@@ -14,7 +14,14 @@ DocumentManifest _$DocumentManifestFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
+    element_implicitRules: json['element_implicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['element_implicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
+    element_language: json['element_language'] == null
+        ? null
+        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
@@ -38,6 +45,9 @@ DocumentManifest _$DocumentManifestFromJson(Map<String, dynamic> json) {
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
+    element_status: json['element_status'] == null
+        ? null
+        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
     type: json['type'] == null
         ? null
         : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
@@ -47,6 +57,9 @@ DocumentManifest _$DocumentManifestFromJson(Map<String, dynamic> json) {
     created: json['created'] == null
         ? null
         : DateTime.parse(json['created'] as String),
+    element_created: json['element_created'] == null
+        ? null
+        : Element.fromJson(json['element_created'] as Map<String, dynamic>),
     author: (json['author'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
@@ -56,7 +69,13 @@ DocumentManifest _$DocumentManifestFromJson(Map<String, dynamic> json) {
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     source: json['source'] as String,
+    element_source: json['element_source'] == null
+        ? null
+        : Element.fromJson(json['element_source'] as Map<String, dynamic>),
     description: json['description'] as String,
+    element_description: json['element_description'] == null
+        ? null
+        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
     content: (json['content'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
@@ -75,7 +94,9 @@ Map<String, dynamic> _$DocumentManifestToJson(DocumentManifest instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
+      'element_implicitRules': instance.element_implicitRules?.toJson(),
       'language': instance.language,
+      'element_language': instance.element_language?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -84,13 +105,17 @@ Map<String, dynamic> _$DocumentManifestToJson(DocumentManifest instance) =>
       'masterIdentifier': instance.masterIdentifier?.toJson(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
+      'element_status': instance.element_status?.toJson(),
       'type': instance.type?.toJson(),
       'subject': instance.subject?.toJson(),
       'created': instance.created?.toIso8601String(),
+      'element_created': instance.element_created?.toJson(),
       'author': instance.author?.map((e) => e?.toJson())?.toList(),
       'recipient': instance.recipient?.map((e) => e?.toJson())?.toList(),
       'source': instance.source,
+      'element_source': instance.element_source?.toJson(),
       'description': instance.description,
+      'element_description': instance.element_description?.toJson(),
       'content': instance.content?.map((e) => e?.toJson())?.toList(),
       'related': instance.related?.map((e) => e?.toJson())?.toList(),
     };

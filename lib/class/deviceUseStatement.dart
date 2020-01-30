@@ -9,6 +9,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'deviceUseStatement.g.dart';
@@ -34,8 +35,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -85,6 +92,9 @@ List<Reference> basedOn;
 // will be active or completed.
 String status; // <code> enum: active/completed/entered-in-error/intended/stopped/on-hold;
 
+//  Extensions for status
+Element element_status;
+
 //  The patient who used the device.
 Reference subject;
 
@@ -102,8 +112,14 @@ Period timingPeriod;
 //  How often the device was used.
 String timingDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
+//  Extensions for timingDateTime
+Element element_timingDateTime;
+
 //  The time at which the statement was made/recorded.
 DateTime recordedOn;
+
+//  Extensions for recordedOn
+Element element_recordedOn;
 
 //  Who reported the device was being used by the patient.
 Reference source;
@@ -133,7 +149,9 @@ DeviceUseStatement(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -141,12 +159,15 @@ DeviceUseStatement(
     this.identifier,
     this.basedOn,
     this.status,
+    this.element_status,
     this.subject,
     this.derivedFrom,
     this.timingTiming,
     this.timingPeriod,
     this.timingDateTime,
+    this.element_timingDateTime,
     this.recordedOn,
+    this.element_recordedOn,
     this.source,
     this.device,
     this.reasonCode,

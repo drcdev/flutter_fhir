@@ -12,6 +12,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'serviceRequest.g.dart';
@@ -37,8 +38,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -90,6 +97,9 @@ List<String> instantiatesCanonical;
 // this ServiceRequest.
 List<String> instantiatesUri;
 
+//  Extensions for instantiatesUri
+List<Element> element_instantiatesUri;
+
 //  Plan/proposal/order fulfilled by this request.
 List<Reference> basedOn;
 
@@ -105,9 +115,15 @@ Identifier requisition;
 //  The status of the order.
 String status;
 
+//  Extensions for status
+Element element_status;
+
 //  Whether the request is a proposal, plan, an original order or a reflex
 // order.
 String intent;
+
+//  Extensions for intent
+Element element_intent;
 
 //  A code that classifies the service for searching, sorting and display
 // purposes (e.g. "Surgical Procedure").
@@ -117,9 +133,15 @@ List<CodeableConcept> category;
 // respect to other requests.
 String priority;
 
+//  Extensions for priority
+Element element_priority;
+
 //  Set this to true if the record is saying that the service/procedure
 // should NOT be performed.
 bool doNotPerform;
+
+//  Extensions for doNotPerform
+Element element_doNotPerform;
 
 //  A code that identifies a particular service (i.e., procedure,
 // diagnostic investigation, or panel of investigations) that have been
@@ -161,6 +183,9 @@ Reference encounter;
 //  The date/time at which the requested service should occur.
 String occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
+//  Extensions for occurrenceDateTime
+Element element_occurrenceDateTime;
+
 //  The date/time at which the requested service should occur.
 Period occurrencePeriod;
 
@@ -171,12 +196,18 @@ Timing occurrenceTiming;
 // performing the service.  For example "pain", "on flare-up", etc.
 bool asNeededBoolean; //  pattern: ^true|false$
 
+//  Extensions for asNeededBoolean
+Element element_asNeededBoolean;
+
 //  If a CodeableConcept is present, it indicates the pre-condition for
 // performing the service.  For example "pain", "on flare-up", etc.
 CodeableConcept asNeededCodeableConcept;
 
 //  When the request transitioned to being actionable.
 DateTime authoredOn;
+
+//  Extensions for authoredOn
+Element element_authoredOn;
 
 //  The individual who initiated the request and has responsibility for
 // its activation.
@@ -236,6 +267,9 @@ List<Annotation> note;
 //  Instructions in terms that are understood by the patient or consumer.
 String patientInstruction;
 
+//  Extensions for patientInstruction
+Element element_patientInstruction;
+
 //  Key events in the history of the request.
 List<Reference> relevantHistory;
 
@@ -244,7 +278,9 @@ ServiceRequest(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -252,14 +288,19 @@ ServiceRequest(
     this.identifier,
     this.instantiatesCanonical,
     this.instantiatesUri,
+    this.element_instantiatesUri,
     this.basedOn,
     this.replaces,
     this.requisition,
     this.status,
+    this.element_status,
     this.intent,
+    this.element_intent,
     this.category,
     this.priority,
+    this.element_priority,
     this.doNotPerform,
+    this.element_doNotPerform,
     this.code,
     this.orderDetail,
     this.quantityQuantity,
@@ -268,11 +309,14 @@ ServiceRequest(
     this.subject,
     this.encounter,
     this.occurrenceDateTime,
+    this.element_occurrenceDateTime,
     this.occurrencePeriod,
     this.occurrenceTiming,
     this.asNeededBoolean,
+    this.element_asNeededBoolean,
     this.asNeededCodeableConcept,
     this.authoredOn,
+    this.element_authoredOn,
     this.requester,
     this.performerType,
     this.performer,
@@ -286,6 +330,7 @@ ServiceRequest(
     this.bodySite,
     this.note,
     this.patientInstruction,
+    this.element_patientInstruction,
     this.relevantHistory
     });
 

@@ -5,6 +5,7 @@ import 'package:flutter_fhir/class/quantity.dart';
 import 'package:flutter_fhir/class/ratio.dart';
 import 'package:flutter_fhir/class/timing.dart';
 import 'package:flutter_fhir/class/codeableConcept.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/extension.dart';
 
 part 'dosage.g.dart';
@@ -42,8 +43,14 @@ List<Extension> modifierExtension;
 // or interpreted.
 int sequence;
 
+//  Extensions for sequence
+Element element_sequence;
+
 //  Free text dosage instructions e.g. SIG.
 String text;
+
+//  Extensions for text
+Element element_text;
 
 //  Supplemental instructions to the patient on how to take the medication
 //  (e.g. "with meals" or"take half to one hour before food") or warnings
@@ -54,6 +61,9 @@ List<CodeableConcept> additionalInstruction;
 //  Instructions in terms that are understood by the patient or consumer.
 String patientInstruction;
 
+//  Extensions for patientInstruction
+Element element_patientInstruction;
+
 //  When medication should be administered.
 Timing timing;
 
@@ -61,6 +71,9 @@ Timing timing;
 // specific dosing schedule (Boolean option), or it indicates the
 // precondition for taking the Medication (CodeableConcept).
 bool asNeededBoolean; //  pattern: ^true|false$
+
+//  Extensions for asNeededBoolean
+Element element_asNeededBoolean;
 
 //  Indicates whether the Medication is only taken when needed within a
 // specific dosing schedule (Boolean option), or it indicates the
@@ -93,11 +106,15 @@ Dosage(
     this.extension,
     this.modifierExtension,
     this.sequence,
+    this.element_sequence,
     this.text,
+    this.element_text,
     this.additionalInstruction,
     this.patientInstruction,
+    this.element_patientInstruction,
     this.timing,
     this.asNeededBoolean,
+    this.element_asNeededBoolean,
     this.asNeededCodeableConcept,
     this.site,
     this.route,

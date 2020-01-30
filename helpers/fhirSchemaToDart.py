@@ -44,7 +44,13 @@ def less70(string):
             line += ' ' + i
     new += '\n// ' + line
     return new  
-    
+
+def rem_(string):
+    if(string[0] == '_'):
+        return('element' + string)
+    else:
+        return(string)               
+                
 #open fhir json schema
 with open('fhir.schema.json', encoding='utf8') as json_file:
     schema = json.load(json_file)
@@ -78,135 +84,133 @@ for a in schema['definitions']:
         for b in schema['definitions'][a]['properties']:
             
             
-            if(not b.startswith('_')):
 #******************************************************************************
 #***** This adds comments to the files, but adds notable extra time to run this program *****
-            #prints comment to the Dart code, formatted lines <= 70 characters
-                comments = schema['definitions'][a]['properties'][b]['description']
-                comments = re.sub(r'\n+', ' ', comments)
-                dartCode = ''.join([dartCode, less70(comments), '\n'])
+        #prints comment to the Dart code, formatted lines <= 70 characters
+            comments = schema['definitions'][a]['properties'][b]['description']
+            comments = re.sub(r'\n+', ' ', comments)
+            dartCode = ''.join([dartCode, less70(comments), '\n'])
 #******************************************************************************
-                                        
-                #if items is NOT included it means that the item is NOT an array/list
-                if('items' not in schema['definitions'][a]['properties'][b]):
-                    
-                    #if  there's a $ref in it, print out that value
-                    if('$ref' in schema['definitions'][a]['properties'][b]):
-                        ref = schema['definitions'][a]['properties'][b]['$ref']
-                        ref = ref.split('/definitions/')[1]
-                        dartCode = ''.join([dartCode, primitiveDart(ref), ' ', b, ';\n'])
-                        
-                        if(not isPrimitive(ref) and ref not in importDict[importL]):
-                            importDict[importL].append(ref)
-                        
-                    #if  there's a const in it, print out that value
-                    elif('const' in schema['definitions'][a]['properties'][b]):  
                                     
-                        value = schema['definitions'][a]['properties'][b]['const']
-                        if(b == 'resourceType'):
-                            value2 = 'String'
-                        else:
-                            value2 = value
-                        dartCode = ''.join([dartCode, 
-                                            primitiveDart(value2), 
-                                            ' ', b, ';\n'])
-                        
-                        if(not isPrimitive(value) and value not in importDict[importL]):
-                            importDict[importL].append(value)
-                        
-                    #if  there's a pattern in it, print out the type of pattern
-                    elif('pattern' in schema['definitions'][a]['properties'][b]):  
-                        
-                        value = schema['definitions'][a]['properties'][b]
-                        
-                        #if the type is a number, declare it an int or a double
-                        if('number' == value['type']):
-                            if('decimal' in b or 'Decimal' in b):
-                                dartCode = ''.join([dartCode, 'double '])
-                            else:
-                                dartCode = ''.join([dartCode, 'int '])
-                        else:
-                            dartCode = ''.join([dartCode, 
-                                                primitiveDart(value['type']), ' '])
-                            
-                        #include the pattern as a comment
-                        dartCode = ''.join([dartCode, b, '; //  pattern: ', 
-                                            value['pattern'], '\n'])
-                        
-                        if(not isPrimitive(value['type']) and value['type'] not in importDict[importL]):
-                            importDict[importL].append(value['type'])
-                         
-                    #if it's enum, print it as type of enum, and then include the
-                    #possible values as a comment at the end of the line
-                    elif('enum' in schema['definitions'][a]['properties'][b]):
-    
-                        dartCode = ''.join([dartCode, 'String ', b, '; // <code> enum: ',  
-                                            '/'.join(schema['definitions'][a]['properties'][b]['enum']), 
-                                            ';\n'])
-    
-                #if it does include items, it is an array/list
-                elif('$ref' in schema['definitions'][a]['properties'][b]['items']):
+            #if items is NOT included it means that the item is NOT an array/list
+            if('items' not in schema['definitions'][a]['properties'][b]):
+                
+                #if  there's a $ref in it, print out that value
+                if('$ref' in schema['definitions'][a]['properties'][b]):
+                    ref = schema['definitions'][a]['properties'][b]['$ref']
+                    ref = ref.split('/definitions/')[1]
+                    dartCode = ''.join([dartCode, primitiveDart(ref), ' ', rem_(b), ';\n'])
                     
-                    value = schema['definitions'][a]['properties'][b]['items']['$ref'].split('/definitions/')[1]
+                    if(not isPrimitive(ref) and ref not in importDict[importL]):
+                        importDict[importL].append(ref)
                     
-                    #make the item a list since it's an array in json
-                    dartCode = ''.join([dartCode,  'List<', primitiveDart(value), 
-                                        '> ', b, ';\n'])   
+                #if  there's a const in it, print out that value
+                elif('const' in schema['definitions'][a]['properties'][b]):  
+                                
+                    value = schema['definitions'][a]['properties'][b]['const']
+                    if(b == 'resourceType'):
+                        value2 = 'String'
+                    else:
+                        value2 = value
+                    dartCode = ''.join([dartCode, 
+                                        primitiveDart(value2), 
+                                        ' ', rem_(b), ';\n'])
                     
                     if(not isPrimitive(value) and value not in importDict[importL]):
-                            importDict[importL].append(value)
+                        importDict[importL].append(value)
                     
-                                #if it does include items, it is an array/list
-                elif('enum' in schema['definitions'][a]['properties'][b]['items']):
+                #if  there's a pattern in it, print out the type of pattern
+                elif('pattern' in schema['definitions'][a]['properties'][b]):  
                     
-                    #make the item a list since it's an array in json
-                    dartCode = ''.join([dartCode, 'List<String> ', b, '; ',
-                                        '// <code> enum: ', 
-                                        '/'.join(schema['definitions'][a]['properties'][b]['items']['enum']),
-                                        '> ', b, ';\n'])   
-                                        
+                    value = schema['definitions'][a]['properties'][b]
+                    
+                    #if the type is a number, declare it an int or a double
+                    if('number' == value['type']):
+                        if('decimal' in b or 'Decimal' in b):
+                            dartCode = ''.join([dartCode, 'double '])
+                        else:
+                            dartCode = ''.join([dartCode, 'int '])
+                    else:
+                        dartCode = ''.join([dartCode, 
+                                            primitiveDart(value['type']), ' '])
+                        
+                    #include the pattern as a comment
+                    dartCode = ''.join([dartCode, rem_(b), '; //  pattern: ', 
+                                        value['pattern'], '\n'])
+                    
+                    if(not isPrimitive(value['type']) and value['type'] not in importDict[importL]):
+                        importDict[importL].append(value['type'])
+                     
+                #if it's enum, print it as type of enum, and then include the
+                #possible values as a comment at the end of the line
+                elif('enum' in schema['definitions'][a]['properties'][b]):
+
+                    dartCode = ''.join([dartCode, 'String ', rem_(b), '; // <code> enum: ',  
+                                        '/'.join(schema['definitions'][a]['properties'][b]['enum']), 
+                                        ';\n'])
+
+            #if it does include items, it is an array/list
+            elif('$ref' in schema['definitions'][a]['properties'][b]['items']):
+                
+                value = schema['definitions'][a]['properties'][b]['items']['$ref'].split('/definitions/')[1]
+                
+                #make the item a list since it's an array in json
+                dartCode = ''.join([dartCode,  'List<', primitiveDart(value), 
+                                    '> ', rem_(b), ';\n'])   
+                
+                if(not isPrimitive(value) and value not in importDict[importL]):
+                        importDict[importL].append(value)
+                
+                            #if it does include items, it is an array/list
+            elif('enum' in schema['definitions'][a]['properties'][b]['items']):
+                
+                #make the item a list since it's an array in json
+                dartCode = ''.join([dartCode, 'List<String> ', rem_(b), '; ',
+                                    '// <code> enum: ', 
+                                    '/'.join(schema['definitions'][a]['properties'][b]['items']['enum']),
+                                    '> ', rem_(b), ';\n'])   
+                                    
         #add json factory code
         dartCode = ''.join([dartCode, '\n', a, '(\n  {'])
         for b in schema['definitions'][a]['properties']:
-            if(not b.startswith('_')):
-                dartCode = ''.join([dartCode, 'this.', b, ',\n    '])
+            dartCode = ''.join([dartCode, 'this.', rem_(b), ',\n    '])
         dartCode = ''.join([dartCode, '});\n\n  factory ', a, '.fromJson',
                             '(Map<String, dynamic> json) => _$', a, 
                             'FromJson(json);\n  Map<String, dynamic> toJson()',
                             ' => _$', a, 'ToJson(this);\n}\n\n'])
             
-dartCode = dartCode.replace(
-    '// Specifies a value that the value in the instance SHALL follow - that is, any\n' +
-    '//  value in the pattern must be found in the instance. Other additional values may\n' +
-    '//  be found too. This is effectively constraint by example.  \n\n' +
-    'When pattern[x] is\n' +
-    '//  used to constrain a primitive, it means that the value provided in the\n' +
-    '//  pattern[x] must match the instance value exactly.\n\n' +
-    'When pattern[x] is used to\n' +
-    '//  constrain an array, it means that each element provided in the pattern[x] array\n' +
-    '//  must (recursively) match at least one element from the instance array.\n\n' +
-    'When\n' +
-    '//  pattern[x] is used to constrain a complex object, it means that each property\n' +
-    '//  in the pattern must be present in the complex object, and its value must\n' +
-    '//  recursively match -- i.e.,\n\n' +
-    '1. If primitive: it must match exactly the pattern\n//  value\n' +
-    '2. If a complex object: it must match (recursively) the pattern value\n' +
-    '3.\n//  If an array: it must match (recursively) the pattern value.',
+# dartCode = dartCode.replace(
+#     '// Specifies a value that the value in the instance SHALL follow - that is, any\n' +
+#     '//  value in the pattern must be found in the instance. Other additional values may\n' +
+#     '//  be found too. This is effectively constraint by example.  \n\n' +
+#     'When pattern[x] is\n' +
+#     '//  used to constrain a primitive, it means that the value provided in the\n' +
+#     '//  pattern[x] must match the instance value exactly.\n\n' +
+#     'When pattern[x] is used to\n' +
+#     '//  constrain an array, it means that each element provided in the pattern[x] array\n' +
+#     '//  must (recursively) match at least one element from the instance array.\n\n' +
+#     'When\n' +
+#     '//  pattern[x] is used to constrain a complex object, it means that each property\n' +
+#     '//  in the pattern must be present in the complex object, and its value must\n' +
+#     '//  recursively match -- i.e.,\n\n' +
+#     '1. If primitive: it must match exactly the pattern\n//  value\n' +
+#     '2. If a complex object: it must match (recursively) the pattern value\n' +
+#     '3.\n//  If an array: it must match (recursively) the pattern value.',
     
-    '// Specifies a value that the value in the instance SHALL follow - that is, any\n' +
-    '//  value in the pattern must be found in the instance. Other additional values may\n' +
-    '//  be found too. This is effectively constraint by example.\n' +
-    '// When pattern[x] is used to constrain a primitive, it means that the value\n'+
-    '//  provided in the pattern[x] must match the instance value exactly.\n' +
-    '// When pattern[x] is used to constrain an array, it means that each element\n' +
-    '//  provided in the pattern[x] array must (recursively) match at least one\n' +
-    '//  element from the instance array.\n' +
-    '// When pattern[x] is used to constrain a complex object, it means that each property\n' +
-    '//  in the pattern must be present in the complex object, and its value must\n' +
-    '//  recursively match -- i.e.,\n' +
-    '// 1. If primitive: it must match exactly the pattern value\n' +
-    '// 2. If a complex object: it must match (recursively) the pattern value\n' +
-    '// 3. If an array: it must match (recursively) the pattern value.')
+#     '// Specifies a value that the value in the instance SHALL follow - that is, any\n' +
+#     '//  value in the pattern must be found in the instance. Other additional values may\n' +
+#     '//  be found too. This is effectively constraint by example.\n' +
+#     '// When pattern[x] is used to constrain a primitive, it means that the value\n'+
+#     '//  provided in the pattern[x] must match the instance value exactly.\n' +
+#     '// When pattern[x] is used to constrain an array, it means that each element\n' +
+#     '//  provided in the pattern[x] array must (recursively) match at least one\n' +
+#     '//  element from the instance array.\n' +
+#     '// When pattern[x] is used to constrain a complex object, it means that each property\n' +
+#     '//  in the pattern must be present in the complex object, and its value must\n' +
+#     '//  recursively match -- i.e.,\n' +
+#     '// 1. If primitive: it must match exactly the pattern value\n' +
+#     '// 2. If a complex object: it must match (recursively) the pattern value\n' +
+#     '// 3. If an array: it must match (recursively) the pattern value.')
             
 with open("dartFhirClasses.dart", "w", encoding="utf-8") as f:
     f.write(dartCode)

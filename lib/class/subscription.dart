@@ -4,6 +4,7 @@ import 'package:flutter_fhir/class/contactPoint.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'subscription.g.dart';
@@ -29,8 +30,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -72,6 +79,9 @@ List<Extension> modifierExtension;
 // managing the subscription.
 String status; // <code> enum: requested/active/error/off;
 
+//  Extensions for status
+Element element_status;
+
 //  Contact details for a human to contact about the subscription. The
 // primary use of this for system administrator troubleshooting.
 List<ContactPoint> contact;
@@ -79,16 +89,28 @@ List<ContactPoint> contact;
 //  The time for the server to turn the subscription off.
 DateTime end;
 
+//  Extensions for end
+Element element_end;
+
 //  A description of why this subscription is defined.
 String reason;
+
+//  Extensions for reason
+Element element_reason;
 
 //  The rules that the server should use to determine when to generate
 // notifications for this subscription.
 String criteria;
 
+//  Extensions for criteria
+Element element_criteria;
+
 //  A record of the last error that occurred when the server processed a
 // notification.
 String error;
+
+//  Extensions for error
+Element element_error;
 
 //  Details where to send notifications when resources are received that
 // meet the criteria.
@@ -99,17 +121,24 @@ Subscription(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.status,
+    this.element_status,
     this.contact,
     this.end,
+    this.element_end,
     this.reason,
+    this.element_reason,
     this.criteria,
+    this.element_criteria,
     this.error,
+    this.element_error,
     this.channel
     });
 
@@ -149,8 +178,14 @@ List<Extension> modifierExtension;
 //  The type of channel to send notifications on.
 String type; // <code> enum: rest-hook/websocket/email/sms/message;
 
+//  Extensions for type
+Element element_type;
+
 //  The url that describes the actual end-point to send messages to.
 String endpoint;
+
+//  Extensions for endpoint
+Element element_endpoint;
 
 //  The mime type to send the payload in - either application/fhir+xml, or
 // application/fhir+json. If the payload is not present, then there is no
@@ -158,17 +193,27 @@ String endpoint;
 // "text/plain" may also be used for Email and SMS subscriptions.
 String payload;
 
+//  Extensions for payload
+Element element_payload;
+
 //  Additional headers / information to send as part of the notification.
 List<String> header;
+
+//  Extensions for header
+List<Element> element_header;
 
 Subscription_Channel(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.type,
+    this.element_type,
     this.endpoint,
+    this.element_endpoint,
     this.payload,
-    this.header
+    this.element_payload,
+    this.header,
+    this.element_header
     });
 
   factory Subscription_Channel.fromJson(Map<String, dynamic> json) => _$Subscription_ChannelFromJson(json);

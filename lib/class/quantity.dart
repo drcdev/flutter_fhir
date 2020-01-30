@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/extension.dart';
 
 part 'quantity.g.dart';
@@ -23,31 +24,51 @@ List<Extension> extension;
 // precision in the presentation of the value.
 double value;
 
+//  Extensions for value
+Element element_value;
+
 //  How the value should be understood and represented - whether the
 // actual value is greater or less than the stated value due to
 // measurement issues; e.g. if the comparator is "<" , then the real value
 // is < stated value.
 String comparator; // <code> enum: </<=/>=/>;
 
+//  Extensions for comparator
+Element element_comparator;
+
 //  A human-readable form of the unit.
 String unit;
+
+//  Extensions for unit
+Element element_unit;
 
 //  The identification of the system that provides the coded form of the
 // unit.
 String system;
 
+//  Extensions for system
+Element element_system;
+
 //  A computer processable form of the unit in some unit representation
 // system.
 String code;
+
+//  Extensions for code
+Element element_code;
 
 Quantity(
   {this.id,
     this.extension,
     this.value,
+    this.element_value,
     this.comparator,
+    this.element_comparator,
     this.unit,
+    this.element_unit,
     this.system,
-    this.code
+    this.element_system,
+    this.code,
+    this.element_code
     });
 
   factory Quantity.fromJson(Map<String, dynamic> json) => _$QuantityFromJson(json);

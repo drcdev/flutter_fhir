@@ -14,6 +14,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'contract.g.dart';
@@ -39,8 +40,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -86,12 +93,21 @@ List<Identifier> identifier;
 // unique).
 String url;
 
+//  Extensions for url
+Element element_url;
+
 //  An edition identifier used for business purposes to label business
 // significant variants.
 String version;
 
+//  Extensions for version
+Element element_version;
+
 //  The status of the resource instance.
 String status;
+
+//  Extensions for status
+Element element_status;
 
 //  Legal states of the formation of a legal instrument, which is a
 // formally executed written document that can be formally attributed to
@@ -108,12 +124,18 @@ Reference instantiatesCanonical;
 // adhered to in whole or in part by this Contract.
 String instantiatesUri;
 
+//  Extensions for instantiatesUri
+Element element_instantiatesUri;
+
 //  The minimal content derived from the basal information source at a
 // specific stage in its lifecycle.
 CodeableConcept contentDerivative;
 
 //  When this  Contract was issued.
 DateTime issued;
+
+//  Extensions for issued
+Element element_issued;
 
 //  Relevant time or time-period when this Contract is applicable.
 Period applies;
@@ -148,20 +170,32 @@ List<Reference> site;
 // code generation.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  A short, descriptive, user-friendly title for this Contract
 // definition, derivative, or instance in any legal state.t giving
 // additional information about its content.
 String title;
+
+//  Extensions for title
+Element element_title;
 
 //  An explanatory or alternate user-friendly title for this Contract
 // definition, derivative, or instance in any legal state.t giving
 // additional information about its content.
 String subtitle;
 
+//  Extensions for subtitle
+Element element_subtitle;
+
 //  Alternative representation of the title for this Contract definition,
 // derivative, or instance in any legal state., e.g., a domain specific
 // contract number related to legislation.
 List<String> alias;
+
+//  Extensions for alias
+List<Element> element_alias;
 
 //  The individual or organization that authored the Contract definition,
 // derivative, or instance in any legal state.
@@ -251,20 +285,27 @@ Contract(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.url,
+    this.element_url,
     this.version,
+    this.element_version,
     this.status,
+    this.element_status,
     this.legalState,
     this.instantiatesCanonical,
     this.instantiatesUri,
+    this.element_instantiatesUri,
     this.contentDerivative,
     this.issued,
+    this.element_issued,
     this.applies,
     this.expirationType,
     this.subject,
@@ -272,9 +313,13 @@ Contract(
     this.domain,
     this.site,
     this.name,
+    this.element_name,
     this.title,
+    this.element_title,
     this.subtitle,
+    this.element_subtitle,
     this.alias,
+    this.element_alias,
     this.author,
     this.scope,
     this.topicCodeableConcept,
@@ -344,15 +389,24 @@ Reference publisher;
 // substantive content of the contract changes.
 DateTime publicationDate;
 
+//  Extensions for publicationDate
+Element element_publicationDate;
+
 //  amended | appended | cancelled | disputed | entered-in-error |
 // executable | executed | negotiable | offered | policy | rejected |
 // renewed | revoked | resolved | terminated.
 String publicationStatus;
 
+//  Extensions for publicationStatus
+Element element_publicationStatus;
+
 //  A copyright statement relating to Contract precursor content.
 // Copyright statements are generally legal restrictions on the use and
 // publishing of the Contract precursor content.
 String copyright;
+
+//  Extensions for copyright
+Element element_copyright;
 
 Contract_ContentDefinition(
   {this.id,
@@ -362,8 +416,11 @@ Contract_ContentDefinition(
     this.subType,
     this.publisher,
     this.publicationDate,
+    this.element_publicationDate,
     this.publicationStatus,
-    this.copyright
+    this.element_publicationStatus,
+    this.copyright,
+    this.element_copyright
     });
 
   factory Contract_ContentDefinition.fromJson(Map<String, dynamic> json) => _$Contract_ContentDefinitionFromJson(json);
@@ -405,6 +462,9 @@ Identifier identifier;
 //  When this Contract Provision was issued.
 DateTime issued;
 
+//  Extensions for issued
+Element element_issued;
+
 //  Relevant time or time-period when this Contract Provision is
 // applicable.
 Period applies;
@@ -427,6 +487,9 @@ CodeableConcept subType;
 
 //  Statement of a provision in a policy or a contract.
 String text;
+
+//  Extensions for text
+Element element_text;
 
 //  Security labels that protect the handling of information about the
 // term and its elements, which may be specifically identified..
@@ -452,12 +515,14 @@ Contract_Term(
     this.modifierExtension,
     this.identifier,
     this.issued,
+    this.element_issued,
     this.applies,
     this.topicCodeableConcept,
     this.topicReference,
     this.type,
     this.subType,
     this.text,
+    this.element_text,
     this.securityLabel,
     this.offer,
     this.asset,
@@ -502,6 +567,9 @@ List<Extension> modifierExtension;
 // Security Label.
 List<int> number;
 
+//  Extensions for number
+List<Element> element_number;
+
 //  Security label privacy tag that species the level of confidentiality
 // protection required for this term and/or term elements.
 Coding classification;
@@ -519,6 +587,7 @@ Contract_SecurityLabel(
     this.extension,
     this.modifierExtension,
     this.number,
+    this.element_number,
     this.classification,
     this.category,
     this.control
@@ -585,12 +654,21 @@ List<Contract_Answer> answer;
 //  Human readable form of this Contract Offer.
 String text;
 
+//  Extensions for text
+Element element_text;
+
 //  The id of the clause or question text of the offer in the referenced
 // questionnaire/response.
 List<String> linkId;
 
+//  Extensions for linkId
+List<Element> element_linkId;
+
 //  Security labels that protects the offer.
 List<int> securityLabelNumber;
+
+//  Extensions for securityLabelNumber
+List<Element> element_securityLabelNumber;
 
 Contract_Offer(
   {this.id,
@@ -604,8 +682,11 @@ Contract_Offer(
     this.decisionMode,
     this.answer,
     this.text,
+    this.element_text,
     this.linkId,
-    this.securityLabelNumber
+    this.element_linkId,
+    this.securityLabelNumber,
+    this.element_securityLabelNumber
     });
 
   factory Contract_Offer.fromJson(Map<String, dynamic> json) => _$Contract_OfferFromJson(json);
@@ -694,11 +775,17 @@ List<Extension> modifierExtension;
 // may be used for further research.
 bool valueBoolean; //  pattern: ^true|false$
 
+//  Extensions for valueBoolean
+Element element_valueBoolean;
+
 //  Response to an offer clause or question text,  which enables selection
 // of values to be agreed to, e.g., the period of participation, the date
 // of occupancy of a rental, warrently duration, or whether biospecimen
 // may be used for further research.
 double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+
+//  Extensions for valueDecimal
+Element element_valueDecimal;
 
 //  Response to an offer clause or question text,  which enables selection
 // of values to be agreed to, e.g., the period of participation, the date
@@ -706,11 +793,17 @@ double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)
 // may be used for further research.
 int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
 
+//  Extensions for valueInteger
+Element element_valueInteger;
+
 //  Response to an offer clause or question text,  which enables selection
 // of values to be agreed to, e.g., the period of participation, the date
 // of occupancy of a rental, warrently duration, or whether biospecimen
 // may be used for further research.
 String valueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
+
+//  Extensions for valueDate
+Element element_valueDate;
 
 //  Response to an offer clause or question text,  which enables selection
 // of values to be agreed to, e.g., the period of participation, the date
@@ -718,11 +811,17 @@ String valueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]00
 // may be used for further research.
 String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
+//  Extensions for valueDateTime
+Element element_valueDateTime;
+
 //  Response to an offer clause or question text,  which enables selection
 // of values to be agreed to, e.g., the period of participation, the date
 // of occupancy of a rental, warrently duration, or whether biospecimen
 // may be used for further research.
 String valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
+
+//  Extensions for valueTime
+Element element_valueTime;
 
 //  Response to an offer clause or question text,  which enables selection
 // of values to be agreed to, e.g., the period of participation, the date
@@ -730,11 +829,17 @@ String valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.
 // may be used for further research.
 String valueString; //  pattern: ^[ \r\n\t\S]+$
 
+//  Extensions for valueString
+Element element_valueString;
+
 //  Response to an offer clause or question text,  which enables selection
 // of values to be agreed to, e.g., the period of participation, the date
 // of occupancy of a rental, warrently duration, or whether biospecimen
 // may be used for further research.
 String valueUri; //  pattern: ^\S*$
+
+//  Extensions for valueUri
+Element element_valueUri;
 
 //  Response to an offer clause or question text,  which enables selection
 // of values to be agreed to, e.g., the period of participation, the date
@@ -765,13 +870,21 @@ Contract_Answer(
     this.extension,
     this.modifierExtension,
     this.valueBoolean,
+    this.element_valueBoolean,
     this.valueDecimal,
+    this.element_valueDecimal,
     this.valueInteger,
+    this.element_valueInteger,
     this.valueDate,
+    this.element_valueDate,
     this.valueDateTime,
+    this.element_valueDateTime,
     this.valueTime,
+    this.element_valueTime,
     this.valueString,
+    this.element_valueString,
     this.valueUri,
+    this.element_valueUri,
     this.valueAttachment,
     this.valueCoding,
     this.valueQuantity,
@@ -835,6 +948,9 @@ List<Contract_Context> context;
 // a factor in its valuation.
 String condition;
 
+//  Extensions for condition
+Element element_condition;
+
 //  Type of Asset availability for use or ownership.
 List<CodeableConcept> periodType;
 
@@ -849,15 +965,24 @@ List<Period> usePeriod;
 // the contract.
 String text;
 
+//  Extensions for text
+Element element_text;
+
 //  Id [identifier??] of the clause or question text about the asset in
 // the referenced form or QuestionnaireResponse.
 List<String> linkId;
+
+//  Extensions for linkId
+List<Element> element_linkId;
 
 //  Response to assets.
 List<Contract_Answer> answer;
 
 //  Security labels that protects the asset.
 List<int> securityLabelNumber;
+
+//  Extensions for securityLabelNumber
+List<Element> element_securityLabelNumber;
 
 //  Contract Valued Item List.
 List<Contract_ValuedItem> valuedItem;
@@ -873,13 +998,17 @@ Contract_Asset(
     this.relationship,
     this.context,
     this.condition,
+    this.element_condition,
     this.periodType,
     this.period,
     this.usePeriod,
     this.text,
+    this.element_text,
     this.linkId,
+    this.element_linkId,
     this.answer,
     this.securityLabelNumber,
+    this.element_securityLabelNumber,
     this.valuedItem
     });
 
@@ -928,13 +1057,17 @@ List<CodeableConcept> code;
 //  Context description.
 String text;
 
+//  Extensions for text
+Element element_text;
+
 Contract_Context(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.reference,
     this.code,
-    this.text
+    this.text,
+    this.element_text
     });
 
   factory Contract_Context.fromJson(Map<String, dynamic> json) => _$Contract_ContextFromJson(json);
@@ -983,6 +1116,9 @@ Identifier identifier;
 // is effective.
 DateTime effectiveTime;
 
+//  Extensions for effectiveTime
+Element element_effectiveTime;
+
 //  Specifies the units by which the Contract Valued Item is measured or
 // counted, and quantifies the countable or measurable Contract Valued
 // Item instances.
@@ -997,12 +1133,18 @@ Money unitPrice;
 // monetary amount.
 double factor;
 
+//  Extensions for factor
+Element element_factor;
+
 //  An amount that expresses the weighting (based on difficulty, cost
 // and/or resource intensiveness) associated with the Contract Valued Item
 // delivered. The concept of Points allows for assignment of point values
 // for a Contract Valued Item, such that a monetary amount can be assigned
 // to each point.
 double points;
+
+//  Extensions for points
+Element element_points;
 
 //  Expresses the product of the Contract Valued Item unitQuantity and the
 // unitPriceAmt. For example, the formula: unit Quantity * unit Price
@@ -1013,8 +1155,14 @@ Money net;
 //  Terms of valuation.
 String payment;
 
+//  Extensions for payment
+Element element_payment;
+
 //  When payment is due.
 DateTime paymentDate;
+
+//  Extensions for paymentDate
+Element element_paymentDate;
 
 //  Who will make payment.
 Reference responsible;
@@ -1026,9 +1174,15 @@ Reference recipient;
 // valuedItem in the referenced form or QuestionnaireResponse.
 List<String> linkId;
 
+//  Extensions for linkId
+List<Element> element_linkId;
+
 //  A set of security labels that define which terms are controlled by
 // this condition.
 List<int> securityLabelNumber;
+
+//  Extensions for securityLabelNumber
+List<Element> element_securityLabelNumber;
 
 Contract_ValuedItem(
   {this.id,
@@ -1038,17 +1192,24 @@ Contract_ValuedItem(
     this.entityReference,
     this.identifier,
     this.effectiveTime,
+    this.element_effectiveTime,
     this.quantity,
     this.unitPrice,
     this.factor,
+    this.element_factor,
     this.points,
+    this.element_points,
     this.net,
     this.payment,
+    this.element_payment,
     this.paymentDate,
+    this.element_paymentDate,
     this.responsible,
     this.recipient,
     this.linkId,
-    this.securityLabelNumber
+    this.element_linkId,
+    this.securityLabelNumber,
+    this.element_securityLabelNumber
     });
 
   factory Contract_ValuedItem.fromJson(Map<String, dynamic> json) => _$Contract_ValuedItemFromJson(json);
@@ -1087,6 +1248,9 @@ List<Extension> modifierExtension;
 //  True if the term prohibits the  action.
 bool doNotPerform;
 
+//  Extensions for doNotPerform
+Element element_doNotPerform;
+
 //  Activity or service obligation to be done or not done, performed or
 // not performed, effectuated or not by this Contract term.
 CodeableConcept type;
@@ -1102,6 +1266,9 @@ CodeableConcept intent;
 // action in the referenced form or QuestionnaireResponse.
 List<String> linkId;
 
+//  Extensions for linkId
+List<Element> element_linkId;
+
 //  Current state of the term action.
 CodeableConcept status;
 
@@ -1114,8 +1281,14 @@ Reference context;
 // QuestionnaireResponse.
 List<String> contextLinkId;
 
+//  Extensions for contextLinkId
+List<Element> element_contextLinkId;
+
 //  When action happens.
 String occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+
+//  Extensions for occurrenceDateTime
+Element element_occurrenceDateTime;
 
 //  When action happens.
 Period occurrencePeriod;
@@ -1131,6 +1304,9 @@ List<Reference> requester;
 // requester of this action in the referenced form or
 // QuestionnaireResponse.
 List<String> requesterLinkId;
+
+//  Extensions for requesterLinkId
+List<Element> element_requesterLinkId;
 
 //  The type of individual that is desired or required to perform or not
 // perform the action.
@@ -1149,6 +1325,9 @@ Reference performer;
 // QuestionnaireResponse.
 List<String> performerLinkId;
 
+//  Extensions for performerLinkId
+List<Element> element_performerLinkId;
+
 //  Rationale for the action to be performed or not performed. Describes
 // why the action is permitted or prohibited.
 List<CodeableConcept> reasonCode;
@@ -1161,10 +1340,16 @@ List<Reference> reasonReference;
 // textual form.
 List<String> reason;
 
+//  Extensions for reason
+List<Element> element_reason;
+
 //  Id [identifier??] of the clause or question text related to the reason
 // type or reference of this  action in the referenced form or
 // QuestionnaireResponse.
 List<String> reasonLinkId;
+
+//  Extensions for reasonLinkId
+List<Element> element_reasonLinkId;
 
 //  Comments made about the term action made by the requester, performer,
 // subject or other participants.
@@ -1173,33 +1358,45 @@ List<Annotation> note;
 //  Security labels that protects the action.
 List<int> securityLabelNumber;
 
+//  Extensions for securityLabelNumber
+List<Element> element_securityLabelNumber;
+
 Contract_Action(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.doNotPerform,
+    this.element_doNotPerform,
     this.type,
     this.subject,
     this.intent,
     this.linkId,
+    this.element_linkId,
     this.status,
     this.context,
     this.contextLinkId,
+    this.element_contextLinkId,
     this.occurrenceDateTime,
+    this.element_occurrenceDateTime,
     this.occurrencePeriod,
     this.occurrenceTiming,
     this.requester,
     this.requesterLinkId,
+    this.element_requesterLinkId,
     this.performerType,
     this.performerRole,
     this.performer,
     this.performerLinkId,
+    this.element_performerLinkId,
     this.reasonCode,
     this.reasonReference,
     this.reason,
+    this.element_reason,
     this.reasonLinkId,
+    this.element_reasonLinkId,
     this.note,
-    this.securityLabelNumber
+    this.securityLabelNumber,
+    this.element_securityLabelNumber
     });
 
   factory Contract_Action.fromJson(Map<String, dynamic> json) => _$Contract_ActionFromJson(json);

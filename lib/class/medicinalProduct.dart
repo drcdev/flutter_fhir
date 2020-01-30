@@ -8,6 +8,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'medicinalProduct.g.dart';
@@ -33,8 +34,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -97,6 +104,9 @@ CodeableConcept additionalMonitoringIndicator;
 // regulatory reasons.
 List<String> specialMeasures;
 
+//  Extensions for specialMeasures
+List<Element> element_specialMeasures;
+
 //  If authorised for use in children.
 CodeableConcept paediatricUseIndicator;
 
@@ -146,7 +156,9 @@ MedicinalProduct(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -158,6 +170,7 @@ MedicinalProduct(
     this.legalStatusOfSupply,
     this.additionalMonitoringIndicator,
     this.specialMeasures,
+    this.element_specialMeasures,
     this.paediatricUseIndicator,
     this.productClassification,
     this.marketingStatus,
@@ -209,6 +222,9 @@ List<Extension> modifierExtension;
 //  The full product name.
 String productName;
 
+//  Extensions for productName
+Element element_productName;
+
 //  Coding words or phrases of the name.
 List<MedicinalProduct_NamePart> namePart;
 
@@ -220,6 +236,7 @@ MedicinalProduct_Name(
     this.extension,
     this.modifierExtension,
     this.productName,
+    this.element_productName,
     this.namePart,
     this.countryLanguage
     });
@@ -260,6 +277,9 @@ List<Extension> modifierExtension;
 //  A fragment of a product name.
 String part;
 
+//  Extensions for part
+Element element_part;
+
 //  Idenifying type for this part of the name (e.g. strength part).
 Coding type;
 
@@ -268,6 +288,7 @@ MedicinalProduct_NamePart(
     this.extension,
     this.modifierExtension,
     this.part,
+    this.element_part,
     this.type
     });
 
@@ -364,6 +385,9 @@ Identifier authorisationReferenceNumber;
 //  Regulatory authorization date.
 DateTime effectiveDate;
 
+//  Extensions for effectiveDate
+Element element_effectiveDate;
+
 //  To indicate if this proces is commercially confidential.
 CodeableConcept confidentialityIndicator;
 
@@ -380,6 +404,7 @@ MedicinalProduct_ManufacturingBusinessOperation(
     this.operationType,
     this.authorisationReferenceNumber,
     this.effectiveDate,
+    this.element_effectiveDate,
     this.confidentialityIndicator,
     this.manufacturer,
     this.regulator
@@ -439,6 +464,9 @@ CodeableConcept status;
 //  Date when the designation was granted.
 DateTime date;
 
+//  Extensions for date
+Element element_date;
+
 //  Animal species for which this applies.
 CodeableConcept species;
 
@@ -453,6 +481,7 @@ MedicinalProduct_SpecialDesignation(
     this.indicationReference,
     this.status,
     this.date,
+    this.element_date,
     this.species
     });
 

@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/class/reference.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'binary.g.dart';
@@ -26,12 +27,21 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  MimeType of the binary content represented as a standard MimeType (BCP
 // 13).
 String contentType;
+
+//  Extensions for contentType
+Element element_contentType;
 
 //  This element identifies another resource that can be used as a proxy
 // of the security sensitivity to use when deciding and enforcing access
@@ -49,15 +59,22 @@ Reference securityContext;
 //  The actual content, base64 encoded.
 String data;
 
+//  Extensions for data
+Element element_data;
+
 Binary(
   {this.resourceType,
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.contentType,
+    this.element_contentType,
     this.securityContext,
-    this.data
+    this.data,
+    this.element_data
     });
 
   factory Binary.fromJson(Map<String, dynamic> json) => _$BinaryFromJson(json);

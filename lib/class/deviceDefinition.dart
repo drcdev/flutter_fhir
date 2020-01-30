@@ -11,6 +11,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'deviceDefinition.g.dart';
@@ -36,8 +37,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -88,6 +95,9 @@ List<DeviceDefinition_UdiDeviceIdentifier> udiDeviceIdentifier;
 //  A name of the manufacturer.
 String manufacturerString; //  pattern: ^[ \r\n\t\S]+$
 
+//  Extensions for manufacturerString
+Element element_manufacturerString;
+
 //  A name of the manufacturer.
 Reference manufacturerReference;
 
@@ -96,6 +106,9 @@ List<DeviceDefinition_DeviceName> deviceName;
 
 //  The model number for the device.
 String modelNumber;
+
+//  Extensions for modelNumber
+Element element_modelNumber;
 
 //  What kind of device or device system this is.
 CodeableConcept type;
@@ -107,6 +120,9 @@ List<DeviceDefinition_Specialization> specialization;
 
 //  The available versions of the device, e.g., software versions.
 List<String> version;
+
+//  Extensions for version
+List<Element> element_version;
 
 //  Safety characteristics of the device.
 List<CodeableConcept> safety;
@@ -139,8 +155,14 @@ List<ContactPoint> contact;
 //  A network address on which the device may be contacted directly.
 String url;
 
+//  Extensions for url
+Element element_url;
+
 //  Access to on-line information about the device.
 String onlineInformation;
+
+//  Extensions for onlineInformation
+Element element_onlineInformation;
 
 //  Descriptive information, usage information or implantation information
 // that is not captured in an existing element.
@@ -163,7 +185,9 @@ DeviceDefinition(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -171,12 +195,15 @@ DeviceDefinition(
     this.identifier,
     this.udiDeviceIdentifier,
     this.manufacturerString,
+    this.element_manufacturerString,
     this.manufacturerReference,
     this.deviceName,
     this.modelNumber,
+    this.element_modelNumber,
     this.type,
     this.specialization,
     this.version,
+    this.element_version,
     this.safety,
     this.shelfLifeStorage,
     this.physicalCharacteristics,
@@ -186,7 +213,9 @@ DeviceDefinition(
     this.owner,
     this.contact,
     this.url,
+    this.element_url,
     this.onlineInformation,
+    this.element_onlineInformation,
     this.note,
     this.quantity,
     this.parentDevice,
@@ -231,19 +260,31 @@ List<Extension> modifierExtension;
 // porvided in the DeviceDefinition.udiDeviceIdentifier.
 String deviceIdentifier;
 
+//  Extensions for deviceIdentifier
+Element element_deviceIdentifier;
+
 //  The organization that assigns the identifier algorithm.
 String issuer;
 
+//  Extensions for issuer
+Element element_issuer;
+
 //  The jurisdiction to which the deviceIdentifier applies.
 String jurisdiction;
+
+//  Extensions for jurisdiction
+Element element_jurisdiction;
 
 DeviceDefinition_UdiDeviceIdentifier(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.deviceIdentifier,
+    this.element_deviceIdentifier,
     this.issuer,
-    this.jurisdiction
+    this.element_issuer,
+    this.jurisdiction,
+    this.element_jurisdiction
     });
 
   factory DeviceDefinition_UdiDeviceIdentifier.fromJson(Map<String, dynamic> json) => _$DeviceDefinition_UdiDeviceIdentifierFromJson(json);
@@ -282,16 +323,24 @@ List<Extension> modifierExtension;
 //  The name of the device.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  The type of deviceName. UDILabelName | UserFriendlyName |
 // PatientReportedName | ManufactureDeviceName | ModelName.
 String type; // <code> enum: udi-label-name/user-friendly-name/patient-reported-name/manufacturer-name/model-name/other;
+
+//  Extensions for type
+Element element_type;
 
 DeviceDefinition_DeviceName(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.name,
-    this.type
+    this.element_name,
+    this.type,
+    this.element_type
     });
 
   factory DeviceDefinition_DeviceName.fromJson(Map<String, dynamic> json) => _$DeviceDefinition_DeviceNameFromJson(json);
@@ -330,15 +379,23 @@ List<Extension> modifierExtension;
 //  The standard that is used to operate and communicate.
 String systemType;
 
+//  Extensions for systemType
+Element element_systemType;
+
 //  The version of the standard that is used to operate and communicate.
 String version;
+
+//  Extensions for version
+Element element_version;
 
 DeviceDefinition_Specialization(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.systemType,
-    this.version
+    this.element_systemType,
+    this.version,
+    this.element_version
     });
 
   factory DeviceDefinition_Specialization.fromJson(Map<String, dynamic> json) => _$DeviceDefinition_SpecializationFromJson(json);
@@ -479,8 +536,14 @@ CodeableConcept substance;
 //  Indicates an alternative material of the device.
 bool alternate;
 
+//  Extensions for alternate
+Element element_alternate;
+
 //  Whether the substance is a known or suspected allergen.
 bool allergenicIndicator;
+
+//  Extensions for allergenicIndicator
+Element element_allergenicIndicator;
 
 DeviceDefinition_Material(
   {this.id,
@@ -488,7 +551,9 @@ DeviceDefinition_Material(
     this.modifierExtension,
     this.substance,
     this.alternate,
-    this.allergenicIndicator
+    this.element_alternate,
+    this.allergenicIndicator,
+    this.element_allergenicIndicator
     });
 
   factory DeviceDefinition_Material.fromJson(Map<String, dynamic> json) => _$DeviceDefinition_MaterialFromJson(json);

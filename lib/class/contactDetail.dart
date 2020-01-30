@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/class/contactPoint.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/extension.dart';
 
 part 'contactDetail.g.dart';
@@ -23,6 +24,9 @@ List<Extension> extension;
 //  The name of an individual to contact.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  The contact details for the individual (if a name was provided) or the
 // organization.
 List<ContactPoint> telecom;
@@ -31,6 +35,7 @@ ContactDetail(
   {this.id,
     this.extension,
     this.name,
+    this.element_name,
     this.telecom
     });
 

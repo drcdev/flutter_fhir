@@ -14,7 +14,14 @@ GuidanceResponse _$GuidanceResponseFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
+    element_implicitRules: json['element_implicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['element_implicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
+    element_language: json['element_language'] == null
+        ? null
+        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
@@ -39,12 +46,22 @@ GuidanceResponse _$GuidanceResponseFromJson(Map<String, dynamic> json) {
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     moduleUri: json['moduleUri'] as String,
+    element_moduleUri: json['element_moduleUri'] == null
+        ? null
+        : Element.fromJson(json['element_moduleUri'] as Map<String, dynamic>),
     moduleCanonical: json['moduleCanonical'] as String,
+    element_moduleCanonical: json['element_moduleCanonical'] == null
+        ? null
+        : Element.fromJson(
+            json['element_moduleCanonical'] as Map<String, dynamic>),
     moduleCodeableConcept: json['moduleCodeableConcept'] == null
         ? null
         : CodeableConcept.fromJson(
             json['moduleCodeableConcept'] as Map<String, dynamic>),
     status: json['status'] as String,
+    element_status: json['element_status'] == null
+        ? null
+        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
     subject: json['subject'] == null
         ? null
         : Reference.fromJson(json['subject'] as Map<String, dynamic>),
@@ -54,6 +71,10 @@ GuidanceResponse _$GuidanceResponseFromJson(Map<String, dynamic> json) {
     occurrenceDateTime: json['occurrenceDateTime'] == null
         ? null
         : DateTime.parse(json['occurrenceDateTime'] as String),
+    element_occurrenceDateTime: json['element_occurrenceDateTime'] == null
+        ? null
+        : Element.fromJson(
+            json['element_occurrenceDateTime'] as Map<String, dynamic>),
     performer: json['performer'] == null
         ? null
         : Reference.fromJson(json['performer'] as Map<String, dynamic>),
@@ -94,7 +115,9 @@ Map<String, dynamic> _$GuidanceResponseToJson(GuidanceResponse instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
+      'element_implicitRules': instance.element_implicitRules?.toJson(),
       'language': instance.language,
+      'element_language': instance.element_language?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -103,12 +126,17 @@ Map<String, dynamic> _$GuidanceResponseToJson(GuidanceResponse instance) =>
       'requestIdentifier': instance.requestIdentifier?.toJson(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'moduleUri': instance.moduleUri,
+      'element_moduleUri': instance.element_moduleUri?.toJson(),
       'moduleCanonical': instance.moduleCanonical,
+      'element_moduleCanonical': instance.element_moduleCanonical?.toJson(),
       'moduleCodeableConcept': instance.moduleCodeableConcept?.toJson(),
       'status': instance.status,
+      'element_status': instance.element_status?.toJson(),
       'subject': instance.subject?.toJson(),
       'encounter': instance.encounter?.toJson(),
       'occurrenceDateTime': instance.occurrenceDateTime?.toIso8601String(),
+      'element_occurrenceDateTime':
+          instance.element_occurrenceDateTime?.toJson(),
       'performer': instance.performer?.toJson(),
       'reasonCode': instance.reasonCode?.map((e) => e?.toJson())?.toList(),
       'reasonReference':

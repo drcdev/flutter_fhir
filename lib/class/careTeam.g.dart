@@ -14,7 +14,14 @@ CareTeam _$CareTeamFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
+    element_implicitRules: json['element_implicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['element_implicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
+    element_language: json['element_language'] == null
+        ? null
+        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
@@ -35,12 +42,18 @@ CareTeam _$CareTeamFromJson(Map<String, dynamic> json) {
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
+    element_status: json['element_status'] == null
+        ? null
+        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
     category: (json['category'] as List)
         ?.map((e) => e == null
             ? null
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     name: json['name'] as String,
+    element_name: json['element_name'] == null
+        ? null
+        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
     subject: json['subject'] == null
         ? null
         : Reference.fromJson(json['subject'] as Map<String, dynamic>),
@@ -84,7 +97,9 @@ Map<String, dynamic> _$CareTeamToJson(CareTeam instance) => <String, dynamic>{
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
+      'element_implicitRules': instance.element_implicitRules?.toJson(),
       'language': instance.language,
+      'element_language': instance.element_language?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -92,8 +107,10 @@ Map<String, dynamic> _$CareTeamToJson(CareTeam instance) => <String, dynamic>{
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
+      'element_status': instance.element_status?.toJson(),
       'category': instance.category?.map((e) => e?.toJson())?.toList(),
       'name': instance.name,
+      'element_name': instance.element_name?.toJson(),
       'subject': instance.subject?.toJson(),
       'encounter': instance.encounter?.toJson(),
       'period': instance.period?.toJson(),

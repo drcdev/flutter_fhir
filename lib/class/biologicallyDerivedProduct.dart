@@ -7,6 +7,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'biologicallyDerivedProduct.g.dart';
@@ -32,8 +33,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -81,6 +88,9 @@ List<Identifier> identifier;
 //  Broad category of this product.
 String productCategory; // <code> enum: organ/tissue/fluid/cells/biologicalAgent;
 
+//  Extensions for productCategory
+Element element_productCategory;
+
 //  A code that identifies the kind of this biologically derived product
 // (SNOMED Ctcode).
 CodeableConcept productCode;
@@ -88,11 +98,17 @@ CodeableConcept productCode;
 //  Whether the product is currently available.
 String status; // <code> enum: available/unavailable;
 
+//  Extensions for status
+Element element_status;
+
 //  Procedure request to obtain this biologically derived product.
 List<Reference> request;
 
 //  Number of discrete units within this product.
 int quantity;
+
+//  Extensions for quantity
+Element element_quantity;
 
 //  Parent product (if any).
 List<Reference> parent;
@@ -118,17 +134,22 @@ BiologicallyDerivedProduct(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.productCategory,
+    this.element_productCategory,
     this.productCode,
     this.status,
+    this.element_status,
     this.request,
     this.quantity,
+    this.element_quantity,
     this.parent,
     this.collection,
     this.processing,
@@ -179,6 +200,9 @@ Reference source;
 //  Time of product collection.
 String collectedDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
+//  Extensions for collectedDateTime
+Element element_collectedDateTime;
+
 //  Time of product collection.
 Period collectedPeriod;
 
@@ -189,6 +213,7 @@ BiologicallyDerivedProduct_Collection(
     this.collector,
     this.source,
     this.collectedDateTime,
+    this.element_collectedDateTime,
     this.collectedPeriod
     });
 
@@ -228,6 +253,9 @@ List<Extension> modifierExtension;
 //  Description of of processing.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  Procesing code.
 CodeableConcept procedure;
 
@@ -237,6 +265,9 @@ Reference additive;
 //  Time of processing.
 String timeDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
+//  Extensions for timeDateTime
+Element element_timeDateTime;
+
 //  Time of processing.
 Period timePeriod;
 
@@ -245,9 +276,11 @@ BiologicallyDerivedProduct_Processing(
     this.extension,
     this.modifierExtension,
     this.description,
+    this.element_description,
     this.procedure,
     this.additive,
     this.timeDateTime,
+    this.element_timeDateTime,
     this.timePeriod
     });
 
@@ -287,8 +320,14 @@ List<Extension> modifierExtension;
 //  Description of manipulation.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  Time of manipulation.
 String timeDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+
+//  Extensions for timeDateTime
+Element element_timeDateTime;
 
 //  Time of manipulation.
 Period timePeriod;
@@ -298,7 +337,9 @@ BiologicallyDerivedProduct_Manipulation(
     this.extension,
     this.modifierExtension,
     this.description,
+    this.element_description,
     this.timeDateTime,
+    this.element_timeDateTime,
     this.timePeriod
     });
 
@@ -338,11 +379,20 @@ List<Extension> modifierExtension;
 //  Description of storage.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  Storage temperature.
 double temperature;
 
+//  Extensions for temperature
+Element element_temperature;
+
 //  Temperature scale used.
 String scale; // <code> enum: farenheit/celsius/kelvin;
+
+//  Extensions for scale
+Element element_scale;
 
 //  Storage timeperiod.
 Period duration;
@@ -352,8 +402,11 @@ BiologicallyDerivedProduct_Storage(
     this.extension,
     this.modifierExtension,
     this.description,
+    this.element_description,
     this.temperature,
+    this.element_temperature,
     this.scale,
+    this.element_scale,
     this.duration
     });
 

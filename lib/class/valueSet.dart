@@ -8,6 +8,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'valueSet.g.dart';
@@ -33,8 +34,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -81,6 +88,9 @@ List<Extension> modifierExtension;
 // is stored on different servers.
 String url;
 
+//  Extensions for url
+Element element_url;
+
 //  A formal identifier that is used to identify this value set when it is
 // represented in other formats, or referenced in a specification, model,
 // design or an instance.
@@ -94,13 +104,22 @@ List<Identifier> identifier;
 // expectation that versions can be placed in a lexicographical sequence.
 String version;
 
+//  Extensions for version
+Element element_version;
+
 //  A natural language name identifying the value set. This name should be
 // usable as an identifier for the module by machine processing
 // applications such as code generation.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  A short, descriptive, user-friendly title for the value set.
 String title;
+
+//  Extensions for title
+Element element_title;
 
 //  The status of this value set. Enables tracking the life-cycle of the
 // content. The status of the value set applies to the value set
@@ -108,18 +127,30 @@ String title;
 // Expansions do not have a state.
 String status; // <code> enum: draft/active/retired/unknown;
 
+//  Extensions for status
+Element element_status;
+
 //  A Boolean value to indicate that this value set is authored for
 // testing purposes (or education/evaluation/marketing) and is not
 // intended to be used for genuine usage.
 bool experimental;
 
+//  Extensions for experimental
+Element element_experimental;
+
 //  The date (and optionally time) when the value set was created or
 // revised (e.g. the 'content logical definition').
 DateTime date;
 
+//  Extensions for date
+Element element_date;
+
 //  The name of the organization or individual that published the value
 // set.
 String publisher;
+
+//  Extensions for publisher
+Element element_publisher;
 
 //  Contact details to assist a user in finding and communicating with the
 // publisher.
@@ -130,6 +161,9 @@ List<ContactDetail> contact;
 // meanings for concepts to be included within the Value Set Expansion,
 // and also may specify the intended use and limitations of the Value Set.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  The content was developed with a focus and intent of supporting the
 // contexts that are listed. These contexts may be general categories
@@ -146,14 +180,23 @@ List<CodeableConcept> jurisdiction;
 // definition can be created.  Note: Other metadata might still change.
 bool immutable;
 
+//  Extensions for immutable
+Element element_immutable;
+
 //  Explanation of why this value set is needed and why it has been
 // designed as it has.
 String purpose;
+
+//  Extensions for purpose
+Element element_purpose;
 
 //  A copyright statement relating to the value set and/or its contents.
 // Copyright statements are generally legal restrictions on the use and
 // publishing of the value set.
 String copyright;
+
+//  Extensions for copyright
+Element element_copyright;
 
 //  A set of criteria that define the contents of the value set by
 // including or excluding codes selected from the specified code system(s)
@@ -171,27 +214,41 @@ ValueSet(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
+    this.element_url,
     this.identifier,
     this.version,
+    this.element_version,
     this.name,
+    this.element_name,
     this.title,
+    this.element_title,
     this.status,
+    this.element_status,
     this.experimental,
+    this.element_experimental,
     this.date,
+    this.element_date,
     this.publisher,
+    this.element_publisher,
     this.contact,
     this.description,
+    this.element_description,
     this.useContext,
     this.jurisdiction,
     this.immutable,
+    this.element_immutable,
     this.purpose,
+    this.element_purpose,
     this.copyright,
+    this.element_copyright,
     this.compose,
     this.expansion
     });
@@ -235,6 +292,9 @@ List<Extension> modifierExtension;
 // version.
 String lockedDate;
 
+//  Extensions for lockedDate
+Element element_lockedDate;
+
 //  Whether inactive codes - codes that are not approved for current use -
 // are in the value set. If inactive = true, inactive codes are to be
 // included in the expansion, if inactive = false, the inactive codes will
@@ -242,6 +302,9 @@ String lockedDate;
 // by the implementation, or by the applicable $expand parameters (but
 // generally, inactive codes would be expected to be included).
 bool inactive;
+
+//  Extensions for inactive
+Element element_inactive;
 
 //  Include one or more codes from a code system or other value set(s).
 List<ValueSet_Include> include;
@@ -255,7 +318,9 @@ ValueSet_Compose(
     this.extension,
     this.modifierExtension,
     this.lockedDate,
+    this.element_lockedDate,
     this.inactive,
+    this.element_inactive,
     this.include,
     this.exclude
     });
@@ -297,9 +362,15 @@ List<Extension> modifierExtension;
 // come from.
 String system;
 
+//  Extensions for system
+Element element_system;
+
 //  The version of the code system that the codes are selected from, or
 // the special version '*' for all versions.
 String version;
+
+//  Extensions for version
+Element element_version;
 
 //  Specifies a concept to be included or excluded.
 List<ValueSet_Concept> concept;
@@ -321,7 +392,9 @@ ValueSet_Include(
     this.extension,
     this.modifierExtension,
     this.system,
+    this.element_system,
     this.version,
+    this.element_version,
     this.concept,
     this.filter,
     this.valueSet
@@ -363,10 +436,16 @@ List<Extension> modifierExtension;
 //  Specifies a code for the concept to be included or excluded.
 String code;
 
+//  Extensions for code
+Element element_code;
+
 //  The text to display to the user for this concept in the context of
 // this valueset. If no display is provided, then applications using the
 // value set use the display specified for the code by the system.
 String display;
+
+//  Extensions for display
+Element element_display;
 
 //  Additional representations for this concept when used in this value
 // set - other languages, aliases, specialized purposes, used for
@@ -378,7 +457,9 @@ ValueSet_Concept(
     this.extension,
     this.modifierExtension,
     this.code,
+    this.element_code,
     this.display,
+    this.element_display,
     this.designation
     });
 
@@ -418,19 +499,27 @@ List<Extension> modifierExtension;
 //  The language this designation is defined for.
 String language;
 
+//  Extensions for language
+Element element_language;
+
 //  A code that represents types of uses of designations.
 Coding use;
 
 //  The text value for this designation.
 String value;
 
+//  Extensions for value
+Element element_value;
+
 ValueSet_Designation(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.language,
+    this.element_language,
     this.use,
-    this.value
+    this.value,
+    this.element_value
     });
 
   factory ValueSet_Designation.fromJson(Map<String, dynamic> json) => _$ValueSet_DesignationFromJson(json);
@@ -470,8 +559,14 @@ List<Extension> modifierExtension;
 // system.
 String property;
 
+//  Extensions for property
+Element element_property;
+
 //  The kind of operation to perform as a part of the filter criteria.
 String op; // <code> enum: =/is-a/descendent-of/is-not-a/regex/in/not-in/generalizes/exists;
+
+//  Extensions for op
+Element element_op;
 
 //  The match value may be either a code defined by the system, or a
 // string value, which is a regex match on the literal string of the
@@ -481,13 +576,19 @@ String op; // <code> enum: =/is-a/descendent-of/is-not-a/regex/in/not-in/general
 // the values (true and false), when the operation is 'exists'.
 String value;
 
+//  Extensions for value
+Element element_value;
+
 ValueSet_Filter(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.property,
+    this.element_property,
     this.op,
-    this.value
+    this.element_op,
+    this.value,
+    this.element_value
     });
 
   factory ValueSet_Filter.fromJson(Map<String, dynamic> json) => _$ValueSet_FilterFromJson(json);
@@ -531,18 +632,30 @@ List<Extension> modifierExtension;
 // This is a business identifier.
 String identifier;
 
+//  Extensions for identifier
+Element element_identifier;
+
 //  The time at which the expansion was produced by the expanding system.
 DateTime timestamp;
+
+//  Extensions for timestamp
+Element element_timestamp;
 
 //  The total number of concepts in the expansion. If the number of
 // concept nodes in this resource is less than the stated number, then the
 // server can return more using the offset parameter.
 int total;
 
+//  Extensions for total
+Element element_total;
+
 //  If paging is being used, the offset at which this resource starts. 
 // I.e. this resource is a partial view into the expansion. If paging is
 // not being used, this element SHALL NOT be present.
 int offset;
+
+//  Extensions for offset
+Element element_offset;
 
 //  A parameter that controlled the expansion process. These parameters
 // may be used by users of expanded value sets to check whether the
@@ -558,9 +671,13 @@ ValueSet_Expansion(
     this.extension,
     this.modifierExtension,
     this.identifier,
+    this.element_identifier,
     this.timestamp,
+    this.element_timestamp,
     this.total,
+    this.element_total,
     this.offset,
+    this.element_offset,
     this.parameter,
     this.contains
     });
@@ -603,39 +720,71 @@ List<Extension> modifierExtension;
 // parameters used to control the expansion process.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  The value of the parameter.
 String valueString; //  pattern: ^[ \r\n\t\S]+$
+
+//  Extensions for valueString
+Element element_valueString;
 
 //  The value of the parameter.
 bool valueBoolean; //  pattern: ^true|false$
 
+//  Extensions for valueBoolean
+Element element_valueBoolean;
+
 //  The value of the parameter.
 int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
+
+//  Extensions for valueInteger
+Element element_valueInteger;
 
 //  The value of the parameter.
 double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
 
+//  Extensions for valueDecimal
+Element element_valueDecimal;
+
 //  The value of the parameter.
 String valueUri; //  pattern: ^\S*$
+
+//  Extensions for valueUri
+Element element_valueUri;
 
 //  The value of the parameter.
 String valueCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
 
+//  Extensions for valueCode
+Element element_valueCode;
+
 //  The value of the parameter.
 String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+
+//  Extensions for valueDateTime
+Element element_valueDateTime;
 
 ValueSet_Parameter(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.name,
+    this.element_name,
     this.valueString,
+    this.element_valueString,
     this.valueBoolean,
+    this.element_valueBoolean,
     this.valueInteger,
+    this.element_valueInteger,
     this.valueDecimal,
+    this.element_valueDecimal,
     this.valueUri,
+    this.element_valueUri,
     this.valueCode,
-    this.valueDateTime
+    this.element_valueCode,
+    this.valueDateTime,
+    this.element_valueDateTime
     });
 
   factory ValueSet_Parameter.fromJson(Map<String, dynamic> json) => _$ValueSet_ParameterFromJson(json);
@@ -675,10 +824,16 @@ List<Extension> modifierExtension;
 // item in the expansion is defined.
 String system;
 
+//  Extensions for system
+Element element_system;
+
 //  If true, this entry is included in the expansion for navigational
 // purposes, and the user cannot select the code directly as a proper
 // value.
 bool abstract;
+
+//  Extensions for abstract
+Element element_abstract;
 
 //  If the concept is inactive in the code system that defines it.
 // Inactive codes are those that are no longer to be used, but are
@@ -687,6 +842,9 @@ bool abstract;
 // depend on the context of use).
 bool inactive;
 
+//  Extensions for inactive
+Element element_inactive;
+
 //  The version of the code system from this code was taken. Note that a
 // well-maintained code system does not need the version reported, because
 // the meaning of codes is consistent across versions. However this cannot
@@ -694,13 +852,22 @@ bool inactive;
 // consistent, the version SHOULD be exchanged.
 String version;
 
+//  Extensions for version
+Element element_version;
+
 //  The code for this item in the expansion hierarchy. If this code is
 // missing the entry in the hierarchy is a place holder (abstract) and
 // does not represent a valid code in the value set.
 String code;
 
+//  Extensions for code
+Element element_code;
+
 //  The recommended display for this item in the expansion.
 String display;
+
+//  Extensions for display
+Element element_display;
 
 //  Additional representations for this item - other languages, aliases,
 // specialized purposes, used for particular purposes, etc. These are
@@ -716,11 +883,17 @@ ValueSet_Contains(
     this.extension,
     this.modifierExtension,
     this.system,
+    this.element_system,
     this.abstract,
+    this.element_abstract,
     this.inactive,
+    this.element_inactive,
     this.version,
+    this.element_version,
     this.code,
+    this.element_code,
     this.display,
+    this.element_display,
     this.designation,
     this.contains
     });

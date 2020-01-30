@@ -8,6 +8,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'clinicalImpression.g.dart';
@@ -33,8 +34,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -80,6 +87,9 @@ List<Identifier> identifier;
 //  Identifies the workflow status of the assessment.
 String status;
 
+//  Extensions for status
+Element element_status;
+
 //  Captures the reason for the current state of the ClinicalImpression.
 CodeableConcept statusReason;
 
@@ -89,6 +99,9 @@ CodeableConcept code;
 //  A summary of the context and/or cause of the assessment - why / where
 // it was performed, and what patient events/status prompted it.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  The patient or group of individuals assessed as part of this record.
 Reference subject;
@@ -100,11 +113,17 @@ Reference encounter;
 //  The point in time or period over which the subject was assessed.
 String effectiveDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
+//  Extensions for effectiveDateTime
+Element element_effectiveDateTime;
+
 //  The point in time or period over which the subject was assessed.
 Period effectivePeriod;
 
 //  Indicates when the documentation of the assessment was complete.
 DateTime date;
+
+//  Extensions for date
+Element element_date;
 
 //  The clinician performing the assessment.
 Reference assessor;
@@ -130,8 +149,14 @@ List<ClinicalImpression_Investigation> investigation;
 // diagnosis.
 List<String> protocol;
 
+//  Extensions for protocol
+List<Element> element_protocol;
+
 //  A text summary of the investigations and the diagnosis.
 String summary;
+
+//  Extensions for summary
+Element element_summary;
 
 //  Specific findings or diagnoses that were considered likely or relevant
 // to ongoing treatment.
@@ -156,27 +181,35 @@ ClinicalImpression(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
+    this.element_status,
     this.statusReason,
     this.code,
     this.description,
+    this.element_description,
     this.subject,
     this.encounter,
     this.effectiveDateTime,
+    this.element_effectiveDateTime,
     this.effectivePeriod,
     this.date,
+    this.element_date,
     this.assessor,
     this.previous,
     this.problem,
     this.investigation,
     this.protocol,
+    this.element_protocol,
     this.summary,
+    this.element_summary,
     this.finding,
     this.prognosisCodeableConcept,
     this.prognosisReference,
@@ -278,13 +311,17 @@ Reference itemReference;
 //  Which investigations support finding or diagnosis.
 String basis;
 
+//  Extensions for basis
+Element element_basis;
+
 ClinicalImpression_Finding(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.itemCodeableConcept,
     this.itemReference,
-    this.basis
+    this.basis,
+    this.element_basis
     });
 
   factory ClinicalImpression_Finding.fromJson(Map<String, dynamic> json) => _$ClinicalImpression_FindingFromJson(json);

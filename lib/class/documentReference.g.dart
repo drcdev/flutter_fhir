@@ -14,7 +14,14 @@ DocumentReference _$DocumentReferenceFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
+    element_implicitRules: json['element_implicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['element_implicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
+    element_language: json['element_language'] == null
+        ? null
+        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
@@ -38,7 +45,13 @@ DocumentReference _$DocumentReferenceFromJson(Map<String, dynamic> json) {
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
+    element_status: json['element_status'] == null
+        ? null
+        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
     docStatus: json['docStatus'] as String,
+    element_docStatus: json['element_docStatus'] == null
+        ? null
+        : Element.fromJson(json['element_docStatus'] as Map<String, dynamic>),
     type: json['type'] == null
         ? null
         : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
@@ -51,6 +64,9 @@ DocumentReference _$DocumentReferenceFromJson(Map<String, dynamic> json) {
         ? null
         : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
+    element_date: json['element_date'] == null
+        ? null
+        : Element.fromJson(json['element_date'] as Map<String, dynamic>),
     author: (json['author'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
@@ -67,6 +83,9 @@ DocumentReference _$DocumentReferenceFromJson(Map<String, dynamic> json) {
             : DocumentReference_RelatesTo.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     description: json['description'] as String,
+    element_description: json['element_description'] == null
+        ? null
+        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
     securityLabel: (json['securityLabel'] as List)
         ?.map((e) => e == null
             ? null
@@ -90,7 +109,9 @@ Map<String, dynamic> _$DocumentReferenceToJson(DocumentReference instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
+      'element_implicitRules': instance.element_implicitRules?.toJson(),
       'language': instance.language,
+      'element_language': instance.element_language?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -99,16 +120,20 @@ Map<String, dynamic> _$DocumentReferenceToJson(DocumentReference instance) =>
       'masterIdentifier': instance.masterIdentifier?.toJson(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
+      'element_status': instance.element_status?.toJson(),
       'docStatus': instance.docStatus,
+      'element_docStatus': instance.element_docStatus?.toJson(),
       'type': instance.type?.toJson(),
       'category': instance.category?.map((e) => e?.toJson())?.toList(),
       'subject': instance.subject?.toJson(),
       'date': instance.date?.toIso8601String(),
+      'element_date': instance.element_date?.toJson(),
       'author': instance.author?.map((e) => e?.toJson())?.toList(),
       'authenticator': instance.authenticator?.toJson(),
       'custodian': instance.custodian?.toJson(),
       'relatesTo': instance.relatesTo?.map((e) => e?.toJson())?.toList(),
       'description': instance.description,
+      'element_description': instance.element_description?.toJson(),
       'securityLabel':
           instance.securityLabel?.map((e) => e?.toJson())?.toList(),
       'content': instance.content?.map((e) => e?.toJson())?.toList(),
@@ -128,6 +153,9 @@ DocumentReference_RelatesTo _$DocumentReference_RelatesToFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     code: json['code'] as String,
+    element_code: json['element_code'] == null
+        ? null
+        : Element.fromJson(json['element_code'] as Map<String, dynamic>),
     target: json['target'] == null
         ? null
         : Reference.fromJson(json['target'] as Map<String, dynamic>),
@@ -142,6 +170,7 @@ Map<String, dynamic> _$DocumentReference_RelatesToToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'code': instance.code,
+      'element_code': instance.element_code?.toJson(),
       'target': instance.target?.toJson(),
     };
 

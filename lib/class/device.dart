@@ -9,6 +9,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'device.g.dart';
@@ -34,8 +35,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -89,6 +96,9 @@ List<Device_UdiCarrier> udiCarrier;
 //  Status of the Device availability.
 String status; // <code> enum: active/inactive/entered-in-error/unknown;
 
+//  Extensions for status
+Element element_status;
+
 //  Reason for the dtatus of the Device availability.
 List<CodeableConcept> statusReason;
 
@@ -96,22 +106,40 @@ List<CodeableConcept> statusReason;
 // human cell, tissue, or cellular and tissue-based product.
 String distinctIdentifier;
 
+//  Extensions for distinctIdentifier
+Element element_distinctIdentifier;
+
 //  A name of the manufacturer.
 String manufacturer;
 
+//  Extensions for manufacturer
+Element element_manufacturer;
+
 //  The date and time when the device was manufactured.
 DateTime manufactureDate;
+
+//  Extensions for manufactureDate
+Element element_manufactureDate;
 
 //  The date and time beyond which this device is no longer valid or
 // should not be used (if applicable).
 DateTime expirationDate;
 
+//  Extensions for expirationDate
+Element element_expirationDate;
+
 //  Lot number assigned by the manufacturer.
 String lotNumber;
+
+//  Extensions for lotNumber
+Element element_lotNumber;
 
 //  The serial number assigned by the organization when the device was
 // manufactured.
 String serialNumber;
+
+//  Extensions for serialNumber
+Element element_serialNumber;
 
 //  This represents the manufacturer's name of the device as provided by
 // the device, from a UDI label, or by a person describing the Device. 
@@ -122,8 +150,14 @@ List<Device_DeviceName> deviceName;
 //  The model number for the device.
 String modelNumber;
 
+//  Extensions for modelNumber
+Element element_modelNumber;
+
 //  The part number of the device.
 String partNumber;
+
+//  Extensions for partNumber
+Element element_partNumber;
 
 //  The kind or type of device.
 CodeableConcept type;
@@ -158,6 +192,9 @@ Reference location;
 //  A network address on which the device may be contacted directly.
 String url;
 
+//  Extensions for url
+Element element_url;
+
 //  Descriptive information, usage information or implantation information
 // that is not captured in an existing element.
 List<Annotation> note;
@@ -174,7 +211,9 @@ Device(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -183,16 +222,25 @@ Device(
     this.definition,
     this.udiCarrier,
     this.status,
+    this.element_status,
     this.statusReason,
     this.distinctIdentifier,
+    this.element_distinctIdentifier,
     this.manufacturer,
+    this.element_manufacturer,
     this.manufactureDate,
+    this.element_manufactureDate,
     this.expirationDate,
+    this.element_expirationDate,
     this.lotNumber,
+    this.element_lotNumber,
     this.serialNumber,
+    this.element_serialNumber,
     this.deviceName,
     this.modelNumber,
+    this.element_modelNumber,
     this.partNumber,
+    this.element_partNumber,
     this.type,
     this.specialization,
     this.version,
@@ -202,6 +250,7 @@ Device(
     this.contact,
     this.location,
     this.url,
+    this.element_url,
     this.note,
     this.safety,
     this.parent
@@ -244,6 +293,9 @@ List<Extension> modifierExtension;
 // identifies the labeler and the specific version or model of a device.
 String deviceIdentifier;
 
+//  Extensions for deviceIdentifier
+Element element_deviceIdentifier;
+
 //  Organization that is charged with issuing UDIs for devices.  For
 // example, the US FDA issuers include : 1) GS1: 
 // http://hl7.org/fhir/NamingSystem/gs1-di,  2) HIBCC:
@@ -252,12 +304,18 @@ String deviceIdentifier;
 // for other devices: http://hl7.org/fhir/NamingSystem/iccbba-other-di.
 String issuer;
 
+//  Extensions for issuer
+Element element_issuer;
+
 //  The identity of the authoritative source for UDI generation within a 
 // jurisdiction.  All UDIs are globally unique within a single namespace
 // with the appropriate repository uri as the system.  For example,  UDIs
 // of devices managed in the U.S. by the FDA, the value is 
 // http://hl7.org/fhir/NamingSystem/fda-udi.
 String jurisdiction;
+
+//  Extensions for jurisdiction
+Element element_jurisdiction;
 
 //  The full UDI carrier of the Automatic Identification and Data Capture
 // (AIDC) technology representation of the barcode string as printed on
@@ -266,23 +324,38 @@ String jurisdiction;
 // data through XML, AIDC Formats *SHALL* be base64 encoded.
 String carrierAIDC;
 
+//  Extensions for carrierAIDC
+Element element_carrierAIDC;
+
 //  The full UDI carrier as the human readable form (HRF) representation
 // of the barcode string as printed on the packaging of the device.
 String carrierHRF;
 
+//  Extensions for carrierHRF
+Element element_carrierHRF;
+
 //  A coded entry to indicate how the data was entered.
 String entryType; // <code> enum: barcode/rfid/manual/card/self-reported/unknown;
+
+//  Extensions for entryType
+Element element_entryType;
 
 Device_UdiCarrier(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.deviceIdentifier,
+    this.element_deviceIdentifier,
     this.issuer,
+    this.element_issuer,
     this.jurisdiction,
+    this.element_jurisdiction,
     this.carrierAIDC,
+    this.element_carrierAIDC,
     this.carrierHRF,
-    this.entryType
+    this.element_carrierHRF,
+    this.entryType,
+    this.element_entryType
     });
 
   factory Device_UdiCarrier.fromJson(Map<String, dynamic> json) => _$Device_UdiCarrierFromJson(json);
@@ -321,16 +394,24 @@ List<Extension> modifierExtension;
 //  The name of the device.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  The type of deviceName. UDILabelName | UserFriendlyName |
 // PatientReportedName | ManufactureDeviceName | ModelName.
 String type; // <code> enum: udi-label-name/user-friendly-name/patient-reported-name/manufacturer-name/model-name/other;
+
+//  Extensions for type
+Element element_type;
 
 Device_DeviceName(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.name,
-    this.type
+    this.element_name,
+    this.type,
+    this.element_type
     });
 
   factory Device_DeviceName.fromJson(Map<String, dynamic> json) => _$Device_DeviceNameFromJson(json);
@@ -372,12 +453,16 @@ CodeableConcept systemType;
 //  The version of the standard that is used to operate and communicate.
 String version;
 
+//  Extensions for version
+Element element_version;
+
 Device_Specialization(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.systemType,
-    this.version
+    this.version,
+    this.element_version
     });
 
   factory Device_Specialization.fromJson(Map<String, dynamic> json) => _$Device_SpecializationFromJson(json);
@@ -422,13 +507,17 @@ Identifier component;
 //  The version text.
 String value;
 
+//  Extensions for value
+Element element_value;
+
 Device_Version(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.type,
     this.component,
-    this.value
+    this.value,
+    this.element_value
     });
 
   factory Device_Version.fromJson(Map<String, dynamic> json) => _$Device_VersionFromJson(json);

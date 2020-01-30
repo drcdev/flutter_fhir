@@ -14,7 +14,14 @@ InsurancePlan _$InsurancePlanFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
+    element_implicitRules: json['element_implicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['element_implicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
+    element_language: json['element_language'] == null
+        ? null
+        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
@@ -35,13 +42,23 @@ InsurancePlan _$InsurancePlanFromJson(Map<String, dynamic> json) {
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
+    element_status: json['element_status'] == null
+        ? null
+        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
     type: (json['type'] as List)
         ?.map((e) => e == null
             ? null
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     name: json['name'] as String,
+    element_name: json['element_name'] == null
+        ? null
+        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
     alias: (json['alias'] as List)?.map((e) => e as String)?.toList(),
+    element_alias: (json['element_alias'] as List)
+        ?.map((e) =>
+            e == null ? null : Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     period: json['period'] == null
         ? null
         : Period.fromJson(json['period'] as Map<String, dynamic>),
@@ -87,7 +104,9 @@ Map<String, dynamic> _$InsurancePlanToJson(InsurancePlan instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
+      'element_implicitRules': instance.element_implicitRules?.toJson(),
       'language': instance.language,
+      'element_language': instance.element_language?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -95,9 +114,13 @@ Map<String, dynamic> _$InsurancePlanToJson(InsurancePlan instance) =>
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
+      'element_status': instance.element_status?.toJson(),
       'type': instance.type?.map((e) => e?.toJson())?.toList(),
       'name': instance.name,
+      'element_name': instance.element_name?.toJson(),
       'alias': instance.alias,
+      'element_alias':
+          instance.element_alias?.map((e) => e?.toJson())?.toList(),
       'period': instance.period?.toJson(),
       'ownedBy': instance.ownedBy?.toJson(),
       'administeredBy': instance.administeredBy?.toJson(),
@@ -205,6 +228,9 @@ InsurancePlan_Benefit _$InsurancePlan_BenefitFromJson(
         ? null
         : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     requirement: json['requirement'] as String,
+    element_requirement: json['element_requirement'] == null
+        ? null
+        : Element.fromJson(json['element_requirement'] as Map<String, dynamic>),
     limit: (json['limit'] as List)
         ?.map((e) => e == null
             ? null
@@ -222,6 +248,7 @@ Map<String, dynamic> _$InsurancePlan_BenefitToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'type': instance.type?.toJson(),
       'requirement': instance.requirement,
+      'element_requirement': instance.element_requirement?.toJson(),
       'limit': instance.limit?.map((e) => e?.toJson())?.toList(),
     };
 
@@ -325,10 +352,16 @@ InsurancePlan_GeneralCost _$InsurancePlan_GeneralCostFromJson(
         ? null
         : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     groupSize: json['groupSize'] as int,
+    element_groupSize: json['element_groupSize'] == null
+        ? null
+        : Element.fromJson(json['element_groupSize'] as Map<String, dynamic>),
     cost: json['cost'] == null
         ? null
         : Money.fromJson(json['cost'] as Map<String, dynamic>),
     comment: json['comment'] as String,
+    element_comment: json['element_comment'] == null
+        ? null
+        : Element.fromJson(json['element_comment'] as Map<String, dynamic>),
   );
 }
 
@@ -341,8 +374,10 @@ Map<String, dynamic> _$InsurancePlan_GeneralCostToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'type': instance.type?.toJson(),
       'groupSize': instance.groupSize,
+      'element_groupSize': instance.element_groupSize?.toJson(),
       'cost': instance.cost?.toJson(),
       'comment': instance.comment,
+      'element_comment': instance.element_comment?.toJson(),
     };
 
 InsurancePlan_SpecificCost _$InsurancePlan_SpecificCostFromJson(

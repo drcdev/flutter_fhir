@@ -9,6 +9,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'group.g.dart';
@@ -34,8 +35,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -80,14 +87,23 @@ List<Identifier> identifier;
 // merely being retained for historical purposes.
 bool active;
 
+//  Extensions for active
+Element element_active;
+
 //  Identifies the broad classification of the kind of resources the group
 // includes.
 String type; // <code> enum: person/animal/practitioner/device/medication/substance;
+
+//  Extensions for type
+Element element_type;
 
 //  If true, indicates that the resource refers to a specific group of
 // real individuals.  If false, the group defines a set of intended
 // individuals.
 bool actual;
+
+//  Extensions for actual
+Element element_actual;
 
 //  Provides a specific type of resource the group includes; e.g. "cow",
 // "syringe", etc.
@@ -97,9 +113,15 @@ CodeableConcept code;
 // communication.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  A count of the number of resource instances that are part of the
 // group.
 int quantity;
+
+//  Extensions for quantity
+Element element_quantity;
 
 //  Entity responsible for defining and maintaining Group characteristics
 // and/or registered members.
@@ -117,18 +139,25 @@ Group(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.active,
+    this.element_active,
     this.type,
+    this.element_type,
     this.actual,
+    this.element_actual,
     this.code,
     this.name,
+    this.element_name,
     this.quantity,
+    this.element_quantity,
     this.managingEntity,
     this.characteristic,
     this.member
@@ -178,6 +207,9 @@ CodeableConcept valueCodeableConcept;
 // for members of the group.
 bool valueBoolean; //  pattern: ^true|false$
 
+//  Extensions for valueBoolean
+Element element_valueBoolean;
+
 //  The value of the trait that holds (or does not hold - see 'exclude')
 // for members of the group.
 Quantity valueQuantity;
@@ -194,6 +226,9 @@ Reference valueReference;
 // members of the group.
 bool exclude;
 
+//  Extensions for exclude
+Element element_exclude;
+
 //  The period over which the characteristic is tested; e.g. the patient
 // had an operation during the month of June.
 Period period;
@@ -205,10 +240,12 @@ Group_Characteristic(
     this.code,
     this.valueCodeableConcept,
     this.valueBoolean,
+    this.element_valueBoolean,
     this.valueQuantity,
     this.valueRange,
     this.valueReference,
     this.exclude,
+    this.element_exclude,
     this.period
     });
 
@@ -257,13 +294,17 @@ Period period;
 // previously may have been a member.
 bool inactive;
 
+//  Extensions for inactive
+Element element_inactive;
+
 Group_Member(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.entity,
     this.period,
-    this.inactive
+    this.inactive,
+    this.element_inactive
     });
 
   factory Group_Member.fromJson(Map<String, dynamic> json) => _$Group_MemberFromJson(json);

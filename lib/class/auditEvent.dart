@@ -7,6 +7,7 @@ import 'package:flutter_fhir/class/coding.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'auditEvent.g.dart';
@@ -32,8 +33,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -83,17 +90,29 @@ List<Coding> subtype;
 // the audit.
 String action; // <code> enum: C/R/U/D/E;
 
+//  Extensions for action
+Element element_action;
+
 //  The period during which the activity occurred.
 Period period;
 
 //  The time when the event was recorded.
 DateTime recorded;
 
+//  Extensions for recorded
+Element element_recorded;
+
 //  Indicates whether the event succeeded or failed.
 String outcome; // <code> enum: 0/4/8/12;
 
+//  Extensions for outcome
+Element element_outcome;
+
 //  A free text description of the outcome of the event.
 String outcomeDesc;
+
+//  Extensions for outcomeDesc
+Element element_outcomeDesc;
 
 //  The purposeOfUse (reason) that was used during the event being
 // recorded.
@@ -114,7 +133,9 @@ AuditEvent(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -122,10 +143,14 @@ AuditEvent(
     this.type,
     this.subtype,
     this.action,
+    this.element_action,
     this.period,
     this.recorded,
+    this.element_recorded,
     this.outcome,
+    this.element_outcome,
     this.outcomeDesc,
+    this.element_outcomeDesc,
     this.purposeOfEvent,
     this.agent,
     this.source,
@@ -183,12 +208,21 @@ Reference who;
 // sign-on), if available.
 String altId;
 
+//  Extensions for altId
+Element element_altId;
+
 //  Human-meaningful name for the agent.
 String name;
+
+//  Extensions for name
+Element element_name;
 
 //  Indicator that the user is or is not the requestor, or initiator, for
 // the event being audited.
 bool requestor;
+
+//  Extensions for requestor
+Element element_requestor;
 
 //  Where the event occurred.
 Reference location;
@@ -198,6 +232,9 @@ Reference location;
 // such as patient consent, guarantor funding, etc. The policy would also
 // indicate the security token used.
 List<String> policy;
+
+//  Extensions for policy
+List<Element> element_policy;
 
 //  Type of media involved. Used when the event is about
 // exporting/importing onto media.
@@ -219,10 +256,14 @@ AuditEvent_Agent(
     this.role,
     this.who,
     this.altId,
+    this.element_altId,
     this.name,
+    this.element_name,
     this.requestor,
+    this.element_requestor,
     this.location,
     this.policy,
+    this.element_policy,
     this.media,
     this.network,
     this.purposeOfUse
@@ -265,16 +306,24 @@ List<Extension> modifierExtension;
 // audit event.
 String address;
 
+//  Extensions for address
+Element element_address;
+
 //  An identifier for the type of network access point that originated the
 // audit event.
 String type; // <code> enum: 1/2/3/4/5;
+
+//  Extensions for type
+Element element_type;
 
 AuditEvent_Network(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.address,
-    this.type
+    this.element_address,
+    this.type,
+    this.element_type
     });
 
   factory AuditEvent_Network.fromJson(Map<String, dynamic> json) => _$AuditEvent_NetworkFromJson(json);
@@ -315,6 +364,9 @@ List<Extension> modifierExtension;
 // provider group.
 String site;
 
+//  Extensions for site
+Element element_site;
+
 //  Identifier of the source where the event was detected.
 Reference observer;
 
@@ -326,6 +378,7 @@ AuditEvent_Source(
     this.extension,
     this.modifierExtension,
     this.site,
+    this.element_site,
     this.observer,
     this.type
     });
@@ -383,11 +436,20 @@ List<Coding> securityLabel;
 //  A name of the entity in the audit event.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  Text that describes the entity in more detail.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  The query parameters for a query-type entities.
 String query;
+
+//  Extensions for query
+Element element_query;
 
 //  Tagged value pairs for conveying additional information about the
 // entity.
@@ -403,8 +465,11 @@ AuditEvent_Entity(
     this.lifecycle,
     this.securityLabel,
     this.name,
+    this.element_name,
     this.description,
+    this.element_description,
     this.query,
+    this.element_query,
     this.detail
     });
 
@@ -444,19 +509,31 @@ List<Extension> modifierExtension;
 //  The type of extra detail provided in the value.
 String type;
 
+//  Extensions for type
+Element element_type;
+
 //  The  value of the extra detail.
 String valueString; //  pattern: ^[ \r\n\t\S]+$
 
+//  Extensions for valueString
+Element element_valueString;
+
 //  The  value of the extra detail.
 String valueBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
+
+//  Extensions for valueBase64Binary
+Element element_valueBase64Binary;
 
 AuditEvent_Detail(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.type,
+    this.element_type,
     this.valueString,
-    this.valueBase64Binary
+    this.element_valueString,
+    this.valueBase64Binary,
+    this.element_valueBase64Binary
     });
 
   factory AuditEvent_Detail.fromJson(Map<String, dynamic> json) => _$AuditEvent_DetailFromJson(json);

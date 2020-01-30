@@ -8,6 +8,7 @@ import 'package:flutter_fhir/class/codeableConcept.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'substanceReferenceInformation.g.dart';
@@ -33,8 +34,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -75,6 +82,9 @@ List<Extension> modifierExtension;
 //  Todo.
 String comment;
 
+//  Extensions for comment
+Element element_comment;
+
 //  Todo.
 List<SubstanceReferenceInformation_Gene> gene;
 
@@ -92,12 +102,15 @@ SubstanceReferenceInformation(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.comment,
+    this.element_comment,
     this.gene,
     this.geneElement,
     this.classification,
@@ -318,6 +331,9 @@ Range amountRange;
 //  Todo.
 String amountString; //  pattern: ^[ \r\n\t\S]+$
 
+//  Extensions for amountString
+Element element_amountString;
+
 //  Todo.
 CodeableConcept amountType;
 
@@ -336,6 +352,7 @@ SubstanceReferenceInformation_Target(
     this.amountQuantity,
     this.amountRange,
     this.amountString,
+    this.element_amountString,
     this.amountType,
     this.source
     });

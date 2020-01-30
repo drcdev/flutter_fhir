@@ -9,6 +9,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'supplyDelivery.g.dart';
@@ -34,8 +35,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -87,6 +94,9 @@ List<Reference> partOf;
 //  A code specifying the state of the dispense event.
 String status; // <code> enum: in-progress/completed/abandoned/entered-in-error;
 
+//  Extensions for status
+Element element_status;
+
 //  A link to a resource representing the person whom the delivered item
 // is for.
 Reference patient;
@@ -101,6 +111,9 @@ SupplyDelivery_SuppliedItem suppliedItem;
 
 //  The date or time(s) the activity occurred.
 String occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+
+//  Extensions for occurrenceDateTime
+Element element_occurrenceDateTime;
 
 //  The date or time(s) the activity occurred.
 Period occurrencePeriod;
@@ -124,7 +137,9 @@ SupplyDelivery(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -133,10 +148,12 @@ SupplyDelivery(
     this.basedOn,
     this.partOf,
     this.status,
+    this.element_status,
     this.patient,
     this.type,
     this.suppliedItem,
     this.occurrenceDateTime,
+    this.element_occurrenceDateTime,
     this.occurrencePeriod,
     this.occurrenceTiming,
     this.supplier,

@@ -14,7 +14,14 @@ Substance _$SubstanceFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
+    element_implicitRules: json['element_implicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['element_implicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
+    element_language: json['element_language'] == null
+        ? null
+        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
@@ -35,6 +42,9 @@ Substance _$SubstanceFromJson(Map<String, dynamic> json) {
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
+    element_status: json['element_status'] == null
+        ? null
+        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
     category: (json['category'] as List)
         ?.map((e) => e == null
             ? null
@@ -44,6 +54,9 @@ Substance _$SubstanceFromJson(Map<String, dynamic> json) {
         ? null
         : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     description: json['description'] as String,
+    element_description: json['element_description'] == null
+        ? null
+        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
     instance: (json['instance'] as List)
         ?.map((e) => e == null
             ? null
@@ -62,7 +75,9 @@ Map<String, dynamic> _$SubstanceToJson(Substance instance) => <String, dynamic>{
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
+      'element_implicitRules': instance.element_implicitRules?.toJson(),
       'language': instance.language,
+      'element_language': instance.element_language?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -70,9 +85,11 @@ Map<String, dynamic> _$SubstanceToJson(Substance instance) => <String, dynamic>{
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
+      'element_status': instance.element_status?.toJson(),
       'category': instance.category?.map((e) => e?.toJson())?.toList(),
       'code': instance.code?.toJson(),
       'description': instance.description,
+      'element_description': instance.element_description?.toJson(),
       'instance': instance.instance?.map((e) => e?.toJson())?.toList(),
       'ingredient': instance.ingredient?.map((e) => e?.toJson())?.toList(),
     };
@@ -94,6 +111,9 @@ Substance_Instance _$Substance_InstanceFromJson(Map<String, dynamic> json) {
     expiry: json['expiry'] == null
         ? null
         : DateTime.parse(json['expiry'] as String),
+    element_expiry: json['element_expiry'] == null
+        ? null
+        : Element.fromJson(json['element_expiry'] as Map<String, dynamic>),
     quantity: json['quantity'] == null
         ? null
         : Quantity.fromJson(json['quantity'] as Map<String, dynamic>),
@@ -108,6 +128,7 @@ Map<String, dynamic> _$Substance_InstanceToJson(Substance_Instance instance) =>
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.toJson(),
       'expiry': instance.expiry?.toIso8601String(),
+      'element_expiry': instance.element_expiry?.toJson(),
       'quantity': instance.quantity?.toJson(),
     };
 

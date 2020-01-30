@@ -7,6 +7,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'episodeOfCare.g.dart';
@@ -32,8 +33,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -79,6 +86,9 @@ List<Identifier> identifier;
 //  planned | waitlist | active | onhold | finished | cancelled.
 String status; // <code> enum: planned/waitlist/active/onhold/finished/cancelled/entered-in-error;
 
+//  Extensions for status
+Element element_status;
+
 //  The history of statuses that the EpisodeOfCare has been through
 // (without requiring processing the history of the resource).
 List<EpisodeOfCare_StatusHistory> statusHistory;
@@ -122,13 +132,16 @@ EpisodeOfCare(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
+    this.element_status,
     this.statusHistory,
     this.type,
     this.diagnosis,
@@ -177,6 +190,9 @@ List<Extension> modifierExtension;
 //  planned | waitlist | active | onhold | finished | cancelled.
 String status; // <code> enum: planned/waitlist/active/onhold/finished/cancelled/entered-in-error;
 
+//  Extensions for status
+Element element_status;
+
 //  The period during this EpisodeOfCare that the specific status applied.
 Period period;
 
@@ -185,6 +201,7 @@ EpisodeOfCare_StatusHistory(
     this.extension,
     this.modifierExtension,
     this.status,
+    this.element_status,
     this.period
     });
 
@@ -232,13 +249,17 @@ CodeableConcept role;
 //  Ranking of the diagnosis (for each role type).
 int rank;
 
+//  Extensions for rank
+Element element_rank;
+
 EpisodeOfCare_Diagnosis(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.condition,
     this.role,
-    this.rank
+    this.rank,
+    this.element_rank
     });
 
   factory EpisodeOfCare_Diagnosis.fromJson(Map<String, dynamic> json) => _$EpisodeOfCare_DiagnosisFromJson(json);

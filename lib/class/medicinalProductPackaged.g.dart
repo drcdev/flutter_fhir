@@ -15,7 +15,14 @@ MedicinalProductPackaged _$MedicinalProductPackagedFromJson(
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
+    element_implicitRules: json['element_implicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['element_implicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
+    element_language: json['element_language'] == null
+        ? null
+        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
@@ -40,6 +47,9 @@ MedicinalProductPackaged _$MedicinalProductPackagedFromJson(
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     description: json['description'] as String,
+    element_description: json['element_description'] == null
+        ? null
+        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
     legalStatusOfSupply: json['legalStatusOfSupply'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -79,7 +89,9 @@ Map<String, dynamic> _$MedicinalProductPackagedToJson(
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
+      'element_implicitRules': instance.element_implicitRules?.toJson(),
       'language': instance.language,
+      'element_language': instance.element_language?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -88,6 +100,7 @@ Map<String, dynamic> _$MedicinalProductPackagedToJson(
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'subject': instance.subject?.map((e) => e?.toJson())?.toList(),
       'description': instance.description,
+      'element_description': instance.element_description?.toJson(),
       'legalStatusOfSupply': instance.legalStatusOfSupply?.toJson(),
       'marketingStatus':
           instance.marketingStatus?.map((e) => e?.toJson())?.toList(),

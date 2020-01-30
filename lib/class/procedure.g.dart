@@ -14,7 +14,14 @@ Procedure _$ProcedureFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
+    element_implicitRules: json['element_implicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['element_implicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
+    element_language: json['element_language'] == null
+        ? null
+        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
@@ -39,6 +46,10 @@ Procedure _$ProcedureFromJson(Map<String, dynamic> json) {
         ?.toList(),
     instantiatesUri:
         (json['instantiatesUri'] as List)?.map((e) => e as String)?.toList(),
+    element_instantiatesUri: (json['element_instantiatesUri'] as List)
+        ?.map((e) =>
+            e == null ? null : Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     basedOn: (json['basedOn'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
@@ -48,6 +59,9 @@ Procedure _$ProcedureFromJson(Map<String, dynamic> json) {
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
+    element_status: json['element_status'] == null
+        ? null
+        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
     statusReason: json['statusReason'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -65,10 +79,18 @@ Procedure _$ProcedureFromJson(Map<String, dynamic> json) {
         ? null
         : Reference.fromJson(json['encounter'] as Map<String, dynamic>),
     performedDateTime: json['performedDateTime'] as String,
+    element_performedDateTime: json['element_performedDateTime'] == null
+        ? null
+        : Element.fromJson(
+            json['element_performedDateTime'] as Map<String, dynamic>),
     performedPeriod: json['performedPeriod'] == null
         ? null
         : Period.fromJson(json['performedPeriod'] as Map<String, dynamic>),
     performedString: json['performedString'] as String,
+    element_performedString: json['element_performedString'] == null
+        ? null
+        : Element.fromJson(
+            json['element_performedString'] as Map<String, dynamic>),
     performedAge: json['performedAge'] == null
         ? null
         : Age.fromJson(json['performedAge'] as Map<String, dynamic>),
@@ -150,7 +172,9 @@ Map<String, dynamic> _$ProcedureToJson(Procedure instance) => <String, dynamic>{
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
+      'element_implicitRules': instance.element_implicitRules?.toJson(),
       'language': instance.language,
+      'element_language': instance.element_language?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -159,17 +183,22 @@ Map<String, dynamic> _$ProcedureToJson(Procedure instance) => <String, dynamic>{
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'instantiatesCanonical': instance.instantiatesCanonical,
       'instantiatesUri': instance.instantiatesUri,
+      'element_instantiatesUri':
+          instance.element_instantiatesUri?.map((e) => e?.toJson())?.toList(),
       'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
       'partOf': instance.partOf?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
+      'element_status': instance.element_status?.toJson(),
       'statusReason': instance.statusReason?.toJson(),
       'category': instance.category?.toJson(),
       'code': instance.code?.toJson(),
       'subject': instance.subject?.toJson(),
       'encounter': instance.encounter?.toJson(),
       'performedDateTime': instance.performedDateTime,
+      'element_performedDateTime': instance.element_performedDateTime?.toJson(),
       'performedPeriod': instance.performedPeriod?.toJson(),
       'performedString': instance.performedString,
+      'element_performedString': instance.element_performedString?.toJson(),
       'performedAge': instance.performedAge?.toJson(),
       'performedRange': instance.performedRange?.toJson(),
       'recorder': instance.recorder?.toJson(),

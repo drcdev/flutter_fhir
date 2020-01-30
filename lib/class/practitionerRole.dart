@@ -8,6 +8,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'practitionerRole.g.dart';
@@ -33,8 +34,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -78,6 +85,9 @@ List<Identifier> identifier;
 //  Whether this practitioner role record is in active use.
 bool active;
 
+//  Extensions for active
+Element element_active;
+
 //  The period during which the person is authorized to act as a
 // practitioner in these role(s) for the organization.
 Period period;
@@ -120,6 +130,9 @@ List<PractitionerRole_NotAvailable> notAvailable;
 // Times.
 String availabilityExceptions;
 
+//  Extensions for availabilityExceptions
+Element element_availabilityExceptions;
+
 //  Technical endpoints providing access to services operated for the
 // practitioner with this role.
 List<Reference> endpoint;
@@ -129,13 +142,16 @@ PractitionerRole(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.active,
+    this.element_active,
     this.period,
     this.practitioner,
     this.organization,
@@ -147,6 +163,7 @@ PractitionerRole(
     this.availableTime,
     this.notAvailable,
     this.availabilityExceptions,
+    this.element_availabilityExceptions,
     this.endpoint
     });
 
@@ -187,26 +204,42 @@ List<Extension> modifierExtension;
 // end Times.
 List<String> daysOfWeek;
 
+//  Extensions for daysOfWeek
+List<Element> element_daysOfWeek;
+
 //  Is this always available? (hence times are irrelevant) e.g. 24 hour
 // service.
 bool allDay;
+
+//  Extensions for allDay
+Element element_allDay;
 
 //  The opening time of day. Note: If the AllDay flag is set, then this
 // time is ignored.
 String availableStartTime;
 
+//  Extensions for availableStartTime
+Element element_availableStartTime;
+
 //  The closing time of day. Note: If the AllDay flag is set, then this
 // time is ignored.
 String availableEndTime;
+
+//  Extensions for availableEndTime
+Element element_availableEndTime;
 
 PractitionerRole_AvailableTime(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.daysOfWeek,
+    this.element_daysOfWeek,
     this.allDay,
+    this.element_allDay,
     this.availableStartTime,
-    this.availableEndTime
+    this.element_availableStartTime,
+    this.availableEndTime,
+    this.element_availableEndTime
     });
 
   factory PractitionerRole_AvailableTime.fromJson(Map<String, dynamic> json) => _$PractitionerRole_AvailableTimeFromJson(json);
@@ -246,6 +279,9 @@ List<Extension> modifierExtension;
 // not available.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  Service is not available (seasonally or for a public holiday) from
 // this date.
 Period during;
@@ -255,6 +291,7 @@ PractitionerRole_NotAvailable(
     this.extension,
     this.modifierExtension,
     this.description,
+    this.element_description,
     this.during
     });
 

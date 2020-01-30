@@ -7,6 +7,7 @@ import 'package:flutter_fhir/class/reference.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'verificationResult.g.dart';
@@ -32,8 +33,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -77,6 +84,9 @@ List<Reference> target;
 //  The fhirpath location(s) within the resource that was validated.
 List<String> targetLocation;
 
+//  Extensions for targetLocation
+List<Element> element_targetLocation;
+
 //  The frequency with which the target must be validated (none; initial;
 // periodic).
 CodeableConcept need;
@@ -85,8 +95,14 @@ CodeableConcept need;
 // requires revalidation; validation failed; revalidation failed).
 String status;
 
+//  Extensions for status
+Element element_status;
+
 //  When the validation status was updated.
 DateTime statusDate;
+
+//  Extensions for statusDate
+Element element_statusDate;
 
 //  What the target is validated against (nothing; primary source;
 // multiple sources).
@@ -103,8 +119,14 @@ Timing frequency;
 // validations).
 DateTime lastPerformed;
 
+//  Extensions for lastPerformed
+Element element_lastPerformed;
+
 //  The date when target is next validated, if appropriate.
 String nextScheduled;
+
+//  Extensions for nextScheduled
+Element element_nextScheduled;
 
 //  The result if validation fails (fatal; warning; record only; none).
 CodeableConcept failureAction;
@@ -123,21 +145,28 @@ VerificationResult(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.target,
     this.targetLocation,
+    this.element_targetLocation,
     this.need,
     this.status,
+    this.element_status,
     this.statusDate,
+    this.element_statusDate,
     this.validationType,
     this.validationProcess,
     this.frequency,
     this.lastPerformed,
+    this.element_lastPerformed,
     this.nextScheduled,
+    this.element_nextScheduled,
     this.failureAction,
     this.primarySource,
     this.attestation,
@@ -195,6 +224,9 @@ CodeableConcept validationStatus;
 //  When the target was validated against the primary source.
 DateTime validationDate;
 
+//  Extensions for validationDate
+Element element_validationDate;
+
 //  Ability of the primary source to push updates/alerts (yes; no;
 // undetermined).
 CodeableConcept canPushUpdates;
@@ -212,6 +244,7 @@ VerificationResult_PrimarySource(
     this.communicationMethod,
     this.validationStatus,
     this.validationDate,
+    this.element_validationDate,
     this.canPushUpdates,
     this.pushTypeAvailable
     });
@@ -263,12 +296,21 @@ CodeableConcept communicationMethod;
 //  The date the information was attested to.
 String date;
 
+//  Extensions for date
+Element element_date;
+
 //  A digital identity certificate associated with the attestation source.
 String sourceIdentityCertificate;
+
+//  Extensions for sourceIdentityCertificate
+Element element_sourceIdentityCertificate;
 
 //  A digital identity certificate associated with the proxy entity
 // submitting attested information on behalf of the attestation source.
 String proxyIdentityCertificate;
+
+//  Extensions for proxyIdentityCertificate
+Element element_proxyIdentityCertificate;
 
 //  Signed assertion by the proxy entity indicating that they have the
 // right to submit attested information on behalf of the attestation
@@ -287,8 +329,11 @@ VerificationResult_Attestation(
     this.onBehalfOf,
     this.communicationMethod,
     this.date,
+    this.element_date,
     this.sourceIdentityCertificate,
+    this.element_sourceIdentityCertificate,
     this.proxyIdentityCertificate,
+    this.element_proxyIdentityCertificate,
     this.proxySignature,
     this.sourceSignature
     });
@@ -332,6 +377,9 @@ Reference organization;
 //  A digital identity certificate associated with the validator.
 String identityCertificate;
 
+//  Extensions for identityCertificate
+Element element_identityCertificate;
+
 //  Signed assertion by the validator that they have validated the
 // information.
 Signature attestationSignature;
@@ -342,6 +390,7 @@ VerificationResult_Validator(
     this.modifierExtension,
     this.organization,
     this.identityCertificate,
+    this.element_identityCertificate,
     this.attestationSignature
     });
 

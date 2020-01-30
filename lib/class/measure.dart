@@ -11,6 +11,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'measure.g.dart';
@@ -36,8 +37,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -84,6 +91,9 @@ List<Extension> modifierExtension;
 // stored on different servers.
 String url;
 
+//  Extensions for url
+Element element_url;
+
 //  A formal identifier that is used to identify this measure when it is
 // represented in other formats, or referenced in a specification, model,
 // design or an instance.
@@ -102,26 +112,44 @@ List<Identifier> identifier;
 // non-experimental active artifacts.
 String version;
 
+//  Extensions for version
+Element element_version;
+
 //  A natural language name identifying the measure. This name should be
 // usable as an identifier for the module by machine processing
 // applications such as code generation.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  A short, descriptive, user-friendly title for the measure.
 String title;
+
+//  Extensions for title
+Element element_title;
 
 //  An explanatory or alternate title for the measure giving additional
 // information about its content.
 String subtitle;
 
+//  Extensions for subtitle
+Element element_subtitle;
+
 //  The status of this measure. Enables tracking the life-cycle of the
 // content.
 String status; // <code> enum: draft/active/retired/unknown;
+
+//  Extensions for status
+Element element_status;
 
 //  A Boolean value to indicate that this measure is authored for testing
 // purposes (or education/evaluation/marketing) and is not intended to be
 // used for genuine usage.
 bool experimental;
+
+//  Extensions for experimental
+Element element_experimental;
 
 //  The intended subjects for the measure. If this element is not
 // provided, a Patient subject is assumed, but the subject of the measure
@@ -139,8 +167,14 @@ Reference subjectReference;
 // substantive content of the measure changes.
 DateTime date;
 
+//  Extensions for date
+Element element_date;
+
 //  The name of the organization or individual that published the measure.
 String publisher;
+
+//  Extensions for publisher
+Element element_publisher;
 
 //  Contact details to assist a user in finding and communicating with the
 // publisher.
@@ -149,6 +183,9 @@ List<ContactDetail> contact;
 //  A free text natural language description of the measure from a
 // consumer's perspective.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  The content was developed with a focus and intent of supporting the
 // contexts that are listed. These contexts may be general categories
@@ -165,24 +202,39 @@ List<CodeableConcept> jurisdiction;
 // as it has.
 String purpose;
 
+//  Extensions for purpose
+Element element_purpose;
+
 //  A detailed description, from a clinical perspective, of how the
 // measure is used.
 String usage;
+
+//  Extensions for usage
+Element element_usage;
 
 //  A copyright statement relating to the measure and/or its contents.
 // Copyright statements are generally legal restrictions on the use and
 // publishing of the measure.
 String copyright;
 
+//  Extensions for copyright
+Element element_copyright;
+
 //  The date on which the resource content was approved by the publisher.
 // Approval happens once when the content is officially approved for
 // usage.
 String approvalDate;
 
+//  Extensions for approvalDate
+Element element_approvalDate;
+
 //  The date on which the resource content was last reviewed. Review
 // happens periodically after approval but does not change the original
 // approval date.
 String lastReviewDate;
+
+//  Extensions for lastReviewDate
+Element element_lastReviewDate;
 
 //  The period during which the measure content was or is planned to be in
 // active use.
@@ -221,6 +273,9 @@ List<String> library;
 // intellectual property (such as code systems) referenced by the measure.
 String disclaimer;
 
+//  Extensions for disclaimer
+Element element_disclaimer;
+
 //  Indicates how the calculation is performed for the measure, including
 // proportion, ratio, continuous-variable, and cohort. The value set is
 // extensible, allowing additional measure scoring types to be
@@ -241,18 +296,30 @@ List<CodeableConcept> type;
 // computing and reporting measure results.
 String riskAdjustment;
 
+//  Extensions for riskAdjustment
+Element element_riskAdjustment;
+
 //  Describes how to combine the information calculated, based on logic in
 // each of several populations, into one summarized result.
 String rateAggregation;
+
+//  Extensions for rateAggregation
+Element element_rateAggregation;
 
 //  Provides a succinct statement of the need for the measure. Usually
 // includes statements pertaining to importance criterion: impact, gap in
 // care, and evidence.
 String rationale;
 
+//  Extensions for rationale
+Element element_rationale;
+
 //  Provides a summary of relevant clinical guidelines or other clinical
 // recommendations supporting the measure.
 String clinicalRecommendationStatement;
+
+//  Extensions for clinicalRecommendationStatement
+Element element_clinicalRecommendationStatement;
 
 //  Information on whether an increase or decrease in score is the
 // preferred result (e.g., a higher score indicates better quality OR a
@@ -262,9 +329,15 @@ CodeableConcept improvementNotation;
 //  Provides a description of an individual term used within the measure.
 List<String> definition;
 
+//  Extensions for definition
+List<Element> element_definition;
+
 //  Additional guidance for the measure including how it can be used in a
 // clinical context, and the intent of the measure.
 String guidance;
+
+//  Extensions for guidance
+Element element_guidance;
 
 //  A group of population criteria for the measure.
 List<Measure_Group> group;
@@ -279,32 +352,49 @@ Measure(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
+    this.element_url,
     this.identifier,
     this.version,
+    this.element_version,
     this.name,
+    this.element_name,
     this.title,
+    this.element_title,
     this.subtitle,
+    this.element_subtitle,
     this.status,
+    this.element_status,
     this.experimental,
+    this.element_experimental,
     this.subjectCodeableConcept,
     this.subjectReference,
     this.date,
+    this.element_date,
     this.publisher,
+    this.element_publisher,
     this.contact,
     this.description,
+    this.element_description,
     this.useContext,
     this.jurisdiction,
     this.purpose,
+    this.element_purpose,
     this.usage,
+    this.element_usage,
     this.copyright,
+    this.element_copyright,
     this.approvalDate,
+    this.element_approvalDate,
     this.lastReviewDate,
+    this.element_lastReviewDate,
     this.effectivePeriod,
     this.topic,
     this.author,
@@ -314,16 +404,23 @@ Measure(
     this.relatedArtifact,
     this.library,
     this.disclaimer,
+    this.element_disclaimer,
     this.scoring,
     this.compositeScoring,
     this.type,
     this.riskAdjustment,
+    this.element_riskAdjustment,
     this.rateAggregation,
+    this.element_rateAggregation,
     this.rationale,
+    this.element_rationale,
     this.clinicalRecommendationStatement,
+    this.element_clinicalRecommendationStatement,
     this.improvementNotation,
     this.definition,
+    this.element_definition,
     this.guidance,
+    this.element_guidance,
     this.group,
     this.supplementalData
     });
@@ -369,6 +466,9 @@ CodeableConcept code;
 //  The human readable description of this population group.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  A population criteria for the measure.
 List<Measure_Population> population;
 
@@ -383,6 +483,7 @@ Measure_Group(
     this.modifierExtension,
     this.code,
     this.description,
+    this.element_description,
     this.population,
     this.stratifier
     });
@@ -426,6 +527,9 @@ CodeableConcept code;
 //  The human readable description of this population criteria.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  An expression that specifies the criteria for the population,
 // typically the name of an expression in a library.
 Expression criteria;
@@ -436,6 +540,7 @@ Measure_Population(
     this.modifierExtension,
     this.code,
     this.description,
+    this.element_description,
     this.criteria
     });
 
@@ -481,6 +586,9 @@ CodeableConcept code;
 //  The human readable description of this stratifier criteria.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  An expression that specifies the criteria for the stratifier. This is
 // typically the name of an expression defined within a referenced
 // library, but it may also be a path to a stratifier element.
@@ -497,6 +605,7 @@ Measure_Stratifier(
     this.modifierExtension,
     this.code,
     this.description,
+    this.element_description,
     this.criteria,
     this.component
     });
@@ -543,6 +652,9 @@ CodeableConcept code;
 //  The human readable description of this stratifier criteria component.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  An expression that specifies the criteria for this component of the
 // stratifier. This is typically the name of an expression defined within
 // a referenced library, but it may also be a path to a stratifier
@@ -555,6 +667,7 @@ Measure_Component(
     this.modifierExtension,
     this.code,
     this.description,
+    this.element_description,
     this.criteria
     });
 
@@ -608,6 +721,9 @@ List<CodeableConcept> usage;
 //  The human readable description of this supplemental data.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  The criteria for the supplemental data. This is typically the name of
 // a valid expression defined within a referenced library, but it may also
 // be a path to a specific data element. The criteria defines the data to
@@ -621,6 +737,7 @@ Measure_SupplementalData(
     this.code,
     this.usage,
     this.description,
+    this.element_description,
     this.criteria
     });
 

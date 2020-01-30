@@ -11,6 +11,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'deviceRequest.g.dart';
@@ -36,8 +37,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -88,6 +95,9 @@ List<String> instantiatesCanonical;
 // this DeviceRequest.
 List<String> instantiatesUri;
 
+//  Extensions for instantiatesUri
+List<Element> element_instantiatesUri;
+
 //  Plan/proposal/order fulfilled by this request.
 List<Reference> basedOn;
 
@@ -101,13 +111,22 @@ Identifier groupIdentifier;
 //  The status of the request.
 String status;
 
+//  Extensions for status
+Element element_status;
+
 //  Whether the request is a proposal, plan, an original order or a reflex
 // order.
 String intent;
 
+//  Extensions for intent
+Element element_intent;
+
 //  Indicates how quickly the {{title}} should be addressed with respect
 // to other requests.
 String priority;
+
+//  Extensions for priority
+Element element_priority;
 
 //  The details of the device to be used.
 Reference codeReference;
@@ -132,6 +151,9 @@ Reference encounter;
 // 2011:"; "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".
 String occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
+//  Extensions for occurrenceDateTime
+Element element_occurrenceDateTime;
+
 //  The timing schedule for the use of the device. The Schedule data type
 // allows many different expressions, for example. "Every 8 hours"; "Three
 // times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec
@@ -146,6 +168,9 @@ Timing occurrenceTiming;
 
 //  When the request transitioned to being actionable.
 DateTime authoredOn;
+
+//  Extensions for authoredOn
+Element element_authoredOn;
 
 //  The individual who initiated the request and has responsibility for
 // its activation.
@@ -187,7 +212,9 @@ DeviceRequest(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -195,21 +222,27 @@ DeviceRequest(
     this.identifier,
     this.instantiatesCanonical,
     this.instantiatesUri,
+    this.element_instantiatesUri,
     this.basedOn,
     this.priorRequest,
     this.groupIdentifier,
     this.status,
+    this.element_status,
     this.intent,
+    this.element_intent,
     this.priority,
+    this.element_priority,
     this.codeReference,
     this.codeCodeableConcept,
     this.parameter,
     this.subject,
     this.encounter,
     this.occurrenceDateTime,
+    this.element_occurrenceDateTime,
     this.occurrencePeriod,
     this.occurrenceTiming,
     this.authoredOn,
+    this.element_authoredOn,
     this.requester,
     this.performerType,
     this.performer,
@@ -269,6 +302,9 @@ Range valueRange;
 //  The value of the device detail.
 bool valueBoolean; //  pattern: ^true|false$
 
+//  Extensions for valueBoolean
+Element element_valueBoolean;
+
 DeviceRequest_Parameter(
   {this.id,
     this.extension,
@@ -277,7 +313,8 @@ DeviceRequest_Parameter(
     this.valueCodeableConcept,
     this.valueQuantity,
     this.valueRange,
-    this.valueBoolean
+    this.valueBoolean,
+    this.element_valueBoolean
     });
 
   factory DeviceRequest_Parameter.fromJson(Map<String, dynamic> json) => _$DeviceRequest_ParameterFromJson(json);

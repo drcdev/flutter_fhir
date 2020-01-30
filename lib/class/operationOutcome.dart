@@ -4,6 +4,7 @@ import 'package:flutter_fhir/class/codeableConcept.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'operationOutcome.g.dart';
@@ -29,8 +30,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -77,7 +84,9 @@ OperationOutcome(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -122,11 +131,17 @@ List<Extension> modifierExtension;
 // processing.
 String severity; // <code> enum: fatal/error/warning/information;
 
+//  Extensions for severity
+Element element_severity;
+
 //  Describes the type of the issue. The system that creates an
 // OperationOutcome SHALL choose the most applicable code from the
 // IssueType value set, and may additional provide its own code for the
 // error in the details element.
 String code; // <code> enum: invalid/structure/required/value/invariant/security/login/unknown/expired/forbidden/suppressed/processing/not-supported/duplicate/multiple-matches/not-found/deleted/too-long/code-invalid/extension/too-costly/business-rule/conflict/transient/lock-error/no-store/exception/timeout/incomplete/throttled/informational;
+
+//  Extensions for code
+Element element_code;
 
 //  Additional details about the error. This may be a text description of
 // the error or a system code that identifies the error.
@@ -134,6 +149,9 @@ CodeableConcept details;
 
 //  Additional diagnostic information about the issue.
 String diagnostics;
+
+//  Extensions for diagnostics
+Element element_diagnostics;
 
 //  This element is deprecated because it is XML specific. It is replaced
 // by issue.expression, which is format independent, and simpler to parse.
@@ -143,22 +161,33 @@ String diagnostics;
 // to be raised.  For HTTP errors, will be "http." + the parameter name.
 List<String> location;
 
+//  Extensions for location
+List<Element> element_location;
+
 //  A [simple subset of FHIRPath](fhirpath.html#simple) limited to element
 // names, repetition indicators and the default child accessor that
 // identifies one of the elements in the resource that caused this issue
 // to be raised.
 List<String> expression;
 
+//  Extensions for expression
+List<Element> element_expression;
+
 OperationOutcome_Issue(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.severity,
+    this.element_severity,
     this.code,
+    this.element_code,
     this.details,
     this.diagnostics,
+    this.element_diagnostics,
     this.location,
-    this.expression
+    this.element_location,
+    this.expression,
+    this.element_expression
     });
 
   factory OperationOutcome_Issue.fromJson(Map<String, dynamic> json) => _$OperationOutcome_IssueFromJson(json);

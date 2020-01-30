@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/class/reference.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/coding.dart';
 import 'package:flutter_fhir/class/extension.dart';
 
@@ -30,6 +31,9 @@ List<Coding> type;
 //  When the digital signature was signed.
 DateTime when;
 
+//  Extensions for when
+Element element_when;
+
 //  A reference to an application-usable description of the identity that
 // signed  (e.g. the signature used their private key).
 Reference who;
@@ -42,26 +46,39 @@ Reference onBehalfOf;
 // resources signed by the signature.
 String targetFormat;
 
+//  Extensions for targetFormat
+Element element_targetFormat;
+
 //  A mime type that indicates the technical format of the signature.
 // Important mime types are application/signature+xml for X ML DigSig,
 // application/jose for JWS, and image/* for a graphical image of a
 // signature, etc.
 String sigFormat;
 
+//  Extensions for sigFormat
+Element element_sigFormat;
+
 //  The base64 encoding of the Signature content. When signature is not
 // recorded electronically this element would be empty.
 String data;
+
+//  Extensions for data
+Element element_data;
 
 Signature(
   {this.id,
     this.extension,
     this.type,
     this.when,
+    this.element_when,
     this.who,
     this.onBehalfOf,
     this.targetFormat,
+    this.element_targetFormat,
     this.sigFormat,
-    this.data
+    this.element_sigFormat,
+    this.data,
+    this.element_data
     });
 
   factory Signature.fromJson(Map<String, dynamic> json) => _$SignatureFromJson(json);

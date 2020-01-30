@@ -8,6 +8,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'guidanceResponse.g.dart';
@@ -33,8 +34,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -86,9 +93,15 @@ List<Identifier> identifier;
 // that was requested.
 String moduleUri; //  pattern: ^\S*$
 
+//  Extensions for moduleUri
+Element element_moduleUri;
+
 //  An identifier, CodeableConcept or canonical reference to the guidance
 // that was requested.
 String moduleCanonical; //  pattern: ^\S*$
+
+//  Extensions for moduleCanonical
+Element element_moduleCanonical;
 
 //  An identifier, CodeableConcept or canonical reference to the guidance
 // that was requested.
@@ -105,6 +118,9 @@ CodeableConcept moduleCodeableConcept;
 // contain a description of the additional requested information.
 String status; // <code> enum: success/data-requested/data-required/in-progress/failure/entered-in-error;
 
+//  Extensions for status
+Element element_status;
+
 //  The patient for which the request was processed.
 Reference subject;
 
@@ -114,6 +130,9 @@ Reference encounter;
 
 //  Indicates when the guidance response was processed.
 DateTime occurrenceDateTime;
+
+//  Extensions for occurrenceDateTime
+Element element_occurrenceDateTime;
 
 //  Provides a reference to the device that performed the guidance.
 Reference performer;
@@ -160,7 +179,9 @@ GuidanceResponse(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -168,12 +189,16 @@ GuidanceResponse(
     this.requestIdentifier,
     this.identifier,
     this.moduleUri,
+    this.element_moduleUri,
     this.moduleCanonical,
+    this.element_moduleCanonical,
     this.moduleCodeableConcept,
     this.status,
+    this.element_status,
     this.subject,
     this.encounter,
     this.occurrenceDateTime,
+    this.element_occurrenceDateTime,
     this.performer,
     this.reasonCode,
     this.reasonReference,

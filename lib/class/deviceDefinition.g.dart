@@ -14,7 +14,14 @@ DeviceDefinition _$DeviceDefinitionFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
+    element_implicitRules: json['element_implicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['element_implicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
+    element_language: json['element_language'] == null
+        ? null
+        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
@@ -41,6 +48,10 @@ DeviceDefinition _$DeviceDefinitionFromJson(Map<String, dynamic> json) {
                 e as Map<String, dynamic>))
         ?.toList(),
     manufacturerString: json['manufacturerString'] as String,
+    element_manufacturerString: json['element_manufacturerString'] == null
+        ? null
+        : Element.fromJson(
+            json['element_manufacturerString'] as Map<String, dynamic>),
     manufacturerReference: json['manufacturerReference'] == null
         ? null
         : Reference.fromJson(
@@ -51,6 +62,9 @@ DeviceDefinition _$DeviceDefinitionFromJson(Map<String, dynamic> json) {
             : DeviceDefinition_DeviceName.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     modelNumber: json['modelNumber'] as String,
+    element_modelNumber: json['element_modelNumber'] == null
+        ? null
+        : Element.fromJson(json['element_modelNumber'] as Map<String, dynamic>),
     type: json['type'] == null
         ? null
         : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
@@ -61,6 +75,10 @@ DeviceDefinition _$DeviceDefinitionFromJson(Map<String, dynamic> json) {
                 e as Map<String, dynamic>))
         ?.toList(),
     version: (json['version'] as List)?.map((e) => e as String)?.toList(),
+    element_version: (json['element_version'] as List)
+        ?.map((e) =>
+            e == null ? null : Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     safety: (json['safety'] as List)
         ?.map((e) => e == null
             ? null
@@ -98,7 +116,14 @@ DeviceDefinition _$DeviceDefinitionFromJson(Map<String, dynamic> json) {
             e == null ? null : ContactPoint.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     url: json['url'] as String,
+    element_url: json['element_url'] == null
+        ? null
+        : Element.fromJson(json['element_url'] as Map<String, dynamic>),
     onlineInformation: json['onlineInformation'] as String,
+    element_onlineInformation: json['element_onlineInformation'] == null
+        ? null
+        : Element.fromJson(
+            json['element_onlineInformation'] as Map<String, dynamic>),
     note: (json['note'] as List)
         ?.map((e) =>
             e == null ? null : Annotation.fromJson(e as Map<String, dynamic>))
@@ -123,7 +148,9 @@ Map<String, dynamic> _$DeviceDefinitionToJson(DeviceDefinition instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
+      'element_implicitRules': instance.element_implicitRules?.toJson(),
       'language': instance.language,
+      'element_language': instance.element_language?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -133,13 +160,18 @@ Map<String, dynamic> _$DeviceDefinitionToJson(DeviceDefinition instance) =>
       'udiDeviceIdentifier':
           instance.udiDeviceIdentifier?.map((e) => e?.toJson())?.toList(),
       'manufacturerString': instance.manufacturerString,
+      'element_manufacturerString':
+          instance.element_manufacturerString?.toJson(),
       'manufacturerReference': instance.manufacturerReference?.toJson(),
       'deviceName': instance.deviceName?.map((e) => e?.toJson())?.toList(),
       'modelNumber': instance.modelNumber,
+      'element_modelNumber': instance.element_modelNumber?.toJson(),
       'type': instance.type?.toJson(),
       'specialization':
           instance.specialization?.map((e) => e?.toJson())?.toList(),
       'version': instance.version,
+      'element_version':
+          instance.element_version?.map((e) => e?.toJson())?.toList(),
       'safety': instance.safety?.map((e) => e?.toJson())?.toList(),
       'shelfLifeStorage':
           instance.shelfLifeStorage?.map((e) => e?.toJson())?.toList(),
@@ -150,7 +182,9 @@ Map<String, dynamic> _$DeviceDefinitionToJson(DeviceDefinition instance) =>
       'owner': instance.owner?.toJson(),
       'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
       'url': instance.url,
+      'element_url': instance.element_url?.toJson(),
       'onlineInformation': instance.onlineInformation,
+      'element_onlineInformation': instance.element_onlineInformation?.toJson(),
       'note': instance.note?.map((e) => e?.toJson())?.toList(),
       'quantity': instance.quantity?.toJson(),
       'parentDevice': instance.parentDevice?.toJson(),
@@ -170,8 +204,19 @@ DeviceDefinition_UdiDeviceIdentifier
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     deviceIdentifier: json['deviceIdentifier'] as String,
+    element_deviceIdentifier: json['element_deviceIdentifier'] == null
+        ? null
+        : Element.fromJson(
+            json['element_deviceIdentifier'] as Map<String, dynamic>),
     issuer: json['issuer'] as String,
+    element_issuer: json['element_issuer'] == null
+        ? null
+        : Element.fromJson(json['element_issuer'] as Map<String, dynamic>),
     jurisdiction: json['jurisdiction'] as String,
+    element_jurisdiction: json['element_jurisdiction'] == null
+        ? null
+        : Element.fromJson(
+            json['element_jurisdiction'] as Map<String, dynamic>),
   );
 }
 
@@ -183,8 +228,11 @@ Map<String, dynamic> _$DeviceDefinition_UdiDeviceIdentifierToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'deviceIdentifier': instance.deviceIdentifier,
+      'element_deviceIdentifier': instance.element_deviceIdentifier?.toJson(),
       'issuer': instance.issuer,
+      'element_issuer': instance.element_issuer?.toJson(),
       'jurisdiction': instance.jurisdiction,
+      'element_jurisdiction': instance.element_jurisdiction?.toJson(),
     };
 
 DeviceDefinition_DeviceName _$DeviceDefinition_DeviceNameFromJson(
@@ -200,7 +248,13 @@ DeviceDefinition_DeviceName _$DeviceDefinition_DeviceNameFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     name: json['name'] as String,
+    element_name: json['element_name'] == null
+        ? null
+        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
     type: json['type'] as String,
+    element_type: json['element_type'] == null
+        ? null
+        : Element.fromJson(json['element_type'] as Map<String, dynamic>),
   );
 }
 
@@ -212,7 +266,9 @@ Map<String, dynamic> _$DeviceDefinition_DeviceNameToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'name': instance.name,
+      'element_name': instance.element_name?.toJson(),
       'type': instance.type,
+      'element_type': instance.element_type?.toJson(),
     };
 
 DeviceDefinition_Specialization _$DeviceDefinition_SpecializationFromJson(
@@ -228,7 +284,13 @@ DeviceDefinition_Specialization _$DeviceDefinition_SpecializationFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     systemType: json['systemType'] as String,
+    element_systemType: json['element_systemType'] == null
+        ? null
+        : Element.fromJson(json['element_systemType'] as Map<String, dynamic>),
     version: json['version'] as String,
+    element_version: json['element_version'] == null
+        ? null
+        : Element.fromJson(json['element_version'] as Map<String, dynamic>),
   );
 }
 
@@ -240,7 +302,9 @@ Map<String, dynamic> _$DeviceDefinition_SpecializationToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'systemType': instance.systemType,
+      'element_systemType': instance.element_systemType?.toJson(),
       'version': instance.version,
+      'element_version': instance.element_version?.toJson(),
     };
 
 DeviceDefinition_Capability _$DeviceDefinition_CapabilityFromJson(
@@ -333,7 +397,14 @@ DeviceDefinition_Material _$DeviceDefinition_MaterialFromJson(
         ? null
         : CodeableConcept.fromJson(json['substance'] as Map<String, dynamic>),
     alternate: json['alternate'] as bool,
+    element_alternate: json['element_alternate'] == null
+        ? null
+        : Element.fromJson(json['element_alternate'] as Map<String, dynamic>),
     allergenicIndicator: json['allergenicIndicator'] as bool,
+    element_allergenicIndicator: json['element_allergenicIndicator'] == null
+        ? null
+        : Element.fromJson(
+            json['element_allergenicIndicator'] as Map<String, dynamic>),
   );
 }
 
@@ -346,5 +417,8 @@ Map<String, dynamic> _$DeviceDefinition_MaterialToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'substance': instance.substance?.toJson(),
       'alternate': instance.alternate,
+      'element_alternate': instance.element_alternate?.toJson(),
       'allergenicIndicator': instance.allergenicIndicator,
+      'element_allergenicIndicator':
+          instance.element_allergenicIndicator?.toJson(),
     };

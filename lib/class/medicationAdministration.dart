@@ -10,6 +10,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'medicationAdministration.g.dart';
@@ -35,8 +36,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -86,6 +93,9 @@ List<Identifier> identifier;
 // to in whole or in part by this event.
 List<String> instantiates;
 
+//  Extensions for instantiates
+List<Element> element_instantiates;
+
 //  A larger event of which this particular event is a component or step.
 List<Reference> partOf;
 
@@ -94,6 +104,9 @@ List<Reference> partOf;
 // is possible for an administration to be started but not completed or it
 // may be paused while some other process is under way.
 String status;
+
+//  Extensions for status
+Element element_status;
 
 //  A code indicating why the administration was not performed.
 List<CodeableConcept> statusReason;
@@ -130,6 +143,9 @@ List<Reference> supportingInformation;
 // attribute is true). For many administrations, such as swallowing a
 // tablet the use of dateTime is more appropriate.
 String effectiveDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+
+//  Extensions for effectiveDateTime
+Element element_effectiveDateTime;
 
 //  A specific date/time or interval of time during which the
 // administration took place (or did not take place, when the 'notGiven'
@@ -173,15 +189,19 @@ MedicationAdministration(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.instantiates,
+    this.element_instantiates,
     this.partOf,
     this.status,
+    this.element_status,
     this.statusReason,
     this.category,
     this.medicationCodeableConcept,
@@ -190,6 +210,7 @@ MedicationAdministration(
     this.context,
     this.supportingInformation,
     this.effectiveDateTime,
+    this.element_effectiveDateTime,
     this.effectivePeriod,
     this.performer,
     this.reasonCode,
@@ -284,10 +305,13 @@ List<Extension> modifierExtension;
 
 //  Free text dosage can be used for cases where the dosage administered
 // is too complex to code. When coded dosage is present, the free text
-// dosage may still be present for display to humans.
-// The dosage instructions should reflect the dosage of the medication that was
+// dosage may still be present for display to humans. The dosage
+// instructions should reflect the dosage of the medication that was
 // administered.
 String text;
+
+//  Extensions for text
+Element element_text;
 
 //  A coded specification of the anatomic site where the medication first
 // entered the body.  For example, "left arm".
@@ -328,6 +352,7 @@ MedicationAdministration_Dosage(
     this.extension,
     this.modifierExtension,
     this.text,
+    this.element_text,
     this.site,
     this.route,
     this.method,

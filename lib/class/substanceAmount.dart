@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/class/codeableConcept.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/range.dart';
 import 'package:flutter_fhir/class/quantity.dart';
 import 'package:flutter_fhir/class/extension.dart';
@@ -54,6 +55,9 @@ Range amountRange;
 // captured in this field.
 String amountString; //  pattern: ^[ \r\n\t\S]+$
 
+//  Extensions for amountString
+Element element_amountString;
+
 //  Most elements that require a quantitative value will also have a field
 // called amount type. Amount type should always be specified because the
 // actual value of the amount is often dependent on it. EXAMPLE: In
@@ -66,6 +70,9 @@ CodeableConcept amountType;
 //  A textual comment on a numeric value.
 String amountText;
 
+//  Extensions for amountText
+Element element_amountText;
+
 //  Reference range of possible or expected values.
 SubstanceAmount_ReferenceRange referenceRange;
 
@@ -76,8 +83,10 @@ SubstanceAmount(
     this.amountQuantity,
     this.amountRange,
     this.amountString,
+    this.element_amountString,
     this.amountType,
     this.amountText,
+    this.element_amountText,
     this.referenceRange
     });
 

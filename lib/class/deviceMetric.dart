@@ -7,6 +7,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'deviceMetric.g.dart';
@@ -32,8 +33,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -101,6 +108,9 @@ Reference parent;
 // Off, Standby, etc.
 String operationalStatus; // <code> enum: on/off/standby/entered-in-error;
 
+//  Extensions for operationalStatus
+Element element_operationalStatus;
+
 //  Describes the color representation for the metric. This is often used
 // to aid clinicians to track and identify parameter types by color. In
 // practice, consider a Patient Monitor that has ECG/HR and Pleth for
@@ -108,9 +118,15 @@ String operationalStatus; // <code> enum: on/off/standby/entered-in-error;
 // colors, such as HR-blue, BP-green, and PR and SpO2- magenta.
 String color; // <code> enum: black/red/green/yellow/blue/magenta/cyan/white;
 
+//  Extensions for color
+Element element_color;
+
 //  Indicates the category of the observation generation process. A
 // DeviceMetric can be for example a setting, measurement, or calculation.
 String category; // <code> enum: measurement/setting/calculation/unspecified;
+
+//  Extensions for category
+Element element_category;
 
 //  Describes the measurement repetition time. This is not necessarily the
 // same as the update period. The measurement repetition time can range
@@ -132,7 +148,9 @@ DeviceMetric(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -143,8 +161,11 @@ DeviceMetric(
     this.source,
     this.parent,
     this.operationalStatus,
+    this.element_operationalStatus,
     this.color,
+    this.element_color,
     this.category,
+    this.element_category,
     this.measurementPeriod,
     this.calibration
     });
@@ -185,19 +206,31 @@ List<Extension> modifierExtension;
 //  Describes the type of the calibration method.
 String type; // <code> enum: unspecified/offset/gain/two-point;
 
+//  Extensions for type
+Element element_type;
+
 //  Describes the state of the calibration.
 String state; // <code> enum: not-calibrated/calibration-required/calibrated/unspecified;
 
+//  Extensions for state
+Element element_state;
+
 //  Describes the time last calibration has been performed.
 DateTime time;
+
+//  Extensions for time
+Element element_time;
 
 DeviceMetric_Calibration(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.type,
+    this.element_type,
     this.state,
-    this.time
+    this.element_state,
+    this.time,
+    this.element_time
     });
 
   factory DeviceMetric_Calibration.fromJson(Map<String, dynamic> json) => _$DeviceMetric_CalibrationFromJson(json);

@@ -10,6 +10,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'familyMemberHistory.g.dart';
@@ -35,8 +36,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -89,9 +96,15 @@ List<String> instantiatesCanonical;
 // this FamilyMemberHistory.
 List<String> instantiatesUri;
 
+//  Extensions for instantiatesUri
+List<Element> element_instantiatesUri;
+
 //  A code specifying the status of the record of the family history of a
 // specific family member.
 String status; // <code> enum: partial/completed/entered-in-error/health-unknown;
+
+//  Extensions for status
+Element element_status;
 
 //  Describes why the family member's history is not available.
 CodeableConcept dataAbsentReason;
@@ -103,9 +116,15 @@ Reference patient;
 // recorded or last updated.
 DateTime date;
 
+//  Extensions for date
+Element element_date;
+
 //  This will either be a name or a description; e.g. "Aunt Susan", "my
 // cousin with the red hair".
 String name;
+
+//  Extensions for name
+Element element_name;
 
 //  The type of relationship this person has to the patient (father,
 // mother, brother etc.).
@@ -120,8 +139,14 @@ Period bornPeriod;
 //  The actual or approximate date of birth of the relative.
 String bornDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
+//  Extensions for bornDate
+Element element_bornDate;
+
 //  The actual or approximate date of birth of the relative.
 String bornString; //  pattern: ^[ \r\n\t\S]+$
+
+//  Extensions for bornString
+Element element_bornString;
 
 //  The age of the relative at the time the family member history is
 // recorded.
@@ -135,12 +160,21 @@ Range ageRange;
 // recorded.
 String ageString; //  pattern: ^[ \r\n\t\S]+$
 
+//  Extensions for ageString
+Element element_ageString;
+
 //  If true, indicates that the age value specified is an estimated value.
 bool estimatedAge;
+
+//  Extensions for estimatedAge
+Element element_estimatedAge;
 
 //  Deceased flag or the actual or approximate age of the relative at the
 // time of death for the family member history record.
 bool deceasedBoolean; //  pattern: ^true|false$
+
+//  Extensions for deceasedBoolean
+Element element_deceasedBoolean;
 
 //  Deceased flag or the actual or approximate age of the relative at the
 // time of death for the family member history record.
@@ -154,9 +188,15 @@ Range deceasedRange;
 // time of death for the family member history record.
 String deceasedDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
+//  Extensions for deceasedDate
+Element element_deceasedDate;
+
 //  Deceased flag or the actual or approximate age of the relative at the
 // time of death for the family member history record.
 String deceasedString; //  pattern: ^[ \r\n\t\S]+$
+
+//  Extensions for deceasedString
+Element element_deceasedString;
 
 //  Describes why the family member history occurred in coded or textual
 // form.
@@ -182,7 +222,9 @@ FamilyMemberHistory(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -190,25 +232,36 @@ FamilyMemberHistory(
     this.identifier,
     this.instantiatesCanonical,
     this.instantiatesUri,
+    this.element_instantiatesUri,
     this.status,
+    this.element_status,
     this.dataAbsentReason,
     this.patient,
     this.date,
+    this.element_date,
     this.name,
+    this.element_name,
     this.relationship,
     this.sex,
     this.bornPeriod,
     this.bornDate,
+    this.element_bornDate,
     this.bornString,
+    this.element_bornString,
     this.ageAge,
     this.ageRange,
     this.ageString,
+    this.element_ageString,
     this.estimatedAge,
+    this.element_estimatedAge,
     this.deceasedBoolean,
+    this.element_deceasedBoolean,
     this.deceasedAge,
     this.deceasedRange,
     this.deceasedDate,
+    this.element_deceasedDate,
     this.deceasedString,
+    this.element_deceasedString,
     this.reasonCode,
     this.reasonReference,
     this.note,
@@ -262,6 +315,9 @@ CodeableConcept outcome;
 // person. If contributedToDeath is not populated, then it is unknown.
 bool contributedToDeath;
 
+//  Extensions for contributedToDeath
+Element element_contributedToDeath;
+
 //  Either the age of onset, range of approximate age or descriptive
 // string can be recorded.  For conditions with multiple occurrences, this
 // describes the first known occurrence.
@@ -282,6 +338,9 @@ Period onsetPeriod;
 // describes the first known occurrence.
 String onsetString; //  pattern: ^[ \r\n\t\S]+$
 
+//  Extensions for onsetString
+Element element_onsetString;
+
 //  An area where general notes can be placed about this specific
 // condition.
 List<Annotation> note;
@@ -293,10 +352,12 @@ FamilyMemberHistory_Condition(
     this.code,
     this.outcome,
     this.contributedToDeath,
+    this.element_contributedToDeath,
     this.onsetAge,
     this.onsetRange,
     this.onsetPeriod,
     this.onsetString,
+    this.element_onsetString,
     this.note
     });
 

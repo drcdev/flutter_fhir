@@ -11,6 +11,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'chargeItem.g.dart';
@@ -36,8 +37,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -82,12 +89,18 @@ List<Identifier> identifier;
 // application for the code this ChargeItem uses.
 List<String> definitionUri;
 
+//  Extensions for definitionUri
+List<Element> element_definitionUri;
+
 //  References the source of pricing information, rules of application for
 // the code this ChargeItem uses.
 List<String> definitionCanonical;
 
 //  The current state of the ChargeItem.
 String status; // <code> enum: planned/billable/not-billable/aborted/billed/entered-in-error/unknown;
+
+//  Extensions for status
+Element element_status;
 
 //  ChargeItems can be grouped to larger ChargeItems covering the whole
 // set.
@@ -106,6 +119,9 @@ Reference context;
 
 //  Date/time(s) or duration when the charged service was applied.
 String occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+
+//  Extensions for occurrenceDateTime
+Element element_occurrenceDateTime;
 
 //  Date/time(s) or duration when the charged service was applied.
 Period occurrencePeriod;
@@ -136,6 +152,9 @@ List<CodeableConcept> bodysite;
 // the code.
 double factorOverride;
 
+//  Extensions for factorOverride
+Element element_factorOverride;
+
 //  Total price of the charge overriding the list price associated with
 // the code.
 Money priceOverride;
@@ -145,11 +164,17 @@ Money priceOverride;
 // for this action.
 String overrideReason;
 
+//  Extensions for overrideReason
+Element element_overrideReason;
+
 //  The device, practitioner, etc. who entered the charge item.
 Reference enterer;
 
 //  Date the charge item was entered.
 DateTime enteredDate;
+
+//  Extensions for enteredDate
+Element element_enteredDate;
 
 //  Describes why the event occurred in coded or textual form.
 List<CodeableConcept> reason;
@@ -180,20 +205,25 @@ ChargeItem(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.definitionUri,
+    this.element_definitionUri,
     this.definitionCanonical,
     this.status,
+    this.element_status,
     this.partOf,
     this.code,
     this.subject,
     this.context,
     this.occurrenceDateTime,
+    this.element_occurrenceDateTime,
     this.occurrencePeriod,
     this.occurrenceTiming,
     this.performer,
@@ -203,10 +233,13 @@ ChargeItem(
     this.quantity,
     this.bodysite,
     this.factorOverride,
+    this.element_factorOverride,
     this.priceOverride,
     this.overrideReason,
+    this.element_overrideReason,
     this.enterer,
     this.enteredDate,
+    this.element_enteredDate,
     this.reason,
     this.service,
     this.productReference,

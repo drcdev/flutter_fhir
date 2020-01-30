@@ -9,6 +9,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'media.g.dart';
@@ -34,8 +35,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -89,6 +96,9 @@ List<Reference> partOf;
 //  The current state of the {{title}}.
 String status;
 
+//  Extensions for status
+Element element_status;
+
 //  A code that classifies whether the media is an image, video or audio
 // recording or some other media category.
 CodeableConcept type;
@@ -110,12 +120,18 @@ Reference encounter;
 //  The date and time(s) at which the media was collected.
 String createdDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
+//  Extensions for createdDateTime
+Element element_createdDateTime;
+
 //  The date and time(s) at which the media was collected.
 Period createdPeriod;
 
 //  The date and time this version of the media was made available to
 // providers, typically after having been reviewed.
 DateTime issued;
+
+//  Extensions for issued
+Element element_issued;
 
 //  The person who administered the collection of the image.
 Reference operator;
@@ -131,14 +147,23 @@ CodeableConcept bodySite;
 // make the recording.
 String deviceName;
 
+//  Extensions for deviceName
+Element element_deviceName;
+
 //  The device used to collect the media.
 Reference device;
 
 //  Height of the image in pixels (photo/video).
 int height;
 
+//  Extensions for height
+Element element_height;
+
 //  Width of the image in pixels (photo/video).
 int width;
+
+//  Extensions for width
+Element element_width;
 
 //  The number of frames in a photo. This is used with a multi-page fax,
 // or an imaging acquisition context that takes multiple slices in a
@@ -147,8 +172,14 @@ int width;
 // multi-frame capable rendering widget is required.
 int frames;
 
+//  Extensions for frames
+Element element_frames;
+
 //  The duration of the recording in seconds - for audio and video.
 double duration;
+
+//  Extensions for duration
+Element element_duration;
 
 //  The actual content of the media - inline or by direct reference to the
 // media source file.
@@ -163,7 +194,9 @@ Media(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -172,23 +205,31 @@ Media(
     this.basedOn,
     this.partOf,
     this.status,
+    this.element_status,
     this.type,
     this.modality,
     this.view,
     this.subject,
     this.encounter,
     this.createdDateTime,
+    this.element_createdDateTime,
     this.createdPeriod,
     this.issued,
+    this.element_issued,
     this.operator,
     this.reasonCode,
     this.bodySite,
     this.deviceName,
+    this.element_deviceName,
     this.device,
     this.height,
+    this.element_height,
     this.width,
+    this.element_width,
     this.frames,
+    this.element_frames,
     this.duration,
+    this.element_duration,
     this.content,
     this.note
     });

@@ -11,6 +11,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'medicationRequest.g.dart';
@@ -36,8 +37,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -87,11 +94,17 @@ List<Identifier> identifier;
 // will be active or completed state.
 String status;
 
+//  Extensions for status
+Element element_status;
+
 //  Captures the reason for the current state of the MedicationRequest.
 CodeableConcept statusReason;
 
 //  Whether the request is a proposal, plan, or an original order.
 String intent;
+
+//  Extensions for intent
+Element element_intent;
 
 //  Indicates the type of medication request (for example, where the
 // medication is expected to be consumed or administered (i.e. inpatient
@@ -102,14 +115,23 @@ List<CodeableConcept> category;
 // respect to other requests.
 String priority;
 
+//  Extensions for priority
+Element element_priority;
+
 //  If true indicates that the provider is asking for the medication
 // request not to occur.
 bool doNotPerform;
+
+//  Extensions for doNotPerform
+Element element_doNotPerform;
 
 //  Indicates if this record was captured as a secondary 'reported' record
 // rather than as an original primary source-of-truth record.  It may also
 // indicate the source of the report.
 bool reportedBoolean; //  pattern: ^true|false$
+
+//  Extensions for reportedBoolean
+Element element_reportedBoolean;
 
 //  Indicates if this record was captured as a secondary 'reported' record
 // rather than as an original primary source-of-truth record.  It may also
@@ -144,6 +166,9 @@ List<Reference> supportingInformation;
 // written or authored on.
 DateTime authoredOn;
 
+//  Extensions for authoredOn
+Element element_authoredOn;
+
 //  The individual, organization, or device that initiated the request and
 // has responsibility for its activation.
 Reference requester;
@@ -172,10 +197,16 @@ List<Reference> reasonReference;
 // MedicationRequest.
 List<String> instantiatesCanonical;
 
+//  Extensions for instantiatesCanonical
+List<Element> element_instantiatesCanonical;
+
 //  The URL pointing to an externally maintained protocol, guideline,
 // orderset or other definition that is adhered to in whole or in part by
 // this MedicationRequest.
 List<String> instantiatesUri;
+
+//  Extensions for instantiatesUri
+List<Element> element_instantiatesUri;
 
 //  A plan or request that is fulfilled in whole or in part by this
 // medication request.
@@ -236,19 +267,26 @@ MedicationRequest(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
+    this.element_status,
     this.statusReason,
     this.intent,
+    this.element_intent,
     this.category,
     this.priority,
+    this.element_priority,
     this.doNotPerform,
+    this.element_doNotPerform,
     this.reportedBoolean,
+    this.element_reportedBoolean,
     this.reportedReference,
     this.medicationCodeableConcept,
     this.medicationReference,
@@ -256,6 +294,7 @@ MedicationRequest(
     this.encounter,
     this.supportingInformation,
     this.authoredOn,
+    this.element_authoredOn,
     this.requester,
     this.performer,
     this.performerType,
@@ -263,7 +302,9 @@ MedicationRequest(
     this.reasonCode,
     this.reasonReference,
     this.instantiatesCanonical,
+    this.element_instantiatesCanonical,
     this.instantiatesUri,
+    this.element_instantiatesUri,
     this.basedOn,
     this.groupIdentifier,
     this.courseOfTherapyType,
@@ -332,6 +373,9 @@ Period validityPeriod;
 // initial dispense.
 int numberOfRepeatsAllowed;
 
+//  Extensions for numberOfRepeatsAllowed
+Element element_numberOfRepeatsAllowed;
+
 //  The amount that is to be dispensed for one fill.
 Quantity quantity;
 
@@ -351,6 +395,7 @@ MedicationRequest_DispenseRequest(
     this.dispenseInterval,
     this.validityPeriod,
     this.numberOfRepeatsAllowed,
+    this.element_numberOfRepeatsAllowed,
     this.quantity,
     this.expectedSupplyDuration,
     this.performer
@@ -440,6 +485,9 @@ List<Extension> modifierExtension;
 // what was prescribed.
 bool allowedBoolean; //  pattern: ^true|false$
 
+//  Extensions for allowedBoolean
+Element element_allowedBoolean;
+
 //  True if the prescriber allows a different drug to be dispensed from
 // what was prescribed.
 CodeableConcept allowedCodeableConcept;
@@ -453,6 +501,7 @@ MedicationRequest_Substitution(
     this.extension,
     this.modifierExtension,
     this.allowedBoolean,
+    this.element_allowedBoolean,
     this.allowedCodeableConcept,
     this.reason
     });

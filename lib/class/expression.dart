@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/extension.dart';
 
 part 'expression.g.dart';
@@ -23,27 +24,47 @@ List<Extension> extension;
 // effectively communicates the intended semantics.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  A short name assigned to the expression to allow for multiple reuse of
 // the expression in the context where it is defined.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  The media type of the language for the expression.
 String language; // <code> enum: text/cql/text/fhirpath/application/x-fhir-query;
+
+//  Extensions for language
+Element element_language;
 
 //  An expression in the specified language that returns a value.
 String expression;
 
+//  Extensions for expression
+Element element_expression;
+
 //  A URI that defines where the expression is found.
 String reference;
+
+//  Extensions for reference
+Element element_reference;
 
 Expression(
   {this.id,
     this.extension,
     this.description,
+    this.element_description,
     this.name,
+    this.element_name,
     this.language,
+    this.element_language,
     this.expression,
-    this.reference
+    this.element_expression,
+    this.reference,
+    this.element_reference
     });
 
   factory Expression.fromJson(Map<String, dynamic> json) => _$ExpressionFromJson(json);

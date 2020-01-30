@@ -10,6 +10,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'chargeItemDefinition.g.dart';
@@ -35,8 +36,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -83,6 +90,9 @@ List<Extension> modifierExtension;
 // same when the charge item definition is stored on different servers.
 String url;
 
+//  Extensions for url
+Element element_url;
+
 //  A formal identifier that is used to identify this charge item
 // definition when it is represented in other formats, or referenced in a
 // specification, model, design or an instance.
@@ -101,13 +111,22 @@ List<Identifier> identifier;
 // Note that a version is required for non-experimental active assets.
 String version;
 
+//  Extensions for version
+Element element_version;
+
 //  A short, descriptive, user-friendly title for the charge item
 // definition.
 String title;
 
+//  Extensions for title
+Element element_title;
+
 //  The URL pointing to an externally-defined charge item definition that
 // is adhered to in whole or in part by this definition.
 List<String> derivedFromUri;
+
+//  Extensions for derivedFromUri
+List<Element> element_derivedFromUri;
 
 //  A larger definition of which this particular definition is a component
 // or step.
@@ -120,10 +139,16 @@ List<String> replaces;
 //  The current state of the ChargeItemDefinition.
 String status; // <code> enum: draft/active/retired/unknown;
 
+//  Extensions for status
+Element element_status;
+
 //  A Boolean value to indicate that this charge item definition is
 // authored for testing purposes (or education/evaluation/marketing) and
 // is not intended to be used for genuine usage.
 bool experimental;
+
+//  Extensions for experimental
+Element element_experimental;
 
 //  The date  (and optionally time) when the charge item definition was
 // published. The date must change when the business version changes and
@@ -132,9 +157,15 @@ bool experimental;
 // changes.
 DateTime date;
 
+//  Extensions for date
+Element element_date;
+
 //  The name of the organization or individual that published the charge
 // item definition.
 String publisher;
+
+//  Extensions for publisher
+Element element_publisher;
 
 //  Contact details to assist a user in finding and communicating with the
 // publisher.
@@ -143,6 +174,9 @@ List<ContactDetail> contact;
 //  A free text natural language description of the charge item definition
 // from a consumer's perspective.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  The content was developed with a focus and intent of supporting the
 // contexts that are listed. These contexts may be general categories
@@ -160,15 +194,24 @@ List<CodeableConcept> jurisdiction;
 // the use and publishing of the charge item definition.
 String copyright;
 
+//  Extensions for copyright
+Element element_copyright;
+
 //  The date on which the resource content was approved by the publisher.
 // Approval happens once when the content is officially approved for
 // usage.
 String approvalDate;
 
+//  Extensions for approvalDate
+Element element_approvalDate;
+
 //  The date on which the resource content was last reviewed. Review
 // happens periodically after approval but does not change the original
 // approval date.
 String lastReviewDate;
+
+//  Extensions for lastReviewDate
+Element element_lastReviewDate;
 
 //  The period during which the charge item definition content was or is
 // planned to be in active use.
@@ -195,29 +238,43 @@ ChargeItemDefinition(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
+    this.element_url,
     this.identifier,
     this.version,
+    this.element_version,
     this.title,
+    this.element_title,
     this.derivedFromUri,
+    this.element_derivedFromUri,
     this.partOf,
     this.replaces,
     this.status,
+    this.element_status,
     this.experimental,
+    this.element_experimental,
     this.date,
+    this.element_date,
     this.publisher,
+    this.element_publisher,
     this.contact,
     this.description,
+    this.element_description,
     this.useContext,
     this.jurisdiction,
     this.copyright,
+    this.element_copyright,
     this.approvalDate,
+    this.element_approvalDate,
     this.lastReviewDate,
+    this.element_lastReviewDate,
     this.effectivePeriod,
     this.code,
     this.instance,
@@ -262,10 +319,16 @@ List<Extension> modifierExtension;
 // effectively communicates the intended semantics.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  The media type of the language for the expression, e.g. "text/cql" for
 // Clinical Query Language expressions or "text/fhirpath" for FHIRPath
 // expressions.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  An expression that returns true or false, indicating whether the
 // condition is satisfied. When using FHIRPath expressions, the %context
@@ -273,13 +336,19 @@ String language;
 // resource to which this definition is applied.
 String expression;
 
+//  Extensions for expression
+Element element_expression;
+
 ChargeItemDefinition_Applicability(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.description,
+    this.element_description,
     this.language,
-    this.expression
+    this.element_language,
+    this.expression,
+    this.element_expression
     });
 
   factory ChargeItemDefinition_Applicability.fromJson(Map<String, dynamic> json) => _$ChargeItemDefinition_ApplicabilityFromJson(json);
@@ -371,6 +440,9 @@ List<Extension> modifierExtension;
 //  This code identifies the type of the component.
 String type;
 
+//  Extensions for type
+Element element_type;
+
 //  A code that identifies the component. Codes may be used to
 // differentiate between kinds of taxes, surcharges, discounts etc.
 CodeableConcept code;
@@ -378,6 +450,9 @@ CodeableConcept code;
 //  The factor that has been applied on the base price for calculating
 // this component.
 double factor;
+
+//  Extensions for factor
+Element element_factor;
 
 //  The amount calculated for this component.
 Money amount;
@@ -387,8 +462,10 @@ ChargeItemDefinition_PriceComponent(
     this.extension,
     this.modifierExtension,
     this.type,
+    this.element_type,
     this.code,
     this.factor,
+    this.element_factor,
     this.amount
     });
 

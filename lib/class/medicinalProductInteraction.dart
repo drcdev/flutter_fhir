@@ -5,6 +5,7 @@ import 'package:flutter_fhir/class/reference.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'medicinalProductInteraction.g.dart';
@@ -30,8 +31,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -75,6 +82,9 @@ List<Reference> subject;
 //  The interaction described.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  The specific medication, food or laboratory test that interacts.
 List<MedicinalProductInteraction_Interactant> interactant;
 
@@ -97,13 +107,16 @@ MedicinalProductInteraction(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.subject,
     this.description,
+    this.element_description,
     this.interactant,
     this.type,
     this.effect,

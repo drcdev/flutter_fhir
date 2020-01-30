@@ -10,6 +10,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'substanceSpecification.g.dart';
@@ -35,8 +36,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -89,11 +96,17 @@ CodeableConcept domain;
 //  Textual description of the substance.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  Supporting literature.
 List<Reference> source;
 
 //  Textual comment about this record of a substance.
 String comment;
+
+//  Extensions for comment
+Element element_comment;
 
 //  Moiety, for structural modifications.
 List<SubstanceSpecification_Moiety> moiety;
@@ -139,7 +152,9 @@ SubstanceSpecification(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -149,8 +164,10 @@ SubstanceSpecification(
     this.status,
     this.domain,
     this.description,
+    this.element_description,
     this.source,
     this.comment,
+    this.element_comment,
     this.moiety,
     this.property,
     this.referenceInformation,
@@ -207,6 +224,9 @@ Identifier identifier;
 //  Textual name for this moiety substance.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  Stereochemistry type.
 CodeableConcept stereochemistry;
 
@@ -216,11 +236,17 @@ CodeableConcept opticalActivity;
 //  Molecular formula.
 String molecularFormula;
 
+//  Extensions for molecularFormula
+Element element_molecularFormula;
+
 //  Quantitative value for this moiety.
 Quantity amountQuantity;
 
 //  Quantitative value for this moiety.
 String amountString; //  pattern: ^[ \r\n\t\S]+$
+
+//  Extensions for amountString
+Element element_amountString;
 
 SubstanceSpecification_Moiety(
   {this.id,
@@ -229,11 +255,14 @@ SubstanceSpecification_Moiety(
     this.role,
     this.identifier,
     this.name,
+    this.element_name,
     this.stereochemistry,
     this.opticalActivity,
     this.molecularFormula,
+    this.element_molecularFormula,
     this.amountQuantity,
-    this.amountString
+    this.amountString,
+    this.element_amountString
     });
 
   factory SubstanceSpecification_Moiety.fromJson(Map<String, dynamic> json) => _$SubstanceSpecification_MoietyFromJson(json);
@@ -279,6 +308,9 @@ CodeableConcept code;
 // viscosity: measured at 20C with a pH of 7.1).
 String parameters;
 
+//  Extensions for parameters
+Element element_parameters;
+
 //  A substance upon which a defining property depends (e.g. for
 // solubility: in water, in alcohol).
 Reference definingSubstanceReference;
@@ -293,6 +325,9 @@ Quantity amountQuantity;
 //  Quantitative value for this property.
 String amountString; //  pattern: ^[ \r\n\t\S]+$
 
+//  Extensions for amountString
+Element element_amountString;
+
 SubstanceSpecification_Property(
   {this.id,
     this.extension,
@@ -300,10 +335,12 @@ SubstanceSpecification_Property(
     this.category,
     this.code,
     this.parameters,
+    this.element_parameters,
     this.definingSubstanceReference,
     this.definingSubstanceCodeableConcept,
     this.amountQuantity,
-    this.amountString
+    this.amountString,
+    this.element_amountString
     });
 
   factory SubstanceSpecification_Property.fromJson(Map<String, dynamic> json) => _$SubstanceSpecification_PropertyFromJson(json);
@@ -348,9 +385,15 @@ CodeableConcept opticalActivity;
 //  Molecular formula.
 String molecularFormula;
 
+//  Extensions for molecularFormula
+Element element_molecularFormula;
+
 //  Specified per moiety according to the Hill system, i.e. first C, then
 // H, then alphabetical, each moiety separated by a dot.
 String molecularFormulaByMoiety;
+
+//  Extensions for molecularFormulaByMoiety
+Element element_molecularFormulaByMoiety;
 
 //  Applicable for single substances that contain a radionuclide or a
 // non-natural isotopic ratio.
@@ -373,7 +416,9 @@ SubstanceSpecification_Structure(
     this.stereochemistry,
     this.opticalActivity,
     this.molecularFormula,
+    this.element_molecularFormula,
     this.molecularFormulaByMoiety,
+    this.element_molecularFormulaByMoiety,
     this.isotope,
     this.molecularWeight,
     this.source,
@@ -535,6 +580,9 @@ CodeableConcept type;
 // SMILES, MOLFILE, CDX.
 String representation;
 
+//  Extensions for representation
+Element element_representation;
+
 //  An attached file with the structural representation.
 Attachment attachment;
 
@@ -544,6 +592,7 @@ SubstanceSpecification_Representation(
     this.modifierExtension,
     this.type,
     this.representation,
+    this.element_representation,
     this.attachment
     });
 
@@ -590,8 +639,14 @@ CodeableConcept status;
 // terminology maintenance.
 DateTime statusDate;
 
+//  Extensions for statusDate
+Element element_statusDate;
+
 //  Any comment can be provided in this field, if necessary.
 String comment;
+
+//  Extensions for comment
+Element element_comment;
 
 //  Supporting literature.
 List<Reference> source;
@@ -603,7 +658,9 @@ SubstanceSpecification_Code(
     this.code,
     this.status,
     this.statusDate,
+    this.element_statusDate,
     this.comment,
+    this.element_comment,
     this.source
     });
 
@@ -643,6 +700,9 @@ List<Extension> modifierExtension;
 //  The actual name.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  Name type.
 CodeableConcept type;
 
@@ -651,6 +711,9 @@ CodeableConcept status;
 
 //  If this is the preferred name for this substance.
 bool preferred;
+
+//  Extensions for preferred
+Element element_preferred;
 
 //  Language of the name.
 List<CodeableConcept> language;
@@ -679,9 +742,11 @@ SubstanceSpecification_Name(
     this.extension,
     this.modifierExtension,
     this.name,
+    this.element_name,
     this.type,
     this.status,
     this.preferred,
+    this.element_preferred,
     this.language,
     this.domain,
     this.jurisdiction,
@@ -733,13 +798,17 @@ CodeableConcept status;
 //  Date of official name change.
 DateTime date;
 
+//  Extensions for date
+Element element_date;
+
 SubstanceSpecification_Official(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.authority,
     this.status,
-    this.date
+    this.date,
+    this.element_date
     });
 
   factory SubstanceSpecification_Official.fromJson(Map<String, dynamic> json) => _$SubstanceSpecification_OfficialFromJson(json);
@@ -791,6 +860,9 @@ CodeableConcept relationship;
 // several possible substance relationships.
 bool isDefining;
 
+//  Extensions for isDefining
+Element element_isDefining;
+
 //  A numeric factor for the relationship, for instance to express that
 // the salt of a substance has some percentage of the active substance in
 // relation to some other.
@@ -811,6 +883,9 @@ Ratio amountRatio;
 // relation to some other.
 String amountString; //  pattern: ^[ \r\n\t\S]+$
 
+//  Extensions for amountString
+Element element_amountString;
+
 //  For use when the numeric.
 Ratio amountRatioLowLimit;
 
@@ -829,10 +904,12 @@ SubstanceSpecification_Relationship(
     this.substanceCodeableConcept,
     this.relationship,
     this.isDefining,
+    this.element_isDefining,
     this.amountQuantity,
     this.amountRange,
     this.amountRatio,
     this.amountString,
+    this.element_amountString,
     this.amountRatioLowLimit,
     this.amountType,
     this.source

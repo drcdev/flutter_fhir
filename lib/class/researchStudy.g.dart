@@ -14,7 +14,14 @@ ResearchStudy _$ResearchStudyFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
+    element_implicitRules: json['element_implicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['element_implicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
+    element_language: json['element_language'] == null
+        ? null
+        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
@@ -35,6 +42,9 @@ ResearchStudy _$ResearchStudyFromJson(Map<String, dynamic> json) {
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     title: json['title'] as String,
+    element_title: json['element_title'] == null
+        ? null
+        : Element.fromJson(json['element_title'] as Map<String, dynamic>),
     protocol: (json['protocol'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
@@ -44,6 +54,9 @@ ResearchStudy _$ResearchStudyFromJson(Map<String, dynamic> json) {
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
+    element_status: json['element_status'] == null
+        ? null
+        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
     primaryPurposeType: json['primaryPurposeType'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -87,6 +100,9 @@ ResearchStudy _$ResearchStudyFromJson(Map<String, dynamic> json) {
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     description: json['description'] as String,
+    element_description: json['element_description'] == null
+        ? null
+        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
     enrollment: (json['enrollment'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
@@ -132,7 +148,9 @@ Map<String, dynamic> _$ResearchStudyToJson(ResearchStudy instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
+      'element_implicitRules': instance.element_implicitRules?.toJson(),
       'language': instance.language,
+      'element_language': instance.element_language?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -140,9 +158,11 @@ Map<String, dynamic> _$ResearchStudyToJson(ResearchStudy instance) =>
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'title': instance.title,
+      'element_title': instance.element_title?.toJson(),
       'protocol': instance.protocol?.map((e) => e?.toJson())?.toList(),
       'partOf': instance.partOf?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
+      'element_status': instance.element_status?.toJson(),
       'primaryPurposeType': instance.primaryPurposeType?.toJson(),
       'phase': instance.phase?.toJson(),
       'category': instance.category?.map((e) => e?.toJson())?.toList(),
@@ -154,6 +174,7 @@ Map<String, dynamic> _$ResearchStudyToJson(ResearchStudy instance) =>
       'keyword': instance.keyword?.map((e) => e?.toJson())?.toList(),
       'location': instance.location?.map((e) => e?.toJson())?.toList(),
       'description': instance.description,
+      'element_description': instance.element_description?.toJson(),
       'enrollment': instance.enrollment?.map((e) => e?.toJson())?.toList(),
       'period': instance.period?.toJson(),
       'sponsor': instance.sponsor?.toJson(),
@@ -177,10 +198,16 @@ ResearchStudy_Arm _$ResearchStudy_ArmFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     name: json['name'] as String,
+    element_name: json['element_name'] == null
+        ? null
+        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
     type: json['type'] == null
         ? null
         : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     description: json['description'] as String,
+    element_description: json['element_description'] == null
+        ? null
+        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
   );
 }
 
@@ -191,8 +218,10 @@ Map<String, dynamic> _$ResearchStudy_ArmToJson(ResearchStudy_Arm instance) =>
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'name': instance.name,
+      'element_name': instance.element_name?.toJson(),
       'type': instance.type?.toJson(),
       'description': instance.description,
+      'element_description': instance.element_description?.toJson(),
     };
 
 ResearchStudy_Objective _$ResearchStudy_ObjectiveFromJson(
@@ -208,6 +237,9 @@ ResearchStudy_Objective _$ResearchStudy_ObjectiveFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     name: json['name'] as String,
+    element_name: json['element_name'] == null
+        ? null
+        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
     type: json['type'] == null
         ? null
         : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
@@ -222,5 +254,6 @@ Map<String, dynamic> _$ResearchStudy_ObjectiveToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'name': instance.name,
+      'element_name': instance.element_name?.toJson(),
       'type': instance.type?.toJson(),
     };

@@ -9,6 +9,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'coverageEligibilityRequest.g.dart';
@@ -34,8 +35,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -79,6 +86,9 @@ List<Identifier> identifier;
 //  The status of the resource instance.
 String status;
 
+//  Extensions for status
+Element element_status;
+
 //  When the requestor expects the processor to complete processing.
 CodeableConcept priority;
 
@@ -89,6 +99,9 @@ CodeableConcept priority;
 // the date/period specified or 'now' if not specified.
 List<String> purpose; // <code> enum: auth-requirements/benefits/discovery/validation> purpose;
 
+//  Extensions for purpose
+List<Element> element_purpose;
+
 //  The party who is the beneficiary of the supplied coverage and for whom
 // eligibility is sought.
 Reference patient;
@@ -97,12 +110,18 @@ Reference patient;
 // or completed.
 String servicedDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
+//  Extensions for servicedDate
+Element element_servicedDate;
+
 //  The date or dates when the enclosed suite of services were performed
 // or completed.
 Period servicedPeriod;
 
 //  The date when this resource was created.
 DateTime created;
+
+//  Extensions for created
+Element element_created;
 
 //  Person who created the request.
 Reference enterer;
@@ -135,19 +154,25 @@ CoverageEligibilityRequest(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
+    this.element_status,
     this.priority,
     this.purpose,
+    this.element_purpose,
     this.patient,
     this.servicedDate,
+    this.element_servicedDate,
     this.servicedPeriod,
     this.created,
+    this.element_created,
     this.enterer,
     this.provider,
     this.insurer,
@@ -193,6 +218,9 @@ List<Extension> modifierExtension;
 //  A number to uniquely identify supporting information entries.
 int sequence;
 
+//  Extensions for sequence
+Element element_sequence;
+
 //  Additional data or information such as resources, documents, images
 // etc. including references to the data or the actual inclusion of the
 // data.
@@ -202,13 +230,18 @@ Reference information;
 // product/servce categories and specific billing codes.
 bool appliesToAll;
 
+//  Extensions for appliesToAll
+Element element_appliesToAll;
+
 CoverageEligibilityRequest_SupportingInfo(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.sequence,
+    this.element_sequence,
     this.information,
-    this.appliesToAll
+    this.appliesToAll,
+    this.element_appliesToAll
     });
 
   factory CoverageEligibilityRequest_SupportingInfo.fromJson(Map<String, dynamic> json) => _$CoverageEligibilityRequest_SupportingInfoFromJson(json);
@@ -248,6 +281,9 @@ List<Extension> modifierExtension;
 // this request when set to true.
 bool focal;
 
+//  Extensions for focal
+Element element_focal;
+
 //  Reference to the insurance card level information contained in the
 // Coverage resource. The coverage issuing insurer will use these details
 // to locate the patient's actual coverage within the insurer's
@@ -258,13 +294,18 @@ Reference coverage;
 // insurer for special business processing purposes.
 String businessArrangement;
 
+//  Extensions for businessArrangement
+Element element_businessArrangement;
+
 CoverageEligibilityRequest_Insurance(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.focal,
+    this.element_focal,
     this.coverage,
-    this.businessArrangement
+    this.businessArrangement,
+    this.element_businessArrangement
     });
 
   factory CoverageEligibilityRequest_Insurance.fromJson(Map<String, dynamic> json) => _$CoverageEligibilityRequest_InsuranceFromJson(json);
@@ -304,6 +345,9 @@ List<Extension> modifierExtension;
 // for this service or product line.
 List<int> supportingInfoSequence;
 
+//  Extensions for supportingInfoSequence
+List<Element> element_supportingInfoSequence;
+
 //  Code to identify the general type of benefits under which products and
 // services are provided.
 CodeableConcept category;
@@ -340,6 +384,7 @@ CoverageEligibilityRequest_Item(
     this.extension,
     this.modifierExtension,
     this.supportingInfoSequence,
+    this.element_supportingInfoSequence,
     this.category,
     this.productOrService,
     this.modifier,

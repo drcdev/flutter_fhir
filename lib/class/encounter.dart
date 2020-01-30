@@ -9,6 +9,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'encounter.g.dart';
@@ -34,8 +35,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -79,6 +86,9 @@ List<Identifier> identifier;
 //  planned | arrived | triaged | in-progress | onleave | finished |
 // cancelled +.
 String status; // <code> enum: planned/arrived/triaged/in-progress/onleave/finished/cancelled/entered-in-error/unknown;
+
+//  Extensions for status
+Element element_status;
 
 //  The status history permits the encounter resource to contain the
 // status history without needing to read through the historical versions
@@ -178,13 +188,16 @@ Encounter(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
+    this.element_status,
     this.statusHistory,
     this.classs,
     this.classHistory,
@@ -245,6 +258,9 @@ List<Extension> modifierExtension;
 // cancelled +.
 String status; // <code> enum: planned/arrived/triaged/in-progress/onleave/finished/cancelled/entered-in-error/unknown;
 
+//  Extensions for status
+Element element_status;
+
 //  The time that the episode was in the specified status.
 Period period;
 
@@ -253,6 +269,7 @@ Encounter_StatusHistory(
     this.extension,
     this.modifierExtension,
     this.status,
+    this.element_status,
     this.period
     });
 
@@ -402,13 +419,17 @@ CodeableConcept use;
 //  Ranking of the diagnosis (for each role type).
 int rank;
 
+//  Extensions for rank
+Element element_rank;
+
 Encounter_Diagnosis(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.condition,
     this.use,
-    this.rank
+    this.rank,
+    this.element_rank
     });
 
   factory Encounter_Diagnosis.fromJson(Map<String, dynamic> json) => _$Encounter_DiagnosisFromJson(json);
@@ -529,6 +550,9 @@ Reference location;
 // location, then the period will have an end date/time.
 String status; // <code> enum: planned/active/reserved/completed;
 
+//  Extensions for status
+Element element_status;
+
 //  This will be used to specify the required levels (bed/ward/room/etc.)
 // desired to be recorded to simplify either messaging or query.
 CodeableConcept physicalType;
@@ -542,6 +566,7 @@ Encounter_Location(
     this.modifierExtension,
     this.location,
     this.status,
+    this.element_status,
     this.physicalType,
     this.period
     });

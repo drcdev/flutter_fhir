@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/extension.dart';
 
 part 'coding.g.dart';
@@ -23,6 +24,9 @@ List<Extension> extension;
 // symbol in the code.
 String system;
 
+//  Extensions for system
+Element element_system;
+
 //  The version of the code system which was used when choosing this code.
 // Note that a well-maintained code system does not need the version
 // reported, because the meaning of codes is consistent across versions.
@@ -30,27 +34,44 @@ String system;
 // not guaranteed to be consistent, the version SHOULD be exchanged.
 String version;
 
+//  Extensions for version
+Element element_version;
+
 //  A symbol in syntax defined by the system. The symbol may be a
 // predefined code or an expression in a syntax defined by the coding
 // system (e.g. post-coordination).
 String code;
 
+//  Extensions for code
+Element element_code;
+
 //  A representation of the meaning of the code in the system, following
 // the rules of the system.
 String display;
+
+//  Extensions for display
+Element element_display;
 
 //  Indicates that this coding was chosen by a user directly - e.g. off a
 // pick list of available items (codes or displays).
 bool userSelected;
 
+//  Extensions for userSelected
+Element element_userSelected;
+
 Coding(
   {this.id,
     this.extension,
     this.system,
+    this.element_system,
     this.version,
+    this.element_version,
     this.code,
+    this.element_code,
     this.display,
-    this.userSelected
+    this.element_display,
+    this.userSelected,
+    this.element_userSelected
     });
 
   factory Coding.fromJson(Map<String, dynamic> json) => _$CodingFromJson(json);

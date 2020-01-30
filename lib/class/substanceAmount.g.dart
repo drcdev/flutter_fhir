@@ -24,10 +24,17 @@ SubstanceAmount _$SubstanceAmountFromJson(Map<String, dynamic> json) {
         ? null
         : Range.fromJson(json['amountRange'] as Map<String, dynamic>),
     amountString: json['amountString'] as String,
+    element_amountString: json['element_amountString'] == null
+        ? null
+        : Element.fromJson(
+            json['element_amountString'] as Map<String, dynamic>),
     amountType: json['amountType'] == null
         ? null
         : CodeableConcept.fromJson(json['amountType'] as Map<String, dynamic>),
     amountText: json['amountText'] as String,
+    element_amountText: json['element_amountText'] == null
+        ? null
+        : Element.fromJson(json['element_amountText'] as Map<String, dynamic>),
     referenceRange: json['referenceRange'] == null
         ? null
         : SubstanceAmount_ReferenceRange.fromJson(
@@ -44,8 +51,10 @@ Map<String, dynamic> _$SubstanceAmountToJson(SubstanceAmount instance) =>
       'amountQuantity': instance.amountQuantity?.toJson(),
       'amountRange': instance.amountRange?.toJson(),
       'amountString': instance.amountString,
+      'element_amountString': instance.element_amountString?.toJson(),
       'amountType': instance.amountType?.toJson(),
       'amountText': instance.amountText,
+      'element_amountText': instance.element_amountText?.toJson(),
       'referenceRange': instance.referenceRange?.toJson(),
     };
 

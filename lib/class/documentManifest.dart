@@ -6,6 +6,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'documentManifest.g.dart';
@@ -31,8 +32,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -81,6 +88,9 @@ List<Identifier> identifier;
 //  The status of this document manifest.
 String status; // <code> enum: current/superseded/entered-in-error;
 
+//  Extensions for status
+Element element_status;
+
 //  The code specifying the type of clinical activity that resulted in
 // placing the associated content into the DocumentManifest.
 CodeableConcept type;
@@ -98,6 +108,9 @@ Reference subject;
 // time, since it may be modified, replicated, etc.).
 DateTime created;
 
+//  Extensions for created
+Element element_created;
+
 //  Identifies who is the author of the manifest. Manifest author is not
 // necessarly the author of the references included.
 List<Reference> author;
@@ -110,9 +123,15 @@ List<Reference> recipient;
 // the document manifest.
 String source;
 
+//  Extensions for source
+Element element_source;
+
 //  Human-readable description of the source document. This is sometimes
 // known as the "title".
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  The list of Resources that consist of the parts of this manifest.
 List<Reference> content;
@@ -125,7 +144,9 @@ DocumentManifest(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -133,13 +154,17 @@ DocumentManifest(
     this.masterIdentifier,
     this.identifier,
     this.status,
+    this.element_status,
     this.type,
     this.subject,
     this.created,
+    this.element_created,
     this.author,
     this.recipient,
     this.source,
+    this.element_source,
     this.description,
+    this.element_description,
     this.content,
     this.related
     });

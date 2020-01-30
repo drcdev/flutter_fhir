@@ -6,6 +6,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'immunizationRecommendation.g.dart';
@@ -31,8 +32,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -79,6 +86,9 @@ Reference patient;
 //  The date the immunization recommendation(s) were created.
 DateTime date;
 
+//  Extensions for date
+Element element_date;
+
 //  Indicates the authority who published the protocol (e.g. ACIP).
 Reference authority;
 
@@ -90,7 +100,9 @@ ImmunizationRecommendation(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -98,6 +110,7 @@ ImmunizationRecommendation(
     this.identifier,
     this.patient,
     this.date,
+    this.element_date,
     this.authority,
     this.recommendation
     });
@@ -159,23 +172,41 @@ List<ImmunizationRecommendation_DateCriterion> dateCriterion;
 // was administered.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  One possible path to achieve presumed immunity against a disease -
 // within the context of an authority.
 String series;
+
+//  Extensions for series
+Element element_series;
 
 //  Nominal position of the recommended dose in a series (e.g. dose 2 is
 // the next recommended dose).
 int doseNumberPositiveInt; //  pattern: ^[1-9][0-9]*$
 
+//  Extensions for doseNumberPositiveInt
+Element element_doseNumberPositiveInt;
+
 //  Nominal position of the recommended dose in a series (e.g. dose 2 is
 // the next recommended dose).
 String doseNumberString; //  pattern: ^[ \r\n\t\S]+$
 
+//  Extensions for doseNumberString
+Element element_doseNumberString;
+
 //  The recommended number of doses to achieve immunity.
 int seriesDosesPositiveInt; //  pattern: ^[1-9][0-9]*$
 
+//  Extensions for seriesDosesPositiveInt
+Element element_seriesDosesPositiveInt;
+
 //  The recommended number of doses to achieve immunity.
 String seriesDosesString; //  pattern: ^[ \r\n\t\S]+$
+
+//  Extensions for seriesDosesString
+Element element_seriesDosesString;
 
 //  Immunization event history and/or evaluation that supports the status
 // and recommendation.
@@ -197,11 +228,17 @@ ImmunizationRecommendation_Recommendation(
     this.forecastReason,
     this.dateCriterion,
     this.description,
+    this.element_description,
     this.series,
+    this.element_series,
     this.doseNumberPositiveInt,
+    this.element_doseNumberPositiveInt,
     this.doseNumberString,
+    this.element_doseNumberString,
     this.seriesDosesPositiveInt,
+    this.element_seriesDosesPositiveInt,
     this.seriesDosesString,
+    this.element_seriesDosesString,
     this.supportingImmunization,
     this.supportingPatientInformation
     });
@@ -246,12 +283,16 @@ CodeableConcept code;
 //  The date whose meaning is specified by dateCriterion.code.
 DateTime value;
 
+//  Extensions for value
+Element element_value;
+
 ImmunizationRecommendation_DateCriterion(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.code,
-    this.value
+    this.value,
+    this.element_value
     });
 
   factory ImmunizationRecommendation_DateCriterion.fromJson(Map<String, dynamic> json) => _$ImmunizationRecommendation_DateCriterionFromJson(json);

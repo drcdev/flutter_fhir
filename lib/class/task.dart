@@ -33,6 +33,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'task.g.dart';
@@ -58,8 +59,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -109,6 +116,9 @@ String instantiatesCanonical;
 // this Task.
 String instantiatesUri;
 
+//  Extensions for instantiatesUri
+Element element_instantiatesUri;
+
 //  BasedOn refers to a higher-level authorization that triggered the
 // creation of the task.  It references a "request" resource such as a
 // ServiceRequest, MedicationRequest, ServiceRequest, CarePlan, etc. which
@@ -128,6 +138,9 @@ List<Reference> partOf;
 //  The current status of the task.
 String status; // <code> enum: draft/requested/received/accepted/rejected/ready/cancelled/in-progress/on-hold/failed/completed/entered-in-error;
 
+//  Extensions for status
+Element element_status;
+
 //  An explanation as to why this task is held, failed, was refused, etc.
 CodeableConcept statusReason;
 
@@ -138,15 +151,24 @@ CodeableConcept businessStatus;
 // i+R[9]Cs this a proposed task, a planned task, an actionable task, etc.
 String intent; // <code> enum: unknown/proposal/plan/order/original-order/reflex-order/filler-order/instance-order/option;
 
+//  Extensions for intent
+Element element_intent;
+
 //  Indicates how quickly the Task should be addressed with respect to
 // other requests.
 String priority;
+
+//  Extensions for priority
+Element element_priority;
 
 //  A name or code (or both) briefly describing what the task involves.
 CodeableConcept code;
 
 //  A free-text description of what is to be performed.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  The request being actioned or the resource being manipulated by this
 // task.
@@ -168,8 +190,14 @@ Period executionPeriod;
 //  The date and time this task was created.
 DateTime authoredOn;
 
+//  Extensions for authoredOn
+Element element_authoredOn;
+
 //  The date and time of last modification to this task.
 DateTime lastModified;
+
+//  Extensions for lastModified
+Element element_lastModified;
 
 //  The creator of the task.
 Reference requester;
@@ -220,7 +248,9 @@ Task(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -228,22 +258,29 @@ Task(
     this.identifier,
     this.instantiatesCanonical,
     this.instantiatesUri,
+    this.element_instantiatesUri,
     this.basedOn,
     this.groupIdentifier,
     this.partOf,
     this.status,
+    this.element_status,
     this.statusReason,
     this.businessStatus,
     this.intent,
+    this.element_intent,
     this.priority,
+    this.element_priority,
     this.code,
     this.description,
+    this.element_description,
     this.focus,
     this.fore,
     this.encounter,
     this.executionPeriod,
     this.authoredOn,
+    this.element_authoredOn,
     this.lastModified,
+    this.element_lastModified,
     this.requester,
     this.performerType,
     this.owner,
@@ -294,6 +331,9 @@ List<Extension> modifierExtension;
 //  Indicates the number of times the requested action should occur.
 int repetitions;
 
+//  Extensions for repetitions
+Element element_repetitions;
+
 //  Over what time-period is fulfillment sought.
 Period period;
 
@@ -306,6 +346,7 @@ Task_Restriction(
     this.extension,
     this.modifierExtension,
     this.repetitions,
+    this.element_repetitions,
     this.period,
     this.recipient
     });
@@ -350,59 +391,116 @@ CodeableConcept type;
 //  The value of the input parameter as a basic type.
 String valueBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
 
+//  Extensions for valueBase64Binary
+Element element_valueBase64Binary;
+
 //  The value of the input parameter as a basic type.
 bool valueBoolean; //  pattern: ^true|false$
+
+//  Extensions for valueBoolean
+Element element_valueBoolean;
 
 //  The value of the input parameter as a basic type.
 String valueCanonical; //  pattern: ^\S*$
 
+//  Extensions for valueCanonical
+Element element_valueCanonical;
+
 //  The value of the input parameter as a basic type.
 String valueCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
+
+//  Extensions for valueCode
+Element element_valueCode;
 
 //  The value of the input parameter as a basic type.
 String valueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
+//  Extensions for valueDate
+Element element_valueDate;
+
 //  The value of the input parameter as a basic type.
 String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+
+//  Extensions for valueDateTime
+Element element_valueDateTime;
 
 //  The value of the input parameter as a basic type.
 double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
 
+//  Extensions for valueDecimal
+Element element_valueDecimal;
+
 //  The value of the input parameter as a basic type.
 String valueId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
+
+//  Extensions for valueId
+Element element_valueId;
 
 //  The value of the input parameter as a basic type.
 String valueInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
 
+//  Extensions for valueInstant
+Element element_valueInstant;
+
 //  The value of the input parameter as a basic type.
 int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
+
+//  Extensions for valueInteger
+Element element_valueInteger;
 
 //  The value of the input parameter as a basic type.
 String valueMarkdown; //  pattern: ^[ \r\n\t\S]+$
 
+//  Extensions for valueMarkdown
+Element element_valueMarkdown;
+
 //  The value of the input parameter as a basic type.
 String valueOid; //  pattern: ^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$
+
+//  Extensions for valueOid
+Element element_valueOid;
 
 //  The value of the input parameter as a basic type.
 int valuePositiveInt; //  pattern: ^[1-9][0-9]*$
 
+//  Extensions for valuePositiveInt
+Element element_valuePositiveInt;
+
 //  The value of the input parameter as a basic type.
 String valueString; //  pattern: ^[ \r\n\t\S]+$
+
+//  Extensions for valueString
+Element element_valueString;
 
 //  The value of the input parameter as a basic type.
 String valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
 
+//  Extensions for valueTime
+Element element_valueTime;
+
 //  The value of the input parameter as a basic type.
 int valueUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
+
+//  Extensions for valueUnsignedInt
+Element element_valueUnsignedInt;
 
 //  The value of the input parameter as a basic type.
 String valueUri; //  pattern: ^\S*$
 
+//  Extensions for valueUri
+Element element_valueUri;
+
 //  The value of the input parameter as a basic type.
 String valueUrl; //  pattern: ^\S*$
 
+//  Extensions for valueUrl
+Element element_valueUrl;
+
 //  The value of the input parameter as a basic type.
 String valueUuid; //  pattern: ^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
+
+//  Extensions for valueUuid
+Element element_valueUuid;
 
 //  The value of the input parameter as a basic type.
 Address valueAddress;
@@ -503,24 +601,43 @@ Task_Input(
     this.modifierExtension,
     this.type,
     this.valueBase64Binary,
+    this.element_valueBase64Binary,
     this.valueBoolean,
+    this.element_valueBoolean,
     this.valueCanonical,
+    this.element_valueCanonical,
     this.valueCode,
+    this.element_valueCode,
     this.valueDate,
+    this.element_valueDate,
     this.valueDateTime,
+    this.element_valueDateTime,
     this.valueDecimal,
+    this.element_valueDecimal,
     this.valueId,
+    this.element_valueId,
     this.valueInstant,
+    this.element_valueInstant,
     this.valueInteger,
+    this.element_valueInteger,
     this.valueMarkdown,
+    this.element_valueMarkdown,
     this.valueOid,
+    this.element_valueOid,
     this.valuePositiveInt,
+    this.element_valuePositiveInt,
     this.valueString,
+    this.element_valueString,
     this.valueTime,
+    this.element_valueTime,
     this.valueUnsignedInt,
+    this.element_valueUnsignedInt,
     this.valueUri,
+    this.element_valueUri,
     this.valueUrl,
+    this.element_valueUrl,
     this.valueUuid,
+    this.element_valueUuid,
     this.valueAddress,
     this.valueAge,
     this.valueAnnotation,
@@ -593,59 +710,116 @@ CodeableConcept type;
 //  The value of the Output parameter as a basic type.
 String valueBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
 
+//  Extensions for valueBase64Binary
+Element element_valueBase64Binary;
+
 //  The value of the Output parameter as a basic type.
 bool valueBoolean; //  pattern: ^true|false$
+
+//  Extensions for valueBoolean
+Element element_valueBoolean;
 
 //  The value of the Output parameter as a basic type.
 String valueCanonical; //  pattern: ^\S*$
 
+//  Extensions for valueCanonical
+Element element_valueCanonical;
+
 //  The value of the Output parameter as a basic type.
 String valueCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
+
+//  Extensions for valueCode
+Element element_valueCode;
 
 //  The value of the Output parameter as a basic type.
 String valueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
+//  Extensions for valueDate
+Element element_valueDate;
+
 //  The value of the Output parameter as a basic type.
 String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+
+//  Extensions for valueDateTime
+Element element_valueDateTime;
 
 //  The value of the Output parameter as a basic type.
 double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
 
+//  Extensions for valueDecimal
+Element element_valueDecimal;
+
 //  The value of the Output parameter as a basic type.
 String valueId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
+
+//  Extensions for valueId
+Element element_valueId;
 
 //  The value of the Output parameter as a basic type.
 String valueInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
 
+//  Extensions for valueInstant
+Element element_valueInstant;
+
 //  The value of the Output parameter as a basic type.
 int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
+
+//  Extensions for valueInteger
+Element element_valueInteger;
 
 //  The value of the Output parameter as a basic type.
 String valueMarkdown; //  pattern: ^[ \r\n\t\S]+$
 
+//  Extensions for valueMarkdown
+Element element_valueMarkdown;
+
 //  The value of the Output parameter as a basic type.
 String valueOid; //  pattern: ^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$
+
+//  Extensions for valueOid
+Element element_valueOid;
 
 //  The value of the Output parameter as a basic type.
 int valuePositiveInt; //  pattern: ^[1-9][0-9]*$
 
+//  Extensions for valuePositiveInt
+Element element_valuePositiveInt;
+
 //  The value of the Output parameter as a basic type.
 String valueString; //  pattern: ^[ \r\n\t\S]+$
+
+//  Extensions for valueString
+Element element_valueString;
 
 //  The value of the Output parameter as a basic type.
 String valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
 
+//  Extensions for valueTime
+Element element_valueTime;
+
 //  The value of the Output parameter as a basic type.
 int valueUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
+
+//  Extensions for valueUnsignedInt
+Element element_valueUnsignedInt;
 
 //  The value of the Output parameter as a basic type.
 String valueUri; //  pattern: ^\S*$
 
+//  Extensions for valueUri
+Element element_valueUri;
+
 //  The value of the Output parameter as a basic type.
 String valueUrl; //  pattern: ^\S*$
 
+//  Extensions for valueUrl
+Element element_valueUrl;
+
 //  The value of the Output parameter as a basic type.
 String valueUuid; //  pattern: ^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
+
+//  Extensions for valueUuid
+Element element_valueUuid;
 
 //  The value of the Output parameter as a basic type.
 Address valueAddress;
@@ -746,24 +920,43 @@ Task_Output(
     this.modifierExtension,
     this.type,
     this.valueBase64Binary,
+    this.element_valueBase64Binary,
     this.valueBoolean,
+    this.element_valueBoolean,
     this.valueCanonical,
+    this.element_valueCanonical,
     this.valueCode,
+    this.element_valueCode,
     this.valueDate,
+    this.element_valueDate,
     this.valueDateTime,
+    this.element_valueDateTime,
     this.valueDecimal,
+    this.element_valueDecimal,
     this.valueId,
+    this.element_valueId,
     this.valueInstant,
+    this.element_valueInstant,
     this.valueInteger,
+    this.element_valueInteger,
     this.valueMarkdown,
+    this.element_valueMarkdown,
     this.valueOid,
+    this.element_valueOid,
     this.valuePositiveInt,
+    this.element_valuePositiveInt,
     this.valueString,
+    this.element_valueString,
     this.valueTime,
+    this.element_valueTime,
     this.valueUnsignedInt,
+    this.element_valueUnsignedInt,
     this.valueUri,
+    this.element_valueUri,
     this.valueUrl,
+    this.element_valueUrl,
     this.valueUuid,
+    this.element_valueUuid,
     this.valueAddress,
     this.valueAge,
     this.valueAnnotation,

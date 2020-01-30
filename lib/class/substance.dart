@@ -8,6 +8,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'substance.g.dart';
@@ -33,8 +34,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -78,6 +85,9 @@ List<Identifier> identifier;
 //  A code to indicate if the substance is actively used.
 String status; // <code> enum: active/inactive/entered-in-error;
 
+//  Extensions for status
+Element element_status;
+
 //  A code that classifies the general type of substance.  This is used 
 // for searching, sorting and display purposes.
 List<CodeableConcept> category;
@@ -88,6 +98,9 @@ CodeableConcept code;
 //  A description of the substance - its appearance, handling
 // requirements, and other usage notes.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  Substance may be used to describe a kind of substance, or a specific
 // package/container of the substance: an instance.
@@ -101,16 +114,20 @@ Substance(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
+    this.element_status,
     this.category,
     this.code,
     this.description,
+    this.element_description,
     this.instance,
     this.ingredient
     });
@@ -156,6 +173,9 @@ Identifier identifier;
 // single arbitrary date is used for expiry.
 DateTime expiry;
 
+//  Extensions for expiry
+Element element_expiry;
+
 //  The amount of the substance.
 Quantity quantity;
 
@@ -165,6 +185,7 @@ Substance_Instance(
     this.modifierExtension,
     this.identifier,
     this.expiry,
+    this.element_expiry,
     this.quantity
     });
 

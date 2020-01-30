@@ -6,6 +6,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'researchSubject.g.dart';
@@ -31,8 +32,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -76,6 +83,9 @@ List<Identifier> identifier;
 //  The current state of the subject.
 String status; // <code> enum: candidate/eligible/follow-up/ineligible/not-registered/off-study/on-study/on-study-intervention/on-study-observation/pending-on-study/potential-candidate/screening/withdrawn;
 
+//  Extensions for status
+Element element_status;
+
 //  The dates the subject began and ended their participation in the
 // study.
 Period period;
@@ -90,9 +100,15 @@ Reference individual;
 // part of this study.
 String assignedArm;
 
+//  Extensions for assignedArm
+Element element_assignedArm;
+
 //  The name of the arm in the study the subject actually followed as part
 // of this study.
 String actualArm;
+
+//  Extensions for actualArm
+Element element_actualArm;
 
 //  A record of the patient's informed agreement to participate in the
 // study.
@@ -103,18 +119,23 @@ ResearchSubject(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
+    this.element_status,
     this.period,
     this.study,
     this.individual,
     this.assignedArm,
+    this.element_assignedArm,
     this.actualArm,
+    this.element_actualArm,
     this.consent
     });
 

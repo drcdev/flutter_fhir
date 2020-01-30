@@ -8,6 +8,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'immunization.g.dart';
@@ -33,8 +34,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -78,6 +85,9 @@ List<Identifier> identifier;
 //  Indicates the current status of the immunization event.
 String status;
 
+//  Extensions for status
+Element element_status;
+
 //  Indicates the reason the immunization event was not performed.
 CodeableConcept statusReason;
 
@@ -94,17 +104,29 @@ Reference encounter;
 //  Date vaccine administered or was to be administered.
 String occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
+//  Extensions for occurrenceDateTime
+Element element_occurrenceDateTime;
+
 //  Date vaccine administered or was to be administered.
 String occurrenceString; //  pattern: ^[ \r\n\t\S]+$
+
+//  Extensions for occurrenceString
+Element element_occurrenceString;
 
 //  The date the occurrence of the immunization was first captured in the
 // record - potentially significantly after the occurrence of the event.
 DateTime recorded;
 
+//  Extensions for recorded
+Element element_recorded;
+
 //  An indication that the content of the record is based on information
 // from the person who administered the vaccine. This reflects the context
 // under which the data was originally recorded.
 bool primarySource;
+
+//  Extensions for primarySource
+Element element_primarySource;
 
 //  The source of the data when the report of the immunization event is
 // not based on information from the person who administered the vaccine.
@@ -120,8 +142,14 @@ Reference manufacturer;
 //  Lot number of the  vaccine product.
 String lotNumber;
 
+//  Extensions for lotNumber
+Element element_lotNumber;
+
 //  Date vaccine batch expires.
 String expirationDate;
+
+//  Extensions for expirationDate
+Element element_expirationDate;
 
 //  Body site where vaccine was administered.
 CodeableConcept site;
@@ -149,6 +177,9 @@ List<Reference> reasonReference;
 //  Indication if a dose is considered to be subpotent. By default, a dose
 // should be considered to be potent.
 bool isSubpotent;
+
+//  Extensions for isSubpotent
+Element element_isSubpotent;
 
 //  Reason why a dose is considered to be subpotent.
 List<CodeableConcept> subpotentReason;
@@ -180,26 +211,35 @@ Immunization(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
+    this.element_status,
     this.statusReason,
     this.vaccineCode,
     this.patient,
     this.encounter,
     this.occurrenceDateTime,
+    this.element_occurrenceDateTime,
     this.occurrenceString,
+    this.element_occurrenceString,
     this.recorded,
+    this.element_recorded,
     this.primarySource,
+    this.element_primarySource,
     this.reportOrigin,
     this.location,
     this.manufacturer,
     this.lotNumber,
+    this.element_lotNumber,
     this.expirationDate,
+    this.element_expirationDate,
     this.site,
     this.route,
     this.doseQuantity,
@@ -208,6 +248,7 @@ Immunization(
     this.reasonCode,
     this.reasonReference,
     this.isSubpotent,
+    this.element_isSubpotent,
     this.subpotentReason,
     this.education,
     this.programEligibility,
@@ -300,24 +341,40 @@ List<Extension> modifierExtension;
 //  Identifier of the material presented to the patient.
 String documentType;
 
+//  Extensions for documentType
+Element element_documentType;
+
 //  Reference pointer to the educational material given to the patient if
 // the information was on line.
 String reference;
 
+//  Extensions for reference
+Element element_reference;
+
 //  Date the educational material was published.
 DateTime publicationDate;
 
+//  Extensions for publicationDate
+Element element_publicationDate;
+
 //  Date the educational material was given to the patient.
 DateTime presentationDate;
+
+//  Extensions for presentationDate
+Element element_presentationDate;
 
 Immunization_Education(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.documentType,
+    this.element_documentType,
     this.reference,
+    this.element_reference,
     this.publicationDate,
-    this.presentationDate
+    this.element_publicationDate,
+    this.presentationDate,
+    this.element_presentationDate
     });
 
   factory Immunization_Education.fromJson(Map<String, dynamic> json) => _$Immunization_EducationFromJson(json);
@@ -356,19 +413,27 @@ List<Extension> modifierExtension;
 //  Date of reaction to the immunization.
 DateTime date;
 
+//  Extensions for date
+Element element_date;
+
 //  Details of the reaction.
 Reference detail;
 
 //  Self-reported indicator.
 bool reported;
 
+//  Extensions for reported
+Element element_reported;
+
 Immunization_Reaction(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.date,
+    this.element_date,
     this.detail,
-    this.reported
+    this.reported,
+    this.element_reported
     });
 
   factory Immunization_Reaction.fromJson(Map<String, dynamic> json) => _$Immunization_ReactionFromJson(json);
@@ -408,6 +473,9 @@ List<Extension> modifierExtension;
 // within the context of an authority.
 String series;
 
+//  Extensions for series
+Element element_series;
+
 //  Indicates the authority who published the protocol (e.g. ACIP) that is
 // being followed.
 Reference authority;
@@ -419,26 +487,43 @@ List<CodeableConcept> targetDisease;
 //  Nominal position in a series.
 int doseNumberPositiveInt; //  pattern: ^[1-9][0-9]*$
 
+//  Extensions for doseNumberPositiveInt
+Element element_doseNumberPositiveInt;
+
 //  Nominal position in a series.
 String doseNumberString; //  pattern: ^[ \r\n\t\S]+$
+
+//  Extensions for doseNumberString
+Element element_doseNumberString;
 
 //  The recommended number of doses to achieve immunity.
 int seriesDosesPositiveInt; //  pattern: ^[1-9][0-9]*$
 
+//  Extensions for seriesDosesPositiveInt
+Element element_seriesDosesPositiveInt;
+
 //  The recommended number of doses to achieve immunity.
 String seriesDosesString; //  pattern: ^[ \r\n\t\S]+$
+
+//  Extensions for seriesDosesString
+Element element_seriesDosesString;
 
 Immunization_ProtocolApplied(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.series,
+    this.element_series,
     this.authority,
     this.targetDisease,
     this.doseNumberPositiveInt,
+    this.element_doseNumberPositiveInt,
     this.doseNumberString,
+    this.element_doseNumberString,
     this.seriesDosesPositiveInt,
-    this.seriesDosesString
+    this.element_seriesDosesPositiveInt,
+    this.seriesDosesString,
+    this.element_seriesDosesString
     });
 
   factory Immunization_ProtocolApplied.fromJson(Map<String, dynamic> json) => _$Immunization_ProtocolAppliedFromJson(json);

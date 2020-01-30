@@ -14,7 +14,14 @@ CarePlan _$CarePlanFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
+    element_implicitRules: json['element_implicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['element_implicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
+    element_language: json['element_language'] == null
+        ? null
+        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
@@ -39,6 +46,10 @@ CarePlan _$CarePlanFromJson(Map<String, dynamic> json) {
         ?.toList(),
     instantiatesUri:
         (json['instantiatesUri'] as List)?.map((e) => e as String)?.toList(),
+    element_instantiatesUri: (json['element_instantiatesUri'] as List)
+        ?.map((e) =>
+            e == null ? null : Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     basedOn: (json['basedOn'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
@@ -52,14 +63,26 @@ CarePlan _$CarePlanFromJson(Map<String, dynamic> json) {
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
+    element_status: json['element_status'] == null
+        ? null
+        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
     intent: json['intent'] as String,
+    element_intent: json['element_intent'] == null
+        ? null
+        : Element.fromJson(json['element_intent'] as Map<String, dynamic>),
     category: (json['category'] as List)
         ?.map((e) => e == null
             ? null
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     title: json['title'] as String,
+    element_title: json['element_title'] == null
+        ? null
+        : Element.fromJson(json['element_title'] as Map<String, dynamic>),
     description: json['description'] as String,
+    element_description: json['element_description'] == null
+        ? null
+        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
     subject: json['subject'] == null
         ? null
         : Reference.fromJson(json['subject'] as Map<String, dynamic>),
@@ -72,6 +95,9 @@ CarePlan _$CarePlanFromJson(Map<String, dynamic> json) {
     created: json['created'] == null
         ? null
         : DateTime.parse(json['created'] as String),
+    element_created: json['element_created'] == null
+        ? null
+        : Element.fromJson(json['element_created'] as Map<String, dynamic>),
     author: json['author'] == null
         ? null
         : Reference.fromJson(json['author'] as Map<String, dynamic>),
@@ -112,7 +138,9 @@ Map<String, dynamic> _$CarePlanToJson(CarePlan instance) => <String, dynamic>{
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
+      'element_implicitRules': instance.element_implicitRules?.toJson(),
       'language': instance.language,
+      'element_language': instance.element_language?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -121,18 +149,25 @@ Map<String, dynamic> _$CarePlanToJson(CarePlan instance) => <String, dynamic>{
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'instantiatesCanonical': instance.instantiatesCanonical,
       'instantiatesUri': instance.instantiatesUri,
+      'element_instantiatesUri':
+          instance.element_instantiatesUri?.map((e) => e?.toJson())?.toList(),
       'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
       'replaces': instance.replaces?.map((e) => e?.toJson())?.toList(),
       'partOf': instance.partOf?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
+      'element_status': instance.element_status?.toJson(),
       'intent': instance.intent,
+      'element_intent': instance.element_intent?.toJson(),
       'category': instance.category?.map((e) => e?.toJson())?.toList(),
       'title': instance.title,
+      'element_title': instance.element_title?.toJson(),
       'description': instance.description,
+      'element_description': instance.element_description?.toJson(),
       'subject': instance.subject?.toJson(),
       'encounter': instance.encounter?.toJson(),
       'period': instance.period?.toJson(),
       'created': instance.created?.toIso8601String(),
+      'element_created': instance.element_created?.toJson(),
       'author': instance.author?.toJson(),
       'contributor': instance.contributor?.map((e) => e?.toJson())?.toList(),
       'careTeam': instance.careTeam?.map((e) => e?.toJson())?.toList(),
@@ -204,11 +239,18 @@ CarePlan_Detail _$CarePlan_DetailFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     kind: json['kind'] as String,
+    element_kind: json['element_kind'] == null
+        ? null
+        : Element.fromJson(json['element_kind'] as Map<String, dynamic>),
     instantiatesCanonical: (json['instantiatesCanonical'] as List)
         ?.map((e) => e as String)
         ?.toList(),
     instantiatesUri:
         (json['instantiatesUri'] as List)?.map((e) => e as String)?.toList(),
+    element_instantiatesUri: (json['element_instantiatesUri'] as List)
+        ?.map((e) =>
+            e == null ? null : Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     code: json['code'] == null
         ? null
         : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
@@ -226,11 +268,18 @@ CarePlan_Detail _$CarePlan_DetailFromJson(Map<String, dynamic> json) {
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
+    element_status: json['element_status'] == null
+        ? null
+        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
     statusReason: json['statusReason'] == null
         ? null
         : CodeableConcept.fromJson(
             json['statusReason'] as Map<String, dynamic>),
     doNotPerform: json['doNotPerform'] as bool,
+    element_doNotPerform: json['element_doNotPerform'] == null
+        ? null
+        : Element.fromJson(
+            json['element_doNotPerform'] as Map<String, dynamic>),
     scheduledTiming: json['scheduledTiming'] == null
         ? null
         : Timing.fromJson(json['scheduledTiming'] as Map<String, dynamic>),
@@ -238,6 +287,10 @@ CarePlan_Detail _$CarePlan_DetailFromJson(Map<String, dynamic> json) {
         ? null
         : Period.fromJson(json['scheduledPeriod'] as Map<String, dynamic>),
     scheduledString: json['scheduledString'] as String,
+    element_scheduledString: json['element_scheduledString'] == null
+        ? null
+        : Element.fromJson(
+            json['element_scheduledString'] as Map<String, dynamic>),
     location: json['location'] == null
         ? null
         : Reference.fromJson(json['location'] as Map<String, dynamic>),
@@ -259,6 +312,9 @@ CarePlan_Detail _$CarePlan_DetailFromJson(Map<String, dynamic> json) {
         ? null
         : Quantity.fromJson(json['quantity'] as Map<String, dynamic>),
     description: json['description'] as String,
+    element_description: json['element_description'] == null
+        ? null
+        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
   );
 }
 
@@ -269,19 +325,25 @@ Map<String, dynamic> _$CarePlan_DetailToJson(CarePlan_Detail instance) =>
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'kind': instance.kind,
+      'element_kind': instance.element_kind?.toJson(),
       'instantiatesCanonical': instance.instantiatesCanonical,
       'instantiatesUri': instance.instantiatesUri,
+      'element_instantiatesUri':
+          instance.element_instantiatesUri?.map((e) => e?.toJson())?.toList(),
       'code': instance.code?.toJson(),
       'reasonCode': instance.reasonCode?.map((e) => e?.toJson())?.toList(),
       'reasonReference':
           instance.reasonReference?.map((e) => e?.toJson())?.toList(),
       'goal': instance.goal?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
+      'element_status': instance.element_status?.toJson(),
       'statusReason': instance.statusReason?.toJson(),
       'doNotPerform': instance.doNotPerform,
+      'element_doNotPerform': instance.element_doNotPerform?.toJson(),
       'scheduledTiming': instance.scheduledTiming?.toJson(),
       'scheduledPeriod': instance.scheduledPeriod?.toJson(),
       'scheduledString': instance.scheduledString,
+      'element_scheduledString': instance.element_scheduledString?.toJson(),
       'location': instance.location?.toJson(),
       'performer': instance.performer?.map((e) => e?.toJson())?.toList(),
       'productCodeableConcept': instance.productCodeableConcept?.toJson(),
@@ -289,4 +351,5 @@ Map<String, dynamic> _$CarePlan_DetailToJson(CarePlan_Detail instance) =>
       'dailyAmount': instance.dailyAmount?.toJson(),
       'quantity': instance.quantity?.toJson(),
       'description': instance.description,
+      'element_description': instance.element_description?.toJson(),
     };

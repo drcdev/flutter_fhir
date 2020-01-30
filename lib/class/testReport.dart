@@ -5,6 +5,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'testReport.g.dart';
@@ -30,8 +31,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -76,8 +83,14 @@ Identifier identifier;
 //  A free text natural language name identifying the executed TestScript.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  The current state of this test report.
 String status; // <code> enum: completed/in-progress/waiting/stopped/entered-in-error;
+
+//  Extensions for status
+Element element_status;
 
 //  Ideally this is an absolute URL that is used to identify the
 // version-specific TestScript that was executed, matching the
@@ -87,15 +100,27 @@ Reference testScript;
 //  The overall result from the execution of the TestScript.
 String result; // <code> enum: pass/fail/pending;
 
+//  Extensions for result
+Element element_result;
+
 //  The final score (percentage of tests passed) resulting from the
 // execution of the TestScript.
 double score;
 
+//  Extensions for score
+Element element_score;
+
 //  Name of the tester producing this report (Organization or individual).
 String tester;
 
+//  Extensions for tester
+Element element_tester;
+
 //  When the TestScript was executed and this TestReport was generated.
 DateTime issued;
+
+//  Extensions for issued
+Element element_issued;
 
 //  A participant in the test execution, either the execution engine, a
 // client, or a server.
@@ -117,19 +142,27 @@ TestReport(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.name,
+    this.element_name,
     this.status,
+    this.element_status,
     this.testScript,
     this.result,
+    this.element_result,
     this.score,
+    this.element_score,
     this.tester,
+    this.element_tester,
     this.issued,
+    this.element_issued,
     this.participant,
     this.setup,
     this.test,
@@ -172,19 +205,31 @@ List<Extension> modifierExtension;
 //  The type of participant.
 String type; // <code> enum: test-engine/client/server;
 
+//  Extensions for type
+Element element_type;
+
 //  The uri of the participant. An absolute URL is preferred.
 String uri;
 
+//  Extensions for uri
+Element element_uri;
+
 //  The display name of the participant.
 String display;
+
+//  Extensions for display
+Element element_display;
 
 TestReport_Participant(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.type,
+    this.element_type,
     this.uri,
-    this.display
+    this.element_uri,
+    this.display,
+    this.element_display
     });
 
   factory TestReport_Participant.fromJson(Map<String, dynamic> json) => _$TestReport_ParticipantFromJson(json);
@@ -313,19 +358,31 @@ List<Extension> modifierExtension;
 //  The result of this operation.
 String result; // <code> enum: pass/skip/fail/warning/error;
 
+//  Extensions for result
+Element element_result;
+
 //  An explanatory message associated with the result.
 String message;
 
+//  Extensions for message
+Element element_message;
+
 //  A link to further details on the result.
 String detail;
+
+//  Extensions for detail
+Element element_detail;
 
 TestReport_Operation(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.result,
+    this.element_result,
     this.message,
-    this.detail
+    this.element_message,
+    this.detail,
+    this.element_detail
     });
 
   factory TestReport_Operation.fromJson(Map<String, dynamic> json) => _$TestReport_OperationFromJson(json);
@@ -364,19 +421,31 @@ List<Extension> modifierExtension;
 //  The result of this assertion.
 String result; // <code> enum: pass/skip/fail/warning/error;
 
+//  Extensions for result
+Element element_result;
+
 //  An explanatory message associated with the result.
 String message;
 
+//  Extensions for message
+Element element_message;
+
 //  A link to further details on the result.
 String detail;
+
+//  Extensions for detail
+Element element_detail;
 
 TestReport_Assert(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.result,
+    this.element_result,
     this.message,
-    this.detail
+    this.element_message,
+    this.detail,
+    this.element_detail
     });
 
   factory TestReport_Assert.fromJson(Map<String, dynamic> json) => _$TestReport_AssertFromJson(json);
@@ -416,9 +485,15 @@ List<Extension> modifierExtension;
 // engines.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  A short description of the test used by test engines for tracking and
 // reporting purposes.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  Action would contain either an operation or an assertion.
 List<TestReport_Action1> action;
@@ -428,7 +503,9 @@ TestReport_Test(
     this.extension,
     this.modifierExtension,
     this.name,
+    this.element_name,
     this.description,
+    this.element_description,
     this.action
     });
 

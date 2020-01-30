@@ -11,6 +11,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'riskEvidenceSynthesis.g.dart';
@@ -36,8 +37,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -85,6 +92,9 @@ List<Extension> modifierExtension;
 // servers.
 String url;
 
+//  Extensions for url
+Element element_url;
+
 //  A formal identifier that is used to identify this risk evidence
 // synthesis when it is represented in other formats, or referenced in a
 // specification, model, design or an instance.
@@ -99,18 +109,30 @@ List<Identifier> identifier;
 // can be placed in a lexicographical sequence.
 String version;
 
+//  Extensions for version
+Element element_version;
+
 //  A natural language name identifying the risk evidence synthesis. This
 // name should be usable as an identifier for the module by machine
 // processing applications such as code generation.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  A short, descriptive, user-friendly title for the risk evidence
 // synthesis.
 String title;
 
+//  Extensions for title
+Element element_title;
+
 //  The status of this risk evidence synthesis. Enables tracking the
 // life-cycle of the content.
 String status; // <code> enum: draft/active/retired/unknown;
+
+//  Extensions for status
+Element element_status;
 
 //  The date  (and optionally time) when the risk evidence synthesis was
 // published. The date must change when the business version changes and
@@ -119,9 +141,15 @@ String status; // <code> enum: draft/active/retired/unknown;
 // changes.
 DateTime date;
 
+//  Extensions for date
+Element element_date;
+
 //  The name of the organization or individual that published the risk
 // evidence synthesis.
 String publisher;
+
+//  Extensions for publisher
+Element element_publisher;
 
 //  Contact details to assist a user in finding and communicating with the
 // publisher.
@@ -130,6 +158,9 @@ List<ContactDetail> contact;
 //  A free text natural language description of the risk evidence
 // synthesis from a consumer's perspective.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  A human-readable string to clarify or explain concepts about the
 // resource.
@@ -151,15 +182,24 @@ List<CodeableConcept> jurisdiction;
 // the use and publishing of the risk evidence synthesis.
 String copyright;
 
+//  Extensions for copyright
+Element element_copyright;
+
 //  The date on which the resource content was approved by the publisher.
 // Approval happens once when the content is officially approved for
 // usage.
 String approvalDate;
 
+//  Extensions for approvalDate
+Element element_approvalDate;
+
 //  The date on which the resource content was last reviewed. Review
 // happens periodically after approval but does not change the original
 // approval date.
 String lastReviewDate;
+
+//  Extensions for lastReviewDate
+Element element_lastReviewDate;
 
 //  The period during which the risk evidence synthesis content was or is
 // planned to be in active use.
@@ -223,27 +263,40 @@ RiskEvidenceSynthesis(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
+    this.element_url,
     this.identifier,
     this.version,
+    this.element_version,
     this.name,
+    this.element_name,
     this.title,
+    this.element_title,
     this.status,
+    this.element_status,
     this.date,
+    this.element_date,
     this.publisher,
+    this.element_publisher,
     this.contact,
     this.description,
+    this.element_description,
     this.note,
     this.useContext,
     this.jurisdiction,
     this.copyright,
+    this.element_copyright,
     this.approvalDate,
+    this.element_approvalDate,
     this.lastReviewDate,
+    this.element_lastReviewDate,
     this.effectivePeriod,
     this.topic,
     this.author,
@@ -297,19 +350,31 @@ List<Extension> modifierExtension;
 //  Human-readable summary of sample size.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  Number of studies included in this evidence synthesis.
 int numberOfStudies;
 
+//  Extensions for numberOfStudies
+Element element_numberOfStudies;
+
 //  Number of participants included in this evidence synthesis.
 int numberOfParticipants;
+
+//  Extensions for numberOfParticipants
+Element element_numberOfParticipants;
 
 RiskEvidenceSynthesis_SampleSize(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.description,
+    this.element_description,
     this.numberOfStudies,
-    this.numberOfParticipants
+    this.element_numberOfStudies,
+    this.numberOfParticipants,
+    this.element_numberOfParticipants
     });
 
   factory RiskEvidenceSynthesis_SampleSize.fromJson(Map<String, dynamic> json) => _$RiskEvidenceSynthesis_SampleSizeFromJson(json);
@@ -348,11 +413,17 @@ List<Extension> modifierExtension;
 //  Human-readable summary of risk estimate.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 //  Examples include proportion and mean.
 CodeableConcept type;
 
 //  The point estimate of the risk estimate.
 double value;
+
+//  Extensions for value
+Element element_value;
 
 //  Specifies the UCUM unit for the outcome.
 CodeableConcept unitOfMeasure;
@@ -361,8 +432,14 @@ CodeableConcept unitOfMeasure;
 // estimate.
 int denominatorCount;
 
+//  Extensions for denominatorCount
+Element element_denominatorCount;
+
 //  The number of group members with the outcome of interest.
 int numeratorCount;
+
+//  Extensions for numeratorCount
+Element element_numeratorCount;
 
 //  A description of the precision of the estimate for the effect.
 List<RiskEvidenceSynthesis_PrecisionEstimate> precisionEstimate;
@@ -372,11 +449,15 @@ RiskEvidenceSynthesis_RiskEstimate(
     this.extension,
     this.modifierExtension,
     this.description,
+    this.element_description,
     this.type,
     this.value,
+    this.element_value,
     this.unitOfMeasure,
     this.denominatorCount,
+    this.element_denominatorCount,
     this.numeratorCount,
+    this.element_numeratorCount,
     this.precisionEstimate
     });
 
@@ -419,11 +500,20 @@ CodeableConcept type;
 //  Use 95 for a 95% confidence interval.
 double level;
 
+//  Extensions for level
+Element element_level;
+
 //  Lower bound of confidence interval.
 double from;
 
+//  Extensions for from
+Element element_from;
+
 //  Upper bound of confidence interval.
 double to;
+
+//  Extensions for to
+Element element_to;
 
 RiskEvidenceSynthesis_PrecisionEstimate(
   {this.id,
@@ -431,8 +521,11 @@ RiskEvidenceSynthesis_PrecisionEstimate(
     this.modifierExtension,
     this.type,
     this.level,
+    this.element_level,
     this.from,
-    this.to
+    this.element_from,
+    this.to,
+    this.element_to
     });
 
   factory RiskEvidenceSynthesis_PrecisionEstimate.fromJson(Map<String, dynamic> json) => _$RiskEvidenceSynthesis_PrecisionEstimateFromJson(json);

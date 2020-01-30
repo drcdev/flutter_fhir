@@ -17,6 +17,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'activityDefinition.g.dart';
@@ -42,8 +43,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -90,6 +97,9 @@ List<Extension> modifierExtension;
 // activity definition is stored on different servers.
 String url;
 
+//  Extensions for url
+Element element_url;
+
 //  A formal identifier that is used to identify this activity definition
 // when it is represented in other formats, or referenced in a
 // specification, model, design or an instance.
@@ -108,26 +118,44 @@ List<Identifier> identifier;
 // Note that a version is required for non-experimental active assets.
 String version;
 
+//  Extensions for version
+Element element_version;
+
 //  A natural language name identifying the activity definition. This name
 // should be usable as an identifier for the module by machine processing
 // applications such as code generation.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  A short, descriptive, user-friendly title for the activity definition.
 String title;
+
+//  Extensions for title
+Element element_title;
 
 //  An explanatory or alternate title for the activity definition giving
 // additional information about its content.
 String subtitle;
 
+//  Extensions for subtitle
+Element element_subtitle;
+
 //  The status of this activity definition. Enables tracking the
 // life-cycle of the content.
 String status; // <code> enum: draft/active/retired/unknown;
+
+//  Extensions for status
+Element element_status;
 
 //  A Boolean value to indicate that this activity definition is authored
 // for testing purposes (or education/evaluation/marketing) and is not
 // intended to be used for genuine usage.
 bool experimental;
+
+//  Extensions for experimental
+Element element_experimental;
 
 //  A code or group definition that describes the intended subject of the
 // activity being defined.
@@ -143,9 +171,15 @@ Reference subjectReference;
 // change when the substantive content of the activity definition changes.
 DateTime date;
 
+//  Extensions for date
+Element element_date;
+
 //  The name of the organization or individual that published the activity
 // definition.
 String publisher;
+
+//  Extensions for publisher
+Element element_publisher;
 
 //  Contact details to assist a user in finding and communicating with the
 // publisher.
@@ -154,6 +188,9 @@ List<ContactDetail> contact;
 //  A free text natural language description of the activity definition
 // from a consumer's perspective.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  The content was developed with a focus and intent of supporting the
 // contexts that are listed. These contexts may be general categories
@@ -170,24 +207,39 @@ List<CodeableConcept> jurisdiction;
 // been designed as it has.
 String purpose;
 
+//  Extensions for purpose
+Element element_purpose;
+
 //  A detailed description of how the activity definition is used from a
 // clinical perspective.
 String usage;
+
+//  Extensions for usage
+Element element_usage;
 
 //  A copyright statement relating to the activity definition and/or its
 // contents. Copyright statements are generally legal restrictions on the
 // use and publishing of the activity definition.
 String copyright;
 
+//  Extensions for copyright
+Element element_copyright;
+
 //  The date on which the resource content was approved by the publisher.
 // Approval happens once when the content is officially approved for
 // usage.
 String approvalDate;
 
+//  Extensions for approvalDate
+Element element_approvalDate;
+
 //  The date on which the resource content was last reviewed. Review
 // happens periodically after approval but does not change the original
 // approval date.
 String lastReviewDate;
+
+//  Extensions for lastReviewDate
+Element element_lastReviewDate;
 
 //  The period during which the activity definition content was or is
 // planned to be in active use.
@@ -228,6 +280,9 @@ List<String> library;
 // resource.
 String kind;
 
+//  Extensions for kind
+Element element_kind;
+
 //  A profile to which the target of the activity definition is expected
 // to conform.
 String profile;
@@ -240,9 +295,15 @@ CodeableConcept code;
 // activity and where the request should fit into the workflow chain.
 String intent;
 
+//  Extensions for intent
+Element element_intent;
+
 //  Indicates how quickly the activity  should be addressed with respect
 // to other requests.
 String priority;
+
+//  Extensions for priority
+Element element_priority;
 
 //  Set this to true if the definition is to indicate that a particular
 // activity should NOT be performed. If true, this element should be
@@ -251,6 +312,9 @@ String priority;
 // action.
 bool doNotPerform;
 
+//  Extensions for doNotPerform
+Element element_doNotPerform;
+
 //  The period, timing or frequency upon which the described activity is
 // to occur.
 Timing timingTiming;
@@ -258,6 +322,9 @@ Timing timingTiming;
 //  The period, timing or frequency upon which the described activity is
 // to occur.
 String timingDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+
+//  Extensions for timingDateTime
+Element element_timingDateTime;
 
 //  The period, timing or frequency upon which the described activity is
 // to occur.
@@ -331,32 +398,49 @@ ActivityDefinition(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
+    this.element_url,
     this.identifier,
     this.version,
+    this.element_version,
     this.name,
+    this.element_name,
     this.title,
+    this.element_title,
     this.subtitle,
+    this.element_subtitle,
     this.status,
+    this.element_status,
     this.experimental,
+    this.element_experimental,
     this.subjectCodeableConcept,
     this.subjectReference,
     this.date,
+    this.element_date,
     this.publisher,
+    this.element_publisher,
     this.contact,
     this.description,
+    this.element_description,
     this.useContext,
     this.jurisdiction,
     this.purpose,
+    this.element_purpose,
     this.usage,
+    this.element_usage,
     this.copyright,
+    this.element_copyright,
     this.approvalDate,
+    this.element_approvalDate,
     this.lastReviewDate,
+    this.element_lastReviewDate,
     this.effectivePeriod,
     this.topic,
     this.author,
@@ -366,13 +450,18 @@ ActivityDefinition(
     this.relatedArtifact,
     this.library,
     this.kind,
+    this.element_kind,
     this.profile,
     this.code,
     this.intent,
+    this.element_intent,
     this.priority,
+    this.element_priority,
     this.doNotPerform,
+    this.element_doNotPerform,
     this.timingTiming,
     this.timingDateTime,
+    this.element_timingDateTime,
     this.timingAge,
     this.timingPeriod,
     this.timingRange,
@@ -427,6 +516,9 @@ List<Extension> modifierExtension;
 //  The type of participant in the action.
 String type;
 
+//  Extensions for type
+Element element_type;
+
 //  The role the participant should play in performing the described
 // action.
 CodeableConcept role;
@@ -436,6 +528,7 @@ ActivityDefinition_Participant(
     this.extension,
     this.modifierExtension,
     this.type,
+    this.element_type,
     this.role
     });
 
@@ -483,6 +576,9 @@ List<Extension> modifierExtension;
 // Profile](fhirpath.html#simple) for full details).
 String path;
 
+//  Extensions for path
+Element element_path;
+
 //  An expression specifying the value of the customized element.
 Expression expression;
 
@@ -491,6 +587,7 @@ ActivityDefinition_DynamicValue(
     this.extension,
     this.modifierExtension,
     this.path,
+    this.element_path,
     this.expression
     });
 

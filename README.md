@@ -37,7 +37,9 @@ I'm a newbie at coding, but I've tried to keep naming rules consistent (and cons
     'fore' - 'Task'
     'asserts' - 'TestReport_Action', 'TestReport_Action1', 'TestScript_Action', 'TestScript_Action1'
 9. I had to add a resourceList class - this is not official.
-10. Named optional parameters are not allowed to start with underscores. I'm going to omit for now.
+10. Named optional parameters are not allowed to start with underscores. ~~I'm going to omit for now.~~
+    I changed my mind. I added element in front of every underscore since they're all elements, and
+    that way I'll be able to support them in case in the future.
 
 ToDo: define canonical types\n
 Todo: understand initstate better, learn Future, async, await

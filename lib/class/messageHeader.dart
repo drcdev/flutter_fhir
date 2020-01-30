@@ -7,6 +7,7 @@ import 'package:flutter_fhir/class/coding.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'messageHeader.g.dart';
@@ -32,8 +33,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -85,6 +92,9 @@ Coding eventCoding;
 // uri to the EventDefinition.
 String eventUri; //  pattern: ^\S*$
 
+//  Extensions for eventUri
+Element element_eventUri;
+
 //  The destination application which the message is intended for.
 List<MessageHeader_Destination> destination;
 
@@ -131,13 +141,16 @@ MessageHeader(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.eventCoding,
     this.eventUri,
+    this.element_eventUri,
     this.destination,
     this.sender,
     this.enterer,
@@ -186,12 +199,18 @@ List<Extension> modifierExtension;
 //  Human-readable name for the target system.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  Identifies the target end system in situations where the initial
 // message transmission is to an intermediary system.
 Reference target;
 
 //  Indicates where the message should be routed to.
 String endpoint;
+
+//  Extensions for endpoint
+Element element_endpoint;
 
 //  Allows data conveyed by a message to be addressed to a particular
 // person or department when routing to a specific application isn't
@@ -203,8 +222,10 @@ MessageHeader_Destination(
     this.extension,
     this.modifierExtension,
     this.name,
+    this.element_name,
     this.target,
     this.endpoint,
+    this.element_endpoint,
     this.receiver
     });
 
@@ -244,12 +265,21 @@ List<Extension> modifierExtension;
 //  Human-readable name for the source system.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  May include configuration or other information useful in debugging.
 String software;
+
+//  Extensions for software
+Element element_software;
 
 //  Can convey versions of multiple systems in situations where a message
 // passes through multiple hands.
 String version;
+
+//  Extensions for version
+Element element_version;
 
 //  An e-mail, phone, website or other contact point to use to resolve
 // issues with message communications.
@@ -258,15 +288,22 @@ ContactPoint contact;
 //  Identifies the routing target to send acknowledgements to.
 String endpoint;
 
+//  Extensions for endpoint
+Element element_endpoint;
+
 MessageHeader_Source(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.name,
+    this.element_name,
     this.software,
+    this.element_software,
     this.version,
+    this.element_version,
     this.contact,
-    this.endpoint
+    this.endpoint,
+    this.element_endpoint
     });
 
   factory MessageHeader_Source.fromJson(Map<String, dynamic> json) => _$MessageHeader_SourceFromJson(json);
@@ -306,9 +343,15 @@ List<Extension> modifierExtension;
 // response.
 String identifier;
 
+//  Extensions for identifier
+Element element_identifier;
+
 //  Code that identifies the type of response to the message - whether it
 // was successful or not, and whether it should be resent or not.
 String code; // <code> enum: ok/transient-error/fatal-error;
+
+//  Extensions for code
+Element element_code;
 
 //  Full details of any issues found in the message.
 Reference details;
@@ -318,7 +361,9 @@ MessageHeader_Response(
     this.extension,
     this.modifierExtension,
     this.identifier,
+    this.element_identifier,
     this.code,
+    this.element_code,
     this.details
     });
 

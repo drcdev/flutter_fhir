@@ -2,6 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/class/codeableConcept.dart';
 import 'package:flutter_fhir/class/attachment.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/quantity.dart';
 import 'package:flutter_fhir/class/extension.dart';
 
@@ -77,13 +78,22 @@ Quantity externalDiameter;
 // used.
 String shape;
 
+//  Extensions for shape
+Element element_shape;
+
 //  Where applicable, the color can be specified An appropriate controlled
 // vocabulary shall be used The term and the term identifier shall be
 // used.
 List<String> color;
 
+//  Extensions for color
+List<Element> element_color;
+
 //  Where applicable, the imprint can be specified as text.
 List<String> imprint;
+
+//  Extensions for imprint
+List<Element> element_imprint;
 
 //  Where applicable, the image can be provided The format of the image
 // attachment shall be specified by regional implementations.
@@ -105,8 +115,11 @@ ProdCharacteristic(
     this.nominalVolume,
     this.externalDiameter,
     this.shape,
+    this.element_shape,
     this.color,
+    this.element_color,
     this.imprint,
+    this.element_imprint,
     this.image,
     this.scoring
     });

@@ -13,6 +13,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'library.g.dart';
@@ -38,8 +39,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -86,6 +93,9 @@ List<Extension> modifierExtension;
 // stored on different servers.
 String url;
 
+//  Extensions for url
+Element element_url;
+
 //  A formal identifier that is used to identify this library when it is
 // represented in other formats, or referenced in a specification, model,
 // design or an instance. e.g. CMS or NQF identifiers for a measure
@@ -106,26 +116,44 @@ List<Identifier> identifier;
 // non-experimental active artifacts.
 String version;
 
+//  Extensions for version
+Element element_version;
+
 //  A natural language name identifying the library. This name should be
 // usable as an identifier for the module by machine processing
 // applications such as code generation.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  A short, descriptive, user-friendly title for the library.
 String title;
+
+//  Extensions for title
+Element element_title;
 
 //  An explanatory or alternate title for the library giving additional
 // information about its content.
 String subtitle;
 
+//  Extensions for subtitle
+Element element_subtitle;
+
 //  The status of this library. Enables tracking the life-cycle of the
 // content.
 String status; // <code> enum: draft/active/retired/unknown;
+
+//  Extensions for status
+Element element_status;
 
 //  A Boolean value to indicate that this library is authored for testing
 // purposes (or education/evaluation/marketing) and is not intended to be
 // used for genuine usage.
 bool experimental;
+
+//  Extensions for experimental
+Element element_experimental;
 
 //  Identifies the type of library such as a Logic Library, Model
 // Definition, Asset Collection, or Module Definition.
@@ -145,8 +173,14 @@ Reference subjectReference;
 // substantive content of the library changes.
 DateTime date;
 
+//  Extensions for date
+Element element_date;
+
 //  The name of the organization or individual that published the library.
 String publisher;
+
+//  Extensions for publisher
+Element element_publisher;
 
 //  Contact details to assist a user in finding and communicating with the
 // publisher.
@@ -155,6 +189,9 @@ List<ContactDetail> contact;
 //  A free text natural language description of the library from a
 // consumer's perspective.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  The content was developed with a focus and intent of supporting the
 // contexts that are listed. These contexts may be general categories
@@ -171,24 +208,39 @@ List<CodeableConcept> jurisdiction;
 // as it has.
 String purpose;
 
+//  Extensions for purpose
+Element element_purpose;
+
 //  A detailed description of how the library is used from a clinical
 // perspective.
 String usage;
+
+//  Extensions for usage
+Element element_usage;
 
 //  A copyright statement relating to the library and/or its contents.
 // Copyright statements are generally legal restrictions on the use and
 // publishing of the library.
 String copyright;
 
+//  Extensions for copyright
+Element element_copyright;
+
 //  The date on which the resource content was approved by the publisher.
 // Approval happens once when the content is officially approved for
 // usage.
 String approvalDate;
 
+//  Extensions for approvalDate
+Element element_approvalDate;
+
 //  The date on which the resource content was last reviewed. Review
 // happens periodically after approval but does not change the original
 // approval date.
 String lastReviewDate;
+
+//  Extensions for lastReviewDate
+Element element_lastReviewDate;
 
 //  The period during which the library content was or is planned to be in
 // active use.
@@ -237,33 +289,50 @@ Library(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
+    this.element_url,
     this.identifier,
     this.version,
+    this.element_version,
     this.name,
+    this.element_name,
     this.title,
+    this.element_title,
     this.subtitle,
+    this.element_subtitle,
     this.status,
+    this.element_status,
     this.experimental,
+    this.element_experimental,
     this.type,
     this.subjectCodeableConcept,
     this.subjectReference,
     this.date,
+    this.element_date,
     this.publisher,
+    this.element_publisher,
     this.contact,
     this.description,
+    this.element_description,
     this.useContext,
     this.jurisdiction,
     this.purpose,
+    this.element_purpose,
     this.usage,
+    this.element_usage,
     this.copyright,
+    this.element_copyright,
     this.approvalDate,
+    this.element_approvalDate,
     this.lastReviewDate,
+    this.element_lastReviewDate,
     this.effectivePeriod,
     this.topic,
     this.author,

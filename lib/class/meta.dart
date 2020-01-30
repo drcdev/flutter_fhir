@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/class/coding.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/extension.dart';
 
 part 'meta.g.dart';
@@ -25,8 +26,14 @@ List<Extension> extension;
 // or deleted.
 String versionId;
 
+//  Extensions for versionId
+Element element_versionId;
+
 //  When the resource last changed - e.g. when the version changed.
 DateTime lastUpdated;
+
+//  Extensions for lastUpdated
+Element element_lastUpdated;
 
 //  A uri that identifies the source system of the resource. This provides
 // a minimal amount of [[[Provenance]]] information that can be used to
@@ -34,6 +41,9 @@ DateTime lastUpdated;
 // source may identify another FHIR server, document, message, database,
 // etc.
 String source;
+
+//  Extensions for source
+Element element_source;
 
 //  A list of profiles (references to [[[StructureDefinition]]] resources)
 // that this resource claims to conform to. The URL is a reference to
@@ -54,8 +64,11 @@ Meta(
   {this.id,
     this.extension,
     this.versionId,
+    this.element_versionId,
     this.lastUpdated,
+    this.element_lastUpdated,
     this.source,
+    this.element_source,
     this.profile,
     this.security,
     this.tag

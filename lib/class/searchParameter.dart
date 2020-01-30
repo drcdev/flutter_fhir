@@ -6,6 +6,7 @@ import 'package:flutter_fhir/class/contactDetail.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'searchParameter.g.dart';
@@ -31,8 +32,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -79,6 +86,9 @@ List<Extension> modifierExtension;
 // search parameter is stored on different servers.
 String url;
 
+//  Extensions for url
+Element element_url;
+
 //  The identifier that is used to identify this version of the search
 // parameter when it is referenced in a specification, model, design or
 // instance. This is an arbitrary value managed by the search parameter
@@ -88,10 +98,16 @@ String url;
 // lexicographical sequence.
 String version;
 
+//  Extensions for version
+Element element_version;
+
 //  A natural language name identifying the search parameter. This name
 // should be usable as an identifier for the module by machine processing
 // applications such as code generation.
 String name;
+
+//  Extensions for name
+Element element_name;
 
 //  Where this search parameter is originally defined. If a derivedFrom is
 // provided, then the details in the search parameter must be consistent
@@ -104,10 +120,16 @@ String derivedFrom;
 // of the content.
 String status; // <code> enum: draft/active/retired/unknown;
 
+//  Extensions for status
+Element element_status;
+
 //  A Boolean value to indicate that this search parameter is authored for
 // testing purposes (or education/evaluation/marketing) and is not
 // intended to be used for genuine usage.
 bool experimental;
+
+//  Extensions for experimental
+Element element_experimental;
 
 //  The date  (and optionally time) when the search parameter was
 // published. The date must change when the business version changes and
@@ -115,9 +137,15 @@ bool experimental;
 // change when the substantive content of the search parameter changes.
 DateTime date;
 
+//  Extensions for date
+Element element_date;
+
 //  The name of the organization or individual that published the search
 // parameter.
 String publisher;
+
+//  Extensions for publisher
+Element element_publisher;
 
 //  Contact details to assist a user in finding and communicating with the
 // publisher.
@@ -125,6 +153,9 @@ List<ContactDetail> contact;
 
 //  And how it used.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  The content was developed with a focus and intent of supporting the
 // contexts that are listed. These contexts may be general categories
@@ -141,47 +172,83 @@ List<CodeableConcept> jurisdiction;
 // designed as it has.
 String purpose;
 
+//  Extensions for purpose
+Element element_purpose;
+
 //  The code used in the URL or the parameter name in a parameters
 // resource for this search parameter.
 String code;
+
+//  Extensions for code
+Element element_code;
 
 //  The base resource type(s) that this search parameter can be used
 // against.
 List<String> base;
 
+//  Extensions for base
+List<Element> element_base;
+
 //  The type of value that a search parameter may contain, and how the
 // content is interpreted.
 String type; // <code> enum: number/date/string/token/reference/composite/quantity/uri/special;
+
+//  Extensions for type
+Element element_type;
 
 //  A FHIRPath expression that returns a set of elements for the search
 // parameter.
 String expression;
 
+//  Extensions for expression
+Element element_expression;
+
 //  An XPath expression that returns a set of elements for the search
 // parameter.
 String xpath;
+
+//  Extensions for xpath
+Element element_xpath;
 
 //  How the search parameter relates to the set of elements returned by
 // evaluating the xpath query.
 String xpathUsage; // <code> enum: normal/phonetic/nearby/distance/other;
 
+//  Extensions for xpathUsage
+Element element_xpathUsage;
+
 //  Types of resource (if a resource is referenced).
 List<String> target;
+
+//  Extensions for target
+List<Element> element_target;
 
 //  Whether multiple values are allowed for each time the parameter
 // exists. Values are separated by commas, and the parameter matches if
 // any of the values match.
 bool multipleOr;
 
+//  Extensions for multipleOr
+Element element_multipleOr;
+
 //  Whether multiple parameters are allowed - e.g. more than one parameter
 // with the same name. The search matches if all the parameters match.
 bool multipleAnd;
 
+//  Extensions for multipleAnd
+Element element_multipleAnd;
+
 //  Comparators supported for the search parameter.
 List<String> comparator; // <code> enum: eq/ne/gt/lt/ge/le/sa/eb/ap> comparator;
 
+//  Extensions for comparator
+List<Element> element_comparator;
+
 //  A modifier supported for the search parameter.
 List<String> modifier; // <code> enum: missing/exact/contains/not/text/in/not-in/below/above/type/identifier/ofType> modifier;
+
+//  Extensions for modifier
+List<Element> element_modifier;
 
 //  Contains the names of any search parameters which may be chained to
 // the containing search parameter. Chained parameters may be added to
@@ -192,6 +259,9 @@ List<String> modifier; // <code> enum: missing/exact/contains/not/text/in/not-in
 // type.
 List<String> chain;
 
+//  Extensions for chain
+List<Element> element_chain;
+
 //  Used to define the parts of a composite search parameter.
 List<SearchParameter_Component> component;
 
@@ -200,36 +270,59 @@ SearchParameter(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
+    this.element_url,
     this.version,
+    this.element_version,
     this.name,
+    this.element_name,
     this.derivedFrom,
     this.status,
+    this.element_status,
     this.experimental,
+    this.element_experimental,
     this.date,
+    this.element_date,
     this.publisher,
+    this.element_publisher,
     this.contact,
     this.description,
+    this.element_description,
     this.useContext,
     this.jurisdiction,
     this.purpose,
+    this.element_purpose,
     this.code,
+    this.element_code,
     this.base,
+    this.element_base,
     this.type,
+    this.element_type,
     this.expression,
+    this.element_expression,
     this.xpath,
+    this.element_xpath,
     this.xpathUsage,
+    this.element_xpathUsage,
     this.target,
+    this.element_target,
     this.multipleOr,
+    this.element_multipleOr,
     this.multipleAnd,
+    this.element_multipleAnd,
     this.comparator,
+    this.element_comparator,
     this.modifier,
+    this.element_modifier,
     this.chain,
+    this.element_chain,
     this.component
     });
 
@@ -273,12 +366,16 @@ String definition;
 // from the output of the main SearchParameter.expression.
 String expression;
 
+//  Extensions for expression
+Element element_expression;
+
 SearchParameter_Component(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.definition,
-    this.expression
+    this.expression,
+    this.element_expression
     });
 
   factory SearchParameter_Component.fromJson(Map<String, dynamic> json) => _$SearchParameter_ComponentFromJson(json);

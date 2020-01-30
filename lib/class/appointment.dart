@@ -7,6 +7,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'appointment.g.dart';
@@ -32,8 +33,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -82,6 +89,9 @@ List<Identifier> identifier;
 // process, however this status indicates the shared status.
 String status; // <code> enum: proposed/pending/booked/arrived/fulfilled/cancelled/noshow/entered-in-error/checked-in/waitlist;
 
+//  Extensions for status
+Element element_status;
+
 //  The coded reason for the appointment being cancelled. This is often
 // used in reporting/billing/futher processing to determine if further
 // actions are required, or specific fees apply.
@@ -118,10 +128,16 @@ List<Reference> reasonReference;
 // specifies 0 as undefined, 1 as highest, 9 as lowest priority).
 int priority;
 
+//  Extensions for priority
+Element element_priority;
+
 //  The brief description of the appointment as would be shown on a
 // subject line in a meeting request, or appointment list. Detailed or
 // expanded information should be put in the comment field.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  Additional information to support the appointment provided when making
 // the appointment.
@@ -130,8 +146,14 @@ List<Reference> supportingInformation;
 //  Date/Time that the appointment is to take place.
 DateTime start;
 
+//  Extensions for start
+Element element_start;
+
 //  Date/Time that the appointment is to conclude.
 DateTime end;
+
+//  Extensions for end
+Element element_end;
 
 //  Number of minutes that the appointment is to take. This can be less
 // than the duration between the start and end times.  For example, where
@@ -141,6 +163,9 @@ DateTime end;
 // long appointment, the duration may be 15 minutes less than the
 // difference between the start and end.
 int minutesDuration;
+
+//  Extensions for minutesDuration
+Element element_minutesDuration;
 
 //  The slots from the participants' schedules that will be filled by the
 // appointment.
@@ -152,14 +177,23 @@ List<Reference> slot;
 // should remain unchanged over the lifespan of the appointment.
 DateTime created;
 
+//  Extensions for created
+Element element_created;
+
 //  Additional comments about the appointment.
 String comment;
+
+//  Extensions for comment
+Element element_comment;
 
 //  While Appointment.comment contains information for internal use,
 // Appointment.patientInstructions is used to capture patient facing
 // information about the Appointment (e.g. please bring your referral or
 // fast from 8pm night before).
 String patientInstruction;
+
+//  Extensions for patientInstruction
+Element element_patientInstruction;
 
 //  The service request this appointment is allocated to assess (e.g.
 // incoming referral or procedure request).
@@ -181,13 +215,16 @@ Appointment(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
+    this.element_status,
     this.cancelationReason,
     this.serviceCategory,
     this.serviceType,
@@ -196,15 +233,23 @@ Appointment(
     this.reasonCode,
     this.reasonReference,
     this.priority,
+    this.element_priority,
     this.description,
+    this.element_description,
     this.supportingInformation,
     this.start,
+    this.element_start,
     this.end,
+    this.element_end,
     this.minutesDuration,
+    this.element_minutesDuration,
     this.slot,
     this.created,
+    this.element_created,
     this.comment,
+    this.element_comment,
     this.patientInstruction,
+    this.element_patientInstruction,
     this.basedOn,
     this.participant,
     this.requestedPeriod
@@ -256,8 +301,14 @@ Reference actor;
 // present.
 String required; // <code> enum: required/optional/information-only;
 
+//  Extensions for required
+Element element_required;
+
 //  Participation status of the actor.
 String status; // <code> enum: accepted/declined/tentative/needs-action;
+
+//  Extensions for status
+Element element_status;
 
 //  Participation period of the actor.
 Period period;
@@ -269,7 +320,9 @@ Appointment_Participant(
     this.type,
     this.actor,
     this.required,
+    this.element_required,
     this.status,
+    this.element_status,
     this.period
     });
 

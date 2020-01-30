@@ -14,7 +14,14 @@ SupplyDelivery _$SupplyDeliveryFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
+    element_implicitRules: json['element_implicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['element_implicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
+    element_language: json['element_language'] == null
+        ? null
+        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
@@ -43,6 +50,9 @@ SupplyDelivery _$SupplyDeliveryFromJson(Map<String, dynamic> json) {
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
+    element_status: json['element_status'] == null
+        ? null
+        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
     patient: json['patient'] == null
         ? null
         : Reference.fromJson(json['patient'] as Map<String, dynamic>),
@@ -54,6 +64,10 @@ SupplyDelivery _$SupplyDeliveryFromJson(Map<String, dynamic> json) {
         : SupplyDelivery_SuppliedItem.fromJson(
             json['suppliedItem'] as Map<String, dynamic>),
     occurrenceDateTime: json['occurrenceDateTime'] as String,
+    element_occurrenceDateTime: json['element_occurrenceDateTime'] == null
+        ? null
+        : Element.fromJson(
+            json['element_occurrenceDateTime'] as Map<String, dynamic>),
     occurrencePeriod: json['occurrencePeriod'] == null
         ? null
         : Period.fromJson(json['occurrencePeriod'] as Map<String, dynamic>),
@@ -79,7 +93,9 @@ Map<String, dynamic> _$SupplyDeliveryToJson(SupplyDelivery instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
+      'element_implicitRules': instance.element_implicitRules?.toJson(),
       'language': instance.language,
+      'element_language': instance.element_language?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -89,10 +105,13 @@ Map<String, dynamic> _$SupplyDeliveryToJson(SupplyDelivery instance) =>
       'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
       'partOf': instance.partOf?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
+      'element_status': instance.element_status?.toJson(),
       'patient': instance.patient?.toJson(),
       'type': instance.type?.toJson(),
       'suppliedItem': instance.suppliedItem?.toJson(),
       'occurrenceDateTime': instance.occurrenceDateTime,
+      'element_occurrenceDateTime':
+          instance.element_occurrenceDateTime?.toJson(),
       'occurrencePeriod': instance.occurrencePeriod?.toJson(),
       'occurrenceTiming': instance.occurrenceTiming?.toJson(),
       'supplier': instance.supplier?.toJson(),

@@ -6,6 +6,7 @@ import 'package:flutter_fhir/class/codeableConcept.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'substanceProtein.g.dart';
@@ -31,8 +32,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -81,6 +88,9 @@ CodeableConcept sequenceType;
 // variable.
 int numberOfSubunits;
 
+//  Extensions for numberOfSubunits
+Element element_numberOfSubunits;
+
 //  The disulphide bond between two cysteine residues either on the same
 // subunit or on two different subunits shall be described. The position
 // of the disulfide bonds in the SubstanceProtein shall be listed in
@@ -89,6 +99,9 @@ int numberOfSubunits;
 // positions shall actually contain the amino acid Cysteine at the
 // respective positions.
 List<String> disulfideLinkage;
+
+//  Extensions for disulfideLinkage
+List<Element> element_disulfideLinkage;
 
 //  This subclause refers to the description of each subunit constituting
 // the SubstanceProtein. A subunit is a linear sequence of amino acids
@@ -105,14 +118,18 @@ SubstanceProtein(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.sequenceType,
     this.numberOfSubunits,
+    this.element_numberOfSubunits,
     this.disulfideLinkage,
+    this.element_disulfideLinkage,
     this.subunit
     });
 
@@ -155,6 +172,9 @@ List<Extension> modifierExtension;
 // will be repeated and have sequential subscripts.
 int subunit;
 
+//  Extensions for subunit
+Element element_subunit;
+
 //  The sequence information shall be provided enumerating the amino acids
 // from N- to C-terminal end using standard single-letter amino acid
 // codes. Uppercase shall be used for L-amino acids and lowercase for
@@ -165,8 +185,14 @@ int subunit;
 // distinguished by their position in the sequence.
 String sequence;
 
+//  Extensions for sequence
+Element element_sequence;
+
 //  Length of linear sequences of amino acids contained in the subunit.
 int length;
+
+//  Extensions for length
+Element element_length;
 
 //  The sequence information shall be provided enumerating the amino acids
 // from N- to C-terminal end using standard single-letter amino acid
@@ -186,6 +212,9 @@ Identifier nTerminalModificationId;
 // SubstanceProtein shall be specified.
 String nTerminalModification;
 
+//  Extensions for nTerminalModification
+Element element_nTerminalModification;
+
 //  Unique identifier for molecular fragment modification based on the ISO
 // 11238 Substance ID.
 Identifier cTerminalModificationId;
@@ -193,18 +222,26 @@ Identifier cTerminalModificationId;
 //  The modification at the C-terminal shall be specified.
 String cTerminalModification;
 
+//  Extensions for cTerminalModification
+Element element_cTerminalModification;
+
 SubstanceProtein_Subunit(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.subunit,
+    this.element_subunit,
     this.sequence,
+    this.element_sequence,
     this.length,
+    this.element_length,
     this.sequenceAttachment,
     this.nTerminalModificationId,
     this.nTerminalModification,
+    this.element_nTerminalModification,
     this.cTerminalModificationId,
-    this.cTerminalModification
+    this.cTerminalModification,
+    this.element_cTerminalModification
     });
 
   factory SubstanceProtein_Subunit.fromJson(Map<String, dynamic> json) => _$SubstanceProtein_SubunitFromJson(json);

@@ -6,6 +6,7 @@ import 'package:flutter_fhir/class/contactDetail.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'operationDefinition.g.dart';
@@ -31,8 +32,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -79,6 +86,9 @@ List<Extension> modifierExtension;
 // same when the operation definition is stored on different servers.
 String url;
 
+//  Extensions for url
+Element element_url;
+
 //  The identifier that is used to identify this version of the operation
 // definition when it is referenced in a specification, model, design or
 // instance. This is an arbitrary value managed by the operation
@@ -88,26 +98,44 @@ String url;
 // placed in a lexicographical sequence.
 String version;
 
+//  Extensions for version
+Element element_version;
+
 //  A natural language name identifying the operation definition. This
 // name should be usable as an identifier for the module by machine
 // processing applications such as code generation.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  A short, descriptive, user-friendly title for the operation
 // definition.
 String title;
+
+//  Extensions for title
+Element element_title;
 
 //  The status of this operation definition. Enables tracking the
 // life-cycle of the content.
 String status; // <code> enum: draft/active/retired/unknown;
 
+//  Extensions for status
+Element element_status;
+
 //  Whether this is an operation or a named query.
 String kind; // <code> enum: operation/query;
+
+//  Extensions for kind
+Element element_kind;
 
 //  A Boolean value to indicate that this operation definition is authored
 // for testing purposes (or education/evaluation/marketing) and is not
 // intended to be used for genuine usage.
 bool experimental;
+
+//  Extensions for experimental
+Element element_experimental;
 
 //  The date  (and optionally time) when the operation definition was
 // published. The date must change when the business version changes and
@@ -116,9 +144,15 @@ bool experimental;
 // changes.
 DateTime date;
 
+//  Extensions for date
+Element element_date;
+
 //  The name of the organization or individual that published the
 // operation definition.
 String publisher;
+
+//  Extensions for publisher
+Element element_publisher;
 
 //  Contact details to assist a user in finding and communicating with the
 // publisher.
@@ -127,6 +161,9 @@ List<ContactDetail> contact;
 //  A free text natural language description of the operation definition
 // from a consumer's perspective.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  The content was developed with a focus and intent of supporting the
 // contexts that are listed. These contexts may be general categories
@@ -143,15 +180,27 @@ List<CodeableConcept> jurisdiction;
 // been designed as it has.
 String purpose;
 
+//  Extensions for purpose
+Element element_purpose;
+
 //  Whether the operation affects state. Side effects such as producing
 // audit trail entries do not count as 'affecting  state'.
 bool affectsState;
 
+//  Extensions for affectsState
+Element element_affectsState;
+
 //  The name used to invoke the operation.
 String code;
 
+//  Extensions for code
+Element element_code;
+
 //  Additional information about how to use this operation or named query.
 String comment;
+
+//  Extensions for comment
+Element element_comment;
 
 //  Indicates that this operation definition is a constraining profile on
 // the base.
@@ -160,19 +209,31 @@ String base;
 //  The types on which this operation can be executed.
 List<String> resource;
 
+//  Extensions for resource
+List<Element> element_resource;
+
 //  Indicates whether this operation or named query can be invoked at the
 // system level (e.g. without needing to choose a resource type for the
 // context).
 bool system;
+
+//  Extensions for system
+Element element_system;
 
 //  Indicates whether this operation or named query can be invoked at the
 // resource type level for any given resource type level (e.g. without
 // needing to choose a specific resource id for the context).
 bool type;
 
+//  Extensions for type
+Element element_type;
+
 //  Indicates whether this operation can be invoked on a particular
 // instance of one of the given types.
 bool instance;
+
+//  Extensions for instance
+Element element_instance;
 
 //  Additional validation information for the in parameters - a single
 // profile that covers all the parameters. The profile is a constraint on
@@ -197,33 +258,53 @@ OperationDefinition(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
+    this.element_url,
     this.version,
+    this.element_version,
     this.name,
+    this.element_name,
     this.title,
+    this.element_title,
     this.status,
+    this.element_status,
     this.kind,
+    this.element_kind,
     this.experimental,
+    this.element_experimental,
     this.date,
+    this.element_date,
     this.publisher,
+    this.element_publisher,
     this.contact,
     this.description,
+    this.element_description,
     this.useContext,
     this.jurisdiction,
     this.purpose,
+    this.element_purpose,
     this.affectsState,
+    this.element_affectsState,
     this.code,
+    this.element_code,
     this.comment,
+    this.element_comment,
     this.base,
     this.resource,
+    this.element_resource,
     this.system,
+    this.element_system,
     this.type,
+    this.element_type,
     this.instance,
+    this.element_instance,
     this.inputProfile,
     this.outputProfile,
     this.parameter,
@@ -266,22 +347,40 @@ List<Extension> modifierExtension;
 //  The name of used to identify the parameter.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  Whether this is an input or an output parameter.
 String use; // <code> enum: in/out;
+
+//  Extensions for use
+Element element_use;
 
 //  The minimum number of times this parameter SHALL appear in the request
 // or response.
 int min;
 
+//  Extensions for min
+Element element_min;
+
 //  The maximum number of times this element is permitted to appear in the
 // request or response.
 String max;
 
+//  Extensions for max
+Element element_max;
+
 //  Describes the meaning or use of this parameter.
 String documentation;
 
+//  Extensions for documentation
+Element element_documentation;
+
 //  The type for this parameter.
 String type;
+
+//  Extensions for type
+Element element_type;
 
 //  Used when the type is "Reference" or "canonical", and identifies a
 // profile structure or implementation Guide that applies to the target of
@@ -296,6 +395,9 @@ List<String> targetProfile;
 //  How the parameter is understood as a search parameter. This is only
 // used if the parameter type is 'string'.
 String searchType; // <code> enum: number/date/string/token/reference/composite/quantity/uri/special;
+
+//  Extensions for searchType
+Element element_searchType;
 
 //  Binds to a value set if this parameter is coded (code, Coding,
 // CodeableConcept).
@@ -313,13 +415,20 @@ OperationDefinition_Parameter(
     this.extension,
     this.modifierExtension,
     this.name,
+    this.element_name,
     this.use,
+    this.element_use,
     this.min,
+    this.element_min,
     this.max,
+    this.element_max,
     this.documentation,
+    this.element_documentation,
     this.type,
+    this.element_type,
     this.targetProfile,
     this.searchType,
+    this.element_searchType,
     this.binding,
     this.referencedFrom,
     this.part
@@ -363,6 +472,9 @@ List<Extension> modifierExtension;
 // adhered to in the instances.
 String strength; // <code> enum: required/extensible/preferred/example;
 
+//  Extensions for strength
+Element element_strength;
+
 //  Points to the value set or external definition (e.g. implicit value
 // set) that identifies the set of codes to be used.
 String valueSet;
@@ -372,6 +484,7 @@ OperationDefinition_Binding(
     this.extension,
     this.modifierExtension,
     this.strength,
+    this.element_strength,
     this.valueSet
     });
 
@@ -413,16 +526,24 @@ List<Extension> modifierExtension;
 // reference to this resource.
 String source;
 
+//  Extensions for source
+Element element_source;
+
 //  The id of the element in the referencing resource that is expected to
 // resolve to this resource.
 String sourceId;
+
+//  Extensions for sourceId
+Element element_sourceId;
 
 OperationDefinition_ReferencedFrom(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.source,
-    this.sourceId
+    this.element_source,
+    this.sourceId,
+    this.element_sourceId
     });
 
   factory OperationDefinition_ReferencedFrom.fromJson(Map<String, dynamic> json) => _$OperationDefinition_ReferencedFromFromJson(json);
@@ -461,15 +582,23 @@ List<Extension> modifierExtension;
 //  Name of parameter to include in overload.
 List<String> parameterName;
 
+//  Extensions for parameterName
+List<Element> element_parameterName;
+
 //  Comments to go on overload.
 String comment;
+
+//  Extensions for comment
+Element element_comment;
 
 OperationDefinition_Overload(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.parameterName,
-    this.comment
+    this.element_parameterName,
+    this.comment,
+    this.element_comment
     });
 
   factory OperationDefinition_Overload.fromJson(Map<String, dynamic> json) => _$OperationDefinition_OverloadFromJson(json);

@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/class/identifier.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/extension.dart';
 
 part 'reference.g.dart';
@@ -29,6 +30,9 @@ List<Extension> extension;
 // with '#') refer to contained resources.
 String reference;
 
+//  Extensions for reference
+Element element_reference;
+
 //  The expected type of the target of the reference. If both
 // Reference.type and Reference.reference are populated and
 // Reference.reference is a FHIR URL, both SHALL be consistent. The type
@@ -39,6 +43,9 @@ String reference;
 // only allowed for logical models (and can only be used in references in
 // logical models, not resources).
 String type;
+
+//  Extensions for type
+Element element_type;
 
 //  An identifier for the target resource. This is used when there is no
 // way to reference the other resource directly, either because the entity
@@ -55,13 +62,19 @@ Identifier identifier;
 // resource reference.
 String display;
 
+//  Extensions for display
+Element element_display;
+
 Reference(
   {this.id,
     this.extension,
     this.reference,
+    this.element_reference,
     this.type,
+    this.element_type,
     this.identifier,
-    this.display
+    this.display,
+    this.element_display
     });
 
   factory Reference.fromJson(Map<String, dynamic> json) => _$ReferenceFromJson(json);

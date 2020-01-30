@@ -9,6 +9,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'medicationStatement.g.dart';
@@ -34,8 +35,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -93,6 +100,9 @@ List<Reference> partOf;
 // this will be active or completed.
 String status;
 
+//  Extensions for status
+Element element_status;
+
 //  Captures the reason for the current state of the MedicationStatement.
 List<CodeableConcept> statusReason;
 
@@ -124,6 +134,9 @@ Reference context;
 // the MedicationStatement.taken element is No).
 String effectiveDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
+//  Extensions for effectiveDateTime
+Element element_effectiveDateTime;
+
 //  The interval of time during which it is being asserted that the
 // patient is/was/will be taking the medication (or was not taking, when
 // the MedicationStatement.taken element is No).
@@ -132,6 +145,9 @@ Period effectivePeriod;
 //  The date when the medication statement was asserted by the information
 // source.
 DateTime dateAsserted;
+
+//  Extensions for dateAsserted
+Element element_dateAsserted;
 
 //  The person or organization that provided the information about the
 // taking of this medication. Note: Use derivedFrom when a
@@ -163,7 +179,9 @@ MedicationStatement(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -172,6 +190,7 @@ MedicationStatement(
     this.basedOn,
     this.partOf,
     this.status,
+    this.element_status,
     this.statusReason,
     this.category,
     this.medicationCodeableConcept,
@@ -179,8 +198,10 @@ MedicationStatement(
     this.subject,
     this.context,
     this.effectiveDateTime,
+    this.element_effectiveDateTime,
     this.effectivePeriod,
     this.dateAsserted,
+    this.element_dateAsserted,
     this.informationSource,
     this.derivedFrom,
     this.reasonCode,

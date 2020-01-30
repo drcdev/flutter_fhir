@@ -10,6 +10,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'researchStudy.g.dart';
@@ -35,8 +36,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -81,6 +88,9 @@ List<Identifier> identifier;
 //  A short, descriptive user-friendly label for the study.
 String title;
 
+//  Extensions for title
+Element element_title;
+
 //  The set of steps expected to be performed as part of the execution of
 // the study.
 List<Reference> protocol;
@@ -91,6 +101,9 @@ List<Reference> partOf;
 
 //  The current state of the study.
 String status; // <code> enum: active/administratively-completed/approved/closed-to-accrual/closed-to-accrual-and-intervention/completed/disapproved/in-review/temporarily-closed-to-accrual/temporarily-closed-to-accrual-and-intervention/withdrawn;
+
+//  Extensions for status
+Element element_status;
 
 //  The type of study based upon the intent of the study's activities. A
 // classification of the intent of the study.
@@ -132,6 +145,9 @@ List<CodeableConcept> location;
 
 //  A full description of how the study is being conducted.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  Reference to a Group that defines the criteria for and quantity of
 // subjects participating in the study.  E.g. " 200 female Europeans
@@ -178,16 +194,20 @@ ResearchStudy(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.title,
+    this.element_title,
     this.protocol,
     this.partOf,
     this.status,
+    this.element_status,
     this.primaryPurposeType,
     this.phase,
     this.category,
@@ -198,6 +218,7 @@ ResearchStudy(
     this.keyword,
     this.location,
     this.description,
+    this.element_description,
     this.enrollment,
     this.period,
     this.sponsor,
@@ -245,6 +266,9 @@ List<Extension> modifierExtension;
 //  Unique, human-readable label for this arm of the study.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  Categorization of study arm, e.g. experimental, active comparator,
 // placebo comparater.
 CodeableConcept type;
@@ -253,13 +277,18 @@ CodeableConcept type;
 // followed by a subject adhering to this arm.
 String description;
 
+//  Extensions for description
+Element element_description;
+
 ResearchStudy_Arm(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.name,
+    this.element_name,
     this.type,
-    this.description
+    this.description,
+    this.element_description
     });
 
   factory ResearchStudy_Arm.fromJson(Map<String, dynamic> json) => _$ResearchStudy_ArmFromJson(json);
@@ -298,6 +327,9 @@ List<Extension> modifierExtension;
 //  Unique, human-readable label for this objective of the study.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  The kind of study objective.
 CodeableConcept type;
 
@@ -306,6 +338,7 @@ ResearchStudy_Objective(
     this.extension,
     this.modifierExtension,
     this.name,
+    this.element_name,
     this.type
     });
 

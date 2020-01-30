@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/extension.dart';
 
 part 'money.g.dart';
@@ -22,14 +23,22 @@ List<Extension> extension;
 //  Numerical value (with implicit precision).
 double value;
 
+//  Extensions for value
+Element element_value;
+
 //  ISO 4217 Currency Code.
 String currency;
+
+//  Extensions for currency
+Element element_currency;
 
 Money(
   {this.id,
     this.extension,
     this.value,
-    this.currency
+    this.element_value,
+    this.currency,
+    this.element_currency
     });
 
   factory Money.fromJson(Map<String, dynamic> json) => _$MoneyFromJson(json);

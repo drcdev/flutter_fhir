@@ -14,7 +14,14 @@ Condition _$ConditionFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
+    element_implicitRules: json['element_implicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['element_implicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
+    element_language: json['element_language'] == null
+        ? null
+        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
@@ -65,6 +72,10 @@ Condition _$ConditionFromJson(Map<String, dynamic> json) {
         ? null
         : Reference.fromJson(json['encounter'] as Map<String, dynamic>),
     onsetDateTime: json['onsetDateTime'] as String,
+    element_onsetDateTime: json['element_onsetDateTime'] == null
+        ? null
+        : Element.fromJson(
+            json['element_onsetDateTime'] as Map<String, dynamic>),
     onsetAge: json['onsetAge'] == null
         ? null
         : Age.fromJson(json['onsetAge'] as Map<String, dynamic>),
@@ -75,7 +86,14 @@ Condition _$ConditionFromJson(Map<String, dynamic> json) {
         ? null
         : Range.fromJson(json['onsetRange'] as Map<String, dynamic>),
     onsetString: json['onsetString'] as String,
+    element_onsetString: json['element_onsetString'] == null
+        ? null
+        : Element.fromJson(json['element_onsetString'] as Map<String, dynamic>),
     abatementDateTime: json['abatementDateTime'] as String,
+    element_abatementDateTime: json['element_abatementDateTime'] == null
+        ? null
+        : Element.fromJson(
+            json['element_abatementDateTime'] as Map<String, dynamic>),
     abatementAge: json['abatementAge'] == null
         ? null
         : Age.fromJson(json['abatementAge'] as Map<String, dynamic>),
@@ -86,9 +104,17 @@ Condition _$ConditionFromJson(Map<String, dynamic> json) {
         ? null
         : Range.fromJson(json['abatementRange'] as Map<String, dynamic>),
     abatementString: json['abatementString'] as String,
+    element_abatementString: json['element_abatementString'] == null
+        ? null
+        : Element.fromJson(
+            json['element_abatementString'] as Map<String, dynamic>),
     recordedDate: json['recordedDate'] == null
         ? null
         : DateTime.parse(json['recordedDate'] as String),
+    element_recordedDate: json['element_recordedDate'] == null
+        ? null
+        : Element.fromJson(
+            json['element_recordedDate'] as Map<String, dynamic>),
     recorder: json['recorder'] == null
         ? null
         : Reference.fromJson(json['recorder'] as Map<String, dynamic>),
@@ -117,7 +143,9 @@ Map<String, dynamic> _$ConditionToJson(Condition instance) => <String, dynamic>{
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
+      'element_implicitRules': instance.element_implicitRules?.toJson(),
       'language': instance.language,
+      'element_language': instance.element_language?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -133,16 +161,21 @@ Map<String, dynamic> _$ConditionToJson(Condition instance) => <String, dynamic>{
       'subject': instance.subject?.toJson(),
       'encounter': instance.encounter?.toJson(),
       'onsetDateTime': instance.onsetDateTime,
+      'element_onsetDateTime': instance.element_onsetDateTime?.toJson(),
       'onsetAge': instance.onsetAge?.toJson(),
       'onsetPeriod': instance.onsetPeriod?.toJson(),
       'onsetRange': instance.onsetRange?.toJson(),
       'onsetString': instance.onsetString,
+      'element_onsetString': instance.element_onsetString?.toJson(),
       'abatementDateTime': instance.abatementDateTime,
+      'element_abatementDateTime': instance.element_abatementDateTime?.toJson(),
       'abatementAge': instance.abatementAge?.toJson(),
       'abatementPeriod': instance.abatementPeriod?.toJson(),
       'abatementRange': instance.abatementRange?.toJson(),
       'abatementString': instance.abatementString,
+      'element_abatementString': instance.element_abatementString?.toJson(),
       'recordedDate': instance.recordedDate?.toIso8601String(),
+      'element_recordedDate': instance.element_recordedDate?.toJson(),
       'recorder': instance.recorder?.toJson(),
       'asserter': instance.asserter?.toJson(),
       'stage': instance.stage?.map((e) => e?.toJson())?.toList(),

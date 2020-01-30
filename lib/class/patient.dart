@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'dart:convert';
 
-import 'package:flutter_fhir/class/narrative.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:random_string/random_string.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -17,6 +16,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'patient.g.dart';
@@ -42,8 +42,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -92,6 +98,9 @@ List<Identifier> identifier;
 // reasons, but may be active for some time after death.
 bool active;
 
+//  Extensions for active
+Element element_active;
+
 //  A name associated with the individual.
 List<HumanName> name;
 
@@ -103,14 +112,26 @@ List<ContactPoint> telecom;
 // have for administration and record keeping purposes.
 String gender; // <code> enum: male/female/other/unknown;
 
+//  Extensions for gender
+Element element_gender;
+
 //  The date of birth for the individual.
 String birthDate;
+
+//  Extensions for birthDate
+Element element_birthDate;
 
 //  Indicates if the individual is deceased or not.
 bool deceasedBoolean; //  pattern: ^true|false$
 
+//  Extensions for deceasedBoolean
+Element element_deceasedBoolean;
+
 //  Indicates if the individual is deceased or not.
 String deceasedDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+
+//  Extensions for deceasedDateTime
+Element element_deceasedDateTime;
 
 //  An address for the individual.
 List<Address> address;
@@ -122,9 +143,15 @@ CodeableConcept maritalStatus;
 // indicates the actual birth order (integer).
 bool multipleBirthBoolean; //  pattern: ^true|false$
 
+//  Extensions for multipleBirthBoolean
+Element element_multipleBirthBoolean;
+
 //  Indicates whether the patient is part of a multiple (boolean) or
 // indicates the actual birth order (integer).
 int multipleBirthInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
+
+//  Extensions for multipleBirthInteger
+Element element_multipleBirthInteger;
 
 //  Image of the patient.
 List<Attachment> photo;
@@ -151,23 +178,32 @@ Patient(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.active,
+    this.element_active,
     this.name,
     this.telecom,
     this.gender,
+    this.element_gender,
     this.birthDate,
+    this.element_birthDate,
     this.deceasedBoolean,
+    this.element_deceasedBoolean,
     this.deceasedDateTime,
+    this.element_deceasedDateTime,
     this.address,
     this.maritalStatus,
     this.multipleBirthBoolean,
+    this.element_multipleBirthBoolean,
     this.multipleBirthInteger,
+    this.element_multipleBirthInteger,
     this.photo,
     this.contact,
     this.communication,
@@ -176,7 +212,7 @@ Patient(
     this.link
     });
 
-  String printName(){
+String printName(){
     return('${(this.name?.first?.family?.toString() ?? '')}'
         ', '
         '${(this.name?.first?.given?.first?.toString() ?? '')}'
@@ -274,6 +310,9 @@ Address address;
 // considered to have for administration and record keeping purposes.
 String gender; // <code> enum: male/female/other/unknown;
 
+//  Extensions for gender
+Element element_gender;
+
 //  Organization on behalf of which the contact is acting or for which the
 // contact is working.
 Reference organization;
@@ -291,6 +330,7 @@ Patient_Contact(
     this.telecom,
     this.address,
     this.gender,
+    this.element_gender,
     this.organization,
     this.period
     });
@@ -338,12 +378,16 @@ CodeableConcept language;
 // languages he masters up a certain level).
 bool preferred;
 
+//  Extensions for preferred
+Element element_preferred;
+
 Patient_Communication(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.language,
-    this.preferred
+    this.preferred,
+    this.element_preferred
     });
 
   factory Patient_Communication.fromJson(Map<String, dynamic> json) => _$Patient_CommunicationFromJson(json);
@@ -386,12 +430,16 @@ Reference other;
 // resource.
 String type; // <code> enum: replaced-by/replaces/refer/seealso;
 
+//  Extensions for type
+Element element_type;
+
 Patient_Link(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.other,
-    this.type
+    this.type,
+    this.element_type
     });
 
   factory Patient_Link.fromJson(Map<String, dynamic> json) => _$Patient_LinkFromJson(json);

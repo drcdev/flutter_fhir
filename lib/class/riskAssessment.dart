@@ -9,6 +9,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'riskAssessment.g.dart';
@@ -34,8 +35,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -87,6 +94,9 @@ Reference parent;
 // Observation.
 String status;
 
+//  Extensions for status
+Element element_status;
+
 //  The algorithm, process or mechanism used to evaluate the risk.
 CodeableConcept method;
 
@@ -101,6 +111,9 @@ Reference encounter;
 
 //  The date (and possibly time) the risk assessment was performed.
 String occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+
+//  Extensions for occurrenceDateTime
+Element element_occurrenceDateTime;
 
 //  The date (and possibly time) the risk assessment was performed.
 Period occurrencePeriod;
@@ -129,6 +142,9 @@ List<RiskAssessment_Prediction> prediction;
 // identified risk(s).
 String mitigation;
 
+//  Extensions for mitigation
+Element element_mitigation;
+
 //  Additional comments about the risk assessment.
 List<Annotation> note;
 
@@ -137,7 +153,9 @@ RiskAssessment(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -146,11 +164,13 @@ RiskAssessment(
     this.basedOn,
     this.parent,
     this.status,
+    this.element_status,
     this.method,
     this.code,
     this.subject,
     this.encounter,
     this.occurrenceDateTime,
+    this.element_occurrenceDateTime,
     this.occurrencePeriod,
     this.condition,
     this.performer,
@@ -159,6 +179,7 @@ RiskAssessment(
     this.basis,
     this.prediction,
     this.mitigation,
+    this.element_mitigation,
     this.note
     });
 
@@ -202,6 +223,9 @@ CodeableConcept outcome;
 //  Indicates how likely the outcome is (in the specified timeframe).
 double probabilityDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
 
+//  Extensions for probabilityDecimal
+Element element_probabilityDecimal;
+
 //  Indicates how likely the outcome is (in the specified timeframe).
 Range probabilityRange;
 
@@ -215,6 +239,9 @@ CodeableConcept qualitativeRisk;
 // than 1 = lower risk.).
 double relativeRisk;
 
+//  Extensions for relativeRisk
+Element element_relativeRisk;
+
 //  Indicates the period of time or age range of the subject to which the
 // specified probability applies.
 Period whenPeriod;
@@ -226,18 +253,24 @@ Range whenRange;
 //  Additional information explaining the basis for the prediction.
 String rationale;
 
+//  Extensions for rationale
+Element element_rationale;
+
 RiskAssessment_Prediction(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.outcome,
     this.probabilityDecimal,
+    this.element_probabilityDecimal,
     this.probabilityRange,
     this.qualitativeRisk,
     this.relativeRisk,
+    this.element_relativeRisk,
     this.whenPeriod,
     this.whenRange,
-    this.rationale
+    this.rationale,
+    this.element_rationale
     });
 
   factory RiskAssessment_Prediction.fromJson(Map<String, dynamic> json) => _$RiskAssessment_PredictionFromJson(json);

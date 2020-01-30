@@ -8,6 +8,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'codeSystem.g.dart';
@@ -33,8 +34,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -82,6 +89,9 @@ List<Extension> modifierExtension;
 // [Coding](datatypes.html#Coding).system.
 String url;
 
+//  Extensions for url
+Element element_url;
+
 //  A formal identifier that is used to identify this code system when it
 // is represented in other formats, or referenced in a specification,
 // model, design or an instance.
@@ -96,22 +106,37 @@ List<Identifier> identifier;
 // sequence. This is used in [Coding](datatypes.html#Coding).version.
 String version;
 
+//  Extensions for version
+Element element_version;
+
 //  A natural language name identifying the code system. This name should
 // be usable as an identifier for the module by machine processing
 // applications such as code generation.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  A short, descriptive, user-friendly title for the code system.
 String title;
+
+//  Extensions for title
+Element element_title;
 
 //  The date (and optionally time) when the code system resource was
 // created or revised.
 String status; // <code> enum: draft/active/retired/unknown;
 
+//  Extensions for status
+Element element_status;
+
 //  A Boolean value to indicate that this code system is authored for
 // testing purposes (or education/evaluation/marketing) and is not
 // intended to be used for genuine usage.
 bool experimental;
+
+//  Extensions for experimental
+Element element_experimental;
 
 //  The date  (and optionally time) when the code system was published.
 // The date must change when the business version changes and it must
@@ -119,9 +144,15 @@ bool experimental;
 // the substantive content of the code system changes.
 DateTime date;
 
+//  Extensions for date
+Element element_date;
+
 //  The name of the organization or individual that published the code
 // system.
 String publisher;
+
+//  Extensions for publisher
+Element element_publisher;
 
 //  Contact details to assist a user in finding and communicating with the
 // publisher.
@@ -130,6 +161,9 @@ List<ContactDetail> contact;
 //  A free text natural language description of the code system from a
 // consumer's perspective.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  The content was developed with a focus and intent of supporting the
 // contexts that are listed. These contexts may be general categories
@@ -146,14 +180,23 @@ List<CodeableConcept> jurisdiction;
 // designed as it has.
 String purpose;
 
+//  Extensions for purpose
+Element element_purpose;
+
 //  A copyright statement relating to the code system and/or its contents.
 // Copyright statements are generally legal restrictions on the use and
 // publishing of the code system.
 String copyright;
 
+//  Extensions for copyright
+Element element_copyright;
+
 //  If code comparison is case sensitive when codes within this system are
 // compared to each other.
 bool caseSensitive;
+
+//  Extensions for caseSensitive
+Element element_caseSensitive;
 
 //  Canonical reference to the value set that contains the entire code
 // system.
@@ -163,17 +206,29 @@ String valueSet;
 // resource.
 String hierarchyMeaning; // <code> enum: grouped-by/is-a/part-of/classified-with;
 
+//  Extensions for hierarchyMeaning
+Element element_hierarchyMeaning;
+
 //  The code system defines a compositional (post-coordination) grammar.
 bool compositional;
+
+//  Extensions for compositional
+Element element_compositional;
 
 //  This flag is used to signify that the code system does not commit to
 // concept permanence across versions. If true, a version must be
 // specified when referencing this code system.
 bool versionNeeded;
 
+//  Extensions for versionNeeded
+Element element_versionNeeded;
+
 //  The extent of the content of the code system (the concepts and codes
 // it defines) are represented in this resource instance.
 String content; // <code> enum: not-present/example/fragment/complete/supplement;
+
+//  Extensions for content
+Element element_content;
 
 //  The canonical URL of the code system that this code system supplement
 // is adding designations and properties to.
@@ -183,6 +238,9 @@ String supplements;
 // code system has a compositional grammar, the basis of this count is
 // defined by the system steward.
 int count;
+
+//  Extensions for count
+Element element_count;
 
 //  A filter that can be used in a value set compose statement when
 // selecting concepts using a filter.
@@ -202,34 +260,53 @@ CodeSystem(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
+    this.element_url,
     this.identifier,
     this.version,
+    this.element_version,
     this.name,
+    this.element_name,
     this.title,
+    this.element_title,
     this.status,
+    this.element_status,
     this.experimental,
+    this.element_experimental,
     this.date,
+    this.element_date,
     this.publisher,
+    this.element_publisher,
     this.contact,
     this.description,
+    this.element_description,
     this.useContext,
     this.jurisdiction,
     this.purpose,
+    this.element_purpose,
     this.copyright,
+    this.element_copyright,
     this.caseSensitive,
+    this.element_caseSensitive,
     this.valueSet,
     this.hierarchyMeaning,
+    this.element_hierarchyMeaning,
     this.compositional,
+    this.element_compositional,
     this.versionNeeded,
+    this.element_versionNeeded,
     this.content,
+    this.element_content,
     this.supplements,
     this.count,
+    this.element_count,
     this.filter,
     this.property,
     this.concept
@@ -272,23 +349,39 @@ List<Extension> modifierExtension;
 // [[[ValueSet]]].compose.include.filter.
 String code;
 
+//  Extensions for code
+Element element_code;
+
 //  A description of how or why the filter is used.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  A list of operators that can be used with the filter.
 List<String> operator;
 
+//  Extensions for operator
+List<Element> element_operator;
+
 //  A description of what the value for the filter should be.
 String value;
+
+//  Extensions for value
+Element element_value;
 
 CodeSystem_Filter(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.code,
+    this.element_code,
     this.description,
+    this.element_description,
     this.operator,
-    this.value
+    this.element_operator,
+    this.value,
+    this.element_value
     });
 
   factory CodeSystem_Filter.fromJson(Map<String, dynamic> json) => _$CodeSystem_FilterFromJson(json);
@@ -329,28 +422,44 @@ List<Extension> modifierExtension;
 // such as in property filters.
 String code;
 
+//  Extensions for code
+Element element_code;
+
 //  Reference to the formal meaning of the property. One possible source
 // of meaning is the [Concept
 // Properties](codesystem-concept-properties.html) code system.
 String uri;
 
+//  Extensions for uri
+Element element_uri;
+
 //  A description of the property- why it is defined, and how its value
 // might be used.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  The type of the property value. Properties of type "code" contain a
 // code defined by the code system (e.g. a reference to another defined
 // concept).
 String type; // <code> enum: code/Coding/string/integer/boolean/dateTime/decimal;
 
+//  Extensions for type
+Element element_type;
+
 CodeSystem_Property(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.code,
+    this.element_code,
     this.uri,
+    this.element_uri,
     this.description,
-    this.type
+    this.element_description,
+    this.type,
+    this.element_type
     });
 
   factory CodeSystem_Property.fromJson(Map<String, dynamic> json) => _$CodeSystem_PropertyFromJson(json);
@@ -390,15 +499,24 @@ List<Extension> modifierExtension;
 // the code system.
 String code;
 
+//  Extensions for code
+Element element_code;
+
 //  A human readable string that is the recommended default way to present
 // this concept to a user.
 String display;
+
+//  Extensions for display
+Element element_display;
 
 //  The formal definition of the concept. The code system resource does
 // not make formal definitions required, because of the prevalence of
 // legacy systems. However, they are highly recommended, as without them
 // there is no formal meaning associated with the concept.
 String definition;
+
+//  Extensions for definition
+Element element_definition;
 
 //  Additional representations for the concept - other languages, aliases,
 // specialized purposes, used for particular purposes, etc.
@@ -417,8 +535,11 @@ CodeSystem_Concept(
     this.extension,
     this.modifierExtension,
     this.code,
+    this.element_code,
     this.display,
+    this.element_display,
     this.definition,
+    this.element_definition,
     this.designation,
     this.property,
     this.concept
@@ -460,19 +581,27 @@ List<Extension> modifierExtension;
 //  The language this designation is defined for.
 String language;
 
+//  Extensions for language
+Element element_language;
+
 //  A code that details how this designation would be used.
 Coding use;
 
 //  The text value for this designation.
 String value;
 
+//  Extensions for value
+Element element_value;
+
 CodeSystem_Designation(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.language,
+    this.element_language,
     this.use,
-    this.value
+    this.value,
+    this.element_value
     });
 
   factory CodeSystem_Designation.fromJson(Map<String, dynamic> json) => _$CodeSystem_DesignationFromJson(json);
@@ -511,8 +640,14 @@ List<Extension> modifierExtension;
 //  A code that is a reference to CodeSystem.property.code.
 String code;
 
+//  Extensions for code
+Element element_code;
+
 //  The value of this property.
 String valueCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
+
+//  Extensions for valueCode
+Element element_valueCode;
 
 //  The value of this property.
 Coding valueCoding;
@@ -520,30 +655,52 @@ Coding valueCoding;
 //  The value of this property.
 String valueString; //  pattern: ^[ \r\n\t\S]+$
 
+//  Extensions for valueString
+Element element_valueString;
+
 //  The value of this property.
 int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
+
+//  Extensions for valueInteger
+Element element_valueInteger;
 
 //  The value of this property.
 bool valueBoolean; //  pattern: ^true|false$
 
+//  Extensions for valueBoolean
+Element element_valueBoolean;
+
 //  The value of this property.
 String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
+//  Extensions for valueDateTime
+Element element_valueDateTime;
+
 //  The value of this property.
 double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+
+//  Extensions for valueDecimal
+Element element_valueDecimal;
 
 CodeSystem_Property1(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.code,
+    this.element_code,
     this.valueCode,
+    this.element_valueCode,
     this.valueCoding,
     this.valueString,
+    this.element_valueString,
     this.valueInteger,
+    this.element_valueInteger,
     this.valueBoolean,
+    this.element_valueBoolean,
     this.valueDateTime,
-    this.valueDecimal
+    this.element_valueDateTime,
+    this.valueDecimal,
+    this.element_valueDecimal
     });
 
   factory CodeSystem_Property1.fromJson(Map<String, dynamic> json) => _$CodeSystem_Property1FromJson(json);

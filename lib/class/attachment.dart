@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/extension.dart';
 
 part 'attachment.g.dart';
@@ -24,41 +25,73 @@ List<Extension> extension;
 // parameters such as charset where appropriate.
 String contentType;
 
+//  Extensions for contentType
+Element element_contentType;
+
 //  The human language of the content. The value can be any valid value
 // according to BCP 47.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  The actual data of the attachment - a sequence of bytes, base64
 // encoded.
 String data;
 
+//  Extensions for data
+Element element_data;
+
 //  A location where the data can be accessed.
 String url;
+
+//  Extensions for url
+Element element_url;
 
 //  The number of bytes of data that make up this attachment (before
 // base64 encoding, if that is done).
 int size;
 
+//  Extensions for size
+Element element_size;
+
 //  The calculated hash of the data using SHA-1. Represented using base64.
 String hash;
+
+//  Extensions for hash
+Element element_hash;
 
 //  A label or set of text to display in place of the data.
 String title;
 
+//  Extensions for title
+Element element_title;
+
 //  The date that the attachment was first created.
 DateTime creation;
+
+//  Extensions for creation
+Element element_creation;
 
 Attachment(
   {this.id,
     this.extension,
     this.contentType,
+    this.element_contentType,
     this.language,
+    this.element_language,
     this.data,
+    this.element_data,
     this.url,
+    this.element_url,
     this.size,
+    this.element_size,
     this.hash,
+    this.element_hash,
     this.title,
-    this.creation
+    this.element_title,
+    this.creation,
+    this.element_creation
     });
 
   factory Attachment.fromJson(Map<String, dynamic> json) => _$AttachmentFromJson(json);

@@ -10,6 +10,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'supplyRequest.g.dart';
@@ -35,8 +36,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -82,6 +89,9 @@ List<Identifier> identifier;
 //  Status of the supply request.
 String status; // <code> enum: draft/active/suspended/cancelled/completed/entered-in-error/unknown;
 
+//  Extensions for status
+Element element_status;
+
 //  Category of supply, e.g.  central, non-stock, etc. This is used to
 // support work flows associated with the supply process.
 CodeableConcept category;
@@ -89,6 +99,9 @@ CodeableConcept category;
 //  Indicates how quickly this SupplyRequest should be addressed with
 // respect to other requests.
 String priority;
+
+//  Extensions for priority
+Element element_priority;
 
 //  The item that is requested to be supplied. This is either a link to a
 // resource representing the details of the item or a code that identifies
@@ -110,6 +123,9 @@ List<SupplyRequest_Parameter> parameter;
 //  When the request should be fulfilled.
 String occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
+//  Extensions for occurrenceDateTime
+Element element_occurrenceDateTime;
+
 //  When the request should be fulfilled.
 Period occurrencePeriod;
 
@@ -118,6 +134,9 @@ Timing occurrenceTiming;
 
 //  When the request was made.
 DateTime authoredOn;
+
+//  Extensions for authoredOn
+Element element_authoredOn;
 
 //  The device, practitioner, etc. who initiated the request.
 Reference requester;
@@ -142,23 +161,29 @@ SupplyRequest(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
+    this.element_status,
     this.category,
     this.priority,
+    this.element_priority,
     this.itemCodeableConcept,
     this.itemReference,
     this.quantity,
     this.parameter,
     this.occurrenceDateTime,
+    this.element_occurrenceDateTime,
     this.occurrencePeriod,
     this.occurrenceTiming,
     this.authoredOn,
+    this.element_authoredOn,
     this.requester,
     this.supplier,
     this.reasonCode,
@@ -215,6 +240,9 @@ Range valueRange;
 //  The value of the device detail.
 bool valueBoolean; //  pattern: ^true|false$
 
+//  Extensions for valueBoolean
+Element element_valueBoolean;
+
 SupplyRequest_Parameter(
   {this.id,
     this.extension,
@@ -223,7 +251,8 @@ SupplyRequest_Parameter(
     this.valueCodeableConcept,
     this.valueQuantity,
     this.valueRange,
-    this.valueBoolean
+    this.valueBoolean,
+    this.element_valueBoolean
     });
 
   factory SupplyRequest_Parameter.fromJson(Map<String, dynamic> json) => _$SupplyRequest_ParameterFromJson(json);

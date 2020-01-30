@@ -13,6 +13,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'observation.g.dart';
@@ -38,8 +39,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -92,6 +99,9 @@ List<Reference> partOf;
 //  The status of the result value.
 String status; // <code> enum: registered/preliminary/final/amended/corrected/cancelled/entered-in-error/unknown;
 
+//  Extensions for status
+Element element_status;
+
 //  A code that classifies the general type of observation being made.
 List<CodeableConcept> category;
 
@@ -129,6 +139,9 @@ Reference encounter;
 // the date/time is not known, only the date/time itself.
 String effectiveDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
+//  Extensions for effectiveDateTime
+Element element_effectiveDateTime;
+
 //  The time or time-period the observed value is asserted as being true.
 // For biological subjects - e.g. human patients - this is usually called
 // the "physiologically relevant time". This is usually either the time of
@@ -150,10 +163,16 @@ Timing effectiveTiming;
 // the date/time is not known, only the date/time itself.
 String effectiveInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
 
+//  Extensions for effectiveInstant
+Element element_effectiveInstant;
+
 //  The date and time this version of the observation was made available
 // to providers, typically after the results have been reviewed and
 // verified.
 DateTime issued;
+
+//  Extensions for issued
+Element element_issued;
 
 //  Who was responsible for asserting the observed value as "true".
 List<Reference> performer;
@@ -170,13 +189,22 @@ CodeableConcept valueCodeableConcept;
 // the information has a simple value.
 String valueString; //  pattern: ^[ \r\n\t\S]+$
 
+//  Extensions for valueString
+Element element_valueString;
+
 //  The information determined as a result of making the observation, if
 // the information has a simple value.
 bool valueBoolean; //  pattern: ^true|false$
 
+//  Extensions for valueBoolean
+Element element_valueBoolean;
+
 //  The information determined as a result of making the observation, if
 // the information has a simple value.
 int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
+
+//  Extensions for valueInteger
+Element element_valueInteger;
 
 //  The information determined as a result of making the observation, if
 // the information has a simple value.
@@ -194,9 +222,15 @@ SampledData valueSampledData;
 // the information has a simple value.
 String valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
 
+//  Extensions for valueTime
+Element element_valueTime;
+
 //  The information determined as a result of making the observation, if
 // the information has a simple value.
 String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+
+//  Extensions for valueDateTime
+Element element_valueDateTime;
 
 //  The information determined as a result of making the observation, if
 // the information has a simple value.
@@ -254,7 +288,9 @@ Observation(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -263,27 +299,36 @@ Observation(
     this.basedOn,
     this.partOf,
     this.status,
+    this.element_status,
     this.category,
     this.code,
     this.subject,
     this.focus,
     this.encounter,
     this.effectiveDateTime,
+    this.element_effectiveDateTime,
     this.effectivePeriod,
     this.effectiveTiming,
     this.effectiveInstant,
+    this.element_effectiveInstant,
     this.issued,
+    this.element_issued,
     this.performer,
     this.valueQuantity,
     this.valueCodeableConcept,
     this.valueString,
+    this.element_valueString,
     this.valueBoolean,
+    this.element_valueBoolean,
     this.valueInteger,
+    this.element_valueInteger,
     this.valueRange,
     this.valueRatio,
     this.valueSampledData,
     this.valueTime,
+    this.element_valueTime,
     this.valueDateTime,
+    this.element_valueDateTime,
     this.valuePeriod,
     this.dataAbsentReason,
     this.interpretation,
@@ -365,6 +410,9 @@ Range age;
 // "normals".
 String text;
 
+//  Extensions for text
+Element element_text;
+
 Observation_ReferenceRange(
   {this.id,
     this.extension,
@@ -374,7 +422,8 @@ Observation_ReferenceRange(
     this.type,
     this.appliesTo,
     this.age,
-    this.text
+    this.text,
+    this.element_text
     });
 
   factory Observation_ReferenceRange.fromJson(Map<String, dynamic> json) => _$Observation_ReferenceRangeFromJson(json);
@@ -426,13 +475,22 @@ CodeableConcept valueCodeableConcept;
 // the information has a simple value.
 String valueString; //  pattern: ^[ \r\n\t\S]+$
 
+//  Extensions for valueString
+Element element_valueString;
+
 //  The information determined as a result of making the observation, if
 // the information has a simple value.
 bool valueBoolean; //  pattern: ^true|false$
 
+//  Extensions for valueBoolean
+Element element_valueBoolean;
+
 //  The information determined as a result of making the observation, if
 // the information has a simple value.
 int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
+
+//  Extensions for valueInteger
+Element element_valueInteger;
 
 //  The information determined as a result of making the observation, if
 // the information has a simple value.
@@ -450,9 +508,15 @@ SampledData valueSampledData;
 // the information has a simple value.
 String valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
 
+//  Extensions for valueTime
+Element element_valueTime;
+
 //  The information determined as a result of making the observation, if
 // the information has a simple value.
 String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+
+//  Extensions for valueDateTime
+Element element_valueDateTime;
 
 //  The information determined as a result of making the observation, if
 // the information has a simple value.
@@ -478,13 +542,18 @@ Observation_Component(
     this.valueQuantity,
     this.valueCodeableConcept,
     this.valueString,
+    this.element_valueString,
     this.valueBoolean,
+    this.element_valueBoolean,
     this.valueInteger,
+    this.element_valueInteger,
     this.valueRange,
     this.valueRatio,
     this.valueSampledData,
     this.valueTime,
+    this.element_valueTime,
     this.valueDateTime,
+    this.element_valueDateTime,
     this.valuePeriod,
     this.dataAbsentReason,
     this.interpretation,

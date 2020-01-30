@@ -9,6 +9,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'consent.g.dart';
@@ -34,8 +35,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -79,6 +86,9 @@ List<Identifier> identifier;
 //  Indicates the current state of this consent.
 String status; // <code> enum: draft/proposed/active/rejected/inactive/entered-in-error;
 
+//  Extensions for status
+Element element_status;
+
 //  A selector of the type of consent being presented: ADR, Privacy,
 // Treatment, Research.  This list is now extensible.
 CodeableConcept scope;
@@ -92,6 +102,9 @@ Reference patient;
 
 //  When this  Consent was issued / created / indexed.
 DateTime dateTime;
+
+//  Extensions for dateTime
+Element element_dateTime;
 
 //  Either the Grantor, which is the entity responsible for granting the
 // rights listed in a Consent Directive or the Grantee, which is the
@@ -138,17 +151,21 @@ Consent(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
+    this.element_status,
     this.scope,
     this.category,
     this.patient,
     this.dateTime,
+    this.element_dateTime,
     this.performer,
     this.organization,
     this.sourceAttachment,
@@ -197,17 +214,25 @@ List<Extension> modifierExtension;
 // Directives.
 String authority;
 
+//  Extensions for authority
+Element element_authority;
+
 //  The references to the policies that are included in this consent
 // scope. Policies may be organizational, but are often defined
 // jurisdictionally, or in law.
 String uri;
+
+//  Extensions for uri
+Element element_uri;
 
 Consent_Policy(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.authority,
-    this.uri
+    this.element_authority,
+    this.uri,
+    this.element_uri
     });
 
   factory Consent_Policy.fromJson(Map<String, dynamic> json) => _$Consent_PolicyFromJson(json);
@@ -246,6 +271,9 @@ List<Extension> modifierExtension;
 //  Has the instruction been verified.
 bool verified;
 
+//  Extensions for verified
+Element element_verified;
+
 //  Who verified the instruction (Patient, Relative or other Authorized
 // Person).
 Reference verifiedWith;
@@ -253,13 +281,18 @@ Reference verifiedWith;
 //  Date verification was collected.
 DateTime verificationDate;
 
+//  Extensions for verificationDate
+Element element_verificationDate;
+
 Consent_Verification(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.verified,
+    this.element_verified,
     this.verifiedWith,
-    this.verificationDate
+    this.verificationDate,
+    this.element_verificationDate
     });
 
   factory Consent_Verification.fromJson(Map<String, dynamic> json) => _$Consent_VerificationFromJson(json);
@@ -298,6 +331,9 @@ List<Extension> modifierExtension;
 //  Action  to take - permit or deny - when the rule conditions are met. 
 // Not permitted in root rule, required in all nested rules.
 String type; // <code> enum: deny/permit;
+
+//  Extensions for type
+Element element_type;
 
 //  The timeframe in this rule is valid.
 Period period;
@@ -341,6 +377,7 @@ Consent_Provision(
     this.extension,
     this.modifierExtension,
     this.type,
+    this.element_type,
     this.period,
     this.actor,
     this.action,
@@ -440,6 +477,9 @@ List<Extension> modifierExtension;
 // restrictions.
 String meaning; // <code> enum: instance/related/dependents/authoredby;
 
+//  Extensions for meaning
+Element element_meaning;
+
 //  A reference to a specific resource that defines which resources are
 // covered by this consent.
 Reference reference;
@@ -449,6 +489,7 @@ Consent_Data(
     this.extension,
     this.modifierExtension,
     this.meaning,
+    this.element_meaning,
     this.reference
     });
 

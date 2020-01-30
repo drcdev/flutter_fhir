@@ -32,6 +32,7 @@ import 'package:flutter_fhir/class/annotation.dart';
 import 'package:flutter_fhir/class/age.dart';
 import 'package:flutter_fhir/class/address.dart';
 import 'package:flutter_fhir/class/extension.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'parameters.g.dart';
@@ -57,8 +58,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A parameter passed to or received from the operation.
 List<Parameters_Parameter> parameter;
@@ -68,7 +75,9 @@ Parameters(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.parameter
     });
 
@@ -108,62 +117,122 @@ List<Extension> modifierExtension;
 //  The name of the parameter (reference to the operation definition).
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  If the parameter is a data type.
 String valueBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
+
+//  Extensions for valueBase64Binary
+Element element_valueBase64Binary;
 
 //  If the parameter is a data type.
 bool valueBoolean; //  pattern: ^true|false$
 
+//  Extensions for valueBoolean
+Element element_valueBoolean;
+
 //  If the parameter is a data type.
 String valueCanonical; //  pattern: ^\S*$
+
+//  Extensions for valueCanonical
+Element element_valueCanonical;
 
 //  If the parameter is a data type.
 String valueCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
 
+//  Extensions for valueCode
+Element element_valueCode;
+
 //  If the parameter is a data type.
 String valueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
+
+//  Extensions for valueDate
+Element element_valueDate;
 
 //  If the parameter is a data type.
 String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
+//  Extensions for valueDateTime
+Element element_valueDateTime;
+
 //  If the parameter is a data type.
 double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+
+//  Extensions for valueDecimal
+Element element_valueDecimal;
 
 //  If the parameter is a data type.
 String valueId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
 
+//  Extensions for valueId
+Element element_valueId;
+
 //  If the parameter is a data type.
 String valueInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
+
+//  Extensions for valueInstant
+Element element_valueInstant;
 
 //  If the parameter is a data type.
 int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
 
+//  Extensions for valueInteger
+Element element_valueInteger;
+
 //  If the parameter is a data type.
 String valueMarkdown; //  pattern: ^[ \r\n\t\S]+$
+
+//  Extensions for valueMarkdown
+Element element_valueMarkdown;
 
 //  If the parameter is a data type.
 String valueOid; //  pattern: ^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$
 
+//  Extensions for valueOid
+Element element_valueOid;
+
 //  If the parameter is a data type.
 int valuePositiveInt; //  pattern: ^[1-9][0-9]*$
+
+//  Extensions for valuePositiveInt
+Element element_valuePositiveInt;
 
 //  If the parameter is a data type.
 String valueString; //  pattern: ^[ \r\n\t\S]+$
 
+//  Extensions for valueString
+Element element_valueString;
+
 //  If the parameter is a data type.
 String valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
+
+//  Extensions for valueTime
+Element element_valueTime;
 
 //  If the parameter is a data type.
 int valueUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
 
+//  Extensions for valueUnsignedInt
+Element element_valueUnsignedInt;
+
 //  If the parameter is a data type.
 String valueUri; //  pattern: ^\S*$
+
+//  Extensions for valueUri
+Element element_valueUri;
 
 //  If the parameter is a data type.
 String valueUrl; //  pattern: ^\S*$
 
+//  Extensions for valueUrl
+Element element_valueUrl;
+
 //  If the parameter is a data type.
 String valueUuid; //  pattern: ^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
+
+//  Extensions for valueUuid
+Element element_valueUuid;
 
 //  If the parameter is a data type.
 Address valueAddress;
@@ -269,25 +338,45 @@ Parameters_Parameter(
     this.extension,
     this.modifierExtension,
     this.name,
+    this.element_name,
     this.valueBase64Binary,
+    this.element_valueBase64Binary,
     this.valueBoolean,
+    this.element_valueBoolean,
     this.valueCanonical,
+    this.element_valueCanonical,
     this.valueCode,
+    this.element_valueCode,
     this.valueDate,
+    this.element_valueDate,
     this.valueDateTime,
+    this.element_valueDateTime,
     this.valueDecimal,
+    this.element_valueDecimal,
     this.valueId,
+    this.element_valueId,
     this.valueInstant,
+    this.element_valueInstant,
     this.valueInteger,
+    this.element_valueInteger,
     this.valueMarkdown,
+    this.element_valueMarkdown,
     this.valueOid,
+    this.element_valueOid,
     this.valuePositiveInt,
+    this.element_valuePositiveInt,
     this.valueString,
+    this.element_valueString,
     this.valueTime,
+    this.element_valueTime,
     this.valueUnsignedInt,
+    this.element_valueUnsignedInt,
     this.valueUri,
+    this.element_valueUri,
     this.valueUrl,
+    this.element_valueUrl,
     this.valueUuid,
+    this.element_valueUuid,
     this.valueAddress,
     this.valueAge,
     this.valueAnnotation,

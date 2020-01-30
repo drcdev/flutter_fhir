@@ -9,6 +9,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'person.g.dart';
@@ -34,8 +35,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -86,8 +93,14 @@ List<ContactPoint> telecom;
 //  Administrative Gender.
 String gender; // <code> enum: male/female/other/unknown;
 
+//  Extensions for gender
+Element element_gender;
+
 //  The birth date for the person.
 String birthDate;
+
+//  Extensions for birthDate
+Element element_birthDate;
 
 //  One or more addresses for the person.
 List<Address> address;
@@ -102,6 +115,9 @@ Reference managingOrganization;
 //  Whether this person's record is in active use.
 bool active;
 
+//  Extensions for active
+Element element_active;
+
 //  Link to a resource that concerns the same actual person.
 List<Person_Link> link;
 
@@ -110,7 +126,9 @@ Person(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -119,11 +137,14 @@ Person(
     this.name,
     this.telecom,
     this.gender,
+    this.element_gender,
     this.birthDate,
+    this.element_birthDate,
     this.address,
     this.photo,
     this.managingOrganization,
     this.active,
+    this.element_active,
     this.link
     });
 
@@ -167,12 +188,16 @@ Reference target;
 // resource.
 String assurance; // <code> enum: level1/level2/level3/level4;
 
+//  Extensions for assurance
+Element element_assurance;
+
 Person_Link(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.target,
-    this.assurance
+    this.assurance,
+    this.element_assurance
     });
 
   factory Person_Link.fromJson(Map<String, dynamic> json) => _$Person_LinkFromJson(json);

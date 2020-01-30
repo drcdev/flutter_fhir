@@ -7,6 +7,7 @@ import 'package:flutter_fhir/class/codeableConcept.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'observationDefinition.g.dart';
@@ -32,8 +33,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -85,9 +92,15 @@ List<Identifier> identifier;
 // observations conforming to this ObservationDefinition.
 List<String> permittedDataType; // <code> enum: Quantity/CodeableConcept/string/boolean/integer/Range/Ratio/SampledData/time/dateTime/Period> permittedDataType;
 
+//  Extensions for permittedDataType
+List<Element> element_permittedDataType;
+
 //  Multiple results allowed for observations conforming to this
 // ObservationDefinition.
 bool multipleResultsAllowed;
+
+//  Extensions for multipleResultsAllowed
+Element element_multipleResultsAllowed;
 
 //  The method or technique used to perform the observation.
 CodeableConcept method;
@@ -95,6 +108,9 @@ CodeableConcept method;
 //  The preferred name to be used when reporting the results of
 // observations conforming to this ObservationDefinition.
 String preferredReportName;
+
+//  Extensions for preferredReportName
+Element element_preferredReportName;
 
 //  Characteristics for quantitative results of this observation.
 ObservationDefinition_QuantitativeDetails quantitativeDetails;
@@ -125,7 +141,9 @@ ObservationDefinition(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -134,9 +152,12 @@ ObservationDefinition(
     this.code,
     this.identifier,
     this.permittedDataType,
+    this.element_permittedDataType,
     this.multipleResultsAllowed,
+    this.element_multipleResultsAllowed,
     this.method,
     this.preferredReportName,
+    this.element_preferredReportName,
     this.quantitativeDetails,
     this.qualifiedInterval,
     this.validCodedValueSet,
@@ -190,9 +211,15 @@ CodeableConcept unit;
 // with customary unit.
 double conversionFactor;
 
+//  Extensions for conversionFactor
+Element element_conversionFactor;
+
 //  Number of digits after decimal separator when the results of such
 // observations are of type Quantity.
 int decimalPrecision;
+
+//  Extensions for decimalPrecision
+Element element_decimalPrecision;
 
 ObservationDefinition_QuantitativeDetails(
   {this.id,
@@ -201,7 +228,9 @@ ObservationDefinition_QuantitativeDetails(
     this.customaryUnit,
     this.unit,
     this.conversionFactor,
-    this.decimalPrecision
+    this.element_conversionFactor,
+    this.decimalPrecision,
+    this.element_decimalPrecision
     });
 
   factory ObservationDefinition_QuantitativeDetails.fromJson(Map<String, dynamic> json) => _$ObservationDefinition_QuantitativeDetailsFromJson(json);
@@ -241,6 +270,9 @@ List<Extension> modifierExtension;
 // observations conforming to this ObservationDefinition.
 String category; // <code> enum: reference/critical/absolute;
 
+//  Extensions for category
+Element element_category;
+
 //  The low and high values determining the interval. There may be only
 // one of the two.
 Range range;
@@ -256,6 +288,9 @@ List<CodeableConcept> appliesTo;
 //  Sex of the population the range applies to.
 String gender; // <code> enum: male/female/other/unknown;
 
+//  Extensions for gender
+Element element_gender;
+
 //  The age at which this reference range is applicable. This is a
 // neonatal age (e.g. number of weeks at term) if the meaning says so.
 Range age;
@@ -267,18 +302,24 @@ Range gestationalAge;
 //  Text based condition for which the reference range is valid.
 String condition;
 
+//  Extensions for condition
+Element element_condition;
+
 ObservationDefinition_QualifiedInterval(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.category,
+    this.element_category,
     this.range,
     this.context,
     this.appliesTo,
     this.gender,
+    this.element_gender,
     this.age,
     this.gestationalAge,
-    this.condition
+    this.condition,
+    this.element_condition
     });
 
   factory ObservationDefinition_QualifiedInterval.fromJson(Map<String, dynamic> json) => _$ObservationDefinition_QualifiedIntervalFromJson(json);

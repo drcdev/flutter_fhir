@@ -11,6 +11,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'practitioner.g.dart';
@@ -36,8 +37,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -81,6 +88,9 @@ List<Identifier> identifier;
 //  Whether this practitioner's record is in active use.
 bool active;
 
+//  Extensions for active
+Element element_active;
+
 //  The name(s) associated with the practitioner.
 List<HumanName> name;
 
@@ -97,8 +107,14 @@ List<Address> address;
 // have for administration and record keeping purposes.
 String gender; // <code> enum: male/female/other/unknown;
 
+//  Extensions for gender
+Element element_gender;
+
 //  The date of birth for the practitioner.
 String birthDate;
+
+//  Extensions for birthDate
+Element element_birthDate;
 
 //  Image of the person.
 List<Attachment> photo;
@@ -117,18 +133,23 @@ Practitioner(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.active,
+    this.element_active,
     this.name,
     this.telecom,
     this.address,
     this.gender,
+    this.element_gender,
     this.birthDate,
+    this.element_birthDate,
     this.photo,
     this.qualification,
     this.communication

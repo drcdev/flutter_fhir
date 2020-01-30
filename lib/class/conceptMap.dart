@@ -7,6 +7,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'conceptMap.g.dart';
@@ -32,8 +33,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -80,6 +87,9 @@ List<Extension> modifierExtension;
 // concept map is stored on different servers.
 String url;
 
+//  Extensions for url
+Element element_url;
+
 //  A formal identifier that is used to identify this concept map when it
 // is represented in other formats, or referenced in a specification,
 // model, design or an instance.
@@ -94,22 +104,37 @@ Identifier identifier;
 // sequence.
 String version;
 
+//  Extensions for version
+Element element_version;
+
 //  A natural language name identifying the concept map. This name should
 // be usable as an identifier for the module by machine processing
 // applications such as code generation.
 String name;
 
+//  Extensions for name
+Element element_name;
+
 //  A short, descriptive, user-friendly title for the concept map.
 String title;
+
+//  Extensions for title
+Element element_title;
 
 //  The status of this concept map. Enables tracking the life-cycle of the
 // content.
 String status; // <code> enum: draft/active/retired/unknown;
 
+//  Extensions for status
+Element element_status;
+
 //  A Boolean value to indicate that this concept map is authored for
 // testing purposes (or education/evaluation/marketing) and is not
 // intended to be used for genuine usage.
 bool experimental;
+
+//  Extensions for experimental
+Element element_experimental;
 
 //  The date  (and optionally time) when the concept map was published.
 // The date must change when the business version changes and it must
@@ -117,9 +142,15 @@ bool experimental;
 // the substantive content of the concept map changes.
 DateTime date;
 
+//  Extensions for date
+Element element_date;
+
 //  The name of the organization or individual that published the concept
 // map.
 String publisher;
+
+//  Extensions for publisher
+Element element_publisher;
 
 //  Contact details to assist a user in finding and communicating with the
 // publisher.
@@ -128,6 +159,9 @@ List<ContactDetail> contact;
 //  A free text natural language description of the concept map from a
 // consumer's perspective.
 String description;
+
+//  Extensions for description
+Element element_description;
 
 //  The content was developed with a focus and intent of supporting the
 // contexts that are listed. These contexts may be general categories
@@ -144,18 +178,30 @@ List<CodeableConcept> jurisdiction;
 // designed as it has.
 String purpose;
 
+//  Extensions for purpose
+Element element_purpose;
+
 //  A copyright statement relating to the concept map and/or its contents.
 // Copyright statements are generally legal restrictions on the use and
 // publishing of the concept map.
 String copyright;
 
+//  Extensions for copyright
+Element element_copyright;
+
 //  Identifier for the source value set that contains the concepts that
 // are being mapped and provides context for the mappings.
 String sourceUri; //  pattern: ^\S*$
 
+//  Extensions for sourceUri
+Element element_sourceUri;
+
 //  Identifier for the source value set that contains the concepts that
 // are being mapped and provides context for the mappings.
 String sourceCanonical; //  pattern: ^\S*$
+
+//  Extensions for sourceCanonical
+Element element_sourceCanonical;
 
 //  The target value set provides context for the mappings. Note that the
 // mapping is made between concepts, not between value sets, but the value
@@ -163,11 +209,17 @@ String sourceCanonical; //  pattern: ^\S*$
 // are made.
 String targetUri; //  pattern: ^\S*$
 
+//  Extensions for targetUri
+Element element_targetUri;
+
 //  The target value set provides context for the mappings. Note that the
 // mapping is made between concepts, not between value sets, but the value
 // set provides important context about how the concept mapping choices
 // are made.
 String targetCanonical; //  pattern: ^\S*$
+
+//  Extensions for targetCanonical
+Element element_targetCanonical;
 
 //  A group of mappings that all have the same source and target system.
 List<ConceptMap_Group> group;
@@ -177,30 +229,47 @@ ConceptMap(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
+    this.element_url,
     this.identifier,
     this.version,
+    this.element_version,
     this.name,
+    this.element_name,
     this.title,
+    this.element_title,
     this.status,
+    this.element_status,
     this.experimental,
+    this.element_experimental,
     this.date,
+    this.element_date,
     this.publisher,
+    this.element_publisher,
     this.contact,
     this.description,
+    this.element_description,
     this.useContext,
     this.jurisdiction,
     this.purpose,
+    this.element_purpose,
     this.copyright,
+    this.element_copyright,
     this.sourceUri,
+    this.element_sourceUri,
     this.sourceCanonical,
+    this.element_sourceCanonical,
     this.targetUri,
+    this.element_targetUri,
     this.targetCanonical,
+    this.element_targetCanonical,
     this.group
     });
 
@@ -241,17 +310,29 @@ List<Extension> modifierExtension;
 // to be mapped are defined.
 String source;
 
+//  Extensions for source
+Element element_source;
+
 //  The specific version of the code system, as determined by the code
 // system authority.
 String sourceVersion;
+
+//  Extensions for sourceVersion
+Element element_sourceVersion;
 
 //  An absolute URI that identifies the target system that the concepts
 // will be mapped to.
 String target;
 
+//  Extensions for target
+Element element_target;
+
 //  The specific version of the code system, as determined by the code
 // system authority.
 String targetVersion;
+
+//  Extensions for targetVersion
+Element element_targetVersion;
 
 //  Mappings for an individual concept in the source to one or more
 // concepts in the target.
@@ -267,9 +348,13 @@ ConceptMap_Group(
     this.extension,
     this.modifierExtension,
     this.source,
+    this.element_source,
     this.sourceVersion,
+    this.element_sourceVersion,
     this.target,
+    this.element_target,
     this.targetVersion,
+    this.element_targetVersion,
     this.element,
     this.unmapped
     });
@@ -310,9 +395,15 @@ List<Extension> modifierExtension;
 //  Identity (code or path) or the element/item being mapped.
 String code;
 
+//  Extensions for code
+Element element_code;
+
 //  The display for the code. The display is only provided to help editors
 // when editing the concept map.
 String display;
+
+//  Extensions for display
+Element element_display;
 
 //  A concept from the target value set that this concept maps to.
 List<ConceptMap_Target> target;
@@ -322,7 +413,9 @@ ConceptMap_Element(
     this.extension,
     this.modifierExtension,
     this.code,
+    this.element_code,
     this.display,
+    this.element_display,
     this.target
     });
 
@@ -362,18 +455,30 @@ List<Extension> modifierExtension;
 //  Identity (code or path) or the element/item that the map refers to.
 String code;
 
+//  Extensions for code
+Element element_code;
+
 //  The display for the code. The display is only provided to help editors
 // when editing the concept map.
 String display;
+
+//  Extensions for display
+Element element_display;
 
 //  The equivalence between the source and target concepts (counting for
 // the dependencies and products). The equivalence is read from target to
 // source (e.g. the target is 'wider' than the source).
 String equivalence; // <code> enum: relatedto/equivalent/equal/wider/subsumes/narrower/specializes/inexact/unmatched/disjoint;
 
+//  Extensions for equivalence
+Element element_equivalence;
+
 //  A description of status/issues in mapping that conveys additional
 // information not represented in  the structured data.
 String comment;
+
+//  Extensions for comment
+Element element_comment;
 
 //  A set of additional dependencies for this mapping to hold. This
 // mapping is only applicable if the specified element can be resolved,
@@ -392,9 +497,13 @@ ConceptMap_Target(
     this.extension,
     this.modifierExtension,
     this.code,
+    this.element_code,
     this.display,
+    this.element_display,
     this.equivalence,
+    this.element_equivalence,
     this.comment,
+    this.element_comment,
     this.dependsOn,
     this.product
     });
@@ -438,6 +547,9 @@ List<Extension> modifierExtension;
 // property.
 String property;
 
+//  Extensions for property
+Element element_property;
+
 //  An absolute URI that identifies the code system of the dependency code
 // (if the source/dependency is a value set that crosses code systems).
 String system;
@@ -446,18 +558,27 @@ String system;
 // depends on / refers to.
 String value;
 
+//  Extensions for value
+Element element_value;
+
 //  The display for the code. The display is only provided to help editors
 // when editing the concept map.
 String display;
+
+//  Extensions for display
+Element element_display;
 
 ConceptMap_DependsOn(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.property,
+    this.element_property,
     this.system,
     this.value,
-    this.display
+    this.element_value,
+    this.display,
+    this.element_display
     });
 
   factory ConceptMap_DependsOn.fromJson(Map<String, dynamic> json) => _$ConceptMap_DependsOnFromJson(json);
@@ -501,13 +622,22 @@ List<Extension> modifierExtension;
 // different concept map can be provided (by canonical URL).
 String mode; // <code> enum: provided/fixed/other-map;
 
+//  Extensions for mode
+Element element_mode;
+
 //  The fixed code to use when the mode = 'fixed'  - all unmapped codes
 // are mapped to a single fixed code.
 String code;
 
+//  Extensions for code
+Element element_code;
+
 //  The display for the code. The display is only provided to help editors
 // when editing the concept map.
 String display;
+
+//  Extensions for display
+Element element_display;
 
 //  The canonical reference to an additional ConceptMap resource instance
 // to use for mapping if this ConceptMap resource contains no matching
@@ -519,8 +649,11 @@ ConceptMap_Unmapped(
     this.extension,
     this.modifierExtension,
     this.mode,
+    this.element_mode,
     this.code,
+    this.element_code,
     this.display,
+    this.element_display,
     this.url
     });
 

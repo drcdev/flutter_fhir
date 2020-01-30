@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/class/contactDetail.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/extension.dart';
 
 part 'contributor.g.dart';
@@ -23,9 +24,15 @@ List<Extension> extension;
 //  The type of contributor.
 String type; // <code> enum: author/editor/reviewer/endorser;
 
+//  Extensions for type
+Element element_type;
+
 //  The name of the individual or organization responsible for the
 // contribution.
 String name;
+
+//  Extensions for name
+Element element_name;
 
 //  Contact details to assist a user in finding and communicating with the
 // contributor.
@@ -35,7 +42,9 @@ Contributor(
   {this.id,
     this.extension,
     this.type,
+    this.element_type,
     this.name,
+    this.element_name,
     this.contact
     });
 

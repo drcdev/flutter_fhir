@@ -11,6 +11,7 @@ import 'package:flutter_fhir/class/identifier.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'goal.g.dart';
@@ -36,8 +37,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -83,6 +90,9 @@ List<Identifier> identifier;
 //  The state of the goal throughout its lifecycle.
 String lifecycleStatus; // <code> enum: proposed/planned/accepted/active/on-hold/completed/cancelled/entered-in-error/rejected;
 
+//  Extensions for lifecycleStatus
+Element element_lifecycleStatus;
+
 //  Describes the progression, or lack thereof, towards the goal against
 // the target.
 CodeableConcept achievementStatus;
@@ -106,6 +116,9 @@ Reference subject;
 //  The date or event after which the goal should begin being pursued.
 String startDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
+//  Extensions for startDate
+Element element_startDate;
+
 //  The date or event after which the goal should begin being pursued.
 CodeableConcept startCodeableConcept;
 
@@ -116,8 +129,14 @@ List<Goal_Target> target;
 // achieved, when cancelled, etc.
 String statusDate;
 
+//  Extensions for statusDate
+Element element_statusDate;
+
 //  Captures the reason for the current status.
 String statusReason;
+
+//  Extensions for statusReason
+Element element_statusReason;
 
 //  Indicates whose goal this is - patient goal, practitioner goal, etc.
 Reference expressedBy;
@@ -141,23 +160,29 @@ Goal(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.lifecycleStatus,
+    this.element_lifecycleStatus,
     this.achievementStatus,
     this.category,
     this.priority,
     this.description,
     this.subject,
     this.startDate,
+    this.element_startDate,
     this.startCodeableConcept,
     this.target,
     this.statusDate,
+    this.element_statusDate,
     this.statusReason,
+    this.element_statusReason,
     this.expressedBy,
     this.addresses,
     this.note,
@@ -238,6 +263,9 @@ CodeableConcept detailCodeableConcept;
 // low value.
 String detailString; //  pattern: ^[ \r\n\t\S]+$
 
+//  Extensions for detailString
+Element element_detailString;
+
 //  The target value of the focus to be achieved to signify the
 // fulfillment of the goal, e.g. 150 pounds, 7.0%. Either the high or low
 // or both values of the range can be specified. When a low value is
@@ -247,6 +275,9 @@ String detailString; //  pattern: ^[ \r\n\t\S]+$
 // low value.
 bool detailBoolean; //  pattern: ^true|false$
 
+//  Extensions for detailBoolean
+Element element_detailBoolean;
+
 //  The target value of the focus to be achieved to signify the
 // fulfillment of the goal, e.g. 150 pounds, 7.0%. Either the high or low
 // or both values of the range can be specified. When a low value is
@@ -255,6 +286,9 @@ bool detailBoolean; //  pattern: ^true|false$
 // indicates that the goal is achieved at any focus value at or above the
 // low value.
 int detailInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
+
+//  Extensions for detailInteger
+Element element_detailInteger;
 
 //  The target value of the focus to be achieved to signify the
 // fulfillment of the goal, e.g. 150 pounds, 7.0%. Either the high or low
@@ -269,6 +303,9 @@ Ratio detailRatio;
 // goal should be met.
 String dueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
+//  Extensions for dueDate
+Element element_dueDate;
+
 //  Indicates either the date or the duration after start by which the
 // goal should be met.
 Duration dueDuration;
@@ -282,10 +319,14 @@ Goal_Target(
     this.detailRange,
     this.detailCodeableConcept,
     this.detailString,
+    this.element_detailString,
     this.detailBoolean,
+    this.element_detailBoolean,
     this.detailInteger,
+    this.element_detailInteger,
     this.detailRatio,
     this.dueDate,
+    this.element_dueDate,
     this.dueDuration
     });
 

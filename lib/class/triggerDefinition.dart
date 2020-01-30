@@ -4,6 +4,7 @@ import 'package:flutter_fhir/class/expression.dart';
 import 'package:flutter_fhir/class/dataRequirement.dart';
 import 'package:flutter_fhir/class/reference.dart';
 import 'package:flutter_fhir/class/timing.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/extension.dart';
 
 part 'triggerDefinition.g.dart';
@@ -26,10 +27,16 @@ List<Extension> extension;
 //  The type of triggering event.
 String type; // <code> enum: named-event/periodic/data-changed/data-added/data-modified/data-removed/data-accessed/data-access-ended;
 
+//  Extensions for type
+Element element_type;
+
 //  A formal name for the event. This may be an absolute URI that
 // identifies the event formally (e.g. from a trigger registry), or a
 // simple relative URI that identifies the event in a local context.
 String name;
+
+//  Extensions for name
+Element element_name;
 
 //  The timing of the event (if this is a periodic trigger).
 Timing timingTiming;
@@ -40,8 +47,14 @@ Reference timingReference;
 //  The timing of the event (if this is a periodic trigger).
 String timingDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
+//  Extensions for timingDate
+Element element_timingDate;
+
 //  The timing of the event (if this is a periodic trigger).
 String timingDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+
+//  Extensions for timingDateTime
+Element element_timingDateTime;
 
 //  The triggering data of the event (if this is a data trigger). If more
 // than one data is requirement is specified, then all the data
@@ -57,11 +70,15 @@ TriggerDefinition(
   {this.id,
     this.extension,
     this.type,
+    this.element_type,
     this.name,
+    this.element_name,
     this.timingTiming,
     this.timingReference,
     this.timingDate,
+    this.element_timingDate,
     this.timingDateTime,
+    this.element_timingDateTime,
     this.data,
     this.condition
     });

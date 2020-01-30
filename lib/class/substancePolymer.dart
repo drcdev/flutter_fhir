@@ -6,6 +6,7 @@ import 'package:flutter_fhir/class/codeableConcept.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'substancePolymer.g.dart';
@@ -31,8 +32,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -82,6 +89,9 @@ List<CodeableConcept> copolymerConnectivity;
 //  Todo.
 List<String> modification;
 
+//  Extensions for modification
+List<Element> element_modification;
+
 //  Todo.
 List<SubstancePolymer_MonomerSet> monomerSet;
 
@@ -93,7 +103,9 @@ SubstancePolymer(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -102,6 +114,7 @@ SubstancePolymer(
     this.geometry,
     this.copolymerConnectivity,
     this.modification,
+    this.element_modification,
     this.monomerSet,
     this.repeat
     });
@@ -195,6 +208,9 @@ CodeableConcept type;
 //  Todo.
 bool isDefining;
 
+//  Extensions for isDefining
+Element element_isDefining;
+
 //  Todo.
 SubstanceAmount amount;
 
@@ -205,6 +221,7 @@ SubstancePolymer_StartingMaterial(
     this.material,
     this.type,
     this.isDefining,
+    this.element_isDefining,
     this.amount
     });
 
@@ -244,8 +261,14 @@ List<Extension> modifierExtension;
 //  Todo.
 int numberOfUnits;
 
+//  Extensions for numberOfUnits
+Element element_numberOfUnits;
+
 //  Todo.
 String averageMolecularFormula;
+
+//  Extensions for averageMolecularFormula
+Element element_averageMolecularFormula;
 
 //  Todo.
 CodeableConcept repeatUnitAmountType;
@@ -258,7 +281,9 @@ SubstancePolymer_Repeat(
     this.extension,
     this.modifierExtension,
     this.numberOfUnits,
+    this.element_numberOfUnits,
     this.averageMolecularFormula,
+    this.element_averageMolecularFormula,
     this.repeatUnitAmountType,
     this.repeatUnit
     });
@@ -302,6 +327,9 @@ CodeableConcept orientationOfPolymerisation;
 //  Todo.
 String repeatUnit;
 
+//  Extensions for repeatUnit
+Element element_repeatUnit;
+
 //  Todo.
 SubstanceAmount amount;
 
@@ -317,6 +345,7 @@ SubstancePolymer_RepeatUnit(
     this.modifierExtension,
     this.orientationOfPolymerisation,
     this.repeatUnit,
+    this.element_repeatUnit,
     this.amount,
     this.degreeOfPolymerisation,
     this.structuralRepresentation
@@ -408,6 +437,9 @@ CodeableConcept type;
 //  Todo.
 String representation;
 
+//  Extensions for representation
+Element element_representation;
+
 //  Todo.
 Attachment attachment;
 
@@ -417,6 +449,7 @@ SubstancePolymer_StructuralRepresentation(
     this.modifierExtension,
     this.type,
     this.representation,
+    this.element_representation,
     this.attachment
     });
 

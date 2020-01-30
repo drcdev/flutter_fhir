@@ -14,7 +14,14 @@ Encounter _$EncounterFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
+    element_implicitRules: json['element_implicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['element_implicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
+    element_language: json['element_language'] == null
+        ? null
+        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
@@ -35,6 +42,9 @@ Encounter _$EncounterFromJson(Map<String, dynamic> json) {
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
+    element_status: json['element_status'] == null
+        ? null
+        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
     statusHistory: (json['statusHistory'] as List)
         ?.map((e) => e == null
             ? null
@@ -124,7 +134,9 @@ Map<String, dynamic> _$EncounterToJson(Encounter instance) => <String, dynamic>{
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
+      'element_implicitRules': instance.element_implicitRules?.toJson(),
       'language': instance.language,
+      'element_language': instance.element_language?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -132,6 +144,7 @@ Map<String, dynamic> _$EncounterToJson(Encounter instance) => <String, dynamic>{
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
+      'element_status': instance.element_status?.toJson(),
       'statusHistory':
           instance.statusHistory?.map((e) => e?.toJson())?.toList(),
       'classs': instance.classs?.toJson(),
@@ -171,6 +184,9 @@ Encounter_StatusHistory _$Encounter_StatusHistoryFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
+    element_status: json['element_status'] == null
+        ? null
+        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
     period: json['period'] == null
         ? null
         : Period.fromJson(json['period'] as Map<String, dynamic>),
@@ -185,6 +201,7 @@ Map<String, dynamic> _$Encounter_StatusHistoryToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
+      'element_status': instance.element_status?.toJson(),
       'period': instance.period?.toJson(),
     };
 
@@ -276,6 +293,9 @@ Encounter_Diagnosis _$Encounter_DiagnosisFromJson(Map<String, dynamic> json) {
         ? null
         : CodeableConcept.fromJson(json['use'] as Map<String, dynamic>),
     rank: json['rank'] as int,
+    element_rank: json['element_rank'] == null
+        ? null
+        : Element.fromJson(json['element_rank'] as Map<String, dynamic>),
   );
 }
 
@@ -289,6 +309,7 @@ Map<String, dynamic> _$Encounter_DiagnosisToJson(
       'condition': instance.condition?.toJson(),
       'use': instance.use?.toJson(),
       'rank': instance.rank,
+      'element_rank': instance.element_rank?.toJson(),
     };
 
 Encounter_Hospitalization _$Encounter_HospitalizationFromJson(
@@ -377,6 +398,9 @@ Encounter_Location _$Encounter_LocationFromJson(Map<String, dynamic> json) {
         ? null
         : Reference.fromJson(json['location'] as Map<String, dynamic>),
     status: json['status'] as String,
+    element_status: json['element_status'] == null
+        ? null
+        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
     physicalType: json['physicalType'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -395,6 +419,7 @@ Map<String, dynamic> _$Encounter_LocationToJson(Encounter_Location instance) =>
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'location': instance.location?.toJson(),
       'status': instance.status,
+      'element_status': instance.element_status?.toJson(),
       'physicalType': instance.physicalType?.toJson(),
       'period': instance.period?.toJson(),
     };

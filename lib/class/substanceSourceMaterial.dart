@@ -5,6 +5,7 @@ import 'package:flutter_fhir/class/codeableConcept.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/narrative.dart';
+import 'package:flutter_fhir/class/element.dart';
 import 'package:flutter_fhir/class/meta.dart';
 
 part 'substanceSourceMaterial.g.dart';
@@ -30,8 +31,14 @@ Meta meta;
 // special rules along with other profiles etc.
 String implicitRules;
 
+//  Extensions for implicitRules
+Element element_implicitRules;
+
 //  The base language in which the resource is written.
 String language;
+
+//  Extensions for language
+Element element_language;
 
 //  A human-readable narrative that contains a summary of the resource and
 // can be used to represent the content of the resource to a human. The
@@ -89,6 +96,9 @@ Identifier organismId;
 // organism taxonomy.
 String organismName;
 
+//  Extensions for organismName
+Element element_organismName;
+
 //  The parent of the herbal drug Ginkgo biloba, Leaf is the substance ID
 // of the substance (fresh) of Ginkgo biloba L. or Ginkgo biloba L. (Whole
 // plant).
@@ -96,6 +106,9 @@ List<Identifier> parentSubstanceId;
 
 //  The parent substance of the Herbal Drug, or Herbal preparation.
 List<String> parentSubstanceName;
+
+//  Extensions for parentSubstanceName
+List<Element> element_parentSubstanceName;
 
 //  The country where the plant material is harvested or the countries
 // where the plasma is sourced from as laid down in accordance with the
@@ -107,6 +120,9 @@ List<CodeableConcept> countryOfOrigin;
 //  The place/region where the plant is harvested or the places/regions
 // where the animal source material has its habitat.
 List<String> geographicalLocation;
+
+//  Extensions for geographicalLocation
+List<Element> element_geographicalLocation;
 
 //  Stage of life for animals, plants, insects and microorganisms. This
 // information shall be provided only when the substance is significantly
@@ -138,7 +154,9 @@ SubstanceSourceMaterial(
     this.id,
     this.meta,
     this.implicitRules,
+    this.element_implicitRules,
     this.language,
+    this.element_language,
     this.text,
     this.contained,
     this.extension,
@@ -148,10 +166,13 @@ SubstanceSourceMaterial(
     this.sourceMaterialState,
     this.organismId,
     this.organismName,
+    this.element_organismName,
     this.parentSubstanceId,
     this.parentSubstanceName,
+    this.element_parentSubstanceName,
     this.countryOfOrigin,
     this.geographicalLocation,
+    this.element_geographicalLocation,
     this.developmentStage,
     this.fractionDescription,
     this.organism,
@@ -195,6 +216,9 @@ List<Extension> modifierExtension;
 // part, or human plasma for fractionation.
 String fraction;
 
+//  Extensions for fraction
+Element element_fraction;
+
 //  The specific type of the material constituting the component. For
 // Herbal preparations the particulars of the extracts (liquid/dry) is
 // described in Specified Substance Group 1.
@@ -205,6 +229,7 @@ SubstanceSourceMaterial_FractionDescription(
     this.extension,
     this.modifierExtension,
     this.fraction,
+    this.element_fraction,
     this.materialType
     });
 
@@ -263,6 +288,9 @@ CodeableConcept intraspecificType;
 // WHO convention.
 String intraspecificDescription;
 
+//  Extensions for intraspecificDescription
+Element element_intraspecificDescription;
+
 //  4.9.13.6.1 Author type (Conditional).
 List<SubstanceSourceMaterial_Author> author;
 
@@ -281,6 +309,7 @@ SubstanceSourceMaterial_Organism(
     this.species,
     this.intraspecificType,
     this.intraspecificDescription,
+    this.element_intraspecificDescription,
     this.author,
     this.hybrid,
     this.organismGeneral
@@ -332,12 +361,16 @@ CodeableConcept authorType;
 // plant/animal name (of any rank).
 String authorDescription;
 
+//  Extensions for authorDescription
+Element element_authorDescription;
+
 SubstanceSourceMaterial_Author(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.authorType,
-    this.authorDescription
+    this.authorDescription,
+    this.element_authorDescription
     });
 
   factory SubstanceSourceMaterial_Author.fromJson(Map<String, dynamic> json) => _$SubstanceSourceMaterial_AuthorFromJson(json);
@@ -379,19 +412,31 @@ List<Extension> modifierExtension;
 // will be known which is maternal and which is paternal.
 String maternalOrganismId;
 
+//  Extensions for maternalOrganismId
+Element element_maternalOrganismId;
+
 //  The name of the maternal species constituting the hybrid organism
 // shall be specified. For plants, the parents aren’t always known, and it
 // is unlikely that it will be known which is maternal and which is
 // paternal.
 String maternalOrganismName;
 
+//  Extensions for maternalOrganismName
+Element element_maternalOrganismName;
+
 //  The identifier of the paternal species constituting the hybrid
 // organism shall be specified based on a controlled vocabulary.
 String paternalOrganismId;
 
+//  Extensions for paternalOrganismId
+Element element_paternalOrganismId;
+
 //  The name of the paternal species constituting the hybrid organism
 // shall be specified.
 String paternalOrganismName;
+
+//  Extensions for paternalOrganismName
+Element element_paternalOrganismName;
 
 //  The hybrid type of an organism shall be specified.
 CodeableConcept hybridType;
@@ -401,9 +446,13 @@ SubstanceSourceMaterial_Hybrid(
     this.extension,
     this.modifierExtension,
     this.maternalOrganismId,
+    this.element_maternalOrganismId,
     this.maternalOrganismName,
+    this.element_maternalOrganismName,
     this.paternalOrganismId,
+    this.element_paternalOrganismId,
     this.paternalOrganismName,
+    this.element_paternalOrganismName,
     this.hybridType
     });
 

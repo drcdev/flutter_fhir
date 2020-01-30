@@ -18,17 +18,31 @@ Dosage _$DosageFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     sequence: json['sequence'] as int,
+    element_sequence: json['element_sequence'] == null
+        ? null
+        : Element.fromJson(json['element_sequence'] as Map<String, dynamic>),
     text: json['text'] as String,
+    element_text: json['element_text'] == null
+        ? null
+        : Element.fromJson(json['element_text'] as Map<String, dynamic>),
     additionalInstruction: (json['additionalInstruction'] as List)
         ?.map((e) => e == null
             ? null
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     patientInstruction: json['patientInstruction'] as String,
+    element_patientInstruction: json['element_patientInstruction'] == null
+        ? null
+        : Element.fromJson(
+            json['element_patientInstruction'] as Map<String, dynamic>),
     timing: json['timing'] == null
         ? null
         : Timing.fromJson(json['timing'] as Map<String, dynamic>),
     asNeededBoolean: json['asNeededBoolean'] as bool,
+    element_asNeededBoolean: json['element_asNeededBoolean'] == null
+        ? null
+        : Element.fromJson(
+            json['element_asNeededBoolean'] as Map<String, dynamic>),
     asNeededCodeableConcept: json['asNeededCodeableConcept'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -66,12 +80,17 @@ Map<String, dynamic> _$DosageToJson(Dosage instance) => <String, dynamic>{
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'sequence': instance.sequence,
+      'element_sequence': instance.element_sequence?.toJson(),
       'text': instance.text,
+      'element_text': instance.element_text?.toJson(),
       'additionalInstruction':
           instance.additionalInstruction?.map((e) => e?.toJson())?.toList(),
       'patientInstruction': instance.patientInstruction,
+      'element_patientInstruction':
+          instance.element_patientInstruction?.toJson(),
       'timing': instance.timing?.toJson(),
       'asNeededBoolean': instance.asNeededBoolean,
+      'element_asNeededBoolean': instance.element_asNeededBoolean?.toJson(),
       'asNeededCodeableConcept': instance.asNeededCodeableConcept?.toJson(),
       'site': instance.site?.toJson(),
       'route': instance.route?.toJson(),

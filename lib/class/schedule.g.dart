@@ -14,7 +14,14 @@ Schedule _$ScheduleFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
+    element_implicitRules: json['element_implicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['element_implicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
+    element_language: json['element_language'] == null
+        ? null
+        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
@@ -35,6 +42,9 @@ Schedule _$ScheduleFromJson(Map<String, dynamic> json) {
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     active: json['active'] as bool,
+    element_active: json['element_active'] == null
+        ? null
+        : Element.fromJson(json['element_active'] as Map<String, dynamic>),
     serviceCategory: (json['serviceCategory'] as List)
         ?.map((e) => e == null
             ? null
@@ -58,6 +68,9 @@ Schedule _$ScheduleFromJson(Map<String, dynamic> json) {
         ? null
         : Period.fromJson(json['planningHorizon'] as Map<String, dynamic>),
     comment: json['comment'] as String,
+    element_comment: json['element_comment'] == null
+        ? null
+        : Element.fromJson(json['element_comment'] as Map<String, dynamic>),
   );
 }
 
@@ -66,7 +79,9 @@ Map<String, dynamic> _$ScheduleToJson(Schedule instance) => <String, dynamic>{
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
+      'element_implicitRules': instance.element_implicitRules?.toJson(),
       'language': instance.language,
+      'element_language': instance.element_language?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -74,6 +89,7 @@ Map<String, dynamic> _$ScheduleToJson(Schedule instance) => <String, dynamic>{
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'active': instance.active,
+      'element_active': instance.element_active?.toJson(),
       'serviceCategory':
           instance.serviceCategory?.map((e) => e?.toJson())?.toList(),
       'serviceType': instance.serviceType?.map((e) => e?.toJson())?.toList(),
@@ -81,4 +97,5 @@ Map<String, dynamic> _$ScheduleToJson(Schedule instance) => <String, dynamic>{
       'actor': instance.actor?.map((e) => e?.toJson())?.toList(),
       'planningHorizon': instance.planningHorizon?.toJson(),
       'comment': instance.comment,
+      'element_comment': instance.element_comment?.toJson(),
     };

@@ -14,7 +14,14 @@ ImagingStudy _$ImagingStudyFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
+    element_implicitRules: json['element_implicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['element_implicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
+    element_language: json['element_language'] == null
+        ? null
+        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
@@ -35,6 +42,9 @@ ImagingStudy _$ImagingStudyFromJson(Map<String, dynamic> json) {
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
+    element_status: json['element_status'] == null
+        ? null
+        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
     modality: (json['modality'] as List)
         ?.map((e) =>
             e == null ? null : Coding.fromJson(e as Map<String, dynamic>))
@@ -48,6 +58,9 @@ ImagingStudy _$ImagingStudyFromJson(Map<String, dynamic> json) {
     started: json['started'] == null
         ? null
         : DateTime.parse(json['started'] as String),
+    element_started: json['element_started'] == null
+        ? null
+        : Element.fromJson(json['element_started'] as Map<String, dynamic>),
     basedOn: (json['basedOn'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
@@ -64,7 +77,15 @@ ImagingStudy _$ImagingStudyFromJson(Map<String, dynamic> json) {
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     numberOfSeries: json['numberOfSeries'] as int,
+    element_numberOfSeries: json['element_numberOfSeries'] == null
+        ? null
+        : Element.fromJson(
+            json['element_numberOfSeries'] as Map<String, dynamic>),
     numberOfInstances: json['numberOfInstances'] as int,
+    element_numberOfInstances: json['element_numberOfInstances'] == null
+        ? null
+        : Element.fromJson(
+            json['element_numberOfInstances'] as Map<String, dynamic>),
     procedureReference: json['procedureReference'] == null
         ? null
         : Reference.fromJson(
@@ -91,6 +112,9 @@ ImagingStudy _$ImagingStudyFromJson(Map<String, dynamic> json) {
             e == null ? null : Annotation.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     description: json['description'] as String,
+    element_description: json['element_description'] == null
+        ? null
+        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
     series: (json['series'] as List)
         ?.map((e) => e == null
             ? null
@@ -105,7 +129,9 @@ Map<String, dynamic> _$ImagingStudyToJson(ImagingStudy instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
+      'element_implicitRules': instance.element_implicitRules?.toJson(),
       'language': instance.language,
+      'element_language': instance.element_language?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -113,16 +139,20 @@ Map<String, dynamic> _$ImagingStudyToJson(ImagingStudy instance) =>
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
+      'element_status': instance.element_status?.toJson(),
       'modality': instance.modality?.map((e) => e?.toJson())?.toList(),
       'subject': instance.subject?.toJson(),
       'encounter': instance.encounter?.toJson(),
       'started': instance.started?.toIso8601String(),
+      'element_started': instance.element_started?.toJson(),
       'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
       'referrer': instance.referrer?.toJson(),
       'interpreter': instance.interpreter?.map((e) => e?.toJson())?.toList(),
       'endpoint': instance.endpoint?.map((e) => e?.toJson())?.toList(),
       'numberOfSeries': instance.numberOfSeries,
+      'element_numberOfSeries': instance.element_numberOfSeries?.toJson(),
       'numberOfInstances': instance.numberOfInstances,
+      'element_numberOfInstances': instance.element_numberOfInstances?.toJson(),
       'procedureReference': instance.procedureReference?.toJson(),
       'procedureCode':
           instance.procedureCode?.map((e) => e?.toJson())?.toList(),
@@ -132,6 +162,7 @@ Map<String, dynamic> _$ImagingStudyToJson(ImagingStudy instance) =>
           instance.reasonReference?.map((e) => e?.toJson())?.toList(),
       'note': instance.note?.map((e) => e?.toJson())?.toList(),
       'description': instance.description,
+      'element_description': instance.element_description?.toJson(),
       'series': instance.series?.map((e) => e?.toJson())?.toList(),
     };
 
@@ -147,12 +178,25 @@ ImagingStudy_Series _$ImagingStudy_SeriesFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     uid: json['uid'] as String,
+    element_uid: json['element_uid'] == null
+        ? null
+        : Element.fromJson(json['element_uid'] as Map<String, dynamic>),
     number: json['number'] as int,
+    element_number: json['element_number'] == null
+        ? null
+        : Element.fromJson(json['element_number'] as Map<String, dynamic>),
     modality: json['modality'] == null
         ? null
         : Coding.fromJson(json['modality'] as Map<String, dynamic>),
     description: json['description'] as String,
+    element_description: json['element_description'] == null
+        ? null
+        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
     numberOfInstances: json['numberOfInstances'] as int,
+    element_numberOfInstances: json['element_numberOfInstances'] == null
+        ? null
+        : Element.fromJson(
+            json['element_numberOfInstances'] as Map<String, dynamic>),
     endpoint: (json['endpoint'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
@@ -170,6 +214,9 @@ ImagingStudy_Series _$ImagingStudy_SeriesFromJson(Map<String, dynamic> json) {
     started: json['started'] == null
         ? null
         : DateTime.parse(json['started'] as String),
+    element_started: json['element_started'] == null
+        ? null
+        : Element.fromJson(json['element_started'] as Map<String, dynamic>),
     performer: (json['performer'] as List)
         ?.map((e) => e == null
             ? null
@@ -191,15 +238,20 @@ Map<String, dynamic> _$ImagingStudy_SeriesToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'uid': instance.uid,
+      'element_uid': instance.element_uid?.toJson(),
       'number': instance.number,
+      'element_number': instance.element_number?.toJson(),
       'modality': instance.modality?.toJson(),
       'description': instance.description,
+      'element_description': instance.element_description?.toJson(),
       'numberOfInstances': instance.numberOfInstances,
+      'element_numberOfInstances': instance.element_numberOfInstances?.toJson(),
       'endpoint': instance.endpoint?.map((e) => e?.toJson())?.toList(),
       'bodySite': instance.bodySite?.toJson(),
       'laterality': instance.laterality?.toJson(),
       'specimen': instance.specimen?.map((e) => e?.toJson())?.toList(),
       'started': instance.started?.toIso8601String(),
+      'element_started': instance.element_started?.toJson(),
       'performer': instance.performer?.map((e) => e?.toJson())?.toList(),
       'instance': instance.instance?.map((e) => e?.toJson())?.toList(),
     };
@@ -249,11 +301,20 @@ ImagingStudy_Instance _$ImagingStudy_InstanceFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     uid: json['uid'] as String,
+    element_uid: json['element_uid'] == null
+        ? null
+        : Element.fromJson(json['element_uid'] as Map<String, dynamic>),
     sopClass: json['sopClass'] == null
         ? null
         : Coding.fromJson(json['sopClass'] as Map<String, dynamic>),
     number: json['number'] as int,
+    element_number: json['element_number'] == null
+        ? null
+        : Element.fromJson(json['element_number'] as Map<String, dynamic>),
     title: json['title'] as String,
+    element_title: json['element_title'] == null
+        ? null
+        : Element.fromJson(json['element_title'] as Map<String, dynamic>),
   );
 }
 
@@ -265,7 +326,10 @@ Map<String, dynamic> _$ImagingStudy_InstanceToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'uid': instance.uid,
+      'element_uid': instance.element_uid?.toJson(),
       'sopClass': instance.sopClass?.toJson(),
       'number': instance.number,
+      'element_number': instance.element_number?.toJson(),
       'title': instance.title,
+      'element_title': instance.element_title?.toJson(),
     };
