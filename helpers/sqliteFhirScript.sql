@@ -1,14 +1,14 @@
 CREATE TABLE element(
 
 	id TEXT PRIMARY KEY,
-	List extension
+	extension **LIST** Extension
 
 );
 
 CREATE TABLE extension(
 
 	id TEXT PRIMARY KEY,
-	List extension,
+	extension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
 	valueBase64Binary TEXT, -- pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
@@ -341,7 +341,7 @@ CREATE TABLE extension(
 CREATE TABLE narrative(
 
 	id TEXT PRIMARY KEY,
-	List extension,
+	extension **LIST** Extension,
 	"status" TEXT, -- enum: generated/extensions/additional/empty
 	_status TEXT, -- Foreign Key to element table
 	div TEXT,
@@ -356,7 +356,7 @@ CREATE TABLE narrative(
 CREATE TABLE annotation(
 
 	id TEXT PRIMARY KEY,
-	List extension,
+	extension **LIST** Extension,
 	authorReference TEXT, -- Foreign Key to reference table
 	authorString TEXT, -- pattern: ^[ \r\n\t\S]+$
 	_authorString TEXT, -- Foreign Key to element table
@@ -390,7 +390,7 @@ CREATE TABLE annotation(
 CREATE TABLE attachment(
 
 	id TEXT PRIMARY KEY,
-	List extension,
+	extension **LIST** Extension,
 	contentType TEXT,
 	_contentType TEXT, -- Foreign Key to element table
 	"language" TEXT,
@@ -453,7 +453,7 @@ CREATE TABLE attachment(
 CREATE TABLE identifier(
 
 	id TEXT PRIMARY KEY,
-	List extension,
+	extension **LIST** Extension,
 	"use" TEXT, -- enum: usual/official/temp/secondary/old
 	_use TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to codeableConcept table
@@ -499,8 +499,8 @@ CREATE TABLE identifier(
 CREATE TABLE codeableConcept(
 
 	id TEXT PRIMARY KEY,
-	List extension,
-	List coding,
+	extension **LIST** Extension,
+	coding **LIST** Coding,
 	"text" TEXT,
 	_text TEXT, -- Foreign Key to element table
 
@@ -514,7 +514,7 @@ CREATE TABLE codeableConcept(
 CREATE TABLE coding(
 
 	id TEXT PRIMARY KEY,
-	List extension,
+	extension **LIST** Extension,
 	"system" TEXT,
 	_system TEXT, -- Foreign Key to element table
 	"version" TEXT,
@@ -556,7 +556,7 @@ CREATE TABLE coding(
 CREATE TABLE quantity(
 
 	id TEXT PRIMARY KEY,
-	List extension,
+	extension **LIST** Extension,
 	"value" REAL,
 	_value TEXT, -- Foreign Key to element table
 	comparator TEXT, -- enum: </<=/>=/>
@@ -598,7 +598,7 @@ CREATE TABLE quantity(
 CREATE TABLE duration(
 
 	id TEXT PRIMARY KEY,
-	List extension,
+	extension **LIST** Extension,
 	"value" REAL,
 	_value TEXT, -- Foreign Key to element table
 	comparator TEXT, -- enum: </<=/>=/>
@@ -640,7 +640,7 @@ CREATE TABLE duration(
 CREATE TABLE distance(
 
 	id TEXT PRIMARY KEY,
-	List extension,
+	extension **LIST** Extension,
 	"value" REAL,
 	_value TEXT, -- Foreign Key to element table
 	comparator TEXT, -- enum: </<=/>=/>
@@ -682,7 +682,7 @@ CREATE TABLE distance(
 CREATE TABLE "count"(
 
 	id TEXT PRIMARY KEY,
-	List extension,
+	extension **LIST** Extension,
 	"value" REAL,
 	_value TEXT, -- Foreign Key to element table
 	comparator TEXT, -- enum: </<=/>=/>
@@ -724,7 +724,7 @@ CREATE TABLE "count"(
 CREATE TABLE money(
 
 	id TEXT PRIMARY KEY,
-	List extension,
+	extension **LIST** Extension,
 	"value" REAL,
 	_value TEXT, -- Foreign Key to element table
 	currency TEXT,
@@ -745,7 +745,7 @@ CREATE TABLE money(
 CREATE TABLE age(
 
 	id TEXT PRIMARY KEY,
-	List extension,
+	extension **LIST** Extension,
 	"value" REAL,
 	_value TEXT, -- Foreign Key to element table
 	comparator TEXT, -- enum: </<=/>=/>
@@ -787,7 +787,7 @@ CREATE TABLE age(
 CREATE TABLE "range"(
 
 	id TEXT PRIMARY KEY,
-	List extension,
+	extension **LIST** Extension,
 	low TEXT, -- Foreign Key to quantity table
 	high TEXT, -- Foreign Key to quantity table
 
@@ -806,7 +806,7 @@ CREATE TABLE "range"(
 CREATE TABLE "period"(
 
 	id TEXT PRIMARY KEY,
-	List extension,
+	extension **LIST** Extension,
 	"start" DATETIME,
 	_start TEXT, -- Foreign Key to element table
 	"end" DATETIME,
@@ -827,7 +827,7 @@ CREATE TABLE "period"(
 CREATE TABLE ratio(
 
 	id TEXT PRIMARY KEY,
-	List extension,
+	extension **LIST** Extension,
 	numerator TEXT, -- Foreign Key to quantity table
 	denominator TEXT, -- Foreign Key to quantity table
 
@@ -846,7 +846,7 @@ CREATE TABLE ratio(
 CREATE TABLE reference(
 
 	id TEXT PRIMARY KEY,
-	List extension,
+	extension **LIST** Extension,
 	reference TEXT,
 	_reference TEXT, -- Foreign Key to element table
 	"type" TEXT,
@@ -880,7 +880,7 @@ CREATE TABLE reference(
 CREATE TABLE sampledData(
 
 	id TEXT PRIMARY KEY,
-	List extension,
+	extension **LIST** Extension,
 	origin TEXT, -- Foreign Key to quantity table
 	"period" REAL,
 	_period TEXT, -- Foreign Key to element table
@@ -935,8 +935,8 @@ CREATE TABLE sampledData(
 CREATE TABLE "signature"(
 
 	id TEXT PRIMARY KEY,
-	List extension,
-	List type,
+	extension **LIST** Extension,
+	"type" **LIST** Coding,
 	"when" DATETIME,
 	_when TEXT, -- Foreign Key to element table
 	who TEXT, -- Foreign Key to reference table
@@ -983,19 +983,19 @@ CREATE TABLE "signature"(
 CREATE TABLE humanName(
 
 	id TEXT PRIMARY KEY,
-	List extension,
+	extension **LIST** Extension,
 	"use" TEXT, -- enum: usual/official/temp/nickname/anonymous/old/maiden
 	_use TEXT, -- Foreign Key to element table
 	"text" TEXT,
 	_text TEXT, -- Foreign Key to element table
 	family TEXT,
 	_family TEXT, -- Foreign Key to element table
-	List given,
-	List _given,
-	List prefix,
-	List _prefix,
-	List suffix,
-	List _suffix,
+	given **LIST** string,
+	_given **LIST** Element,
+	prefix **LIST** string,
+	_prefix **LIST** Element,
+	suffix **LIST** string,
+	_suffix **LIST** Element,
 	"period" TEXT, -- Foreign Key to period table
 
 	FOREIGN KEY (_use)
@@ -1023,20 +1023,20 @@ CREATE TABLE humanName(
 CREATE TABLE "address"(
 
 	id TEXT PRIMARY KEY,
-	List extension,
+	extension **LIST** Extension,
 	"use" TEXT, -- enum: home/work/temp/old/billing
 	_use TEXT, -- Foreign Key to element table
 	"type" TEXT, -- enum: postal/physical/both
 	_type TEXT, -- Foreign Key to element table
 	"text" TEXT,
 	_text TEXT, -- Foreign Key to element table
-	List line,
-	List _line,
+	"line" **LIST** string,
+	_line **LIST** Element,
 	city TEXT,
 	_city TEXT, -- Foreign Key to element table
 	district TEXT,
 	_district TEXT, -- Foreign Key to element table
-	state TEXT,
+	"state" TEXT,
 	_state TEXT, -- Foreign Key to element table
 	postalCode TEXT,
 	_postalCode TEXT, -- Foreign Key to element table
@@ -1094,7 +1094,7 @@ CREATE TABLE "address"(
 CREATE TABLE contactPoint(
 
 	id TEXT PRIMARY KEY,
-	List extension,
+	extension **LIST** Extension,
 	"system" TEXT, -- enum: phone/fax/email/pager/url/sms/other
 	_system TEXT, -- Foreign Key to element table
 	"value" TEXT,
@@ -1135,14 +1135,14 @@ CREATE TABLE contactPoint(
 CREATE TABLE timing(
 
 	id TEXT PRIMARY KEY,
-	List extension,
-	List modifierExtension,
-	List event,
-	List _event,
-	repeat TEXT, -- Foreign Key to timing_Repeat table
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	"event" **LIST** dateTime,
+	_event **LIST** Element,
+	"repeat" TEXT, -- Foreign Key to timing_Repeat table
 	"code" TEXT, -- Foreign Key to codeableConcept table
 
-	FOREIGN KEY (repeat)
+	FOREIGN KEY ("repeat")
 		REFERENCES timing_Repeat (id)
 			ON DELETE CASCADE
 		ON UPDATE NO ACTION,
@@ -1157,10 +1157,8 @@ CREATE TABLE timing(
 CREATE TABLE timing_Repeat(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	boundsDuration TEXT, -- Foreign Key to duration table
 	boundsRange TEXT, -- Foreign Key to range table
 	boundsPeriod TEXT, -- Foreign Key to period table
@@ -1184,12 +1182,12 @@ CREATE TABLE timing_Repeat(
 	_periodMax TEXT, -- Foreign Key to element table
 	periodUnit TEXT, -- enum: s/min/h/d/wk/mo/a
 	_periodUnit TEXT, -- Foreign Key to element table
-	List dayOfWeek,
-	List _dayOfWeek,
-	List timeOfDay,
-	List _timeOfDay,
-	List when,
-	List _when,
+	dayOfWeek **LIST** code,
+	_dayOfWeek **LIST** Element,
+	timeOfDay **LIST** time,
+	_timeOfDay **LIST** Element,
+	"when" **LIST** enum, -- MORN/MORN.early/MORN.late/NOON/AFT/AFT.early/AFT.late/EVE/EVE.early/EVE.late/NIGHT/PHS/HS/WAKE/C/CM/CD/CV/AC/ACM/ACD/ACV/PC/PCM/PCD/PCV,
+	_when **LIST** Element,
 	offset INTEGER,
 	_offset TEXT, -- Foreign Key to element table
 
@@ -1268,16 +1266,16 @@ CREATE TABLE timing_Repeat(
 CREATE TABLE meta(
 
 	id TEXT PRIMARY KEY,
-	List extension,
+	extension **LIST** Extension,
 	versionId TEXT, -- Foreign Key to id table
 	_versionId TEXT, -- Foreign Key to element table
 	lastUpdated DATETIME,
 	_lastUpdated TEXT, -- Foreign Key to element table
 	"source" TEXT,
 	_source TEXT, -- Foreign Key to element table
-	List profile,
-	List security,
-	List tag,
+	"profile" **LIST** canonical,
+	"security" **LIST** Coding,
+	tag **LIST** Coding,
 
 	FOREIGN KEY (versionId)
 		REFERENCES id (id)
@@ -1304,10 +1302,10 @@ CREATE TABLE meta(
 CREATE TABLE contactDetail(
 
 	id TEXT PRIMARY KEY,
-	List extension,
+	extension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
-	List telecom,
+	telecom **LIST** ContactPoint,
 
 	FOREIGN KEY (_name)
 		REFERENCES element (id)
@@ -1319,12 +1317,12 @@ CREATE TABLE contactDetail(
 CREATE TABLE contributor(
 
 	id TEXT PRIMARY KEY,
-	List extension,
+	extension **LIST** Extension,
 	"type" TEXT, -- enum: author/editor/reviewer/endorser
 	_type TEXT, -- Foreign Key to element table
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactDetail,
 
 	FOREIGN KEY (_type)
 		REFERENCES element (id)
@@ -1341,19 +1339,19 @@ CREATE TABLE contributor(
 CREATE TABLE dataRequirement(
 
 	id TEXT PRIMARY KEY,
-	List extension,
+	extension **LIST** Extension,
 	"type" TEXT,
 	_type TEXT, -- Foreign Key to element table
-	List profile,
+	"profile" **LIST** canonical,
 	subjectCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	subjectReference TEXT, -- Foreign Key to reference table
-	List mustSupport,
-	List _mustSupport,
-	List codeFilter,
-	List dateFilter,
+	mustSupport **LIST** string,
+	_mustSupport **LIST** Element,
+	codeFilter **LIST** DataRequirement_CodeFilter,
+	dateFilter **LIST** DataRequirement_DateFilter,
 	"limit" INTEGER,
 	_limit TEXT, -- Foreign Key to element table
-	List sort,
+	sort **LIST** DataRequirement_Sort,
 
 	FOREIGN KEY (_type)
 		REFERENCES element (id)
@@ -1380,16 +1378,14 @@ CREATE TABLE dataRequirement(
 CREATE TABLE dataRequirement_CodeFilter(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"path" TEXT,
 	_path TEXT, -- Foreign Key to element table
 	searchParam TEXT,
 	_searchParam TEXT, -- Foreign Key to element table
 	valueSet TEXT,
-	List code,
+	"code" **LIST** Coding,
 
 	FOREIGN KEY (_path)
 		REFERENCES element (id)
@@ -1406,10 +1402,8 @@ CREATE TABLE dataRequirement_CodeFilter(
 CREATE TABLE dataRequirement_DateFilter(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"path" TEXT,
 	_path TEXT, -- Foreign Key to element table
 	searchParam TEXT,
@@ -1449,10 +1443,8 @@ CREATE TABLE dataRequirement_DateFilter(
 CREATE TABLE dataRequirement_Sort(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"path" TEXT,
 	_path TEXT, -- Foreign Key to element table
 	direction TEXT, -- enum: ascending/descending
@@ -1473,7 +1465,7 @@ CREATE TABLE dataRequirement_Sort(
 CREATE TABLE parameterDefinition(
 
 	id TEXT PRIMARY KEY,
-	List extension,
+	extension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	"use" TEXT,
@@ -1523,7 +1515,7 @@ CREATE TABLE parameterDefinition(
 CREATE TABLE relatedArtifact(
 
 	id TEXT PRIMARY KEY,
-	List extension,
+	extension **LIST** Extension,
 	"type" TEXT, -- enum: documentation/justification/citation/predecessor/successor/derived-from/depends-on/composed-of
 	_type TEXT, -- Foreign Key to element table
 	label TEXT,
@@ -1535,7 +1527,7 @@ CREATE TABLE relatedArtifact(
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
 	document TEXT, -- Foreign Key to attachment table
-	resource TEXT,
+	"resource" TEXT,
 
 	FOREIGN KEY (_type)
 		REFERENCES element (id)
@@ -1572,7 +1564,7 @@ CREATE TABLE relatedArtifact(
 CREATE TABLE triggerDefinition(
 
 	id TEXT PRIMARY KEY,
-	List extension,
+	extension **LIST** Extension,
 	"type" TEXT, -- enum: named-event/periodic/data-changed/data-added/data-modified/data-removed/data-accessed/data-access-ended
 	_type TEXT, -- Foreign Key to element table
 	"name" TEXT,
@@ -1583,7 +1575,7 @@ CREATE TABLE triggerDefinition(
 	_timingDate TEXT, -- Foreign Key to element table
 	timingDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 	_timingDateTime TEXT, -- Foreign Key to element table
-	List data,
+	"data" **LIST** DataRequirement,
 	"condition" TEXT, -- Foreign Key to expression table
 
 	FOREIGN KEY (_type)
@@ -1626,7 +1618,7 @@ CREATE TABLE triggerDefinition(
 CREATE TABLE usageContext(
 
 	id TEXT PRIMARY KEY,
-	List extension,
+	extension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to coding table
 	valueCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	valueQuantity TEXT, -- Foreign Key to quantity table
@@ -1663,13 +1655,13 @@ CREATE TABLE usageContext(
 CREATE TABLE dosage(
 
 	id TEXT PRIMARY KEY,
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
 	_sequence TEXT, -- Foreign Key to element table
 	"text" TEXT,
 	_text TEXT, -- Foreign Key to element table
-	List additionalInstruction,
+	additionalInstruction **LIST** CodeableConcept,
 	patientInstruction TEXT,
 	_patientInstruction TEXT, -- Foreign Key to element table
 	timing TEXT, -- Foreign Key to timing table
@@ -1677,9 +1669,9 @@ CREATE TABLE dosage(
 	_asNeededBoolean TEXT, -- Foreign Key to element table
 	asNeededCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	"site" TEXT, -- Foreign Key to codeableConcept table
-	route TEXT, -- Foreign Key to codeableConcept table
+	"route" TEXT, -- Foreign Key to codeableConcept table
 	"method" TEXT, -- Foreign Key to codeableConcept table
-	List doseAndRate,
+	doseAndRate **LIST** Dosage_DoseAndRate,
 	maxDosePerPeriod TEXT, -- Foreign Key to ratio table
 	maxDosePerAdministration TEXT, -- Foreign Key to quantity table
 	maxDosePerLifetime TEXT, -- Foreign Key to quantity table
@@ -1719,7 +1711,7 @@ CREATE TABLE dosage(
 			ON DELETE CASCADE
 		ON UPDATE NO ACTION,
 
-	FOREIGN KEY (route)
+	FOREIGN KEY ("route")
 		REFERENCES codeableConcept (id)
 			ON DELETE CASCADE
 		ON UPDATE NO ACTION,
@@ -1749,10 +1741,8 @@ CREATE TABLE dosage(
 CREATE TABLE dosage_DoseAndRate(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	doseRange TEXT, -- Foreign Key to range table
 	doseQuantity TEXT, -- Foreign Key to quantity table
@@ -1795,8 +1785,8 @@ CREATE TABLE dosage_DoseAndRate(
 CREATE TABLE "population"(
 
 	id TEXT PRIMARY KEY,
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	ageRange TEXT, -- Foreign Key to range table
 	ageCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	gender TEXT, -- Foreign Key to codeableConcept table
@@ -1833,12 +1823,12 @@ CREATE TABLE "population"(
 CREATE TABLE productShelfLife(
 
 	id TEXT PRIMARY KEY,
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	identifier TEXT, -- Foreign Key to identifier table
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	"period" TEXT, -- Foreign Key to quantity table
-	List specialPrecautionsForStorage,
+	specialPrecautionsForStorage **LIST** CodeableConcept,
 
 	FOREIGN KEY (identifier)
 		REFERENCES identifier (id)
@@ -1860,8 +1850,8 @@ CREATE TABLE productShelfLife(
 CREATE TABLE prodCharacteristic(
 
 	id TEXT PRIMARY KEY,
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	height TEXT, -- Foreign Key to quantity table
 	width TEXT, -- Foreign Key to quantity table
 	"depth" TEXT, -- Foreign Key to quantity table
@@ -1870,11 +1860,11 @@ CREATE TABLE prodCharacteristic(
 	externalDiameter TEXT, -- Foreign Key to quantity table
 	shape TEXT,
 	_shape TEXT, -- Foreign Key to element table
-	List color,
-	List _color,
-	List imprint,
-	List _imprint,
-	List image,
+	color **LIST** string,
+	_color **LIST** Element,
+	imprint **LIST** string,
+	_imprint **LIST** Element,
+	"image" **LIST** Attachment,
 	scoring TEXT, -- Foreign Key to codeableConcept table
 
 	FOREIGN KEY (height)
@@ -1922,8 +1912,8 @@ CREATE TABLE prodCharacteristic(
 CREATE TABLE marketingStatus(
 
 	id TEXT PRIMARY KEY,
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	country TEXT, -- Foreign Key to codeableConcept table
 	jurisdiction TEXT, -- Foreign Key to codeableConcept table
 	"status" TEXT, -- Foreign Key to codeableConcept table
@@ -1961,8 +1951,8 @@ CREATE TABLE marketingStatus(
 CREATE TABLE substanceAmount(
 
 	id TEXT PRIMARY KEY,
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	amountQuantity TEXT, -- Foreign Key to quantity table
 	amountRange TEXT, -- Foreign Key to range table
 	amountString TEXT, -- pattern: ^[ \r\n\t\S]+$
@@ -2007,10 +1997,8 @@ CREATE TABLE substanceAmount(
 CREATE TABLE substanceAmount_ReferenceRange(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	lowLimit TEXT, -- Foreign Key to quantity table
 	highLimit TEXT, -- Foreign Key to quantity table
 
@@ -2029,7 +2017,7 @@ CREATE TABLE substanceAmount_ReferenceRange(
 CREATE TABLE expression(
 
 	id TEXT PRIMARY KEY,
-	List extension,
+	extension **LIST** Extension,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	"name" TEXT, -- Foreign Key to id table
@@ -2076,19 +2064,19 @@ CREATE TABLE expression(
 CREATE TABLE elementDefinition(
 
 	id TEXT PRIMARY KEY,
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"path" TEXT,
 	_path TEXT, -- Foreign Key to element table
-	List representation,
-	List _representation,
+	representation **LIST** enum, -- xmlAttr/xmlText/typeAttr/cdaText/xhtml,
+	_representation **LIST** Element,
 	sliceName TEXT,
 	_sliceName TEXT, -- Foreign Key to element table
 	sliceIsConstraining BOOLEAN,
 	_sliceIsConstraining TEXT, -- Foreign Key to element table
 	label TEXT,
 	_label TEXT, -- Foreign Key to element table
-	List code,
+	"code" **LIST** Coding,
 	slicing TEXT, -- Foreign Key to elementDefinition_Slicing table
 	short TEXT,
 	_short TEXT, -- Foreign Key to element table
@@ -2098,8 +2086,8 @@ CREATE TABLE elementDefinition(
 	_comment TEXT, -- Foreign Key to element table
 	requirements TEXT,
 	_requirements TEXT, -- Foreign Key to element table
-	List alias,
-	List _alias,
+	alias **LIST** string,
+	_alias **LIST** Element,
 	"min" INTEGER,
 	_min TEXT, -- Foreign Key to element table
 	"max" TEXT,
@@ -2107,7 +2095,7 @@ CREATE TABLE elementDefinition(
 	base TEXT, -- Foreign Key to elementDefinition_Base table
 	contentReference TEXT,
 	_contentReference TEXT, -- Foreign Key to element table
-	List type,
+	"type" **LIST** ElementDefinition_Type,
 	defaultValueBase64Binary TEXT, -- pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
 	_defaultValueBase64Binary TEXT, -- Foreign Key to element table
 	defaultValueBoolean BOOLEAN, -- pattern: ^true|false$
@@ -2319,7 +2307,7 @@ CREATE TABLE elementDefinition(
 	patternUsageContext TEXT, -- Foreign Key to usageContext table
 	patternDosage TEXT, -- Foreign Key to dosage table
 	patternMeta TEXT, -- Foreign Key to meta table
-	List example,
+	example **LIST** ElementDefinition_Example,
 	minValueDate TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 	_minValueDate TEXT, -- Foreign Key to element table
 	minValueDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
@@ -2356,9 +2344,9 @@ CREATE TABLE elementDefinition(
 	maxValueQuantity TEXT, -- Foreign Key to quantity table
 	"maxLength" INTEGER,
 	_maxLength TEXT, -- Foreign Key to element table
-	List condition,
-	List _condition,
-	List constraint,
+	"condition" **LIST** id,
+	_condition **LIST** Element,
+	"constraint" **LIST** ElementDefinition_Constraint,
 	mustSupport BOOLEAN,
 	_mustSupport TEXT, -- Foreign Key to element table
 	isModifier BOOLEAN,
@@ -2368,7 +2356,7 @@ CREATE TABLE elementDefinition(
 	isSummary BOOLEAN,
 	_isSummary TEXT, -- Foreign Key to element table
 	"binding" TEXT, -- Foreign Key to elementDefinition_Binding table
-	List mapping,
+	mapping **LIST** ElementDefinition_Mapping,
 
 	FOREIGN KEY (_path)
 		REFERENCES element (id)
@@ -3320,11 +3308,9 @@ CREATE TABLE elementDefinition(
 CREATE TABLE elementDefinition_Slicing(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List discriminator,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	discriminator **LIST** ElementDefinition_Discriminator,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	ordered BOOLEAN,
@@ -3352,10 +3338,8 @@ CREATE TABLE elementDefinition_Slicing(
 CREATE TABLE elementDefinition_Discriminator(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- enum: value/exists/pattern/type/profile
 	_type TEXT, -- Foreign Key to element table
 	"path" TEXT,
@@ -3376,10 +3360,8 @@ CREATE TABLE elementDefinition_Discriminator(
 CREATE TABLE elementDefinition_Base(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"path" TEXT,
 	_path TEXT, -- Foreign Key to element table
 	"min" INTEGER,
@@ -3407,16 +3389,14 @@ CREATE TABLE elementDefinition_Base(
 CREATE TABLE elementDefinition_Type(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT,
 	_code TEXT, -- Foreign Key to element table
-	List profile,
-	List targetProfile,
-	List aggregation,
-	List _aggregation,
+	"profile" **LIST** canonical,
+	targetProfile **LIST** canonical,
+	aggregation **LIST** enum, -- contained/referenced/bundled,
+	_aggregation **LIST** Element,
 	versioning TEXT, -- enum: either/independent/specific
 	_versioning TEXT, -- Foreign Key to element table
 
@@ -3435,10 +3415,8 @@ CREATE TABLE elementDefinition_Type(
 CREATE TABLE elementDefinition_Example(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	label TEXT,
 	_label TEXT, -- Foreign Key to element table
 	valueBase64Binary TEXT, -- pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
@@ -3771,10 +3749,8 @@ CREATE TABLE elementDefinition_Example(
 CREATE TABLE elementDefinition_Constraint(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"key" TEXT, -- Foreign Key to id table
 	_key TEXT, -- Foreign Key to element table
 	requirements TEXT,
@@ -3829,10 +3805,8 @@ CREATE TABLE elementDefinition_Constraint(
 CREATE TABLE elementDefinition_Binding(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	strength TEXT, -- enum: required/extensible/preferred/example
 	_strength TEXT, -- Foreign Key to element table
 	"description" TEXT,
@@ -3854,10 +3828,8 @@ CREATE TABLE elementDefinition_Binding(
 CREATE TABLE elementDefinition_Mapping(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"identity" TEXT, -- Foreign Key to id table
 	_identity TEXT, -- Foreign Key to element table
 	"language" TEXT,
@@ -3904,22 +3876,22 @@ CREATE TABLE account(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT, -- enum: active/inactive/entered-in-error/on-hold/unknown
 	_status TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
-	List subject,
+	"subject" **LIST** Reference,
 	servicePeriod TEXT, -- Foreign Key to period table
-	List coverage,
+	coverage **LIST** Account_Coverage,
 	"owner" TEXT, -- Foreign Key to reference table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List guarantor,
+	guarantor **LIST** Account_Guarantor,
 	partOf TEXT, -- Foreign Key to reference table
 
 	FOREIGN KEY (meta)
@@ -3982,10 +3954,8 @@ CREATE TABLE account(
 CREATE TABLE account_Coverage(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	coverage TEXT, -- Foreign Key to reference table
 	"priority" INTEGER,
 	_priority TEXT, -- Foreign Key to element table
@@ -4005,10 +3975,8 @@ CREATE TABLE account_Coverage(
 CREATE TABLE account_Guarantor(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	party TEXT, -- Foreign Key to reference table
 	onHold BOOLEAN,
 	_onHold TEXT, -- Foreign Key to element table
@@ -4041,12 +4009,12 @@ CREATE TABLE activityDefinition(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
-	List identifier,
+	identifier **LIST** Identifier,
 	"version" TEXT,
 	_version TEXT, -- Foreign Key to element table
 	"name" TEXT,
@@ -4065,11 +4033,11 @@ CREATE TABLE activityDefinition(
 	_date TEXT, -- Foreign Key to element table
 	publisher TEXT,
 	_publisher TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactDetail,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List useContext,
-	List jurisdiction,
+	useContext **LIST** UsageContext,
+	jurisdiction **LIST** CodeableConcept,
 	purpose TEXT,
 	_purpose TEXT, -- Foreign Key to element table
 	"usage" TEXT,
@@ -4081,13 +4049,13 @@ CREATE TABLE activityDefinition(
 	lastReviewDate DATE,
 	_lastReviewDate TEXT, -- Foreign Key to element table
 	effectivePeriod TEXT, -- Foreign Key to period table
-	List topic,
-	List author,
-	List editor,
-	List reviewer,
-	List endorser,
-	List relatedArtifact,
-	List library,
+	topic **LIST** CodeableConcept,
+	author **LIST** ContactDetail,
+	editor **LIST** ContactDetail,
+	reviewer **LIST** ContactDetail,
+	endorser **LIST** ContactDetail,
+	relatedArtifact **LIST** RelatedArtifact,
+	library **LIST** canonical,
 	kind TEXT,
 	_kind TEXT, -- Foreign Key to element table
 	"profile" TEXT,
@@ -4106,17 +4074,17 @@ CREATE TABLE activityDefinition(
 	timingRange TEXT, -- Foreign Key to range table
 	timingDuration TEXT, -- Foreign Key to duration table
 	"location" TEXT, -- Foreign Key to reference table
-	List participant,
+	participant **LIST** ActivityDefinition_Participant,
 	productReference TEXT, -- Foreign Key to reference table
 	productCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	quantity TEXT, -- Foreign Key to quantity table
-	List dosage,
-	List bodySite,
-	List specimenRequirement,
-	List observationRequirement,
-	List observationResultRequirement,
+	dosage **LIST** Dosage,
+	bodySite **LIST** CodeableConcept,
+	specimenRequirement **LIST** Reference,
+	observationRequirement **LIST** Reference,
+	observationResultRequirement **LIST** Reference,
 	transform TEXT,
-	List dynamicValue,
+	dynamicValue **LIST** ActivityDefinition_DynamicValue,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -4308,10 +4276,8 @@ CREATE TABLE activityDefinition(
 CREATE TABLE activityDefinition_Participant(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT,
 	_type TEXT, -- Foreign Key to element table
 	"role" TEXT, -- Foreign Key to codeableConcept table
@@ -4331,10 +4297,8 @@ CREATE TABLE activityDefinition_Participant(
 CREATE TABLE activityDefinition_DynamicValue(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"path" TEXT,
 	_path TEXT, -- Foreign Key to element table
 	expression TEXT, -- Foreign Key to expression table
@@ -4361,13 +4325,13 @@ CREATE TABLE adverseEvent(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	identifier TEXT, -- Foreign Key to identifier table
 	actuality TEXT, -- enum: actual/potential
 	_actuality TEXT, -- Foreign Key to element table
-	List category,
+	category **LIST** CodeableConcept,
 	"event" TEXT, -- Foreign Key to codeableConcept table
 	"subject" TEXT, -- Foreign Key to reference table
 	encounter TEXT, -- Foreign Key to reference table
@@ -4377,17 +4341,17 @@ CREATE TABLE adverseEvent(
 	_detected TEXT, -- Foreign Key to element table
 	recordedDate DATETIME,
 	_recordedDate TEXT, -- Foreign Key to element table
-	List resultingCondition,
+	resultingCondition **LIST** Reference,
 	"location" TEXT, -- Foreign Key to reference table
 	seriousness TEXT, -- Foreign Key to codeableConcept table
 	severity TEXT, -- Foreign Key to codeableConcept table
 	outcome TEXT, -- Foreign Key to codeableConcept table
 	recorder TEXT, -- Foreign Key to reference table
-	List contributor,
-	List suspectEntity,
-	List subjectMedicalHistory,
-	List referenceDocument,
-	List study,
+	contributor **LIST** Reference,
+	suspectEntity **LIST** AdverseEvent_SuspectEntity,
+	subjectMedicalHistory **LIST** Reference,
+	referenceDocument **LIST** Reference,
+	study **LIST** Reference,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -4479,12 +4443,10 @@ CREATE TABLE adverseEvent(
 CREATE TABLE adverseEvent_SuspectEntity(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"instance" TEXT, -- Foreign Key to reference table
-	List causality,
+	causality **LIST** AdverseEvent_Causality,
 
 	FOREIGN KEY ("instance")
 		REFERENCES reference (id)
@@ -4496,10 +4458,8 @@ CREATE TABLE adverseEvent_SuspectEntity(
 CREATE TABLE adverseEvent_Causality(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	assessment TEXT, -- Foreign Key to codeableConcept table
 	productRelatedness TEXT,
 	_productRelatedness TEXT, -- Foreign Key to element table
@@ -4538,16 +4498,16 @@ CREATE TABLE allergyIntolerance(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	clinicalStatus TEXT, -- Foreign Key to codeableConcept table
 	verificationStatus TEXT, -- Foreign Key to codeableConcept table
 	"type" TEXT, -- enum: allergy/intolerance
 	_type TEXT, -- Foreign Key to element table
-	List category,
-	List _category,
+	category **LIST** enum, -- food/medication/environment/biologic,
+	_category **LIST** Element,
 	criticality TEXT, -- enum: low/high/unable-to-assess
 	_criticality TEXT, -- Foreign Key to element table
 	"code" TEXT, -- Foreign Key to codeableConcept table
@@ -4566,8 +4526,8 @@ CREATE TABLE allergyIntolerance(
 	asserter TEXT, -- Foreign Key to reference table
 	lastOccurrence DATETIME,
 	_lastOccurrence TEXT, -- Foreign Key to element table
-	List note,
-	List reaction,
+	note **LIST** Annotation,
+	reaction **LIST** AllergyIntolerance_Reaction,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -4674,12 +4634,10 @@ CREATE TABLE allergyIntolerance(
 CREATE TABLE allergyIntolerance_Reaction(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	substance TEXT, -- Foreign Key to codeableConcept table
-	List manifestation,
+	manifestation **LIST** CodeableConcept,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	onset DATETIME,
@@ -4687,7 +4645,7 @@ CREATE TABLE allergyIntolerance_Reaction(
 	severity TEXT, -- enum: mild/moderate/severe
 	_severity TEXT, -- Foreign Key to element table
 	exposureRoute TEXT, -- Foreign Key to codeableConcept table
-	List note,
+	note **LIST** Annotation,
 
 	FOREIGN KEY (substance)
 		REFERENCES codeableConcept (id)
@@ -4726,40 +4684,40 @@ CREATE TABLE appointment(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT, -- enum: proposed/pending/booked/arrived/fulfilled/cancelled/noshow/entered-in-error/checked-in/waitlist
 	_status TEXT, -- Foreign Key to element table
 	cancelationReason TEXT, -- Foreign Key to codeableConcept table
-	List serviceCategory,
-	List serviceType,
-	List specialty,
+	serviceCategory **LIST** CodeableConcept,
+	serviceType **LIST** CodeableConcept,
+	specialty **LIST** CodeableConcept,
 	appointmentType TEXT, -- Foreign Key to codeableConcept table
-	List reasonCode,
-	List reasonReference,
+	reasonCode **LIST** CodeableConcept,
+	reasonReference **LIST** Reference,
 	"priority" INTEGER,
 	_priority TEXT, -- Foreign Key to element table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List supportingInformation,
+	supportingInformation **LIST** Reference,
 	"start" DATETIME,
 	_start TEXT, -- Foreign Key to element table
 	"end" DATETIME,
 	_end TEXT, -- Foreign Key to element table
 	minutesDuration INTEGER,
 	_minutesDuration TEXT, -- Foreign Key to element table
-	List slot,
+	slot **LIST** Reference,
 	created DATETIME,
 	_created TEXT, -- Foreign Key to element table
 	comment TEXT,
 	_comment TEXT, -- Foreign Key to element table
 	patientInstruction TEXT,
 	_patientInstruction TEXT, -- Foreign Key to element table
-	List basedOn,
-	List participant,
-	List requestedPeriod,
+	basedOn **LIST** Reference,
+	participant **LIST** Appointment_Participant,
+	requestedPeriod **LIST** Period,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -4841,13 +4799,11 @@ CREATE TABLE appointment(
 CREATE TABLE appointment_Participant(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List type,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	"type" **LIST** CodeableConcept,
 	actor TEXT, -- Foreign Key to reference table
-	required TEXT, -- enum: required/optional/information-only
+	"required" TEXT, -- enum: required/optional/information-only
 	_required TEXT, -- Foreign Key to element table
 	"status" TEXT, -- enum: accepted/declined/tentative/needs-action
 	_status TEXT, -- Foreign Key to element table
@@ -4885,16 +4841,16 @@ CREATE TABLE appointmentResponse(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	appointment TEXT, -- Foreign Key to reference table
 	"start" DATETIME,
 	_start TEXT, -- Foreign Key to element table
 	"end" DATETIME,
 	_end TEXT, -- Foreign Key to element table
-	List participantType,
+	participantType **LIST** CodeableConcept,
 	actor TEXT, -- Foreign Key to reference table
 	participantStatus TEXT,
 	_participantStatus TEXT, -- Foreign Key to element table
@@ -4963,11 +4919,11 @@ CREATE TABLE auditEvent(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to coding table
-	List subtype,
+	subtype **LIST** Coding,
 	"action" TEXT, -- enum: C/R/U/D/E
 	_action TEXT, -- Foreign Key to element table
 	"period" TEXT, -- Foreign Key to period table
@@ -4977,10 +4933,10 @@ CREATE TABLE auditEvent(
 	_outcome TEXT, -- Foreign Key to element table
 	outcomeDesc TEXT,
 	_outcomeDesc TEXT, -- Foreign Key to element table
-	List purposeOfEvent,
-	List agent,
+	purposeOfEvent **LIST** CodeableConcept,
+	agent **LIST** AuditEvent_Agent,
 	"source" TEXT, -- Foreign Key to auditEvent_Source table
-	List entity,
+	entity **LIST** AuditEvent_Entity,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -5042,12 +4998,10 @@ CREATE TABLE auditEvent(
 CREATE TABLE auditEvent_Agent(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
-	List role,
+	"role" **LIST** CodeableConcept,
 	who TEXT, -- Foreign Key to reference table
 	altId TEXT,
 	_altId TEXT, -- Foreign Key to element table
@@ -5056,11 +5010,11 @@ CREATE TABLE auditEvent_Agent(
 	requestor BOOLEAN,
 	_requestor TEXT, -- Foreign Key to element table
 	"location" TEXT, -- Foreign Key to reference table
-	List policy,
-	List _policy,
+	"policy" **LIST** uri,
+	_policy **LIST** Element,
 	media TEXT, -- Foreign Key to coding table
 	network TEXT, -- Foreign Key to auditEvent_Network table
-	List purposeOfUse,
+	purposeOfUse **LIST** CodeableConcept,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -5107,10 +5061,8 @@ CREATE TABLE auditEvent_Agent(
 CREATE TABLE auditEvent_Network(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"address" TEXT,
 	_address TEXT, -- Foreign Key to element table
 	"type" TEXT, -- enum: 1/2/3/4/5
@@ -5131,14 +5083,12 @@ CREATE TABLE auditEvent_Network(
 CREATE TABLE auditEvent_Source(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"site" TEXT,
 	_site TEXT, -- Foreign Key to element table
 	observer TEXT, -- Foreign Key to reference table
-	List type,
+	"type" **LIST** Coding,
 
 	FOREIGN KEY (_site)
 		REFERENCES element (id)
@@ -5155,22 +5105,20 @@ CREATE TABLE auditEvent_Source(
 CREATE TABLE auditEvent_Entity(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	what TEXT, -- Foreign Key to reference table
 	"type" TEXT, -- Foreign Key to coding table
 	"role" TEXT, -- Foreign Key to coding table
 	lifecycle TEXT, -- Foreign Key to coding table
-	List securityLabel,
+	securityLabel **LIST** Coding,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	query TEXT,
 	_query TEXT, -- Foreign Key to element table
-	List detail,
+	detail **LIST** AuditEvent_Detail,
 
 	FOREIGN KEY (what)
 		REFERENCES reference (id)
@@ -5212,10 +5160,8 @@ CREATE TABLE auditEvent_Entity(
 CREATE TABLE auditEvent_Detail(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT,
 	_type TEXT, -- Foreign Key to element table
 	valueString TEXT, -- pattern: ^[ \r\n\t\S]+$
@@ -5250,10 +5196,10 @@ CREATE TABLE basic(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"subject" TEXT, -- Foreign Key to reference table
 	created DATE,
@@ -5359,23 +5305,23 @@ CREATE TABLE biologicallyDerivedProduct(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	productCategory TEXT, -- enum: organ/tissue/fluid/cells/biologicalAgent
 	_productCategory TEXT, -- Foreign Key to element table
 	productCode TEXT, -- Foreign Key to codeableConcept table
 	"status" TEXT, -- enum: available/unavailable
 	_status TEXT, -- Foreign Key to element table
-	List request,
+	request **LIST** Reference,
 	quantity INTEGER,
 	_quantity TEXT, -- Foreign Key to element table
-	List parent,
-	collection TEXT, -- Foreign Key to biologicallyDerivedProduct_Collection table
-	List processing,
+	parent **LIST** Reference,
+	"collection" TEXT, -- Foreign Key to biologicallyDerivedProduct_Collection table
+	processing **LIST** BiologicallyDerivedProduct_Processing,
 	manipulation TEXT, -- Foreign Key to biologicallyDerivedProduct_Manipulation table
-	List storage,
+	storage **LIST** BiologicallyDerivedProduct_Storage,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -5417,7 +5363,7 @@ CREATE TABLE biologicallyDerivedProduct(
 			ON DELETE CASCADE
 		ON UPDATE NO ACTION,
 
-	FOREIGN KEY (collection)
+	FOREIGN KEY ("collection")
 		REFERENCES biologicallyDerivedProduct_Collection (id)
 			ON DELETE CASCADE
 		ON UPDATE NO ACTION,
@@ -5432,10 +5378,8 @@ CREATE TABLE biologicallyDerivedProduct(
 CREATE TABLE biologicallyDerivedProduct_Collection(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	collector TEXT, -- Foreign Key to reference table
 	"source" TEXT, -- Foreign Key to reference table
 	collectedDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
@@ -5467,10 +5411,8 @@ CREATE TABLE biologicallyDerivedProduct_Collection(
 CREATE TABLE biologicallyDerivedProduct_Processing(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	"procedure" TEXT, -- Foreign Key to codeableConcept table
@@ -5509,10 +5451,8 @@ CREATE TABLE biologicallyDerivedProduct_Processing(
 CREATE TABLE biologicallyDerivedProduct_Manipulation(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	timeDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
@@ -5539,10 +5479,8 @@ CREATE TABLE biologicallyDerivedProduct_Manipulation(
 CREATE TABLE biologicallyDerivedProduct_Storage(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	temperature REAL,
@@ -5583,18 +5521,18 @@ CREATE TABLE bodyStructure(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	active BOOLEAN,
 	_active TEXT, -- Foreign Key to element table
 	morphology TEXT, -- Foreign Key to codeableConcept table
 	"location" TEXT, -- Foreign Key to codeableConcept table
-	List locationQualifier,
+	locationQualifier **LIST** CodeableConcept,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List image,
+	"image" **LIST** Attachment,
 	patient TEXT, -- Foreign Key to reference table
 
 	FOREIGN KEY (meta)
@@ -5660,8 +5598,8 @@ CREATE TABLE bundle(
 	_timestamp TEXT, -- Foreign Key to element table
 	total INTEGER,
 	_total TEXT, -- Foreign Key to element table
-	List link,
-	List entry,
+	link **LIST** Bundle_Link,
+	entry **LIST** Bundle_Entry,
 	"signature" TEXT, -- Foreign Key to signature table
 
 	FOREIGN KEY (meta)
@@ -5709,10 +5647,8 @@ CREATE TABLE bundle(
 CREATE TABLE bundle_Link(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	relation TEXT,
 	_relation TEXT, -- Foreign Key to element table
 	"url" TEXT,
@@ -5733,14 +5669,12 @@ CREATE TABLE bundle_Link(
 CREATE TABLE bundle_Entry(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List link,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	link **LIST** Bundle_Link,
 	fullUrl TEXT,
 	_fullUrl TEXT, -- Foreign Key to element table
-	resource TEXT, -- Foreign Key to resourceList table
+	"resource" TEXT, -- Foreign Key to resourceList table
 	"search" TEXT, -- Foreign Key to bundle_Search table
 	request TEXT, -- Foreign Key to bundle_Request table
 	response TEXT, -- Foreign Key to bundle_Response table
@@ -5750,7 +5684,7 @@ CREATE TABLE bundle_Entry(
 			ON DELETE CASCADE
 		ON UPDATE NO ACTION,
 
-	FOREIGN KEY (resource)
+	FOREIGN KEY ("resource")
 		REFERENCES resourceList (id)
 			ON DELETE CASCADE
 		ON UPDATE NO ACTION,
@@ -5775,10 +5709,8 @@ CREATE TABLE bundle_Entry(
 CREATE TABLE bundle_Search(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	mode TEXT, -- enum: match/include/outcome
 	_mode TEXT, -- Foreign Key to element table
 	score REAL,
@@ -5799,10 +5731,8 @@ CREATE TABLE bundle_Search(
 CREATE TABLE bundle_Request(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"method" TEXT, -- enum: GET/HEAD/POST/PUT/DELETE/PATCH
 	_method TEXT, -- Foreign Key to element table
 	"url" TEXT,
@@ -5851,10 +5781,8 @@ CREATE TABLE bundle_Request(
 CREATE TABLE bundle_Response(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
 	"location" TEXT,
@@ -5902,9 +5830,9 @@ CREATE TABLE capabilityStatement(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
 	"version" TEXT,
@@ -5921,31 +5849,31 @@ CREATE TABLE capabilityStatement(
 	_date TEXT, -- Foreign Key to element table
 	publisher TEXT,
 	_publisher TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactDetail,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List useContext,
-	List jurisdiction,
+	useContext **LIST** UsageContext,
+	jurisdiction **LIST** CodeableConcept,
 	purpose TEXT,
 	_purpose TEXT, -- Foreign Key to element table
 	copyright TEXT,
 	_copyright TEXT, -- Foreign Key to element table
 	kind TEXT, -- enum: instance/capability/requirements
 	_kind TEXT, -- Foreign Key to element table
-	List instantiates,
-	List imports,
+	instantiates **LIST** canonical,
+	imports **LIST** canonical,
 	software TEXT, -- Foreign Key to capabilityStatement_Software table
 	"implementation" TEXT, -- Foreign Key to capabilityStatement_Implementation table
 	fhirVersion TEXT, -- enum: 0.01/0.05/0.06/0.11/0.0.80/0.0.81/0.0.82/0.4.0/0.5.0/1.0.0/1.0.1/1.0.2/1.1.0/1.4.0/1.6.0/1.8.0/3.0.0/3.0.1/3.3.0/3.5.0/4.0.0/4.0.1
 	_fhirVersion TEXT, -- Foreign Key to element table
-	List format,
-	List _format,
-	List patchFormat,
-	List _patchFormat,
-	List implementationGuide,
-	List rest,
-	List messaging,
-	List document,
+	format **LIST** code,
+	_format **LIST** Element,
+	patchFormat **LIST** code,
+	_patchFormat **LIST** Element,
+	implementationGuide **LIST** canonical,
+	rest **LIST** CapabilityStatement_Rest,
+	messaging **LIST** CapabilityStatement_Messaging,
+	document **LIST** CapabilityStatement_Document,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -6047,10 +5975,8 @@ CREATE TABLE capabilityStatement(
 CREATE TABLE capabilityStatement_Software(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	"version" TEXT,
@@ -6078,10 +6004,8 @@ CREATE TABLE capabilityStatement_Software(
 CREATE TABLE capabilityStatement_Implementation(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	"url" TEXT,
@@ -6108,20 +6032,18 @@ CREATE TABLE capabilityStatement_Implementation(
 CREATE TABLE capabilityStatement_Rest(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	mode TEXT, -- enum: client/server
 	_mode TEXT, -- Foreign Key to element table
 	documentation TEXT,
 	_documentation TEXT, -- Foreign Key to element table
 	"security" TEXT, -- Foreign Key to capabilityStatement_Security table
-	List resource,
-	List interaction,
-	List searchParam,
-	List operation,
-	List compartment,
+	"resource" **LIST** CapabilityStatement_Resource,
+	interaction **LIST** CapabilityStatement_Interaction1,
+	searchParam **LIST** CapabilityStatement_SearchParam,
+	operation **LIST** CapabilityStatement_Operation,
+	compartment **LIST** canonical,
 
 	FOREIGN KEY (_mode)
 		REFERENCES element (id)
@@ -6143,13 +6065,11 @@ CREATE TABLE capabilityStatement_Rest(
 CREATE TABLE capabilityStatement_Security(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	cors BOOLEAN,
 	_cors TEXT, -- Foreign Key to element table
-	List service,
+	service **LIST** CodeableConcept,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 
@@ -6168,17 +6088,15 @@ CREATE TABLE capabilityStatement_Security(
 CREATE TABLE capabilityStatement_Resource(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT,
 	_type TEXT, -- Foreign Key to element table
 	"profile" TEXT,
-	List supportedProfile,
+	supportedProfile **LIST** canonical,
 	documentation TEXT,
 	_documentation TEXT, -- Foreign Key to element table
-	List interaction,
+	interaction **LIST** CapabilityStatement_Interaction,
 	versioning TEXT, -- enum: no-version/versioned/versioned-update
 	_versioning TEXT, -- Foreign Key to element table
 	readHistory BOOLEAN,
@@ -6193,14 +6111,14 @@ CREATE TABLE capabilityStatement_Resource(
 	_conditionalUpdate TEXT, -- Foreign Key to element table
 	conditionalDelete TEXT, -- enum: not-supported/single/multiple
 	_conditionalDelete TEXT, -- Foreign Key to element table
-	List referencePolicy,
-	List _referencePolicy,
-	List searchInclude,
-	List _searchInclude,
-	List searchRevInclude,
-	List _searchRevInclude,
-	List searchParam,
-	List operation,
+	referencePolicy **LIST** enum, -- literal/logical/resolves/enforced/local,
+	_referencePolicy **LIST** Element,
+	searchInclude **LIST** string,
+	_searchInclude **LIST** Element,
+	searchRevInclude **LIST** string,
+	_searchRevInclude **LIST** Element,
+	searchParam **LIST** CapabilityStatement_SearchParam,
+	operation **LIST** CapabilityStatement_Operation,
 
 	FOREIGN KEY (_type)
 		REFERENCES element (id)
@@ -6252,10 +6170,8 @@ CREATE TABLE capabilityStatement_Resource(
 CREATE TABLE capabilityStatement_Interaction(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT, -- enum: read/vread/update/patch/delete/history-instance/history-type/create/search-type
 	_code TEXT, -- Foreign Key to element table
 	documentation TEXT,
@@ -6276,10 +6192,8 @@ CREATE TABLE capabilityStatement_Interaction(
 CREATE TABLE capabilityStatement_SearchParam(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	"definition" TEXT,
@@ -6308,10 +6222,8 @@ CREATE TABLE capabilityStatement_SearchParam(
 CREATE TABLE capabilityStatement_Operation(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	"definition" TEXT,
@@ -6333,10 +6245,8 @@ CREATE TABLE capabilityStatement_Operation(
 CREATE TABLE capabilityStatement_Interaction1(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT, -- enum: transaction/batch/search-system/history-system
 	_code TEXT, -- Foreign Key to element table
 	documentation TEXT,
@@ -6357,16 +6267,14 @@ CREATE TABLE capabilityStatement_Interaction1(
 CREATE TABLE capabilityStatement_Messaging(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List endpoint,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	"endpoint" **LIST** CapabilityStatement_Endpoint,
 	reliableCache INTEGER,
 	_reliableCache TEXT, -- Foreign Key to element table
 	documentation TEXT,
 	_documentation TEXT, -- Foreign Key to element table
-	List supportedMessage,
+	supportedMessage **LIST** CapabilityStatement_SupportedMessage,
 
 	FOREIGN KEY (_reliableCache)
 		REFERENCES element (id)
@@ -6383,10 +6291,8 @@ CREATE TABLE capabilityStatement_Messaging(
 CREATE TABLE capabilityStatement_Endpoint(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	protocol TEXT, -- Foreign Key to coding table
 	"address" TEXT,
 	_address TEXT, -- Foreign Key to element table
@@ -6406,10 +6312,8 @@ CREATE TABLE capabilityStatement_Endpoint(
 CREATE TABLE capabilityStatement_SupportedMessage(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	mode TEXT, -- enum: sender/receiver
 	_mode TEXT, -- Foreign Key to element table
 	"definition" TEXT,
@@ -6424,10 +6328,8 @@ CREATE TABLE capabilityStatement_SupportedMessage(
 CREATE TABLE capabilityStatement_Document(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	mode TEXT, -- enum: producer/consumer
 	_mode TEXT, -- Foreign Key to element table
 	documentation TEXT,
@@ -6456,21 +6358,21 @@ CREATE TABLE carePlan(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
-	List instantiatesCanonical,
-	List instantiatesUri,
-	List _instantiatesUri,
-	List basedOn,
-	List replaces,
-	List partOf,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
+	instantiatesCanonical **LIST** canonical,
+	instantiatesUri **LIST** uri,
+	_instantiatesUri **LIST** Element,
+	basedOn **LIST** Reference,
+	replaces **LIST** Reference,
+	partOf **LIST** Reference,
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
 	intent TEXT,
 	_intent TEXT, -- Foreign Key to element table
-	List category,
+	category **LIST** CodeableConcept,
 	title TEXT,
 	_title TEXT, -- Foreign Key to element table
 	"description" TEXT,
@@ -6481,13 +6383,13 @@ CREATE TABLE carePlan(
 	created DATETIME,
 	_created TEXT, -- Foreign Key to element table
 	author TEXT, -- Foreign Key to reference table
-	List contributor,
-	List careTeam,
-	List addresses,
-	List supportingInfo,
-	List goal,
-	List activity,
-	List note,
+	contributor **LIST** Reference,
+	careTeam **LIST** Reference,
+	addresses **LIST** Reference,
+	supportingInfo **LIST** Reference,
+	goal **LIST** Reference,
+	activity **LIST** CarePlan_Activity,
+	note **LIST** Annotation,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -6559,13 +6461,11 @@ CREATE TABLE carePlan(
 CREATE TABLE carePlan_Activity(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List outcomeCodeableConcept,
-	List outcomeReference,
-	List progress,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	outcomeCodeableConcept **LIST** CodeableConcept,
+	outcomeReference **LIST** Reference,
+	progress **LIST** Annotation,
 	reference TEXT, -- Foreign Key to reference table
 	detail TEXT, -- Foreign Key to carePlan_Detail table
 
@@ -6584,19 +6484,17 @@ CREATE TABLE carePlan_Activity(
 CREATE TABLE carePlan_Detail(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	kind TEXT,
 	_kind TEXT, -- Foreign Key to element table
-	List instantiatesCanonical,
-	List instantiatesUri,
-	List _instantiatesUri,
+	instantiatesCanonical **LIST** canonical,
+	instantiatesUri **LIST** uri,
+	_instantiatesUri **LIST** Element,
 	"code" TEXT, -- Foreign Key to codeableConcept table
-	List reasonCode,
-	List reasonReference,
-	List goal,
+	reasonCode **LIST** CodeableConcept,
+	reasonReference **LIST** Reference,
+	goal **LIST** Reference,
 	"status" TEXT, -- enum: not-started/scheduled/in-progress/on-hold/completed/cancelled/stopped/unknown/entered-in-error
 	_status TEXT, -- Foreign Key to element table
 	statusReason TEXT, -- Foreign Key to codeableConcept table
@@ -6607,7 +6505,7 @@ CREATE TABLE carePlan_Detail(
 	scheduledString TEXT, -- pattern: ^[ \r\n\t\S]+$
 	_scheduledString TEXT, -- Foreign Key to element table
 	"location" TEXT, -- Foreign Key to reference table
-	List performer,
+	performer **LIST** Reference,
 	productCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	productReference TEXT, -- Foreign Key to reference table
 	dailyAmount TEXT, -- Foreign Key to quantity table
@@ -6697,24 +6595,24 @@ CREATE TABLE careTeam(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT, -- enum: proposed/active/suspended/inactive/entered-in-error
 	_status TEXT, -- Foreign Key to element table
-	List category,
+	category **LIST** CodeableConcept,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	"subject" TEXT, -- Foreign Key to reference table
 	encounter TEXT, -- Foreign Key to reference table
 	"period" TEXT, -- Foreign Key to period table
-	List participant,
-	List reasonCode,
-	List reasonReference,
-	List managingOrganization,
-	List telecom,
-	List note,
+	participant **LIST** CareTeam_Participant,
+	reasonCode **LIST** CodeableConcept,
+	reasonReference **LIST** Reference,
+	managingOrganization **LIST** Reference,
+	telecom **LIST** ContactPoint,
+	note **LIST** Annotation,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -6766,11 +6664,9 @@ CREATE TABLE careTeam(
 CREATE TABLE careTeam_Participant(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List role,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	"role" **LIST** CodeableConcept,
 	"member" TEXT, -- Foreign Key to reference table
 	onBehalfOf TEXT, -- Foreign Key to reference table
 	"period" TEXT, -- Foreign Key to period table
@@ -6802,16 +6698,16 @@ CREATE TABLE catalogEntry(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	orderable BOOLEAN,
 	_orderable TEXT, -- Foreign Key to element table
 	referencedItem TEXT, -- Foreign Key to reference table
-	List additionalIdentifier,
-	List classification,
+	additionalIdentifier **LIST** Identifier,
+	classification **LIST** CodeableConcept,
 	"status" TEXT, -- enum: draft/active/retired/unknown
 	_status TEXT, -- Foreign Key to element table
 	validityPeriod TEXT, -- Foreign Key to period table
@@ -6819,9 +6715,9 @@ CREATE TABLE catalogEntry(
 	_validTo TEXT, -- Foreign Key to element table
 	lastUpdated DATETIME,
 	_lastUpdated TEXT, -- Foreign Key to element table
-	List additionalCharacteristic,
-	List additionalClassification,
-	List relatedEntry,
+	additionalCharacteristic **LIST** CodeableConcept,
+	additionalClassification **LIST** CodeableConcept,
+	relatedEntry **LIST** CatalogEntry_RelatedEntry,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -6883,10 +6779,8 @@ CREATE TABLE catalogEntry(
 CREATE TABLE catalogEntry_RelatedEntry(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	relationtype TEXT, -- enum: triggers/is-replaced-by
 	_relationtype TEXT, -- Foreign Key to element table
 	item TEXT, -- Foreign Key to reference table
@@ -6913,16 +6807,16 @@ CREATE TABLE chargeItem(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
-	List definitionUri,
-	List _definitionUri,
-	List definitionCanonical,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
+	definitionUri **LIST** uri,
+	_definitionUri **LIST** Element,
+	definitionCanonical **LIST** canonical,
 	"status" TEXT, -- enum: planned/billable/not-billable/aborted/billed/entered-in-error/unknown
 	_status TEXT, -- Foreign Key to element table
-	List partOf,
+	partOf **LIST** Reference,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"subject" TEXT, -- Foreign Key to reference table
 	context TEXT, -- Foreign Key to reference table
@@ -6930,12 +6824,12 @@ CREATE TABLE chargeItem(
 	_occurrenceDateTime TEXT, -- Foreign Key to element table
 	occurrencePeriod TEXT, -- Foreign Key to period table
 	occurrenceTiming TEXT, -- Foreign Key to timing table
-	List performer,
+	performer **LIST** ChargeItem_Performer,
 	performingOrganization TEXT, -- Foreign Key to reference table
 	requestingOrganization TEXT, -- Foreign Key to reference table
 	costCenter TEXT, -- Foreign Key to reference table
 	quantity TEXT, -- Foreign Key to quantity table
-	List bodysite,
+	bodysite **LIST** CodeableConcept,
 	factorOverride REAL,
 	_factorOverride TEXT, -- Foreign Key to element table
 	priceOverride TEXT, -- Foreign Key to money table
@@ -6944,13 +6838,13 @@ CREATE TABLE chargeItem(
 	enterer TEXT, -- Foreign Key to reference table
 	enteredDate DATETIME,
 	_enteredDate TEXT, -- Foreign Key to element table
-	List reason,
-	List service,
+	reason **LIST** CodeableConcept,
+	service **LIST** Reference,
 	productReference TEXT, -- Foreign Key to reference table
 	productCodeableConcept TEXT, -- Foreign Key to codeableConcept table
-	List account,
-	List note,
-	List supportingInformation,
+	account **LIST** Reference,
+	note **LIST** Annotation,
+	supportingInformation **LIST** Reference,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -7067,10 +6961,8 @@ CREATE TABLE chargeItem(
 CREATE TABLE chargeItem_Performer(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"function" TEXT, -- Foreign Key to codeableConcept table
 	actor TEXT, -- Foreign Key to reference table
 
@@ -7096,20 +6988,20 @@ CREATE TABLE chargeItemDefinition(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
-	List identifier,
+	identifier **LIST** Identifier,
 	"version" TEXT,
 	_version TEXT, -- Foreign Key to element table
 	title TEXT,
 	_title TEXT, -- Foreign Key to element table
-	List derivedFromUri,
-	List _derivedFromUri,
-	List partOf,
-	List replaces,
+	derivedFromUri **LIST** uri,
+	_derivedFromUri **LIST** Element,
+	partOf **LIST** canonical,
+	replaces **LIST** canonical,
 	"status" TEXT, -- enum: draft/active/retired/unknown
 	_status TEXT, -- Foreign Key to element table
 	experimental BOOLEAN,
@@ -7118,11 +7010,11 @@ CREATE TABLE chargeItemDefinition(
 	_date TEXT, -- Foreign Key to element table
 	publisher TEXT,
 	_publisher TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactDetail,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List useContext,
-	List jurisdiction,
+	useContext **LIST** UsageContext,
+	jurisdiction **LIST** CodeableConcept,
 	copyright TEXT,
 	_copyright TEXT, -- Foreign Key to element table
 	approvalDate DATE,
@@ -7131,9 +7023,9 @@ CREATE TABLE chargeItemDefinition(
 	_lastReviewDate TEXT, -- Foreign Key to element table
 	effectivePeriod TEXT, -- Foreign Key to period table
 	"code" TEXT, -- Foreign Key to codeableConcept table
-	List instance,
-	List applicability,
-	List propertyGroup,
+	"instance" **LIST** Reference,
+	applicability **LIST** ChargeItemDefinition_Applicability,
+	propertyGroup **LIST** ChargeItemDefinition_PropertyGroup,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -7225,10 +7117,8 @@ CREATE TABLE chargeItemDefinition(
 CREATE TABLE chargeItemDefinition_Applicability(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	"language" TEXT,
@@ -7256,22 +7146,18 @@ CREATE TABLE chargeItemDefinition_Applicability(
 CREATE TABLE chargeItemDefinition_PropertyGroup(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List applicability,
-	List priceComponent
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	applicability **LIST** ChargeItemDefinition_Applicability,
+	priceComponent **LIST** ChargeItemDefinition_PriceComponent
 
 );
 
 CREATE TABLE chargeItemDefinition_PriceComponent(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT,
 	_type TEXT, -- Foreign Key to element table
 	"code" TEXT, -- Foreign Key to codeableConcept table
@@ -7311,10 +7197,10 @@ CREATE TABLE claim(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to codeableConcept table
@@ -7330,19 +7216,19 @@ CREATE TABLE claim(
 	"provider" TEXT, -- Foreign Key to reference table
 	"priority" TEXT, -- Foreign Key to codeableConcept table
 	fundsReserve TEXT, -- Foreign Key to codeableConcept table
-	List related,
+	related **LIST** Claim_Related,
 	prescription TEXT, -- Foreign Key to reference table
 	originalPrescription TEXT, -- Foreign Key to reference table
 	payee TEXT, -- Foreign Key to claim_Payee table
 	referral TEXT, -- Foreign Key to reference table
 	facility TEXT, -- Foreign Key to reference table
-	List careTeam,
-	List supportingInfo,
-	List diagnosis,
-	List procedure,
-	List insurance,
+	careTeam **LIST** Claim_CareTeam,
+	supportingInfo **LIST** Claim_SupportingInfo,
+	diagnosis **LIST** Claim_Diagnosis,
+	"procedure" **LIST** Claim_Procedure,
+	insurance **LIST** Claim_Insurance,
 	accident TEXT, -- Foreign Key to claim_Accident table
-	List item,
+	item **LIST** Claim_Item,
 	total TEXT, -- Foreign Key to money table
 
 	FOREIGN KEY (meta)
@@ -7465,10 +7351,8 @@ CREATE TABLE claim(
 CREATE TABLE claim_Related(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	claim TEXT, -- Foreign Key to reference table
 	relationship TEXT, -- Foreign Key to codeableConcept table
 	reference TEXT, -- Foreign Key to identifier table
@@ -7493,10 +7377,8 @@ CREATE TABLE claim_Related(
 CREATE TABLE claim_Payee(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	party TEXT, -- Foreign Key to reference table
 
@@ -7515,10 +7397,8 @@ CREATE TABLE claim_Payee(
 CREATE TABLE claim_CareTeam(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
 	_sequence TEXT, -- Foreign Key to element table
 	"provider" TEXT, -- Foreign Key to reference table
@@ -7557,10 +7437,8 @@ CREATE TABLE claim_CareTeam(
 CREATE TABLE claim_SupportingInfo(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
 	_sequence TEXT, -- Foreign Key to element table
 	category TEXT, -- Foreign Key to codeableConcept table
@@ -7637,15 +7515,13 @@ CREATE TABLE claim_SupportingInfo(
 CREATE TABLE claim_Diagnosis(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
 	_sequence TEXT, -- Foreign Key to element table
 	diagnosisCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	diagnosisReference TEXT, -- Foreign Key to reference table
-	List type,
+	"type" **LIST** CodeableConcept,
 	onAdmission TEXT, -- Foreign Key to codeableConcept table
 	packageCode TEXT, -- Foreign Key to codeableConcept table
 
@@ -7679,18 +7555,16 @@ CREATE TABLE claim_Diagnosis(
 CREATE TABLE claim_Procedure(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
 	_sequence TEXT, -- Foreign Key to element table
-	List type,
+	"type" **LIST** CodeableConcept,
 	"date" DATETIME,
 	_date TEXT, -- Foreign Key to element table
 	procedureCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	procedureReference TEXT, -- Foreign Key to reference table
-	List udi,
+	udi **LIST** Reference,
 
 	FOREIGN KEY (_sequence)
 		REFERENCES element (id)
@@ -7717,10 +7591,8 @@ CREATE TABLE claim_Procedure(
 CREATE TABLE claim_Insurance(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
 	_sequence TEXT, -- Foreign Key to element table
 	focal BOOLEAN,
@@ -7729,8 +7601,8 @@ CREATE TABLE claim_Insurance(
 	coverage TEXT, -- Foreign Key to reference table
 	businessArrangement TEXT,
 	_businessArrangement TEXT, -- Foreign Key to element table
-	List preAuthRef,
-	List _preAuthRef,
+	preAuthRef **LIST** string,
+	_preAuthRef **LIST** Element,
 	claimResponse TEXT, -- Foreign Key to reference table
 
 	FOREIGN KEY (_sequence)
@@ -7768,10 +7640,8 @@ CREATE TABLE claim_Insurance(
 CREATE TABLE claim_Accident(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"date" DATE,
 	_date TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to codeableConcept table
@@ -7803,25 +7673,23 @@ CREATE TABLE claim_Accident(
 CREATE TABLE claim_Item(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
 	_sequence TEXT, -- Foreign Key to element table
-	List careTeamSequence,
-	List _careTeamSequence,
-	List diagnosisSequence,
-	List _diagnosisSequence,
-	List procedureSequence,
-	List _procedureSequence,
-	List informationSequence,
-	List _informationSequence,
+	careTeamSequence **LIST** positiveInt,
+	_careTeamSequence **LIST** Element,
+	diagnosisSequence **LIST** positiveInt,
+	_diagnosisSequence **LIST** Element,
+	procedureSequence **LIST** positiveInt,
+	_procedureSequence **LIST** Element,
+	informationSequence **LIST** positiveInt,
+	_informationSequence **LIST** Element,
 	revenue TEXT, -- Foreign Key to codeableConcept table
 	category TEXT, -- Foreign Key to codeableConcept table
 	productOrService TEXT, -- Foreign Key to codeableConcept table
-	List modifier,
-	List programCode,
+	modifier **LIST** CodeableConcept,
+	programCode **LIST** CodeableConcept,
 	servicedDate TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 	_servicedDate TEXT, -- Foreign Key to element table
 	servicedPeriod TEXT, -- Foreign Key to period table
@@ -7833,11 +7701,11 @@ CREATE TABLE claim_Item(
 	factor REAL,
 	_factor TEXT, -- Foreign Key to element table
 	net TEXT, -- Foreign Key to money table
-	List udi,
+	udi **LIST** Reference,
 	bodySite TEXT, -- Foreign Key to codeableConcept table
-	List subSite,
-	List encounter,
-	List detail,
+	subSite **LIST** CodeableConcept,
+	encounter **LIST** Reference,
+	detail **LIST** Claim_Detail,
 
 	FOREIGN KEY (_sequence)
 		REFERENCES element (id)
@@ -7914,24 +7782,22 @@ CREATE TABLE claim_Item(
 CREATE TABLE claim_Detail(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
 	_sequence TEXT, -- Foreign Key to element table
 	revenue TEXT, -- Foreign Key to codeableConcept table
 	category TEXT, -- Foreign Key to codeableConcept table
 	productOrService TEXT, -- Foreign Key to codeableConcept table
-	List modifier,
-	List programCode,
+	modifier **LIST** CodeableConcept,
+	programCode **LIST** CodeableConcept,
 	quantity TEXT, -- Foreign Key to quantity table
 	unitPrice TEXT, -- Foreign Key to money table
 	factor REAL,
 	_factor TEXT, -- Foreign Key to element table
 	net TEXT, -- Foreign Key to money table
-	List udi,
-	List subDetail,
+	udi **LIST** Reference,
+	subDetail **LIST** Claim_SubDetail,
 
 	FOREIGN KEY (_sequence)
 		REFERENCES element (id)
@@ -7978,23 +7844,21 @@ CREATE TABLE claim_Detail(
 CREATE TABLE claim_SubDetail(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
 	_sequence TEXT, -- Foreign Key to element table
 	revenue TEXT, -- Foreign Key to codeableConcept table
 	category TEXT, -- Foreign Key to codeableConcept table
 	productOrService TEXT, -- Foreign Key to codeableConcept table
-	List modifier,
-	List programCode,
+	modifier **LIST** CodeableConcept,
+	programCode **LIST** CodeableConcept,
 	quantity TEXT, -- Foreign Key to quantity table
 	unitPrice TEXT, -- Foreign Key to money table
 	factor REAL,
 	_factor TEXT, -- Foreign Key to element table
 	net TEXT, -- Foreign Key to money table
-	List udi,
+	udi **LIST** Reference,
 
 	FOREIGN KEY (_sequence)
 		REFERENCES element (id)
@@ -8048,10 +7912,10 @@ CREATE TABLE claimResponse(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to codeableConcept table
@@ -8072,18 +7936,18 @@ CREATE TABLE claimResponse(
 	_preAuthRef TEXT, -- Foreign Key to element table
 	preAuthPeriod TEXT, -- Foreign Key to period table
 	payeeType TEXT, -- Foreign Key to codeableConcept table
-	List item,
-	List addItem,
-	List adjudication,
-	List total,
+	item **LIST** ClaimResponse_Item,
+	addItem **LIST** ClaimResponse_AddItem,
+	adjudication **LIST** ClaimResponse_Adjudication,
+	total **LIST** ClaimResponse_Total,
 	payment TEXT, -- Foreign Key to claimResponse_Payment table
 	fundsReserve TEXT, -- Foreign Key to codeableConcept table
 	formCode TEXT, -- Foreign Key to codeableConcept table
 	form TEXT, -- Foreign Key to attachment table
-	List processNote,
-	List communicationRequest,
-	List insurance,
-	List error,
+	processNote **LIST** ClaimResponse_ProcessNote,
+	communicationRequest **LIST** Reference,
+	insurance **LIST** ClaimResponse_Insurance,
+	error **LIST** ClaimResponse_Error,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -8200,16 +8064,14 @@ CREATE TABLE claimResponse(
 CREATE TABLE claimResponse_Item(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	itemSequence INTEGER,
 	_itemSequence TEXT, -- Foreign Key to element table
-	List noteNumber,
-	List _noteNumber,
-	List adjudication,
-	List detail,
+	noteNumber **LIST** positiveInt,
+	_noteNumber **LIST** Element,
+	adjudication **LIST** ClaimResponse_Adjudication,
+	detail **LIST** ClaimResponse_Detail,
 
 	FOREIGN KEY (_itemSequence)
 		REFERENCES element (id)
@@ -8221,10 +8083,8 @@ CREATE TABLE claimResponse_Item(
 CREATE TABLE claimResponse_Adjudication(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	category TEXT, -- Foreign Key to codeableConcept table
 	reason TEXT, -- Foreign Key to codeableConcept table
 	amount TEXT, -- Foreign Key to money table
@@ -8256,16 +8116,14 @@ CREATE TABLE claimResponse_Adjudication(
 CREATE TABLE claimResponse_Detail(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	detailSequence INTEGER,
 	_detailSequence TEXT, -- Foreign Key to element table
-	List noteNumber,
-	List _noteNumber,
-	List adjudication,
-	List subDetail,
+	noteNumber **LIST** positiveInt,
+	_noteNumber **LIST** Element,
+	adjudication **LIST** ClaimResponse_Adjudication,
+	subDetail **LIST** ClaimResponse_SubDetail,
 
 	FOREIGN KEY (_detailSequence)
 		REFERENCES element (id)
@@ -8277,15 +8135,13 @@ CREATE TABLE claimResponse_Detail(
 CREATE TABLE claimResponse_SubDetail(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	subDetailSequence INTEGER,
 	_subDetailSequence TEXT, -- Foreign Key to element table
-	List noteNumber,
-	List _noteNumber,
-	List adjudication,
+	noteNumber **LIST** positiveInt,
+	_noteNumber **LIST** Element,
+	adjudication **LIST** ClaimResponse_Adjudication,
 
 	FOREIGN KEY (_subDetailSequence)
 		REFERENCES element (id)
@@ -8297,20 +8153,18 @@ CREATE TABLE claimResponse_SubDetail(
 CREATE TABLE claimResponse_AddItem(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List itemSequence,
-	List _itemSequence,
-	List detailSequence,
-	List _detailSequence,
-	List subdetailSequence,
-	List _subdetailSequence,
-	List provider,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	itemSequence **LIST** positiveInt,
+	_itemSequence **LIST** Element,
+	detailSequence **LIST** positiveInt,
+	_detailSequence **LIST** Element,
+	subdetailSequence **LIST** positiveInt,
+	_subdetailSequence **LIST** Element,
+	"provider" **LIST** Reference,
 	productOrService TEXT, -- Foreign Key to codeableConcept table
-	List modifier,
-	List programCode,
+	modifier **LIST** CodeableConcept,
+	programCode **LIST** CodeableConcept,
 	servicedDate TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 	_servicedDate TEXT, -- Foreign Key to element table
 	servicedPeriod TEXT, -- Foreign Key to period table
@@ -8323,11 +8177,11 @@ CREATE TABLE claimResponse_AddItem(
 	_factor TEXT, -- Foreign Key to element table
 	net TEXT, -- Foreign Key to money table
 	bodySite TEXT, -- Foreign Key to codeableConcept table
-	List subSite,
-	List noteNumber,
-	List _noteNumber,
-	List adjudication,
-	List detail,
+	subSite **LIST** CodeableConcept,
+	noteNumber **LIST** positiveInt,
+	_noteNumber **LIST** Element,
+	adjudication **LIST** ClaimResponse_Adjudication,
+	detail **LIST** ClaimResponse_Detail1,
 
 	FOREIGN KEY (productOrService)
 		REFERENCES codeableConcept (id)
@@ -8389,21 +8243,19 @@ CREATE TABLE claimResponse_AddItem(
 CREATE TABLE claimResponse_Detail1(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	productOrService TEXT, -- Foreign Key to codeableConcept table
-	List modifier,
+	modifier **LIST** CodeableConcept,
 	quantity TEXT, -- Foreign Key to quantity table
 	unitPrice TEXT, -- Foreign Key to money table
 	factor REAL,
 	_factor TEXT, -- Foreign Key to element table
 	net TEXT, -- Foreign Key to money table
-	List noteNumber,
-	List _noteNumber,
-	List adjudication,
-	List subDetail,
+	noteNumber **LIST** positiveInt,
+	_noteNumber **LIST** Element,
+	adjudication **LIST** ClaimResponse_Adjudication,
+	subDetail **LIST** ClaimResponse_SubDetail1,
 
 	FOREIGN KEY (productOrService)
 		REFERENCES codeableConcept (id)
@@ -8435,20 +8287,18 @@ CREATE TABLE claimResponse_Detail1(
 CREATE TABLE claimResponse_SubDetail1(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	productOrService TEXT, -- Foreign Key to codeableConcept table
-	List modifier,
+	modifier **LIST** CodeableConcept,
 	quantity TEXT, -- Foreign Key to quantity table
 	unitPrice TEXT, -- Foreign Key to money table
 	factor REAL,
 	_factor TEXT, -- Foreign Key to element table
 	net TEXT, -- Foreign Key to money table
-	List noteNumber,
-	List _noteNumber,
-	List adjudication,
+	noteNumber **LIST** positiveInt,
+	_noteNumber **LIST** Element,
+	adjudication **LIST** ClaimResponse_Adjudication,
 
 	FOREIGN KEY (productOrService)
 		REFERENCES codeableConcept (id)
@@ -8480,10 +8330,8 @@ CREATE TABLE claimResponse_SubDetail1(
 CREATE TABLE claimResponse_Total(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	category TEXT, -- Foreign Key to codeableConcept table
 	amount TEXT, -- Foreign Key to money table
 
@@ -8502,10 +8350,8 @@ CREATE TABLE claimResponse_Total(
 CREATE TABLE claimResponse_Payment(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	adjustment TEXT, -- Foreign Key to money table
 	adjustmentReason TEXT, -- Foreign Key to codeableConcept table
@@ -8549,10 +8395,8 @@ CREATE TABLE claimResponse_Payment(
 CREATE TABLE claimResponse_ProcessNote(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	number INTEGER,
 	_number TEXT, -- Foreign Key to element table
 	"type" TEXT, -- enum: display/print/printoper
@@ -8586,10 +8430,8 @@ CREATE TABLE claimResponse_ProcessNote(
 CREATE TABLE claimResponse_Insurance(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
 	_sequence TEXT, -- Foreign Key to element table
 	focal BOOLEAN,
@@ -8629,10 +8471,8 @@ CREATE TABLE claimResponse_Insurance(
 CREATE TABLE claimResponse_Error(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	itemSequence INTEGER,
 	_itemSequence TEXT, -- Foreign Key to element table
 	detailSequence INTEGER,
@@ -8673,10 +8513,10 @@ CREATE TABLE clinicalImpression(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
 	statusReason TEXT, -- Foreign Key to codeableConcept table
@@ -8692,17 +8532,17 @@ CREATE TABLE clinicalImpression(
 	_date TEXT, -- Foreign Key to element table
 	assessor TEXT, -- Foreign Key to reference table
 	previous TEXT, -- Foreign Key to reference table
-	List problem,
-	List investigation,
-	List protocol,
-	List _protocol,
+	problem **LIST** Reference,
+	investigation **LIST** ClinicalImpression_Investigation,
+	protocol **LIST** uri,
+	_protocol **LIST** Element,
 	summary TEXT,
 	_summary TEXT, -- Foreign Key to element table
-	List finding,
-	List prognosisCodeableConcept,
-	List prognosisReference,
-	List supportingInfo,
-	List note,
+	finding **LIST** ClinicalImpression_Finding,
+	prognosisCodeableConcept **LIST** CodeableConcept,
+	prognosisReference **LIST** Reference,
+	supportingInfo **LIST** Reference,
+	note **LIST** Annotation,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -8789,12 +8629,10 @@ CREATE TABLE clinicalImpression(
 CREATE TABLE clinicalImpression_Investigation(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
-	List item,
+	item **LIST** Reference,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -8806,10 +8644,8 @@ CREATE TABLE clinicalImpression_Investigation(
 CREATE TABLE clinicalImpression_Finding(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	itemCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	itemReference TEXT, -- Foreign Key to reference table
 	basis TEXT,
@@ -8842,12 +8678,12 @@ CREATE TABLE codeSystem(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
-	List identifier,
+	identifier **LIST** Identifier,
 	"version" TEXT,
 	_version TEXT, -- Foreign Key to element table
 	"name" TEXT,
@@ -8862,11 +8698,11 @@ CREATE TABLE codeSystem(
 	_date TEXT, -- Foreign Key to element table
 	publisher TEXT,
 	_publisher TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactDetail,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List useContext,
-	List jurisdiction,
+	useContext **LIST** UsageContext,
+	jurisdiction **LIST** CodeableConcept,
 	purpose TEXT,
 	_purpose TEXT, -- Foreign Key to element table
 	copyright TEXT,
@@ -8885,9 +8721,9 @@ CREATE TABLE codeSystem(
 	supplements TEXT,
 	"count" INTEGER,
 	_count TEXT, -- Foreign Key to element table
-	List filter,
-	List property,
-	List concept,
+	"filter" **LIST** CodeSystem_Filter,
+	property **LIST** CodeSystem_Property,
+	concept **LIST** CodeSystem_Concept,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -8999,16 +8835,14 @@ CREATE TABLE codeSystem(
 CREATE TABLE codeSystem_Filter(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT,
 	_code TEXT, -- Foreign Key to element table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List operator,
-	List _operator,
+	operator **LIST** code,
+	_operator **LIST** Element,
 	"value" TEXT,
 	_value TEXT, -- Foreign Key to element table
 
@@ -9032,10 +8866,8 @@ CREATE TABLE codeSystem_Filter(
 CREATE TABLE codeSystem_Property(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT,
 	_code TEXT, -- Foreign Key to element table
 	uri TEXT,
@@ -9070,19 +8902,17 @@ CREATE TABLE codeSystem_Property(
 CREATE TABLE codeSystem_Concept(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT,
 	_code TEXT, -- Foreign Key to element table
 	display TEXT,
 	_display TEXT, -- Foreign Key to element table
 	"definition" TEXT,
 	_definition TEXT, -- Foreign Key to element table
-	List designation,
-	List property,
-	List concept,
+	designation **LIST** CodeSystem_Designation,
+	property **LIST** CodeSystem_Property1,
+	concept **LIST** CodeSystem_Concept,
 
 	FOREIGN KEY (_code)
 		REFERENCES element (id)
@@ -9104,10 +8934,8 @@ CREATE TABLE codeSystem_Concept(
 CREATE TABLE codeSystem_Designation(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"use" TEXT, -- Foreign Key to coding table
@@ -9134,10 +8962,8 @@ CREATE TABLE codeSystem_Designation(
 CREATE TABLE codeSystem_Property1(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT,
 	_code TEXT, -- Foreign Key to element table
 	valueCode TEXT, -- pattern: ^[^\s]+(\s[^\s]+)*$
@@ -9206,37 +9032,37 @@ CREATE TABLE communication(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
-	List instantiatesCanonical,
-	List instantiatesUri,
-	List _instantiatesUri,
-	List basedOn,
-	List partOf,
-	List inResponseTo,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
+	instantiatesCanonical **LIST** canonical,
+	instantiatesUri **LIST** uri,
+	_instantiatesUri **LIST** Element,
+	basedOn **LIST** Reference,
+	partOf **LIST** Reference,
+	inResponseTo **LIST** Reference,
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
 	statusReason TEXT, -- Foreign Key to codeableConcept table
-	List category,
+	category **LIST** CodeableConcept,
 	"priority" TEXT,
 	_priority TEXT, -- Foreign Key to element table
-	List medium,
+	medium **LIST** CodeableConcept,
 	"subject" TEXT, -- Foreign Key to reference table
 	topic TEXT, -- Foreign Key to codeableConcept table
-	List about,
+	about **LIST** Reference,
 	encounter TEXT, -- Foreign Key to reference table
 	sent DATETIME,
 	_sent TEXT, -- Foreign Key to element table
 	received DATETIME,
 	_received TEXT, -- Foreign Key to element table
-	List recipient,
+	recipient **LIST** Reference,
 	sender TEXT, -- Foreign Key to reference table
-	List reasonCode,
-	List reasonReference,
-	List payload,
-	List note,
+	reasonCode **LIST** CodeableConcept,
+	reasonReference **LIST** Reference,
+	payload **LIST** Communication_Payload,
+	note **LIST** Annotation,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -9308,10 +9134,8 @@ CREATE TABLE communication(
 CREATE TABLE communication_Payload(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	contentString TEXT, -- pattern: ^[ \r\n\t\S]+$
 	_contentString TEXT, -- Foreign Key to element table
 	contentAttachment TEXT, -- Foreign Key to attachment table
@@ -9344,37 +9168,37 @@ CREATE TABLE communicationRequest(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
-	List basedOn,
-	List replaces,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
+	basedOn **LIST** Reference,
+	replaces **LIST** Reference,
 	groupIdentifier TEXT, -- Foreign Key to identifier table
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
 	statusReason TEXT, -- Foreign Key to codeableConcept table
-	List category,
+	category **LIST** CodeableConcept,
 	"priority" TEXT,
 	_priority TEXT, -- Foreign Key to element table
 	doNotPerform BOOLEAN,
 	_doNotPerform TEXT, -- Foreign Key to element table
-	List medium,
+	medium **LIST** CodeableConcept,
 	"subject" TEXT, -- Foreign Key to reference table
-	List about,
+	about **LIST** Reference,
 	encounter TEXT, -- Foreign Key to reference table
-	List payload,
+	payload **LIST** CommunicationRequest_Payload,
 	occurrenceDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 	_occurrenceDateTime TEXT, -- Foreign Key to element table
 	occurrencePeriod TEXT, -- Foreign Key to period table
 	authoredOn DATETIME,
 	_authoredOn TEXT, -- Foreign Key to element table
 	requester TEXT, -- Foreign Key to reference table
-	List recipient,
+	recipient **LIST** Reference,
 	sender TEXT, -- Foreign Key to reference table
-	List reasonCode,
-	List reasonReference,
-	List note,
+	reasonCode **LIST** CodeableConcept,
+	reasonReference **LIST** Reference,
+	note **LIST** Annotation,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -9461,10 +9285,8 @@ CREATE TABLE communicationRequest(
 CREATE TABLE communicationRequest_Payload(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	contentString TEXT, -- pattern: ^[ \r\n\t\S]+$
 	_contentString TEXT, -- Foreign Key to element table
 	contentAttachment TEXT, -- Foreign Key to attachment table
@@ -9497,9 +9319,9 @@ CREATE TABLE compartmentDefinition(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
 	"version" TEXT,
@@ -9514,17 +9336,17 @@ CREATE TABLE compartmentDefinition(
 	_date TEXT, -- Foreign Key to element table
 	publisher TEXT,
 	_publisher TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactDetail,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List useContext,
+	useContext **LIST** UsageContext,
 	purpose TEXT,
 	_purpose TEXT, -- Foreign Key to element table
 	"code" TEXT, -- enum: Patient/Encounter/RelatedPerson/Practitioner/Device
 	_code TEXT, -- Foreign Key to element table
 	"search" BOOLEAN,
 	_search TEXT, -- Foreign Key to element table
-	List resource,
+	"resource" **LIST** CompartmentDefinition_Resource,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -9606,14 +9428,12 @@ CREATE TABLE compartmentDefinition(
 CREATE TABLE compartmentDefinition_Resource(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT,
 	_code TEXT, -- Foreign Key to element table
-	List param,
-	List _param,
+	param **LIST** string,
+	_param **LIST** Element,
 	documentation TEXT,
 	_documentation TEXT, -- Foreign Key to element table
 
@@ -9639,28 +9459,28 @@ CREATE TABLE composition(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	identifier TEXT, -- Foreign Key to identifier table
 	"status" TEXT, -- enum: preliminary/final/amended/entered-in-error
 	_status TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to codeableConcept table
-	List category,
+	category **LIST** CodeableConcept,
 	"subject" TEXT, -- Foreign Key to reference table
 	encounter TEXT, -- Foreign Key to reference table
 	"date" DATETIME,
 	_date TEXT, -- Foreign Key to element table
-	List author,
+	author **LIST** Reference,
 	title TEXT,
 	_title TEXT, -- Foreign Key to element table
 	confidentiality TEXT,
 	_confidentiality TEXT, -- Foreign Key to element table
-	List attester,
+	attester **LIST** Composition_Attester,
 	custodian TEXT, -- Foreign Key to reference table
-	List relatesTo,
-	List event,
-	List section,
+	relatesTo **LIST** Composition_RelatesTo,
+	"event" **LIST** Composition_Event,
+	section **LIST** Composition_Section,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -9732,10 +9552,8 @@ CREATE TABLE composition(
 CREATE TABLE composition_Attester(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	mode TEXT, -- enum: personal/professional/legal/official
 	_mode TEXT, -- Foreign Key to element table
 	"time" DATETIME,
@@ -9762,10 +9580,8 @@ CREATE TABLE composition_Attester(
 CREATE TABLE composition_RelatesTo(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT,
 	_code TEXT, -- Foreign Key to element table
 	targetIdentifier TEXT, -- Foreign Key to identifier table
@@ -9791,13 +9607,11 @@ CREATE TABLE composition_RelatesTo(
 CREATE TABLE composition_Event(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List code,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	"code" **LIST** CodeableConcept,
 	"period" TEXT, -- Foreign Key to period table
-	List detail,
+	detail **LIST** Reference,
 
 	FOREIGN KEY ("period")
 		REFERENCES period (id)
@@ -9809,22 +9623,20 @@ CREATE TABLE composition_Event(
 CREATE TABLE composition_Section(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	title TEXT,
 	_title TEXT, -- Foreign Key to element table
 	"code" TEXT, -- Foreign Key to codeableConcept table
-	List author,
+	author **LIST** Reference,
 	focus TEXT, -- Foreign Key to reference table
 	"text" TEXT, -- Foreign Key to narrative table
 	mode TEXT,
 	_mode TEXT, -- Foreign Key to element table
 	orderedBy TEXT, -- Foreign Key to codeableConcept table
-	List entry,
+	entry **LIST** Reference,
 	emptyReason TEXT, -- Foreign Key to codeableConcept table
-	List section,
+	section **LIST** Composition_Section,
 
 	FOREIGN KEY (_title)
 		REFERENCES element (id)
@@ -9873,9 +9685,9 @@ CREATE TABLE conceptMap(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
 	identifier TEXT, -- Foreign Key to identifier table
@@ -9893,11 +9705,11 @@ CREATE TABLE conceptMap(
 	_date TEXT, -- Foreign Key to element table
 	publisher TEXT,
 	_publisher TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactDetail,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List useContext,
-	List jurisdiction,
+	useContext **LIST** UsageContext,
+	jurisdiction **LIST** CodeableConcept,
 	purpose TEXT,
 	_purpose TEXT, -- Foreign Key to element table
 	copyright TEXT,
@@ -9910,7 +9722,7 @@ CREATE TABLE conceptMap(
 	_targetUri TEXT, -- Foreign Key to element table
 	targetCanonical TEXT, -- pattern: ^\S*$
 	_targetCanonical TEXT, -- Foreign Key to element table
-	List group,
+	"group" **LIST** ConceptMap_Group,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -10017,10 +9829,8 @@ CREATE TABLE conceptMap(
 CREATE TABLE conceptMap_Group(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"source" TEXT,
 	_source TEXT, -- Foreign Key to element table
 	sourceVersion TEXT,
@@ -10029,7 +9839,7 @@ CREATE TABLE conceptMap_Group(
 	_target TEXT, -- Foreign Key to element table
 	targetVersion TEXT,
 	_targetVersion TEXT, -- Foreign Key to element table
-	List element,
+	element **LIST** ConceptMap_Element,
 	unmapped TEXT, -- Foreign Key to conceptMap_Unmapped table
 
 	FOREIGN KEY (_source)
@@ -10062,15 +9872,13 @@ CREATE TABLE conceptMap_Group(
 CREATE TABLE conceptMap_Element(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT,
 	_code TEXT, -- Foreign Key to element table
 	display TEXT,
 	_display TEXT, -- Foreign Key to element table
-	List target,
+	"target" **LIST** ConceptMap_Target,
 
 	FOREIGN KEY (_code)
 		REFERENCES element (id)
@@ -10087,10 +9895,8 @@ CREATE TABLE conceptMap_Element(
 CREATE TABLE conceptMap_Target(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT,
 	_code TEXT, -- Foreign Key to element table
 	display TEXT,
@@ -10099,8 +9905,8 @@ CREATE TABLE conceptMap_Target(
 	_equivalence TEXT, -- Foreign Key to element table
 	comment TEXT,
 	_comment TEXT, -- Foreign Key to element table
-	List dependsOn,
-	List product,
+	dependsOn **LIST** ConceptMap_DependsOn,
+	product **LIST** ConceptMap_DependsOn,
 
 	FOREIGN KEY (_code)
 		REFERENCES element (id)
@@ -10127,10 +9933,8 @@ CREATE TABLE conceptMap_Target(
 CREATE TABLE conceptMap_DependsOn(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	property TEXT,
 	_property TEXT, -- Foreign Key to element table
 	"system" TEXT,
@@ -10159,10 +9963,8 @@ CREATE TABLE conceptMap_DependsOn(
 CREATE TABLE conceptMap_Unmapped(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	mode TEXT, -- enum: provided/fixed/other-map
 	_mode TEXT, -- Foreign Key to element table
 	"code" TEXT,
@@ -10198,16 +10000,16 @@ CREATE TABLE "condition"(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	clinicalStatus TEXT, -- Foreign Key to codeableConcept table
 	verificationStatus TEXT, -- Foreign Key to codeableConcept table
-	List category,
+	category **LIST** CodeableConcept,
 	severity TEXT, -- Foreign Key to codeableConcept table
 	"code" TEXT, -- Foreign Key to codeableConcept table
-	List bodySite,
+	bodySite **LIST** CodeableConcept,
 	"subject" TEXT, -- Foreign Key to reference table
 	encounter TEXT, -- Foreign Key to reference table
 	onsetDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
@@ -10228,9 +10030,9 @@ CREATE TABLE "condition"(
 	_recordedDate TEXT, -- Foreign Key to element table
 	recorder TEXT, -- Foreign Key to reference table
 	asserter TEXT, -- Foreign Key to reference table
-	List stage,
-	List evidence,
-	List note,
+	stage **LIST** Condition_Stage,
+	evidence **LIST** Condition_Evidence,
+	note **LIST** Annotation,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -10352,12 +10154,10 @@ CREATE TABLE "condition"(
 CREATE TABLE condition_Stage(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	summary TEXT, -- Foreign Key to codeableConcept table
-	List assessment,
+	assessment **LIST** Reference,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 
 	FOREIGN KEY (summary)
@@ -10375,12 +10175,10 @@ CREATE TABLE condition_Stage(
 CREATE TABLE condition_Evidence(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List code,
-	List detail
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	"code" **LIST** CodeableConcept,
+	detail **LIST** Reference
 
 );
 
@@ -10394,24 +10192,24 @@ CREATE TABLE consent(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT, -- enum: draft/proposed/active/rejected/inactive/entered-in-error
 	_status TEXT, -- Foreign Key to element table
 	"scope" TEXT, -- Foreign Key to codeableConcept table
-	List category,
+	category **LIST** CodeableConcept,
 	patient TEXT, -- Foreign Key to reference table
 	"dateTime" DATETIME,
 	_dateTime TEXT, -- Foreign Key to element table
-	List performer,
-	List organization,
+	performer **LIST** Reference,
+	organization **LIST** Reference,
 	sourceAttachment TEXT, -- Foreign Key to attachment table
 	sourceReference TEXT, -- Foreign Key to reference table
-	List policy,
+	"policy" **LIST** Consent_Policy,
 	policyRule TEXT, -- Foreign Key to codeableConcept table
-	List verification,
+	verification **LIST** Consent_Verification,
 	provision TEXT, -- Foreign Key to consent_Provision table
 
 	FOREIGN KEY (meta)
@@ -10479,10 +10277,8 @@ CREATE TABLE consent(
 CREATE TABLE consent_Policy(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	authority TEXT,
 	_authority TEXT, -- Foreign Key to element table
 	uri TEXT,
@@ -10503,10 +10299,8 @@ CREATE TABLE consent_Policy(
 CREATE TABLE consent_Verification(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	verified BOOLEAN,
 	_verified TEXT, -- Foreign Key to element table
 	verifiedWith TEXT, -- Foreign Key to reference table
@@ -10533,22 +10327,20 @@ CREATE TABLE consent_Verification(
 CREATE TABLE consent_Provision(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- enum: deny/permit
 	_type TEXT, -- Foreign Key to element table
 	"period" TEXT, -- Foreign Key to period table
-	List actor,
-	List action,
-	List securityLabel,
-	List purpose,
-	List class,
-	List code,
+	actor **LIST** Consent_Actor,
+	"action" **LIST** CodeableConcept,
+	securityLabel **LIST** Coding,
+	purpose **LIST** Coding,
+	class **LIST** Coding,
+	"code" **LIST** CodeableConcept,
 	dataPeriod TEXT, -- Foreign Key to period table
-	List data,
-	List provision,
+	"data" **LIST** Consent_Data,
+	provision **LIST** Consent_Provision,
 
 	FOREIGN KEY (_type)
 		REFERENCES element (id)
@@ -10570,10 +10362,8 @@ CREATE TABLE consent_Provision(
 CREATE TABLE consent_Actor(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"role" TEXT, -- Foreign Key to codeableConcept table
 	reference TEXT, -- Foreign Key to reference table
 
@@ -10592,10 +10382,8 @@ CREATE TABLE consent_Actor(
 CREATE TABLE consent_Data(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	meaning TEXT, -- enum: instance/related/dependents/authoredby
 	_meaning TEXT, -- Foreign Key to element table
 	reference TEXT, -- Foreign Key to reference table
@@ -10622,10 +10410,10 @@ CREATE TABLE contract(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
 	"version" TEXT,
@@ -10641,32 +10429,32 @@ CREATE TABLE contract(
 	_issued TEXT, -- Foreign Key to element table
 	applies TEXT, -- Foreign Key to period table
 	expirationType TEXT, -- Foreign Key to codeableConcept table
-	List subject,
-	List authority,
-	List domain,
-	List site,
+	"subject" **LIST** Reference,
+	authority **LIST** Reference,
+	"domain" **LIST** Reference,
+	"site" **LIST** Reference,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	title TEXT,
 	_title TEXT, -- Foreign Key to element table
 	subtitle TEXT,
 	_subtitle TEXT, -- Foreign Key to element table
-	List alias,
-	List _alias,
+	alias **LIST** string,
+	_alias **LIST** Element,
 	author TEXT, -- Foreign Key to reference table
 	"scope" TEXT, -- Foreign Key to codeableConcept table
 	topicCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	topicReference TEXT, -- Foreign Key to reference table
 	"type" TEXT, -- Foreign Key to codeableConcept table
-	List subType,
+	subType **LIST** CodeableConcept,
 	contentDefinition TEXT, -- Foreign Key to contract_ContentDefinition table
-	List term,
-	List supportingInfo,
-	List relevantHistory,
-	List signer,
-	List friendly,
-	List legal,
-	List rule,
+	term **LIST** Contract_Term,
+	supportingInfo **LIST** Reference,
+	relevantHistory **LIST** Reference,
+	signer **LIST** Contract_Signer,
+	friendly **LIST** Contract_Friendly,
+	legal **LIST** Contract_Legal,
+	"rule" **LIST** Contract_Rule,
 	legallyBindingAttachment TEXT, -- Foreign Key to attachment table
 	legallyBindingReference TEXT, -- Foreign Key to reference table
 
@@ -10800,10 +10588,8 @@ CREATE TABLE contract(
 CREATE TABLE contract_ContentDefinition(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	subType TEXT, -- Foreign Key to codeableConcept table
 	publisher TEXT, -- Foreign Key to reference table
@@ -10849,10 +10635,8 @@ CREATE TABLE contract_ContentDefinition(
 CREATE TABLE contract_Term(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	identifier TEXT, -- Foreign Key to identifier table
 	issued DATETIME,
 	_issued TEXT, -- Foreign Key to element table
@@ -10863,11 +10647,11 @@ CREATE TABLE contract_Term(
 	subType TEXT, -- Foreign Key to codeableConcept table
 	"text" TEXT,
 	_text TEXT, -- Foreign Key to element table
-	List securityLabel,
+	securityLabel **LIST** Contract_SecurityLabel,
 	offer TEXT, -- Foreign Key to contract_Offer table
-	List asset,
-	List action,
-	List group,
+	asset **LIST** Contract_Asset,
+	"action" **LIST** Contract_Action,
+	"group" **LIST** Contract_Term,
 
 	FOREIGN KEY (identifier)
 		REFERENCES identifier (id)
@@ -10919,15 +10703,13 @@ CREATE TABLE contract_Term(
 CREATE TABLE contract_SecurityLabel(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List number,
-	List _number,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	number **LIST** unsignedInt,
+	_number **LIST** Element,
 	classification TEXT, -- Foreign Key to coding table
-	List category,
-	List control,
+	category **LIST** Coding,
+	control **LIST** Coding,
 
 	FOREIGN KEY (classification)
 		REFERENCES coding (id)
@@ -10939,23 +10721,21 @@ CREATE TABLE contract_SecurityLabel(
 CREATE TABLE contract_Offer(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List identifier,
-	List party,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
+	party **LIST** Contract_Party,
 	topic TEXT, -- Foreign Key to reference table
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	decision TEXT, -- Foreign Key to codeableConcept table
-	List decisionMode,
-	List answer,
+	decisionMode **LIST** CodeableConcept,
+	answer **LIST** Contract_Answer,
 	"text" TEXT,
 	_text TEXT, -- Foreign Key to element table
-	List linkId,
-	List _linkId,
-	List securityLabelNumber,
-	List _securityLabelNumber,
+	linkId **LIST** string,
+	_linkId **LIST** Element,
+	securityLabelNumber **LIST** unsignedInt,
+	_securityLabelNumber **LIST** Element,
 
 	FOREIGN KEY (topic)
 		REFERENCES reference (id)
@@ -10982,11 +10762,9 @@ CREATE TABLE contract_Offer(
 CREATE TABLE contract_Party(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List reference,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	reference **LIST** Reference,
 	"role" TEXT, -- Foreign Key to codeableConcept table
 
 	FOREIGN KEY ("role")
@@ -10999,10 +10777,8 @@ CREATE TABLE contract_Party(
 CREATE TABLE contract_Answer(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	valueBoolean BOOLEAN, -- pattern: ^true|false$
 	_valueBoolean TEXT, -- Foreign Key to element table
 	valueDecimal REAL, -- pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
@@ -11089,29 +10865,27 @@ CREATE TABLE contract_Answer(
 CREATE TABLE contract_Asset(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"scope" TEXT, -- Foreign Key to codeableConcept table
-	List type,
-	List typeReference,
-	List subtype,
+	"type" **LIST** CodeableConcept,
+	typeReference **LIST** Reference,
+	subtype **LIST** CodeableConcept,
 	relationship TEXT, -- Foreign Key to coding table
-	List context,
+	context **LIST** Contract_Context,
 	"condition" TEXT,
 	_condition TEXT, -- Foreign Key to element table
-	List periodType,
-	List period,
-	List usePeriod,
+	periodType **LIST** CodeableConcept,
+	"period" **LIST** Period,
+	usePeriod **LIST** Period,
 	"text" TEXT,
 	_text TEXT, -- Foreign Key to element table
-	List linkId,
-	List _linkId,
-	List answer,
-	List securityLabelNumber,
-	List _securityLabelNumber,
-	List valuedItem,
+	linkId **LIST** string,
+	_linkId **LIST** Element,
+	answer **LIST** Contract_Answer,
+	securityLabelNumber **LIST** unsignedInt,
+	_securityLabelNumber **LIST** Element,
+	valuedItem **LIST** Contract_ValuedItem,
 
 	FOREIGN KEY ("scope")
 		REFERENCES codeableConcept (id)
@@ -11138,12 +10912,10 @@ CREATE TABLE contract_Asset(
 CREATE TABLE contract_Context(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	reference TEXT, -- Foreign Key to reference table
-	List code,
+	"code" **LIST** CodeableConcept,
 	"text" TEXT,
 	_text TEXT, -- Foreign Key to element table
 
@@ -11162,10 +10934,8 @@ CREATE TABLE contract_Context(
 CREATE TABLE contract_ValuedItem(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	entityCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	entityReference TEXT, -- Foreign Key to reference table
 	identifier TEXT, -- Foreign Key to identifier table
@@ -11184,10 +10954,10 @@ CREATE TABLE contract_ValuedItem(
 	_paymentDate TEXT, -- Foreign Key to element table
 	responsible TEXT, -- Foreign Key to reference table
 	recipient TEXT, -- Foreign Key to reference table
-	List linkId,
-	List _linkId,
-	List securityLabelNumber,
-	List _securityLabelNumber,
+	linkId **LIST** string,
+	_linkId **LIST** Element,
+	securityLabelNumber **LIST** unsignedInt,
+	_securityLabelNumber **LIST** Element,
 
 	FOREIGN KEY (entityCodeableConcept)
 		REFERENCES codeableConcept (id)
@@ -11259,42 +11029,40 @@ CREATE TABLE contract_ValuedItem(
 CREATE TABLE contract_Action(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	doNotPerform BOOLEAN,
 	_doNotPerform TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to codeableConcept table
-	List subject,
+	"subject" **LIST** Contract_Subject,
 	intent TEXT, -- Foreign Key to codeableConcept table
-	List linkId,
-	List _linkId,
+	linkId **LIST** string,
+	_linkId **LIST** Element,
 	"status" TEXT, -- Foreign Key to codeableConcept table
 	context TEXT, -- Foreign Key to reference table
-	List contextLinkId,
-	List _contextLinkId,
+	contextLinkId **LIST** string,
+	_contextLinkId **LIST** Element,
 	occurrenceDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 	_occurrenceDateTime TEXT, -- Foreign Key to element table
 	occurrencePeriod TEXT, -- Foreign Key to period table
 	occurrenceTiming TEXT, -- Foreign Key to timing table
-	List requester,
-	List requesterLinkId,
-	List _requesterLinkId,
-	List performerType,
+	requester **LIST** Reference,
+	requesterLinkId **LIST** string,
+	_requesterLinkId **LIST** Element,
+	performerType **LIST** CodeableConcept,
 	performerRole TEXT, -- Foreign Key to codeableConcept table
 	performer TEXT, -- Foreign Key to reference table
-	List performerLinkId,
-	List _performerLinkId,
-	List reasonCode,
-	List reasonReference,
-	List reason,
-	List _reason,
-	List reasonLinkId,
-	List _reasonLinkId,
-	List note,
-	List securityLabelNumber,
-	List _securityLabelNumber,
+	performerLinkId **LIST** string,
+	_performerLinkId **LIST** Element,
+	reasonCode **LIST** CodeableConcept,
+	reasonReference **LIST** Reference,
+	reason **LIST** string,
+	_reason **LIST** Element,
+	reasonLinkId **LIST** string,
+	_reasonLinkId **LIST** Element,
+	note **LIST** Annotation,
+	securityLabelNumber **LIST** unsignedInt,
+	_securityLabelNumber **LIST** Element,
 
 	FOREIGN KEY (_doNotPerform)
 		REFERENCES element (id)
@@ -11351,11 +11119,9 @@ CREATE TABLE contract_Action(
 CREATE TABLE contract_Subject(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List reference,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	reference **LIST** Reference,
 	"role" TEXT, -- Foreign Key to codeableConcept table
 
 	FOREIGN KEY ("role")
@@ -11368,13 +11134,11 @@ CREATE TABLE contract_Subject(
 CREATE TABLE contract_Signer(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to coding table
 	party TEXT, -- Foreign Key to reference table
-	List signature,
+	"signature" **LIST** Signature,
 
 	FOREIGN KEY ("type")
 		REFERENCES coding (id)
@@ -11391,10 +11155,8 @@ CREATE TABLE contract_Signer(
 CREATE TABLE contract_Friendly(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	contentAttachment TEXT, -- Foreign Key to attachment table
 	contentReference TEXT, -- Foreign Key to reference table
 
@@ -11413,10 +11175,8 @@ CREATE TABLE contract_Friendly(
 CREATE TABLE contract_Legal(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	contentAttachment TEXT, -- Foreign Key to attachment table
 	contentReference TEXT, -- Foreign Key to reference table
 
@@ -11435,10 +11195,8 @@ CREATE TABLE contract_Legal(
 CREATE TABLE contract_Rule(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	contentAttachment TEXT, -- Foreign Key to attachment table
 	contentReference TEXT, -- Foreign Key to reference table
 
@@ -11464,10 +11222,10 @@ CREATE TABLE coverage(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to codeableConcept table
@@ -11476,20 +11234,20 @@ CREATE TABLE coverage(
 	subscriberId TEXT,
 	_subscriberId TEXT, -- Foreign Key to element table
 	beneficiary TEXT, -- Foreign Key to reference table
-	dependent TEXT,
+	"dependent" TEXT,
 	_dependent TEXT, -- Foreign Key to element table
 	relationship TEXT, -- Foreign Key to codeableConcept table
 	"period" TEXT, -- Foreign Key to period table
-	List payor,
-	List class,
+	payor **LIST** Reference,
+	class **LIST** Coverage_Class,
 	"order" INTEGER,
 	_order TEXT, -- Foreign Key to element table
 	network TEXT,
 	_network TEXT, -- Foreign Key to element table
-	List costToBeneficiary,
+	costToBeneficiary **LIST** Coverage_CostToBeneficiary,
 	subrogation BOOLEAN,
 	_subrogation TEXT, -- Foreign Key to element table
-	List contract,
+	contract **LIST** Reference,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -11576,10 +11334,8 @@ CREATE TABLE coverage(
 CREATE TABLE coverage_Class(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	"value" TEXT,
 	_value TEXT, -- Foreign Key to element table
@@ -11606,14 +11362,12 @@ CREATE TABLE coverage_Class(
 CREATE TABLE coverage_CostToBeneficiary(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	valueQuantity TEXT, -- Foreign Key to quantity table
 	valueMoney TEXT, -- Foreign Key to money table
-	List exception,
+	exception **LIST** Coverage_Exception,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -11635,10 +11389,8 @@ CREATE TABLE coverage_CostToBeneficiary(
 CREATE TABLE coverage_Exception(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	"period" TEXT, -- Foreign Key to period table
 
@@ -11664,15 +11416,15 @@ CREATE TABLE coverageEligibilityRequest(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
 	"priority" TEXT, -- Foreign Key to codeableConcept table
-	List purpose,
-	List _purpose,
+	purpose **LIST** enum, -- auth-requirements/benefits/discovery/validation,
+	_purpose **LIST** Element,
 	patient TEXT, -- Foreign Key to reference table
 	servicedDate TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 	_servicedDate TEXT, -- Foreign Key to element table
@@ -11683,9 +11435,9 @@ CREATE TABLE coverageEligibilityRequest(
 	"provider" TEXT, -- Foreign Key to reference table
 	insurer TEXT, -- Foreign Key to reference table
 	facility TEXT, -- Foreign Key to reference table
-	List supportingInfo,
-	List insurance,
-	List item,
+	supportingInfo **LIST** CoverageEligibilityRequest_SupportingInfo,
+	insurance **LIST** CoverageEligibilityRequest_Insurance,
+	item **LIST** CoverageEligibilityRequest_Item,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -11762,10 +11514,8 @@ CREATE TABLE coverageEligibilityRequest(
 CREATE TABLE coverageEligibilityRequest_SupportingInfo(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
 	_sequence TEXT, -- Foreign Key to element table
 	information TEXT, -- Foreign Key to reference table
@@ -11792,10 +11542,8 @@ CREATE TABLE coverageEligibilityRequest_SupportingInfo(
 CREATE TABLE coverageEligibilityRequest_Insurance(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	focal BOOLEAN,
 	_focal TEXT, -- Foreign Key to element table
 	coverage TEXT, -- Foreign Key to reference table
@@ -11822,21 +11570,19 @@ CREATE TABLE coverageEligibilityRequest_Insurance(
 CREATE TABLE coverageEligibilityRequest_Item(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List supportingInfoSequence,
-	List _supportingInfoSequence,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	supportingInfoSequence **LIST** positiveInt,
+	_supportingInfoSequence **LIST** Element,
 	category TEXT, -- Foreign Key to codeableConcept table
 	productOrService TEXT, -- Foreign Key to codeableConcept table
-	List modifier,
+	modifier **LIST** CodeableConcept,
 	"provider" TEXT, -- Foreign Key to reference table
 	quantity TEXT, -- Foreign Key to quantity table
 	unitPrice TEXT, -- Foreign Key to money table
 	facility TEXT, -- Foreign Key to reference table
-	List diagnosis,
-	List detail,
+	diagnosis **LIST** CoverageEligibilityRequest_Diagnosis,
+	detail **LIST** Reference,
 
 	FOREIGN KEY (category)
 		REFERENCES codeableConcept (id)
@@ -11873,10 +11619,8 @@ CREATE TABLE coverageEligibilityRequest_Item(
 CREATE TABLE coverageEligibilityRequest_Diagnosis(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	diagnosisCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	diagnosisReference TEXT, -- Foreign Key to reference table
 
@@ -11902,14 +11646,14 @@ CREATE TABLE coverageEligibilityResponse(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
-	List purpose,
-	List _purpose,
+	purpose **LIST** enum, -- auth-requirements/benefits/discovery/validation,
+	_purpose **LIST** Element,
 	patient TEXT, -- Foreign Key to reference table
 	servicedDate TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 	_servicedDate TEXT, -- Foreign Key to element table
@@ -11923,11 +11667,11 @@ CREATE TABLE coverageEligibilityResponse(
 	disposition TEXT,
 	_disposition TEXT, -- Foreign Key to element table
 	insurer TEXT, -- Foreign Key to reference table
-	List insurance,
+	insurance **LIST** CoverageEligibilityResponse_Insurance,
 	preAuthRef TEXT,
 	_preAuthRef TEXT, -- Foreign Key to element table
 	form TEXT, -- Foreign Key to codeableConcept table
-	List error,
+	error **LIST** CoverageEligibilityResponse_Error,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -12014,15 +11758,13 @@ CREATE TABLE coverageEligibilityResponse(
 CREATE TABLE coverageEligibilityResponse_Insurance(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	coverage TEXT, -- Foreign Key to reference table
 	inforce BOOLEAN,
 	_inforce TEXT, -- Foreign Key to element table
 	benefitPeriod TEXT, -- Foreign Key to period table
-	List item,
+	item **LIST** CoverageEligibilityResponse_Item,
 
 	FOREIGN KEY (coverage)
 		REFERENCES reference (id)
@@ -12044,13 +11786,11 @@ CREATE TABLE coverageEligibilityResponse_Insurance(
 CREATE TABLE coverageEligibilityResponse_Item(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	category TEXT, -- Foreign Key to codeableConcept table
 	productOrService TEXT, -- Foreign Key to codeableConcept table
-	List modifier,
+	modifier **LIST** CodeableConcept,
 	"provider" TEXT, -- Foreign Key to reference table
 	excluded BOOLEAN,
 	_excluded TEXT, -- Foreign Key to element table
@@ -12061,10 +11801,10 @@ CREATE TABLE coverageEligibilityResponse_Item(
 	network TEXT, -- Foreign Key to codeableConcept table
 	unit TEXT, -- Foreign Key to codeableConcept table
 	term TEXT, -- Foreign Key to codeableConcept table
-	List benefit,
+	benefit **LIST** CoverageEligibilityResponse_Benefit,
 	authorizationRequired BOOLEAN,
 	_authorizationRequired TEXT, -- Foreign Key to element table
-	List authorizationSupporting,
+	authorizationSupporting **LIST** CodeableConcept,
 	authorizationUrl TEXT,
 	_authorizationUrl TEXT, -- Foreign Key to element table
 
@@ -12128,10 +11868,8 @@ CREATE TABLE coverageEligibilityResponse_Item(
 CREATE TABLE coverageEligibilityResponse_Benefit(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	allowedUnsignedInt REAL, -- pattern: ^[0]|([1-9][0-9]*)$
 	_allowedUnsignedInt TEXT, -- Foreign Key to element table
@@ -12184,10 +11922,8 @@ CREATE TABLE coverageEligibilityResponse_Benefit(
 CREATE TABLE coverageEligibilityResponse_Error(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 
 	FOREIGN KEY ("code")
@@ -12207,10 +11943,10 @@ CREATE TABLE detectedIssue(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
 	"code" TEXT, -- Foreign Key to codeableConcept table
@@ -12221,13 +11957,13 @@ CREATE TABLE detectedIssue(
 	_identifiedDateTime TEXT, -- Foreign Key to element table
 	identifiedPeriod TEXT, -- Foreign Key to period table
 	author TEXT, -- Foreign Key to reference table
-	List implicated,
-	List evidence,
+	implicated **LIST** Reference,
+	evidence **LIST** DetectedIssue_Evidence,
 	detail TEXT,
 	_detail TEXT, -- Foreign Key to element table
 	reference TEXT,
 	_reference TEXT, -- Foreign Key to element table
-	List mitigation,
+	mitigation **LIST** DetectedIssue_Mitigation,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -12299,22 +12035,18 @@ CREATE TABLE detectedIssue(
 CREATE TABLE detectedIssue_Evidence(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List code,
-	List detail
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	"code" **LIST** CodeableConcept,
+	detail **LIST** Reference
 
 );
 
 CREATE TABLE detectedIssue_Mitigation(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"action" TEXT, -- Foreign Key to codeableConcept table
 	"date" DATETIME,
 	_date TEXT, -- Foreign Key to element table
@@ -12347,15 +12079,15 @@ CREATE TABLE device(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"definition" TEXT, -- Foreign Key to reference table
-	List udiCarrier,
+	udiCarrier **LIST** Device_UdiCarrier,
 	"status" TEXT, -- enum: active/inactive/entered-in-error/unknown
 	_status TEXT, -- Foreign Key to element table
-	List statusReason,
+	statusReason **LIST** CodeableConcept,
 	distinctIdentifier TEXT,
 	_distinctIdentifier TEXT, -- Foreign Key to element table
 	manufacturer TEXT,
@@ -12368,23 +12100,23 @@ CREATE TABLE device(
 	_lotNumber TEXT, -- Foreign Key to element table
 	serialNumber TEXT,
 	_serialNumber TEXT, -- Foreign Key to element table
-	List deviceName,
+	deviceName **LIST** Device_DeviceName,
 	modelNumber TEXT,
 	_modelNumber TEXT, -- Foreign Key to element table
 	partNumber TEXT,
 	_partNumber TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to codeableConcept table
-	List specialization,
-	List version,
-	List property,
+	specialization **LIST** Device_Specialization,
+	"version" **LIST** Device_Version,
+	property **LIST** Device_Property,
 	patient TEXT, -- Foreign Key to reference table
 	"owner" TEXT, -- Foreign Key to reference table
-	List contact,
+	contact **LIST** ContactPoint,
 	"location" TEXT, -- Foreign Key to reference table
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
-	List note,
-	List safety,
+	note **LIST** Annotation,
+	safety **LIST** CodeableConcept,
 	parent TEXT, -- Foreign Key to reference table
 
 	FOREIGN KEY (meta)
@@ -12492,10 +12224,8 @@ CREATE TABLE device(
 CREATE TABLE device_UdiCarrier(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	deviceIdentifier TEXT,
 	_deviceIdentifier TEXT, -- Foreign Key to element table
 	issuer TEXT,
@@ -12544,10 +12274,8 @@ CREATE TABLE device_UdiCarrier(
 CREATE TABLE device_DeviceName(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	"type" TEXT, -- enum: udi-label-name/user-friendly-name/patient-reported-name/manufacturer-name/model-name/other
@@ -12568,10 +12296,8 @@ CREATE TABLE device_DeviceName(
 CREATE TABLE device_Specialization(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	systemType TEXT, -- Foreign Key to codeableConcept table
 	"version" TEXT,
 	_version TEXT, -- Foreign Key to element table
@@ -12591,10 +12317,8 @@ CREATE TABLE device_Specialization(
 CREATE TABLE device_Version(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	component TEXT, -- Foreign Key to identifier table
 	"value" TEXT,
@@ -12620,13 +12344,11 @@ CREATE TABLE device_Version(
 CREATE TABLE device_Property(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
-	List valueQuantity,
-	List valueCode,
+	valueQuantity **LIST** Quantity,
+	valueCode **LIST** CodeableConcept,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -12645,37 +12367,37 @@ CREATE TABLE deviceDefinition(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
-	List udiDeviceIdentifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
+	udiDeviceIdentifier **LIST** DeviceDefinition_UdiDeviceIdentifier,
 	manufacturerString TEXT, -- pattern: ^[ \r\n\t\S]+$
 	_manufacturerString TEXT, -- Foreign Key to element table
 	manufacturerReference TEXT, -- Foreign Key to reference table
-	List deviceName,
+	deviceName **LIST** DeviceDefinition_DeviceName,
 	modelNumber TEXT,
 	_modelNumber TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to codeableConcept table
-	List specialization,
-	List version,
-	List _version,
-	List safety,
-	List shelfLifeStorage,
+	specialization **LIST** DeviceDefinition_Specialization,
+	"version" **LIST** string,
+	_version **LIST** Element,
+	safety **LIST** CodeableConcept,
+	shelfLifeStorage **LIST** ProductShelfLife,
 	physicalCharacteristics TEXT, -- Foreign Key to prodCharacteristic table
-	List languageCode,
-	List capability,
-	List property,
+	languageCode **LIST** CodeableConcept,
+	capability **LIST** DeviceDefinition_Capability,
+	property **LIST** DeviceDefinition_Property,
 	"owner" TEXT, -- Foreign Key to reference table
-	List contact,
+	contact **LIST** ContactPoint,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
 	onlineInformation TEXT,
 	_onlineInformation TEXT, -- Foreign Key to element table
-	List note,
+	note **LIST** Annotation,
 	quantity TEXT, -- Foreign Key to quantity table
 	parentDevice TEXT, -- Foreign Key to reference table
-	List material,
+	material **LIST** DeviceDefinition_Material,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -12752,10 +12474,8 @@ CREATE TABLE deviceDefinition(
 CREATE TABLE deviceDefinition_UdiDeviceIdentifier(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	deviceIdentifier TEXT,
 	_deviceIdentifier TEXT, -- Foreign Key to element table
 	issuer TEXT,
@@ -12783,10 +12503,8 @@ CREATE TABLE deviceDefinition_UdiDeviceIdentifier(
 CREATE TABLE deviceDefinition_DeviceName(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	"type" TEXT, -- enum: udi-label-name/user-friendly-name/patient-reported-name/manufacturer-name/model-name/other
@@ -12807,10 +12525,8 @@ CREATE TABLE deviceDefinition_DeviceName(
 CREATE TABLE deviceDefinition_Specialization(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	systemType TEXT,
 	_systemType TEXT, -- Foreign Key to element table
 	"version" TEXT,
@@ -12831,12 +12547,10 @@ CREATE TABLE deviceDefinition_Specialization(
 CREATE TABLE deviceDefinition_Capability(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
-	List description,
+	"description" **LIST** CodeableConcept,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -12848,13 +12562,11 @@ CREATE TABLE deviceDefinition_Capability(
 CREATE TABLE deviceDefinition_Property(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
-	List valueQuantity,
-	List valueCode,
+	valueQuantity **LIST** Quantity,
+	valueCode **LIST** CodeableConcept,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -12866,10 +12578,8 @@ CREATE TABLE deviceDefinition_Property(
 CREATE TABLE deviceDefinition_Material(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	substance TEXT, -- Foreign Key to codeableConcept table
 	alternate BOOLEAN,
 	_alternate TEXT, -- Foreign Key to element table
@@ -12903,10 +12613,10 @@ CREATE TABLE deviceMetric(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	unit TEXT, -- Foreign Key to codeableConcept table
 	"source" TEXT, -- Foreign Key to reference table
@@ -12918,7 +12628,7 @@ CREATE TABLE deviceMetric(
 	category TEXT, -- enum: measurement/setting/calculation/unspecified
 	_category TEXT, -- Foreign Key to element table
 	measurementPeriod TEXT, -- Foreign Key to timing table
-	List calibration,
+	calibration **LIST** DeviceMetric_Calibration,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -12985,13 +12695,11 @@ CREATE TABLE deviceMetric(
 CREATE TABLE deviceMetric_Calibration(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- enum: unspecified/offset/gain/two-point
 	_type TEXT, -- Foreign Key to element table
-	state TEXT, -- enum: not-calibrated/calibration-required/calibrated/unspecified
+	"state" TEXT, -- enum: not-calibrated/calibration-required/calibrated/unspecified
 	_state TEXT, -- Foreign Key to element table
 	"time" DATETIME,
 	_time TEXT, -- Foreign Key to element table
@@ -13023,15 +12731,15 @@ CREATE TABLE deviceRequest(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
-	List instantiatesCanonical,
-	List instantiatesUri,
-	List _instantiatesUri,
-	List basedOn,
-	List priorRequest,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
+	instantiatesCanonical **LIST** canonical,
+	instantiatesUri **LIST** uri,
+	_instantiatesUri **LIST** Element,
+	basedOn **LIST** Reference,
+	priorRequest **LIST** Reference,
 	groupIdentifier TEXT, -- Foreign Key to identifier table
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
@@ -13041,7 +12749,7 @@ CREATE TABLE deviceRequest(
 	_priority TEXT, -- Foreign Key to element table
 	codeReference TEXT, -- Foreign Key to reference table
 	codeCodeableConcept TEXT, -- Foreign Key to codeableConcept table
-	List parameter,
+	"parameter" **LIST** DeviceRequest_Parameter,
 	"subject" TEXT, -- Foreign Key to reference table
 	encounter TEXT, -- Foreign Key to reference table
 	occurrenceDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
@@ -13053,12 +12761,12 @@ CREATE TABLE deviceRequest(
 	requester TEXT, -- Foreign Key to reference table
 	performerType TEXT, -- Foreign Key to codeableConcept table
 	performer TEXT, -- Foreign Key to reference table
-	List reasonCode,
-	List reasonReference,
-	List insurance,
-	List supportingInfo,
-	List note,
-	List relevantHistory,
+	reasonCode **LIST** CodeableConcept,
+	reasonReference **LIST** Reference,
+	insurance **LIST** Reference,
+	supportingInfo **LIST** Reference,
+	note **LIST** Annotation,
+	relevantHistory **LIST** Reference,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -13160,10 +12868,8 @@ CREATE TABLE deviceRequest(
 CREATE TABLE deviceRequest_Parameter(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	valueCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	valueQuantity TEXT, -- Foreign Key to quantity table
@@ -13208,15 +12914,15 @@ CREATE TABLE deviceUseStatement(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
-	List basedOn,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
+	basedOn **LIST** Reference,
 	"status" TEXT, -- enum: active/completed/entered-in-error/intended/stopped/on-hold
 	_status TEXT, -- Foreign Key to element table
 	"subject" TEXT, -- Foreign Key to reference table
-	List derivedFrom,
+	derivedFrom **LIST** Reference,
 	timingTiming TEXT, -- Foreign Key to timing table
 	timingPeriod TEXT, -- Foreign Key to period table
 	timingDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
@@ -13225,10 +12931,10 @@ CREATE TABLE deviceUseStatement(
 	_recordedOn TEXT, -- Foreign Key to element table
 	"source" TEXT, -- Foreign Key to reference table
 	device TEXT, -- Foreign Key to reference table
-	List reasonCode,
-	List reasonReference,
+	reasonCode **LIST** CodeableConcept,
+	reasonReference **LIST** Reference,
 	bodySite TEXT, -- Foreign Key to codeableConcept table
-	List note,
+	note **LIST** Annotation,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -13307,14 +13013,14 @@ CREATE TABLE diagnosticReport(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
-	List basedOn,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
+	basedOn **LIST** Reference,
 	"status" TEXT, -- enum: registered/partial/preliminary/final/amended/corrected/appended/cancelled/entered-in-error/unknown
 	_status TEXT, -- Foreign Key to element table
-	List category,
+	category **LIST** CodeableConcept,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"subject" TEXT, -- Foreign Key to reference table
 	encounter TEXT, -- Foreign Key to reference table
@@ -13323,16 +13029,16 @@ CREATE TABLE diagnosticReport(
 	effectivePeriod TEXT, -- Foreign Key to period table
 	issued DATETIME,
 	_issued TEXT, -- Foreign Key to element table
-	List performer,
-	List resultsInterpreter,
-	List specimen,
-	List result,
-	List imagingStudy,
-	List media,
+	performer **LIST** Reference,
+	resultsInterpreter **LIST** Reference,
+	specimen **LIST** Reference,
+	"result" **LIST** Reference,
+	imagingStudy **LIST** Reference,
+	media **LIST** DiagnosticReport_Media,
 	conclusion TEXT,
 	_conclusion TEXT, -- Foreign Key to element table
-	List conclusionCode,
-	List presentedForm,
+	conclusionCode **LIST** CodeableConcept,
+	presentedForm **LIST** Attachment,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -13399,10 +13105,8 @@ CREATE TABLE diagnosticReport(
 CREATE TABLE diagnosticReport_Media(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	comment TEXT,
 	_comment TEXT, -- Foreign Key to element table
 	link TEXT, -- Foreign Key to reference table
@@ -13429,25 +13133,25 @@ CREATE TABLE documentManifest(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	masterIdentifier TEXT, -- Foreign Key to identifier table
-	List identifier,
+	identifier **LIST** Identifier,
 	"status" TEXT, -- enum: current/superseded/entered-in-error
 	_status TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	"subject" TEXT, -- Foreign Key to reference table
 	created DATETIME,
 	_created TEXT, -- Foreign Key to element table
-	List author,
-	List recipient,
+	author **LIST** Reference,
+	recipient **LIST** Reference,
 	"source" TEXT,
 	_source TEXT, -- Foreign Key to element table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List content,
-	List related,
+	content **LIST** Reference,
+	related **LIST** DocumentManifest_Related,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -13509,10 +13213,8 @@ CREATE TABLE documentManifest(
 CREATE TABLE documentManifest_Related(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	identifier TEXT, -- Foreign Key to identifier table
 	ref TEXT, -- Foreign Key to reference table
 
@@ -13538,28 +13240,28 @@ CREATE TABLE documentReference(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	masterIdentifier TEXT, -- Foreign Key to identifier table
-	List identifier,
+	identifier **LIST** Identifier,
 	"status" TEXT, -- enum: current/superseded/entered-in-error
 	_status TEXT, -- Foreign Key to element table
 	docStatus TEXT,
 	_docStatus TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to codeableConcept table
-	List category,
+	category **LIST** CodeableConcept,
 	"subject" TEXT, -- Foreign Key to reference table
 	"date" DATETIME,
 	_date TEXT, -- Foreign Key to element table
-	List author,
+	author **LIST** Reference,
 	authenticator TEXT, -- Foreign Key to reference table
 	custodian TEXT, -- Foreign Key to reference table
-	List relatesTo,
+	relatesTo **LIST** DocumentReference_RelatesTo,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List securityLabel,
-	List content,
+	securityLabel **LIST** CodeableConcept,
+	content **LIST** DocumentReference_Content,
 	context TEXT, -- Foreign Key to documentReference_Context table
 
 	FOREIGN KEY (meta)
@@ -13637,10 +13339,8 @@ CREATE TABLE documentReference(
 CREATE TABLE documentReference_RelatesTo(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT, -- enum: replaces/transforms/signs/appends
 	_code TEXT, -- Foreign Key to element table
 	"target" TEXT, -- Foreign Key to reference table
@@ -13660,10 +13360,8 @@ CREATE TABLE documentReference_RelatesTo(
 CREATE TABLE documentReference_Content(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	attachment TEXT, -- Foreign Key to attachment table
 	format TEXT, -- Foreign Key to coding table
 
@@ -13682,17 +13380,15 @@ CREATE TABLE documentReference_Content(
 CREATE TABLE documentReference_Context(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List encounter,
-	List event,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	encounter **LIST** Reference,
+	"event" **LIST** CodeableConcept,
 	"period" TEXT, -- Foreign Key to period table
 	facilityType TEXT, -- Foreign Key to codeableConcept table
 	practiceSetting TEXT, -- Foreign Key to codeableConcept table
 	sourcePatientInfo TEXT, -- Foreign Key to reference table
-	List related,
+	related **LIST** Reference,
 
 	FOREIGN KEY ("period")
 		REFERENCES period (id)
@@ -13726,12 +13422,12 @@ CREATE TABLE effectEvidenceSynthesis(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
-	List identifier,
+	identifier **LIST** Identifier,
 	"version" TEXT,
 	_version TEXT, -- Foreign Key to element table
 	"name" TEXT,
@@ -13744,12 +13440,12 @@ CREATE TABLE effectEvidenceSynthesis(
 	_date TEXT, -- Foreign Key to element table
 	publisher TEXT,
 	_publisher TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactDetail,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List note,
-	List useContext,
-	List jurisdiction,
+	note **LIST** Annotation,
+	useContext **LIST** UsageContext,
+	jurisdiction **LIST** CodeableConcept,
 	copyright TEXT,
 	_copyright TEXT, -- Foreign Key to element table
 	approvalDate DATE,
@@ -13757,12 +13453,12 @@ CREATE TABLE effectEvidenceSynthesis(
 	lastReviewDate DATE,
 	_lastReviewDate TEXT, -- Foreign Key to element table
 	effectivePeriod TEXT, -- Foreign Key to period table
-	List topic,
-	List author,
-	List editor,
-	List reviewer,
-	List endorser,
-	List relatedArtifact,
+	topic **LIST** CodeableConcept,
+	author **LIST** ContactDetail,
+	editor **LIST** ContactDetail,
+	reviewer **LIST** ContactDetail,
+	endorser **LIST** ContactDetail,
+	relatedArtifact **LIST** RelatedArtifact,
 	synthesisType TEXT, -- Foreign Key to codeableConcept table
 	studyType TEXT, -- Foreign Key to codeableConcept table
 	"population" TEXT, -- Foreign Key to reference table
@@ -13770,9 +13466,9 @@ CREATE TABLE effectEvidenceSynthesis(
 	exposureAlternative TEXT, -- Foreign Key to reference table
 	outcome TEXT, -- Foreign Key to reference table
 	sampleSize TEXT, -- Foreign Key to effectEvidenceSynthesis_SampleSize table
-	List resultsByExposure,
-	List effectEstimate,
-	List certainty,
+	resultsByExposure **LIST** EffectEvidenceSynthesis_ResultsByExposure,
+	effectEstimate **LIST** EffectEvidenceSynthesis_EffectEstimate,
+	certainty **LIST** EffectEvidenceSynthesis_Certainty,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -13894,10 +13590,8 @@ CREATE TABLE effectEvidenceSynthesis(
 CREATE TABLE effectEvidenceSynthesis_SampleSize(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	numberOfStudies INTEGER,
@@ -13925,10 +13619,8 @@ CREATE TABLE effectEvidenceSynthesis_SampleSize(
 CREATE TABLE effectEvidenceSynthesis_ResultsByExposure(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	exposureState TEXT, -- enum: exposure/exposure-alternative
@@ -13961,10 +13653,8 @@ CREATE TABLE effectEvidenceSynthesis_ResultsByExposure(
 CREATE TABLE effectEvidenceSynthesis_EffectEstimate(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to codeableConcept table
@@ -13972,7 +13662,7 @@ CREATE TABLE effectEvidenceSynthesis_EffectEstimate(
 	"value" REAL,
 	_value TEXT, -- Foreign Key to element table
 	unitOfMeasure TEXT, -- Foreign Key to codeableConcept table
-	List precisionEstimate,
+	precisionEstimate **LIST** EffectEvidenceSynthesis_PrecisionEstimate,
 
 	FOREIGN KEY (_description)
 		REFERENCES element (id)
@@ -14004,10 +13694,8 @@ CREATE TABLE effectEvidenceSynthesis_EffectEstimate(
 CREATE TABLE effectEvidenceSynthesis_PrecisionEstimate(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	"level" REAL,
 	_level TEXT, -- Foreign Key to element table
@@ -14041,26 +13729,22 @@ CREATE TABLE effectEvidenceSynthesis_PrecisionEstimate(
 CREATE TABLE effectEvidenceSynthesis_Certainty(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List rating,
-	List note,
-	List certaintySubcomponent
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	rating **LIST** CodeableConcept,
+	note **LIST** Annotation,
+	certaintySubcomponent **LIST** EffectEvidenceSynthesis_CertaintySubcomponent
 
 );
 
 CREATE TABLE effectEvidenceSynthesis_CertaintySubcomponent(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
-	List rating,
-	List note,
+	rating **LIST** CodeableConcept,
+	note **LIST** Annotation,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -14079,31 +13763,31 @@ CREATE TABLE encounter(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT, -- enum: planned/arrived/triaged/in-progress/onleave/finished/cancelled/entered-in-error/unknown
 	_status TEXT, -- Foreign Key to element table
-	List statusHistory,
+	statusHistory **LIST** Encounter_StatusHistory,
 	class TEXT, -- Foreign Key to coding table
-	List classHistory,
-	List type,
+	classHistory **LIST** Encounter_ClassHistory,
+	"type" **LIST** CodeableConcept,
 	serviceType TEXT, -- Foreign Key to codeableConcept table
 	"priority" TEXT, -- Foreign Key to codeableConcept table
 	"subject" TEXT, -- Foreign Key to reference table
-	List episodeOfCare,
-	List basedOn,
-	List participant,
-	List appointment,
+	episodeOfCare **LIST** Reference,
+	basedOn **LIST** Reference,
+	participant **LIST** Encounter_Participant,
+	appointment **LIST** Reference,
 	"period" TEXT, -- Foreign Key to period table
 	"length" TEXT, -- Foreign Key to duration table
-	List reasonCode,
-	List reasonReference,
-	List diagnosis,
-	List account,
+	reasonCode **LIST** CodeableConcept,
+	reasonReference **LIST** Reference,
+	diagnosis **LIST** Encounter_Diagnosis,
+	account **LIST** Reference,
 	hospitalization TEXT, -- Foreign Key to encounter_Hospitalization table
-	List location,
+	"location" **LIST** Encounter_Location,
 	serviceProvider TEXT, -- Foreign Key to reference table
 	partOf TEXT, -- Foreign Key to reference table
 
@@ -14182,10 +13866,8 @@ CREATE TABLE encounter(
 CREATE TABLE encounter_StatusHistory(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"status" TEXT, -- enum: planned/arrived/triaged/in-progress/onleave/finished/cancelled/entered-in-error/unknown
 	_status TEXT, -- Foreign Key to element table
 	"period" TEXT, -- Foreign Key to period table
@@ -14205,10 +13887,8 @@ CREATE TABLE encounter_StatusHistory(
 CREATE TABLE encounter_ClassHistory(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	class TEXT, -- Foreign Key to coding table
 	"period" TEXT, -- Foreign Key to period table
 
@@ -14227,11 +13907,9 @@ CREATE TABLE encounter_ClassHistory(
 CREATE TABLE encounter_Participant(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List type,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	"type" **LIST** CodeableConcept,
 	"period" TEXT, -- Foreign Key to period table
 	individual TEXT, -- Foreign Key to reference table
 
@@ -14250,10 +13928,8 @@ CREATE TABLE encounter_Participant(
 CREATE TABLE encounter_Diagnosis(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"condition" TEXT, -- Foreign Key to reference table
 	"use" TEXT, -- Foreign Key to codeableConcept table
 	"rank" INTEGER,
@@ -14279,17 +13955,15 @@ CREATE TABLE encounter_Diagnosis(
 CREATE TABLE encounter_Hospitalization(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	preAdmissionIdentifier TEXT, -- Foreign Key to identifier table
 	origin TEXT, -- Foreign Key to reference table
 	admitSource TEXT, -- Foreign Key to codeableConcept table
 	reAdmission TEXT, -- Foreign Key to codeableConcept table
-	List dietPreference,
-	List specialCourtesy,
-	List specialArrangement,
+	dietPreference **LIST** CodeableConcept,
+	specialCourtesy **LIST** CodeableConcept,
+	specialArrangement **LIST** CodeableConcept,
 	destination TEXT, -- Foreign Key to reference table
 	dischargeDisposition TEXT, -- Foreign Key to codeableConcept table
 
@@ -14328,10 +14002,8 @@ CREATE TABLE encounter_Hospitalization(
 CREATE TABLE encounter_Location(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"location" TEXT, -- Foreign Key to reference table
 	"status" TEXT, -- enum: planned/active/reserved/completed
 	_status TEXT, -- Foreign Key to element table
@@ -14370,25 +14042,25 @@ CREATE TABLE "endpoint"(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT, -- enum: active/suspended/error/off/entered-in-error/test
 	_status TEXT, -- Foreign Key to element table
 	connectionType TEXT, -- Foreign Key to coding table
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	managingOrganization TEXT, -- Foreign Key to reference table
-	List contact,
+	contact **LIST** ContactPoint,
 	"period" TEXT, -- Foreign Key to period table
-	List payloadType,
-	List payloadMimeType,
-	List _payloadMimeType,
+	payloadType **LIST** CodeableConcept,
+	payloadMimeType **LIST** code,
+	_payloadMimeType **LIST** Element,
 	"address" TEXT,
 	_address TEXT, -- Foreign Key to element table
-	List header,
-	List _header,
+	header **LIST** string,
+	_header **LIST** Element,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -14452,10 +14124,10 @@ CREATE TABLE enrollmentRequest(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
 	created DATETIME,
@@ -14527,10 +14199,10 @@ CREATE TABLE enrollmentResponse(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
 	request TEXT, -- Foreign Key to reference table
@@ -14610,22 +14282,22 @@ CREATE TABLE episodeOfCare(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT, -- enum: planned/waitlist/active/onhold/finished/cancelled/entered-in-error
 	_status TEXT, -- Foreign Key to element table
-	List statusHistory,
-	List type,
-	List diagnosis,
+	statusHistory **LIST** EpisodeOfCare_StatusHistory,
+	"type" **LIST** CodeableConcept,
+	diagnosis **LIST** EpisodeOfCare_Diagnosis,
 	patient TEXT, -- Foreign Key to reference table
 	managingOrganization TEXT, -- Foreign Key to reference table
 	"period" TEXT, -- Foreign Key to period table
-	List referralRequest,
+	referralRequest **LIST** Reference,
 	careManager TEXT, -- Foreign Key to reference table
-	List team,
-	List account,
+	team **LIST** Reference,
+	account **LIST** Reference,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -14677,10 +14349,8 @@ CREATE TABLE episodeOfCare(
 CREATE TABLE episodeOfCare_StatusHistory(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"status" TEXT, -- enum: planned/waitlist/active/onhold/finished/cancelled/entered-in-error
 	_status TEXT, -- Foreign Key to element table
 	"period" TEXT, -- Foreign Key to period table
@@ -14700,10 +14370,8 @@ CREATE TABLE episodeOfCare_StatusHistory(
 CREATE TABLE episodeOfCare_Diagnosis(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"condition" TEXT, -- Foreign Key to reference table
 	"role" TEXT, -- Foreign Key to codeableConcept table
 	"rank" INTEGER,
@@ -14736,12 +14404,12 @@ CREATE TABLE eventDefinition(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
-	List identifier,
+	identifier **LIST** Identifier,
 	"version" TEXT,
 	_version TEXT, -- Foreign Key to element table
 	"name" TEXT,
@@ -14760,11 +14428,11 @@ CREATE TABLE eventDefinition(
 	_date TEXT, -- Foreign Key to element table
 	publisher TEXT,
 	_publisher TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactDetail,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List useContext,
-	List jurisdiction,
+	useContext **LIST** UsageContext,
+	jurisdiction **LIST** CodeableConcept,
 	purpose TEXT,
 	_purpose TEXT, -- Foreign Key to element table
 	"usage" TEXT,
@@ -14776,13 +14444,13 @@ CREATE TABLE eventDefinition(
 	lastReviewDate DATE,
 	_lastReviewDate TEXT, -- Foreign Key to element table
 	effectivePeriod TEXT, -- Foreign Key to period table
-	List topic,
-	List author,
-	List editor,
-	List reviewer,
-	List endorser,
-	List relatedArtifact,
-	List trigger,
+	topic **LIST** CodeableConcept,
+	author **LIST** ContactDetail,
+	editor **LIST** ContactDetail,
+	reviewer **LIST** ContactDetail,
+	endorser **LIST** ContactDetail,
+	relatedArtifact **LIST** RelatedArtifact,
+	"trigger" **LIST** TriggerDefinition,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -14906,12 +14574,12 @@ CREATE TABLE evidence(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
-	List identifier,
+	identifier **LIST** Identifier,
 	"version" TEXT,
 	_version TEXT, -- Foreign Key to element table
 	"name" TEXT,
@@ -14928,12 +14596,12 @@ CREATE TABLE evidence(
 	_date TEXT, -- Foreign Key to element table
 	publisher TEXT,
 	_publisher TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactDetail,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List note,
-	List useContext,
-	List jurisdiction,
+	note **LIST** Annotation,
+	useContext **LIST** UsageContext,
+	jurisdiction **LIST** CodeableConcept,
 	copyright TEXT,
 	_copyright TEXT, -- Foreign Key to element table
 	approvalDate DATE,
@@ -14941,15 +14609,15 @@ CREATE TABLE evidence(
 	lastReviewDate DATE,
 	_lastReviewDate TEXT, -- Foreign Key to element table
 	effectivePeriod TEXT, -- Foreign Key to period table
-	List topic,
-	List author,
-	List editor,
-	List reviewer,
-	List endorser,
-	List relatedArtifact,
+	topic **LIST** CodeableConcept,
+	author **LIST** ContactDetail,
+	editor **LIST** ContactDetail,
+	reviewer **LIST** ContactDetail,
+	endorser **LIST** ContactDetail,
+	relatedArtifact **LIST** RelatedArtifact,
 	exposureBackground TEXT, -- Foreign Key to reference table
-	List exposureVariant,
-	List outcome,
+	exposureVariant **LIST** Reference,
+	outcome **LIST** Reference,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -15058,12 +14726,12 @@ CREATE TABLE evidenceVariable(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
-	List identifier,
+	identifier **LIST** Identifier,
 	"version" TEXT,
 	_version TEXT, -- Foreign Key to element table
 	"name" TEXT,
@@ -15080,12 +14748,12 @@ CREATE TABLE evidenceVariable(
 	_date TEXT, -- Foreign Key to element table
 	publisher TEXT,
 	_publisher TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactDetail,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List note,
-	List useContext,
-	List jurisdiction,
+	note **LIST** Annotation,
+	useContext **LIST** UsageContext,
+	jurisdiction **LIST** CodeableConcept,
 	copyright TEXT,
 	_copyright TEXT, -- Foreign Key to element table
 	approvalDate DATE,
@@ -15093,15 +14761,15 @@ CREATE TABLE evidenceVariable(
 	lastReviewDate DATE,
 	_lastReviewDate TEXT, -- Foreign Key to element table
 	effectivePeriod TEXT, -- Foreign Key to period table
-	List topic,
-	List author,
-	List editor,
-	List reviewer,
-	List endorser,
-	List relatedArtifact,
+	topic **LIST** CodeableConcept,
+	author **LIST** ContactDetail,
+	editor **LIST** ContactDetail,
+	reviewer **LIST** ContactDetail,
+	endorser **LIST** ContactDetail,
+	relatedArtifact **LIST** RelatedArtifact,
 	"type" TEXT, -- enum: dichotomous/continuous/descriptive
 	_type TEXT, -- Foreign Key to element table
-	List characteristic,
+	characteristic **LIST** EvidenceVariable_Characteristic,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -15203,10 +14871,8 @@ CREATE TABLE evidenceVariable(
 CREATE TABLE evidenceVariable_Characteristic(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	definitionReference TEXT, -- Foreign Key to reference table
@@ -15216,7 +14882,7 @@ CREATE TABLE evidenceVariable_Characteristic(
 	definitionExpression TEXT, -- Foreign Key to expression table
 	definitionDataRequirement TEXT, -- Foreign Key to dataRequirement table
 	definitionTriggerDefinition TEXT, -- Foreign Key to triggerDefinition table
-	List usageContext,
+	usageContext **LIST** UsageContext,
 	exclude BOOLEAN,
 	_exclude TEXT, -- Foreign Key to element table
 	participantEffectiveDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
@@ -15310,12 +14976,12 @@ CREATE TABLE exampleScenario(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
-	List identifier,
+	identifier **LIST** Identifier,
 	"version" TEXT,
 	_version TEXT, -- Foreign Key to element table
 	"name" TEXT,
@@ -15328,17 +14994,17 @@ CREATE TABLE exampleScenario(
 	_date TEXT, -- Foreign Key to element table
 	publisher TEXT,
 	_publisher TEXT, -- Foreign Key to element table
-	List contact,
-	List useContext,
-	List jurisdiction,
+	contact **LIST** ContactDetail,
+	useContext **LIST** UsageContext,
+	jurisdiction **LIST** CodeableConcept,
 	copyright TEXT,
 	_copyright TEXT, -- Foreign Key to element table
 	purpose TEXT,
 	_purpose TEXT, -- Foreign Key to element table
-	List actor,
-	List instance,
-	List process,
-	List workflow,
+	actor **LIST** ExampleScenario_Actor,
+	"instance" **LIST** ExampleScenario_Instance,
+	process **LIST** ExampleScenario_Process,
+	workflow **LIST** canonical,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -15410,10 +15076,8 @@ CREATE TABLE exampleScenario(
 CREATE TABLE exampleScenario_Actor(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	actorId TEXT,
 	_actorId TEXT, -- Foreign Key to element table
 	"type" TEXT, -- enum: person/entity
@@ -15448,10 +15112,8 @@ CREATE TABLE exampleScenario_Actor(
 CREATE TABLE exampleScenario_Instance(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	resourceId TEXT,
 	_resourceId TEXT, -- Foreign Key to element table
 	resourceType TEXT,
@@ -15460,8 +15122,8 @@ CREATE TABLE exampleScenario_Instance(
 	_name TEXT, -- Foreign Key to element table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List version,
-	List containedInstance,
+	"version" **LIST** ExampleScenario_Version,
+	containedInstance **LIST** ExampleScenario_ContainedInstance,
 
 	FOREIGN KEY (_resourceId)
 		REFERENCES element (id)
@@ -15488,10 +15150,8 @@ CREATE TABLE exampleScenario_Instance(
 CREATE TABLE exampleScenario_Version(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	versionId TEXT,
 	_versionId TEXT, -- Foreign Key to element table
 	"description" TEXT,
@@ -15512,10 +15172,8 @@ CREATE TABLE exampleScenario_Version(
 CREATE TABLE exampleScenario_ContainedInstance(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	resourceId TEXT,
 	_resourceId TEXT, -- Foreign Key to element table
 	versionId TEXT,
@@ -15536,10 +15194,8 @@ CREATE TABLE exampleScenario_ContainedInstance(
 CREATE TABLE exampleScenario_Process(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	title TEXT,
 	_title TEXT, -- Foreign Key to element table
 	"description" TEXT,
@@ -15548,7 +15204,7 @@ CREATE TABLE exampleScenario_Process(
 	_preConditions TEXT, -- Foreign Key to element table
 	postConditions TEXT,
 	_postConditions TEXT, -- Foreign Key to element table
-	List step,
+	step **LIST** ExampleScenario_Step,
 
 	FOREIGN KEY (_title)
 		REFERENCES element (id)
@@ -15575,15 +15231,13 @@ CREATE TABLE exampleScenario_Process(
 CREATE TABLE exampleScenario_Step(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List process,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	process **LIST** ExampleScenario_Process,
 	pause BOOLEAN,
 	_pause TEXT, -- Foreign Key to element table
 	operation TEXT, -- Foreign Key to exampleScenario_Operation table
-	List alternative,
+	alternative **LIST** ExampleScenario_Alternative,
 
 	FOREIGN KEY (_pause)
 		REFERENCES element (id)
@@ -15600,10 +15254,8 @@ CREATE TABLE exampleScenario_Step(
 CREATE TABLE exampleScenario_Operation(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	number TEXT,
 	_number TEXT, -- Foreign Key to element table
 	"type" TEXT,
@@ -15678,15 +15330,13 @@ CREATE TABLE exampleScenario_Operation(
 CREATE TABLE exampleScenario_Alternative(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	title TEXT,
 	_title TEXT, -- Foreign Key to element table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List step,
+	step **LIST** ExampleScenario_Step,
 
 	FOREIGN KEY (_title)
 		REFERENCES element (id)
@@ -15710,10 +15360,10 @@ CREATE TABLE explanationOfBenefit(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT, -- enum: active/cancelled/draft/entered-in-error
 	_status TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to codeableConcept table
@@ -15730,7 +15380,7 @@ CREATE TABLE explanationOfBenefit(
 	"priority" TEXT, -- Foreign Key to codeableConcept table
 	fundsReserveRequested TEXT, -- Foreign Key to codeableConcept table
 	fundsReserve TEXT, -- Foreign Key to codeableConcept table
-	List related,
+	related **LIST** ExplanationOfBenefit_Related,
 	prescription TEXT, -- Foreign Key to reference table
 	originalPrescription TEXT, -- Foreign Key to reference table
 	payee TEXT, -- Foreign Key to explanationOfBenefit_Payee table
@@ -15742,27 +15392,27 @@ CREATE TABLE explanationOfBenefit(
 	_outcome TEXT, -- Foreign Key to element table
 	disposition TEXT,
 	_disposition TEXT, -- Foreign Key to element table
-	List preAuthRef,
-	List _preAuthRef,
-	List preAuthRefPeriod,
-	List careTeam,
-	List supportingInfo,
-	List diagnosis,
-	List procedure,
+	preAuthRef **LIST** string,
+	_preAuthRef **LIST** Element,
+	preAuthRefPeriod **LIST** Period,
+	careTeam **LIST** ExplanationOfBenefit_CareTeam,
+	supportingInfo **LIST** ExplanationOfBenefit_SupportingInfo,
+	diagnosis **LIST** ExplanationOfBenefit_Diagnosis,
+	"procedure" **LIST** ExplanationOfBenefit_Procedure,
 	precedence INTEGER,
 	_precedence TEXT, -- Foreign Key to element table
-	List insurance,
+	insurance **LIST** ExplanationOfBenefit_Insurance,
 	accident TEXT, -- Foreign Key to explanationOfBenefit_Accident table
-	List item,
-	List addItem,
-	List adjudication,
-	List total,
+	item **LIST** ExplanationOfBenefit_Item,
+	addItem **LIST** ExplanationOfBenefit_AddItem,
+	adjudication **LIST** ExplanationOfBenefit_Adjudication,
+	total **LIST** ExplanationOfBenefit_Total,
 	payment TEXT, -- Foreign Key to explanationOfBenefit_Payment table
 	formCode TEXT, -- Foreign Key to codeableConcept table
 	form TEXT, -- Foreign Key to attachment table
-	List processNote,
+	processNote **LIST** ExplanationOfBenefit_ProcessNote,
 	benefitPeriod TEXT, -- Foreign Key to period table
-	List benefitBalance,
+	benefitBalance **LIST** ExplanationOfBenefit_BenefitBalance,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -15929,10 +15579,8 @@ CREATE TABLE explanationOfBenefit(
 CREATE TABLE explanationOfBenefit_Related(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	claim TEXT, -- Foreign Key to reference table
 	relationship TEXT, -- Foreign Key to codeableConcept table
 	reference TEXT, -- Foreign Key to identifier table
@@ -15957,10 +15605,8 @@ CREATE TABLE explanationOfBenefit_Related(
 CREATE TABLE explanationOfBenefit_Payee(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	party TEXT, -- Foreign Key to reference table
 
@@ -15979,10 +15625,8 @@ CREATE TABLE explanationOfBenefit_Payee(
 CREATE TABLE explanationOfBenefit_CareTeam(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
 	_sequence TEXT, -- Foreign Key to element table
 	"provider" TEXT, -- Foreign Key to reference table
@@ -16021,10 +15665,8 @@ CREATE TABLE explanationOfBenefit_CareTeam(
 CREATE TABLE explanationOfBenefit_SupportingInfo(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
 	_sequence TEXT, -- Foreign Key to element table
 	category TEXT, -- Foreign Key to codeableConcept table
@@ -16101,15 +15743,13 @@ CREATE TABLE explanationOfBenefit_SupportingInfo(
 CREATE TABLE explanationOfBenefit_Diagnosis(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
 	_sequence TEXT, -- Foreign Key to element table
 	diagnosisCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	diagnosisReference TEXT, -- Foreign Key to reference table
-	List type,
+	"type" **LIST** CodeableConcept,
 	onAdmission TEXT, -- Foreign Key to codeableConcept table
 	packageCode TEXT, -- Foreign Key to codeableConcept table
 
@@ -16143,18 +15783,16 @@ CREATE TABLE explanationOfBenefit_Diagnosis(
 CREATE TABLE explanationOfBenefit_Procedure(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
 	_sequence TEXT, -- Foreign Key to element table
-	List type,
+	"type" **LIST** CodeableConcept,
 	"date" DATETIME,
 	_date TEXT, -- Foreign Key to element table
 	procedureCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	procedureReference TEXT, -- Foreign Key to reference table
-	List udi,
+	udi **LIST** Reference,
 
 	FOREIGN KEY (_sequence)
 		REFERENCES element (id)
@@ -16181,15 +15819,13 @@ CREATE TABLE explanationOfBenefit_Procedure(
 CREATE TABLE explanationOfBenefit_Insurance(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	focal BOOLEAN,
 	_focal TEXT, -- Foreign Key to element table
 	coverage TEXT, -- Foreign Key to reference table
-	List preAuthRef,
-	List _preAuthRef,
+	preAuthRef **LIST** string,
+	_preAuthRef **LIST** Element,
 
 	FOREIGN KEY (_focal)
 		REFERENCES element (id)
@@ -16206,10 +15842,8 @@ CREATE TABLE explanationOfBenefit_Insurance(
 CREATE TABLE explanationOfBenefit_Accident(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"date" DATE,
 	_date TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to codeableConcept table
@@ -16241,25 +15875,23 @@ CREATE TABLE explanationOfBenefit_Accident(
 CREATE TABLE explanationOfBenefit_Item(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
 	_sequence TEXT, -- Foreign Key to element table
-	List careTeamSequence,
-	List _careTeamSequence,
-	List diagnosisSequence,
-	List _diagnosisSequence,
-	List procedureSequence,
-	List _procedureSequence,
-	List informationSequence,
-	List _informationSequence,
+	careTeamSequence **LIST** positiveInt,
+	_careTeamSequence **LIST** Element,
+	diagnosisSequence **LIST** positiveInt,
+	_diagnosisSequence **LIST** Element,
+	procedureSequence **LIST** positiveInt,
+	_procedureSequence **LIST** Element,
+	informationSequence **LIST** positiveInt,
+	_informationSequence **LIST** Element,
 	revenue TEXT, -- Foreign Key to codeableConcept table
 	category TEXT, -- Foreign Key to codeableConcept table
 	productOrService TEXT, -- Foreign Key to codeableConcept table
-	List modifier,
-	List programCode,
+	modifier **LIST** CodeableConcept,
+	programCode **LIST** CodeableConcept,
 	servicedDate TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 	_servicedDate TEXT, -- Foreign Key to element table
 	servicedPeriod TEXT, -- Foreign Key to period table
@@ -16271,14 +15903,14 @@ CREATE TABLE explanationOfBenefit_Item(
 	factor REAL,
 	_factor TEXT, -- Foreign Key to element table
 	net TEXT, -- Foreign Key to money table
-	List udi,
+	udi **LIST** Reference,
 	bodySite TEXT, -- Foreign Key to codeableConcept table
-	List subSite,
-	List encounter,
-	List noteNumber,
-	List _noteNumber,
-	List adjudication,
-	List detail,
+	subSite **LIST** CodeableConcept,
+	encounter **LIST** Reference,
+	noteNumber **LIST** positiveInt,
+	_noteNumber **LIST** Element,
+	adjudication **LIST** ExplanationOfBenefit_Adjudication,
+	detail **LIST** ExplanationOfBenefit_Detail,
 
 	FOREIGN KEY (_sequence)
 		REFERENCES element (id)
@@ -16355,10 +15987,8 @@ CREATE TABLE explanationOfBenefit_Item(
 CREATE TABLE explanationOfBenefit_Adjudication(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	category TEXT, -- Foreign Key to codeableConcept table
 	reason TEXT, -- Foreign Key to codeableConcept table
 	amount TEXT, -- Foreign Key to money table
@@ -16390,27 +16020,25 @@ CREATE TABLE explanationOfBenefit_Adjudication(
 CREATE TABLE explanationOfBenefit_Detail(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
 	_sequence TEXT, -- Foreign Key to element table
 	revenue TEXT, -- Foreign Key to codeableConcept table
 	category TEXT, -- Foreign Key to codeableConcept table
 	productOrService TEXT, -- Foreign Key to codeableConcept table
-	List modifier,
-	List programCode,
+	modifier **LIST** CodeableConcept,
+	programCode **LIST** CodeableConcept,
 	quantity TEXT, -- Foreign Key to quantity table
 	unitPrice TEXT, -- Foreign Key to money table
 	factor REAL,
 	_factor TEXT, -- Foreign Key to element table
 	net TEXT, -- Foreign Key to money table
-	List udi,
-	List noteNumber,
-	List _noteNumber,
-	List adjudication,
-	List subDetail,
+	udi **LIST** Reference,
+	noteNumber **LIST** positiveInt,
+	_noteNumber **LIST** Element,
+	adjudication **LIST** ExplanationOfBenefit_Adjudication,
+	subDetail **LIST** ExplanationOfBenefit_SubDetail,
 
 	FOREIGN KEY (_sequence)
 		REFERENCES element (id)
@@ -16457,26 +16085,24 @@ CREATE TABLE explanationOfBenefit_Detail(
 CREATE TABLE explanationOfBenefit_SubDetail(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
 	_sequence TEXT, -- Foreign Key to element table
 	revenue TEXT, -- Foreign Key to codeableConcept table
 	category TEXT, -- Foreign Key to codeableConcept table
 	productOrService TEXT, -- Foreign Key to codeableConcept table
-	List modifier,
-	List programCode,
+	modifier **LIST** CodeableConcept,
+	programCode **LIST** CodeableConcept,
 	quantity TEXT, -- Foreign Key to quantity table
 	unitPrice TEXT, -- Foreign Key to money table
 	factor REAL,
 	_factor TEXT, -- Foreign Key to element table
 	net TEXT, -- Foreign Key to money table
-	List udi,
-	List noteNumber,
-	List _noteNumber,
-	List adjudication,
+	udi **LIST** Reference,
+	noteNumber **LIST** positiveInt,
+	_noteNumber **LIST** Element,
+	adjudication **LIST** ExplanationOfBenefit_Adjudication,
 
 	FOREIGN KEY (_sequence)
 		REFERENCES element (id)
@@ -16523,20 +16149,18 @@ CREATE TABLE explanationOfBenefit_SubDetail(
 CREATE TABLE explanationOfBenefit_AddItem(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List itemSequence,
-	List _itemSequence,
-	List detailSequence,
-	List _detailSequence,
-	List subDetailSequence,
-	List _subDetailSequence,
-	List provider,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	itemSequence **LIST** positiveInt,
+	_itemSequence **LIST** Element,
+	detailSequence **LIST** positiveInt,
+	_detailSequence **LIST** Element,
+	subDetailSequence **LIST** positiveInt,
+	_subDetailSequence **LIST** Element,
+	"provider" **LIST** Reference,
 	productOrService TEXT, -- Foreign Key to codeableConcept table
-	List modifier,
-	List programCode,
+	modifier **LIST** CodeableConcept,
+	programCode **LIST** CodeableConcept,
 	servicedDate TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 	_servicedDate TEXT, -- Foreign Key to element table
 	servicedPeriod TEXT, -- Foreign Key to period table
@@ -16549,11 +16173,11 @@ CREATE TABLE explanationOfBenefit_AddItem(
 	_factor TEXT, -- Foreign Key to element table
 	net TEXT, -- Foreign Key to money table
 	bodySite TEXT, -- Foreign Key to codeableConcept table
-	List subSite,
-	List noteNumber,
-	List _noteNumber,
-	List adjudication,
-	List detail,
+	subSite **LIST** CodeableConcept,
+	noteNumber **LIST** positiveInt,
+	_noteNumber **LIST** Element,
+	adjudication **LIST** ExplanationOfBenefit_Adjudication,
+	detail **LIST** ExplanationOfBenefit_Detail1,
 
 	FOREIGN KEY (productOrService)
 		REFERENCES codeableConcept (id)
@@ -16615,21 +16239,19 @@ CREATE TABLE explanationOfBenefit_AddItem(
 CREATE TABLE explanationOfBenefit_Detail1(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	productOrService TEXT, -- Foreign Key to codeableConcept table
-	List modifier,
+	modifier **LIST** CodeableConcept,
 	quantity TEXT, -- Foreign Key to quantity table
 	unitPrice TEXT, -- Foreign Key to money table
 	factor REAL,
 	_factor TEXT, -- Foreign Key to element table
 	net TEXT, -- Foreign Key to money table
-	List noteNumber,
-	List _noteNumber,
-	List adjudication,
-	List subDetail,
+	noteNumber **LIST** positiveInt,
+	_noteNumber **LIST** Element,
+	adjudication **LIST** ExplanationOfBenefit_Adjudication,
+	subDetail **LIST** ExplanationOfBenefit_SubDetail1,
 
 	FOREIGN KEY (productOrService)
 		REFERENCES codeableConcept (id)
@@ -16661,20 +16283,18 @@ CREATE TABLE explanationOfBenefit_Detail1(
 CREATE TABLE explanationOfBenefit_SubDetail1(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	productOrService TEXT, -- Foreign Key to codeableConcept table
-	List modifier,
+	modifier **LIST** CodeableConcept,
 	quantity TEXT, -- Foreign Key to quantity table
 	unitPrice TEXT, -- Foreign Key to money table
 	factor REAL,
 	_factor TEXT, -- Foreign Key to element table
 	net TEXT, -- Foreign Key to money table
-	List noteNumber,
-	List _noteNumber,
-	List adjudication,
+	noteNumber **LIST** positiveInt,
+	_noteNumber **LIST** Element,
+	adjudication **LIST** ExplanationOfBenefit_Adjudication,
 
 	FOREIGN KEY (productOrService)
 		REFERENCES codeableConcept (id)
@@ -16706,10 +16326,8 @@ CREATE TABLE explanationOfBenefit_SubDetail1(
 CREATE TABLE explanationOfBenefit_Total(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	category TEXT, -- Foreign Key to codeableConcept table
 	amount TEXT, -- Foreign Key to money table
 
@@ -16728,10 +16346,8 @@ CREATE TABLE explanationOfBenefit_Total(
 CREATE TABLE explanationOfBenefit_Payment(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	adjustment TEXT, -- Foreign Key to money table
 	adjustmentReason TEXT, -- Foreign Key to codeableConcept table
@@ -16775,10 +16391,8 @@ CREATE TABLE explanationOfBenefit_Payment(
 CREATE TABLE explanationOfBenefit_ProcessNote(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	number INTEGER,
 	_number TEXT, -- Foreign Key to element table
 	"type" TEXT, -- enum: display/print/printoper
@@ -16812,10 +16426,8 @@ CREATE TABLE explanationOfBenefit_ProcessNote(
 CREATE TABLE explanationOfBenefit_BenefitBalance(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	category TEXT, -- Foreign Key to codeableConcept table
 	excluded BOOLEAN,
 	_excluded TEXT, -- Foreign Key to element table
@@ -16826,7 +16438,7 @@ CREATE TABLE explanationOfBenefit_BenefitBalance(
 	network TEXT, -- Foreign Key to codeableConcept table
 	unit TEXT, -- Foreign Key to codeableConcept table
 	term TEXT, -- Foreign Key to codeableConcept table
-	List financial,
+	financial **LIST** ExplanationOfBenefit_Financial,
 
 	FOREIGN KEY (category)
 		REFERENCES codeableConcept (id)
@@ -16868,10 +16480,8 @@ CREATE TABLE explanationOfBenefit_BenefitBalance(
 CREATE TABLE explanationOfBenefit_Financial(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	allowedUnsignedInt REAL, -- pattern: ^[0]|([1-9][0-9]*)$
 	_allowedUnsignedInt TEXT, -- Foreign Key to element table
@@ -16924,13 +16534,13 @@ CREATE TABLE familyMemberHistory(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
-	List instantiatesCanonical,
-	List instantiatesUri,
-	List _instantiatesUri,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
+	instantiatesCanonical **LIST** canonical,
+	instantiatesUri **LIST** uri,
+	_instantiatesUri **LIST** Element,
 	"status" TEXT, -- enum: partial/completed/entered-in-error/health-unknown
 	_status TEXT, -- Foreign Key to element table
 	dataAbsentReason TEXT, -- Foreign Key to codeableConcept table
@@ -16960,10 +16570,10 @@ CREATE TABLE familyMemberHistory(
 	_deceasedDate TEXT, -- Foreign Key to element table
 	deceasedString TEXT, -- pattern: ^[ \r\n\t\S]+$
 	_deceasedString TEXT, -- Foreign Key to element table
-	List reasonCode,
-	List reasonReference,
-	List note,
-	List condition,
+	reasonCode **LIST** CodeableConcept,
+	reasonReference **LIST** Reference,
+	note **LIST** Annotation,
+	"condition" **LIST** FamilyMemberHistory_Condition,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -17085,10 +16695,8 @@ CREATE TABLE familyMemberHistory(
 CREATE TABLE familyMemberHistory_Condition(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	outcome TEXT, -- Foreign Key to codeableConcept table
 	contributedToDeath BOOLEAN,
@@ -17098,7 +16706,7 @@ CREATE TABLE familyMemberHistory_Condition(
 	onsetPeriod TEXT, -- Foreign Key to period table
 	onsetString TEXT, -- pattern: ^[ \r\n\t\S]+$
 	_onsetString TEXT, -- Foreign Key to element table
-	List note,
+	note **LIST** Annotation,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -17147,13 +16755,13 @@ CREATE TABLE flag(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT, -- enum: active/inactive/entered-in-error
 	_status TEXT, -- Foreign Key to element table
-	List category,
+	category **LIST** CodeableConcept,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"subject" TEXT, -- Foreign Key to reference table
 	"period" TEXT, -- Foreign Key to period table
@@ -17222,30 +16830,30 @@ CREATE TABLE goal(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	lifecycleStatus TEXT, -- enum: proposed/planned/accepted/active/on-hold/completed/cancelled/entered-in-error/rejected
 	_lifecycleStatus TEXT, -- Foreign Key to element table
 	achievementStatus TEXT, -- Foreign Key to codeableConcept table
-	List category,
+	category **LIST** CodeableConcept,
 	"priority" TEXT, -- Foreign Key to codeableConcept table
 	"description" TEXT, -- Foreign Key to codeableConcept table
 	"subject" TEXT, -- Foreign Key to reference table
 	startDate TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 	_startDate TEXT, -- Foreign Key to element table
 	startCodeableConcept TEXT, -- Foreign Key to codeableConcept table
-	List target,
+	"target" **LIST** Goal_Target,
 	statusDate DATE,
 	_statusDate TEXT, -- Foreign Key to element table
 	statusReason TEXT,
 	_statusReason TEXT, -- Foreign Key to element table
 	expressedBy TEXT, -- Foreign Key to reference table
-	List addresses,
-	List note,
-	List outcomeCode,
-	List outcomeReference,
+	addresses **LIST** Reference,
+	note **LIST** Annotation,
+	outcomeCode **LIST** CodeableConcept,
+	outcomeReference **LIST** Reference,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -17322,10 +16930,8 @@ CREATE TABLE goal(
 CREATE TABLE goal_Target(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	measure TEXT, -- Foreign Key to codeableConcept table
 	detailQuantity TEXT, -- Foreign Key to quantity table
 	detailRange TEXT, -- Foreign Key to range table
@@ -17403,9 +17009,9 @@ CREATE TABLE graphDefinition(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
 	"version" TEXT,
@@ -17420,17 +17026,17 @@ CREATE TABLE graphDefinition(
 	_date TEXT, -- Foreign Key to element table
 	publisher TEXT,
 	_publisher TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactDetail,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List useContext,
-	List jurisdiction,
+	useContext **LIST** UsageContext,
+	jurisdiction **LIST** CodeableConcept,
 	purpose TEXT,
 	_purpose TEXT, -- Foreign Key to element table
 	"start" TEXT,
 	_start TEXT, -- Foreign Key to element table
 	"profile" TEXT,
-	List link,
+	link **LIST** GraphDefinition_Link,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -17507,10 +17113,8 @@ CREATE TABLE graphDefinition(
 CREATE TABLE graphDefinition_Link(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"path" TEXT,
 	_path TEXT, -- Foreign Key to element table
 	sliceName TEXT,
@@ -17521,7 +17125,7 @@ CREATE TABLE graphDefinition_Link(
 	_max TEXT, -- Foreign Key to element table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List target,
+	"target" **LIST** GraphDefinition_Target,
 
 	FOREIGN KEY (_path)
 		REFERENCES element (id)
@@ -17553,17 +17157,15 @@ CREATE TABLE graphDefinition_Link(
 CREATE TABLE graphDefinition_Target(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT,
 	_type TEXT, -- Foreign Key to element table
 	params TEXT,
 	_params TEXT, -- Foreign Key to element table
 	"profile" TEXT,
-	List compartment,
-	List link,
+	compartment **LIST** GraphDefinition_Compartment,
+	link **LIST** GraphDefinition_Link,
 
 	FOREIGN KEY (_type)
 		REFERENCES element (id)
@@ -17580,10 +17182,8 @@ CREATE TABLE graphDefinition_Target(
 CREATE TABLE graphDefinition_Compartment(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"use" TEXT, -- enum: condition/requirement
 	_use TEXT, -- Foreign Key to element table
 	"code" TEXT,
@@ -17632,10 +17232,10 @@ CREATE TABLE "group"(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	active BOOLEAN,
 	_active TEXT, -- Foreign Key to element table
 	"type" TEXT, -- enum: person/animal/practitioner/device/medication/substance
@@ -17648,8 +17248,8 @@ CREATE TABLE "group"(
 	quantity INTEGER,
 	_quantity TEXT, -- Foreign Key to element table
 	managingEntity TEXT, -- Foreign Key to reference table
-	List characteristic,
-	List member,
+	characteristic **LIST** Group_Characteristic,
+	"member" **LIST** Group_Member,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -17711,10 +17311,8 @@ CREATE TABLE "group"(
 CREATE TABLE group_Characteristic(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	valueCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	valueBoolean BOOLEAN, -- pattern: ^true|false$
@@ -17771,10 +17369,8 @@ CREATE TABLE group_Characteristic(
 CREATE TABLE group_Member(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	entity TEXT, -- Foreign Key to reference table
 	"period" TEXT, -- Foreign Key to period table
 	inactive BOOLEAN,
@@ -17807,11 +17403,11 @@ CREATE TABLE guidanceResponse(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	requestIdentifier TEXT, -- Foreign Key to identifier table
-	List identifier,
+	identifier **LIST** Identifier,
 	moduleUri TEXT, -- pattern: ^\S*$
 	_moduleUri TEXT, -- Foreign Key to element table
 	moduleCanonical TEXT, -- pattern: ^\S*$
@@ -17824,13 +17420,13 @@ CREATE TABLE guidanceResponse(
 	occurrenceDateTime DATETIME,
 	_occurrenceDateTime TEXT, -- Foreign Key to element table
 	performer TEXT, -- Foreign Key to reference table
-	List reasonCode,
-	List reasonReference,
-	List note,
-	List evaluationMessage,
+	reasonCode **LIST** CodeableConcept,
+	reasonReference **LIST** Reference,
+	note **LIST** Annotation,
+	evaluationMessage **LIST** Reference,
 	outputParameters TEXT, -- Foreign Key to reference table
 	"result" TEXT, -- Foreign Key to reference table
-	List dataRequirement,
+	dataRequirement **LIST** DataRequirement,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -17919,17 +17515,17 @@ CREATE TABLE healthcareService(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	active BOOLEAN,
 	_active TEXT, -- Foreign Key to element table
 	providedBy TEXT, -- Foreign Key to reference table
-	List category,
-	List type,
-	List specialty,
-	List location,
+	category **LIST** CodeableConcept,
+	"type" **LIST** CodeableConcept,
+	specialty **LIST** CodeableConcept,
+	"location" **LIST** Reference,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	comment TEXT,
@@ -17937,21 +17533,21 @@ CREATE TABLE healthcareService(
 	extraDetails TEXT,
 	_extraDetails TEXT, -- Foreign Key to element table
 	photo TEXT, -- Foreign Key to attachment table
-	List telecom,
-	List coverageArea,
-	List serviceProvisionCode,
-	List eligibility,
-	List program,
-	List characteristic,
-	List communication,
-	List referralMethod,
+	telecom **LIST** ContactPoint,
+	coverageArea **LIST** Reference,
+	serviceProvisionCode **LIST** CodeableConcept,
+	eligibility **LIST** HealthcareService_Eligibility,
+	program **LIST** CodeableConcept,
+	characteristic **LIST** CodeableConcept,
+	communication **LIST** CodeableConcept,
+	referralMethod **LIST** CodeableConcept,
 	appointmentRequired BOOLEAN,
 	_appointmentRequired TEXT, -- Foreign Key to element table
-	List availableTime,
-	List notAvailable,
+	availableTime **LIST** HealthcareService_AvailableTime,
+	notAvailable **LIST** HealthcareService_NotAvailable,
 	availabilityExceptions TEXT,
 	_availabilityExceptions TEXT, -- Foreign Key to element table
-	List endpoint,
+	"endpoint" **LIST** Reference,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -18018,10 +17614,8 @@ CREATE TABLE healthcareService(
 CREATE TABLE healthcareService_Eligibility(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	comment TEXT,
 	_comment TEXT, -- Foreign Key to element table
@@ -18041,12 +17635,10 @@ CREATE TABLE healthcareService_Eligibility(
 CREATE TABLE healthcareService_AvailableTime(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List daysOfWeek,
-	List _daysOfWeek,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	daysOfWeek **LIST** enum, -- mon/tue/wed/thu/fri/sat/sun,
+	_daysOfWeek **LIST** Element,
 	allDay BOOLEAN,
 	_allDay TEXT, -- Foreign Key to element table
 	availableStartTime TIME,
@@ -18074,10 +17666,8 @@ CREATE TABLE healthcareService_AvailableTime(
 CREATE TABLE healthcareService_NotAvailable(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	during TEXT, -- Foreign Key to period table
@@ -18104,34 +17694,34 @@ CREATE TABLE imagingStudy(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT, -- enum: registered/available/cancelled/entered-in-error/unknown
 	_status TEXT, -- Foreign Key to element table
-	List modality,
+	modality **LIST** Coding,
 	"subject" TEXT, -- Foreign Key to reference table
 	encounter TEXT, -- Foreign Key to reference table
 	"started" DATETIME,
 	_started TEXT, -- Foreign Key to element table
-	List basedOn,
+	basedOn **LIST** Reference,
 	referrer TEXT, -- Foreign Key to reference table
-	List interpreter,
-	List endpoint,
+	interpreter **LIST** Reference,
+	"endpoint" **LIST** Reference,
 	numberOfSeries INTEGER,
 	_numberOfSeries TEXT, -- Foreign Key to element table
 	numberOfInstances INTEGER,
 	_numberOfInstances TEXT, -- Foreign Key to element table
 	procedureReference TEXT, -- Foreign Key to reference table
-	List procedureCode,
+	procedureCode **LIST** CodeableConcept,
 	"location" TEXT, -- Foreign Key to reference table
-	List reasonCode,
-	List reasonReference,
-	List note,
+	reasonCode **LIST** CodeableConcept,
+	reasonReference **LIST** Reference,
+	note **LIST** Annotation,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List series,
+	series **LIST** ImagingStudy_Series,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -18208,10 +17798,8 @@ CREATE TABLE imagingStudy(
 CREATE TABLE imagingStudy_Series(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	uid TEXT, -- Foreign Key to id table
 	_uid TEXT, -- Foreign Key to element table
 	number INTEGER,
@@ -18221,14 +17809,14 @@ CREATE TABLE imagingStudy_Series(
 	_description TEXT, -- Foreign Key to element table
 	numberOfInstances INTEGER,
 	_numberOfInstances TEXT, -- Foreign Key to element table
-	List endpoint,
+	"endpoint" **LIST** Reference,
 	bodySite TEXT, -- Foreign Key to coding table
 	laterality TEXT, -- Foreign Key to coding table
-	List specimen,
+	specimen **LIST** Reference,
 	"started" DATETIME,
 	_started TEXT, -- Foreign Key to element table
-	List performer,
-	List instance,
+	performer **LIST** ImagingStudy_Performer,
+	"instance" **LIST** ImagingStudy_Instance,
 
 	FOREIGN KEY (uid)
 		REFERENCES id (id)
@@ -18280,10 +17868,8 @@ CREATE TABLE imagingStudy_Series(
 CREATE TABLE imagingStudy_Performer(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"function" TEXT, -- Foreign Key to codeableConcept table
 	actor TEXT, -- Foreign Key to reference table
 
@@ -18302,10 +17888,8 @@ CREATE TABLE imagingStudy_Performer(
 CREATE TABLE imagingStudy_Instance(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	uid TEXT, -- Foreign Key to id table
 	_uid TEXT, -- Foreign Key to element table
 	sopClass TEXT, -- Foreign Key to coding table
@@ -18351,10 +17935,10 @@ CREATE TABLE immunization(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
 	statusReason TEXT, -- Foreign Key to codeableConcept table
@@ -18377,20 +17961,20 @@ CREATE TABLE immunization(
 	expirationDate DATE,
 	_expirationDate TEXT, -- Foreign Key to element table
 	"site" TEXT, -- Foreign Key to codeableConcept table
-	route TEXT, -- Foreign Key to codeableConcept table
+	"route" TEXT, -- Foreign Key to codeableConcept table
 	doseQuantity TEXT, -- Foreign Key to quantity table
-	List performer,
-	List note,
-	List reasonCode,
-	List reasonReference,
+	performer **LIST** Immunization_Performer,
+	note **LIST** Annotation,
+	reasonCode **LIST** CodeableConcept,
+	reasonReference **LIST** Reference,
 	isSubpotent BOOLEAN,
 	_isSubpotent TEXT, -- Foreign Key to element table
-	List subpotentReason,
-	List education,
-	List programEligibility,
+	subpotentReason **LIST** CodeableConcept,
+	education **LIST** Immunization_Education,
+	programEligibility **LIST** CodeableConcept,
 	fundingSource TEXT, -- Foreign Key to codeableConcept table
-	List reaction,
-	List protocolApplied,
+	reaction **LIST** Immunization_Reaction,
+	protocolApplied **LIST** Immunization_ProtocolApplied,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -18487,7 +18071,7 @@ CREATE TABLE immunization(
 			ON DELETE CASCADE
 		ON UPDATE NO ACTION,
 
-	FOREIGN KEY (route)
+	FOREIGN KEY ("route")
 		REFERENCES codeableConcept (id)
 			ON DELETE CASCADE
 		ON UPDATE NO ACTION,
@@ -18512,10 +18096,8 @@ CREATE TABLE immunization(
 CREATE TABLE immunization_Performer(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"function" TEXT, -- Foreign Key to codeableConcept table
 	actor TEXT, -- Foreign Key to reference table
 
@@ -18534,10 +18116,8 @@ CREATE TABLE immunization_Performer(
 CREATE TABLE immunization_Education(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	documentType TEXT,
 	_documentType TEXT, -- Foreign Key to element table
 	reference TEXT,
@@ -18572,10 +18152,8 @@ CREATE TABLE immunization_Education(
 CREATE TABLE immunization_Reaction(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"date" DATETIME,
 	_date TEXT, -- Foreign Key to element table
 	detail TEXT, -- Foreign Key to reference table
@@ -18602,14 +18180,12 @@ CREATE TABLE immunization_Reaction(
 CREATE TABLE immunization_ProtocolApplied(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	series TEXT,
 	_series TEXT, -- Foreign Key to element table
 	authority TEXT, -- Foreign Key to reference table
-	List targetDisease,
+	targetDisease **LIST** CodeableConcept,
 	doseNumberPositiveInt REAL, -- pattern: ^[1-9][0-9]*$
 	_doseNumberPositiveInt TEXT, -- Foreign Key to element table
 	doseNumberString TEXT, -- pattern: ^[ \r\n\t\S]+$
@@ -18661,10 +18237,10 @@ CREATE TABLE immunizationEvaluation(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
 	patient TEXT, -- Foreign Key to reference table
@@ -18674,7 +18250,7 @@ CREATE TABLE immunizationEvaluation(
 	targetDisease TEXT, -- Foreign Key to codeableConcept table
 	immunizationEvent TEXT, -- Foreign Key to reference table
 	doseStatus TEXT, -- Foreign Key to codeableConcept table
-	List doseStatusReason,
+	doseStatusReason **LIST** CodeableConcept,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	series TEXT,
@@ -18785,15 +18361,15 @@ CREATE TABLE immunizationRecommendation(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	patient TEXT, -- Foreign Key to reference table
 	"date" DATETIME,
 	_date TEXT, -- Foreign Key to element table
 	authority TEXT, -- Foreign Key to reference table
-	List recommendation,
+	recommendation **LIST** ImmunizationRecommendation_Recommendation,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -18835,16 +18411,14 @@ CREATE TABLE immunizationRecommendation(
 CREATE TABLE immunizationRecommendation_Recommendation(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List vaccineCode,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	vaccineCode **LIST** CodeableConcept,
 	targetDisease TEXT, -- Foreign Key to codeableConcept table
-	List contraindicatedVaccineCode,
+	contraindicatedVaccineCode **LIST** CodeableConcept,
 	forecastStatus TEXT, -- Foreign Key to codeableConcept table
-	List forecastReason,
-	List dateCriterion,
+	forecastReason **LIST** CodeableConcept,
+	dateCriterion **LIST** ImmunizationRecommendation_DateCriterion,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	series TEXT,
@@ -18857,8 +18431,8 @@ CREATE TABLE immunizationRecommendation_Recommendation(
 	_seriesDosesPositiveInt TEXT, -- Foreign Key to element table
 	seriesDosesString TEXT, -- pattern: ^[ \r\n\t\S]+$
 	_seriesDosesString TEXT, -- Foreign Key to element table
-	List supportingImmunization,
-	List supportingPatientInformation,
+	supportingImmunization **LIST** Reference,
+	supportingPatientInformation **LIST** Reference,
 
 	FOREIGN KEY (targetDisease)
 		REFERENCES codeableConcept (id)
@@ -18905,10 +18479,8 @@ CREATE TABLE immunizationRecommendation_Recommendation(
 CREATE TABLE immunizationRecommendation_DateCriterion(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"value" DATETIME,
 	_value TEXT, -- Foreign Key to element table
@@ -18935,9 +18507,9 @@ CREATE TABLE implementationGuide(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
 	"version" TEXT,
@@ -18954,21 +18526,21 @@ CREATE TABLE implementationGuide(
 	_date TEXT, -- Foreign Key to element table
 	publisher TEXT,
 	_publisher TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactDetail,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List useContext,
-	List jurisdiction,
+	useContext **LIST** UsageContext,
+	jurisdiction **LIST** CodeableConcept,
 	copyright TEXT,
 	_copyright TEXT, -- Foreign Key to element table
 	packageId TEXT, -- Foreign Key to id table
 	_packageId TEXT, -- Foreign Key to element table
 	license TEXT, -- enum: not-open-source/0BSD/AAL/Abstyles/Adobe-2006/Adobe-Glyph/ADSL/AFL-1.1/AFL-1.2/AFL-2.0/AFL-2.1/AFL-3.0/Afmparse/AGPL-1.0-only/AGPL-1.0-or-later/AGPL-3.0-only/AGPL-3.0-or-later/Aladdin/AMDPLPA/AML/AMPAS/ANTLR-PD/Apache-1.0/Apache-1.1/Apache-2.0/APAFML/APL-1.0/APSL-1.0/APSL-1.1/APSL-1.2/APSL-2.0/Artistic-1.0-cl8/Artistic-1.0-Perl/Artistic-1.0/Artistic-2.0/Bahyph/Barr/Beerware/BitTorrent-1.0/BitTorrent-1.1/Borceux/BSD-1-Clause/BSD-2-Clause-FreeBSD/BSD-2-Clause-NetBSD/BSD-2-Clause-Patent/BSD-2-Clause/BSD-3-Clause-Attribution/BSD-3-Clause-Clear/BSD-3-Clause-LBNL/BSD-3-Clause-No-Nuclear-License-2014/BSD-3-Clause-No-Nuclear-License/BSD-3-Clause-No-Nuclear-Warranty/BSD-3-Clause/BSD-4-Clause-UC/BSD-4-Clause/BSD-Protection/BSD-Source-Code/BSL-1.0/bzip2-1.0.5/bzip2-1.0.6/Caldera/CATOSL-1.1/CC-BY-1.0/CC-BY-2.0/CC-BY-2.5/CC-BY-3.0/CC-BY-4.0/CC-BY-NC-1.0/CC-BY-NC-2.0/CC-BY-NC-2.5/CC-BY-NC-3.0/CC-BY-NC-4.0/CC-BY-NC-ND-1.0/CC-BY-NC-ND-2.0/CC-BY-NC-ND-2.5/CC-BY-NC-ND-3.0/CC-BY-NC-ND-4.0/CC-BY-NC-SA-1.0/CC-BY-NC-SA-2.0/CC-BY-NC-SA-2.5/CC-BY-NC-SA-3.0/CC-BY-NC-SA-4.0/CC-BY-ND-1.0/CC-BY-ND-2.0/CC-BY-ND-2.5/CC-BY-ND-3.0/CC-BY-ND-4.0/CC-BY-SA-1.0/CC-BY-SA-2.0/CC-BY-SA-2.5/CC-BY-SA-3.0/CC-BY-SA-4.0/CC0-1.0/CDDL-1.0/CDDL-1.1/CDLA-Permissive-1.0/CDLA-Sharing-1.0/CECILL-1.0/CECILL-1.1/CECILL-2.0/CECILL-2.1/CECILL-B/CECILL-C/ClArtistic/CNRI-Jython/CNRI-Python-GPL-Compatible/CNRI-Python/Condor-1.1/CPAL-1.0/CPL-1.0/CPOL-1.02/Crossword/CrystalStacker/CUA-OPL-1.0/Cube/curl/D-FSL-1.0/diffmark/DOC/Dotseqn/DSDP/dvipdfm/ECL-1.0/ECL-2.0/EFL-1.0/EFL-2.0/eGenix/Entessa/EPL-1.0/EPL-2.0/ErlPL-1.1/EUDatagrid/EUPL-1.0/EUPL-1.1/EUPL-1.2/Eurosym/Fair/Frameworx-1.0/FreeImage/FSFAP/FSFUL/FSFULLR/FTL/GFDL-1.1-only/GFDL-1.1-or-later/GFDL-1.2-only/GFDL-1.2-or-later/GFDL-1.3-only/GFDL-1.3-or-later/Giftware/GL2PS/Glide/Glulxe/gnuplot/GPL-1.0-only/GPL-1.0-or-later/GPL-2.0-only/GPL-2.0-or-later/GPL-3.0-only/GPL-3.0-or-later/gSOAP-1.3b/HaskellReport/HPND/IBM-pibs/ICU/IJG/ImageMagick/iMatix/Imlib2/Info-ZIP/Intel-ACPI/Intel/Interbase-1.0/IPA/IPL-1.0/ISC/JasPer-2.0/JSON/LAL-1.2/LAL-1.3/Latex2e/Leptonica/LGPL-2.0-only/LGPL-2.0-or-later/LGPL-2.1-only/LGPL-2.1-or-later/LGPL-3.0-only/LGPL-3.0-or-later/LGPLLR/Libpng/libtiff/LiLiQ-P-1.1/LiLiQ-R-1.1/LiLiQ-Rplus-1.1/Linux-OpenIB/LPL-1.0/LPL-1.02/LPPL-1.0/LPPL-1.1/LPPL-1.2/LPPL-1.3a/LPPL-1.3c/MakeIndex/MirOS/MIT-0/MIT-advertising/MIT-CMU/MIT-enna/MIT-feh/MIT/MITNFA/Motosoto/mpich2/MPL-1.0/MPL-1.1/MPL-2.0-no-copyleft-exception/MPL-2.0/MS-PL/MS-RL/MTLL/Multics/Mup/NASA-1.3/Naumen/NBPL-1.0/NCSA/Net-SNMP/NetCDF/Newsletr/NGPL/NLOD-1.0/NLPL/Nokia/NOSL/Noweb/NPL-1.0/NPL-1.1/NPOSL-3.0/NRL/NTP/OCCT-PL/OCLC-2.0/ODbL-1.0/OFL-1.0/OFL-1.1/OGTSL/OLDAP-1.1/OLDAP-1.2/OLDAP-1.3/OLDAP-1.4/OLDAP-2.0.1/OLDAP-2.0/OLDAP-2.1/OLDAP-2.2.1/OLDAP-2.2.2/OLDAP-2.2/OLDAP-2.3/OLDAP-2.4/OLDAP-2.5/OLDAP-2.6/OLDAP-2.7/OLDAP-2.8/OML/OpenSSL/OPL-1.0/OSET-PL-2.1/OSL-1.0/OSL-1.1/OSL-2.0/OSL-2.1/OSL-3.0/PDDL-1.0/PHP-3.0/PHP-3.01/Plexus/PostgreSQL/psfrag/psutils/Python-2.0/Qhull/QPL-1.0/Rdisc/RHeCos-1.1/RPL-1.1/RPL-1.5/RPSL-1.0/RSA-MD/RSCPL/Ruby/SAX-PD/Saxpath/SCEA/Sendmail/SGI-B-1.0/SGI-B-1.1/SGI-B-2.0/SimPL-2.0/SISSL-1.2/SISSL/Sleepycat/SMLNJ/SMPPL/SNIA/Spencer-86/Spencer-94/Spencer-99/SPL-1.0/SugarCRM-1.1.3/SWL/TCL/TCP-wrappers/TMate/TORQUE-1.1/TOSL/Unicode-DFS-2015/Unicode-DFS-2016/Unicode-TOU/Unlicense/UPL-1.0/Vim/VOSTROM/VSL-1.0/W3C-19980720/W3C-20150513/W3C/Watcom-1.0/Wsuipa/WTFPL/X11/Xerox/XFree86-1.1/xinetd/Xnet/xpp/XSkat/YPL-1.0/YPL-1.1/Zed/Zend-2.0/Zimbra-1.3/Zimbra-1.4/zlib-acknowledgement/Zlib/ZPL-1.1/ZPL-2.0/ZPL-2.1
 	_license TEXT, -- Foreign Key to element table
-	List fhirVersion,
-	List _fhirVersion,
-	List dependsOn,
-	List global,
+	fhirVersion **LIST** enum, -- 0.01/0.05/0.06/0.11/0.0.80/0.0.81/0.0.82/0.4.0/0.5.0/1.0.0/1.0.1/1.0.2/1.1.0/1.4.0/1.6.0/1.8.0/3.0.0/3.0.1/3.3.0/3.5.0/4.0.0/4.0.1,
+	_fhirVersion **LIST** Element,
+	dependsOn **LIST** ImplementationGuide_DependsOn,
+	"global" **LIST** ImplementationGuide_Global,
 	"definition" TEXT, -- Foreign Key to implementationGuide_Definition table
 	manifest TEXT, -- Foreign Key to implementationGuide_Manifest table
 
@@ -19072,10 +18644,8 @@ CREATE TABLE implementationGuide(
 CREATE TABLE implementationGuide_DependsOn(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	uri TEXT,
 	packageId TEXT, -- Foreign Key to id table
 	_packageId TEXT, -- Foreign Key to element table
@@ -19102,10 +18672,8 @@ CREATE TABLE implementationGuide_DependsOn(
 CREATE TABLE implementationGuide_Global(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT,
 	_type TEXT, -- Foreign Key to element table
 	"profile" TEXT,
@@ -19120,15 +18688,13 @@ CREATE TABLE implementationGuide_Global(
 CREATE TABLE implementationGuide_Definition(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List grouping,
-	List resource,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	grouping **LIST** ImplementationGuide_Grouping,
+	"resource" **LIST** ImplementationGuide_Resource,
 	page TEXT, -- Foreign Key to implementationGuide_Page table
-	List parameter,
-	List template,
+	"parameter" **LIST** ImplementationGuide_Parameter,
+	template **LIST** ImplementationGuide_Template,
 
 	FOREIGN KEY (page)
 		REFERENCES implementationGuide_Page (id)
@@ -19140,10 +18706,8 @@ CREATE TABLE implementationGuide_Definition(
 CREATE TABLE implementationGuide_Grouping(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	"description" TEXT,
@@ -19164,13 +18728,11 @@ CREATE TABLE implementationGuide_Grouping(
 CREATE TABLE implementationGuide_Resource(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	reference TEXT, -- Foreign Key to reference table
-	List fhirVersion,
-	List _fhirVersion,
+	fhirVersion **LIST** enum, -- 0.01/0.05/0.06/0.11/0.0.80/0.0.81/0.0.82/0.4.0/0.5.0/1.0.0/1.0.1/1.0.2/1.1.0/1.4.0/1.6.0/1.8.0/3.0.0/3.0.1/3.3.0/3.5.0/4.0.0/4.0.1,
+	_fhirVersion **LIST** Element,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	"description" TEXT,
@@ -19222,10 +18784,8 @@ CREATE TABLE implementationGuide_Resource(
 CREATE TABLE implementationGuide_Page(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	nameUrl TEXT, -- pattern: ^\S*$
 	_nameUrl TEXT, -- Foreign Key to element table
 	nameReference TEXT, -- Foreign Key to reference table
@@ -19233,7 +18793,7 @@ CREATE TABLE implementationGuide_Page(
 	_title TEXT, -- Foreign Key to element table
 	generation TEXT, -- enum: html/markdown/xml/generated
 	_generation TEXT, -- Foreign Key to element table
-	List page,
+	page **LIST** ImplementationGuide_Page,
 
 	FOREIGN KEY (_nameUrl)
 		REFERENCES element (id)
@@ -19260,10 +18820,8 @@ CREATE TABLE implementationGuide_Page(
 CREATE TABLE implementationGuide_Parameter(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT, -- enum: apply/path-resource/path-pages/path-tx-cache/expansion-parameter/rule-broken-links/generate-xml/generate-json/generate-turtle/html-template
 	_code TEXT, -- Foreign Key to element table
 	"value" TEXT,
@@ -19284,10 +18842,8 @@ CREATE TABLE implementationGuide_Parameter(
 CREATE TABLE implementationGuide_Template(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT,
 	_code TEXT, -- Foreign Key to element table
 	"source" TEXT,
@@ -19315,18 +18871,16 @@ CREATE TABLE implementationGuide_Template(
 CREATE TABLE implementationGuide_Manifest(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	rendering TEXT,
 	_rendering TEXT, -- Foreign Key to element table
-	List resource,
-	List page,
-	List image,
-	List _image,
-	List other,
-	List _other,
+	"resource" **LIST** ImplementationGuide_Resource1,
+	page **LIST** ImplementationGuide_Page1,
+	"image" **LIST** string,
+	_image **LIST** Element,
+	other **LIST** string,
+	_other **LIST** Element,
 
 	FOREIGN KEY (_rendering)
 		REFERENCES element (id)
@@ -19338,10 +18892,8 @@ CREATE TABLE implementationGuide_Manifest(
 CREATE TABLE implementationGuide_Resource1(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	reference TEXT, -- Foreign Key to reference table
 	exampleBoolean BOOLEAN, -- pattern: ^true|false$
 	_exampleBoolean TEXT, -- Foreign Key to element table
@@ -19375,16 +18927,14 @@ CREATE TABLE implementationGuide_Resource1(
 CREATE TABLE implementationGuide_Page1(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	title TEXT,
 	_title TEXT, -- Foreign Key to element table
-	List anchor,
-	List _anchor,
+	anchor **LIST** string,
+	_anchor **LIST** Element,
 
 	FOREIGN KEY (_name)
 		REFERENCES element (id)
@@ -19408,26 +18958,26 @@ CREATE TABLE insurancePlan(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT, -- enum: draft/active/retired/unknown
 	_status TEXT, -- Foreign Key to element table
-	List type,
+	"type" **LIST** CodeableConcept,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
-	List alias,
-	List _alias,
+	alias **LIST** string,
+	_alias **LIST** Element,
 	"period" TEXT, -- Foreign Key to period table
 	ownedBy TEXT, -- Foreign Key to reference table
 	administeredBy TEXT, -- Foreign Key to reference table
-	List coverageArea,
-	List contact,
-	List endpoint,
-	List network,
-	List coverage,
-	List plan,
+	coverageArea **LIST** Reference,
+	contact **LIST** InsurancePlan_Contact,
+	"endpoint" **LIST** Reference,
+	network **LIST** Reference,
+	coverage **LIST** InsurancePlan_Coverage,
+	"plan" **LIST** InsurancePlan_Plan,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -19479,13 +19029,11 @@ CREATE TABLE insurancePlan(
 CREATE TABLE insurancePlan_Contact(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	purpose TEXT, -- Foreign Key to codeableConcept table
 	"name" TEXT, -- Foreign Key to humanName table
-	List telecom,
+	telecom **LIST** ContactPoint,
 	"address" TEXT, -- Foreign Key to address table
 
 	FOREIGN KEY (purpose)
@@ -19508,13 +19056,11 @@ CREATE TABLE insurancePlan_Contact(
 CREATE TABLE insurancePlan_Coverage(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
-	List network,
-	List benefit,
+	network **LIST** Reference,
+	benefit **LIST** InsurancePlan_Benefit,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -19526,14 +19072,12 @@ CREATE TABLE insurancePlan_Coverage(
 CREATE TABLE insurancePlan_Benefit(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	requirement TEXT,
 	_requirement TEXT, -- Foreign Key to element table
-	List limit,
+	"limit" **LIST** InsurancePlan_Limit,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -19550,10 +19094,8 @@ CREATE TABLE insurancePlan_Benefit(
 CREATE TABLE insurancePlan_Limit(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"value" TEXT, -- Foreign Key to quantity table
 	"code" TEXT, -- Foreign Key to codeableConcept table
 
@@ -19572,16 +19114,14 @@ CREATE TABLE insurancePlan_Limit(
 CREATE TABLE insurancePlan_Plan(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List identifier,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"type" TEXT, -- Foreign Key to codeableConcept table
-	List coverageArea,
-	List network,
-	List generalCost,
-	List specificCost,
+	coverageArea **LIST** Reference,
+	network **LIST** Reference,
+	generalCost **LIST** InsurancePlan_GeneralCost,
+	specificCost **LIST** InsurancePlan_SpecificCost,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -19593,10 +19133,8 @@ CREATE TABLE insurancePlan_Plan(
 CREATE TABLE insurancePlan_GeneralCost(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	groupSize INTEGER,
 	_groupSize TEXT, -- Foreign Key to element table
@@ -19629,12 +19167,10 @@ CREATE TABLE insurancePlan_GeneralCost(
 CREATE TABLE insurancePlan_SpecificCost(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	category TEXT, -- Foreign Key to codeableConcept table
-	List benefit,
+	benefit **LIST** InsurancePlan_Benefit1,
 
 	FOREIGN KEY (category)
 		REFERENCES codeableConcept (id)
@@ -19646,12 +19182,10 @@ CREATE TABLE insurancePlan_SpecificCost(
 CREATE TABLE insurancePlan_Benefit1(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
-	List cost,
+	cost **LIST** InsurancePlan_Cost,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -19663,13 +19197,11 @@ CREATE TABLE insurancePlan_Benefit1(
 CREATE TABLE insurancePlan_Cost(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	applicability TEXT, -- Foreign Key to codeableConcept table
-	List qualifiers,
+	qualifiers **LIST** CodeableConcept,
 	"value" TEXT, -- Foreign Key to quantity table
 
 	FOREIGN KEY ("type")
@@ -19699,10 +19231,10 @@ CREATE TABLE invoice(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT, -- enum: draft/issued/balanced/cancelled/entered-in-error
 	_status TEXT, -- Foreign Key to element table
 	cancelledReason TEXT,
@@ -19712,16 +19244,16 @@ CREATE TABLE invoice(
 	recipient TEXT, -- Foreign Key to reference table
 	"date" DATETIME,
 	_date TEXT, -- Foreign Key to element table
-	List participant,
+	participant **LIST** Invoice_Participant,
 	issuer TEXT, -- Foreign Key to reference table
 	account TEXT, -- Foreign Key to reference table
-	List lineItem,
-	List totalPriceComponent,
+	lineItem **LIST** Invoice_LineItem,
+	totalPriceComponent **LIST** Invoice_PriceComponent,
 	totalNet TEXT, -- Foreign Key to money table
 	totalGross TEXT, -- Foreign Key to money table
 	paymentTerms TEXT,
 	_paymentTerms TEXT, -- Foreign Key to element table
-	List note,
+	note **LIST** Annotation,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -19803,10 +19335,8 @@ CREATE TABLE invoice(
 CREATE TABLE invoice_Participant(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"role" TEXT, -- Foreign Key to codeableConcept table
 	actor TEXT, -- Foreign Key to reference table
 
@@ -19825,15 +19355,13 @@ CREATE TABLE invoice_Participant(
 CREATE TABLE invoice_LineItem(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"sequence" INTEGER,
 	_sequence TEXT, -- Foreign Key to element table
 	chargeItemReference TEXT, -- Foreign Key to reference table
 	chargeItemCodeableConcept TEXT, -- Foreign Key to codeableConcept table
-	List priceComponent,
+	priceComponent **LIST** Invoice_PriceComponent,
 
 	FOREIGN KEY (_sequence)
 		REFERENCES element (id)
@@ -19855,10 +19383,8 @@ CREATE TABLE invoice_LineItem(
 CREATE TABLE invoice_PriceComponent(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- enum: base/surcharge/deduction/discount/tax/informational
 	_type TEXT, -- Foreign Key to element table
 	"code" TEXT, -- Foreign Key to codeableConcept table
@@ -19898,12 +19424,12 @@ CREATE TABLE library(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
-	List identifier,
+	identifier **LIST** Identifier,
 	"version" TEXT,
 	_version TEXT, -- Foreign Key to element table
 	"name" TEXT,
@@ -19923,11 +19449,11 @@ CREATE TABLE library(
 	_date TEXT, -- Foreign Key to element table
 	publisher TEXT,
 	_publisher TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactDetail,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List useContext,
-	List jurisdiction,
+	useContext **LIST** UsageContext,
+	jurisdiction **LIST** CodeableConcept,
 	purpose TEXT,
 	_purpose TEXT, -- Foreign Key to element table
 	"usage" TEXT,
@@ -19939,15 +19465,15 @@ CREATE TABLE library(
 	lastReviewDate DATE,
 	_lastReviewDate TEXT, -- Foreign Key to element table
 	effectivePeriod TEXT, -- Foreign Key to period table
-	List topic,
-	List author,
-	List editor,
-	List reviewer,
-	List endorser,
-	List relatedArtifact,
-	List parameter,
-	List dataRequirement,
-	List content,
+	topic **LIST** CodeableConcept,
+	author **LIST** ContactDetail,
+	editor **LIST** ContactDetail,
+	reviewer **LIST** ContactDetail,
+	endorser **LIST** ContactDetail,
+	relatedArtifact **LIST** RelatedArtifact,
+	"parameter" **LIST** ParameterDefinition,
+	dataRequirement **LIST** DataRequirement,
+	content **LIST** Attachment,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -20076,13 +19602,13 @@ CREATE TABLE linkage(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	active BOOLEAN,
 	_active TEXT, -- Foreign Key to element table
 	author TEXT, -- Foreign Key to reference table
-	List item,
+	item **LIST** Linkage_Item,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -20119,20 +19645,18 @@ CREATE TABLE linkage(
 CREATE TABLE linkage_Item(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- enum: source/alternate/historical
 	_type TEXT, -- Foreign Key to element table
-	resource TEXT, -- Foreign Key to reference table
+	"resource" TEXT, -- Foreign Key to reference table
 
 	FOREIGN KEY (_type)
 		REFERENCES element (id)
 			ON DELETE CASCADE
 		ON UPDATE NO ACTION,
 
-	FOREIGN KEY (resource)
+	FOREIGN KEY ("resource")
 		REFERENCES reference (id)
 			ON DELETE CASCADE
 		ON UPDATE NO ACTION
@@ -20149,10 +19673,10 @@ CREATE TABLE list(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT, -- enum: current/retired/entered-in-error
 	_status TEXT, -- Foreign Key to element table
 	mode TEXT, -- enum: working/snapshot/changes
@@ -20166,8 +19690,8 @@ CREATE TABLE list(
 	_date TEXT, -- Foreign Key to element table
 	"source" TEXT, -- Foreign Key to reference table
 	orderedBy TEXT, -- Foreign Key to codeableConcept table
-	List note,
-	List entry,
+	note **LIST** Annotation,
+	entry **LIST** List_Entry,
 	emptyReason TEXT, -- Foreign Key to codeableConcept table
 
 	FOREIGN KEY (meta)
@@ -20245,10 +19769,8 @@ CREATE TABLE list(
 CREATE TABLE list_Entry(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	flag TEXT, -- Foreign Key to codeableConcept table
 	deleted BOOLEAN,
 	_deleted TEXT, -- Foreign Key to element table
@@ -20288,32 +19810,32 @@ CREATE TABLE "location"(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT, -- enum: active/suspended/inactive
 	_status TEXT, -- Foreign Key to element table
 	operationalStatus TEXT, -- Foreign Key to coding table
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
-	List alias,
-	List _alias,
+	alias **LIST** string,
+	_alias **LIST** Element,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	mode TEXT, -- enum: instance/kind
 	_mode TEXT, -- Foreign Key to element table
-	List type,
-	List telecom,
+	"type" **LIST** CodeableConcept,
+	telecom **LIST** ContactPoint,
 	"address" TEXT, -- Foreign Key to address table
 	physicalType TEXT, -- Foreign Key to codeableConcept table
 	"position" TEXT, -- Foreign Key to location_Position table
 	managingOrganization TEXT, -- Foreign Key to reference table
 	partOf TEXT, -- Foreign Key to reference table
-	List hoursOfOperation,
+	hoursOfOperation **LIST** Location_HoursOfOperation,
 	availabilityExceptions TEXT,
 	_availabilityExceptions TEXT, -- Foreign Key to element table
-	List endpoint,
+	"endpoint" **LIST** Reference,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -20395,10 +19917,8 @@ CREATE TABLE "location"(
 CREATE TABLE location_Position(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	longitude REAL,
 	_longitude TEXT, -- Foreign Key to element table
 	latitude REAL,
@@ -20426,12 +19946,10 @@ CREATE TABLE location_Position(
 CREATE TABLE location_HoursOfOperation(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List daysOfWeek,
-	List _daysOfWeek,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	daysOfWeek **LIST** code,
+	_daysOfWeek **LIST** Element,
 	allDay BOOLEAN,
 	_allDay TEXT, -- Foreign Key to element table
 	openingTime TIME,
@@ -20466,12 +19984,12 @@ CREATE TABLE measure(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
-	List identifier,
+	identifier **LIST** Identifier,
 	"version" TEXT,
 	_version TEXT, -- Foreign Key to element table
 	"name" TEXT,
@@ -20490,11 +20008,11 @@ CREATE TABLE measure(
 	_date TEXT, -- Foreign Key to element table
 	publisher TEXT,
 	_publisher TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactDetail,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List useContext,
-	List jurisdiction,
+	useContext **LIST** UsageContext,
+	jurisdiction **LIST** CodeableConcept,
 	purpose TEXT,
 	_purpose TEXT, -- Foreign Key to element table
 	"usage" TEXT,
@@ -20506,18 +20024,18 @@ CREATE TABLE measure(
 	lastReviewDate DATE,
 	_lastReviewDate TEXT, -- Foreign Key to element table
 	effectivePeriod TEXT, -- Foreign Key to period table
-	List topic,
-	List author,
-	List editor,
-	List reviewer,
-	List endorser,
-	List relatedArtifact,
-	List library,
+	topic **LIST** CodeableConcept,
+	author **LIST** ContactDetail,
+	editor **LIST** ContactDetail,
+	reviewer **LIST** ContactDetail,
+	endorser **LIST** ContactDetail,
+	relatedArtifact **LIST** RelatedArtifact,
+	library **LIST** canonical,
 	disclaimer TEXT,
 	_disclaimer TEXT, -- Foreign Key to element table
 	scoring TEXT, -- Foreign Key to codeableConcept table
 	compositeScoring TEXT, -- Foreign Key to codeableConcept table
-	List type,
+	"type" **LIST** CodeableConcept,
 	riskAdjustment TEXT,
 	_riskAdjustment TEXT, -- Foreign Key to element table
 	rateAggregation TEXT,
@@ -20527,12 +20045,12 @@ CREATE TABLE measure(
 	clinicalRecommendationStatement TEXT,
 	_clinicalRecommendationStatement TEXT, -- Foreign Key to element table
 	improvementNotation TEXT, -- Foreign Key to codeableConcept table
-	List definition,
-	List _definition,
+	"definition" **LIST** markdown,
+	_definition **LIST** Element,
 	guidance TEXT,
 	_guidance TEXT, -- Foreign Key to element table
-	List group,
-	List supplementalData,
+	"group" **LIST** Measure_Group,
+	supplementalData **LIST** Measure_SupplementalData,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -20694,15 +20212,13 @@ CREATE TABLE measure(
 CREATE TABLE measure_Group(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List population,
-	List stratifier,
+	"population" **LIST** Measure_Population,
+	stratifier **LIST** Measure_Stratifier,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -20719,10 +20235,8 @@ CREATE TABLE measure_Group(
 CREATE TABLE measure_Population(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
@@ -20748,15 +20262,13 @@ CREATE TABLE measure_Population(
 CREATE TABLE measure_Stratifier(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	criteria TEXT, -- Foreign Key to expression table
-	List component,
+	component **LIST** Measure_Component,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -20778,10 +20290,8 @@ CREATE TABLE measure_Stratifier(
 CREATE TABLE measure_Component(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
@@ -20807,12 +20317,10 @@ CREATE TABLE measure_Component(
 CREATE TABLE measure_SupplementalData(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
-	List usage,
+	"usage" **LIST** CodeableConcept,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	criteria TEXT, -- Foreign Key to expression table
@@ -20844,10 +20352,10 @@ CREATE TABLE measureReport(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT, -- enum: complete/pending/error
 	_status TEXT, -- Foreign Key to element table
 	"type" TEXT, -- enum: individual/subject-list/summary/data-collection
@@ -20859,8 +20367,8 @@ CREATE TABLE measureReport(
 	reporter TEXT, -- Foreign Key to reference table
 	"period" TEXT, -- Foreign Key to period table
 	improvementNotation TEXT, -- Foreign Key to codeableConcept table
-	List group,
-	List evaluatedResource,
+	"group" **LIST** MeasureReport_Group,
+	evaluatedResource **LIST** Reference,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -20922,14 +20430,12 @@ CREATE TABLE measureReport(
 CREATE TABLE measureReport_Group(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
-	List population,
+	"population" **LIST** MeasureReport_Population,
 	measureScore TEXT, -- Foreign Key to quantity table
-	List stratifier,
+	stratifier **LIST** MeasureReport_Stratifier,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -20946,10 +20452,8 @@ CREATE TABLE measureReport_Group(
 CREATE TABLE measureReport_Population(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"count" INTEGER,
 	_count TEXT, -- Foreign Key to element table
@@ -20975,25 +20479,21 @@ CREATE TABLE measureReport_Population(
 CREATE TABLE measureReport_Stratifier(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List code,
-	List stratum
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	"code" **LIST** CodeableConcept,
+	stratum **LIST** MeasureReport_Stratum
 
 );
 
 CREATE TABLE measureReport_Stratum(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"value" TEXT, -- Foreign Key to codeableConcept table
-	List component,
-	List population,
+	component **LIST** MeasureReport_Component,
+	"population" **LIST** MeasureReport_Population1,
 	measureScore TEXT, -- Foreign Key to quantity table
 
 	FOREIGN KEY ("value")
@@ -21011,10 +20511,8 @@ CREATE TABLE measureReport_Stratum(
 CREATE TABLE measureReport_Component(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"value" TEXT, -- Foreign Key to codeableConcept table
 
@@ -21033,10 +20531,8 @@ CREATE TABLE measureReport_Component(
 CREATE TABLE measureReport_Population1(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"count" INTEGER,
 	_count TEXT, -- Foreign Key to element table
@@ -21069,12 +20565,12 @@ CREATE TABLE media(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
-	List basedOn,
-	List partOf,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
+	basedOn **LIST** Reference,
+	partOf **LIST** Reference,
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to codeableConcept table
@@ -21088,7 +20584,7 @@ CREATE TABLE media(
 	issued DATETIME,
 	_issued TEXT, -- Foreign Key to element table
 	operator TEXT, -- Foreign Key to reference table
-	List reasonCode,
+	reasonCode **LIST** CodeableConcept,
 	bodySite TEXT, -- Foreign Key to codeableConcept table
 	deviceName TEXT,
 	_deviceName TEXT, -- Foreign Key to element table
@@ -21102,7 +20598,7 @@ CREATE TABLE media(
 	duration REAL,
 	_duration TEXT, -- Foreign Key to element table
 	content TEXT, -- Foreign Key to attachment table
-	List note,
+	note **LIST** Annotation,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -21226,17 +20722,17 @@ CREATE TABLE medication(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
 	manufacturer TEXT, -- Foreign Key to reference table
 	form TEXT, -- Foreign Key to codeableConcept table
 	amount TEXT, -- Foreign Key to ratio table
-	List ingredient,
+	ingredient **LIST** Medication_Ingredient,
 	batch TEXT, -- Foreign Key to medication_Batch table
 
 	FOREIGN KEY (meta)
@@ -21294,10 +20790,8 @@ CREATE TABLE medication(
 CREATE TABLE medication_Ingredient(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	itemCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	itemReference TEXT, -- Foreign Key to reference table
 	isActive BOOLEAN,
@@ -21329,10 +20823,8 @@ CREATE TABLE medication_Ingredient(
 CREATE TABLE medication_Batch(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	lotNumber TEXT,
 	_lotNumber TEXT, -- Foreign Key to element table
 	expirationDate DATETIME,
@@ -21360,33 +20852,33 @@ CREATE TABLE medicationAdministration(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
-	List instantiates,
-	List _instantiates,
-	List partOf,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
+	instantiates **LIST** uri,
+	_instantiates **LIST** Element,
+	partOf **LIST** Reference,
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
-	List statusReason,
+	statusReason **LIST** CodeableConcept,
 	category TEXT, -- Foreign Key to codeableConcept table
 	medicationCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	medicationReference TEXT, -- Foreign Key to reference table
 	"subject" TEXT, -- Foreign Key to reference table
 	context TEXT, -- Foreign Key to reference table
-	List supportingInformation,
+	supportingInformation **LIST** Reference,
 	effectiveDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 	_effectiveDateTime TEXT, -- Foreign Key to element table
 	effectivePeriod TEXT, -- Foreign Key to period table
-	List performer,
-	List reasonCode,
-	List reasonReference,
+	performer **LIST** MedicationAdministration_Performer,
+	reasonCode **LIST** CodeableConcept,
+	reasonReference **LIST** Reference,
 	request TEXT, -- Foreign Key to reference table
-	List device,
-	List note,
+	device **LIST** Reference,
+	note **LIST** Annotation,
 	dosage TEXT, -- Foreign Key to medicationAdministration_Dosage table
-	List eventHistory,
+	eventHistory **LIST** Reference,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -21463,10 +20955,8 @@ CREATE TABLE medicationAdministration(
 CREATE TABLE medicationAdministration_Performer(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"function" TEXT, -- Foreign Key to codeableConcept table
 	actor TEXT, -- Foreign Key to reference table
 
@@ -21485,14 +20975,12 @@ CREATE TABLE medicationAdministration_Performer(
 CREATE TABLE medicationAdministration_Dosage(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"text" TEXT,
 	_text TEXT, -- Foreign Key to element table
 	"site" TEXT, -- Foreign Key to codeableConcept table
-	route TEXT, -- Foreign Key to codeableConcept table
+	"route" TEXT, -- Foreign Key to codeableConcept table
 	"method" TEXT, -- Foreign Key to codeableConcept table
 	dose TEXT, -- Foreign Key to quantity table
 	rateRatio TEXT, -- Foreign Key to ratio table
@@ -21508,7 +20996,7 @@ CREATE TABLE medicationAdministration_Dosage(
 			ON DELETE CASCADE
 		ON UPDATE NO ACTION,
 
-	FOREIGN KEY (route)
+	FOREIGN KEY ("route")
 		REFERENCES codeableConcept (id)
 			ON DELETE CASCADE
 		ON UPDATE NO ACTION,
@@ -21545,11 +21033,11 @@ CREATE TABLE medicationDispense(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
-	List partOf,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
+	partOf **LIST** Reference,
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
 	statusReasonCodeableConcept TEXT, -- Foreign Key to codeableConcept table
@@ -21559,10 +21047,10 @@ CREATE TABLE medicationDispense(
 	medicationReference TEXT, -- Foreign Key to reference table
 	"subject" TEXT, -- Foreign Key to reference table
 	context TEXT, -- Foreign Key to reference table
-	List supportingInformation,
-	List performer,
+	supportingInformation **LIST** Reference,
+	performer **LIST** MedicationDispense_Performer,
 	"location" TEXT, -- Foreign Key to reference table
-	List authorizingPrescription,
+	authorizingPrescription **LIST** Reference,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	quantity TEXT, -- Foreign Key to quantity table
 	daysSupply TEXT, -- Foreign Key to quantity table
@@ -21571,12 +21059,12 @@ CREATE TABLE medicationDispense(
 	whenHandedOver DATETIME,
 	_whenHandedOver TEXT, -- Foreign Key to element table
 	destination TEXT, -- Foreign Key to reference table
-	List receiver,
-	List note,
-	List dosageInstruction,
+	receiver **LIST** Reference,
+	note **LIST** Annotation,
+	dosageInstruction **LIST** Dosage,
 	substitution TEXT, -- Foreign Key to medicationDispense_Substitution table
-	List detectedIssue,
-	List eventHistory,
+	detectedIssue **LIST** Reference,
+	eventHistory **LIST** Reference,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -21683,10 +21171,8 @@ CREATE TABLE medicationDispense(
 CREATE TABLE medicationDispense_Performer(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"function" TEXT, -- Foreign Key to codeableConcept table
 	actor TEXT, -- Foreign Key to reference table
 
@@ -21705,15 +21191,13 @@ CREATE TABLE medicationDispense_Performer(
 CREATE TABLE medicationDispense_Substitution(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	wasSubstituted BOOLEAN,
 	_wasSubstituted TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to codeableConcept table
-	List reason,
-	List responsibleParty,
+	reason **LIST** CodeableConcept,
+	responsibleParty **LIST** Reference,
 
 	FOREIGN KEY (_wasSubstituted)
 		REFERENCES element (id)
@@ -21737,34 +21221,34 @@ CREATE TABLE medicationKnowledge(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
 	manufacturer TEXT, -- Foreign Key to reference table
 	doseForm TEXT, -- Foreign Key to codeableConcept table
 	amount TEXT, -- Foreign Key to quantity table
-	List synonym,
-	List _synonym,
-	List relatedMedicationKnowledge,
-	List associatedMedication,
-	List productType,
-	List monograph,
-	List ingredient,
+	"synonym" **LIST** string,
+	_synonym **LIST** Element,
+	relatedMedicationKnowledge **LIST** MedicationKnowledge_RelatedMedicationKnowledge,
+	associatedMedication **LIST** Reference,
+	productType **LIST** CodeableConcept,
+	monograph **LIST** MedicationKnowledge_Monograph,
+	ingredient **LIST** MedicationKnowledge_Ingredient,
 	preparationInstruction TEXT,
 	_preparationInstruction TEXT, -- Foreign Key to element table
-	List intendedRoute,
-	List cost,
-	List monitoringProgram,
-	List administrationGuidelines,
-	List medicineClassification,
+	intendedRoute **LIST** CodeableConcept,
+	cost **LIST** MedicationKnowledge_Cost,
+	monitoringProgram **LIST** MedicationKnowledge_MonitoringProgram,
+	administrationGuidelines **LIST** MedicationKnowledge_AdministrationGuidelines,
+	medicineClassification **LIST** MedicationKnowledge_MedicineClassification,
 	packaging TEXT, -- Foreign Key to medicationKnowledge_Packaging table
-	List drugCharacteristic,
-	List contraindication,
-	List regulatory,
-	List kinetics,
+	drugCharacteristic **LIST** MedicationKnowledge_DrugCharacteristic,
+	contraindication **LIST** Reference,
+	regulatory **LIST** MedicationKnowledge_Regulatory,
+	kinetics **LIST** MedicationKnowledge_Kinetics,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -21826,12 +21310,10 @@ CREATE TABLE medicationKnowledge(
 CREATE TABLE medicationKnowledge_RelatedMedicationKnowledge(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
-	List reference,
+	reference **LIST** Reference,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -21843,10 +21325,8 @@ CREATE TABLE medicationKnowledge_RelatedMedicationKnowledge(
 CREATE TABLE medicationKnowledge_Monograph(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	"source" TEXT, -- Foreign Key to reference table
 
@@ -21865,10 +21345,8 @@ CREATE TABLE medicationKnowledge_Monograph(
 CREATE TABLE medicationKnowledge_Ingredient(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	itemCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	itemReference TEXT, -- Foreign Key to reference table
 	isActive BOOLEAN,
@@ -21900,10 +21378,8 @@ CREATE TABLE medicationKnowledge_Ingredient(
 CREATE TABLE medicationKnowledge_Cost(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	"source" TEXT,
 	_source TEXT, -- Foreign Key to element table
@@ -21929,10 +21405,8 @@ CREATE TABLE medicationKnowledge_Cost(
 CREATE TABLE medicationKnowledge_MonitoringProgram(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
@@ -21952,14 +21426,12 @@ CREATE TABLE medicationKnowledge_MonitoringProgram(
 CREATE TABLE medicationKnowledge_AdministrationGuidelines(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List dosage,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	dosage **LIST** MedicationKnowledge_Dosage,
 	indicationCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	indicationReference TEXT, -- Foreign Key to reference table
-	List patientCharacteristics,
+	patientCharacteristics **LIST** MedicationKnowledge_PatientCharacteristics,
 
 	FOREIGN KEY (indicationCodeableConcept)
 		REFERENCES codeableConcept (id)
@@ -21976,12 +21448,10 @@ CREATE TABLE medicationKnowledge_AdministrationGuidelines(
 CREATE TABLE medicationKnowledge_Dosage(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
-	List dosage,
+	dosage **LIST** Dosage,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -21993,14 +21463,12 @@ CREATE TABLE medicationKnowledge_Dosage(
 CREATE TABLE medicationKnowledge_PatientCharacteristics(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	characteristicCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	characteristicQuantity TEXT, -- Foreign Key to quantity table
-	List value,
-	List _value,
+	"value" **LIST** string,
+	_value **LIST** Element,
 
 	FOREIGN KEY (characteristicCodeableConcept)
 		REFERENCES codeableConcept (id)
@@ -22017,12 +21485,10 @@ CREATE TABLE medicationKnowledge_PatientCharacteristics(
 CREATE TABLE medicationKnowledge_MedicineClassification(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
-	List classification,
+	classification **LIST** CodeableConcept,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -22034,10 +21500,8 @@ CREATE TABLE medicationKnowledge_MedicineClassification(
 CREATE TABLE medicationKnowledge_Packaging(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	quantity TEXT, -- Foreign Key to quantity table
 
@@ -22056,10 +21520,8 @@ CREATE TABLE medicationKnowledge_Packaging(
 CREATE TABLE medicationKnowledge_DrugCharacteristic(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	valueCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	valueString TEXT, -- pattern: ^[ \r\n\t\S]+$
@@ -22098,13 +21560,11 @@ CREATE TABLE medicationKnowledge_DrugCharacteristic(
 CREATE TABLE medicationKnowledge_Regulatory(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	regulatoryAuthority TEXT, -- Foreign Key to reference table
-	List substitution,
-	List schedule,
+	substitution **LIST** MedicationKnowledge_Substitution,
+	schedule **LIST** MedicationKnowledge_Schedule,
 	maxDispense TEXT, -- Foreign Key to medicationKnowledge_MaxDispense table
 
 	FOREIGN KEY (regulatoryAuthority)
@@ -22122,10 +21582,8 @@ CREATE TABLE medicationKnowledge_Regulatory(
 CREATE TABLE medicationKnowledge_Substitution(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	allowed BOOLEAN,
 	_allowed TEXT, -- Foreign Key to element table
@@ -22145,10 +21603,8 @@ CREATE TABLE medicationKnowledge_Substitution(
 CREATE TABLE medicationKnowledge_Schedule(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	schedule TEXT, -- Foreign Key to codeableConcept table
 
 	FOREIGN KEY (schedule)
@@ -22161,10 +21617,8 @@ CREATE TABLE medicationKnowledge_Schedule(
 CREATE TABLE medicationKnowledge_MaxDispense(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	quantity TEXT, -- Foreign Key to quantity table
 	"period" TEXT, -- Foreign Key to duration table
 
@@ -22183,12 +21637,10 @@ CREATE TABLE medicationKnowledge_MaxDispense(
 CREATE TABLE medicationKnowledge_Kinetics(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List areaUnderCurve,
-	List lethalDose50,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	areaUnderCurve **LIST** Quantity,
+	lethalDose50 **LIST** Quantity,
 	halfLifePeriod TEXT, -- Foreign Key to duration table
 
 	FOREIGN KEY (halfLifePeriod)
@@ -22208,16 +21660,16 @@ CREATE TABLE medicationRequest(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
 	statusReason TEXT, -- Foreign Key to codeableConcept table
 	intent TEXT,
 	_intent TEXT, -- Foreign Key to element table
-	List category,
+	category **LIST** CodeableConcept,
 	"priority" TEXT,
 	_priority TEXT, -- Foreign Key to element table
 	doNotPerform BOOLEAN,
@@ -22229,30 +21681,30 @@ CREATE TABLE medicationRequest(
 	medicationReference TEXT, -- Foreign Key to reference table
 	"subject" TEXT, -- Foreign Key to reference table
 	encounter TEXT, -- Foreign Key to reference table
-	List supportingInformation,
+	supportingInformation **LIST** Reference,
 	authoredOn DATETIME,
 	_authoredOn TEXT, -- Foreign Key to element table
 	requester TEXT, -- Foreign Key to reference table
 	performer TEXT, -- Foreign Key to reference table
 	performerType TEXT, -- Foreign Key to codeableConcept table
 	recorder TEXT, -- Foreign Key to reference table
-	List reasonCode,
-	List reasonReference,
-	List instantiatesCanonical,
-	List _instantiatesCanonical,
-	List instantiatesUri,
-	List _instantiatesUri,
-	List basedOn,
+	reasonCode **LIST** CodeableConcept,
+	reasonReference **LIST** Reference,
+	instantiatesCanonical **LIST** canonical,
+	_instantiatesCanonical **LIST** Element,
+	instantiatesUri **LIST** uri,
+	_instantiatesUri **LIST** Element,
+	basedOn **LIST** Reference,
 	groupIdentifier TEXT, -- Foreign Key to identifier table
 	courseOfTherapyType TEXT, -- Foreign Key to codeableConcept table
-	List insurance,
-	List note,
-	List dosageInstruction,
+	insurance **LIST** Reference,
+	note **LIST** Annotation,
+	dosageInstruction **LIST** Dosage,
 	dispenseRequest TEXT, -- Foreign Key to medicationRequest_DispenseRequest table
 	substitution TEXT, -- Foreign Key to medicationRequest_Substitution table
 	priorPrescription TEXT, -- Foreign Key to reference table
-	List detectedIssue,
-	List eventHistory,
+	detectedIssue **LIST** Reference,
+	eventHistory **LIST** Reference,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -22384,10 +21836,8 @@ CREATE TABLE medicationRequest(
 CREATE TABLE medicationRequest_DispenseRequest(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	initialFill TEXT, -- Foreign Key to medicationRequest_InitialFill table
 	dispenseInterval TEXT, -- Foreign Key to duration table
 	validityPeriod TEXT, -- Foreign Key to period table
@@ -22437,10 +21887,8 @@ CREATE TABLE medicationRequest_DispenseRequest(
 CREATE TABLE medicationRequest_InitialFill(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	quantity TEXT, -- Foreign Key to quantity table
 	duration TEXT, -- Foreign Key to duration table
 
@@ -22459,10 +21907,8 @@ CREATE TABLE medicationRequest_InitialFill(
 CREATE TABLE medicationRequest_Substitution(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	allowedBoolean BOOLEAN, -- pattern: ^true|false$
 	_allowedBoolean TEXT, -- Foreign Key to element table
 	allowedCodeableConcept TEXT, -- Foreign Key to codeableConcept table
@@ -22495,15 +21941,15 @@ CREATE TABLE medicationStatement(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
-	List basedOn,
-	List partOf,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
+	basedOn **LIST** Reference,
+	partOf **LIST** Reference,
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
-	List statusReason,
+	statusReason **LIST** CodeableConcept,
 	category TEXT, -- Foreign Key to codeableConcept table
 	medicationCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	medicationReference TEXT, -- Foreign Key to reference table
@@ -22515,11 +21961,11 @@ CREATE TABLE medicationStatement(
 	dateAsserted DATETIME,
 	_dateAsserted TEXT, -- Foreign Key to element table
 	informationSource TEXT, -- Foreign Key to reference table
-	List derivedFrom,
-	List reasonCode,
-	List reasonReference,
-	List note,
-	List dosage,
+	derivedFrom **LIST** Reference,
+	reasonCode **LIST** CodeableConcept,
+	reasonReference **LIST** Reference,
+	note **LIST** Annotation,
+	dosage **LIST** Dosage,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -22603,30 +22049,30 @@ CREATE TABLE medicinalProduct(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	"domain" TEXT, -- Foreign Key to coding table
 	combinedPharmaceuticalDoseForm TEXT, -- Foreign Key to codeableConcept table
 	legalStatusOfSupply TEXT, -- Foreign Key to codeableConcept table
 	additionalMonitoringIndicator TEXT, -- Foreign Key to codeableConcept table
-	List specialMeasures,
-	List _specialMeasures,
+	specialMeasures **LIST** string,
+	_specialMeasures **LIST** Element,
 	paediatricUseIndicator TEXT, -- Foreign Key to codeableConcept table
-	List productClassification,
-	List marketingStatus,
-	List pharmaceuticalProduct,
-	List packagedMedicinalProduct,
-	List attachedDocument,
-	List masterFile,
-	List contact,
-	List clinicalTrial,
-	List name,
-	List crossReference,
-	List manufacturingBusinessOperation,
-	List specialDesignation,
+	productClassification **LIST** CodeableConcept,
+	marketingStatus **LIST** MarketingStatus,
+	pharmaceuticalProduct **LIST** Reference,
+	packagedMedicinalProduct **LIST** Reference,
+	attachedDocument **LIST** Reference,
+	masterFile **LIST** Reference,
+	contact **LIST** Reference,
+	clinicalTrial **LIST** Reference,
+	"name" **LIST** MedicinalProduct_Name,
+	crossReference **LIST** Identifier,
+	manufacturingBusinessOperation **LIST** MedicinalProduct_ManufacturingBusinessOperation,
+	specialDesignation **LIST** MedicinalProduct_SpecialDesignation,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -22683,14 +22129,12 @@ CREATE TABLE medicinalProduct(
 CREATE TABLE medicinalProduct_Name(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	productName TEXT,
 	_productName TEXT, -- Foreign Key to element table
-	List namePart,
-	List countryLanguage,
+	namePart **LIST** MedicinalProduct_NamePart,
+	countryLanguage **LIST** MedicinalProduct_CountryLanguage,
 
 	FOREIGN KEY (_productName)
 		REFERENCES element (id)
@@ -22702,10 +22146,8 @@ CREATE TABLE medicinalProduct_Name(
 CREATE TABLE medicinalProduct_NamePart(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	part TEXT,
 	_part TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to coding table
@@ -22725,10 +22167,8 @@ CREATE TABLE medicinalProduct_NamePart(
 CREATE TABLE medicinalProduct_CountryLanguage(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	country TEXT, -- Foreign Key to codeableConcept table
 	jurisdiction TEXT, -- Foreign Key to codeableConcept table
 	"language" TEXT, -- Foreign Key to codeableConcept table
@@ -22753,16 +22193,14 @@ CREATE TABLE medicinalProduct_CountryLanguage(
 CREATE TABLE medicinalProduct_ManufacturingBusinessOperation(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	operationType TEXT, -- Foreign Key to codeableConcept table
 	authorisationReferenceNumber TEXT, -- Foreign Key to identifier table
 	effectiveDate DATETIME,
 	_effectiveDate TEXT, -- Foreign Key to element table
 	confidentialityIndicator TEXT, -- Foreign Key to codeableConcept table
-	List manufacturer,
+	manufacturer **LIST** Reference,
 	regulator TEXT, -- Foreign Key to reference table
 
 	FOREIGN KEY (operationType)
@@ -22795,11 +22233,9 @@ CREATE TABLE medicinalProduct_ManufacturingBusinessOperation(
 CREATE TABLE medicinalProduct_SpecialDesignation(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List identifier,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	intendedUse TEXT, -- Foreign Key to codeableConcept table
 	indicationCodeableConcept TEXT, -- Foreign Key to codeableConcept table
@@ -22856,13 +22292,13 @@ CREATE TABLE medicinalProductAuthorization(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"subject" TEXT, -- Foreign Key to reference table
-	List country,
-	List jurisdiction,
+	country **LIST** CodeableConcept,
+	jurisdiction **LIST** CodeableConcept,
 	"status" TEXT, -- Foreign Key to codeableConcept table
 	statusDate DATETIME,
 	_statusDate TEXT, -- Foreign Key to element table
@@ -22875,7 +22311,7 @@ CREATE TABLE medicinalProductAuthorization(
 	internationalBirthDate DATETIME,
 	_internationalBirthDate TEXT, -- Foreign Key to element table
 	legalBasis TEXT, -- Foreign Key to codeableConcept table
-	List jurisdictionalAuthorization,
+	jurisdictionalAuthorization **LIST** MedicinalProductAuthorization_JurisdictionalAuthorization,
 	holder TEXT, -- Foreign Key to reference table
 	regulator TEXT, -- Foreign Key to reference table
 	"procedure" TEXT, -- Foreign Key to medicinalProductAuthorization_Procedure table
@@ -22965,13 +22401,11 @@ CREATE TABLE medicinalProductAuthorization(
 CREATE TABLE medicinalProductAuthorization_JurisdictionalAuthorization(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List identifier,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	country TEXT, -- Foreign Key to codeableConcept table
-	List jurisdiction,
+	jurisdiction **LIST** CodeableConcept,
 	legalStatusOfSupply TEXT, -- Foreign Key to codeableConcept table
 	validityPeriod TEXT, -- Foreign Key to period table
 
@@ -22995,16 +22429,14 @@ CREATE TABLE medicinalProductAuthorization_JurisdictionalAuthorization(
 CREATE TABLE medicinalProductAuthorization_Procedure(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	identifier TEXT, -- Foreign Key to identifier table
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	datePeriod TEXT, -- Foreign Key to period table
 	dateDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 	_dateDateTime TEXT, -- Foreign Key to element table
-	List application,
+	application **LIST** MedicinalProductAuthorization_Procedure,
 
 	FOREIGN KEY (identifier)
 		REFERENCES identifier (id)
@@ -23038,16 +22470,16 @@ CREATE TABLE medicinalProductContraindication(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List subject,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	"subject" **LIST** Reference,
 	disease TEXT, -- Foreign Key to codeableConcept table
 	diseaseStatus TEXT, -- Foreign Key to codeableConcept table
-	List comorbidity,
-	List therapeuticIndication,
-	List otherTherapy,
-	List population,
+	comorbidity **LIST** CodeableConcept,
+	therapeuticIndication **LIST** Reference,
+	otherTherapy **LIST** MedicinalProductContraindication_OtherTherapy,
+	"population" **LIST** Population,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -23084,10 +22516,8 @@ CREATE TABLE medicinalProductContraindication(
 CREATE TABLE medicinalProductContraindication_OtherTherapy(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	therapyRelationshipType TEXT, -- Foreign Key to codeableConcept table
 	medicationCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	medicationReference TEXT, -- Foreign Key to reference table
@@ -23119,18 +22549,18 @@ CREATE TABLE medicinalProductIndication(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List subject,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	"subject" **LIST** Reference,
 	diseaseSymptomProcedure TEXT, -- Foreign Key to codeableConcept table
 	diseaseStatus TEXT, -- Foreign Key to codeableConcept table
-	List comorbidity,
+	comorbidity **LIST** CodeableConcept,
 	intendedEffect TEXT, -- Foreign Key to codeableConcept table
 	duration TEXT, -- Foreign Key to quantity table
-	List otherTherapy,
-	List undesirableEffect,
-	List population,
+	otherTherapy **LIST** MedicinalProductIndication_OtherTherapy,
+	undesirableEffect **LIST** Reference,
+	"population" **LIST** Population,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -23177,10 +22607,8 @@ CREATE TABLE medicinalProductIndication(
 CREATE TABLE medicinalProductIndication_OtherTherapy(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	therapyRelationshipType TEXT, -- Foreign Key to codeableConcept table
 	medicationCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	medicationReference TEXT, -- Foreign Key to reference table
@@ -23212,15 +22640,15 @@ CREATE TABLE medicinalProductIngredient(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	identifier TEXT, -- Foreign Key to identifier table
 	"role" TEXT, -- Foreign Key to codeableConcept table
 	allergenicIndicator BOOLEAN,
 	_allergenicIndicator TEXT, -- Foreign Key to element table
-	List manufacturer,
-	List specifiedSubstance,
+	manufacturer **LIST** Reference,
+	specifiedSubstance **LIST** MedicinalProductIngredient_SpecifiedSubstance,
 	substance TEXT, -- Foreign Key to medicinalProductIngredient_Substance table
 
 	FOREIGN KEY (meta)
@@ -23268,14 +22696,12 @@ CREATE TABLE medicinalProductIngredient(
 CREATE TABLE medicinalProductIngredient_SpecifiedSubstance(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"group" TEXT, -- Foreign Key to codeableConcept table
 	confidentiality TEXT, -- Foreign Key to codeableConcept table
-	List strength,
+	strength **LIST** MedicinalProductIngredient_Strength,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -23297,18 +22723,16 @@ CREATE TABLE medicinalProductIngredient_SpecifiedSubstance(
 CREATE TABLE medicinalProductIngredient_Strength(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	presentation TEXT, -- Foreign Key to ratio table
 	presentationLowLimit TEXT, -- Foreign Key to ratio table
 	concentration TEXT, -- Foreign Key to ratio table
 	concentrationLowLimit TEXT, -- Foreign Key to ratio table
 	measurementPoint TEXT,
 	_measurementPoint TEXT, -- Foreign Key to element table
-	List country,
-	List referenceStrength,
+	country **LIST** CodeableConcept,
+	referenceStrength **LIST** MedicinalProductIngredient_ReferenceStrength,
 
 	FOREIGN KEY (presentation)
 		REFERENCES ratio (id)
@@ -23340,16 +22764,14 @@ CREATE TABLE medicinalProductIngredient_Strength(
 CREATE TABLE medicinalProductIngredient_ReferenceStrength(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	substance TEXT, -- Foreign Key to codeableConcept table
 	strength TEXT, -- Foreign Key to ratio table
 	strengthLowLimit TEXT, -- Foreign Key to ratio table
 	measurementPoint TEXT,
 	_measurementPoint TEXT, -- Foreign Key to element table
-	List country,
+	country **LIST** CodeableConcept,
 
 	FOREIGN KEY (substance)
 		REFERENCES codeableConcept (id)
@@ -23376,12 +22798,10 @@ CREATE TABLE medicinalProductIngredient_ReferenceStrength(
 CREATE TABLE medicinalProductIngredient_Substance(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
-	List strength,
+	strength **LIST** MedicinalProductIngredient_Strength,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -23400,13 +22820,13 @@ CREATE TABLE medicinalProductInteraction(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List subject,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	"subject" **LIST** Reference,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List interactant,
+	interactant **LIST** MedicinalProductInteraction_Interactant,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	effect TEXT, -- Foreign Key to codeableConcept table
 	incidence TEXT, -- Foreign Key to codeableConcept table
@@ -23462,10 +22882,8 @@ CREATE TABLE medicinalProductInteraction(
 CREATE TABLE medicinalProductInteraction_Interactant(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	itemReference TEXT, -- Foreign Key to reference table
 	itemCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 
@@ -23491,16 +22909,16 @@ CREATE TABLE medicinalProductManufactured(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	manufacturedDoseForm TEXT, -- Foreign Key to codeableConcept table
 	unitOfPresentation TEXT, -- Foreign Key to codeableConcept table
 	quantity TEXT, -- Foreign Key to quantity table
-	List manufacturer,
-	List ingredient,
+	manufacturer **LIST** Reference,
+	ingredient **LIST** Reference,
 	physicalCharacteristics TEXT, -- Foreign Key to prodCharacteristic table
-	List otherCharacteristics,
+	otherCharacteristics **LIST** CodeableConcept,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -23554,19 +22972,19 @@ CREATE TABLE medicinalProductPackaged(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
-	List subject,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
+	"subject" **LIST** Reference,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	legalStatusOfSupply TEXT, -- Foreign Key to codeableConcept table
-	List marketingStatus,
+	marketingStatus **LIST** MarketingStatus,
 	marketingAuthorization TEXT, -- Foreign Key to reference table
-	List manufacturer,
-	List batchIdentifier,
-	List packageItem,
+	manufacturer **LIST** Reference,
+	batchIdentifier **LIST** MedicinalProductPackaged_BatchIdentifier,
+	packageItem **LIST** MedicinalProductPackaged_PackageItem,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -23608,10 +23026,8 @@ CREATE TABLE medicinalProductPackaged(
 CREATE TABLE medicinalProductPackaged_BatchIdentifier(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	outerPackaging TEXT, -- Foreign Key to identifier table
 	immediatePackaging TEXT, -- Foreign Key to identifier table
 
@@ -23630,22 +23046,20 @@ CREATE TABLE medicinalProductPackaged_BatchIdentifier(
 CREATE TABLE medicinalProductPackaged_PackageItem(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List identifier,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	quantity TEXT, -- Foreign Key to quantity table
-	List material,
-	List alternateMaterial,
-	List device,
-	List manufacturedItem,
-	List packageItem,
+	material **LIST** CodeableConcept,
+	alternateMaterial **LIST** CodeableConcept,
+	device **LIST** Reference,
+	manufacturedItem **LIST** Reference,
+	packageItem **LIST** MedicinalProductPackaged_PackageItem,
 	physicalCharacteristics TEXT, -- Foreign Key to prodCharacteristic table
-	List otherCharacteristics,
-	List shelfLifeStorage,
-	List manufacturer,
+	otherCharacteristics **LIST** CodeableConcept,
+	shelfLifeStorage **LIST** ProductShelfLife,
+	manufacturer **LIST** Reference,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -23674,16 +23088,16 @@ CREATE TABLE medicinalProductPharmaceutical(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	administrableDoseForm TEXT, -- Foreign Key to codeableConcept table
 	unitOfPresentation TEXT, -- Foreign Key to codeableConcept table
-	List ingredient,
-	List device,
-	List characteristics,
-	List routeOfAdministration,
+	ingredient **LIST** Reference,
+	device **LIST** Reference,
+	"characteristics" **LIST** MedicinalProductPharmaceutical_Characteristics,
+	routeOfAdministration **LIST** MedicinalProductPharmaceutical_RouteOfAdministration,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -23720,10 +23134,8 @@ CREATE TABLE medicinalProductPharmaceutical(
 CREATE TABLE medicinalProductPharmaceutical_Characteristics(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"status" TEXT, -- Foreign Key to codeableConcept table
 
@@ -23742,17 +23154,15 @@ CREATE TABLE medicinalProductPharmaceutical_Characteristics(
 CREATE TABLE medicinalProductPharmaceutical_RouteOfAdministration(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	firstDose TEXT, -- Foreign Key to quantity table
 	maxSingleDose TEXT, -- Foreign Key to quantity table
 	maxDosePerDay TEXT, -- Foreign Key to quantity table
 	maxDosePerTreatmentPeriod TEXT, -- Foreign Key to ratio table
 	maxTreatmentPeriod TEXT, -- Foreign Key to duration table
-	List targetSpecies,
+	targetSpecies **LIST** MedicinalProductPharmaceutical_TargetSpecies,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -23789,12 +23199,10 @@ CREATE TABLE medicinalProductPharmaceutical_RouteOfAdministration(
 CREATE TABLE medicinalProductPharmaceutical_TargetSpecies(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
-	List withdrawalPeriod,
+	withdrawalPeriod **LIST** MedicinalProductPharmaceutical_WithdrawalPeriod,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -23806,10 +23214,8 @@ CREATE TABLE medicinalProductPharmaceutical_TargetSpecies(
 CREATE TABLE medicinalProductPharmaceutical_WithdrawalPeriod(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	tissue TEXT, -- Foreign Key to codeableConcept table
 	"value" TEXT, -- Foreign Key to quantity table
 	supportingInformation TEXT,
@@ -23842,14 +23248,14 @@ CREATE TABLE medicinalProductUndesirableEffect(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List subject,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	"subject" **LIST** Reference,
 	symptomConditionEffect TEXT, -- Foreign Key to codeableConcept table
 	classification TEXT, -- Foreign Key to codeableConcept table
 	frequencyOfOccurrence TEXT, -- Foreign Key to codeableConcept table
-	List population,
+	"population" **LIST** Population,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -23898,19 +23304,19 @@ CREATE TABLE messageDefinition(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
-	List identifier,
+	identifier **LIST** Identifier,
 	"version" TEXT,
 	_version TEXT, -- Foreign Key to element table
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	title TEXT,
 	_title TEXT, -- Foreign Key to element table
-	List replaces,
+	replaces **LIST** canonical,
 	"status" TEXT, -- enum: draft/active/retired/unknown
 	_status TEXT, -- Foreign Key to element table
 	experimental BOOLEAN,
@@ -23919,27 +23325,27 @@ CREATE TABLE messageDefinition(
 	_date TEXT, -- Foreign Key to element table
 	publisher TEXT,
 	_publisher TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactDetail,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List useContext,
-	List jurisdiction,
+	useContext **LIST** UsageContext,
+	jurisdiction **LIST** CodeableConcept,
 	purpose TEXT,
 	_purpose TEXT, -- Foreign Key to element table
 	copyright TEXT,
 	_copyright TEXT, -- Foreign Key to element table
 	base TEXT,
-	List parent,
+	parent **LIST** canonical,
 	eventCoding TEXT, -- Foreign Key to coding table
 	eventUri TEXT, -- pattern: ^\S*$
 	_eventUri TEXT, -- Foreign Key to element table
 	category TEXT, -- enum: consequence/currency/notification
 	_category TEXT, -- Foreign Key to element table
-	List focus,
+	focus **LIST** MessageDefinition_Focus,
 	responseRequired TEXT, -- enum: always/on-error/never/on-success
 	_responseRequired TEXT, -- Foreign Key to element table
-	List allowedResponse,
-	List graph,
+	allowedResponse **LIST** MessageDefinition_AllowedResponse,
+	graph **LIST** canonical,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -24041,10 +23447,8 @@ CREATE TABLE messageDefinition(
 CREATE TABLE messageDefinition_Focus(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT,
 	_code TEXT, -- Foreign Key to element table
 	"profile" TEXT,
@@ -24073,11 +23477,9 @@ CREATE TABLE messageDefinition_Focus(
 CREATE TABLE messageDefinition_AllowedResponse(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	message TEXT,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	"message" TEXT,
 	situation TEXT,
 	_situation TEXT, -- Foreign Key to element table
 
@@ -24098,13 +23500,13 @@ CREATE TABLE messageHeader(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	eventCoding TEXT, -- Foreign Key to coding table
 	eventUri TEXT, -- pattern: ^\S*$
 	_eventUri TEXT, -- Foreign Key to element table
-	List destination,
+	destination **LIST** MessageHeader_Destination,
 	sender TEXT, -- Foreign Key to reference table
 	enterer TEXT, -- Foreign Key to reference table
 	author TEXT, -- Foreign Key to reference table
@@ -24112,7 +23514,7 @@ CREATE TABLE messageHeader(
 	responsible TEXT, -- Foreign Key to reference table
 	reason TEXT, -- Foreign Key to codeableConcept table
 	response TEXT, -- Foreign Key to messageHeader_Response table
-	List focus,
+	focus **LIST** Reference,
 	"definition" TEXT,
 
 	FOREIGN KEY (meta)
@@ -24185,10 +23587,8 @@ CREATE TABLE messageHeader(
 CREATE TABLE messageHeader_Destination(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	"target" TEXT, -- Foreign Key to reference table
@@ -24221,10 +23621,8 @@ CREATE TABLE messageHeader_Destination(
 CREATE TABLE messageHeader_Source(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	software TEXT,
@@ -24265,10 +23663,8 @@ CREATE TABLE messageHeader_Source(
 CREATE TABLE messageHeader_Response(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	identifier TEXT, -- Foreign Key to id table
 	_identifier TEXT, -- Foreign Key to element table
 	"code" TEXT, -- enum: ok/transient-error/fatal-error
@@ -24307,10 +23703,10 @@ CREATE TABLE molecularSequence(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"type" TEXT, -- enum: aa/dna/rna
 	_type TEXT, -- Foreign Key to element table
 	coordinateSystem INTEGER,
@@ -24321,15 +23717,15 @@ CREATE TABLE molecularSequence(
 	performer TEXT, -- Foreign Key to reference table
 	quantity TEXT, -- Foreign Key to quantity table
 	referenceSeq TEXT, -- Foreign Key to molecularSequence_ReferenceSeq table
-	List variant,
+	variant **LIST** MolecularSequence_Variant,
 	observedSeq TEXT,
 	_observedSeq TEXT, -- Foreign Key to element table
-	List quality,
+	quality **LIST** MolecularSequence_Quality,
 	readCoverage INTEGER,
 	_readCoverage TEXT, -- Foreign Key to element table
-	List repository,
-	List pointer,
-	List structureVariant,
+	repository **LIST** MolecularSequence_Repository,
+	pointer **LIST** Reference,
+	structureVariant **LIST** MolecularSequence_StructureVariant,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -24406,10 +23802,8 @@ CREATE TABLE molecularSequence(
 CREATE TABLE molecularSequence_ReferenceSeq(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	chromosome TEXT, -- Foreign Key to codeableConcept table
 	genomeBuild TEXT,
 	_genomeBuild TEXT, -- Foreign Key to element table
@@ -24476,10 +23870,8 @@ CREATE TABLE molecularSequence_ReferenceSeq(
 CREATE TABLE molecularSequence_Variant(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"start" INTEGER,
 	_start TEXT, -- Foreign Key to element table
 	"end" INTEGER,
@@ -24527,10 +23919,8 @@ CREATE TABLE molecularSequence_Variant(
 CREATE TABLE molecularSequence_Quality(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- enum: indel/snp/unknown
 	_type TEXT, -- Foreign Key to element table
 	standardSequence TEXT, -- Foreign Key to codeableConcept table
@@ -24638,34 +24028,30 @@ CREATE TABLE molecularSequence_Quality(
 CREATE TABLE molecularSequence_Roc(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List score,
-	List _score,
-	List numTP,
-	List _numTP,
-	List numFP,
-	List _numFP,
-	List numFN,
-	List _numFN,
-	List precision,
-	List _precision,
-	List sensitivity,
-	List _sensitivity,
-	List fMeasure,
-	List _fMeasure
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	score **LIST** integer,
+	_score **LIST** Element,
+	numTP **LIST** integer,
+	_numTP **LIST** Element,
+	numFP **LIST** integer,
+	_numFP **LIST** Element,
+	numFN **LIST** integer,
+	_numFN **LIST** Element,
+	precision **LIST** decimal,
+	_precision **LIST** Element,
+	sensitivity **LIST** decimal,
+	_sensitivity **LIST** Element,
+	fMeasure **LIST** decimal,
+	_fMeasure **LIST** Element
 
 );
 
 CREATE TABLE molecularSequence_Repository(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- enum: directlink/openapi/login/oauth/other
 	_type TEXT, -- Foreign Key to element table
 	"url" TEXT,
@@ -24714,10 +24100,8 @@ CREATE TABLE molecularSequence_Repository(
 CREATE TABLE molecularSequence_StructureVariant(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	variantType TEXT, -- Foreign Key to codeableConcept table
 	exact BOOLEAN,
 	_exact TEXT, -- Foreign Key to element table
@@ -24756,10 +24140,8 @@ CREATE TABLE molecularSequence_StructureVariant(
 CREATE TABLE molecularSequence_Outer(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"start" INTEGER,
 	_start TEXT, -- Foreign Key to element table
 	"end" INTEGER,
@@ -24780,10 +24162,8 @@ CREATE TABLE molecularSequence_Outer(
 CREATE TABLE molecularSequence_Inner(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"start" INTEGER,
 	_start TEXT, -- Foreign Key to element table
 	"end" INTEGER,
@@ -24811,9 +24191,9 @@ CREATE TABLE namingSystem(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	"status" TEXT, -- enum: draft/active/retired/unknown
@@ -24824,17 +24204,17 @@ CREATE TABLE namingSystem(
 	_date TEXT, -- Foreign Key to element table
 	publisher TEXT,
 	_publisher TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactDetail,
 	responsible TEXT,
 	_responsible TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List useContext,
-	List jurisdiction,
+	useContext **LIST** UsageContext,
+	jurisdiction **LIST** CodeableConcept,
 	"usage" TEXT,
 	_usage TEXT, -- Foreign Key to element table
-	List uniqueId,
+	uniqueId **LIST** NamingSystem_UniqueId,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -24906,10 +24286,8 @@ CREATE TABLE namingSystem(
 CREATE TABLE namingSystem_UniqueId(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- enum: oid/uuid/uri/other
 	_type TEXT, -- Foreign Key to element table
 	"value" TEXT,
@@ -24957,15 +24335,15 @@ CREATE TABLE nutritionOrder(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
-	List instantiatesCanonical,
-	List instantiatesUri,
-	List _instantiatesUri,
-	List instantiates,
-	List _instantiates,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
+	instantiatesCanonical **LIST** canonical,
+	instantiatesUri **LIST** uri,
+	_instantiatesUri **LIST** Element,
+	instantiates **LIST** uri,
+	_instantiates **LIST** Element,
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
 	intent TEXT,
@@ -24975,13 +24353,13 @@ CREATE TABLE nutritionOrder(
 	"dateTime" DATETIME,
 	_dateTime TEXT, -- Foreign Key to element table
 	orderer TEXT, -- Foreign Key to reference table
-	List allergyIntolerance,
-	List foodPreferenceModifier,
-	List excludeFoodModifier,
+	allergyIntolerance **LIST** Reference,
+	foodPreferenceModifier **LIST** CodeableConcept,
+	excludeFoodModifier **LIST** CodeableConcept,
 	oralDiet TEXT, -- Foreign Key to nutritionOrder_OralDiet table
-	List supplement,
+	supplement **LIST** NutritionOrder_Supplement,
 	enteralFormula TEXT, -- Foreign Key to nutritionOrder_EnteralFormula table
-	List note,
+	note **LIST** Annotation,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -25048,15 +24426,13 @@ CREATE TABLE nutritionOrder(
 CREATE TABLE nutritionOrder_OralDiet(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List type,
-	List schedule,
-	List nutrient,
-	List texture,
-	List fluidConsistencyType,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	"type" **LIST** CodeableConcept,
+	schedule **LIST** Timing,
+	nutrient **LIST** NutritionOrder_Nutrient,
+	texture **LIST** NutritionOrder_Texture,
+	fluidConsistencyType **LIST** CodeableConcept,
 	instruction TEXT,
 	_instruction TEXT, -- Foreign Key to element table
 
@@ -25070,10 +24446,8 @@ CREATE TABLE nutritionOrder_OralDiet(
 CREATE TABLE nutritionOrder_Nutrient(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	modifier TEXT, -- Foreign Key to codeableConcept table
 	amount TEXT, -- Foreign Key to quantity table
 
@@ -25092,10 +24466,8 @@ CREATE TABLE nutritionOrder_Nutrient(
 CREATE TABLE nutritionOrder_Texture(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	modifier TEXT, -- Foreign Key to codeableConcept table
 	foodType TEXT, -- Foreign Key to codeableConcept table
 
@@ -25114,14 +24486,12 @@ CREATE TABLE nutritionOrder_Texture(
 CREATE TABLE nutritionOrder_Supplement(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	productName TEXT,
 	_productName TEXT, -- Foreign Key to element table
-	List schedule,
+	schedule **LIST** Timing,
 	quantity TEXT, -- Foreign Key to quantity table
 	instruction TEXT,
 	_instruction TEXT, -- Foreign Key to element table
@@ -25151,10 +24521,8 @@ CREATE TABLE nutritionOrder_Supplement(
 CREATE TABLE nutritionOrder_EnteralFormula(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	baseFormulaType TEXT, -- Foreign Key to codeableConcept table
 	baseFormulaProductName TEXT,
 	_baseFormulaProductName TEXT, -- Foreign Key to element table
@@ -25163,7 +24531,7 @@ CREATE TABLE nutritionOrder_EnteralFormula(
 	_additiveProductName TEXT, -- Foreign Key to element table
 	caloricDensity TEXT, -- Foreign Key to quantity table
 	routeofAdministration TEXT, -- Foreign Key to codeableConcept table
-	List administration,
+	administration **LIST** NutritionOrder_Administration,
 	maxVolumeToDeliver TEXT, -- Foreign Key to quantity table
 	administrationInstruction TEXT,
 	_administrationInstruction TEXT, -- Foreign Key to element table
@@ -25213,10 +24581,8 @@ CREATE TABLE nutritionOrder_EnteralFormula(
 CREATE TABLE nutritionOrder_Administration(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	schedule TEXT, -- Foreign Key to timing table
 	quantity TEXT, -- Foreign Key to quantity table
 	rateQuantity TEXT, -- Foreign Key to quantity table
@@ -25254,18 +24620,18 @@ CREATE TABLE observation(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
-	List basedOn,
-	List partOf,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
+	basedOn **LIST** Reference,
+	partOf **LIST** Reference,
 	"status" TEXT, -- enum: registered/preliminary/final/amended/corrected/cancelled/entered-in-error/unknown
 	_status TEXT, -- Foreign Key to element table
-	List category,
+	category **LIST** CodeableConcept,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"subject" TEXT, -- Foreign Key to reference table
-	List focus,
+	focus **LIST** Reference,
 	encounter TEXT, -- Foreign Key to reference table
 	effectiveDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 	_effectiveDateTime TEXT, -- Foreign Key to element table
@@ -25275,7 +24641,7 @@ CREATE TABLE observation(
 	_effectiveInstant TEXT, -- Foreign Key to element table
 	issued DATETIME,
 	_issued TEXT, -- Foreign Key to element table
-	List performer,
+	performer **LIST** Reference,
 	valueQuantity TEXT, -- Foreign Key to quantity table
 	valueCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	valueString TEXT, -- pattern: ^[ \r\n\t\S]+$
@@ -25293,16 +24659,16 @@ CREATE TABLE observation(
 	_valueDateTime TEXT, -- Foreign Key to element table
 	valuePeriod TEXT, -- Foreign Key to period table
 	dataAbsentReason TEXT, -- Foreign Key to codeableConcept table
-	List interpretation,
-	List note,
+	interpretation **LIST** CodeableConcept,
+	note **LIST** Annotation,
 	bodySite TEXT, -- Foreign Key to codeableConcept table
 	"method" TEXT, -- Foreign Key to codeableConcept table
 	specimen TEXT, -- Foreign Key to reference table
 	device TEXT, -- Foreign Key to reference table
-	List referenceRange,
-	List hasMember,
-	List derivedFrom,
-	List component,
+	referenceRange **LIST** Observation_ReferenceRange,
+	hasMember **LIST** Reference,
+	derivedFrom **LIST** Reference,
+	component **LIST** Observation_Component,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -25454,14 +24820,12 @@ CREATE TABLE observation(
 CREATE TABLE observation_ReferenceRange(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	low TEXT, -- Foreign Key to quantity table
 	high TEXT, -- Foreign Key to quantity table
 	"type" TEXT, -- Foreign Key to codeableConcept table
-	List appliesTo,
+	appliesTo **LIST** CodeableConcept,
 	age TEXT, -- Foreign Key to range table
 	"text" TEXT,
 	_text TEXT, -- Foreign Key to element table
@@ -25496,10 +24860,8 @@ CREATE TABLE observation_ReferenceRange(
 CREATE TABLE observation_Component(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	valueQuantity TEXT, -- Foreign Key to quantity table
 	valueCodeableConcept TEXT, -- Foreign Key to codeableConcept table
@@ -25518,8 +24880,8 @@ CREATE TABLE observation_Component(
 	_valueDateTime TEXT, -- Foreign Key to element table
 	valuePeriod TEXT, -- Foreign Key to period table
 	dataAbsentReason TEXT, -- Foreign Key to codeableConcept table
-	List interpretation,
-	List referenceRange,
+	interpretation **LIST** CodeableConcept,
+	referenceRange **LIST** Observation_ReferenceRange,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -25598,21 +24960,21 @@ CREATE TABLE observationDefinition(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List category,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	category **LIST** CodeableConcept,
 	"code" TEXT, -- Foreign Key to codeableConcept table
-	List identifier,
-	List permittedDataType,
-	List _permittedDataType,
+	identifier **LIST** Identifier,
+	permittedDataType **LIST** enum, -- Quantity/CodeableConcept/string/boolean/integer/Range/Ratio/SampledData/time/dateTime/Period,
+	_permittedDataType **LIST** Element,
 	multipleResultsAllowed BOOLEAN,
 	_multipleResultsAllowed TEXT, -- Foreign Key to element table
 	"method" TEXT, -- Foreign Key to codeableConcept table
 	preferredReportName TEXT,
 	_preferredReportName TEXT, -- Foreign Key to element table
 	quantitativeDetails TEXT, -- Foreign Key to observationDefinition_QuantitativeDetails table
-	List qualifiedInterval,
+	qualifiedInterval **LIST** ObservationDefinition_QualifiedInterval,
 	validCodedValueSet TEXT, -- Foreign Key to reference table
 	normalCodedValueSet TEXT, -- Foreign Key to reference table
 	abnormalCodedValueSet TEXT, -- Foreign Key to reference table
@@ -25688,10 +25050,8 @@ CREATE TABLE observationDefinition(
 CREATE TABLE observationDefinition_QuantitativeDetails(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	customaryUnit TEXT, -- Foreign Key to codeableConcept table
 	unit TEXT, -- Foreign Key to codeableConcept table
 	conversionFactor REAL,
@@ -25724,15 +25084,13 @@ CREATE TABLE observationDefinition_QuantitativeDetails(
 CREATE TABLE observationDefinition_QualifiedInterval(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	category TEXT, -- enum: reference/critical/absolute
 	_category TEXT, -- Foreign Key to element table
 	"range" TEXT, -- Foreign Key to range table
 	context TEXT, -- Foreign Key to codeableConcept table
-	List appliesTo,
+	appliesTo **LIST** CodeableConcept,
 	gender TEXT, -- enum: male/female/other/unknown
 	_gender TEXT, -- Foreign Key to element table
 	age TEXT, -- Foreign Key to range table
@@ -25787,9 +25145,9 @@ CREATE TABLE operationDefinition(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
 	"version" TEXT,
@@ -25808,11 +25166,11 @@ CREATE TABLE operationDefinition(
 	_date TEXT, -- Foreign Key to element table
 	publisher TEXT,
 	_publisher TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactDetail,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List useContext,
-	List jurisdiction,
+	useContext **LIST** UsageContext,
+	jurisdiction **LIST** CodeableConcept,
 	purpose TEXT,
 	_purpose TEXT, -- Foreign Key to element table
 	affectsState BOOLEAN,
@@ -25822,8 +25180,8 @@ CREATE TABLE operationDefinition(
 	comment TEXT,
 	_comment TEXT, -- Foreign Key to element table
 	base TEXT,
-	List resource,
-	List _resource,
+	"resource" **LIST** code,
+	_resource **LIST** Element,
 	"system" BOOLEAN,
 	_system TEXT, -- Foreign Key to element table
 	"type" BOOLEAN,
@@ -25832,8 +25190,8 @@ CREATE TABLE operationDefinition(
 	_instance TEXT, -- Foreign Key to element table
 	inputProfile TEXT,
 	outputProfile TEXT,
-	List parameter,
-	List overload,
+	"parameter" **LIST** OperationDefinition_Parameter,
+	overload **LIST** OperationDefinition_Overload,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -25945,10 +25303,8 @@ CREATE TABLE operationDefinition(
 CREATE TABLE operationDefinition_Parameter(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	"use" TEXT, -- enum: in/out
@@ -25961,12 +25317,12 @@ CREATE TABLE operationDefinition_Parameter(
 	_documentation TEXT, -- Foreign Key to element table
 	"type" TEXT,
 	_type TEXT, -- Foreign Key to element table
-	List targetProfile,
+	targetProfile **LIST** canonical,
 	searchType TEXT, -- enum: number/date/string/token/reference/composite/quantity/uri/special
 	_searchType TEXT, -- Foreign Key to element table
 	"binding" TEXT, -- Foreign Key to operationDefinition_Binding table
-	List referencedFrom,
-	List part,
+	referencedFrom **LIST** OperationDefinition_ReferencedFrom,
+	part **LIST** OperationDefinition_Parameter,
 
 	FOREIGN KEY (_name)
 		REFERENCES element (id)
@@ -26013,10 +25369,8 @@ CREATE TABLE operationDefinition_Parameter(
 CREATE TABLE operationDefinition_Binding(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	strength TEXT, -- enum: required/extensible/preferred/example
 	_strength TEXT, -- Foreign Key to element table
 	valueSet TEXT,
@@ -26031,10 +25385,8 @@ CREATE TABLE operationDefinition_Binding(
 CREATE TABLE operationDefinition_ReferencedFrom(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"source" TEXT,
 	_source TEXT, -- Foreign Key to element table
 	sourceId TEXT,
@@ -26055,12 +25407,10 @@ CREATE TABLE operationDefinition_ReferencedFrom(
 CREATE TABLE operationDefinition_Overload(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List parameterName,
-	List _parameterName,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	parameterName **LIST** string,
+	_parameterName **LIST** Element,
 	comment TEXT,
 	_comment TEXT, -- Foreign Key to element table
 
@@ -26081,10 +25431,10 @@ CREATE TABLE operationOutcome(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List issue,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	issue **LIST** OperationOutcome_Issue,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -26111,10 +25461,8 @@ CREATE TABLE operationOutcome(
 CREATE TABLE operationOutcome_Issue(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	severity TEXT, -- enum: fatal/error/warning/information
 	_severity TEXT, -- Foreign Key to element table
 	"code" TEXT, -- enum: invalid/structure/required/value/invariant/security/login/unknown/expired/forbidden/suppressed/processing/not-supported/duplicate/multiple-matches/not-found/deleted/too-long/code-invalid/extension/too-costly/business-rule/conflict/transient/lock-error/no-store/exception/timeout/incomplete/throttled/informational
@@ -26122,10 +25470,10 @@ CREATE TABLE operationOutcome_Issue(
 	details TEXT, -- Foreign Key to codeableConcept table
 	diagnostics TEXT,
 	_diagnostics TEXT, -- Foreign Key to element table
-	List location,
-	List _location,
-	List expression,
-	List _expression,
+	"location" **LIST** string,
+	_location **LIST** Element,
+	expression **LIST** string,
+	_expression **LIST** Element,
 
 	FOREIGN KEY (_severity)
 		REFERENCES element (id)
@@ -26159,22 +25507,22 @@ CREATE TABLE organization(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	active BOOLEAN,
 	_active TEXT, -- Foreign Key to element table
-	List type,
+	"type" **LIST** CodeableConcept,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
-	List alias,
-	List _alias,
-	List telecom,
-	List address,
+	alias **LIST** string,
+	_alias **LIST** Element,
+	telecom **LIST** ContactPoint,
+	"address" **LIST** Address,
 	partOf TEXT, -- Foreign Key to reference table
-	List contact,
-	List endpoint,
+	contact **LIST** Organization_Contact,
+	"endpoint" **LIST** Reference,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -26216,13 +25564,11 @@ CREATE TABLE organization(
 CREATE TABLE organization_Contact(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	purpose TEXT, -- Foreign Key to codeableConcept table
 	"name" TEXT, -- Foreign Key to humanName table
-	List telecom,
+	telecom **LIST** ContactPoint,
 	"address" TEXT, -- Foreign Key to address table
 
 	FOREIGN KEY (purpose)
@@ -26252,22 +25598,22 @@ CREATE TABLE organizationAffiliation(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	active BOOLEAN,
 	_active TEXT, -- Foreign Key to element table
 	"period" TEXT, -- Foreign Key to period table
 	organization TEXT, -- Foreign Key to reference table
 	participatingOrganization TEXT, -- Foreign Key to reference table
-	List network,
-	List code,
-	List specialty,
-	List location,
-	List healthcareService,
-	List telecom,
-	List endpoint,
+	network **LIST** Reference,
+	"code" **LIST** CodeableConcept,
+	specialty **LIST** CodeableConcept,
+	"location" **LIST** Reference,
+	healthcareService **LIST** Reference,
+	telecom **LIST** ContactPoint,
+	"endpoint" **LIST** Reference,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -26320,7 +25666,7 @@ CREATE TABLE parameters(
 	_implicitRules TEXT, -- Foreign Key to element table
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
-	List parameter,
+	"parameter" **LIST** Parameters_Parameter,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -26342,10 +25688,8 @@ CREATE TABLE parameters(
 CREATE TABLE parameters_Parameter(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	valueBase64Binary TEXT, -- pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
@@ -26417,8 +25761,8 @@ CREATE TABLE parameters_Parameter(
 	valueUsageContext TEXT, -- Foreign Key to usageContext table
 	valueDosage TEXT, -- Foreign Key to dosage table
 	valueMeta TEXT, -- Foreign Key to meta table
-	resource TEXT, -- Foreign Key to resourceList table
-	List part,
+	"resource" TEXT, -- Foreign Key to resourceList table
+	part **LIST** Parameters_Parameter,
 
 	FOREIGN KEY (_name)
 		REFERENCES element (id)
@@ -26675,7 +26019,7 @@ CREATE TABLE parameters_Parameter(
 			ON DELETE CASCADE
 		ON UPDATE NO ACTION,
 
-	FOREIGN KEY (resource)
+	FOREIGN KEY ("resource")
 		REFERENCES resourceList (id)
 			ON DELETE CASCADE
 		ON UPDATE NO ACTION
@@ -26692,14 +26036,14 @@ CREATE TABLE patient(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	active BOOLEAN,
 	_active TEXT, -- Foreign Key to element table
-	List name,
-	List telecom,
+	"name" **LIST** HumanName,
+	telecom **LIST** ContactPoint,
 	gender TEXT, -- enum: male/female/other/unknown
 	_gender TEXT, -- Foreign Key to element table
 	birthDate DATE,
@@ -26708,18 +26052,18 @@ CREATE TABLE patient(
 	_deceasedBoolean TEXT, -- Foreign Key to element table
 	deceasedDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 	_deceasedDateTime TEXT, -- Foreign Key to element table
-	List address,
+	"address" **LIST** Address,
 	maritalStatus TEXT, -- Foreign Key to codeableConcept table
 	multipleBirthBoolean BOOLEAN, -- pattern: ^true|false$
 	_multipleBirthBoolean TEXT, -- Foreign Key to element table
 	multipleBirthInteger REAL, -- pattern: ^-?([0]|([1-9][0-9]*))$
 	_multipleBirthInteger TEXT, -- Foreign Key to element table
-	List photo,
-	List contact,
-	List communication,
-	List generalPractitioner,
+	photo **LIST** Attachment,
+	contact **LIST** Patient_Contact,
+	communication **LIST** Patient_Communication,
+	generalPractitioner **LIST** Reference,
 	managingOrganization TEXT, -- Foreign Key to reference table
-	List link,
+	link **LIST** Patient_Link,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -26791,13 +26135,11 @@ CREATE TABLE patient(
 CREATE TABLE patient_Contact(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List relationship,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	relationship **LIST** CodeableConcept,
 	"name" TEXT, -- Foreign Key to humanName table
-	List telecom,
+	telecom **LIST** ContactPoint,
 	"address" TEXT, -- Foreign Key to address table
 	gender TEXT, -- enum: male/female/other/unknown
 	_gender TEXT, -- Foreign Key to element table
@@ -26834,10 +26176,8 @@ CREATE TABLE patient_Contact(
 CREATE TABLE patient_Communication(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"language" TEXT, -- Foreign Key to codeableConcept table
 	preferred BOOLEAN,
 	_preferred TEXT, -- Foreign Key to element table
@@ -26857,10 +26197,8 @@ CREATE TABLE patient_Communication(
 CREATE TABLE patient_Link(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	other TEXT, -- Foreign Key to reference table
 	"type" TEXT, -- enum: replaced-by/replaces/refer/seealso
 	_type TEXT, -- Foreign Key to element table
@@ -26887,10 +26225,10 @@ CREATE TABLE paymentNotice(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
 	request TEXT, -- Foreign Key to reference table
@@ -26993,10 +26331,10 @@ CREATE TABLE paymentReconciliation(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
 	"period" TEXT, -- Foreign Key to period table
@@ -27013,9 +26351,9 @@ CREATE TABLE paymentReconciliation(
 	_paymentDate TEXT, -- Foreign Key to element table
 	paymentAmount TEXT, -- Foreign Key to money table
 	paymentIdentifier TEXT, -- Foreign Key to identifier table
-	List detail,
+	detail **LIST** PaymentReconciliation_Detail,
 	formCode TEXT, -- Foreign Key to codeableConcept table
-	List processNote,
+	processNote **LIST** PaymentReconciliation_ProcessNote,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -27102,10 +26440,8 @@ CREATE TABLE paymentReconciliation(
 CREATE TABLE paymentReconciliation_Detail(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	identifier TEXT, -- Foreign Key to identifier table
 	predecessor TEXT, -- Foreign Key to identifier table
 	"type" TEXT, -- Foreign Key to codeableConcept table
@@ -27173,10 +26509,8 @@ CREATE TABLE paymentReconciliation_Detail(
 CREATE TABLE paymentReconciliation_ProcessNote(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- enum: display/print/printoper
 	_type TEXT, -- Foreign Key to element table
 	"text" TEXT,
@@ -27204,22 +26538,22 @@ CREATE TABLE person(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
-	List name,
-	List telecom,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
+	"name" **LIST** HumanName,
+	telecom **LIST** ContactPoint,
 	gender TEXT, -- enum: male/female/other/unknown
 	_gender TEXT, -- Foreign Key to element table
 	birthDate DATE,
 	_birthDate TEXT, -- Foreign Key to element table
-	List address,
+	"address" **LIST** Address,
 	photo TEXT, -- Foreign Key to attachment table
 	managingOrganization TEXT, -- Foreign Key to reference table
 	active BOOLEAN,
 	_active TEXT, -- Foreign Key to element table
-	List link,
+	link **LIST** Person_Link,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -27271,10 +26605,8 @@ CREATE TABLE person(
 CREATE TABLE person_Link(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"target" TEXT, -- Foreign Key to reference table
 	assurance TEXT, -- enum: level1/level2/level3/level4
 	_assurance TEXT, -- Foreign Key to element table
@@ -27301,12 +26633,12 @@ CREATE TABLE planDefinition(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
-	List identifier,
+	identifier **LIST** Identifier,
 	"version" TEXT,
 	_version TEXT, -- Foreign Key to element table
 	"name" TEXT,
@@ -27326,11 +26658,11 @@ CREATE TABLE planDefinition(
 	_date TEXT, -- Foreign Key to element table
 	publisher TEXT,
 	_publisher TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactDetail,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List useContext,
-	List jurisdiction,
+	useContext **LIST** UsageContext,
+	jurisdiction **LIST** CodeableConcept,
 	purpose TEXT,
 	_purpose TEXT, -- Foreign Key to element table
 	"usage" TEXT,
@@ -27342,15 +26674,15 @@ CREATE TABLE planDefinition(
 	lastReviewDate DATE,
 	_lastReviewDate TEXT, -- Foreign Key to element table
 	effectivePeriod TEXT, -- Foreign Key to period table
-	List topic,
-	List author,
-	List editor,
-	List reviewer,
-	List endorser,
-	List relatedArtifact,
-	List library,
-	List goal,
-	List action,
+	topic **LIST** CodeableConcept,
+	author **LIST** ContactDetail,
+	editor **LIST** ContactDetail,
+	reviewer **LIST** ContactDetail,
+	endorser **LIST** ContactDetail,
+	relatedArtifact **LIST** RelatedArtifact,
+	library **LIST** canonical,
+	goal **LIST** PlanDefinition_Goal,
+	"action" **LIST** PlanDefinition_Action,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -27472,17 +26804,15 @@ CREATE TABLE planDefinition(
 CREATE TABLE planDefinition_Goal(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	category TEXT, -- Foreign Key to codeableConcept table
 	"description" TEXT, -- Foreign Key to codeableConcept table
 	"priority" TEXT, -- Foreign Key to codeableConcept table
 	"start" TEXT, -- Foreign Key to codeableConcept table
-	List addresses,
-	List documentation,
-	List target,
+	addresses **LIST** CodeableConcept,
+	documentation **LIST** RelatedArtifact,
+	"target" **LIST** PlanDefinition_Target,
 
 	FOREIGN KEY (category)
 		REFERENCES codeableConcept (id)
@@ -27509,10 +26839,8 @@ CREATE TABLE planDefinition_Goal(
 CREATE TABLE planDefinition_Target(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	measure TEXT, -- Foreign Key to codeableConcept table
 	detailQuantity TEXT, -- Foreign Key to quantity table
 	detailRange TEXT, -- Foreign Key to range table
@@ -27549,10 +26877,8 @@ CREATE TABLE planDefinition_Target(
 CREATE TABLE planDefinition_Action(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	prefix TEXT,
 	_prefix TEXT, -- Foreign Key to element table
 	title TEXT,
@@ -27563,18 +26889,18 @@ CREATE TABLE planDefinition_Action(
 	_textEquivalent TEXT, -- Foreign Key to element table
 	"priority" TEXT,
 	_priority TEXT, -- Foreign Key to element table
-	List code,
-	List reason,
-	List documentation,
-	List goalId,
-	List _goalId,
+	"code" **LIST** CodeableConcept,
+	reason **LIST** CodeableConcept,
+	documentation **LIST** RelatedArtifact,
+	goalId **LIST** id,
+	_goalId **LIST** Element,
 	subjectCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	subjectReference TEXT, -- Foreign Key to reference table
-	List trigger,
-	List condition,
-	List input,
-	List output,
-	List relatedAction,
+	"trigger" **LIST** TriggerDefinition,
+	"condition" **LIST** PlanDefinition_Condition,
+	"input" **LIST** DataRequirement,
+	"output" **LIST** DataRequirement,
+	relatedAction **LIST** PlanDefinition_RelatedAction,
 	timingDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 	_timingDateTime TEXT, -- Foreign Key to element table
 	timingAge TEXT, -- Foreign Key to age table
@@ -27582,7 +26908,7 @@ CREATE TABLE planDefinition_Action(
 	timingDuration TEXT, -- Foreign Key to duration table
 	timingRange TEXT, -- Foreign Key to range table
 	timingTiming TEXT, -- Foreign Key to timing table
-	List participant,
+	participant **LIST** PlanDefinition_Participant,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	groupingBehavior TEXT, -- enum: visual-group/logical-group/sentence-group
 	_groupingBehavior TEXT, -- Foreign Key to element table
@@ -27599,8 +26925,8 @@ CREATE TABLE planDefinition_Action(
 	definitionUri TEXT, -- pattern: ^\S*$
 	_definitionUri TEXT, -- Foreign Key to element table
 	transform TEXT,
-	List dynamicValue,
-	List action,
+	dynamicValue **LIST** PlanDefinition_DynamicValue,
+	"action" **LIST** PlanDefinition_Action,
 
 	FOREIGN KEY (_prefix)
 		REFERENCES element (id)
@@ -27712,10 +27038,8 @@ CREATE TABLE planDefinition_Action(
 CREATE TABLE planDefinition_Condition(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	kind TEXT, -- enum: applicability/start/stop
 	_kind TEXT, -- Foreign Key to element table
 	expression TEXT, -- Foreign Key to expression table
@@ -27735,10 +27059,8 @@ CREATE TABLE planDefinition_Condition(
 CREATE TABLE planDefinition_RelatedAction(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	actionId TEXT, -- Foreign Key to id table
 	_actionId TEXT, -- Foreign Key to element table
 	relationship TEXT, -- enum: before-start/before/before-end/concurrent-with-start/concurrent/concurrent-with-end/after-start/after/after-end
@@ -27776,10 +27098,8 @@ CREATE TABLE planDefinition_RelatedAction(
 CREATE TABLE planDefinition_Participant(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- enum: patient/practitioner/related-person/device
 	_type TEXT, -- Foreign Key to element table
 	"role" TEXT, -- Foreign Key to codeableConcept table
@@ -27799,10 +27119,8 @@ CREATE TABLE planDefinition_Participant(
 CREATE TABLE planDefinition_DynamicValue(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"path" TEXT,
 	_path TEXT, -- Foreign Key to element table
 	expression TEXT, -- Foreign Key to expression table
@@ -27829,22 +27147,22 @@ CREATE TABLE practitioner(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	active BOOLEAN,
 	_active TEXT, -- Foreign Key to element table
-	List name,
-	List telecom,
-	List address,
+	"name" **LIST** HumanName,
+	telecom **LIST** ContactPoint,
+	"address" **LIST** Address,
 	gender TEXT, -- enum: male/female/other/unknown
 	_gender TEXT, -- Foreign Key to element table
 	birthDate DATE,
 	_birthDate TEXT, -- Foreign Key to element table
-	List photo,
-	List qualification,
-	List communication,
+	photo **LIST** Attachment,
+	qualification **LIST** Practitioner_Qualification,
+	communication **LIST** CodeableConcept,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -27886,11 +27204,9 @@ CREATE TABLE practitioner(
 CREATE TABLE practitioner_Qualification(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List identifier,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"period" TEXT, -- Foreign Key to period table
 	issuer TEXT, -- Foreign Key to reference table
@@ -27922,25 +27238,25 @@ CREATE TABLE practitionerRole(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	active BOOLEAN,
 	_active TEXT, -- Foreign Key to element table
 	"period" TEXT, -- Foreign Key to period table
 	practitioner TEXT, -- Foreign Key to reference table
 	organization TEXT, -- Foreign Key to reference table
-	List code,
-	List specialty,
-	List location,
-	List healthcareService,
-	List telecom,
-	List availableTime,
-	List notAvailable,
+	"code" **LIST** CodeableConcept,
+	specialty **LIST** CodeableConcept,
+	"location" **LIST** Reference,
+	healthcareService **LIST** Reference,
+	telecom **LIST** ContactPoint,
+	availableTime **LIST** PractitionerRole_AvailableTime,
+	notAvailable **LIST** PractitionerRole_NotAvailable,
 	availabilityExceptions TEXT,
 	_availabilityExceptions TEXT, -- Foreign Key to element table
-	List endpoint,
+	"endpoint" **LIST** Reference,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -27992,12 +27308,10 @@ CREATE TABLE practitionerRole(
 CREATE TABLE practitionerRole_AvailableTime(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List daysOfWeek,
-	List _daysOfWeek,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	daysOfWeek **LIST** code,
+	_daysOfWeek **LIST** Element,
 	allDay BOOLEAN,
 	_allDay TEXT, -- Foreign Key to element table
 	availableStartTime TIME,
@@ -28025,10 +27339,8 @@ CREATE TABLE practitionerRole_AvailableTime(
 CREATE TABLE practitionerRole_NotAvailable(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	during TEXT, -- Foreign Key to period table
@@ -28055,15 +27367,15 @@ CREATE TABLE "procedure"(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
-	List instantiatesCanonical,
-	List instantiatesUri,
-	List _instantiatesUri,
-	List basedOn,
-	List partOf,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
+	instantiatesCanonical **LIST** canonical,
+	instantiatesUri **LIST** uri,
+	_instantiatesUri **LIST** Element,
+	basedOn **LIST** Reference,
+	partOf **LIST** Reference,
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
 	statusReason TEXT, -- Foreign Key to codeableConcept table
@@ -28080,20 +27392,20 @@ CREATE TABLE "procedure"(
 	performedRange TEXT, -- Foreign Key to range table
 	recorder TEXT, -- Foreign Key to reference table
 	asserter TEXT, -- Foreign Key to reference table
-	List performer,
+	performer **LIST** Procedure_Performer,
 	"location" TEXT, -- Foreign Key to reference table
-	List reasonCode,
-	List reasonReference,
-	List bodySite,
+	reasonCode **LIST** CodeableConcept,
+	reasonReference **LIST** Reference,
+	bodySite **LIST** CodeableConcept,
 	outcome TEXT, -- Foreign Key to codeableConcept table
-	List report,
-	List complication,
-	List complicationDetail,
-	List followUp,
-	List note,
-	List focalDevice,
-	List usedReference,
-	List usedCode,
+	report **LIST** Reference,
+	complication **LIST** CodeableConcept,
+	complicationDetail **LIST** Reference,
+	followUp **LIST** CodeableConcept,
+	note **LIST** Annotation,
+	focalDevice **LIST** Procedure_FocalDevice,
+	usedReference **LIST** Reference,
+	usedCode **LIST** CodeableConcept,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -28195,10 +27507,8 @@ CREATE TABLE "procedure"(
 CREATE TABLE procedure_Performer(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"function" TEXT, -- Foreign Key to codeableConcept table
 	actor TEXT, -- Foreign Key to reference table
 	onBehalfOf TEXT, -- Foreign Key to reference table
@@ -28223,10 +27533,8 @@ CREATE TABLE procedure_Performer(
 CREATE TABLE procedure_FocalDevice(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"action" TEXT, -- Foreign Key to codeableConcept table
 	manipulated TEXT, -- Foreign Key to reference table
 
@@ -28252,23 +27560,23 @@ CREATE TABLE provenance(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List target,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	"target" **LIST** Reference,
 	occurredPeriod TEXT, -- Foreign Key to period table
 	occurredDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 	_occurredDateTime TEXT, -- Foreign Key to element table
 	recorded DATETIME,
 	_recorded TEXT, -- Foreign Key to element table
-	List policy,
-	List _policy,
+	"policy" **LIST** uri,
+	_policy **LIST** Element,
 	"location" TEXT, -- Foreign Key to reference table
-	List reason,
+	reason **LIST** CodeableConcept,
 	activity TEXT, -- Foreign Key to codeableConcept table
-	List agent,
-	List entity,
-	List signature,
+	agent **LIST** Provenance_Agent,
+	entity **LIST** Provenance_Entity,
+	"signature" **LIST** Signature,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -28320,12 +27628,10 @@ CREATE TABLE provenance(
 CREATE TABLE provenance_Agent(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
-	List role,
+	"role" **LIST** CodeableConcept,
 	who TEXT, -- Foreign Key to reference table
 	onBehalfOf TEXT, -- Foreign Key to reference table
 
@@ -28349,14 +27655,12 @@ CREATE TABLE provenance_Agent(
 CREATE TABLE provenance_Entity(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"role" TEXT, -- enum: derivation/revision/quotation/source/removal
 	_role TEXT, -- Foreign Key to element table
 	what TEXT, -- Foreign Key to reference table
-	List agent,
+	agent **LIST** Provenance_Agent,
 
 	FOREIGN KEY (_role)
 		REFERENCES element (id)
@@ -28380,34 +27684,34 @@ CREATE TABLE questionnaire(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
-	List identifier,
+	identifier **LIST** Identifier,
 	"version" TEXT,
 	_version TEXT, -- Foreign Key to element table
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	title TEXT,
 	_title TEXT, -- Foreign Key to element table
-	List derivedFrom,
+	derivedFrom **LIST** canonical,
 	"status" TEXT, -- enum: draft/active/retired/unknown
 	_status TEXT, -- Foreign Key to element table
 	experimental BOOLEAN,
 	_experimental TEXT, -- Foreign Key to element table
-	List subjectType,
-	List _subjectType,
+	subjectType **LIST** code,
+	_subjectType **LIST** Element,
 	"date" DATETIME,
 	_date TEXT, -- Foreign Key to element table
 	publisher TEXT,
 	_publisher TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactDetail,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List useContext,
-	List jurisdiction,
+	useContext **LIST** UsageContext,
+	jurisdiction **LIST** CodeableConcept,
 	purpose TEXT,
 	_purpose TEXT, -- Foreign Key to element table
 	copyright TEXT,
@@ -28417,8 +27721,8 @@ CREATE TABLE questionnaire(
 	lastReviewDate DATE,
 	_lastReviewDate TEXT, -- Foreign Key to element table
 	effectivePeriod TEXT, -- Foreign Key to period table
-	List code,
-	List item,
+	"code" **LIST** Coding,
+	item **LIST** Questionnaire_Item,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -28515,25 +27819,23 @@ CREATE TABLE questionnaire(
 CREATE TABLE questionnaire_Item(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	linkId TEXT,
 	_linkId TEXT, -- Foreign Key to element table
 	"definition" TEXT,
 	_definition TEXT, -- Foreign Key to element table
-	List code,
+	"code" **LIST** Coding,
 	prefix TEXT,
 	_prefix TEXT, -- Foreign Key to element table
 	"text" TEXT,
 	_text TEXT, -- Foreign Key to element table
 	"type" TEXT, -- enum: group/display/boolean/decimal/integer/date/dateTime/time/string/text/url/choice/open-choice/attachment/reference/quantity
 	_type TEXT, -- Foreign Key to element table
-	List enableWhen,
+	enableWhen **LIST** Questionnaire_EnableWhen,
 	enableBehavior TEXT, -- enum: all/any
 	_enableBehavior TEXT, -- Foreign Key to element table
-	required BOOLEAN,
+	"required" BOOLEAN,
 	_required TEXT, -- Foreign Key to element table
 	repeats BOOLEAN,
 	_repeats TEXT, -- Foreign Key to element table
@@ -28542,9 +27844,9 @@ CREATE TABLE questionnaire_Item(
 	"maxLength" INTEGER,
 	_maxLength TEXT, -- Foreign Key to element table
 	answerValueSet TEXT,
-	List answerOption,
-	List initial,
-	List item,
+	answerOption **LIST** Questionnaire_AnswerOption,
+	initial **LIST** Questionnaire_Initial,
+	item **LIST** Questionnaire_Item,
 
 	FOREIGN KEY (_linkId)
 		REFERENCES element (id)
@@ -28601,10 +27903,8 @@ CREATE TABLE questionnaire_Item(
 CREATE TABLE questionnaire_EnableWhen(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	question TEXT,
 	_question TEXT, -- Foreign Key to element table
 	operator TEXT, -- enum: exists/=/!=/>/</>=/<=
@@ -28692,10 +27992,8 @@ CREATE TABLE questionnaire_EnableWhen(
 CREATE TABLE questionnaire_AnswerOption(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	valueInteger REAL, -- pattern: ^-?([0]|([1-9][0-9]*))$
 	_valueInteger TEXT, -- Foreign Key to element table
 	valueDate TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
@@ -28749,10 +28047,8 @@ CREATE TABLE questionnaire_AnswerOption(
 CREATE TABLE questionnaire_Initial(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	valueBoolean BOOLEAN, -- pattern: ^true|false$
 	_valueBoolean TEXT, -- Foreign Key to element table
 	valueDecimal REAL, -- pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
@@ -28846,12 +28142,12 @@ CREATE TABLE questionnaireResponse(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	identifier TEXT, -- Foreign Key to identifier table
-	List basedOn,
-	List partOf,
+	basedOn **LIST** Reference,
+	partOf **LIST** Reference,
 	questionnaire TEXT,
 	"status" TEXT, -- enum: in-progress/completed/amended/entered-in-error/stopped
 	_status TEXT, -- Foreign Key to element table
@@ -28861,7 +28157,7 @@ CREATE TABLE questionnaireResponse(
 	_authored TEXT, -- Foreign Key to element table
 	author TEXT, -- Foreign Key to reference table
 	"source" TEXT, -- Foreign Key to reference table
-	List item,
+	item **LIST** QuestionnaireResponse_Item,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -28923,18 +28219,16 @@ CREATE TABLE questionnaireResponse(
 CREATE TABLE questionnaireResponse_Item(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	linkId TEXT,
 	_linkId TEXT, -- Foreign Key to element table
 	"definition" TEXT,
 	_definition TEXT, -- Foreign Key to element table
 	"text" TEXT,
 	_text TEXT, -- Foreign Key to element table
-	List answer,
-	List item,
+	answer **LIST** QuestionnaireResponse_Answer,
+	item **LIST** QuestionnaireResponse_Item,
 
 	FOREIGN KEY (_linkId)
 		REFERENCES element (id)
@@ -28956,10 +28250,8 @@ CREATE TABLE questionnaireResponse_Item(
 CREATE TABLE questionnaireResponse_Answer(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	valueBoolean BOOLEAN, -- pattern: ^true|false$
 	_valueBoolean TEXT, -- Foreign Key to element table
 	valueDecimal REAL, -- pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
@@ -28980,7 +28272,7 @@ CREATE TABLE questionnaireResponse_Answer(
 	valueCoding TEXT, -- Foreign Key to coding table
 	valueQuantity TEXT, -- Foreign Key to quantity table
 	valueReference TEXT, -- Foreign Key to reference table
-	List item,
+	item **LIST** QuestionnaireResponse_Item,
 
 	FOREIGN KEY (_valueBoolean)
 		REFERENCES element (id)
@@ -29054,24 +28346,24 @@ CREATE TABLE relatedPerson(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	active BOOLEAN,
 	_active TEXT, -- Foreign Key to element table
 	patient TEXT, -- Foreign Key to reference table
-	List relationship,
-	List name,
-	List telecom,
+	relationship **LIST** CodeableConcept,
+	"name" **LIST** HumanName,
+	telecom **LIST** ContactPoint,
 	gender TEXT, -- enum: male/female/other/unknown
 	_gender TEXT, -- Foreign Key to element table
 	birthDate DATE,
 	_birthDate TEXT, -- Foreign Key to element table
-	List address,
-	List photo,
+	"address" **LIST** Address,
+	photo **LIST** Attachment,
 	"period" TEXT, -- Foreign Key to period table
-	List communication,
+	communication **LIST** RelatedPerson_Communication,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -29123,10 +28415,8 @@ CREATE TABLE relatedPerson(
 CREATE TABLE relatedPerson_Communication(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"language" TEXT, -- Foreign Key to codeableConcept table
 	preferred BOOLEAN,
 	_preferred TEXT, -- Foreign Key to element table
@@ -29153,16 +28443,16 @@ CREATE TABLE requestGroup(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
-	List instantiatesCanonical,
-	List _instantiatesCanonical,
-	List instantiatesUri,
-	List _instantiatesUri,
-	List basedOn,
-	List replaces,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
+	instantiatesCanonical **LIST** canonical,
+	_instantiatesCanonical **LIST** Element,
+	instantiatesUri **LIST** uri,
+	_instantiatesUri **LIST** Element,
+	basedOn **LIST** Reference,
+	replaces **LIST** Reference,
 	groupIdentifier TEXT, -- Foreign Key to identifier table
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
@@ -29176,10 +28466,10 @@ CREATE TABLE requestGroup(
 	authoredOn DATETIME,
 	_authoredOn TEXT, -- Foreign Key to element table
 	author TEXT, -- Foreign Key to reference table
-	List reasonCode,
-	List reasonReference,
-	List note,
-	List action,
+	reasonCode **LIST** CodeableConcept,
+	reasonReference **LIST** Reference,
+	note **LIST** Annotation,
+	"action" **LIST** RequestGroup_Action,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -29251,10 +28541,8 @@ CREATE TABLE requestGroup(
 CREATE TABLE requestGroup_Action(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	prefix TEXT,
 	_prefix TEXT, -- Foreign Key to element table
 	title TEXT,
@@ -29265,10 +28553,10 @@ CREATE TABLE requestGroup_Action(
 	_textEquivalent TEXT, -- Foreign Key to element table
 	"priority" TEXT,
 	_priority TEXT, -- Foreign Key to element table
-	List code,
-	List documentation,
-	List condition,
-	List relatedAction,
+	"code" **LIST** CodeableConcept,
+	documentation **LIST** RelatedArtifact,
+	"condition" **LIST** RequestGroup_Condition,
+	relatedAction **LIST** RequestGroup_RelatedAction,
 	timingDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 	_timingDateTime TEXT, -- Foreign Key to element table
 	timingAge TEXT, -- Foreign Key to age table
@@ -29276,7 +28564,7 @@ CREATE TABLE requestGroup_Action(
 	timingDuration TEXT, -- Foreign Key to duration table
 	timingRange TEXT, -- Foreign Key to range table
 	timingTiming TEXT, -- Foreign Key to timing table
-	List participant,
+	participant **LIST** Reference,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	groupingBehavior TEXT,
 	_groupingBehavior TEXT, -- Foreign Key to element table
@@ -29288,8 +28576,8 @@ CREATE TABLE requestGroup_Action(
 	_precheckBehavior TEXT, -- Foreign Key to element table
 	cardinalityBehavior TEXT,
 	_cardinalityBehavior TEXT, -- Foreign Key to element table
-	resource TEXT, -- Foreign Key to reference table
-	List action,
+	"resource" TEXT, -- Foreign Key to reference table
+	"action" **LIST** RequestGroup_Action,
 
 	FOREIGN KEY (_prefix)
 		REFERENCES element (id)
@@ -29376,7 +28664,7 @@ CREATE TABLE requestGroup_Action(
 			ON DELETE CASCADE
 		ON UPDATE NO ACTION,
 
-	FOREIGN KEY (resource)
+	FOREIGN KEY ("resource")
 		REFERENCES reference (id)
 			ON DELETE CASCADE
 		ON UPDATE NO ACTION
@@ -29386,10 +28674,8 @@ CREATE TABLE requestGroup_Action(
 CREATE TABLE requestGroup_Condition(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	kind TEXT,
 	_kind TEXT, -- Foreign Key to element table
 	expression TEXT, -- Foreign Key to expression table
@@ -29409,10 +28695,8 @@ CREATE TABLE requestGroup_Condition(
 CREATE TABLE requestGroup_RelatedAction(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	actionId TEXT, -- Foreign Key to id table
 	_actionId TEXT, -- Foreign Key to element table
 	relationship TEXT,
@@ -29457,12 +28741,12 @@ CREATE TABLE researchDefinition(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
-	List identifier,
+	identifier **LIST** Identifier,
 	"version" TEXT,
 	_version TEXT, -- Foreign Key to element table
 	"name" TEXT,
@@ -29483,13 +28767,13 @@ CREATE TABLE researchDefinition(
 	_date TEXT, -- Foreign Key to element table
 	publisher TEXT,
 	_publisher TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactDetail,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List comment,
-	List _comment,
-	List useContext,
-	List jurisdiction,
+	comment **LIST** string,
+	_comment **LIST** Element,
+	useContext **LIST** UsageContext,
+	jurisdiction **LIST** CodeableConcept,
 	purpose TEXT,
 	_purpose TEXT, -- Foreign Key to element table
 	"usage" TEXT,
@@ -29501,13 +28785,13 @@ CREATE TABLE researchDefinition(
 	lastReviewDate DATE,
 	_lastReviewDate TEXT, -- Foreign Key to element table
 	effectivePeriod TEXT, -- Foreign Key to period table
-	List topic,
-	List author,
-	List editor,
-	List reviewer,
-	List endorser,
-	List relatedArtifact,
-	List library,
+	topic **LIST** CodeableConcept,
+	author **LIST** ContactDetail,
+	editor **LIST** ContactDetail,
+	reviewer **LIST** ContactDetail,
+	endorser **LIST** ContactDetail,
+	relatedArtifact **LIST** RelatedArtifact,
+	library **LIST** canonical,
 	"population" TEXT, -- Foreign Key to reference table
 	exposure TEXT, -- Foreign Key to reference table
 	exposureAlternative TEXT, -- Foreign Key to reference table
@@ -29660,12 +28944,12 @@ CREATE TABLE researchElementDefinition(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
-	List identifier,
+	identifier **LIST** Identifier,
 	"version" TEXT,
 	_version TEXT, -- Foreign Key to element table
 	"name" TEXT,
@@ -29686,13 +28970,13 @@ CREATE TABLE researchElementDefinition(
 	_date TEXT, -- Foreign Key to element table
 	publisher TEXT,
 	_publisher TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactDetail,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List comment,
-	List _comment,
-	List useContext,
-	List jurisdiction,
+	comment **LIST** string,
+	_comment **LIST** Element,
+	useContext **LIST** UsageContext,
+	jurisdiction **LIST** CodeableConcept,
 	purpose TEXT,
 	_purpose TEXT, -- Foreign Key to element table
 	"usage" TEXT,
@@ -29704,18 +28988,18 @@ CREATE TABLE researchElementDefinition(
 	lastReviewDate DATE,
 	_lastReviewDate TEXT, -- Foreign Key to element table
 	effectivePeriod TEXT, -- Foreign Key to period table
-	List topic,
-	List author,
-	List editor,
-	List reviewer,
-	List endorser,
-	List relatedArtifact,
-	List library,
+	topic **LIST** CodeableConcept,
+	author **LIST** ContactDetail,
+	editor **LIST** ContactDetail,
+	reviewer **LIST** ContactDetail,
+	endorser **LIST** ContactDetail,
+	relatedArtifact **LIST** RelatedArtifact,
+	library **LIST** canonical,
 	"type" TEXT, -- enum: population/exposure/outcome
 	_type TEXT, -- Foreign Key to element table
 	variableType TEXT, -- enum: dichotomous/continuous/descriptive
 	_variableType TEXT, -- Foreign Key to element table
-	List characteristic,
+	characteristic **LIST** ResearchElementDefinition_Characteristic,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -29847,16 +29131,14 @@ CREATE TABLE researchElementDefinition(
 CREATE TABLE researchElementDefinition_Characteristic(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	definitionCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	definitionCanonical TEXT, -- pattern: ^\S*$
 	_definitionCanonical TEXT, -- Foreign Key to element table
 	definitionExpression TEXT, -- Foreign Key to expression table
 	definitionDataRequirement TEXT, -- Foreign Key to dataRequirement table
-	List usageContext,
+	usageContext **LIST** UsageContext,
 	exclude BOOLEAN,
 	_exclude TEXT, -- Foreign Key to element table
 	unitOfMeasure TEXT, -- Foreign Key to codeableConcept table
@@ -29993,36 +29275,36 @@ CREATE TABLE researchStudy(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	title TEXT,
 	_title TEXT, -- Foreign Key to element table
-	List protocol,
-	List partOf,
+	protocol **LIST** Reference,
+	partOf **LIST** Reference,
 	"status" TEXT, -- enum: active/administratively-completed/approved/closed-to-accrual/closed-to-accrual-and-intervention/completed/disapproved/in-review/temporarily-closed-to-accrual/temporarily-closed-to-accrual-and-intervention/withdrawn
 	_status TEXT, -- Foreign Key to element table
 	primaryPurposeType TEXT, -- Foreign Key to codeableConcept table
 	phase TEXT, -- Foreign Key to codeableConcept table
-	List category,
-	List focus,
-	List condition,
-	List contact,
-	List relatedArtifact,
-	List keyword,
-	List location,
+	category **LIST** CodeableConcept,
+	focus **LIST** CodeableConcept,
+	"condition" **LIST** CodeableConcept,
+	contact **LIST** ContactDetail,
+	relatedArtifact **LIST** RelatedArtifact,
+	keyword **LIST** CodeableConcept,
+	"location" **LIST** CodeableConcept,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List enrollment,
+	enrollment **LIST** Reference,
 	"period" TEXT, -- Foreign Key to period table
 	sponsor TEXT, -- Foreign Key to reference table
 	principalInvestigator TEXT, -- Foreign Key to reference table
-	List site,
+	"site" **LIST** Reference,
 	reasonStopped TEXT, -- Foreign Key to codeableConcept table
-	List note,
-	List arm,
-	List objective,
+	note **LIST** Annotation,
+	arm **LIST** ResearchStudy_Arm,
+	objective **LIST** ResearchStudy_Objective,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -30094,10 +29376,8 @@ CREATE TABLE researchStudy(
 CREATE TABLE researchStudy_Arm(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to codeableConcept table
@@ -30124,10 +29404,8 @@ CREATE TABLE researchStudy_Arm(
 CREATE TABLE researchStudy_Objective(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to codeableConcept table
@@ -30154,10 +29432,10 @@ CREATE TABLE researchSubject(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT, -- enum: candidate/eligible/follow-up/ineligible/not-registered/off-study/on-study/on-study-intervention/on-study-observation/pending-on-study/potential-candidate/screening/withdrawn
 	_status TEXT, -- Foreign Key to element table
 	"period" TEXT, -- Foreign Key to period table
@@ -30236,10 +29514,10 @@ CREATE TABLE riskAssessment(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	basedOn TEXT, -- Foreign Key to reference table
 	parent TEXT, -- Foreign Key to reference table
 	"status" TEXT,
@@ -30253,13 +29531,13 @@ CREATE TABLE riskAssessment(
 	occurrencePeriod TEXT, -- Foreign Key to period table
 	"condition" TEXT, -- Foreign Key to reference table
 	performer TEXT, -- Foreign Key to reference table
-	List reasonCode,
-	List reasonReference,
-	List basis,
-	List prediction,
+	reasonCode **LIST** CodeableConcept,
+	reasonReference **LIST** Reference,
+	basis **LIST** Reference,
+	prediction **LIST** RiskAssessment_Prediction,
 	mitigation TEXT,
 	_mitigation TEXT, -- Foreign Key to element table
-	List note,
+	note **LIST** Annotation,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -30346,10 +29624,8 @@ CREATE TABLE riskAssessment(
 CREATE TABLE riskAssessment_Prediction(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	outcome TEXT, -- Foreign Key to codeableConcept table
 	probabilityDecimal REAL, -- pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
 	_probabilityDecimal TEXT, -- Foreign Key to element table
@@ -30414,12 +29690,12 @@ CREATE TABLE riskEvidenceSynthesis(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
-	List identifier,
+	identifier **LIST** Identifier,
 	"version" TEXT,
 	_version TEXT, -- Foreign Key to element table
 	"name" TEXT,
@@ -30432,12 +29708,12 @@ CREATE TABLE riskEvidenceSynthesis(
 	_date TEXT, -- Foreign Key to element table
 	publisher TEXT,
 	_publisher TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactDetail,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List note,
-	List useContext,
-	List jurisdiction,
+	note **LIST** Annotation,
+	useContext **LIST** UsageContext,
+	jurisdiction **LIST** CodeableConcept,
 	copyright TEXT,
 	_copyright TEXT, -- Foreign Key to element table
 	approvalDate DATE,
@@ -30445,12 +29721,12 @@ CREATE TABLE riskEvidenceSynthesis(
 	lastReviewDate DATE,
 	_lastReviewDate TEXT, -- Foreign Key to element table
 	effectivePeriod TEXT, -- Foreign Key to period table
-	List topic,
-	List author,
-	List editor,
-	List reviewer,
-	List endorser,
-	List relatedArtifact,
+	topic **LIST** CodeableConcept,
+	author **LIST** ContactDetail,
+	editor **LIST** ContactDetail,
+	reviewer **LIST** ContactDetail,
+	endorser **LIST** ContactDetail,
+	relatedArtifact **LIST** RelatedArtifact,
 	synthesisType TEXT, -- Foreign Key to codeableConcept table
 	studyType TEXT, -- Foreign Key to codeableConcept table
 	"population" TEXT, -- Foreign Key to reference table
@@ -30458,7 +29734,7 @@ CREATE TABLE riskEvidenceSynthesis(
 	outcome TEXT, -- Foreign Key to reference table
 	sampleSize TEXT, -- Foreign Key to riskEvidenceSynthesis_SampleSize table
 	riskEstimate TEXT, -- Foreign Key to riskEvidenceSynthesis_RiskEstimate table
-	List certainty,
+	certainty **LIST** RiskEvidenceSynthesis_Certainty,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -30580,10 +29856,8 @@ CREATE TABLE riskEvidenceSynthesis(
 CREATE TABLE riskEvidenceSynthesis_SampleSize(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	numberOfStudies INTEGER,
@@ -30611,10 +29885,8 @@ CREATE TABLE riskEvidenceSynthesis_SampleSize(
 CREATE TABLE riskEvidenceSynthesis_RiskEstimate(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to codeableConcept table
@@ -30625,7 +29897,7 @@ CREATE TABLE riskEvidenceSynthesis_RiskEstimate(
 	_denominatorCount TEXT, -- Foreign Key to element table
 	numeratorCount INTEGER,
 	_numeratorCount TEXT, -- Foreign Key to element table
-	List precisionEstimate,
+	precisionEstimate **LIST** RiskEvidenceSynthesis_PrecisionEstimate,
 
 	FOREIGN KEY (_description)
 		REFERENCES element (id)
@@ -30662,10 +29934,8 @@ CREATE TABLE riskEvidenceSynthesis_RiskEstimate(
 CREATE TABLE riskEvidenceSynthesis_PrecisionEstimate(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	"level" REAL,
 	_level TEXT, -- Foreign Key to element table
@@ -30699,26 +29969,22 @@ CREATE TABLE riskEvidenceSynthesis_PrecisionEstimate(
 CREATE TABLE riskEvidenceSynthesis_Certainty(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List rating,
-	List note,
-	List certaintySubcomponent
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	rating **LIST** CodeableConcept,
+	note **LIST** Annotation,
+	certaintySubcomponent **LIST** RiskEvidenceSynthesis_CertaintySubcomponent
 
 );
 
 CREATE TABLE riskEvidenceSynthesis_CertaintySubcomponent(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
-	List rating,
-	List note,
+	rating **LIST** CodeableConcept,
+	note **LIST** Annotation,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -30737,16 +30003,16 @@ CREATE TABLE schedule(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	active BOOLEAN,
 	_active TEXT, -- Foreign Key to element table
-	List serviceCategory,
-	List serviceType,
-	List specialty,
-	List actor,
+	serviceCategory **LIST** CodeableConcept,
+	serviceType **LIST** CodeableConcept,
+	specialty **LIST** CodeableConcept,
+	actor **LIST** Reference,
 	planningHorizon TEXT, -- Foreign Key to period table
 	comment TEXT,
 	_comment TEXT, -- Foreign Key to element table
@@ -30798,9 +30064,9 @@ CREATE TABLE searchParameter(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
 	"version" TEXT,
@@ -30816,17 +30082,17 @@ CREATE TABLE searchParameter(
 	_date TEXT, -- Foreign Key to element table
 	publisher TEXT,
 	_publisher TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactDetail,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List useContext,
-	List jurisdiction,
+	useContext **LIST** UsageContext,
+	jurisdiction **LIST** CodeableConcept,
 	purpose TEXT,
 	_purpose TEXT, -- Foreign Key to element table
 	"code" TEXT,
 	_code TEXT, -- Foreign Key to element table
-	List base,
-	List _base,
+	base **LIST** code,
+	_base **LIST** Element,
 	"type" TEXT, -- enum: number/date/string/token/reference/composite/quantity/uri/special
 	_type TEXT, -- Foreign Key to element table
 	expression TEXT,
@@ -30835,19 +30101,19 @@ CREATE TABLE searchParameter(
 	_xpath TEXT, -- Foreign Key to element table
 	xpathUsage TEXT, -- enum: normal/phonetic/nearby/distance/other
 	_xpathUsage TEXT, -- Foreign Key to element table
-	List target,
-	List _target,
+	"target" **LIST** code,
+	_target **LIST** Element,
 	multipleOr BOOLEAN,
 	_multipleOr TEXT, -- Foreign Key to element table
 	multipleAnd BOOLEAN,
 	_multipleAnd TEXT, -- Foreign Key to element table
-	List comparator,
-	List _comparator,
-	List modifier,
-	List _modifier,
-	List chain,
-	List _chain,
-	List component,
+	comparator **LIST** enum, -- eq/ne/gt/lt/ge/le/sa/eb/ap,
+	_comparator **LIST** Element,
+	modifier **LIST** enum, -- missing/exact/contains/not/text/in/not-in/below/above/type/identifier/ofType,
+	_modifier **LIST** Element,
+	"chain" **LIST** string,
+	_chain **LIST** Element,
+	component **LIST** SearchParameter_Component,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -30954,10 +30220,8 @@ CREATE TABLE searchParameter(
 CREATE TABLE searchParameter_Component(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"definition" TEXT,
 	expression TEXT,
 	_expression TEXT, -- Foreign Key to element table
@@ -30979,27 +30243,27 @@ CREATE TABLE serviceRequest(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
-	List instantiatesCanonical,
-	List instantiatesUri,
-	List _instantiatesUri,
-	List basedOn,
-	List replaces,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
+	instantiatesCanonical **LIST** canonical,
+	instantiatesUri **LIST** uri,
+	_instantiatesUri **LIST** Element,
+	basedOn **LIST** Reference,
+	replaces **LIST** Reference,
 	requisition TEXT, -- Foreign Key to identifier table
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
 	intent TEXT,
 	_intent TEXT, -- Foreign Key to element table
-	List category,
+	category **LIST** CodeableConcept,
 	"priority" TEXT,
 	_priority TEXT, -- Foreign Key to element table
 	doNotPerform BOOLEAN,
 	_doNotPerform TEXT, -- Foreign Key to element table
 	"code" TEXT, -- Foreign Key to codeableConcept table
-	List orderDetail,
+	orderDetail **LIST** CodeableConcept,
 	quantityQuantity TEXT, -- Foreign Key to quantity table
 	quantityRatio TEXT, -- Foreign Key to ratio table
 	quantityRange TEXT, -- Foreign Key to range table
@@ -31016,19 +30280,19 @@ CREATE TABLE serviceRequest(
 	_authoredOn TEXT, -- Foreign Key to element table
 	requester TEXT, -- Foreign Key to reference table
 	performerType TEXT, -- Foreign Key to codeableConcept table
-	List performer,
-	List locationCode,
-	List locationReference,
-	List reasonCode,
-	List reasonReference,
-	List insurance,
-	List supportingInfo,
-	List specimen,
-	List bodySite,
-	List note,
+	performer **LIST** Reference,
+	locationCode **LIST** CodeableConcept,
+	locationReference **LIST** Reference,
+	reasonCode **LIST** CodeableConcept,
+	reasonReference **LIST** Reference,
+	insurance **LIST** Reference,
+	supportingInfo **LIST** Reference,
+	specimen **LIST** Reference,
+	bodySite **LIST** CodeableConcept,
+	note **LIST** Annotation,
 	patientInstruction TEXT,
 	_patientInstruction TEXT, -- Foreign Key to element table
-	List relevantHistory,
+	relevantHistory **LIST** Reference,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -31162,13 +30426,13 @@ CREATE TABLE slot(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
-	List serviceCategory,
-	List serviceType,
-	List specialty,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
+	serviceCategory **LIST** CodeableConcept,
+	serviceType **LIST** CodeableConcept,
+	specialty **LIST** CodeableConcept,
 	appointmentType TEXT, -- Foreign Key to codeableConcept table
 	schedule TEXT, -- Foreign Key to reference table
 	"status" TEXT, -- enum: busy/free/busy-unavailable/busy-tentative/entered-in-error
@@ -31249,10 +30513,10 @@ CREATE TABLE specimen(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	accessionIdentifier TEXT, -- Foreign Key to identifier table
 	"status" TEXT, -- enum: available/unavailable/unsatisfactory/entered-in-error
 	_status TEXT, -- Foreign Key to element table
@@ -31260,13 +30524,13 @@ CREATE TABLE specimen(
 	"subject" TEXT, -- Foreign Key to reference table
 	receivedTime DATETIME,
 	_receivedTime TEXT, -- Foreign Key to element table
-	List parent,
-	List request,
-	collection TEXT, -- Foreign Key to specimen_Collection table
-	List processing,
-	List container,
-	List condition,
-	List note,
+	parent **LIST** Reference,
+	request **LIST** Reference,
+	"collection" TEXT, -- Foreign Key to specimen_Collection table
+	processing **LIST** Specimen_Processing,
+	container **LIST** Specimen_Container,
+	"condition" **LIST** CodeableConcept,
+	note **LIST** Annotation,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -31313,7 +30577,7 @@ CREATE TABLE specimen(
 			ON DELETE CASCADE
 		ON UPDATE NO ACTION,
 
-	FOREIGN KEY (collection)
+	FOREIGN KEY ("collection")
 		REFERENCES specimen_Collection (id)
 			ON DELETE CASCADE
 		ON UPDATE NO ACTION
@@ -31323,10 +30587,8 @@ CREATE TABLE specimen(
 CREATE TABLE specimen_Collection(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	collector TEXT, -- Foreign Key to reference table
 	collectedDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 	_collectedDateTime TEXT, -- Foreign Key to element table
@@ -31388,14 +30650,12 @@ CREATE TABLE specimen_Collection(
 CREATE TABLE specimen_Processing(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	"procedure" TEXT, -- Foreign Key to codeableConcept table
-	List additive,
+	additive **LIST** Reference,
 	timeDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 	_timeDateTime TEXT, -- Foreign Key to element table
 	timePeriod TEXT, -- Foreign Key to period table
@@ -31425,11 +30685,9 @@ CREATE TABLE specimen_Processing(
 CREATE TABLE specimen_Container(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List identifier,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to codeableConcept table
@@ -31480,16 +30738,16 @@ CREATE TABLE specimenDefinition(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	identifier TEXT, -- Foreign Key to identifier table
 	typeCollected TEXT, -- Foreign Key to codeableConcept table
-	List patientPreparation,
+	patientPreparation **LIST** CodeableConcept,
 	timeAspect TEXT,
 	_timeAspect TEXT, -- Foreign Key to element table
-	List collection,
-	List typeTested,
+	"collection" **LIST** CodeableConcept,
+	typeTested **LIST** SpecimenDefinition_TypeTested,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -31531,10 +30789,8 @@ CREATE TABLE specimenDefinition(
 CREATE TABLE specimenDefinition_TypeTested(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	isDerived BOOLEAN,
 	_isDerived TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to codeableConcept table
@@ -31544,8 +30800,8 @@ CREATE TABLE specimenDefinition_TypeTested(
 	requirement TEXT,
 	_requirement TEXT, -- Foreign Key to element table
 	retentionTime TEXT, -- Foreign Key to duration table
-	List rejectionCriterion,
-	List handling,
+	rejectionCriterion **LIST** CodeableConcept,
+	handling **LIST** SpecimenDefinition_Handling,
 
 	FOREIGN KEY (_isDerived)
 		REFERENCES element (id)
@@ -31582,10 +30838,8 @@ CREATE TABLE specimenDefinition_TypeTested(
 CREATE TABLE specimenDefinition_Container(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	material TEXT, -- Foreign Key to codeableConcept table
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	cap TEXT, -- Foreign Key to codeableConcept table
@@ -31595,7 +30849,7 @@ CREATE TABLE specimenDefinition_Container(
 	minimumVolumeQuantity TEXT, -- Foreign Key to quantity table
 	minimumVolumeString TEXT, -- pattern: ^[ \r\n\t\S]+$
 	_minimumVolumeString TEXT, -- Foreign Key to element table
-	List additive,
+	additive **LIST** SpecimenDefinition_Additive,
 	preparation TEXT,
 	_preparation TEXT, -- Foreign Key to element table
 
@@ -31644,10 +30898,8 @@ CREATE TABLE specimenDefinition_Container(
 CREATE TABLE specimenDefinition_Additive(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	additiveCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	additiveReference TEXT, -- Foreign Key to reference table
 
@@ -31666,10 +30918,8 @@ CREATE TABLE specimenDefinition_Additive(
 CREATE TABLE specimenDefinition_Handling(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	temperatureQualifier TEXT, -- Foreign Key to codeableConcept table
 	temperatureRange TEXT, -- Foreign Key to range table
 	maxDuration TEXT, -- Foreign Key to duration table
@@ -31708,12 +30958,12 @@ CREATE TABLE structureDefinition(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
-	List identifier,
+	identifier **LIST** Identifier,
 	"version" TEXT,
 	_version TEXT, -- Foreign Key to element table
 	"name" TEXT,
@@ -31728,33 +30978,33 @@ CREATE TABLE structureDefinition(
 	_date TEXT, -- Foreign Key to element table
 	publisher TEXT,
 	_publisher TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactDetail,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List useContext,
-	List jurisdiction,
+	useContext **LIST** UsageContext,
+	jurisdiction **LIST** CodeableConcept,
 	purpose TEXT,
 	_purpose TEXT, -- Foreign Key to element table
 	copyright TEXT,
 	_copyright TEXT, -- Foreign Key to element table
-	List keyword,
+	keyword **LIST** Coding,
 	fhirVersion TEXT, -- enum: 0.01/0.05/0.06/0.11/0.0.80/0.0.81/0.0.82/0.4.0/0.5.0/1.0.0/1.0.1/1.0.2/1.1.0/1.4.0/1.6.0/1.8.0/3.0.0/3.0.1/3.3.0/3.5.0/4.0.0/4.0.1
 	_fhirVersion TEXT, -- Foreign Key to element table
-	List mapping,
+	mapping **LIST** StructureDefinition_Mapping,
 	kind TEXT, -- enum: primitive-type/complex-type/resource/logical
 	_kind TEXT, -- Foreign Key to element table
 	abstract BOOLEAN,
 	_abstract TEXT, -- Foreign Key to element table
-	List context,
-	List contextInvariant,
-	List _contextInvariant,
+	context **LIST** StructureDefinition_Context,
+	contextInvariant **LIST** string,
+	_contextInvariant **LIST** Element,
 	"type" TEXT,
 	_type TEXT, -- Foreign Key to element table
 	baseDefinition TEXT,
 	derivation TEXT, -- enum: specialization/constraint
 	_derivation TEXT, -- Foreign Key to element table
-	snapshot TEXT, -- Foreign Key to structureDefinition_Snapshot table
-	differential TEXT, -- Foreign Key to structureDefinition_Differential table
+	"snapshot" TEXT, -- Foreign Key to structureDefinition_Snapshot table
+	"differential" TEXT, -- Foreign Key to structureDefinition_Differential table
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -31856,12 +31106,12 @@ CREATE TABLE structureDefinition(
 			ON DELETE CASCADE
 		ON UPDATE NO ACTION,
 
-	FOREIGN KEY (snapshot)
+	FOREIGN KEY ("snapshot")
 		REFERENCES structureDefinition_Snapshot (id)
 			ON DELETE CASCADE
 		ON UPDATE NO ACTION,
 
-	FOREIGN KEY (differential)
+	FOREIGN KEY ("differential")
 		REFERENCES structureDefinition_Differential (id)
 			ON DELETE CASCADE
 		ON UPDATE NO ACTION
@@ -31871,10 +31121,8 @@ CREATE TABLE structureDefinition(
 CREATE TABLE structureDefinition_Mapping(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"identity" TEXT, -- Foreign Key to id table
 	_identity TEXT, -- Foreign Key to element table
 	uri TEXT,
@@ -31914,10 +31162,8 @@ CREATE TABLE structureDefinition_Mapping(
 CREATE TABLE structureDefinition_Context(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- enum: fhirpath/element/extension
 	_type TEXT, -- Foreign Key to element table
 	expression TEXT,
@@ -31938,22 +31184,18 @@ CREATE TABLE structureDefinition_Context(
 CREATE TABLE structureDefinition_Snapshot(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List element
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	element **LIST** ElementDefinition
 
 );
 
 CREATE TABLE structureDefinition_Differential(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List element
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	element **LIST** ElementDefinition
 
 );
 
@@ -31967,12 +31209,12 @@ CREATE TABLE structureMap(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
-	List identifier,
+	identifier **LIST** Identifier,
 	"version" TEXT,
 	_version TEXT, -- Foreign Key to element table
 	"name" TEXT,
@@ -31987,18 +31229,18 @@ CREATE TABLE structureMap(
 	_date TEXT, -- Foreign Key to element table
 	publisher TEXT,
 	_publisher TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactDetail,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List useContext,
-	List jurisdiction,
+	useContext **LIST** UsageContext,
+	jurisdiction **LIST** CodeableConcept,
 	purpose TEXT,
 	_purpose TEXT, -- Foreign Key to element table
 	copyright TEXT,
 	_copyright TEXT, -- Foreign Key to element table
-	List structure,
-	List import,
-	List group,
+	"structure" **LIST** StructureMap_Structure,
+	import **LIST** canonical,
+	"group" **LIST** StructureMap_Group,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -32080,10 +31322,8 @@ CREATE TABLE structureMap(
 CREATE TABLE structureMap_Structure(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	mode TEXT, -- enum: source/queried/target/produced
 	_mode TEXT, -- Foreign Key to element table
@@ -32112,10 +31352,8 @@ CREATE TABLE structureMap_Structure(
 CREATE TABLE structureMap_Group(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"name" TEXT, -- Foreign Key to id table
 	_name TEXT, -- Foreign Key to element table
 	extends TEXT, -- Foreign Key to id table
@@ -32124,8 +31362,8 @@ CREATE TABLE structureMap_Group(
 	_typeMode TEXT, -- Foreign Key to element table
 	documentation TEXT,
 	_documentation TEXT, -- Foreign Key to element table
-	List input,
-	List rule,
+	"input" **LIST** StructureMap_Input,
+	"rule" **LIST** StructureMap_Rule,
 
 	FOREIGN KEY ("name")
 		REFERENCES id (id)
@@ -32162,10 +31400,8 @@ CREATE TABLE structureMap_Group(
 CREATE TABLE structureMap_Input(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"name" TEXT, -- Foreign Key to id table
 	_name TEXT, -- Foreign Key to element table
 	"type" TEXT,
@@ -32205,16 +31441,14 @@ CREATE TABLE structureMap_Input(
 CREATE TABLE structureMap_Rule(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"name" TEXT, -- Foreign Key to id table
 	_name TEXT, -- Foreign Key to element table
-	List source,
-	List target,
-	List rule,
-	List dependent,
+	"source" **LIST** StructureMap_Source,
+	"target" **LIST** StructureMap_Target,
+	"rule" **LIST** StructureMap_Rule,
+	"dependent" **LIST** StructureMap_Dependent,
 	documentation TEXT,
 	_documentation TEXT, -- Foreign Key to element table
 
@@ -32238,10 +31472,8 @@ CREATE TABLE structureMap_Rule(
 CREATE TABLE structureMap_Source(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	context TEXT, -- Foreign Key to id table
 	_context TEXT, -- Foreign Key to element table
 	"min" INTEGER,
@@ -32647,10 +31879,8 @@ CREATE TABLE structureMap_Source(
 CREATE TABLE structureMap_Target(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	context TEXT, -- Foreign Key to id table
 	_context TEXT, -- Foreign Key to element table
 	contextType TEXT, -- enum: type/variable
@@ -32659,13 +31889,13 @@ CREATE TABLE structureMap_Target(
 	_element TEXT, -- Foreign Key to element table
 	variable TEXT, -- Foreign Key to id table
 	_variable TEXT, -- Foreign Key to element table
-	List listMode,
-	List _listMode,
+	listMode **LIST** enum, -- first/share/last/collate,
+	_listMode **LIST** Element,
 	listRuleId TEXT, -- Foreign Key to id table
 	_listRuleId TEXT, -- Foreign Key to element table
 	transform TEXT, -- enum: create/copy/truncate/escape/cast/append/translate/reference/dateOp/uuid/pointer/evaluate/cc/c/qty/id/cp
 	_transform TEXT, -- Foreign Key to element table
-	List parameter,
+	"parameter" **LIST** StructureMap_Parameter,
 
 	FOREIGN KEY (context)
 		REFERENCES id (id)
@@ -32717,10 +31947,8 @@ CREATE TABLE structureMap_Target(
 CREATE TABLE structureMap_Parameter(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	valueId TEXT, -- pattern: ^[A-Za-z0-9\-\.]{1,64}$
 	_valueId TEXT, -- Foreign Key to element table
 	valueString TEXT, -- pattern: ^[ \r\n\t\S]+$
@@ -32762,14 +31990,12 @@ CREATE TABLE structureMap_Parameter(
 CREATE TABLE structureMap_Dependent(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"name" TEXT, -- Foreign Key to id table
 	_name TEXT, -- Foreign Key to element table
-	List variable,
-	List _variable,
+	variable **LIST** string,
+	_variable **LIST** Element,
 
 	FOREIGN KEY ("name")
 		REFERENCES id (id)
@@ -32793,12 +32019,12 @@ CREATE TABLE subscription(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"status" TEXT, -- enum: requested/active/error/off
 	_status TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactPoint,
 	"end" DATETIME,
 	_end TEXT, -- Foreign Key to element table
 	reason TEXT,
@@ -32864,18 +32090,16 @@ CREATE TABLE subscription(
 CREATE TABLE subscription_Channel(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- enum: rest-hook/websocket/email/sms/message
 	_type TEXT, -- Foreign Key to element table
 	"endpoint" TEXT,
 	_endpoint TEXT, -- Foreign Key to element table
 	payload TEXT,
 	_payload TEXT, -- Foreign Key to element table
-	List header,
-	List _header,
+	header **LIST** string,
+	_header **LIST** Element,
 
 	FOREIGN KEY (_type)
 		REFERENCES element (id)
@@ -32904,18 +32128,18 @@ CREATE TABLE substance(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT, -- enum: active/inactive/entered-in-error
 	_status TEXT, -- Foreign Key to element table
-	List category,
+	category **LIST** CodeableConcept,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List instance,
-	List ingredient,
+	"instance" **LIST** Substance_Instance,
+	ingredient **LIST** Substance_Ingredient,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -32957,10 +32181,8 @@ CREATE TABLE substance(
 CREATE TABLE substance_Instance(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	identifier TEXT, -- Foreign Key to identifier table
 	expiry DATETIME,
 	_expiry TEXT, -- Foreign Key to element table
@@ -32986,10 +32208,8 @@ CREATE TABLE substance_Instance(
 CREATE TABLE substance_Ingredient(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	quantity TEXT, -- Foreign Key to ratio table
 	substanceCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	substanceReference TEXT, -- Foreign Key to reference table
@@ -33021,16 +32241,16 @@ CREATE TABLE substanceNucleicAcid(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	sequenceType TEXT, -- Foreign Key to codeableConcept table
 	numberOfSubunits INTEGER,
 	_numberOfSubunits TEXT, -- Foreign Key to element table
 	areaOfHybridisation TEXT,
 	_areaOfHybridisation TEXT, -- Foreign Key to element table
 	oligoNucleotideType TEXT, -- Foreign Key to codeableConcept table
-	List subunit,
+	subunit **LIST** SubstanceNucleicAcid_Subunit,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -33077,10 +32297,8 @@ CREATE TABLE substanceNucleicAcid(
 CREATE TABLE substanceNucleicAcid_Subunit(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	subunit INTEGER,
 	_subunit TEXT, -- Foreign Key to element table
 	"sequence" TEXT,
@@ -33090,8 +32308,8 @@ CREATE TABLE substanceNucleicAcid_Subunit(
 	sequenceAttachment TEXT, -- Foreign Key to attachment table
 	fivePrime TEXT, -- Foreign Key to codeableConcept table
 	threePrime TEXT, -- Foreign Key to codeableConcept table
-	List linkage,
-	List sugar,
+	linkage **LIST** SubstanceNucleicAcid_Linkage,
+	sugar **LIST** SubstanceNucleicAcid_Sugar,
 
 	FOREIGN KEY (_subunit)
 		REFERENCES element (id)
@@ -33128,10 +32346,8 @@ CREATE TABLE substanceNucleicAcid_Subunit(
 CREATE TABLE substanceNucleicAcid_Linkage(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	connectivity TEXT,
 	_connectivity TEXT, -- Foreign Key to element table
 	identifier TEXT, -- Foreign Key to identifier table
@@ -33165,10 +32381,8 @@ CREATE TABLE substanceNucleicAcid_Linkage(
 CREATE TABLE substanceNucleicAcid_Sugar(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	identifier TEXT, -- Foreign Key to identifier table
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
@@ -33202,16 +32416,16 @@ CREATE TABLE substancePolymer(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	class TEXT, -- Foreign Key to codeableConcept table
-	geometry TEXT, -- Foreign Key to codeableConcept table
-	List copolymerConnectivity,
-	List modification,
-	List _modification,
-	List monomerSet,
-	List repeat,
+	"geometry" TEXT, -- Foreign Key to codeableConcept table
+	copolymerConnectivity **LIST** CodeableConcept,
+	modification **LIST** string,
+	_modification **LIST** Element,
+	monomerSet **LIST** SubstancePolymer_MonomerSet,
+	"repeat" **LIST** SubstancePolymer_Repeat,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -33238,7 +32452,7 @@ CREATE TABLE substancePolymer(
 			ON DELETE CASCADE
 		ON UPDATE NO ACTION,
 
-	FOREIGN KEY (geometry)
+	FOREIGN KEY ("geometry")
 		REFERENCES codeableConcept (id)
 			ON DELETE CASCADE
 		ON UPDATE NO ACTION
@@ -33248,12 +32462,10 @@ CREATE TABLE substancePolymer(
 CREATE TABLE substancePolymer_MonomerSet(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	ratioType TEXT, -- Foreign Key to codeableConcept table
-	List startingMaterial,
+	startingMaterial **LIST** SubstancePolymer_StartingMaterial,
 
 	FOREIGN KEY (ratioType)
 		REFERENCES codeableConcept (id)
@@ -33265,10 +32477,8 @@ CREATE TABLE substancePolymer_MonomerSet(
 CREATE TABLE substancePolymer_StartingMaterial(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	material TEXT, -- Foreign Key to codeableConcept table
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	isDefining BOOLEAN,
@@ -33300,16 +32510,14 @@ CREATE TABLE substancePolymer_StartingMaterial(
 CREATE TABLE substancePolymer_Repeat(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	numberOfUnits INTEGER,
 	_numberOfUnits TEXT, -- Foreign Key to element table
 	averageMolecularFormula TEXT,
 	_averageMolecularFormula TEXT, -- Foreign Key to element table
 	repeatUnitAmountType TEXT, -- Foreign Key to codeableConcept table
-	List repeatUnit,
+	repeatUnit **LIST** SubstancePolymer_RepeatUnit,
 
 	FOREIGN KEY (_numberOfUnits)
 		REFERENCES element (id)
@@ -33331,16 +32539,14 @@ CREATE TABLE substancePolymer_Repeat(
 CREATE TABLE substancePolymer_RepeatUnit(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	orientationOfPolymerisation TEXT, -- Foreign Key to codeableConcept table
 	repeatUnit TEXT,
 	_repeatUnit TEXT, -- Foreign Key to element table
 	amount TEXT, -- Foreign Key to substanceAmount table
-	List degreeOfPolymerisation,
-	List structuralRepresentation,
+	degreeOfPolymerisation **LIST** SubstancePolymer_DegreeOfPolymerisation,
+	structuralRepresentation **LIST** SubstancePolymer_StructuralRepresentation,
 
 	FOREIGN KEY (orientationOfPolymerisation)
 		REFERENCES codeableConcept (id)
@@ -33362,10 +32568,8 @@ CREATE TABLE substancePolymer_RepeatUnit(
 CREATE TABLE substancePolymer_DegreeOfPolymerisation(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	degree TEXT, -- Foreign Key to codeableConcept table
 	amount TEXT, -- Foreign Key to substanceAmount table
 
@@ -33384,10 +32588,8 @@ CREATE TABLE substancePolymer_DegreeOfPolymerisation(
 CREATE TABLE substancePolymer_StructuralRepresentation(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	representation TEXT,
 	_representation TEXT, -- Foreign Key to element table
@@ -33420,15 +32622,15 @@ CREATE TABLE substanceProtein(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	sequenceType TEXT, -- Foreign Key to codeableConcept table
 	numberOfSubunits INTEGER,
 	_numberOfSubunits TEXT, -- Foreign Key to element table
-	List disulfideLinkage,
-	List _disulfideLinkage,
-	List subunit,
+	disulfideLinkage **LIST** string,
+	_disulfideLinkage **LIST** Element,
+	subunit **LIST** SubstanceProtein_Subunit,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -33465,10 +32667,8 @@ CREATE TABLE substanceProtein(
 CREATE TABLE substanceProtein_Subunit(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	subunit INTEGER,
 	_subunit TEXT, -- Foreign Key to element table
 	"sequence" TEXT,
@@ -33535,15 +32735,15 @@ CREATE TABLE substanceReferenceInformation(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	comment TEXT,
 	_comment TEXT, -- Foreign Key to element table
-	List gene,
-	List geneElement,
-	List classification,
-	List target,
+	gene **LIST** SubstanceReferenceInformation_Gene,
+	geneElement **LIST** SubstanceReferenceInformation_GeneElement,
+	classification **LIST** SubstanceReferenceInformation_Classification,
+	"target" **LIST** SubstanceReferenceInformation_Target,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -33575,13 +32775,11 @@ CREATE TABLE substanceReferenceInformation(
 CREATE TABLE substanceReferenceInformation_Gene(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	geneSequenceOrigin TEXT, -- Foreign Key to codeableConcept table
 	gene TEXT, -- Foreign Key to codeableConcept table
-	List source,
+	"source" **LIST** Reference,
 
 	FOREIGN KEY (geneSequenceOrigin)
 		REFERENCES codeableConcept (id)
@@ -33598,13 +32796,11 @@ CREATE TABLE substanceReferenceInformation_Gene(
 CREATE TABLE substanceReferenceInformation_GeneElement(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	element TEXT, -- Foreign Key to identifier table
-	List source,
+	"source" **LIST** Reference,
 
 	FOREIGN KEY ("type")
 		REFERENCES codeableConcept (id)
@@ -33621,14 +32817,12 @@ CREATE TABLE substanceReferenceInformation_GeneElement(
 CREATE TABLE substanceReferenceInformation_Classification(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"domain" TEXT, -- Foreign Key to codeableConcept table
 	classification TEXT, -- Foreign Key to codeableConcept table
-	List subtype,
-	List source,
+	subtype **LIST** CodeableConcept,
+	"source" **LIST** Reference,
 
 	FOREIGN KEY ("domain")
 		REFERENCES codeableConcept (id)
@@ -33645,10 +32839,8 @@ CREATE TABLE substanceReferenceInformation_Classification(
 CREATE TABLE substanceReferenceInformation_Target(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"target" TEXT, -- Foreign Key to identifier table
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	interaction TEXT, -- Foreign Key to codeableConcept table
@@ -33659,7 +32851,7 @@ CREATE TABLE substanceReferenceInformation_Target(
 	amountString TEXT, -- pattern: ^[ \r\n\t\S]+$
 	_amountString TEXT, -- Foreign Key to element table
 	amountType TEXT, -- Foreign Key to codeableConcept table
-	List source,
+	"source" **LIST** Reference,
 
 	FOREIGN KEY ("target")
 		REFERENCES identifier (id)
@@ -33718,25 +32910,25 @@ CREATE TABLE substanceSourceMaterial(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	sourceMaterialClass TEXT, -- Foreign Key to codeableConcept table
 	sourceMaterialType TEXT, -- Foreign Key to codeableConcept table
 	sourceMaterialState TEXT, -- Foreign Key to codeableConcept table
 	organismId TEXT, -- Foreign Key to identifier table
 	organismName TEXT,
 	_organismName TEXT, -- Foreign Key to element table
-	List parentSubstanceId,
-	List parentSubstanceName,
-	List _parentSubstanceName,
-	List countryOfOrigin,
-	List geographicalLocation,
-	List _geographicalLocation,
+	parentSubstanceId **LIST** Identifier,
+	parentSubstanceName **LIST** string,
+	_parentSubstanceName **LIST** Element,
+	countryOfOrigin **LIST** CodeableConcept,
+	geographicalLocation **LIST** string,
+	_geographicalLocation **LIST** Element,
 	developmentStage TEXT, -- Foreign Key to codeableConcept table
-	List fractionDescription,
+	fractionDescription **LIST** SubstanceSourceMaterial_FractionDescription,
 	organism TEXT, -- Foreign Key to substanceSourceMaterial_Organism table
-	List partDescription,
+	partDescription **LIST** SubstanceSourceMaterial_PartDescription,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -33798,10 +32990,8 @@ CREATE TABLE substanceSourceMaterial(
 CREATE TABLE substanceSourceMaterial_FractionDescription(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	fraction TEXT,
 	_fraction TEXT, -- Foreign Key to element table
 	materialType TEXT, -- Foreign Key to codeableConcept table
@@ -33821,17 +33011,15 @@ CREATE TABLE substanceSourceMaterial_FractionDescription(
 CREATE TABLE substanceSourceMaterial_Organism(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	family TEXT, -- Foreign Key to codeableConcept table
 	genus TEXT, -- Foreign Key to codeableConcept table
 	species TEXT, -- Foreign Key to codeableConcept table
 	intraspecificType TEXT, -- Foreign Key to codeableConcept table
 	intraspecificDescription TEXT,
 	_intraspecificDescription TEXT, -- Foreign Key to element table
-	List author,
+	author **LIST** SubstanceSourceMaterial_Author,
 	hybrid TEXT, -- Foreign Key to substanceSourceMaterial_Hybrid table
 	organismGeneral TEXT, -- Foreign Key to substanceSourceMaterial_OrganismGeneral table
 
@@ -33875,10 +33063,8 @@ CREATE TABLE substanceSourceMaterial_Organism(
 CREATE TABLE substanceSourceMaterial_Author(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	authorType TEXT, -- Foreign Key to codeableConcept table
 	authorDescription TEXT,
 	_authorDescription TEXT, -- Foreign Key to element table
@@ -33898,10 +33084,8 @@ CREATE TABLE substanceSourceMaterial_Author(
 CREATE TABLE substanceSourceMaterial_Hybrid(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	maternalOrganismId TEXT,
 	_maternalOrganismId TEXT, -- Foreign Key to element table
 	maternalOrganismName TEXT,
@@ -33942,10 +33126,8 @@ CREATE TABLE substanceSourceMaterial_Hybrid(
 CREATE TABLE substanceSourceMaterial_OrganismGeneral(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	kingdom TEXT, -- Foreign Key to codeableConcept table
 	phylum TEXT, -- Foreign Key to codeableConcept table
 	class TEXT, -- Foreign Key to codeableConcept table
@@ -33976,10 +33158,8 @@ CREATE TABLE substanceSourceMaterial_OrganismGeneral(
 CREATE TABLE substanceSourceMaterial_PartDescription(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	part TEXT, -- Foreign Key to codeableConcept table
 	partLocation TEXT, -- Foreign Key to codeableConcept table
 
@@ -34005,26 +33185,26 @@ CREATE TABLE substanceSpecification(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	identifier TEXT, -- Foreign Key to identifier table
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	"status" TEXT, -- Foreign Key to codeableConcept table
 	"domain" TEXT, -- Foreign Key to codeableConcept table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List source,
+	"source" **LIST** Reference,
 	comment TEXT,
 	_comment TEXT, -- Foreign Key to element table
-	List moiety,
-	List property,
+	moiety **LIST** SubstanceSpecification_Moiety,
+	property **LIST** SubstanceSpecification_Property,
 	referenceInformation TEXT, -- Foreign Key to reference table
 	"structure" TEXT, -- Foreign Key to substanceSpecification_Structure table
-	List code,
-	List name,
-	List molecularWeight,
-	List relationship,
+	"code" **LIST** SubstanceSpecification_Code,
+	"name" **LIST** SubstanceSpecification_Name,
+	molecularWeight **LIST** SubstanceSpecification_MolecularWeight,
+	relationship **LIST** SubstanceSpecification_Relationship,
 	nucleicAcid TEXT, -- Foreign Key to reference table
 	polymer TEXT, -- Foreign Key to reference table
 	protein TEXT, -- Foreign Key to reference table
@@ -34115,10 +33295,8 @@ CREATE TABLE substanceSpecification(
 CREATE TABLE substanceSpecification_Moiety(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"role" TEXT, -- Foreign Key to codeableConcept table
 	identifier TEXT, -- Foreign Key to identifier table
 	"name" TEXT,
@@ -34176,10 +33354,8 @@ CREATE TABLE substanceSpecification_Moiety(
 CREATE TABLE substanceSpecification_Property(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	category TEXT, -- Foreign Key to codeableConcept table
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	parameters TEXT,
@@ -34230,20 +33406,18 @@ CREATE TABLE substanceSpecification_Property(
 CREATE TABLE substanceSpecification_Structure(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	stereochemistry TEXT, -- Foreign Key to codeableConcept table
 	opticalActivity TEXT, -- Foreign Key to codeableConcept table
 	molecularFormula TEXT,
 	_molecularFormula TEXT, -- Foreign Key to element table
 	molecularFormulaByMoiety TEXT,
 	_molecularFormulaByMoiety TEXT, -- Foreign Key to element table
-	List isotope,
+	isotope **LIST** SubstanceSpecification_Isotope,
 	molecularWeight TEXT, -- Foreign Key to substanceSpecification_MolecularWeight table
-	List source,
-	List representation,
+	"source" **LIST** Reference,
+	representation **LIST** SubstanceSpecification_Representation,
 
 	FOREIGN KEY (stereochemistry)
 		REFERENCES codeableConcept (id)
@@ -34275,10 +33449,8 @@ CREATE TABLE substanceSpecification_Structure(
 CREATE TABLE substanceSpecification_Isotope(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	identifier TEXT, -- Foreign Key to identifier table
 	"name" TEXT, -- Foreign Key to codeableConcept table
 	substitution TEXT, -- Foreign Key to codeableConcept table
@@ -34315,10 +33487,8 @@ CREATE TABLE substanceSpecification_Isotope(
 CREATE TABLE substanceSpecification_MolecularWeight(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"method" TEXT, -- Foreign Key to codeableConcept table
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	amount TEXT, -- Foreign Key to quantity table
@@ -34343,10 +33513,8 @@ CREATE TABLE substanceSpecification_MolecularWeight(
 CREATE TABLE substanceSpecification_Representation(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	representation TEXT,
 	_representation TEXT, -- Foreign Key to element table
@@ -34372,17 +33540,15 @@ CREATE TABLE substanceSpecification_Representation(
 CREATE TABLE substanceSpecification_Code(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	"status" TEXT, -- Foreign Key to codeableConcept table
 	statusDate DATETIME,
 	_statusDate TEXT, -- Foreign Key to element table
 	comment TEXT,
 	_comment TEXT, -- Foreign Key to element table
-	List source,
+	"source" **LIST** Reference,
 
 	FOREIGN KEY ("code")
 		REFERENCES codeableConcept (id)
@@ -34409,23 +33575,21 @@ CREATE TABLE substanceSpecification_Code(
 CREATE TABLE substanceSpecification_Name(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	"status" TEXT, -- Foreign Key to codeableConcept table
 	preferred BOOLEAN,
 	_preferred TEXT, -- Foreign Key to element table
-	List language,
-	List domain,
-	List jurisdiction,
-	List synonym,
-	List translation,
-	List official,
-	List source,
+	"language" **LIST** CodeableConcept,
+	"domain" **LIST** CodeableConcept,
+	jurisdiction **LIST** CodeableConcept,
+	"synonym" **LIST** SubstanceSpecification_Name,
+	"translation" **LIST** SubstanceSpecification_Name,
+	official **LIST** SubstanceSpecification_Official,
+	"source" **LIST** Reference,
 
 	FOREIGN KEY (_name)
 		REFERENCES element (id)
@@ -34452,10 +33616,8 @@ CREATE TABLE substanceSpecification_Name(
 CREATE TABLE substanceSpecification_Official(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	authority TEXT, -- Foreign Key to codeableConcept table
 	"status" TEXT, -- Foreign Key to codeableConcept table
 	"date" DATETIME,
@@ -34481,10 +33643,8 @@ CREATE TABLE substanceSpecification_Official(
 CREATE TABLE substanceSpecification_Relationship(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	substanceReference TEXT, -- Foreign Key to reference table
 	substanceCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	relationship TEXT, -- Foreign Key to codeableConcept table
@@ -34497,7 +33657,7 @@ CREATE TABLE substanceSpecification_Relationship(
 	_amountString TEXT, -- Foreign Key to element table
 	amountRatioLowLimit TEXT, -- Foreign Key to ratio table
 	amountType TEXT, -- Foreign Key to codeableConcept table
-	List source,
+	"source" **LIST** Reference,
 
 	FOREIGN KEY (substanceReference)
 		REFERENCES reference (id)
@@ -34561,12 +33721,12 @@ CREATE TABLE supplyDelivery(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
-	List basedOn,
-	List partOf,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
+	basedOn **LIST** Reference,
+	partOf **LIST** Reference,
 	"status" TEXT, -- enum: in-progress/completed/abandoned/entered-in-error
 	_status TEXT, -- Foreign Key to element table
 	patient TEXT, -- Foreign Key to reference table
@@ -34578,7 +33738,7 @@ CREATE TABLE supplyDelivery(
 	occurrenceTiming TEXT, -- Foreign Key to timing table
 	supplier TEXT, -- Foreign Key to reference table
 	destination TEXT, -- Foreign Key to reference table
-	List receiver,
+	receiver **LIST** Reference,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -34650,10 +33810,8 @@ CREATE TABLE supplyDelivery(
 CREATE TABLE supplyDelivery_SuppliedItem(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	quantity TEXT, -- Foreign Key to quantity table
 	itemCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	itemReference TEXT, -- Foreign Key to reference table
@@ -34685,10 +33843,10 @@ CREATE TABLE supplyRequest(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT, -- enum: draft/active/suspended/cancelled/completed/entered-in-error/unknown
 	_status TEXT, -- Foreign Key to element table
 	category TEXT, -- Foreign Key to codeableConcept table
@@ -34697,7 +33855,7 @@ CREATE TABLE supplyRequest(
 	itemCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	itemReference TEXT, -- Foreign Key to reference table
 	quantity TEXT, -- Foreign Key to quantity table
-	List parameter,
+	"parameter" **LIST** SupplyRequest_Parameter,
 	occurrenceDateTime TEXT, -- pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 	_occurrenceDateTime TEXT, -- Foreign Key to element table
 	occurrencePeriod TEXT, -- Foreign Key to period table
@@ -34705,9 +33863,9 @@ CREATE TABLE supplyRequest(
 	authoredOn DATETIME,
 	_authoredOn TEXT, -- Foreign Key to element table
 	requester TEXT, -- Foreign Key to reference table
-	List supplier,
-	List reasonCode,
-	List reasonReference,
+	supplier **LIST** Reference,
+	reasonCode **LIST** CodeableConcept,
+	reasonReference **LIST** Reference,
 	deliverFrom TEXT, -- Foreign Key to reference table
 	deliverTo TEXT, -- Foreign Key to reference table
 
@@ -34801,10 +33959,8 @@ CREATE TABLE supplyRequest(
 CREATE TABLE supplyRequest_Parameter(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT, -- Foreign Key to codeableConcept table
 	valueCodeableConcept TEXT, -- Foreign Key to codeableConcept table
 	valueQuantity TEXT, -- Foreign Key to quantity table
@@ -34849,16 +34005,16 @@ CREATE TABLE task(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	instantiatesCanonical TEXT,
 	instantiatesUri TEXT,
 	_instantiatesUri TEXT, -- Foreign Key to element table
-	List basedOn,
+	basedOn **LIST** Reference,
 	groupIdentifier TEXT, -- Foreign Key to identifier table
-	List partOf,
+	partOf **LIST** Reference,
 	"status" TEXT, -- enum: draft/requested/received/accepted/rejected/ready/cancelled/in-progress/on-hold/failed/completed/entered-in-error
 	_status TEXT, -- Foreign Key to element table
 	statusReason TEXT, -- Foreign Key to codeableConcept table
@@ -34879,17 +34035,17 @@ CREATE TABLE task(
 	lastModified DATETIME,
 	_lastModified TEXT, -- Foreign Key to element table
 	requester TEXT, -- Foreign Key to reference table
-	List performerType,
+	performerType **LIST** CodeableConcept,
 	"owner" TEXT, -- Foreign Key to reference table
 	"location" TEXT, -- Foreign Key to reference table
 	reasonCode TEXT, -- Foreign Key to codeableConcept table
 	reasonReference TEXT, -- Foreign Key to reference table
-	List insurance,
-	List note,
-	List relevantHistory,
+	insurance **LIST** Reference,
+	note **LIST** Annotation,
+	relevantHistory **LIST** Reference,
 	restriction TEXT, -- Foreign Key to task_Restriction table
-	List input,
-	List output,
+	"input" **LIST** Task_Input,
+	"output" **LIST** Task_Output,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -35021,14 +34177,12 @@ CREATE TABLE task(
 CREATE TABLE task_Restriction(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	repetitions INTEGER,
 	_repetitions TEXT, -- Foreign Key to element table
 	"period" TEXT, -- Foreign Key to period table
-	List recipient,
+	recipient **LIST** Reference,
 
 	FOREIGN KEY (_repetitions)
 		REFERENCES element (id)
@@ -35045,10 +34199,8 @@ CREATE TABLE task_Restriction(
 CREATE TABLE task_Input(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	valueBase64Binary TEXT, -- pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
 	_valueBase64Binary TEXT, -- Foreign Key to element table
@@ -35380,10 +34532,8 @@ CREATE TABLE task_Input(
 CREATE TABLE task_Output(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to codeableConcept table
 	valueBase64Binary TEXT, -- pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
 	_valueBase64Binary TEXT, -- Foreign Key to element table
@@ -35722,9 +34872,9 @@ CREATE TABLE terminologyCapabilities(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
 	"version" TEXT,
@@ -35741,11 +34891,11 @@ CREATE TABLE terminologyCapabilities(
 	_date TEXT, -- Foreign Key to element table
 	publisher TEXT,
 	_publisher TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactDetail,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List useContext,
-	List jurisdiction,
+	useContext **LIST** UsageContext,
+	jurisdiction **LIST** CodeableConcept,
 	purpose TEXT,
 	_purpose TEXT, -- Foreign Key to element table
 	copyright TEXT,
@@ -35756,7 +34906,7 @@ CREATE TABLE terminologyCapabilities(
 	"implementation" TEXT, -- Foreign Key to terminologyCapabilities_Implementation table
 	lockedDate BOOLEAN,
 	_lockedDate TEXT, -- Foreign Key to element table
-	List codeSystem,
+	codeSystem **LIST** TerminologyCapabilities_CodeSystem,
 	expansion TEXT, -- Foreign Key to terminologyCapabilities_Expansion table
 	codeSearch TEXT, -- enum: explicit/all
 	_codeSearch TEXT, -- Foreign Key to element table
@@ -35889,10 +35039,8 @@ CREATE TABLE terminologyCapabilities(
 CREATE TABLE terminologyCapabilities_Software(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	"version" TEXT,
@@ -35913,10 +35061,8 @@ CREATE TABLE terminologyCapabilities_Software(
 CREATE TABLE terminologyCapabilities_Implementation(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
 	"url" TEXT,
@@ -35937,12 +35083,10 @@ CREATE TABLE terminologyCapabilities_Implementation(
 CREATE TABLE terminologyCapabilities_CodeSystem(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	uri TEXT,
-	List version,
+	"version" **LIST** TerminologyCapabilities_Version,
 	subsumption BOOLEAN,
 	_subsumption TEXT, -- Foreign Key to element table
 
@@ -35956,21 +35100,19 @@ CREATE TABLE terminologyCapabilities_CodeSystem(
 CREATE TABLE terminologyCapabilities_Version(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT,
 	_code TEXT, -- Foreign Key to element table
 	isDefault BOOLEAN,
 	_isDefault TEXT, -- Foreign Key to element table
 	compositional BOOLEAN,
 	_compositional TEXT, -- Foreign Key to element table
-	List language,
-	List _language,
-	List filter,
-	List property,
-	List _property,
+	"language" **LIST** code,
+	_language **LIST** Element,
+	"filter" **LIST** TerminologyCapabilities_Filter,
+	property **LIST** code,
+	_property **LIST** Element,
 
 	FOREIGN KEY (_code)
 		REFERENCES element (id)
@@ -35992,14 +35134,12 @@ CREATE TABLE terminologyCapabilities_Version(
 CREATE TABLE terminologyCapabilities_Filter(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT,
 	_code TEXT, -- Foreign Key to element table
-	List op,
-	List _op,
+	op **LIST** code,
+	_op **LIST** Element,
 
 	FOREIGN KEY (_code)
 		REFERENCES element (id)
@@ -36011,17 +35151,15 @@ CREATE TABLE terminologyCapabilities_Filter(
 CREATE TABLE terminologyCapabilities_Expansion(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	hierarchical BOOLEAN,
 	_hierarchical TEXT, -- Foreign Key to element table
 	paging BOOLEAN,
 	_paging TEXT, -- Foreign Key to element table
 	incomplete BOOLEAN,
 	_incomplete TEXT, -- Foreign Key to element table
-	List parameter,
+	"parameter" **LIST** TerminologyCapabilities_Parameter,
 	textFilter TEXT,
 	_textFilter TEXT, -- Foreign Key to element table
 
@@ -36050,10 +35188,8 @@ CREATE TABLE terminologyCapabilities_Expansion(
 CREATE TABLE terminologyCapabilities_Parameter(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	documentation TEXT,
@@ -36074,10 +35210,8 @@ CREATE TABLE terminologyCapabilities_Parameter(
 CREATE TABLE terminologyCapabilities_ValidateCode(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	translations BOOLEAN,
 	_translations TEXT, -- Foreign Key to element table
 
@@ -36091,10 +35225,8 @@ CREATE TABLE terminologyCapabilities_ValidateCode(
 CREATE TABLE terminologyCapabilities_Translation(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	needsMap BOOLEAN,
 	_needsMap TEXT, -- Foreign Key to element table
 
@@ -36108,10 +35240,8 @@ CREATE TABLE terminologyCapabilities_Translation(
 CREATE TABLE terminologyCapabilities_Closure(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"translation" BOOLEAN,
 	_translation TEXT, -- Foreign Key to element table
 
@@ -36132,9 +35262,9 @@ CREATE TABLE testReport(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	identifier TEXT, -- Foreign Key to identifier table
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
@@ -36149,9 +35279,9 @@ CREATE TABLE testReport(
 	_tester TEXT, -- Foreign Key to element table
 	issued DATETIME,
 	_issued TEXT, -- Foreign Key to element table
-	List participant,
+	participant **LIST** TestReport_Participant,
 	setup TEXT, -- Foreign Key to testReport_Setup table
-	List test,
+	test **LIST** TestReport_Test,
 	teardown TEXT, -- Foreign Key to testReport_Teardown table
 
 	FOREIGN KEY (meta)
@@ -36229,10 +35359,8 @@ CREATE TABLE testReport(
 CREATE TABLE testReport_Participant(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- enum: test-engine/client/server
 	_type TEXT, -- Foreign Key to element table
 	uri TEXT,
@@ -36260,21 +35388,17 @@ CREATE TABLE testReport_Participant(
 CREATE TABLE testReport_Setup(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List action
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	"action" **LIST** TestReport_Action
 
 );
 
 CREATE TABLE testReport_Action(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	operation TEXT, -- Foreign Key to testReport_Operation table
 	assert TEXT, -- Foreign Key to testReport_Assert table
 
@@ -36293,13 +35417,11 @@ CREATE TABLE testReport_Action(
 CREATE TABLE testReport_Operation(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"result" TEXT, -- enum: pass/skip/fail/warning/error
 	_result TEXT, -- Foreign Key to element table
-	message TEXT,
+	"message" TEXT,
 	_message TEXT, -- Foreign Key to element table
 	detail TEXT,
 	_detail TEXT, -- Foreign Key to element table
@@ -36324,13 +35446,11 @@ CREATE TABLE testReport_Operation(
 CREATE TABLE testReport_Assert(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"result" TEXT, -- enum: pass/skip/fail/warning/error
 	_result TEXT, -- Foreign Key to element table
-	message TEXT,
+	"message" TEXT,
 	_message TEXT, -- Foreign Key to element table
 	detail TEXT,
 	_detail TEXT, -- Foreign Key to element table
@@ -36355,15 +35475,13 @@ CREATE TABLE testReport_Assert(
 CREATE TABLE testReport_Test(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List action,
+	"action" **LIST** TestReport_Action1,
 
 	FOREIGN KEY (_name)
 		REFERENCES element (id)
@@ -36380,10 +35498,8 @@ CREATE TABLE testReport_Test(
 CREATE TABLE testReport_Action1(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	operation TEXT, -- Foreign Key to testReport_Operation table
 	assert TEXT, -- Foreign Key to testReport_Assert table
 
@@ -36402,21 +35518,17 @@ CREATE TABLE testReport_Action1(
 CREATE TABLE testReport_Teardown(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List action
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	"action" **LIST** TestReport_Action2
 
 );
 
 CREATE TABLE testReport_Action2(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	operation TEXT, -- Foreign Key to testReport_Operation table
 
 	FOREIGN KEY (operation)
@@ -36436,9 +35548,9 @@ CREATE TABLE testScript(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
 	identifier TEXT, -- Foreign Key to identifier table
@@ -36456,23 +35568,23 @@ CREATE TABLE testScript(
 	_date TEXT, -- Foreign Key to element table
 	publisher TEXT,
 	_publisher TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactDetail,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List useContext,
-	List jurisdiction,
+	useContext **LIST** UsageContext,
+	jurisdiction **LIST** CodeableConcept,
 	purpose TEXT,
 	_purpose TEXT, -- Foreign Key to element table
 	copyright TEXT,
 	_copyright TEXT, -- Foreign Key to element table
-	List origin,
-	List destination,
+	origin **LIST** TestScript_Origin,
+	destination **LIST** TestScript_Destination,
 	metadata TEXT, -- Foreign Key to testScript_Metadata table
-	List fixture,
-	List profile,
-	List variable,
+	fixture **LIST** TestScript_Fixture,
+	"profile" **LIST** Reference,
+	variable **LIST** TestScript_Variable,
 	setup TEXT, -- Foreign Key to testScript_Setup table
-	List test,
+	test **LIST** TestScript_Test,
 	teardown TEXT, -- Foreign Key to testScript_Teardown table
 
 	FOREIGN KEY (meta)
@@ -36575,10 +35687,8 @@ CREATE TABLE testScript(
 CREATE TABLE testScript_Origin(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"index" INTEGER,
 	_index TEXT, -- Foreign Key to element table
 	"profile" TEXT, -- Foreign Key to coding table
@@ -36598,10 +35708,8 @@ CREATE TABLE testScript_Origin(
 CREATE TABLE testScript_Destination(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"index" INTEGER,
 	_index TEXT, -- Foreign Key to element table
 	"profile" TEXT, -- Foreign Key to coding table
@@ -36621,22 +35729,18 @@ CREATE TABLE testScript_Destination(
 CREATE TABLE testScript_Metadata(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List link,
-	List capability
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	link **LIST** TestScript_Link,
+	capability **LIST** TestScript_Capability
 
 );
 
 CREATE TABLE testScript_Link(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
 	"description" TEXT,
@@ -36657,22 +35761,20 @@ CREATE TABLE testScript_Link(
 CREATE TABLE testScript_Capability(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	required BOOLEAN,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	"required" BOOLEAN,
 	_required TEXT, -- Foreign Key to element table
 	validated BOOLEAN,
 	_validated TEXT, -- Foreign Key to element table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List origin,
-	List _origin,
+	origin **LIST** integer,
+	_origin **LIST** Element,
 	destination INTEGER,
 	_destination TEXT, -- Foreign Key to element table
-	List link,
-	List _link,
+	link **LIST** uri,
+	_link **LIST** Element,
 	capabilities TEXT,
 
 	FOREIGN KEY (_required)
@@ -36700,15 +35802,13 @@ CREATE TABLE testScript_Capability(
 CREATE TABLE testScript_Fixture(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	autocreate BOOLEAN,
 	_autocreate TEXT, -- Foreign Key to element table
 	autodelete BOOLEAN,
 	_autodelete TEXT, -- Foreign Key to element table
-	resource TEXT, -- Foreign Key to reference table
+	"resource" TEXT, -- Foreign Key to reference table
 
 	FOREIGN KEY (_autocreate)
 		REFERENCES element (id)
@@ -36720,7 +35820,7 @@ CREATE TABLE testScript_Fixture(
 			ON DELETE CASCADE
 		ON UPDATE NO ACTION,
 
-	FOREIGN KEY (resource)
+	FOREIGN KEY ("resource")
 		REFERENCES reference (id)
 			ON DELETE CASCADE
 		ON UPDATE NO ACTION
@@ -36730,10 +35830,8 @@ CREATE TABLE testScript_Fixture(
 CREATE TABLE testScript_Variable(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	defaultValue TEXT,
@@ -36801,21 +35899,17 @@ CREATE TABLE testScript_Variable(
 CREATE TABLE testScript_Setup(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List action
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	"action" **LIST** TestScript_Action
 
 );
 
 CREATE TABLE testScript_Action(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	operation TEXT, -- Foreign Key to testScript_Operation table
 	assert TEXT, -- Foreign Key to testScript_Assert table
 
@@ -36834,12 +35928,10 @@ CREATE TABLE testScript_Action(
 CREATE TABLE testScript_Operation(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"type" TEXT, -- Foreign Key to coding table
-	resource TEXT,
+	"resource" TEXT,
 	_resource TEXT, -- Foreign Key to element table
 	label TEXT,
 	_label TEXT, -- Foreign Key to element table
@@ -36859,7 +35951,7 @@ CREATE TABLE testScript_Operation(
 	_origin TEXT, -- Foreign Key to element table
 	params TEXT,
 	_params TEXT, -- Foreign Key to element table
-	List requestHeader,
+	requestHeader **LIST** TestScript_RequestHeader,
 	requestId TEXT, -- Foreign Key to id table
 	_requestId TEXT, -- Foreign Key to element table
 	responseId TEXT, -- Foreign Key to id table
@@ -36976,10 +36068,8 @@ CREATE TABLE testScript_Operation(
 CREATE TABLE testScript_RequestHeader(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	field TEXT,
 	_field TEXT, -- Foreign Key to element table
 	"value" TEXT,
@@ -37000,10 +36090,8 @@ CREATE TABLE testScript_RequestHeader(
 CREATE TABLE testScript_Assert(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	label TEXT,
 	_label TEXT, -- Foreign Key to element table
 	"description" TEXT,
@@ -37034,7 +36122,7 @@ CREATE TABLE testScript_Assert(
 	_requestMethod TEXT, -- Foreign Key to element table
 	requestURL TEXT,
 	_requestURL TEXT, -- Foreign Key to element table
-	resource TEXT,
+	"resource" TEXT,
 	_resource TEXT, -- Foreign Key to element table
 	response TEXT, -- enum: okay/created/noContent/notModified/bad/forbidden/notFound/methodNotAllowed/conflict/gone/preconditionFailed/unprocessable
 	_response TEXT, -- Foreign Key to element table
@@ -37174,15 +36262,13 @@ CREATE TABLE testScript_Assert(
 CREATE TABLE testScript_Test(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List action,
+	"action" **LIST** TestScript_Action1,
 
 	FOREIGN KEY (_name)
 		REFERENCES element (id)
@@ -37199,10 +36285,8 @@ CREATE TABLE testScript_Test(
 CREATE TABLE testScript_Action1(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	operation TEXT, -- Foreign Key to testScript_Operation table
 	assert TEXT, -- Foreign Key to testScript_Assert table
 
@@ -37221,21 +36305,17 @@ CREATE TABLE testScript_Action1(
 CREATE TABLE testScript_Teardown(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
-	List action
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	"action" **LIST** TestScript_Action2
 
 );
 
 CREATE TABLE testScript_Action2(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	operation TEXT, -- Foreign Key to testScript_Operation table
 
 	FOREIGN KEY (operation)
@@ -37255,12 +36335,12 @@ CREATE TABLE valueSet(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"url" TEXT,
 	_url TEXT, -- Foreign Key to element table
-	List identifier,
+	identifier **LIST** Identifier,
 	"version" TEXT,
 	_version TEXT, -- Foreign Key to element table
 	"name" TEXT,
@@ -37275,11 +36355,11 @@ CREATE TABLE valueSet(
 	_date TEXT, -- Foreign Key to element table
 	publisher TEXT,
 	_publisher TEXT, -- Foreign Key to element table
-	List contact,
+	contact **LIST** ContactDetail,
 	"description" TEXT,
 	_description TEXT, -- Foreign Key to element table
-	List useContext,
-	List jurisdiction,
+	useContext **LIST** UsageContext,
+	jurisdiction **LIST** CodeableConcept,
 	immutable BOOLEAN,
 	_immutable TEXT, -- Foreign Key to element table
 	purpose TEXT,
@@ -37384,16 +36464,14 @@ CREATE TABLE valueSet(
 CREATE TABLE valueSet_Compose(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	lockedDate DATE,
 	_lockedDate TEXT, -- Foreign Key to element table
 	inactive BOOLEAN,
 	_inactive TEXT, -- Foreign Key to element table
-	List include,
-	List exclude,
+	"include" **LIST** ValueSet_Include,
+	exclude **LIST** ValueSet_Include,
 
 	FOREIGN KEY (_lockedDate)
 		REFERENCES element (id)
@@ -37410,17 +36488,15 @@ CREATE TABLE valueSet_Compose(
 CREATE TABLE valueSet_Include(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"system" TEXT,
 	_system TEXT, -- Foreign Key to element table
 	"version" TEXT,
 	_version TEXT, -- Foreign Key to element table
-	List concept,
-	List filter,
-	List valueSet,
+	concept **LIST** ValueSet_Concept,
+	"filter" **LIST** ValueSet_Filter,
+	valueSet **LIST** canonical,
 
 	FOREIGN KEY (_system)
 		REFERENCES element (id)
@@ -37437,15 +36513,13 @@ CREATE TABLE valueSet_Include(
 CREATE TABLE valueSet_Concept(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"code" TEXT,
 	_code TEXT, -- Foreign Key to element table
 	display TEXT,
 	_display TEXT, -- Foreign Key to element table
-	List designation,
+	designation **LIST** ValueSet_Designation,
 
 	FOREIGN KEY (_code)
 		REFERENCES element (id)
@@ -37462,10 +36536,8 @@ CREATE TABLE valueSet_Concept(
 CREATE TABLE valueSet_Designation(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"use" TEXT, -- Foreign Key to coding table
@@ -37492,10 +36564,8 @@ CREATE TABLE valueSet_Designation(
 CREATE TABLE valueSet_Filter(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	property TEXT,
 	_property TEXT, -- Foreign Key to element table
 	op TEXT, -- enum: =/is-a/descendent-of/is-not-a/regex/in/not-in/generalizes/exists
@@ -37523,10 +36593,8 @@ CREATE TABLE valueSet_Filter(
 CREATE TABLE valueSet_Expansion(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	identifier TEXT,
 	_identifier TEXT, -- Foreign Key to element table
 	"timestamp" DATETIME,
@@ -37535,8 +36603,8 @@ CREATE TABLE valueSet_Expansion(
 	_total TEXT, -- Foreign Key to element table
 	offset INTEGER,
 	_offset TEXT, -- Foreign Key to element table
-	List parameter,
-	List contains,
+	"parameter" **LIST** ValueSet_Parameter,
+	"contains" **LIST** ValueSet_Contains,
 
 	FOREIGN KEY (_identifier)
 		REFERENCES element (id)
@@ -37563,10 +36631,8 @@ CREATE TABLE valueSet_Expansion(
 CREATE TABLE valueSet_Parameter(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"name" TEXT,
 	_name TEXT, -- Foreign Key to element table
 	valueString TEXT, -- pattern: ^[ \r\n\t\S]+$
@@ -37629,10 +36695,8 @@ CREATE TABLE valueSet_Parameter(
 CREATE TABLE valueSet_Contains(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	"system" TEXT,
 	_system TEXT, -- Foreign Key to element table
 	abstract BOOLEAN,
@@ -37645,8 +36709,8 @@ CREATE TABLE valueSet_Contains(
 	_code TEXT, -- Foreign Key to element table
 	display TEXT,
 	_display TEXT, -- Foreign Key to element table
-	List designation,
-	List contains,
+	designation **LIST** ValueSet_Designation,
+	"contains" **LIST** ValueSet_Contains,
 
 	FOREIGN KEY (_system)
 		REFERENCES element (id)
@@ -37690,28 +36754,28 @@ CREATE TABLE verificationResult(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List target,
-	List targetLocation,
-	List _targetLocation,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	"target" **LIST** Reference,
+	targetLocation **LIST** string,
+	_targetLocation **LIST** Element,
 	need TEXT, -- Foreign Key to codeableConcept table
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
 	statusDate DATETIME,
 	_statusDate TEXT, -- Foreign Key to element table
 	validationType TEXT, -- Foreign Key to codeableConcept table
-	List validationProcess,
+	validationProcess **LIST** CodeableConcept,
 	frequency TEXT, -- Foreign Key to timing table
 	lastPerformed DATETIME,
 	_lastPerformed TEXT, -- Foreign Key to element table
 	nextScheduled DATE,
 	_nextScheduled TEXT, -- Foreign Key to element table
 	failureAction TEXT, -- Foreign Key to codeableConcept table
-	List primarySource,
+	primarySource **LIST** VerificationResult_PrimarySource,
 	attestation TEXT, -- Foreign Key to verificationResult_Attestation table
-	List validator,
+	validator **LIST** VerificationResult_Validator,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -37783,18 +36847,16 @@ CREATE TABLE verificationResult(
 CREATE TABLE verificationResult_PrimarySource(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	who TEXT, -- Foreign Key to reference table
-	List type,
-	List communicationMethod,
+	"type" **LIST** CodeableConcept,
+	communicationMethod **LIST** CodeableConcept,
 	validationStatus TEXT, -- Foreign Key to codeableConcept table
 	validationDate DATETIME,
 	_validationDate TEXT, -- Foreign Key to element table
 	canPushUpdates TEXT, -- Foreign Key to codeableConcept table
-	List pushTypeAvailable,
+	pushTypeAvailable **LIST** CodeableConcept,
 
 	FOREIGN KEY (who)
 		REFERENCES reference (id)
@@ -37821,10 +36883,8 @@ CREATE TABLE verificationResult_PrimarySource(
 CREATE TABLE verificationResult_Attestation(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	who TEXT, -- Foreign Key to reference table
 	onBehalfOf TEXT, -- Foreign Key to reference table
 	communicationMethod TEXT, -- Foreign Key to codeableConcept table
@@ -37882,10 +36942,8 @@ CREATE TABLE verificationResult_Attestation(
 CREATE TABLE verificationResult_Validator(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	organization TEXT, -- Foreign Key to reference table
 	identityCertificate TEXT,
 	_identityCertificate TEXT, -- Foreign Key to element table
@@ -37918,10 +36976,10 @@ CREATE TABLE visionPrescription(
 	"language" TEXT,
 	_language TEXT, -- Foreign Key to element table
 	"text" TEXT, -- Foreign Key to narrative table
-	List contained,
-	List extension,
-	List modifierExtension,
-	List identifier,
+	contained **LIST** ResourceList,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
+	identifier **LIST** Identifier,
 	"status" TEXT,
 	_status TEXT, -- Foreign Key to element table
 	created DATETIME,
@@ -37931,7 +36989,7 @@ CREATE TABLE visionPrescription(
 	dateWritten DATETIME,
 	_dateWritten TEXT, -- Foreign Key to element table
 	prescriber TEXT, -- Foreign Key to reference table
-	List lensSpecification,
+	lensSpecification **LIST** VisionPrescription_LensSpecification,
 
 	FOREIGN KEY (meta)
 		REFERENCES meta (id)
@@ -37988,10 +37046,8 @@ CREATE TABLE visionPrescription(
 CREATE TABLE visionPrescription_LensSpecification(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	product TEXT, -- Foreign Key to codeableConcept table
 	eye TEXT, -- enum: right/left
 	_eye TEXT, -- Foreign Key to element table
@@ -38001,7 +37057,7 @@ CREATE TABLE visionPrescription_LensSpecification(
 	_cylinder TEXT, -- Foreign Key to element table
 	axis INTEGER,
 	_axis TEXT, -- Foreign Key to element table
-	List prism,
+	prism **LIST** VisionPrescription_Prism,
 	"add" REAL,
 	_add TEXT, -- Foreign Key to element table
 	power REAL,
@@ -38015,7 +37071,7 @@ CREATE TABLE visionPrescription_LensSpecification(
 	_color TEXT, -- Foreign Key to element table
 	brand TEXT,
 	_brand TEXT, -- Foreign Key to element table
-	List note,
+	note **LIST** Annotation,
 
 	FOREIGN KEY (product)
 		REFERENCES codeableConcept (id)
@@ -38082,10 +37138,8 @@ CREATE TABLE visionPrescription_LensSpecification(
 CREATE TABLE visionPrescription_Prism(
 
 	id TEXT PRIMARY KEY,
-	parentTable TEXT, -- parent table name
-	parentId TEXT, -- foreign key to parent table
-	List extension,
-	List modifierExtension,
+	extension **LIST** Extension,
+	modifierExtension **LIST** Extension,
 	amount REAL,
 	_amount TEXT, -- Foreign Key to element table
 	base TEXT, -- enum: up/down/in/out

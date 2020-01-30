@@ -75,7 +75,9 @@ def sqlStrings(string):
                    'plan', 'signature', 'group', 'for', 'code', 'owner', 'range',
                    'key', 'identity', 'function', 'event', 'population', 'from',
                    'level', 'to', 'outer', 'inner', 'check', 'contains', 'add',
-                   'index']):
+                   'index', 'line', 'state', 'repeat', 'resource', 'route',
+                   'required', 'collection', 'snapshot', 'differential', 'dependent',
+                   'geometry', 'synonym', 'message', 'include']):
         return('"' + string + '"')
     else:
         return(string)
@@ -120,7 +122,20 @@ for table in definitions:
                 #check if array or pattern
                 if(typ == 'array'):
                     #Array
-                    sqlCode = ''.join([sqlCode, '\tList ', variable, ',\n'])
+                    if('$ref' in value['items']):
+                        sqlCode = ''.join([sqlCode, '\t', 
+                                           sqlStrings(variable), ' **LIST** ', 
+                                           value['items']['$ref'].split('/definitions/')[1],
+                                          ',\n'])
+                    elif('enum' in value['items']):
+                        sqlCode = ''.join([sqlCode, '\t', 
+                                           sqlStrings(variable), ' **LIST** ',
+                                           'enum, -- ', '/'.join(value['items']['enum']),
+                                           ',\n'])    
+                    else:
+                        sqlCode = ''.join([sqlCode, '\t', sqlStrings(variable), ' **LIST** ', 
+                                           value['items']['$ref'].split('/definitions/')[1],
+                                          ',\n'])
                 
                 #if not array, either String, Bool, or Number with pattern
                 else:  
@@ -138,11 +153,6 @@ for table in definitions:
             elif(variable == 'id'):
                 sqlCode = ''.join([sqlCode, '\tid TEXT PRIMARY KEY,\n'])
      
-                #create foreign key to reference parent table if necessary               
-                if('_' in table):
-                    sqlCode = ''.join([sqlCode, '\tparentTable TEXT, -- parent table name\n',
-                                       '\tparentId TEXT, -- foreign key to parent table\n'])
-                    
                     #add to foreign keys dictionary for coding later
                     #foreignKeys[parentID] = sqlStrings(lowcc(table.split('_')[0]))
                                                        

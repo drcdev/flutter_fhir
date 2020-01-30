@@ -49,12 +49,10 @@ guidelines:
 1. Each of the fhir datatypes below will be in it's own table except for primitives
 2. Each table will have an id that will be its primary key
 3. All tables with '_' are child tables
-4. Each child table will have 2 columns added, a parentId and a parentTable, which will reference
-    the parent table and its ID
-5. 
-
-3. Any primitive type in a table is a column
-4. Any reference to another table 
+4. Each single primitive will be a column
+5. Each column referring to a single row in another table will have a foreign key corresponding to 
+    the id of the row in the other table
+6. ToDo: Lists - bools, other tables
 
 # FHIR datatypes
 1. Primitives: base64Binary, boolean, canonical, code, date, dateTime, decimal, id
