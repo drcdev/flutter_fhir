@@ -131,12 +131,12 @@ for table in definitions:
                         sqlCode = ''.join([sqlCode, '\t', 
                                            sqlStrings(variable), ' **LIST** ',
                                            'enum, -- ', '/'.join(value['items']['enum']),
-                                           ',\n'])    
+                                           ',\n'])  
                     else:
                         sqlCode = ''.join([sqlCode, '\t', sqlStrings(variable), ' **LIST** ', 
                                            value['items']['$ref'].split('/definitions/')[1],
-                                          ',\n'])
-                
+                                          ',\n'])                                
+
                 #if not array, either String, Bool, or Number with pattern
                 else:  
                     typer = ('TEXT' if typ == 'string' else
