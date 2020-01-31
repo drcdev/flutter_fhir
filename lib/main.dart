@@ -30,30 +30,28 @@ class _MainMenuState extends State<MainMenu> {
           title: Text("CHOP's FHIRflies"),
           backgroundColor: Colors.blue[900],
         ),
-        body: Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              //calls MenuButton class for each one, passes image, text, and class to call
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  PageButton('images/patient.png', 'Register New Patient', Register()),
-                  ActionButton('images/sync.png', 'Sync with server', syncServer, 'get'),
-                  PageButton('images/chop.png', 'Settings', Settings()),
-                ],
-              ),
+        body: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            //calls MenuButton class for each one, passes image, text, and class to call
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                PageButton('images/patient.png', 'Register New Patient', Register()),
+                ActionButton('images/sync.png', 'Sync with server', syncServer, 'get'),
+                PageButton('images/chop.png', 'Settings', Settings()),
+              ],
+            ),
 
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  PageButton('images/activities.png', 'Evaluation & Treatment', EvalRx()),
-                  PageButton('images/testing.png', 'Testing', Testing()),
-                  ActionButton('images/trash.png', 'Delete Files', deleteFiles)
-                ],
-              ),
-            ],
-          ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                PageButton('images/activities.png', 'Evaluation & Treatment', EvalRx()),
+                PageButton('images/testing.png', 'Testing', Testing()),
+                ActionButton('images/trash.png', 'Delete Files', deleteFiles)
+              ],
+            ),
+          ],
         ),
       ),
     );
