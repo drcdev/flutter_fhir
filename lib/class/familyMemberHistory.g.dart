@@ -8,7 +8,13 @@ part of 'familyMemberHistory.dart';
 
 FamilyMemberHistory _$FamilyMemberHistoryFromJson(Map<String, dynamic> json) {
   return FamilyMemberHistory(
-    resourceType: json['resourceType'] as String,
+    json['patient'] == null
+        ? null
+        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
+    json['relationship'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['relationship'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -58,9 +64,6 @@ FamilyMemberHistory _$FamilyMemberHistoryFromJson(Map<String, dynamic> json) {
         ? null
         : CodeableConcept.fromJson(
             json['dataAbsentReason'] as Map<String, dynamic>),
-    patient: json['patient'] == null
-        ? null
-        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
     date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
     element_date: json['element_date'] == null
         ? null
@@ -69,10 +72,6 @@ FamilyMemberHistory _$FamilyMemberHistoryFromJson(Map<String, dynamic> json) {
     element_name: json['element_name'] == null
         ? null
         : Element.fromJson(json['element_name'] as Map<String, dynamic>),
-    relationship: json['relationship'] == null
-        ? null
-        : CodeableConcept.fromJson(
-            json['relationship'] as Map<String, dynamic>),
     sex: json['sex'] == null
         ? null
         : CodeableConcept.fromJson(json['sex'] as Map<String, dynamic>),
@@ -147,7 +146,6 @@ FamilyMemberHistory _$FamilyMemberHistoryFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$FamilyMemberHistoryToJson(
         FamilyMemberHistory instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -203,6 +201,9 @@ Map<String, dynamic> _$FamilyMemberHistoryToJson(
 FamilyMemberHistory_Condition _$FamilyMemberHistory_ConditionFromJson(
     Map<String, dynamic> json) {
   return FamilyMemberHistory_Condition(
+    json['code'] == null
+        ? null
+        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -212,9 +213,6 @@ FamilyMemberHistory_Condition _$FamilyMemberHistory_ConditionFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    code: json['code'] == null
-        ? null
-        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     outcome: json['outcome'] == null
         ? null
         : CodeableConcept.fromJson(json['outcome'] as Map<String, dynamic>),

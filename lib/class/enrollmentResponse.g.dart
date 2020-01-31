@@ -8,7 +8,6 @@ part of 'enrollmentResponse.dart';
 
 EnrollmentResponse _$EnrollmentResponseFromJson(Map<String, dynamic> json) {
   return EnrollmentResponse(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -73,7 +72,6 @@ EnrollmentResponse _$EnrollmentResponseFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$EnrollmentResponseToJson(EnrollmentResponse instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

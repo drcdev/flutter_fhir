@@ -8,7 +8,6 @@ part of 'guidanceResponse.dart';
 
 GuidanceResponse _$GuidanceResponseFromJson(Map<String, dynamic> json) {
   return GuidanceResponse(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -111,7 +110,6 @@ GuidanceResponse _$GuidanceResponseFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$GuidanceResponseToJson(GuidanceResponse instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

@@ -8,14 +8,14 @@ part of 'sampledData.dart';
 
 SampledData _$SampledDataFromJson(Map<String, dynamic> json) {
   return SampledData(
+    json['origin'] == null
+        ? null
+        : Quantity.fromJson(json['origin'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    origin: json['origin'] == null
-        ? null
-        : Quantity.fromJson(json['origin'] as Map<String, dynamic>),
     period: (json['period'] as num)?.toDouble(),
     element_period: json['element_period'] == null
         ? null

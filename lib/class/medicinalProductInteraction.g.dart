@@ -9,7 +9,6 @@ part of 'medicinalProductInteraction.dart';
 MedicinalProductInteraction _$MedicinalProductInteractionFromJson(
     Map<String, dynamic> json) {
   return MedicinalProductInteraction(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -70,7 +69,6 @@ MedicinalProductInteraction _$MedicinalProductInteractionFromJson(
 Map<String, dynamic> _$MedicinalProductInteractionToJson(
         MedicinalProductInteraction instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

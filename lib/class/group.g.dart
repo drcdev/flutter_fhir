@@ -8,7 +8,6 @@ part of 'group.dart';
 
 Group _$GroupFromJson(Map<String, dynamic> json) {
   return Group(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -80,7 +79,6 @@ Group _$GroupFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$GroupToJson(Group instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -112,6 +110,9 @@ Map<String, dynamic> _$GroupToJson(Group instance) => <String, dynamic>{
 
 Group_Characteristic _$Group_CharacteristicFromJson(Map<String, dynamic> json) {
   return Group_Characteristic(
+    json['code'] == null
+        ? null
+        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -121,9 +122,6 @@ Group_Characteristic _$Group_CharacteristicFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    code: json['code'] == null
-        ? null
-        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     valueCodeableConcept: json['valueCodeableConcept'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -173,6 +171,9 @@ Map<String, dynamic> _$Group_CharacteristicToJson(
 
 Group_Member _$Group_MemberFromJson(Map<String, dynamic> json) {
   return Group_Member(
+    json['entity'] == null
+        ? null
+        : Reference.fromJson(json['entity'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -182,9 +183,6 @@ Group_Member _$Group_MemberFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    entity: json['entity'] == null
-        ? null
-        : Reference.fromJson(json['entity'] as Map<String, dynamic>),
     period: json['period'] == null
         ? null
         : Period.fromJson(json['period'] as Map<String, dynamic>),

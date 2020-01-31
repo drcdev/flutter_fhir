@@ -8,7 +8,9 @@ part of 'nutritionOrder.dart';
 
 NutritionOrder _$NutritionOrderFromJson(Map<String, dynamic> json) {
   return NutritionOrder(
-    resourceType: json['resourceType'] as String,
+    json['patient'] == null
+        ? null
+        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -64,9 +66,6 @@ NutritionOrder _$NutritionOrderFromJson(Map<String, dynamic> json) {
     element_intent: json['element_intent'] == null
         ? null
         : Element.fromJson(json['element_intent'] as Map<String, dynamic>),
-    patient: json['patient'] == null
-        ? null
-        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
     encounter: json['encounter'] == null
         ? null
         : Reference.fromJson(json['encounter'] as Map<String, dynamic>),
@@ -115,7 +114,6 @@ NutritionOrder _$NutritionOrderFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$NutritionOrderToJson(NutritionOrder instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

@@ -8,7 +8,9 @@ part of 'researchDefinition.dart';
 
 ResearchDefinition _$ResearchDefinitionFromJson(Map<String, dynamic> json) {
   return ResearchDefinition(
-    resourceType: json['resourceType'] as String,
+    json['population'] == null
+        ? null
+        : Reference.fromJson(json['population'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -168,9 +170,6 @@ ResearchDefinition _$ResearchDefinitionFromJson(Map<String, dynamic> json) {
             : RelatedArtifact.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     library: (json['library'] as List)?.map((e) => e as String)?.toList(),
-    population: json['population'] == null
-        ? null
-        : Reference.fromJson(json['population'] as Map<String, dynamic>),
     exposure: json['exposure'] == null
         ? null
         : Reference.fromJson(json['exposure'] as Map<String, dynamic>),
@@ -186,7 +185,6 @@ ResearchDefinition _$ResearchDefinitionFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ResearchDefinitionToJson(ResearchDefinition instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

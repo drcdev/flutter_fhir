@@ -8,7 +8,9 @@ part of 'bodyStructure.dart';
 
 BodyStructure _$BodyStructureFromJson(Map<String, dynamic> json) {
   return BodyStructure(
-    resourceType: json['resourceType'] as String,
+    json['patient'] == null
+        ? null
+        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -64,15 +66,11 @@ BodyStructure _$BodyStructureFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Attachment.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    patient: json['patient'] == null
-        ? null
-        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
   );
 }
 
 Map<String, dynamic> _$BodyStructureToJson(BodyStructure instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

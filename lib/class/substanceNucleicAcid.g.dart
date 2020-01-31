@@ -8,7 +8,6 @@ part of 'substanceNucleicAcid.dart';
 
 SubstanceNucleicAcid _$SubstanceNucleicAcidFromJson(Map<String, dynamic> json) {
   return SubstanceNucleicAcid(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -66,7 +65,6 @@ SubstanceNucleicAcid _$SubstanceNucleicAcidFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$SubstanceNucleicAcidToJson(
         SubstanceNucleicAcid instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

@@ -8,7 +8,6 @@ part of 'operationDefinition.dart';
 
 OperationDefinition _$OperationDefinitionFromJson(Map<String, dynamic> json) {
   return OperationDefinition(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -145,7 +144,6 @@ OperationDefinition _$OperationDefinitionFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$OperationDefinitionToJson(
         OperationDefinition instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -296,6 +294,7 @@ Map<String, dynamic> _$OperationDefinition_ParameterToJson(
 OperationDefinition_Binding _$OperationDefinition_BindingFromJson(
     Map<String, dynamic> json) {
   return OperationDefinition_Binding(
+    json['valueSet'] as String,
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -309,7 +308,6 @@ OperationDefinition_Binding _$OperationDefinition_BindingFromJson(
     element_strength: json['element_strength'] == null
         ? null
         : Element.fromJson(json['element_strength'] as Map<String, dynamic>),
-    valueSet: json['valueSet'] as String,
   );
 }
 

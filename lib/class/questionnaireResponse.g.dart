@@ -9,7 +9,6 @@ part of 'questionnaireResponse.dart';
 QuestionnaireResponse _$QuestionnaireResponseFromJson(
     Map<String, dynamic> json) {
   return QuestionnaireResponse(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -83,7 +82,6 @@ QuestionnaireResponse _$QuestionnaireResponseFromJson(
 Map<String, dynamic> _$QuestionnaireResponseToJson(
         QuestionnaireResponse instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

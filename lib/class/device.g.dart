@@ -8,7 +8,6 @@ part of 'device.dart';
 
 Device _$DeviceFromJson(Map<String, dynamic> json) {
   return Device(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -155,7 +154,6 @@ Device _$DeviceFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$DeviceToJson(Device instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -304,6 +302,9 @@ Map<String, dynamic> _$Device_DeviceNameToJson(Device_DeviceName instance) =>
 Device_Specialization _$Device_SpecializationFromJson(
     Map<String, dynamic> json) {
   return Device_Specialization(
+    json['systemType'] == null
+        ? null
+        : CodeableConcept.fromJson(json['systemType'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -313,9 +314,6 @@ Device_Specialization _$Device_SpecializationFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    systemType: json['systemType'] == null
-        ? null
-        : CodeableConcept.fromJson(json['systemType'] as Map<String, dynamic>),
     version: json['version'] as String,
     element_version: json['element_version'] == null
         ? null
@@ -373,6 +371,9 @@ Map<String, dynamic> _$Device_VersionToJson(Device_Version instance) =>
 
 Device_Property _$Device_PropertyFromJson(Map<String, dynamic> json) {
   return Device_Property(
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -382,9 +383,6 @@ Device_Property _$Device_PropertyFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    type: json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     valueQuantity: (json['valueQuantity'] as List)
         ?.map((e) =>
             e == null ? null : Quantity.fromJson(e as Map<String, dynamic>))

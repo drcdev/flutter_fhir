@@ -8,7 +8,6 @@ part of 'person.dart';
 
 Person _$PersonFromJson(Map<String, dynamic> json) {
   return Person(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -80,7 +79,6 @@ Person _$PersonFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$PersonToJson(Person instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -109,6 +107,9 @@ Map<String, dynamic> _$PersonToJson(Person instance) => <String, dynamic>{
 
 Person_Link _$Person_LinkFromJson(Map<String, dynamic> json) {
   return Person_Link(
+    json['target'] == null
+        ? null
+        : Reference.fromJson(json['target'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -118,9 +119,6 @@ Person_Link _$Person_LinkFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    target: json['target'] == null
-        ? null
-        : Reference.fromJson(json['target'] as Map<String, dynamic>),
     assurance: json['assurance'] as String,
     element_assurance: json['element_assurance'] == null
         ? null

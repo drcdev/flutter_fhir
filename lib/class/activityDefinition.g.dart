@@ -8,7 +8,6 @@ part of 'activityDefinition.dart';
 
 ActivityDefinition _$ActivityDefinitionFromJson(Map<String, dynamic> json) {
   return ActivityDefinition(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -250,7 +249,6 @@ ActivityDefinition _$ActivityDefinitionFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ActivityDefinitionToJson(ActivityDefinition instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -379,6 +377,9 @@ Map<String, dynamic> _$ActivityDefinition_ParticipantToJson(
 ActivityDefinition_DynamicValue _$ActivityDefinition_DynamicValueFromJson(
     Map<String, dynamic> json) {
   return ActivityDefinition_DynamicValue(
+    json['expression'] == null
+        ? null
+        : Expression.fromJson(json['expression'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -392,9 +393,6 @@ ActivityDefinition_DynamicValue _$ActivityDefinition_DynamicValueFromJson(
     element_path: json['element_path'] == null
         ? null
         : Element.fromJson(json['element_path'] as Map<String, dynamic>),
-    expression: json['expression'] == null
-        ? null
-        : Expression.fromJson(json['expression'] as Map<String, dynamic>),
   );
 }
 

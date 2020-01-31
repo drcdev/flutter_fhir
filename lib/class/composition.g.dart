@@ -8,7 +8,13 @@ part of 'composition.dart';
 
 Composition _$CompositionFromJson(Map<String, dynamic> json) {
   return Composition(
-    resourceType: json['resourceType'] as String,
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
+    (json['author'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -44,9 +50,6 @@ Composition _$CompositionFromJson(Map<String, dynamic> json) {
     element_status: json['element_status'] == null
         ? null
         : Element.fromJson(json['element_status'] as Map<String, dynamic>),
-    type: json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     category: (json['category'] as List)
         ?.map((e) => e == null
             ? null
@@ -62,10 +65,6 @@ Composition _$CompositionFromJson(Map<String, dynamic> json) {
     element_date: json['element_date'] == null
         ? null
         : Element.fromJson(json['element_date'] as Map<String, dynamic>),
-    author: (json['author'] as List)
-        ?.map((e) =>
-            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     title: json['title'] as String,
     element_title: json['element_title'] == null
         ? null
@@ -103,7 +102,6 @@ Composition _$CompositionFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$CompositionToJson(Composition instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

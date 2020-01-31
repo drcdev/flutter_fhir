@@ -8,7 +8,6 @@ part of 'healthcareService.dart';
 
 HealthcareService _$HealthcareServiceFromJson(Map<String, dynamic> json) {
   return HealthcareService(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -153,7 +152,6 @@ HealthcareService _$HealthcareServiceFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$HealthcareServiceToJson(HealthcareService instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

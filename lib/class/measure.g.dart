@@ -8,7 +8,6 @@ part of 'measure.dart';
 
 Measure _$MeasureFromJson(Map<String, dynamic> json) {
   return Measure(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -223,7 +222,6 @@ Measure _$MeasureFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$MeasureToJson(Measure instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -352,6 +350,9 @@ Map<String, dynamic> _$Measure_GroupToJson(Measure_Group instance) =>
 
 Measure_Population _$Measure_PopulationFromJson(Map<String, dynamic> json) {
   return Measure_Population(
+    json['criteria'] == null
+        ? null
+        : Expression.fromJson(json['criteria'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -368,9 +369,6 @@ Measure_Population _$Measure_PopulationFromJson(Map<String, dynamic> json) {
     element_description: json['element_description'] == null
         ? null
         : Element.fromJson(json['element_description'] as Map<String, dynamic>),
-    criteria: json['criteria'] == null
-        ? null
-        : Expression.fromJson(json['criteria'] as Map<String, dynamic>),
   );
 }
 
@@ -430,6 +428,9 @@ Map<String, dynamic> _$Measure_StratifierToJson(Measure_Stratifier instance) =>
 
 Measure_Component _$Measure_ComponentFromJson(Map<String, dynamic> json) {
   return Measure_Component(
+    json['criteria'] == null
+        ? null
+        : Expression.fromJson(json['criteria'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -446,9 +447,6 @@ Measure_Component _$Measure_ComponentFromJson(Map<String, dynamic> json) {
     element_description: json['element_description'] == null
         ? null
         : Element.fromJson(json['element_description'] as Map<String, dynamic>),
-    criteria: json['criteria'] == null
-        ? null
-        : Expression.fromJson(json['criteria'] as Map<String, dynamic>),
   );
 }
 
@@ -467,6 +465,9 @@ Map<String, dynamic> _$Measure_ComponentToJson(Measure_Component instance) =>
 Measure_SupplementalData _$Measure_SupplementalDataFromJson(
     Map<String, dynamic> json) {
   return Measure_SupplementalData(
+    json['criteria'] == null
+        ? null
+        : Expression.fromJson(json['criteria'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -488,9 +489,6 @@ Measure_SupplementalData _$Measure_SupplementalDataFromJson(
     element_description: json['element_description'] == null
         ? null
         : Element.fromJson(json['element_description'] as Map<String, dynamic>),
-    criteria: json['criteria'] == null
-        ? null
-        : Expression.fromJson(json['criteria'] as Map<String, dynamic>),
   );
 }
 

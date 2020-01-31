@@ -8,7 +8,6 @@ part of 'capabilityStatement.dart';
 
 CapabilityStatement _$CapabilityStatementFromJson(Map<String, dynamic> json) {
   return CapabilityStatement(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -150,7 +149,6 @@ CapabilityStatement _$CapabilityStatementFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$CapabilityStatementToJson(
         CapabilityStatement instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -625,6 +623,7 @@ Map<String, dynamic> _$CapabilityStatement_SearchParamToJson(
 CapabilityStatement_Operation _$CapabilityStatement_OperationFromJson(
     Map<String, dynamic> json) {
   return CapabilityStatement_Operation(
+    json['definition'] as String,
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -638,7 +637,6 @@ CapabilityStatement_Operation _$CapabilityStatement_OperationFromJson(
     element_name: json['element_name'] == null
         ? null
         : Element.fromJson(json['element_name'] as Map<String, dynamic>),
-    definition: json['definition'] as String,
     documentation: json['documentation'] as String,
     element_documentation: json['element_documentation'] == null
         ? null
@@ -753,6 +751,9 @@ Map<String, dynamic> _$CapabilityStatement_MessagingToJson(
 CapabilityStatement_Endpoint _$CapabilityStatement_EndpointFromJson(
     Map<String, dynamic> json) {
   return CapabilityStatement_Endpoint(
+    json['protocol'] == null
+        ? null
+        : Coding.fromJson(json['protocol'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -762,9 +763,6 @@ CapabilityStatement_Endpoint _$CapabilityStatement_EndpointFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    protocol: json['protocol'] == null
-        ? null
-        : Coding.fromJson(json['protocol'] as Map<String, dynamic>),
     address: json['address'] as String,
     element_address: json['element_address'] == null
         ? null
@@ -787,6 +785,7 @@ Map<String, dynamic> _$CapabilityStatement_EndpointToJson(
 CapabilityStatement_SupportedMessage
     _$CapabilityStatement_SupportedMessageFromJson(Map<String, dynamic> json) {
   return CapabilityStatement_SupportedMessage(
+    json['definition'] as String,
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -800,7 +799,6 @@ CapabilityStatement_SupportedMessage
     element_mode: json['element_mode'] == null
         ? null
         : Element.fromJson(json['element_mode'] as Map<String, dynamic>),
-    definition: json['definition'] as String,
   );
 }
 
@@ -819,6 +817,7 @@ Map<String, dynamic> _$CapabilityStatement_SupportedMessageToJson(
 CapabilityStatement_Document _$CapabilityStatement_DocumentFromJson(
     Map<String, dynamic> json) {
   return CapabilityStatement_Document(
+    json['profile'] as String,
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -837,7 +836,6 @@ CapabilityStatement_Document _$CapabilityStatement_DocumentFromJson(
         ? null
         : Element.fromJson(
             json['element_documentation'] as Map<String, dynamic>),
-    profile: json['profile'] as String,
   );
 }
 

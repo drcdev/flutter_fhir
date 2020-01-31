@@ -8,7 +8,12 @@ part of 'researchSubject.dart';
 
 ResearchSubject _$ResearchSubjectFromJson(Map<String, dynamic> json) {
   return ResearchSubject(
-    resourceType: json['resourceType'] as String,
+    json['study'] == null
+        ? null
+        : Reference.fromJson(json['study'] as Map<String, dynamic>),
+    json['individual'] == null
+        ? null
+        : Reference.fromJson(json['individual'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -48,12 +53,6 @@ ResearchSubject _$ResearchSubjectFromJson(Map<String, dynamic> json) {
     period: json['period'] == null
         ? null
         : Period.fromJson(json['period'] as Map<String, dynamic>),
-    study: json['study'] == null
-        ? null
-        : Reference.fromJson(json['study'] as Map<String, dynamic>),
-    individual: json['individual'] == null
-        ? null
-        : Reference.fromJson(json['individual'] as Map<String, dynamic>),
     assignedArm: json['assignedArm'] as String,
     element_assignedArm: json['element_assignedArm'] == null
         ? null
@@ -70,7 +69,6 @@ ResearchSubject _$ResearchSubjectFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ResearchSubjectToJson(ResearchSubject instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

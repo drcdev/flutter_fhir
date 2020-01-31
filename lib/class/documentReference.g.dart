@@ -8,7 +8,11 @@ part of 'documentReference.dart';
 
 DocumentReference _$DocumentReferenceFromJson(Map<String, dynamic> json) {
   return DocumentReference(
-    resourceType: json['resourceType'] as String,
+    (json['content'] as List)
+        ?.map((e) => e == null
+            ? null
+            : DocumentReference_Content.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -91,11 +95,6 @@ DocumentReference _$DocumentReferenceFromJson(Map<String, dynamic> json) {
             ? null
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    content: (json['content'] as List)
-        ?.map((e) => e == null
-            ? null
-            : DocumentReference_Content.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     context: json['context'] == null
         ? null
         : DocumentReference_Context.fromJson(
@@ -105,7 +104,6 @@ DocumentReference _$DocumentReferenceFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$DocumentReferenceToJson(DocumentReference instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -143,6 +141,9 @@ Map<String, dynamic> _$DocumentReferenceToJson(DocumentReference instance) =>
 DocumentReference_RelatesTo _$DocumentReference_RelatesToFromJson(
     Map<String, dynamic> json) {
   return DocumentReference_RelatesTo(
+    json['target'] == null
+        ? null
+        : Reference.fromJson(json['target'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -156,9 +157,6 @@ DocumentReference_RelatesTo _$DocumentReference_RelatesToFromJson(
     element_code: json['element_code'] == null
         ? null
         : Element.fromJson(json['element_code'] as Map<String, dynamic>),
-    target: json['target'] == null
-        ? null
-        : Reference.fromJson(json['target'] as Map<String, dynamic>),
   );
 }
 
@@ -177,6 +175,9 @@ Map<String, dynamic> _$DocumentReference_RelatesToToJson(
 DocumentReference_Content _$DocumentReference_ContentFromJson(
     Map<String, dynamic> json) {
   return DocumentReference_Content(
+    json['attachment'] == null
+        ? null
+        : Attachment.fromJson(json['attachment'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -186,9 +187,6 @@ DocumentReference_Content _$DocumentReference_ContentFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    attachment: json['attachment'] == null
-        ? null
-        : Attachment.fromJson(json['attachment'] as Map<String, dynamic>),
     format: json['format'] == null
         ? null
         : Coding.fromJson(json['format'] as Map<String, dynamic>),

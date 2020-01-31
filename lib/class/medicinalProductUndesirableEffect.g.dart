@@ -9,7 +9,6 @@ part of 'medicinalProductUndesirableEffect.dart';
 MedicinalProductUndesirableEffect _$MedicinalProductUndesirableEffectFromJson(
     Map<String, dynamic> json) {
   return MedicinalProductUndesirableEffect(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -64,7 +63,6 @@ MedicinalProductUndesirableEffect _$MedicinalProductUndesirableEffectFromJson(
 Map<String, dynamic> _$MedicinalProductUndesirableEffectToJson(
         MedicinalProductUndesirableEffect instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

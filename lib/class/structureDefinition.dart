@@ -17,261 +17,260 @@ part 'structureDefinition.g.dart';
 @JsonSerializable(explicitToJson: true)
 class StructureDefinition {
 
-//  This is a StructureDefinition resource
-String resourceType;
+  //  This is a StructureDefinition resource
+  final String resourceType= 'StructureDefinition';
 
-//  The logical id of the resource, as used in the URL for the resource.
-// Once assigned, this value never changes.
-String id;
+  //  The logical id of the resource, as used in the URL for the resource.
+  // Once assigned, this value never changes.
+  String id;
 
-//  The metadata about the resource. This is content that is maintained by
-// the infrastructure. Changes to the content might not always be
-// associated with version changes to the resource.
-Meta meta;
+  //  The metadata about the resource. This is content that is maintained by
+  // the infrastructure. Changes to the content might not always be
+  // associated with version changes to the resource.
+  Meta meta;
 
-//  A reference to a set of rules that were followed when the resource was
-// constructed, and which must be understood when processing the content.
-// Often, this is a reference to an implementation guide that defines the
-// special rules along with other profiles etc.
-String implicitRules;
+  //  A reference to a set of rules that were followed when the resource was
+  // constructed, and which must be understood when processing the content.
+  // Often, this is a reference to an implementation guide that defines the
+  // special rules along with other profiles etc.
+  String implicitRules;
 
-//  Extensions for implicitRules
-Element element_implicitRules;
+  //  Extensions for implicitRules
+  Element element_implicitRules;
 
-//  The base language in which the resource is written.
-String language;
+  //  The base language in which the resource is written.
+  String language;
 
-//  Extensions for language
-Element element_language;
+  //  Extensions for language
+  Element element_language;
 
-//  A human-readable narrative that contains a summary of the resource and
-// can be used to represent the content of the resource to a human. The
-// narrative need not encode all the structured data, but is required to
-// contain sufficient detail to make it "clinically safe" for a human to
-// just read the narrative. Resource definitions may define what content
-// should be represented in the narrative to ensure clinical safety.
-Narrative text;
+  //  A human-readable narrative that contains a summary of the resource and
+  // can be used to represent the content of the resource to a human. The
+  // narrative need not encode all the structured data, but is required to
+  // contain sufficient detail to make it "clinically safe" for a human to
+  // just read the narrative. Resource definitions may define what content
+  // should be represented in the narrative to ensure clinical safety.
+  Narrative text;
 
-//  These resources do not have an independent existence apart from the
-// resource that contains them - they cannot be identified independently,
-// and nor can they have their own independent transaction scope.
-List<ResourceList> contained;
+  //  These resources do not have an independent existence apart from the
+  // resource that contains them - they cannot be identified independently,
+  // and nor can they have their own independent transaction scope.
+  List<ResourceList> contained;
 
-//  May be used to represent additional information that is not part of
-// the basic definition of the resource. To make the use of extensions
-// safe and manageable, there is a strict set of governance  applied to
-// the definition and use of extensions. Though any implementer can define
-// an extension, there is a set of requirements that SHALL be met as part
-// of the definition of the extension.
-List<Extension> extension;
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource. To make the use of extensions
+  // safe and manageable, there is a strict set of governance  applied to
+  // the definition and use of extensions. Though any implementer can define
+  // an extension, there is a set of requirements that SHALL be met as part
+  // of the definition of the extension.
+  List<Extension> extension;
 
-//  May be used to represent additional information that is not part of
-// the basic definition of the resource and that modifies the
-// understanding of the element that contains it and/or the understanding
-// of the containing element's descendants. Usually modifier elements
-// provide negation or qualification. To make the use of extensions safe
-// and manageable, there is a strict set of governance applied to the
-// definition and use of extensions. Though any implementer is allowed to
-// define an extension, there is a set of requirements that SHALL be met
-// as part of the definition of the extension. Applications processing a
-// resource are required to check for modifier extensions. Modifier
-// extensions SHALL NOT change the meaning of any elements on Resource or
-// DomainResource (including cannot change the meaning of
-// modifierExtension itself).
-List<Extension> modifierExtension;
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource and that modifies the
+  // understanding of the element that contains it and/or the understanding
+  // of the containing element's descendants. Usually modifier elements
+  // provide negation or qualification. To make the use of extensions safe
+  // and manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer is allowed to
+  // define an extension, there is a set of requirements that SHALL be met
+  // as part of the definition of the extension. Applications processing a
+  // resource are required to check for modifier extensions. Modifier
+  // extensions SHALL NOT change the meaning of any elements on Resource or
+  // DomainResource (including cannot change the meaning of
+  // modifierExtension itself).
+  List<Extension> modifierExtension;
 
-//  An absolute URI that is used to identify this structure definition
-// when it is referenced in a specification, model, design or an instance;
-// also called its canonical identifier. This SHOULD be globally unique
-// and SHOULD be a literal address at which at which an authoritative
-// instance of this structure definition is (or will be) published. This
-// URL can be the target of a canonical reference. It SHALL remain the
-// same when the structure definition is stored on different servers.
-String url;
+  //  An absolute URI that is used to identify this structure definition
+  // when it is referenced in a specification, model, design or an instance;
+  // also called its canonical identifier. This SHOULD be globally unique
+  // and SHOULD be a literal address at which at which an authoritative
+  // instance of this structure definition is (or will be) published. This
+  // URL can be the target of a canonical reference. It SHALL remain the
+  // same when the structure definition is stored on different servers.
+  String url;
 
-//  Extensions for url
-Element element_url;
+  //  Extensions for url
+  Element element_url;
 
-//  A formal identifier that is used to identify this structure definition
-// when it is represented in other formats, or referenced in a
-// specification, model, design or an instance.
-List<Identifier> identifier;
+  //  A formal identifier that is used to identify this structure definition
+  // when it is represented in other formats, or referenced in a
+  // specification, model, design or an instance.
+  List<Identifier> identifier;
 
-//  The identifier that is used to identify this version of the structure
-// definition when it is referenced in a specification, model, design or
-// instance. This is an arbitrary value managed by the structure
-// definition author and is not expected to be globally unique. For
-// example, it might be a timestamp (e.g. yyyymmdd) if a managed version
-// is not available. There is also no expectation that versions can be
-// placed in a lexicographical sequence.
-String version;
+  //  The identifier that is used to identify this version of the structure
+  // definition when it is referenced in a specification, model, design or
+  // instance. This is an arbitrary value managed by the structure
+  // definition author and is not expected to be globally unique. For
+  // example, it might be a timestamp (e.g. yyyymmdd) if a managed version
+  // is not available. There is also no expectation that versions can be
+  // placed in a lexicographical sequence.
+  String version;
 
-//  Extensions for version
-Element element_version;
+  //  Extensions for version
+  Element element_version;
 
-//  A natural language name identifying the structure definition. This
-// name should be usable as an identifier for the module by machine
-// processing applications such as code generation.
-String name;
+  //  A natural language name identifying the structure definition. This
+  // name should be usable as an identifier for the module by machine
+  // processing applications such as code generation.
+  String name;
 
-//  Extensions for name
-Element element_name;
+  //  Extensions for name
+  Element element_name;
 
-//  A short, descriptive, user-friendly title for the structure
-// definition.
-String title;
+  //  A short, descriptive, user-friendly title for the structure
+  // definition.
+  String title;
 
-//  Extensions for title
-Element element_title;
+  //  Extensions for title
+  Element element_title;
 
-//  The status of this structure definition. Enables tracking the
-// life-cycle of the content.
-String status; // <code> enum: draft/active/retired/unknown;
+  //  The status of this structure definition. Enables tracking the
+  // life-cycle of the content.
+  String status; // <code> enum: draft/active/retired/unknown;
 
-//  Extensions for status
-Element element_status;
+  //  Extensions for status
+  Element element_status;
 
-//  A Boolean value to indicate that this structure definition is authored
-// for testing purposes (or education/evaluation/marketing) and is not
-// intended to be used for genuine usage.
-bool experimental;
+  //  A Boolean value to indicate that this structure definition is authored
+  // for testing purposes (or education/evaluation/marketing) and is not
+  // intended to be used for genuine usage.
+  bool experimental;
 
-//  Extensions for experimental
-Element element_experimental;
+  //  Extensions for experimental
+  Element element_experimental;
 
-//  The date  (and optionally time) when the structure definition was
-// published. The date must change when the business version changes and
-// it must change if the status code changes. In addition, it should
-// change when the substantive content of the structure definition
-// changes.
-DateTime date;
+  //  The date  (and optionally time) when the structure definition was
+  // published. The date must change when the business version changes and
+  // it must change if the status code changes. In addition, it should
+  // change when the substantive content of the structure definition
+  // changes.
+  DateTime date;
 
-//  Extensions for date
-Element element_date;
+  //  Extensions for date
+  Element element_date;
 
-//  The name of the organization or individual that published the
-// structure definition.
-String publisher;
+  //  The name of the organization or individual that published the
+  // structure definition.
+  String publisher;
 
-//  Extensions for publisher
-Element element_publisher;
+  //  Extensions for publisher
+  Element element_publisher;
 
-//  Contact details to assist a user in finding and communicating with the
-// publisher.
-List<ContactDetail> contact;
+  //  Contact details to assist a user in finding and communicating with the
+  // publisher.
+  List<ContactDetail> contact;
 
-//  A free text natural language description of the structure definition
-// from a consumer's perspective.
-String description;
+  //  A free text natural language description of the structure definition
+  // from a consumer's perspective.
+  String description;
 
-//  Extensions for description
-Element element_description;
+  //  Extensions for description
+  Element element_description;
 
-//  The content was developed with a focus and intent of supporting the
-// contexts that are listed. These contexts may be general categories
-// (gender, age, ...) or may be references to specific programs (insurance
-// plans, studies, ...) and may be used to assist with indexing and
-// searching for appropriate structure definition instances.
-List<UsageContext> useContext;
+  //  The content was developed with a focus and intent of supporting the
+  // contexts that are listed. These contexts may be general categories
+  // (gender, age, ...) or may be references to specific programs (insurance
+  // plans, studies, ...) and may be used to assist with indexing and
+  // searching for appropriate structure definition instances.
+  List<UsageContext> useContext;
 
-//  A legal or geographic region in which the structure definition is
-// intended to be used.
-List<CodeableConcept> jurisdiction;
+  //  A legal or geographic region in which the structure definition is
+  // intended to be used.
+  List<CodeableConcept> jurisdiction;
 
-//  Explanation of why this structure definition is needed and why it has
-// been designed as it has.
-String purpose;
+  //  Explanation of why this structure definition is needed and why it has
+  // been designed as it has.
+  String purpose;
 
-//  Extensions for purpose
-Element element_purpose;
+  //  Extensions for purpose
+  Element element_purpose;
 
-//  A copyright statement relating to the structure definition and/or its
-// contents. Copyright statements are generally legal restrictions on the
-// use and publishing of the structure definition.
-String copyright;
+  //  A copyright statement relating to the structure definition and/or its
+  // contents. Copyright statements are generally legal restrictions on the
+  // use and publishing of the structure definition.
+  String copyright;
 
-//  Extensions for copyright
-Element element_copyright;
+  //  Extensions for copyright
+  Element element_copyright;
 
-//  A set of key words or terms from external terminologies that may be
-// used to assist with indexing and searching of templates nby describing
-// the use of this structure definition, or the content it describes.
-List<Coding> keyword;
+  //  A set of key words or terms from external terminologies that may be
+  // used to assist with indexing and searching of templates nby describing
+  // the use of this structure definition, or the content it describes.
+  List<Coding> keyword;
 
-//  The version of the FHIR specification on which this
-// StructureDefinition is based - this is the formal version of the
-// specification, without the revision number, e.g.
-// [publication].[major].[minor], which is 4.0.1. for this version.
-String fhirVersion; // <code> enum: 0.01/0.05/0.06/0.11/0.0.80/0.0.81/0.0.82/0.4.0/0.5.0/1.0.0/1.0.1/1.0.2/1.1.0/1.4.0/1.6.0/1.8.0/3.0.0/3.0.1/3.3.0/3.5.0/4.0.0/4.0.1;
+  //  The version of the FHIR specification on which this
+  // StructureDefinition is based - this is the formal version of the
+  // specification, without the revision number, e.g.
+  // [publication].[major].[minor], which is 4.0.1. for this version.
+  String fhirVersion; // <code> enum: 0.01/0.05/0.06/0.11/0.0.80/0.0.81/0.0.82/0.4.0/0.5.0/1.0.0/1.0.1/1.0.2/1.1.0/1.4.0/1.6.0/1.8.0/3.0.0/3.0.1/3.3.0/3.5.0/4.0.0/4.0.1;
 
-//  Extensions for fhirVersion
-Element element_fhirVersion;
+  //  Extensions for fhirVersion
+  Element element_fhirVersion;
 
-//  An external specification that the content is mapped to.
-List<StructureDefinition_Mapping> mapping;
+  //  An external specification that the content is mapped to.
+  List<StructureDefinition_Mapping> mapping;
 
-//  Defines the kind of structure that this definition is describing.
-String kind; // <code> enum: primitive-type/complex-type/resource/logical;
+  //  Defines the kind of structure that this definition is describing.
+  String kind; // <code> enum: primitive-type/complex-type/resource/logical;
 
-//  Extensions for kind
-Element element_kind;
+  //  Extensions for kind
+  Element element_kind;
 
-//  Whether structure this definition describes is abstract or not  - that
-// is, whether the structure is not intended to be instantiated. For
-// Resources and Data types, abstract types will never be exchanged 
-// between systems.
-bool abstract;
+  //  Whether structure this definition describes is abstract or not  - that
+  // is, whether the structure is not intended to be instantiated. For
+  // Resources and Data types, abstract types will never be exchanged 
+  // between systems.
+  bool abstract;
 
-//  Extensions for abstract
-Element element_abstract;
+  //  Extensions for abstract
+  Element element_abstract;
 
-//  Identifies the types of resource or data type elements to which the
-// extension can be applied.
-List<StructureDefinition_Context> context;
+  //  Identifies the types of resource or data type elements to which the
+  // extension can be applied.
+  List<StructureDefinition_Context> context;
 
-//  A set of rules as FHIRPath Invariants about when the extension can be
-// used (e.g. co-occurrence variants for the extension). All the rules
-// must be true.
-List<String> contextInvariant;
+  //  A set of rules as FHIRPath Invariants about when the extension can be
+  // used (e.g. co-occurrence variants for the extension). All the rules
+  // must be true.
+  List<String> contextInvariant;
 
-//  Extensions for contextInvariant
-List<Element> element_contextInvariant;
+  //  Extensions for contextInvariant
+  List<Element> element_contextInvariant;
 
-//  The type this structure describes. If the derivation kind is
-// 'specialization' then this is the master definition for a type, and
-// there is always one of these (a data type, an extension, a resource,
-// including abstract ones). Otherwise the structure definition is a
-// constraint on the stated type (and in this case, the type cannot be an
-// abstract type).  References are URLs that are relative to
-// http://hl7.org/fhir/StructureDefinition e.g. "string" is a reference to
-// http://hl7.org/fhir/StructureDefinition/string. Absolute URLs are only
-// allowed in logical models.
-String type;
+  //  The type this structure describes. If the derivation kind is
+  // 'specialization' then this is the master definition for a type, and
+  // there is always one of these (a data type, an extension, a resource,
+  // including abstract ones). Otherwise the structure definition is a
+  // constraint on the stated type (and in this case, the type cannot be an
+  // abstract type).  References are URLs that are relative to
+  // http://hl7.org/fhir/StructureDefinition e.g. "string" is a reference to
+  // http://hl7.org/fhir/StructureDefinition/string. Absolute URLs are only
+  // allowed in logical models.
+  String type;
 
-//  Extensions for type
-Element element_type;
+  //  Extensions for type
+  Element element_type;
 
-//  An absolute URI that is the base structure from which this type is
-// derived, either by specialization or constraint.
-String baseDefinition;
+  //  An absolute URI that is the base structure from which this type is
+  // derived, either by specialization or constraint.
+  String baseDefinition;
 
-//  How the type relates to the baseDefinition.
-String derivation; // <code> enum: specialization/constraint;
+  //  How the type relates to the baseDefinition.
+  String derivation; // <code> enum: specialization/constraint;
 
-//  Extensions for derivation
-Element element_derivation;
+  //  Extensions for derivation
+  Element element_derivation;
 
-//  A snapshot view is expressed in a standalone form that can be used and
-// interpreted without considering the base StructureDefinition.
-StructureDefinition_Snapshot snapshot;
+  //  A snapshot view is expressed in a standalone form that can be used and
+  // interpreted without considering the base StructureDefinition.
+  StructureDefinition_Snapshot snapshot;
 
-//  A differential view is expressed relative to the base
-// StructureDefinition - a statement of differences that it applies.
-StructureDefinition_Differential differential;
+  //  A differential view is expressed relative to the base
+  // StructureDefinition - a statement of differences that it applies.
+  StructureDefinition_Differential differential;
 
 StructureDefinition(
-  {this.resourceType,
-    this.id,
+  {this.id,
     this.meta,
     this.implicitRules,
     this.element_implicitRules,
@@ -334,58 +333,58 @@ StructureDefinition(
 @JsonSerializable(explicitToJson: true)
 class StructureDefinition_Mapping {
 
-//  Unique id for the element within a resource (for internal references).
-// This may be any string value that does not contain spaces.
-String id;
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  String id;
 
-//  May be used to represent additional information that is not part of
-// the basic definition of the element. To make the use of extensions safe
-// and manageable, there is a strict set of governance  applied to the
-// definition and use of extensions. Though any implementer can define an
-// extension, there is a set of requirements that SHALL be met as part of
-// the definition of the extension.
-List<Extension> extension;
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  List<Extension> extension;
 
-//  May be used to represent additional information that is not part of
-// the basic definition of the element and that modifies the understanding
-// of the element in which it is contained and/or the understanding of the
-// containing element's descendants. Usually modifier elements provide
-// negation or qualification. To make the use of extensions safe and
-// manageable, there is a strict set of governance applied to the
-// definition and use of extensions. Though any implementer can define an
-// extension, there is a set of requirements that SHALL be met as part of
-// the definition of the extension. Applications processing a resource are
-// required to check for modifier extensions. Modifier extensions SHALL
-// NOT change the meaning of any elements on Resource or DomainResource
-// (including cannot change the meaning of modifierExtension itself).
-List<Extension> modifierExtension;
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  List<Extension> modifierExtension;
 
-//  An Internal id that is used to identify this mapping set when specific
-// mappings are made.
-String identity;
+  //  An Internal id that is used to identify this mapping set when specific
+  // mappings are made.
+  String identity;
 
-//  Extensions for identity
-Element element_identity;
+  //  Extensions for identity
+  Element element_identity;
 
-//  An absolute URI that identifies the specification that this mapping is
-// expressed to.
-String uri;
+  //  An absolute URI that identifies the specification that this mapping is
+  // expressed to.
+  String uri;
 
-//  Extensions for uri
-Element element_uri;
+  //  Extensions for uri
+  Element element_uri;
 
-//  A name for the specification that is being mapped to.
-String name;
+  //  A name for the specification that is being mapped to.
+  String name;
 
-//  Extensions for name
-Element element_name;
+  //  Extensions for name
+  Element element_name;
 
-//  Comments about this mapping, including version notes, issues, scope
-// limitations, and other important notes for usage.
-String comment;
+  //  Comments about this mapping, including version notes, issues, scope
+  // limitations, and other important notes for usage.
+  String comment;
 
-//  Extensions for comment
-Element element_comment;
+  //  Extensions for comment
+  Element element_comment;
 
 StructureDefinition_Mapping(
   {this.id,
@@ -408,45 +407,45 @@ StructureDefinition_Mapping(
 @JsonSerializable(explicitToJson: true)
 class StructureDefinition_Context {
 
-//  Unique id for the element within a resource (for internal references).
-// This may be any string value that does not contain spaces.
-String id;
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  String id;
 
-//  May be used to represent additional information that is not part of
-// the basic definition of the element. To make the use of extensions safe
-// and manageable, there is a strict set of governance  applied to the
-// definition and use of extensions. Though any implementer can define an
-// extension, there is a set of requirements that SHALL be met as part of
-// the definition of the extension.
-List<Extension> extension;
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  List<Extension> extension;
 
-//  May be used to represent additional information that is not part of
-// the basic definition of the element and that modifies the understanding
-// of the element in which it is contained and/or the understanding of the
-// containing element's descendants. Usually modifier elements provide
-// negation or qualification. To make the use of extensions safe and
-// manageable, there is a strict set of governance applied to the
-// definition and use of extensions. Though any implementer can define an
-// extension, there is a set of requirements that SHALL be met as part of
-// the definition of the extension. Applications processing a resource are
-// required to check for modifier extensions. Modifier extensions SHALL
-// NOT change the meaning of any elements on Resource or DomainResource
-// (including cannot change the meaning of modifierExtension itself).
-List<Extension> modifierExtension;
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  List<Extension> modifierExtension;
 
-//  Defines how to interpret the expression that defines what the context
-// of the extension is.
-String type; // <code> enum: fhirpath/element/extension;
+  //  Defines how to interpret the expression that defines what the context
+  // of the extension is.
+  String type; // <code> enum: fhirpath/element/extension;
 
-//  Extensions for type
-Element element_type;
+  //  Extensions for type
+  Element element_type;
 
-//  An expression that defines where an extension can be used in
-// resources.
-String expression;
+  //  An expression that defines where an extension can be used in
+  // resources.
+  String expression;
 
-//  Extensions for expression
-Element element_expression;
+  //  Extensions for expression
+  Element element_expression;
 
 StructureDefinition_Context(
   {this.id,
@@ -465,40 +464,40 @@ StructureDefinition_Context(
 @JsonSerializable(explicitToJson: true)
 class StructureDefinition_Snapshot {
 
-//  Unique id for the element within a resource (for internal references).
-// This may be any string value that does not contain spaces.
-String id;
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  String id;
 
-//  May be used to represent additional information that is not part of
-// the basic definition of the element. To make the use of extensions safe
-// and manageable, there is a strict set of governance  applied to the
-// definition and use of extensions. Though any implementer can define an
-// extension, there is a set of requirements that SHALL be met as part of
-// the definition of the extension.
-List<Extension> extension;
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  List<Extension> extension;
 
-//  May be used to represent additional information that is not part of
-// the basic definition of the element and that modifies the understanding
-// of the element in which it is contained and/or the understanding of the
-// containing element's descendants. Usually modifier elements provide
-// negation or qualification. To make the use of extensions safe and
-// manageable, there is a strict set of governance applied to the
-// definition and use of extensions. Though any implementer can define an
-// extension, there is a set of requirements that SHALL be met as part of
-// the definition of the extension. Applications processing a resource are
-// required to check for modifier extensions. Modifier extensions SHALL
-// NOT change the meaning of any elements on Resource or DomainResource
-// (including cannot change the meaning of modifierExtension itself).
-List<Extension> modifierExtension;
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  List<Extension> modifierExtension;
 
-//  Captures constraints on each element within the resource.
-List<ElementDefinition> element;
+  //  Captures constraints on each element within the resource.
+  List<ElementDefinition> element;
 
 StructureDefinition_Snapshot(
-  {this.id,
+  this.element,
+    {this.id,
     this.extension,
-    this.modifierExtension,
-    this.element
+    this.modifierExtension
     });
 
   factory StructureDefinition_Snapshot.fromJson(Map<String, dynamic> json) => _$StructureDefinition_SnapshotFromJson(json);
@@ -508,40 +507,40 @@ StructureDefinition_Snapshot(
 @JsonSerializable(explicitToJson: true)
 class StructureDefinition_Differential {
 
-//  Unique id for the element within a resource (for internal references).
-// This may be any string value that does not contain spaces.
-String id;
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  String id;
 
-//  May be used to represent additional information that is not part of
-// the basic definition of the element. To make the use of extensions safe
-// and manageable, there is a strict set of governance  applied to the
-// definition and use of extensions. Though any implementer can define an
-// extension, there is a set of requirements that SHALL be met as part of
-// the definition of the extension.
-List<Extension> extension;
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  List<Extension> extension;
 
-//  May be used to represent additional information that is not part of
-// the basic definition of the element and that modifies the understanding
-// of the element in which it is contained and/or the understanding of the
-// containing element's descendants. Usually modifier elements provide
-// negation or qualification. To make the use of extensions safe and
-// manageable, there is a strict set of governance applied to the
-// definition and use of extensions. Though any implementer can define an
-// extension, there is a set of requirements that SHALL be met as part of
-// the definition of the extension. Applications processing a resource are
-// required to check for modifier extensions. Modifier extensions SHALL
-// NOT change the meaning of any elements on Resource or DomainResource
-// (including cannot change the meaning of modifierExtension itself).
-List<Extension> modifierExtension;
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  List<Extension> modifierExtension;
 
-//  Captures constraints on each element within the resource.
-List<ElementDefinition> element;
+  //  Captures constraints on each element within the resource.
+  List<ElementDefinition> element;
 
 StructureDefinition_Differential(
-  {this.id,
+  this.element,
+    {this.id,
     this.extension,
-    this.modifierExtension,
-    this.element
+    this.modifierExtension
     });
 
   factory StructureDefinition_Differential.fromJson(Map<String, dynamic> json) => _$StructureDefinition_DifferentialFromJson(json);

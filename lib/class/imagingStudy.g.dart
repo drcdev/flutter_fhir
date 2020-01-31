@@ -8,7 +8,9 @@ part of 'imagingStudy.dart';
 
 ImagingStudy _$ImagingStudyFromJson(Map<String, dynamic> json) {
   return ImagingStudy(
-    resourceType: json['resourceType'] as String,
+    json['subject'] == null
+        ? null
+        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -49,9 +51,6 @@ ImagingStudy _$ImagingStudyFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Coding.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    subject: json['subject'] == null
-        ? null
-        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     encounter: json['encounter'] == null
         ? null
         : Reference.fromJson(json['encounter'] as Map<String, dynamic>),
@@ -125,7 +124,6 @@ ImagingStudy _$ImagingStudyFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ImagingStudyToJson(ImagingStudy instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -168,6 +166,9 @@ Map<String, dynamic> _$ImagingStudyToJson(ImagingStudy instance) =>
 
 ImagingStudy_Series _$ImagingStudy_SeriesFromJson(Map<String, dynamic> json) {
   return ImagingStudy_Series(
+    json['modality'] == null
+        ? null
+        : Coding.fromJson(json['modality'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -185,9 +186,6 @@ ImagingStudy_Series _$ImagingStudy_SeriesFromJson(Map<String, dynamic> json) {
     element_number: json['element_number'] == null
         ? null
         : Element.fromJson(json['element_number'] as Map<String, dynamic>),
-    modality: json['modality'] == null
-        ? null
-        : Coding.fromJson(json['modality'] as Map<String, dynamic>),
     description: json['description'] as String,
     element_description: json['element_description'] == null
         ? null
@@ -259,6 +257,9 @@ Map<String, dynamic> _$ImagingStudy_SeriesToJson(
 ImagingStudy_Performer _$ImagingStudy_PerformerFromJson(
     Map<String, dynamic> json) {
   return ImagingStudy_Performer(
+    json['actor'] == null
+        ? null
+        : Reference.fromJson(json['actor'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -271,9 +272,6 @@ ImagingStudy_Performer _$ImagingStudy_PerformerFromJson(
     function: json['function'] == null
         ? null
         : CodeableConcept.fromJson(json['function'] as Map<String, dynamic>),
-    actor: json['actor'] == null
-        ? null
-        : Reference.fromJson(json['actor'] as Map<String, dynamic>),
   );
 }
 
@@ -291,6 +289,9 @@ Map<String, dynamic> _$ImagingStudy_PerformerToJson(
 ImagingStudy_Instance _$ImagingStudy_InstanceFromJson(
     Map<String, dynamic> json) {
   return ImagingStudy_Instance(
+    json['sopClass'] == null
+        ? null
+        : Coding.fromJson(json['sopClass'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -304,9 +305,6 @@ ImagingStudy_Instance _$ImagingStudy_InstanceFromJson(
     element_uid: json['element_uid'] == null
         ? null
         : Element.fromJson(json['element_uid'] as Map<String, dynamic>),
-    sopClass: json['sopClass'] == null
-        ? null
-        : Coding.fromJson(json['sopClass'] as Map<String, dynamic>),
     number: json['number'] as int,
     element_number: json['element_number'] == null
         ? null

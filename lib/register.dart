@@ -168,7 +168,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
             children: <Widget>[
               RaisedButton(
                 onPressed: () {
-                  Patient pt = Patient(resourceType: 'Patient',
+                  Patient pt = Patient(
                       address: [Address(district: barrio)],
                       name: [
                         HumanName(given: [givenNameController.text],

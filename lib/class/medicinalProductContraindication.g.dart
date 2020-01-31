@@ -9,7 +9,6 @@ part of 'medicinalProductContraindication.dart';
 MedicinalProductContraindication _$MedicinalProductContraindicationFromJson(
     Map<String, dynamic> json) {
   return MedicinalProductContraindication(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -74,7 +73,6 @@ MedicinalProductContraindication _$MedicinalProductContraindicationFromJson(
 Map<String, dynamic> _$MedicinalProductContraindicationToJson(
         MedicinalProductContraindication instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -100,6 +98,10 @@ MedicinalProductContraindication_OtherTherapy
     _$MedicinalProductContraindication_OtherTherapyFromJson(
         Map<String, dynamic> json) {
   return MedicinalProductContraindication_OtherTherapy(
+    json['therapyRelationshipType'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['therapyRelationshipType'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -109,10 +111,6 @@ MedicinalProductContraindication_OtherTherapy
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    therapyRelationshipType: json['therapyRelationshipType'] == null
-        ? null
-        : CodeableConcept.fromJson(
-            json['therapyRelationshipType'] as Map<String, dynamic>),
     medicationCodeableConcept: json['medicationCodeableConcept'] == null
         ? null
         : CodeableConcept.fromJson(

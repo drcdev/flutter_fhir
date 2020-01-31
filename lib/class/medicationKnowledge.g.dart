@@ -8,7 +8,6 @@ part of 'medicationKnowledge.dart';
 
 MedicationKnowledge _$MedicationKnowledgeFromJson(Map<String, dynamic> json) {
   return MedicationKnowledge(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -149,7 +148,6 @@ MedicationKnowledge _$MedicationKnowledgeFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$MedicationKnowledgeToJson(
         MedicationKnowledge instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -203,6 +201,13 @@ MedicationKnowledge_RelatedMedicationKnowledge
     _$MedicationKnowledge_RelatedMedicationKnowledgeFromJson(
         Map<String, dynamic> json) {
   return MedicationKnowledge_RelatedMedicationKnowledge(
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
+    (json['reference'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -211,13 +216,6 @@ MedicationKnowledge_RelatedMedicationKnowledge
     modifierExtension: (json['modifierExtension'] as List)
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    type: json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
-    reference: (json['reference'] as List)
-        ?.map((e) =>
-            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   );
 }
@@ -311,6 +309,12 @@ Map<String, dynamic> _$MedicationKnowledge_IngredientToJson(
 MedicationKnowledge_Cost _$MedicationKnowledge_CostFromJson(
     Map<String, dynamic> json) {
   return MedicationKnowledge_Cost(
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
+    json['cost'] == null
+        ? null
+        : Money.fromJson(json['cost'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -320,16 +324,10 @@ MedicationKnowledge_Cost _$MedicationKnowledge_CostFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    type: json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     source: json['source'] as String,
     element_source: json['element_source'] == null
         ? null
         : Element.fromJson(json['element_source'] as Map<String, dynamic>),
-    cost: json['cost'] == null
-        ? null
-        : Money.fromJson(json['cost'] as Map<String, dynamic>),
   );
 }
 
@@ -432,6 +430,13 @@ Map<String, dynamic> _$MedicationKnowledge_AdministrationGuidelinesToJson(
 MedicationKnowledge_Dosage _$MedicationKnowledge_DosageFromJson(
     Map<String, dynamic> json) {
   return MedicationKnowledge_Dosage(
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
+    (json['dosage'] as List)
+        ?.map((e) =>
+            e == null ? null : Dosage.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -440,13 +445,6 @@ MedicationKnowledge_Dosage _$MedicationKnowledge_DosageFromJson(
     modifierExtension: (json['modifierExtension'] as List)
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    type: json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
-    dosage: (json['dosage'] as List)
-        ?.map((e) =>
-            e == null ? null : Dosage.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   );
 }
@@ -510,6 +508,9 @@ MedicationKnowledge_MedicineClassification
     _$MedicationKnowledge_MedicineClassificationFromJson(
         Map<String, dynamic> json) {
   return MedicationKnowledge_MedicineClassification(
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -519,9 +520,6 @@ MedicationKnowledge_MedicineClassification
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    type: json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     classification: (json['classification'] as List)
         ?.map((e) => e == null
             ? null
@@ -628,6 +626,10 @@ Map<String, dynamic> _$MedicationKnowledge_DrugCharacteristicToJson(
 MedicationKnowledge_Regulatory _$MedicationKnowledge_RegulatoryFromJson(
     Map<String, dynamic> json) {
   return MedicationKnowledge_Regulatory(
+    json['regulatoryAuthority'] == null
+        ? null
+        : Reference.fromJson(
+            json['regulatoryAuthority'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -637,10 +639,6 @@ MedicationKnowledge_Regulatory _$MedicationKnowledge_RegulatoryFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    regulatoryAuthority: json['regulatoryAuthority'] == null
-        ? null
-        : Reference.fromJson(
-            json['regulatoryAuthority'] as Map<String, dynamic>),
     substitution: (json['substitution'] as List)
         ?.map((e) => e == null
             ? null
@@ -675,6 +673,9 @@ Map<String, dynamic> _$MedicationKnowledge_RegulatoryToJson(
 MedicationKnowledge_Substitution _$MedicationKnowledge_SubstitutionFromJson(
     Map<String, dynamic> json) {
   return MedicationKnowledge_Substitution(
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -684,9 +685,6 @@ MedicationKnowledge_Substitution _$MedicationKnowledge_SubstitutionFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    type: json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     allowed: json['allowed'] as bool,
     element_allowed: json['element_allowed'] == null
         ? null
@@ -709,6 +707,9 @@ Map<String, dynamic> _$MedicationKnowledge_SubstitutionToJson(
 MedicationKnowledge_Schedule _$MedicationKnowledge_ScheduleFromJson(
     Map<String, dynamic> json) {
   return MedicationKnowledge_Schedule(
+    json['schedule'] == null
+        ? null
+        : CodeableConcept.fromJson(json['schedule'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -718,9 +719,6 @@ MedicationKnowledge_Schedule _$MedicationKnowledge_ScheduleFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    schedule: json['schedule'] == null
-        ? null
-        : CodeableConcept.fromJson(json['schedule'] as Map<String, dynamic>),
   );
 }
 
@@ -737,6 +735,9 @@ Map<String, dynamic> _$MedicationKnowledge_ScheduleToJson(
 MedicationKnowledge_MaxDispense _$MedicationKnowledge_MaxDispenseFromJson(
     Map<String, dynamic> json) {
   return MedicationKnowledge_MaxDispense(
+    json['quantity'] == null
+        ? null
+        : Quantity.fromJson(json['quantity'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -746,9 +747,6 @@ MedicationKnowledge_MaxDispense _$MedicationKnowledge_MaxDispenseFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    quantity: json['quantity'] == null
-        ? null
-        : Quantity.fromJson(json['quantity'] as Map<String, dynamic>),
     period: json['period'],
   );
 }

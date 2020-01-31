@@ -8,7 +8,6 @@ part of 'practitioner.dart';
 
 Practitioner _$PractitionerFromJson(Map<String, dynamic> json) {
   return Practitioner(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -84,7 +83,6 @@ Practitioner _$PractitionerFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$PractitionerToJson(Practitioner instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -116,6 +114,9 @@ Map<String, dynamic> _$PractitionerToJson(Practitioner instance) =>
 Practitioner_Qualification _$Practitioner_QualificationFromJson(
     Map<String, dynamic> json) {
   return Practitioner_Qualification(
+    json['code'] == null
+        ? null
+        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -129,9 +130,6 @@ Practitioner_Qualification _$Practitioner_QualificationFromJson(
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    code: json['code'] == null
-        ? null
-        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     period: json['period'] == null
         ? null
         : Period.fromJson(json['period'] as Map<String, dynamic>),

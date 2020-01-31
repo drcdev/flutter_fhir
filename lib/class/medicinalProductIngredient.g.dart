@@ -9,7 +9,9 @@ part of 'medicinalProductIngredient.dart';
 MedicinalProductIngredient _$MedicinalProductIngredientFromJson(
     Map<String, dynamic> json) {
   return MedicinalProductIngredient(
-    resourceType: json['resourceType'] as String,
+    json['role'] == null
+        ? null
+        : CodeableConcept.fromJson(json['role'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -41,9 +43,6 @@ MedicinalProductIngredient _$MedicinalProductIngredientFromJson(
     identifier: json['identifier'] == null
         ? null
         : Identifier.fromJson(json['identifier'] as Map<String, dynamic>),
-    role: json['role'] == null
-        ? null
-        : CodeableConcept.fromJson(json['role'] as Map<String, dynamic>),
     allergenicIndicator: json['allergenicIndicator'] as bool,
     element_allergenicIndicator: json['element_allergenicIndicator'] == null
         ? null
@@ -69,7 +68,6 @@ MedicinalProductIngredient _$MedicinalProductIngredientFromJson(
 Map<String, dynamic> _$MedicinalProductIngredientToJson(
         MedicinalProductIngredient instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -96,6 +94,12 @@ MedicinalProductIngredient_SpecifiedSubstance
     _$MedicinalProductIngredient_SpecifiedSubstanceFromJson(
         Map<String, dynamic> json) {
   return MedicinalProductIngredient_SpecifiedSubstance(
+    json['code'] == null
+        ? null
+        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
+    json['group'] == null
+        ? null
+        : CodeableConcept.fromJson(json['group'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -105,12 +109,6 @@ MedicinalProductIngredient_SpecifiedSubstance
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    code: json['code'] == null
-        ? null
-        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
-    group: json['group'] == null
-        ? null
-        : CodeableConcept.fromJson(json['group'] as Map<String, dynamic>),
     confidentiality: json['confidentiality'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -140,6 +138,9 @@ Map<String, dynamic> _$MedicinalProductIngredient_SpecifiedSubstanceToJson(
 MedicinalProductIngredient_Strength
     _$MedicinalProductIngredient_StrengthFromJson(Map<String, dynamic> json) {
   return MedicinalProductIngredient_Strength(
+    json['presentation'] == null
+        ? null
+        : Ratio.fromJson(json['presentation'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -149,9 +150,6 @@ MedicinalProductIngredient_Strength
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    presentation: json['presentation'] == null
-        ? null
-        : Ratio.fromJson(json['presentation'] as Map<String, dynamic>),
     presentationLowLimit: json['presentationLowLimit'] == null
         ? null
         : Ratio.fromJson(json['presentationLowLimit'] as Map<String, dynamic>),
@@ -202,6 +200,9 @@ MedicinalProductIngredient_ReferenceStrength
     _$MedicinalProductIngredient_ReferenceStrengthFromJson(
         Map<String, dynamic> json) {
   return MedicinalProductIngredient_ReferenceStrength(
+    json['strength'] == null
+        ? null
+        : Ratio.fromJson(json['strength'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -214,9 +215,6 @@ MedicinalProductIngredient_ReferenceStrength
     substance: json['substance'] == null
         ? null
         : CodeableConcept.fromJson(json['substance'] as Map<String, dynamic>),
-    strength: json['strength'] == null
-        ? null
-        : Ratio.fromJson(json['strength'] as Map<String, dynamic>),
     strengthLowLimit: json['strengthLowLimit'] == null
         ? null
         : Ratio.fromJson(json['strengthLowLimit'] as Map<String, dynamic>),
@@ -251,6 +249,9 @@ Map<String, dynamic> _$MedicinalProductIngredient_ReferenceStrengthToJson(
 MedicinalProductIngredient_Substance
     _$MedicinalProductIngredient_SubstanceFromJson(Map<String, dynamic> json) {
   return MedicinalProductIngredient_Substance(
+    json['code'] == null
+        ? null
+        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -260,9 +261,6 @@ MedicinalProductIngredient_Substance
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    code: json['code'] == null
-        ? null
-        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     strength: (json['strength'] as List)
         ?.map((e) => e == null
             ? null

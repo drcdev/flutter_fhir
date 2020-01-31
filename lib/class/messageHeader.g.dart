@@ -8,7 +8,9 @@ part of 'messageHeader.dart';
 
 MessageHeader _$MessageHeaderFromJson(Map<String, dynamic> json) {
   return MessageHeader(
-    resourceType: json['resourceType'] as String,
+    json['source'] == null
+        ? null
+        : MessageHeader_Source.fromJson(json['source'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -58,9 +60,6 @@ MessageHeader _$MessageHeaderFromJson(Map<String, dynamic> json) {
     author: json['author'] == null
         ? null
         : Reference.fromJson(json['author'] as Map<String, dynamic>),
-    source: json['source'] == null
-        ? null
-        : MessageHeader_Source.fromJson(json['source'] as Map<String, dynamic>),
     responsible: json['responsible'] == null
         ? null
         : Reference.fromJson(json['responsible'] as Map<String, dynamic>),
@@ -81,7 +80,6 @@ MessageHeader _$MessageHeaderFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$MessageHeaderToJson(MessageHeader instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

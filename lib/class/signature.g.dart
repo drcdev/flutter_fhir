@@ -8,22 +8,22 @@ part of 'signature.dart';
 
 Signature _$SignatureFromJson(Map<String, dynamic> json) {
   return Signature(
+    (json['type'] as List)
+        ?.map((e) =>
+            e == null ? null : Coding.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    json['who'] == null
+        ? null
+        : Reference.fromJson(json['who'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    type: (json['type'] as List)
-        ?.map((e) =>
-            e == null ? null : Coding.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     when: json['when'] == null ? null : DateTime.parse(json['when'] as String),
     element_when: json['element_when'] == null
         ? null
         : Element.fromJson(json['element_when'] as Map<String, dynamic>),
-    who: json['who'] == null
-        ? null
-        : Reference.fromJson(json['who'] as Map<String, dynamic>),
     onBehalfOf: json['onBehalfOf'] == null
         ? null
         : Reference.fromJson(json['onBehalfOf'] as Map<String, dynamic>),

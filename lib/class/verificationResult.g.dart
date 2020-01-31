@@ -8,7 +8,6 @@ part of 'verificationResult.dart';
 
 VerificationResult _$VerificationResultFromJson(Map<String, dynamic> json) {
   return VerificationResult(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -108,7 +107,6 @@ VerificationResult _$VerificationResultFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$VerificationResultToJson(VerificationResult instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -283,6 +281,9 @@ Map<String, dynamic> _$VerificationResult_AttestationToJson(
 VerificationResult_Validator _$VerificationResult_ValidatorFromJson(
     Map<String, dynamic> json) {
   return VerificationResult_Validator(
+    json['organization'] == null
+        ? null
+        : Reference.fromJson(json['organization'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -292,9 +293,6 @@ VerificationResult_Validator _$VerificationResult_ValidatorFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    organization: json['organization'] == null
-        ? null
-        : Reference.fromJson(json['organization'] as Map<String, dynamic>),
     identityCertificate: json['identityCertificate'] as String,
     element_identityCertificate: json['element_identityCertificate'] == null
         ? null

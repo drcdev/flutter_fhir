@@ -8,7 +8,6 @@ part of 'structureDefinition.dart';
 
 StructureDefinition _$StructureDefinitionFromJson(Map<String, dynamic> json) {
   return StructureDefinition(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -155,7 +154,6 @@ StructureDefinition _$StructureDefinitionFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$StructureDefinitionToJson(
         StructureDefinition instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -301,6 +299,11 @@ Map<String, dynamic> _$StructureDefinition_ContextToJson(
 StructureDefinition_Snapshot _$StructureDefinition_SnapshotFromJson(
     Map<String, dynamic> json) {
   return StructureDefinition_Snapshot(
+    (json['element'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ElementDefinition.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -309,11 +312,6 @@ StructureDefinition_Snapshot _$StructureDefinition_SnapshotFromJson(
     modifierExtension: (json['modifierExtension'] as List)
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    element: (json['element'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ElementDefinition.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   );
 }
@@ -331,6 +329,11 @@ Map<String, dynamic> _$StructureDefinition_SnapshotToJson(
 StructureDefinition_Differential _$StructureDefinition_DifferentialFromJson(
     Map<String, dynamic> json) {
   return StructureDefinition_Differential(
+    (json['element'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ElementDefinition.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -339,11 +342,6 @@ StructureDefinition_Differential _$StructureDefinition_DifferentialFromJson(
     modifierExtension: (json['modifierExtension'] as List)
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    element: (json['element'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ElementDefinition.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   );
 }

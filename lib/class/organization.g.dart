@@ -8,7 +8,6 @@ part of 'organization.dart';
 
 Organization _$OrganizationFromJson(Map<String, dynamic> json) {
   return Organization(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -84,7 +83,6 @@ Organization _$OrganizationFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$OrganizationToJson(Organization instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

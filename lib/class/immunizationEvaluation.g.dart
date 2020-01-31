@@ -9,7 +9,19 @@ part of 'immunizationEvaluation.dart';
 ImmunizationEvaluation _$ImmunizationEvaluationFromJson(
     Map<String, dynamic> json) {
   return ImmunizationEvaluation(
-    resourceType: json['resourceType'] as String,
+    json['patient'] == null
+        ? null
+        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
+    json['targetDisease'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['targetDisease'] as Map<String, dynamic>),
+    json['immunizationEvent'] == null
+        ? null
+        : Reference.fromJson(json['immunizationEvent'] as Map<String, dynamic>),
+    json['doseStatus'] == null
+        ? null
+        : CodeableConcept.fromJson(json['doseStatus'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -46,9 +58,6 @@ ImmunizationEvaluation _$ImmunizationEvaluationFromJson(
     element_status: json['element_status'] == null
         ? null
         : Element.fromJson(json['element_status'] as Map<String, dynamic>),
-    patient: json['patient'] == null
-        ? null
-        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
     date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
     element_date: json['element_date'] == null
         ? null
@@ -56,16 +65,6 @@ ImmunizationEvaluation _$ImmunizationEvaluationFromJson(
     authority: json['authority'] == null
         ? null
         : Reference.fromJson(json['authority'] as Map<String, dynamic>),
-    targetDisease: json['targetDisease'] == null
-        ? null
-        : CodeableConcept.fromJson(
-            json['targetDisease'] as Map<String, dynamic>),
-    immunizationEvent: json['immunizationEvent'] == null
-        ? null
-        : Reference.fromJson(json['immunizationEvent'] as Map<String, dynamic>),
-    doseStatus: json['doseStatus'] == null
-        ? null
-        : CodeableConcept.fromJson(json['doseStatus'] as Map<String, dynamic>),
     doseStatusReason: (json['doseStatusReason'] as List)
         ?.map((e) => e == null
             ? null
@@ -106,7 +105,6 @@ ImmunizationEvaluation _$ImmunizationEvaluationFromJson(
 Map<String, dynamic> _$ImmunizationEvaluationToJson(
         ImmunizationEvaluation instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

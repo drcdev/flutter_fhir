@@ -8,7 +8,9 @@ part of 'medicationStatement.dart';
 
 MedicationStatement _$MedicationStatementFromJson(Map<String, dynamic> json) {
   return MedicationStatement(
-    resourceType: json['resourceType'] as String,
+    json['subject'] == null
+        ? null
+        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -69,9 +71,6 @@ MedicationStatement _$MedicationStatementFromJson(Map<String, dynamic> json) {
         ? null
         : Reference.fromJson(
             json['medicationReference'] as Map<String, dynamic>),
-    subject: json['subject'] == null
-        ? null
-        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     context: json['context'] == null
         ? null
         : Reference.fromJson(json['context'] as Map<String, dynamic>),
@@ -120,7 +119,6 @@ MedicationStatement _$MedicationStatementFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$MedicationStatementToJson(
         MedicationStatement instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

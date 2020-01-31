@@ -8,7 +8,10 @@ part of 'linkage.dart';
 
 Linkage _$LinkageFromJson(Map<String, dynamic> json) {
   return Linkage(
-    resourceType: json['resourceType'] as String,
+    (json['item'] as List)
+        ?.map((e) =>
+            e == null ? null : Linkage_Item.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -44,15 +47,10 @@ Linkage _$LinkageFromJson(Map<String, dynamic> json) {
     author: json['author'] == null
         ? null
         : Reference.fromJson(json['author'] as Map<String, dynamic>),
-    item: (json['item'] as List)
-        ?.map((e) =>
-            e == null ? null : Linkage_Item.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
   );
 }
 
 Map<String, dynamic> _$LinkageToJson(Linkage instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -72,6 +70,9 @@ Map<String, dynamic> _$LinkageToJson(Linkage instance) => <String, dynamic>{
 
 Linkage_Item _$Linkage_ItemFromJson(Map<String, dynamic> json) {
   return Linkage_Item(
+    json['resource'] == null
+        ? null
+        : Reference.fromJson(json['resource'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -85,9 +86,6 @@ Linkage_Item _$Linkage_ItemFromJson(Map<String, dynamic> json) {
     element_type: json['element_type'] == null
         ? null
         : Element.fromJson(json['element_type'] as Map<String, dynamic>),
-    resource: json['resource'] == null
-        ? null
-        : Reference.fromJson(json['resource'] as Map<String, dynamic>),
   );
 }
 

@@ -8,7 +8,6 @@ part of 'lists.dart';
 
 Lists _$ListsFromJson(Map<String, dynamic> json) {
   return Lists(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -87,7 +86,6 @@ Lists _$ListsFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$ListsToJson(Lists instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -120,6 +118,9 @@ Map<String, dynamic> _$ListsToJson(Lists instance) => <String, dynamic>{
 
 List_Entry _$List_EntryFromJson(Map<String, dynamic> json) {
   return List_Entry(
+    json['item'] == null
+        ? null
+        : Reference.fromJson(json['item'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -140,9 +141,6 @@ List_Entry _$List_EntryFromJson(Map<String, dynamic> json) {
     element_date: json['element_date'] == null
         ? null
         : Element.fromJson(json['element_date'] as Map<String, dynamic>),
-    item: json['item'] == null
-        ? null
-        : Reference.fromJson(json['item'] as Map<String, dynamic>),
   );
 }
 

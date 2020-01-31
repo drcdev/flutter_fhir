@@ -9,7 +9,6 @@ part of 'organizationAffiliation.dart';
 OrganizationAffiliation _$OrganizationAffiliationFromJson(
     Map<String, dynamic> json) {
   return OrganizationAffiliation(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -92,7 +91,6 @@ OrganizationAffiliation _$OrganizationAffiliationFromJson(
 Map<String, dynamic> _$OrganizationAffiliationToJson(
         OrganizationAffiliation instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

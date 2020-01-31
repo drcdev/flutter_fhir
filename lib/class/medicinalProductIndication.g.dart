@@ -9,7 +9,6 @@ part of 'medicinalProductIndication.dart';
 MedicinalProductIndication _$MedicinalProductIndicationFromJson(
     Map<String, dynamic> json) {
   return MedicinalProductIndication(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -82,7 +81,6 @@ MedicinalProductIndication _$MedicinalProductIndicationFromJson(
 Map<String, dynamic> _$MedicinalProductIndicationToJson(
         MedicinalProductIndication instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -110,6 +108,10 @@ MedicinalProductIndication_OtherTherapy
     _$MedicinalProductIndication_OtherTherapyFromJson(
         Map<String, dynamic> json) {
   return MedicinalProductIndication_OtherTherapy(
+    json['therapyRelationshipType'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['therapyRelationshipType'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -119,10 +121,6 @@ MedicinalProductIndication_OtherTherapy
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    therapyRelationshipType: json['therapyRelationshipType'] == null
-        ? null
-        : CodeableConcept.fromJson(
-            json['therapyRelationshipType'] as Map<String, dynamic>),
     medicationCodeableConcept: json['medicationCodeableConcept'] == null
         ? null
         : CodeableConcept.fromJson(

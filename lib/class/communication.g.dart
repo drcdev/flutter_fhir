@@ -8,7 +8,6 @@ part of 'communication.dart';
 
 Communication _$CommunicationFromJson(Map<String, dynamic> json) {
   return Communication(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -137,7 +136,6 @@ Communication _$CommunicationFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$CommunicationToJson(Communication instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

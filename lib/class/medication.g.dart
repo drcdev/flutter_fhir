@@ -8,7 +8,6 @@ part of 'medication.dart';
 
 Medication _$MedicationFromJson(Map<String, dynamic> json) {
   return Medication(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -70,7 +69,6 @@ Medication _$MedicationFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$MedicationToJson(Medication instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

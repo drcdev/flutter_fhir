@@ -8,7 +8,9 @@ part of 'appointmentResponse.dart';
 
 AppointmentResponse _$AppointmentResponseFromJson(Map<String, dynamic> json) {
   return AppointmentResponse(
-    resourceType: json['resourceType'] as String,
+    json['appointment'] == null
+        ? null
+        : Reference.fromJson(json['appointment'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -41,9 +43,6 @@ AppointmentResponse _$AppointmentResponseFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    appointment: json['appointment'] == null
-        ? null
-        : Reference.fromJson(json['appointment'] as Map<String, dynamic>),
     start:
         json['start'] == null ? null : DateTime.parse(json['start'] as String),
     element_start: json['element_start'] == null
@@ -76,7 +75,6 @@ AppointmentResponse _$AppointmentResponseFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$AppointmentResponseToJson(
         AppointmentResponse instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

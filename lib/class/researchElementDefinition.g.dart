@@ -9,7 +9,12 @@ part of 'researchElementDefinition.dart';
 ResearchElementDefinition _$ResearchElementDefinitionFromJson(
     Map<String, dynamic> json) {
   return ResearchElementDefinition(
-    resourceType: json['resourceType'] as String,
+    (json['characteristic'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ResearchElementDefinition_Characteristic.fromJson(
+                e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -178,19 +183,12 @@ ResearchElementDefinition _$ResearchElementDefinitionFromJson(
         ? null
         : Element.fromJson(
             json['element_variableType'] as Map<String, dynamic>),
-    characteristic: (json['characteristic'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ResearchElementDefinition_Characteristic.fromJson(
-                e as Map<String, dynamic>))
-        ?.toList(),
   );
 }
 
 Map<String, dynamic> _$ResearchElementDefinitionToJson(
         ResearchElementDefinition instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

@@ -8,7 +8,9 @@ part of 'slot.dart';
 
 Slot _$SlotFromJson(Map<String, dynamic> json) {
   return Slot(
-    resourceType: json['resourceType'] as String,
+    json['schedule'] == null
+        ? null
+        : Reference.fromJson(json['schedule'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -60,9 +62,6 @@ Slot _$SlotFromJson(Map<String, dynamic> json) {
         ? null
         : CodeableConcept.fromJson(
             json['appointmentType'] as Map<String, dynamic>),
-    schedule: json['schedule'] == null
-        ? null
-        : Reference.fromJson(json['schedule'] as Map<String, dynamic>),
     status: json['status'] as String,
     element_status: json['element_status'] == null
         ? null
@@ -88,7 +87,6 @@ Slot _$SlotFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$SlotToJson(Slot instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

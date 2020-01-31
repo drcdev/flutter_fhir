@@ -9,7 +9,6 @@ part of 'substanceReferenceInformation.dart';
 SubstanceReferenceInformation _$SubstanceReferenceInformationFromJson(
     Map<String, dynamic> json) {
   return SubstanceReferenceInformation(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -72,7 +71,6 @@ SubstanceReferenceInformation _$SubstanceReferenceInformationFromJson(
 Map<String, dynamic> _$SubstanceReferenceInformationToJson(
         SubstanceReferenceInformation instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

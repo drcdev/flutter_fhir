@@ -8,7 +8,9 @@ part of 'deviceMetric.dart';
 
 DeviceMetric _$DeviceMetricFromJson(Map<String, dynamic> json) {
   return DeviceMetric(
-    resourceType: json['resourceType'] as String,
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -41,9 +43,6 @@ DeviceMetric _$DeviceMetricFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    type: json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     unit: json['unit'] == null
         ? null
         : CodeableConcept.fromJson(json['unit'] as Map<String, dynamic>),
@@ -79,7 +78,6 @@ DeviceMetric _$DeviceMetricFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$DeviceMetricToJson(DeviceMetric instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

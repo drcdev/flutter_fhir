@@ -8,7 +8,9 @@ part of 'substance.dart';
 
 Substance _$SubstanceFromJson(Map<String, dynamic> json) {
   return Substance(
-    resourceType: json['resourceType'] as String,
+    json['code'] == null
+        ? null
+        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -50,9 +52,6 @@ Substance _$SubstanceFromJson(Map<String, dynamic> json) {
             ? null
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    code: json['code'] == null
-        ? null
-        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     description: json['description'] as String,
     element_description: json['element_description'] == null
         ? null
@@ -71,7 +70,6 @@ Substance _$SubstanceFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$SubstanceToJson(Substance instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

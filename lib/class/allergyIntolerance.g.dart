@@ -8,7 +8,9 @@ part of 'allergyIntolerance.dart';
 
 AllergyIntolerance _$AllergyIntoleranceFromJson(Map<String, dynamic> json) {
   return AllergyIntolerance(
-    resourceType: json['resourceType'] as String,
+    json['patient'] == null
+        ? null
+        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -65,9 +67,6 @@ AllergyIntolerance _$AllergyIntoleranceFromJson(Map<String, dynamic> json) {
     code: json['code'] == null
         ? null
         : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
-    patient: json['patient'] == null
-        ? null
-        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
     encounter: json['encounter'] == null
         ? null
         : Reference.fromJson(json['encounter'] as Map<String, dynamic>),
@@ -123,7 +122,6 @@ AllergyIntolerance _$AllergyIntoleranceFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$AllergyIntoleranceToJson(AllergyIntolerance instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -168,6 +166,11 @@ Map<String, dynamic> _$AllergyIntoleranceToJson(AllergyIntolerance instance) =>
 AllergyIntolerance_Reaction _$AllergyIntolerance_ReactionFromJson(
     Map<String, dynamic> json) {
   return AllergyIntolerance_Reaction(
+    (json['manifestation'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -180,11 +183,6 @@ AllergyIntolerance_Reaction _$AllergyIntolerance_ReactionFromJson(
     substance: json['substance'] == null
         ? null
         : CodeableConcept.fromJson(json['substance'] as Map<String, dynamic>),
-    manifestation: (json['manifestation'] as List)
-        ?.map((e) => e == null
-            ? null
-            : CodeableConcept.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     description: json['description'] as String,
     element_description: json['element_description'] == null
         ? null

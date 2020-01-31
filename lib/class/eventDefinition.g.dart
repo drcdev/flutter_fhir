@@ -8,7 +8,11 @@ part of 'eventDefinition.dart';
 
 EventDefinition _$EventDefinitionFromJson(Map<String, dynamic> json) {
   return EventDefinition(
-    resourceType: json['resourceType'] as String,
+    (json['trigger'] as List)
+        ?.map((e) => e == null
+            ? null
+            : TriggerDefinition.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -158,17 +162,11 @@ EventDefinition _$EventDefinitionFromJson(Map<String, dynamic> json) {
             ? null
             : RelatedArtifact.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    trigger: (json['trigger'] as List)
-        ?.map((e) => e == null
-            ? null
-            : TriggerDefinition.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
   );
 }
 
 Map<String, dynamic> _$EventDefinitionToJson(EventDefinition instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

@@ -9,7 +9,12 @@ part of 'riskEvidenceSynthesis.dart';
 RiskEvidenceSynthesis _$RiskEvidenceSynthesisFromJson(
     Map<String, dynamic> json) {
   return RiskEvidenceSynthesis(
-    resourceType: json['resourceType'] as String,
+    json['population'] == null
+        ? null
+        : Reference.fromJson(json['population'] as Map<String, dynamic>),
+    json['outcome'] == null
+        ? null
+        : Reference.fromJson(json['outcome'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -146,15 +151,9 @@ RiskEvidenceSynthesis _$RiskEvidenceSynthesisFromJson(
     studyType: json['studyType'] == null
         ? null
         : CodeableConcept.fromJson(json['studyType'] as Map<String, dynamic>),
-    population: json['population'] == null
-        ? null
-        : Reference.fromJson(json['population'] as Map<String, dynamic>),
     exposure: json['exposure'] == null
         ? null
         : Reference.fromJson(json['exposure'] as Map<String, dynamic>),
-    outcome: json['outcome'] == null
-        ? null
-        : Reference.fromJson(json['outcome'] as Map<String, dynamic>),
     sampleSize: json['sampleSize'] == null
         ? null
         : RiskEvidenceSynthesis_SampleSize.fromJson(
@@ -175,7 +174,6 @@ RiskEvidenceSynthesis _$RiskEvidenceSynthesisFromJson(
 Map<String, dynamic> _$RiskEvidenceSynthesisToJson(
         RiskEvidenceSynthesis instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

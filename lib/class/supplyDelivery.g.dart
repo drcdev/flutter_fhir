@@ -8,7 +8,6 @@ part of 'supplyDelivery.dart';
 
 SupplyDelivery _$SupplyDeliveryFromJson(Map<String, dynamic> json) {
   return SupplyDelivery(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -89,7 +88,6 @@ SupplyDelivery _$SupplyDeliveryFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$SupplyDeliveryToJson(SupplyDelivery instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

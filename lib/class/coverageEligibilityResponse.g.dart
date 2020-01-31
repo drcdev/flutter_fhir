@@ -9,7 +9,15 @@ part of 'coverageEligibilityResponse.dart';
 CoverageEligibilityResponse _$CoverageEligibilityResponseFromJson(
     Map<String, dynamic> json) {
   return CoverageEligibilityResponse(
-    resourceType: json['resourceType'] as String,
+    json['patient'] == null
+        ? null
+        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
+    json['request'] == null
+        ? null
+        : Reference.fromJson(json['request'] as Map<String, dynamic>),
+    json['insurer'] == null
+        ? null
+        : Reference.fromJson(json['insurer'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -51,9 +59,6 @@ CoverageEligibilityResponse _$CoverageEligibilityResponseFromJson(
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    patient: json['patient'] == null
-        ? null
-        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
     servicedDate: json['servicedDate'] as String,
     element_servicedDate: json['element_servicedDate'] == null
         ? null
@@ -71,9 +76,6 @@ CoverageEligibilityResponse _$CoverageEligibilityResponseFromJson(
     requestor: json['requestor'] == null
         ? null
         : Reference.fromJson(json['requestor'] as Map<String, dynamic>),
-    request: json['request'] == null
-        ? null
-        : Reference.fromJson(json['request'] as Map<String, dynamic>),
     outcome: json['outcome'] as String,
     element_outcome: json['element_outcome'] == null
         ? null
@@ -82,9 +84,6 @@ CoverageEligibilityResponse _$CoverageEligibilityResponseFromJson(
     element_disposition: json['element_disposition'] == null
         ? null
         : Element.fromJson(json['element_disposition'] as Map<String, dynamic>),
-    insurer: json['insurer'] == null
-        ? null
-        : Reference.fromJson(json['insurer'] as Map<String, dynamic>),
     insurance: (json['insurance'] as List)
         ?.map((e) => e == null
             ? null
@@ -110,7 +109,6 @@ CoverageEligibilityResponse _$CoverageEligibilityResponseFromJson(
 Map<String, dynamic> _$CoverageEligibilityResponseToJson(
         CoverageEligibilityResponse instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -151,6 +149,9 @@ Map<String, dynamic> _$CoverageEligibilityResponseToJson(
 CoverageEligibilityResponse_Insurance
     _$CoverageEligibilityResponse_InsuranceFromJson(Map<String, dynamic> json) {
   return CoverageEligibilityResponse_Insurance(
+    json['coverage'] == null
+        ? null
+        : Reference.fromJson(json['coverage'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -160,9 +161,6 @@ CoverageEligibilityResponse_Insurance
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    coverage: json['coverage'] == null
-        ? null
-        : Reference.fromJson(json['coverage'] as Map<String, dynamic>),
     inforce: json['inforce'] as bool,
     element_inforce: json['element_inforce'] == null
         ? null
@@ -298,6 +296,9 @@ Map<String, dynamic> _$CoverageEligibilityResponse_ItemToJson(
 CoverageEligibilityResponse_Benefit
     _$CoverageEligibilityResponse_BenefitFromJson(Map<String, dynamic> json) {
   return CoverageEligibilityResponse_Benefit(
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -307,9 +308,6 @@ CoverageEligibilityResponse_Benefit
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    type: json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     allowedUnsignedInt: json['allowedUnsignedInt'] as int,
     element_allowedUnsignedInt: json['element_allowedUnsignedInt'] == null
         ? null
@@ -362,6 +360,9 @@ Map<String, dynamic> _$CoverageEligibilityResponse_BenefitToJson(
 CoverageEligibilityResponse_Error _$CoverageEligibilityResponse_ErrorFromJson(
     Map<String, dynamic> json) {
   return CoverageEligibilityResponse_Error(
+    json['code'] == null
+        ? null
+        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -371,9 +372,6 @@ CoverageEligibilityResponse_Error _$CoverageEligibilityResponse_ErrorFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    code: json['code'] == null
-        ? null
-        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
   );
 }
 

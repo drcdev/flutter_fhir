@@ -8,7 +8,6 @@ part of 'deviceDefinition.dart';
 
 DeviceDefinition _$DeviceDefinitionFromJson(Map<String, dynamic> json) {
   return DeviceDefinition(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -144,7 +143,6 @@ DeviceDefinition _$DeviceDefinitionFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$DeviceDefinitionToJson(DeviceDefinition instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -310,6 +308,9 @@ Map<String, dynamic> _$DeviceDefinition_SpecializationToJson(
 DeviceDefinition_Capability _$DeviceDefinition_CapabilityFromJson(
     Map<String, dynamic> json) {
   return DeviceDefinition_Capability(
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -319,9 +320,6 @@ DeviceDefinition_Capability _$DeviceDefinition_CapabilityFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    type: json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     description: (json['description'] as List)
         ?.map((e) => e == null
             ? null
@@ -344,6 +342,9 @@ Map<String, dynamic> _$DeviceDefinition_CapabilityToJson(
 DeviceDefinition_Property _$DeviceDefinition_PropertyFromJson(
     Map<String, dynamic> json) {
   return DeviceDefinition_Property(
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -353,9 +354,6 @@ DeviceDefinition_Property _$DeviceDefinition_PropertyFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    type: json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     valueQuantity: (json['valueQuantity'] as List)
         ?.map((e) =>
             e == null ? null : Quantity.fromJson(e as Map<String, dynamic>))
@@ -384,6 +382,9 @@ Map<String, dynamic> _$DeviceDefinition_PropertyToJson(
 DeviceDefinition_Material _$DeviceDefinition_MaterialFromJson(
     Map<String, dynamic> json) {
   return DeviceDefinition_Material(
+    json['substance'] == null
+        ? null
+        : CodeableConcept.fromJson(json['substance'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -393,9 +394,6 @@ DeviceDefinition_Material _$DeviceDefinition_MaterialFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    substance: json['substance'] == null
-        ? null
-        : CodeableConcept.fromJson(json['substance'] as Map<String, dynamic>),
     alternate: json['alternate'] as bool,
     element_alternate: json['element_alternate'] == null
         ? null

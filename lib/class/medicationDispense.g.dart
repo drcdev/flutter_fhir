@@ -8,7 +8,6 @@ part of 'medicationDispense.dart';
 
 MedicationDispense _$MedicationDispenseFromJson(Map<String, dynamic> json) {
   return MedicationDispense(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -145,7 +144,6 @@ MedicationDispense _$MedicationDispenseFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$MedicationDispenseToJson(MedicationDispense instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -196,6 +194,9 @@ Map<String, dynamic> _$MedicationDispenseToJson(MedicationDispense instance) =>
 MedicationDispense_Performer _$MedicationDispense_PerformerFromJson(
     Map<String, dynamic> json) {
   return MedicationDispense_Performer(
+    json['actor'] == null
+        ? null
+        : Reference.fromJson(json['actor'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -208,9 +209,6 @@ MedicationDispense_Performer _$MedicationDispense_PerformerFromJson(
     function: json['function'] == null
         ? null
         : CodeableConcept.fromJson(json['function'] as Map<String, dynamic>),
-    actor: json['actor'] == null
-        ? null
-        : Reference.fromJson(json['actor'] as Map<String, dynamic>),
   );
 }
 

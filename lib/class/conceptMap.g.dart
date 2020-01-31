@@ -8,7 +8,6 @@ part of 'conceptMap.dart';
 
 ConceptMap _$ConceptMapFromJson(Map<String, dynamic> json) {
   return ConceptMap(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -127,7 +126,6 @@ ConceptMap _$ConceptMapFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ConceptMapToJson(ConceptMap instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -178,6 +176,11 @@ Map<String, dynamic> _$ConceptMapToJson(ConceptMap instance) =>
 
 ConceptMap_Group _$ConceptMap_GroupFromJson(Map<String, dynamic> json) {
   return ConceptMap_Group(
+    (json['element'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ConceptMap_Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -205,11 +208,6 @@ ConceptMap_Group _$ConceptMap_GroupFromJson(Map<String, dynamic> json) {
         ? null
         : Element.fromJson(
             json['element_targetVersion'] as Map<String, dynamic>),
-    element: (json['element'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ConceptMap_Element.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     unmapped: json['unmapped'] == null
         ? null
         : ConceptMap_Unmapped.fromJson(

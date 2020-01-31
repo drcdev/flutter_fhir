@@ -8,7 +8,6 @@ part of 'contract.dart';
 
 Contract _$ContractFromJson(Map<String, dynamic> json) {
   return Contract(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -185,7 +184,6 @@ Contract _$ContractFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$ContractToJson(Contract instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -249,6 +247,9 @@ Map<String, dynamic> _$ContractToJson(Contract instance) => <String, dynamic>{
 Contract_ContentDefinition _$Contract_ContentDefinitionFromJson(
     Map<String, dynamic> json) {
   return Contract_ContentDefinition(
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -258,9 +259,6 @@ Contract_ContentDefinition _$Contract_ContentDefinitionFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    type: json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     subType: json['subType'] == null
         ? null
         : CodeableConcept.fromJson(json['subType'] as Map<String, dynamic>),
@@ -306,6 +304,9 @@ Map<String, dynamic> _$Contract_ContentDefinitionToJson(
 
 Contract_Term _$Contract_TermFromJson(Map<String, dynamic> json) {
   return Contract_Term(
+    json['offer'] == null
+        ? null
+        : Contract_Offer.fromJson(json['offer'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -349,9 +350,6 @@ Contract_Term _$Contract_TermFromJson(Map<String, dynamic> json) {
             ? null
             : Contract_SecurityLabel.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    offer: json['offer'] == null
-        ? null
-        : Contract_Offer.fromJson(json['offer'] as Map<String, dynamic>),
     asset: (json['asset'] as List)
         ?.map((e) => e == null
             ? null
@@ -397,6 +395,9 @@ Map<String, dynamic> _$Contract_TermToJson(Contract_Term instance) =>
 Contract_SecurityLabel _$Contract_SecurityLabelFromJson(
     Map<String, dynamic> json) {
   return Contract_SecurityLabel(
+    json['classification'] == null
+        ? null
+        : Coding.fromJson(json['classification'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -411,9 +412,6 @@ Contract_SecurityLabel _$Contract_SecurityLabelFromJson(
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    classification: json['classification'] == null
-        ? null
-        : Coding.fromJson(json['classification'] as Map<String, dynamic>),
     category: (json['category'] as List)
         ?.map((e) =>
             e == null ? null : Coding.fromJson(e as Map<String, dynamic>))
@@ -523,6 +521,13 @@ Map<String, dynamic> _$Contract_OfferToJson(Contract_Offer instance) =>
 
 Contract_Party _$Contract_PartyFromJson(Map<String, dynamic> json) {
   return Contract_Party(
+    (json['reference'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    json['role'] == null
+        ? null
+        : CodeableConcept.fromJson(json['role'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -532,13 +537,6 @@ Contract_Party _$Contract_PartyFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    reference: (json['reference'] as List)
-        ?.map((e) =>
-            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    role: json['role'] == null
-        ? null
-        : CodeableConcept.fromJson(json['role'] as Map<String, dynamic>),
   );
 }
 
@@ -903,6 +901,15 @@ Map<String, dynamic> _$Contract_ValuedItemToJson(
 
 Contract_Action _$Contract_ActionFromJson(Map<String, dynamic> json) {
   return Contract_Action(
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
+    json['intent'] == null
+        ? null
+        : CodeableConcept.fromJson(json['intent'] as Map<String, dynamic>),
+    json['status'] == null
+        ? null
+        : CodeableConcept.fromJson(json['status'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -917,25 +924,16 @@ Contract_Action _$Contract_ActionFromJson(Map<String, dynamic> json) {
         ? null
         : Element.fromJson(
             json['element_doNotPerform'] as Map<String, dynamic>),
-    type: json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     subject: (json['subject'] as List)
         ?.map((e) => e == null
             ? null
             : Contract_Subject.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    intent: json['intent'] == null
-        ? null
-        : CodeableConcept.fromJson(json['intent'] as Map<String, dynamic>),
     linkId: (json['linkId'] as List)?.map((e) => e as String)?.toList(),
     element_linkId: (json['element_linkId'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    status: json['status'] == null
-        ? null
-        : CodeableConcept.fromJson(json['status'] as Map<String, dynamic>),
     context: json['context'] == null
         ? null
         : Reference.fromJson(json['context'] as Map<String, dynamic>),
@@ -1070,6 +1068,10 @@ Map<String, dynamic> _$Contract_ActionToJson(Contract_Action instance) =>
 
 Contract_Subject _$Contract_SubjectFromJson(Map<String, dynamic> json) {
   return Contract_Subject(
+    (json['reference'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1078,10 +1080,6 @@ Contract_Subject _$Contract_SubjectFromJson(Map<String, dynamic> json) {
     modifierExtension: (json['modifierExtension'] as List)
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    reference: (json['reference'] as List)
-        ?.map((e) =>
-            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     role: json['role'] == null
         ? null
@@ -1101,6 +1099,16 @@ Map<String, dynamic> _$Contract_SubjectToJson(Contract_Subject instance) =>
 
 Contract_Signer _$Contract_SignerFromJson(Map<String, dynamic> json) {
   return Contract_Signer(
+    json['type'] == null
+        ? null
+        : Coding.fromJson(json['type'] as Map<String, dynamic>),
+    json['party'] == null
+        ? null
+        : Reference.fromJson(json['party'] as Map<String, dynamic>),
+    (json['signature'] as List)
+        ?.map((e) =>
+            e == null ? null : Signature.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1109,16 +1117,6 @@ Contract_Signer _$Contract_SignerFromJson(Map<String, dynamic> json) {
     modifierExtension: (json['modifierExtension'] as List)
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    type: json['type'] == null
-        ? null
-        : Coding.fromJson(json['type'] as Map<String, dynamic>),
-    party: json['party'] == null
-        ? null
-        : Reference.fromJson(json['party'] as Map<String, dynamic>),
-    signature: (json['signature'] as List)
-        ?.map((e) =>
-            e == null ? null : Signature.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   );
 }

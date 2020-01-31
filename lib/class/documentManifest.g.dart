@@ -8,7 +8,10 @@ part of 'documentManifest.dart';
 
 DocumentManifest _$DocumentManifestFromJson(Map<String, dynamic> json) {
   return DocumentManifest(
-    resourceType: json['resourceType'] as String,
+    (json['content'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -76,10 +79,6 @@ DocumentManifest _$DocumentManifestFromJson(Map<String, dynamic> json) {
     element_description: json['element_description'] == null
         ? null
         : Element.fromJson(json['element_description'] as Map<String, dynamic>),
-    content: (json['content'] as List)
-        ?.map((e) =>
-            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     related: (json['related'] as List)
         ?.map((e) => e == null
             ? null
@@ -90,7 +89,6 @@ DocumentManifest _$DocumentManifestFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$DocumentManifestToJson(DocumentManifest instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

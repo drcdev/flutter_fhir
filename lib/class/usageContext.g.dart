@@ -8,14 +8,14 @@ part of 'usageContext.dart';
 
 UsageContext _$UsageContextFromJson(Map<String, dynamic> json) {
   return UsageContext(
+    json['code'] == null
+        ? null
+        : Coding.fromJson(json['code'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    code: json['code'] == null
-        ? null
-        : Coding.fromJson(json['code'] as Map<String, dynamic>),
     valueCodeableConcept: json['valueCodeableConcept'] == null
         ? null
         : CodeableConcept.fromJson(

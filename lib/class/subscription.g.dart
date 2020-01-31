@@ -8,7 +8,10 @@ part of 'subscription.dart';
 
 Subscription _$SubscriptionFromJson(Map<String, dynamic> json) {
   return Subscription(
-    resourceType: json['resourceType'] as String,
+    json['channel'] == null
+        ? null
+        : Subscription_Channel.fromJson(
+            json['channel'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -61,16 +64,11 @@ Subscription _$SubscriptionFromJson(Map<String, dynamic> json) {
     element_error: json['element_error'] == null
         ? null
         : Element.fromJson(json['element_error'] as Map<String, dynamic>),
-    channel: json['channel'] == null
-        ? null
-        : Subscription_Channel.fromJson(
-            json['channel'] as Map<String, dynamic>),
   );
 }
 
 Map<String, dynamic> _$SubscriptionToJson(Subscription instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

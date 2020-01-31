@@ -8,7 +8,6 @@ part of 'detectedIssue.dart';
 
 DetectedIssue _$DetectedIssueFromJson(Map<String, dynamic> json) {
   return DetectedIssue(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -93,7 +92,6 @@ DetectedIssue _$DetectedIssueFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$DetectedIssueToJson(DetectedIssue instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -164,6 +162,9 @@ Map<String, dynamic> _$DetectedIssue_EvidenceToJson(
 DetectedIssue_Mitigation _$DetectedIssue_MitigationFromJson(
     Map<String, dynamic> json) {
   return DetectedIssue_Mitigation(
+    json['action'] == null
+        ? null
+        : CodeableConcept.fromJson(json['action'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -173,9 +174,6 @@ DetectedIssue_Mitigation _$DetectedIssue_MitigationFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    action: json['action'] == null
-        ? null
-        : CodeableConcept.fromJson(json['action'] as Map<String, dynamic>),
     date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
     element_date: json['element_date'] == null
         ? null

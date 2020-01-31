@@ -8,7 +8,6 @@ part of 'insurancePlan.dart';
 
 InsurancePlan _$InsurancePlanFromJson(Map<String, dynamic> json) {
   return InsurancePlan(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -100,7 +99,6 @@ InsurancePlan _$InsurancePlanFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$InsurancePlanToJson(InsurancePlan instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -176,6 +174,14 @@ Map<String, dynamic> _$InsurancePlan_ContactToJson(
 InsurancePlan_Coverage _$InsurancePlan_CoverageFromJson(
     Map<String, dynamic> json) {
   return InsurancePlan_Coverage(
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
+    (json['benefit'] as List)
+        ?.map((e) => e == null
+            ? null
+            : InsurancePlan_Benefit.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -185,17 +191,9 @@ InsurancePlan_Coverage _$InsurancePlan_CoverageFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    type: json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     network: (json['network'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    benefit: (json['benefit'] as List)
-        ?.map((e) => e == null
-            ? null
-            : InsurancePlan_Benefit.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   );
 }
@@ -215,6 +213,9 @@ Map<String, dynamic> _$InsurancePlan_CoverageToJson(
 InsurancePlan_Benefit _$InsurancePlan_BenefitFromJson(
     Map<String, dynamic> json) {
   return InsurancePlan_Benefit(
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -224,9 +225,6 @@ InsurancePlan_Benefit _$InsurancePlan_BenefitFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    type: json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     requirement: json['requirement'] as String,
     element_requirement: json['element_requirement'] == null
         ? null
@@ -383,6 +381,9 @@ Map<String, dynamic> _$InsurancePlan_GeneralCostToJson(
 InsurancePlan_SpecificCost _$InsurancePlan_SpecificCostFromJson(
     Map<String, dynamic> json) {
   return InsurancePlan_SpecificCost(
+    json['category'] == null
+        ? null
+        : CodeableConcept.fromJson(json['category'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -392,9 +393,6 @@ InsurancePlan_SpecificCost _$InsurancePlan_SpecificCostFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    category: json['category'] == null
-        ? null
-        : CodeableConcept.fromJson(json['category'] as Map<String, dynamic>),
     benefit: (json['benefit'] as List)
         ?.map((e) => e == null
             ? null
@@ -417,6 +415,9 @@ Map<String, dynamic> _$InsurancePlan_SpecificCostToJson(
 InsurancePlan_Benefit1 _$InsurancePlan_Benefit1FromJson(
     Map<String, dynamic> json) {
   return InsurancePlan_Benefit1(
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -426,9 +427,6 @@ InsurancePlan_Benefit1 _$InsurancePlan_Benefit1FromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    type: json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     cost: (json['cost'] as List)
         ?.map((e) => e == null
             ? null
@@ -450,6 +448,9 @@ Map<String, dynamic> _$InsurancePlan_Benefit1ToJson(
 
 InsurancePlan_Cost _$InsurancePlan_CostFromJson(Map<String, dynamic> json) {
   return InsurancePlan_Cost(
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -459,9 +460,6 @@ InsurancePlan_Cost _$InsurancePlan_CostFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    type: json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     applicability: json['applicability'] == null
         ? null
         : CodeableConcept.fromJson(

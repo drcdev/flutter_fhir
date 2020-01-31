@@ -8,7 +8,10 @@ part of 'evidence.dart';
 
 Evidence _$EvidenceFromJson(Map<String, dynamic> json) {
   return Evidence(
-    resourceType: json['resourceType'] as String,
+    json['exposureBackground'] == null
+        ? null
+        : Reference.fromJson(
+            json['exposureBackground'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -146,10 +149,6 @@ Evidence _$EvidenceFromJson(Map<String, dynamic> json) {
             ? null
             : RelatedArtifact.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    exposureBackground: json['exposureBackground'] == null
-        ? null
-        : Reference.fromJson(
-            json['exposureBackground'] as Map<String, dynamic>),
     exposureVariant: (json['exposureVariant'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
@@ -162,7 +161,6 @@ Evidence _$EvidenceFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$EvidenceToJson(Evidence instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

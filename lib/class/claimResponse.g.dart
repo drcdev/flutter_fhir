@@ -8,7 +8,15 @@ part of 'claimResponse.dart';
 
 ClaimResponse _$ClaimResponseFromJson(Map<String, dynamic> json) {
   return ClaimResponse(
-    resourceType: json['resourceType'] as String,
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
+    json['patient'] == null
+        ? null
+        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
+    json['insurer'] == null
+        ? null
+        : Reference.fromJson(json['insurer'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -45,9 +53,6 @@ ClaimResponse _$ClaimResponseFromJson(Map<String, dynamic> json) {
     element_status: json['element_status'] == null
         ? null
         : Element.fromJson(json['element_status'] as Map<String, dynamic>),
-    type: json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     subType: json['subType'] == null
         ? null
         : CodeableConcept.fromJson(json['subType'] as Map<String, dynamic>),
@@ -55,18 +60,12 @@ ClaimResponse _$ClaimResponseFromJson(Map<String, dynamic> json) {
     element_use: json['element_use'] == null
         ? null
         : Element.fromJson(json['element_use'] as Map<String, dynamic>),
-    patient: json['patient'] == null
-        ? null
-        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
     created: json['created'] == null
         ? null
         : DateTime.parse(json['created'] as String),
     element_created: json['element_created'] == null
         ? null
         : Element.fromJson(json['element_created'] as Map<String, dynamic>),
-    insurer: json['insurer'] == null
-        ? null
-        : Reference.fromJson(json['insurer'] as Map<String, dynamic>),
     requestor: json['requestor'] == null
         ? null
         : Reference.fromJson(json['requestor'] as Map<String, dynamic>),
@@ -149,7 +148,6 @@ ClaimResponse _$ClaimResponseFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ClaimResponseToJson(ClaimResponse instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -199,6 +197,11 @@ Map<String, dynamic> _$ClaimResponseToJson(ClaimResponse instance) =>
 
 ClaimResponse_Item _$ClaimResponse_ItemFromJson(Map<String, dynamic> json) {
   return ClaimResponse_Item(
+    (json['adjudication'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ClaimResponse_Adjudication.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -217,11 +220,6 @@ ClaimResponse_Item _$ClaimResponse_ItemFromJson(Map<String, dynamic> json) {
     element_noteNumber: (json['element_noteNumber'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    adjudication: (json['adjudication'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ClaimResponse_Adjudication.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     detail: (json['detail'] as List)
         ?.map((e) => e == null
@@ -249,6 +247,9 @@ Map<String, dynamic> _$ClaimResponse_ItemToJson(ClaimResponse_Item instance) =>
 ClaimResponse_Adjudication _$ClaimResponse_AdjudicationFromJson(
     Map<String, dynamic> json) {
   return ClaimResponse_Adjudication(
+    json['category'] == null
+        ? null
+        : CodeableConcept.fromJson(json['category'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -258,9 +259,6 @@ ClaimResponse_Adjudication _$ClaimResponse_AdjudicationFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    category: json['category'] == null
-        ? null
-        : CodeableConcept.fromJson(json['category'] as Map<String, dynamic>),
     reason: json['reason'] == null
         ? null
         : CodeableConcept.fromJson(json['reason'] as Map<String, dynamic>),
@@ -290,6 +288,11 @@ Map<String, dynamic> _$ClaimResponse_AdjudicationToJson(
 
 ClaimResponse_Detail _$ClaimResponse_DetailFromJson(Map<String, dynamic> json) {
   return ClaimResponse_Detail(
+    (json['adjudication'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ClaimResponse_Adjudication.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -308,11 +311,6 @@ ClaimResponse_Detail _$ClaimResponse_DetailFromJson(Map<String, dynamic> json) {
     element_noteNumber: (json['element_noteNumber'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    adjudication: (json['adjudication'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ClaimResponse_Adjudication.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     subDetail: (json['subDetail'] as List)
         ?.map((e) => e == null
@@ -386,6 +384,15 @@ Map<String, dynamic> _$ClaimResponse_SubDetailToJson(
 ClaimResponse_AddItem _$ClaimResponse_AddItemFromJson(
     Map<String, dynamic> json) {
   return ClaimResponse_AddItem(
+    json['productOrService'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['productOrService'] as Map<String, dynamic>),
+    (json['adjudication'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ClaimResponse_Adjudication.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -417,10 +424,6 @@ ClaimResponse_AddItem _$ClaimResponse_AddItemFromJson(
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    productOrService: json['productOrService'] == null
-        ? null
-        : CodeableConcept.fromJson(
-            json['productOrService'] as Map<String, dynamic>),
     modifier: (json['modifier'] as List)
         ?.map((e) => e == null
             ? null
@@ -475,11 +478,6 @@ ClaimResponse_AddItem _$ClaimResponse_AddItemFromJson(
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    adjudication: (json['adjudication'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ClaimResponse_Adjudication.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     detail: (json['detail'] as List)
         ?.map((e) => e == null
             ? null
@@ -531,6 +529,15 @@ Map<String, dynamic> _$ClaimResponse_AddItemToJson(
 ClaimResponse_Detail1 _$ClaimResponse_Detail1FromJson(
     Map<String, dynamic> json) {
   return ClaimResponse_Detail1(
+    json['productOrService'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['productOrService'] as Map<String, dynamic>),
+    (json['adjudication'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ClaimResponse_Adjudication.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -540,10 +547,6 @@ ClaimResponse_Detail1 _$ClaimResponse_Detail1FromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    productOrService: json['productOrService'] == null
-        ? null
-        : CodeableConcept.fromJson(
-            json['productOrService'] as Map<String, dynamic>),
     modifier: (json['modifier'] as List)
         ?.map((e) => e == null
             ? null
@@ -566,11 +569,6 @@ ClaimResponse_Detail1 _$ClaimResponse_Detail1FromJson(
     element_noteNumber: (json['element_noteNumber'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    adjudication: (json['adjudication'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ClaimResponse_Adjudication.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     subDetail: (json['subDetail'] as List)
         ?.map((e) => e == null
@@ -604,6 +602,15 @@ Map<String, dynamic> _$ClaimResponse_Detail1ToJson(
 ClaimResponse_SubDetail1 _$ClaimResponse_SubDetail1FromJson(
     Map<String, dynamic> json) {
   return ClaimResponse_SubDetail1(
+    json['productOrService'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['productOrService'] as Map<String, dynamic>),
+    (json['adjudication'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ClaimResponse_Adjudication.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -613,10 +620,6 @@ ClaimResponse_SubDetail1 _$ClaimResponse_SubDetail1FromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    productOrService: json['productOrService'] == null
-        ? null
-        : CodeableConcept.fromJson(
-            json['productOrService'] as Map<String, dynamic>),
     modifier: (json['modifier'] as List)
         ?.map((e) => e == null
             ? null
@@ -639,11 +642,6 @@ ClaimResponse_SubDetail1 _$ClaimResponse_SubDetail1FromJson(
     element_noteNumber: (json['element_noteNumber'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    adjudication: (json['adjudication'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ClaimResponse_Adjudication.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   );
 }
@@ -670,6 +668,12 @@ Map<String, dynamic> _$ClaimResponse_SubDetail1ToJson(
 
 ClaimResponse_Total _$ClaimResponse_TotalFromJson(Map<String, dynamic> json) {
   return ClaimResponse_Total(
+    json['category'] == null
+        ? null
+        : CodeableConcept.fromJson(json['category'] as Map<String, dynamic>),
+    json['amount'] == null
+        ? null
+        : Money.fromJson(json['amount'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -679,12 +683,6 @@ ClaimResponse_Total _$ClaimResponse_TotalFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    category: json['category'] == null
-        ? null
-        : CodeableConcept.fromJson(json['category'] as Map<String, dynamic>),
-    amount: json['amount'] == null
-        ? null
-        : Money.fromJson(json['amount'] as Map<String, dynamic>),
   );
 }
 
@@ -702,6 +700,12 @@ Map<String, dynamic> _$ClaimResponse_TotalToJson(
 ClaimResponse_Payment _$ClaimResponse_PaymentFromJson(
     Map<String, dynamic> json) {
   return ClaimResponse_Payment(
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
+    json['amount'] == null
+        ? null
+        : Money.fromJson(json['amount'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -711,9 +715,6 @@ ClaimResponse_Payment _$ClaimResponse_PaymentFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    type: json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     adjustment: json['adjustment'] == null
         ? null
         : Money.fromJson(json['adjustment'] as Map<String, dynamic>),
@@ -725,9 +726,6 @@ ClaimResponse_Payment _$ClaimResponse_PaymentFromJson(
     element_date: json['element_date'] == null
         ? null
         : Element.fromJson(json['element_date'] as Map<String, dynamic>),
-    amount: json['amount'] == null
-        ? null
-        : Money.fromJson(json['amount'] as Map<String, dynamic>),
     identifier: json['identifier'] == null
         ? null
         : Identifier.fromJson(json['identifier'] as Map<String, dynamic>),
@@ -799,6 +797,9 @@ Map<String, dynamic> _$ClaimResponse_ProcessNoteToJson(
 ClaimResponse_Insurance _$ClaimResponse_InsuranceFromJson(
     Map<String, dynamic> json) {
   return ClaimResponse_Insurance(
+    json['coverage'] == null
+        ? null
+        : Reference.fromJson(json['coverage'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -816,9 +817,6 @@ ClaimResponse_Insurance _$ClaimResponse_InsuranceFromJson(
     element_focal: json['element_focal'] == null
         ? null
         : Element.fromJson(json['element_focal'] as Map<String, dynamic>),
-    coverage: json['coverage'] == null
-        ? null
-        : Reference.fromJson(json['coverage'] as Map<String, dynamic>),
     businessArrangement: json['businessArrangement'] as String,
     element_businessArrangement: json['element_businessArrangement'] == null
         ? null
@@ -850,6 +848,9 @@ Map<String, dynamic> _$ClaimResponse_InsuranceToJson(
 
 ClaimResponse_Error _$ClaimResponse_ErrorFromJson(Map<String, dynamic> json) {
   return ClaimResponse_Error(
+    json['code'] == null
+        ? null
+        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -874,9 +875,6 @@ ClaimResponse_Error _$ClaimResponse_ErrorFromJson(Map<String, dynamic> json) {
         ? null
         : Element.fromJson(
             json['element_subDetailSequence'] as Map<String, dynamic>),
-    code: json['code'] == null
-        ? null
-        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
   );
 }
 

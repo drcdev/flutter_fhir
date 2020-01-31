@@ -8,7 +8,12 @@ part of 'immunization.dart';
 
 Immunization _$ImmunizationFromJson(Map<String, dynamic> json) {
   return Immunization(
-    resourceType: json['resourceType'] as String,
+    json['vaccineCode'] == null
+        ? null
+        : CodeableConcept.fromJson(json['vaccineCode'] as Map<String, dynamic>),
+    json['patient'] == null
+        ? null
+        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -49,12 +54,6 @@ Immunization _$ImmunizationFromJson(Map<String, dynamic> json) {
         ? null
         : CodeableConcept.fromJson(
             json['statusReason'] as Map<String, dynamic>),
-    vaccineCode: json['vaccineCode'] == null
-        ? null
-        : CodeableConcept.fromJson(json['vaccineCode'] as Map<String, dynamic>),
-    patient: json['patient'] == null
-        ? null
-        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
     encounter: json['encounter'] == null
         ? null
         : Reference.fromJson(json['encounter'] as Map<String, dynamic>),
@@ -163,7 +162,6 @@ Immunization _$ImmunizationFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ImmunizationToJson(Immunization instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -222,6 +220,9 @@ Map<String, dynamic> _$ImmunizationToJson(Immunization instance) =>
 Immunization_Performer _$Immunization_PerformerFromJson(
     Map<String, dynamic> json) {
   return Immunization_Performer(
+    json['actor'] == null
+        ? null
+        : Reference.fromJson(json['actor'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -234,9 +235,6 @@ Immunization_Performer _$Immunization_PerformerFromJson(
     function: json['function'] == null
         ? null
         : CodeableConcept.fromJson(json['function'] as Map<String, dynamic>),
-    actor: json['actor'] == null
-        ? null
-        : Reference.fromJson(json['actor'] as Map<String, dynamic>),
   );
 }
 

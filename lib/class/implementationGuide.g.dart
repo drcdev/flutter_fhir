@@ -8,7 +8,6 @@ part of 'implementationGuide.dart';
 
 ImplementationGuide _$ImplementationGuideFromJson(Map<String, dynamic> json) {
   return ImplementationGuide(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -130,7 +129,6 @@ ImplementationGuide _$ImplementationGuideFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$ImplementationGuideToJson(
         ImplementationGuide instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -181,6 +179,7 @@ Map<String, dynamic> _$ImplementationGuideToJson(
 ImplementationGuide_DependsOn _$ImplementationGuide_DependsOnFromJson(
     Map<String, dynamic> json) {
   return ImplementationGuide_DependsOn(
+    json['uri'] as String,
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -190,7 +189,6 @@ ImplementationGuide_DependsOn _$ImplementationGuide_DependsOnFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    uri: json['uri'] as String,
     packageId: json['packageId'] as String,
     element_packageId: json['element_packageId'] == null
         ? null
@@ -219,6 +217,7 @@ Map<String, dynamic> _$ImplementationGuide_DependsOnToJson(
 ImplementationGuide_Global _$ImplementationGuide_GlobalFromJson(
     Map<String, dynamic> json) {
   return ImplementationGuide_Global(
+    json['profile'] as String,
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -232,7 +231,6 @@ ImplementationGuide_Global _$ImplementationGuide_GlobalFromJson(
     element_type: json['element_type'] == null
         ? null
         : Element.fromJson(json['element_type'] as Map<String, dynamic>),
-    profile: json['profile'] as String,
   );
 }
 
@@ -251,6 +249,11 @@ Map<String, dynamic> _$ImplementationGuide_GlobalToJson(
 ImplementationGuide_Definition _$ImplementationGuide_DefinitionFromJson(
     Map<String, dynamic> json) {
   return ImplementationGuide_Definition(
+    (json['resource'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ImplementationGuide_Resource.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -264,11 +267,6 @@ ImplementationGuide_Definition _$ImplementationGuide_DefinitionFromJson(
         ?.map((e) => e == null
             ? null
             : ImplementationGuide_Grouping.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    resource: (json['resource'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ImplementationGuide_Resource.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     page: json['page'] == null
         ? null
@@ -340,6 +338,9 @@ Map<String, dynamic> _$ImplementationGuide_GroupingToJson(
 ImplementationGuide_Resource _$ImplementationGuide_ResourceFromJson(
     Map<String, dynamic> json) {
   return ImplementationGuide_Resource(
+    json['reference'] == null
+        ? null
+        : Reference.fromJson(json['reference'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -349,9 +350,6 @@ ImplementationGuide_Resource _$ImplementationGuide_ResourceFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    reference: json['reference'] == null
-        ? null
-        : Reference.fromJson(json['reference'] as Map<String, dynamic>),
     fhirVersion:
         (json['fhirVersion'] as List)?.map((e) => e as String)?.toList(),
     element_fhirVersion: (json['element_fhirVersion'] as List)
@@ -539,6 +537,11 @@ Map<String, dynamic> _$ImplementationGuide_TemplateToJson(
 ImplementationGuide_Manifest _$ImplementationGuide_ManifestFromJson(
     Map<String, dynamic> json) {
   return ImplementationGuide_Manifest(
+    (json['resource'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ImplementationGuide_Resource1.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -552,11 +555,6 @@ ImplementationGuide_Manifest _$ImplementationGuide_ManifestFromJson(
     element_rendering: json['element_rendering'] == null
         ? null
         : Element.fromJson(json['element_rendering'] as Map<String, dynamic>),
-    resource: (json['resource'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ImplementationGuide_Resource1.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     page: (json['page'] as List)
         ?.map((e) => e == null
             ? null
@@ -597,6 +595,9 @@ Map<String, dynamic> _$ImplementationGuide_ManifestToJson(
 ImplementationGuide_Resource1 _$ImplementationGuide_Resource1FromJson(
     Map<String, dynamic> json) {
   return ImplementationGuide_Resource1(
+    json['reference'] == null
+        ? null
+        : Reference.fromJson(json['reference'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -606,9 +607,6 @@ ImplementationGuide_Resource1 _$ImplementationGuide_Resource1FromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    reference: json['reference'] == null
-        ? null
-        : Reference.fromJson(json['reference'] as Map<String, dynamic>),
     exampleBoolean: json['exampleBoolean'] as bool,
     element_exampleBoolean: json['element_exampleBoolean'] == null
         ? null

@@ -9,7 +9,6 @@ part of 'medicinalProductAuthorization.dart';
 MedicinalProductAuthorization _$MedicinalProductAuthorizationFromJson(
     Map<String, dynamic> json) {
   return MedicinalProductAuthorization(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -118,7 +117,6 @@ MedicinalProductAuthorization _$MedicinalProductAuthorizationFromJson(
 Map<String, dynamic> _$MedicinalProductAuthorizationToJson(
         MedicinalProductAuthorization instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -212,6 +210,9 @@ MedicinalProductAuthorization_Procedure
     _$MedicinalProductAuthorization_ProcedureFromJson(
         Map<String, dynamic> json) {
   return MedicinalProductAuthorization_Procedure(
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -224,9 +225,6 @@ MedicinalProductAuthorization_Procedure
     identifier: json['identifier'] == null
         ? null
         : Identifier.fromJson(json['identifier'] as Map<String, dynamic>),
-    type: json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     datePeriod: json['datePeriod'] == null
         ? null
         : Period.fromJson(json['datePeriod'] as Map<String, dynamic>),

@@ -8,7 +8,9 @@ part of 'deviceRequest.dart';
 
 DeviceRequest _$DeviceRequestFromJson(Map<String, dynamic> json) {
   return DeviceRequest(
-    resourceType: json['resourceType'] as String,
+    json['subject'] == null
+        ? null
+        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -85,9 +87,6 @@ DeviceRequest _$DeviceRequestFromJson(Map<String, dynamic> json) {
             ? null
             : DeviceRequest_Parameter.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    subject: json['subject'] == null
-        ? null
-        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     encounter: json['encounter'] == null
         ? null
         : Reference.fromJson(json['encounter'] as Map<String, dynamic>),
@@ -148,7 +147,6 @@ DeviceRequest _$DeviceRequestFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$DeviceRequestToJson(DeviceRequest instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

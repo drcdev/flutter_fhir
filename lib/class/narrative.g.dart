@@ -8,6 +8,7 @@ part of 'narrative.dart';
 
 Narrative _$NarrativeFromJson(Map<String, dynamic> json) {
   return Narrative(
+    json['div'] as String,
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -17,7 +18,6 @@ Narrative _$NarrativeFromJson(Map<String, dynamic> json) {
     element_status: json['element_status'] == null
         ? null
         : Element.fromJson(json['element_status'] as Map<String, dynamic>),
-    div: json['div'] as String,
   );
 }
 

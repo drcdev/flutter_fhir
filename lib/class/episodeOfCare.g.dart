@@ -8,7 +8,9 @@ part of 'episodeOfCare.dart';
 
 EpisodeOfCare _$EpisodeOfCareFromJson(Map<String, dynamic> json) {
   return EpisodeOfCare(
-    resourceType: json['resourceType'] as String,
+    json['patient'] == null
+        ? null
+        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -60,9 +62,6 @@ EpisodeOfCare _$EpisodeOfCareFromJson(Map<String, dynamic> json) {
             ? null
             : EpisodeOfCare_Diagnosis.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    patient: json['patient'] == null
-        ? null
-        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
     managingOrganization: json['managingOrganization'] == null
         ? null
         : Reference.fromJson(
@@ -90,7 +89,6 @@ EpisodeOfCare _$EpisodeOfCareFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$EpisodeOfCareToJson(EpisodeOfCare instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -122,6 +120,9 @@ Map<String, dynamic> _$EpisodeOfCareToJson(EpisodeOfCare instance) =>
 EpisodeOfCare_StatusHistory _$EpisodeOfCare_StatusHistoryFromJson(
     Map<String, dynamic> json) {
   return EpisodeOfCare_StatusHistory(
+    json['period'] == null
+        ? null
+        : Period.fromJson(json['period'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -135,9 +136,6 @@ EpisodeOfCare_StatusHistory _$EpisodeOfCare_StatusHistoryFromJson(
     element_status: json['element_status'] == null
         ? null
         : Element.fromJson(json['element_status'] as Map<String, dynamic>),
-    period: json['period'] == null
-        ? null
-        : Period.fromJson(json['period'] as Map<String, dynamic>),
   );
 }
 
@@ -156,6 +154,9 @@ Map<String, dynamic> _$EpisodeOfCare_StatusHistoryToJson(
 EpisodeOfCare_Diagnosis _$EpisodeOfCare_DiagnosisFromJson(
     Map<String, dynamic> json) {
   return EpisodeOfCare_Diagnosis(
+    json['condition'] == null
+        ? null
+        : Reference.fromJson(json['condition'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -165,9 +166,6 @@ EpisodeOfCare_Diagnosis _$EpisodeOfCare_DiagnosisFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    condition: json['condition'] == null
-        ? null
-        : Reference.fromJson(json['condition'] as Map<String, dynamic>),
     role: json['role'] == null
         ? null
         : CodeableConcept.fromJson(json['role'] as Map<String, dynamic>),

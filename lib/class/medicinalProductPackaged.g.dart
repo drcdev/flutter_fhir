@@ -9,7 +9,12 @@ part of 'medicinalProductPackaged.dart';
 MedicinalProductPackaged _$MedicinalProductPackagedFromJson(
     Map<String, dynamic> json) {
   return MedicinalProductPackaged(
-    resourceType: json['resourceType'] as String,
+    (json['packageItem'] as List)
+        ?.map((e) => e == null
+            ? null
+            : MedicinalProductPackaged_PackageItem.fromJson(
+                e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -73,19 +78,12 @@ MedicinalProductPackaged _$MedicinalProductPackagedFromJson(
             : MedicinalProductPackaged_BatchIdentifier.fromJson(
                 e as Map<String, dynamic>))
         ?.toList(),
-    packageItem: (json['packageItem'] as List)
-        ?.map((e) => e == null
-            ? null
-            : MedicinalProductPackaged_PackageItem.fromJson(
-                e as Map<String, dynamic>))
-        ?.toList(),
   );
 }
 
 Map<String, dynamic> _$MedicinalProductPackagedToJson(
         MedicinalProductPackaged instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -115,6 +113,9 @@ MedicinalProductPackaged_BatchIdentifier
     _$MedicinalProductPackaged_BatchIdentifierFromJson(
         Map<String, dynamic> json) {
   return MedicinalProductPackaged_BatchIdentifier(
+    json['outerPackaging'] == null
+        ? null
+        : Identifier.fromJson(json['outerPackaging'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -124,9 +125,6 @@ MedicinalProductPackaged_BatchIdentifier
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    outerPackaging: json['outerPackaging'] == null
-        ? null
-        : Identifier.fromJson(json['outerPackaging'] as Map<String, dynamic>),
     immediatePackaging: json['immediatePackaging'] == null
         ? null
         : Identifier.fromJson(
@@ -148,6 +146,12 @@ Map<String, dynamic> _$MedicinalProductPackaged_BatchIdentifierToJson(
 MedicinalProductPackaged_PackageItem
     _$MedicinalProductPackaged_PackageItemFromJson(Map<String, dynamic> json) {
   return MedicinalProductPackaged_PackageItem(
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
+    json['quantity'] == null
+        ? null
+        : Quantity.fromJson(json['quantity'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -161,12 +165,6 @@ MedicinalProductPackaged_PackageItem
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    type: json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
-    quantity: json['quantity'] == null
-        ? null
-        : Quantity.fromJson(json['quantity'] as Map<String, dynamic>),
     material: (json['material'] as List)
         ?.map((e) => e == null
             ? null

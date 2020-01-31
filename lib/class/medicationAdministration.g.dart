@@ -9,7 +9,9 @@ part of 'medicationAdministration.dart';
 MedicationAdministration _$MedicationAdministrationFromJson(
     Map<String, dynamic> json) {
   return MedicationAdministration(
-    resourceType: json['resourceType'] as String,
+    json['subject'] == null
+        ? null
+        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -72,9 +74,6 @@ MedicationAdministration _$MedicationAdministrationFromJson(
         ? null
         : Reference.fromJson(
             json['medicationReference'] as Map<String, dynamic>),
-    subject: json['subject'] == null
-        ? null
-        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     context: json['context'] == null
         ? null
         : Reference.fromJson(json['context'] as Map<String, dynamic>),
@@ -130,7 +129,6 @@ MedicationAdministration _$MedicationAdministrationFromJson(
 Map<String, dynamic> _$MedicationAdministrationToJson(
         MedicationAdministration instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -174,6 +172,9 @@ Map<String, dynamic> _$MedicationAdministrationToJson(
 MedicationAdministration_Performer _$MedicationAdministration_PerformerFromJson(
     Map<String, dynamic> json) {
   return MedicationAdministration_Performer(
+    json['actor'] == null
+        ? null
+        : Reference.fromJson(json['actor'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -186,9 +187,6 @@ MedicationAdministration_Performer _$MedicationAdministration_PerformerFromJson(
     function: json['function'] == null
         ? null
         : CodeableConcept.fromJson(json['function'] as Map<String, dynamic>),
-    actor: json['actor'] == null
-        ? null
-        : Reference.fromJson(json['actor'] as Map<String, dynamic>),
   );
 }
 

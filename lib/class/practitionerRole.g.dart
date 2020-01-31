@@ -8,7 +8,6 @@ part of 'practitionerRole.dart';
 
 PractitionerRole _$PractitionerRoleFromJson(Map<String, dynamic> json) {
   return PractitionerRole(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -102,7 +101,6 @@ PractitionerRole _$PractitionerRoleFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$PractitionerRoleToJson(PractitionerRole instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

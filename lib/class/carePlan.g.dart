@@ -8,7 +8,9 @@ part of 'carePlan.dart';
 
 CarePlan _$CarePlanFromJson(Map<String, dynamic> json) {
   return CarePlan(
-    resourceType: json['resourceType'] as String,
+    json['subject'] == null
+        ? null
+        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -83,9 +85,6 @@ CarePlan _$CarePlanFromJson(Map<String, dynamic> json) {
     element_description: json['element_description'] == null
         ? null
         : Element.fromJson(json['element_description'] as Map<String, dynamic>),
-    subject: json['subject'] == null
-        ? null
-        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     encounter: json['encounter'] == null
         ? null
         : Reference.fromJson(json['encounter'] as Map<String, dynamic>),
@@ -134,7 +133,6 @@ CarePlan _$CarePlanFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$CarePlanToJson(CarePlan instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

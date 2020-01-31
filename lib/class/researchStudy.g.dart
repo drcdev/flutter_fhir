@@ -8,7 +8,6 @@ part of 'researchStudy.dart';
 
 ResearchStudy _$ResearchStudyFromJson(Map<String, dynamic> json) {
   return ResearchStudy(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -144,7 +143,6 @@ ResearchStudy _$ResearchStudyFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ResearchStudyToJson(ResearchStudy instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

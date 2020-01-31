@@ -8,7 +8,6 @@ part of 'testScript.dart';
 
 TestScript _$TestScriptFromJson(Map<String, dynamic> json) {
   return TestScript(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -144,7 +143,6 @@ TestScript _$TestScriptFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$TestScriptToJson(TestScript instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -195,6 +193,9 @@ Map<String, dynamic> _$TestScriptToJson(TestScript instance) =>
 
 TestScript_Origin _$TestScript_OriginFromJson(Map<String, dynamic> json) {
   return TestScript_Origin(
+    json['profile'] == null
+        ? null
+        : Coding.fromJson(json['profile'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -208,9 +209,6 @@ TestScript_Origin _$TestScript_OriginFromJson(Map<String, dynamic> json) {
     element_index: json['element_index'] == null
         ? null
         : Element.fromJson(json['element_index'] as Map<String, dynamic>),
-    profile: json['profile'] == null
-        ? null
-        : Coding.fromJson(json['profile'] as Map<String, dynamic>),
   );
 }
 
@@ -228,6 +226,9 @@ Map<String, dynamic> _$TestScript_OriginToJson(TestScript_Origin instance) =>
 TestScript_Destination _$TestScript_DestinationFromJson(
     Map<String, dynamic> json) {
   return TestScript_Destination(
+    json['profile'] == null
+        ? null
+        : Coding.fromJson(json['profile'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -241,9 +242,6 @@ TestScript_Destination _$TestScript_DestinationFromJson(
     element_index: json['element_index'] == null
         ? null
         : Element.fromJson(json['element_index'] as Map<String, dynamic>),
-    profile: json['profile'] == null
-        ? null
-        : Coding.fromJson(json['profile'] as Map<String, dynamic>),
   );
 }
 
@@ -261,6 +259,11 @@ Map<String, dynamic> _$TestScript_DestinationToJson(
 
 TestScript_Metadata _$TestScript_MetadataFromJson(Map<String, dynamic> json) {
   return TestScript_Metadata(
+    (json['capability'] as List)
+        ?.map((e) => e == null
+            ? null
+            : TestScript_Capability.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -274,11 +277,6 @@ TestScript_Metadata _$TestScript_MetadataFromJson(Map<String, dynamic> json) {
         ?.map((e) => e == null
             ? null
             : TestScript_Link.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    capability: (json['capability'] as List)
-        ?.map((e) => e == null
-            ? null
-            : TestScript_Capability.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   );
 }
@@ -331,6 +329,7 @@ Map<String, dynamic> _$TestScript_LinkToJson(TestScript_Link instance) =>
 TestScript_Capability _$TestScript_CapabilityFromJson(
     Map<String, dynamic> json) {
   return TestScript_Capability(
+    json['capabilities'] as String,
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -366,7 +365,6 @@ TestScript_Capability _$TestScript_CapabilityFromJson(
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    capabilities: json['capabilities'] as String,
   );
 }
 
@@ -505,6 +503,11 @@ Map<String, dynamic> _$TestScript_VariableToJson(
 
 TestScript_Setup _$TestScript_SetupFromJson(Map<String, dynamic> json) {
   return TestScript_Setup(
+    (json['action'] as List)
+        ?.map((e) => e == null
+            ? null
+            : TestScript_Action.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -513,11 +516,6 @@ TestScript_Setup _$TestScript_SetupFromJson(Map<String, dynamic> json) {
     modifierExtension: (json['modifierExtension'] as List)
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    action: (json['action'] as List)
-        ?.map((e) => e == null
-            ? null
-            : TestScript_Action.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   );
 }
@@ -889,6 +887,11 @@ Map<String, dynamic> _$TestScript_AssertToJson(TestScript_Assert instance) =>
 
 TestScript_Test _$TestScript_TestFromJson(Map<String, dynamic> json) {
   return TestScript_Test(
+    (json['action'] as List)
+        ?.map((e) => e == null
+            ? null
+            : TestScript_Action1.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -906,11 +909,6 @@ TestScript_Test _$TestScript_TestFromJson(Map<String, dynamic> json) {
     element_description: json['element_description'] == null
         ? null
         : Element.fromJson(json['element_description'] as Map<String, dynamic>),
-    action: (json['action'] as List)
-        ?.map((e) => e == null
-            ? null
-            : TestScript_Action1.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
   );
 }
 
@@ -960,6 +958,11 @@ Map<String, dynamic> _$TestScript_Action1ToJson(TestScript_Action1 instance) =>
 
 TestScript_Teardown _$TestScript_TeardownFromJson(Map<String, dynamic> json) {
   return TestScript_Teardown(
+    (json['action'] as List)
+        ?.map((e) => e == null
+            ? null
+            : TestScript_Action2.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -968,11 +971,6 @@ TestScript_Teardown _$TestScript_TeardownFromJson(Map<String, dynamic> json) {
     modifierExtension: (json['modifierExtension'] as List)
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    action: (json['action'] as List)
-        ?.map((e) => e == null
-            ? null
-            : TestScript_Action2.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   );
 }
@@ -989,6 +987,10 @@ Map<String, dynamic> _$TestScript_TeardownToJson(
 
 TestScript_Action2 _$TestScript_Action2FromJson(Map<String, dynamic> json) {
   return TestScript_Action2(
+    json['operation'] == null
+        ? null
+        : TestScript_Operation.fromJson(
+            json['operation'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -998,10 +1000,6 @@ TestScript_Action2 _$TestScript_Action2FromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    operation: json['operation'] == null
-        ? null
-        : TestScript_Operation.fromJson(
-            json['operation'] as Map<String, dynamic>),
   );
 }
 

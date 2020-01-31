@@ -8,7 +8,9 @@ part of 'adverseEvent.dart';
 
 AdverseEvent _$AdverseEventFromJson(Map<String, dynamic> json) {
   return AdverseEvent(
-    resourceType: json['resourceType'] as String,
+    json['subject'] == null
+        ? null
+        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -52,9 +54,6 @@ AdverseEvent _$AdverseEventFromJson(Map<String, dynamic> json) {
     event: json['event'] == null
         ? null
         : CodeableConcept.fromJson(json['event'] as Map<String, dynamic>),
-    subject: json['subject'] == null
-        ? null
-        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     encounter: json['encounter'] == null
         ? null
         : Reference.fromJson(json['encounter'] as Map<String, dynamic>),
@@ -120,7 +119,6 @@ AdverseEvent _$AdverseEventFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$AdverseEventToJson(AdverseEvent instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -165,6 +163,9 @@ Map<String, dynamic> _$AdverseEventToJson(AdverseEvent instance) =>
 AdverseEvent_SuspectEntity _$AdverseEvent_SuspectEntityFromJson(
     Map<String, dynamic> json) {
   return AdverseEvent_SuspectEntity(
+    json['instance'] == null
+        ? null
+        : Reference.fromJson(json['instance'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -174,9 +175,6 @@ AdverseEvent_SuspectEntity _$AdverseEvent_SuspectEntityFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    instance: json['instance'] == null
-        ? null
-        : Reference.fromJson(json['instance'] as Map<String, dynamic>),
     causality: (json['causality'] as List)
         ?.map((e) => e == null
             ? null

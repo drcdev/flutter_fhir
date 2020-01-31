@@ -8,7 +8,9 @@ part of 'observation.dart';
 
 Observation _$ObservationFromJson(Map<String, dynamic> json) {
   return Observation(
-    resourceType: json['resourceType'] as String,
+    json['code'] == null
+        ? null
+        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -58,9 +60,6 @@ Observation _$ObservationFromJson(Map<String, dynamic> json) {
             ? null
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    code: json['code'] == null
-        ? null
-        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     subject: json['subject'] == null
         ? null
         : Reference.fromJson(json['subject'] as Map<String, dynamic>),
@@ -188,7 +187,6 @@ Observation _$ObservationFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ObservationToJson(Observation instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -305,6 +303,9 @@ Map<String, dynamic> _$Observation_ReferenceRangeToJson(
 Observation_Component _$Observation_ComponentFromJson(
     Map<String, dynamic> json) {
   return Observation_Component(
+    json['code'] == null
+        ? null
+        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -314,9 +315,6 @@ Observation_Component _$Observation_ComponentFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    code: json['code'] == null
-        ? null
-        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     valueQuantity: json['valueQuantity'] == null
         ? null
         : Quantity.fromJson(json['valueQuantity'] as Map<String, dynamic>),

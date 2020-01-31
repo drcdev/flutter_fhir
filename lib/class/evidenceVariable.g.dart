@@ -8,7 +8,12 @@ part of 'evidenceVariable.dart';
 
 EvidenceVariable _$EvidenceVariableFromJson(Map<String, dynamic> json) {
   return EvidenceVariable(
-    resourceType: json['resourceType'] as String,
+    (json['characteristic'] as List)
+        ?.map((e) => e == null
+            ? null
+            : EvidenceVariable_Characteristic.fromJson(
+                e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -150,18 +155,11 @@ EvidenceVariable _$EvidenceVariableFromJson(Map<String, dynamic> json) {
     element_type: json['element_type'] == null
         ? null
         : Element.fromJson(json['element_type'] as Map<String, dynamic>),
-    characteristic: (json['characteristic'] as List)
-        ?.map((e) => e == null
-            ? null
-            : EvidenceVariable_Characteristic.fromJson(
-                e as Map<String, dynamic>))
-        ?.toList(),
   );
 }
 
 Map<String, dynamic> _$EvidenceVariableToJson(EvidenceVariable instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

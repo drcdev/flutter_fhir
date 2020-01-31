@@ -8,7 +8,14 @@ part of 'consent.dart';
 
 Consent _$ConsentFromJson(Map<String, dynamic> json) {
   return Consent(
-    resourceType: json['resourceType'] as String,
+    json['scope'] == null
+        ? null
+        : CodeableConcept.fromJson(json['scope'] as Map<String, dynamic>),
+    (json['category'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -45,14 +52,6 @@ Consent _$ConsentFromJson(Map<String, dynamic> json) {
     element_status: json['element_status'] == null
         ? null
         : Element.fromJson(json['element_status'] as Map<String, dynamic>),
-    scope: json['scope'] == null
-        ? null
-        : CodeableConcept.fromJson(json['scope'] as Map<String, dynamic>),
-    category: (json['category'] as List)
-        ?.map((e) => e == null
-            ? null
-            : CodeableConcept.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     patient: json['patient'] == null
         ? null
         : Reference.fromJson(json['patient'] as Map<String, dynamic>),
@@ -96,7 +95,6 @@ Consent _$ConsentFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$ConsentToJson(Consent instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -285,6 +283,12 @@ Map<String, dynamic> _$Consent_ProvisionToJson(Consent_Provision instance) =>
 
 Consent_Actor _$Consent_ActorFromJson(Map<String, dynamic> json) {
   return Consent_Actor(
+    json['role'] == null
+        ? null
+        : CodeableConcept.fromJson(json['role'] as Map<String, dynamic>),
+    json['reference'] == null
+        ? null
+        : Reference.fromJson(json['reference'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -294,12 +298,6 @@ Consent_Actor _$Consent_ActorFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    role: json['role'] == null
-        ? null
-        : CodeableConcept.fromJson(json['role'] as Map<String, dynamic>),
-    reference: json['reference'] == null
-        ? null
-        : Reference.fromJson(json['reference'] as Map<String, dynamic>),
   );
 }
 
@@ -315,6 +313,9 @@ Map<String, dynamic> _$Consent_ActorToJson(Consent_Actor instance) =>
 
 Consent_Data _$Consent_DataFromJson(Map<String, dynamic> json) {
   return Consent_Data(
+    json['reference'] == null
+        ? null
+        : Reference.fromJson(json['reference'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -328,9 +329,6 @@ Consent_Data _$Consent_DataFromJson(Map<String, dynamic> json) {
     element_meaning: json['element_meaning'] == null
         ? null
         : Element.fromJson(json['element_meaning'] as Map<String, dynamic>),
-    reference: json['reference'] == null
-        ? null
-        : Reference.fromJson(json['reference'] as Map<String, dynamic>),
   );
 }
 

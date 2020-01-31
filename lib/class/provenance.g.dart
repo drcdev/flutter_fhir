@@ -8,7 +8,15 @@ part of 'provenance.dart';
 
 Provenance _$ProvenanceFromJson(Map<String, dynamic> json) {
   return Provenance(
-    resourceType: json['resourceType'] as String,
+    (json['target'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    (json['agent'] as List)
+        ?.map((e) => e == null
+            ? null
+            : Provenance_Agent.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -36,10 +44,6 @@ Provenance _$ProvenanceFromJson(Map<String, dynamic> json) {
     modifierExtension: (json['modifierExtension'] as List)
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    target: (json['target'] as List)
-        ?.map((e) =>
-            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     occurredPeriod: json['occurredPeriod'] == null
         ? null
@@ -71,11 +75,6 @@ Provenance _$ProvenanceFromJson(Map<String, dynamic> json) {
     activity: json['activity'] == null
         ? null
         : CodeableConcept.fromJson(json['activity'] as Map<String, dynamic>),
-    agent: (json['agent'] as List)
-        ?.map((e) => e == null
-            ? null
-            : Provenance_Agent.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     entity: (json['entity'] as List)
         ?.map((e) => e == null
             ? null
@@ -90,7 +89,6 @@ Provenance _$ProvenanceFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ProvenanceToJson(Provenance instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -121,6 +119,9 @@ Map<String, dynamic> _$ProvenanceToJson(Provenance instance) =>
 
 Provenance_Agent _$Provenance_AgentFromJson(Map<String, dynamic> json) {
   return Provenance_Agent(
+    json['who'] == null
+        ? null
+        : Reference.fromJson(json['who'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -138,9 +139,6 @@ Provenance_Agent _$Provenance_AgentFromJson(Map<String, dynamic> json) {
             ? null
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    who: json['who'] == null
-        ? null
-        : Reference.fromJson(json['who'] as Map<String, dynamic>),
     onBehalfOf: json['onBehalfOf'] == null
         ? null
         : Reference.fromJson(json['onBehalfOf'] as Map<String, dynamic>),
@@ -161,6 +159,9 @@ Map<String, dynamic> _$Provenance_AgentToJson(Provenance_Agent instance) =>
 
 Provenance_Entity _$Provenance_EntityFromJson(Map<String, dynamic> json) {
   return Provenance_Entity(
+    json['what'] == null
+        ? null
+        : Reference.fromJson(json['what'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -174,9 +175,6 @@ Provenance_Entity _$Provenance_EntityFromJson(Map<String, dynamic> json) {
     element_role: json['element_role'] == null
         ? null
         : Element.fromJson(json['element_role'] as Map<String, dynamic>),
-    what: json['what'] == null
-        ? null
-        : Reference.fromJson(json['what'] as Map<String, dynamic>),
     agent: (json['agent'] as List)
         ?.map((e) => e == null
             ? null

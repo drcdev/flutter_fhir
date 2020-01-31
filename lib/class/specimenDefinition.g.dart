@@ -8,7 +8,6 @@ part of 'specimenDefinition.dart';
 
 SpecimenDefinition _$SpecimenDefinitionFromJson(Map<String, dynamic> json) {
   return SpecimenDefinition(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -68,7 +67,6 @@ SpecimenDefinition _$SpecimenDefinitionFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$SpecimenDefinitionToJson(SpecimenDefinition instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

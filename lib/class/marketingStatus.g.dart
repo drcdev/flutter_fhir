@@ -8,6 +8,15 @@ part of 'marketingStatus.dart';
 
 MarketingStatus _$MarketingStatusFromJson(Map<String, dynamic> json) {
   return MarketingStatus(
+    json['country'] == null
+        ? null
+        : CodeableConcept.fromJson(json['country'] as Map<String, dynamic>),
+    json['status'] == null
+        ? null
+        : CodeableConcept.fromJson(json['status'] as Map<String, dynamic>),
+    json['dateRange'] == null
+        ? null
+        : Period.fromJson(json['dateRange'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -17,19 +26,10 @@ MarketingStatus _$MarketingStatusFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    country: json['country'] == null
-        ? null
-        : CodeableConcept.fromJson(json['country'] as Map<String, dynamic>),
     jurisdiction: json['jurisdiction'] == null
         ? null
         : CodeableConcept.fromJson(
             json['jurisdiction'] as Map<String, dynamic>),
-    status: json['status'] == null
-        ? null
-        : CodeableConcept.fromJson(json['status'] as Map<String, dynamic>),
-    dateRange: json['dateRange'] == null
-        ? null
-        : Period.fromJson(json['dateRange'] as Map<String, dynamic>),
     restoreDate: json['restoreDate'] == null
         ? null
         : DateTime.parse(json['restoreDate'] as String),

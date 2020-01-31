@@ -8,7 +8,9 @@ part of 'diagnosticReport.dart';
 
 DiagnosticReport _$DiagnosticReportFromJson(Map<String, dynamic> json) {
   return DiagnosticReport(
-    resourceType: json['resourceType'] as String,
+    json['code'] == null
+        ? null
+        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -54,9 +56,6 @@ DiagnosticReport _$DiagnosticReportFromJson(Map<String, dynamic> json) {
             ? null
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    code: json['code'] == null
-        ? null
-        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     subject: json['subject'] == null
         ? null
         : Reference.fromJson(json['subject'] as Map<String, dynamic>),
@@ -120,7 +119,6 @@ DiagnosticReport _$DiagnosticReportFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$DiagnosticReportToJson(DiagnosticReport instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -163,6 +161,9 @@ Map<String, dynamic> _$DiagnosticReportToJson(DiagnosticReport instance) =>
 DiagnosticReport_Media _$DiagnosticReport_MediaFromJson(
     Map<String, dynamic> json) {
   return DiagnosticReport_Media(
+    json['link'] == null
+        ? null
+        : Reference.fromJson(json['link'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -176,9 +177,6 @@ DiagnosticReport_Media _$DiagnosticReport_MediaFromJson(
     element_comment: json['element_comment'] == null
         ? null
         : Element.fromJson(json['element_comment'] as Map<String, dynamic>),
-    link: json['link'] == null
-        ? null
-        : Reference.fromJson(json['link'] as Map<String, dynamic>),
   );
 }
 

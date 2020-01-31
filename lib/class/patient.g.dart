@@ -8,7 +8,6 @@ part of 'patient.dart';
 
 Patient _$PatientFromJson(Map<String, dynamic> json) {
   return Patient(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -119,7 +118,6 @@ Patient _$PatientFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$PatientToJson(Patient instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -220,6 +218,9 @@ Map<String, dynamic> _$Patient_ContactToJson(Patient_Contact instance) =>
 Patient_Communication _$Patient_CommunicationFromJson(
     Map<String, dynamic> json) {
   return Patient_Communication(
+    json['language'] == null
+        ? null
+        : CodeableConcept.fromJson(json['language'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -229,9 +230,6 @@ Patient_Communication _$Patient_CommunicationFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    language: json['language'] == null
-        ? null
-        : CodeableConcept.fromJson(json['language'] as Map<String, dynamic>),
     preferred: json['preferred'] as bool,
     element_preferred: json['element_preferred'] == null
         ? null
@@ -253,6 +251,9 @@ Map<String, dynamic> _$Patient_CommunicationToJson(
 
 Patient_Link _$Patient_LinkFromJson(Map<String, dynamic> json) {
   return Patient_Link(
+    json['other'] == null
+        ? null
+        : Reference.fromJson(json['other'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -262,9 +263,6 @@ Patient_Link _$Patient_LinkFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    other: json['other'] == null
-        ? null
-        : Reference.fromJson(json['other'] as Map<String, dynamic>),
     type: json['type'] as String,
     element_type: json['element_type'] == null
         ? null

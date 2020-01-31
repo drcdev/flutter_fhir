@@ -8,7 +8,10 @@ part of 'schedule.dart';
 
 Schedule _$ScheduleFromJson(Map<String, dynamic> json) {
   return Schedule(
-    resourceType: json['resourceType'] as String,
+    (json['actor'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -60,10 +63,6 @@ Schedule _$ScheduleFromJson(Map<String, dynamic> json) {
             ? null
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    actor: (json['actor'] as List)
-        ?.map((e) =>
-            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     planningHorizon: json['planningHorizon'] == null
         ? null
         : Period.fromJson(json['planningHorizon'] as Map<String, dynamic>),
@@ -75,7 +74,6 @@ Schedule _$ScheduleFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$ScheduleToJson(Schedule instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

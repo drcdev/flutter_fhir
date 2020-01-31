@@ -9,7 +9,6 @@ part of 'terminologyCapabilities.dart';
 TerminologyCapabilities _$TerminologyCapabilitiesFromJson(
     Map<String, dynamic> json) {
   return TerminologyCapabilities(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -145,7 +144,6 @@ TerminologyCapabilities _$TerminologyCapabilitiesFromJson(
 Map<String, dynamic> _$TerminologyCapabilitiesToJson(
         TerminologyCapabilities instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

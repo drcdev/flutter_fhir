@@ -8,7 +8,12 @@ part of 'chargeItem.dart';
 
 ChargeItem _$ChargeItemFromJson(Map<String, dynamic> json) {
   return ChargeItem(
-    resourceType: json['resourceType'] as String,
+    json['code'] == null
+        ? null
+        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
+    json['subject'] == null
+        ? null
+        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -58,12 +63,6 @@ ChargeItem _$ChargeItemFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    code: json['code'] == null
-        ? null
-        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
-    subject: json['subject'] == null
-        ? null
-        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     context: json['context'] == null
         ? null
         : Reference.fromJson(json['context'] as Map<String, dynamic>),
@@ -157,7 +156,6 @@ ChargeItem _$ChargeItemFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ChargeItemToJson(ChargeItem instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -211,6 +209,9 @@ Map<String, dynamic> _$ChargeItemToJson(ChargeItem instance) =>
 
 ChargeItem_Performer _$ChargeItem_PerformerFromJson(Map<String, dynamic> json) {
   return ChargeItem_Performer(
+    json['actor'] == null
+        ? null
+        : Reference.fromJson(json['actor'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -223,9 +224,6 @@ ChargeItem_Performer _$ChargeItem_PerformerFromJson(Map<String, dynamic> json) {
     function: json['function'] == null
         ? null
         : CodeableConcept.fromJson(json['function'] as Map<String, dynamic>),
-    actor: json['actor'] == null
-        ? null
-        : Reference.fromJson(json['actor'] as Map<String, dynamic>),
   );
 }
 

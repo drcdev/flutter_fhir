@@ -8,7 +8,11 @@ part of 'structureMap.dart';
 
 StructureMap _$StructureMapFromJson(Map<String, dynamic> json) {
   return StructureMap(
-    resourceType: json['resourceType'] as String,
+    (json['group'] as List)
+        ?.map((e) => e == null
+            ? null
+            : StructureMap_Group.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -106,17 +110,11 @@ StructureMap _$StructureMapFromJson(Map<String, dynamic> json) {
             : StructureMap_Structure.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     import: (json['import'] as List)?.map((e) => e as String)?.toList(),
-    group: (json['group'] as List)
-        ?.map((e) => e == null
-            ? null
-            : StructureMap_Group.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
   );
 }
 
 Map<String, dynamic> _$StructureMapToJson(StructureMap instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -162,6 +160,7 @@ Map<String, dynamic> _$StructureMapToJson(StructureMap instance) =>
 StructureMap_Structure _$StructureMap_StructureFromJson(
     Map<String, dynamic> json) {
   return StructureMap_Structure(
+    json['url'] as String,
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -171,7 +170,6 @@ StructureMap_Structure _$StructureMap_StructureFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    url: json['url'] as String,
     mode: json['mode'] as String,
     element_mode: json['element_mode'] == null
         ? null
@@ -206,6 +204,16 @@ Map<String, dynamic> _$StructureMap_StructureToJson(
 
 StructureMap_Group _$StructureMap_GroupFromJson(Map<String, dynamic> json) {
   return StructureMap_Group(
+    (json['input'] as List)
+        ?.map((e) => e == null
+            ? null
+            : StructureMap_Input.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    (json['rule'] as List)
+        ?.map((e) => e == null
+            ? null
+            : StructureMap_Rule.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -232,16 +240,6 @@ StructureMap_Group _$StructureMap_GroupFromJson(Map<String, dynamic> json) {
         ? null
         : Element.fromJson(
             json['element_documentation'] as Map<String, dynamic>),
-    input: (json['input'] as List)
-        ?.map((e) => e == null
-            ? null
-            : StructureMap_Input.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    rule: (json['rule'] as List)
-        ?.map((e) => e == null
-            ? null
-            : StructureMap_Rule.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
   );
 }
 
@@ -312,6 +310,11 @@ Map<String, dynamic> _$StructureMap_InputToJson(StructureMap_Input instance) =>
 
 StructureMap_Rule _$StructureMap_RuleFromJson(Map<String, dynamic> json) {
   return StructureMap_Rule(
+    (json['source'] as List)
+        ?.map((e) => e == null
+            ? null
+            : StructureMap_Source.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -325,11 +328,6 @@ StructureMap_Rule _$StructureMap_RuleFromJson(Map<String, dynamic> json) {
     element_name: json['element_name'] == null
         ? null
         : Element.fromJson(json['element_name'] as Map<String, dynamic>),
-    source: (json['source'] as List)
-        ?.map((e) => e == null
-            ? null
-            : StructureMap_Source.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     target: (json['target'] as List)
         ?.map((e) => e == null
             ? null

@@ -9,7 +9,13 @@ part of 'medicinalProductManufactured.dart';
 MedicinalProductManufactured _$MedicinalProductManufacturedFromJson(
     Map<String, dynamic> json) {
   return MedicinalProductManufactured(
-    resourceType: json['resourceType'] as String,
+    json['manufacturedDoseForm'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['manufacturedDoseForm'] as Map<String, dynamic>),
+    json['quantity'] == null
+        ? null
+        : Quantity.fromJson(json['quantity'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -38,17 +44,10 @@ MedicinalProductManufactured _$MedicinalProductManufacturedFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    manufacturedDoseForm: json['manufacturedDoseForm'] == null
-        ? null
-        : CodeableConcept.fromJson(
-            json['manufacturedDoseForm'] as Map<String, dynamic>),
     unitOfPresentation: json['unitOfPresentation'] == null
         ? null
         : CodeableConcept.fromJson(
             json['unitOfPresentation'] as Map<String, dynamic>),
-    quantity: json['quantity'] == null
-        ? null
-        : Quantity.fromJson(json['quantity'] as Map<String, dynamic>),
     manufacturer: (json['manufacturer'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
@@ -72,7 +71,6 @@ MedicinalProductManufactured _$MedicinalProductManufacturedFromJson(
 Map<String, dynamic> _$MedicinalProductManufacturedToJson(
         MedicinalProductManufactured instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

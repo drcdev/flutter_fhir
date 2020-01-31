@@ -8,7 +8,6 @@ part of 'requestGroup.dart';
 
 RequestGroup _$RequestGroupFromJson(Map<String, dynamic> json) {
   return RequestGroup(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -119,7 +118,6 @@ RequestGroup _$RequestGroupFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$RequestGroupToJson(RequestGroup instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

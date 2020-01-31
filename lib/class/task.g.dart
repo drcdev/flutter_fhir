@@ -8,7 +8,6 @@ part of 'task.dart';
 
 Task _$TaskFromJson(Map<String, dynamic> json) {
   return Task(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -158,7 +157,6 @@ Task _$TaskFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$TaskToJson(Task instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -251,6 +249,9 @@ Map<String, dynamic> _$Task_RestrictionToJson(Task_Restriction instance) =>
 
 Task_Input _$Task_InputFromJson(Map<String, dynamic> json) {
   return Task_Input(
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -260,9 +261,6 @@ Task_Input _$Task_InputFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    type: json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     valueBase64Binary: json['valueBase64Binary'] as String,
     element_valueBase64Binary: json['element_valueBase64Binary'] == null
         ? null
@@ -533,6 +531,9 @@ Map<String, dynamic> _$Task_InputToJson(Task_Input instance) =>
 
 Task_Output _$Task_OutputFromJson(Map<String, dynamic> json) {
   return Task_Output(
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -542,9 +543,6 @@ Task_Output _$Task_OutputFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    type: json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     valueBase64Binary: json['valueBase64Binary'] as String,
     element_valueBase64Binary: json['element_valueBase64Binary'] == null
         ? null

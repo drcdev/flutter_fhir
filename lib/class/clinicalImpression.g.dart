@@ -8,7 +8,9 @@ part of 'clinicalImpression.dart';
 
 ClinicalImpression _$ClinicalImpressionFromJson(Map<String, dynamic> json) {
   return ClinicalImpression(
-    resourceType: json['resourceType'] as String,
+    json['subject'] == null
+        ? null
+        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -56,9 +58,6 @@ ClinicalImpression _$ClinicalImpressionFromJson(Map<String, dynamic> json) {
     element_description: json['element_description'] == null
         ? null
         : Element.fromJson(json['element_description'] as Map<String, dynamic>),
-    subject: json['subject'] == null
-        ? null
-        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     encounter: json['encounter'] == null
         ? null
         : Reference.fromJson(json['encounter'] as Map<String, dynamic>),
@@ -126,7 +125,6 @@ ClinicalImpression _$ClinicalImpressionFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ClinicalImpressionToJson(ClinicalImpression instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -175,6 +173,9 @@ Map<String, dynamic> _$ClinicalImpressionToJson(ClinicalImpression instance) =>
 ClinicalImpression_Investigation _$ClinicalImpression_InvestigationFromJson(
     Map<String, dynamic> json) {
   return ClinicalImpression_Investigation(
+    json['code'] == null
+        ? null
+        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -184,9 +185,6 @@ ClinicalImpression_Investigation _$ClinicalImpression_InvestigationFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    code: json['code'] == null
-        ? null
-        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     item: (json['item'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))

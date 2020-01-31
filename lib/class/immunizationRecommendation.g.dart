@@ -9,7 +9,15 @@ part of 'immunizationRecommendation.dart';
 ImmunizationRecommendation _$ImmunizationRecommendationFromJson(
     Map<String, dynamic> json) {
   return ImmunizationRecommendation(
-    resourceType: json['resourceType'] as String,
+    json['patient'] == null
+        ? null
+        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
+    (json['recommendation'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ImmunizationRecommendation_Recommendation.fromJson(
+                e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -42,9 +50,6 @@ ImmunizationRecommendation _$ImmunizationRecommendationFromJson(
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    patient: json['patient'] == null
-        ? null
-        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
     date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
     element_date: json['element_date'] == null
         ? null
@@ -52,19 +57,12 @@ ImmunizationRecommendation _$ImmunizationRecommendationFromJson(
     authority: json['authority'] == null
         ? null
         : Reference.fromJson(json['authority'] as Map<String, dynamic>),
-    recommendation: (json['recommendation'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ImmunizationRecommendation_Recommendation.fromJson(
-                e as Map<String, dynamic>))
-        ?.toList(),
   );
 }
 
 Map<String, dynamic> _$ImmunizationRecommendationToJson(
         ImmunizationRecommendation instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -89,6 +87,10 @@ ImmunizationRecommendation_Recommendation
     _$ImmunizationRecommendation_RecommendationFromJson(
         Map<String, dynamic> json) {
   return ImmunizationRecommendation_Recommendation(
+    json['forecastStatus'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['forecastStatus'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -112,10 +114,6 @@ ImmunizationRecommendation_Recommendation
             ? null
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    forecastStatus: json['forecastStatus'] == null
-        ? null
-        : CodeableConcept.fromJson(
-            json['forecastStatus'] as Map<String, dynamic>),
     forecastReason: (json['forecastReason'] as List)
         ?.map((e) => e == null
             ? null
@@ -209,6 +207,9 @@ ImmunizationRecommendation_DateCriterion
     _$ImmunizationRecommendation_DateCriterionFromJson(
         Map<String, dynamic> json) {
   return ImmunizationRecommendation_DateCriterion(
+    json['code'] == null
+        ? null
+        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -218,9 +219,6 @@ ImmunizationRecommendation_DateCriterion
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    code: json['code'] == null
-        ? null
-        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     value:
         json['value'] == null ? null : DateTime.parse(json['value'] as String),
     element_value: json['element_value'] == null

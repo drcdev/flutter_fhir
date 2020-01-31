@@ -8,7 +8,9 @@ part of 'testReport.dart';
 
 TestReport _$TestReportFromJson(Map<String, dynamic> json) {
   return TestReport(
-    resourceType: json['resourceType'] as String,
+    json['testScript'] == null
+        ? null
+        : Reference.fromJson(json['testScript'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -48,9 +50,6 @@ TestReport _$TestReportFromJson(Map<String, dynamic> json) {
     element_status: json['element_status'] == null
         ? null
         : Element.fromJson(json['element_status'] as Map<String, dynamic>),
-    testScript: json['testScript'] == null
-        ? null
-        : Reference.fromJson(json['testScript'] as Map<String, dynamic>),
     result: json['result'] as String,
     element_result: json['element_result'] == null
         ? null
@@ -91,7 +90,6 @@ TestReport _$TestReportFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$TestReportToJson(TestReport instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -167,6 +165,11 @@ Map<String, dynamic> _$TestReport_ParticipantToJson(
 
 TestReport_Setup _$TestReport_SetupFromJson(Map<String, dynamic> json) {
   return TestReport_Setup(
+    (json['action'] as List)
+        ?.map((e) => e == null
+            ? null
+            : TestReport_Action.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -175,11 +178,6 @@ TestReport_Setup _$TestReport_SetupFromJson(Map<String, dynamic> json) {
     modifierExtension: (json['modifierExtension'] as List)
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    action: (json['action'] as List)
-        ?.map((e) => e == null
-            ? null
-            : TestReport_Action.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   );
 }
@@ -307,6 +305,11 @@ Map<String, dynamic> _$TestReport_AssertToJson(TestReport_Assert instance) =>
 
 TestReport_Test _$TestReport_TestFromJson(Map<String, dynamic> json) {
   return TestReport_Test(
+    (json['action'] as List)
+        ?.map((e) => e == null
+            ? null
+            : TestReport_Action1.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -324,11 +327,6 @@ TestReport_Test _$TestReport_TestFromJson(Map<String, dynamic> json) {
     element_description: json['element_description'] == null
         ? null
         : Element.fromJson(json['element_description'] as Map<String, dynamic>),
-    action: (json['action'] as List)
-        ?.map((e) => e == null
-            ? null
-            : TestReport_Action1.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
   );
 }
 
@@ -378,6 +376,11 @@ Map<String, dynamic> _$TestReport_Action1ToJson(TestReport_Action1 instance) =>
 
 TestReport_Teardown _$TestReport_TeardownFromJson(Map<String, dynamic> json) {
   return TestReport_Teardown(
+    (json['action'] as List)
+        ?.map((e) => e == null
+            ? null
+            : TestReport_Action2.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -386,11 +389,6 @@ TestReport_Teardown _$TestReport_TeardownFromJson(Map<String, dynamic> json) {
     modifierExtension: (json['modifierExtension'] as List)
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    action: (json['action'] as List)
-        ?.map((e) => e == null
-            ? null
-            : TestReport_Action2.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   );
 }
@@ -407,6 +405,10 @@ Map<String, dynamic> _$TestReport_TeardownToJson(
 
 TestReport_Action2 _$TestReport_Action2FromJson(Map<String, dynamic> json) {
   return TestReport_Action2(
+    json['operation'] == null
+        ? null
+        : TestReport_Operation.fromJson(
+            json['operation'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -416,10 +418,6 @@ TestReport_Action2 _$TestReport_Action2FromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    operation: json['operation'] == null
-        ? null
-        : TestReport_Operation.fromJson(
-            json['operation'] as Map<String, dynamic>),
   );
 }
 

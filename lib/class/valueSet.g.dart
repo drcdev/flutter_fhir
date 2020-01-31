@@ -8,7 +8,6 @@ part of 'valueSet.dart';
 
 ValueSet _$ValueSetFromJson(Map<String, dynamic> json) {
   return ValueSet(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -115,7 +114,6 @@ ValueSet _$ValueSetFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$ValueSetToJson(ValueSet instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -161,6 +159,11 @@ Map<String, dynamic> _$ValueSetToJson(ValueSet instance) => <String, dynamic>{
 
 ValueSet_Compose _$ValueSet_ComposeFromJson(Map<String, dynamic> json) {
   return ValueSet_Compose(
+    (json['include'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ValueSet_Include.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -178,11 +181,6 @@ ValueSet_Compose _$ValueSet_ComposeFromJson(Map<String, dynamic> json) {
     element_inactive: json['element_inactive'] == null
         ? null
         : Element.fromJson(json['element_inactive'] as Map<String, dynamic>),
-    include: (json['include'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ValueSet_Include.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     exclude: (json['exclude'] as List)
         ?.map((e) => e == null
             ? null

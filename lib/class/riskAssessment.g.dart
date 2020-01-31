@@ -8,7 +8,9 @@ part of 'riskAssessment.dart';
 
 RiskAssessment _$RiskAssessmentFromJson(Map<String, dynamic> json) {
   return RiskAssessment(
-    resourceType: json['resourceType'] as String,
+    json['subject'] == null
+        ? null
+        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -57,9 +59,6 @@ RiskAssessment _$RiskAssessmentFromJson(Map<String, dynamic> json) {
     code: json['code'] == null
         ? null
         : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
-    subject: json['subject'] == null
-        ? null
-        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     encounter: json['encounter'] == null
         ? null
         : Reference.fromJson(json['encounter'] as Map<String, dynamic>),
@@ -108,7 +107,6 @@ RiskAssessment _$RiskAssessmentFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$RiskAssessmentToJson(RiskAssessment instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

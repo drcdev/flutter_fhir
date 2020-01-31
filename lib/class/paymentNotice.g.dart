@@ -8,7 +8,15 @@ part of 'paymentNotice.dart';
 
 PaymentNotice _$PaymentNoticeFromJson(Map<String, dynamic> json) {
   return PaymentNotice(
-    resourceType: json['resourceType'] as String,
+    json['payment'] == null
+        ? null
+        : Reference.fromJson(json['payment'] as Map<String, dynamic>),
+    json['recipient'] == null
+        ? null
+        : Reference.fromJson(json['recipient'] as Map<String, dynamic>),
+    json['amount'] == null
+        ? null
+        : Money.fromJson(json['amount'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -60,9 +68,6 @@ PaymentNotice _$PaymentNoticeFromJson(Map<String, dynamic> json) {
     provider: json['provider'] == null
         ? null
         : Reference.fromJson(json['provider'] as Map<String, dynamic>),
-    payment: json['payment'] == null
-        ? null
-        : Reference.fromJson(json['payment'] as Map<String, dynamic>),
     paymentDate: json['paymentDate'] as String,
     element_paymentDate: json['element_paymentDate'] == null
         ? null
@@ -70,12 +75,6 @@ PaymentNotice _$PaymentNoticeFromJson(Map<String, dynamic> json) {
     payee: json['payee'] == null
         ? null
         : Reference.fromJson(json['payee'] as Map<String, dynamic>),
-    recipient: json['recipient'] == null
-        ? null
-        : Reference.fromJson(json['recipient'] as Map<String, dynamic>),
-    amount: json['amount'] == null
-        ? null
-        : Money.fromJson(json['amount'] as Map<String, dynamic>),
     paymentStatus: json['paymentStatus'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -85,7 +84,6 @@ PaymentNotice _$PaymentNoticeFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$PaymentNoticeToJson(PaymentNotice instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

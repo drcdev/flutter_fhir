@@ -9,7 +9,6 @@ part of 'substanceSpecification.dart';
 SubstanceSpecification _$SubstanceSpecificationFromJson(
     Map<String, dynamic> json) {
   return SubstanceSpecification(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -121,7 +120,6 @@ SubstanceSpecification _$SubstanceSpecificationFromJson(
 Map<String, dynamic> _$SubstanceSpecificationToJson(
         SubstanceSpecification instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

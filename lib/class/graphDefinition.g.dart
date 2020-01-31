@@ -8,7 +8,6 @@ part of 'graphDefinition.dart';
 
 GraphDefinition _$GraphDefinitionFromJson(Map<String, dynamic> json) {
   return GraphDefinition(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -103,7 +102,6 @@ GraphDefinition _$GraphDefinitionFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$GraphDefinitionToJson(GraphDefinition instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

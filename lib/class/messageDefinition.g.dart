@@ -8,7 +8,6 @@ part of 'messageDefinition.dart';
 
 MessageDefinition _$MessageDefinitionFromJson(Map<String, dynamic> json) {
   return MessageDefinition(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -136,7 +135,6 @@ MessageDefinition _$MessageDefinitionFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$MessageDefinitionToJson(MessageDefinition instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -237,6 +235,7 @@ Map<String, dynamic> _$MessageDefinition_FocusToJson(
 MessageDefinition_AllowedResponse _$MessageDefinition_AllowedResponseFromJson(
     Map<String, dynamic> json) {
   return MessageDefinition_AllowedResponse(
+    json['message'] as String,
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -246,7 +245,6 @@ MessageDefinition_AllowedResponse _$MessageDefinition_AllowedResponseFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    message: json['message'] as String,
     situation: json['situation'] as String,
     element_situation: json['element_situation'] == null
         ? null

@@ -8,7 +8,6 @@ part of 'account.dart';
 
 Account _$AccountFromJson(Map<String, dynamic> json) {
   return Account(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -83,7 +82,6 @@ Account _$AccountFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$AccountToJson(Account instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -113,6 +111,9 @@ Map<String, dynamic> _$AccountToJson(Account instance) => <String, dynamic>{
 
 Account_Coverage _$Account_CoverageFromJson(Map<String, dynamic> json) {
   return Account_Coverage(
+    json['coverage'] == null
+        ? null
+        : Reference.fromJson(json['coverage'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -122,9 +123,6 @@ Account_Coverage _$Account_CoverageFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    coverage: json['coverage'] == null
-        ? null
-        : Reference.fromJson(json['coverage'] as Map<String, dynamic>),
     priority: json['priority'] as int,
     element_priority: json['element_priority'] == null
         ? null
@@ -145,6 +143,9 @@ Map<String, dynamic> _$Account_CoverageToJson(Account_Coverage instance) =>
 
 Account_Guarantor _$Account_GuarantorFromJson(Map<String, dynamic> json) {
   return Account_Guarantor(
+    json['party'] == null
+        ? null
+        : Reference.fromJson(json['party'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -154,9 +155,6 @@ Account_Guarantor _$Account_GuarantorFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    party: json['party'] == null
-        ? null
-        : Reference.fromJson(json['party'] as Map<String, dynamic>),
     onHold: json['onHold'] as bool,
     element_onHold: json['element_onHold'] == null
         ? null

@@ -8,7 +8,12 @@ part of 'goal.dart';
 
 Goal _$GoalFromJson(Map<String, dynamic> json) {
   return Goal(
-    resourceType: json['resourceType'] as String,
+    json['description'] == null
+        ? null
+        : CodeableConcept.fromJson(json['description'] as Map<String, dynamic>),
+    json['subject'] == null
+        ? null
+        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -58,12 +63,6 @@ Goal _$GoalFromJson(Map<String, dynamic> json) {
     priority: json['priority'] == null
         ? null
         : CodeableConcept.fromJson(json['priority'] as Map<String, dynamic>),
-    description: json['description'] == null
-        ? null
-        : CodeableConcept.fromJson(json['description'] as Map<String, dynamic>),
-    subject: json['subject'] == null
-        ? null
-        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     startDate: json['startDate'] as String,
     element_startDate: json['element_startDate'] == null
         ? null
@@ -109,7 +108,6 @@ Goal _$GoalFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$GoalToJson(Goal instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

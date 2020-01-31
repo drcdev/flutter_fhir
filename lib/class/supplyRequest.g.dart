@@ -8,7 +8,9 @@ part of 'supplyRequest.dart';
 
 SupplyRequest _$SupplyRequestFromJson(Map<String, dynamic> json) {
   return SupplyRequest(
-    resourceType: json['resourceType'] as String,
+    json['quantity'] == null
+        ? null
+        : Quantity.fromJson(json['quantity'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -59,9 +61,6 @@ SupplyRequest _$SupplyRequestFromJson(Map<String, dynamic> json) {
     itemReference: json['itemReference'] == null
         ? null
         : Reference.fromJson(json['itemReference'] as Map<String, dynamic>),
-    quantity: json['quantity'] == null
-        ? null
-        : Quantity.fromJson(json['quantity'] as Map<String, dynamic>),
     parameter: (json['parameter'] as List)
         ?.map((e) => e == null
             ? null
@@ -111,7 +110,6 @@ SupplyRequest _$SupplyRequestFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$SupplyRequestToJson(SupplyRequest instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

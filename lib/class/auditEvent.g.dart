@@ -8,7 +8,17 @@ part of 'auditEvent.dart';
 
 AuditEvent _$AuditEventFromJson(Map<String, dynamic> json) {
   return AuditEvent(
-    resourceType: json['resourceType'] as String,
+    json['type'] == null
+        ? null
+        : Coding.fromJson(json['type'] as Map<String, dynamic>),
+    (json['agent'] as List)
+        ?.map((e) => e == null
+            ? null
+            : AuditEvent_Agent.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    json['source'] == null
+        ? null
+        : AuditEvent_Source.fromJson(json['source'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -37,9 +47,6 @@ AuditEvent _$AuditEventFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    type: json['type'] == null
-        ? null
-        : Coding.fromJson(json['type'] as Map<String, dynamic>),
     subtype: (json['subtype'] as List)
         ?.map((e) =>
             e == null ? null : Coding.fromJson(e as Map<String, dynamic>))
@@ -70,14 +77,6 @@ AuditEvent _$AuditEventFromJson(Map<String, dynamic> json) {
             ? null
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    agent: (json['agent'] as List)
-        ?.map((e) => e == null
-            ? null
-            : AuditEvent_Agent.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    source: json['source'] == null
-        ? null
-        : AuditEvent_Source.fromJson(json['source'] as Map<String, dynamic>),
     entity: (json['entity'] as List)
         ?.map((e) => e == null
             ? null
@@ -88,7 +87,6 @@ AuditEvent _$AuditEventFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$AuditEventToJson(AuditEvent instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -234,6 +232,9 @@ Map<String, dynamic> _$AuditEvent_NetworkToJson(AuditEvent_Network instance) =>
 
 AuditEvent_Source _$AuditEvent_SourceFromJson(Map<String, dynamic> json) {
   return AuditEvent_Source(
+    json['observer'] == null
+        ? null
+        : Reference.fromJson(json['observer'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -247,9 +248,6 @@ AuditEvent_Source _$AuditEvent_SourceFromJson(Map<String, dynamic> json) {
     element_site: json['element_site'] == null
         ? null
         : Element.fromJson(json['element_site'] as Map<String, dynamic>),
-    observer: json['observer'] == null
-        ? null
-        : Reference.fromJson(json['observer'] as Map<String, dynamic>),
     type: (json['type'] as List)
         ?.map((e) =>
             e == null ? null : Coding.fromJson(e as Map<String, dynamic>))

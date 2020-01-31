@@ -9,7 +9,9 @@ part of 'paymentReconciliation.dart';
 PaymentReconciliation _$PaymentReconciliationFromJson(
     Map<String, dynamic> json) {
   return PaymentReconciliation(
-    resourceType: json['resourceType'] as String,
+    json['paymentAmount'] == null
+        ? null
+        : Money.fromJson(json['paymentAmount'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -76,9 +78,6 @@ PaymentReconciliation _$PaymentReconciliationFromJson(
     element_paymentDate: json['element_paymentDate'] == null
         ? null
         : Element.fromJson(json['element_paymentDate'] as Map<String, dynamic>),
-    paymentAmount: json['paymentAmount'] == null
-        ? null
-        : Money.fromJson(json['paymentAmount'] as Map<String, dynamic>),
     paymentIdentifier: json['paymentIdentifier'] == null
         ? null
         : Identifier.fromJson(
@@ -103,7 +102,6 @@ PaymentReconciliation _$PaymentReconciliationFromJson(
 Map<String, dynamic> _$PaymentReconciliationToJson(
         PaymentReconciliation instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -140,6 +138,9 @@ Map<String, dynamic> _$PaymentReconciliationToJson(
 PaymentReconciliation_Detail _$PaymentReconciliation_DetailFromJson(
     Map<String, dynamic> json) {
   return PaymentReconciliation_Detail(
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -155,9 +156,6 @@ PaymentReconciliation_Detail _$PaymentReconciliation_DetailFromJson(
     predecessor: json['predecessor'] == null
         ? null
         : Identifier.fromJson(json['predecessor'] as Map<String, dynamic>),
-    type: json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     request: json['request'] == null
         ? null
         : Reference.fromJson(json['request'] as Map<String, dynamic>),

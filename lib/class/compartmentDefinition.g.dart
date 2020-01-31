@@ -9,7 +9,6 @@ part of 'compartmentDefinition.dart';
 CompartmentDefinition _$CompartmentDefinitionFromJson(
     Map<String, dynamic> json) {
   return CompartmentDefinition(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -104,7 +103,6 @@ CompartmentDefinition _$CompartmentDefinitionFromJson(
 Map<String, dynamic> _$CompartmentDefinitionToJson(
         CompartmentDefinition instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

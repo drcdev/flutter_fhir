@@ -9,7 +9,19 @@ part of 'effectEvidenceSynthesis.dart';
 EffectEvidenceSynthesis _$EffectEvidenceSynthesisFromJson(
     Map<String, dynamic> json) {
   return EffectEvidenceSynthesis(
-    resourceType: json['resourceType'] as String,
+    json['population'] == null
+        ? null
+        : Reference.fromJson(json['population'] as Map<String, dynamic>),
+    json['exposure'] == null
+        ? null
+        : Reference.fromJson(json['exposure'] as Map<String, dynamic>),
+    json['exposureAlternative'] == null
+        ? null
+        : Reference.fromJson(
+            json['exposureAlternative'] as Map<String, dynamic>),
+    json['outcome'] == null
+        ? null
+        : Reference.fromJson(json['outcome'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -146,19 +158,6 @@ EffectEvidenceSynthesis _$EffectEvidenceSynthesisFromJson(
     studyType: json['studyType'] == null
         ? null
         : CodeableConcept.fromJson(json['studyType'] as Map<String, dynamic>),
-    population: json['population'] == null
-        ? null
-        : Reference.fromJson(json['population'] as Map<String, dynamic>),
-    exposure: json['exposure'] == null
-        ? null
-        : Reference.fromJson(json['exposure'] as Map<String, dynamic>),
-    exposureAlternative: json['exposureAlternative'] == null
-        ? null
-        : Reference.fromJson(
-            json['exposureAlternative'] as Map<String, dynamic>),
-    outcome: json['outcome'] == null
-        ? null
-        : Reference.fromJson(json['outcome'] as Map<String, dynamic>),
     sampleSize: json['sampleSize'] == null
         ? null
         : EffectEvidenceSynthesis_SampleSize.fromJson(
@@ -187,7 +186,6 @@ EffectEvidenceSynthesis _$EffectEvidenceSynthesisFromJson(
 Map<String, dynamic> _$EffectEvidenceSynthesisToJson(
         EffectEvidenceSynthesis instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -297,6 +295,10 @@ EffectEvidenceSynthesis_ResultsByExposure
     _$EffectEvidenceSynthesis_ResultsByExposureFromJson(
         Map<String, dynamic> json) {
   return EffectEvidenceSynthesis_ResultsByExposure(
+    json['riskEvidenceSynthesis'] == null
+        ? null
+        : Reference.fromJson(
+            json['riskEvidenceSynthesis'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -319,10 +321,6 @@ EffectEvidenceSynthesis_ResultsByExposure
         ? null
         : CodeableConcept.fromJson(
             json['variantState'] as Map<String, dynamic>),
-    riskEvidenceSynthesis: json['riskEvidenceSynthesis'] == null
-        ? null
-        : Reference.fromJson(
-            json['riskEvidenceSynthesis'] as Map<String, dynamic>),
   );
 }
 

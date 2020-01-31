@@ -8,7 +8,6 @@ part of 'parameters.dart';
 
 Parameters _$ParametersFromJson(Map<String, dynamic> json) {
   return Parameters(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -32,7 +31,6 @@ Parameters _$ParametersFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ParametersToJson(Parameters instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

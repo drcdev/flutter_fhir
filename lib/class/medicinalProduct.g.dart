@@ -8,7 +8,11 @@ part of 'medicinalProduct.dart';
 
 MedicinalProduct _$MedicinalProductFromJson(Map<String, dynamic> json) {
   return MedicinalProduct(
-    resourceType: json['resourceType'] as String,
+    (json['name'] as List)
+        ?.map((e) => e == null
+            ? null
+            : MedicinalProduct_Name.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -104,11 +108,6 @@ MedicinalProduct _$MedicinalProductFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    name: (json['name'] as List)
-        ?.map((e) => e == null
-            ? null
-            : MedicinalProduct_Name.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     crossReference: (json['crossReference'] as List)
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
@@ -131,7 +130,6 @@ MedicinalProduct _$MedicinalProductFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$MedicinalProductToJson(MedicinalProduct instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -226,6 +224,9 @@ Map<String, dynamic> _$MedicinalProduct_NameToJson(
 MedicinalProduct_NamePart _$MedicinalProduct_NamePartFromJson(
     Map<String, dynamic> json) {
   return MedicinalProduct_NamePart(
+    json['type'] == null
+        ? null
+        : Coding.fromJson(json['type'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -239,9 +240,6 @@ MedicinalProduct_NamePart _$MedicinalProduct_NamePartFromJson(
     element_part: json['element_part'] == null
         ? null
         : Element.fromJson(json['element_part'] as Map<String, dynamic>),
-    type: json['type'] == null
-        ? null
-        : Coding.fromJson(json['type'] as Map<String, dynamic>),
   );
 }
 
@@ -260,6 +258,12 @@ Map<String, dynamic> _$MedicinalProduct_NamePartToJson(
 MedicinalProduct_CountryLanguage _$MedicinalProduct_CountryLanguageFromJson(
     Map<String, dynamic> json) {
   return MedicinalProduct_CountryLanguage(
+    json['country'] == null
+        ? null
+        : CodeableConcept.fromJson(json['country'] as Map<String, dynamic>),
+    json['language'] == null
+        ? null
+        : CodeableConcept.fromJson(json['language'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -269,16 +273,10 @@ MedicinalProduct_CountryLanguage _$MedicinalProduct_CountryLanguageFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    country: json['country'] == null
-        ? null
-        : CodeableConcept.fromJson(json['country'] as Map<String, dynamic>),
     jurisdiction: json['jurisdiction'] == null
         ? null
         : CodeableConcept.fromJson(
             json['jurisdiction'] as Map<String, dynamic>),
-    language: json['language'] == null
-        ? null
-        : CodeableConcept.fromJson(json['language'] as Map<String, dynamic>),
   );
 }
 

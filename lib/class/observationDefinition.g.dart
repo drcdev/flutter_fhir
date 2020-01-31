@@ -9,7 +9,9 @@ part of 'observationDefinition.dart';
 ObservationDefinition _$ObservationDefinitionFromJson(
     Map<String, dynamic> json) {
   return ObservationDefinition(
-    resourceType: json['resourceType'] as String,
+    json['code'] == null
+        ? null
+        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -43,9 +45,6 @@ ObservationDefinition _$ObservationDefinitionFromJson(
             ? null
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    code: json['code'] == null
-        ? null
-        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     identifier: (json['identifier'] as List)
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
@@ -102,7 +101,6 @@ ObservationDefinition _$ObservationDefinitionFromJson(
 Map<String, dynamic> _$ObservationDefinitionToJson(
         ObservationDefinition instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

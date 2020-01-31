@@ -8,7 +8,6 @@ part of 'invoice.dart';
 
 Invoice _$InvoiceFromJson(Map<String, dynamic> json) {
   return Invoice(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -103,7 +102,6 @@ Invoice _$InvoiceFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$InvoiceToJson(Invoice instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -140,6 +138,9 @@ Map<String, dynamic> _$InvoiceToJson(Invoice instance) => <String, dynamic>{
 
 Invoice_Participant _$Invoice_ParticipantFromJson(Map<String, dynamic> json) {
   return Invoice_Participant(
+    json['actor'] == null
+        ? null
+        : Reference.fromJson(json['actor'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -152,9 +153,6 @@ Invoice_Participant _$Invoice_ParticipantFromJson(Map<String, dynamic> json) {
     role: json['role'] == null
         ? null
         : CodeableConcept.fromJson(json['role'] as Map<String, dynamic>),
-    actor: json['actor'] == null
-        ? null
-        : Reference.fromJson(json['actor'] as Map<String, dynamic>),
   );
 }
 

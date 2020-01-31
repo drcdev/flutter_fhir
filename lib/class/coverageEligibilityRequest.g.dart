@@ -9,7 +9,12 @@ part of 'coverageEligibilityRequest.dart';
 CoverageEligibilityRequest _$CoverageEligibilityRequestFromJson(
     Map<String, dynamic> json) {
   return CoverageEligibilityRequest(
-    resourceType: json['resourceType'] as String,
+    json['patient'] == null
+        ? null
+        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
+    json['insurer'] == null
+        ? null
+        : Reference.fromJson(json['insurer'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -54,9 +59,6 @@ CoverageEligibilityRequest _$CoverageEligibilityRequestFromJson(
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    patient: json['patient'] == null
-        ? null
-        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
     servicedDate: json['servicedDate'] as String,
     element_servicedDate: json['element_servicedDate'] == null
         ? null
@@ -77,9 +79,6 @@ CoverageEligibilityRequest _$CoverageEligibilityRequestFromJson(
     provider: json['provider'] == null
         ? null
         : Reference.fromJson(json['provider'] as Map<String, dynamic>),
-    insurer: json['insurer'] == null
-        ? null
-        : Reference.fromJson(json['insurer'] as Map<String, dynamic>),
     facility: json['facility'] == null
         ? null
         : Reference.fromJson(json['facility'] as Map<String, dynamic>),
@@ -107,7 +106,6 @@ CoverageEligibilityRequest _$CoverageEligibilityRequestFromJson(
 Map<String, dynamic> _$CoverageEligibilityRequestToJson(
         CoverageEligibilityRequest instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -146,6 +144,9 @@ CoverageEligibilityRequest_SupportingInfo
     _$CoverageEligibilityRequest_SupportingInfoFromJson(
         Map<String, dynamic> json) {
   return CoverageEligibilityRequest_SupportingInfo(
+    json['information'] == null
+        ? null
+        : Reference.fromJson(json['information'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -159,9 +160,6 @@ CoverageEligibilityRequest_SupportingInfo
     element_sequence: json['element_sequence'] == null
         ? null
         : Element.fromJson(json['element_sequence'] as Map<String, dynamic>),
-    information: json['information'] == null
-        ? null
-        : Reference.fromJson(json['information'] as Map<String, dynamic>),
     appliesToAll: json['appliesToAll'] as bool,
     element_appliesToAll: json['element_appliesToAll'] == null
         ? null
@@ -187,6 +185,9 @@ Map<String, dynamic> _$CoverageEligibilityRequest_SupportingInfoToJson(
 CoverageEligibilityRequest_Insurance
     _$CoverageEligibilityRequest_InsuranceFromJson(Map<String, dynamic> json) {
   return CoverageEligibilityRequest_Insurance(
+    json['coverage'] == null
+        ? null
+        : Reference.fromJson(json['coverage'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -200,9 +201,6 @@ CoverageEligibilityRequest_Insurance
     element_focal: json['element_focal'] == null
         ? null
         : Element.fromJson(json['element_focal'] as Map<String, dynamic>),
-    coverage: json['coverage'] == null
-        ? null
-        : Reference.fromJson(json['coverage'] as Map<String, dynamic>),
     businessArrangement: json['businessArrangement'] as String,
     element_businessArrangement: json['element_businessArrangement'] == null
         ? null

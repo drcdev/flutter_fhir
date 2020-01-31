@@ -8,7 +8,18 @@ part of 'visionPrescription.dart';
 
 VisionPrescription _$VisionPrescriptionFromJson(Map<String, dynamic> json) {
   return VisionPrescription(
-    resourceType: json['resourceType'] as String,
+    json['patient'] == null
+        ? null
+        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
+    json['prescriber'] == null
+        ? null
+        : Reference.fromJson(json['prescriber'] as Map<String, dynamic>),
+    (json['lensSpecification'] as List)
+        ?.map((e) => e == null
+            ? null
+            : VisionPrescription_LensSpecification.fromJson(
+                e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -51,9 +62,6 @@ VisionPrescription _$VisionPrescriptionFromJson(Map<String, dynamic> json) {
     element_created: json['element_created'] == null
         ? null
         : Element.fromJson(json['element_created'] as Map<String, dynamic>),
-    patient: json['patient'] == null
-        ? null
-        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
     encounter: json['encounter'] == null
         ? null
         : Reference.fromJson(json['encounter'] as Map<String, dynamic>),
@@ -63,21 +71,11 @@ VisionPrescription _$VisionPrescriptionFromJson(Map<String, dynamic> json) {
     element_dateWritten: json['element_dateWritten'] == null
         ? null
         : Element.fromJson(json['element_dateWritten'] as Map<String, dynamic>),
-    prescriber: json['prescriber'] == null
-        ? null
-        : Reference.fromJson(json['prescriber'] as Map<String, dynamic>),
-    lensSpecification: (json['lensSpecification'] as List)
-        ?.map((e) => e == null
-            ? null
-            : VisionPrescription_LensSpecification.fromJson(
-                e as Map<String, dynamic>))
-        ?.toList(),
   );
 }
 
 Map<String, dynamic> _$VisionPrescriptionToJson(VisionPrescription instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -106,6 +104,9 @@ Map<String, dynamic> _$VisionPrescriptionToJson(VisionPrescription instance) =>
 VisionPrescription_LensSpecification
     _$VisionPrescription_LensSpecificationFromJson(Map<String, dynamic> json) {
   return VisionPrescription_LensSpecification(
+    json['product'] == null
+        ? null
+        : CodeableConcept.fromJson(json['product'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -115,9 +116,6 @@ VisionPrescription_LensSpecification
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    product: json['product'] == null
-        ? null
-        : CodeableConcept.fromJson(json['product'] as Map<String, dynamic>),
     eye: json['eye'] as String,
     element_eye: json['element_eye'] == null
         ? null

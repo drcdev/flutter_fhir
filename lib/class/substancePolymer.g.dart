@@ -8,7 +8,6 @@ part of 'substancePolymer.dart';
 
 SubstancePolymer _$SubstancePolymerFromJson(Map<String, dynamic> json) {
   return SubstancePolymer(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -69,7 +68,6 @@ SubstancePolymer _$SubstancePolymerFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$SubstancePolymerToJson(SubstancePolymer instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

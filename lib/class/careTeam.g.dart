@@ -8,7 +8,6 @@ part of 'careTeam.dart';
 
 CareTeam _$CareTeamFromJson(Map<String, dynamic> json) {
   return CareTeam(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -93,7 +92,6 @@ CareTeam _$CareTeamFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$CareTeamToJson(CareTeam instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

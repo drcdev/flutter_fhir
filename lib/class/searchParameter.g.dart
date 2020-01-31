@@ -8,7 +8,6 @@ part of 'searchParameter.dart';
 
 SearchParameter _$SearchParameterFromJson(Map<String, dynamic> json) {
   return SearchParameter(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -152,7 +151,6 @@ SearchParameter _$SearchParameterFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$SearchParameterToJson(SearchParameter instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -220,6 +218,7 @@ Map<String, dynamic> _$SearchParameterToJson(SearchParameter instance) =>
 SearchParameter_Component _$SearchParameter_ComponentFromJson(
     Map<String, dynamic> json) {
   return SearchParameter_Component(
+    json['definition'] as String,
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -229,7 +228,6 @@ SearchParameter_Component _$SearchParameter_ComponentFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    definition: json['definition'] as String,
     expression: json['expression'] as String,
     element_expression: json['element_expression'] == null
         ? null

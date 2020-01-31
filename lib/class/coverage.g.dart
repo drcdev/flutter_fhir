@@ -8,7 +8,13 @@ part of 'coverage.dart';
 
 Coverage _$CoverageFromJson(Map<String, dynamic> json) {
   return Coverage(
-    resourceType: json['resourceType'] as String,
+    json['beneficiary'] == null
+        ? null
+        : Reference.fromJson(json['beneficiary'] as Map<String, dynamic>),
+    (json['payor'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -59,9 +65,6 @@ Coverage _$CoverageFromJson(Map<String, dynamic> json) {
         ? null
         : Element.fromJson(
             json['element_subscriberId'] as Map<String, dynamic>),
-    beneficiary: json['beneficiary'] == null
-        ? null
-        : Reference.fromJson(json['beneficiary'] as Map<String, dynamic>),
     dependent: json['dependent'] as String,
     element_dependent: json['element_dependent'] == null
         ? null
@@ -73,10 +76,6 @@ Coverage _$CoverageFromJson(Map<String, dynamic> json) {
     period: json['period'] == null
         ? null
         : Period.fromJson(json['period'] as Map<String, dynamic>),
-    payor: (json['payor'] as List)
-        ?.map((e) =>
-            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     classs: (json['classs'] as List)
         ?.map((e) => e == null
             ? null
@@ -107,7 +106,6 @@ Coverage _$CoverageFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$CoverageToJson(Coverage instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -147,6 +145,9 @@ Map<String, dynamic> _$CoverageToJson(Coverage instance) => <String, dynamic>{
 
 Coverage_Class _$Coverage_ClassFromJson(Map<String, dynamic> json) {
   return Coverage_Class(
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -156,9 +157,6 @@ Coverage_Class _$Coverage_ClassFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    type: json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     value: json['value'] as String,
     element_value: json['element_value'] == null
         ? null
@@ -227,6 +225,9 @@ Map<String, dynamic> _$Coverage_CostToBeneficiaryToJson(
 
 Coverage_Exception _$Coverage_ExceptionFromJson(Map<String, dynamic> json) {
   return Coverage_Exception(
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -236,9 +237,6 @@ Coverage_Exception _$Coverage_ExceptionFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    type: json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     period: json['period'] == null
         ? null
         : Period.fromJson(json['period'] as Map<String, dynamic>),

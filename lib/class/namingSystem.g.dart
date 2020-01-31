@@ -8,7 +8,11 @@ part of 'namingSystem.dart';
 
 NamingSystem _$NamingSystemFromJson(Map<String, dynamic> json) {
   return NamingSystem(
-    resourceType: json['resourceType'] as String,
+    (json['uniqueId'] as List)
+        ?.map((e) => e == null
+            ? null
+            : NamingSystem_UniqueId.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -86,17 +90,11 @@ NamingSystem _$NamingSystemFromJson(Map<String, dynamic> json) {
     element_usage: json['element_usage'] == null
         ? null
         : Element.fromJson(json['element_usage'] as Map<String, dynamic>),
-    uniqueId: (json['uniqueId'] as List)
-        ?.map((e) => e == null
-            ? null
-            : NamingSystem_UniqueId.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
   );
 }
 
 Map<String, dynamic> _$NamingSystemToJson(NamingSystem instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

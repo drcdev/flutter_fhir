@@ -8,7 +8,9 @@ part of 'library.dart';
 
 Library _$LibraryFromJson(Map<String, dynamic> json) {
   return Library(
-    resourceType: json['resourceType'] as String,
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -70,9 +72,6 @@ Library _$LibraryFromJson(Map<String, dynamic> json) {
         ? null
         : Element.fromJson(
             json['element_experimental'] as Map<String, dynamic>),
-    type: json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     subjectCodeableConcept: json['subjectCodeableConcept'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -179,7 +178,6 @@ Library _$LibraryFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$LibraryToJson(Library instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

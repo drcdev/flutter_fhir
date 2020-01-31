@@ -8,7 +8,9 @@ part of 'media.dart';
 
 Media _$MediaFromJson(Map<String, dynamic> json) {
   return Media(
-    resourceType: json['resourceType'] as String,
+    json['content'] == null
+        ? null
+        : Attachment.fromJson(json['content'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -116,9 +118,6 @@ Media _$MediaFromJson(Map<String, dynamic> json) {
     element_duration: json['element_duration'] == null
         ? null
         : Element.fromJson(json['element_duration'] as Map<String, dynamic>),
-    content: json['content'] == null
-        ? null
-        : Attachment.fromJson(json['content'] as Map<String, dynamic>),
     note: (json['note'] as List)
         ?.map((e) =>
             e == null ? null : Annotation.fromJson(e as Map<String, dynamic>))
@@ -127,7 +126,6 @@ Media _$MediaFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$MediaToJson(Media instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

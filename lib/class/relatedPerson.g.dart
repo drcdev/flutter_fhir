@@ -8,7 +8,9 @@ part of 'relatedPerson.dart';
 
 RelatedPerson _$RelatedPersonFromJson(Map<String, dynamic> json) {
   return RelatedPerson(
-    resourceType: json['resourceType'] as String,
+    json['patient'] == null
+        ? null
+        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -45,9 +47,6 @@ RelatedPerson _$RelatedPersonFromJson(Map<String, dynamic> json) {
     element_active: json['element_active'] == null
         ? null
         : Element.fromJson(json['element_active'] as Map<String, dynamic>),
-    patient: json['patient'] == null
-        ? null
-        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
     relationship: (json['relationship'] as List)
         ?.map((e) => e == null
             ? null
@@ -90,7 +89,6 @@ RelatedPerson _$RelatedPersonFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$RelatedPersonToJson(RelatedPerson instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -123,6 +121,9 @@ Map<String, dynamic> _$RelatedPersonToJson(RelatedPerson instance) =>
 RelatedPerson_Communication _$RelatedPerson_CommunicationFromJson(
     Map<String, dynamic> json) {
   return RelatedPerson_Communication(
+    json['language'] == null
+        ? null
+        : CodeableConcept.fromJson(json['language'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -132,9 +133,6 @@ RelatedPerson_Communication _$RelatedPerson_CommunicationFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    language: json['language'] == null
-        ? null
-        : CodeableConcept.fromJson(json['language'] as Map<String, dynamic>),
     preferred: json['preferred'] as bool,
     element_preferred: json['element_preferred'] == null
         ? null

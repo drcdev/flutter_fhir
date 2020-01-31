@@ -8,7 +8,14 @@ part of 'endpoint.dart';
 
 Endpoint _$EndpointFromJson(Map<String, dynamic> json) {
   return Endpoint(
-    resourceType: json['resourceType'] as String,
+    json['connectionType'] == null
+        ? null
+        : Coding.fromJson(json['connectionType'] as Map<String, dynamic>),
+    (json['payloadType'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -45,9 +52,6 @@ Endpoint _$EndpointFromJson(Map<String, dynamic> json) {
     element_status: json['element_status'] == null
         ? null
         : Element.fromJson(json['element_status'] as Map<String, dynamic>),
-    connectionType: json['connectionType'] == null
-        ? null
-        : Coding.fromJson(json['connectionType'] as Map<String, dynamic>),
     name: json['name'] as String,
     element_name: json['element_name'] == null
         ? null
@@ -63,11 +67,6 @@ Endpoint _$EndpointFromJson(Map<String, dynamic> json) {
     period: json['period'] == null
         ? null
         : Period.fromJson(json['period'] as Map<String, dynamic>),
-    payloadType: (json['payloadType'] as List)
-        ?.map((e) => e == null
-            ? null
-            : CodeableConcept.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     payloadMimeType:
         (json['payloadMimeType'] as List)?.map((e) => e as String)?.toList(),
     element_payloadMimeType: (json['element_payloadMimeType'] as List)
@@ -87,7 +86,6 @@ Endpoint _$EndpointFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$EndpointToJson(Endpoint instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

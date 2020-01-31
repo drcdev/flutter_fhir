@@ -8,7 +8,6 @@ part of 'exampleScenario.dart';
 
 ExampleScenario _$ExampleScenarioFromJson(Map<String, dynamic> json) {
   return ExampleScenario(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -113,7 +112,6 @@ ExampleScenario _$ExampleScenarioFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ExampleScenarioToJson(ExampleScenario instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -217,7 +215,6 @@ ExampleScenario_Instance _$ExampleScenario_InstanceFromJson(
     element_resourceId: json['element_resourceId'] == null
         ? null
         : Element.fromJson(json['element_resourceId'] as Map<String, dynamic>),
-    resourceType: json['resourceType'] as String,
     element_resourceType: json['element_resourceType'] == null
         ? null
         : Element.fromJson(
@@ -241,7 +238,7 @@ ExampleScenario_Instance _$ExampleScenario_InstanceFromJson(
             : ExampleScenario_ContainedInstance.fromJson(
                 e as Map<String, dynamic>))
         ?.toList(),
-  );
+  )..resourceType = json['resourceType'] as String;
 }
 
 Map<String, dynamic> _$ExampleScenario_InstanceToJson(

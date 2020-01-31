@@ -8,7 +8,9 @@ part of 'catalogEntry.dart';
 
 CatalogEntry _$CatalogEntryFromJson(Map<String, dynamic> json) {
   return CatalogEntry(
-    resourceType: json['resourceType'] as String,
+    json['referencedItem'] == null
+        ? null
+        : Reference.fromJson(json['referencedItem'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -48,9 +50,6 @@ CatalogEntry _$CatalogEntryFromJson(Map<String, dynamic> json) {
     element_orderable: json['element_orderable'] == null
         ? null
         : Element.fromJson(json['element_orderable'] as Map<String, dynamic>),
-    referencedItem: json['referencedItem'] == null
-        ? null
-        : Reference.fromJson(json['referencedItem'] as Map<String, dynamic>),
     additionalIdentifier: (json['additionalIdentifier'] as List)
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
@@ -99,7 +98,6 @@ CatalogEntry _$CatalogEntryFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$CatalogEntryToJson(CatalogEntry instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -137,6 +135,9 @@ Map<String, dynamic> _$CatalogEntryToJson(CatalogEntry instance) =>
 CatalogEntry_RelatedEntry _$CatalogEntry_RelatedEntryFromJson(
     Map<String, dynamic> json) {
   return CatalogEntry_RelatedEntry(
+    json['item'] == null
+        ? null
+        : Reference.fromJson(json['item'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -151,9 +152,6 @@ CatalogEntry_RelatedEntry _$CatalogEntry_RelatedEntryFromJson(
         ? null
         : Element.fromJson(
             json['element_relationtype'] as Map<String, dynamic>),
-    item: json['item'] == null
-        ? null
-        : Reference.fromJson(json['item'] as Map<String, dynamic>),
   );
 }
 

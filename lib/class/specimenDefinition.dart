@@ -17,94 +17,93 @@ part 'specimenDefinition.g.dart';
 @JsonSerializable(explicitToJson: true)
 class SpecimenDefinition {
 
-//  This is a SpecimenDefinition resource
-String resourceType;
+  //  This is a SpecimenDefinition resource
+  final String resourceType= 'SpecimenDefinition';
 
-//  The logical id of the resource, as used in the URL for the resource.
-// Once assigned, this value never changes.
-String id;
+  //  The logical id of the resource, as used in the URL for the resource.
+  // Once assigned, this value never changes.
+  String id;
 
-//  The metadata about the resource. This is content that is maintained by
-// the infrastructure. Changes to the content might not always be
-// associated with version changes to the resource.
-Meta meta;
+  //  The metadata about the resource. This is content that is maintained by
+  // the infrastructure. Changes to the content might not always be
+  // associated with version changes to the resource.
+  Meta meta;
 
-//  A reference to a set of rules that were followed when the resource was
-// constructed, and which must be understood when processing the content.
-// Often, this is a reference to an implementation guide that defines the
-// special rules along with other profiles etc.
-String implicitRules;
+  //  A reference to a set of rules that were followed when the resource was
+  // constructed, and which must be understood when processing the content.
+  // Often, this is a reference to an implementation guide that defines the
+  // special rules along with other profiles etc.
+  String implicitRules;
 
-//  Extensions for implicitRules
-Element element_implicitRules;
+  //  Extensions for implicitRules
+  Element element_implicitRules;
 
-//  The base language in which the resource is written.
-String language;
+  //  The base language in which the resource is written.
+  String language;
 
-//  Extensions for language
-Element element_language;
+  //  Extensions for language
+  Element element_language;
 
-//  A human-readable narrative that contains a summary of the resource and
-// can be used to represent the content of the resource to a human. The
-// narrative need not encode all the structured data, but is required to
-// contain sufficient detail to make it "clinically safe" for a human to
-// just read the narrative. Resource definitions may define what content
-// should be represented in the narrative to ensure clinical safety.
-Narrative text;
+  //  A human-readable narrative that contains a summary of the resource and
+  // can be used to represent the content of the resource to a human. The
+  // narrative need not encode all the structured data, but is required to
+  // contain sufficient detail to make it "clinically safe" for a human to
+  // just read the narrative. Resource definitions may define what content
+  // should be represented in the narrative to ensure clinical safety.
+  Narrative text;
 
-//  These resources do not have an independent existence apart from the
-// resource that contains them - they cannot be identified independently,
-// and nor can they have their own independent transaction scope.
-List<ResourceList> contained;
+  //  These resources do not have an independent existence apart from the
+  // resource that contains them - they cannot be identified independently,
+  // and nor can they have their own independent transaction scope.
+  List<ResourceList> contained;
 
-//  May be used to represent additional information that is not part of
-// the basic definition of the resource. To make the use of extensions
-// safe and manageable, there is a strict set of governance  applied to
-// the definition and use of extensions. Though any implementer can define
-// an extension, there is a set of requirements that SHALL be met as part
-// of the definition of the extension.
-List<Extension> extension;
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource. To make the use of extensions
+  // safe and manageable, there is a strict set of governance  applied to
+  // the definition and use of extensions. Though any implementer can define
+  // an extension, there is a set of requirements that SHALL be met as part
+  // of the definition of the extension.
+  List<Extension> extension;
 
-//  May be used to represent additional information that is not part of
-// the basic definition of the resource and that modifies the
-// understanding of the element that contains it and/or the understanding
-// of the containing element's descendants. Usually modifier elements
-// provide negation or qualification. To make the use of extensions safe
-// and manageable, there is a strict set of governance applied to the
-// definition and use of extensions. Though any implementer is allowed to
-// define an extension, there is a set of requirements that SHALL be met
-// as part of the definition of the extension. Applications processing a
-// resource are required to check for modifier extensions. Modifier
-// extensions SHALL NOT change the meaning of any elements on Resource or
-// DomainResource (including cannot change the meaning of
-// modifierExtension itself).
-List<Extension> modifierExtension;
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource and that modifies the
+  // understanding of the element that contains it and/or the understanding
+  // of the containing element's descendants. Usually modifier elements
+  // provide negation or qualification. To make the use of extensions safe
+  // and manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer is allowed to
+  // define an extension, there is a set of requirements that SHALL be met
+  // as part of the definition of the extension. Applications processing a
+  // resource are required to check for modifier extensions. Modifier
+  // extensions SHALL NOT change the meaning of any elements on Resource or
+  // DomainResource (including cannot change the meaning of
+  // modifierExtension itself).
+  List<Extension> modifierExtension;
 
-//  A business identifier associated with the kind of specimen.
-Identifier identifier;
+  //  A business identifier associated with the kind of specimen.
+  Identifier identifier;
 
-//  The kind of material to be collected.
-CodeableConcept typeCollected;
+  //  The kind of material to be collected.
+  CodeableConcept typeCollected;
 
-//  Preparation of the patient for specimen collection.
-List<CodeableConcept> patientPreparation;
+  //  Preparation of the patient for specimen collection.
+  List<CodeableConcept> patientPreparation;
 
-//  Time aspect of specimen collection (duration or offset).
-String timeAspect;
+  //  Time aspect of specimen collection (duration or offset).
+  String timeAspect;
 
-//  Extensions for timeAspect
-Element element_timeAspect;
+  //  Extensions for timeAspect
+  Element element_timeAspect;
 
-//  The action to be performed for collecting the specimen.
-List<CodeableConcept> collection;
+  //  The action to be performed for collecting the specimen.
+  List<CodeableConcept> collection;
 
-//  Specimen conditioned in a container as expected by the testing
-// laboratory.
-List<SpecimenDefinition_TypeTested> typeTested;
+  //  Specimen conditioned in a container as expected by the testing
+  // laboratory.
+  List<SpecimenDefinition_TypeTested> typeTested;
 
 SpecimenDefinition(
-  {this.resourceType,
-    this.id,
+  {this.id,
     this.meta,
     this.implicitRules,
     this.element_implicitRules,
@@ -130,68 +129,68 @@ SpecimenDefinition(
 @JsonSerializable(explicitToJson: true)
 class SpecimenDefinition_TypeTested {
 
-//  Unique id for the element within a resource (for internal references).
-// This may be any string value that does not contain spaces.
-String id;
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  String id;
 
-//  May be used to represent additional information that is not part of
-// the basic definition of the element. To make the use of extensions safe
-// and manageable, there is a strict set of governance  applied to the
-// definition and use of extensions. Though any implementer can define an
-// extension, there is a set of requirements that SHALL be met as part of
-// the definition of the extension.
-List<Extension> extension;
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  List<Extension> extension;
 
-//  May be used to represent additional information that is not part of
-// the basic definition of the element and that modifies the understanding
-// of the element in which it is contained and/or the understanding of the
-// containing element's descendants. Usually modifier elements provide
-// negation or qualification. To make the use of extensions safe and
-// manageable, there is a strict set of governance applied to the
-// definition and use of extensions. Though any implementer can define an
-// extension, there is a set of requirements that SHALL be met as part of
-// the definition of the extension. Applications processing a resource are
-// required to check for modifier extensions. Modifier extensions SHALL
-// NOT change the meaning of any elements on Resource or DomainResource
-// (including cannot change the meaning of modifierExtension itself).
-List<Extension> modifierExtension;
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  List<Extension> modifierExtension;
 
-//  Primary of secondary specimen.
-bool isDerived;
+  //  Primary of secondary specimen.
+  bool isDerived;
 
-//  Extensions for isDerived
-Element element_isDerived;
+  //  Extensions for isDerived
+  Element element_isDerived;
 
-//  The kind of specimen conditioned for testing expected by lab.
-CodeableConcept type;
+  //  The kind of specimen conditioned for testing expected by lab.
+  CodeableConcept type;
 
-//  The preference for this type of conditioned specimen.
-String preference; // <code> enum: preferred/alternate;
+  //  The preference for this type of conditioned specimen.
+  String preference; // <code> enum: preferred/alternate;
 
-//  Extensions for preference
-Element element_preference;
+  //  Extensions for preference
+  Element element_preference;
 
-//  The specimen's container.
-SpecimenDefinition_Container container;
+  //  The specimen's container.
+  SpecimenDefinition_Container container;
 
-//  Requirements for delivery and special handling of this kind of
-// conditioned specimen.
-String requirement;
+  //  Requirements for delivery and special handling of this kind of
+  // conditioned specimen.
+  String requirement;
 
-//  Extensions for requirement
-Element element_requirement;
+  //  Extensions for requirement
+  Element element_requirement;
 
-//  The usual time that a specimen of this kind is retained after the
-// ordered tests are completed, for the purpose of additional testing.
-Duration retentionTime;
+  //  The usual time that a specimen of this kind is retained after the
+  // ordered tests are completed, for the purpose of additional testing.
+  Duration retentionTime;
 
-//  Criterion for rejection of the specimen in its container by the
-// laboratory.
-List<CodeableConcept> rejectionCriterion;
+  //  Criterion for rejection of the specimen in its container by the
+  // laboratory.
+  List<CodeableConcept> rejectionCriterion;
 
-//  Set of instructions for preservation/transport of the specimen at a
-// defined temperature interval, prior the testing process.
-List<SpecimenDefinition_Handling> handling;
+  //  Set of instructions for preservation/transport of the specimen at a
+  // defined temperature interval, prior the testing process.
+  List<SpecimenDefinition_Handling> handling;
 
 SpecimenDefinition_TypeTested(
   {this.id,
@@ -217,69 +216,69 @@ SpecimenDefinition_TypeTested(
 @JsonSerializable(explicitToJson: true)
 class SpecimenDefinition_Container {
 
-//  Unique id for the element within a resource (for internal references).
-// This may be any string value that does not contain spaces.
-String id;
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  String id;
 
-//  May be used to represent additional information that is not part of
-// the basic definition of the element. To make the use of extensions safe
-// and manageable, there is a strict set of governance  applied to the
-// definition and use of extensions. Though any implementer can define an
-// extension, there is a set of requirements that SHALL be met as part of
-// the definition of the extension.
-List<Extension> extension;
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  List<Extension> extension;
 
-//  May be used to represent additional information that is not part of
-// the basic definition of the element and that modifies the understanding
-// of the element in which it is contained and/or the understanding of the
-// containing element's descendants. Usually modifier elements provide
-// negation or qualification. To make the use of extensions safe and
-// manageable, there is a strict set of governance applied to the
-// definition and use of extensions. Though any implementer can define an
-// extension, there is a set of requirements that SHALL be met as part of
-// the definition of the extension. Applications processing a resource are
-// required to check for modifier extensions. Modifier extensions SHALL
-// NOT change the meaning of any elements on Resource or DomainResource
-// (including cannot change the meaning of modifierExtension itself).
-List<Extension> modifierExtension;
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  List<Extension> modifierExtension;
 
-//  The type of material of the container.
-CodeableConcept material;
+  //  The type of material of the container.
+  CodeableConcept material;
 
-//  The type of container used to contain this kind of specimen.
-CodeableConcept type;
+  //  The type of container used to contain this kind of specimen.
+  CodeableConcept type;
 
-//  Color of container cap.
-CodeableConcept cap;
+  //  Color of container cap.
+  CodeableConcept cap;
 
-//  The textual description of the kind of container.
-String description;
+  //  The textual description of the kind of container.
+  String description;
 
-//  Extensions for description
-Element element_description;
+  //  Extensions for description
+  Element element_description;
 
-//  The capacity (volume or other measure) of this kind of container.
-Quantity capacity;
+  //  The capacity (volume or other measure) of this kind of container.
+  Quantity capacity;
 
-//  The minimum volume to be conditioned in the container.
-Quantity minimumVolumeQuantity;
+  //  The minimum volume to be conditioned in the container.
+  Quantity minimumVolumeQuantity;
 
-//  The minimum volume to be conditioned in the container.
-String minimumVolumeString; //  pattern: ^[ \r\n\t\S]+$
+  //  The minimum volume to be conditioned in the container.
+  String minimumVolumeString; //  pattern: ^[ \r\n\t\S]+$
 
-//  Extensions for minimumVolumeString
-Element element_minimumVolumeString;
+  //  Extensions for minimumVolumeString
+  Element element_minimumVolumeString;
 
-//  Substance introduced in the kind of container to preserve, maintain or
-// enhance the specimen. Examples: Formalin, Citrate, EDTA.
-List<SpecimenDefinition_Additive> additive;
+  //  Substance introduced in the kind of container to preserve, maintain or
+  // enhance the specimen. Examples: Formalin, Citrate, EDTA.
+  List<SpecimenDefinition_Additive> additive;
 
-//  Special processing that should be applied to the container for this
-// kind of specimen.
-String preparation;
+  //  Special processing that should be applied to the container for this
+  // kind of specimen.
+  String preparation;
 
-//  Extensions for preparation
-Element element_preparation;
+  //  Extensions for preparation
+  Element element_preparation;
 
 SpecimenDefinition_Container(
   {this.id,
@@ -306,39 +305,39 @@ SpecimenDefinition_Container(
 @JsonSerializable(explicitToJson: true)
 class SpecimenDefinition_Additive {
 
-//  Unique id for the element within a resource (for internal references).
-// This may be any string value that does not contain spaces.
-String id;
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  String id;
 
-//  May be used to represent additional information that is not part of
-// the basic definition of the element. To make the use of extensions safe
-// and manageable, there is a strict set of governance  applied to the
-// definition and use of extensions. Though any implementer can define an
-// extension, there is a set of requirements that SHALL be met as part of
-// the definition of the extension.
-List<Extension> extension;
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  List<Extension> extension;
 
-//  May be used to represent additional information that is not part of
-// the basic definition of the element and that modifies the understanding
-// of the element in which it is contained and/or the understanding of the
-// containing element's descendants. Usually modifier elements provide
-// negation or qualification. To make the use of extensions safe and
-// manageable, there is a strict set of governance applied to the
-// definition and use of extensions. Though any implementer can define an
-// extension, there is a set of requirements that SHALL be met as part of
-// the definition of the extension. Applications processing a resource are
-// required to check for modifier extensions. Modifier extensions SHALL
-// NOT change the meaning of any elements on Resource or DomainResource
-// (including cannot change the meaning of modifierExtension itself).
-List<Extension> modifierExtension;
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  List<Extension> modifierExtension;
 
-//  Substance introduced in the kind of container to preserve, maintain or
-// enhance the specimen. Examples: Formalin, Citrate, EDTA.
-CodeableConcept additiveCodeableConcept;
+  //  Substance introduced in the kind of container to preserve, maintain or
+  // enhance the specimen. Examples: Formalin, Citrate, EDTA.
+  CodeableConcept additiveCodeableConcept;
 
-//  Substance introduced in the kind of container to preserve, maintain or
-// enhance the specimen. Examples: Formalin, Citrate, EDTA.
-Reference additiveReference;
+  //  Substance introduced in the kind of container to preserve, maintain or
+  // enhance the specimen. Examples: Formalin, Citrate, EDTA.
+  Reference additiveReference;
 
 SpecimenDefinition_Additive(
   {this.id,
@@ -355,50 +354,50 @@ SpecimenDefinition_Additive(
 @JsonSerializable(explicitToJson: true)
 class SpecimenDefinition_Handling {
 
-//  Unique id for the element within a resource (for internal references).
-// This may be any string value that does not contain spaces.
-String id;
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  String id;
 
-//  May be used to represent additional information that is not part of
-// the basic definition of the element. To make the use of extensions safe
-// and manageable, there is a strict set of governance  applied to the
-// definition and use of extensions. Though any implementer can define an
-// extension, there is a set of requirements that SHALL be met as part of
-// the definition of the extension.
-List<Extension> extension;
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  List<Extension> extension;
 
-//  May be used to represent additional information that is not part of
-// the basic definition of the element and that modifies the understanding
-// of the element in which it is contained and/or the understanding of the
-// containing element's descendants. Usually modifier elements provide
-// negation or qualification. To make the use of extensions safe and
-// manageable, there is a strict set of governance applied to the
-// definition and use of extensions. Though any implementer can define an
-// extension, there is a set of requirements that SHALL be met as part of
-// the definition of the extension. Applications processing a resource are
-// required to check for modifier extensions. Modifier extensions SHALL
-// NOT change the meaning of any elements on Resource or DomainResource
-// (including cannot change the meaning of modifierExtension itself).
-List<Extension> modifierExtension;
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  List<Extension> modifierExtension;
 
-//  It qualifies the interval of temperature, which characterizes an
-// occurrence of handling. Conditions that are not related to temperature
-// may be handled in the instruction element.
-CodeableConcept temperatureQualifier;
+  //  It qualifies the interval of temperature, which characterizes an
+  // occurrence of handling. Conditions that are not related to temperature
+  // may be handled in the instruction element.
+  CodeableConcept temperatureQualifier;
 
-//  The temperature interval for this set of handling instructions.
-Range temperatureRange;
+  //  The temperature interval for this set of handling instructions.
+  Range temperatureRange;
 
-//  The maximum time interval of preservation of the specimen with these
-// conditions.
-Duration maxDuration;
+  //  The maximum time interval of preservation of the specimen with these
+  // conditions.
+  Duration maxDuration;
 
-//  Additional textual instructions for the preservation or transport of
-// the specimen. For instance, 'Protect from light exposure'.
-String instruction;
+  //  Additional textual instructions for the preservation or transport of
+  // the specimen. For instance, 'Protect from light exposure'.
+  String instruction;
 
-//  Extensions for instruction
-Element element_instruction;
+  //  Extensions for instruction
+  Element element_instruction;
 
 SpecimenDefinition_Handling(
   {this.id,

@@ -8,7 +8,10 @@ part of 'measureReport.dart';
 
 MeasureReport _$MeasureReportFromJson(Map<String, dynamic> json) {
   return MeasureReport(
-    resourceType: json['resourceType'] as String,
+    json['measure'] as String,
+    json['period'] == null
+        ? null
+        : Period.fromJson(json['period'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -49,7 +52,6 @@ MeasureReport _$MeasureReportFromJson(Map<String, dynamic> json) {
     element_type: json['element_type'] == null
         ? null
         : Element.fromJson(json['element_type'] as Map<String, dynamic>),
-    measure: json['measure'] as String,
     subject: json['subject'] == null
         ? null
         : Reference.fromJson(json['subject'] as Map<String, dynamic>),
@@ -60,9 +62,6 @@ MeasureReport _$MeasureReportFromJson(Map<String, dynamic> json) {
     reporter: json['reporter'] == null
         ? null
         : Reference.fromJson(json['reporter'] as Map<String, dynamic>),
-    period: json['period'] == null
-        ? null
-        : Period.fromJson(json['period'] as Map<String, dynamic>),
     improvementNotation: json['improvementNotation'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -81,7 +80,6 @@ MeasureReport _$MeasureReportFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$MeasureReportToJson(MeasureReport instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -274,6 +272,12 @@ Map<String, dynamic> _$MeasureReport_StratumToJson(
 MeasureReport_Component _$MeasureReport_ComponentFromJson(
     Map<String, dynamic> json) {
   return MeasureReport_Component(
+    json['code'] == null
+        ? null
+        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
+    json['value'] == null
+        ? null
+        : CodeableConcept.fromJson(json['value'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -283,12 +287,6 @@ MeasureReport_Component _$MeasureReport_ComponentFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    code: json['code'] == null
-        ? null
-        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
-    value: json['value'] == null
-        ? null
-        : CodeableConcept.fromJson(json['value'] as Map<String, dynamic>),
   );
 }
 

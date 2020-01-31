@@ -8,7 +8,9 @@ part of 'encounter.dart';
 
 Encounter _$EncounterFromJson(Map<String, dynamic> json) {
   return Encounter(
-    resourceType: json['resourceType'] as String,
+    json['classs'] == null
+        ? null
+        : Coding.fromJson(json['classs'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -50,9 +52,6 @@ Encounter _$EncounterFromJson(Map<String, dynamic> json) {
             ? null
             : Encounter_StatusHistory.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    classs: json['classs'] == null
-        ? null
-        : Coding.fromJson(json['classs'] as Map<String, dynamic>),
     classHistory: (json['classHistory'] as List)
         ?.map((e) => e == null
             ? null
@@ -130,7 +129,6 @@ Encounter _$EncounterFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$EncounterToJson(Encounter instance) => <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -174,6 +172,9 @@ Map<String, dynamic> _$EncounterToJson(Encounter instance) => <String, dynamic>{
 Encounter_StatusHistory _$Encounter_StatusHistoryFromJson(
     Map<String, dynamic> json) {
   return Encounter_StatusHistory(
+    json['period'] == null
+        ? null
+        : Period.fromJson(json['period'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -187,9 +188,6 @@ Encounter_StatusHistory _$Encounter_StatusHistoryFromJson(
     element_status: json['element_status'] == null
         ? null
         : Element.fromJson(json['element_status'] as Map<String, dynamic>),
-    period: json['period'] == null
-        ? null
-        : Period.fromJson(json['period'] as Map<String, dynamic>),
   );
 }
 
@@ -208,6 +206,12 @@ Map<String, dynamic> _$Encounter_StatusHistoryToJson(
 Encounter_ClassHistory _$Encounter_ClassHistoryFromJson(
     Map<String, dynamic> json) {
   return Encounter_ClassHistory(
+    json['classs'] == null
+        ? null
+        : Coding.fromJson(json['classs'] as Map<String, dynamic>),
+    json['period'] == null
+        ? null
+        : Period.fromJson(json['period'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -217,12 +221,6 @@ Encounter_ClassHistory _$Encounter_ClassHistoryFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    classs: json['classs'] == null
-        ? null
-        : Coding.fromJson(json['classs'] as Map<String, dynamic>),
-    period: json['period'] == null
-        ? null
-        : Period.fromJson(json['period'] as Map<String, dynamic>),
   );
 }
 
@@ -277,6 +275,9 @@ Map<String, dynamic> _$Encounter_ParticipantToJson(
 
 Encounter_Diagnosis _$Encounter_DiagnosisFromJson(Map<String, dynamic> json) {
   return Encounter_Diagnosis(
+    json['condition'] == null
+        ? null
+        : Reference.fromJson(json['condition'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -286,9 +287,6 @@ Encounter_Diagnosis _$Encounter_DiagnosisFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    condition: json['condition'] == null
-        ? null
-        : Reference.fromJson(json['condition'] as Map<String, dynamic>),
     use: json['use'] == null
         ? null
         : CodeableConcept.fromJson(json['use'] as Map<String, dynamic>),
@@ -385,6 +383,9 @@ Map<String, dynamic> _$Encounter_HospitalizationToJson(
 
 Encounter_Location _$Encounter_LocationFromJson(Map<String, dynamic> json) {
   return Encounter_Location(
+    json['location'] == null
+        ? null
+        : Reference.fromJson(json['location'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -394,9 +395,6 @@ Encounter_Location _$Encounter_LocationFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    location: json['location'] == null
-        ? null
-        : Reference.fromJson(json['location'] as Map<String, dynamic>),
     status: json['status'] as String,
     element_status: json['element_status'] == null
         ? null

@@ -8,7 +8,6 @@ part of 'planDefinition.dart';
 
 PlanDefinition _$PlanDefinitionFromJson(Map<String, dynamic> json) {
   return PlanDefinition(
-    resourceType: json['resourceType'] as String,
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -177,7 +176,6 @@ PlanDefinition _$PlanDefinitionFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$PlanDefinitionToJson(PlanDefinition instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
@@ -241,6 +239,9 @@ Map<String, dynamic> _$PlanDefinitionToJson(PlanDefinition instance) =>
 
 PlanDefinition_Goal _$PlanDefinition_GoalFromJson(Map<String, dynamic> json) {
   return PlanDefinition_Goal(
+    json['description'] == null
+        ? null
+        : CodeableConcept.fromJson(json['description'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -253,9 +254,6 @@ PlanDefinition_Goal _$PlanDefinition_GoalFromJson(Map<String, dynamic> json) {
     category: json['category'] == null
         ? null
         : CodeableConcept.fromJson(json['category'] as Map<String, dynamic>),
-    description: json['description'] == null
-        ? null
-        : CodeableConcept.fromJson(json['description'] as Map<String, dynamic>),
     priority: json['priority'] == null
         ? null
         : CodeableConcept.fromJson(json['priority'] as Map<String, dynamic>),

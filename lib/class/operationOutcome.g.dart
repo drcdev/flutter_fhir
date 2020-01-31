@@ -8,7 +8,11 @@ part of 'operationOutcome.dart';
 
 OperationOutcome _$OperationOutcomeFromJson(Map<String, dynamic> json) {
   return OperationOutcome(
-    resourceType: json['resourceType'] as String,
+    (json['issue'] as List)
+        ?.map((e) => e == null
+            ? null
+            : OperationOutcome_Issue.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -37,17 +41,11 @@ OperationOutcome _$OperationOutcomeFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    issue: (json['issue'] as List)
-        ?.map((e) => e == null
-            ? null
-            : OperationOutcome_Issue.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
   );
 }
 
 Map<String, dynamic> _$OperationOutcomeToJson(OperationOutcome instance) =>
     <String, dynamic>{
-      'resourceType': instance.resourceType,
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,

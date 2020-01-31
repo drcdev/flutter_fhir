@@ -8,6 +8,12 @@ part of 'productShelfLife.dart';
 
 ProductShelfLife _$ProductShelfLifeFromJson(Map<String, dynamic> json) {
   return ProductShelfLife(
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
+    json['period'] == null
+        ? null
+        : Quantity.fromJson(json['period'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -20,12 +26,6 @@ ProductShelfLife _$ProductShelfLifeFromJson(Map<String, dynamic> json) {
     identifier: json['identifier'] == null
         ? null
         : Identifier.fromJson(json['identifier'] as Map<String, dynamic>),
-    type: json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
-    period: json['period'] == null
-        ? null
-        : Quantity.fromJson(json['period'] as Map<String, dynamic>),
     specialPrecautionsForStorage: (json['specialPrecautionsForStorage'] as List)
         ?.map((e) => e == null
             ? null
