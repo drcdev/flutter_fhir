@@ -196,7 +196,9 @@ ActivityDefinition _$ActivityDefinitionFromJson(Map<String, dynamic> json) {
     timingRange: json['timingRange'] == null
         ? null
         : Range.fromJson(json['timingRange'] as Map<String, dynamic>),
-    timingDuration: json['timingDuration'],
+    timingDuration: json['timingDuration'] == null
+        ? null
+        : Duration.fromJson(json['timingDuration'] as Map<String, dynamic>),
     location: json['location'] == null
         ? null
         : Reference.fromJson(json['location'] as Map<String, dynamic>),
@@ -321,7 +323,7 @@ Map<String, dynamic> _$ActivityDefinitionToJson(ActivityDefinition instance) =>
       'timingAge': instance.timingAge?.toJson(),
       'timingPeriod': instance.timingPeriod?.toJson(),
       'timingRange': instance.timingRange?.toJson(),
-      'timingDuration': instance.timingDuration,
+      'timingDuration': instance.timingDuration?.toJson(),
       'location': instance.location?.toJson(),
       'participant': instance.participant?.map((e) => e?.toJson())?.toList(),
       'productReference': instance.productReference?.toJson(),

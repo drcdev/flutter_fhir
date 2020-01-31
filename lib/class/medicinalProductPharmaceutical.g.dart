@@ -159,7 +159,9 @@ MedicinalProductPharmaceutical_RouteOfAdministration
         ? null
         : Ratio.fromJson(
             json['maxDosePerTreatmentPeriod'] as Map<String, dynamic>),
-    maxTreatmentPeriod: json['maxTreatmentPeriod'],
+    maxTreatmentPeriod: json['maxTreatmentPeriod'] == null
+        ? null
+        : Duration.fromJson(json['maxTreatmentPeriod'] as Map<String, dynamic>),
     targetSpecies: (json['targetSpecies'] as List)
         ?.map((e) => e == null
             ? null
@@ -183,7 +185,7 @@ Map<String, dynamic>
           'maxDosePerDay': instance.maxDosePerDay?.toJson(),
           'maxDosePerTreatmentPeriod':
               instance.maxDosePerTreatmentPeriod?.toJson(),
-          'maxTreatmentPeriod': instance.maxTreatmentPeriod,
+          'maxTreatmentPeriod': instance.maxTreatmentPeriod?.toJson(),
           'targetSpecies':
               instance.targetSpecies?.map((e) => e?.toJson())?.toList(),
         };

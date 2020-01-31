@@ -91,7 +91,9 @@ Encounter _$EncounterFromJson(Map<String, dynamic> json) {
     period: json['period'] == null
         ? null
         : Period.fromJson(json['period'] as Map<String, dynamic>),
-    length: json['length'],
+    length: json['length'] == null
+        ? null
+        : Duration.fromJson(json['length'] as Map<String, dynamic>),
     reasonCode: (json['reasonCode'] as List)
         ?.map((e) => e == null
             ? null
@@ -157,7 +159,7 @@ Map<String, dynamic> _$EncounterToJson(Encounter instance) => <String, dynamic>{
       'participant': instance.participant?.map((e) => e?.toJson())?.toList(),
       'appointment': instance.appointment?.map((e) => e?.toJson())?.toList(),
       'period': instance.period?.toJson(),
-      'length': instance.length,
+      'length': instance.length?.toJson(),
       'reasonCode': instance.reasonCode?.map((e) => e?.toJson())?.toList(),
       'reasonReference':
           instance.reasonReference?.map((e) => e?.toJson())?.toList(),

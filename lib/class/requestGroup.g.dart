@@ -222,7 +222,9 @@ RequestGroup_Action _$RequestGroup_ActionFromJson(Map<String, dynamic> json) {
     timingPeriod: json['timingPeriod'] == null
         ? null
         : Period.fromJson(json['timingPeriod'] as Map<String, dynamic>),
-    timingDuration: json['timingDuration'],
+    timingDuration: json['timingDuration'] == null
+        ? null
+        : Duration.fromJson(json['timingDuration'] as Map<String, dynamic>),
     timingRange: json['timingRange'] == null
         ? null
         : Range.fromJson(json['timingRange'] as Map<String, dynamic>),
@@ -299,7 +301,7 @@ Map<String, dynamic> _$RequestGroup_ActionToJson(
       'element_timingDateTime': instance.element_timingDateTime?.toJson(),
       'timingAge': instance.timingAge?.toJson(),
       'timingPeriod': instance.timingPeriod?.toJson(),
-      'timingDuration': instance.timingDuration,
+      'timingDuration': instance.timingDuration?.toJson(),
       'timingRange': instance.timingRange?.toJson(),
       'timingTiming': instance.timingTiming?.toJson(),
       'participant': instance.participant?.map((e) => e?.toJson())?.toList(),
@@ -374,7 +376,9 @@ RequestGroup_RelatedAction _$RequestGroup_RelatedActionFromJson(
         ? null
         : Element.fromJson(
             json['element_relationship'] as Map<String, dynamic>),
-    offsetDuration: json['offsetDuration'],
+    offsetDuration: json['offsetDuration'] == null
+        ? null
+        : Duration.fromJson(json['offsetDuration'] as Map<String, dynamic>),
     offsetRange: json['offsetRange'] == null
         ? null
         : Range.fromJson(json['offsetRange'] as Map<String, dynamic>),
@@ -392,6 +396,6 @@ Map<String, dynamic> _$RequestGroup_RelatedActionToJson(
       'element_actionId': instance.element_actionId?.toJson(),
       'relationship': instance.relationship,
       'element_relationship': instance.element_relationship?.toJson(),
-      'offsetDuration': instance.offsetDuration,
+      'offsetDuration': instance.offsetDuration?.toJson(),
       'offsetRange': instance.offsetRange?.toJson(),
     };

@@ -56,7 +56,9 @@ Timing_Repeat _$Timing_RepeatFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    boundsDuration: json['boundsDuration'],
+    boundsDuration: json['boundsDuration'] == null
+        ? null
+        : Duration.fromJson(json['boundsDuration'] as Map<String, dynamic>),
     boundsRange: json['boundsRange'] == null
         ? null
         : Range.fromJson(json['boundsRange'] as Map<String, dynamic>),
@@ -133,7 +135,7 @@ Map<String, dynamic> _$Timing_RepeatToJson(Timing_Repeat instance) =>
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
-      'boundsDuration': instance.boundsDuration,
+      'boundsDuration': instance.boundsDuration?.toJson(),
       'boundsRange': instance.boundsRange?.toJson(),
       'boundsPeriod': instance.boundsPeriod?.toJson(),
       'count': instance.count,

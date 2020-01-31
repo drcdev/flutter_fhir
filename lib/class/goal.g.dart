@@ -189,7 +189,9 @@ Goal_Target _$Goal_TargetFromJson(Map<String, dynamic> json) {
     element_dueDate: json['element_dueDate'] == null
         ? null
         : Element.fromJson(json['element_dueDate'] as Map<String, dynamic>),
-    dueDuration: json['dueDuration'],
+    dueDuration: json['dueDuration'] == null
+        ? null
+        : Duration.fromJson(json['dueDuration'] as Map<String, dynamic>),
   );
 }
 
@@ -212,5 +214,5 @@ Map<String, dynamic> _$Goal_TargetToJson(Goal_Target instance) =>
       'detailRatio': instance.detailRatio?.toJson(),
       'dueDate': instance.dueDate,
       'element_dueDate': instance.element_dueDate?.toJson(),
-      'dueDuration': instance.dueDuration,
+      'dueDuration': instance.dueDuration?.toJson(),
     };

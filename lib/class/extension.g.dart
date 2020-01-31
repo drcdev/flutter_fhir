@@ -132,7 +132,9 @@ Extension _$ExtensionFromJson(Map<String, dynamic> json) {
     valueDistance: json['valueDistance'] == null
         ? null
         : Distance.fromJson(json['valueDistance'] as Map<String, dynamic>),
-    valueDuration: json['valueDuration'],
+    valueDuration: json['valueDuration'] == null
+        ? null
+        : Duration.fromJson(json['valueDuration'] as Map<String, dynamic>),
     valueHumanName: json['valueHumanName'] == null
         ? null
         : HumanName.fromJson(json['valueHumanName'] as Map<String, dynamic>),
@@ -259,7 +261,7 @@ Map<String, dynamic> _$ExtensionToJson(Extension instance) => <String, dynamic>{
       'valueContactPoint': instance.valueContactPoint?.toJson(),
       'valueCount': instance.valueCount?.toJson(),
       'valueDistance': instance.valueDistance?.toJson(),
-      'valueDuration': instance.valueDuration,
+      'valueDuration': instance.valueDuration?.toJson(),
       'valueHumanName': instance.valueHumanName?.toJson(),
       'valueIdentifier': instance.valueIdentifier?.toJson(),
       'valueMoney': instance.valueMoney?.toJson(),

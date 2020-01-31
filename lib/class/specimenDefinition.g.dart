@@ -119,7 +119,9 @@ SpecimenDefinition_TypeTested _$SpecimenDefinition_TypeTestedFromJson(
     element_requirement: json['element_requirement'] == null
         ? null
         : Element.fromJson(json['element_requirement'] as Map<String, dynamic>),
-    retentionTime: json['retentionTime'],
+    retentionTime: json['retentionTime'] == null
+        ? null
+        : Duration.fromJson(json['retentionTime'] as Map<String, dynamic>),
     rejectionCriterion: (json['rejectionCriterion'] as List)
         ?.map((e) => e == null
             ? null
@@ -148,7 +150,7 @@ Map<String, dynamic> _$SpecimenDefinition_TypeTestedToJson(
       'container': instance.container?.toJson(),
       'requirement': instance.requirement,
       'element_requirement': instance.element_requirement?.toJson(),
-      'retentionTime': instance.retentionTime,
+      'retentionTime': instance.retentionTime?.toJson(),
       'rejectionCriterion':
           instance.rejectionCriterion?.map((e) => e?.toJson())?.toList(),
       'handling': instance.handling?.map((e) => e?.toJson())?.toList(),
@@ -277,7 +279,9 @@ SpecimenDefinition_Handling _$SpecimenDefinition_HandlingFromJson(
     temperatureRange: json['temperatureRange'] == null
         ? null
         : Range.fromJson(json['temperatureRange'] as Map<String, dynamic>),
-    maxDuration: json['maxDuration'],
+    maxDuration: json['maxDuration'] == null
+        ? null
+        : Duration.fromJson(json['maxDuration'] as Map<String, dynamic>),
     instruction: json['instruction'] as String,
     element_instruction: json['element_instruction'] == null
         ? null
@@ -294,7 +298,7 @@ Map<String, dynamic> _$SpecimenDefinition_HandlingToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'temperatureQualifier': instance.temperatureQualifier?.toJson(),
       'temperatureRange': instance.temperatureRange?.toJson(),
-      'maxDuration': instance.maxDuration,
+      'maxDuration': instance.maxDuration?.toJson(),
       'instruction': instance.instruction,
       'element_instruction': instance.element_instruction?.toJson(),
     };

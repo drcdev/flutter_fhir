@@ -259,7 +259,9 @@ MedicationRequest_DispenseRequest _$MedicationRequest_DispenseRequestFromJson(
         ? null
         : MedicationRequest_InitialFill.fromJson(
             json['initialFill'] as Map<String, dynamic>),
-    dispenseInterval: json['dispenseInterval'],
+    dispenseInterval: json['dispenseInterval'] == null
+        ? null
+        : Duration.fromJson(json['dispenseInterval'] as Map<String, dynamic>),
     validityPeriod: json['validityPeriod'] == null
         ? null
         : Period.fromJson(json['validityPeriod'] as Map<String, dynamic>),
@@ -272,7 +274,10 @@ MedicationRequest_DispenseRequest _$MedicationRequest_DispenseRequestFromJson(
     quantity: json['quantity'] == null
         ? null
         : Quantity.fromJson(json['quantity'] as Map<String, dynamic>),
-    expectedSupplyDuration: json['expectedSupplyDuration'],
+    expectedSupplyDuration: json['expectedSupplyDuration'] == null
+        ? null
+        : Duration.fromJson(
+            json['expectedSupplyDuration'] as Map<String, dynamic>),
     performer: json['performer'] == null
         ? null
         : Reference.fromJson(json['performer'] as Map<String, dynamic>),
@@ -287,13 +292,13 @@ Map<String, dynamic> _$MedicationRequest_DispenseRequestToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'initialFill': instance.initialFill?.toJson(),
-      'dispenseInterval': instance.dispenseInterval,
+      'dispenseInterval': instance.dispenseInterval?.toJson(),
       'validityPeriod': instance.validityPeriod?.toJson(),
       'numberOfRepeatsAllowed': instance.numberOfRepeatsAllowed,
       'element_numberOfRepeatsAllowed':
           instance.element_numberOfRepeatsAllowed?.toJson(),
       'quantity': instance.quantity?.toJson(),
-      'expectedSupplyDuration': instance.expectedSupplyDuration,
+      'expectedSupplyDuration': instance.expectedSupplyDuration?.toJson(),
       'performer': instance.performer?.toJson(),
     };
 
@@ -312,7 +317,9 @@ MedicationRequest_InitialFill _$MedicationRequest_InitialFillFromJson(
     quantity: json['quantity'] == null
         ? null
         : Quantity.fromJson(json['quantity'] as Map<String, dynamic>),
-    duration: json['duration'],
+    duration: json['duration'] == null
+        ? null
+        : Duration.fromJson(json['duration'] as Map<String, dynamic>),
   );
 }
 
@@ -324,7 +331,7 @@ Map<String, dynamic> _$MedicationRequest_InitialFillToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'quantity': instance.quantity?.toJson(),
-      'duration': instance.duration,
+      'duration': instance.duration?.toJson(),
     };
 
 MedicationRequest_Substitution _$MedicationRequest_SubstitutionFromJson(

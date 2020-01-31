@@ -126,7 +126,7 @@ Bundle_Entry _$Bundle_EntryFromJson(Map<String, dynamic> json) {
         : Element.fromJson(json['element_fullUrl'] as Map<String, dynamic>),
     resource: json['resource'] == null
         ? null
-        : ResourceList.fromJson(json['resource'] as Map<String, dynamic>),
+        : Patient.fromJson(json['resource'] as Map<String, dynamic>),
     search: json['search'] == null
         ? null
         : Bundle_Search.fromJson(json['search'] as Map<String, dynamic>),

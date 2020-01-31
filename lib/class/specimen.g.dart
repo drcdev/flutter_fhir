@@ -146,7 +146,9 @@ Specimen_Collection _$Specimen_CollectionFromJson(Map<String, dynamic> json) {
     collectedPeriod: json['collectedPeriod'] == null
         ? null
         : Period.fromJson(json['collectedPeriod'] as Map<String, dynamic>),
-    duration: json['duration'],
+    duration: json['duration'] == null
+        ? null
+        : Duration.fromJson(json['duration'] as Map<String, dynamic>),
     quantity: json['quantity'] == null
         ? null
         : Quantity.fromJson(json['quantity'] as Map<String, dynamic>),
@@ -160,7 +162,10 @@ Specimen_Collection _$Specimen_CollectionFromJson(Map<String, dynamic> json) {
         ? null
         : CodeableConcept.fromJson(
             json['fastingStatusCodeableConcept'] as Map<String, dynamic>),
-    fastingStatusDuration: json['fastingStatusDuration'],
+    fastingStatusDuration: json['fastingStatusDuration'] == null
+        ? null
+        : Duration.fromJson(
+            json['fastingStatusDuration'] as Map<String, dynamic>),
   );
 }
 
@@ -175,13 +180,13 @@ Map<String, dynamic> _$Specimen_CollectionToJson(
       'collectedDateTime': instance.collectedDateTime,
       'element_collectedDateTime': instance.element_collectedDateTime?.toJson(),
       'collectedPeriod': instance.collectedPeriod?.toJson(),
-      'duration': instance.duration,
+      'duration': instance.duration?.toJson(),
       'quantity': instance.quantity?.toJson(),
       'method': instance.method?.toJson(),
       'bodySite': instance.bodySite?.toJson(),
       'fastingStatusCodeableConcept':
           instance.fastingStatusCodeableConcept?.toJson(),
-      'fastingStatusDuration': instance.fastingStatusDuration,
+      'fastingStatusDuration': instance.fastingStatusDuration?.toJson(),
     };
 
 Specimen_Processing _$Specimen_ProcessingFromJson(Map<String, dynamic> json) {

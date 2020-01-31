@@ -747,7 +747,9 @@ MedicationKnowledge_MaxDispense _$MedicationKnowledge_MaxDispenseFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    period: json['period'],
+    period: json['period'] == null
+        ? null
+        : Duration.fromJson(json['period'] as Map<String, dynamic>),
   );
 }
 
@@ -759,7 +761,7 @@ Map<String, dynamic> _$MedicationKnowledge_MaxDispenseToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'quantity': instance.quantity?.toJson(),
-      'period': instance.period,
+      'period': instance.period?.toJson(),
     };
 
 MedicationKnowledge_Kinetics _$MedicationKnowledge_KineticsFromJson(
@@ -782,7 +784,9 @@ MedicationKnowledge_Kinetics _$MedicationKnowledge_KineticsFromJson(
         ?.map((e) =>
             e == null ? null : Quantity.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    halfLifePeriod: json['halfLifePeriod'],
+    halfLifePeriod: json['halfLifePeriod'] == null
+        ? null
+        : Duration.fromJson(json['halfLifePeriod'] as Map<String, dynamic>),
   );
 }
 
@@ -796,5 +800,5 @@ Map<String, dynamic> _$MedicationKnowledge_KineticsToJson(
       'areaUnderCurve':
           instance.areaUnderCurve?.map((e) => e?.toJson())?.toList(),
       'lethalDose50': instance.lethalDose50?.map((e) => e?.toJson())?.toList(),
-      'halfLifePeriod': instance.halfLifePeriod,
+      'halfLifePeriod': instance.halfLifePeriod?.toJson(),
     };

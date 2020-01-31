@@ -320,7 +320,9 @@ PlanDefinition_Target _$PlanDefinition_TargetFromJson(
         ? null
         : CodeableConcept.fromJson(
             json['detailCodeableConcept'] as Map<String, dynamic>),
-    due: json['due'],
+    due: json['due'] == null
+        ? null
+        : Duration.fromJson(json['due'] as Map<String, dynamic>),
   );
 }
 
@@ -335,7 +337,7 @@ Map<String, dynamic> _$PlanDefinition_TargetToJson(
       'detailQuantity': instance.detailQuantity?.toJson(),
       'detailRange': instance.detailRange?.toJson(),
       'detailCodeableConcept': instance.detailCodeableConcept?.toJson(),
-      'due': instance.due,
+      'due': instance.due?.toJson(),
     };
 
 PlanDefinition_Action _$PlanDefinition_ActionFromJson(
@@ -434,7 +436,9 @@ PlanDefinition_Action _$PlanDefinition_ActionFromJson(
     timingPeriod: json['timingPeriod'] == null
         ? null
         : Period.fromJson(json['timingPeriod'] as Map<String, dynamic>),
-    timingDuration: json['timingDuration'],
+    timingDuration: json['timingDuration'] == null
+        ? null
+        : Duration.fromJson(json['timingDuration'] as Map<String, dynamic>),
     timingRange: json['timingRange'] == null
         ? null
         : Range.fromJson(json['timingRange'] as Map<String, dynamic>),
@@ -534,7 +538,7 @@ Map<String, dynamic> _$PlanDefinition_ActionToJson(
       'element_timingDateTime': instance.element_timingDateTime?.toJson(),
       'timingAge': instance.timingAge?.toJson(),
       'timingPeriod': instance.timingPeriod?.toJson(),
-      'timingDuration': instance.timingDuration,
+      'timingDuration': instance.timingDuration?.toJson(),
       'timingRange': instance.timingRange?.toJson(),
       'timingTiming': instance.timingTiming?.toJson(),
       'participant': instance.participant?.map((e) => e?.toJson())?.toList(),
@@ -615,7 +619,9 @@ PlanDefinition_RelatedAction _$PlanDefinition_RelatedActionFromJson(
         ? null
         : Element.fromJson(
             json['element_relationship'] as Map<String, dynamic>),
-    offsetDuration: json['offsetDuration'],
+    offsetDuration: json['offsetDuration'] == null
+        ? null
+        : Duration.fromJson(json['offsetDuration'] as Map<String, dynamic>),
     offsetRange: json['offsetRange'] == null
         ? null
         : Range.fromJson(json['offsetRange'] as Map<String, dynamic>),
@@ -633,7 +639,7 @@ Map<String, dynamic> _$PlanDefinition_RelatedActionToJson(
       'element_actionId': instance.element_actionId?.toJson(),
       'relationship': instance.relationship,
       'element_relationship': instance.element_relationship?.toJson(),
-      'offsetDuration': instance.offsetDuration,
+      'offsetDuration': instance.offsetDuration?.toJson(),
       'offsetRange': instance.offsetRange?.toJson(),
     };
 

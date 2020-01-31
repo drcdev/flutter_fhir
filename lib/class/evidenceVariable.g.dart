@@ -276,12 +276,17 @@ EvidenceVariable_Characteristic _$EvidenceVariable_CharacteristicFromJson(
         ? null
         : Period.fromJson(
             json['participantEffectivePeriod'] as Map<String, dynamic>),
-    participantEffectiveDuration: json['participantEffectiveDuration'],
+    participantEffectiveDuration: json['participantEffectiveDuration'] == null
+        ? null
+        : Duration.fromJson(
+            json['participantEffectiveDuration'] as Map<String, dynamic>),
     participantEffectiveTiming: json['participantEffectiveTiming'] == null
         ? null
         : Timing.fromJson(
             json['participantEffectiveTiming'] as Map<String, dynamic>),
-    timeFromStart: json['timeFromStart'],
+    timeFromStart: json['timeFromStart'] == null
+        ? null
+        : Duration.fromJson(json['timeFromStart'] as Map<String, dynamic>),
     groupMeasure: json['groupMeasure'] as String,
     element_groupMeasure: json['element_groupMeasure'] == null
         ? null
@@ -316,10 +321,11 @@ Map<String, dynamic> _$EvidenceVariable_CharacteristicToJson(
           instance.element_participantEffectiveDateTime?.toJson(),
       'participantEffectivePeriod':
           instance.participantEffectivePeriod?.toJson(),
-      'participantEffectiveDuration': instance.participantEffectiveDuration,
+      'participantEffectiveDuration':
+          instance.participantEffectiveDuration?.toJson(),
       'participantEffectiveTiming':
           instance.participantEffectiveTiming?.toJson(),
-      'timeFromStart': instance.timeFromStart,
+      'timeFromStart': instance.timeFromStart?.toJson(),
       'groupMeasure': instance.groupMeasure,
       'element_groupMeasure': instance.element_groupMeasure?.toJson(),
     };

@@ -524,7 +524,10 @@ StructureMap_Source _$StructureMap_SourceFromJson(Map<String, dynamic> json) {
         ? null
         : Distance.fromJson(
             json['defaultValueDistance'] as Map<String, dynamic>),
-    defaultValueDuration: json['defaultValueDuration'],
+    defaultValueDuration: json['defaultValueDuration'] == null
+        ? null
+        : Duration.fromJson(
+            json['defaultValueDuration'] as Map<String, dynamic>),
     defaultValueHumanName: json['defaultValueHumanName'] == null
         ? null
         : HumanName.fromJson(
@@ -704,7 +707,7 @@ Map<String, dynamic> _$StructureMap_SourceToJson(
       'defaultValueContactPoint': instance.defaultValueContactPoint?.toJson(),
       'defaultValueCount': instance.defaultValueCount?.toJson(),
       'defaultValueDistance': instance.defaultValueDistance?.toJson(),
-      'defaultValueDuration': instance.defaultValueDuration,
+      'defaultValueDuration': instance.defaultValueDuration?.toJson(),
       'defaultValueHumanName': instance.defaultValueHumanName?.toJson(),
       'defaultValueIdentifier': instance.defaultValueIdentifier?.toJson(),
       'defaultValueMoney': instance.defaultValueMoney?.toJson(),

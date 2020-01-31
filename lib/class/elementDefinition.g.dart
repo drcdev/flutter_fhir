@@ -221,7 +221,10 @@ ElementDefinition _$ElementDefinitionFromJson(Map<String, dynamic> json) {
         ? null
         : Distance.fromJson(
             json['defaultValueDistance'] as Map<String, dynamic>),
-    defaultValueDuration: json['defaultValueDuration'],
+    defaultValueDuration: json['defaultValueDuration'] == null
+        ? null
+        : Duration.fromJson(
+            json['defaultValueDuration'] as Map<String, dynamic>),
     defaultValueHumanName: json['defaultValueHumanName'] == null
         ? null
         : HumanName.fromJson(
@@ -425,7 +428,9 @@ ElementDefinition _$ElementDefinitionFromJson(Map<String, dynamic> json) {
     fixedDistance: json['fixedDistance'] == null
         ? null
         : Distance.fromJson(json['fixedDistance'] as Map<String, dynamic>),
-    fixedDuration: json['fixedDuration'],
+    fixedDuration: json['fixedDuration'] == null
+        ? null
+        : Duration.fromJson(json['fixedDuration'] as Map<String, dynamic>),
     fixedHumanName: json['fixedHumanName'] == null
         ? null
         : HumanName.fromJson(json['fixedHumanName'] as Map<String, dynamic>),
@@ -615,7 +620,9 @@ ElementDefinition _$ElementDefinitionFromJson(Map<String, dynamic> json) {
     patternDistance: json['patternDistance'] == null
         ? null
         : Distance.fromJson(json['patternDistance'] as Map<String, dynamic>),
-    patternDuration: json['patternDuration'],
+    patternDuration: json['patternDuration'] == null
+        ? null
+        : Duration.fromJson(json['patternDuration'] as Map<String, dynamic>),
     patternHumanName: json['patternHumanName'] == null
         ? null
         : HumanName.fromJson(json['patternHumanName'] as Map<String, dynamic>),
@@ -921,7 +928,7 @@ Map<String, dynamic> _$ElementDefinitionToJson(ElementDefinition instance) =>
       'defaultValueContactPoint': instance.defaultValueContactPoint?.toJson(),
       'defaultValueCount': instance.defaultValueCount?.toJson(),
       'defaultValueDistance': instance.defaultValueDistance?.toJson(),
-      'defaultValueDuration': instance.defaultValueDuration,
+      'defaultValueDuration': instance.defaultValueDuration?.toJson(),
       'defaultValueHumanName': instance.defaultValueHumanName?.toJson(),
       'defaultValueIdentifier': instance.defaultValueIdentifier?.toJson(),
       'defaultValueMoney': instance.defaultValueMoney?.toJson(),
@@ -999,7 +1006,7 @@ Map<String, dynamic> _$ElementDefinitionToJson(ElementDefinition instance) =>
       'fixedContactPoint': instance.fixedContactPoint?.toJson(),
       'fixedCount': instance.fixedCount?.toJson(),
       'fixedDistance': instance.fixedDistance?.toJson(),
-      'fixedDuration': instance.fixedDuration,
+      'fixedDuration': instance.fixedDuration?.toJson(),
       'fixedHumanName': instance.fixedHumanName?.toJson(),
       'fixedIdentifier': instance.fixedIdentifier?.toJson(),
       'fixedMoney': instance.fixedMoney?.toJson(),
@@ -1071,7 +1078,7 @@ Map<String, dynamic> _$ElementDefinitionToJson(ElementDefinition instance) =>
       'patternContactPoint': instance.patternContactPoint?.toJson(),
       'patternCount': instance.patternCount?.toJson(),
       'patternDistance': instance.patternDistance?.toJson(),
-      'patternDuration': instance.patternDuration,
+      'patternDuration': instance.patternDuration?.toJson(),
       'patternHumanName': instance.patternHumanName?.toJson(),
       'patternIdentifier': instance.patternIdentifier?.toJson(),
       'patternMoney': instance.patternMoney?.toJson(),
@@ -1460,7 +1467,9 @@ ElementDefinition_Example _$ElementDefinition_ExampleFromJson(
     valueDistance: json['valueDistance'] == null
         ? null
         : Distance.fromJson(json['valueDistance'] as Map<String, dynamic>),
-    valueDuration: json['valueDuration'],
+    valueDuration: json['valueDuration'] == null
+        ? null
+        : Duration.fromJson(json['valueDuration'] as Map<String, dynamic>),
     valueHumanName: json['valueHumanName'] == null
         ? null
         : HumanName.fromJson(json['valueHumanName'] as Map<String, dynamic>),
@@ -1591,7 +1600,7 @@ Map<String, dynamic> _$ElementDefinition_ExampleToJson(
       'valueContactPoint': instance.valueContactPoint?.toJson(),
       'valueCount': instance.valueCount?.toJson(),
       'valueDistance': instance.valueDistance?.toJson(),
-      'valueDuration': instance.valueDuration,
+      'valueDuration': instance.valueDuration?.toJson(),
       'valueHumanName': instance.valueHumanName?.toJson(),
       'valueIdentifier': instance.valueIdentifier?.toJson(),
       'valueMoney': instance.valueMoney?.toJson(),

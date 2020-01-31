@@ -1,3 +1,4 @@
+import 'package:flutter_fhir/class/patient.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/class/resourceList.dart';
@@ -201,7 +202,7 @@ class Bundle_Entry {
 
   //  The Resource for the entry. The purpose/meaning of the resource is
   // determined by the Bundle.type.
-  ResourceList resource;
+  Patient resource;
 
   //  Information about the search process that lead to the creation of this
   // entry.

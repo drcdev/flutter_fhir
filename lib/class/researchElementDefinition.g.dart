@@ -315,11 +315,17 @@ ResearchElementDefinition_Characteristic
     studyEffectivePeriod: json['studyEffectivePeriod'] == null
         ? null
         : Period.fromJson(json['studyEffectivePeriod'] as Map<String, dynamic>),
-    studyEffectiveDuration: json['studyEffectiveDuration'],
+    studyEffectiveDuration: json['studyEffectiveDuration'] == null
+        ? null
+        : Duration.fromJson(
+            json['studyEffectiveDuration'] as Map<String, dynamic>),
     studyEffectiveTiming: json['studyEffectiveTiming'] == null
         ? null
         : Timing.fromJson(json['studyEffectiveTiming'] as Map<String, dynamic>),
-    studyEffectiveTimeFromStart: json['studyEffectiveTimeFromStart'],
+    studyEffectiveTimeFromStart: json['studyEffectiveTimeFromStart'] == null
+        ? null
+        : Duration.fromJson(
+            json['studyEffectiveTimeFromStart'] as Map<String, dynamic>),
     studyEffectiveGroupMeasure: json['studyEffectiveGroupMeasure'] as String,
     element_studyEffectiveGroupMeasure:
         json['element_studyEffectiveGroupMeasure'] == null
@@ -344,13 +350,19 @@ ResearchElementDefinition_Characteristic
         ? null
         : Period.fromJson(
             json['participantEffectivePeriod'] as Map<String, dynamic>),
-    participantEffectiveDuration: json['participantEffectiveDuration'],
+    participantEffectiveDuration: json['participantEffectiveDuration'] == null
+        ? null
+        : Duration.fromJson(
+            json['participantEffectiveDuration'] as Map<String, dynamic>),
     participantEffectiveTiming: json['participantEffectiveTiming'] == null
         ? null
         : Timing.fromJson(
             json['participantEffectiveTiming'] as Map<String, dynamic>),
     participantEffectiveTimeFromStart:
-        json['participantEffectiveTimeFromStart'],
+        json['participantEffectiveTimeFromStart'] == null
+            ? null
+            : Duration.fromJson(json['participantEffectiveTimeFromStart']
+                as Map<String, dynamic>),
     participantEffectiveGroupMeasure:
         json['participantEffectiveGroupMeasure'] as String,
     element_participantEffectiveGroupMeasure:
@@ -385,9 +397,10 @@ Map<String, dynamic> _$ResearchElementDefinition_CharacteristicToJson(
       'element_studyEffectiveDateTime':
           instance.element_studyEffectiveDateTime?.toJson(),
       'studyEffectivePeriod': instance.studyEffectivePeriod?.toJson(),
-      'studyEffectiveDuration': instance.studyEffectiveDuration,
+      'studyEffectiveDuration': instance.studyEffectiveDuration?.toJson(),
       'studyEffectiveTiming': instance.studyEffectiveTiming?.toJson(),
-      'studyEffectiveTimeFromStart': instance.studyEffectiveTimeFromStart,
+      'studyEffectiveTimeFromStart':
+          instance.studyEffectiveTimeFromStart?.toJson(),
       'studyEffectiveGroupMeasure': instance.studyEffectiveGroupMeasure,
       'element_studyEffectiveGroupMeasure':
           instance.element_studyEffectiveGroupMeasure?.toJson(),
@@ -400,11 +413,12 @@ Map<String, dynamic> _$ResearchElementDefinition_CharacteristicToJson(
           instance.element_participantEffectiveDateTime?.toJson(),
       'participantEffectivePeriod':
           instance.participantEffectivePeriod?.toJson(),
-      'participantEffectiveDuration': instance.participantEffectiveDuration,
+      'participantEffectiveDuration':
+          instance.participantEffectiveDuration?.toJson(),
       'participantEffectiveTiming':
           instance.participantEffectiveTiming?.toJson(),
       'participantEffectiveTimeFromStart':
-          instance.participantEffectiveTimeFromStart,
+          instance.participantEffectiveTimeFromStart?.toJson(),
       'participantEffectiveGroupMeasure':
           instance.participantEffectiveGroupMeasure,
       'element_participantEffectiveGroupMeasure':

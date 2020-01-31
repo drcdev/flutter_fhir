@@ -1,28 +1,19 @@
     
-{
-  "resourceType": "Bundle",
-  "type": "transaction",
-  "entry": [
 
     {
-      "fullUrl": "http://fhirtest.uhn.ca/baseDstu3/Composition/id1580475506025",
       "resource": {
         "resourceType": "Composition",
-        "id": "id1580481297992",
+        "id": "compositionID",
         "status": "final",
         "subject": {
-          "reference": "Patient/id1580475290493",
-          "display": "DR Patient"
-        },
-        "encounter": {
+          "reference": "Patient ID",
+          "display": "Name"encounter": {
           "reference": "Encounter/id1580481304682",
-          "display": "Encounter 1"
-        },
-        "date": "2020-01-31T09:00:00-05:00",
+          "display": "Encounter"date": "date",
         "author": [
           {
             "reference": "Practitioner/id1580475301709",
-            "display": "Nurse"
+            "display": "Practitioner Name"
           }
         ],
         "type": {
@@ -32,9 +23,7 @@
               "code": "34131-3"
             }
           ],
-          "text": "Biannual Doworming Campaign Home Visit"
-        },
-        "title": "Biannual Deworming Campaign",
+          "text": "Biannual Doworming Campaign Home Visit"title": "Biannual Deworming Campaign",
         "section": [
           {
             "entry": [
@@ -52,7 +41,6 @@
       }
     },
     {
-      "fullUrl": "http://fhirtest.uhn.ca/baseDstu3/Patient/id1580475290493",
       "resource": {
         "resourceType": "Patient",
         "id": "id1580475290493",
@@ -103,13 +91,9 @@
         "class": {
           "system": "http://hl7.org/fhir/v3/ActCode",
           "code": "HH",
-          "display": "home health"
-        },
-        "subject": {
+          "display": "home health"subject": {
           "reference": "Patient/id1580475290493",
-          "display": "DR Patient"
-        },
-        "participant": [
+          "display": "DR Patient"participant": [
           {
             "individual": {
               "reference": "Practitioner/id1580475301709",
@@ -141,9 +125,7 @@
       "resource": {
         "resourceType": "Organization",
         "id": "id1580476595411",
-        "name": "DR Clinic"
-      },
-      "request": {
+        "name": "DR Clinic"request": {
         "method": "PUT",
         "url": "Organization/id1580476595411"
       }
@@ -180,13 +162,9 @@
         },
         "subject": {
           "reference": "Patient/id1580475290493",
-          "display": "DR Patient"
-        },
-        "context": {
+          "display": "DR Patient"context": {
           "reference": "Encounter/id1580481304682",
-          "display": "Encounter 1"
-        },
-        "effectiveDateTime": "2020-01-31T08:59:22-05:00",
+          "display": "Encounter 1"effectiveDateTime": "2020-01-31T08:59:22-05:00",
         "performer": [
           {
             "actor": {

@@ -8,13 +8,11 @@ part of 'resourceList.dart';
 
 ResourceList _$ResourceListFromJson(Map<String, dynamic> json) {
   return ResourceList(
-    id: json['id'] as String,
-    resourceType: json['resourceType'] as String,
+    json['resource'],
   );
 }
 
 Map<String, dynamic> _$ResourceListToJson(ResourceList instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'resourceType': instance.resourceType,
+      'resource': instance.resource,
     };
