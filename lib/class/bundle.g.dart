@@ -124,9 +124,7 @@ Bundle_Entry _$Bundle_EntryFromJson(Map<String, dynamic> json) {
     element_fullUrl: json['element_fullUrl'] == null
         ? null
         : Element.fromJson(json['element_fullUrl'] as Map<String, dynamic>),
-    resource: json['resource'] == null
-        ? null
-        : Patient.fromJson(json['resource'] as Map<String, dynamic>),
+    resource: json['resource'],
     search: json['search'] == null
         ? null
         : Bundle_Search.fromJson(json['search'] as Map<String, dynamic>),
@@ -148,7 +146,7 @@ Map<String, dynamic> _$Bundle_EntryToJson(Bundle_Entry instance) =>
       'link': instance.link?.map((e) => e?.toJson())?.toList(),
       'fullUrl': instance.fullUrl,
       'element_fullUrl': instance.element_fullUrl?.toJson(),
-      'resource': instance.resource?.toJson(),
+      'resource': instance.resource,
       'search': instance.search?.toJson(),
       'request': instance.request?.toJson(),
       'response': instance.response?.toJson(),
@@ -279,9 +277,7 @@ Bundle_Response _$Bundle_ResponseFromJson(Map<String, dynamic> json) {
         ? null
         : Element.fromJson(
             json['element_lastModified'] as Map<String, dynamic>),
-    outcome: json['outcome'] == null
-        ? null
-        : ResourceList.fromJson(json['outcome'] as Map<String, dynamic>),
+    outcome: json['outcome'],
   );
 }
 
@@ -299,5 +295,5 @@ Map<String, dynamic> _$Bundle_ResponseToJson(Bundle_Response instance) =>
       'element_etag': instance.element_etag?.toJson(),
       'lastModified': instance.lastModified?.toIso8601String(),
       'element_lastModified': instance.element_lastModified?.toJson(),
-      'outcome': instance.outcome?.toJson(),
+      'outcome': instance.outcome,
     };

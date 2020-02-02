@@ -1,7 +1,5 @@
-import 'package:flutter_fhir/class/patient.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:flutter_fhir/class/extension.dart';
 import 'package:flutter_fhir/class/signature.dart';
 import 'package:flutter_fhir/class/identifier.dart';
@@ -202,7 +200,7 @@ class Bundle_Entry {
 
   //  The Resource for the entry. The purpose/meaning of the resource is
   // determined by the Bundle.type.
-  Patient resource;
+  var resource;
 
   //  Information about the search process that lead to the creation of this
   // entry.
@@ -450,7 +448,7 @@ class Bundle_Response {
 
   //  An OperationOutcome containing hints and warnings produced as part of
   // processing this entry in a batch or transaction.
-  ResourceList outcome;
+  dynamic outcome;
 
 Bundle_Response(
   {this.id,
