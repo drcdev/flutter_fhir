@@ -218,28 +218,6 @@ Patient(
     );
   }
 
-  writePatient() async {
-    // assign ID
-    if(this.id == null) { this.id = 'flutter' + randomAlphaNumeric(10).toString();}
-    // get current directory
-    final directory = await getApplicationDocumentsDirectory();
-    // write patient info to file as pt.id
-    await File('${directory.path}/' + this.id + '.txt').writeAsString(json.encode(this));
-    // get list of patients
-    final ptList = File('${directory.path}/ptList.txt');
-    //if ptList doesn't exist create it
-    if(!await ptList.exists()) {
-      ptList.writeAsString(this.id);
-    } else {
-      //otherwise, read it, add the new patient, then save the file
-      String pts = await ptList.readAsString();
-      if(!pts.contains(this.id)) {
-        pts += '\n' + this.id;
-        ptList.writeAsString(pts);
-      }
-    }
-  }
-
   factory Patient.fromJson(Map<String, dynamic> json) => _$PatientFromJson(json);
   Map<String, dynamic> toJson() => _$PatientToJson(this);
 }

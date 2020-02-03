@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:intl/intl_browser.dart';
 
 import 'package:flutter_fhir/class/patient.dart';
 import 'package:flutter_fhir/main.dart';
@@ -36,7 +34,13 @@ class _ParasiteState extends State<_Parasite> {
       body: Column(
         children: <Widget>[
           Text('Name: ' + pt.printName()),
-          Text('Birthdate: ' + DateFormat.y(pt.birthDate) + '\nBarrio: ' +
+          Text('Birthdate: ' +
+              pt.birthDate.month.toString() +
+              '-' +
+              pt.birthDate.day.toString() +
+              '-' +
+              pt.birthDate.year.toString() +
+              '\nBarrio: ' +
               pt.address[0].district.toString()),
           Center(
             child: RaisedButton(

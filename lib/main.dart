@@ -1,5 +1,11 @@
+import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter_fhir/class/address.dart';
+import 'package:flutter_fhir/class/humanName.dart';
+import 'package:flutter_fhir/class/organization.dart';
+import 'package:flutter_fhir/class/practitioner.dart';
+import 'package:flutter_fhir/readWrite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
 
@@ -24,21 +30,11 @@ class MainMenu extends StatefulWidget {
 
 class _MainMenuState extends State<MainMenu> {
 
-  //creates folders for each of the basic resources we'll use
-  Future _makeFolders() async {
-    final directory = await getApplicationDocumentsDirectory(); //get current directory
-    var folders = ['patient', 'composition', 'organization', 'location',
-      'practitioner', 'medicationAdministration'];
-    folders.forEach((folder) {
-      new Directory(directory.path + '/fhir/' + folder).create(recursive: true);
-    });
-  }
-
   //init state to call the _makeFolders function each time app is loaded
   @override
   void initState() {
     super.initState();
-    _makeFolders();
+    _loadInfo();
   }
 
   @override
@@ -81,12 +77,54 @@ class _MainMenuState extends State<MainMenu> {
 //deletes all files in application document directory ending in .txt
 deleteFiles() async{
   final directory = await getApplicationDocumentsDirectory(); //get current directory
-  directory.list(recursive: false, followLinks: true).listen((FileSystemEntity entity)
+  directory.list(recursive: true, followLinks: true).listen((FileSystemEntity entity)
   {
     print(entity.path);
     if (entity.path.contains('.txt')) {
-      File f = File(entity.path);
+      File f = File(entity.path + ''
+          );
       f.delete();
     }
   });
+}
+
+//creates folders for each of the basic resources we'll use
+Future _loadInfo() async {
+  final directory = await getApplicationDocumentsDirectory(); //get current directory
+  var folders = ['patient', 'composition', 'organization', 'location',
+    'practitioner', 'medicationAdministration'];
+  folders.forEach((folder) {
+    new Directory(directory.path + '/fhir/' + folder).create(recursive: true);
+  });
+  Organization org = new Organization(
+    id: '1000-0001',
+    name: "Children's Hospital of Philadelphia"
+  );
+  Practitioner practitioner = new Practitioner(
+    id: '2000-0001',
+    name: [
+      HumanName(given: [
+        'Jason',
+        'Grey'
+      ],
+      suffix: [
+        'MD',
+        'MPH'
+      ],
+      family: 'Faulkenberry'),
+    ],
+    address: [
+      Address(
+        use: 'work',
+        line: [
+          '734 Schuylkill Ave'
+        ],
+        city: 'Philadelphia',
+        state: 'PA',
+        postalCode: '19146',
+      )
+    ]
+  );
+  Write(practitioner);
+  Write(org);
 }

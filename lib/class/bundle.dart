@@ -12,8 +12,6 @@ part 'bundle.g.dart';
 @JsonSerializable(explicitToJson: true)
 class Bundle {
 
-  //testing
-
   //  This is a Bundle resource
   final String resourceType= 'Bundle';
 

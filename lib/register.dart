@@ -4,6 +4,7 @@ import 'package:flutter_fhir/main.dart';
 import 'package:flutter_fhir/class/patient.dart';
 import 'package:flutter_fhir/class/address.dart';
 import 'package:flutter_fhir/class/humanName.dart';
+import 'package:flutter_fhir/readWrite.dart';
 import 'package:flutter_fhir/registerFamily.dart';
 
 class Register extends StatelessWidget {
@@ -175,7 +176,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                             family: familyNameController.text)
                       ],
                       birthDate: _birthDate);
-                  pt.writePatient();
+                  Write(pt);
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => RegisterFamily(
