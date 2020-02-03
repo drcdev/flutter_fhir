@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:intl/intl_browser.dart';
 
 import 'package:flutter_fhir/class/patient.dart';
 import 'package:flutter_fhir/main.dart';
@@ -31,17 +33,25 @@ class _ParasiteState extends State<_Parasite> {
       appBar: AppBar(
         title: Text("Antiparasite Campaign"),
       ),
-      body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            print(pt.toJson().toString());
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => MainMenu()),
-            );
-          },
-          child: Text('Return to Opening Page'),
-        ),
+      body: Column(
+        children: <Widget>[
+          Text('Name: ' + pt.printName()),
+          Text('Birthdate: ' + DateFormat.y(pt.birthDate) + '\nBarrio: ' +
+              pt.address[0].district.toString()),
+          Center(
+            child: RaisedButton(
+              onPressed: () {
+                print(pt.toJson().toString());
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MainMenu()),
+                );
+              },
+              child: Text('Return to Opening Page'),
+            ),
+          ),
+        ],
+
       ),
     );
   }

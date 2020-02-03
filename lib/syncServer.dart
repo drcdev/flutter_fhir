@@ -16,7 +16,7 @@ syncServer(String action, {Patient body} ) async {
     var myBundle = bundle.Bundle.fromJson(json.decode(patients.body));
     for(var i = 0; i < myBundle.total; i++) {
       await Patient.fromJson(myBundle.entry[i].resource.toJson()).writePatient();
-      print(myBundle.entry[i].resource.toString());
+      print(myBundle.entry[i].resource.toJson().toString());
     }
     print('Patients downloaded.');
   } else if (action == 'post') {

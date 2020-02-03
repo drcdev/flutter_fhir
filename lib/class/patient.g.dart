@@ -56,7 +56,9 @@ Patient _$PatientFromJson(Map<String, dynamic> json) {
     element_gender: json['element_gender'] == null
         ? null
         : Element.fromJson(json['element_gender'] as Map<String, dynamic>),
-    birthDate: json['birthDate'] as String,
+    birthDate: json['birthDate'] == null
+        ? null
+        : DateTime.parse(json['birthDate'] as String),
     element_birthDate: json['element_birthDate'] == null
         ? null
         : Element.fromJson(json['element_birthDate'] as Map<String, dynamic>),
@@ -136,7 +138,7 @@ Map<String, dynamic> _$PatientToJson(Patient instance) => <String, dynamic>{
       'telecom': instance.telecom?.map((e) => e?.toJson())?.toList(),
       'gender': instance.gender,
       'element_gender': instance.element_gender?.toJson(),
-      'birthDate': instance.birthDate,
+      'birthDate': instance.birthDate?.toIso8601String(),
       'element_birthDate': instance.element_birthDate?.toJson(),
       'deceasedBoolean': instance.deceasedBoolean,
       'element_deceasedBoolean': instance.element_deceasedBoolean?.toJson(),

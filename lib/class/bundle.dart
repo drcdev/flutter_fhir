@@ -1,3 +1,4 @@
+import 'package:flutter_fhir/class/resourceList.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/class/extension.dart';
@@ -10,6 +11,8 @@ part 'bundle.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Bundle {
+
+  //testing
 
   //  This is a Bundle resource
   final String resourceType= 'Bundle';
@@ -200,7 +203,7 @@ class Bundle_Entry {
 
   //  The Resource for the entry. The purpose/meaning of the resource is
   // determined by the Bundle.type.
-  var resource;
+  ResourceList resource;
 
   //  Information about the search process that lead to the creation of this
   // entry.
@@ -223,7 +226,7 @@ Bundle_Entry(
     this.link,
     this.fullUrl,
     this.element_fullUrl,
-    this.resource,
+//    this.resource,
     this.search,
     this.request,
     this.response

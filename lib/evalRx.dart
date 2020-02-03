@@ -32,6 +32,9 @@ class _EvalRxState extends State<_EvalRx> {
   var searchPt = new TextEditingController();
   String search;
 
+  //check if a patient has been passed or selected
+  //if so, display only that patient
+  //add listener to allow patient search
   @override
   void initState() {
     super.initState();
@@ -53,6 +56,7 @@ class _EvalRxState extends State<_EvalRx> {
     super.dispose();
   }
 
+  //get a list of all patients on this device
   Future _getList() async {
     List<Patient> list = await readPtList();
     setState(() {
@@ -96,16 +100,18 @@ class _EvalRxState extends State<_EvalRx> {
 
           Padding( padding: const EdgeInsets.all(5.0), ),
           Expanded(
+            //read the list of patients on the device, and create a scrollable,
+            // searchable list for provider
             child: FutureBuilder(
               future: readPtList(),
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (snapshot.hasData) {
                   return ListView.builder(
                     shrinkWrap: true,
-                    itemCount: snapshot.data.length,
+                    itemCount: snapshot.data.length, //# of patients
                     itemBuilder: (context, index) {
-                      String name = snapshot.data[index].printName();
-                      String id = snapshot.data[index].id;
+                      String name = snapshot.data[index].printName(); //pt name
+                      String id = snapshot.data[index].id; //pt id
                       return search == null || search == '' ? new Card(
                         color: Colors.blueGrey,
                         child: ListTile(
@@ -114,6 +120,7 @@ class _EvalRxState extends State<_EvalRx> {
                               color: Colors.white,
                             ),
                           ),
+                          //allows selection of single patient from list
                           onLongPress: () async {
                             pt = await readPatient(id);
                             setState(() => searchPt.text = name);

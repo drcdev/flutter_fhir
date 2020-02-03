@@ -1,9 +1,11 @@
 import 'dart:io';
+
+import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_fhir/testing.dart';
 import 'package:flutter_fhir/register.dart';
 import 'package:flutter_fhir/evalRx.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:flutter_fhir/syncServer.dart';
 import 'package:flutter_fhir/settings.dart';
 import 'package:flutter_fhir/buttons.dart';
@@ -21,6 +23,24 @@ class MainMenu extends StatefulWidget {
 }
 
 class _MainMenuState extends State<MainMenu> {
+
+  //creates folders for each of the basic resources we'll use
+  Future _makeFolders() async {
+    final directory = await getApplicationDocumentsDirectory(); //get current directory
+    var folders = ['patient', 'composition', 'organization', 'location',
+      'practitioner', 'medicationAdministration'];
+    folders.forEach((folder) {
+      new Directory(directory.path + '/fhir/' + folder).create(recursive: true);
+    });
+  }
+
+  //init state to call the _makeFolders function each time app is loaded
+  @override
+  void initState() {
+    super.initState();
+    _makeFolders();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

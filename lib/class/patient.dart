@@ -116,7 +116,7 @@ class Patient {
   Element element_gender;
 
   //  The date of birth for the individual.
-  String birthDate;
+  DateTime birthDate;
 
   //  Extensions for birthDate
   Element element_birthDate;
