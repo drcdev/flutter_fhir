@@ -10,6 +10,9 @@ Write(var object) async {
   //get current working directory
   final directory = await getApplicationDocumentsDirectory();
 
+  //ToDo - figure out better id
+  object.id = object.id ?? '1001';
+
   //if the object doesn't exist in the appropriate directory, add it
   var file = File('${directory.path}/fhir/' +
       objectType[0].toLowerCase() +
@@ -17,12 +20,14 @@ Write(var object) async {
       '/' +
       object.id +
       '.txt');
+
   if (!await file.exists()) {
     file.writeAsString(json.encode(object));
   }
+  print(file);
 
   //define a file for that particular type of resource
-  file = File('${directory.path}/' +
+  file = File('${directory.path}/fhir/' +
       objectType[0].toLowerCase() +
       objectType.substring(1, objectType.length) +
       '.txt');

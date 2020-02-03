@@ -5,6 +5,7 @@ import 'package:flutter_fhir/evalRx.dart';
 import 'package:flutter_fhir/main.dart';
 import 'package:flutter_fhir/class/patient.dart';
 import 'package:flutter_fhir/class/humanName.dart';
+import 'package:flutter_fhir/readWrite.dart';
 import 'package:flutter_fhir/register.dart';
 
 class RegisterFamily extends StatelessWidget {
@@ -62,7 +63,7 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
               pt = addFamily(pt, relation1);
               pt = addFamily(pt, relation2);
               pt = addFamily(pt, relation3);
-              pt.writePatient();
+              Write(pt);
 
               Navigator.push(
                 context,
@@ -77,7 +78,7 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
               pt = addFamily(pt, relation1);
               pt = addFamily(pt, relation2);
               pt = addFamily(pt, relation3);
-              pt.writePatient();
+              Write(pt);
 
               Navigator.push(
                   context,
@@ -92,7 +93,7 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
               pt = addFamily(pt, relation1);
               pt = addFamily(pt, relation2);
               pt = addFamily(pt, relation3);
-              pt.writePatient();
+              Write(pt);
 
               Navigator.push(
                 context,

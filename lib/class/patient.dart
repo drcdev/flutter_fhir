@@ -230,10 +230,10 @@ Future<Patient> readPatient(String id) async {
 
 Future<List<Patient>> readPtList() async {
   final directory = await getApplicationDocumentsDirectory(); //get current directory
-  List<String> ptNumbers = (await File('${directory.path}/ptList.txt').readAsString()).split('\n');
+  List<String> ptNumbers = (await File('${directory.path}/fhir/patient.txt').readAsString()).split('\n');
   var ptList = new List<Patient>();
   for(var i = 0; i < ptNumbers.length; i++){
-    final pt = File('${directory.path}/' + ptNumbers[i] + '.txt');
+    final pt = File('${directory.path}/fhir/patient/' + ptNumbers[i] + '.txt');
     var newpt = Patient.fromJson(json.decode(await pt.readAsString()));
     ptList.add(newpt);
   }
