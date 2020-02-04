@@ -22,9 +22,9 @@ Write(var object) async {
   //if it does exist, check if the id is on it, if it isn't, add the id
   if (!await file.exists()) {
     switch(objectType) {
-      case 'Patient': { object.id = '1001'; } break;
-      case 'Practitioner': { object.id = '2001'; } break;
-      case 'Organization': {object.id = '3001'; } break;
+      case 'Patient': { object.id = '1D7-1'; } break;
+      case 'Practitioner': { object.id = '1E9-1'; } break;
+      case 'Organization': {object.id = '1D2-1'; } break;
       case 'Location': {object.id = '4001'; } break;
       case 'Composition': {object.id = '5001'; } break;
       case 'MedicationAdministration': {object.id = '6001'; } break;

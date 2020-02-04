@@ -91,7 +91,8 @@ deleteFiles() async{
 Future _loadInfo() async {
   final directory = await getApplicationDocumentsDirectory(); //get current directory
   var folders = ['patient', 'composition', 'organization', 'location',
-    'practitioner', 'medicationAdministration'];
+    'practitioner', 'medicationAdministration', 'encounter', 'period'];
+
   folders.forEach((folder) {
     new Directory(directory.path + '/fhir/' + folder).create(recursive: true);
   });

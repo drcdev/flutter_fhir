@@ -116,6 +116,7 @@ for i in range(0, len(singles), 2):
         single[singles[i+1]] = singles[i]
         psingle[singles[i]] = singles[i+1]
 
+z = 0
 #iterates through the different entities in fhir.schema.json
 #only looks in definitions (these are mostly resources, not primitives)
 for table in definitions:
@@ -124,6 +125,15 @@ for table in definitions:
     #ignore definitions of any of the primitives ToDo: is this appropriate?
     if('properties' in definitions[table] and str(table) != 'ResourceList'):
         sqlCode = ''.join([sqlCode, 'CREATE TABLE ', sqlStrings(lowcc(table)), '(\n\n'])
+        
+        z += 1
+        zs = str(hex(z))[2:len(str(hex(z)))]
+        if(len(zs) == 1):
+            zs = '00' + zs
+        elif(len(zs) ==2):
+            zs = '0' + zs
+        zs = zs.upper()
+        print('"' + table + '": "' + zs + '"')
         
         foreignKeys = {}
         
@@ -220,6 +230,8 @@ for table in definitions:
                 sqlCode = ''.join([sqlCode, '\t', sqlStrings(variable), 
                                    ' TEXT, -- enum: ', 
                                    '/'.join(value['enum']), '\n'])
+            else:
+                print("You probably shouldn't be here.")
                 
         sqlCode = ''.join([sqlCode, '\n'])
         #print out code for foreign keys for each table
@@ -237,6 +249,7 @@ sqlCode = sqlCode.replace(',\n\n);', '\n\n);')
 with open("sqliteFhirScript.sql", "w", encoding="utf-8") as f:
     f.write(sqlCode)
 f.close()
+print(z)
 
 #14 enum lists
 
