@@ -96,11 +96,9 @@ Future _loadInfo() async {
     new Directory(directory.path + '/fhir/' + folder).create(recursive: true);
   });
   Organization org = new Organization(
-    id: '1000-0001',
     name: "Children's Hospital of Philadelphia"
   );
   Practitioner practitioner = new Practitioner(
-    id: '2000-0001',
     name: [
       HumanName(given: [
         'Jason',

@@ -1,17 +1,14 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_fhir/class/codeableConcept.dart';
-import 'package:flutter_fhir/class/coding.dart';
+import 'package:flutter_fhir/class/medicationAdministration.dart';
+import 'package:flutter_fhir/class/period.dart';
+import 'package:geolocator/geolocator.dart';
+
 import 'package:flutter_fhir/class/composition.dart';
 import 'package:flutter_fhir/class/encounter.dart';
-import 'package:flutter_fhir/class/humanName.dart';
-import 'package:flutter_fhir/class/location.dart';
-import 'package:flutter_fhir/class/organization.dart';
-
 import 'package:flutter_fhir/class/patient.dart';
-import 'package:flutter_fhir/class/practitioner.dart';
-import 'package:flutter_fhir/class/reference.dart';
 import 'package:flutter_fhir/main.dart';
-import 'package:geolocator/geolocator.dart';
 
 class Parasite extends StatelessWidget {
   Patient pt;
@@ -37,6 +34,9 @@ class _ParasiteState extends State<_Parasite> {
   Patient pt;
   _ParasiteState({this.pt});
   Position _currentPosition;
+  Period period;
+  Encounter encounter;
+  Composition composition;
 
   @override
   Widget build(BuildContext context) {
@@ -56,58 +56,119 @@ class _ParasiteState extends State<_Parasite> {
             pt.address[0].district.toString()),
         RaisedButton(
           onPressed: () {
-            Coding classs = Coding(
-              system: 'http://hl7.org/fhir/v3/ActCode',
-              code: 'HH',
-              display: 'Home Health'
-            );
-            CodeableConcept type = CodeableConcept(
-                text: 'Biannual Deworming',
-                coding: [Coding(code: '34131-3', system: 'http://loinc.org')]);
-            List<Reference> author = [
-              Reference(
-                reference: 'Practitioner/2000-0001',
-                display: 'Dr. Grey',
-                )
-            ];
-            Organization serviceProvider = Organization(
-                id: '1000-0001',
-                name: "Children's Hospital of Philadelphia"
-            );
-            List<Encounter_Participant> participant = [
-              Encounter_Participant(
-                individual: author[0]
-              )
-            ];
-            Reference subject = Reference(
-              reference: 'Patient/' + pt.id,
-              display: pt.printName()
-            );
-            _getCurrentLocation();
-            Location_Position locPos = Location_Position(
-              longitude: _currentPosition.longitude,
-              latitude: _currentPosition.latitude
-            );
-            Location loc = Location(
-              position: locPos
-            );
-            List<Location> location = [
-              loc
-            ];
-            Composition comp = new Composition(type, author, subject: subject);
-            print(comp.toJson().toString());
+            period.start = DateTime.now();
+//            _getCurrentLocation();
+//            Location_Position locPos = Location_Position(
+//              longitude: _currentPosition.longitude,
+//              latitude: _currentPosition.latitude
+//            );
+//            Location loc = Location(
+//              position: locPos
+//            );
+//            List<Location> location = [
+//              loc
+//            ];
+            encounter = new Encounter.fromJson(json.decode(
+              '{  "resourceType": "Encounter",'
+                '"classs": {'
+                  '"system": "http://hl7.org/fhir/v3/ActCode",'
+                  '"code": "HH",'
+                  '"display": "home health"'
+                '},'
+                '"subject": {'
+                  '"reference": "Patient/' + pt.id + '",'
+                  '"display": "DR Patient"'
+                '},'
+                '"participant": ['
+                  '{'
+                    '"individual": {'
+                      '"reference": "Practitioner/2001",'
+                      '"display": "Dr. Grey"'
+                    '}'
+                  '}'
+                '],'
+                '"location": ['
+                  '{'
+                    '"location": {'
+                      '"reference": "Location/4001",'
+                      '"display": "Dominican Republic"'
+                    '}'
+                  '}'
+                '],'
+                '"serviceProvider": {'
+                  '"reference": "Organization/3001",'
+                  '"display": "CHOP"'
+                '}'
+              '}'));
+            composition = new Composition.fromJson(json.decode(
+                '{'
+                  '"resourceType": "Composition",'
+                  '"id": "5001",'
+                  '"subject": {'
+                    '"reference": "Patient/' + pt.id + '",'
+                    '"display": "DR Patient"'
+                  '},'
+                  '"encounter": {'
+                    '"reference": "Encounter/' + encounter.id + '",'
+                    '"display": "Encounter 1"'
+                  '},'
+                  '"date": "' + DateTime.now().toString() + '",'
+                  '"author": ['
+                    '{'
+                      '"reference": "Practitioner/2001",'
+                      '"display": "Dr. Grey"'
+                    '}'
+                  '],'
+                  '"title": "Biannual Deworming Campaign",'
+                '}'));
+
           },
           child: Text('Start Encounter'),
         ),
         RaisedButton(
           onPressed: () {
-//            Navigator.push();
+            MedicationAdministration medicationAdministration =
+                new MedicationAdministration.fromJson(json.decode(
+                  '{'
+                    '"resourceType": "MedicationAdministration",'
+                    '"status": "completed",'
+                    '"medicationCodeableConcept": {'
+                      '"coding": ['
+                        '{'
+                          '"system": "http://snomed.info/sct",'
+                          '"code": "387558006",'
+                          '"display": "Albendazole"'
+                        '}'
+                      ']'
+                    '},'
+                    '"subject": {'
+                      '"reference": "Patient/' + pt.id + '",'
+                      '"display": "DR Patient"'
+                    '},'
+                    '"context": {'
+                      '"reference": "Encounter/' + encounter.id + '",'
+                      '"display": "Deworming Encounter"'
+                    '},'
+                    '"effectiveDateTime": "2020-01-31T08:59:22-05:00",'
+                    '"performer": ['
+                      '{'
+                        '"actor": {'
+                          '"reference": "Practitioner/2001",'
+                          '"display": "Dr. Grey"'
+                        '}'
+                      '}'
+                    ']'
+                  '}'
+                ));
           },
           child: Text('Give Medication'),
         ),
         RaisedButton(
           onPressed: () {
-//            Navigator.push();
+            period.end = DateTime.now();
+            encounter.period = period;
+            composition.status = 'final';
+            encounter.status = 'finished';
           },
           child: Text('Complete Encounter'),
         ),
