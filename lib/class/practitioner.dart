@@ -1,3 +1,4 @@
+import 'package:flutter_fhir/readWrite.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/class/reference.dart';

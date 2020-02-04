@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_fhir/class/address.dart';
@@ -123,6 +124,12 @@ Future _loadInfo() async {
       )
     ]
   );
-  Write(practitioner);
-  Write(org);
+//  Write(practitioner);
+//  Write(org);
+  print(practitioner.toJson().toString());
+  var file = File('lib/res/prefix.json');
+
+  Map<String, dynamic> ids = json.decode(await new File('prefix.json').readAsString());
+  print(ids['Patient']);
+
 }
