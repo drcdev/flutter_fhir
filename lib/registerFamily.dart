@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_fhir/class/codeableConcept.dart';
 import 'package:flutter_fhir/evalRx.dart';
-import 'package:flutter_fhir/main.dart';
 import 'package:flutter_fhir/class/patient.dart';
 import 'package:flutter_fhir/class/humanName.dart';
-import 'package:flutter_fhir/readWrite.dart';
+import 'package:flutter_fhir/mainMenu.dart';
+import 'package:flutter_fhir/objects.dart';
 import 'package:flutter_fhir/register.dart';
 
 class RegisterFamily extends StatelessWidget {

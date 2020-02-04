@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fhir/class/patient.dart';
-import 'package:flutter_fhir/main.dart';
 import 'package:flutter_fhir/buttons.dart';
+import 'package:flutter_fhir/mainMenu.dart';
 import 'package:flutter_fhir/parasite.dart';
 import 'package:flutter_fhir/vaccine.dart';
 import 'package:flutter/cupertino.dart';

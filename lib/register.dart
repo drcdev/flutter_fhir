@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_fhir/main.dart';
 import 'package:flutter_fhir/class/patient.dart';
 import 'package:flutter_fhir/class/address.dart';
 import 'package:flutter_fhir/class/humanName.dart';
-import 'package:flutter_fhir/readWrite.dart';
+import 'package:flutter_fhir/mainMenu.dart';
+import 'package:flutter_fhir/objects.dart';
 import 'package:flutter_fhir/registerFamily.dart';
 
 class Register extends StatelessWidget {
@@ -168,7 +168,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               RaisedButton(
-                onPressed: () {
+                onPressed: () async {
                   Patient pt = Patient(
                       address: [Address(district: barrio)],
                       name: [
@@ -176,6 +176,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                             family: familyNameController.text)
                       ],
                      birthDate: _birthDate);
+                  pt.id = await ObjectId(pt.runtimeType.toString());
                   Write(pt);
                   Navigator.push(
                     context,
