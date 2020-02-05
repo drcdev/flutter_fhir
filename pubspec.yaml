@@ -22,6 +22,9 @@ dependencies:
   geolocator: ^5.2.1
   google_fonts: ^0.3.7
 
+  flutter_localizations:
+    sdk: flutter
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -33,3 +36,5 @@ flutter:
     - images/
     - assets/prefix.json
     - assets/
+    - lang/es.json
+    - lang/en.json

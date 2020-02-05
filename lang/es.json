@@ -1,0 +1,5 @@
+{
+	"username": "Nombre de usuario",
+	"password": "Contraseña",
+	"incorrectPw": "El nombre de usuario o contraseña es incorrecto"
+}

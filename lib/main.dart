@@ -1,12 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_fhir/appLocalizations.dart';
 import 'package:flutter_fhir/mainMenu.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: _Main(),
-  ));
+      home: _Main(),
+      supportedLocales: [Locale('en', 'US'), Locale('es', 'AR')],
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      localeResolutionCallback: (locale, supportedLocales) {
+        for (var supportedLocale in supportedLocales) {
+          if (supportedLocale.languageCode == locale.languageCode &&
+              supportedLocale.countryCode == locale.countryCode) {
+            return supportedLocale;
+          }
+        }
+        return supportedLocales.first;
+      }));
 }
 
 class _Main extends StatefulWidget {
@@ -53,13 +69,15 @@ class _MainState extends State<_Main> {
         controller: userName,
         obscureText: false,
         style: whiteText,
-        decoration: inputDecoration("Username"));
+        decoration: inputDecoration(
+            AppLocalizations.of(context).translate("username")));
 
     final passwordField = TextField(
         controller: password,
         obscureText: true,
         style: whiteText,
-        decoration: inputDecoration("Password"));
+        decoration: inputDecoration(
+          AppLocalizations.of(context).translate("password")));
 
     final loginButon = Material(
         elevation: 5.0,
@@ -68,12 +86,11 @@ class _MainState extends State<_Main> {
         child: MaterialButton(
           minWidth: MediaQuery.of(context).size.width,
           onPressed: () {
-            if(userName.text != 'drgrey' || password.text != 'chopchop'){
+            if (userName.text != 'drgrey' || password.text != 'chopchop') {
               setState(() => incorrect = true);
             } else {
               Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MainMenu()));
+                  context, MaterialPageRoute(builder: (context) => MainMenu()));
             }
           },
           child: Text("Login", textAlign: TextAlign.center, style: whiteText),
@@ -85,33 +102,25 @@ class _MainState extends State<_Main> {
         padding: const EdgeInsets.fromLTRB(20.0, 60.0, 20.0, 15.0),
         child: Column(
           children: <Widget>[
-            Expanded(
-              flex: 1,
-              child: Column(
-                children: <Widget>[
-                  SizedBox(
-                    height: 220.0,
-                    child: Image.asset(
-                      "images/drflag.png",
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                  splashText,
-                  SizedBox(height: 10.0),
-                  userField,
-                  SizedBox(height: 25.0),
-                  passwordField,
-                  SizedBox(height: 3.0),
-                  Visibility(
-                      visible: incorrect,
-                      child: Text("The username or password is incorrect",
-                          style: TextStyle(color: Colors.red))),
-                  SizedBox(height: 35.0),
-                  loginButon,
-                  SizedBox(height: 15.0),
-                ],
+            SizedBox(
+              child: Image.asset(
+                "images/drflag.png",
+                fit: BoxFit.contain,
               ),
             ),
+            splashText,
+            Expanded(flex: 1, child: SizedBox(height: 10.0)),
+            userField,
+            Expanded(flex: 1, child: SizedBox(height: 25.0)),
+            passwordField,
+            Expanded(flex: 1, child: SizedBox(height: 3.0)),
+            Visibility(
+                visible: incorrect,
+                child: Text(AppLocalizations.of(context).translate('incorrectPw'),
+                    style: TextStyle(color: Colors.red))),
+            Expanded(flex: 1, child: SizedBox(height: 35.0)),
+            loginButon,
+            Expanded(flex: 1, child: SizedBox(height: 15.0)),
           ],
         ),
       ),
