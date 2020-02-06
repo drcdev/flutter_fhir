@@ -120,8 +120,8 @@ for i in range(0, len(singles), 2):
 z = 0
 
 revBridgeTables = {}
+enums= {}
 
-enums= []
 #iterates through the different entities in fhir.schema.json
 #only looks in definitions (these are mostly resources, not primitives)
 for table in definitions:
@@ -173,8 +173,9 @@ for table in definitions:
                                                 '\t', 
                                                 sqlStrings(variable), 
                                                 ' BOOLEAN,',
-                                                ' -- **List** true if 1+ item maps to primary key',
-                                                'from bridge table: ',
+                                                ' -- true if 1+ item ',
+                                                'is referenced from bridge ',
+                                                'table: ',
                                                 lowcc(table),
                                                 '__',
                                                 lowcc(definition),
@@ -202,13 +203,13 @@ for table in definitions:
                     elif('enum' in value['items']):
                         sqlCode = ''.join([sqlCode, '\t',  
                                            sqlStrings(variable), 
-                                           ' TEXT, --**LIST** ',
-                                           'Foreign key to enum table,'
+                                           ' BOOLEAN, --**LIST** ',
+                                           'True if 1+ references from enum ',
+                                           'table: ', 'Foreign key to enum table,'
                                            ' allowed enum values: ',
-                                           ''.join(value['items']['enum']),
+                                           '/'.join(value['items']['enum']),
                                            ',\n'])
-                        foreignKeys[sqlStrings(variable)] = 'enum'
-                    
+                        enums[lowcc(table) + '__enum' + upcc(variable)] = value['items']['enum']
 
                 #if not array, either String, Bool, or Number with pattern
                 else:  
@@ -266,6 +267,7 @@ for table in definitions:
                 print("You probably shouldn't be here.")
                 
         #print out code for foreign keys for each table
+        sqlCode = ''.join([sqlCode, '\n'])
         for key, val in foreignKeys.items():
             if(val != 'enum'):
                 sqlCode = ''.join([sqlCode, 
@@ -279,42 +281,8 @@ for table in definitions:
                                    '\t\tREFERENCES ', val, ' (id)\n',
                                    '\t\t\tON DELETE CASCADE',
                                     '\n\t\t\tON UPDATE NO ACTION,\n\n'])
-        
-        # for key, val in bridgeTables.items():
-        #     sqlCode = ''.join([sqlCode,
-        #                        '\tFOREIGN KEY (', key, ')\n',
-        #                        '\t\tREFERENCES ', val, ' (', 
-        #                        val.split('__')[1], 'Id', ')\n',
-        #                        '\t\t\tON DELETE CASCADE',
-        #                        '\n\t\t\tON UPDATE NO ACTION,\n\n'])
-        
-        sqlCode = ''.join([sqlCode, ');\n\n'])
-        
-# tempCode = sqlCode.split(',\n\n);')
-# tempCode = tempCode[0:len(tempCode) - 1]
-# sqlCode = ''
-
-# for tab in tempCode:
-#     sqlCode = ''.join([sqlCode, tab, ',\n\n'])
-#     table = re.search(r'(?<=CREATE\sTABLE\s).*(?=\(\n)', tab)
-#     newVars = ''
-#     if(table.group(0) in revBridgeTables):
-#         for foreign in revBridgeTables[table.group(0)]:
-#             newVars = ''.join([newVars,
-#                                '\t',
-#                                foreign + 'Id TEXT, -- ',
-#                                'Foreign key to bridge table: ',
-#                                foreign + '__' + table.group(0),
-#                                '\n'])
-#             sqlCode = ''.join([sqlCode,
-#                                '\tFOREIGN KEY (', foreign, 'Id', ')\n',
-#                                 '\t\tREFERENCES ', foreign, '__', table.group(0), 
-#                                 ' (', foreign, 'Id', ')\n',
-#                                 '\t\t\tON DELETE CASCADE',
-#                                 '\n\t\t\tON UPDATE NO ACTION,\n\n'])
-#     sqlCode = sqlCode.replace('*****', newVars)
-#     sqlCode = ''.join([sqlCode, ');\n'])
-                                       
+               
+        sqlCode = ''.join([sqlCode, ');\n\n'])                                             
 
 sqlCode = sqlCode.replace(',\n\n);', '\n\n);')
 for key, val in revBridgeTables.items():
@@ -324,7 +292,7 @@ for key, val in revBridgeTables.items():
                            '\t', key, 'Id TEXT,\n',
                            '\t', vals, 'Id TEXT,\n',
                            '\tPRIMARY KEY (', key, 'Id, ', vals, 'Id),\n\n',
-                           '\tFOREIGN KEY (', key, 'Id),\n',
+                           '\tFOREIGN KEY (', key, 'Id)\n',
                            '\t\tREFERENCES ', key, ' (id)\n',
                            '\t\t\tON DELETE CASCADE',
                            '\n\t\t\tON UPDATE NO ACTION,\n'
@@ -333,6 +301,24 @@ for key, val in revBridgeTables.items():
                            '\t\t\tON DELETE CASCADE',
                            '\n\t\t\tON UPDATE NO ACTION\n'
                            ');\n'])
+
+for key, val in enums.items():
+    sqlCode = ''.join([sqlCode,
+                       '\nCREATE TABLE ', key, '(\n',
+                       '\tid TEXT PRIMARY KEY,\n',
+                       '\t', key.replace('enum', ''), ' TEXT,\n',
+                       '\tenum TEXT CHECK( enum',
+                       ' IN (', 
+                       "'",
+                       "','".join(val),
+                       "') ),\n\n",
+                       '\tFOREIGN KEY (', key.replace('enum', ''), ')\n',
+                       '\t\tREFERENCES ', key.split('__enum')[0], ' (',
+                       key.split('__enum')[1], ')\n',
+                       '\t\t\tON DELETE CASCADE',
+                       '\n\t\t\tON UPDATE NO ACTION\n'
+                       ');\n'])
+
         # if(key == vals):
         #     print(key)
         
