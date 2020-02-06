@@ -49,20 +49,23 @@ As this is supposed to be a mobile app, at some point if I'm going to save data 
 going to have to make use of sqlite. I've begun to try and design the database with the following
 guidelines:
 1. Each of the fhir datatypes below will be in it's own table except for primitives
-2. Each table will have an id that will be its primary key
-3. All tables with '_' are child tables
+2. Each table will have an id that will be its primary key, except for bridge tables
+3. All tables with '__' are bridge tables
 4. Each single primitive will be a column
 5. Each column referring to a single row in another table will have a foreign key corresponding to 
-    the id of the row in the other table
-6. Work in progress, obviously, so some of this will change as I learn why not to do some things
-7. 4 primitive tables for lists of same, 
+    the id of the row in the other table, a normal child-parent table relationship
+6. For lists of rows in other tables (e.g. patient table may refer to multiple rows in patient_Contact table), but     where the second table is referenced only by the first (again, patient_Contact is only ever referenced from        patient), then the first table becomes the parent table, and the second table will have foreign keys               referencing it, ToDo: should this be generalized with bridge tables?
+7. For instances where multiple tables reference multiple rows in a table, a bridge table is created. These             combined names, with the table referencing listed first, then two underscores '__', then the table     
+     referenced. (e.g. patient__identifier). Using this case, the identifier column in the patient table will reference an 'identifierId' column in patient_identifier. Likewise, the identifier table will have a patientId column referencing the patientId column in patient_identifier. This is a new column that will be added to the identifier column, and is not part of the json Schema.
+8. Work in progress, obviously, so some of this will change as I learn why not to do some things.
+9. 4 primitive tables for lists of same, 
     -uri with canonical and uri columns
     -numbers with unsignedInt, positiveInt, decimal and integer columns
     -times with time and dateTime columns
     -strings with code, string and markdown columns
     -all primitive tables will have foreignId and foreignTable added as columns to form a composite
         foreign key
-6. ToDo: Lists - bools, other tables
+10. ToDo: Lists - bools, other tables
 
 # FHIR datatypes
 1. Primitives: base64Binary, boolean, canonical, code, date, dateTime, decimal, id

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import json
+import re
 
 #makes first letter of word lowercase
 def lowcc(string):
@@ -117,6 +118,10 @@ for i in range(0, len(singles), 2):
         psingle[singles[i]] = singles[i+1]
 
 z = 0
+
+revBridgeTables = {}
+
+enums= []
 #iterates through the different entities in fhir.schema.json
 #only looks in definitions (these are mostly resources, not primitives)
 for table in definitions:
@@ -126,16 +131,17 @@ for table in definitions:
     if('properties' in definitions[table] and str(table) != 'ResourceList'):
         sqlCode = ''.join([sqlCode, 'CREATE TABLE ', sqlStrings(lowcc(table)), '(\n\n'])
         
-        z += 1
-        zs = str(hex(z))[2:len(str(hex(z)))]
-        if(len(zs) == 1):
-            zs = '00' + zs
-        elif(len(zs) ==2):
-            zs = '0' + zs
-        zs = zs.upper()
-        print('"' + table + '": "' + zs + '"')
+        # z += 1
+        # zs = str(hex(z))[2:len(str(hex(z)))]
+        # if(len(zs) == 1):
+        #     zs = '00' + zs
+        # elif(len(zs) ==2):
+        #     zs = '0' + zs
+        # zs = zs.upper()
+        # print('"' + table + '": "' + zs + '"')
         
         foreignKeys = {}
+        bridgeTables = {}
         
         #look in the properties section of each table, and based on that print
         #out specific information
@@ -158,31 +164,50 @@ for table in definitions:
                         #checks if value is a list in another table that is only
                         #referenced  by this table, if so, makes value a bool,
                         #and the other table has this ID as a foreign key
+                        definition = value['items']['$ref'].split('/definitions/')[1]
                         if(table not in psingle.keys() 
-                           or value['items']['$ref'].split('/definitions/')[1] not in single.keys()
-                           or single[value['items']['$ref'].split('/definitions/')[1]] != table):
+                           or definition not in single.keys()
+                           or single[definition] != table):
                             
                             sqlCode = ''.join([sqlCode, 
-                                                       '\t', 
-                                                       sqlStrings(variable), 
-                                                       ' **LIST** ', 
-                                                       value['items']['$ref'].split('/definitions/')[1],
-                                                       ',\n'])
+                                                '\t', 
+                                                sqlStrings(variable), 
+                                                ' BOOLEAN,',
+                                                ' -- **List** true if 1+ item maps to primary key',
+                                                'from bridge table: ',
+                                                lowcc(table),
+                                                '__',
+                                                lowcc(definition),
+                                                '\n'])
+                            bridgeTables[sqlStrings(variable)] = ''.join([
+                                lowcc(table),
+                                '__',
+                                lowcc(definition)])
+                            if(lowcc(definition) in revBridgeTables):
+                                if(lowcc(table) not in revBridgeTables[lowcc(definition)]):
+                                    revBridgeTables[lowcc(definition)].append(lowcc(table))
+                            else:
+                                revBridgeTables[lowcc(definition)] = [lowcc(table)]
+                            
                         else:                            
                             sqlCode = ''.join([sqlCode, 
                                                '\t',
                                                sqlStrings(variable), 
                                                ' BOOLEAN,',
                                                ' -- true if 1+ rows in ', 
-                                               psingle[table], 
+                                               definition, 
                                                ' correspond to this entry\n'])
 
 
                     elif('enum' in value['items']):
                         sqlCode = ''.join([sqlCode, '\t',  
-                                           sqlStrings(variable), ' **LIST** ',
-                                           'enum, -- enum: ', '/'.join(value['items']['enum']),
+                                           sqlStrings(variable), 
+                                           ' TEXT, --**LIST** ',
+                                           'Foreign key to enum table,'
+                                           ' allowed enum values: ',
+                                           ''.join(value['items']['enum']),
                                            ',\n'])
+                        foreignKeys[sqlStrings(variable)] = 'enum'
                     
 
                 #if not array, either String, Bool, or Number with pattern
@@ -203,10 +228,10 @@ for table in definitions:
                 
                 #add to foreign keys dictionary for coding later
                 if(table in single.keys()):
-                    sqlCode = ''.join([sqlCode, '\t', lowcc(single[table] + '_id'),
+                    sqlCode = ''.join([sqlCode, '\t', lowcc(single[table] + 'Id'),
                                        ' TEXT, -- Foreign Key to ', 
                                        sqlStrings(lowcc(single[table])), ' table\n'])
-                    foreignKeys[lowcc(single[table] + '_id')] = sqlStrings(lowcc(single[table]))
+                    foreignKeys[lowcc(single[table] + 'Id')] = sqlStrings(lowcc(single[table]))
                                                        
             #check type
             elif('$ref' in value):
@@ -227,29 +252,95 @@ for table in definitions:
                 
             #otherwise, all are enum
             elif('enum' in value):
-                sqlCode = ''.join([sqlCode, '\t', sqlStrings(variable), 
-                                   ' TEXT, -- enum: ', 
-                                   '/'.join(value['enum']), '\n'])
+                sqlCode = ''.join([sqlCode, 
+                                   '\t', 
+                                   sqlStrings(variable), 
+                                   ' TEXT CHECK( ',
+                                    sqlStrings(variable),
+                                    ' IN (', 
+                                    "'",
+                                    "','".join(value['enum']),
+                                    "'",
+                                    ') ),\n'])
             else:
                 print("You probably shouldn't be here.")
                 
-        sqlCode = ''.join([sqlCode, '\n'])
         #print out code for foreign keys for each table
         for key, val in foreignKeys.items():
-            sqlCode = ''.join([sqlCode, 
-                               '\tFOREIGN KEY (', key, ')\n',
-                               '\t\tREFERENCES ', val, ' (id)\n',
-                               '\t\t\tON DELETE CASCADE',
-                                '\n\t\tON UPDATE NO ACTION,\n\n'])
+            if(val != 'enum'):
+                sqlCode = ''.join([sqlCode, 
+                                   '\tFOREIGN KEY (', key, ')\n',
+                                   '\t\tREFERENCES ', val, ' (id)\n',
+                                   '\t\t\tON DELETE CASCADE',
+                                    '\n\t\t\tON UPDATE NO ACTION,\n\n'])
+            else:
+                sqlCode = ''.join([sqlCode, 
+                                   '\tFOREIGN KEY (', key, ')\n',
+                                   '\t\tREFERENCES ', val, ' (id)\n',
+                                   '\t\t\tON DELETE CASCADE',
+                                    '\n\t\t\tON UPDATE NO ACTION,\n\n'])
+        
+        # for key, val in bridgeTables.items():
+        #     sqlCode = ''.join([sqlCode,
+        #                        '\tFOREIGN KEY (', key, ')\n',
+        #                        '\t\tREFERENCES ', val, ' (', 
+        #                        val.split('__')[1], 'Id', ')\n',
+        #                        '\t\t\tON DELETE CASCADE',
+        #                        '\n\t\t\tON UPDATE NO ACTION,\n\n'])
+        
         sqlCode = ''.join([sqlCode, ');\n\n'])
         
+# tempCode = sqlCode.split(',\n\n);')
+# tempCode = tempCode[0:len(tempCode) - 1]
+# sqlCode = ''
+
+# for tab in tempCode:
+#     sqlCode = ''.join([sqlCode, tab, ',\n\n'])
+#     table = re.search(r'(?<=CREATE\sTABLE\s).*(?=\(\n)', tab)
+#     newVars = ''
+#     if(table.group(0) in revBridgeTables):
+#         for foreign in revBridgeTables[table.group(0)]:
+#             newVars = ''.join([newVars,
+#                                '\t',
+#                                foreign + 'Id TEXT, -- ',
+#                                'Foreign key to bridge table: ',
+#                                foreign + '__' + table.group(0),
+#                                '\n'])
+#             sqlCode = ''.join([sqlCode,
+#                                '\tFOREIGN KEY (', foreign, 'Id', ')\n',
+#                                 '\t\tREFERENCES ', foreign, '__', table.group(0), 
+#                                 ' (', foreign, 'Id', ')\n',
+#                                 '\t\t\tON DELETE CASCADE',
+#                                 '\n\t\t\tON UPDATE NO ACTION,\n\n'])
+#     sqlCode = sqlCode.replace('*****', newVars)
+#     sqlCode = ''.join([sqlCode, ');\n'])
+                                       
+
 sqlCode = sqlCode.replace(',\n\n);', '\n\n);')
+for key, val in revBridgeTables.items():
+    for vals in val:
+        sqlCode = ''.join([sqlCode, 
+                           '\nCREATE TABLE ', key, '__', vals, '(\n',
+                           '\t', key, 'Id TEXT,\n',
+                           '\t', vals, 'Id TEXT,\n',
+                           '\tPRIMARY KEY (', key, 'Id, ', vals, 'Id),\n\n',
+                           '\tFOREIGN KEY (', key, 'Id),\n',
+                           '\t\tREFERENCES ', key, ' (id)\n',
+                           '\t\t\tON DELETE CASCADE',
+                           '\n\t\t\tON UPDATE NO ACTION,\n'
+                           '\tFOREIGN KEY (', vals, 'Id),\n',
+                           '\t\tREFERENCES ', vals, ' (id)\n',
+                           '\t\t\tON DELETE CASCADE',
+                           '\n\t\t\tON UPDATE NO ACTION\n'
+                           ');\n'])
+        # if(key == vals):
+        #     print(key)
         
 #write it to a file
 with open("sqliteFhirScript.sql", "w", encoding="utf-8") as f:
     f.write(sqlCode)
 f.close()
-print(z)
+#print(z)
 
 #14 enum lists
 
