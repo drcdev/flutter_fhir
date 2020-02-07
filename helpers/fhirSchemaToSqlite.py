@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 
 import json
-import re
 
 #makes first letter of word lowercase
 def lowcc(string):
     return string[0].lower()+string[1:len(string)]
 
+#makes first letter of word uppercase
 def upcc(string):
     return string[0].upper() + string[1:len(string)]
 
-#returns the item if it's a primitive, otherwise returns type of primitive
+#returns the the type of primitive if it is one, otherwise just a string (TEXT)
 def makePrimSql(string):
     primitivesSql = {'base64Binary': 'TEXT', 'boolean': 'BOOLEAN', 
       'canonical': 'TEXT', 'code': 'TEXT', 'date': 'DATE', 
@@ -33,6 +33,11 @@ def isPrimitive(string):
                       'markdown', 'oid', 'positiveInt', 'string', 'time',
                       'unsignedInt', 'uri', 'url', 'uuid', 'number', 'xhtml'])
 
+#code defining the types of data are based on this schema: 
+    #https://www.hl7.org/fhir/datatypes.html
+
+#checks if a field is a General Purpose data type, used to evaluate Json schema,
+#does not produce SQL code
 def isGenPurpose(string):
     if('"' in string):
         string = string[1:len(string)-1]
@@ -43,6 +48,8 @@ def isGenPurpose(string):
                       'money', 'moneyQuantity', 'annotation', 'signature',
                       'backboneElement'])
 
+#checks if a field is a Meta data type, used to evaluate Json schema,
+#does not produce SQL code
 def isMetaData(string):
     if('"' in string):
         string = string[1:len(string)-1]
@@ -50,6 +57,8 @@ def isMetaData(string):
                       'parameterDefinition', 'relatedArtifact', 'triggerDefinition',
                       'usageContext', 'expression'])
 
+#checks if a field is a Special Purpose data type, used to evaluate Json schema,
+#does not produce SQL code
 def isSpecialData(string):
     if('"' in string):
         string = string[1:len(string)-1]
@@ -87,40 +96,40 @@ def sqlStrings(string):
 with open('fhir.schema.json', encoding='utf8') as json_file:
     schema = json.load(json_file)
 
-#there is no native table for resourceList, so for now, I'm adding one
-# sqlCode = ''.join(['DROP TABLE resourceList;\n\n',
-#                   'CREATE TABLE resourceList(\n\n',
-#                   '\tid TEXT PRIMARY KEY,\n',
-#                   '\tresourceType TEXT\n\n',
-#                   ');\n'])
-
+#final code that will be written
 sqlCode = ''
 
 definitions = schema['definitions']
 
-#look at types to see what lists of nested objects are only referenced from one other table
+#look at types to see what lists of nested objects are only referenced from one
+# other table
 singles = []
 for table in definitions:
+    #ignore if just the list of Resources or primitives
     if('properties' in definitions[table] and str(table) != 'ResourceList'):
+        #look at sub fields for each class
         for variable in definitions[table]['properties']:
+            #all arrays have type in the schema
             if('type' in definitions[table]['properties'][variable]):
+                #not all types have arrays
                 if('array' == definitions[table]['properties'][variable]['type']):
                     if('$ref' in definitions[table]['properties'][variable]['items']):
+                        #adds the table and the table to which it refers
                         singles.append(table)
                         singles.append(definitions[table]['properties'][variable]['items']['$ref'].split('/definitions/')[1])
 single = {}
 psingle = {}
-#if a table is a list from one and only one other table, record it here to
-#create foreign key later
+#if a table is a list, and referenced from only one other table, that other
+#table will be added as a foreign key
 for i in range(0, len(singles), 2):
     if(singles[1::2].count(singles[i+1]) == 1):
-        single[singles[i+1]] = singles[i]
-        psingle[singles[i]] = singles[i+1]
+        single[singles[i+1]] = singles[i] #table referenced = table referencing
+        psingle[singles[i]] = singles[i+1] #table referencing = table referenced
 
 z = 0
-
 revBridgeTables = {}
 enums= {}
+bridgeTables = []
 
 #iterates through the different entities in fhir.schema.json
 #only looks in definitions (these are mostly resources, not primitives)
@@ -129,7 +138,10 @@ for table in definitions:
     #ignore any entries that are under 'ResourceList' (names, no definitions)
     #ignore definitions of any of the primitives ToDo: is this appropriate?
     if('properties' in definitions[table] and str(table) != 'ResourceList'):
-        sqlCode = ''.join([sqlCode, 'CREATE TABLE ', sqlStrings(lowcc(table)), '(\n\n'])
+        sqlCode = ''.join([sqlCode, 
+                           'CREATE TABLE ', 
+                           sqlStrings(lowcc(table)), 
+                           '(\n\n'])
         
         # z += 1
         # zs = str(hex(z))[2:len(str(hex(z)))]
@@ -141,7 +153,6 @@ for table in definitions:
         # print('"' + table + '": "' + zs + '"')
         
         foreignKeys = {}
-        bridgeTables = {}
         
         #look in the properties section of each table, and based on that print
         #out specific information
@@ -177,13 +188,21 @@ for table in definitions:
                                                 'is referenced from bridge ',
                                                 'table: ',
                                                 lowcc(table),
-                                                '__',
+                                                '_',
+                                                variable,
+                                                '_',
                                                 lowcc(definition),
                                                 '\n'])
-                            bridgeTables[sqlStrings(variable)] = ''.join([
-                                lowcc(table),
-                                '__',
-                                lowcc(definition)])
+                            
+                            #many-to-many relationship requires bridge table
+                            bridgeTables.append(''.join([lowcc(table),
+                                                '_*_',
+                                                variable,
+                                                '_*_',
+                                                lowcc(definition)]))
+                            
+                            #if second table is referenced by multiple firsts
+                            #listed in revBridgeTables
                             if(lowcc(definition) in revBridgeTables):
                                 if(lowcc(table) not in revBridgeTables[lowcc(definition)]):
                                     revBridgeTables[lowcc(definition)].append(lowcc(table))
@@ -200,6 +219,7 @@ for table in definitions:
                                                ' correspond to this entry\n'])
 
 
+                    #if list of enums
                     elif('enum' in value['items']):
                         sqlCode = ''.join([sqlCode, '\t',  
                                            sqlStrings(variable), 
@@ -209,7 +229,7 @@ for table in definitions:
                                            ' allowed enum values: ',
                                            '/'.join(value['items']['enum']),
                                            ',\n'])
-                        enums[lowcc(table) + '__enum' + upcc(variable)] = value['items']['enum']
+                        enums[lowcc(table) + '_*_' + upcc(variable) + '_*_enum'] = value['items']['enum']
 
                 #if not array, either String, Bool, or Number with pattern
                 else:  
@@ -285,42 +305,38 @@ for table in definitions:
         sqlCode = ''.join([sqlCode, ');\n\n'])                                             
 
 sqlCode = sqlCode.replace(',\n\n);', '\n\n);')
-for key, val in revBridgeTables.items():
-    for vals in val:
-        sqlCode = ''.join([sqlCode, 
-                           '\nCREATE TABLE ', key, '__', vals, '(\n',
-                           '\t', key, 'Id TEXT,\n',
-                           '\t', vals, 'Id TEXT,\n',
-                           '\tPRIMARY KEY (', key, 'Id, ', vals, 'Id),\n\n',
-                           '\tFOREIGN KEY (', key, 'Id)\n',
-                           '\t\tREFERENCES ', key, ' (id)\n',
-                           '\t\t\tON DELETE CASCADE',
-                           '\n\t\t\tON UPDATE NO ACTION,\n'
-                           '\tFOREIGN KEY (', vals, 'Id),\n',
-                           '\t\tREFERENCES ', vals, ' (id)\n',
-                           '\t\t\tON DELETE CASCADE',
-                           '\n\t\t\tON UPDATE NO ACTION\n'
-                           ');\n'])
+  
+for val in bridgeTables:
+    sqlCode = ''.join([sqlCode, 
+                       '\nCREATE TABLE ', val.replace('_*_', '_'), '(\n',
+                       '\tid TEXT PRIMARY KEY,\n',
+                       '\t', val.split('_*_')[0] + '_' + val.split('_*_')[1] + 'Id TEXT,\n',
+                       '\t', val.split('_*_')[2] + 'Id TEXT,\n\n',
+                       '\tFOREIGN KEY (', val.split('_*_')[0] + '_' + val.split('_*_')[1] + 'Id)\n',
+                       '\t\tREFERENCES ', sqlStrings(val.split('_*_')[0]), ' (id)\n',
+                       '\t\t\tON DELETE CASCADE',
+                       '\n\t\t\tON UPDATE NO ACTION,\n'
+                       '\tFOREIGN KEY (', val.split('_*_')[2] + 'Id)\n',
+                       '\t\tREFERENCES ', sqlStrings(val.split('_*_')[2]), ' (id)\n',
+                       '\t\t\tON DELETE CASCADE',
+                       '\n\t\t\tON UPDATE NO ACTION,\n'
+                       ');\n'])
 
 for key, val in enums.items():
     sqlCode = ''.join([sqlCode,
-                       '\nCREATE TABLE ', key, '(\n',
-                       '\tid TEXT PRIMARY KEY,\n',
-                       '\t', key.replace('enum', ''), ' TEXT,\n',
-                       '\tenum TEXT CHECK( enum',
-                       ' IN (', 
-                       "'",
-                       "','".join(val),
-                       "') ),\n\n",
-                       '\tFOREIGN KEY (', key.replace('enum', ''), ')\n',
-                       '\t\tREFERENCES ', key.split('__enum')[0], ' (',
-                       key.split('__enum')[1], ')\n',
-                       '\t\t\tON DELETE CASCADE',
-                       '\n\t\t\tON UPDATE NO ACTION\n'
-                       ');\n'])
-
-        # if(key == vals):
-        #     print(key)
+                        '\nCREATE TABLE ', key.replace('_*_', '_'), '(\n',
+                        '\tid TEXT PRIMARY KEY,\n',
+                        '\t', key.split('_*_')[0] + 'Id TEXT,\n',
+                        '\tenum TEXT CHECK( enum',
+                        ' IN (', 
+                        "'",
+                        "','".join(val),
+                        "') ),\n\n",
+                        '\tFOREIGN KEY (', key.split('_*_')[0] + 'Id)\n',
+                        '\t\tREFERENCES ', sqlStrings(key.split('_*_')[0]), ' (id)\n',
+                        '\t\t\tON DELETE CASCADE',
+                        '\n\t\t\tON UPDATE NO ACTION\n'
+                        ');\n'])
         
 #write it to a file
 with open("sqliteFhirScript.sql", "w", encoding="utf-8") as f:

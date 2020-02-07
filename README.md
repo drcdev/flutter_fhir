@@ -50,22 +50,35 @@ going to have to make use of sqlite. I've begun to try and design the database w
 guidelines:
 1. Each of the fhir datatypes below will be in it's own table except for primitives
 2. Each table will have an id that will be its primary key, except for bridge tables
-3. All tables with '__' are bridge tables
-4. Each single primitive will be a column
-5. Each column referring to a single row in another table will have a foreign key corresponding to 
-    the id of the row in the other table, a normal child-parent table relationship
-6. For lists of rows in other tables (e.g. patient table may refer to multiple rows in patient_Contact table), but     where the second table is referenced only by the first (again, patient_Contact is only ever referenced from        patient), then the first table becomes the parent table, and the second table will have foreign keys               referencing it, ToDo: should this be generalized with bridge tables?
-7. For instances where multiple tables reference multiple rows in a table, a bridge table is created. These             combined names, with the table referencing listed first, then two underscores '__', then the table     
-     referenced. (e.g. patient__identifier). Using this case, the identifier column in the patient table will reference an 'identifierId' column in patient_identifier. Likewise, the identifier table will have a patientId column referencing the patientId column in patient_identifier. This is a new column that will be added to the identifier column, and is not part of the json Schema.
-8. Work in progress, obviously, so some of this will change as I learn why not to do some things.
-9. 4 primitive tables for lists of same, 
+3. Each table will begin with lowercase
+4. Primitive fields will have their normal name from Json schema
+5. Fields referencing another table, if it is only one row from that other table (one-to-one
+    relationship), the id (primary key) of the other table will be a foreign key, name will be from
+    Json schema
+6. If a field references multiple rows in another table (one-to-many relationship, except enum) AND
+    that table is only referenced by the first, a new column will be added to the second table. It
+    will take the name of the first table + 'Id'. It will refer to the id of the first table, and
+    will be a foreign key for the second table. The first table will have a boolean with the name of
+    the original Json schema, which will be true if there is at least one row in the second table
+    with a reference to it
+    (Todo: boolean column could just be removed as well)
+7. If a field is a list of enums, a table will be created. It will contain a unique ID as its primary
+    key, a foreign key referring to the first table's id, and then a column containing the enum
+    value. This table will be named originalTable_fieldName_enum. The field in the original table
+    will be a boolean if at least one row in the new table references it.
+8. For all others (many-to-many relationships), even if there are multiple tables referencing
+    multiple rows in a second table, or one table with multiple lists each referencing multiple
+    rows in a second table will all be treated the same. Bridge tables will be created, entitled
+    originalTable_field_secondTable. It will have a unique id field, a foreign key called
+    originalTable_fieldId and secondTableId.
+9. Work in progress, obviously, so some of this will change as I learn why not to do some things.
+10. 4 primitive tables for lists of same,
     -uri with canonical and uri columns
     -numbers with unsignedInt, positiveInt, decimal and integer columns
     -times with time and dateTime columns
     -strings with code, string and markdown columns
     -all primitive tables will have foreignId and foreignTable added as columns to form a composite
         foreign key
-10. ToDo: Lists - bools, other tables
 
 # FHIR datatypes
 1. Primitives: base64Binary, boolean, canonical, code, date, dateTime, decimal, id
