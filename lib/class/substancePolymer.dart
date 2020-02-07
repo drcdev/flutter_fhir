@@ -33,13 +33,13 @@ class SubstancePolymer {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -52,7 +52,7 @@ class SubstancePolymer {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -90,7 +90,7 @@ class SubstancePolymer {
   List<String> modification;
 
   //  Extensions for modification
-  List<Element> element_modification;
+  List<Element> elementModification;
 
   //  Todo.
   List<SubstancePolymer_MonomerSet> monomerSet;
@@ -102,9 +102,9 @@ SubstancePolymer(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -113,7 +113,7 @@ SubstancePolymer(
     this.geometry,
     this.copolymerConnectivity,
     this.modification,
-    this.element_modification,
+    this.elementModification,
     this.monomerSet,
     this.repeat
     });
@@ -208,7 +208,7 @@ class SubstancePolymer_StartingMaterial {
   bool isDefining;
 
   //  Extensions for isDefining
-  Element element_isDefining;
+  Element elementIsDefining;
 
   //  Todo.
   SubstanceAmount amount;
@@ -220,7 +220,7 @@ SubstancePolymer_StartingMaterial(
     this.material,
     this.type,
     this.isDefining,
-    this.element_isDefining,
+    this.elementIsDefining,
     this.amount
     });
 
@@ -261,13 +261,13 @@ class SubstancePolymer_Repeat {
   int numberOfUnits;
 
   //  Extensions for numberOfUnits
-  Element element_numberOfUnits;
+  Element elementNumberOfUnits;
 
   //  Todo.
   String averageMolecularFormula;
 
   //  Extensions for averageMolecularFormula
-  Element element_averageMolecularFormula;
+  Element elementAverageMolecularFormula;
 
   //  Todo.
   CodeableConcept repeatUnitAmountType;
@@ -280,9 +280,9 @@ SubstancePolymer_Repeat(
     this.extension,
     this.modifierExtension,
     this.numberOfUnits,
-    this.element_numberOfUnits,
+    this.elementNumberOfUnits,
     this.averageMolecularFormula,
-    this.element_averageMolecularFormula,
+    this.elementAverageMolecularFormula,
     this.repeatUnitAmountType,
     this.repeatUnit
     });
@@ -327,7 +327,7 @@ class SubstancePolymer_RepeatUnit {
   String repeatUnit;
 
   //  Extensions for repeatUnit
-  Element element_repeatUnit;
+  Element elementRepeatUnit;
 
   //  Todo.
   SubstanceAmount amount;
@@ -344,7 +344,7 @@ SubstancePolymer_RepeatUnit(
     this.modifierExtension,
     this.orientationOfPolymerisation,
     this.repeatUnit,
-    this.element_repeatUnit,
+    this.elementRepeatUnit,
     this.amount,
     this.degreeOfPolymerisation,
     this.structuralRepresentation
@@ -437,7 +437,7 @@ class SubstancePolymer_StructuralRepresentation {
   String representation;
 
   //  Extensions for representation
-  Element element_representation;
+  Element elementRepresentation;
 
   //  Todo.
   Attachment attachment;
@@ -448,7 +448,7 @@ SubstancePolymer_StructuralRepresentation(
     this.modifierExtension,
     this.type,
     this.representation,
-    this.element_representation,
+    this.elementRepresentation,
     this.attachment
     });
 

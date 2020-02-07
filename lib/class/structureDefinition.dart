@@ -36,13 +36,13 @@ class StructureDefinition {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -55,7 +55,7 @@ class StructureDefinition {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -90,7 +90,7 @@ class StructureDefinition {
   String url;
 
   //  Extensions for url
-  Element element_url;
+  Element elementUrl;
 
   //  A formal identifier that is used to identify this structure definition
   // when it is represented in other formats, or referenced in a
@@ -107,7 +107,7 @@ class StructureDefinition {
   String version;
 
   //  Extensions for version
-  Element element_version;
+  Element elementVersion;
 
   //  A natural language name identifying the structure definition. This
   // name should be usable as an identifier for the module by machine
@@ -115,21 +115,21 @@ class StructureDefinition {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  A short, descriptive, user-friendly title for the structure
   // definition.
   String title;
 
   //  Extensions for title
-  Element element_title;
+  Element elementTitle;
 
   //  The status of this structure definition. Enables tracking the
   // life-cycle of the content.
   String status; // <code> enum: draft/active/retired/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  A Boolean value to indicate that this structure definition is authored
   // for testing purposes (or education/evaluation/marketing) and is not
@@ -137,7 +137,7 @@ class StructureDefinition {
   bool experimental;
 
   //  Extensions for experimental
-  Element element_experimental;
+  Element elementExperimental;
 
   //  The date  (and optionally time) when the structure definition was
   // published. The date must change when the business version changes and
@@ -147,14 +147,14 @@ class StructureDefinition {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  The name of the organization or individual that published the
   // structure definition.
   String publisher;
 
   //  Extensions for publisher
-  Element element_publisher;
+  Element elementPublisher;
 
   //  Contact details to assist a user in finding and communicating with the
   // publisher.
@@ -165,7 +165,7 @@ class StructureDefinition {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  The content was developed with a focus and intent of supporting the
   // contexts that are listed. These contexts may be general categories
@@ -183,7 +183,7 @@ class StructureDefinition {
   String purpose;
 
   //  Extensions for purpose
-  Element element_purpose;
+  Element elementPurpose;
 
   //  A copyright statement relating to the structure definition and/or its
   // contents. Copyright statements are generally legal restrictions on the
@@ -191,7 +191,7 @@ class StructureDefinition {
   String copyright;
 
   //  Extensions for copyright
-  Element element_copyright;
+  Element elementCopyright;
 
   //  A set of key words or terms from external terminologies that may be
   // used to assist with indexing and searching of templates nby describing
@@ -205,7 +205,7 @@ class StructureDefinition {
   String fhirVersion; // <code> enum: 0.01/0.05/0.06/0.11/0.0.80/0.0.81/0.0.82/0.4.0/0.5.0/1.0.0/1.0.1/1.0.2/1.1.0/1.4.0/1.6.0/1.8.0/3.0.0/3.0.1/3.3.0/3.5.0/4.0.0/4.0.1;
 
   //  Extensions for fhirVersion
-  Element element_fhirVersion;
+  Element elementFhirVersion;
 
   //  An external specification that the content is mapped to.
   List<StructureDefinition_Mapping> mapping;
@@ -214,7 +214,7 @@ class StructureDefinition {
   String kind; // <code> enum: primitive-type/complex-type/resource/logical;
 
   //  Extensions for kind
-  Element element_kind;
+  Element elementKind;
 
   //  Whether structure this definition describes is abstract or not  - that
   // is, whether the structure is not intended to be instantiated. For
@@ -223,7 +223,7 @@ class StructureDefinition {
   bool abstract;
 
   //  Extensions for abstract
-  Element element_abstract;
+  Element elementAbstract;
 
   //  Identifies the types of resource or data type elements to which the
   // extension can be applied.
@@ -235,7 +235,7 @@ class StructureDefinition {
   List<String> contextInvariant;
 
   //  Extensions for contextInvariant
-  List<Element> element_contextInvariant;
+  List<Element> elementContextInvariant;
 
   //  The type this structure describes. If the derivation kind is
   // 'specialization' then this is the master definition for a type, and
@@ -249,7 +249,7 @@ class StructureDefinition {
   String type;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  An absolute URI that is the base structure from which this type is
   // derived, either by specialization or constraint.
@@ -259,7 +259,7 @@ class StructureDefinition {
   String derivation; // <code> enum: specialization/constraint;
 
   //  Extensions for derivation
-  Element element_derivation;
+  Element elementDerivation;
 
   //  A snapshot view is expressed in a standalone form that can be used and
   // interpreted without considering the base StructureDefinition.
@@ -273,55 +273,55 @@ StructureDefinition(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
-    this.element_url,
+    this.elementUrl,
     this.identifier,
     this.version,
-    this.element_version,
+    this.elementVersion,
     this.name,
-    this.element_name,
+    this.elementName,
     this.title,
-    this.element_title,
+    this.elementTitle,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.experimental,
-    this.element_experimental,
+    this.elementExperimental,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.publisher,
-    this.element_publisher,
+    this.elementPublisher,
     this.contact,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.useContext,
     this.jurisdiction,
     this.purpose,
-    this.element_purpose,
+    this.elementPurpose,
     this.copyright,
-    this.element_copyright,
+    this.elementCopyright,
     this.keyword,
     this.fhirVersion,
-    this.element_fhirVersion,
+    this.elementFhirVersion,
     this.mapping,
     this.kind,
-    this.element_kind,
+    this.elementKind,
     this.abstract,
-    this.element_abstract,
+    this.elementAbstract,
     this.context,
     this.contextInvariant,
-    this.element_contextInvariant,
+    this.elementContextInvariant,
     this.type,
-    this.element_type,
+    this.elementType,
     this.baseDefinition,
     this.derivation,
-    this.element_derivation,
+    this.elementDerivation,
     this.snapshot,
     this.differential
     });
@@ -364,40 +364,40 @@ class StructureDefinition_Mapping {
   String identity;
 
   //  Extensions for identity
-  Element element_identity;
+  Element elementIdentity;
 
   //  An absolute URI that identifies the specification that this mapping is
   // expressed to.
   String uri;
 
   //  Extensions for uri
-  Element element_uri;
+  Element elementUri;
 
   //  A name for the specification that is being mapped to.
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  Comments about this mapping, including version notes, issues, scope
   // limitations, and other important notes for usage.
   String comment;
 
   //  Extensions for comment
-  Element element_comment;
+  Element elementComment;
 
 StructureDefinition_Mapping(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.identity,
-    this.element_identity,
+    this.elementIdentity,
     this.uri,
-    this.element_uri,
+    this.elementUri,
     this.name,
-    this.element_name,
+    this.elementName,
     this.comment,
-    this.element_comment
+    this.elementComment
     });
 
   factory StructureDefinition_Mapping.fromJson(Map<String, dynamic> json) => _$StructureDefinition_MappingFromJson(json);
@@ -438,23 +438,23 @@ class StructureDefinition_Context {
   String type; // <code> enum: fhirpath/element/extension;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  An expression that defines where an extension can be used in
   // resources.
   String expression;
 
   //  Extensions for expression
-  Element element_expression;
+  Element elementExpression;
 
 StructureDefinition_Context(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.type,
-    this.element_type,
+    this.elementType,
     this.expression,
-    this.element_expression
+    this.elementExpression
     });
 
   factory StructureDefinition_Context.fromJson(Map<String, dynamic> json) => _$StructureDefinition_ContextFromJson(json);

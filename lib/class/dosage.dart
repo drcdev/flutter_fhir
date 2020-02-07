@@ -44,13 +44,13 @@ class Dosage {
   int sequence;
 
   //  Extensions for sequence
-  Element element_sequence;
+  Element elementSequence;
 
   //  Free text dosage instructions e.g. SIG.
   String text;
 
   //  Extensions for text
-  Element element_text;
+  Element elementText;
 
   //  Supplemental instructions to the patient on how to take the medication
   //  (e.g. "with meals" or"take half to one hour before food") or warnings
@@ -62,7 +62,7 @@ class Dosage {
   String patientInstruction;
 
   //  Extensions for patientInstruction
-  Element element_patientInstruction;
+  Element elementPatientInstruction;
 
   //  When medication should be administered.
   Timing timing;
@@ -73,7 +73,7 @@ class Dosage {
   bool asNeededBoolean; //  pattern: ^true|false$
 
   //  Extensions for asNeededBoolean
-  Element element_asNeededBoolean;
+  Element elementAsNeededBoolean;
 
   //  Indicates whether the Medication is only taken when needed within a
   // specific dosing schedule (Boolean option), or it indicates the
@@ -106,15 +106,15 @@ Dosage(
     this.extension,
     this.modifierExtension,
     this.sequence,
-    this.element_sequence,
+    this.elementSequence,
     this.text,
-    this.element_text,
+    this.elementText,
     this.additionalInstruction,
     this.patientInstruction,
-    this.element_patientInstruction,
+    this.elementPatientInstruction,
     this.timing,
     this.asNeededBoolean,
-    this.element_asNeededBoolean,
+    this.elementAsNeededBoolean,
     this.asNeededCodeableConcept,
     this.site,
     this.route,

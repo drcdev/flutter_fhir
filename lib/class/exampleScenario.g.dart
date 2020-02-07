@@ -13,20 +13,20 @@ ExampleScenario _$ExampleScenarioFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -37,38 +37,37 @@ ExampleScenario _$ExampleScenarioFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     url: json['url'] as String,
-    element_url: json['element_url'] == null
+    elementUrl: json['elementUrl'] == null
         ? null
-        : Element.fromJson(json['element_url'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementUrl'] as Map<String, dynamic>),
     identifier: (json['identifier'] as List)
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     version: json['version'] as String,
-    element_version: json['element_version'] == null
+    elementVersion: json['elementVersion'] == null
         ? null
-        : Element.fromJson(json['element_version'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementVersion'] as Map<String, dynamic>),
     name: json['name'] as String,
-    element_name: json['element_name'] == null
+    elementName: json['elementName'] == null
         ? null
-        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     experimental: json['experimental'] as bool,
-    element_experimental: json['element_experimental'] == null
+    elementExperimental: json['elementExperimental'] == null
         ? null
-        : Element.fromJson(
-            json['element_experimental'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementExperimental'] as Map<String, dynamic>),
     date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
-    element_date: json['element_date'] == null
+    elementDate: json['elementDate'] == null
         ? null
-        : Element.fromJson(json['element_date'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDate'] as Map<String, dynamic>),
     publisher: json['publisher'] as String,
-    element_publisher: json['element_publisher'] == null
+    elementPublisher: json['elementPublisher'] == null
         ? null
-        : Element.fromJson(json['element_publisher'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPublisher'] as Map<String, dynamic>),
     contact: (json['contact'] as List)
         ?.map((e) => e == null
             ? null
@@ -84,13 +83,13 @@ ExampleScenario _$ExampleScenarioFromJson(Map<String, dynamic> json) {
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     copyright: json['copyright'] as String,
-    element_copyright: json['element_copyright'] == null
+    elementCopyright: json['elementCopyright'] == null
         ? null
-        : Element.fromJson(json['element_copyright'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementCopyright'] as Map<String, dynamic>),
     purpose: json['purpose'] as String,
-    element_purpose: json['element_purpose'] == null
+    elementPurpose: json['elementPurpose'] == null
         ? null
-        : Element.fromJson(json['element_purpose'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPurpose'] as Map<String, dynamic>),
     actor: (json['actor'] as List)
         ?.map((e) => e == null
             ? null
@@ -115,36 +114,36 @@ Map<String, dynamic> _$ExampleScenarioToJson(ExampleScenario instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'url': instance.url,
-      'element_url': instance.element_url?.toJson(),
+      'elementUrl': instance.elementUrl?.toJson(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'version': instance.version,
-      'element_version': instance.element_version?.toJson(),
+      'elementVersion': instance.elementVersion?.toJson(),
       'name': instance.name,
-      'element_name': instance.element_name?.toJson(),
+      'elementName': instance.elementName?.toJson(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'experimental': instance.experimental,
-      'element_experimental': instance.element_experimental?.toJson(),
+      'elementExperimental': instance.elementExperimental?.toJson(),
       'date': instance.date?.toIso8601String(),
-      'element_date': instance.element_date?.toJson(),
+      'elementDate': instance.elementDate?.toJson(),
       'publisher': instance.publisher,
-      'element_publisher': instance.element_publisher?.toJson(),
+      'elementPublisher': instance.elementPublisher?.toJson(),
       'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
       'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
       'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
       'copyright': instance.copyright,
-      'element_copyright': instance.element_copyright?.toJson(),
+      'elementCopyright': instance.elementCopyright?.toJson(),
       'purpose': instance.purpose,
-      'element_purpose': instance.element_purpose?.toJson(),
+      'elementPurpose': instance.elementPurpose?.toJson(),
       'actor': instance.actor?.map((e) => e?.toJson())?.toList(),
       'instance': instance.instance?.map((e) => e?.toJson())?.toList(),
       'process': instance.process?.map((e) => e?.toJson())?.toList(),
@@ -164,21 +163,21 @@ ExampleScenario_Actor _$ExampleScenario_ActorFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     actorId: json['actorId'] as String,
-    element_actorId: json['element_actorId'] == null
+    elementActorId: json['elementActorId'] == null
         ? null
-        : Element.fromJson(json['element_actorId'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementActorId'] as Map<String, dynamic>),
     type: json['type'] as String,
-    element_type: json['element_type'] == null
+    elementType: json['elementType'] == null
         ? null
-        : Element.fromJson(json['element_type'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
     name: json['name'] as String,
-    element_name: json['element_name'] == null
+    elementName: json['elementName'] == null
         ? null
-        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
     description: json['description'] as String,
-    element_description: json['element_description'] == null
+    elementDescription: json['elementDescription'] == null
         ? null
-        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
   );
 }
 
@@ -190,13 +189,13 @@ Map<String, dynamic> _$ExampleScenario_ActorToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'actorId': instance.actorId,
-      'element_actorId': instance.element_actorId?.toJson(),
+      'elementActorId': instance.elementActorId?.toJson(),
       'type': instance.type,
-      'element_type': instance.element_type?.toJson(),
+      'elementType': instance.elementType?.toJson(),
       'name': instance.name,
-      'element_name': instance.element_name?.toJson(),
+      'elementName': instance.elementName?.toJson(),
       'description': instance.description,
-      'element_description': instance.element_description?.toJson(),
+      'elementDescription': instance.elementDescription?.toJson(),
     };
 
 ExampleScenario_Instance _$ExampleScenario_InstanceFromJson(
@@ -212,21 +211,20 @@ ExampleScenario_Instance _$ExampleScenario_InstanceFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     resourceId: json['resourceId'] as String,
-    element_resourceId: json['element_resourceId'] == null
+    elementResourceId: json['elementResourceId'] == null
         ? null
-        : Element.fromJson(json['element_resourceId'] as Map<String, dynamic>),
-    element_resourceType: json['element_resourceType'] == null
+        : Element.fromJson(json['elementResourceId'] as Map<String, dynamic>),
+    elementResourceType: json['elementResourceType'] == null
         ? null
-        : Element.fromJson(
-            json['element_resourceType'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementResourceType'] as Map<String, dynamic>),
     name: json['name'] as String,
-    element_name: json['element_name'] == null
+    elementName: json['elementName'] == null
         ? null
-        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
     description: json['description'] as String,
-    element_description: json['element_description'] == null
+    elementDescription: json['elementDescription'] == null
         ? null
-        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
     version: (json['version'] as List)
         ?.map((e) => e == null
             ? null
@@ -249,13 +247,13 @@ Map<String, dynamic> _$ExampleScenario_InstanceToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'resourceId': instance.resourceId,
-      'element_resourceId': instance.element_resourceId?.toJson(),
+      'elementResourceId': instance.elementResourceId?.toJson(),
       'resourceType': instance.resourceType,
-      'element_resourceType': instance.element_resourceType?.toJson(),
+      'elementResourceType': instance.elementResourceType?.toJson(),
       'name': instance.name,
-      'element_name': instance.element_name?.toJson(),
+      'elementName': instance.elementName?.toJson(),
       'description': instance.description,
-      'element_description': instance.element_description?.toJson(),
+      'elementDescription': instance.elementDescription?.toJson(),
       'version': instance.version?.map((e) => e?.toJson())?.toList(),
       'containedInstance':
           instance.containedInstance?.map((e) => e?.toJson())?.toList(),
@@ -274,13 +272,13 @@ ExampleScenario_Version _$ExampleScenario_VersionFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     versionId: json['versionId'] as String,
-    element_versionId: json['element_versionId'] == null
+    elementVersionId: json['elementVersionId'] == null
         ? null
-        : Element.fromJson(json['element_versionId'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementVersionId'] as Map<String, dynamic>),
     description: json['description'] as String,
-    element_description: json['element_description'] == null
+    elementDescription: json['elementDescription'] == null
         ? null
-        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
   );
 }
 
@@ -292,9 +290,9 @@ Map<String, dynamic> _$ExampleScenario_VersionToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'versionId': instance.versionId,
-      'element_versionId': instance.element_versionId?.toJson(),
+      'elementVersionId': instance.elementVersionId?.toJson(),
       'description': instance.description,
-      'element_description': instance.element_description?.toJson(),
+      'elementDescription': instance.elementDescription?.toJson(),
     };
 
 ExampleScenario_ContainedInstance _$ExampleScenario_ContainedInstanceFromJson(
@@ -310,13 +308,13 @@ ExampleScenario_ContainedInstance _$ExampleScenario_ContainedInstanceFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     resourceId: json['resourceId'] as String,
-    element_resourceId: json['element_resourceId'] == null
+    elementResourceId: json['elementResourceId'] == null
         ? null
-        : Element.fromJson(json['element_resourceId'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementResourceId'] as Map<String, dynamic>),
     versionId: json['versionId'] as String,
-    element_versionId: json['element_versionId'] == null
+    elementVersionId: json['elementVersionId'] == null
         ? null
-        : Element.fromJson(json['element_versionId'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementVersionId'] as Map<String, dynamic>),
   );
 }
 
@@ -328,9 +326,9 @@ Map<String, dynamic> _$ExampleScenario_ContainedInstanceToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'resourceId': instance.resourceId,
-      'element_resourceId': instance.element_resourceId?.toJson(),
+      'elementResourceId': instance.elementResourceId?.toJson(),
       'versionId': instance.versionId,
-      'element_versionId': instance.element_versionId?.toJson(),
+      'elementVersionId': instance.elementVersionId?.toJson(),
     };
 
 ExampleScenario_Process _$ExampleScenario_ProcessFromJson(
@@ -346,23 +344,23 @@ ExampleScenario_Process _$ExampleScenario_ProcessFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     title: json['title'] as String,
-    element_title: json['element_title'] == null
+    elementTitle: json['elementTitle'] == null
         ? null
-        : Element.fromJson(json['element_title'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementTitle'] as Map<String, dynamic>),
     description: json['description'] as String,
-    element_description: json['element_description'] == null
+    elementDescription: json['elementDescription'] == null
         ? null
-        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
     preConditions: json['preConditions'] as String,
-    element_preConditions: json['element_preConditions'] == null
+    elementPreConditions: json['elementPreConditions'] == null
         ? null
         : Element.fromJson(
-            json['element_preConditions'] as Map<String, dynamic>),
+            json['elementPreConditions'] as Map<String, dynamic>),
     postConditions: json['postConditions'] as String,
-    element_postConditions: json['element_postConditions'] == null
+    elementPostConditions: json['elementPostConditions'] == null
         ? null
         : Element.fromJson(
-            json['element_postConditions'] as Map<String, dynamic>),
+            json['elementPostConditions'] as Map<String, dynamic>),
     step: (json['step'] as List)
         ?.map((e) => e == null
             ? null
@@ -379,13 +377,13 @@ Map<String, dynamic> _$ExampleScenario_ProcessToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'title': instance.title,
-      'element_title': instance.element_title?.toJson(),
+      'elementTitle': instance.elementTitle?.toJson(),
       'description': instance.description,
-      'element_description': instance.element_description?.toJson(),
+      'elementDescription': instance.elementDescription?.toJson(),
       'preConditions': instance.preConditions,
-      'element_preConditions': instance.element_preConditions?.toJson(),
+      'elementPreConditions': instance.elementPreConditions?.toJson(),
       'postConditions': instance.postConditions,
-      'element_postConditions': instance.element_postConditions?.toJson(),
+      'elementPostConditions': instance.elementPostConditions?.toJson(),
       'step': instance.step?.map((e) => e?.toJson())?.toList(),
     };
 
@@ -406,9 +404,9 @@ ExampleScenario_Step _$ExampleScenario_StepFromJson(Map<String, dynamic> json) {
             : ExampleScenario_Process.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     pause: json['pause'] as bool,
-    element_pause: json['element_pause'] == null
+    elementPause: json['elementPause'] == null
         ? null
-        : Element.fromJson(json['element_pause'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPause'] as Map<String, dynamic>),
     operation: json['operation'] == null
         ? null
         : ExampleScenario_Operation.fromJson(
@@ -430,7 +428,7 @@ Map<String, dynamic> _$ExampleScenario_StepToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'process': instance.process?.map((e) => e?.toJson())?.toList(),
       'pause': instance.pause,
-      'element_pause': instance.element_pause?.toJson(),
+      'elementPause': instance.elementPause?.toJson(),
       'operation': instance.operation?.toJson(),
       'alternative': instance.alternative?.map((e) => e?.toJson())?.toList(),
     };
@@ -448,39 +446,39 @@ ExampleScenario_Operation _$ExampleScenario_OperationFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     number: json['number'] as String,
-    element_number: json['element_number'] == null
+    elementNumber: json['elementNumber'] == null
         ? null
-        : Element.fromJson(json['element_number'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementNumber'] as Map<String, dynamic>),
     type: json['type'] as String,
-    element_type: json['element_type'] == null
+    elementType: json['elementType'] == null
         ? null
-        : Element.fromJson(json['element_type'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
     name: json['name'] as String,
-    element_name: json['element_name'] == null
+    elementName: json['elementName'] == null
         ? null
-        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
     initiator: json['initiator'] as String,
-    element_initiator: json['element_initiator'] == null
+    elementInitiator: json['elementInitiator'] == null
         ? null
-        : Element.fromJson(json['element_initiator'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementInitiator'] as Map<String, dynamic>),
     receiver: json['receiver'] as String,
-    element_receiver: json['element_receiver'] == null
+    elementReceiver: json['elementReceiver'] == null
         ? null
-        : Element.fromJson(json['element_receiver'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementReceiver'] as Map<String, dynamic>),
     description: json['description'] as String,
-    element_description: json['element_description'] == null
+    elementDescription: json['elementDescription'] == null
         ? null
-        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
     initiatorActive: json['initiatorActive'] as bool,
-    element_initiatorActive: json['element_initiatorActive'] == null
+    elementInitiatorActive: json['elementInitiatorActive'] == null
         ? null
         : Element.fromJson(
-            json['element_initiatorActive'] as Map<String, dynamic>),
+            json['elementInitiatorActive'] as Map<String, dynamic>),
     receiverActive: json['receiverActive'] as bool,
-    element_receiverActive: json['element_receiverActive'] == null
+    elementReceiverActive: json['elementReceiverActive'] == null
         ? null
         : Element.fromJson(
-            json['element_receiverActive'] as Map<String, dynamic>),
+            json['elementReceiverActive'] as Map<String, dynamic>),
     request: json['request'] == null
         ? null
         : ExampleScenario_ContainedInstance.fromJson(
@@ -500,21 +498,21 @@ Map<String, dynamic> _$ExampleScenario_OperationToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'number': instance.number,
-      'element_number': instance.element_number?.toJson(),
+      'elementNumber': instance.elementNumber?.toJson(),
       'type': instance.type,
-      'element_type': instance.element_type?.toJson(),
+      'elementType': instance.elementType?.toJson(),
       'name': instance.name,
-      'element_name': instance.element_name?.toJson(),
+      'elementName': instance.elementName?.toJson(),
       'initiator': instance.initiator,
-      'element_initiator': instance.element_initiator?.toJson(),
+      'elementInitiator': instance.elementInitiator?.toJson(),
       'receiver': instance.receiver,
-      'element_receiver': instance.element_receiver?.toJson(),
+      'elementReceiver': instance.elementReceiver?.toJson(),
       'description': instance.description,
-      'element_description': instance.element_description?.toJson(),
+      'elementDescription': instance.elementDescription?.toJson(),
       'initiatorActive': instance.initiatorActive,
-      'element_initiatorActive': instance.element_initiatorActive?.toJson(),
+      'elementInitiatorActive': instance.elementInitiatorActive?.toJson(),
       'receiverActive': instance.receiverActive,
-      'element_receiverActive': instance.element_receiverActive?.toJson(),
+      'elementReceiverActive': instance.elementReceiverActive?.toJson(),
       'request': instance.request?.toJson(),
       'response': instance.response?.toJson(),
     };
@@ -532,13 +530,13 @@ ExampleScenario_Alternative _$ExampleScenario_AlternativeFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     title: json['title'] as String,
-    element_title: json['element_title'] == null
+    elementTitle: json['elementTitle'] == null
         ? null
-        : Element.fromJson(json['element_title'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementTitle'] as Map<String, dynamic>),
     description: json['description'] as String,
-    element_description: json['element_description'] == null
+    elementDescription: json['elementDescription'] == null
         ? null
-        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
     step: (json['step'] as List)
         ?.map((e) => e == null
             ? null
@@ -555,8 +553,8 @@ Map<String, dynamic> _$ExampleScenario_AlternativeToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'title': instance.title,
-      'element_title': instance.element_title?.toJson(),
+      'elementTitle': instance.elementTitle?.toJson(),
       'description': instance.description,
-      'element_description': instance.element_description?.toJson(),
+      'elementDescription': instance.elementDescription?.toJson(),
       'step': instance.step?.map((e) => e?.toJson())?.toList(),
     };

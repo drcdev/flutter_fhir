@@ -20,7 +20,7 @@ Timing _$TimingFromJson(Map<String, dynamic> json) {
     event: (json['event'] as List)
         ?.map((e) => e == null ? null : DateTime.parse(e as String))
         ?.toList(),
-    element_event: (json['element_event'] as List)
+    elementEvent: (json['elementEvent'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -39,8 +39,7 @@ Map<String, dynamic> _$TimingToJson(Timing instance) => <String, dynamic>{
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'event': instance.event?.map((e) => e?.toIso8601String())?.toList(),
-      'element_event':
-          instance.element_event?.map((e) => e?.toJson())?.toList(),
+      'elementEvent': instance.elementEvent?.map((e) => e?.toJson())?.toList(),
       'repeat': instance.repeat?.toJson(),
       'code': instance.code?.toJson(),
     };
@@ -66,66 +65,64 @@ Timing_Repeat _$Timing_RepeatFromJson(Map<String, dynamic> json) {
         ? null
         : Period.fromJson(json['boundsPeriod'] as Map<String, dynamic>),
     count: json['count'] as int,
-    element_count: json['element_count'] == null
+    elementCount: json['elementCount'] == null
         ? null
-        : Element.fromJson(json['element_count'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementCount'] as Map<String, dynamic>),
     countMax: json['countMax'] as int,
-    element_countMax: json['element_countMax'] == null
+    elementCountMax: json['elementCountMax'] == null
         ? null
-        : Element.fromJson(json['element_countMax'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementCountMax'] as Map<String, dynamic>),
     duration: (json['duration'] as num)?.toDouble(),
-    element_duration: json['element_duration'] == null
+    elementDuration: json['elementDuration'] == null
         ? null
-        : Element.fromJson(json['element_duration'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDuration'] as Map<String, dynamic>),
     durationMax: (json['durationMax'] as num)?.toDouble(),
-    element_durationMax: json['element_durationMax'] == null
+    elementDurationMax: json['elementDurationMax'] == null
         ? null
-        : Element.fromJson(json['element_durationMax'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDurationMax'] as Map<String, dynamic>),
     durationUnit: json['durationUnit'] as String,
-    element_durationUnit: json['element_durationUnit'] == null
+    elementDurationUnit: json['elementDurationUnit'] == null
         ? null
-        : Element.fromJson(
-            json['element_durationUnit'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDurationUnit'] as Map<String, dynamic>),
     frequency: json['frequency'] as int,
-    element_frequency: json['element_frequency'] == null
+    elementFrequency: json['elementFrequency'] == null
         ? null
-        : Element.fromJson(json['element_frequency'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementFrequency'] as Map<String, dynamic>),
     frequencyMax: json['frequencyMax'] as int,
-    element_frequencyMax: json['element_frequencyMax'] == null
+    elementFrequencyMax: json['elementFrequencyMax'] == null
         ? null
-        : Element.fromJson(
-            json['element_frequencyMax'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementFrequencyMax'] as Map<String, dynamic>),
     period: (json['period'] as num)?.toDouble(),
-    element_period: json['element_period'] == null
+    elementPeriod: json['elementPeriod'] == null
         ? null
-        : Element.fromJson(json['element_period'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPeriod'] as Map<String, dynamic>),
     periodMax: (json['periodMax'] as num)?.toDouble(),
-    element_periodMax: json['element_periodMax'] == null
+    elementPeriodMax: json['elementPeriodMax'] == null
         ? null
-        : Element.fromJson(json['element_periodMax'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPeriodMax'] as Map<String, dynamic>),
     periodUnit: json['periodUnit'] as String,
-    element_periodUnit: json['element_periodUnit'] == null
+    elementPeriodUnit: json['elementPeriodUnit'] == null
         ? null
-        : Element.fromJson(json['element_periodUnit'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPeriodUnit'] as Map<String, dynamic>),
     dayOfWeek: (json['dayOfWeek'] as List)?.map((e) => e as String)?.toList(),
-    element_dayOfWeek: (json['element_dayOfWeek'] as List)
+    elementDayOfWeek: (json['elementDayOfWeek'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     timeOfDay: (json['timeOfDay'] as List)?.map((e) => e as String)?.toList(),
-    element_timeOfDay: (json['element_timeOfDay'] as List)
+    elementTimeOfDay: (json['elementTimeOfDay'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     when: (json['when'] as List)?.map((e) => e as String)?.toList(),
-    element_when: (json['element_when'] as List)
+    elementWhen: (json['elementWhen'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     offset: json['offset'] as int,
-    element_offset: json['element_offset'] == null
+    elementOffset: json['elementOffset'] == null
         ? null
-        : Element.fromJson(json['element_offset'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementOffset'] as Map<String, dynamic>),
   );
 }
 
@@ -139,33 +136,33 @@ Map<String, dynamic> _$Timing_RepeatToJson(Timing_Repeat instance) =>
       'boundsRange': instance.boundsRange?.toJson(),
       'boundsPeriod': instance.boundsPeriod?.toJson(),
       'count': instance.count,
-      'element_count': instance.element_count?.toJson(),
+      'elementCount': instance.elementCount?.toJson(),
       'countMax': instance.countMax,
-      'element_countMax': instance.element_countMax?.toJson(),
+      'elementCountMax': instance.elementCountMax?.toJson(),
       'duration': instance.duration,
-      'element_duration': instance.element_duration?.toJson(),
+      'elementDuration': instance.elementDuration?.toJson(),
       'durationMax': instance.durationMax,
-      'element_durationMax': instance.element_durationMax?.toJson(),
+      'elementDurationMax': instance.elementDurationMax?.toJson(),
       'durationUnit': instance.durationUnit,
-      'element_durationUnit': instance.element_durationUnit?.toJson(),
+      'elementDurationUnit': instance.elementDurationUnit?.toJson(),
       'frequency': instance.frequency,
-      'element_frequency': instance.element_frequency?.toJson(),
+      'elementFrequency': instance.elementFrequency?.toJson(),
       'frequencyMax': instance.frequencyMax,
-      'element_frequencyMax': instance.element_frequencyMax?.toJson(),
+      'elementFrequencyMax': instance.elementFrequencyMax?.toJson(),
       'period': instance.period,
-      'element_period': instance.element_period?.toJson(),
+      'elementPeriod': instance.elementPeriod?.toJson(),
       'periodMax': instance.periodMax,
-      'element_periodMax': instance.element_periodMax?.toJson(),
+      'elementPeriodMax': instance.elementPeriodMax?.toJson(),
       'periodUnit': instance.periodUnit,
-      'element_periodUnit': instance.element_periodUnit?.toJson(),
+      'elementPeriodUnit': instance.elementPeriodUnit?.toJson(),
       'dayOfWeek': instance.dayOfWeek,
-      'element_dayOfWeek':
-          instance.element_dayOfWeek?.map((e) => e?.toJson())?.toList(),
+      'elementDayOfWeek':
+          instance.elementDayOfWeek?.map((e) => e?.toJson())?.toList(),
       'timeOfDay': instance.timeOfDay,
-      'element_timeOfDay':
-          instance.element_timeOfDay?.map((e) => e?.toJson())?.toList(),
+      'elementTimeOfDay':
+          instance.elementTimeOfDay?.map((e) => e?.toJson())?.toList(),
       'when': instance.when,
-      'element_when': instance.element_when?.map((e) => e?.toJson())?.toList(),
+      'elementWhen': instance.elementWhen?.map((e) => e?.toJson())?.toList(),
       'offset': instance.offset,
-      'element_offset': instance.element_offset?.toJson(),
+      'elementOffset': instance.elementOffset?.toJson(),
     };

@@ -7,6 +7,10 @@ import re
 def lowcc(string):
     return string[0].lower()+string[1:len(string)]
 
+#makes first letter of word lowercase
+def upcc(string):
+    return string[0].upper()+string[1:len(string)]
+
 #returns the item if it's a primitive, otherwise returns type of primitive
 def primitiveDart(string):
     primitivesDart = {'base64Binary': 'String', 'boolean': 'bool', 
@@ -46,7 +50,7 @@ def less70(string):
 
 def rem_(string):
     if(string[0] == '_'):
-        return('element' + string)
+        return('element' + upcc(string[1:len(string)]))
     if(string == 'class'):
         return('classs')
     if(string == 'extends'):

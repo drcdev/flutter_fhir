@@ -13,20 +13,20 @@ SubstanceProtein _$SubstanceProteinFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -41,13 +41,13 @@ SubstanceProtein _$SubstanceProteinFromJson(Map<String, dynamic> json) {
         : CodeableConcept.fromJson(
             json['sequenceType'] as Map<String, dynamic>),
     numberOfSubunits: json['numberOfSubunits'] as int,
-    element_numberOfSubunits: json['element_numberOfSubunits'] == null
+    elementNumberOfSubunits: json['elementNumberOfSubunits'] == null
         ? null
         : Element.fromJson(
-            json['element_numberOfSubunits'] as Map<String, dynamic>),
+            json['elementNumberOfSubunits'] as Map<String, dynamic>),
     disulfideLinkage:
         (json['disulfideLinkage'] as List)?.map((e) => e as String)?.toList(),
-    element_disulfideLinkage: (json['element_disulfideLinkage'] as List)
+    elementDisulfideLinkage: (json['elementDisulfideLinkage'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -64,9 +64,9 @@ Map<String, dynamic> _$SubstanceProteinToJson(SubstanceProtein instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -74,10 +74,10 @@ Map<String, dynamic> _$SubstanceProteinToJson(SubstanceProtein instance) =>
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'sequenceType': instance.sequenceType?.toJson(),
       'numberOfSubunits': instance.numberOfSubunits,
-      'element_numberOfSubunits': instance.element_numberOfSubunits?.toJson(),
+      'elementNumberOfSubunits': instance.elementNumberOfSubunits?.toJson(),
       'disulfideLinkage': instance.disulfideLinkage,
-      'element_disulfideLinkage':
-          instance.element_disulfideLinkage?.map((e) => e?.toJson())?.toList(),
+      'elementDisulfideLinkage':
+          instance.elementDisulfideLinkage?.map((e) => e?.toJson())?.toList(),
       'subunit': instance.subunit?.map((e) => e?.toJson())?.toList(),
     };
 
@@ -94,17 +94,17 @@ SubstanceProtein_Subunit _$SubstanceProtein_SubunitFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     subunit: json['subunit'] as int,
-    element_subunit: json['element_subunit'] == null
+    elementSubunit: json['elementSubunit'] == null
         ? null
-        : Element.fromJson(json['element_subunit'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSubunit'] as Map<String, dynamic>),
     sequence: json['sequence'] as String,
-    element_sequence: json['element_sequence'] == null
+    elementSequence: json['elementSequence'] == null
         ? null
-        : Element.fromJson(json['element_sequence'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSequence'] as Map<String, dynamic>),
     length: json['length'] as int,
-    element_length: json['element_length'] == null
+    elementLength: json['elementLength'] == null
         ? null
-        : Element.fromJson(json['element_length'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLength'] as Map<String, dynamic>),
     sequenceAttachment: json['sequenceAttachment'] == null
         ? null
         : Attachment.fromJson(
@@ -114,19 +114,19 @@ SubstanceProtein_Subunit _$SubstanceProtein_SubunitFromJson(
         : Identifier.fromJson(
             json['nTerminalModificationId'] as Map<String, dynamic>),
     nTerminalModification: json['nTerminalModification'] as String,
-    element_nTerminalModification: json['element_nTerminalModification'] == null
+    elementNTerminalModification: json['elementNTerminalModification'] == null
         ? null
         : Element.fromJson(
-            json['element_nTerminalModification'] as Map<String, dynamic>),
+            json['elementNTerminalModification'] as Map<String, dynamic>),
     cTerminalModificationId: json['cTerminalModificationId'] == null
         ? null
         : Identifier.fromJson(
             json['cTerminalModificationId'] as Map<String, dynamic>),
     cTerminalModification: json['cTerminalModification'] as String,
-    element_cTerminalModification: json['element_cTerminalModification'] == null
+    elementCTerminalModification: json['elementCTerminalModification'] == null
         ? null
         : Element.fromJson(
-            json['element_cTerminalModification'] as Map<String, dynamic>),
+            json['elementCTerminalModification'] as Map<String, dynamic>),
   );
 }
 
@@ -138,18 +138,18 @@ Map<String, dynamic> _$SubstanceProtein_SubunitToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'subunit': instance.subunit,
-      'element_subunit': instance.element_subunit?.toJson(),
+      'elementSubunit': instance.elementSubunit?.toJson(),
       'sequence': instance.sequence,
-      'element_sequence': instance.element_sequence?.toJson(),
+      'elementSequence': instance.elementSequence?.toJson(),
       'length': instance.length,
-      'element_length': instance.element_length?.toJson(),
+      'elementLength': instance.elementLength?.toJson(),
       'sequenceAttachment': instance.sequenceAttachment?.toJson(),
       'nTerminalModificationId': instance.nTerminalModificationId?.toJson(),
       'nTerminalModification': instance.nTerminalModification,
-      'element_nTerminalModification':
-          instance.element_nTerminalModification?.toJson(),
+      'elementNTerminalModification':
+          instance.elementNTerminalModification?.toJson(),
       'cTerminalModificationId': instance.cTerminalModificationId?.toJson(),
       'cTerminalModification': instance.cTerminalModification,
-      'element_cTerminalModification':
-          instance.element_cTerminalModification?.toJson(),
+      'elementCTerminalModification':
+          instance.elementCTerminalModification?.toJson(),
     };

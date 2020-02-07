@@ -42,7 +42,7 @@ class Timing {
   List<DateTime> event;
 
   //  Extensions for event
-  List<Element> element_event;
+  List<Element> elementEvent;
 
   //  A set of rules that describe when the event is scheduled.
   Timing_Repeat repeat;
@@ -61,7 +61,7 @@ Timing(
     this.extension,
     this.modifierExtension,
     this.event,
-    this.element_event,
+    this.elementEvent,
     this.repeat,
     this.code
     });
@@ -120,14 +120,14 @@ class Timing_Repeat {
   int count;
 
   //  Extensions for count
-  Element element_count;
+  Element elementCount;
 
   //  If present, indicates that the count is a range - so to perform the
   // action between [count] and [countMax] times.
   int countMax;
 
   //  Extensions for countMax
-  Element element_countMax;
+  Element elementCountMax;
 
   //  How long this thing happens for when it happens. If durationMax is
   // present, this element indicates the lower bound of the allowed range of
@@ -135,20 +135,20 @@ class Timing_Repeat {
   double duration;
 
   //  Extensions for duration
-  Element element_duration;
+  Element elementDuration;
 
   //  If present, indicates that the duration is a range - so to perform the
   // action between [duration] and [durationMax] time length.
   double durationMax;
 
   //  Extensions for durationMax
-  Element element_durationMax;
+  Element elementDurationMax;
 
   //  The units of time for the duration, in UCUM units.
   String durationUnit; // <code> enum: s/min/h/d/wk/mo/a;
 
   //  Extensions for durationUnit
-  Element element_durationUnit;
+  Element elementDurationUnit;
 
   //  The number of times to repeat the action within the specified period.
   // If frequencyMax is present, this element indicates the lower bound of
@@ -156,7 +156,7 @@ class Timing_Repeat {
   int frequency;
 
   //  Extensions for frequency
-  Element element_frequency;
+  Element elementFrequency;
 
   //  If present, indicates that the frequency is a range - so to repeat
   // between [frequency] and [frequencyMax] times within the period or
@@ -164,7 +164,7 @@ class Timing_Repeat {
   int frequencyMax;
 
   //  Extensions for frequencyMax
-  Element element_frequencyMax;
+  Element elementFrequencyMax;
 
   //  Indicates the duration of time over which repetitions are to occur;
   // e.g. to express "3 times per day", 3 would be the frequency and "1 day"
@@ -173,7 +173,7 @@ class Timing_Repeat {
   double period;
 
   //  Extensions for period
-  Element element_period;
+  Element elementPeriod;
 
   //  If present, indicates that the period is a range from [period] to
   // [periodMax], allowing expressing concepts such as "do this once every
@@ -181,33 +181,33 @@ class Timing_Repeat {
   double periodMax;
 
   //  Extensions for periodMax
-  Element element_periodMax;
+  Element elementPeriodMax;
 
   //  The units of time for the period in UCUM units.
   String periodUnit; // <code> enum: s/min/h/d/wk/mo/a;
 
   //  Extensions for periodUnit
-  Element element_periodUnit;
+  Element elementPeriodUnit;
 
   //  If one or more days of week is provided, then the action happens only
   // on the specified day(s).
   List<String> dayOfWeek;
 
   //  Extensions for dayOfWeek
-  List<Element> element_dayOfWeek;
+  List<Element> elementDayOfWeek;
 
   //  Specified time of day for action to take place.
   List<String> timeOfDay;
 
   //  Extensions for timeOfDay
-  List<Element> element_timeOfDay;
+  List<Element> elementTimeOfDay;
 
   //  An approximate time period during the day, potentially linked to an
   // event of daily living that indicates when the action should occur.
   List<String> when; // <code> enum: MORN/MORN.early/MORN.late/NOON/AFT/AFT.early/AFT.late/EVE/EVE.early/EVE.late/NIGHT/PHS/HS/WAKE/C/CM/CD/CV/AC/ACM/ACD/ACV/PC/PCM/PCD/PCV> when;
 
   //  Extensions for when
-  List<Element> element_when;
+  List<Element> elementWhen;
 
   //  The number of minutes from the event. If the event code does not
   // indicate whether the minutes is before or after the event, then the
@@ -215,7 +215,7 @@ class Timing_Repeat {
   int offset;
 
   //  Extensions for offset
-  Element element_offset;
+  Element elementOffset;
 
 Timing_Repeat(
   {this.id,
@@ -225,33 +225,33 @@ Timing_Repeat(
     this.boundsRange,
     this.boundsPeriod,
     this.count,
-    this.element_count,
+    this.elementCount,
     this.countMax,
-    this.element_countMax,
+    this.elementCountMax,
     this.duration,
-    this.element_duration,
+    this.elementDuration,
     this.durationMax,
-    this.element_durationMax,
+    this.elementDurationMax,
     this.durationUnit,
-    this.element_durationUnit,
+    this.elementDurationUnit,
     this.frequency,
-    this.element_frequency,
+    this.elementFrequency,
     this.frequencyMax,
-    this.element_frequencyMax,
+    this.elementFrequencyMax,
     this.period,
-    this.element_period,
+    this.elementPeriod,
     this.periodMax,
-    this.element_periodMax,
+    this.elementPeriodMax,
     this.periodUnit,
-    this.element_periodUnit,
+    this.elementPeriodUnit,
     this.dayOfWeek,
-    this.element_dayOfWeek,
+    this.elementDayOfWeek,
     this.timeOfDay,
-    this.element_timeOfDay,
+    this.elementTimeOfDay,
     this.when,
-    this.element_when,
+    this.elementWhen,
     this.offset,
-    this.element_offset
+    this.elementOffset
     });
 
   factory Timing_Repeat.fromJson(Map<String, dynamic> json) => _$Timing_RepeatFromJson(json);

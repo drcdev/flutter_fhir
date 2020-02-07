@@ -14,13 +14,13 @@ Contributor _$ContributorFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     type: json['type'] as String,
-    element_type: json['element_type'] == null
+    elementType: json['elementType'] == null
         ? null
-        : Element.fromJson(json['element_type'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
     name: json['name'] as String,
-    element_name: json['element_name'] == null
+    elementName: json['elementName'] == null
         ? null
-        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
     contact: (json['contact'] as List)
         ?.map((e) => e == null
             ? null
@@ -34,8 +34,8 @@ Map<String, dynamic> _$ContributorToJson(Contributor instance) =>
       'id': instance.id,
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'type': instance.type,
-      'element_type': instance.element_type?.toJson(),
+      'elementType': instance.elementType?.toJson(),
       'name': instance.name,
-      'element_name': instance.element_name?.toJson(),
+      'elementName': instance.elementName?.toJson(),
       'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
     };

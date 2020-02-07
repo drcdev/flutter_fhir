@@ -35,13 +35,13 @@ class SubstanceReferenceInformation {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -54,7 +54,7 @@ class SubstanceReferenceInformation {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -83,7 +83,7 @@ class SubstanceReferenceInformation {
   String comment;
 
   //  Extensions for comment
-  Element element_comment;
+  Element elementComment;
 
   //  Todo.
   List<SubstanceReferenceInformation_Gene> gene;
@@ -101,15 +101,15 @@ SubstanceReferenceInformation(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.comment,
-    this.element_comment,
+    this.elementComment,
     this.gene,
     this.geneElement,
     this.classification,
@@ -331,7 +331,7 @@ class SubstanceReferenceInformation_Target {
   String amountString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for amountString
-  Element element_amountString;
+  Element elementAmountString;
 
   //  Todo.
   CodeableConcept amountType;
@@ -351,7 +351,7 @@ SubstanceReferenceInformation_Target(
     this.amountQuantity,
     this.amountRange,
     this.amountString,
-    this.element_amountString,
+    this.elementAmountString,
     this.amountType,
     this.source
     });

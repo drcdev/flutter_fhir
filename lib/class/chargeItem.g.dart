@@ -19,20 +19,20 @@ ChargeItem _$ChargeItemFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -48,7 +48,7 @@ ChargeItem _$ChargeItemFromJson(Map<String, dynamic> json) {
         ?.toList(),
     definitionUri:
         (json['definitionUri'] as List)?.map((e) => e as String)?.toList(),
-    element_definitionUri: (json['element_definitionUri'] as List)
+    elementDefinitionUri: (json['elementDefinitionUri'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -56,9 +56,9 @@ ChargeItem _$ChargeItemFromJson(Map<String, dynamic> json) {
         ?.map((e) => e as String)
         ?.toList(),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     partOf: (json['partOf'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
@@ -67,10 +67,10 @@ ChargeItem _$ChargeItemFromJson(Map<String, dynamic> json) {
         ? null
         : Reference.fromJson(json['context'] as Map<String, dynamic>),
     occurrenceDateTime: json['occurrenceDateTime'] as String,
-    element_occurrenceDateTime: json['element_occurrenceDateTime'] == null
+    elementOccurrenceDateTime: json['elementOccurrenceDateTime'] == null
         ? null
         : Element.fromJson(
-            json['element_occurrenceDateTime'] as Map<String, dynamic>),
+            json['elementOccurrenceDateTime'] as Map<String, dynamic>),
     occurrencePeriod: json['occurrencePeriod'] == null
         ? null
         : Period.fromJson(json['occurrencePeriod'] as Map<String, dynamic>),
@@ -102,27 +102,27 @@ ChargeItem _$ChargeItemFromJson(Map<String, dynamic> json) {
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     factorOverride: (json['factorOverride'] as num)?.toDouble(),
-    element_factorOverride: json['element_factorOverride'] == null
+    elementFactorOverride: json['elementFactorOverride'] == null
         ? null
         : Element.fromJson(
-            json['element_factorOverride'] as Map<String, dynamic>),
+            json['elementFactorOverride'] as Map<String, dynamic>),
     priceOverride: json['priceOverride'] == null
         ? null
         : Money.fromJson(json['priceOverride'] as Map<String, dynamic>),
     overrideReason: json['overrideReason'] as String,
-    element_overrideReason: json['element_overrideReason'] == null
+    elementOverrideReason: json['elementOverrideReason'] == null
         ? null
         : Element.fromJson(
-            json['element_overrideReason'] as Map<String, dynamic>),
+            json['elementOverrideReason'] as Map<String, dynamic>),
     enterer: json['enterer'] == null
         ? null
         : Reference.fromJson(json['enterer'] as Map<String, dynamic>),
     enteredDate: json['enteredDate'] == null
         ? null
         : DateTime.parse(json['enteredDate'] as String),
-    element_enteredDate: json['element_enteredDate'] == null
+    elementEnteredDate: json['elementEnteredDate'] == null
         ? null
-        : Element.fromJson(json['element_enteredDate'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementEnteredDate'] as Map<String, dynamic>),
     reason: (json['reason'] as List)
         ?.map((e) => e == null
             ? null
@@ -159,9 +159,9 @@ Map<String, dynamic> _$ChargeItemToJson(ChargeItem instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -169,18 +169,17 @@ Map<String, dynamic> _$ChargeItemToJson(ChargeItem instance) =>
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'definitionUri': instance.definitionUri,
-      'element_definitionUri':
-          instance.element_definitionUri?.map((e) => e?.toJson())?.toList(),
+      'elementDefinitionUri':
+          instance.elementDefinitionUri?.map((e) => e?.toJson())?.toList(),
       'definitionCanonical': instance.definitionCanonical,
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'partOf': instance.partOf?.map((e) => e?.toJson())?.toList(),
       'code': instance.code?.toJson(),
       'subject': instance.subject?.toJson(),
       'context': instance.context?.toJson(),
       'occurrenceDateTime': instance.occurrenceDateTime,
-      'element_occurrenceDateTime':
-          instance.element_occurrenceDateTime?.toJson(),
+      'elementOccurrenceDateTime': instance.elementOccurrenceDateTime?.toJson(),
       'occurrencePeriod': instance.occurrencePeriod?.toJson(),
       'occurrenceTiming': instance.occurrenceTiming?.toJson(),
       'performer': instance.performer?.map((e) => e?.toJson())?.toList(),
@@ -190,13 +189,13 @@ Map<String, dynamic> _$ChargeItemToJson(ChargeItem instance) =>
       'quantity': instance.quantity?.toJson(),
       'bodysite': instance.bodysite?.map((e) => e?.toJson())?.toList(),
       'factorOverride': instance.factorOverride,
-      'element_factorOverride': instance.element_factorOverride?.toJson(),
+      'elementFactorOverride': instance.elementFactorOverride?.toJson(),
       'priceOverride': instance.priceOverride?.toJson(),
       'overrideReason': instance.overrideReason,
-      'element_overrideReason': instance.element_overrideReason?.toJson(),
+      'elementOverrideReason': instance.elementOverrideReason?.toJson(),
       'enterer': instance.enterer?.toJson(),
       'enteredDate': instance.enteredDate?.toIso8601String(),
-      'element_enteredDate': instance.element_enteredDate?.toJson(),
+      'elementEnteredDate': instance.elementEnteredDate?.toJson(),
       'reason': instance.reason?.map((e) => e?.toJson())?.toList(),
       'service': instance.service?.map((e) => e?.toJson())?.toList(),
       'productReference': instance.productReference?.toJson(),

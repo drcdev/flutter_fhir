@@ -35,13 +35,13 @@ class QuestionnaireResponse {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -54,7 +54,7 @@ class QuestionnaireResponse {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -103,7 +103,7 @@ class QuestionnaireResponse {
   String status; // <code> enum: in-progress/completed/amended/entered-in-error/stopped;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  The subject of the questionnaire response.  This could be a patient,
   // organization, practitioner, device, etc.  This is who/what the answers
@@ -118,7 +118,7 @@ class QuestionnaireResponse {
   DateTime authored;
 
   //  Extensions for authored
-  Element element_authored;
+  Element elementAuthored;
 
   //  Person who received the answers to the questions in the
   // QuestionnaireResponse and recorded them in the system.
@@ -135,9 +135,9 @@ QuestionnaireResponse(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -147,11 +147,11 @@ QuestionnaireResponse(
     this.partOf,
     this.questionnaire,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.subject,
     this.encounter,
     this.authored,
-    this.element_authored,
+    this.elementAuthored,
     this.author,
     this.source,
     this.item
@@ -195,21 +195,21 @@ class QuestionnaireResponse_Item {
   String linkId;
 
   //  Extensions for linkId
-  Element element_linkId;
+  Element elementLinkId;
 
   //  A reference to an [[[ElementDefinition]]] that provides the details
   // for the item.
   String definition;
 
   //  Extensions for definition
-  Element element_definition;
+  Element elementDefinition;
 
   //  Text that is displayed above the contents of the group or as the text
   // of the question being answered.
   String text;
 
   //  Extensions for text
-  Element element_text;
+  Element elementText;
 
   //  The respondent's answer(s) to the question.
   List<QuestionnaireResponse_Answer> answer;
@@ -222,11 +222,11 @@ QuestionnaireResponse_Item(
     this.extension,
     this.modifierExtension,
     this.linkId,
-    this.element_linkId,
+    this.elementLinkId,
     this.definition,
-    this.element_definition,
+    this.elementDefinition,
     this.text,
-    this.element_text,
+    this.elementText,
     this.answer,
     this.item
     });
@@ -269,56 +269,56 @@ class QuestionnaireResponse_Answer {
   bool valueBoolean; //  pattern: ^true|false$
 
   //  Extensions for valueBoolean
-  Element element_valueBoolean;
+  Element elementValueBoolean;
 
   //  The answer (or one of the answers) provided by the respondent to the
   // question.
   double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
 
   //  Extensions for valueDecimal
-  Element element_valueDecimal;
+  Element elementValueDecimal;
 
   //  The answer (or one of the answers) provided by the respondent to the
   // question.
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
 
   //  Extensions for valueInteger
-  Element element_valueInteger;
+  Element elementValueInteger;
 
   //  The answer (or one of the answers) provided by the respondent to the
   // question.
   String valueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for valueDate
-  Element element_valueDate;
+  Element elementValueDate;
 
   //  The answer (or one of the answers) provided by the respondent to the
   // question.
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for valueDateTime
-  Element element_valueDateTime;
+  Element elementValueDateTime;
 
   //  The answer (or one of the answers) provided by the respondent to the
   // question.
   String valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
 
   //  Extensions for valueTime
-  Element element_valueTime;
+  Element elementValueTime;
 
   //  The answer (or one of the answers) provided by the respondent to the
   // question.
   String valueString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for valueString
-  Element element_valueString;
+  Element elementValueString;
 
   //  The answer (or one of the answers) provided by the respondent to the
   // question.
   String valueUri; //  pattern: ^\S*$
 
   //  Extensions for valueUri
-  Element element_valueUri;
+  Element elementValueUri;
 
   //  The answer (or one of the answers) provided by the respondent to the
   // question.
@@ -344,21 +344,21 @@ QuestionnaireResponse_Answer(
     this.extension,
     this.modifierExtension,
     this.valueBoolean,
-    this.element_valueBoolean,
+    this.elementValueBoolean,
     this.valueDecimal,
-    this.element_valueDecimal,
+    this.elementValueDecimal,
     this.valueInteger,
-    this.element_valueInteger,
+    this.elementValueInteger,
     this.valueDate,
-    this.element_valueDate,
+    this.elementValueDate,
     this.valueDateTime,
-    this.element_valueDateTime,
+    this.elementValueDateTime,
     this.valueTime,
-    this.element_valueTime,
+    this.elementValueTime,
     this.valueString,
-    this.element_valueString,
+    this.elementValueString,
     this.valueUri,
-    this.element_valueUri,
+    this.elementValueUri,
     this.valueAttachment,
     this.valueCoding,
     this.valueQuantity,

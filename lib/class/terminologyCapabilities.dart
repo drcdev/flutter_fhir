@@ -33,13 +33,13 @@ class TerminologyCapabilities {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -52,7 +52,7 @@ class TerminologyCapabilities {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -88,7 +88,7 @@ class TerminologyCapabilities {
   String url;
 
   //  Extensions for url
-  Element element_url;
+  Element elementUrl;
 
   //  The identifier that is used to identify this version of the
   // terminology capabilities when it is referenced in a specification,
@@ -100,7 +100,7 @@ class TerminologyCapabilities {
   String version;
 
   //  Extensions for version
-  Element element_version;
+  Element elementVersion;
 
   //  A natural language name identifying the terminology capabilities. This
   // name should be usable as an identifier for the module by machine
@@ -108,21 +108,21 @@ class TerminologyCapabilities {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  A short, descriptive, user-friendly title for the terminology
   // capabilities.
   String title;
 
   //  Extensions for title
-  Element element_title;
+  Element elementTitle;
 
   //  The status of this terminology capabilities. Enables tracking the
   // life-cycle of the content.
   String status; // <code> enum: draft/active/retired/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  A Boolean value to indicate that this terminology capabilities is
   // authored for testing purposes (or education/evaluation/marketing) and
@@ -130,7 +130,7 @@ class TerminologyCapabilities {
   bool experimental;
 
   //  Extensions for experimental
-  Element element_experimental;
+  Element elementExperimental;
 
   //  The date  (and optionally time) when the terminology capabilities was
   // published. The date must change when the business version changes and
@@ -140,14 +140,14 @@ class TerminologyCapabilities {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  The name of the organization or individual that published the
   // terminology capabilities.
   String publisher;
 
   //  Extensions for publisher
-  Element element_publisher;
+  Element elementPublisher;
 
   //  Contact details to assist a user in finding and communicating with the
   // publisher.
@@ -161,7 +161,7 @@ class TerminologyCapabilities {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  The content was developed with a focus and intent of supporting the
   // contexts that are listed. These contexts may be general categories
@@ -179,7 +179,7 @@ class TerminologyCapabilities {
   String purpose;
 
   //  Extensions for purpose
-  Element element_purpose;
+  Element elementPurpose;
 
   //  A copyright statement relating to the terminology capabilities and/or
   // its contents. Copyright statements are generally legal restrictions on
@@ -187,7 +187,7 @@ class TerminologyCapabilities {
   String copyright;
 
   //  Extensions for copyright
-  Element element_copyright;
+  Element elementCopyright;
 
   //  The way that this statement is intended to be used, to describe an
   // actual running instance of software, a particular product (kind, not
@@ -196,7 +196,7 @@ class TerminologyCapabilities {
   String kind;
 
   //  Extensions for kind
-  Element element_kind;
+  Element elementKind;
 
   //  Software that is covered by this terminology capability statement.  It
   // is used when the statement describes the capabilities of a particular
@@ -212,7 +212,7 @@ class TerminologyCapabilities {
   bool lockedDate;
 
   //  Extensions for lockedDate
-  Element element_lockedDate;
+  Element elementLockedDate;
 
   //  Identifies a code system that is supported by the server. If there is
   // a no code system URL, then this declares the general assumptions a
@@ -228,7 +228,7 @@ class TerminologyCapabilities {
   String codeSearch; // <code> enum: explicit/all;
 
   //  Extensions for codeSearch
-  Element element_codeSearch;
+  Element elementCodeSearch;
 
   //  Information about the
   // [ValueSet/$validate-code](valueset-operation-validate-code.html)
@@ -246,48 +246,48 @@ TerminologyCapabilities(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
-    this.element_url,
+    this.elementUrl,
     this.version,
-    this.element_version,
+    this.elementVersion,
     this.name,
-    this.element_name,
+    this.elementName,
     this.title,
-    this.element_title,
+    this.elementTitle,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.experimental,
-    this.element_experimental,
+    this.elementExperimental,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.publisher,
-    this.element_publisher,
+    this.elementPublisher,
     this.contact,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.useContext,
     this.jurisdiction,
     this.purpose,
-    this.element_purpose,
+    this.elementPurpose,
     this.copyright,
-    this.element_copyright,
+    this.elementCopyright,
     this.kind,
-    this.element_kind,
+    this.elementKind,
     this.software,
     this.implementation,
     this.lockedDate,
-    this.element_lockedDate,
+    this.elementLockedDate,
     this.codeSystem,
     this.expansion,
     this.codeSearch,
-    this.element_codeSearch,
+    this.elementCodeSearch,
     this.validateCode,
     this.translation,
     this.closure
@@ -330,22 +330,22 @@ class TerminologyCapabilities_Software {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  The version identifier for the software covered by this statement.
   String version;
 
   //  Extensions for version
-  Element element_version;
+  Element elementVersion;
 
 TerminologyCapabilities_Software(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.name,
-    this.element_name,
+    this.elementName,
     this.version,
-    this.element_version
+    this.elementVersion
     });
 
   factory TerminologyCapabilities_Software.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_SoftwareFromJson(json);
@@ -386,22 +386,22 @@ class TerminologyCapabilities_Implementation {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  An absolute base URL for the implementation.
   String url;
 
   //  Extensions for url
-  Element element_url;
+  Element elementUrl;
 
 TerminologyCapabilities_Implementation(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.url,
-    this.element_url
+    this.elementUrl
     });
 
   factory TerminologyCapabilities_Implementation.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_ImplementationFromJson(json);
@@ -448,7 +448,7 @@ class TerminologyCapabilities_CodeSystem {
   bool subsumption;
 
   //  Extensions for subsumption
-  Element element_subsumption;
+  Element elementSubsumption;
 
 TerminologyCapabilities_CodeSystem(
   {this.id,
@@ -457,7 +457,7 @@ TerminologyCapabilities_CodeSystem(
     this.uri,
     this.version,
     this.subsumption,
-    this.element_subsumption
+    this.elementSubsumption
     });
 
   factory TerminologyCapabilities_CodeSystem.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_CodeSystemFromJson(json);
@@ -498,25 +498,25 @@ class TerminologyCapabilities_Version {
   String code;
 
   //  Extensions for code
-  Element element_code;
+  Element elementCode;
 
   //  If this is the default version for this code system.
   bool isDefault;
 
   //  Extensions for isDefault
-  Element element_isDefault;
+  Element elementIsDefault;
 
   //  If the compositional grammar defined by the code system is supported.
   bool compositional;
 
   //  Extensions for compositional
-  Element element_compositional;
+  Element elementCompositional;
 
   //  Language Displays supported.
   List<String> language;
 
   //  Extensions for language
-  List<Element> element_language;
+  List<Element> elementLanguage;
 
   //  Filter Properties supported.
   List<TerminologyCapabilities_Filter> filter;
@@ -525,23 +525,23 @@ class TerminologyCapabilities_Version {
   List<String> property;
 
   //  Extensions for property
-  List<Element> element_property;
+  List<Element> elementProperty;
 
 TerminologyCapabilities_Version(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.code,
-    this.element_code,
+    this.elementCode,
     this.isDefault,
-    this.element_isDefault,
+    this.elementIsDefault,
     this.compositional,
-    this.element_compositional,
+    this.elementCompositional,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.filter,
     this.property,
-    this.element_property
+    this.elementProperty
     });
 
   factory TerminologyCapabilities_Version.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_VersionFromJson(json);
@@ -581,22 +581,22 @@ class TerminologyCapabilities_Filter {
   String code;
 
   //  Extensions for code
-  Element element_code;
+  Element elementCode;
 
   //  Operations supported for the property.
   List<String> op;
 
   //  Extensions for op
-  List<Element> element_op;
+  List<Element> elementOp;
 
 TerminologyCapabilities_Filter(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.code,
-    this.element_code,
+    this.elementCode,
     this.op,
-    this.element_op
+    this.elementOp
     });
 
   factory TerminologyCapabilities_Filter.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_FilterFromJson(json);
@@ -636,19 +636,19 @@ class TerminologyCapabilities_Expansion {
   bool hierarchical;
 
   //  Extensions for hierarchical
-  Element element_hierarchical;
+  Element elementHierarchical;
 
   //  Whether the server supports paging on expansion.
   bool paging;
 
   //  Extensions for paging
-  Element element_paging;
+  Element elementPaging;
 
   //  Allow request for incomplete expansions?
   bool incomplete;
 
   //  Extensions for incomplete
-  Element element_incomplete;
+  Element elementIncomplete;
 
   //  Supported expansion parameter.
   List<TerminologyCapabilities_Parameter> parameter;
@@ -657,21 +657,21 @@ class TerminologyCapabilities_Expansion {
   String textFilter;
 
   //  Extensions for textFilter
-  Element element_textFilter;
+  Element elementTextFilter;
 
 TerminologyCapabilities_Expansion(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.hierarchical,
-    this.element_hierarchical,
+    this.elementHierarchical,
     this.paging,
-    this.element_paging,
+    this.elementPaging,
     this.incomplete,
-    this.element_incomplete,
+    this.elementIncomplete,
     this.parameter,
     this.textFilter,
-    this.element_textFilter
+    this.elementTextFilter
     });
 
   factory TerminologyCapabilities_Expansion.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_ExpansionFromJson(json);
@@ -711,22 +711,22 @@ class TerminologyCapabilities_Parameter {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  Description of support for parameter.
   String documentation;
 
   //  Extensions for documentation
-  Element element_documentation;
+  Element elementDocumentation;
 
 TerminologyCapabilities_Parameter(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.name,
-    this.element_name,
+    this.elementName,
     this.documentation,
-    this.element_documentation
+    this.elementDocumentation
     });
 
   factory TerminologyCapabilities_Parameter.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_ParameterFromJson(json);
@@ -766,14 +766,14 @@ class TerminologyCapabilities_ValidateCode {
   bool translations;
 
   //  Extensions for translations
-  Element element_translations;
+  Element elementTranslations;
 
 TerminologyCapabilities_ValidateCode(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.translations,
-    this.element_translations
+    this.elementTranslations
     });
 
   factory TerminologyCapabilities_ValidateCode.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_ValidateCodeFromJson(json);
@@ -813,14 +813,14 @@ class TerminologyCapabilities_Translation {
   bool needsMap;
 
   //  Extensions for needsMap
-  Element element_needsMap;
+  Element elementNeedsMap;
 
 TerminologyCapabilities_Translation(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.needsMap,
-    this.element_needsMap
+    this.elementNeedsMap
     });
 
   factory TerminologyCapabilities_Translation.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_TranslationFromJson(json);
@@ -860,14 +860,14 @@ class TerminologyCapabilities_Closure {
   bool translation;
 
   //  Extensions for translation
-  Element element_translation;
+  Element elementTranslation;
 
 TerminologyCapabilities_Closure(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.translation,
-    this.element_translation
+    this.elementTranslation
     });
 
   factory TerminologyCapabilities_Closure.fromJson(Map<String, dynamic> json) => _$TerminologyCapabilities_ClosureFromJson(json);

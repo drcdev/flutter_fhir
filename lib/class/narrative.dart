@@ -26,7 +26,7 @@ class Narrative {
   String status; // <code> enum: generated/extensions/additional/empty;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  The actual narrative content, a stripped down version of XHTML.
   String div;
@@ -36,7 +36,7 @@ Narrative(
     {this.id,
     this.extension,
     this.status,
-    this.element_status
+    this.elementStatus
     });
 
   factory Narrative.fromJson(Map<String, dynamic> json) => _$NarrativeFromJson(json);

@@ -38,13 +38,13 @@ class EventDefinition {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -57,7 +57,7 @@ class EventDefinition {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -92,7 +92,7 @@ class EventDefinition {
   String url;
 
   //  Extensions for url
-  Element element_url;
+  Element elementUrl;
 
   //  A formal identifier that is used to identify this event definition
   // when it is represented in other formats, or referenced in a
@@ -109,7 +109,7 @@ class EventDefinition {
   String version;
 
   //  Extensions for version
-  Element element_version;
+  Element elementVersion;
 
   //  A natural language name identifying the event definition. This name
   // should be usable as an identifier for the module by machine processing
@@ -117,27 +117,27 @@ class EventDefinition {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  A short, descriptive, user-friendly title for the event definition.
   String title;
 
   //  Extensions for title
-  Element element_title;
+  Element elementTitle;
 
   //  An explanatory or alternate title for the event definition giving
   // additional information about its content.
   String subtitle;
 
   //  Extensions for subtitle
-  Element element_subtitle;
+  Element elementSubtitle;
 
   //  The status of this event definition. Enables tracking the life-cycle
   // of the content.
   String status; // <code> enum: draft/active/retired/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  A Boolean value to indicate that this event definition is authored for
   // testing purposes (or education/evaluation/marketing) and is not
@@ -145,7 +145,7 @@ class EventDefinition {
   bool experimental;
 
   //  Extensions for experimental
-  Element element_experimental;
+  Element elementExperimental;
 
   //  A code or group definition that describes the intended subject of the
   // event definition.
@@ -162,14 +162,14 @@ class EventDefinition {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  The name of the organization or individual that published the event
   // definition.
   String publisher;
 
   //  Extensions for publisher
-  Element element_publisher;
+  Element elementPublisher;
 
   //  Contact details to assist a user in finding and communicating with the
   // publisher.
@@ -180,7 +180,7 @@ class EventDefinition {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  The content was developed with a focus and intent of supporting the
   // contexts that are listed. These contexts may be general categories
@@ -198,14 +198,14 @@ class EventDefinition {
   String purpose;
 
   //  Extensions for purpose
-  Element element_purpose;
+  Element elementPurpose;
 
   //  A detailed description of how the event definition is used from a
   // clinical perspective.
   String usage;
 
   //  Extensions for usage
-  Element element_usage;
+  Element elementUsage;
 
   //  A copyright statement relating to the event definition and/or its
   // contents. Copyright statements are generally legal restrictions on the
@@ -213,7 +213,7 @@ class EventDefinition {
   String copyright;
 
   //  Extensions for copyright
-  Element element_copyright;
+  Element elementCopyright;
 
   //  The date on which the resource content was approved by the publisher.
   // Approval happens once when the content is officially approved for
@@ -221,7 +221,7 @@ class EventDefinition {
   String approvalDate;
 
   //  Extensions for approvalDate
-  Element element_approvalDate;
+  Element elementApprovalDate;
 
   //  The date on which the resource content was last reviewed. Review
   // happens periodically after approval but does not change the original
@@ -229,7 +229,7 @@ class EventDefinition {
   String lastReviewDate;
 
   //  Extensions for lastReviewDate
-  Element element_lastReviewDate;
+  Element elementLastReviewDate;
 
   //  The period during which the event definition content was or is planned
   // to be in active use.
@@ -270,49 +270,49 @@ EventDefinition(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
-    this.element_url,
+    this.elementUrl,
     this.identifier,
     this.version,
-    this.element_version,
+    this.elementVersion,
     this.name,
-    this.element_name,
+    this.elementName,
     this.title,
-    this.element_title,
+    this.elementTitle,
     this.subtitle,
-    this.element_subtitle,
+    this.elementSubtitle,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.experimental,
-    this.element_experimental,
+    this.elementExperimental,
     this.subjectCodeableConcept,
     this.subjectReference,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.publisher,
-    this.element_publisher,
+    this.elementPublisher,
     this.contact,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.useContext,
     this.jurisdiction,
     this.purpose,
-    this.element_purpose,
+    this.elementPurpose,
     this.usage,
-    this.element_usage,
+    this.elementUsage,
     this.copyright,
-    this.element_copyright,
+    this.elementCopyright,
     this.approvalDate,
-    this.element_approvalDate,
+    this.elementApprovalDate,
     this.lastReviewDate,
-    this.element_lastReviewDate,
+    this.elementLastReviewDate,
     this.effectivePeriod,
     this.topic,
     this.author,

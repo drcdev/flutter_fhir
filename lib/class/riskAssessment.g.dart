@@ -16,20 +16,20 @@ RiskAssessment _$RiskAssessmentFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -50,9 +50,9 @@ RiskAssessment _$RiskAssessmentFromJson(Map<String, dynamic> json) {
         ? null
         : Reference.fromJson(json['parent'] as Map<String, dynamic>),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     method: json['method'] == null
         ? null
         : CodeableConcept.fromJson(json['method'] as Map<String, dynamic>),
@@ -63,10 +63,10 @@ RiskAssessment _$RiskAssessmentFromJson(Map<String, dynamic> json) {
         ? null
         : Reference.fromJson(json['encounter'] as Map<String, dynamic>),
     occurrenceDateTime: json['occurrenceDateTime'] as String,
-    element_occurrenceDateTime: json['element_occurrenceDateTime'] == null
+    elementOccurrenceDateTime: json['elementOccurrenceDateTime'] == null
         ? null
         : Element.fromJson(
-            json['element_occurrenceDateTime'] as Map<String, dynamic>),
+            json['elementOccurrenceDateTime'] as Map<String, dynamic>),
     occurrencePeriod: json['occurrencePeriod'] == null
         ? null
         : Period.fromJson(json['occurrencePeriod'] as Map<String, dynamic>),
@@ -95,9 +95,9 @@ RiskAssessment _$RiskAssessmentFromJson(Map<String, dynamic> json) {
             : RiskAssessment_Prediction.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     mitigation: json['mitigation'] as String,
-    element_mitigation: json['element_mitigation'] == null
+    elementMitigation: json['elementMitigation'] == null
         ? null
-        : Element.fromJson(json['element_mitigation'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementMitigation'] as Map<String, dynamic>),
     note: (json['note'] as List)
         ?.map((e) =>
             e == null ? null : Annotation.fromJson(e as Map<String, dynamic>))
@@ -110,9 +110,9 @@ Map<String, dynamic> _$RiskAssessmentToJson(RiskAssessment instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -122,14 +122,13 @@ Map<String, dynamic> _$RiskAssessmentToJson(RiskAssessment instance) =>
       'basedOn': instance.basedOn?.toJson(),
       'parent': instance.parent?.toJson(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'method': instance.method?.toJson(),
       'code': instance.code?.toJson(),
       'subject': instance.subject?.toJson(),
       'encounter': instance.encounter?.toJson(),
       'occurrenceDateTime': instance.occurrenceDateTime,
-      'element_occurrenceDateTime':
-          instance.element_occurrenceDateTime?.toJson(),
+      'elementOccurrenceDateTime': instance.elementOccurrenceDateTime?.toJson(),
       'occurrencePeriod': instance.occurrencePeriod?.toJson(),
       'condition': instance.condition?.toJson(),
       'performer': instance.performer?.toJson(),
@@ -139,7 +138,7 @@ Map<String, dynamic> _$RiskAssessmentToJson(RiskAssessment instance) =>
       'basis': instance.basis?.map((e) => e?.toJson())?.toList(),
       'prediction': instance.prediction?.map((e) => e?.toJson())?.toList(),
       'mitigation': instance.mitigation,
-      'element_mitigation': instance.element_mitigation?.toJson(),
+      'elementMitigation': instance.elementMitigation?.toJson(),
       'note': instance.note?.map((e) => e?.toJson())?.toList(),
     };
 
@@ -159,10 +158,10 @@ RiskAssessment_Prediction _$RiskAssessment_PredictionFromJson(
         ? null
         : CodeableConcept.fromJson(json['outcome'] as Map<String, dynamic>),
     probabilityDecimal: (json['probabilityDecimal'] as num)?.toDouble(),
-    element_probabilityDecimal: json['element_probabilityDecimal'] == null
+    elementProbabilityDecimal: json['elementProbabilityDecimal'] == null
         ? null
         : Element.fromJson(
-            json['element_probabilityDecimal'] as Map<String, dynamic>),
+            json['elementProbabilityDecimal'] as Map<String, dynamic>),
     probabilityRange: json['probabilityRange'] == null
         ? null
         : Range.fromJson(json['probabilityRange'] as Map<String, dynamic>),
@@ -171,10 +170,9 @@ RiskAssessment_Prediction _$RiskAssessment_PredictionFromJson(
         : CodeableConcept.fromJson(
             json['qualitativeRisk'] as Map<String, dynamic>),
     relativeRisk: (json['relativeRisk'] as num)?.toDouble(),
-    element_relativeRisk: json['element_relativeRisk'] == null
+    elementRelativeRisk: json['elementRelativeRisk'] == null
         ? null
-        : Element.fromJson(
-            json['element_relativeRisk'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementRelativeRisk'] as Map<String, dynamic>),
     whenPeriod: json['whenPeriod'] == null
         ? null
         : Period.fromJson(json['whenPeriod'] as Map<String, dynamic>),
@@ -182,9 +180,9 @@ RiskAssessment_Prediction _$RiskAssessment_PredictionFromJson(
         ? null
         : Range.fromJson(json['whenRange'] as Map<String, dynamic>),
     rationale: json['rationale'] as String,
-    element_rationale: json['element_rationale'] == null
+    elementRationale: json['elementRationale'] == null
         ? null
-        : Element.fromJson(json['element_rationale'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementRationale'] as Map<String, dynamic>),
   );
 }
 
@@ -197,14 +195,13 @@ Map<String, dynamic> _$RiskAssessment_PredictionToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'outcome': instance.outcome?.toJson(),
       'probabilityDecimal': instance.probabilityDecimal,
-      'element_probabilityDecimal':
-          instance.element_probabilityDecimal?.toJson(),
+      'elementProbabilityDecimal': instance.elementProbabilityDecimal?.toJson(),
       'probabilityRange': instance.probabilityRange?.toJson(),
       'qualitativeRisk': instance.qualitativeRisk?.toJson(),
       'relativeRisk': instance.relativeRisk,
-      'element_relativeRisk': instance.element_relativeRisk?.toJson(),
+      'elementRelativeRisk': instance.elementRelativeRisk?.toJson(),
       'whenPeriod': instance.whenPeriod?.toJson(),
       'whenRange': instance.whenRange?.toJson(),
       'rationale': instance.rationale,
-      'element_rationale': instance.element_rationale?.toJson(),
+      'elementRationale': instance.elementRationale?.toJson(),
     };

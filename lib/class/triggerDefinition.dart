@@ -28,7 +28,7 @@ class TriggerDefinition {
   String type; // <code> enum: named-event/periodic/data-changed/data-added/data-modified/data-removed/data-accessed/data-access-ended;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  A formal name for the event. This may be an absolute URI that
   // identifies the event formally (e.g. from a trigger registry), or a
@@ -36,7 +36,7 @@ class TriggerDefinition {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  The timing of the event (if this is a periodic trigger).
   Timing timingTiming;
@@ -48,13 +48,13 @@ class TriggerDefinition {
   String timingDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for timingDate
-  Element element_timingDate;
+  Element elementTimingDate;
 
   //  The timing of the event (if this is a periodic trigger).
   String timingDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for timingDateTime
-  Element element_timingDateTime;
+  Element elementTimingDateTime;
 
   //  The triggering data of the event (if this is a data trigger). If more
   // than one data is requirement is specified, then all the data
@@ -70,15 +70,15 @@ TriggerDefinition(
   {this.id,
     this.extension,
     this.type,
-    this.element_type,
+    this.elementType,
     this.name,
-    this.element_name,
+    this.elementName,
     this.timingTiming,
     this.timingReference,
     this.timingDate,
-    this.element_timingDate,
+    this.elementTimingDate,
     this.timingDateTime,
-    this.element_timingDateTime,
+    this.elementTimingDateTime,
     this.data,
     this.condition
     });

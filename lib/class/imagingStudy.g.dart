@@ -16,20 +16,20 @@ ImagingStudy _$ImagingStudyFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -44,9 +44,9 @@ ImagingStudy _$ImagingStudyFromJson(Map<String, dynamic> json) {
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     modality: (json['modality'] as List)
         ?.map((e) =>
             e == null ? null : Coding.fromJson(e as Map<String, dynamic>))
@@ -57,9 +57,9 @@ ImagingStudy _$ImagingStudyFromJson(Map<String, dynamic> json) {
     started: json['started'] == null
         ? null
         : DateTime.parse(json['started'] as String),
-    element_started: json['element_started'] == null
+    elementStarted: json['elementStarted'] == null
         ? null
-        : Element.fromJson(json['element_started'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStarted'] as Map<String, dynamic>),
     basedOn: (json['basedOn'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
@@ -76,15 +76,15 @@ ImagingStudy _$ImagingStudyFromJson(Map<String, dynamic> json) {
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     numberOfSeries: json['numberOfSeries'] as int,
-    element_numberOfSeries: json['element_numberOfSeries'] == null
+    elementNumberOfSeries: json['elementNumberOfSeries'] == null
         ? null
         : Element.fromJson(
-            json['element_numberOfSeries'] as Map<String, dynamic>),
+            json['elementNumberOfSeries'] as Map<String, dynamic>),
     numberOfInstances: json['numberOfInstances'] as int,
-    element_numberOfInstances: json['element_numberOfInstances'] == null
+    elementNumberOfInstances: json['elementNumberOfInstances'] == null
         ? null
         : Element.fromJson(
-            json['element_numberOfInstances'] as Map<String, dynamic>),
+            json['elementNumberOfInstances'] as Map<String, dynamic>),
     procedureReference: json['procedureReference'] == null
         ? null
         : Reference.fromJson(
@@ -111,9 +111,9 @@ ImagingStudy _$ImagingStudyFromJson(Map<String, dynamic> json) {
             e == null ? null : Annotation.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     description: json['description'] as String,
-    element_description: json['element_description'] == null
+    elementDescription: json['elementDescription'] == null
         ? null
-        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
     series: (json['series'] as List)
         ?.map((e) => e == null
             ? null
@@ -127,9 +127,9 @@ Map<String, dynamic> _$ImagingStudyToJson(ImagingStudy instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -137,20 +137,20 @@ Map<String, dynamic> _$ImagingStudyToJson(ImagingStudy instance) =>
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'modality': instance.modality?.map((e) => e?.toJson())?.toList(),
       'subject': instance.subject?.toJson(),
       'encounter': instance.encounter?.toJson(),
       'started': instance.started?.toIso8601String(),
-      'element_started': instance.element_started?.toJson(),
+      'elementStarted': instance.elementStarted?.toJson(),
       'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
       'referrer': instance.referrer?.toJson(),
       'interpreter': instance.interpreter?.map((e) => e?.toJson())?.toList(),
       'endpoint': instance.endpoint?.map((e) => e?.toJson())?.toList(),
       'numberOfSeries': instance.numberOfSeries,
-      'element_numberOfSeries': instance.element_numberOfSeries?.toJson(),
+      'elementNumberOfSeries': instance.elementNumberOfSeries?.toJson(),
       'numberOfInstances': instance.numberOfInstances,
-      'element_numberOfInstances': instance.element_numberOfInstances?.toJson(),
+      'elementNumberOfInstances': instance.elementNumberOfInstances?.toJson(),
       'procedureReference': instance.procedureReference?.toJson(),
       'procedureCode':
           instance.procedureCode?.map((e) => e?.toJson())?.toList(),
@@ -160,7 +160,7 @@ Map<String, dynamic> _$ImagingStudyToJson(ImagingStudy instance) =>
           instance.reasonReference?.map((e) => e?.toJson())?.toList(),
       'note': instance.note?.map((e) => e?.toJson())?.toList(),
       'description': instance.description,
-      'element_description': instance.element_description?.toJson(),
+      'elementDescription': instance.elementDescription?.toJson(),
       'series': instance.series?.map((e) => e?.toJson())?.toList(),
     };
 
@@ -179,22 +179,22 @@ ImagingStudy_Series _$ImagingStudy_SeriesFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     uid: json['uid'] as String,
-    element_uid: json['element_uid'] == null
+    elementUid: json['elementUid'] == null
         ? null
-        : Element.fromJson(json['element_uid'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementUid'] as Map<String, dynamic>),
     number: json['number'] as int,
-    element_number: json['element_number'] == null
+    elementNumber: json['elementNumber'] == null
         ? null
-        : Element.fromJson(json['element_number'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementNumber'] as Map<String, dynamic>),
     description: json['description'] as String,
-    element_description: json['element_description'] == null
+    elementDescription: json['elementDescription'] == null
         ? null
-        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
     numberOfInstances: json['numberOfInstances'] as int,
-    element_numberOfInstances: json['element_numberOfInstances'] == null
+    elementNumberOfInstances: json['elementNumberOfInstances'] == null
         ? null
         : Element.fromJson(
-            json['element_numberOfInstances'] as Map<String, dynamic>),
+            json['elementNumberOfInstances'] as Map<String, dynamic>),
     endpoint: (json['endpoint'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
@@ -212,9 +212,9 @@ ImagingStudy_Series _$ImagingStudy_SeriesFromJson(Map<String, dynamic> json) {
     started: json['started'] == null
         ? null
         : DateTime.parse(json['started'] as String),
-    element_started: json['element_started'] == null
+    elementStarted: json['elementStarted'] == null
         ? null
-        : Element.fromJson(json['element_started'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStarted'] as Map<String, dynamic>),
     performer: (json['performer'] as List)
         ?.map((e) => e == null
             ? null
@@ -236,20 +236,20 @@ Map<String, dynamic> _$ImagingStudy_SeriesToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'uid': instance.uid,
-      'element_uid': instance.element_uid?.toJson(),
+      'elementUid': instance.elementUid?.toJson(),
       'number': instance.number,
-      'element_number': instance.element_number?.toJson(),
+      'elementNumber': instance.elementNumber?.toJson(),
       'modality': instance.modality?.toJson(),
       'description': instance.description,
-      'element_description': instance.element_description?.toJson(),
+      'elementDescription': instance.elementDescription?.toJson(),
       'numberOfInstances': instance.numberOfInstances,
-      'element_numberOfInstances': instance.element_numberOfInstances?.toJson(),
+      'elementNumberOfInstances': instance.elementNumberOfInstances?.toJson(),
       'endpoint': instance.endpoint?.map((e) => e?.toJson())?.toList(),
       'bodySite': instance.bodySite?.toJson(),
       'laterality': instance.laterality?.toJson(),
       'specimen': instance.specimen?.map((e) => e?.toJson())?.toList(),
       'started': instance.started?.toIso8601String(),
-      'element_started': instance.element_started?.toJson(),
+      'elementStarted': instance.elementStarted?.toJson(),
       'performer': instance.performer?.map((e) => e?.toJson())?.toList(),
       'instance': instance.instance?.map((e) => e?.toJson())?.toList(),
     };
@@ -302,17 +302,17 @@ ImagingStudy_Instance _$ImagingStudy_InstanceFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     uid: json['uid'] as String,
-    element_uid: json['element_uid'] == null
+    elementUid: json['elementUid'] == null
         ? null
-        : Element.fromJson(json['element_uid'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementUid'] as Map<String, dynamic>),
     number: json['number'] as int,
-    element_number: json['element_number'] == null
+    elementNumber: json['elementNumber'] == null
         ? null
-        : Element.fromJson(json['element_number'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementNumber'] as Map<String, dynamic>),
     title: json['title'] as String,
-    element_title: json['element_title'] == null
+    elementTitle: json['elementTitle'] == null
         ? null
-        : Element.fromJson(json['element_title'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementTitle'] as Map<String, dynamic>),
   );
 }
 
@@ -324,10 +324,10 @@ Map<String, dynamic> _$ImagingStudy_InstanceToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'uid': instance.uid,
-      'element_uid': instance.element_uid?.toJson(),
+      'elementUid': instance.elementUid?.toJson(),
       'sopClass': instance.sopClass?.toJson(),
       'number': instance.number,
-      'element_number': instance.element_number?.toJson(),
+      'elementNumber': instance.elementNumber?.toJson(),
       'title': instance.title,
-      'element_title': instance.element_title?.toJson(),
+      'elementTitle': instance.elementTitle?.toJson(),
     };

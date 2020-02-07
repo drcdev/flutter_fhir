@@ -25,7 +25,7 @@ class Age {
   double value;
 
   //  Extensions for value
-  Element element_value;
+  Element elementValue;
 
   //  How the value should be understood and represented - whether the
   // actual value is greater or less than the stated value due to
@@ -34,41 +34,41 @@ class Age {
   String comparator; // <code> enum: </<=/>=/>;
 
   //  Extensions for comparator
-  Element element_comparator;
+  Element elementComparator;
 
   //  A human-readable form of the unit.
   String unit;
 
   //  Extensions for unit
-  Element element_unit;
+  Element elementUnit;
 
   //  The identification of the system that provides the coded form of the
   // unit.
   String system;
 
   //  Extensions for system
-  Element element_system;
+  Element elementSystem;
 
   //  A computer processable form of the unit in some unit representation
   // system.
   String code;
 
   //  Extensions for code
-  Element element_code;
+  Element elementCode;
 
 Age(
   {this.id,
     this.extension,
     this.value,
-    this.element_value,
+    this.elementValue,
     this.comparator,
-    this.element_comparator,
+    this.elementComparator,
     this.unit,
-    this.element_unit,
+    this.elementUnit,
     this.system,
-    this.element_system,
+    this.elementSystem,
     this.code,
-    this.element_code
+    this.elementCode
     });
 
   factory Age.fromJson(Map<String, dynamic> json) => _$AgeFromJson(json);

@@ -36,16 +36,16 @@ ProdCharacteristic _$ProdCharacteristicFromJson(Map<String, dynamic> json) {
         ? null
         : Quantity.fromJson(json['externalDiameter'] as Map<String, dynamic>),
     shape: json['shape'] as String,
-    element_shape: json['element_shape'] == null
+    elementShape: json['elementShape'] == null
         ? null
-        : Element.fromJson(json['element_shape'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementShape'] as Map<String, dynamic>),
     color: (json['color'] as List)?.map((e) => e as String)?.toList(),
-    element_color: (json['element_color'] as List)
+    elementColor: (json['elementColor'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     imprint: (json['imprint'] as List)?.map((e) => e as String)?.toList(),
-    element_imprint: (json['element_imprint'] as List)
+    elementImprint: (json['elementImprint'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -72,13 +72,12 @@ Map<String, dynamic> _$ProdCharacteristicToJson(ProdCharacteristic instance) =>
       'nominalVolume': instance.nominalVolume?.toJson(),
       'externalDiameter': instance.externalDiameter?.toJson(),
       'shape': instance.shape,
-      'element_shape': instance.element_shape?.toJson(),
+      'elementShape': instance.elementShape?.toJson(),
       'color': instance.color,
-      'element_color':
-          instance.element_color?.map((e) => e?.toJson())?.toList(),
+      'elementColor': instance.elementColor?.map((e) => e?.toJson())?.toList(),
       'imprint': instance.imprint,
-      'element_imprint':
-          instance.element_imprint?.map((e) => e?.toJson())?.toList(),
+      'elementImprint':
+          instance.elementImprint?.map((e) => e?.toJson())?.toList(),
       'image': instance.image?.map((e) => e?.toJson())?.toList(),
       'scoring': instance.scoring?.toJson(),
     };

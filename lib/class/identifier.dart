@@ -27,7 +27,7 @@ class Identifier {
   String use; // <code> enum: usual/official/temp/secondary/old;
 
   //  Extensions for use
-  Element element_use;
+  Element elementUse;
 
   //  A coded type for the identifier that can be used to determine which
   // identifier to use for a specific purpose.
@@ -38,14 +38,14 @@ class Identifier {
   String system;
 
   //  Extensions for system
-  Element element_system;
+  Element elementSystem;
 
   //  The portion of the identifier typically relevant to the user and which
   // is unique within the context of the system.
   String value;
 
   //  Extensions for value
-  Element element_value;
+  Element elementValue;
 
   //  Time period during which identifier is/was valid for use.
   Period period;
@@ -57,12 +57,12 @@ Identifier(
   {this.id,
     this.extension,
     this.use,
-    this.element_use,
+    this.elementUse,
     this.type,
     this.system,
-    this.element_system,
+    this.elementSystem,
     this.value,
-    this.element_value,
+    this.elementValue,
     this.period,
     this.assigner
     });

@@ -69,8 +69,8 @@ guidelines:
 8. For all others (many-to-many relationships), even if there are multiple tables referencing
     multiple rows in a second table, or one table with multiple lists each referencing multiple
     rows in a second table will all be treated the same. Bridge tables will be created, entitled
-    originalTable_field_secondTable. It will have a unique id field, a foreign key called
-    originalTable_fieldId and secondTableId.
+    originalTable_field_secondTable. It will have a unique id field, and two foreign keys called
+    originalTablefieldId and secondTableId.
 9. Work in progress, obviously, so some of this will change as I learn why not to do some things.
 10. 4 primitive tables for lists of same,
     -uri with canonical and uri columns

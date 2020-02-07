@@ -37,13 +37,13 @@ class MedicinalProductPackaged {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -56,7 +56,7 @@ class MedicinalProductPackaged {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -91,7 +91,7 @@ class MedicinalProductPackaged {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  The legal status of supply of the medicinal product as classified by
   // the regulator.
@@ -118,9 +118,9 @@ MedicinalProductPackaged(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -128,7 +128,7 @@ MedicinalProductPackaged(
     this.identifier,
     this.subject,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.legalStatusOfSupply,
     this.marketingStatus,
     this.marketingAuthorization,

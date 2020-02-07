@@ -14,20 +14,20 @@ MedicinalProductAuthorization _$MedicinalProductAuthorizationFromJson(
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -60,15 +60,15 @@ MedicinalProductAuthorization _$MedicinalProductAuthorizationFromJson(
     statusDate: json['statusDate'] == null
         ? null
         : DateTime.parse(json['statusDate'] as String),
-    element_statusDate: json['element_statusDate'] == null
+    elementStatusDate: json['elementStatusDate'] == null
         ? null
-        : Element.fromJson(json['element_statusDate'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatusDate'] as Map<String, dynamic>),
     restoreDate: json['restoreDate'] == null
         ? null
         : DateTime.parse(json['restoreDate'] as String),
-    element_restoreDate: json['element_restoreDate'] == null
+    elementRestoreDate: json['elementRestoreDate'] == null
         ? null
-        : Element.fromJson(json['element_restoreDate'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementRestoreDate'] as Map<String, dynamic>),
     validityPeriod: json['validityPeriod'] == null
         ? null
         : Period.fromJson(json['validityPeriod'] as Map<String, dynamic>),
@@ -79,19 +79,18 @@ MedicinalProductAuthorization _$MedicinalProductAuthorizationFromJson(
     dateOfFirstAuthorization: json['dateOfFirstAuthorization'] == null
         ? null
         : DateTime.parse(json['dateOfFirstAuthorization'] as String),
-    element_dateOfFirstAuthorization:
-        json['element_dateOfFirstAuthorization'] == null
-            ? null
-            : Element.fromJson(json['element_dateOfFirstAuthorization']
-                as Map<String, dynamic>),
+    elementDateOfFirstAuthorization: json['elementDateOfFirstAuthorization'] ==
+            null
+        ? null
+        : Element.fromJson(
+            json['elementDateOfFirstAuthorization'] as Map<String, dynamic>),
     internationalBirthDate: json['internationalBirthDate'] == null
         ? null
         : DateTime.parse(json['internationalBirthDate'] as String),
-    element_internationalBirthDate:
-        json['element_internationalBirthDate'] == null
-            ? null
-            : Element.fromJson(
-                json['element_internationalBirthDate'] as Map<String, dynamic>),
+    elementInternationalBirthDate: json['elementInternationalBirthDate'] == null
+        ? null
+        : Element.fromJson(
+            json['elementInternationalBirthDate'] as Map<String, dynamic>),
     legalBasis: json['legalBasis'] == null
         ? null
         : CodeableConcept.fromJson(json['legalBasis'] as Map<String, dynamic>),
@@ -120,9 +119,9 @@ Map<String, dynamic> _$MedicinalProductAuthorizationToJson(
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -134,19 +133,19 @@ Map<String, dynamic> _$MedicinalProductAuthorizationToJson(
       'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
       'status': instance.status?.toJson(),
       'statusDate': instance.statusDate?.toIso8601String(),
-      'element_statusDate': instance.element_statusDate?.toJson(),
+      'elementStatusDate': instance.elementStatusDate?.toJson(),
       'restoreDate': instance.restoreDate?.toIso8601String(),
-      'element_restoreDate': instance.element_restoreDate?.toJson(),
+      'elementRestoreDate': instance.elementRestoreDate?.toJson(),
       'validityPeriod': instance.validityPeriod?.toJson(),
       'dataExclusivityPeriod': instance.dataExclusivityPeriod?.toJson(),
       'dateOfFirstAuthorization':
           instance.dateOfFirstAuthorization?.toIso8601String(),
-      'element_dateOfFirstAuthorization':
-          instance.element_dateOfFirstAuthorization?.toJson(),
+      'elementDateOfFirstAuthorization':
+          instance.elementDateOfFirstAuthorization?.toJson(),
       'internationalBirthDate':
           instance.internationalBirthDate?.toIso8601String(),
-      'element_internationalBirthDate':
-          instance.element_internationalBirthDate?.toJson(),
+      'elementInternationalBirthDate':
+          instance.elementInternationalBirthDate?.toJson(),
       'legalBasis': instance.legalBasis?.toJson(),
       'jurisdictionalAuthorization': instance.jurisdictionalAuthorization
           ?.map((e) => e?.toJson())
@@ -229,10 +228,9 @@ MedicinalProductAuthorization_Procedure
         ? null
         : Period.fromJson(json['datePeriod'] as Map<String, dynamic>),
     dateDateTime: json['dateDateTime'] as String,
-    element_dateDateTime: json['element_dateDateTime'] == null
+    elementDateDateTime: json['elementDateDateTime'] == null
         ? null
-        : Element.fromJson(
-            json['element_dateDateTime'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDateDateTime'] as Map<String, dynamic>),
     application: (json['application'] as List)
         ?.map((e) => e == null
             ? null
@@ -253,6 +251,6 @@ Map<String, dynamic> _$MedicinalProductAuthorization_ProcedureToJson(
       'type': instance.type?.toJson(),
       'datePeriod': instance.datePeriod?.toJson(),
       'dateDateTime': instance.dateDateTime,
-      'element_dateDateTime': instance.element_dateDateTime?.toJson(),
+      'elementDateDateTime': instance.elementDateDateTime?.toJson(),
       'application': instance.application?.map((e) => e?.toJson())?.toList(),
     };

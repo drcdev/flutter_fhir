@@ -32,7 +32,7 @@ class Signature {
   DateTime when;
 
   //  Extensions for when
-  Element element_when;
+  Element elementWhen;
 
   //  A reference to an application-usable description of the identity that
   // signed  (e.g. the signature used their private key).
@@ -47,7 +47,7 @@ class Signature {
   String targetFormat;
 
   //  Extensions for targetFormat
-  Element element_targetFormat;
+  Element elementTargetFormat;
 
   //  A mime type that indicates the technical format of the signature.
   // Important mime types are application/signature+xml for X ML DigSig,
@@ -56,14 +56,14 @@ class Signature {
   String sigFormat;
 
   //  Extensions for sigFormat
-  Element element_sigFormat;
+  Element elementSigFormat;
 
   //  The base64 encoding of the Signature content. When signature is not
   // recorded electronically this element would be empty.
   String data;
 
   //  Extensions for data
-  Element element_data;
+  Element elementData;
 
 Signature(
   this.type,
@@ -71,14 +71,14 @@ Signature(
     {this.id,
     this.extension,
     this.when,
-    this.element_when,
+    this.elementWhen,
     this.onBehalfOf,
     this.targetFormat,
-    this.element_targetFormat,
+    this.elementTargetFormat,
     this.sigFormat,
-    this.element_sigFormat,
+    this.elementSigFormat,
     this.data,
-    this.element_data
+    this.elementData
     });
 
   factory Signature.fromJson(Map<String, dynamic> json) => _$SignatureFromJson(json);

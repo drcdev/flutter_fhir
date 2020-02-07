@@ -60,13 +60,13 @@ class StructureMap {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -79,7 +79,7 @@ class StructureMap {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -114,7 +114,7 @@ class StructureMap {
   String url;
 
   //  Extensions for url
-  Element element_url;
+  Element elementUrl;
 
   //  A formal identifier that is used to identify this structure map when
   // it is represented in other formats, or referenced in a specification,
@@ -131,7 +131,7 @@ class StructureMap {
   String version;
 
   //  Extensions for version
-  Element element_version;
+  Element elementVersion;
 
   //  A natural language name identifying the structure map. This name
   // should be usable as an identifier for the module by machine processing
@@ -139,20 +139,20 @@ class StructureMap {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  A short, descriptive, user-friendly title for the structure map.
   String title;
 
   //  Extensions for title
-  Element element_title;
+  Element elementTitle;
 
   //  The status of this structure map. Enables tracking the life-cycle of
   // the content.
   String status; // <code> enum: draft/active/retired/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  A Boolean value to indicate that this structure map is authored for
   // testing purposes (or education/evaluation/marketing) and is not
@@ -160,7 +160,7 @@ class StructureMap {
   bool experimental;
 
   //  Extensions for experimental
-  Element element_experimental;
+  Element elementExperimental;
 
   //  The date  (and optionally time) when the structure map was published.
   // The date must change when the business version changes and it must
@@ -169,14 +169,14 @@ class StructureMap {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  The name of the organization or individual that published the
   // structure map.
   String publisher;
 
   //  Extensions for publisher
-  Element element_publisher;
+  Element elementPublisher;
 
   //  Contact details to assist a user in finding and communicating with the
   // publisher.
@@ -187,7 +187,7 @@ class StructureMap {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  The content was developed with a focus and intent of supporting the
   // contexts that are listed. These contexts may be general categories
@@ -205,7 +205,7 @@ class StructureMap {
   String purpose;
 
   //  Extensions for purpose
-  Element element_purpose;
+  Element elementPurpose;
 
   //  A copyright statement relating to the structure map and/or its
   // contents. Copyright statements are generally legal restrictions on the
@@ -213,7 +213,7 @@ class StructureMap {
   String copyright;
 
   //  Extensions for copyright
-  Element element_copyright;
+  Element elementCopyright;
 
   //  A structure definition used by this map. The structure definition may
   // describe instances that are converted, or the instances that are
@@ -232,39 +232,39 @@ StructureMap(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
-    this.element_url,
+    this.elementUrl,
     this.identifier,
     this.version,
-    this.element_version,
+    this.elementVersion,
     this.name,
-    this.element_name,
+    this.elementName,
     this.title,
-    this.element_title,
+    this.elementTitle,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.experimental,
-    this.element_experimental,
+    this.elementExperimental,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.publisher,
-    this.element_publisher,
+    this.elementPublisher,
     this.contact,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.useContext,
     this.jurisdiction,
     this.purpose,
-    this.element_purpose,
+    this.elementPurpose,
     this.copyright,
-    this.element_copyright,
+    this.elementCopyright,
     this.structure,
     this.import
     });
@@ -309,19 +309,19 @@ class StructureMap_Structure {
   String mode; // <code> enum: source/queried/target/produced;
 
   //  Extensions for mode
-  Element element_mode;
+  Element elementMode;
 
   //  The name used for this type in the map.
   String alias;
 
   //  Extensions for alias
-  Element element_alias;
+  Element elementAlias;
 
   //  Documentation that describes how the structure is used in the mapping.
   String documentation;
 
   //  Extensions for documentation
-  Element element_documentation;
+  Element elementDocumentation;
 
 StructureMap_Structure(
   this.url,
@@ -329,11 +329,11 @@ StructureMap_Structure(
     this.extension,
     this.modifierExtension,
     this.mode,
-    this.element_mode,
+    this.elementMode,
     this.alias,
-    this.element_alias,
+    this.elementAlias,
     this.documentation,
-    this.element_documentation
+    this.elementDocumentation
     });
 
   factory StructureMap_Structure.fromJson(Map<String, dynamic> json) => _$StructureMap_StructureFromJson(json);
@@ -373,27 +373,27 @@ class StructureMap_Group {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  Another group that this group adds rules to.
   String extend;
 
   //  Extensions for extends
-  Element element_extends;
+  Element elementExtends;
 
   //  If this is the default rule set to apply for the source type or this
   // combination of types.
   String typeMode; // <code> enum: none/types/type-and-types;
 
   //  Extensions for typeMode
-  Element element_typeMode;
+  Element elementTypeMode;
 
   //  Additional supporting documentation that explains the purpose of the
   // group and the types of mappings within it.
   String documentation;
 
   //  Extensions for documentation
-  Element element_documentation;
+  Element elementDocumentation;
 
   //  A name assigned to an instance of data. The instance must be provided
   // when the mapping is invoked.
@@ -409,13 +409,13 @@ StructureMap_Group(
     this.extension,
     this.modifierExtension,
     this.name,
-    this.element_name,
+    this.elementName,
     this.extend,
-    this.element_extends,
+    this.elementExtends,
     this.typeMode,
-    this.element_typeMode,
+    this.elementTypeMode,
     this.documentation,
-    this.element_documentation
+    this.elementDocumentation
     });
 
   factory StructureMap_Group.fromJson(Map<String, dynamic> json) => _$StructureMap_GroupFromJson(json);
@@ -455,38 +455,38 @@ class StructureMap_Input {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  Type for this instance of data.
   String type;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  Mode for this instance of data.
   String mode; // <code> enum: source/target;
 
   //  Extensions for mode
-  Element element_mode;
+  Element elementMode;
 
   //  Documentation for this instance of data.
   String documentation;
 
   //  Extensions for documentation
-  Element element_documentation;
+  Element elementDocumentation;
 
 StructureMap_Input(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.name,
-    this.element_name,
+    this.elementName,
     this.type,
-    this.element_type,
+    this.elementType,
     this.mode,
-    this.element_mode,
+    this.elementMode,
     this.documentation,
-    this.element_documentation
+    this.elementDocumentation
     });
 
   factory StructureMap_Input.fromJson(Map<String, dynamic> json) => _$StructureMap_InputFromJson(json);
@@ -526,7 +526,7 @@ class StructureMap_Rule {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  Source inputs to the mapping.
   List<StructureMap_Source> source;
@@ -544,7 +544,7 @@ class StructureMap_Rule {
   String documentation;
 
   //  Extensions for documentation
-  Element element_documentation;
+  Element elementDocumentation;
 
 StructureMap_Rule(
   this.source,
@@ -552,12 +552,12 @@ StructureMap_Rule(
     this.extension,
     this.modifierExtension,
     this.name,
-    this.element_name,
+    this.elementName,
     this.target,
     this.rule,
     this.dependent,
     this.documentation,
-    this.element_documentation
+    this.elementDocumentation
     });
 
   factory StructureMap_Rule.fromJson(Map<String, dynamic> json) => _$StructureMap_RuleFromJson(json);
@@ -597,14 +597,14 @@ class StructureMap_Source {
   String context;
 
   //  Extensions for context
-  Element element_context;
+  Element elementContext;
 
   //  Specified minimum cardinality for the element. This is optional; if
   // present, it acts an implicit check on the input content.
   int min;
 
   //  Extensions for min
-  Element element_min;
+  Element elementMin;
 
   //  Specified maximum cardinality for the element - a number or a "*".
   // This is optional; if present, it acts an implicit check on the input
@@ -612,128 +612,128 @@ class StructureMap_Source {
   String max;
 
   //  Extensions for max
-  Element element_max;
+  Element elementMax;
 
   //  Specified type for the element. This works as a condition on the
   // mapping - use for polymorphic elements.
   String type;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  A value to use if there is no existing value in the source object.
   String defaultValueBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
 
   //  Extensions for defaultValueBase64Binary
-  Element element_defaultValueBase64Binary;
+  Element elementDefaultValueBase64Binary;
 
   //  A value to use if there is no existing value in the source object.
   bool defaultValueBoolean; //  pattern: ^true|false$
 
   //  Extensions for defaultValueBoolean
-  Element element_defaultValueBoolean;
+  Element elementDefaultValueBoolean;
 
   //  A value to use if there is no existing value in the source object.
   String defaultValueCanonical; //  pattern: ^\S*$
 
   //  Extensions for defaultValueCanonical
-  Element element_defaultValueCanonical;
+  Element elementDefaultValueCanonical;
 
   //  A value to use if there is no existing value in the source object.
   String defaultValueCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
 
   //  Extensions for defaultValueCode
-  Element element_defaultValueCode;
+  Element elementDefaultValueCode;
 
   //  A value to use if there is no existing value in the source object.
   String defaultValueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for defaultValueDate
-  Element element_defaultValueDate;
+  Element elementDefaultValueDate;
 
   //  A value to use if there is no existing value in the source object.
   String defaultValueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for defaultValueDateTime
-  Element element_defaultValueDateTime;
+  Element elementDefaultValueDateTime;
 
   //  A value to use if there is no existing value in the source object.
   double defaultValueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
 
   //  Extensions for defaultValueDecimal
-  Element element_defaultValueDecimal;
+  Element elementDefaultValueDecimal;
 
   //  A value to use if there is no existing value in the source object.
   String defaultValueId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
 
   //  Extensions for defaultValueId
-  Element element_defaultValueId;
+  Element elementDefaultValueId;
 
   //  A value to use if there is no existing value in the source object.
   String defaultValueInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
 
   //  Extensions for defaultValueInstant
-  Element element_defaultValueInstant;
+  Element elementDefaultValueInstant;
 
   //  A value to use if there is no existing value in the source object.
   int defaultValueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
 
   //  Extensions for defaultValueInteger
-  Element element_defaultValueInteger;
+  Element elementDefaultValueInteger;
 
   //  A value to use if there is no existing value in the source object.
   String defaultValueMarkdown; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for defaultValueMarkdown
-  Element element_defaultValueMarkdown;
+  Element elementDefaultValueMarkdown;
 
   //  A value to use if there is no existing value in the source object.
   String defaultValueOid; //  pattern: ^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$
 
   //  Extensions for defaultValueOid
-  Element element_defaultValueOid;
+  Element elementDefaultValueOid;
 
   //  A value to use if there is no existing value in the source object.
   int defaultValuePositiveInt; //  pattern: ^[1-9][0-9]*$
 
   //  Extensions for defaultValuePositiveInt
-  Element element_defaultValuePositiveInt;
+  Element elementDefaultValuePositiveInt;
 
   //  A value to use if there is no existing value in the source object.
   String defaultValueString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for defaultValueString
-  Element element_defaultValueString;
+  Element elementDefaultValueString;
 
   //  A value to use if there is no existing value in the source object.
   String defaultValueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
 
   //  Extensions for defaultValueTime
-  Element element_defaultValueTime;
+  Element elementDefaultValueTime;
 
   //  A value to use if there is no existing value in the source object.
   int defaultValueUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
 
   //  Extensions for defaultValueUnsignedInt
-  Element element_defaultValueUnsignedInt;
+  Element elementDefaultValueUnsignedInt;
 
   //  A value to use if there is no existing value in the source object.
   String defaultValueUri; //  pattern: ^\S*$
 
   //  Extensions for defaultValueUri
-  Element element_defaultValueUri;
+  Element elementDefaultValueUri;
 
   //  A value to use if there is no existing value in the source object.
   String defaultValueUrl; //  pattern: ^\S*$
 
   //  Extensions for defaultValueUrl
-  Element element_defaultValueUrl;
+  Element elementDefaultValueUrl;
 
   //  A value to use if there is no existing value in the source object.
   String defaultValueUuid; //  pattern: ^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
 
   //  Extensions for defaultValueUuid
-  Element element_defaultValueUuid;
+  Element elementDefaultValueUuid;
 
   //  A value to use if there is no existing value in the source object.
   Address defaultValueAddress;
@@ -832,90 +832,90 @@ class StructureMap_Source {
   String element;
 
   //  Extensions for element
-  Element element_element;
+  Element elementElement;
 
   //  How to handle the list mode for this element.
   String listMode; // <code> enum: first/not_first/last/not_last/only_one;
 
   //  Extensions for listMode
-  Element element_listMode;
+  Element elementListMode;
 
   //  Named context for field, if a field is specified.
   String variable;
 
   //  Extensions for variable
-  Element element_variable;
+  Element elementVariable;
 
   //  FHIRPath expression  - must be true or the rule does not apply.
   String condition;
 
   //  Extensions for condition
-  Element element_condition;
+  Element elementCondition;
 
   //  FHIRPath expression  - must be true or the mapping engine throws an
   // error instead of completing.
   String check;
 
   //  Extensions for check
-  Element element_check;
+  Element elementCheck;
 
   //  A FHIRPath expression which specifies a message to put in the
   // transform log when content matching the source rule is found.
   String logMessage;
 
   //  Extensions for logMessage
-  Element element_logMessage;
+  Element elementLogMessage;
 
 StructureMap_Source(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.context,
-    this.element_context,
+    this.elementContext,
     this.min,
-    this.element_min,
+    this.elementMin,
     this.max,
-    this.element_max,
+    this.elementMax,
     this.type,
-    this.element_type,
+    this.elementType,
     this.defaultValueBase64Binary,
-    this.element_defaultValueBase64Binary,
+    this.elementDefaultValueBase64Binary,
     this.defaultValueBoolean,
-    this.element_defaultValueBoolean,
+    this.elementDefaultValueBoolean,
     this.defaultValueCanonical,
-    this.element_defaultValueCanonical,
+    this.elementDefaultValueCanonical,
     this.defaultValueCode,
-    this.element_defaultValueCode,
+    this.elementDefaultValueCode,
     this.defaultValueDate,
-    this.element_defaultValueDate,
+    this.elementDefaultValueDate,
     this.defaultValueDateTime,
-    this.element_defaultValueDateTime,
+    this.elementDefaultValueDateTime,
     this.defaultValueDecimal,
-    this.element_defaultValueDecimal,
+    this.elementDefaultValueDecimal,
     this.defaultValueId,
-    this.element_defaultValueId,
+    this.elementDefaultValueId,
     this.defaultValueInstant,
-    this.element_defaultValueInstant,
+    this.elementDefaultValueInstant,
     this.defaultValueInteger,
-    this.element_defaultValueInteger,
+    this.elementDefaultValueInteger,
     this.defaultValueMarkdown,
-    this.element_defaultValueMarkdown,
+    this.elementDefaultValueMarkdown,
     this.defaultValueOid,
-    this.element_defaultValueOid,
+    this.elementDefaultValueOid,
     this.defaultValuePositiveInt,
-    this.element_defaultValuePositiveInt,
+    this.elementDefaultValuePositiveInt,
     this.defaultValueString,
-    this.element_defaultValueString,
+    this.elementDefaultValueString,
     this.defaultValueTime,
-    this.element_defaultValueTime,
+    this.elementDefaultValueTime,
     this.defaultValueUnsignedInt,
-    this.element_defaultValueUnsignedInt,
+    this.elementDefaultValueUnsignedInt,
     this.defaultValueUri,
-    this.element_defaultValueUri,
+    this.elementDefaultValueUri,
     this.defaultValueUrl,
-    this.element_defaultValueUrl,
+    this.elementDefaultValueUrl,
     this.defaultValueUuid,
-    this.element_defaultValueUuid,
+    this.elementDefaultValueUuid,
     this.defaultValueAddress,
     this.defaultValueAge,
     this.defaultValueAnnotation,
@@ -948,17 +948,17 @@ StructureMap_Source(
     this.defaultValueDosage,
     this.defaultValueMeta,
     this.element,
-    this.element_element,
+    this.elementElement,
     this.listMode,
-    this.element_listMode,
+    this.elementListMode,
     this.variable,
-    this.element_variable,
+    this.elementVariable,
     this.condition,
-    this.element_condition,
+    this.elementCondition,
     this.check,
-    this.element_check,
+    this.elementCheck,
     this.logMessage,
-    this.element_logMessage
+    this.elementLogMessage
     });
 
   factory StructureMap_Source.fromJson(Map<String, dynamic> json) => _$StructureMap_SourceFromJson(json);
@@ -998,43 +998,43 @@ class StructureMap_Target {
   String context;
 
   //  Extensions for context
-  Element element_context;
+  Element elementContext;
 
   //  How to interpret the context.
   String contextType; // <code> enum: type/variable;
 
   //  Extensions for contextType
-  Element element_contextType;
+  Element elementContextType;
 
   //  Field to create in the context.
   String element;
 
   //  Extensions for element
-  Element element_element;
+  Element elementElement;
 
   //  Named context for field, if desired, and a field is specified.
   String variable;
 
   //  Extensions for variable
-  Element element_variable;
+  Element elementVariable;
 
   //  If field is a list, how to manage the list.
   List<String> listMode; // <code> enum: first/share/last/collate> listMode;
 
   //  Extensions for listMode
-  List<Element> element_listMode;
+  List<Element> elementListMode;
 
   //  Internal rule reference for shared list items.
   String listRuleId;
 
   //  Extensions for listRuleId
-  Element element_listRuleId;
+  Element elementListRuleId;
 
   //  How the data is copied / created.
   String transform; // <code> enum: create/copy/truncate/escape/cast/append/translate/reference/dateOp/uuid/pointer/evaluate/cc/c/qty/id/cp;
 
   //  Extensions for transform
-  Element element_transform;
+  Element elementTransform;
 
   //  Parameters to the transform.
   List<StructureMap_Parameter> parameter;
@@ -1044,19 +1044,19 @@ StructureMap_Target(
     this.extension,
     this.modifierExtension,
     this.context,
-    this.element_context,
+    this.elementContext,
     this.contextType,
-    this.element_contextType,
+    this.elementContextType,
     this.element,
-    this.element_element,
+    this.elementElement,
     this.variable,
-    this.element_variable,
+    this.elementVariable,
     this.listMode,
-    this.element_listMode,
+    this.elementListMode,
     this.listRuleId,
-    this.element_listRuleId,
+    this.elementListRuleId,
     this.transform,
-    this.element_transform,
+    this.elementTransform,
     this.parameter
     });
 
@@ -1097,46 +1097,46 @@ class StructureMap_Parameter {
   String valueId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
 
   //  Extensions for valueId
-  Element element_valueId;
+  Element elementValueId;
 
   //  Parameter value - variable or literal.
   String valueString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for valueString
-  Element element_valueString;
+  Element elementValueString;
 
   //  Parameter value - variable or literal.
   bool valueBoolean; //  pattern: ^true|false$
 
   //  Extensions for valueBoolean
-  Element element_valueBoolean;
+  Element elementValueBoolean;
 
   //  Parameter value - variable or literal.
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
 
   //  Extensions for valueInteger
-  Element element_valueInteger;
+  Element elementValueInteger;
 
   //  Parameter value - variable or literal.
   double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
 
   //  Extensions for valueDecimal
-  Element element_valueDecimal;
+  Element elementValueDecimal;
 
 StructureMap_Parameter(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.valueId,
-    this.element_valueId,
+    this.elementValueId,
     this.valueString,
-    this.element_valueString,
+    this.elementValueString,
     this.valueBoolean,
-    this.element_valueBoolean,
+    this.elementValueBoolean,
     this.valueInteger,
-    this.element_valueInteger,
+    this.elementValueInteger,
     this.valueDecimal,
-    this.element_valueDecimal
+    this.elementValueDecimal
     });
 
   factory StructureMap_Parameter.fromJson(Map<String, dynamic> json) => _$StructureMap_ParameterFromJson(json);
@@ -1176,22 +1176,22 @@ class StructureMap_Dependent {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  Variable to pass to the rule or group.
   List<String> variable;
 
   //  Extensions for variable
-  List<Element> element_variable;
+  List<Element> elementVariable;
 
 StructureMap_Dependent(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.name,
-    this.element_name,
+    this.elementName,
     this.variable,
-    this.element_variable
+    this.elementVariable
     });
 
   factory StructureMap_Dependent.fromJson(Map<String, dynamic> json) => _$StructureMap_DependentFromJson(json);

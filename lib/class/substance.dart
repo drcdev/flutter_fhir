@@ -35,13 +35,13 @@ class Substance {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -54,7 +54,7 @@ class Substance {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -86,7 +86,7 @@ class Substance {
   String status; // <code> enum: active/inactive/entered-in-error;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  A code that classifies the general type of substance.  This is used 
   // for searching, sorting and display purposes.
@@ -100,7 +100,7 @@ class Substance {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  Substance may be used to describe a kind of substance, or a specific
   // package/container of the substance: an instance.
@@ -114,19 +114,19 @@ Substance(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.category,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.instance,
     this.ingredient
     });
@@ -173,7 +173,7 @@ class Substance_Instance {
   DateTime expiry;
 
   //  Extensions for expiry
-  Element element_expiry;
+  Element elementExpiry;
 
   //  The amount of the substance.
   Quantity quantity;
@@ -184,7 +184,7 @@ Substance_Instance(
     this.modifierExtension,
     this.identifier,
     this.expiry,
-    this.element_expiry,
+    this.elementExpiry,
     this.quantity
     });
 

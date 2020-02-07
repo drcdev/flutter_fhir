@@ -36,13 +36,13 @@ class Group {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -55,7 +55,7 @@ class Group {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -88,14 +88,14 @@ class Group {
   bool active;
 
   //  Extensions for active
-  Element element_active;
+  Element elementActive;
 
   //  Identifies the broad classification of the kind of resources the group
   // includes.
   String type; // <code> enum: person/animal/practitioner/device/medication/substance;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  If true, indicates that the resource refers to a specific group of
   // real individuals.  If false, the group defines a set of intended
@@ -103,7 +103,7 @@ class Group {
   bool actual;
 
   //  Extensions for actual
-  Element element_actual;
+  Element elementActual;
 
   //  Provides a specific type of resource the group includes; e.g. "cow",
   // "syringe", etc.
@@ -114,14 +114,14 @@ class Group {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  A count of the number of resource instances that are part of the
   // group.
   int quantity;
 
   //  Extensions for quantity
-  Element element_quantity;
+  Element elementQuantity;
 
   //  Entity responsible for defining and maintaining Group characteristics
   // and/or registered members.
@@ -138,25 +138,25 @@ Group(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.active,
-    this.element_active,
+    this.elementActive,
     this.type,
-    this.element_type,
+    this.elementType,
     this.actual,
-    this.element_actual,
+    this.elementActual,
     this.code,
     this.name,
-    this.element_name,
+    this.elementName,
     this.quantity,
-    this.element_quantity,
+    this.elementQuantity,
     this.managingEntity,
     this.characteristic,
     this.member
@@ -207,7 +207,7 @@ class Group_Characteristic {
   bool valueBoolean; //  pattern: ^true|false$
 
   //  Extensions for valueBoolean
-  Element element_valueBoolean;
+  Element elementValueBoolean;
 
   //  The value of the trait that holds (or does not hold - see 'exclude')
   // for members of the group.
@@ -226,7 +226,7 @@ class Group_Characteristic {
   bool exclude;
 
   //  Extensions for exclude
-  Element element_exclude;
+  Element elementExclude;
 
   //  The period over which the characteristic is tested; e.g. the patient
   // had an operation during the month of June.
@@ -239,12 +239,12 @@ Group_Characteristic(
     this.modifierExtension,
     this.valueCodeableConcept,
     this.valueBoolean,
-    this.element_valueBoolean,
+    this.elementValueBoolean,
     this.valueQuantity,
     this.valueRange,
     this.valueReference,
     this.exclude,
-    this.element_exclude,
+    this.elementExclude,
     this.period
     });
 
@@ -294,7 +294,7 @@ class Group_Member {
   bool inactive;
 
   //  Extensions for inactive
-  Element element_inactive;
+  Element elementInactive;
 
 Group_Member(
   this.entity,
@@ -303,7 +303,7 @@ Group_Member(
     this.modifierExtension,
     this.period,
     this.inactive,
-    this.element_inactive
+    this.elementInactive
     });
 
   factory Group_Member.fromJson(Map<String, dynamic> json) => _$Group_MemberFromJson(json);

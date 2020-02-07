@@ -16,20 +16,20 @@ TestReport _$TestReportFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -43,31 +43,31 @@ TestReport _$TestReportFromJson(Map<String, dynamic> json) {
         ? null
         : Identifier.fromJson(json['identifier'] as Map<String, dynamic>),
     name: json['name'] as String,
-    element_name: json['element_name'] == null
+    elementName: json['elementName'] == null
         ? null
-        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     result: json['result'] as String,
-    element_result: json['element_result'] == null
+    elementResult: json['elementResult'] == null
         ? null
-        : Element.fromJson(json['element_result'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementResult'] as Map<String, dynamic>),
     score: (json['score'] as num)?.toDouble(),
-    element_score: json['element_score'] == null
+    elementScore: json['elementScore'] == null
         ? null
-        : Element.fromJson(json['element_score'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementScore'] as Map<String, dynamic>),
     tester: json['tester'] as String,
-    element_tester: json['element_tester'] == null
+    elementTester: json['elementTester'] == null
         ? null
-        : Element.fromJson(json['element_tester'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementTester'] as Map<String, dynamic>),
     issued: json['issued'] == null
         ? null
         : DateTime.parse(json['issued'] as String),
-    element_issued: json['element_issued'] == null
+    elementIssued: json['elementIssued'] == null
         ? null
-        : Element.fromJson(json['element_issued'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementIssued'] as Map<String, dynamic>),
     participant: (json['participant'] as List)
         ?.map((e) => e == null
             ? null
@@ -93,9 +93,9 @@ Map<String, dynamic> _$TestReportToJson(TestReport instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -103,18 +103,18 @@ Map<String, dynamic> _$TestReportToJson(TestReport instance) =>
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.toJson(),
       'name': instance.name,
-      'element_name': instance.element_name?.toJson(),
+      'elementName': instance.elementName?.toJson(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'testScript': instance.testScript?.toJson(),
       'result': instance.result,
-      'element_result': instance.element_result?.toJson(),
+      'elementResult': instance.elementResult?.toJson(),
       'score': instance.score,
-      'element_score': instance.element_score?.toJson(),
+      'elementScore': instance.elementScore?.toJson(),
       'tester': instance.tester,
-      'element_tester': instance.element_tester?.toJson(),
+      'elementTester': instance.elementTester?.toJson(),
       'issued': instance.issued?.toIso8601String(),
-      'element_issued': instance.element_issued?.toJson(),
+      'elementIssued': instance.elementIssued?.toJson(),
       'participant': instance.participant?.map((e) => e?.toJson())?.toList(),
       'setup': instance.setup?.toJson(),
       'test': instance.test?.map((e) => e?.toJson())?.toList(),
@@ -134,17 +134,17 @@ TestReport_Participant _$TestReport_ParticipantFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     type: json['type'] as String,
-    element_type: json['element_type'] == null
+    elementType: json['elementType'] == null
         ? null
-        : Element.fromJson(json['element_type'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
     uri: json['uri'] as String,
-    element_uri: json['element_uri'] == null
+    elementUri: json['elementUri'] == null
         ? null
-        : Element.fromJson(json['element_uri'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementUri'] as Map<String, dynamic>),
     display: json['display'] as String,
-    element_display: json['element_display'] == null
+    elementDisplay: json['elementDisplay'] == null
         ? null
-        : Element.fromJson(json['element_display'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDisplay'] as Map<String, dynamic>),
   );
 }
 
@@ -156,11 +156,11 @@ Map<String, dynamic> _$TestReport_ParticipantToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'type': instance.type,
-      'element_type': instance.element_type?.toJson(),
+      'elementType': instance.elementType?.toJson(),
       'uri': instance.uri,
-      'element_uri': instance.element_uri?.toJson(),
+      'elementUri': instance.elementUri?.toJson(),
       'display': instance.display,
-      'element_display': instance.element_display?.toJson(),
+      'elementDisplay': instance.elementDisplay?.toJson(),
     };
 
 TestReport_Setup _$TestReport_SetupFromJson(Map<String, dynamic> json) {
@@ -234,17 +234,17 @@ TestReport_Operation _$TestReport_OperationFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     result: json['result'] as String,
-    element_result: json['element_result'] == null
+    elementResult: json['elementResult'] == null
         ? null
-        : Element.fromJson(json['element_result'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementResult'] as Map<String, dynamic>),
     message: json['message'] as String,
-    element_message: json['element_message'] == null
+    elementMessage: json['elementMessage'] == null
         ? null
-        : Element.fromJson(json['element_message'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementMessage'] as Map<String, dynamic>),
     detail: json['detail'] as String,
-    element_detail: json['element_detail'] == null
+    elementDetail: json['elementDetail'] == null
         ? null
-        : Element.fromJson(json['element_detail'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDetail'] as Map<String, dynamic>),
   );
 }
 
@@ -256,11 +256,11 @@ Map<String, dynamic> _$TestReport_OperationToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'result': instance.result,
-      'element_result': instance.element_result?.toJson(),
+      'elementResult': instance.elementResult?.toJson(),
       'message': instance.message,
-      'element_message': instance.element_message?.toJson(),
+      'elementMessage': instance.elementMessage?.toJson(),
       'detail': instance.detail,
-      'element_detail': instance.element_detail?.toJson(),
+      'elementDetail': instance.elementDetail?.toJson(),
     };
 
 TestReport_Assert _$TestReport_AssertFromJson(Map<String, dynamic> json) {
@@ -275,17 +275,17 @@ TestReport_Assert _$TestReport_AssertFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     result: json['result'] as String,
-    element_result: json['element_result'] == null
+    elementResult: json['elementResult'] == null
         ? null
-        : Element.fromJson(json['element_result'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementResult'] as Map<String, dynamic>),
     message: json['message'] as String,
-    element_message: json['element_message'] == null
+    elementMessage: json['elementMessage'] == null
         ? null
-        : Element.fromJson(json['element_message'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementMessage'] as Map<String, dynamic>),
     detail: json['detail'] as String,
-    element_detail: json['element_detail'] == null
+    elementDetail: json['elementDetail'] == null
         ? null
-        : Element.fromJson(json['element_detail'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDetail'] as Map<String, dynamic>),
   );
 }
 
@@ -296,11 +296,11 @@ Map<String, dynamic> _$TestReport_AssertToJson(TestReport_Assert instance) =>
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'result': instance.result,
-      'element_result': instance.element_result?.toJson(),
+      'elementResult': instance.elementResult?.toJson(),
       'message': instance.message,
-      'element_message': instance.element_message?.toJson(),
+      'elementMessage': instance.elementMessage?.toJson(),
       'detail': instance.detail,
-      'element_detail': instance.element_detail?.toJson(),
+      'elementDetail': instance.elementDetail?.toJson(),
     };
 
 TestReport_Test _$TestReport_TestFromJson(Map<String, dynamic> json) {
@@ -320,13 +320,13 @@ TestReport_Test _$TestReport_TestFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     name: json['name'] as String,
-    element_name: json['element_name'] == null
+    elementName: json['elementName'] == null
         ? null
-        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
     description: json['description'] as String,
-    element_description: json['element_description'] == null
+    elementDescription: json['elementDescription'] == null
         ? null
-        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
   );
 }
 
@@ -337,9 +337,9 @@ Map<String, dynamic> _$TestReport_TestToJson(TestReport_Test instance) =>
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'name': instance.name,
-      'element_name': instance.element_name?.toJson(),
+      'elementName': instance.elementName?.toJson(),
       'description': instance.description,
-      'element_description': instance.element_description?.toJson(),
+      'elementDescription': instance.elementDescription?.toJson(),
       'action': instance.action?.map((e) => e?.toJson())?.toList(),
     };
 

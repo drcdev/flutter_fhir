@@ -36,13 +36,13 @@ class RiskAssessment {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -55,7 +55,7 @@ class RiskAssessment {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -95,7 +95,7 @@ class RiskAssessment {
   String status;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  The algorithm, process or mechanism used to evaluate the risk.
   CodeableConcept method;
@@ -113,7 +113,7 @@ class RiskAssessment {
   String occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for occurrenceDateTime
-  Element element_occurrenceDateTime;
+  Element elementOccurrenceDateTime;
 
   //  The date (and possibly time) the risk assessment was performed.
   Period occurrencePeriod;
@@ -143,7 +143,7 @@ class RiskAssessment {
   String mitigation;
 
   //  Extensions for mitigation
-  Element element_mitigation;
+  Element elementMitigation;
 
   //  Additional comments about the risk assessment.
   List<Annotation> note;
@@ -153,9 +153,9 @@ RiskAssessment(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -164,12 +164,12 @@ RiskAssessment(
     this.basedOn,
     this.parent,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.method,
     this.code,
     this.encounter,
     this.occurrenceDateTime,
-    this.element_occurrenceDateTime,
+    this.elementOccurrenceDateTime,
     this.occurrencePeriod,
     this.condition,
     this.performer,
@@ -178,7 +178,7 @@ RiskAssessment(
     this.basis,
     this.prediction,
     this.mitigation,
-    this.element_mitigation,
+    this.elementMitigation,
     this.note
     });
 
@@ -223,7 +223,7 @@ class RiskAssessment_Prediction {
   double probabilityDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
 
   //  Extensions for probabilityDecimal
-  Element element_probabilityDecimal;
+  Element elementProbabilityDecimal;
 
   //  Indicates how likely the outcome is (in the specified timeframe).
   Range probabilityRange;
@@ -239,7 +239,7 @@ class RiskAssessment_Prediction {
   double relativeRisk;
 
   //  Extensions for relativeRisk
-  Element element_relativeRisk;
+  Element elementRelativeRisk;
 
   //  Indicates the period of time or age range of the subject to which the
   // specified probability applies.
@@ -253,7 +253,7 @@ class RiskAssessment_Prediction {
   String rationale;
 
   //  Extensions for rationale
-  Element element_rationale;
+  Element elementRationale;
 
 RiskAssessment_Prediction(
   {this.id,
@@ -261,15 +261,15 @@ RiskAssessment_Prediction(
     this.modifierExtension,
     this.outcome,
     this.probabilityDecimal,
-    this.element_probabilityDecimal,
+    this.elementProbabilityDecimal,
     this.probabilityRange,
     this.qualitativeRisk,
     this.relativeRisk,
-    this.element_relativeRisk,
+    this.elementRelativeRisk,
     this.whenPeriod,
     this.whenRange,
     this.rationale,
-    this.element_rationale
+    this.elementRationale
     });
 
   factory RiskAssessment_Prediction.fromJson(Map<String, dynamic> json) => _$RiskAssessment_PredictionFromJson(json);

@@ -38,13 +38,13 @@ class Goal {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -57,7 +57,7 @@ class Goal {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -91,7 +91,7 @@ class Goal {
   String lifecycleStatus; // <code> enum: proposed/planned/accepted/active/on-hold/completed/cancelled/entered-in-error/rejected;
 
   //  Extensions for lifecycleStatus
-  Element element_lifecycleStatus;
+  Element elementLifecycleStatus;
 
   //  Describes the progression, or lack thereof, towards the goal against
   // the target.
@@ -117,7 +117,7 @@ class Goal {
   String startDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for startDate
-  Element element_startDate;
+  Element elementStartDate;
 
   //  The date or event after which the goal should begin being pursued.
   CodeableConcept startCodeableConcept;
@@ -130,13 +130,13 @@ class Goal {
   String statusDate;
 
   //  Extensions for statusDate
-  Element element_statusDate;
+  Element elementStatusDate;
 
   //  Captures the reason for the current status.
   String statusReason;
 
   //  Extensions for statusReason
-  Element element_statusReason;
+  Element elementStatusReason;
 
   //  Indicates whose goal this is - patient goal, practitioner goal, etc.
   Reference expressedBy;
@@ -161,27 +161,27 @@ Goal(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.lifecycleStatus,
-    this.element_lifecycleStatus,
+    this.elementLifecycleStatus,
     this.achievementStatus,
     this.category,
     this.priority,
     this.startDate,
-    this.element_startDate,
+    this.elementStartDate,
     this.startCodeableConcept,
     this.target,
     this.statusDate,
-    this.element_statusDate,
+    this.elementStatusDate,
     this.statusReason,
-    this.element_statusReason,
+    this.elementStatusReason,
     this.expressedBy,
     this.addresses,
     this.note,
@@ -263,7 +263,7 @@ class Goal_Target {
   String detailString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for detailString
-  Element element_detailString;
+  Element elementDetailString;
 
   //  The target value of the focus to be achieved to signify the
   // fulfillment of the goal, e.g. 150 pounds, 7.0%. Either the high or low
@@ -275,7 +275,7 @@ class Goal_Target {
   bool detailBoolean; //  pattern: ^true|false$
 
   //  Extensions for detailBoolean
-  Element element_detailBoolean;
+  Element elementDetailBoolean;
 
   //  The target value of the focus to be achieved to signify the
   // fulfillment of the goal, e.g. 150 pounds, 7.0%. Either the high or low
@@ -287,7 +287,7 @@ class Goal_Target {
   int detailInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
 
   //  Extensions for detailInteger
-  Element element_detailInteger;
+  Element elementDetailInteger;
 
   //  The target value of the focus to be achieved to signify the
   // fulfillment of the goal, e.g. 150 pounds, 7.0%. Either the high or low
@@ -303,7 +303,7 @@ class Goal_Target {
   String dueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for dueDate
-  Element element_dueDate;
+  Element elementDueDate;
 
   //  Indicates either the date or the duration after start by which the
   // goal should be met.
@@ -318,14 +318,14 @@ Goal_Target(
     this.detailRange,
     this.detailCodeableConcept,
     this.detailString,
-    this.element_detailString,
+    this.elementDetailString,
     this.detailBoolean,
-    this.element_detailBoolean,
+    this.elementDetailBoolean,
     this.detailInteger,
-    this.element_detailInteger,
+    this.elementDetailInteger,
     this.detailRatio,
     this.dueDate,
-    this.element_dueDate,
+    this.elementDueDate,
     this.dueDuration
     });
 

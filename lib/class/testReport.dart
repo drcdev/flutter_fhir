@@ -32,13 +32,13 @@ class TestReport {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -51,7 +51,7 @@ class TestReport {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -84,13 +84,13 @@ class TestReport {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  The current state of this test report.
   String status; // <code> enum: completed/in-progress/waiting/stopped/entered-in-error;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  Ideally this is an absolute URL that is used to identify the
   // version-specific TestScript that was executed, matching the
@@ -101,26 +101,26 @@ class TestReport {
   String result; // <code> enum: pass/fail/pending;
 
   //  Extensions for result
-  Element element_result;
+  Element elementResult;
 
   //  The final score (percentage of tests passed) resulting from the
   // execution of the TestScript.
   double score;
 
   //  Extensions for score
-  Element element_score;
+  Element elementScore;
 
   //  Name of the tester producing this report (Organization or individual).
   String tester;
 
   //  Extensions for tester
-  Element element_tester;
+  Element elementTester;
 
   //  When the TestScript was executed and this TestReport was generated.
   DateTime issued;
 
   //  Extensions for issued
-  Element element_issued;
+  Element elementIssued;
 
   //  A participant in the test execution, either the execution engine, a
   // client, or a server.
@@ -142,26 +142,26 @@ TestReport(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.name,
-    this.element_name,
+    this.elementName,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.result,
-    this.element_result,
+    this.elementResult,
     this.score,
-    this.element_score,
+    this.elementScore,
     this.tester,
-    this.element_tester,
+    this.elementTester,
     this.issued,
-    this.element_issued,
+    this.elementIssued,
     this.participant,
     this.setup,
     this.test,
@@ -205,30 +205,30 @@ class TestReport_Participant {
   String type; // <code> enum: test-engine/client/server;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  The uri of the participant. An absolute URL is preferred.
   String uri;
 
   //  Extensions for uri
-  Element element_uri;
+  Element elementUri;
 
   //  The display name of the participant.
   String display;
 
   //  Extensions for display
-  Element element_display;
+  Element elementDisplay;
 
 TestReport_Participant(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.type,
-    this.element_type,
+    this.elementType,
     this.uri,
-    this.element_uri,
+    this.elementUri,
     this.display,
-    this.element_display
+    this.elementDisplay
     });
 
   factory TestReport_Participant.fromJson(Map<String, dynamic> json) => _$TestReport_ParticipantFromJson(json);
@@ -358,30 +358,30 @@ class TestReport_Operation {
   String result; // <code> enum: pass/skip/fail/warning/error;
 
   //  Extensions for result
-  Element element_result;
+  Element elementResult;
 
   //  An explanatory message associated with the result.
   String message;
 
   //  Extensions for message
-  Element element_message;
+  Element elementMessage;
 
   //  A link to further details on the result.
   String detail;
 
   //  Extensions for detail
-  Element element_detail;
+  Element elementDetail;
 
 TestReport_Operation(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.result,
-    this.element_result,
+    this.elementResult,
     this.message,
-    this.element_message,
+    this.elementMessage,
     this.detail,
-    this.element_detail
+    this.elementDetail
     });
 
   factory TestReport_Operation.fromJson(Map<String, dynamic> json) => _$TestReport_OperationFromJson(json);
@@ -421,30 +421,30 @@ class TestReport_Assert {
   String result; // <code> enum: pass/skip/fail/warning/error;
 
   //  Extensions for result
-  Element element_result;
+  Element elementResult;
 
   //  An explanatory message associated with the result.
   String message;
 
   //  Extensions for message
-  Element element_message;
+  Element elementMessage;
 
   //  A link to further details on the result.
   String detail;
 
   //  Extensions for detail
-  Element element_detail;
+  Element elementDetail;
 
 TestReport_Assert(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.result,
-    this.element_result,
+    this.elementResult,
     this.message,
-    this.element_message,
+    this.elementMessage,
     this.detail,
-    this.element_detail
+    this.elementDetail
     });
 
   factory TestReport_Assert.fromJson(Map<String, dynamic> json) => _$TestReport_AssertFromJson(json);
@@ -485,14 +485,14 @@ class TestReport_Test {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  A short description of the test used by test engines for tracking and
   // reporting purposes.
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  Action would contain either an operation or an assertion.
   List<TestReport_Action1> action;
@@ -503,9 +503,9 @@ TestReport_Test(
     this.extension,
     this.modifierExtension,
     this.name,
-    this.element_name,
+    this.elementName,
     this.description,
-    this.element_description
+    this.elementDescription
     });
 
   factory TestReport_Test.fromJson(Map<String, dynamic> json) => _$TestReport_TestFromJson(json);

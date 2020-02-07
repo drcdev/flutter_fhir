@@ -37,13 +37,13 @@ class MedicationKnowledge {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -56,7 +56,7 @@ class MedicationKnowledge {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -94,7 +94,7 @@ class MedicationKnowledge {
   String status;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  Describes the details of the manufacturer of the medication product. 
   // This is not intended to represent the distributor of a medication
@@ -117,7 +117,7 @@ class MedicationKnowledge {
   List<String> synonym;
 
   //  Extensions for synonym
-  List<Element> element_synonym;
+  List<Element> elementSynonym;
 
   //  Associated or related knowledge about a medication.
   List<MedicationKnowledge_RelatedMedicationKnowledge> relatedMedicationKnowledge;
@@ -142,7 +142,7 @@ class MedicationKnowledge {
   String preparationInstruction;
 
   //  Extensions for preparationInstruction
-  Element element_preparationInstruction;
+  Element elementPreparationInstruction;
 
   //  The intended or approved route of administration.
   List<CodeableConcept> intendedRoute;
@@ -183,28 +183,28 @@ MedicationKnowledge(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.code,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.manufacturer,
     this.doseForm,
     this.amount,
     this.synonym,
-    this.element_synonym,
+    this.elementSynonym,
     this.relatedMedicationKnowledge,
     this.associatedMedication,
     this.productType,
     this.monograph,
     this.ingredient,
     this.preparationInstruction,
-    this.element_preparationInstruction,
+    this.elementPreparationInstruction,
     this.intendedRoute,
     this.cost,
     this.monitoringProgram,
@@ -358,7 +358,7 @@ class MedicationKnowledge_Ingredient {
   bool isActive;
 
   //  Extensions for isActive
-  Element element_isActive;
+  Element elementIsActive;
 
   //  Specifies how many (or how much) of the items there are in this
   // Medication.  For example, 250 mg per tablet.  This is expressed as a
@@ -372,7 +372,7 @@ MedicationKnowledge_Ingredient(
     this.itemCodeableConcept,
     this.itemReference,
     this.isActive,
-    this.element_isActive,
+    this.elementIsActive,
     this.strength
     });
 
@@ -417,7 +417,7 @@ class MedicationKnowledge_Cost {
   String source;
 
   //  Extensions for source
-  Element element_source;
+  Element elementSource;
 
   //  The price of the medication.
   Money cost;
@@ -429,7 +429,7 @@ MedicationKnowledge_Cost(
     this.extension,
     this.modifierExtension,
     this.source,
-    this.element_source
+    this.elementSource
     });
 
   factory MedicationKnowledge_Cost.fromJson(Map<String, dynamic> json) => _$MedicationKnowledge_CostFromJson(json);
@@ -472,7 +472,7 @@ class MedicationKnowledge_MonitoringProgram {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
 MedicationKnowledge_MonitoringProgram(
   {this.id,
@@ -480,7 +480,7 @@ MedicationKnowledge_MonitoringProgram(
     this.modifierExtension,
     this.type,
     this.name,
-    this.element_name
+    this.elementName
     });
 
   factory MedicationKnowledge_MonitoringProgram.fromJson(Map<String, dynamic> json) => _$MedicationKnowledge_MonitoringProgramFromJson(json);
@@ -634,7 +634,7 @@ class MedicationKnowledge_PatientCharacteristics {
   List<String> value;
 
   //  Extensions for value
-  List<Element> element_value;
+  List<Element> elementValue;
 
 MedicationKnowledge_PatientCharacteristics(
   {this.id,
@@ -643,7 +643,7 @@ MedicationKnowledge_PatientCharacteristics(
     this.characteristicCodeableConcept,
     this.characteristicQuantity,
     this.value,
-    this.element_value
+    this.elementValue
     });
 
   factory MedicationKnowledge_PatientCharacteristics.fromJson(Map<String, dynamic> json) => _$MedicationKnowledge_PatientCharacteristicsFromJson(json);
@@ -787,7 +787,7 @@ class MedicationKnowledge_DrugCharacteristic {
   String valueString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for valueString
-  Element element_valueString;
+  Element elementValueString;
 
   //  Description of the characteristic.
   Quantity valueQuantity;
@@ -796,7 +796,7 @@ class MedicationKnowledge_DrugCharacteristic {
   String valueBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
 
   //  Extensions for valueBase64Binary
-  Element element_valueBase64Binary;
+  Element elementValueBase64Binary;
 
 MedicationKnowledge_DrugCharacteristic(
   {this.id,
@@ -805,10 +805,10 @@ MedicationKnowledge_DrugCharacteristic(
     this.type,
     this.valueCodeableConcept,
     this.valueString,
-    this.element_valueString,
+    this.elementValueString,
     this.valueQuantity,
     this.valueBase64Binary,
-    this.element_valueBase64Binary
+    this.elementValueBase64Binary
     });
 
   factory MedicationKnowledge_DrugCharacteristic.fromJson(Map<String, dynamic> json) => _$MedicationKnowledge_DrugCharacteristicFromJson(json);
@@ -909,7 +909,7 @@ class MedicationKnowledge_Substitution {
   bool allowed;
 
   //  Extensions for allowed
-  Element element_allowed;
+  Element elementAllowed;
 
 MedicationKnowledge_Substitution(
   this.type,
@@ -917,7 +917,7 @@ MedicationKnowledge_Substitution(
     this.extension,
     this.modifierExtension,
     this.allowed,
-    this.element_allowed
+    this.elementAllowed
     });
 
   factory MedicationKnowledge_Substitution.fromJson(Map<String, dynamic> json) => _$MedicationKnowledge_SubstitutionFromJson(json);

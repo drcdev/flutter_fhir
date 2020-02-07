@@ -35,13 +35,13 @@ class PaymentReconciliation {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -54,7 +54,7 @@ class PaymentReconciliation {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -86,7 +86,7 @@ class PaymentReconciliation {
   String status;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  The period of time for which payments have been gathered into this
   // bulk payment for settlement.
@@ -96,7 +96,7 @@ class PaymentReconciliation {
   DateTime created;
 
   //  Extensions for created
-  Element element_created;
+  Element elementCreated;
 
   //  The party who generated the payment.
   Reference paymentIssuer;
@@ -112,20 +112,20 @@ class PaymentReconciliation {
   String outcome; // <code> enum: queued/complete/error/partial;
 
   //  Extensions for outcome
-  Element element_outcome;
+  Element elementOutcome;
 
   //  A human readable description of the status of the request for the
   // reconciliation.
   String disposition;
 
   //  Extensions for disposition
-  Element element_disposition;
+  Element elementDisposition;
 
   //  The date of payment as indicated on the financial instrument.
   String paymentDate;
 
   //  Extensions for paymentDate
-  Element element_paymentDate;
+  Element elementPaymentDate;
 
   //  Total payment amount as indicated on the financial instrument.
   Money paymentAmount;
@@ -149,28 +149,28 @@ PaymentReconciliation(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.period,
     this.created,
-    this.element_created,
+    this.elementCreated,
     this.paymentIssuer,
     this.request,
     this.requestor,
     this.outcome,
-    this.element_outcome,
+    this.elementOutcome,
     this.disposition,
-    this.element_disposition,
+    this.elementDisposition,
     this.paymentDate,
-    this.element_paymentDate,
+    this.elementPaymentDate,
     this.paymentIdentifier,
     this.detail,
     this.formCode,
@@ -236,7 +236,7 @@ class PaymentReconciliation_Detail {
   String date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  A reference to the individual who is responsible for inquiries
   // regarding the response and its payment.
@@ -259,7 +259,7 @@ PaymentReconciliation_Detail(
     this.submitter,
     this.response,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.responsible,
     this.payee,
     this.amount
@@ -302,22 +302,22 @@ class PaymentReconciliation_ProcessNote {
   String type; // <code> enum: display/print/printoper;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  The explanation or description associated with the processing.
   String text;
 
   //  Extensions for text
-  Element element_text;
+  Element elementText;
 
 PaymentReconciliation_ProcessNote(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.type,
-    this.element_type,
+    this.elementType,
     this.text,
-    this.element_text
+    this.elementText
     });
 
   factory PaymentReconciliation_ProcessNote.fromJson(Map<String, dynamic> json) => _$PaymentReconciliation_ProcessNoteFromJson(json);

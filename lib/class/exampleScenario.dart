@@ -34,13 +34,13 @@ class ExampleScenario {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -53,7 +53,7 @@ class ExampleScenario {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -88,7 +88,7 @@ class ExampleScenario {
   String url;
 
   //  Extensions for url
-  Element element_url;
+  Element elementUrl;
 
   //  A formal identifier that is used to identify this example scenario
   // when it is represented in other formats, or referenced in a
@@ -105,7 +105,7 @@ class ExampleScenario {
   String version;
 
   //  Extensions for version
-  Element element_version;
+  Element elementVersion;
 
   //  A natural language name identifying the example scenario. This name
   // should be usable as an identifier for the module by machine processing
@@ -113,14 +113,14 @@ class ExampleScenario {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  The status of this example scenario. Enables tracking the life-cycle
   // of the content.
   String status; // <code> enum: draft/active/retired/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  A Boolean value to indicate that this example scenario is authored for
   // testing purposes (or education/evaluation/marketing) and is not
@@ -128,7 +128,7 @@ class ExampleScenario {
   bool experimental;
 
   //  Extensions for experimental
-  Element element_experimental;
+  Element elementExperimental;
 
   //  The date  (and optionally time) when the example scenario was
   // published. The date must change when the business version changes and
@@ -138,14 +138,14 @@ class ExampleScenario {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  The name of the organization or individual that published the example
   // scenario.
   String publisher;
 
   //  Extensions for publisher
-  Element element_publisher;
+  Element elementPublisher;
 
   //  Contact details to assist a user in finding and communicating with the
   // publisher.
@@ -168,7 +168,7 @@ class ExampleScenario {
   String copyright;
 
   //  Extensions for copyright
-  Element element_copyright;
+  Element elementCopyright;
 
   //  What the example scenario resource is created for. This should not be
   // used to show the business purpose of the scenario itself, but the
@@ -176,7 +176,7 @@ class ExampleScenario {
   String purpose;
 
   //  Extensions for purpose
-  Element element_purpose;
+  Element elementPurpose;
 
   //  Actor participating in the resource.
   List<ExampleScenario_Actor> actor;
@@ -194,35 +194,35 @@ ExampleScenario(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
-    this.element_url,
+    this.elementUrl,
     this.identifier,
     this.version,
-    this.element_version,
+    this.elementVersion,
     this.name,
-    this.element_name,
+    this.elementName,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.experimental,
-    this.element_experimental,
+    this.elementExperimental,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.publisher,
-    this.element_publisher,
+    this.elementPublisher,
     this.contact,
     this.useContext,
     this.jurisdiction,
     this.copyright,
-    this.element_copyright,
+    this.elementCopyright,
     this.purpose,
-    this.element_purpose,
+    this.elementPurpose,
     this.actor,
     this.instance,
     this.process,
@@ -266,38 +266,38 @@ class ExampleScenario_Actor {
   String actorId;
 
   //  Extensions for actorId
-  Element element_actorId;
+  Element elementActorId;
 
   //  The type of actor - person or system.
   String type; // <code> enum: person/entity;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  The name of the actor as shown in the page.
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  The description of the actor.
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
 ExampleScenario_Actor(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.actorId,
-    this.element_actorId,
+    this.elementActorId,
     this.type,
-    this.element_type,
+    this.elementType,
     this.name,
-    this.element_name,
+    this.elementName,
     this.description,
-    this.element_description
+    this.elementDescription
     });
 
   factory ExampleScenario_Actor.fromJson(Map<String, dynamic> json) => _$ExampleScenario_ActorFromJson(json);
@@ -337,25 +337,25 @@ class ExampleScenario_Instance {
   String resourceId;
 
   //  Extensions for resourceId
-  Element element_resourceId;
+  Element elementResourceId;
 
   //  The type of the resource.
   String resourceType;
 
   //  Extensions for resourceType
-  Element element_resourceType;
+  Element elementResourceType;
 
   //  A short name for the resource instance.
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  Human-friendly description of the resource instance.
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  A specific version of the resource.
   List<ExampleScenario_Version> version;
@@ -369,12 +369,12 @@ ExampleScenario_Instance(
     this.extension,
     this.modifierExtension,
     this.resourceId,
-    this.element_resourceId,
-    this.element_resourceType,
+    this.elementResourceId,
+    this.elementResourceType,
     this.name,
-    this.element_name,
+    this.elementName,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.version,
     this.containedInstance
     });
@@ -416,22 +416,22 @@ class ExampleScenario_Version {
   String versionId;
 
   //  Extensions for versionId
-  Element element_versionId;
+  Element elementVersionId;
 
   //  The description of the resource version.
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
 ExampleScenario_Version(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.versionId,
-    this.element_versionId,
+    this.elementVersionId,
     this.description,
-    this.element_description
+    this.elementDescription
     });
 
   factory ExampleScenario_Version.fromJson(Map<String, dynamic> json) => _$ExampleScenario_VersionFromJson(json);
@@ -471,22 +471,22 @@ class ExampleScenario_ContainedInstance {
   String resourceId;
 
   //  Extensions for resourceId
-  Element element_resourceId;
+  Element elementResourceId;
 
   //  A specific version of a resource contained in the instance.
   String versionId;
 
   //  Extensions for versionId
-  Element element_versionId;
+  Element elementVersionId;
 
 ExampleScenario_ContainedInstance(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.resourceId,
-    this.element_resourceId,
+    this.elementResourceId,
     this.versionId,
-    this.element_versionId
+    this.elementVersionId
     });
 
   factory ExampleScenario_ContainedInstance.fromJson(Map<String, dynamic> json) => _$ExampleScenario_ContainedInstanceFromJson(json);
@@ -526,25 +526,25 @@ class ExampleScenario_Process {
   String title;
 
   //  Extensions for title
-  Element element_title;
+  Element elementTitle;
 
   //  A longer description of the group of operations.
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  Description of initial status before the process starts.
   String preConditions;
 
   //  Extensions for preConditions
-  Element element_preConditions;
+  Element elementPreConditions;
 
   //  Description of final status after the process ends.
   String postConditions;
 
   //  Extensions for postConditions
-  Element element_postConditions;
+  Element elementPostConditions;
 
   //  Each step of the process.
   List<ExampleScenario_Step> step;
@@ -554,13 +554,13 @@ ExampleScenario_Process(
     this.extension,
     this.modifierExtension,
     this.title,
-    this.element_title,
+    this.elementTitle,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.preConditions,
-    this.element_preConditions,
+    this.elementPreConditions,
     this.postConditions,
-    this.element_postConditions,
+    this.elementPostConditions,
     this.step
     });
 
@@ -604,7 +604,7 @@ class ExampleScenario_Step {
   bool pause;
 
   //  Extensions for pause
-  Element element_pause;
+  Element elementPause;
 
   //  Each interaction or action.
   ExampleScenario_Operation operation;
@@ -619,7 +619,7 @@ ExampleScenario_Step(
     this.modifierExtension,
     this.process,
     this.pause,
-    this.element_pause,
+    this.elementPause,
     this.operation,
     this.alternative
     });
@@ -661,49 +661,49 @@ class ExampleScenario_Operation {
   String number;
 
   //  Extensions for number
-  Element element_number;
+  Element elementNumber;
 
   //  The type of operation - CRUD.
   String type;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  The human-friendly name of the interaction.
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  Who starts the transaction.
   String initiator;
 
   //  Extensions for initiator
-  Element element_initiator;
+  Element elementInitiator;
 
   //  Who receives the transaction.
   String receiver;
 
   //  Extensions for receiver
-  Element element_receiver;
+  Element elementReceiver;
 
   //  A comment to be inserted in the diagram.
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  Whether the initiator is deactivated right after the transaction.
   bool initiatorActive;
 
   //  Extensions for initiatorActive
-  Element element_initiatorActive;
+  Element elementInitiatorActive;
 
   //  Whether the receiver is deactivated right after the transaction.
   bool receiverActive;
 
   //  Extensions for receiverActive
-  Element element_receiverActive;
+  Element elementReceiverActive;
 
   //  Each resource instance used by the initiator.
   ExampleScenario_ContainedInstance request;
@@ -716,21 +716,21 @@ ExampleScenario_Operation(
     this.extension,
     this.modifierExtension,
     this.number,
-    this.element_number,
+    this.elementNumber,
     this.type,
-    this.element_type,
+    this.elementType,
     this.name,
-    this.element_name,
+    this.elementName,
     this.initiator,
-    this.element_initiator,
+    this.elementInitiator,
     this.receiver,
-    this.element_receiver,
+    this.elementReceiver,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.initiatorActive,
-    this.element_initiatorActive,
+    this.elementInitiatorActive,
     this.receiverActive,
-    this.element_receiverActive,
+    this.elementReceiverActive,
     this.request,
     this.response
     });
@@ -773,14 +773,14 @@ class ExampleScenario_Alternative {
   String title;
 
   //  Extensions for title
-  Element element_title;
+  Element elementTitle;
 
   //  A human-readable description of the alternative explaining when the
   // alternative should occur rather than the base step.
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  What happens in each alternative option.
   List<ExampleScenario_Step> step;
@@ -790,9 +790,9 @@ ExampleScenario_Alternative(
     this.extension,
     this.modifierExtension,
     this.title,
-    this.element_title,
+    this.elementTitle,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.step
     });
 

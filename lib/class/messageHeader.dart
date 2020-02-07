@@ -34,13 +34,13 @@ class MessageHeader {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -53,7 +53,7 @@ class MessageHeader {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -93,7 +93,7 @@ class MessageHeader {
   String eventUri; //  pattern: ^\S*$
 
   //  Extensions for eventUri
-  Element element_eventUri;
+  Element elementEventUri;
 
   //  The destination application which the message is intended for.
   List<MessageHeader_Destination> destination;
@@ -141,16 +141,16 @@ MessageHeader(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.eventCoding,
     this.eventUri,
-    this.element_eventUri,
+    this.elementEventUri,
     this.destination,
     this.sender,
     this.enterer,
@@ -199,7 +199,7 @@ class MessageHeader_Destination {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  Identifies the target end system in situations where the initial
   // message transmission is to an intermediary system.
@@ -209,7 +209,7 @@ class MessageHeader_Destination {
   String endpoint;
 
   //  Extensions for endpoint
-  Element element_endpoint;
+  Element elementEndpoint;
 
   //  Allows data conveyed by a message to be addressed to a particular
   // person or department when routing to a specific application isn't
@@ -221,10 +221,10 @@ MessageHeader_Destination(
     this.extension,
     this.modifierExtension,
     this.name,
-    this.element_name,
+    this.elementName,
     this.target,
     this.endpoint,
-    this.element_endpoint,
+    this.elementEndpoint,
     this.receiver
     });
 
@@ -265,20 +265,20 @@ class MessageHeader_Source {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  May include configuration or other information useful in debugging.
   String software;
 
   //  Extensions for software
-  Element element_software;
+  Element elementSoftware;
 
   //  Can convey versions of multiple systems in situations where a message
   // passes through multiple hands.
   String version;
 
   //  Extensions for version
-  Element element_version;
+  Element elementVersion;
 
   //  An e-mail, phone, website or other contact point to use to resolve
   // issues with message communications.
@@ -288,21 +288,21 @@ class MessageHeader_Source {
   String endpoint;
 
   //  Extensions for endpoint
-  Element element_endpoint;
+  Element elementEndpoint;
 
 MessageHeader_Source(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.name,
-    this.element_name,
+    this.elementName,
     this.software,
-    this.element_software,
+    this.elementSoftware,
     this.version,
-    this.element_version,
+    this.elementVersion,
     this.contact,
     this.endpoint,
-    this.element_endpoint
+    this.elementEndpoint
     });
 
   factory MessageHeader_Source.fromJson(Map<String, dynamic> json) => _$MessageHeader_SourceFromJson(json);
@@ -343,14 +343,14 @@ class MessageHeader_Response {
   String identifier;
 
   //  Extensions for identifier
-  Element element_identifier;
+  Element elementIdentifier;
 
   //  Code that identifies the type of response to the message - whether it
   // was successful or not, and whether it should be resent or not.
   String code; // <code> enum: ok/transient-error/fatal-error;
 
   //  Extensions for code
-  Element element_code;
+  Element elementCode;
 
   //  Full details of any issues found in the message.
   Reference details;
@@ -360,9 +360,9 @@ MessageHeader_Response(
     this.extension,
     this.modifierExtension,
     this.identifier,
-    this.element_identifier,
+    this.elementIdentifier,
     this.code,
-    this.element_code,
+    this.elementCode,
     this.details
     });
 

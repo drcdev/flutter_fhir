@@ -34,13 +34,13 @@ class Account {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -53,7 +53,7 @@ class Account {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -86,7 +86,7 @@ class Account {
   String status; // <code> enum: active/inactive/entered-in-error/on-hold/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  Categorizes the account for reporting and searching purposes.
   CodeableConcept type;
@@ -96,7 +96,7 @@ class Account {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  Identifies the entity which incurs the expenses. While the immediate
   // recipients of services or goods might be entities related to the
@@ -120,7 +120,7 @@ class Account {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  The parties responsible for balancing the account if other payment
   // options fall short.
@@ -133,25 +133,25 @@ Account(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.type,
     this.name,
-    this.element_name,
+    this.elementName,
     this.subject,
     this.servicePeriod,
     this.coverage,
     this.owner,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.guarantor,
     this.partOf
     });
@@ -199,7 +199,7 @@ class Account_Coverage {
   int priority;
 
   //  Extensions for priority
-  Element element_priority;
+  Element elementPriority;
 
 Account_Coverage(
   this.coverage,
@@ -207,7 +207,7 @@ Account_Coverage(
     this.extension,
     this.modifierExtension,
     this.priority,
-    this.element_priority
+    this.elementPriority
     });
 
   factory Account_Coverage.fromJson(Map<String, dynamic> json) => _$Account_CoverageFromJson(json);
@@ -251,7 +251,7 @@ class Account_Guarantor {
   bool onHold;
 
   //  Extensions for onHold
-  Element element_onHold;
+  Element elementOnHold;
 
   //  The timeframe during which the guarantor accepts responsibility for
   // the account.
@@ -263,7 +263,7 @@ Account_Guarantor(
     this.extension,
     this.modifierExtension,
     this.onHold,
-    this.element_onHold,
+    this.elementOnHold,
     this.period
     });
 

@@ -34,13 +34,13 @@ class Lists {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -53,7 +53,7 @@ class Lists {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -86,7 +86,7 @@ class Lists {
   String status; // <code> enum: current/retired/entered-in-error;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  How this list was prepared - whether it is a working list that is
   // suitable for being maintained on an ongoing basis, or if it represents
@@ -95,13 +95,13 @@ class Lists {
   String mode; // <code> enum: working/snapshot/changes;
 
   //  Extensions for mode
-  Element element_mode;
+  Element elementMode;
 
   //  A label for the list assigned by the author.
   String title;
 
   //  Extensions for title
-  Element element_title;
+  Element elementTitle;
 
   //  This code defines the purpose of the list - why it was created.
   CodeableConcept code;
@@ -117,7 +117,7 @@ class Lists {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  The entity responsible for deciding what the contents of the list
   // were. Where the list was created by a human, this is the same as the
@@ -140,25 +140,25 @@ Lists(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.mode,
-    this.element_mode,
+    this.elementMode,
     this.title,
-    this.element_title,
+    this.elementTitle,
     this.code,
     this.subject,
     this.encounter,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.source,
     this.orderedBy,
     this.note,
@@ -207,13 +207,13 @@ class List_Entry {
   bool deleted;
 
   //  Extensions for deleted
-  Element element_deleted;
+  Element elementDeleted;
 
   //  When this item was added to the list.
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  A reference to the actual resource from which data was derived.
   Reference item;
@@ -225,9 +225,9 @@ List_Entry(
     this.modifierExtension,
     this.flag,
     this.deleted,
-    this.element_deleted,
+    this.elementDeleted,
     this.date,
-    this.element_date
+    this.elementDate
     });
 
   factory List_Entry.fromJson(Map<String, dynamic> json) => _$List_EntryFromJson(json);

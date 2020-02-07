@@ -35,13 +35,13 @@ class Communication {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -54,7 +54,7 @@ class Communication {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -95,7 +95,7 @@ class Communication {
   List<String> instantiatesUri;
 
   //  Extensions for instantiatesUri
-  List<Element> element_instantiatesUri;
+  List<Element> elementInstantiatesUri;
 
   //  An order, proposal or plan fulfilled in whole or in part by this
   // Communication.
@@ -111,7 +111,7 @@ class Communication {
   String status;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  Captures the reason for the current state of the Communication.
   CodeableConcept statusReason;
@@ -125,7 +125,7 @@ class Communication {
   String priority;
 
   //  Extensions for priority
-  Element element_priority;
+  Element elementPriority;
 
   //  A channel that was used for this communication (e.g. email, fax).
   List<CodeableConcept> medium;
@@ -149,13 +149,13 @@ class Communication {
   DateTime sent;
 
   //  Extensions for sent
-  Element element_sent;
+  Element elementSent;
 
   //  The time when this communication arrived at the destination.
   DateTime received;
 
   //  Extensions for received
-  Element element_received;
+  Element elementReceived;
 
   //  The entity (e.g. person, organization, clinical information system,
   // care team or device) which was the target of the communication. If
@@ -189,9 +189,9 @@ Communication(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -199,25 +199,25 @@ Communication(
     this.identifier,
     this.instantiatesCanonical,
     this.instantiatesUri,
-    this.element_instantiatesUri,
+    this.elementInstantiatesUri,
     this.basedOn,
     this.partOf,
     this.inResponseTo,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.statusReason,
     this.category,
     this.priority,
-    this.element_priority,
+    this.elementPriority,
     this.medium,
     this.subject,
     this.topic,
     this.about,
     this.encounter,
     this.sent,
-    this.element_sent,
+    this.elementSent,
     this.received,
-    this.element_received,
+    this.elementReceived,
     this.recipient,
     this.sender,
     this.reasonCode,
@@ -264,7 +264,7 @@ class Communication_Payload {
   String contentString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for contentString
-  Element element_contentString;
+  Element elementContentString;
 
   //  A communicated content (or for multi-part communications, one portion
   // of the communication).
@@ -279,7 +279,7 @@ Communication_Payload(
     this.extension,
     this.modifierExtension,
     this.contentString,
-    this.element_contentString,
+    this.elementContentString,
     this.contentAttachment,
     this.contentReference
     });

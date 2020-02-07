@@ -36,13 +36,13 @@ class Location {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -55,7 +55,7 @@ class Location {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -89,7 +89,7 @@ class Location {
   String status; // <code> enum: active/suspended/inactive;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  The operational status covers operation values most relevant to beds
   // (but can also apply to rooms/units/chairs/etc. such as an isolation
@@ -101,28 +101,28 @@ class Location {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  A list of alternate names that the location is known as, or was known
   // as, in the past.
   List<String> alias;
 
   //  Extensions for alias
-  List<Element> element_alias;
+  List<Element> elementAlias;
 
   //  Description of the Location, which helps in finding or referencing the
   // place.
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  Indicates whether a resource instance represents a specific location
   // or a class of locations.
   String mode; // <code> enum: instance/kind;
 
   //  Extensions for mode
-  Element element_mode;
+  Element elementMode;
 
   //  Indicates the type of function performed at the location.
   List<CodeableConcept> type;
@@ -159,7 +159,7 @@ class Location {
   String availabilityExceptions;
 
   //  Extensions for availabilityExceptions
-  Element element_availabilityExceptions;
+  Element elementAvailabilityExceptions;
 
   //  Technical endpoints providing access to services operated for the
   // location.
@@ -169,25 +169,25 @@ Location(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.operationalStatus,
     this.name,
-    this.element_name,
+    this.elementName,
     this.alias,
-    this.element_alias,
+    this.elementAlias,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.mode,
-    this.element_mode,
+    this.elementMode,
     this.type,
     this.telecom,
     this.address,
@@ -197,7 +197,7 @@ Location(
     this.partOf,
     this.hoursOfOperation,
     this.availabilityExceptions,
-    this.element_availabilityExceptions,
+    this.elementAvailabilityExceptions,
     this.endpoint
     });
 
@@ -239,32 +239,32 @@ class Location_Position {
   double longitude;
 
   //  Extensions for longitude
-  Element element_longitude;
+  Element elementLongitude;
 
   //  Latitude. The value domain and the interpretation are the same as for
   // the text of the latitude element in KML (see notes below).
   double latitude;
 
   //  Extensions for latitude
-  Element element_latitude;
+  Element elementLatitude;
 
   //  Altitude. The value domain and the interpretation are the same as for
   // the text of the altitude element in KML (see notes below).
   double altitude;
 
   //  Extensions for altitude
-  Element element_altitude;
+  Element elementAltitude;
 
 Location_Position(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.longitude,
-    this.element_longitude,
+    this.elementLongitude,
     this.latitude,
-    this.element_latitude,
+    this.elementLatitude,
     this.altitude,
-    this.element_altitude
+    this.elementAltitude
     });
 
   factory Location_Position.fromJson(Map<String, dynamic> json) => _$Location_PositionFromJson(json);
@@ -305,38 +305,38 @@ class Location_HoursOfOperation {
   List<String> daysOfWeek;
 
   //  Extensions for daysOfWeek
-  List<Element> element_daysOfWeek;
+  List<Element> elementDaysOfWeek;
 
   //  The Location is open all day.
   bool allDay;
 
   //  Extensions for allDay
-  Element element_allDay;
+  Element elementAllDay;
 
   //  Time that the Location opens.
   String openingTime;
 
   //  Extensions for openingTime
-  Element element_openingTime;
+  Element elementOpeningTime;
 
   //  Time that the Location closes.
   String closingTime;
 
   //  Extensions for closingTime
-  Element element_closingTime;
+  Element elementClosingTime;
 
 Location_HoursOfOperation(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.daysOfWeek,
-    this.element_daysOfWeek,
+    this.elementDaysOfWeek,
     this.allDay,
-    this.element_allDay,
+    this.elementAllDay,
     this.openingTime,
-    this.element_openingTime,
+    this.elementOpeningTime,
     this.closingTime,
-    this.element_closingTime
+    this.elementClosingTime
     });
 
   factory Location_HoursOfOperation.fromJson(Map<String, dynamic> json) => _$Location_HoursOfOperationFromJson(json);

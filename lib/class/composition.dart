@@ -34,13 +34,13 @@ class Composition {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -53,7 +53,7 @@ class Composition {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -87,7 +87,7 @@ class Composition {
   String status; // <code> enum: preliminary/final/amended/entered-in-error;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  Specifies the particular kind of composition (e.g. History and
   // Physical, Discharge Summary, Progress Note). This usually equates to
@@ -114,7 +114,7 @@ class Composition {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  Identifies who is responsible for the information in the composition,
   // not necessarily who typed it in.
@@ -124,13 +124,13 @@ class Composition {
   String title;
 
   //  Extensions for title
-  Element element_title;
+  Element elementTitle;
 
   //  The code specifying the level of confidentiality of the Composition.
   String confidentiality;
 
   //  Extensions for confidentiality
-  Element element_confidentiality;
+  Element elementConfidentiality;
 
   //  A participant who has attested to the accuracy of the
   // composition/document.
@@ -157,25 +157,25 @@ Composition(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.category,
     this.subject,
     this.encounter,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.title,
-    this.element_title,
+    this.elementTitle,
     this.confidentiality,
-    this.element_confidentiality,
+    this.elementConfidentiality,
     this.attester,
     this.custodian,
     this.relatesTo,
@@ -220,13 +220,13 @@ class Composition_Attester {
   String mode; // <code> enum: personal/professional/legal/official;
 
   //  Extensions for mode
-  Element element_mode;
+  Element elementMode;
 
   //  When the composition was attested by the party.
   DateTime time;
 
   //  Extensions for time
-  Element element_time;
+  Element elementTime;
 
   //  Who attested the composition in the specified way.
   Reference party;
@@ -236,9 +236,9 @@ Composition_Attester(
     this.extension,
     this.modifierExtension,
     this.mode,
-    this.element_mode,
+    this.elementMode,
     this.time,
-    this.element_time,
+    this.elementTime,
     this.party
     });
 
@@ -280,7 +280,7 @@ class Composition_RelatesTo {
   String code;
 
   //  Extensions for code
-  Element element_code;
+  Element elementCode;
 
   //  The target composition/document of this relationship.
   Identifier targetIdentifier;
@@ -293,7 +293,7 @@ Composition_RelatesTo(
     this.extension,
     this.modifierExtension,
     this.code,
-    this.element_code,
+    this.elementCode,
     this.targetIdentifier,
     this.targetReference
     });
@@ -396,7 +396,7 @@ class Composition_Section {
   String title;
 
   //  Extensions for title
-  Element element_title;
+  Element elementTitle;
 
   //  A code identifying the kind of content contained within the section.
   // This must be consistent with the section title.
@@ -431,7 +431,7 @@ class Composition_Section {
   String mode;
 
   //  Extensions for mode
-  Element element_mode;
+  Element elementMode;
 
   //  Specifies the order applied to the items in the section entries.
   CodeableConcept orderedBy;
@@ -452,13 +452,13 @@ Composition_Section(
     this.extension,
     this.modifierExtension,
     this.title,
-    this.element_title,
+    this.elementTitle,
     this.code,
     this.author,
     this.focus,
     this.text,
     this.mode,
-    this.element_mode,
+    this.elementMode,
     this.orderedBy,
     this.entry,
     this.emptyReason,

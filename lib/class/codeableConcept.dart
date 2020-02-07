@@ -30,14 +30,14 @@ class CodeableConcept {
   String text;
 
   //  Extensions for text
-  Element element_text;
+  Element elementText;
 
 CodeableConcept(
   {this.id,
     this.extension,
     this.coding,
     this.text,
-    this.element_text
+    this.elementText
     });
 
   factory CodeableConcept.fromJson(Map<String, dynamic> json) => _$CodeableConceptFromJson(json);

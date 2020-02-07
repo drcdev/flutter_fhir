@@ -13,20 +13,20 @@ EnrollmentResponse _$EnrollmentResponseFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -41,26 +41,26 @@ EnrollmentResponse _$EnrollmentResponseFromJson(Map<String, dynamic> json) {
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     request: json['request'] == null
         ? null
         : Reference.fromJson(json['request'] as Map<String, dynamic>),
     outcome: json['outcome'] as String,
-    element_outcome: json['element_outcome'] == null
+    elementOutcome: json['elementOutcome'] == null
         ? null
-        : Element.fromJson(json['element_outcome'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementOutcome'] as Map<String, dynamic>),
     disposition: json['disposition'] as String,
-    element_disposition: json['element_disposition'] == null
+    elementDisposition: json['elementDisposition'] == null
         ? null
-        : Element.fromJson(json['element_disposition'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDisposition'] as Map<String, dynamic>),
     created: json['created'] == null
         ? null
         : DateTime.parse(json['created'] as String),
-    element_created: json['element_created'] == null
+    elementCreated: json['elementCreated'] == null
         ? null
-        : Element.fromJson(json['element_created'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementCreated'] as Map<String, dynamic>),
     organization: json['organization'] == null
         ? null
         : Reference.fromJson(json['organization'] as Map<String, dynamic>),
@@ -75,9 +75,9 @@ Map<String, dynamic> _$EnrollmentResponseToJson(EnrollmentResponse instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -85,14 +85,14 @@ Map<String, dynamic> _$EnrollmentResponseToJson(EnrollmentResponse instance) =>
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'request': instance.request?.toJson(),
       'outcome': instance.outcome,
-      'element_outcome': instance.element_outcome?.toJson(),
+      'elementOutcome': instance.elementOutcome?.toJson(),
       'disposition': instance.disposition,
-      'element_disposition': instance.element_disposition?.toJson(),
+      'elementDisposition': instance.elementDisposition?.toJson(),
       'created': instance.created?.toIso8601String(),
-      'element_created': instance.element_created?.toJson(),
+      'elementCreated': instance.elementCreated?.toJson(),
       'organization': instance.organization?.toJson(),
       'requestProvider': instance.requestProvider?.toJson(),
     };

@@ -32,13 +32,13 @@ class CompartmentDefinition {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -51,7 +51,7 @@ class CompartmentDefinition {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -86,7 +86,7 @@ class CompartmentDefinition {
   String url;
 
   //  Extensions for url
-  Element element_url;
+  Element elementUrl;
 
   //  The identifier that is used to identify this version of the
   // compartment definition when it is referenced in a specification, model,
@@ -98,7 +98,7 @@ class CompartmentDefinition {
   String version;
 
   //  Extensions for version
-  Element element_version;
+  Element elementVersion;
 
   //  A natural language name identifying the compartment definition. This
   // name should be usable as an identifier for the module by machine
@@ -106,14 +106,14 @@ class CompartmentDefinition {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  The status of this compartment definition. Enables tracking the
   // life-cycle of the content.
   String status; // <code> enum: draft/active/retired/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  A Boolean value to indicate that this compartment definition is
   // authored for testing purposes (or education/evaluation/marketing) and
@@ -121,7 +121,7 @@ class CompartmentDefinition {
   bool experimental;
 
   //  Extensions for experimental
-  Element element_experimental;
+  Element elementExperimental;
 
   //  The date  (and optionally time) when the compartment definition was
   // published. The date must change when the business version changes and
@@ -131,14 +131,14 @@ class CompartmentDefinition {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  The name of the organization or individual that published the
   // compartment definition.
   String publisher;
 
   //  Extensions for publisher
-  Element element_publisher;
+  Element elementPublisher;
 
   //  Contact details to assist a user in finding and communicating with the
   // publisher.
@@ -149,7 +149,7 @@ class CompartmentDefinition {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  The content was developed with a focus and intent of supporting the
   // contexts that are listed. These contexts may be general categories
@@ -163,19 +163,19 @@ class CompartmentDefinition {
   String purpose;
 
   //  Extensions for purpose
-  Element element_purpose;
+  Element elementPurpose;
 
   //  Which compartment this definition describes.
   String code; // <code> enum: Patient/Encounter/RelatedPerson/Practitioner/Device;
 
   //  Extensions for code
-  Element element_code;
+  Element elementCode;
 
   //  Whether the search syntax is supported,.
   bool search;
 
   //  Extensions for search
-  Element element_search;
+  Element elementSearch;
 
   //  Information about how a resource is related to the compartment.
   List<CompartmentDefinition_Resource> resource;
@@ -184,37 +184,37 @@ CompartmentDefinition(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
-    this.element_url,
+    this.elementUrl,
     this.version,
-    this.element_version,
+    this.elementVersion,
     this.name,
-    this.element_name,
+    this.elementName,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.experimental,
-    this.element_experimental,
+    this.elementExperimental,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.publisher,
-    this.element_publisher,
+    this.elementPublisher,
     this.contact,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.useContext,
     this.purpose,
-    this.element_purpose,
+    this.elementPurpose,
     this.code,
-    this.element_code,
+    this.elementCode,
     this.search,
-    this.element_search,
+    this.elementSearch,
     this.resource
     });
 
@@ -255,7 +255,7 @@ class CompartmentDefinition_Resource {
   String code;
 
   //  Extensions for code
-  Element element_code;
+  Element elementCode;
 
   //  The name of a search parameter that represents the link to the
   // compartment. More than one may be listed because a resource may be
@@ -263,24 +263,24 @@ class CompartmentDefinition_Resource {
   List<String> param;
 
   //  Extensions for param
-  List<Element> element_param;
+  List<Element> elementParam;
 
   //  Additional documentation about the resource and compartment.
   String documentation;
 
   //  Extensions for documentation
-  Element element_documentation;
+  Element elementDocumentation;
 
 CompartmentDefinition_Resource(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.code,
-    this.element_code,
+    this.elementCode,
     this.param,
-    this.element_param,
+    this.elementParam,
     this.documentation,
-    this.element_documentation
+    this.elementDocumentation
     });
 
   factory CompartmentDefinition_Resource.fromJson(Map<String, dynamic> json) => _$CompartmentDefinition_ResourceFromJson(json);

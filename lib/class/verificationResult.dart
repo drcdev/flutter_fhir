@@ -34,13 +34,13 @@ class VerificationResult {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -53,7 +53,7 @@ class VerificationResult {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -85,7 +85,7 @@ class VerificationResult {
   List<String> targetLocation;
 
   //  Extensions for targetLocation
-  List<Element> element_targetLocation;
+  List<Element> elementTargetLocation;
 
   //  The frequency with which the target must be validated (none; initial;
   // periodic).
@@ -96,13 +96,13 @@ class VerificationResult {
   String status;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  When the validation status was updated.
   DateTime statusDate;
 
   //  Extensions for statusDate
-  Element element_statusDate;
+  Element elementStatusDate;
 
   //  What the target is validated against (nothing; primary source;
   // multiple sources).
@@ -120,13 +120,13 @@ class VerificationResult {
   DateTime lastPerformed;
 
   //  Extensions for lastPerformed
-  Element element_lastPerformed;
+  Element elementLastPerformed;
 
   //  The date when target is next validated, if appropriate.
   String nextScheduled;
 
   //  Extensions for nextScheduled
-  Element element_nextScheduled;
+  Element elementNextScheduled;
 
   //  The result if validation fails (fatal; warning; record only; none).
   CodeableConcept failureAction;
@@ -144,28 +144,28 @@ VerificationResult(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.target,
     this.targetLocation,
-    this.element_targetLocation,
+    this.elementTargetLocation,
     this.need,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.statusDate,
-    this.element_statusDate,
+    this.elementStatusDate,
     this.validationType,
     this.validationProcess,
     this.frequency,
     this.lastPerformed,
-    this.element_lastPerformed,
+    this.elementLastPerformed,
     this.nextScheduled,
-    this.element_nextScheduled,
+    this.elementNextScheduled,
     this.failureAction,
     this.primarySource,
     this.attestation,
@@ -224,7 +224,7 @@ class VerificationResult_PrimarySource {
   DateTime validationDate;
 
   //  Extensions for validationDate
-  Element element_validationDate;
+  Element elementValidationDate;
 
   //  Ability of the primary source to push updates/alerts (yes; no;
   // undetermined).
@@ -243,7 +243,7 @@ VerificationResult_PrimarySource(
     this.communicationMethod,
     this.validationStatus,
     this.validationDate,
-    this.element_validationDate,
+    this.elementValidationDate,
     this.canPushUpdates,
     this.pushTypeAvailable
     });
@@ -296,20 +296,20 @@ class VerificationResult_Attestation {
   String date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  A digital identity certificate associated with the attestation source.
   String sourceIdentityCertificate;
 
   //  Extensions for sourceIdentityCertificate
-  Element element_sourceIdentityCertificate;
+  Element elementSourceIdentityCertificate;
 
   //  A digital identity certificate associated with the proxy entity
   // submitting attested information on behalf of the attestation source.
   String proxyIdentityCertificate;
 
   //  Extensions for proxyIdentityCertificate
-  Element element_proxyIdentityCertificate;
+  Element elementProxyIdentityCertificate;
 
   //  Signed assertion by the proxy entity indicating that they have the
   // right to submit attested information on behalf of the attestation
@@ -328,11 +328,11 @@ VerificationResult_Attestation(
     this.onBehalfOf,
     this.communicationMethod,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.sourceIdentityCertificate,
-    this.element_sourceIdentityCertificate,
+    this.elementSourceIdentityCertificate,
     this.proxyIdentityCertificate,
-    this.element_proxyIdentityCertificate,
+    this.elementProxyIdentityCertificate,
     this.proxySignature,
     this.sourceSignature
     });
@@ -377,7 +377,7 @@ class VerificationResult_Validator {
   String identityCertificate;
 
   //  Extensions for identityCertificate
-  Element element_identityCertificate;
+  Element elementIdentityCertificate;
 
   //  Signed assertion by the validator that they have validated the
   // information.
@@ -389,7 +389,7 @@ VerificationResult_Validator(
     this.extension,
     this.modifierExtension,
     this.identityCertificate,
-    this.element_identityCertificate,
+    this.elementIdentityCertificate,
     this.attestationSignature
     });
 

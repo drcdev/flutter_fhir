@@ -20,20 +20,20 @@ FamilyMemberHistory _$FamilyMemberHistoryFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -52,26 +52,26 @@ FamilyMemberHistory _$FamilyMemberHistoryFromJson(Map<String, dynamic> json) {
         ?.toList(),
     instantiatesUri:
         (json['instantiatesUri'] as List)?.map((e) => e as String)?.toList(),
-    element_instantiatesUri: (json['element_instantiatesUri'] as List)
+    elementInstantiatesUri: (json['elementInstantiatesUri'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     dataAbsentReason: json['dataAbsentReason'] == null
         ? null
         : CodeableConcept.fromJson(
             json['dataAbsentReason'] as Map<String, dynamic>),
     date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
-    element_date: json['element_date'] == null
+    elementDate: json['elementDate'] == null
         ? null
-        : Element.fromJson(json['element_date'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDate'] as Map<String, dynamic>),
     name: json['name'] as String,
-    element_name: json['element_name'] == null
+    elementName: json['elementName'] == null
         ? null
-        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
     sex: json['sex'] == null
         ? null
         : CodeableConcept.fromJson(json['sex'] as Map<String, dynamic>),
@@ -79,13 +79,13 @@ FamilyMemberHistory _$FamilyMemberHistoryFromJson(Map<String, dynamic> json) {
         ? null
         : Period.fromJson(json['bornPeriod'] as Map<String, dynamic>),
     bornDate: json['bornDate'] as String,
-    element_bornDate: json['element_bornDate'] == null
+    elementBornDate: json['elementBornDate'] == null
         ? null
-        : Element.fromJson(json['element_bornDate'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementBornDate'] as Map<String, dynamic>),
     bornString: json['bornString'] as String,
-    element_bornString: json['element_bornString'] == null
+    elementBornString: json['elementBornString'] == null
         ? null
-        : Element.fromJson(json['element_bornString'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementBornString'] as Map<String, dynamic>),
     ageAge: json['ageAge'] == null
         ? null
         : Age.fromJson(json['ageAge'] as Map<String, dynamic>),
@@ -93,19 +93,18 @@ FamilyMemberHistory _$FamilyMemberHistoryFromJson(Map<String, dynamic> json) {
         ? null
         : Range.fromJson(json['ageRange'] as Map<String, dynamic>),
     ageString: json['ageString'] as String,
-    element_ageString: json['element_ageString'] == null
+    elementAgeString: json['elementAgeString'] == null
         ? null
-        : Element.fromJson(json['element_ageString'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementAgeString'] as Map<String, dynamic>),
     estimatedAge: json['estimatedAge'] as bool,
-    element_estimatedAge: json['element_estimatedAge'] == null
+    elementEstimatedAge: json['elementEstimatedAge'] == null
         ? null
-        : Element.fromJson(
-            json['element_estimatedAge'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementEstimatedAge'] as Map<String, dynamic>),
     deceasedBoolean: json['deceasedBoolean'] as bool,
-    element_deceasedBoolean: json['element_deceasedBoolean'] == null
+    elementDeceasedBoolean: json['elementDeceasedBoolean'] == null
         ? null
         : Element.fromJson(
-            json['element_deceasedBoolean'] as Map<String, dynamic>),
+            json['elementDeceasedBoolean'] as Map<String, dynamic>),
     deceasedAge: json['deceasedAge'] == null
         ? null
         : Age.fromJson(json['deceasedAge'] as Map<String, dynamic>),
@@ -113,15 +112,14 @@ FamilyMemberHistory _$FamilyMemberHistoryFromJson(Map<String, dynamic> json) {
         ? null
         : Range.fromJson(json['deceasedRange'] as Map<String, dynamic>),
     deceasedDate: json['deceasedDate'] as String,
-    element_deceasedDate: json['element_deceasedDate'] == null
+    elementDeceasedDate: json['elementDeceasedDate'] == null
         ? null
-        : Element.fromJson(
-            json['element_deceasedDate'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDeceasedDate'] as Map<String, dynamic>),
     deceasedString: json['deceasedString'] as String,
-    element_deceasedString: json['element_deceasedString'] == null
+    elementDeceasedString: json['elementDeceasedString'] == null
         ? null
         : Element.fromJson(
-            json['element_deceasedString'] as Map<String, dynamic>),
+            json['elementDeceasedString'] as Map<String, dynamic>),
     reasonCode: (json['reasonCode'] as List)
         ?.map((e) => e == null
             ? null
@@ -149,9 +147,9 @@ Map<String, dynamic> _$FamilyMemberHistoryToJson(
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -160,37 +158,37 @@ Map<String, dynamic> _$FamilyMemberHistoryToJson(
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'instantiatesCanonical': instance.instantiatesCanonical,
       'instantiatesUri': instance.instantiatesUri,
-      'element_instantiatesUri':
-          instance.element_instantiatesUri?.map((e) => e?.toJson())?.toList(),
+      'elementInstantiatesUri':
+          instance.elementInstantiatesUri?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'dataAbsentReason': instance.dataAbsentReason?.toJson(),
       'patient': instance.patient?.toJson(),
       'date': instance.date?.toIso8601String(),
-      'element_date': instance.element_date?.toJson(),
+      'elementDate': instance.elementDate?.toJson(),
       'name': instance.name,
-      'element_name': instance.element_name?.toJson(),
+      'elementName': instance.elementName?.toJson(),
       'relationship': instance.relationship?.toJson(),
       'sex': instance.sex?.toJson(),
       'bornPeriod': instance.bornPeriod?.toJson(),
       'bornDate': instance.bornDate,
-      'element_bornDate': instance.element_bornDate?.toJson(),
+      'elementBornDate': instance.elementBornDate?.toJson(),
       'bornString': instance.bornString,
-      'element_bornString': instance.element_bornString?.toJson(),
+      'elementBornString': instance.elementBornString?.toJson(),
       'ageAge': instance.ageAge?.toJson(),
       'ageRange': instance.ageRange?.toJson(),
       'ageString': instance.ageString,
-      'element_ageString': instance.element_ageString?.toJson(),
+      'elementAgeString': instance.elementAgeString?.toJson(),
       'estimatedAge': instance.estimatedAge,
-      'element_estimatedAge': instance.element_estimatedAge?.toJson(),
+      'elementEstimatedAge': instance.elementEstimatedAge?.toJson(),
       'deceasedBoolean': instance.deceasedBoolean,
-      'element_deceasedBoolean': instance.element_deceasedBoolean?.toJson(),
+      'elementDeceasedBoolean': instance.elementDeceasedBoolean?.toJson(),
       'deceasedAge': instance.deceasedAge?.toJson(),
       'deceasedRange': instance.deceasedRange?.toJson(),
       'deceasedDate': instance.deceasedDate,
-      'element_deceasedDate': instance.element_deceasedDate?.toJson(),
+      'elementDeceasedDate': instance.elementDeceasedDate?.toJson(),
       'deceasedString': instance.deceasedString,
-      'element_deceasedString': instance.element_deceasedString?.toJson(),
+      'elementDeceasedString': instance.elementDeceasedString?.toJson(),
       'reasonCode': instance.reasonCode?.map((e) => e?.toJson())?.toList(),
       'reasonReference':
           instance.reasonReference?.map((e) => e?.toJson())?.toList(),
@@ -217,10 +215,10 @@ FamilyMemberHistory_Condition _$FamilyMemberHistory_ConditionFromJson(
         ? null
         : CodeableConcept.fromJson(json['outcome'] as Map<String, dynamic>),
     contributedToDeath: json['contributedToDeath'] as bool,
-    element_contributedToDeath: json['element_contributedToDeath'] == null
+    elementContributedToDeath: json['elementContributedToDeath'] == null
         ? null
         : Element.fromJson(
-            json['element_contributedToDeath'] as Map<String, dynamic>),
+            json['elementContributedToDeath'] as Map<String, dynamic>),
     onsetAge: json['onsetAge'] == null
         ? null
         : Age.fromJson(json['onsetAge'] as Map<String, dynamic>),
@@ -231,9 +229,9 @@ FamilyMemberHistory_Condition _$FamilyMemberHistory_ConditionFromJson(
         ? null
         : Period.fromJson(json['onsetPeriod'] as Map<String, dynamic>),
     onsetString: json['onsetString'] as String,
-    element_onsetString: json['element_onsetString'] == null
+    elementOnsetString: json['elementOnsetString'] == null
         ? null
-        : Element.fromJson(json['element_onsetString'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementOnsetString'] as Map<String, dynamic>),
     note: (json['note'] as List)
         ?.map((e) =>
             e == null ? null : Annotation.fromJson(e as Map<String, dynamic>))
@@ -251,12 +249,11 @@ Map<String, dynamic> _$FamilyMemberHistory_ConditionToJson(
       'code': instance.code?.toJson(),
       'outcome': instance.outcome?.toJson(),
       'contributedToDeath': instance.contributedToDeath,
-      'element_contributedToDeath':
-          instance.element_contributedToDeath?.toJson(),
+      'elementContributedToDeath': instance.elementContributedToDeath?.toJson(),
       'onsetAge': instance.onsetAge?.toJson(),
       'onsetRange': instance.onsetRange?.toJson(),
       'onsetPeriod': instance.onsetPeriod?.toJson(),
       'onsetString': instance.onsetString,
-      'element_onsetString': instance.element_onsetString?.toJson(),
+      'elementOnsetString': instance.elementOnsetString?.toJson(),
       'note': instance.note?.map((e) => e?.toJson())?.toList(),
     };

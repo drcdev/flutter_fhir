@@ -13,20 +13,20 @@ VerificationResult _$VerificationResultFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -42,7 +42,7 @@ VerificationResult _$VerificationResultFromJson(Map<String, dynamic> json) {
         ?.toList(),
     targetLocation:
         (json['targetLocation'] as List)?.map((e) => e as String)?.toList(),
-    element_targetLocation: (json['element_targetLocation'] as List)
+    elementTargetLocation: (json['elementTargetLocation'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -50,15 +50,15 @@ VerificationResult _$VerificationResultFromJson(Map<String, dynamic> json) {
         ? null
         : CodeableConcept.fromJson(json['need'] as Map<String, dynamic>),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     statusDate: json['statusDate'] == null
         ? null
         : DateTime.parse(json['statusDate'] as String),
-    element_statusDate: json['element_statusDate'] == null
+    elementStatusDate: json['elementStatusDate'] == null
         ? null
-        : Element.fromJson(json['element_statusDate'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatusDate'] as Map<String, dynamic>),
     validationType: json['validationType'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -74,15 +74,15 @@ VerificationResult _$VerificationResultFromJson(Map<String, dynamic> json) {
     lastPerformed: json['lastPerformed'] == null
         ? null
         : DateTime.parse(json['lastPerformed'] as String),
-    element_lastPerformed: json['element_lastPerformed'] == null
+    elementLastPerformed: json['elementLastPerformed'] == null
         ? null
         : Element.fromJson(
-            json['element_lastPerformed'] as Map<String, dynamic>),
+            json['elementLastPerformed'] as Map<String, dynamic>),
     nextScheduled: json['nextScheduled'] as String,
-    element_nextScheduled: json['element_nextScheduled'] == null
+    elementNextScheduled: json['elementNextScheduled'] == null
         ? null
         : Element.fromJson(
-            json['element_nextScheduled'] as Map<String, dynamic>),
+            json['elementNextScheduled'] as Map<String, dynamic>),
     failureAction: json['failureAction'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -110,9 +110,9 @@ Map<String, dynamic> _$VerificationResultToJson(VerificationResult instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -120,21 +120,21 @@ Map<String, dynamic> _$VerificationResultToJson(VerificationResult instance) =>
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'target': instance.target?.map((e) => e?.toJson())?.toList(),
       'targetLocation': instance.targetLocation,
-      'element_targetLocation':
-          instance.element_targetLocation?.map((e) => e?.toJson())?.toList(),
+      'elementTargetLocation':
+          instance.elementTargetLocation?.map((e) => e?.toJson())?.toList(),
       'need': instance.need?.toJson(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'statusDate': instance.statusDate?.toIso8601String(),
-      'element_statusDate': instance.element_statusDate?.toJson(),
+      'elementStatusDate': instance.elementStatusDate?.toJson(),
       'validationType': instance.validationType?.toJson(),
       'validationProcess':
           instance.validationProcess?.map((e) => e?.toJson())?.toList(),
       'frequency': instance.frequency?.toJson(),
       'lastPerformed': instance.lastPerformed?.toIso8601String(),
-      'element_lastPerformed': instance.element_lastPerformed?.toJson(),
+      'elementLastPerformed': instance.elementLastPerformed?.toJson(),
       'nextScheduled': instance.nextScheduled,
-      'element_nextScheduled': instance.element_nextScheduled?.toJson(),
+      'elementNextScheduled': instance.elementNextScheduled?.toJson(),
       'failureAction': instance.failureAction?.toJson(),
       'primarySource':
           instance.primarySource?.map((e) => e?.toJson())?.toList(),
@@ -174,10 +174,10 @@ VerificationResult_PrimarySource _$VerificationResult_PrimarySourceFromJson(
     validationDate: json['validationDate'] == null
         ? null
         : DateTime.parse(json['validationDate'] as String),
-    element_validationDate: json['element_validationDate'] == null
+    elementValidationDate: json['elementValidationDate'] == null
         ? null
         : Element.fromJson(
-            json['element_validationDate'] as Map<String, dynamic>),
+            json['elementValidationDate'] as Map<String, dynamic>),
     canPushUpdates: json['canPushUpdates'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -203,7 +203,7 @@ Map<String, dynamic> _$VerificationResult_PrimarySourceToJson(
           instance.communicationMethod?.map((e) => e?.toJson())?.toList(),
       'validationStatus': instance.validationStatus?.toJson(),
       'validationDate': instance.validationDate?.toIso8601String(),
-      'element_validationDate': instance.element_validationDate?.toJson(),
+      'elementValidationDate': instance.elementValidationDate?.toJson(),
       'canPushUpdates': instance.canPushUpdates?.toJson(),
       'pushTypeAvailable':
           instance.pushTypeAvailable?.map((e) => e?.toJson())?.toList(),
@@ -232,21 +232,21 @@ VerificationResult_Attestation _$VerificationResult_AttestationFromJson(
         : CodeableConcept.fromJson(
             json['communicationMethod'] as Map<String, dynamic>),
     date: json['date'] as String,
-    element_date: json['element_date'] == null
+    elementDate: json['elementDate'] == null
         ? null
-        : Element.fromJson(json['element_date'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDate'] as Map<String, dynamic>),
     sourceIdentityCertificate: json['sourceIdentityCertificate'] as String,
-    element_sourceIdentityCertificate:
-        json['element_sourceIdentityCertificate'] == null
+    elementSourceIdentityCertificate:
+        json['elementSourceIdentityCertificate'] == null
             ? null
-            : Element.fromJson(json['element_sourceIdentityCertificate']
+            : Element.fromJson(json['elementSourceIdentityCertificate']
                 as Map<String, dynamic>),
     proxyIdentityCertificate: json['proxyIdentityCertificate'] as String,
-    element_proxyIdentityCertificate:
-        json['element_proxyIdentityCertificate'] == null
-            ? null
-            : Element.fromJson(json['element_proxyIdentityCertificate']
-                as Map<String, dynamic>),
+    elementProxyIdentityCertificate: json['elementProxyIdentityCertificate'] ==
+            null
+        ? null
+        : Element.fromJson(
+            json['elementProxyIdentityCertificate'] as Map<String, dynamic>),
     proxySignature: json['proxySignature'] == null
         ? null
         : Signature.fromJson(json['proxySignature'] as Map<String, dynamic>),
@@ -267,13 +267,13 @@ Map<String, dynamic> _$VerificationResult_AttestationToJson(
       'onBehalfOf': instance.onBehalfOf?.toJson(),
       'communicationMethod': instance.communicationMethod?.toJson(),
       'date': instance.date,
-      'element_date': instance.element_date?.toJson(),
+      'elementDate': instance.elementDate?.toJson(),
       'sourceIdentityCertificate': instance.sourceIdentityCertificate,
-      'element_sourceIdentityCertificate':
-          instance.element_sourceIdentityCertificate?.toJson(),
+      'elementSourceIdentityCertificate':
+          instance.elementSourceIdentityCertificate?.toJson(),
       'proxyIdentityCertificate': instance.proxyIdentityCertificate,
-      'element_proxyIdentityCertificate':
-          instance.element_proxyIdentityCertificate?.toJson(),
+      'elementProxyIdentityCertificate':
+          instance.elementProxyIdentityCertificate?.toJson(),
       'proxySignature': instance.proxySignature?.toJson(),
       'sourceSignature': instance.sourceSignature?.toJson(),
     };
@@ -294,10 +294,10 @@ VerificationResult_Validator _$VerificationResult_ValidatorFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     identityCertificate: json['identityCertificate'] as String,
-    element_identityCertificate: json['element_identityCertificate'] == null
+    elementIdentityCertificate: json['elementIdentityCertificate'] == null
         ? null
         : Element.fromJson(
-            json['element_identityCertificate'] as Map<String, dynamic>),
+            json['elementIdentityCertificate'] as Map<String, dynamic>),
     attestationSignature: json['attestationSignature'] == null
         ? null
         : Signature.fromJson(
@@ -314,7 +314,7 @@ Map<String, dynamic> _$VerificationResult_ValidatorToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'organization': instance.organization?.toJson(),
       'identityCertificate': instance.identityCertificate,
-      'element_identityCertificate':
-          instance.element_identityCertificate?.toJson(),
+      'elementIdentityCertificate':
+          instance.elementIdentityCertificate?.toJson(),
       'attestationSignature': instance.attestationSignature?.toJson(),
     };

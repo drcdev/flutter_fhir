@@ -14,9 +14,9 @@ ContactDetail _$ContactDetailFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     name: json['name'] as String,
-    element_name: json['element_name'] == null
+    elementName: json['elementName'] == null
         ? null
-        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
     telecom: (json['telecom'] as List)
         ?.map((e) =>
             e == null ? null : ContactPoint.fromJson(e as Map<String, dynamic>))
@@ -29,6 +29,6 @@ Map<String, dynamic> _$ContactDetailToJson(ContactDetail instance) =>
       'id': instance.id,
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'name': instance.name,
-      'element_name': instance.element_name?.toJson(),
+      'elementName': instance.elementName?.toJson(),
       'telecom': instance.telecom?.map((e) => e?.toJson())?.toList(),
     };

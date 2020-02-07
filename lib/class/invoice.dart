@@ -35,13 +35,13 @@ class Invoice {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -54,7 +54,7 @@ class Invoice {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -87,14 +87,14 @@ class Invoice {
   String status; // <code> enum: draft/issued/balanced/cancelled/entered-in-error;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  In case of Invoice cancellation a reason must be given (entered in
   // error, superseded by corrected invoice etc.).
   String cancelledReason;
 
   //  Extensions for cancelledReason
-  Element element_cancelledReason;
+  Element elementCancelledReason;
 
   //  Type of Invoice depending on domain, realm an usage (e.g.
   // internal/external, dental, preliminary).
@@ -112,7 +112,7 @@ class Invoice {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  Indicates who or what performed or participated in the charged
   // service.
@@ -146,7 +146,7 @@ class Invoice {
   String paymentTerms;
 
   //  Extensions for paymentTerms
-  Element element_paymentTerms;
+  Element elementPaymentTerms;
 
   //  Comments made about the invoice by the issuer, subject, or other
   // participants.
@@ -156,23 +156,23 @@ Invoice(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.cancelledReason,
-    this.element_cancelledReason,
+    this.elementCancelledReason,
     this.type,
     this.subject,
     this.recipient,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.participant,
     this.issuer,
     this.account,
@@ -181,7 +181,7 @@ Invoice(
     this.totalNet,
     this.totalGross,
     this.paymentTerms,
-    this.element_paymentTerms,
+    this.elementPaymentTerms,
     this.note
     });
 
@@ -272,7 +272,7 @@ class Invoice_LineItem {
   int sequence;
 
   //  Extensions for sequence
-  Element element_sequence;
+  Element elementSequence;
 
   //  The ChargeItem contains information such as the billing code, date,
   // amount etc. If no further details are required for the lineItem, inline
@@ -299,7 +299,7 @@ Invoice_LineItem(
     this.extension,
     this.modifierExtension,
     this.sequence,
-    this.element_sequence,
+    this.elementSequence,
     this.chargeItemReference,
     this.chargeItemCodeableConcept,
     this.priceComponent
@@ -342,7 +342,7 @@ class Invoice_PriceComponent {
   String type; // <code> enum: base/surcharge/deduction/discount/tax/informational;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  A code that identifies the component. Codes may be used to
   // differentiate between kinds of taxes, surcharges, discounts etc.
@@ -353,7 +353,7 @@ class Invoice_PriceComponent {
   double factor;
 
   //  Extensions for factor
-  Element element_factor;
+  Element elementFactor;
 
   //  The amount calculated for this component.
   Money amount;
@@ -363,10 +363,10 @@ Invoice_PriceComponent(
     this.extension,
     this.modifierExtension,
     this.type,
-    this.element_type,
+    this.elementType,
     this.code,
     this.factor,
-    this.element_factor,
+    this.elementFactor,
     this.amount
     });
 

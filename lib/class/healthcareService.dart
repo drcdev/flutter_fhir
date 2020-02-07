@@ -36,13 +36,13 @@ class HealthcareService {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -55,7 +55,7 @@ class HealthcareService {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -89,7 +89,7 @@ class HealthcareService {
   bool active;
 
   //  Extensions for active
-  Element element_active;
+  Element elementActive;
 
   //  The organization that provides this healthcare service.
   Reference providedBy;
@@ -112,7 +112,7 @@ class HealthcareService {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  Any additional description of the service and/or any specific issues
   // not covered by the other attributes, which can be displayed as further
@@ -120,14 +120,14 @@ class HealthcareService {
   String comment;
 
   //  Extensions for comment
-  Element element_comment;
+  Element elementComment;
 
   //  Extra details about the service that can't be placed in the other
   // fields.
   String extraDetails;
 
   //  Extensions for extraDetails
-  Element element_extraDetails;
+  Element elementExtraDetails;
 
   //  If there is a photo/symbol associated with this HealthcareService, it
   // may be included here to facilitate quick identification of the service
@@ -172,7 +172,7 @@ class HealthcareService {
   bool appointmentRequired;
 
   //  Extensions for appointmentRequired
-  Element element_appointmentRequired;
+  Element elementAppointmentRequired;
 
   //  A collection of times that the Service Site is available.
   List<HealthcareService_AvailableTime> availableTime;
@@ -188,7 +188,7 @@ class HealthcareService {
   String availabilityExceptions;
 
   //  Extensions for availabilityExceptions
-  Element element_availabilityExceptions;
+  Element elementAvailabilityExceptions;
 
   //  Technical endpoints providing access to services operated for the
   // specific healthcare services defined at this resource.
@@ -198,27 +198,27 @@ HealthcareService(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.active,
-    this.element_active,
+    this.elementActive,
     this.providedBy,
     this.category,
     this.type,
     this.specialty,
     this.location,
     this.name,
-    this.element_name,
+    this.elementName,
     this.comment,
-    this.element_comment,
+    this.elementComment,
     this.extraDetails,
-    this.element_extraDetails,
+    this.elementExtraDetails,
     this.photo,
     this.telecom,
     this.coverageArea,
@@ -229,11 +229,11 @@ HealthcareService(
     this.communication,
     this.referralMethod,
     this.appointmentRequired,
-    this.element_appointmentRequired,
+    this.elementAppointmentRequired,
     this.availableTime,
     this.notAvailable,
     this.availabilityExceptions,
-    this.element_availabilityExceptions,
+    this.elementAvailabilityExceptions,
     this.endpoint
     });
 
@@ -277,7 +277,7 @@ class HealthcareService_Eligibility {
   String comment;
 
   //  Extensions for comment
-  Element element_comment;
+  Element elementComment;
 
 HealthcareService_Eligibility(
   {this.id,
@@ -285,7 +285,7 @@ HealthcareService_Eligibility(
     this.modifierExtension,
     this.code,
     this.comment,
-    this.element_comment
+    this.elementComment
     });
 
   factory HealthcareService_Eligibility.fromJson(Map<String, dynamic> json) => _$HealthcareService_EligibilityFromJson(json);
@@ -326,41 +326,41 @@ class HealthcareService_AvailableTime {
   List<String> daysOfWeek; // <code> enum: mon/tue/wed/thu/fri/sat/sun> daysOfWeek;
 
   //  Extensions for daysOfWeek
-  List<Element> element_daysOfWeek;
+  List<Element> elementDaysOfWeek;
 
   //  Is this always available? (hence times are irrelevant) e.g. 24 hour
   // service.
   bool allDay;
 
   //  Extensions for allDay
-  Element element_allDay;
+  Element elementAllDay;
 
   //  The opening time of day. Note: If the AllDay flag is set, then this
   // time is ignored.
   String availableStartTime;
 
   //  Extensions for availableStartTime
-  Element element_availableStartTime;
+  Element elementAvailableStartTime;
 
   //  The closing time of day. Note: If the AllDay flag is set, then this
   // time is ignored.
   String availableEndTime;
 
   //  Extensions for availableEndTime
-  Element element_availableEndTime;
+  Element elementAvailableEndTime;
 
 HealthcareService_AvailableTime(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.daysOfWeek,
-    this.element_daysOfWeek,
+    this.elementDaysOfWeek,
     this.allDay,
-    this.element_allDay,
+    this.elementAllDay,
     this.availableStartTime,
-    this.element_availableStartTime,
+    this.elementAvailableStartTime,
     this.availableEndTime,
-    this.element_availableEndTime
+    this.elementAvailableEndTime
     });
 
   factory HealthcareService_AvailableTime.fromJson(Map<String, dynamic> json) => _$HealthcareService_AvailableTimeFromJson(json);
@@ -401,7 +401,7 @@ class HealthcareService_NotAvailable {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  Service is not available (seasonally or for a public holiday) from
   // this date.
@@ -412,7 +412,7 @@ HealthcareService_NotAvailable(
     this.extension,
     this.modifierExtension,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.during
     });
 

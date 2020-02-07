@@ -13,20 +13,20 @@ Person _$PersonFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -49,13 +49,13 @@ Person _$PersonFromJson(Map<String, dynamic> json) {
             e == null ? null : ContactPoint.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     gender: json['gender'] as String,
-    element_gender: json['element_gender'] == null
+    elementGender: json['elementGender'] == null
         ? null
-        : Element.fromJson(json['element_gender'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementGender'] as Map<String, dynamic>),
     birthDate: json['birthDate'] as String,
-    element_birthDate: json['element_birthDate'] == null
+    elementBirthDate: json['elementBirthDate'] == null
         ? null
-        : Element.fromJson(json['element_birthDate'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementBirthDate'] as Map<String, dynamic>),
     address: (json['address'] as List)
         ?.map((e) =>
             e == null ? null : Address.fromJson(e as Map<String, dynamic>))
@@ -68,9 +68,9 @@ Person _$PersonFromJson(Map<String, dynamic> json) {
         : Reference.fromJson(
             json['managingOrganization'] as Map<String, dynamic>),
     active: json['active'] as bool,
-    element_active: json['element_active'] == null
+    elementActive: json['elementActive'] == null
         ? null
-        : Element.fromJson(json['element_active'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementActive'] as Map<String, dynamic>),
     link: (json['link'] as List)
         ?.map((e) =>
             e == null ? null : Person_Link.fromJson(e as Map<String, dynamic>))
@@ -82,9 +82,9 @@ Map<String, dynamic> _$PersonToJson(Person instance) => <String, dynamic>{
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -94,14 +94,14 @@ Map<String, dynamic> _$PersonToJson(Person instance) => <String, dynamic>{
       'name': instance.name?.map((e) => e?.toJson())?.toList(),
       'telecom': instance.telecom?.map((e) => e?.toJson())?.toList(),
       'gender': instance.gender,
-      'element_gender': instance.element_gender?.toJson(),
+      'elementGender': instance.elementGender?.toJson(),
       'birthDate': instance.birthDate,
-      'element_birthDate': instance.element_birthDate?.toJson(),
+      'elementBirthDate': instance.elementBirthDate?.toJson(),
       'address': instance.address?.map((e) => e?.toJson())?.toList(),
       'photo': instance.photo?.toJson(),
       'managingOrganization': instance.managingOrganization?.toJson(),
       'active': instance.active,
-      'element_active': instance.element_active?.toJson(),
+      'elementActive': instance.elementActive?.toJson(),
       'link': instance.link?.map((e) => e?.toJson())?.toList(),
     };
 
@@ -120,9 +120,9 @@ Person_Link _$Person_LinkFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     assurance: json['assurance'] as String,
-    element_assurance: json['element_assurance'] == null
+    elementAssurance: json['elementAssurance'] == null
         ? null
-        : Element.fromJson(json['element_assurance'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementAssurance'] as Map<String, dynamic>),
   );
 }
 
@@ -134,5 +134,5 @@ Map<String, dynamic> _$Person_LinkToJson(Person_Link instance) =>
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'target': instance.target?.toJson(),
       'assurance': instance.assurance,
-      'element_assurance': instance.element_assurance?.toJson(),
+      'elementAssurance': instance.elementAssurance?.toJson(),
     };

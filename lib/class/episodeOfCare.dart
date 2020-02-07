@@ -34,13 +34,13 @@ class EpisodeOfCare {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -53,7 +53,7 @@ class EpisodeOfCare {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -87,7 +87,7 @@ class EpisodeOfCare {
   String status; // <code> enum: planned/waitlist/active/onhold/finished/cancelled/entered-in-error;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  The history of statuses that the EpisodeOfCare has been through
   // (without requiring processing the history of the resource).
@@ -132,16 +132,16 @@ EpisodeOfCare(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.statusHistory,
     this.type,
     this.diagnosis,
@@ -190,7 +190,7 @@ class EpisodeOfCare_StatusHistory {
   String status; // <code> enum: planned/waitlist/active/onhold/finished/cancelled/entered-in-error;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  The period during this EpisodeOfCare that the specific status applied.
   Period period;
@@ -201,7 +201,7 @@ EpisodeOfCare_StatusHistory(
     this.extension,
     this.modifierExtension,
     this.status,
-    this.element_status
+    this.elementStatus
     });
 
   factory EpisodeOfCare_StatusHistory.fromJson(Map<String, dynamic> json) => _$EpisodeOfCare_StatusHistoryFromJson(json);
@@ -249,7 +249,7 @@ class EpisodeOfCare_Diagnosis {
   int rank;
 
   //  Extensions for rank
-  Element element_rank;
+  Element elementRank;
 
 EpisodeOfCare_Diagnosis(
   this.condition,
@@ -258,7 +258,7 @@ EpisodeOfCare_Diagnosis(
     this.modifierExtension,
     this.role,
     this.rank,
-    this.element_rank
+    this.elementRank
     });
 
   factory EpisodeOfCare_Diagnosis.fromJson(Map<String, dynamic> json) => _$EpisodeOfCare_DiagnosisFromJson(json);

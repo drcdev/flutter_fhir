@@ -14,39 +14,39 @@ Attachment _$AttachmentFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     contentType: json['contentType'] as String,
-    element_contentType: json['element_contentType'] == null
+    elementContentType: json['elementContentType'] == null
         ? null
-        : Element.fromJson(json['element_contentType'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementContentType'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     data: json['data'] as String,
-    element_data: json['element_data'] == null
+    elementData: json['elementData'] == null
         ? null
-        : Element.fromJson(json['element_data'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementData'] as Map<String, dynamic>),
     url: json['url'] as String,
-    element_url: json['element_url'] == null
+    elementUrl: json['elementUrl'] == null
         ? null
-        : Element.fromJson(json['element_url'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementUrl'] as Map<String, dynamic>),
     size: json['size'] as int,
-    element_size: json['element_size'] == null
+    elementSize: json['elementSize'] == null
         ? null
-        : Element.fromJson(json['element_size'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSize'] as Map<String, dynamic>),
     hash: json['hash'] as String,
-    element_hash: json['element_hash'] == null
+    elementHash: json['elementHash'] == null
         ? null
-        : Element.fromJson(json['element_hash'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementHash'] as Map<String, dynamic>),
     title: json['title'] as String,
-    element_title: json['element_title'] == null
+    elementTitle: json['elementTitle'] == null
         ? null
-        : Element.fromJson(json['element_title'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementTitle'] as Map<String, dynamic>),
     creation: json['creation'] == null
         ? null
         : DateTime.parse(json['creation'] as String),
-    element_creation: json['element_creation'] == null
+    elementCreation: json['elementCreation'] == null
         ? null
-        : Element.fromJson(json['element_creation'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementCreation'] as Map<String, dynamic>),
   );
 }
 
@@ -55,19 +55,19 @@ Map<String, dynamic> _$AttachmentToJson(Attachment instance) =>
       'id': instance.id,
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'contentType': instance.contentType,
-      'element_contentType': instance.element_contentType?.toJson(),
+      'elementContentType': instance.elementContentType?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'data': instance.data,
-      'element_data': instance.element_data?.toJson(),
+      'elementData': instance.elementData?.toJson(),
       'url': instance.url,
-      'element_url': instance.element_url?.toJson(),
+      'elementUrl': instance.elementUrl?.toJson(),
       'size': instance.size,
-      'element_size': instance.element_size?.toJson(),
+      'elementSize': instance.elementSize?.toJson(),
       'hash': instance.hash,
-      'element_hash': instance.element_hash?.toJson(),
+      'elementHash': instance.elementHash?.toJson(),
       'title': instance.title,
-      'element_title': instance.element_title?.toJson(),
+      'elementTitle': instance.elementTitle?.toJson(),
       'creation': instance.creation?.toIso8601String(),
-      'element_creation': instance.element_creation?.toJson(),
+      'elementCreation': instance.elementCreation?.toJson(),
     };

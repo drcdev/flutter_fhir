@@ -36,13 +36,13 @@ class MedicationDispense {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -55,7 +55,7 @@ class MedicationDispense {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -95,7 +95,7 @@ class MedicationDispense {
   String status;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  Indicates the reason why a dispense was not performed.
   CodeableConcept statusReasonCodeableConcept;
@@ -156,14 +156,14 @@ class MedicationDispense {
   DateTime whenPrepared;
 
   //  Extensions for whenPrepared
-  Element element_whenPrepared;
+  Element elementWhenPrepared;
 
   //  The time the dispensed product was provided to the patient or their
   // representative.
   DateTime whenHandedOver;
 
   //  Extensions for whenHandedOver
-  Element element_whenHandedOver;
+  Element elementWhenHandedOver;
 
   //  Identification of the facility/location where the medication was
   // shipped to, as part of the dispense event.
@@ -201,9 +201,9 @@ MedicationDispense(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -211,7 +211,7 @@ MedicationDispense(
     this.identifier,
     this.partOf,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.statusReasonCodeableConcept,
     this.statusReasonReference,
     this.category,
@@ -227,9 +227,9 @@ MedicationDispense(
     this.quantity,
     this.daysSupply,
     this.whenPrepared,
-    this.element_whenPrepared,
+    this.elementWhenPrepared,
     this.whenHandedOver,
-    this.element_whenHandedOver,
+    this.elementWhenHandedOver,
     this.destination,
     this.receiver,
     this.note,
@@ -326,7 +326,7 @@ class MedicationDispense_Substitution {
   bool wasSubstituted;
 
   //  Extensions for wasSubstituted
-  Element element_wasSubstituted;
+  Element elementWasSubstituted;
 
   //  A code signifying whether a different drug was dispensed from what was
   // prescribed.
@@ -345,7 +345,7 @@ MedicationDispense_Substitution(
     this.extension,
     this.modifierExtension,
     this.wasSubstituted,
-    this.element_wasSubstituted,
+    this.elementWasSubstituted,
     this.type,
     this.reason,
     this.responsibleParty

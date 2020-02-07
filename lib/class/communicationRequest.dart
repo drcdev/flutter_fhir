@@ -36,13 +36,13 @@ class CommunicationRequest {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -55,7 +55,7 @@ class CommunicationRequest {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -102,7 +102,7 @@ class CommunicationRequest {
   String status;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  Captures the reason for the current state of the CommunicationRequest.
   CodeableConcept statusReason;
@@ -116,14 +116,14 @@ class CommunicationRequest {
   String priority;
 
   //  Extensions for priority
-  Element element_priority;
+  Element elementPriority;
 
   //  If true indicates that the CommunicationRequest is asking for the
   // specified action to *not* occur.
   bool doNotPerform;
 
   //  Extensions for doNotPerform
-  Element element_doNotPerform;
+  Element elementDoNotPerform;
 
   //  A channel that was used for this communication (e.g. email, fax).
   List<CodeableConcept> medium;
@@ -147,7 +147,7 @@ class CommunicationRequest {
   String occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for occurrenceDateTime
-  Element element_occurrenceDateTime;
+  Element elementOccurrenceDateTime;
 
   //  The time when this communication is to occur.
   Period occurrencePeriod;
@@ -157,7 +157,7 @@ class CommunicationRequest {
   DateTime authoredOn;
 
   //  Extensions for authoredOn
-  Element element_authoredOn;
+  Element elementAuthoredOn;
 
   //  The device, individual, or organization who initiated the request and
   // has responsibility for its activation.
@@ -186,9 +186,9 @@ CommunicationRequest(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -198,23 +198,23 @@ CommunicationRequest(
     this.replaces,
     this.groupIdentifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.statusReason,
     this.category,
     this.priority,
-    this.element_priority,
+    this.elementPriority,
     this.doNotPerform,
-    this.element_doNotPerform,
+    this.elementDoNotPerform,
     this.medium,
     this.subject,
     this.about,
     this.encounter,
     this.payload,
     this.occurrenceDateTime,
-    this.element_occurrenceDateTime,
+    this.elementOccurrenceDateTime,
     this.occurrencePeriod,
     this.authoredOn,
-    this.element_authoredOn,
+    this.elementAuthoredOn,
     this.requester,
     this.recipient,
     this.sender,
@@ -261,7 +261,7 @@ class CommunicationRequest_Payload {
   String contentString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for contentString
-  Element element_contentString;
+  Element elementContentString;
 
   //  The communicated content (or for multi-part communications, one
   // portion of the communication).
@@ -276,7 +276,7 @@ CommunicationRequest_Payload(
     this.extension,
     this.modifierExtension,
     this.contentString,
-    this.element_contentString,
+    this.elementContentString,
     this.contentAttachment,
     this.contentReference
     });

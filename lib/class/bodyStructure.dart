@@ -34,13 +34,13 @@ class BodyStructure {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -53,7 +53,7 @@ class BodyStructure {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -85,7 +85,7 @@ class BodyStructure {
   bool active;
 
   //  Extensions for active
-  Element element_active;
+  Element elementActive;
 
   //  The kind of structure being represented by the body structure at
   // `BodyStructure.location`.  This can define both normal and abnormal
@@ -104,7 +104,7 @@ class BodyStructure {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  Image or images used to identify a location.
   List<Attachment> image;
@@ -117,21 +117,21 @@ BodyStructure(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.active,
-    this.element_active,
+    this.elementActive,
     this.morphology,
     this.location,
     this.locationQualifier,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.image
     });
 

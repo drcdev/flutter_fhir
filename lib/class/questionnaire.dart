@@ -39,13 +39,13 @@ class Questionnaire {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -58,7 +58,7 @@ class Questionnaire {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -93,7 +93,7 @@ class Questionnaire {
   String url;
 
   //  Extensions for url
-  Element element_url;
+  Element elementUrl;
 
   //  A formal identifier that is used to identify this questionnaire when
   // it is represented in other formats, or referenced in a specification,
@@ -110,7 +110,7 @@ class Questionnaire {
   String version;
 
   //  Extensions for version
-  Element element_version;
+  Element elementVersion;
 
   //  A natural language name identifying the questionnaire. This name
   // should be usable as an identifier for the module by machine processing
@@ -118,13 +118,13 @@ class Questionnaire {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  A short, descriptive, user-friendly title for the questionnaire.
   String title;
 
   //  Extensions for title
-  Element element_title;
+  Element elementTitle;
 
   //  The URL of a Questionnaire that this Questionnaire is based on.
   List<String> derivedFrom;
@@ -134,7 +134,7 @@ class Questionnaire {
   String status; // <code> enum: draft/active/retired/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  A Boolean value to indicate that this questionnaire is authored for
   // testing purposes (or education/evaluation/marketing) and is not
@@ -142,14 +142,14 @@ class Questionnaire {
   bool experimental;
 
   //  Extensions for experimental
-  Element element_experimental;
+  Element elementExperimental;
 
   //  The types of subjects that can be the subject of responses created for
   // the questionnaire.
   List<String> subjectType;
 
   //  Extensions for subjectType
-  List<Element> element_subjectType;
+  List<Element> elementSubjectType;
 
   //  The date  (and optionally time) when the questionnaire was published.
   // The date must change when the business version changes and it must
@@ -158,14 +158,14 @@ class Questionnaire {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  The name of the organization or individual that published the
   // questionnaire.
   String publisher;
 
   //  Extensions for publisher
-  Element element_publisher;
+  Element elementPublisher;
 
   //  Contact details to assist a user in finding and communicating with the
   // publisher.
@@ -176,7 +176,7 @@ class Questionnaire {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  The content was developed with a focus and intent of supporting the
   // contexts that are listed. These contexts may be general categories
@@ -194,7 +194,7 @@ class Questionnaire {
   String purpose;
 
   //  Extensions for purpose
-  Element element_purpose;
+  Element elementPurpose;
 
   //  A copyright statement relating to the questionnaire and/or its
   // contents. Copyright statements are generally legal restrictions on the
@@ -202,7 +202,7 @@ class Questionnaire {
   String copyright;
 
   //  Extensions for copyright
-  Element element_copyright;
+  Element elementCopyright;
 
   //  The date on which the resource content was approved by the publisher.
   // Approval happens once when the content is officially approved for
@@ -210,7 +210,7 @@ class Questionnaire {
   String approvalDate;
 
   //  Extensions for approvalDate
-  Element element_approvalDate;
+  Element elementApprovalDate;
 
   //  The date on which the resource content was last reviewed. Review
   // happens periodically after approval but does not change the original
@@ -218,7 +218,7 @@ class Questionnaire {
   String lastReviewDate;
 
   //  Extensions for lastReviewDate
-  Element element_lastReviewDate;
+  Element elementLastReviewDate;
 
   //  The period during which the questionnaire content was or is planned to
   // be in active use.
@@ -236,46 +236,46 @@ Questionnaire(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
-    this.element_url,
+    this.elementUrl,
     this.identifier,
     this.version,
-    this.element_version,
+    this.elementVersion,
     this.name,
-    this.element_name,
+    this.elementName,
     this.title,
-    this.element_title,
+    this.elementTitle,
     this.derivedFrom,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.experimental,
-    this.element_experimental,
+    this.elementExperimental,
     this.subjectType,
-    this.element_subjectType,
+    this.elementSubjectType,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.publisher,
-    this.element_publisher,
+    this.elementPublisher,
     this.contact,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.useContext,
     this.jurisdiction,
     this.purpose,
-    this.element_purpose,
+    this.elementPurpose,
     this.copyright,
-    this.element_copyright,
+    this.elementCopyright,
     this.approvalDate,
-    this.element_approvalDate,
+    this.elementApprovalDate,
     this.lastReviewDate,
-    this.element_lastReviewDate,
+    this.elementLastReviewDate,
     this.effectivePeriod,
     this.code,
     this.item
@@ -319,7 +319,7 @@ class Questionnaire_Item {
   String linkId;
 
   //  Extensions for linkId
-  Element element_linkId;
+  Element elementLinkId;
 
   //  This element is a URI that refers to an [[[ElementDefinition]]] that
   // provides information about this item, including information that might
@@ -335,7 +335,7 @@ class Questionnaire_Item {
   String definition;
 
   //  Extensions for definition
-  Element element_definition;
+  Element elementDefinition;
 
   //  A terminology code that corresponds to this group or question (e.g. a
   // code from LOINC, which defines many questions and answers).
@@ -347,14 +347,14 @@ class Questionnaire_Item {
   String prefix;
 
   //  Extensions for prefix
-  Element element_prefix;
+  Element elementPrefix;
 
   //  The name of a section, the text of a question or text content for a
   // display item.
   String text;
 
   //  Extensions for text
-  Element element_text;
+  Element elementText;
 
   //  The type of questionnaire item this is - whether text for display, a
   // grouping of other items or a particular type of data to be captured
@@ -362,7 +362,7 @@ class Questionnaire_Item {
   String type; // <code> enum: group/display/boolean/decimal/integer/date/dateTime/time/string/text/url/choice/open-choice/attachment/reference/quantity;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  A constraint indicating that this item should only be enabled
   // (displayed/allow answers to be captured) when the specified condition
@@ -374,7 +374,7 @@ class Questionnaire_Item {
   String enableBehavior; // <code> enum: all/any;
 
   //  Extensions for enableBehavior
-  Element element_enableBehavior;
+  Element elementEnableBehavior;
 
   //  An indication, if true, that the item must be present in a "completed"
   // QuestionnaireResponse.  If false, the item may be skipped when
@@ -382,7 +382,7 @@ class Questionnaire_Item {
   bool required;
 
   //  Extensions for required
-  Element element_required;
+  Element elementRequired;
 
   //  An indication, if true, that the item may occur multiple times in the
   // response, collecting multiple answers for questions or multiple sets of
@@ -390,21 +390,21 @@ class Questionnaire_Item {
   bool repeats;
 
   //  Extensions for repeats
-  Element element_repeats;
+  Element elementRepeats;
 
   //  An indication, when true, that the value cannot be changed by a human
   // respondent to the Questionnaire.
   bool readOnly;
 
   //  Extensions for readOnly
-  Element element_readOnly;
+  Element elementReadOnly;
 
   //  The maximum number of characters that are permitted in the answer to
   // be considered a "valid" QuestionnaireResponse.
   int maxLength;
 
   //  Extensions for maxLength
-  Element element_maxLength;
+  Element elementMaxLength;
 
   //  A reference to a value set containing a list of codes representing
   // permitted answers for a "choice" or "open-choice" question.
@@ -426,27 +426,27 @@ Questionnaire_Item(
     this.extension,
     this.modifierExtension,
     this.linkId,
-    this.element_linkId,
+    this.elementLinkId,
     this.definition,
-    this.element_definition,
+    this.elementDefinition,
     this.code,
     this.prefix,
-    this.element_prefix,
+    this.elementPrefix,
     this.text,
-    this.element_text,
+    this.elementText,
     this.type,
-    this.element_type,
+    this.elementType,
     this.enableWhen,
     this.enableBehavior,
-    this.element_enableBehavior,
+    this.elementEnableBehavior,
     this.required,
-    this.element_required,
+    this.elementRequired,
     this.repeats,
-    this.element_repeats,
+    this.elementRepeats,
     this.readOnly,
-    this.element_readOnly,
+    this.elementReadOnly,
     this.maxLength,
-    this.element_maxLength,
+    this.elementMaxLength,
     this.answerValueSet,
     this.answerOption,
     this.initial,
@@ -491,62 +491,62 @@ class Questionnaire_EnableWhen {
   String question;
 
   //  Extensions for question
-  Element element_question;
+  Element elementQuestion;
 
   //  Specifies the criteria by which the question is enabled.
   String operator; // <code> enum: exists/=/!=/>/</>=/<=;
 
   //  Extensions for operator
-  Element element_operator;
+  Element elementOperator;
 
   //  A value that the referenced question is tested using the specified
   // operator in order for the item to be enabled.
   bool answerBoolean; //  pattern: ^true|false$
 
   //  Extensions for answerBoolean
-  Element element_answerBoolean;
+  Element elementAnswerBoolean;
 
   //  A value that the referenced question is tested using the specified
   // operator in order for the item to be enabled.
   double answerDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
 
   //  Extensions for answerDecimal
-  Element element_answerDecimal;
+  Element elementAnswerDecimal;
 
   //  A value that the referenced question is tested using the specified
   // operator in order for the item to be enabled.
   int answerInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
 
   //  Extensions for answerInteger
-  Element element_answerInteger;
+  Element elementAnswerInteger;
 
   //  A value that the referenced question is tested using the specified
   // operator in order for the item to be enabled.
   String answerDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for answerDate
-  Element element_answerDate;
+  Element elementAnswerDate;
 
   //  A value that the referenced question is tested using the specified
   // operator in order for the item to be enabled.
   String answerDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for answerDateTime
-  Element element_answerDateTime;
+  Element elementAnswerDateTime;
 
   //  A value that the referenced question is tested using the specified
   // operator in order for the item to be enabled.
   String answerTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
 
   //  Extensions for answerTime
-  Element element_answerTime;
+  Element elementAnswerTime;
 
   //  A value that the referenced question is tested using the specified
   // operator in order for the item to be enabled.
   String answerString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for answerString
-  Element element_answerString;
+  Element elementAnswerString;
 
   //  A value that the referenced question is tested using the specified
   // operator in order for the item to be enabled.
@@ -565,23 +565,23 @@ Questionnaire_EnableWhen(
     this.extension,
     this.modifierExtension,
     this.question,
-    this.element_question,
+    this.elementQuestion,
     this.operator,
-    this.element_operator,
+    this.elementOperator,
     this.answerBoolean,
-    this.element_answerBoolean,
+    this.elementAnswerBoolean,
     this.answerDecimal,
-    this.element_answerDecimal,
+    this.elementAnswerDecimal,
     this.answerInteger,
-    this.element_answerInteger,
+    this.elementAnswerInteger,
     this.answerDate,
-    this.element_answerDate,
+    this.elementAnswerDate,
     this.answerDateTime,
-    this.element_answerDateTime,
+    this.elementAnswerDateTime,
     this.answerTime,
-    this.element_answerTime,
+    this.elementAnswerTime,
     this.answerString,
-    this.element_answerString,
+    this.elementAnswerString,
     this.answerCoding,
     this.answerQuantity,
     this.answerReference
@@ -624,25 +624,25 @@ class Questionnaire_AnswerOption {
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
 
   //  Extensions for valueInteger
-  Element element_valueInteger;
+  Element elementValueInteger;
 
   //  A potential answer that's allowed as the answer to this question.
   String valueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for valueDate
-  Element element_valueDate;
+  Element elementValueDate;
 
   //  A potential answer that's allowed as the answer to this question.
   String valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
 
   //  Extensions for valueTime
-  Element element_valueTime;
+  Element elementValueTime;
 
   //  A potential answer that's allowed as the answer to this question.
   String valueString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for valueString
-  Element element_valueString;
+  Element elementValueString;
 
   //  A potential answer that's allowed as the answer to this question.
   Coding valueCoding;
@@ -655,24 +655,24 @@ class Questionnaire_AnswerOption {
   bool initialSelected;
 
   //  Extensions for initialSelected
-  Element element_initialSelected;
+  Element elementInitialSelected;
 
 Questionnaire_AnswerOption(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.valueInteger,
-    this.element_valueInteger,
+    this.elementValueInteger,
     this.valueDate,
-    this.element_valueDate,
+    this.elementValueDate,
     this.valueTime,
-    this.element_valueTime,
+    this.elementValueTime,
     this.valueString,
-    this.element_valueString,
+    this.elementValueString,
     this.valueCoding,
     this.valueReference,
     this.initialSelected,
-    this.element_initialSelected
+    this.elementInitialSelected
     });
 
   factory Questionnaire_AnswerOption.fromJson(Map<String, dynamic> json) => _$Questionnaire_AnswerOptionFromJson(json);
@@ -712,49 +712,49 @@ class Questionnaire_Initial {
   bool valueBoolean; //  pattern: ^true|false$
 
   //  Extensions for valueBoolean
-  Element element_valueBoolean;
+  Element elementValueBoolean;
 
   //  The actual value to for an initial answer.
   double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
 
   //  Extensions for valueDecimal
-  Element element_valueDecimal;
+  Element elementValueDecimal;
 
   //  The actual value to for an initial answer.
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
 
   //  Extensions for valueInteger
-  Element element_valueInteger;
+  Element elementValueInteger;
 
   //  The actual value to for an initial answer.
   String valueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for valueDate
-  Element element_valueDate;
+  Element elementValueDate;
 
   //  The actual value to for an initial answer.
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for valueDateTime
-  Element element_valueDateTime;
+  Element elementValueDateTime;
 
   //  The actual value to for an initial answer.
   String valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
 
   //  Extensions for valueTime
-  Element element_valueTime;
+  Element elementValueTime;
 
   //  The actual value to for an initial answer.
   String valueString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for valueString
-  Element element_valueString;
+  Element elementValueString;
 
   //  The actual value to for an initial answer.
   String valueUri; //  pattern: ^\S*$
 
   //  Extensions for valueUri
-  Element element_valueUri;
+  Element elementValueUri;
 
   //  The actual value to for an initial answer.
   Attachment valueAttachment;
@@ -773,21 +773,21 @@ Questionnaire_Initial(
     this.extension,
     this.modifierExtension,
     this.valueBoolean,
-    this.element_valueBoolean,
+    this.elementValueBoolean,
     this.valueDecimal,
-    this.element_valueDecimal,
+    this.elementValueDecimal,
     this.valueInteger,
-    this.element_valueInteger,
+    this.elementValueInteger,
     this.valueDate,
-    this.element_valueDate,
+    this.elementValueDate,
     this.valueDateTime,
-    this.element_valueDateTime,
+    this.elementValueDateTime,
     this.valueTime,
-    this.element_valueTime,
+    this.elementValueTime,
     this.valueString,
-    this.element_valueString,
+    this.elementValueString,
     this.valueUri,
-    this.element_valueUri,
+    this.elementValueUri,
     this.valueAttachment,
     this.valueCoding,
     this.valueQuantity,

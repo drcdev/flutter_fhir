@@ -19,20 +19,20 @@ DeviceUseStatement _$DeviceUseStatementFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -51,9 +51,9 @@ DeviceUseStatement _$DeviceUseStatementFromJson(Map<String, dynamic> json) {
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     derivedFrom: (json['derivedFrom'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
@@ -65,16 +65,16 @@ DeviceUseStatement _$DeviceUseStatementFromJson(Map<String, dynamic> json) {
         ? null
         : Period.fromJson(json['timingPeriod'] as Map<String, dynamic>),
     timingDateTime: json['timingDateTime'] as String,
-    element_timingDateTime: json['element_timingDateTime'] == null
+    elementTimingDateTime: json['elementTimingDateTime'] == null
         ? null
         : Element.fromJson(
-            json['element_timingDateTime'] as Map<String, dynamic>),
+            json['elementTimingDateTime'] as Map<String, dynamic>),
     recordedOn: json['recordedOn'] == null
         ? null
         : DateTime.parse(json['recordedOn'] as String),
-    element_recordedOn: json['element_recordedOn'] == null
+    elementRecordedOn: json['elementRecordedOn'] == null
         ? null
-        : Element.fromJson(json['element_recordedOn'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementRecordedOn'] as Map<String, dynamic>),
     source: json['source'] == null
         ? null
         : Reference.fromJson(json['source'] as Map<String, dynamic>),
@@ -102,9 +102,9 @@ Map<String, dynamic> _$DeviceUseStatementToJson(DeviceUseStatement instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -113,15 +113,15 @@ Map<String, dynamic> _$DeviceUseStatementToJson(DeviceUseStatement instance) =>
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'subject': instance.subject?.toJson(),
       'derivedFrom': instance.derivedFrom?.map((e) => e?.toJson())?.toList(),
       'timingTiming': instance.timingTiming?.toJson(),
       'timingPeriod': instance.timingPeriod?.toJson(),
       'timingDateTime': instance.timingDateTime,
-      'element_timingDateTime': instance.element_timingDateTime?.toJson(),
+      'elementTimingDateTime': instance.elementTimingDateTime?.toJson(),
       'recordedOn': instance.recordedOn?.toIso8601String(),
-      'element_recordedOn': instance.element_recordedOn?.toJson(),
+      'elementRecordedOn': instance.elementRecordedOn?.toJson(),
       'source': instance.source?.toJson(),
       'device': instance.device?.toJson(),
       'reasonCode': instance.reasonCode?.map((e) => e?.toJson())?.toList(),

@@ -34,13 +34,13 @@ class ObservationDefinition {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -53,7 +53,7 @@ class ObservationDefinition {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -93,14 +93,14 @@ class ObservationDefinition {
   List<String> permittedDataType; // <code> enum: Quantity/CodeableConcept/string/boolean/integer/Range/Ratio/SampledData/time/dateTime/Period> permittedDataType;
 
   //  Extensions for permittedDataType
-  List<Element> element_permittedDataType;
+  List<Element> elementPermittedDataType;
 
   //  Multiple results allowed for observations conforming to this
   // ObservationDefinition.
   bool multipleResultsAllowed;
 
   //  Extensions for multipleResultsAllowed
-  Element element_multipleResultsAllowed;
+  Element elementMultipleResultsAllowed;
 
   //  The method or technique used to perform the observation.
   CodeableConcept method;
@@ -110,7 +110,7 @@ class ObservationDefinition {
   String preferredReportName;
 
   //  Extensions for preferredReportName
-  Element element_preferredReportName;
+  Element elementPreferredReportName;
 
   //  Characteristics for quantitative results of this observation.
   ObservationDefinition_QuantitativeDetails quantitativeDetails;
@@ -141,9 +141,9 @@ ObservationDefinition(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -151,12 +151,12 @@ ObservationDefinition(
     this.category,
     this.identifier,
     this.permittedDataType,
-    this.element_permittedDataType,
+    this.elementPermittedDataType,
     this.multipleResultsAllowed,
-    this.element_multipleResultsAllowed,
+    this.elementMultipleResultsAllowed,
     this.method,
     this.preferredReportName,
-    this.element_preferredReportName,
+    this.elementPreferredReportName,
     this.quantitativeDetails,
     this.qualifiedInterval,
     this.validCodedValueSet,
@@ -211,14 +211,14 @@ class ObservationDefinition_QuantitativeDetails {
   double conversionFactor;
 
   //  Extensions for conversionFactor
-  Element element_conversionFactor;
+  Element elementConversionFactor;
 
   //  Number of digits after decimal separator when the results of such
   // observations are of type Quantity.
   int decimalPrecision;
 
   //  Extensions for decimalPrecision
-  Element element_decimalPrecision;
+  Element elementDecimalPrecision;
 
 ObservationDefinition_QuantitativeDetails(
   {this.id,
@@ -227,9 +227,9 @@ ObservationDefinition_QuantitativeDetails(
     this.customaryUnit,
     this.unit,
     this.conversionFactor,
-    this.element_conversionFactor,
+    this.elementConversionFactor,
     this.decimalPrecision,
-    this.element_decimalPrecision
+    this.elementDecimalPrecision
     });
 
   factory ObservationDefinition_QuantitativeDetails.fromJson(Map<String, dynamic> json) => _$ObservationDefinition_QuantitativeDetailsFromJson(json);
@@ -270,7 +270,7 @@ class ObservationDefinition_QualifiedInterval {
   String category; // <code> enum: reference/critical/absolute;
 
   //  Extensions for category
-  Element element_category;
+  Element elementCategory;
 
   //  The low and high values determining the interval. There may be only
   // one of the two.
@@ -288,7 +288,7 @@ class ObservationDefinition_QualifiedInterval {
   String gender; // <code> enum: male/female/other/unknown;
 
   //  Extensions for gender
-  Element element_gender;
+  Element elementGender;
 
   //  The age at which this reference range is applicable. This is a
   // neonatal age (e.g. number of weeks at term) if the meaning says so.
@@ -302,23 +302,23 @@ class ObservationDefinition_QualifiedInterval {
   String condition;
 
   //  Extensions for condition
-  Element element_condition;
+  Element elementCondition;
 
 ObservationDefinition_QualifiedInterval(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.category,
-    this.element_category,
+    this.elementCategory,
     this.range,
     this.context,
     this.appliesTo,
     this.gender,
-    this.element_gender,
+    this.elementGender,
     this.age,
     this.gestationalAge,
     this.condition,
-    this.element_condition
+    this.elementCondition
     });
 
   factory ObservationDefinition_QualifiedInterval.fromJson(Map<String, dynamic> json) => _$ObservationDefinition_QualifiedIntervalFromJson(json);

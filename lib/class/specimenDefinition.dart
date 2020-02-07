@@ -36,13 +36,13 @@ class SpecimenDefinition {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -55,7 +55,7 @@ class SpecimenDefinition {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -93,7 +93,7 @@ class SpecimenDefinition {
   String timeAspect;
 
   //  Extensions for timeAspect
-  Element element_timeAspect;
+  Element elementTimeAspect;
 
   //  The action to be performed for collecting the specimen.
   List<CodeableConcept> collection;
@@ -106,9 +106,9 @@ SpecimenDefinition(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -117,7 +117,7 @@ SpecimenDefinition(
     this.typeCollected,
     this.patientPreparation,
     this.timeAspect,
-    this.element_timeAspect,
+    this.elementTimeAspect,
     this.collection,
     this.typeTested
     });
@@ -159,7 +159,7 @@ class SpecimenDefinition_TypeTested {
   bool isDerived;
 
   //  Extensions for isDerived
-  Element element_isDerived;
+  Element elementIsDerived;
 
   //  The kind of specimen conditioned for testing expected by lab.
   CodeableConcept type;
@@ -168,7 +168,7 @@ class SpecimenDefinition_TypeTested {
   String preference; // <code> enum: preferred/alternate;
 
   //  Extensions for preference
-  Element element_preference;
+  Element elementPreference;
 
   //  The specimen's container.
   SpecimenDefinition_Container container;
@@ -178,7 +178,7 @@ class SpecimenDefinition_TypeTested {
   String requirement;
 
   //  Extensions for requirement
-  Element element_requirement;
+  Element elementRequirement;
 
   //  The usual time that a specimen of this kind is retained after the
   // ordered tests are completed, for the purpose of additional testing.
@@ -197,13 +197,13 @@ SpecimenDefinition_TypeTested(
     this.extension,
     this.modifierExtension,
     this.isDerived,
-    this.element_isDerived,
+    this.elementIsDerived,
     this.type,
     this.preference,
-    this.element_preference,
+    this.elementPreference,
     this.container,
     this.requirement,
-    this.element_requirement,
+    this.elementRequirement,
     this.retentionTime,
     this.rejectionCriterion,
     this.handling
@@ -255,7 +255,7 @@ class SpecimenDefinition_Container {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  The capacity (volume or other measure) of this kind of container.
   Quantity capacity;
@@ -267,7 +267,7 @@ class SpecimenDefinition_Container {
   String minimumVolumeString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for minimumVolumeString
-  Element element_minimumVolumeString;
+  Element elementMinimumVolumeString;
 
   //  Substance introduced in the kind of container to preserve, maintain or
   // enhance the specimen. Examples: Formalin, Citrate, EDTA.
@@ -278,7 +278,7 @@ class SpecimenDefinition_Container {
   String preparation;
 
   //  Extensions for preparation
-  Element element_preparation;
+  Element elementPreparation;
 
 SpecimenDefinition_Container(
   {this.id,
@@ -288,14 +288,14 @@ SpecimenDefinition_Container(
     this.type,
     this.cap,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.capacity,
     this.minimumVolumeQuantity,
     this.minimumVolumeString,
-    this.element_minimumVolumeString,
+    this.elementMinimumVolumeString,
     this.additive,
     this.preparation,
-    this.element_preparation
+    this.elementPreparation
     });
 
   factory SpecimenDefinition_Container.fromJson(Map<String, dynamic> json) => _$SpecimenDefinition_ContainerFromJson(json);
@@ -397,7 +397,7 @@ class SpecimenDefinition_Handling {
   String instruction;
 
   //  Extensions for instruction
-  Element element_instruction;
+  Element elementInstruction;
 
 SpecimenDefinition_Handling(
   {this.id,
@@ -407,7 +407,7 @@ SpecimenDefinition_Handling(
     this.temperatureRange,
     this.maxDuration,
     this.instruction,
-    this.element_instruction
+    this.elementInstruction
     });
 
   factory SpecimenDefinition_Handling.fromJson(Map<String, dynamic> json) => _$SpecimenDefinition_HandlingFromJson(json);

@@ -31,13 +31,13 @@ class Bundle {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A persistent identifier for the bundle that won't change as a bundle
   // is copied from server to server.
@@ -47,14 +47,14 @@ class Bundle {
   String type; // <code> enum: document/message/transaction/transaction-response/batch/batch-response/history/searchset/collection;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  The date/time that the bundle was assembled - i.e. when the resources
   // were placed in the bundle.
   DateTime timestamp;
 
   //  Extensions for timestamp
-  Element element_timestamp;
+  Element elementTimestamp;
 
   //  If a set of search matches, this is the total number of entries of
   // type 'match' across all pages in the search.  It does not include
@@ -63,7 +63,7 @@ class Bundle {
   int total;
 
   //  Extensions for total
-  Element element_total;
+  Element elementTotal;
 
   //  A series of links that provide context to this bundle.
   List<Bundle_Link> link;
@@ -79,16 +79,16 @@ Bundle(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.identifier,
     this.type,
-    this.element_type,
+    this.elementType,
     this.timestamp,
-    this.element_timestamp,
+    this.elementTimestamp,
     this.total,
-    this.element_total,
+    this.elementTotal,
     this.link,
     this.entry,
     this.signature
@@ -132,22 +132,22 @@ class Bundle_Link {
   String relation;
 
   //  Extensions for relation
-  Element element_relation;
+  Element elementRelation;
 
   //  The reference details for the link.
   String url;
 
   //  Extensions for url
-  Element element_url;
+  Element elementUrl;
 
 Bundle_Link(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.relation,
-    this.element_relation,
+    this.elementRelation,
     this.url,
-    this.element_url
+    this.elementUrl
     });
 
   factory Bundle_Link.fromJson(Map<String, dynamic> json) => _$Bundle_LinkFromJson(json);
@@ -197,11 +197,11 @@ class Bundle_Entry {
   String fullUrl;
 
   //  Extensions for fullUrl
-  Element element_fullUrl;
+  Element elementFullUrl;
 
   //  The Resource for the entry. The purpose/meaning of the resource is
   // determined by the Bundle.type.
-  ResourceList resource;
+  dynamic resource;
 
   //  Information about the search process that lead to the creation of this
   // entry.
@@ -223,8 +223,8 @@ Bundle_Entry(
     this.modifierExtension,
     this.link,
     this.fullUrl,
-    this.element_fullUrl,
-//    this.resource,
+    this.elementFullUrl,
+    this.resource,
     this.search,
     this.request,
     this.response
@@ -269,22 +269,22 @@ class Bundle_Search {
   String mode; // <code> enum: match/include/outcome;
 
   //  Extensions for mode
-  Element element_mode;
+  Element elementMode;
 
   //  When searching, the server's search ranking score for the entry.
   double score;
 
   //  Extensions for score
-  Element element_score;
+  Element elementScore;
 
 Bundle_Search(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.mode,
-    this.element_mode,
+    this.elementMode,
     this.score,
-    this.element_score
+    this.elementScore
     });
 
   factory Bundle_Search.fromJson(Map<String, dynamic> json) => _$Bundle_SearchFromJson(json);
@@ -326,28 +326,28 @@ class Bundle_Request {
   String method; // <code> enum: GET/HEAD/POST/PUT/DELETE/PATCH;
 
   //  Extensions for method
-  Element element_method;
+  Element elementMethod;
 
   //  The URL for this entry, relative to the root (the address to which the
   // request is posted).
   String url;
 
   //  Extensions for url
-  Element element_url;
+  Element elementUrl;
 
   //  If the ETag values match, return a 304 Not Modified status. See the
   // API documentation for ["Conditional Read"](http.html#cread).
   String ifNoneMatch;
 
   //  Extensions for ifNoneMatch
-  Element element_ifNoneMatch;
+  Element elementIfNoneMatch;
 
   //  Only perform the operation if the last updated date matches. See the
   // API documentation for ["Conditional Read"](http.html#cread).
   DateTime ifModifiedSince;
 
   //  Extensions for ifModifiedSince
-  Element element_ifModifiedSince;
+  Element elementIfModifiedSince;
 
   //  Only perform the operation if the Etag value matches. For more
   // information, see the API section ["Managing Resource
@@ -355,7 +355,7 @@ class Bundle_Request {
   String ifMatch;
 
   //  Extensions for ifMatch
-  Element element_ifMatch;
+  Element elementIfMatch;
 
   //  Instruct the server not to perform the create if a specified resource
   // already exists. For further information, see the API documentation for
@@ -364,24 +364,24 @@ class Bundle_Request {
   String ifNoneExist;
 
   //  Extensions for ifNoneExist
-  Element element_ifNoneExist;
+  Element elementIfNoneExist;
 
 Bundle_Request(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.method,
-    this.element_method,
+    this.elementMethod,
     this.url,
-    this.element_url,
+    this.elementUrl,
     this.ifNoneMatch,
-    this.element_ifNoneMatch,
+    this.elementIfNoneMatch,
     this.ifModifiedSince,
-    this.element_ifModifiedSince,
+    this.elementIfModifiedSince,
     this.ifMatch,
-    this.element_ifMatch,
+    this.elementIfMatch,
     this.ifNoneExist,
-    this.element_ifNoneExist
+    this.elementIfNoneExist
     });
 
   factory Bundle_Request.fromJson(Map<String, dynamic> json) => _$Bundle_RequestFromJson(json);
@@ -423,14 +423,14 @@ class Bundle_Response {
   String status;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  The location header created by processing this operation, populated if
   // the operation returns a location.
   String location;
 
   //  Extensions for location
-  Element element_location;
+  Element elementLocation;
 
   //  The Etag for the resource, if the operation for the entry produced a
   // versioned resource (see [Resource Metadata and
@@ -439,13 +439,13 @@ class Bundle_Response {
   String etag;
 
   //  Extensions for etag
-  Element element_etag;
+  Element elementEtag;
 
   //  The date/time that the resource was modified on the server.
   DateTime lastModified;
 
   //  Extensions for lastModified
-  Element element_lastModified;
+  Element elementLastModified;
 
   //  An OperationOutcome containing hints and warnings produced as part of
   // processing this entry in a batch or transaction.
@@ -456,13 +456,13 @@ Bundle_Response(
     this.extension,
     this.modifierExtension,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.location,
-    this.element_location,
+    this.elementLocation,
     this.etag,
-    this.element_etag,
+    this.elementEtag,
     this.lastModified,
-    this.element_lastModified,
+    this.elementLastModified,
     this.outcome
     });
 

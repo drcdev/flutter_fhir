@@ -36,13 +36,13 @@ class MedicationStatement {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -55,7 +55,7 @@ class MedicationStatement {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -101,7 +101,7 @@ class MedicationStatement {
   String status;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  Captures the reason for the current state of the MedicationStatement.
   List<CodeableConcept> statusReason;
@@ -135,7 +135,7 @@ class MedicationStatement {
   String effectiveDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for effectiveDateTime
-  Element element_effectiveDateTime;
+  Element elementEffectiveDateTime;
 
   //  The interval of time during which it is being asserted that the
   // patient is/was/will be taking the medication (or was not taking, when
@@ -147,7 +147,7 @@ class MedicationStatement {
   DateTime dateAsserted;
 
   //  Extensions for dateAsserted
-  Element element_dateAsserted;
+  Element elementDateAsserted;
 
   //  The person or organization that provided the information about the
   // taking of this medication. Note: Use derivedFrom when a
@@ -179,9 +179,9 @@ MedicationStatement(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -190,17 +190,17 @@ MedicationStatement(
     this.basedOn,
     this.partOf,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.statusReason,
     this.category,
     this.medicationCodeableConcept,
     this.medicationReference,
     this.context,
     this.effectiveDateTime,
-    this.element_effectiveDateTime,
+    this.elementEffectiveDateTime,
     this.effectivePeriod,
     this.dateAsserted,
-    this.element_dateAsserted,
+    this.elementDateAsserted,
     this.informationSource,
     this.derivedFrom,
     this.reasonCode,

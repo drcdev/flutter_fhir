@@ -24,7 +24,7 @@ class Period {
   DateTime start;
 
   //  Extensions for start
-  Element element_start;
+  Element elementStart;
 
   //  The end of the period. If the end of the period is missing, it means
   // no end was known or planned at the time the instance was created. The
@@ -33,15 +33,15 @@ class Period {
   DateTime end;
 
   //  Extensions for end
-  Element element_end;
+  Element elementEnd;
 
 Period(
   {this.id,
     this.extension,
     this.start,
-    this.element_start,
+    this.elementStart,
     this.end,
-    this.element_end
+    this.elementEnd
     });
 
   factory Period.fromJson(Map<String, dynamic> json) => _$PeriodFromJson(json);

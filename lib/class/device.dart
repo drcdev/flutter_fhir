@@ -36,13 +36,13 @@ class Device {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -55,7 +55,7 @@ class Device {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -97,7 +97,7 @@ class Device {
   String status; // <code> enum: active/inactive/entered-in-error/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  Reason for the dtatus of the Device availability.
   List<CodeableConcept> statusReason;
@@ -107,39 +107,39 @@ class Device {
   String distinctIdentifier;
 
   //  Extensions for distinctIdentifier
-  Element element_distinctIdentifier;
+  Element elementDistinctIdentifier;
 
   //  A name of the manufacturer.
   String manufacturer;
 
   //  Extensions for manufacturer
-  Element element_manufacturer;
+  Element elementManufacturer;
 
   //  The date and time when the device was manufactured.
   DateTime manufactureDate;
 
   //  Extensions for manufactureDate
-  Element element_manufactureDate;
+  Element elementManufactureDate;
 
   //  The date and time beyond which this device is no longer valid or
   // should not be used (if applicable).
   DateTime expirationDate;
 
   //  Extensions for expirationDate
-  Element element_expirationDate;
+  Element elementExpirationDate;
 
   //  Lot number assigned by the manufacturer.
   String lotNumber;
 
   //  Extensions for lotNumber
-  Element element_lotNumber;
+  Element elementLotNumber;
 
   //  The serial number assigned by the organization when the device was
   // manufactured.
   String serialNumber;
 
   //  Extensions for serialNumber
-  Element element_serialNumber;
+  Element elementSerialNumber;
 
   //  This represents the manufacturer's name of the device as provided by
   // the device, from a UDI label, or by a person describing the Device. 
@@ -151,13 +151,13 @@ class Device {
   String modelNumber;
 
   //  Extensions for modelNumber
-  Element element_modelNumber;
+  Element elementModelNumber;
 
   //  The part number of the device.
   String partNumber;
 
   //  Extensions for partNumber
-  Element element_partNumber;
+  Element elementPartNumber;
 
   //  The kind or type of device.
   CodeableConcept type;
@@ -193,7 +193,7 @@ class Device {
   String url;
 
   //  Extensions for url
-  Element element_url;
+  Element elementUrl;
 
   //  Descriptive information, usage information or implantation information
   // that is not captured in an existing element.
@@ -210,9 +210,9 @@ Device(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -221,25 +221,25 @@ Device(
     this.definition,
     this.udiCarrier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.statusReason,
     this.distinctIdentifier,
-    this.element_distinctIdentifier,
+    this.elementDistinctIdentifier,
     this.manufacturer,
-    this.element_manufacturer,
+    this.elementManufacturer,
     this.manufactureDate,
-    this.element_manufactureDate,
+    this.elementManufactureDate,
     this.expirationDate,
-    this.element_expirationDate,
+    this.elementExpirationDate,
     this.lotNumber,
-    this.element_lotNumber,
+    this.elementLotNumber,
     this.serialNumber,
-    this.element_serialNumber,
+    this.elementSerialNumber,
     this.deviceName,
     this.modelNumber,
-    this.element_modelNumber,
+    this.elementModelNumber,
     this.partNumber,
-    this.element_partNumber,
+    this.elementPartNumber,
     this.type,
     this.specialization,
     this.version,
@@ -249,7 +249,7 @@ Device(
     this.contact,
     this.location,
     this.url,
-    this.element_url,
+    this.elementUrl,
     this.note,
     this.safety,
     this.parent
@@ -293,7 +293,7 @@ class Device_UdiCarrier {
   String deviceIdentifier;
 
   //  Extensions for deviceIdentifier
-  Element element_deviceIdentifier;
+  Element elementDeviceIdentifier;
 
   //  Organization that is charged with issuing UDIs for devices.  For
   // example, the US FDA issuers include : 1) GS1: 
@@ -304,7 +304,7 @@ class Device_UdiCarrier {
   String issuer;
 
   //  Extensions for issuer
-  Element element_issuer;
+  Element elementIssuer;
 
   //  The identity of the authoritative source for UDI generation within a 
   // jurisdiction.  All UDIs are globally unique within a single namespace
@@ -314,7 +314,7 @@ class Device_UdiCarrier {
   String jurisdiction;
 
   //  Extensions for jurisdiction
-  Element element_jurisdiction;
+  Element elementJurisdiction;
 
   //  The full UDI carrier of the Automatic Identification and Data Capture
   // (AIDC) technology representation of the barcode string as printed on
@@ -324,37 +324,37 @@ class Device_UdiCarrier {
   String carrierAIDC;
 
   //  Extensions for carrierAIDC
-  Element element_carrierAIDC;
+  Element elementCarrierAIDC;
 
   //  The full UDI carrier as the human readable form (HRF) representation
   // of the barcode string as printed on the packaging of the device.
   String carrierHRF;
 
   //  Extensions for carrierHRF
-  Element element_carrierHRF;
+  Element elementCarrierHRF;
 
   //  A coded entry to indicate how the data was entered.
   String entryType; // <code> enum: barcode/rfid/manual/card/self-reported/unknown;
 
   //  Extensions for entryType
-  Element element_entryType;
+  Element elementEntryType;
 
 Device_UdiCarrier(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.deviceIdentifier,
-    this.element_deviceIdentifier,
+    this.elementDeviceIdentifier,
     this.issuer,
-    this.element_issuer,
+    this.elementIssuer,
     this.jurisdiction,
-    this.element_jurisdiction,
+    this.elementJurisdiction,
     this.carrierAIDC,
-    this.element_carrierAIDC,
+    this.elementCarrierAIDC,
     this.carrierHRF,
-    this.element_carrierHRF,
+    this.elementCarrierHRF,
     this.entryType,
-    this.element_entryType
+    this.elementEntryType
     });
 
   factory Device_UdiCarrier.fromJson(Map<String, dynamic> json) => _$Device_UdiCarrierFromJson(json);
@@ -394,23 +394,23 @@ class Device_DeviceName {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  The type of deviceName. UDILabelName | UserFriendlyName |
   // PatientReportedName | ManufactureDeviceName | ModelName.
   String type; // <code> enum: udi-label-name/user-friendly-name/patient-reported-name/manufacturer-name/model-name/other;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
 Device_DeviceName(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.name,
-    this.element_name,
+    this.elementName,
     this.type,
-    this.element_type
+    this.elementType
     });
 
   factory Device_DeviceName.fromJson(Map<String, dynamic> json) => _$Device_DeviceNameFromJson(json);
@@ -453,7 +453,7 @@ class Device_Specialization {
   String version;
 
   //  Extensions for version
-  Element element_version;
+  Element elementVersion;
 
 Device_Specialization(
   this.systemType,
@@ -461,7 +461,7 @@ Device_Specialization(
     this.extension,
     this.modifierExtension,
     this.version,
-    this.element_version
+    this.elementVersion
     });
 
   factory Device_Specialization.fromJson(Map<String, dynamic> json) => _$Device_SpecializationFromJson(json);
@@ -507,7 +507,7 @@ class Device_Version {
   String value;
 
   //  Extensions for value
-  Element element_value;
+  Element elementValue;
 
 Device_Version(
   {this.id,
@@ -516,7 +516,7 @@ Device_Version(
     this.type,
     this.component,
     this.value,
-    this.element_value
+    this.elementValue
     });
 
   factory Device_Version.fromJson(Map<String, dynamic> json) => _$Device_VersionFromJson(json);

@@ -17,20 +17,20 @@ Subscription _$SubscriptionFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -41,29 +41,29 @@ Subscription _$SubscriptionFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     contact: (json['contact'] as List)
         ?.map((e) =>
             e == null ? null : ContactPoint.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     end: json['end'] == null ? null : DateTime.parse(json['end'] as String),
-    element_end: json['element_end'] == null
+    elementEnd: json['elementEnd'] == null
         ? null
-        : Element.fromJson(json['element_end'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementEnd'] as Map<String, dynamic>),
     reason: json['reason'] as String,
-    element_reason: json['element_reason'] == null
+    elementReason: json['elementReason'] == null
         ? null
-        : Element.fromJson(json['element_reason'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementReason'] as Map<String, dynamic>),
     criteria: json['criteria'] as String,
-    element_criteria: json['element_criteria'] == null
+    elementCriteria: json['elementCriteria'] == null
         ? null
-        : Element.fromJson(json['element_criteria'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementCriteria'] as Map<String, dynamic>),
     error: json['error'] as String,
-    element_error: json['element_error'] == null
+    elementError: json['elementError'] == null
         ? null
-        : Element.fromJson(json['element_error'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementError'] as Map<String, dynamic>),
   );
 }
 
@@ -72,25 +72,25 @@ Map<String, dynamic> _$SubscriptionToJson(Subscription instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
       'end': instance.end?.toIso8601String(),
-      'element_end': instance.element_end?.toJson(),
+      'elementEnd': instance.elementEnd?.toJson(),
       'reason': instance.reason,
-      'element_reason': instance.element_reason?.toJson(),
+      'elementReason': instance.elementReason?.toJson(),
       'criteria': instance.criteria,
-      'element_criteria': instance.element_criteria?.toJson(),
+      'elementCriteria': instance.elementCriteria?.toJson(),
       'error': instance.error,
-      'element_error': instance.element_error?.toJson(),
+      'elementError': instance.elementError?.toJson(),
       'channel': instance.channel?.toJson(),
     };
 
@@ -106,19 +106,19 @@ Subscription_Channel _$Subscription_ChannelFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     type: json['type'] as String,
-    element_type: json['element_type'] == null
+    elementType: json['elementType'] == null
         ? null
-        : Element.fromJson(json['element_type'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
     endpoint: json['endpoint'] as String,
-    element_endpoint: json['element_endpoint'] == null
+    elementEndpoint: json['elementEndpoint'] == null
         ? null
-        : Element.fromJson(json['element_endpoint'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementEndpoint'] as Map<String, dynamic>),
     payload: json['payload'] as String,
-    element_payload: json['element_payload'] == null
+    elementPayload: json['elementPayload'] == null
         ? null
-        : Element.fromJson(json['element_payload'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPayload'] as Map<String, dynamic>),
     header: (json['header'] as List)?.map((e) => e as String)?.toList(),
-    element_header: (json['element_header'] as List)
+    elementHeader: (json['elementHeader'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -133,12 +133,12 @@ Map<String, dynamic> _$Subscription_ChannelToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'type': instance.type,
-      'element_type': instance.element_type?.toJson(),
+      'elementType': instance.elementType?.toJson(),
       'endpoint': instance.endpoint,
-      'element_endpoint': instance.element_endpoint?.toJson(),
+      'elementEndpoint': instance.elementEndpoint?.toJson(),
       'payload': instance.payload,
-      'element_payload': instance.element_payload?.toJson(),
+      'elementPayload': instance.elementPayload?.toJson(),
       'header': instance.header,
-      'element_header':
-          instance.element_header?.map((e) => e?.toJson())?.toList(),
+      'elementHeader':
+          instance.elementHeader?.map((e) => e?.toJson())?.toList(),
     };

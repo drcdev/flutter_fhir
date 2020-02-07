@@ -16,20 +16,20 @@ Media _$MediaFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -52,9 +52,9 @@ Media _$MediaFromJson(Map<String, dynamic> json) {
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     type: json['type'] == null
         ? null
         : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
@@ -71,19 +71,19 @@ Media _$MediaFromJson(Map<String, dynamic> json) {
         ? null
         : Reference.fromJson(json['encounter'] as Map<String, dynamic>),
     createdDateTime: json['createdDateTime'] as String,
-    element_createdDateTime: json['element_createdDateTime'] == null
+    elementCreatedDateTime: json['elementCreatedDateTime'] == null
         ? null
         : Element.fromJson(
-            json['element_createdDateTime'] as Map<String, dynamic>),
+            json['elementCreatedDateTime'] as Map<String, dynamic>),
     createdPeriod: json['createdPeriod'] == null
         ? null
         : Period.fromJson(json['createdPeriod'] as Map<String, dynamic>),
     issued: json['issued'] == null
         ? null
         : DateTime.parse(json['issued'] as String),
-    element_issued: json['element_issued'] == null
+    elementIssued: json['elementIssued'] == null
         ? null
-        : Element.fromJson(json['element_issued'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementIssued'] as Map<String, dynamic>),
     operator: json['operator'] == null
         ? null
         : Reference.fromJson(json['operator'] as Map<String, dynamic>),
@@ -96,28 +96,28 @@ Media _$MediaFromJson(Map<String, dynamic> json) {
         ? null
         : CodeableConcept.fromJson(json['bodySite'] as Map<String, dynamic>),
     deviceName: json['deviceName'] as String,
-    element_deviceName: json['element_deviceName'] == null
+    elementDeviceName: json['elementDeviceName'] == null
         ? null
-        : Element.fromJson(json['element_deviceName'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDeviceName'] as Map<String, dynamic>),
     device: json['device'] == null
         ? null
         : Reference.fromJson(json['device'] as Map<String, dynamic>),
     height: json['height'] as int,
-    element_height: json['element_height'] == null
+    elementHeight: json['elementHeight'] == null
         ? null
-        : Element.fromJson(json['element_height'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementHeight'] as Map<String, dynamic>),
     width: json['width'] as int,
-    element_width: json['element_width'] == null
+    elementWidth: json['elementWidth'] == null
         ? null
-        : Element.fromJson(json['element_width'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementWidth'] as Map<String, dynamic>),
     frames: json['frames'] as int,
-    element_frames: json['element_frames'] == null
+    elementFrames: json['elementFrames'] == null
         ? null
-        : Element.fromJson(json['element_frames'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementFrames'] as Map<String, dynamic>),
     duration: (json['duration'] as num)?.toDouble(),
-    element_duration: json['element_duration'] == null
+    elementDuration: json['elementDuration'] == null
         ? null
-        : Element.fromJson(json['element_duration'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDuration'] as Map<String, dynamic>),
     note: (json['note'] as List)
         ?.map((e) =>
             e == null ? null : Annotation.fromJson(e as Map<String, dynamic>))
@@ -129,9 +129,9 @@ Map<String, dynamic> _$MediaToJson(Media instance) => <String, dynamic>{
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -141,31 +141,31 @@ Map<String, dynamic> _$MediaToJson(Media instance) => <String, dynamic>{
       'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
       'partOf': instance.partOf?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'type': instance.type?.toJson(),
       'modality': instance.modality?.toJson(),
       'view': instance.view?.toJson(),
       'subject': instance.subject?.toJson(),
       'encounter': instance.encounter?.toJson(),
       'createdDateTime': instance.createdDateTime,
-      'element_createdDateTime': instance.element_createdDateTime?.toJson(),
+      'elementCreatedDateTime': instance.elementCreatedDateTime?.toJson(),
       'createdPeriod': instance.createdPeriod?.toJson(),
       'issued': instance.issued?.toIso8601String(),
-      'element_issued': instance.element_issued?.toJson(),
+      'elementIssued': instance.elementIssued?.toJson(),
       'operator': instance.operator?.toJson(),
       'reasonCode': instance.reasonCode?.map((e) => e?.toJson())?.toList(),
       'bodySite': instance.bodySite?.toJson(),
       'deviceName': instance.deviceName,
-      'element_deviceName': instance.element_deviceName?.toJson(),
+      'elementDeviceName': instance.elementDeviceName?.toJson(),
       'device': instance.device?.toJson(),
       'height': instance.height,
-      'element_height': instance.element_height?.toJson(),
+      'elementHeight': instance.elementHeight?.toJson(),
       'width': instance.width,
-      'element_width': instance.element_width?.toJson(),
+      'elementWidth': instance.elementWidth?.toJson(),
       'frames': instance.frames,
-      'element_frames': instance.element_frames?.toJson(),
+      'elementFrames': instance.elementFrames?.toJson(),
       'duration': instance.duration,
-      'element_duration': instance.element_duration?.toJson(),
+      'elementDuration': instance.elementDuration?.toJson(),
       'content': instance.content?.toJson(),
       'note': instance.note?.map((e) => e?.toJson())?.toList(),
     };

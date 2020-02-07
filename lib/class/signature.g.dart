@@ -21,25 +21,24 @@ Signature _$SignatureFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     when: json['when'] == null ? null : DateTime.parse(json['when'] as String),
-    element_when: json['element_when'] == null
+    elementWhen: json['elementWhen'] == null
         ? null
-        : Element.fromJson(json['element_when'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementWhen'] as Map<String, dynamic>),
     onBehalfOf: json['onBehalfOf'] == null
         ? null
         : Reference.fromJson(json['onBehalfOf'] as Map<String, dynamic>),
     targetFormat: json['targetFormat'] as String,
-    element_targetFormat: json['element_targetFormat'] == null
+    elementTargetFormat: json['elementTargetFormat'] == null
         ? null
-        : Element.fromJson(
-            json['element_targetFormat'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementTargetFormat'] as Map<String, dynamic>),
     sigFormat: json['sigFormat'] as String,
-    element_sigFormat: json['element_sigFormat'] == null
+    elementSigFormat: json['elementSigFormat'] == null
         ? null
-        : Element.fromJson(json['element_sigFormat'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSigFormat'] as Map<String, dynamic>),
     data: json['data'] as String,
-    element_data: json['element_data'] == null
+    elementData: json['elementData'] == null
         ? null
-        : Element.fromJson(json['element_data'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementData'] as Map<String, dynamic>),
   );
 }
 
@@ -48,13 +47,13 @@ Map<String, dynamic> _$SignatureToJson(Signature instance) => <String, dynamic>{
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'type': instance.type?.map((e) => e?.toJson())?.toList(),
       'when': instance.when?.toIso8601String(),
-      'element_when': instance.element_when?.toJson(),
+      'elementWhen': instance.elementWhen?.toJson(),
       'who': instance.who?.toJson(),
       'onBehalfOf': instance.onBehalfOf?.toJson(),
       'targetFormat': instance.targetFormat,
-      'element_targetFormat': instance.element_targetFormat?.toJson(),
+      'elementTargetFormat': instance.elementTargetFormat?.toJson(),
       'sigFormat': instance.sigFormat,
-      'element_sigFormat': instance.element_sigFormat?.toJson(),
+      'elementSigFormat': instance.elementSigFormat?.toJson(),
       'data': instance.data,
-      'element_data': instance.element_data?.toJson(),
+      'elementData': instance.elementData?.toJson(),
     };

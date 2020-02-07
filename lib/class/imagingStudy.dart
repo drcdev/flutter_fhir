@@ -35,13 +35,13 @@ class ImagingStudy {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -54,7 +54,7 @@ class ImagingStudy {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -87,7 +87,7 @@ class ImagingStudy {
   String status; // <code> enum: registered/available/cancelled/entered-in-error/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  A list of all the series.modality values that are actual acquisition
   // modalities, i.e. those in the DICOM Context Group 29 (value set OID
@@ -105,7 +105,7 @@ class ImagingStudy {
   DateTime started;
 
   //  Extensions for started
-  Element element_started;
+  Element elementStarted;
 
   //  A list of the diagnostic requests that resulted in this imaging study
   // being performed.
@@ -131,7 +131,7 @@ class ImagingStudy {
   int numberOfSeries;
 
   //  Extensions for numberOfSeries
-  Element element_numberOfSeries;
+  Element elementNumberOfSeries;
 
   //  Number of SOP Instances in Study. This value given may be larger than
   // the number of instance elements this resource contains due to resource
@@ -140,7 +140,7 @@ class ImagingStudy {
   int numberOfInstances;
 
   //  Extensions for numberOfInstances
-  Element element_numberOfInstances;
+  Element elementNumberOfInstances;
 
   //  The procedure which this ImagingStudy was part of.
   Reference procedureReference;
@@ -169,7 +169,7 @@ class ImagingStudy {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  Each study has one or more series of images or other content.
   List<ImagingStudy_Series> series;
@@ -179,28 +179,28 @@ ImagingStudy(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.modality,
     this.encounter,
     this.started,
-    this.element_started,
+    this.elementStarted,
     this.basedOn,
     this.referrer,
     this.interpreter,
     this.endpoint,
     this.numberOfSeries,
-    this.element_numberOfSeries,
+    this.elementNumberOfSeries,
     this.numberOfInstances,
-    this.element_numberOfInstances,
+    this.elementNumberOfInstances,
     this.procedureReference,
     this.procedureCode,
     this.location,
@@ -208,7 +208,7 @@ ImagingStudy(
     this.reasonReference,
     this.note,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.series
     });
 
@@ -249,13 +249,13 @@ class ImagingStudy_Series {
   String uid;
 
   //  Extensions for uid
-  Element element_uid;
+  Element elementUid;
 
   //  The numeric identifier of this series in the study.
   int number;
 
   //  Extensions for number
-  Element element_number;
+  Element elementNumber;
 
   //  The modality of this series sequence.
   Coding modality;
@@ -264,7 +264,7 @@ class ImagingStudy_Series {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  Number of SOP Instances in the Study. The value given may be larger
   // than the number of instance elements this resource contains due to
@@ -273,7 +273,7 @@ class ImagingStudy_Series {
   int numberOfInstances;
 
   //  Extensions for numberOfInstances
-  Element element_numberOfInstances;
+  Element elementNumberOfInstances;
 
   //  The network service providing access (e.g., query, view, or retrieval)
   // for this series. See implementation notes for information about using
@@ -301,7 +301,7 @@ class ImagingStudy_Series {
   DateTime started;
 
   //  Extensions for started
-  Element element_started;
+  Element elementStarted;
 
   //  Indicates who or what performed the series and how they were involved.
   List<ImagingStudy_Performer> performer;
@@ -316,19 +316,19 @@ ImagingStudy_Series(
     this.extension,
     this.modifierExtension,
     this.uid,
-    this.element_uid,
+    this.elementUid,
     this.number,
-    this.element_number,
+    this.elementNumber,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.numberOfInstances,
-    this.element_numberOfInstances,
+    this.elementNumberOfInstances,
     this.endpoint,
     this.bodySite,
     this.laterality,
     this.specimen,
     this.started,
-    this.element_started,
+    this.elementStarted,
     this.performer,
     this.instance
     });
@@ -417,7 +417,7 @@ class ImagingStudy_Instance {
   String uid;
 
   //  Extensions for uid
-  Element element_uid;
+  Element elementUid;
 
   //  DICOM instance  type.
   Coding sopClass;
@@ -426,13 +426,13 @@ class ImagingStudy_Instance {
   int number;
 
   //  Extensions for number
-  Element element_number;
+  Element elementNumber;
 
   //  The description of the instance.
   String title;
 
   //  Extensions for title
-  Element element_title;
+  Element elementTitle;
 
 ImagingStudy_Instance(
   this.sopClass,
@@ -440,11 +440,11 @@ ImagingStudy_Instance(
     this.extension,
     this.modifierExtension,
     this.uid,
-    this.element_uid,
+    this.elementUid,
     this.number,
-    this.element_number,
+    this.elementNumber,
     this.title,
-    this.element_title
+    this.elementTitle
     });
 
   factory ImagingStudy_Instance.fromJson(Map<String, dynamic> json) => _$ImagingStudy_InstanceFromJson(json);

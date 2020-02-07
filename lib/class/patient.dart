@@ -2,7 +2,6 @@ import 'dart:io';
 import 'dart:convert';
 
 import 'package:path_provider/path_provider.dart';
-import 'package:random_string/random_string.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/class/period.dart';
@@ -43,13 +42,13 @@ class Patient {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -62,7 +61,7 @@ class Patient {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -99,7 +98,7 @@ class Patient {
   bool active;
 
   //  Extensions for active
-  Element element_active;
+  Element elementActive;
 
   //  A name associated with the individual.
   List<HumanName> name;
@@ -113,25 +112,25 @@ class Patient {
   String gender; // <code> enum: male/female/other/unknown;
 
   //  Extensions for gender
-  Element element_gender;
+  Element elementGender;
 
   //  The date of birth for the individual.
-  DateTime birthDate;
+  String birthDate;
 
   //  Extensions for birthDate
-  Element element_birthDate;
+  Element elementBirthDate;
 
   //  Indicates if the individual is deceased or not.
   bool deceasedBoolean; //  pattern: ^true|false$
 
   //  Extensions for deceasedBoolean
-  Element element_deceasedBoolean;
+  Element elementDeceasedBoolean;
 
   //  Indicates if the individual is deceased or not.
   String deceasedDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for deceasedDateTime
-  Element element_deceasedDateTime;
+  Element elementDeceasedDateTime;
 
   //  An address for the individual.
   List<Address> address;
@@ -144,14 +143,14 @@ class Patient {
   bool multipleBirthBoolean; //  pattern: ^true|false$
 
   //  Extensions for multipleBirthBoolean
-  Element element_multipleBirthBoolean;
+  Element elementMultipleBirthBoolean;
 
   //  Indicates whether the patient is part of a multiple (boolean) or
   // indicates the actual birth order (integer).
   int multipleBirthInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
 
   //  Extensions for multipleBirthInteger
-  Element element_multipleBirthInteger;
+  Element elementMultipleBirthInteger;
 
   //  Image of the patient.
   List<Attachment> photo;
@@ -177,32 +176,32 @@ Patient(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.active,
-    this.element_active,
+    this.elementActive,
     this.name,
     this.telecom,
     this.gender,
-    this.element_gender,
+    this.elementGender,
     this.birthDate,
-    this.element_birthDate,
+    this.elementBirthDate,
     this.deceasedBoolean,
-    this.element_deceasedBoolean,
+    this.elementDeceasedBoolean,
     this.deceasedDateTime,
-    this.element_deceasedDateTime,
+    this.elementDeceasedDateTime,
     this.address,
     this.maritalStatus,
     this.multipleBirthBoolean,
-    this.element_multipleBirthBoolean,
+    this.elementMultipleBirthBoolean,
     this.multipleBirthInteger,
-    this.element_multipleBirthInteger,
+    this.elementMultipleBirthInteger,
     this.photo,
     this.contact,
     this.communication,
@@ -211,7 +210,7 @@ Patient(
     this.link
     });
 
-  String printName(){
+String printName(){
     return('${(this.name?.first?.family?.toString() ?? '')}'
         ', '
         '${(this.name?.first?.given?.first?.toString() ?? '')}'
@@ -288,7 +287,7 @@ class Patient_Contact {
   String gender; // <code> enum: male/female/other/unknown;
 
   //  Extensions for gender
-  Element element_gender;
+  Element elementGender;
 
   //  Organization on behalf of which the contact is acting or for which the
   // contact is working.
@@ -307,7 +306,7 @@ Patient_Contact(
     this.telecom,
     this.address,
     this.gender,
-    this.element_gender,
+    this.elementGender,
     this.organization,
     this.period
     });
@@ -356,7 +355,7 @@ class Patient_Communication {
   bool preferred;
 
   //  Extensions for preferred
-  Element element_preferred;
+  Element elementPreferred;
 
 Patient_Communication(
   this.language,
@@ -364,7 +363,7 @@ Patient_Communication(
     this.extension,
     this.modifierExtension,
     this.preferred,
-    this.element_preferred
+    this.elementPreferred
     });
 
   factory Patient_Communication.fromJson(Map<String, dynamic> json) => _$Patient_CommunicationFromJson(json);
@@ -408,7 +407,7 @@ class Patient_Link {
   String type; // <code> enum: replaced-by/replaces/refer/seealso;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
 Patient_Link(
   this.other,
@@ -416,7 +415,7 @@ Patient_Link(
     this.extension,
     this.modifierExtension,
     this.type,
-    this.element_type
+    this.elementType
     });
 
   factory Patient_Link.fromJson(Map<String, dynamic> json) => _$Patient_LinkFromJson(json);

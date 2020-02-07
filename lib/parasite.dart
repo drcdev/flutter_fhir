@@ -47,11 +47,11 @@ class _ParasiteState extends State<_Parasite> {
       body: Column(children: [
         Text('Name: ' + pt.printName()),
         Text('Birthdate: ' +
-            pt.birthDate.month.toString() +
+//            pt.birthDate.month.toString() +
             '-' +
-            pt.birthDate.day.toString() +
+//            pt.birthDate.day.toString() +
             '-' +
-            pt.birthDate.year.toString() +
+//            pt.birthDate.year.toString() +
             '\nBarrio: ' +
             pt.address[0].district.toString()),
         RaisedButton(

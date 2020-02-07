@@ -56,7 +56,7 @@ class SubstanceAmount {
   String amountString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for amountString
-  Element element_amountString;
+  Element elementAmountString;
 
   //  Most elements that require a quantitative value will also have a field
   // called amount type. Amount type should always be specified because the
@@ -71,7 +71,7 @@ class SubstanceAmount {
   String amountText;
 
   //  Extensions for amountText
-  Element element_amountText;
+  Element elementAmountText;
 
   //  Reference range of possible or expected values.
   SubstanceAmount_ReferenceRange referenceRange;
@@ -83,10 +83,10 @@ SubstanceAmount(
     this.amountQuantity,
     this.amountRange,
     this.amountString,
-    this.element_amountString,
+    this.elementAmountString,
     this.amountType,
     this.amountText,
-    this.element_amountText,
+    this.elementAmountText,
     this.referenceRange
     });
 

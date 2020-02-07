@@ -25,35 +25,35 @@ class RelatedArtifact {
   String type; // <code> enum: documentation/justification/citation/predecessor/successor/derived-from/depends-on/composed-of;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  A short label that can be used to reference the citation from
   // elsewhere in the containing artifact, such as a footnote index.
   String label;
 
   //  Extensions for label
-  Element element_label;
+  Element elementLabel;
 
   //  A brief description of the document or knowledge resource being
   // referenced, suitable for display to a consumer.
   String display;
 
   //  Extensions for display
-  Element element_display;
+  Element elementDisplay;
 
   //  A bibliographic citation for the related artifact. This text SHOULD be
   // formatted according to an accepted citation format.
   String citation;
 
   //  Extensions for citation
-  Element element_citation;
+  Element elementCitation;
 
   //  A url for the artifact that can be followed to access the actual
   // content.
   String url;
 
   //  Extensions for url
-  Element element_url;
+  Element elementUrl;
 
   //  The document being referenced, represented as an attachment. This is
   // exclusive with the resource element.
@@ -67,15 +67,15 @@ RelatedArtifact(
   {this.id,
     this.extension,
     this.type,
-    this.element_type,
+    this.elementType,
     this.label,
-    this.element_label,
+    this.elementLabel,
     this.display,
-    this.element_display,
+    this.elementDisplay,
     this.citation,
-    this.element_citation,
+    this.elementCitation,
     this.url,
-    this.element_url,
+    this.elementUrl,
     this.document,
     this.resource
     });

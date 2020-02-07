@@ -33,13 +33,13 @@ class SubstanceProtein {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -52,7 +52,7 @@ class SubstanceProtein {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -89,7 +89,7 @@ class SubstanceProtein {
   int numberOfSubunits;
 
   //  Extensions for numberOfSubunits
-  Element element_numberOfSubunits;
+  Element elementNumberOfSubunits;
 
   //  The disulphide bond between two cysteine residues either on the same
   // subunit or on two different subunits shall be described. The position
@@ -101,7 +101,7 @@ class SubstanceProtein {
   List<String> disulfideLinkage;
 
   //  Extensions for disulfideLinkage
-  List<Element> element_disulfideLinkage;
+  List<Element> elementDisulfideLinkage;
 
   //  This subclause refers to the description of each subunit constituting
   // the SubstanceProtein. A subunit is a linear sequence of amino acids
@@ -117,18 +117,18 @@ SubstanceProtein(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.sequenceType,
     this.numberOfSubunits,
-    this.element_numberOfSubunits,
+    this.elementNumberOfSubunits,
     this.disulfideLinkage,
-    this.element_disulfideLinkage,
+    this.elementDisulfideLinkage,
     this.subunit
     });
 
@@ -172,7 +172,7 @@ class SubstanceProtein_Subunit {
   int subunit;
 
   //  Extensions for subunit
-  Element element_subunit;
+  Element elementSubunit;
 
   //  The sequence information shall be provided enumerating the amino acids
   // from N- to C-terminal end using standard single-letter amino acid
@@ -185,13 +185,13 @@ class SubstanceProtein_Subunit {
   String sequence;
 
   //  Extensions for sequence
-  Element element_sequence;
+  Element elementSequence;
 
   //  Length of linear sequences of amino acids contained in the subunit.
   int length;
 
   //  Extensions for length
-  Element element_length;
+  Element elementLength;
 
   //  The sequence information shall be provided enumerating the amino acids
   // from N- to C-terminal end using standard single-letter amino acid
@@ -212,7 +212,7 @@ class SubstanceProtein_Subunit {
   String nTerminalModification;
 
   //  Extensions for nTerminalModification
-  Element element_nTerminalModification;
+  Element elementNTerminalModification;
 
   //  Unique identifier for molecular fragment modification based on the ISO
   // 11238 Substance ID.
@@ -222,25 +222,25 @@ class SubstanceProtein_Subunit {
   String cTerminalModification;
 
   //  Extensions for cTerminalModification
-  Element element_cTerminalModification;
+  Element elementCTerminalModification;
 
 SubstanceProtein_Subunit(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.subunit,
-    this.element_subunit,
+    this.elementSubunit,
     this.sequence,
-    this.element_sequence,
+    this.elementSequence,
     this.length,
-    this.element_length,
+    this.elementLength,
     this.sequenceAttachment,
     this.nTerminalModificationId,
     this.nTerminalModification,
-    this.element_nTerminalModification,
+    this.elementNTerminalModification,
     this.cTerminalModificationId,
     this.cTerminalModification,
-    this.element_cTerminalModification
+    this.elementCTerminalModification
     });
 
   factory SubstanceProtein_Subunit.fromJson(Map<String, dynamic> json) => _$SubstanceProtein_SubunitFromJson(json);

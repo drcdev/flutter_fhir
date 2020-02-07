@@ -32,13 +32,13 @@ class SubstanceSourceMaterial {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -51,7 +51,7 @@ class SubstanceSourceMaterial {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -97,7 +97,7 @@ class SubstanceSourceMaterial {
   String organismName;
 
   //  Extensions for organismName
-  Element element_organismName;
+  Element elementOrganismName;
 
   //  The parent of the herbal drug Ginkgo biloba, Leaf is the substance ID
   // of the substance (fresh) of Ginkgo biloba L. or Ginkgo biloba L. (Whole
@@ -108,7 +108,7 @@ class SubstanceSourceMaterial {
   List<String> parentSubstanceName;
 
   //  Extensions for parentSubstanceName
-  List<Element> element_parentSubstanceName;
+  List<Element> elementParentSubstanceName;
 
   //  The country where the plant material is harvested or the countries
   // where the plasma is sourced from as laid down in accordance with the
@@ -122,7 +122,7 @@ class SubstanceSourceMaterial {
   List<String> geographicalLocation;
 
   //  Extensions for geographicalLocation
-  List<Element> element_geographicalLocation;
+  List<Element> elementGeographicalLocation;
 
   //  Stage of life for animals, plants, insects and microorganisms. This
   // information shall be provided only when the substance is significantly
@@ -153,9 +153,9 @@ SubstanceSourceMaterial(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -165,13 +165,13 @@ SubstanceSourceMaterial(
     this.sourceMaterialState,
     this.organismId,
     this.organismName,
-    this.element_organismName,
+    this.elementOrganismName,
     this.parentSubstanceId,
     this.parentSubstanceName,
-    this.element_parentSubstanceName,
+    this.elementParentSubstanceName,
     this.countryOfOrigin,
     this.geographicalLocation,
-    this.element_geographicalLocation,
+    this.elementGeographicalLocation,
     this.developmentStage,
     this.fractionDescription,
     this.organism,
@@ -216,7 +216,7 @@ class SubstanceSourceMaterial_FractionDescription {
   String fraction;
 
   //  Extensions for fraction
-  Element element_fraction;
+  Element elementFraction;
 
   //  The specific type of the material constituting the component. For
   // Herbal preparations the particulars of the extracts (liquid/dry) is
@@ -228,7 +228,7 @@ SubstanceSourceMaterial_FractionDescription(
     this.extension,
     this.modifierExtension,
     this.fraction,
-    this.element_fraction,
+    this.elementFraction,
     this.materialType
     });
 
@@ -288,7 +288,7 @@ class SubstanceSourceMaterial_Organism {
   String intraspecificDescription;
 
   //  Extensions for intraspecificDescription
-  Element element_intraspecificDescription;
+  Element elementIntraspecificDescription;
 
   //  4.9.13.6.1 Author type (Conditional).
   List<SubstanceSourceMaterial_Author> author;
@@ -308,7 +308,7 @@ SubstanceSourceMaterial_Organism(
     this.species,
     this.intraspecificType,
     this.intraspecificDescription,
-    this.element_intraspecificDescription,
+    this.elementIntraspecificDescription,
     this.author,
     this.hybrid,
     this.organismGeneral
@@ -361,7 +361,7 @@ class SubstanceSourceMaterial_Author {
   String authorDescription;
 
   //  Extensions for authorDescription
-  Element element_authorDescription;
+  Element elementAuthorDescription;
 
 SubstanceSourceMaterial_Author(
   {this.id,
@@ -369,7 +369,7 @@ SubstanceSourceMaterial_Author(
     this.modifierExtension,
     this.authorType,
     this.authorDescription,
-    this.element_authorDescription
+    this.elementAuthorDescription
     });
 
   factory SubstanceSourceMaterial_Author.fromJson(Map<String, dynamic> json) => _$SubstanceSourceMaterial_AuthorFromJson(json);
@@ -412,7 +412,7 @@ class SubstanceSourceMaterial_Hybrid {
   String maternalOrganismId;
 
   //  Extensions for maternalOrganismId
-  Element element_maternalOrganismId;
+  Element elementMaternalOrganismId;
 
   //  The name of the maternal species constituting the hybrid organism
   // shall be specified. For plants, the parents aren’t always known, and it
@@ -421,21 +421,21 @@ class SubstanceSourceMaterial_Hybrid {
   String maternalOrganismName;
 
   //  Extensions for maternalOrganismName
-  Element element_maternalOrganismName;
+  Element elementMaternalOrganismName;
 
   //  The identifier of the paternal species constituting the hybrid
   // organism shall be specified based on a controlled vocabulary.
   String paternalOrganismId;
 
   //  Extensions for paternalOrganismId
-  Element element_paternalOrganismId;
+  Element elementPaternalOrganismId;
 
   //  The name of the paternal species constituting the hybrid organism
   // shall be specified.
   String paternalOrganismName;
 
   //  Extensions for paternalOrganismName
-  Element element_paternalOrganismName;
+  Element elementPaternalOrganismName;
 
   //  The hybrid type of an organism shall be specified.
   CodeableConcept hybridType;
@@ -445,13 +445,13 @@ SubstanceSourceMaterial_Hybrid(
     this.extension,
     this.modifierExtension,
     this.maternalOrganismId,
-    this.element_maternalOrganismId,
+    this.elementMaternalOrganismId,
     this.maternalOrganismName,
-    this.element_maternalOrganismName,
+    this.elementMaternalOrganismName,
     this.paternalOrganismId,
-    this.element_paternalOrganismId,
+    this.elementPaternalOrganismId,
     this.paternalOrganismName,
-    this.element_paternalOrganismName,
+    this.elementPaternalOrganismName,
     this.hybridType
     });
 

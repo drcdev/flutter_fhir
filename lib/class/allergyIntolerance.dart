@@ -37,13 +37,13 @@ class AllergyIntolerance {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -56,7 +56,7 @@ class AllergyIntolerance {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -99,20 +99,20 @@ class AllergyIntolerance {
   String type; // <code> enum: allergy/intolerance;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  Category of the identified substance.
   List<String> category; // <code> enum: food/medication/environment/biologic> category;
 
   //  Extensions for category
-  List<Element> element_category;
+  List<Element> elementCategory;
 
   //  Estimate of the potential clinical harm, or seriousness, of the
   // reaction to the identified substance.
   String criticality; // <code> enum: low/high/unable-to-assess;
 
   //  Extensions for criticality
-  Element element_criticality;
+  Element elementCriticality;
 
   //  Code for an allergy or intolerance statement (either a positive or a
   // negated/excluded statement).  This may be a code for a substance or
@@ -143,7 +143,7 @@ class AllergyIntolerance {
   String onsetDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for onsetDateTime
-  Element element_onsetDateTime;
+  Element elementOnsetDateTime;
 
   //  Estimated or actual date,  date-time, or age when allergy or
   // intolerance was identified.
@@ -162,7 +162,7 @@ class AllergyIntolerance {
   String onsetString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for onsetString
-  Element element_onsetString;
+  Element elementOnsetString;
 
   //  The recordedDate represents when this particular AllergyIntolerance
   // record was created in the system, which is often a system-generated
@@ -170,7 +170,7 @@ class AllergyIntolerance {
   DateTime recordedDate;
 
   //  Extensions for recordedDate
-  Element element_recordedDate;
+  Element elementRecordedDate;
 
   //  Individual who recorded the record and takes responsibility for its
   // content.
@@ -184,7 +184,7 @@ class AllergyIntolerance {
   DateTime lastOccurrence;
 
   //  Extensions for lastOccurrence
-  Element element_lastOccurrence;
+  Element elementLastOccurrence;
 
   //  Additional narrative about the propensity for the Adverse Reaction,
   // not captured in other fields.
@@ -199,9 +199,9 @@ AllergyIntolerance(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -210,26 +210,26 @@ AllergyIntolerance(
     this.clinicalStatus,
     this.verificationStatus,
     this.type,
-    this.element_type,
+    this.elementType,
     this.category,
-    this.element_category,
+    this.elementCategory,
     this.criticality,
-    this.element_criticality,
+    this.elementCriticality,
     this.code,
     this.encounter,
     this.onsetDateTime,
-    this.element_onsetDateTime,
+    this.elementOnsetDateTime,
     this.onsetAge,
     this.onsetPeriod,
     this.onsetRange,
     this.onsetString,
-    this.element_onsetString,
+    this.elementOnsetString,
     this.recordedDate,
-    this.element_recordedDate,
+    this.elementRecordedDate,
     this.recorder,
     this.asserter,
     this.lastOccurrence,
-    this.element_lastOccurrence,
+    this.elementLastOccurrence,
     this.note,
     this.reaction
     });
@@ -289,20 +289,20 @@ class AllergyIntolerance_Reaction {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  Record of the date and/or time of the onset of the Reaction.
   DateTime onset;
 
   //  Extensions for onset
-  Element element_onset;
+  Element elementOnset;
 
   //  Clinical assessment of the severity of the reaction event as a whole,
   // potentially considering multiple different manifestations.
   String severity; // <code> enum: mild/moderate/severe;
 
   //  Extensions for severity
-  Element element_severity;
+  Element elementSeverity;
 
   //  Identification of the route by which the subject was exposed to the
   // substance.
@@ -319,11 +319,11 @@ AllergyIntolerance_Reaction(
     this.modifierExtension,
     this.substance,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.onset,
-    this.element_onset,
+    this.elementOnset,
     this.severity,
-    this.element_severity,
+    this.elementSeverity,
     this.exposureRoute,
     this.note
     });

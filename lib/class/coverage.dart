@@ -36,13 +36,13 @@ class Coverage {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -55,7 +55,7 @@ class Coverage {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -87,7 +87,7 @@ class Coverage {
   String status;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  The type of coverage: social program, medical plan, accident coverage
   // (workers compensation, auto), group health or payment by an individual
@@ -106,7 +106,7 @@ class Coverage {
   String subscriberId;
 
   //  Extensions for subscriberId
-  Element element_subscriberId;
+  Element elementSubscriberId;
 
   //  The party who benefits from the insurance coverage; the patient when
   // products and/or services are provided.
@@ -116,7 +116,7 @@ class Coverage {
   String dependent;
 
   //  Extensions for dependent
-  Element element_dependent;
+  Element elementDependent;
 
   //  The relationship of beneficiary (patient) to the subscriber.
   CodeableConcept relationship;
@@ -140,7 +140,7 @@ class Coverage {
   int order;
 
   //  Extensions for order
-  Element element_order;
+  Element elementOrder;
 
   //  The insurer-specific identifier for the insurer-defined network of
   // providers to which the beneficiary may seek treatment which will be
@@ -149,7 +149,7 @@ class Coverage {
   String network;
 
   //  Extensions for network
-  Element element_network;
+  Element elementNetwork;
 
   //  A suite of codes indicating the cost category and associated amount
   // which have been detailed in the policy and may have been  included on
@@ -162,7 +162,7 @@ class Coverage {
   bool subrogation;
 
   //  Extensions for subrogation
-  Element element_subrogation;
+  Element elementSubrogation;
 
   //  The policy(s) which constitute this insurance coverage.
   List<Reference> contract;
@@ -173,33 +173,33 @@ Coverage(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.type,
     this.policyHolder,
     this.subscriber,
     this.subscriberId,
-    this.element_subscriberId,
+    this.elementSubscriberId,
     this.dependent,
-    this.element_dependent,
+    this.elementDependent,
     this.relationship,
     this.period,
     this.classs,
     this.order,
-    this.element_order,
+    this.elementOrder,
     this.network,
-    this.element_network,
+    this.elementNetwork,
     this.costToBeneficiary,
     this.subrogation,
-    this.element_subrogation,
+    this.elementSubrogation,
     this.contract
     });
 
@@ -246,13 +246,13 @@ class Coverage_Class {
   String value;
 
   //  Extensions for value
-  Element element_value;
+  Element elementValue;
 
   //  A short description for the class.
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
 Coverage_Class(
   this.type,
@@ -260,9 +260,9 @@ Coverage_Class(
     this.extension,
     this.modifierExtension,
     this.value,
-    this.element_value,
+    this.elementValue,
     this.name,
-    this.element_name
+    this.elementName
     });
 
   factory Coverage_Class.fromJson(Map<String, dynamic> json) => _$Coverage_ClassFromJson(json);

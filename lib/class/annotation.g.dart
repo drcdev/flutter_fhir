@@ -17,18 +17,17 @@ Annotation _$AnnotationFromJson(Map<String, dynamic> json) {
         ? null
         : Reference.fromJson(json['authorReference'] as Map<String, dynamic>),
     authorString: json['authorString'] as String,
-    element_authorString: json['element_authorString'] == null
+    elementAuthorString: json['elementAuthorString'] == null
         ? null
-        : Element.fromJson(
-            json['element_authorString'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementAuthorString'] as Map<String, dynamic>),
     time: json['time'] == null ? null : DateTime.parse(json['time'] as String),
-    element_time: json['element_time'] == null
+    elementTime: json['elementTime'] == null
         ? null
-        : Element.fromJson(json['element_time'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementTime'] as Map<String, dynamic>),
     text: json['text'] as String,
-    element_text: json['element_text'] == null
+    elementText: json['elementText'] == null
         ? null
-        : Element.fromJson(json['element_text'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementText'] as Map<String, dynamic>),
   );
 }
 
@@ -38,9 +37,9 @@ Map<String, dynamic> _$AnnotationToJson(Annotation instance) =>
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'authorReference': instance.authorReference?.toJson(),
       'authorString': instance.authorString,
-      'element_authorString': instance.element_authorString?.toJson(),
+      'elementAuthorString': instance.elementAuthorString?.toJson(),
       'time': instance.time?.toIso8601String(),
-      'element_time': instance.element_time?.toJson(),
+      'elementTime': instance.elementTime?.toJson(),
       'text': instance.text,
-      'element_text': instance.element_text?.toJson(),
+      'elementText': instance.elementText?.toJson(),
     };

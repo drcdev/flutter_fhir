@@ -38,13 +38,13 @@ class ClaimResponse {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -57,7 +57,7 @@ class ClaimResponse {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -89,7 +89,7 @@ class ClaimResponse {
   String status;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  A finer grained suite of claim type codes which may convey additional
   // information such as Inpatient vs Outpatient and/or a specialty service.
@@ -107,7 +107,7 @@ class ClaimResponse {
   String use;
 
   //  Extensions for use
-  Element element_use;
+  Element elementUse;
 
   //  The party to whom the professional services and/or products have been
   // supplied or are being considered and for whom actual for facast
@@ -118,7 +118,7 @@ class ClaimResponse {
   DateTime created;
 
   //  Extensions for created
-  Element element_created;
+  Element elementCreated;
 
   //  The party responsible for authorization, adjudication and
   // reimbursement.
@@ -136,20 +136,20 @@ class ClaimResponse {
   String outcome;
 
   //  Extensions for outcome
-  Element element_outcome;
+  Element elementOutcome;
 
   //  A human readable description of the status of the adjudication.
   String disposition;
 
   //  Extensions for disposition
-  Element element_disposition;
+  Element elementDisposition;
 
   //  Reference from the Insurer which is used in later communications which
   // refers to this adjudication.
   String preAuthRef;
 
   //  Extensions for preAuthRef
-  Element element_preAuthRef;
+  Element elementPreAuthRef;
 
   //  The time frame during which this authorization is effective.
   Period preAuthPeriod;
@@ -207,29 +207,29 @@ ClaimResponse(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.subType,
     this.use,
-    this.element_use,
+    this.elementUse,
     this.created,
-    this.element_created,
+    this.elementCreated,
     this.requestor,
     this.request,
     this.outcome,
-    this.element_outcome,
+    this.elementOutcome,
     this.disposition,
-    this.element_disposition,
+    this.elementDisposition,
     this.preAuthRef,
-    this.element_preAuthRef,
+    this.elementPreAuthRef,
     this.preAuthPeriod,
     this.payeeType,
     this.item,
@@ -283,14 +283,14 @@ class ClaimResponse_Item {
   int itemSequence;
 
   //  Extensions for itemSequence
-  Element element_itemSequence;
+  Element elementItemSequence;
 
   //  The numbers associated with notes below which apply to the
   // adjudication of this item.
   List<int> noteNumber;
 
   //  Extensions for noteNumber
-  List<Element> element_noteNumber;
+  List<Element> elementNoteNumber;
 
   //  If this item is a group then the values here are a summary of the
   // adjudication of the detail items. If this item is a simple product or
@@ -307,9 +307,9 @@ ClaimResponse_Item(
     this.extension,
     this.modifierExtension,
     this.itemSequence,
-    this.element_itemSequence,
+    this.elementItemSequence,
     this.noteNumber,
-    this.element_noteNumber,
+    this.elementNoteNumber,
     this.detail
     });
 
@@ -366,7 +366,7 @@ class ClaimResponse_Adjudication {
   double value;
 
   //  Extensions for value
-  Element element_value;
+  Element elementValue;
 
 ClaimResponse_Adjudication(
   this.category,
@@ -376,7 +376,7 @@ ClaimResponse_Adjudication(
     this.reason,
     this.amount,
     this.value,
-    this.element_value
+    this.elementValue
     });
 
   factory ClaimResponse_Adjudication.fromJson(Map<String, dynamic> json) => _$ClaimResponse_AdjudicationFromJson(json);
@@ -416,14 +416,14 @@ class ClaimResponse_Detail {
   int detailSequence;
 
   //  Extensions for detailSequence
-  Element element_detailSequence;
+  Element elementDetailSequence;
 
   //  The numbers associated with notes below which apply to the
   // adjudication of this item.
   List<int> noteNumber;
 
   //  Extensions for noteNumber
-  List<Element> element_noteNumber;
+  List<Element> elementNoteNumber;
 
   //  The adjudication results.
   List<ClaimResponse_Adjudication> adjudication;
@@ -437,9 +437,9 @@ ClaimResponse_Detail(
     this.extension,
     this.modifierExtension,
     this.detailSequence,
-    this.element_detailSequence,
+    this.elementDetailSequence,
     this.noteNumber,
-    this.element_noteNumber,
+    this.elementNoteNumber,
     this.subDetail
     });
 
@@ -480,14 +480,14 @@ class ClaimResponse_SubDetail {
   int subDetailSequence;
 
   //  Extensions for subDetailSequence
-  Element element_subDetailSequence;
+  Element elementSubDetailSequence;
 
   //  The numbers associated with notes below which apply to the
   // adjudication of this item.
   List<int> noteNumber;
 
   //  Extensions for noteNumber
-  List<Element> element_noteNumber;
+  List<Element> elementNoteNumber;
 
   //  The adjudication results.
   List<ClaimResponse_Adjudication> adjudication;
@@ -497,9 +497,9 @@ ClaimResponse_SubDetail(
     this.extension,
     this.modifierExtension,
     this.subDetailSequence,
-    this.element_subDetailSequence,
+    this.elementSubDetailSequence,
     this.noteNumber,
-    this.element_noteNumber,
+    this.elementNoteNumber,
     this.adjudication
     });
 
@@ -540,21 +540,21 @@ class ClaimResponse_AddItem {
   List<int> itemSequence;
 
   //  Extensions for itemSequence
-  List<Element> element_itemSequence;
+  List<Element> elementItemSequence;
 
   //  The sequence number of the details within the claim item which this
   // line is intended to replace.
   List<int> detailSequence;
 
   //  Extensions for detailSequence
-  List<Element> element_detailSequence;
+  List<Element> elementDetailSequence;
 
   //  The sequence number of the sub-details within the details within the
   // claim item which this line is intended to replace.
   List<int> subdetailSequence;
 
   //  Extensions for subdetailSequence
-  List<Element> element_subdetailSequence;
+  List<Element> elementSubdetailSequence;
 
   //  The providers who are authorized for the services rendered to the
   // patient.
@@ -577,7 +577,7 @@ class ClaimResponse_AddItem {
   String servicedDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for servicedDate
-  Element element_servicedDate;
+  Element elementServicedDate;
 
   //  The date or dates when the service or product was supplied, performed
   // or completed.
@@ -607,7 +607,7 @@ class ClaimResponse_AddItem {
   double factor;
 
   //  Extensions for factor
-  Element element_factor;
+  Element elementFactor;
 
   //  The quantity times the unit price for an additional service or product
   // or charge.
@@ -625,7 +625,7 @@ class ClaimResponse_AddItem {
   List<int> noteNumber;
 
   //  Extensions for noteNumber
-  List<Element> element_noteNumber;
+  List<Element> elementNoteNumber;
 
   //  The adjudication results.
   List<ClaimResponse_Adjudication> adjudication;
@@ -640,16 +640,16 @@ ClaimResponse_AddItem(
     this.extension,
     this.modifierExtension,
     this.itemSequence,
-    this.element_itemSequence,
+    this.elementItemSequence,
     this.detailSequence,
-    this.element_detailSequence,
+    this.elementDetailSequence,
     this.subdetailSequence,
-    this.element_subdetailSequence,
+    this.elementSubdetailSequence,
     this.provider,
     this.modifier,
     this.programCode,
     this.servicedDate,
-    this.element_servicedDate,
+    this.elementServicedDate,
     this.servicedPeriod,
     this.locationCodeableConcept,
     this.locationAddress,
@@ -657,12 +657,12 @@ ClaimResponse_AddItem(
     this.quantity,
     this.unitPrice,
     this.factor,
-    this.element_factor,
+    this.elementFactor,
     this.net,
     this.bodySite,
     this.subSite,
     this.noteNumber,
-    this.element_noteNumber,
+    this.elementNoteNumber,
     this.detail
     });
 
@@ -723,7 +723,7 @@ class ClaimResponse_Detail1 {
   double factor;
 
   //  Extensions for factor
-  Element element_factor;
+  Element elementFactor;
 
   //  The quantity times the unit price for an additional service or product
   // or charge.
@@ -734,7 +734,7 @@ class ClaimResponse_Detail1 {
   List<int> noteNumber;
 
   //  Extensions for noteNumber
-  List<Element> element_noteNumber;
+  List<Element> elementNoteNumber;
 
   //  The adjudication results.
   List<ClaimResponse_Adjudication> adjudication;
@@ -752,10 +752,10 @@ ClaimResponse_Detail1(
     this.quantity,
     this.unitPrice,
     this.factor,
-    this.element_factor,
+    this.elementFactor,
     this.net,
     this.noteNumber,
-    this.element_noteNumber,
+    this.elementNoteNumber,
     this.subDetail
     });
 
@@ -816,7 +816,7 @@ class ClaimResponse_SubDetail1 {
   double factor;
 
   //  Extensions for factor
-  Element element_factor;
+  Element elementFactor;
 
   //  The quantity times the unit price for an additional service or product
   // or charge.
@@ -827,7 +827,7 @@ class ClaimResponse_SubDetail1 {
   List<int> noteNumber;
 
   //  Extensions for noteNumber
-  List<Element> element_noteNumber;
+  List<Element> elementNoteNumber;
 
   //  The adjudication results.
   List<ClaimResponse_Adjudication> adjudication;
@@ -842,10 +842,10 @@ ClaimResponse_SubDetail1(
     this.quantity,
     this.unitPrice,
     this.factor,
-    this.element_factor,
+    this.elementFactor,
     this.net,
     this.noteNumber,
-    this.element_noteNumber
+    this.elementNoteNumber
     });
 
   factory ClaimResponse_SubDetail1.fromJson(Map<String, dynamic> json) => _$ClaimResponse_SubDetail1FromJson(json);
@@ -948,7 +948,7 @@ class ClaimResponse_Payment {
   String date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  Benefits payable less any payment adjustment.
   Money amount;
@@ -965,7 +965,7 @@ ClaimResponse_Payment(
     this.adjustment,
     this.adjustmentReason,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.identifier
     });
 
@@ -1006,19 +1006,19 @@ class ClaimResponse_ProcessNote {
   int number;
 
   //  Extensions for number
-  Element element_number;
+  Element elementNumber;
 
   //  The business purpose of the note text.
   String type; // <code> enum: display/print/printoper;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  The explanation or description associated with the processing.
   String text;
 
   //  Extensions for text
-  Element element_text;
+  Element elementText;
 
   //  A code to define the language used in the text of the note.
   CodeableConcept language;
@@ -1028,11 +1028,11 @@ ClaimResponse_ProcessNote(
     this.extension,
     this.modifierExtension,
     this.number,
-    this.element_number,
+    this.elementNumber,
     this.type,
-    this.element_type,
+    this.elementType,
     this.text,
-    this.element_text,
+    this.elementText,
     this.language
     });
 
@@ -1074,14 +1074,14 @@ class ClaimResponse_Insurance {
   int sequence;
 
   //  Extensions for sequence
-  Element element_sequence;
+  Element elementSequence;
 
   //  A flag to indicate that this Coverage is to be used for adjudication
   // of this claim when set to true.
   bool focal;
 
   //  Extensions for focal
-  Element element_focal;
+  Element elementFocal;
 
   //  Reference to the insurance card level information contained in the
   // Coverage resource. The coverage issuing insurer will use these details
@@ -1094,7 +1094,7 @@ class ClaimResponse_Insurance {
   String businessArrangement;
 
   //  Extensions for businessArrangement
-  Element element_businessArrangement;
+  Element elementBusinessArrangement;
 
   //  The result of the adjudication of the line items for the Coverage
   // specified in this insurance.
@@ -1106,11 +1106,11 @@ ClaimResponse_Insurance(
     this.extension,
     this.modifierExtension,
     this.sequence,
-    this.element_sequence,
+    this.elementSequence,
     this.focal,
-    this.element_focal,
+    this.elementFocal,
     this.businessArrangement,
-    this.element_businessArrangement,
+    this.elementBusinessArrangement,
     this.claimResponse
     });
 
@@ -1153,7 +1153,7 @@ class ClaimResponse_Error {
   int itemSequence;
 
   //  Extensions for itemSequence
-  Element element_itemSequence;
+  Element elementItemSequence;
 
   //  The sequence number of the detail within the line item submitted which
   // contains the error. This value is omitted when the error occurs outside
@@ -1161,7 +1161,7 @@ class ClaimResponse_Error {
   int detailSequence;
 
   //  Extensions for detailSequence
-  Element element_detailSequence;
+  Element elementDetailSequence;
 
   //  The sequence number of the sub-detail within the detail within the
   // line item submitted which contains the error. This value is omitted
@@ -1169,7 +1169,7 @@ class ClaimResponse_Error {
   int subDetailSequence;
 
   //  Extensions for subDetailSequence
-  Element element_subDetailSequence;
+  Element elementSubDetailSequence;
 
   //  An error code, from a specified code system, which details why the
   // claim could not be adjudicated.
@@ -1181,11 +1181,11 @@ ClaimResponse_Error(
     this.extension,
     this.modifierExtension,
     this.itemSequence,
-    this.element_itemSequence,
+    this.elementItemSequence,
     this.detailSequence,
-    this.element_detailSequence,
+    this.elementDetailSequence,
     this.subDetailSequence,
-    this.element_subDetailSequence
+    this.elementSubDetailSequence
     });
 
   factory ClaimResponse_Error.fromJson(Map<String, dynamic> json) => _$ClaimResponse_ErrorFromJson(json);

@@ -40,13 +40,13 @@ class Observation {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -59,7 +59,7 @@ class Observation {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -100,7 +100,7 @@ class Observation {
   String status; // <code> enum: registered/preliminary/final/amended/corrected/cancelled/entered-in-error/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  A code that classifies the general type of observation being made.
   List<CodeableConcept> category;
@@ -140,7 +140,7 @@ class Observation {
   String effectiveDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for effectiveDateTime
-  Element element_effectiveDateTime;
+  Element elementEffectiveDateTime;
 
   //  The time or time-period the observed value is asserted as being true.
   // For biological subjects - e.g. human patients - this is usually called
@@ -164,7 +164,7 @@ class Observation {
   String effectiveInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
 
   //  Extensions for effectiveInstant
-  Element element_effectiveInstant;
+  Element elementEffectiveInstant;
 
   //  The date and time this version of the observation was made available
   // to providers, typically after the results have been reviewed and
@@ -172,7 +172,7 @@ class Observation {
   DateTime issued;
 
   //  Extensions for issued
-  Element element_issued;
+  Element elementIssued;
 
   //  Who was responsible for asserting the observed value as "true".
   List<Reference> performer;
@@ -190,21 +190,21 @@ class Observation {
   String valueString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for valueString
-  Element element_valueString;
+  Element elementValueString;
 
   //  The information determined as a result of making the observation, if
   // the information has a simple value.
   bool valueBoolean; //  pattern: ^true|false$
 
   //  Extensions for valueBoolean
-  Element element_valueBoolean;
+  Element elementValueBoolean;
 
   //  The information determined as a result of making the observation, if
   // the information has a simple value.
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
 
   //  Extensions for valueInteger
-  Element element_valueInteger;
+  Element elementValueInteger;
 
   //  The information determined as a result of making the observation, if
   // the information has a simple value.
@@ -223,14 +223,14 @@ class Observation {
   String valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
 
   //  Extensions for valueTime
-  Element element_valueTime;
+  Element elementValueTime;
 
   //  The information determined as a result of making the observation, if
   // the information has a simple value.
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for valueDateTime
-  Element element_valueDateTime;
+  Element elementValueDateTime;
 
   //  The information determined as a result of making the observation, if
   // the information has a simple value.
@@ -288,9 +288,9 @@ Observation(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -299,35 +299,35 @@ Observation(
     this.basedOn,
     this.partOf,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.category,
     this.subject,
     this.focus,
     this.encounter,
     this.effectiveDateTime,
-    this.element_effectiveDateTime,
+    this.elementEffectiveDateTime,
     this.effectivePeriod,
     this.effectiveTiming,
     this.effectiveInstant,
-    this.element_effectiveInstant,
+    this.elementEffectiveInstant,
     this.issued,
-    this.element_issued,
+    this.elementIssued,
     this.performer,
     this.valueQuantity,
     this.valueCodeableConcept,
     this.valueString,
-    this.element_valueString,
+    this.elementValueString,
     this.valueBoolean,
-    this.element_valueBoolean,
+    this.elementValueBoolean,
     this.valueInteger,
-    this.element_valueInteger,
+    this.elementValueInteger,
     this.valueRange,
     this.valueRatio,
     this.valueSampledData,
     this.valueTime,
-    this.element_valueTime,
+    this.elementValueTime,
     this.valueDateTime,
-    this.element_valueDateTime,
+    this.elementValueDateTime,
     this.valuePeriod,
     this.dataAbsentReason,
     this.interpretation,
@@ -410,7 +410,7 @@ class Observation_ReferenceRange {
   String text;
 
   //  Extensions for text
-  Element element_text;
+  Element elementText;
 
 Observation_ReferenceRange(
   {this.id,
@@ -422,7 +422,7 @@ Observation_ReferenceRange(
     this.appliesTo,
     this.age,
     this.text,
-    this.element_text
+    this.elementText
     });
 
   factory Observation_ReferenceRange.fromJson(Map<String, dynamic> json) => _$Observation_ReferenceRangeFromJson(json);
@@ -475,21 +475,21 @@ class Observation_Component {
   String valueString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for valueString
-  Element element_valueString;
+  Element elementValueString;
 
   //  The information determined as a result of making the observation, if
   // the information has a simple value.
   bool valueBoolean; //  pattern: ^true|false$
 
   //  Extensions for valueBoolean
-  Element element_valueBoolean;
+  Element elementValueBoolean;
 
   //  The information determined as a result of making the observation, if
   // the information has a simple value.
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
 
   //  Extensions for valueInteger
-  Element element_valueInteger;
+  Element elementValueInteger;
 
   //  The information determined as a result of making the observation, if
   // the information has a simple value.
@@ -508,14 +508,14 @@ class Observation_Component {
   String valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
 
   //  Extensions for valueTime
-  Element element_valueTime;
+  Element elementValueTime;
 
   //  The information determined as a result of making the observation, if
   // the information has a simple value.
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for valueDateTime
-  Element element_valueDateTime;
+  Element elementValueDateTime;
 
   //  The information determined as a result of making the observation, if
   // the information has a simple value.
@@ -541,18 +541,18 @@ Observation_Component(
     this.valueQuantity,
     this.valueCodeableConcept,
     this.valueString,
-    this.element_valueString,
+    this.elementValueString,
     this.valueBoolean,
-    this.element_valueBoolean,
+    this.elementValueBoolean,
     this.valueInteger,
-    this.element_valueInteger,
+    this.elementValueInteger,
     this.valueRange,
     this.valueRatio,
     this.valueSampledData,
     this.valueTime,
-    this.element_valueTime,
+    this.elementValueTime,
     this.valueDateTime,
-    this.element_valueDateTime,
+    this.elementValueDateTime,
     this.valuePeriod,
     this.dataAbsentReason,
     this.interpretation,

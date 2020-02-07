@@ -23,20 +23,20 @@ ImmunizationRecommendation _$ImmunizationRecommendationFromJson(
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -51,9 +51,9 @@ ImmunizationRecommendation _$ImmunizationRecommendationFromJson(
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
-    element_date: json['element_date'] == null
+    elementDate: json['elementDate'] == null
         ? null
-        : Element.fromJson(json['element_date'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDate'] as Map<String, dynamic>),
     authority: json['authority'] == null
         ? null
         : Reference.fromJson(json['authority'] as Map<String, dynamic>),
@@ -66,9 +66,9 @@ Map<String, dynamic> _$ImmunizationRecommendationToJson(
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -77,7 +77,7 @@ Map<String, dynamic> _$ImmunizationRecommendationToJson(
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'patient': instance.patient?.toJson(),
       'date': instance.date?.toIso8601String(),
-      'element_date': instance.element_date?.toJson(),
+      'elementDate': instance.elementDate?.toJson(),
       'authority': instance.authority?.toJson(),
       'recommendation':
           instance.recommendation?.map((e) => e?.toJson())?.toList(),
@@ -126,34 +126,33 @@ ImmunizationRecommendation_Recommendation
                 e as Map<String, dynamic>))
         ?.toList(),
     description: json['description'] as String,
-    element_description: json['element_description'] == null
+    elementDescription: json['elementDescription'] == null
         ? null
-        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
     series: json['series'] as String,
-    element_series: json['element_series'] == null
+    elementSeries: json['elementSeries'] == null
         ? null
-        : Element.fromJson(json['element_series'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSeries'] as Map<String, dynamic>),
     doseNumberPositiveInt: json['doseNumberPositiveInt'] as int,
-    element_doseNumberPositiveInt: json['element_doseNumberPositiveInt'] == null
+    elementDoseNumberPositiveInt: json['elementDoseNumberPositiveInt'] == null
         ? null
         : Element.fromJson(
-            json['element_doseNumberPositiveInt'] as Map<String, dynamic>),
+            json['elementDoseNumberPositiveInt'] as Map<String, dynamic>),
     doseNumberString: json['doseNumberString'] as String,
-    element_doseNumberString: json['element_doseNumberString'] == null
+    elementDoseNumberString: json['elementDoseNumberString'] == null
         ? null
         : Element.fromJson(
-            json['element_doseNumberString'] as Map<String, dynamic>),
+            json['elementDoseNumberString'] as Map<String, dynamic>),
     seriesDosesPositiveInt: json['seriesDosesPositiveInt'] as int,
-    element_seriesDosesPositiveInt:
-        json['element_seriesDosesPositiveInt'] == null
-            ? null
-            : Element.fromJson(
-                json['element_seriesDosesPositiveInt'] as Map<String, dynamic>),
-    seriesDosesString: json['seriesDosesString'] as String,
-    element_seriesDosesString: json['element_seriesDosesString'] == null
+    elementSeriesDosesPositiveInt: json['elementSeriesDosesPositiveInt'] == null
         ? null
         : Element.fromJson(
-            json['element_seriesDosesString'] as Map<String, dynamic>),
+            json['elementSeriesDosesPositiveInt'] as Map<String, dynamic>),
+    seriesDosesString: json['seriesDosesString'] as String,
+    elementSeriesDosesString: json['elementSeriesDosesString'] == null
+        ? null
+        : Element.fromJson(
+            json['elementSeriesDosesString'] as Map<String, dynamic>),
     supportingImmunization: (json['supportingImmunization'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
@@ -183,19 +182,19 @@ Map<String, dynamic> _$ImmunizationRecommendation_RecommendationToJson(
       'dateCriterion':
           instance.dateCriterion?.map((e) => e?.toJson())?.toList(),
       'description': instance.description,
-      'element_description': instance.element_description?.toJson(),
+      'elementDescription': instance.elementDescription?.toJson(),
       'series': instance.series,
-      'element_series': instance.element_series?.toJson(),
+      'elementSeries': instance.elementSeries?.toJson(),
       'doseNumberPositiveInt': instance.doseNumberPositiveInt,
-      'element_doseNumberPositiveInt':
-          instance.element_doseNumberPositiveInt?.toJson(),
+      'elementDoseNumberPositiveInt':
+          instance.elementDoseNumberPositiveInt?.toJson(),
       'doseNumberString': instance.doseNumberString,
-      'element_doseNumberString': instance.element_doseNumberString?.toJson(),
+      'elementDoseNumberString': instance.elementDoseNumberString?.toJson(),
       'seriesDosesPositiveInt': instance.seriesDosesPositiveInt,
-      'element_seriesDosesPositiveInt':
-          instance.element_seriesDosesPositiveInt?.toJson(),
+      'elementSeriesDosesPositiveInt':
+          instance.elementSeriesDosesPositiveInt?.toJson(),
       'seriesDosesString': instance.seriesDosesString,
-      'element_seriesDosesString': instance.element_seriesDosesString?.toJson(),
+      'elementSeriesDosesString': instance.elementSeriesDosesString?.toJson(),
       'supportingImmunization':
           instance.supportingImmunization?.map((e) => e?.toJson())?.toList(),
       'supportingPatientInformation': instance.supportingPatientInformation
@@ -221,9 +220,9 @@ ImmunizationRecommendation_DateCriterion
         ?.toList(),
     value:
         json['value'] == null ? null : DateTime.parse(json['value'] as String),
-    element_value: json['element_value'] == null
+    elementValue: json['elementValue'] == null
         ? null
-        : Element.fromJson(json['element_value'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValue'] as Map<String, dynamic>),
   );
 }
 
@@ -236,5 +235,5 @@ Map<String, dynamic> _$ImmunizationRecommendation_DateCriterionToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'code': instance.code?.toJson(),
       'value': instance.value?.toIso8601String(),
-      'element_value': instance.element_value?.toJson(),
+      'elementValue': instance.elementValue?.toJson(),
     };

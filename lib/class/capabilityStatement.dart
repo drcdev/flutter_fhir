@@ -35,13 +35,13 @@ class CapabilityStatement {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -54,7 +54,7 @@ class CapabilityStatement {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -89,7 +89,7 @@ class CapabilityStatement {
   String url;
 
   //  Extensions for url
-  Element element_url;
+  Element elementUrl;
 
   //  The identifier that is used to identify this version of the capability
   // statement when it is referenced in a specification, model, design or
@@ -101,7 +101,7 @@ class CapabilityStatement {
   String version;
 
   //  Extensions for version
-  Element element_version;
+  Element elementVersion;
 
   //  A natural language name identifying the capability statement. This
   // name should be usable as an identifier for the module by machine
@@ -109,21 +109,21 @@ class CapabilityStatement {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  A short, descriptive, user-friendly title for the capability
   // statement.
   String title;
 
   //  Extensions for title
-  Element element_title;
+  Element elementTitle;
 
   //  The status of this capability statement. Enables tracking the
   // life-cycle of the content.
   String status; // <code> enum: draft/active/retired/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  A Boolean value to indicate that this capability statement is authored
   // for testing purposes (or education/evaluation/marketing) and is not
@@ -131,7 +131,7 @@ class CapabilityStatement {
   bool experimental;
 
   //  Extensions for experimental
-  Element element_experimental;
+  Element elementExperimental;
 
   //  The date  (and optionally time) when the capability statement was
   // published. The date must change when the business version changes and
@@ -141,14 +141,14 @@ class CapabilityStatement {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  The name of the organization or individual that published the
   // capability statement.
   String publisher;
 
   //  Extensions for publisher
-  Element element_publisher;
+  Element elementPublisher;
 
   //  Contact details to assist a user in finding and communicating with the
   // publisher.
@@ -162,7 +162,7 @@ class CapabilityStatement {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  The content was developed with a focus and intent of supporting the
   // contexts that are listed. These contexts may be general categories
@@ -180,7 +180,7 @@ class CapabilityStatement {
   String purpose;
 
   //  Extensions for purpose
-  Element element_purpose;
+  Element elementPurpose;
 
   //  A copyright statement relating to the capability statement and/or its
   // contents. Copyright statements are generally legal restrictions on the
@@ -188,7 +188,7 @@ class CapabilityStatement {
   String copyright;
 
   //  Extensions for copyright
-  Element element_copyright;
+  Element elementCopyright;
 
   //  The way that this statement is intended to be used, to describe an
   // actual running instance of software, a particular product (kind, not
@@ -197,7 +197,7 @@ class CapabilityStatement {
   String kind; // <code> enum: instance/capability/requirements;
 
   //  Extensions for kind
-  Element element_kind;
+  Element elementKind;
 
   //  Reference to a canonical URL of another CapabilityStatement that this
   // software implements. This capability statement is a published API
@@ -230,21 +230,21 @@ class CapabilityStatement {
   String fhirVersion; // <code> enum: 0.01/0.05/0.06/0.11/0.0.80/0.0.81/0.0.82/0.4.0/0.5.0/1.0.0/1.0.1/1.0.2/1.1.0/1.4.0/1.6.0/1.8.0/3.0.0/3.0.1/3.3.0/3.5.0/4.0.0/4.0.1;
 
   //  Extensions for fhirVersion
-  Element element_fhirVersion;
+  Element elementFhirVersion;
 
   //  A list of the formats supported by this implementation using their
   // content types.
   List<String> format;
 
   //  Extensions for format
-  List<Element> element_format;
+  List<Element> elementFormat;
 
   //  A list of the patch formats supported by this implementation using
   // their content types.
   List<String> patchFormat;
 
   //  Extensions for patchFormat
-  List<Element> element_patchFormat;
+  List<Element> elementPatchFormat;
 
   //  A list of implementation guides that the server does (or should)
   // support in their entirety.
@@ -263,50 +263,50 @@ CapabilityStatement(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
-    this.element_url,
+    this.elementUrl,
     this.version,
-    this.element_version,
+    this.elementVersion,
     this.name,
-    this.element_name,
+    this.elementName,
     this.title,
-    this.element_title,
+    this.elementTitle,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.experimental,
-    this.element_experimental,
+    this.elementExperimental,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.publisher,
-    this.element_publisher,
+    this.elementPublisher,
     this.contact,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.useContext,
     this.jurisdiction,
     this.purpose,
-    this.element_purpose,
+    this.elementPurpose,
     this.copyright,
-    this.element_copyright,
+    this.elementCopyright,
     this.kind,
-    this.element_kind,
+    this.elementKind,
     this.instantiates,
     this.imports,
     this.software,
     this.implementation,
     this.fhirVersion,
-    this.element_fhirVersion,
+    this.elementFhirVersion,
     this.format,
-    this.element_format,
+    this.elementFormat,
     this.patchFormat,
-    this.element_patchFormat,
+    this.elementPatchFormat,
     this.implementationGuide,
     this.rest,
     this.messaging,
@@ -350,30 +350,30 @@ class CapabilityStatement_Software {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  The version identifier for the software covered by this statement.
   String version;
 
   //  Extensions for version
-  Element element_version;
+  Element elementVersion;
 
   //  Date this version of the software was released.
   DateTime releaseDate;
 
   //  Extensions for releaseDate
-  Element element_releaseDate;
+  Element elementReleaseDate;
 
 CapabilityStatement_Software(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.name,
-    this.element_name,
+    this.elementName,
     this.version,
-    this.element_version,
+    this.elementVersion,
     this.releaseDate,
-    this.element_releaseDate
+    this.elementReleaseDate
     });
 
   factory CapabilityStatement_Software.fromJson(Map<String, dynamic> json) => _$CapabilityStatement_SoftwareFromJson(json);
@@ -414,14 +414,14 @@ class CapabilityStatement_Implementation {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  An absolute base URL for the implementation.  This forms the base for
   // REST interfaces as well as the mailbox and document interfaces.
   String url;
 
   //  Extensions for url
-  Element element_url;
+  Element elementUrl;
 
   //  The organization responsible for the management of the instance and
   // oversight of the data on the server at the specified URL.
@@ -432,9 +432,9 @@ CapabilityStatement_Implementation(
     this.extension,
     this.modifierExtension,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.url,
-    this.element_url,
+    this.elementUrl,
     this.custodian
     });
 
@@ -476,14 +476,14 @@ class CapabilityStatement_Rest {
   String mode; // <code> enum: client/server;
 
   //  Extensions for mode
-  Element element_mode;
+  Element elementMode;
 
   //  Information about the system's restful capabilities that apply across
   // all applications, such as security.
   String documentation;
 
   //  Extensions for documentation
-  Element element_documentation;
+  Element elementDocumentation;
 
   //  Information about security implementation from an interface
   // perspective - what a client needs to know.
@@ -516,9 +516,9 @@ CapabilityStatement_Rest(
     this.extension,
     this.modifierExtension,
     this.mode,
-    this.element_mode,
+    this.elementMode,
     this.documentation,
-    this.element_documentation,
+    this.elementDocumentation,
     this.security,
     this.resource,
     this.interaction,
@@ -565,7 +565,7 @@ class CapabilityStatement_Security {
   bool cors;
 
   //  Extensions for cors
-  Element element_cors;
+  Element elementCors;
 
   //  Types of security services that are supported/required by the system.
   List<CodeableConcept> service;
@@ -574,17 +574,17 @@ class CapabilityStatement_Security {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
 CapabilityStatement_Security(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.cors,
-    this.element_cors,
+    this.elementCors,
     this.service,
     this.description,
-    this.element_description
+    this.elementDescription
     });
 
   factory CapabilityStatement_Security.fromJson(Map<String, dynamic> json) => _$CapabilityStatement_SecurityFromJson(json);
@@ -624,7 +624,7 @@ class CapabilityStatement_Resource {
   String type;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  A specification of the profile that describes the solution's overall
   // support for the resource, including any constraints on cardinality,
@@ -646,7 +646,7 @@ class CapabilityStatement_Resource {
   String documentation;
 
   //  Extensions for documentation
-  Element element_documentation;
+  Element elementDocumentation;
 
   //  Identifies a restful operation supported by the solution.
   List<CapabilityStatement_Interaction> interaction;
@@ -660,14 +660,14 @@ class CapabilityStatement_Resource {
   String versioning; // <code> enum: no-version/versioned/versioned-update;
 
   //  Extensions for versioning
-  Element element_versioning;
+  Element elementVersioning;
 
   //  A flag for whether the server is able to return past versions as part
   // of the vRead operation.
   bool readHistory;
 
   //  Extensions for readHistory
-  Element element_readHistory;
+  Element elementReadHistory;
 
   //  A flag to indicate that the server allows or needs to allow the client
   // to create new identities on the server (that is, the client PUTs to a
@@ -677,50 +677,50 @@ class CapabilityStatement_Resource {
   bool updateCreate;
 
   //  Extensions for updateCreate
-  Element element_updateCreate;
+  Element elementUpdateCreate;
 
   //  A flag that indicates that the server supports conditional create.
   bool conditionalCreate;
 
   //  Extensions for conditionalCreate
-  Element element_conditionalCreate;
+  Element elementConditionalCreate;
 
   //  A code that indicates how the server supports conditional read.
   String conditionalRead; // <code> enum: not-supported/modified-since/not-match/full-support;
 
   //  Extensions for conditionalRead
-  Element element_conditionalRead;
+  Element elementConditionalRead;
 
   //  A flag that indicates that the server supports conditional update.
   bool conditionalUpdate;
 
   //  Extensions for conditionalUpdate
-  Element element_conditionalUpdate;
+  Element elementConditionalUpdate;
 
   //  A code that indicates how the server supports conditional delete.
   String conditionalDelete; // <code> enum: not-supported/single/multiple;
 
   //  Extensions for conditionalDelete
-  Element element_conditionalDelete;
+  Element elementConditionalDelete;
 
   //  A set of flags that defines how references are supported.
   List<String> referencePolicy; // <code> enum: literal/logical/resolves/enforced/local> referencePolicy;
 
   //  Extensions for referencePolicy
-  List<Element> element_referencePolicy;
+  List<Element> elementReferencePolicy;
 
   //  A list of _include values supported by the server.
   List<String> searchInclude;
 
   //  Extensions for searchInclude
-  List<Element> element_searchInclude;
+  List<Element> elementSearchInclude;
 
   //  A list of _revinclude (reverse include) values supported by the
   // server.
   List<String> searchRevInclude;
 
   //  Extensions for searchRevInclude
-  List<Element> element_searchRevInclude;
+  List<Element> elementSearchRevInclude;
 
   //  Search parameters for implementations to support and/or make use of -
   // either references to ones defined in the specification, or additional
@@ -738,32 +738,32 @@ CapabilityStatement_Resource(
     this.extension,
     this.modifierExtension,
     this.type,
-    this.element_type,
+    this.elementType,
     this.profile,
     this.supportedProfile,
     this.documentation,
-    this.element_documentation,
+    this.elementDocumentation,
     this.interaction,
     this.versioning,
-    this.element_versioning,
+    this.elementVersioning,
     this.readHistory,
-    this.element_readHistory,
+    this.elementReadHistory,
     this.updateCreate,
-    this.element_updateCreate,
+    this.elementUpdateCreate,
     this.conditionalCreate,
-    this.element_conditionalCreate,
+    this.elementConditionalCreate,
     this.conditionalRead,
-    this.element_conditionalRead,
+    this.elementConditionalRead,
     this.conditionalUpdate,
-    this.element_conditionalUpdate,
+    this.elementConditionalUpdate,
     this.conditionalDelete,
-    this.element_conditionalDelete,
+    this.elementConditionalDelete,
     this.referencePolicy,
-    this.element_referencePolicy,
+    this.elementReferencePolicy,
     this.searchInclude,
-    this.element_searchInclude,
+    this.elementSearchInclude,
     this.searchRevInclude,
-    this.element_searchRevInclude,
+    this.elementSearchRevInclude,
     this.searchParam,
     this.operation
     });
@@ -805,7 +805,7 @@ class CapabilityStatement_Interaction {
   String code; // <code> enum: read/vread/update/patch/delete/history-instance/history-type/create/search-type;
 
   //  Extensions for code
-  Element element_code;
+  Element elementCode;
 
   //  Guidance specific to the implementation of this operation, such as
   // 'delete is a logical delete' or 'updates are only allowed with version
@@ -813,16 +813,16 @@ class CapabilityStatement_Interaction {
   String documentation;
 
   //  Extensions for documentation
-  Element element_documentation;
+  Element elementDocumentation;
 
 CapabilityStatement_Interaction(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.code,
-    this.element_code,
+    this.elementCode,
     this.documentation,
-    this.element_documentation
+    this.elementDocumentation
     });
 
   factory CapabilityStatement_Interaction.fromJson(Map<String, dynamic> json) => _$CapabilityStatement_InteractionFromJson(json);
@@ -862,7 +862,7 @@ class CapabilityStatement_SearchParam {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  An absolute URI that is a formal reference to where this parameter was
   // first defined, so that a client can be confident of the meaning of the
@@ -877,26 +877,26 @@ class CapabilityStatement_SearchParam {
   String type; // <code> enum: number/date/string/token/reference/composite/quantity/uri/special;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  This allows documentation of any distinct behaviors about how the
   // search parameter is used.  For example, text matching algorithms.
   String documentation;
 
   //  Extensions for documentation
-  Element element_documentation;
+  Element elementDocumentation;
 
 CapabilityStatement_SearchParam(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.name,
-    this.element_name,
+    this.elementName,
     this.definition,
     this.type,
-    this.element_type,
+    this.elementType,
     this.documentation,
-    this.element_documentation
+    this.elementDocumentation
     });
 
   factory CapabilityStatement_SearchParam.fromJson(Map<String, dynamic> json) => _$CapabilityStatement_SearchParamFromJson(json);
@@ -938,7 +938,7 @@ class CapabilityStatement_Operation {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  Where the formal definition can be found. If a server references the
   // base definition of an Operation (i.e. from the specification itself
@@ -956,7 +956,7 @@ class CapabilityStatement_Operation {
   String documentation;
 
   //  Extensions for documentation
-  Element element_documentation;
+  Element elementDocumentation;
 
 CapabilityStatement_Operation(
   this.definition,
@@ -964,9 +964,9 @@ CapabilityStatement_Operation(
     this.extension,
     this.modifierExtension,
     this.name,
-    this.element_name,
+    this.elementName,
     this.documentation,
-    this.element_documentation
+    this.elementDocumentation
     });
 
   factory CapabilityStatement_Operation.fromJson(Map<String, dynamic> json) => _$CapabilityStatement_OperationFromJson(json);
@@ -1006,7 +1006,7 @@ class CapabilityStatement_Interaction1 {
   String code; // <code> enum: transaction/batch/search-system/history-system;
 
   //  Extensions for code
-  Element element_code;
+  Element elementCode;
 
   //  Guidance specific to the implementation of this operation, such as
   // limitations on the kind of transactions allowed, or information about
@@ -1014,16 +1014,16 @@ class CapabilityStatement_Interaction1 {
   String documentation;
 
   //  Extensions for documentation
-  Element element_documentation;
+  Element elementDocumentation;
 
 CapabilityStatement_Interaction1(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.code,
-    this.element_code,
+    this.elementCode,
     this.documentation,
-    this.element_documentation
+    this.elementDocumentation
     });
 
   factory CapabilityStatement_Interaction1.fromJson(Map<String, dynamic> json) => _$CapabilityStatement_Interaction1FromJson(json);
@@ -1069,7 +1069,7 @@ class CapabilityStatement_Messaging {
   int reliableCache;
 
   //  Extensions for reliableCache
-  Element element_reliableCache;
+  Element elementReliableCache;
 
   //  Documentation about the system's messaging capabilities for this
   // endpoint not otherwise documented by the capability statement.  For
@@ -1078,7 +1078,7 @@ class CapabilityStatement_Messaging {
   String documentation;
 
   //  Extensions for documentation
-  Element element_documentation;
+  Element elementDocumentation;
 
   //  References to message definitions for messages this system can send or
   // receive.
@@ -1090,9 +1090,9 @@ CapabilityStatement_Messaging(
     this.modifierExtension,
     this.endpoint,
     this.reliableCache,
-    this.element_reliableCache,
+    this.elementReliableCache,
     this.documentation,
-    this.element_documentation,
+    this.elementDocumentation,
     this.supportedMessage
     });
 
@@ -1138,7 +1138,7 @@ class CapabilityStatement_Endpoint {
   String address;
 
   //  Extensions for address
-  Element element_address;
+  Element elementAddress;
 
 CapabilityStatement_Endpoint(
   this.protocol,
@@ -1146,7 +1146,7 @@ CapabilityStatement_Endpoint(
     this.extension,
     this.modifierExtension,
     this.address,
-    this.element_address
+    this.elementAddress
     });
 
   factory CapabilityStatement_Endpoint.fromJson(Map<String, dynamic> json) => _$CapabilityStatement_EndpointFromJson(json);
@@ -1187,7 +1187,7 @@ class CapabilityStatement_SupportedMessage {
   String mode; // <code> enum: sender/receiver;
 
   //  Extensions for mode
-  Element element_mode;
+  Element elementMode;
 
   //  Points to a message definition that identifies the messaging event,
   // message structure, allowed responses, etc.
@@ -1199,7 +1199,7 @@ CapabilityStatement_SupportedMessage(
     this.extension,
     this.modifierExtension,
     this.mode,
-    this.element_mode
+    this.elementMode
     });
 
   factory CapabilityStatement_SupportedMessage.fromJson(Map<String, dynamic> json) => _$CapabilityStatement_SupportedMessageFromJson(json);
@@ -1240,7 +1240,7 @@ class CapabilityStatement_Document {
   String mode; // <code> enum: producer/consumer;
 
   //  Extensions for mode
-  Element element_mode;
+  Element elementMode;
 
   //  A description of how the application supports or uses the specified
   // document profile.  For example, when documents are created, what action
@@ -1248,7 +1248,7 @@ class CapabilityStatement_Document {
   String documentation;
 
   //  Extensions for documentation
-  Element element_documentation;
+  Element elementDocumentation;
 
   //  A profile on the document Bundle that constrains which resources are
   // present, and their contents.
@@ -1260,9 +1260,9 @@ CapabilityStatement_Document(
     this.extension,
     this.modifierExtension,
     this.mode,
-    this.element_mode,
+    this.elementMode,
     this.documentation,
-    this.element_documentation
+    this.elementDocumentation
     });
 
   factory CapabilityStatement_Document.fromJson(Map<String, dynamic> json) => _$CapabilityStatement_DocumentFromJson(json);

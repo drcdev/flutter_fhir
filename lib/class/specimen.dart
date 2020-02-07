@@ -37,13 +37,13 @@ class Specimen {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -56,7 +56,7 @@ class Specimen {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -93,7 +93,7 @@ class Specimen {
   String status; // <code> enum: available/unavailable/unsatisfactory/entered-in-error;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  The kind of material that forms the specimen.
   CodeableConcept type;
@@ -107,7 +107,7 @@ class Specimen {
   DateTime receivedTime;
 
   //  Extensions for receivedTime
-  Element element_receivedTime;
+  Element elementReceivedTime;
 
   //  Reference to the parent (source) specimen which is used when the
   // specimen was either derived from or a component of another specimen.
@@ -139,9 +139,9 @@ Specimen(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -149,11 +149,11 @@ Specimen(
     this.identifier,
     this.accessionIdentifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.type,
     this.subject,
     this.receivedTime,
-    this.element_receivedTime,
+    this.elementReceivedTime,
     this.parent,
     this.request,
     this.collection,
@@ -204,7 +204,7 @@ class Specimen_Collection {
   String collectedDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for collectedDateTime
-  Element element_collectedDateTime;
+  Element elementCollectedDateTime;
 
   //  Time when specimen was collected from subject - the physiologically
   // relevant time.
@@ -240,7 +240,7 @@ Specimen_Collection(
     this.modifierExtension,
     this.collector,
     this.collectedDateTime,
-    this.element_collectedDateTime,
+    this.elementCollectedDateTime,
     this.collectedPeriod,
     this.duration,
     this.quantity,
@@ -287,7 +287,7 @@ class Specimen_Processing {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  A coded value specifying the procedure used to process the specimen.
   CodeableConcept procedure;
@@ -301,7 +301,7 @@ class Specimen_Processing {
   String timeDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for timeDateTime
-  Element element_timeDateTime;
+  Element elementTimeDateTime;
 
   //  A record of the time or period when the specimen processing occurred. 
   // For example the time of sample fixation or the period of time the
@@ -313,11 +313,11 @@ Specimen_Processing(
     this.extension,
     this.modifierExtension,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.procedure,
     this.additive,
     this.timeDateTime,
-    this.element_timeDateTime,
+    this.elementTimeDateTime,
     this.timePeriod
     });
 
@@ -363,7 +363,7 @@ class Specimen_Container {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  The type of container associated with the specimen (e.g. slide,
   // aliquot, etc.).
@@ -390,7 +390,7 @@ Specimen_Container(
     this.modifierExtension,
     this.identifier,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.type,
     this.capacity,
     this.specimenQuantity,

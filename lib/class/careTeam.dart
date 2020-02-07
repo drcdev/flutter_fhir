@@ -36,13 +36,13 @@ class CareTeam {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -55,7 +55,7 @@ class CareTeam {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -89,7 +89,7 @@ class CareTeam {
   String status; // <code> enum: proposed/active/suspended/inactive/entered-in-error;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  Identifies what kind of team.  This is to support differentiation
   // between multiple co-existing teams, such as care plan team, episode of
@@ -101,7 +101,7 @@ class CareTeam {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  Identifies the patient or group whose intended care is handled by the
   // team.
@@ -139,19 +139,19 @@ CareTeam(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.category,
     this.name,
-    this.element_name,
+    this.elementName,
     this.subject,
     this.encounter,
     this.period,

@@ -37,13 +37,13 @@ class FamilyMemberHistory {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -56,7 +56,7 @@ class FamilyMemberHistory {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -97,14 +97,14 @@ class FamilyMemberHistory {
   List<String> instantiatesUri;
 
   //  Extensions for instantiatesUri
-  List<Element> element_instantiatesUri;
+  List<Element> elementInstantiatesUri;
 
   //  A code specifying the status of the record of the family history of a
   // specific family member.
   String status; // <code> enum: partial/completed/entered-in-error/health-unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  Describes why the family member's history is not available.
   CodeableConcept dataAbsentReason;
@@ -117,14 +117,14 @@ class FamilyMemberHistory {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  This will either be a name or a description; e.g. "Aunt Susan", "my
   // cousin with the red hair".
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  The type of relationship this person has to the patient (father,
   // mother, brother etc.).
@@ -140,13 +140,13 @@ class FamilyMemberHistory {
   String bornDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for bornDate
-  Element element_bornDate;
+  Element elementBornDate;
 
   //  The actual or approximate date of birth of the relative.
   String bornString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for bornString
-  Element element_bornString;
+  Element elementBornString;
 
   //  The age of the relative at the time the family member history is
   // recorded.
@@ -161,20 +161,20 @@ class FamilyMemberHistory {
   String ageString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for ageString
-  Element element_ageString;
+  Element elementAgeString;
 
   //  If true, indicates that the age value specified is an estimated value.
   bool estimatedAge;
 
   //  Extensions for estimatedAge
-  Element element_estimatedAge;
+  Element elementEstimatedAge;
 
   //  Deceased flag or the actual or approximate age of the relative at the
   // time of death for the family member history record.
   bool deceasedBoolean; //  pattern: ^true|false$
 
   //  Extensions for deceasedBoolean
-  Element element_deceasedBoolean;
+  Element elementDeceasedBoolean;
 
   //  Deceased flag or the actual or approximate age of the relative at the
   // time of death for the family member history record.
@@ -189,14 +189,14 @@ class FamilyMemberHistory {
   String deceasedDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for deceasedDate
-  Element element_deceasedDate;
+  Element elementDeceasedDate;
 
   //  Deceased flag or the actual or approximate age of the relative at the
   // time of death for the family member history record.
   String deceasedString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for deceasedString
-  Element element_deceasedString;
+  Element elementDeceasedString;
 
   //  Describes why the family member history occurred in coded or textual
   // form.
@@ -223,9 +223,9 @@ FamilyMemberHistory(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -233,34 +233,34 @@ FamilyMemberHistory(
     this.identifier,
     this.instantiatesCanonical,
     this.instantiatesUri,
-    this.element_instantiatesUri,
+    this.elementInstantiatesUri,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.dataAbsentReason,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.name,
-    this.element_name,
+    this.elementName,
     this.sex,
     this.bornPeriod,
     this.bornDate,
-    this.element_bornDate,
+    this.elementBornDate,
     this.bornString,
-    this.element_bornString,
+    this.elementBornString,
     this.ageAge,
     this.ageRange,
     this.ageString,
-    this.element_ageString,
+    this.elementAgeString,
     this.estimatedAge,
-    this.element_estimatedAge,
+    this.elementEstimatedAge,
     this.deceasedBoolean,
-    this.element_deceasedBoolean,
+    this.elementDeceasedBoolean,
     this.deceasedAge,
     this.deceasedRange,
     this.deceasedDate,
-    this.element_deceasedDate,
+    this.elementDeceasedDate,
     this.deceasedString,
-    this.element_deceasedString,
+    this.elementDeceasedString,
     this.reasonCode,
     this.reasonReference,
     this.note,
@@ -315,7 +315,7 @@ class FamilyMemberHistory_Condition {
   bool contributedToDeath;
 
   //  Extensions for contributedToDeath
-  Element element_contributedToDeath;
+  Element elementContributedToDeath;
 
   //  Either the age of onset, range of approximate age or descriptive
   // string can be recorded.  For conditions with multiple occurrences, this
@@ -338,7 +338,7 @@ class FamilyMemberHistory_Condition {
   String onsetString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for onsetString
-  Element element_onsetString;
+  Element elementOnsetString;
 
   //  An area where general notes can be placed about this specific
   // condition.
@@ -351,12 +351,12 @@ FamilyMemberHistory_Condition(
     this.modifierExtension,
     this.outcome,
     this.contributedToDeath,
-    this.element_contributedToDeath,
+    this.elementContributedToDeath,
     this.onsetAge,
     this.onsetRange,
     this.onsetPeriod,
     this.onsetString,
-    this.element_onsetString,
+    this.elementOnsetString,
     this.note
     });
 

@@ -34,13 +34,13 @@ class Provenance {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -53,7 +53,7 @@ class Provenance {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -90,13 +90,13 @@ class Provenance {
   String occurredDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for occurredDateTime
-  Element element_occurredDateTime;
+  Element elementOccurredDateTime;
 
   //  The instant of time at which the activity was recorded.
   DateTime recorded;
 
   //  Extensions for recorded
-  Element element_recorded;
+  Element elementRecorded;
 
   //  Policy or plan the activity was defined by. Typically, a single
   // activity may have multiple applicable policy documents, such as patient
@@ -104,7 +104,7 @@ class Provenance {
   List<String> policy;
 
   //  Extensions for policy
-  List<Element> element_policy;
+  List<Element> elementPolicy;
 
   //  Where the activity occurred, if relevant.
   Reference location;
@@ -134,20 +134,20 @@ Provenance(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.occurredPeriod,
     this.occurredDateTime,
-    this.element_occurredDateTime,
+    this.elementOccurredDateTime,
     this.recorded,
-    this.element_recorded,
+    this.elementRecorded,
     this.policy,
-    this.element_policy,
+    this.elementPolicy,
     this.location,
     this.reason,
     this.activity,
@@ -248,7 +248,7 @@ class Provenance_Entity {
   String role; // <code> enum: derivation/revision/quotation/source/removal;
 
   //  Extensions for role
-  Element element_role;
+  Element elementRole;
 
   //  Identity of the  Entity used. May be a logical or physical uri and
   // maybe absolute or relative.
@@ -266,7 +266,7 @@ Provenance_Entity(
     this.extension,
     this.modifierExtension,
     this.role,
-    this.element_role,
+    this.elementRole,
     this.agent
     });
 

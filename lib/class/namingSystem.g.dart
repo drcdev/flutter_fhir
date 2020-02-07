@@ -18,20 +18,20 @@ NamingSystem _$NamingSystemFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -42,41 +42,41 @@ NamingSystem _$NamingSystemFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     name: json['name'] as String,
-    element_name: json['element_name'] == null
+    elementName: json['elementName'] == null
         ? null
-        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     kind: json['kind'] as String,
-    element_kind: json['element_kind'] == null
+    elementKind: json['elementKind'] == null
         ? null
-        : Element.fromJson(json['element_kind'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementKind'] as Map<String, dynamic>),
     date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
-    element_date: json['element_date'] == null
+    elementDate: json['elementDate'] == null
         ? null
-        : Element.fromJson(json['element_date'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDate'] as Map<String, dynamic>),
     publisher: json['publisher'] as String,
-    element_publisher: json['element_publisher'] == null
+    elementPublisher: json['elementPublisher'] == null
         ? null
-        : Element.fromJson(json['element_publisher'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPublisher'] as Map<String, dynamic>),
     contact: (json['contact'] as List)
         ?.map((e) => e == null
             ? null
             : ContactDetail.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     responsible: json['responsible'] as String,
-    element_responsible: json['element_responsible'] == null
+    elementResponsible: json['elementResponsible'] == null
         ? null
-        : Element.fromJson(json['element_responsible'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementResponsible'] as Map<String, dynamic>),
     type: json['type'] == null
         ? null
         : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     description: json['description'] as String,
-    element_description: json['element_description'] == null
+    elementDescription: json['elementDescription'] == null
         ? null
-        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
     useContext: (json['useContext'] as List)
         ?.map((e) =>
             e == null ? null : UsageContext.fromJson(e as Map<String, dynamic>))
@@ -87,9 +87,9 @@ NamingSystem _$NamingSystemFromJson(Map<String, dynamic> json) {
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     usage: json['usage'] as String,
-    element_usage: json['element_usage'] == null
+    elementUsage: json['elementUsage'] == null
         ? null
-        : Element.fromJson(json['element_usage'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementUsage'] as Map<String, dynamic>),
   );
 }
 
@@ -98,34 +98,34 @@ Map<String, dynamic> _$NamingSystemToJson(NamingSystem instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'name': instance.name,
-      'element_name': instance.element_name?.toJson(),
+      'elementName': instance.elementName?.toJson(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'kind': instance.kind,
-      'element_kind': instance.element_kind?.toJson(),
+      'elementKind': instance.elementKind?.toJson(),
       'date': instance.date?.toIso8601String(),
-      'element_date': instance.element_date?.toJson(),
+      'elementDate': instance.elementDate?.toJson(),
       'publisher': instance.publisher,
-      'element_publisher': instance.element_publisher?.toJson(),
+      'elementPublisher': instance.elementPublisher?.toJson(),
       'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
       'responsible': instance.responsible,
-      'element_responsible': instance.element_responsible?.toJson(),
+      'elementResponsible': instance.elementResponsible?.toJson(),
       'type': instance.type?.toJson(),
       'description': instance.description,
-      'element_description': instance.element_description?.toJson(),
+      'elementDescription': instance.elementDescription?.toJson(),
       'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
       'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
       'usage': instance.usage,
-      'element_usage': instance.element_usage?.toJson(),
+      'elementUsage': instance.elementUsage?.toJson(),
       'uniqueId': instance.uniqueId?.map((e) => e?.toJson())?.toList(),
     };
 
@@ -142,21 +142,21 @@ NamingSystem_UniqueId _$NamingSystem_UniqueIdFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     type: json['type'] as String,
-    element_type: json['element_type'] == null
+    elementType: json['elementType'] == null
         ? null
-        : Element.fromJson(json['element_type'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
     value: json['value'] as String,
-    element_value: json['element_value'] == null
+    elementValue: json['elementValue'] == null
         ? null
-        : Element.fromJson(json['element_value'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValue'] as Map<String, dynamic>),
     preferred: json['preferred'] as bool,
-    element_preferred: json['element_preferred'] == null
+    elementPreferred: json['elementPreferred'] == null
         ? null
-        : Element.fromJson(json['element_preferred'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPreferred'] as Map<String, dynamic>),
     comment: json['comment'] as String,
-    element_comment: json['element_comment'] == null
+    elementComment: json['elementComment'] == null
         ? null
-        : Element.fromJson(json['element_comment'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementComment'] as Map<String, dynamic>),
     period: json['period'] == null
         ? null
         : Period.fromJson(json['period'] as Map<String, dynamic>),
@@ -171,12 +171,12 @@ Map<String, dynamic> _$NamingSystem_UniqueIdToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'type': instance.type,
-      'element_type': instance.element_type?.toJson(),
+      'elementType': instance.elementType?.toJson(),
       'value': instance.value,
-      'element_value': instance.element_value?.toJson(),
+      'elementValue': instance.elementValue?.toJson(),
       'preferred': instance.preferred,
-      'element_preferred': instance.element_preferred?.toJson(),
+      'elementPreferred': instance.elementPreferred?.toJson(),
       'comment': instance.comment,
-      'element_comment': instance.element_comment?.toJson(),
+      'elementComment': instance.elementComment?.toJson(),
       'period': instance.period?.toJson(),
     };

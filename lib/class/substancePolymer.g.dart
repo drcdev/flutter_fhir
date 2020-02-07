@@ -13,20 +13,20 @@ SubstancePolymer _$SubstancePolymerFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -49,7 +49,7 @@ SubstancePolymer _$SubstancePolymerFromJson(Map<String, dynamic> json) {
         ?.toList(),
     modification:
         (json['modification'] as List)?.map((e) => e as String)?.toList(),
-    element_modification: (json['element_modification'] as List)
+    elementModification: (json['elementModification'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -71,9 +71,9 @@ Map<String, dynamic> _$SubstancePolymerToJson(SubstancePolymer instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -84,8 +84,8 @@ Map<String, dynamic> _$SubstancePolymerToJson(SubstancePolymer instance) =>
       'copolymerConnectivity':
           instance.copolymerConnectivity?.map((e) => e?.toJson())?.toList(),
       'modification': instance.modification,
-      'element_modification':
-          instance.element_modification?.map((e) => e?.toJson())?.toList(),
+      'elementModification':
+          instance.elementModification?.map((e) => e?.toJson())?.toList(),
       'monomerSet': instance.monomerSet?.map((e) => e?.toJson())?.toList(),
       'repeat': instance.repeat?.map((e) => e?.toJson())?.toList(),
     };
@@ -145,9 +145,9 @@ SubstancePolymer_StartingMaterial _$SubstancePolymer_StartingMaterialFromJson(
         ? null
         : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     isDefining: json['isDefining'] as bool,
-    element_isDefining: json['element_isDefining'] == null
+    elementIsDefining: json['elementIsDefining'] == null
         ? null
-        : Element.fromJson(json['element_isDefining'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementIsDefining'] as Map<String, dynamic>),
     amount: json['amount'] == null
         ? null
         : SubstanceAmount.fromJson(json['amount'] as Map<String, dynamic>),
@@ -164,7 +164,7 @@ Map<String, dynamic> _$SubstancePolymer_StartingMaterialToJson(
       'material': instance.material?.toJson(),
       'type': instance.type?.toJson(),
       'isDefining': instance.isDefining,
-      'element_isDefining': instance.element_isDefining?.toJson(),
+      'elementIsDefining': instance.elementIsDefining?.toJson(),
       'amount': instance.amount?.toJson(),
     };
 
@@ -181,16 +181,16 @@ SubstancePolymer_Repeat _$SubstancePolymer_RepeatFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     numberOfUnits: json['numberOfUnits'] as int,
-    element_numberOfUnits: json['element_numberOfUnits'] == null
+    elementNumberOfUnits: json['elementNumberOfUnits'] == null
         ? null
         : Element.fromJson(
-            json['element_numberOfUnits'] as Map<String, dynamic>),
+            json['elementNumberOfUnits'] as Map<String, dynamic>),
     averageMolecularFormula: json['averageMolecularFormula'] as String,
-    element_averageMolecularFormula: json['element_averageMolecularFormula'] ==
-            null
-        ? null
-        : Element.fromJson(
-            json['element_averageMolecularFormula'] as Map<String, dynamic>),
+    elementAverageMolecularFormula:
+        json['elementAverageMolecularFormula'] == null
+            ? null
+            : Element.fromJson(
+                json['elementAverageMolecularFormula'] as Map<String, dynamic>),
     repeatUnitAmountType: json['repeatUnitAmountType'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -211,10 +211,10 @@ Map<String, dynamic> _$SubstancePolymer_RepeatToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'numberOfUnits': instance.numberOfUnits,
-      'element_numberOfUnits': instance.element_numberOfUnits?.toJson(),
+      'elementNumberOfUnits': instance.elementNumberOfUnits?.toJson(),
       'averageMolecularFormula': instance.averageMolecularFormula,
-      'element_averageMolecularFormula':
-          instance.element_averageMolecularFormula?.toJson(),
+      'elementAverageMolecularFormula':
+          instance.elementAverageMolecularFormula?.toJson(),
       'repeatUnitAmountType': instance.repeatUnitAmountType?.toJson(),
       'repeatUnit': instance.repeatUnit?.map((e) => e?.toJson())?.toList(),
     };
@@ -236,9 +236,9 @@ SubstancePolymer_RepeatUnit _$SubstancePolymer_RepeatUnitFromJson(
         : CodeableConcept.fromJson(
             json['orientationOfPolymerisation'] as Map<String, dynamic>),
     repeatUnit: json['repeatUnit'] as String,
-    element_repeatUnit: json['element_repeatUnit'] == null
+    elementRepeatUnit: json['elementRepeatUnit'] == null
         ? null
-        : Element.fromJson(json['element_repeatUnit'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementRepeatUnit'] as Map<String, dynamic>),
     amount: json['amount'] == null
         ? null
         : SubstanceAmount.fromJson(json['amount'] as Map<String, dynamic>),
@@ -267,7 +267,7 @@ Map<String, dynamic> _$SubstancePolymer_RepeatUnitToJson(
       'orientationOfPolymerisation':
           instance.orientationOfPolymerisation?.toJson(),
       'repeatUnit': instance.repeatUnit,
-      'element_repeatUnit': instance.element_repeatUnit?.toJson(),
+      'elementRepeatUnit': instance.elementRepeatUnit?.toJson(),
       'amount': instance.amount?.toJson(),
       'degreeOfPolymerisation':
           instance.degreeOfPolymerisation?.map((e) => e?.toJson())?.toList(),
@@ -325,10 +325,10 @@ SubstancePolymer_StructuralRepresentation
         ? null
         : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     representation: json['representation'] as String,
-    element_representation: json['element_representation'] == null
+    elementRepresentation: json['elementRepresentation'] == null
         ? null
         : Element.fromJson(
-            json['element_representation'] as Map<String, dynamic>),
+            json['elementRepresentation'] as Map<String, dynamic>),
     attachment: json['attachment'] == null
         ? null
         : Attachment.fromJson(json['attachment'] as Map<String, dynamic>),
@@ -344,6 +344,6 @@ Map<String, dynamic> _$SubstancePolymer_StructuralRepresentationToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'type': instance.type?.toJson(),
       'representation': instance.representation,
-      'element_representation': instance.element_representation?.toJson(),
+      'elementRepresentation': instance.elementRepresentation?.toJson(),
       'attachment': instance.attachment?.toJson(),
     };

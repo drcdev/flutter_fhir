@@ -33,9 +33,9 @@ MarketingStatus _$MarketingStatusFromJson(Map<String, dynamic> json) {
     restoreDate: json['restoreDate'] == null
         ? null
         : DateTime.parse(json['restoreDate'] as String),
-    element_restoreDate: json['element_restoreDate'] == null
+    elementRestoreDate: json['elementRestoreDate'] == null
         ? null
-        : Element.fromJson(json['element_restoreDate'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementRestoreDate'] as Map<String, dynamic>),
   );
 }
 
@@ -50,5 +50,5 @@ Map<String, dynamic> _$MarketingStatusToJson(MarketingStatus instance) =>
       'status': instance.status?.toJson(),
       'dateRange': instance.dateRange?.toJson(),
       'restoreDate': instance.restoreDate?.toIso8601String(),
-      'element_restoreDate': instance.element_restoreDate?.toJson(),
+      'elementRestoreDate': instance.elementRestoreDate?.toJson(),
     };

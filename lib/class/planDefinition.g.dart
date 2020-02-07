@@ -13,20 +13,20 @@ PlanDefinition _$PlanDefinitionFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -37,41 +37,40 @@ PlanDefinition _$PlanDefinitionFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     url: json['url'] as String,
-    element_url: json['element_url'] == null
+    elementUrl: json['elementUrl'] == null
         ? null
-        : Element.fromJson(json['element_url'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementUrl'] as Map<String, dynamic>),
     identifier: (json['identifier'] as List)
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     version: json['version'] as String,
-    element_version: json['element_version'] == null
+    elementVersion: json['elementVersion'] == null
         ? null
-        : Element.fromJson(json['element_version'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementVersion'] as Map<String, dynamic>),
     name: json['name'] as String,
-    element_name: json['element_name'] == null
+    elementName: json['elementName'] == null
         ? null
-        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
     title: json['title'] as String,
-    element_title: json['element_title'] == null
+    elementTitle: json['elementTitle'] == null
         ? null
-        : Element.fromJson(json['element_title'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementTitle'] as Map<String, dynamic>),
     subtitle: json['subtitle'] as String,
-    element_subtitle: json['element_subtitle'] == null
+    elementSubtitle: json['elementSubtitle'] == null
         ? null
-        : Element.fromJson(json['element_subtitle'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSubtitle'] as Map<String, dynamic>),
     type: json['type'] == null
         ? null
         : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     experimental: json['experimental'] as bool,
-    element_experimental: json['element_experimental'] == null
+    elementExperimental: json['elementExperimental'] == null
         ? null
-        : Element.fromJson(
-            json['element_experimental'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementExperimental'] as Map<String, dynamic>),
     subjectCodeableConcept: json['subjectCodeableConcept'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -80,22 +79,22 @@ PlanDefinition _$PlanDefinitionFromJson(Map<String, dynamic> json) {
         ? null
         : Reference.fromJson(json['subjectReference'] as Map<String, dynamic>),
     date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
-    element_date: json['element_date'] == null
+    elementDate: json['elementDate'] == null
         ? null
-        : Element.fromJson(json['element_date'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDate'] as Map<String, dynamic>),
     publisher: json['publisher'] as String,
-    element_publisher: json['element_publisher'] == null
+    elementPublisher: json['elementPublisher'] == null
         ? null
-        : Element.fromJson(json['element_publisher'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPublisher'] as Map<String, dynamic>),
     contact: (json['contact'] as List)
         ?.map((e) => e == null
             ? null
             : ContactDetail.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     description: json['description'] as String,
-    element_description: json['element_description'] == null
+    elementDescription: json['elementDescription'] == null
         ? null
-        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
     useContext: (json['useContext'] as List)
         ?.map((e) =>
             e == null ? null : UsageContext.fromJson(e as Map<String, dynamic>))
@@ -106,27 +105,26 @@ PlanDefinition _$PlanDefinitionFromJson(Map<String, dynamic> json) {
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     purpose: json['purpose'] as String,
-    element_purpose: json['element_purpose'] == null
+    elementPurpose: json['elementPurpose'] == null
         ? null
-        : Element.fromJson(json['element_purpose'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPurpose'] as Map<String, dynamic>),
     usage: json['usage'] as String,
-    element_usage: json['element_usage'] == null
+    elementUsage: json['elementUsage'] == null
         ? null
-        : Element.fromJson(json['element_usage'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementUsage'] as Map<String, dynamic>),
     copyright: json['copyright'] as String,
-    element_copyright: json['element_copyright'] == null
+    elementCopyright: json['elementCopyright'] == null
         ? null
-        : Element.fromJson(json['element_copyright'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementCopyright'] as Map<String, dynamic>),
     approvalDate: json['approvalDate'] as String,
-    element_approvalDate: json['element_approvalDate'] == null
+    elementApprovalDate: json['elementApprovalDate'] == null
         ? null
-        : Element.fromJson(
-            json['element_approvalDate'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementApprovalDate'] as Map<String, dynamic>),
     lastReviewDate: json['lastReviewDate'] as String,
-    element_lastReviewDate: json['element_lastReviewDate'] == null
+    elementLastReviewDate: json['elementLastReviewDate'] == null
         ? null
         : Element.fromJson(
-            json['element_lastReviewDate'] as Map<String, dynamic>),
+            json['elementLastReviewDate'] as Map<String, dynamic>),
     effectivePeriod: json['effectivePeriod'] == null
         ? null
         : Period.fromJson(json['effectivePeriod'] as Map<String, dynamic>),
@@ -179,51 +177,51 @@ Map<String, dynamic> _$PlanDefinitionToJson(PlanDefinition instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'url': instance.url,
-      'element_url': instance.element_url?.toJson(),
+      'elementUrl': instance.elementUrl?.toJson(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'version': instance.version,
-      'element_version': instance.element_version?.toJson(),
+      'elementVersion': instance.elementVersion?.toJson(),
       'name': instance.name,
-      'element_name': instance.element_name?.toJson(),
+      'elementName': instance.elementName?.toJson(),
       'title': instance.title,
-      'element_title': instance.element_title?.toJson(),
+      'elementTitle': instance.elementTitle?.toJson(),
       'subtitle': instance.subtitle,
-      'element_subtitle': instance.element_subtitle?.toJson(),
+      'elementSubtitle': instance.elementSubtitle?.toJson(),
       'type': instance.type?.toJson(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'experimental': instance.experimental,
-      'element_experimental': instance.element_experimental?.toJson(),
+      'elementExperimental': instance.elementExperimental?.toJson(),
       'subjectCodeableConcept': instance.subjectCodeableConcept?.toJson(),
       'subjectReference': instance.subjectReference?.toJson(),
       'date': instance.date?.toIso8601String(),
-      'element_date': instance.element_date?.toJson(),
+      'elementDate': instance.elementDate?.toJson(),
       'publisher': instance.publisher,
-      'element_publisher': instance.element_publisher?.toJson(),
+      'elementPublisher': instance.elementPublisher?.toJson(),
       'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
       'description': instance.description,
-      'element_description': instance.element_description?.toJson(),
+      'elementDescription': instance.elementDescription?.toJson(),
       'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
       'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
       'purpose': instance.purpose,
-      'element_purpose': instance.element_purpose?.toJson(),
+      'elementPurpose': instance.elementPurpose?.toJson(),
       'usage': instance.usage,
-      'element_usage': instance.element_usage?.toJson(),
+      'elementUsage': instance.elementUsage?.toJson(),
       'copyright': instance.copyright,
-      'element_copyright': instance.element_copyright?.toJson(),
+      'elementCopyright': instance.elementCopyright?.toJson(),
       'approvalDate': instance.approvalDate,
-      'element_approvalDate': instance.element_approvalDate?.toJson(),
+      'elementApprovalDate': instance.elementApprovalDate?.toJson(),
       'lastReviewDate': instance.lastReviewDate,
-      'element_lastReviewDate': instance.element_lastReviewDate?.toJson(),
+      'elementLastReviewDate': instance.elementLastReviewDate?.toJson(),
       'effectivePeriod': instance.effectivePeriod?.toJson(),
       'topic': instance.topic?.map((e) => e?.toJson())?.toList(),
       'author': instance.author?.map((e) => e?.toJson())?.toList(),
@@ -353,26 +351,26 @@ PlanDefinition_Action _$PlanDefinition_ActionFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     prefix: json['prefix'] as String,
-    element_prefix: json['element_prefix'] == null
+    elementPrefix: json['elementPrefix'] == null
         ? null
-        : Element.fromJson(json['element_prefix'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPrefix'] as Map<String, dynamic>),
     title: json['title'] as String,
-    element_title: json['element_title'] == null
+    elementTitle: json['elementTitle'] == null
         ? null
-        : Element.fromJson(json['element_title'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementTitle'] as Map<String, dynamic>),
     description: json['description'] as String,
-    element_description: json['element_description'] == null
+    elementDescription: json['elementDescription'] == null
         ? null
-        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
     textEquivalent: json['textEquivalent'] as String,
-    element_textEquivalent: json['element_textEquivalent'] == null
+    elementTextEquivalent: json['elementTextEquivalent'] == null
         ? null
         : Element.fromJson(
-            json['element_textEquivalent'] as Map<String, dynamic>),
+            json['elementTextEquivalent'] as Map<String, dynamic>),
     priority: json['priority'] as String,
-    element_priority: json['element_priority'] == null
+    elementPriority: json['elementPriority'] == null
         ? null
-        : Element.fromJson(json['element_priority'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPriority'] as Map<String, dynamic>),
     code: (json['code'] as List)
         ?.map((e) => e == null
             ? null
@@ -389,7 +387,7 @@ PlanDefinition_Action _$PlanDefinition_ActionFromJson(
             : RelatedArtifact.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     goalId: (json['goalId'] as List)?.map((e) => e as String)?.toList(),
-    element_goalId: (json['element_goalId'] as List)
+    elementGoalId: (json['elementGoalId'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -426,10 +424,10 @@ PlanDefinition_Action _$PlanDefinition_ActionFromJson(
             : PlanDefinition_RelatedAction.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     timingDateTime: json['timingDateTime'] as String,
-    element_timingDateTime: json['element_timingDateTime'] == null
+    elementTimingDateTime: json['elementTimingDateTime'] == null
         ? null
         : Element.fromJson(
-            json['element_timingDateTime'] as Map<String, dynamic>),
+            json['elementTimingDateTime'] as Map<String, dynamic>),
     timingAge: json['timingAge'] == null
         ? null
         : Age.fromJson(json['timingAge'] as Map<String, dynamic>),
@@ -454,40 +452,40 @@ PlanDefinition_Action _$PlanDefinition_ActionFromJson(
         ? null
         : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     groupingBehavior: json['groupingBehavior'] as String,
-    element_groupingBehavior: json['element_groupingBehavior'] == null
+    elementGroupingBehavior: json['elementGroupingBehavior'] == null
         ? null
         : Element.fromJson(
-            json['element_groupingBehavior'] as Map<String, dynamic>),
+            json['elementGroupingBehavior'] as Map<String, dynamic>),
     selectionBehavior: json['selectionBehavior'] as String,
-    element_selectionBehavior: json['element_selectionBehavior'] == null
+    elementSelectionBehavior: json['elementSelectionBehavior'] == null
         ? null
         : Element.fromJson(
-            json['element_selectionBehavior'] as Map<String, dynamic>),
+            json['elementSelectionBehavior'] as Map<String, dynamic>),
     requiredBehavior: json['requiredBehavior'] as String,
-    element_requiredBehavior: json['element_requiredBehavior'] == null
+    elementRequiredBehavior: json['elementRequiredBehavior'] == null
         ? null
         : Element.fromJson(
-            json['element_requiredBehavior'] as Map<String, dynamic>),
+            json['elementRequiredBehavior'] as Map<String, dynamic>),
     precheckBehavior: json['precheckBehavior'] as String,
-    element_precheckBehavior: json['element_precheckBehavior'] == null
+    elementPrecheckBehavior: json['elementPrecheckBehavior'] == null
         ? null
         : Element.fromJson(
-            json['element_precheckBehavior'] as Map<String, dynamic>),
+            json['elementPrecheckBehavior'] as Map<String, dynamic>),
     cardinalityBehavior: json['cardinalityBehavior'] as String,
-    element_cardinalityBehavior: json['element_cardinalityBehavior'] == null
+    elementCardinalityBehavior: json['elementCardinalityBehavior'] == null
         ? null
         : Element.fromJson(
-            json['element_cardinalityBehavior'] as Map<String, dynamic>),
+            json['elementCardinalityBehavior'] as Map<String, dynamic>),
     definitionCanonical: json['definitionCanonical'] as String,
-    element_definitionCanonical: json['element_definitionCanonical'] == null
+    elementDefinitionCanonical: json['elementDefinitionCanonical'] == null
         ? null
         : Element.fromJson(
-            json['element_definitionCanonical'] as Map<String, dynamic>),
+            json['elementDefinitionCanonical'] as Map<String, dynamic>),
     definitionUri: json['definitionUri'] as String,
-    element_definitionUri: json['element_definitionUri'] == null
+    elementDefinitionUri: json['elementDefinitionUri'] == null
         ? null
         : Element.fromJson(
-            json['element_definitionUri'] as Map<String, dynamic>),
+            json['elementDefinitionUri'] as Map<String, dynamic>),
     transform: json['transform'] as String,
     dynamicValue: (json['dynamicValue'] as List)
         ?.map((e) => e == null
@@ -510,22 +508,22 @@ Map<String, dynamic> _$PlanDefinition_ActionToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'prefix': instance.prefix,
-      'element_prefix': instance.element_prefix?.toJson(),
+      'elementPrefix': instance.elementPrefix?.toJson(),
       'title': instance.title,
-      'element_title': instance.element_title?.toJson(),
+      'elementTitle': instance.elementTitle?.toJson(),
       'description': instance.description,
-      'element_description': instance.element_description?.toJson(),
+      'elementDescription': instance.elementDescription?.toJson(),
       'textEquivalent': instance.textEquivalent,
-      'element_textEquivalent': instance.element_textEquivalent?.toJson(),
+      'elementTextEquivalent': instance.elementTextEquivalent?.toJson(),
       'priority': instance.priority,
-      'element_priority': instance.element_priority?.toJson(),
+      'elementPriority': instance.elementPriority?.toJson(),
       'code': instance.code?.map((e) => e?.toJson())?.toList(),
       'reason': instance.reason?.map((e) => e?.toJson())?.toList(),
       'documentation':
           instance.documentation?.map((e) => e?.toJson())?.toList(),
       'goalId': instance.goalId,
-      'element_goalId':
-          instance.element_goalId?.map((e) => e?.toJson())?.toList(),
+      'elementGoalId':
+          instance.elementGoalId?.map((e) => e?.toJson())?.toList(),
       'subjectCodeableConcept': instance.subjectCodeableConcept?.toJson(),
       'subjectReference': instance.subjectReference?.toJson(),
       'trigger': instance.trigger?.map((e) => e?.toJson())?.toList(),
@@ -535,7 +533,7 @@ Map<String, dynamic> _$PlanDefinition_ActionToJson(
       'relatedAction':
           instance.relatedAction?.map((e) => e?.toJson())?.toList(),
       'timingDateTime': instance.timingDateTime,
-      'element_timingDateTime': instance.element_timingDateTime?.toJson(),
+      'elementTimingDateTime': instance.elementTimingDateTime?.toJson(),
       'timingAge': instance.timingAge?.toJson(),
       'timingPeriod': instance.timingPeriod?.toJson(),
       'timingDuration': instance.timingDuration?.toJson(),
@@ -544,21 +542,21 @@ Map<String, dynamic> _$PlanDefinition_ActionToJson(
       'participant': instance.participant?.map((e) => e?.toJson())?.toList(),
       'type': instance.type?.toJson(),
       'groupingBehavior': instance.groupingBehavior,
-      'element_groupingBehavior': instance.element_groupingBehavior?.toJson(),
+      'elementGroupingBehavior': instance.elementGroupingBehavior?.toJson(),
       'selectionBehavior': instance.selectionBehavior,
-      'element_selectionBehavior': instance.element_selectionBehavior?.toJson(),
+      'elementSelectionBehavior': instance.elementSelectionBehavior?.toJson(),
       'requiredBehavior': instance.requiredBehavior,
-      'element_requiredBehavior': instance.element_requiredBehavior?.toJson(),
+      'elementRequiredBehavior': instance.elementRequiredBehavior?.toJson(),
       'precheckBehavior': instance.precheckBehavior,
-      'element_precheckBehavior': instance.element_precheckBehavior?.toJson(),
+      'elementPrecheckBehavior': instance.elementPrecheckBehavior?.toJson(),
       'cardinalityBehavior': instance.cardinalityBehavior,
-      'element_cardinalityBehavior':
-          instance.element_cardinalityBehavior?.toJson(),
+      'elementCardinalityBehavior':
+          instance.elementCardinalityBehavior?.toJson(),
       'definitionCanonical': instance.definitionCanonical,
-      'element_definitionCanonical':
-          instance.element_definitionCanonical?.toJson(),
+      'elementDefinitionCanonical':
+          instance.elementDefinitionCanonical?.toJson(),
       'definitionUri': instance.definitionUri,
-      'element_definitionUri': instance.element_definitionUri?.toJson(),
+      'elementDefinitionUri': instance.elementDefinitionUri?.toJson(),
       'transform': instance.transform,
       'dynamicValue': instance.dynamicValue?.map((e) => e?.toJson())?.toList(),
       'action': instance.action?.map((e) => e?.toJson())?.toList(),
@@ -577,9 +575,9 @@ PlanDefinition_Condition _$PlanDefinition_ConditionFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     kind: json['kind'] as String,
-    element_kind: json['element_kind'] == null
+    elementKind: json['elementKind'] == null
         ? null
-        : Element.fromJson(json['element_kind'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementKind'] as Map<String, dynamic>),
     expression: json['expression'] == null
         ? null
         : Expression.fromJson(json['expression'] as Map<String, dynamic>),
@@ -594,7 +592,7 @@ Map<String, dynamic> _$PlanDefinition_ConditionToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'kind': instance.kind,
-      'element_kind': instance.element_kind?.toJson(),
+      'elementKind': instance.elementKind?.toJson(),
       'expression': instance.expression?.toJson(),
     };
 
@@ -611,14 +609,13 @@ PlanDefinition_RelatedAction _$PlanDefinition_RelatedActionFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     actionId: json['actionId'] as String,
-    element_actionId: json['element_actionId'] == null
+    elementActionId: json['elementActionId'] == null
         ? null
-        : Element.fromJson(json['element_actionId'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementActionId'] as Map<String, dynamic>),
     relationship: json['relationship'] as String,
-    element_relationship: json['element_relationship'] == null
+    elementRelationship: json['elementRelationship'] == null
         ? null
-        : Element.fromJson(
-            json['element_relationship'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementRelationship'] as Map<String, dynamic>),
     offsetDuration: json['offsetDuration'] == null
         ? null
         : Duration.fromJson(json['offsetDuration'] as Map<String, dynamic>),
@@ -636,9 +633,9 @@ Map<String, dynamic> _$PlanDefinition_RelatedActionToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'actionId': instance.actionId,
-      'element_actionId': instance.element_actionId?.toJson(),
+      'elementActionId': instance.elementActionId?.toJson(),
       'relationship': instance.relationship,
-      'element_relationship': instance.element_relationship?.toJson(),
+      'elementRelationship': instance.elementRelationship?.toJson(),
       'offsetDuration': instance.offsetDuration?.toJson(),
       'offsetRange': instance.offsetRange?.toJson(),
     };
@@ -656,9 +653,9 @@ PlanDefinition_Participant _$PlanDefinition_ParticipantFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     type: json['type'] as String,
-    element_type: json['element_type'] == null
+    elementType: json['elementType'] == null
         ? null
-        : Element.fromJson(json['element_type'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
     role: json['role'] == null
         ? null
         : CodeableConcept.fromJson(json['role'] as Map<String, dynamic>),
@@ -673,7 +670,7 @@ Map<String, dynamic> _$PlanDefinition_ParticipantToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'type': instance.type,
-      'element_type': instance.element_type?.toJson(),
+      'elementType': instance.elementType?.toJson(),
       'role': instance.role?.toJson(),
     };
 
@@ -690,9 +687,9 @@ PlanDefinition_DynamicValue _$PlanDefinition_DynamicValueFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     path: json['path'] as String,
-    element_path: json['element_path'] == null
+    elementPath: json['elementPath'] == null
         ? null
-        : Element.fromJson(json['element_path'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPath'] as Map<String, dynamic>),
     expression: json['expression'] == null
         ? null
         : Expression.fromJson(json['expression'] as Map<String, dynamic>),
@@ -707,6 +704,6 @@ Map<String, dynamic> _$PlanDefinition_DynamicValueToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'path': instance.path,
-      'element_path': instance.element_path?.toJson(),
+      'elementPath': instance.elementPath?.toJson(),
       'expression': instance.expression?.toJson(),
     };

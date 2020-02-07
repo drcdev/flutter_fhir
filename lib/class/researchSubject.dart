@@ -33,13 +33,13 @@ class ResearchSubject {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -52,7 +52,7 @@ class ResearchSubject {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -84,7 +84,7 @@ class ResearchSubject {
   String status; // <code> enum: candidate/eligible/follow-up/ineligible/not-registered/off-study/on-study/on-study-intervention/on-study-observation/pending-on-study/potential-candidate/screening/withdrawn;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  The dates the subject began and ended their participation in the
   // study.
@@ -101,14 +101,14 @@ class ResearchSubject {
   String assignedArm;
 
   //  Extensions for assignedArm
-  Element element_assignedArm;
+  Element elementAssignedArm;
 
   //  The name of the arm in the study the subject actually followed as part
   // of this study.
   String actualArm;
 
   //  Extensions for actualArm
-  Element element_actualArm;
+  Element elementActualArm;
 
   //  A record of the patient's informed agreement to participate in the
   // study.
@@ -120,21 +120,21 @@ ResearchSubject(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.period,
     this.assignedArm,
-    this.element_assignedArm,
+    this.elementAssignedArm,
     this.actualArm,
-    this.element_actualArm,
+    this.elementActualArm,
     this.consent
     });
 

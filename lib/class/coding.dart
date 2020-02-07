@@ -25,7 +25,7 @@ class Coding {
   String system;
 
   //  Extensions for system
-  Element element_system;
+  Element elementSystem;
 
   //  The version of the code system which was used when choosing this code.
   // Note that a well-maintained code system does not need the version
@@ -35,7 +35,7 @@ class Coding {
   String version;
 
   //  Extensions for version
-  Element element_version;
+  Element elementVersion;
 
   //  A symbol in syntax defined by the system. The symbol may be a
   // predefined code or an expression in a syntax defined by the coding
@@ -43,35 +43,35 @@ class Coding {
   String code;
 
   //  Extensions for code
-  Element element_code;
+  Element elementCode;
 
   //  A representation of the meaning of the code in the system, following
   // the rules of the system.
   String display;
 
   //  Extensions for display
-  Element element_display;
+  Element elementDisplay;
 
   //  Indicates that this coding was chosen by a user directly - e.g. off a
   // pick list of available items (codes or displays).
   bool userSelected;
 
   //  Extensions for userSelected
-  Element element_userSelected;
+  Element elementUserSelected;
 
 Coding(
   {this.id,
     this.extension,
     this.system,
-    this.element_system,
+    this.elementSystem,
     this.version,
-    this.element_version,
+    this.elementVersion,
     this.code,
-    this.element_code,
+    this.elementCode,
     this.display,
-    this.element_display,
+    this.elementDisplay,
     this.userSelected,
-    this.element_userSelected
+    this.elementUserSelected
     });
 
   factory Coding.fromJson(Map<String, dynamic> json) => _$CodingFromJson(json);

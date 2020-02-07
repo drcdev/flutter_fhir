@@ -31,13 +31,13 @@ class Linkage {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -50,7 +50,7 @@ class Linkage {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -80,7 +80,7 @@ class Linkage {
   bool active;
 
   //  Extensions for active
-  Element element_active;
+  Element elementActive;
 
   //  Identifies the user or organization responsible for asserting the
   // linkages as well as the user or organization who establishes the
@@ -97,15 +97,15 @@ Linkage(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.active,
-    this.element_active,
+    this.elementActive,
     this.author
     });
 
@@ -147,7 +147,7 @@ class Linkage_Item {
   String type; // <code> enum: source/alternate/historical;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  The resource instance being linked as part of the group.
   Reference resource;
@@ -158,7 +158,7 @@ Linkage_Item(
     this.extension,
     this.modifierExtension,
     this.type,
-    this.element_type
+    this.elementType
     });
 
   factory Linkage_Item.fromJson(Map<String, dynamic> json) => _$Linkage_ItemFromJson(json);

@@ -19,20 +19,20 @@ Goal _$GoalFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -47,10 +47,10 @@ Goal _$GoalFromJson(Map<String, dynamic> json) {
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     lifecycleStatus: json['lifecycleStatus'] as String,
-    element_lifecycleStatus: json['element_lifecycleStatus'] == null
+    elementLifecycleStatus: json['elementLifecycleStatus'] == null
         ? null
         : Element.fromJson(
-            json['element_lifecycleStatus'] as Map<String, dynamic>),
+            json['elementLifecycleStatus'] as Map<String, dynamic>),
     achievementStatus: json['achievementStatus'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -64,9 +64,9 @@ Goal _$GoalFromJson(Map<String, dynamic> json) {
         ? null
         : CodeableConcept.fromJson(json['priority'] as Map<String, dynamic>),
     startDate: json['startDate'] as String,
-    element_startDate: json['element_startDate'] == null
+    elementStartDate: json['elementStartDate'] == null
         ? null
-        : Element.fromJson(json['element_startDate'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStartDate'] as Map<String, dynamic>),
     startCodeableConcept: json['startCodeableConcept'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -76,14 +76,13 @@ Goal _$GoalFromJson(Map<String, dynamic> json) {
             e == null ? null : Goal_Target.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     statusDate: json['statusDate'] as String,
-    element_statusDate: json['element_statusDate'] == null
+    elementStatusDate: json['elementStatusDate'] == null
         ? null
-        : Element.fromJson(json['element_statusDate'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatusDate'] as Map<String, dynamic>),
     statusReason: json['statusReason'] as String,
-    element_statusReason: json['element_statusReason'] == null
+    elementStatusReason: json['elementStatusReason'] == null
         ? null
-        : Element.fromJson(
-            json['element_statusReason'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatusReason'] as Map<String, dynamic>),
     expressedBy: json['expressedBy'] == null
         ? null
         : Reference.fromJson(json['expressedBy'] as Map<String, dynamic>),
@@ -111,9 +110,9 @@ Map<String, dynamic> _$GoalToJson(Goal instance) => <String, dynamic>{
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -121,20 +120,20 @@ Map<String, dynamic> _$GoalToJson(Goal instance) => <String, dynamic>{
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'lifecycleStatus': instance.lifecycleStatus,
-      'element_lifecycleStatus': instance.element_lifecycleStatus?.toJson(),
+      'elementLifecycleStatus': instance.elementLifecycleStatus?.toJson(),
       'achievementStatus': instance.achievementStatus?.toJson(),
       'category': instance.category?.map((e) => e?.toJson())?.toList(),
       'priority': instance.priority?.toJson(),
       'description': instance.description?.toJson(),
       'subject': instance.subject?.toJson(),
       'startDate': instance.startDate,
-      'element_startDate': instance.element_startDate?.toJson(),
+      'elementStartDate': instance.elementStartDate?.toJson(),
       'startCodeableConcept': instance.startCodeableConcept?.toJson(),
       'target': instance.target?.map((e) => e?.toJson())?.toList(),
       'statusDate': instance.statusDate,
-      'element_statusDate': instance.element_statusDate?.toJson(),
+      'elementStatusDate': instance.elementStatusDate?.toJson(),
       'statusReason': instance.statusReason,
-      'element_statusReason': instance.element_statusReason?.toJson(),
+      'elementStatusReason': instance.elementStatusReason?.toJson(),
       'expressedBy': instance.expressedBy?.toJson(),
       'addresses': instance.addresses?.map((e) => e?.toJson())?.toList(),
       'note': instance.note?.map((e) => e?.toJson())?.toList(),
@@ -168,27 +167,26 @@ Goal_Target _$Goal_TargetFromJson(Map<String, dynamic> json) {
         : CodeableConcept.fromJson(
             json['detailCodeableConcept'] as Map<String, dynamic>),
     detailString: json['detailString'] as String,
-    element_detailString: json['element_detailString'] == null
+    elementDetailString: json['elementDetailString'] == null
         ? null
-        : Element.fromJson(
-            json['element_detailString'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDetailString'] as Map<String, dynamic>),
     detailBoolean: json['detailBoolean'] as bool,
-    element_detailBoolean: json['element_detailBoolean'] == null
+    elementDetailBoolean: json['elementDetailBoolean'] == null
         ? null
         : Element.fromJson(
-            json['element_detailBoolean'] as Map<String, dynamic>),
+            json['elementDetailBoolean'] as Map<String, dynamic>),
     detailInteger: json['detailInteger'] as int,
-    element_detailInteger: json['element_detailInteger'] == null
+    elementDetailInteger: json['elementDetailInteger'] == null
         ? null
         : Element.fromJson(
-            json['element_detailInteger'] as Map<String, dynamic>),
+            json['elementDetailInteger'] as Map<String, dynamic>),
     detailRatio: json['detailRatio'] == null
         ? null
         : Ratio.fromJson(json['detailRatio'] as Map<String, dynamic>),
     dueDate: json['dueDate'] as String,
-    element_dueDate: json['element_dueDate'] == null
+    elementDueDate: json['elementDueDate'] == null
         ? null
-        : Element.fromJson(json['element_dueDate'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDueDate'] as Map<String, dynamic>),
     dueDuration: json['dueDuration'] == null
         ? null
         : Duration.fromJson(json['dueDuration'] as Map<String, dynamic>),
@@ -206,13 +204,13 @@ Map<String, dynamic> _$Goal_TargetToJson(Goal_Target instance) =>
       'detailRange': instance.detailRange?.toJson(),
       'detailCodeableConcept': instance.detailCodeableConcept?.toJson(),
       'detailString': instance.detailString,
-      'element_detailString': instance.element_detailString?.toJson(),
+      'elementDetailString': instance.elementDetailString?.toJson(),
       'detailBoolean': instance.detailBoolean,
-      'element_detailBoolean': instance.element_detailBoolean?.toJson(),
+      'elementDetailBoolean': instance.elementDetailBoolean?.toJson(),
       'detailInteger': instance.detailInteger,
-      'element_detailInteger': instance.element_detailInteger?.toJson(),
+      'elementDetailInteger': instance.elementDetailInteger?.toJson(),
       'detailRatio': instance.detailRatio?.toJson(),
       'dueDate': instance.dueDate,
-      'element_dueDate': instance.element_dueDate?.toJson(),
+      'elementDueDate': instance.elementDueDate?.toJson(),
       'dueDuration': instance.dueDuration?.toJson(),
     };

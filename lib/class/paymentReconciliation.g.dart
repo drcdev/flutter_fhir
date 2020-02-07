@@ -17,20 +17,20 @@ PaymentReconciliation _$PaymentReconciliationFromJson(
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -45,18 +45,18 @@ PaymentReconciliation _$PaymentReconciliationFromJson(
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     period: json['period'] == null
         ? null
         : Period.fromJson(json['period'] as Map<String, dynamic>),
     created: json['created'] == null
         ? null
         : DateTime.parse(json['created'] as String),
-    element_created: json['element_created'] == null
+    elementCreated: json['elementCreated'] == null
         ? null
-        : Element.fromJson(json['element_created'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementCreated'] as Map<String, dynamic>),
     paymentIssuer: json['paymentIssuer'] == null
         ? null
         : Reference.fromJson(json['paymentIssuer'] as Map<String, dynamic>),
@@ -67,17 +67,17 @@ PaymentReconciliation _$PaymentReconciliationFromJson(
         ? null
         : Reference.fromJson(json['requestor'] as Map<String, dynamic>),
     outcome: json['outcome'] as String,
-    element_outcome: json['element_outcome'] == null
+    elementOutcome: json['elementOutcome'] == null
         ? null
-        : Element.fromJson(json['element_outcome'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementOutcome'] as Map<String, dynamic>),
     disposition: json['disposition'] as String,
-    element_disposition: json['element_disposition'] == null
+    elementDisposition: json['elementDisposition'] == null
         ? null
-        : Element.fromJson(json['element_disposition'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDisposition'] as Map<String, dynamic>),
     paymentDate: json['paymentDate'] as String,
-    element_paymentDate: json['element_paymentDate'] == null
+    elementPaymentDate: json['elementPaymentDate'] == null
         ? null
-        : Element.fromJson(json['element_paymentDate'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPaymentDate'] as Map<String, dynamic>),
     paymentIdentifier: json['paymentIdentifier'] == null
         ? null
         : Identifier.fromJson(
@@ -105,9 +105,9 @@ Map<String, dynamic> _$PaymentReconciliationToJson(
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -115,19 +115,19 @@ Map<String, dynamic> _$PaymentReconciliationToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'period': instance.period?.toJson(),
       'created': instance.created?.toIso8601String(),
-      'element_created': instance.element_created?.toJson(),
+      'elementCreated': instance.elementCreated?.toJson(),
       'paymentIssuer': instance.paymentIssuer?.toJson(),
       'request': instance.request?.toJson(),
       'requestor': instance.requestor?.toJson(),
       'outcome': instance.outcome,
-      'element_outcome': instance.element_outcome?.toJson(),
+      'elementOutcome': instance.elementOutcome?.toJson(),
       'disposition': instance.disposition,
-      'element_disposition': instance.element_disposition?.toJson(),
+      'elementDisposition': instance.elementDisposition?.toJson(),
       'paymentDate': instance.paymentDate,
-      'element_paymentDate': instance.element_paymentDate?.toJson(),
+      'elementPaymentDate': instance.elementPaymentDate?.toJson(),
       'paymentAmount': instance.paymentAmount?.toJson(),
       'paymentIdentifier': instance.paymentIdentifier?.toJson(),
       'detail': instance.detail?.map((e) => e?.toJson())?.toList(),
@@ -166,9 +166,9 @@ PaymentReconciliation_Detail _$PaymentReconciliation_DetailFromJson(
         ? null
         : Reference.fromJson(json['response'] as Map<String, dynamic>),
     date: json['date'] as String,
-    element_date: json['element_date'] == null
+    elementDate: json['elementDate'] == null
         ? null
-        : Element.fromJson(json['element_date'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDate'] as Map<String, dynamic>),
     responsible: json['responsible'] == null
         ? null
         : Reference.fromJson(json['responsible'] as Map<String, dynamic>),
@@ -195,7 +195,7 @@ Map<String, dynamic> _$PaymentReconciliation_DetailToJson(
       'submitter': instance.submitter?.toJson(),
       'response': instance.response?.toJson(),
       'date': instance.date,
-      'element_date': instance.element_date?.toJson(),
+      'elementDate': instance.elementDate?.toJson(),
       'responsible': instance.responsible?.toJson(),
       'payee': instance.payee?.toJson(),
       'amount': instance.amount?.toJson(),
@@ -214,13 +214,13 @@ PaymentReconciliation_ProcessNote _$PaymentReconciliation_ProcessNoteFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     type: json['type'] as String,
-    element_type: json['element_type'] == null
+    elementType: json['elementType'] == null
         ? null
-        : Element.fromJson(json['element_type'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
     text: json['text'] as String,
-    element_text: json['element_text'] == null
+    elementText: json['elementText'] == null
         ? null
-        : Element.fromJson(json['element_text'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementText'] as Map<String, dynamic>),
   );
 }
 
@@ -232,7 +232,7 @@ Map<String, dynamic> _$PaymentReconciliation_ProcessNoteToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'type': instance.type,
-      'element_type': instance.element_type?.toJson(),
+      'elementType': instance.elementType?.toJson(),
       'text': instance.text,
-      'element_text': instance.element_text?.toJson(),
+      'elementText': instance.elementText?.toJson(),
     };

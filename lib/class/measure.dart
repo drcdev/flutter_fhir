@@ -38,13 +38,13 @@ class Measure {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -57,7 +57,7 @@ class Measure {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -92,7 +92,7 @@ class Measure {
   String url;
 
   //  Extensions for url
-  Element element_url;
+  Element elementUrl;
 
   //  A formal identifier that is used to identify this measure when it is
   // represented in other formats, or referenced in a specification, model,
@@ -113,7 +113,7 @@ class Measure {
   String version;
 
   //  Extensions for version
-  Element element_version;
+  Element elementVersion;
 
   //  A natural language name identifying the measure. This name should be
   // usable as an identifier for the module by machine processing
@@ -121,27 +121,27 @@ class Measure {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  A short, descriptive, user-friendly title for the measure.
   String title;
 
   //  Extensions for title
-  Element element_title;
+  Element elementTitle;
 
   //  An explanatory or alternate title for the measure giving additional
   // information about its content.
   String subtitle;
 
   //  Extensions for subtitle
-  Element element_subtitle;
+  Element elementSubtitle;
 
   //  The status of this measure. Enables tracking the life-cycle of the
   // content.
   String status; // <code> enum: draft/active/retired/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  A Boolean value to indicate that this measure is authored for testing
   // purposes (or education/evaluation/marketing) and is not intended to be
@@ -149,7 +149,7 @@ class Measure {
   bool experimental;
 
   //  Extensions for experimental
-  Element element_experimental;
+  Element elementExperimental;
 
   //  The intended subjects for the measure. If this element is not
   // provided, a Patient subject is assumed, but the subject of the measure
@@ -168,13 +168,13 @@ class Measure {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  The name of the organization or individual that published the measure.
   String publisher;
 
   //  Extensions for publisher
-  Element element_publisher;
+  Element elementPublisher;
 
   //  Contact details to assist a user in finding and communicating with the
   // publisher.
@@ -185,7 +185,7 @@ class Measure {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  The content was developed with a focus and intent of supporting the
   // contexts that are listed. These contexts may be general categories
@@ -203,14 +203,14 @@ class Measure {
   String purpose;
 
   //  Extensions for purpose
-  Element element_purpose;
+  Element elementPurpose;
 
   //  A detailed description, from a clinical perspective, of how the
   // measure is used.
   String usage;
 
   //  Extensions for usage
-  Element element_usage;
+  Element elementUsage;
 
   //  A copyright statement relating to the measure and/or its contents.
   // Copyright statements are generally legal restrictions on the use and
@@ -218,7 +218,7 @@ class Measure {
   String copyright;
 
   //  Extensions for copyright
-  Element element_copyright;
+  Element elementCopyright;
 
   //  The date on which the resource content was approved by the publisher.
   // Approval happens once when the content is officially approved for
@@ -226,7 +226,7 @@ class Measure {
   String approvalDate;
 
   //  Extensions for approvalDate
-  Element element_approvalDate;
+  Element elementApprovalDate;
 
   //  The date on which the resource content was last reviewed. Review
   // happens periodically after approval but does not change the original
@@ -234,7 +234,7 @@ class Measure {
   String lastReviewDate;
 
   //  Extensions for lastReviewDate
-  Element element_lastReviewDate;
+  Element elementLastReviewDate;
 
   //  The period during which the measure content was or is planned to be in
   // active use.
@@ -274,7 +274,7 @@ class Measure {
   String disclaimer;
 
   //  Extensions for disclaimer
-  Element element_disclaimer;
+  Element elementDisclaimer;
 
   //  Indicates how the calculation is performed for the measure, including
   // proportion, ratio, continuous-variable, and cohort. The value set is
@@ -297,14 +297,14 @@ class Measure {
   String riskAdjustment;
 
   //  Extensions for riskAdjustment
-  Element element_riskAdjustment;
+  Element elementRiskAdjustment;
 
   //  Describes how to combine the information calculated, based on logic in
   // each of several populations, into one summarized result.
   String rateAggregation;
 
   //  Extensions for rateAggregation
-  Element element_rateAggregation;
+  Element elementRateAggregation;
 
   //  Provides a succinct statement of the need for the measure. Usually
   // includes statements pertaining to importance criterion: impact, gap in
@@ -312,14 +312,14 @@ class Measure {
   String rationale;
 
   //  Extensions for rationale
-  Element element_rationale;
+  Element elementRationale;
 
   //  Provides a summary of relevant clinical guidelines or other clinical
   // recommendations supporting the measure.
   String clinicalRecommendationStatement;
 
   //  Extensions for clinicalRecommendationStatement
-  Element element_clinicalRecommendationStatement;
+  Element elementClinicalRecommendationStatement;
 
   //  Information on whether an increase or decrease in score is the
   // preferred result (e.g., a higher score indicates better quality OR a
@@ -330,14 +330,14 @@ class Measure {
   List<String> definition;
 
   //  Extensions for definition
-  List<Element> element_definition;
+  List<Element> elementDefinition;
 
   //  Additional guidance for the measure including how it can be used in a
   // clinical context, and the intent of the measure.
   String guidance;
 
   //  Extensions for guidance
-  Element element_guidance;
+  Element elementGuidance;
 
   //  A group of population criteria for the measure.
   List<Measure_Group> group;
@@ -351,49 +351,49 @@ Measure(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
-    this.element_url,
+    this.elementUrl,
     this.identifier,
     this.version,
-    this.element_version,
+    this.elementVersion,
     this.name,
-    this.element_name,
+    this.elementName,
     this.title,
-    this.element_title,
+    this.elementTitle,
     this.subtitle,
-    this.element_subtitle,
+    this.elementSubtitle,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.experimental,
-    this.element_experimental,
+    this.elementExperimental,
     this.subjectCodeableConcept,
     this.subjectReference,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.publisher,
-    this.element_publisher,
+    this.elementPublisher,
     this.contact,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.useContext,
     this.jurisdiction,
     this.purpose,
-    this.element_purpose,
+    this.elementPurpose,
     this.usage,
-    this.element_usage,
+    this.elementUsage,
     this.copyright,
-    this.element_copyright,
+    this.elementCopyright,
     this.approvalDate,
-    this.element_approvalDate,
+    this.elementApprovalDate,
     this.lastReviewDate,
-    this.element_lastReviewDate,
+    this.elementLastReviewDate,
     this.effectivePeriod,
     this.topic,
     this.author,
@@ -403,23 +403,23 @@ Measure(
     this.relatedArtifact,
     this.library,
     this.disclaimer,
-    this.element_disclaimer,
+    this.elementDisclaimer,
     this.scoring,
     this.compositeScoring,
     this.type,
     this.riskAdjustment,
-    this.element_riskAdjustment,
+    this.elementRiskAdjustment,
     this.rateAggregation,
-    this.element_rateAggregation,
+    this.elementRateAggregation,
     this.rationale,
-    this.element_rationale,
+    this.elementRationale,
     this.clinicalRecommendationStatement,
-    this.element_clinicalRecommendationStatement,
+    this.elementClinicalRecommendationStatement,
     this.improvementNotation,
     this.definition,
-    this.element_definition,
+    this.elementDefinition,
     this.guidance,
-    this.element_guidance,
+    this.elementGuidance,
     this.group,
     this.supplementalData
     });
@@ -466,7 +466,7 @@ class Measure_Group {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  A population criteria for the measure.
   List<Measure_Population> population;
@@ -482,7 +482,7 @@ Measure_Group(
     this.modifierExtension,
     this.code,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.population,
     this.stratifier
     });
@@ -527,7 +527,7 @@ class Measure_Population {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  An expression that specifies the criteria for the population,
   // typically the name of an expression in a library.
@@ -540,7 +540,7 @@ Measure_Population(
     this.modifierExtension,
     this.code,
     this.description,
-    this.element_description
+    this.elementDescription
     });
 
   factory Measure_Population.fromJson(Map<String, dynamic> json) => _$Measure_PopulationFromJson(json);
@@ -586,7 +586,7 @@ class Measure_Stratifier {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  An expression that specifies the criteria for the stratifier. This is
   // typically the name of an expression defined within a referenced
@@ -604,7 +604,7 @@ Measure_Stratifier(
     this.modifierExtension,
     this.code,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.criteria,
     this.component
     });
@@ -652,7 +652,7 @@ class Measure_Component {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  An expression that specifies the criteria for this component of the
   // stratifier. This is typically the name of an expression defined within
@@ -667,7 +667,7 @@ Measure_Component(
     this.modifierExtension,
     this.code,
     this.description,
-    this.element_description
+    this.elementDescription
     });
 
   factory Measure_Component.fromJson(Map<String, dynamic> json) => _$Measure_ComponentFromJson(json);
@@ -721,7 +721,7 @@ class Measure_SupplementalData {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  The criteria for the supplemental data. This is typically the name of
   // a valid expression defined within a referenced library, but it may also
@@ -737,7 +737,7 @@ Measure_SupplementalData(
     this.code,
     this.usage,
     this.description,
-    this.element_description
+    this.elementDescription
     });
 
   factory Measure_SupplementalData.fromJson(Map<String, dynamic> json) => _$Measure_SupplementalDataFromJson(json);

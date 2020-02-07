@@ -20,20 +20,20 @@ ResearchElementDefinition _$ResearchElementDefinitionFromJson(
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -44,42 +44,41 @@ ResearchElementDefinition _$ResearchElementDefinitionFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     url: json['url'] as String,
-    element_url: json['element_url'] == null
+    elementUrl: json['elementUrl'] == null
         ? null
-        : Element.fromJson(json['element_url'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementUrl'] as Map<String, dynamic>),
     identifier: (json['identifier'] as List)
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     version: json['version'] as String,
-    element_version: json['element_version'] == null
+    elementVersion: json['elementVersion'] == null
         ? null
-        : Element.fromJson(json['element_version'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementVersion'] as Map<String, dynamic>),
     name: json['name'] as String,
-    element_name: json['element_name'] == null
+    elementName: json['elementName'] == null
         ? null
-        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
     title: json['title'] as String,
-    element_title: json['element_title'] == null
+    elementTitle: json['elementTitle'] == null
         ? null
-        : Element.fromJson(json['element_title'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementTitle'] as Map<String, dynamic>),
     shortTitle: json['shortTitle'] as String,
-    element_shortTitle: json['element_shortTitle'] == null
+    elementShortTitle: json['elementShortTitle'] == null
         ? null
-        : Element.fromJson(json['element_shortTitle'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementShortTitle'] as Map<String, dynamic>),
     subtitle: json['subtitle'] as String,
-    element_subtitle: json['element_subtitle'] == null
+    elementSubtitle: json['elementSubtitle'] == null
         ? null
-        : Element.fromJson(json['element_subtitle'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSubtitle'] as Map<String, dynamic>),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     experimental: json['experimental'] as bool,
-    element_experimental: json['element_experimental'] == null
+    elementExperimental: json['elementExperimental'] == null
         ? null
-        : Element.fromJson(
-            json['element_experimental'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementExperimental'] as Map<String, dynamic>),
     subjectCodeableConcept: json['subjectCodeableConcept'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -88,24 +87,24 @@ ResearchElementDefinition _$ResearchElementDefinitionFromJson(
         ? null
         : Reference.fromJson(json['subjectReference'] as Map<String, dynamic>),
     date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
-    element_date: json['element_date'] == null
+    elementDate: json['elementDate'] == null
         ? null
-        : Element.fromJson(json['element_date'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDate'] as Map<String, dynamic>),
     publisher: json['publisher'] as String,
-    element_publisher: json['element_publisher'] == null
+    elementPublisher: json['elementPublisher'] == null
         ? null
-        : Element.fromJson(json['element_publisher'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPublisher'] as Map<String, dynamic>),
     contact: (json['contact'] as List)
         ?.map((e) => e == null
             ? null
             : ContactDetail.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     description: json['description'] as String,
-    element_description: json['element_description'] == null
+    elementDescription: json['elementDescription'] == null
         ? null
-        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
     comment: (json['comment'] as List)?.map((e) => e as String)?.toList(),
-    element_comment: (json['element_comment'] as List)
+    elementComment: (json['elementComment'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -119,27 +118,26 @@ ResearchElementDefinition _$ResearchElementDefinitionFromJson(
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     purpose: json['purpose'] as String,
-    element_purpose: json['element_purpose'] == null
+    elementPurpose: json['elementPurpose'] == null
         ? null
-        : Element.fromJson(json['element_purpose'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPurpose'] as Map<String, dynamic>),
     usage: json['usage'] as String,
-    element_usage: json['element_usage'] == null
+    elementUsage: json['elementUsage'] == null
         ? null
-        : Element.fromJson(json['element_usage'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementUsage'] as Map<String, dynamic>),
     copyright: json['copyright'] as String,
-    element_copyright: json['element_copyright'] == null
+    elementCopyright: json['elementCopyright'] == null
         ? null
-        : Element.fromJson(json['element_copyright'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementCopyright'] as Map<String, dynamic>),
     approvalDate: json['approvalDate'] as String,
-    element_approvalDate: json['element_approvalDate'] == null
+    elementApprovalDate: json['elementApprovalDate'] == null
         ? null
-        : Element.fromJson(
-            json['element_approvalDate'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementApprovalDate'] as Map<String, dynamic>),
     lastReviewDate: json['lastReviewDate'] as String,
-    element_lastReviewDate: json['element_lastReviewDate'] == null
+    elementLastReviewDate: json['elementLastReviewDate'] == null
         ? null
         : Element.fromJson(
-            json['element_lastReviewDate'] as Map<String, dynamic>),
+            json['elementLastReviewDate'] as Map<String, dynamic>),
     effectivePeriod: json['effectivePeriod'] == null
         ? null
         : Period.fromJson(json['effectivePeriod'] as Map<String, dynamic>),
@@ -175,14 +173,13 @@ ResearchElementDefinition _$ResearchElementDefinitionFromJson(
         ?.toList(),
     library: (json['library'] as List)?.map((e) => e as String)?.toList(),
     type: json['type'] as String,
-    element_type: json['element_type'] == null
+    elementType: json['elementType'] == null
         ? null
-        : Element.fromJson(json['element_type'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
     variableType: json['variableType'] as String,
-    element_variableType: json['element_variableType'] == null
+    elementVariableType: json['elementVariableType'] == null
         ? null
-        : Element.fromJson(
-            json['element_variableType'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementVariableType'] as Map<String, dynamic>),
   );
 }
 
@@ -192,55 +189,55 @@ Map<String, dynamic> _$ResearchElementDefinitionToJson(
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'url': instance.url,
-      'element_url': instance.element_url?.toJson(),
+      'elementUrl': instance.elementUrl?.toJson(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'version': instance.version,
-      'element_version': instance.element_version?.toJson(),
+      'elementVersion': instance.elementVersion?.toJson(),
       'name': instance.name,
-      'element_name': instance.element_name?.toJson(),
+      'elementName': instance.elementName?.toJson(),
       'title': instance.title,
-      'element_title': instance.element_title?.toJson(),
+      'elementTitle': instance.elementTitle?.toJson(),
       'shortTitle': instance.shortTitle,
-      'element_shortTitle': instance.element_shortTitle?.toJson(),
+      'elementShortTitle': instance.elementShortTitle?.toJson(),
       'subtitle': instance.subtitle,
-      'element_subtitle': instance.element_subtitle?.toJson(),
+      'elementSubtitle': instance.elementSubtitle?.toJson(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'experimental': instance.experimental,
-      'element_experimental': instance.element_experimental?.toJson(),
+      'elementExperimental': instance.elementExperimental?.toJson(),
       'subjectCodeableConcept': instance.subjectCodeableConcept?.toJson(),
       'subjectReference': instance.subjectReference?.toJson(),
       'date': instance.date?.toIso8601String(),
-      'element_date': instance.element_date?.toJson(),
+      'elementDate': instance.elementDate?.toJson(),
       'publisher': instance.publisher,
-      'element_publisher': instance.element_publisher?.toJson(),
+      'elementPublisher': instance.elementPublisher?.toJson(),
       'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
       'description': instance.description,
-      'element_description': instance.element_description?.toJson(),
+      'elementDescription': instance.elementDescription?.toJson(),
       'comment': instance.comment,
-      'element_comment':
-          instance.element_comment?.map((e) => e?.toJson())?.toList(),
+      'elementComment':
+          instance.elementComment?.map((e) => e?.toJson())?.toList(),
       'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
       'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
       'purpose': instance.purpose,
-      'element_purpose': instance.element_purpose?.toJson(),
+      'elementPurpose': instance.elementPurpose?.toJson(),
       'usage': instance.usage,
-      'element_usage': instance.element_usage?.toJson(),
+      'elementUsage': instance.elementUsage?.toJson(),
       'copyright': instance.copyright,
-      'element_copyright': instance.element_copyright?.toJson(),
+      'elementCopyright': instance.elementCopyright?.toJson(),
       'approvalDate': instance.approvalDate,
-      'element_approvalDate': instance.element_approvalDate?.toJson(),
+      'elementApprovalDate': instance.elementApprovalDate?.toJson(),
       'lastReviewDate': instance.lastReviewDate,
-      'element_lastReviewDate': instance.element_lastReviewDate?.toJson(),
+      'elementLastReviewDate': instance.elementLastReviewDate?.toJson(),
       'effectivePeriod': instance.effectivePeriod?.toJson(),
       'topic': instance.topic?.map((e) => e?.toJson())?.toList(),
       'author': instance.author?.map((e) => e?.toJson())?.toList(),
@@ -251,9 +248,9 @@ Map<String, dynamic> _$ResearchElementDefinitionToJson(
           instance.relatedArtifact?.map((e) => e?.toJson())?.toList(),
       'library': instance.library,
       'type': instance.type,
-      'element_type': instance.element_type?.toJson(),
+      'elementType': instance.elementType?.toJson(),
       'variableType': instance.variableType,
-      'element_variableType': instance.element_variableType?.toJson(),
+      'elementVariableType': instance.elementVariableType?.toJson(),
       'characteristic':
           instance.characteristic?.map((e) => e?.toJson())?.toList(),
     };
@@ -276,10 +273,10 @@ ResearchElementDefinition_Characteristic
         : CodeableConcept.fromJson(
             json['definitionCodeableConcept'] as Map<String, dynamic>),
     definitionCanonical: json['definitionCanonical'] as String,
-    element_definitionCanonical: json['element_definitionCanonical'] == null
+    elementDefinitionCanonical: json['elementDefinitionCanonical'] == null
         ? null
         : Element.fromJson(
-            json['element_definitionCanonical'] as Map<String, dynamic>),
+            json['elementDefinitionCanonical'] as Map<String, dynamic>),
     definitionExpression: json['definitionExpression'] == null
         ? null
         : Expression.fromJson(
@@ -293,25 +290,24 @@ ResearchElementDefinition_Characteristic
             e == null ? null : UsageContext.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     exclude: json['exclude'] as bool,
-    element_exclude: json['element_exclude'] == null
+    elementExclude: json['elementExclude'] == null
         ? null
-        : Element.fromJson(json['element_exclude'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementExclude'] as Map<String, dynamic>),
     unitOfMeasure: json['unitOfMeasure'] == null
         ? null
         : CodeableConcept.fromJson(
             json['unitOfMeasure'] as Map<String, dynamic>),
     studyEffectiveDescription: json['studyEffectiveDescription'] as String,
-    element_studyEffectiveDescription:
-        json['element_studyEffectiveDescription'] == null
+    elementStudyEffectiveDescription:
+        json['elementStudyEffectiveDescription'] == null
             ? null
-            : Element.fromJson(json['element_studyEffectiveDescription']
+            : Element.fromJson(json['elementStudyEffectiveDescription']
                 as Map<String, dynamic>),
     studyEffectiveDateTime: json['studyEffectiveDateTime'] as String,
-    element_studyEffectiveDateTime:
-        json['element_studyEffectiveDateTime'] == null
-            ? null
-            : Element.fromJson(
-                json['element_studyEffectiveDateTime'] as Map<String, dynamic>),
+    elementStudyEffectiveDateTime: json['elementStudyEffectiveDateTime'] == null
+        ? null
+        : Element.fromJson(
+            json['elementStudyEffectiveDateTime'] as Map<String, dynamic>),
     studyEffectivePeriod: json['studyEffectivePeriod'] == null
         ? null
         : Period.fromJson(json['studyEffectivePeriod'] as Map<String, dynamic>),
@@ -327,24 +323,24 @@ ResearchElementDefinition_Characteristic
         : Duration.fromJson(
             json['studyEffectiveTimeFromStart'] as Map<String, dynamic>),
     studyEffectiveGroupMeasure: json['studyEffectiveGroupMeasure'] as String,
-    element_studyEffectiveGroupMeasure:
-        json['element_studyEffectiveGroupMeasure'] == null
+    elementStudyEffectiveGroupMeasure:
+        json['elementStudyEffectiveGroupMeasure'] == null
             ? null
-            : Element.fromJson(json['element_studyEffectiveGroupMeasure']
+            : Element.fromJson(json['elementStudyEffectiveGroupMeasure']
                 as Map<String, dynamic>),
     participantEffectiveDescription:
         json['participantEffectiveDescription'] as String,
-    element_participantEffectiveDescription:
-        json['element_participantEffectiveDescription'] == null
+    elementParticipantEffectiveDescription:
+        json['elementParticipantEffectiveDescription'] == null
             ? null
-            : Element.fromJson(json['element_participantEffectiveDescription']
+            : Element.fromJson(json['elementParticipantEffectiveDescription']
                 as Map<String, dynamic>),
     participantEffectiveDateTime:
         json['participantEffectiveDateTime'] as String,
-    element_participantEffectiveDateTime:
-        json['element_participantEffectiveDateTime'] == null
+    elementParticipantEffectiveDateTime:
+        json['elementParticipantEffectiveDateTime'] == null
             ? null
-            : Element.fromJson(json['element_participantEffectiveDateTime']
+            : Element.fromJson(json['elementParticipantEffectiveDateTime']
                 as Map<String, dynamic>),
     participantEffectivePeriod: json['participantEffectivePeriod'] == null
         ? null
@@ -365,10 +361,10 @@ ResearchElementDefinition_Characteristic
                 as Map<String, dynamic>),
     participantEffectiveGroupMeasure:
         json['participantEffectiveGroupMeasure'] as String,
-    element_participantEffectiveGroupMeasure:
-        json['element_participantEffectiveGroupMeasure'] == null
+    elementParticipantEffectiveGroupMeasure:
+        json['elementParticipantEffectiveGroupMeasure'] == null
             ? null
-            : Element.fromJson(json['element_participantEffectiveGroupMeasure']
+            : Element.fromJson(json['elementParticipantEffectiveGroupMeasure']
                 as Map<String, dynamic>),
   );
 }
@@ -382,35 +378,35 @@ Map<String, dynamic> _$ResearchElementDefinition_CharacteristicToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'definitionCodeableConcept': instance.definitionCodeableConcept?.toJson(),
       'definitionCanonical': instance.definitionCanonical,
-      'element_definitionCanonical':
-          instance.element_definitionCanonical?.toJson(),
+      'elementDefinitionCanonical':
+          instance.elementDefinitionCanonical?.toJson(),
       'definitionExpression': instance.definitionExpression?.toJson(),
       'definitionDataRequirement': instance.definitionDataRequirement?.toJson(),
       'usageContext': instance.usageContext?.map((e) => e?.toJson())?.toList(),
       'exclude': instance.exclude,
-      'element_exclude': instance.element_exclude?.toJson(),
+      'elementExclude': instance.elementExclude?.toJson(),
       'unitOfMeasure': instance.unitOfMeasure?.toJson(),
       'studyEffectiveDescription': instance.studyEffectiveDescription,
-      'element_studyEffectiveDescription':
-          instance.element_studyEffectiveDescription?.toJson(),
+      'elementStudyEffectiveDescription':
+          instance.elementStudyEffectiveDescription?.toJson(),
       'studyEffectiveDateTime': instance.studyEffectiveDateTime,
-      'element_studyEffectiveDateTime':
-          instance.element_studyEffectiveDateTime?.toJson(),
+      'elementStudyEffectiveDateTime':
+          instance.elementStudyEffectiveDateTime?.toJson(),
       'studyEffectivePeriod': instance.studyEffectivePeriod?.toJson(),
       'studyEffectiveDuration': instance.studyEffectiveDuration?.toJson(),
       'studyEffectiveTiming': instance.studyEffectiveTiming?.toJson(),
       'studyEffectiveTimeFromStart':
           instance.studyEffectiveTimeFromStart?.toJson(),
       'studyEffectiveGroupMeasure': instance.studyEffectiveGroupMeasure,
-      'element_studyEffectiveGroupMeasure':
-          instance.element_studyEffectiveGroupMeasure?.toJson(),
+      'elementStudyEffectiveGroupMeasure':
+          instance.elementStudyEffectiveGroupMeasure?.toJson(),
       'participantEffectiveDescription':
           instance.participantEffectiveDescription,
-      'element_participantEffectiveDescription':
-          instance.element_participantEffectiveDescription?.toJson(),
+      'elementParticipantEffectiveDescription':
+          instance.elementParticipantEffectiveDescription?.toJson(),
       'participantEffectiveDateTime': instance.participantEffectiveDateTime,
-      'element_participantEffectiveDateTime':
-          instance.element_participantEffectiveDateTime?.toJson(),
+      'elementParticipantEffectiveDateTime':
+          instance.elementParticipantEffectiveDateTime?.toJson(),
       'participantEffectivePeriod':
           instance.participantEffectivePeriod?.toJson(),
       'participantEffectiveDuration':
@@ -421,6 +417,6 @@ Map<String, dynamic> _$ResearchElementDefinition_CharacteristicToJson(
           instance.participantEffectiveTimeFromStart?.toJson(),
       'participantEffectiveGroupMeasure':
           instance.participantEffectiveGroupMeasure,
-      'element_participantEffectiveGroupMeasure':
-          instance.element_participantEffectiveGroupMeasure?.toJson(),
+      'elementParticipantEffectiveGroupMeasure':
+          instance.elementParticipantEffectiveGroupMeasure?.toJson(),
     };

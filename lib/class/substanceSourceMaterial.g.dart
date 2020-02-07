@@ -14,20 +14,20 @@ SubstanceSourceMaterial _$SubstanceSourceMaterialFromJson(
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -53,10 +53,9 @@ SubstanceSourceMaterial _$SubstanceSourceMaterialFromJson(
         ? null
         : Identifier.fromJson(json['organismId'] as Map<String, dynamic>),
     organismName: json['organismName'] as String,
-    element_organismName: json['element_organismName'] == null
+    elementOrganismName: json['elementOrganismName'] == null
         ? null
-        : Element.fromJson(
-            json['element_organismName'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementOrganismName'] as Map<String, dynamic>),
     parentSubstanceId: (json['parentSubstanceId'] as List)
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
@@ -64,7 +63,7 @@ SubstanceSourceMaterial _$SubstanceSourceMaterialFromJson(
     parentSubstanceName: (json['parentSubstanceName'] as List)
         ?.map((e) => e as String)
         ?.toList(),
-    element_parentSubstanceName: (json['element_parentSubstanceName'] as List)
+    elementParentSubstanceName: (json['elementParentSubstanceName'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -76,7 +75,7 @@ SubstanceSourceMaterial _$SubstanceSourceMaterialFromJson(
     geographicalLocation: (json['geographicalLocation'] as List)
         ?.map((e) => e as String)
         ?.toList(),
-    element_geographicalLocation: (json['element_geographicalLocation'] as List)
+    elementGeographicalLocation: (json['elementGeographicalLocation'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -109,9 +108,9 @@ Map<String, dynamic> _$SubstanceSourceMaterialToJson(
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -122,17 +121,17 @@ Map<String, dynamic> _$SubstanceSourceMaterialToJson(
       'sourceMaterialState': instance.sourceMaterialState?.toJson(),
       'organismId': instance.organismId?.toJson(),
       'organismName': instance.organismName,
-      'element_organismName': instance.element_organismName?.toJson(),
+      'elementOrganismName': instance.elementOrganismName?.toJson(),
       'parentSubstanceId':
           instance.parentSubstanceId?.map((e) => e?.toJson())?.toList(),
       'parentSubstanceName': instance.parentSubstanceName,
-      'element_parentSubstanceName': instance.element_parentSubstanceName
+      'elementParentSubstanceName': instance.elementParentSubstanceName
           ?.map((e) => e?.toJson())
           ?.toList(),
       'countryOfOrigin':
           instance.countryOfOrigin?.map((e) => e?.toJson())?.toList(),
       'geographicalLocation': instance.geographicalLocation,
-      'element_geographicalLocation': instance.element_geographicalLocation
+      'elementGeographicalLocation': instance.elementGeographicalLocation
           ?.map((e) => e?.toJson())
           ?.toList(),
       'developmentStage': instance.developmentStage?.toJson(),
@@ -157,9 +156,9 @@ SubstanceSourceMaterial_FractionDescription
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     fraction: json['fraction'] as String,
-    element_fraction: json['element_fraction'] == null
+    elementFraction: json['elementFraction'] == null
         ? null
-        : Element.fromJson(json['element_fraction'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementFraction'] as Map<String, dynamic>),
     materialType: json['materialType'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -175,7 +174,7 @@ Map<String, dynamic> _$SubstanceSourceMaterial_FractionDescriptionToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'fraction': instance.fraction,
-      'element_fraction': instance.element_fraction?.toJson(),
+      'elementFraction': instance.elementFraction?.toJson(),
       'materialType': instance.materialType?.toJson(),
     };
 
@@ -205,11 +204,11 @@ SubstanceSourceMaterial_Organism _$SubstanceSourceMaterial_OrganismFromJson(
         : CodeableConcept.fromJson(
             json['intraspecificType'] as Map<String, dynamic>),
     intraspecificDescription: json['intraspecificDescription'] as String,
-    element_intraspecificDescription:
-        json['element_intraspecificDescription'] == null
-            ? null
-            : Element.fromJson(json['element_intraspecificDescription']
-                as Map<String, dynamic>),
+    elementIntraspecificDescription: json['elementIntraspecificDescription'] ==
+            null
+        ? null
+        : Element.fromJson(
+            json['elementIntraspecificDescription'] as Map<String, dynamic>),
     author: (json['author'] as List)
         ?.map((e) => e == null
             ? null
@@ -239,8 +238,8 @@ Map<String, dynamic> _$SubstanceSourceMaterial_OrganismToJson(
       'species': instance.species?.toJson(),
       'intraspecificType': instance.intraspecificType?.toJson(),
       'intraspecificDescription': instance.intraspecificDescription,
-      'element_intraspecificDescription':
-          instance.element_intraspecificDescription?.toJson(),
+      'elementIntraspecificDescription':
+          instance.elementIntraspecificDescription?.toJson(),
       'author': instance.author?.map((e) => e?.toJson())?.toList(),
       'hybrid': instance.hybrid?.toJson(),
       'organismGeneral': instance.organismGeneral?.toJson(),
@@ -262,10 +261,10 @@ SubstanceSourceMaterial_Author _$SubstanceSourceMaterial_AuthorFromJson(
         ? null
         : CodeableConcept.fromJson(json['authorType'] as Map<String, dynamic>),
     authorDescription: json['authorDescription'] as String,
-    element_authorDescription: json['element_authorDescription'] == null
+    elementAuthorDescription: json['elementAuthorDescription'] == null
         ? null
         : Element.fromJson(
-            json['element_authorDescription'] as Map<String, dynamic>),
+            json['elementAuthorDescription'] as Map<String, dynamic>),
   );
 }
 
@@ -278,7 +277,7 @@ Map<String, dynamic> _$SubstanceSourceMaterial_AuthorToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'authorType': instance.authorType?.toJson(),
       'authorDescription': instance.authorDescription,
-      'element_authorDescription': instance.element_authorDescription?.toJson(),
+      'elementAuthorDescription': instance.elementAuthorDescription?.toJson(),
     };
 
 SubstanceSourceMaterial_Hybrid _$SubstanceSourceMaterial_HybridFromJson(
@@ -294,25 +293,25 @@ SubstanceSourceMaterial_Hybrid _$SubstanceSourceMaterial_HybridFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     maternalOrganismId: json['maternalOrganismId'] as String,
-    element_maternalOrganismId: json['element_maternalOrganismId'] == null
+    elementMaternalOrganismId: json['elementMaternalOrganismId'] == null
         ? null
         : Element.fromJson(
-            json['element_maternalOrganismId'] as Map<String, dynamic>),
+            json['elementMaternalOrganismId'] as Map<String, dynamic>),
     maternalOrganismName: json['maternalOrganismName'] as String,
-    element_maternalOrganismName: json['element_maternalOrganismName'] == null
+    elementMaternalOrganismName: json['elementMaternalOrganismName'] == null
         ? null
         : Element.fromJson(
-            json['element_maternalOrganismName'] as Map<String, dynamic>),
+            json['elementMaternalOrganismName'] as Map<String, dynamic>),
     paternalOrganismId: json['paternalOrganismId'] as String,
-    element_paternalOrganismId: json['element_paternalOrganismId'] == null
+    elementPaternalOrganismId: json['elementPaternalOrganismId'] == null
         ? null
         : Element.fromJson(
-            json['element_paternalOrganismId'] as Map<String, dynamic>),
+            json['elementPaternalOrganismId'] as Map<String, dynamic>),
     paternalOrganismName: json['paternalOrganismName'] as String,
-    element_paternalOrganismName: json['element_paternalOrganismName'] == null
+    elementPaternalOrganismName: json['elementPaternalOrganismName'] == null
         ? null
         : Element.fromJson(
-            json['element_paternalOrganismName'] as Map<String, dynamic>),
+            json['elementPaternalOrganismName'] as Map<String, dynamic>),
     hybridType: json['hybridType'] == null
         ? null
         : CodeableConcept.fromJson(json['hybridType'] as Map<String, dynamic>),
@@ -327,17 +326,15 @@ Map<String, dynamic> _$SubstanceSourceMaterial_HybridToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'maternalOrganismId': instance.maternalOrganismId,
-      'element_maternalOrganismId':
-          instance.element_maternalOrganismId?.toJson(),
+      'elementMaternalOrganismId': instance.elementMaternalOrganismId?.toJson(),
       'maternalOrganismName': instance.maternalOrganismName,
-      'element_maternalOrganismName':
-          instance.element_maternalOrganismName?.toJson(),
+      'elementMaternalOrganismName':
+          instance.elementMaternalOrganismName?.toJson(),
       'paternalOrganismId': instance.paternalOrganismId,
-      'element_paternalOrganismId':
-          instance.element_paternalOrganismId?.toJson(),
+      'elementPaternalOrganismId': instance.elementPaternalOrganismId?.toJson(),
       'paternalOrganismName': instance.paternalOrganismName,
-      'element_paternalOrganismName':
-          instance.element_paternalOrganismName?.toJson(),
+      'elementPaternalOrganismName':
+          instance.elementPaternalOrganismName?.toJson(),
       'hybridType': instance.hybridType?.toJson(),
     };
 

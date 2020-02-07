@@ -21,20 +21,20 @@ Consent _$ConsentFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -49,18 +49,18 @@ Consent _$ConsentFromJson(Map<String, dynamic> json) {
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     patient: json['patient'] == null
         ? null
         : Reference.fromJson(json['patient'] as Map<String, dynamic>),
     dateTime: json['dateTime'] == null
         ? null
         : DateTime.parse(json['dateTime'] as String),
-    element_dateTime: json['element_dateTime'] == null
+    elementDateTime: json['elementDateTime'] == null
         ? null
-        : Element.fromJson(json['element_dateTime'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDateTime'] as Map<String, dynamic>),
     performer: (json['performer'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
@@ -98,9 +98,9 @@ Map<String, dynamic> _$ConsentToJson(Consent instance) => <String, dynamic>{
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -108,12 +108,12 @@ Map<String, dynamic> _$ConsentToJson(Consent instance) => <String, dynamic>{
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'scope': instance.scope?.toJson(),
       'category': instance.category?.map((e) => e?.toJson())?.toList(),
       'patient': instance.patient?.toJson(),
       'dateTime': instance.dateTime?.toIso8601String(),
-      'element_dateTime': instance.element_dateTime?.toJson(),
+      'elementDateTime': instance.elementDateTime?.toJson(),
       'performer': instance.performer?.map((e) => e?.toJson())?.toList(),
       'organization': instance.organization?.map((e) => e?.toJson())?.toList(),
       'sourceAttachment': instance.sourceAttachment?.toJson(),
@@ -136,13 +136,13 @@ Consent_Policy _$Consent_PolicyFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     authority: json['authority'] as String,
-    element_authority: json['element_authority'] == null
+    elementAuthority: json['elementAuthority'] == null
         ? null
-        : Element.fromJson(json['element_authority'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementAuthority'] as Map<String, dynamic>),
     uri: json['uri'] as String,
-    element_uri: json['element_uri'] == null
+    elementUri: json['elementUri'] == null
         ? null
-        : Element.fromJson(json['element_uri'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementUri'] as Map<String, dynamic>),
   );
 }
 
@@ -153,9 +153,9 @@ Map<String, dynamic> _$Consent_PolicyToJson(Consent_Policy instance) =>
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'authority': instance.authority,
-      'element_authority': instance.element_authority?.toJson(),
+      'elementAuthority': instance.elementAuthority?.toJson(),
       'uri': instance.uri,
-      'element_uri': instance.element_uri?.toJson(),
+      'elementUri': instance.elementUri?.toJson(),
     };
 
 Consent_Verification _$Consent_VerificationFromJson(Map<String, dynamic> json) {
@@ -170,19 +170,19 @@ Consent_Verification _$Consent_VerificationFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     verified: json['verified'] as bool,
-    element_verified: json['element_verified'] == null
+    elementVerified: json['elementVerified'] == null
         ? null
-        : Element.fromJson(json['element_verified'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementVerified'] as Map<String, dynamic>),
     verifiedWith: json['verifiedWith'] == null
         ? null
         : Reference.fromJson(json['verifiedWith'] as Map<String, dynamic>),
     verificationDate: json['verificationDate'] == null
         ? null
         : DateTime.parse(json['verificationDate'] as String),
-    element_verificationDate: json['element_verificationDate'] == null
+    elementVerificationDate: json['elementVerificationDate'] == null
         ? null
         : Element.fromJson(
-            json['element_verificationDate'] as Map<String, dynamic>),
+            json['elementVerificationDate'] as Map<String, dynamic>),
   );
 }
 
@@ -194,10 +194,10 @@ Map<String, dynamic> _$Consent_VerificationToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'verified': instance.verified,
-      'element_verified': instance.element_verified?.toJson(),
+      'elementVerified': instance.elementVerified?.toJson(),
       'verifiedWith': instance.verifiedWith?.toJson(),
       'verificationDate': instance.verificationDate?.toIso8601String(),
-      'element_verificationDate': instance.element_verificationDate?.toJson(),
+      'elementVerificationDate': instance.elementVerificationDate?.toJson(),
     };
 
 Consent_Provision _$Consent_ProvisionFromJson(Map<String, dynamic> json) {
@@ -212,9 +212,9 @@ Consent_Provision _$Consent_ProvisionFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     type: json['type'] as String,
-    element_type: json['element_type'] == null
+    elementType: json['elementType'] == null
         ? null
-        : Element.fromJson(json['element_type'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
     period: json['period'] == null
         ? null
         : Period.fromJson(json['period'] as Map<String, dynamic>),
@@ -267,7 +267,7 @@ Map<String, dynamic> _$Consent_ProvisionToJson(Consent_Provision instance) =>
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'type': instance.type,
-      'element_type': instance.element_type?.toJson(),
+      'elementType': instance.elementType?.toJson(),
       'period': instance.period?.toJson(),
       'actor': instance.actor?.map((e) => e?.toJson())?.toList(),
       'action': instance.action?.map((e) => e?.toJson())?.toList(),
@@ -326,9 +326,9 @@ Consent_Data _$Consent_DataFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     meaning: json['meaning'] as String,
-    element_meaning: json['element_meaning'] == null
+    elementMeaning: json['elementMeaning'] == null
         ? null
-        : Element.fromJson(json['element_meaning'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementMeaning'] as Map<String, dynamic>),
   );
 }
 
@@ -339,6 +339,6 @@ Map<String, dynamic> _$Consent_DataToJson(Consent_Data instance) =>
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'meaning': instance.meaning,
-      'element_meaning': instance.element_meaning?.toJson(),
+      'elementMeaning': instance.elementMeaning?.toJson(),
       'reference': instance.reference?.toJson(),
     };

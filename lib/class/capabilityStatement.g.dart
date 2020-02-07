@@ -13,20 +13,20 @@ CapabilityStatement _$CapabilityStatementFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -37,47 +37,46 @@ CapabilityStatement _$CapabilityStatementFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     url: json['url'] as String,
-    element_url: json['element_url'] == null
+    elementUrl: json['elementUrl'] == null
         ? null
-        : Element.fromJson(json['element_url'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementUrl'] as Map<String, dynamic>),
     version: json['version'] as String,
-    element_version: json['element_version'] == null
+    elementVersion: json['elementVersion'] == null
         ? null
-        : Element.fromJson(json['element_version'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementVersion'] as Map<String, dynamic>),
     name: json['name'] as String,
-    element_name: json['element_name'] == null
+    elementName: json['elementName'] == null
         ? null
-        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
     title: json['title'] as String,
-    element_title: json['element_title'] == null
+    elementTitle: json['elementTitle'] == null
         ? null
-        : Element.fromJson(json['element_title'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementTitle'] as Map<String, dynamic>),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     experimental: json['experimental'] as bool,
-    element_experimental: json['element_experimental'] == null
+    elementExperimental: json['elementExperimental'] == null
         ? null
-        : Element.fromJson(
-            json['element_experimental'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementExperimental'] as Map<String, dynamic>),
     date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
-    element_date: json['element_date'] == null
+    elementDate: json['elementDate'] == null
         ? null
-        : Element.fromJson(json['element_date'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDate'] as Map<String, dynamic>),
     publisher: json['publisher'] as String,
-    element_publisher: json['element_publisher'] == null
+    elementPublisher: json['elementPublisher'] == null
         ? null
-        : Element.fromJson(json['element_publisher'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPublisher'] as Map<String, dynamic>),
     contact: (json['contact'] as List)
         ?.map((e) => e == null
             ? null
             : ContactDetail.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     description: json['description'] as String,
-    element_description: json['element_description'] == null
+    elementDescription: json['elementDescription'] == null
         ? null
-        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
     useContext: (json['useContext'] as List)
         ?.map((e) =>
             e == null ? null : UsageContext.fromJson(e as Map<String, dynamic>))
@@ -88,17 +87,17 @@ CapabilityStatement _$CapabilityStatementFromJson(Map<String, dynamic> json) {
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     purpose: json['purpose'] as String,
-    element_purpose: json['element_purpose'] == null
+    elementPurpose: json['elementPurpose'] == null
         ? null
-        : Element.fromJson(json['element_purpose'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPurpose'] as Map<String, dynamic>),
     copyright: json['copyright'] as String,
-    element_copyright: json['element_copyright'] == null
+    elementCopyright: json['elementCopyright'] == null
         ? null
-        : Element.fromJson(json['element_copyright'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementCopyright'] as Map<String, dynamic>),
     kind: json['kind'] as String,
-    element_kind: json['element_kind'] == null
+    elementKind: json['elementKind'] == null
         ? null
-        : Element.fromJson(json['element_kind'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementKind'] as Map<String, dynamic>),
     instantiates:
         (json['instantiates'] as List)?.map((e) => e as String)?.toList(),
     imports: (json['imports'] as List)?.map((e) => e as String)?.toList(),
@@ -111,17 +110,17 @@ CapabilityStatement _$CapabilityStatementFromJson(Map<String, dynamic> json) {
         : CapabilityStatement_Implementation.fromJson(
             json['implementation'] as Map<String, dynamic>),
     fhirVersion: json['fhirVersion'] as String,
-    element_fhirVersion: json['element_fhirVersion'] == null
+    elementFhirVersion: json['elementFhirVersion'] == null
         ? null
-        : Element.fromJson(json['element_fhirVersion'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementFhirVersion'] as Map<String, dynamic>),
     format: (json['format'] as List)?.map((e) => e as String)?.toList(),
-    element_format: (json['element_format'] as List)
+    elementFormat: (json['elementFormat'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     patchFormat:
         (json['patchFormat'] as List)?.map((e) => e as String)?.toList(),
-    element_patchFormat: (json['element_patchFormat'] as List)
+    elementPatchFormat: (json['elementPatchFormat'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -152,53 +151,53 @@ Map<String, dynamic> _$CapabilityStatementToJson(
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'url': instance.url,
-      'element_url': instance.element_url?.toJson(),
+      'elementUrl': instance.elementUrl?.toJson(),
       'version': instance.version,
-      'element_version': instance.element_version?.toJson(),
+      'elementVersion': instance.elementVersion?.toJson(),
       'name': instance.name,
-      'element_name': instance.element_name?.toJson(),
+      'elementName': instance.elementName?.toJson(),
       'title': instance.title,
-      'element_title': instance.element_title?.toJson(),
+      'elementTitle': instance.elementTitle?.toJson(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'experimental': instance.experimental,
-      'element_experimental': instance.element_experimental?.toJson(),
+      'elementExperimental': instance.elementExperimental?.toJson(),
       'date': instance.date?.toIso8601String(),
-      'element_date': instance.element_date?.toJson(),
+      'elementDate': instance.elementDate?.toJson(),
       'publisher': instance.publisher,
-      'element_publisher': instance.element_publisher?.toJson(),
+      'elementPublisher': instance.elementPublisher?.toJson(),
       'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
       'description': instance.description,
-      'element_description': instance.element_description?.toJson(),
+      'elementDescription': instance.elementDescription?.toJson(),
       'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
       'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
       'purpose': instance.purpose,
-      'element_purpose': instance.element_purpose?.toJson(),
+      'elementPurpose': instance.elementPurpose?.toJson(),
       'copyright': instance.copyright,
-      'element_copyright': instance.element_copyright?.toJson(),
+      'elementCopyright': instance.elementCopyright?.toJson(),
       'kind': instance.kind,
-      'element_kind': instance.element_kind?.toJson(),
+      'elementKind': instance.elementKind?.toJson(),
       'instantiates': instance.instantiates,
       'imports': instance.imports,
       'software': instance.software?.toJson(),
       'implementation': instance.implementation?.toJson(),
       'fhirVersion': instance.fhirVersion,
-      'element_fhirVersion': instance.element_fhirVersion?.toJson(),
+      'elementFhirVersion': instance.elementFhirVersion?.toJson(),
       'format': instance.format,
-      'element_format':
-          instance.element_format?.map((e) => e?.toJson())?.toList(),
+      'elementFormat':
+          instance.elementFormat?.map((e) => e?.toJson())?.toList(),
       'patchFormat': instance.patchFormat,
-      'element_patchFormat':
-          instance.element_patchFormat?.map((e) => e?.toJson())?.toList(),
+      'elementPatchFormat':
+          instance.elementPatchFormat?.map((e) => e?.toJson())?.toList(),
       'implementationGuide': instance.implementationGuide,
       'rest': instance.rest?.map((e) => e?.toJson())?.toList(),
       'messaging': instance.messaging?.map((e) => e?.toJson())?.toList(),
@@ -218,19 +217,19 @@ CapabilityStatement_Software _$CapabilityStatement_SoftwareFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     name: json['name'] as String,
-    element_name: json['element_name'] == null
+    elementName: json['elementName'] == null
         ? null
-        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
     version: json['version'] as String,
-    element_version: json['element_version'] == null
+    elementVersion: json['elementVersion'] == null
         ? null
-        : Element.fromJson(json['element_version'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementVersion'] as Map<String, dynamic>),
     releaseDate: json['releaseDate'] == null
         ? null
         : DateTime.parse(json['releaseDate'] as String),
-    element_releaseDate: json['element_releaseDate'] == null
+    elementReleaseDate: json['elementReleaseDate'] == null
         ? null
-        : Element.fromJson(json['element_releaseDate'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementReleaseDate'] as Map<String, dynamic>),
   );
 }
 
@@ -242,11 +241,11 @@ Map<String, dynamic> _$CapabilityStatement_SoftwareToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'name': instance.name,
-      'element_name': instance.element_name?.toJson(),
+      'elementName': instance.elementName?.toJson(),
       'version': instance.version,
-      'element_version': instance.element_version?.toJson(),
+      'elementVersion': instance.elementVersion?.toJson(),
       'releaseDate': instance.releaseDate?.toIso8601String(),
-      'element_releaseDate': instance.element_releaseDate?.toJson(),
+      'elementReleaseDate': instance.elementReleaseDate?.toJson(),
     };
 
 CapabilityStatement_Implementation _$CapabilityStatement_ImplementationFromJson(
@@ -262,13 +261,13 @@ CapabilityStatement_Implementation _$CapabilityStatement_ImplementationFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     description: json['description'] as String,
-    element_description: json['element_description'] == null
+    elementDescription: json['elementDescription'] == null
         ? null
-        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
     url: json['url'] as String,
-    element_url: json['element_url'] == null
+    elementUrl: json['elementUrl'] == null
         ? null
-        : Element.fromJson(json['element_url'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementUrl'] as Map<String, dynamic>),
     custodian: json['custodian'] == null
         ? null
         : Reference.fromJson(json['custodian'] as Map<String, dynamic>),
@@ -283,9 +282,9 @@ Map<String, dynamic> _$CapabilityStatement_ImplementationToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'description': instance.description,
-      'element_description': instance.element_description?.toJson(),
+      'elementDescription': instance.elementDescription?.toJson(),
       'url': instance.url,
-      'element_url': instance.element_url?.toJson(),
+      'elementUrl': instance.elementUrl?.toJson(),
       'custodian': instance.custodian?.toJson(),
     };
 
@@ -302,14 +301,14 @@ CapabilityStatement_Rest _$CapabilityStatement_RestFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     mode: json['mode'] as String,
-    element_mode: json['element_mode'] == null
+    elementMode: json['elementMode'] == null
         ? null
-        : Element.fromJson(json['element_mode'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementMode'] as Map<String, dynamic>),
     documentation: json['documentation'] as String,
-    element_documentation: json['element_documentation'] == null
+    elementDocumentation: json['elementDocumentation'] == null
         ? null
         : Element.fromJson(
-            json['element_documentation'] as Map<String, dynamic>),
+            json['elementDocumentation'] as Map<String, dynamic>),
     security: json['security'] == null
         ? null
         : CapabilityStatement_Security.fromJson(
@@ -349,9 +348,9 @@ Map<String, dynamic> _$CapabilityStatement_RestToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'mode': instance.mode,
-      'element_mode': instance.element_mode?.toJson(),
+      'elementMode': instance.elementMode?.toJson(),
       'documentation': instance.documentation,
-      'element_documentation': instance.element_documentation?.toJson(),
+      'elementDocumentation': instance.elementDocumentation?.toJson(),
       'security': instance.security?.toJson(),
       'resource': instance.resource?.map((e) => e?.toJson())?.toList(),
       'interaction': instance.interaction?.map((e) => e?.toJson())?.toList(),
@@ -373,18 +372,18 @@ CapabilityStatement_Security _$CapabilityStatement_SecurityFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     cors: json['cors'] as bool,
-    element_cors: json['element_cors'] == null
+    elementCors: json['elementCors'] == null
         ? null
-        : Element.fromJson(json['element_cors'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementCors'] as Map<String, dynamic>),
     service: (json['service'] as List)
         ?.map((e) => e == null
             ? null
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     description: json['description'] as String,
-    element_description: json['element_description'] == null
+    elementDescription: json['elementDescription'] == null
         ? null
-        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
   );
 }
 
@@ -396,10 +395,10 @@ Map<String, dynamic> _$CapabilityStatement_SecurityToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'cors': instance.cors,
-      'element_cors': instance.element_cors?.toJson(),
+      'elementCors': instance.elementCors?.toJson(),
       'service': instance.service?.map((e) => e?.toJson())?.toList(),
       'description': instance.description,
-      'element_description': instance.element_description?.toJson(),
+      'elementDescription': instance.elementDescription?.toJson(),
     };
 
 CapabilityStatement_Resource _$CapabilityStatement_ResourceFromJson(
@@ -415,17 +414,17 @@ CapabilityStatement_Resource _$CapabilityStatement_ResourceFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     type: json['type'] as String,
-    element_type: json['element_type'] == null
+    elementType: json['elementType'] == null
         ? null
-        : Element.fromJson(json['element_type'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
     profile: json['profile'] as String,
     supportedProfile:
         (json['supportedProfile'] as List)?.map((e) => e as String)?.toList(),
     documentation: json['documentation'] as String,
-    element_documentation: json['element_documentation'] == null
+    elementDocumentation: json['elementDocumentation'] == null
         ? null
         : Element.fromJson(
-            json['element_documentation'] as Map<String, dynamic>),
+            json['elementDocumentation'] as Map<String, dynamic>),
     interaction: (json['interaction'] as List)
         ?.map((e) => e == null
             ? null
@@ -433,53 +432,52 @@ CapabilityStatement_Resource _$CapabilityStatement_ResourceFromJson(
                 e as Map<String, dynamic>))
         ?.toList(),
     versioning: json['versioning'] as String,
-    element_versioning: json['element_versioning'] == null
+    elementVersioning: json['elementVersioning'] == null
         ? null
-        : Element.fromJson(json['element_versioning'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementVersioning'] as Map<String, dynamic>),
     readHistory: json['readHistory'] as bool,
-    element_readHistory: json['element_readHistory'] == null
+    elementReadHistory: json['elementReadHistory'] == null
         ? null
-        : Element.fromJson(json['element_readHistory'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementReadHistory'] as Map<String, dynamic>),
     updateCreate: json['updateCreate'] as bool,
-    element_updateCreate: json['element_updateCreate'] == null
+    elementUpdateCreate: json['elementUpdateCreate'] == null
         ? null
-        : Element.fromJson(
-            json['element_updateCreate'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementUpdateCreate'] as Map<String, dynamic>),
     conditionalCreate: json['conditionalCreate'] as bool,
-    element_conditionalCreate: json['element_conditionalCreate'] == null
+    elementConditionalCreate: json['elementConditionalCreate'] == null
         ? null
         : Element.fromJson(
-            json['element_conditionalCreate'] as Map<String, dynamic>),
+            json['elementConditionalCreate'] as Map<String, dynamic>),
     conditionalRead: json['conditionalRead'] as String,
-    element_conditionalRead: json['element_conditionalRead'] == null
+    elementConditionalRead: json['elementConditionalRead'] == null
         ? null
         : Element.fromJson(
-            json['element_conditionalRead'] as Map<String, dynamic>),
+            json['elementConditionalRead'] as Map<String, dynamic>),
     conditionalUpdate: json['conditionalUpdate'] as bool,
-    element_conditionalUpdate: json['element_conditionalUpdate'] == null
+    elementConditionalUpdate: json['elementConditionalUpdate'] == null
         ? null
         : Element.fromJson(
-            json['element_conditionalUpdate'] as Map<String, dynamic>),
+            json['elementConditionalUpdate'] as Map<String, dynamic>),
     conditionalDelete: json['conditionalDelete'] as String,
-    element_conditionalDelete: json['element_conditionalDelete'] == null
+    elementConditionalDelete: json['elementConditionalDelete'] == null
         ? null
         : Element.fromJson(
-            json['element_conditionalDelete'] as Map<String, dynamic>),
+            json['elementConditionalDelete'] as Map<String, dynamic>),
     referencePolicy:
         (json['referencePolicy'] as List)?.map((e) => e as String)?.toList(),
-    element_referencePolicy: (json['element_referencePolicy'] as List)
+    elementReferencePolicy: (json['elementReferencePolicy'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     searchInclude:
         (json['searchInclude'] as List)?.map((e) => e as String)?.toList(),
-    element_searchInclude: (json['element_searchInclude'] as List)
+    elementSearchInclude: (json['elementSearchInclude'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     searchRevInclude:
         (json['searchRevInclude'] as List)?.map((e) => e as String)?.toList(),
-    element_searchRevInclude: (json['element_searchRevInclude'] as List)
+    elementSearchRevInclude: (json['elementSearchRevInclude'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -505,35 +503,35 @@ Map<String, dynamic> _$CapabilityStatement_ResourceToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'type': instance.type,
-      'element_type': instance.element_type?.toJson(),
+      'elementType': instance.elementType?.toJson(),
       'profile': instance.profile,
       'supportedProfile': instance.supportedProfile,
       'documentation': instance.documentation,
-      'element_documentation': instance.element_documentation?.toJson(),
+      'elementDocumentation': instance.elementDocumentation?.toJson(),
       'interaction': instance.interaction?.map((e) => e?.toJson())?.toList(),
       'versioning': instance.versioning,
-      'element_versioning': instance.element_versioning?.toJson(),
+      'elementVersioning': instance.elementVersioning?.toJson(),
       'readHistory': instance.readHistory,
-      'element_readHistory': instance.element_readHistory?.toJson(),
+      'elementReadHistory': instance.elementReadHistory?.toJson(),
       'updateCreate': instance.updateCreate,
-      'element_updateCreate': instance.element_updateCreate?.toJson(),
+      'elementUpdateCreate': instance.elementUpdateCreate?.toJson(),
       'conditionalCreate': instance.conditionalCreate,
-      'element_conditionalCreate': instance.element_conditionalCreate?.toJson(),
+      'elementConditionalCreate': instance.elementConditionalCreate?.toJson(),
       'conditionalRead': instance.conditionalRead,
-      'element_conditionalRead': instance.element_conditionalRead?.toJson(),
+      'elementConditionalRead': instance.elementConditionalRead?.toJson(),
       'conditionalUpdate': instance.conditionalUpdate,
-      'element_conditionalUpdate': instance.element_conditionalUpdate?.toJson(),
+      'elementConditionalUpdate': instance.elementConditionalUpdate?.toJson(),
       'conditionalDelete': instance.conditionalDelete,
-      'element_conditionalDelete': instance.element_conditionalDelete?.toJson(),
+      'elementConditionalDelete': instance.elementConditionalDelete?.toJson(),
       'referencePolicy': instance.referencePolicy,
-      'element_referencePolicy':
-          instance.element_referencePolicy?.map((e) => e?.toJson())?.toList(),
+      'elementReferencePolicy':
+          instance.elementReferencePolicy?.map((e) => e?.toJson())?.toList(),
       'searchInclude': instance.searchInclude,
-      'element_searchInclude':
-          instance.element_searchInclude?.map((e) => e?.toJson())?.toList(),
+      'elementSearchInclude':
+          instance.elementSearchInclude?.map((e) => e?.toJson())?.toList(),
       'searchRevInclude': instance.searchRevInclude,
-      'element_searchRevInclude':
-          instance.element_searchRevInclude?.map((e) => e?.toJson())?.toList(),
+      'elementSearchRevInclude':
+          instance.elementSearchRevInclude?.map((e) => e?.toJson())?.toList(),
       'searchParam': instance.searchParam?.map((e) => e?.toJson())?.toList(),
       'operation': instance.operation?.map((e) => e?.toJson())?.toList(),
     };
@@ -551,14 +549,14 @@ CapabilityStatement_Interaction _$CapabilityStatement_InteractionFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     code: json['code'] as String,
-    element_code: json['element_code'] == null
+    elementCode: json['elementCode'] == null
         ? null
-        : Element.fromJson(json['element_code'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementCode'] as Map<String, dynamic>),
     documentation: json['documentation'] as String,
-    element_documentation: json['element_documentation'] == null
+    elementDocumentation: json['elementDocumentation'] == null
         ? null
         : Element.fromJson(
-            json['element_documentation'] as Map<String, dynamic>),
+            json['elementDocumentation'] as Map<String, dynamic>),
   );
 }
 
@@ -570,9 +568,9 @@ Map<String, dynamic> _$CapabilityStatement_InteractionToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'code': instance.code,
-      'element_code': instance.element_code?.toJson(),
+      'elementCode': instance.elementCode?.toJson(),
       'documentation': instance.documentation,
-      'element_documentation': instance.element_documentation?.toJson(),
+      'elementDocumentation': instance.elementDocumentation?.toJson(),
     };
 
 CapabilityStatement_SearchParam _$CapabilityStatement_SearchParamFromJson(
@@ -588,19 +586,19 @@ CapabilityStatement_SearchParam _$CapabilityStatement_SearchParamFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     name: json['name'] as String,
-    element_name: json['element_name'] == null
+    elementName: json['elementName'] == null
         ? null
-        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
     definition: json['definition'] as String,
     type: json['type'] as String,
-    element_type: json['element_type'] == null
+    elementType: json['elementType'] == null
         ? null
-        : Element.fromJson(json['element_type'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
     documentation: json['documentation'] as String,
-    element_documentation: json['element_documentation'] == null
+    elementDocumentation: json['elementDocumentation'] == null
         ? null
         : Element.fromJson(
-            json['element_documentation'] as Map<String, dynamic>),
+            json['elementDocumentation'] as Map<String, dynamic>),
   );
 }
 
@@ -612,12 +610,12 @@ Map<String, dynamic> _$CapabilityStatement_SearchParamToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'name': instance.name,
-      'element_name': instance.element_name?.toJson(),
+      'elementName': instance.elementName?.toJson(),
       'definition': instance.definition,
       'type': instance.type,
-      'element_type': instance.element_type?.toJson(),
+      'elementType': instance.elementType?.toJson(),
       'documentation': instance.documentation,
-      'element_documentation': instance.element_documentation?.toJson(),
+      'elementDocumentation': instance.elementDocumentation?.toJson(),
     };
 
 CapabilityStatement_Operation _$CapabilityStatement_OperationFromJson(
@@ -634,14 +632,14 @@ CapabilityStatement_Operation _$CapabilityStatement_OperationFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     name: json['name'] as String,
-    element_name: json['element_name'] == null
+    elementName: json['elementName'] == null
         ? null
-        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
     documentation: json['documentation'] as String,
-    element_documentation: json['element_documentation'] == null
+    elementDocumentation: json['elementDocumentation'] == null
         ? null
         : Element.fromJson(
-            json['element_documentation'] as Map<String, dynamic>),
+            json['elementDocumentation'] as Map<String, dynamic>),
   );
 }
 
@@ -653,10 +651,10 @@ Map<String, dynamic> _$CapabilityStatement_OperationToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'name': instance.name,
-      'element_name': instance.element_name?.toJson(),
+      'elementName': instance.elementName?.toJson(),
       'definition': instance.definition,
       'documentation': instance.documentation,
-      'element_documentation': instance.element_documentation?.toJson(),
+      'elementDocumentation': instance.elementDocumentation?.toJson(),
     };
 
 CapabilityStatement_Interaction1 _$CapabilityStatement_Interaction1FromJson(
@@ -672,14 +670,14 @@ CapabilityStatement_Interaction1 _$CapabilityStatement_Interaction1FromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     code: json['code'] as String,
-    element_code: json['element_code'] == null
+    elementCode: json['elementCode'] == null
         ? null
-        : Element.fromJson(json['element_code'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementCode'] as Map<String, dynamic>),
     documentation: json['documentation'] as String,
-    element_documentation: json['element_documentation'] == null
+    elementDocumentation: json['elementDocumentation'] == null
         ? null
         : Element.fromJson(
-            json['element_documentation'] as Map<String, dynamic>),
+            json['elementDocumentation'] as Map<String, dynamic>),
   );
 }
 
@@ -691,9 +689,9 @@ Map<String, dynamic> _$CapabilityStatement_Interaction1ToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'code': instance.code,
-      'element_code': instance.element_code?.toJson(),
+      'elementCode': instance.elementCode?.toJson(),
       'documentation': instance.documentation,
-      'element_documentation': instance.element_documentation?.toJson(),
+      'elementDocumentation': instance.elementDocumentation?.toJson(),
     };
 
 CapabilityStatement_Messaging _$CapabilityStatement_MessagingFromJson(
@@ -714,15 +712,15 @@ CapabilityStatement_Messaging _$CapabilityStatement_MessagingFromJson(
             : CapabilityStatement_Endpoint.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     reliableCache: json['reliableCache'] as int,
-    element_reliableCache: json['element_reliableCache'] == null
+    elementReliableCache: json['elementReliableCache'] == null
         ? null
         : Element.fromJson(
-            json['element_reliableCache'] as Map<String, dynamic>),
+            json['elementReliableCache'] as Map<String, dynamic>),
     documentation: json['documentation'] as String,
-    element_documentation: json['element_documentation'] == null
+    elementDocumentation: json['elementDocumentation'] == null
         ? null
         : Element.fromJson(
-            json['element_documentation'] as Map<String, dynamic>),
+            json['elementDocumentation'] as Map<String, dynamic>),
     supportedMessage: (json['supportedMessage'] as List)
         ?.map((e) => e == null
             ? null
@@ -741,9 +739,9 @@ Map<String, dynamic> _$CapabilityStatement_MessagingToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'endpoint': instance.endpoint?.map((e) => e?.toJson())?.toList(),
       'reliableCache': instance.reliableCache,
-      'element_reliableCache': instance.element_reliableCache?.toJson(),
+      'elementReliableCache': instance.elementReliableCache?.toJson(),
       'documentation': instance.documentation,
-      'element_documentation': instance.element_documentation?.toJson(),
+      'elementDocumentation': instance.elementDocumentation?.toJson(),
       'supportedMessage':
           instance.supportedMessage?.map((e) => e?.toJson())?.toList(),
     };
@@ -764,9 +762,9 @@ CapabilityStatement_Endpoint _$CapabilityStatement_EndpointFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     address: json['address'] as String,
-    element_address: json['element_address'] == null
+    elementAddress: json['elementAddress'] == null
         ? null
-        : Element.fromJson(json['element_address'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementAddress'] as Map<String, dynamic>),
   );
 }
 
@@ -779,7 +777,7 @@ Map<String, dynamic> _$CapabilityStatement_EndpointToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'protocol': instance.protocol?.toJson(),
       'address': instance.address,
-      'element_address': instance.element_address?.toJson(),
+      'elementAddress': instance.elementAddress?.toJson(),
     };
 
 CapabilityStatement_SupportedMessage
@@ -796,9 +794,9 @@ CapabilityStatement_SupportedMessage
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     mode: json['mode'] as String,
-    element_mode: json['element_mode'] == null
+    elementMode: json['elementMode'] == null
         ? null
-        : Element.fromJson(json['element_mode'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementMode'] as Map<String, dynamic>),
   );
 }
 
@@ -810,7 +808,7 @@ Map<String, dynamic> _$CapabilityStatement_SupportedMessageToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'mode': instance.mode,
-      'element_mode': instance.element_mode?.toJson(),
+      'elementMode': instance.elementMode?.toJson(),
       'definition': instance.definition,
     };
 
@@ -828,14 +826,14 @@ CapabilityStatement_Document _$CapabilityStatement_DocumentFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     mode: json['mode'] as String,
-    element_mode: json['element_mode'] == null
+    elementMode: json['elementMode'] == null
         ? null
-        : Element.fromJson(json['element_mode'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementMode'] as Map<String, dynamic>),
     documentation: json['documentation'] as String,
-    element_documentation: json['element_documentation'] == null
+    elementDocumentation: json['elementDocumentation'] == null
         ? null
         : Element.fromJson(
-            json['element_documentation'] as Map<String, dynamic>),
+            json['elementDocumentation'] as Map<String, dynamic>),
   );
 }
 
@@ -847,8 +845,8 @@ Map<String, dynamic> _$CapabilityStatement_DocumentToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'mode': instance.mode,
-      'element_mode': instance.element_mode?.toJson(),
+      'elementMode': instance.elementMode?.toJson(),
       'documentation': instance.documentation,
-      'element_documentation': instance.element_documentation?.toJson(),
+      'elementDocumentation': instance.elementDocumentation?.toJson(),
       'profile': instance.profile,
     };

@@ -14,95 +14,91 @@ Extension _$ExtensionFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     url: json['url'] as String,
-    element_url: json['element_url'] == null
+    elementUrl: json['elementUrl'] == null
         ? null
-        : Element.fromJson(json['element_url'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementUrl'] as Map<String, dynamic>),
     valueBase64Binary: json['valueBase64Binary'] as String,
-    element_valueBase64Binary: json['element_valueBase64Binary'] == null
+    elementValueBase64Binary: json['elementValueBase64Binary'] == null
         ? null
         : Element.fromJson(
-            json['element_valueBase64Binary'] as Map<String, dynamic>),
+            json['elementValueBase64Binary'] as Map<String, dynamic>),
     valueBoolean: json['valueBoolean'] as bool,
-    element_valueBoolean: json['element_valueBoolean'] == null
+    elementValueBoolean: json['elementValueBoolean'] == null
         ? null
-        : Element.fromJson(
-            json['element_valueBoolean'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueBoolean'] as Map<String, dynamic>),
     valueCanonical: json['valueCanonical'] as String,
-    element_valueCanonical: json['element_valueCanonical'] == null
+    elementValueCanonical: json['elementValueCanonical'] == null
         ? null
         : Element.fromJson(
-            json['element_valueCanonical'] as Map<String, dynamic>),
+            json['elementValueCanonical'] as Map<String, dynamic>),
     valueCode: json['valueCode'] as String,
-    element_valueCode: json['element_valueCode'] == null
+    elementValueCode: json['elementValueCode'] == null
         ? null
-        : Element.fromJson(json['element_valueCode'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueCode'] as Map<String, dynamic>),
     valueDate: json['valueDate'] as String,
-    element_valueDate: json['element_valueDate'] == null
+    elementValueDate: json['elementValueDate'] == null
         ? null
-        : Element.fromJson(json['element_valueDate'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueDate'] as Map<String, dynamic>),
     valueDateTime: json['valueDateTime'] as String,
-    element_valueDateTime: json['element_valueDateTime'] == null
+    elementValueDateTime: json['elementValueDateTime'] == null
         ? null
         : Element.fromJson(
-            json['element_valueDateTime'] as Map<String, dynamic>),
+            json['elementValueDateTime'] as Map<String, dynamic>),
     valueDecimal: (json['valueDecimal'] as num)?.toDouble(),
-    element_valueDecimal: json['element_valueDecimal'] == null
+    elementValueDecimal: json['elementValueDecimal'] == null
         ? null
-        : Element.fromJson(
-            json['element_valueDecimal'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueDecimal'] as Map<String, dynamic>),
     valueId: json['valueId'] as String,
-    element_valueId: json['element_valueId'] == null
+    elementValueId: json['elementValueId'] == null
         ? null
-        : Element.fromJson(json['element_valueId'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueId'] as Map<String, dynamic>),
     valueInstant: json['valueInstant'] as String,
-    element_valueInstant: json['element_valueInstant'] == null
+    elementValueInstant: json['elementValueInstant'] == null
         ? null
-        : Element.fromJson(
-            json['element_valueInstant'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueInstant'] as Map<String, dynamic>),
     valueInteger: json['valueInteger'] as int,
-    element_valueInteger: json['element_valueInteger'] == null
+    elementValueInteger: json['elementValueInteger'] == null
         ? null
-        : Element.fromJson(
-            json['element_valueInteger'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueInteger'] as Map<String, dynamic>),
     valueMarkdown: json['valueMarkdown'] as String,
-    element_valueMarkdown: json['element_valueMarkdown'] == null
+    elementValueMarkdown: json['elementValueMarkdown'] == null
         ? null
         : Element.fromJson(
-            json['element_valueMarkdown'] as Map<String, dynamic>),
+            json['elementValueMarkdown'] as Map<String, dynamic>),
     valueOid: json['valueOid'] as String,
-    element_valueOid: json['element_valueOid'] == null
+    elementValueOid: json['elementValueOid'] == null
         ? null
-        : Element.fromJson(json['element_valueOid'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueOid'] as Map<String, dynamic>),
     valuePositiveInt: json['valuePositiveInt'] as int,
-    element_valuePositiveInt: json['element_valuePositiveInt'] == null
+    elementValuePositiveInt: json['elementValuePositiveInt'] == null
         ? null
         : Element.fromJson(
-            json['element_valuePositiveInt'] as Map<String, dynamic>),
+            json['elementValuePositiveInt'] as Map<String, dynamic>),
     valueString: json['valueString'] as String,
-    element_valueString: json['element_valueString'] == null
+    elementValueString: json['elementValueString'] == null
         ? null
-        : Element.fromJson(json['element_valueString'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueString'] as Map<String, dynamic>),
     valueTime: json['valueTime'] as String,
-    element_valueTime: json['element_valueTime'] == null
+    elementValueTime: json['elementValueTime'] == null
         ? null
-        : Element.fromJson(json['element_valueTime'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueTime'] as Map<String, dynamic>),
     valueUnsignedInt: json['valueUnsignedInt'] as int,
-    element_valueUnsignedInt: json['element_valueUnsignedInt'] == null
+    elementValueUnsignedInt: json['elementValueUnsignedInt'] == null
         ? null
         : Element.fromJson(
-            json['element_valueUnsignedInt'] as Map<String, dynamic>),
+            json['elementValueUnsignedInt'] as Map<String, dynamic>),
     valueUri: json['valueUri'] as String,
-    element_valueUri: json['element_valueUri'] == null
+    elementValueUri: json['elementValueUri'] == null
         ? null
-        : Element.fromJson(json['element_valueUri'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueUri'] as Map<String, dynamic>),
     valueUrl: json['valueUrl'] as String,
-    element_valueUrl: json['element_valueUrl'] == null
+    elementValueUrl: json['elementValueUrl'] == null
         ? null
-        : Element.fromJson(json['element_valueUrl'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueUrl'] as Map<String, dynamic>),
     valueUuid: json['valueUuid'] as String,
-    element_valueUuid: json['element_valueUuid'] == null
+    elementValueUuid: json['elementValueUuid'] == null
         ? null
-        : Element.fromJson(json['element_valueUuid'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueUuid'] as Map<String, dynamic>),
     valueAddress: json['valueAddress'] == null
         ? null
         : Address.fromJson(json['valueAddress'] as Map<String, dynamic>),
@@ -213,45 +209,45 @@ Map<String, dynamic> _$ExtensionToJson(Extension instance) => <String, dynamic>{
       'id': instance.id,
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'url': instance.url,
-      'element_url': instance.element_url?.toJson(),
+      'elementUrl': instance.elementUrl?.toJson(),
       'valueBase64Binary': instance.valueBase64Binary,
-      'element_valueBase64Binary': instance.element_valueBase64Binary?.toJson(),
+      'elementValueBase64Binary': instance.elementValueBase64Binary?.toJson(),
       'valueBoolean': instance.valueBoolean,
-      'element_valueBoolean': instance.element_valueBoolean?.toJson(),
+      'elementValueBoolean': instance.elementValueBoolean?.toJson(),
       'valueCanonical': instance.valueCanonical,
-      'element_valueCanonical': instance.element_valueCanonical?.toJson(),
+      'elementValueCanonical': instance.elementValueCanonical?.toJson(),
       'valueCode': instance.valueCode,
-      'element_valueCode': instance.element_valueCode?.toJson(),
+      'elementValueCode': instance.elementValueCode?.toJson(),
       'valueDate': instance.valueDate,
-      'element_valueDate': instance.element_valueDate?.toJson(),
+      'elementValueDate': instance.elementValueDate?.toJson(),
       'valueDateTime': instance.valueDateTime,
-      'element_valueDateTime': instance.element_valueDateTime?.toJson(),
+      'elementValueDateTime': instance.elementValueDateTime?.toJson(),
       'valueDecimal': instance.valueDecimal,
-      'element_valueDecimal': instance.element_valueDecimal?.toJson(),
+      'elementValueDecimal': instance.elementValueDecimal?.toJson(),
       'valueId': instance.valueId,
-      'element_valueId': instance.element_valueId?.toJson(),
+      'elementValueId': instance.elementValueId?.toJson(),
       'valueInstant': instance.valueInstant,
-      'element_valueInstant': instance.element_valueInstant?.toJson(),
+      'elementValueInstant': instance.elementValueInstant?.toJson(),
       'valueInteger': instance.valueInteger,
-      'element_valueInteger': instance.element_valueInteger?.toJson(),
+      'elementValueInteger': instance.elementValueInteger?.toJson(),
       'valueMarkdown': instance.valueMarkdown,
-      'element_valueMarkdown': instance.element_valueMarkdown?.toJson(),
+      'elementValueMarkdown': instance.elementValueMarkdown?.toJson(),
       'valueOid': instance.valueOid,
-      'element_valueOid': instance.element_valueOid?.toJson(),
+      'elementValueOid': instance.elementValueOid?.toJson(),
       'valuePositiveInt': instance.valuePositiveInt,
-      'element_valuePositiveInt': instance.element_valuePositiveInt?.toJson(),
+      'elementValuePositiveInt': instance.elementValuePositiveInt?.toJson(),
       'valueString': instance.valueString,
-      'element_valueString': instance.element_valueString?.toJson(),
+      'elementValueString': instance.elementValueString?.toJson(),
       'valueTime': instance.valueTime,
-      'element_valueTime': instance.element_valueTime?.toJson(),
+      'elementValueTime': instance.elementValueTime?.toJson(),
       'valueUnsignedInt': instance.valueUnsignedInt,
-      'element_valueUnsignedInt': instance.element_valueUnsignedInt?.toJson(),
+      'elementValueUnsignedInt': instance.elementValueUnsignedInt?.toJson(),
       'valueUri': instance.valueUri,
-      'element_valueUri': instance.element_valueUri?.toJson(),
+      'elementValueUri': instance.elementValueUri?.toJson(),
       'valueUrl': instance.valueUrl,
-      'element_valueUrl': instance.element_valueUrl?.toJson(),
+      'elementValueUrl': instance.elementValueUrl?.toJson(),
       'valueUuid': instance.valueUuid,
-      'element_valueUuid': instance.element_valueUuid?.toJson(),
+      'elementValueUuid': instance.elementValueUuid?.toJson(),
       'valueAddress': instance.valueAddress?.toJson(),
       'valueAge': instance.valueAge?.toJson(),
       'valueAnnotation': instance.valueAnnotation?.toJson(),

@@ -33,13 +33,13 @@ class Slot {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -52,7 +52,7 @@ class Slot {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -106,42 +106,42 @@ class Slot {
   String status; // <code> enum: busy/free/busy-unavailable/busy-tentative/entered-in-error;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  Date/Time that the slot is to begin.
   DateTime start;
 
   //  Extensions for start
-  Element element_start;
+  Element elementStart;
 
   //  Date/Time that the slot is to conclude.
   DateTime end;
 
   //  Extensions for end
-  Element element_end;
+  Element elementEnd;
 
   //  This slot has already been overbooked, appointments are unlikely to be
   // accepted for this time.
   bool overbooked;
 
   //  Extensions for overbooked
-  Element element_overbooked;
+  Element elementOverbooked;
 
   //  Comments on the slot to describe any extended information. Such as
   // custom constraints on the slot.
   String comment;
 
   //  Extensions for comment
-  Element element_comment;
+  Element elementComment;
 
 Slot(
   this.schedule,
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -152,15 +152,15 @@ Slot(
     this.specialty,
     this.appointmentType,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.start,
-    this.element_start,
+    this.elementStart,
     this.end,
-    this.element_end,
+    this.elementEnd,
     this.overbooked,
-    this.element_overbooked,
+    this.elementOverbooked,
     this.comment,
-    this.element_comment
+    this.elementComment
     });
 
   factory Slot.fromJson(Map<String, dynamic> json) => _$SlotFromJson(json);

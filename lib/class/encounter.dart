@@ -36,13 +36,13 @@ class Encounter {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -55,7 +55,7 @@ class Encounter {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -88,7 +88,7 @@ class Encounter {
   String status; // <code> enum: planned/arrived/triaged/in-progress/onleave/finished/cancelled/entered-in-error/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  The status history permits the encounter resource to contain the
   // status history without needing to read through the historical versions
@@ -188,16 +188,16 @@ Encounter(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.statusHistory,
     this.classHistory,
     this.type,
@@ -258,7 +258,7 @@ class Encounter_StatusHistory {
   String status; // <code> enum: planned/arrived/triaged/in-progress/onleave/finished/cancelled/entered-in-error/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  The time that the episode was in the specified status.
   Period period;
@@ -269,7 +269,7 @@ Encounter_StatusHistory(
     this.extension,
     this.modifierExtension,
     this.status,
-    this.element_status
+    this.elementStatus
     });
 
   factory Encounter_StatusHistory.fromJson(Map<String, dynamic> json) => _$Encounter_StatusHistoryFromJson(json);
@@ -419,7 +419,7 @@ class Encounter_Diagnosis {
   int rank;
 
   //  Extensions for rank
-  Element element_rank;
+  Element elementRank;
 
 Encounter_Diagnosis(
   this.condition,
@@ -428,7 +428,7 @@ Encounter_Diagnosis(
     this.modifierExtension,
     this.use,
     this.rank,
-    this.element_rank
+    this.elementRank
     });
 
   factory Encounter_Diagnosis.fromJson(Map<String, dynamic> json) => _$Encounter_DiagnosisFromJson(json);
@@ -550,7 +550,7 @@ class Encounter_Location {
   String status; // <code> enum: planned/active/reserved/completed;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  This will be used to specify the required levels (bed/ward/room/etc.)
   // desired to be recorded to simplify either messaging or query.
@@ -565,7 +565,7 @@ Encounter_Location(
     this.extension,
     this.modifierExtension,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.physicalType,
     this.period
     });

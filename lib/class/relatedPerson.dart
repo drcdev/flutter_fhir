@@ -38,13 +38,13 @@ class RelatedPerson {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -57,7 +57,7 @@ class RelatedPerson {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -89,7 +89,7 @@ class RelatedPerson {
   bool active;
 
   //  Extensions for active
-  Element element_active;
+  Element elementActive;
 
   //  The patient this person is related to.
   Reference patient;
@@ -110,13 +110,13 @@ class RelatedPerson {
   String gender; // <code> enum: male/female/other/unknown;
 
   //  Extensions for gender
-  Element element_gender;
+  Element elementGender;
 
   //  The date on which the related person was born.
   String birthDate;
 
   //  Extensions for birthDate
-  Element element_birthDate;
+  Element elementBirthDate;
 
   //  Address where the related person can be contacted or visited.
   List<Address> address;
@@ -137,23 +137,23 @@ RelatedPerson(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.active,
-    this.element_active,
+    this.elementActive,
     this.relationship,
     this.name,
     this.telecom,
     this.gender,
-    this.element_gender,
+    this.elementGender,
     this.birthDate,
-    this.element_birthDate,
+    this.elementBirthDate,
     this.address,
     this.photo,
     this.period,
@@ -204,7 +204,7 @@ class RelatedPerson_Communication {
   bool preferred;
 
   //  Extensions for preferred
-  Element element_preferred;
+  Element elementPreferred;
 
 RelatedPerson_Communication(
   this.language,
@@ -212,7 +212,7 @@ RelatedPerson_Communication(
     this.extension,
     this.modifierExtension,
     this.preferred,
-    this.element_preferred
+    this.elementPreferred
     });
 
   factory RelatedPerson_Communication.fromJson(Map<String, dynamic> json) => _$RelatedPerson_CommunicationFromJson(json);

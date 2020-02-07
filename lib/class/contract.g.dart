@@ -13,20 +13,20 @@ Contract _$ContractFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -41,17 +41,17 @@ Contract _$ContractFromJson(Map<String, dynamic> json) {
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     url: json['url'] as String,
-    element_url: json['element_url'] == null
+    elementUrl: json['elementUrl'] == null
         ? null
-        : Element.fromJson(json['element_url'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementUrl'] as Map<String, dynamic>),
     version: json['version'] as String,
-    element_version: json['element_version'] == null
+    elementVersion: json['elementVersion'] == null
         ? null
-        : Element.fromJson(json['element_version'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementVersion'] as Map<String, dynamic>),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     legalState: json['legalState'] == null
         ? null
         : CodeableConcept.fromJson(json['legalState'] as Map<String, dynamic>),
@@ -60,10 +60,10 @@ Contract _$ContractFromJson(Map<String, dynamic> json) {
         : Reference.fromJson(
             json['instantiatesCanonical'] as Map<String, dynamic>),
     instantiatesUri: json['instantiatesUri'] as String,
-    element_instantiatesUri: json['element_instantiatesUri'] == null
+    elementInstantiatesUri: json['elementInstantiatesUri'] == null
         ? null
         : Element.fromJson(
-            json['element_instantiatesUri'] as Map<String, dynamic>),
+            json['elementInstantiatesUri'] as Map<String, dynamic>),
     contentDerivative: json['contentDerivative'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -71,9 +71,9 @@ Contract _$ContractFromJson(Map<String, dynamic> json) {
     issued: json['issued'] == null
         ? null
         : DateTime.parse(json['issued'] as String),
-    element_issued: json['element_issued'] == null
+    elementIssued: json['elementIssued'] == null
         ? null
-        : Element.fromJson(json['element_issued'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementIssued'] as Map<String, dynamic>),
     applies: json['applies'] == null
         ? null
         : Period.fromJson(json['applies'] as Map<String, dynamic>),
@@ -98,19 +98,19 @@ Contract _$ContractFromJson(Map<String, dynamic> json) {
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     name: json['name'] as String,
-    element_name: json['element_name'] == null
+    elementName: json['elementName'] == null
         ? null
-        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
     title: json['title'] as String,
-    element_title: json['element_title'] == null
+    elementTitle: json['elementTitle'] == null
         ? null
-        : Element.fromJson(json['element_title'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementTitle'] as Map<String, dynamic>),
     subtitle: json['subtitle'] as String,
-    element_subtitle: json['element_subtitle'] == null
+    elementSubtitle: json['elementSubtitle'] == null
         ? null
-        : Element.fromJson(json['element_subtitle'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSubtitle'] as Map<String, dynamic>),
     alias: (json['alias'] as List)?.map((e) => e as String)?.toList(),
-    element_alias: (json['element_alias'] as List)
+    elementAlias: (json['elementAlias'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -187,9 +187,9 @@ Map<String, dynamic> _$ContractToJson(Contract instance) => <String, dynamic>{
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -197,18 +197,18 @@ Map<String, dynamic> _$ContractToJson(Contract instance) => <String, dynamic>{
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'url': instance.url,
-      'element_url': instance.element_url?.toJson(),
+      'elementUrl': instance.elementUrl?.toJson(),
       'version': instance.version,
-      'element_version': instance.element_version?.toJson(),
+      'elementVersion': instance.elementVersion?.toJson(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'legalState': instance.legalState?.toJson(),
       'instantiatesCanonical': instance.instantiatesCanonical?.toJson(),
       'instantiatesUri': instance.instantiatesUri,
-      'element_instantiatesUri': instance.element_instantiatesUri?.toJson(),
+      'elementInstantiatesUri': instance.elementInstantiatesUri?.toJson(),
       'contentDerivative': instance.contentDerivative?.toJson(),
       'issued': instance.issued?.toIso8601String(),
-      'element_issued': instance.element_issued?.toJson(),
+      'elementIssued': instance.elementIssued?.toJson(),
       'applies': instance.applies?.toJson(),
       'expirationType': instance.expirationType?.toJson(),
       'subject': instance.subject?.map((e) => e?.toJson())?.toList(),
@@ -216,14 +216,13 @@ Map<String, dynamic> _$ContractToJson(Contract instance) => <String, dynamic>{
       'domain': instance.domain?.map((e) => e?.toJson())?.toList(),
       'site': instance.site?.map((e) => e?.toJson())?.toList(),
       'name': instance.name,
-      'element_name': instance.element_name?.toJson(),
+      'elementName': instance.elementName?.toJson(),
       'title': instance.title,
-      'element_title': instance.element_title?.toJson(),
+      'elementTitle': instance.elementTitle?.toJson(),
       'subtitle': instance.subtitle,
-      'element_subtitle': instance.element_subtitle?.toJson(),
+      'elementSubtitle': instance.elementSubtitle?.toJson(),
       'alias': instance.alias,
-      'element_alias':
-          instance.element_alias?.map((e) => e?.toJson())?.toList(),
+      'elementAlias': instance.elementAlias?.map((e) => e?.toJson())?.toList(),
       'author': instance.author?.toJson(),
       'scope': instance.scope?.toJson(),
       'topicCodeableConcept': instance.topicCodeableConcept?.toJson(),
@@ -268,19 +267,19 @@ Contract_ContentDefinition _$Contract_ContentDefinitionFromJson(
     publicationDate: json['publicationDate'] == null
         ? null
         : DateTime.parse(json['publicationDate'] as String),
-    element_publicationDate: json['element_publicationDate'] == null
+    elementPublicationDate: json['elementPublicationDate'] == null
         ? null
         : Element.fromJson(
-            json['element_publicationDate'] as Map<String, dynamic>),
+            json['elementPublicationDate'] as Map<String, dynamic>),
     publicationStatus: json['publicationStatus'] as String,
-    element_publicationStatus: json['element_publicationStatus'] == null
+    elementPublicationStatus: json['elementPublicationStatus'] == null
         ? null
         : Element.fromJson(
-            json['element_publicationStatus'] as Map<String, dynamic>),
+            json['elementPublicationStatus'] as Map<String, dynamic>),
     copyright: json['copyright'] as String,
-    element_copyright: json['element_copyright'] == null
+    elementCopyright: json['elementCopyright'] == null
         ? null
-        : Element.fromJson(json['element_copyright'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementCopyright'] as Map<String, dynamic>),
   );
 }
 
@@ -295,11 +294,11 @@ Map<String, dynamic> _$Contract_ContentDefinitionToJson(
       'subType': instance.subType?.toJson(),
       'publisher': instance.publisher?.toJson(),
       'publicationDate': instance.publicationDate?.toIso8601String(),
-      'element_publicationDate': instance.element_publicationDate?.toJson(),
+      'elementPublicationDate': instance.elementPublicationDate?.toJson(),
       'publicationStatus': instance.publicationStatus,
-      'element_publicationStatus': instance.element_publicationStatus?.toJson(),
+      'elementPublicationStatus': instance.elementPublicationStatus?.toJson(),
       'copyright': instance.copyright,
-      'element_copyright': instance.element_copyright?.toJson(),
+      'elementCopyright': instance.elementCopyright?.toJson(),
     };
 
 Contract_Term _$Contract_TermFromJson(Map<String, dynamic> json) {
@@ -322,9 +321,9 @@ Contract_Term _$Contract_TermFromJson(Map<String, dynamic> json) {
     issued: json['issued'] == null
         ? null
         : DateTime.parse(json['issued'] as String),
-    element_issued: json['element_issued'] == null
+    elementIssued: json['elementIssued'] == null
         ? null
-        : Element.fromJson(json['element_issued'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementIssued'] as Map<String, dynamic>),
     applies: json['applies'] == null
         ? null
         : Period.fromJson(json['applies'] as Map<String, dynamic>),
@@ -342,9 +341,9 @@ Contract_Term _$Contract_TermFromJson(Map<String, dynamic> json) {
         ? null
         : CodeableConcept.fromJson(json['subType'] as Map<String, dynamic>),
     text: json['text'] as String,
-    element_text: json['element_text'] == null
+    elementText: json['elementText'] == null
         ? null
-        : Element.fromJson(json['element_text'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementText'] as Map<String, dynamic>),
     securityLabel: (json['securityLabel'] as List)
         ?.map((e) => e == null
             ? null
@@ -376,14 +375,14 @@ Map<String, dynamic> _$Contract_TermToJson(Contract_Term instance) =>
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.toJson(),
       'issued': instance.issued?.toIso8601String(),
-      'element_issued': instance.element_issued?.toJson(),
+      'elementIssued': instance.elementIssued?.toJson(),
       'applies': instance.applies?.toJson(),
       'topicCodeableConcept': instance.topicCodeableConcept?.toJson(),
       'topicReference': instance.topicReference?.toJson(),
       'type': instance.type?.toJson(),
       'subType': instance.subType?.toJson(),
       'text': instance.text,
-      'element_text': instance.element_text?.toJson(),
+      'elementText': instance.elementText?.toJson(),
       'securityLabel':
           instance.securityLabel?.map((e) => e?.toJson())?.toList(),
       'offer': instance.offer?.toJson(),
@@ -408,7 +407,7 @@ Contract_SecurityLabel _$Contract_SecurityLabelFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     number: (json['number'] as List)?.map((e) => e as int)?.toList(),
-    element_number: (json['element_number'] as List)
+    elementNumber: (json['elementNumber'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -431,8 +430,8 @@ Map<String, dynamic> _$Contract_SecurityLabelToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'number': instance.number,
-      'element_number':
-          instance.element_number?.map((e) => e?.toJson())?.toList(),
+      'elementNumber':
+          instance.elementNumber?.map((e) => e?.toJson())?.toList(),
       'classification': instance.classification?.toJson(),
       'category': instance.category?.map((e) => e?.toJson())?.toList(),
       'control': instance.control?.map((e) => e?.toJson())?.toList(),
@@ -478,17 +477,17 @@ Contract_Offer _$Contract_OfferFromJson(Map<String, dynamic> json) {
             : Contract_Answer.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     text: json['text'] as String,
-    element_text: json['element_text'] == null
+    elementText: json['elementText'] == null
         ? null
-        : Element.fromJson(json['element_text'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementText'] as Map<String, dynamic>),
     linkId: (json['linkId'] as List)?.map((e) => e as String)?.toList(),
-    element_linkId: (json['element_linkId'] as List)
+    elementLinkId: (json['elementLinkId'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     securityLabelNumber:
         (json['securityLabelNumber'] as List)?.map((e) => e as int)?.toList(),
-    element_securityLabelNumber: (json['element_securityLabelNumber'] as List)
+    elementSecurityLabelNumber: (json['elementSecurityLabelNumber'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -509,12 +508,12 @@ Map<String, dynamic> _$Contract_OfferToJson(Contract_Offer instance) =>
       'decisionMode': instance.decisionMode?.map((e) => e?.toJson())?.toList(),
       'answer': instance.answer?.map((e) => e?.toJson())?.toList(),
       'text': instance.text,
-      'element_text': instance.element_text?.toJson(),
+      'elementText': instance.elementText?.toJson(),
       'linkId': instance.linkId,
-      'element_linkId':
-          instance.element_linkId?.map((e) => e?.toJson())?.toList(),
+      'elementLinkId':
+          instance.elementLinkId?.map((e) => e?.toJson())?.toList(),
       'securityLabelNumber': instance.securityLabelNumber,
-      'element_securityLabelNumber': instance.element_securityLabelNumber
+      'elementSecurityLabelNumber': instance.elementSecurityLabelNumber
           ?.map((e) => e?.toJson())
           ?.toList(),
     };
@@ -562,41 +561,38 @@ Contract_Answer _$Contract_AnswerFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     valueBoolean: json['valueBoolean'] as bool,
-    element_valueBoolean: json['element_valueBoolean'] == null
+    elementValueBoolean: json['elementValueBoolean'] == null
         ? null
-        : Element.fromJson(
-            json['element_valueBoolean'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueBoolean'] as Map<String, dynamic>),
     valueDecimal: (json['valueDecimal'] as num)?.toDouble(),
-    element_valueDecimal: json['element_valueDecimal'] == null
+    elementValueDecimal: json['elementValueDecimal'] == null
         ? null
-        : Element.fromJson(
-            json['element_valueDecimal'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueDecimal'] as Map<String, dynamic>),
     valueInteger: json['valueInteger'] as int,
-    element_valueInteger: json['element_valueInteger'] == null
+    elementValueInteger: json['elementValueInteger'] == null
         ? null
-        : Element.fromJson(
-            json['element_valueInteger'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueInteger'] as Map<String, dynamic>),
     valueDate: json['valueDate'] as String,
-    element_valueDate: json['element_valueDate'] == null
+    elementValueDate: json['elementValueDate'] == null
         ? null
-        : Element.fromJson(json['element_valueDate'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueDate'] as Map<String, dynamic>),
     valueDateTime: json['valueDateTime'] as String,
-    element_valueDateTime: json['element_valueDateTime'] == null
+    elementValueDateTime: json['elementValueDateTime'] == null
         ? null
         : Element.fromJson(
-            json['element_valueDateTime'] as Map<String, dynamic>),
+            json['elementValueDateTime'] as Map<String, dynamic>),
     valueTime: json['valueTime'] as String,
-    element_valueTime: json['element_valueTime'] == null
+    elementValueTime: json['elementValueTime'] == null
         ? null
-        : Element.fromJson(json['element_valueTime'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueTime'] as Map<String, dynamic>),
     valueString: json['valueString'] as String,
-    element_valueString: json['element_valueString'] == null
+    elementValueString: json['elementValueString'] == null
         ? null
-        : Element.fromJson(json['element_valueString'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueString'] as Map<String, dynamic>),
     valueUri: json['valueUri'] as String,
-    element_valueUri: json['element_valueUri'] == null
+    elementValueUri: json['elementValueUri'] == null
         ? null
-        : Element.fromJson(json['element_valueUri'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueUri'] as Map<String, dynamic>),
     valueAttachment: json['valueAttachment'] == null
         ? null
         : Attachment.fromJson(json['valueAttachment'] as Map<String, dynamic>),
@@ -619,21 +615,21 @@ Map<String, dynamic> _$Contract_AnswerToJson(Contract_Answer instance) =>
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'valueBoolean': instance.valueBoolean,
-      'element_valueBoolean': instance.element_valueBoolean?.toJson(),
+      'elementValueBoolean': instance.elementValueBoolean?.toJson(),
       'valueDecimal': instance.valueDecimal,
-      'element_valueDecimal': instance.element_valueDecimal?.toJson(),
+      'elementValueDecimal': instance.elementValueDecimal?.toJson(),
       'valueInteger': instance.valueInteger,
-      'element_valueInteger': instance.element_valueInteger?.toJson(),
+      'elementValueInteger': instance.elementValueInteger?.toJson(),
       'valueDate': instance.valueDate,
-      'element_valueDate': instance.element_valueDate?.toJson(),
+      'elementValueDate': instance.elementValueDate?.toJson(),
       'valueDateTime': instance.valueDateTime,
-      'element_valueDateTime': instance.element_valueDateTime?.toJson(),
+      'elementValueDateTime': instance.elementValueDateTime?.toJson(),
       'valueTime': instance.valueTime,
-      'element_valueTime': instance.element_valueTime?.toJson(),
+      'elementValueTime': instance.elementValueTime?.toJson(),
       'valueString': instance.valueString,
-      'element_valueString': instance.element_valueString?.toJson(),
+      'elementValueString': instance.elementValueString?.toJson(),
       'valueUri': instance.valueUri,
-      'element_valueUri': instance.element_valueUri?.toJson(),
+      'elementValueUri': instance.elementValueUri?.toJson(),
       'valueAttachment': instance.valueAttachment?.toJson(),
       'valueCoding': instance.valueCoding?.toJson(),
       'valueQuantity': instance.valueQuantity?.toJson(),
@@ -677,9 +673,9 @@ Contract_Asset _$Contract_AssetFromJson(Map<String, dynamic> json) {
             : Contract_Context.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     condition: json['condition'] as String,
-    element_condition: json['element_condition'] == null
+    elementCondition: json['elementCondition'] == null
         ? null
-        : Element.fromJson(json['element_condition'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementCondition'] as Map<String, dynamic>),
     periodType: (json['periodType'] as List)
         ?.map((e) => e == null
             ? null
@@ -694,11 +690,11 @@ Contract_Asset _$Contract_AssetFromJson(Map<String, dynamic> json) {
             e == null ? null : Period.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     text: json['text'] as String,
-    element_text: json['element_text'] == null
+    elementText: json['elementText'] == null
         ? null
-        : Element.fromJson(json['element_text'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementText'] as Map<String, dynamic>),
     linkId: (json['linkId'] as List)?.map((e) => e as String)?.toList(),
-    element_linkId: (json['element_linkId'] as List)
+    elementLinkId: (json['elementLinkId'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -709,7 +705,7 @@ Contract_Asset _$Contract_AssetFromJson(Map<String, dynamic> json) {
         ?.toList(),
     securityLabelNumber:
         (json['securityLabelNumber'] as List)?.map((e) => e as int)?.toList(),
-    element_securityLabelNumber: (json['element_securityLabelNumber'] as List)
+    elementSecurityLabelNumber: (json['elementSecurityLabelNumber'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -735,18 +731,18 @@ Map<String, dynamic> _$Contract_AssetToJson(Contract_Asset instance) =>
       'relationship': instance.relationship?.toJson(),
       'context': instance.context?.map((e) => e?.toJson())?.toList(),
       'condition': instance.condition,
-      'element_condition': instance.element_condition?.toJson(),
+      'elementCondition': instance.elementCondition?.toJson(),
       'periodType': instance.periodType?.map((e) => e?.toJson())?.toList(),
       'period': instance.period?.map((e) => e?.toJson())?.toList(),
       'usePeriod': instance.usePeriod?.map((e) => e?.toJson())?.toList(),
       'text': instance.text,
-      'element_text': instance.element_text?.toJson(),
+      'elementText': instance.elementText?.toJson(),
       'linkId': instance.linkId,
-      'element_linkId':
-          instance.element_linkId?.map((e) => e?.toJson())?.toList(),
+      'elementLinkId':
+          instance.elementLinkId?.map((e) => e?.toJson())?.toList(),
       'answer': instance.answer?.map((e) => e?.toJson())?.toList(),
       'securityLabelNumber': instance.securityLabelNumber,
-      'element_securityLabelNumber': instance.element_securityLabelNumber
+      'elementSecurityLabelNumber': instance.elementSecurityLabelNumber
           ?.map((e) => e?.toJson())
           ?.toList(),
       'valuedItem': instance.valuedItem?.map((e) => e?.toJson())?.toList(),
@@ -772,9 +768,9 @@ Contract_Context _$Contract_ContextFromJson(Map<String, dynamic> json) {
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     text: json['text'] as String,
-    element_text: json['element_text'] == null
+    elementText: json['elementText'] == null
         ? null
-        : Element.fromJson(json['element_text'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementText'] as Map<String, dynamic>),
   );
 }
 
@@ -787,7 +783,7 @@ Map<String, dynamic> _$Contract_ContextToJson(Contract_Context instance) =>
       'reference': instance.reference?.toJson(),
       'code': instance.code?.map((e) => e?.toJson())?.toList(),
       'text': instance.text,
-      'element_text': instance.element_text?.toJson(),
+      'elementText': instance.elementText?.toJson(),
     };
 
 Contract_ValuedItem _$Contract_ValuedItemFromJson(Map<String, dynamic> json) {
@@ -814,10 +810,10 @@ Contract_ValuedItem _$Contract_ValuedItemFromJson(Map<String, dynamic> json) {
     effectiveTime: json['effectiveTime'] == null
         ? null
         : DateTime.parse(json['effectiveTime'] as String),
-    element_effectiveTime: json['element_effectiveTime'] == null
+    elementEffectiveTime: json['elementEffectiveTime'] == null
         ? null
         : Element.fromJson(
-            json['element_effectiveTime'] as Map<String, dynamic>),
+            json['elementEffectiveTime'] as Map<String, dynamic>),
     quantity: json['quantity'] == null
         ? null
         : Quantity.fromJson(json['quantity'] as Map<String, dynamic>),
@@ -825,26 +821,26 @@ Contract_ValuedItem _$Contract_ValuedItemFromJson(Map<String, dynamic> json) {
         ? null
         : Money.fromJson(json['unitPrice'] as Map<String, dynamic>),
     factor: (json['factor'] as num)?.toDouble(),
-    element_factor: json['element_factor'] == null
+    elementFactor: json['elementFactor'] == null
         ? null
-        : Element.fromJson(json['element_factor'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementFactor'] as Map<String, dynamic>),
     points: (json['points'] as num)?.toDouble(),
-    element_points: json['element_points'] == null
+    elementPoints: json['elementPoints'] == null
         ? null
-        : Element.fromJson(json['element_points'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPoints'] as Map<String, dynamic>),
     net: json['net'] == null
         ? null
         : Money.fromJson(json['net'] as Map<String, dynamic>),
     payment: json['payment'] as String,
-    element_payment: json['element_payment'] == null
+    elementPayment: json['elementPayment'] == null
         ? null
-        : Element.fromJson(json['element_payment'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPayment'] as Map<String, dynamic>),
     paymentDate: json['paymentDate'] == null
         ? null
         : DateTime.parse(json['paymentDate'] as String),
-    element_paymentDate: json['element_paymentDate'] == null
+    elementPaymentDate: json['elementPaymentDate'] == null
         ? null
-        : Element.fromJson(json['element_paymentDate'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPaymentDate'] as Map<String, dynamic>),
     responsible: json['responsible'] == null
         ? null
         : Reference.fromJson(json['responsible'] as Map<String, dynamic>),
@@ -852,13 +848,13 @@ Contract_ValuedItem _$Contract_ValuedItemFromJson(Map<String, dynamic> json) {
         ? null
         : Reference.fromJson(json['recipient'] as Map<String, dynamic>),
     linkId: (json['linkId'] as List)?.map((e) => e as String)?.toList(),
-    element_linkId: (json['element_linkId'] as List)
+    elementLinkId: (json['elementLinkId'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     securityLabelNumber:
         (json['securityLabelNumber'] as List)?.map((e) => e as int)?.toList(),
-    element_securityLabelNumber: (json['element_securityLabelNumber'] as List)
+    elementSecurityLabelNumber: (json['elementSecurityLabelNumber'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -876,25 +872,25 @@ Map<String, dynamic> _$Contract_ValuedItemToJson(
       'entityReference': instance.entityReference?.toJson(),
       'identifier': instance.identifier?.toJson(),
       'effectiveTime': instance.effectiveTime?.toIso8601String(),
-      'element_effectiveTime': instance.element_effectiveTime?.toJson(),
+      'elementEffectiveTime': instance.elementEffectiveTime?.toJson(),
       'quantity': instance.quantity?.toJson(),
       'unitPrice': instance.unitPrice?.toJson(),
       'factor': instance.factor,
-      'element_factor': instance.element_factor?.toJson(),
+      'elementFactor': instance.elementFactor?.toJson(),
       'points': instance.points,
-      'element_points': instance.element_points?.toJson(),
+      'elementPoints': instance.elementPoints?.toJson(),
       'net': instance.net?.toJson(),
       'payment': instance.payment,
-      'element_payment': instance.element_payment?.toJson(),
+      'elementPayment': instance.elementPayment?.toJson(),
       'paymentDate': instance.paymentDate?.toIso8601String(),
-      'element_paymentDate': instance.element_paymentDate?.toJson(),
+      'elementPaymentDate': instance.elementPaymentDate?.toJson(),
       'responsible': instance.responsible?.toJson(),
       'recipient': instance.recipient?.toJson(),
       'linkId': instance.linkId,
-      'element_linkId':
-          instance.element_linkId?.map((e) => e?.toJson())?.toList(),
+      'elementLinkId':
+          instance.elementLinkId?.map((e) => e?.toJson())?.toList(),
       'securityLabelNumber': instance.securityLabelNumber,
-      'element_securityLabelNumber': instance.element_securityLabelNumber
+      'elementSecurityLabelNumber': instance.elementSecurityLabelNumber
           ?.map((e) => e?.toJson())
           ?.toList(),
     };
@@ -920,17 +916,16 @@ Contract_Action _$Contract_ActionFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     doNotPerform: json['doNotPerform'] as bool,
-    element_doNotPerform: json['element_doNotPerform'] == null
+    elementDoNotPerform: json['elementDoNotPerform'] == null
         ? null
-        : Element.fromJson(
-            json['element_doNotPerform'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDoNotPerform'] as Map<String, dynamic>),
     subject: (json['subject'] as List)
         ?.map((e) => e == null
             ? null
             : Contract_Subject.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     linkId: (json['linkId'] as List)?.map((e) => e as String)?.toList(),
-    element_linkId: (json['element_linkId'] as List)
+    elementLinkId: (json['elementLinkId'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -939,15 +934,15 @@ Contract_Action _$Contract_ActionFromJson(Map<String, dynamic> json) {
         : Reference.fromJson(json['context'] as Map<String, dynamic>),
     contextLinkId:
         (json['contextLinkId'] as List)?.map((e) => e as String)?.toList(),
-    element_contextLinkId: (json['element_contextLinkId'] as List)
+    elementContextLinkId: (json['elementContextLinkId'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     occurrenceDateTime: json['occurrenceDateTime'] as String,
-    element_occurrenceDateTime: json['element_occurrenceDateTime'] == null
+    elementOccurrenceDateTime: json['elementOccurrenceDateTime'] == null
         ? null
         : Element.fromJson(
-            json['element_occurrenceDateTime'] as Map<String, dynamic>),
+            json['elementOccurrenceDateTime'] as Map<String, dynamic>),
     occurrencePeriod: json['occurrencePeriod'] == null
         ? null
         : Period.fromJson(json['occurrencePeriod'] as Map<String, dynamic>),
@@ -960,7 +955,7 @@ Contract_Action _$Contract_ActionFromJson(Map<String, dynamic> json) {
         ?.toList(),
     requesterLinkId:
         (json['requesterLinkId'] as List)?.map((e) => e as String)?.toList(),
-    element_requesterLinkId: (json['element_requesterLinkId'] as List)
+    elementRequesterLinkId: (json['elementRequesterLinkId'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -978,7 +973,7 @@ Contract_Action _$Contract_ActionFromJson(Map<String, dynamic> json) {
         : Reference.fromJson(json['performer'] as Map<String, dynamic>),
     performerLinkId:
         (json['performerLinkId'] as List)?.map((e) => e as String)?.toList(),
-    element_performerLinkId: (json['element_performerLinkId'] as List)
+    elementPerformerLinkId: (json['elementPerformerLinkId'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -992,13 +987,13 @@ Contract_Action _$Contract_ActionFromJson(Map<String, dynamic> json) {
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     reason: (json['reason'] as List)?.map((e) => e as String)?.toList(),
-    element_reason: (json['element_reason'] as List)
+    elementReason: (json['elementReason'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     reasonLinkId:
         (json['reasonLinkId'] as List)?.map((e) => e as String)?.toList(),
-    element_reasonLinkId: (json['element_reasonLinkId'] as List)
+    elementReasonLinkId: (json['elementReasonLinkId'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -1008,7 +1003,7 @@ Contract_Action _$Contract_ActionFromJson(Map<String, dynamic> json) {
         ?.toList(),
     securityLabelNumber:
         (json['securityLabelNumber'] as List)?.map((e) => e as int)?.toList(),
-    element_securityLabelNumber: (json['element_securityLabelNumber'] as List)
+    elementSecurityLabelNumber: (json['elementSecurityLabelNumber'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -1022,46 +1017,45 @@ Map<String, dynamic> _$Contract_ActionToJson(Contract_Action instance) =>
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'doNotPerform': instance.doNotPerform,
-      'element_doNotPerform': instance.element_doNotPerform?.toJson(),
+      'elementDoNotPerform': instance.elementDoNotPerform?.toJson(),
       'type': instance.type?.toJson(),
       'subject': instance.subject?.map((e) => e?.toJson())?.toList(),
       'intent': instance.intent?.toJson(),
       'linkId': instance.linkId,
-      'element_linkId':
-          instance.element_linkId?.map((e) => e?.toJson())?.toList(),
+      'elementLinkId':
+          instance.elementLinkId?.map((e) => e?.toJson())?.toList(),
       'status': instance.status?.toJson(),
       'context': instance.context?.toJson(),
       'contextLinkId': instance.contextLinkId,
-      'element_contextLinkId':
-          instance.element_contextLinkId?.map((e) => e?.toJson())?.toList(),
+      'elementContextLinkId':
+          instance.elementContextLinkId?.map((e) => e?.toJson())?.toList(),
       'occurrenceDateTime': instance.occurrenceDateTime,
-      'element_occurrenceDateTime':
-          instance.element_occurrenceDateTime?.toJson(),
+      'elementOccurrenceDateTime': instance.elementOccurrenceDateTime?.toJson(),
       'occurrencePeriod': instance.occurrencePeriod?.toJson(),
       'occurrenceTiming': instance.occurrenceTiming?.toJson(),
       'requester': instance.requester?.map((e) => e?.toJson())?.toList(),
       'requesterLinkId': instance.requesterLinkId,
-      'element_requesterLinkId':
-          instance.element_requesterLinkId?.map((e) => e?.toJson())?.toList(),
+      'elementRequesterLinkId':
+          instance.elementRequesterLinkId?.map((e) => e?.toJson())?.toList(),
       'performerType':
           instance.performerType?.map((e) => e?.toJson())?.toList(),
       'performerRole': instance.performerRole?.toJson(),
       'performer': instance.performer?.toJson(),
       'performerLinkId': instance.performerLinkId,
-      'element_performerLinkId':
-          instance.element_performerLinkId?.map((e) => e?.toJson())?.toList(),
+      'elementPerformerLinkId':
+          instance.elementPerformerLinkId?.map((e) => e?.toJson())?.toList(),
       'reasonCode': instance.reasonCode?.map((e) => e?.toJson())?.toList(),
       'reasonReference':
           instance.reasonReference?.map((e) => e?.toJson())?.toList(),
       'reason': instance.reason,
-      'element_reason':
-          instance.element_reason?.map((e) => e?.toJson())?.toList(),
+      'elementReason':
+          instance.elementReason?.map((e) => e?.toJson())?.toList(),
       'reasonLinkId': instance.reasonLinkId,
-      'element_reasonLinkId':
-          instance.element_reasonLinkId?.map((e) => e?.toJson())?.toList(),
+      'elementReasonLinkId':
+          instance.elementReasonLinkId?.map((e) => e?.toJson())?.toList(),
       'note': instance.note?.map((e) => e?.toJson())?.toList(),
       'securityLabelNumber': instance.securityLabelNumber,
-      'element_securityLabelNumber': instance.element_securityLabelNumber
+      'elementSecurityLabelNumber': instance.elementSecurityLabelNumber
           ?.map((e) => e?.toJson())
           ?.toList(),
     };

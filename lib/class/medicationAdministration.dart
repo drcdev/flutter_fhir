@@ -37,13 +37,13 @@ class MedicationAdministration {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -56,7 +56,7 @@ class MedicationAdministration {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -94,7 +94,7 @@ class MedicationAdministration {
   List<String> instantiates;
 
   //  Extensions for instantiates
-  List<Element> element_instantiates;
+  List<Element> elementInstantiates;
 
   //  A larger event of which this particular event is a component or step.
   List<Reference> partOf;
@@ -106,7 +106,7 @@ class MedicationAdministration {
   String status;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  A code indicating why the administration was not performed.
   List<CodeableConcept> statusReason;
@@ -145,7 +145,7 @@ class MedicationAdministration {
   String effectiveDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for effectiveDateTime
-  Element element_effectiveDateTime;
+  Element elementEffectiveDateTime;
 
   //  A specific date/time or interval of time during which the
   // administration took place (or did not take place, when the 'notGiven'
@@ -189,19 +189,19 @@ MedicationAdministration(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.instantiates,
-    this.element_instantiates,
+    this.elementInstantiates,
     this.partOf,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.statusReason,
     this.category,
     this.medicationCodeableConcept,
@@ -209,7 +209,7 @@ MedicationAdministration(
     this.context,
     this.supportingInformation,
     this.effectiveDateTime,
-    this.element_effectiveDateTime,
+    this.elementEffectiveDateTime,
     this.effectivePeriod,
     this.performer,
     this.reasonCode,
@@ -310,7 +310,7 @@ class MedicationAdministration_Dosage {
   String text;
 
   //  Extensions for text
-  Element element_text;
+  Element elementText;
 
   //  A coded specification of the anatomic site where the medication first
   // entered the body.  For example, "left arm".
@@ -351,7 +351,7 @@ MedicationAdministration_Dosage(
     this.extension,
     this.modifierExtension,
     this.text,
-    this.element_text,
+    this.elementText,
     this.site,
     this.route,
     this.method,

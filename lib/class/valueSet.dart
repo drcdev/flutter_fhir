@@ -35,13 +35,13 @@ class ValueSet {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -54,7 +54,7 @@ class ValueSet {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -89,7 +89,7 @@ class ValueSet {
   String url;
 
   //  Extensions for url
-  Element element_url;
+  Element elementUrl;
 
   //  A formal identifier that is used to identify this value set when it is
   // represented in other formats, or referenced in a specification, model,
@@ -105,7 +105,7 @@ class ValueSet {
   String version;
 
   //  Extensions for version
-  Element element_version;
+  Element elementVersion;
 
   //  A natural language name identifying the value set. This name should be
   // usable as an identifier for the module by machine processing
@@ -113,13 +113,13 @@ class ValueSet {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  A short, descriptive, user-friendly title for the value set.
   String title;
 
   //  Extensions for title
-  Element element_title;
+  Element elementTitle;
 
   //  The status of this value set. Enables tracking the life-cycle of the
   // content. The status of the value set applies to the value set
@@ -128,7 +128,7 @@ class ValueSet {
   String status; // <code> enum: draft/active/retired/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  A Boolean value to indicate that this value set is authored for
   // testing purposes (or education/evaluation/marketing) and is not
@@ -136,21 +136,21 @@ class ValueSet {
   bool experimental;
 
   //  Extensions for experimental
-  Element element_experimental;
+  Element elementExperimental;
 
   //  The date (and optionally time) when the value set was created or
   // revised (e.g. the 'content logical definition').
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  The name of the organization or individual that published the value
   // set.
   String publisher;
 
   //  Extensions for publisher
-  Element element_publisher;
+  Element elementPublisher;
 
   //  Contact details to assist a user in finding and communicating with the
   // publisher.
@@ -163,7 +163,7 @@ class ValueSet {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  The content was developed with a focus and intent of supporting the
   // contexts that are listed. These contexts may be general categories
@@ -181,14 +181,14 @@ class ValueSet {
   bool immutable;
 
   //  Extensions for immutable
-  Element element_immutable;
+  Element elementImmutable;
 
   //  Explanation of why this value set is needed and why it has been
   // designed as it has.
   String purpose;
 
   //  Extensions for purpose
-  Element element_purpose;
+  Element elementPurpose;
 
   //  A copyright statement relating to the value set and/or its contents.
   // Copyright statements are generally legal restrictions on the use and
@@ -196,7 +196,7 @@ class ValueSet {
   String copyright;
 
   //  Extensions for copyright
-  Element element_copyright;
+  Element elementCopyright;
 
   //  A set of criteria that define the contents of the value set by
   // including or excluding codes selected from the specified code system(s)
@@ -213,41 +213,41 @@ ValueSet(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
-    this.element_url,
+    this.elementUrl,
     this.identifier,
     this.version,
-    this.element_version,
+    this.elementVersion,
     this.name,
-    this.element_name,
+    this.elementName,
     this.title,
-    this.element_title,
+    this.elementTitle,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.experimental,
-    this.element_experimental,
+    this.elementExperimental,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.publisher,
-    this.element_publisher,
+    this.elementPublisher,
     this.contact,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.useContext,
     this.jurisdiction,
     this.immutable,
-    this.element_immutable,
+    this.elementImmutable,
     this.purpose,
-    this.element_purpose,
+    this.elementPurpose,
     this.copyright,
-    this.element_copyright,
+    this.elementCopyright,
     this.compose,
     this.expansion
     });
@@ -292,7 +292,7 @@ class ValueSet_Compose {
   String lockedDate;
 
   //  Extensions for lockedDate
-  Element element_lockedDate;
+  Element elementLockedDate;
 
   //  Whether inactive codes - codes that are not approved for current use -
   // are in the value set. If inactive = true, inactive codes are to be
@@ -303,7 +303,7 @@ class ValueSet_Compose {
   bool inactive;
 
   //  Extensions for inactive
-  Element element_inactive;
+  Element elementInactive;
 
   //  Include one or more codes from a code system or other value set(s).
   List<ValueSet_Include> include;
@@ -318,9 +318,9 @@ ValueSet_Compose(
     this.extension,
     this.modifierExtension,
     this.lockedDate,
-    this.element_lockedDate,
+    this.elementLockedDate,
     this.inactive,
-    this.element_inactive,
+    this.elementInactive,
     this.exclude
     });
 
@@ -362,14 +362,14 @@ class ValueSet_Include {
   String system;
 
   //  Extensions for system
-  Element element_system;
+  Element elementSystem;
 
   //  The version of the code system that the codes are selected from, or
   // the special version '*' for all versions.
   String version;
 
   //  Extensions for version
-  Element element_version;
+  Element elementVersion;
 
   //  Specifies a concept to be included or excluded.
   List<ValueSet_Concept> concept;
@@ -391,9 +391,9 @@ ValueSet_Include(
     this.extension,
     this.modifierExtension,
     this.system,
-    this.element_system,
+    this.elementSystem,
     this.version,
-    this.element_version,
+    this.elementVersion,
     this.concept,
     this.filter,
     this.valueSet
@@ -436,7 +436,7 @@ class ValueSet_Concept {
   String code;
 
   //  Extensions for code
-  Element element_code;
+  Element elementCode;
 
   //  The text to display to the user for this concept in the context of
   // this valueset. If no display is provided, then applications using the
@@ -444,7 +444,7 @@ class ValueSet_Concept {
   String display;
 
   //  Extensions for display
-  Element element_display;
+  Element elementDisplay;
 
   //  Additional representations for this concept when used in this value
   // set - other languages, aliases, specialized purposes, used for
@@ -456,9 +456,9 @@ ValueSet_Concept(
     this.extension,
     this.modifierExtension,
     this.code,
-    this.element_code,
+    this.elementCode,
     this.display,
-    this.element_display,
+    this.elementDisplay,
     this.designation
     });
 
@@ -499,7 +499,7 @@ class ValueSet_Designation {
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A code that represents types of uses of designations.
   Coding use;
@@ -508,17 +508,17 @@ class ValueSet_Designation {
   String value;
 
   //  Extensions for value
-  Element element_value;
+  Element elementValue;
 
 ValueSet_Designation(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.use,
     this.value,
-    this.element_value
+    this.elementValue
     });
 
   factory ValueSet_Designation.fromJson(Map<String, dynamic> json) => _$ValueSet_DesignationFromJson(json);
@@ -559,13 +559,13 @@ class ValueSet_Filter {
   String property;
 
   //  Extensions for property
-  Element element_property;
+  Element elementProperty;
 
   //  The kind of operation to perform as a part of the filter criteria.
   String op; // <code> enum: =/is-a/descendent-of/is-not-a/regex/in/not-in/generalizes/exists;
 
   //  Extensions for op
-  Element element_op;
+  Element elementOp;
 
   //  The match value may be either a code defined by the system, or a
   // string value, which is a regex match on the literal string of the
@@ -576,18 +576,18 @@ class ValueSet_Filter {
   String value;
 
   //  Extensions for value
-  Element element_value;
+  Element elementValue;
 
 ValueSet_Filter(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.property,
-    this.element_property,
+    this.elementProperty,
     this.op,
-    this.element_op,
+    this.elementOp,
     this.value,
-    this.element_value
+    this.elementValue
     });
 
   factory ValueSet_Filter.fromJson(Map<String, dynamic> json) => _$ValueSet_FilterFromJson(json);
@@ -632,13 +632,13 @@ class ValueSet_Expansion {
   String identifier;
 
   //  Extensions for identifier
-  Element element_identifier;
+  Element elementIdentifier;
 
   //  The time at which the expansion was produced by the expanding system.
   DateTime timestamp;
 
   //  Extensions for timestamp
-  Element element_timestamp;
+  Element elementTimestamp;
 
   //  The total number of concepts in the expansion. If the number of
   // concept nodes in this resource is less than the stated number, then the
@@ -646,7 +646,7 @@ class ValueSet_Expansion {
   int total;
 
   //  Extensions for total
-  Element element_total;
+  Element elementTotal;
 
   //  If paging is being used, the offset at which this resource starts. 
   // I.e. this resource is a partial view into the expansion. If paging is
@@ -654,7 +654,7 @@ class ValueSet_Expansion {
   int offset;
 
   //  Extensions for offset
-  Element element_offset;
+  Element elementOffset;
 
   //  A parameter that controlled the expansion process. These parameters
   // may be used by users of expanded value sets to check whether the
@@ -670,13 +670,13 @@ ValueSet_Expansion(
     this.extension,
     this.modifierExtension,
     this.identifier,
-    this.element_identifier,
+    this.elementIdentifier,
     this.timestamp,
-    this.element_timestamp,
+    this.elementTimestamp,
     this.total,
-    this.element_total,
+    this.elementTotal,
     this.offset,
-    this.element_offset,
+    this.elementOffset,
     this.parameter,
     this.contains
     });
@@ -720,70 +720,70 @@ class ValueSet_Parameter {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  The value of the parameter.
   String valueString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for valueString
-  Element element_valueString;
+  Element elementValueString;
 
   //  The value of the parameter.
   bool valueBoolean; //  pattern: ^true|false$
 
   //  Extensions for valueBoolean
-  Element element_valueBoolean;
+  Element elementValueBoolean;
 
   //  The value of the parameter.
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
 
   //  Extensions for valueInteger
-  Element element_valueInteger;
+  Element elementValueInteger;
 
   //  The value of the parameter.
   double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
 
   //  Extensions for valueDecimal
-  Element element_valueDecimal;
+  Element elementValueDecimal;
 
   //  The value of the parameter.
   String valueUri; //  pattern: ^\S*$
 
   //  Extensions for valueUri
-  Element element_valueUri;
+  Element elementValueUri;
 
   //  The value of the parameter.
   String valueCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
 
   //  Extensions for valueCode
-  Element element_valueCode;
+  Element elementValueCode;
 
   //  The value of the parameter.
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for valueDateTime
-  Element element_valueDateTime;
+  Element elementValueDateTime;
 
 ValueSet_Parameter(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.name,
-    this.element_name,
+    this.elementName,
     this.valueString,
-    this.element_valueString,
+    this.elementValueString,
     this.valueBoolean,
-    this.element_valueBoolean,
+    this.elementValueBoolean,
     this.valueInteger,
-    this.element_valueInteger,
+    this.elementValueInteger,
     this.valueDecimal,
-    this.element_valueDecimal,
+    this.elementValueDecimal,
     this.valueUri,
-    this.element_valueUri,
+    this.elementValueUri,
     this.valueCode,
-    this.element_valueCode,
+    this.elementValueCode,
     this.valueDateTime,
-    this.element_valueDateTime
+    this.elementValueDateTime
     });
 
   factory ValueSet_Parameter.fromJson(Map<String, dynamic> json) => _$ValueSet_ParameterFromJson(json);
@@ -824,7 +824,7 @@ class ValueSet_Contains {
   String system;
 
   //  Extensions for system
-  Element element_system;
+  Element elementSystem;
 
   //  If true, this entry is included in the expansion for navigational
   // purposes, and the user cannot select the code directly as a proper
@@ -832,7 +832,7 @@ class ValueSet_Contains {
   bool abstract;
 
   //  Extensions for abstract
-  Element element_abstract;
+  Element elementAbstract;
 
   //  If the concept is inactive in the code system that defines it.
   // Inactive codes are those that are no longer to be used, but are
@@ -842,7 +842,7 @@ class ValueSet_Contains {
   bool inactive;
 
   //  Extensions for inactive
-  Element element_inactive;
+  Element elementInactive;
 
   //  The version of the code system from this code was taken. Note that a
   // well-maintained code system does not need the version reported, because
@@ -852,7 +852,7 @@ class ValueSet_Contains {
   String version;
 
   //  Extensions for version
-  Element element_version;
+  Element elementVersion;
 
   //  The code for this item in the expansion hierarchy. If this code is
   // missing the entry in the hierarchy is a place holder (abstract) and
@@ -860,13 +860,13 @@ class ValueSet_Contains {
   String code;
 
   //  Extensions for code
-  Element element_code;
+  Element elementCode;
 
   //  The recommended display for this item in the expansion.
   String display;
 
   //  Extensions for display
-  Element element_display;
+  Element elementDisplay;
 
   //  Additional representations for this item - other languages, aliases,
   // specialized purposes, used for particular purposes, etc. These are
@@ -882,17 +882,17 @@ ValueSet_Contains(
     this.extension,
     this.modifierExtension,
     this.system,
-    this.element_system,
+    this.elementSystem,
     this.abstract,
-    this.element_abstract,
+    this.elementAbstract,
     this.inactive,
-    this.element_inactive,
+    this.elementInactive,
     this.version,
-    this.element_version,
+    this.elementVersion,
     this.code,
-    this.element_code,
+    this.elementCode,
     this.display,
-    this.element_display,
+    this.elementDisplay,
     this.designation,
     this.contains
     });

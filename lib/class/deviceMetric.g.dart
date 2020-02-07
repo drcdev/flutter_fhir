@@ -16,20 +16,20 @@ DeviceMetric _$DeviceMetricFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -53,18 +53,18 @@ DeviceMetric _$DeviceMetricFromJson(Map<String, dynamic> json) {
         ? null
         : Reference.fromJson(json['parent'] as Map<String, dynamic>),
     operationalStatus: json['operationalStatus'] as String,
-    element_operationalStatus: json['element_operationalStatus'] == null
+    elementOperationalStatus: json['elementOperationalStatus'] == null
         ? null
         : Element.fromJson(
-            json['element_operationalStatus'] as Map<String, dynamic>),
+            json['elementOperationalStatus'] as Map<String, dynamic>),
     color: json['color'] as String,
-    element_color: json['element_color'] == null
+    elementColor: json['elementColor'] == null
         ? null
-        : Element.fromJson(json['element_color'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementColor'] as Map<String, dynamic>),
     category: json['category'] as String,
-    element_category: json['element_category'] == null
+    elementCategory: json['elementCategory'] == null
         ? null
-        : Element.fromJson(json['element_category'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementCategory'] as Map<String, dynamic>),
     measurementPeriod: json['measurementPeriod'] == null
         ? null
         : Timing.fromJson(json['measurementPeriod'] as Map<String, dynamic>),
@@ -81,9 +81,9 @@ Map<String, dynamic> _$DeviceMetricToJson(DeviceMetric instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -95,11 +95,11 @@ Map<String, dynamic> _$DeviceMetricToJson(DeviceMetric instance) =>
       'source': instance.source?.toJson(),
       'parent': instance.parent?.toJson(),
       'operationalStatus': instance.operationalStatus,
-      'element_operationalStatus': instance.element_operationalStatus?.toJson(),
+      'elementOperationalStatus': instance.elementOperationalStatus?.toJson(),
       'color': instance.color,
-      'element_color': instance.element_color?.toJson(),
+      'elementColor': instance.elementColor?.toJson(),
       'category': instance.category,
-      'element_category': instance.element_category?.toJson(),
+      'elementCategory': instance.elementCategory?.toJson(),
       'measurementPeriod': instance.measurementPeriod?.toJson(),
       'calibration': instance.calibration?.map((e) => e?.toJson())?.toList(),
     };
@@ -117,17 +117,17 @@ DeviceMetric_Calibration _$DeviceMetric_CalibrationFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     type: json['type'] as String,
-    element_type: json['element_type'] == null
+    elementType: json['elementType'] == null
         ? null
-        : Element.fromJson(json['element_type'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
     state: json['state'] as String,
-    element_state: json['element_state'] == null
+    elementState: json['elementState'] == null
         ? null
-        : Element.fromJson(json['element_state'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementState'] as Map<String, dynamic>),
     time: json['time'] == null ? null : DateTime.parse(json['time'] as String),
-    element_time: json['element_time'] == null
+    elementTime: json['elementTime'] == null
         ? null
-        : Element.fromJson(json['element_time'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementTime'] as Map<String, dynamic>),
   );
 }
 
@@ -139,9 +139,9 @@ Map<String, dynamic> _$DeviceMetric_CalibrationToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'type': instance.type,
-      'element_type': instance.element_type?.toJson(),
+      'elementType': instance.elementType?.toJson(),
       'state': instance.state,
-      'element_state': instance.element_state?.toJson(),
+      'elementState': instance.elementState?.toJson(),
       'time': instance.time?.toIso8601String(),
-      'element_time': instance.element_time?.toJson(),
+      'elementTime': instance.elementTime?.toJson(),
     };

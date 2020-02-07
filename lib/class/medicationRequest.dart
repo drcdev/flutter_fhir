@@ -38,13 +38,13 @@ class MedicationRequest {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -57,7 +57,7 @@ class MedicationRequest {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -95,7 +95,7 @@ class MedicationRequest {
   String status;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  Captures the reason for the current state of the MedicationRequest.
   CodeableConcept statusReason;
@@ -104,7 +104,7 @@ class MedicationRequest {
   String intent;
 
   //  Extensions for intent
-  Element element_intent;
+  Element elementIntent;
 
   //  Indicates the type of medication request (for example, where the
   // medication is expected to be consumed or administered (i.e. inpatient
@@ -116,14 +116,14 @@ class MedicationRequest {
   String priority;
 
   //  Extensions for priority
-  Element element_priority;
+  Element elementPriority;
 
   //  If true indicates that the provider is asking for the medication
   // request not to occur.
   bool doNotPerform;
 
   //  Extensions for doNotPerform
-  Element element_doNotPerform;
+  Element elementDoNotPerform;
 
   //  Indicates if this record was captured as a secondary 'reported' record
   // rather than as an original primary source-of-truth record.  It may also
@@ -131,7 +131,7 @@ class MedicationRequest {
   bool reportedBoolean; //  pattern: ^true|false$
 
   //  Extensions for reportedBoolean
-  Element element_reportedBoolean;
+  Element elementReportedBoolean;
 
   //  Indicates if this record was captured as a secondary 'reported' record
   // rather than as an original primary source-of-truth record.  It may also
@@ -167,7 +167,7 @@ class MedicationRequest {
   DateTime authoredOn;
 
   //  Extensions for authoredOn
-  Element element_authoredOn;
+  Element elementAuthoredOn;
 
   //  The individual, organization, or device that initiated the request and
   // has responsibility for its activation.
@@ -198,7 +198,7 @@ class MedicationRequest {
   List<String> instantiatesCanonical;
 
   //  Extensions for instantiatesCanonical
-  List<Element> element_instantiatesCanonical;
+  List<Element> elementInstantiatesCanonical;
 
   //  The URL pointing to an externally maintained protocol, guideline,
   // orderset or other definition that is adhered to in whole or in part by
@@ -206,7 +206,7 @@ class MedicationRequest {
   List<String> instantiatesUri;
 
   //  Extensions for instantiatesUri
-  List<Element> element_instantiatesUri;
+  List<Element> elementInstantiatesUri;
 
   //  A plan or request that is fulfilled in whole or in part by this
   // medication request.
@@ -267,33 +267,33 @@ MedicationRequest(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.statusReason,
     this.intent,
-    this.element_intent,
+    this.elementIntent,
     this.category,
     this.priority,
-    this.element_priority,
+    this.elementPriority,
     this.doNotPerform,
-    this.element_doNotPerform,
+    this.elementDoNotPerform,
     this.reportedBoolean,
-    this.element_reportedBoolean,
+    this.elementReportedBoolean,
     this.reportedReference,
     this.medicationCodeableConcept,
     this.medicationReference,
     this.encounter,
     this.supportingInformation,
     this.authoredOn,
-    this.element_authoredOn,
+    this.elementAuthoredOn,
     this.requester,
     this.performer,
     this.performerType,
@@ -301,9 +301,9 @@ MedicationRequest(
     this.reasonCode,
     this.reasonReference,
     this.instantiatesCanonical,
-    this.element_instantiatesCanonical,
+    this.elementInstantiatesCanonical,
     this.instantiatesUri,
-    this.element_instantiatesUri,
+    this.elementInstantiatesUri,
     this.basedOn,
     this.groupIdentifier,
     this.courseOfTherapyType,
@@ -373,7 +373,7 @@ class MedicationRequest_DispenseRequest {
   int numberOfRepeatsAllowed;
 
   //  Extensions for numberOfRepeatsAllowed
-  Element element_numberOfRepeatsAllowed;
+  Element elementNumberOfRepeatsAllowed;
 
   //  The amount that is to be dispensed for one fill.
   Quantity quantity;
@@ -394,7 +394,7 @@ MedicationRequest_DispenseRequest(
     this.dispenseInterval,
     this.validityPeriod,
     this.numberOfRepeatsAllowed,
-    this.element_numberOfRepeatsAllowed,
+    this.elementNumberOfRepeatsAllowed,
     this.quantity,
     this.expectedSupplyDuration,
     this.performer
@@ -485,7 +485,7 @@ class MedicationRequest_Substitution {
   bool allowedBoolean; //  pattern: ^true|false$
 
   //  Extensions for allowedBoolean
-  Element element_allowedBoolean;
+  Element elementAllowedBoolean;
 
   //  True if the prescriber allows a different drug to be dispensed from
   // what was prescribed.
@@ -500,7 +500,7 @@ MedicationRequest_Substitution(
     this.extension,
     this.modifierExtension,
     this.allowedBoolean,
-    this.element_allowedBoolean,
+    this.elementAllowedBoolean,
     this.allowedCodeableConcept,
     this.reason
     });

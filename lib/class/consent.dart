@@ -36,13 +36,13 @@ class Consent {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -55,7 +55,7 @@ class Consent {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -87,7 +87,7 @@ class Consent {
   String status; // <code> enum: draft/proposed/active/rejected/inactive/entered-in-error;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  A selector of the type of consent being presented: ADR, Privacy,
   // Treatment, Research.  This list is now extensible.
@@ -104,7 +104,7 @@ class Consent {
   DateTime dateTime;
 
   //  Extensions for dateTime
-  Element element_dateTime;
+  Element elementDateTime;
 
   //  Either the Grantor, which is the entity responsible for granting the
   // rights listed in a Consent Directive or the Grantee, which is the
@@ -152,19 +152,19 @@ Consent(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.patient,
     this.dateTime,
-    this.element_dateTime,
+    this.elementDateTime,
     this.performer,
     this.organization,
     this.sourceAttachment,
@@ -214,7 +214,7 @@ class Consent_Policy {
   String authority;
 
   //  Extensions for authority
-  Element element_authority;
+  Element elementAuthority;
 
   //  The references to the policies that are included in this consent
   // scope. Policies may be organizational, but are often defined
@@ -222,16 +222,16 @@ class Consent_Policy {
   String uri;
 
   //  Extensions for uri
-  Element element_uri;
+  Element elementUri;
 
 Consent_Policy(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.authority,
-    this.element_authority,
+    this.elementAuthority,
     this.uri,
-    this.element_uri
+    this.elementUri
     });
 
   factory Consent_Policy.fromJson(Map<String, dynamic> json) => _$Consent_PolicyFromJson(json);
@@ -271,7 +271,7 @@ class Consent_Verification {
   bool verified;
 
   //  Extensions for verified
-  Element element_verified;
+  Element elementVerified;
 
   //  Who verified the instruction (Patient, Relative or other Authorized
   // Person).
@@ -281,17 +281,17 @@ class Consent_Verification {
   DateTime verificationDate;
 
   //  Extensions for verificationDate
-  Element element_verificationDate;
+  Element elementVerificationDate;
 
 Consent_Verification(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.verified,
-    this.element_verified,
+    this.elementVerified,
     this.verifiedWith,
     this.verificationDate,
-    this.element_verificationDate
+    this.elementVerificationDate
     });
 
   factory Consent_Verification.fromJson(Map<String, dynamic> json) => _$Consent_VerificationFromJson(json);
@@ -332,7 +332,7 @@ class Consent_Provision {
   String type; // <code> enum: deny/permit;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  The timeframe in this rule is valid.
   Period period;
@@ -376,7 +376,7 @@ Consent_Provision(
     this.extension,
     this.modifierExtension,
     this.type,
-    this.element_type,
+    this.elementType,
     this.period,
     this.actor,
     this.action,
@@ -477,7 +477,7 @@ class Consent_Data {
   String meaning; // <code> enum: instance/related/dependents/authoredby;
 
   //  Extensions for meaning
-  Element element_meaning;
+  Element elementMeaning;
 
   //  A reference to a specific resource that defines which resources are
   // covered by this consent.
@@ -489,7 +489,7 @@ Consent_Data(
     this.extension,
     this.modifierExtension,
     this.meaning,
-    this.element_meaning
+    this.elementMeaning
     });
 
   factory Consent_Data.fromJson(Map<String, dynamic> json) => _$Consent_DataFromJson(json);

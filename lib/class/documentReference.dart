@@ -36,13 +36,13 @@ class DocumentReference {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -55,7 +55,7 @@ class DocumentReference {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -94,13 +94,13 @@ class DocumentReference {
   String status; // <code> enum: current/superseded/entered-in-error;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  The status of the underlying document.
   String docStatus;
 
   //  Extensions for docStatus
-  Element element_docStatus;
+  Element elementDocStatus;
 
   //  Specifies the particular kind of document referenced  (e.g. History
   // and Physical, Discharge Summary, Progress Note). This usually equates
@@ -122,7 +122,7 @@ class DocumentReference {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  Identifies who is responsible for adding the information to the
   // document.
@@ -144,7 +144,7 @@ class DocumentReference {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  A set of Security-Tag codes specifying the level of privacy/security
   // of the Document. Note that DocumentReference.meta.security contains the
@@ -165,9 +165,9 @@ DocumentReference(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -175,20 +175,20 @@ DocumentReference(
     this.masterIdentifier,
     this.identifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.docStatus,
-    this.element_docStatus,
+    this.elementDocStatus,
     this.type,
     this.category,
     this.subject,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.author,
     this.authenticator,
     this.custodian,
     this.relatesTo,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.securityLabel,
     this.context
     });
@@ -230,7 +230,7 @@ class DocumentReference_RelatesTo {
   String code; // <code> enum: replaces/transforms/signs/appends;
 
   //  Extensions for code
-  Element element_code;
+  Element elementCode;
 
   //  The target document of this relationship.
   Reference target;
@@ -241,7 +241,7 @@ DocumentReference_RelatesTo(
     this.extension,
     this.modifierExtension,
     this.code,
-    this.element_code
+    this.elementCode
     });
 
   factory DocumentReference_RelatesTo.fromJson(Map<String, dynamic> json) => _$DocumentReference_RelatesToFromJson(json);

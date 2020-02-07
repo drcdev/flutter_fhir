@@ -37,13 +37,13 @@ class ResearchStudy {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -56,7 +56,7 @@ class ResearchStudy {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -89,7 +89,7 @@ class ResearchStudy {
   String title;
 
   //  Extensions for title
-  Element element_title;
+  Element elementTitle;
 
   //  The set of steps expected to be performed as part of the execution of
   // the study.
@@ -103,7 +103,7 @@ class ResearchStudy {
   String status; // <code> enum: active/administratively-completed/approved/closed-to-accrual/closed-to-accrual-and-intervention/completed/disapproved/in-review/temporarily-closed-to-accrual/temporarily-closed-to-accrual-and-intervention/withdrawn;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  The type of study based upon the intent of the study's activities. A
   // classification of the intent of the study.
@@ -147,7 +147,7 @@ class ResearchStudy {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  Reference to a Group that defines the criteria for and quantity of
   // subjects participating in the study.  E.g. " 200 female Europeans
@@ -193,20 +193,20 @@ ResearchStudy(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.title,
-    this.element_title,
+    this.elementTitle,
     this.protocol,
     this.partOf,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.primaryPurposeType,
     this.phase,
     this.category,
@@ -217,7 +217,7 @@ ResearchStudy(
     this.keyword,
     this.location,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.enrollment,
     this.period,
     this.sponsor,
@@ -266,7 +266,7 @@ class ResearchStudy_Arm {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  Categorization of study arm, e.g. experimental, active comparator,
   // placebo comparater.
@@ -277,17 +277,17 @@ class ResearchStudy_Arm {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
 ResearchStudy_Arm(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.name,
-    this.element_name,
+    this.elementName,
     this.type,
     this.description,
-    this.element_description
+    this.elementDescription
     });
 
   factory ResearchStudy_Arm.fromJson(Map<String, dynamic> json) => _$ResearchStudy_ArmFromJson(json);
@@ -327,7 +327,7 @@ class ResearchStudy_Objective {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  The kind of study objective.
   CodeableConcept type;
@@ -337,7 +337,7 @@ ResearchStudy_Objective(
     this.extension,
     this.modifierExtension,
     this.name,
-    this.element_name,
+    this.elementName,
     this.type
     });
 

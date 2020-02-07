@@ -86,12 +86,12 @@ class _MainState extends State<_Main> {
         child: MaterialButton(
           minWidth: MediaQuery.of(context).size.width,
           onPressed: () {
-            if (userName.text != 'drgrey' || password.text != 'chopchop') {
-              setState(() => incorrect = true);
-            } else {
+//            if (userName.text != 'drgrey' || password.text != 'chopchop') {
+//              setState(() => incorrect = true);
+//            } else {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => MainMenu()));
-            }
+//            }
           },
           child: Text("Login", textAlign: TextAlign.center, style: whiteText),
         ));

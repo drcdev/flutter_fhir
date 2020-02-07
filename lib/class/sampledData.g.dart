@@ -17,29 +17,29 @@ SampledData _$SampledDataFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     period: (json['period'] as num)?.toDouble(),
-    element_period: json['element_period'] == null
+    elementPeriod: json['elementPeriod'] == null
         ? null
-        : Element.fromJson(json['element_period'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPeriod'] as Map<String, dynamic>),
     factor: (json['factor'] as num)?.toDouble(),
-    element_factor: json['element_factor'] == null
+    elementFactor: json['elementFactor'] == null
         ? null
-        : Element.fromJson(json['element_factor'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementFactor'] as Map<String, dynamic>),
     lowerLimit: (json['lowerLimit'] as num)?.toDouble(),
-    element_lowerLimit: json['element_lowerLimit'] == null
+    elementLowerLimit: json['elementLowerLimit'] == null
         ? null
-        : Element.fromJson(json['element_lowerLimit'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLowerLimit'] as Map<String, dynamic>),
     upperLimit: (json['upperLimit'] as num)?.toDouble(),
-    element_upperLimit: json['element_upperLimit'] == null
+    elementUpperLimit: json['elementUpperLimit'] == null
         ? null
-        : Element.fromJson(json['element_upperLimit'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementUpperLimit'] as Map<String, dynamic>),
     dimensions: json['dimensions'] as int,
-    element_dimensions: json['element_dimensions'] == null
+    elementDimensions: json['elementDimensions'] == null
         ? null
-        : Element.fromJson(json['element_dimensions'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDimensions'] as Map<String, dynamic>),
     data: json['data'] as String,
-    element_data: json['element_data'] == null
+    elementData: json['elementData'] == null
         ? null
-        : Element.fromJson(json['element_data'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementData'] as Map<String, dynamic>),
   );
 }
 
@@ -49,15 +49,15 @@ Map<String, dynamic> _$SampledDataToJson(SampledData instance) =>
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'origin': instance.origin?.toJson(),
       'period': instance.period,
-      'element_period': instance.element_period?.toJson(),
+      'elementPeriod': instance.elementPeriod?.toJson(),
       'factor': instance.factor,
-      'element_factor': instance.element_factor?.toJson(),
+      'elementFactor': instance.elementFactor?.toJson(),
       'lowerLimit': instance.lowerLimit,
-      'element_lowerLimit': instance.element_lowerLimit?.toJson(),
+      'elementLowerLimit': instance.elementLowerLimit?.toJson(),
       'upperLimit': instance.upperLimit,
-      'element_upperLimit': instance.element_upperLimit?.toJson(),
+      'elementUpperLimit': instance.elementUpperLimit?.toJson(),
       'dimensions': instance.dimensions,
-      'element_dimensions': instance.element_dimensions?.toJson(),
+      'elementDimensions': instance.elementDimensions?.toJson(),
       'data': instance.data,
-      'element_data': instance.element_data?.toJson(),
+      'elementData': instance.elementData?.toJson(),
     };

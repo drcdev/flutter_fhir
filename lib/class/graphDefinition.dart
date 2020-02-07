@@ -33,13 +33,13 @@ class GraphDefinition {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -52,7 +52,7 @@ class GraphDefinition {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -87,7 +87,7 @@ class GraphDefinition {
   String url;
 
   //  Extensions for url
-  Element element_url;
+  Element elementUrl;
 
   //  The identifier that is used to identify this version of the graph
   // definition when it is referenced in a specification, model, design or
@@ -99,7 +99,7 @@ class GraphDefinition {
   String version;
 
   //  Extensions for version
-  Element element_version;
+  Element elementVersion;
 
   //  A natural language name identifying the graph definition. This name
   // should be usable as an identifier for the module by machine processing
@@ -107,14 +107,14 @@ class GraphDefinition {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  The status of this graph definition. Enables tracking the life-cycle
   // of the content.
   String status; // <code> enum: draft/active/retired/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  A Boolean value to indicate that this graph definition is authored for
   // testing purposes (or education/evaluation/marketing) and is not
@@ -122,7 +122,7 @@ class GraphDefinition {
   bool experimental;
 
   //  Extensions for experimental
-  Element element_experimental;
+  Element elementExperimental;
 
   //  The date  (and optionally time) when the graph definition was
   // published. The date must change when the business version changes and
@@ -131,14 +131,14 @@ class GraphDefinition {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  The name of the organization or individual that published the graph
   // definition.
   String publisher;
 
   //  Extensions for publisher
-  Element element_publisher;
+  Element elementPublisher;
 
   //  Contact details to assist a user in finding and communicating with the
   // publisher.
@@ -149,7 +149,7 @@ class GraphDefinition {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  The content was developed with a focus and intent of supporting the
   // contexts that are listed. These contexts may be general categories
@@ -167,13 +167,13 @@ class GraphDefinition {
   String purpose;
 
   //  Extensions for purpose
-  Element element_purpose;
+  Element elementPurpose;
 
   //  The type of FHIR resource at which instances of this graph start.
   String start;
 
   //  Extensions for start
-  Element element_start;
+  Element elementStart;
 
   //  The profile that describes the use of the base resource.
   String profile;
@@ -185,36 +185,36 @@ GraphDefinition(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
-    this.element_url,
+    this.elementUrl,
     this.version,
-    this.element_version,
+    this.elementVersion,
     this.name,
-    this.element_name,
+    this.elementName,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.experimental,
-    this.element_experimental,
+    this.elementExperimental,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.publisher,
-    this.element_publisher,
+    this.elementPublisher,
     this.contact,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.useContext,
     this.jurisdiction,
     this.purpose,
-    this.element_purpose,
+    this.elementPurpose,
     this.start,
-    this.element_start,
+    this.elementStart,
     this.profile,
     this.link
     });
@@ -257,32 +257,32 @@ class GraphDefinition_Link {
   String path;
 
   //  Extensions for path
-  Element element_path;
+  Element elementPath;
 
   //  Which slice (if profiled).
   String sliceName;
 
   //  Extensions for sliceName
-  Element element_sliceName;
+  Element elementSliceName;
 
   //  Minimum occurrences for this link.
   int min;
 
   //  Extensions for min
-  Element element_min;
+  Element elementMin;
 
   //  Maximum occurrences for this link.
   String max;
 
   //  Extensions for max
-  Element element_max;
+  Element elementMax;
 
   //  Information about why this link is of interest in this graph
   // definition.
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  Potential target for the link.
   List<GraphDefinition_Target> target;
@@ -292,15 +292,15 @@ GraphDefinition_Link(
     this.extension,
     this.modifierExtension,
     this.path,
-    this.element_path,
+    this.elementPath,
     this.sliceName,
-    this.element_sliceName,
+    this.elementSliceName,
     this.min,
-    this.element_min,
+    this.elementMin,
     this.max,
-    this.element_max,
+    this.elementMax,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.target
     });
 
@@ -341,13 +341,13 @@ class GraphDefinition_Target {
   String type;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  A set of parameters to look up.
   String params;
 
   //  Extensions for params
-  Element element_params;
+  Element elementParams;
 
   //  Profile for the target resource.
   String profile;
@@ -363,9 +363,9 @@ GraphDefinition_Target(
     this.extension,
     this.modifierExtension,
     this.type,
-    this.element_type,
+    this.elementType,
     this.params,
-    this.element_params,
+    this.elementParams,
     this.profile,
     this.compartment,
     this.link
@@ -410,46 +410,46 @@ class GraphDefinition_Compartment {
   String use; // <code> enum: condition/requirement;
 
   //  Extensions for use
-  Element element_use;
+  Element elementUse;
 
   //  Identifies the compartment.
   String code;
 
   //  Extensions for code
-  Element element_code;
+  Element elementCode;
 
   //  identical | matching | different | no-rule | custom.
   String rule; // <code> enum: identical/matching/different/custom;
 
   //  Extensions for rule
-  Element element_rule;
+  Element elementRule;
 
   //  Custom rule, as a FHIRPath expression.
   String expression;
 
   //  Extensions for expression
-  Element element_expression;
+  Element elementExpression;
 
   //  Documentation for FHIRPath expression.
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
 GraphDefinition_Compartment(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.use,
-    this.element_use,
+    this.elementUse,
     this.code,
-    this.element_code,
+    this.elementCode,
     this.rule,
-    this.element_rule,
+    this.elementRule,
     this.expression,
-    this.element_expression,
+    this.elementExpression,
     this.description,
-    this.element_description
+    this.elementDescription
     });
 
   factory GraphDefinition_Compartment.fromJson(Map<String, dynamic> json) => _$GraphDefinition_CompartmentFromJson(json);

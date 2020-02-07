@@ -43,13 +43,13 @@ class EvidenceVariable {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -62,7 +62,7 @@ class EvidenceVariable {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -97,7 +97,7 @@ class EvidenceVariable {
   String url;
 
   //  Extensions for url
-  Element element_url;
+  Element elementUrl;
 
   //  A formal identifier that is used to identify this evidence variable
   // when it is represented in other formats, or referenced in a
@@ -118,7 +118,7 @@ class EvidenceVariable {
   String version;
 
   //  Extensions for version
-  Element element_version;
+  Element elementVersion;
 
   //  A natural language name identifying the evidence variable. This name
   // should be usable as an identifier for the module by machine processing
@@ -126,34 +126,34 @@ class EvidenceVariable {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  A short, descriptive, user-friendly title for the evidence variable.
   String title;
 
   //  Extensions for title
-  Element element_title;
+  Element elementTitle;
 
   //  The short title provides an alternate title for use in informal
   // descriptive contexts where the full, formal title is not necessary.
   String shortTitle;
 
   //  Extensions for shortTitle
-  Element element_shortTitle;
+  Element elementShortTitle;
 
   //  An explanatory or alternate title for the EvidenceVariable giving
   // additional information about its content.
   String subtitle;
 
   //  Extensions for subtitle
-  Element element_subtitle;
+  Element elementSubtitle;
 
   //  The status of this evidence variable. Enables tracking the life-cycle
   // of the content.
   String status; // <code> enum: draft/active/retired/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  The date  (and optionally time) when the evidence variable was
   // published. The date must change when the business version changes and
@@ -162,14 +162,14 @@ class EvidenceVariable {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  The name of the organization or individual that published the evidence
   // variable.
   String publisher;
 
   //  Extensions for publisher
-  Element element_publisher;
+  Element elementPublisher;
 
   //  Contact details to assist a user in finding and communicating with the
   // publisher.
@@ -180,7 +180,7 @@ class EvidenceVariable {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  A human-readable string to clarify or explain concepts about the
   // resource.
@@ -203,7 +203,7 @@ class EvidenceVariable {
   String copyright;
 
   //  Extensions for copyright
-  Element element_copyright;
+  Element elementCopyright;
 
   //  The date on which the resource content was approved by the publisher.
   // Approval happens once when the content is officially approved for
@@ -211,7 +211,7 @@ class EvidenceVariable {
   String approvalDate;
 
   //  Extensions for approvalDate
-  Element element_approvalDate;
+  Element elementApprovalDate;
 
   //  The date on which the resource content was last reviewed. Review
   // happens periodically after approval but does not change the original
@@ -219,7 +219,7 @@ class EvidenceVariable {
   String lastReviewDate;
 
   //  Extensions for lastReviewDate
-  Element element_lastReviewDate;
+  Element elementLastReviewDate;
 
   //  The period during which the evidence variable content was or is
   // planned to be in active use.
@@ -255,7 +255,7 @@ class EvidenceVariable {
   String type; // <code> enum: dichotomous/continuous/descriptive;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  A characteristic that defines the members of the evidence element.
   // Multiple characteristics are applied with "and" semantics.
@@ -266,44 +266,44 @@ EvidenceVariable(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
-    this.element_url,
+    this.elementUrl,
     this.identifier,
     this.version,
-    this.element_version,
+    this.elementVersion,
     this.name,
-    this.element_name,
+    this.elementName,
     this.title,
-    this.element_title,
+    this.elementTitle,
     this.shortTitle,
-    this.element_shortTitle,
+    this.elementShortTitle,
     this.subtitle,
-    this.element_subtitle,
+    this.elementSubtitle,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.publisher,
-    this.element_publisher,
+    this.elementPublisher,
     this.contact,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.note,
     this.useContext,
     this.jurisdiction,
     this.copyright,
-    this.element_copyright,
+    this.elementCopyright,
     this.approvalDate,
-    this.element_approvalDate,
+    this.elementApprovalDate,
     this.lastReviewDate,
-    this.element_lastReviewDate,
+    this.elementLastReviewDate,
     this.effectivePeriod,
     this.topic,
     this.author,
@@ -312,7 +312,7 @@ EvidenceVariable(
     this.endorser,
     this.relatedArtifact,
     this.type,
-    this.element_type
+    this.elementType
     });
 
   factory EvidenceVariable.fromJson(Map<String, dynamic> json) => _$EvidenceVariableFromJson(json);
@@ -353,7 +353,7 @@ class EvidenceVariable_Characteristic {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  Define members of the evidence element using Codes (such as condition,
   // medication, or observation), Expressions ( using an expression language
@@ -368,7 +368,7 @@ class EvidenceVariable_Characteristic {
   String definitionCanonical; //  pattern: ^\S*$
 
   //  Extensions for definitionCanonical
-  Element element_definitionCanonical;
+  Element elementDefinitionCanonical;
 
   //  Define members of the evidence element using Codes (such as condition,
   // medication, or observation), Expressions ( using an expression language
@@ -403,13 +403,13 @@ class EvidenceVariable_Characteristic {
   bool exclude;
 
   //  Extensions for exclude
-  Element element_exclude;
+  Element elementExclude;
 
   //  Indicates what effective period the study covers.
   String participantEffectiveDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for participantEffectiveDateTime
-  Element element_participantEffectiveDateTime;
+  Element elementParticipantEffectiveDateTime;
 
   //  Indicates what effective period the study covers.
   Period participantEffectivePeriod;
@@ -428,32 +428,32 @@ class EvidenceVariable_Characteristic {
   String groupMeasure; // <code> enum: mean/median/mean-of-mean/mean-of-median/median-of-mean/median-of-median;
 
   //  Extensions for groupMeasure
-  Element element_groupMeasure;
+  Element elementGroupMeasure;
 
 EvidenceVariable_Characteristic(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.definitionReference,
     this.definitionCanonical,
-    this.element_definitionCanonical,
+    this.elementDefinitionCanonical,
     this.definitionCodeableConcept,
     this.definitionExpression,
     this.definitionDataRequirement,
     this.definitionTriggerDefinition,
     this.usageContext,
     this.exclude,
-    this.element_exclude,
+    this.elementExclude,
     this.participantEffectiveDateTime,
-    this.element_participantEffectiveDateTime,
+    this.elementParticipantEffectiveDateTime,
     this.participantEffectivePeriod,
     this.participantEffectiveDuration,
     this.participantEffectiveTiming,
     this.timeFromStart,
     this.groupMeasure,
-    this.element_groupMeasure
+    this.elementGroupMeasure
     });
 
   factory EvidenceVariable_Characteristic.fromJson(Map<String, dynamic> json) => _$EvidenceVariable_CharacteristicFromJson(json);

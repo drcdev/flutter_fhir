@@ -34,13 +34,13 @@ class NamingSystem {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -53,7 +53,7 @@ class NamingSystem {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -84,21 +84,21 @@ class NamingSystem {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  The status of this naming system. Enables tracking the life-cycle of
   // the content.
   String status; // <code> enum: draft/active/retired/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  Indicates the purpose for the naming system - what kinds of things
   // does it make unique?
   String kind; // <code> enum: codesystem/identifier/root;
 
   //  Extensions for kind
-  Element element_kind;
+  Element elementKind;
 
   //  The date  (and optionally time) when the naming system was published.
   // The date must change when the business version changes and it must
@@ -107,14 +107,14 @@ class NamingSystem {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  The name of the organization or individual that published the naming
   // system.
   String publisher;
 
   //  Extensions for publisher
-  Element element_publisher;
+  Element elementPublisher;
 
   //  Contact details to assist a user in finding and communicating with the
   // publisher.
@@ -126,7 +126,7 @@ class NamingSystem {
   String responsible;
 
   //  Extensions for responsible
-  Element element_responsible;
+  Element elementResponsible;
 
   //  Categorizes a naming system for easier search by grouping related
   // naming systems.
@@ -138,7 +138,7 @@ class NamingSystem {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  The content was developed with a focus and intent of supporting the
   // contexts that are listed. These contexts may be general categories
@@ -156,7 +156,7 @@ class NamingSystem {
   String usage;
 
   //  Extensions for usage
-  Element element_usage;
+  Element elementUsage;
 
   //  Indicates how the system may be identified when referenced in
   // electronic exchange.
@@ -167,33 +167,33 @@ NamingSystem(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.name,
-    this.element_name,
+    this.elementName,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.kind,
-    this.element_kind,
+    this.elementKind,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.publisher,
-    this.element_publisher,
+    this.elementPublisher,
     this.contact,
     this.responsible,
-    this.element_responsible,
+    this.elementResponsible,
     this.type,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.useContext,
     this.jurisdiction,
     this.usage,
-    this.element_usage
+    this.elementUsage
     });
 
   factory NamingSystem.fromJson(Map<String, dynamic> json) => _$NamingSystemFromJson(json);
@@ -234,27 +234,27 @@ class NamingSystem_UniqueId {
   String type; // <code> enum: oid/uuid/uri/other;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  The string that should be sent over the wire to identify the code
   // system or identifier system.
   String value;
 
   //  Extensions for value
-  Element element_value;
+  Element elementValue;
 
   //  Indicates whether this identifier is the "preferred" identifier of
   // this type.
   bool preferred;
 
   //  Extensions for preferred
-  Element element_preferred;
+  Element elementPreferred;
 
   //  Notes about the past or intended usage of this identifier.
   String comment;
 
   //  Extensions for comment
-  Element element_comment;
+  Element elementComment;
 
   //  Identifies the period of time over which this identifier is considered
   // appropriate to refer to the naming system.  Outside of this window, the
@@ -266,13 +266,13 @@ NamingSystem_UniqueId(
     this.extension,
     this.modifierExtension,
     this.type,
-    this.element_type,
+    this.elementType,
     this.value,
-    this.element_value,
+    this.elementValue,
     this.preferred,
-    this.element_preferred,
+    this.elementPreferred,
     this.comment,
-    this.element_comment,
+    this.elementComment,
     this.period
     });
 

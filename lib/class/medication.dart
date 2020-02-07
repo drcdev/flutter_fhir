@@ -34,13 +34,13 @@ class Medication {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -53,7 +53,7 @@ class Medication {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -92,7 +92,7 @@ class Medication {
   String status;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  Describes the details of the manufacturer of the medication product. 
   // This is not intended to represent the distributor of a medication
@@ -119,9 +119,9 @@ Medication(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -129,7 +129,7 @@ Medication(
     this.identifier,
     this.code,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.manufacturer,
     this.form,
     this.amount,
@@ -183,7 +183,7 @@ class Medication_Ingredient {
   bool isActive;
 
   //  Extensions for isActive
-  Element element_isActive;
+  Element elementIsActive;
 
   //  Specifies how many (or how much) of the items there are in this
   // Medication.  For example, 250 mg per tablet.  This is expressed as a
@@ -197,7 +197,7 @@ Medication_Ingredient(
     this.itemCodeableConcept,
     this.itemReference,
     this.isActive,
-    this.element_isActive,
+    this.elementIsActive,
     this.strength
     });
 
@@ -238,22 +238,22 @@ class Medication_Batch {
   String lotNumber;
 
   //  Extensions for lotNumber
-  Element element_lotNumber;
+  Element elementLotNumber;
 
   //  When this specific batch of product will expire.
   DateTime expirationDate;
 
   //  Extensions for expirationDate
-  Element element_expirationDate;
+  Element elementExpirationDate;
 
 Medication_Batch(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.lotNumber,
-    this.element_lotNumber,
+    this.elementLotNumber,
     this.expirationDate,
-    this.element_expirationDate
+    this.elementExpirationDate
     });
 
   factory Medication_Batch.fromJson(Map<String, dynamic> json) => _$Medication_BatchFromJson(json);

@@ -20,20 +20,20 @@ CoverageEligibilityRequest _$CoverageEligibilityRequestFromJson(
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -48,31 +48,30 @@ CoverageEligibilityRequest _$CoverageEligibilityRequestFromJson(
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     priority: json['priority'] == null
         ? null
         : CodeableConcept.fromJson(json['priority'] as Map<String, dynamic>),
     purpose: (json['purpose'] as List)?.map((e) => e as String)?.toList(),
-    element_purpose: (json['element_purpose'] as List)
+    elementPurpose: (json['elementPurpose'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     servicedDate: json['servicedDate'] as String,
-    element_servicedDate: json['element_servicedDate'] == null
+    elementServicedDate: json['elementServicedDate'] == null
         ? null
-        : Element.fromJson(
-            json['element_servicedDate'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementServicedDate'] as Map<String, dynamic>),
     servicedPeriod: json['servicedPeriod'] == null
         ? null
         : Period.fromJson(json['servicedPeriod'] as Map<String, dynamic>),
     created: json['created'] == null
         ? null
         : DateTime.parse(json['created'] as String),
-    element_created: json['element_created'] == null
+    elementCreated: json['elementCreated'] == null
         ? null
-        : Element.fromJson(json['element_created'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementCreated'] as Map<String, dynamic>),
     enterer: json['enterer'] == null
         ? null
         : Reference.fromJson(json['enterer'] as Map<String, dynamic>),
@@ -109,9 +108,9 @@ Map<String, dynamic> _$CoverageEligibilityRequestToJson(
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -119,17 +118,17 @@ Map<String, dynamic> _$CoverageEligibilityRequestToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'priority': instance.priority?.toJson(),
       'purpose': instance.purpose,
-      'element_purpose':
-          instance.element_purpose?.map((e) => e?.toJson())?.toList(),
+      'elementPurpose':
+          instance.elementPurpose?.map((e) => e?.toJson())?.toList(),
       'patient': instance.patient?.toJson(),
       'servicedDate': instance.servicedDate,
-      'element_servicedDate': instance.element_servicedDate?.toJson(),
+      'elementServicedDate': instance.elementServicedDate?.toJson(),
       'servicedPeriod': instance.servicedPeriod?.toJson(),
       'created': instance.created?.toIso8601String(),
-      'element_created': instance.element_created?.toJson(),
+      'elementCreated': instance.elementCreated?.toJson(),
       'enterer': instance.enterer?.toJson(),
       'provider': instance.provider?.toJson(),
       'insurer': instance.insurer?.toJson(),
@@ -157,14 +156,13 @@ CoverageEligibilityRequest_SupportingInfo
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     sequence: json['sequence'] as int,
-    element_sequence: json['element_sequence'] == null
+    elementSequence: json['elementSequence'] == null
         ? null
-        : Element.fromJson(json['element_sequence'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSequence'] as Map<String, dynamic>),
     appliesToAll: json['appliesToAll'] as bool,
-    element_appliesToAll: json['element_appliesToAll'] == null
+    elementAppliesToAll: json['elementAppliesToAll'] == null
         ? null
-        : Element.fromJson(
-            json['element_appliesToAll'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementAppliesToAll'] as Map<String, dynamic>),
   );
 }
 
@@ -176,10 +174,10 @@ Map<String, dynamic> _$CoverageEligibilityRequest_SupportingInfoToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'sequence': instance.sequence,
-      'element_sequence': instance.element_sequence?.toJson(),
+      'elementSequence': instance.elementSequence?.toJson(),
       'information': instance.information?.toJson(),
       'appliesToAll': instance.appliesToAll,
-      'element_appliesToAll': instance.element_appliesToAll?.toJson(),
+      'elementAppliesToAll': instance.elementAppliesToAll?.toJson(),
     };
 
 CoverageEligibilityRequest_Insurance
@@ -198,14 +196,14 @@ CoverageEligibilityRequest_Insurance
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     focal: json['focal'] as bool,
-    element_focal: json['element_focal'] == null
+    elementFocal: json['elementFocal'] == null
         ? null
-        : Element.fromJson(json['element_focal'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementFocal'] as Map<String, dynamic>),
     businessArrangement: json['businessArrangement'] as String,
-    element_businessArrangement: json['element_businessArrangement'] == null
+    elementBusinessArrangement: json['elementBusinessArrangement'] == null
         ? null
         : Element.fromJson(
-            json['element_businessArrangement'] as Map<String, dynamic>),
+            json['elementBusinessArrangement'] as Map<String, dynamic>),
   );
 }
 
@@ -217,11 +215,11 @@ Map<String, dynamic> _$CoverageEligibilityRequest_InsuranceToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'focal': instance.focal,
-      'element_focal': instance.element_focal?.toJson(),
+      'elementFocal': instance.elementFocal?.toJson(),
       'coverage': instance.coverage?.toJson(),
       'businessArrangement': instance.businessArrangement,
-      'element_businessArrangement':
-          instance.element_businessArrangement?.toJson(),
+      'elementBusinessArrangement':
+          instance.elementBusinessArrangement?.toJson(),
     };
 
 CoverageEligibilityRequest_Item _$CoverageEligibilityRequest_ItemFromJson(
@@ -239,8 +237,8 @@ CoverageEligibilityRequest_Item _$CoverageEligibilityRequest_ItemFromJson(
     supportingInfoSequence: (json['supportingInfoSequence'] as List)
         ?.map((e) => e as int)
         ?.toList(),
-    element_supportingInfoSequence:
-        (json['element_supportingInfoSequence'] as List)
+    elementSupportingInfoSequence:
+        (json['elementSupportingInfoSequence'] as List)
             ?.map((e) =>
                 e == null ? null : Element.fromJson(e as Map<String, dynamic>))
             ?.toList(),
@@ -289,7 +287,7 @@ Map<String, dynamic> _$CoverageEligibilityRequest_ItemToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'supportingInfoSequence': instance.supportingInfoSequence,
-      'element_supportingInfoSequence': instance.element_supportingInfoSequence
+      'elementSupportingInfoSequence': instance.elementSupportingInfoSequence
           ?.map((e) => e?.toJson())
           ?.toList(),
       'category': instance.category?.toJson(),

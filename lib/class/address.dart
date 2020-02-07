@@ -25,7 +25,7 @@ class Address {
   String use; // <code> enum: home/work/temp/old/billing;
 
   //  Extensions for use
-  Element element_use;
+  Element elementUse;
 
   //  Distinguishes between physical addresses (those you can visit) and
   // mailing addresses (e.g. PO Boxes and care-of addresses). Most addresses
@@ -33,7 +33,7 @@ class Address {
   String type; // <code> enum: postal/physical/both;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  Specifies the entire address as it should be displayed e.g. on a
   // postal label. This may be provided instead of or as well as the
@@ -41,7 +41,7 @@ class Address {
   String text;
 
   //  Extensions for text
-  Element element_text;
+  Element elementText;
 
   //  This component contains the house number, apartment number, street
   // name, street direction,  P.O. Box number, delivery hints, and similar
@@ -49,20 +49,20 @@ class Address {
   List<String> line;
 
   //  Extensions for line
-  List<Element> element_line;
+  List<Element> elementLine;
 
   //  The name of the city, town, suburb, village or other community or
   // delivery center.
   String city;
 
   //  Extensions for city
-  Element element_city;
+  Element elementCity;
 
   //  The name of the administrative area (county).
   String district;
 
   //  Extensions for district
-  Element element_district;
+  Element elementDistrict;
 
   //  Sub-unit of a country with limited sovereignty in a federally
   // organized country. A code may be used if codes are in common use (e.g.
@@ -70,19 +70,19 @@ class Address {
   String state;
 
   //  Extensions for state
-  Element element_state;
+  Element elementState;
 
   //  A postal code designating a region defined by the postal service.
   String postalCode;
 
   //  Extensions for postalCode
-  Element element_postalCode;
+  Element elementPostalCode;
 
   //  Country - a nation as commonly understood or generally accepted.
   String country;
 
   //  Extensions for country
-  Element element_country;
+  Element elementCountry;
 
   //  Time period when address was/is in use.
   Period period;
@@ -91,23 +91,23 @@ Address(
   {this.id,
     this.extension,
     this.use,
-    this.element_use,
+    this.elementUse,
     this.type,
-    this.element_type,
+    this.elementType,
     this.text,
-    this.element_text,
+    this.elementText,
     this.line,
-    this.element_line,
+    this.elementLine,
     this.city,
-    this.element_city,
+    this.elementCity,
     this.district,
-    this.element_district,
+    this.elementDistrict,
     this.state,
-    this.element_state,
+    this.elementState,
     this.postalCode,
-    this.element_postalCode,
+    this.elementPostalCode,
     this.country,
-    this.element_country,
+    this.elementCountry,
     this.period
     });
 

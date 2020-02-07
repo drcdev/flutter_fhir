@@ -38,13 +38,13 @@ class DeviceDefinition {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -57,7 +57,7 @@ class DeviceDefinition {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -96,7 +96,7 @@ class DeviceDefinition {
   String manufacturerString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for manufacturerString
-  Element element_manufacturerString;
+  Element elementManufacturerString;
 
   //  A name of the manufacturer.
   Reference manufacturerReference;
@@ -108,7 +108,7 @@ class DeviceDefinition {
   String modelNumber;
 
   //  Extensions for modelNumber
-  Element element_modelNumber;
+  Element elementModelNumber;
 
   //  What kind of device or device system this is.
   CodeableConcept type;
@@ -122,7 +122,7 @@ class DeviceDefinition {
   List<String> version;
 
   //  Extensions for version
-  List<Element> element_version;
+  List<Element> elementVersion;
 
   //  Safety characteristics of the device.
   List<CodeableConcept> safety;
@@ -156,13 +156,13 @@ class DeviceDefinition {
   String url;
 
   //  Extensions for url
-  Element element_url;
+  Element elementUrl;
 
   //  Access to on-line information about the device.
   String onlineInformation;
 
   //  Extensions for onlineInformation
-  Element element_onlineInformation;
+  Element elementOnlineInformation;
 
   //  Descriptive information, usage information or implantation information
   // that is not captured in an existing element.
@@ -184,9 +184,9 @@ DeviceDefinition(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -194,15 +194,15 @@ DeviceDefinition(
     this.identifier,
     this.udiDeviceIdentifier,
     this.manufacturerString,
-    this.element_manufacturerString,
+    this.elementManufacturerString,
     this.manufacturerReference,
     this.deviceName,
     this.modelNumber,
-    this.element_modelNumber,
+    this.elementModelNumber,
     this.type,
     this.specialization,
     this.version,
-    this.element_version,
+    this.elementVersion,
     this.safety,
     this.shelfLifeStorage,
     this.physicalCharacteristics,
@@ -212,9 +212,9 @@ DeviceDefinition(
     this.owner,
     this.contact,
     this.url,
-    this.element_url,
+    this.elementUrl,
     this.onlineInformation,
-    this.element_onlineInformation,
+    this.elementOnlineInformation,
     this.note,
     this.quantity,
     this.parentDevice,
@@ -260,30 +260,30 @@ class DeviceDefinition_UdiDeviceIdentifier {
   String deviceIdentifier;
 
   //  Extensions for deviceIdentifier
-  Element element_deviceIdentifier;
+  Element elementDeviceIdentifier;
 
   //  The organization that assigns the identifier algorithm.
   String issuer;
 
   //  Extensions for issuer
-  Element element_issuer;
+  Element elementIssuer;
 
   //  The jurisdiction to which the deviceIdentifier applies.
   String jurisdiction;
 
   //  Extensions for jurisdiction
-  Element element_jurisdiction;
+  Element elementJurisdiction;
 
 DeviceDefinition_UdiDeviceIdentifier(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.deviceIdentifier,
-    this.element_deviceIdentifier,
+    this.elementDeviceIdentifier,
     this.issuer,
-    this.element_issuer,
+    this.elementIssuer,
     this.jurisdiction,
-    this.element_jurisdiction
+    this.elementJurisdiction
     });
 
   factory DeviceDefinition_UdiDeviceIdentifier.fromJson(Map<String, dynamic> json) => _$DeviceDefinition_UdiDeviceIdentifierFromJson(json);
@@ -323,23 +323,23 @@ class DeviceDefinition_DeviceName {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  The type of deviceName. UDILabelName | UserFriendlyName |
   // PatientReportedName | ManufactureDeviceName | ModelName.
   String type; // <code> enum: udi-label-name/user-friendly-name/patient-reported-name/manufacturer-name/model-name/other;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
 DeviceDefinition_DeviceName(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.name,
-    this.element_name,
+    this.elementName,
     this.type,
-    this.element_type
+    this.elementType
     });
 
   factory DeviceDefinition_DeviceName.fromJson(Map<String, dynamic> json) => _$DeviceDefinition_DeviceNameFromJson(json);
@@ -379,22 +379,22 @@ class DeviceDefinition_Specialization {
   String systemType;
 
   //  Extensions for systemType
-  Element element_systemType;
+  Element elementSystemType;
 
   //  The version of the standard that is used to operate and communicate.
   String version;
 
   //  Extensions for version
-  Element element_version;
+  Element elementVersion;
 
 DeviceDefinition_Specialization(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.systemType,
-    this.element_systemType,
+    this.elementSystemType,
     this.version,
-    this.element_version
+    this.elementVersion
     });
 
   factory DeviceDefinition_Specialization.fromJson(Map<String, dynamic> json) => _$DeviceDefinition_SpecializationFromJson(json);
@@ -536,13 +536,13 @@ class DeviceDefinition_Material {
   bool alternate;
 
   //  Extensions for alternate
-  Element element_alternate;
+  Element elementAlternate;
 
   //  Whether the substance is a known or suspected allergen.
   bool allergenicIndicator;
 
   //  Extensions for allergenicIndicator
-  Element element_allergenicIndicator;
+  Element elementAllergenicIndicator;
 
 DeviceDefinition_Material(
   this.substance,
@@ -550,9 +550,9 @@ DeviceDefinition_Material(
     this.extension,
     this.modifierExtension,
     this.alternate,
-    this.element_alternate,
+    this.elementAlternate,
     this.allergenicIndicator,
-    this.element_allergenicIndicator
+    this.elementAllergenicIndicator
     });
 
   factory DeviceDefinition_Material.fromJson(Map<String, dynamic> json) => _$DeviceDefinition_MaterialFromJson(json);

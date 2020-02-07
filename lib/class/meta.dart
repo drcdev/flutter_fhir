@@ -27,13 +27,13 @@ class Meta {
   String versionId;
 
   //  Extensions for versionId
-  Element element_versionId;
+  Element elementVersionId;
 
   //  When the resource last changed - e.g. when the version changed.
   DateTime lastUpdated;
 
   //  Extensions for lastUpdated
-  Element element_lastUpdated;
+  Element elementLastUpdated;
 
   //  A uri that identifies the source system of the resource. This provides
   // a minimal amount of [[[Provenance]]] information that can be used to
@@ -43,7 +43,7 @@ class Meta {
   String source;
 
   //  Extensions for source
-  Element element_source;
+  Element elementSource;
 
   //  A list of profiles (references to [[[StructureDefinition]]] resources)
   // that this resource claims to conform to. The URL is a reference to
@@ -64,11 +64,11 @@ Meta(
   {this.id,
     this.extension,
     this.versionId,
-    this.element_versionId,
+    this.elementVersionId,
     this.lastUpdated,
-    this.element_lastUpdated,
+    this.elementLastUpdated,
     this.source,
-    this.element_source,
+    this.elementSource,
     this.profile,
     this.security,
     this.tag

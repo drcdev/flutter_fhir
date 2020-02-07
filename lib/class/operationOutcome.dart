@@ -31,13 +31,13 @@ class OperationOutcome {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -50,7 +50,7 @@ class OperationOutcome {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -84,9 +84,9 @@ OperationOutcome(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -131,7 +131,7 @@ class OperationOutcome_Issue {
   String severity; // <code> enum: fatal/error/warning/information;
 
   //  Extensions for severity
-  Element element_severity;
+  Element elementSeverity;
 
   //  Describes the type of the issue. The system that creates an
   // OperationOutcome SHALL choose the most applicable code from the
@@ -140,7 +140,7 @@ class OperationOutcome_Issue {
   String code; // <code> enum: invalid/structure/required/value/invariant/security/login/unknown/expired/forbidden/suppressed/processing/not-supported/duplicate/multiple-matches/not-found/deleted/too-long/code-invalid/extension/too-costly/business-rule/conflict/transient/lock-error/no-store/exception/timeout/incomplete/throttled/informational;
 
   //  Extensions for code
-  Element element_code;
+  Element elementCode;
 
   //  Additional details about the error. This may be a text description of
   // the error or a system code that identifies the error.
@@ -150,7 +150,7 @@ class OperationOutcome_Issue {
   String diagnostics;
 
   //  Extensions for diagnostics
-  Element element_diagnostics;
+  Element elementDiagnostics;
 
   //  This element is deprecated because it is XML specific. It is replaced
   // by issue.expression, which is format independent, and simpler to parse.
@@ -161,7 +161,7 @@ class OperationOutcome_Issue {
   List<String> location;
 
   //  Extensions for location
-  List<Element> element_location;
+  List<Element> elementLocation;
 
   //  A [simple subset of FHIRPath](fhirpath.html#simple) limited to element
   // names, repetition indicators and the default child accessor that
@@ -170,23 +170,23 @@ class OperationOutcome_Issue {
   List<String> expression;
 
   //  Extensions for expression
-  List<Element> element_expression;
+  List<Element> elementExpression;
 
 OperationOutcome_Issue(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.severity,
-    this.element_severity,
+    this.elementSeverity,
     this.code,
-    this.element_code,
+    this.elementCode,
     this.details,
     this.diagnostics,
-    this.element_diagnostics,
+    this.elementDiagnostics,
     this.location,
-    this.element_location,
+    this.elementLocation,
     this.expression,
-    this.element_expression
+    this.elementExpression
     });
 
   factory OperationOutcome_Issue.fromJson(Map<String, dynamic> json) => _$OperationOutcome_IssueFromJson(json);

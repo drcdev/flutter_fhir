@@ -34,13 +34,13 @@ class AuditEvent {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -53,7 +53,7 @@ class AuditEvent {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -91,7 +91,7 @@ class AuditEvent {
   String action; // <code> enum: C/R/U/D/E;
 
   //  Extensions for action
-  Element element_action;
+  Element elementAction;
 
   //  The period during which the activity occurred.
   Period period;
@@ -100,19 +100,19 @@ class AuditEvent {
   DateTime recorded;
 
   //  Extensions for recorded
-  Element element_recorded;
+  Element elementRecorded;
 
   //  Indicates whether the event succeeded or failed.
   String outcome; // <code> enum: 0/4/8/12;
 
   //  Extensions for outcome
-  Element element_outcome;
+  Element elementOutcome;
 
   //  A free text description of the outcome of the event.
   String outcomeDesc;
 
   //  Extensions for outcomeDesc
-  Element element_outcomeDesc;
+  Element elementOutcomeDesc;
 
   //  The purposeOfUse (reason) that was used during the event being
   // recorded.
@@ -135,23 +135,23 @@ AuditEvent(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.subtype,
     this.action,
-    this.element_action,
+    this.elementAction,
     this.period,
     this.recorded,
-    this.element_recorded,
+    this.elementRecorded,
     this.outcome,
-    this.element_outcome,
+    this.elementOutcome,
     this.outcomeDesc,
-    this.element_outcomeDesc,
+    this.elementOutcomeDesc,
     this.purposeOfEvent,
     this.entity
     });
@@ -208,20 +208,20 @@ class AuditEvent_Agent {
   String altId;
 
   //  Extensions for altId
-  Element element_altId;
+  Element elementAltId;
 
   //  Human-meaningful name for the agent.
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  Indicator that the user is or is not the requestor, or initiator, for
   // the event being audited.
   bool requestor;
 
   //  Extensions for requestor
-  Element element_requestor;
+  Element elementRequestor;
 
   //  Where the event occurred.
   Reference location;
@@ -233,7 +233,7 @@ class AuditEvent_Agent {
   List<String> policy;
 
   //  Extensions for policy
-  List<Element> element_policy;
+  List<Element> elementPolicy;
 
   //  Type of media involved. Used when the event is about
   // exporting/importing onto media.
@@ -255,14 +255,14 @@ AuditEvent_Agent(
     this.role,
     this.who,
     this.altId,
-    this.element_altId,
+    this.elementAltId,
     this.name,
-    this.element_name,
+    this.elementName,
     this.requestor,
-    this.element_requestor,
+    this.elementRequestor,
     this.location,
     this.policy,
-    this.element_policy,
+    this.elementPolicy,
     this.media,
     this.network,
     this.purposeOfUse
@@ -306,23 +306,23 @@ class AuditEvent_Network {
   String address;
 
   //  Extensions for address
-  Element element_address;
+  Element elementAddress;
 
   //  An identifier for the type of network access point that originated the
   // audit event.
   String type; // <code> enum: 1/2/3/4/5;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
 AuditEvent_Network(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.address,
-    this.element_address,
+    this.elementAddress,
     this.type,
-    this.element_type
+    this.elementType
     });
 
   factory AuditEvent_Network.fromJson(Map<String, dynamic> json) => _$AuditEvent_NetworkFromJson(json);
@@ -364,7 +364,7 @@ class AuditEvent_Source {
   String site;
 
   //  Extensions for site
-  Element element_site;
+  Element elementSite;
 
   //  Identifier of the source where the event was detected.
   Reference observer;
@@ -378,7 +378,7 @@ AuditEvent_Source(
     this.extension,
     this.modifierExtension,
     this.site,
-    this.element_site,
+    this.elementSite,
     this.type
     });
 
@@ -436,19 +436,19 @@ class AuditEvent_Entity {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  Text that describes the entity in more detail.
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  The query parameters for a query-type entities.
   String query;
 
   //  Extensions for query
-  Element element_query;
+  Element elementQuery;
 
   //  Tagged value pairs for conveying additional information about the
   // entity.
@@ -464,11 +464,11 @@ AuditEvent_Entity(
     this.lifecycle,
     this.securityLabel,
     this.name,
-    this.element_name,
+    this.elementName,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.query,
-    this.element_query,
+    this.elementQuery,
     this.detail
     });
 
@@ -509,30 +509,30 @@ class AuditEvent_Detail {
   String type;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  The  value of the extra detail.
   String valueString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for valueString
-  Element element_valueString;
+  Element elementValueString;
 
   //  The  value of the extra detail.
   String valueBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
 
   //  Extensions for valueBase64Binary
-  Element element_valueBase64Binary;
+  Element elementValueBase64Binary;
 
 AuditEvent_Detail(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.type,
-    this.element_type,
+    this.elementType,
     this.valueString,
-    this.element_valueString,
+    this.elementValueString,
     this.valueBase64Binary,
-    this.element_valueBase64Binary
+    this.elementValueBase64Binary
     });
 
   factory AuditEvent_Detail.fromJson(Map<String, dynamic> json) => _$AuditEvent_DetailFromJson(json);

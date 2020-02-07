@@ -25,7 +25,7 @@ class ContactDetail {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  The contact details for the individual (if a name was provided) or the
   // organization.
@@ -35,7 +35,7 @@ ContactDetail(
   {this.id,
     this.extension,
     this.name,
-    this.element_name,
+    this.elementName,
     this.telecom
     });
 

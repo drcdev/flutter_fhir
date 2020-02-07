@@ -34,13 +34,13 @@ class ImplementationGuide {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -53,7 +53,7 @@ class ImplementationGuide {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -88,7 +88,7 @@ class ImplementationGuide {
   String url;
 
   //  Extensions for url
-  Element element_url;
+  Element elementUrl;
 
   //  The identifier that is used to identify this version of the
   // implementation guide when it is referenced in a specification, model,
@@ -100,7 +100,7 @@ class ImplementationGuide {
   String version;
 
   //  Extensions for version
-  Element element_version;
+  Element elementVersion;
 
   //  A natural language name identifying the implementation guide. This
   // name should be usable as an identifier for the module by machine
@@ -108,21 +108,21 @@ class ImplementationGuide {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  A short, descriptive, user-friendly title for the implementation
   // guide.
   String title;
 
   //  Extensions for title
-  Element element_title;
+  Element elementTitle;
 
   //  The status of this implementation guide. Enables tracking the
   // life-cycle of the content.
   String status; // <code> enum: draft/active/retired/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  A Boolean value to indicate that this implementation guide is authored
   // for testing purposes (or education/evaluation/marketing) and is not
@@ -130,7 +130,7 @@ class ImplementationGuide {
   bool experimental;
 
   //  Extensions for experimental
-  Element element_experimental;
+  Element elementExperimental;
 
   //  The date  (and optionally time) when the implementation guide was
   // published. The date must change when the business version changes and
@@ -140,14 +140,14 @@ class ImplementationGuide {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  The name of the organization or individual that published the
   // implementation guide.
   String publisher;
 
   //  Extensions for publisher
-  Element element_publisher;
+  Element elementPublisher;
 
   //  Contact details to assist a user in finding and communicating with the
   // publisher.
@@ -158,7 +158,7 @@ class ImplementationGuide {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  The content was developed with a focus and intent of supporting the
   // contexts that are listed. These contexts may be general categories
@@ -177,7 +177,7 @@ class ImplementationGuide {
   String copyright;
 
   //  Extensions for copyright
-  Element element_copyright;
+  Element elementCopyright;
 
   //  The NPM package name for this Implementation Guide, used in the NPM
   // package distribution, which is the primary mechanism by which FHIR
@@ -186,14 +186,14 @@ class ImplementationGuide {
   String packageId;
 
   //  Extensions for packageId
-  Element element_packageId;
+  Element elementPackageId;
 
   //  The license that applies to this Implementation Guide, using an SPDX
   // license code, or 'not-open-source'.
   String license; // <code> enum: not-open-source/0BSD/AAL/Abstyles/Adobe-2006/Adobe-Glyph/ADSL/AFL-1.1/AFL-1.2/AFL-2.0/AFL-2.1/AFL-3.0/Afmparse/AGPL-1.0-only/AGPL-1.0-or-later/AGPL-3.0-only/AGPL-3.0-or-later/Aladdin/AMDPLPA/AML/AMPAS/ANTLR-PD/Apache-1.0/Apache-1.1/Apache-2.0/APAFML/APL-1.0/APSL-1.0/APSL-1.1/APSL-1.2/APSL-2.0/Artistic-1.0-cl8/Artistic-1.0-Perl/Artistic-1.0/Artistic-2.0/Bahyph/Barr/Beerware/BitTorrent-1.0/BitTorrent-1.1/Borceux/BSD-1-Clause/BSD-2-Clause-FreeBSD/BSD-2-Clause-NetBSD/BSD-2-Clause-Patent/BSD-2-Clause/BSD-3-Clause-Attribution/BSD-3-Clause-Clear/BSD-3-Clause-LBNL/BSD-3-Clause-No-Nuclear-License-2014/BSD-3-Clause-No-Nuclear-License/BSD-3-Clause-No-Nuclear-Warranty/BSD-3-Clause/BSD-4-Clause-UC/BSD-4-Clause/BSD-Protection/BSD-Source-Code/BSL-1.0/bzip2-1.0.5/bzip2-1.0.6/Caldera/CATOSL-1.1/CC-BY-1.0/CC-BY-2.0/CC-BY-2.5/CC-BY-3.0/CC-BY-4.0/CC-BY-NC-1.0/CC-BY-NC-2.0/CC-BY-NC-2.5/CC-BY-NC-3.0/CC-BY-NC-4.0/CC-BY-NC-ND-1.0/CC-BY-NC-ND-2.0/CC-BY-NC-ND-2.5/CC-BY-NC-ND-3.0/CC-BY-NC-ND-4.0/CC-BY-NC-SA-1.0/CC-BY-NC-SA-2.0/CC-BY-NC-SA-2.5/CC-BY-NC-SA-3.0/CC-BY-NC-SA-4.0/CC-BY-ND-1.0/CC-BY-ND-2.0/CC-BY-ND-2.5/CC-BY-ND-3.0/CC-BY-ND-4.0/CC-BY-SA-1.0/CC-BY-SA-2.0/CC-BY-SA-2.5/CC-BY-SA-3.0/CC-BY-SA-4.0/CC0-1.0/CDDL-1.0/CDDL-1.1/CDLA-Permissive-1.0/CDLA-Sharing-1.0/CECILL-1.0/CECILL-1.1/CECILL-2.0/CECILL-2.1/CECILL-B/CECILL-C/ClArtistic/CNRI-Jython/CNRI-Python-GPL-Compatible/CNRI-Python/Condor-1.1/CPAL-1.0/CPL-1.0/CPOL-1.02/Crossword/CrystalStacker/CUA-OPL-1.0/Cube/curl/D-FSL-1.0/diffmark/DOC/Dotseqn/DSDP/dvipdfm/ECL-1.0/ECL-2.0/EFL-1.0/EFL-2.0/eGenix/Entessa/EPL-1.0/EPL-2.0/ErlPL-1.1/EUDatagrid/EUPL-1.0/EUPL-1.1/EUPL-1.2/Eurosym/Fair/Frameworx-1.0/FreeImage/FSFAP/FSFUL/FSFULLR/FTL/GFDL-1.1-only/GFDL-1.1-or-later/GFDL-1.2-only/GFDL-1.2-or-later/GFDL-1.3-only/GFDL-1.3-or-later/Giftware/GL2PS/Glide/Glulxe/gnuplot/GPL-1.0-only/GPL-1.0-or-later/GPL-2.0-only/GPL-2.0-or-later/GPL-3.0-only/GPL-3.0-or-later/gSOAP-1.3b/HaskellReport/HPND/IBM-pibs/ICU/IJG/ImageMagick/iMatix/Imlib2/Info-ZIP/Intel-ACPI/Intel/Interbase-1.0/IPA/IPL-1.0/ISC/JasPer-2.0/JSON/LAL-1.2/LAL-1.3/Latex2e/Leptonica/LGPL-2.0-only/LGPL-2.0-or-later/LGPL-2.1-only/LGPL-2.1-or-later/LGPL-3.0-only/LGPL-3.0-or-later/LGPLLR/Libpng/libtiff/LiLiQ-P-1.1/LiLiQ-R-1.1/LiLiQ-Rplus-1.1/Linux-OpenIB/LPL-1.0/LPL-1.02/LPPL-1.0/LPPL-1.1/LPPL-1.2/LPPL-1.3a/LPPL-1.3c/MakeIndex/MirOS/MIT-0/MIT-advertising/MIT-CMU/MIT-enna/MIT-feh/MIT/MITNFA/Motosoto/mpich2/MPL-1.0/MPL-1.1/MPL-2.0-no-copyleft-exception/MPL-2.0/MS-PL/MS-RL/MTLL/Multics/Mup/NASA-1.3/Naumen/NBPL-1.0/NCSA/Net-SNMP/NetCDF/Newsletr/NGPL/NLOD-1.0/NLPL/Nokia/NOSL/Noweb/NPL-1.0/NPL-1.1/NPOSL-3.0/NRL/NTP/OCCT-PL/OCLC-2.0/ODbL-1.0/OFL-1.0/OFL-1.1/OGTSL/OLDAP-1.1/OLDAP-1.2/OLDAP-1.3/OLDAP-1.4/OLDAP-2.0.1/OLDAP-2.0/OLDAP-2.1/OLDAP-2.2.1/OLDAP-2.2.2/OLDAP-2.2/OLDAP-2.3/OLDAP-2.4/OLDAP-2.5/OLDAP-2.6/OLDAP-2.7/OLDAP-2.8/OML/OpenSSL/OPL-1.0/OSET-PL-2.1/OSL-1.0/OSL-1.1/OSL-2.0/OSL-2.1/OSL-3.0/PDDL-1.0/PHP-3.0/PHP-3.01/Plexus/PostgreSQL/psfrag/psutils/Python-2.0/Qhull/QPL-1.0/Rdisc/RHeCos-1.1/RPL-1.1/RPL-1.5/RPSL-1.0/RSA-MD/RSCPL/Ruby/SAX-PD/Saxpath/SCEA/Sendmail/SGI-B-1.0/SGI-B-1.1/SGI-B-2.0/SimPL-2.0/SISSL-1.2/SISSL/Sleepycat/SMLNJ/SMPPL/SNIA/Spencer-86/Spencer-94/Spencer-99/SPL-1.0/SugarCRM-1.1.3/SWL/TCL/TCP-wrappers/TMate/TORQUE-1.1/TOSL/Unicode-DFS-2015/Unicode-DFS-2016/Unicode-TOU/Unlicense/UPL-1.0/Vim/VOSTROM/VSL-1.0/W3C-19980720/W3C-20150513/W3C/Watcom-1.0/Wsuipa/WTFPL/X11/Xerox/XFree86-1.1/xinetd/Xnet/xpp/XSkat/YPL-1.0/YPL-1.1/Zed/Zend-2.0/Zimbra-1.3/Zimbra-1.4/zlib-acknowledgement/Zlib/ZPL-1.1/ZPL-2.0/ZPL-2.1;
 
   //  Extensions for license
-  Element element_license;
+  Element elementLicense;
 
   //  The version(s) of the FHIR specification that this ImplementationGuide
   // targets - e.g. describes how to use. The value of this element is the
@@ -202,7 +202,7 @@ class ImplementationGuide {
   List<String> fhirVersion; // <code> enum: 0.01/0.05/0.06/0.11/0.0.80/0.0.81/0.0.82/0.4.0/0.5.0/1.0.0/1.0.1/1.0.2/1.1.0/1.4.0/1.6.0/1.8.0/3.0.0/3.0.1/3.3.0/3.5.0/4.0.0/4.0.1> fhirVersion;
 
   //  Extensions for fhirVersion
-  List<Element> element_fhirVersion;
+  List<Element> elementFhirVersion;
 
   //  Another implementation guide that this implementation depends on.
   // Typically, an implementation guide uses value sets, profiles
@@ -225,42 +225,42 @@ ImplementationGuide(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
-    this.element_url,
+    this.elementUrl,
     this.version,
-    this.element_version,
+    this.elementVersion,
     this.name,
-    this.element_name,
+    this.elementName,
     this.title,
-    this.element_title,
+    this.elementTitle,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.experimental,
-    this.element_experimental,
+    this.elementExperimental,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.publisher,
-    this.element_publisher,
+    this.elementPublisher,
     this.contact,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.useContext,
     this.jurisdiction,
     this.copyright,
-    this.element_copyright,
+    this.elementCopyright,
     this.packageId,
-    this.element_packageId,
+    this.elementPackageId,
     this.license,
-    this.element_license,
+    this.elementLicense,
     this.fhirVersion,
-    this.element_fhirVersion,
+    this.elementFhirVersion,
     this.dependsOn,
     this.global,
     this.definition,
@@ -308,14 +308,14 @@ class ImplementationGuide_DependsOn {
   String packageId;
 
   //  Extensions for packageId
-  Element element_packageId;
+  Element elementPackageId;
 
   //  The version of the IG that is depended on, when the correct version is
   // required to understand the IG correctly.
   String version;
 
   //  Extensions for version
-  Element element_version;
+  Element elementVersion;
 
 ImplementationGuide_DependsOn(
   this.uri,
@@ -323,9 +323,9 @@ ImplementationGuide_DependsOn(
     this.extension,
     this.modifierExtension,
     this.packageId,
-    this.element_packageId,
+    this.elementPackageId,
     this.version,
-    this.element_version
+    this.elementVersion
     });
 
   factory ImplementationGuide_DependsOn.fromJson(Map<String, dynamic> json) => _$ImplementationGuide_DependsOnFromJson(json);
@@ -365,7 +365,7 @@ class ImplementationGuide_Global {
   String type;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  A reference to the profile that all instances must conform to.
   String profile;
@@ -376,7 +376,7 @@ ImplementationGuide_Global(
     this.extension,
     this.modifierExtension,
     this.type,
-    this.element_type
+    this.elementType
     });
 
   factory ImplementationGuide_Global.fromJson(Map<String, dynamic> json) => _$ImplementationGuide_GlobalFromJson(json);
@@ -481,22 +481,22 @@ class ImplementationGuide_Grouping {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  Human readable text describing the package.
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
 ImplementationGuide_Grouping(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.name,
-    this.element_name,
+    this.elementName,
     this.description,
-    this.element_description
+    this.elementDescription
     });
 
   factory ImplementationGuide_Grouping.fromJson(Map<String, dynamic> json) => _$ImplementationGuide_GroupingFromJson(json);
@@ -541,7 +541,7 @@ class ImplementationGuide_Resource {
   List<String> fhirVersion; // <code> enum: 0.01/0.05/0.06/0.11/0.0.80/0.0.81/0.0.82/0.4.0/0.5.0/1.0.0/1.0.1/1.0.2/1.1.0/1.4.0/1.6.0/1.8.0/3.0.0/3.0.1/3.3.0/3.5.0/4.0.0/4.0.1> fhirVersion;
 
   //  Extensions for fhirVersion
-  List<Element> element_fhirVersion;
+  List<Element> elementFhirVersion;
 
   //  A human assigned name for the resource. All resources SHOULD have a
   // name, but the name may be extracted from the resource (e.g.
@@ -549,14 +549,14 @@ class ImplementationGuide_Resource {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  A description of the reason that a resource has been included in the
   // implementation guide.
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  If true or a reference, indicates the resource is an example instance.
   //  If a reference is present, indicates that the example is an example of
@@ -564,7 +564,7 @@ class ImplementationGuide_Resource {
   bool exampleBoolean; //  pattern: ^true|false$
 
   //  Extensions for exampleBoolean
-  Element element_exampleBoolean;
+  Element elementExampleBoolean;
 
   //  If true or a reference, indicates the resource is an example instance.
   //  If a reference is present, indicates that the example is an example of
@@ -572,13 +572,13 @@ class ImplementationGuide_Resource {
   String exampleCanonical; //  pattern: ^\S*$
 
   //  Extensions for exampleCanonical
-  Element element_exampleCanonical;
+  Element elementExampleCanonical;
 
   //  Reference to the id of the grouping this resource appears in.
   String groupingId;
 
   //  Extensions for groupingId
-  Element element_groupingId;
+  Element elementGroupingId;
 
 ImplementationGuide_Resource(
   this.reference,
@@ -586,17 +586,17 @@ ImplementationGuide_Resource(
     this.extension,
     this.modifierExtension,
     this.fhirVersion,
-    this.element_fhirVersion,
+    this.elementFhirVersion,
     this.name,
-    this.element_name,
+    this.elementName,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.exampleBoolean,
-    this.element_exampleBoolean,
+    this.elementExampleBoolean,
     this.exampleCanonical,
-    this.element_exampleCanonical,
+    this.elementExampleCanonical,
     this.groupingId,
-    this.element_groupingId
+    this.elementGroupingId
     });
 
   factory ImplementationGuide_Resource.fromJson(Map<String, dynamic> json) => _$ImplementationGuide_ResourceFromJson(json);
@@ -636,7 +636,7 @@ class ImplementationGuide_Page {
   String nameUrl; //  pattern: ^\S*$
 
   //  Extensions for nameUrl
-  Element element_nameUrl;
+  Element elementNameUrl;
 
   //  The source address for the page.
   Reference nameReference;
@@ -646,13 +646,13 @@ class ImplementationGuide_Page {
   String title;
 
   //  Extensions for title
-  Element element_title;
+  Element elementTitle;
 
   //  A code that indicates how the page is generated.
   String generation; // <code> enum: html/markdown/xml/generated;
 
   //  Extensions for generation
-  Element element_generation;
+  Element elementGeneration;
 
   //  Nested Pages/Sections under this page.
   List<ImplementationGuide_Page> page;
@@ -662,12 +662,12 @@ ImplementationGuide_Page(
     this.extension,
     this.modifierExtension,
     this.nameUrl,
-    this.element_nameUrl,
+    this.elementNameUrl,
     this.nameReference,
     this.title,
-    this.element_title,
+    this.elementTitle,
     this.generation,
-    this.element_generation,
+    this.elementGeneration,
     this.page
     });
 
@@ -710,22 +710,22 @@ class ImplementationGuide_Parameter {
   String code; // <code> enum: apply/path-resource/path-pages/path-tx-cache/expansion-parameter/rule-broken-links/generate-xml/generate-json/generate-turtle/html-template;
 
   //  Extensions for code
-  Element element_code;
+  Element elementCode;
 
   //  Value for named type.
   String value;
 
   //  Extensions for value
-  Element element_value;
+  Element elementValue;
 
 ImplementationGuide_Parameter(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.code,
-    this.element_code,
+    this.elementCode,
     this.value,
-    this.element_value
+    this.elementValue
     });
 
   factory ImplementationGuide_Parameter.fromJson(Map<String, dynamic> json) => _$ImplementationGuide_ParameterFromJson(json);
@@ -765,30 +765,30 @@ class ImplementationGuide_Template {
   String code;
 
   //  Extensions for code
-  Element element_code;
+  Element elementCode;
 
   //  The source location for the template.
   String source;
 
   //  Extensions for source
-  Element element_source;
+  Element elementSource;
 
   //  The scope in which the template applies.
   String scope;
 
   //  Extensions for scope
-  Element element_scope;
+  Element elementScope;
 
 ImplementationGuide_Template(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.code,
-    this.element_code,
+    this.elementCode,
     this.source,
-    this.element_source,
+    this.elementSource,
     this.scope,
-    this.element_scope
+    this.elementScope
     });
 
   factory ImplementationGuide_Template.fromJson(Map<String, dynamic> json) => _$ImplementationGuide_TemplateFromJson(json);
@@ -829,7 +829,7 @@ class ImplementationGuide_Manifest {
   String rendering;
 
   //  Extensions for rendering
-  Element element_rendering;
+  Element elementRendering;
 
   //  A resource that is part of the implementation guide. Conformance
   // resources (value set, structure definition, capability statements etc.)
@@ -844,7 +844,7 @@ class ImplementationGuide_Manifest {
   List<String> image;
 
   //  Extensions for image
-  List<Element> element_image;
+  List<Element> elementImage;
 
   //  Indicates the relative path of an additional non-page, non-image file
   // that is part of the IG - e.g. zip, jar and similar files that could be
@@ -852,7 +852,7 @@ class ImplementationGuide_Manifest {
   List<String> other;
 
   //  Extensions for other
-  List<Element> element_other;
+  List<Element> elementOther;
 
 ImplementationGuide_Manifest(
   this.resource,
@@ -860,12 +860,12 @@ ImplementationGuide_Manifest(
     this.extension,
     this.modifierExtension,
     this.rendering,
-    this.element_rendering,
+    this.elementRendering,
     this.page,
     this.image,
-    this.element_image,
+    this.elementImage,
     this.other,
-    this.element_other
+    this.elementOther
     });
 
   factory ImplementationGuide_Manifest.fromJson(Map<String, dynamic> json) => _$ImplementationGuide_ManifestFromJson(json);
@@ -910,7 +910,7 @@ class ImplementationGuide_Resource1 {
   bool exampleBoolean; //  pattern: ^true|false$
 
   //  Extensions for exampleBoolean
-  Element element_exampleBoolean;
+  Element elementExampleBoolean;
 
   //  If true or a reference, indicates the resource is an example instance.
   //  If a reference is present, indicates that the example is an example of
@@ -918,13 +918,13 @@ class ImplementationGuide_Resource1 {
   String exampleCanonical; //  pattern: ^\S*$
 
   //  Extensions for exampleCanonical
-  Element element_exampleCanonical;
+  Element elementExampleCanonical;
 
   //  The relative path for primary page for this resource within the IG.
   String relativePath;
 
   //  Extensions for relativePath
-  Element element_relativePath;
+  Element elementRelativePath;
 
 ImplementationGuide_Resource1(
   this.reference,
@@ -932,11 +932,11 @@ ImplementationGuide_Resource1(
     this.extension,
     this.modifierExtension,
     this.exampleBoolean,
-    this.element_exampleBoolean,
+    this.elementExampleBoolean,
     this.exampleCanonical,
-    this.element_exampleCanonical,
+    this.elementExampleCanonical,
     this.relativePath,
-    this.element_relativePath
+    this.elementRelativePath
     });
 
   factory ImplementationGuide_Resource1.fromJson(Map<String, dynamic> json) => _$ImplementationGuide_Resource1FromJson(json);
@@ -976,30 +976,30 @@ class ImplementationGuide_Page1 {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  Label for the page intended for human display.
   String title;
 
   //  Extensions for title
-  Element element_title;
+  Element elementTitle;
 
   //  The name of an anchor available on the page.
   List<String> anchor;
 
   //  Extensions for anchor
-  List<Element> element_anchor;
+  List<Element> elementAnchor;
 
 ImplementationGuide_Page1(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.name,
-    this.element_name,
+    this.elementName,
     this.title,
-    this.element_title,
+    this.elementTitle,
     this.anchor,
-    this.element_anchor
+    this.elementAnchor
     });
 
   factory ImplementationGuide_Page1.fromJson(Map<String, dynamic> json) => _$ImplementationGuide_Page1FromJson(json);

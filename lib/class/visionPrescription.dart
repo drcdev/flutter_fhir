@@ -35,13 +35,13 @@ class VisionPrescription {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -54,7 +54,7 @@ class VisionPrescription {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -86,13 +86,13 @@ class VisionPrescription {
   String status;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  The date this resource was created.
   DateTime created;
 
   //  Extensions for created
-  Element element_created;
+  Element elementCreated;
 
   //  A resource reference to the person to whom the vision prescription
   // applies.
@@ -107,7 +107,7 @@ class VisionPrescription {
   DateTime dateWritten;
 
   //  Extensions for dateWritten
-  Element element_dateWritten;
+  Element elementDateWritten;
 
   //  The healthcare professional responsible for authorizing the
   // prescription.
@@ -124,21 +124,21 @@ VisionPrescription(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.created,
-    this.element_created,
+    this.elementCreated,
     this.encounter,
     this.dateWritten,
-    this.element_dateWritten
+    this.elementDateWritten
     });
 
   factory VisionPrescription.fromJson(Map<String, dynamic> json) => _$VisionPrescriptionFromJson(json);
@@ -182,25 +182,25 @@ class VisionPrescription_LensSpecification {
   String eye; // <code> enum: right/left;
 
   //  Extensions for eye
-  Element element_eye;
+  Element elementEye;
 
   //  Lens power measured in dioptres (0.25 units).
   double sphere;
 
   //  Extensions for sphere
-  Element element_sphere;
+  Element elementSphere;
 
   //  Power adjustment for astigmatism measured in dioptres (0.25 units).
   double cylinder;
 
   //  Extensions for cylinder
-  Element element_cylinder;
+  Element elementCylinder;
 
   //  Adjustment for astigmatism measured in integer degrees.
   int axis;
 
   //  Extensions for axis
-  Element element_axis;
+  Element elementAxis;
 
   //  Allows for adjustment on two axis.
   List<VisionPrescription_Prism> prism;
@@ -210,25 +210,25 @@ class VisionPrescription_LensSpecification {
   double add;
 
   //  Extensions for add
-  Element element_add;
+  Element elementAdd;
 
   //  Contact lens power measured in dioptres (0.25 units).
   double power;
 
   //  Extensions for power
-  Element element_power;
+  Element elementPower;
 
   //  Back curvature measured in millimetres.
   double backCurve;
 
   //  Extensions for backCurve
-  Element element_backCurve;
+  Element elementBackCurve;
 
   //  Contact lens diameter measured in millimetres.
   double diameter;
 
   //  Extensions for diameter
-  Element element_diameter;
+  Element elementDiameter;
 
   //  The recommended maximum wear period for the lens.
   Quantity duration;
@@ -237,13 +237,13 @@ class VisionPrescription_LensSpecification {
   String color;
 
   //  Extensions for color
-  Element element_color;
+  Element elementColor;
 
   //  Brand recommendations or restrictions.
   String brand;
 
   //  Extensions for brand
-  Element element_brand;
+  Element elementBrand;
 
   //  Notes for special requirements such as coatings and lens materials.
   List<Annotation> note;
@@ -254,27 +254,27 @@ VisionPrescription_LensSpecification(
     this.extension,
     this.modifierExtension,
     this.eye,
-    this.element_eye,
+    this.elementEye,
     this.sphere,
-    this.element_sphere,
+    this.elementSphere,
     this.cylinder,
-    this.element_cylinder,
+    this.elementCylinder,
     this.axis,
-    this.element_axis,
+    this.elementAxis,
     this.prism,
     this.add,
-    this.element_add,
+    this.elementAdd,
     this.power,
-    this.element_power,
+    this.elementPower,
     this.backCurve,
-    this.element_backCurve,
+    this.elementBackCurve,
     this.diameter,
-    this.element_diameter,
+    this.elementDiameter,
     this.duration,
     this.color,
-    this.element_color,
+    this.elementColor,
     this.brand,
-    this.element_brand,
+    this.elementBrand,
     this.note
     });
 
@@ -315,22 +315,22 @@ class VisionPrescription_Prism {
   double amount;
 
   //  Extensions for amount
-  Element element_amount;
+  Element elementAmount;
 
   //  The relative base, or reference lens edge, for the prism.
   String base; // <code> enum: up/down/in/out;
 
   //  Extensions for base
-  Element element_base;
+  Element elementBase;
 
 VisionPrescription_Prism(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.amount,
-    this.element_amount,
+    this.elementAmount,
     this.base,
-    this.element_base
+    this.elementBase
     });
 
   factory VisionPrescription_Prism.fromJson(Map<String, dynamic> json) => _$VisionPrescription_PrismFromJson(json);

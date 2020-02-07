@@ -14,30 +14,30 @@ ParameterDefinition _$ParameterDefinitionFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     name: json['name'] as String,
-    element_name: json['element_name'] == null
+    elementName: json['elementName'] == null
         ? null
-        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
     use: json['use'] as String,
-    element_use: json['element_use'] == null
+    elementUse: json['elementUse'] == null
         ? null
-        : Element.fromJson(json['element_use'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementUse'] as Map<String, dynamic>),
     min: json['min'] as int,
-    element_min: json['element_min'] == null
+    elementMin: json['elementMin'] == null
         ? null
-        : Element.fromJson(json['element_min'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementMin'] as Map<String, dynamic>),
     max: json['max'] as String,
-    element_max: json['element_max'] == null
+    elementMax: json['elementMax'] == null
         ? null
-        : Element.fromJson(json['element_max'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementMax'] as Map<String, dynamic>),
     documentation: json['documentation'] as String,
-    element_documentation: json['element_documentation'] == null
+    elementDocumentation: json['elementDocumentation'] == null
         ? null
         : Element.fromJson(
-            json['element_documentation'] as Map<String, dynamic>),
+            json['elementDocumentation'] as Map<String, dynamic>),
     type: json['type'] as String,
-    element_type: json['element_type'] == null
+    elementType: json['elementType'] == null
         ? null
-        : Element.fromJson(json['element_type'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
     profile: json['profile'] as String,
   );
 }
@@ -48,16 +48,16 @@ Map<String, dynamic> _$ParameterDefinitionToJson(
       'id': instance.id,
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'name': instance.name,
-      'element_name': instance.element_name?.toJson(),
+      'elementName': instance.elementName?.toJson(),
       'use': instance.use,
-      'element_use': instance.element_use?.toJson(),
+      'elementUse': instance.elementUse?.toJson(),
       'min': instance.min,
-      'element_min': instance.element_min?.toJson(),
+      'elementMin': instance.elementMin?.toJson(),
       'max': instance.max,
-      'element_max': instance.element_max?.toJson(),
+      'elementMax': instance.elementMax?.toJson(),
       'documentation': instance.documentation,
-      'element_documentation': instance.element_documentation?.toJson(),
+      'elementDocumentation': instance.elementDocumentation?.toJson(),
       'type': instance.type,
-      'element_type': instance.element_type?.toJson(),
+      'elementType': instance.elementType?.toJson(),
       'profile': instance.profile,
     };

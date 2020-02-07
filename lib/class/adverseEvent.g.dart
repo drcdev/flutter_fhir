@@ -16,20 +16,20 @@ AdverseEvent _$AdverseEventFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -43,9 +43,9 @@ AdverseEvent _$AdverseEventFromJson(Map<String, dynamic> json) {
         ? null
         : Identifier.fromJson(json['identifier'] as Map<String, dynamic>),
     actuality: json['actuality'] as String,
-    element_actuality: json['element_actuality'] == null
+    elementActuality: json['elementActuality'] == null
         ? null
-        : Element.fromJson(json['element_actuality'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementActuality'] as Map<String, dynamic>),
     category: (json['category'] as List)
         ?.map((e) => e == null
             ? null
@@ -58,22 +58,21 @@ AdverseEvent _$AdverseEventFromJson(Map<String, dynamic> json) {
         ? null
         : Reference.fromJson(json['encounter'] as Map<String, dynamic>),
     date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
-    element_date: json['element_date'] == null
+    elementDate: json['elementDate'] == null
         ? null
-        : Element.fromJson(json['element_date'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDate'] as Map<String, dynamic>),
     detected: json['detected'] == null
         ? null
         : DateTime.parse(json['detected'] as String),
-    element_detected: json['element_detected'] == null
+    elementDetected: json['elementDetected'] == null
         ? null
-        : Element.fromJson(json['element_detected'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDetected'] as Map<String, dynamic>),
     recordedDate: json['recordedDate'] == null
         ? null
         : DateTime.parse(json['recordedDate'] as String),
-    element_recordedDate: json['element_recordedDate'] == null
+    elementRecordedDate: json['elementRecordedDate'] == null
         ? null
-        : Element.fromJson(
-            json['element_recordedDate'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementRecordedDate'] as Map<String, dynamic>),
     resultingCondition: (json['resultingCondition'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
@@ -122,9 +121,9 @@ Map<String, dynamic> _$AdverseEventToJson(AdverseEvent instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -132,17 +131,17 @@ Map<String, dynamic> _$AdverseEventToJson(AdverseEvent instance) =>
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.toJson(),
       'actuality': instance.actuality,
-      'element_actuality': instance.element_actuality?.toJson(),
+      'elementActuality': instance.elementActuality?.toJson(),
       'category': instance.category?.map((e) => e?.toJson())?.toList(),
       'event': instance.event?.toJson(),
       'subject': instance.subject?.toJson(),
       'encounter': instance.encounter?.toJson(),
       'date': instance.date?.toIso8601String(),
-      'element_date': instance.element_date?.toJson(),
+      'elementDate': instance.elementDate?.toJson(),
       'detected': instance.detected?.toIso8601String(),
-      'element_detected': instance.element_detected?.toJson(),
+      'elementDetected': instance.elementDetected?.toJson(),
       'recordedDate': instance.recordedDate?.toIso8601String(),
-      'element_recordedDate': instance.element_recordedDate?.toJson(),
+      'elementRecordedDate': instance.elementRecordedDate?.toJson(),
       'resultingCondition':
           instance.resultingCondition?.map((e) => e?.toJson())?.toList(),
       'location': instance.location?.toJson(),
@@ -210,10 +209,10 @@ AdverseEvent_Causality _$AdverseEvent_CausalityFromJson(
         ? null
         : CodeableConcept.fromJson(json['assessment'] as Map<String, dynamic>),
     productRelatedness: json['productRelatedness'] as String,
-    element_productRelatedness: json['element_productRelatedness'] == null
+    elementProductRelatedness: json['elementProductRelatedness'] == null
         ? null
         : Element.fromJson(
-            json['element_productRelatedness'] as Map<String, dynamic>),
+            json['elementProductRelatedness'] as Map<String, dynamic>),
     author: json['author'] == null
         ? null
         : Reference.fromJson(json['author'] as Map<String, dynamic>),
@@ -232,8 +231,7 @@ Map<String, dynamic> _$AdverseEvent_CausalityToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'assessment': instance.assessment?.toJson(),
       'productRelatedness': instance.productRelatedness,
-      'element_productRelatedness':
-          instance.element_productRelatedness?.toJson(),
+      'elementProductRelatedness': instance.elementProductRelatedness?.toJson(),
       'author': instance.author?.toJson(),
       'method': instance.method?.toJson(),
     };

@@ -28,20 +28,20 @@ class Binary {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  MimeType of the binary content represented as a standard MimeType (BCP
   // 13).
   String contentType;
 
   //  Extensions for contentType
-  Element element_contentType;
+  Element elementContentType;
 
   //  This element identifies another resource that can be used as a proxy
   // of the security sensitivity to use when deciding and enforcing access
@@ -60,20 +60,20 @@ class Binary {
   String data;
 
   //  Extensions for data
-  Element element_data;
+  Element elementData;
 
 Binary(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.contentType,
-    this.element_contentType,
+    this.elementContentType,
     this.securityContext,
     this.data,
-    this.element_data
+    this.elementData
     });
 
   factory Binary.fromJson(Map<String, dynamic> json) => _$BinaryFromJson(json);

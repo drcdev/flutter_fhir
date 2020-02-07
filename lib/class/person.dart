@@ -36,13 +36,13 @@ class Person {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -55,7 +55,7 @@ class Person {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -94,13 +94,13 @@ class Person {
   String gender; // <code> enum: male/female/other/unknown;
 
   //  Extensions for gender
-  Element element_gender;
+  Element elementGender;
 
   //  The birth date for the person.
   String birthDate;
 
   //  Extensions for birthDate
-  Element element_birthDate;
+  Element elementBirthDate;
 
   //  One or more addresses for the person.
   List<Address> address;
@@ -116,7 +116,7 @@ class Person {
   bool active;
 
   //  Extensions for active
-  Element element_active;
+  Element elementActive;
 
   //  Link to a resource that concerns the same actual person.
   List<Person_Link> link;
@@ -125,9 +125,9 @@ Person(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -136,14 +136,14 @@ Person(
     this.name,
     this.telecom,
     this.gender,
-    this.element_gender,
+    this.elementGender,
     this.birthDate,
-    this.element_birthDate,
+    this.elementBirthDate,
     this.address,
     this.photo,
     this.managingOrganization,
     this.active,
-    this.element_active,
+    this.elementActive,
     this.link
     });
 
@@ -188,7 +188,7 @@ class Person_Link {
   String assurance; // <code> enum: level1/level2/level3/level4;
 
   //  Extensions for assurance
-  Element element_assurance;
+  Element elementAssurance;
 
 Person_Link(
   this.target,
@@ -196,7 +196,7 @@ Person_Link(
     this.extension,
     this.modifierExtension,
     this.assurance,
-    this.element_assurance
+    this.elementAssurance
     });
 
   factory Person_Link.fromJson(Map<String, dynamic> json) => _$Person_LinkFromJson(json);

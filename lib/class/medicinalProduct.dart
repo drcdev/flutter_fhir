@@ -35,13 +35,13 @@ class MedicinalProduct {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -54,7 +54,7 @@ class MedicinalProduct {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -105,7 +105,7 @@ class MedicinalProduct {
   List<String> specialMeasures;
 
   //  Extensions for specialMeasures
-  List<Element> element_specialMeasures;
+  List<Element> elementSpecialMeasures;
 
   //  If authorised for use in children.
   CodeableConcept paediatricUseIndicator;
@@ -156,9 +156,9 @@ MedicinalProduct(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -170,7 +170,7 @@ MedicinalProduct(
     this.legalStatusOfSupply,
     this.additionalMonitoringIndicator,
     this.specialMeasures,
-    this.element_specialMeasures,
+    this.elementSpecialMeasures,
     this.paediatricUseIndicator,
     this.productClassification,
     this.marketingStatus,
@@ -222,7 +222,7 @@ class MedicinalProduct_Name {
   String productName;
 
   //  Extensions for productName
-  Element element_productName;
+  Element elementProductName;
 
   //  Coding words or phrases of the name.
   List<MedicinalProduct_NamePart> namePart;
@@ -235,7 +235,7 @@ MedicinalProduct_Name(
     this.extension,
     this.modifierExtension,
     this.productName,
-    this.element_productName,
+    this.elementProductName,
     this.namePart,
     this.countryLanguage
     });
@@ -277,7 +277,7 @@ class MedicinalProduct_NamePart {
   String part;
 
   //  Extensions for part
-  Element element_part;
+  Element elementPart;
 
   //  Idenifying type for this part of the name (e.g. strength part).
   Coding type;
@@ -288,7 +288,7 @@ MedicinalProduct_NamePart(
     this.extension,
     this.modifierExtension,
     this.part,
-    this.element_part
+    this.elementPart
     });
 
   factory MedicinalProduct_NamePart.fromJson(Map<String, dynamic> json) => _$MedicinalProduct_NamePartFromJson(json);
@@ -385,7 +385,7 @@ class MedicinalProduct_ManufacturingBusinessOperation {
   DateTime effectiveDate;
 
   //  Extensions for effectiveDate
-  Element element_effectiveDate;
+  Element elementEffectiveDate;
 
   //  To indicate if this proces is commercially confidential.
   CodeableConcept confidentialityIndicator;
@@ -403,7 +403,7 @@ MedicinalProduct_ManufacturingBusinessOperation(
     this.operationType,
     this.authorisationReferenceNumber,
     this.effectiveDate,
-    this.element_effectiveDate,
+    this.elementEffectiveDate,
     this.confidentialityIndicator,
     this.manufacturer,
     this.regulator
@@ -464,7 +464,7 @@ class MedicinalProduct_SpecialDesignation {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  Animal species for which this applies.
   CodeableConcept species;
@@ -480,7 +480,7 @@ MedicinalProduct_SpecialDesignation(
     this.indicationReference,
     this.status,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.species
     });
 

@@ -33,13 +33,13 @@ class SearchParameter {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -52,7 +52,7 @@ class SearchParameter {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -87,7 +87,7 @@ class SearchParameter {
   String url;
 
   //  Extensions for url
-  Element element_url;
+  Element elementUrl;
 
   //  The identifier that is used to identify this version of the search
   // parameter when it is referenced in a specification, model, design or
@@ -99,7 +99,7 @@ class SearchParameter {
   String version;
 
   //  Extensions for version
-  Element element_version;
+  Element elementVersion;
 
   //  A natural language name identifying the search parameter. This name
   // should be usable as an identifier for the module by machine processing
@@ -107,7 +107,7 @@ class SearchParameter {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  Where this search parameter is originally defined. If a derivedFrom is
   // provided, then the details in the search parameter must be consistent
@@ -121,7 +121,7 @@ class SearchParameter {
   String status; // <code> enum: draft/active/retired/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  A Boolean value to indicate that this search parameter is authored for
   // testing purposes (or education/evaluation/marketing) and is not
@@ -129,7 +129,7 @@ class SearchParameter {
   bool experimental;
 
   //  Extensions for experimental
-  Element element_experimental;
+  Element elementExperimental;
 
   //  The date  (and optionally time) when the search parameter was
   // published. The date must change when the business version changes and
@@ -138,14 +138,14 @@ class SearchParameter {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  The name of the organization or individual that published the search
   // parameter.
   String publisher;
 
   //  Extensions for publisher
-  Element element_publisher;
+  Element elementPublisher;
 
   //  Contact details to assist a user in finding and communicating with the
   // publisher.
@@ -155,7 +155,7 @@ class SearchParameter {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  The content was developed with a focus and intent of supporting the
   // contexts that are listed. These contexts may be general categories
@@ -173,55 +173,55 @@ class SearchParameter {
   String purpose;
 
   //  Extensions for purpose
-  Element element_purpose;
+  Element elementPurpose;
 
   //  The code used in the URL or the parameter name in a parameters
   // resource for this search parameter.
   String code;
 
   //  Extensions for code
-  Element element_code;
+  Element elementCode;
 
   //  The base resource type(s) that this search parameter can be used
   // against.
   List<String> base;
 
   //  Extensions for base
-  List<Element> element_base;
+  List<Element> elementBase;
 
   //  The type of value that a search parameter may contain, and how the
   // content is interpreted.
   String type; // <code> enum: number/date/string/token/reference/composite/quantity/uri/special;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  A FHIRPath expression that returns a set of elements for the search
   // parameter.
   String expression;
 
   //  Extensions for expression
-  Element element_expression;
+  Element elementExpression;
 
   //  An XPath expression that returns a set of elements for the search
   // parameter.
   String xpath;
 
   //  Extensions for xpath
-  Element element_xpath;
+  Element elementXpath;
 
   //  How the search parameter relates to the set of elements returned by
   // evaluating the xpath query.
   String xpathUsage; // <code> enum: normal/phonetic/nearby/distance/other;
 
   //  Extensions for xpathUsage
-  Element element_xpathUsage;
+  Element elementXpathUsage;
 
   //  Types of resource (if a resource is referenced).
   List<String> target;
 
   //  Extensions for target
-  List<Element> element_target;
+  List<Element> elementTarget;
 
   //  Whether multiple values are allowed for each time the parameter
   // exists. Values are separated by commas, and the parameter matches if
@@ -229,26 +229,26 @@ class SearchParameter {
   bool multipleOr;
 
   //  Extensions for multipleOr
-  Element element_multipleOr;
+  Element elementMultipleOr;
 
   //  Whether multiple parameters are allowed - e.g. more than one parameter
   // with the same name. The search matches if all the parameters match.
   bool multipleAnd;
 
   //  Extensions for multipleAnd
-  Element element_multipleAnd;
+  Element elementMultipleAnd;
 
   //  Comparators supported for the search parameter.
   List<String> comparator; // <code> enum: eq/ne/gt/lt/ge/le/sa/eb/ap> comparator;
 
   //  Extensions for comparator
-  List<Element> element_comparator;
+  List<Element> elementComparator;
 
   //  A modifier supported for the search parameter.
   List<String> modifier; // <code> enum: missing/exact/contains/not/text/in/not-in/below/above/type/identifier/ofType> modifier;
 
   //  Extensions for modifier
-  List<Element> element_modifier;
+  List<Element> elementModifier;
 
   //  Contains the names of any search parameters which may be chained to
   // the containing search parameter. Chained parameters may be added to
@@ -260,7 +260,7 @@ class SearchParameter {
   List<String> chain;
 
   //  Extensions for chain
-  List<Element> element_chain;
+  List<Element> elementChain;
 
   //  Used to define the parts of a composite search parameter.
   List<SearchParameter_Component> component;
@@ -269,59 +269,59 @@ SearchParameter(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
-    this.element_url,
+    this.elementUrl,
     this.version,
-    this.element_version,
+    this.elementVersion,
     this.name,
-    this.element_name,
+    this.elementName,
     this.derivedFrom,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.experimental,
-    this.element_experimental,
+    this.elementExperimental,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.publisher,
-    this.element_publisher,
+    this.elementPublisher,
     this.contact,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.useContext,
     this.jurisdiction,
     this.purpose,
-    this.element_purpose,
+    this.elementPurpose,
     this.code,
-    this.element_code,
+    this.elementCode,
     this.base,
-    this.element_base,
+    this.elementBase,
     this.type,
-    this.element_type,
+    this.elementType,
     this.expression,
-    this.element_expression,
+    this.elementExpression,
     this.xpath,
-    this.element_xpath,
+    this.elementXpath,
     this.xpathUsage,
-    this.element_xpathUsage,
+    this.elementXpathUsage,
     this.target,
-    this.element_target,
+    this.elementTarget,
     this.multipleOr,
-    this.element_multipleOr,
+    this.elementMultipleOr,
     this.multipleAnd,
-    this.element_multipleAnd,
+    this.elementMultipleAnd,
     this.comparator,
-    this.element_comparator,
+    this.elementComparator,
     this.modifier,
-    this.element_modifier,
+    this.elementModifier,
     this.chain,
-    this.element_chain,
+    this.elementChain,
     this.component
     });
 
@@ -366,7 +366,7 @@ class SearchParameter_Component {
   String expression;
 
   //  Extensions for expression
-  Element element_expression;
+  Element elementExpression;
 
 SearchParameter_Component(
   this.definition,
@@ -374,7 +374,7 @@ SearchParameter_Component(
     this.extension,
     this.modifierExtension,
     this.expression,
-    this.element_expression
+    this.elementExpression
     });
 
   factory SearchParameter_Component.fromJson(Map<String, dynamic> json) => _$SearchParameter_ComponentFromJson(json);

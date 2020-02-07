@@ -24,21 +24,21 @@ class Money {
   double value;
 
   //  Extensions for value
-  Element element_value;
+  Element elementValue;
 
   //  ISO 4217 Currency Code.
   String currency;
 
   //  Extensions for currency
-  Element element_currency;
+  Element elementCurrency;
 
 Money(
   {this.id,
     this.extension,
     this.value,
-    this.element_value,
+    this.elementValue,
     this.currency,
-    this.element_currency
+    this.elementCurrency
     });
 
   factory Money.fromJson(Map<String, dynamic> json) => _$MoneyFromJson(json);

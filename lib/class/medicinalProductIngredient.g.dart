@@ -17,20 +17,20 @@ MedicinalProductIngredient _$MedicinalProductIngredientFromJson(
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -44,10 +44,10 @@ MedicinalProductIngredient _$MedicinalProductIngredientFromJson(
         ? null
         : Identifier.fromJson(json['identifier'] as Map<String, dynamic>),
     allergenicIndicator: json['allergenicIndicator'] as bool,
-    element_allergenicIndicator: json['element_allergenicIndicator'] == null
+    elementAllergenicIndicator: json['elementAllergenicIndicator'] == null
         ? null
         : Element.fromJson(
-            json['element_allergenicIndicator'] as Map<String, dynamic>),
+            json['elementAllergenicIndicator'] as Map<String, dynamic>),
     manufacturer: (json['manufacturer'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
@@ -71,9 +71,9 @@ Map<String, dynamic> _$MedicinalProductIngredientToJson(
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -82,8 +82,8 @@ Map<String, dynamic> _$MedicinalProductIngredientToJson(
       'identifier': instance.identifier?.toJson(),
       'role': instance.role?.toJson(),
       'allergenicIndicator': instance.allergenicIndicator,
-      'element_allergenicIndicator':
-          instance.element_allergenicIndicator?.toJson(),
+      'elementAllergenicIndicator':
+          instance.elementAllergenicIndicator?.toJson(),
       'manufacturer': instance.manufacturer?.map((e) => e?.toJson())?.toList(),
       'specifiedSubstance':
           instance.specifiedSubstance?.map((e) => e?.toJson())?.toList(),
@@ -160,10 +160,10 @@ MedicinalProductIngredient_Strength
         ? null
         : Ratio.fromJson(json['concentrationLowLimit'] as Map<String, dynamic>),
     measurementPoint: json['measurementPoint'] as String,
-    element_measurementPoint: json['element_measurementPoint'] == null
+    elementMeasurementPoint: json['elementMeasurementPoint'] == null
         ? null
         : Element.fromJson(
-            json['element_measurementPoint'] as Map<String, dynamic>),
+            json['elementMeasurementPoint'] as Map<String, dynamic>),
     country: (json['country'] as List)
         ?.map((e) => e == null
             ? null
@@ -190,7 +190,7 @@ Map<String, dynamic> _$MedicinalProductIngredient_StrengthToJson(
       'concentration': instance.concentration?.toJson(),
       'concentrationLowLimit': instance.concentrationLowLimit?.toJson(),
       'measurementPoint': instance.measurementPoint,
-      'element_measurementPoint': instance.element_measurementPoint?.toJson(),
+      'elementMeasurementPoint': instance.elementMeasurementPoint?.toJson(),
       'country': instance.country?.map((e) => e?.toJson())?.toList(),
       'referenceStrength':
           instance.referenceStrength?.map((e) => e?.toJson())?.toList(),
@@ -219,10 +219,10 @@ MedicinalProductIngredient_ReferenceStrength
         ? null
         : Ratio.fromJson(json['strengthLowLimit'] as Map<String, dynamic>),
     measurementPoint: json['measurementPoint'] as String,
-    element_measurementPoint: json['element_measurementPoint'] == null
+    elementMeasurementPoint: json['elementMeasurementPoint'] == null
         ? null
         : Element.fromJson(
-            json['element_measurementPoint'] as Map<String, dynamic>),
+            json['elementMeasurementPoint'] as Map<String, dynamic>),
     country: (json['country'] as List)
         ?.map((e) => e == null
             ? null
@@ -242,7 +242,7 @@ Map<String, dynamic> _$MedicinalProductIngredient_ReferenceStrengthToJson(
       'strength': instance.strength?.toJson(),
       'strengthLowLimit': instance.strengthLowLimit?.toJson(),
       'measurementPoint': instance.measurementPoint,
-      'element_measurementPoint': instance.element_measurementPoint?.toJson(),
+      'elementMeasurementPoint': instance.elementMeasurementPoint?.toJson(),
       'country': instance.country?.map((e) => e?.toJson())?.toList(),
     };
 

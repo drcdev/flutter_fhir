@@ -35,13 +35,13 @@ class PractitionerRole {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -54,7 +54,7 @@ class PractitionerRole {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -86,7 +86,7 @@ class PractitionerRole {
   bool active;
 
   //  Extensions for active
-  Element element_active;
+  Element elementActive;
 
   //  The period during which the person is authorized to act as a
   // practitioner in these role(s) for the organization.
@@ -131,7 +131,7 @@ class PractitionerRole {
   String availabilityExceptions;
 
   //  Extensions for availabilityExceptions
-  Element element_availabilityExceptions;
+  Element elementAvailabilityExceptions;
 
   //  Technical endpoints providing access to services operated for the
   // practitioner with this role.
@@ -141,16 +141,16 @@ PractitionerRole(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.active,
-    this.element_active,
+    this.elementActive,
     this.period,
     this.practitioner,
     this.organization,
@@ -162,7 +162,7 @@ PractitionerRole(
     this.availableTime,
     this.notAvailable,
     this.availabilityExceptions,
-    this.element_availabilityExceptions,
+    this.elementAvailabilityExceptions,
     this.endpoint
     });
 
@@ -204,41 +204,41 @@ class PractitionerRole_AvailableTime {
   List<String> daysOfWeek;
 
   //  Extensions for daysOfWeek
-  List<Element> element_daysOfWeek;
+  List<Element> elementDaysOfWeek;
 
   //  Is this always available? (hence times are irrelevant) e.g. 24 hour
   // service.
   bool allDay;
 
   //  Extensions for allDay
-  Element element_allDay;
+  Element elementAllDay;
 
   //  The opening time of day. Note: If the AllDay flag is set, then this
   // time is ignored.
   String availableStartTime;
 
   //  Extensions for availableStartTime
-  Element element_availableStartTime;
+  Element elementAvailableStartTime;
 
   //  The closing time of day. Note: If the AllDay flag is set, then this
   // time is ignored.
   String availableEndTime;
 
   //  Extensions for availableEndTime
-  Element element_availableEndTime;
+  Element elementAvailableEndTime;
 
 PractitionerRole_AvailableTime(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.daysOfWeek,
-    this.element_daysOfWeek,
+    this.elementDaysOfWeek,
     this.allDay,
-    this.element_allDay,
+    this.elementAllDay,
     this.availableStartTime,
-    this.element_availableStartTime,
+    this.elementAvailableStartTime,
     this.availableEndTime,
-    this.element_availableEndTime
+    this.elementAvailableEndTime
     });
 
   factory PractitionerRole_AvailableTime.fromJson(Map<String, dynamic> json) => _$PractitionerRole_AvailableTimeFromJson(json);
@@ -279,7 +279,7 @@ class PractitionerRole_NotAvailable {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  Service is not available (seasonally or for a public holiday) from
   // this date.
@@ -290,7 +290,7 @@ PractitionerRole_NotAvailable(
     this.extension,
     this.modifierExtension,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.during
     });
 

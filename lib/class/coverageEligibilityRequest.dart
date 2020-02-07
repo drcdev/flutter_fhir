@@ -36,13 +36,13 @@ class CoverageEligibilityRequest {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -55,7 +55,7 @@ class CoverageEligibilityRequest {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -87,7 +87,7 @@ class CoverageEligibilityRequest {
   String status;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  When the requestor expects the processor to complete processing.
   CodeableConcept priority;
@@ -100,7 +100,7 @@ class CoverageEligibilityRequest {
   List<String> purpose; // <code> enum: auth-requirements/benefits/discovery/validation> purpose;
 
   //  Extensions for purpose
-  List<Element> element_purpose;
+  List<Element> elementPurpose;
 
   //  The party who is the beneficiary of the supplied coverage and for whom
   // eligibility is sought.
@@ -111,7 +111,7 @@ class CoverageEligibilityRequest {
   String servicedDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for servicedDate
-  Element element_servicedDate;
+  Element elementServicedDate;
 
   //  The date or dates when the enclosed suite of services were performed
   // or completed.
@@ -121,7 +121,7 @@ class CoverageEligibilityRequest {
   DateTime created;
 
   //  Extensions for created
-  Element element_created;
+  Element elementCreated;
 
   //  Person who created the request.
   Reference enterer;
@@ -155,24 +155,24 @@ CoverageEligibilityRequest(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.priority,
     this.purpose,
-    this.element_purpose,
+    this.elementPurpose,
     this.servicedDate,
-    this.element_servicedDate,
+    this.elementServicedDate,
     this.servicedPeriod,
     this.created,
-    this.element_created,
+    this.elementCreated,
     this.enterer,
     this.provider,
     this.facility,
@@ -218,7 +218,7 @@ class CoverageEligibilityRequest_SupportingInfo {
   int sequence;
 
   //  Extensions for sequence
-  Element element_sequence;
+  Element elementSequence;
 
   //  Additional data or information such as resources, documents, images
   // etc. including references to the data or the actual inclusion of the
@@ -230,7 +230,7 @@ class CoverageEligibilityRequest_SupportingInfo {
   bool appliesToAll;
 
   //  Extensions for appliesToAll
-  Element element_appliesToAll;
+  Element elementAppliesToAll;
 
 CoverageEligibilityRequest_SupportingInfo(
   this.information,
@@ -238,9 +238,9 @@ CoverageEligibilityRequest_SupportingInfo(
     this.extension,
     this.modifierExtension,
     this.sequence,
-    this.element_sequence,
+    this.elementSequence,
     this.appliesToAll,
-    this.element_appliesToAll
+    this.elementAppliesToAll
     });
 
   factory CoverageEligibilityRequest_SupportingInfo.fromJson(Map<String, dynamic> json) => _$CoverageEligibilityRequest_SupportingInfoFromJson(json);
@@ -281,7 +281,7 @@ class CoverageEligibilityRequest_Insurance {
   bool focal;
 
   //  Extensions for focal
-  Element element_focal;
+  Element elementFocal;
 
   //  Reference to the insurance card level information contained in the
   // Coverage resource. The coverage issuing insurer will use these details
@@ -294,7 +294,7 @@ class CoverageEligibilityRequest_Insurance {
   String businessArrangement;
 
   //  Extensions for businessArrangement
-  Element element_businessArrangement;
+  Element elementBusinessArrangement;
 
 CoverageEligibilityRequest_Insurance(
   this.coverage,
@@ -302,9 +302,9 @@ CoverageEligibilityRequest_Insurance(
     this.extension,
     this.modifierExtension,
     this.focal,
-    this.element_focal,
+    this.elementFocal,
     this.businessArrangement,
-    this.element_businessArrangement
+    this.elementBusinessArrangement
     });
 
   factory CoverageEligibilityRequest_Insurance.fromJson(Map<String, dynamic> json) => _$CoverageEligibilityRequest_InsuranceFromJson(json);
@@ -345,7 +345,7 @@ class CoverageEligibilityRequest_Item {
   List<int> supportingInfoSequence;
 
   //  Extensions for supportingInfoSequence
-  List<Element> element_supportingInfoSequence;
+  List<Element> elementSupportingInfoSequence;
 
   //  Code to identify the general type of benefits under which products and
   // services are provided.
@@ -383,7 +383,7 @@ CoverageEligibilityRequest_Item(
     this.extension,
     this.modifierExtension,
     this.supportingInfoSequence,
-    this.element_supportingInfoSequence,
+    this.elementSupportingInfoSequence,
     this.category,
     this.productOrService,
     this.modifier,

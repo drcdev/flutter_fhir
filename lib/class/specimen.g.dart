@@ -13,20 +13,20 @@ Specimen _$SpecimenFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -45,9 +45,9 @@ Specimen _$SpecimenFromJson(Map<String, dynamic> json) {
         : Identifier.fromJson(
             json['accessionIdentifier'] as Map<String, dynamic>),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     type: json['type'] == null
         ? null
         : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
@@ -57,10 +57,9 @@ Specimen _$SpecimenFromJson(Map<String, dynamic> json) {
     receivedTime: json['receivedTime'] == null
         ? null
         : DateTime.parse(json['receivedTime'] as String),
-    element_receivedTime: json['element_receivedTime'] == null
+    elementReceivedTime: json['elementReceivedTime'] == null
         ? null
-        : Element.fromJson(
-            json['element_receivedTime'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementReceivedTime'] as Map<String, dynamic>),
     parent: (json['parent'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
@@ -99,9 +98,9 @@ Map<String, dynamic> _$SpecimenToJson(Specimen instance) => <String, dynamic>{
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -110,11 +109,11 @@ Map<String, dynamic> _$SpecimenToJson(Specimen instance) => <String, dynamic>{
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'accessionIdentifier': instance.accessionIdentifier?.toJson(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'type': instance.type?.toJson(),
       'subject': instance.subject?.toJson(),
       'receivedTime': instance.receivedTime?.toIso8601String(),
-      'element_receivedTime': instance.element_receivedTime?.toJson(),
+      'elementReceivedTime': instance.elementReceivedTime?.toJson(),
       'parent': instance.parent?.map((e) => e?.toJson())?.toList(),
       'request': instance.request?.map((e) => e?.toJson())?.toList(),
       'collection': instance.collection?.toJson(),
@@ -139,10 +138,10 @@ Specimen_Collection _$Specimen_CollectionFromJson(Map<String, dynamic> json) {
         ? null
         : Reference.fromJson(json['collector'] as Map<String, dynamic>),
     collectedDateTime: json['collectedDateTime'] as String,
-    element_collectedDateTime: json['element_collectedDateTime'] == null
+    elementCollectedDateTime: json['elementCollectedDateTime'] == null
         ? null
         : Element.fromJson(
-            json['element_collectedDateTime'] as Map<String, dynamic>),
+            json['elementCollectedDateTime'] as Map<String, dynamic>),
     collectedPeriod: json['collectedPeriod'] == null
         ? null
         : Period.fromJson(json['collectedPeriod'] as Map<String, dynamic>),
@@ -178,7 +177,7 @@ Map<String, dynamic> _$Specimen_CollectionToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'collector': instance.collector?.toJson(),
       'collectedDateTime': instance.collectedDateTime,
-      'element_collectedDateTime': instance.element_collectedDateTime?.toJson(),
+      'elementCollectedDateTime': instance.elementCollectedDateTime?.toJson(),
       'collectedPeriod': instance.collectedPeriod?.toJson(),
       'duration': instance.duration?.toJson(),
       'quantity': instance.quantity?.toJson(),
@@ -201,9 +200,9 @@ Specimen_Processing _$Specimen_ProcessingFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     description: json['description'] as String,
-    element_description: json['element_description'] == null
+    elementDescription: json['elementDescription'] == null
         ? null
-        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
     procedure: json['procedure'] == null
         ? null
         : CodeableConcept.fromJson(json['procedure'] as Map<String, dynamic>),
@@ -212,10 +211,9 @@ Specimen_Processing _$Specimen_ProcessingFromJson(Map<String, dynamic> json) {
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     timeDateTime: json['timeDateTime'] as String,
-    element_timeDateTime: json['element_timeDateTime'] == null
+    elementTimeDateTime: json['elementTimeDateTime'] == null
         ? null
-        : Element.fromJson(
-            json['element_timeDateTime'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementTimeDateTime'] as Map<String, dynamic>),
     timePeriod: json['timePeriod'] == null
         ? null
         : Period.fromJson(json['timePeriod'] as Map<String, dynamic>),
@@ -230,11 +228,11 @@ Map<String, dynamic> _$Specimen_ProcessingToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'description': instance.description,
-      'element_description': instance.element_description?.toJson(),
+      'elementDescription': instance.elementDescription?.toJson(),
       'procedure': instance.procedure?.toJson(),
       'additive': instance.additive?.map((e) => e?.toJson())?.toList(),
       'timeDateTime': instance.timeDateTime,
-      'element_timeDateTime': instance.element_timeDateTime?.toJson(),
+      'elementTimeDateTime': instance.elementTimeDateTime?.toJson(),
       'timePeriod': instance.timePeriod?.toJson(),
     };
 
@@ -254,9 +252,9 @@ Specimen_Container _$Specimen_ContainerFromJson(Map<String, dynamic> json) {
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     description: json['description'] as String,
-    element_description: json['element_description'] == null
+    elementDescription: json['elementDescription'] == null
         ? null
-        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
     type: json['type'] == null
         ? null
         : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
@@ -284,7 +282,7 @@ Map<String, dynamic> _$Specimen_ContainerToJson(Specimen_Container instance) =>
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'description': instance.description,
-      'element_description': instance.element_description?.toJson(),
+      'elementDescription': instance.elementDescription?.toJson(),
       'type': instance.type?.toJson(),
       'capacity': instance.capacity?.toJson(),
       'specimenQuantity': instance.specimenQuantity?.toJson(),

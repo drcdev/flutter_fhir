@@ -39,13 +39,13 @@ class ExplanationOfBenefit {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -58,7 +58,7 @@ class ExplanationOfBenefit {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -90,7 +90,7 @@ class ExplanationOfBenefit {
   String status; // <code> enum: active/cancelled/draft/entered-in-error;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  The category of claim, e.g. oral, pharmacy, vision, institutional,
   // professional.
@@ -108,7 +108,7 @@ class ExplanationOfBenefit {
   String use;
 
   //  Extensions for use
-  Element element_use;
+  Element elementUse;
 
   //  The party to whom the professional services and/or products have been
   // supplied or are being considered and for whom actual for forecast
@@ -122,7 +122,7 @@ class ExplanationOfBenefit {
   DateTime created;
 
   //  Extensions for created
-  Element element_created;
+  Element elementCreated;
 
   //  Individual who created the claim, predetermination or
   // preauthorization.
@@ -184,20 +184,20 @@ class ExplanationOfBenefit {
   String outcome;
 
   //  Extensions for outcome
-  Element element_outcome;
+  Element elementOutcome;
 
   //  A human readable description of the status of the adjudication.
   String disposition;
 
   //  Extensions for disposition
-  Element element_disposition;
+  Element elementDisposition;
 
   //  Reference from the Insurer which is used in later communications which
   // refers to this adjudication.
   List<String> preAuthRef;
 
   //  Extensions for preAuthRef
-  List<Element> element_preAuthRef;
+  List<Element> elementPreAuthRef;
 
   //  The timeframe during which the supplied preauthorization reference may
   // be quoted on claims to obtain the adjudication as provided.
@@ -222,7 +222,7 @@ class ExplanationOfBenefit {
   int precedence;
 
   //  Extensions for precedence
-  Element element_precedence;
+  Element elementPrecedence;
 
   //  Financial instruments for reimbursement for the health care products
   // and services specified on the claim.
@@ -276,22 +276,22 @@ ExplanationOfBenefit(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.subType,
     this.use,
-    this.element_use,
+    this.elementUse,
     this.billablePeriod,
     this.created,
-    this.element_created,
+    this.elementCreated,
     this.enterer,
     this.priority,
     this.fundsReserveRequested,
@@ -305,18 +305,18 @@ ExplanationOfBenefit(
     this.claim,
     this.claimResponse,
     this.outcome,
-    this.element_outcome,
+    this.elementOutcome,
     this.disposition,
-    this.element_disposition,
+    this.elementDisposition,
     this.preAuthRef,
-    this.element_preAuthRef,
+    this.elementPreAuthRef,
     this.preAuthRefPeriod,
     this.careTeam,
     this.supportingInfo,
     this.diagnosis,
     this.procedure,
     this.precedence,
-    this.element_precedence,
+    this.elementPrecedence,
     this.accident,
     this.item,
     this.addItem,
@@ -467,7 +467,7 @@ class ExplanationOfBenefit_CareTeam {
   int sequence;
 
   //  Extensions for sequence
-  Element element_sequence;
+  Element elementSequence;
 
   //  Member of the team who provided the product or service.
   Reference provider;
@@ -477,7 +477,7 @@ class ExplanationOfBenefit_CareTeam {
   bool responsible;
 
   //  Extensions for responsible
-  Element element_responsible;
+  Element elementResponsible;
 
   //  The lead, assisting or supervising practitioner and their discipline
   // if a multidisciplinary team.
@@ -493,9 +493,9 @@ ExplanationOfBenefit_CareTeam(
     this.extension,
     this.modifierExtension,
     this.sequence,
-    this.element_sequence,
+    this.elementSequence,
     this.responsible,
-    this.element_responsible,
+    this.elementResponsible,
     this.role,
     this.qualification
     });
@@ -537,7 +537,7 @@ class ExplanationOfBenefit_SupportingInfo {
   int sequence;
 
   //  Extensions for sequence
-  Element element_sequence;
+  Element elementSequence;
 
   //  The general class of the information supplied: information; exception;
   // accident, employment; onset, etc.
@@ -552,7 +552,7 @@ class ExplanationOfBenefit_SupportingInfo {
   String timingDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for timingDate
-  Element element_timingDate;
+  Element elementTimingDate;
 
   //  The date when or period to which this information refers.
   Period timingPeriod;
@@ -563,7 +563,7 @@ class ExplanationOfBenefit_SupportingInfo {
   bool valueBoolean; //  pattern: ^true|false$
 
   //  Extensions for valueBoolean
-  Element element_valueBoolean;
+  Element elementValueBoolean;
 
   //  Additional data or information such as resources, documents, images
   // etc. including references to the data or the actual inclusion of the
@@ -571,7 +571,7 @@ class ExplanationOfBenefit_SupportingInfo {
   String valueString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for valueString
-  Element element_valueString;
+  Element elementValueString;
 
   //  Additional data or information such as resources, documents, images
   // etc. including references to the data or the actual inclusion of the
@@ -598,15 +598,15 @@ ExplanationOfBenefit_SupportingInfo(
     this.extension,
     this.modifierExtension,
     this.sequence,
-    this.element_sequence,
+    this.elementSequence,
     this.code,
     this.timingDate,
-    this.element_timingDate,
+    this.elementTimingDate,
     this.timingPeriod,
     this.valueBoolean,
-    this.element_valueBoolean,
+    this.elementValueBoolean,
     this.valueString,
-    this.element_valueString,
+    this.elementValueString,
     this.valueQuantity,
     this.valueAttachment,
     this.valueReference,
@@ -650,7 +650,7 @@ class ExplanationOfBenefit_Diagnosis {
   int sequence;
 
   //  Extensions for sequence
-  Element element_sequence;
+  Element elementSequence;
 
   //  The nature of illness or problem in a coded form or as a reference to
   // an external defined Condition.
@@ -677,7 +677,7 @@ ExplanationOfBenefit_Diagnosis(
     this.extension,
     this.modifierExtension,
     this.sequence,
-    this.element_sequence,
+    this.elementSequence,
     this.diagnosisCodeableConcept,
     this.diagnosisReference,
     this.type,
@@ -722,7 +722,7 @@ class ExplanationOfBenefit_Procedure {
   int sequence;
 
   //  Extensions for sequence
-  Element element_sequence;
+  Element elementSequence;
 
   //  When the condition was observed or the relative ranking.
   List<CodeableConcept> type;
@@ -731,7 +731,7 @@ class ExplanationOfBenefit_Procedure {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  The code or reference to a Procedure resource which identifies the
   // clinical intervention performed.
@@ -749,10 +749,10 @@ ExplanationOfBenefit_Procedure(
     this.extension,
     this.modifierExtension,
     this.sequence,
-    this.element_sequence,
+    this.elementSequence,
     this.type,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.procedureCodeableConcept,
     this.procedureReference,
     this.udi
@@ -796,7 +796,7 @@ class ExplanationOfBenefit_Insurance {
   bool focal;
 
   //  Extensions for focal
-  Element element_focal;
+  Element elementFocal;
 
   //  Reference to the insurance card level information contained in the
   // Coverage resource. The coverage issuing insurer will use these details
@@ -810,7 +810,7 @@ class ExplanationOfBenefit_Insurance {
   List<String> preAuthRef;
 
   //  Extensions for preAuthRef
-  List<Element> element_preAuthRef;
+  List<Element> elementPreAuthRef;
 
 ExplanationOfBenefit_Insurance(
   this.coverage,
@@ -818,9 +818,9 @@ ExplanationOfBenefit_Insurance(
     this.extension,
     this.modifierExtension,
     this.focal,
-    this.element_focal,
+    this.elementFocal,
     this.preAuthRef,
-    this.element_preAuthRef
+    this.elementPreAuthRef
     });
 
   factory ExplanationOfBenefit_Insurance.fromJson(Map<String, dynamic> json) => _$ExplanationOfBenefit_InsuranceFromJson(json);
@@ -861,7 +861,7 @@ class ExplanationOfBenefit_Accident {
   String date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  The type or context of the accident event for the purposes of
   // selection of potential insurance coverages and determination of
@@ -879,7 +879,7 @@ ExplanationOfBenefit_Accident(
     this.extension,
     this.modifierExtension,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.type,
     this.locationAddress,
     this.locationReference
@@ -922,32 +922,32 @@ class ExplanationOfBenefit_Item {
   int sequence;
 
   //  Extensions for sequence
-  Element element_sequence;
+  Element elementSequence;
 
   //  Care team members related to this service or product.
   List<int> careTeamSequence;
 
   //  Extensions for careTeamSequence
-  List<Element> element_careTeamSequence;
+  List<Element> elementCareTeamSequence;
 
   //  Diagnoses applicable for this service or product.
   List<int> diagnosisSequence;
 
   //  Extensions for diagnosisSequence
-  List<Element> element_diagnosisSequence;
+  List<Element> elementDiagnosisSequence;
 
   //  Procedures applicable for this service or product.
   List<int> procedureSequence;
 
   //  Extensions for procedureSequence
-  List<Element> element_procedureSequence;
+  List<Element> elementProcedureSequence;
 
   //  Exceptions, special conditions and supporting information applicable
   // for this service or product.
   List<int> informationSequence;
 
   //  Extensions for informationSequence
-  List<Element> element_informationSequence;
+  List<Element> elementInformationSequence;
 
   //  The type of revenue or cost center providing the product and/or
   // service.
@@ -974,7 +974,7 @@ class ExplanationOfBenefit_Item {
   String servicedDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for servicedDate
-  Element element_servicedDate;
+  Element elementServicedDate;
 
   //  The date or dates when the service or product was supplied, performed
   // or completed.
@@ -1004,7 +1004,7 @@ class ExplanationOfBenefit_Item {
   double factor;
 
   //  Extensions for factor
-  Element element_factor;
+  Element elementFactor;
 
   //  The quantity times the unit price for an additional service or product
   // or charge.
@@ -1029,7 +1029,7 @@ class ExplanationOfBenefit_Item {
   List<int> noteNumber;
 
   //  Extensions for noteNumber
-  List<Element> element_noteNumber;
+  List<Element> elementNoteNumber;
 
   //  If this item is a group then the values here are a summary of the
   // adjudication of the detail items. If this item is a simple product or
@@ -1045,21 +1045,21 @@ ExplanationOfBenefit_Item(
     this.extension,
     this.modifierExtension,
     this.sequence,
-    this.element_sequence,
+    this.elementSequence,
     this.careTeamSequence,
-    this.element_careTeamSequence,
+    this.elementCareTeamSequence,
     this.diagnosisSequence,
-    this.element_diagnosisSequence,
+    this.elementDiagnosisSequence,
     this.procedureSequence,
-    this.element_procedureSequence,
+    this.elementProcedureSequence,
     this.informationSequence,
-    this.element_informationSequence,
+    this.elementInformationSequence,
     this.revenue,
     this.category,
     this.modifier,
     this.programCode,
     this.servicedDate,
-    this.element_servicedDate,
+    this.elementServicedDate,
     this.servicedPeriod,
     this.locationCodeableConcept,
     this.locationAddress,
@@ -1067,14 +1067,14 @@ ExplanationOfBenefit_Item(
     this.quantity,
     this.unitPrice,
     this.factor,
-    this.element_factor,
+    this.elementFactor,
     this.net,
     this.udi,
     this.bodySite,
     this.subSite,
     this.encounter,
     this.noteNumber,
-    this.element_noteNumber,
+    this.elementNoteNumber,
     this.adjudication,
     this.detail
     });
@@ -1131,7 +1131,7 @@ class ExplanationOfBenefit_Adjudication {
   double value;
 
   //  Extensions for value
-  Element element_value;
+  Element elementValue;
 
 ExplanationOfBenefit_Adjudication(
   this.category,
@@ -1141,7 +1141,7 @@ ExplanationOfBenefit_Adjudication(
     this.reason,
     this.amount,
     this.value,
-    this.element_value
+    this.elementValue
     });
 
   factory ExplanationOfBenefit_Adjudication.fromJson(Map<String, dynamic> json) => _$ExplanationOfBenefit_AdjudicationFromJson(json);
@@ -1182,7 +1182,7 @@ class ExplanationOfBenefit_Detail {
   int sequence;
 
   //  Extensions for sequence
-  Element element_sequence;
+  Element elementSequence;
 
   //  The type of revenue or cost center providing the product and/or
   // service.
@@ -1219,7 +1219,7 @@ class ExplanationOfBenefit_Detail {
   double factor;
 
   //  Extensions for factor
-  Element element_factor;
+  Element elementFactor;
 
   //  The quantity times the unit price for an additional service or product
   // or charge.
@@ -1233,7 +1233,7 @@ class ExplanationOfBenefit_Detail {
   List<int> noteNumber;
 
   //  Extensions for noteNumber
-  List<Element> element_noteNumber;
+  List<Element> elementNoteNumber;
 
   //  The adjudication results.
   List<ExplanationOfBenefit_Adjudication> adjudication;
@@ -1247,7 +1247,7 @@ ExplanationOfBenefit_Detail(
     this.extension,
     this.modifierExtension,
     this.sequence,
-    this.element_sequence,
+    this.elementSequence,
     this.revenue,
     this.category,
     this.modifier,
@@ -1255,11 +1255,11 @@ ExplanationOfBenefit_Detail(
     this.quantity,
     this.unitPrice,
     this.factor,
-    this.element_factor,
+    this.elementFactor,
     this.net,
     this.udi,
     this.noteNumber,
-    this.element_noteNumber,
+    this.elementNoteNumber,
     this.adjudication,
     this.subDetail
     });
@@ -1302,7 +1302,7 @@ class ExplanationOfBenefit_SubDetail {
   int sequence;
 
   //  Extensions for sequence
-  Element element_sequence;
+  Element elementSequence;
 
   //  The type of revenue or cost center providing the product and/or
   // service.
@@ -1339,7 +1339,7 @@ class ExplanationOfBenefit_SubDetail {
   double factor;
 
   //  Extensions for factor
-  Element element_factor;
+  Element elementFactor;
 
   //  The quantity times the unit price for an additional service or product
   // or charge.
@@ -1353,7 +1353,7 @@ class ExplanationOfBenefit_SubDetail {
   List<int> noteNumber;
 
   //  Extensions for noteNumber
-  List<Element> element_noteNumber;
+  List<Element> elementNoteNumber;
 
   //  The adjudication results.
   List<ExplanationOfBenefit_Adjudication> adjudication;
@@ -1364,7 +1364,7 @@ ExplanationOfBenefit_SubDetail(
     this.extension,
     this.modifierExtension,
     this.sequence,
-    this.element_sequence,
+    this.elementSequence,
     this.revenue,
     this.category,
     this.modifier,
@@ -1372,11 +1372,11 @@ ExplanationOfBenefit_SubDetail(
     this.quantity,
     this.unitPrice,
     this.factor,
-    this.element_factor,
+    this.elementFactor,
     this.net,
     this.udi,
     this.noteNumber,
-    this.element_noteNumber,
+    this.elementNoteNumber,
     this.adjudication
     });
 
@@ -1417,21 +1417,21 @@ class ExplanationOfBenefit_AddItem {
   List<int> itemSequence;
 
   //  Extensions for itemSequence
-  List<Element> element_itemSequence;
+  List<Element> elementItemSequence;
 
   //  The sequence number of the details within the claim item which this
   // line is intended to replace.
   List<int> detailSequence;
 
   //  Extensions for detailSequence
-  List<Element> element_detailSequence;
+  List<Element> elementDetailSequence;
 
   //  The sequence number of the sub-details woithin the details within the
   // claim item which this line is intended to replace.
   List<int> subDetailSequence;
 
   //  Extensions for subDetailSequence
-  List<Element> element_subDetailSequence;
+  List<Element> elementSubDetailSequence;
 
   //  The providers who are authorized for the services rendered to the
   // patient.
@@ -1454,7 +1454,7 @@ class ExplanationOfBenefit_AddItem {
   String servicedDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for servicedDate
-  Element element_servicedDate;
+  Element elementServicedDate;
 
   //  The date or dates when the service or product was supplied, performed
   // or completed.
@@ -1484,7 +1484,7 @@ class ExplanationOfBenefit_AddItem {
   double factor;
 
   //  Extensions for factor
-  Element element_factor;
+  Element elementFactor;
 
   //  The quantity times the unit price for an additional service or product
   // or charge.
@@ -1502,7 +1502,7 @@ class ExplanationOfBenefit_AddItem {
   List<int> noteNumber;
 
   //  Extensions for noteNumber
-  List<Element> element_noteNumber;
+  List<Element> elementNoteNumber;
 
   //  The adjudication results.
   List<ExplanationOfBenefit_Adjudication> adjudication;
@@ -1516,16 +1516,16 @@ ExplanationOfBenefit_AddItem(
     this.extension,
     this.modifierExtension,
     this.itemSequence,
-    this.element_itemSequence,
+    this.elementItemSequence,
     this.detailSequence,
-    this.element_detailSequence,
+    this.elementDetailSequence,
     this.subDetailSequence,
-    this.element_subDetailSequence,
+    this.elementSubDetailSequence,
     this.provider,
     this.modifier,
     this.programCode,
     this.servicedDate,
-    this.element_servicedDate,
+    this.elementServicedDate,
     this.servicedPeriod,
     this.locationCodeableConcept,
     this.locationAddress,
@@ -1533,12 +1533,12 @@ ExplanationOfBenefit_AddItem(
     this.quantity,
     this.unitPrice,
     this.factor,
-    this.element_factor,
+    this.elementFactor,
     this.net,
     this.bodySite,
     this.subSite,
     this.noteNumber,
-    this.element_noteNumber,
+    this.elementNoteNumber,
     this.adjudication,
     this.detail
     });
@@ -1600,7 +1600,7 @@ class ExplanationOfBenefit_Detail1 {
   double factor;
 
   //  Extensions for factor
-  Element element_factor;
+  Element elementFactor;
 
   //  The quantity times the unit price for an additional service or product
   // or charge.
@@ -1611,7 +1611,7 @@ class ExplanationOfBenefit_Detail1 {
   List<int> noteNumber;
 
   //  Extensions for noteNumber
-  List<Element> element_noteNumber;
+  List<Element> elementNoteNumber;
 
   //  The adjudication results.
   List<ExplanationOfBenefit_Adjudication> adjudication;
@@ -1628,10 +1628,10 @@ ExplanationOfBenefit_Detail1(
     this.quantity,
     this.unitPrice,
     this.factor,
-    this.element_factor,
+    this.elementFactor,
     this.net,
     this.noteNumber,
-    this.element_noteNumber,
+    this.elementNoteNumber,
     this.adjudication,
     this.subDetail
     });
@@ -1693,7 +1693,7 @@ class ExplanationOfBenefit_SubDetail1 {
   double factor;
 
   //  Extensions for factor
-  Element element_factor;
+  Element elementFactor;
 
   //  The quantity times the unit price for an additional service or product
   // or charge.
@@ -1704,7 +1704,7 @@ class ExplanationOfBenefit_SubDetail1 {
   List<int> noteNumber;
 
   //  Extensions for noteNumber
-  List<Element> element_noteNumber;
+  List<Element> elementNoteNumber;
 
   //  The adjudication results.
   List<ExplanationOfBenefit_Adjudication> adjudication;
@@ -1718,10 +1718,10 @@ ExplanationOfBenefit_SubDetail1(
     this.quantity,
     this.unitPrice,
     this.factor,
-    this.element_factor,
+    this.elementFactor,
     this.net,
     this.noteNumber,
-    this.element_noteNumber,
+    this.elementNoteNumber,
     this.adjudication
     });
 
@@ -1825,7 +1825,7 @@ class ExplanationOfBenefit_Payment {
   String date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  Benefits payable less any payment adjustment.
   Money amount;
@@ -1841,7 +1841,7 @@ ExplanationOfBenefit_Payment(
     this.adjustment,
     this.adjustmentReason,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.amount,
     this.identifier
     });
@@ -1883,19 +1883,19 @@ class ExplanationOfBenefit_ProcessNote {
   int number;
 
   //  Extensions for number
-  Element element_number;
+  Element elementNumber;
 
   //  The business purpose of the note text.
   String type; // <code> enum: display/print/printoper;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  The explanation or description associated with the processing.
   String text;
 
   //  Extensions for text
-  Element element_text;
+  Element elementText;
 
   //  A code to define the language used in the text of the note.
   CodeableConcept language;
@@ -1905,11 +1905,11 @@ ExplanationOfBenefit_ProcessNote(
     this.extension,
     this.modifierExtension,
     this.number,
-    this.element_number,
+    this.elementNumber,
     this.type,
-    this.element_type,
+    this.elementType,
     this.text,
-    this.element_text,
+    this.elementText,
     this.language
     });
 
@@ -1956,19 +1956,19 @@ class ExplanationOfBenefit_BenefitBalance {
   bool excluded;
 
   //  Extensions for excluded
-  Element element_excluded;
+  Element elementExcluded;
 
   //  A short name or tag for the benefit.
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  A richer description of the benefit or services covered.
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  Is a flag to indicate whether the benefits refer to in-network
   // providers or out-of-network providers.
@@ -1990,11 +1990,11 @@ ExplanationOfBenefit_BenefitBalance(
     this.extension,
     this.modifierExtension,
     this.excluded,
-    this.element_excluded,
+    this.elementExcluded,
     this.name,
-    this.element_name,
+    this.elementName,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.network,
     this.unit,
     this.term,
@@ -2041,13 +2041,13 @@ class ExplanationOfBenefit_Financial {
   int allowedUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
 
   //  Extensions for allowedUnsignedInt
-  Element element_allowedUnsignedInt;
+  Element elementAllowedUnsignedInt;
 
   //  The quantity of the benefit which is permitted under the coverage.
   String allowedString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for allowedString
-  Element element_allowedString;
+  Element elementAllowedString;
 
   //  The quantity of the benefit which is permitted under the coverage.
   Money allowedMoney;
@@ -2056,7 +2056,7 @@ class ExplanationOfBenefit_Financial {
   int usedUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
 
   //  Extensions for usedUnsignedInt
-  Element element_usedUnsignedInt;
+  Element elementUsedUnsignedInt;
 
   //  The quantity of the benefit which have been consumed to date.
   Money usedMoney;
@@ -2067,12 +2067,12 @@ ExplanationOfBenefit_Financial(
     this.extension,
     this.modifierExtension,
     this.allowedUnsignedInt,
-    this.element_allowedUnsignedInt,
+    this.elementAllowedUnsignedInt,
     this.allowedString,
-    this.element_allowedString,
+    this.elementAllowedString,
     this.allowedMoney,
     this.usedUnsignedInt,
-    this.element_usedUnsignedInt,
+    this.elementUsedUnsignedInt,
     this.usedMoney
     });
 

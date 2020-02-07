@@ -39,13 +39,13 @@ class InsurancePlan {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -58,7 +58,7 @@ class InsurancePlan {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -92,7 +92,7 @@ class InsurancePlan {
   String status; // <code> enum: draft/active/retired/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  The kind of health insurance product.
   List<CodeableConcept> type;
@@ -102,14 +102,14 @@ class InsurancePlan {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  A list of alternate names that the product is known as, or was known
   // as in the past.
   List<String> alias;
 
   //  Extensions for alias
-  List<Element> element_alias;
+  List<Element> elementAlias;
 
   //  The period of time that the health insurance product is available.
   Period period;
@@ -149,21 +149,21 @@ InsurancePlan(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.type,
     this.name,
-    this.element_name,
+    this.elementName,
     this.alias,
-    this.element_alias,
+    this.elementAlias,
     this.period,
     this.ownedBy,
     this.administeredBy,
@@ -324,7 +324,7 @@ class InsurancePlan_Benefit {
   String requirement;
 
   //  Extensions for requirement
-  Element element_requirement;
+  Element elementRequirement;
 
   //  The specific limits on the benefit.
   List<InsurancePlan_Limit> limit;
@@ -335,7 +335,7 @@ InsurancePlan_Benefit(
     this.extension,
     this.modifierExtension,
     this.requirement,
-    this.element_requirement,
+    this.elementRequirement,
     this.limit
     });
 
@@ -493,7 +493,7 @@ class InsurancePlan_GeneralCost {
   int groupSize;
 
   //  Extensions for groupSize
-  Element element_groupSize;
+  Element elementGroupSize;
 
   //  Value of the cost.
   Money cost;
@@ -503,7 +503,7 @@ class InsurancePlan_GeneralCost {
   String comment;
 
   //  Extensions for comment
-  Element element_comment;
+  Element elementComment;
 
 InsurancePlan_GeneralCost(
   {this.id,
@@ -511,10 +511,10 @@ InsurancePlan_GeneralCost(
     this.modifierExtension,
     this.type,
     this.groupSize,
-    this.element_groupSize,
+    this.elementGroupSize,
     this.cost,
     this.comment,
-    this.element_comment
+    this.elementComment
     });
 
   factory InsurancePlan_GeneralCost.fromJson(Map<String, dynamic> json) => _$InsurancePlan_GeneralCostFromJson(json);

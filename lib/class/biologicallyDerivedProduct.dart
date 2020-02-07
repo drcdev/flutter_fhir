@@ -34,13 +34,13 @@ class BiologicallyDerivedProduct {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -53,7 +53,7 @@ class BiologicallyDerivedProduct {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -89,7 +89,7 @@ class BiologicallyDerivedProduct {
   String productCategory; // <code> enum: organ/tissue/fluid/cells/biologicalAgent;
 
   //  Extensions for productCategory
-  Element element_productCategory;
+  Element elementProductCategory;
 
   //  A code that identifies the kind of this biologically derived product
   // (SNOMED Ctcode).
@@ -99,7 +99,7 @@ class BiologicallyDerivedProduct {
   String status; // <code> enum: available/unavailable;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  Procedure request to obtain this biologically derived product.
   List<Reference> request;
@@ -108,7 +108,7 @@ class BiologicallyDerivedProduct {
   int quantity;
 
   //  Extensions for quantity
-  Element element_quantity;
+  Element elementQuantity;
 
   //  Parent product (if any).
   List<Reference> parent;
@@ -133,22 +133,22 @@ BiologicallyDerivedProduct(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.productCategory,
-    this.element_productCategory,
+    this.elementProductCategory,
     this.productCode,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.request,
     this.quantity,
-    this.element_quantity,
+    this.elementQuantity,
     this.parent,
     this.collection,
     this.processing,
@@ -200,7 +200,7 @@ class BiologicallyDerivedProduct_Collection {
   String collectedDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for collectedDateTime
-  Element element_collectedDateTime;
+  Element elementCollectedDateTime;
 
   //  Time of product collection.
   Period collectedPeriod;
@@ -212,7 +212,7 @@ BiologicallyDerivedProduct_Collection(
     this.collector,
     this.source,
     this.collectedDateTime,
-    this.element_collectedDateTime,
+    this.elementCollectedDateTime,
     this.collectedPeriod
     });
 
@@ -253,7 +253,7 @@ class BiologicallyDerivedProduct_Processing {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  Procesing code.
   CodeableConcept procedure;
@@ -265,7 +265,7 @@ class BiologicallyDerivedProduct_Processing {
   String timeDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for timeDateTime
-  Element element_timeDateTime;
+  Element elementTimeDateTime;
 
   //  Time of processing.
   Period timePeriod;
@@ -275,11 +275,11 @@ BiologicallyDerivedProduct_Processing(
     this.extension,
     this.modifierExtension,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.procedure,
     this.additive,
     this.timeDateTime,
-    this.element_timeDateTime,
+    this.elementTimeDateTime,
     this.timePeriod
     });
 
@@ -320,13 +320,13 @@ class BiologicallyDerivedProduct_Manipulation {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  Time of manipulation.
   String timeDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for timeDateTime
-  Element element_timeDateTime;
+  Element elementTimeDateTime;
 
   //  Time of manipulation.
   Period timePeriod;
@@ -336,9 +336,9 @@ BiologicallyDerivedProduct_Manipulation(
     this.extension,
     this.modifierExtension,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.timeDateTime,
-    this.element_timeDateTime,
+    this.elementTimeDateTime,
     this.timePeriod
     });
 
@@ -379,19 +379,19 @@ class BiologicallyDerivedProduct_Storage {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  Storage temperature.
   double temperature;
 
   //  Extensions for temperature
-  Element element_temperature;
+  Element elementTemperature;
 
   //  Temperature scale used.
   String scale; // <code> enum: farenheit/celsius/kelvin;
 
   //  Extensions for scale
-  Element element_scale;
+  Element elementScale;
 
   //  Storage timeperiod.
   Period duration;
@@ -401,11 +401,11 @@ BiologicallyDerivedProduct_Storage(
     this.extension,
     this.modifierExtension,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.temperature,
-    this.element_temperature,
+    this.elementTemperature,
     this.scale,
-    this.element_scale,
+    this.elementScale,
     this.duration
     });
 

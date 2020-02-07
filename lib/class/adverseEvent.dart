@@ -33,13 +33,13 @@ class AdverseEvent {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -52,7 +52,7 @@ class AdverseEvent {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -88,7 +88,7 @@ class AdverseEvent {
   String actuality; // <code> enum: actual/potential;
 
   //  Extensions for actuality
-  Element element_actuality;
+  Element elementActuality;
 
   //  The overall type of event, intended for search and filtering purposes.
   List<CodeableConcept> category;
@@ -108,21 +108,21 @@ class AdverseEvent {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  Estimated or actual date the AdverseEvent began, in the opinion of the
   // reporter.
   DateTime detected;
 
   //  Extensions for detected
-  Element element_detected;
+  Element elementDetected;
 
   //  The date on which the existence of the AdverseEvent was first
   // recorded.
   DateTime recordedDate;
 
   //  Extensions for recordedDate
-  Element element_recordedDate;
+  Element elementRecordedDate;
 
   //  Includes information about the reaction that occurred as a result of
   // exposure to a substance (for example, a drug or a chemical).
@@ -173,25 +173,25 @@ AdverseEvent(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.actuality,
-    this.element_actuality,
+    this.elementActuality,
     this.category,
     this.event,
     this.encounter,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.detected,
-    this.element_detected,
+    this.elementDetected,
     this.recordedDate,
-    this.element_recordedDate,
+    this.elementRecordedDate,
     this.resultingCondition,
     this.location,
     this.seriousness,
@@ -294,7 +294,7 @@ class AdverseEvent_Causality {
   String productRelatedness;
 
   //  Extensions for productRelatedness
-  Element element_productRelatedness;
+  Element elementProductRelatedness;
 
   //  AdverseEvent.suspectEntity.causalityAuthor.
   Reference author;
@@ -308,7 +308,7 @@ AdverseEvent_Causality(
     this.modifierExtension,
     this.assessment,
     this.productRelatedness,
-    this.element_productRelatedness,
+    this.elementProductRelatedness,
     this.author,
     this.method
     });

@@ -25,14 +25,14 @@ class Contributor {
   String type; // <code> enum: author/editor/reviewer/endorser;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  The name of the individual or organization responsible for the
   // contribution.
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  Contact details to assist a user in finding and communicating with the
   // contributor.
@@ -42,9 +42,9 @@ Contributor(
   {this.id,
     this.extension,
     this.type,
-    this.element_type,
+    this.elementType,
     this.name,
-    this.element_name,
+    this.elementName,
     this.contact
     });
 

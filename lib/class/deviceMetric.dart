@@ -34,13 +34,13 @@ class DeviceMetric {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -53,7 +53,7 @@ class DeviceMetric {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -109,7 +109,7 @@ class DeviceMetric {
   String operationalStatus; // <code> enum: on/off/standby/entered-in-error;
 
   //  Extensions for operationalStatus
-  Element element_operationalStatus;
+  Element elementOperationalStatus;
 
   //  Describes the color representation for the metric. This is often used
   // to aid clinicians to track and identify parameter types by color. In
@@ -119,14 +119,14 @@ class DeviceMetric {
   String color; // <code> enum: black/red/green/yellow/blue/magenta/cyan/white;
 
   //  Extensions for color
-  Element element_color;
+  Element elementColor;
 
   //  Indicates the category of the observation generation process. A
   // DeviceMetric can be for example a setting, measurement, or calculation.
   String category; // <code> enum: measurement/setting/calculation/unspecified;
 
   //  Extensions for category
-  Element element_category;
+  Element elementCategory;
 
   //  Describes the measurement repetition time. This is not necessarily the
   // same as the update period. The measurement repetition time can range
@@ -148,9 +148,9 @@ DeviceMetric(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -160,11 +160,11 @@ DeviceMetric(
     this.source,
     this.parent,
     this.operationalStatus,
-    this.element_operationalStatus,
+    this.elementOperationalStatus,
     this.color,
-    this.element_color,
+    this.elementColor,
     this.category,
-    this.element_category,
+    this.elementCategory,
     this.measurementPeriod,
     this.calibration
     });
@@ -206,30 +206,30 @@ class DeviceMetric_Calibration {
   String type; // <code> enum: unspecified/offset/gain/two-point;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  Describes the state of the calibration.
   String state; // <code> enum: not-calibrated/calibration-required/calibrated/unspecified;
 
   //  Extensions for state
-  Element element_state;
+  Element elementState;
 
   //  Describes the time last calibration has been performed.
   DateTime time;
 
   //  Extensions for time
-  Element element_time;
+  Element elementTime;
 
 DeviceMetric_Calibration(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.type,
-    this.element_type,
+    this.elementType,
     this.state,
-    this.element_state,
+    this.elementState,
     this.time,
-    this.element_time
+    this.elementTime
     });
 
   factory DeviceMetric_Calibration.fromJson(Map<String, dynamic> json) => _$DeviceMetric_CalibrationFromJson(json);

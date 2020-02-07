@@ -34,13 +34,13 @@ class Appointment {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -53,7 +53,7 @@ class Appointment {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -90,7 +90,7 @@ class Appointment {
   String status; // <code> enum: proposed/pending/booked/arrived/fulfilled/cancelled/noshow/entered-in-error/checked-in/waitlist;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  The coded reason for the appointment being cancelled. This is often
   // used in reporting/billing/futher processing to determine if further
@@ -129,7 +129,7 @@ class Appointment {
   int priority;
 
   //  Extensions for priority
-  Element element_priority;
+  Element elementPriority;
 
   //  The brief description of the appointment as would be shown on a
   // subject line in a meeting request, or appointment list. Detailed or
@@ -137,7 +137,7 @@ class Appointment {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  Additional information to support the appointment provided when making
   // the appointment.
@@ -147,13 +147,13 @@ class Appointment {
   DateTime start;
 
   //  Extensions for start
-  Element element_start;
+  Element elementStart;
 
   //  Date/Time that the appointment is to conclude.
   DateTime end;
 
   //  Extensions for end
-  Element element_end;
+  Element elementEnd;
 
   //  Number of minutes that the appointment is to take. This can be less
   // than the duration between the start and end times.  For example, where
@@ -165,7 +165,7 @@ class Appointment {
   int minutesDuration;
 
   //  Extensions for minutesDuration
-  Element element_minutesDuration;
+  Element elementMinutesDuration;
 
   //  The slots from the participants' schedules that will be filled by the
   // appointment.
@@ -178,13 +178,13 @@ class Appointment {
   DateTime created;
 
   //  Extensions for created
-  Element element_created;
+  Element elementCreated;
 
   //  Additional comments about the appointment.
   String comment;
 
   //  Extensions for comment
-  Element element_comment;
+  Element elementComment;
 
   //  While Appointment.comment contains information for internal use,
   // Appointment.patientInstructions is used to capture patient facing
@@ -193,7 +193,7 @@ class Appointment {
   String patientInstruction;
 
   //  Extensions for patientInstruction
-  Element element_patientInstruction;
+  Element elementPatientInstruction;
 
   //  The service request this appointment is allocated to assess (e.g.
   // incoming referral or procedure request).
@@ -215,16 +215,16 @@ Appointment(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.cancelationReason,
     this.serviceCategory,
     this.serviceType,
@@ -233,23 +233,23 @@ Appointment(
     this.reasonCode,
     this.reasonReference,
     this.priority,
-    this.element_priority,
+    this.elementPriority,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.supportingInformation,
     this.start,
-    this.element_start,
+    this.elementStart,
     this.end,
-    this.element_end,
+    this.elementEnd,
     this.minutesDuration,
-    this.element_minutesDuration,
+    this.elementMinutesDuration,
     this.slot,
     this.created,
-    this.element_created,
+    this.elementCreated,
     this.comment,
-    this.element_comment,
+    this.elementComment,
     this.patientInstruction,
-    this.element_patientInstruction,
+    this.elementPatientInstruction,
     this.basedOn,
     this.requestedPeriod
     });
@@ -301,13 +301,13 @@ class Appointment_Participant {
   String required; // <code> enum: required/optional/information-only;
 
   //  Extensions for required
-  Element element_required;
+  Element elementRequired;
 
   //  Participation status of the actor.
   String status; // <code> enum: accepted/declined/tentative/needs-action;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  Participation period of the actor.
   Period period;
@@ -319,9 +319,9 @@ Appointment_Participant(
     this.type,
     this.actor,
     this.required,
-    this.element_required,
+    this.elementRequired,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.period
     });
 

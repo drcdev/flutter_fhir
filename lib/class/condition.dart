@@ -37,13 +37,13 @@ class Condition {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -56,7 +56,7 @@ class Condition {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -119,7 +119,7 @@ class Condition {
   String onsetDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for onsetDateTime
-  Element element_onsetDateTime;
+  Element elementOnsetDateTime;
 
   //  Estimated or actual date or date-time  the condition began, in the
   // opinion of the clinician.
@@ -138,7 +138,7 @@ class Condition {
   String onsetString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for onsetString
-  Element element_onsetString;
+  Element elementOnsetString;
 
   //  The date or estimated date that the condition resolved or went into
   // remission. This is called "abatement" because of the many overloaded
@@ -147,7 +147,7 @@ class Condition {
   String abatementDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for abatementDateTime
-  Element element_abatementDateTime;
+  Element elementAbatementDateTime;
 
   //  The date or estimated date that the condition resolved or went into
   // remission. This is called "abatement" because of the many overloaded
@@ -174,14 +174,14 @@ class Condition {
   String abatementString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for abatementString
-  Element element_abatementString;
+  Element elementAbatementString;
 
   //  The recordedDate represents when this particular Condition record was
   // created in the system, which is often a system-generated date.
   DateTime recordedDate;
 
   //  Extensions for recordedDate
-  Element element_recordedDate;
+  Element elementRecordedDate;
 
   //  Individual who recorded the record and takes responsibility for its
   // content.
@@ -209,9 +209,9 @@ Condition(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -225,21 +225,21 @@ Condition(
     this.bodySite,
     this.encounter,
     this.onsetDateTime,
-    this.element_onsetDateTime,
+    this.elementOnsetDateTime,
     this.onsetAge,
     this.onsetPeriod,
     this.onsetRange,
     this.onsetString,
-    this.element_onsetString,
+    this.elementOnsetString,
     this.abatementDateTime,
-    this.element_abatementDateTime,
+    this.elementAbatementDateTime,
     this.abatementAge,
     this.abatementPeriod,
     this.abatementRange,
     this.abatementString,
-    this.element_abatementString,
+    this.elementAbatementString,
     this.recordedDate,
-    this.element_recordedDate,
+    this.elementRecordedDate,
     this.recorder,
     this.asserter,
     this.stage,

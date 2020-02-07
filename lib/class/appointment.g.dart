@@ -18,20 +18,20 @@ Appointment _$AppointmentFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -46,9 +46,9 @@ Appointment _$AppointmentFromJson(Map<String, dynamic> json) {
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     cancelationReason: json['cancelationReason'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -82,31 +82,31 @@ Appointment _$AppointmentFromJson(Map<String, dynamic> json) {
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     priority: json['priority'] as int,
-    element_priority: json['element_priority'] == null
+    elementPriority: json['elementPriority'] == null
         ? null
-        : Element.fromJson(json['element_priority'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPriority'] as Map<String, dynamic>),
     description: json['description'] as String,
-    element_description: json['element_description'] == null
+    elementDescription: json['elementDescription'] == null
         ? null
-        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
     supportingInformation: (json['supportingInformation'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     start:
         json['start'] == null ? null : DateTime.parse(json['start'] as String),
-    element_start: json['element_start'] == null
+    elementStart: json['elementStart'] == null
         ? null
-        : Element.fromJson(json['element_start'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStart'] as Map<String, dynamic>),
     end: json['end'] == null ? null : DateTime.parse(json['end'] as String),
-    element_end: json['element_end'] == null
+    elementEnd: json['elementEnd'] == null
         ? null
-        : Element.fromJson(json['element_end'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementEnd'] as Map<String, dynamic>),
     minutesDuration: json['minutesDuration'] as int,
-    element_minutesDuration: json['element_minutesDuration'] == null
+    elementMinutesDuration: json['elementMinutesDuration'] == null
         ? null
         : Element.fromJson(
-            json['element_minutesDuration'] as Map<String, dynamic>),
+            json['elementMinutesDuration'] as Map<String, dynamic>),
     slot: (json['slot'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
@@ -114,18 +114,18 @@ Appointment _$AppointmentFromJson(Map<String, dynamic> json) {
     created: json['created'] == null
         ? null
         : DateTime.parse(json['created'] as String),
-    element_created: json['element_created'] == null
+    elementCreated: json['elementCreated'] == null
         ? null
-        : Element.fromJson(json['element_created'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementCreated'] as Map<String, dynamic>),
     comment: json['comment'] as String,
-    element_comment: json['element_comment'] == null
+    elementComment: json['elementComment'] == null
         ? null
-        : Element.fromJson(json['element_comment'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementComment'] as Map<String, dynamic>),
     patientInstruction: json['patientInstruction'] as String,
-    element_patientInstruction: json['element_patientInstruction'] == null
+    elementPatientInstruction: json['elementPatientInstruction'] == null
         ? null
         : Element.fromJson(
-            json['element_patientInstruction'] as Map<String, dynamic>),
+            json['elementPatientInstruction'] as Map<String, dynamic>),
     basedOn: (json['basedOn'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
@@ -142,9 +142,9 @@ Map<String, dynamic> _$AppointmentToJson(Appointment instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -152,7 +152,7 @@ Map<String, dynamic> _$AppointmentToJson(Appointment instance) =>
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'cancelationReason': instance.cancelationReason?.toJson(),
       'serviceCategory':
           instance.serviceCategory?.map((e) => e?.toJson())?.toList(),
@@ -163,25 +163,24 @@ Map<String, dynamic> _$AppointmentToJson(Appointment instance) =>
       'reasonReference':
           instance.reasonReference?.map((e) => e?.toJson())?.toList(),
       'priority': instance.priority,
-      'element_priority': instance.element_priority?.toJson(),
+      'elementPriority': instance.elementPriority?.toJson(),
       'description': instance.description,
-      'element_description': instance.element_description?.toJson(),
+      'elementDescription': instance.elementDescription?.toJson(),
       'supportingInformation':
           instance.supportingInformation?.map((e) => e?.toJson())?.toList(),
       'start': instance.start?.toIso8601String(),
-      'element_start': instance.element_start?.toJson(),
+      'elementStart': instance.elementStart?.toJson(),
       'end': instance.end?.toIso8601String(),
-      'element_end': instance.element_end?.toJson(),
+      'elementEnd': instance.elementEnd?.toJson(),
       'minutesDuration': instance.minutesDuration,
-      'element_minutesDuration': instance.element_minutesDuration?.toJson(),
+      'elementMinutesDuration': instance.elementMinutesDuration?.toJson(),
       'slot': instance.slot?.map((e) => e?.toJson())?.toList(),
       'created': instance.created?.toIso8601String(),
-      'element_created': instance.element_created?.toJson(),
+      'elementCreated': instance.elementCreated?.toJson(),
       'comment': instance.comment,
-      'element_comment': instance.element_comment?.toJson(),
+      'elementComment': instance.elementComment?.toJson(),
       'patientInstruction': instance.patientInstruction,
-      'element_patientInstruction':
-          instance.element_patientInstruction?.toJson(),
+      'elementPatientInstruction': instance.elementPatientInstruction?.toJson(),
       'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
       'participant': instance.participant?.map((e) => e?.toJson())?.toList(),
       'requestedPeriod':
@@ -209,13 +208,13 @@ Appointment_Participant _$Appointment_ParticipantFromJson(
         ? null
         : Reference.fromJson(json['actor'] as Map<String, dynamic>),
     required: json['required'] as String,
-    element_required: json['element_required'] == null
+    elementRequired: json['elementRequired'] == null
         ? null
-        : Element.fromJson(json['element_required'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementRequired'] as Map<String, dynamic>),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     period: json['period'] == null
         ? null
         : Period.fromJson(json['period'] as Map<String, dynamic>),
@@ -232,8 +231,8 @@ Map<String, dynamic> _$Appointment_ParticipantToJson(
       'type': instance.type?.map((e) => e?.toJson())?.toList(),
       'actor': instance.actor?.toJson(),
       'required': instance.required,
-      'element_required': instance.element_required?.toJson(),
+      'elementRequired': instance.elementRequired?.toJson(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'period': instance.period?.toJson(),
     };

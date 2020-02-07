@@ -33,13 +33,13 @@ class OperationDefinition {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -52,7 +52,7 @@ class OperationDefinition {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -87,7 +87,7 @@ class OperationDefinition {
   String url;
 
   //  Extensions for url
-  Element element_url;
+  Element elementUrl;
 
   //  The identifier that is used to identify this version of the operation
   // definition when it is referenced in a specification, model, design or
@@ -99,7 +99,7 @@ class OperationDefinition {
   String version;
 
   //  Extensions for version
-  Element element_version;
+  Element elementVersion;
 
   //  A natural language name identifying the operation definition. This
   // name should be usable as an identifier for the module by machine
@@ -107,27 +107,27 @@ class OperationDefinition {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  A short, descriptive, user-friendly title for the operation
   // definition.
   String title;
 
   //  Extensions for title
-  Element element_title;
+  Element elementTitle;
 
   //  The status of this operation definition. Enables tracking the
   // life-cycle of the content.
   String status; // <code> enum: draft/active/retired/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  Whether this is an operation or a named query.
   String kind; // <code> enum: operation/query;
 
   //  Extensions for kind
-  Element element_kind;
+  Element elementKind;
 
   //  A Boolean value to indicate that this operation definition is authored
   // for testing purposes (or education/evaluation/marketing) and is not
@@ -135,7 +135,7 @@ class OperationDefinition {
   bool experimental;
 
   //  Extensions for experimental
-  Element element_experimental;
+  Element elementExperimental;
 
   //  The date  (and optionally time) when the operation definition was
   // published. The date must change when the business version changes and
@@ -145,14 +145,14 @@ class OperationDefinition {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  The name of the organization or individual that published the
   // operation definition.
   String publisher;
 
   //  Extensions for publisher
-  Element element_publisher;
+  Element elementPublisher;
 
   //  Contact details to assist a user in finding and communicating with the
   // publisher.
@@ -163,7 +163,7 @@ class OperationDefinition {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  The content was developed with a focus and intent of supporting the
   // contexts that are listed. These contexts may be general categories
@@ -181,26 +181,26 @@ class OperationDefinition {
   String purpose;
 
   //  Extensions for purpose
-  Element element_purpose;
+  Element elementPurpose;
 
   //  Whether the operation affects state. Side effects such as producing
   // audit trail entries do not count as 'affecting  state'.
   bool affectsState;
 
   //  Extensions for affectsState
-  Element element_affectsState;
+  Element elementAffectsState;
 
   //  The name used to invoke the operation.
   String code;
 
   //  Extensions for code
-  Element element_code;
+  Element elementCode;
 
   //  Additional information about how to use this operation or named query.
   String comment;
 
   //  Extensions for comment
-  Element element_comment;
+  Element elementComment;
 
   //  Indicates that this operation definition is a constraining profile on
   // the base.
@@ -210,7 +210,7 @@ class OperationDefinition {
   List<String> resource;
 
   //  Extensions for resource
-  List<Element> element_resource;
+  List<Element> elementResource;
 
   //  Indicates whether this operation or named query can be invoked at the
   // system level (e.g. without needing to choose a resource type for the
@@ -218,7 +218,7 @@ class OperationDefinition {
   bool system;
 
   //  Extensions for system
-  Element element_system;
+  Element elementSystem;
 
   //  Indicates whether this operation or named query can be invoked at the
   // resource type level for any given resource type level (e.g. without
@@ -226,14 +226,14 @@ class OperationDefinition {
   bool type;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  Indicates whether this operation can be invoked on a particular
   // instance of one of the given types.
   bool instance;
 
   //  Extensions for instance
-  Element element_instance;
+  Element elementInstance;
 
   //  Additional validation information for the in parameters - a single
   // profile that covers all the parameters. The profile is a constraint on
@@ -257,53 +257,53 @@ OperationDefinition(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
-    this.element_url,
+    this.elementUrl,
     this.version,
-    this.element_version,
+    this.elementVersion,
     this.name,
-    this.element_name,
+    this.elementName,
     this.title,
-    this.element_title,
+    this.elementTitle,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.kind,
-    this.element_kind,
+    this.elementKind,
     this.experimental,
-    this.element_experimental,
+    this.elementExperimental,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.publisher,
-    this.element_publisher,
+    this.elementPublisher,
     this.contact,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.useContext,
     this.jurisdiction,
     this.purpose,
-    this.element_purpose,
+    this.elementPurpose,
     this.affectsState,
-    this.element_affectsState,
+    this.elementAffectsState,
     this.code,
-    this.element_code,
+    this.elementCode,
     this.comment,
-    this.element_comment,
+    this.elementComment,
     this.base,
     this.resource,
-    this.element_resource,
+    this.elementResource,
     this.system,
-    this.element_system,
+    this.elementSystem,
     this.type,
-    this.element_type,
+    this.elementType,
     this.instance,
-    this.element_instance,
+    this.elementInstance,
     this.inputProfile,
     this.outputProfile,
     this.parameter,
@@ -347,39 +347,39 @@ class OperationDefinition_Parameter {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  Whether this is an input or an output parameter.
   String use; // <code> enum: in/out;
 
   //  Extensions for use
-  Element element_use;
+  Element elementUse;
 
   //  The minimum number of times this parameter SHALL appear in the request
   // or response.
   int min;
 
   //  Extensions for min
-  Element element_min;
+  Element elementMin;
 
   //  The maximum number of times this element is permitted to appear in the
   // request or response.
   String max;
 
   //  Extensions for max
-  Element element_max;
+  Element elementMax;
 
   //  Describes the meaning or use of this parameter.
   String documentation;
 
   //  Extensions for documentation
-  Element element_documentation;
+  Element elementDocumentation;
 
   //  The type for this parameter.
   String type;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  Used when the type is "Reference" or "canonical", and identifies a
   // profile structure or implementation Guide that applies to the target of
@@ -396,7 +396,7 @@ class OperationDefinition_Parameter {
   String searchType; // <code> enum: number/date/string/token/reference/composite/quantity/uri/special;
 
   //  Extensions for searchType
-  Element element_searchType;
+  Element elementSearchType;
 
   //  Binds to a value set if this parameter is coded (code, Coding,
   // CodeableConcept).
@@ -414,20 +414,20 @@ OperationDefinition_Parameter(
     this.extension,
     this.modifierExtension,
     this.name,
-    this.element_name,
+    this.elementName,
     this.use,
-    this.element_use,
+    this.elementUse,
     this.min,
-    this.element_min,
+    this.elementMin,
     this.max,
-    this.element_max,
+    this.elementMax,
     this.documentation,
-    this.element_documentation,
+    this.elementDocumentation,
     this.type,
-    this.element_type,
+    this.elementType,
     this.targetProfile,
     this.searchType,
-    this.element_searchType,
+    this.elementSearchType,
     this.binding,
     this.referencedFrom,
     this.part
@@ -472,7 +472,7 @@ class OperationDefinition_Binding {
   String strength; // <code> enum: required/extensible/preferred/example;
 
   //  Extensions for strength
-  Element element_strength;
+  Element elementStrength;
 
   //  Points to the value set or external definition (e.g. implicit value
   // set) that identifies the set of codes to be used.
@@ -484,7 +484,7 @@ OperationDefinition_Binding(
     this.extension,
     this.modifierExtension,
     this.strength,
-    this.element_strength
+    this.elementStrength
     });
 
   factory OperationDefinition_Binding.fromJson(Map<String, dynamic> json) => _$OperationDefinition_BindingFromJson(json);
@@ -526,23 +526,23 @@ class OperationDefinition_ReferencedFrom {
   String source;
 
   //  Extensions for source
-  Element element_source;
+  Element elementSource;
 
   //  The id of the element in the referencing resource that is expected to
   // resolve to this resource.
   String sourceId;
 
   //  Extensions for sourceId
-  Element element_sourceId;
+  Element elementSourceId;
 
 OperationDefinition_ReferencedFrom(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.source,
-    this.element_source,
+    this.elementSource,
     this.sourceId,
-    this.element_sourceId
+    this.elementSourceId
     });
 
   factory OperationDefinition_ReferencedFrom.fromJson(Map<String, dynamic> json) => _$OperationDefinition_ReferencedFromFromJson(json);
@@ -582,22 +582,22 @@ class OperationDefinition_Overload {
   List<String> parameterName;
 
   //  Extensions for parameterName
-  List<Element> element_parameterName;
+  List<Element> elementParameterName;
 
   //  Comments to go on overload.
   String comment;
 
   //  Extensions for comment
-  Element element_comment;
+  Element elementComment;
 
 OperationDefinition_Overload(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.parameterName,
-    this.element_parameterName,
+    this.elementParameterName,
     this.comment,
-    this.element_comment
+    this.elementComment
     });
 
   factory OperationDefinition_Overload.fromJson(Map<String, dynamic> json) => _$OperationDefinition_OverloadFromJson(json);

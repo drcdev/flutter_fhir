@@ -13,20 +13,20 @@ Medication _$MedicationFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -44,9 +44,9 @@ Medication _$MedicationFromJson(Map<String, dynamic> json) {
         ? null
         : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     manufacturer: json['manufacturer'] == null
         ? null
         : Reference.fromJson(json['manufacturer'] as Map<String, dynamic>),
@@ -72,9 +72,9 @@ Map<String, dynamic> _$MedicationToJson(Medication instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -83,7 +83,7 @@ Map<String, dynamic> _$MedicationToJson(Medication instance) =>
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'code': instance.code?.toJson(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'manufacturer': instance.manufacturer?.toJson(),
       'form': instance.form?.toJson(),
       'amount': instance.amount?.toJson(),
@@ -111,9 +111,9 @@ Medication_Ingredient _$Medication_IngredientFromJson(
         ? null
         : Reference.fromJson(json['itemReference'] as Map<String, dynamic>),
     isActive: json['isActive'] as bool,
-    element_isActive: json['element_isActive'] == null
+    elementIsActive: json['elementIsActive'] == null
         ? null
-        : Element.fromJson(json['element_isActive'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementIsActive'] as Map<String, dynamic>),
     strength: json['strength'] == null
         ? null
         : Ratio.fromJson(json['strength'] as Map<String, dynamic>),
@@ -130,7 +130,7 @@ Map<String, dynamic> _$Medication_IngredientToJson(
       'itemCodeableConcept': instance.itemCodeableConcept?.toJson(),
       'itemReference': instance.itemReference?.toJson(),
       'isActive': instance.isActive,
-      'element_isActive': instance.element_isActive?.toJson(),
+      'elementIsActive': instance.elementIsActive?.toJson(),
       'strength': instance.strength?.toJson(),
     };
 
@@ -146,16 +146,16 @@ Medication_Batch _$Medication_BatchFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     lotNumber: json['lotNumber'] as String,
-    element_lotNumber: json['element_lotNumber'] == null
+    elementLotNumber: json['elementLotNumber'] == null
         ? null
-        : Element.fromJson(json['element_lotNumber'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLotNumber'] as Map<String, dynamic>),
     expirationDate: json['expirationDate'] == null
         ? null
         : DateTime.parse(json['expirationDate'] as String),
-    element_expirationDate: json['element_expirationDate'] == null
+    elementExpirationDate: json['elementExpirationDate'] == null
         ? null
         : Element.fromJson(
-            json['element_expirationDate'] as Map<String, dynamic>),
+            json['elementExpirationDate'] as Map<String, dynamic>),
   );
 }
 
@@ -166,7 +166,7 @@ Map<String, dynamic> _$Medication_BatchToJson(Medication_Batch instance) =>
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'lotNumber': instance.lotNumber,
-      'element_lotNumber': instance.element_lotNumber?.toJson(),
+      'elementLotNumber': instance.elementLotNumber?.toJson(),
       'expirationDate': instance.expirationDate?.toIso8601String(),
-      'element_expirationDate': instance.element_expirationDate?.toJson(),
+      'elementExpirationDate': instance.elementExpirationDate?.toJson(),
     };

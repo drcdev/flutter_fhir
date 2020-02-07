@@ -33,13 +33,13 @@ class DocumentManifest {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -52,7 +52,7 @@ class DocumentManifest {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -89,7 +89,7 @@ class DocumentManifest {
   String status; // <code> enum: current/superseded/entered-in-error;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  The code specifying the type of clinical activity that resulted in
   // placing the associated content into the DocumentManifest.
@@ -109,7 +109,7 @@ class DocumentManifest {
   DateTime created;
 
   //  Extensions for created
-  Element element_created;
+  Element elementCreated;
 
   //  Identifies who is the author of the manifest. Manifest author is not
   // necessarly the author of the references included.
@@ -124,14 +124,14 @@ class DocumentManifest {
   String source;
 
   //  Extensions for source
-  Element element_source;
+  Element elementSource;
 
   //  Human-readable description of the source document. This is sometimes
   // known as the "title".
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  The list of Resources that consist of the parts of this manifest.
   List<Reference> content;
@@ -144,9 +144,9 @@ DocumentManifest(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -154,17 +154,17 @@ DocumentManifest(
     this.masterIdentifier,
     this.identifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.type,
     this.subject,
     this.created,
-    this.element_created,
+    this.elementCreated,
     this.author,
     this.recipient,
     this.source,
-    this.element_source,
+    this.elementSource,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.related
     });
 

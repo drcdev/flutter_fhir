@@ -25,20 +25,20 @@ VisionPrescription _$VisionPrescriptionFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -53,24 +53,24 @@ VisionPrescription _$VisionPrescriptionFromJson(Map<String, dynamic> json) {
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     created: json['created'] == null
         ? null
         : DateTime.parse(json['created'] as String),
-    element_created: json['element_created'] == null
+    elementCreated: json['elementCreated'] == null
         ? null
-        : Element.fromJson(json['element_created'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementCreated'] as Map<String, dynamic>),
     encounter: json['encounter'] == null
         ? null
         : Reference.fromJson(json['encounter'] as Map<String, dynamic>),
     dateWritten: json['dateWritten'] == null
         ? null
         : DateTime.parse(json['dateWritten'] as String),
-    element_dateWritten: json['element_dateWritten'] == null
+    elementDateWritten: json['elementDateWritten'] == null
         ? null
-        : Element.fromJson(json['element_dateWritten'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDateWritten'] as Map<String, dynamic>),
   );
 }
 
@@ -79,9 +79,9 @@ Map<String, dynamic> _$VisionPrescriptionToJson(VisionPrescription instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -89,13 +89,13 @@ Map<String, dynamic> _$VisionPrescriptionToJson(VisionPrescription instance) =>
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'created': instance.created?.toIso8601String(),
-      'element_created': instance.element_created?.toJson(),
+      'elementCreated': instance.elementCreated?.toJson(),
       'patient': instance.patient?.toJson(),
       'encounter': instance.encounter?.toJson(),
       'dateWritten': instance.dateWritten?.toIso8601String(),
-      'element_dateWritten': instance.element_dateWritten?.toJson(),
+      'elementDateWritten': instance.elementDateWritten?.toJson(),
       'prescriber': instance.prescriber?.toJson(),
       'lensSpecification':
           instance.lensSpecification?.map((e) => e?.toJson())?.toList(),
@@ -117,53 +117,53 @@ VisionPrescription_LensSpecification
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     eye: json['eye'] as String,
-    element_eye: json['element_eye'] == null
+    elementEye: json['elementEye'] == null
         ? null
-        : Element.fromJson(json['element_eye'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementEye'] as Map<String, dynamic>),
     sphere: (json['sphere'] as num)?.toDouble(),
-    element_sphere: json['element_sphere'] == null
+    elementSphere: json['elementSphere'] == null
         ? null
-        : Element.fromJson(json['element_sphere'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSphere'] as Map<String, dynamic>),
     cylinder: (json['cylinder'] as num)?.toDouble(),
-    element_cylinder: json['element_cylinder'] == null
+    elementCylinder: json['elementCylinder'] == null
         ? null
-        : Element.fromJson(json['element_cylinder'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementCylinder'] as Map<String, dynamic>),
     axis: json['axis'] as int,
-    element_axis: json['element_axis'] == null
+    elementAxis: json['elementAxis'] == null
         ? null
-        : Element.fromJson(json['element_axis'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementAxis'] as Map<String, dynamic>),
     prism: (json['prism'] as List)
         ?.map((e) => e == null
             ? null
             : VisionPrescription_Prism.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     add: (json['add'] as num)?.toDouble(),
-    element_add: json['element_add'] == null
+    elementAdd: json['elementAdd'] == null
         ? null
-        : Element.fromJson(json['element_add'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementAdd'] as Map<String, dynamic>),
     power: (json['power'] as num)?.toDouble(),
-    element_power: json['element_power'] == null
+    elementPower: json['elementPower'] == null
         ? null
-        : Element.fromJson(json['element_power'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPower'] as Map<String, dynamic>),
     backCurve: (json['backCurve'] as num)?.toDouble(),
-    element_backCurve: json['element_backCurve'] == null
+    elementBackCurve: json['elementBackCurve'] == null
         ? null
-        : Element.fromJson(json['element_backCurve'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementBackCurve'] as Map<String, dynamic>),
     diameter: (json['diameter'] as num)?.toDouble(),
-    element_diameter: json['element_diameter'] == null
+    elementDiameter: json['elementDiameter'] == null
         ? null
-        : Element.fromJson(json['element_diameter'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDiameter'] as Map<String, dynamic>),
     duration: json['duration'] == null
         ? null
         : Quantity.fromJson(json['duration'] as Map<String, dynamic>),
     color: json['color'] as String,
-    element_color: json['element_color'] == null
+    elementColor: json['elementColor'] == null
         ? null
-        : Element.fromJson(json['element_color'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementColor'] as Map<String, dynamic>),
     brand: json['brand'] as String,
-    element_brand: json['element_brand'] == null
+    elementBrand: json['elementBrand'] == null
         ? null
-        : Element.fromJson(json['element_brand'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementBrand'] as Map<String, dynamic>),
     note: (json['note'] as List)
         ?.map((e) =>
             e == null ? null : Annotation.fromJson(e as Map<String, dynamic>))
@@ -180,27 +180,27 @@ Map<String, dynamic> _$VisionPrescription_LensSpecificationToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'product': instance.product?.toJson(),
       'eye': instance.eye,
-      'element_eye': instance.element_eye?.toJson(),
+      'elementEye': instance.elementEye?.toJson(),
       'sphere': instance.sphere,
-      'element_sphere': instance.element_sphere?.toJson(),
+      'elementSphere': instance.elementSphere?.toJson(),
       'cylinder': instance.cylinder,
-      'element_cylinder': instance.element_cylinder?.toJson(),
+      'elementCylinder': instance.elementCylinder?.toJson(),
       'axis': instance.axis,
-      'element_axis': instance.element_axis?.toJson(),
+      'elementAxis': instance.elementAxis?.toJson(),
       'prism': instance.prism?.map((e) => e?.toJson())?.toList(),
       'add': instance.add,
-      'element_add': instance.element_add?.toJson(),
+      'elementAdd': instance.elementAdd?.toJson(),
       'power': instance.power,
-      'element_power': instance.element_power?.toJson(),
+      'elementPower': instance.elementPower?.toJson(),
       'backCurve': instance.backCurve,
-      'element_backCurve': instance.element_backCurve?.toJson(),
+      'elementBackCurve': instance.elementBackCurve?.toJson(),
       'diameter': instance.diameter,
-      'element_diameter': instance.element_diameter?.toJson(),
+      'elementDiameter': instance.elementDiameter?.toJson(),
       'duration': instance.duration?.toJson(),
       'color': instance.color,
-      'element_color': instance.element_color?.toJson(),
+      'elementColor': instance.elementColor?.toJson(),
       'brand': instance.brand,
-      'element_brand': instance.element_brand?.toJson(),
+      'elementBrand': instance.elementBrand?.toJson(),
       'note': instance.note?.map((e) => e?.toJson())?.toList(),
     };
 
@@ -217,13 +217,13 @@ VisionPrescription_Prism _$VisionPrescription_PrismFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     amount: (json['amount'] as num)?.toDouble(),
-    element_amount: json['element_amount'] == null
+    elementAmount: json['elementAmount'] == null
         ? null
-        : Element.fromJson(json['element_amount'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementAmount'] as Map<String, dynamic>),
     base: json['base'] as String,
-    element_base: json['element_base'] == null
+    elementBase: json['elementBase'] == null
         ? null
-        : Element.fromJson(json['element_base'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementBase'] as Map<String, dynamic>),
   );
 }
 
@@ -235,7 +235,7 @@ Map<String, dynamic> _$VisionPrescription_PrismToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'amount': instance.amount,
-      'element_amount': instance.element_amount?.toJson(),
+      'elementAmount': instance.elementAmount?.toJson(),
       'base': instance.base,
-      'element_base': instance.element_base?.toJson(),
+      'elementBase': instance.elementBase?.toJson(),
     };

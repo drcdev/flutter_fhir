@@ -72,7 +72,7 @@ class MarketingStatus {
   DateTime restoreDate;
 
   //  Extensions for restoreDate
-  Element element_restoreDate;
+  Element elementRestoreDate;
 
 MarketingStatus(
   this.country,
@@ -83,7 +83,7 @@ MarketingStatus(
     this.modifierExtension,
     this.jurisdiction,
     this.restoreDate,
-    this.element_restoreDate
+    this.elementRestoreDate
     });
 
   factory MarketingStatus.fromJson(Map<String, dynamic> json) => _$MarketingStatusFromJson(json);

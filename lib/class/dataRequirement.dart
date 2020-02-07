@@ -31,7 +31,7 @@ class DataRequirement {
   String type;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  The profile of the required data, specified as the uri of the profile
   // definition.
@@ -57,7 +57,7 @@ class DataRequirement {
   List<String> mustSupport;
 
   //  Extensions for mustSupport
-  List<Element> element_mustSupport;
+  List<Element> elementMustSupport;
 
   //  Code filters specify additional constraints on the data, specifying
   // the value set of interest for a particular element of the data. Each
@@ -76,7 +76,7 @@ class DataRequirement {
   int limit;
 
   //  Extensions for limit
-  Element element_limit;
+  Element elementLimit;
 
   //  Specifies the order of the results to be returned.
   List<DataRequirement_Sort> sort;
@@ -85,16 +85,16 @@ DataRequirement(
   {this.id,
     this.extension,
     this.type,
-    this.element_type,
+    this.elementType,
     this.profile,
     this.subjectCodeableConcept,
     this.subjectReference,
     this.mustSupport,
-    this.element_mustSupport,
+    this.elementMustSupport,
     this.codeFilter,
     this.dateFilter,
     this.limit,
-    this.element_limit,
+    this.elementLimit,
     this.sort
     });
 
@@ -142,7 +142,7 @@ class DataRequirement_CodeFilter {
   String path;
 
   //  Extensions for path
-  Element element_path;
+  Element elementPath;
 
   //  A token parameter that refers to a search parameter defined on the
   // specified type of the DataRequirement, and which searches on elements
@@ -150,7 +150,7 @@ class DataRequirement_CodeFilter {
   String searchParam;
 
   //  Extensions for searchParam
-  Element element_searchParam;
+  Element elementSearchParam;
 
   //  The valueset for the code filter. The valueSet and code elements are
   // additive. If valueSet is specified, the filter will return only those
@@ -170,9 +170,9 @@ DataRequirement_CodeFilter(
     this.extension,
     this.modifierExtension,
     this.path,
-    this.element_path,
+    this.elementPath,
     this.searchParam,
-    this.element_searchParam,
+    this.elementSearchParam,
     this.valueSet,
     this.code
     });
@@ -222,7 +222,7 @@ class DataRequirement_DateFilter {
   String path;
 
   //  Extensions for path
-  Element element_path;
+  Element elementPath;
 
   //  A date parameter that refers to a search parameter defined on the
   // specified type of the DataRequirement, and which searches on elements
@@ -230,7 +230,7 @@ class DataRequirement_DateFilter {
   String searchParam;
 
   //  Extensions for searchParam
-  Element element_searchParam;
+  Element elementSearchParam;
 
   //  The value of the filter. If period is specified, the filter will
   // return only those data items that fall within the bounds determined by
@@ -241,7 +241,7 @@ class DataRequirement_DateFilter {
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for valueDateTime
-  Element element_valueDateTime;
+  Element elementValueDateTime;
 
   //  The value of the filter. If period is specified, the filter will
   // return only those data items that fall within the bounds determined by
@@ -264,11 +264,11 @@ DataRequirement_DateFilter(
     this.extension,
     this.modifierExtension,
     this.path,
-    this.element_path,
+    this.elementPath,
     this.searchParam,
-    this.element_searchParam,
+    this.elementSearchParam,
     this.valueDateTime,
-    this.element_valueDateTime,
+    this.elementValueDateTime,
     this.valuePeriod,
     this.valueDuration
     });
@@ -314,22 +314,22 @@ class DataRequirement_Sort {
   String path;
 
   //  Extensions for path
-  Element element_path;
+  Element elementPath;
 
   //  The direction of the sort, ascending or descending.
   String direction; // <code> enum: ascending/descending;
 
   //  Extensions for direction
-  Element element_direction;
+  Element elementDirection;
 
 DataRequirement_Sort(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.path,
-    this.element_path,
+    this.elementPath,
     this.direction,
-    this.element_direction
+    this.elementDirection
     });
 
   factory DataRequirement_Sort.fromJson(Map<String, dynamic> json) => _$DataRequirement_SortFromJson(json);

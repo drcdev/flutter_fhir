@@ -6,7 +6,7 @@ import 'package:flutter_fhir/class/bundle.dart' as bundle;
 syncServer(String action, {Patient body} ) async {
   Map<String, String> headers = {'Content-type': 'application/json'};
   Response response = await post(
-      'https://dbhifhir.aidbox.app/auth/token?client_id=greyfhir&client_secret=verysecret&grant_type=client_credentials',
+    'https://dbhifhir.aidbox.app/auth/token?client_id=greyfhir&grant_type=password&username=faulkenbej@chop.edu&password=chopchop&client_secret=chopchop',
       headers: headers);
   var parsedbody = json.decode(response.body);
   var token = parsedbody['token_type'] + ' ' + parsedbody['access_token'];
@@ -15,7 +15,9 @@ syncServer(String action, {Patient body} ) async {
     Response patients = await get('https://dbhifhir.aidbox.app/Patient', headers: headers);
     var myBundle = bundle.Bundle.fromJson(json.decode(patients.body));
     for(var i = 0; i < myBundle.total; i++) {
-//      await Patient.fromJson(myBundle.entry[i].resource.toJson()).writePatient();
+      print(i);
+//      await Patient.fromJson(myBundle.entry[i].resource.toJson());
+      print(myBundle.entry[i].toJson().toString());
       print(myBundle.entry[i].resource.toJson().toString());
     }
     print('Patients downloaded.');

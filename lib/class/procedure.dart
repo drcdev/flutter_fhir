@@ -37,13 +37,13 @@ class Procedure {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -56,7 +56,7 @@ class Procedure {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -97,7 +97,7 @@ class Procedure {
   List<String> instantiatesUri;
 
   //  Extensions for instantiatesUri
-  List<Element> element_instantiatesUri;
+  List<Element> elementInstantiatesUri;
 
   //  A reference to a resource that contains details of the request for
   // this procedure.
@@ -112,7 +112,7 @@ class Procedure {
   String status;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  Captures the reason for the current state of the procedure.
   CodeableConcept statusReason;
@@ -139,7 +139,7 @@ class Procedure {
   String performedDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for performedDateTime
-  Element element_performedDateTime;
+  Element elementPerformedDateTime;
 
   //  Estimated or actual date, date-time, period, or age when the procedure
   // was performed.  Allows a period to support complex procedures that span
@@ -154,7 +154,7 @@ class Procedure {
   String performedString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for performedString
-  Element element_performedString;
+  Element elementPerformedString;
 
   //  Estimated or actual date, date-time, period, or age when the procedure
   // was performed.  Allows a period to support complex procedures that span
@@ -237,9 +237,9 @@ Procedure(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -247,20 +247,20 @@ Procedure(
     this.identifier,
     this.instantiatesCanonical,
     this.instantiatesUri,
-    this.element_instantiatesUri,
+    this.elementInstantiatesUri,
     this.basedOn,
     this.partOf,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.statusReason,
     this.category,
     this.code,
     this.encounter,
     this.performedDateTime,
-    this.element_performedDateTime,
+    this.elementPerformedDateTime,
     this.performedPeriod,
     this.performedString,
-    this.element_performedString,
+    this.elementPerformedString,
     this.performedAge,
     this.performedRange,
     this.recorder,

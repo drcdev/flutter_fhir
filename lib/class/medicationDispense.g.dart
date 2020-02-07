@@ -13,20 +13,20 @@ MedicationDispense _$MedicationDispenseFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -45,9 +45,9 @@ MedicationDispense _$MedicationDispenseFromJson(Map<String, dynamic> json) {
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     statusReasonCodeableConcept: json['statusReasonCodeableConcept'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -101,17 +101,16 @@ MedicationDispense _$MedicationDispenseFromJson(Map<String, dynamic> json) {
     whenPrepared: json['whenPrepared'] == null
         ? null
         : DateTime.parse(json['whenPrepared'] as String),
-    element_whenPrepared: json['element_whenPrepared'] == null
+    elementWhenPrepared: json['elementWhenPrepared'] == null
         ? null
-        : Element.fromJson(
-            json['element_whenPrepared'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementWhenPrepared'] as Map<String, dynamic>),
     whenHandedOver: json['whenHandedOver'] == null
         ? null
         : DateTime.parse(json['whenHandedOver'] as String),
-    element_whenHandedOver: json['element_whenHandedOver'] == null
+    elementWhenHandedOver: json['elementWhenHandedOver'] == null
         ? null
         : Element.fromJson(
-            json['element_whenHandedOver'] as Map<String, dynamic>),
+            json['elementWhenHandedOver'] as Map<String, dynamic>),
     destination: json['destination'] == null
         ? null
         : Reference.fromJson(json['destination'] as Map<String, dynamic>),
@@ -147,9 +146,9 @@ Map<String, dynamic> _$MedicationDispenseToJson(MedicationDispense instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -158,7 +157,7 @@ Map<String, dynamic> _$MedicationDispenseToJson(MedicationDispense instance) =>
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'partOf': instance.partOf?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'statusReasonCodeableConcept':
           instance.statusReasonCodeableConcept?.toJson(),
       'statusReasonReference': instance.statusReasonReference?.toJson(),
@@ -177,9 +176,9 @@ Map<String, dynamic> _$MedicationDispenseToJson(MedicationDispense instance) =>
       'quantity': instance.quantity?.toJson(),
       'daysSupply': instance.daysSupply?.toJson(),
       'whenPrepared': instance.whenPrepared?.toIso8601String(),
-      'element_whenPrepared': instance.element_whenPrepared?.toJson(),
+      'elementWhenPrepared': instance.elementWhenPrepared?.toJson(),
       'whenHandedOver': instance.whenHandedOver?.toIso8601String(),
-      'element_whenHandedOver': instance.element_whenHandedOver?.toJson(),
+      'elementWhenHandedOver': instance.elementWhenHandedOver?.toJson(),
       'destination': instance.destination?.toJson(),
       'receiver': instance.receiver?.map((e) => e?.toJson())?.toList(),
       'note': instance.note?.map((e) => e?.toJson())?.toList(),
@@ -236,10 +235,10 @@ MedicationDispense_Substitution _$MedicationDispense_SubstitutionFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     wasSubstituted: json['wasSubstituted'] as bool,
-    element_wasSubstituted: json['element_wasSubstituted'] == null
+    elementWasSubstituted: json['elementWasSubstituted'] == null
         ? null
         : Element.fromJson(
-            json['element_wasSubstituted'] as Map<String, dynamic>),
+            json['elementWasSubstituted'] as Map<String, dynamic>),
     type: json['type'] == null
         ? null
         : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
@@ -263,7 +262,7 @@ Map<String, dynamic> _$MedicationDispense_SubstitutionToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'wasSubstituted': instance.wasSubstituted,
-      'element_wasSubstituted': instance.element_wasSubstituted?.toJson(),
+      'elementWasSubstituted': instance.elementWasSubstituted?.toJson(),
       'type': instance.type?.toJson(),
       'reason': instance.reason?.map((e) => e?.toJson())?.toList(),
       'responsibleParty':

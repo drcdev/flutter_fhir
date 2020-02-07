@@ -13,20 +13,20 @@ Group _$GroupFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -41,28 +41,28 @@ Group _$GroupFromJson(Map<String, dynamic> json) {
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     active: json['active'] as bool,
-    element_active: json['element_active'] == null
+    elementActive: json['elementActive'] == null
         ? null
-        : Element.fromJson(json['element_active'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementActive'] as Map<String, dynamic>),
     type: json['type'] as String,
-    element_type: json['element_type'] == null
+    elementType: json['elementType'] == null
         ? null
-        : Element.fromJson(json['element_type'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
     actual: json['actual'] as bool,
-    element_actual: json['element_actual'] == null
+    elementActual: json['elementActual'] == null
         ? null
-        : Element.fromJson(json['element_actual'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementActual'] as Map<String, dynamic>),
     code: json['code'] == null
         ? null
         : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     name: json['name'] as String,
-    element_name: json['element_name'] == null
+    elementName: json['elementName'] == null
         ? null
-        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
     quantity: json['quantity'] as int,
-    element_quantity: json['element_quantity'] == null
+    elementQuantity: json['elementQuantity'] == null
         ? null
-        : Element.fromJson(json['element_quantity'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementQuantity'] as Map<String, dynamic>),
     managingEntity: json['managingEntity'] == null
         ? null
         : Reference.fromJson(json['managingEntity'] as Map<String, dynamic>),
@@ -82,9 +82,9 @@ Map<String, dynamic> _$GroupToJson(Group instance) => <String, dynamic>{
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -92,16 +92,16 @@ Map<String, dynamic> _$GroupToJson(Group instance) => <String, dynamic>{
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'active': instance.active,
-      'element_active': instance.element_active?.toJson(),
+      'elementActive': instance.elementActive?.toJson(),
       'type': instance.type,
-      'element_type': instance.element_type?.toJson(),
+      'elementType': instance.elementType?.toJson(),
       'actual': instance.actual,
-      'element_actual': instance.element_actual?.toJson(),
+      'elementActual': instance.elementActual?.toJson(),
       'code': instance.code?.toJson(),
       'name': instance.name,
-      'element_name': instance.element_name?.toJson(),
+      'elementName': instance.elementName?.toJson(),
       'quantity': instance.quantity,
-      'element_quantity': instance.element_quantity?.toJson(),
+      'elementQuantity': instance.elementQuantity?.toJson(),
       'managingEntity': instance.managingEntity?.toJson(),
       'characteristic':
           instance.characteristic?.map((e) => e?.toJson())?.toList(),
@@ -127,10 +127,9 @@ Group_Characteristic _$Group_CharacteristicFromJson(Map<String, dynamic> json) {
         : CodeableConcept.fromJson(
             json['valueCodeableConcept'] as Map<String, dynamic>),
     valueBoolean: json['valueBoolean'] as bool,
-    element_valueBoolean: json['element_valueBoolean'] == null
+    elementValueBoolean: json['elementValueBoolean'] == null
         ? null
-        : Element.fromJson(
-            json['element_valueBoolean'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueBoolean'] as Map<String, dynamic>),
     valueQuantity: json['valueQuantity'] == null
         ? null
         : Quantity.fromJson(json['valueQuantity'] as Map<String, dynamic>),
@@ -141,9 +140,9 @@ Group_Characteristic _$Group_CharacteristicFromJson(Map<String, dynamic> json) {
         ? null
         : Reference.fromJson(json['valueReference'] as Map<String, dynamic>),
     exclude: json['exclude'] as bool,
-    element_exclude: json['element_exclude'] == null
+    elementExclude: json['elementExclude'] == null
         ? null
-        : Element.fromJson(json['element_exclude'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementExclude'] as Map<String, dynamic>),
     period: json['period'] == null
         ? null
         : Period.fromJson(json['period'] as Map<String, dynamic>),
@@ -160,12 +159,12 @@ Map<String, dynamic> _$Group_CharacteristicToJson(
       'code': instance.code?.toJson(),
       'valueCodeableConcept': instance.valueCodeableConcept?.toJson(),
       'valueBoolean': instance.valueBoolean,
-      'element_valueBoolean': instance.element_valueBoolean?.toJson(),
+      'elementValueBoolean': instance.elementValueBoolean?.toJson(),
       'valueQuantity': instance.valueQuantity?.toJson(),
       'valueRange': instance.valueRange?.toJson(),
       'valueReference': instance.valueReference?.toJson(),
       'exclude': instance.exclude,
-      'element_exclude': instance.element_exclude?.toJson(),
+      'elementExclude': instance.elementExclude?.toJson(),
       'period': instance.period?.toJson(),
     };
 
@@ -187,9 +186,9 @@ Group_Member _$Group_MemberFromJson(Map<String, dynamic> json) {
         ? null
         : Period.fromJson(json['period'] as Map<String, dynamic>),
     inactive: json['inactive'] as bool,
-    element_inactive: json['element_inactive'] == null
+    elementInactive: json['elementInactive'] == null
         ? null
-        : Element.fromJson(json['element_inactive'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementInactive'] as Map<String, dynamic>),
   );
 }
 
@@ -202,5 +201,5 @@ Map<String, dynamic> _$Group_MemberToJson(Group_Member instance) =>
       'entity': instance.entity?.toJson(),
       'period': instance.period?.toJson(),
       'inactive': instance.inactive,
-      'element_inactive': instance.element_inactive?.toJson(),
+      'elementInactive': instance.elementInactive?.toJson(),
     };

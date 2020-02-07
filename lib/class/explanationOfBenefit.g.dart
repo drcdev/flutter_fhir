@@ -31,20 +31,20 @@ ExplanationOfBenefit _$ExplanationOfBenefitFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -59,25 +59,25 @@ ExplanationOfBenefit _$ExplanationOfBenefitFromJson(Map<String, dynamic> json) {
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     subType: json['subType'] == null
         ? null
         : CodeableConcept.fromJson(json['subType'] as Map<String, dynamic>),
     use: json['use'] as String,
-    element_use: json['element_use'] == null
+    elementUse: json['elementUse'] == null
         ? null
-        : Element.fromJson(json['element_use'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementUse'] as Map<String, dynamic>),
     billablePeriod: json['billablePeriod'] == null
         ? null
         : Period.fromJson(json['billablePeriod'] as Map<String, dynamic>),
     created: json['created'] == null
         ? null
         : DateTime.parse(json['created'] as String),
-    element_created: json['element_created'] == null
+    elementCreated: json['elementCreated'] == null
         ? null
-        : Element.fromJson(json['element_created'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementCreated'] as Map<String, dynamic>),
     enterer: json['enterer'] == null
         ? null
         : Reference.fromJson(json['enterer'] as Map<String, dynamic>),
@@ -121,15 +121,15 @@ ExplanationOfBenefit _$ExplanationOfBenefitFromJson(Map<String, dynamic> json) {
         ? null
         : Reference.fromJson(json['claimResponse'] as Map<String, dynamic>),
     outcome: json['outcome'] as String,
-    element_outcome: json['element_outcome'] == null
+    elementOutcome: json['elementOutcome'] == null
         ? null
-        : Element.fromJson(json['element_outcome'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementOutcome'] as Map<String, dynamic>),
     disposition: json['disposition'] as String,
-    element_disposition: json['element_disposition'] == null
+    elementDisposition: json['elementDisposition'] == null
         ? null
-        : Element.fromJson(json['element_disposition'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDisposition'] as Map<String, dynamic>),
     preAuthRef: (json['preAuthRef'] as List)?.map((e) => e as String)?.toList(),
-    element_preAuthRef: (json['element_preAuthRef'] as List)
+    elementPreAuthRef: (json['elementPreAuthRef'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -161,9 +161,9 @@ ExplanationOfBenefit _$ExplanationOfBenefitFromJson(Map<String, dynamic> json) {
                 e as Map<String, dynamic>))
         ?.toList(),
     precedence: json['precedence'] as int,
-    element_precedence: json['element_precedence'] == null
+    elementPrecedence: json['elementPrecedence'] == null
         ? null
-        : Element.fromJson(json['element_precedence'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPrecedence'] as Map<String, dynamic>),
     accident: json['accident'] == null
         ? null
         : ExplanationOfBenefit_Accident.fromJson(
@@ -223,9 +223,9 @@ Map<String, dynamic> _$ExplanationOfBenefitToJson(
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -233,15 +233,15 @@ Map<String, dynamic> _$ExplanationOfBenefitToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'type': instance.type?.toJson(),
       'subType': instance.subType?.toJson(),
       'use': instance.use,
-      'element_use': instance.element_use?.toJson(),
+      'elementUse': instance.elementUse?.toJson(),
       'patient': instance.patient?.toJson(),
       'billablePeriod': instance.billablePeriod?.toJson(),
       'created': instance.created?.toIso8601String(),
-      'element_created': instance.element_created?.toJson(),
+      'elementCreated': instance.elementCreated?.toJson(),
       'enterer': instance.enterer?.toJson(),
       'insurer': instance.insurer?.toJson(),
       'provider': instance.provider?.toJson(),
@@ -257,12 +257,12 @@ Map<String, dynamic> _$ExplanationOfBenefitToJson(
       'claim': instance.claim?.toJson(),
       'claimResponse': instance.claimResponse?.toJson(),
       'outcome': instance.outcome,
-      'element_outcome': instance.element_outcome?.toJson(),
+      'elementOutcome': instance.elementOutcome?.toJson(),
       'disposition': instance.disposition,
-      'element_disposition': instance.element_disposition?.toJson(),
+      'elementDisposition': instance.elementDisposition?.toJson(),
       'preAuthRef': instance.preAuthRef,
-      'element_preAuthRef':
-          instance.element_preAuthRef?.map((e) => e?.toJson())?.toList(),
+      'elementPreAuthRef':
+          instance.elementPreAuthRef?.map((e) => e?.toJson())?.toList(),
       'preAuthRefPeriod':
           instance.preAuthRefPeriod?.map((e) => e?.toJson())?.toList(),
       'careTeam': instance.careTeam?.map((e) => e?.toJson())?.toList(),
@@ -271,7 +271,7 @@ Map<String, dynamic> _$ExplanationOfBenefitToJson(
       'diagnosis': instance.diagnosis?.map((e) => e?.toJson())?.toList(),
       'procedure': instance.procedure?.map((e) => e?.toJson())?.toList(),
       'precedence': instance.precedence,
-      'element_precedence': instance.element_precedence?.toJson(),
+      'elementPrecedence': instance.elementPrecedence?.toJson(),
       'insurance': instance.insurance?.map((e) => e?.toJson())?.toList(),
       'accident': instance.accident?.toJson(),
       'item': instance.item?.map((e) => e?.toJson())?.toList(),
@@ -372,13 +372,13 @@ ExplanationOfBenefit_CareTeam _$ExplanationOfBenefit_CareTeamFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     sequence: json['sequence'] as int,
-    element_sequence: json['element_sequence'] == null
+    elementSequence: json['elementSequence'] == null
         ? null
-        : Element.fromJson(json['element_sequence'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSequence'] as Map<String, dynamic>),
     responsible: json['responsible'] as bool,
-    element_responsible: json['element_responsible'] == null
+    elementResponsible: json['elementResponsible'] == null
         ? null
-        : Element.fromJson(json['element_responsible'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementResponsible'] as Map<String, dynamic>),
     role: json['role'] == null
         ? null
         : CodeableConcept.fromJson(json['role'] as Map<String, dynamic>),
@@ -397,10 +397,10 @@ Map<String, dynamic> _$ExplanationOfBenefit_CareTeamToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'sequence': instance.sequence,
-      'element_sequence': instance.element_sequence?.toJson(),
+      'elementSequence': instance.elementSequence?.toJson(),
       'provider': instance.provider?.toJson(),
       'responsible': instance.responsible,
-      'element_responsible': instance.element_responsible?.toJson(),
+      'elementResponsible': instance.elementResponsible?.toJson(),
       'role': instance.role?.toJson(),
       'qualification': instance.qualification?.toJson(),
     };
@@ -421,28 +421,27 @@ ExplanationOfBenefit_SupportingInfo
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     sequence: json['sequence'] as int,
-    element_sequence: json['element_sequence'] == null
+    elementSequence: json['elementSequence'] == null
         ? null
-        : Element.fromJson(json['element_sequence'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSequence'] as Map<String, dynamic>),
     code: json['code'] == null
         ? null
         : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     timingDate: json['timingDate'] as String,
-    element_timingDate: json['element_timingDate'] == null
+    elementTimingDate: json['elementTimingDate'] == null
         ? null
-        : Element.fromJson(json['element_timingDate'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementTimingDate'] as Map<String, dynamic>),
     timingPeriod: json['timingPeriod'] == null
         ? null
         : Period.fromJson(json['timingPeriod'] as Map<String, dynamic>),
     valueBoolean: json['valueBoolean'] as bool,
-    element_valueBoolean: json['element_valueBoolean'] == null
+    elementValueBoolean: json['elementValueBoolean'] == null
         ? null
-        : Element.fromJson(
-            json['element_valueBoolean'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueBoolean'] as Map<String, dynamic>),
     valueString: json['valueString'] as String,
-    element_valueString: json['element_valueString'] == null
+    elementValueString: json['elementValueString'] == null
         ? null
-        : Element.fromJson(json['element_valueString'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueString'] as Map<String, dynamic>),
     valueQuantity: json['valueQuantity'] == null
         ? null
         : Quantity.fromJson(json['valueQuantity'] as Map<String, dynamic>),
@@ -466,16 +465,16 @@ Map<String, dynamic> _$ExplanationOfBenefit_SupportingInfoToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'sequence': instance.sequence,
-      'element_sequence': instance.element_sequence?.toJson(),
+      'elementSequence': instance.elementSequence?.toJson(),
       'category': instance.category?.toJson(),
       'code': instance.code?.toJson(),
       'timingDate': instance.timingDate,
-      'element_timingDate': instance.element_timingDate?.toJson(),
+      'elementTimingDate': instance.elementTimingDate?.toJson(),
       'timingPeriod': instance.timingPeriod?.toJson(),
       'valueBoolean': instance.valueBoolean,
-      'element_valueBoolean': instance.element_valueBoolean?.toJson(),
+      'elementValueBoolean': instance.elementValueBoolean?.toJson(),
       'valueString': instance.valueString,
-      'element_valueString': instance.element_valueString?.toJson(),
+      'elementValueString': instance.elementValueString?.toJson(),
       'valueQuantity': instance.valueQuantity?.toJson(),
       'valueAttachment': instance.valueAttachment?.toJson(),
       'valueReference': instance.valueReference?.toJson(),
@@ -495,9 +494,9 @@ ExplanationOfBenefit_Diagnosis _$ExplanationOfBenefit_DiagnosisFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     sequence: json['sequence'] as int,
-    element_sequence: json['element_sequence'] == null
+    elementSequence: json['elementSequence'] == null
         ? null
-        : Element.fromJson(json['element_sequence'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSequence'] as Map<String, dynamic>),
     diagnosisCodeableConcept: json['diagnosisCodeableConcept'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -528,7 +527,7 @@ Map<String, dynamic> _$ExplanationOfBenefit_DiagnosisToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'sequence': instance.sequence,
-      'element_sequence': instance.element_sequence?.toJson(),
+      'elementSequence': instance.elementSequence?.toJson(),
       'diagnosisCodeableConcept': instance.diagnosisCodeableConcept?.toJson(),
       'diagnosisReference': instance.diagnosisReference?.toJson(),
       'type': instance.type?.map((e) => e?.toJson())?.toList(),
@@ -549,18 +548,18 @@ ExplanationOfBenefit_Procedure _$ExplanationOfBenefit_ProcedureFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     sequence: json['sequence'] as int,
-    element_sequence: json['element_sequence'] == null
+    elementSequence: json['elementSequence'] == null
         ? null
-        : Element.fromJson(json['element_sequence'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSequence'] as Map<String, dynamic>),
     type: (json['type'] as List)
         ?.map((e) => e == null
             ? null
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
-    element_date: json['element_date'] == null
+    elementDate: json['elementDate'] == null
         ? null
-        : Element.fromJson(json['element_date'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDate'] as Map<String, dynamic>),
     procedureCodeableConcept: json['procedureCodeableConcept'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -584,10 +583,10 @@ Map<String, dynamic> _$ExplanationOfBenefit_ProcedureToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'sequence': instance.sequence,
-      'element_sequence': instance.element_sequence?.toJson(),
+      'elementSequence': instance.elementSequence?.toJson(),
       'type': instance.type?.map((e) => e?.toJson())?.toList(),
       'date': instance.date?.toIso8601String(),
-      'element_date': instance.element_date?.toJson(),
+      'elementDate': instance.elementDate?.toJson(),
       'procedureCodeableConcept': instance.procedureCodeableConcept?.toJson(),
       'procedureReference': instance.procedureReference?.toJson(),
       'udi': instance.udi?.map((e) => e?.toJson())?.toList(),
@@ -609,11 +608,11 @@ ExplanationOfBenefit_Insurance _$ExplanationOfBenefit_InsuranceFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     focal: json['focal'] as bool,
-    element_focal: json['element_focal'] == null
+    elementFocal: json['elementFocal'] == null
         ? null
-        : Element.fromJson(json['element_focal'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementFocal'] as Map<String, dynamic>),
     preAuthRef: (json['preAuthRef'] as List)?.map((e) => e as String)?.toList(),
-    element_preAuthRef: (json['element_preAuthRef'] as List)
+    elementPreAuthRef: (json['elementPreAuthRef'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -628,11 +627,11 @@ Map<String, dynamic> _$ExplanationOfBenefit_InsuranceToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'focal': instance.focal,
-      'element_focal': instance.element_focal?.toJson(),
+      'elementFocal': instance.elementFocal?.toJson(),
       'coverage': instance.coverage?.toJson(),
       'preAuthRef': instance.preAuthRef,
-      'element_preAuthRef':
-          instance.element_preAuthRef?.map((e) => e?.toJson())?.toList(),
+      'elementPreAuthRef':
+          instance.elementPreAuthRef?.map((e) => e?.toJson())?.toList(),
     };
 
 ExplanationOfBenefit_Accident _$ExplanationOfBenefit_AccidentFromJson(
@@ -648,9 +647,9 @@ ExplanationOfBenefit_Accident _$ExplanationOfBenefit_AccidentFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     date: json['date'] as String,
-    element_date: json['element_date'] == null
+    elementDate: json['elementDate'] == null
         ? null
-        : Element.fromJson(json['element_date'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDate'] as Map<String, dynamic>),
     type: json['type'] == null
         ? null
         : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
@@ -671,7 +670,7 @@ Map<String, dynamic> _$ExplanationOfBenefit_AccidentToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'date': instance.date,
-      'element_date': instance.element_date?.toJson(),
+      'elementDate': instance.elementDate?.toJson(),
       'type': instance.type?.toJson(),
       'locationAddress': instance.locationAddress?.toJson(),
       'locationReference': instance.locationReference?.toJson(),
@@ -694,30 +693,30 @@ ExplanationOfBenefit_Item _$ExplanationOfBenefit_ItemFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     sequence: json['sequence'] as int,
-    element_sequence: json['element_sequence'] == null
+    elementSequence: json['elementSequence'] == null
         ? null
-        : Element.fromJson(json['element_sequence'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSequence'] as Map<String, dynamic>),
     careTeamSequence:
         (json['careTeamSequence'] as List)?.map((e) => e as int)?.toList(),
-    element_careTeamSequence: (json['element_careTeamSequence'] as List)
+    elementCareTeamSequence: (json['elementCareTeamSequence'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     diagnosisSequence:
         (json['diagnosisSequence'] as List)?.map((e) => e as int)?.toList(),
-    element_diagnosisSequence: (json['element_diagnosisSequence'] as List)
+    elementDiagnosisSequence: (json['elementDiagnosisSequence'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     procedureSequence:
         (json['procedureSequence'] as List)?.map((e) => e as int)?.toList(),
-    element_procedureSequence: (json['element_procedureSequence'] as List)
+    elementProcedureSequence: (json['elementProcedureSequence'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     informationSequence:
         (json['informationSequence'] as List)?.map((e) => e as int)?.toList(),
-    element_informationSequence: (json['element_informationSequence'] as List)
+    elementInformationSequence: (json['elementInformationSequence'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -738,10 +737,9 @@ ExplanationOfBenefit_Item _$ExplanationOfBenefit_ItemFromJson(
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     servicedDate: json['servicedDate'] as String,
-    element_servicedDate: json['element_servicedDate'] == null
+    elementServicedDate: json['elementServicedDate'] == null
         ? null
-        : Element.fromJson(
-            json['element_servicedDate'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementServicedDate'] as Map<String, dynamic>),
     servicedPeriod: json['servicedPeriod'] == null
         ? null
         : Period.fromJson(json['servicedPeriod'] as Map<String, dynamic>),
@@ -762,9 +760,9 @@ ExplanationOfBenefit_Item _$ExplanationOfBenefit_ItemFromJson(
         ? null
         : Money.fromJson(json['unitPrice'] as Map<String, dynamic>),
     factor: (json['factor'] as num)?.toDouble(),
-    element_factor: json['element_factor'] == null
+    elementFactor: json['elementFactor'] == null
         ? null
-        : Element.fromJson(json['element_factor'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementFactor'] as Map<String, dynamic>),
     net: json['net'] == null
         ? null
         : Money.fromJson(json['net'] as Map<String, dynamic>),
@@ -785,7 +783,7 @@ ExplanationOfBenefit_Item _$ExplanationOfBenefit_ItemFromJson(
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     noteNumber: (json['noteNumber'] as List)?.map((e) => e as int)?.toList(),
-    element_noteNumber: (json['element_noteNumber'] as List)
+    elementNoteNumber: (json['elementNoteNumber'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -811,18 +809,18 @@ Map<String, dynamic> _$ExplanationOfBenefit_ItemToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'sequence': instance.sequence,
-      'element_sequence': instance.element_sequence?.toJson(),
+      'elementSequence': instance.elementSequence?.toJson(),
       'careTeamSequence': instance.careTeamSequence,
-      'element_careTeamSequence':
-          instance.element_careTeamSequence?.map((e) => e?.toJson())?.toList(),
+      'elementCareTeamSequence':
+          instance.elementCareTeamSequence?.map((e) => e?.toJson())?.toList(),
       'diagnosisSequence': instance.diagnosisSequence,
-      'element_diagnosisSequence':
-          instance.element_diagnosisSequence?.map((e) => e?.toJson())?.toList(),
+      'elementDiagnosisSequence':
+          instance.elementDiagnosisSequence?.map((e) => e?.toJson())?.toList(),
       'procedureSequence': instance.procedureSequence,
-      'element_procedureSequence':
-          instance.element_procedureSequence?.map((e) => e?.toJson())?.toList(),
+      'elementProcedureSequence':
+          instance.elementProcedureSequence?.map((e) => e?.toJson())?.toList(),
       'informationSequence': instance.informationSequence,
-      'element_informationSequence': instance.element_informationSequence
+      'elementInformationSequence': instance.elementInformationSequence
           ?.map((e) => e?.toJson())
           ?.toList(),
       'revenue': instance.revenue?.toJson(),
@@ -831,7 +829,7 @@ Map<String, dynamic> _$ExplanationOfBenefit_ItemToJson(
       'modifier': instance.modifier?.map((e) => e?.toJson())?.toList(),
       'programCode': instance.programCode?.map((e) => e?.toJson())?.toList(),
       'servicedDate': instance.servicedDate,
-      'element_servicedDate': instance.element_servicedDate?.toJson(),
+      'elementServicedDate': instance.elementServicedDate?.toJson(),
       'servicedPeriod': instance.servicedPeriod?.toJson(),
       'locationCodeableConcept': instance.locationCodeableConcept?.toJson(),
       'locationAddress': instance.locationAddress?.toJson(),
@@ -839,15 +837,15 @@ Map<String, dynamic> _$ExplanationOfBenefit_ItemToJson(
       'quantity': instance.quantity?.toJson(),
       'unitPrice': instance.unitPrice?.toJson(),
       'factor': instance.factor,
-      'element_factor': instance.element_factor?.toJson(),
+      'elementFactor': instance.elementFactor?.toJson(),
       'net': instance.net?.toJson(),
       'udi': instance.udi?.map((e) => e?.toJson())?.toList(),
       'bodySite': instance.bodySite?.toJson(),
       'subSite': instance.subSite?.map((e) => e?.toJson())?.toList(),
       'encounter': instance.encounter?.map((e) => e?.toJson())?.toList(),
       'noteNumber': instance.noteNumber,
-      'element_noteNumber':
-          instance.element_noteNumber?.map((e) => e?.toJson())?.toList(),
+      'elementNoteNumber':
+          instance.elementNoteNumber?.map((e) => e?.toJson())?.toList(),
       'adjudication': instance.adjudication?.map((e) => e?.toJson())?.toList(),
       'detail': instance.detail?.map((e) => e?.toJson())?.toList(),
     };
@@ -874,9 +872,9 @@ ExplanationOfBenefit_Adjudication _$ExplanationOfBenefit_AdjudicationFromJson(
         ? null
         : Money.fromJson(json['amount'] as Map<String, dynamic>),
     value: (json['value'] as num)?.toDouble(),
-    element_value: json['element_value'] == null
+    elementValue: json['elementValue'] == null
         ? null
-        : Element.fromJson(json['element_value'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValue'] as Map<String, dynamic>),
   );
 }
 
@@ -891,7 +889,7 @@ Map<String, dynamic> _$ExplanationOfBenefit_AdjudicationToJson(
       'reason': instance.reason?.toJson(),
       'amount': instance.amount?.toJson(),
       'value': instance.value,
-      'element_value': instance.element_value?.toJson(),
+      'elementValue': instance.elementValue?.toJson(),
     };
 
 ExplanationOfBenefit_Detail _$ExplanationOfBenefit_DetailFromJson(
@@ -911,9 +909,9 @@ ExplanationOfBenefit_Detail _$ExplanationOfBenefit_DetailFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     sequence: json['sequence'] as int,
-    element_sequence: json['element_sequence'] == null
+    elementSequence: json['elementSequence'] == null
         ? null
-        : Element.fromJson(json['element_sequence'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSequence'] as Map<String, dynamic>),
     revenue: json['revenue'] == null
         ? null
         : CodeableConcept.fromJson(json['revenue'] as Map<String, dynamic>),
@@ -937,9 +935,9 @@ ExplanationOfBenefit_Detail _$ExplanationOfBenefit_DetailFromJson(
         ? null
         : Money.fromJson(json['unitPrice'] as Map<String, dynamic>),
     factor: (json['factor'] as num)?.toDouble(),
-    element_factor: json['element_factor'] == null
+    elementFactor: json['elementFactor'] == null
         ? null
-        : Element.fromJson(json['element_factor'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementFactor'] as Map<String, dynamic>),
     net: json['net'] == null
         ? null
         : Money.fromJson(json['net'] as Map<String, dynamic>),
@@ -948,7 +946,7 @@ ExplanationOfBenefit_Detail _$ExplanationOfBenefit_DetailFromJson(
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     noteNumber: (json['noteNumber'] as List)?.map((e) => e as int)?.toList(),
-    element_noteNumber: (json['element_noteNumber'] as List)
+    elementNoteNumber: (json['elementNoteNumber'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -975,7 +973,7 @@ Map<String, dynamic> _$ExplanationOfBenefit_DetailToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'sequence': instance.sequence,
-      'element_sequence': instance.element_sequence?.toJson(),
+      'elementSequence': instance.elementSequence?.toJson(),
       'revenue': instance.revenue?.toJson(),
       'category': instance.category?.toJson(),
       'productOrService': instance.productOrService?.toJson(),
@@ -984,12 +982,12 @@ Map<String, dynamic> _$ExplanationOfBenefit_DetailToJson(
       'quantity': instance.quantity?.toJson(),
       'unitPrice': instance.unitPrice?.toJson(),
       'factor': instance.factor,
-      'element_factor': instance.element_factor?.toJson(),
+      'elementFactor': instance.elementFactor?.toJson(),
       'net': instance.net?.toJson(),
       'udi': instance.udi?.map((e) => e?.toJson())?.toList(),
       'noteNumber': instance.noteNumber,
-      'element_noteNumber':
-          instance.element_noteNumber?.map((e) => e?.toJson())?.toList(),
+      'elementNoteNumber':
+          instance.elementNoteNumber?.map((e) => e?.toJson())?.toList(),
       'adjudication': instance.adjudication?.map((e) => e?.toJson())?.toList(),
       'subDetail': instance.subDetail?.map((e) => e?.toJson())?.toList(),
     };
@@ -1011,9 +1009,9 @@ ExplanationOfBenefit_SubDetail _$ExplanationOfBenefit_SubDetailFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     sequence: json['sequence'] as int,
-    element_sequence: json['element_sequence'] == null
+    elementSequence: json['elementSequence'] == null
         ? null
-        : Element.fromJson(json['element_sequence'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSequence'] as Map<String, dynamic>),
     revenue: json['revenue'] == null
         ? null
         : CodeableConcept.fromJson(json['revenue'] as Map<String, dynamic>),
@@ -1037,9 +1035,9 @@ ExplanationOfBenefit_SubDetail _$ExplanationOfBenefit_SubDetailFromJson(
         ? null
         : Money.fromJson(json['unitPrice'] as Map<String, dynamic>),
     factor: (json['factor'] as num)?.toDouble(),
-    element_factor: json['element_factor'] == null
+    elementFactor: json['elementFactor'] == null
         ? null
-        : Element.fromJson(json['element_factor'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementFactor'] as Map<String, dynamic>),
     net: json['net'] == null
         ? null
         : Money.fromJson(json['net'] as Map<String, dynamic>),
@@ -1048,7 +1046,7 @@ ExplanationOfBenefit_SubDetail _$ExplanationOfBenefit_SubDetailFromJson(
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     noteNumber: (json['noteNumber'] as List)?.map((e) => e as int)?.toList(),
-    element_noteNumber: (json['element_noteNumber'] as List)
+    elementNoteNumber: (json['elementNoteNumber'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -1069,7 +1067,7 @@ Map<String, dynamic> _$ExplanationOfBenefit_SubDetailToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'sequence': instance.sequence,
-      'element_sequence': instance.element_sequence?.toJson(),
+      'elementSequence': instance.elementSequence?.toJson(),
       'revenue': instance.revenue?.toJson(),
       'category': instance.category?.toJson(),
       'productOrService': instance.productOrService?.toJson(),
@@ -1078,12 +1076,12 @@ Map<String, dynamic> _$ExplanationOfBenefit_SubDetailToJson(
       'quantity': instance.quantity?.toJson(),
       'unitPrice': instance.unitPrice?.toJson(),
       'factor': instance.factor,
-      'element_factor': instance.element_factor?.toJson(),
+      'elementFactor': instance.elementFactor?.toJson(),
       'net': instance.net?.toJson(),
       'udi': instance.udi?.map((e) => e?.toJson())?.toList(),
       'noteNumber': instance.noteNumber,
-      'element_noteNumber':
-          instance.element_noteNumber?.map((e) => e?.toJson())?.toList(),
+      'elementNoteNumber':
+          instance.elementNoteNumber?.map((e) => e?.toJson())?.toList(),
       'adjudication': instance.adjudication?.map((e) => e?.toJson())?.toList(),
     };
 
@@ -1105,19 +1103,19 @@ ExplanationOfBenefit_AddItem _$ExplanationOfBenefit_AddItemFromJson(
         ?.toList(),
     itemSequence:
         (json['itemSequence'] as List)?.map((e) => e as int)?.toList(),
-    element_itemSequence: (json['element_itemSequence'] as List)
+    elementItemSequence: (json['elementItemSequence'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     detailSequence:
         (json['detailSequence'] as List)?.map((e) => e as int)?.toList(),
-    element_detailSequence: (json['element_detailSequence'] as List)
+    elementDetailSequence: (json['elementDetailSequence'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     subDetailSequence:
         (json['subDetailSequence'] as List)?.map((e) => e as int)?.toList(),
-    element_subDetailSequence: (json['element_subDetailSequence'] as List)
+    elementSubDetailSequence: (json['elementSubDetailSequence'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -1136,10 +1134,9 @@ ExplanationOfBenefit_AddItem _$ExplanationOfBenefit_AddItemFromJson(
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     servicedDate: json['servicedDate'] as String,
-    element_servicedDate: json['element_servicedDate'] == null
+    elementServicedDate: json['elementServicedDate'] == null
         ? null
-        : Element.fromJson(
-            json['element_servicedDate'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementServicedDate'] as Map<String, dynamic>),
     servicedPeriod: json['servicedPeriod'] == null
         ? null
         : Period.fromJson(json['servicedPeriod'] as Map<String, dynamic>),
@@ -1160,9 +1157,9 @@ ExplanationOfBenefit_AddItem _$ExplanationOfBenefit_AddItemFromJson(
         ? null
         : Money.fromJson(json['unitPrice'] as Map<String, dynamic>),
     factor: (json['factor'] as num)?.toDouble(),
-    element_factor: json['element_factor'] == null
+    elementFactor: json['elementFactor'] == null
         ? null
-        : Element.fromJson(json['element_factor'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementFactor'] as Map<String, dynamic>),
     net: json['net'] == null
         ? null
         : Money.fromJson(json['net'] as Map<String, dynamic>),
@@ -1175,7 +1172,7 @@ ExplanationOfBenefit_AddItem _$ExplanationOfBenefit_AddItemFromJson(
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     noteNumber: (json['noteNumber'] as List)?.map((e) => e as int)?.toList(),
-    element_noteNumber: (json['element_noteNumber'] as List)
+    elementNoteNumber: (json['elementNoteNumber'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -1201,20 +1198,20 @@ Map<String, dynamic> _$ExplanationOfBenefit_AddItemToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'itemSequence': instance.itemSequence,
-      'element_itemSequence':
-          instance.element_itemSequence?.map((e) => e?.toJson())?.toList(),
+      'elementItemSequence':
+          instance.elementItemSequence?.map((e) => e?.toJson())?.toList(),
       'detailSequence': instance.detailSequence,
-      'element_detailSequence':
-          instance.element_detailSequence?.map((e) => e?.toJson())?.toList(),
+      'elementDetailSequence':
+          instance.elementDetailSequence?.map((e) => e?.toJson())?.toList(),
       'subDetailSequence': instance.subDetailSequence,
-      'element_subDetailSequence':
-          instance.element_subDetailSequence?.map((e) => e?.toJson())?.toList(),
+      'elementSubDetailSequence':
+          instance.elementSubDetailSequence?.map((e) => e?.toJson())?.toList(),
       'provider': instance.provider?.map((e) => e?.toJson())?.toList(),
       'productOrService': instance.productOrService?.toJson(),
       'modifier': instance.modifier?.map((e) => e?.toJson())?.toList(),
       'programCode': instance.programCode?.map((e) => e?.toJson())?.toList(),
       'servicedDate': instance.servicedDate,
-      'element_servicedDate': instance.element_servicedDate?.toJson(),
+      'elementServicedDate': instance.elementServicedDate?.toJson(),
       'servicedPeriod': instance.servicedPeriod?.toJson(),
       'locationCodeableConcept': instance.locationCodeableConcept?.toJson(),
       'locationAddress': instance.locationAddress?.toJson(),
@@ -1222,13 +1219,13 @@ Map<String, dynamic> _$ExplanationOfBenefit_AddItemToJson(
       'quantity': instance.quantity?.toJson(),
       'unitPrice': instance.unitPrice?.toJson(),
       'factor': instance.factor,
-      'element_factor': instance.element_factor?.toJson(),
+      'elementFactor': instance.elementFactor?.toJson(),
       'net': instance.net?.toJson(),
       'bodySite': instance.bodySite?.toJson(),
       'subSite': instance.subSite?.map((e) => e?.toJson())?.toList(),
       'noteNumber': instance.noteNumber,
-      'element_noteNumber':
-          instance.element_noteNumber?.map((e) => e?.toJson())?.toList(),
+      'elementNoteNumber':
+          instance.elementNoteNumber?.map((e) => e?.toJson())?.toList(),
       'adjudication': instance.adjudication?.map((e) => e?.toJson())?.toList(),
       'detail': instance.detail?.map((e) => e?.toJson())?.toList(),
     };
@@ -1261,14 +1258,14 @@ ExplanationOfBenefit_Detail1 _$ExplanationOfBenefit_Detail1FromJson(
         ? null
         : Money.fromJson(json['unitPrice'] as Map<String, dynamic>),
     factor: (json['factor'] as num)?.toDouble(),
-    element_factor: json['element_factor'] == null
+    elementFactor: json['elementFactor'] == null
         ? null
-        : Element.fromJson(json['element_factor'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementFactor'] as Map<String, dynamic>),
     net: json['net'] == null
         ? null
         : Money.fromJson(json['net'] as Map<String, dynamic>),
     noteNumber: (json['noteNumber'] as List)?.map((e) => e as int)?.toList(),
-    element_noteNumber: (json['element_noteNumber'] as List)
+    elementNoteNumber: (json['elementNoteNumber'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -1299,11 +1296,11 @@ Map<String, dynamic> _$ExplanationOfBenefit_Detail1ToJson(
       'quantity': instance.quantity?.toJson(),
       'unitPrice': instance.unitPrice?.toJson(),
       'factor': instance.factor,
-      'element_factor': instance.element_factor?.toJson(),
+      'elementFactor': instance.elementFactor?.toJson(),
       'net': instance.net?.toJson(),
       'noteNumber': instance.noteNumber,
-      'element_noteNumber':
-          instance.element_noteNumber?.map((e) => e?.toJson())?.toList(),
+      'elementNoteNumber':
+          instance.elementNoteNumber?.map((e) => e?.toJson())?.toList(),
       'adjudication': instance.adjudication?.map((e) => e?.toJson())?.toList(),
       'subDetail': instance.subDetail?.map((e) => e?.toJson())?.toList(),
     };
@@ -1336,14 +1333,14 @@ ExplanationOfBenefit_SubDetail1 _$ExplanationOfBenefit_SubDetail1FromJson(
         ? null
         : Money.fromJson(json['unitPrice'] as Map<String, dynamic>),
     factor: (json['factor'] as num)?.toDouble(),
-    element_factor: json['element_factor'] == null
+    elementFactor: json['elementFactor'] == null
         ? null
-        : Element.fromJson(json['element_factor'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementFactor'] as Map<String, dynamic>),
     net: json['net'] == null
         ? null
         : Money.fromJson(json['net'] as Map<String, dynamic>),
     noteNumber: (json['noteNumber'] as List)?.map((e) => e as int)?.toList(),
-    element_noteNumber: (json['element_noteNumber'] as List)
+    elementNoteNumber: (json['elementNoteNumber'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -1368,11 +1365,11 @@ Map<String, dynamic> _$ExplanationOfBenefit_SubDetail1ToJson(
       'quantity': instance.quantity?.toJson(),
       'unitPrice': instance.unitPrice?.toJson(),
       'factor': instance.factor,
-      'element_factor': instance.element_factor?.toJson(),
+      'elementFactor': instance.elementFactor?.toJson(),
       'net': instance.net?.toJson(),
       'noteNumber': instance.noteNumber,
-      'element_noteNumber':
-          instance.element_noteNumber?.map((e) => e?.toJson())?.toList(),
+      'elementNoteNumber':
+          instance.elementNoteNumber?.map((e) => e?.toJson())?.toList(),
       'adjudication': instance.adjudication?.map((e) => e?.toJson())?.toList(),
     };
 
@@ -1431,9 +1428,9 @@ ExplanationOfBenefit_Payment _$ExplanationOfBenefit_PaymentFromJson(
         : CodeableConcept.fromJson(
             json['adjustmentReason'] as Map<String, dynamic>),
     date: json['date'] as String,
-    element_date: json['element_date'] == null
+    elementDate: json['elementDate'] == null
         ? null
-        : Element.fromJson(json['element_date'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDate'] as Map<String, dynamic>),
     amount: json['amount'] == null
         ? null
         : Money.fromJson(json['amount'] as Map<String, dynamic>),
@@ -1454,7 +1451,7 @@ Map<String, dynamic> _$ExplanationOfBenefit_PaymentToJson(
       'adjustment': instance.adjustment?.toJson(),
       'adjustmentReason': instance.adjustmentReason?.toJson(),
       'date': instance.date,
-      'element_date': instance.element_date?.toJson(),
+      'elementDate': instance.elementDate?.toJson(),
       'amount': instance.amount?.toJson(),
       'identifier': instance.identifier?.toJson(),
     };
@@ -1472,17 +1469,17 @@ ExplanationOfBenefit_ProcessNote _$ExplanationOfBenefit_ProcessNoteFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     number: json['number'] as int,
-    element_number: json['element_number'] == null
+    elementNumber: json['elementNumber'] == null
         ? null
-        : Element.fromJson(json['element_number'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementNumber'] as Map<String, dynamic>),
     type: json['type'] as String,
-    element_type: json['element_type'] == null
+    elementType: json['elementType'] == null
         ? null
-        : Element.fromJson(json['element_type'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
     text: json['text'] as String,
-    element_text: json['element_text'] == null
+    elementText: json['elementText'] == null
         ? null
-        : Element.fromJson(json['element_text'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementText'] as Map<String, dynamic>),
     language: json['language'] == null
         ? null
         : CodeableConcept.fromJson(json['language'] as Map<String, dynamic>),
@@ -1497,11 +1494,11 @@ Map<String, dynamic> _$ExplanationOfBenefit_ProcessNoteToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'number': instance.number,
-      'element_number': instance.element_number?.toJson(),
+      'elementNumber': instance.elementNumber?.toJson(),
       'type': instance.type,
-      'element_type': instance.element_type?.toJson(),
+      'elementType': instance.elementType?.toJson(),
       'text': instance.text,
-      'element_text': instance.element_text?.toJson(),
+      'elementText': instance.elementText?.toJson(),
       'language': instance.language?.toJson(),
     };
 
@@ -1521,17 +1518,17 @@ ExplanationOfBenefit_BenefitBalance
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     excluded: json['excluded'] as bool,
-    element_excluded: json['element_excluded'] == null
+    elementExcluded: json['elementExcluded'] == null
         ? null
-        : Element.fromJson(json['element_excluded'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementExcluded'] as Map<String, dynamic>),
     name: json['name'] as String,
-    element_name: json['element_name'] == null
+    elementName: json['elementName'] == null
         ? null
-        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
     description: json['description'] as String,
-    element_description: json['element_description'] == null
+    elementDescription: json['elementDescription'] == null
         ? null
-        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
     network: json['network'] == null
         ? null
         : CodeableConcept.fromJson(json['network'] as Map<String, dynamic>),
@@ -1559,11 +1556,11 @@ Map<String, dynamic> _$ExplanationOfBenefit_BenefitBalanceToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'category': instance.category?.toJson(),
       'excluded': instance.excluded,
-      'element_excluded': instance.element_excluded?.toJson(),
+      'elementExcluded': instance.elementExcluded?.toJson(),
       'name': instance.name,
-      'element_name': instance.element_name?.toJson(),
+      'elementName': instance.elementName?.toJson(),
       'description': instance.description,
-      'element_description': instance.element_description?.toJson(),
+      'elementDescription': instance.elementDescription?.toJson(),
       'network': instance.network?.toJson(),
       'unit': instance.unit?.toJson(),
       'term': instance.term?.toJson(),
@@ -1586,23 +1583,23 @@ ExplanationOfBenefit_Financial _$ExplanationOfBenefit_FinancialFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     allowedUnsignedInt: json['allowedUnsignedInt'] as int,
-    element_allowedUnsignedInt: json['element_allowedUnsignedInt'] == null
+    elementAllowedUnsignedInt: json['elementAllowedUnsignedInt'] == null
         ? null
         : Element.fromJson(
-            json['element_allowedUnsignedInt'] as Map<String, dynamic>),
+            json['elementAllowedUnsignedInt'] as Map<String, dynamic>),
     allowedString: json['allowedString'] as String,
-    element_allowedString: json['element_allowedString'] == null
+    elementAllowedString: json['elementAllowedString'] == null
         ? null
         : Element.fromJson(
-            json['element_allowedString'] as Map<String, dynamic>),
+            json['elementAllowedString'] as Map<String, dynamic>),
     allowedMoney: json['allowedMoney'] == null
         ? null
         : Money.fromJson(json['allowedMoney'] as Map<String, dynamic>),
     usedUnsignedInt: json['usedUnsignedInt'] as int,
-    element_usedUnsignedInt: json['element_usedUnsignedInt'] == null
+    elementUsedUnsignedInt: json['elementUsedUnsignedInt'] == null
         ? null
         : Element.fromJson(
-            json['element_usedUnsignedInt'] as Map<String, dynamic>),
+            json['elementUsedUnsignedInt'] as Map<String, dynamic>),
     usedMoney: json['usedMoney'] == null
         ? null
         : Money.fromJson(json['usedMoney'] as Map<String, dynamic>),
@@ -1618,12 +1615,11 @@ Map<String, dynamic> _$ExplanationOfBenefit_FinancialToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'type': instance.type?.toJson(),
       'allowedUnsignedInt': instance.allowedUnsignedInt,
-      'element_allowedUnsignedInt':
-          instance.element_allowedUnsignedInt?.toJson(),
+      'elementAllowedUnsignedInt': instance.elementAllowedUnsignedInt?.toJson(),
       'allowedString': instance.allowedString,
-      'element_allowedString': instance.element_allowedString?.toJson(),
+      'elementAllowedString': instance.elementAllowedString?.toJson(),
       'allowedMoney': instance.allowedMoney?.toJson(),
       'usedUnsignedInt': instance.usedUnsignedInt,
-      'element_usedUnsignedInt': instance.element_usedUnsignedInt?.toJson(),
+      'elementUsedUnsignedInt': instance.elementUsedUnsignedInt?.toJson(),
       'usedMoney': instance.usedMoney?.toJson(),
     };

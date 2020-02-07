@@ -16,20 +16,20 @@ NutritionOrder _$NutritionOrderFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -48,33 +48,33 @@ NutritionOrder _$NutritionOrderFromJson(Map<String, dynamic> json) {
         ?.toList(),
     instantiatesUri:
         (json['instantiatesUri'] as List)?.map((e) => e as String)?.toList(),
-    element_instantiatesUri: (json['element_instantiatesUri'] as List)
+    elementInstantiatesUri: (json['elementInstantiatesUri'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     instantiates:
         (json['instantiates'] as List)?.map((e) => e as String)?.toList(),
-    element_instantiates: (json['element_instantiates'] as List)
+    elementInstantiates: (json['elementInstantiates'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     intent: json['intent'] as String,
-    element_intent: json['element_intent'] == null
+    elementIntent: json['elementIntent'] == null
         ? null
-        : Element.fromJson(json['element_intent'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementIntent'] as Map<String, dynamic>),
     encounter: json['encounter'] == null
         ? null
         : Reference.fromJson(json['encounter'] as Map<String, dynamic>),
     dateTime: json['dateTime'] == null
         ? null
         : DateTime.parse(json['dateTime'] as String),
-    element_dateTime: json['element_dateTime'] == null
+    elementDateTime: json['elementDateTime'] == null
         ? null
-        : Element.fromJson(json['element_dateTime'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDateTime'] as Map<String, dynamic>),
     orderer: json['orderer'] == null
         ? null
         : Reference.fromJson(json['orderer'] as Map<String, dynamic>),
@@ -117,9 +117,9 @@ Map<String, dynamic> _$NutritionOrderToJson(NutritionOrder instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -128,19 +128,19 @@ Map<String, dynamic> _$NutritionOrderToJson(NutritionOrder instance) =>
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'instantiatesCanonical': instance.instantiatesCanonical,
       'instantiatesUri': instance.instantiatesUri,
-      'element_instantiatesUri':
-          instance.element_instantiatesUri?.map((e) => e?.toJson())?.toList(),
+      'elementInstantiatesUri':
+          instance.elementInstantiatesUri?.map((e) => e?.toJson())?.toList(),
       'instantiates': instance.instantiates,
-      'element_instantiates':
-          instance.element_instantiates?.map((e) => e?.toJson())?.toList(),
+      'elementInstantiates':
+          instance.elementInstantiates?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'intent': instance.intent,
-      'element_intent': instance.element_intent?.toJson(),
+      'elementIntent': instance.elementIntent?.toJson(),
       'patient': instance.patient?.toJson(),
       'encounter': instance.encounter?.toJson(),
       'dateTime': instance.dateTime?.toIso8601String(),
-      'element_dateTime': instance.element_dateTime?.toJson(),
+      'elementDateTime': instance.elementDateTime?.toJson(),
       'orderer': instance.orderer?.toJson(),
       'allergyIntolerance':
           instance.allergyIntolerance?.map((e) => e?.toJson())?.toList(),
@@ -191,9 +191,9 @@ NutritionOrder_OralDiet _$NutritionOrder_OralDietFromJson(
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     instruction: json['instruction'] as String,
-    element_instruction: json['element_instruction'] == null
+    elementInstruction: json['elementInstruction'] == null
         ? null
-        : Element.fromJson(json['element_instruction'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementInstruction'] as Map<String, dynamic>),
   );
 }
 
@@ -211,7 +211,7 @@ Map<String, dynamic> _$NutritionOrder_OralDietToJson(
       'fluidConsistencyType':
           instance.fluidConsistencyType?.map((e) => e?.toJson())?.toList(),
       'instruction': instance.instruction,
-      'element_instruction': instance.element_instruction?.toJson(),
+      'elementInstruction': instance.elementInstruction?.toJson(),
     };
 
 NutritionOrder_Nutrient _$NutritionOrder_NutrientFromJson(
@@ -294,9 +294,9 @@ NutritionOrder_Supplement _$NutritionOrder_SupplementFromJson(
         ? null
         : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     productName: json['productName'] as String,
-    element_productName: json['element_productName'] == null
+    elementProductName: json['elementProductName'] == null
         ? null
-        : Element.fromJson(json['element_productName'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementProductName'] as Map<String, dynamic>),
     schedule: (json['schedule'] as List)
         ?.map((e) =>
             e == null ? null : Timing.fromJson(e as Map<String, dynamic>))
@@ -305,9 +305,9 @@ NutritionOrder_Supplement _$NutritionOrder_SupplementFromJson(
         ? null
         : Quantity.fromJson(json['quantity'] as Map<String, dynamic>),
     instruction: json['instruction'] as String,
-    element_instruction: json['element_instruction'] == null
+    elementInstruction: json['elementInstruction'] == null
         ? null
-        : Element.fromJson(json['element_instruction'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementInstruction'] as Map<String, dynamic>),
   );
 }
 
@@ -320,11 +320,11 @@ Map<String, dynamic> _$NutritionOrder_SupplementToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'type': instance.type?.toJson(),
       'productName': instance.productName,
-      'element_productName': instance.element_productName?.toJson(),
+      'elementProductName': instance.elementProductName?.toJson(),
       'schedule': instance.schedule?.map((e) => e?.toJson())?.toList(),
       'quantity': instance.quantity?.toJson(),
       'instruction': instance.instruction,
-      'element_instruction': instance.element_instruction?.toJson(),
+      'elementInstruction': instance.elementInstruction?.toJson(),
     };
 
 NutritionOrder_EnteralFormula _$NutritionOrder_EnteralFormulaFromJson(
@@ -344,20 +344,19 @@ NutritionOrder_EnteralFormula _$NutritionOrder_EnteralFormulaFromJson(
         : CodeableConcept.fromJson(
             json['baseFormulaType'] as Map<String, dynamic>),
     baseFormulaProductName: json['baseFormulaProductName'] as String,
-    element_baseFormulaProductName:
-        json['element_baseFormulaProductName'] == null
-            ? null
-            : Element.fromJson(
-                json['element_baseFormulaProductName'] as Map<String, dynamic>),
+    elementBaseFormulaProductName: json['elementBaseFormulaProductName'] == null
+        ? null
+        : Element.fromJson(
+            json['elementBaseFormulaProductName'] as Map<String, dynamic>),
     additiveType: json['additiveType'] == null
         ? null
         : CodeableConcept.fromJson(
             json['additiveType'] as Map<String, dynamic>),
     additiveProductName: json['additiveProductName'] as String,
-    element_additiveProductName: json['element_additiveProductName'] == null
+    elementAdditiveProductName: json['elementAdditiveProductName'] == null
         ? null
         : Element.fromJson(
-            json['element_additiveProductName'] as Map<String, dynamic>),
+            json['elementAdditiveProductName'] as Map<String, dynamic>),
     caloricDensity: json['caloricDensity'] == null
         ? null
         : Quantity.fromJson(json['caloricDensity'] as Map<String, dynamic>),
@@ -374,10 +373,10 @@ NutritionOrder_EnteralFormula _$NutritionOrder_EnteralFormulaFromJson(
         ? null
         : Quantity.fromJson(json['maxVolumeToDeliver'] as Map<String, dynamic>),
     administrationInstruction: json['administrationInstruction'] as String,
-    element_administrationInstruction:
-        json['element_administrationInstruction'] == null
+    elementAdministrationInstruction:
+        json['elementAdministrationInstruction'] == null
             ? null
-            : Element.fromJson(json['element_administrationInstruction']
+            : Element.fromJson(json['elementAdministrationInstruction']
                 as Map<String, dynamic>),
   );
 }
@@ -391,20 +390,20 @@ Map<String, dynamic> _$NutritionOrder_EnteralFormulaToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'baseFormulaType': instance.baseFormulaType?.toJson(),
       'baseFormulaProductName': instance.baseFormulaProductName,
-      'element_baseFormulaProductName':
-          instance.element_baseFormulaProductName?.toJson(),
+      'elementBaseFormulaProductName':
+          instance.elementBaseFormulaProductName?.toJson(),
       'additiveType': instance.additiveType?.toJson(),
       'additiveProductName': instance.additiveProductName,
-      'element_additiveProductName':
-          instance.element_additiveProductName?.toJson(),
+      'elementAdditiveProductName':
+          instance.elementAdditiveProductName?.toJson(),
       'caloricDensity': instance.caloricDensity?.toJson(),
       'routeofAdministration': instance.routeofAdministration?.toJson(),
       'administration':
           instance.administration?.map((e) => e?.toJson())?.toList(),
       'maxVolumeToDeliver': instance.maxVolumeToDeliver?.toJson(),
       'administrationInstruction': instance.administrationInstruction,
-      'element_administrationInstruction':
-          instance.element_administrationInstruction?.toJson(),
+      'elementAdministrationInstruction':
+          instance.elementAdministrationInstruction?.toJson(),
     };
 
 NutritionOrder_Administration _$NutritionOrder_AdministrationFromJson(

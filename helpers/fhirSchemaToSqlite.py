@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import json
+import re
 
 #makes first letter of word lowercase
 def lowcc(string):
@@ -100,6 +101,33 @@ with open('fhir.schema.json', encoding='utf8') as json_file:
 sqlCode = ''
 
 definitions = schema['definitions']
+
+def rem(string):
+    if(string == 'Class'):
+        return('Classs')
+    if(string == 'Extends'):
+        return('Extend')
+    if(string == 'For'):
+        return('Fore')
+    if(string == 'Assert'):
+        return('Asserts')
+    if(string == "List"):
+        return("Lists")
+    else:
+        return(string)  
+
+temp = ''
+imports = ''
+for table in definitions:
+    if('properties' in definitions[table] and str(table) != 'ResourceList' and '_' not in table):
+#        imports = ''.join([imports, "import 'package:flutter_fhir/class/", lowcc(rem(table)), ".dart';\n"])
+        temp = ''.join([temp, "if(type == '", rem(table), "') return (new ", rem(table), '.fromJson(json));\n'])
+
+#temp = ''.join([imports, '\ndynamic ResourceList(String type, Map<String, dynamic> info) {\n', temp, '}'])
+        
+with open("temp.dart", "w", encoding="utf-8") as f:
+    f.write(temp)
+f.close()
 
 #look at types to see what lists of nested objects are only referenced from one
 # other table
@@ -310,16 +338,16 @@ for val in bridgeTables:
     sqlCode = ''.join([sqlCode, 
                        '\nCREATE TABLE ', val.replace('_*_', '_'), '(\n',
                        '\tid TEXT PRIMARY KEY,\n',
-                       '\t', val.split('_*_')[0] + '_' + val.split('_*_')[1] + 'Id TEXT,\n',
+                       '\t', val.split('_*_')[0] + upcc(val.split('_*_')[1]) + 'Id TEXT,\n',
                        '\t', val.split('_*_')[2] + 'Id TEXT,\n\n',
-                       '\tFOREIGN KEY (', val.split('_*_')[0] + '_' + val.split('_*_')[1] + 'Id)\n',
+                       '\tFOREIGN KEY (', val.split('_*_')[0] + upcc(val.split('_*_')[1]) + 'Id)\n',
                        '\t\tREFERENCES ', sqlStrings(val.split('_*_')[0]), ' (id)\n',
                        '\t\t\tON DELETE CASCADE',
                        '\n\t\t\tON UPDATE NO ACTION,\n'
                        '\tFOREIGN KEY (', val.split('_*_')[2] + 'Id)\n',
                        '\t\tREFERENCES ', sqlStrings(val.split('_*_')[2]), ' (id)\n',
                        '\t\t\tON DELETE CASCADE',
-                       '\n\t\t\tON UPDATE NO ACTION,\n'
+                       '\n\t\t\tON UPDATE NO ACTION\n'
                        ');\n'])
 
 for key, val in enums.items():
@@ -337,7 +365,10 @@ for key, val in enums.items():
                         '\t\t\tON DELETE CASCADE',
                         '\n\t\t\tON UPDATE NO ACTION\n'
                         ');\n'])
-        
+    
+
+sqlCode = re.sub(r',(?=\s--.*\n\n\))', '', sqlCode)
+
 #write it to a file
 with open("sqliteFhirScript.sql", "w", encoding="utf-8") as f:
     f.write(sqlCode)

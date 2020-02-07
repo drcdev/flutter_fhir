@@ -37,13 +37,13 @@ class NutritionOrder {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -56,7 +56,7 @@ class NutritionOrder {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -96,7 +96,7 @@ class NutritionOrder {
   List<String> instantiatesUri;
 
   //  Extensions for instantiatesUri
-  List<Element> element_instantiatesUri;
+  List<Element> elementInstantiatesUri;
 
   //  The URL pointing to a protocol, guideline, orderset or other
   // definition that is adhered to in whole or in part by this
@@ -104,20 +104,20 @@ class NutritionOrder {
   List<String> instantiates;
 
   //  Extensions for instantiates
-  List<Element> element_instantiates;
+  List<Element> elementInstantiates;
 
   //  The workflow status of the nutrition order/request.
   String status;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  Indicates the level of authority/intentionality associated with the
   // NutrionOrder and where the request fits into the workflow chain.
   String intent;
 
   //  Extensions for intent
-  Element element_intent;
+  Element elementIntent;
 
   //  The person (patient) who needs the nutrition order for an oral diet,
   // nutritional supplement and/or enteral or formula feeding.
@@ -131,7 +131,7 @@ class NutritionOrder {
   DateTime dateTime;
 
   //  Extensions for dateTime
-  Element element_dateTime;
+  Element elementDateTime;
 
   //  The practitioner that holds legal responsibility for ordering the
   // diet, nutritional supplement, or formula feedings.
@@ -180,9 +180,9 @@ NutritionOrder(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -190,16 +190,16 @@ NutritionOrder(
     this.identifier,
     this.instantiatesCanonical,
     this.instantiatesUri,
-    this.element_instantiatesUri,
+    this.elementInstantiatesUri,
     this.instantiates,
-    this.element_instantiates,
+    this.elementInstantiates,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.intent,
-    this.element_intent,
+    this.elementIntent,
     this.encounter,
     this.dateTime,
-    this.element_dateTime,
+    this.elementDateTime,
     this.orderer,
     this.allergyIntolerance,
     this.foodPreferenceModifier,
@@ -269,7 +269,7 @@ class NutritionOrder_OralDiet {
   String instruction;
 
   //  Extensions for instruction
-  Element element_instruction;
+  Element elementInstruction;
 
 NutritionOrder_OralDiet(
   {this.id,
@@ -281,7 +281,7 @@ NutritionOrder_OralDiet(
     this.texture,
     this.fluidConsistencyType,
     this.instruction,
-    this.element_instruction
+    this.elementInstruction
     });
 
   factory NutritionOrder_OralDiet.fromJson(Map<String, dynamic> json) => _$NutritionOrder_OralDietFromJson(json);
@@ -422,7 +422,7 @@ class NutritionOrder_Supplement {
   String productName;
 
   //  Extensions for productName
-  Element element_productName;
+  Element elementProductName;
 
   //  The time period and frequency at which the supplement(s) should be
   // given.  The supplement should be given for the combination of all
@@ -437,7 +437,7 @@ class NutritionOrder_Supplement {
   String instruction;
 
   //  Extensions for instruction
-  Element element_instruction;
+  Element elementInstruction;
 
 NutritionOrder_Supplement(
   {this.id,
@@ -445,11 +445,11 @@ NutritionOrder_Supplement(
     this.modifierExtension,
     this.type,
     this.productName,
-    this.element_productName,
+    this.elementProductName,
     this.schedule,
     this.quantity,
     this.instruction,
-    this.element_instruction
+    this.elementInstruction
     });
 
   factory NutritionOrder_Supplement.fromJson(Map<String, dynamic> json) => _$NutritionOrder_SupplementFromJson(json);
@@ -494,7 +494,7 @@ class NutritionOrder_EnteralFormula {
   String baseFormulaProductName;
 
   //  Extensions for baseFormulaProductName
-  Element element_baseFormulaProductName;
+  Element elementBaseFormulaProductName;
 
   //  Indicates the type of modular component such as protein, carbohydrate,
   // fat or fiber to be provided in addition to or mixed with the base
@@ -506,7 +506,7 @@ class NutritionOrder_EnteralFormula {
   String additiveProductName;
 
   //  Extensions for additiveProductName
-  Element element_additiveProductName;
+  Element elementAdditiveProductName;
 
   //  The amount of energy (calories) that the formula should provide per
   // specified volume, typically per mL or fluid oz.  For example, an infant
@@ -535,7 +535,7 @@ class NutritionOrder_EnteralFormula {
   String administrationInstruction;
 
   //  Extensions for administrationInstruction
-  Element element_administrationInstruction;
+  Element elementAdministrationInstruction;
 
 NutritionOrder_EnteralFormula(
   {this.id,
@@ -543,16 +543,16 @@ NutritionOrder_EnteralFormula(
     this.modifierExtension,
     this.baseFormulaType,
     this.baseFormulaProductName,
-    this.element_baseFormulaProductName,
+    this.elementBaseFormulaProductName,
     this.additiveType,
     this.additiveProductName,
-    this.element_additiveProductName,
+    this.elementAdditiveProductName,
     this.caloricDensity,
     this.routeofAdministration,
     this.administration,
     this.maxVolumeToDeliver,
     this.administrationInstruction,
-    this.element_administrationInstruction
+    this.elementAdministrationInstruction
     });
 
   factory NutritionOrder_EnteralFormula.fromJson(Map<String, dynamic> json) => _$NutritionOrder_EnteralFormulaFromJson(json);

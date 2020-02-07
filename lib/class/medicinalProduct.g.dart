@@ -18,20 +18,20 @@ MedicinalProduct _$MedicinalProductFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -66,7 +66,7 @@ MedicinalProduct _$MedicinalProductFromJson(Map<String, dynamic> json) {
             json['additionalMonitoringIndicator'] as Map<String, dynamic>),
     specialMeasures:
         (json['specialMeasures'] as List)?.map((e) => e as String)?.toList(),
-    element_specialMeasures: (json['element_specialMeasures'] as List)
+    elementSpecialMeasures: (json['elementSpecialMeasures'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -133,9 +133,9 @@ Map<String, dynamic> _$MedicinalProductToJson(MedicinalProduct instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -150,8 +150,8 @@ Map<String, dynamic> _$MedicinalProductToJson(MedicinalProduct instance) =>
       'additionalMonitoringIndicator':
           instance.additionalMonitoringIndicator?.toJson(),
       'specialMeasures': instance.specialMeasures,
-      'element_specialMeasures':
-          instance.element_specialMeasures?.map((e) => e?.toJson())?.toList(),
+      'elementSpecialMeasures':
+          instance.elementSpecialMeasures?.map((e) => e?.toJson())?.toList(),
       'paediatricUseIndicator': instance.paediatricUseIndicator?.toJson(),
       'productClassification':
           instance.productClassification?.map((e) => e?.toJson())?.toList(),
@@ -190,9 +190,9 @@ MedicinalProduct_Name _$MedicinalProduct_NameFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     productName: json['productName'] as String,
-    element_productName: json['element_productName'] == null
+    elementProductName: json['elementProductName'] == null
         ? null
-        : Element.fromJson(json['element_productName'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementProductName'] as Map<String, dynamic>),
     namePart: (json['namePart'] as List)
         ?.map((e) => e == null
             ? null
@@ -215,7 +215,7 @@ Map<String, dynamic> _$MedicinalProduct_NameToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'productName': instance.productName,
-      'element_productName': instance.element_productName?.toJson(),
+      'elementProductName': instance.elementProductName?.toJson(),
       'namePart': instance.namePart?.map((e) => e?.toJson())?.toList(),
       'countryLanguage':
           instance.countryLanguage?.map((e) => e?.toJson())?.toList(),
@@ -237,9 +237,9 @@ MedicinalProduct_NamePart _$MedicinalProduct_NamePartFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     part: json['part'] as String,
-    element_part: json['element_part'] == null
+    elementPart: json['elementPart'] == null
         ? null
-        : Element.fromJson(json['element_part'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPart'] as Map<String, dynamic>),
   );
 }
 
@@ -251,7 +251,7 @@ Map<String, dynamic> _$MedicinalProduct_NamePartToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'part': instance.part,
-      'element_part': instance.element_part?.toJson(),
+      'elementPart': instance.elementPart?.toJson(),
       'type': instance.type?.toJson(),
     };
 
@@ -316,10 +316,10 @@ MedicinalProduct_ManufacturingBusinessOperation
     effectiveDate: json['effectiveDate'] == null
         ? null
         : DateTime.parse(json['effectiveDate'] as String),
-    element_effectiveDate: json['element_effectiveDate'] == null
+    elementEffectiveDate: json['elementEffectiveDate'] == null
         ? null
         : Element.fromJson(
-            json['element_effectiveDate'] as Map<String, dynamic>),
+            json['elementEffectiveDate'] as Map<String, dynamic>),
     confidentialityIndicator: json['confidentialityIndicator'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -345,7 +345,7 @@ Map<String, dynamic> _$MedicinalProduct_ManufacturingBusinessOperationToJson(
       'authorisationReferenceNumber':
           instance.authorisationReferenceNumber?.toJson(),
       'effectiveDate': instance.effectiveDate?.toIso8601String(),
-      'element_effectiveDate': instance.element_effectiveDate?.toJson(),
+      'elementEffectiveDate': instance.elementEffectiveDate?.toJson(),
       'confidentialityIndicator': instance.confidentialityIndicator?.toJson(),
       'manufacturer': instance.manufacturer?.map((e) => e?.toJson())?.toList(),
       'regulator': instance.regulator?.toJson(),
@@ -385,9 +385,9 @@ MedicinalProduct_SpecialDesignation
         ? null
         : CodeableConcept.fromJson(json['status'] as Map<String, dynamic>),
     date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
-    element_date: json['element_date'] == null
+    elementDate: json['elementDate'] == null
         ? null
-        : Element.fromJson(json['element_date'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDate'] as Map<String, dynamic>),
     species: json['species'] == null
         ? null
         : CodeableConcept.fromJson(json['species'] as Map<String, dynamic>),
@@ -408,6 +408,6 @@ Map<String, dynamic> _$MedicinalProduct_SpecialDesignationToJson(
       'indicationReference': instance.indicationReference?.toJson(),
       'status': instance.status?.toJson(),
       'date': instance.date?.toIso8601String(),
-      'element_date': instance.element_date?.toJson(),
+      'elementDate': instance.elementDate?.toJson(),
       'species': instance.species?.toJson(),
     };

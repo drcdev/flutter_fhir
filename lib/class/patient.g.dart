@@ -13,20 +13,20 @@ Patient _$PatientFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -41,9 +41,9 @@ Patient _$PatientFromJson(Map<String, dynamic> json) {
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     active: json['active'] as bool,
-    element_active: json['element_active'] == null
+    elementActive: json['elementActive'] == null
         ? null
-        : Element.fromJson(json['element_active'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementActive'] as Map<String, dynamic>),
     name: (json['name'] as List)
         ?.map((e) =>
             e == null ? null : HumanName.fromJson(e as Map<String, dynamic>))
@@ -53,25 +53,23 @@ Patient _$PatientFromJson(Map<String, dynamic> json) {
             e == null ? null : ContactPoint.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     gender: json['gender'] as String,
-    element_gender: json['element_gender'] == null
+    elementGender: json['elementGender'] == null
         ? null
-        : Element.fromJson(json['element_gender'] as Map<String, dynamic>),
-    birthDate: json['birthDate'] == null
+        : Element.fromJson(json['elementGender'] as Map<String, dynamic>),
+    birthDate: json['birthDate'] as String,
+    elementBirthDate: json['elementBirthDate'] == null
         ? null
-        : DateTime.parse(json['birthDate'] as String),
-    element_birthDate: json['element_birthDate'] == null
-        ? null
-        : Element.fromJson(json['element_birthDate'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementBirthDate'] as Map<String, dynamic>),
     deceasedBoolean: json['deceasedBoolean'] as bool,
-    element_deceasedBoolean: json['element_deceasedBoolean'] == null
+    elementDeceasedBoolean: json['elementDeceasedBoolean'] == null
         ? null
         : Element.fromJson(
-            json['element_deceasedBoolean'] as Map<String, dynamic>),
+            json['elementDeceasedBoolean'] as Map<String, dynamic>),
     deceasedDateTime: json['deceasedDateTime'] as String,
-    element_deceasedDateTime: json['element_deceasedDateTime'] == null
+    elementDeceasedDateTime: json['elementDeceasedDateTime'] == null
         ? null
         : Element.fromJson(
-            json['element_deceasedDateTime'] as Map<String, dynamic>),
+            json['elementDeceasedDateTime'] as Map<String, dynamic>),
     address: (json['address'] as List)
         ?.map((e) =>
             e == null ? null : Address.fromJson(e as Map<String, dynamic>))
@@ -81,15 +79,15 @@ Patient _$PatientFromJson(Map<String, dynamic> json) {
         : CodeableConcept.fromJson(
             json['maritalStatus'] as Map<String, dynamic>),
     multipleBirthBoolean: json['multipleBirthBoolean'] as bool,
-    element_multipleBirthBoolean: json['element_multipleBirthBoolean'] == null
+    elementMultipleBirthBoolean: json['elementMultipleBirthBoolean'] == null
         ? null
         : Element.fromJson(
-            json['element_multipleBirthBoolean'] as Map<String, dynamic>),
+            json['elementMultipleBirthBoolean'] as Map<String, dynamic>),
     multipleBirthInteger: json['multipleBirthInteger'] as int,
-    element_multipleBirthInteger: json['element_multipleBirthInteger'] == null
+    elementMultipleBirthInteger: json['elementMultipleBirthInteger'] == null
         ? null
         : Element.fromJson(
-            json['element_multipleBirthInteger'] as Map<String, dynamic>),
+            json['elementMultipleBirthInteger'] as Map<String, dynamic>),
     photo: (json['photo'] as List)
         ?.map((e) =>
             e == null ? null : Attachment.fromJson(e as Map<String, dynamic>))
@@ -123,9 +121,9 @@ Map<String, dynamic> _$PatientToJson(Patient instance) => <String, dynamic>{
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -133,25 +131,25 @@ Map<String, dynamic> _$PatientToJson(Patient instance) => <String, dynamic>{
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'active': instance.active,
-      'element_active': instance.element_active?.toJson(),
+      'elementActive': instance.elementActive?.toJson(),
       'name': instance.name?.map((e) => e?.toJson())?.toList(),
       'telecom': instance.telecom?.map((e) => e?.toJson())?.toList(),
       'gender': instance.gender,
-      'element_gender': instance.element_gender?.toJson(),
-      'birthDate': instance.birthDate?.toIso8601String(),
-      'element_birthDate': instance.element_birthDate?.toJson(),
+      'elementGender': instance.elementGender?.toJson(),
+      'birthDate': instance.birthDate,
+      'elementBirthDate': instance.elementBirthDate?.toJson(),
       'deceasedBoolean': instance.deceasedBoolean,
-      'element_deceasedBoolean': instance.element_deceasedBoolean?.toJson(),
+      'elementDeceasedBoolean': instance.elementDeceasedBoolean?.toJson(),
       'deceasedDateTime': instance.deceasedDateTime,
-      'element_deceasedDateTime': instance.element_deceasedDateTime?.toJson(),
+      'elementDeceasedDateTime': instance.elementDeceasedDateTime?.toJson(),
       'address': instance.address?.map((e) => e?.toJson())?.toList(),
       'maritalStatus': instance.maritalStatus?.toJson(),
       'multipleBirthBoolean': instance.multipleBirthBoolean,
-      'element_multipleBirthBoolean':
-          instance.element_multipleBirthBoolean?.toJson(),
+      'elementMultipleBirthBoolean':
+          instance.elementMultipleBirthBoolean?.toJson(),
       'multipleBirthInteger': instance.multipleBirthInteger,
-      'element_multipleBirthInteger':
-          instance.element_multipleBirthInteger?.toJson(),
+      'elementMultipleBirthInteger':
+          instance.elementMultipleBirthInteger?.toJson(),
       'photo': instance.photo?.map((e) => e?.toJson())?.toList(),
       'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
       'communication':
@@ -189,9 +187,9 @@ Patient_Contact _$Patient_ContactFromJson(Map<String, dynamic> json) {
         ? null
         : Address.fromJson(json['address'] as Map<String, dynamic>),
     gender: json['gender'] as String,
-    element_gender: json['element_gender'] == null
+    elementGender: json['elementGender'] == null
         ? null
-        : Element.fromJson(json['element_gender'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementGender'] as Map<String, dynamic>),
     organization: json['organization'] == null
         ? null
         : Reference.fromJson(json['organization'] as Map<String, dynamic>),
@@ -212,7 +210,7 @@ Map<String, dynamic> _$Patient_ContactToJson(Patient_Contact instance) =>
       'telecom': instance.telecom?.map((e) => e?.toJson())?.toList(),
       'address': instance.address?.toJson(),
       'gender': instance.gender,
-      'element_gender': instance.element_gender?.toJson(),
+      'elementGender': instance.elementGender?.toJson(),
       'organization': instance.organization?.toJson(),
       'period': instance.period?.toJson(),
     };
@@ -233,9 +231,9 @@ Patient_Communication _$Patient_CommunicationFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     preferred: json['preferred'] as bool,
-    element_preferred: json['element_preferred'] == null
+    elementPreferred: json['elementPreferred'] == null
         ? null
-        : Element.fromJson(json['element_preferred'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPreferred'] as Map<String, dynamic>),
   );
 }
 
@@ -248,7 +246,7 @@ Map<String, dynamic> _$Patient_CommunicationToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'language': instance.language?.toJson(),
       'preferred': instance.preferred,
-      'element_preferred': instance.element_preferred?.toJson(),
+      'elementPreferred': instance.elementPreferred?.toJson(),
     };
 
 Patient_Link _$Patient_LinkFromJson(Map<String, dynamic> json) {
@@ -266,9 +264,9 @@ Patient_Link _$Patient_LinkFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     type: json['type'] as String,
-    element_type: json['element_type'] == null
+    elementType: json['elementType'] == null
         ? null
-        : Element.fromJson(json['element_type'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
   );
 }
 
@@ -280,5 +278,5 @@ Map<String, dynamic> _$Patient_LinkToJson(Patient_Link instance) =>
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'other': instance.other?.toJson(),
       'type': instance.type,
-      'element_type': instance.element_type?.toJson(),
+      'elementType': instance.elementType?.toJson(),
     };

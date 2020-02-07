@@ -1,4 +1,3 @@
-import 'package:flutter_fhir/objects.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/class/reference.dart';
@@ -39,13 +38,13 @@ class Practitioner {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -58,7 +57,7 @@ class Practitioner {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -90,7 +89,7 @@ class Practitioner {
   bool active;
 
   //  Extensions for active
-  Element element_active;
+  Element elementActive;
 
   //  The name(s) associated with the practitioner.
   List<HumanName> name;
@@ -109,13 +108,13 @@ class Practitioner {
   String gender; // <code> enum: male/female/other/unknown;
 
   //  Extensions for gender
-  Element element_gender;
+  Element elementGender;
 
   //  The date of birth for the practitioner.
   String birthDate;
 
   //  Extensions for birthDate
-  Element element_birthDate;
+  Element elementBirthDate;
 
   //  Image of the person.
   List<Attachment> photo;
@@ -133,23 +132,23 @@ Practitioner(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.active,
-    this.element_active,
+    this.elementActive,
     this.name,
     this.telecom,
     this.address,
     this.gender,
-    this.element_gender,
+    this.elementGender,
     this.birthDate,
-    this.element_birthDate,
+    this.elementBirthDate,
     this.photo,
     this.qualification,
     this.communication

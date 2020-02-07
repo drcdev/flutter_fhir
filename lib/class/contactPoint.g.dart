@@ -14,21 +14,21 @@ ContactPoint _$ContactPointFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     system: json['system'] as String,
-    element_system: json['element_system'] == null
+    elementSystem: json['elementSystem'] == null
         ? null
-        : Element.fromJson(json['element_system'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSystem'] as Map<String, dynamic>),
     value: json['value'] as String,
-    element_value: json['element_value'] == null
+    elementValue: json['elementValue'] == null
         ? null
-        : Element.fromJson(json['element_value'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValue'] as Map<String, dynamic>),
     use: json['use'] as String,
-    element_use: json['element_use'] == null
+    elementUse: json['elementUse'] == null
         ? null
-        : Element.fromJson(json['element_use'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementUse'] as Map<String, dynamic>),
     rank: json['rank'] as int,
-    element_rank: json['element_rank'] == null
+    elementRank: json['elementRank'] == null
         ? null
-        : Element.fromJson(json['element_rank'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementRank'] as Map<String, dynamic>),
     period: json['period'] == null
         ? null
         : Period.fromJson(json['period'] as Map<String, dynamic>),
@@ -40,12 +40,12 @@ Map<String, dynamic> _$ContactPointToJson(ContactPoint instance) =>
       'id': instance.id,
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'system': instance.system,
-      'element_system': instance.element_system?.toJson(),
+      'elementSystem': instance.elementSystem?.toJson(),
       'value': instance.value,
-      'element_value': instance.element_value?.toJson(),
+      'elementValue': instance.elementValue?.toJson(),
       'use': instance.use,
-      'element_use': instance.element_use?.toJson(),
+      'elementUse': instance.elementUse?.toJson(),
       'rank': instance.rank,
-      'element_rank': instance.element_rank?.toJson(),
+      'elementRank': instance.elementRank?.toJson(),
       'period': instance.period?.toJson(),
     };

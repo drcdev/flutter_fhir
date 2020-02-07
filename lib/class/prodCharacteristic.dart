@@ -79,7 +79,7 @@ class ProdCharacteristic {
   String shape;
 
   //  Extensions for shape
-  Element element_shape;
+  Element elementShape;
 
   //  Where applicable, the color can be specified An appropriate controlled
   // vocabulary shall be used The term and the term identifier shall be
@@ -87,13 +87,13 @@ class ProdCharacteristic {
   List<String> color;
 
   //  Extensions for color
-  List<Element> element_color;
+  List<Element> elementColor;
 
   //  Where applicable, the imprint can be specified as text.
   List<String> imprint;
 
   //  Extensions for imprint
-  List<Element> element_imprint;
+  List<Element> elementImprint;
 
   //  Where applicable, the image can be provided The format of the image
   // attachment shall be specified by regional implementations.
@@ -115,11 +115,11 @@ ProdCharacteristic(
     this.nominalVolume,
     this.externalDiameter,
     this.shape,
-    this.element_shape,
+    this.elementShape,
     this.color,
-    this.element_color,
+    this.elementColor,
     this.imprint,
-    this.element_imprint,
+    this.elementImprint,
     this.image,
     this.scoring
     });

@@ -16,20 +16,20 @@ MedicationRequest _$MedicationRequestFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -44,36 +44,35 @@ MedicationRequest _$MedicationRequestFromJson(Map<String, dynamic> json) {
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     statusReason: json['statusReason'] == null
         ? null
         : CodeableConcept.fromJson(
             json['statusReason'] as Map<String, dynamic>),
     intent: json['intent'] as String,
-    element_intent: json['element_intent'] == null
+    elementIntent: json['elementIntent'] == null
         ? null
-        : Element.fromJson(json['element_intent'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementIntent'] as Map<String, dynamic>),
     category: (json['category'] as List)
         ?.map((e) => e == null
             ? null
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     priority: json['priority'] as String,
-    element_priority: json['element_priority'] == null
+    elementPriority: json['elementPriority'] == null
         ? null
-        : Element.fromJson(json['element_priority'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPriority'] as Map<String, dynamic>),
     doNotPerform: json['doNotPerform'] as bool,
-    element_doNotPerform: json['element_doNotPerform'] == null
+    elementDoNotPerform: json['elementDoNotPerform'] == null
         ? null
-        : Element.fromJson(
-            json['element_doNotPerform'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDoNotPerform'] as Map<String, dynamic>),
     reportedBoolean: json['reportedBoolean'] as bool,
-    element_reportedBoolean: json['element_reportedBoolean'] == null
+    elementReportedBoolean: json['elementReportedBoolean'] == null
         ? null
         : Element.fromJson(
-            json['element_reportedBoolean'] as Map<String, dynamic>),
+            json['elementReportedBoolean'] as Map<String, dynamic>),
     reportedReference: json['reportedReference'] == null
         ? null
         : Reference.fromJson(json['reportedReference'] as Map<String, dynamic>),
@@ -95,9 +94,9 @@ MedicationRequest _$MedicationRequestFromJson(Map<String, dynamic> json) {
     authoredOn: json['authoredOn'] == null
         ? null
         : DateTime.parse(json['authoredOn'] as String),
-    element_authoredOn: json['element_authoredOn'] == null
+    elementAuthoredOn: json['elementAuthoredOn'] == null
         ? null
-        : Element.fromJson(json['element_authoredOn'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementAuthoredOn'] as Map<String, dynamic>),
     requester: json['requester'] == null
         ? null
         : Reference.fromJson(json['requester'] as Map<String, dynamic>),
@@ -123,14 +122,13 @@ MedicationRequest _$MedicationRequestFromJson(Map<String, dynamic> json) {
     instantiatesCanonical: (json['instantiatesCanonical'] as List)
         ?.map((e) => e as String)
         ?.toList(),
-    element_instantiatesCanonical:
-        (json['element_instantiatesCanonical'] as List)
-            ?.map((e) =>
-                e == null ? null : Element.fromJson(e as Map<String, dynamic>))
-            ?.toList(),
+    elementInstantiatesCanonical: (json['elementInstantiatesCanonical'] as List)
+        ?.map((e) =>
+            e == null ? null : Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     instantiatesUri:
         (json['instantiatesUri'] as List)?.map((e) => e as String)?.toList(),
-    element_instantiatesUri: (json['element_instantiatesUri'] as List)
+    elementInstantiatesUri: (json['elementInstantiatesUri'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -184,9 +182,9 @@ Map<String, dynamic> _$MedicationRequestToJson(MedicationRequest instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -194,17 +192,17 @@ Map<String, dynamic> _$MedicationRequestToJson(MedicationRequest instance) =>
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'statusReason': instance.statusReason?.toJson(),
       'intent': instance.intent,
-      'element_intent': instance.element_intent?.toJson(),
+      'elementIntent': instance.elementIntent?.toJson(),
       'category': instance.category?.map((e) => e?.toJson())?.toList(),
       'priority': instance.priority,
-      'element_priority': instance.element_priority?.toJson(),
+      'elementPriority': instance.elementPriority?.toJson(),
       'doNotPerform': instance.doNotPerform,
-      'element_doNotPerform': instance.element_doNotPerform?.toJson(),
+      'elementDoNotPerform': instance.elementDoNotPerform?.toJson(),
       'reportedBoolean': instance.reportedBoolean,
-      'element_reportedBoolean': instance.element_reportedBoolean?.toJson(),
+      'elementReportedBoolean': instance.elementReportedBoolean?.toJson(),
       'reportedReference': instance.reportedReference?.toJson(),
       'medicationCodeableConcept': instance.medicationCodeableConcept?.toJson(),
       'medicationReference': instance.medicationReference?.toJson(),
@@ -213,7 +211,7 @@ Map<String, dynamic> _$MedicationRequestToJson(MedicationRequest instance) =>
       'supportingInformation':
           instance.supportingInformation?.map((e) => e?.toJson())?.toList(),
       'authoredOn': instance.authoredOn?.toIso8601String(),
-      'element_authoredOn': instance.element_authoredOn?.toJson(),
+      'elementAuthoredOn': instance.elementAuthoredOn?.toJson(),
       'requester': instance.requester?.toJson(),
       'performer': instance.performer?.toJson(),
       'performerType': instance.performerType?.toJson(),
@@ -222,12 +220,12 @@ Map<String, dynamic> _$MedicationRequestToJson(MedicationRequest instance) =>
       'reasonReference':
           instance.reasonReference?.map((e) => e?.toJson())?.toList(),
       'instantiatesCanonical': instance.instantiatesCanonical,
-      'element_instantiatesCanonical': instance.element_instantiatesCanonical
+      'elementInstantiatesCanonical': instance.elementInstantiatesCanonical
           ?.map((e) => e?.toJson())
           ?.toList(),
       'instantiatesUri': instance.instantiatesUri,
-      'element_instantiatesUri':
-          instance.element_instantiatesUri?.map((e) => e?.toJson())?.toList(),
+      'elementInstantiatesUri':
+          instance.elementInstantiatesUri?.map((e) => e?.toJson())?.toList(),
       'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
       'groupIdentifier': instance.groupIdentifier?.toJson(),
       'courseOfTherapyType': instance.courseOfTherapyType?.toJson(),
@@ -266,11 +264,10 @@ MedicationRequest_DispenseRequest _$MedicationRequest_DispenseRequestFromJson(
         ? null
         : Period.fromJson(json['validityPeriod'] as Map<String, dynamic>),
     numberOfRepeatsAllowed: json['numberOfRepeatsAllowed'] as int,
-    element_numberOfRepeatsAllowed:
-        json['element_numberOfRepeatsAllowed'] == null
-            ? null
-            : Element.fromJson(
-                json['element_numberOfRepeatsAllowed'] as Map<String, dynamic>),
+    elementNumberOfRepeatsAllowed: json['elementNumberOfRepeatsAllowed'] == null
+        ? null
+        : Element.fromJson(
+            json['elementNumberOfRepeatsAllowed'] as Map<String, dynamic>),
     quantity: json['quantity'] == null
         ? null
         : Quantity.fromJson(json['quantity'] as Map<String, dynamic>),
@@ -295,8 +292,8 @@ Map<String, dynamic> _$MedicationRequest_DispenseRequestToJson(
       'dispenseInterval': instance.dispenseInterval?.toJson(),
       'validityPeriod': instance.validityPeriod?.toJson(),
       'numberOfRepeatsAllowed': instance.numberOfRepeatsAllowed,
-      'element_numberOfRepeatsAllowed':
-          instance.element_numberOfRepeatsAllowed?.toJson(),
+      'elementNumberOfRepeatsAllowed':
+          instance.elementNumberOfRepeatsAllowed?.toJson(),
       'quantity': instance.quantity?.toJson(),
       'expectedSupplyDuration': instance.expectedSupplyDuration?.toJson(),
       'performer': instance.performer?.toJson(),
@@ -347,10 +344,10 @@ MedicationRequest_Substitution _$MedicationRequest_SubstitutionFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     allowedBoolean: json['allowedBoolean'] as bool,
-    element_allowedBoolean: json['element_allowedBoolean'] == null
+    elementAllowedBoolean: json['elementAllowedBoolean'] == null
         ? null
         : Element.fromJson(
-            json['element_allowedBoolean'] as Map<String, dynamic>),
+            json['elementAllowedBoolean'] as Map<String, dynamic>),
     allowedCodeableConcept: json['allowedCodeableConcept'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -369,7 +366,7 @@ Map<String, dynamic> _$MedicationRequest_SubstitutionToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'allowedBoolean': instance.allowedBoolean,
-      'element_allowedBoolean': instance.element_allowedBoolean?.toJson(),
+      'elementAllowedBoolean': instance.elementAllowedBoolean?.toJson(),
       'allowedCodeableConcept': instance.allowedCodeableConcept?.toJson(),
       'reason': instance.reason?.toJson(),
     };

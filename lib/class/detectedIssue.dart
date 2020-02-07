@@ -34,13 +34,13 @@ class DetectedIssue {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -53,7 +53,7 @@ class DetectedIssue {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -85,7 +85,7 @@ class DetectedIssue {
   String status;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  Identifies the general type of issue identified.
   CodeableConcept code;
@@ -95,7 +95,7 @@ class DetectedIssue {
   String severity; // <code> enum: high/moderate/low;
 
   //  Extensions for severity
-  Element element_severity;
+  Element elementSeverity;
 
   //  Indicates the patient whose record the detected issue is associated
   // with.
@@ -105,7 +105,7 @@ class DetectedIssue {
   String identifiedDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for identifiedDateTime
-  Element element_identifiedDateTime;
+  Element elementIdentifiedDateTime;
 
   //  The date or period when the detected issue was initially identified.
   Period identifiedPeriod;
@@ -128,14 +128,14 @@ class DetectedIssue {
   String detail;
 
   //  Extensions for detail
-  Element element_detail;
+  Element elementDetail;
 
   //  The literature, knowledge-base or similar reference that describes the
   // propensity for the detected issue identified.
   String reference;
 
   //  Extensions for reference
-  Element element_reference;
+  Element elementReference;
 
   //  Indicates an action that has been taken or is committed to reduce or
   // eliminate the likelihood of the risk identified by the detected issue
@@ -147,30 +147,30 @@ DetectedIssue(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.code,
     this.severity,
-    this.element_severity,
+    this.elementSeverity,
     this.patient,
     this.identifiedDateTime,
-    this.element_identifiedDateTime,
+    this.elementIdentifiedDateTime,
     this.identifiedPeriod,
     this.author,
     this.implicated,
     this.evidence,
     this.detail,
-    this.element_detail,
+    this.elementDetail,
     this.reference,
-    this.element_reference,
+    this.elementReference,
     this.mitigation
     });
 
@@ -263,7 +263,7 @@ class DetectedIssue_Mitigation {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  Identifies the practitioner who determined the mitigation and takes
   // responsibility for the mitigation step occurring.
@@ -275,7 +275,7 @@ DetectedIssue_Mitigation(
     this.extension,
     this.modifierExtension,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.author
     });
 

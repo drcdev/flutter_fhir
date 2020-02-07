@@ -14,20 +14,20 @@ SubstanceSpecification _$SubstanceSpecificationFromJson(
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -50,17 +50,17 @@ SubstanceSpecification _$SubstanceSpecificationFromJson(
         ? null
         : CodeableConcept.fromJson(json['domain'] as Map<String, dynamic>),
     description: json['description'] as String,
-    element_description: json['element_description'] == null
+    elementDescription: json['elementDescription'] == null
         ? null
-        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
     source: (json['source'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     comment: json['comment'] as String,
-    element_comment: json['element_comment'] == null
+    elementComment: json['elementComment'] == null
         ? null
-        : Element.fromJson(json['element_comment'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementComment'] as Map<String, dynamic>),
     moiety: (json['moiety'] as List)
         ?.map((e) => e == null
             ? null
@@ -123,9 +123,9 @@ Map<String, dynamic> _$SubstanceSpecificationToJson(
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -136,10 +136,10 @@ Map<String, dynamic> _$SubstanceSpecificationToJson(
       'status': instance.status?.toJson(),
       'domain': instance.domain?.toJson(),
       'description': instance.description,
-      'element_description': instance.element_description?.toJson(),
+      'elementDescription': instance.elementDescription?.toJson(),
       'source': instance.source?.map((e) => e?.toJson())?.toList(),
       'comment': instance.comment,
-      'element_comment': instance.element_comment?.toJson(),
+      'elementComment': instance.elementComment?.toJson(),
       'moiety': instance.moiety?.map((e) => e?.toJson())?.toList(),
       'property': instance.property?.map((e) => e?.toJson())?.toList(),
       'referenceInformation': instance.referenceInformation?.toJson(),
@@ -174,9 +174,9 @@ SubstanceSpecification_Moiety _$SubstanceSpecification_MoietyFromJson(
         ? null
         : Identifier.fromJson(json['identifier'] as Map<String, dynamic>),
     name: json['name'] as String,
-    element_name: json['element_name'] == null
+    elementName: json['elementName'] == null
         ? null
-        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
     stereochemistry: json['stereochemistry'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -186,18 +186,17 @@ SubstanceSpecification_Moiety _$SubstanceSpecification_MoietyFromJson(
         : CodeableConcept.fromJson(
             json['opticalActivity'] as Map<String, dynamic>),
     molecularFormula: json['molecularFormula'] as String,
-    element_molecularFormula: json['element_molecularFormula'] == null
+    elementMolecularFormula: json['elementMolecularFormula'] == null
         ? null
         : Element.fromJson(
-            json['element_molecularFormula'] as Map<String, dynamic>),
+            json['elementMolecularFormula'] as Map<String, dynamic>),
     amountQuantity: json['amountQuantity'] == null
         ? null
         : Quantity.fromJson(json['amountQuantity'] as Map<String, dynamic>),
     amountString: json['amountString'] as String,
-    element_amountString: json['element_amountString'] == null
+    elementAmountString: json['elementAmountString'] == null
         ? null
-        : Element.fromJson(
-            json['element_amountString'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementAmountString'] as Map<String, dynamic>),
   );
 }
 
@@ -211,14 +210,14 @@ Map<String, dynamic> _$SubstanceSpecification_MoietyToJson(
       'role': instance.role?.toJson(),
       'identifier': instance.identifier?.toJson(),
       'name': instance.name,
-      'element_name': instance.element_name?.toJson(),
+      'elementName': instance.elementName?.toJson(),
       'stereochemistry': instance.stereochemistry?.toJson(),
       'opticalActivity': instance.opticalActivity?.toJson(),
       'molecularFormula': instance.molecularFormula,
-      'element_molecularFormula': instance.element_molecularFormula?.toJson(),
+      'elementMolecularFormula': instance.elementMolecularFormula?.toJson(),
       'amountQuantity': instance.amountQuantity?.toJson(),
       'amountString': instance.amountString,
-      'element_amountString': instance.element_amountString?.toJson(),
+      'elementAmountString': instance.elementAmountString?.toJson(),
     };
 
 SubstanceSpecification_Property _$SubstanceSpecification_PropertyFromJson(
@@ -240,9 +239,9 @@ SubstanceSpecification_Property _$SubstanceSpecification_PropertyFromJson(
         ? null
         : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     parameters: json['parameters'] as String,
-    element_parameters: json['element_parameters'] == null
+    elementParameters: json['elementParameters'] == null
         ? null
-        : Element.fromJson(json['element_parameters'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementParameters'] as Map<String, dynamic>),
     definingSubstanceReference: json['definingSubstanceReference'] == null
         ? null
         : Reference.fromJson(
@@ -256,10 +255,9 @@ SubstanceSpecification_Property _$SubstanceSpecification_PropertyFromJson(
         ? null
         : Quantity.fromJson(json['amountQuantity'] as Map<String, dynamic>),
     amountString: json['amountString'] as String,
-    element_amountString: json['element_amountString'] == null
+    elementAmountString: json['elementAmountString'] == null
         ? null
-        : Element.fromJson(
-            json['element_amountString'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementAmountString'] as Map<String, dynamic>),
   );
 }
 
@@ -273,14 +271,14 @@ Map<String, dynamic> _$SubstanceSpecification_PropertyToJson(
       'category': instance.category?.toJson(),
       'code': instance.code?.toJson(),
       'parameters': instance.parameters,
-      'element_parameters': instance.element_parameters?.toJson(),
+      'elementParameters': instance.elementParameters?.toJson(),
       'definingSubstanceReference':
           instance.definingSubstanceReference?.toJson(),
       'definingSubstanceCodeableConcept':
           instance.definingSubstanceCodeableConcept?.toJson(),
       'amountQuantity': instance.amountQuantity?.toJson(),
       'amountString': instance.amountString,
-      'element_amountString': instance.element_amountString?.toJson(),
+      'elementAmountString': instance.elementAmountString?.toJson(),
     };
 
 SubstanceSpecification_Structure _$SubstanceSpecification_StructureFromJson(
@@ -304,16 +302,16 @@ SubstanceSpecification_Structure _$SubstanceSpecification_StructureFromJson(
         : CodeableConcept.fromJson(
             json['opticalActivity'] as Map<String, dynamic>),
     molecularFormula: json['molecularFormula'] as String,
-    element_molecularFormula: json['element_molecularFormula'] == null
+    elementMolecularFormula: json['elementMolecularFormula'] == null
         ? null
         : Element.fromJson(
-            json['element_molecularFormula'] as Map<String, dynamic>),
+            json['elementMolecularFormula'] as Map<String, dynamic>),
     molecularFormulaByMoiety: json['molecularFormulaByMoiety'] as String,
-    element_molecularFormulaByMoiety:
-        json['element_molecularFormulaByMoiety'] == null
-            ? null
-            : Element.fromJson(json['element_molecularFormulaByMoiety']
-                as Map<String, dynamic>),
+    elementMolecularFormulaByMoiety: json['elementMolecularFormulaByMoiety'] ==
+            null
+        ? null
+        : Element.fromJson(
+            json['elementMolecularFormulaByMoiety'] as Map<String, dynamic>),
     isotope: (json['isotope'] as List)
         ?.map((e) => e == null
             ? null
@@ -347,10 +345,10 @@ Map<String, dynamic> _$SubstanceSpecification_StructureToJson(
       'stereochemistry': instance.stereochemistry?.toJson(),
       'opticalActivity': instance.opticalActivity?.toJson(),
       'molecularFormula': instance.molecularFormula,
-      'element_molecularFormula': instance.element_molecularFormula?.toJson(),
+      'elementMolecularFormula': instance.elementMolecularFormula?.toJson(),
       'molecularFormulaByMoiety': instance.molecularFormulaByMoiety,
-      'element_molecularFormulaByMoiety':
-          instance.element_molecularFormulaByMoiety?.toJson(),
+      'elementMolecularFormulaByMoiety':
+          instance.elementMolecularFormulaByMoiety?.toJson(),
       'isotope': instance.isotope?.map((e) => e?.toJson())?.toList(),
       'molecularWeight': instance.molecularWeight?.toJson(),
       'source': instance.source?.map((e) => e?.toJson())?.toList(),
@@ -457,10 +455,10 @@ SubstanceSpecification_Representation
         ? null
         : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     representation: json['representation'] as String,
-    element_representation: json['element_representation'] == null
+    elementRepresentation: json['elementRepresentation'] == null
         ? null
         : Element.fromJson(
-            json['element_representation'] as Map<String, dynamic>),
+            json['elementRepresentation'] as Map<String, dynamic>),
     attachment: json['attachment'] == null
         ? null
         : Attachment.fromJson(json['attachment'] as Map<String, dynamic>),
@@ -476,7 +474,7 @@ Map<String, dynamic> _$SubstanceSpecification_RepresentationToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'type': instance.type?.toJson(),
       'representation': instance.representation,
-      'element_representation': instance.element_representation?.toJson(),
+      'elementRepresentation': instance.elementRepresentation?.toJson(),
       'attachment': instance.attachment?.toJson(),
     };
 
@@ -501,13 +499,13 @@ SubstanceSpecification_Code _$SubstanceSpecification_CodeFromJson(
     statusDate: json['statusDate'] == null
         ? null
         : DateTime.parse(json['statusDate'] as String),
-    element_statusDate: json['element_statusDate'] == null
+    elementStatusDate: json['elementStatusDate'] == null
         ? null
-        : Element.fromJson(json['element_statusDate'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatusDate'] as Map<String, dynamic>),
     comment: json['comment'] as String,
-    element_comment: json['element_comment'] == null
+    elementComment: json['elementComment'] == null
         ? null
-        : Element.fromJson(json['element_comment'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementComment'] as Map<String, dynamic>),
     source: (json['source'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
@@ -525,9 +523,9 @@ Map<String, dynamic> _$SubstanceSpecification_CodeToJson(
       'code': instance.code?.toJson(),
       'status': instance.status?.toJson(),
       'statusDate': instance.statusDate?.toIso8601String(),
-      'element_statusDate': instance.element_statusDate?.toJson(),
+      'elementStatusDate': instance.elementStatusDate?.toJson(),
       'comment': instance.comment,
-      'element_comment': instance.element_comment?.toJson(),
+      'elementComment': instance.elementComment?.toJson(),
       'source': instance.source?.map((e) => e?.toJson())?.toList(),
     };
 
@@ -544,9 +542,9 @@ SubstanceSpecification_Name _$SubstanceSpecification_NameFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     name: json['name'] as String,
-    element_name: json['element_name'] == null
+    elementName: json['elementName'] == null
         ? null
-        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
     type: json['type'] == null
         ? null
         : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
@@ -554,9 +552,9 @@ SubstanceSpecification_Name _$SubstanceSpecification_NameFromJson(
         ? null
         : CodeableConcept.fromJson(json['status'] as Map<String, dynamic>),
     preferred: json['preferred'] as bool,
-    element_preferred: json['element_preferred'] == null
+    elementPreferred: json['elementPreferred'] == null
         ? null
-        : Element.fromJson(json['element_preferred'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPreferred'] as Map<String, dynamic>),
     language: (json['language'] as List)
         ?.map((e) => e == null
             ? null
@@ -603,11 +601,11 @@ Map<String, dynamic> _$SubstanceSpecification_NameToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'name': instance.name,
-      'element_name': instance.element_name?.toJson(),
+      'elementName': instance.elementName?.toJson(),
       'type': instance.type?.toJson(),
       'status': instance.status?.toJson(),
       'preferred': instance.preferred,
-      'element_preferred': instance.element_preferred?.toJson(),
+      'elementPreferred': instance.elementPreferred?.toJson(),
       'language': instance.language?.map((e) => e?.toJson())?.toList(),
       'domain': instance.domain?.map((e) => e?.toJson())?.toList(),
       'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
@@ -636,9 +634,9 @@ SubstanceSpecification_Official _$SubstanceSpecification_OfficialFromJson(
         ? null
         : CodeableConcept.fromJson(json['status'] as Map<String, dynamic>),
     date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
-    element_date: json['element_date'] == null
+    elementDate: json['elementDate'] == null
         ? null
-        : Element.fromJson(json['element_date'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDate'] as Map<String, dynamic>),
   );
 }
 
@@ -652,7 +650,7 @@ Map<String, dynamic> _$SubstanceSpecification_OfficialToJson(
       'authority': instance.authority?.toJson(),
       'status': instance.status?.toJson(),
       'date': instance.date?.toIso8601String(),
-      'element_date': instance.element_date?.toJson(),
+      'elementDate': instance.elementDate?.toJson(),
     };
 
 SubstanceSpecification_Relationship
@@ -680,9 +678,9 @@ SubstanceSpecification_Relationship
         : CodeableConcept.fromJson(
             json['relationship'] as Map<String, dynamic>),
     isDefining: json['isDefining'] as bool,
-    element_isDefining: json['element_isDefining'] == null
+    elementIsDefining: json['elementIsDefining'] == null
         ? null
-        : Element.fromJson(json['element_isDefining'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementIsDefining'] as Map<String, dynamic>),
     amountQuantity: json['amountQuantity'] == null
         ? null
         : Quantity.fromJson(json['amountQuantity'] as Map<String, dynamic>),
@@ -693,10 +691,9 @@ SubstanceSpecification_Relationship
         ? null
         : Ratio.fromJson(json['amountRatio'] as Map<String, dynamic>),
     amountString: json['amountString'] as String,
-    element_amountString: json['element_amountString'] == null
+    elementAmountString: json['elementAmountString'] == null
         ? null
-        : Element.fromJson(
-            json['element_amountString'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementAmountString'] as Map<String, dynamic>),
     amountRatioLowLimit: json['amountRatioLowLimit'] == null
         ? null
         : Ratio.fromJson(json['amountRatioLowLimit'] as Map<String, dynamic>),
@@ -721,12 +718,12 @@ Map<String, dynamic> _$SubstanceSpecification_RelationshipToJson(
       'substanceCodeableConcept': instance.substanceCodeableConcept?.toJson(),
       'relationship': instance.relationship?.toJson(),
       'isDefining': instance.isDefining,
-      'element_isDefining': instance.element_isDefining?.toJson(),
+      'elementIsDefining': instance.elementIsDefining?.toJson(),
       'amountQuantity': instance.amountQuantity?.toJson(),
       'amountRange': instance.amountRange?.toJson(),
       'amountRatio': instance.amountRatio?.toJson(),
       'amountString': instance.amountString,
-      'element_amountString': instance.element_amountString?.toJson(),
+      'elementAmountString': instance.elementAmountString?.toJson(),
       'amountRatioLowLimit': instance.amountRatioLowLimit?.toJson(),
       'amountType': instance.amountType?.toJson(),
       'source': instance.source?.map((e) => e?.toJson())?.toList(),

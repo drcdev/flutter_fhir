@@ -36,13 +36,13 @@ class Endpoint {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -55,7 +55,7 @@ class Endpoint {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -88,7 +88,7 @@ class Endpoint {
   String status; // <code> enum: active/suspended/error/off/entered-in-error/test;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  A coded value that represents the technical details of the usage of
   // this endpoint, such as what WSDLs should be used in what way. (e.g.
@@ -99,7 +99,7 @@ class Endpoint {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  The organization that manages this endpoint (even if technically
   // another organization is hosting this in the cloud, it is the
@@ -124,19 +124,19 @@ class Endpoint {
   List<String> payloadMimeType;
 
   //  Extensions for payloadMimeType
-  List<Element> element_payloadMimeType;
+  List<Element> elementPayloadMimeType;
 
   //  The uri that describes the actual end-point to connect to.
   String address;
 
   //  Extensions for address
-  Element element_address;
+  Element elementAddress;
 
   //  Additional headers / information to send as part of the notification.
   List<String> header;
 
   //  Extensions for header
-  List<Element> element_header;
+  List<Element> elementHeader;
 
 Endpoint(
   this.connectionType,
@@ -144,27 +144,27 @@ Endpoint(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.name,
-    this.element_name,
+    this.elementName,
     this.managingOrganization,
     this.contact,
     this.period,
     this.payloadMimeType,
-    this.element_payloadMimeType,
+    this.elementPayloadMimeType,
     this.address,
-    this.element_address,
+    this.elementAddress,
     this.header,
-    this.element_header
+    this.elementHeader
     });
 
   factory Endpoint.fromJson(Map<String, dynamic> json) => _$EndpointFromJson(json);

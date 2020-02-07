@@ -30,20 +30,20 @@ Claim _$ClaimFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -58,25 +58,25 @@ Claim _$ClaimFromJson(Map<String, dynamic> json) {
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     subType: json['subType'] == null
         ? null
         : CodeableConcept.fromJson(json['subType'] as Map<String, dynamic>),
     use: json['use'] as String,
-    element_use: json['element_use'] == null
+    elementUse: json['elementUse'] == null
         ? null
-        : Element.fromJson(json['element_use'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementUse'] as Map<String, dynamic>),
     billablePeriod: json['billablePeriod'] == null
         ? null
         : Period.fromJson(json['billablePeriod'] as Map<String, dynamic>),
     created: json['created'] == null
         ? null
         : DateTime.parse(json['created'] as String),
-    element_created: json['element_created'] == null
+    elementCreated: json['elementCreated'] == null
         ? null
-        : Element.fromJson(json['element_created'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementCreated'] as Map<String, dynamic>),
     enterer: json['enterer'] == null
         ? null
         : Reference.fromJson(json['enterer'] as Map<String, dynamic>),
@@ -145,9 +145,9 @@ Map<String, dynamic> _$ClaimToJson(Claim instance) => <String, dynamic>{
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -155,15 +155,15 @@ Map<String, dynamic> _$ClaimToJson(Claim instance) => <String, dynamic>{
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'type': instance.type?.toJson(),
       'subType': instance.subType?.toJson(),
       'use': instance.use,
-      'element_use': instance.element_use?.toJson(),
+      'elementUse': instance.elementUse?.toJson(),
       'patient': instance.patient?.toJson(),
       'billablePeriod': instance.billablePeriod?.toJson(),
       'created': instance.created?.toIso8601String(),
-      'element_created': instance.element_created?.toJson(),
+      'elementCreated': instance.elementCreated?.toJson(),
       'enterer': instance.enterer?.toJson(),
       'insurer': instance.insurer?.toJson(),
       'provider': instance.provider?.toJson(),
@@ -266,13 +266,13 @@ Claim_CareTeam _$Claim_CareTeamFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     sequence: json['sequence'] as int,
-    element_sequence: json['element_sequence'] == null
+    elementSequence: json['elementSequence'] == null
         ? null
-        : Element.fromJson(json['element_sequence'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSequence'] as Map<String, dynamic>),
     responsible: json['responsible'] as bool,
-    element_responsible: json['element_responsible'] == null
+    elementResponsible: json['elementResponsible'] == null
         ? null
-        : Element.fromJson(json['element_responsible'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementResponsible'] as Map<String, dynamic>),
     role: json['role'] == null
         ? null
         : CodeableConcept.fromJson(json['role'] as Map<String, dynamic>),
@@ -290,10 +290,10 @@ Map<String, dynamic> _$Claim_CareTeamToJson(Claim_CareTeam instance) =>
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'sequence': instance.sequence,
-      'element_sequence': instance.element_sequence?.toJson(),
+      'elementSequence': instance.elementSequence?.toJson(),
       'provider': instance.provider?.toJson(),
       'responsible': instance.responsible,
-      'element_responsible': instance.element_responsible?.toJson(),
+      'elementResponsible': instance.elementResponsible?.toJson(),
       'role': instance.role?.toJson(),
       'qualification': instance.qualification?.toJson(),
     };
@@ -313,28 +313,27 @@ Claim_SupportingInfo _$Claim_SupportingInfoFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     sequence: json['sequence'] as int,
-    element_sequence: json['element_sequence'] == null
+    elementSequence: json['elementSequence'] == null
         ? null
-        : Element.fromJson(json['element_sequence'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSequence'] as Map<String, dynamic>),
     code: json['code'] == null
         ? null
         : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     timingDate: json['timingDate'] as String,
-    element_timingDate: json['element_timingDate'] == null
+    elementTimingDate: json['elementTimingDate'] == null
         ? null
-        : Element.fromJson(json['element_timingDate'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementTimingDate'] as Map<String, dynamic>),
     timingPeriod: json['timingPeriod'] == null
         ? null
         : Period.fromJson(json['timingPeriod'] as Map<String, dynamic>),
     valueBoolean: json['valueBoolean'] as bool,
-    element_valueBoolean: json['element_valueBoolean'] == null
+    elementValueBoolean: json['elementValueBoolean'] == null
         ? null
-        : Element.fromJson(
-            json['element_valueBoolean'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueBoolean'] as Map<String, dynamic>),
     valueString: json['valueString'] as String,
-    element_valueString: json['element_valueString'] == null
+    elementValueString: json['elementValueString'] == null
         ? null
-        : Element.fromJson(json['element_valueString'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueString'] as Map<String, dynamic>),
     valueQuantity: json['valueQuantity'] == null
         ? null
         : Quantity.fromJson(json['valueQuantity'] as Map<String, dynamic>),
@@ -358,16 +357,16 @@ Map<String, dynamic> _$Claim_SupportingInfoToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'sequence': instance.sequence,
-      'element_sequence': instance.element_sequence?.toJson(),
+      'elementSequence': instance.elementSequence?.toJson(),
       'category': instance.category?.toJson(),
       'code': instance.code?.toJson(),
       'timingDate': instance.timingDate,
-      'element_timingDate': instance.element_timingDate?.toJson(),
+      'elementTimingDate': instance.elementTimingDate?.toJson(),
       'timingPeriod': instance.timingPeriod?.toJson(),
       'valueBoolean': instance.valueBoolean,
-      'element_valueBoolean': instance.element_valueBoolean?.toJson(),
+      'elementValueBoolean': instance.elementValueBoolean?.toJson(),
       'valueString': instance.valueString,
-      'element_valueString': instance.element_valueString?.toJson(),
+      'elementValueString': instance.elementValueString?.toJson(),
       'valueQuantity': instance.valueQuantity?.toJson(),
       'valueAttachment': instance.valueAttachment?.toJson(),
       'valueReference': instance.valueReference?.toJson(),
@@ -386,9 +385,9 @@ Claim_Diagnosis _$Claim_DiagnosisFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     sequence: json['sequence'] as int,
-    element_sequence: json['element_sequence'] == null
+    elementSequence: json['elementSequence'] == null
         ? null
-        : Element.fromJson(json['element_sequence'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSequence'] as Map<String, dynamic>),
     diagnosisCodeableConcept: json['diagnosisCodeableConcept'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -418,7 +417,7 @@ Map<String, dynamic> _$Claim_DiagnosisToJson(Claim_Diagnosis instance) =>
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'sequence': instance.sequence,
-      'element_sequence': instance.element_sequence?.toJson(),
+      'elementSequence': instance.elementSequence?.toJson(),
       'diagnosisCodeableConcept': instance.diagnosisCodeableConcept?.toJson(),
       'diagnosisReference': instance.diagnosisReference?.toJson(),
       'type': instance.type?.map((e) => e?.toJson())?.toList(),
@@ -438,18 +437,18 @@ Claim_Procedure _$Claim_ProcedureFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     sequence: json['sequence'] as int,
-    element_sequence: json['element_sequence'] == null
+    elementSequence: json['elementSequence'] == null
         ? null
-        : Element.fromJson(json['element_sequence'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSequence'] as Map<String, dynamic>),
     type: (json['type'] as List)
         ?.map((e) => e == null
             ? null
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
-    element_date: json['element_date'] == null
+    elementDate: json['elementDate'] == null
         ? null
-        : Element.fromJson(json['element_date'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDate'] as Map<String, dynamic>),
     procedureCodeableConcept: json['procedureCodeableConcept'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -472,10 +471,10 @@ Map<String, dynamic> _$Claim_ProcedureToJson(Claim_Procedure instance) =>
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'sequence': instance.sequence,
-      'element_sequence': instance.element_sequence?.toJson(),
+      'elementSequence': instance.elementSequence?.toJson(),
       'type': instance.type?.map((e) => e?.toJson())?.toList(),
       'date': instance.date?.toIso8601String(),
-      'element_date': instance.element_date?.toJson(),
+      'elementDate': instance.elementDate?.toJson(),
       'procedureCodeableConcept': instance.procedureCodeableConcept?.toJson(),
       'procedureReference': instance.procedureReference?.toJson(),
       'udi': instance.udi?.map((e) => e?.toJson())?.toList(),
@@ -496,23 +495,23 @@ Claim_Insurance _$Claim_InsuranceFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     sequence: json['sequence'] as int,
-    element_sequence: json['element_sequence'] == null
+    elementSequence: json['elementSequence'] == null
         ? null
-        : Element.fromJson(json['element_sequence'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSequence'] as Map<String, dynamic>),
     focal: json['focal'] as bool,
-    element_focal: json['element_focal'] == null
+    elementFocal: json['elementFocal'] == null
         ? null
-        : Element.fromJson(json['element_focal'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementFocal'] as Map<String, dynamic>),
     identifier: json['identifier'] == null
         ? null
         : Identifier.fromJson(json['identifier'] as Map<String, dynamic>),
     businessArrangement: json['businessArrangement'] as String,
-    element_businessArrangement: json['element_businessArrangement'] == null
+    elementBusinessArrangement: json['elementBusinessArrangement'] == null
         ? null
         : Element.fromJson(
-            json['element_businessArrangement'] as Map<String, dynamic>),
+            json['elementBusinessArrangement'] as Map<String, dynamic>),
     preAuthRef: (json['preAuthRef'] as List)?.map((e) => e as String)?.toList(),
-    element_preAuthRef: (json['element_preAuthRef'] as List)
+    elementPreAuthRef: (json['elementPreAuthRef'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -529,17 +528,17 @@ Map<String, dynamic> _$Claim_InsuranceToJson(Claim_Insurance instance) =>
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'sequence': instance.sequence,
-      'element_sequence': instance.element_sequence?.toJson(),
+      'elementSequence': instance.elementSequence?.toJson(),
       'focal': instance.focal,
-      'element_focal': instance.element_focal?.toJson(),
+      'elementFocal': instance.elementFocal?.toJson(),
       'identifier': instance.identifier?.toJson(),
       'coverage': instance.coverage?.toJson(),
       'businessArrangement': instance.businessArrangement,
-      'element_businessArrangement':
-          instance.element_businessArrangement?.toJson(),
+      'elementBusinessArrangement':
+          instance.elementBusinessArrangement?.toJson(),
       'preAuthRef': instance.preAuthRef,
-      'element_preAuthRef':
-          instance.element_preAuthRef?.map((e) => e?.toJson())?.toList(),
+      'elementPreAuthRef':
+          instance.elementPreAuthRef?.map((e) => e?.toJson())?.toList(),
       'claimResponse': instance.claimResponse?.toJson(),
     };
 
@@ -555,9 +554,9 @@ Claim_Accident _$Claim_AccidentFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     date: json['date'] as String,
-    element_date: json['element_date'] == null
+    elementDate: json['elementDate'] == null
         ? null
-        : Element.fromJson(json['element_date'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDate'] as Map<String, dynamic>),
     type: json['type'] == null
         ? null
         : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
@@ -577,7 +576,7 @@ Map<String, dynamic> _$Claim_AccidentToJson(Claim_Accident instance) =>
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'date': instance.date,
-      'element_date': instance.element_date?.toJson(),
+      'elementDate': instance.elementDate?.toJson(),
       'type': instance.type?.toJson(),
       'locationAddress': instance.locationAddress?.toJson(),
       'locationReference': instance.locationReference?.toJson(),
@@ -599,30 +598,30 @@ Claim_Item _$Claim_ItemFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     sequence: json['sequence'] as int,
-    element_sequence: json['element_sequence'] == null
+    elementSequence: json['elementSequence'] == null
         ? null
-        : Element.fromJson(json['element_sequence'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSequence'] as Map<String, dynamic>),
     careTeamSequence:
         (json['careTeamSequence'] as List)?.map((e) => e as int)?.toList(),
-    element_careTeamSequence: (json['element_careTeamSequence'] as List)
+    elementCareTeamSequence: (json['elementCareTeamSequence'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     diagnosisSequence:
         (json['diagnosisSequence'] as List)?.map((e) => e as int)?.toList(),
-    element_diagnosisSequence: (json['element_diagnosisSequence'] as List)
+    elementDiagnosisSequence: (json['elementDiagnosisSequence'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     procedureSequence:
         (json['procedureSequence'] as List)?.map((e) => e as int)?.toList(),
-    element_procedureSequence: (json['element_procedureSequence'] as List)
+    elementProcedureSequence: (json['elementProcedureSequence'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     informationSequence:
         (json['informationSequence'] as List)?.map((e) => e as int)?.toList(),
-    element_informationSequence: (json['element_informationSequence'] as List)
+    elementInformationSequence: (json['elementInformationSequence'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -643,10 +642,9 @@ Claim_Item _$Claim_ItemFromJson(Map<String, dynamic> json) {
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     servicedDate: json['servicedDate'] as String,
-    element_servicedDate: json['element_servicedDate'] == null
+    elementServicedDate: json['elementServicedDate'] == null
         ? null
-        : Element.fromJson(
-            json['element_servicedDate'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementServicedDate'] as Map<String, dynamic>),
     servicedPeriod: json['servicedPeriod'] == null
         ? null
         : Period.fromJson(json['servicedPeriod'] as Map<String, dynamic>),
@@ -667,9 +665,9 @@ Claim_Item _$Claim_ItemFromJson(Map<String, dynamic> json) {
         ? null
         : Money.fromJson(json['unitPrice'] as Map<String, dynamic>),
     factor: (json['factor'] as num)?.toDouble(),
-    element_factor: json['element_factor'] == null
+    elementFactor: json['elementFactor'] == null
         ? null
-        : Element.fromJson(json['element_factor'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementFactor'] as Map<String, dynamic>),
     net: json['net'] == null
         ? null
         : Money.fromJson(json['net'] as Map<String, dynamic>),
@@ -703,18 +701,18 @@ Map<String, dynamic> _$Claim_ItemToJson(Claim_Item instance) =>
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'sequence': instance.sequence,
-      'element_sequence': instance.element_sequence?.toJson(),
+      'elementSequence': instance.elementSequence?.toJson(),
       'careTeamSequence': instance.careTeamSequence,
-      'element_careTeamSequence':
-          instance.element_careTeamSequence?.map((e) => e?.toJson())?.toList(),
+      'elementCareTeamSequence':
+          instance.elementCareTeamSequence?.map((e) => e?.toJson())?.toList(),
       'diagnosisSequence': instance.diagnosisSequence,
-      'element_diagnosisSequence':
-          instance.element_diagnosisSequence?.map((e) => e?.toJson())?.toList(),
+      'elementDiagnosisSequence':
+          instance.elementDiagnosisSequence?.map((e) => e?.toJson())?.toList(),
       'procedureSequence': instance.procedureSequence,
-      'element_procedureSequence':
-          instance.element_procedureSequence?.map((e) => e?.toJson())?.toList(),
+      'elementProcedureSequence':
+          instance.elementProcedureSequence?.map((e) => e?.toJson())?.toList(),
       'informationSequence': instance.informationSequence,
-      'element_informationSequence': instance.element_informationSequence
+      'elementInformationSequence': instance.elementInformationSequence
           ?.map((e) => e?.toJson())
           ?.toList(),
       'revenue': instance.revenue?.toJson(),
@@ -723,7 +721,7 @@ Map<String, dynamic> _$Claim_ItemToJson(Claim_Item instance) =>
       'modifier': instance.modifier?.map((e) => e?.toJson())?.toList(),
       'programCode': instance.programCode?.map((e) => e?.toJson())?.toList(),
       'servicedDate': instance.servicedDate,
-      'element_servicedDate': instance.element_servicedDate?.toJson(),
+      'elementServicedDate': instance.elementServicedDate?.toJson(),
       'servicedPeriod': instance.servicedPeriod?.toJson(),
       'locationCodeableConcept': instance.locationCodeableConcept?.toJson(),
       'locationAddress': instance.locationAddress?.toJson(),
@@ -731,7 +729,7 @@ Map<String, dynamic> _$Claim_ItemToJson(Claim_Item instance) =>
       'quantity': instance.quantity?.toJson(),
       'unitPrice': instance.unitPrice?.toJson(),
       'factor': instance.factor,
-      'element_factor': instance.element_factor?.toJson(),
+      'elementFactor': instance.elementFactor?.toJson(),
       'net': instance.net?.toJson(),
       'udi': instance.udi?.map((e) => e?.toJson())?.toList(),
       'bodySite': instance.bodySite?.toJson(),
@@ -756,9 +754,9 @@ Claim_Detail _$Claim_DetailFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     sequence: json['sequence'] as int,
-    element_sequence: json['element_sequence'] == null
+    elementSequence: json['elementSequence'] == null
         ? null
-        : Element.fromJson(json['element_sequence'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSequence'] as Map<String, dynamic>),
     revenue: json['revenue'] == null
         ? null
         : CodeableConcept.fromJson(json['revenue'] as Map<String, dynamic>),
@@ -782,9 +780,9 @@ Claim_Detail _$Claim_DetailFromJson(Map<String, dynamic> json) {
         ? null
         : Money.fromJson(json['unitPrice'] as Map<String, dynamic>),
     factor: (json['factor'] as num)?.toDouble(),
-    element_factor: json['element_factor'] == null
+    elementFactor: json['elementFactor'] == null
         ? null
-        : Element.fromJson(json['element_factor'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementFactor'] as Map<String, dynamic>),
     net: json['net'] == null
         ? null
         : Money.fromJson(json['net'] as Map<String, dynamic>),
@@ -807,7 +805,7 @@ Map<String, dynamic> _$Claim_DetailToJson(Claim_Detail instance) =>
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'sequence': instance.sequence,
-      'element_sequence': instance.element_sequence?.toJson(),
+      'elementSequence': instance.elementSequence?.toJson(),
       'revenue': instance.revenue?.toJson(),
       'category': instance.category?.toJson(),
       'productOrService': instance.productOrService?.toJson(),
@@ -816,7 +814,7 @@ Map<String, dynamic> _$Claim_DetailToJson(Claim_Detail instance) =>
       'quantity': instance.quantity?.toJson(),
       'unitPrice': instance.unitPrice?.toJson(),
       'factor': instance.factor,
-      'element_factor': instance.element_factor?.toJson(),
+      'elementFactor': instance.elementFactor?.toJson(),
       'net': instance.net?.toJson(),
       'udi': instance.udi?.map((e) => e?.toJson())?.toList(),
       'subDetail': instance.subDetail?.map((e) => e?.toJson())?.toList(),
@@ -838,9 +836,9 @@ Claim_SubDetail _$Claim_SubDetailFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     sequence: json['sequence'] as int,
-    element_sequence: json['element_sequence'] == null
+    elementSequence: json['elementSequence'] == null
         ? null
-        : Element.fromJson(json['element_sequence'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSequence'] as Map<String, dynamic>),
     revenue: json['revenue'] == null
         ? null
         : CodeableConcept.fromJson(json['revenue'] as Map<String, dynamic>),
@@ -864,9 +862,9 @@ Claim_SubDetail _$Claim_SubDetailFromJson(Map<String, dynamic> json) {
         ? null
         : Money.fromJson(json['unitPrice'] as Map<String, dynamic>),
     factor: (json['factor'] as num)?.toDouble(),
-    element_factor: json['element_factor'] == null
+    elementFactor: json['elementFactor'] == null
         ? null
-        : Element.fromJson(json['element_factor'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementFactor'] as Map<String, dynamic>),
     net: json['net'] == null
         ? null
         : Money.fromJson(json['net'] as Map<String, dynamic>),
@@ -884,7 +882,7 @@ Map<String, dynamic> _$Claim_SubDetailToJson(Claim_SubDetail instance) =>
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'sequence': instance.sequence,
-      'element_sequence': instance.element_sequence?.toJson(),
+      'elementSequence': instance.elementSequence?.toJson(),
       'revenue': instance.revenue?.toJson(),
       'category': instance.category?.toJson(),
       'productOrService': instance.productOrService?.toJson(),
@@ -893,7 +891,7 @@ Map<String, dynamic> _$Claim_SubDetailToJson(Claim_SubDetail instance) =>
       'quantity': instance.quantity?.toJson(),
       'unitPrice': instance.unitPrice?.toJson(),
       'factor': instance.factor,
-      'element_factor': instance.element_factor?.toJson(),
+      'elementFactor': instance.elementFactor?.toJson(),
       'net': instance.net?.toJson(),
       'udi': instance.udi?.map((e) => e?.toJson())?.toList(),
     };

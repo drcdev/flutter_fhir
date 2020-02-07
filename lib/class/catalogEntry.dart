@@ -34,13 +34,13 @@ class CatalogEntry {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -53,7 +53,7 @@ class CatalogEntry {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -89,7 +89,7 @@ class CatalogEntry {
   bool orderable;
 
   //  Extensions for orderable
-  Element element_orderable;
+  Element elementOrderable;
 
   //  The item in a catalog or definition.
   Reference referencedItem;
@@ -105,7 +105,7 @@ class CatalogEntry {
   String status; // <code> enum: draft/active/retired/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  The time period in which this catalog entry is expected to be active.
   Period validityPeriod;
@@ -114,14 +114,14 @@ class CatalogEntry {
   DateTime validTo;
 
   //  Extensions for validTo
-  Element element_validTo;
+  Element elementValidTo;
 
   //  Typically date of issue is different from the beginning of the
   // validity. This can be used to see when an item was last updated.
   DateTime lastUpdated;
 
   //  Extensions for lastUpdated
-  Element element_lastUpdated;
+  Element elementLastUpdated;
 
   //  Used for examplefor Out of Formulary, or any specifics.
   List<CodeableConcept> additionalCharacteristic;
@@ -138,9 +138,9 @@ CatalogEntry(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -148,16 +148,16 @@ CatalogEntry(
     this.identifier,
     this.type,
     this.orderable,
-    this.element_orderable,
+    this.elementOrderable,
     this.additionalIdentifier,
     this.classification,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.validityPeriod,
     this.validTo,
-    this.element_validTo,
+    this.elementValidTo,
     this.lastUpdated,
-    this.element_lastUpdated,
+    this.elementLastUpdated,
     this.additionalCharacteristic,
     this.additionalClassification,
     this.relatedEntry
@@ -201,7 +201,7 @@ class CatalogEntry_RelatedEntry {
   String relationtype; // <code> enum: triggers/is-replaced-by;
 
   //  Extensions for relationtype
-  Element element_relationtype;
+  Element elementRelationtype;
 
   //  The reference to the related item.
   Reference item;
@@ -212,7 +212,7 @@ CatalogEntry_RelatedEntry(
     this.extension,
     this.modifierExtension,
     this.relationtype,
-    this.element_relationtype
+    this.elementRelationtype
     });
 
   factory CatalogEntry_RelatedEntry.fromJson(Map<String, dynamic> json) => _$CatalogEntry_RelatedEntryFromJson(json);

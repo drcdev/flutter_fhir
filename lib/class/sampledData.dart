@@ -29,21 +29,21 @@ class SampledData {
   double period;
 
   //  Extensions for period
-  Element element_period;
+  Element elementPeriod;
 
   //  A correction factor that is applied to the sampled data points before
   // they are added to the origin.
   double factor;
 
   //  Extensions for factor
-  Element element_factor;
+  Element elementFactor;
 
   //  The lower limit of detection of the measured points. This is needed if
   // any of the data points have the value "L" (lower than detection limit).
   double lowerLimit;
 
   //  Extensions for lowerLimit
-  Element element_lowerLimit;
+  Element elementLowerLimit;
 
   //  The upper limit of detection of the measured points. This is needed if
   // any of the data points have the value "U" (higher than detection
@@ -51,7 +51,7 @@ class SampledData {
   double upperLimit;
 
   //  Extensions for upperLimit
-  Element element_upperLimit;
+  Element elementUpperLimit;
 
   //  The number of sample points at each time point. If this value is
   // greater than one, then the dimensions will be interlaced - all the
@@ -59,7 +59,7 @@ class SampledData {
   int dimensions;
 
   //  Extensions for dimensions
-  Element element_dimensions;
+  Element elementDimensions;
 
   //  A series of data points which are decimal values separated by a single
   // space (character u20). The special values "E" (error), "L" (below
@@ -68,24 +68,24 @@ class SampledData {
   String data;
 
   //  Extensions for data
-  Element element_data;
+  Element elementData;
 
 SampledData(
   this.origin,
     {this.id,
     this.extension,
     this.period,
-    this.element_period,
+    this.elementPeriod,
     this.factor,
-    this.element_factor,
+    this.elementFactor,
     this.lowerLimit,
-    this.element_lowerLimit,
+    this.elementLowerLimit,
     this.upperLimit,
-    this.element_upperLimit,
+    this.elementUpperLimit,
     this.dimensions,
-    this.element_dimensions,
+    this.elementDimensions,
     this.data,
-    this.element_data
+    this.elementData
     });
 
   factory SampledData.fromJson(Map<String, dynamic> json) => _$SampledDataFromJson(json);

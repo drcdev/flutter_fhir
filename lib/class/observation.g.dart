@@ -16,20 +16,20 @@ Observation _$ObservationFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -52,9 +52,9 @@ Observation _$ObservationFromJson(Map<String, dynamic> json) {
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     category: (json['category'] as List)
         ?.map((e) => e == null
             ? null
@@ -71,10 +71,10 @@ Observation _$ObservationFromJson(Map<String, dynamic> json) {
         ? null
         : Reference.fromJson(json['encounter'] as Map<String, dynamic>),
     effectiveDateTime: json['effectiveDateTime'] as String,
-    element_effectiveDateTime: json['element_effectiveDateTime'] == null
+    elementEffectiveDateTime: json['elementEffectiveDateTime'] == null
         ? null
         : Element.fromJson(
-            json['element_effectiveDateTime'] as Map<String, dynamic>),
+            json['elementEffectiveDateTime'] as Map<String, dynamic>),
     effectivePeriod: json['effectivePeriod'] == null
         ? null
         : Period.fromJson(json['effectivePeriod'] as Map<String, dynamic>),
@@ -82,16 +82,16 @@ Observation _$ObservationFromJson(Map<String, dynamic> json) {
         ? null
         : Timing.fromJson(json['effectiveTiming'] as Map<String, dynamic>),
     effectiveInstant: json['effectiveInstant'] as String,
-    element_effectiveInstant: json['element_effectiveInstant'] == null
+    elementEffectiveInstant: json['elementEffectiveInstant'] == null
         ? null
         : Element.fromJson(
-            json['element_effectiveInstant'] as Map<String, dynamic>),
+            json['elementEffectiveInstant'] as Map<String, dynamic>),
     issued: json['issued'] == null
         ? null
         : DateTime.parse(json['issued'] as String),
-    element_issued: json['element_issued'] == null
+    elementIssued: json['elementIssued'] == null
         ? null
-        : Element.fromJson(json['element_issued'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementIssued'] as Map<String, dynamic>),
     performer: (json['performer'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
@@ -104,19 +104,17 @@ Observation _$ObservationFromJson(Map<String, dynamic> json) {
         : CodeableConcept.fromJson(
             json['valueCodeableConcept'] as Map<String, dynamic>),
     valueString: json['valueString'] as String,
-    element_valueString: json['element_valueString'] == null
+    elementValueString: json['elementValueString'] == null
         ? null
-        : Element.fromJson(json['element_valueString'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueString'] as Map<String, dynamic>),
     valueBoolean: json['valueBoolean'] as bool,
-    element_valueBoolean: json['element_valueBoolean'] == null
+    elementValueBoolean: json['elementValueBoolean'] == null
         ? null
-        : Element.fromJson(
-            json['element_valueBoolean'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueBoolean'] as Map<String, dynamic>),
     valueInteger: json['valueInteger'] as int,
-    element_valueInteger: json['element_valueInteger'] == null
+    elementValueInteger: json['elementValueInteger'] == null
         ? null
-        : Element.fromJson(
-            json['element_valueInteger'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueInteger'] as Map<String, dynamic>),
     valueRange: json['valueRange'] == null
         ? null
         : Range.fromJson(json['valueRange'] as Map<String, dynamic>),
@@ -128,14 +126,14 @@ Observation _$ObservationFromJson(Map<String, dynamic> json) {
         : SampledData.fromJson(
             json['valueSampledData'] as Map<String, dynamic>),
     valueTime: json['valueTime'] as String,
-    element_valueTime: json['element_valueTime'] == null
+    elementValueTime: json['elementValueTime'] == null
         ? null
-        : Element.fromJson(json['element_valueTime'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueTime'] as Map<String, dynamic>),
     valueDateTime: json['valueDateTime'] as String,
-    element_valueDateTime: json['element_valueDateTime'] == null
+    elementValueDateTime: json['elementValueDateTime'] == null
         ? null
         : Element.fromJson(
-            json['element_valueDateTime'] as Map<String, dynamic>),
+            json['elementValueDateTime'] as Map<String, dynamic>),
     valuePeriod: json['valuePeriod'] == null
         ? null
         : Period.fromJson(json['valuePeriod'] as Map<String, dynamic>),
@@ -190,9 +188,9 @@ Map<String, dynamic> _$ObservationToJson(Observation instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -202,36 +200,36 @@ Map<String, dynamic> _$ObservationToJson(Observation instance) =>
       'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
       'partOf': instance.partOf?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'category': instance.category?.map((e) => e?.toJson())?.toList(),
       'code': instance.code?.toJson(),
       'subject': instance.subject?.toJson(),
       'focus': instance.focus?.map((e) => e?.toJson())?.toList(),
       'encounter': instance.encounter?.toJson(),
       'effectiveDateTime': instance.effectiveDateTime,
-      'element_effectiveDateTime': instance.element_effectiveDateTime?.toJson(),
+      'elementEffectiveDateTime': instance.elementEffectiveDateTime?.toJson(),
       'effectivePeriod': instance.effectivePeriod?.toJson(),
       'effectiveTiming': instance.effectiveTiming?.toJson(),
       'effectiveInstant': instance.effectiveInstant,
-      'element_effectiveInstant': instance.element_effectiveInstant?.toJson(),
+      'elementEffectiveInstant': instance.elementEffectiveInstant?.toJson(),
       'issued': instance.issued?.toIso8601String(),
-      'element_issued': instance.element_issued?.toJson(),
+      'elementIssued': instance.elementIssued?.toJson(),
       'performer': instance.performer?.map((e) => e?.toJson())?.toList(),
       'valueQuantity': instance.valueQuantity?.toJson(),
       'valueCodeableConcept': instance.valueCodeableConcept?.toJson(),
       'valueString': instance.valueString,
-      'element_valueString': instance.element_valueString?.toJson(),
+      'elementValueString': instance.elementValueString?.toJson(),
       'valueBoolean': instance.valueBoolean,
-      'element_valueBoolean': instance.element_valueBoolean?.toJson(),
+      'elementValueBoolean': instance.elementValueBoolean?.toJson(),
       'valueInteger': instance.valueInteger,
-      'element_valueInteger': instance.element_valueInteger?.toJson(),
+      'elementValueInteger': instance.elementValueInteger?.toJson(),
       'valueRange': instance.valueRange?.toJson(),
       'valueRatio': instance.valueRatio?.toJson(),
       'valueSampledData': instance.valueSampledData?.toJson(),
       'valueTime': instance.valueTime,
-      'element_valueTime': instance.element_valueTime?.toJson(),
+      'elementValueTime': instance.elementValueTime?.toJson(),
       'valueDateTime': instance.valueDateTime,
-      'element_valueDateTime': instance.element_valueDateTime?.toJson(),
+      'elementValueDateTime': instance.elementValueDateTime?.toJson(),
       'valuePeriod': instance.valuePeriod?.toJson(),
       'dataAbsentReason': instance.dataAbsentReason?.toJson(),
       'interpretation':
@@ -278,9 +276,9 @@ Observation_ReferenceRange _$Observation_ReferenceRangeFromJson(
         ? null
         : Range.fromJson(json['age'] as Map<String, dynamic>),
     text: json['text'] as String,
-    element_text: json['element_text'] == null
+    elementText: json['elementText'] == null
         ? null
-        : Element.fromJson(json['element_text'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementText'] as Map<String, dynamic>),
   );
 }
 
@@ -297,7 +295,7 @@ Map<String, dynamic> _$Observation_ReferenceRangeToJson(
       'appliesTo': instance.appliesTo?.map((e) => e?.toJson())?.toList(),
       'age': instance.age?.toJson(),
       'text': instance.text,
-      'element_text': instance.element_text?.toJson(),
+      'elementText': instance.elementText?.toJson(),
     };
 
 Observation_Component _$Observation_ComponentFromJson(
@@ -323,19 +321,17 @@ Observation_Component _$Observation_ComponentFromJson(
         : CodeableConcept.fromJson(
             json['valueCodeableConcept'] as Map<String, dynamic>),
     valueString: json['valueString'] as String,
-    element_valueString: json['element_valueString'] == null
+    elementValueString: json['elementValueString'] == null
         ? null
-        : Element.fromJson(json['element_valueString'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueString'] as Map<String, dynamic>),
     valueBoolean: json['valueBoolean'] as bool,
-    element_valueBoolean: json['element_valueBoolean'] == null
+    elementValueBoolean: json['elementValueBoolean'] == null
         ? null
-        : Element.fromJson(
-            json['element_valueBoolean'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueBoolean'] as Map<String, dynamic>),
     valueInteger: json['valueInteger'] as int,
-    element_valueInteger: json['element_valueInteger'] == null
+    elementValueInteger: json['elementValueInteger'] == null
         ? null
-        : Element.fromJson(
-            json['element_valueInteger'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueInteger'] as Map<String, dynamic>),
     valueRange: json['valueRange'] == null
         ? null
         : Range.fromJson(json['valueRange'] as Map<String, dynamic>),
@@ -347,14 +343,14 @@ Observation_Component _$Observation_ComponentFromJson(
         : SampledData.fromJson(
             json['valueSampledData'] as Map<String, dynamic>),
     valueTime: json['valueTime'] as String,
-    element_valueTime: json['element_valueTime'] == null
+    elementValueTime: json['elementValueTime'] == null
         ? null
-        : Element.fromJson(json['element_valueTime'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValueTime'] as Map<String, dynamic>),
     valueDateTime: json['valueDateTime'] as String,
-    element_valueDateTime: json['element_valueDateTime'] == null
+    elementValueDateTime: json['elementValueDateTime'] == null
         ? null
         : Element.fromJson(
-            json['element_valueDateTime'] as Map<String, dynamic>),
+            json['elementValueDateTime'] as Map<String, dynamic>),
     valuePeriod: json['valuePeriod'] == null
         ? null
         : Period.fromJson(json['valuePeriod'] as Map<String, dynamic>),
@@ -386,18 +382,18 @@ Map<String, dynamic> _$Observation_ComponentToJson(
       'valueQuantity': instance.valueQuantity?.toJson(),
       'valueCodeableConcept': instance.valueCodeableConcept?.toJson(),
       'valueString': instance.valueString,
-      'element_valueString': instance.element_valueString?.toJson(),
+      'elementValueString': instance.elementValueString?.toJson(),
       'valueBoolean': instance.valueBoolean,
-      'element_valueBoolean': instance.element_valueBoolean?.toJson(),
+      'elementValueBoolean': instance.elementValueBoolean?.toJson(),
       'valueInteger': instance.valueInteger,
-      'element_valueInteger': instance.element_valueInteger?.toJson(),
+      'elementValueInteger': instance.elementValueInteger?.toJson(),
       'valueRange': instance.valueRange?.toJson(),
       'valueRatio': instance.valueRatio?.toJson(),
       'valueSampledData': instance.valueSampledData?.toJson(),
       'valueTime': instance.valueTime,
-      'element_valueTime': instance.element_valueTime?.toJson(),
+      'elementValueTime': instance.elementValueTime?.toJson(),
       'valueDateTime': instance.valueDateTime,
-      'element_valueDateTime': instance.element_valueDateTime?.toJson(),
+      'elementValueDateTime': instance.elementValueDateTime?.toJson(),
       'valuePeriod': instance.valuePeriod?.toJson(),
       'dataAbsentReason': instance.dataAbsentReason?.toJson(),
       'interpretation':

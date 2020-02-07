@@ -33,13 +33,13 @@ class AppointmentResponse {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -52,7 +52,7 @@ class AppointmentResponse {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -91,7 +91,7 @@ class AppointmentResponse {
   DateTime start;
 
   //  Extensions for start
-  Element element_start;
+  Element elementStart;
 
   //  This may be either the same as the appointment request to confirm the
   // details of the appointment, or alternately a new time to request a
@@ -99,7 +99,7 @@ class AppointmentResponse {
   DateTime end;
 
   //  Extensions for end
-  Element element_end;
+  Element elementEnd;
 
   //  Role of participant in the appointment.
   List<CodeableConcept> participantType;
@@ -116,37 +116,37 @@ class AppointmentResponse {
   String participantStatus;
 
   //  Extensions for participantStatus
-  Element element_participantStatus;
+  Element elementParticipantStatus;
 
   //  Additional comments about the appointment.
   String comment;
 
   //  Extensions for comment
-  Element element_comment;
+  Element elementComment;
 
 AppointmentResponse(
   this.appointment,
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.start,
-    this.element_start,
+    this.elementStart,
     this.end,
-    this.element_end,
+    this.elementEnd,
     this.participantType,
     this.actor,
     this.participantStatus,
-    this.element_participantStatus,
+    this.elementParticipantStatus,
     this.comment,
-    this.element_comment
+    this.elementComment
     });
 
   factory AppointmentResponse.fromJson(Map<String, dynamic> json) => _$AppointmentResponseFromJson(json);

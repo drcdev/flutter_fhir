@@ -22,20 +22,20 @@ Provenance _$ProvenanceFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -49,18 +49,18 @@ Provenance _$ProvenanceFromJson(Map<String, dynamic> json) {
         ? null
         : Period.fromJson(json['occurredPeriod'] as Map<String, dynamic>),
     occurredDateTime: json['occurredDateTime'] as String,
-    element_occurredDateTime: json['element_occurredDateTime'] == null
+    elementOccurredDateTime: json['elementOccurredDateTime'] == null
         ? null
         : Element.fromJson(
-            json['element_occurredDateTime'] as Map<String, dynamic>),
+            json['elementOccurredDateTime'] as Map<String, dynamic>),
     recorded: json['recorded'] == null
         ? null
         : DateTime.parse(json['recorded'] as String),
-    element_recorded: json['element_recorded'] == null
+    elementRecorded: json['elementRecorded'] == null
         ? null
-        : Element.fromJson(json['element_recorded'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementRecorded'] as Map<String, dynamic>),
     policy: (json['policy'] as List)?.map((e) => e as String)?.toList(),
-    element_policy: (json['element_policy'] as List)
+    elementPolicy: (json['elementPolicy'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -92,9 +92,9 @@ Map<String, dynamic> _$ProvenanceToJson(Provenance instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -103,12 +103,12 @@ Map<String, dynamic> _$ProvenanceToJson(Provenance instance) =>
       'target': instance.target?.map((e) => e?.toJson())?.toList(),
       'occurredPeriod': instance.occurredPeriod?.toJson(),
       'occurredDateTime': instance.occurredDateTime,
-      'element_occurredDateTime': instance.element_occurredDateTime?.toJson(),
+      'elementOccurredDateTime': instance.elementOccurredDateTime?.toJson(),
       'recorded': instance.recorded?.toIso8601String(),
-      'element_recorded': instance.element_recorded?.toJson(),
+      'elementRecorded': instance.elementRecorded?.toJson(),
       'policy': instance.policy,
-      'element_policy':
-          instance.element_policy?.map((e) => e?.toJson())?.toList(),
+      'elementPolicy':
+          instance.elementPolicy?.map((e) => e?.toJson())?.toList(),
       'location': instance.location?.toJson(),
       'reason': instance.reason?.map((e) => e?.toJson())?.toList(),
       'activity': instance.activity?.toJson(),
@@ -172,9 +172,9 @@ Provenance_Entity _$Provenance_EntityFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     role: json['role'] as String,
-    element_role: json['element_role'] == null
+    elementRole: json['elementRole'] == null
         ? null
-        : Element.fromJson(json['element_role'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementRole'] as Map<String, dynamic>),
     agent: (json['agent'] as List)
         ?.map((e) => e == null
             ? null
@@ -190,7 +190,7 @@ Map<String, dynamic> _$Provenance_EntityToJson(Provenance_Entity instance) =>
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'role': instance.role,
-      'element_role': instance.element_role?.toJson(),
+      'elementRole': instance.elementRole?.toJson(),
       'what': instance.what?.toJson(),
       'agent': instance.agent?.map((e) => e?.toJson())?.toList(),
     };

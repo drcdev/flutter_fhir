@@ -25,7 +25,7 @@ class HumanName {
   String use; // <code> enum: usual/official/temp/nickname/anonymous/old/maiden;
 
   //  Extensions for use
-  Element element_use;
+  Element elementUse;
 
   //  Specifies the entire name as it should be displayed e.g. on an
   // application UI. This may be provided instead of or as well as the
@@ -33,20 +33,20 @@ class HumanName {
   String text;
 
   //  Extensions for text
-  Element element_text;
+  Element elementText;
 
   //  The part of a name that links to the genealogy. In some cultures (e.g.
   // Eritrea) the family name of a son is the first name of his father.
   String family;
 
   //  Extensions for family
-  Element element_family;
+  Element elementFamily;
 
   //  Given name.
   List<String> given;
 
   //  Extensions for given
-  List<Element> element_given;
+  List<Element> elementGiven;
 
   //  Part of the name that is acquired as a title due to academic, legal,
   // employment or nobility status, etc. and that appears at the start of
@@ -54,7 +54,7 @@ class HumanName {
   List<String> prefix;
 
   //  Extensions for prefix
-  List<Element> element_prefix;
+  List<Element> elementPrefix;
 
   //  Part of the name that is acquired as a title due to academic, legal,
   // employment or nobility status, etc. and that appears at the end of the
@@ -62,7 +62,7 @@ class HumanName {
   List<String> suffix;
 
   //  Extensions for suffix
-  List<Element> element_suffix;
+  List<Element> elementSuffix;
 
   //  Indicates the period of time when this name was valid for the named
   // person.
@@ -72,17 +72,17 @@ HumanName(
   {this.id,
     this.extension,
     this.use,
-    this.element_use,
+    this.elementUse,
     this.text,
-    this.element_text,
+    this.elementText,
     this.family,
-    this.element_family,
+    this.elementFamily,
     this.given,
-    this.element_given,
+    this.elementGiven,
     this.prefix,
-    this.element_prefix,
+    this.elementPrefix,
     this.suffix,
-    this.element_suffix,
+    this.elementSuffix,
     this.period
     });
 

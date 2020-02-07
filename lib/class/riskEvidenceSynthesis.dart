@@ -38,13 +38,13 @@ class RiskEvidenceSynthesis {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -57,7 +57,7 @@ class RiskEvidenceSynthesis {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -93,7 +93,7 @@ class RiskEvidenceSynthesis {
   String url;
 
   //  Extensions for url
-  Element element_url;
+  Element elementUrl;
 
   //  A formal identifier that is used to identify this risk evidence
   // synthesis when it is represented in other formats, or referenced in a
@@ -110,7 +110,7 @@ class RiskEvidenceSynthesis {
   String version;
 
   //  Extensions for version
-  Element element_version;
+  Element elementVersion;
 
   //  A natural language name identifying the risk evidence synthesis. This
   // name should be usable as an identifier for the module by machine
@@ -118,21 +118,21 @@ class RiskEvidenceSynthesis {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  A short, descriptive, user-friendly title for the risk evidence
   // synthesis.
   String title;
 
   //  Extensions for title
-  Element element_title;
+  Element elementTitle;
 
   //  The status of this risk evidence synthesis. Enables tracking the
   // life-cycle of the content.
   String status; // <code> enum: draft/active/retired/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  The date  (and optionally time) when the risk evidence synthesis was
   // published. The date must change when the business version changes and
@@ -142,14 +142,14 @@ class RiskEvidenceSynthesis {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  The name of the organization or individual that published the risk
   // evidence synthesis.
   String publisher;
 
   //  Extensions for publisher
-  Element element_publisher;
+  Element elementPublisher;
 
   //  Contact details to assist a user in finding and communicating with the
   // publisher.
@@ -160,7 +160,7 @@ class RiskEvidenceSynthesis {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  A human-readable string to clarify or explain concepts about the
   // resource.
@@ -183,7 +183,7 @@ class RiskEvidenceSynthesis {
   String copyright;
 
   //  Extensions for copyright
-  Element element_copyright;
+  Element elementCopyright;
 
   //  The date on which the resource content was approved by the publisher.
   // Approval happens once when the content is officially approved for
@@ -191,7 +191,7 @@ class RiskEvidenceSynthesis {
   String approvalDate;
 
   //  Extensions for approvalDate
-  Element element_approvalDate;
+  Element elementApprovalDate;
 
   //  The date on which the resource content was last reviewed. Review
   // happens periodically after approval but does not change the original
@@ -199,7 +199,7 @@ class RiskEvidenceSynthesis {
   String lastReviewDate;
 
   //  Extensions for lastReviewDate
-  Element element_lastReviewDate;
+  Element elementLastReviewDate;
 
   //  The period during which the risk evidence synthesis content was or is
   // planned to be in active use.
@@ -264,40 +264,40 @@ RiskEvidenceSynthesis(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
-    this.element_url,
+    this.elementUrl,
     this.identifier,
     this.version,
-    this.element_version,
+    this.elementVersion,
     this.name,
-    this.element_name,
+    this.elementName,
     this.title,
-    this.element_title,
+    this.elementTitle,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.publisher,
-    this.element_publisher,
+    this.elementPublisher,
     this.contact,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.note,
     this.useContext,
     this.jurisdiction,
     this.copyright,
-    this.element_copyright,
+    this.elementCopyright,
     this.approvalDate,
-    this.element_approvalDate,
+    this.elementApprovalDate,
     this.lastReviewDate,
-    this.element_lastReviewDate,
+    this.elementLastReviewDate,
     this.effectivePeriod,
     this.topic,
     this.author,
@@ -350,30 +350,30 @@ class RiskEvidenceSynthesis_SampleSize {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  Number of studies included in this evidence synthesis.
   int numberOfStudies;
 
   //  Extensions for numberOfStudies
-  Element element_numberOfStudies;
+  Element elementNumberOfStudies;
 
   //  Number of participants included in this evidence synthesis.
   int numberOfParticipants;
 
   //  Extensions for numberOfParticipants
-  Element element_numberOfParticipants;
+  Element elementNumberOfParticipants;
 
 RiskEvidenceSynthesis_SampleSize(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.numberOfStudies,
-    this.element_numberOfStudies,
+    this.elementNumberOfStudies,
     this.numberOfParticipants,
-    this.element_numberOfParticipants
+    this.elementNumberOfParticipants
     });
 
   factory RiskEvidenceSynthesis_SampleSize.fromJson(Map<String, dynamic> json) => _$RiskEvidenceSynthesis_SampleSizeFromJson(json);
@@ -413,7 +413,7 @@ class RiskEvidenceSynthesis_RiskEstimate {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  Examples include proportion and mean.
   CodeableConcept type;
@@ -422,7 +422,7 @@ class RiskEvidenceSynthesis_RiskEstimate {
   double value;
 
   //  Extensions for value
-  Element element_value;
+  Element elementValue;
 
   //  Specifies the UCUM unit for the outcome.
   CodeableConcept unitOfMeasure;
@@ -432,13 +432,13 @@ class RiskEvidenceSynthesis_RiskEstimate {
   int denominatorCount;
 
   //  Extensions for denominatorCount
-  Element element_denominatorCount;
+  Element elementDenominatorCount;
 
   //  The number of group members with the outcome of interest.
   int numeratorCount;
 
   //  Extensions for numeratorCount
-  Element element_numeratorCount;
+  Element elementNumeratorCount;
 
   //  A description of the precision of the estimate for the effect.
   List<RiskEvidenceSynthesis_PrecisionEstimate> precisionEstimate;
@@ -448,15 +448,15 @@ RiskEvidenceSynthesis_RiskEstimate(
     this.extension,
     this.modifierExtension,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.type,
     this.value,
-    this.element_value,
+    this.elementValue,
     this.unitOfMeasure,
     this.denominatorCount,
-    this.element_denominatorCount,
+    this.elementDenominatorCount,
     this.numeratorCount,
-    this.element_numeratorCount,
+    this.elementNumeratorCount,
     this.precisionEstimate
     });
 
@@ -500,19 +500,19 @@ class RiskEvidenceSynthesis_PrecisionEstimate {
   double level;
 
   //  Extensions for level
-  Element element_level;
+  Element elementLevel;
 
   //  Lower bound of confidence interval.
   double from;
 
   //  Extensions for from
-  Element element_from;
+  Element elementFrom;
 
   //  Upper bound of confidence interval.
   double to;
 
   //  Extensions for to
-  Element element_to;
+  Element elementTo;
 
 RiskEvidenceSynthesis_PrecisionEstimate(
   {this.id,
@@ -520,11 +520,11 @@ RiskEvidenceSynthesis_PrecisionEstimate(
     this.modifierExtension,
     this.type,
     this.level,
-    this.element_level,
+    this.elementLevel,
     this.from,
-    this.element_from,
+    this.elementFrom,
     this.to,
-    this.element_to
+    this.elementTo
     });
 
   factory RiskEvidenceSynthesis_PrecisionEstimate.fromJson(Map<String, dynamic> json) => _$RiskEvidenceSynthesis_PrecisionEstimateFromJson(json);

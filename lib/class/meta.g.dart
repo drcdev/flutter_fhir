@@ -14,19 +14,19 @@ Meta _$MetaFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     versionId: json['versionId'] as String,
-    element_versionId: json['element_versionId'] == null
+    elementVersionId: json['elementVersionId'] == null
         ? null
-        : Element.fromJson(json['element_versionId'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementVersionId'] as Map<String, dynamic>),
     lastUpdated: json['lastUpdated'] == null
         ? null
         : DateTime.parse(json['lastUpdated'] as String),
-    element_lastUpdated: json['element_lastUpdated'] == null
+    elementLastUpdated: json['elementLastUpdated'] == null
         ? null
-        : Element.fromJson(json['element_lastUpdated'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLastUpdated'] as Map<String, dynamic>),
     source: json['source'] as String,
-    element_source: json['element_source'] == null
+    elementSource: json['elementSource'] == null
         ? null
-        : Element.fromJson(json['element_source'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSource'] as Map<String, dynamic>),
     profile: (json['profile'] as List)?.map((e) => e as String)?.toList(),
     security: (json['security'] as List)
         ?.map((e) =>
@@ -43,11 +43,11 @@ Map<String, dynamic> _$MetaToJson(Meta instance) => <String, dynamic>{
       'id': instance.id,
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'versionId': instance.versionId,
-      'element_versionId': instance.element_versionId?.toJson(),
+      'elementVersionId': instance.elementVersionId?.toJson(),
       'lastUpdated': instance.lastUpdated?.toIso8601String(),
-      'element_lastUpdated': instance.element_lastUpdated?.toJson(),
+      'elementLastUpdated': instance.elementLastUpdated?.toJson(),
       'source': instance.source,
-      'element_source': instance.element_source?.toJson(),
+      'elementSource': instance.elementSource?.toJson(),
       'profile': instance.profile,
       'security': instance.security?.map((e) => e?.toJson())?.toList(),
       'tag': instance.tag?.map((e) => e?.toJson())?.toList(),

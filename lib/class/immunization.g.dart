@@ -19,20 +19,20 @@ Immunization _$ImmunizationFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -47,9 +47,9 @@ Immunization _$ImmunizationFromJson(Map<String, dynamic> json) {
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     statusReason: json['statusReason'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -58,26 +58,26 @@ Immunization _$ImmunizationFromJson(Map<String, dynamic> json) {
         ? null
         : Reference.fromJson(json['encounter'] as Map<String, dynamic>),
     occurrenceDateTime: json['occurrenceDateTime'] as String,
-    element_occurrenceDateTime: json['element_occurrenceDateTime'] == null
+    elementOccurrenceDateTime: json['elementOccurrenceDateTime'] == null
         ? null
         : Element.fromJson(
-            json['element_occurrenceDateTime'] as Map<String, dynamic>),
+            json['elementOccurrenceDateTime'] as Map<String, dynamic>),
     occurrenceString: json['occurrenceString'] as String,
-    element_occurrenceString: json['element_occurrenceString'] == null
+    elementOccurrenceString: json['elementOccurrenceString'] == null
         ? null
         : Element.fromJson(
-            json['element_occurrenceString'] as Map<String, dynamic>),
+            json['elementOccurrenceString'] as Map<String, dynamic>),
     recorded: json['recorded'] == null
         ? null
         : DateTime.parse(json['recorded'] as String),
-    element_recorded: json['element_recorded'] == null
+    elementRecorded: json['elementRecorded'] == null
         ? null
-        : Element.fromJson(json['element_recorded'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementRecorded'] as Map<String, dynamic>),
     primarySource: json['primarySource'] as bool,
-    element_primarySource: json['element_primarySource'] == null
+    elementPrimarySource: json['elementPrimarySource'] == null
         ? null
         : Element.fromJson(
-            json['element_primarySource'] as Map<String, dynamic>),
+            json['elementPrimarySource'] as Map<String, dynamic>),
     reportOrigin: json['reportOrigin'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -89,14 +89,14 @@ Immunization _$ImmunizationFromJson(Map<String, dynamic> json) {
         ? null
         : Reference.fromJson(json['manufacturer'] as Map<String, dynamic>),
     lotNumber: json['lotNumber'] as String,
-    element_lotNumber: json['element_lotNumber'] == null
+    elementLotNumber: json['elementLotNumber'] == null
         ? null
-        : Element.fromJson(json['element_lotNumber'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLotNumber'] as Map<String, dynamic>),
     expirationDate: json['expirationDate'] as String,
-    element_expirationDate: json['element_expirationDate'] == null
+    elementExpirationDate: json['elementExpirationDate'] == null
         ? null
         : Element.fromJson(
-            json['element_expirationDate'] as Map<String, dynamic>),
+            json['elementExpirationDate'] as Map<String, dynamic>),
     site: json['site'] == null
         ? null
         : CodeableConcept.fromJson(json['site'] as Map<String, dynamic>),
@@ -125,9 +125,9 @@ Immunization _$ImmunizationFromJson(Map<String, dynamic> json) {
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     isSubpotent: json['isSubpotent'] as bool,
-    element_isSubpotent: json['element_isSubpotent'] == null
+    elementIsSubpotent: json['elementIsSubpotent'] == null
         ? null
-        : Element.fromJson(json['element_isSubpotent'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementIsSubpotent'] as Map<String, dynamic>),
     subpotentReason: (json['subpotentReason'] as List)
         ?.map((e) => e == null
             ? null
@@ -165,9 +165,9 @@ Map<String, dynamic> _$ImmunizationToJson(Immunization instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -175,27 +175,26 @@ Map<String, dynamic> _$ImmunizationToJson(Immunization instance) =>
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'statusReason': instance.statusReason?.toJson(),
       'vaccineCode': instance.vaccineCode?.toJson(),
       'patient': instance.patient?.toJson(),
       'encounter': instance.encounter?.toJson(),
       'occurrenceDateTime': instance.occurrenceDateTime,
-      'element_occurrenceDateTime':
-          instance.element_occurrenceDateTime?.toJson(),
+      'elementOccurrenceDateTime': instance.elementOccurrenceDateTime?.toJson(),
       'occurrenceString': instance.occurrenceString,
-      'element_occurrenceString': instance.element_occurrenceString?.toJson(),
+      'elementOccurrenceString': instance.elementOccurrenceString?.toJson(),
       'recorded': instance.recorded?.toIso8601String(),
-      'element_recorded': instance.element_recorded?.toJson(),
+      'elementRecorded': instance.elementRecorded?.toJson(),
       'primarySource': instance.primarySource,
-      'element_primarySource': instance.element_primarySource?.toJson(),
+      'elementPrimarySource': instance.elementPrimarySource?.toJson(),
       'reportOrigin': instance.reportOrigin?.toJson(),
       'location': instance.location?.toJson(),
       'manufacturer': instance.manufacturer?.toJson(),
       'lotNumber': instance.lotNumber,
-      'element_lotNumber': instance.element_lotNumber?.toJson(),
+      'elementLotNumber': instance.elementLotNumber?.toJson(),
       'expirationDate': instance.expirationDate,
-      'element_expirationDate': instance.element_expirationDate?.toJson(),
+      'elementExpirationDate': instance.elementExpirationDate?.toJson(),
       'site': instance.site?.toJson(),
       'route': instance.route?.toJson(),
       'doseQuantity': instance.doseQuantity?.toJson(),
@@ -205,7 +204,7 @@ Map<String, dynamic> _$ImmunizationToJson(Immunization instance) =>
       'reasonReference':
           instance.reasonReference?.map((e) => e?.toJson())?.toList(),
       'isSubpotent': instance.isSubpotent,
-      'element_isSubpotent': instance.element_isSubpotent?.toJson(),
+      'elementIsSubpotent': instance.elementIsSubpotent?.toJson(),
       'subpotentReason':
           instance.subpotentReason?.map((e) => e?.toJson())?.toList(),
       'education': instance.education?.map((e) => e?.toJson())?.toList(),
@@ -262,28 +261,27 @@ Immunization_Education _$Immunization_EducationFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     documentType: json['documentType'] as String,
-    element_documentType: json['element_documentType'] == null
+    elementDocumentType: json['elementDocumentType'] == null
         ? null
-        : Element.fromJson(
-            json['element_documentType'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDocumentType'] as Map<String, dynamic>),
     reference: json['reference'] as String,
-    element_reference: json['element_reference'] == null
+    elementReference: json['elementReference'] == null
         ? null
-        : Element.fromJson(json['element_reference'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementReference'] as Map<String, dynamic>),
     publicationDate: json['publicationDate'] == null
         ? null
         : DateTime.parse(json['publicationDate'] as String),
-    element_publicationDate: json['element_publicationDate'] == null
+    elementPublicationDate: json['elementPublicationDate'] == null
         ? null
         : Element.fromJson(
-            json['element_publicationDate'] as Map<String, dynamic>),
+            json['elementPublicationDate'] as Map<String, dynamic>),
     presentationDate: json['presentationDate'] == null
         ? null
         : DateTime.parse(json['presentationDate'] as String),
-    element_presentationDate: json['element_presentationDate'] == null
+    elementPresentationDate: json['elementPresentationDate'] == null
         ? null
         : Element.fromJson(
-            json['element_presentationDate'] as Map<String, dynamic>),
+            json['elementPresentationDate'] as Map<String, dynamic>),
   );
 }
 
@@ -295,13 +293,13 @@ Map<String, dynamic> _$Immunization_EducationToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'documentType': instance.documentType,
-      'element_documentType': instance.element_documentType?.toJson(),
+      'elementDocumentType': instance.elementDocumentType?.toJson(),
       'reference': instance.reference,
-      'element_reference': instance.element_reference?.toJson(),
+      'elementReference': instance.elementReference?.toJson(),
       'publicationDate': instance.publicationDate?.toIso8601String(),
-      'element_publicationDate': instance.element_publicationDate?.toJson(),
+      'elementPublicationDate': instance.elementPublicationDate?.toJson(),
       'presentationDate': instance.presentationDate?.toIso8601String(),
-      'element_presentationDate': instance.element_presentationDate?.toJson(),
+      'elementPresentationDate': instance.elementPresentationDate?.toJson(),
     };
 
 Immunization_Reaction _$Immunization_ReactionFromJson(
@@ -317,16 +315,16 @@ Immunization_Reaction _$Immunization_ReactionFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
-    element_date: json['element_date'] == null
+    elementDate: json['elementDate'] == null
         ? null
-        : Element.fromJson(json['element_date'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDate'] as Map<String, dynamic>),
     detail: json['detail'] == null
         ? null
         : Reference.fromJson(json['detail'] as Map<String, dynamic>),
     reported: json['reported'] as bool,
-    element_reported: json['element_reported'] == null
+    elementReported: json['elementReported'] == null
         ? null
-        : Element.fromJson(json['element_reported'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementReported'] as Map<String, dynamic>),
   );
 }
 
@@ -338,10 +336,10 @@ Map<String, dynamic> _$Immunization_ReactionToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'date': instance.date?.toIso8601String(),
-      'element_date': instance.element_date?.toJson(),
+      'elementDate': instance.elementDate?.toJson(),
       'detail': instance.detail?.toJson(),
       'reported': instance.reported,
-      'element_reported': instance.element_reported?.toJson(),
+      'elementReported': instance.elementReported?.toJson(),
     };
 
 Immunization_ProtocolApplied _$Immunization_ProtocolAppliedFromJson(
@@ -357,9 +355,9 @@ Immunization_ProtocolApplied _$Immunization_ProtocolAppliedFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     series: json['series'] as String,
-    element_series: json['element_series'] == null
+    elementSeries: json['elementSeries'] == null
         ? null
-        : Element.fromJson(json['element_series'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSeries'] as Map<String, dynamic>),
     authority: json['authority'] == null
         ? null
         : Reference.fromJson(json['authority'] as Map<String, dynamic>),
@@ -369,26 +367,25 @@ Immunization_ProtocolApplied _$Immunization_ProtocolAppliedFromJson(
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     doseNumberPositiveInt: json['doseNumberPositiveInt'] as int,
-    element_doseNumberPositiveInt: json['element_doseNumberPositiveInt'] == null
+    elementDoseNumberPositiveInt: json['elementDoseNumberPositiveInt'] == null
         ? null
         : Element.fromJson(
-            json['element_doseNumberPositiveInt'] as Map<String, dynamic>),
+            json['elementDoseNumberPositiveInt'] as Map<String, dynamic>),
     doseNumberString: json['doseNumberString'] as String,
-    element_doseNumberString: json['element_doseNumberString'] == null
+    elementDoseNumberString: json['elementDoseNumberString'] == null
         ? null
         : Element.fromJson(
-            json['element_doseNumberString'] as Map<String, dynamic>),
+            json['elementDoseNumberString'] as Map<String, dynamic>),
     seriesDosesPositiveInt: json['seriesDosesPositiveInt'] as int,
-    element_seriesDosesPositiveInt:
-        json['element_seriesDosesPositiveInt'] == null
-            ? null
-            : Element.fromJson(
-                json['element_seriesDosesPositiveInt'] as Map<String, dynamic>),
-    seriesDosesString: json['seriesDosesString'] as String,
-    element_seriesDosesString: json['element_seriesDosesString'] == null
+    elementSeriesDosesPositiveInt: json['elementSeriesDosesPositiveInt'] == null
         ? null
         : Element.fromJson(
-            json['element_seriesDosesString'] as Map<String, dynamic>),
+            json['elementSeriesDosesPositiveInt'] as Map<String, dynamic>),
+    seriesDosesString: json['seriesDosesString'] as String,
+    elementSeriesDosesString: json['elementSeriesDosesString'] == null
+        ? null
+        : Element.fromJson(
+            json['elementSeriesDosesString'] as Map<String, dynamic>),
   );
 }
 
@@ -400,18 +397,18 @@ Map<String, dynamic> _$Immunization_ProtocolAppliedToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'series': instance.series,
-      'element_series': instance.element_series?.toJson(),
+      'elementSeries': instance.elementSeries?.toJson(),
       'authority': instance.authority?.toJson(),
       'targetDisease':
           instance.targetDisease?.map((e) => e?.toJson())?.toList(),
       'doseNumberPositiveInt': instance.doseNumberPositiveInt,
-      'element_doseNumberPositiveInt':
-          instance.element_doseNumberPositiveInt?.toJson(),
+      'elementDoseNumberPositiveInt':
+          instance.elementDoseNumberPositiveInt?.toJson(),
       'doseNumberString': instance.doseNumberString,
-      'element_doseNumberString': instance.element_doseNumberString?.toJson(),
+      'elementDoseNumberString': instance.elementDoseNumberString?.toJson(),
       'seriesDosesPositiveInt': instance.seriesDosesPositiveInt,
-      'element_seriesDosesPositiveInt':
-          instance.element_seriesDosesPositiveInt?.toJson(),
+      'elementSeriesDosesPositiveInt':
+          instance.elementSeriesDosesPositiveInt?.toJson(),
       'seriesDosesString': instance.seriesDosesString,
-      'element_seriesDosesString': instance.element_seriesDosesString?.toJson(),
+      'elementSeriesDosesString': instance.elementSeriesDosesString?.toJson(),
     };

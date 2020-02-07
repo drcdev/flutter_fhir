@@ -35,13 +35,13 @@ class CoverageEligibilityResponse {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -54,7 +54,7 @@ class CoverageEligibilityResponse {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -86,7 +86,7 @@ class CoverageEligibilityResponse {
   String status;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  Code to specify whether requesting: prior authorization requirements
   // for some service categories or billing codes; benefits for coverages
@@ -96,7 +96,7 @@ class CoverageEligibilityResponse {
   List<String> purpose; // <code> enum: auth-requirements/benefits/discovery/validation> purpose;
 
   //  Extensions for purpose
-  List<Element> element_purpose;
+  List<Element> elementPurpose;
 
   //  The party who is the beneficiary of the supplied coverage and for whom
   // eligibility is sought.
@@ -107,7 +107,7 @@ class CoverageEligibilityResponse {
   String servicedDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for servicedDate
-  Element element_servicedDate;
+  Element elementServicedDate;
 
   //  The date or dates when the enclosed suite of services were performed
   // or completed.
@@ -117,7 +117,7 @@ class CoverageEligibilityResponse {
   DateTime created;
 
   //  Extensions for created
-  Element element_created;
+  Element elementCreated;
 
   //  The provider which is responsible for the request.
   Reference requestor;
@@ -129,13 +129,13 @@ class CoverageEligibilityResponse {
   String outcome; // <code> enum: queued/complete/error/partial;
 
   //  Extensions for outcome
-  Element element_outcome;
+  Element elementOutcome;
 
   //  A human readable description of the status of the adjudication.
   String disposition;
 
   //  Extensions for disposition
-  Element element_disposition;
+  Element elementDisposition;
 
   //  The Insurer who issued the coverage in question and is the author of
   // the response.
@@ -150,7 +150,7 @@ class CoverageEligibilityResponse {
   String preAuthRef;
 
   //  Extensions for preAuthRef
-  Element element_preAuthRef;
+  Element elementPreAuthRef;
 
   //  A code for the form to be used for printing the content.
   CodeableConcept form;
@@ -165,31 +165,31 @@ CoverageEligibilityResponse(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.purpose,
-    this.element_purpose,
+    this.elementPurpose,
     this.servicedDate,
-    this.element_servicedDate,
+    this.elementServicedDate,
     this.servicedPeriod,
     this.created,
-    this.element_created,
+    this.elementCreated,
     this.requestor,
     this.outcome,
-    this.element_outcome,
+    this.elementOutcome,
     this.disposition,
-    this.element_disposition,
+    this.elementDisposition,
     this.insurance,
     this.preAuthRef,
-    this.element_preAuthRef,
+    this.elementPreAuthRef,
     this.form,
     this.error
     });
@@ -239,7 +239,7 @@ class CoverageEligibilityResponse_Insurance {
   bool inforce;
 
   //  Extensions for inforce
-  Element element_inforce;
+  Element elementInforce;
 
   //  The term of the benefits documented in this response.
   Period benefitPeriod;
@@ -254,7 +254,7 @@ CoverageEligibilityResponse_Insurance(
     this.extension,
     this.modifierExtension,
     this.inforce,
-    this.element_inforce,
+    this.elementInforce,
     this.benefitPeriod,
     this.item
     });
@@ -314,19 +314,19 @@ class CoverageEligibilityResponse_Item {
   bool excluded;
 
   //  Extensions for excluded
-  Element element_excluded;
+  Element elementExcluded;
 
   //  A short name or tag for the benefit.
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  A richer description of the benefit or services covered.
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  Is a flag to indicate whether the benefits refer to in-network
   // providers or out-of-network providers.
@@ -347,7 +347,7 @@ class CoverageEligibilityResponse_Item {
   bool authorizationRequired;
 
   //  Extensions for authorizationRequired
-  Element element_authorizationRequired;
+  Element elementAuthorizationRequired;
 
   //  Codes or comments regarding information or actions associated with the
   // preauthorization.
@@ -358,7 +358,7 @@ class CoverageEligibilityResponse_Item {
   String authorizationUrl;
 
   //  Extensions for authorizationUrl
-  Element element_authorizationUrl;
+  Element elementAuthorizationUrl;
 
 CoverageEligibilityResponse_Item(
   {this.id,
@@ -369,20 +369,20 @@ CoverageEligibilityResponse_Item(
     this.modifier,
     this.provider,
     this.excluded,
-    this.element_excluded,
+    this.elementExcluded,
     this.name,
-    this.element_name,
+    this.elementName,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.network,
     this.unit,
     this.term,
     this.benefit,
     this.authorizationRequired,
-    this.element_authorizationRequired,
+    this.elementAuthorizationRequired,
     this.authorizationSupporting,
     this.authorizationUrl,
-    this.element_authorizationUrl
+    this.elementAuthorizationUrl
     });
 
   factory CoverageEligibilityResponse_Item.fromJson(Map<String, dynamic> json) => _$CoverageEligibilityResponse_ItemFromJson(json);
@@ -425,13 +425,13 @@ class CoverageEligibilityResponse_Benefit {
   int allowedUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
 
   //  Extensions for allowedUnsignedInt
-  Element element_allowedUnsignedInt;
+  Element elementAllowedUnsignedInt;
 
   //  The quantity of the benefit which is permitted under the coverage.
   String allowedString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for allowedString
-  Element element_allowedString;
+  Element elementAllowedString;
 
   //  The quantity of the benefit which is permitted under the coverage.
   Money allowedMoney;
@@ -440,13 +440,13 @@ class CoverageEligibilityResponse_Benefit {
   int usedUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
 
   //  Extensions for usedUnsignedInt
-  Element element_usedUnsignedInt;
+  Element elementUsedUnsignedInt;
 
   //  The quantity of the benefit which have been consumed to date.
   String usedString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for usedString
-  Element element_usedString;
+  Element elementUsedString;
 
   //  The quantity of the benefit which have been consumed to date.
   Money usedMoney;
@@ -457,14 +457,14 @@ CoverageEligibilityResponse_Benefit(
     this.extension,
     this.modifierExtension,
     this.allowedUnsignedInt,
-    this.element_allowedUnsignedInt,
+    this.elementAllowedUnsignedInt,
     this.allowedString,
-    this.element_allowedString,
+    this.elementAllowedString,
     this.allowedMoney,
     this.usedUnsignedInt,
-    this.element_usedUnsignedInt,
+    this.elementUsedUnsignedInt,
     this.usedString,
-    this.element_usedString,
+    this.elementUsedString,
     this.usedMoney
     });
 

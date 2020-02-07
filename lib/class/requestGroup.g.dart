@@ -13,20 +13,20 @@ RequestGroup _$RequestGroupFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -43,14 +43,13 @@ RequestGroup _$RequestGroupFromJson(Map<String, dynamic> json) {
     instantiatesCanonical: (json['instantiatesCanonical'] as List)
         ?.map((e) => e as String)
         ?.toList(),
-    element_instantiatesCanonical:
-        (json['element_instantiatesCanonical'] as List)
-            ?.map((e) =>
-                e == null ? null : Element.fromJson(e as Map<String, dynamic>))
-            ?.toList(),
+    elementInstantiatesCanonical: (json['elementInstantiatesCanonical'] as List)
+        ?.map((e) =>
+            e == null ? null : Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     instantiatesUri:
         (json['instantiatesUri'] as List)?.map((e) => e as String)?.toList(),
-    element_instantiatesUri: (json['element_instantiatesUri'] as List)
+    elementInstantiatesUri: (json['elementInstantiatesUri'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -66,17 +65,17 @@ RequestGroup _$RequestGroupFromJson(Map<String, dynamic> json) {
         ? null
         : Identifier.fromJson(json['groupIdentifier'] as Map<String, dynamic>),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     intent: json['intent'] as String,
-    element_intent: json['element_intent'] == null
+    elementIntent: json['elementIntent'] == null
         ? null
-        : Element.fromJson(json['element_intent'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementIntent'] as Map<String, dynamic>),
     priority: json['priority'] as String,
-    element_priority: json['element_priority'] == null
+    elementPriority: json['elementPriority'] == null
         ? null
-        : Element.fromJson(json['element_priority'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPriority'] as Map<String, dynamic>),
     code: json['code'] == null
         ? null
         : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
@@ -89,9 +88,9 @@ RequestGroup _$RequestGroupFromJson(Map<String, dynamic> json) {
     authoredOn: json['authoredOn'] == null
         ? null
         : DateTime.parse(json['authoredOn'] as String),
-    element_authoredOn: json['element_authoredOn'] == null
+    elementAuthoredOn: json['elementAuthoredOn'] == null
         ? null
-        : Element.fromJson(json['element_authoredOn'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementAuthoredOn'] as Map<String, dynamic>),
     author: json['author'] == null
         ? null
         : Reference.fromJson(json['author'] as Map<String, dynamic>),
@@ -121,9 +120,9 @@ Map<String, dynamic> _$RequestGroupToJson(RequestGroup instance) =>
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -131,26 +130,26 @@ Map<String, dynamic> _$RequestGroupToJson(RequestGroup instance) =>
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'instantiatesCanonical': instance.instantiatesCanonical,
-      'element_instantiatesCanonical': instance.element_instantiatesCanonical
+      'elementInstantiatesCanonical': instance.elementInstantiatesCanonical
           ?.map((e) => e?.toJson())
           ?.toList(),
       'instantiatesUri': instance.instantiatesUri,
-      'element_instantiatesUri':
-          instance.element_instantiatesUri?.map((e) => e?.toJson())?.toList(),
+      'elementInstantiatesUri':
+          instance.elementInstantiatesUri?.map((e) => e?.toJson())?.toList(),
       'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
       'replaces': instance.replaces?.map((e) => e?.toJson())?.toList(),
       'groupIdentifier': instance.groupIdentifier?.toJson(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'intent': instance.intent,
-      'element_intent': instance.element_intent?.toJson(),
+      'elementIntent': instance.elementIntent?.toJson(),
       'priority': instance.priority,
-      'element_priority': instance.element_priority?.toJson(),
+      'elementPriority': instance.elementPriority?.toJson(),
       'code': instance.code?.toJson(),
       'subject': instance.subject?.toJson(),
       'encounter': instance.encounter?.toJson(),
       'authoredOn': instance.authoredOn?.toIso8601String(),
-      'element_authoredOn': instance.element_authoredOn?.toJson(),
+      'elementAuthoredOn': instance.elementAuthoredOn?.toJson(),
       'author': instance.author?.toJson(),
       'reasonCode': instance.reasonCode?.map((e) => e?.toJson())?.toList(),
       'reasonReference':
@@ -171,26 +170,26 @@ RequestGroup_Action _$RequestGroup_ActionFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     prefix: json['prefix'] as String,
-    element_prefix: json['element_prefix'] == null
+    elementPrefix: json['elementPrefix'] == null
         ? null
-        : Element.fromJson(json['element_prefix'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPrefix'] as Map<String, dynamic>),
     title: json['title'] as String,
-    element_title: json['element_title'] == null
+    elementTitle: json['elementTitle'] == null
         ? null
-        : Element.fromJson(json['element_title'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementTitle'] as Map<String, dynamic>),
     description: json['description'] as String,
-    element_description: json['element_description'] == null
+    elementDescription: json['elementDescription'] == null
         ? null
-        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
     textEquivalent: json['textEquivalent'] as String,
-    element_textEquivalent: json['element_textEquivalent'] == null
+    elementTextEquivalent: json['elementTextEquivalent'] == null
         ? null
         : Element.fromJson(
-            json['element_textEquivalent'] as Map<String, dynamic>),
+            json['elementTextEquivalent'] as Map<String, dynamic>),
     priority: json['priority'] as String,
-    element_priority: json['element_priority'] == null
+    elementPriority: json['elementPriority'] == null
         ? null
-        : Element.fromJson(json['element_priority'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPriority'] as Map<String, dynamic>),
     code: (json['code'] as List)
         ?.map((e) => e == null
             ? null
@@ -212,10 +211,10 @@ RequestGroup_Action _$RequestGroup_ActionFromJson(Map<String, dynamic> json) {
             : RequestGroup_RelatedAction.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     timingDateTime: json['timingDateTime'] as String,
-    element_timingDateTime: json['element_timingDateTime'] == null
+    elementTimingDateTime: json['elementTimingDateTime'] == null
         ? null
         : Element.fromJson(
-            json['element_timingDateTime'] as Map<String, dynamic>),
+            json['elementTimingDateTime'] as Map<String, dynamic>),
     timingAge: json['timingAge'] == null
         ? null
         : Age.fromJson(json['timingAge'] as Map<String, dynamic>),
@@ -239,30 +238,30 @@ RequestGroup_Action _$RequestGroup_ActionFromJson(Map<String, dynamic> json) {
         ? null
         : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     groupingBehavior: json['groupingBehavior'] as String,
-    element_groupingBehavior: json['element_groupingBehavior'] == null
+    elementGroupingBehavior: json['elementGroupingBehavior'] == null
         ? null
         : Element.fromJson(
-            json['element_groupingBehavior'] as Map<String, dynamic>),
+            json['elementGroupingBehavior'] as Map<String, dynamic>),
     selectionBehavior: json['selectionBehavior'] as String,
-    element_selectionBehavior: json['element_selectionBehavior'] == null
+    elementSelectionBehavior: json['elementSelectionBehavior'] == null
         ? null
         : Element.fromJson(
-            json['element_selectionBehavior'] as Map<String, dynamic>),
+            json['elementSelectionBehavior'] as Map<String, dynamic>),
     requiredBehavior: json['requiredBehavior'] as String,
-    element_requiredBehavior: json['element_requiredBehavior'] == null
+    elementRequiredBehavior: json['elementRequiredBehavior'] == null
         ? null
         : Element.fromJson(
-            json['element_requiredBehavior'] as Map<String, dynamic>),
+            json['elementRequiredBehavior'] as Map<String, dynamic>),
     precheckBehavior: json['precheckBehavior'] as String,
-    element_precheckBehavior: json['element_precheckBehavior'] == null
+    elementPrecheckBehavior: json['elementPrecheckBehavior'] == null
         ? null
         : Element.fromJson(
-            json['element_precheckBehavior'] as Map<String, dynamic>),
+            json['elementPrecheckBehavior'] as Map<String, dynamic>),
     cardinalityBehavior: json['cardinalityBehavior'] as String,
-    element_cardinalityBehavior: json['element_cardinalityBehavior'] == null
+    elementCardinalityBehavior: json['elementCardinalityBehavior'] == null
         ? null
         : Element.fromJson(
-            json['element_cardinalityBehavior'] as Map<String, dynamic>),
+            json['elementCardinalityBehavior'] as Map<String, dynamic>),
     resource: json['resource'] == null
         ? null
         : Reference.fromJson(json['resource'] as Map<String, dynamic>),
@@ -282,15 +281,15 @@ Map<String, dynamic> _$RequestGroup_ActionToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'prefix': instance.prefix,
-      'element_prefix': instance.element_prefix?.toJson(),
+      'elementPrefix': instance.elementPrefix?.toJson(),
       'title': instance.title,
-      'element_title': instance.element_title?.toJson(),
+      'elementTitle': instance.elementTitle?.toJson(),
       'description': instance.description,
-      'element_description': instance.element_description?.toJson(),
+      'elementDescription': instance.elementDescription?.toJson(),
       'textEquivalent': instance.textEquivalent,
-      'element_textEquivalent': instance.element_textEquivalent?.toJson(),
+      'elementTextEquivalent': instance.elementTextEquivalent?.toJson(),
       'priority': instance.priority,
-      'element_priority': instance.element_priority?.toJson(),
+      'elementPriority': instance.elementPriority?.toJson(),
       'code': instance.code?.map((e) => e?.toJson())?.toList(),
       'documentation':
           instance.documentation?.map((e) => e?.toJson())?.toList(),
@@ -298,7 +297,7 @@ Map<String, dynamic> _$RequestGroup_ActionToJson(
       'relatedAction':
           instance.relatedAction?.map((e) => e?.toJson())?.toList(),
       'timingDateTime': instance.timingDateTime,
-      'element_timingDateTime': instance.element_timingDateTime?.toJson(),
+      'elementTimingDateTime': instance.elementTimingDateTime?.toJson(),
       'timingAge': instance.timingAge?.toJson(),
       'timingPeriod': instance.timingPeriod?.toJson(),
       'timingDuration': instance.timingDuration?.toJson(),
@@ -307,16 +306,16 @@ Map<String, dynamic> _$RequestGroup_ActionToJson(
       'participant': instance.participant?.map((e) => e?.toJson())?.toList(),
       'type': instance.type?.toJson(),
       'groupingBehavior': instance.groupingBehavior,
-      'element_groupingBehavior': instance.element_groupingBehavior?.toJson(),
+      'elementGroupingBehavior': instance.elementGroupingBehavior?.toJson(),
       'selectionBehavior': instance.selectionBehavior,
-      'element_selectionBehavior': instance.element_selectionBehavior?.toJson(),
+      'elementSelectionBehavior': instance.elementSelectionBehavior?.toJson(),
       'requiredBehavior': instance.requiredBehavior,
-      'element_requiredBehavior': instance.element_requiredBehavior?.toJson(),
+      'elementRequiredBehavior': instance.elementRequiredBehavior?.toJson(),
       'precheckBehavior': instance.precheckBehavior,
-      'element_precheckBehavior': instance.element_precheckBehavior?.toJson(),
+      'elementPrecheckBehavior': instance.elementPrecheckBehavior?.toJson(),
       'cardinalityBehavior': instance.cardinalityBehavior,
-      'element_cardinalityBehavior':
-          instance.element_cardinalityBehavior?.toJson(),
+      'elementCardinalityBehavior':
+          instance.elementCardinalityBehavior?.toJson(),
       'resource': instance.resource?.toJson(),
       'action': instance.action?.map((e) => e?.toJson())?.toList(),
     };
@@ -334,9 +333,9 @@ RequestGroup_Condition _$RequestGroup_ConditionFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     kind: json['kind'] as String,
-    element_kind: json['element_kind'] == null
+    elementKind: json['elementKind'] == null
         ? null
-        : Element.fromJson(json['element_kind'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementKind'] as Map<String, dynamic>),
     expression: json['expression'] == null
         ? null
         : Expression.fromJson(json['expression'] as Map<String, dynamic>),
@@ -351,7 +350,7 @@ Map<String, dynamic> _$RequestGroup_ConditionToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'kind': instance.kind,
-      'element_kind': instance.element_kind?.toJson(),
+      'elementKind': instance.elementKind?.toJson(),
       'expression': instance.expression?.toJson(),
     };
 
@@ -368,14 +367,13 @@ RequestGroup_RelatedAction _$RequestGroup_RelatedActionFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     actionId: json['actionId'] as String,
-    element_actionId: json['element_actionId'] == null
+    elementActionId: json['elementActionId'] == null
         ? null
-        : Element.fromJson(json['element_actionId'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementActionId'] as Map<String, dynamic>),
     relationship: json['relationship'] as String,
-    element_relationship: json['element_relationship'] == null
+    elementRelationship: json['elementRelationship'] == null
         ? null
-        : Element.fromJson(
-            json['element_relationship'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementRelationship'] as Map<String, dynamic>),
     offsetDuration: json['offsetDuration'] == null
         ? null
         : Duration.fromJson(json['offsetDuration'] as Map<String, dynamic>),
@@ -393,9 +391,9 @@ Map<String, dynamic> _$RequestGroup_RelatedActionToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'actionId': instance.actionId,
-      'element_actionId': instance.element_actionId?.toJson(),
+      'elementActionId': instance.elementActionId?.toJson(),
       'relationship': instance.relationship,
-      'element_relationship': instance.element_relationship?.toJson(),
+      'elementRelationship': instance.elementRelationship?.toJson(),
       'offsetDuration': instance.offsetDuration?.toJson(),
       'offsetRange': instance.offsetRange?.toJson(),
     };

@@ -38,13 +38,13 @@ class Claim {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -57,7 +57,7 @@ class Claim {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -89,7 +89,7 @@ class Claim {
   String status;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  The category of claim, e.g. oral, pharmacy, vision, institutional,
   // professional.
@@ -107,7 +107,7 @@ class Claim {
   String use; // <code> enum: claim/preauthorization/predetermination;
 
   //  Extensions for use
-  Element element_use;
+  Element elementUse;
 
   //  The party to whom the professional services and/or products have been
   // supplied or are being considered and for whom actual or forecast
@@ -121,7 +121,7 @@ class Claim {
   DateTime created;
 
   //  Extensions for created
-  Element element_created;
+  Element elementCreated;
 
   //  Individual who created the claim, predetermination or
   // preauthorization.
@@ -203,22 +203,22 @@ Claim(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.subType,
     this.use,
-    this.element_use,
+    this.elementUse,
     this.billablePeriod,
     this.created,
-    this.element_created,
+    this.elementCreated,
     this.enterer,
     this.insurer,
     this.fundsReserve,
@@ -374,7 +374,7 @@ class Claim_CareTeam {
   int sequence;
 
   //  Extensions for sequence
-  Element element_sequence;
+  Element elementSequence;
 
   //  Member of the team who provided the product or service.
   Reference provider;
@@ -384,7 +384,7 @@ class Claim_CareTeam {
   bool responsible;
 
   //  Extensions for responsible
-  Element element_responsible;
+  Element elementResponsible;
 
   //  The lead, assisting or supervising practitioner and their discipline
   // if a multidisciplinary team.
@@ -400,9 +400,9 @@ Claim_CareTeam(
     this.extension,
     this.modifierExtension,
     this.sequence,
-    this.element_sequence,
+    this.elementSequence,
     this.responsible,
-    this.element_responsible,
+    this.elementResponsible,
     this.role,
     this.qualification
     });
@@ -444,7 +444,7 @@ class Claim_SupportingInfo {
   int sequence;
 
   //  Extensions for sequence
-  Element element_sequence;
+  Element elementSequence;
 
   //  The general class of the information supplied: information; exception;
   // accident, employment; onset, etc.
@@ -459,7 +459,7 @@ class Claim_SupportingInfo {
   String timingDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for timingDate
-  Element element_timingDate;
+  Element elementTimingDate;
 
   //  The date when or period to which this information refers.
   Period timingPeriod;
@@ -470,7 +470,7 @@ class Claim_SupportingInfo {
   bool valueBoolean; //  pattern: ^true|false$
 
   //  Extensions for valueBoolean
-  Element element_valueBoolean;
+  Element elementValueBoolean;
 
   //  Additional data or information such as resources, documents, images
   // etc. including references to the data or the actual inclusion of the
@@ -478,7 +478,7 @@ class Claim_SupportingInfo {
   String valueString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for valueString
-  Element element_valueString;
+  Element elementValueString;
 
   //  Additional data or information such as resources, documents, images
   // etc. including references to the data or the actual inclusion of the
@@ -505,15 +505,15 @@ Claim_SupportingInfo(
     this.extension,
     this.modifierExtension,
     this.sequence,
-    this.element_sequence,
+    this.elementSequence,
     this.code,
     this.timingDate,
-    this.element_timingDate,
+    this.elementTimingDate,
     this.timingPeriod,
     this.valueBoolean,
-    this.element_valueBoolean,
+    this.elementValueBoolean,
     this.valueString,
-    this.element_valueString,
+    this.elementValueString,
     this.valueQuantity,
     this.valueAttachment,
     this.valueReference,
@@ -557,7 +557,7 @@ class Claim_Diagnosis {
   int sequence;
 
   //  Extensions for sequence
-  Element element_sequence;
+  Element elementSequence;
 
   //  The nature of illness or problem in a coded form or as a reference to
   // an external defined Condition.
@@ -584,7 +584,7 @@ Claim_Diagnosis(
     this.extension,
     this.modifierExtension,
     this.sequence,
-    this.element_sequence,
+    this.elementSequence,
     this.diagnosisCodeableConcept,
     this.diagnosisReference,
     this.type,
@@ -629,7 +629,7 @@ class Claim_Procedure {
   int sequence;
 
   //  Extensions for sequence
-  Element element_sequence;
+  Element elementSequence;
 
   //  When the condition was observed or the relative ranking.
   List<CodeableConcept> type;
@@ -638,7 +638,7 @@ class Claim_Procedure {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  The code or reference to a Procedure resource which identifies the
   // clinical intervention performed.
@@ -656,10 +656,10 @@ Claim_Procedure(
     this.extension,
     this.modifierExtension,
     this.sequence,
-    this.element_sequence,
+    this.elementSequence,
     this.type,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.procedureCodeableConcept,
     this.procedureReference,
     this.udi
@@ -703,14 +703,14 @@ class Claim_Insurance {
   int sequence;
 
   //  Extensions for sequence
-  Element element_sequence;
+  Element elementSequence;
 
   //  A flag to indicate that this Coverage is to be used for adjudication
   // of this claim when set to true.
   bool focal;
 
   //  Extensions for focal
-  Element element_focal;
+  Element elementFocal;
 
   //  The business identifier to be used when the claim is sent for
   // adjudication against this insurance policy.
@@ -727,7 +727,7 @@ class Claim_Insurance {
   String businessArrangement;
 
   //  Extensions for businessArrangement
-  Element element_businessArrangement;
+  Element elementBusinessArrangement;
 
   //  Reference numbers previously provided by the insurer to the provider
   // to be quoted on subsequent claims containing services or products
@@ -735,7 +735,7 @@ class Claim_Insurance {
   List<String> preAuthRef;
 
   //  Extensions for preAuthRef
-  List<Element> element_preAuthRef;
+  List<Element> elementPreAuthRef;
 
   //  The result of the adjudication of the line items for the Coverage
   // specified in this insurance.
@@ -747,14 +747,14 @@ Claim_Insurance(
     this.extension,
     this.modifierExtension,
     this.sequence,
-    this.element_sequence,
+    this.elementSequence,
     this.focal,
-    this.element_focal,
+    this.elementFocal,
     this.identifier,
     this.businessArrangement,
-    this.element_businessArrangement,
+    this.elementBusinessArrangement,
     this.preAuthRef,
-    this.element_preAuthRef,
+    this.elementPreAuthRef,
     this.claimResponse
     });
 
@@ -796,7 +796,7 @@ class Claim_Accident {
   String date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  The type or context of the accident event for the purposes of
   // selection of potential insurance coverages and determination of
@@ -814,7 +814,7 @@ Claim_Accident(
     this.extension,
     this.modifierExtension,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.type,
     this.locationAddress,
     this.locationReference
@@ -857,32 +857,32 @@ class Claim_Item {
   int sequence;
 
   //  Extensions for sequence
-  Element element_sequence;
+  Element elementSequence;
 
   //  CareTeam members related to this service or product.
   List<int> careTeamSequence;
 
   //  Extensions for careTeamSequence
-  List<Element> element_careTeamSequence;
+  List<Element> elementCareTeamSequence;
 
   //  Diagnosis applicable for this service or product.
   List<int> diagnosisSequence;
 
   //  Extensions for diagnosisSequence
-  List<Element> element_diagnosisSequence;
+  List<Element> elementDiagnosisSequence;
 
   //  Procedures applicable for this service or product.
   List<int> procedureSequence;
 
   //  Extensions for procedureSequence
-  List<Element> element_procedureSequence;
+  List<Element> elementProcedureSequence;
 
   //  Exceptions, special conditions and supporting information applicable
   // for this service or product.
   List<int> informationSequence;
 
   //  Extensions for informationSequence
-  List<Element> element_informationSequence;
+  List<Element> elementInformationSequence;
 
   //  The type of revenue or cost center providing the product and/or
   // service.
@@ -909,7 +909,7 @@ class Claim_Item {
   String servicedDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for servicedDate
-  Element element_servicedDate;
+  Element elementServicedDate;
 
   //  The date or dates when the service or product was supplied, performed
   // or completed.
@@ -939,7 +939,7 @@ class Claim_Item {
   double factor;
 
   //  Extensions for factor
-  Element element_factor;
+  Element elementFactor;
 
   //  The quantity times the unit price for an additional service or product
   // or charge.
@@ -969,21 +969,21 @@ Claim_Item(
     this.extension,
     this.modifierExtension,
     this.sequence,
-    this.element_sequence,
+    this.elementSequence,
     this.careTeamSequence,
-    this.element_careTeamSequence,
+    this.elementCareTeamSequence,
     this.diagnosisSequence,
-    this.element_diagnosisSequence,
+    this.elementDiagnosisSequence,
     this.procedureSequence,
-    this.element_procedureSequence,
+    this.elementProcedureSequence,
     this.informationSequence,
-    this.element_informationSequence,
+    this.elementInformationSequence,
     this.revenue,
     this.category,
     this.modifier,
     this.programCode,
     this.servicedDate,
-    this.element_servicedDate,
+    this.elementServicedDate,
     this.servicedPeriod,
     this.locationCodeableConcept,
     this.locationAddress,
@@ -991,7 +991,7 @@ Claim_Item(
     this.quantity,
     this.unitPrice,
     this.factor,
-    this.element_factor,
+    this.elementFactor,
     this.net,
     this.udi,
     this.bodySite,
@@ -1037,7 +1037,7 @@ class Claim_Detail {
   int sequence;
 
   //  Extensions for sequence
-  Element element_sequence;
+  Element elementSequence;
 
   //  The type of revenue or cost center providing the product and/or
   // service.
@@ -1074,7 +1074,7 @@ class Claim_Detail {
   double factor;
 
   //  Extensions for factor
-  Element element_factor;
+  Element elementFactor;
 
   //  The quantity times the unit price for an additional service or product
   // or charge.
@@ -1093,7 +1093,7 @@ Claim_Detail(
     this.extension,
     this.modifierExtension,
     this.sequence,
-    this.element_sequence,
+    this.elementSequence,
     this.revenue,
     this.category,
     this.modifier,
@@ -1101,7 +1101,7 @@ Claim_Detail(
     this.quantity,
     this.unitPrice,
     this.factor,
-    this.element_factor,
+    this.elementFactor,
     this.net,
     this.udi,
     this.subDetail
@@ -1144,7 +1144,7 @@ class Claim_SubDetail {
   int sequence;
 
   //  Extensions for sequence
-  Element element_sequence;
+  Element elementSequence;
 
   //  The type of revenue or cost center providing the product and/or
   // service.
@@ -1181,7 +1181,7 @@ class Claim_SubDetail {
   double factor;
 
   //  Extensions for factor
-  Element element_factor;
+  Element elementFactor;
 
   //  The quantity times the unit price for an additional service or product
   // or charge.
@@ -1196,7 +1196,7 @@ Claim_SubDetail(
     this.extension,
     this.modifierExtension,
     this.sequence,
-    this.element_sequence,
+    this.elementSequence,
     this.revenue,
     this.category,
     this.modifier,
@@ -1204,7 +1204,7 @@ Claim_SubDetail(
     this.quantity,
     this.unitPrice,
     this.factor,
-    this.element_factor,
+    this.elementFactor,
     this.net,
     this.udi
     });

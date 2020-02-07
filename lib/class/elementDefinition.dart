@@ -71,14 +71,14 @@ class ElementDefinition {
   String path;
 
   //  Extensions for path
-  Element element_path;
+  Element elementPath;
 
   //  Codes that define how this element is represented in instances, when
   // the deviation varies from the normal case.
   List<String> representation; // <code> enum: xmlAttr/xmlText/typeAttr/cdaText/xhtml> representation;
 
   //  Extensions for representation
-  List<Element> element_representation;
+  List<Element> elementRepresentation;
 
   //  The name of this element definition slice, when slicing is working.
   // The name must be a token with no dots or spaces. This is a unique name
@@ -87,7 +87,7 @@ class ElementDefinition {
   String sliceName;
 
   //  Extensions for sliceName
-  Element element_sliceName;
+  Element elementSliceName;
 
   //  If true, indicates that this slice definition is constraining a slice
   // definition with the same name in an inherited profile. If false, the
@@ -97,7 +97,7 @@ class ElementDefinition {
   bool sliceIsConstraining;
 
   //  Extensions for sliceIsConstraining
-  Element element_sliceIsConstraining;
+  Element elementSliceIsConstraining;
 
   //  A single preferred label which is the text to display beside the
   // element indicating its meaning or to use to prompt for the element in a
@@ -105,7 +105,7 @@ class ElementDefinition {
   String label;
 
   //  Extensions for label
-  Element element_label;
+  Element elementLabel;
 
   //  A code that has the same meaning as the element in a particular
   // terminology.
@@ -126,7 +126,7 @@ class ElementDefinition {
   String short;
 
   //  Extensions for short
-  Element element_short;
+  Element elementShort;
 
   //  Provides a complete explanation of the meaning of the data element for
   // human readability.  For the case of elements derived from existing
@@ -137,7 +137,7 @@ class ElementDefinition {
   String definition;
 
   //  Extensions for definition
-  Element element_definition;
+  Element elementDefinition;
 
   //  Explanatory notes and implementation guidance about the data element,
   // including notes about how to use the data properly, exceptions to
@@ -146,7 +146,7 @@ class ElementDefinition {
   String comment;
 
   //  Extensions for comment
-  Element element_comment;
+  Element elementComment;
 
   //  This element is for traceability of why the element was created and
   // why the constraints exist as they do. This may be used to point to
@@ -155,26 +155,26 @@ class ElementDefinition {
   String requirements;
 
   //  Extensions for requirements
-  Element element_requirements;
+  Element elementRequirements;
 
   //  Identifies additional names by which this element might also be known.
   List<String> alias;
 
   //  Extensions for alias
-  List<Element> element_alias;
+  List<Element> elementAlias;
 
   //  The minimum number of times this element SHALL appear in the instance.
   int min;
 
   //  Extensions for min
-  Element element_min;
+  Element elementMin;
 
   //  The maximum number of times this element is permitted to appear in the
   // instance.
   String max;
 
   //  Extensions for max
-  Element element_max;
+  Element elementMax;
 
   //  Information about the base definition of the element, provided to make
   // it unnecessary for tools to trace the deviation of the element through
@@ -194,7 +194,7 @@ class ElementDefinition {
   String contentReference;
 
   //  Extensions for contentReference
-  Element element_contentReference;
+  Element elementContentReference;
 
   //  The data type or resource that the value of this element is permitted
   // to be.
@@ -205,133 +205,133 @@ class ElementDefinition {
   String defaultValueBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
 
   //  Extensions for defaultValueBase64Binary
-  Element element_defaultValueBase64Binary;
+  Element elementDefaultValueBase64Binary;
 
   //  The value that should be used if there is no value stated in the
   // instance (e.g. 'if not otherwise specified, the abstract is false').
   bool defaultValueBoolean; //  pattern: ^true|false$
 
   //  Extensions for defaultValueBoolean
-  Element element_defaultValueBoolean;
+  Element elementDefaultValueBoolean;
 
   //  The value that should be used if there is no value stated in the
   // instance (e.g. 'if not otherwise specified, the abstract is false').
   String defaultValueCanonical; //  pattern: ^\S*$
 
   //  Extensions for defaultValueCanonical
-  Element element_defaultValueCanonical;
+  Element elementDefaultValueCanonical;
 
   //  The value that should be used if there is no value stated in the
   // instance (e.g. 'if not otherwise specified, the abstract is false').
   String defaultValueCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
 
   //  Extensions for defaultValueCode
-  Element element_defaultValueCode;
+  Element elementDefaultValueCode;
 
   //  The value that should be used if there is no value stated in the
   // instance (e.g. 'if not otherwise specified, the abstract is false').
   String defaultValueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for defaultValueDate
-  Element element_defaultValueDate;
+  Element elementDefaultValueDate;
 
   //  The value that should be used if there is no value stated in the
   // instance (e.g. 'if not otherwise specified, the abstract is false').
   String defaultValueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for defaultValueDateTime
-  Element element_defaultValueDateTime;
+  Element elementDefaultValueDateTime;
 
   //  The value that should be used if there is no value stated in the
   // instance (e.g. 'if not otherwise specified, the abstract is false').
   double defaultValueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
 
   //  Extensions for defaultValueDecimal
-  Element element_defaultValueDecimal;
+  Element elementDefaultValueDecimal;
 
   //  The value that should be used if there is no value stated in the
   // instance (e.g. 'if not otherwise specified, the abstract is false').
   String defaultValueId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
 
   //  Extensions for defaultValueId
-  Element element_defaultValueId;
+  Element elementDefaultValueId;
 
   //  The value that should be used if there is no value stated in the
   // instance (e.g. 'if not otherwise specified, the abstract is false').
   String defaultValueInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
 
   //  Extensions for defaultValueInstant
-  Element element_defaultValueInstant;
+  Element elementDefaultValueInstant;
 
   //  The value that should be used if there is no value stated in the
   // instance (e.g. 'if not otherwise specified, the abstract is false').
   int defaultValueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
 
   //  Extensions for defaultValueInteger
-  Element element_defaultValueInteger;
+  Element elementDefaultValueInteger;
 
   //  The value that should be used if there is no value stated in the
   // instance (e.g. 'if not otherwise specified, the abstract is false').
   String defaultValueMarkdown; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for defaultValueMarkdown
-  Element element_defaultValueMarkdown;
+  Element elementDefaultValueMarkdown;
 
   //  The value that should be used if there is no value stated in the
   // instance (e.g. 'if not otherwise specified, the abstract is false').
   String defaultValueOid; //  pattern: ^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$
 
   //  Extensions for defaultValueOid
-  Element element_defaultValueOid;
+  Element elementDefaultValueOid;
 
   //  The value that should be used if there is no value stated in the
   // instance (e.g. 'if not otherwise specified, the abstract is false').
   int defaultValuePositiveInt; //  pattern: ^[1-9][0-9]*$
 
   //  Extensions for defaultValuePositiveInt
-  Element element_defaultValuePositiveInt;
+  Element elementDefaultValuePositiveInt;
 
   //  The value that should be used if there is no value stated in the
   // instance (e.g. 'if not otherwise specified, the abstract is false').
   String defaultValueString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for defaultValueString
-  Element element_defaultValueString;
+  Element elementDefaultValueString;
 
   //  The value that should be used if there is no value stated in the
   // instance (e.g. 'if not otherwise specified, the abstract is false').
   String defaultValueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
 
   //  Extensions for defaultValueTime
-  Element element_defaultValueTime;
+  Element elementDefaultValueTime;
 
   //  The value that should be used if there is no value stated in the
   // instance (e.g. 'if not otherwise specified, the abstract is false').
   int defaultValueUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
 
   //  Extensions for defaultValueUnsignedInt
-  Element element_defaultValueUnsignedInt;
+  Element elementDefaultValueUnsignedInt;
 
   //  The value that should be used if there is no value stated in the
   // instance (e.g. 'if not otherwise specified, the abstract is false').
   String defaultValueUri; //  pattern: ^\S*$
 
   //  Extensions for defaultValueUri
-  Element element_defaultValueUri;
+  Element elementDefaultValueUri;
 
   //  The value that should be used if there is no value stated in the
   // instance (e.g. 'if not otherwise specified, the abstract is false').
   String defaultValueUrl; //  pattern: ^\S*$
 
   //  Extensions for defaultValueUrl
-  Element element_defaultValueUrl;
+  Element elementDefaultValueUrl;
 
   //  The value that should be used if there is no value stated in the
   // instance (e.g. 'if not otherwise specified, the abstract is false').
   String defaultValueUuid; //  pattern: ^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
 
   //  Extensions for defaultValueUuid
-  Element element_defaultValueUuid;
+  Element elementDefaultValueUuid;
 
   //  The value that should be used if there is no value stated in the
   // instance (e.g. 'if not otherwise specified, the abstract is false').
@@ -462,7 +462,7 @@ class ElementDefinition {
   String meaningWhenMissing;
 
   //  Extensions for meaningWhenMissing
-  Element element_meaningWhenMissing;
+  Element elementMeaningWhenMissing;
 
   //  If present, indicates that the order of the repeating element has
   // meaning and describes what that meaning is.  If absent, it means that
@@ -470,7 +470,7 @@ class ElementDefinition {
   String orderMeaning;
 
   //  Extensions for orderMeaning
-  Element element_orderMeaning;
+  Element elementOrderMeaning;
 
   //  Specifies a value that SHALL be exactly the value  for this element in
   // the instance. For purposes of comparison, non-significant whitespace is
@@ -479,7 +479,7 @@ class ElementDefinition {
   String fixedBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
 
   //  Extensions for fixedBase64Binary
-  Element element_fixedBase64Binary;
+  Element elementFixedBase64Binary;
 
   //  Specifies a value that SHALL be exactly the value  for this element in
   // the instance. For purposes of comparison, non-significant whitespace is
@@ -488,7 +488,7 @@ class ElementDefinition {
   bool fixedBoolean; //  pattern: ^true|false$
 
   //  Extensions for fixedBoolean
-  Element element_fixedBoolean;
+  Element elementFixedBoolean;
 
   //  Specifies a value that SHALL be exactly the value  for this element in
   // the instance. For purposes of comparison, non-significant whitespace is
@@ -497,7 +497,7 @@ class ElementDefinition {
   String fixedCanonical; //  pattern: ^\S*$
 
   //  Extensions for fixedCanonical
-  Element element_fixedCanonical;
+  Element elementFixedCanonical;
 
   //  Specifies a value that SHALL be exactly the value  for this element in
   // the instance. For purposes of comparison, non-significant whitespace is
@@ -506,7 +506,7 @@ class ElementDefinition {
   String fixedCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
 
   //  Extensions for fixedCode
-  Element element_fixedCode;
+  Element elementFixedCode;
 
   //  Specifies a value that SHALL be exactly the value  for this element in
   // the instance. For purposes of comparison, non-significant whitespace is
@@ -515,7 +515,7 @@ class ElementDefinition {
   String fixedDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for fixedDate
-  Element element_fixedDate;
+  Element elementFixedDate;
 
   //  Specifies a value that SHALL be exactly the value  for this element in
   // the instance. For purposes of comparison, non-significant whitespace is
@@ -524,7 +524,7 @@ class ElementDefinition {
   String fixedDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for fixedDateTime
-  Element element_fixedDateTime;
+  Element elementFixedDateTime;
 
   //  Specifies a value that SHALL be exactly the value  for this element in
   // the instance. For purposes of comparison, non-significant whitespace is
@@ -533,7 +533,7 @@ class ElementDefinition {
   double fixedDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
 
   //  Extensions for fixedDecimal
-  Element element_fixedDecimal;
+  Element elementFixedDecimal;
 
   //  Specifies a value that SHALL be exactly the value  for this element in
   // the instance. For purposes of comparison, non-significant whitespace is
@@ -542,7 +542,7 @@ class ElementDefinition {
   String fixedId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
 
   //  Extensions for fixedId
-  Element element_fixedId;
+  Element elementFixedId;
 
   //  Specifies a value that SHALL be exactly the value  for this element in
   // the instance. For purposes of comparison, non-significant whitespace is
@@ -551,7 +551,7 @@ class ElementDefinition {
   String fixedInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
 
   //  Extensions for fixedInstant
-  Element element_fixedInstant;
+  Element elementFixedInstant;
 
   //  Specifies a value that SHALL be exactly the value  for this element in
   // the instance. For purposes of comparison, non-significant whitespace is
@@ -560,7 +560,7 @@ class ElementDefinition {
   int fixedInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
 
   //  Extensions for fixedInteger
-  Element element_fixedInteger;
+  Element elementFixedInteger;
 
   //  Specifies a value that SHALL be exactly the value  for this element in
   // the instance. For purposes of comparison, non-significant whitespace is
@@ -569,7 +569,7 @@ class ElementDefinition {
   String fixedMarkdown; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for fixedMarkdown
-  Element element_fixedMarkdown;
+  Element elementFixedMarkdown;
 
   //  Specifies a value that SHALL be exactly the value  for this element in
   // the instance. For purposes of comparison, non-significant whitespace is
@@ -578,7 +578,7 @@ class ElementDefinition {
   String fixedOid; //  pattern: ^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$
 
   //  Extensions for fixedOid
-  Element element_fixedOid;
+  Element elementFixedOid;
 
   //  Specifies a value that SHALL be exactly the value  for this element in
   // the instance. For purposes of comparison, non-significant whitespace is
@@ -587,7 +587,7 @@ class ElementDefinition {
   int fixedPositiveInt; //  pattern: ^[1-9][0-9]*$
 
   //  Extensions for fixedPositiveInt
-  Element element_fixedPositiveInt;
+  Element elementFixedPositiveInt;
 
   //  Specifies a value that SHALL be exactly the value  for this element in
   // the instance. For purposes of comparison, non-significant whitespace is
@@ -596,7 +596,7 @@ class ElementDefinition {
   String fixedString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for fixedString
-  Element element_fixedString;
+  Element elementFixedString;
 
   //  Specifies a value that SHALL be exactly the value  for this element in
   // the instance. For purposes of comparison, non-significant whitespace is
@@ -605,7 +605,7 @@ class ElementDefinition {
   String fixedTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
 
   //  Extensions for fixedTime
-  Element element_fixedTime;
+  Element elementFixedTime;
 
   //  Specifies a value that SHALL be exactly the value  for this element in
   // the instance. For purposes of comparison, non-significant whitespace is
@@ -614,7 +614,7 @@ class ElementDefinition {
   int fixedUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
 
   //  Extensions for fixedUnsignedInt
-  Element element_fixedUnsignedInt;
+  Element elementFixedUnsignedInt;
 
   //  Specifies a value that SHALL be exactly the value  for this element in
   // the instance. For purposes of comparison, non-significant whitespace is
@@ -623,7 +623,7 @@ class ElementDefinition {
   String fixedUri; //  pattern: ^\S*$
 
   //  Extensions for fixedUri
-  Element element_fixedUri;
+  Element elementFixedUri;
 
   //  Specifies a value that SHALL be exactly the value  for this element in
   // the instance. For purposes of comparison, non-significant whitespace is
@@ -632,7 +632,7 @@ class ElementDefinition {
   String fixedUrl; //  pattern: ^\S*$
 
   //  Extensions for fixedUrl
-  Element element_fixedUrl;
+  Element elementFixedUrl;
 
   //  Specifies a value that SHALL be exactly the value  for this element in
   // the instance. For purposes of comparison, non-significant whitespace is
@@ -641,7 +641,7 @@ class ElementDefinition {
   String fixedUuid; //  pattern: ^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
 
   //  Extensions for fixedUuid
-  Element element_fixedUuid;
+  Element elementFixedUuid;
 
   //  Specifies a value that SHALL be exactly the value  for this element in
   // the instance. For purposes of comparison, non-significant whitespace is
@@ -846,7 +846,7 @@ class ElementDefinition {
   String patternBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
 
   //  Extensions for patternBase64Binary
-  Element element_patternBase64Binary;
+  Element elementPatternBase64Binary;
 
   //  Specifies a value that the value in the instance SHALL follow - that
   // is, any value in the pattern must be found in the instance. Other
@@ -865,7 +865,7 @@ class ElementDefinition {
   bool patternBoolean; //  pattern: ^true|false$
 
   //  Extensions for patternBoolean
-  Element element_patternBoolean;
+  Element elementPatternBoolean;
 
   //  Specifies a value that the value in the instance SHALL follow - that
   // is, any value in the pattern must be found in the instance. Other
@@ -884,7 +884,7 @@ class ElementDefinition {
   String patternCanonical; //  pattern: ^\S*$
 
   //  Extensions for patternCanonical
-  Element element_patternCanonical;
+  Element elementPatternCanonical;
 
   //  Specifies a value that the value in the instance SHALL follow - that
   // is, any value in the pattern must be found in the instance. Other
@@ -903,7 +903,7 @@ class ElementDefinition {
   String patternCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
 
   //  Extensions for patternCode
-  Element element_patternCode;
+  Element elementPatternCode;
 
   //  Specifies a value that the value in the instance SHALL follow - that
   // is, any value in the pattern must be found in the instance. Other
@@ -922,7 +922,7 @@ class ElementDefinition {
   String patternDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for patternDate
-  Element element_patternDate;
+  Element elementPatternDate;
 
   //  Specifies a value that the value in the instance SHALL follow - that
   // is, any value in the pattern must be found in the instance. Other
@@ -941,7 +941,7 @@ class ElementDefinition {
   String patternDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for patternDateTime
-  Element element_patternDateTime;
+  Element elementPatternDateTime;
 
   //  Specifies a value that the value in the instance SHALL follow - that
   // is, any value in the pattern must be found in the instance. Other
@@ -960,7 +960,7 @@ class ElementDefinition {
   double patternDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
 
   //  Extensions for patternDecimal
-  Element element_patternDecimal;
+  Element elementPatternDecimal;
 
   //  Specifies a value that the value in the instance SHALL follow - that
   // is, any value in the pattern must be found in the instance. Other
@@ -979,7 +979,7 @@ class ElementDefinition {
   String patternId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
 
   //  Extensions for patternId
-  Element element_patternId;
+  Element elementPatternId;
 
   //  Specifies a value that the value in the instance SHALL follow - that
   // is, any value in the pattern must be found in the instance. Other
@@ -998,7 +998,7 @@ class ElementDefinition {
   String patternInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
 
   //  Extensions for patternInstant
-  Element element_patternInstant;
+  Element elementPatternInstant;
 
   //  Specifies a value that the value in the instance SHALL follow - that
   // is, any value in the pattern must be found in the instance. Other
@@ -1017,7 +1017,7 @@ class ElementDefinition {
   int patternInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
 
   //  Extensions for patternInteger
-  Element element_patternInteger;
+  Element elementPatternInteger;
 
   //  Specifies a value that the value in the instance SHALL follow - that
   // is, any value in the pattern must be found in the instance. Other
@@ -1036,7 +1036,7 @@ class ElementDefinition {
   String patternMarkdown; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for patternMarkdown
-  Element element_patternMarkdown;
+  Element elementPatternMarkdown;
 
   //  Specifies a value that the value in the instance SHALL follow - that
   // is, any value in the pattern must be found in the instance. Other
@@ -1055,7 +1055,7 @@ class ElementDefinition {
   String patternOid; //  pattern: ^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$
 
   //  Extensions for patternOid
-  Element element_patternOid;
+  Element elementPatternOid;
 
   //  Specifies a value that the value in the instance SHALL follow - that
   // is, any value in the pattern must be found in the instance. Other
@@ -1074,7 +1074,7 @@ class ElementDefinition {
   int patternPositiveInt; //  pattern: ^[1-9][0-9]*$
 
   //  Extensions for patternPositiveInt
-  Element element_patternPositiveInt;
+  Element elementPatternPositiveInt;
 
   //  Specifies a value that the value in the instance SHALL follow - that
   // is, any value in the pattern must be found in the instance. Other
@@ -1093,7 +1093,7 @@ class ElementDefinition {
   String patternString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for patternString
-  Element element_patternString;
+  Element elementPatternString;
 
   //  Specifies a value that the value in the instance SHALL follow - that
   // is, any value in the pattern must be found in the instance. Other
@@ -1112,7 +1112,7 @@ class ElementDefinition {
   String patternTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
 
   //  Extensions for patternTime
-  Element element_patternTime;
+  Element elementPatternTime;
 
   //  Specifies a value that the value in the instance SHALL follow - that
   // is, any value in the pattern must be found in the instance. Other
@@ -1131,7 +1131,7 @@ class ElementDefinition {
   int patternUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
 
   //  Extensions for patternUnsignedInt
-  Element element_patternUnsignedInt;
+  Element elementPatternUnsignedInt;
 
   //  Specifies a value that the value in the instance SHALL follow - that
   // is, any value in the pattern must be found in the instance. Other
@@ -1150,7 +1150,7 @@ class ElementDefinition {
   String patternUri; //  pattern: ^\S*$
 
   //  Extensions for patternUri
-  Element element_patternUri;
+  Element elementPatternUri;
 
   //  Specifies a value that the value in the instance SHALL follow - that
   // is, any value in the pattern must be found in the instance. Other
@@ -1169,7 +1169,7 @@ class ElementDefinition {
   String patternUrl; //  pattern: ^\S*$
 
   //  Extensions for patternUrl
-  Element element_patternUrl;
+  Element elementPatternUrl;
 
   //  Specifies a value that the value in the instance SHALL follow - that
   // is, any value in the pattern must be found in the instance. Other
@@ -1188,7 +1188,7 @@ class ElementDefinition {
   String patternUuid; //  pattern: ^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
 
   //  Extensions for patternUuid
-  Element element_patternUuid;
+  Element elementPatternUuid;
 
   //  Specifies a value that the value in the instance SHALL follow - that
   // is, any value in the pattern must be found in the instance. Other
@@ -1696,7 +1696,7 @@ class ElementDefinition {
   String minValueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for minValueDate
-  Element element_minValueDate;
+  Element elementMinValueDate;
 
   //  The minimum allowed value for the element. The value is inclusive.
   // This is allowed for the types date, dateTime, instant, time, decimal,
@@ -1704,7 +1704,7 @@ class ElementDefinition {
   String minValueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for minValueDateTime
-  Element element_minValueDateTime;
+  Element elementMinValueDateTime;
 
   //  The minimum allowed value for the element. The value is inclusive.
   // This is allowed for the types date, dateTime, instant, time, decimal,
@@ -1712,7 +1712,7 @@ class ElementDefinition {
   String minValueInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
 
   //  Extensions for minValueInstant
-  Element element_minValueInstant;
+  Element elementMinValueInstant;
 
   //  The minimum allowed value for the element. The value is inclusive.
   // This is allowed for the types date, dateTime, instant, time, decimal,
@@ -1720,7 +1720,7 @@ class ElementDefinition {
   String minValueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
 
   //  Extensions for minValueTime
-  Element element_minValueTime;
+  Element elementMinValueTime;
 
   //  The minimum allowed value for the element. The value is inclusive.
   // This is allowed for the types date, dateTime, instant, time, decimal,
@@ -1728,7 +1728,7 @@ class ElementDefinition {
   double minValueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
 
   //  Extensions for minValueDecimal
-  Element element_minValueDecimal;
+  Element elementMinValueDecimal;
 
   //  The minimum allowed value for the element. The value is inclusive.
   // This is allowed for the types date, dateTime, instant, time, decimal,
@@ -1736,7 +1736,7 @@ class ElementDefinition {
   int minValueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
 
   //  Extensions for minValueInteger
-  Element element_minValueInteger;
+  Element elementMinValueInteger;
 
   //  The minimum allowed value for the element. The value is inclusive.
   // This is allowed for the types date, dateTime, instant, time, decimal,
@@ -1744,7 +1744,7 @@ class ElementDefinition {
   int minValuePositiveInt; //  pattern: ^[1-9][0-9]*$
 
   //  Extensions for minValuePositiveInt
-  Element element_minValuePositiveInt;
+  Element elementMinValuePositiveInt;
 
   //  The minimum allowed value for the element. The value is inclusive.
   // This is allowed for the types date, dateTime, instant, time, decimal,
@@ -1752,7 +1752,7 @@ class ElementDefinition {
   int minValueUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
 
   //  Extensions for minValueUnsignedInt
-  Element element_minValueUnsignedInt;
+  Element elementMinValueUnsignedInt;
 
   //  The minimum allowed value for the element. The value is inclusive.
   // This is allowed for the types date, dateTime, instant, time, decimal,
@@ -1765,7 +1765,7 @@ class ElementDefinition {
   String maxValueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for maxValueDate
-  Element element_maxValueDate;
+  Element elementMaxValueDate;
 
   //  The maximum allowed value for the element. The value is inclusive.
   // This is allowed for the types date, dateTime, instant, time, decimal,
@@ -1773,7 +1773,7 @@ class ElementDefinition {
   String maxValueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for maxValueDateTime
-  Element element_maxValueDateTime;
+  Element elementMaxValueDateTime;
 
   //  The maximum allowed value for the element. The value is inclusive.
   // This is allowed for the types date, dateTime, instant, time, decimal,
@@ -1781,7 +1781,7 @@ class ElementDefinition {
   String maxValueInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
 
   //  Extensions for maxValueInstant
-  Element element_maxValueInstant;
+  Element elementMaxValueInstant;
 
   //  The maximum allowed value for the element. The value is inclusive.
   // This is allowed for the types date, dateTime, instant, time, decimal,
@@ -1789,7 +1789,7 @@ class ElementDefinition {
   String maxValueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
 
   //  Extensions for maxValueTime
-  Element element_maxValueTime;
+  Element elementMaxValueTime;
 
   //  The maximum allowed value for the element. The value is inclusive.
   // This is allowed for the types date, dateTime, instant, time, decimal,
@@ -1797,7 +1797,7 @@ class ElementDefinition {
   double maxValueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
 
   //  Extensions for maxValueDecimal
-  Element element_maxValueDecimal;
+  Element elementMaxValueDecimal;
 
   //  The maximum allowed value for the element. The value is inclusive.
   // This is allowed for the types date, dateTime, instant, time, decimal,
@@ -1805,7 +1805,7 @@ class ElementDefinition {
   int maxValueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
 
   //  Extensions for maxValueInteger
-  Element element_maxValueInteger;
+  Element elementMaxValueInteger;
 
   //  The maximum allowed value for the element. The value is inclusive.
   // This is allowed for the types date, dateTime, instant, time, decimal,
@@ -1813,7 +1813,7 @@ class ElementDefinition {
   int maxValuePositiveInt; //  pattern: ^[1-9][0-9]*$
 
   //  Extensions for maxValuePositiveInt
-  Element element_maxValuePositiveInt;
+  Element elementMaxValuePositiveInt;
 
   //  The maximum allowed value for the element. The value is inclusive.
   // This is allowed for the types date, dateTime, instant, time, decimal,
@@ -1821,7 +1821,7 @@ class ElementDefinition {
   int maxValueUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
 
   //  Extensions for maxValueUnsignedInt
-  Element element_maxValueUnsignedInt;
+  Element elementMaxValueUnsignedInt;
 
   //  The maximum allowed value for the element. The value is inclusive.
   // This is allowed for the types date, dateTime, instant, time, decimal,
@@ -1834,14 +1834,14 @@ class ElementDefinition {
   int maxLength;
 
   //  Extensions for maxLength
-  Element element_maxLength;
+  Element elementMaxLength;
 
   //  A reference to an invariant that may make additional statements about
   // the cardinality or value in the instance.
   List<String> condition;
 
   //  Extensions for condition
-  List<Element> element_condition;
+  List<Element> elementCondition;
 
   //  Formal constraints such as co-occurrence and other constraints that
   // can be computationally evaluated within the context of the instance.
@@ -1855,7 +1855,7 @@ class ElementDefinition {
   bool mustSupport;
 
   //  Extensions for mustSupport
-  Element element_mustSupport;
+  Element elementMustSupport;
 
   //  If true, the value of this element affects the interpretation of the
   // element or resource that contains it, and the value of the element
@@ -1867,21 +1867,21 @@ class ElementDefinition {
   bool isModifier;
 
   //  Extensions for isModifier
-  Element element_isModifier;
+  Element elementIsModifier;
 
   //  Explains how that element affects the interpretation of the resource
   // or element that contains it.
   String isModifierReason;
 
   //  Extensions for isModifierReason
-  Element element_isModifierReason;
+  Element elementIsModifierReason;
 
   //  Whether the element should be included if a client requests a search
   // with the parameter _summary=true.
   bool isSummary;
 
   //  Extensions for isSummary
-  Element element_isSummary;
+  Element elementIsSummary;
 
   //  Binds to a value set if this element is coded (code, Coding,
   // CodeableConcept, Quantity), or the data types (string, uri).
@@ -1896,73 +1896,73 @@ ElementDefinition(
     this.extension,
     this.modifierExtension,
     this.path,
-    this.element_path,
+    this.elementPath,
     this.representation,
-    this.element_representation,
+    this.elementRepresentation,
     this.sliceName,
-    this.element_sliceName,
+    this.elementSliceName,
     this.sliceIsConstraining,
-    this.element_sliceIsConstraining,
+    this.elementSliceIsConstraining,
     this.label,
-    this.element_label,
+    this.elementLabel,
     this.code,
     this.slicing,
     this.short,
-    this.element_short,
+    this.elementShort,
     this.definition,
-    this.element_definition,
+    this.elementDefinition,
     this.comment,
-    this.element_comment,
+    this.elementComment,
     this.requirements,
-    this.element_requirements,
+    this.elementRequirements,
     this.alias,
-    this.element_alias,
+    this.elementAlias,
     this.min,
-    this.element_min,
+    this.elementMin,
     this.max,
-    this.element_max,
+    this.elementMax,
     this.base,
     this.contentReference,
-    this.element_contentReference,
+    this.elementContentReference,
     this.type,
     this.defaultValueBase64Binary,
-    this.element_defaultValueBase64Binary,
+    this.elementDefaultValueBase64Binary,
     this.defaultValueBoolean,
-    this.element_defaultValueBoolean,
+    this.elementDefaultValueBoolean,
     this.defaultValueCanonical,
-    this.element_defaultValueCanonical,
+    this.elementDefaultValueCanonical,
     this.defaultValueCode,
-    this.element_defaultValueCode,
+    this.elementDefaultValueCode,
     this.defaultValueDate,
-    this.element_defaultValueDate,
+    this.elementDefaultValueDate,
     this.defaultValueDateTime,
-    this.element_defaultValueDateTime,
+    this.elementDefaultValueDateTime,
     this.defaultValueDecimal,
-    this.element_defaultValueDecimal,
+    this.elementDefaultValueDecimal,
     this.defaultValueId,
-    this.element_defaultValueId,
+    this.elementDefaultValueId,
     this.defaultValueInstant,
-    this.element_defaultValueInstant,
+    this.elementDefaultValueInstant,
     this.defaultValueInteger,
-    this.element_defaultValueInteger,
+    this.elementDefaultValueInteger,
     this.defaultValueMarkdown,
-    this.element_defaultValueMarkdown,
+    this.elementDefaultValueMarkdown,
     this.defaultValueOid,
-    this.element_defaultValueOid,
+    this.elementDefaultValueOid,
     this.defaultValuePositiveInt,
-    this.element_defaultValuePositiveInt,
+    this.elementDefaultValuePositiveInt,
     this.defaultValueString,
-    this.element_defaultValueString,
+    this.elementDefaultValueString,
     this.defaultValueTime,
-    this.element_defaultValueTime,
+    this.elementDefaultValueTime,
     this.defaultValueUnsignedInt,
-    this.element_defaultValueUnsignedInt,
+    this.elementDefaultValueUnsignedInt,
     this.defaultValueUri,
-    this.element_defaultValueUri,
+    this.elementDefaultValueUri,
     this.defaultValueUrl,
-    this.element_defaultValueUrl,
+    this.elementDefaultValueUrl,
     this.defaultValueUuid,
-    this.element_defaultValueUuid,
+    this.elementDefaultValueUuid,
     this.defaultValueAddress,
     this.defaultValueAge,
     this.defaultValueAnnotation,
@@ -1995,47 +1995,47 @@ ElementDefinition(
     this.defaultValueDosage,
     this.defaultValueMeta,
     this.meaningWhenMissing,
-    this.element_meaningWhenMissing,
+    this.elementMeaningWhenMissing,
     this.orderMeaning,
-    this.element_orderMeaning,
+    this.elementOrderMeaning,
     this.fixedBase64Binary,
-    this.element_fixedBase64Binary,
+    this.elementFixedBase64Binary,
     this.fixedBoolean,
-    this.element_fixedBoolean,
+    this.elementFixedBoolean,
     this.fixedCanonical,
-    this.element_fixedCanonical,
+    this.elementFixedCanonical,
     this.fixedCode,
-    this.element_fixedCode,
+    this.elementFixedCode,
     this.fixedDate,
-    this.element_fixedDate,
+    this.elementFixedDate,
     this.fixedDateTime,
-    this.element_fixedDateTime,
+    this.elementFixedDateTime,
     this.fixedDecimal,
-    this.element_fixedDecimal,
+    this.elementFixedDecimal,
     this.fixedId,
-    this.element_fixedId,
+    this.elementFixedId,
     this.fixedInstant,
-    this.element_fixedInstant,
+    this.elementFixedInstant,
     this.fixedInteger,
-    this.element_fixedInteger,
+    this.elementFixedInteger,
     this.fixedMarkdown,
-    this.element_fixedMarkdown,
+    this.elementFixedMarkdown,
     this.fixedOid,
-    this.element_fixedOid,
+    this.elementFixedOid,
     this.fixedPositiveInt,
-    this.element_fixedPositiveInt,
+    this.elementFixedPositiveInt,
     this.fixedString,
-    this.element_fixedString,
+    this.elementFixedString,
     this.fixedTime,
-    this.element_fixedTime,
+    this.elementFixedTime,
     this.fixedUnsignedInt,
-    this.element_fixedUnsignedInt,
+    this.elementFixedUnsignedInt,
     this.fixedUri,
-    this.element_fixedUri,
+    this.elementFixedUri,
     this.fixedUrl,
-    this.element_fixedUrl,
+    this.elementFixedUrl,
     this.fixedUuid,
-    this.element_fixedUuid,
+    this.elementFixedUuid,
     this.fixedAddress,
     this.fixedAge,
     this.fixedAnnotation,
@@ -2068,43 +2068,43 @@ ElementDefinition(
     this.fixedDosage,
     this.fixedMeta,
     this.patternBase64Binary,
-    this.element_patternBase64Binary,
+    this.elementPatternBase64Binary,
     this.patternBoolean,
-    this.element_patternBoolean,
+    this.elementPatternBoolean,
     this.patternCanonical,
-    this.element_patternCanonical,
+    this.elementPatternCanonical,
     this.patternCode,
-    this.element_patternCode,
+    this.elementPatternCode,
     this.patternDate,
-    this.element_patternDate,
+    this.elementPatternDate,
     this.patternDateTime,
-    this.element_patternDateTime,
+    this.elementPatternDateTime,
     this.patternDecimal,
-    this.element_patternDecimal,
+    this.elementPatternDecimal,
     this.patternId,
-    this.element_patternId,
+    this.elementPatternId,
     this.patternInstant,
-    this.element_patternInstant,
+    this.elementPatternInstant,
     this.patternInteger,
-    this.element_patternInteger,
+    this.elementPatternInteger,
     this.patternMarkdown,
-    this.element_patternMarkdown,
+    this.elementPatternMarkdown,
     this.patternOid,
-    this.element_patternOid,
+    this.elementPatternOid,
     this.patternPositiveInt,
-    this.element_patternPositiveInt,
+    this.elementPatternPositiveInt,
     this.patternString,
-    this.element_patternString,
+    this.elementPatternString,
     this.patternTime,
-    this.element_patternTime,
+    this.elementPatternTime,
     this.patternUnsignedInt,
-    this.element_patternUnsignedInt,
+    this.elementPatternUnsignedInt,
     this.patternUri,
-    this.element_patternUri,
+    this.elementPatternUri,
     this.patternUrl,
-    this.element_patternUrl,
+    this.elementPatternUrl,
     this.patternUuid,
-    this.element_patternUuid,
+    this.elementPatternUuid,
     this.patternAddress,
     this.patternAge,
     this.patternAnnotation,
@@ -2138,52 +2138,52 @@ ElementDefinition(
     this.patternMeta,
     this.example,
     this.minValueDate,
-    this.element_minValueDate,
+    this.elementMinValueDate,
     this.minValueDateTime,
-    this.element_minValueDateTime,
+    this.elementMinValueDateTime,
     this.minValueInstant,
-    this.element_minValueInstant,
+    this.elementMinValueInstant,
     this.minValueTime,
-    this.element_minValueTime,
+    this.elementMinValueTime,
     this.minValueDecimal,
-    this.element_minValueDecimal,
+    this.elementMinValueDecimal,
     this.minValueInteger,
-    this.element_minValueInteger,
+    this.elementMinValueInteger,
     this.minValuePositiveInt,
-    this.element_minValuePositiveInt,
+    this.elementMinValuePositiveInt,
     this.minValueUnsignedInt,
-    this.element_minValueUnsignedInt,
+    this.elementMinValueUnsignedInt,
     this.minValueQuantity,
     this.maxValueDate,
-    this.element_maxValueDate,
+    this.elementMaxValueDate,
     this.maxValueDateTime,
-    this.element_maxValueDateTime,
+    this.elementMaxValueDateTime,
     this.maxValueInstant,
-    this.element_maxValueInstant,
+    this.elementMaxValueInstant,
     this.maxValueTime,
-    this.element_maxValueTime,
+    this.elementMaxValueTime,
     this.maxValueDecimal,
-    this.element_maxValueDecimal,
+    this.elementMaxValueDecimal,
     this.maxValueInteger,
-    this.element_maxValueInteger,
+    this.elementMaxValueInteger,
     this.maxValuePositiveInt,
-    this.element_maxValuePositiveInt,
+    this.elementMaxValuePositiveInt,
     this.maxValueUnsignedInt,
-    this.element_maxValueUnsignedInt,
+    this.elementMaxValueUnsignedInt,
     this.maxValueQuantity,
     this.maxLength,
-    this.element_maxLength,
+    this.elementMaxLength,
     this.condition,
-    this.element_condition,
+    this.elementCondition,
     this.constraint,
     this.mustSupport,
-    this.element_mustSupport,
+    this.elementMustSupport,
     this.isModifier,
-    this.element_isModifier,
+    this.elementIsModifier,
     this.isModifierReason,
-    this.element_isModifierReason,
+    this.elementIsModifierReason,
     this.isSummary,
-    this.element_isSummary,
+    this.elementIsSummary,
     this.binding,
     this.mapping
     });
@@ -2234,14 +2234,14 @@ class ElementDefinition_Slicing {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  If the matching elements have to occur in the same order as defined in
   // the profile.
   bool ordered;
 
   //  Extensions for ordered
-  Element element_ordered;
+  Element elementOrdered;
 
   //  Whether additional slices are allowed or not. When the slices are
   // ordered, profile authors can also say that additional slices are only
@@ -2249,7 +2249,7 @@ class ElementDefinition_Slicing {
   String rules; // <code> enum: closed/open/openAtEnd;
 
   //  Extensions for rules
-  Element element_rules;
+  Element elementRules;
 
 ElementDefinition_Slicing(
   {this.id,
@@ -2257,11 +2257,11 @@ ElementDefinition_Slicing(
     this.modifierExtension,
     this.discriminator,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.ordered,
-    this.element_ordered,
+    this.elementOrdered,
     this.rules,
-    this.element_rules
+    this.elementRules
     });
 
   factory ElementDefinition_Slicing.fromJson(Map<String, dynamic> json) => _$ElementDefinition_SlicingFromJson(json);
@@ -2301,7 +2301,7 @@ class ElementDefinition_Discriminator {
   String type; // <code> enum: value/exists/pattern/type/profile;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  A FHIRPath expression, using [the simple subset of
   // FHIRPath](fhirpath.html#simple), that is used to identify the element
@@ -2309,16 +2309,16 @@ class ElementDefinition_Discriminator {
   String path;
 
   //  Extensions for path
-  Element element_path;
+  Element elementPath;
 
 ElementDefinition_Discriminator(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.type,
-    this.element_type,
+    this.elementType,
     this.path,
-    this.element_path
+    this.elementPath
     });
 
   factory ElementDefinition_Discriminator.fromJson(Map<String, dynamic> json) => _$ElementDefinition_DiscriminatorFromJson(json);
@@ -2361,30 +2361,30 @@ class ElementDefinition_Base {
   String path;
 
   //  Extensions for path
-  Element element_path;
+  Element elementPath;
 
   //  Minimum cardinality of the base element identified by the path.
   int min;
 
   //  Extensions for min
-  Element element_min;
+  Element elementMin;
 
   //  Maximum cardinality of the base element identified by the path.
   String max;
 
   //  Extensions for max
-  Element element_max;
+  Element elementMax;
 
 ElementDefinition_Base(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.path,
-    this.element_path,
+    this.elementPath,
     this.min,
-    this.element_min,
+    this.elementMin,
     this.max,
-    this.element_max
+    this.elementMax
     });
 
   factory ElementDefinition_Base.fromJson(Map<String, dynamic> json) => _$ElementDefinition_BaseFromJson(json);
@@ -2428,7 +2428,7 @@ class ElementDefinition_Type {
   String code;
 
   //  Extensions for code
-  Element element_code;
+  Element elementCode;
 
   //  Identifies a profile structure or implementation Guide that applies to
   // the datatype this element refers to. If any profiles are specified,
@@ -2455,27 +2455,27 @@ class ElementDefinition_Type {
   List<String> aggregation; // <code> enum: contained/referenced/bundled> aggregation;
 
   //  Extensions for aggregation
-  List<Element> element_aggregation;
+  List<Element> elementAggregation;
 
   //  Whether this reference needs to be version specific or version
   // independent, or whether either can be used.
   String versioning; // <code> enum: either/independent/specific;
 
   //  Extensions for versioning
-  Element element_versioning;
+  Element elementVersioning;
 
 ElementDefinition_Type(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.code,
-    this.element_code,
+    this.elementCode,
     this.profile,
     this.targetProfile,
     this.aggregation,
-    this.element_aggregation,
+    this.elementAggregation,
     this.versioning,
-    this.element_versioning
+    this.elementVersioning
     });
 
   factory ElementDefinition_Type.fromJson(Map<String, dynamic> json) => _$ElementDefinition_TypeFromJson(json);
@@ -2515,140 +2515,140 @@ class ElementDefinition_Example {
   String label;
 
   //  Extensions for label
-  Element element_label;
+  Element elementLabel;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
   String valueBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
 
   //  Extensions for valueBase64Binary
-  Element element_valueBase64Binary;
+  Element elementValueBase64Binary;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
   bool valueBoolean; //  pattern: ^true|false$
 
   //  Extensions for valueBoolean
-  Element element_valueBoolean;
+  Element elementValueBoolean;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
   String valueCanonical; //  pattern: ^\S*$
 
   //  Extensions for valueCanonical
-  Element element_valueCanonical;
+  Element elementValueCanonical;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
   String valueCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
 
   //  Extensions for valueCode
-  Element element_valueCode;
+  Element elementValueCode;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
   String valueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for valueDate
-  Element element_valueDate;
+  Element elementValueDate;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for valueDateTime
-  Element element_valueDateTime;
+  Element elementValueDateTime;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
   double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
 
   //  Extensions for valueDecimal
-  Element element_valueDecimal;
+  Element elementValueDecimal;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
   String valueId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
 
   //  Extensions for valueId
-  Element element_valueId;
+  Element elementValueId;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
   String valueInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
 
   //  Extensions for valueInstant
-  Element element_valueInstant;
+  Element elementValueInstant;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
 
   //  Extensions for valueInteger
-  Element element_valueInteger;
+  Element elementValueInteger;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
   String valueMarkdown; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for valueMarkdown
-  Element element_valueMarkdown;
+  Element elementValueMarkdown;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
   String valueOid; //  pattern: ^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$
 
   //  Extensions for valueOid
-  Element element_valueOid;
+  Element elementValueOid;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
   int valuePositiveInt; //  pattern: ^[1-9][0-9]*$
 
   //  Extensions for valuePositiveInt
-  Element element_valuePositiveInt;
+  Element elementValuePositiveInt;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
   String valueString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for valueString
-  Element element_valueString;
+  Element elementValueString;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
   String valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
 
   //  Extensions for valueTime
-  Element element_valueTime;
+  Element elementValueTime;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
   int valueUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
 
   //  Extensions for valueUnsignedInt
-  Element element_valueUnsignedInt;
+  Element elementValueUnsignedInt;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
   String valueUri; //  pattern: ^\S*$
 
   //  Extensions for valueUri
-  Element element_valueUri;
+  Element elementValueUri;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
   String valueUrl; //  pattern: ^\S*$
 
   //  Extensions for valueUrl
-  Element element_valueUrl;
+  Element elementValueUrl;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
   String valueUuid; //  pattern: ^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
 
   //  Extensions for valueUuid
-  Element element_valueUuid;
+  Element elementValueUuid;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
@@ -2779,45 +2779,45 @@ ElementDefinition_Example(
     this.extension,
     this.modifierExtension,
     this.label,
-    this.element_label,
+    this.elementLabel,
     this.valueBase64Binary,
-    this.element_valueBase64Binary,
+    this.elementValueBase64Binary,
     this.valueBoolean,
-    this.element_valueBoolean,
+    this.elementValueBoolean,
     this.valueCanonical,
-    this.element_valueCanonical,
+    this.elementValueCanonical,
     this.valueCode,
-    this.element_valueCode,
+    this.elementValueCode,
     this.valueDate,
-    this.element_valueDate,
+    this.elementValueDate,
     this.valueDateTime,
-    this.element_valueDateTime,
+    this.elementValueDateTime,
     this.valueDecimal,
-    this.element_valueDecimal,
+    this.elementValueDecimal,
     this.valueId,
-    this.element_valueId,
+    this.elementValueId,
     this.valueInstant,
-    this.element_valueInstant,
+    this.elementValueInstant,
     this.valueInteger,
-    this.element_valueInteger,
+    this.elementValueInteger,
     this.valueMarkdown,
-    this.element_valueMarkdown,
+    this.elementValueMarkdown,
     this.valueOid,
-    this.element_valueOid,
+    this.elementValueOid,
     this.valuePositiveInt,
-    this.element_valuePositiveInt,
+    this.elementValuePositiveInt,
     this.valueString,
-    this.element_valueString,
+    this.elementValueString,
     this.valueTime,
-    this.element_valueTime,
+    this.elementValueTime,
     this.valueUnsignedInt,
-    this.element_valueUnsignedInt,
+    this.elementValueUnsignedInt,
     this.valueUri,
-    this.element_valueUri,
+    this.elementValueUri,
     this.valueUrl,
-    this.element_valueUrl,
+    this.elementValueUrl,
     this.valueUuid,
-    this.element_valueUuid,
+    this.elementValueUuid,
     this.valueAddress,
     this.valueAge,
     this.valueAnnotation,
@@ -2890,41 +2890,41 @@ class ElementDefinition_Constraint {
   String key;
 
   //  Extensions for key
-  Element element_key;
+  Element elementKey;
 
   //  Description of why this constraint is necessary or appropriate.
   String requirements;
 
   //  Extensions for requirements
-  Element element_requirements;
+  Element elementRequirements;
 
   //  Identifies the impact constraint violation has on the conformance of
   // the instance.
   String severity; // <code> enum: error/warning;
 
   //  Extensions for severity
-  Element element_severity;
+  Element elementSeverity;
 
   //  Text that can be used to describe the constraint in messages
   // identifying that the constraint has been violated.
   String human;
 
   //  Extensions for human
-  Element element_human;
+  Element elementHuman;
 
   //  A [FHIRPath](fhirpath.html) expression of constraint that can be
   // executed to see if this constraint is met.
   String expression;
 
   //  Extensions for expression
-  Element element_expression;
+  Element elementExpression;
 
   //  An XPath expression of constraint that can be executed to see if this
   // constraint is met.
   String xpath;
 
   //  Extensions for xpath
-  Element element_xpath;
+  Element elementXpath;
 
   //  A reference to the original source of the constraint, for traceability
   // purposes.
@@ -2935,17 +2935,17 @@ ElementDefinition_Constraint(
     this.extension,
     this.modifierExtension,
     this.key,
-    this.element_key,
+    this.elementKey,
     this.requirements,
-    this.element_requirements,
+    this.elementRequirements,
     this.severity,
-    this.element_severity,
+    this.elementSeverity,
     this.human,
-    this.element_human,
+    this.elementHuman,
     this.expression,
-    this.element_expression,
+    this.elementExpression,
     this.xpath,
-    this.element_xpath,
+    this.elementXpath,
     this.source
     });
 
@@ -2988,13 +2988,13 @@ class ElementDefinition_Binding {
   String strength; // <code> enum: required/extensible/preferred/example;
 
   //  Extensions for strength
-  Element element_strength;
+  Element elementStrength;
 
   //  Describes the intended use of this particular set of codes.
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  Refers to the value set that identifies the set of codes the binding
   // refers to.
@@ -3005,9 +3005,9 @@ ElementDefinition_Binding(
     this.extension,
     this.modifierExtension,
     this.strength,
-    this.element_strength,
+    this.elementStrength,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.valueSet
     });
 
@@ -3048,39 +3048,39 @@ class ElementDefinition_Mapping {
   String identity;
 
   //  Extensions for identity
-  Element element_identity;
+  Element elementIdentity;
 
   //  Identifies the computable language in which mapping.map is expressed.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  Expresses what part of the target specification corresponds to this
   // element.
   String map;
 
   //  Extensions for map
-  Element element_map;
+  Element elementMap;
 
   //  Comments that provide information about the mapping or its use.
   String comment;
 
   //  Extensions for comment
-  Element element_comment;
+  Element elementComment;
 
 ElementDefinition_Mapping(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.identity,
-    this.element_identity,
+    this.elementIdentity,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.map,
-    this.element_map,
+    this.elementMap,
     this.comment,
-    this.element_comment
+    this.elementComment
     });
 
   factory ElementDefinition_Mapping.fromJson(Map<String, dynamic> json) => _$ElementDefinition_MappingFromJson(json);

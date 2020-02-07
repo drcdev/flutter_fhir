@@ -45,13 +45,13 @@ class PlanDefinition {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -64,7 +64,7 @@ class PlanDefinition {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -99,7 +99,7 @@ class PlanDefinition {
   String url;
 
   //  Extensions for url
-  Element element_url;
+  Element elementUrl;
 
   //  A formal identifier that is used to identify this plan definition when
   // it is represented in other formats, or referenced in a specification,
@@ -120,7 +120,7 @@ class PlanDefinition {
   String version;
 
   //  Extensions for version
-  Element element_version;
+  Element elementVersion;
 
   //  A natural language name identifying the plan definition. This name
   // should be usable as an identifier for the module by machine processing
@@ -128,20 +128,20 @@ class PlanDefinition {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  A short, descriptive, user-friendly title for the plan definition.
   String title;
 
   //  Extensions for title
-  Element element_title;
+  Element elementTitle;
 
   //  An explanatory or alternate title for the plan definition giving
   // additional information about its content.
   String subtitle;
 
   //  Extensions for subtitle
-  Element element_subtitle;
+  Element elementSubtitle;
 
   //  A high-level category for the plan definition that distinguishes the
   // kinds of systems that would be interested in the plan definition.
@@ -152,7 +152,7 @@ class PlanDefinition {
   String status; // <code> enum: draft/active/retired/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  A Boolean value to indicate that this plan definition is authored for
   // testing purposes (or education/evaluation/marketing) and is not
@@ -160,7 +160,7 @@ class PlanDefinition {
   bool experimental;
 
   //  Extensions for experimental
-  Element element_experimental;
+  Element elementExperimental;
 
   //  A code or group definition that describes the intended subject of the
   // plan definition.
@@ -177,14 +177,14 @@ class PlanDefinition {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  The name of the organization or individual that published the plan
   // definition.
   String publisher;
 
   //  Extensions for publisher
-  Element element_publisher;
+  Element elementPublisher;
 
   //  Contact details to assist a user in finding and communicating with the
   // publisher.
@@ -195,7 +195,7 @@ class PlanDefinition {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  The content was developed with a focus and intent of supporting the
   // contexts that are listed. These contexts may be general categories
@@ -213,14 +213,14 @@ class PlanDefinition {
   String purpose;
 
   //  Extensions for purpose
-  Element element_purpose;
+  Element elementPurpose;
 
   //  A detailed description of how the plan definition is used from a
   // clinical perspective.
   String usage;
 
   //  Extensions for usage
-  Element element_usage;
+  Element elementUsage;
 
   //  A copyright statement relating to the plan definition and/or its
   // contents. Copyright statements are generally legal restrictions on the
@@ -228,7 +228,7 @@ class PlanDefinition {
   String copyright;
 
   //  Extensions for copyright
-  Element element_copyright;
+  Element elementCopyright;
 
   //  The date on which the resource content was approved by the publisher.
   // Approval happens once when the content is officially approved for
@@ -236,7 +236,7 @@ class PlanDefinition {
   String approvalDate;
 
   //  Extensions for approvalDate
-  Element element_approvalDate;
+  Element elementApprovalDate;
 
   //  The date on which the resource content was last reviewed. Review
   // happens periodically after approval but does not change the original
@@ -244,7 +244,7 @@ class PlanDefinition {
   String lastReviewDate;
 
   //  Extensions for lastReviewDate
-  Element element_lastReviewDate;
+  Element elementLastReviewDate;
 
   //  The period during which the plan definition content was or is planned
   // to be in active use.
@@ -292,50 +292,50 @@ PlanDefinition(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
-    this.element_url,
+    this.elementUrl,
     this.identifier,
     this.version,
-    this.element_version,
+    this.elementVersion,
     this.name,
-    this.element_name,
+    this.elementName,
     this.title,
-    this.element_title,
+    this.elementTitle,
     this.subtitle,
-    this.element_subtitle,
+    this.elementSubtitle,
     this.type,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.experimental,
-    this.element_experimental,
+    this.elementExperimental,
     this.subjectCodeableConcept,
     this.subjectReference,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.publisher,
-    this.element_publisher,
+    this.elementPublisher,
     this.contact,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.useContext,
     this.jurisdiction,
     this.purpose,
-    this.element_purpose,
+    this.elementPurpose,
     this.usage,
-    this.element_usage,
+    this.elementUsage,
     this.copyright,
-    this.element_copyright,
+    this.elementCopyright,
     this.approvalDate,
-    this.element_approvalDate,
+    this.elementApprovalDate,
     this.lastReviewDate,
-    this.element_lastReviewDate,
+    this.elementLastReviewDate,
     this.effectivePeriod,
     this.topic,
     this.author,
@@ -535,20 +535,20 @@ class PlanDefinition_Action {
   String prefix;
 
   //  Extensions for prefix
-  Element element_prefix;
+  Element elementPrefix;
 
   //  The title of the action displayed to a user.
   String title;
 
   //  Extensions for title
-  Element element_title;
+  Element elementTitle;
 
   //  A brief description of the action used to provide a summary to display
   // to the user.
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  A text equivalent of the action to be performed. This provides a
   // human-interpretable description of the action when the definition is
@@ -557,14 +557,14 @@ class PlanDefinition_Action {
   String textEquivalent;
 
   //  Extensions for textEquivalent
-  Element element_textEquivalent;
+  Element elementTextEquivalent;
 
   //  Indicates how quickly the action should be addressed with respect to
   // other actions.
   String priority;
 
   //  Extensions for priority
-  Element element_priority;
+  Element elementPriority;
 
   //  A code that provides meaning for the action or action group. For
   // example, a section may have a LOINC code for the section of a
@@ -584,7 +584,7 @@ class PlanDefinition_Action {
   List<String> goalId;
 
   //  Extensions for goalId
-  List<Element> element_goalId;
+  List<Element> elementGoalId;
 
   //  A code or group definition that describes the intended subject of the
   // action and its children, if any.
@@ -615,7 +615,7 @@ class PlanDefinition_Action {
   String timingDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for timingDateTime
-  Element element_timingDateTime;
+  Element elementTimingDateTime;
 
   //  An optional value describing when the action should be performed.
   Age timingAge;
@@ -642,31 +642,31 @@ class PlanDefinition_Action {
   String groupingBehavior; // <code> enum: visual-group/logical-group/sentence-group;
 
   //  Extensions for groupingBehavior
-  Element element_groupingBehavior;
+  Element elementGroupingBehavior;
 
   //  Defines the selection behavior for the action and its children.
   String selectionBehavior; // <code> enum: any/all/all-or-none/exactly-one/at-most-one/one-or-more;
 
   //  Extensions for selectionBehavior
-  Element element_selectionBehavior;
+  Element elementSelectionBehavior;
 
   //  Defines the required behavior for the action.
   String requiredBehavior; // <code> enum: must/could/must-unless-documented;
 
   //  Extensions for requiredBehavior
-  Element element_requiredBehavior;
+  Element elementRequiredBehavior;
 
   //  Defines whether the action should usually be preselected.
   String precheckBehavior; // <code> enum: yes/no;
 
   //  Extensions for precheckBehavior
-  Element element_precheckBehavior;
+  Element elementPrecheckBehavior;
 
   //  Defines whether the action can be selected multiple times.
   String cardinalityBehavior; // <code> enum: single/multiple;
 
   //  Extensions for cardinalityBehavior
-  Element element_cardinalityBehavior;
+  Element elementCardinalityBehavior;
 
   //  A reference to an ActivityDefinition that describes the action to be
   // taken in detail, or a PlanDefinition that describes a series of actions
@@ -674,7 +674,7 @@ class PlanDefinition_Action {
   String definitionCanonical; //  pattern: ^\S*$
 
   //  Extensions for definitionCanonical
-  Element element_definitionCanonical;
+  Element elementDefinitionCanonical;
 
   //  A reference to an ActivityDefinition that describes the action to be
   // taken in detail, or a PlanDefinition that describes a series of actions
@@ -682,7 +682,7 @@ class PlanDefinition_Action {
   String definitionUri; //  pattern: ^\S*$
 
   //  Extensions for definitionUri
-  Element element_definitionUri;
+  Element elementDefinitionUri;
 
   //  A reference to a StructureMap resource that defines a transform that
   // can be executed to produce the intent resource using the
@@ -707,20 +707,20 @@ PlanDefinition_Action(
     this.extension,
     this.modifierExtension,
     this.prefix,
-    this.element_prefix,
+    this.elementPrefix,
     this.title,
-    this.element_title,
+    this.elementTitle,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.textEquivalent,
-    this.element_textEquivalent,
+    this.elementTextEquivalent,
     this.priority,
-    this.element_priority,
+    this.elementPriority,
     this.code,
     this.reason,
     this.documentation,
     this.goalId,
-    this.element_goalId,
+    this.elementGoalId,
     this.subjectCodeableConcept,
     this.subjectReference,
     this.trigger,
@@ -729,7 +729,7 @@ PlanDefinition_Action(
     this.output,
     this.relatedAction,
     this.timingDateTime,
-    this.element_timingDateTime,
+    this.elementTimingDateTime,
     this.timingAge,
     this.timingPeriod,
     this.timingDuration,
@@ -738,19 +738,19 @@ PlanDefinition_Action(
     this.participant,
     this.type,
     this.groupingBehavior,
-    this.element_groupingBehavior,
+    this.elementGroupingBehavior,
     this.selectionBehavior,
-    this.element_selectionBehavior,
+    this.elementSelectionBehavior,
     this.requiredBehavior,
-    this.element_requiredBehavior,
+    this.elementRequiredBehavior,
     this.precheckBehavior,
-    this.element_precheckBehavior,
+    this.elementPrecheckBehavior,
     this.cardinalityBehavior,
-    this.element_cardinalityBehavior,
+    this.elementCardinalityBehavior,
     this.definitionCanonical,
-    this.element_definitionCanonical,
+    this.elementDefinitionCanonical,
     this.definitionUri,
-    this.element_definitionUri,
+    this.elementDefinitionUri,
     this.transform,
     this.dynamicValue,
     this.action
@@ -793,7 +793,7 @@ class PlanDefinition_Condition {
   String kind; // <code> enum: applicability/start/stop;
 
   //  Extensions for kind
-  Element element_kind;
+  Element elementKind;
 
   //  An expression that returns true or false, indicating whether the
   // condition is satisfied.
@@ -804,7 +804,7 @@ PlanDefinition_Condition(
     this.extension,
     this.modifierExtension,
     this.kind,
-    this.element_kind,
+    this.elementKind,
     this.expression
     });
 
@@ -845,13 +845,13 @@ class PlanDefinition_RelatedAction {
   String actionId;
 
   //  Extensions for actionId
-  Element element_actionId;
+  Element elementActionId;
 
   //  The relationship of this action to the related action.
   String relationship; // <code> enum: before-start/before/before-end/concurrent-with-start/concurrent/concurrent-with-end/after-start/after/after-end;
 
   //  Extensions for relationship
-  Element element_relationship;
+  Element elementRelationship;
 
   //  A duration or range of durations to apply to the relationship. For
   // example, 30-60 minutes before.
@@ -866,9 +866,9 @@ PlanDefinition_RelatedAction(
     this.extension,
     this.modifierExtension,
     this.actionId,
-    this.element_actionId,
+    this.elementActionId,
     this.relationship,
-    this.element_relationship,
+    this.elementRelationship,
     this.offsetDuration,
     this.offsetRange
     });
@@ -910,7 +910,7 @@ class PlanDefinition_Participant {
   String type; // <code> enum: patient/practitioner/related-person/device;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  The role the participant should play in performing the described
   // action.
@@ -921,7 +921,7 @@ PlanDefinition_Participant(
     this.extension,
     this.modifierExtension,
     this.type,
-    this.element_type,
+    this.elementType,
     this.role
     });
 
@@ -970,7 +970,7 @@ class PlanDefinition_DynamicValue {
   String path;
 
   //  Extensions for path
-  Element element_path;
+  Element elementPath;
 
   //  An expression specifying the value of the customized element.
   Expression expression;
@@ -980,7 +980,7 @@ PlanDefinition_DynamicValue(
     this.extension,
     this.modifierExtension,
     this.path,
-    this.element_path,
+    this.elementPath,
     this.expression
     });
 

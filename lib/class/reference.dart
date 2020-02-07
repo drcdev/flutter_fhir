@@ -31,7 +31,7 @@ class Reference {
   String reference;
 
   //  Extensions for reference
-  Element element_reference;
+  Element elementReference;
 
   //  The expected type of the target of the reference. If both
   // Reference.type and Reference.reference are populated and
@@ -45,7 +45,7 @@ class Reference {
   String type;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  An identifier for the target resource. This is used when there is no
   // way to reference the other resource directly, either because the entity
@@ -63,18 +63,18 @@ class Reference {
   String display;
 
   //  Extensions for display
-  Element element_display;
+  Element elementDisplay;
 
 Reference(
   {this.id,
     this.extension,
     this.reference,
-    this.element_reference,
+    this.elementReference,
     this.type,
-    this.element_type,
+    this.elementType,
     this.identifier,
     this.display,
-    this.element_display
+    this.elementDisplay
     });
 
   factory Reference.fromJson(Map<String, dynamic> json) => _$ReferenceFromJson(json);

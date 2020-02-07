@@ -38,13 +38,13 @@ class Evidence {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -57,7 +57,7 @@ class Evidence {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -92,7 +92,7 @@ class Evidence {
   String url;
 
   //  Extensions for url
-  Element element_url;
+  Element elementUrl;
 
   //  A formal identifier that is used to identify this evidence when it is
   // represented in other formats, or referenced in a specification, model,
@@ -113,7 +113,7 @@ class Evidence {
   String version;
 
   //  Extensions for version
-  Element element_version;
+  Element elementVersion;
 
   //  A natural language name identifying the evidence. This name should be
   // usable as an identifier for the module by machine processing
@@ -121,34 +121,34 @@ class Evidence {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  A short, descriptive, user-friendly title for the evidence.
   String title;
 
   //  Extensions for title
-  Element element_title;
+  Element elementTitle;
 
   //  The short title provides an alternate title for use in informal
   // descriptive contexts where the full, formal title is not necessary.
   String shortTitle;
 
   //  Extensions for shortTitle
-  Element element_shortTitle;
+  Element elementShortTitle;
 
   //  An explanatory or alternate title for the Evidence giving additional
   // information about its content.
   String subtitle;
 
   //  Extensions for subtitle
-  Element element_subtitle;
+  Element elementSubtitle;
 
   //  The status of this evidence. Enables tracking the life-cycle of the
   // content.
   String status; // <code> enum: draft/active/retired/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  The date  (and optionally time) when the evidence was published. The
   // date must change when the business version changes and it must change
@@ -157,14 +157,14 @@ class Evidence {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  The name of the organization or individual that published the
   // evidence.
   String publisher;
 
   //  Extensions for publisher
-  Element element_publisher;
+  Element elementPublisher;
 
   //  Contact details to assist a user in finding and communicating with the
   // publisher.
@@ -175,7 +175,7 @@ class Evidence {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  A human-readable string to clarify or explain concepts about the
   // resource.
@@ -198,7 +198,7 @@ class Evidence {
   String copyright;
 
   //  Extensions for copyright
-  Element element_copyright;
+  Element elementCopyright;
 
   //  The date on which the resource content was approved by the publisher.
   // Approval happens once when the content is officially approved for
@@ -206,7 +206,7 @@ class Evidence {
   String approvalDate;
 
   //  Extensions for approvalDate
-  Element element_approvalDate;
+  Element elementApprovalDate;
 
   //  The date on which the resource content was last reviewed. Review
   // happens periodically after approval but does not change the original
@@ -214,7 +214,7 @@ class Evidence {
   String lastReviewDate;
 
   //  Extensions for lastReviewDate
-  Element element_lastReviewDate;
+  Element elementLastReviewDate;
 
   //  The period during which the evidence content was or is planned to be
   // in active use.
@@ -262,44 +262,44 @@ Evidence(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
-    this.element_url,
+    this.elementUrl,
     this.identifier,
     this.version,
-    this.element_version,
+    this.elementVersion,
     this.name,
-    this.element_name,
+    this.elementName,
     this.title,
-    this.element_title,
+    this.elementTitle,
     this.shortTitle,
-    this.element_shortTitle,
+    this.elementShortTitle,
     this.subtitle,
-    this.element_subtitle,
+    this.elementSubtitle,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.publisher,
-    this.element_publisher,
+    this.elementPublisher,
     this.contact,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.note,
     this.useContext,
     this.jurisdiction,
     this.copyright,
-    this.element_copyright,
+    this.elementCopyright,
     this.approvalDate,
-    this.element_approvalDate,
+    this.elementApprovalDate,
     this.lastReviewDate,
-    this.element_lastReviewDate,
+    this.elementLastReviewDate,
     this.effectivePeriod,
     this.topic,
     this.author,

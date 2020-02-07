@@ -33,13 +33,13 @@ class ImmunizationRecommendation {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -52,7 +52,7 @@ class ImmunizationRecommendation {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -87,7 +87,7 @@ class ImmunizationRecommendation {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  Indicates the authority who published the protocol (e.g. ACIP).
   Reference authority;
@@ -101,16 +101,16 @@ ImmunizationRecommendation(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.authority
     });
 
@@ -172,40 +172,40 @@ class ImmunizationRecommendation_Recommendation {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  One possible path to achieve presumed immunity against a disease -
   // within the context of an authority.
   String series;
 
   //  Extensions for series
-  Element element_series;
+  Element elementSeries;
 
   //  Nominal position of the recommended dose in a series (e.g. dose 2 is
   // the next recommended dose).
   int doseNumberPositiveInt; //  pattern: ^[1-9][0-9]*$
 
   //  Extensions for doseNumberPositiveInt
-  Element element_doseNumberPositiveInt;
+  Element elementDoseNumberPositiveInt;
 
   //  Nominal position of the recommended dose in a series (e.g. dose 2 is
   // the next recommended dose).
   String doseNumberString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for doseNumberString
-  Element element_doseNumberString;
+  Element elementDoseNumberString;
 
   //  The recommended number of doses to achieve immunity.
   int seriesDosesPositiveInt; //  pattern: ^[1-9][0-9]*$
 
   //  Extensions for seriesDosesPositiveInt
-  Element element_seriesDosesPositiveInt;
+  Element elementSeriesDosesPositiveInt;
 
   //  The recommended number of doses to achieve immunity.
   String seriesDosesString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for seriesDosesString
-  Element element_seriesDosesString;
+  Element elementSeriesDosesString;
 
   //  Immunization event history and/or evaluation that supports the status
   // and recommendation.
@@ -227,17 +227,17 @@ ImmunizationRecommendation_Recommendation(
     this.forecastReason,
     this.dateCriterion,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.series,
-    this.element_series,
+    this.elementSeries,
     this.doseNumberPositiveInt,
-    this.element_doseNumberPositiveInt,
+    this.elementDoseNumberPositiveInt,
     this.doseNumberString,
-    this.element_doseNumberString,
+    this.elementDoseNumberString,
     this.seriesDosesPositiveInt,
-    this.element_seriesDosesPositiveInt,
+    this.elementSeriesDosesPositiveInt,
     this.seriesDosesString,
-    this.element_seriesDosesString,
+    this.elementSeriesDosesString,
     this.supportingImmunization,
     this.supportingPatientInformation
     });
@@ -283,7 +283,7 @@ class ImmunizationRecommendation_DateCriterion {
   DateTime value;
 
   //  Extensions for value
-  Element element_value;
+  Element elementValue;
 
 ImmunizationRecommendation_DateCriterion(
   this.code,
@@ -291,7 +291,7 @@ ImmunizationRecommendation_DateCriterion(
     this.extension,
     this.modifierExtension,
     this.value,
-    this.element_value
+    this.elementValue
     });
 
   factory ImmunizationRecommendation_DateCriterion.fromJson(Map<String, dynamic> json) => _$ImmunizationRecommendation_DateCriterionFromJson(json);

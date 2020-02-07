@@ -16,20 +16,20 @@ AppointmentResponse _$AppointmentResponseFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -45,13 +45,13 @@ AppointmentResponse _$AppointmentResponseFromJson(Map<String, dynamic> json) {
         ?.toList(),
     start:
         json['start'] == null ? null : DateTime.parse(json['start'] as String),
-    element_start: json['element_start'] == null
+    elementStart: json['elementStart'] == null
         ? null
-        : Element.fromJson(json['element_start'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStart'] as Map<String, dynamic>),
     end: json['end'] == null ? null : DateTime.parse(json['end'] as String),
-    element_end: json['element_end'] == null
+    elementEnd: json['elementEnd'] == null
         ? null
-        : Element.fromJson(json['element_end'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementEnd'] as Map<String, dynamic>),
     participantType: (json['participantType'] as List)
         ?.map((e) => e == null
             ? null
@@ -61,14 +61,14 @@ AppointmentResponse _$AppointmentResponseFromJson(Map<String, dynamic> json) {
         ? null
         : Reference.fromJson(json['actor'] as Map<String, dynamic>),
     participantStatus: json['participantStatus'] as String,
-    element_participantStatus: json['element_participantStatus'] == null
+    elementParticipantStatus: json['elementParticipantStatus'] == null
         ? null
         : Element.fromJson(
-            json['element_participantStatus'] as Map<String, dynamic>),
+            json['elementParticipantStatus'] as Map<String, dynamic>),
     comment: json['comment'] as String,
-    element_comment: json['element_comment'] == null
+    elementComment: json['elementComment'] == null
         ? null
-        : Element.fromJson(json['element_comment'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementComment'] as Map<String, dynamic>),
   );
 }
 
@@ -78,9 +78,9 @@ Map<String, dynamic> _$AppointmentResponseToJson(
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -89,14 +89,14 @@ Map<String, dynamic> _$AppointmentResponseToJson(
       'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
       'appointment': instance.appointment?.toJson(),
       'start': instance.start?.toIso8601String(),
-      'element_start': instance.element_start?.toJson(),
+      'elementStart': instance.elementStart?.toJson(),
       'end': instance.end?.toIso8601String(),
-      'element_end': instance.element_end?.toJson(),
+      'elementEnd': instance.elementEnd?.toJson(),
       'participantType':
           instance.participantType?.map((e) => e?.toJson())?.toList(),
       'actor': instance.actor?.toJson(),
       'participantStatus': instance.participantStatus,
-      'element_participantStatus': instance.element_participantStatus?.toJson(),
+      'elementParticipantStatus': instance.elementParticipantStatus?.toJson(),
       'comment': instance.comment,
-      'element_comment': instance.element_comment?.toJson(),
+      'elementComment': instance.elementComment?.toJson(),
     };

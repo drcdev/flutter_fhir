@@ -175,7 +175,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                         HumanName(given: [givenNameController.text],
                             family: familyNameController.text)
                       ],
-                     birthDate: _birthDate);
+                     birthDate: _birthDate.toString());
                   pt.id = await ObjectId(pt.runtimeType.toString());
                   Write(pt);
                   Navigator.push(

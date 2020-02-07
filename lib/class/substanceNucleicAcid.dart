@@ -33,13 +33,13 @@ class SubstanceNucleicAcid {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -52,7 +52,7 @@ class SubstanceNucleicAcid {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -89,7 +89,7 @@ class SubstanceNucleicAcid {
   int numberOfSubunits;
 
   //  Extensions for numberOfSubunits
-  Element element_numberOfSubunits;
+  Element elementNumberOfSubunits;
 
   //  The area of hybridisation shall be described if applicable for double
   // stranded RNA or DNA. The number associated with the subunit followed by
@@ -99,7 +99,7 @@ class SubstanceNucleicAcid {
   String areaOfHybridisation;
 
   //  Extensions for areaOfHybridisation
-  Element element_areaOfHybridisation;
+  Element elementAreaOfHybridisation;
 
   //  (TBC).
   CodeableConcept oligoNucleotideType;
@@ -113,18 +113,18 @@ SubstanceNucleicAcid(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.sequenceType,
     this.numberOfSubunits,
-    this.element_numberOfSubunits,
+    this.elementNumberOfSubunits,
     this.areaOfHybridisation,
-    this.element_areaOfHybridisation,
+    this.elementAreaOfHybridisation,
     this.oligoNucleotideType,
     this.subunit
     });
@@ -169,7 +169,7 @@ class SubstanceNucleicAcid_Subunit {
   int subunit;
 
   //  Extensions for subunit
-  Element element_subunit;
+  Element elementSubunit;
 
   //  Actual nucleotide sequence notation from 5' to 3' end using standard
   // single letter codes. In addition to the base sequence, sugar and type
@@ -177,13 +177,13 @@ class SubstanceNucleicAcid_Subunit {
   String sequence;
 
   //  Extensions for sequence
-  Element element_sequence;
+  Element elementSequence;
 
   //  The length of the sequence shall be captured.
   int length;
 
   //  Extensions for length
-  Element element_length;
+  Element elementLength;
 
   //  (TBC).
   Attachment sequenceAttachment;
@@ -211,11 +211,11 @@ SubstanceNucleicAcid_Subunit(
     this.extension,
     this.modifierExtension,
     this.subunit,
-    this.element_subunit,
+    this.elementSubunit,
     this.sequence,
-    this.element_sequence,
+    this.elementSequence,
     this.length,
-    this.element_length,
+    this.elementLength,
     this.sequenceAttachment,
     this.fivePrime,
     this.threePrime,
@@ -264,7 +264,7 @@ class SubstanceNucleicAcid_Linkage {
   String connectivity;
 
   //  Extensions for connectivity
-  Element element_connectivity;
+  Element elementConnectivity;
 
   //  Each linkage will be registered as a fragment and have an ID.
   Identifier identifier;
@@ -274,25 +274,25 @@ class SubstanceNucleicAcid_Linkage {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  Residues shall be captured as described in 5.3.6.8.3.
   String residueSite;
 
   //  Extensions for residueSite
-  Element element_residueSite;
+  Element elementResidueSite;
 
 SubstanceNucleicAcid_Linkage(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.connectivity,
-    this.element_connectivity,
+    this.elementConnectivity,
     this.identifier,
     this.name,
-    this.element_name,
+    this.elementName,
     this.residueSite,
-    this.element_residueSite
+    this.elementResidueSite
     });
 
   factory SubstanceNucleicAcid_Linkage.fromJson(Map<String, dynamic> json) => _$SubstanceNucleicAcid_LinkageFromJson(json);
@@ -337,7 +337,7 @@ class SubstanceNucleicAcid_Sugar {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  The residues that contain a given sugar will be captured. The order of
   // given residues will be captured in the 5‘-3‘direction consistent with
@@ -345,7 +345,7 @@ class SubstanceNucleicAcid_Sugar {
   String residueSite;
 
   //  Extensions for residueSite
-  Element element_residueSite;
+  Element elementResidueSite;
 
 SubstanceNucleicAcid_Sugar(
   {this.id,
@@ -353,9 +353,9 @@ SubstanceNucleicAcid_Sugar(
     this.modifierExtension,
     this.identifier,
     this.name,
-    this.element_name,
+    this.elementName,
     this.residueSite,
-    this.element_residueSite
+    this.elementResidueSite
     });
 
   factory SubstanceNucleicAcid_Sugar.fromJson(Map<String, dynamic> json) => _$SubstanceNucleicAcid_SugarFromJson(json);

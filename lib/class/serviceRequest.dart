@@ -39,13 +39,13 @@ class ServiceRequest {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -58,7 +58,7 @@ class ServiceRequest {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -98,7 +98,7 @@ class ServiceRequest {
   List<String> instantiatesUri;
 
   //  Extensions for instantiatesUri
-  List<Element> element_instantiatesUri;
+  List<Element> elementInstantiatesUri;
 
   //  Plan/proposal/order fulfilled by this request.
   List<Reference> basedOn;
@@ -116,14 +116,14 @@ class ServiceRequest {
   String status;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  Whether the request is a proposal, plan, an original order or a reflex
   // order.
   String intent;
 
   //  Extensions for intent
-  Element element_intent;
+  Element elementIntent;
 
   //  A code that classifies the service for searching, sorting and display
   // purposes (e.g. "Surgical Procedure").
@@ -134,14 +134,14 @@ class ServiceRequest {
   String priority;
 
   //  Extensions for priority
-  Element element_priority;
+  Element elementPriority;
 
   //  Set this to true if the record is saying that the service/procedure
   // should NOT be performed.
   bool doNotPerform;
 
   //  Extensions for doNotPerform
-  Element element_doNotPerform;
+  Element elementDoNotPerform;
 
   //  A code that identifies a particular service (i.e., procedure,
   // diagnostic investigation, or panel of investigations) that have been
@@ -184,7 +184,7 @@ class ServiceRequest {
   String occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for occurrenceDateTime
-  Element element_occurrenceDateTime;
+  Element elementOccurrenceDateTime;
 
   //  The date/time at which the requested service should occur.
   Period occurrencePeriod;
@@ -197,7 +197,7 @@ class ServiceRequest {
   bool asNeededBoolean; //  pattern: ^true|false$
 
   //  Extensions for asNeededBoolean
-  Element element_asNeededBoolean;
+  Element elementAsNeededBoolean;
 
   //  If a CodeableConcept is present, it indicates the pre-condition for
   // performing the service.  For example "pain", "on flare-up", etc.
@@ -207,7 +207,7 @@ class ServiceRequest {
   DateTime authoredOn;
 
   //  Extensions for authoredOn
-  Element element_authoredOn;
+  Element elementAuthoredOn;
 
   //  The individual who initiated the request and has responsibility for
   // its activation.
@@ -268,7 +268,7 @@ class ServiceRequest {
   String patientInstruction;
 
   //  Extensions for patientInstruction
-  Element element_patientInstruction;
+  Element elementPatientInstruction;
 
   //  Key events in the history of the request.
   List<Reference> relevantHistory;
@@ -278,9 +278,9 @@ ServiceRequest(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -288,19 +288,19 @@ ServiceRequest(
     this.identifier,
     this.instantiatesCanonical,
     this.instantiatesUri,
-    this.element_instantiatesUri,
+    this.elementInstantiatesUri,
     this.basedOn,
     this.replaces,
     this.requisition,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.intent,
-    this.element_intent,
+    this.elementIntent,
     this.category,
     this.priority,
-    this.element_priority,
+    this.elementPriority,
     this.doNotPerform,
-    this.element_doNotPerform,
+    this.elementDoNotPerform,
     this.code,
     this.orderDetail,
     this.quantityQuantity,
@@ -308,14 +308,14 @@ ServiceRequest(
     this.quantityRange,
     this.encounter,
     this.occurrenceDateTime,
-    this.element_occurrenceDateTime,
+    this.elementOccurrenceDateTime,
     this.occurrencePeriod,
     this.occurrenceTiming,
     this.asNeededBoolean,
-    this.element_asNeededBoolean,
+    this.elementAsNeededBoolean,
     this.asNeededCodeableConcept,
     this.authoredOn,
-    this.element_authoredOn,
+    this.elementAuthoredOn,
     this.requester,
     this.performerType,
     this.performer,
@@ -329,7 +329,7 @@ ServiceRequest(
     this.bodySite,
     this.note,
     this.patientInstruction,
-    this.element_patientInstruction,
+    this.elementPatientInstruction,
     this.relevantHistory
     });
 

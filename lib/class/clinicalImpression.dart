@@ -35,13 +35,13 @@ class ClinicalImpression {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -54,7 +54,7 @@ class ClinicalImpression {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -88,7 +88,7 @@ class ClinicalImpression {
   String status;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  Captures the reason for the current state of the ClinicalImpression.
   CodeableConcept statusReason;
@@ -101,7 +101,7 @@ class ClinicalImpression {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  The patient or group of individuals assessed as part of this record.
   Reference subject;
@@ -114,7 +114,7 @@ class ClinicalImpression {
   String effectiveDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for effectiveDateTime
-  Element element_effectiveDateTime;
+  Element elementEffectiveDateTime;
 
   //  The point in time or period over which the subject was assessed.
   Period effectivePeriod;
@@ -123,7 +123,7 @@ class ClinicalImpression {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  The clinician performing the assessment.
   Reference assessor;
@@ -150,13 +150,13 @@ class ClinicalImpression {
   List<String> protocol;
 
   //  Extensions for protocol
-  List<Element> element_protocol;
+  List<Element> elementProtocol;
 
   //  A text summary of the investigations and the diagnosis.
   String summary;
 
   //  Extensions for summary
-  Element element_summary;
+  Element elementSummary;
 
   //  Specific findings or diagnoses that were considered likely or relevant
   // to ongoing treatment.
@@ -181,34 +181,34 @@ ClinicalImpression(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.statusReason,
     this.code,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.encounter,
     this.effectiveDateTime,
-    this.element_effectiveDateTime,
+    this.elementEffectiveDateTime,
     this.effectivePeriod,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.assessor,
     this.previous,
     this.problem,
     this.investigation,
     this.protocol,
-    this.element_protocol,
+    this.elementProtocol,
     this.summary,
-    this.element_summary,
+    this.elementSummary,
     this.finding,
     this.prognosisCodeableConcept,
     this.prognosisReference,
@@ -311,7 +311,7 @@ class ClinicalImpression_Finding {
   String basis;
 
   //  Extensions for basis
-  Element element_basis;
+  Element elementBasis;
 
 ClinicalImpression_Finding(
   {this.id,
@@ -320,7 +320,7 @@ ClinicalImpression_Finding(
     this.itemCodeableConcept,
     this.itemReference,
     this.basis,
-    this.element_basis
+    this.elementBasis
     });
 
   factory ClinicalImpression_Finding.fromJson(Map<String, dynamic> json) => _$ClinicalImpression_FindingFromJson(json);

@@ -36,13 +36,13 @@ class DeviceUseStatement {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -55,7 +55,7 @@ class DeviceUseStatement {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -93,7 +93,7 @@ class DeviceUseStatement {
   String status; // <code> enum: active/completed/entered-in-error/intended/stopped/on-hold;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  The patient who used the device.
   Reference subject;
@@ -113,13 +113,13 @@ class DeviceUseStatement {
   String timingDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for timingDateTime
-  Element element_timingDateTime;
+  Element elementTimingDateTime;
 
   //  The time at which the statement was made/recorded.
   DateTime recordedOn;
 
   //  Extensions for recordedOn
-  Element element_recordedOn;
+  Element elementRecordedOn;
 
   //  Who reported the device was being used by the patient.
   Reference source;
@@ -150,9 +150,9 @@ DeviceUseStatement(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -160,14 +160,14 @@ DeviceUseStatement(
     this.identifier,
     this.basedOn,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.derivedFrom,
     this.timingTiming,
     this.timingPeriod,
     this.timingDateTime,
-    this.element_timingDateTime,
+    this.elementTimingDateTime,
     this.recordedOn,
-    this.element_recordedOn,
+    this.elementRecordedOn,
     this.source,
     this.reasonCode,
     this.reasonReference,

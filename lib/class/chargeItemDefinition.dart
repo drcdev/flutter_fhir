@@ -37,13 +37,13 @@ class ChargeItemDefinition {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -56,7 +56,7 @@ class ChargeItemDefinition {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -91,7 +91,7 @@ class ChargeItemDefinition {
   String url;
 
   //  Extensions for url
-  Element element_url;
+  Element elementUrl;
 
   //  A formal identifier that is used to identify this charge item
   // definition when it is represented in other formats, or referenced in a
@@ -112,21 +112,21 @@ class ChargeItemDefinition {
   String version;
 
   //  Extensions for version
-  Element element_version;
+  Element elementVersion;
 
   //  A short, descriptive, user-friendly title for the charge item
   // definition.
   String title;
 
   //  Extensions for title
-  Element element_title;
+  Element elementTitle;
 
   //  The URL pointing to an externally-defined charge item definition that
   // is adhered to in whole or in part by this definition.
   List<String> derivedFromUri;
 
   //  Extensions for derivedFromUri
-  List<Element> element_derivedFromUri;
+  List<Element> elementDerivedFromUri;
 
   //  A larger definition of which this particular definition is a component
   // or step.
@@ -140,7 +140,7 @@ class ChargeItemDefinition {
   String status; // <code> enum: draft/active/retired/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  A Boolean value to indicate that this charge item definition is
   // authored for testing purposes (or education/evaluation/marketing) and
@@ -148,7 +148,7 @@ class ChargeItemDefinition {
   bool experimental;
 
   //  Extensions for experimental
-  Element element_experimental;
+  Element elementExperimental;
 
   //  The date  (and optionally time) when the charge item definition was
   // published. The date must change when the business version changes and
@@ -158,14 +158,14 @@ class ChargeItemDefinition {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  The name of the organization or individual that published the charge
   // item definition.
   String publisher;
 
   //  Extensions for publisher
-  Element element_publisher;
+  Element elementPublisher;
 
   //  Contact details to assist a user in finding and communicating with the
   // publisher.
@@ -176,7 +176,7 @@ class ChargeItemDefinition {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  The content was developed with a focus and intent of supporting the
   // contexts that are listed. These contexts may be general categories
@@ -195,7 +195,7 @@ class ChargeItemDefinition {
   String copyright;
 
   //  Extensions for copyright
-  Element element_copyright;
+  Element elementCopyright;
 
   //  The date on which the resource content was approved by the publisher.
   // Approval happens once when the content is officially approved for
@@ -203,7 +203,7 @@ class ChargeItemDefinition {
   String approvalDate;
 
   //  Extensions for approvalDate
-  Element element_approvalDate;
+  Element elementApprovalDate;
 
   //  The date on which the resource content was last reviewed. Review
   // happens periodically after approval but does not change the original
@@ -211,7 +211,7 @@ class ChargeItemDefinition {
   String lastReviewDate;
 
   //  Extensions for lastReviewDate
-  Element element_lastReviewDate;
+  Element elementLastReviewDate;
 
   //  The period during which the charge item definition content was or is
   // planned to be in active use.
@@ -237,43 +237,43 @@ ChargeItemDefinition(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
-    this.element_url,
+    this.elementUrl,
     this.identifier,
     this.version,
-    this.element_version,
+    this.elementVersion,
     this.title,
-    this.element_title,
+    this.elementTitle,
     this.derivedFromUri,
-    this.element_derivedFromUri,
+    this.elementDerivedFromUri,
     this.partOf,
     this.replaces,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.experimental,
-    this.element_experimental,
+    this.elementExperimental,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.publisher,
-    this.element_publisher,
+    this.elementPublisher,
     this.contact,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.useContext,
     this.jurisdiction,
     this.copyright,
-    this.element_copyright,
+    this.elementCopyright,
     this.approvalDate,
-    this.element_approvalDate,
+    this.elementApprovalDate,
     this.lastReviewDate,
-    this.element_lastReviewDate,
+    this.elementLastReviewDate,
     this.effectivePeriod,
     this.code,
     this.instance,
@@ -319,7 +319,7 @@ class ChargeItemDefinition_Applicability {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  The media type of the language for the expression, e.g. "text/cql" for
   // Clinical Query Language expressions or "text/fhirpath" for FHIRPath
@@ -327,7 +327,7 @@ class ChargeItemDefinition_Applicability {
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  An expression that returns true or false, indicating whether the
   // condition is satisfied. When using FHIRPath expressions, the %context
@@ -336,18 +336,18 @@ class ChargeItemDefinition_Applicability {
   String expression;
 
   //  Extensions for expression
-  Element element_expression;
+  Element elementExpression;
 
 ChargeItemDefinition_Applicability(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.expression,
-    this.element_expression
+    this.elementExpression
     });
 
   factory ChargeItemDefinition_Applicability.fromJson(Map<String, dynamic> json) => _$ChargeItemDefinition_ApplicabilityFromJson(json);
@@ -440,7 +440,7 @@ class ChargeItemDefinition_PriceComponent {
   String type;
 
   //  Extensions for type
-  Element element_type;
+  Element elementType;
 
   //  A code that identifies the component. Codes may be used to
   // differentiate between kinds of taxes, surcharges, discounts etc.
@@ -451,7 +451,7 @@ class ChargeItemDefinition_PriceComponent {
   double factor;
 
   //  Extensions for factor
-  Element element_factor;
+  Element elementFactor;
 
   //  The amount calculated for this component.
   Money amount;
@@ -461,10 +461,10 @@ ChargeItemDefinition_PriceComponent(
     this.extension,
     this.modifierExtension,
     this.type,
-    this.element_type,
+    this.elementType,
     this.code,
     this.factor,
-    this.element_factor,
+    this.elementFactor,
     this.amount
     });
 

@@ -34,13 +34,13 @@ class MedicinalProductIngredient {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -53,7 +53,7 @@ class MedicinalProductIngredient {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -90,7 +90,7 @@ class MedicinalProductIngredient {
   bool allergenicIndicator;
 
   //  Extensions for allergenicIndicator
-  Element element_allergenicIndicator;
+  Element elementAllergenicIndicator;
 
   //  Manufacturer of this Ingredient.
   List<Reference> manufacturer;
@@ -106,16 +106,16 @@ MedicinalProductIngredient(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.allergenicIndicator,
-    this.element_allergenicIndicator,
+    this.elementAllergenicIndicator,
     this.manufacturer,
     this.specifiedSubstance,
     this.substance
@@ -232,7 +232,7 @@ class MedicinalProductIngredient_Strength {
   String measurementPoint;
 
   //  Extensions for measurementPoint
-  Element element_measurementPoint;
+  Element elementMeasurementPoint;
 
   //  The country or countries for which the strength range applies.
   List<CodeableConcept> country;
@@ -249,7 +249,7 @@ MedicinalProductIngredient_Strength(
     this.concentration,
     this.concentrationLowLimit,
     this.measurementPoint,
-    this.element_measurementPoint,
+    this.elementMeasurementPoint,
     this.country,
     this.referenceStrength
     });
@@ -300,7 +300,7 @@ class MedicinalProductIngredient_ReferenceStrength {
   String measurementPoint;
 
   //  Extensions for measurementPoint
-  Element element_measurementPoint;
+  Element elementMeasurementPoint;
 
   //  The country or countries for which the strength range applies.
   List<CodeableConcept> country;
@@ -313,7 +313,7 @@ MedicinalProductIngredient_ReferenceStrength(
     this.substance,
     this.strengthLowLimit,
     this.measurementPoint,
-    this.element_measurementPoint,
+    this.elementMeasurementPoint,
     this.country
     });
 

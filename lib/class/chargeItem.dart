@@ -38,13 +38,13 @@ class ChargeItem {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -57,7 +57,7 @@ class ChargeItem {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -90,7 +90,7 @@ class ChargeItem {
   List<String> definitionUri;
 
   //  Extensions for definitionUri
-  List<Element> element_definitionUri;
+  List<Element> elementDefinitionUri;
 
   //  References the source of pricing information, rules of application for
   // the code this ChargeItem uses.
@@ -100,7 +100,7 @@ class ChargeItem {
   String status; // <code> enum: planned/billable/not-billable/aborted/billed/entered-in-error/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  ChargeItems can be grouped to larger ChargeItems covering the whole
   // set.
@@ -121,7 +121,7 @@ class ChargeItem {
   String occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for occurrenceDateTime
-  Element element_occurrenceDateTime;
+  Element elementOccurrenceDateTime;
 
   //  Date/time(s) or duration when the charged service was applied.
   Period occurrencePeriod;
@@ -153,7 +153,7 @@ class ChargeItem {
   double factorOverride;
 
   //  Extensions for factorOverride
-  Element element_factorOverride;
+  Element elementFactorOverride;
 
   //  Total price of the charge overriding the list price associated with
   // the code.
@@ -165,7 +165,7 @@ class ChargeItem {
   String overrideReason;
 
   //  Extensions for overrideReason
-  Element element_overrideReason;
+  Element elementOverrideReason;
 
   //  The device, practitioner, etc. who entered the charge item.
   Reference enterer;
@@ -174,7 +174,7 @@ class ChargeItem {
   DateTime enteredDate;
 
   //  Extensions for enteredDate
-  Element element_enteredDate;
+  Element elementEnteredDate;
 
   //  Describes why the event occurred in coded or textual form.
   List<CodeableConcept> reason;
@@ -206,23 +206,23 @@ ChargeItem(
     {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.definitionUri,
-    this.element_definitionUri,
+    this.elementDefinitionUri,
     this.definitionCanonical,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.partOf,
     this.context,
     this.occurrenceDateTime,
-    this.element_occurrenceDateTime,
+    this.elementOccurrenceDateTime,
     this.occurrencePeriod,
     this.occurrenceTiming,
     this.performer,
@@ -232,13 +232,13 @@ ChargeItem(
     this.quantity,
     this.bodysite,
     this.factorOverride,
-    this.element_factorOverride,
+    this.elementFactorOverride,
     this.priceOverride,
     this.overrideReason,
-    this.element_overrideReason,
+    this.elementOverrideReason,
     this.enterer,
     this.enteredDate,
-    this.element_enteredDate,
+    this.elementEnteredDate,
     this.reason,
     this.service,
     this.productReference,

@@ -13,20 +13,20 @@ CommunicationRequest _$CommunicationRequestFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -52,9 +52,9 @@ CommunicationRequest _$CommunicationRequestFromJson(Map<String, dynamic> json) {
         ? null
         : Identifier.fromJson(json['groupIdentifier'] as Map<String, dynamic>),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     statusReason: json['statusReason'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -65,14 +65,13 @@ CommunicationRequest _$CommunicationRequestFromJson(Map<String, dynamic> json) {
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     priority: json['priority'] as String,
-    element_priority: json['element_priority'] == null
+    elementPriority: json['elementPriority'] == null
         ? null
-        : Element.fromJson(json['element_priority'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPriority'] as Map<String, dynamic>),
     doNotPerform: json['doNotPerform'] as bool,
-    element_doNotPerform: json['element_doNotPerform'] == null
+    elementDoNotPerform: json['elementDoNotPerform'] == null
         ? null
-        : Element.fromJson(
-            json['element_doNotPerform'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDoNotPerform'] as Map<String, dynamic>),
     medium: (json['medium'] as List)
         ?.map((e) => e == null
             ? null
@@ -94,19 +93,19 @@ CommunicationRequest _$CommunicationRequestFromJson(Map<String, dynamic> json) {
             : CommunicationRequest_Payload.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     occurrenceDateTime: json['occurrenceDateTime'] as String,
-    element_occurrenceDateTime: json['element_occurrenceDateTime'] == null
+    elementOccurrenceDateTime: json['elementOccurrenceDateTime'] == null
         ? null
         : Element.fromJson(
-            json['element_occurrenceDateTime'] as Map<String, dynamic>),
+            json['elementOccurrenceDateTime'] as Map<String, dynamic>),
     occurrencePeriod: json['occurrencePeriod'] == null
         ? null
         : Period.fromJson(json['occurrencePeriod'] as Map<String, dynamic>),
     authoredOn: json['authoredOn'] == null
         ? null
         : DateTime.parse(json['authoredOn'] as String),
-    element_authoredOn: json['element_authoredOn'] == null
+    elementAuthoredOn: json['elementAuthoredOn'] == null
         ? null
-        : Element.fromJson(json['element_authoredOn'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementAuthoredOn'] as Map<String, dynamic>),
     requester: json['requester'] == null
         ? null
         : Reference.fromJson(json['requester'] as Map<String, dynamic>),
@@ -139,9 +138,9 @@ Map<String, dynamic> _$CommunicationRequestToJson(
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -152,24 +151,23 @@ Map<String, dynamic> _$CommunicationRequestToJson(
       'replaces': instance.replaces?.map((e) => e?.toJson())?.toList(),
       'groupIdentifier': instance.groupIdentifier?.toJson(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'statusReason': instance.statusReason?.toJson(),
       'category': instance.category?.map((e) => e?.toJson())?.toList(),
       'priority': instance.priority,
-      'element_priority': instance.element_priority?.toJson(),
+      'elementPriority': instance.elementPriority?.toJson(),
       'doNotPerform': instance.doNotPerform,
-      'element_doNotPerform': instance.element_doNotPerform?.toJson(),
+      'elementDoNotPerform': instance.elementDoNotPerform?.toJson(),
       'medium': instance.medium?.map((e) => e?.toJson())?.toList(),
       'subject': instance.subject?.toJson(),
       'about': instance.about?.map((e) => e?.toJson())?.toList(),
       'encounter': instance.encounter?.toJson(),
       'payload': instance.payload?.map((e) => e?.toJson())?.toList(),
       'occurrenceDateTime': instance.occurrenceDateTime,
-      'element_occurrenceDateTime':
-          instance.element_occurrenceDateTime?.toJson(),
+      'elementOccurrenceDateTime': instance.elementOccurrenceDateTime?.toJson(),
       'occurrencePeriod': instance.occurrencePeriod?.toJson(),
       'authoredOn': instance.authoredOn?.toIso8601String(),
-      'element_authoredOn': instance.element_authoredOn?.toJson(),
+      'elementAuthoredOn': instance.elementAuthoredOn?.toJson(),
       'requester': instance.requester?.toJson(),
       'recipient': instance.recipient?.map((e) => e?.toJson())?.toList(),
       'sender': instance.sender?.toJson(),
@@ -192,10 +190,10 @@ CommunicationRequest_Payload _$CommunicationRequest_PayloadFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     contentString: json['contentString'] as String,
-    element_contentString: json['element_contentString'] == null
+    elementContentString: json['elementContentString'] == null
         ? null
         : Element.fromJson(
-            json['element_contentString'] as Map<String, dynamic>),
+            json['elementContentString'] as Map<String, dynamic>),
     contentAttachment: json['contentAttachment'] == null
         ? null
         : Attachment.fromJson(
@@ -214,7 +212,7 @@ Map<String, dynamic> _$CommunicationRequest_PayloadToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'contentString': instance.contentString,
-      'element_contentString': instance.element_contentString?.toJson(),
+      'elementContentString': instance.elementContentString?.toJson(),
       'contentAttachment': instance.contentAttachment?.toJson(),
       'contentReference': instance.contentReference?.toJson(),
     };

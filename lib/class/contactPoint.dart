@@ -26,20 +26,20 @@ class ContactPoint {
   String system; // <code> enum: phone/fax/email/pager/url/sms/other;
 
   //  Extensions for system
-  Element element_system;
+  Element elementSystem;
 
   //  The actual contact point details, in a form that is meaningful to the
   // designated communication system (i.e. phone number or email address).
   String value;
 
   //  Extensions for value
-  Element element_value;
+  Element elementValue;
 
   //  Identifies the purpose for the contact point.
   String use; // <code> enum: home/work/temp/old/mobile;
 
   //  Extensions for use
-  Element element_use;
+  Element elementUse;
 
   //  Specifies a preferred order in which to use a set of contacts.
   // ContactPoints with lower rank values are more preferred than those with
@@ -47,7 +47,7 @@ class ContactPoint {
   int rank;
 
   //  Extensions for rank
-  Element element_rank;
+  Element elementRank;
 
   //  Time period when the contact point was/is in use.
   Period period;
@@ -56,13 +56,13 @@ ContactPoint(
   {this.id,
     this.extension,
     this.system,
-    this.element_system,
+    this.elementSystem,
     this.value,
-    this.element_value,
+    this.elementValue,
     this.use,
-    this.element_use,
+    this.elementUse,
     this.rank,
-    this.element_rank,
+    this.elementRank,
     this.period
     });
 

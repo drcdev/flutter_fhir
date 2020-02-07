@@ -13,20 +13,20 @@ OperationDefinition _$OperationDefinitionFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -37,51 +37,50 @@ OperationDefinition _$OperationDefinitionFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     url: json['url'] as String,
-    element_url: json['element_url'] == null
+    elementUrl: json['elementUrl'] == null
         ? null
-        : Element.fromJson(json['element_url'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementUrl'] as Map<String, dynamic>),
     version: json['version'] as String,
-    element_version: json['element_version'] == null
+    elementVersion: json['elementVersion'] == null
         ? null
-        : Element.fromJson(json['element_version'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementVersion'] as Map<String, dynamic>),
     name: json['name'] as String,
-    element_name: json['element_name'] == null
+    elementName: json['elementName'] == null
         ? null
-        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
     title: json['title'] as String,
-    element_title: json['element_title'] == null
+    elementTitle: json['elementTitle'] == null
         ? null
-        : Element.fromJson(json['element_title'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementTitle'] as Map<String, dynamic>),
     status: json['status'] as String,
-    element_status: json['element_status'] == null
+    elementStatus: json['elementStatus'] == null
         ? null
-        : Element.fromJson(json['element_status'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
     kind: json['kind'] as String,
-    element_kind: json['element_kind'] == null
+    elementKind: json['elementKind'] == null
         ? null
-        : Element.fromJson(json['element_kind'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementKind'] as Map<String, dynamic>),
     experimental: json['experimental'] as bool,
-    element_experimental: json['element_experimental'] == null
+    elementExperimental: json['elementExperimental'] == null
         ? null
-        : Element.fromJson(
-            json['element_experimental'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementExperimental'] as Map<String, dynamic>),
     date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
-    element_date: json['element_date'] == null
+    elementDate: json['elementDate'] == null
         ? null
-        : Element.fromJson(json['element_date'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDate'] as Map<String, dynamic>),
     publisher: json['publisher'] as String,
-    element_publisher: json['element_publisher'] == null
+    elementPublisher: json['elementPublisher'] == null
         ? null
-        : Element.fromJson(json['element_publisher'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPublisher'] as Map<String, dynamic>),
     contact: (json['contact'] as List)
         ?.map((e) => e == null
             ? null
             : ContactDetail.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     description: json['description'] as String,
-    element_description: json['element_description'] == null
+    elementDescription: json['elementDescription'] == null
         ? null
-        : Element.fromJson(json['element_description'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
     useContext: (json['useContext'] as List)
         ?.map((e) =>
             e == null ? null : UsageContext.fromJson(e as Map<String, dynamic>))
@@ -92,40 +91,39 @@ OperationDefinition _$OperationDefinitionFromJson(Map<String, dynamic> json) {
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     purpose: json['purpose'] as String,
-    element_purpose: json['element_purpose'] == null
+    elementPurpose: json['elementPurpose'] == null
         ? null
-        : Element.fromJson(json['element_purpose'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementPurpose'] as Map<String, dynamic>),
     affectsState: json['affectsState'] as bool,
-    element_affectsState: json['element_affectsState'] == null
+    elementAffectsState: json['elementAffectsState'] == null
         ? null
-        : Element.fromJson(
-            json['element_affectsState'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementAffectsState'] as Map<String, dynamic>),
     code: json['code'] as String,
-    element_code: json['element_code'] == null
+    elementCode: json['elementCode'] == null
         ? null
-        : Element.fromJson(json['element_code'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementCode'] as Map<String, dynamic>),
     comment: json['comment'] as String,
-    element_comment: json['element_comment'] == null
+    elementComment: json['elementComment'] == null
         ? null
-        : Element.fromJson(json['element_comment'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementComment'] as Map<String, dynamic>),
     base: json['base'] as String,
     resource: (json['resource'] as List)?.map((e) => e as String)?.toList(),
-    element_resource: (json['element_resource'] as List)
+    elementResource: (json['elementResource'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     system: json['system'] as bool,
-    element_system: json['element_system'] == null
+    elementSystem: json['elementSystem'] == null
         ? null
-        : Element.fromJson(json['element_system'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSystem'] as Map<String, dynamic>),
     type: json['type'] as bool,
-    element_type: json['element_type'] == null
+    elementType: json['elementType'] == null
         ? null
-        : Element.fromJson(json['element_type'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
     instance: json['instance'] as bool,
-    element_instance: json['element_instance'] == null
+    elementInstance: json['elementInstance'] == null
         ? null
-        : Element.fromJson(json['element_instance'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementInstance'] as Map<String, dynamic>),
     inputProfile: json['inputProfile'] as String,
     outputProfile: json['outputProfile'] as String,
     parameter: (json['parameter'] as List)
@@ -147,55 +145,55 @@ Map<String, dynamic> _$OperationDefinitionToJson(
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'url': instance.url,
-      'element_url': instance.element_url?.toJson(),
+      'elementUrl': instance.elementUrl?.toJson(),
       'version': instance.version,
-      'element_version': instance.element_version?.toJson(),
+      'elementVersion': instance.elementVersion?.toJson(),
       'name': instance.name,
-      'element_name': instance.element_name?.toJson(),
+      'elementName': instance.elementName?.toJson(),
       'title': instance.title,
-      'element_title': instance.element_title?.toJson(),
+      'elementTitle': instance.elementTitle?.toJson(),
       'status': instance.status,
-      'element_status': instance.element_status?.toJson(),
+      'elementStatus': instance.elementStatus?.toJson(),
       'kind': instance.kind,
-      'element_kind': instance.element_kind?.toJson(),
+      'elementKind': instance.elementKind?.toJson(),
       'experimental': instance.experimental,
-      'element_experimental': instance.element_experimental?.toJson(),
+      'elementExperimental': instance.elementExperimental?.toJson(),
       'date': instance.date?.toIso8601String(),
-      'element_date': instance.element_date?.toJson(),
+      'elementDate': instance.elementDate?.toJson(),
       'publisher': instance.publisher,
-      'element_publisher': instance.element_publisher?.toJson(),
+      'elementPublisher': instance.elementPublisher?.toJson(),
       'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
       'description': instance.description,
-      'element_description': instance.element_description?.toJson(),
+      'elementDescription': instance.elementDescription?.toJson(),
       'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
       'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
       'purpose': instance.purpose,
-      'element_purpose': instance.element_purpose?.toJson(),
+      'elementPurpose': instance.elementPurpose?.toJson(),
       'affectsState': instance.affectsState,
-      'element_affectsState': instance.element_affectsState?.toJson(),
+      'elementAffectsState': instance.elementAffectsState?.toJson(),
       'code': instance.code,
-      'element_code': instance.element_code?.toJson(),
+      'elementCode': instance.elementCode?.toJson(),
       'comment': instance.comment,
-      'element_comment': instance.element_comment?.toJson(),
+      'elementComment': instance.elementComment?.toJson(),
       'base': instance.base,
       'resource': instance.resource,
-      'element_resource':
-          instance.element_resource?.map((e) => e?.toJson())?.toList(),
+      'elementResource':
+          instance.elementResource?.map((e) => e?.toJson())?.toList(),
       'system': instance.system,
-      'element_system': instance.element_system?.toJson(),
+      'elementSystem': instance.elementSystem?.toJson(),
       'type': instance.type,
-      'element_type': instance.element_type?.toJson(),
+      'elementType': instance.elementType?.toJson(),
       'instance': instance.instance,
-      'element_instance': instance.element_instance?.toJson(),
+      'elementInstance': instance.elementInstance?.toJson(),
       'inputProfile': instance.inputProfile,
       'outputProfile': instance.outputProfile,
       'parameter': instance.parameter?.map((e) => e?.toJson())?.toList(),
@@ -215,36 +213,36 @@ OperationDefinition_Parameter _$OperationDefinition_ParameterFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     name: json['name'] as String,
-    element_name: json['element_name'] == null
+    elementName: json['elementName'] == null
         ? null
-        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
     use: json['use'] as String,
-    element_use: json['element_use'] == null
+    elementUse: json['elementUse'] == null
         ? null
-        : Element.fromJson(json['element_use'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementUse'] as Map<String, dynamic>),
     min: json['min'] as int,
-    element_min: json['element_min'] == null
+    elementMin: json['elementMin'] == null
         ? null
-        : Element.fromJson(json['element_min'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementMin'] as Map<String, dynamic>),
     max: json['max'] as String,
-    element_max: json['element_max'] == null
+    elementMax: json['elementMax'] == null
         ? null
-        : Element.fromJson(json['element_max'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementMax'] as Map<String, dynamic>),
     documentation: json['documentation'] as String,
-    element_documentation: json['element_documentation'] == null
+    elementDocumentation: json['elementDocumentation'] == null
         ? null
         : Element.fromJson(
-            json['element_documentation'] as Map<String, dynamic>),
+            json['elementDocumentation'] as Map<String, dynamic>),
     type: json['type'] as String,
-    element_type: json['element_type'] == null
+    elementType: json['elementType'] == null
         ? null
-        : Element.fromJson(json['element_type'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
     targetProfile:
         (json['targetProfile'] as List)?.map((e) => e as String)?.toList(),
     searchType: json['searchType'] as String,
-    element_searchType: json['element_searchType'] == null
+    elementSearchType: json['elementSearchType'] == null
         ? null
-        : Element.fromJson(json['element_searchType'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSearchType'] as Map<String, dynamic>),
     binding: json['binding'] == null
         ? null
         : OperationDefinition_Binding.fromJson(
@@ -271,20 +269,20 @@ Map<String, dynamic> _$OperationDefinition_ParameterToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'name': instance.name,
-      'element_name': instance.element_name?.toJson(),
+      'elementName': instance.elementName?.toJson(),
       'use': instance.use,
-      'element_use': instance.element_use?.toJson(),
+      'elementUse': instance.elementUse?.toJson(),
       'min': instance.min,
-      'element_min': instance.element_min?.toJson(),
+      'elementMin': instance.elementMin?.toJson(),
       'max': instance.max,
-      'element_max': instance.element_max?.toJson(),
+      'elementMax': instance.elementMax?.toJson(),
       'documentation': instance.documentation,
-      'element_documentation': instance.element_documentation?.toJson(),
+      'elementDocumentation': instance.elementDocumentation?.toJson(),
       'type': instance.type,
-      'element_type': instance.element_type?.toJson(),
+      'elementType': instance.elementType?.toJson(),
       'targetProfile': instance.targetProfile,
       'searchType': instance.searchType,
-      'element_searchType': instance.element_searchType?.toJson(),
+      'elementSearchType': instance.elementSearchType?.toJson(),
       'binding': instance.binding?.toJson(),
       'referencedFrom':
           instance.referencedFrom?.map((e) => e?.toJson())?.toList(),
@@ -305,9 +303,9 @@ OperationDefinition_Binding _$OperationDefinition_BindingFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     strength: json['strength'] as String,
-    element_strength: json['element_strength'] == null
+    elementStrength: json['elementStrength'] == null
         ? null
-        : Element.fromJson(json['element_strength'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementStrength'] as Map<String, dynamic>),
   );
 }
 
@@ -319,7 +317,7 @@ Map<String, dynamic> _$OperationDefinition_BindingToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'strength': instance.strength,
-      'element_strength': instance.element_strength?.toJson(),
+      'elementStrength': instance.elementStrength?.toJson(),
       'valueSet': instance.valueSet,
     };
 
@@ -336,13 +334,13 @@ OperationDefinition_ReferencedFrom _$OperationDefinition_ReferencedFromFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     source: json['source'] as String,
-    element_source: json['element_source'] == null
+    elementSource: json['elementSource'] == null
         ? null
-        : Element.fromJson(json['element_source'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSource'] as Map<String, dynamic>),
     sourceId: json['sourceId'] as String,
-    element_sourceId: json['element_sourceId'] == null
+    elementSourceId: json['elementSourceId'] == null
         ? null
-        : Element.fromJson(json['element_sourceId'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSourceId'] as Map<String, dynamic>),
   );
 }
 
@@ -354,9 +352,9 @@ Map<String, dynamic> _$OperationDefinition_ReferencedFromToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'source': instance.source,
-      'element_source': instance.element_source?.toJson(),
+      'elementSource': instance.elementSource?.toJson(),
       'sourceId': instance.sourceId,
-      'element_sourceId': instance.element_sourceId?.toJson(),
+      'elementSourceId': instance.elementSourceId?.toJson(),
     };
 
 OperationDefinition_Overload _$OperationDefinition_OverloadFromJson(
@@ -373,14 +371,14 @@ OperationDefinition_Overload _$OperationDefinition_OverloadFromJson(
         ?.toList(),
     parameterName:
         (json['parameterName'] as List)?.map((e) => e as String)?.toList(),
-    element_parameterName: (json['element_parameterName'] as List)
+    elementParameterName: (json['elementParameterName'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     comment: json['comment'] as String,
-    element_comment: json['element_comment'] == null
+    elementComment: json['elementComment'] == null
         ? null
-        : Element.fromJson(json['element_comment'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementComment'] as Map<String, dynamic>),
   );
 }
 
@@ -392,8 +390,8 @@ Map<String, dynamic> _$OperationDefinition_OverloadToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'parameterName': instance.parameterName,
-      'element_parameterName':
-          instance.element_parameterName?.map((e) => e?.toJson())?.toList(),
+      'elementParameterName':
+          instance.elementParameterName?.map((e) => e?.toJson())?.toList(),
       'comment': instance.comment,
-      'element_comment': instance.element_comment?.toJson(),
+      'elementComment': instance.elementComment?.toJson(),
     };

@@ -13,20 +13,20 @@ SubstanceNucleicAcid _$SubstanceNucleicAcidFromJson(Map<String, dynamic> json) {
         ? null
         : Meta.fromJson(json['meta'] as Map<String, dynamic>),
     implicitRules: json['implicitRules'] as String,
-    element_implicitRules: json['element_implicitRules'] == null
+    elementImplicitRules: json['elementImplicitRules'] == null
         ? null
         : Element.fromJson(
-            json['element_implicitRules'] as Map<String, dynamic>),
+            json['elementImplicitRules'] as Map<String, dynamic>),
     language: json['language'] as String,
-    element_language: json['element_language'] == null
+    elementLanguage: json['elementLanguage'] == null
         ? null
-        : Element.fromJson(json['element_language'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
     text: json['text'] == null
         ? null
         : Narrative.fromJson(json['text'] as Map<String, dynamic>),
     contained: (json['contained'] as List)
         ?.map((e) =>
-            e == null ? null : ResourceList.fromJson(e as Map<String, dynamic>))
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
         ?.toList(),
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -41,15 +41,15 @@ SubstanceNucleicAcid _$SubstanceNucleicAcidFromJson(Map<String, dynamic> json) {
         : CodeableConcept.fromJson(
             json['sequenceType'] as Map<String, dynamic>),
     numberOfSubunits: json['numberOfSubunits'] as int,
-    element_numberOfSubunits: json['element_numberOfSubunits'] == null
+    elementNumberOfSubunits: json['elementNumberOfSubunits'] == null
         ? null
         : Element.fromJson(
-            json['element_numberOfSubunits'] as Map<String, dynamic>),
+            json['elementNumberOfSubunits'] as Map<String, dynamic>),
     areaOfHybridisation: json['areaOfHybridisation'] as String,
-    element_areaOfHybridisation: json['element_areaOfHybridisation'] == null
+    elementAreaOfHybridisation: json['elementAreaOfHybridisation'] == null
         ? null
         : Element.fromJson(
-            json['element_areaOfHybridisation'] as Map<String, dynamic>),
+            json['elementAreaOfHybridisation'] as Map<String, dynamic>),
     oligoNucleotideType: json['oligoNucleotideType'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -68,9 +68,9 @@ Map<String, dynamic> _$SubstanceNucleicAcidToJson(
       'id': instance.id,
       'meta': instance.meta?.toJson(),
       'implicitRules': instance.implicitRules,
-      'element_implicitRules': instance.element_implicitRules?.toJson(),
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
       'language': instance.language,
-      'element_language': instance.element_language?.toJson(),
+      'elementLanguage': instance.elementLanguage?.toJson(),
       'text': instance.text?.toJson(),
       'contained': instance.contained?.map((e) => e?.toJson())?.toList(),
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
@@ -78,10 +78,10 @@ Map<String, dynamic> _$SubstanceNucleicAcidToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'sequenceType': instance.sequenceType?.toJson(),
       'numberOfSubunits': instance.numberOfSubunits,
-      'element_numberOfSubunits': instance.element_numberOfSubunits?.toJson(),
+      'elementNumberOfSubunits': instance.elementNumberOfSubunits?.toJson(),
       'areaOfHybridisation': instance.areaOfHybridisation,
-      'element_areaOfHybridisation':
-          instance.element_areaOfHybridisation?.toJson(),
+      'elementAreaOfHybridisation':
+          instance.elementAreaOfHybridisation?.toJson(),
       'oligoNucleotideType': instance.oligoNucleotideType?.toJson(),
       'subunit': instance.subunit?.map((e) => e?.toJson())?.toList(),
     };
@@ -99,17 +99,17 @@ SubstanceNucleicAcid_Subunit _$SubstanceNucleicAcid_SubunitFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     subunit: json['subunit'] as int,
-    element_subunit: json['element_subunit'] == null
+    elementSubunit: json['elementSubunit'] == null
         ? null
-        : Element.fromJson(json['element_subunit'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSubunit'] as Map<String, dynamic>),
     sequence: json['sequence'] as String,
-    element_sequence: json['element_sequence'] == null
+    elementSequence: json['elementSequence'] == null
         ? null
-        : Element.fromJson(json['element_sequence'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSequence'] as Map<String, dynamic>),
     length: json['length'] as int,
-    element_length: json['element_length'] == null
+    elementLength: json['elementLength'] == null
         ? null
-        : Element.fromJson(json['element_length'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementLength'] as Map<String, dynamic>),
     sequenceAttachment: json['sequenceAttachment'] == null
         ? null
         : Attachment.fromJson(
@@ -141,11 +141,11 @@ Map<String, dynamic> _$SubstanceNucleicAcid_SubunitToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'subunit': instance.subunit,
-      'element_subunit': instance.element_subunit?.toJson(),
+      'elementSubunit': instance.elementSubunit?.toJson(),
       'sequence': instance.sequence,
-      'element_sequence': instance.element_sequence?.toJson(),
+      'elementSequence': instance.elementSequence?.toJson(),
       'length': instance.length,
-      'element_length': instance.element_length?.toJson(),
+      'elementLength': instance.elementLength?.toJson(),
       'sequenceAttachment': instance.sequenceAttachment?.toJson(),
       'fivePrime': instance.fivePrime?.toJson(),
       'threePrime': instance.threePrime?.toJson(),
@@ -166,21 +166,20 @@ SubstanceNucleicAcid_Linkage _$SubstanceNucleicAcid_LinkageFromJson(
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     connectivity: json['connectivity'] as String,
-    element_connectivity: json['element_connectivity'] == null
+    elementConnectivity: json['elementConnectivity'] == null
         ? null
-        : Element.fromJson(
-            json['element_connectivity'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementConnectivity'] as Map<String, dynamic>),
     identifier: json['identifier'] == null
         ? null
         : Identifier.fromJson(json['identifier'] as Map<String, dynamic>),
     name: json['name'] as String,
-    element_name: json['element_name'] == null
+    elementName: json['elementName'] == null
         ? null
-        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
     residueSite: json['residueSite'] as String,
-    element_residueSite: json['element_residueSite'] == null
+    elementResidueSite: json['elementResidueSite'] == null
         ? null
-        : Element.fromJson(json['element_residueSite'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementResidueSite'] as Map<String, dynamic>),
   );
 }
 
@@ -192,12 +191,12 @@ Map<String, dynamic> _$SubstanceNucleicAcid_LinkageToJson(
       'modifierExtension':
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'connectivity': instance.connectivity,
-      'element_connectivity': instance.element_connectivity?.toJson(),
+      'elementConnectivity': instance.elementConnectivity?.toJson(),
       'identifier': instance.identifier?.toJson(),
       'name': instance.name,
-      'element_name': instance.element_name?.toJson(),
+      'elementName': instance.elementName?.toJson(),
       'residueSite': instance.residueSite,
-      'element_residueSite': instance.element_residueSite?.toJson(),
+      'elementResidueSite': instance.elementResidueSite?.toJson(),
     };
 
 SubstanceNucleicAcid_Sugar _$SubstanceNucleicAcid_SugarFromJson(
@@ -216,13 +215,13 @@ SubstanceNucleicAcid_Sugar _$SubstanceNucleicAcid_SugarFromJson(
         ? null
         : Identifier.fromJson(json['identifier'] as Map<String, dynamic>),
     name: json['name'] as String,
-    element_name: json['element_name'] == null
+    elementName: json['elementName'] == null
         ? null
-        : Element.fromJson(json['element_name'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
     residueSite: json['residueSite'] as String,
-    element_residueSite: json['element_residueSite'] == null
+    elementResidueSite: json['elementResidueSite'] == null
         ? null
-        : Element.fromJson(json['element_residueSite'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementResidueSite'] as Map<String, dynamic>),
   );
 }
 
@@ -235,7 +234,7 @@ Map<String, dynamic> _$SubstanceNucleicAcid_SugarToJson(
           instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
       'identifier': instance.identifier?.toJson(),
       'name': instance.name,
-      'element_name': instance.element_name?.toJson(),
+      'elementName': instance.elementName?.toJson(),
       'residueSite': instance.residueSite,
-      'element_residueSite': instance.element_residueSite?.toJson(),
+      'elementResidueSite': instance.elementResidueSite?.toJson(),
     };

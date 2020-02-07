@@ -36,13 +36,13 @@ class Organization {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -55,7 +55,7 @@ class Organization {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -88,7 +88,7 @@ class Organization {
   bool active;
 
   //  Extensions for active
-  Element element_active;
+  Element elementActive;
 
   //  The kind(s) of organization that this is.
   List<CodeableConcept> type;
@@ -97,14 +97,14 @@ class Organization {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  A list of alternate names that the organization is known as, or was
   // known as in the past.
   List<String> alias;
 
   //  Extensions for alias
-  List<Element> element_alias;
+  List<Element> elementAlias;
 
   //  A contact detail for the organization.
   List<ContactPoint> telecom;
@@ -126,21 +126,21 @@ Organization(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.identifier,
     this.active,
-    this.element_active,
+    this.elementActive,
     this.type,
     this.name,
-    this.element_name,
+    this.elementName,
     this.alias,
-    this.element_alias,
+    this.elementAlias,
     this.telecom,
     this.address,
     this.partOf,

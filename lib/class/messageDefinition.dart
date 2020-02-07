@@ -35,13 +35,13 @@ class MessageDefinition {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -54,7 +54,7 @@ class MessageDefinition {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -85,7 +85,7 @@ class MessageDefinition {
   String url;
 
   //  Extensions for url
-  Element element_url;
+  Element elementUrl;
 
   //  A formal identifier that is used to identify this message definition
   // when it is represented in other formats, or referenced in a
@@ -102,7 +102,7 @@ class MessageDefinition {
   String version;
 
   //  Extensions for version
-  Element element_version;
+  Element elementVersion;
 
   //  A natural language name identifying the message definition. This name
   // should be usable as an identifier for the module by machine processing
@@ -110,13 +110,13 @@ class MessageDefinition {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  A short, descriptive, user-friendly title for the message definition.
   String title;
 
   //  Extensions for title
-  Element element_title;
+  Element elementTitle;
 
   //  A MessageDefinition that is superseded by this definition.
   List<String> replaces;
@@ -126,7 +126,7 @@ class MessageDefinition {
   String status; // <code> enum: draft/active/retired/unknown;
 
   //  Extensions for status
-  Element element_status;
+  Element elementStatus;
 
   //  A Boolean value to indicate that this message definition is authored
   // for testing purposes (or education/evaluation/marketing) and is not
@@ -134,7 +134,7 @@ class MessageDefinition {
   bool experimental;
 
   //  Extensions for experimental
-  Element element_experimental;
+  Element elementExperimental;
 
   //  The date  (and optionally time) when the message definition was
   // published. The date must change when the business version changes and
@@ -143,14 +143,14 @@ class MessageDefinition {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
   //  The name of the organization or individual that published the message
   // definition.
   String publisher;
 
   //  Extensions for publisher
-  Element element_publisher;
+  Element elementPublisher;
 
   //  Contact details to assist a user in finding and communicating with the
   // publisher.
@@ -161,7 +161,7 @@ class MessageDefinition {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  The content was developed with a focus and intent of supporting the
   // contexts that are listed. These contexts may be general categories
@@ -179,7 +179,7 @@ class MessageDefinition {
   String purpose;
 
   //  Extensions for purpose
-  Element element_purpose;
+  Element elementPurpose;
 
   //  A copyright statement relating to the message definition and/or its
   // contents. Copyright statements are generally legal restrictions on the
@@ -187,7 +187,7 @@ class MessageDefinition {
   String copyright;
 
   //  Extensions for copyright
-  Element element_copyright;
+  Element elementCopyright;
 
   //  The MessageDefinition that is the basis for the contents of this
   // resource.
@@ -204,13 +204,13 @@ class MessageDefinition {
   String eventUri; //  pattern: ^\S*$
 
   //  Extensions for eventUri
-  Element element_eventUri;
+  Element elementEventUri;
 
   //  The impact of the content of the message.
   String category; // <code> enum: consequence/currency/notification;
 
   //  Extensions for category
-  Element element_category;
+  Element elementCategory;
 
   //  Identifies the resource (or resources) that are being addressed by the
   // event.  For example, the Encounter for an admit message or two Account
@@ -222,7 +222,7 @@ class MessageDefinition {
   String responseRequired; // <code> enum: always/on-error/never/on-success;
 
   //  Extensions for responseRequired
-  Element element_responseRequired;
+  Element elementResponseRequired;
 
   //  Indicates what types of messages may be sent as an application-level
   // response to this message.
@@ -239,50 +239,50 @@ MessageDefinition(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
     this.modifierExtension,
     this.url,
-    this.element_url,
+    this.elementUrl,
     this.identifier,
     this.version,
-    this.element_version,
+    this.elementVersion,
     this.name,
-    this.element_name,
+    this.elementName,
     this.title,
-    this.element_title,
+    this.elementTitle,
     this.replaces,
     this.status,
-    this.element_status,
+    this.elementStatus,
     this.experimental,
-    this.element_experimental,
+    this.elementExperimental,
     this.date,
-    this.element_date,
+    this.elementDate,
     this.publisher,
-    this.element_publisher,
+    this.elementPublisher,
     this.contact,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.useContext,
     this.jurisdiction,
     this.purpose,
-    this.element_purpose,
+    this.elementPurpose,
     this.copyright,
-    this.element_copyright,
+    this.elementCopyright,
     this.base,
     this.parent,
     this.eventCoding,
     this.eventUri,
-    this.element_eventUri,
+    this.elementEventUri,
     this.category,
-    this.element_category,
+    this.elementCategory,
     this.focus,
     this.responseRequired,
-    this.element_responseRequired,
+    this.elementResponseRequired,
     this.allowedResponse,
     this.graph
     });
@@ -324,7 +324,7 @@ class MessageDefinition_Focus {
   String code;
 
   //  Extensions for code
-  Element element_code;
+  Element elementCode;
 
   //  A profile that reflects constraints for the focal resource (and
   // potentially for related resources).
@@ -336,7 +336,7 @@ class MessageDefinition_Focus {
   int min;
 
   //  Extensions for min
-  Element element_min;
+  Element elementMin;
 
   //  Identifies the maximum number of resources of this type that must be
   // pointed to by a message in order for it to be valid against this
@@ -344,19 +344,19 @@ class MessageDefinition_Focus {
   String max;
 
   //  Extensions for max
-  Element element_max;
+  Element elementMax;
 
 MessageDefinition_Focus(
   {this.id,
     this.extension,
     this.modifierExtension,
     this.code,
-    this.element_code,
+    this.elementCode,
     this.profile,
     this.min,
-    this.element_min,
+    this.elementMin,
     this.max,
-    this.element_max
+    this.elementMax
     });
 
   factory MessageDefinition_Focus.fromJson(Map<String, dynamic> json) => _$MessageDefinition_FocusFromJson(json);
@@ -401,7 +401,7 @@ class MessageDefinition_AllowedResponse {
   String situation;
 
   //  Extensions for situation
-  Element element_situation;
+  Element elementSituation;
 
 MessageDefinition_AllowedResponse(
   this.message,
@@ -409,7 +409,7 @@ MessageDefinition_AllowedResponse(
     this.extension,
     this.modifierExtension,
     this.situation,
-    this.element_situation
+    this.elementSituation
     });
 
   factory MessageDefinition_AllowedResponse.fromJson(Map<String, dynamic> json) => _$MessageDefinition_AllowedResponseFromJson(json);

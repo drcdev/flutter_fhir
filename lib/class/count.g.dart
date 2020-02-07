@@ -14,25 +14,25 @@ Count _$CountFromJson(Map<String, dynamic> json) {
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     value: (json['value'] as num)?.toDouble(),
-    element_value: json['element_value'] == null
+    elementValue: json['elementValue'] == null
         ? null
-        : Element.fromJson(json['element_value'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementValue'] as Map<String, dynamic>),
     comparator: json['comparator'] as String,
-    element_comparator: json['element_comparator'] == null
+    elementComparator: json['elementComparator'] == null
         ? null
-        : Element.fromJson(json['element_comparator'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementComparator'] as Map<String, dynamic>),
     unit: json['unit'] as String,
-    element_unit: json['element_unit'] == null
+    elementUnit: json['elementUnit'] == null
         ? null
-        : Element.fromJson(json['element_unit'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementUnit'] as Map<String, dynamic>),
     system: json['system'] as String,
-    element_system: json['element_system'] == null
+    elementSystem: json['elementSystem'] == null
         ? null
-        : Element.fromJson(json['element_system'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementSystem'] as Map<String, dynamic>),
     code: json['code'] as String,
-    element_code: json['element_code'] == null
+    elementCode: json['elementCode'] == null
         ? null
-        : Element.fromJson(json['element_code'] as Map<String, dynamic>),
+        : Element.fromJson(json['elementCode'] as Map<String, dynamic>),
   );
 }
 
@@ -40,13 +40,13 @@ Map<String, dynamic> _$CountToJson(Count instance) => <String, dynamic>{
       'id': instance.id,
       'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
       'value': instance.value,
-      'element_value': instance.element_value?.toJson(),
+      'elementValue': instance.elementValue?.toJson(),
       'comparator': instance.comparator,
-      'element_comparator': instance.element_comparator?.toJson(),
+      'elementComparator': instance.elementComparator?.toJson(),
       'unit': instance.unit,
-      'element_unit': instance.element_unit?.toJson(),
+      'elementUnit': instance.elementUnit?.toJson(),
       'system': instance.system,
-      'element_system': instance.element_system?.toJson(),
+      'elementSystem': instance.elementSystem?.toJson(),
       'code': instance.code,
-      'element_code': instance.element_code?.toJson(),
+      'elementCode': instance.elementCode?.toJson(),
     };

@@ -37,13 +37,13 @@ class SubstanceSpecification {
   String implicitRules;
 
   //  Extensions for implicitRules
-  Element element_implicitRules;
+  Element elementImplicitRules;
 
   //  The base language in which the resource is written.
   String language;
 
   //  Extensions for language
-  Element element_language;
+  Element elementLanguage;
 
   //  A human-readable narrative that contains a summary of the resource and
   // can be used to represent the content of the resource to a human. The
@@ -56,7 +56,7 @@ class SubstanceSpecification {
   //  These resources do not have an independent existence apart from the
   // resource that contains them - they cannot be identified independently,
   // and nor can they have their own independent transaction scope.
-  List<ResourceList> contained;
+  List<dynamic> contained;
 
   //  May be used to represent additional information that is not part of
   // the basic definition of the resource. To make the use of extensions
@@ -97,7 +97,7 @@ class SubstanceSpecification {
   String description;
 
   //  Extensions for description
-  Element element_description;
+  Element elementDescription;
 
   //  Supporting literature.
   List<Reference> source;
@@ -106,7 +106,7 @@ class SubstanceSpecification {
   String comment;
 
   //  Extensions for comment
-  Element element_comment;
+  Element elementComment;
 
   //  Moiety, for structural modifications.
   List<SubstanceSpecification_Moiety> moiety;
@@ -151,9 +151,9 @@ SubstanceSpecification(
   {this.id,
     this.meta,
     this.implicitRules,
-    this.element_implicitRules,
+    this.elementImplicitRules,
     this.language,
-    this.element_language,
+    this.elementLanguage,
     this.text,
     this.contained,
     this.extension,
@@ -163,10 +163,10 @@ SubstanceSpecification(
     this.status,
     this.domain,
     this.description,
-    this.element_description,
+    this.elementDescription,
     this.source,
     this.comment,
-    this.element_comment,
+    this.elementComment,
     this.moiety,
     this.property,
     this.referenceInformation,
@@ -224,7 +224,7 @@ class SubstanceSpecification_Moiety {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  Stereochemistry type.
   CodeableConcept stereochemistry;
@@ -236,7 +236,7 @@ class SubstanceSpecification_Moiety {
   String molecularFormula;
 
   //  Extensions for molecularFormula
-  Element element_molecularFormula;
+  Element elementMolecularFormula;
 
   //  Quantitative value for this moiety.
   Quantity amountQuantity;
@@ -245,7 +245,7 @@ class SubstanceSpecification_Moiety {
   String amountString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for amountString
-  Element element_amountString;
+  Element elementAmountString;
 
 SubstanceSpecification_Moiety(
   {this.id,
@@ -254,14 +254,14 @@ SubstanceSpecification_Moiety(
     this.role,
     this.identifier,
     this.name,
-    this.element_name,
+    this.elementName,
     this.stereochemistry,
     this.opticalActivity,
     this.molecularFormula,
-    this.element_molecularFormula,
+    this.elementMolecularFormula,
     this.amountQuantity,
     this.amountString,
-    this.element_amountString
+    this.elementAmountString
     });
 
   factory SubstanceSpecification_Moiety.fromJson(Map<String, dynamic> json) => _$SubstanceSpecification_MoietyFromJson(json);
@@ -308,7 +308,7 @@ class SubstanceSpecification_Property {
   String parameters;
 
   //  Extensions for parameters
-  Element element_parameters;
+  Element elementParameters;
 
   //  A substance upon which a defining property depends (e.g. for
   // solubility: in water, in alcohol).
@@ -325,7 +325,7 @@ class SubstanceSpecification_Property {
   String amountString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for amountString
-  Element element_amountString;
+  Element elementAmountString;
 
 SubstanceSpecification_Property(
   {this.id,
@@ -334,12 +334,12 @@ SubstanceSpecification_Property(
     this.category,
     this.code,
     this.parameters,
-    this.element_parameters,
+    this.elementParameters,
     this.definingSubstanceReference,
     this.definingSubstanceCodeableConcept,
     this.amountQuantity,
     this.amountString,
-    this.element_amountString
+    this.elementAmountString
     });
 
   factory SubstanceSpecification_Property.fromJson(Map<String, dynamic> json) => _$SubstanceSpecification_PropertyFromJson(json);
@@ -385,14 +385,14 @@ class SubstanceSpecification_Structure {
   String molecularFormula;
 
   //  Extensions for molecularFormula
-  Element element_molecularFormula;
+  Element elementMolecularFormula;
 
   //  Specified per moiety according to the Hill system, i.e. first C, then
   // H, then alphabetical, each moiety separated by a dot.
   String molecularFormulaByMoiety;
 
   //  Extensions for molecularFormulaByMoiety
-  Element element_molecularFormulaByMoiety;
+  Element elementMolecularFormulaByMoiety;
 
   //  Applicable for single substances that contain a radionuclide or a
   // non-natural isotopic ratio.
@@ -415,9 +415,9 @@ SubstanceSpecification_Structure(
     this.stereochemistry,
     this.opticalActivity,
     this.molecularFormula,
-    this.element_molecularFormula,
+    this.elementMolecularFormula,
     this.molecularFormulaByMoiety,
-    this.element_molecularFormulaByMoiety,
+    this.elementMolecularFormulaByMoiety,
     this.isotope,
     this.molecularWeight,
     this.source,
@@ -580,7 +580,7 @@ class SubstanceSpecification_Representation {
   String representation;
 
   //  Extensions for representation
-  Element element_representation;
+  Element elementRepresentation;
 
   //  An attached file with the structural representation.
   Attachment attachment;
@@ -591,7 +591,7 @@ SubstanceSpecification_Representation(
     this.modifierExtension,
     this.type,
     this.representation,
-    this.element_representation,
+    this.elementRepresentation,
     this.attachment
     });
 
@@ -639,13 +639,13 @@ class SubstanceSpecification_Code {
   DateTime statusDate;
 
   //  Extensions for statusDate
-  Element element_statusDate;
+  Element elementStatusDate;
 
   //  Any comment can be provided in this field, if necessary.
   String comment;
 
   //  Extensions for comment
-  Element element_comment;
+  Element elementComment;
 
   //  Supporting literature.
   List<Reference> source;
@@ -657,9 +657,9 @@ SubstanceSpecification_Code(
     this.code,
     this.status,
     this.statusDate,
-    this.element_statusDate,
+    this.elementStatusDate,
     this.comment,
-    this.element_comment,
+    this.elementComment,
     this.source
     });
 
@@ -700,7 +700,7 @@ class SubstanceSpecification_Name {
   String name;
 
   //  Extensions for name
-  Element element_name;
+  Element elementName;
 
   //  Name type.
   CodeableConcept type;
@@ -712,7 +712,7 @@ class SubstanceSpecification_Name {
   bool preferred;
 
   //  Extensions for preferred
-  Element element_preferred;
+  Element elementPreferred;
 
   //  Language of the name.
   List<CodeableConcept> language;
@@ -741,11 +741,11 @@ SubstanceSpecification_Name(
     this.extension,
     this.modifierExtension,
     this.name,
-    this.element_name,
+    this.elementName,
     this.type,
     this.status,
     this.preferred,
-    this.element_preferred,
+    this.elementPreferred,
     this.language,
     this.domain,
     this.jurisdiction,
@@ -798,7 +798,7 @@ class SubstanceSpecification_Official {
   DateTime date;
 
   //  Extensions for date
-  Element element_date;
+  Element elementDate;
 
 SubstanceSpecification_Official(
   {this.id,
@@ -807,7 +807,7 @@ SubstanceSpecification_Official(
     this.authority,
     this.status,
     this.date,
-    this.element_date
+    this.elementDate
     });
 
   factory SubstanceSpecification_Official.fromJson(Map<String, dynamic> json) => _$SubstanceSpecification_OfficialFromJson(json);
@@ -860,7 +860,7 @@ class SubstanceSpecification_Relationship {
   bool isDefining;
 
   //  Extensions for isDefining
-  Element element_isDefining;
+  Element elementIsDefining;
 
   //  A numeric factor for the relationship, for instance to express that
   // the salt of a substance has some percentage of the active substance in
@@ -883,7 +883,7 @@ class SubstanceSpecification_Relationship {
   String amountString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for amountString
-  Element element_amountString;
+  Element elementAmountString;
 
   //  For use when the numeric.
   Ratio amountRatioLowLimit;
@@ -903,12 +903,12 @@ SubstanceSpecification_Relationship(
     this.substanceCodeableConcept,
     this.relationship,
     this.isDefining,
-    this.element_isDefining,
+    this.elementIsDefining,
     this.amountQuantity,
     this.amountRange,
     this.amountRatio,
     this.amountString,
-    this.element_amountString,
+    this.elementAmountString,
     this.amountRatioLowLimit,
     this.amountType,
     this.source
