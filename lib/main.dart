@@ -104,7 +104,7 @@ class _MainState extends State<_Main> {
           children: <Widget>[
             SizedBox(
               child: Image.asset(
-                "images/drflag.png",
+                "assets/images/drflag.png",
                 fit: BoxFit.contain,
               ),
             ),

@@ -33,8 +33,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - images/
+    - assets/images/
     - assets/prefix.json
-    - assets/
-    - lang/es.json
-    - lang/en.json
+    - assets/lang/
+    - assets/databases/

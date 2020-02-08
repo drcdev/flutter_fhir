@@ -15,6 +15,7 @@ import 'package:flutter_fhir/class/address.dart';
 import 'package:flutter_fhir/class/humanName.dart';
 import 'package:flutter_fhir/class/organization.dart';
 import 'package:flutter_fhir/class/practitioner.dart';
+import 'package:sqflite/sqflite.dart';
 
 class MainMenu extends StatelessWidget {
   @override
@@ -31,12 +32,21 @@ class _MainMenu extends StatefulWidget {
 }
 
 class _MainMenuState extends State<_MainMenu> {
+  var database;
 
   //init state to call the _makeFolders function each time app is loaded
   @override
   void initState() {
     super.initState();
     _loadInfo();
+    getdb();
+  }
+
+  getdb() async {
+    database = await openDatabase('assets/sqlite/sqliteFhir.db', version: 1);
+    print(database.toString());
+    var result = await database.rawQuery('SELECT * FROM patient');
+    print(result);
   }
 
   @override
@@ -55,18 +65,18 @@ class _MainMenuState extends State<_MainMenu> {
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                PageButton('images/patient.png', 'Register New Patient', Register()),
-                ActionButton('images/sync.png', 'Sync with server', syncServer, 'get'),
-                PageButton('images/chop.png', 'Settings', Settings()),
+                PageButton('assets/images/patient.png', 'Register New Patient', Register()),
+                ActionButton('assets/images/sync.png', 'Sync with server', syncServer, 'get'),
+                PageButton('assets/images/chop.png', 'Settings', Settings()),
               ],
             ),
 
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                PageButton('images/activities.png', 'Evaluation & Treatment', EvalRx()),
-                PageButton('images/testing.png', 'Testing', Testing()),
-                ActionButton('images/trash.png', 'Delete Files', deleteFiles)
+                PageButton('assets/images/activities.png', 'Evaluation & Treatment', EvalRx()),
+                PageButton('assets/images/testing.png', 'Testing', Testing()),
+                ActionButton('assets/images/trash.png', 'Delete Files', deleteFiles)
               ],
             ),
           ],
