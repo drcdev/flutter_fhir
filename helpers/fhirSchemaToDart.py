@@ -78,10 +78,10 @@ for objects in definitions:
     if('properties' in definitions[objects] and str(objects) != 'ResourceList'):
         objected = 'Lists' if objects == 'List' else objects
         if('_' not in objects):
-            dartCode = ''.join([dartCode, 
-                                "part '", 
-                                lowcc(objected), 
-                                ".g.dart';\n\n"])
+            # dartCode = ''.join([dartCode, 
+            #                     "part '", 
+            #                     lowcc(objected), 
+            #                     ".g.dart';\n\n"])
             importL = lowcc(objected)
             importDict[importL] = []
         else:
@@ -90,7 +90,7 @@ for objects in definitions:
             
         #add JsonSerializable code at top of Dart class
         dartCode = ''.join([dartCode, 
-                            '@JsonSerializable(explicitToJson: true)\nclass ', 
+                            # '@JsonSerializable(explicitToJson: true)\nclass ', 
                             objected, 
                             ' {\n'])
         
@@ -105,10 +105,10 @@ for objects in definitions:
 #******************************************************************************
 #***** This adds comments to the files, but adds notable extra time to run this program *****
         #prints comment to the Dart code, formatted lines <= 70 characters
-            comments = properties[field]['description']
-            comments = re.sub(r'\n+', ' ', comments)
-            comments = re.sub(r'\r', ' ', comments)
-            dartCode = ''.join([dartCode, less70(comments), '\n'])
+            # comments = properties[field]['description']
+            # comments = re.sub(r'\n+', ' ', comments)
+            # comments = re.sub(r'\r', ' ', comments)
+            # dartCode = ''.join([dartCode, less70(comments), '\n'])
 #******************************************************************************
                                     
             #if items is NOT included it means that the item is NOT an array/list
@@ -168,11 +168,11 @@ for objects in definitions:
                                             ' '])
                         
                     #include the pattern as a comment
-                    dartCode = ''.join([dartCode, 
-                                        rem_(field), 
-                                        '; //  pattern: ', 
-                                        value['pattern'], 
-                                        '\n'])
+                    # dartCode = ''.join([dartCode, 
+                    #                     rem_(field), 
+                    #                     '; //  pattern: ', 
+                    #                     value['pattern'], 
+                    #                     '\n'])
                     
                     if(not isPrimitive(value['type']) and 
                        value['type'] not in importDict[importL]):
@@ -222,54 +222,54 @@ for objects in definitions:
                                     rem_(field), ';\n'])   
                                   
         #add more constructor code
-        dartCode = ''.join([dartCode, '\n', objected, '(\n  '])
-        required = ''
-        optional = ''
-        for field in schema['definitions'][objects]['properties']:
+        # dartCode = ''.join([dartCode, '\n', objected, '(\n  '])
+        # required = ''
+        # optional = ''
+#        for field in schema['definitions'][objects]['properties']:
             
             #resourceType isn't a passable argument
-            if(field != 'resourceType'):
+            # if(field != 'resourceType'):
                 
-                #separate the optional and required constructor parameters
-                if('required' not in schema['definitions'][objects] or
-                   field not in schema['definitions'][objects]['required']):
-                        optional = ''.join([optional, 'this.', rem_(field), ',\n    '])
-                else:
-                    required = ''.join([required, 'this.', rem_(field), ',\n    '])
+            #     #separate the optional and required constructor parameters
+            #     if('required' not in schema['definitions'][objects] or
+            #        field not in schema['definitions'][objects]['required']):
+            #             optional = ''.join([optional, 'this.', rem_(field), ',\n    '])
+            #     else:
+            #         required = ''.join([required, 'this.', rem_(field), ',\n    '])
                     
         #create the factory
-        dartCode = ''.join([dartCode, 
-                            required,
-                            '{',
-                            optional,
-                            '});\n\n  factory ', 
-                            objected, 
-                            '.fromJson',
-                            '(Map<String, dynamic> json) => _$', 
-                            objected, 
-                            'FromJson(json);\n  Map<String, dynamic> toJson()',
-                            ' => _$', 
-                            objected, 
-                            'ToJson(this);\n}\n\n'])
+        # dartCode = ''.join([dartCode, 
+        #                     required,
+        #                     '{',
+        #                     optional,
+        #                     '});\n\n  factory ', 
+        #                     objected, 
+        #                     '.fromJson',
+        #                     '(Map<String, dynamic> json) => _$', 
+        #                     objected, 
+        #                     'FromJson(json);\n  Map<String, dynamic> toJson()',
+        #                     ' => _$', 
+        #                     objected, 
+        #                     'ToJson(this);\n}\n\n'])
             
 with open("dartFhirClasses.dart", "w", encoding="utf-8") as f:
     f.write(dartCode)
 f.close()
 
-#add in any import files that are needed
-dartCode = dartCode.split("part '")
-for code in dartCode:
-    g = re.search(r'(?<=\nclass\s).*(?=\s{)', code)
-    if(g != None):
-        g = lowcc(g.group(0))
-        code = ''.join(["\npart '", code])
-        for l in importDict[g]:
-            l = 'Lists' if l == 'List' else l
-            if('_' not in l and lowcc(l) != lowcc(g) and lowcc(l) != 'xhtml'):
-                code = ''.join(["import 'package:flutter_fhir/class/", 
-                                lowcc(l), ".dart';\n", code])
-        code = code.replace(',\n    });', '\n    });')
-        code = ''.join(["import 'package:json_annotation/json_annotation.dart';\n\n", code])
-        with open("./class/" + lowcc(g) + ".dart","w", encoding="utf-8") as f:
-            f.write(code)
-        f.close()
+# #add in any import files that are needed
+# dartCode = dartCode.split("part '")
+# for code in dartCode:
+#     g = re.search(r'(?<=\nclass\s).*(?=\s{)', code)
+#     if(g != None):
+#         g = lowcc(g.group(0))
+#         code = ''.join(["\npart '", code])
+#         for l in importDict[g]:
+#             l = 'Lists' if l == 'List' else l
+#             if('_' not in l and lowcc(l) != lowcc(g) and lowcc(l) != 'xhtml'):
+#                 code = ''.join(["import 'package:flutter_fhir/class/", 
+#                                 lowcc(l), ".dart';\n", code])
+#         code = code.replace(',\n    });', '\n    });')
+#         code = ''.join(["import 'package:json_annotation/json_annotation.dart';\n\n", code])
+#         with open("./class/" + lowcc(g) + ".dart","w", encoding="utf-8") as f:
+#             f.write(code)
+#         f.close()

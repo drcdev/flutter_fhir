@@ -1,0 +1,584 @@
+CREATE TABLE Account (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE ActivityDefinition (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE AdverseEvent (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE AllergyIntolerance (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Appointment (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE AppointmentResponse (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE AuditEvent (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Basic (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Binary (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE BiologicallyDerivedProduct (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE BodyStructure (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Bundle (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE CapabilityStatement (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE CarePlan (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE CareTeam (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE CatalogEntry (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE ChargeItem (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE ChargeItemDefinition (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Claim (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE ClaimResponse (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE ClinicalImpression (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE CodeSystem (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Communication (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE CommunicationRequest (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE CompartmentDefinition (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Composition (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE ConceptMap (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Condition (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Consent (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Contract (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Coverage (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE CoverageEligibilityRequest (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE CoverageEligibilityResponse (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE DetectedIssue (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Device (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE DeviceDefinition (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE DeviceMetric (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE DeviceRequest (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE DeviceUseStatement (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE DiagnosticReport (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE DocumentManifest (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE DocumentReference (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE EffectEvidenceSynthesis (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Encounter (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Endpoint (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE EnrollmentRequest (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE EnrollmentResponse (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE EpisodeOfCare (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE EventDefinition (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Evidence (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE EvidenceVariable (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE ExampleScenario (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE ExplanationOfBenefit (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE FamilyMemberHistory (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Flag (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Goal (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE GraphDefinition (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE "Group" (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE GuidanceResponse (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE HealthcareService (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE ImagingStudy (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Immunization (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE ImmunizationEvaluation (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE ImmunizationRecommendation (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE ImplementationGuide (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE InsurancePlan (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Invoice (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Library (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Linkage (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE List (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Location (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Measure (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE MeasureReport (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Media (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Medication (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE MedicationAdministration (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE MedicationDispense (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE MedicationKnowledge (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE MedicationRequest (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE MedicationStatement (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE MedicinalProduct (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE MedicinalProductAuthorization (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE MedicinalProductContraindication (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE MedicinalProductIndication (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE MedicinalProductIngredient (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE MedicinalProductInteraction (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE MedicinalProductManufactured (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE MedicinalProductPackaged (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE MedicinalProductPharmaceutical (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE MedicinalProductUndesirableEffect (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE MessageDefinition (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE MessageHeader (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE MolecularSequence (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE NamingSystem (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE NutritionOrder (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Observation (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE ObservationDefinition (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE OperationDefinition (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE OperationOutcome (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Organization (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE OrganizationAffiliation (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Parameters (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Patient (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE PaymentNotice (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE PaymentReconciliation (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Person (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE PlanDefinition (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Practitioner (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE PractitionerRole (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Procedure (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Provenance (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Questionnaire (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE QuestionnaireResponse (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE RelatedPerson (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE RequestGroup (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE ResearchDefinition (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE ResearchElementDefinition (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE ResearchStudy (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE ResearchSubject (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE RiskAssessment (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE RiskEvidenceSynthesis (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Schedule (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE SearchParameter (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE ServiceRequest (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Slot (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Specimen (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE SpecimenDefinition (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE StructureDefinition (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE StructureMap (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Subscription (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Substance (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE SubstanceNucleicAcid (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE SubstancePolymer (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE SubstanceProtein (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE SubstanceReferenceInformation (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE SubstanceSourceMaterial (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE SubstanceSpecification (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE SupplyDelivery (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE SupplyRequest (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE Task (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE TerminologyCapabilities (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE TestReport (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE TestScript (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE ValueSet (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE VerificationResult (
+	id TEXT PRIMARY KEY,
+	json_text TEXT
+);
+CREATE TABLE VisionPrescription (
+    id TEXT PRIMARY KEY,
+    json_text VisionPrescription
+);
