@@ -36,4 +36,4 @@ flutter:
     - assets/images/
     - assets/prefix.json
     - assets/lang/
-    - assets/databases/
+    - assets/databases/sqlitefhir.db

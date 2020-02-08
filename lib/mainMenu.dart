@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
 
@@ -33,6 +34,10 @@ class _MainMenu extends StatefulWidget {
 
 class _MainMenuState extends State<_MainMenu> {
   var database;
+  var dbDir;
+  var dbPath;
+  var Fhirdb;
+
 
   //init state to call the _makeFolders function each time app is loaded
   @override
@@ -43,10 +48,16 @@ class _MainMenuState extends State<_MainMenu> {
   }
 
   getdb() async {
-    database = await openDatabase('assets/sqlite/sqliteFhir.db', version: 1);
-    print(database.toString());
-    var result = await database.rawQuery('SELECT * FROM patient');
-    print(result);
+    dbDir = await getDatabasesPath();
+    dbPath = dbDir + 'sqliteFhir.db';
+    await deleteDatabase(dbPath);
+
+    ByteData data = await rootBundle.load('assets/databases/sqlitefhir.db');
+    List<int> bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    await File(dbPath).writeAsBytes(bytes);
+    Fhirdb = await openDatabase(dbPath);
+    var result = await Fhirdb.rawQuery('SELECT * FROM patient');
+    print(result.toString());
   }
 
   @override
@@ -130,8 +141,8 @@ Future _loadInfo() async {
     ]
   );
 
-  practitioner.id = await ObjectId(practitioner.runtimeType.toString());
-  print(practitioner.id);
-  org.id = await ObjectId(org.runtimeType.toString());
-  print(org.id);
+//  practitioner.id = await ObjectId(practitioner.runtimeType.toString());
+//  print(practitioner.id);
+//  org.id = await ObjectId(org.runtimeType.toString());
+//  print(org.id);
 }
