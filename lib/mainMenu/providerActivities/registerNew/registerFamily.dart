@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_fhir/class/codeableConcept.dart';
-import 'package:flutter_fhir/class/patient.dart';
-import 'package:flutter_fhir/class/humanName.dart';
-import 'package:flutter_fhir/mainMenu/mainMenu.dart';
+import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
+import 'package:flutter_fhir/fhirClasses/patient.dart';
+import 'package:flutter_fhir/fhirClasses/humanName.dart';
 import 'package:flutter_fhir/mainMenu/providerActivities/providerActivities.dart';
 import 'package:flutter_fhir/mainMenu/testingSettings/objects.dart';
 import 'package:flutter_fhir/mainMenu/providerActivities/registerNew/register.dart';

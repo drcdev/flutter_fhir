@@ -1,4 +1,4 @@
-import 'package:flutter_fhir/class/patient.dart';
+import 'package:flutter_fhir/fhirClasses/patient.dart';
 import 'package:flutter_fhir/mainMenu/providerActivities/parasites/parasite.dart';
 import 'package:flutter_fhir/mainMenu/providerActivities/vaccines/vaccine.dart';
 import 'package:flutter/material.dart';

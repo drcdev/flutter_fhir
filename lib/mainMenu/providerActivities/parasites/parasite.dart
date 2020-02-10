@@ -1,14 +1,14 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_fhir/class/medicationAdministration.dart';
-import 'package:flutter_fhir/class/period.dart';
+import 'package:flutter_fhir/fhirClasses/medicationAdministration.dart';
+import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/mainMenu/mainMenu.dart';
 import 'package:geolocator/geolocator.dart';
 
-import 'package:flutter_fhir/class/composition.dart';
-import 'package:flutter_fhir/class/encounter.dart';
-import 'package:flutter_fhir/class/patient.dart';
+import 'package:flutter_fhir/fhirClasses/composition.dart';
+import 'package:flutter_fhir/fhirClasses/encounter.dart';
+import 'package:flutter_fhir/fhirClasses/patient.dart';
 
 class Parasite extends StatelessWidget {
   @override

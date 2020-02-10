@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_fhir/class/patient.dart';
+import 'package:flutter_fhir/fhirClasses/patient.dart';
 import 'package:flutter_fhir/mainMenu/mainMenu.dart';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';

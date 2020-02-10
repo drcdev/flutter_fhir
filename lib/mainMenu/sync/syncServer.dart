@@ -1,7 +1,7 @@
 import 'package:http/http.dart';
 import 'dart:convert';
-import 'package:flutter_fhir/class/patient.dart';
-import 'package:flutter_fhir/class/bundle.dart' as bundle;
+import 'package:flutter_fhir/fhirClasses/patient.dart';
+import 'package:flutter_fhir/fhirClasses/bundle.dart' as bundle;
 
 syncServer(String action, {Patient body} ) async {
   Map<String, String> headers = {'Content-type': 'application/json'};

@@ -120,7 +120,7 @@ temp = ''
 imports = ''
 for table in definitions:
     if('properties' in definitions[table] and str(table) != 'ResourceList' and '_' not in table):
-#        imports = ''.join([imports, "import 'package:flutter_fhir/class/", lowcc(rem(table)), ".dart';\n"])
+#        imports = ''.join([imports, "import 'package:flutter_fhir/fhirClasses/", lowcc(rem(table)), ".dart';\n"])
         temp = ''.join([temp, "if(type == '", rem(table), "') return (new ", rem(table), '.fromJson(json));\n'])
 
 #temp = ''.join([imports, '\ndynamic ResourceList(String type, Map<String, dynamic> info) {\n', temp, '}'])

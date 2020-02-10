@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_fhir/class/patient.dart';
+import 'package:flutter_fhir/fhirClasses/patient.dart';
 
 //PageButton, returns FlatButton with image, text, and link to next page, passed as arguments
 class PageButton extends StatelessWidget {

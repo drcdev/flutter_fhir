@@ -266,7 +266,7 @@ f.close()
 #         for l in importDict[g]:
 #             l = 'Lists' if l == 'List' else l
 #             if('_' not in l and lowcc(l) != lowcc(g) and lowcc(l) != 'xhtml'):
-#                 code = ''.join(["import 'package:flutter_fhir/class/", 
+#                 code = ''.join(["import 'package:flutter_fhir/fhirClasses/",
 #                                 lowcc(l), ".dart';\n", code])
 #         code = code.replace(',\n    });', '\n    });')
 #         code = ''.join(["import 'package:json_annotation/json_annotation.dart';\n\n", code])

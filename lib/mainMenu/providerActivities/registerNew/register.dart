@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_fhir/class/patient.dart';
-import 'package:flutter_fhir/class/address.dart';
-import 'package:flutter_fhir/class/humanName.dart';
+import 'package:flutter_fhir/fhirClasses/patient.dart';
+import 'package:flutter_fhir/fhirClasses/address.dart';
+import 'package:flutter_fhir/fhirClasses/humanName.dart';
 import 'package:flutter_fhir/mainMenu/mainMenu.dart';
 import 'package:flutter_fhir/mainMenu/testingSettings/objects.dart';
 import 'package:flutter_fhir/mainMenu/providerActivities/registerNew/registerFamily.dart';
