@@ -3,65 +3,22 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-part 'parameterDefinition.g.dart';
-
 @JsonSerializable(explicitToJson: true)
 class ParameterDefinition {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  The name of the parameter used to allow access to the value of the
-  // parameter in evaluation contexts.
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  Whether the parameter is input or output for the module.
   String use;
-
-  //  Extensions for use
   Element elementUse;
-
-  //  The minimum number of times this parameter SHALL appear in the request
-  // or response.
   int min;
-
-  //  Extensions for min
   Element elementMin;
-
-  //  The maximum number of times this element is permitted to appear in the
-  // request or response.
   String max;
-
-  //  Extensions for max
   Element elementMax;
-
-  //  A brief discussion of what the parameter is for and how it is used by
-  // the module.
   String documentation;
-
-  //  Extensions for documentation
   Element elementDocumentation;
-
-  //  The type of the parameter.
   String type;
-
-  //  Extensions for type
   Element elementType;
-
-  //  If specified, this indicates a profile that the input data must
-  // conform to, or that the output data will conform to.
   String profile;
 
 ParameterDefinition(
@@ -86,3 +43,64 @@ ParameterDefinition(
   Map<String, dynamic> toJson() => _$ParameterDefinitionToJson(this);
 }
 
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+ParameterDefinition _$ParameterDefinitionFromJson(Map<String, dynamic> json) {
+  return ParameterDefinition(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    name: json['name'] as String,
+    elementName: json['elementName'] == null
+        ? null
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
+    use: json['use'] as String,
+    elementUse: json['elementUse'] == null
+        ? null
+        : Element.fromJson(json['elementUse'] as Map<String, dynamic>),
+    min: json['min'] as int,
+    elementMin: json['elementMin'] == null
+        ? null
+        : Element.fromJson(json['elementMin'] as Map<String, dynamic>),
+    max: json['max'] as String,
+    elementMax: json['elementMax'] == null
+        ? null
+        : Element.fromJson(json['elementMax'] as Map<String, dynamic>),
+    documentation: json['documentation'] as String,
+    elementDocumentation: json['elementDocumentation'] == null
+        ? null
+        : Element.fromJson(
+            json['elementDocumentation'] as Map<String, dynamic>),
+    type: json['type'] as String,
+    elementType: json['elementType'] == null
+        ? null
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
+    profile: json['profile'] as String,
+  );
+}
+
+Map<String, dynamic> _$ParameterDefinitionToJson(
+        ParameterDefinition instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'use': instance.use,
+      'elementUse': instance.elementUse?.toJson(),
+      'min': instance.min,
+      'elementMin': instance.elementMin?.toJson(),
+      'max': instance.max,
+      'elementMax': instance.elementMax?.toJson(),
+      'documentation': instance.documentation,
+      'elementDocumentation': instance.elementDocumentation?.toJson(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+      'profile': instance.profile,
+    };

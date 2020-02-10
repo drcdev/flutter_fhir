@@ -4,32 +4,12 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-part 'codeableConcept.g.dart';
-
 @JsonSerializable(explicitToJson: true)
 class CodeableConcept {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  A reference to a code defined by a terminology system.
   List<Coding> coding;
-
-  //  A human language representation of the concept as
-  // seen/selected/uttered by the user who entered the data and/or which
-  // represents the intended meaning of the user.
   String text;
-
-  //  Extensions for text
   Element elementText;
 
 CodeableConcept(
@@ -44,3 +24,35 @@ CodeableConcept(
   Map<String, dynamic> toJson() => _$CodeableConceptToJson(this);
 }
 
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+CodeableConcept _$CodeableConceptFromJson(Map<String, dynamic> json) {
+  return CodeableConcept(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    coding: (json['coding'] as List)
+        ?.map((e) =>
+            e == null ? null : Coding.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    text: json['text'] as String,
+    elementText: json['elementText'] == null
+        ? null
+        : Element.fromJson(json['elementText'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$CodeableConceptToJson(CodeableConcept instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'coding': instance.coding?.map((e) => e?.toJson())?.toList(),
+      'text': instance.text,
+      'elementText': instance.elementText?.toJson(),
+    };

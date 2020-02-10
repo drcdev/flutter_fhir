@@ -3,74 +3,25 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-part 'attachment.g.dart';
-
 @JsonSerializable(explicitToJson: true)
 class Attachment {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  Identifies the type of the data in the attachment and allows a method
-  // to be chosen to interpret or render the data. Includes mime type
-  // parameters such as charset where appropriate.
   String contentType;
-
-  //  Extensions for contentType
   Element elementContentType;
-
-  //  The human language of the content. The value can be any valid value
-  // according to BCP 47.
   String language;
-
-  //  Extensions for language
   Element elementLanguage;
-
-  //  The actual data of the attachment - a sequence of bytes, base64
-  // encoded.
   String data;
-
-  //  Extensions for data
   Element elementData;
-
-  //  A location where the data can be accessed.
   String url;
-
-  //  Extensions for url
   Element elementUrl;
-
-  //  The number of bytes of data that make up this attachment (before
-  // base64 encoding, if that is done).
   int size;
-
-  //  Extensions for size
   Element elementSize;
-
-  //  The calculated hash of the data using SHA-1. Represented using base64.
   String hash;
-
-  //  Extensions for hash
   Element elementHash;
-
-  //  A label or set of text to display in place of the data.
   String title;
-
-  //  Extensions for title
   Element elementTitle;
-
-  //  The date that the attachment was first created.
   DateTime creation;
-
-  //  Extensions for creation
   Element elementCreation;
 
 Attachment(
@@ -98,3 +49,74 @@ Attachment(
   Map<String, dynamic> toJson() => _$AttachmentToJson(this);
 }
 
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+Attachment _$AttachmentFromJson(Map<String, dynamic> json) {
+  return Attachment(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    contentType: json['contentType'] as String,
+    elementContentType: json['elementContentType'] == null
+        ? null
+        : Element.fromJson(json['elementContentType'] as Map<String, dynamic>),
+    language: json['language'] as String,
+    elementLanguage: json['elementLanguage'] == null
+        ? null
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
+    data: json['data'] as String,
+    elementData: json['elementData'] == null
+        ? null
+        : Element.fromJson(json['elementData'] as Map<String, dynamic>),
+    url: json['url'] as String,
+    elementUrl: json['elementUrl'] == null
+        ? null
+        : Element.fromJson(json['elementUrl'] as Map<String, dynamic>),
+    size: json['size'] as int,
+    elementSize: json['elementSize'] == null
+        ? null
+        : Element.fromJson(json['elementSize'] as Map<String, dynamic>),
+    hash: json['hash'] as String,
+    elementHash: json['elementHash'] == null
+        ? null
+        : Element.fromJson(json['elementHash'] as Map<String, dynamic>),
+    title: json['title'] as String,
+    elementTitle: json['elementTitle'] == null
+        ? null
+        : Element.fromJson(json['elementTitle'] as Map<String, dynamic>),
+    creation: json['creation'] == null
+        ? null
+        : DateTime.parse(json['creation'] as String),
+    elementCreation: json['elementCreation'] == null
+        ? null
+        : Element.fromJson(json['elementCreation'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$AttachmentToJson(Attachment instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'contentType': instance.contentType,
+      'elementContentType': instance.elementContentType?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'data': instance.data,
+      'elementData': instance.elementData?.toJson(),
+      'url': instance.url,
+      'elementUrl': instance.elementUrl?.toJson(),
+      'size': instance.size,
+      'elementSize': instance.elementSize?.toJson(),
+      'hash': instance.hash,
+      'elementHash': instance.elementHash?.toJson(),
+      'title': instance.title,
+      'elementTitle': instance.elementTitle?.toJson(),
+      'creation': instance.creation?.toIso8601String(),
+      'elementCreation': instance.elementCreation?.toJson(),
+    };

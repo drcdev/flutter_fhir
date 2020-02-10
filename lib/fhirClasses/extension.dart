@@ -33,285 +33,80 @@ import 'package:flutter_fhir/fhirClasses/age.dart';
 import 'package:flutter_fhir/fhirClasses/address.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 
-part 'extension.g.dart';
-
 @JsonSerializable(explicitToJson: true)
 class Extension {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  Source of the definition for the extension code - a logical name or a
-  // URL.
   String url;
-
-  //  Extensions for url
   Element elementUrl;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   String valueBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
-
-  //  Extensions for valueBase64Binary
   Element elementValueBase64Binary;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   bool valueBoolean; //  pattern: ^true|false$
-
-  //  Extensions for valueBoolean
   Element elementValueBoolean;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   String valueCanonical; //  pattern: ^\S*$
-
-  //  Extensions for valueCanonical
   Element elementValueCanonical;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   String valueCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
-
-  //  Extensions for valueCode
   Element elementValueCode;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   String valueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
-
-  //  Extensions for valueDate
   Element elementValueDate;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for valueDateTime
   Element elementValueDateTime;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
-
-  //  Extensions for valueDecimal
   Element elementValueDecimal;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   String valueId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
-
-  //  Extensions for valueId
   Element elementValueId;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   String valueInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
-
-  //  Extensions for valueInstant
   Element elementValueInstant;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
-
-  //  Extensions for valueInteger
   Element elementValueInteger;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   String valueMarkdown; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for valueMarkdown
   Element elementValueMarkdown;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   String valueOid; //  pattern: ^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$
-
-  //  Extensions for valueOid
   Element elementValueOid;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   int valuePositiveInt; //  pattern: ^[1-9][0-9]*$
-
-  //  Extensions for valuePositiveInt
   Element elementValuePositiveInt;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   String valueString; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for valueString
   Element elementValueString;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   String valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
-
-  //  Extensions for valueTime
   Element elementValueTime;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   int valueUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
-
-  //  Extensions for valueUnsignedInt
   Element elementValueUnsignedInt;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   String valueUri; //  pattern: ^\S*$
-
-  //  Extensions for valueUri
   Element elementValueUri;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   String valueUrl; //  pattern: ^\S*$
-
-  //  Extensions for valueUrl
   Element elementValueUrl;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   String valueUuid; //  pattern: ^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
-
-  //  Extensions for valueUuid
   Element elementValueUuid;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   Address valueAddress;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   Age valueAge;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   Annotation valueAnnotation;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   Attachment valueAttachment;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   CodeableConcept valueCodeableConcept;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   Coding valueCoding;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   ContactPoint valueContactPoint;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   Count valueCount;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   Distance valueDistance;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   Duration valueDuration;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   HumanName valueHumanName;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   Identifier valueIdentifier;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   Money valueMoney;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   Period valuePeriod;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   Quantity valueQuantity;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   Range valueRange;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   Ratio valueRatio;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   Reference valueReference;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   SampledData valueSampledData;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   Signature valueSignature;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   Timing valueTiming;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   ContactDetail valueContactDetail;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   Contributor valueContributor;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   DataRequirement valueDataRequirement;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   Expression valueExpression;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   ParameterDefinition valueParameterDefinition;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   RelatedArtifact valueRelatedArtifact;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   TriggerDefinition valueTriggerDefinition;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   UsageContext valueUsageContext;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   Dosage valueDosage;
-
-  //  Value of extension - must be one of a constrained set of the data
-  // types (see [Extensibility](extensibility.html) for a list).
   Meta valueMeta;
 
 Extension(
@@ -394,3 +189,283 @@ Extension(
   Map<String, dynamic> toJson() => _$ExtensionToJson(this);
 }
 
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+Extension _$ExtensionFromJson(Map<String, dynamic> json) {
+  return Extension(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    url: json['url'] as String,
+    elementUrl: json['elementUrl'] == null
+        ? null
+        : Element.fromJson(json['elementUrl'] as Map<String, dynamic>),
+    valueBase64Binary: json['valueBase64Binary'] as String,
+    elementValueBase64Binary: json['elementValueBase64Binary'] == null
+        ? null
+        : Element.fromJson(
+            json['elementValueBase64Binary'] as Map<String, dynamic>),
+    valueBoolean: json['valueBoolean'] as bool,
+    elementValueBoolean: json['elementValueBoolean'] == null
+        ? null
+        : Element.fromJson(json['elementValueBoolean'] as Map<String, dynamic>),
+    valueCanonical: json['valueCanonical'] as String,
+    elementValueCanonical: json['elementValueCanonical'] == null
+        ? null
+        : Element.fromJson(
+            json['elementValueCanonical'] as Map<String, dynamic>),
+    valueCode: json['valueCode'] as String,
+    elementValueCode: json['elementValueCode'] == null
+        ? null
+        : Element.fromJson(json['elementValueCode'] as Map<String, dynamic>),
+    valueDate: json['valueDate'] as String,
+    elementValueDate: json['elementValueDate'] == null
+        ? null
+        : Element.fromJson(json['elementValueDate'] as Map<String, dynamic>),
+    valueDateTime: json['valueDateTime'] as String,
+    elementValueDateTime: json['elementValueDateTime'] == null
+        ? null
+        : Element.fromJson(
+            json['elementValueDateTime'] as Map<String, dynamic>),
+    valueDecimal: (json['valueDecimal'] as num)?.toDouble(),
+    elementValueDecimal: json['elementValueDecimal'] == null
+        ? null
+        : Element.fromJson(json['elementValueDecimal'] as Map<String, dynamic>),
+    valueId: json['valueId'] as String,
+    elementValueId: json['elementValueId'] == null
+        ? null
+        : Element.fromJson(json['elementValueId'] as Map<String, dynamic>),
+    valueInstant: json['valueInstant'] as String,
+    elementValueInstant: json['elementValueInstant'] == null
+        ? null
+        : Element.fromJson(json['elementValueInstant'] as Map<String, dynamic>),
+    valueInteger: json['valueInteger'] as int,
+    elementValueInteger: json['elementValueInteger'] == null
+        ? null
+        : Element.fromJson(json['elementValueInteger'] as Map<String, dynamic>),
+    valueMarkdown: json['valueMarkdown'] as String,
+    elementValueMarkdown: json['elementValueMarkdown'] == null
+        ? null
+        : Element.fromJson(
+            json['elementValueMarkdown'] as Map<String, dynamic>),
+    valueOid: json['valueOid'] as String,
+    elementValueOid: json['elementValueOid'] == null
+        ? null
+        : Element.fromJson(json['elementValueOid'] as Map<String, dynamic>),
+    valuePositiveInt: json['valuePositiveInt'] as int,
+    elementValuePositiveInt: json['elementValuePositiveInt'] == null
+        ? null
+        : Element.fromJson(
+            json['elementValuePositiveInt'] as Map<String, dynamic>),
+    valueString: json['valueString'] as String,
+    elementValueString: json['elementValueString'] == null
+        ? null
+        : Element.fromJson(json['elementValueString'] as Map<String, dynamic>),
+    valueTime: json['valueTime'] as String,
+    elementValueTime: json['elementValueTime'] == null
+        ? null
+        : Element.fromJson(json['elementValueTime'] as Map<String, dynamic>),
+    valueUnsignedInt: json['valueUnsignedInt'] as int,
+    elementValueUnsignedInt: json['elementValueUnsignedInt'] == null
+        ? null
+        : Element.fromJson(
+            json['elementValueUnsignedInt'] as Map<String, dynamic>),
+    valueUri: json['valueUri'] as String,
+    elementValueUri: json['elementValueUri'] == null
+        ? null
+        : Element.fromJson(json['elementValueUri'] as Map<String, dynamic>),
+    valueUrl: json['valueUrl'] as String,
+    elementValueUrl: json['elementValueUrl'] == null
+        ? null
+        : Element.fromJson(json['elementValueUrl'] as Map<String, dynamic>),
+    valueUuid: json['valueUuid'] as String,
+    elementValueUuid: json['elementValueUuid'] == null
+        ? null
+        : Element.fromJson(json['elementValueUuid'] as Map<String, dynamic>),
+    valueAddress: json['valueAddress'] == null
+        ? null
+        : Address.fromJson(json['valueAddress'] as Map<String, dynamic>),
+    valueAge: json['valueAge'] == null
+        ? null
+        : Age.fromJson(json['valueAge'] as Map<String, dynamic>),
+    valueAnnotation: json['valueAnnotation'] == null
+        ? null
+        : Annotation.fromJson(json['valueAnnotation'] as Map<String, dynamic>),
+    valueAttachment: json['valueAttachment'] == null
+        ? null
+        : Attachment.fromJson(json['valueAttachment'] as Map<String, dynamic>),
+    valueCodeableConcept: json['valueCodeableConcept'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['valueCodeableConcept'] as Map<String, dynamic>),
+    valueCoding: json['valueCoding'] == null
+        ? null
+        : Coding.fromJson(json['valueCoding'] as Map<String, dynamic>),
+    valueContactPoint: json['valueContactPoint'] == null
+        ? null
+        : ContactPoint.fromJson(
+            json['valueContactPoint'] as Map<String, dynamic>),
+    valueCount: json['valueCount'] == null
+        ? null
+        : Count.fromJson(json['valueCount'] as Map<String, dynamic>),
+    valueDistance: json['valueDistance'] == null
+        ? null
+        : Distance.fromJson(json['valueDistance'] as Map<String, dynamic>),
+    valueDuration: json['valueDuration'] == null
+        ? null
+        : Duration.fromJson(json['valueDuration'] as Map<String, dynamic>),
+    valueHumanName: json['valueHumanName'] == null
+        ? null
+        : HumanName.fromJson(json['valueHumanName'] as Map<String, dynamic>),
+    valueIdentifier: json['valueIdentifier'] == null
+        ? null
+        : Identifier.fromJson(json['valueIdentifier'] as Map<String, dynamic>),
+    valueMoney: json['valueMoney'] == null
+        ? null
+        : Money.fromJson(json['valueMoney'] as Map<String, dynamic>),
+    valuePeriod: json['valuePeriod'] == null
+        ? null
+        : Period.fromJson(json['valuePeriod'] as Map<String, dynamic>),
+    valueQuantity: json['valueQuantity'] == null
+        ? null
+        : Quantity.fromJson(json['valueQuantity'] as Map<String, dynamic>),
+    valueRange: json['valueRange'] == null
+        ? null
+        : Range.fromJson(json['valueRange'] as Map<String, dynamic>),
+    valueRatio: json['valueRatio'] == null
+        ? null
+        : Ratio.fromJson(json['valueRatio'] as Map<String, dynamic>),
+    valueReference: json['valueReference'] == null
+        ? null
+        : Reference.fromJson(json['valueReference'] as Map<String, dynamic>),
+    valueSampledData: json['valueSampledData'] == null
+        ? null
+        : SampledData.fromJson(
+            json['valueSampledData'] as Map<String, dynamic>),
+    valueSignature: json['valueSignature'] == null
+        ? null
+        : Signature.fromJson(json['valueSignature'] as Map<String, dynamic>),
+    valueTiming: json['valueTiming'] == null
+        ? null
+        : Timing.fromJson(json['valueTiming'] as Map<String, dynamic>),
+    valueContactDetail: json['valueContactDetail'] == null
+        ? null
+        : ContactDetail.fromJson(
+            json['valueContactDetail'] as Map<String, dynamic>),
+    valueContributor: json['valueContributor'] == null
+        ? null
+        : Contributor.fromJson(
+            json['valueContributor'] as Map<String, dynamic>),
+    valueDataRequirement: json['valueDataRequirement'] == null
+        ? null
+        : DataRequirement.fromJson(
+            json['valueDataRequirement'] as Map<String, dynamic>),
+    valueExpression: json['valueExpression'] == null
+        ? null
+        : Expression.fromJson(json['valueExpression'] as Map<String, dynamic>),
+    valueParameterDefinition: json['valueParameterDefinition'] == null
+        ? null
+        : ParameterDefinition.fromJson(
+            json['valueParameterDefinition'] as Map<String, dynamic>),
+    valueRelatedArtifact: json['valueRelatedArtifact'] == null
+        ? null
+        : RelatedArtifact.fromJson(
+            json['valueRelatedArtifact'] as Map<String, dynamic>),
+    valueTriggerDefinition: json['valueTriggerDefinition'] == null
+        ? null
+        : TriggerDefinition.fromJson(
+            json['valueTriggerDefinition'] as Map<String, dynamic>),
+    valueUsageContext: json['valueUsageContext'] == null
+        ? null
+        : UsageContext.fromJson(
+            json['valueUsageContext'] as Map<String, dynamic>),
+    valueDosage: json['valueDosage'] == null
+        ? null
+        : Dosage.fromJson(json['valueDosage'] as Map<String, dynamic>),
+    valueMeta: json['valueMeta'] == null
+        ? null
+        : Meta.fromJson(json['valueMeta'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$ExtensionToJson(Extension instance) => <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'url': instance.url,
+      'elementUrl': instance.elementUrl?.toJson(),
+      'valueBase64Binary': instance.valueBase64Binary,
+      'elementValueBase64Binary': instance.elementValueBase64Binary?.toJson(),
+      'valueBoolean': instance.valueBoolean,
+      'elementValueBoolean': instance.elementValueBoolean?.toJson(),
+      'valueCanonical': instance.valueCanonical,
+      'elementValueCanonical': instance.elementValueCanonical?.toJson(),
+      'valueCode': instance.valueCode,
+      'elementValueCode': instance.elementValueCode?.toJson(),
+      'valueDate': instance.valueDate,
+      'elementValueDate': instance.elementValueDate?.toJson(),
+      'valueDateTime': instance.valueDateTime,
+      'elementValueDateTime': instance.elementValueDateTime?.toJson(),
+      'valueDecimal': instance.valueDecimal,
+      'elementValueDecimal': instance.elementValueDecimal?.toJson(),
+      'valueId': instance.valueId,
+      'elementValueId': instance.elementValueId?.toJson(),
+      'valueInstant': instance.valueInstant,
+      'elementValueInstant': instance.elementValueInstant?.toJson(),
+      'valueInteger': instance.valueInteger,
+      'elementValueInteger': instance.elementValueInteger?.toJson(),
+      'valueMarkdown': instance.valueMarkdown,
+      'elementValueMarkdown': instance.elementValueMarkdown?.toJson(),
+      'valueOid': instance.valueOid,
+      'elementValueOid': instance.elementValueOid?.toJson(),
+      'valuePositiveInt': instance.valuePositiveInt,
+      'elementValuePositiveInt': instance.elementValuePositiveInt?.toJson(),
+      'valueString': instance.valueString,
+      'elementValueString': instance.elementValueString?.toJson(),
+      'valueTime': instance.valueTime,
+      'elementValueTime': instance.elementValueTime?.toJson(),
+      'valueUnsignedInt': instance.valueUnsignedInt,
+      'elementValueUnsignedInt': instance.elementValueUnsignedInt?.toJson(),
+      'valueUri': instance.valueUri,
+      'elementValueUri': instance.elementValueUri?.toJson(),
+      'valueUrl': instance.valueUrl,
+      'elementValueUrl': instance.elementValueUrl?.toJson(),
+      'valueUuid': instance.valueUuid,
+      'elementValueUuid': instance.elementValueUuid?.toJson(),
+      'valueAddress': instance.valueAddress?.toJson(),
+      'valueAge': instance.valueAge?.toJson(),
+      'valueAnnotation': instance.valueAnnotation?.toJson(),
+      'valueAttachment': instance.valueAttachment?.toJson(),
+      'valueCodeableConcept': instance.valueCodeableConcept?.toJson(),
+      'valueCoding': instance.valueCoding?.toJson(),
+      'valueContactPoint': instance.valueContactPoint?.toJson(),
+      'valueCount': instance.valueCount?.toJson(),
+      'valueDistance': instance.valueDistance?.toJson(),
+      'valueDuration': instance.valueDuration?.toJson(),
+      'valueHumanName': instance.valueHumanName?.toJson(),
+      'valueIdentifier': instance.valueIdentifier?.toJson(),
+      'valueMoney': instance.valueMoney?.toJson(),
+      'valuePeriod': instance.valuePeriod?.toJson(),
+      'valueQuantity': instance.valueQuantity?.toJson(),
+      'valueRange': instance.valueRange?.toJson(),
+      'valueRatio': instance.valueRatio?.toJson(),
+      'valueReference': instance.valueReference?.toJson(),
+      'valueSampledData': instance.valueSampledData?.toJson(),
+      'valueSignature': instance.valueSignature?.toJson(),
+      'valueTiming': instance.valueTiming?.toJson(),
+      'valueContactDetail': instance.valueContactDetail?.toJson(),
+      'valueContributor': instance.valueContributor?.toJson(),
+      'valueDataRequirement': instance.valueDataRequirement?.toJson(),
+      'valueExpression': instance.valueExpression?.toJson(),
+      'valueParameterDefinition': instance.valueParameterDefinition?.toJson(),
+      'valueRelatedArtifact': instance.valueRelatedArtifact?.toJson(),
+      'valueTriggerDefinition': instance.valueTriggerDefinition?.toJson(),
+      'valueUsageContext': instance.valueUsageContext?.toJson(),
+      'valueDosage': instance.valueDosage?.toJson(),
+      'valueMeta': instance.valueMeta?.toJson(),
+    };

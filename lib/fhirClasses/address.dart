@@ -4,87 +4,28 @@ import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-part 'address.g.dart';
-
 @JsonSerializable(explicitToJson: true)
 class Address {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  The purpose of this address.
   String use; // <code> enum: home/work/temp/old/billing;
-
-  //  Extensions for use
   Element elementUse;
-
-  //  Distinguishes between physical addresses (those you can visit) and
-  // mailing addresses (e.g. PO Boxes and care-of addresses). Most addresses
-  // are both.
   String type; // <code> enum: postal/physical/both;
-
-  //  Extensions for type
   Element elementType;
-
-  //  Specifies the entire address as it should be displayed e.g. on a
-  // postal label. This may be provided instead of or as well as the
-  // specific parts.
   String text;
-
-  //  Extensions for text
   Element elementText;
-
-  //  This component contains the house number, apartment number, street
-  // name, street direction,  P.O. Box number, delivery hints, and similar
-  // address information.
   List<String> line;
-
-  //  Extensions for line
   List<Element> elementLine;
-
-  //  The name of the city, town, suburb, village or other community or
-  // delivery center.
   String city;
-
-  //  Extensions for city
   Element elementCity;
-
-  //  The name of the administrative area (county).
   String district;
-
-  //  Extensions for district
   Element elementDistrict;
-
-  //  Sub-unit of a country with limited sovereignty in a federally
-  // organized country. A code may be used if codes are in common use (e.g.
-  // US 2 letter state codes).
   String state;
-
-  //  Extensions for state
   Element elementState;
-
-  //  A postal code designating a region defined by the postal service.
   String postalCode;
-
-  //  Extensions for postalCode
   Element elementPostalCode;
-
-  //  Country - a nation as commonly understood or generally accepted.
   String country;
-
-  //  Extensions for country
   Element elementCountry;
-
-  //  Time period when address was/is in use.
   Period period;
 
 Address(
@@ -115,3 +56,82 @@ Address(
   Map<String, dynamic> toJson() => _$AddressToJson(this);
 }
 
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+Address _$AddressFromJson(Map<String, dynamic> json) {
+  return Address(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    use: json['use'] as String,
+    elementUse: json['elementUse'] == null
+        ? null
+        : Element.fromJson(json['elementUse'] as Map<String, dynamic>),
+    type: json['type'] as String,
+    elementType: json['elementType'] == null
+        ? null
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
+    text: json['text'] as String,
+    elementText: json['elementText'] == null
+        ? null
+        : Element.fromJson(json['elementText'] as Map<String, dynamic>),
+    line: (json['line'] as List)?.map((e) => e as String)?.toList(),
+    elementLine: (json['elementLine'] as List)
+        ?.map((e) =>
+            e == null ? null : Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    city: json['city'] as String,
+    elementCity: json['elementCity'] == null
+        ? null
+        : Element.fromJson(json['elementCity'] as Map<String, dynamic>),
+    district: json['district'] as String,
+    elementDistrict: json['elementDistrict'] == null
+        ? null
+        : Element.fromJson(json['elementDistrict'] as Map<String, dynamic>),
+    state: json['state'] as String,
+    elementState: json['elementState'] == null
+        ? null
+        : Element.fromJson(json['elementState'] as Map<String, dynamic>),
+    postalCode: json['postalCode'] as String,
+    elementPostalCode: json['elementPostalCode'] == null
+        ? null
+        : Element.fromJson(json['elementPostalCode'] as Map<String, dynamic>),
+    country: json['country'] as String,
+    elementCountry: json['elementCountry'] == null
+        ? null
+        : Element.fromJson(json['elementCountry'] as Map<String, dynamic>),
+    period: json['period'] == null
+        ? null
+        : Period.fromJson(json['period'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$AddressToJson(Address instance) => <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'use': instance.use,
+      'elementUse': instance.elementUse?.toJson(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+      'text': instance.text,
+      'elementText': instance.elementText?.toJson(),
+      'line': instance.line,
+      'elementLine': instance.elementLine?.map((e) => e?.toJson())?.toList(),
+      'city': instance.city,
+      'elementCity': instance.elementCity?.toJson(),
+      'district': instance.district,
+      'elementDistrict': instance.elementDistrict?.toJson(),
+      'state': instance.state,
+      'elementState': instance.elementState?.toJson(),
+      'postalCode': instance.postalCode,
+      'elementPostalCode': instance.elementPostalCode?.toJson(),
+      'country': instance.country,
+      'elementCountry': instance.elementCountry?.toJson(),
+      'period': instance.period?.toJson(),
+    };

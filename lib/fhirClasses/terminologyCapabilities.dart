@@ -9,237 +9,56 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-part 'terminologyCapabilities.g.dart';
-
 @JsonSerializable(explicitToJson: true)
 class TerminologyCapabilities {
-
-  //  This is a TerminologyCapabilities resource
   final String resourceType= 'TerminologyCapabilities';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   String implicitRules;
-
-  //  Extensions for implicitRules
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   String language;
-
-  //  Extensions for language
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  An absolute URI that is used to identify this terminology capabilities
-  // when it is referenced in a specification, model, design or an instance;
-  // also called its canonical identifier. This SHOULD be globally unique
-  // and SHOULD be a literal address at which at which an authoritative
-  // instance of this terminology capabilities is (or will be) published.
-  // This URL can be the target of a canonical reference. It SHALL remain
-  // the same when the terminology capabilities is stored on different
-  // servers.
   String url;
-
-  //  Extensions for url
   Element elementUrl;
-
-  //  The identifier that is used to identify this version of the
-  // terminology capabilities when it is referenced in a specification,
-  // model, design or instance. This is an arbitrary value managed by the
-  // terminology capabilities author and is not expected to be globally
-  // unique. For example, it might be a timestamp (e.g. yyyymmdd) if a
-  // managed version is not available. There is also no expectation that
-  // versions can be placed in a lexicographical sequence.
   String version;
-
-  //  Extensions for version
   Element elementVersion;
-
-  //  A natural language name identifying the terminology capabilities. This
-  // name should be usable as an identifier for the module by machine
-  // processing applications such as code generation.
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  A short, descriptive, user-friendly title for the terminology
-  // capabilities.
   String title;
-
-  //  Extensions for title
   Element elementTitle;
-
-  //  The status of this terminology capabilities. Enables tracking the
-  // life-cycle of the content.
   String status; // <code> enum: draft/active/retired/unknown;
-
-  //  Extensions for status
   Element elementStatus;
-
-  //  A Boolean value to indicate that this terminology capabilities is
-  // authored for testing purposes (or education/evaluation/marketing) and
-  // is not intended to be used for genuine usage.
   bool experimental;
-
-  //  Extensions for experimental
   Element elementExperimental;
-
-  //  The date  (and optionally time) when the terminology capabilities was
-  // published. The date must change when the business version changes and
-  // it must change if the status code changes. In addition, it should
-  // change when the substantive content of the terminology capabilities
-  // changes.
   DateTime date;
-
-  //  Extensions for date
   Element elementDate;
-
-  //  The name of the organization or individual that published the
-  // terminology capabilities.
   String publisher;
-
-  //  Extensions for publisher
   Element elementPublisher;
-
-  //  Contact details to assist a user in finding and communicating with the
-  // publisher.
   List<ContactDetail> contact;
-
-  //  A free text natural language description of the terminology
-  // capabilities from a consumer's perspective. Typically, this is used
-  // when the capability statement describes a desired rather than an actual
-  // solution, for example as a formal expression of requirements as part of
-  // an RFP.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  The content was developed with a focus and intent of supporting the
-  // contexts that are listed. These contexts may be general categories
-  // (gender, age, ...) or may be references to specific programs (insurance
-  // plans, studies, ...) and may be used to assist with indexing and
-  // searching for appropriate terminology capabilities instances.
   List<UsageContext> useContext;
-
-  //  A legal or geographic region in which the terminology capabilities is
-  // intended to be used.
   List<CodeableConcept> jurisdiction;
-
-  //  Explanation of why this terminology capabilities is needed and why it
-  // has been designed as it has.
   String purpose;
-
-  //  Extensions for purpose
   Element elementPurpose;
-
-  //  A copyright statement relating to the terminology capabilities and/or
-  // its contents. Copyright statements are generally legal restrictions on
-  // the use and publishing of the terminology capabilities.
   String copyright;
-
-  //  Extensions for copyright
   Element elementCopyright;
-
-  //  The way that this statement is intended to be used, to describe an
-  // actual running instance of software, a particular product (kind, not
-  // instance of software) or a class of implementation (e.g. a desired
-  // purchase).
   String kind;
-
-  //  Extensions for kind
   Element elementKind;
-
-  //  Software that is covered by this terminology capability statement.  It
-  // is used when the statement describes the capabilities of a particular
-  // software version, independent of an installation.
   TerminologyCapabilities_Software software;
-
-  //  Identifies a specific implementation instance that is described by the
-  // terminology capability statement - i.e. a particular installation,
-  // rather than the capabilities of a software program.
   TerminologyCapabilities_Implementation implementation;
-
-  //  Whether the server supports lockedDate.
   bool lockedDate;
-
-  //  Extensions for lockedDate
   Element elementLockedDate;
-
-  //  Identifies a code system that is supported by the server. If there is
-  // a no code system URL, then this declares the general assumptions a
-  // client can make about support for any CodeSystem resource.
   List<TerminologyCapabilities_CodeSystem> codeSystem;
-
-  //  Information about the
-  // [ValueSet/$expand](valueset-operation-expand.html) operation.
   TerminologyCapabilities_Expansion expansion;
-
-  //  The degree to which the server supports the code search parameter on
-  // ValueSet, if it is supported.
   String codeSearch; // <code> enum: explicit/all;
-
-  //  Extensions for codeSearch
   Element elementCodeSearch;
-
-  //  Information about the
-  // [ValueSet/$validate-code](valueset-operation-validate-code.html)
-  // operation.
   TerminologyCapabilities_ValidateCode validateCode;
-
-  //  Information about the
-  // [ConceptMap/$translate](conceptmap-operation-translate.html) operation.
   TerminologyCapabilities_Translation translation;
-
-  //  Whether the $closure operation is supported.
   TerminologyCapabilities_Closure closure;
 
 TerminologyCapabilities(
@@ -299,43 +118,12 @@ TerminologyCapabilities(
 
 @JsonSerializable(explicitToJson: true)
 class TerminologyCapabilities_Software {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Name the software is known by.
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  The version identifier for the software covered by this statement.
   String version;
-
-  //  Extensions for version
   Element elementVersion;
 
 TerminologyCapabilities_Software(
@@ -354,44 +142,12 @@ TerminologyCapabilities_Software(
 
 @JsonSerializable(explicitToJson: true)
 class TerminologyCapabilities_Implementation {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Information about the specific installation that this terminology
-  // capability statement relates to.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  An absolute base URL for the implementation.
   String url;
-
-  //  Extensions for url
   Element elementUrl;
 
 TerminologyCapabilities_Implementation(
@@ -410,44 +166,12 @@ TerminologyCapabilities_Implementation(
 
 @JsonSerializable(explicitToJson: true)
 class TerminologyCapabilities_CodeSystem {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  URI for the Code System.
   String uri;
-
-  //  For the code system, a list of versions that are supported by the
-  // server.
   List<TerminologyCapabilities_Version> version;
-
-  //  True if subsumption is supported for this version of the code system.
   bool subsumption;
-
-  //  Extensions for subsumption
   Element elementSubsumption;
 
 TerminologyCapabilities_CodeSystem(
@@ -466,65 +190,19 @@ TerminologyCapabilities_CodeSystem(
 
 @JsonSerializable(explicitToJson: true)
 class TerminologyCapabilities_Version {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  For version-less code systems, there should be a single version with
-  // no identifier.
   String code;
-
-  //  Extensions for code
   Element elementCode;
-
-  //  If this is the default version for this code system.
   bool isDefault;
-
-  //  Extensions for isDefault
   Element elementIsDefault;
-
-  //  If the compositional grammar defined by the code system is supported.
   bool compositional;
-
-  //  Extensions for compositional
   Element elementCompositional;
-
-  //  Language Displays supported.
   List<String> language;
-
-  //  Extensions for language
   List<Element> elementLanguage;
-
-  //  Filter Properties supported.
   List<TerminologyCapabilities_Filter> filter;
-
-  //  Properties supported for $lookup.
   List<String> property;
-
-  //  Extensions for property
   List<Element> elementProperty;
 
 TerminologyCapabilities_Version(
@@ -550,43 +228,12 @@ TerminologyCapabilities_Version(
 
 @JsonSerializable(explicitToJson: true)
 class TerminologyCapabilities_Filter {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Code of the property supported.
   String code;
-
-  //  Extensions for code
   Element elementCode;
-
-  //  Operations supported for the property.
   List<String> op;
-
-  //  Extensions for op
   List<Element> elementOp;
 
 TerminologyCapabilities_Filter(
@@ -605,58 +252,17 @@ TerminologyCapabilities_Filter(
 
 @JsonSerializable(explicitToJson: true)
 class TerminologyCapabilities_Expansion {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Whether the server can return nested value sets.
   bool hierarchical;
-
-  //  Extensions for hierarchical
   Element elementHierarchical;
-
-  //  Whether the server supports paging on expansion.
   bool paging;
-
-  //  Extensions for paging
   Element elementPaging;
-
-  //  Allow request for incomplete expansions?
   bool incomplete;
-
-  //  Extensions for incomplete
   Element elementIncomplete;
-
-  //  Supported expansion parameter.
   List<TerminologyCapabilities_Parameter> parameter;
-
-  //  Documentation about text searching works.
   String textFilter;
-
-  //  Extensions for textFilter
   Element elementTextFilter;
 
 TerminologyCapabilities_Expansion(
@@ -680,43 +286,12 @@ TerminologyCapabilities_Expansion(
 
 @JsonSerializable(explicitToJson: true)
 class TerminologyCapabilities_Parameter {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Expansion Parameter name.
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  Description of support for parameter.
   String documentation;
-
-  //  Extensions for documentation
   Element elementDocumentation;
 
 TerminologyCapabilities_Parameter(
@@ -735,37 +310,10 @@ TerminologyCapabilities_Parameter(
 
 @JsonSerializable(explicitToJson: true)
 class TerminologyCapabilities_ValidateCode {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Whether translations are validated.
   bool translations;
-
-  //  Extensions for translations
   Element elementTranslations;
 
 TerminologyCapabilities_ValidateCode(
@@ -782,37 +330,10 @@ TerminologyCapabilities_ValidateCode(
 
 @JsonSerializable(explicitToJson: true)
 class TerminologyCapabilities_Translation {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Whether the client must identify the map.
   bool needsMap;
-
-  //  Extensions for needsMap
   Element elementNeedsMap;
 
 TerminologyCapabilities_Translation(
@@ -829,37 +350,10 @@ TerminologyCapabilities_Translation(
 
 @JsonSerializable(explicitToJson: true)
 class TerminologyCapabilities_Closure {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  If cross-system closure is supported.
   bool translation;
-
-  //  Extensions for translation
   Element elementTranslation;
 
 TerminologyCapabilities_Closure(
@@ -874,3 +368,593 @@ TerminologyCapabilities_Closure(
   Map<String, dynamic> toJson() => _$TerminologyCapabilities_ClosureToJson(this);
 }
 
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+TerminologyCapabilities _$TerminologyCapabilitiesFromJson(
+    Map<String, dynamic> json) {
+  return TerminologyCapabilities(
+    id: json['id'] as String,
+    meta: json['meta'] == null
+        ? null
+        : Meta.fromJson(json['meta'] as Map<String, dynamic>),
+    implicitRules: json['implicitRules'] as String,
+    elementImplicitRules: json['elementImplicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['elementImplicitRules'] as Map<String, dynamic>),
+    language: json['language'] as String,
+    elementLanguage: json['elementLanguage'] == null
+        ? null
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
+    text: json['text'] == null
+        ? null
+        : Narrative.fromJson(json['text'] as Map<String, dynamic>),
+    contained: (json['contained'] as List)
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.toList(),
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    url: json['url'] as String,
+    elementUrl: json['elementUrl'] == null
+        ? null
+        : Element.fromJson(json['elementUrl'] as Map<String, dynamic>),
+    version: json['version'] as String,
+    elementVersion: json['elementVersion'] == null
+        ? null
+        : Element.fromJson(json['elementVersion'] as Map<String, dynamic>),
+    name: json['name'] as String,
+    elementName: json['elementName'] == null
+        ? null
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
+    title: json['title'] as String,
+    elementTitle: json['elementTitle'] == null
+        ? null
+        : Element.fromJson(json['elementTitle'] as Map<String, dynamic>),
+    status: json['status'] as String,
+    elementStatus: json['elementStatus'] == null
+        ? null
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
+    experimental: json['experimental'] as bool,
+    elementExperimental: json['elementExperimental'] == null
+        ? null
+        : Element.fromJson(json['elementExperimental'] as Map<String, dynamic>),
+    date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
+    elementDate: json['elementDate'] == null
+        ? null
+        : Element.fromJson(json['elementDate'] as Map<String, dynamic>),
+    publisher: json['publisher'] as String,
+    elementPublisher: json['elementPublisher'] == null
+        ? null
+        : Element.fromJson(json['elementPublisher'] as Map<String, dynamic>),
+    contact: (json['contact'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ContactDetail.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    description: json['description'] as String,
+    elementDescription: json['elementDescription'] == null
+        ? null
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
+    useContext: (json['useContext'] as List)
+        ?.map((e) =>
+            e == null ? null : UsageContext.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    jurisdiction: (json['jurisdiction'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    purpose: json['purpose'] as String,
+    elementPurpose: json['elementPurpose'] == null
+        ? null
+        : Element.fromJson(json['elementPurpose'] as Map<String, dynamic>),
+    copyright: json['copyright'] as String,
+    elementCopyright: json['elementCopyright'] == null
+        ? null
+        : Element.fromJson(json['elementCopyright'] as Map<String, dynamic>),
+    kind: json['kind'] as String,
+    elementKind: json['elementKind'] == null
+        ? null
+        : Element.fromJson(json['elementKind'] as Map<String, dynamic>),
+    software: json['software'] == null
+        ? null
+        : TerminologyCapabilities_Software.fromJson(
+            json['software'] as Map<String, dynamic>),
+    implementation: json['implementation'] == null
+        ? null
+        : TerminologyCapabilities_Implementation.fromJson(
+            json['implementation'] as Map<String, dynamic>),
+    lockedDate: json['lockedDate'] as bool,
+    elementLockedDate: json['elementLockedDate'] == null
+        ? null
+        : Element.fromJson(json['elementLockedDate'] as Map<String, dynamic>),
+    codeSystem: (json['codeSystem'] as List)
+        ?.map((e) => e == null
+            ? null
+            : TerminologyCapabilities_CodeSystem.fromJson(
+                e as Map<String, dynamic>))
+        ?.toList(),
+    expansion: json['expansion'] == null
+        ? null
+        : TerminologyCapabilities_Expansion.fromJson(
+            json['expansion'] as Map<String, dynamic>),
+    codeSearch: json['codeSearch'] as String,
+    elementCodeSearch: json['elementCodeSearch'] == null
+        ? null
+        : Element.fromJson(json['elementCodeSearch'] as Map<String, dynamic>),
+    validateCode: json['validateCode'] == null
+        ? null
+        : TerminologyCapabilities_ValidateCode.fromJson(
+            json['validateCode'] as Map<String, dynamic>),
+    translation: json['translation'] == null
+        ? null
+        : TerminologyCapabilities_Translation.fromJson(
+            json['translation'] as Map<String, dynamic>),
+    closure: json['closure'] == null
+        ? null
+        : TerminologyCapabilities_Closure.fromJson(
+            json['closure'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$TerminologyCapabilitiesToJson(
+        TerminologyCapabilities instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'url': instance.url,
+      'elementUrl': instance.elementUrl?.toJson(),
+      'version': instance.version,
+      'elementVersion': instance.elementVersion?.toJson(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'title': instance.title,
+      'elementTitle': instance.elementTitle?.toJson(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'experimental': instance.experimental,
+      'elementExperimental': instance.elementExperimental?.toJson(),
+      'date': instance.date?.toIso8601String(),
+      'elementDate': instance.elementDate?.toJson(),
+      'publisher': instance.publisher,
+      'elementPublisher': instance.elementPublisher?.toJson(),
+      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
+      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
+      'purpose': instance.purpose,
+      'elementPurpose': instance.elementPurpose?.toJson(),
+      'copyright': instance.copyright,
+      'elementCopyright': instance.elementCopyright?.toJson(),
+      'kind': instance.kind,
+      'elementKind': instance.elementKind?.toJson(),
+      'software': instance.software?.toJson(),
+      'implementation': instance.implementation?.toJson(),
+      'lockedDate': instance.lockedDate,
+      'elementLockedDate': instance.elementLockedDate?.toJson(),
+      'codeSystem': instance.codeSystem?.map((e) => e?.toJson())?.toList(),
+      'expansion': instance.expansion?.toJson(),
+      'codeSearch': instance.codeSearch,
+      'elementCodeSearch': instance.elementCodeSearch?.toJson(),
+      'validateCode': instance.validateCode?.toJson(),
+      'translation': instance.translation?.toJson(),
+      'closure': instance.closure?.toJson(),
+    };
+
+TerminologyCapabilities_Software _$TerminologyCapabilities_SoftwareFromJson(
+    Map<String, dynamic> json) {
+  return TerminologyCapabilities_Software(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    name: json['name'] as String,
+    elementName: json['elementName'] == null
+        ? null
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
+    version: json['version'] as String,
+    elementVersion: json['elementVersion'] == null
+        ? null
+        : Element.fromJson(json['elementVersion'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$TerminologyCapabilities_SoftwareToJson(
+        TerminologyCapabilities_Software instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'version': instance.version,
+      'elementVersion': instance.elementVersion?.toJson(),
+    };
+
+TerminologyCapabilities_Implementation
+    _$TerminologyCapabilities_ImplementationFromJson(
+        Map<String, dynamic> json) {
+  return TerminologyCapabilities_Implementation(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    description: json['description'] as String,
+    elementDescription: json['elementDescription'] == null
+        ? null
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
+    url: json['url'] as String,
+    elementUrl: json['elementUrl'] == null
+        ? null
+        : Element.fromJson(json['elementUrl'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$TerminologyCapabilities_ImplementationToJson(
+        TerminologyCapabilities_Implementation instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'url': instance.url,
+      'elementUrl': instance.elementUrl?.toJson(),
+    };
+
+TerminologyCapabilities_CodeSystem _$TerminologyCapabilities_CodeSystemFromJson(
+    Map<String, dynamic> json) {
+  return TerminologyCapabilities_CodeSystem(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    uri: json['uri'] as String,
+    version: (json['version'] as List)
+        ?.map((e) => e == null
+            ? null
+            : TerminologyCapabilities_Version.fromJson(
+                e as Map<String, dynamic>))
+        ?.toList(),
+    subsumption: json['subsumption'] as bool,
+    elementSubsumption: json['elementSubsumption'] == null
+        ? null
+        : Element.fromJson(json['elementSubsumption'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$TerminologyCapabilities_CodeSystemToJson(
+        TerminologyCapabilities_CodeSystem instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'uri': instance.uri,
+      'version': instance.version?.map((e) => e?.toJson())?.toList(),
+      'subsumption': instance.subsumption,
+      'elementSubsumption': instance.elementSubsumption?.toJson(),
+    };
+
+TerminologyCapabilities_Version _$TerminologyCapabilities_VersionFromJson(
+    Map<String, dynamic> json) {
+  return TerminologyCapabilities_Version(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    code: json['code'] as String,
+    elementCode: json['elementCode'] == null
+        ? null
+        : Element.fromJson(json['elementCode'] as Map<String, dynamic>),
+    isDefault: json['isDefault'] as bool,
+    elementIsDefault: json['elementIsDefault'] == null
+        ? null
+        : Element.fromJson(json['elementIsDefault'] as Map<String, dynamic>),
+    compositional: json['compositional'] as bool,
+    elementCompositional: json['elementCompositional'] == null
+        ? null
+        : Element.fromJson(
+            json['elementCompositional'] as Map<String, dynamic>),
+    language: (json['language'] as List)?.map((e) => e as String)?.toList(),
+    elementLanguage: (json['elementLanguage'] as List)
+        ?.map((e) =>
+            e == null ? null : Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    filter: (json['filter'] as List)
+        ?.map((e) => e == null
+            ? null
+            : TerminologyCapabilities_Filter.fromJson(
+                e as Map<String, dynamic>))
+        ?.toList(),
+    property: (json['property'] as List)?.map((e) => e as String)?.toList(),
+    elementProperty: (json['elementProperty'] as List)
+        ?.map((e) =>
+            e == null ? null : Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$TerminologyCapabilities_VersionToJson(
+        TerminologyCapabilities_Version instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code,
+      'elementCode': instance.elementCode?.toJson(),
+      'isDefault': instance.isDefault,
+      'elementIsDefault': instance.elementIsDefault?.toJson(),
+      'compositional': instance.compositional,
+      'elementCompositional': instance.elementCompositional?.toJson(),
+      'language': instance.language,
+      'elementLanguage':
+          instance.elementLanguage?.map((e) => e?.toJson())?.toList(),
+      'filter': instance.filter?.map((e) => e?.toJson())?.toList(),
+      'property': instance.property,
+      'elementProperty':
+          instance.elementProperty?.map((e) => e?.toJson())?.toList(),
+    };
+
+TerminologyCapabilities_Filter _$TerminologyCapabilities_FilterFromJson(
+    Map<String, dynamic> json) {
+  return TerminologyCapabilities_Filter(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    code: json['code'] as String,
+    elementCode: json['elementCode'] == null
+        ? null
+        : Element.fromJson(json['elementCode'] as Map<String, dynamic>),
+    op: (json['op'] as List)?.map((e) => e as String)?.toList(),
+    elementOp: (json['elementOp'] as List)
+        ?.map((e) =>
+            e == null ? null : Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$TerminologyCapabilities_FilterToJson(
+        TerminologyCapabilities_Filter instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code,
+      'elementCode': instance.elementCode?.toJson(),
+      'op': instance.op,
+      'elementOp': instance.elementOp?.map((e) => e?.toJson())?.toList(),
+    };
+
+TerminologyCapabilities_Expansion _$TerminologyCapabilities_ExpansionFromJson(
+    Map<String, dynamic> json) {
+  return TerminologyCapabilities_Expansion(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    hierarchical: json['hierarchical'] as bool,
+    elementHierarchical: json['elementHierarchical'] == null
+        ? null
+        : Element.fromJson(json['elementHierarchical'] as Map<String, dynamic>),
+    paging: json['paging'] as bool,
+    elementPaging: json['elementPaging'] == null
+        ? null
+        : Element.fromJson(json['elementPaging'] as Map<String, dynamic>),
+    incomplete: json['incomplete'] as bool,
+    elementIncomplete: json['elementIncomplete'] == null
+        ? null
+        : Element.fromJson(json['elementIncomplete'] as Map<String, dynamic>),
+    parameter: (json['parameter'] as List)
+        ?.map((e) => e == null
+            ? null
+            : TerminologyCapabilities_Parameter.fromJson(
+                e as Map<String, dynamic>))
+        ?.toList(),
+    textFilter: json['textFilter'] as String,
+    elementTextFilter: json['elementTextFilter'] == null
+        ? null
+        : Element.fromJson(json['elementTextFilter'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$TerminologyCapabilities_ExpansionToJson(
+        TerminologyCapabilities_Expansion instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'hierarchical': instance.hierarchical,
+      'elementHierarchical': instance.elementHierarchical?.toJson(),
+      'paging': instance.paging,
+      'elementPaging': instance.elementPaging?.toJson(),
+      'incomplete': instance.incomplete,
+      'elementIncomplete': instance.elementIncomplete?.toJson(),
+      'parameter': instance.parameter?.map((e) => e?.toJson())?.toList(),
+      'textFilter': instance.textFilter,
+      'elementTextFilter': instance.elementTextFilter?.toJson(),
+    };
+
+TerminologyCapabilities_Parameter _$TerminologyCapabilities_ParameterFromJson(
+    Map<String, dynamic> json) {
+  return TerminologyCapabilities_Parameter(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    name: json['name'] as String,
+    elementName: json['elementName'] == null
+        ? null
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
+    documentation: json['documentation'] as String,
+    elementDocumentation: json['elementDocumentation'] == null
+        ? null
+        : Element.fromJson(
+            json['elementDocumentation'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$TerminologyCapabilities_ParameterToJson(
+        TerminologyCapabilities_Parameter instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'documentation': instance.documentation,
+      'elementDocumentation': instance.elementDocumentation?.toJson(),
+    };
+
+TerminologyCapabilities_ValidateCode
+    _$TerminologyCapabilities_ValidateCodeFromJson(Map<String, dynamic> json) {
+  return TerminologyCapabilities_ValidateCode(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    translations: json['translations'] as bool,
+    elementTranslations: json['elementTranslations'] == null
+        ? null
+        : Element.fromJson(json['elementTranslations'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$TerminologyCapabilities_ValidateCodeToJson(
+        TerminologyCapabilities_ValidateCode instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'translations': instance.translations,
+      'elementTranslations': instance.elementTranslations?.toJson(),
+    };
+
+TerminologyCapabilities_Translation
+    _$TerminologyCapabilities_TranslationFromJson(Map<String, dynamic> json) {
+  return TerminologyCapabilities_Translation(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    needsMap: json['needsMap'] as bool,
+    elementNeedsMap: json['elementNeedsMap'] == null
+        ? null
+        : Element.fromJson(json['elementNeedsMap'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$TerminologyCapabilities_TranslationToJson(
+        TerminologyCapabilities_Translation instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'needsMap': instance.needsMap,
+      'elementNeedsMap': instance.elementNeedsMap?.toJson(),
+    };
+
+TerminologyCapabilities_Closure _$TerminologyCapabilities_ClosureFromJson(
+    Map<String, dynamic> json) {
+  return TerminologyCapabilities_Closure(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    translation: json['translation'] as bool,
+    elementTranslation: json['elementTranslation'] == null
+        ? null
+        : Element.fromJson(json['elementTranslation'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$TerminologyCapabilities_ClosureToJson(
+        TerminologyCapabilities_Closure instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'translation': instance.translation,
+      'elementTranslation': instance.elementTranslation?.toJson(),
+    };

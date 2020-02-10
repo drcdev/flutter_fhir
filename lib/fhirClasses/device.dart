@@ -12,198 +12,54 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-part 'device.g.dart';
-
 @JsonSerializable(explicitToJson: true)
 class Device {
-
-  //  This is a Device resource
   final String resourceType= 'Device';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   String implicitRules;
-
-  //  Extensions for implicitRules
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   String language;
-
-  //  Extensions for language
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Unique instance identifiers assigned to a device by manufacturers
-  // other organizations or owners.
   List<Identifier> identifier;
-
-  //  The reference to the definition for the device.
   Reference definition;
-
-  //  Unique device identifier (UDI) assigned to device label or package. 
-  // Note that the Device may include multiple udiCarriers as it either may
-  // include just the udiCarrier for the jurisdiction it is sold, or for
-  // multiple jurisdictions it could have been sold.
   List<Device_UdiCarrier> udiCarrier;
-
-  //  Status of the Device availability.
   String status; // <code> enum: active/inactive/entered-in-error/unknown;
-
-  //  Extensions for status
   Element elementStatus;
-
-  //  Reason for the dtatus of the Device availability.
   List<CodeableConcept> statusReason;
-
-  //  The distinct identification string as required by regulation for a
-  // human cell, tissue, or cellular and tissue-based product.
   String distinctIdentifier;
-
-  //  Extensions for distinctIdentifier
   Element elementDistinctIdentifier;
-
-  //  A name of the manufacturer.
   String manufacturer;
-
-  //  Extensions for manufacturer
   Element elementManufacturer;
-
-  //  The date and time when the device was manufactured.
   DateTime manufactureDate;
-
-  //  Extensions for manufactureDate
   Element elementManufactureDate;
-
-  //  The date and time beyond which this device is no longer valid or
-  // should not be used (if applicable).
   DateTime expirationDate;
-
-  //  Extensions for expirationDate
   Element elementExpirationDate;
-
-  //  Lot number assigned by the manufacturer.
   String lotNumber;
-
-  //  Extensions for lotNumber
   Element elementLotNumber;
-
-  //  The serial number assigned by the organization when the device was
-  // manufactured.
   String serialNumber;
-
-  //  Extensions for serialNumber
   Element elementSerialNumber;
-
-  //  This represents the manufacturer's name of the device as provided by
-  // the device, from a UDI label, or by a person describing the Device. 
-  // This typically would be used when a person provides the name(s) or when
-  // the device represents one of the names available from DeviceDefinition.
   List<Device_DeviceName> deviceName;
-
-  //  The model number for the device.
   String modelNumber;
-
-  //  Extensions for modelNumber
   Element elementModelNumber;
-
-  //  The part number of the device.
   String partNumber;
-
-  //  Extensions for partNumber
   Element elementPartNumber;
-
-  //  The kind or type of device.
   CodeableConcept type;
-
-  //  The capabilities supported on a  device, the standards to which the
-  // device conforms for a particular purpose, and used for the
-  // communication.
   List<Device_Specialization> specialization;
-
-  //  The actual design of the device or software version running on the
-  // device.
   List<Device_Version> version;
-
-  //  The actual configuration settings of a device as it actually operates,
-  // e.g., regulation status, time properties.
   List<Device_Property> property;
-
-  //  Patient information, If the device is affixed to a person.
   Reference patient;
-
-  //  An organization that is responsible for the provision and ongoing
-  // maintenance of the device.
   Reference owner;
-
-  //  Contact details for an organization or a particular human that is
-  // responsible for the device.
   List<ContactPoint> contact;
-
-  //  The place where the device can be found.
   Reference location;
-
-  //  A network address on which the device may be contacted directly.
   String url;
-
-  //  Extensions for url
   Element elementUrl;
-
-  //  Descriptive information, usage information or implantation information
-  // that is not captured in an existing element.
   List<Annotation> note;
-
-  //  Provides additional safety characteristics about a medical device. 
-  // For example devices containing latex.
   List<CodeableConcept> safety;
-
-  //  The parent device.
   Reference parent;
 
 Device(
@@ -261,82 +117,20 @@ Device(
 
 @JsonSerializable(explicitToJson: true)
 class Device_UdiCarrier {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The device identifier (DI) is a mandatory, fixed portion of a UDI that
-  // identifies the labeler and the specific version or model of a device.
   String deviceIdentifier;
-
-  //  Extensions for deviceIdentifier
   Element elementDeviceIdentifier;
-
-  //  Organization that is charged with issuing UDIs for devices.  For
-  // example, the US FDA issuers include : 1) GS1: 
-  // http://hl7.org/fhir/NamingSystem/gs1-di,  2) HIBCC:
-  // http://hl7.org/fhir/NamingSystem/hibcc-dI,  3) ICCBBA for blood
-  // containers: http://hl7.org/fhir/NamingSystem/iccbba-blood-di,  4) ICCBA
-  // for other devices: http://hl7.org/fhir/NamingSystem/iccbba-other-di.
   String issuer;
-
-  //  Extensions for issuer
   Element elementIssuer;
-
-  //  The identity of the authoritative source for UDI generation within a 
-  // jurisdiction.  All UDIs are globally unique within a single namespace
-  // with the appropriate repository uri as the system.  For example,  UDIs
-  // of devices managed in the U.S. by the FDA, the value is 
-  // http://hl7.org/fhir/NamingSystem/fda-udi.
   String jurisdiction;
-
-  //  Extensions for jurisdiction
   Element elementJurisdiction;
-
-  //  The full UDI carrier of the Automatic Identification and Data Capture
-  // (AIDC) technology representation of the barcode string as printed on
-  // the packaging of the device - e.g., a barcode or RFID.   Because of
-  // limitations on character sets in XML and the need to round-trip JSON
-  // data through XML, AIDC Formats *SHALL* be base64 encoded.
   String carrierAIDC;
-
-  //  Extensions for carrierAIDC
   Element elementCarrierAIDC;
-
-  //  The full UDI carrier as the human readable form (HRF) representation
-  // of the barcode string as printed on the packaging of the device.
   String carrierHRF;
-
-  //  Extensions for carrierHRF
   Element elementCarrierHRF;
-
-  //  A coded entry to indicate how the data was entered.
   String entryType; // <code> enum: barcode/rfid/manual/card/self-reported/unknown;
-
-  //  Extensions for entryType
   Element elementEntryType;
 
 Device_UdiCarrier(
@@ -363,44 +157,12 @@ Device_UdiCarrier(
 
 @JsonSerializable(explicitToJson: true)
 class Device_DeviceName {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The name of the device.
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  The type of deviceName. UDILabelName | UserFriendlyName |
-  // PatientReportedName | ManufactureDeviceName | ModelName.
   String type; // <code> enum: udi-label-name/user-friendly-name/patient-reported-name/manufacturer-name/model-name/other;
-
-  //  Extensions for type
   Element elementType;
 
 Device_DeviceName(
@@ -419,40 +181,11 @@ Device_DeviceName(
 
 @JsonSerializable(explicitToJson: true)
 class Device_Specialization {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The standard that is used to operate and communicate.
   CodeableConcept systemType;
-
-  //  The version of the standard that is used to operate and communicate.
   String version;
-
-  //  Extensions for version
   Element elementVersion;
 
 Device_Specialization(
@@ -470,43 +203,12 @@ Device_Specialization(
 
 @JsonSerializable(explicitToJson: true)
 class Device_Version {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The type of the device version.
   CodeableConcept type;
-
-  //  A single component of the device version.
   Identifier component;
-
-  //  The version text.
   String value;
-
-  //  Extensions for value
   Element elementValue;
 
 Device_Version(
@@ -525,41 +227,11 @@ Device_Version(
 
 @JsonSerializable(explicitToJson: true)
 class Device_Property {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Code that specifies the property DeviceDefinitionPropetyCode
-  // (Extensible).
   CodeableConcept type;
-
-  //  Property value as a quantity.
   List<Quantity> valueQuantity;
-
-  //  Property value as a code, e.g., NTP4 (synced to NTP).
   List<CodeableConcept> valueCode;
 
 Device_Property(
@@ -575,3 +247,405 @@ Device_Property(
   Map<String, dynamic> toJson() => _$Device_PropertyToJson(this);
 }
 
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+Device _$DeviceFromJson(Map<String, dynamic> json) {
+  return Device(
+    id: json['id'] as String,
+    meta: json['meta'] == null
+        ? null
+        : Meta.fromJson(json['meta'] as Map<String, dynamic>),
+    implicitRules: json['implicitRules'] as String,
+    elementImplicitRules: json['elementImplicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['elementImplicitRules'] as Map<String, dynamic>),
+    language: json['language'] as String,
+    elementLanguage: json['elementLanguage'] == null
+        ? null
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
+    text: json['text'] == null
+        ? null
+        : Narrative.fromJson(json['text'] as Map<String, dynamic>),
+    contained: (json['contained'] as List)
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.toList(),
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    identifier: (json['identifier'] as List)
+        ?.map((e) =>
+            e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    definition: json['definition'] == null
+        ? null
+        : Reference.fromJson(json['definition'] as Map<String, dynamic>),
+    udiCarrier: (json['udiCarrier'] as List)
+        ?.map((e) => e == null
+            ? null
+            : Device_UdiCarrier.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    status: json['status'] as String,
+    elementStatus: json['elementStatus'] == null
+        ? null
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
+    statusReason: (json['statusReason'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    distinctIdentifier: json['distinctIdentifier'] as String,
+    elementDistinctIdentifier: json['elementDistinctIdentifier'] == null
+        ? null
+        : Element.fromJson(
+            json['elementDistinctIdentifier'] as Map<String, dynamic>),
+    manufacturer: json['manufacturer'] as String,
+    elementManufacturer: json['elementManufacturer'] == null
+        ? null
+        : Element.fromJson(json['elementManufacturer'] as Map<String, dynamic>),
+    manufactureDate: json['manufactureDate'] == null
+        ? null
+        : DateTime.parse(json['manufactureDate'] as String),
+    elementManufactureDate: json['elementManufactureDate'] == null
+        ? null
+        : Element.fromJson(
+            json['elementManufactureDate'] as Map<String, dynamic>),
+    expirationDate: json['expirationDate'] == null
+        ? null
+        : DateTime.parse(json['expirationDate'] as String),
+    elementExpirationDate: json['elementExpirationDate'] == null
+        ? null
+        : Element.fromJson(
+            json['elementExpirationDate'] as Map<String, dynamic>),
+    lotNumber: json['lotNumber'] as String,
+    elementLotNumber: json['elementLotNumber'] == null
+        ? null
+        : Element.fromJson(json['elementLotNumber'] as Map<String, dynamic>),
+    serialNumber: json['serialNumber'] as String,
+    elementSerialNumber: json['elementSerialNumber'] == null
+        ? null
+        : Element.fromJson(json['elementSerialNumber'] as Map<String, dynamic>),
+    deviceName: (json['deviceName'] as List)
+        ?.map((e) => e == null
+            ? null
+            : Device_DeviceName.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modelNumber: json['modelNumber'] as String,
+    elementModelNumber: json['elementModelNumber'] == null
+        ? null
+        : Element.fromJson(json['elementModelNumber'] as Map<String, dynamic>),
+    partNumber: json['partNumber'] as String,
+    elementPartNumber: json['elementPartNumber'] == null
+        ? null
+        : Element.fromJson(json['elementPartNumber'] as Map<String, dynamic>),
+    type: json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
+    specialization: (json['specialization'] as List)
+        ?.map((e) => e == null
+            ? null
+            : Device_Specialization.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    version: (json['version'] as List)
+        ?.map((e) => e == null
+            ? null
+            : Device_Version.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    property: (json['property'] as List)
+        ?.map((e) => e == null
+            ? null
+            : Device_Property.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    patient: json['patient'] == null
+        ? null
+        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
+    owner: json['owner'] == null
+        ? null
+        : Reference.fromJson(json['owner'] as Map<String, dynamic>),
+    contact: (json['contact'] as List)
+        ?.map((e) =>
+            e == null ? null : ContactPoint.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    location: json['location'] == null
+        ? null
+        : Reference.fromJson(json['location'] as Map<String, dynamic>),
+    url: json['url'] as String,
+    elementUrl: json['elementUrl'] == null
+        ? null
+        : Element.fromJson(json['elementUrl'] as Map<String, dynamic>),
+    note: (json['note'] as List)
+        ?.map((e) =>
+            e == null ? null : Annotation.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    safety: (json['safety'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    parent: json['parent'] == null
+        ? null
+        : Reference.fromJson(json['parent'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$DeviceToJson(Device instance) => <String, dynamic>{
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'definition': instance.definition?.toJson(),
+      'udiCarrier': instance.udiCarrier?.map((e) => e?.toJson())?.toList(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'statusReason': instance.statusReason?.map((e) => e?.toJson())?.toList(),
+      'distinctIdentifier': instance.distinctIdentifier,
+      'elementDistinctIdentifier': instance.elementDistinctIdentifier?.toJson(),
+      'manufacturer': instance.manufacturer,
+      'elementManufacturer': instance.elementManufacturer?.toJson(),
+      'manufactureDate': instance.manufactureDate?.toIso8601String(),
+      'elementManufactureDate': instance.elementManufactureDate?.toJson(),
+      'expirationDate': instance.expirationDate?.toIso8601String(),
+      'elementExpirationDate': instance.elementExpirationDate?.toJson(),
+      'lotNumber': instance.lotNumber,
+      'elementLotNumber': instance.elementLotNumber?.toJson(),
+      'serialNumber': instance.serialNumber,
+      'elementSerialNumber': instance.elementSerialNumber?.toJson(),
+      'deviceName': instance.deviceName?.map((e) => e?.toJson())?.toList(),
+      'modelNumber': instance.modelNumber,
+      'elementModelNumber': instance.elementModelNumber?.toJson(),
+      'partNumber': instance.partNumber,
+      'elementPartNumber': instance.elementPartNumber?.toJson(),
+      'type': instance.type?.toJson(),
+      'specialization':
+          instance.specialization?.map((e) => e?.toJson())?.toList(),
+      'version': instance.version?.map((e) => e?.toJson())?.toList(),
+      'property': instance.property?.map((e) => e?.toJson())?.toList(),
+      'patient': instance.patient?.toJson(),
+      'owner': instance.owner?.toJson(),
+      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
+      'location': instance.location?.toJson(),
+      'url': instance.url,
+      'elementUrl': instance.elementUrl?.toJson(),
+      'note': instance.note?.map((e) => e?.toJson())?.toList(),
+      'safety': instance.safety?.map((e) => e?.toJson())?.toList(),
+      'parent': instance.parent?.toJson(),
+    };
+
+Device_UdiCarrier _$Device_UdiCarrierFromJson(Map<String, dynamic> json) {
+  return Device_UdiCarrier(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    deviceIdentifier: json['deviceIdentifier'] as String,
+    elementDeviceIdentifier: json['elementDeviceIdentifier'] == null
+        ? null
+        : Element.fromJson(
+            json['elementDeviceIdentifier'] as Map<String, dynamic>),
+    issuer: json['issuer'] as String,
+    elementIssuer: json['elementIssuer'] == null
+        ? null
+        : Element.fromJson(json['elementIssuer'] as Map<String, dynamic>),
+    jurisdiction: json['jurisdiction'] as String,
+    elementJurisdiction: json['elementJurisdiction'] == null
+        ? null
+        : Element.fromJson(json['elementJurisdiction'] as Map<String, dynamic>),
+    carrierAIDC: json['carrierAIDC'] as String,
+    elementCarrierAIDC: json['elementCarrierAIDC'] == null
+        ? null
+        : Element.fromJson(json['elementCarrierAIDC'] as Map<String, dynamic>),
+    carrierHRF: json['carrierHRF'] as String,
+    elementCarrierHRF: json['elementCarrierHRF'] == null
+        ? null
+        : Element.fromJson(json['elementCarrierHRF'] as Map<String, dynamic>),
+    entryType: json['entryType'] as String,
+    elementEntryType: json['elementEntryType'] == null
+        ? null
+        : Element.fromJson(json['elementEntryType'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$Device_UdiCarrierToJson(Device_UdiCarrier instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'deviceIdentifier': instance.deviceIdentifier,
+      'elementDeviceIdentifier': instance.elementDeviceIdentifier?.toJson(),
+      'issuer': instance.issuer,
+      'elementIssuer': instance.elementIssuer?.toJson(),
+      'jurisdiction': instance.jurisdiction,
+      'elementJurisdiction': instance.elementJurisdiction?.toJson(),
+      'carrierAIDC': instance.carrierAIDC,
+      'elementCarrierAIDC': instance.elementCarrierAIDC?.toJson(),
+      'carrierHRF': instance.carrierHRF,
+      'elementCarrierHRF': instance.elementCarrierHRF?.toJson(),
+      'entryType': instance.entryType,
+      'elementEntryType': instance.elementEntryType?.toJson(),
+    };
+
+Device_DeviceName _$Device_DeviceNameFromJson(Map<String, dynamic> json) {
+  return Device_DeviceName(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    name: json['name'] as String,
+    elementName: json['elementName'] == null
+        ? null
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
+    type: json['type'] as String,
+    elementType: json['elementType'] == null
+        ? null
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$Device_DeviceNameToJson(Device_DeviceName instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+    };
+
+Device_Specialization _$Device_SpecializationFromJson(
+    Map<String, dynamic> json) {
+  return Device_Specialization(
+    json['systemType'] == null
+        ? null
+        : CodeableConcept.fromJson(json['systemType'] as Map<String, dynamic>),
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    version: json['version'] as String,
+    elementVersion: json['elementVersion'] == null
+        ? null
+        : Element.fromJson(json['elementVersion'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$Device_SpecializationToJson(
+        Device_Specialization instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'systemType': instance.systemType?.toJson(),
+      'version': instance.version,
+      'elementVersion': instance.elementVersion?.toJson(),
+    };
+
+Device_Version _$Device_VersionFromJson(Map<String, dynamic> json) {
+  return Device_Version(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    type: json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
+    component: json['component'] == null
+        ? null
+        : Identifier.fromJson(json['component'] as Map<String, dynamic>),
+    value: json['value'] as String,
+    elementValue: json['elementValue'] == null
+        ? null
+        : Element.fromJson(json['elementValue'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$Device_VersionToJson(Device_Version instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'component': instance.component?.toJson(),
+      'value': instance.value,
+      'elementValue': instance.elementValue?.toJson(),
+    };
+
+Device_Property _$Device_PropertyFromJson(Map<String, dynamic> json) {
+  return Device_Property(
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    valueQuantity: (json['valueQuantity'] as List)
+        ?.map((e) =>
+            e == null ? null : Quantity.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    valueCode: (json['valueCode'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$Device_PropertyToJson(Device_Property instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'valueQuantity':
+          instance.valueQuantity?.map((e) => e?.toJson())?.toList(),
+      'valueCode': instance.valueCode?.map((e) => e?.toJson())?.toList(),
+    };

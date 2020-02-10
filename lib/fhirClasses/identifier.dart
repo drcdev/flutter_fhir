@@ -6,51 +6,18 @@ import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-part 'identifier.g.dart';
-
 @JsonSerializable(explicitToJson: true)
 class Identifier {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  The purpose of this identifier.
   String use; // <code> enum: usual/official/temp/secondary/old;
-
-  //  Extensions for use
   Element elementUse;
-
-  //  A coded type for the identifier that can be used to determine which
-  // identifier to use for a specific purpose.
   CodeableConcept type;
-
-  //  Establishes the namespace for the value - that is, a URL that
-  // describes a set values that are unique.
   String system;
-
-  //  Extensions for system
   Element elementSystem;
-
-  //  The portion of the identifier typically relevant to the user and which
-  // is unique within the context of the system.
   String value;
-
-  //  Extensions for value
   Element elementValue;
-
-  //  Time period during which identifier is/was valid for use.
   Period period;
-
-  //  Organization that issued/manages the identifier.
   Reference assigner;
 
 Identifier(
@@ -71,3 +38,54 @@ Identifier(
   Map<String, dynamic> toJson() => _$IdentifierToJson(this);
 }
 
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+Identifier _$IdentifierFromJson(Map<String, dynamic> json) {
+  return Identifier(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    use: json['use'] as String,
+    elementUse: json['elementUse'] == null
+        ? null
+        : Element.fromJson(json['elementUse'] as Map<String, dynamic>),
+    type: json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
+    system: json['system'] as String,
+    elementSystem: json['elementSystem'] == null
+        ? null
+        : Element.fromJson(json['elementSystem'] as Map<String, dynamic>),
+    value: json['value'] as String,
+    elementValue: json['elementValue'] == null
+        ? null
+        : Element.fromJson(json['elementValue'] as Map<String, dynamic>),
+    period: json['period'] == null
+        ? null
+        : Period.fromJson(json['period'] as Map<String, dynamic>),
+    assigner: json['assigner'] == null
+        ? null
+        : Reference.fromJson(json['assigner'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$IdentifierToJson(Identifier instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'use': instance.use,
+      'elementUse': instance.elementUse?.toJson(),
+      'type': instance.type?.toJson(),
+      'system': instance.system,
+      'elementSystem': instance.elementSystem?.toJson(),
+      'value': instance.value,
+      'elementValue': instance.elementValue?.toJson(),
+      'period': instance.period?.toJson(),
+      'assigner': instance.assigner?.toJson(),
+    };

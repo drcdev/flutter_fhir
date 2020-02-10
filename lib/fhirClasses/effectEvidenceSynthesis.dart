@@ -14,256 +14,62 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-part 'effectEvidenceSynthesis.g.dart';
-
 @JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis {
-
-  //  This is a EffectEvidenceSynthesis resource
   final String resourceType= 'EffectEvidenceSynthesis';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   String implicitRules;
-
-  //  Extensions for implicitRules
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   String language;
-
-  //  Extensions for language
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  An absolute URI that is used to identify this effect evidence
-  // synthesis when it is referenced in a specification, model, design or an
-  // instance; also called its canonical identifier. This SHOULD be globally
-  // unique and SHOULD be a literal address at which at which an
-  // authoritative instance of this effect evidence synthesis is (or will
-  // be) published. This URL can be the target of a canonical reference. It
-  // SHALL remain the same when the effect evidence synthesis is stored on
-  // different servers.
   String url;
-
-  //  Extensions for url
   Element elementUrl;
-
-  //  A formal identifier that is used to identify this effect evidence
-  // synthesis when it is represented in other formats, or referenced in a
-  // specification, model, design or an instance.
   List<Identifier> identifier;
-
-  //  The identifier that is used to identify this version of the effect
-  // evidence synthesis when it is referenced in a specification, model,
-  // design or instance. This is an arbitrary value managed by the effect
-  // evidence synthesis author and is not expected to be globally unique.
-  // For example, it might be a timestamp (e.g. yyyymmdd) if a managed
-  // version is not available. There is also no expectation that versions
-  // can be placed in a lexicographical sequence.
   String version;
-
-  //  Extensions for version
   Element elementVersion;
-
-  //  A natural language name identifying the effect evidence synthesis.
-  // This name should be usable as an identifier for the module by machine
-  // processing applications such as code generation.
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  A short, descriptive, user-friendly title for the effect evidence
-  // synthesis.
   String title;
-
-  //  Extensions for title
   Element elementTitle;
-
-  //  The status of this effect evidence synthesis. Enables tracking the
-  // life-cycle of the content.
   String status; // <code> enum: draft/active/retired/unknown;
-
-  //  Extensions for status
   Element elementStatus;
-
-  //  The date  (and optionally time) when the effect evidence synthesis was
-  // published. The date must change when the business version changes and
-  // it must change if the status code changes. In addition, it should
-  // change when the substantive content of the effect evidence synthesis
-  // changes.
   DateTime date;
-
-  //  Extensions for date
   Element elementDate;
-
-  //  The name of the organization or individual that published the effect
-  // evidence synthesis.
   String publisher;
-
-  //  Extensions for publisher
   Element elementPublisher;
-
-  //  Contact details to assist a user in finding and communicating with the
-  // publisher.
   List<ContactDetail> contact;
-
-  //  A free text natural language description of the effect evidence
-  // synthesis from a consumer's perspective.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  A human-readable string to clarify or explain concepts about the
-  // resource.
   List<Annotation> note;
-
-  //  The content was developed with a focus and intent of supporting the
-  // contexts that are listed. These contexts may be general categories
-  // (gender, age, ...) or may be references to specific programs (insurance
-  // plans, studies, ...) and may be used to assist with indexing and
-  // searching for appropriate effect evidence synthesis instances.
   List<UsageContext> useContext;
-
-  //  A legal or geographic region in which the effect evidence synthesis is
-  // intended to be used.
   List<CodeableConcept> jurisdiction;
-
-  //  A copyright statement relating to the effect evidence synthesis and/or
-  // its contents. Copyright statements are generally legal restrictions on
-  // the use and publishing of the effect evidence synthesis.
   String copyright;
-
-  //  Extensions for copyright
   Element elementCopyright;
-
-  //  The date on which the resource content was approved by the publisher.
-  // Approval happens once when the content is officially approved for
-  // usage.
   String approvalDate;
-
-  //  Extensions for approvalDate
   Element elementApprovalDate;
-
-  //  The date on which the resource content was last reviewed. Review
-  // happens periodically after approval but does not change the original
-  // approval date.
   String lastReviewDate;
-
-  //  Extensions for lastReviewDate
   Element elementLastReviewDate;
-
-  //  The period during which the effect evidence synthesis content was or
-  // is planned to be in active use.
   Period effectivePeriod;
-
-  //  Descriptive topics related to the content of the
-  // EffectEvidenceSynthesis. Topics provide a high-level categorization
-  // grouping types of EffectEvidenceSynthesiss that can be useful for
-  // filtering and searching.
   List<CodeableConcept> topic;
-
-  //  An individiual or organization primarily involved in the creation and
-  // maintenance of the content.
   List<ContactDetail> author;
-
-  //  An individual or organization primarily responsible for internal
-  // coherence of the content.
   List<ContactDetail> editor;
-
-  //  An individual or organization primarily responsible for review of some
-  // aspect of the content.
   List<ContactDetail> reviewer;
-
-  //  An individual or organization responsible for officially endorsing the
-  // content for use in some setting.
   List<ContactDetail> endorser;
-
-  //  Related artifacts such as additional documentation, justification, or
-  // bibliographic references.
   List<RelatedArtifact> relatedArtifact;
-
-  //  Type of synthesis eg meta-analysis.
   CodeableConcept synthesisType;
-
-  //  Type of study eg randomized trial.
   CodeableConcept studyType;
-
-  //  A reference to a EvidenceVariable resource that defines the population
-  // for the research.
   Reference population;
-
-  //  A reference to a EvidenceVariable resource that defines the exposure
-  // for the research.
   Reference exposure;
-
-  //  A reference to a EvidenceVariable resource that defines the comparison
-  // exposure for the research.
   Reference exposureAlternative;
-
-  //  A reference to a EvidenceVariable resomece that defines the outcome
-  // for the research.
   Reference outcome;
-
-  //  A description of the size of the sample involved in the synthesis.
   EffectEvidenceSynthesis_SampleSize sampleSize;
-
-  //  A description of the results for each exposure considered in the
-  // effect estimate.
   List<EffectEvidenceSynthesis_ResultsByExposure> resultsByExposure;
-
-  //  The estimated effect of the exposure variant.
   List<EffectEvidenceSynthesis_EffectEstimate> effectEstimate;
-
-  //  A description of the certainty of the effect estimate.
   List<EffectEvidenceSynthesis_Certainty> certainty;
 
 EffectEvidenceSynthesis(
@@ -329,49 +135,14 @@ EffectEvidenceSynthesis(
 
 @JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_SampleSize {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Human-readable summary of sample size.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  Number of studies included in this evidence synthesis.
   int numberOfStudies;
-
-  //  Extensions for numberOfStudies
   Element elementNumberOfStudies;
-
-  //  Number of participants included in this evidence synthesis.
   int numberOfParticipants;
-
-  //  Extensions for numberOfParticipants
   Element elementNumberOfParticipants;
 
 EffectEvidenceSynthesis_SampleSize(
@@ -392,50 +163,14 @@ EffectEvidenceSynthesis_SampleSize(
 
 @JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_ResultsByExposure {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Human-readable summary of results by exposure state.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  Whether these results are for the exposure state or alternative
-  // exposure state.
   String exposureState; // <code> enum: exposure/exposure-alternative;
-
-  //  Extensions for exposureState
   Element elementExposureState;
-
-  //  Used to define variant exposure states such as low-risk state.
   CodeableConcept variantState;
-
-  //  Reference to a RiskEvidenceSynthesis resource.
   Reference riskEvidenceSynthesis;
 
 EffectEvidenceSynthesis_ResultsByExposure(
@@ -456,55 +191,16 @@ EffectEvidenceSynthesis_ResultsByExposure(
 
 @JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_EffectEstimate {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Human-readable summary of effect estimate.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  Examples include relative risk and mean difference.
   CodeableConcept type;
-
-  //  Used to define variant exposure states such as low-risk state.
   CodeableConcept variantState;
-
-  //  The point estimate of the effect estimate.
   double value;
-
-  //  Extensions for value
   Element elementValue;
-
-  //  Specifies the UCUM unit for the outcome.
   CodeableConcept unitOfMeasure;
-
-  //  A description of the precision of the estimate for the effect.
   List<EffectEvidenceSynthesis_PrecisionEstimate> precisionEstimate;
 
 EffectEvidenceSynthesis_EffectEstimate(
@@ -527,52 +223,15 @@ EffectEvidenceSynthesis_EffectEstimate(
 
 @JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_PrecisionEstimate {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Examples include confidence interval and interquartile range.
   CodeableConcept type;
-
-  //  Use 95 for a 95% confidence interval.
   double level;
-
-  //  Extensions for level
   Element elementLevel;
-
-  //  Lower bound of confidence interval.
   double from;
-
-  //  Extensions for from
   Element elementFrom;
-
-  //  Upper bound of confidence interval.
   double to;
-
-  //  Extensions for to
   Element elementTo;
 
 EffectEvidenceSynthesis_PrecisionEstimate(
@@ -594,41 +253,11 @@ EffectEvidenceSynthesis_PrecisionEstimate(
 
 @JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_Certainty {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A rating of the certainty of the effect estimate.
   List<CodeableConcept> rating;
-
-  //  A human-readable string to clarify or explain concepts about the
-  // resource.
   List<Annotation> note;
-
-  //  A description of a component of the overall certainty.
   List<EffectEvidenceSynthesis_CertaintySubcomponent> certaintySubcomponent;
 
 EffectEvidenceSynthesis_Certainty(
@@ -646,41 +275,11 @@ EffectEvidenceSynthesis_Certainty(
 
 @JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_CertaintySubcomponent {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Type of subcomponent of certainty rating.
   CodeableConcept type;
-
-  //  A rating of a subcomponent of rating certainty.
   List<CodeableConcept> rating;
-
-  //  A human-readable string to clarify or explain concepts about the
-  // resource.
   List<Annotation> note;
 
 EffectEvidenceSynthesis_CertaintySubcomponent(
@@ -696,3 +295,529 @@ EffectEvidenceSynthesis_CertaintySubcomponent(
   Map<String, dynamic> toJson() => _$EffectEvidenceSynthesis_CertaintySubcomponentToJson(this);
 }
 
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+EffectEvidenceSynthesis _$EffectEvidenceSynthesisFromJson(
+    Map<String, dynamic> json) {
+  return EffectEvidenceSynthesis(
+    json['population'] == null
+        ? null
+        : Reference.fromJson(json['population'] as Map<String, dynamic>),
+    json['exposure'] == null
+        ? null
+        : Reference.fromJson(json['exposure'] as Map<String, dynamic>),
+    json['exposureAlternative'] == null
+        ? null
+        : Reference.fromJson(
+            json['exposureAlternative'] as Map<String, dynamic>),
+    json['outcome'] == null
+        ? null
+        : Reference.fromJson(json['outcome'] as Map<String, dynamic>),
+    id: json['id'] as String,
+    meta: json['meta'] == null
+        ? null
+        : Meta.fromJson(json['meta'] as Map<String, dynamic>),
+    implicitRules: json['implicitRules'] as String,
+    elementImplicitRules: json['elementImplicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['elementImplicitRules'] as Map<String, dynamic>),
+    language: json['language'] as String,
+    elementLanguage: json['elementLanguage'] == null
+        ? null
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
+    text: json['text'] == null
+        ? null
+        : Narrative.fromJson(json['text'] as Map<String, dynamic>),
+    contained: (json['contained'] as List)
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.toList(),
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    url: json['url'] as String,
+    elementUrl: json['elementUrl'] == null
+        ? null
+        : Element.fromJson(json['elementUrl'] as Map<String, dynamic>),
+    identifier: (json['identifier'] as List)
+        ?.map((e) =>
+            e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    version: json['version'] as String,
+    elementVersion: json['elementVersion'] == null
+        ? null
+        : Element.fromJson(json['elementVersion'] as Map<String, dynamic>),
+    name: json['name'] as String,
+    elementName: json['elementName'] == null
+        ? null
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
+    title: json['title'] as String,
+    elementTitle: json['elementTitle'] == null
+        ? null
+        : Element.fromJson(json['elementTitle'] as Map<String, dynamic>),
+    status: json['status'] as String,
+    elementStatus: json['elementStatus'] == null
+        ? null
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
+    date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
+    elementDate: json['elementDate'] == null
+        ? null
+        : Element.fromJson(json['elementDate'] as Map<String, dynamic>),
+    publisher: json['publisher'] as String,
+    elementPublisher: json['elementPublisher'] == null
+        ? null
+        : Element.fromJson(json['elementPublisher'] as Map<String, dynamic>),
+    contact: (json['contact'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ContactDetail.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    description: json['description'] as String,
+    elementDescription: json['elementDescription'] == null
+        ? null
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
+    note: (json['note'] as List)
+        ?.map((e) =>
+            e == null ? null : Annotation.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    useContext: (json['useContext'] as List)
+        ?.map((e) =>
+            e == null ? null : UsageContext.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    jurisdiction: (json['jurisdiction'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    copyright: json['copyright'] as String,
+    elementCopyright: json['elementCopyright'] == null
+        ? null
+        : Element.fromJson(json['elementCopyright'] as Map<String, dynamic>),
+    approvalDate: json['approvalDate'] as String,
+    elementApprovalDate: json['elementApprovalDate'] == null
+        ? null
+        : Element.fromJson(json['elementApprovalDate'] as Map<String, dynamic>),
+    lastReviewDate: json['lastReviewDate'] as String,
+    elementLastReviewDate: json['elementLastReviewDate'] == null
+        ? null
+        : Element.fromJson(
+            json['elementLastReviewDate'] as Map<String, dynamic>),
+    effectivePeriod: json['effectivePeriod'] == null
+        ? null
+        : Period.fromJson(json['effectivePeriod'] as Map<String, dynamic>),
+    topic: (json['topic'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    author: (json['author'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ContactDetail.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    editor: (json['editor'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ContactDetail.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    reviewer: (json['reviewer'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ContactDetail.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    endorser: (json['endorser'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ContactDetail.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    relatedArtifact: (json['relatedArtifact'] as List)
+        ?.map((e) => e == null
+            ? null
+            : RelatedArtifact.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    synthesisType: json['synthesisType'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['synthesisType'] as Map<String, dynamic>),
+    studyType: json['studyType'] == null
+        ? null
+        : CodeableConcept.fromJson(json['studyType'] as Map<String, dynamic>),
+    sampleSize: json['sampleSize'] == null
+        ? null
+        : EffectEvidenceSynthesis_SampleSize.fromJson(
+            json['sampleSize'] as Map<String, dynamic>),
+    resultsByExposure: (json['resultsByExposure'] as List)
+        ?.map((e) => e == null
+            ? null
+            : EffectEvidenceSynthesis_ResultsByExposure.fromJson(
+                e as Map<String, dynamic>))
+        ?.toList(),
+    effectEstimate: (json['effectEstimate'] as List)
+        ?.map((e) => e == null
+            ? null
+            : EffectEvidenceSynthesis_EffectEstimate.fromJson(
+                e as Map<String, dynamic>))
+        ?.toList(),
+    certainty: (json['certainty'] as List)
+        ?.map((e) => e == null
+            ? null
+            : EffectEvidenceSynthesis_Certainty.fromJson(
+                e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$EffectEvidenceSynthesisToJson(
+        EffectEvidenceSynthesis instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'url': instance.url,
+      'elementUrl': instance.elementUrl?.toJson(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'version': instance.version,
+      'elementVersion': instance.elementVersion?.toJson(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'title': instance.title,
+      'elementTitle': instance.elementTitle?.toJson(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'date': instance.date?.toIso8601String(),
+      'elementDate': instance.elementDate?.toJson(),
+      'publisher': instance.publisher,
+      'elementPublisher': instance.elementPublisher?.toJson(),
+      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'note': instance.note?.map((e) => e?.toJson())?.toList(),
+      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
+      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
+      'copyright': instance.copyright,
+      'elementCopyright': instance.elementCopyright?.toJson(),
+      'approvalDate': instance.approvalDate,
+      'elementApprovalDate': instance.elementApprovalDate?.toJson(),
+      'lastReviewDate': instance.lastReviewDate,
+      'elementLastReviewDate': instance.elementLastReviewDate?.toJson(),
+      'effectivePeriod': instance.effectivePeriod?.toJson(),
+      'topic': instance.topic?.map((e) => e?.toJson())?.toList(),
+      'author': instance.author?.map((e) => e?.toJson())?.toList(),
+      'editor': instance.editor?.map((e) => e?.toJson())?.toList(),
+      'reviewer': instance.reviewer?.map((e) => e?.toJson())?.toList(),
+      'endorser': instance.endorser?.map((e) => e?.toJson())?.toList(),
+      'relatedArtifact':
+          instance.relatedArtifact?.map((e) => e?.toJson())?.toList(),
+      'synthesisType': instance.synthesisType?.toJson(),
+      'studyType': instance.studyType?.toJson(),
+      'population': instance.population?.toJson(),
+      'exposure': instance.exposure?.toJson(),
+      'exposureAlternative': instance.exposureAlternative?.toJson(),
+      'outcome': instance.outcome?.toJson(),
+      'sampleSize': instance.sampleSize?.toJson(),
+      'resultsByExposure':
+          instance.resultsByExposure?.map((e) => e?.toJson())?.toList(),
+      'effectEstimate':
+          instance.effectEstimate?.map((e) => e?.toJson())?.toList(),
+      'certainty': instance.certainty?.map((e) => e?.toJson())?.toList(),
+    };
+
+EffectEvidenceSynthesis_SampleSize _$EffectEvidenceSynthesis_SampleSizeFromJson(
+    Map<String, dynamic> json) {
+  return EffectEvidenceSynthesis_SampleSize(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    description: json['description'] as String,
+    elementDescription: json['elementDescription'] == null
+        ? null
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
+    numberOfStudies: json['numberOfStudies'] as int,
+    elementNumberOfStudies: json['elementNumberOfStudies'] == null
+        ? null
+        : Element.fromJson(
+            json['elementNumberOfStudies'] as Map<String, dynamic>),
+    numberOfParticipants: json['numberOfParticipants'] as int,
+    elementNumberOfParticipants: json['elementNumberOfParticipants'] == null
+        ? null
+        : Element.fromJson(
+            json['elementNumberOfParticipants'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$EffectEvidenceSynthesis_SampleSizeToJson(
+        EffectEvidenceSynthesis_SampleSize instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'numberOfStudies': instance.numberOfStudies,
+      'elementNumberOfStudies': instance.elementNumberOfStudies?.toJson(),
+      'numberOfParticipants': instance.numberOfParticipants,
+      'elementNumberOfParticipants':
+          instance.elementNumberOfParticipants?.toJson(),
+    };
+
+EffectEvidenceSynthesis_ResultsByExposure
+    _$EffectEvidenceSynthesis_ResultsByExposureFromJson(
+        Map<String, dynamic> json) {
+  return EffectEvidenceSynthesis_ResultsByExposure(
+    json['riskEvidenceSynthesis'] == null
+        ? null
+        : Reference.fromJson(
+            json['riskEvidenceSynthesis'] as Map<String, dynamic>),
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    description: json['description'] as String,
+    elementDescription: json['elementDescription'] == null
+        ? null
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
+    exposureState: json['exposureState'] as String,
+    elementExposureState: json['elementExposureState'] == null
+        ? null
+        : Element.fromJson(
+            json['elementExposureState'] as Map<String, dynamic>),
+    variantState: json['variantState'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['variantState'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$EffectEvidenceSynthesis_ResultsByExposureToJson(
+        EffectEvidenceSynthesis_ResultsByExposure instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'exposureState': instance.exposureState,
+      'elementExposureState': instance.elementExposureState?.toJson(),
+      'variantState': instance.variantState?.toJson(),
+      'riskEvidenceSynthesis': instance.riskEvidenceSynthesis?.toJson(),
+    };
+
+EffectEvidenceSynthesis_EffectEstimate
+    _$EffectEvidenceSynthesis_EffectEstimateFromJson(
+        Map<String, dynamic> json) {
+  return EffectEvidenceSynthesis_EffectEstimate(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    description: json['description'] as String,
+    elementDescription: json['elementDescription'] == null
+        ? null
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
+    type: json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
+    variantState: json['variantState'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['variantState'] as Map<String, dynamic>),
+    value: (json['value'] as num)?.toDouble(),
+    elementValue: json['elementValue'] == null
+        ? null
+        : Element.fromJson(json['elementValue'] as Map<String, dynamic>),
+    unitOfMeasure: json['unitOfMeasure'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['unitOfMeasure'] as Map<String, dynamic>),
+    precisionEstimate: (json['precisionEstimate'] as List)
+        ?.map((e) => e == null
+            ? null
+            : EffectEvidenceSynthesis_PrecisionEstimate.fromJson(
+                e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$EffectEvidenceSynthesis_EffectEstimateToJson(
+        EffectEvidenceSynthesis_EffectEstimate instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'type': instance.type?.toJson(),
+      'variantState': instance.variantState?.toJson(),
+      'value': instance.value,
+      'elementValue': instance.elementValue?.toJson(),
+      'unitOfMeasure': instance.unitOfMeasure?.toJson(),
+      'precisionEstimate':
+          instance.precisionEstimate?.map((e) => e?.toJson())?.toList(),
+    };
+
+EffectEvidenceSynthesis_PrecisionEstimate
+    _$EffectEvidenceSynthesis_PrecisionEstimateFromJson(
+        Map<String, dynamic> json) {
+  return EffectEvidenceSynthesis_PrecisionEstimate(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    type: json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
+    level: (json['level'] as num)?.toDouble(),
+    elementLevel: json['elementLevel'] == null
+        ? null
+        : Element.fromJson(json['elementLevel'] as Map<String, dynamic>),
+    from: (json['from'] as num)?.toDouble(),
+    elementFrom: json['elementFrom'] == null
+        ? null
+        : Element.fromJson(json['elementFrom'] as Map<String, dynamic>),
+    to: (json['to'] as num)?.toDouble(),
+    elementTo: json['elementTo'] == null
+        ? null
+        : Element.fromJson(json['elementTo'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$EffectEvidenceSynthesis_PrecisionEstimateToJson(
+        EffectEvidenceSynthesis_PrecisionEstimate instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'level': instance.level,
+      'elementLevel': instance.elementLevel?.toJson(),
+      'from': instance.from,
+      'elementFrom': instance.elementFrom?.toJson(),
+      'to': instance.to,
+      'elementTo': instance.elementTo?.toJson(),
+    };
+
+EffectEvidenceSynthesis_Certainty _$EffectEvidenceSynthesis_CertaintyFromJson(
+    Map<String, dynamic> json) {
+  return EffectEvidenceSynthesis_Certainty(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    rating: (json['rating'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    note: (json['note'] as List)
+        ?.map((e) =>
+            e == null ? null : Annotation.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    certaintySubcomponent: (json['certaintySubcomponent'] as List)
+        ?.map((e) => e == null
+            ? null
+            : EffectEvidenceSynthesis_CertaintySubcomponent.fromJson(
+                e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$EffectEvidenceSynthesis_CertaintyToJson(
+        EffectEvidenceSynthesis_Certainty instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'rating': instance.rating?.map((e) => e?.toJson())?.toList(),
+      'note': instance.note?.map((e) => e?.toJson())?.toList(),
+      'certaintySubcomponent':
+          instance.certaintySubcomponent?.map((e) => e?.toJson())?.toList(),
+    };
+
+EffectEvidenceSynthesis_CertaintySubcomponent
+    _$EffectEvidenceSynthesis_CertaintySubcomponentFromJson(
+        Map<String, dynamic> json) {
+  return EffectEvidenceSynthesis_CertaintySubcomponent(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    type: json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
+    rating: (json['rating'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    note: (json['note'] as List)
+        ?.map((e) =>
+            e == null ? null : Annotation.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$EffectEvidenceSynthesis_CertaintySubcomponentToJson(
+        EffectEvidenceSynthesis_CertaintySubcomponent instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'rating': instance.rating?.map((e) => e?.toJson())?.toList(),
+      'note': instance.note?.map((e) => e?.toJson())?.toList(),
+    };

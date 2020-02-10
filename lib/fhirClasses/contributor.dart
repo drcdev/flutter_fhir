@@ -4,38 +4,14 @@ import 'package:flutter_fhir/fhirClasses/contactDetail.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-part 'contributor.g.dart';
-
 @JsonSerializable(explicitToJson: true)
 class Contributor {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  The type of contributor.
   String type; // <code> enum: author/editor/reviewer/endorser;
-
-  //  Extensions for type
   Element elementType;
-
-  //  The name of the individual or organization responsible for the
-  // contribution.
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  Contact details to assist a user in finding and communicating with the
-  // contributor.
   List<ContactDetail> contact;
 
 Contributor(
@@ -52,3 +28,42 @@ Contributor(
   Map<String, dynamic> toJson() => _$ContributorToJson(this);
 }
 
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+Contributor _$ContributorFromJson(Map<String, dynamic> json) {
+  return Contributor(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    type: json['type'] as String,
+    elementType: json['elementType'] == null
+        ? null
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
+    name: json['name'] as String,
+    elementName: json['elementName'] == null
+        ? null
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
+    contact: (json['contact'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ContactDetail.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$ContributorToJson(Contributor instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
+    };

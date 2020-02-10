@@ -4,70 +4,22 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-part 'sampledData.g.dart';
-
 @JsonSerializable(explicitToJson: true)
 class SampledData {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  The base quantity that a measured value of zero represents. In
-  // addition, this provides the units of the entire measurement series.
   Quantity origin;
-
-  //  The length of time between sampling times, measured in milliseconds.
   double period;
-
-  //  Extensions for period
   Element elementPeriod;
-
-  //  A correction factor that is applied to the sampled data points before
-  // they are added to the origin.
   double factor;
-
-  //  Extensions for factor
   Element elementFactor;
-
-  //  The lower limit of detection of the measured points. This is needed if
-  // any of the data points have the value "L" (lower than detection limit).
   double lowerLimit;
-
-  //  Extensions for lowerLimit
   Element elementLowerLimit;
-
-  //  The upper limit of detection of the measured points. This is needed if
-  // any of the data points have the value "U" (higher than detection
-  // limit).
   double upperLimit;
-
-  //  Extensions for upperLimit
   Element elementUpperLimit;
-
-  //  The number of sample points at each time point. If this value is
-  // greater than one, then the dimensions will be interlaced - all the
-  // sample points for a point in time will be recorded at once.
   int dimensions;
-
-  //  Extensions for dimensions
   Element elementDimensions;
-
-  //  A series of data points which are decimal values separated by a single
-  // space (character u20). The special values "E" (error), "L" (below
-  // detection limit) and "U" (above detection limit) can also be used in
-  // place of a decimal value.
   String data;
-
-  //  Extensions for data
   Element elementData;
 
 SampledData(
@@ -92,3 +44,64 @@ SampledData(
   Map<String, dynamic> toJson() => _$SampledDataToJson(this);
 }
 
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+SampledData _$SampledDataFromJson(Map<String, dynamic> json) {
+  return SampledData(
+    json['origin'] == null
+        ? null
+        : Quantity.fromJson(json['origin'] as Map<String, dynamic>),
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    period: (json['period'] as num)?.toDouble(),
+    elementPeriod: json['elementPeriod'] == null
+        ? null
+        : Element.fromJson(json['elementPeriod'] as Map<String, dynamic>),
+    factor: (json['factor'] as num)?.toDouble(),
+    elementFactor: json['elementFactor'] == null
+        ? null
+        : Element.fromJson(json['elementFactor'] as Map<String, dynamic>),
+    lowerLimit: (json['lowerLimit'] as num)?.toDouble(),
+    elementLowerLimit: json['elementLowerLimit'] == null
+        ? null
+        : Element.fromJson(json['elementLowerLimit'] as Map<String, dynamic>),
+    upperLimit: (json['upperLimit'] as num)?.toDouble(),
+    elementUpperLimit: json['elementUpperLimit'] == null
+        ? null
+        : Element.fromJson(json['elementUpperLimit'] as Map<String, dynamic>),
+    dimensions: json['dimensions'] as int,
+    elementDimensions: json['elementDimensions'] == null
+        ? null
+        : Element.fromJson(json['elementDimensions'] as Map<String, dynamic>),
+    data: json['data'] as String,
+    elementData: json['elementData'] == null
+        ? null
+        : Element.fromJson(json['elementData'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$SampledDataToJson(SampledData instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'origin': instance.origin?.toJson(),
+      'period': instance.period,
+      'elementPeriod': instance.elementPeriod?.toJson(),
+      'factor': instance.factor,
+      'elementFactor': instance.elementFactor?.toJson(),
+      'lowerLimit': instance.lowerLimit,
+      'elementLowerLimit': instance.elementLowerLimit?.toJson(),
+      'upperLimit': instance.upperLimit,
+      'elementUpperLimit': instance.elementUpperLimit?.toJson(),
+      'dimensions': instance.dimensions,
+      'elementDimensions': instance.elementDimensions?.toJson(),
+      'data': instance.data,
+      'elementData': instance.elementData?.toJson(),
+    };

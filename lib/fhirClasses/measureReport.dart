@@ -11,127 +11,32 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-part 'measureReport.g.dart';
-
 @JsonSerializable(explicitToJson: true)
 class MeasureReport {
-
-  //  This is a MeasureReport resource
   final String resourceType= 'MeasureReport';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   String implicitRules;
-
-  //  Extensions for implicitRules
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   String language;
-
-  //  Extensions for language
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A formal identifier that is used to identify this MeasureReport when
-  // it is represented in other formats or referenced in a specification,
-  // model, design or an instance.
   List<Identifier> identifier;
-
-  //  The MeasureReport status. No data will be available until the
-  // MeasureReport status is complete.
   String status; // <code> enum: complete/pending/error;
-
-  //  Extensions for status
   Element elementStatus;
-
-  //  The type of measure report. This may be an individual report, which
-  // provides the score for the measure for an individual member of the
-  // population; a subject-listing, which returns the list of members that
-  // meet the various criteria in the measure; a summary report, which
-  // returns a population count for each of the criteria in the measure; or
-  // a data-collection, which enables the MeasureReport to be used to
-  // exchange the data-of-interest for a quality measure.
   String type; // <code> enum: individual/subject-list/summary/data-collection;
-
-  //  Extensions for type
   Element elementType;
-
-  //  A reference to the Measure that was calculated to produce this report.
   String measure;
-
-  //  Optional subject identifying the individual or individuals the report
-  // is for.
   Reference subject;
-
-  //  The date this measure report was generated.
   DateTime date;
-
-  //  Extensions for date
   Element elementDate;
-
-  //  The individual, location, or organization that is reporting the data.
   Reference reporter;
-
-  //  The reporting period for which the report was calculated.
   Period period;
-
-  //  Whether improvement in the measure is noted by an increase or decrease
-  // in the measure score.
   CodeableConcept improvementNotation;
-
-  //  The results of the calculation, one for each population group in the
-  // measure.
   List<MeasureReport_Group> group;
-
-  //  A reference to a Bundle containing the Resources that were used in the
-  // calculation of this measure.
   List<Reference> evaluatedResource;
 
 MeasureReport(
@@ -167,48 +72,12 @@ MeasureReport(
 
 @JsonSerializable(explicitToJson: true)
 class MeasureReport_Group {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The meaning of the population group as defined in the measure
-  // definition.
   CodeableConcept code;
-
-  //  The populations that make up the population group, one for each type
-  // of population appropriate for the measure.
   List<MeasureReport_Population> population;
-
-  //  The measure score for this population group, calculated as appropriate
-  // for the measure type and scoring method, and based on the contents of
-  // the populations defined in the group.
   Quantity measureScore;
-
-  //  When a measure includes multiple stratifiers, there will be a
-  // stratifier group for each stratifier defined by the measure.
   List<MeasureReport_Stratifier> stratifier;
 
 MeasureReport_Group(
@@ -227,44 +96,12 @@ MeasureReport_Group(
 
 @JsonSerializable(explicitToJson: true)
 class MeasureReport_Population {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The type of the population.
   CodeableConcept code;
-
-  //  The number of members of the population.
   int count;
-
-  //  Extensions for count
   Element elementCount;
-
-  //  This element refers to a List of subject level MeasureReport
-  // resources, one for each subject in this population.
   Reference subjectResults;
 
 MeasureReport_Population(
@@ -283,39 +120,10 @@ MeasureReport_Population(
 
 @JsonSerializable(explicitToJson: true)
 class MeasureReport_Stratifier {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The meaning of this stratifier, as defined in the measure definition.
   List<CodeableConcept> code;
-
-  //  This element contains the results for a single stratum within the
-  // stratifier. For example, when stratifying on administrative gender,
-  // there will be four strata, one for each possible gender value.
   List<MeasureReport_Stratum> stratum;
 
 MeasureReport_Stratifier(
@@ -332,48 +140,12 @@ MeasureReport_Stratifier(
 
 @JsonSerializable(explicitToJson: true)
 class MeasureReport_Stratum {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The value for this stratum, expressed as a CodeableConcept. When
-  // defining stratifiers on complex values, the value must be rendered such
-  // that the value for each stratum within the stratifier is unique.
   CodeableConcept value;
-
-  //  A stratifier component value.
   List<MeasureReport_Component> component;
-
-  //  The populations that make up the stratum, one for each type of
-  // population appropriate to the measure.
   List<MeasureReport_Population1> population;
-
-  //  The measure score for this stratum, calculated as appropriate for the
-  // measure type and scoring method, and based on only the members of this
-  // stratum.
   Quantity measureScore;
 
 MeasureReport_Stratum(
@@ -392,37 +164,10 @@ MeasureReport_Stratum(
 
 @JsonSerializable(explicitToJson: true)
 class MeasureReport_Component {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The code for the stratum component value.
   CodeableConcept code;
-
-  //  The stratum component value.
   CodeableConcept value;
 
 MeasureReport_Component(
@@ -439,44 +184,12 @@ MeasureReport_Component(
 
 @JsonSerializable(explicitToJson: true)
 class MeasureReport_Population1 {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The type of the population.
   CodeableConcept code;
-
-  //  The number of members of the population in this stratum.
   int count;
-
-  //  Extensions for count
   Element elementCount;
-
-  //  This element refers to a List of subject level MeasureReport
-  // resources, one for each subject in this population in this stratum.
   Reference subjectResults;
 
 MeasureReport_Population1(
@@ -493,3 +206,341 @@ MeasureReport_Population1(
   Map<String, dynamic> toJson() => _$MeasureReport_Population1ToJson(this);
 }
 
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+MeasureReport _$MeasureReportFromJson(Map<String, dynamic> json) {
+  return MeasureReport(
+    json['measure'] as String,
+    json['period'] == null
+        ? null
+        : Period.fromJson(json['period'] as Map<String, dynamic>),
+    id: json['id'] as String,
+    meta: json['meta'] == null
+        ? null
+        : Meta.fromJson(json['meta'] as Map<String, dynamic>),
+    implicitRules: json['implicitRules'] as String,
+    elementImplicitRules: json['elementImplicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['elementImplicitRules'] as Map<String, dynamic>),
+    language: json['language'] as String,
+    elementLanguage: json['elementLanguage'] == null
+        ? null
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
+    text: json['text'] == null
+        ? null
+        : Narrative.fromJson(json['text'] as Map<String, dynamic>),
+    contained: (json['contained'] as List)
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.toList(),
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    identifier: (json['identifier'] as List)
+        ?.map((e) =>
+            e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    status: json['status'] as String,
+    elementStatus: json['elementStatus'] == null
+        ? null
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
+    type: json['type'] as String,
+    elementType: json['elementType'] == null
+        ? null
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
+    subject: json['subject'] == null
+        ? null
+        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
+    date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
+    elementDate: json['elementDate'] == null
+        ? null
+        : Element.fromJson(json['elementDate'] as Map<String, dynamic>),
+    reporter: json['reporter'] == null
+        ? null
+        : Reference.fromJson(json['reporter'] as Map<String, dynamic>),
+    improvementNotation: json['improvementNotation'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['improvementNotation'] as Map<String, dynamic>),
+    group: (json['group'] as List)
+        ?.map((e) => e == null
+            ? null
+            : MeasureReport_Group.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    evaluatedResource: (json['evaluatedResource'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$MeasureReportToJson(MeasureReport instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+      'measure': instance.measure,
+      'subject': instance.subject?.toJson(),
+      'date': instance.date?.toIso8601String(),
+      'elementDate': instance.elementDate?.toJson(),
+      'reporter': instance.reporter?.toJson(),
+      'period': instance.period?.toJson(),
+      'improvementNotation': instance.improvementNotation?.toJson(),
+      'group': instance.group?.map((e) => e?.toJson())?.toList(),
+      'evaluatedResource':
+          instance.evaluatedResource?.map((e) => e?.toJson())?.toList(),
+    };
+
+MeasureReport_Group _$MeasureReport_GroupFromJson(Map<String, dynamic> json) {
+  return MeasureReport_Group(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    code: json['code'] == null
+        ? null
+        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
+    population: (json['population'] as List)
+        ?.map((e) => e == null
+            ? null
+            : MeasureReport_Population.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    measureScore: json['measureScore'] == null
+        ? null
+        : Quantity.fromJson(json['measureScore'] as Map<String, dynamic>),
+    stratifier: (json['stratifier'] as List)
+        ?.map((e) => e == null
+            ? null
+            : MeasureReport_Stratifier.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$MeasureReport_GroupToJson(
+        MeasureReport_Group instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code?.toJson(),
+      'population': instance.population?.map((e) => e?.toJson())?.toList(),
+      'measureScore': instance.measureScore?.toJson(),
+      'stratifier': instance.stratifier?.map((e) => e?.toJson())?.toList(),
+    };
+
+MeasureReport_Population _$MeasureReport_PopulationFromJson(
+    Map<String, dynamic> json) {
+  return MeasureReport_Population(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    code: json['code'] == null
+        ? null
+        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
+    count: json['count'] as int,
+    elementCount: json['elementCount'] == null
+        ? null
+        : Element.fromJson(json['elementCount'] as Map<String, dynamic>),
+    subjectResults: json['subjectResults'] == null
+        ? null
+        : Reference.fromJson(json['subjectResults'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$MeasureReport_PopulationToJson(
+        MeasureReport_Population instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code?.toJson(),
+      'count': instance.count,
+      'elementCount': instance.elementCount?.toJson(),
+      'subjectResults': instance.subjectResults?.toJson(),
+    };
+
+MeasureReport_Stratifier _$MeasureReport_StratifierFromJson(
+    Map<String, dynamic> json) {
+  return MeasureReport_Stratifier(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    code: (json['code'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    stratum: (json['stratum'] as List)
+        ?.map((e) => e == null
+            ? null
+            : MeasureReport_Stratum.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$MeasureReport_StratifierToJson(
+        MeasureReport_Stratifier instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code?.map((e) => e?.toJson())?.toList(),
+      'stratum': instance.stratum?.map((e) => e?.toJson())?.toList(),
+    };
+
+MeasureReport_Stratum _$MeasureReport_StratumFromJson(
+    Map<String, dynamic> json) {
+  return MeasureReport_Stratum(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    value: json['value'] == null
+        ? null
+        : CodeableConcept.fromJson(json['value'] as Map<String, dynamic>),
+    component: (json['component'] as List)
+        ?.map((e) => e == null
+            ? null
+            : MeasureReport_Component.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    population: (json['population'] as List)
+        ?.map((e) => e == null
+            ? null
+            : MeasureReport_Population1.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    measureScore: json['measureScore'] == null
+        ? null
+        : Quantity.fromJson(json['measureScore'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$MeasureReport_StratumToJson(
+        MeasureReport_Stratum instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'value': instance.value?.toJson(),
+      'component': instance.component?.map((e) => e?.toJson())?.toList(),
+      'population': instance.population?.map((e) => e?.toJson())?.toList(),
+      'measureScore': instance.measureScore?.toJson(),
+    };
+
+MeasureReport_Component _$MeasureReport_ComponentFromJson(
+    Map<String, dynamic> json) {
+  return MeasureReport_Component(
+    json['code'] == null
+        ? null
+        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
+    json['value'] == null
+        ? null
+        : CodeableConcept.fromJson(json['value'] as Map<String, dynamic>),
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$MeasureReport_ComponentToJson(
+        MeasureReport_Component instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code?.toJson(),
+      'value': instance.value?.toJson(),
+    };
+
+MeasureReport_Population1 _$MeasureReport_Population1FromJson(
+    Map<String, dynamic> json) {
+  return MeasureReport_Population1(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    code: json['code'] == null
+        ? null
+        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
+    count: json['count'] as int,
+    elementCount: json['elementCount'] == null
+        ? null
+        : Element.fromJson(json['elementCount'] as Map<String, dynamic>),
+    subjectResults: json['subjectResults'] == null
+        ? null
+        : Reference.fromJson(json['subjectResults'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$MeasureReport_Population1ToJson(
+        MeasureReport_Population1 instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code?.toJson(),
+      'count': instance.count,
+      'elementCount': instance.elementCount?.toJson(),
+      'subjectResults': instance.subjectResults?.toJson(),
+    };

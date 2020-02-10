@@ -17,298 +17,71 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-part 'researchElementDefinition.g.dart';
-
 @JsonSerializable(explicitToJson: true)
 class ResearchElementDefinition {
-
-  //  This is a ResearchElementDefinition resource
   final String resourceType= 'ResearchElementDefinition';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   String implicitRules;
-
-  //  Extensions for implicitRules
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   String language;
-
-  //  Extensions for language
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  An absolute URI that is used to identify this research element
-  // definition when it is referenced in a specification, model, design or
-  // an instance; also called its canonical identifier. This SHOULD be
-  // globally unique and SHOULD be a literal address at which at which an
-  // authoritative instance of this research element definition is (or will
-  // be) published. This URL can be the target of a canonical reference. It
-  // SHALL remain the same when the research element definition is stored on
-  // different servers.
   String url;
-
-  //  Extensions for url
   Element elementUrl;
-
-  //  A formal identifier that is used to identify this research element
-  // definition when it is represented in other formats, or referenced in a
-  // specification, model, design or an instance.
   List<Identifier> identifier;
-
-  //  The identifier that is used to identify this version of the research
-  // element definition when it is referenced in a specification, model,
-  // design or instance. This is an arbitrary value managed by the research
-  // element definition author and is not expected to be globally unique.
-  // For example, it might be a timestamp (e.g. yyyymmdd) if a managed
-  // version is not available. There is also no expectation that versions
-  // can be placed in a lexicographical sequence. To provide a version
-  // consistent with the Decision Support Service specification, use the
-  // format Major.Minor.Revision (e.g. 1.0.0). For more information on
-  // versioning knowledge assets, refer to the Decision Support Service
-  // specification. Note that a version is required for non-experimental
-  // active artifacts.
   String version;
-
-  //  Extensions for version
   Element elementVersion;
-
-  //  A natural language name identifying the research element definition.
-  // This name should be usable as an identifier for the module by machine
-  // processing applications such as code generation.
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  A short, descriptive, user-friendly title for the research element
-  // definition.
   String title;
-
-  //  Extensions for title
   Element elementTitle;
-
-  //  The short title provides an alternate title for use in informal
-  // descriptive contexts where the full, formal title is not necessary.
   String shortTitle;
-
-  //  Extensions for shortTitle
   Element elementShortTitle;
-
-  //  An explanatory or alternate title for the ResearchElementDefinition
-  // giving additional information about its content.
   String subtitle;
-
-  //  Extensions for subtitle
   Element elementSubtitle;
-
-  //  The status of this research element definition. Enables tracking the
-  // life-cycle of the content.
   String status; // <code> enum: draft/active/retired/unknown;
-
-  //  Extensions for status
   Element elementStatus;
-
-  //  A Boolean value to indicate that this research element definition is
-  // authored for testing purposes (or education/evaluation/marketing) and
-  // is not intended to be used for genuine usage.
   bool experimental;
-
-  //  Extensions for experimental
   Element elementExperimental;
-
-  //  The intended subjects for the ResearchElementDefinition. If this
-  // element is not provided, a Patient subject is assumed, but the subject
-  // of the ResearchElementDefinition can be anything.
   CodeableConcept subjectCodeableConcept;
-
-  //  The intended subjects for the ResearchElementDefinition. If this
-  // element is not provided, a Patient subject is assumed, but the subject
-  // of the ResearchElementDefinition can be anything.
   Reference subjectReference;
-
-  //  The date  (and optionally time) when the research element definition
-  // was published. The date must change when the business version changes
-  // and it must change if the status code changes. In addition, it should
-  // change when the substantive content of the research element definition
-  // changes.
   DateTime date;
-
-  //  Extensions for date
   Element elementDate;
-
-  //  The name of the organization or individual that published the research
-  // element definition.
   String publisher;
-
-  //  Extensions for publisher
   Element elementPublisher;
-
-  //  Contact details to assist a user in finding and communicating with the
-  // publisher.
   List<ContactDetail> contact;
-
-  //  A free text natural language description of the research element
-  // definition from a consumer's perspective.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  A human-readable string to clarify or explain concepts about the
-  // resource.
   List<String> comment;
-
-  //  Extensions for comment
   List<Element> elementComment;
-
-  //  The content was developed with a focus and intent of supporting the
-  // contexts that are listed. These contexts may be general categories
-  // (gender, age, ...) or may be references to specific programs (insurance
-  // plans, studies, ...) and may be used to assist with indexing and
-  // searching for appropriate research element definition instances.
   List<UsageContext> useContext;
-
-  //  A legal or geographic region in which the research element definition
-  // is intended to be used.
   List<CodeableConcept> jurisdiction;
-
-  //  Explanation of why this research element definition is needed and why
-  // it has been designed as it has.
   String purpose;
-
-  //  Extensions for purpose
   Element elementPurpose;
-
-  //  A detailed description, from a clinical perspective, of how the
-  // ResearchElementDefinition is used.
   String usage;
-
-  //  Extensions for usage
   Element elementUsage;
-
-  //  A copyright statement relating to the research element definition
-  // and/or its contents. Copyright statements are generally legal
-  // restrictions on the use and publishing of the research element
-  // definition.
   String copyright;
-
-  //  Extensions for copyright
   Element elementCopyright;
-
-  //  The date on which the resource content was approved by the publisher.
-  // Approval happens once when the content is officially approved for
-  // usage.
   String approvalDate;
-
-  //  Extensions for approvalDate
   Element elementApprovalDate;
-
-  //  The date on which the resource content was last reviewed. Review
-  // happens periodically after approval but does not change the original
-  // approval date.
   String lastReviewDate;
-
-  //  Extensions for lastReviewDate
   Element elementLastReviewDate;
-
-  //  The period during which the research element definition content was or
-  // is planned to be in active use.
   Period effectivePeriod;
-
-  //  Descriptive topics related to the content of the
-  // ResearchElementDefinition. Topics provide a high-level categorization
-  // grouping types of ResearchElementDefinitions that can be useful for
-  // filtering and searching.
   List<CodeableConcept> topic;
-
-  //  An individiual or organization primarily involved in the creation and
-  // maintenance of the content.
   List<ContactDetail> author;
-
-  //  An individual or organization primarily responsible for internal
-  // coherence of the content.
   List<ContactDetail> editor;
-
-  //  An individual or organization primarily responsible for review of some
-  // aspect of the content.
   List<ContactDetail> reviewer;
-
-  //  An individual or organization responsible for officially endorsing the
-  // content for use in some setting.
   List<ContactDetail> endorser;
-
-  //  Related artifacts such as additional documentation, justification, or
-  // bibliographic references.
   List<RelatedArtifact> relatedArtifact;
-
-  //  A reference to a Library resource containing the formal logic used by
-  // the ResearchElementDefinition.
   List<String> library;
-
-  //  The type of research element, a population, an exposure, or an
-  // outcome.
   String type; // <code> enum: population/exposure/outcome;
-
-  //  Extensions for type
   Element elementType;
-
-  //  The type of the outcome (e.g. Dichotomous, Continuous, or
-  // Descriptive).
   String variableType; // <code> enum: dichotomous/continuous/descriptive;
-
-  //  Extensions for variableType
   Element elementVariableType;
-
-  //  A characteristic that defines the members of the research element.
-  // Multiple characteristics are applied with "and" semantics.
   List<ResearchElementDefinition_Characteristic> characteristic;
 
 ResearchElementDefinition(
@@ -383,134 +156,37 @@ ResearchElementDefinition(
 
 @JsonSerializable(explicitToJson: true)
 class ResearchElementDefinition_Characteristic {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Define members of the research element using Codes (such as condition,
-  // medication, or observation), Expressions ( using an expression language
-  // such as FHIRPath or CQL) or DataRequirements (such as Diabetes
-  // diagnosis onset in the last year).
   CodeableConcept definitionCodeableConcept;
-
-  //  Define members of the research element using Codes (such as condition,
-  // medication, or observation), Expressions ( using an expression language
-  // such as FHIRPath or CQL) or DataRequirements (such as Diabetes
-  // diagnosis onset in the last year).
   String definitionCanonical; //  pattern: ^\S*$
-
-  //  Extensions for definitionCanonical
   Element elementDefinitionCanonical;
-
-  //  Define members of the research element using Codes (such as condition,
-  // medication, or observation), Expressions ( using an expression language
-  // such as FHIRPath or CQL) or DataRequirements (such as Diabetes
-  // diagnosis onset in the last year).
   Expression definitionExpression;
-
-  //  Define members of the research element using Codes (such as condition,
-  // medication, or observation), Expressions ( using an expression language
-  // such as FHIRPath or CQL) or DataRequirements (such as Diabetes
-  // diagnosis onset in the last year).
   DataRequirement definitionDataRequirement;
-
-  //  Use UsageContext to define the members of the population, such as Age
-  // Ranges, Genders, Settings.
   List<UsageContext> usageContext;
-
-  //  When true, members with this characteristic are excluded from the
-  // element.
   bool exclude;
-
-  //  Extensions for exclude
   Element elementExclude;
-
-  //  Specifies the UCUM unit for the outcome.
   CodeableConcept unitOfMeasure;
-
-  //  A narrative description of the time period the study covers.
   String studyEffectiveDescription;
-
-  //  Extensions for studyEffectiveDescription
   Element elementStudyEffectiveDescription;
-
-  //  Indicates what effective period the study covers.
   String studyEffectiveDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for studyEffectiveDateTime
   Element elementStudyEffectiveDateTime;
-
-  //  Indicates what effective period the study covers.
   Period studyEffectivePeriod;
-
-  //  Indicates what effective period the study covers.
   Duration studyEffectiveDuration;
-
-  //  Indicates what effective period the study covers.
   Timing studyEffectiveTiming;
-
-  //  Indicates duration from the study initiation.
   Duration studyEffectiveTimeFromStart;
-
-  //  Indicates how elements are aggregated within the study effective
-  // period.
   String studyEffectiveGroupMeasure; // <code> enum: mean/median/mean-of-mean/mean-of-median/median-of-mean/median-of-median;
-
-  //  Extensions for studyEffectiveGroupMeasure
   Element elementStudyEffectiveGroupMeasure;
-
-  //  A narrative description of the time period the study covers.
   String participantEffectiveDescription;
-
-  //  Extensions for participantEffectiveDescription
   Element elementParticipantEffectiveDescription;
-
-  //  Indicates what effective period the study covers.
   String participantEffectiveDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for participantEffectiveDateTime
   Element elementParticipantEffectiveDateTime;
-
-  //  Indicates what effective period the study covers.
   Period participantEffectivePeriod;
-
-  //  Indicates what effective period the study covers.
   Duration participantEffectiveDuration;
-
-  //  Indicates what effective period the study covers.
   Timing participantEffectiveTiming;
-
-  //  Indicates duration from the participant's study entry.
   Duration participantEffectiveTimeFromStart;
-
-  //  Indicates how elements are aggregated within the study effective
-  // period.
   String participantEffectiveGroupMeasure; // <code> enum: mean/median/mean-of-mean/mean-of-median/median-of-mean/median-of-median;
-
-  //  Extensions for participantEffectiveGroupMeasure
   Element elementParticipantEffectiveGroupMeasure;
 
 ResearchElementDefinition_Characteristic(
@@ -552,3 +228,423 @@ ResearchElementDefinition_Characteristic(
   Map<String, dynamic> toJson() => _$ResearchElementDefinition_CharacteristicToJson(this);
 }
 
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+ResearchElementDefinition _$ResearchElementDefinitionFromJson(
+    Map<String, dynamic> json) {
+  return ResearchElementDefinition(
+    (json['characteristic'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ResearchElementDefinition_Characteristic.fromJson(
+                e as Map<String, dynamic>))
+        ?.toList(),
+    id: json['id'] as String,
+    meta: json['meta'] == null
+        ? null
+        : Meta.fromJson(json['meta'] as Map<String, dynamic>),
+    implicitRules: json['implicitRules'] as String,
+    elementImplicitRules: json['elementImplicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['elementImplicitRules'] as Map<String, dynamic>),
+    language: json['language'] as String,
+    elementLanguage: json['elementLanguage'] == null
+        ? null
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
+    text: json['text'] == null
+        ? null
+        : Narrative.fromJson(json['text'] as Map<String, dynamic>),
+    contained: (json['contained'] as List)
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.toList(),
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    url: json['url'] as String,
+    elementUrl: json['elementUrl'] == null
+        ? null
+        : Element.fromJson(json['elementUrl'] as Map<String, dynamic>),
+    identifier: (json['identifier'] as List)
+        ?.map((e) =>
+            e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    version: json['version'] as String,
+    elementVersion: json['elementVersion'] == null
+        ? null
+        : Element.fromJson(json['elementVersion'] as Map<String, dynamic>),
+    name: json['name'] as String,
+    elementName: json['elementName'] == null
+        ? null
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
+    title: json['title'] as String,
+    elementTitle: json['elementTitle'] == null
+        ? null
+        : Element.fromJson(json['elementTitle'] as Map<String, dynamic>),
+    shortTitle: json['shortTitle'] as String,
+    elementShortTitle: json['elementShortTitle'] == null
+        ? null
+        : Element.fromJson(json['elementShortTitle'] as Map<String, dynamic>),
+    subtitle: json['subtitle'] as String,
+    elementSubtitle: json['elementSubtitle'] == null
+        ? null
+        : Element.fromJson(json['elementSubtitle'] as Map<String, dynamic>),
+    status: json['status'] as String,
+    elementStatus: json['elementStatus'] == null
+        ? null
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
+    experimental: json['experimental'] as bool,
+    elementExperimental: json['elementExperimental'] == null
+        ? null
+        : Element.fromJson(json['elementExperimental'] as Map<String, dynamic>),
+    subjectCodeableConcept: json['subjectCodeableConcept'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['subjectCodeableConcept'] as Map<String, dynamic>),
+    subjectReference: json['subjectReference'] == null
+        ? null
+        : Reference.fromJson(json['subjectReference'] as Map<String, dynamic>),
+    date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
+    elementDate: json['elementDate'] == null
+        ? null
+        : Element.fromJson(json['elementDate'] as Map<String, dynamic>),
+    publisher: json['publisher'] as String,
+    elementPublisher: json['elementPublisher'] == null
+        ? null
+        : Element.fromJson(json['elementPublisher'] as Map<String, dynamic>),
+    contact: (json['contact'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ContactDetail.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    description: json['description'] as String,
+    elementDescription: json['elementDescription'] == null
+        ? null
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
+    comment: (json['comment'] as List)?.map((e) => e as String)?.toList(),
+    elementComment: (json['elementComment'] as List)
+        ?.map((e) =>
+            e == null ? null : Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    useContext: (json['useContext'] as List)
+        ?.map((e) =>
+            e == null ? null : UsageContext.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    jurisdiction: (json['jurisdiction'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    purpose: json['purpose'] as String,
+    elementPurpose: json['elementPurpose'] == null
+        ? null
+        : Element.fromJson(json['elementPurpose'] as Map<String, dynamic>),
+    usage: json['usage'] as String,
+    elementUsage: json['elementUsage'] == null
+        ? null
+        : Element.fromJson(json['elementUsage'] as Map<String, dynamic>),
+    copyright: json['copyright'] as String,
+    elementCopyright: json['elementCopyright'] == null
+        ? null
+        : Element.fromJson(json['elementCopyright'] as Map<String, dynamic>),
+    approvalDate: json['approvalDate'] as String,
+    elementApprovalDate: json['elementApprovalDate'] == null
+        ? null
+        : Element.fromJson(json['elementApprovalDate'] as Map<String, dynamic>),
+    lastReviewDate: json['lastReviewDate'] as String,
+    elementLastReviewDate: json['elementLastReviewDate'] == null
+        ? null
+        : Element.fromJson(
+            json['elementLastReviewDate'] as Map<String, dynamic>),
+    effectivePeriod: json['effectivePeriod'] == null
+        ? null
+        : Period.fromJson(json['effectivePeriod'] as Map<String, dynamic>),
+    topic: (json['topic'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    author: (json['author'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ContactDetail.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    editor: (json['editor'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ContactDetail.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    reviewer: (json['reviewer'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ContactDetail.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    endorser: (json['endorser'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ContactDetail.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    relatedArtifact: (json['relatedArtifact'] as List)
+        ?.map((e) => e == null
+            ? null
+            : RelatedArtifact.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    library: (json['library'] as List)?.map((e) => e as String)?.toList(),
+    type: json['type'] as String,
+    elementType: json['elementType'] == null
+        ? null
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
+    variableType: json['variableType'] as String,
+    elementVariableType: json['elementVariableType'] == null
+        ? null
+        : Element.fromJson(json['elementVariableType'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$ResearchElementDefinitionToJson(
+        ResearchElementDefinition instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'url': instance.url,
+      'elementUrl': instance.elementUrl?.toJson(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'version': instance.version,
+      'elementVersion': instance.elementVersion?.toJson(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'title': instance.title,
+      'elementTitle': instance.elementTitle?.toJson(),
+      'shortTitle': instance.shortTitle,
+      'elementShortTitle': instance.elementShortTitle?.toJson(),
+      'subtitle': instance.subtitle,
+      'elementSubtitle': instance.elementSubtitle?.toJson(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'experimental': instance.experimental,
+      'elementExperimental': instance.elementExperimental?.toJson(),
+      'subjectCodeableConcept': instance.subjectCodeableConcept?.toJson(),
+      'subjectReference': instance.subjectReference?.toJson(),
+      'date': instance.date?.toIso8601String(),
+      'elementDate': instance.elementDate?.toJson(),
+      'publisher': instance.publisher,
+      'elementPublisher': instance.elementPublisher?.toJson(),
+      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'comment': instance.comment,
+      'elementComment':
+          instance.elementComment?.map((e) => e?.toJson())?.toList(),
+      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
+      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
+      'purpose': instance.purpose,
+      'elementPurpose': instance.elementPurpose?.toJson(),
+      'usage': instance.usage,
+      'elementUsage': instance.elementUsage?.toJson(),
+      'copyright': instance.copyright,
+      'elementCopyright': instance.elementCopyright?.toJson(),
+      'approvalDate': instance.approvalDate,
+      'elementApprovalDate': instance.elementApprovalDate?.toJson(),
+      'lastReviewDate': instance.lastReviewDate,
+      'elementLastReviewDate': instance.elementLastReviewDate?.toJson(),
+      'effectivePeriod': instance.effectivePeriod?.toJson(),
+      'topic': instance.topic?.map((e) => e?.toJson())?.toList(),
+      'author': instance.author?.map((e) => e?.toJson())?.toList(),
+      'editor': instance.editor?.map((e) => e?.toJson())?.toList(),
+      'reviewer': instance.reviewer?.map((e) => e?.toJson())?.toList(),
+      'endorser': instance.endorser?.map((e) => e?.toJson())?.toList(),
+      'relatedArtifact':
+          instance.relatedArtifact?.map((e) => e?.toJson())?.toList(),
+      'library': instance.library,
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+      'variableType': instance.variableType,
+      'elementVariableType': instance.elementVariableType?.toJson(),
+      'characteristic':
+          instance.characteristic?.map((e) => e?.toJson())?.toList(),
+    };
+
+ResearchElementDefinition_Characteristic
+    _$ResearchElementDefinition_CharacteristicFromJson(
+        Map<String, dynamic> json) {
+  return ResearchElementDefinition_Characteristic(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    definitionCodeableConcept: json['definitionCodeableConcept'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['definitionCodeableConcept'] as Map<String, dynamic>),
+    definitionCanonical: json['definitionCanonical'] as String,
+    elementDefinitionCanonical: json['elementDefinitionCanonical'] == null
+        ? null
+        : Element.fromJson(
+            json['elementDefinitionCanonical'] as Map<String, dynamic>),
+    definitionExpression: json['definitionExpression'] == null
+        ? null
+        : Expression.fromJson(
+            json['definitionExpression'] as Map<String, dynamic>),
+    definitionDataRequirement: json['definitionDataRequirement'] == null
+        ? null
+        : DataRequirement.fromJson(
+            json['definitionDataRequirement'] as Map<String, dynamic>),
+    usageContext: (json['usageContext'] as List)
+        ?.map((e) =>
+            e == null ? null : UsageContext.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    exclude: json['exclude'] as bool,
+    elementExclude: json['elementExclude'] == null
+        ? null
+        : Element.fromJson(json['elementExclude'] as Map<String, dynamic>),
+    unitOfMeasure: json['unitOfMeasure'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['unitOfMeasure'] as Map<String, dynamic>),
+    studyEffectiveDescription: json['studyEffectiveDescription'] as String,
+    elementStudyEffectiveDescription:
+        json['elementStudyEffectiveDescription'] == null
+            ? null
+            : Element.fromJson(json['elementStudyEffectiveDescription']
+                as Map<String, dynamic>),
+    studyEffectiveDateTime: json['studyEffectiveDateTime'] as String,
+    elementStudyEffectiveDateTime: json['elementStudyEffectiveDateTime'] == null
+        ? null
+        : Element.fromJson(
+            json['elementStudyEffectiveDateTime'] as Map<String, dynamic>),
+    studyEffectivePeriod: json['studyEffectivePeriod'] == null
+        ? null
+        : Period.fromJson(json['studyEffectivePeriod'] as Map<String, dynamic>),
+    studyEffectiveDuration: json['studyEffectiveDuration'] == null
+        ? null
+        : Duration.fromJson(
+            json['studyEffectiveDuration'] as Map<String, dynamic>),
+    studyEffectiveTiming: json['studyEffectiveTiming'] == null
+        ? null
+        : Timing.fromJson(json['studyEffectiveTiming'] as Map<String, dynamic>),
+    studyEffectiveTimeFromStart: json['studyEffectiveTimeFromStart'] == null
+        ? null
+        : Duration.fromJson(
+            json['studyEffectiveTimeFromStart'] as Map<String, dynamic>),
+    studyEffectiveGroupMeasure: json['studyEffectiveGroupMeasure'] as String,
+    elementStudyEffectiveGroupMeasure:
+        json['elementStudyEffectiveGroupMeasure'] == null
+            ? null
+            : Element.fromJson(json['elementStudyEffectiveGroupMeasure']
+                as Map<String, dynamic>),
+    participantEffectiveDescription:
+        json['participantEffectiveDescription'] as String,
+    elementParticipantEffectiveDescription:
+        json['elementParticipantEffectiveDescription'] == null
+            ? null
+            : Element.fromJson(json['elementParticipantEffectiveDescription']
+                as Map<String, dynamic>),
+    participantEffectiveDateTime:
+        json['participantEffectiveDateTime'] as String,
+    elementParticipantEffectiveDateTime:
+        json['elementParticipantEffectiveDateTime'] == null
+            ? null
+            : Element.fromJson(json['elementParticipantEffectiveDateTime']
+                as Map<String, dynamic>),
+    participantEffectivePeriod: json['participantEffectivePeriod'] == null
+        ? null
+        : Period.fromJson(
+            json['participantEffectivePeriod'] as Map<String, dynamic>),
+    participantEffectiveDuration: json['participantEffectiveDuration'] == null
+        ? null
+        : Duration.fromJson(
+            json['participantEffectiveDuration'] as Map<String, dynamic>),
+    participantEffectiveTiming: json['participantEffectiveTiming'] == null
+        ? null
+        : Timing.fromJson(
+            json['participantEffectiveTiming'] as Map<String, dynamic>),
+    participantEffectiveTimeFromStart:
+        json['participantEffectiveTimeFromStart'] == null
+            ? null
+            : Duration.fromJson(json['participantEffectiveTimeFromStart']
+                as Map<String, dynamic>),
+    participantEffectiveGroupMeasure:
+        json['participantEffectiveGroupMeasure'] as String,
+    elementParticipantEffectiveGroupMeasure:
+        json['elementParticipantEffectiveGroupMeasure'] == null
+            ? null
+            : Element.fromJson(json['elementParticipantEffectiveGroupMeasure']
+                as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$ResearchElementDefinition_CharacteristicToJson(
+        ResearchElementDefinition_Characteristic instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'definitionCodeableConcept': instance.definitionCodeableConcept?.toJson(),
+      'definitionCanonical': instance.definitionCanonical,
+      'elementDefinitionCanonical':
+          instance.elementDefinitionCanonical?.toJson(),
+      'definitionExpression': instance.definitionExpression?.toJson(),
+      'definitionDataRequirement': instance.definitionDataRequirement?.toJson(),
+      'usageContext': instance.usageContext?.map((e) => e?.toJson())?.toList(),
+      'exclude': instance.exclude,
+      'elementExclude': instance.elementExclude?.toJson(),
+      'unitOfMeasure': instance.unitOfMeasure?.toJson(),
+      'studyEffectiveDescription': instance.studyEffectiveDescription,
+      'elementStudyEffectiveDescription':
+          instance.elementStudyEffectiveDescription?.toJson(),
+      'studyEffectiveDateTime': instance.studyEffectiveDateTime,
+      'elementStudyEffectiveDateTime':
+          instance.elementStudyEffectiveDateTime?.toJson(),
+      'studyEffectivePeriod': instance.studyEffectivePeriod?.toJson(),
+      'studyEffectiveDuration': instance.studyEffectiveDuration?.toJson(),
+      'studyEffectiveTiming': instance.studyEffectiveTiming?.toJson(),
+      'studyEffectiveTimeFromStart':
+          instance.studyEffectiveTimeFromStart?.toJson(),
+      'studyEffectiveGroupMeasure': instance.studyEffectiveGroupMeasure,
+      'elementStudyEffectiveGroupMeasure':
+          instance.elementStudyEffectiveGroupMeasure?.toJson(),
+      'participantEffectiveDescription':
+          instance.participantEffectiveDescription,
+      'elementParticipantEffectiveDescription':
+          instance.elementParticipantEffectiveDescription?.toJson(),
+      'participantEffectiveDateTime': instance.participantEffectiveDateTime,
+      'elementParticipantEffectiveDateTime':
+          instance.elementParticipantEffectiveDateTime?.toJson(),
+      'participantEffectivePeriod':
+          instance.participantEffectivePeriod?.toJson(),
+      'participantEffectiveDuration':
+          instance.participantEffectiveDuration?.toJson(),
+      'participantEffectiveTiming':
+          instance.participantEffectiveTiming?.toJson(),
+      'participantEffectiveTimeFromStart':
+          instance.participantEffectiveTimeFromStart?.toJson(),
+      'participantEffectiveGroupMeasure':
+          instance.participantEffectiveGroupMeasure,
+      'elementParticipantEffectiveGroupMeasure':
+          instance.elementParticipantEffectiveGroupMeasure?.toJson(),
+    };

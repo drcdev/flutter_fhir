@@ -12,175 +12,42 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-part 'encounter.g.dart';
-
 @JsonSerializable(explicitToJson: true)
 class Encounter {
-
-  //  This is a Encounter resource
   final String resourceType= 'Encounter';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   String implicitRules;
-
-  //  Extensions for implicitRules
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   String language;
-
-  //  Extensions for language
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Identifier(s) by which this encounter is known.
   List<Identifier> identifier;
-
-  //  planned | arrived | triaged | in-progress | onleave | finished |
-  // cancelled +.
   String status; // <code> enum: planned/arrived/triaged/in-progress/onleave/finished/cancelled/entered-in-error/unknown;
-
-  //  Extensions for status
   Element elementStatus;
-
-  //  The status history permits the encounter resource to contain the
-  // status history without needing to read through the historical versions
-  // of the resource, or even have the server store them.
   List<Encounter_StatusHistory> statusHistory;
-
-  //  Concepts representing classification of patient encounter such as
-  // ambulatory (outpatient), inpatient, emergency, home health or others
-  // due to local variations.
   Coding classs;
-
-  //  The class history permits the tracking of the encounters transitions
-  // without needing to go  through the resource history.  This would be
-  // used for a case where an admission starts of as an emergency encounter,
-  // then transitions into an inpatient scenario. Doing this and not
-  // restarting a new encounter ensures that any lab/diagnostic results can
-  // more easily follow the patient and not require re-processing and not
-  // get lost or cancelled during a kind of discharge from emergency to
-  // inpatient.
   List<Encounter_ClassHistory> classHistory;
-
-  //  Specific type of encounter (e.g. e-mail consultation, surgical
-  // day-care, skilled nursing, rehabilitation).
   List<CodeableConcept> type;
-
-  //  Broad categorization of the service that is to be provided (e.g.
-  // cardiology).
   CodeableConcept serviceType;
-
-  //  Indicates the urgency of the encounter.
   CodeableConcept priority;
-
-  //  The patient or group present at the encounter.
   Reference subject;
-
-  //  Where a specific encounter should be classified as a part of a
-  // specific episode(s) of care this field should be used. This association
-  // can facilitate grouping of related encounters together for a specific
-  // purpose, such as government reporting, issue tracking, association via
-  // a common problem.  The association is recorded on the encounter as
-  // these are typically created after the episode of care and grouped on
-  // entry rather than editing the episode of care to append another
-  // encounter to it (the episode of care could span years).
   List<Reference> episodeOfCare;
-
-  //  The request this encounter satisfies (e.g. incoming referral or
-  // procedure request).
   List<Reference> basedOn;
-
-  //  The list of people responsible for providing the service.
   List<Encounter_Participant> participant;
-
-  //  The appointment that scheduled this encounter.
   List<Reference> appointment;
-
-  //  The start and end time of the encounter.
   Period period;
-
-  //  Quantity of time the encounter lasted. This excludes the time during
-  // leaves of absence.
   Duration length;
-
-  //  Reason the encounter takes place, expressed as a code. For admissions,
-  // this can be used for a coded admission diagnosis.
   List<CodeableConcept> reasonCode;
-
-  //  Reason the encounter takes place, expressed as a code. For admissions,
-  // this can be used for a coded admission diagnosis.
   List<Reference> reasonReference;
-
-  //  The list of diagnosis relevant to this encounter.
   List<Encounter_Diagnosis> diagnosis;
-
-  //  The set of accounts that may be used for billing for this Encounter.
   List<Reference> account;
-
-  //  Details about the admission to a healthcare service.
   Encounter_Hospitalization hospitalization;
-
-  //  List of locations where  the patient has been during this encounter.
   List<Encounter_Location> location;
-
-  //  The organization that is primarily responsible for this Encounter's
-  // services. This MAY be the same as the organization on the Patient
-  // record, however it could be different, such as if the actor performing
-  // the services was from an external organization (which may be billed
-  // seperately) for an external consultation.  Refer to the example bundle
-  // showing an abbreviated set of Encounters for a colonoscopy.
   Reference serviceProvider;
-
-  //  Another Encounter of which this encounter is a part of
-  // (administratively or in time).
   Reference partOf;
 
 Encounter(
@@ -226,41 +93,11 @@ Encounter(
 
 @JsonSerializable(explicitToJson: true)
 class Encounter_StatusHistory {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  planned | arrived | triaged | in-progress | onleave | finished |
-  // cancelled +.
   String status; // <code> enum: planned/arrived/triaged/in-progress/onleave/finished/cancelled/entered-in-error/unknown;
-
-  //  Extensions for status
   Element elementStatus;
-
-  //  The time that the episode was in the specified status.
   Period period;
 
 Encounter_StatusHistory(
@@ -278,37 +115,10 @@ Encounter_StatusHistory(
 
 @JsonSerializable(explicitToJson: true)
 class Encounter_ClassHistory {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  inpatient | outpatient | ambulatory | emergency +.
   Coding classs;
-
-  //  The time that the episode was in the specified class.
   Period period;
 
 Encounter_ClassHistory(
@@ -325,42 +135,11 @@ Encounter_ClassHistory(
 
 @JsonSerializable(explicitToJson: true)
 class Encounter_Participant {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Role of participant in encounter.
   List<CodeableConcept> type;
-
-  //  The period of time that the specified participant participated in the
-  // encounter. These can overlap or be sub-sets of the overall encounter's
-  // period.
   Period period;
-
-  //  Persons involved in the encounter other than the patient.
   Reference individual;
 
 Encounter_Participant(
@@ -378,47 +157,12 @@ Encounter_Participant(
 
 @JsonSerializable(explicitToJson: true)
 class Encounter_Diagnosis {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Reason the encounter takes place, as specified using information from
-  // another resource. For admissions, this is the admission diagnosis. The
-  // indication will typically be a Condition (with other resources
-  // referenced in the evidence.detail), or a Procedure.
   Reference condition;
-
-  //  Role that this diagnosis has within the encounter (e.g. admission,
-  // billing, discharge …).
   CodeableConcept use;
-
-  //  Ranking of the diagnosis (for each role type).
   int rank;
-
-  //  Extensions for rank
   Element elementRank;
 
 Encounter_Diagnosis(
@@ -437,60 +181,17 @@ Encounter_Diagnosis(
 
 @JsonSerializable(explicitToJson: true)
 class Encounter_Hospitalization {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Pre-admission identifier.
   Identifier preAdmissionIdentifier;
-
-  //  The location/organization from which the patient came before
-  // admission.
   Reference origin;
-
-  //  From where patient was admitted (physician referral, transfer).
   CodeableConcept admitSource;
-
-  //  Whether this hospitalization is a readmission and why if known.
   CodeableConcept reAdmission;
-
-  //  Diet preferences reported by the patient.
   List<CodeableConcept> dietPreference;
-
-  //  Special courtesies (VIP, board member).
   List<CodeableConcept> specialCourtesy;
-
-  //  Any special requests that have been made for this hospitalization
-  // encounter, such as the provision of specific equipment or other things.
   List<CodeableConcept> specialArrangement;
-
-  //  Location/organization to which the patient is discharged.
   Reference destination;
-
-  //  Category or kind of location after discharge.
   CodeableConcept dischargeDisposition;
 
 Encounter_Hospitalization(
@@ -514,49 +215,13 @@ Encounter_Hospitalization(
 
 @JsonSerializable(explicitToJson: true)
 class Encounter_Location {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The location where the encounter takes place.
   Reference location;
-
-  //  The status of the participants' presence at the specified location
-  // during the period specified. If the participant is no longer at the
-  // location, then the period will have an end date/time.
   String status; // <code> enum: planned/active/reserved/completed;
-
-  //  Extensions for status
   Element elementStatus;
-
-  //  This will be used to specify the required levels (bed/ward/room/etc.)
-  // desired to be recorded to simplify either messaging or query.
   CodeableConcept physicalType;
-
-  //  Time period during which the patient was present at the location.
   Period period;
 
 Encounter_Location(
@@ -574,3 +239,426 @@ Encounter_Location(
   Map<String, dynamic> toJson() => _$Encounter_LocationToJson(this);
 }
 
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+Encounter _$EncounterFromJson(Map<String, dynamic> json) {
+  return Encounter(
+    json['classs'] == null
+        ? null
+        : Coding.fromJson(json['classs'] as Map<String, dynamic>),
+    id: json['id'] as String,
+    meta: json['meta'] == null
+        ? null
+        : Meta.fromJson(json['meta'] as Map<String, dynamic>),
+    implicitRules: json['implicitRules'] as String,
+    elementImplicitRules: json['elementImplicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['elementImplicitRules'] as Map<String, dynamic>),
+    language: json['language'] as String,
+    elementLanguage: json['elementLanguage'] == null
+        ? null
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
+    text: json['text'] == null
+        ? null
+        : Narrative.fromJson(json['text'] as Map<String, dynamic>),
+    contained: (json['contained'] as List)
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.toList(),
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    identifier: (json['identifier'] as List)
+        ?.map((e) =>
+            e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    status: json['status'] as String,
+    elementStatus: json['elementStatus'] == null
+        ? null
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
+    statusHistory: (json['statusHistory'] as List)
+        ?.map((e) => e == null
+            ? null
+            : Encounter_StatusHistory.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    classHistory: (json['classHistory'] as List)
+        ?.map((e) => e == null
+            ? null
+            : Encounter_ClassHistory.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    type: (json['type'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    serviceType: json['serviceType'] == null
+        ? null
+        : CodeableConcept.fromJson(json['serviceType'] as Map<String, dynamic>),
+    priority: json['priority'] == null
+        ? null
+        : CodeableConcept.fromJson(json['priority'] as Map<String, dynamic>),
+    subject: json['subject'] == null
+        ? null
+        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
+    episodeOfCare: (json['episodeOfCare'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    basedOn: (json['basedOn'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    participant: (json['participant'] as List)
+        ?.map((e) => e == null
+            ? null
+            : Encounter_Participant.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    appointment: (json['appointment'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    period: json['period'] == null
+        ? null
+        : Period.fromJson(json['period'] as Map<String, dynamic>),
+    length: json['length'] == null
+        ? null
+        : Duration.fromJson(json['length'] as Map<String, dynamic>),
+    reasonCode: (json['reasonCode'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    reasonReference: (json['reasonReference'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    diagnosis: (json['diagnosis'] as List)
+        ?.map((e) => e == null
+            ? null
+            : Encounter_Diagnosis.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    account: (json['account'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    hospitalization: json['hospitalization'] == null
+        ? null
+        : Encounter_Hospitalization.fromJson(
+            json['hospitalization'] as Map<String, dynamic>),
+    location: (json['location'] as List)
+        ?.map((e) => e == null
+            ? null
+            : Encounter_Location.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    serviceProvider: json['serviceProvider'] == null
+        ? null
+        : Reference.fromJson(json['serviceProvider'] as Map<String, dynamic>),
+    partOf: json['partOf'] == null
+        ? null
+        : Reference.fromJson(json['partOf'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$EncounterToJson(Encounter instance) => <String, dynamic>{
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'statusHistory':
+          instance.statusHistory?.map((e) => e?.toJson())?.toList(),
+      'classs': instance.classs?.toJson(),
+      'classHistory': instance.classHistory?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.map((e) => e?.toJson())?.toList(),
+      'serviceType': instance.serviceType?.toJson(),
+      'priority': instance.priority?.toJson(),
+      'subject': instance.subject?.toJson(),
+      'episodeOfCare':
+          instance.episodeOfCare?.map((e) => e?.toJson())?.toList(),
+      'basedOn': instance.basedOn?.map((e) => e?.toJson())?.toList(),
+      'participant': instance.participant?.map((e) => e?.toJson())?.toList(),
+      'appointment': instance.appointment?.map((e) => e?.toJson())?.toList(),
+      'period': instance.period?.toJson(),
+      'length': instance.length?.toJson(),
+      'reasonCode': instance.reasonCode?.map((e) => e?.toJson())?.toList(),
+      'reasonReference':
+          instance.reasonReference?.map((e) => e?.toJson())?.toList(),
+      'diagnosis': instance.diagnosis?.map((e) => e?.toJson())?.toList(),
+      'account': instance.account?.map((e) => e?.toJson())?.toList(),
+      'hospitalization': instance.hospitalization?.toJson(),
+      'location': instance.location?.map((e) => e?.toJson())?.toList(),
+      'serviceProvider': instance.serviceProvider?.toJson(),
+      'partOf': instance.partOf?.toJson(),
+    };
+
+Encounter_StatusHistory _$Encounter_StatusHistoryFromJson(
+    Map<String, dynamic> json) {
+  return Encounter_StatusHistory(
+    json['period'] == null
+        ? null
+        : Period.fromJson(json['period'] as Map<String, dynamic>),
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    status: json['status'] as String,
+    elementStatus: json['elementStatus'] == null
+        ? null
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$Encounter_StatusHistoryToJson(
+        Encounter_StatusHistory instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'period': instance.period?.toJson(),
+    };
+
+Encounter_ClassHistory _$Encounter_ClassHistoryFromJson(
+    Map<String, dynamic> json) {
+  return Encounter_ClassHistory(
+    json['classs'] == null
+        ? null
+        : Coding.fromJson(json['classs'] as Map<String, dynamic>),
+    json['period'] == null
+        ? null
+        : Period.fromJson(json['period'] as Map<String, dynamic>),
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$Encounter_ClassHistoryToJson(
+        Encounter_ClassHistory instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'classs': instance.classs?.toJson(),
+      'period': instance.period?.toJson(),
+    };
+
+Encounter_Participant _$Encounter_ParticipantFromJson(
+    Map<String, dynamic> json) {
+  return Encounter_Participant(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    type: (json['type'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    period: json['period'] == null
+        ? null
+        : Period.fromJson(json['period'] as Map<String, dynamic>),
+    individual: json['individual'] == null
+        ? null
+        : Reference.fromJson(json['individual'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$Encounter_ParticipantToJson(
+        Encounter_Participant instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.map((e) => e?.toJson())?.toList(),
+      'period': instance.period?.toJson(),
+      'individual': instance.individual?.toJson(),
+    };
+
+Encounter_Diagnosis _$Encounter_DiagnosisFromJson(Map<String, dynamic> json) {
+  return Encounter_Diagnosis(
+    json['condition'] == null
+        ? null
+        : Reference.fromJson(json['condition'] as Map<String, dynamic>),
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    use: json['use'] == null
+        ? null
+        : CodeableConcept.fromJson(json['use'] as Map<String, dynamic>),
+    rank: json['rank'] as int,
+    elementRank: json['elementRank'] == null
+        ? null
+        : Element.fromJson(json['elementRank'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$Encounter_DiagnosisToJson(
+        Encounter_Diagnosis instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'condition': instance.condition?.toJson(),
+      'use': instance.use?.toJson(),
+      'rank': instance.rank,
+      'elementRank': instance.elementRank?.toJson(),
+    };
+
+Encounter_Hospitalization _$Encounter_HospitalizationFromJson(
+    Map<String, dynamic> json) {
+  return Encounter_Hospitalization(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    preAdmissionIdentifier: json['preAdmissionIdentifier'] == null
+        ? null
+        : Identifier.fromJson(
+            json['preAdmissionIdentifier'] as Map<String, dynamic>),
+    origin: json['origin'] == null
+        ? null
+        : Reference.fromJson(json['origin'] as Map<String, dynamic>),
+    admitSource: json['admitSource'] == null
+        ? null
+        : CodeableConcept.fromJson(json['admitSource'] as Map<String, dynamic>),
+    reAdmission: json['reAdmission'] == null
+        ? null
+        : CodeableConcept.fromJson(json['reAdmission'] as Map<String, dynamic>),
+    dietPreference: (json['dietPreference'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    specialCourtesy: (json['specialCourtesy'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    specialArrangement: (json['specialArrangement'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    destination: json['destination'] == null
+        ? null
+        : Reference.fromJson(json['destination'] as Map<String, dynamic>),
+    dischargeDisposition: json['dischargeDisposition'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['dischargeDisposition'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$Encounter_HospitalizationToJson(
+        Encounter_Hospitalization instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'preAdmissionIdentifier': instance.preAdmissionIdentifier?.toJson(),
+      'origin': instance.origin?.toJson(),
+      'admitSource': instance.admitSource?.toJson(),
+      'reAdmission': instance.reAdmission?.toJson(),
+      'dietPreference':
+          instance.dietPreference?.map((e) => e?.toJson())?.toList(),
+      'specialCourtesy':
+          instance.specialCourtesy?.map((e) => e?.toJson())?.toList(),
+      'specialArrangement':
+          instance.specialArrangement?.map((e) => e?.toJson())?.toList(),
+      'destination': instance.destination?.toJson(),
+      'dischargeDisposition': instance.dischargeDisposition?.toJson(),
+    };
+
+Encounter_Location _$Encounter_LocationFromJson(Map<String, dynamic> json) {
+  return Encounter_Location(
+    json['location'] == null
+        ? null
+        : Reference.fromJson(json['location'] as Map<String, dynamic>),
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    status: json['status'] as String,
+    elementStatus: json['elementStatus'] == null
+        ? null
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
+    physicalType: json['physicalType'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['physicalType'] as Map<String, dynamic>),
+    period: json['period'] == null
+        ? null
+        : Period.fromJson(json['period'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$Encounter_LocationToJson(Encounter_Location instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'location': instance.location?.toJson(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'physicalType': instance.physicalType?.toJson(),
+      'period': instance.period?.toJson(),
+    };

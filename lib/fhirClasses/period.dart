@@ -3,36 +3,13 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-part 'period.g.dart';
-
 @JsonSerializable(explicitToJson: true)
 class Period {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  The start of the period. The boundary is inclusive.
   DateTime start;
-
-  //  Extensions for start
   Element elementStart;
-
-  //  The end of the period. If the end of the period is missing, it means
-  // no end was known or planned at the time the instance was created. The
-  // start may be in the past, and the end date in the future, which means
-  // that period is expected/planned to end at that time.
   DateTime end;
-
-  //  Extensions for end
   Element elementEnd;
 
 Period(
@@ -48,3 +25,36 @@ Period(
   Map<String, dynamic> toJson() => _$PeriodToJson(this);
 }
 
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+Period _$PeriodFromJson(Map<String, dynamic> json) {
+  return Period(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    start:
+        json['start'] == null ? null : DateTime.parse(json['start'] as String),
+    elementStart: json['elementStart'] == null
+        ? null
+        : Element.fromJson(json['elementStart'] as Map<String, dynamic>),
+    end: json['end'] == null ? null : DateTime.parse(json['end'] as String),
+    elementEnd: json['elementEnd'] == null
+        ? null
+        : Element.fromJson(json['elementEnd'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$PeriodToJson(Period instance) => <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'start': instance.start?.toIso8601String(),
+      'elementStart': instance.elementStart?.toJson(),
+      'end': instance.end?.toIso8601String(),
+      'elementEnd': instance.elementEnd?.toJson(),
+    };

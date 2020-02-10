@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_fhir/mainMenu/providerActivities/providerActivities.dart';
 import 'package:flutter_fhir/mainMenu/testingSettings/testing.dart';
 import 'package:flutter_fhir/mainMenu/sync/syncServer.dart';
-import 'package:flutter_fhir/buttons.dart';
+import 'package:flutter_fhir/util/buttons.dart';
 
 class MainMenu extends StatelessWidget {
   @override

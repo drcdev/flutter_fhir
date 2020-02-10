@@ -4,31 +4,12 @@ import 'package:flutter_fhir/fhirClasses/contactPoint.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-part 'contactDetail.g.dart';
-
 @JsonSerializable(explicitToJson: true)
 class ContactDetail {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  The name of an individual to contact.
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  The contact details for the individual (if a name was provided) or the
-  // organization.
   List<ContactPoint> telecom;
 
 ContactDetail(
@@ -43,3 +24,35 @@ ContactDetail(
   Map<String, dynamic> toJson() => _$ContactDetailToJson(this);
 }
 
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+ContactDetail _$ContactDetailFromJson(Map<String, dynamic> json) {
+  return ContactDetail(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    name: json['name'] as String,
+    elementName: json['elementName'] == null
+        ? null
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
+    telecom: (json['telecom'] as List)
+        ?.map((e) =>
+            e == null ? null : ContactPoint.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$ContactDetailToJson(ContactDetail instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'telecom': instance.telecom?.map((e) => e?.toJson())?.toList(),
+    };

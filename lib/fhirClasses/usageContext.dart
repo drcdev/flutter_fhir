@@ -7,41 +7,14 @@ import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-part 'usageContext.g.dart';
-
 @JsonSerializable(explicitToJson: true)
 class UsageContext {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  A code that identifies the type of context being specified by this
-  // usage context.
   Coding code;
-
-  //  A value that defines the context specified in this context of use. The
-  // interpretation of the value is defined by the code.
   CodeableConcept valueCodeableConcept;
-
-  //  A value that defines the context specified in this context of use. The
-  // interpretation of the value is defined by the code.
   Quantity valueQuantity;
-
-  //  A value that defines the context specified in this context of use. The
-  // interpretation of the value is defined by the code.
   Range valueRange;
-
-  //  A value that defines the context specified in this context of use. The
-  // interpretation of the value is defined by the code.
   Reference valueReference;
 
 UsageContext(
@@ -58,3 +31,45 @@ UsageContext(
   Map<String, dynamic> toJson() => _$UsageContextToJson(this);
 }
 
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+UsageContext _$UsageContextFromJson(Map<String, dynamic> json) {
+  return UsageContext(
+    json['code'] == null
+        ? null
+        : Coding.fromJson(json['code'] as Map<String, dynamic>),
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    valueCodeableConcept: json['valueCodeableConcept'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['valueCodeableConcept'] as Map<String, dynamic>),
+    valueQuantity: json['valueQuantity'] == null
+        ? null
+        : Quantity.fromJson(json['valueQuantity'] as Map<String, dynamic>),
+    valueRange: json['valueRange'] == null
+        ? null
+        : Range.fromJson(json['valueRange'] as Map<String, dynamic>),
+    valueReference: json['valueReference'] == null
+        ? null
+        : Reference.fromJson(json['valueReference'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$UsageContextToJson(UsageContext instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code?.toJson(),
+      'valueCodeableConcept': instance.valueCodeableConcept?.toJson(),
+      'valueQuantity': instance.valueQuantity?.toJson(),
+      'valueRange': instance.valueRange?.toJson(),
+      'valueReference': instance.valueReference?.toJson(),
+    };

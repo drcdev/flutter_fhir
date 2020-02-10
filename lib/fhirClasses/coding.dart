@@ -3,60 +3,19 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-part 'coding.g.dart';
-
 @JsonSerializable(explicitToJson: true)
 class Coding {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  The identification of the code system that defines the meaning of the
-  // symbol in the code.
   String system;
-
-  //  Extensions for system
   Element elementSystem;
-
-  //  The version of the code system which was used when choosing this code.
-  // Note that a well-maintained code system does not need the version
-  // reported, because the meaning of codes is consistent across versions.
-  // However this cannot consistently be assured, and when the meaning is
-  // not guaranteed to be consistent, the version SHOULD be exchanged.
   String version;
-
-  //  Extensions for version
   Element elementVersion;
-
-  //  A symbol in syntax defined by the system. The symbol may be a
-  // predefined code or an expression in a syntax defined by the coding
-  // system (e.g. post-coordination).
   String code;
-
-  //  Extensions for code
   Element elementCode;
-
-  //  A representation of the meaning of the code in the system, following
-  // the rules of the system.
   String display;
-
-  //  Extensions for display
   Element elementDisplay;
-
-  //  Indicates that this coding was chosen by a user directly - e.g. off a
-  // pick list of available items (codes or displays).
   bool userSelected;
-
-  //  Extensions for userSelected
   Element elementUserSelected;
 
 Coding(
@@ -78,3 +37,53 @@ Coding(
   Map<String, dynamic> toJson() => _$CodingToJson(this);
 }
 
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+Coding _$CodingFromJson(Map<String, dynamic> json) {
+  return Coding(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    system: json['system'] as String,
+    elementSystem: json['elementSystem'] == null
+        ? null
+        : Element.fromJson(json['elementSystem'] as Map<String, dynamic>),
+    version: json['version'] as String,
+    elementVersion: json['elementVersion'] == null
+        ? null
+        : Element.fromJson(json['elementVersion'] as Map<String, dynamic>),
+    code: json['code'] as String,
+    elementCode: json['elementCode'] == null
+        ? null
+        : Element.fromJson(json['elementCode'] as Map<String, dynamic>),
+    display: json['display'] as String,
+    elementDisplay: json['elementDisplay'] == null
+        ? null
+        : Element.fromJson(json['elementDisplay'] as Map<String, dynamic>),
+    userSelected: json['userSelected'] as bool,
+    elementUserSelected: json['elementUserSelected'] == null
+        ? null
+        : Element.fromJson(json['elementUserSelected'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$CodingToJson(Coding instance) => <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'system': instance.system,
+      'elementSystem': instance.elementSystem?.toJson(),
+      'version': instance.version,
+      'elementVersion': instance.elementVersion?.toJson(),
+      'code': instance.code,
+      'elementCode': instance.elementCode?.toJson(),
+      'display': instance.display,
+      'elementDisplay': instance.elementDisplay?.toJson(),
+      'userSelected': instance.userSelected,
+      'elementUserSelected': instance.elementUserSelected?.toJson(),
+    };

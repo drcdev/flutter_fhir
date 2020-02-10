@@ -4,63 +4,21 @@ import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-part 'relatedArtifact.g.dart';
-
 @JsonSerializable(explicitToJson: true)
 class RelatedArtifact {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  The type of relationship to the related artifact.
   String type; // <code> enum: documentation/justification/citation/predecessor/successor/derived-from/depends-on/composed-of;
-
-  //  Extensions for type
   Element elementType;
-
-  //  A short label that can be used to reference the citation from
-  // elsewhere in the containing artifact, such as a footnote index.
   String label;
-
-  //  Extensions for label
   Element elementLabel;
-
-  //  A brief description of the document or knowledge resource being
-  // referenced, suitable for display to a consumer.
   String display;
-
-  //  Extensions for display
   Element elementDisplay;
-
-  //  A bibliographic citation for the related artifact. This text SHOULD be
-  // formatted according to an accepted citation format.
   String citation;
-
-  //  Extensions for citation
   Element elementCitation;
-
-  //  A url for the artifact that can be followed to access the actual
-  // content.
   String url;
-
-  //  Extensions for url
   Element elementUrl;
-
-  //  The document being referenced, represented as an attachment. This is
-  // exclusive with the resource element.
   Attachment document;
-
-  //  The related resource, such as a library, value set, profile, or other
-  // knowledge resource.
   String resource;
 
 RelatedArtifact(
@@ -84,3 +42,60 @@ RelatedArtifact(
   Map<String, dynamic> toJson() => _$RelatedArtifactToJson(this);
 }
 
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+RelatedArtifact _$RelatedArtifactFromJson(Map<String, dynamic> json) {
+  return RelatedArtifact(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    type: json['type'] as String,
+    elementType: json['elementType'] == null
+        ? null
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
+    label: json['label'] as String,
+    elementLabel: json['elementLabel'] == null
+        ? null
+        : Element.fromJson(json['elementLabel'] as Map<String, dynamic>),
+    display: json['display'] as String,
+    elementDisplay: json['elementDisplay'] == null
+        ? null
+        : Element.fromJson(json['elementDisplay'] as Map<String, dynamic>),
+    citation: json['citation'] as String,
+    elementCitation: json['elementCitation'] == null
+        ? null
+        : Element.fromJson(json['elementCitation'] as Map<String, dynamic>),
+    url: json['url'] as String,
+    elementUrl: json['elementUrl'] == null
+        ? null
+        : Element.fromJson(json['elementUrl'] as Map<String, dynamic>),
+    document: json['document'] == null
+        ? null
+        : Attachment.fromJson(json['document'] as Map<String, dynamic>),
+    resource: json['resource'] as String,
+  );
+}
+
+Map<String, dynamic> _$RelatedArtifactToJson(RelatedArtifact instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+      'label': instance.label,
+      'elementLabel': instance.elementLabel?.toJson(),
+      'display': instance.display,
+      'elementDisplay': instance.elementDisplay?.toJson(),
+      'citation': instance.citation,
+      'elementCitation': instance.elementCitation?.toJson(),
+      'url': instance.url,
+      'elementUrl': instance.elementUrl?.toJson(),
+      'document': instance.document?.toJson(),
+      'resource': instance.resource,
+    };

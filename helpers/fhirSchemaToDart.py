@@ -2,6 +2,8 @@
 
 import json
 import re
+import os
+import subprocess
 
 #makes first letter of word lowercase
 def lowcc(string):
@@ -78,10 +80,10 @@ for objects in definitions:
     if('properties' in definitions[objects] and str(objects) != 'ResourceList'):
         objected = 'Lists' if objects == 'List' else objects
         if('_' not in objects):
-            # dartCode = ''.join([dartCode, 
-            #                     "part '", 
-            #                     lowcc(objected), 
-            #                     ".g.dart';\n\n"])
+            dartCode = ''.join([dartCode, 
+                                "part '", 
+                                lowcc(objected), 
+                                ".g.dart';\n\n"])
             importL = lowcc(objected)
             importDict[importL] = []
         else:
@@ -90,7 +92,7 @@ for objects in definitions:
             
         #add JsonSerializable code at top of Dart class
         dartCode = ''.join([dartCode, 
-                            # '@JsonSerializable(explicitToJson: true)\nclass ', 
+                            '@JsonSerializable(explicitToJson: true)\nclass ', 
                             objected, 
                             ' {\n'])
         
@@ -167,12 +169,12 @@ for objects in definitions:
                                             primitiveDart(value['type']), 
                                             ' '])
                         
-                    #include the pattern as a comment
-                    # dartCode = ''.join([dartCode, 
-                    #                     rem_(field), 
-                    #                     '; //  pattern: ', 
-                    #                     value['pattern'], 
-                    #                     '\n'])
+                    # include the pattern as a comment
+                    dartCode = ''.join([dartCode, 
+                                        rem_(field), 
+                                        '; //  pattern: ', 
+                                        value['pattern'], 
+                                        '\n'])
                     
                     if(not isPrimitive(value['type']) and 
                        value['type'] not in importDict[importL]):
@@ -222,54 +224,109 @@ for objects in definitions:
                                     rem_(field), ';\n'])   
                                   
         #add more constructor code
-        # dartCode = ''.join([dartCode, '\n', objected, '(\n  '])
-        # required = ''
-        # optional = ''
-#        for field in schema['definitions'][objects]['properties']:
+        dartCode = ''.join([dartCode, '\n', objected, '(\n  '])
+        required = ''
+        optional = ''
+        for field in schema['definitions'][objects]['properties']:
             
             #resourceType isn't a passable argument
-            # if(field != 'resourceType'):
+            if(field != 'resourceType'):
                 
-            #     #separate the optional and required constructor parameters
-            #     if('required' not in schema['definitions'][objects] or
-            #        field not in schema['definitions'][objects]['required']):
-            #             optional = ''.join([optional, 'this.', rem_(field), ',\n    '])
-            #     else:
-            #         required = ''.join([required, 'this.', rem_(field), ',\n    '])
+                #separate the optional and required constructor parameters
+                if('required' not in schema['definitions'][objects] or
+                    field not in schema['definitions'][objects]['required']):
+                        optional = ''.join([optional, 'this.', rem_(field), ',\n    '])
+                else:
+                    required = ''.join([required, 'this.', rem_(field), ',\n    '])
                     
         #create the factory
-        # dartCode = ''.join([dartCode, 
-        #                     required,
-        #                     '{',
-        #                     optional,
-        #                     '});\n\n  factory ', 
-        #                     objected, 
-        #                     '.fromJson',
-        #                     '(Map<String, dynamic> json) => _$', 
-        #                     objected, 
-        #                     'FromJson(json);\n  Map<String, dynamic> toJson()',
-        #                     ' => _$', 
-        #                     objected, 
-        #                     'ToJson(this);\n}\n\n'])
-            
-with open("dartFhirClasses.dart", "w", encoding="utf-8") as f:
-    f.write(dartCode)
+        dartCode = ''.join([dartCode, 
+                            required,
+                            '{',
+                            optional,
+                            '});\n\n  factory ', 
+                            objected, 
+                            '.fromJson',
+                            '(Map<String, dynamic> json) => _$', 
+                            objected, 
+                            'FromJson(json);\n  Map<String, dynamic> toJson()',
+                            ' => _$', 
+                            objected, 
+                            'ToJson(this);\n}\n\n'])
+
+dartCode = dartCode.replace('''  factory Patient.fromJson(Map<String, dynamic> json) => _$PatientFromJson(json);
+  Map<String, dynamic> toJson() => _$PatientToJson(this);
+}''', '''String printName(){
+    return('${(this.name?.first?.family?.toString() ?? '')}'
+        ', '
+        '${(this.name?.first?.given?.first?.toString() ?? '')}'
+    );
+  }
+
+  factory Patient.fromJson(Map<String, dynamic> json) => _$PatientFromJson(json);
+  Map<String, dynamic> toJson() => _$PatientToJson(this);
+}
+
+Future<Patient> readPatient(String id) async {
+  final directory = await getApplicationDocumentsDirectory(); //get current directory
+  Patient pt = Patient.fromJson(jsonDecode(await File('${directory.path}/' + id + '.txt').readAsString())); //read patient from file
+  return(pt);
+}
+
+Future<List<Patient>> readPtList() async {
+  final directory = await getApplicationDocumentsDirectory(); //get current directory
+  List<String> ptNumbers = (await File('${directory.path}/fhir/patient.txt').readAsString()).split('\\n');
+  var ptList = new List<Patient>();
+  for(var i = 0; i < ptNumbers.length; i++){
+    final pt = File('${directory.path}/fhir/patient/' + ptNumbers[i] + '.txt');
+    var newpt = Patient.fromJson(json.decode(await pt.readAsString()));
+    ptList.add(newpt);
+  }
+  return ptList;
+}''')
+
+# with open("dartFhirClasses.dart", "w", encoding="utf-8") as f:
+#     f.write(dartCode)
+# f.close()
+
+fhirDir = '../lib/fhirClasses/'
+
+#add in any import files that are needed
+dartCode = dartCode.split("part '")
+for code in dartCode:
+    g = re.search(r'(?<=\nclass\s).*(?=\s{)', code)
+    if(g != None):
+        g = lowcc(g.group(0))
+        code = ''.join(["\npart '", code])
+        for l in importDict[g]:
+            l = 'Lists' if l == 'List' else l
+            if('_' not in l and lowcc(l) != lowcc(g) and lowcc(l) != 'xhtml'):
+                code = ''.join(["import 'package:flutter_fhir/fhirClasses/",
+                                lowcc(l), ".dart';\n", code])
+        code = code.replace(',\n    });', '\n    });')
+        code = ''.join(["import 'package:json_annotation/json_annotation.dart';\n\n", code])
+        with open(fhirDir + lowcc(g) + ".dart","w", encoding="utf-8") as f:
+            f.write(code)
+        f.close()
+        
+for filename in os.listdir(fhirDir):
+    print(filename)
+    if('.g.dart' not in filename and 'resourceList' not in filename):
+        with open(fhirDir + filename) as file1:
+            code1 = file1.read()
+            code1 = code1.replace("\n\npart '" + filename.replace('.dart', '.g.dart') + "';", '')
+        with open(fhirDir + filename.replace('.dart', '.g.dart'), encoding='utf8') as file2:
+            code2 = file2.read() 
+            code2 = code2.replace("\n\npart of '" + filename + "';\n", '')
+        with open(fhirDir + '001' + filename, "w", encoding="utf-8") as f:
+            f.write(code1 + '\n' + code2)
 f.close()
 
-# #add in any import files that are needed
-# dartCode = dartCode.split("part '")
-# for code in dartCode:
-#     g = re.search(r'(?<=\nclass\s).*(?=\s{)', code)
-#     if(g != None):
-#         g = lowcc(g.group(0))
-#         code = ''.join(["\npart '", code])
-#         for l in importDict[g]:
-#             l = 'Lists' if l == 'List' else l
-#             if('_' not in l and lowcc(l) != lowcc(g) and lowcc(l) != 'xhtml'):
-#                 code = ''.join(["import 'package:flutter_fhir/fhirClasses/",
-#                                 lowcc(l), ".dart';\n", code])
-#         code = code.replace(',\n    });', '\n    });')
-#         code = ''.join(["import 'package:json_annotation/json_annotation.dart';\n\n", code])
-#         with open("./class/" + lowcc(g) + ".dart","w", encoding="utf-8") as f:
-#             f.write(code)
-#         f.close()
+    # resource: json['resource'] == null
+    #     ? null
+    #     : ResourceTypes(json['resource']['resourceType'], json['resource'] as Map<String, dynamic>),
+
+    # contained: (json['contained'] as List)
+    #     ?.map((e) =>
+    #         e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+    #     ?.toList(),

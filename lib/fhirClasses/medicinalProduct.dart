@@ -11,144 +11,39 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-part 'medicinalProduct.g.dart';
-
 @JsonSerializable(explicitToJson: true)
 class MedicinalProduct {
-
-  //  This is a MedicinalProduct resource
   final String resourceType= 'MedicinalProduct';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   String implicitRules;
-
-  //  Extensions for implicitRules
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   String language;
-
-  //  Extensions for language
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Business identifier for this product. Could be an MPID.
   List<Identifier> identifier;
-
-  //  Regulatory type, e.g. Investigational or Authorized.
   CodeableConcept type;
-
-  //  If this medicine applies to human or veterinary uses.
   Coding domain;
-
-  //  The dose form for a single part product, or combined form of a
-  // multiple part product.
   CodeableConcept combinedPharmaceuticalDoseForm;
-
-  //  The legal status of supply of the medicinal product as classified by
-  // the regulator.
   CodeableConcept legalStatusOfSupply;
-
-  //  Whether the Medicinal Product is subject to additional monitoring for
-  // regulatory reasons.
   CodeableConcept additionalMonitoringIndicator;
-
-  //  Whether the Medicinal Product is subject to special measures for
-  // regulatory reasons.
   List<String> specialMeasures;
-
-  //  Extensions for specialMeasures
   List<Element> elementSpecialMeasures;
-
-  //  If authorised for use in children.
   CodeableConcept paediatricUseIndicator;
-
-  //  Allows the product to be classified by various systems.
   List<CodeableConcept> productClassification;
-
-  //  Marketing status of the medicinal product, in contrast to marketing
-  // authorizaton.
   List<MarketingStatus> marketingStatus;
-
-  //  Pharmaceutical aspects of product.
   List<Reference> pharmaceuticalProduct;
-
-  //  Package representation for the product.
   List<Reference> packagedMedicinalProduct;
-
-  //  Supporting documentation, typically for regulatory submission.
   List<Reference> attachedDocument;
-
-  //  A master file for to the medicinal product (e.g. Pharmacovigilance
-  // System Master File).
   List<Reference> masterFile;
-
-  //  A product specific contact, person (in a role), or an organization.
   List<Reference> contact;
-
-  //  Clinical trials or studies that this product is involved in.
   List<Reference> clinicalTrial;
-
-  //  The product's name, including full name and possibly coded parts.
   List<MedicinalProduct_Name> name;
-
-  //  Reference to another product, e.g. for linking authorised to
-  // investigational product.
   List<Identifier> crossReference;
-
-  //  An operation applied to the product, for manufacturing or
-  // adminsitrative purpose.
   List<MedicinalProduct_ManufacturingBusinessOperation> manufacturingBusinessOperation;
-
-  //  Indicates if the medicinal product has an orphan designation for the
-  // treatment of a rare disease.
   List<MedicinalProduct_SpecialDesignation> specialDesignation;
 
 MedicinalProduct(
@@ -191,43 +86,12 @@ MedicinalProduct(
 
 @JsonSerializable(explicitToJson: true)
 class MedicinalProduct_Name {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The full product name.
   String productName;
-
-  //  Extensions for productName
   Element elementProductName;
-
-  //  Coding words or phrases of the name.
   List<MedicinalProduct_NamePart> namePart;
-
-  //  Country where the name applies.
   List<MedicinalProduct_CountryLanguage> countryLanguage;
 
 MedicinalProduct_Name(
@@ -246,40 +110,11 @@ MedicinalProduct_Name(
 
 @JsonSerializable(explicitToJson: true)
 class MedicinalProduct_NamePart {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A fragment of a product name.
   String part;
-
-  //  Extensions for part
   Element elementPart;
-
-  //  Idenifying type for this part of the name (e.g. strength part).
   Coding type;
 
 MedicinalProduct_NamePart(
@@ -297,40 +132,11 @@ MedicinalProduct_NamePart(
 
 @JsonSerializable(explicitToJson: true)
 class MedicinalProduct_CountryLanguage {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Country code for where this name applies.
   CodeableConcept country;
-
-  //  Jurisdiction code for where this name applies.
   CodeableConcept jurisdiction;
-
-  //  Language code for this name.
   CodeableConcept language;
 
 MedicinalProduct_CountryLanguage(
@@ -348,52 +154,15 @@ MedicinalProduct_CountryLanguage(
 
 @JsonSerializable(explicitToJson: true)
 class MedicinalProduct_ManufacturingBusinessOperation {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The type of manufacturing operation.
   CodeableConcept operationType;
-
-  //  Regulatory authorization reference number.
   Identifier authorisationReferenceNumber;
-
-  //  Regulatory authorization date.
   DateTime effectiveDate;
-
-  //  Extensions for effectiveDate
   Element elementEffectiveDate;
-
-  //  To indicate if this proces is commercially confidential.
   CodeableConcept confidentialityIndicator;
-
-  //  The manufacturer or establishment associated with the process.
   List<Reference> manufacturer;
-
-  //  A regulator which oversees the operation.
   Reference regulator;
 
 MedicinalProduct_ManufacturingBusinessOperation(
@@ -415,58 +184,17 @@ MedicinalProduct_ManufacturingBusinessOperation(
 
 @JsonSerializable(explicitToJson: true)
 class MedicinalProduct_SpecialDesignation {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Identifier for the designation, or procedure number.
   List<Identifier> identifier;
-
-  //  The type of special designation, e.g. orphan drug, minor use.
   CodeableConcept type;
-
-  //  The intended use of the product, e.g. prevention, treatment.
   CodeableConcept intendedUse;
-
-  //  Condition for which the medicinal use applies.
   CodeableConcept indicationCodeableConcept;
-
-  //  Condition for which the medicinal use applies.
   Reference indicationReference;
-
-  //  For example granted, pending, expired or withdrawn.
   CodeableConcept status;
-
-  //  Date when the designation was granted.
   DateTime date;
-
-  //  Extensions for date
   Element elementDate;
-
-  //  Animal species for which this applies.
   CodeableConcept species;
 
 MedicinalProduct_SpecialDesignation(
@@ -488,3 +216,414 @@ MedicinalProduct_SpecialDesignation(
   Map<String, dynamic> toJson() => _$MedicinalProduct_SpecialDesignationToJson(this);
 }
 
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+MedicinalProduct _$MedicinalProductFromJson(Map<String, dynamic> json) {
+  return MedicinalProduct(
+    (json['name'] as List)
+        ?.map((e) => e == null
+            ? null
+            : MedicinalProduct_Name.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    id: json['id'] as String,
+    meta: json['meta'] == null
+        ? null
+        : Meta.fromJson(json['meta'] as Map<String, dynamic>),
+    implicitRules: json['implicitRules'] as String,
+    elementImplicitRules: json['elementImplicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['elementImplicitRules'] as Map<String, dynamic>),
+    language: json['language'] as String,
+    elementLanguage: json['elementLanguage'] == null
+        ? null
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
+    text: json['text'] == null
+        ? null
+        : Narrative.fromJson(json['text'] as Map<String, dynamic>),
+    contained: (json['contained'] as List)
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.toList(),
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    identifier: (json['identifier'] as List)
+        ?.map((e) =>
+            e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    type: json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
+    domain: json['domain'] == null
+        ? null
+        : Coding.fromJson(json['domain'] as Map<String, dynamic>),
+    combinedPharmaceuticalDoseForm:
+        json['combinedPharmaceuticalDoseForm'] == null
+            ? null
+            : CodeableConcept.fromJson(
+                json['combinedPharmaceuticalDoseForm'] as Map<String, dynamic>),
+    legalStatusOfSupply: json['legalStatusOfSupply'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['legalStatusOfSupply'] as Map<String, dynamic>),
+    additionalMonitoringIndicator: json['additionalMonitoringIndicator'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['additionalMonitoringIndicator'] as Map<String, dynamic>),
+    specialMeasures:
+        (json['specialMeasures'] as List)?.map((e) => e as String)?.toList(),
+    elementSpecialMeasures: (json['elementSpecialMeasures'] as List)
+        ?.map((e) =>
+            e == null ? null : Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    paediatricUseIndicator: json['paediatricUseIndicator'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['paediatricUseIndicator'] as Map<String, dynamic>),
+    productClassification: (json['productClassification'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    marketingStatus: (json['marketingStatus'] as List)
+        ?.map((e) => e == null
+            ? null
+            : MarketingStatus.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    pharmaceuticalProduct: (json['pharmaceuticalProduct'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    packagedMedicinalProduct: (json['packagedMedicinalProduct'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    attachedDocument: (json['attachedDocument'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    masterFile: (json['masterFile'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    contact: (json['contact'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    clinicalTrial: (json['clinicalTrial'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    crossReference: (json['crossReference'] as List)
+        ?.map((e) =>
+            e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    manufacturingBusinessOperation:
+        (json['manufacturingBusinessOperation'] as List)
+            ?.map((e) => e == null
+                ? null
+                : MedicinalProduct_ManufacturingBusinessOperation.fromJson(
+                    e as Map<String, dynamic>))
+            ?.toList(),
+    specialDesignation: (json['specialDesignation'] as List)
+        ?.map((e) => e == null
+            ? null
+            : MedicinalProduct_SpecialDesignation.fromJson(
+                e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$MedicinalProductToJson(MedicinalProduct instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'domain': instance.domain?.toJson(),
+      'combinedPharmaceuticalDoseForm':
+          instance.combinedPharmaceuticalDoseForm?.toJson(),
+      'legalStatusOfSupply': instance.legalStatusOfSupply?.toJson(),
+      'additionalMonitoringIndicator':
+          instance.additionalMonitoringIndicator?.toJson(),
+      'specialMeasures': instance.specialMeasures,
+      'elementSpecialMeasures':
+          instance.elementSpecialMeasures?.map((e) => e?.toJson())?.toList(),
+      'paediatricUseIndicator': instance.paediatricUseIndicator?.toJson(),
+      'productClassification':
+          instance.productClassification?.map((e) => e?.toJson())?.toList(),
+      'marketingStatus':
+          instance.marketingStatus?.map((e) => e?.toJson())?.toList(),
+      'pharmaceuticalProduct':
+          instance.pharmaceuticalProduct?.map((e) => e?.toJson())?.toList(),
+      'packagedMedicinalProduct':
+          instance.packagedMedicinalProduct?.map((e) => e?.toJson())?.toList(),
+      'attachedDocument':
+          instance.attachedDocument?.map((e) => e?.toJson())?.toList(),
+      'masterFile': instance.masterFile?.map((e) => e?.toJson())?.toList(),
+      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
+      'clinicalTrial':
+          instance.clinicalTrial?.map((e) => e?.toJson())?.toList(),
+      'name': instance.name?.map((e) => e?.toJson())?.toList(),
+      'crossReference':
+          instance.crossReference?.map((e) => e?.toJson())?.toList(),
+      'manufacturingBusinessOperation': instance.manufacturingBusinessOperation
+          ?.map((e) => e?.toJson())
+          ?.toList(),
+      'specialDesignation':
+          instance.specialDesignation?.map((e) => e?.toJson())?.toList(),
+    };
+
+MedicinalProduct_Name _$MedicinalProduct_NameFromJson(
+    Map<String, dynamic> json) {
+  return MedicinalProduct_Name(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    productName: json['productName'] as String,
+    elementProductName: json['elementProductName'] == null
+        ? null
+        : Element.fromJson(json['elementProductName'] as Map<String, dynamic>),
+    namePart: (json['namePart'] as List)
+        ?.map((e) => e == null
+            ? null
+            : MedicinalProduct_NamePart.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    countryLanguage: (json['countryLanguage'] as List)
+        ?.map((e) => e == null
+            ? null
+            : MedicinalProduct_CountryLanguage.fromJson(
+                e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$MedicinalProduct_NameToJson(
+        MedicinalProduct_Name instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'productName': instance.productName,
+      'elementProductName': instance.elementProductName?.toJson(),
+      'namePart': instance.namePart?.map((e) => e?.toJson())?.toList(),
+      'countryLanguage':
+          instance.countryLanguage?.map((e) => e?.toJson())?.toList(),
+    };
+
+MedicinalProduct_NamePart _$MedicinalProduct_NamePartFromJson(
+    Map<String, dynamic> json) {
+  return MedicinalProduct_NamePart(
+    json['type'] == null
+        ? null
+        : Coding.fromJson(json['type'] as Map<String, dynamic>),
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    part: json['part'] as String,
+    elementPart: json['elementPart'] == null
+        ? null
+        : Element.fromJson(json['elementPart'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$MedicinalProduct_NamePartToJson(
+        MedicinalProduct_NamePart instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'part': instance.part,
+      'elementPart': instance.elementPart?.toJson(),
+      'type': instance.type?.toJson(),
+    };
+
+MedicinalProduct_CountryLanguage _$MedicinalProduct_CountryLanguageFromJson(
+    Map<String, dynamic> json) {
+  return MedicinalProduct_CountryLanguage(
+    json['country'] == null
+        ? null
+        : CodeableConcept.fromJson(json['country'] as Map<String, dynamic>),
+    json['language'] == null
+        ? null
+        : CodeableConcept.fromJson(json['language'] as Map<String, dynamic>),
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    jurisdiction: json['jurisdiction'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['jurisdiction'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$MedicinalProduct_CountryLanguageToJson(
+        MedicinalProduct_CountryLanguage instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'country': instance.country?.toJson(),
+      'jurisdiction': instance.jurisdiction?.toJson(),
+      'language': instance.language?.toJson(),
+    };
+
+MedicinalProduct_ManufacturingBusinessOperation
+    _$MedicinalProduct_ManufacturingBusinessOperationFromJson(
+        Map<String, dynamic> json) {
+  return MedicinalProduct_ManufacturingBusinessOperation(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    operationType: json['operationType'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['operationType'] as Map<String, dynamic>),
+    authorisationReferenceNumber: json['authorisationReferenceNumber'] == null
+        ? null
+        : Identifier.fromJson(
+            json['authorisationReferenceNumber'] as Map<String, dynamic>),
+    effectiveDate: json['effectiveDate'] == null
+        ? null
+        : DateTime.parse(json['effectiveDate'] as String),
+    elementEffectiveDate: json['elementEffectiveDate'] == null
+        ? null
+        : Element.fromJson(
+            json['elementEffectiveDate'] as Map<String, dynamic>),
+    confidentialityIndicator: json['confidentialityIndicator'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['confidentialityIndicator'] as Map<String, dynamic>),
+    manufacturer: (json['manufacturer'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    regulator: json['regulator'] == null
+        ? null
+        : Reference.fromJson(json['regulator'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$MedicinalProduct_ManufacturingBusinessOperationToJson(
+        MedicinalProduct_ManufacturingBusinessOperation instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'operationType': instance.operationType?.toJson(),
+      'authorisationReferenceNumber':
+          instance.authorisationReferenceNumber?.toJson(),
+      'effectiveDate': instance.effectiveDate?.toIso8601String(),
+      'elementEffectiveDate': instance.elementEffectiveDate?.toJson(),
+      'confidentialityIndicator': instance.confidentialityIndicator?.toJson(),
+      'manufacturer': instance.manufacturer?.map((e) => e?.toJson())?.toList(),
+      'regulator': instance.regulator?.toJson(),
+    };
+
+MedicinalProduct_SpecialDesignation
+    _$MedicinalProduct_SpecialDesignationFromJson(Map<String, dynamic> json) {
+  return MedicinalProduct_SpecialDesignation(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    identifier: (json['identifier'] as List)
+        ?.map((e) =>
+            e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    type: json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
+    intendedUse: json['intendedUse'] == null
+        ? null
+        : CodeableConcept.fromJson(json['intendedUse'] as Map<String, dynamic>),
+    indicationCodeableConcept: json['indicationCodeableConcept'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['indicationCodeableConcept'] as Map<String, dynamic>),
+    indicationReference: json['indicationReference'] == null
+        ? null
+        : Reference.fromJson(
+            json['indicationReference'] as Map<String, dynamic>),
+    status: json['status'] == null
+        ? null
+        : CodeableConcept.fromJson(json['status'] as Map<String, dynamic>),
+    date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
+    elementDate: json['elementDate'] == null
+        ? null
+        : Element.fromJson(json['elementDate'] as Map<String, dynamic>),
+    species: json['species'] == null
+        ? null
+        : CodeableConcept.fromJson(json['species'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$MedicinalProduct_SpecialDesignationToJson(
+        MedicinalProduct_SpecialDesignation instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'intendedUse': instance.intendedUse?.toJson(),
+      'indicationCodeableConcept': instance.indicationCodeableConcept?.toJson(),
+      'indicationReference': instance.indicationReference?.toJson(),
+      'status': instance.status?.toJson(),
+      'date': instance.date?.toIso8601String(),
+      'elementDate': instance.elementDate?.toJson(),
+      'species': instance.species?.toJson(),
+    };

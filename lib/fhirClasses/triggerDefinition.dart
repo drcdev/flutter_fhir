@@ -7,63 +7,21 @@ import 'package:flutter_fhir/fhirClasses/timing.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-part 'triggerDefinition.g.dart';
-
 @JsonSerializable(explicitToJson: true)
 class TriggerDefinition {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  The type of triggering event.
   String type; // <code> enum: named-event/periodic/data-changed/data-added/data-modified/data-removed/data-accessed/data-access-ended;
-
-  //  Extensions for type
   Element elementType;
-
-  //  A formal name for the event. This may be an absolute URI that
-  // identifies the event formally (e.g. from a trigger registry), or a
-  // simple relative URI that identifies the event in a local context.
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  The timing of the event (if this is a periodic trigger).
   Timing timingTiming;
-
-  //  The timing of the event (if this is a periodic trigger).
   Reference timingReference;
-
-  //  The timing of the event (if this is a periodic trigger).
   String timingDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
-
-  //  Extensions for timingDate
   Element elementTimingDate;
-
-  //  The timing of the event (if this is a periodic trigger).
   String timingDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for timingDateTime
   Element elementTimingDateTime;
-
-  //  The triggering data of the event (if this is a data trigger). If more
-  // than one data is requirement is specified, then all the data
-  // requirements must be true.
   List<DataRequirement> data;
-
-  //  A boolean-valued expression that is evaluated in the context of the
-  // container of the trigger definition and returns whether or not the
-  // trigger fires.
   Expression condition;
 
 TriggerDefinition(
@@ -87,3 +45,67 @@ TriggerDefinition(
   Map<String, dynamic> toJson() => _$TriggerDefinitionToJson(this);
 }
 
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+TriggerDefinition _$TriggerDefinitionFromJson(Map<String, dynamic> json) {
+  return TriggerDefinition(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    type: json['type'] as String,
+    elementType: json['elementType'] == null
+        ? null
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
+    name: json['name'] as String,
+    elementName: json['elementName'] == null
+        ? null
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
+    timingTiming: json['timingTiming'] == null
+        ? null
+        : Timing.fromJson(json['timingTiming'] as Map<String, dynamic>),
+    timingReference: json['timingReference'] == null
+        ? null
+        : Reference.fromJson(json['timingReference'] as Map<String, dynamic>),
+    timingDate: json['timingDate'] as String,
+    elementTimingDate: json['elementTimingDate'] == null
+        ? null
+        : Element.fromJson(json['elementTimingDate'] as Map<String, dynamic>),
+    timingDateTime: json['timingDateTime'] as String,
+    elementTimingDateTime: json['elementTimingDateTime'] == null
+        ? null
+        : Element.fromJson(
+            json['elementTimingDateTime'] as Map<String, dynamic>),
+    data: (json['data'] as List)
+        ?.map((e) => e == null
+            ? null
+            : DataRequirement.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    condition: json['condition'] == null
+        ? null
+        : Expression.fromJson(json['condition'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$TriggerDefinitionToJson(TriggerDefinition instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'timingTiming': instance.timingTiming?.toJson(),
+      'timingReference': instance.timingReference?.toJson(),
+      'timingDate': instance.timingDate,
+      'elementTimingDate': instance.elementTimingDate?.toJson(),
+      'timingDateTime': instance.timingDateTime,
+      'elementTimingDateTime': instance.elementTimingDateTime?.toJson(),
+      'data': instance.data?.map((e) => e?.toJson())?.toList(),
+      'condition': instance.condition?.toJson(),
+    };

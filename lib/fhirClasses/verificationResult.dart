@@ -10,134 +10,37 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-part 'verificationResult.g.dart';
-
 @JsonSerializable(explicitToJson: true)
 class VerificationResult {
-
-  //  This is a VerificationResult resource
   final String resourceType= 'VerificationResult';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   String implicitRules;
-
-  //  Extensions for implicitRules
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   String language;
-
-  //  Extensions for language
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A resource that was validated.
   List<Reference> target;
-
-  //  The fhirpath location(s) within the resource that was validated.
   List<String> targetLocation;
-
-  //  Extensions for targetLocation
   List<Element> elementTargetLocation;
-
-  //  The frequency with which the target must be validated (none; initial;
-  // periodic).
   CodeableConcept need;
-
-  //  The validation status of the target (attested; validated; in process;
-  // requires revalidation; validation failed; revalidation failed).
   String status;
-
-  //  Extensions for status
   Element elementStatus;
-
-  //  When the validation status was updated.
   DateTime statusDate;
-
-  //  Extensions for statusDate
   Element elementStatusDate;
-
-  //  What the target is validated against (nothing; primary source;
-  // multiple sources).
   CodeableConcept validationType;
-
-  //  The primary process by which the target is validated (edit check;
-  // value set; primary source; multiple sources; standalone; in context).
   List<CodeableConcept> validationProcess;
-
-  //  Frequency of revalidation.
   Timing frequency;
-
-  //  The date/time validation was last completed (including failed
-  // validations).
   DateTime lastPerformed;
-
-  //  Extensions for lastPerformed
   Element elementLastPerformed;
-
-  //  The date when target is next validated, if appropriate.
   String nextScheduled;
-
-  //  Extensions for nextScheduled
   Element elementNextScheduled;
-
-  //  The result if validation fails (fatal; warning; record only; none).
   CodeableConcept failureAction;
-
-  //  Information about the primary source(s) involved in validation.
   List<VerificationResult_PrimarySource> primarySource;
-
-  //  Information about the entity attesting to information.
   VerificationResult_Attestation attestation;
-
-  //  Information about the entity validating information.
   List<VerificationResult_Validator> validator;
 
 VerificationResult(
@@ -178,60 +81,16 @@ VerificationResult(
 
 @JsonSerializable(explicitToJson: true)
 class VerificationResult_PrimarySource {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Reference to the primary source.
   Reference who;
-
-  //  Type of primary source (License Board; Primary Education; Continuing
-  // Education; Postal Service; Relationship owner; Registration Authority;
-  // legal source; issuing source; authoritative source).
   List<CodeableConcept> type;
-
-  //  Method for communicating with the primary source (manual; API; Push).
   List<CodeableConcept> communicationMethod;
-
-  //  Status of the validation of the target against the primary source
-  // (successful; failed; unknown).
   CodeableConcept validationStatus;
-
-  //  When the target was validated against the primary source.
   DateTime validationDate;
-
-  //  Extensions for validationDate
   Element elementValidationDate;
-
-  //  Ability of the primary source to push updates/alerts (yes; no;
-  // undetermined).
   CodeableConcept canPushUpdates;
-
-  //  Type of alerts/updates the primary source can send (specific requested
-  // changes; any changes; as defined by source).
   List<CodeableConcept> pushTypeAvailable;
 
 VerificationResult_PrimarySource(
@@ -254,70 +113,19 @@ VerificationResult_PrimarySource(
 
 @JsonSerializable(explicitToJson: true)
 class VerificationResult_Attestation {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The individual or organization attesting to information.
   Reference who;
-
-  //  When the who is asserting on behalf of another (organization or
-  // individual).
   Reference onBehalfOf;
-
-  //  The method by which attested information was submitted/retrieved
-  // (manual; API; Push).
   CodeableConcept communicationMethod;
-
-  //  The date the information was attested to.
   String date;
-
-  //  Extensions for date
   Element elementDate;
-
-  //  A digital identity certificate associated with the attestation source.
   String sourceIdentityCertificate;
-
-  //  Extensions for sourceIdentityCertificate
   Element elementSourceIdentityCertificate;
-
-  //  A digital identity certificate associated with the proxy entity
-  // submitting attested information on behalf of the attestation source.
   String proxyIdentityCertificate;
-
-  //  Extensions for proxyIdentityCertificate
   Element elementProxyIdentityCertificate;
-
-  //  Signed assertion by the proxy entity indicating that they have the
-  // right to submit attested information on behalf of the attestation
-  // source.
   Signature proxySignature;
-
-  //  Signed assertion by the attestation source that they have attested to
-  // the information.
   Signature sourceSignature;
 
 VerificationResult_Attestation(
@@ -343,44 +151,12 @@ VerificationResult_Attestation(
 
 @JsonSerializable(explicitToJson: true)
 class VerificationResult_Validator {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Reference to the organization validating information.
   Reference organization;
-
-  //  A digital identity certificate associated with the validator.
   String identityCertificate;
-
-  //  Extensions for identityCertificate
   Element elementIdentityCertificate;
-
-  //  Signed assertion by the validator that they have validated the
-  // information.
   Signature attestationSignature;
 
 VerificationResult_Validator(
@@ -397,3 +173,321 @@ VerificationResult_Validator(
   Map<String, dynamic> toJson() => _$VerificationResult_ValidatorToJson(this);
 }
 
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+VerificationResult _$VerificationResultFromJson(Map<String, dynamic> json) {
+  return VerificationResult(
+    id: json['id'] as String,
+    meta: json['meta'] == null
+        ? null
+        : Meta.fromJson(json['meta'] as Map<String, dynamic>),
+    implicitRules: json['implicitRules'] as String,
+    elementImplicitRules: json['elementImplicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['elementImplicitRules'] as Map<String, dynamic>),
+    language: json['language'] as String,
+    elementLanguage: json['elementLanguage'] == null
+        ? null
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
+    text: json['text'] == null
+        ? null
+        : Narrative.fromJson(json['text'] as Map<String, dynamic>),
+    contained: (json['contained'] as List)
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.toList(),
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    target: (json['target'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    targetLocation:
+        (json['targetLocation'] as List)?.map((e) => e as String)?.toList(),
+    elementTargetLocation: (json['elementTargetLocation'] as List)
+        ?.map((e) =>
+            e == null ? null : Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    need: json['need'] == null
+        ? null
+        : CodeableConcept.fromJson(json['need'] as Map<String, dynamic>),
+    status: json['status'] as String,
+    elementStatus: json['elementStatus'] == null
+        ? null
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
+    statusDate: json['statusDate'] == null
+        ? null
+        : DateTime.parse(json['statusDate'] as String),
+    elementStatusDate: json['elementStatusDate'] == null
+        ? null
+        : Element.fromJson(json['elementStatusDate'] as Map<String, dynamic>),
+    validationType: json['validationType'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['validationType'] as Map<String, dynamic>),
+    validationProcess: (json['validationProcess'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    frequency: json['frequency'] == null
+        ? null
+        : Timing.fromJson(json['frequency'] as Map<String, dynamic>),
+    lastPerformed: json['lastPerformed'] == null
+        ? null
+        : DateTime.parse(json['lastPerformed'] as String),
+    elementLastPerformed: json['elementLastPerformed'] == null
+        ? null
+        : Element.fromJson(
+            json['elementLastPerformed'] as Map<String, dynamic>),
+    nextScheduled: json['nextScheduled'] as String,
+    elementNextScheduled: json['elementNextScheduled'] == null
+        ? null
+        : Element.fromJson(
+            json['elementNextScheduled'] as Map<String, dynamic>),
+    failureAction: json['failureAction'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['failureAction'] as Map<String, dynamic>),
+    primarySource: (json['primarySource'] as List)
+        ?.map((e) => e == null
+            ? null
+            : VerificationResult_PrimarySource.fromJson(
+                e as Map<String, dynamic>))
+        ?.toList(),
+    attestation: json['attestation'] == null
+        ? null
+        : VerificationResult_Attestation.fromJson(
+            json['attestation'] as Map<String, dynamic>),
+    validator: (json['validator'] as List)
+        ?.map((e) => e == null
+            ? null
+            : VerificationResult_Validator.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$VerificationResultToJson(VerificationResult instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'target': instance.target?.map((e) => e?.toJson())?.toList(),
+      'targetLocation': instance.targetLocation,
+      'elementTargetLocation':
+          instance.elementTargetLocation?.map((e) => e?.toJson())?.toList(),
+      'need': instance.need?.toJson(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'statusDate': instance.statusDate?.toIso8601String(),
+      'elementStatusDate': instance.elementStatusDate?.toJson(),
+      'validationType': instance.validationType?.toJson(),
+      'validationProcess':
+          instance.validationProcess?.map((e) => e?.toJson())?.toList(),
+      'frequency': instance.frequency?.toJson(),
+      'lastPerformed': instance.lastPerformed?.toIso8601String(),
+      'elementLastPerformed': instance.elementLastPerformed?.toJson(),
+      'nextScheduled': instance.nextScheduled,
+      'elementNextScheduled': instance.elementNextScheduled?.toJson(),
+      'failureAction': instance.failureAction?.toJson(),
+      'primarySource':
+          instance.primarySource?.map((e) => e?.toJson())?.toList(),
+      'attestation': instance.attestation?.toJson(),
+      'validator': instance.validator?.map((e) => e?.toJson())?.toList(),
+    };
+
+VerificationResult_PrimarySource _$VerificationResult_PrimarySourceFromJson(
+    Map<String, dynamic> json) {
+  return VerificationResult_PrimarySource(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    who: json['who'] == null
+        ? null
+        : Reference.fromJson(json['who'] as Map<String, dynamic>),
+    type: (json['type'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    communicationMethod: (json['communicationMethod'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    validationStatus: json['validationStatus'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['validationStatus'] as Map<String, dynamic>),
+    validationDate: json['validationDate'] == null
+        ? null
+        : DateTime.parse(json['validationDate'] as String),
+    elementValidationDate: json['elementValidationDate'] == null
+        ? null
+        : Element.fromJson(
+            json['elementValidationDate'] as Map<String, dynamic>),
+    canPushUpdates: json['canPushUpdates'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['canPushUpdates'] as Map<String, dynamic>),
+    pushTypeAvailable: (json['pushTypeAvailable'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$VerificationResult_PrimarySourceToJson(
+        VerificationResult_PrimarySource instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'who': instance.who?.toJson(),
+      'type': instance.type?.map((e) => e?.toJson())?.toList(),
+      'communicationMethod':
+          instance.communicationMethod?.map((e) => e?.toJson())?.toList(),
+      'validationStatus': instance.validationStatus?.toJson(),
+      'validationDate': instance.validationDate?.toIso8601String(),
+      'elementValidationDate': instance.elementValidationDate?.toJson(),
+      'canPushUpdates': instance.canPushUpdates?.toJson(),
+      'pushTypeAvailable':
+          instance.pushTypeAvailable?.map((e) => e?.toJson())?.toList(),
+    };
+
+VerificationResult_Attestation _$VerificationResult_AttestationFromJson(
+    Map<String, dynamic> json) {
+  return VerificationResult_Attestation(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    who: json['who'] == null
+        ? null
+        : Reference.fromJson(json['who'] as Map<String, dynamic>),
+    onBehalfOf: json['onBehalfOf'] == null
+        ? null
+        : Reference.fromJson(json['onBehalfOf'] as Map<String, dynamic>),
+    communicationMethod: json['communicationMethod'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['communicationMethod'] as Map<String, dynamic>),
+    date: json['date'] as String,
+    elementDate: json['elementDate'] == null
+        ? null
+        : Element.fromJson(json['elementDate'] as Map<String, dynamic>),
+    sourceIdentityCertificate: json['sourceIdentityCertificate'] as String,
+    elementSourceIdentityCertificate:
+        json['elementSourceIdentityCertificate'] == null
+            ? null
+            : Element.fromJson(json['elementSourceIdentityCertificate']
+                as Map<String, dynamic>),
+    proxyIdentityCertificate: json['proxyIdentityCertificate'] as String,
+    elementProxyIdentityCertificate: json['elementProxyIdentityCertificate'] ==
+            null
+        ? null
+        : Element.fromJson(
+            json['elementProxyIdentityCertificate'] as Map<String, dynamic>),
+    proxySignature: json['proxySignature'] == null
+        ? null
+        : Signature.fromJson(json['proxySignature'] as Map<String, dynamic>),
+    sourceSignature: json['sourceSignature'] == null
+        ? null
+        : Signature.fromJson(json['sourceSignature'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$VerificationResult_AttestationToJson(
+        VerificationResult_Attestation instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'who': instance.who?.toJson(),
+      'onBehalfOf': instance.onBehalfOf?.toJson(),
+      'communicationMethod': instance.communicationMethod?.toJson(),
+      'date': instance.date,
+      'elementDate': instance.elementDate?.toJson(),
+      'sourceIdentityCertificate': instance.sourceIdentityCertificate,
+      'elementSourceIdentityCertificate':
+          instance.elementSourceIdentityCertificate?.toJson(),
+      'proxyIdentityCertificate': instance.proxyIdentityCertificate,
+      'elementProxyIdentityCertificate':
+          instance.elementProxyIdentityCertificate?.toJson(),
+      'proxySignature': instance.proxySignature?.toJson(),
+      'sourceSignature': instance.sourceSignature?.toJson(),
+    };
+
+VerificationResult_Validator _$VerificationResult_ValidatorFromJson(
+    Map<String, dynamic> json) {
+  return VerificationResult_Validator(
+    json['organization'] == null
+        ? null
+        : Reference.fromJson(json['organization'] as Map<String, dynamic>),
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    identityCertificate: json['identityCertificate'] as String,
+    elementIdentityCertificate: json['elementIdentityCertificate'] == null
+        ? null
+        : Element.fromJson(
+            json['elementIdentityCertificate'] as Map<String, dynamic>),
+    attestationSignature: json['attestationSignature'] == null
+        ? null
+        : Signature.fromJson(
+            json['attestationSignature'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$VerificationResult_ValidatorToJson(
+        VerificationResult_Validator instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'organization': instance.organization?.toJson(),
+      'identityCertificate': instance.identityCertificate,
+      'elementIdentityCertificate':
+          instance.elementIdentityCertificate?.toJson(),
+      'attestationSignature': instance.attestationSignature?.toJson(),
+    };

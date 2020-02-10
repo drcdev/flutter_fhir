@@ -11,102 +11,27 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-part 'substance.g.dart';
-
 @JsonSerializable(explicitToJson: true)
 class Substance {
-
-  //  This is a Substance resource
   final String resourceType= 'Substance';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   String implicitRules;
-
-  //  Extensions for implicitRules
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   String language;
-
-  //  Extensions for language
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Unique identifier for the substance.
   List<Identifier> identifier;
-
-  //  A code to indicate if the substance is actively used.
   String status; // <code> enum: active/inactive/entered-in-error;
-
-  //  Extensions for status
   Element elementStatus;
-
-  //  A code that classifies the general type of substance.  This is used 
-  // for searching, sorting and display purposes.
   List<CodeableConcept> category;
-
-  //  A code (or set of codes) that identify this substance.
   CodeableConcept code;
-
-  //  A description of the substance - its appearance, handling
-  // requirements, and other usage notes.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  Substance may be used to describe a kind of substance, or a specific
-  // package/container of the substance: an instance.
   List<Substance_Instance> instance;
-
-  //  A substance can be composed of other substances.
   List<Substance_Ingredient> ingredient;
 
 Substance(
@@ -137,45 +62,12 @@ Substance(
 
 @JsonSerializable(explicitToJson: true)
 class Substance_Instance {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Identifier associated with the package/container (usually a label
-  // affixed directly).
   Identifier identifier;
-
-  //  When the substance is no longer valid to use. For some substances, a
-  // single arbitrary date is used for expiry.
   DateTime expiry;
-
-  //  Extensions for expiry
   Element elementExpiry;
-
-  //  The amount of the substance.
   Quantity quantity;
 
 Substance_Instance(
@@ -194,40 +86,11 @@ Substance_Instance(
 
 @JsonSerializable(explicitToJson: true)
 class Substance_Ingredient {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The amount of the ingredient in the substance - a concentration ratio.
   Ratio quantity;
-
-  //  Another substance that is a component of this substance.
   CodeableConcept substanceCodeableConcept;
-
-  //  Another substance that is a component of this substance.
   Reference substanceReference;
 
 Substance_Ingredient(
@@ -243,3 +106,169 @@ Substance_Ingredient(
   Map<String, dynamic> toJson() => _$Substance_IngredientToJson(this);
 }
 
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+Substance _$SubstanceFromJson(Map<String, dynamic> json) {
+  return Substance(
+    json['code'] == null
+        ? null
+        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
+    id: json['id'] as String,
+    meta: json['meta'] == null
+        ? null
+        : Meta.fromJson(json['meta'] as Map<String, dynamic>),
+    implicitRules: json['implicitRules'] as String,
+    elementImplicitRules: json['elementImplicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['elementImplicitRules'] as Map<String, dynamic>),
+    language: json['language'] as String,
+    elementLanguage: json['elementLanguage'] == null
+        ? null
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
+    text: json['text'] == null
+        ? null
+        : Narrative.fromJson(json['text'] as Map<String, dynamic>),
+    contained: (json['contained'] as List)
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.toList(),
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    identifier: (json['identifier'] as List)
+        ?.map((e) =>
+            e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    status: json['status'] as String,
+    elementStatus: json['elementStatus'] == null
+        ? null
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
+    category: (json['category'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    description: json['description'] as String,
+    elementDescription: json['elementDescription'] == null
+        ? null
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
+    instance: (json['instance'] as List)
+        ?.map((e) => e == null
+            ? null
+            : Substance_Instance.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    ingredient: (json['ingredient'] as List)
+        ?.map((e) => e == null
+            ? null
+            : Substance_Ingredient.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$SubstanceToJson(Substance instance) => <String, dynamic>{
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'category': instance.category?.map((e) => e?.toJson())?.toList(),
+      'code': instance.code?.toJson(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'instance': instance.instance?.map((e) => e?.toJson())?.toList(),
+      'ingredient': instance.ingredient?.map((e) => e?.toJson())?.toList(),
+    };
+
+Substance_Instance _$Substance_InstanceFromJson(Map<String, dynamic> json) {
+  return Substance_Instance(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    identifier: json['identifier'] == null
+        ? null
+        : Identifier.fromJson(json['identifier'] as Map<String, dynamic>),
+    expiry: json['expiry'] == null
+        ? null
+        : DateTime.parse(json['expiry'] as String),
+    elementExpiry: json['elementExpiry'] == null
+        ? null
+        : Element.fromJson(json['elementExpiry'] as Map<String, dynamic>),
+    quantity: json['quantity'] == null
+        ? null
+        : Quantity.fromJson(json['quantity'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$Substance_InstanceToJson(Substance_Instance instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.toJson(),
+      'expiry': instance.expiry?.toIso8601String(),
+      'elementExpiry': instance.elementExpiry?.toJson(),
+      'quantity': instance.quantity?.toJson(),
+    };
+
+Substance_Ingredient _$Substance_IngredientFromJson(Map<String, dynamic> json) {
+  return Substance_Ingredient(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    quantity: json['quantity'] == null
+        ? null
+        : Ratio.fromJson(json['quantity'] as Map<String, dynamic>),
+    substanceCodeableConcept: json['substanceCodeableConcept'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['substanceCodeableConcept'] as Map<String, dynamic>),
+    substanceReference: json['substanceReference'] == null
+        ? null
+        : Reference.fromJson(
+            json['substanceReference'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$Substance_IngredientToJson(
+        Substance_Ingredient instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'quantity': instance.quantity?.toJson(),
+      'substanceCodeableConcept': instance.substanceCodeableConcept?.toJson(),
+      'substanceReference': instance.substanceReference?.toJson(),
+    };

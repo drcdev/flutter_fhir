@@ -14,190 +14,51 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-part 'claimResponse.g.dart';
-
 @JsonSerializable(explicitToJson: true)
 class ClaimResponse {
-
-  //  This is a ClaimResponse resource
   final String resourceType= 'ClaimResponse';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   String implicitRules;
-
-  //  Extensions for implicitRules
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   String language;
-
-  //  Extensions for language
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A unique identifier assigned to this claim response.
   List<Identifier> identifier;
-
-  //  The status of the resource instance.
   String status;
-
-  //  Extensions for status
   Element elementStatus;
-
-  //  A finer grained suite of claim type codes which may convey additional
-  // information such as Inpatient vs Outpatient and/or a specialty service.
   CodeableConcept type;
-
-  //  A finer grained suite of claim type codes which may convey additional
-  // information such as Inpatient vs Outpatient and/or a specialty service.
   CodeableConcept subType;
-
-  //  A code to indicate whether the nature of the request is: to request
-  // adjudication of products and services previously rendered; or
-  // requesting authorization and adjudication for provision in the future;
-  // or requesting the non-binding adjudication of the listed products and
-  // services which could be provided in the future.
   String use;
-
-  //  Extensions for use
   Element elementUse;
-
-  //  The party to whom the professional services and/or products have been
-  // supplied or are being considered and for whom actual for facast
-  // reimbursement is sought.
   Reference patient;
-
-  //  The date this resource was created.
   DateTime created;
-
-  //  Extensions for created
   Element elementCreated;
-
-  //  The party responsible for authorization, adjudication and
-  // reimbursement.
   Reference insurer;
-
-  //  The provider which is responsible for the claim, predetermination or
-  // preauthorization.
   Reference requestor;
-
-  //  Original request resource reference.
   Reference request;
-
-  //  The outcome of the claim, predetermination, or preauthorization
-  // processing.
   String outcome;
-
-  //  Extensions for outcome
   Element elementOutcome;
-
-  //  A human readable description of the status of the adjudication.
   String disposition;
-
-  //  Extensions for disposition
   Element elementDisposition;
-
-  //  Reference from the Insurer which is used in later communications which
-  // refers to this adjudication.
   String preAuthRef;
-
-  //  Extensions for preAuthRef
   Element elementPreAuthRef;
-
-  //  The time frame during which this authorization is effective.
   Period preAuthPeriod;
-
-  //  Type of Party to be reimbursed: subscriber, provider, other.
   CodeableConcept payeeType;
-
-  //  A claim line. Either a simple (a product or service) or a 'group' of
-  // details which can also be a simple items or groups of sub-details.
   List<ClaimResponse_Item> item;
-
-  //  The first-tier service adjudications for payor added product or
-  // service lines.
   List<ClaimResponse_AddItem> addItem;
-
-  //  The adjudication results which are presented at the header level
-  // rather than at the line-item or add-item levels.
   List<ClaimResponse_Adjudication> adjudication;
-
-  //  Categorized monetary totals for the adjudication.
   List<ClaimResponse_Total> total;
-
-  //  Payment details for the adjudication of the claim.
   ClaimResponse_Payment payment;
-
-  //  A code, used only on a response to a preauthorization, to indicate
-  // whether the benefits payable have been reserved and for whom.
   CodeableConcept fundsReserve;
-
-  //  A code for the form to be used for printing the content.
   CodeableConcept formCode;
-
-  //  The actual form, by reference or inclusion, for printing the content
-  // or an EOB.
   Attachment form;
-
-  //  A note that describes or explains adjudication results in a human
-  // readable form.
   List<ClaimResponse_ProcessNote> processNote;
-
-  //  Request for additional supporting or authorizing information.
   List<Reference> communicationRequest;
-
-  //  Financial instruments for reimbursement for the health care products
-  // and services specified on the claim.
   List<ClaimResponse_Insurance> insurance;
-
-  //  Errors encountered during the processing of the adjudication.
   List<ClaimResponse_Error> error;
 
 ClaimResponse(
@@ -252,53 +113,14 @@ ClaimResponse(
 
 @JsonSerializable(explicitToJson: true)
 class ClaimResponse_Item {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A number to uniquely reference the claim item entries.
   int itemSequence;
-
-  //  Extensions for itemSequence
   Element elementItemSequence;
-
-  //  The numbers associated with notes below which apply to the
-  // adjudication of this item.
   List<int> noteNumber;
-
-  //  Extensions for noteNumber
   List<Element> elementNoteNumber;
-
-  //  If this item is a group then the values here are a summary of the
-  // adjudication of the detail items. If this item is a simple product or
-  // service then this is the result of the adjudication of this item.
   List<ClaimResponse_Adjudication> adjudication;
-
-  //  A claim detail. Either a simple (a product or service) or a 'group' of
-  // sub-details which are simple items.
   List<ClaimResponse_Detail> detail;
 
 ClaimResponse_Item(
@@ -319,53 +141,13 @@ ClaimResponse_Item(
 
 @JsonSerializable(explicitToJson: true)
 class ClaimResponse_Adjudication {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A code to indicate the information type of this adjudication record.
-  // Information types may include the value submitted, maximum values or
-  // percentages allowed or payable under the plan, amounts that: the
-  // patient is responsible for in aggregate or pertaining to this item;
-  // amounts paid by other coverages; and, the benefit payable for this
-  // item.
   CodeableConcept category;
-
-  //  A code supporting the understanding of the adjudication result and
-  // explaining variance from expected amount.
   CodeableConcept reason;
-
-  //  Monetary amount associated with the category.
   Money amount;
-
-  //  A non-monetary value associated with the category. Mutually exclusive
-  // to the amount element above.
   double value;
-
-  //  Extensions for value
   Element elementValue;
 
 ClaimResponse_Adjudication(
@@ -385,50 +167,14 @@ ClaimResponse_Adjudication(
 
 @JsonSerializable(explicitToJson: true)
 class ClaimResponse_Detail {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A number to uniquely reference the claim detail entry.
   int detailSequence;
-
-  //  Extensions for detailSequence
   Element elementDetailSequence;
-
-  //  The numbers associated with notes below which apply to the
-  // adjudication of this item.
   List<int> noteNumber;
-
-  //  Extensions for noteNumber
   List<Element> elementNoteNumber;
-
-  //  The adjudication results.
   List<ClaimResponse_Adjudication> adjudication;
-
-  //  A sub-detail adjudication of a simple product or service.
   List<ClaimResponse_SubDetail> subDetail;
 
 ClaimResponse_Detail(
@@ -449,47 +195,13 @@ ClaimResponse_Detail(
 
 @JsonSerializable(explicitToJson: true)
 class ClaimResponse_SubDetail {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A number to uniquely reference the claim sub-detail entry.
   int subDetailSequence;
-
-  //  Extensions for subDetailSequence
   Element elementSubDetailSequence;
-
-  //  The numbers associated with notes below which apply to the
-  // adjudication of this item.
   List<int> noteNumber;
-
-  //  Extensions for noteNumber
   List<Element> elementNoteNumber;
-
-  //  The adjudication results.
   List<ClaimResponse_Adjudication> adjudication;
 
 ClaimResponse_SubDetail(
@@ -509,128 +221,35 @@ ClaimResponse_SubDetail(
 
 @JsonSerializable(explicitToJson: true)
 class ClaimResponse_AddItem {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Claim items which this service line is intended to replace.
   List<int> itemSequence;
-
-  //  Extensions for itemSequence
   List<Element> elementItemSequence;
-
-  //  The sequence number of the details within the claim item which this
-  // line is intended to replace.
   List<int> detailSequence;
-
-  //  Extensions for detailSequence
   List<Element> elementDetailSequence;
-
-  //  The sequence number of the sub-details within the details within the
-  // claim item which this line is intended to replace.
   List<int> subdetailSequence;
-
-  //  Extensions for subdetailSequence
   List<Element> elementSubdetailSequence;
-
-  //  The providers who are authorized for the services rendered to the
-  // patient.
   List<Reference> provider;
-
-  //  When the value is a group code then this item collects a set of
-  // related claim details, otherwise this contains the product, service,
-  // drug or other billing code for the item.
   CodeableConcept productOrService;
-
-  //  Item typification or modifiers codes to convey additional context for
-  // the product or service.
   List<CodeableConcept> modifier;
-
-  //  Identifies the program under which this may be recovered.
   List<CodeableConcept> programCode;
-
-  //  The date or dates when the service or product was supplied, performed
-  // or completed.
   String servicedDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
-
-  //  Extensions for servicedDate
   Element elementServicedDate;
-
-  //  The date or dates when the service or product was supplied, performed
-  // or completed.
   Period servicedPeriod;
-
-  //  Where the product or service was provided.
   CodeableConcept locationCodeableConcept;
-
-  //  Where the product or service was provided.
   Address locationAddress;
-
-  //  Where the product or service was provided.
   Reference locationReference;
-
-  //  The number of repetitions of a service or product.
   Quantity quantity;
-
-  //  If the item is not a group then this is the fee for the product or
-  // service, otherwise this is the total of the fees for the details of the
-  // group.
   Money unitPrice;
-
-  //  A real number that represents a multiplier used in determining the
-  // overall value of services delivered and/or goods received. The concept
-  // of a Factor allows for a discount or surcharge multiplier to be applied
-  // to a monetary amount.
   double factor;
-
-  //  Extensions for factor
   Element elementFactor;
-
-  //  The quantity times the unit price for an additional service or product
-  // or charge.
   Money net;
-
-  //  Physical service site on the patient (limb, tooth, etc.).
   CodeableConcept bodySite;
-
-  //  A region or surface of the bodySite, e.g. limb region or tooth
-  // surface(s).
   List<CodeableConcept> subSite;
-
-  //  The numbers associated with notes below which apply to the
-  // adjudication of this item.
   List<int> noteNumber;
-
-  //  Extensions for noteNumber
   List<Element> elementNoteNumber;
-
-  //  The adjudication results.
   List<ClaimResponse_Adjudication> adjudication;
-
-  //  The second-tier service adjudications for payor added services.
   List<ClaimResponse_Detail1> detail;
 
 ClaimResponse_AddItem(
@@ -672,74 +291,19 @@ ClaimResponse_AddItem(
 
 @JsonSerializable(explicitToJson: true)
 class ClaimResponse_Detail1 {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  When the value is a group code then this item collects a set of
-  // related claim details, otherwise this contains the product, service,
-  // drug or other billing code for the item.
   CodeableConcept productOrService;
-
-  //  Item typification or modifiers codes to convey additional context for
-  // the product or service.
   List<CodeableConcept> modifier;
-
-  //  The number of repetitions of a service or product.
   Quantity quantity;
-
-  //  If the item is not a group then this is the fee for the product or
-  // service, otherwise this is the total of the fees for the details of the
-  // group.
   Money unitPrice;
-
-  //  A real number that represents a multiplier used in determining the
-  // overall value of services delivered and/or goods received. The concept
-  // of a Factor allows for a discount or surcharge multiplier to be applied
-  // to a monetary amount.
   double factor;
-
-  //  Extensions for factor
   Element elementFactor;
-
-  //  The quantity times the unit price for an additional service or product
-  // or charge.
   Money net;
-
-  //  The numbers associated with notes below which apply to the
-  // adjudication of this item.
   List<int> noteNumber;
-
-  //  Extensions for noteNumber
   List<Element> elementNoteNumber;
-
-  //  The adjudication results.
   List<ClaimResponse_Adjudication> adjudication;
-
-  //  The third-tier service adjudications for payor added services.
   List<ClaimResponse_SubDetail1> subDetail;
 
 ClaimResponse_Detail1(
@@ -765,71 +329,18 @@ ClaimResponse_Detail1(
 
 @JsonSerializable(explicitToJson: true)
 class ClaimResponse_SubDetail1 {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  When the value is a group code then this item collects a set of
-  // related claim details, otherwise this contains the product, service,
-  // drug or other billing code for the item.
   CodeableConcept productOrService;
-
-  //  Item typification or modifiers codes to convey additional context for
-  // the product or service.
   List<CodeableConcept> modifier;
-
-  //  The number of repetitions of a service or product.
   Quantity quantity;
-
-  //  If the item is not a group then this is the fee for the product or
-  // service, otherwise this is the total of the fees for the details of the
-  // group.
   Money unitPrice;
-
-  //  A real number that represents a multiplier used in determining the
-  // overall value of services delivered and/or goods received. The concept
-  // of a Factor allows for a discount or surcharge multiplier to be applied
-  // to a monetary amount.
   double factor;
-
-  //  Extensions for factor
   Element elementFactor;
-
-  //  The quantity times the unit price for an additional service or product
-  // or charge.
   Money net;
-
-  //  The numbers associated with notes below which apply to the
-  // adjudication of this item.
   List<int> noteNumber;
-
-  //  Extensions for noteNumber
   List<Element> elementNoteNumber;
-
-  //  The adjudication results.
   List<ClaimResponse_Adjudication> adjudication;
 
 ClaimResponse_SubDetail1(
@@ -854,41 +365,10 @@ ClaimResponse_SubDetail1(
 
 @JsonSerializable(explicitToJson: true)
 class ClaimResponse_Total {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A code to indicate the information type of this adjudication record.
-  // Information types may include: the value submitted, maximum values or
-  // percentages allowed or payable under the plan, amounts that the patient
-  // is responsible for in aggregate or pertaining to this item, amounts
-  // paid by other coverages, and the benefit payable for this item.
   CodeableConcept category;
-
-  //  Monetary total amount associated with the category.
   Money amount;
 
 ClaimResponse_Total(
@@ -905,55 +385,15 @@ ClaimResponse_Total(
 
 @JsonSerializable(explicitToJson: true)
 class ClaimResponse_Payment {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Whether this represents partial or complete payment of the benefits
-  // payable.
   CodeableConcept type;
-
-  //  Total amount of all adjustments to this payment included in this
-  // transaction which are not related to this claim's adjudication.
   Money adjustment;
-
-  //  Reason for the payment adjustment.
   CodeableConcept adjustmentReason;
-
-  //  Estimated date the payment will be issued or the actual issue date of
-  // payment.
   String date;
-
-  //  Extensions for date
   Element elementDate;
-
-  //  Benefits payable less any payment adjustment.
   Money amount;
-
-  //  Issuer's unique identifier for the payment instrument.
   Identifier identifier;
 
 ClaimResponse_Payment(
@@ -975,52 +415,15 @@ ClaimResponse_Payment(
 
 @JsonSerializable(explicitToJson: true)
 class ClaimResponse_ProcessNote {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A number to uniquely identify a note entry.
   int number;
-
-  //  Extensions for number
   Element elementNumber;
-
-  //  The business purpose of the note text.
   String type; // <code> enum: display/print/printoper;
-
-  //  Extensions for type
   Element elementType;
-
-  //  The explanation or description associated with the processing.
   String text;
-
-  //  Extensions for text
   Element elementText;
-
-  //  A code to define the language used in the text of the note.
   CodeableConcept language;
 
 ClaimResponse_ProcessNote(
@@ -1042,62 +445,16 @@ ClaimResponse_ProcessNote(
 
 @JsonSerializable(explicitToJson: true)
 class ClaimResponse_Insurance {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A number to uniquely identify insurance entries and provide a sequence
-  // of coverages to convey coordination of benefit order.
   int sequence;
-
-  //  Extensions for sequence
   Element elementSequence;
-
-  //  A flag to indicate that this Coverage is to be used for adjudication
-  // of this claim when set to true.
   bool focal;
-
-  //  Extensions for focal
   Element elementFocal;
-
-  //  Reference to the insurance card level information contained in the
-  // Coverage resource. The coverage issuing insurer will use these details
-  // to locate the patient's actual coverage within the insurer's
-  // information system.
   Reference coverage;
-
-  //  A business agreement number established between the provider and the
-  // insurer for special business processing purposes.
   String businessArrangement;
-
-  //  Extensions for businessArrangement
   Element elementBusinessArrangement;
-
-  //  The result of the adjudication of the line items for the Coverage
-  // specified in this insurance.
   Reference claimResponse;
 
 ClaimResponse_Insurance(
@@ -1120,59 +477,15 @@ ClaimResponse_Insurance(
 
 @JsonSerializable(explicitToJson: true)
 class ClaimResponse_Error {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The sequence number of the line item submitted which contains the
-  // error. This value is omitted when the error occurs outside of the item
-  // structure.
   int itemSequence;
-
-  //  Extensions for itemSequence
   Element elementItemSequence;
-
-  //  The sequence number of the detail within the line item submitted which
-  // contains the error. This value is omitted when the error occurs outside
-  // of the item structure.
   int detailSequence;
-
-  //  Extensions for detailSequence
   Element elementDetailSequence;
-
-  //  The sequence number of the sub-detail within the detail within the
-  // line item submitted which contains the error. This value is omitted
-  // when the error occurs outside of the item structure.
   int subDetailSequence;
-
-  //  Extensions for subDetailSequence
   Element elementSubDetailSequence;
-
-  //  An error code, from a specified code system, which details why the
-  // claim could not be adjudicated.
   CodeableConcept code;
 
 ClaimResponse_Error(
@@ -1192,3 +505,893 @@ ClaimResponse_Error(
   Map<String, dynamic> toJson() => _$ClaimResponse_ErrorToJson(this);
 }
 
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+ClaimResponse _$ClaimResponseFromJson(Map<String, dynamic> json) {
+  return ClaimResponse(
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
+    json['patient'] == null
+        ? null
+        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
+    json['insurer'] == null
+        ? null
+        : Reference.fromJson(json['insurer'] as Map<String, dynamic>),
+    id: json['id'] as String,
+    meta: json['meta'] == null
+        ? null
+        : Meta.fromJson(json['meta'] as Map<String, dynamic>),
+    implicitRules: json['implicitRules'] as String,
+    elementImplicitRules: json['elementImplicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['elementImplicitRules'] as Map<String, dynamic>),
+    language: json['language'] as String,
+    elementLanguage: json['elementLanguage'] == null
+        ? null
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
+    text: json['text'] == null
+        ? null
+        : Narrative.fromJson(json['text'] as Map<String, dynamic>),
+    contained: (json['contained'] as List)
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.toList(),
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    identifier: (json['identifier'] as List)
+        ?.map((e) =>
+            e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    status: json['status'] as String,
+    elementStatus: json['elementStatus'] == null
+        ? null
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
+    subType: json['subType'] == null
+        ? null
+        : CodeableConcept.fromJson(json['subType'] as Map<String, dynamic>),
+    use: json['use'] as String,
+    elementUse: json['elementUse'] == null
+        ? null
+        : Element.fromJson(json['elementUse'] as Map<String, dynamic>),
+    created: json['created'] == null
+        ? null
+        : DateTime.parse(json['created'] as String),
+    elementCreated: json['elementCreated'] == null
+        ? null
+        : Element.fromJson(json['elementCreated'] as Map<String, dynamic>),
+    requestor: json['requestor'] == null
+        ? null
+        : Reference.fromJson(json['requestor'] as Map<String, dynamic>),
+    request: json['request'] == null
+        ? null
+        : Reference.fromJson(json['request'] as Map<String, dynamic>),
+    outcome: json['outcome'] as String,
+    elementOutcome: json['elementOutcome'] == null
+        ? null
+        : Element.fromJson(json['elementOutcome'] as Map<String, dynamic>),
+    disposition: json['disposition'] as String,
+    elementDisposition: json['elementDisposition'] == null
+        ? null
+        : Element.fromJson(json['elementDisposition'] as Map<String, dynamic>),
+    preAuthRef: json['preAuthRef'] as String,
+    elementPreAuthRef: json['elementPreAuthRef'] == null
+        ? null
+        : Element.fromJson(json['elementPreAuthRef'] as Map<String, dynamic>),
+    preAuthPeriod: json['preAuthPeriod'] == null
+        ? null
+        : Period.fromJson(json['preAuthPeriod'] as Map<String, dynamic>),
+    payeeType: json['payeeType'] == null
+        ? null
+        : CodeableConcept.fromJson(json['payeeType'] as Map<String, dynamic>),
+    item: (json['item'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ClaimResponse_Item.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    addItem: (json['addItem'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ClaimResponse_AddItem.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    adjudication: (json['adjudication'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ClaimResponse_Adjudication.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    total: (json['total'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ClaimResponse_Total.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    payment: json['payment'] == null
+        ? null
+        : ClaimResponse_Payment.fromJson(
+            json['payment'] as Map<String, dynamic>),
+    fundsReserve: json['fundsReserve'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['fundsReserve'] as Map<String, dynamic>),
+    formCode: json['formCode'] == null
+        ? null
+        : CodeableConcept.fromJson(json['formCode'] as Map<String, dynamic>),
+    form: json['form'] == null
+        ? null
+        : Attachment.fromJson(json['form'] as Map<String, dynamic>),
+    processNote: (json['processNote'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ClaimResponse_ProcessNote.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    communicationRequest: (json['communicationRequest'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    insurance: (json['insurance'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ClaimResponse_Insurance.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    error: (json['error'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ClaimResponse_Error.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$ClaimResponseToJson(ClaimResponse instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'type': instance.type?.toJson(),
+      'subType': instance.subType?.toJson(),
+      'use': instance.use,
+      'elementUse': instance.elementUse?.toJson(),
+      'patient': instance.patient?.toJson(),
+      'created': instance.created?.toIso8601String(),
+      'elementCreated': instance.elementCreated?.toJson(),
+      'insurer': instance.insurer?.toJson(),
+      'requestor': instance.requestor?.toJson(),
+      'request': instance.request?.toJson(),
+      'outcome': instance.outcome,
+      'elementOutcome': instance.elementOutcome?.toJson(),
+      'disposition': instance.disposition,
+      'elementDisposition': instance.elementDisposition?.toJson(),
+      'preAuthRef': instance.preAuthRef,
+      'elementPreAuthRef': instance.elementPreAuthRef?.toJson(),
+      'preAuthPeriod': instance.preAuthPeriod?.toJson(),
+      'payeeType': instance.payeeType?.toJson(),
+      'item': instance.item?.map((e) => e?.toJson())?.toList(),
+      'addItem': instance.addItem?.map((e) => e?.toJson())?.toList(),
+      'adjudication': instance.adjudication?.map((e) => e?.toJson())?.toList(),
+      'total': instance.total?.map((e) => e?.toJson())?.toList(),
+      'payment': instance.payment?.toJson(),
+      'fundsReserve': instance.fundsReserve?.toJson(),
+      'formCode': instance.formCode?.toJson(),
+      'form': instance.form?.toJson(),
+      'processNote': instance.processNote?.map((e) => e?.toJson())?.toList(),
+      'communicationRequest':
+          instance.communicationRequest?.map((e) => e?.toJson())?.toList(),
+      'insurance': instance.insurance?.map((e) => e?.toJson())?.toList(),
+      'error': instance.error?.map((e) => e?.toJson())?.toList(),
+    };
+
+ClaimResponse_Item _$ClaimResponse_ItemFromJson(Map<String, dynamic> json) {
+  return ClaimResponse_Item(
+    (json['adjudication'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ClaimResponse_Adjudication.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    itemSequence: json['itemSequence'] as int,
+    elementItemSequence: json['elementItemSequence'] == null
+        ? null
+        : Element.fromJson(json['elementItemSequence'] as Map<String, dynamic>),
+    noteNumber: (json['noteNumber'] as List)?.map((e) => e as int)?.toList(),
+    elementNoteNumber: (json['elementNoteNumber'] as List)
+        ?.map((e) =>
+            e == null ? null : Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    detail: (json['detail'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ClaimResponse_Detail.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$ClaimResponse_ItemToJson(ClaimResponse_Item instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'itemSequence': instance.itemSequence,
+      'elementItemSequence': instance.elementItemSequence?.toJson(),
+      'noteNumber': instance.noteNumber,
+      'elementNoteNumber':
+          instance.elementNoteNumber?.map((e) => e?.toJson())?.toList(),
+      'adjudication': instance.adjudication?.map((e) => e?.toJson())?.toList(),
+      'detail': instance.detail?.map((e) => e?.toJson())?.toList(),
+    };
+
+ClaimResponse_Adjudication _$ClaimResponse_AdjudicationFromJson(
+    Map<String, dynamic> json) {
+  return ClaimResponse_Adjudication(
+    json['category'] == null
+        ? null
+        : CodeableConcept.fromJson(json['category'] as Map<String, dynamic>),
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    reason: json['reason'] == null
+        ? null
+        : CodeableConcept.fromJson(json['reason'] as Map<String, dynamic>),
+    amount: json['amount'] == null
+        ? null
+        : Money.fromJson(json['amount'] as Map<String, dynamic>),
+    value: (json['value'] as num)?.toDouble(),
+    elementValue: json['elementValue'] == null
+        ? null
+        : Element.fromJson(json['elementValue'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$ClaimResponse_AdjudicationToJson(
+        ClaimResponse_Adjudication instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'category': instance.category?.toJson(),
+      'reason': instance.reason?.toJson(),
+      'amount': instance.amount?.toJson(),
+      'value': instance.value,
+      'elementValue': instance.elementValue?.toJson(),
+    };
+
+ClaimResponse_Detail _$ClaimResponse_DetailFromJson(Map<String, dynamic> json) {
+  return ClaimResponse_Detail(
+    (json['adjudication'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ClaimResponse_Adjudication.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    detailSequence: json['detailSequence'] as int,
+    elementDetailSequence: json['elementDetailSequence'] == null
+        ? null
+        : Element.fromJson(
+            json['elementDetailSequence'] as Map<String, dynamic>),
+    noteNumber: (json['noteNumber'] as List)?.map((e) => e as int)?.toList(),
+    elementNoteNumber: (json['elementNoteNumber'] as List)
+        ?.map((e) =>
+            e == null ? null : Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    subDetail: (json['subDetail'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ClaimResponse_SubDetail.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$ClaimResponse_DetailToJson(
+        ClaimResponse_Detail instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'detailSequence': instance.detailSequence,
+      'elementDetailSequence': instance.elementDetailSequence?.toJson(),
+      'noteNumber': instance.noteNumber,
+      'elementNoteNumber':
+          instance.elementNoteNumber?.map((e) => e?.toJson())?.toList(),
+      'adjudication': instance.adjudication?.map((e) => e?.toJson())?.toList(),
+      'subDetail': instance.subDetail?.map((e) => e?.toJson())?.toList(),
+    };
+
+ClaimResponse_SubDetail _$ClaimResponse_SubDetailFromJson(
+    Map<String, dynamic> json) {
+  return ClaimResponse_SubDetail(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    subDetailSequence: json['subDetailSequence'] as int,
+    elementSubDetailSequence: json['elementSubDetailSequence'] == null
+        ? null
+        : Element.fromJson(
+            json['elementSubDetailSequence'] as Map<String, dynamic>),
+    noteNumber: (json['noteNumber'] as List)?.map((e) => e as int)?.toList(),
+    elementNoteNumber: (json['elementNoteNumber'] as List)
+        ?.map((e) =>
+            e == null ? null : Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    adjudication: (json['adjudication'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ClaimResponse_Adjudication.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$ClaimResponse_SubDetailToJson(
+        ClaimResponse_SubDetail instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'subDetailSequence': instance.subDetailSequence,
+      'elementSubDetailSequence': instance.elementSubDetailSequence?.toJson(),
+      'noteNumber': instance.noteNumber,
+      'elementNoteNumber':
+          instance.elementNoteNumber?.map((e) => e?.toJson())?.toList(),
+      'adjudication': instance.adjudication?.map((e) => e?.toJson())?.toList(),
+    };
+
+ClaimResponse_AddItem _$ClaimResponse_AddItemFromJson(
+    Map<String, dynamic> json) {
+  return ClaimResponse_AddItem(
+    json['productOrService'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['productOrService'] as Map<String, dynamic>),
+    (json['adjudication'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ClaimResponse_Adjudication.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    itemSequence:
+        (json['itemSequence'] as List)?.map((e) => e as int)?.toList(),
+    elementItemSequence: (json['elementItemSequence'] as List)
+        ?.map((e) =>
+            e == null ? null : Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    detailSequence:
+        (json['detailSequence'] as List)?.map((e) => e as int)?.toList(),
+    elementDetailSequence: (json['elementDetailSequence'] as List)
+        ?.map((e) =>
+            e == null ? null : Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    subdetailSequence:
+        (json['subdetailSequence'] as List)?.map((e) => e as int)?.toList(),
+    elementSubdetailSequence: (json['elementSubdetailSequence'] as List)
+        ?.map((e) =>
+            e == null ? null : Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    provider: (json['provider'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifier: (json['modifier'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    programCode: (json['programCode'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    servicedDate: json['servicedDate'] as String,
+    elementServicedDate: json['elementServicedDate'] == null
+        ? null
+        : Element.fromJson(json['elementServicedDate'] as Map<String, dynamic>),
+    servicedPeriod: json['servicedPeriod'] == null
+        ? null
+        : Period.fromJson(json['servicedPeriod'] as Map<String, dynamic>),
+    locationCodeableConcept: json['locationCodeableConcept'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['locationCodeableConcept'] as Map<String, dynamic>),
+    locationAddress: json['locationAddress'] == null
+        ? null
+        : Address.fromJson(json['locationAddress'] as Map<String, dynamic>),
+    locationReference: json['locationReference'] == null
+        ? null
+        : Reference.fromJson(json['locationReference'] as Map<String, dynamic>),
+    quantity: json['quantity'] == null
+        ? null
+        : Quantity.fromJson(json['quantity'] as Map<String, dynamic>),
+    unitPrice: json['unitPrice'] == null
+        ? null
+        : Money.fromJson(json['unitPrice'] as Map<String, dynamic>),
+    factor: (json['factor'] as num)?.toDouble(),
+    elementFactor: json['elementFactor'] == null
+        ? null
+        : Element.fromJson(json['elementFactor'] as Map<String, dynamic>),
+    net: json['net'] == null
+        ? null
+        : Money.fromJson(json['net'] as Map<String, dynamic>),
+    bodySite: json['bodySite'] == null
+        ? null
+        : CodeableConcept.fromJson(json['bodySite'] as Map<String, dynamic>),
+    subSite: (json['subSite'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    noteNumber: (json['noteNumber'] as List)?.map((e) => e as int)?.toList(),
+    elementNoteNumber: (json['elementNoteNumber'] as List)
+        ?.map((e) =>
+            e == null ? null : Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    detail: (json['detail'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ClaimResponse_Detail1.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$ClaimResponse_AddItemToJson(
+        ClaimResponse_AddItem instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'itemSequence': instance.itemSequence,
+      'elementItemSequence':
+          instance.elementItemSequence?.map((e) => e?.toJson())?.toList(),
+      'detailSequence': instance.detailSequence,
+      'elementDetailSequence':
+          instance.elementDetailSequence?.map((e) => e?.toJson())?.toList(),
+      'subdetailSequence': instance.subdetailSequence,
+      'elementSubdetailSequence':
+          instance.elementSubdetailSequence?.map((e) => e?.toJson())?.toList(),
+      'provider': instance.provider?.map((e) => e?.toJson())?.toList(),
+      'productOrService': instance.productOrService?.toJson(),
+      'modifier': instance.modifier?.map((e) => e?.toJson())?.toList(),
+      'programCode': instance.programCode?.map((e) => e?.toJson())?.toList(),
+      'servicedDate': instance.servicedDate,
+      'elementServicedDate': instance.elementServicedDate?.toJson(),
+      'servicedPeriod': instance.servicedPeriod?.toJson(),
+      'locationCodeableConcept': instance.locationCodeableConcept?.toJson(),
+      'locationAddress': instance.locationAddress?.toJson(),
+      'locationReference': instance.locationReference?.toJson(),
+      'quantity': instance.quantity?.toJson(),
+      'unitPrice': instance.unitPrice?.toJson(),
+      'factor': instance.factor,
+      'elementFactor': instance.elementFactor?.toJson(),
+      'net': instance.net?.toJson(),
+      'bodySite': instance.bodySite?.toJson(),
+      'subSite': instance.subSite?.map((e) => e?.toJson())?.toList(),
+      'noteNumber': instance.noteNumber,
+      'elementNoteNumber':
+          instance.elementNoteNumber?.map((e) => e?.toJson())?.toList(),
+      'adjudication': instance.adjudication?.map((e) => e?.toJson())?.toList(),
+      'detail': instance.detail?.map((e) => e?.toJson())?.toList(),
+    };
+
+ClaimResponse_Detail1 _$ClaimResponse_Detail1FromJson(
+    Map<String, dynamic> json) {
+  return ClaimResponse_Detail1(
+    json['productOrService'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['productOrService'] as Map<String, dynamic>),
+    (json['adjudication'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ClaimResponse_Adjudication.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifier: (json['modifier'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    quantity: json['quantity'] == null
+        ? null
+        : Quantity.fromJson(json['quantity'] as Map<String, dynamic>),
+    unitPrice: json['unitPrice'] == null
+        ? null
+        : Money.fromJson(json['unitPrice'] as Map<String, dynamic>),
+    factor: (json['factor'] as num)?.toDouble(),
+    elementFactor: json['elementFactor'] == null
+        ? null
+        : Element.fromJson(json['elementFactor'] as Map<String, dynamic>),
+    net: json['net'] == null
+        ? null
+        : Money.fromJson(json['net'] as Map<String, dynamic>),
+    noteNumber: (json['noteNumber'] as List)?.map((e) => e as int)?.toList(),
+    elementNoteNumber: (json['elementNoteNumber'] as List)
+        ?.map((e) =>
+            e == null ? null : Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    subDetail: (json['subDetail'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ClaimResponse_SubDetail1.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$ClaimResponse_Detail1ToJson(
+        ClaimResponse_Detail1 instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'productOrService': instance.productOrService?.toJson(),
+      'modifier': instance.modifier?.map((e) => e?.toJson())?.toList(),
+      'quantity': instance.quantity?.toJson(),
+      'unitPrice': instance.unitPrice?.toJson(),
+      'factor': instance.factor,
+      'elementFactor': instance.elementFactor?.toJson(),
+      'net': instance.net?.toJson(),
+      'noteNumber': instance.noteNumber,
+      'elementNoteNumber':
+          instance.elementNoteNumber?.map((e) => e?.toJson())?.toList(),
+      'adjudication': instance.adjudication?.map((e) => e?.toJson())?.toList(),
+      'subDetail': instance.subDetail?.map((e) => e?.toJson())?.toList(),
+    };
+
+ClaimResponse_SubDetail1 _$ClaimResponse_SubDetail1FromJson(
+    Map<String, dynamic> json) {
+  return ClaimResponse_SubDetail1(
+    json['productOrService'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['productOrService'] as Map<String, dynamic>),
+    (json['adjudication'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ClaimResponse_Adjudication.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifier: (json['modifier'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    quantity: json['quantity'] == null
+        ? null
+        : Quantity.fromJson(json['quantity'] as Map<String, dynamic>),
+    unitPrice: json['unitPrice'] == null
+        ? null
+        : Money.fromJson(json['unitPrice'] as Map<String, dynamic>),
+    factor: (json['factor'] as num)?.toDouble(),
+    elementFactor: json['elementFactor'] == null
+        ? null
+        : Element.fromJson(json['elementFactor'] as Map<String, dynamic>),
+    net: json['net'] == null
+        ? null
+        : Money.fromJson(json['net'] as Map<String, dynamic>),
+    noteNumber: (json['noteNumber'] as List)?.map((e) => e as int)?.toList(),
+    elementNoteNumber: (json['elementNoteNumber'] as List)
+        ?.map((e) =>
+            e == null ? null : Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$ClaimResponse_SubDetail1ToJson(
+        ClaimResponse_SubDetail1 instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'productOrService': instance.productOrService?.toJson(),
+      'modifier': instance.modifier?.map((e) => e?.toJson())?.toList(),
+      'quantity': instance.quantity?.toJson(),
+      'unitPrice': instance.unitPrice?.toJson(),
+      'factor': instance.factor,
+      'elementFactor': instance.elementFactor?.toJson(),
+      'net': instance.net?.toJson(),
+      'noteNumber': instance.noteNumber,
+      'elementNoteNumber':
+          instance.elementNoteNumber?.map((e) => e?.toJson())?.toList(),
+      'adjudication': instance.adjudication?.map((e) => e?.toJson())?.toList(),
+    };
+
+ClaimResponse_Total _$ClaimResponse_TotalFromJson(Map<String, dynamic> json) {
+  return ClaimResponse_Total(
+    json['category'] == null
+        ? null
+        : CodeableConcept.fromJson(json['category'] as Map<String, dynamic>),
+    json['amount'] == null
+        ? null
+        : Money.fromJson(json['amount'] as Map<String, dynamic>),
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$ClaimResponse_TotalToJson(
+        ClaimResponse_Total instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'category': instance.category?.toJson(),
+      'amount': instance.amount?.toJson(),
+    };
+
+ClaimResponse_Payment _$ClaimResponse_PaymentFromJson(
+    Map<String, dynamic> json) {
+  return ClaimResponse_Payment(
+    json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
+    json['amount'] == null
+        ? null
+        : Money.fromJson(json['amount'] as Map<String, dynamic>),
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    adjustment: json['adjustment'] == null
+        ? null
+        : Money.fromJson(json['adjustment'] as Map<String, dynamic>),
+    adjustmentReason: json['adjustmentReason'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['adjustmentReason'] as Map<String, dynamic>),
+    date: json['date'] as String,
+    elementDate: json['elementDate'] == null
+        ? null
+        : Element.fromJson(json['elementDate'] as Map<String, dynamic>),
+    identifier: json['identifier'] == null
+        ? null
+        : Identifier.fromJson(json['identifier'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$ClaimResponse_PaymentToJson(
+        ClaimResponse_Payment instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type?.toJson(),
+      'adjustment': instance.adjustment?.toJson(),
+      'adjustmentReason': instance.adjustmentReason?.toJson(),
+      'date': instance.date,
+      'elementDate': instance.elementDate?.toJson(),
+      'amount': instance.amount?.toJson(),
+      'identifier': instance.identifier?.toJson(),
+    };
+
+ClaimResponse_ProcessNote _$ClaimResponse_ProcessNoteFromJson(
+    Map<String, dynamic> json) {
+  return ClaimResponse_ProcessNote(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    number: json['number'] as int,
+    elementNumber: json['elementNumber'] == null
+        ? null
+        : Element.fromJson(json['elementNumber'] as Map<String, dynamic>),
+    type: json['type'] as String,
+    elementType: json['elementType'] == null
+        ? null
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
+    text: json['text'] as String,
+    elementText: json['elementText'] == null
+        ? null
+        : Element.fromJson(json['elementText'] as Map<String, dynamic>),
+    language: json['language'] == null
+        ? null
+        : CodeableConcept.fromJson(json['language'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$ClaimResponse_ProcessNoteToJson(
+        ClaimResponse_ProcessNote instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'number': instance.number,
+      'elementNumber': instance.elementNumber?.toJson(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+      'text': instance.text,
+      'elementText': instance.elementText?.toJson(),
+      'language': instance.language?.toJson(),
+    };
+
+ClaimResponse_Insurance _$ClaimResponse_InsuranceFromJson(
+    Map<String, dynamic> json) {
+  return ClaimResponse_Insurance(
+    json['coverage'] == null
+        ? null
+        : Reference.fromJson(json['coverage'] as Map<String, dynamic>),
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    sequence: json['sequence'] as int,
+    elementSequence: json['elementSequence'] == null
+        ? null
+        : Element.fromJson(json['elementSequence'] as Map<String, dynamic>),
+    focal: json['focal'] as bool,
+    elementFocal: json['elementFocal'] == null
+        ? null
+        : Element.fromJson(json['elementFocal'] as Map<String, dynamic>),
+    businessArrangement: json['businessArrangement'] as String,
+    elementBusinessArrangement: json['elementBusinessArrangement'] == null
+        ? null
+        : Element.fromJson(
+            json['elementBusinessArrangement'] as Map<String, dynamic>),
+    claimResponse: json['claimResponse'] == null
+        ? null
+        : Reference.fromJson(json['claimResponse'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$ClaimResponse_InsuranceToJson(
+        ClaimResponse_Insurance instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'sequence': instance.sequence,
+      'elementSequence': instance.elementSequence?.toJson(),
+      'focal': instance.focal,
+      'elementFocal': instance.elementFocal?.toJson(),
+      'coverage': instance.coverage?.toJson(),
+      'businessArrangement': instance.businessArrangement,
+      'elementBusinessArrangement':
+          instance.elementBusinessArrangement?.toJson(),
+      'claimResponse': instance.claimResponse?.toJson(),
+    };
+
+ClaimResponse_Error _$ClaimResponse_ErrorFromJson(Map<String, dynamic> json) {
+  return ClaimResponse_Error(
+    json['code'] == null
+        ? null
+        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    itemSequence: json['itemSequence'] as int,
+    elementItemSequence: json['elementItemSequence'] == null
+        ? null
+        : Element.fromJson(json['elementItemSequence'] as Map<String, dynamic>),
+    detailSequence: json['detailSequence'] as int,
+    elementDetailSequence: json['elementDetailSequence'] == null
+        ? null
+        : Element.fromJson(
+            json['elementDetailSequence'] as Map<String, dynamic>),
+    subDetailSequence: json['subDetailSequence'] as int,
+    elementSubDetailSequence: json['elementSubDetailSequence'] == null
+        ? null
+        : Element.fromJson(
+            json['elementSubDetailSequence'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$ClaimResponse_ErrorToJson(
+        ClaimResponse_Error instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'itemSequence': instance.itemSequence,
+      'elementItemSequence': instance.elementItemSequence?.toJson(),
+      'detailSequence': instance.detailSequence,
+      'elementDetailSequence': instance.elementDetailSequence?.toJson(),
+      'subDetailSequence': instance.subDetailSequence,
+      'elementSubDetailSequence': instance.elementSubDetailSequence?.toJson(),
+      'code': instance.code?.toJson(),
+    };

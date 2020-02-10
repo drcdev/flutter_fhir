@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_fhir/mainMenu/testingSettings/testing.dart';
 import 'package:flutter_fhir/mainMenu/providerActivities/registerNew/register.dart';
-import 'package:flutter_fhir/buttons.dart';
+import 'package:flutter_fhir/util/buttons.dart';
 
 class ProviderActivities extends StatelessWidget {
   Patient pt;

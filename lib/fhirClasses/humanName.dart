@@ -4,68 +4,22 @@ import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-part 'humanName.g.dart';
-
 @JsonSerializable(explicitToJson: true)
 class HumanName {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  Identifies the purpose for this name.
   String use; // <code> enum: usual/official/temp/nickname/anonymous/old/maiden;
-
-  //  Extensions for use
   Element elementUse;
-
-  //  Specifies the entire name as it should be displayed e.g. on an
-  // application UI. This may be provided instead of or as well as the
-  // specific parts.
   String text;
-
-  //  Extensions for text
   Element elementText;
-
-  //  The part of a name that links to the genealogy. In some cultures (e.g.
-  // Eritrea) the family name of a son is the first name of his father.
   String family;
-
-  //  Extensions for family
   Element elementFamily;
-
-  //  Given name.
   List<String> given;
-
-  //  Extensions for given
   List<Element> elementGiven;
-
-  //  Part of the name that is acquired as a title due to academic, legal,
-  // employment or nobility status, etc. and that appears at the start of
-  // the name.
   List<String> prefix;
-
-  //  Extensions for prefix
   List<Element> elementPrefix;
-
-  //  Part of the name that is acquired as a title due to academic, legal,
-  // employment or nobility status, etc. and that appears at the end of the
-  // name.
   List<String> suffix;
-
-  //  Extensions for suffix
   List<Element> elementSuffix;
-
-  //  Indicates the period of time when this name was valid for the named
-  // person.
   Period period;
 
 HumanName(
@@ -90,3 +44,68 @@ HumanName(
   Map<String, dynamic> toJson() => _$HumanNameToJson(this);
 }
 
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+HumanName _$HumanNameFromJson(Map<String, dynamic> json) {
+  return HumanName(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    use: json['use'] as String,
+    elementUse: json['elementUse'] == null
+        ? null
+        : Element.fromJson(json['elementUse'] as Map<String, dynamic>),
+    text: json['text'] as String,
+    elementText: json['elementText'] == null
+        ? null
+        : Element.fromJson(json['elementText'] as Map<String, dynamic>),
+    family: json['family'] as String,
+    elementFamily: json['elementFamily'] == null
+        ? null
+        : Element.fromJson(json['elementFamily'] as Map<String, dynamic>),
+    given: (json['given'] as List)?.map((e) => e as String)?.toList(),
+    elementGiven: (json['elementGiven'] as List)
+        ?.map((e) =>
+            e == null ? null : Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    prefix: (json['prefix'] as List)?.map((e) => e as String)?.toList(),
+    elementPrefix: (json['elementPrefix'] as List)
+        ?.map((e) =>
+            e == null ? null : Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    suffix: (json['suffix'] as List)?.map((e) => e as String)?.toList(),
+    elementSuffix: (json['elementSuffix'] as List)
+        ?.map((e) =>
+            e == null ? null : Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    period: json['period'] == null
+        ? null
+        : Period.fromJson(json['period'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$HumanNameToJson(HumanName instance) => <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'use': instance.use,
+      'elementUse': instance.elementUse?.toJson(),
+      'text': instance.text,
+      'elementText': instance.elementText?.toJson(),
+      'family': instance.family,
+      'elementFamily': instance.elementFamily?.toJson(),
+      'given': instance.given,
+      'elementGiven': instance.elementGiven?.map((e) => e?.toJson())?.toList(),
+      'prefix': instance.prefix,
+      'elementPrefix':
+          instance.elementPrefix?.map((e) => e?.toJson())?.toList(),
+      'suffix': instance.suffix,
+      'elementSuffix':
+          instance.elementSuffix?.map((e) => e?.toJson())?.toList(),
+      'period': instance.period?.toJson(),
+    };

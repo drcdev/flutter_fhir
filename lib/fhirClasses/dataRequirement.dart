@@ -8,77 +8,21 @@ import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-part 'dataRequirement.g.dart';
-
 @JsonSerializable(explicitToJson: true)
 class DataRequirement {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  The type of the required data, specified as the type name of a
-  // resource. For profiles, this value is set to the type of the base
-  // resource of the profile.
   String type;
-
-  //  Extensions for type
   Element elementType;
-
-  //  The profile of the required data, specified as the uri of the profile
-  // definition.
   List<String> profile;
-
-  //  The intended subjects of the data requirement. If this element is not
-  // provided, a Patient subject is assumed.
   CodeableConcept subjectCodeableConcept;
-
-  //  The intended subjects of the data requirement. If this element is not
-  // provided, a Patient subject is assumed.
   Reference subjectReference;
-
-  //  Indicates that specific elements of the type are referenced by the
-  // knowledge module and must be supported by the consumer in order to
-  // obtain an effective evaluation. This does not mean that a value is
-  // required for this element, only that the consuming system must
-  // understand the element and be able to provide values for it if they are
-  // available.  The value of mustSupport SHALL be a FHIRPath resolveable on
-  // the type of the DataRequirement. The path SHALL consist only of
-  // identifiers, constant indexers, and .resolve() (see the [Simple
-  // FHIRPath Profile](fhirpath.html#simple) for full details).
   List<String> mustSupport;
-
-  //  Extensions for mustSupport
   List<Element> elementMustSupport;
-
-  //  Code filters specify additional constraints on the data, specifying
-  // the value set of interest for a particular element of the data. Each
-  // code filter defines an additional constraint on the data, i.e. code
-  // filters are AND'ed, not OR'ed.
   List<DataRequirement_CodeFilter> codeFilter;
-
-  //  Date filters specify additional constraints on the data in terms of
-  // the applicable date range for specific elements. Each date filter
-  // specifies an additional constraint on the data, i.e. date filters are
-  // AND'ed, not OR'ed.
   List<DataRequirement_DateFilter> dateFilter;
-
-  //  Specifies a maximum number of results that are required (uses the
-  // _count search parameter).
   int limit;
-
-  //  Extensions for limit
   Element elementLimit;
-
-  //  Specifies the order of the results to be returned.
   List<DataRequirement_Sort> sort;
 
 DataRequirement(
@@ -104,65 +48,14 @@ DataRequirement(
 
 @JsonSerializable(explicitToJson: true)
 class DataRequirement_CodeFilter {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The code-valued attribute of the filter. The specified path SHALL be a
-  // FHIRPath resolveable on the specified type of the DataRequirement, and
-  // SHALL consist only of identifiers, constant indexers, and .resolve().
-  // The path is allowed to contain qualifiers (.) to traverse sub-elements,
-  // as well as indexers ([x]) to traverse multiple-cardinality sub-elements
-  // (see the [Simple FHIRPath Profile](fhirpath.html#simple) for full
-  // details). Note that the index must be an integer constant. The path
-  // must resolve to an element of type code, Coding, or CodeableConcept.
   String path;
-
-  //  Extensions for path
   Element elementPath;
-
-  //  A token parameter that refers to a search parameter defined on the
-  // specified type of the DataRequirement, and which searches on elements
-  // of type code, Coding, or CodeableConcept.
   String searchParam;
-
-  //  Extensions for searchParam
   Element elementSearchParam;
-
-  //  The valueset for the code filter. The valueSet and code elements are
-  // additive. If valueSet is specified, the filter will return only those
-  // data items for which the value of the code-valued element specified in
-  // the path is a member of the specified valueset.
   String valueSet;
-
-  //  The codes for the code filter. If values are given, the filter will
-  // return only those data items for which the code-valued attribute
-  // specified by the path has a value that is one of the specified codes.
-  // If codes are specified in addition to a value set, the filter returns
-  // items matching a code in the value set or one of the specified codes.
   List<Coding> code;
 
 DataRequirement_CodeFilter(
@@ -183,80 +76,16 @@ DataRequirement_CodeFilter(
 
 @JsonSerializable(explicitToJson: true)
 class DataRequirement_DateFilter {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The date-valued attribute of the filter. The specified path SHALL be a
-  // FHIRPath resolveable on the specified type of the DataRequirement, and
-  // SHALL consist only of identifiers, constant indexers, and .resolve().
-  // The path is allowed to contain qualifiers (.) to traverse sub-elements,
-  // as well as indexers ([x]) to traverse multiple-cardinality sub-elements
-  // (see the [Simple FHIRPath Profile](fhirpath.html#simple) for full
-  // details). Note that the index must be an integer constant. The path
-  // must resolve to an element of type date, dateTime, Period, Schedule, or
-  // Timing.
   String path;
-
-  //  Extensions for path
   Element elementPath;
-
-  //  A date parameter that refers to a search parameter defined on the
-  // specified type of the DataRequirement, and which searches on elements
-  // of type date, dateTime, Period, Schedule, or Timing.
   String searchParam;
-
-  //  Extensions for searchParam
   Element elementSearchParam;
-
-  //  The value of the filter. If period is specified, the filter will
-  // return only those data items that fall within the bounds determined by
-  // the Period, inclusive of the period boundaries. If dateTime is
-  // specified, the filter will return only those data items that are equal
-  // to the specified dateTime. If a Duration is specified, the filter will
-  // return only those data items that fall within Duration before now.
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for valueDateTime
   Element elementValueDateTime;
-
-  //  The value of the filter. If period is specified, the filter will
-  // return only those data items that fall within the bounds determined by
-  // the Period, inclusive of the period boundaries. If dateTime is
-  // specified, the filter will return only those data items that are equal
-  // to the specified dateTime. If a Duration is specified, the filter will
-  // return only those data items that fall within Duration before now.
   Period valuePeriod;
-
-  //  The value of the filter. If period is specified, the filter will
-  // return only those data items that fall within the bounds determined by
-  // the Period, inclusive of the period boundaries. If dateTime is
-  // specified, the filter will return only those data items that are equal
-  // to the specified dateTime. If a Duration is specified, the filter will
-  // return only those data items that fall within Duration before now.
   Duration valueDuration;
 
 DataRequirement_DateFilter(
@@ -279,47 +108,12 @@ DataRequirement_DateFilter(
 
 @JsonSerializable(explicitToJson: true)
 class DataRequirement_Sort {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The attribute of the sort. The specified path must be resolvable from
-  // the type of the required data. The path is allowed to contain
-  // qualifiers (.) to traverse sub-elements, as well as indexers ([x]) to
-  // traverse multiple-cardinality sub-elements. Note that the index must be
-  // an integer constant.
   String path;
-
-  //  Extensions for path
   Element elementPath;
-
-  //  The direction of the sort, ascending or descending.
   String direction; // <code> enum: ascending/descending;
-
-  //  Extensions for direction
   Element elementDirection;
 
 DataRequirement_Sort(
@@ -336,3 +130,203 @@ DataRequirement_Sort(
   Map<String, dynamic> toJson() => _$DataRequirement_SortToJson(this);
 }
 
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+DataRequirement _$DataRequirementFromJson(Map<String, dynamic> json) {
+  return DataRequirement(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    type: json['type'] as String,
+    elementType: json['elementType'] == null
+        ? null
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
+    profile: (json['profile'] as List)?.map((e) => e as String)?.toList(),
+    subjectCodeableConcept: json['subjectCodeableConcept'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['subjectCodeableConcept'] as Map<String, dynamic>),
+    subjectReference: json['subjectReference'] == null
+        ? null
+        : Reference.fromJson(json['subjectReference'] as Map<String, dynamic>),
+    mustSupport:
+        (json['mustSupport'] as List)?.map((e) => e as String)?.toList(),
+    elementMustSupport: (json['elementMustSupport'] as List)
+        ?.map((e) =>
+            e == null ? null : Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    codeFilter: (json['codeFilter'] as List)
+        ?.map((e) => e == null
+            ? null
+            : DataRequirement_CodeFilter.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    dateFilter: (json['dateFilter'] as List)
+        ?.map((e) => e == null
+            ? null
+            : DataRequirement_DateFilter.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    limit: json['limit'] as int,
+    elementLimit: json['elementLimit'] == null
+        ? null
+        : Element.fromJson(json['elementLimit'] as Map<String, dynamic>),
+    sort: (json['sort'] as List)
+        ?.map((e) => e == null
+            ? null
+            : DataRequirement_Sort.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$DataRequirementToJson(DataRequirement instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+      'profile': instance.profile,
+      'subjectCodeableConcept': instance.subjectCodeableConcept?.toJson(),
+      'subjectReference': instance.subjectReference?.toJson(),
+      'mustSupport': instance.mustSupport,
+      'elementMustSupport':
+          instance.elementMustSupport?.map((e) => e?.toJson())?.toList(),
+      'codeFilter': instance.codeFilter?.map((e) => e?.toJson())?.toList(),
+      'dateFilter': instance.dateFilter?.map((e) => e?.toJson())?.toList(),
+      'limit': instance.limit,
+      'elementLimit': instance.elementLimit?.toJson(),
+      'sort': instance.sort?.map((e) => e?.toJson())?.toList(),
+    };
+
+DataRequirement_CodeFilter _$DataRequirement_CodeFilterFromJson(
+    Map<String, dynamic> json) {
+  return DataRequirement_CodeFilter(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    path: json['path'] as String,
+    elementPath: json['elementPath'] == null
+        ? null
+        : Element.fromJson(json['elementPath'] as Map<String, dynamic>),
+    searchParam: json['searchParam'] as String,
+    elementSearchParam: json['elementSearchParam'] == null
+        ? null
+        : Element.fromJson(json['elementSearchParam'] as Map<String, dynamic>),
+    valueSet: json['valueSet'] as String,
+    code: (json['code'] as List)
+        ?.map((e) =>
+            e == null ? null : Coding.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$DataRequirement_CodeFilterToJson(
+        DataRequirement_CodeFilter instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'path': instance.path,
+      'elementPath': instance.elementPath?.toJson(),
+      'searchParam': instance.searchParam,
+      'elementSearchParam': instance.elementSearchParam?.toJson(),
+      'valueSet': instance.valueSet,
+      'code': instance.code?.map((e) => e?.toJson())?.toList(),
+    };
+
+DataRequirement_DateFilter _$DataRequirement_DateFilterFromJson(
+    Map<String, dynamic> json) {
+  return DataRequirement_DateFilter(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    path: json['path'] as String,
+    elementPath: json['elementPath'] == null
+        ? null
+        : Element.fromJson(json['elementPath'] as Map<String, dynamic>),
+    searchParam: json['searchParam'] as String,
+    elementSearchParam: json['elementSearchParam'] == null
+        ? null
+        : Element.fromJson(json['elementSearchParam'] as Map<String, dynamic>),
+    valueDateTime: json['valueDateTime'] as String,
+    elementValueDateTime: json['elementValueDateTime'] == null
+        ? null
+        : Element.fromJson(
+            json['elementValueDateTime'] as Map<String, dynamic>),
+    valuePeriod: json['valuePeriod'] == null
+        ? null
+        : Period.fromJson(json['valuePeriod'] as Map<String, dynamic>),
+    valueDuration: json['valueDuration'] == null
+        ? null
+        : Duration.fromJson(json['valueDuration'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$DataRequirement_DateFilterToJson(
+        DataRequirement_DateFilter instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'path': instance.path,
+      'elementPath': instance.elementPath?.toJson(),
+      'searchParam': instance.searchParam,
+      'elementSearchParam': instance.elementSearchParam?.toJson(),
+      'valueDateTime': instance.valueDateTime,
+      'elementValueDateTime': instance.elementValueDateTime?.toJson(),
+      'valuePeriod': instance.valuePeriod?.toJson(),
+      'valueDuration': instance.valueDuration?.toJson(),
+    };
+
+DataRequirement_Sort _$DataRequirement_SortFromJson(Map<String, dynamic> json) {
+  return DataRequirement_Sort(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    path: json['path'] as String,
+    elementPath: json['elementPath'] == null
+        ? null
+        : Element.fromJson(json['elementPath'] as Map<String, dynamic>),
+    direction: json['direction'] as String,
+    elementDirection: json['elementDirection'] == null
+        ? null
+        : Element.fromJson(json['elementDirection'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$DataRequirement_SortToJson(
+        DataRequirement_Sort instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'path': instance.path,
+      'elementPath': instance.elementPath?.toJson(),
+      'direction': instance.direction,
+      'elementDirection': instance.elementDirection?.toJson(),
+    };

@@ -4,42 +4,16 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
-part 'annotation.g.dart';
-
 @JsonSerializable(explicitToJson: true)
 class Annotation {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  The individual responsible for making the annotation.
   Reference authorReference;
-
-  //  The individual responsible for making the annotation.
   String authorString; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for authorString
   Element elementAuthorString;
-
-  //  Indicates when this particular annotation was made.
   DateTime time;
-
-  //  Extensions for time
   Element elementTime;
-
-  //  The text of the annotation in markdown format.
   String text;
-
-  //  Extensions for text
   Element elementText;
 
 Annotation(
@@ -58,3 +32,46 @@ Annotation(
   Map<String, dynamic> toJson() => _$AnnotationToJson(this);
 }
 
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+Annotation _$AnnotationFromJson(Map<String, dynamic> json) {
+  return Annotation(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    authorReference: json['authorReference'] == null
+        ? null
+        : Reference.fromJson(json['authorReference'] as Map<String, dynamic>),
+    authorString: json['authorString'] as String,
+    elementAuthorString: json['elementAuthorString'] == null
+        ? null
+        : Element.fromJson(json['elementAuthorString'] as Map<String, dynamic>),
+    time: json['time'] == null ? null : DateTime.parse(json['time'] as String),
+    elementTime: json['elementTime'] == null
+        ? null
+        : Element.fromJson(json['elementTime'] as Map<String, dynamic>),
+    text: json['text'] as String,
+    elementText: json['elementText'] == null
+        ? null
+        : Element.fromJson(json['elementText'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$AnnotationToJson(Annotation instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'authorReference': instance.authorReference?.toJson(),
+      'authorString': instance.authorString,
+      'elementAuthorString': instance.elementAuthorString?.toJson(),
+      'time': instance.time?.toIso8601String(),
+      'elementTime': instance.elementTime?.toJson(),
+      'text': instance.text,
+      'elementText': instance.elementText?.toJson(),
+    };

@@ -10,184 +10,44 @@ import 'package:flutter_fhir/fhirClasses/narrative.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
-part 'exampleScenario.g.dart';
-
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario {
-
-  //  This is a ExampleScenario resource
   final String resourceType= 'ExampleScenario';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   String implicitRules;
-
-  //  Extensions for implicitRules
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   String language;
-
-  //  Extensions for language
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  An absolute URI that is used to identify this example scenario when it
-  // is referenced in a specification, model, design or an instance; also
-  // called its canonical identifier. This SHOULD be globally unique and
-  // SHOULD be a literal address at which at which an authoritative instance
-  // of this example scenario is (or will be) published. This URL can be the
-  // target of a canonical reference. It SHALL remain the same when the
-  // example scenario is stored on different servers.
   String url;
-
-  //  Extensions for url
   Element elementUrl;
-
-  //  A formal identifier that is used to identify this example scenario
-  // when it is represented in other formats, or referenced in a
-  // specification, model, design or an instance.
   List<Identifier> identifier;
-
-  //  The identifier that is used to identify this version of the example
-  // scenario when it is referenced in a specification, model, design or
-  // instance. This is an arbitrary value managed by the example scenario
-  // author and is not expected to be globally unique. For example, it might
-  // be a timestamp (e.g. yyyymmdd) if a managed version is not available.
-  // There is also no expectation that versions can be placed in a
-  // lexicographical sequence.
   String version;
-
-  //  Extensions for version
   Element elementVersion;
-
-  //  A natural language name identifying the example scenario. This name
-  // should be usable as an identifier for the module by machine processing
-  // applications such as code generation.
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  The status of this example scenario. Enables tracking the life-cycle
-  // of the content.
   String status; // <code> enum: draft/active/retired/unknown;
-
-  //  Extensions for status
   Element elementStatus;
-
-  //  A Boolean value to indicate that this example scenario is authored for
-  // testing purposes (or education/evaluation/marketing) and is not
-  // intended to be used for genuine usage.
   bool experimental;
-
-  //  Extensions for experimental
   Element elementExperimental;
-
-  //  The date  (and optionally time) when the example scenario was
-  // published. The date must change when the business version changes and
-  // it must change if the status code changes. In addition, it should
-  // change when the substantive content of the example scenario changes.
-  // (e.g. the 'content logical definition').
   DateTime date;
-
-  //  Extensions for date
   Element elementDate;
-
-  //  The name of the organization or individual that published the example
-  // scenario.
   String publisher;
-
-  //  Extensions for publisher
   Element elementPublisher;
-
-  //  Contact details to assist a user in finding and communicating with the
-  // publisher.
   List<ContactDetail> contact;
-
-  //  The content was developed with a focus and intent of supporting the
-  // contexts that are listed. These contexts may be general categories
-  // (gender, age, ...) or may be references to specific programs (insurance
-  // plans, studies, ...) and may be used to assist with indexing and
-  // searching for appropriate example scenario instances.
   List<UsageContext> useContext;
-
-  //  A legal or geographic region in which the example scenario is intended
-  // to be used.
   List<CodeableConcept> jurisdiction;
-
-  //  A copyright statement relating to the example scenario and/or its
-  // contents. Copyright statements are generally legal restrictions on the
-  // use and publishing of the example scenario.
   String copyright;
-
-  //  Extensions for copyright
   Element elementCopyright;
-
-  //  What the example scenario resource is created for. This should not be
-  // used to show the business purpose of the scenario itself, but the
-  // purpose of documenting a scenario.
   String purpose;
-
-  //  Extensions for purpose
   Element elementPurpose;
-
-  //  Actor participating in the resource.
   List<ExampleScenario_Actor> actor;
-
-  //  Each resource and each version that is present in the workflow.
   List<ExampleScenario_Instance> instance;
-
-  //  Each major process - a group of operations.
   List<ExampleScenario_Process> process;
-
-  //  Another nested workflow.
   List<String> workflow;
 
 ExampleScenario(
@@ -235,55 +95,16 @@ ExampleScenario(
 
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_Actor {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  ID or acronym of actor.
   String actorId;
-
-  //  Extensions for actorId
   Element elementActorId;
-
-  //  The type of actor - person or system.
   String type; // <code> enum: person/entity;
-
-  //  Extensions for type
   Element elementType;
-
-  //  The name of the actor as shown in the page.
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  The description of the actor.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
 
 ExampleScenario_Actor(
@@ -306,62 +127,18 @@ ExampleScenario_Actor(
 
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_Instance {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The id of the resource for referencing.
   String resourceId;
-
-  //  Extensions for resourceId
   Element elementResourceId;
-
-  //  The type of the resource.
   String resourceType;
-
-  //  Extensions for resourceType
   Element elementResourceType;
-
-  //  A short name for the resource instance.
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  Human-friendly description of the resource instance.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  A specific version of the resource.
   List<ExampleScenario_Version> version;
-
-  //  Resources contained in the instance (e.g. the observations contained
-  // in a bundle).
   List<ExampleScenario_ContainedInstance> containedInstance;
 
 ExampleScenario_Instance(
@@ -385,43 +162,12 @@ ExampleScenario_Instance(
 
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_Version {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The identifier of a specific version of a resource.
   String versionId;
-
-  //  Extensions for versionId
   Element elementVersionId;
-
-  //  The description of the resource version.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
 
 ExampleScenario_Version(
@@ -440,43 +186,12 @@ ExampleScenario_Version(
 
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_ContainedInstance {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Each resource contained in the instance.
   String resourceId;
-
-  //  Extensions for resourceId
   Element elementResourceId;
-
-  //  A specific version of a resource contained in the instance.
   String versionId;
-
-  //  Extensions for versionId
   Element elementVersionId;
 
 ExampleScenario_ContainedInstance(
@@ -495,58 +210,17 @@ ExampleScenario_ContainedInstance(
 
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_Process {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The diagram title of the group of operations.
   String title;
-
-  //  Extensions for title
   Element elementTitle;
-
-  //  A longer description of the group of operations.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  Description of initial status before the process starts.
   String preConditions;
-
-  //  Extensions for preConditions
   Element elementPreConditions;
-
-  //  Description of final status after the process ends.
   String postConditions;
-
-  //  Extensions for postConditions
   Element elementPostConditions;
-
-  //  Each step of the process.
   List<ExampleScenario_Step> step;
 
 ExampleScenario_Process(
@@ -570,47 +244,13 @@ ExampleScenario_Process(
 
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_Step {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Nested process.
   List<ExampleScenario_Process> process;
-
-  //  If there is a pause in the flow.
   bool pause;
-
-  //  Extensions for pause
   Element elementPause;
-
-  //  Each interaction or action.
   ExampleScenario_Operation operation;
-
-  //  Indicates an alternative step that can be taken instead of the
-  // operations on the base step in exceptional/atypical circumstances.
   List<ExampleScenario_Alternative> alternative;
 
 ExampleScenario_Step(
@@ -630,85 +270,26 @@ ExampleScenario_Step(
 
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_Operation {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The sequential number of the interaction, e.g. 1.2.5.
   String number;
-
-  //  Extensions for number
   Element elementNumber;
-
-  //  The type of operation - CRUD.
   String type;
-
-  //  Extensions for type
   Element elementType;
-
-  //  The human-friendly name of the interaction.
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  Who starts the transaction.
   String initiator;
-
-  //  Extensions for initiator
   Element elementInitiator;
-
-  //  Who receives the transaction.
   String receiver;
-
-  //  Extensions for receiver
   Element elementReceiver;
-
-  //  A comment to be inserted in the diagram.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  Whether the initiator is deactivated right after the transaction.
   bool initiatorActive;
-
-  //  Extensions for initiatorActive
   Element elementInitiatorActive;
-
-  //  Whether the receiver is deactivated right after the transaction.
   bool receiverActive;
-
-  //  Extensions for receiverActive
   Element elementReceiverActive;
-
-  //  Each resource instance used by the initiator.
   ExampleScenario_ContainedInstance request;
-
-  //  Each resource instance used by the responder.
   ExampleScenario_ContainedInstance response;
 
 ExampleScenario_Operation(
@@ -741,48 +322,13 @@ ExampleScenario_Operation(
 
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_Alternative {
-
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The label to display for the alternative that gives a sense of the
-  // circumstance in which the alternative should be invoked.
   String title;
-
-  //  Extensions for title
   Element elementTitle;
-
-  //  A human-readable description of the alternative explaining when the
-  // alternative should occur rather than the base step.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  What happens in each alternative option.
   List<ExampleScenario_Step> step;
 
 ExampleScenario_Alternative(
@@ -800,3 +346,561 @@ ExampleScenario_Alternative(
   Map<String, dynamic> toJson() => _$ExampleScenario_AlternativeToJson(this);
 }
 
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+ExampleScenario _$ExampleScenarioFromJson(Map<String, dynamic> json) {
+  return ExampleScenario(
+    id: json['id'] as String,
+    meta: json['meta'] == null
+        ? null
+        : Meta.fromJson(json['meta'] as Map<String, dynamic>),
+    implicitRules: json['implicitRules'] as String,
+    elementImplicitRules: json['elementImplicitRules'] == null
+        ? null
+        : Element.fromJson(
+            json['elementImplicitRules'] as Map<String, dynamic>),
+    language: json['language'] as String,
+    elementLanguage: json['elementLanguage'] == null
+        ? null
+        : Element.fromJson(json['elementLanguage'] as Map<String, dynamic>),
+    text: json['text'] == null
+        ? null
+        : Narrative.fromJson(json['text'] as Map<String, dynamic>),
+    contained: (json['contained'] as List)
+        ?.map((e) =>
+            e == null ? null : ResourceTypes(e['resourceType'], e as Map<String, dynamic>))
+        ?.toList(),
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    url: json['url'] as String,
+    elementUrl: json['elementUrl'] == null
+        ? null
+        : Element.fromJson(json['elementUrl'] as Map<String, dynamic>),
+    identifier: (json['identifier'] as List)
+        ?.map((e) =>
+            e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    version: json['version'] as String,
+    elementVersion: json['elementVersion'] == null
+        ? null
+        : Element.fromJson(json['elementVersion'] as Map<String, dynamic>),
+    name: json['name'] as String,
+    elementName: json['elementName'] == null
+        ? null
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
+    status: json['status'] as String,
+    elementStatus: json['elementStatus'] == null
+        ? null
+        : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
+    experimental: json['experimental'] as bool,
+    elementExperimental: json['elementExperimental'] == null
+        ? null
+        : Element.fromJson(json['elementExperimental'] as Map<String, dynamic>),
+    date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
+    elementDate: json['elementDate'] == null
+        ? null
+        : Element.fromJson(json['elementDate'] as Map<String, dynamic>),
+    publisher: json['publisher'] as String,
+    elementPublisher: json['elementPublisher'] == null
+        ? null
+        : Element.fromJson(json['elementPublisher'] as Map<String, dynamic>),
+    contact: (json['contact'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ContactDetail.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    useContext: (json['useContext'] as List)
+        ?.map((e) =>
+            e == null ? null : UsageContext.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    jurisdiction: (json['jurisdiction'] as List)
+        ?.map((e) => e == null
+            ? null
+            : CodeableConcept.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    copyright: json['copyright'] as String,
+    elementCopyright: json['elementCopyright'] == null
+        ? null
+        : Element.fromJson(json['elementCopyright'] as Map<String, dynamic>),
+    purpose: json['purpose'] as String,
+    elementPurpose: json['elementPurpose'] == null
+        ? null
+        : Element.fromJson(json['elementPurpose'] as Map<String, dynamic>),
+    actor: (json['actor'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ExampleScenario_Actor.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    instance: (json['instance'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ExampleScenario_Instance.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    process: (json['process'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ExampleScenario_Process.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    workflow: (json['workflow'] as List)?.map((e) => e as String)?.toList(),
+  );
+}
+
+Map<String, dynamic> _$ExampleScenarioToJson(ExampleScenario instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'meta': instance.meta?.toJson(),
+      'implicitRules': instance.implicitRules,
+      'elementImplicitRules': instance.elementImplicitRules?.toJson(),
+      'language': instance.language,
+      'elementLanguage': instance.elementLanguage?.toJson(),
+      'text': instance.text?.toJson(),
+      'contained': instance.contained,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'url': instance.url,
+      'elementUrl': instance.elementUrl?.toJson(),
+      'identifier': instance.identifier?.map((e) => e?.toJson())?.toList(),
+      'version': instance.version,
+      'elementVersion': instance.elementVersion?.toJson(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'status': instance.status,
+      'elementStatus': instance.elementStatus?.toJson(),
+      'experimental': instance.experimental,
+      'elementExperimental': instance.elementExperimental?.toJson(),
+      'date': instance.date?.toIso8601String(),
+      'elementDate': instance.elementDate?.toJson(),
+      'publisher': instance.publisher,
+      'elementPublisher': instance.elementPublisher?.toJson(),
+      'contact': instance.contact?.map((e) => e?.toJson())?.toList(),
+      'useContext': instance.useContext?.map((e) => e?.toJson())?.toList(),
+      'jurisdiction': instance.jurisdiction?.map((e) => e?.toJson())?.toList(),
+      'copyright': instance.copyright,
+      'elementCopyright': instance.elementCopyright?.toJson(),
+      'purpose': instance.purpose,
+      'elementPurpose': instance.elementPurpose?.toJson(),
+      'actor': instance.actor?.map((e) => e?.toJson())?.toList(),
+      'instance': instance.instance?.map((e) => e?.toJson())?.toList(),
+      'process': instance.process?.map((e) => e?.toJson())?.toList(),
+      'workflow': instance.workflow,
+    };
+
+ExampleScenario_Actor _$ExampleScenario_ActorFromJson(
+    Map<String, dynamic> json) {
+  return ExampleScenario_Actor(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    actorId: json['actorId'] as String,
+    elementActorId: json['elementActorId'] == null
+        ? null
+        : Element.fromJson(json['elementActorId'] as Map<String, dynamic>),
+    type: json['type'] as String,
+    elementType: json['elementType'] == null
+        ? null
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
+    name: json['name'] as String,
+    elementName: json['elementName'] == null
+        ? null
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
+    description: json['description'] as String,
+    elementDescription: json['elementDescription'] == null
+        ? null
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$ExampleScenario_ActorToJson(
+        ExampleScenario_Actor instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'actorId': instance.actorId,
+      'elementActorId': instance.elementActorId?.toJson(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+    };
+
+ExampleScenario_Instance _$ExampleScenario_InstanceFromJson(
+    Map<String, dynamic> json) {
+  return ExampleScenario_Instance(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    resourceId: json['resourceId'] as String,
+    elementResourceId: json['elementResourceId'] == null
+        ? null
+        : Element.fromJson(json['elementResourceId'] as Map<String, dynamic>),
+    elementResourceType: json['elementResourceType'] == null
+        ? null
+        : Element.fromJson(json['elementResourceType'] as Map<String, dynamic>),
+    name: json['name'] as String,
+    elementName: json['elementName'] == null
+        ? null
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
+    description: json['description'] as String,
+    elementDescription: json['elementDescription'] == null
+        ? null
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
+    version: (json['version'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ExampleScenario_Version.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    containedInstance: (json['containedInstance'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ExampleScenario_ContainedInstance.fromJson(
+                e as Map<String, dynamic>))
+        ?.toList(),
+  )..resourceType = json['resourceType'] as String;
+}
+
+Map<String, dynamic> _$ExampleScenario_InstanceToJson(
+        ExampleScenario_Instance instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'resourceId': instance.resourceId,
+      'elementResourceId': instance.elementResourceId?.toJson(),
+      'resourceType': instance.resourceType,
+      'elementResourceType': instance.elementResourceType?.toJson(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'version': instance.version?.map((e) => e?.toJson())?.toList(),
+      'containedInstance':
+          instance.containedInstance?.map((e) => e?.toJson())?.toList(),
+    };
+
+ExampleScenario_Version _$ExampleScenario_VersionFromJson(
+    Map<String, dynamic> json) {
+  return ExampleScenario_Version(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    versionId: json['versionId'] as String,
+    elementVersionId: json['elementVersionId'] == null
+        ? null
+        : Element.fromJson(json['elementVersionId'] as Map<String, dynamic>),
+    description: json['description'] as String,
+    elementDescription: json['elementDescription'] == null
+        ? null
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$ExampleScenario_VersionToJson(
+        ExampleScenario_Version instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'versionId': instance.versionId,
+      'elementVersionId': instance.elementVersionId?.toJson(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+    };
+
+ExampleScenario_ContainedInstance _$ExampleScenario_ContainedInstanceFromJson(
+    Map<String, dynamic> json) {
+  return ExampleScenario_ContainedInstance(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    resourceId: json['resourceId'] as String,
+    elementResourceId: json['elementResourceId'] == null
+        ? null
+        : Element.fromJson(json['elementResourceId'] as Map<String, dynamic>),
+    versionId: json['versionId'] as String,
+    elementVersionId: json['elementVersionId'] == null
+        ? null
+        : Element.fromJson(json['elementVersionId'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$ExampleScenario_ContainedInstanceToJson(
+        ExampleScenario_ContainedInstance instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'resourceId': instance.resourceId,
+      'elementResourceId': instance.elementResourceId?.toJson(),
+      'versionId': instance.versionId,
+      'elementVersionId': instance.elementVersionId?.toJson(),
+    };
+
+ExampleScenario_Process _$ExampleScenario_ProcessFromJson(
+    Map<String, dynamic> json) {
+  return ExampleScenario_Process(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    title: json['title'] as String,
+    elementTitle: json['elementTitle'] == null
+        ? null
+        : Element.fromJson(json['elementTitle'] as Map<String, dynamic>),
+    description: json['description'] as String,
+    elementDescription: json['elementDescription'] == null
+        ? null
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
+    preConditions: json['preConditions'] as String,
+    elementPreConditions: json['elementPreConditions'] == null
+        ? null
+        : Element.fromJson(
+            json['elementPreConditions'] as Map<String, dynamic>),
+    postConditions: json['postConditions'] as String,
+    elementPostConditions: json['elementPostConditions'] == null
+        ? null
+        : Element.fromJson(
+            json['elementPostConditions'] as Map<String, dynamic>),
+    step: (json['step'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ExampleScenario_Step.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$ExampleScenario_ProcessToJson(
+        ExampleScenario_Process instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'title': instance.title,
+      'elementTitle': instance.elementTitle?.toJson(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'preConditions': instance.preConditions,
+      'elementPreConditions': instance.elementPreConditions?.toJson(),
+      'postConditions': instance.postConditions,
+      'elementPostConditions': instance.elementPostConditions?.toJson(),
+      'step': instance.step?.map((e) => e?.toJson())?.toList(),
+    };
+
+ExampleScenario_Step _$ExampleScenario_StepFromJson(Map<String, dynamic> json) {
+  return ExampleScenario_Step(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    process: (json['process'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ExampleScenario_Process.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    pause: json['pause'] as bool,
+    elementPause: json['elementPause'] == null
+        ? null
+        : Element.fromJson(json['elementPause'] as Map<String, dynamic>),
+    operation: json['operation'] == null
+        ? null
+        : ExampleScenario_Operation.fromJson(
+            json['operation'] as Map<String, dynamic>),
+    alternative: (json['alternative'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ExampleScenario_Alternative.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$ExampleScenario_StepToJson(
+        ExampleScenario_Step instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'process': instance.process?.map((e) => e?.toJson())?.toList(),
+      'pause': instance.pause,
+      'elementPause': instance.elementPause?.toJson(),
+      'operation': instance.operation?.toJson(),
+      'alternative': instance.alternative?.map((e) => e?.toJson())?.toList(),
+    };
+
+ExampleScenario_Operation _$ExampleScenario_OperationFromJson(
+    Map<String, dynamic> json) {
+  return ExampleScenario_Operation(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    number: json['number'] as String,
+    elementNumber: json['elementNumber'] == null
+        ? null
+        : Element.fromJson(json['elementNumber'] as Map<String, dynamic>),
+    type: json['type'] as String,
+    elementType: json['elementType'] == null
+        ? null
+        : Element.fromJson(json['elementType'] as Map<String, dynamic>),
+    name: json['name'] as String,
+    elementName: json['elementName'] == null
+        ? null
+        : Element.fromJson(json['elementName'] as Map<String, dynamic>),
+    initiator: json['initiator'] as String,
+    elementInitiator: json['elementInitiator'] == null
+        ? null
+        : Element.fromJson(json['elementInitiator'] as Map<String, dynamic>),
+    receiver: json['receiver'] as String,
+    elementReceiver: json['elementReceiver'] == null
+        ? null
+        : Element.fromJson(json['elementReceiver'] as Map<String, dynamic>),
+    description: json['description'] as String,
+    elementDescription: json['elementDescription'] == null
+        ? null
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
+    initiatorActive: json['initiatorActive'] as bool,
+    elementInitiatorActive: json['elementInitiatorActive'] == null
+        ? null
+        : Element.fromJson(
+            json['elementInitiatorActive'] as Map<String, dynamic>),
+    receiverActive: json['receiverActive'] as bool,
+    elementReceiverActive: json['elementReceiverActive'] == null
+        ? null
+        : Element.fromJson(
+            json['elementReceiverActive'] as Map<String, dynamic>),
+    request: json['request'] == null
+        ? null
+        : ExampleScenario_ContainedInstance.fromJson(
+            json['request'] as Map<String, dynamic>),
+    response: json['response'] == null
+        ? null
+        : ExampleScenario_ContainedInstance.fromJson(
+            json['response'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$ExampleScenario_OperationToJson(
+        ExampleScenario_Operation instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'number': instance.number,
+      'elementNumber': instance.elementNumber?.toJson(),
+      'type': instance.type,
+      'elementType': instance.elementType?.toJson(),
+      'name': instance.name,
+      'elementName': instance.elementName?.toJson(),
+      'initiator': instance.initiator,
+      'elementInitiator': instance.elementInitiator?.toJson(),
+      'receiver': instance.receiver,
+      'elementReceiver': instance.elementReceiver?.toJson(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'initiatorActive': instance.initiatorActive,
+      'elementInitiatorActive': instance.elementInitiatorActive?.toJson(),
+      'receiverActive': instance.receiverActive,
+      'elementReceiverActive': instance.elementReceiverActive?.toJson(),
+      'request': instance.request?.toJson(),
+      'response': instance.response?.toJson(),
+    };
+
+ExampleScenario_Alternative _$ExampleScenario_AlternativeFromJson(
+    Map<String, dynamic> json) {
+  return ExampleScenario_Alternative(
+    id: json['id'] as String,
+    extension: (json['extension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    modifierExtension: (json['modifierExtension'] as List)
+        ?.map((e) =>
+            e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    title: json['title'] as String,
+    elementTitle: json['elementTitle'] == null
+        ? null
+        : Element.fromJson(json['elementTitle'] as Map<String, dynamic>),
+    description: json['description'] as String,
+    elementDescription: json['elementDescription'] == null
+        ? null
+        : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
+    step: (json['step'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ExampleScenario_Step.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+  );
+}
+
+Map<String, dynamic> _$ExampleScenario_AlternativeToJson(
+        ExampleScenario_Alternative instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'extension': instance.extension?.map((e) => e?.toJson())?.toList(),
+      'modifierExtension':
+          instance.modifierExtension?.map((e) => e?.toJson())?.toList(),
+      'title': instance.title,
+      'elementTitle': instance.elementTitle?.toJson(),
+      'description': instance.description,
+      'elementDescription': instance.elementDescription?.toJson(),
+      'step': instance.step?.map((e) => e?.toJson())?.toList(),
+    };
