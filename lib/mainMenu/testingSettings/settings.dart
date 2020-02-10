@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_fhir/mainMenu.dart';
+import 'package:flutter_fhir/mainMenu/mainMenu.dart';
 
 class Settings extends StatelessWidget {
   @override
@@ -25,31 +25,6 @@ class _Settings extends State<Setting> {
       ),
       body: Column(
         children: [
-          Row(
-            children: [
-              Radio(
-                value: 'en',
-                groupValue: language,
-                onChanged: (String value) async {
-                  setState(() {
-                    language = value;
-                  });
-                },
-              ),
-              Text('English'),
-
-              Radio(
-                value: 'es',
-                groupValue: language,
-                onChanged: (String value) async {
-                  setState(() {
-                    language = value;
-                  });
-                },
-              ),
-              Text('Español'),
-            ],
-          ),
 
           RaisedButton(
             onPressed: () {

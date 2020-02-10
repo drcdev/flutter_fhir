@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_fhir/class/medicationAdministration.dart';
 import 'package:flutter_fhir/class/period.dart';
-import 'package:flutter_fhir/mainMenu.dart';
+import 'package:flutter_fhir/mainMenu/mainMenu.dart';
 import 'package:geolocator/geolocator.dart';
 
 import 'package:flutter_fhir/class/composition.dart';
@@ -11,28 +11,22 @@ import 'package:flutter_fhir/class/encounter.dart';
 import 'package:flutter_fhir/class/patient.dart';
 
 class Parasite extends StatelessWidget {
-  Patient pt;
-  Parasite({this.pt});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: pt != null ? _Parasite(pt: pt) : _Parasite(),
+      home: _Parasite(),
     );
   }
 }
 
 class _Parasite extends StatefulWidget {
-  Patient pt;
-  _Parasite({this.pt});
   @override
   _ParasiteState createState() =>
-      pt != null ? _ParasiteState(pt: pt) : _ParasiteState();
+      _ParasiteState();
 }
 
 class _ParasiteState extends State<_Parasite> {
   Patient pt;
-  _ParasiteState({this.pt});
   Position _currentPosition;
   Period period;
   Encounter encounter;

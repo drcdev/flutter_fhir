@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_fhir/mainMenu.dart';
+import 'package:flutter_fhir/mainMenu/mainMenu.dart';
 
 class Vaccine extends StatelessWidget {
   @override

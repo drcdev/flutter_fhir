@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_fhir/appLocalizations.dart';
-import 'package:flutter_fhir/mainMenu.dart';
+import 'package:flutter_fhir/mainMenu/mainMenu.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:hive/hive.dart';
+import 'package:path_provider/path_provider.dart' as path_provider;
 
-void main() {
+void main() async {
   runApp(MaterialApp(
       home: _Main(),
       supportedLocales: [Locale('en', 'US'), Locale('es', 'AR')],

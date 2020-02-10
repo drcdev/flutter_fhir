@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_fhir/class/codeableConcept.dart';
-import 'package:flutter_fhir/evalRx.dart';
 import 'package:flutter_fhir/class/patient.dart';
 import 'package:flutter_fhir/class/humanName.dart';
-import 'package:flutter_fhir/mainMenu.dart';
-import 'package:flutter_fhir/objects.dart';
-import 'package:flutter_fhir/register.dart';
+import 'package:flutter_fhir/mainMenu/mainMenu.dart';
+import 'package:flutter_fhir/mainMenu/providerActivities/providerActivities.dart';
+import 'package:flutter_fhir/mainMenu/testingSettings/objects.dart';
+import 'package:flutter_fhir/mainMenu/providerActivities/registerNew/register.dart';
 
 class RegisterFamily extends StatelessWidget {
   Patient pt;
@@ -82,25 +82,10 @@ class _RegisterFamilyState extends State<_RegisterFamily> {
 
               Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => EvalRx(pt: pt)),
+                  MaterialPageRoute(builder: (context) => ProviderActivities(pt: pt)),
               );
             },
-            child: Text('Evaluate & Treat Patient'),
-          ),
-
-          RaisedButton(
-            onPressed: () {
-              pt = addFamily(pt, relation1);
-              pt = addFamily(pt, relation2);
-              pt = addFamily(pt, relation3);
-              Write(pt);
-
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => MainMenu()),
-              );
-            },
-            child: Text('Return to Opening Page'),
+            child: Text('Complete Registration'),
           ),
         ],
       ),
