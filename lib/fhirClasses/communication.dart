@@ -13,7 +13,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 149)
+@HiveType(typeId: 78)
 class Communication {
 
   //  This is a Communication resource
@@ -335,7 +335,7 @@ Communication_Payload(
 
 class CommunicationAdapter extends TypeAdapter<Communication> {
   @override
-  final typeId = 149;
+  final typeId = 78;
 
   @override
   Communication read(BinaryReader reader) {

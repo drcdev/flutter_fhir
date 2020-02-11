@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 528)
+@HiveType(typeId: 177)
 class Schedule {
 
   //  This is a Schedule resource
@@ -173,7 +173,7 @@ Schedule(
 
 class ScheduleAdapter extends TypeAdapter<Schedule> {
   @override
-  final typeId = 528;
+  final typeId = 177;
 
   @override
   Schedule read(BinaryReader reader) {

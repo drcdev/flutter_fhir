@@ -14,7 +14,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 169)
+@HiveType(typeId: 84)
 class Consent {
 
   //  This is a Consent resource
@@ -531,7 +531,7 @@ Consent_Data(
 
 class ConsentAdapter extends TypeAdapter<Consent> {
   @override
-  final typeId = 169;
+  final typeId = 84;
 
   @override
   Consent read(BinaryReader reader) {

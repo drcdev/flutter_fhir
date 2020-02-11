@@ -10,7 +10,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 250)
+@HiveType(typeId: 102)
 class EnrollmentResponse {
 
   //  This is a EnrollmentResponse resource
@@ -174,7 +174,7 @@ EnrollmentResponse(
 
 class EnrollmentResponseAdapter extends TypeAdapter<EnrollmentResponse> {
   @override
-  final typeId = 250;
+  final typeId = 102;
 
   @override
   EnrollmentResponse read(BinaryReader reader) {

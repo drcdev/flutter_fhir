@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 155)
+@HiveType(typeId: 81)
 class Composition {
 
   //  This is a Composition resource
@@ -507,7 +507,7 @@ Composition_Section(
 
 class CompositionAdapter extends TypeAdapter<Composition> {
   @override
-  final typeId = 155;
+  final typeId = 81;
 
   @override
   Composition read(BinaryReader reader) {

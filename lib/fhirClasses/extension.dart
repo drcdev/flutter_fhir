@@ -35,7 +35,7 @@ import 'package:flutter_fhir/fhirClasses/address.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 1)
+@HiveType(typeId: 17)
 class Extension {
 
   //  Unique id for the element within a resource (for internal references).
@@ -471,7 +471,7 @@ Extension(
 
 class ExtensionAdapter extends TypeAdapter<Extension> {
   @override
-  final typeId = 1;
+  final typeId = 17;
 
   @override
   Extension read(BinaryReader reader) {

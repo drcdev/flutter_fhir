@@ -6,7 +6,7 @@ import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 3)
+@HiveType(typeId: 19)
 class Annotation {
 
   //  Unique id for the element within a resource (for internal references).
@@ -75,7 +75,7 @@ Annotation(
 
 class AnnotationAdapter extends TypeAdapter<Annotation> {
   @override
-  final typeId = 3;
+  final typeId = 19;
 
   @override
   Annotation read(BinaryReader reader) {

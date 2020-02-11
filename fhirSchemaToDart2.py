@@ -6,7 +6,7 @@ fhirDir = './lib/fhirClasses/'
         
 for filename in os.listdir(fhirDir):
     if('.g.dart' not in filename and 'resourceList' not in filename):
-        with open(fhirDir + filename) as file1:
+        with open(fhirDir + filename, encoding='utf8') as file1:
             code1 = file1.read()
             code1 = code1.replace("\n\npart '" + filename.replace('.dart', '.g.dart') + "';","")
             code1 = code1.replace('ResourceList resource', 'dynamic resource')

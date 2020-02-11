@@ -14,7 +14,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 465)
+@HiveType(typeId: 155)
 class Organization {
 
   //  This is a Organization resource
@@ -240,7 +240,7 @@ Organization_Contact(
 
 class OrganizationAdapter extends TypeAdapter<Organization> {
   @override
-  final typeId = 465;
+  final typeId = 155;
 
   @override
   Organization read(BinaryReader reader) {

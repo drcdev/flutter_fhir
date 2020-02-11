@@ -21,7 +21,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 256)
+@HiveType(typeId: 106)
 class EvidenceVariable {
 
   //  This is a EvidenceVariable resource
@@ -520,7 +520,7 @@ EvidenceVariable_Characteristic(
 
 class EvidenceVariableAdapter extends TypeAdapter<EvidenceVariable> {
   @override
-  final typeId = 256;
+  final typeId = 106;
 
   @override
   EvidenceVariable read(BinaryReader reader) {

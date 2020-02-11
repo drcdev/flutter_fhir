@@ -13,7 +13,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 340)
+@HiveType(typeId: 122)
 class Invoice {
 
   //  This is a Invoice resource
@@ -413,7 +413,7 @@ Invoice_PriceComponent(
 
 class InvoiceAdapter extends TypeAdapter<Invoice> {
   @override
-  final typeId = 340;
+  final typeId = 122;
 
   @override
   Invoice read(BinaryReader reader) {

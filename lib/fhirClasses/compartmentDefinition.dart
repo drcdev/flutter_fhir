@@ -10,7 +10,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 153)
+@HiveType(typeId: 80)
 class CompartmentDefinition {
 
   //  This is a CompartmentDefinition resource
@@ -331,7 +331,7 @@ CompartmentDefinition_Resource(
 
 class CompartmentDefinitionAdapter extends TypeAdapter<CompartmentDefinition> {
   @override
-  final typeId = 153;
+  final typeId = 80;
 
   @override
   CompartmentDefinition read(BinaryReader reader) {

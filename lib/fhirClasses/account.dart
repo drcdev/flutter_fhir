@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 54)
+@HiveType(typeId: 56)
 class Account {
 
   //  This is a Account resource
@@ -304,7 +304,7 @@ Account_Guarantor(
 
 class AccountAdapter extends TypeAdapter<Account> {
   @override
-  final typeId = 54;
+  final typeId = 56;
 
   @override
   Account read(BinaryReader reader) {

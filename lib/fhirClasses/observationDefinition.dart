@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 455)
+@HiveType(typeId: 152)
 class ObservationDefinition {
 
   //  This is a ObservationDefinition resource
@@ -360,7 +360,7 @@ ObservationDefinition_QualifiedInterval(
 
 class ObservationDefinitionAdapter extends TypeAdapter<ObservationDefinition> {
   @override
-  final typeId = 455;
+  final typeId = 152;
 
   @override
   ObservationDefinition read(BinaryReader reader) {

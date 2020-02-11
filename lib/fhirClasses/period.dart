@@ -1,3 +1,4 @@
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -5,8 +6,24 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 15)
+@HiveType(typeId: 31)
 class Period {
+
+  static Future<Period> newInstance({
+      String id,
+      List<Extension> extension,
+      DateTime start,
+      Element elementStart,
+      DateTime end,
+      Element elementEnd}) async {
+    return Period(
+        id: await newEntry('Period'),
+        extension: extension,
+        start: start,
+        elementStart: elementStart,
+        end: end,
+        elementEnd: elementEnd);
+  }
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
@@ -41,19 +58,17 @@ class Period {
   @HiveField(5)
   Element elementEnd;
 
-Period(
-  {this.id,
-    this.extension,
-    this.start,
-    this.elementStart,
-    this.end,
-    this.elementEnd
-    });
+  Period(
+      {this.id,
+      this.extension,
+      this.start,
+      this.elementStart,
+      this.end,
+      this.elementEnd});
 
   factory Period.fromJson(Map<String, dynamic> json) => _$PeriodFromJson(json);
   Map<String, dynamic> toJson() => _$PeriodToJson(this);
 }
-
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************
@@ -62,7 +77,7 @@ Period(
 
 class PeriodAdapter extends TypeAdapter<Period> {
   @override
-  final typeId = 15;
+  final typeId = 31;
 
   @override
   Period read(BinaryReader reader) {

@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 74)
+@HiveType(typeId: 63)
 class Basic {
 
   //  This is a Basic resource
@@ -146,7 +146,7 @@ Basic(
 
 class BasicAdapter extends TypeAdapter<Basic> {
   @override
-  final typeId = 74;
+  final typeId = 63;
 
   @override
   Basic read(BinaryReader reader) {

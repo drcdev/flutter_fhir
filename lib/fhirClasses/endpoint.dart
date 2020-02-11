@@ -14,7 +14,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 248)
+@HiveType(typeId: 100)
 class Endpoint {
 
   //  This is a Endpoint resource
@@ -206,7 +206,7 @@ Endpoint(
 
 class EndpointAdapter extends TypeAdapter<Endpoint> {
   @override
-  final typeId = 248;
+  final typeId = 100;
 
   @override
   Endpoint read(BinaryReader reader) {

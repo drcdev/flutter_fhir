@@ -15,7 +15,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 111)
+@HiveType(typeId: 73)
 class ChargeItemDefinition {
 
   //  This is a ChargeItemDefinition resource
@@ -526,7 +526,7 @@ ChargeItemDefinition_PriceComponent(
 
 class ChargeItemDefinitionAdapter extends TypeAdapter<ChargeItemDefinition> {
   @override
-  final typeId = 111;
+  final typeId = 73;
 
   @override
   ChargeItemDefinition read(BinaryReader reader) {

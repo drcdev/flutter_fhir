@@ -8,7 +8,7 @@ import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 40)
+@HiveType(typeId: 51)
 class ProdCharacteristic {
 
   //  Unique id for the element within a resource (for internal references).
@@ -153,7 +153,7 @@ ProdCharacteristic(
 
 class ProdCharacteristicAdapter extends TypeAdapter<ProdCharacteristic> {
   @override
-  final typeId = 40;
+  final typeId = 51;
 
   @override
   ProdCharacteristic read(BinaryReader reader) {

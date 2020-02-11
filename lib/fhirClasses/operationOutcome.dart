@@ -9,7 +9,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 463)
+@HiveType(typeId: 154)
 class OperationOutcome {
 
   //  This is a OperationOutcome resource
@@ -213,7 +213,7 @@ OperationOutcome_Issue(
 
 class OperationOutcomeAdapter extends TypeAdapter<OperationOutcome> {
   @override
-  final typeId = 463;
+  final typeId = 154;
 
   @override
   OperationOutcome read(BinaryReader reader) {

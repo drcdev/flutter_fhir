@@ -9,7 +9,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 345)
+@HiveType(typeId: 124)
 class Linkage {
 
   //  This is a Linkage resource
@@ -188,7 +188,7 @@ Linkage_Item(
 
 class LinkageAdapter extends TypeAdapter<Linkage> {
   @override
-  final typeId = 345;
+  final typeId = 124;
 
   @override
   Linkage read(BinaryReader reader) {

@@ -23,7 +23,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 480)
+@HiveType(typeId: 162)
 class PlanDefinition {
 
   //  This is a PlanDefinition resource
@@ -1054,7 +1054,7 @@ PlanDefinition_DynamicValue(
 
 class PlanDefinitionAdapter extends TypeAdapter<PlanDefinition> {
   @override
-  final typeId = 480;
+  final typeId = 162;
 
   @override
   PlanDefinition read(BinaryReader reader) {

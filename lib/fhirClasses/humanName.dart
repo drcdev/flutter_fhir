@@ -6,7 +6,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 20)
+@HiveType(typeId: 36)
 class HumanName {
 
   //  Unique id for the element within a resource (for internal references).
@@ -113,7 +113,7 @@ HumanName(
 
 class HumanNameAdapter extends TypeAdapter<HumanName> {
   @override
-  final typeId = 20;
+  final typeId = 36;
 
   @override
   HumanName read(BinaryReader reader) {

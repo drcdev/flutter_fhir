@@ -3,6 +3,7 @@ First attempt at a flutter app for FHIR.
 1. Basic Oauth2 access to FHIR server (https://www.health-samurai.io/aidbox).
 2. Can create new patients, download from server.
 3. Can enter new patients w/ family members.
+4. Localization works but only on first page.
 
 ToDo: Goal is to be able to upload vaccination data.
 

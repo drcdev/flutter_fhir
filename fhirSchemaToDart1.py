@@ -72,7 +72,7 @@ importDict = {}
 #iterates through the different entities in fhir.schema.json
 #only looks in definitions (these are mostly resources, not primitives)
 definitions = schema['definitions']
-HiveType = -1
+HiveType = 15
 for objects in definitions:
     
     #ignore any of those that are in the ResourceList (names, no definitions)
@@ -85,12 +85,13 @@ for objects in definitions:
                                 ".g.dart';\n\n"])
             importL = lowcc(objected)
             importDict[importL] = []
+            HiveType += 1
         else:
             importL = lowcc(objects.split('_')[0])
             importL = 'lists' if importL == 'list' else importL
             
         #add JsonSerializable code at top of Dart class
-        HiveType += 1
+
         dartCode = ''.join([dartCode, 
                             '@JsonSerializable(explicitToJson: true)\n', 
                             ('@HiveType(typeId: ' + str(HiveType) + ')\n') if '_' not in objects else '',
@@ -111,10 +112,10 @@ for objects in definitions:
 #******************************************************************************
 #***** This adds comments to the files, but adds notable extra time to run this program *****
         #prints comment to the Dart code, formatted lines <= 70 characters
-            comments = properties[field]['description']
-            comments = re.sub(r'\n+', ' ', comments)
-            comments = re.sub(r'\r', ' ', comments)
-            dartCode = ''.join([dartCode, less70(comments), '\n'])
+            # comments = properties[field]['description']
+            # comments = re.sub(r'\n+', ' ', comments)
+            # comments = re.sub(r'\r', ' ', comments)
+            # dartCode = ''.join([dartCode, less70(comments), '\n'])
 #******************************************************************************
                                     
             #if items is NOT included it means that the item is NOT an array/list

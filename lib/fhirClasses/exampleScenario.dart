@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 258)
+@HiveType(typeId: 107)
 class ExampleScenario {
 
   //  This is a ExampleScenario resource
@@ -845,7 +845,7 @@ ExampleScenario_Alternative(
 
 class ExampleScenarioAdapter extends TypeAdapter<ExampleScenario> {
   @override
-  final typeId = 258;
+  final typeId = 107;
 
   @override
   ExampleScenario read(BinaryReader reader) {

@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 205)
+@HiveType(typeId: 89)
 class DetectedIssue {
 
   //  This is a DetectedIssue resource
@@ -320,7 +320,7 @@ DetectedIssue_Mitigation(
 
 class DetectedIssueAdapter extends TypeAdapter<DetectedIssue> {
   @override
-  final typeId = 205;
+  final typeId = 89;
 
   @override
   DetectedIssue read(BinaryReader reader) {

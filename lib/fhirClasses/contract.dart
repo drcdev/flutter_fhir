@@ -19,7 +19,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 175)
+@HiveType(typeId: 85)
 class Contract {
 
   //  This is a Contract resource
@@ -1710,7 +1710,7 @@ Contract_Rule(
 
 class ContractAdapter extends TypeAdapter<Contract> {
   @override
-  final typeId = 175;
+  final typeId = 85;
 
   @override
   Contract read(BinaryReader reader) {

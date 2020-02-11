@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 474)
+@HiveType(typeId: 159)
 class PaymentNotice {
 
   //  This is a PaymentNotice resource
@@ -191,7 +191,7 @@ PaymentNotice(
 
 class PaymentNoticeAdapter extends TypeAdapter<PaymentNotice> {
   @override
-  final typeId = 474;
+  final typeId = 159;
 
   @override
   PaymentNotice read(BinaryReader reader) {

@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 318)
+@HiveType(typeId: 120)
 class ImplementationGuide {
 
   //  This is a ImplementationGuide resource
@@ -1058,7 +1058,7 @@ ImplementationGuide_Page1(
 
 class ImplementationGuideAdapter extends TypeAdapter<ImplementationGuide> {
   @override
-  final typeId = 318;
+  final typeId = 120;
 
   @override
   ImplementationGuide read(BinaryReader reader) {

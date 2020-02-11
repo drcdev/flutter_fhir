@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 228)
+@HiveType(typeId: 96)
 class DocumentManifest {
 
   //  This is a DocumentManifest resource
@@ -256,7 +256,7 @@ DocumentManifest_Related(
 
 class DocumentManifestAdapter extends TypeAdapter<DocumentManifest> {
   @override
-  final typeId = 228;
+  final typeId = 96;
 
   @override
   DocumentManifest read(BinaryReader reader) {

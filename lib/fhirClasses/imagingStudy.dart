@@ -13,7 +13,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 305)
+@HiveType(typeId: 116)
 class ImagingStudy {
 
   //  This is a ImagingStudy resource
@@ -495,7 +495,7 @@ ImagingStudy_Instance(
 
 class ImagingStudyAdapter extends TypeAdapter<ImagingStudy> {
   @override
-  final typeId = 305;
+  final typeId = 116;
 
   @override
   ImagingStudy read(BinaryReader reader) {

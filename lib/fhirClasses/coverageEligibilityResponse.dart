@@ -13,7 +13,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 200)
+@HiveType(typeId: 88)
 class CoverageEligibilityResponse {
 
   //  This is a CoverageEligibilityResponse resource
@@ -559,7 +559,7 @@ CoverageEligibilityResponse_Error(
 class CoverageEligibilityResponseAdapter
     extends TypeAdapter<CoverageEligibilityResponse> {
   @override
-  final typeId = 200;
+  final typeId = 88;
 
   @override
   CoverageEligibilityResponse read(BinaryReader reader) {

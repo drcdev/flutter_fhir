@@ -13,7 +13,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 226)
+@HiveType(typeId: 95)
 class DiagnosticReport {
 
   //  This is a DiagnosticReport resource
@@ -307,7 +307,7 @@ DiagnosticReport_Media(
 
 class DiagnosticReportAdapter extends TypeAdapter<DiagnosticReport> {
   @override
-  final typeId = 226;
+  final typeId = 95;
 
   @override
   DiagnosticReport read(BinaryReader reader) {

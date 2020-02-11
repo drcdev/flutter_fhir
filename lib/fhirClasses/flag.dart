@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 290)
+@HiveType(typeId: 110)
 class Flag {
 
   //  This is a Flag resource
@@ -167,7 +167,7 @@ Flag(
 
 class FlagAdapter extends TypeAdapter<Flag> {
   @override
-  final typeId = 290;
+  final typeId = 110;
 
   @override
   Flag read(BinaryReader reader) {

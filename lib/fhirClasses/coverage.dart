@@ -14,7 +14,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 191)
+@HiveType(typeId: 86)
 class Coverage {
 
   //  This is a Coverage resource
@@ -414,7 +414,7 @@ Coverage_Exception(
 
 class CoverageAdapter extends TypeAdapter<Coverage> {
   @override
-  final typeId = 191;
+  final typeId = 86;
 
   @override
   Coverage read(BinaryReader reader) {

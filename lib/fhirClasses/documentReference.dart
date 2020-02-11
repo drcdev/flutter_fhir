@@ -14,7 +14,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 230)
+@HiveType(typeId: 97)
 class DocumentReference {
 
   //  This is a DocumentReference resource
@@ -413,7 +413,7 @@ DocumentReference_Context(
 
 class DocumentReferenceAdapter extends TypeAdapter<DocumentReference> {
   @override
-  final typeId = 230;
+  final typeId = 97;
 
   @override
   DocumentReference read(BinaryReader reader) {

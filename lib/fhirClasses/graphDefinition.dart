@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 293)
+@HiveType(typeId: 112)
 class GraphDefinition {
 
   //  This is a GraphDefinition resource
@@ -500,7 +500,7 @@ GraphDefinition_Compartment(
 
 class GraphDefinitionAdapter extends TypeAdapter<GraphDefinition> {
   @override
-  final typeId = 293;
+  final typeId = 112;
 
   @override
   GraphDefinition read(BinaryReader reader) {

@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 519)
+@HiveType(typeId: 174)
 class ResearchSubject {
 
   //  This is a ResearchSubject resource
@@ -172,7 +172,7 @@ ResearchSubject(
 
 class ResearchSubjectAdapter extends TypeAdapter<ResearchSubject> {
   @override
-  final typeId = 519;
+  final typeId = 174;
 
   @override
   ResearchSubject read(BinaryReader reader) {

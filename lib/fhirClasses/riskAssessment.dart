@@ -14,7 +14,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 520)
+@HiveType(typeId: 175)
 class RiskAssessment {
 
   //  This is a RiskAssessment resource
@@ -316,7 +316,7 @@ RiskAssessment_Prediction(
 
 class RiskAssessmentAdapter extends TypeAdapter<RiskAssessment> {
   @override
-  final typeId = 520;
+  final typeId = 175;
 
   @override
   RiskAssessment read(BinaryReader reader) {

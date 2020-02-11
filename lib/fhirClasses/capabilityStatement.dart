@@ -13,7 +13,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 88)
+@HiveType(typeId: 68)
 class CapabilityStatement {
 
   //  This is a CapabilityStatement resource
@@ -1329,7 +1329,7 @@ CapabilityStatement_Document(
 
 class CapabilityStatementAdapter extends TypeAdapter<CapabilityStatement> {
   @override
-  final typeId = 88;
+  final typeId = 68;
 
   @override
   CapabilityStatement read(BinaryReader reader) {

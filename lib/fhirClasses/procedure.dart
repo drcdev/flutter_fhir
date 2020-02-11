@@ -15,7 +15,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 493)
+@HiveType(typeId: 165)
 class Procedure {
 
   //  This is a Procedure resource
@@ -439,7 +439,7 @@ Procedure_FocalDevice(
 
 class ProcedureAdapter extends TypeAdapter<Procedure> {
   @override
-  final typeId = 493;
+  final typeId = 165;
 
   @override
   Procedure read(BinaryReader reader) {

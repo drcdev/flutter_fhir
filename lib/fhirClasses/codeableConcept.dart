@@ -6,7 +6,7 @@ import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 6)
+@HiveType(typeId: 22)
 class CodeableConcept {
 
   //  Unique id for the element within a resource (for internal references).
@@ -57,7 +57,7 @@ CodeableConcept(
 
 class CodeableConceptAdapter extends TypeAdapter<CodeableConcept> {
   @override
-  final typeId = 6;
+  final typeId = 22;
 
   @override
   CodeableConcept read(BinaryReader reader) {

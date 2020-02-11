@@ -5,7 +5,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 13)
+@HiveType(typeId: 29)
 class Age {
 
   //  Unique id for the element within a resource (for internal references).
@@ -95,7 +95,7 @@ Age(
 
 class AgeAdapter extends TypeAdapter<Age> {
   @override
-  final typeId = 13;
+  final typeId = 29;
 
   @override
   Age read(BinaryReader reader) {

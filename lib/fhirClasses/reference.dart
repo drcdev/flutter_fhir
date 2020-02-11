@@ -6,7 +6,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 17)
+@HiveType(typeId: 33)
 class Reference {
 
   //  Unique id for the element within a resource (for internal references).
@@ -98,7 +98,7 @@ Reference(
 
 class ReferenceAdapter extends TypeAdapter<Reference> {
   @override
-  final typeId = 17;
+  final typeId = 33;
 
   @override
   Reference read(BinaryReader reader) {

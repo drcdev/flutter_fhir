@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 60)
+@HiveType(typeId: 58)
 class AdverseEvent {
 
   //  This is a AdverseEvent resource
@@ -360,7 +360,7 @@ AdverseEvent_Causality(
 
 class AdverseEventAdapter extends TypeAdapter<AdverseEvent> {
   @override
-  final typeId = 60;
+  final typeId = 58;
 
   @override
   AdverseEvent read(BinaryReader reader) {

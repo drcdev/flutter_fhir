@@ -15,7 +15,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 288)
+@HiveType(typeId: 109)
 class FamilyMemberHistory {
 
   //  This is a FamilyMemberHistory resource
@@ -420,7 +420,7 @@ FamilyMemberHistory_Condition(
 
 class FamilyMemberHistoryAdapter extends TypeAdapter<FamilyMemberHistory> {
   @override
-  final typeId = 288;
+  final typeId = 109;
 
   @override
   FamilyMemberHistory read(BinaryReader reader) {

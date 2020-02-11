@@ -13,7 +13,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 467)
+@HiveType(typeId: 156)
 class OrganizationAffiliation {
 
   //  This is a OrganizationAffiliation resource
@@ -191,7 +191,7 @@ OrganizationAffiliation(
 class OrganizationAffiliationAdapter
     extends TypeAdapter<OrganizationAffiliation> {
   @override
-  final typeId = 467;
+  final typeId = 156;
 
   @override
   OrganizationAffiliation read(BinaryReader reader) {

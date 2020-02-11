@@ -5,7 +5,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 10)
+@HiveType(typeId: 26)
 class Distance {
 
   //  Unique id for the element within a resource (for internal references).
@@ -95,7 +95,7 @@ Distance(
 
 class DistanceAdapter extends TypeAdapter<Distance> {
   @override
-  final typeId = 10;
+  final typeId = 26;
 
   @override
   Distance read(BinaryReader reader) {

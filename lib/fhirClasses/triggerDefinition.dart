@@ -9,7 +9,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 34)
+@HiveType(typeId: 46)
 class TriggerDefinition {
 
   //  Unique id for the element within a resource (for internal references).
@@ -109,7 +109,7 @@ TriggerDefinition(
 
 class TriggerDefinitionAdapter extends TypeAdapter<TriggerDefinition> {
   @override
-  final typeId = 34;
+  final typeId = 46;
 
   @override
   TriggerDefinition read(BinaryReader reader) {

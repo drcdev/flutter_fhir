@@ -5,7 +5,7 @@ import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 16)
+@HiveType(typeId: 32)
 class Ratio {
 
   //  Unique id for the element within a resource (for internal references).
@@ -49,7 +49,7 @@ Ratio(
 
 class RatioAdapter extends TypeAdapter<Ratio> {
   @override
-  final typeId = 16;
+  final typeId = 32;
 
   @override
   Ratio read(BinaryReader reader) {

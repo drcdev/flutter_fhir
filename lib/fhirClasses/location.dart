@@ -14,7 +14,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 349)
+@HiveType(typeId: 126)
 class Location {
 
   //  This is a Location resource
@@ -385,7 +385,7 @@ Location_HoursOfOperation(
 
 class LocationAdapter extends TypeAdapter<Location> {
   @override
-  final typeId = 349;
+  final typeId = 126;
 
   @override
   Location read(BinaryReader reader) {

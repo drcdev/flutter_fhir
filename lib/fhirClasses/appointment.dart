@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 65)
+@HiveType(typeId: 60)
 class Appointment {
 
   //  This is a Appointment resource
@@ -379,7 +379,7 @@ Appointment_Participant(
 
 class AppointmentAdapter extends TypeAdapter<Appointment> {
   @override
-  final typeId = 65;
+  final typeId = 60;
 
   @override
   Appointment read(BinaryReader reader) {

@@ -16,7 +16,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 291)
+@HiveType(typeId: 111)
 class Goal {
 
   //  This is a Goal resource
@@ -373,7 +373,7 @@ Goal_Target(
 
 class GoalAdapter extends TypeAdapter<Goal> {
   @override
-  final typeId = 291;
+  final typeId = 111;
 
   @override
   Goal read(BinaryReader reader) {

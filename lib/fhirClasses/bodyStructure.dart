@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 81)
+@HiveType(typeId: 66)
 class BodyStructure {
 
   //  This is a BodyStructure resource
@@ -168,7 +168,7 @@ BodyStructure(
 
 class BodyStructureAdapter extends TypeAdapter<BodyStructure> {
   @override
-  final typeId = 81;
+  final typeId = 66;
 
   @override
   BodyStructure read(BinaryReader reader) {

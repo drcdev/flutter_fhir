@@ -7,7 +7,7 @@ import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 41)
+@HiveType(typeId: 52)
 class MarketingStatus {
 
   //  Unique id for the element within a resource (for internal references).
@@ -107,7 +107,7 @@ MarketingStatus(
 
 class MarketingStatusAdapter extends TypeAdapter<MarketingStatus> {
   @override
-  final typeId = 41;
+  final typeId = 52;
 
   @override
   MarketingStatus read(BinaryReader reader) {

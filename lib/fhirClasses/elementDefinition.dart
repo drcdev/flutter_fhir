@@ -36,7 +36,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 45)
+@HiveType(typeId: 55)
 class ElementDefinition {
 
   //  Unique id for the element within a resource (for internal references).
@@ -3369,7 +3369,7 @@ ElementDefinition_Mapping(
 
 class ElementDefinitionAdapter extends TypeAdapter<ElementDefinition> {
   @override
-  final typeId = 45;
+  final typeId = 55;
 
   @override
   ElementDefinition read(BinaryReader reader) {

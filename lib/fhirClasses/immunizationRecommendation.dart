@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 315)
+@HiveType(typeId: 119)
 class ImmunizationRecommendation {
 
   //  This is a ImmunizationRecommendation resource
@@ -324,7 +324,7 @@ ImmunizationRecommendation_DateCriterion(
 class ImmunizationRecommendationAdapter
     extends TypeAdapter<ImmunizationRecommendation> {
   @override
-  final typeId = 315;
+  final typeId = 119;
 
   @override
   ImmunizationRecommendation read(BinaryReader reader) {

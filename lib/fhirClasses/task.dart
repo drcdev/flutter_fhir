@@ -38,7 +38,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 601)
+@HiveType(typeId: 195)
 class Task {
 
   //  This is a Task resource
@@ -1050,7 +1050,7 @@ Task_Output(
 
 class TaskAdapter extends TypeAdapter<Task> {
   @override
-  final typeId = 601;
+  final typeId = 195;
 
   @override
   Task read(BinaryReader reader) {

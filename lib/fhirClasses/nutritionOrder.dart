@@ -15,7 +15,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 445)
+@HiveType(typeId: 150)
 class NutritionOrder {
 
   //  This is a NutritionOrder resource
@@ -659,7 +659,7 @@ NutritionOrder_Administration(
 
 class NutritionOrderAdapter extends TypeAdapter<NutritionOrder> {
   @override
-  final typeId = 445;
+  final typeId = 150;
 
   @override
   NutritionOrder read(BinaryReader reader) {

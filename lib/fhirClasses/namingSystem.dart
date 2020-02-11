@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 443)
+@HiveType(typeId: 149)
 class NamingSystem {
 
   //  This is a NamingSystem resource
@@ -320,7 +320,7 @@ NamingSystem_UniqueId(
 
 class NamingSystemAdapter extends TypeAdapter<NamingSystem> {
   @override
-  final typeId = 443;
+  final typeId = 149;
 
   @override
   NamingSystem read(BinaryReader reader) {

@@ -13,7 +13,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 300)
+@HiveType(typeId: 114)
 class GuidanceResponse {
 
   //  This is a GuidanceResponse resource
@@ -252,7 +252,7 @@ GuidanceResponse(
 
 class GuidanceResponseAdapter extends TypeAdapter<GuidanceResponse> {
   @override
-  final typeId = 300;
+  final typeId = 114;
 
   @override
   GuidanceResponse read(BinaryReader reader) {

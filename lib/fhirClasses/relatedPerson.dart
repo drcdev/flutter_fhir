@@ -16,7 +16,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 507)
+@HiveType(typeId: 169)
 class RelatedPerson {
 
   //  This is a RelatedPerson resource
@@ -253,7 +253,7 @@ RelatedPerson_Communication(
 
 class RelatedPersonAdapter extends TypeAdapter<RelatedPerson> {
   @override
-  final typeId = 507;
+  final typeId = 169;
 
   @override
   RelatedPerson read(BinaryReader reader) {

@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 68)
+@HiveType(typeId: 62)
 class AuditEvent {
 
   //  This is a AuditEvent resource
@@ -573,7 +573,7 @@ AuditEvent_Detail(
 
 class AuditEventAdapter extends TypeAdapter<AuditEvent> {
   @override
-  final typeId = 68;
+  final typeId = 62;
 
   @override
   AuditEvent read(BinaryReader reader) {

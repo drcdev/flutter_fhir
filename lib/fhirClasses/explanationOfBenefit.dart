@@ -17,7 +17,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 267)
+@HiveType(typeId: 108)
 class ExplanationOfBenefit {
 
   //  This is a ExplanationOfBenefit resource
@@ -2149,7 +2149,7 @@ ExplanationOfBenefit_Financial(
 
 class ExplanationOfBenefitAdapter extends TypeAdapter<ExplanationOfBenefit> {
   @override
-  final typeId = 267;
+  final typeId = 108;
 
   @override
   ExplanationOfBenefit read(BinaryReader reader) {

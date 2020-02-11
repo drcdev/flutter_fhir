@@ -5,7 +5,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 2)
+@HiveType(typeId: 18)
 class Narrative {
 
   //  Unique id for the element within a resource (for internal references).
@@ -56,7 +56,7 @@ Narrative(
 
 class NarrativeAdapter extends TypeAdapter<Narrative> {
   @override
-  final typeId = 2;
+  final typeId = 18;
 
   @override
   Narrative read(BinaryReader reader) {

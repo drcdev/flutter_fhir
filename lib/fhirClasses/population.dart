@@ -6,7 +6,7 @@ import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 38)
+@HiveType(typeId: 49)
 class Population {
 
   //  Unique id for the element within a resource (for internal references).
@@ -82,7 +82,7 @@ Population(
 
 class PopulationAdapter extends TypeAdapter<Population> {
   @override
-  final typeId = 38;
+  final typeId = 49;
 
   @override
   Population read(BinaryReader reader) {

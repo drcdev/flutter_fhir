@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 221)
+@HiveType(typeId: 92)
 class DeviceMetric {
 
   //  This is a DeviceMetric resource
@@ -268,7 +268,7 @@ DeviceMetric_Calibration(
 
 class DeviceMetricAdapter extends TypeAdapter<DeviceMetric> {
   @override
-  final typeId = 221;
+  final typeId = 92;
 
   @override
   DeviceMetric read(BinaryReader reader) {

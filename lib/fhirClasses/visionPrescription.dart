@@ -13,7 +13,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 656)
+@HiveType(typeId: 201)
 class VisionPrescription {
 
   //  This is a VisionPrescription resource
@@ -367,7 +367,7 @@ VisionPrescription_Prism(
 
 class VisionPrescriptionAdapter extends TypeAdapter<VisionPrescription> {
   @override
-  final typeId = 656;
+  final typeId = 201;
 
   @override
   VisionPrescription read(BinaryReader reader) {

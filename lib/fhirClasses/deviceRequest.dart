@@ -16,7 +16,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 223)
+@HiveType(typeId: 93)
 class DeviceRequest {
 
   //  This is a DeviceRequest resource
@@ -372,7 +372,7 @@ DeviceRequest_Parameter(
 
 class DeviceRequestAdapter extends TypeAdapter<DeviceRequest> {
   @override
-  final typeId = 223;
+  final typeId = 93;
 
   @override
   DeviceRequest read(BinaryReader reader) {

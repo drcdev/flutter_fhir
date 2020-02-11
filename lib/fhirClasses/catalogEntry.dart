@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 107)
+@HiveType(typeId: 71)
 class CatalogEntry {
 
   //  This is a CatalogEntry resource
@@ -255,7 +255,7 @@ CatalogEntry_RelatedEntry(
 
 class CatalogEntryAdapter extends TypeAdapter<CatalogEntry> {
   @override
-  final typeId = 107;
+  final typeId = 71;
 
   @override
   CatalogEntry read(BinaryReader reader) {

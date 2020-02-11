@@ -15,7 +15,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 166)
+@HiveType(typeId: 83)
 class Condition {
 
   //  This is a Condition resource
@@ -401,7 +401,7 @@ Condition_Evidence(
 
 class ConditionAdapter extends TypeAdapter<Condition> {
   @override
-  final typeId = 166;
+  final typeId = 83;
 
   @override
   Condition read(BinaryReader reader) {

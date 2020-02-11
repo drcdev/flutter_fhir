@@ -13,7 +13,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 140)
+@HiveType(typeId: 76)
 class ClinicalImpression {
 
   //  This is a ClinicalImpression resource
@@ -373,7 +373,7 @@ ClinicalImpression_Finding(
 
 class ClinicalImpressionAdapter extends TypeAdapter<ClinicalImpression> {
   @override
-  final typeId = 140;
+  final typeId = 76;
 
   @override
   ClinicalImpression read(BinaryReader reader) {

@@ -13,7 +13,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 490)
+@HiveType(typeId: 164)
 class PractitionerRole {
 
   //  This is a PractitionerRole resource
@@ -333,7 +333,7 @@ PractitionerRole_NotAvailable(
 
 class PractitionerRoleAdapter extends TypeAdapter<PractitionerRole> {
   @override
-  final typeId = 490;
+  final typeId = 164;
 
   @override
   PractitionerRole read(BinaryReader reader) {

@@ -15,7 +15,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 63)
+@HiveType(typeId: 59)
 class AllergyIntolerance {
 
   //  This is a AllergyIntolerance resource
@@ -378,7 +378,7 @@ AllergyIntolerance_Reaction(
 
 class AllergyIntoleranceAdapter extends TypeAdapter<AllergyIntolerance> {
   @override
-  final typeId = 63;
+  final typeId = 59;
 
   @override
   AllergyIntolerance read(BinaryReader reader) {

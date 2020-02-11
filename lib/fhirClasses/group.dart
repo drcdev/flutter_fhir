@@ -14,7 +14,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 297)
+@HiveType(typeId: 113)
 class Group {
 
   //  This is a Group resource
@@ -344,7 +344,7 @@ Group_Member(
 
 class GroupAdapter extends TypeAdapter<Group> {
   @override
-  final typeId = 297;
+  final typeId = 113;
 
   @override
   Group read(BinaryReader reader) {

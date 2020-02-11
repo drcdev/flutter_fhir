@@ -8,7 +8,7 @@ import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 42)
+@HiveType(typeId: 53)
 class SubstanceAmount {
 
   //  Unique id for the element within a resource (for internal references).
@@ -160,7 +160,7 @@ SubstanceAmount_ReferenceRange(
 
 class SubstanceAmountAdapter extends TypeAdapter<SubstanceAmount> {
   @override
-  final typeId = 42;
+  final typeId = 53;
 
   @override
   SubstanceAmount read(BinaryReader reader) {

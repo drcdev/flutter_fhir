@@ -18,7 +18,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 452)
+@HiveType(typeId: 151)
 class Observation {
 
   //  This is a Observation resource
@@ -627,7 +627,7 @@ Observation_Component(
 
 class ObservationAdapter extends TypeAdapter<Observation> {
   @override
-  final typeId = 452;
+  final typeId = 151;
 
   @override
   Observation read(BinaryReader reader) {

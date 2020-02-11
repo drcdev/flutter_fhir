@@ -16,7 +16,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 234)
+@HiveType(typeId: 98)
 class EffectEvidenceSynthesis {
 
   //  This is a EffectEvidenceSynthesis resource
@@ -760,7 +760,7 @@ EffectEvidenceSynthesis_CertaintySubcomponent(
 class EffectEvidenceSynthesisAdapter
     extends TypeAdapter<EffectEvidenceSynthesis> {
   @override
-  final typeId = 234;
+  final typeId = 98;
 
   @override
   EffectEvidenceSynthesis read(BinaryReader reader) {

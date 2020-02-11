@@ -5,7 +5,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 8)
+@HiveType(typeId: 24)
 class Quantity {
 
   //  Unique id for the element within a resource (for internal references).
@@ -95,7 +95,7 @@ Quantity(
 
 class QuantityAdapter extends TypeAdapter<Quantity> {
   @override
-  final typeId = 8;
+  final typeId = 24;
 
   @override
   Quantity read(BinaryReader reader) {

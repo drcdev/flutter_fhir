@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 529)
+@HiveType(typeId: 178)
 class SearchParameter {
 
   //  This is a SearchParameter resource
@@ -447,7 +447,7 @@ SearchParameter_Component(
 
 class SearchParameterAdapter extends TypeAdapter<SearchParameter> {
   @override
-  final typeId = 529;
+  final typeId = 178;
 
   @override
   SearchParameter read(BinaryReader reader) {

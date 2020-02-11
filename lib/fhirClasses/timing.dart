@@ -9,7 +9,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 23)
+@HiveType(typeId: 39)
 class Timing {
 
   //  Unique id for the element within a resource (for internal references).
@@ -273,7 +273,7 @@ Timing_Repeat(
 
 class TimingAdapter extends TypeAdapter<Timing> {
   @override
-  final typeId = 23;
+  final typeId = 39;
 
   @override
   Timing read(BinaryReader reader) {

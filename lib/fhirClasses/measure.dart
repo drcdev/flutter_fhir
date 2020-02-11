@@ -16,7 +16,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 352)
+@HiveType(typeId: 127)
 class Measure {
 
   //  This is a Measure resource
@@ -827,7 +827,7 @@ Measure_SupplementalData(
 
 class MeasureAdapter extends TypeAdapter<Measure> {
   @override
-  final typeId = 352;
+  final typeId = 127;
 
   @override
   Measure read(BinaryReader reader) {

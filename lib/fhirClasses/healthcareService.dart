@@ -14,7 +14,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 301)
+@HiveType(typeId: 115)
 class HealthcareService {
 
   //  This is a HealthcareService resource
@@ -469,7 +469,7 @@ HealthcareService_NotAvailable(
 
 class HealthcareServiceAdapter extends TypeAdapter<HealthcareService> {
   @override
-  final typeId = 301;
+  final typeId = 115;
 
   @override
   HealthcareService read(BinaryReader reader) {

@@ -1,3 +1,4 @@
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 import 'package:hive/hive.dart';
 import 'dart:io';
 import 'dart:convert';
@@ -20,7 +21,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 470)
+@HiveType(typeId: 158)
 class Patient {
 
   //  This is a Patient resource
@@ -465,7 +466,7 @@ Patient_Link(
 
 class PatientAdapter extends TypeAdapter<Patient> {
   @override
-  final typeId = 470;
+  final typeId = 158;
 
   @override
   Patient read(BinaryReader reader) {

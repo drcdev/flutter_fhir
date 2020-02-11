@@ -5,7 +5,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 32)
+@HiveType(typeId: 44)
 class ParameterDefinition {
 
   //  Unique id for the element within a resource (for internal references).
@@ -109,7 +109,7 @@ ParameterDefinition(
 
 class ParameterDefinitionAdapter extends TypeAdapter<ParameterDefinition> {
   @override
-  final typeId = 32;
+  final typeId = 44;
 
   @override
   ParameterDefinition read(BinaryReader reader) {

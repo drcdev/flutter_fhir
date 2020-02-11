@@ -14,7 +14,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 365)
+@HiveType(typeId: 129)
 class Media {
 
   //  This is a Media resource
@@ -287,7 +287,7 @@ Media(
 
 class MediaAdapter extends TypeAdapter<Media> {
   @override
-  final typeId = 365;
+  final typeId = 129;
 
   @override
   Media read(BinaryReader reader) {

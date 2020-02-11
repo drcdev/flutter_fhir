@@ -15,7 +15,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 586)
+@HiveType(typeId: 192)
 class SubstanceSpecification {
 
   //  This is a SubstanceSpecification resource
@@ -959,7 +959,7 @@ SubstanceSpecification_Relationship(
 class SubstanceSpecificationAdapter
     extends TypeAdapter<SubstanceSpecification> {
   @override
-  final typeId = 586;
+  final typeId = 192;
 
   @override
   SubstanceSpecification read(BinaryReader reader) {

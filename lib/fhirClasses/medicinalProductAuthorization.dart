@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 403)
+@HiveType(typeId: 137)
 class MedicinalProductAuthorization {
 
   //  This is a MedicinalProductAuthorization resource
@@ -346,7 +346,7 @@ MedicinalProductAuthorization_Procedure(
 class MedicinalProductAuthorizationAdapter
     extends TypeAdapter<MedicinalProductAuthorization> {
   @override
-  final typeId = 403;
+  final typeId = 137;
 
   @override
   MedicinalProductAuthorization read(BinaryReader reader) {

@@ -13,7 +13,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 475)
+@HiveType(typeId: 160)
 class PaymentReconciliation {
 
   //  This is a PaymentReconciliation resource
@@ -363,7 +363,7 @@ PaymentReconciliation_ProcessNote(
 
 class PaymentReconciliationAdapter extends TypeAdapter<PaymentReconciliation> {
   @override
-  final typeId = 475;
+  final typeId = 160;
 
   @override
   PaymentReconciliation read(BinaryReader reader) {

@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 605)
+@HiveType(typeId: 196)
 class TerminologyCapabilities {
 
   //  This is a TerminologyCapabilities resource
@@ -932,7 +932,7 @@ TerminologyCapabilities_Closure(
 class TerminologyCapabilitiesAdapter
     extends TypeAdapter<TerminologyCapabilities> {
   @override
-  final typeId = 605;
+  final typeId = 196;
 
   @override
   TerminologyCapabilities read(BinaryReader reader) {

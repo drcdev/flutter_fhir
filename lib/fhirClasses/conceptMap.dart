@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 160)
+@HiveType(typeId: 82)
 class ConceptMap {
 
   //  This is a ConceptMap resource
@@ -714,7 +714,7 @@ ConceptMap_Unmapped(
 
 class ConceptMapAdapter extends TypeAdapter<ConceptMap> {
   @override
-  final typeId = 160;
+  final typeId = 82;
 
   @override
   ConceptMap read(BinaryReader reader) {

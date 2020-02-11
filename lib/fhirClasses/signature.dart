@@ -7,7 +7,7 @@ import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 19)
+@HiveType(typeId: 35)
 class Signature {
 
   //  Unique id for the element within a resource (for internal references).
@@ -106,7 +106,7 @@ Signature(
 
 class SignatureAdapter extends TypeAdapter<Signature> {
   @override
-  final typeId = 19;
+  final typeId = 35;
 
   @override
   Signature read(BinaryReader reader) {

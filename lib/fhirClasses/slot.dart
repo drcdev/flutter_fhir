@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 532)
+@HiveType(typeId: 180)
 class Slot {
 
   //  This is a Slot resource
@@ -202,7 +202,7 @@ Slot(
 
 class SlotAdapter extends TypeAdapter<Slot> {
   @override
-  final typeId = 532;
+  final typeId = 180;
 
   @override
   Slot read(BinaryReader reader) {

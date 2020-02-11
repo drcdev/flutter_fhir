@@ -16,7 +16,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 115)
+@HiveType(typeId: 74)
 class Claim {
 
   //  This is a Claim resource
@@ -1262,7 +1262,7 @@ Claim_SubDetail(
 
 class ClaimAdapter extends TypeAdapter<Claim> {
   @override
-  final typeId = 115;
+  final typeId = 74;
 
   @override
   Claim read(BinaryReader reader) {

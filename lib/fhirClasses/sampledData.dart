@@ -6,7 +6,7 @@ import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 18)
+@HiveType(typeId: 34)
 class SampledData {
 
   //  Unique id for the element within a resource (for internal references).
@@ -115,7 +115,7 @@ SampledData(
 
 class SampledDataAdapter extends TypeAdapter<SampledData> {
   @override
-  final typeId = 18;
+  final typeId = 34;
 
   @override
   SampledData read(BinaryReader reader) {

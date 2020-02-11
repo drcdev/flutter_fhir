@@ -5,7 +5,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 4)
+@HiveType(typeId: 20)
 class Attachment {
 
   //  Unique id for the element within a resource (for internal references).
@@ -124,7 +124,7 @@ Attachment(
 
 class AttachmentAdapter extends TypeAdapter<Attachment> {
   @override
-  final typeId = 4;
+  final typeId = 20;
 
   @override
   Attachment read(BinaryReader reader) {

@@ -5,7 +5,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 7)
+@HiveType(typeId: 23)
 class Coding {
 
   //  Unique id for the element within a resource (for internal references).
@@ -98,7 +98,7 @@ Coding(
 
 class CodingAdapter extends TypeAdapter<Coding> {
   @override
-  final typeId = 7;
+  final typeId = 23;
 
   @override
   Coding read(BinaryReader reader) {

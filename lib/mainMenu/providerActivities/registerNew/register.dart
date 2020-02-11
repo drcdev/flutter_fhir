@@ -31,7 +31,6 @@ class _RegistrationFormState extends State<RegistrationForm> {
   String response = '';
   String barrio = 'Escoje Barrio';
   var patientBox;
-  var appDocumentDir;
 
   @override
   void dispose() {
@@ -44,17 +43,14 @@ class _RegistrationFormState extends State<RegistrationForm> {
   @override
   void initState() {
     super.initState();
-    print('here');
-    Hive.registerAdapter(PatientAdapter());
-    print('here also');
+    Hive.registerAdapter(HumanNameAdapter());
     _getPatientBox();
   }
 
   Future _getPatientBox() async{
-    appDocumentDir = await getApplicationDocumentsDirectory();
+    final appDocumentDir = await getApplicationDocumentsDirectory();
     Hive.init(appDocumentDir.path);
-    print('here');
-    patientBox = await Hive.openBox('Patient');
+    patientBox = await Hive.openBox<Patient>('patientBox');
   }
 
   //select birthdate async function
@@ -200,9 +196,13 @@ class _RegistrationFormState extends State<RegistrationForm> {
                                     given: [givenNameController.text],
                                     family: familyNameController.text)
                               ], birthDate: _birthDate.toString());
-                              patientBox.add(pt);
+                              pt.id = '111';
+                              patientBox.put(pt.id, pt);
+                              Map<dynamic, dynamic> raw = patientBox.toMap();
+                              List list = raw.values.toList();
+                              print(list[0].toJson().toString());
 //                              pt.id = await ObjectId(pt.runtimeType.toString());
-                              Write(pt);
+                              //Write(pt);
 //                              Navigator.push(
 //                                context,
 //                                MaterialPageRoute(

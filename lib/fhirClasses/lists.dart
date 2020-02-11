@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 347)
+@HiveType(typeId: 125)
 class Lists {
 
   //  This is a List resource
@@ -270,7 +270,7 @@ List_Entry(
 
 class ListsAdapter extends TypeAdapter<Lists> {
   @override
-  final typeId = 347;
+  final typeId = 125;
 
   @override
   Lists read(BinaryReader reader) {

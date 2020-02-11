@@ -9,7 +9,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 556)
+@HiveType(typeId: 185)
 class Subscription {
 
   //  This is a Subscription resource
@@ -250,7 +250,7 @@ Subscription_Channel(
 
 class SubscriptionAdapter extends TypeAdapter<Subscription> {
   @override
-  final typeId = 556;
+  final typeId = 185;
 
   @override
   Subscription read(BinaryReader reader) {

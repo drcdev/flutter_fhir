@@ -13,7 +13,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 143)
+@HiveType(typeId: 77)
 class CodeSystem {
 
   //  This is a CodeSystem resource
@@ -768,7 +768,7 @@ CodeSystem_Property1(
 
 class CodeSystemAdapter extends TypeAdapter<CodeSystem> {
   @override
-  final typeId = 143;
+  final typeId = 77;
 
   @override
   CodeSystem read(BinaryReader reader) {

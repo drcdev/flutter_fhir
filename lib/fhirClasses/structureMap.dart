@@ -38,7 +38,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 547)
+@HiveType(typeId: 184)
 class StructureMap {
 
   //  This is a StructureMap resource
@@ -1246,7 +1246,7 @@ StructureMap_Dependent(
 
 class StructureMapAdapter extends TypeAdapter<StructureMap> {
   @override
-  final typeId = 547;
+  final typeId = 184;
 
   @override
   StructureMap read(BinaryReader reader) {

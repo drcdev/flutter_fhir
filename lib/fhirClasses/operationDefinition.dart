@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 458)
+@HiveType(typeId: 153)
 class OperationDefinition {
 
   //  This is a OperationDefinition resource
@@ -667,7 +667,7 @@ OperationDefinition_Overload(
 
 class OperationDefinitionAdapter extends TypeAdapter<OperationDefinition> {
   @override
-  final typeId = 458;
+  final typeId = 153;
 
   @override
   OperationDefinition read(BinaryReader reader) {

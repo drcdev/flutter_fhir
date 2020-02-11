@@ -9,7 +9,7 @@ import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 35)
+@HiveType(typeId: 47)
 class UsageContext {
 
   //  Unique id for the element within a resource (for internal references).
@@ -73,7 +73,7 @@ UsageContext(
 
 class UsageContextAdapter extends TypeAdapter<UsageContext> {
   @override
-  final typeId = 35;
+  final typeId = 47;
 
   @override
   UsageContext read(BinaryReader reader) {

@@ -18,7 +18,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 344)
+@HiveType(typeId: 123)
 class Library {
 
   //  This is a Library resource
@@ -414,7 +414,7 @@ Library(
 
 class LibraryAdapter extends TypeAdapter<Library> {
   @override
-  final typeId = 344;
+  final typeId = 123;
 
   @override
   Library read(BinaryReader reader) {

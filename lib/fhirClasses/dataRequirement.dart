@@ -10,7 +10,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 28)
+@HiveType(typeId: 43)
 class DataRequirement {
 
   //  Unique id for the element within a resource (for internal references).
@@ -358,7 +358,7 @@ DataRequirement_Sort(
 
 class DataRequirementAdapter extends TypeAdapter<DataRequirement> {
   @override
-  final typeId = 28;
+  final typeId = 43;
 
   @override
   DataRequirement read(BinaryReader reader) {

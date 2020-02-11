@@ -6,7 +6,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 25)
+@HiveType(typeId: 40)
 class Meta {
 
   //  Unique id for the element within a resource (for internal references).
@@ -97,7 +97,7 @@ Meta(
 
 class MetaAdapter extends TypeAdapter<Meta> {
   @override
-  final typeId = 25;
+  final typeId = 40;
 
   @override
   Meta read(BinaryReader reader) {

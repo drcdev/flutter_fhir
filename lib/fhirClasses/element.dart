@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 0)
+@HiveType(typeId: 16)
 class Element {
 
   //  Unique id for the element within a resource (for internal references).
@@ -38,7 +38,7 @@ Element(
 
 class ElementAdapter extends TypeAdapter<Element> {
   @override
-  final typeId = 0;
+  final typeId = 16;
 
   @override
   Element read(BinaryReader reader) {

@@ -15,7 +15,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 599)
+@HiveType(typeId: 194)
 class SupplyRequest {
 
   //  This is a SupplyRequest resource
@@ -299,7 +299,7 @@ SupplyRequest_Parameter(
 
 class SupplyRequestAdapter extends TypeAdapter<SupplyRequest> {
   @override
-  final typeId = 599;
+  final typeId = 194;
 
   @override
   SupplyRequest read(BinaryReader reader) {

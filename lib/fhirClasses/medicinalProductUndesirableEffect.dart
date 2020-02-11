@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 426)
+@HiveType(typeId: 145)
 class MedicinalProductUndesirableEffect {
 
   //  This is a MedicinalProductUndesirableEffect resource
@@ -139,7 +139,7 @@ MedicinalProductUndesirableEffect(
 class MedicinalProductUndesirableEffectAdapter
     extends TypeAdapter<MedicinalProductUndesirableEffect> {
   @override
-  final typeId = 426;
+  final typeId = 145;
 
   @override
   MedicinalProductUndesirableEffect read(BinaryReader reader) {

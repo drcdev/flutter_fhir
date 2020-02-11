@@ -6,7 +6,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 27)
+@HiveType(typeId: 42)
 class Contributor {
 
   //  Unique id for the element within a resource (for internal references).
@@ -67,7 +67,7 @@ Contributor(
 
 class ContributorAdapter extends TypeAdapter<Contributor> {
   @override
-  final typeId = 27;
+  final typeId = 42;
 
   @override
   Contributor read(BinaryReader reader) {

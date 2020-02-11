@@ -6,7 +6,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 26)
+@HiveType(typeId: 41)
 class ContactDetail {
 
   //  Unique id for the element within a resource (for internal references).
@@ -56,7 +56,7 @@ ContactDetail(
 
 class ContactDetailAdapter extends TypeAdapter<ContactDetail> {
   @override
-  final typeId = 26;
+  final typeId = 41;
 
   @override
   ContactDetail read(BinaryReader reader) {

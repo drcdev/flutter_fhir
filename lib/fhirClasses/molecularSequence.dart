@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 434)
+@HiveType(typeId: 148)
 class MolecularSequence {
 
   //  This is a MolecularSequence resource
@@ -994,7 +994,7 @@ MolecularSequence_Inner(
 
 class MolecularSequenceAdapter extends TypeAdapter<MolecularSequence> {
   @override
-  final typeId = 434;
+  final typeId = 148;
 
   @override
   MolecularSequence read(BinaryReader reader) {

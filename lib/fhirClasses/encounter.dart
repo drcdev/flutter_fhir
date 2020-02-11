@@ -14,7 +14,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 241)
+@HiveType(typeId: 99)
 class Encounter {
 
   //  This is a Encounter resource
@@ -617,7 +617,7 @@ Encounter_Location(
 
 class EncounterAdapter extends TypeAdapter<Encounter> {
   @override
-  final typeId = 241;
+  final typeId = 99;
 
   @override
   Encounter read(BinaryReader reader) {

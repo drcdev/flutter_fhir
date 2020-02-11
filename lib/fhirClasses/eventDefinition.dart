@@ -16,7 +16,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 254)
+@HiveType(typeId: 104)
 class EventDefinition {
 
   //  This is a EventDefinition resource
@@ -389,7 +389,7 @@ EventDefinition(
 
 class EventDefinitionAdapter extends TypeAdapter<EventDefinition> {
   @override
-  final typeId = 254;
+  final typeId = 104;
 
   @override
   EventDefinition read(BinaryReader reader) {

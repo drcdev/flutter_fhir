@@ -10,7 +10,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 36)
+@HiveType(typeId: 48)
 class Dosage {
 
   //  Unique id for the element within a resource (for internal references).
@@ -222,7 +222,7 @@ Dosage_DoseAndRate(
 
 class DosageAdapter extends TypeAdapter<Dosage> {
   @override
-  final typeId = 36;
+  final typeId = 48;
 
   @override
   Dosage read(BinaryReader reader) {

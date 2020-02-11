@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 314)
+@HiveType(typeId: 118)
 class ImmunizationEvaluation {
 
   //  This is a ImmunizationEvaluation resource
@@ -232,7 +232,7 @@ ImmunizationEvaluation(
 class ImmunizationEvaluationAdapter
     extends TypeAdapter<ImmunizationEvaluation> {
   @override
-  final typeId = 314;
+  final typeId = 118;
 
   @override
   ImmunizationEvaluation read(BinaryReader reader) {

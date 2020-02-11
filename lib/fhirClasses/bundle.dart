@@ -9,7 +9,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 82)
+@HiveType(typeId: 67)
 class Bundle {
 
   //  This is a Bundle resource
@@ -495,7 +495,7 @@ Bundle_Response(
 
 class BundleAdapter extends TypeAdapter<Bundle> {
   @override
-  final typeId = 82;
+  final typeId = 67;
 
   @override
   Bundle read(BinaryReader reader) {

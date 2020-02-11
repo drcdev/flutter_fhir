@@ -6,7 +6,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 33)
+@HiveType(typeId: 45)
 class RelatedArtifact {
 
   //  Unique id for the element within a resource (for internal references).
@@ -106,7 +106,7 @@ RelatedArtifact(
 
 class RelatedArtifactAdapter extends TypeAdapter<RelatedArtifact> {
   @override
-  final typeId = 33;
+  final typeId = 45;
 
   @override
   RelatedArtifact read(BinaryReader reader) {

@@ -11,7 +11,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 565)
+@HiveType(typeId: 188)
 class SubstancePolymer {
 
   //  This is a SubstancePolymer resource
@@ -482,7 +482,7 @@ SubstancePolymer_StructuralRepresentation(
 
 class SubstancePolymerAdapter extends TypeAdapter<SubstancePolymer> {
   @override
-  final typeId = 565;
+  final typeId = 188;
 
   @override
   SubstancePolymer read(BinaryReader reader) {

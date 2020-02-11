@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 496)
+@HiveType(typeId: 166)
 class Provenance {
 
   //  This is a Provenance resource
@@ -307,7 +307,7 @@ Provenance_Entity(
 
 class ProvenanceAdapter extends TypeAdapter<Provenance> {
   @override
-  final typeId = 496;
+  final typeId = 166;
 
   @override
   Provenance read(BinaryReader reader) {

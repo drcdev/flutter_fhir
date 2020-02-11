@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 import 'package:flutter_fhir/util/appLocalizations.dart';
 import 'package:flutter_fhir/mainMenu/mainMenu.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -40,6 +41,12 @@ class _MainState extends State<_Main> {
     userName.dispose();
     password.dispose();
     super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    classesSetup();
   }
 
   final TextStyle whiteText = TextStyle(color: Colors.white);

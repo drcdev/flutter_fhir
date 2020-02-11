@@ -13,7 +13,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 643)
+@HiveType(typeId: 199)
 class ValueSet {
 
   //  This is a ValueSet resource
@@ -950,7 +950,7 @@ ValueSet_Contains(
 
 class ValueSetAdapter extends TypeAdapter<ValueSet> {
   @override
-  final typeId = 643;
+  final typeId = 199;
 
   @override
   ValueSet read(BinaryReader reader) {

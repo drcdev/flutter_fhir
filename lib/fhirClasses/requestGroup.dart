@@ -19,7 +19,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 509)
+@HiveType(typeId: 170)
 class RequestGroup {
 
   //  This is a RequestGroup resource
@@ -563,7 +563,7 @@ RequestGroup_RelatedAction(
 
 class RequestGroupAdapter extends TypeAdapter<RequestGroup> {
   @override
-  final typeId = 509;
+  final typeId = 170;
 
   @override
   RequestGroup read(BinaryReader reader) {

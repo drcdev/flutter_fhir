@@ -13,7 +13,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 427)
+@HiveType(typeId: 146)
 class MessageDefinition {
 
   //  This is a MessageDefinition resource
@@ -474,7 +474,7 @@ MessageDefinition_AllowedResponse(
 
 class MessageDefinitionAdapter extends TypeAdapter<MessageDefinition> {
   @override
-  final typeId = 427;
+  final typeId = 146;
 
   @override
   MessageDefinition read(BinaryReader reader) {

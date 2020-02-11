@@ -14,7 +14,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 542)
+@HiveType(typeId: 183)
 class StructureDefinition {
 
   //  This is a StructureDefinition resource
@@ -610,7 +610,7 @@ StructureDefinition_Differential(
 
 class StructureDefinitionAdapter extends TypeAdapter<StructureDefinition> {
   @override
-  final typeId = 542;
+  final typeId = 183;
 
   @override
   StructureDefinition read(BinaryReader reader) {

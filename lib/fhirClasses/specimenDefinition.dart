@@ -14,7 +14,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 537)
+@HiveType(typeId: 182)
 class SpecimenDefinition {
 
   //  This is a SpecimenDefinition resource
@@ -440,7 +440,7 @@ SpecimenDefinition_Handling(
 
 class SpecimenDefinitionAdapter extends TypeAdapter<SpecimenDefinition> {
   @override
-  final typeId = 537;
+  final typeId = 182;
 
   @override
   SpecimenDefinition read(BinaryReader reader) {

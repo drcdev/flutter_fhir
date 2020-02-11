@@ -14,7 +14,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 597)
+@HiveType(typeId: 193)
 class SupplyDelivery {
 
   //  This is a SupplyDelivery resource
@@ -254,7 +254,7 @@ SupplyDelivery_SuppliedItem(
 
 class SupplyDeliveryAdapter extends TypeAdapter<SupplyDelivery> {
   @override
-  final typeId = 597;
+  final typeId = 193;
 
   @override
   SupplyDelivery read(BinaryReader reader) {

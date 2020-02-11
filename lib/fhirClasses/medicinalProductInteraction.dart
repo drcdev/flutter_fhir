@@ -10,7 +10,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 415)
+@HiveType(typeId: 141)
 class MedicinalProductInteraction {
 
   //  This is a MedicinalProductInteraction resource
@@ -202,7 +202,7 @@ MedicinalProductInteraction_Interactant(
 class MedicinalProductInteractionAdapter
     extends TypeAdapter<MedicinalProductInteraction> {
   @override
-  final typeId = 415;
+  final typeId = 141;
 
   @override
   MedicinalProductInteraction read(BinaryReader reader) {

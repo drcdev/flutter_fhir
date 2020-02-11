@@ -6,7 +6,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 75)
+@HiveType(typeId: 64)
 class Binary {
 
   //  This is a Binary resource
@@ -100,7 +100,7 @@ Binary(
 
 class BinaryAdapter extends TypeAdapter<Binary> {
   @override
-  final typeId = 75;
+  final typeId = 64;
 
   @override
   Binary read(BinaryReader reader) {

@@ -14,7 +14,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 626)
+@HiveType(typeId: 198)
 class TestScript {
 
   //  This is a TestScript resource
@@ -1564,7 +1564,7 @@ TestScript_Action2(
 
 class TestScriptAdapter extends TypeAdapter<TestScript> {
   @override
-  final typeId = 626;
+  final typeId = 198;
 
   @override
   TestScript read(BinaryReader reader) {

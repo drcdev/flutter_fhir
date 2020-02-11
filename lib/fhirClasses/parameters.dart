@@ -37,7 +37,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 468)
+@HiveType(typeId: 157)
 class Parameters {
 
   //  This is a Parameters resource
@@ -431,7 +431,7 @@ Parameters_Parameter(
 
 class ParametersAdapter extends TypeAdapter<Parameters> {
   @override
-  final typeId = 468;
+  final typeId = 157;
 
   @override
   Parameters read(BinaryReader reader) {

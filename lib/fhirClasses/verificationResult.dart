@@ -12,7 +12,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 652)
+@HiveType(typeId: 200)
 class VerificationResult {
 
   //  This is a VerificationResult resource
@@ -435,7 +435,7 @@ VerificationResult_Validator(
 
 class VerificationResultAdapter extends TypeAdapter<VerificationResult> {
   @override
-  final typeId = 652;
+  final typeId = 200;
 
   @override
   VerificationResult read(BinaryReader reader) {

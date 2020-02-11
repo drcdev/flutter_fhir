@@ -5,7 +5,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 44)
+@HiveType(typeId: 54)
 class Expression {
 
   //  Unique id for the element within a resource (for internal references).
@@ -91,7 +91,7 @@ Expression(
 
 class ExpressionAdapter extends TypeAdapter<Expression> {
   @override
-  final typeId = 44;
+  final typeId = 54;
 
   @override
   Expression read(BinaryReader reader) {

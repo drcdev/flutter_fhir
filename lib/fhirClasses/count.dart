@@ -5,7 +5,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 11)
+@HiveType(typeId: 27)
 class Count {
 
   //  Unique id for the element within a resource (for internal references).
@@ -95,7 +95,7 @@ Count(
 
 class CountAdapter extends TypeAdapter<Count> {
   @override
-  final typeId = 11;
+  final typeId = 27;
 
   @override
   Count read(BinaryReader reader) {

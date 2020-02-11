@@ -7,7 +7,7 @@ import 'package:flutter_fhir/fhirClasses/identifier.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 39)
+@HiveType(typeId: 50)
 class ProductShelfLife {
 
   //  Unique id for the element within a resource (for internal references).
@@ -88,7 +88,7 @@ ProductShelfLife(
 
 class ProductShelfLifeAdapter extends TypeAdapter<ProductShelfLife> {
   @override
-  final typeId = 39;
+  final typeId = 50;
 
   @override
   ProductShelfLife read(BinaryReader reader) {

@@ -17,7 +17,7 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 531)
+@HiveType(typeId: 179)
 class ServiceRequest {
 
   //  This is a ServiceRequest resource
@@ -403,7 +403,7 @@ ServiceRequest(
 
 class ServiceRequestAdapter extends TypeAdapter<ServiceRequest> {
   @override
-  final typeId = 531;
+  final typeId = 179;
 
   @override
   ServiceRequest read(BinaryReader reader) {
