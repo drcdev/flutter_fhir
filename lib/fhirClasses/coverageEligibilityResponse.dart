@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/money.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -16,187 +19,147 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 88)
 class CoverageEligibilityResponse {
 
-  //  This is a CoverageEligibilityResponse resource
+	static Future<CoverageEligibilityResponse> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Identifier> identifier,
+		String status,
+		Element elementStatus,
+		List<String> purpose,
+		List<Element> elementPurpose,
+		Reference patient,
+		String servicedDate,
+		Element elementServicedDate,
+		Period servicedPeriod,
+		DateTime created,
+		Element elementCreated,
+		Reference requestor,
+		Reference request,
+		String outcome,
+		Element elementOutcome,
+		String disposition,
+		Element elementDisposition,
+		Reference insurer,
+		List<CoverageEligibilityResponse_Insurance> insurance,
+		String preAuthRef,
+		Element elementPreAuthRef,
+		CodeableConcept form,
+		List<CoverageEligibilityResponse_Error> error}) async {
+	 return CoverageEligibilityResponse(
+			id: await newEntry('CoverageEligibilityResponse'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			status: status,
+			elementStatus: elementStatus,
+			purpose: purpose,
+			elementPurpose: elementPurpose,
+			patient: patient,
+			servicedDate: servicedDate,
+			elementServicedDate: elementServicedDate,
+			servicedPeriod: servicedPeriod,
+			created: created,
+			elementCreated: elementCreated,
+			requestor: requestor,
+			request: request,
+			outcome: outcome,
+			elementOutcome: elementOutcome,
+			disposition: disposition,
+			elementDisposition: elementDisposition,
+			insurer: insurer,
+			insurance: insurance,
+			preAuthRef: preAuthRef,
+			elementPreAuthRef: elementPreAuthRef,
+			form: form,
+			error: error);
+	}
+
   @HiveField(0)
   final String resourceType= 'CoverageEligibilityResponse';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  A unique identifier assigned to this coverage eligiblity request.
   @HiveField(11)
   List<Identifier> identifier;
-
-  //  The status of the resource instance.
   @HiveField(12)
   String status;
-
-  //  Extensions for status
   @HiveField(13)
   Element elementStatus;
-
-  //  Code to specify whether requesting: prior authorization requirements
-  // for some service categories or billing codes; benefits for coverages
-  // specified or discovered; discovery and return of coverages for the
-  // patient; and/or validation that the specified coverage is in-force at
-  // the date/period specified or 'now' if not specified.
   @HiveField(14)
   List<String> purpose; // <code> enum: auth-requirements/benefits/discovery/validation> purpose;
-
-  //  Extensions for purpose
   @HiveField(15)
   List<Element> elementPurpose;
-
-  //  The party who is the beneficiary of the supplied coverage and for whom
-  // eligibility is sought.
   @HiveField(16)
   Reference patient;
-
-  //  The date or dates when the enclosed suite of services were performed
-  // or completed.
   @HiveField(17)
   String servicedDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
-
-  //  Extensions for servicedDate
   @HiveField(18)
   Element elementServicedDate;
-
-  //  The date or dates when the enclosed suite of services were performed
-  // or completed.
   @HiveField(19)
   Period servicedPeriod;
-
-  //  The date this resource was created.
   @HiveField(20)
   DateTime created;
-
-  //  Extensions for created
   @HiveField(21)
   Element elementCreated;
-
-  //  The provider which is responsible for the request.
   @HiveField(22)
   Reference requestor;
-
-  //  Reference to the original request resource.
   @HiveField(23)
   Reference request;
-
-  //  The outcome of the request processing.
   @HiveField(24)
   String outcome; // <code> enum: queued/complete/error/partial;
-
-  //  Extensions for outcome
   @HiveField(25)
   Element elementOutcome;
-
-  //  A human readable description of the status of the adjudication.
   @HiveField(26)
   String disposition;
-
-  //  Extensions for disposition
   @HiveField(27)
   Element elementDisposition;
-
-  //  The Insurer who issued the coverage in question and is the author of
-  // the response.
   @HiveField(28)
   Reference insurer;
-
-  //  Financial instruments for reimbursement for the health care products
-  // and services.
   @HiveField(29)
   List<CoverageEligibilityResponse_Insurance> insurance;
-
-  //  A reference from the Insurer to which these services pertain to be
-  // used on further communication and as proof that the request occurred.
   @HiveField(30)
   String preAuthRef;
-
-  //  Extensions for preAuthRef
   @HiveField(31)
   Element elementPreAuthRef;
-
-  //  A code for the form to be used for printing the content.
   @HiveField(32)
   CodeableConcept form;
-
-  //  Errors encountered during the processing of the request.
   @HiveField(33)
   List<CoverageEligibilityResponse_Error> error;
 
 CoverageEligibilityResponse(
-  this.patient,
-    this.request,
-    this.insurer,
-    {this.id,
+  {this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -211,16 +174,19 @@ CoverageEligibilityResponse(
     this.elementStatus,
     this.purpose,
     this.elementPurpose,
+    @required this.patient,
     this.servicedDate,
     this.elementServicedDate,
     this.servicedPeriod,
     this.created,
     this.elementCreated,
     this.requestor,
+    @required this.request,
     this.outcome,
     this.elementOutcome,
     this.disposition,
     this.elementDisposition,
+    @required this.insurer,
     this.insurance,
     this.preAuthRef,
     this.elementPreAuthRef,
@@ -235,58 +201,40 @@ CoverageEligibilityResponse(
 @JsonSerializable(explicitToJson: true)
 class CoverageEligibilityResponse_Insurance {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<CoverageEligibilityResponse_Insurance> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Reference coverage,
+		bool inforce,
+		Element elementInforce,
+		Period benefitPeriod,
+		List<CoverageEligibilityResponse_Item> item}) async {
+	 return CoverageEligibilityResponse_Insurance(
+			id: await newEntry('CoverageEligibilityResponse_Insurance'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			coverage: coverage,
+			inforce: inforce,
+			elementInforce: elementInforce,
+			benefitPeriod: benefitPeriod,
+			item: item);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Reference to the insurance card level information contained in the
-  // Coverage resource. The coverage issuing insurer will use these details
-  // to locate the patient's actual coverage within the insurer's
-  // information system.
   Reference coverage;
-
-  //  Flag indicating if the coverage provided is inforce currently if no
-  // service date(s) specified or for the whole duration of the service
-  // dates.
   bool inforce;
-
-  //  Extensions for inforce
   Element elementInforce;
-
-  //  The term of the benefits documented in this response.
   Period benefitPeriod;
-
-  //  Benefits and optionally current balances, and authorization details by
-  // category or service.
   List<CoverageEligibilityResponse_Item> item;
 
 CoverageEligibilityResponse_Insurance(
-  this.coverage,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
+    @required this.coverage,
     this.inforce,
     this.elementInforce,
     this.benefitPeriod,
@@ -300,98 +248,75 @@ CoverageEligibilityResponse_Insurance(
 @JsonSerializable(explicitToJson: true)
 class CoverageEligibilityResponse_Item {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<CoverageEligibilityResponse_Item> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept category,
+		CodeableConcept productOrService,
+		List<CodeableConcept> modifier,
+		Reference provider,
+		bool excluded,
+		Element elementExcluded,
+		String name,
+		Element elementName,
+		String description,
+		Element elementDescription,
+		CodeableConcept network,
+		CodeableConcept unit,
+		CodeableConcept term,
+		List<CoverageEligibilityResponse_Benefit> benefit,
+		bool authorizationRequired,
+		Element elementAuthorizationRequired,
+		List<CodeableConcept> authorizationSupporting,
+		String authorizationUrl,
+		Element elementAuthorizationUrl}) async {
+	 return CoverageEligibilityResponse_Item(
+			id: await newEntry('CoverageEligibilityResponse_Item'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			category: category,
+			productOrService: productOrService,
+			modifier: modifier,
+			provider: provider,
+			excluded: excluded,
+			elementExcluded: elementExcluded,
+			name: name,
+			elementName: elementName,
+			description: description,
+			elementDescription: elementDescription,
+			network: network,
+			unit: unit,
+			term: term,
+			benefit: benefit,
+			authorizationRequired: authorizationRequired,
+			elementAuthorizationRequired: elementAuthorizationRequired,
+			authorizationSupporting: authorizationSupporting,
+			authorizationUrl: authorizationUrl,
+			elementAuthorizationUrl: elementAuthorizationUrl);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Code to identify the general type of benefits under which products and
-  // services are provided.
   CodeableConcept category;
-
-  //  This contains the product, service, drug or other billing code for the
-  // item.
   CodeableConcept productOrService;
-
-  //  Item typification or modifiers codes to convey additional context for
-  // the product or service.
   List<CodeableConcept> modifier;
-
-  //  The practitioner who is eligible for the provision of the product or
-  // service.
   Reference provider;
-
-  //  True if the indicated class of service is excluded from the plan,
-  // missing or False indicates the product or service is included in the
-  // coverage.
   bool excluded;
-
-  //  Extensions for excluded
   Element elementExcluded;
-
-  //  A short name or tag for the benefit.
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  A richer description of the benefit or services covered.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  Is a flag to indicate whether the benefits refer to in-network
-  // providers or out-of-network providers.
   CodeableConcept network;
-
-  //  Indicates if the benefits apply to an individual or to the family.
   CodeableConcept unit;
-
-  //  The term or period of the values such as 'maximum lifetime benefit' or
-  // 'maximum annual visits'.
   CodeableConcept term;
-
-  //  Benefits used to date.
   List<CoverageEligibilityResponse_Benefit> benefit;
-
-  //  A boolean flag indicating whether a preauthorization is required prior
-  // to actual service delivery.
   bool authorizationRequired;
-
-  //  Extensions for authorizationRequired
   Element elementAuthorizationRequired;
-
-  //  Codes or comments regarding information or actions associated with the
-  // preauthorization.
   List<CodeableConcept> authorizationSupporting;
-
-  //  A web location for obtaining requirements or descriptive information
-  // regarding the preauthorization.
   String authorizationUrl;
-
-  //  Extensions for authorizationUrl
   Element elementAuthorizationUrl;
 
 CoverageEligibilityResponse_Item(
@@ -426,70 +351,58 @@ CoverageEligibilityResponse_Item(
 @JsonSerializable(explicitToJson: true)
 class CoverageEligibilityResponse_Benefit {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<CoverageEligibilityResponse_Benefit> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept type,
+		int allowedUnsignedInt,
+		Element elementAllowedUnsignedInt,
+		String allowedString,
+		Element elementAllowedString,
+		Money allowedMoney,
+		int usedUnsignedInt,
+		Element elementUsedUnsignedInt,
+		String usedString,
+		Element elementUsedString,
+		Money usedMoney}) async {
+	 return CoverageEligibilityResponse_Benefit(
+			id: await newEntry('CoverageEligibilityResponse_Benefit'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			type: type,
+			allowedUnsignedInt: allowedUnsignedInt,
+			elementAllowedUnsignedInt: elementAllowedUnsignedInt,
+			allowedString: allowedString,
+			elementAllowedString: elementAllowedString,
+			allowedMoney: allowedMoney,
+			usedUnsignedInt: usedUnsignedInt,
+			elementUsedUnsignedInt: elementUsedUnsignedInt,
+			usedString: usedString,
+			elementUsedString: elementUsedString,
+			usedMoney: usedMoney);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Classification of benefit being provided.
   CodeableConcept type;
-
-  //  The quantity of the benefit which is permitted under the coverage.
   int allowedUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
-
-  //  Extensions for allowedUnsignedInt
   Element elementAllowedUnsignedInt;
-
-  //  The quantity of the benefit which is permitted under the coverage.
   String allowedString; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for allowedString
   Element elementAllowedString;
-
-  //  The quantity of the benefit which is permitted under the coverage.
   Money allowedMoney;
-
-  //  The quantity of the benefit which have been consumed to date.
   int usedUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
-
-  //  Extensions for usedUnsignedInt
   Element elementUsedUnsignedInt;
-
-  //  The quantity of the benefit which have been consumed to date.
   String usedString; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for usedString
   Element elementUsedString;
-
-  //  The quantity of the benefit which have been consumed to date.
   Money usedMoney;
 
 CoverageEligibilityResponse_Benefit(
-  this.type,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
+    @required this.type,
     this.allowedUnsignedInt,
     this.elementAllowedUnsignedInt,
     this.allowedString,
@@ -509,41 +422,28 @@ CoverageEligibilityResponse_Benefit(
 @JsonSerializable(explicitToJson: true)
 class CoverageEligibilityResponse_Error {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<CoverageEligibilityResponse_Error> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept code}) async {
+	 return CoverageEligibilityResponse_Error(
+			id: await newEntry('CoverageEligibilityResponse_Error'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			code: code);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  An error code,from a specified code system, which details why the
-  // eligibility check could not be performed.
   CodeableConcept code;
 
 CoverageEligibilityResponse_Error(
-  this.code,
-    {this.id,
+  {this.id,
     this.extension,
-    this.modifierExtension
+    this.modifierExtension,
+    @required this.code
     });
 
   factory CoverageEligibilityResponse_Error.fromJson(Map<String, dynamic> json) => _$CoverageEligibilityResponse_ErrorFromJson(json);
@@ -568,9 +468,6 @@ class CoverageEligibilityResponseAdapter
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return CoverageEligibilityResponse(
-      fields[16] as Reference,
-      fields[23] as Reference,
-      fields[28] as Reference,
       id: fields[1] as String,
       meta: fields[2] as Meta,
       implicitRules: fields[3] as String,
@@ -586,16 +483,19 @@ class CoverageEligibilityResponseAdapter
       elementStatus: fields[13] as Element,
       purpose: (fields[14] as List)?.cast<String>(),
       elementPurpose: (fields[15] as List)?.cast<Element>(),
+      patient: fields[16] as Reference,
       servicedDate: fields[17] as String,
       elementServicedDate: fields[18] as Element,
       servicedPeriod: fields[19] as Period,
       created: fields[20] as DateTime,
       elementCreated: fields[21] as Element,
       requestor: fields[22] as Reference,
+      request: fields[23] as Reference,
       outcome: fields[24] as String,
       elementOutcome: fields[25] as Element,
       disposition: fields[26] as String,
       elementDisposition: fields[27] as Element,
+      insurer: fields[28] as Reference,
       insurance:
           (fields[29] as List)?.cast<CoverageEligibilityResponse_Insurance>(),
       preAuthRef: fields[30] as String,
@@ -687,15 +587,6 @@ class CoverageEligibilityResponseAdapter
 CoverageEligibilityResponse _$CoverageEligibilityResponseFromJson(
     Map<String, dynamic> json) {
   return CoverageEligibilityResponse(
-    json['patient'] == null
-        ? null
-        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
-    json['request'] == null
-        ? null
-        : Reference.fromJson(json['request'] as Map<String, dynamic>),
-    json['insurer'] == null
-        ? null
-        : Reference.fromJson(json['insurer'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -737,6 +628,9 @@ CoverageEligibilityResponse _$CoverageEligibilityResponseFromJson(
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    patient: json['patient'] == null
+        ? null
+        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
     servicedDate: json['servicedDate'] as String,
     elementServicedDate: json['elementServicedDate'] == null
         ? null
@@ -753,6 +647,9 @@ CoverageEligibilityResponse _$CoverageEligibilityResponseFromJson(
     requestor: json['requestor'] == null
         ? null
         : Reference.fromJson(json['requestor'] as Map<String, dynamic>),
+    request: json['request'] == null
+        ? null
+        : Reference.fromJson(json['request'] as Map<String, dynamic>),
     outcome: json['outcome'] as String,
     elementOutcome: json['elementOutcome'] == null
         ? null
@@ -761,6 +658,9 @@ CoverageEligibilityResponse _$CoverageEligibilityResponseFromJson(
     elementDisposition: json['elementDisposition'] == null
         ? null
         : Element.fromJson(json['elementDisposition'] as Map<String, dynamic>),
+    insurer: json['insurer'] == null
+        ? null
+        : Reference.fromJson(json['insurer'] as Map<String, dynamic>),
     insurance: (json['insurance'] as List)
         ?.map((e) => e == null
             ? null
@@ -826,9 +726,6 @@ Map<String, dynamic> _$CoverageEligibilityResponseToJson(
 CoverageEligibilityResponse_Insurance
     _$CoverageEligibilityResponse_InsuranceFromJson(Map<String, dynamic> json) {
   return CoverageEligibilityResponse_Insurance(
-    json['coverage'] == null
-        ? null
-        : Reference.fromJson(json['coverage'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -838,6 +735,9 @@ CoverageEligibilityResponse_Insurance
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    coverage: json['coverage'] == null
+        ? null
+        : Reference.fromJson(json['coverage'] as Map<String, dynamic>),
     inforce: json['inforce'] as bool,
     elementInforce: json['elementInforce'] == null
         ? null
@@ -973,9 +873,6 @@ Map<String, dynamic> _$CoverageEligibilityResponse_ItemToJson(
 CoverageEligibilityResponse_Benefit
     _$CoverageEligibilityResponse_BenefitFromJson(Map<String, dynamic> json) {
   return CoverageEligibilityResponse_Benefit(
-    json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -985,6 +882,9 @@ CoverageEligibilityResponse_Benefit
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    type: json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     allowedUnsignedInt: json['allowedUnsignedInt'] as int,
     elementAllowedUnsignedInt: json['elementAllowedUnsignedInt'] == null
         ? null
@@ -1036,9 +936,6 @@ Map<String, dynamic> _$CoverageEligibilityResponse_BenefitToJson(
 CoverageEligibilityResponse_Error _$CoverageEligibilityResponse_ErrorFromJson(
     Map<String, dynamic> json) {
   return CoverageEligibilityResponse_Error(
-    json['code'] == null
-        ? null
-        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1048,6 +945,9 @@ CoverageEligibilityResponse_Error _$CoverageEligibilityResponse_ErrorFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    code: json['code'] == null
+        ? null
+        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
   );
 }
 

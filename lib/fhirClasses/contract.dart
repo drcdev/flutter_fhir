@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/signature.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
@@ -22,316 +25,226 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 85)
 class Contract {
 
-  //  This is a Contract resource
+	static Future<Contract> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Identifier> identifier,
+		String url,
+		Element elementUrl,
+		String version,
+		Element elementVersion,
+		String status,
+		Element elementStatus,
+		CodeableConcept legalState,
+		Reference instantiatesCanonical,
+		String instantiatesUri,
+		Element elementInstantiatesUri,
+		CodeableConcept contentDerivative,
+		DateTime issued,
+		Element elementIssued,
+		Period applies,
+		CodeableConcept expirationType,
+		List<Reference> subject,
+		List<Reference> authority,
+		List<Reference> domain,
+		List<Reference> site,
+		String name,
+		Element elementName,
+		String title,
+		Element elementTitle,
+		String subtitle,
+		Element elementSubtitle,
+		List<String> alias,
+		List<Element> elementAlias,
+		Reference author,
+		CodeableConcept scope,
+		CodeableConcept topicCodeableConcept,
+		Reference topicReference,
+		CodeableConcept type,
+		List<CodeableConcept> subType,
+		Contract_ContentDefinition contentDefinition,
+		List<Contract_Term> term,
+		List<Reference> supportingInfo,
+		List<Reference> relevantHistory,
+		List<Contract_Signer> signer,
+		List<Contract_Friendly> friendly,
+		List<Contract_Legal> legal,
+		List<Contract_Rule> rule,
+		Attachment legallyBindingAttachment,
+		Reference legallyBindingReference}) async {
+	 return Contract(
+			id: await newEntry('Contract'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			url: url,
+			elementUrl: elementUrl,
+			version: version,
+			elementVersion: elementVersion,
+			status: status,
+			elementStatus: elementStatus,
+			legalState: legalState,
+			instantiatesCanonical: instantiatesCanonical,
+			instantiatesUri: instantiatesUri,
+			elementInstantiatesUri: elementInstantiatesUri,
+			contentDerivative: contentDerivative,
+			issued: issued,
+			elementIssued: elementIssued,
+			applies: applies,
+			expirationType: expirationType,
+			subject: subject,
+			authority: authority,
+			domain: domain,
+			site: site,
+			name: name,
+			elementName: elementName,
+			title: title,
+			elementTitle: elementTitle,
+			subtitle: subtitle,
+			elementSubtitle: elementSubtitle,
+			alias: alias,
+			elementAlias: elementAlias,
+			author: author,
+			scope: scope,
+			topicCodeableConcept: topicCodeableConcept,
+			topicReference: topicReference,
+			type: type,
+			subType: subType,
+			contentDefinition: contentDefinition,
+			term: term,
+			supportingInfo: supportingInfo,
+			relevantHistory: relevantHistory,
+			signer: signer,
+			friendly: friendly,
+			legal: legal,
+			rule: rule,
+			legallyBindingAttachment: legallyBindingAttachment,
+			legallyBindingReference: legallyBindingReference);
+	}
+
   @HiveField(0)
   final String resourceType= 'Contract';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  Unique identifier for this Contract or a derivative that references a
-  // Source Contract.
   @HiveField(11)
   List<Identifier> identifier;
-
-  //  Canonical identifier for this contract, represented as a URI (globally
-  // unique).
   @HiveField(12)
   String url;
-
-  //  Extensions for url
   @HiveField(13)
   Element elementUrl;
-
-  //  An edition identifier used for business purposes to label business
-  // significant variants.
   @HiveField(14)
   String version;
-
-  //  Extensions for version
   @HiveField(15)
   Element elementVersion;
-
-  //  The status of the resource instance.
   @HiveField(16)
   String status;
-
-  //  Extensions for status
   @HiveField(17)
   Element elementStatus;
-
-  //  Legal states of the formation of a legal instrument, which is a
-  // formally executed written document that can be formally attributed to
-  // its author, records and formally expresses a legally enforceable act,
-  // process, or contractual duty, obligation, or right, and therefore
-  // evidences that act, process, or agreement.
   @HiveField(18)
   CodeableConcept legalState;
-
-  //  The URL pointing to a FHIR-defined Contract Definition that is adhered
-  // to in whole or part by this Contract.
   @HiveField(19)
   Reference instantiatesCanonical;
-
-  //  The URL pointing to an externally maintained definition that is
-  // adhered to in whole or in part by this Contract.
   @HiveField(20)
   String instantiatesUri;
-
-  //  Extensions for instantiatesUri
   @HiveField(21)
   Element elementInstantiatesUri;
-
-  //  The minimal content derived from the basal information source at a
-  // specific stage in its lifecycle.
   @HiveField(22)
   CodeableConcept contentDerivative;
-
-  //  When this  Contract was issued.
   @HiveField(23)
   DateTime issued;
-
-  //  Extensions for issued
   @HiveField(24)
   Element elementIssued;
-
-  //  Relevant time or time-period when this Contract is applicable.
   @HiveField(25)
   Period applies;
-
-  //  Event resulting in discontinuation or termination of this Contract
-  // instance by one or more parties to the contract.
   @HiveField(26)
   CodeableConcept expirationType;
-
-  //  The target entity impacted by or of interest to parties to the
-  // agreement.
   @HiveField(27)
   List<Reference> subject;
-
-  //  A formally or informally recognized grouping of people, principals,
-  // organizations, or jurisdictions formed for the purpose of achieving
-  // some form of collective action such as the promulgation, administration
-  // and enforcement of contracts and policies.
   @HiveField(28)
   List<Reference> authority;
-
-  //  Recognized governance framework or system operating with a
-  // circumscribed scope in accordance with specified principles, policies,
-  // processes or procedures for managing rights, actions, or behaviors of
-  // parties or principals relative to resources.
   @HiveField(29)
   List<Reference> domain;
-
-  //  Sites in which the contract is complied with,  exercised, or in force.
   @HiveField(30)
   List<Reference> site;
-
-  //  A natural language name identifying this Contract definition,
-  // derivative, or instance in any legal state. Provides additional
-  // information about its content. This name should be usable as an
-  // identifier for the module by machine processing applications such as
-  // code generation.
   @HiveField(31)
   String name;
-
-  //  Extensions for name
   @HiveField(32)
   Element elementName;
-
-  //  A short, descriptive, user-friendly title for this Contract
-  // definition, derivative, or instance in any legal state.t giving
-  // additional information about its content.
   @HiveField(33)
   String title;
-
-  //  Extensions for title
   @HiveField(34)
   Element elementTitle;
-
-  //  An explanatory or alternate user-friendly title for this Contract
-  // definition, derivative, or instance in any legal state.t giving
-  // additional information about its content.
   @HiveField(35)
   String subtitle;
-
-  //  Extensions for subtitle
   @HiveField(36)
   Element elementSubtitle;
-
-  //  Alternative representation of the title for this Contract definition,
-  // derivative, or instance in any legal state., e.g., a domain specific
-  // contract number related to legislation.
   @HiveField(37)
   List<String> alias;
-
-  //  Extensions for alias
   @HiveField(38)
   List<Element> elementAlias;
-
-  //  The individual or organization that authored the Contract definition,
-  // derivative, or instance in any legal state.
   @HiveField(39)
   Reference author;
-
-  //  A selector of legal concerns for this Contract definition, derivative,
-  // or instance in any legal state.
   @HiveField(40)
   CodeableConcept scope;
-
-  //  Narrows the range of legal concerns to focus on the achievement of
-  // specific contractual objectives.
   @HiveField(41)
   CodeableConcept topicCodeableConcept;
-
-  //  Narrows the range of legal concerns to focus on the achievement of
-  // specific contractual objectives.
   @HiveField(42)
   Reference topicReference;
-
-  //  A high-level category for the legal instrument, whether constructed as
-  // a Contract definition, derivative, or instance in any legal state. 
-  // Provides additional information about its content within the context of
-  // the Contract's scope to distinguish the kinds of systems that would be
-  // interested in the contract.
   @HiveField(43)
   CodeableConcept type;
-
-  //  Sub-category for the Contract that distinguishes the kinds of systems
-  // that would be interested in the Contract within the context of the
-  // Contract's scope.
   @HiveField(44)
   List<CodeableConcept> subType;
-
-  //  Precusory content developed with a focus and intent of supporting the
-  // formation a Contract instance, which may be associated with and
-  // transformable into a Contract.
   @HiveField(45)
   Contract_ContentDefinition contentDefinition;
-
-  //  One or more Contract Provisions, which may be related and conveyed as
-  // a group, and may contain nested groups.
   @HiveField(46)
   List<Contract_Term> term;
-
-  //  Information that may be needed by/relevant to the performer in their
-  // execution of this term action.
   @HiveField(47)
   List<Reference> supportingInfo;
-
-  //  Links to Provenance records for past versions of this Contract
-  // definition, derivative, or instance, which identify key state
-  // transitions or updates that are likely to be relevant to a user looking
-  // at the current version of the Contract.  The Provence.entity indicates
-  // the target that was changed in the update.
-  // http://build.fhir.org/provenance-definitions.html#Provenance.entity.
   @HiveField(48)
   List<Reference> relevantHistory;
-
-  //  Parties with legal standing in the Contract, including the principal
-  // parties, the grantor(s) and grantee(s), which are any person or
-  // organization bound by the contract, and any ancillary parties, which
-  // facilitate the execution of the contract such as a notary or witness.
   @HiveField(49)
   List<Contract_Signer> signer;
-
-  //  The "patient friendly language" versionof the Contract in whole or in
-  // parts. "Patient friendly language" means the representation of the
-  // Contract and Contract Provisions in a manner that is readily accessible
-  // and understandable by a layperson in accordance with best practices for
-  // communication styles that ensure that those agreeing to or signing the
-  // Contract understand the roles, actions, obligations, responsibilities,
-  // and implication of the agreement.
   @HiveField(50)
   List<Contract_Friendly> friendly;
-
-  //  List of Legal expressions or representations of this Contract.
   @HiveField(51)
   List<Contract_Legal> legal;
-
-  //  List of Computable Policy Rule Language Representations of this
-  // Contract.
   @HiveField(52)
   List<Contract_Rule> rule;
-
-  //  Legally binding Contract: This is the signed and legally recognized
-  // representation of the Contract, which is considered the "source of
-  // truth" and which would be the basis for legal action related to
-  // enforcement of this Contract.
   @HiveField(53)
   Attachment legallyBindingAttachment;
-
-  //  Legally binding Contract: This is the signed and legally recognized
-  // representation of the Contract, which is considered the "source of
-  // truth" and which would be the basis for legal action related to
-  // enforcement of this Contract.
   @HiveField(54)
   Reference legallyBindingReference;
 
@@ -399,74 +312,52 @@ Contract(
 @JsonSerializable(explicitToJson: true)
 class Contract_ContentDefinition {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Contract_ContentDefinition> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept type,
+		CodeableConcept subType,
+		Reference publisher,
+		DateTime publicationDate,
+		Element elementPublicationDate,
+		String publicationStatus,
+		Element elementPublicationStatus,
+		String copyright,
+		Element elementCopyright}) async {
+	 return Contract_ContentDefinition(
+			id: await newEntry('Contract_ContentDefinition'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			type: type,
+			subType: subType,
+			publisher: publisher,
+			publicationDate: publicationDate,
+			elementPublicationDate: elementPublicationDate,
+			publicationStatus: publicationStatus,
+			elementPublicationStatus: elementPublicationStatus,
+			copyright: copyright,
+			elementCopyright: elementCopyright);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Precusory content structure and use, i.e., a boilerplate, template,
-  // application for a contract such as an insurance policy or benefits
-  // under a program, e.g., workers compensation.
   CodeableConcept type;
-
-  //  Detailed Precusory content type.
   CodeableConcept subType;
-
-  //  The  individual or organization that published the Contract precursor
-  // content.
   Reference publisher;
-
-  //  The date (and optionally time) when the contract was published. The
-  // date must change when the business version changes and it must change
-  // if the status code changes. In addition, it should change when the
-  // substantive content of the contract changes.
   DateTime publicationDate;
-
-  //  Extensions for publicationDate
   Element elementPublicationDate;
-
-  //  amended | appended | cancelled | disputed | entered-in-error |
-  // executable | executed | negotiable | offered | policy | rejected |
-  // renewed | revoked | resolved | terminated.
   String publicationStatus;
-
-  //  Extensions for publicationStatus
   Element elementPublicationStatus;
-
-  //  A copyright statement relating to Contract precursor content.
-  // Copyright statements are generally legal restrictions on the use and
-  // publishing of the Contract precursor content.
   String copyright;
-
-  //  Extensions for copyright
   Element elementCopyright;
 
 Contract_ContentDefinition(
-  this.type,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
+    @required this.type,
     this.subType,
     this.publisher,
     this.publicationDate,
@@ -484,88 +375,67 @@ Contract_ContentDefinition(
 @JsonSerializable(explicitToJson: true)
 class Contract_Term {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Contract_Term> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Identifier identifier,
+		DateTime issued,
+		Element elementIssued,
+		Period applies,
+		CodeableConcept topicCodeableConcept,
+		Reference topicReference,
+		CodeableConcept type,
+		CodeableConcept subType,
+		String text,
+		Element elementText,
+		List<Contract_SecurityLabel> securityLabel,
+		Contract_Offer offer,
+		List<Contract_Asset> asset,
+		List<Contract_Action> action,
+		List<Contract_Term> group}) async {
+	 return Contract_Term(
+			id: await newEntry('Contract_Term'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			issued: issued,
+			elementIssued: elementIssued,
+			applies: applies,
+			topicCodeableConcept: topicCodeableConcept,
+			topicReference: topicReference,
+			type: type,
+			subType: subType,
+			text: text,
+			elementText: elementText,
+			securityLabel: securityLabel,
+			offer: offer,
+			asset: asset,
+			action: action,
+			group: group);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Unique identifier for this particular Contract Provision.
   Identifier identifier;
-
-  //  When this Contract Provision was issued.
   DateTime issued;
-
-  //  Extensions for issued
   Element elementIssued;
-
-  //  Relevant time or time-period when this Contract Provision is
-  // applicable.
   Period applies;
-
-  //  The entity that the term applies to.
   CodeableConcept topicCodeableConcept;
-
-  //  The entity that the term applies to.
   Reference topicReference;
-
-  //  A legal clause or condition contained within a contract that requires
-  // one or both parties to perform a particular requirement by some
-  // specified time or prevents one or both parties from performing a
-  // particular requirement by some specified time.
   CodeableConcept type;
-
-  //  A specialized legal clause or condition based on overarching contract
-  // type.
   CodeableConcept subType;
-
-  //  Statement of a provision in a policy or a contract.
   String text;
-
-  //  Extensions for text
   Element elementText;
-
-  //  Security labels that protect the handling of information about the
-  // term and its elements, which may be specifically identified..
   List<Contract_SecurityLabel> securityLabel;
-
-  //  The matter of concern in the context of this provision of the
-  // agrement.
   Contract_Offer offer;
-
-  //  Contract Term Asset List.
   List<Contract_Asset> asset;
-
-  //  An actor taking a role in an activity for which it can be assigned
-  // some degree of responsibility for the activity taking place.
   List<Contract_Action> action;
-
-  //  Nested group of Contract Provisions.
   List<Contract_Term> group;
 
 Contract_Term(
-  this.offer,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.identifier,
@@ -579,6 +449,7 @@ Contract_Term(
     this.text,
     this.elementText,
     this.securityLabel,
+    @required this.offer,
     this.asset,
     this.action,
     this.group
@@ -591,58 +462,42 @@ Contract_Term(
 @JsonSerializable(explicitToJson: true)
 class Contract_SecurityLabel {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Contract_SecurityLabel> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<int> number,
+		List<Element> elementNumber,
+		Coding classification,
+		List<Coding> category,
+		List<Coding> control}) async {
+	 return Contract_SecurityLabel(
+			id: await newEntry('Contract_SecurityLabel'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			number: number,
+			elementNumber: elementNumber,
+			classification: classification,
+			category: category,
+			control: control);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Number used to link this term or term element to the applicable
-  // Security Label.
   List<int> number;
-
-  //  Extensions for number
   List<Element> elementNumber;
-
-  //  Security label privacy tag that species the level of confidentiality
-  // protection required for this term and/or term elements.
   Coding classification;
-
-  //  Security label privacy tag that species the applicable privacy and
-  // security policies governing this term and/or term elements.
   List<Coding> category;
-
-  //  Security label privacy tag that species the manner in which term
-  // and/or term elements are to be protected.
   List<Coding> control;
 
 Contract_SecurityLabel(
-  this.classification,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.number,
     this.elementNumber,
+    @required this.classification,
     this.category,
     this.control
     });
@@ -654,74 +509,57 @@ Contract_SecurityLabel(
 @JsonSerializable(explicitToJson: true)
 class Contract_Offer {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Contract_Offer> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Identifier> identifier,
+		List<Contract_Party> party,
+		Reference topic,
+		CodeableConcept type,
+		CodeableConcept decision,
+		List<CodeableConcept> decisionMode,
+		List<Contract_Answer> answer,
+		String text,
+		Element elementText,
+		List<String> linkId,
+		List<Element> elementLinkId,
+		List<int> securityLabelNumber,
+		List<Element> elementSecurityLabelNumber}) async {
+	 return Contract_Offer(
+			id: await newEntry('Contract_Offer'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			party: party,
+			topic: topic,
+			type: type,
+			decision: decision,
+			decisionMode: decisionMode,
+			answer: answer,
+			text: text,
+			elementText: elementText,
+			linkId: linkId,
+			elementLinkId: elementLinkId,
+			securityLabelNumber: securityLabelNumber,
+			elementSecurityLabelNumber: elementSecurityLabelNumber);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Unique identifier for this particular Contract Provision.
   List<Identifier> identifier;
-
-  //  Offer Recipient.
   List<Contract_Party> party;
-
-  //  The owner of an asset has the residual control rights over the asset:
-  // the right to decide all usages of the asset in any way not inconsistent
-  // with a prior contract, custom, or law (Hart, 1995, p. 30).
   Reference topic;
-
-  //  Type of Contract Provision such as specific requirements, purposes for
-  // actions, obligations, prohibitions, e.g. life time maximum benefit.
   CodeableConcept type;
-
-  //  Type of choice made by accepting party with respect to an offer made
-  // by an offeror/ grantee.
   CodeableConcept decision;
-
-  //  How the decision about a Contract was conveyed.
   List<CodeableConcept> decisionMode;
-
-  //  Response to offer text.
   List<Contract_Answer> answer;
-
-  //  Human readable form of this Contract Offer.
   String text;
-
-  //  Extensions for text
   Element elementText;
-
-  //  The id of the clause or question text of the offer in the referenced
-  // questionnaire/response.
   List<String> linkId;
-
-  //  Extensions for linkId
   List<Element> elementLinkId;
-
-  //  Security labels that protects the offer.
   List<int> securityLabelNumber;
-
-  //  Extensions for securityLabelNumber
   List<Element> elementSecurityLabelNumber;
 
 Contract_Offer(
@@ -750,44 +588,32 @@ Contract_Offer(
 @JsonSerializable(explicitToJson: true)
 class Contract_Party {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Contract_Party> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Reference> reference,
+		CodeableConcept role}) async {
+	 return Contract_Party(
+			id: await newEntry('Contract_Party'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			reference: reference,
+			role: role);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Participant in the offer.
   List<Reference> reference;
-
-  //  How the party participates in the offer.
   CodeableConcept role;
 
 Contract_Party(
-  this.reference,
-    this.role,
-    {this.id,
+  {this.id,
     this.extension,
-    this.modifierExtension
+    this.modifierExtension,
+    @required this.reference,
+    @required this.role
     });
 
   factory Contract_Party.fromJson(Map<String, dynamic> json) => _$Contract_PartyFromJson(json);
@@ -797,126 +623,78 @@ Contract_Party(
 @JsonSerializable(explicitToJson: true)
 class Contract_Answer {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Contract_Answer> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		bool valueBoolean,
+		Element elementValueBoolean,
+		double valueDecimal,
+		Element elementValueDecimal,
+		int valueInteger,
+		Element elementValueInteger,
+		String valueDate,
+		Element elementValueDate,
+		String valueDateTime,
+		Element elementValueDateTime,
+		String valueTime,
+		Element elementValueTime,
+		String valueString,
+		Element elementValueString,
+		String valueUri,
+		Element elementValueUri,
+		Attachment valueAttachment,
+		Coding valueCoding,
+		Quantity valueQuantity,
+		Reference valueReference}) async {
+	 return Contract_Answer(
+			id: await newEntry('Contract_Answer'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			valueBoolean: valueBoolean,
+			elementValueBoolean: elementValueBoolean,
+			valueDecimal: valueDecimal,
+			elementValueDecimal: elementValueDecimal,
+			valueInteger: valueInteger,
+			elementValueInteger: elementValueInteger,
+			valueDate: valueDate,
+			elementValueDate: elementValueDate,
+			valueDateTime: valueDateTime,
+			elementValueDateTime: elementValueDateTime,
+			valueTime: valueTime,
+			elementValueTime: elementValueTime,
+			valueString: valueString,
+			elementValueString: elementValueString,
+			valueUri: valueUri,
+			elementValueUri: elementValueUri,
+			valueAttachment: valueAttachment,
+			valueCoding: valueCoding,
+			valueQuantity: valueQuantity,
+			valueReference: valueReference);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Response to an offer clause or question text,  which enables selection
-  // of values to be agreed to, e.g., the period of participation, the date
-  // of occupancy of a rental, warrently duration, or whether biospecimen
-  // may be used for further research.
   bool valueBoolean; //  pattern: ^true|false$
-
-  //  Extensions for valueBoolean
   Element elementValueBoolean;
-
-  //  Response to an offer clause or question text,  which enables selection
-  // of values to be agreed to, e.g., the period of participation, the date
-  // of occupancy of a rental, warrently duration, or whether biospecimen
-  // may be used for further research.
   double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
-
-  //  Extensions for valueDecimal
   Element elementValueDecimal;
-
-  //  Response to an offer clause or question text,  which enables selection
-  // of values to be agreed to, e.g., the period of participation, the date
-  // of occupancy of a rental, warrently duration, or whether biospecimen
-  // may be used for further research.
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
-
-  //  Extensions for valueInteger
   Element elementValueInteger;
-
-  //  Response to an offer clause or question text,  which enables selection
-  // of values to be agreed to, e.g., the period of participation, the date
-  // of occupancy of a rental, warrently duration, or whether biospecimen
-  // may be used for further research.
   String valueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
-
-  //  Extensions for valueDate
   Element elementValueDate;
-
-  //  Response to an offer clause or question text,  which enables selection
-  // of values to be agreed to, e.g., the period of participation, the date
-  // of occupancy of a rental, warrently duration, or whether biospecimen
-  // may be used for further research.
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for valueDateTime
   Element elementValueDateTime;
-
-  //  Response to an offer clause or question text,  which enables selection
-  // of values to be agreed to, e.g., the period of participation, the date
-  // of occupancy of a rental, warrently duration, or whether biospecimen
-  // may be used for further research.
   String valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
-
-  //  Extensions for valueTime
   Element elementValueTime;
-
-  //  Response to an offer clause or question text,  which enables selection
-  // of values to be agreed to, e.g., the period of participation, the date
-  // of occupancy of a rental, warrently duration, or whether biospecimen
-  // may be used for further research.
   String valueString; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for valueString
   Element elementValueString;
-
-  //  Response to an offer clause or question text,  which enables selection
-  // of values to be agreed to, e.g., the period of participation, the date
-  // of occupancy of a rental, warrently duration, or whether biospecimen
-  // may be used for further research.
   String valueUri; //  pattern: ^\S*$
-
-  //  Extensions for valueUri
   Element elementValueUri;
-
-  //  Response to an offer clause or question text,  which enables selection
-  // of values to be agreed to, e.g., the period of participation, the date
-  // of occupancy of a rental, warrently duration, or whether biospecimen
-  // may be used for further research.
   Attachment valueAttachment;
-
-  //  Response to an offer clause or question text,  which enables selection
-  // of values to be agreed to, e.g., the period of participation, the date
-  // of occupancy of a rental, warrently duration, or whether biospecimen
-  // may be used for further research.
   Coding valueCoding;
-
-  //  Response to an offer clause or question text,  which enables selection
-  // of values to be agreed to, e.g., the period of participation, the date
-  // of occupancy of a rental, warrently duration, or whether biospecimen
-  // may be used for further research.
   Quantity valueQuantity;
-
-  //  Response to an offer clause or question text,  which enables selection
-  // of values to be agreed to, e.g., the period of participation, the date
-  // of occupancy of a rental, warrently duration, or whether biospecimen
-  // may be used for further research.
   Reference valueReference;
 
 Contract_Answer(
@@ -952,93 +730,75 @@ Contract_Answer(
 @JsonSerializable(explicitToJson: true)
 class Contract_Asset {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Contract_Asset> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept scope,
+		List<CodeableConcept> type,
+		List<Reference> typeReference,
+		List<CodeableConcept> subtype,
+		Coding relationship,
+		List<Contract_Context> context,
+		String condition,
+		Element elementCondition,
+		List<CodeableConcept> periodType,
+		List<Period> period,
+		List<Period> usePeriod,
+		String text,
+		Element elementText,
+		List<String> linkId,
+		List<Element> elementLinkId,
+		List<Contract_Answer> answer,
+		List<int> securityLabelNumber,
+		List<Element> elementSecurityLabelNumber,
+		List<Contract_ValuedItem> valuedItem}) async {
+	 return Contract_Asset(
+			id: await newEntry('Contract_Asset'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			scope: scope,
+			type: type,
+			typeReference: typeReference,
+			subtype: subtype,
+			relationship: relationship,
+			context: context,
+			condition: condition,
+			elementCondition: elementCondition,
+			periodType: periodType,
+			period: period,
+			usePeriod: usePeriod,
+			text: text,
+			elementText: elementText,
+			linkId: linkId,
+			elementLinkId: elementLinkId,
+			answer: answer,
+			securityLabelNumber: securityLabelNumber,
+			elementSecurityLabelNumber: elementSecurityLabelNumber,
+			valuedItem: valuedItem);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Differentiates the kind of the asset .
   CodeableConcept scope;
-
-  //  Target entity type about which the term may be concerned.
   List<CodeableConcept> type;
-
-  //  Associated entities.
   List<Reference> typeReference;
-
-  //  May be a subtype or part of an offered asset.
   List<CodeableConcept> subtype;
-
-  //  Specifies the applicability of the term to an asset resource instance,
-  // and instances it refers to orinstances that refer to it, and/or are
-  // owned by the offeree.
   Coding relationship;
-
-  //  Circumstance of the asset.
   List<Contract_Context> context;
-
-  //  Description of the quality and completeness of the asset that imay be
-  // a factor in its valuation.
   String condition;
-
-  //  Extensions for condition
   Element elementCondition;
-
-  //  Type of Asset availability for use or ownership.
   List<CodeableConcept> periodType;
-
-  //  Asset relevant contractual time period.
   List<Period> period;
-
-  //  Time period of asset use.
   List<Period> usePeriod;
-
-  //  Clause or question text (Prose Object) concerning the asset in a
-  // linked form, such as a QuestionnaireResponse used in the formation of
-  // the contract.
   String text;
-
-  //  Extensions for text
   Element elementText;
-
-  //  Id [identifier??] of the clause or question text about the asset in
-  // the referenced form or QuestionnaireResponse.
   List<String> linkId;
-
-  //  Extensions for linkId
   List<Element> elementLinkId;
-
-  //  Response to assets.
   List<Contract_Answer> answer;
-
-  //  Security labels that protects the asset.
   List<int> securityLabelNumber;
-
-  //  Extensions for securityLabelNumber
   List<Element> elementSecurityLabelNumber;
-
-  //  Contract Valued Item List.
   List<Contract_ValuedItem> valuedItem;
 
 Contract_Asset(
@@ -1073,45 +833,30 @@ Contract_Asset(
 @JsonSerializable(explicitToJson: true)
 class Contract_Context {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Contract_Context> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Reference reference,
+		List<CodeableConcept> code,
+		String text,
+		Element elementText}) async {
+	 return Contract_Context(
+			id: await newEntry('Contract_Context'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			reference: reference,
+			code: code,
+			text: text,
+			elementText: elementText);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Asset context reference may include the creator, custodian, or owning
-  // Person or Organization (e.g., bank, repository),  location held, e.g.,
-  // building,  jurisdiction.
   Reference reference;
-
-  //  Coded representation of the context generally or of the Referenced
-  // entity, such as the asset holder type or location.
   List<CodeableConcept> code;
-
-  //  Context description.
   String text;
-
-  //  Extensions for text
   Element elementText;
 
 Contract_Context(
@@ -1131,111 +876,84 @@ Contract_Context(
 @JsonSerializable(explicitToJson: true)
 class Contract_ValuedItem {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Contract_ValuedItem> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept entityCodeableConcept,
+		Reference entityReference,
+		Identifier identifier,
+		DateTime effectiveTime,
+		Element elementEffectiveTime,
+		Quantity quantity,
+		Money unitPrice,
+		double factor,
+		Element elementFactor,
+		double points,
+		Element elementPoints,
+		Money net,
+		String payment,
+		Element elementPayment,
+		DateTime paymentDate,
+		Element elementPaymentDate,
+		Reference responsible,
+		Reference recipient,
+		List<String> linkId,
+		List<Element> elementLinkId,
+		List<int> securityLabelNumber,
+		List<Element> elementSecurityLabelNumber}) async {
+	 return Contract_ValuedItem(
+			id: await newEntry('Contract_ValuedItem'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			entityCodeableConcept: entityCodeableConcept,
+			entityReference: entityReference,
+			identifier: identifier,
+			effectiveTime: effectiveTime,
+			elementEffectiveTime: elementEffectiveTime,
+			quantity: quantity,
+			unitPrice: unitPrice,
+			factor: factor,
+			elementFactor: elementFactor,
+			points: points,
+			elementPoints: elementPoints,
+			net: net,
+			payment: payment,
+			elementPayment: elementPayment,
+			paymentDate: paymentDate,
+			elementPaymentDate: elementPaymentDate,
+			responsible: responsible,
+			recipient: recipient,
+			linkId: linkId,
+			elementLinkId: elementLinkId,
+			securityLabelNumber: securityLabelNumber,
+			elementSecurityLabelNumber: elementSecurityLabelNumber);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Specific type of Contract Valued Item that may be priced.
   CodeableConcept entityCodeableConcept;
-
-  //  Specific type of Contract Valued Item that may be priced.
   Reference entityReference;
-
-  //  Identifies a Contract Valued Item instance.
   Identifier identifier;
-
-  //  Indicates the time during which this Contract ValuedItem information
-  // is effective.
   DateTime effectiveTime;
-
-  //  Extensions for effectiveTime
   Element elementEffectiveTime;
-
-  //  Specifies the units by which the Contract Valued Item is measured or
-  // counted, and quantifies the countable or measurable Contract Valued
-  // Item instances.
   Quantity quantity;
-
-  //  A Contract Valued Item unit valuation measure.
   Money unitPrice;
-
-  //  A real number that represents a multiplier used in determining the
-  // overall value of the Contract Valued Item delivered. The concept of a
-  // Factor allows for a discount or surcharge multiplier to be applied to a
-  // monetary amount.
   double factor;
-
-  //  Extensions for factor
   Element elementFactor;
-
-  //  An amount that expresses the weighting (based on difficulty, cost
-  // and/or resource intensiveness) associated with the Contract Valued Item
-  // delivered. The concept of Points allows for assignment of point values
-  // for a Contract Valued Item, such that a monetary amount can be assigned
-  // to each point.
   double points;
-
-  //  Extensions for points
   Element elementPoints;
-
-  //  Expresses the product of the Contract Valued Item unitQuantity and the
-  // unitPriceAmt. For example, the formula: unit Quantity * unit Price
-  // (Cost per Point) * factor Number  * points = net Amount. Quantity,
-  // factor and points are assumed to be 1 if not supplied.
   Money net;
-
-  //  Terms of valuation.
   String payment;
-
-  //  Extensions for payment
   Element elementPayment;
-
-  //  When payment is due.
   DateTime paymentDate;
-
-  //  Extensions for paymentDate
   Element elementPaymentDate;
-
-  //  Who will make payment.
   Reference responsible;
-
-  //  Who will receive payment.
   Reference recipient;
-
-  //  Id  of the clause or question text related to the context of this
-  // valuedItem in the referenced form or QuestionnaireResponse.
   List<String> linkId;
-
-  //  Extensions for linkId
   List<Element> elementLinkId;
-
-  //  A set of security labels that define which terms are controlled by
-  // this condition.
   List<int> securityLabelNumber;
-
-  //  Extensions for securityLabelNumber
   List<Element> elementSecurityLabelNumber;
 
 Contract_ValuedItem(
@@ -1273,160 +991,128 @@ Contract_ValuedItem(
 @JsonSerializable(explicitToJson: true)
 class Contract_Action {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Contract_Action> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		bool doNotPerform,
+		Element elementDoNotPerform,
+		CodeableConcept type,
+		List<Contract_Subject> subject,
+		CodeableConcept intent,
+		List<String> linkId,
+		List<Element> elementLinkId,
+		CodeableConcept status,
+		Reference context,
+		List<String> contextLinkId,
+		List<Element> elementContextLinkId,
+		String occurrenceDateTime,
+		Element elementOccurrenceDateTime,
+		Period occurrencePeriod,
+		Timing occurrenceTiming,
+		List<Reference> requester,
+		List<String> requesterLinkId,
+		List<Element> elementRequesterLinkId,
+		List<CodeableConcept> performerType,
+		CodeableConcept performerRole,
+		Reference performer,
+		List<String> performerLinkId,
+		List<Element> elementPerformerLinkId,
+		List<CodeableConcept> reasonCode,
+		List<Reference> reasonReference,
+		List<String> reason,
+		List<Element> elementReason,
+		List<String> reasonLinkId,
+		List<Element> elementReasonLinkId,
+		List<Annotation> note,
+		List<int> securityLabelNumber,
+		List<Element> elementSecurityLabelNumber}) async {
+	 return Contract_Action(
+			id: await newEntry('Contract_Action'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			doNotPerform: doNotPerform,
+			elementDoNotPerform: elementDoNotPerform,
+			type: type,
+			subject: subject,
+			intent: intent,
+			linkId: linkId,
+			elementLinkId: elementLinkId,
+			status: status,
+			context: context,
+			contextLinkId: contextLinkId,
+			elementContextLinkId: elementContextLinkId,
+			occurrenceDateTime: occurrenceDateTime,
+			elementOccurrenceDateTime: elementOccurrenceDateTime,
+			occurrencePeriod: occurrencePeriod,
+			occurrenceTiming: occurrenceTiming,
+			requester: requester,
+			requesterLinkId: requesterLinkId,
+			elementRequesterLinkId: elementRequesterLinkId,
+			performerType: performerType,
+			performerRole: performerRole,
+			performer: performer,
+			performerLinkId: performerLinkId,
+			elementPerformerLinkId: elementPerformerLinkId,
+			reasonCode: reasonCode,
+			reasonReference: reasonReference,
+			reason: reason,
+			elementReason: elementReason,
+			reasonLinkId: reasonLinkId,
+			elementReasonLinkId: elementReasonLinkId,
+			note: note,
+			securityLabelNumber: securityLabelNumber,
+			elementSecurityLabelNumber: elementSecurityLabelNumber);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  True if the term prohibits the  action.
   bool doNotPerform;
-
-  //  Extensions for doNotPerform
   Element elementDoNotPerform;
-
-  //  Activity or service obligation to be done or not done, performed or
-  // not performed, effectuated or not by this Contract term.
   CodeableConcept type;
-
-  //  Entity of the action.
   List<Contract_Subject> subject;
-
-  //  Reason or purpose for the action stipulated by this Contract
-  // Provision.
   CodeableConcept intent;
-
-  //  Id [identifier??] of the clause or question text related to this
-  // action in the referenced form or QuestionnaireResponse.
   List<String> linkId;
-
-  //  Extensions for linkId
   List<Element> elementLinkId;
-
-  //  Current state of the term action.
   CodeableConcept status;
-
-  //  Encounter or Episode with primary association to specified term
-  // activity.
   Reference context;
-
-  //  Id [identifier??] of the clause or question text related to the
-  // requester of this action in the referenced form or
-  // QuestionnaireResponse.
   List<String> contextLinkId;
-
-  //  Extensions for contextLinkId
   List<Element> elementContextLinkId;
-
-  //  When action happens.
   String occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for occurrenceDateTime
   Element elementOccurrenceDateTime;
-
-  //  When action happens.
   Period occurrencePeriod;
-
-  //  When action happens.
   Timing occurrenceTiming;
-
-  //  Who or what initiated the action and has responsibility for its
-  // activation.
   List<Reference> requester;
-
-  //  Id [identifier??] of the clause or question text related to the
-  // requester of this action in the referenced form or
-  // QuestionnaireResponse.
   List<String> requesterLinkId;
-
-  //  Extensions for requesterLinkId
   List<Element> elementRequesterLinkId;
-
-  //  The type of individual that is desired or required to perform or not
-  // perform the action.
   List<CodeableConcept> performerType;
-
-  //  The type of role or competency of an individual desired or required to
-  // perform or not perform the action.
   CodeableConcept performerRole;
-
-  //  Indicates who or what is being asked to perform (or not perform) the
-  // ction.
   Reference performer;
-
-  //  Id [identifier??] of the clause or question text related to the reason
-  // type or reference of this  action in the referenced form or
-  // QuestionnaireResponse.
   List<String> performerLinkId;
-
-  //  Extensions for performerLinkId
   List<Element> elementPerformerLinkId;
-
-  //  Rationale for the action to be performed or not performed. Describes
-  // why the action is permitted or prohibited.
   List<CodeableConcept> reasonCode;
-
-  //  Indicates another resource whose existence justifies permitting or not
-  // permitting this action.
   List<Reference> reasonReference;
-
-  //  Describes why the action is to be performed or not performed in
-  // textual form.
   List<String> reason;
-
-  //  Extensions for reason
   List<Element> elementReason;
-
-  //  Id [identifier??] of the clause or question text related to the reason
-  // type or reference of this  action in the referenced form or
-  // QuestionnaireResponse.
   List<String> reasonLinkId;
-
-  //  Extensions for reasonLinkId
   List<Element> elementReasonLinkId;
-
-  //  Comments made about the term action made by the requester, performer,
-  // subject or other participants.
   List<Annotation> note;
-
-  //  Security labels that protects the action.
   List<int> securityLabelNumber;
-
-  //  Extensions for securityLabelNumber
   List<Element> elementSecurityLabelNumber;
 
 Contract_Action(
-  this.type,
-    this.intent,
-    this.status,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.doNotPerform,
     this.elementDoNotPerform,
+    @required this.type,
     this.subject,
+    @required this.intent,
     this.linkId,
     this.elementLinkId,
+    @required this.status,
     this.context,
     this.contextLinkId,
     this.elementContextLinkId,
@@ -1460,43 +1146,31 @@ Contract_Action(
 @JsonSerializable(explicitToJson: true)
 class Contract_Subject {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Contract_Subject> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Reference> reference,
+		CodeableConcept role}) async {
+	 return Contract_Subject(
+			id: await newEntry('Contract_Subject'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			reference: reference,
+			role: role);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The entity the action is performed or not performed on or for.
   List<Reference> reference;
-
-  //  Role type of agent assigned roles in this Contract.
   CodeableConcept role;
 
 Contract_Subject(
-  this.reference,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
+    @required this.reference,
     this.role
     });
 
@@ -1507,48 +1181,36 @@ Contract_Subject(
 @JsonSerializable(explicitToJson: true)
 class Contract_Signer {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Contract_Signer> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Coding type,
+		Reference party,
+		List<Signature> signature}) async {
+	 return Contract_Signer(
+			id: await newEntry('Contract_Signer'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			type: type,
+			party: party,
+			signature: signature);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Role of this Contract signer, e.g. notary, grantee.
   Coding type;
-
-  //  Party which is a signator to this Contract.
   Reference party;
-
-  //  Legally binding Contract DSIG signature contents in Base64.
   List<Signature> signature;
 
 Contract_Signer(
-  this.type,
-    this.party,
-    this.signature,
-    {this.id,
+  {this.id,
     this.extension,
-    this.modifierExtension
+    this.modifierExtension,
+    @required this.type,
+    @required this.party,
+    @required this.signature
     });
 
   factory Contract_Signer.fromJson(Map<String, dynamic> json) => _$Contract_SignerFromJson(json);
@@ -1558,40 +1220,24 @@ Contract_Signer(
 @JsonSerializable(explicitToJson: true)
 class Contract_Friendly {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Contract_Friendly> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Attachment contentAttachment,
+		Reference contentReference}) async {
+	 return Contract_Friendly(
+			id: await newEntry('Contract_Friendly'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			contentAttachment: contentAttachment,
+			contentReference: contentReference);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Human readable rendering of this Contract in a format and
-  // representation intended to enhance comprehension and ensure
-  // understandability.
   Attachment contentAttachment;
-
-  //  Human readable rendering of this Contract in a format and
-  // representation intended to enhance comprehension and ensure
-  // understandability.
   Reference contentReference;
 
 Contract_Friendly(
@@ -1609,36 +1255,24 @@ Contract_Friendly(
 @JsonSerializable(explicitToJson: true)
 class Contract_Legal {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Contract_Legal> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Attachment contentAttachment,
+		Reference contentReference}) async {
+	 return Contract_Legal(
+			id: await newEntry('Contract_Legal'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			contentAttachment: contentAttachment,
+			contentReference: contentReference);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Contract legal text in human renderable form.
   Attachment contentAttachment;
-
-  //  Contract legal text in human renderable form.
   Reference contentReference;
 
 Contract_Legal(
@@ -1656,38 +1290,24 @@ Contract_Legal(
 @JsonSerializable(explicitToJson: true)
 class Contract_Rule {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Contract_Rule> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Attachment contentAttachment,
+		Reference contentReference}) async {
+	 return Contract_Rule(
+			id: await newEntry('Contract_Rule'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			contentAttachment: contentAttachment,
+			contentReference: contentReference);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Computable Contract conveyed using a policy rule language (e.g. XACML,
-  // DKAL, SecPal).
   Attachment contentAttachment;
-
-  //  Computable Contract conveyed using a policy rule language (e.g. XACML,
-  // DKAL, SecPal).
   Reference contentReference;
 
 Contract_Rule(
@@ -2137,9 +1757,6 @@ Map<String, dynamic> _$ContractToJson(Contract instance) => <String, dynamic>{
 Contract_ContentDefinition _$Contract_ContentDefinitionFromJson(
     Map<String, dynamic> json) {
   return Contract_ContentDefinition(
-    json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -2149,6 +1766,9 @@ Contract_ContentDefinition _$Contract_ContentDefinitionFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    type: json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     subType: json['subType'] == null
         ? null
         : CodeableConcept.fromJson(json['subType'] as Map<String, dynamic>),
@@ -2194,9 +1814,6 @@ Map<String, dynamic> _$Contract_ContentDefinitionToJson(
 
 Contract_Term _$Contract_TermFromJson(Map<String, dynamic> json) {
   return Contract_Term(
-    json['offer'] == null
-        ? null
-        : Contract_Offer.fromJson(json['offer'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -2240,6 +1857,9 @@ Contract_Term _$Contract_TermFromJson(Map<String, dynamic> json) {
             ? null
             : Contract_SecurityLabel.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    offer: json['offer'] == null
+        ? null
+        : Contract_Offer.fromJson(json['offer'] as Map<String, dynamic>),
     asset: (json['asset'] as List)
         ?.map((e) => e == null
             ? null
@@ -2285,9 +1905,6 @@ Map<String, dynamic> _$Contract_TermToJson(Contract_Term instance) =>
 Contract_SecurityLabel _$Contract_SecurityLabelFromJson(
     Map<String, dynamic> json) {
   return Contract_SecurityLabel(
-    json['classification'] == null
-        ? null
-        : Coding.fromJson(json['classification'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -2302,6 +1919,9 @@ Contract_SecurityLabel _$Contract_SecurityLabelFromJson(
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    classification: json['classification'] == null
+        ? null
+        : Coding.fromJson(json['classification'] as Map<String, dynamic>),
     category: (json['category'] as List)
         ?.map((e) =>
             e == null ? null : Coding.fromJson(e as Map<String, dynamic>))
@@ -2411,13 +2031,6 @@ Map<String, dynamic> _$Contract_OfferToJson(Contract_Offer instance) =>
 
 Contract_Party _$Contract_PartyFromJson(Map<String, dynamic> json) {
   return Contract_Party(
-    (json['reference'] as List)
-        ?.map((e) =>
-            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    json['role'] == null
-        ? null
-        : CodeableConcept.fromJson(json['role'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -2427,6 +2040,13 @@ Contract_Party _$Contract_PartyFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    reference: (json['reference'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    role: json['role'] == null
+        ? null
+        : CodeableConcept.fromJson(json['role'] as Map<String, dynamic>),
   );
 }
 
@@ -2788,15 +2408,6 @@ Map<String, dynamic> _$Contract_ValuedItemToJson(
 
 Contract_Action _$Contract_ActionFromJson(Map<String, dynamic> json) {
   return Contract_Action(
-    json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
-    json['intent'] == null
-        ? null
-        : CodeableConcept.fromJson(json['intent'] as Map<String, dynamic>),
-    json['status'] == null
-        ? null
-        : CodeableConcept.fromJson(json['status'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -2810,16 +2421,25 @@ Contract_Action _$Contract_ActionFromJson(Map<String, dynamic> json) {
     elementDoNotPerform: json['elementDoNotPerform'] == null
         ? null
         : Element.fromJson(json['elementDoNotPerform'] as Map<String, dynamic>),
+    type: json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     subject: (json['subject'] as List)
         ?.map((e) => e == null
             ? null
             : Contract_Subject.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    intent: json['intent'] == null
+        ? null
+        : CodeableConcept.fromJson(json['intent'] as Map<String, dynamic>),
     linkId: (json['linkId'] as List)?.map((e) => e as String)?.toList(),
     elementLinkId: (json['elementLinkId'] as List)
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    status: json['status'] == null
+        ? null
+        : CodeableConcept.fromJson(json['status'] as Map<String, dynamic>),
     context: json['context'] == null
         ? null
         : Reference.fromJson(json['context'] as Map<String, dynamic>),
@@ -2953,10 +2573,6 @@ Map<String, dynamic> _$Contract_ActionToJson(Contract_Action instance) =>
 
 Contract_Subject _$Contract_SubjectFromJson(Map<String, dynamic> json) {
   return Contract_Subject(
-    (json['reference'] as List)
-        ?.map((e) =>
-            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -2965,6 +2581,10 @@ Contract_Subject _$Contract_SubjectFromJson(Map<String, dynamic> json) {
     modifierExtension: (json['modifierExtension'] as List)
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    reference: (json['reference'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     role: json['role'] == null
         ? null
@@ -2984,16 +2604,6 @@ Map<String, dynamic> _$Contract_SubjectToJson(Contract_Subject instance) =>
 
 Contract_Signer _$Contract_SignerFromJson(Map<String, dynamic> json) {
   return Contract_Signer(
-    json['type'] == null
-        ? null
-        : Coding.fromJson(json['type'] as Map<String, dynamic>),
-    json['party'] == null
-        ? null
-        : Reference.fromJson(json['party'] as Map<String, dynamic>),
-    (json['signature'] as List)
-        ?.map((e) =>
-            e == null ? null : Signature.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -3002,6 +2612,16 @@ Contract_Signer _$Contract_SignerFromJson(Map<String, dynamic> json) {
     modifierExtension: (json['modifierExtension'] as List)
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    type: json['type'] == null
+        ? null
+        : Coding.fromJson(json['type'] as Map<String, dynamic>),
+    party: json['party'] == null
+        ? null
+        : Reference.fromJson(json['party'] as Map<String, dynamic>),
+    signature: (json['signature'] as List)
+        ?.map((e) =>
+            e == null ? null : Signature.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   );
 }

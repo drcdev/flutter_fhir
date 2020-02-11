@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/signature.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -15,148 +18,111 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 166)
 class Provenance {
 
-  //  This is a Provenance resource
+	static Future<Provenance> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Reference> target,
+		Period occurredPeriod,
+		String occurredDateTime,
+		Element elementOccurredDateTime,
+		DateTime recorded,
+		Element elementRecorded,
+		List<String> policy,
+		List<Element> elementPolicy,
+		Reference location,
+		List<CodeableConcept> reason,
+		CodeableConcept activity,
+		List<Provenance_Agent> agent,
+		List<Provenance_Entity> entity,
+		List<Signature> signature}) async {
+	 return Provenance(
+			id: await newEntry('Provenance'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			target: target,
+			occurredPeriod: occurredPeriod,
+			occurredDateTime: occurredDateTime,
+			elementOccurredDateTime: elementOccurredDateTime,
+			recorded: recorded,
+			elementRecorded: elementRecorded,
+			policy: policy,
+			elementPolicy: elementPolicy,
+			location: location,
+			reason: reason,
+			activity: activity,
+			agent: agent,
+			entity: entity,
+			signature: signature);
+	}
+
   @HiveField(0)
   final String resourceType= 'Provenance';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  The Reference(s) that were generated or updated by  the activity
-  // described in this resource. A provenance can point to more than one
-  // target if multiple resources were created/updated by the same activity.
   @HiveField(11)
   List<Reference> target;
-
-  //  The period during which the activity occurred.
   @HiveField(12)
   Period occurredPeriod;
-
-  //  The period during which the activity occurred.
   @HiveField(13)
   String occurredDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for occurredDateTime
   @HiveField(14)
   Element elementOccurredDateTime;
-
-  //  The instant of time at which the activity was recorded.
   @HiveField(15)
   DateTime recorded;
-
-  //  Extensions for recorded
   @HiveField(16)
   Element elementRecorded;
-
-  //  Policy or plan the activity was defined by. Typically, a single
-  // activity may have multiple applicable policy documents, such as patient
-  // consent, guarantor funding, etc.
   @HiveField(17)
   List<String> policy;
-
-  //  Extensions for policy
   @HiveField(18)
   List<Element> elementPolicy;
-
-  //  Where the activity occurred, if relevant.
   @HiveField(19)
   Reference location;
-
-  //  The reason that the activity was taking place.
   @HiveField(20)
   List<CodeableConcept> reason;
-
-  //  An activity is something that occurs over a period of time and acts
-  // upon or with entities; it may include consuming, processing,
-  // transforming, modifying, relocating, using, or generating entities.
   @HiveField(21)
   CodeableConcept activity;
-
-  //  An actor taking a role in an activity  for which it can be assigned
-  // some degree of responsibility for the activity taking place.
   @HiveField(22)
   List<Provenance_Agent> agent;
-
-  //  An entity used in this activity.
   @HiveField(23)
   List<Provenance_Entity> entity;
-
-  //  A digital signature on the target Reference(s). The signer should
-  // match a Provenance.agent. The purpose of the signature is indicated.
   @HiveField(24)
   List<Signature> signature;
 
 Provenance(
-  this.target,
-    this.agent,
-    {this.id,
+  {this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -166,6 +132,7 @@ Provenance(
     this.contained,
     this.extension,
     this.modifierExtension,
+    @required this.target,
     this.occurredPeriod,
     this.occurredDateTime,
     this.elementOccurredDateTime,
@@ -176,6 +143,7 @@ Provenance(
     this.location,
     this.reason,
     this.activity,
+    @required this.agent,
     this.entity,
     this.signature
     });
@@ -187,52 +155,39 @@ Provenance(
 @JsonSerializable(explicitToJson: true)
 class Provenance_Agent {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Provenance_Agent> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept type,
+		List<CodeableConcept> role,
+		Reference who,
+		Reference onBehalfOf}) async {
+	 return Provenance_Agent(
+			id: await newEntry('Provenance_Agent'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			type: type,
+			role: role,
+			who: who,
+			onBehalfOf: onBehalfOf);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The participation the agent had with respect to the activity.
   CodeableConcept type;
-
-  //  The function of the agent with respect to the activity. The security
-  // role enabling the agent with respect to the activity.
   List<CodeableConcept> role;
-
-  //  The individual, device or organization that participated in the event.
   Reference who;
-
-  //  The individual, device, or organization for whom the change was made.
   Reference onBehalfOf;
 
 Provenance_Agent(
-  this.who,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.type,
     this.role,
+    @required this.who,
     this.onBehalfOf
     });
 
@@ -243,55 +198,39 @@ Provenance_Agent(
 @JsonSerializable(explicitToJson: true)
 class Provenance_Entity {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Provenance_Entity> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String role,
+		Element elementRole,
+		Reference what,
+		List<Provenance_Agent> agent}) async {
+	 return Provenance_Entity(
+			id: await newEntry('Provenance_Entity'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			role: role,
+			elementRole: elementRole,
+			what: what,
+			agent: agent);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  How the entity was used during the activity.
   String role; // <code> enum: derivation/revision/quotation/source/removal;
-
-  //  Extensions for role
   Element elementRole;
-
-  //  Identity of the  Entity used. May be a logical or physical uri and
-  // maybe absolute or relative.
   Reference what;
-
-  //  The entity is attributed to an agent to express the agent's
-  // responsibility for that entity, possibly along with other agents. This
-  // description can be understood as shorthand for saying that the agent
-  // was responsible for the activity which generated the entity.
   List<Provenance_Agent> agent;
 
 Provenance_Entity(
-  this.what,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.role,
     this.elementRole,
+    @required this.what,
     this.agent
     });
 
@@ -316,8 +255,6 @@ class ProvenanceAdapter extends TypeAdapter<Provenance> {
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Provenance(
-      (fields[11] as List)?.cast<Reference>(),
-      (fields[22] as List)?.cast<Provenance_Agent>(),
       id: fields[1] as String,
       meta: fields[2] as Meta,
       implicitRules: fields[3] as String,
@@ -328,6 +265,7 @@ class ProvenanceAdapter extends TypeAdapter<Provenance> {
       contained: (fields[8] as List)?.cast<dynamic>(),
       extension: (fields[9] as List)?.cast<Extension>(),
       modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      target: (fields[11] as List)?.cast<Reference>(),
       occurredPeriod: fields[12] as Period,
       occurredDateTime: fields[13] as String,
       elementOccurredDateTime: fields[14] as Element,
@@ -338,6 +276,7 @@ class ProvenanceAdapter extends TypeAdapter<Provenance> {
       location: fields[19] as Reference,
       reason: (fields[20] as List)?.cast<CodeableConcept>(),
       activity: fields[21] as CodeableConcept,
+      agent: (fields[22] as List)?.cast<Provenance_Agent>(),
       entity: (fields[23] as List)?.cast<Provenance_Entity>(),
       signature: (fields[24] as List)?.cast<Signature>(),
     );
@@ -406,15 +345,6 @@ class ProvenanceAdapter extends TypeAdapter<Provenance> {
 
 Provenance _$ProvenanceFromJson(Map<String, dynamic> json) {
   return Provenance(
-    (json['target'] as List)
-        ?.map((e) =>
-            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    (json['agent'] as List)
-        ?.map((e) => e == null
-            ? null
-            : Provenance_Agent.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -442,6 +372,10 @@ Provenance _$ProvenanceFromJson(Map<String, dynamic> json) {
     modifierExtension: (json['modifierExtension'] as List)
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    target: (json['target'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     occurredPeriod: json['occurredPeriod'] == null
         ? null
@@ -473,6 +407,11 @@ Provenance _$ProvenanceFromJson(Map<String, dynamic> json) {
     activity: json['activity'] == null
         ? null
         : CodeableConcept.fromJson(json['activity'] as Map<String, dynamic>),
+    agent: (json['agent'] as List)
+        ?.map((e) => e == null
+            ? null
+            : Provenance_Agent.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     entity: (json['entity'] as List)
         ?.map((e) => e == null
             ? null
@@ -517,9 +456,6 @@ Map<String, dynamic> _$ProvenanceToJson(Provenance instance) =>
 
 Provenance_Agent _$Provenance_AgentFromJson(Map<String, dynamic> json) {
   return Provenance_Agent(
-    json['who'] == null
-        ? null
-        : Reference.fromJson(json['who'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -537,6 +473,9 @@ Provenance_Agent _$Provenance_AgentFromJson(Map<String, dynamic> json) {
             ? null
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    who: json['who'] == null
+        ? null
+        : Reference.fromJson(json['who'] as Map<String, dynamic>),
     onBehalfOf: json['onBehalfOf'] == null
         ? null
         : Reference.fromJson(json['onBehalfOf'] as Map<String, dynamic>),
@@ -557,9 +496,6 @@ Map<String, dynamic> _$Provenance_AgentToJson(Provenance_Agent instance) =>
 
 Provenance_Entity _$Provenance_EntityFromJson(Map<String, dynamic> json) {
   return Provenance_Entity(
-    json['what'] == null
-        ? null
-        : Reference.fromJson(json['what'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -573,6 +509,9 @@ Provenance_Entity _$Provenance_EntityFromJson(Map<String, dynamic> json) {
     elementRole: json['elementRole'] == null
         ? null
         : Element.fromJson(json['elementRole'] as Map<String, dynamic>),
+    what: json['what'] == null
+        ? null
+        : Reference.fromJson(json['what'] as Map<String, dynamic>),
     agent: (json['agent'] as List)
         ?.map((e) => e == null
             ? null

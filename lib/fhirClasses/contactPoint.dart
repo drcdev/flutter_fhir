@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
@@ -9,57 +10,52 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @HiveType(typeId: 38)
 class ContactPoint {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ContactPoint> newInstance({
+		String id,
+		List<Extension> extension,
+		String system,
+		Element elementSystem,
+		String value,
+		Element elementValue,
+		String use,
+		Element elementUse,
+		int rank,
+		Element elementRank,
+		Period period}) async {
+	 return ContactPoint(
+			id: await newEntry('ContactPoint'),
+			extension: extension,
+			system: system,
+			elementSystem: elementSystem,
+			value: value,
+			elementValue: elementValue,
+			use: use,
+			elementUse: elementUse,
+			rank: rank,
+			elementRank: elementRank,
+			period: period);
+	}
+
   @HiveField(0)
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   @HiveField(1)
   List<Extension> extension;
-
-  //  Telecommunications form for contact point - what communications system
-  // is required to make use of the contact.
   @HiveField(2)
   String system; // <code> enum: phone/fax/email/pager/url/sms/other;
-
-  //  Extensions for system
   @HiveField(3)
   Element elementSystem;
-
-  //  The actual contact point details, in a form that is meaningful to the
-  // designated communication system (i.e. phone number or email address).
   @HiveField(4)
   String value;
-
-  //  Extensions for value
   @HiveField(5)
   Element elementValue;
-
-  //  Identifies the purpose for the contact point.
   @HiveField(6)
   String use; // <code> enum: home/work/temp/old/mobile;
-
-  //  Extensions for use
   @HiveField(7)
   Element elementUse;
-
-  //  Specifies a preferred order in which to use a set of contacts.
-  // ContactPoints with lower rank values are more preferred than those with
-  // higher rank values.
   @HiveField(8)
   int rank;
-
-  //  Extensions for rank
   @HiveField(9)
   Element elementRank;
-
-  //  Time period when the contact point was/is in use.
   @HiveField(10)
   Period period;
 

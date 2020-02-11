@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
@@ -12,54 +13,36 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @HiveType(typeId: 39)
 class Timing {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Timing> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<DateTime> event,
+		List<Element> elementEvent,
+		Timing_Repeat repeat,
+		CodeableConcept code}) async {
+	 return Timing(
+			id: await newEntry('Timing'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			event: event,
+			elementEvent: elementEvent,
+			repeat: repeat,
+			code: code);
+	}
+
   @HiveField(0)
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   @HiveField(1)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   @HiveField(2)
   List<Extension> modifierExtension;
-
-  //  Identifies specific times when the event occurs.
   @HiveField(3)
   List<DateTime> event;
-
-  //  Extensions for event
   @HiveField(4)
   List<Element> elementEvent;
-
-  //  A set of rules that describe when the event is scheduled.
   @HiveField(5)
   Timing_Repeat repeat;
-
-  //  A code for the timing schedule (or just text in code.text). Some codes
-  // such as BID are ubiquitous, but many institutions define their own
-  // additional codes. If a code is provided, the code is understood to be a
-  // complete statement of whatever is specified in the structured timing
-  // data, and either the code or the data may be used to interpret the
-  // Timing, with the exception that .repeat.bounds still applies over the
-  // code (and is not contained in the code).
   @HiveField(6)
   CodeableConcept code;
 
@@ -80,148 +63,111 @@ Timing(
 @JsonSerializable(explicitToJson: true)
 class Timing_Repeat {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Timing_Repeat> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Duration boundsDuration,
+		Range boundsRange,
+		Period boundsPeriod,
+		int count,
+		Element elementCount,
+		int countMax,
+		Element elementCountMax,
+		double duration,
+		Element elementDuration,
+		double durationMax,
+		Element elementDurationMax,
+		String durationUnit,
+		Element elementDurationUnit,
+		int frequency,
+		Element elementFrequency,
+		int frequencyMax,
+		Element elementFrequencyMax,
+		double period,
+		Element elementPeriod,
+		double periodMax,
+		Element elementPeriodMax,
+		String periodUnit,
+		Element elementPeriodUnit,
+		List<String> dayOfWeek,
+		List<Element> elementDayOfWeek,
+		List<String> timeOfDay,
+		List<Element> elementTimeOfDay,
+		List<String> when,
+		List<Element> elementWhen,
+		int offset,
+		Element elementOffset}) async {
+	 return Timing_Repeat(
+			id: await newEntry('Timing_Repeat'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			boundsDuration: boundsDuration,
+			boundsRange: boundsRange,
+			boundsPeriod: boundsPeriod,
+			count: count,
+			elementCount: elementCount,
+			countMax: countMax,
+			elementCountMax: elementCountMax,
+			duration: duration,
+			elementDuration: elementDuration,
+			durationMax: durationMax,
+			elementDurationMax: elementDurationMax,
+			durationUnit: durationUnit,
+			elementDurationUnit: elementDurationUnit,
+			frequency: frequency,
+			elementFrequency: elementFrequency,
+			frequencyMax: frequencyMax,
+			elementFrequencyMax: elementFrequencyMax,
+			period: period,
+			elementPeriod: elementPeriod,
+			periodMax: periodMax,
+			elementPeriodMax: elementPeriodMax,
+			periodUnit: periodUnit,
+			elementPeriodUnit: elementPeriodUnit,
+			dayOfWeek: dayOfWeek,
+			elementDayOfWeek: elementDayOfWeek,
+			timeOfDay: timeOfDay,
+			elementTimeOfDay: elementTimeOfDay,
+			when: when,
+			elementWhen: elementWhen,
+			offset: offset,
+			elementOffset: elementOffset);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Either a duration for the length of the timing schedule, a range of
-  // possible length, or outer bounds for start and/or end limits of the
-  // timing schedule.
   Duration boundsDuration;
-
-  //  Either a duration for the length of the timing schedule, a range of
-  // possible length, or outer bounds for start and/or end limits of the
-  // timing schedule.
   Range boundsRange;
-
-  //  Either a duration for the length of the timing schedule, a range of
-  // possible length, or outer bounds for start and/or end limits of the
-  // timing schedule.
   Period boundsPeriod;
-
-  //  A total count of the desired number of repetitions across the duration
-  // of the entire timing specification. If countMax is present, this
-  // element indicates the lower bound of the allowed range of count values.
   int count;
-
-  //  Extensions for count
   Element elementCount;
-
-  //  If present, indicates that the count is a range - so to perform the
-  // action between [count] and [countMax] times.
   int countMax;
-
-  //  Extensions for countMax
   Element elementCountMax;
-
-  //  How long this thing happens for when it happens. If durationMax is
-  // present, this element indicates the lower bound of the allowed range of
-  // the duration.
   double duration;
-
-  //  Extensions for duration
   Element elementDuration;
-
-  //  If present, indicates that the duration is a range - so to perform the
-  // action between [duration] and [durationMax] time length.
   double durationMax;
-
-  //  Extensions for durationMax
   Element elementDurationMax;
-
-  //  The units of time for the duration, in UCUM units.
   String durationUnit; // <code> enum: s/min/h/d/wk/mo/a;
-
-  //  Extensions for durationUnit
   Element elementDurationUnit;
-
-  //  The number of times to repeat the action within the specified period.
-  // If frequencyMax is present, this element indicates the lower bound of
-  // the allowed range of the frequency.
   int frequency;
-
-  //  Extensions for frequency
   Element elementFrequency;
-
-  //  If present, indicates that the frequency is a range - so to repeat
-  // between [frequency] and [frequencyMax] times within the period or
-  // period range.
   int frequencyMax;
-
-  //  Extensions for frequencyMax
   Element elementFrequencyMax;
-
-  //  Indicates the duration of time over which repetitions are to occur;
-  // e.g. to express "3 times per day", 3 would be the frequency and "1 day"
-  // would be the period. If periodMax is present, this element indicates
-  // the lower bound of the allowed range of the period length.
   double period;
-
-  //  Extensions for period
   Element elementPeriod;
-
-  //  If present, indicates that the period is a range from [period] to
-  // [periodMax], allowing expressing concepts such as "do this once every
-  // 3-5 days.
   double periodMax;
-
-  //  Extensions for periodMax
   Element elementPeriodMax;
-
-  //  The units of time for the period in UCUM units.
   String periodUnit; // <code> enum: s/min/h/d/wk/mo/a;
-
-  //  Extensions for periodUnit
   Element elementPeriodUnit;
-
-  //  If one or more days of week is provided, then the action happens only
-  // on the specified day(s).
   List<String> dayOfWeek;
-
-  //  Extensions for dayOfWeek
   List<Element> elementDayOfWeek;
-
-  //  Specified time of day for action to take place.
   List<String> timeOfDay;
-
-  //  Extensions for timeOfDay
   List<Element> elementTimeOfDay;
-
-  //  An approximate time period during the day, potentially linked to an
-  // event of daily living that indicates when the action should occur.
   List<String> when; // <code> enum: MORN/MORN.early/MORN.late/NOON/AFT/AFT.early/AFT.late/EVE/EVE.early/EVE.late/NIGHT/PHS/HS/WAKE/C/CM/CD/CV/AC/ACM/ACD/ACV/PC/PCM/PCD/PCV> when;
-
-  //  Extensions for when
   List<Element> elementWhen;
-
-  //  The number of minutes from the event. If the event code does not
-  // indicate whether the minutes is before or after the event, then the
-  // offset is assumed to be after the event.
   int offset;
-
-  //  Extensions for offset
   Element elementOffset;
 
 Timing_Repeat(

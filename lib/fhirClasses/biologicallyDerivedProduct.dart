@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -15,142 +16,106 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 65)
 class BiologicallyDerivedProduct {
 
-  //  This is a BiologicallyDerivedProduct resource
+	static Future<BiologicallyDerivedProduct> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Identifier> identifier,
+		String productCategory,
+		Element elementProductCategory,
+		CodeableConcept productCode,
+		String status,
+		Element elementStatus,
+		List<Reference> request,
+		int quantity,
+		Element elementQuantity,
+		List<Reference> parent,
+		BiologicallyDerivedProduct_Collection collection,
+		List<BiologicallyDerivedProduct_Processing> processing,
+		BiologicallyDerivedProduct_Manipulation manipulation,
+		List<BiologicallyDerivedProduct_Storage> storage}) async {
+	 return BiologicallyDerivedProduct(
+			id: await newEntry('BiologicallyDerivedProduct'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			productCategory: productCategory,
+			elementProductCategory: elementProductCategory,
+			productCode: productCode,
+			status: status,
+			elementStatus: elementStatus,
+			request: request,
+			quantity: quantity,
+			elementQuantity: elementQuantity,
+			parent: parent,
+			collection: collection,
+			processing: processing,
+			manipulation: manipulation,
+			storage: storage);
+	}
+
   @HiveField(0)
   final String resourceType= 'BiologicallyDerivedProduct';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  This records identifiers associated with this biologically derived
-  // product instance that are defined by business processes and/or used to
-  // refer to it when a direct URL reference to the resource itself is not
-  // appropriate (e.g. in CDA documents, or in written / printed
-  // documentation).
   @HiveField(11)
   List<Identifier> identifier;
-
-  //  Broad category of this product.
   @HiveField(12)
   String productCategory; // <code> enum: organ/tissue/fluid/cells/biologicalAgent;
-
-  //  Extensions for productCategory
   @HiveField(13)
   Element elementProductCategory;
-
-  //  A code that identifies the kind of this biologically derived product
-  // (SNOMED Ctcode).
   @HiveField(14)
   CodeableConcept productCode;
-
-  //  Whether the product is currently available.
   @HiveField(15)
   String status; // <code> enum: available/unavailable;
-
-  //  Extensions for status
   @HiveField(16)
   Element elementStatus;
-
-  //  Procedure request to obtain this biologically derived product.
   @HiveField(17)
   List<Reference> request;
-
-  //  Number of discrete units within this product.
   @HiveField(18)
   int quantity;
-
-  //  Extensions for quantity
   @HiveField(19)
   Element elementQuantity;
-
-  //  Parent product (if any).
   @HiveField(20)
   List<Reference> parent;
-
-  //  How this product was collected.
   @HiveField(21)
   BiologicallyDerivedProduct_Collection collection;
-
-  //  Any processing of the product during collection that does not change
-  // the fundamental nature of the product. For example adding
-  // anti-coagulants during the collection of Peripheral Blood Stem Cells.
   @HiveField(22)
   List<BiologicallyDerivedProduct_Processing> processing;
-
-  //  Any manipulation of product post-collection that is intended to alter
-  // the product.  For example a buffy-coat enrichment or CD8 reduction of
-  // Peripheral Blood Stem Cells to make it more suitable for infusion.
   @HiveField(23)
   BiologicallyDerivedProduct_Manipulation manipulation;
-
-  //  Product storage.
   @HiveField(24)
   List<BiologicallyDerivedProduct_Storage> storage;
 
@@ -188,46 +153,33 @@ BiologicallyDerivedProduct(
 @JsonSerializable(explicitToJson: true)
 class BiologicallyDerivedProduct_Collection {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<BiologicallyDerivedProduct_Collection> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Reference collector,
+		Reference source,
+		String collectedDateTime,
+		Element elementCollectedDateTime,
+		Period collectedPeriod}) async {
+	 return BiologicallyDerivedProduct_Collection(
+			id: await newEntry('BiologicallyDerivedProduct_Collection'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			collector: collector,
+			source: source,
+			collectedDateTime: collectedDateTime,
+			elementCollectedDateTime: elementCollectedDateTime,
+			collectedPeriod: collectedPeriod);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Healthcare professional who is performing the collection.
   Reference collector;
-
-  //  The patient or entity, such as a hospital or vendor in the case of a
-  // processed/manipulated/manufactured product, providing the product.
   Reference source;
-
-  //  Time of product collection.
   String collectedDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for collectedDateTime
   Element elementCollectedDateTime;
-
-  //  Time of product collection.
   Period collectedPeriod;
 
 BiologicallyDerivedProduct_Collection(
@@ -248,51 +200,39 @@ BiologicallyDerivedProduct_Collection(
 @JsonSerializable(explicitToJson: true)
 class BiologicallyDerivedProduct_Processing {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<BiologicallyDerivedProduct_Processing> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String description,
+		Element elementDescription,
+		CodeableConcept procedure,
+		Reference additive,
+		String timeDateTime,
+		Element elementTimeDateTime,
+		Period timePeriod}) async {
+	 return BiologicallyDerivedProduct_Processing(
+			id: await newEntry('BiologicallyDerivedProduct_Processing'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			description: description,
+			elementDescription: elementDescription,
+			procedure: procedure,
+			additive: additive,
+			timeDateTime: timeDateTime,
+			elementTimeDateTime: elementTimeDateTime,
+			timePeriod: timePeriod);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Description of of processing.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  Procesing code.
   CodeableConcept procedure;
-
-  //  Substance added during processing.
   Reference additive;
-
-  //  Time of processing.
   String timeDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for timeDateTime
   Element elementTimeDateTime;
-
-  //  Time of processing.
   Period timePeriod;
 
 BiologicallyDerivedProduct_Processing(
@@ -315,45 +255,33 @@ BiologicallyDerivedProduct_Processing(
 @JsonSerializable(explicitToJson: true)
 class BiologicallyDerivedProduct_Manipulation {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<BiologicallyDerivedProduct_Manipulation> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String description,
+		Element elementDescription,
+		String timeDateTime,
+		Element elementTimeDateTime,
+		Period timePeriod}) async {
+	 return BiologicallyDerivedProduct_Manipulation(
+			id: await newEntry('BiologicallyDerivedProduct_Manipulation'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			description: description,
+			elementDescription: elementDescription,
+			timeDateTime: timeDateTime,
+			elementTimeDateTime: elementTimeDateTime,
+			timePeriod: timePeriod);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Description of manipulation.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  Time of manipulation.
   String timeDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for timeDateTime
   Element elementTimeDateTime;
-
-  //  Time of manipulation.
   Period timePeriod;
 
 BiologicallyDerivedProduct_Manipulation(
@@ -374,51 +302,39 @@ BiologicallyDerivedProduct_Manipulation(
 @JsonSerializable(explicitToJson: true)
 class BiologicallyDerivedProduct_Storage {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<BiologicallyDerivedProduct_Storage> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String description,
+		Element elementDescription,
+		double temperature,
+		Element elementTemperature,
+		String scale,
+		Element elementScale,
+		Period duration}) async {
+	 return BiologicallyDerivedProduct_Storage(
+			id: await newEntry('BiologicallyDerivedProduct_Storage'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			description: description,
+			elementDescription: elementDescription,
+			temperature: temperature,
+			elementTemperature: elementTemperature,
+			scale: scale,
+			elementScale: elementScale,
+			duration: duration);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Description of storage.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  Storage temperature.
   double temperature;
-
-  //  Extensions for temperature
   Element elementTemperature;
-
-  //  Temperature scale used.
   String scale; // <code> enum: farenheit/celsius/kelvin;
-
-  //  Extensions for scale
   Element elementScale;
-
-  //  Storage timeperiod.
   Period duration;
 
 BiologicallyDerivedProduct_Storage(

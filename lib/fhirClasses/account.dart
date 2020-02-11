@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -15,142 +18,106 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 56)
 class Account {
 
-  //  This is a Account resource
+	static Future<Account> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Identifier> identifier,
+		String status,
+		Element elementStatus,
+		CodeableConcept type,
+		String name,
+		Element elementName,
+		List<Reference> subject,
+		Period servicePeriod,
+		List<Account_Coverage> coverage,
+		Reference owner,
+		String description,
+		Element elementDescription,
+		List<Account_Guarantor> guarantor,
+		Reference partOf}) async {
+	 return Account(
+			id: await newEntry('Account'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			status: status,
+			elementStatus: elementStatus,
+			type: type,
+			name: name,
+			elementName: elementName,
+			subject: subject,
+			servicePeriod: servicePeriod,
+			coverage: coverage,
+			owner: owner,
+			description: description,
+			elementDescription: elementDescription,
+			guarantor: guarantor,
+			partOf: partOf);
+	}
+
   @HiveField(0)
   final String resourceType= 'Account';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  Unique identifier used to reference the account.  Might or might not
-  // be intended for human use (e.g. credit card number).
   @HiveField(11)
   List<Identifier> identifier;
-
-  //  Indicates whether the account is presently used/usable or not.
   @HiveField(12)
   String status; // <code> enum: active/inactive/entered-in-error/on-hold/unknown;
-
-  //  Extensions for status
   @HiveField(13)
   Element elementStatus;
-
-  //  Categorizes the account for reporting and searching purposes.
   @HiveField(14)
   CodeableConcept type;
-
-  //  Name used for the account when displaying it to humans in reports,
-  // etc.
   @HiveField(15)
   String name;
-
-  //  Extensions for name
   @HiveField(16)
   Element elementName;
-
-  //  Identifies the entity which incurs the expenses. While the immediate
-  // recipients of services or goods might be entities related to the
-  // subject, the expenses were ultimately incurred by the subject of the
-  // Account.
   @HiveField(17)
   List<Reference> subject;
-
-  //  The date range of services associated with this account.
   @HiveField(18)
   Period servicePeriod;
-
-  //  The party(s) that are responsible for covering the payment of this
-  // account, and what order should they be applied to the account.
   @HiveField(19)
   List<Account_Coverage> coverage;
-
-  //  Indicates the service area, hospital, department, etc. with
-  // responsibility for managing the Account.
   @HiveField(20)
   Reference owner;
-
-  //  Provides additional information about what the account tracks and how
-  // it is used.
   @HiveField(21)
   String description;
-
-  //  Extensions for description
   @HiveField(22)
   Element elementDescription;
-
-  //  The parties responsible for balancing the account if other payment
-  // options fall short.
   @HiveField(23)
   List<Account_Guarantor> guarantor;
-
-  //  Reference to a parent Account.
   @HiveField(24)
   Reference partOf;
 
@@ -188,49 +155,34 @@ Account(
 @JsonSerializable(explicitToJson: true)
 class Account_Coverage {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Account_Coverage> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Reference coverage,
+		int priority,
+		Element elementPriority}) async {
+	 return Account_Coverage(
+			id: await newEntry('Account_Coverage'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			coverage: coverage,
+			priority: priority,
+			elementPriority: elementPriority);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The party(s) that contribute to payment (or part of) of the charges
-  // applied to this account (including self-pay). A coverage may only be
-  // responsible for specific types of charges, and the sequence of the
-  // coverages in the account could be important when processing billing.
   Reference coverage;
-
-  //  The priority of the coverage in the context of this account.
   int priority;
-
-  //  Extensions for priority
   Element elementPriority;
 
 Account_Coverage(
-  this.coverage,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
+    @required this.coverage,
     this.priority,
     this.elementPriority
     });
@@ -242,51 +194,37 @@ Account_Coverage(
 @JsonSerializable(explicitToJson: true)
 class Account_Guarantor {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Account_Guarantor> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Reference party,
+		bool onHold,
+		Element elementOnHold,
+		Period period}) async {
+	 return Account_Guarantor(
+			id: await newEntry('Account_Guarantor'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			party: party,
+			onHold: onHold,
+			elementOnHold: elementOnHold,
+			period: period);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The entity who is responsible.
   Reference party;
-
-  //  A guarantor may be placed on credit hold or otherwise have their role
-  // temporarily suspended.
   bool onHold;
-
-  //  Extensions for onHold
   Element elementOnHold;
-
-  //  The timeframe during which the guarantor accepts responsibility for
-  // the account.
   Period period;
 
 Account_Guarantor(
-  this.party,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
+    @required this.party,
     this.onHold,
     this.elementOnHold,
     this.period
@@ -506,9 +444,6 @@ Map<String, dynamic> _$AccountToJson(Account instance) => <String, dynamic>{
 
 Account_Coverage _$Account_CoverageFromJson(Map<String, dynamic> json) {
   return Account_Coverage(
-    json['coverage'] == null
-        ? null
-        : Reference.fromJson(json['coverage'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -518,6 +453,9 @@ Account_Coverage _$Account_CoverageFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    coverage: json['coverage'] == null
+        ? null
+        : Reference.fromJson(json['coverage'] as Map<String, dynamic>),
     priority: json['priority'] as int,
     elementPriority: json['elementPriority'] == null
         ? null
@@ -538,9 +476,6 @@ Map<String, dynamic> _$Account_CoverageToJson(Account_Coverage instance) =>
 
 Account_Guarantor _$Account_GuarantorFromJson(Map<String, dynamic> json) {
   return Account_Guarantor(
-    json['party'] == null
-        ? null
-        : Reference.fromJson(json['party'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -550,6 +485,9 @@ Account_Guarantor _$Account_GuarantorFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    party: json['party'] == null
+        ? null
+        : Reference.fromJson(json['party'] as Map<String, dynamic>),
     onHold: json['onHold'] as bool,
     elementOnHold: json['elementOnHold'] == null
         ? null

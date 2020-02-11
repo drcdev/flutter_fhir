@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -16,298 +19,214 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 68)
 class CapabilityStatement {
 
-  //  This is a CapabilityStatement resource
+	static Future<CapabilityStatement> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String url,
+		Element elementUrl,
+		String version,
+		Element elementVersion,
+		String name,
+		Element elementName,
+		String title,
+		Element elementTitle,
+		String status,
+		Element elementStatus,
+		bool experimental,
+		Element elementExperimental,
+		DateTime date,
+		Element elementDate,
+		String publisher,
+		Element elementPublisher,
+		List<ContactDetail> contact,
+		String description,
+		Element elementDescription,
+		List<UsageContext> useContext,
+		List<CodeableConcept> jurisdiction,
+		String purpose,
+		Element elementPurpose,
+		String copyright,
+		Element elementCopyright,
+		String kind,
+		Element elementKind,
+		List<String> instantiates,
+		List<String> imports,
+		CapabilityStatement_Software software,
+		CapabilityStatement_Implementation implementation,
+		String fhirVersion,
+		Element elementFhirVersion,
+		List<String> format,
+		List<Element> elementFormat,
+		List<String> patchFormat,
+		List<Element> elementPatchFormat,
+		List<String> implementationGuide,
+		List<CapabilityStatement_Rest> rest,
+		List<CapabilityStatement_Messaging> messaging,
+		List<CapabilityStatement_Document> document}) async {
+	 return CapabilityStatement(
+			id: await newEntry('CapabilityStatement'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			url: url,
+			elementUrl: elementUrl,
+			version: version,
+			elementVersion: elementVersion,
+			name: name,
+			elementName: elementName,
+			title: title,
+			elementTitle: elementTitle,
+			status: status,
+			elementStatus: elementStatus,
+			experimental: experimental,
+			elementExperimental: elementExperimental,
+			date: date,
+			elementDate: elementDate,
+			publisher: publisher,
+			elementPublisher: elementPublisher,
+			contact: contact,
+			description: description,
+			elementDescription: elementDescription,
+			useContext: useContext,
+			jurisdiction: jurisdiction,
+			purpose: purpose,
+			elementPurpose: elementPurpose,
+			copyright: copyright,
+			elementCopyright: elementCopyright,
+			kind: kind,
+			elementKind: elementKind,
+			instantiates: instantiates,
+			imports: imports,
+			software: software,
+			implementation: implementation,
+			fhirVersion: fhirVersion,
+			elementFhirVersion: elementFhirVersion,
+			format: format,
+			elementFormat: elementFormat,
+			patchFormat: patchFormat,
+			elementPatchFormat: elementPatchFormat,
+			implementationGuide: implementationGuide,
+			rest: rest,
+			messaging: messaging,
+			document: document);
+	}
+
   @HiveField(0)
   final String resourceType= 'CapabilityStatement';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  An absolute URI that is used to identify this capability statement
-  // when it is referenced in a specification, model, design or an instance;
-  // also called its canonical identifier. This SHOULD be globally unique
-  // and SHOULD be a literal address at which at which an authoritative
-  // instance of this capability statement is (or will be) published. This
-  // URL can be the target of a canonical reference. It SHALL remain the
-  // same when the capability statement is stored on different servers.
   @HiveField(11)
   String url;
-
-  //  Extensions for url
   @HiveField(12)
   Element elementUrl;
-
-  //  The identifier that is used to identify this version of the capability
-  // statement when it is referenced in a specification, model, design or
-  // instance. This is an arbitrary value managed by the capability
-  // statement author and is not expected to be globally unique. For
-  // example, it might be a timestamp (e.g. yyyymmdd) if a managed version
-  // is not available. There is also no expectation that versions can be
-  // placed in a lexicographical sequence.
   @HiveField(13)
   String version;
-
-  //  Extensions for version
   @HiveField(14)
   Element elementVersion;
-
-  //  A natural language name identifying the capability statement. This
-  // name should be usable as an identifier for the module by machine
-  // processing applications such as code generation.
   @HiveField(15)
   String name;
-
-  //  Extensions for name
   @HiveField(16)
   Element elementName;
-
-  //  A short, descriptive, user-friendly title for the capability
-  // statement.
   @HiveField(17)
   String title;
-
-  //  Extensions for title
   @HiveField(18)
   Element elementTitle;
-
-  //  The status of this capability statement. Enables tracking the
-  // life-cycle of the content.
   @HiveField(19)
   String status; // <code> enum: draft/active/retired/unknown;
-
-  //  Extensions for status
   @HiveField(20)
   Element elementStatus;
-
-  //  A Boolean value to indicate that this capability statement is authored
-  // for testing purposes (or education/evaluation/marketing) and is not
-  // intended to be used for genuine usage.
   @HiveField(21)
   bool experimental;
-
-  //  Extensions for experimental
   @HiveField(22)
   Element elementExperimental;
-
-  //  The date  (and optionally time) when the capability statement was
-  // published. The date must change when the business version changes and
-  // it must change if the status code changes. In addition, it should
-  // change when the substantive content of the capability statement
-  // changes.
   @HiveField(23)
   DateTime date;
-
-  //  Extensions for date
   @HiveField(24)
   Element elementDate;
-
-  //  The name of the organization or individual that published the
-  // capability statement.
   @HiveField(25)
   String publisher;
-
-  //  Extensions for publisher
   @HiveField(26)
   Element elementPublisher;
-
-  //  Contact details to assist a user in finding and communicating with the
-  // publisher.
   @HiveField(27)
   List<ContactDetail> contact;
-
-  //  A free text natural language description of the capability statement
-  // from a consumer's perspective. Typically, this is used when the
-  // capability statement describes a desired rather than an actual
-  // solution, for example as a formal expression of requirements as part of
-  // an RFP.
   @HiveField(28)
   String description;
-
-  //  Extensions for description
   @HiveField(29)
   Element elementDescription;
-
-  //  The content was developed with a focus and intent of supporting the
-  // contexts that are listed. These contexts may be general categories
-  // (gender, age, ...) or may be references to specific programs (insurance
-  // plans, studies, ...) and may be used to assist with indexing and
-  // searching for appropriate capability statement instances.
   @HiveField(30)
   List<UsageContext> useContext;
-
-  //  A legal or geographic region in which the capability statement is
-  // intended to be used.
   @HiveField(31)
   List<CodeableConcept> jurisdiction;
-
-  //  Explanation of why this capability statement is needed and why it has
-  // been designed as it has.
   @HiveField(32)
   String purpose;
-
-  //  Extensions for purpose
   @HiveField(33)
   Element elementPurpose;
-
-  //  A copyright statement relating to the capability statement and/or its
-  // contents. Copyright statements are generally legal restrictions on the
-  // use and publishing of the capability statement.
   @HiveField(34)
   String copyright;
-
-  //  Extensions for copyright
   @HiveField(35)
   Element elementCopyright;
-
-  //  The way that this statement is intended to be used, to describe an
-  // actual running instance of software, a particular product (kind, not
-  // instance of software) or a class of implementation (e.g. a desired
-  // purchase).
   @HiveField(36)
   String kind; // <code> enum: instance/capability/requirements;
-
-  //  Extensions for kind
   @HiveField(37)
   Element elementKind;
-
-  //  Reference to a canonical URL of another CapabilityStatement that this
-  // software implements. This capability statement is a published API
-  // description that corresponds to a business service. The server may
-  // actually implement a subset of the capability statement it claims to
-  // implement, so the capability statement must specify the full capability
-  // details.
   @HiveField(38)
   List<String> instantiates;
-
-  //  Reference to a canonical URL of another CapabilityStatement that this
-  // software adds to. The capability statement automatically includes
-  // everything in the other statement, and it is not duplicated, though the
-  // server may repeat the same resources, interactions and operations to
-  // add additional details to them.
   @HiveField(39)
   List<String> imports;
-
-  //  Software that is covered by this capability statement.  It is used
-  // when the capability statement describes the capabilities of a
-  // particular software version, independent of an installation.
   @HiveField(40)
   CapabilityStatement_Software software;
-
-  //  Identifies a specific implementation instance that is described by the
-  // capability statement - i.e. a particular installation, rather than the
-  // capabilities of a software program.
   @HiveField(41)
   CapabilityStatement_Implementation implementation;
-
-  //  The version of the FHIR specification that this CapabilityStatement
-  // describes (which SHALL be the same as the FHIR version of the
-  // CapabilityStatement itself). There is no default value.
   @HiveField(42)
   String fhirVersion; // <code> enum: 0.01/0.05/0.06/0.11/0.0.80/0.0.81/0.0.82/0.4.0/0.5.0/1.0.0/1.0.1/1.0.2/1.1.0/1.4.0/1.6.0/1.8.0/3.0.0/3.0.1/3.3.0/3.5.0/4.0.0/4.0.1;
-
-  //  Extensions for fhirVersion
   @HiveField(43)
   Element elementFhirVersion;
-
-  //  A list of the formats supported by this implementation using their
-  // content types.
   @HiveField(44)
   List<String> format;
-
-  //  Extensions for format
   @HiveField(45)
   List<Element> elementFormat;
-
-  //  A list of the patch formats supported by this implementation using
-  // their content types.
   @HiveField(46)
   List<String> patchFormat;
-
-  //  Extensions for patchFormat
   @HiveField(47)
   List<Element> elementPatchFormat;
-
-  //  A list of implementation guides that the server does (or should)
-  // support in their entirety.
   @HiveField(48)
   List<String> implementationGuide;
-
-  //  A definition of the restful capabilities of the solution, if any.
   @HiveField(49)
   List<CapabilityStatement_Rest> rest;
-
-  //  A description of the messaging capabilities of the solution.
   @HiveField(50)
   List<CapabilityStatement_Messaging> messaging;
-
-  //  A document definition.
   @HiveField(51)
   List<CapabilityStatement_Document> document;
 
@@ -372,48 +291,36 @@ CapabilityStatement(
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Software {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<CapabilityStatement_Software> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String name,
+		Element elementName,
+		String version,
+		Element elementVersion,
+		DateTime releaseDate,
+		Element elementReleaseDate}) async {
+	 return CapabilityStatement_Software(
+			id: await newEntry('CapabilityStatement_Software'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			name: name,
+			elementName: elementName,
+			version: version,
+			elementVersion: elementVersion,
+			releaseDate: releaseDate,
+			elementReleaseDate: elementReleaseDate);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Name the software is known by.
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  The version identifier for the software covered by this statement.
   String version;
-
-  //  Extensions for version
   Element elementVersion;
-
-  //  Date this version of the software was released.
   DateTime releaseDate;
-
-  //  Extensions for releaseDate
   Element elementReleaseDate;
 
 CapabilityStatement_Software(
@@ -435,48 +342,33 @@ CapabilityStatement_Software(
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Implementation {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<CapabilityStatement_Implementation> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String description,
+		Element elementDescription,
+		String url,
+		Element elementUrl,
+		Reference custodian}) async {
+	 return CapabilityStatement_Implementation(
+			id: await newEntry('CapabilityStatement_Implementation'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			description: description,
+			elementDescription: elementDescription,
+			url: url,
+			elementUrl: elementUrl,
+			custodian: custodian);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Information about the specific installation that this capability
-  // statement relates to.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  An absolute base URL for the implementation.  This forms the base for
-  // REST interfaces as well as the mailbox and document interfaces.
   String url;
-
-  //  Extensions for url
   Element elementUrl;
-
-  //  The organization responsible for the management of the instance and
-  // oversight of the data on the server at the specified URL.
   Reference custodian;
 
 CapabilityStatement_Implementation(
@@ -497,70 +389,48 @@ CapabilityStatement_Implementation(
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Rest {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<CapabilityStatement_Rest> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String mode,
+		Element elementMode,
+		String documentation,
+		Element elementDocumentation,
+		CapabilityStatement_Security security,
+		List<CapabilityStatement_Resource> resource,
+		List<CapabilityStatement_Interaction1> interaction,
+		List<CapabilityStatement_SearchParam> searchParam,
+		List<CapabilityStatement_Operation> operation,
+		List<String> compartment}) async {
+	 return CapabilityStatement_Rest(
+			id: await newEntry('CapabilityStatement_Rest'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			mode: mode,
+			elementMode: elementMode,
+			documentation: documentation,
+			elementDocumentation: elementDocumentation,
+			security: security,
+			resource: resource,
+			interaction: interaction,
+			searchParam: searchParam,
+			operation: operation,
+			compartment: compartment);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Identifies whether this portion of the statement is describing the
-  // ability to initiate or receive restful operations.
   String mode; // <code> enum: client/server;
-
-  //  Extensions for mode
   Element elementMode;
-
-  //  Information about the system's restful capabilities that apply across
-  // all applications, such as security.
   String documentation;
-
-  //  Extensions for documentation
   Element elementDocumentation;
-
-  //  Information about security implementation from an interface
-  // perspective - what a client needs to know.
   CapabilityStatement_Security security;
-
-  //  A specification of the restful capabilities of the solution for a
-  // specific resource type.
   List<CapabilityStatement_Resource> resource;
-
-  //  A specification of restful operations supported by the system.
   List<CapabilityStatement_Interaction1> interaction;
-
-  //  Search parameters that are supported for searching all resources for
-  // implementations to support and/or make use of - either references to
-  // ones defined in the specification, or additional ones defined for/by
-  // the implementation.
   List<CapabilityStatement_SearchParam> searchParam;
-
-  //  Definition of an operation or a named query together with its
-  // parameters and their meaning and type.
   List<CapabilityStatement_Operation> operation;
-
-  //  An absolute URI which is a reference to the definition of a
-  // compartment that the system supports. The reference is to a
-  // CompartmentDefinition resource by its canonical URL .
   List<String> compartment;
 
 CapabilityStatement_Rest(
@@ -586,46 +456,33 @@ CapabilityStatement_Rest(
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Security {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<CapabilityStatement_Security> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		bool cors,
+		Element elementCors,
+		List<CodeableConcept> service,
+		String description,
+		Element elementDescription}) async {
+	 return CapabilityStatement_Security(
+			id: await newEntry('CapabilityStatement_Security'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			cors: cors,
+			elementCors: elementCors,
+			service: service,
+			description: description,
+			elementDescription: elementDescription);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Server adds CORS headers when responding to requests - this enables
-  // Javascript applications to use the server.
   bool cors;
-
-  //  Extensions for cors
   Element elementCors;
-
-  //  Types of security services that are supported/required by the system.
   List<CodeableConcept> service;
-
-  //  General description of how security works.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
 
 CapabilityStatement_Security(
@@ -646,143 +503,105 @@ CapabilityStatement_Security(
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Resource {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<CapabilityStatement_Resource> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String type,
+		Element elementType,
+		String profile,
+		List<String> supportedProfile,
+		String documentation,
+		Element elementDocumentation,
+		List<CapabilityStatement_Interaction> interaction,
+		String versioning,
+		Element elementVersioning,
+		bool readHistory,
+		Element elementReadHistory,
+		bool updateCreate,
+		Element elementUpdateCreate,
+		bool conditionalCreate,
+		Element elementConditionalCreate,
+		String conditionalRead,
+		Element elementConditionalRead,
+		bool conditionalUpdate,
+		Element elementConditionalUpdate,
+		String conditionalDelete,
+		Element elementConditionalDelete,
+		List<String> referencePolicy,
+		List<Element> elementReferencePolicy,
+		List<String> searchInclude,
+		List<Element> elementSearchInclude,
+		List<String> searchRevInclude,
+		List<Element> elementSearchRevInclude,
+		List<CapabilityStatement_SearchParam> searchParam,
+		List<CapabilityStatement_Operation> operation}) async {
+	 return CapabilityStatement_Resource(
+			id: await newEntry('CapabilityStatement_Resource'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			type: type,
+			elementType: elementType,
+			profile: profile,
+			supportedProfile: supportedProfile,
+			documentation: documentation,
+			elementDocumentation: elementDocumentation,
+			interaction: interaction,
+			versioning: versioning,
+			elementVersioning: elementVersioning,
+			readHistory: readHistory,
+			elementReadHistory: elementReadHistory,
+			updateCreate: updateCreate,
+			elementUpdateCreate: elementUpdateCreate,
+			conditionalCreate: conditionalCreate,
+			elementConditionalCreate: elementConditionalCreate,
+			conditionalRead: conditionalRead,
+			elementConditionalRead: elementConditionalRead,
+			conditionalUpdate: conditionalUpdate,
+			elementConditionalUpdate: elementConditionalUpdate,
+			conditionalDelete: conditionalDelete,
+			elementConditionalDelete: elementConditionalDelete,
+			referencePolicy: referencePolicy,
+			elementReferencePolicy: elementReferencePolicy,
+			searchInclude: searchInclude,
+			elementSearchInclude: elementSearchInclude,
+			searchRevInclude: searchRevInclude,
+			elementSearchRevInclude: elementSearchRevInclude,
+			searchParam: searchParam,
+			operation: operation);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A type of resource exposed via the restful interface.
   String type;
-
-  //  Extensions for type
   Element elementType;
-
-  //  A specification of the profile that describes the solution's overall
-  // support for the resource, including any constraints on cardinality,
-  // bindings, lengths or other limitations. See further discussion in
-  // [Using Profiles](profiling.html#profile-uses).
   String profile;
-
-  //  A list of profiles that represent different use cases supported by the
-  // system. For a server, "supported by the system" means the system
-  // hosts/produces a set of resources that are conformant to a particular
-  // profile, and allows clients that use its services to search using this
-  // profile and to find appropriate data. For a client, it means the system
-  // will search by this profile and process data according to the guidance
-  // implicit in the profile. See further discussion in [Using
-  // Profiles](profiling.html#profile-uses).
   List<String> supportedProfile;
-
-  //  Additional information about the resource type used by the system.
   String documentation;
-
-  //  Extensions for documentation
   Element elementDocumentation;
-
-  //  Identifies a restful operation supported by the solution.
   List<CapabilityStatement_Interaction> interaction;
-
-  //  This field is set to no-version to specify that the system does not
-  // support (server) or use (client) versioning for this resource type. If
-  // this has some other value, the server must at least correctly track and
-  // populate the versionId meta-property on resources. If the value is
-  // 'versioned-update', then the server supports all the versioning
-  // features, including using e-tags for version integrity in the API.
   String versioning; // <code> enum: no-version/versioned/versioned-update;
-
-  //  Extensions for versioning
   Element elementVersioning;
-
-  //  A flag for whether the server is able to return past versions as part
-  // of the vRead operation.
   bool readHistory;
-
-  //  Extensions for readHistory
   Element elementReadHistory;
-
-  //  A flag to indicate that the server allows or needs to allow the client
-  // to create new identities on the server (that is, the client PUTs to a
-  // location where there is no existing resource). Allowing this operation
-  // means that the server allows the client to create new identities on the
-  // server.
   bool updateCreate;
-
-  //  Extensions for updateCreate
   Element elementUpdateCreate;
-
-  //  A flag that indicates that the server supports conditional create.
   bool conditionalCreate;
-
-  //  Extensions for conditionalCreate
   Element elementConditionalCreate;
-
-  //  A code that indicates how the server supports conditional read.
   String conditionalRead; // <code> enum: not-supported/modified-since/not-match/full-support;
-
-  //  Extensions for conditionalRead
   Element elementConditionalRead;
-
-  //  A flag that indicates that the server supports conditional update.
   bool conditionalUpdate;
-
-  //  Extensions for conditionalUpdate
   Element elementConditionalUpdate;
-
-  //  A code that indicates how the server supports conditional delete.
   String conditionalDelete; // <code> enum: not-supported/single/multiple;
-
-  //  Extensions for conditionalDelete
   Element elementConditionalDelete;
-
-  //  A set of flags that defines how references are supported.
   List<String> referencePolicy; // <code> enum: literal/logical/resolves/enforced/local> referencePolicy;
-
-  //  Extensions for referencePolicy
   List<Element> elementReferencePolicy;
-
-  //  A list of _include values supported by the server.
   List<String> searchInclude;
-
-  //  Extensions for searchInclude
   List<Element> elementSearchInclude;
-
-  //  A list of _revinclude (reverse include) values supported by the
-  // server.
   List<String> searchRevInclude;
-
-  //  Extensions for searchRevInclude
   List<Element> elementSearchRevInclude;
-
-  //  Search parameters for implementations to support and/or make use of -
-  // either references to ones defined in the specification, or additional
-  // ones defined for/by the implementation.
   List<CapabilityStatement_SearchParam> searchParam;
-
-  //  Definition of an operation or a named query together with its
-  // parameters and their meaning and type. Consult the definition of the
-  // operation for details about how to invoke the operation, and the
-  // parameters.
   List<CapabilityStatement_Operation> operation;
 
 CapabilityStatement_Resource(
@@ -827,44 +646,30 @@ CapabilityStatement_Resource(
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Interaction {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<CapabilityStatement_Interaction> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String code,
+		Element elementCode,
+		String documentation,
+		Element elementDocumentation}) async {
+	 return CapabilityStatement_Interaction(
+			id: await newEntry('CapabilityStatement_Interaction'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			code: code,
+			elementCode: elementCode,
+			documentation: documentation,
+			elementDocumentation: elementDocumentation);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Coded identifier of the operation, supported by the system resource.
   String code; // <code> enum: read/vread/update/patch/delete/history-instance/history-type/create/search-type;
-
-  //  Extensions for code
   Element elementCode;
-
-  //  Guidance specific to the implementation of this operation, such as
-  // 'delete is a logical delete' or 'updates are only allowed with version
-  // id' or 'creates permitted from pre-authorized certificates only'.
   String documentation;
-
-  //  Extensions for documentation
   Element elementDocumentation;
 
 CapabilityStatement_Interaction(
@@ -884,58 +689,39 @@ CapabilityStatement_Interaction(
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_SearchParam {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<CapabilityStatement_SearchParam> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String name,
+		Element elementName,
+		String definition,
+		String type,
+		Element elementType,
+		String documentation,
+		Element elementDocumentation}) async {
+	 return CapabilityStatement_SearchParam(
+			id: await newEntry('CapabilityStatement_SearchParam'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			name: name,
+			elementName: elementName,
+			definition: definition,
+			type: type,
+			elementType: elementType,
+			documentation: documentation,
+			elementDocumentation: elementDocumentation);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The name of the search parameter used in the interface.
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  An absolute URI that is a formal reference to where this parameter was
-  // first defined, so that a client can be confident of the meaning of the
-  // search parameter (a reference to [[[SearchParameter.url]]]). This
-  // element SHALL be populated if the search parameter refers to a
-  // SearchParameter defined by the FHIR core specification or externally
-  // defined IGs.
   String definition;
-
-  //  The type of value a search parameter refers to, and how the content is
-  // interpreted.
   String type; // <code> enum: number/date/string/token/reference/composite/quantity/uri/special;
-
-  //  Extensions for type
   Element elementType;
-
-  //  This allows documentation of any distinct behaviors about how the
-  // search parameter is used.  For example, text matching algorithms.
   String documentation;
-
-  //  Extensions for documentation
   Element elementDocumentation;
 
 CapabilityStatement_SearchParam(
@@ -958,65 +744,42 @@ CapabilityStatement_SearchParam(
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Operation {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<CapabilityStatement_Operation> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String name,
+		Element elementName,
+		String definition,
+		String documentation,
+		Element elementDocumentation}) async {
+	 return CapabilityStatement_Operation(
+			id: await newEntry('CapabilityStatement_Operation'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			name: name,
+			elementName: elementName,
+			definition: definition,
+			documentation: documentation,
+			elementDocumentation: elementDocumentation);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The name of the operation or query. For an operation, this is the name
-  //  prefixed with $ and used in the URL. For a query, this is the name
-  // used in the _query parameter when the query is called.
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  Where the formal definition can be found. If a server references the
-  // base definition of an Operation (i.e. from the specification itself
-  // such as ```http://hl7.org/fhir/OperationDefinition/ValueSet-expand```),
-  // that means it supports the full capabilities of the operation - e.g.
-  // both GET and POST invocation.  If it only supports a subset, it must
-  // define its own custom [[[OperationDefinition]]] with a 'base' of the
-  // original OperationDefinition.  The custom definition would describe the
-  // specific subset of functionality supported.
   String definition;
-
-  //  Documentation that describes anything special about the operation
-  // behavior, possibly detailing different behavior for system, type and
-  // instance-level invocation of the operation.
   String documentation;
-
-  //  Extensions for documentation
   Element elementDocumentation;
 
 CapabilityStatement_Operation(
-  this.definition,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.name,
     this.elementName,
+    @required this.definition,
     this.documentation,
     this.elementDocumentation
     });
@@ -1028,44 +791,30 @@ CapabilityStatement_Operation(
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Interaction1 {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<CapabilityStatement_Interaction1> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String code,
+		Element elementCode,
+		String documentation,
+		Element elementDocumentation}) async {
+	 return CapabilityStatement_Interaction1(
+			id: await newEntry('CapabilityStatement_Interaction1'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			code: code,
+			elementCode: elementCode,
+			documentation: documentation,
+			elementDocumentation: elementDocumentation);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A coded identifier of the operation, supported by the system.
   String code; // <code> enum: transaction/batch/search-system/history-system;
-
-  //  Extensions for code
   Element elementCode;
-
-  //  Guidance specific to the implementation of this operation, such as
-  // limitations on the kind of transactions allowed, or information about
-  // system wide search is implemented.
   String documentation;
-
-  //  Extensions for documentation
   Element elementDocumentation;
 
 CapabilityStatement_Interaction1(
@@ -1085,55 +834,36 @@ CapabilityStatement_Interaction1(
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Messaging {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<CapabilityStatement_Messaging> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<CapabilityStatement_Endpoint> endpoint,
+		int reliableCache,
+		Element elementReliableCache,
+		String documentation,
+		Element elementDocumentation,
+		List<CapabilityStatement_SupportedMessage> supportedMessage}) async {
+	 return CapabilityStatement_Messaging(
+			id: await newEntry('CapabilityStatement_Messaging'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			endpoint: endpoint,
+			reliableCache: reliableCache,
+			elementReliableCache: elementReliableCache,
+			documentation: documentation,
+			elementDocumentation: elementDocumentation,
+			supportedMessage: supportedMessage);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  An endpoint (network accessible address) to which messages and/or
-  // replies are to be sent.
   List<CapabilityStatement_Endpoint> endpoint;
-
-  //  Length if the receiver's reliable messaging cache in minutes (if a
-  // receiver) or how long the cache length on the receiver should be (if a
-  // sender).
   int reliableCache;
-
-  //  Extensions for reliableCache
   Element elementReliableCache;
-
-  //  Documentation about the system's messaging capabilities for this
-  // endpoint not otherwise documented by the capability statement.  For
-  // example, the process for becoming an authorized messaging exchange
-  // partner.
   String documentation;
-
-  //  Extensions for documentation
   Element elementDocumentation;
-
-  //  References to message definitions for messages this system can send or
-  // receive.
   List<CapabilityStatement_SupportedMessage> supportedMessage;
 
 CapabilityStatement_Messaging(
@@ -1155,48 +885,34 @@ CapabilityStatement_Messaging(
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Endpoint {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<CapabilityStatement_Endpoint> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Coding protocol,
+		String address,
+		Element elementAddress}) async {
+	 return CapabilityStatement_Endpoint(
+			id: await newEntry('CapabilityStatement_Endpoint'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			protocol: protocol,
+			address: address,
+			elementAddress: elementAddress);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A list of the messaging transport protocol(s) identifiers, supported
-  // by this endpoint.
   Coding protocol;
-
-  //  The network address of the endpoint. For solutions that do not use
-  // network addresses for routing, it can be just an identifier.
   String address;
-
-  //  Extensions for address
   Element elementAddress;
 
 CapabilityStatement_Endpoint(
-  this.protocol,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
+    @required this.protocol,
     this.address,
     this.elementAddress
     });
@@ -1208,50 +924,36 @@ CapabilityStatement_Endpoint(
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_SupportedMessage {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<CapabilityStatement_SupportedMessage> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String mode,
+		Element elementMode,
+		String definition}) async {
+	 return CapabilityStatement_SupportedMessage(
+			id: await newEntry('CapabilityStatement_SupportedMessage'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			mode: mode,
+			elementMode: elementMode,
+			definition: definition);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The mode of this event declaration - whether application is sender or
-  // receiver.
   String mode; // <code> enum: sender/receiver;
-
-  //  Extensions for mode
   Element elementMode;
-
-  //  Points to a message definition that identifies the messaging event,
-  // message structure, allowed responses, etc.
   String definition;
 
 CapabilityStatement_SupportedMessage(
-  this.definition,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.mode,
-    this.elementMode
+    this.elementMode,
+    @required this.definition
     });
 
   factory CapabilityStatement_SupportedMessage.fromJson(Map<String, dynamic> json) => _$CapabilityStatement_SupportedMessageFromJson(json);
@@ -1261,60 +963,44 @@ CapabilityStatement_SupportedMessage(
 @JsonSerializable(explicitToJson: true)
 class CapabilityStatement_Document {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<CapabilityStatement_Document> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String mode,
+		Element elementMode,
+		String documentation,
+		Element elementDocumentation,
+		String profile}) async {
+	 return CapabilityStatement_Document(
+			id: await newEntry('CapabilityStatement_Document'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			mode: mode,
+			elementMode: elementMode,
+			documentation: documentation,
+			elementDocumentation: elementDocumentation,
+			profile: profile);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Mode of this document declaration - whether an application is a
-  // producer or consumer.
   String mode; // <code> enum: producer/consumer;
-
-  //  Extensions for mode
   Element elementMode;
-
-  //  A description of how the application supports or uses the specified
-  // document profile.  For example, when documents are created, what action
-  // is taken with consumed documents, etc.
   String documentation;
-
-  //  Extensions for documentation
   Element elementDocumentation;
-
-  //  A profile on the document Bundle that constrains which resources are
-  // present, and their contents.
   String profile;
 
 CapabilityStatement_Document(
-  this.profile,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.mode,
     this.elementMode,
     this.documentation,
-    this.elementDocumentation
+    this.elementDocumentation,
+    @required this.profile
     });
 
   factory CapabilityStatement_Document.fromJson(Map<String, dynamic> json) => _$CapabilityStatement_DocumentFromJson(json);
@@ -2122,7 +1808,6 @@ Map<String, dynamic> _$CapabilityStatement_SearchParamToJson(
 CapabilityStatement_Operation _$CapabilityStatement_OperationFromJson(
     Map<String, dynamic> json) {
   return CapabilityStatement_Operation(
-    json['definition'] as String,
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -2136,6 +1821,7 @@ CapabilityStatement_Operation _$CapabilityStatement_OperationFromJson(
     elementName: json['elementName'] == null
         ? null
         : Element.fromJson(json['elementName'] as Map<String, dynamic>),
+    definition: json['definition'] as String,
     documentation: json['documentation'] as String,
     elementDocumentation: json['elementDocumentation'] == null
         ? null
@@ -2250,9 +1936,6 @@ Map<String, dynamic> _$CapabilityStatement_MessagingToJson(
 CapabilityStatement_Endpoint _$CapabilityStatement_EndpointFromJson(
     Map<String, dynamic> json) {
   return CapabilityStatement_Endpoint(
-    json['protocol'] == null
-        ? null
-        : Coding.fromJson(json['protocol'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -2262,6 +1945,9 @@ CapabilityStatement_Endpoint _$CapabilityStatement_EndpointFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    protocol: json['protocol'] == null
+        ? null
+        : Coding.fromJson(json['protocol'] as Map<String, dynamic>),
     address: json['address'] as String,
     elementAddress: json['elementAddress'] == null
         ? null
@@ -2284,7 +1970,6 @@ Map<String, dynamic> _$CapabilityStatement_EndpointToJson(
 CapabilityStatement_SupportedMessage
     _$CapabilityStatement_SupportedMessageFromJson(Map<String, dynamic> json) {
   return CapabilityStatement_SupportedMessage(
-    json['definition'] as String,
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -2298,6 +1983,7 @@ CapabilityStatement_SupportedMessage
     elementMode: json['elementMode'] == null
         ? null
         : Element.fromJson(json['elementMode'] as Map<String, dynamic>),
+    definition: json['definition'] as String,
   );
 }
 
@@ -2316,7 +2002,6 @@ Map<String, dynamic> _$CapabilityStatement_SupportedMessageToJson(
 CapabilityStatement_Document _$CapabilityStatement_DocumentFromJson(
     Map<String, dynamic> json) {
   return CapabilityStatement_Document(
-    json['profile'] as String,
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -2335,6 +2020,7 @@ CapabilityStatement_Document _$CapabilityStatement_DocumentFromJson(
         ? null
         : Element.fromJson(
             json['elementDocumentation'] as Map<String, dynamic>),
+    profile: json['profile'] as String,
   );
 }
 

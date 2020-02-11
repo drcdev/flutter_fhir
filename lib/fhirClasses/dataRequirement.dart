@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/duration.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -13,85 +14,64 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @HiveType(typeId: 43)
 class DataRequirement {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<DataRequirement> newInstance({
+		String id,
+		List<Extension> extension,
+		String type,
+		Element elementType,
+		List<String> profile,
+		CodeableConcept subjectCodeableConcept,
+		Reference subjectReference,
+		List<String> mustSupport,
+		List<Element> elementMustSupport,
+		List<DataRequirement_CodeFilter> codeFilter,
+		List<DataRequirement_DateFilter> dateFilter,
+		int limit,
+		Element elementLimit,
+		List<DataRequirement_Sort> sort}) async {
+	 return DataRequirement(
+			id: await newEntry('DataRequirement'),
+			extension: extension,
+			type: type,
+			elementType: elementType,
+			profile: profile,
+			subjectCodeableConcept: subjectCodeableConcept,
+			subjectReference: subjectReference,
+			mustSupport: mustSupport,
+			elementMustSupport: elementMustSupport,
+			codeFilter: codeFilter,
+			dateFilter: dateFilter,
+			limit: limit,
+			elementLimit: elementLimit,
+			sort: sort);
+	}
+
   @HiveField(0)
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   @HiveField(1)
   List<Extension> extension;
-
-  //  The type of the required data, specified as the type name of a
-  // resource. For profiles, this value is set to the type of the base
-  // resource of the profile.
   @HiveField(2)
   String type;
-
-  //  Extensions for type
   @HiveField(3)
   Element elementType;
-
-  //  The profile of the required data, specified as the uri of the profile
-  // definition.
   @HiveField(4)
   List<String> profile;
-
-  //  The intended subjects of the data requirement. If this element is not
-  // provided, a Patient subject is assumed.
   @HiveField(5)
   CodeableConcept subjectCodeableConcept;
-
-  //  The intended subjects of the data requirement. If this element is not
-  // provided, a Patient subject is assumed.
   @HiveField(6)
   Reference subjectReference;
-
-  //  Indicates that specific elements of the type are referenced by the
-  // knowledge module and must be supported by the consumer in order to
-  // obtain an effective evaluation. This does not mean that a value is
-  // required for this element, only that the consuming system must
-  // understand the element and be able to provide values for it if they are
-  // available.  The value of mustSupport SHALL be a FHIRPath resolveable on
-  // the type of the DataRequirement. The path SHALL consist only of
-  // identifiers, constant indexers, and .resolve() (see the [Simple
-  // FHIRPath Profile](fhirpath.html#simple) for full details).
   @HiveField(7)
   List<String> mustSupport;
-
-  //  Extensions for mustSupport
   @HiveField(8)
   List<Element> elementMustSupport;
-
-  //  Code filters specify additional constraints on the data, specifying
-  // the value set of interest for a particular element of the data. Each
-  // code filter defines an additional constraint on the data, i.e. code
-  // filters are AND'ed, not OR'ed.
   @HiveField(9)
   List<DataRequirement_CodeFilter> codeFilter;
-
-  //  Date filters specify additional constraints on the data in terms of
-  // the applicable date range for specific elements. Each date filter
-  // specifies an additional constraint on the data, i.e. date filters are
-  // AND'ed, not OR'ed.
   @HiveField(10)
   List<DataRequirement_DateFilter> dateFilter;
-
-  //  Specifies a maximum number of results that are required (uses the
-  // _count search parameter).
   @HiveField(11)
   int limit;
-
-  //  Extensions for limit
   @HiveField(12)
   Element elementLimit;
-
-  //  Specifies the order of the results to be returned.
   @HiveField(13)
   List<DataRequirement_Sort> sort;
 
@@ -119,64 +99,36 @@ DataRequirement(
 @JsonSerializable(explicitToJson: true)
 class DataRequirement_CodeFilter {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<DataRequirement_CodeFilter> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String path,
+		Element elementPath,
+		String searchParam,
+		Element elementSearchParam,
+		String valueSet,
+		List<Coding> code}) async {
+	 return DataRequirement_CodeFilter(
+			id: await newEntry('DataRequirement_CodeFilter'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			path: path,
+			elementPath: elementPath,
+			searchParam: searchParam,
+			elementSearchParam: elementSearchParam,
+			valueSet: valueSet,
+			code: code);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The code-valued attribute of the filter. The specified path SHALL be a
-  // FHIRPath resolveable on the specified type of the DataRequirement, and
-  // SHALL consist only of identifiers, constant indexers, and .resolve().
-  // The path is allowed to contain qualifiers (.) to traverse sub-elements,
-  // as well as indexers ([x]) to traverse multiple-cardinality sub-elements
-  // (see the [Simple FHIRPath Profile](fhirpath.html#simple) for full
-  // details). Note that the index must be an integer constant. The path
-  // must resolve to an element of type code, Coding, or CodeableConcept.
   String path;
-
-  //  Extensions for path
   Element elementPath;
-
-  //  A token parameter that refers to a search parameter defined on the
-  // specified type of the DataRequirement, and which searches on elements
-  // of type code, Coding, or CodeableConcept.
   String searchParam;
-
-  //  Extensions for searchParam
   Element elementSearchParam;
-
-  //  The valueset for the code filter. The valueSet and code elements are
-  // additive. If valueSet is specified, the filter will return only those
-  // data items for which the value of the code-valued element specified in
-  // the path is a member of the specified valueset.
   String valueSet;
-
-  //  The codes for the code filter. If values are given, the filter will
-  // return only those data items for which the code-valued attribute
-  // specified by the path has a value that is one of the specified codes.
-  // If codes are specified in addition to a value set, the filter returns
-  // items matching a code in the value set or one of the specified codes.
   List<Coding> code;
 
 DataRequirement_CodeFilter(
@@ -198,79 +150,42 @@ DataRequirement_CodeFilter(
 @JsonSerializable(explicitToJson: true)
 class DataRequirement_DateFilter {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<DataRequirement_DateFilter> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String path,
+		Element elementPath,
+		String searchParam,
+		Element elementSearchParam,
+		String valueDateTime,
+		Element elementValueDateTime,
+		Period valuePeriod,
+		Duration valueDuration}) async {
+	 return DataRequirement_DateFilter(
+			id: await newEntry('DataRequirement_DateFilter'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			path: path,
+			elementPath: elementPath,
+			searchParam: searchParam,
+			elementSearchParam: elementSearchParam,
+			valueDateTime: valueDateTime,
+			elementValueDateTime: elementValueDateTime,
+			valuePeriod: valuePeriod,
+			valueDuration: valueDuration);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The date-valued attribute of the filter. The specified path SHALL be a
-  // FHIRPath resolveable on the specified type of the DataRequirement, and
-  // SHALL consist only of identifiers, constant indexers, and .resolve().
-  // The path is allowed to contain qualifiers (.) to traverse sub-elements,
-  // as well as indexers ([x]) to traverse multiple-cardinality sub-elements
-  // (see the [Simple FHIRPath Profile](fhirpath.html#simple) for full
-  // details). Note that the index must be an integer constant. The path
-  // must resolve to an element of type date, dateTime, Period, Schedule, or
-  // Timing.
   String path;
-
-  //  Extensions for path
   Element elementPath;
-
-  //  A date parameter that refers to a search parameter defined on the
-  // specified type of the DataRequirement, and which searches on elements
-  // of type date, dateTime, Period, Schedule, or Timing.
   String searchParam;
-
-  //  Extensions for searchParam
   Element elementSearchParam;
-
-  //  The value of the filter. If period is specified, the filter will
-  // return only those data items that fall within the bounds determined by
-  // the Period, inclusive of the period boundaries. If dateTime is
-  // specified, the filter will return only those data items that are equal
-  // to the specified dateTime. If a Duration is specified, the filter will
-  // return only those data items that fall within Duration before now.
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for valueDateTime
   Element elementValueDateTime;
-
-  //  The value of the filter. If period is specified, the filter will
-  // return only those data items that fall within the bounds determined by
-  // the Period, inclusive of the period boundaries. If dateTime is
-  // specified, the filter will return only those data items that are equal
-  // to the specified dateTime. If a Duration is specified, the filter will
-  // return only those data items that fall within Duration before now.
   Period valuePeriod;
-
-  //  The value of the filter. If period is specified, the filter will
-  // return only those data items that fall within the bounds determined by
-  // the Period, inclusive of the period boundaries. If dateTime is
-  // specified, the filter will return only those data items that are equal
-  // to the specified dateTime. If a Duration is specified, the filter will
-  // return only those data items that fall within Duration before now.
   Duration valueDuration;
 
 DataRequirement_DateFilter(
@@ -294,46 +209,30 @@ DataRequirement_DateFilter(
 @JsonSerializable(explicitToJson: true)
 class DataRequirement_Sort {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<DataRequirement_Sort> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String path,
+		Element elementPath,
+		String direction,
+		Element elementDirection}) async {
+	 return DataRequirement_Sort(
+			id: await newEntry('DataRequirement_Sort'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			path: path,
+			elementPath: elementPath,
+			direction: direction,
+			elementDirection: elementDirection);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The attribute of the sort. The specified path must be resolvable from
-  // the type of the required data. The path is allowed to contain
-  // qualifiers (.) to traverse sub-elements, as well as indexers ([x]) to
-  // traverse multiple-cardinality sub-elements. Note that the index must be
-  // an integer constant.
   String path;
-
-  //  Extensions for path
   Element elementPath;
-
-  //  The direction of the sort, ascending or descending.
   String direction; // <code> enum: ascending/descending;
-
-  //  Extensions for direction
   Element elementDirection;
 
 DataRequirement_Sort(

@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/signature.dart';
 import 'package:flutter_fhir/fhirClasses/timing.dart';
@@ -15,158 +18,126 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 200)
 class VerificationResult {
 
-  //  This is a VerificationResult resource
+	static Future<VerificationResult> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Reference> target,
+		List<String> targetLocation,
+		List<Element> elementTargetLocation,
+		CodeableConcept need,
+		String status,
+		Element elementStatus,
+		DateTime statusDate,
+		Element elementStatusDate,
+		CodeableConcept validationType,
+		List<CodeableConcept> validationProcess,
+		Timing frequency,
+		DateTime lastPerformed,
+		Element elementLastPerformed,
+		String nextScheduled,
+		Element elementNextScheduled,
+		CodeableConcept failureAction,
+		List<VerificationResult_PrimarySource> primarySource,
+		VerificationResult_Attestation attestation,
+		List<VerificationResult_Validator> validator}) async {
+	 return VerificationResult(
+			id: await newEntry('VerificationResult'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			target: target,
+			targetLocation: targetLocation,
+			elementTargetLocation: elementTargetLocation,
+			need: need,
+			status: status,
+			elementStatus: elementStatus,
+			statusDate: statusDate,
+			elementStatusDate: elementStatusDate,
+			validationType: validationType,
+			validationProcess: validationProcess,
+			frequency: frequency,
+			lastPerformed: lastPerformed,
+			elementLastPerformed: elementLastPerformed,
+			nextScheduled: nextScheduled,
+			elementNextScheduled: elementNextScheduled,
+			failureAction: failureAction,
+			primarySource: primarySource,
+			attestation: attestation,
+			validator: validator);
+	}
+
   @HiveField(0)
   final String resourceType= 'VerificationResult';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  A resource that was validated.
   @HiveField(11)
   List<Reference> target;
-
-  //  The fhirpath location(s) within the resource that was validated.
   @HiveField(12)
   List<String> targetLocation;
-
-  //  Extensions for targetLocation
   @HiveField(13)
   List<Element> elementTargetLocation;
-
-  //  The frequency with which the target must be validated (none; initial;
-  // periodic).
   @HiveField(14)
   CodeableConcept need;
-
-  //  The validation status of the target (attested; validated; in process;
-  // requires revalidation; validation failed; revalidation failed).
   @HiveField(15)
   String status;
-
-  //  Extensions for status
   @HiveField(16)
   Element elementStatus;
-
-  //  When the validation status was updated.
   @HiveField(17)
   DateTime statusDate;
-
-  //  Extensions for statusDate
   @HiveField(18)
   Element elementStatusDate;
-
-  //  What the target is validated against (nothing; primary source;
-  // multiple sources).
   @HiveField(19)
   CodeableConcept validationType;
-
-  //  The primary process by which the target is validated (edit check;
-  // value set; primary source; multiple sources; standalone; in context).
   @HiveField(20)
   List<CodeableConcept> validationProcess;
-
-  //  Frequency of revalidation.
   @HiveField(21)
   Timing frequency;
-
-  //  The date/time validation was last completed (including failed
-  // validations).
   @HiveField(22)
   DateTime lastPerformed;
-
-  //  Extensions for lastPerformed
   @HiveField(23)
   Element elementLastPerformed;
-
-  //  The date when target is next validated, if appropriate.
   @HiveField(24)
   String nextScheduled;
-
-  //  Extensions for nextScheduled
   @HiveField(25)
   Element elementNextScheduled;
-
-  //  The result if validation fails (fatal; warning; record only; none).
   @HiveField(26)
   CodeableConcept failureAction;
-
-  //  Information about the primary source(s) involved in validation.
   @HiveField(27)
   List<VerificationResult_PrimarySource> primarySource;
-
-  //  Information about the entity attesting to information.
   @HiveField(28)
   VerificationResult_Attestation attestation;
-
-  //  Information about the entity validating information.
   @HiveField(29)
   List<VerificationResult_Validator> validator;
 
@@ -209,59 +180,42 @@ VerificationResult(
 @JsonSerializable(explicitToJson: true)
 class VerificationResult_PrimarySource {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<VerificationResult_PrimarySource> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Reference who,
+		List<CodeableConcept> type,
+		List<CodeableConcept> communicationMethod,
+		CodeableConcept validationStatus,
+		DateTime validationDate,
+		Element elementValidationDate,
+		CodeableConcept canPushUpdates,
+		List<CodeableConcept> pushTypeAvailable}) async {
+	 return VerificationResult_PrimarySource(
+			id: await newEntry('VerificationResult_PrimarySource'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			who: who,
+			type: type,
+			communicationMethod: communicationMethod,
+			validationStatus: validationStatus,
+			validationDate: validationDate,
+			elementValidationDate: elementValidationDate,
+			canPushUpdates: canPushUpdates,
+			pushTypeAvailable: pushTypeAvailable);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Reference to the primary source.
   Reference who;
-
-  //  Type of primary source (License Board; Primary Education; Continuing
-  // Education; Postal Service; Relationship owner; Registration Authority;
-  // legal source; issuing source; authoritative source).
   List<CodeableConcept> type;
-
-  //  Method for communicating with the primary source (manual; API; Push).
   List<CodeableConcept> communicationMethod;
-
-  //  Status of the validation of the target against the primary source
-  // (successful; failed; unknown).
   CodeableConcept validationStatus;
-
-  //  When the target was validated against the primary source.
   DateTime validationDate;
-
-  //  Extensions for validationDate
   Element elementValidationDate;
-
-  //  Ability of the primary source to push updates/alerts (yes; no;
-  // undetermined).
   CodeableConcept canPushUpdates;
-
-  //  Type of alerts/updates the primary source can send (specific requested
-  // changes; any changes; as defined by source).
   List<CodeableConcept> pushTypeAvailable;
 
 VerificationResult_PrimarySource(
@@ -285,69 +239,51 @@ VerificationResult_PrimarySource(
 @JsonSerializable(explicitToJson: true)
 class VerificationResult_Attestation {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<VerificationResult_Attestation> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Reference who,
+		Reference onBehalfOf,
+		CodeableConcept communicationMethod,
+		String date,
+		Element elementDate,
+		String sourceIdentityCertificate,
+		Element elementSourceIdentityCertificate,
+		String proxyIdentityCertificate,
+		Element elementProxyIdentityCertificate,
+		Signature proxySignature,
+		Signature sourceSignature}) async {
+	 return VerificationResult_Attestation(
+			id: await newEntry('VerificationResult_Attestation'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			who: who,
+			onBehalfOf: onBehalfOf,
+			communicationMethod: communicationMethod,
+			date: date,
+			elementDate: elementDate,
+			sourceIdentityCertificate: sourceIdentityCertificate,
+			elementSourceIdentityCertificate: elementSourceIdentityCertificate,
+			proxyIdentityCertificate: proxyIdentityCertificate,
+			elementProxyIdentityCertificate: elementProxyIdentityCertificate,
+			proxySignature: proxySignature,
+			sourceSignature: sourceSignature);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The individual or organization attesting to information.
   Reference who;
-
-  //  When the who is asserting on behalf of another (organization or
-  // individual).
   Reference onBehalfOf;
-
-  //  The method by which attested information was submitted/retrieved
-  // (manual; API; Push).
   CodeableConcept communicationMethod;
-
-  //  The date the information was attested to.
   String date;
-
-  //  Extensions for date
   Element elementDate;
-
-  //  A digital identity certificate associated with the attestation source.
   String sourceIdentityCertificate;
-
-  //  Extensions for sourceIdentityCertificate
   Element elementSourceIdentityCertificate;
-
-  //  A digital identity certificate associated with the proxy entity
-  // submitting attested information on behalf of the attestation source.
   String proxyIdentityCertificate;
-
-  //  Extensions for proxyIdentityCertificate
   Element elementProxyIdentityCertificate;
-
-  //  Signed assertion by the proxy entity indicating that they have the
-  // right to submit attested information on behalf of the attestation
-  // source.
   Signature proxySignature;
-
-  //  Signed assertion by the attestation source that they have attested to
-  // the information.
   Signature sourceSignature;
 
 VerificationResult_Attestation(
@@ -374,50 +310,37 @@ VerificationResult_Attestation(
 @JsonSerializable(explicitToJson: true)
 class VerificationResult_Validator {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<VerificationResult_Validator> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Reference organization,
+		String identityCertificate,
+		Element elementIdentityCertificate,
+		Signature attestationSignature}) async {
+	 return VerificationResult_Validator(
+			id: await newEntry('VerificationResult_Validator'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			organization: organization,
+			identityCertificate: identityCertificate,
+			elementIdentityCertificate: elementIdentityCertificate,
+			attestationSignature: attestationSignature);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Reference to the organization validating information.
   Reference organization;
-
-  //  A digital identity certificate associated with the validator.
   String identityCertificate;
-
-  //  Extensions for identityCertificate
   Element elementIdentityCertificate;
-
-  //  Signed assertion by the validator that they have validated the
-  // information.
   Signature attestationSignature;
 
 VerificationResult_Validator(
-  this.organization,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
+    @required this.organization,
     this.identityCertificate,
     this.elementIdentityCertificate,
     this.attestationSignature
@@ -823,9 +746,6 @@ Map<String, dynamic> _$VerificationResult_AttestationToJson(
 VerificationResult_Validator _$VerificationResult_ValidatorFromJson(
     Map<String, dynamic> json) {
   return VerificationResult_Validator(
-    json['organization'] == null
-        ? null
-        : Reference.fromJson(json['organization'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -835,6 +755,9 @@ VerificationResult_Validator _$VerificationResult_ValidatorFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    organization: json['organization'] == null
+        ? null
+        : Reference.fromJson(json['organization'] as Map<String, dynamic>),
     identityCertificate: json['identityCertificate'] as String,
     elementIdentityCertificate: json['elementIdentityCertificate'] == null
         ? null

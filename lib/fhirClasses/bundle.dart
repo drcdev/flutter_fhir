@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/resourceList.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -12,83 +13,74 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 67)
 class Bundle {
 
-  //  This is a Bundle resource
+	static Future<Bundle> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Identifier identifier,
+		String type,
+		Element elementType,
+		DateTime timestamp,
+		Element elementTimestamp,
+		int total,
+		Element elementTotal,
+		List<Bundle_Link> link,
+		List<Bundle_Entry> entry,
+		Signature signature}) async {
+	 return Bundle(
+			id: await newEntry('Bundle'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			identifier: identifier,
+			type: type,
+			elementType: elementType,
+			timestamp: timestamp,
+			elementTimestamp: elementTimestamp,
+			total: total,
+			elementTotal: elementTotal,
+			link: link,
+			entry: entry,
+			signature: signature);
+	}
+
   @HiveField(0)
   final String resourceType= 'Bundle';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A persistent identifier for the bundle that won't change as a bundle
-  // is copied from server to server.
   @HiveField(7)
   Identifier identifier;
-
-  //  Indicates the purpose of this bundle - how it is intended to be used.
   @HiveField(8)
   String type; // <code> enum: document/message/transaction/transaction-response/batch/batch-response/history/searchset/collection;
-
-  //  Extensions for type
   @HiveField(9)
   Element elementType;
-
-  //  The date/time that the bundle was assembled - i.e. when the resources
-  // were placed in the bundle.
   @HiveField(10)
   DateTime timestamp;
-
-  //  Extensions for timestamp
   @HiveField(11)
   Element elementTimestamp;
-
-  //  If a set of search matches, this is the total number of entries of
-  // type 'match' across all pages in the search.  It does not include
-  // search.mode = 'include' or 'outcome' entries and it does not provide a
-  // count of the number of entries in the Bundle.
   @HiveField(12)
   int total;
-
-  //  Extensions for total
   @HiveField(13)
   Element elementTotal;
-
-  //  A series of links that provide context to this bundle.
   @HiveField(14)
   List<Bundle_Link> link;
-
-  //  An entry in a bundle resource - will either contain a resource or
-  // information about a resource (transactions and history only).
   @HiveField(15)
   List<Bundle_Entry> entry;
-
-  //  Digital Signature - base64 encoded. XML-DSig or a JWT.
   @HiveField(16)
   Signature signature;
 
@@ -118,43 +110,30 @@ Bundle(
 @JsonSerializable(explicitToJson: true)
 class Bundle_Link {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Bundle_Link> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String relation,
+		Element elementRelation,
+		String url,
+		Element elementUrl}) async {
+	 return Bundle_Link(
+			id: await newEntry('Bundle_Link'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			relation: relation,
+			elementRelation: elementRelation,
+			url: url,
+			elementUrl: elementUrl);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A name which details the functional use for this link - see
-  // [http://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1](http://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1).
   String relation;
-
-  //  Extensions for relation
   Element elementRelation;
-
-  //  The reference details for the link.
   String url;
-
-  //  Extensions for url
   Element elementUrl;
 
 Bundle_Link(
@@ -174,64 +153,39 @@ Bundle_Link(
 @JsonSerializable(explicitToJson: true)
 class Bundle_Entry {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Bundle_Entry> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Bundle_Link> link,
+		String fullUrl,
+		Element elementFullUrl,
+		dynamic resource,
+		Bundle_Search search,
+		Bundle_Request request,
+		Bundle_Response response}) async {
+	 return Bundle_Entry(
+			id: await newEntry('Bundle_Entry'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			link: link,
+			fullUrl: fullUrl,
+			elementFullUrl: elementFullUrl,
+			resource: resource,
+			search: search,
+			request: request,
+			response: response);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A series of links that provide context to this entry.
   List<Bundle_Link> link;
-
-  //  The Absolute URL for the resource.  The fullUrl SHALL NOT disagree
-  // with the id in the resource - i.e. if the fullUrl is not a urn:uuid,
-  // the URL shall be version-independent URL consistent with the
-  // Resource.id. The fullUrl is a version independent reference to the
-  // resource. The fullUrl element SHALL have a value except that:  *
-  // fullUrl can be empty on a POST (although it does not need to when
-  // specifying a temporary id for reference in the bundle) * Results from
-  // operations might involve resources that are not identified.
   String fullUrl;
-
-  //  Extensions for fullUrl
   Element elementFullUrl;
-
-  //  The Resource for the entry. The purpose/meaning of the resource is
-  // determined by the Bundle.type.
   dynamic resource;
-
-  //  Information about the search process that lead to the creation of this
-  // entry.
   Bundle_Search search;
-
-  //  Additional information about how this entry should be processed as
-  // part of a transaction or batch.  For history, it shows how the entry
-  // was processed to create the version contained in the entry.
   Bundle_Request request;
-
-  //  Indicates the results of processing the corresponding 'request' entry
-  // in the batch or transaction being responded to or what the results of
-  // an operation where when returning history.
   Bundle_Response response;
 
 Bundle_Entry(
@@ -254,44 +208,30 @@ Bundle_Entry(
 @JsonSerializable(explicitToJson: true)
 class Bundle_Search {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Bundle_Search> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String mode,
+		Element elementMode,
+		double score,
+		Element elementScore}) async {
+	 return Bundle_Search(
+			id: await newEntry('Bundle_Search'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			mode: mode,
+			elementMode: elementMode,
+			score: score,
+			elementScore: elementScore);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Why this entry is in the result set - whether it's included as a match
-  // or because of an _include requirement, or to convey information or
-  // warning information about the search process.
   String mode; // <code> enum: match/include/outcome;
-
-  //  Extensions for mode
   Element elementMode;
-
-  //  When searching, the server's search ranking score for the entry.
   double score;
-
-  //  Extensions for score
   Element elementScore;
 
 Bundle_Search(
@@ -311,76 +251,54 @@ Bundle_Search(
 @JsonSerializable(explicitToJson: true)
 class Bundle_Request {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Bundle_Request> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String method,
+		Element elementMethod,
+		String url,
+		Element elementUrl,
+		String ifNoneMatch,
+		Element elementIfNoneMatch,
+		DateTime ifModifiedSince,
+		Element elementIfModifiedSince,
+		String ifMatch,
+		Element elementIfMatch,
+		String ifNoneExist,
+		Element elementIfNoneExist}) async {
+	 return Bundle_Request(
+			id: await newEntry('Bundle_Request'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			method: method,
+			elementMethod: elementMethod,
+			url: url,
+			elementUrl: elementUrl,
+			ifNoneMatch: ifNoneMatch,
+			elementIfNoneMatch: elementIfNoneMatch,
+			ifModifiedSince: ifModifiedSince,
+			elementIfModifiedSince: elementIfModifiedSince,
+			ifMatch: ifMatch,
+			elementIfMatch: elementIfMatch,
+			ifNoneExist: ifNoneExist,
+			elementIfNoneExist: elementIfNoneExist);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  In a transaction or batch, this is the HTTP action to be executed for
-  // this entry. In a history bundle, this indicates the HTTP action that
-  // occurred.
   String method; // <code> enum: GET/HEAD/POST/PUT/DELETE/PATCH;
-
-  //  Extensions for method
   Element elementMethod;
-
-  //  The URL for this entry, relative to the root (the address to which the
-  // request is posted).
   String url;
-
-  //  Extensions for url
   Element elementUrl;
-
-  //  If the ETag values match, return a 304 Not Modified status. See the
-  // API documentation for ["Conditional Read"](http.html#cread).
   String ifNoneMatch;
-
-  //  Extensions for ifNoneMatch
   Element elementIfNoneMatch;
-
-  //  Only perform the operation if the last updated date matches. See the
-  // API documentation for ["Conditional Read"](http.html#cread).
   DateTime ifModifiedSince;
-
-  //  Extensions for ifModifiedSince
   Element elementIfModifiedSince;
-
-  //  Only perform the operation if the Etag value matches. For more
-  // information, see the API section ["Managing Resource
-  // Contention"](http.html#concurrency).
   String ifMatch;
-
-  //  Extensions for ifMatch
   Element elementIfMatch;
-
-  //  Instruct the server not to perform the create if a specified resource
-  // already exists. For further information, see the API documentation for
-  // ["Conditional Create"](http.html#ccreate). This is just the query
-  // portion of the URL - what follows the "?" (not including the "?").
   String ifNoneExist;
-
-  //  Extensions for ifNoneExist
   Element elementIfNoneExist;
 
 Bundle_Request(
@@ -408,64 +326,45 @@ Bundle_Request(
 @JsonSerializable(explicitToJson: true)
 class Bundle_Response {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Bundle_Response> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String status,
+		Element elementStatus,
+		String location,
+		Element elementLocation,
+		String etag,
+		Element elementEtag,
+		DateTime lastModified,
+		Element elementLastModified,
+		dynamic outcome}) async {
+	 return Bundle_Response(
+			id: await newEntry('Bundle_Response'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			status: status,
+			elementStatus: elementStatus,
+			location: location,
+			elementLocation: elementLocation,
+			etag: etag,
+			elementEtag: elementEtag,
+			lastModified: lastModified,
+			elementLastModified: elementLastModified,
+			outcome: outcome);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The status code returned by processing this entry. The status SHALL
-  // start with a 3 digit HTTP code (e.g. 404) and may contain the standard
-  // HTTP description associated with the status code.
   String status;
-
-  //  Extensions for status
   Element elementStatus;
-
-  //  The location header created by processing this operation, populated if
-  // the operation returns a location.
   String location;
-
-  //  Extensions for location
   Element elementLocation;
-
-  //  The Etag for the resource, if the operation for the entry produced a
-  // versioned resource (see [Resource Metadata and
-  // Versioning](http.html#versioning) and [Managing Resource
-  // Contention](http.html#concurrency)).
   String etag;
-
-  //  Extensions for etag
   Element elementEtag;
-
-  //  The date/time that the resource was modified on the server.
   DateTime lastModified;
-
-  //  Extensions for lastModified
   Element elementLastModified;
-
-  //  An OperationOutcome containing hints and warnings produced as part of
-  // processing this entry in a batch or transaction.
   dynamic outcome;
 
 Bundle_Response(

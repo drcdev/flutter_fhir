@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/ratio.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -15,113 +18,83 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 140)
 class MedicinalProductIngredient {
 
-  //  This is a MedicinalProductIngredient resource
+	static Future<MedicinalProductIngredient> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Identifier identifier,
+		CodeableConcept role,
+		bool allergenicIndicator,
+		Element elementAllergenicIndicator,
+		List<Reference> manufacturer,
+		List<MedicinalProductIngredient_SpecifiedSubstance> specifiedSubstance,
+		MedicinalProductIngredient_Substance substance}) async {
+	 return MedicinalProductIngredient(
+			id: await newEntry('MedicinalProductIngredient'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			role: role,
+			allergenicIndicator: allergenicIndicator,
+			elementAllergenicIndicator: elementAllergenicIndicator,
+			manufacturer: manufacturer,
+			specifiedSubstance: specifiedSubstance,
+			substance: substance);
+	}
+
   @HiveField(0)
   final String resourceType= 'MedicinalProductIngredient';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  The identifier(s) of this Ingredient that are assigned by business
-  // processes and/or used to refer to it when a direct URL reference to the
-  // resource itself is not appropriate.
   @HiveField(11)
   Identifier identifier;
-
-  //  Ingredient role e.g. Active ingredient, excipient.
   @HiveField(12)
   CodeableConcept role;
-
-  //  If the ingredient is a known or suspected allergen.
   @HiveField(13)
   bool allergenicIndicator;
-
-  //  Extensions for allergenicIndicator
   @HiveField(14)
   Element elementAllergenicIndicator;
-
-  //  Manufacturer of this Ingredient.
   @HiveField(15)
   List<Reference> manufacturer;
-
-  //  A specified substance that comprises this ingredient.
   @HiveField(16)
   List<MedicinalProductIngredient_SpecifiedSubstance> specifiedSubstance;
-
-  //  The ingredient substance.
   @HiveField(17)
   MedicinalProductIngredient_Substance substance;
 
 MedicinalProductIngredient(
-  this.role,
-    {this.id,
+  {this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -132,6 +105,7 @@ MedicinalProductIngredient(
     this.extension,
     this.modifierExtension,
     this.identifier,
+    @required this.role,
     this.allergenicIndicator,
     this.elementAllergenicIndicator,
     this.manufacturer,
@@ -146,51 +120,38 @@ MedicinalProductIngredient(
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductIngredient_SpecifiedSubstance {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<MedicinalProductIngredient_SpecifiedSubstance> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept code,
+		CodeableConcept group,
+		CodeableConcept confidentiality,
+		List<MedicinalProductIngredient_Strength> strength}) async {
+	 return MedicinalProductIngredient_SpecifiedSubstance(
+			id: await newEntry('MedicinalProductIngredient_SpecifiedSubstance'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			code: code,
+			group: group,
+			confidentiality: confidentiality,
+			strength: strength);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The specified substance.
   CodeableConcept code;
-
-  //  The group of specified substance, e.g. group 1 to 4.
   CodeableConcept group;
-
-  //  Confidentiality level of the specified substance as the ingredient.
   CodeableConcept confidentiality;
-
-  //  Quantity of the substance or specified substance present in the
-  // manufactured item or pharmaceutical product.
   List<MedicinalProductIngredient_Strength> strength;
 
 MedicinalProductIngredient_SpecifiedSubstance(
-  this.code,
-    this.group,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
+    @required this.code,
+    @required this.group,
     this.confidentiality,
     this.strength
     });
@@ -202,67 +163,49 @@ MedicinalProductIngredient_SpecifiedSubstance(
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductIngredient_Strength {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<MedicinalProductIngredient_Strength> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Ratio presentation,
+		Ratio presentationLowLimit,
+		Ratio concentration,
+		Ratio concentrationLowLimit,
+		String measurementPoint,
+		Element elementMeasurementPoint,
+		List<CodeableConcept> country,
+		List<MedicinalProductIngredient_ReferenceStrength> referenceStrength}) async {
+	 return MedicinalProductIngredient_Strength(
+			id: await newEntry('MedicinalProductIngredient_Strength'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			presentation: presentation,
+			presentationLowLimit: presentationLowLimit,
+			concentration: concentration,
+			concentrationLowLimit: concentrationLowLimit,
+			measurementPoint: measurementPoint,
+			elementMeasurementPoint: elementMeasurementPoint,
+			country: country,
+			referenceStrength: referenceStrength);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The quantity of substance in the unit of presentation, or in the
-  // volume (or mass) of the single pharmaceutical product or manufactured
-  // item.
   Ratio presentation;
-
-  //  A lower limit for the quantity of substance in the unit of
-  // presentation. For use when there is a range of strengths, this is the
-  // lower limit, with the presentation attribute becoming the upper limit.
   Ratio presentationLowLimit;
-
-  //  The strength per unitary volume (or mass).
   Ratio concentration;
-
-  //  A lower limit for the strength per unitary volume (or mass), for when
-  // there is a range. The concentration attribute then becomes the upper
-  // limit.
   Ratio concentrationLowLimit;
-
-  //  For when strength is measured at a particular point or distance.
   String measurementPoint;
-
-  //  Extensions for measurementPoint
   Element elementMeasurementPoint;
-
-  //  The country or countries for which the strength range applies.
   List<CodeableConcept> country;
-
-  //  Strength expressed in terms of a reference substance.
   List<MedicinalProductIngredient_ReferenceStrength> referenceStrength;
 
 MedicinalProductIngredient_Strength(
-  this.presentation,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
+    @required this.presentation,
     this.presentationLowLimit,
     this.concentration,
     this.concentrationLowLimit,
@@ -279,56 +222,44 @@ MedicinalProductIngredient_Strength(
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductIngredient_ReferenceStrength {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<MedicinalProductIngredient_ReferenceStrength> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept substance,
+		Ratio strength,
+		Ratio strengthLowLimit,
+		String measurementPoint,
+		Element elementMeasurementPoint,
+		List<CodeableConcept> country}) async {
+	 return MedicinalProductIngredient_ReferenceStrength(
+			id: await newEntry('MedicinalProductIngredient_ReferenceStrength'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			substance: substance,
+			strength: strength,
+			strengthLowLimit: strengthLowLimit,
+			measurementPoint: measurementPoint,
+			elementMeasurementPoint: elementMeasurementPoint,
+			country: country);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Relevant reference substance.
   CodeableConcept substance;
-
-  //  Strength expressed in terms of a reference substance.
   Ratio strength;
-
-  //  Strength expressed in terms of a reference substance.
   Ratio strengthLowLimit;
-
-  //  For when strength is measured at a particular point or distance.
   String measurementPoint;
-
-  //  Extensions for measurementPoint
   Element elementMeasurementPoint;
-
-  //  The country or countries for which the strength range applies.
   List<CodeableConcept> country;
 
 MedicinalProductIngredient_ReferenceStrength(
-  this.strength,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.substance,
+    @required this.strength,
     this.strengthLowLimit,
     this.measurementPoint,
     this.elementMeasurementPoint,
@@ -342,44 +273,31 @@ MedicinalProductIngredient_ReferenceStrength(
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductIngredient_Substance {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<MedicinalProductIngredient_Substance> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept code,
+		List<MedicinalProductIngredient_Strength> strength}) async {
+	 return MedicinalProductIngredient_Substance(
+			id: await newEntry('MedicinalProductIngredient_Substance'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			code: code,
+			strength: strength);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The ingredient substance.
   CodeableConcept code;
-
-  //  Quantity of the substance or specified substance present in the
-  // manufactured item or pharmaceutical product.
   List<MedicinalProductIngredient_Strength> strength;
 
 MedicinalProductIngredient_Substance(
-  this.code,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
+    @required this.code,
     this.strength
     });
 
@@ -405,7 +323,6 @@ class MedicinalProductIngredientAdapter
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return MedicinalProductIngredient(
-      fields[12] as CodeableConcept,
       id: fields[1] as String,
       meta: fields[2] as Meta,
       implicitRules: fields[3] as String,
@@ -417,6 +334,7 @@ class MedicinalProductIngredientAdapter
       extension: (fields[9] as List)?.cast<Extension>(),
       modifierExtension: (fields[10] as List)?.cast<Extension>(),
       identifier: fields[11] as Identifier,
+      role: fields[12] as CodeableConcept,
       allergenicIndicator: fields[13] as bool,
       elementAllergenicIndicator: fields[14] as Element,
       manufacturer: (fields[15] as List)?.cast<Reference>(),
@@ -476,9 +394,6 @@ class MedicinalProductIngredientAdapter
 MedicinalProductIngredient _$MedicinalProductIngredientFromJson(
     Map<String, dynamic> json) {
   return MedicinalProductIngredient(
-    json['role'] == null
-        ? null
-        : CodeableConcept.fromJson(json['role'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -510,6 +425,9 @@ MedicinalProductIngredient _$MedicinalProductIngredientFromJson(
     identifier: json['identifier'] == null
         ? null
         : Identifier.fromJson(json['identifier'] as Map<String, dynamic>),
+    role: json['role'] == null
+        ? null
+        : CodeableConcept.fromJson(json['role'] as Map<String, dynamic>),
     allergenicIndicator: json['allergenicIndicator'] as bool,
     elementAllergenicIndicator: json['elementAllergenicIndicator'] == null
         ? null
@@ -561,12 +479,6 @@ MedicinalProductIngredient_SpecifiedSubstance
     _$MedicinalProductIngredient_SpecifiedSubstanceFromJson(
         Map<String, dynamic> json) {
   return MedicinalProductIngredient_SpecifiedSubstance(
-    json['code'] == null
-        ? null
-        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
-    json['group'] == null
-        ? null
-        : CodeableConcept.fromJson(json['group'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -576,6 +488,12 @@ MedicinalProductIngredient_SpecifiedSubstance
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    code: json['code'] == null
+        ? null
+        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
+    group: json['group'] == null
+        ? null
+        : CodeableConcept.fromJson(json['group'] as Map<String, dynamic>),
     confidentiality: json['confidentiality'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -605,9 +523,6 @@ Map<String, dynamic> _$MedicinalProductIngredient_SpecifiedSubstanceToJson(
 MedicinalProductIngredient_Strength
     _$MedicinalProductIngredient_StrengthFromJson(Map<String, dynamic> json) {
   return MedicinalProductIngredient_Strength(
-    json['presentation'] == null
-        ? null
-        : Ratio.fromJson(json['presentation'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -617,6 +532,9 @@ MedicinalProductIngredient_Strength
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    presentation: json['presentation'] == null
+        ? null
+        : Ratio.fromJson(json['presentation'] as Map<String, dynamic>),
     presentationLowLimit: json['presentationLowLimit'] == null
         ? null
         : Ratio.fromJson(json['presentationLowLimit'] as Map<String, dynamic>),
@@ -667,9 +585,6 @@ MedicinalProductIngredient_ReferenceStrength
     _$MedicinalProductIngredient_ReferenceStrengthFromJson(
         Map<String, dynamic> json) {
   return MedicinalProductIngredient_ReferenceStrength(
-    json['strength'] == null
-        ? null
-        : Ratio.fromJson(json['strength'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -682,6 +597,9 @@ MedicinalProductIngredient_ReferenceStrength
     substance: json['substance'] == null
         ? null
         : CodeableConcept.fromJson(json['substance'] as Map<String, dynamic>),
+    strength: json['strength'] == null
+        ? null
+        : Ratio.fromJson(json['strength'] as Map<String, dynamic>),
     strengthLowLimit: json['strengthLowLimit'] == null
         ? null
         : Ratio.fromJson(json['strengthLowLimit'] as Map<String, dynamic>),
@@ -716,9 +634,6 @@ Map<String, dynamic> _$MedicinalProductIngredient_ReferenceStrengthToJson(
 MedicinalProductIngredient_Substance
     _$MedicinalProductIngredient_SubstanceFromJson(Map<String, dynamic> json) {
   return MedicinalProductIngredient_Substance(
-    json['code'] == null
-        ? null
-        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -728,6 +643,9 @@ MedicinalProductIngredient_Substance
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    code: json['code'] == null
+        ? null
+        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     strength: (json['strength'] as List)
         ?.map((e) => e == null
             ? null

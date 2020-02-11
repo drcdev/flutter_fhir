@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -8,59 +9,56 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @HiveType(typeId: 54)
 class Expression {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Expression> newInstance({
+		String id,
+		List<Extension> extension,
+		String description,
+		Element elementDescription,
+		String name,
+		Element elementName,
+		String language,
+		Element elementLanguage,
+		String expression,
+		Element elementExpression,
+		String reference,
+		Element elementReference}) async {
+	 return Expression(
+			id: await newEntry('Expression'),
+			extension: extension,
+			description: description,
+			elementDescription: elementDescription,
+			name: name,
+			elementName: elementName,
+			language: language,
+			elementLanguage: elementLanguage,
+			expression: expression,
+			elementExpression: elementExpression,
+			reference: reference,
+			elementReference: elementReference);
+	}
+
   @HiveField(0)
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   @HiveField(1)
   List<Extension> extension;
-
-  //  A brief, natural language description of the condition that
-  // effectively communicates the intended semantics.
   @HiveField(2)
   String description;
-
-  //  Extensions for description
   @HiveField(3)
   Element elementDescription;
-
-  //  A short name assigned to the expression to allow for multiple reuse of
-  // the expression in the context where it is defined.
   @HiveField(4)
   String name;
-
-  //  Extensions for name
   @HiveField(5)
   Element elementName;
-
-  //  The media type of the language for the expression.
   @HiveField(6)
   String language; // <code> enum: text/cql/text/fhirpath/application/x-fhir-query;
-
-  //  Extensions for language
   @HiveField(7)
   Element elementLanguage;
-
-  //  An expression in the specified language that returns a value.
   @HiveField(8)
   String expression;
-
-  //  Extensions for expression
   @HiveField(9)
   Element elementExpression;
-
-  //  A URI that defines where the expression is found.
   @HiveField(10)
   String reference;
-
-  //  Extensions for reference
   @HiveField(11)
   Element elementReference;
 

@@ -2,6 +2,7 @@
 
 import json
 import re
+import os
 
 #makes first letter of word lowercase
 def lowcc(string):
@@ -69,6 +70,111 @@ with open('./helpers/fhir.schema.json', encoding='utf8') as json_file:
 dartCode = ''
 importDict = {}
 
+def HiveCode(properties, objects):
+    hiveCode = ''.join(['\tstatic Future<',
+                        'Lists' if objects == 'List' else objects,
+                        '> newInstance({\n'])
+    for fields in properties:
+        
+        #if items is NOT included it means that the item is NOT an array/list
+        if('items' not in properties[fields]):
+                
+            #if  there's a $ref in it, print out that value
+            if('$ref' in properties[fields]):
+                ref = properties[fields]['$ref']
+                ref = ref.split('/definitions/')[1]
+                hiveCode = ''.join([hiveCode, 
+                                    '\t\t',
+                                    primitiveDart(ref), 
+                                    ' ', 
+                                    rem_(fields), 
+                                    ',\n'])
+                    
+            #if  there's a const in it, print out that value
+            elif('const' in properties[fields]):  
+                                
+                value = properties[fields]['const']
+                if(fields != 'resourceType'):
+                    hiveCode = ''.join([hiveCode,
+                                        '\t\t',
+                                        primitiveDart(value2), 
+                                        ' ', 
+                                        rem_(fields),
+                                        ',\n'])
+                
+            #if  there's a pattern in it, print out the type of pattern
+            elif('pattern' in properties[fields]):  
+                    
+                value = properties[fields]
+                
+                #if the type is a number, declare it an int or a double
+                if('number' == value['type']):
+                    if('decimal' in fields or 'Decimal' in fields):
+                        hiveCode = ''.join([hiveCode, '\t\tdouble ', rem_(fields), ',\n'])
+                    else:
+                        hiveCode = ''.join([hiveCode, '\t\tint ', rem_(fields), ',\n'])
+                else:
+                    hiveCode = ''.join([hiveCode, 
+                                    '\t\t',
+                                    primitiveDart(value['type']), 
+                                    ' ',
+                                    rem_(fields),
+                                    ',\n'])
+                    
+            #if it's enum, print it as type of enum, and then include the
+            #possible values as a comment at the end of the line
+            elif('enum' in properties[fields]):
+
+                hiveCode = ''.join([hiveCode, 
+                                    '\t\t',
+                                    'String ', 
+                                    rem_(fields), 
+                                    ',\n'])
+
+        #if it does include items, it is an array/list
+        elif('$ref' in properties[fields]['items']):
+            
+            value = properties[fields]['items']['$ref'].split('/definitions/')[1]
+            
+            #make the item a list since it's an array in json
+            hiveCode = ''.join([hiveCode,  
+                                '\t\t',
+                                'List<', 
+                                primitiveDart(value), 
+                                '> ', 
+                                rem_(fields), 
+                                ',\n'])   
+            
+        #if it does include items, it is an array/list
+        elif('enum' in properties[fields]['items']):
+            
+            #make the item a list since it's an array in json
+            hiveCode = ''.join([hiveCode, 
+                                '\t\t',
+                                'List<String> ', 
+                                rem_(fields), 
+                                ',\n'])   
+    hiveCode = ''.join([hiveCode, 
+                        '}) async {\n\t return ', 
+                        'Lists' if objects == 'List' else objects,
+                        '(\n'])
+    for fields in properties:
+        if(rem_(fields) != 'resourceType'):
+            if(fields == 'id'):
+                hiveCode = ''.join([hiveCode, 
+                                    "\t\t\tid: await newEntry('", 
+                                    'Lists' if objects == 'List' else objects,
+                                    "'),\n"])
+            else:
+                hiveCode = ''.join([hiveCode, '\t\t\t', rem_(fields), ': ', rem_(fields), ',\n'])
+    hiveCode = ''.join([hiveCode, ');\n}'])    
+    hiveCode = hiveCode.replace(',\n}) ', '}) ')
+    hiveCode = hiveCode.replace('final String', 'String')
+    hiveCode = hiveCode.replace(',\n);\n}', ');\n\t}\n')
+    return(hiveCode)
+
+# os.remove('./lib/fhirClasses/classes.dart')
+# ********************************************************************************************
 #iterates through the different entities in fhir.schema.json
 #only looks in definitions (these are mostly resources, not primitives)
 definitions = schema['definitions']
@@ -106,6 +212,7 @@ for objects in definitions:
         #it fits and based on that, print out specific information
         HiveField = 0
         properties = definitions[objects]['properties']
+        dartCode = ''.join([dartCode, '\n', HiveCode(properties, objects), '\n'])
         for field in properties:      
             
             
@@ -238,26 +345,25 @@ for objects in definitions:
                                   
         #add more constructor code
         dartCode = ''.join([dartCode, '\n', objected, '(\n  '])
-        required = ''
-        optional = ''
-        for field in schema['definitions'][objects]['properties']:
+        arguments = ''
+        for fielded in schema['definitions'][objects]['properties']:
             
             #resourceType isn't a passable argument
-            if(field != 'resourceType'):
+            if(fielded != 'resourceType'):
                 
                 #separate the optional and required constructor parameters
                 if('required' not in schema['definitions'][objects] or
-                    field not in schema['definitions'][objects]['required']):
-                        optional = ''.join([optional, 'this.', rem_(field), ',\n    '])
+                    fielded not in schema['definitions'][objects]['required']):
+                        arguments = ''.join([arguments, 'this.', rem_(fielded), ',\n    '])
                 else:
-                    required = ''.join([required, 'this.', rem_(field), ',\n    '])
+                    arguments = ''.join([arguments, '@required this.', rem_(fielded), ',\n    '])
                     
         #create the factory
         dartCode = ''.join([dartCode, 
-                            required,
                             '{',
-                            optional,
-                            '});\n\n  factory ', 
+                            arguments,
+                            '})',
+                            ';\n\n  factory ', 
                             objected, 
                             '.fromJson',
                             '(Map<String, dynamic> json) => _$', 
@@ -317,7 +423,11 @@ for code in dartCode:
                 code = ''.join(["import 'package:flutter_fhir/fhirClasses/",
                                 lowcc(l), ".dart';\n", code])
         code = code.replace(',\n    });', '\n    });')
-        code = ''.join(["import 'package:json_annotation/json_annotation.dart';\n\n", code])
+        code = ''.join(["import 'package:flutter_fhir/fhirClasses/classes.dart';\n\n", code])
+        if('@required' in code):
+            code = ''.join(["import 'package:flutter/foundation.dart';\n", 
+                            "import 'package:meta/meta.dart';\n", code])
+        code = ''.join(["import 'package:json_annotation/json_annotation.dart';\n", code])
         code = ''.join(["import 'package:hive/hive.dart';\n", code])
         with open(fhirDir + lowcc(g) + ".dart","w", encoding="utf-8") as f:
             f.write(code)
@@ -325,40 +435,21 @@ for code in dartCode:
         
 with open(fhirDir + 'patient.dart') as pt:
             patient = pt.read()
-patient = patient.replace('''import 'package:json_annotation/json_annotation.dart';
-
-import 'package:flutter_fhir/fhirClasses/period.dart';
-import 'package:flutter_fhir/fhirClasses/reference.dart';
-import 'package:flutter_fhir/fhirClasses/attachment.dart';
-import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
-import 'package:flutter_fhir/fhirClasses/address.dart';
-import 'package:flutter_fhir/fhirClasses/contactPoint.dart';
-import 'package:flutter_fhir/fhirClasses/humanName.dart';
-import 'package:flutter_fhir/fhirClasses/identifier.dart';
-import 'package:flutter_fhir/fhirClasses/extension.dart';
-import 'package:flutter_fhir/fhirClasses/resourceList.dart';
-import 'package:flutter_fhir/fhirClasses/narrative.dart';
-import 'package:flutter_fhir/fhirClasses/element.dart';
-import 'package:flutter_fhir/fhirClasses/meta.dart';''',
+patient = patient.replace('''import 'package:hive/hive.dart';
+import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';\n''',
 '''import 'dart:io';
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-
-import 'package:flutter_fhir/fhirClasses/period.dart';
-import 'package:flutter_fhir/fhirClasses/reference.dart';
-import 'package:flutter_fhir/fhirClasses/attachment.dart';
-import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
-import 'package:flutter_fhir/fhirClasses/address.dart';
-import 'package:flutter_fhir/fhirClasses/contactPoint.dart';
-import 'package:flutter_fhir/fhirClasses/humanName.dart';
-import 'package:flutter_fhir/fhirClasses/identifier.dart';
-import 'package:flutter_fhir/fhirClasses/extension.dart';
-import 'package:flutter_fhir/fhirClasses/resourceList.dart';
-import 'package:flutter_fhir/fhirClasses/narrative.dart';
-import 'package:flutter_fhir/fhirClasses/element.dart';
-import 'package:flutter_fhir/fhirClasses/meta.dart';''')
+''')
 
 with open(fhirDir + 'patient.dart',"w", encoding="utf-8") as f:
     f.write(patient)

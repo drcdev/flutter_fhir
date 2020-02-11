@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -17,256 +20,190 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 198)
 class TestScript {
 
-  //  This is a TestScript resource
+	static Future<TestScript> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String url,
+		Element elementUrl,
+		Identifier identifier,
+		String version,
+		Element elementVersion,
+		String name,
+		Element elementName,
+		String title,
+		Element elementTitle,
+		String status,
+		Element elementStatus,
+		bool experimental,
+		Element elementExperimental,
+		DateTime date,
+		Element elementDate,
+		String publisher,
+		Element elementPublisher,
+		List<ContactDetail> contact,
+		String description,
+		Element elementDescription,
+		List<UsageContext> useContext,
+		List<CodeableConcept> jurisdiction,
+		String purpose,
+		Element elementPurpose,
+		String copyright,
+		Element elementCopyright,
+		List<TestScript_Origin> origin,
+		List<TestScript_Destination> destination,
+		TestScript_Metadata metadata,
+		List<TestScript_Fixture> fixture,
+		List<Reference> profile,
+		List<TestScript_Variable> variable,
+		TestScript_Setup setup,
+		List<TestScript_Test> test,
+		TestScript_Teardown teardown}) async {
+	 return TestScript(
+			id: await newEntry('TestScript'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			url: url,
+			elementUrl: elementUrl,
+			identifier: identifier,
+			version: version,
+			elementVersion: elementVersion,
+			name: name,
+			elementName: elementName,
+			title: title,
+			elementTitle: elementTitle,
+			status: status,
+			elementStatus: elementStatus,
+			experimental: experimental,
+			elementExperimental: elementExperimental,
+			date: date,
+			elementDate: elementDate,
+			publisher: publisher,
+			elementPublisher: elementPublisher,
+			contact: contact,
+			description: description,
+			elementDescription: elementDescription,
+			useContext: useContext,
+			jurisdiction: jurisdiction,
+			purpose: purpose,
+			elementPurpose: elementPurpose,
+			copyright: copyright,
+			elementCopyright: elementCopyright,
+			origin: origin,
+			destination: destination,
+			metadata: metadata,
+			fixture: fixture,
+			profile: profile,
+			variable: variable,
+			setup: setup,
+			test: test,
+			teardown: teardown);
+	}
+
   @HiveField(0)
   final String resourceType= 'TestScript';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  An absolute URI that is used to identify this test script when it is
-  // referenced in a specification, model, design or an instance; also
-  // called its canonical identifier. This SHOULD be globally unique and
-  // SHOULD be a literal address at which at which an authoritative instance
-  // of this test script is (or will be) published. This URL can be the
-  // target of a canonical reference. It SHALL remain the same when the test
-  // script is stored on different servers.
   @HiveField(11)
   String url;
-
-  //  Extensions for url
   @HiveField(12)
   Element elementUrl;
-
-  //  A formal identifier that is used to identify this test script when it
-  // is represented in other formats, or referenced in a specification,
-  // model, design or an instance.
   @HiveField(13)
   Identifier identifier;
-
-  //  The identifier that is used to identify this version of the test
-  // script when it is referenced in a specification, model, design or
-  // instance. This is an arbitrary value managed by the test script author
-  // and is not expected to be globally unique. For example, it might be a
-  // timestamp (e.g. yyyymmdd) if a managed version is not available. There
-  // is also no expectation that versions can be placed in a lexicographical
-  // sequence.
   @HiveField(14)
   String version;
-
-  //  Extensions for version
   @HiveField(15)
   Element elementVersion;
-
-  //  A natural language name identifying the test script. This name should
-  // be usable as an identifier for the module by machine processing
-  // applications such as code generation.
   @HiveField(16)
   String name;
-
-  //  Extensions for name
   @HiveField(17)
   Element elementName;
-
-  //  A short, descriptive, user-friendly title for the test script.
   @HiveField(18)
   String title;
-
-  //  Extensions for title
   @HiveField(19)
   Element elementTitle;
-
-  //  The status of this test script. Enables tracking the life-cycle of the
-  // content.
   @HiveField(20)
   String status; // <code> enum: draft/active/retired/unknown;
-
-  //  Extensions for status
   @HiveField(21)
   Element elementStatus;
-
-  //  A Boolean value to indicate that this test script is authored for
-  // testing purposes (or education/evaluation/marketing) and is not
-  // intended to be used for genuine usage.
   @HiveField(22)
   bool experimental;
-
-  //  Extensions for experimental
   @HiveField(23)
   Element elementExperimental;
-
-  //  The date  (and optionally time) when the test script was published.
-  // The date must change when the business version changes and it must
-  // change if the status code changes. In addition, it should change when
-  // the substantive content of the test script changes.
   @HiveField(24)
   DateTime date;
-
-  //  Extensions for date
   @HiveField(25)
   Element elementDate;
-
-  //  The name of the organization or individual that published the test
-  // script.
   @HiveField(26)
   String publisher;
-
-  //  Extensions for publisher
   @HiveField(27)
   Element elementPublisher;
-
-  //  Contact details to assist a user in finding and communicating with the
-  // publisher.
   @HiveField(28)
   List<ContactDetail> contact;
-
-  //  A free text natural language description of the test script from a
-  // consumer's perspective.
   @HiveField(29)
   String description;
-
-  //  Extensions for description
   @HiveField(30)
   Element elementDescription;
-
-  //  The content was developed with a focus and intent of supporting the
-  // contexts that are listed. These contexts may be general categories
-  // (gender, age, ...) or may be references to specific programs (insurance
-  // plans, studies, ...) and may be used to assist with indexing and
-  // searching for appropriate test script instances.
   @HiveField(31)
   List<UsageContext> useContext;
-
-  //  A legal or geographic region in which the test script is intended to
-  // be used.
   @HiveField(32)
   List<CodeableConcept> jurisdiction;
-
-  //  Explanation of why this test script is needed and why it has been
-  // designed as it has.
   @HiveField(33)
   String purpose;
-
-  //  Extensions for purpose
   @HiveField(34)
   Element elementPurpose;
-
-  //  A copyright statement relating to the test script and/or its contents.
-  // Copyright statements are generally legal restrictions on the use and
-  // publishing of the test script.
   @HiveField(35)
   String copyright;
-
-  //  Extensions for copyright
   @HiveField(36)
   Element elementCopyright;
-
-  //  An abstract server used in operations within this test script in the
-  // origin element.
   @HiveField(37)
   List<TestScript_Origin> origin;
-
-  //  An abstract server used in operations within this test script in the
-  // destination element.
   @HiveField(38)
   List<TestScript_Destination> destination;
-
-  //  The required capability must exist and are assumed to function
-  // correctly on the FHIR server being tested.
   @HiveField(39)
   TestScript_Metadata metadata;
-
-  //  Fixture in the test script - by reference (uri). All fixtures are
-  // required for the test script to execute.
   @HiveField(40)
   List<TestScript_Fixture> fixture;
-
-  //  Reference to the profile to be used for validation.
   @HiveField(41)
   List<Reference> profile;
-
-  //  Variable is set based either on element value in response body or on
-  // header field value in the response headers.
   @HiveField(42)
   List<TestScript_Variable> variable;
-
-  //  A series of required setup operations before tests are executed.
   @HiveField(43)
   TestScript_Setup setup;
-
-  //  A test in this script.
   @HiveField(44)
   List<TestScript_Test> test;
-
-  //  A series of operations required to clean up after all the tests are
-  // executed (successfully or otherwise).
   @HiveField(45)
   TestScript_Teardown teardown;
 
@@ -325,49 +262,36 @@ TestScript(
 @JsonSerializable(explicitToJson: true)
 class TestScript_Origin {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<TestScript_Origin> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		int index,
+		Element elementIndex,
+		Coding profile}) async {
+	 return TestScript_Origin(
+			id: await newEntry('TestScript_Origin'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			index: index,
+			elementIndex: elementIndex,
+			profile: profile);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Abstract name given to an origin server in this test script.  The name
-  // is provided as a number starting at 1.
   int index;
-
-  //  Extensions for index
   Element elementIndex;
-
-  //  The type of origin profile the test system supports.
   Coding profile;
 
 TestScript_Origin(
-  this.profile,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.index,
-    this.elementIndex
+    this.elementIndex,
+    @required this.profile
     });
 
   factory TestScript_Origin.fromJson(Map<String, dynamic> json) => _$TestScript_OriginFromJson(json);
@@ -377,49 +301,36 @@ TestScript_Origin(
 @JsonSerializable(explicitToJson: true)
 class TestScript_Destination {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<TestScript_Destination> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		int index,
+		Element elementIndex,
+		Coding profile}) async {
+	 return TestScript_Destination(
+			id: await newEntry('TestScript_Destination'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			index: index,
+			elementIndex: elementIndex,
+			profile: profile);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Abstract name given to a destination server in this test script.  The
-  // name is provided as a number starting at 1.
   int index;
-
-  //  Extensions for index
   Element elementIndex;
-
-  //  The type of destination profile the test system supports.
   Coding profile;
 
 TestScript_Destination(
-  this.profile,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.index,
-    this.elementIndex
+    this.elementIndex,
+    @required this.profile
     });
 
   factory TestScript_Destination.fromJson(Map<String, dynamic> json) => _$TestScript_DestinationFromJson(json);
@@ -429,45 +340,32 @@ TestScript_Destination(
 @JsonSerializable(explicitToJson: true)
 class TestScript_Metadata {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<TestScript_Metadata> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<TestScript_Link> link,
+		List<TestScript_Capability> capability}) async {
+	 return TestScript_Metadata(
+			id: await newEntry('TestScript_Metadata'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			link: link,
+			capability: capability);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A link to the FHIR specification that this test is covering.
   List<TestScript_Link> link;
-
-  //  Capabilities that must exist and are assumed to function correctly on
-  // the FHIR server being tested.
   List<TestScript_Capability> capability;
 
 TestScript_Metadata(
-  this.capability,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
-    this.link
+    this.link,
+    @required this.capability
     });
 
   factory TestScript_Metadata.fromJson(Map<String, dynamic> json) => _$TestScript_MetadataFromJson(json);
@@ -477,43 +375,30 @@ TestScript_Metadata(
 @JsonSerializable(explicitToJson: true)
 class TestScript_Link {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<TestScript_Link> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String url,
+		Element elementUrl,
+		String description,
+		Element elementDescription}) async {
+	 return TestScript_Link(
+			id: await newEntry('TestScript_Link'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			url: url,
+			elementUrl: elementUrl,
+			description: description,
+			elementDescription: elementDescription);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  URL to a particular requirement or feature within the FHIR
-  // specification.
   String url;
-
-  //  Extensions for url
   Element elementUrl;
-
-  //  Short description of the link.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
 
 TestScript_Link(
@@ -533,80 +418,61 @@ TestScript_Link(
 @JsonSerializable(explicitToJson: true)
 class TestScript_Capability {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<TestScript_Capability> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		bool required,
+		Element elementRequired,
+		bool validated,
+		Element elementValidated,
+		String description,
+		Element elementDescription,
+		List<int> origin,
+		List<Element> elementOrigin,
+		int destination,
+		Element elementDestination,
+		List<String> link,
+		List<Element> elementLink,
+		String capabilities}) async {
+	 return TestScript_Capability(
+			id: await newEntry('TestScript_Capability'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			required: required,
+			elementRequired: elementRequired,
+			validated: validated,
+			elementValidated: elementValidated,
+			description: description,
+			elementDescription: elementDescription,
+			origin: origin,
+			elementOrigin: elementOrigin,
+			destination: destination,
+			elementDestination: elementDestination,
+			link: link,
+			elementLink: elementLink,
+			capabilities: capabilities);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Whether or not the test execution will require the given capabilities
-  // of the server in order for this test script to execute.
   bool required;
-
-  //  Extensions for required
   Element elementRequired;
-
-  //  Whether or not the test execution will validate the given capabilities
-  // of the server in order for this test script to execute.
   bool validated;
-
-  //  Extensions for validated
   Element elementValidated;
-
-  //  Description of the capabilities that this test script is requiring the
-  // server to support.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  Which origin server these requirements apply to.
   List<int> origin;
-
-  //  Extensions for origin
   List<Element> elementOrigin;
-
-  //  Which server these requirements apply to.
   int destination;
-
-  //  Extensions for destination
   Element elementDestination;
-
-  //  Links to the FHIR specification that describes this interaction and
-  // the resources involved in more detail.
   List<String> link;
-
-  //  Extensions for link
   List<Element> elementLink;
-
-  //  Minimum capabilities required of server for test script to execute
-  // successfully.   If server does not meet at a minimum the referenced
-  // capability statement, then all tests in this script are skipped.
   String capabilities;
 
 TestScript_Capability(
-  this.capabilities,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.required,
@@ -620,7 +486,8 @@ TestScript_Capability(
     this.destination,
     this.elementDestination,
     this.link,
-    this.elementLink
+    this.elementLink,
+    @required this.capabilities
     });
 
   factory TestScript_Capability.fromJson(Map<String, dynamic> json) => _$TestScript_CapabilityFromJson(json);
@@ -630,52 +497,33 @@ TestScript_Capability(
 @JsonSerializable(explicitToJson: true)
 class TestScript_Fixture {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<TestScript_Fixture> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		bool autocreate,
+		Element elementAutocreate,
+		bool autodelete,
+		Element elementAutodelete,
+		Reference resource}) async {
+	 return TestScript_Fixture(
+			id: await newEntry('TestScript_Fixture'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			autocreate: autocreate,
+			elementAutocreate: elementAutocreate,
+			autodelete: autodelete,
+			elementAutodelete: elementAutodelete,
+			resource: resource);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Whether or not to implicitly create the fixture during setup. If true,
-  // the fixture is automatically created on each server being tested during
-  // setup, therefore no create operation is required for this fixture in
-  // the TestScript.setup section.
   bool autocreate;
-
-  //  Extensions for autocreate
   Element elementAutocreate;
-
-  //  Whether or not to implicitly delete the fixture during teardown. If
-  // true, the fixture is automatically deleted on each server being tested
-  // during teardown, therefore no delete operation is required for this
-  // fixture in the TestScript.teardown section.
   bool autodelete;
-
-  //  Extensions for autodelete
   Element elementAutodelete;
-
-  //  Reference to the resource (containing the contents of the resource
-  // needed for operations).
   Reference resource;
 
 TestScript_Fixture(
@@ -696,86 +544,66 @@ TestScript_Fixture(
 @JsonSerializable(explicitToJson: true)
 class TestScript_Variable {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<TestScript_Variable> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String name,
+		Element elementName,
+		String defaultValue,
+		Element elementDefaultValue,
+		String description,
+		Element elementDescription,
+		String expression,
+		Element elementExpression,
+		String headerField,
+		Element elementHeaderField,
+		String hint,
+		Element elementHint,
+		String path,
+		Element elementPath,
+		String sourceId,
+		Element elementSourceId}) async {
+	 return TestScript_Variable(
+			id: await newEntry('TestScript_Variable'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			name: name,
+			elementName: elementName,
+			defaultValue: defaultValue,
+			elementDefaultValue: elementDefaultValue,
+			description: description,
+			elementDescription: elementDescription,
+			expression: expression,
+			elementExpression: elementExpression,
+			headerField: headerField,
+			elementHeaderField: elementHeaderField,
+			hint: hint,
+			elementHint: elementHint,
+			path: path,
+			elementPath: elementPath,
+			sourceId: sourceId,
+			elementSourceId: elementSourceId);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Descriptive name for this variable.
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  A default, hard-coded, or user-defined value for this variable.
   String defaultValue;
-
-  //  Extensions for defaultValue
   Element elementDefaultValue;
-
-  //  A free text natural language description of the variable and its
-  // purpose.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  The FHIRPath expression to evaluate against the fixture body. When
-  // variables are defined, only one of either expression, headerField or
-  // path must be specified.
   String expression;
-
-  //  Extensions for expression
   Element elementExpression;
-
-  //  Will be used to grab the HTTP header field value from the headers that
-  // sourceId is pointing to.
   String headerField;
-
-  //  Extensions for headerField
   Element elementHeaderField;
-
-  //  Displayable text string with hint help information to the user when
-  // entering a default value.
   String hint;
-
-  //  Extensions for hint
   Element elementHint;
-
-  //  XPath or JSONPath to evaluate against the fixture body.  When
-  // variables are defined, only one of either expression, headerField or
-  // path must be specified.
   String path;
-
-  //  Extensions for path
   Element elementPath;
-
-  //  Fixture to evaluate the XPath/JSONPath expression or the headerField 
-  // against within this variable.
   String sourceId;
-
-  //  Extensions for sourceId
   Element elementSourceId;
 
 TestScript_Variable(
@@ -807,40 +635,28 @@ TestScript_Variable(
 @JsonSerializable(explicitToJson: true)
 class TestScript_Setup {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<TestScript_Setup> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<TestScript_Action> action}) async {
+	 return TestScript_Setup(
+			id: await newEntry('TestScript_Setup'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			action: action);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Action would contain either an operation or an assertion.
   List<TestScript_Action> action;
 
 TestScript_Setup(
-  this.action,
-    {this.id,
+  {this.id,
     this.extension,
-    this.modifierExtension
+    this.modifierExtension,
+    @required this.action
     });
 
   factory TestScript_Setup.fromJson(Map<String, dynamic> json) => _$TestScript_SetupFromJson(json);
@@ -850,37 +666,24 @@ TestScript_Setup(
 @JsonSerializable(explicitToJson: true)
 class TestScript_Action {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<TestScript_Action> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		TestScript_Operation operation,
+		TestScript_Assert asserts}) async {
+	 return TestScript_Action(
+			id: await newEntry('TestScript_Action'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			operation: operation,
+			asserts: asserts);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The operation to perform.
   TestScript_Operation operation;
-
-  //  Evaluates the results of previous operations to determine if the
-  // server under test behaves appropriately.
   TestScript_Assert asserts;
 
 TestScript_Action(
@@ -898,137 +701,114 @@ TestScript_Action(
 @JsonSerializable(explicitToJson: true)
 class TestScript_Operation {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<TestScript_Operation> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Coding type,
+		String resource,
+		Element elementResource,
+		String label,
+		Element elementLabel,
+		String description,
+		Element elementDescription,
+		String accept,
+		Element elementAccept,
+		String contentType,
+		Element elementContentType,
+		int destination,
+		Element elementDestination,
+		bool encodeRequestUrl,
+		Element elementEncodeRequestUrl,
+		String method,
+		Element elementMethod,
+		int origin,
+		Element elementOrigin,
+		String params,
+		Element elementParams,
+		List<TestScript_RequestHeader> requestHeader,
+		String requestId,
+		Element elementRequestId,
+		String responseId,
+		Element elementResponseId,
+		String sourceId,
+		Element elementSourceId,
+		String targetId,
+		Element elementTargetId,
+		String url,
+		Element elementUrl}) async {
+	 return TestScript_Operation(
+			id: await newEntry('TestScript_Operation'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			type: type,
+			resource: resource,
+			elementResource: elementResource,
+			label: label,
+			elementLabel: elementLabel,
+			description: description,
+			elementDescription: elementDescription,
+			accept: accept,
+			elementAccept: elementAccept,
+			contentType: contentType,
+			elementContentType: elementContentType,
+			destination: destination,
+			elementDestination: elementDestination,
+			encodeRequestUrl: encodeRequestUrl,
+			elementEncodeRequestUrl: elementEncodeRequestUrl,
+			method: method,
+			elementMethod: elementMethod,
+			origin: origin,
+			elementOrigin: elementOrigin,
+			params: params,
+			elementParams: elementParams,
+			requestHeader: requestHeader,
+			requestId: requestId,
+			elementRequestId: elementRequestId,
+			responseId: responseId,
+			elementResponseId: elementResponseId,
+			sourceId: sourceId,
+			elementSourceId: elementSourceId,
+			targetId: targetId,
+			elementTargetId: elementTargetId,
+			url: url,
+			elementUrl: elementUrl);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Server interaction or operation type.
   Coding type;
-
-  //  The type of the resource.  See
-  // http://build.fhir.org/resourcelist.html.
   String resource;
-
-  //  Extensions for resource
   Element elementResource;
-
-  //  The label would be used for tracking/logging purposes by test engines.
   String label;
-
-  //  Extensions for label
   Element elementLabel;
-
-  //  The description would be used by test engines for tracking and
-  // reporting purposes.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  The mime-type to use for RESTful operation in the 'Accept' header.
   String accept;
-
-  //  Extensions for accept
   Element elementAccept;
-
-  //  The mime-type to use for RESTful operation in the 'Content-Type'
-  // header.
   String contentType;
-
-  //  Extensions for contentType
   Element elementContentType;
-
-  //  The server where the request message is destined for.  Must be one of
-  // the server numbers listed in TestScript.destination section.
   int destination;
-
-  //  Extensions for destination
   Element elementDestination;
-
-  //  Whether or not to implicitly send the request url in encoded format.
-  // The default is true to match the standard RESTful client behavior. Set
-  // to false when communicating with a server that does not support encoded
-  // url paths.
   bool encodeRequestUrl;
-
-  //  Extensions for encodeRequestUrl
   Element elementEncodeRequestUrl;
-
-  //  The HTTP method the test engine MUST use for this operation regardless
-  // of any other operation details.
   String method; // <code> enum: delete/get/options/patch/post/put/head;
-
-  //  Extensions for method
   Element elementMethod;
-
-  //  The server where the request message originates from.  Must be one of
-  // the server numbers listed in TestScript.origin section.
   int origin;
-
-  //  Extensions for origin
   Element elementOrigin;
-
-  //  Path plus parameters after [type].  Used to set parts of the request
-  // URL explicitly.
   String params;
-
-  //  Extensions for params
   Element elementParams;
-
-  //  Header elements would be used to set HTTP headers.
   List<TestScript_RequestHeader> requestHeader;
-
-  //  The fixture id (maybe new) to map to the request.
   String requestId;
-
-  //  Extensions for requestId
   Element elementRequestId;
-
-  //  The fixture id (maybe new) to map to the response.
   String responseId;
-
-  //  Extensions for responseId
   Element elementResponseId;
-
-  //  The id of the fixture used as the body of a PUT or POST request.
   String sourceId;
-
-  //  Extensions for sourceId
   Element elementSourceId;
-
-  //  Id of fixture used for extracting the [id],  [type], and [vid] for GET
-  // requests.
   String targetId;
-
-  //  Extensions for targetId
   Element elementTargetId;
-
-  //  Complete request URL.
   String url;
-
-  //  Extensions for url
   Element elementUrl;
 
 TestScript_Operation(
@@ -1076,42 +856,30 @@ TestScript_Operation(
 @JsonSerializable(explicitToJson: true)
 class TestScript_RequestHeader {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<TestScript_RequestHeader> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String field,
+		Element elementField,
+		String value,
+		Element elementValue}) async {
+	 return TestScript_RequestHeader(
+			id: await newEntry('TestScript_RequestHeader'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			field: field,
+			elementField: elementField,
+			value: value,
+			elementValue: elementValue);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The HTTP header field e.g. "Accept".
   String field;
-
-  //  Extensions for field
   Element elementField;
-
-  //  The value of the header e.g. "application/fhir+xml".
   String value;
-
-  //  Extensions for value
   Element elementValue;
 
 TestScript_RequestHeader(
@@ -1131,180 +899,150 @@ TestScript_RequestHeader(
 @JsonSerializable(explicitToJson: true)
 class TestScript_Assert {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<TestScript_Assert> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String label,
+		Element elementLabel,
+		String description,
+		Element elementDescription,
+		String direction,
+		Element elementDirection,
+		String compareToSourceId,
+		Element elementCompareToSourceId,
+		String compareToSourceExpression,
+		Element elementCompareToSourceExpression,
+		String compareToSourcePath,
+		Element elementCompareToSourcePath,
+		String contentType,
+		Element elementContentType,
+		String expression,
+		Element elementExpression,
+		String headerField,
+		Element elementHeaderField,
+		String minimumId,
+		Element elementMinimumId,
+		bool navigationLinks,
+		Element elementNavigationLinks,
+		String operator,
+		Element elementOperator,
+		String path,
+		Element elementPath,
+		String requestMethod,
+		Element elementRequestMethod,
+		String requestURL,
+		Element elementRequestURL,
+		String resource,
+		Element elementResource,
+		String response,
+		Element elementResponse,
+		String responseCode,
+		Element elementResponseCode,
+		String sourceId,
+		Element elementSourceId,
+		String validateProfileId,
+		Element elementValidateProfileId,
+		String value,
+		Element elementValue,
+		bool warningOnly,
+		Element elementWarningOnly}) async {
+	 return TestScript_Assert(
+			id: await newEntry('TestScript_Assert'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			label: label,
+			elementLabel: elementLabel,
+			description: description,
+			elementDescription: elementDescription,
+			direction: direction,
+			elementDirection: elementDirection,
+			compareToSourceId: compareToSourceId,
+			elementCompareToSourceId: elementCompareToSourceId,
+			compareToSourceExpression: compareToSourceExpression,
+			elementCompareToSourceExpression: elementCompareToSourceExpression,
+			compareToSourcePath: compareToSourcePath,
+			elementCompareToSourcePath: elementCompareToSourcePath,
+			contentType: contentType,
+			elementContentType: elementContentType,
+			expression: expression,
+			elementExpression: elementExpression,
+			headerField: headerField,
+			elementHeaderField: elementHeaderField,
+			minimumId: minimumId,
+			elementMinimumId: elementMinimumId,
+			navigationLinks: navigationLinks,
+			elementNavigationLinks: elementNavigationLinks,
+			operator: operator,
+			elementOperator: elementOperator,
+			path: path,
+			elementPath: elementPath,
+			requestMethod: requestMethod,
+			elementRequestMethod: elementRequestMethod,
+			requestURL: requestURL,
+			elementRequestURL: elementRequestURL,
+			resource: resource,
+			elementResource: elementResource,
+			response: response,
+			elementResponse: elementResponse,
+			responseCode: responseCode,
+			elementResponseCode: elementResponseCode,
+			sourceId: sourceId,
+			elementSourceId: elementSourceId,
+			validateProfileId: validateProfileId,
+			elementValidateProfileId: elementValidateProfileId,
+			value: value,
+			elementValue: elementValue,
+			warningOnly: warningOnly,
+			elementWarningOnly: elementWarningOnly);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The label would be used for tracking/logging purposes by test engines.
   String label;
-
-  //  Extensions for label
   Element elementLabel;
-
-  //  The description would be used by test engines for tracking and
-  // reporting purposes.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  The direction to use for the assertion.
   String direction; // <code> enum: response/request;
-
-  //  Extensions for direction
   Element elementDirection;
-
-  //  Id of the source fixture used as the contents to be evaluated by
-  // either the "source/expression" or "sourceId/path" definition.
   String compareToSourceId;
-
-  //  Extensions for compareToSourceId
   Element elementCompareToSourceId;
-
-  //  The FHIRPath expression to evaluate against the source fixture. When
-  // compareToSourceId is defined, either compareToSourceExpression or
-  // compareToSourcePath must be defined, but not both.
   String compareToSourceExpression;
-
-  //  Extensions for compareToSourceExpression
   Element elementCompareToSourceExpression;
-
-  //  XPath or JSONPath expression to evaluate against the source fixture.
-  // When compareToSourceId is defined, either compareToSourceExpression or
-  // compareToSourcePath must be defined, but not both.
   String compareToSourcePath;
-
-  //  Extensions for compareToSourcePath
   Element elementCompareToSourcePath;
-
-  //  The mime-type contents to compare against the request or response
-  // message 'Content-Type' header.
   String contentType;
-
-  //  Extensions for contentType
   Element elementContentType;
-
-  //  The FHIRPath expression to be evaluated against the request or
-  // response message contents - HTTP headers and payload.
   String expression;
-
-  //  Extensions for expression
   Element elementExpression;
-
-  //  The HTTP header field name e.g. 'Location'.
   String headerField;
-
-  //  Extensions for headerField
   Element elementHeaderField;
-
-  //  The ID of a fixture.  Asserts that the response contains at a minimum
-  // the fixture specified by minimumId.
   String minimumId;
-
-  //  Extensions for minimumId
   Element elementMinimumId;
-
-  //  Whether or not the test execution performs validation on the bundle
-  // navigation links.
   bool navigationLinks;
-
-  //  Extensions for navigationLinks
   Element elementNavigationLinks;
-
-  //  The operator type defines the conditional behavior of the assert. If
-  // not defined, the default is equals.
   String operator; // <code> enum: equals/notEquals/in/notIn/greaterThan/lessThan/empty/notEmpty/contains/notContains/eval;
-
-  //  Extensions for operator
   Element elementOperator;
-
-  //  The XPath or JSONPath expression to be evaluated against the fixture
-  // representing the response received from server.
   String path;
-
-  //  Extensions for path
   Element elementPath;
-
-  //  The request method or HTTP operation code to compare against that used
-  // by the client system under test.
   String requestMethod; // <code> enum: delete/get/options/patch/post/put/head;
-
-  //  Extensions for requestMethod
   Element elementRequestMethod;
-
-  //  The value to use in a comparison against the request URL path string.
   String requestURL;
-
-  //  Extensions for requestURL
   Element elementRequestURL;
-
-  //  The type of the resource.  See
-  // http://build.fhir.org/resourcelist.html.
   String resource;
-
-  //  Extensions for resource
   Element elementResource;
-
-  //  okay | created | noContent | notModified | bad | forbidden | notFound
-  // | methodNotAllowed | conflict | gone | preconditionFailed |
-  // unprocessable.
   String response; // <code> enum: okay/created/noContent/notModified/bad/forbidden/notFound/methodNotAllowed/conflict/gone/preconditionFailed/unprocessable;
-
-  //  Extensions for response
   Element elementResponse;
-
-  //  The value of the HTTP response code to be tested.
   String responseCode;
-
-  //  Extensions for responseCode
   Element elementResponseCode;
-
-  //  Fixture to evaluate the XPath/JSONPath expression or the headerField 
-  // against.
   String sourceId;
-
-  //  Extensions for sourceId
   Element elementSourceId;
-
-  //  The ID of the Profile to validate against.
   String validateProfileId;
-
-  //  Extensions for validateProfileId
   Element elementValidateProfileId;
-
-  //  The value to compare to.
   String value;
-
-  //  Extensions for value
   Element elementValue;
-
-  //  Whether or not the test execution will produce a warning only on error
-  // for this assert.
   bool warningOnly;
-
-  //  Extensions for warningOnly
   Element elementWarningOnly;
 
 TestScript_Assert(
@@ -1364,58 +1102,44 @@ TestScript_Assert(
 @JsonSerializable(explicitToJson: true)
 class TestScript_Test {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<TestScript_Test> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String name,
+		Element elementName,
+		String description,
+		Element elementDescription,
+		List<TestScript_Action1> action}) async {
+	 return TestScript_Test(
+			id: await newEntry('TestScript_Test'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			name: name,
+			elementName: elementName,
+			description: description,
+			elementDescription: elementDescription,
+			action: action);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The name of this test used for tracking/logging purposes by test
-  // engines.
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  A short description of the test used by test engines for tracking and
-  // reporting purposes.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  Action would contain either an operation or an assertion.
   List<TestScript_Action1> action;
 
 TestScript_Test(
-  this.action,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.name,
     this.elementName,
     this.description,
-    this.elementDescription
+    this.elementDescription,
+    @required this.action
     });
 
   factory TestScript_Test.fromJson(Map<String, dynamic> json) => _$TestScript_TestFromJson(json);
@@ -1425,37 +1149,24 @@ TestScript_Test(
 @JsonSerializable(explicitToJson: true)
 class TestScript_Action1 {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<TestScript_Action1> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		TestScript_Operation operation,
+		TestScript_Assert asserts}) async {
+	 return TestScript_Action1(
+			id: await newEntry('TestScript_Action1'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			operation: operation,
+			asserts: asserts);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  An operation would involve a REST request to a server.
   TestScript_Operation operation;
-
-  //  Evaluates the results of previous operations to determine if the
-  // server under test behaves appropriately.
   TestScript_Assert asserts;
 
 TestScript_Action1(
@@ -1473,40 +1184,28 @@ TestScript_Action1(
 @JsonSerializable(explicitToJson: true)
 class TestScript_Teardown {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<TestScript_Teardown> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<TestScript_Action2> action}) async {
+	 return TestScript_Teardown(
+			id: await newEntry('TestScript_Teardown'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			action: action);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The teardown action will only contain an operation.
   List<TestScript_Action2> action;
 
 TestScript_Teardown(
-  this.action,
-    {this.id,
+  {this.id,
     this.extension,
-    this.modifierExtension
+    this.modifierExtension,
+    @required this.action
     });
 
   factory TestScript_Teardown.fromJson(Map<String, dynamic> json) => _$TestScript_TeardownFromJson(json);
@@ -1516,40 +1215,28 @@ TestScript_Teardown(
 @JsonSerializable(explicitToJson: true)
 class TestScript_Action2 {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<TestScript_Action2> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		TestScript_Operation operation}) async {
+	 return TestScript_Action2(
+			id: await newEntry('TestScript_Action2'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			operation: operation);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  An operation would involve a REST request to a server.
   TestScript_Operation operation;
 
 TestScript_Action2(
-  this.operation,
-    {this.id,
+  {this.id,
     this.extension,
-    this.modifierExtension
+    this.modifierExtension,
+    @required this.operation
     });
 
   factory TestScript_Action2.fromJson(Map<String, dynamic> json) => _$TestScript_Action2FromJson(json);
@@ -1910,9 +1597,6 @@ Map<String, dynamic> _$TestScriptToJson(TestScript instance) =>
 
 TestScript_Origin _$TestScript_OriginFromJson(Map<String, dynamic> json) {
   return TestScript_Origin(
-    json['profile'] == null
-        ? null
-        : Coding.fromJson(json['profile'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1926,6 +1610,9 @@ TestScript_Origin _$TestScript_OriginFromJson(Map<String, dynamic> json) {
     elementIndex: json['elementIndex'] == null
         ? null
         : Element.fromJson(json['elementIndex'] as Map<String, dynamic>),
+    profile: json['profile'] == null
+        ? null
+        : Coding.fromJson(json['profile'] as Map<String, dynamic>),
   );
 }
 
@@ -1943,9 +1630,6 @@ Map<String, dynamic> _$TestScript_OriginToJson(TestScript_Origin instance) =>
 TestScript_Destination _$TestScript_DestinationFromJson(
     Map<String, dynamic> json) {
   return TestScript_Destination(
-    json['profile'] == null
-        ? null
-        : Coding.fromJson(json['profile'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1959,6 +1643,9 @@ TestScript_Destination _$TestScript_DestinationFromJson(
     elementIndex: json['elementIndex'] == null
         ? null
         : Element.fromJson(json['elementIndex'] as Map<String, dynamic>),
+    profile: json['profile'] == null
+        ? null
+        : Coding.fromJson(json['profile'] as Map<String, dynamic>),
   );
 }
 
@@ -1976,11 +1663,6 @@ Map<String, dynamic> _$TestScript_DestinationToJson(
 
 TestScript_Metadata _$TestScript_MetadataFromJson(Map<String, dynamic> json) {
   return TestScript_Metadata(
-    (json['capability'] as List)
-        ?.map((e) => e == null
-            ? null
-            : TestScript_Capability.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1994,6 +1676,11 @@ TestScript_Metadata _$TestScript_MetadataFromJson(Map<String, dynamic> json) {
         ?.map((e) => e == null
             ? null
             : TestScript_Link.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    capability: (json['capability'] as List)
+        ?.map((e) => e == null
+            ? null
+            : TestScript_Capability.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   );
 }
@@ -2046,7 +1733,6 @@ Map<String, dynamic> _$TestScript_LinkToJson(TestScript_Link instance) =>
 TestScript_Capability _$TestScript_CapabilityFromJson(
     Map<String, dynamic> json) {
   return TestScript_Capability(
-    json['capabilities'] as String,
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -2082,6 +1768,7 @@ TestScript_Capability _$TestScript_CapabilityFromJson(
         ?.map((e) =>
             e == null ? null : Element.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    capabilities: json['capabilities'] as String,
   );
 }
 
@@ -2219,11 +1906,6 @@ Map<String, dynamic> _$TestScript_VariableToJson(
 
 TestScript_Setup _$TestScript_SetupFromJson(Map<String, dynamic> json) {
   return TestScript_Setup(
-    (json['action'] as List)
-        ?.map((e) => e == null
-            ? null
-            : TestScript_Action.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -2232,6 +1914,11 @@ TestScript_Setup _$TestScript_SetupFromJson(Map<String, dynamic> json) {
     modifierExtension: (json['modifierExtension'] as List)
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    action: (json['action'] as List)
+        ?.map((e) => e == null
+            ? null
+            : TestScript_Action.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   );
 }
@@ -2602,11 +2289,6 @@ Map<String, dynamic> _$TestScript_AssertToJson(TestScript_Assert instance) =>
 
 TestScript_Test _$TestScript_TestFromJson(Map<String, dynamic> json) {
   return TestScript_Test(
-    (json['action'] as List)
-        ?.map((e) => e == null
-            ? null
-            : TestScript_Action1.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -2624,6 +2306,11 @@ TestScript_Test _$TestScript_TestFromJson(Map<String, dynamic> json) {
     elementDescription: json['elementDescription'] == null
         ? null
         : Element.fromJson(json['elementDescription'] as Map<String, dynamic>),
+    action: (json['action'] as List)
+        ?.map((e) => e == null
+            ? null
+            : TestScript_Action1.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
   );
 }
 
@@ -2673,11 +2360,6 @@ Map<String, dynamic> _$TestScript_Action1ToJson(TestScript_Action1 instance) =>
 
 TestScript_Teardown _$TestScript_TeardownFromJson(Map<String, dynamic> json) {
   return TestScript_Teardown(
-    (json['action'] as List)
-        ?.map((e) => e == null
-            ? null
-            : TestScript_Action2.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -2686,6 +2368,11 @@ TestScript_Teardown _$TestScript_TeardownFromJson(Map<String, dynamic> json) {
     modifierExtension: (json['modifierExtension'] as List)
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    action: (json['action'] as List)
+        ?.map((e) => e == null
+            ? null
+            : TestScript_Action2.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   );
 }
@@ -2702,10 +2389,6 @@ Map<String, dynamic> _$TestScript_TeardownToJson(
 
 TestScript_Action2 _$TestScript_Action2FromJson(Map<String, dynamic> json) {
   return TestScript_Action2(
-    json['operation'] == null
-        ? null
-        : TestScript_Operation.fromJson(
-            json['operation'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -2715,6 +2398,10 @@ TestScript_Action2 _$TestScript_Action2FromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    operation: json['operation'] == null
+        ? null
+        : TestScript_Operation.fromJson(
+            json['operation'] as Map<String, dynamic>),
   );
 }
 

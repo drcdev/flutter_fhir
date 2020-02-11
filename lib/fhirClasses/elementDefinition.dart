@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 import 'package:flutter_fhir/fhirClasses/dosage.dart';
@@ -39,2129 +40,1164 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @HiveType(typeId: 55)
 class ElementDefinition {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ElementDefinition> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String path,
+		Element elementPath,
+		List<String> representation,
+		List<Element> elementRepresentation,
+		String sliceName,
+		Element elementSliceName,
+		bool sliceIsConstraining,
+		Element elementSliceIsConstraining,
+		String label,
+		Element elementLabel,
+		List<Coding> code,
+		ElementDefinition_Slicing slicing,
+		String short,
+		Element elementShort,
+		String definition,
+		Element elementDefinition,
+		String comment,
+		Element elementComment,
+		String requirements,
+		Element elementRequirements,
+		List<String> alias,
+		List<Element> elementAlias,
+		int min,
+		Element elementMin,
+		String max,
+		Element elementMax,
+		ElementDefinition_Base base,
+		String contentReference,
+		Element elementContentReference,
+		List<ElementDefinition_Type> type,
+		String defaultValueBase64Binary,
+		Element elementDefaultValueBase64Binary,
+		bool defaultValueBoolean,
+		Element elementDefaultValueBoolean,
+		String defaultValueCanonical,
+		Element elementDefaultValueCanonical,
+		String defaultValueCode,
+		Element elementDefaultValueCode,
+		String defaultValueDate,
+		Element elementDefaultValueDate,
+		String defaultValueDateTime,
+		Element elementDefaultValueDateTime,
+		double defaultValueDecimal,
+		Element elementDefaultValueDecimal,
+		String defaultValueId,
+		Element elementDefaultValueId,
+		String defaultValueInstant,
+		Element elementDefaultValueInstant,
+		int defaultValueInteger,
+		Element elementDefaultValueInteger,
+		String defaultValueMarkdown,
+		Element elementDefaultValueMarkdown,
+		String defaultValueOid,
+		Element elementDefaultValueOid,
+		int defaultValuePositiveInt,
+		Element elementDefaultValuePositiveInt,
+		String defaultValueString,
+		Element elementDefaultValueString,
+		String defaultValueTime,
+		Element elementDefaultValueTime,
+		int defaultValueUnsignedInt,
+		Element elementDefaultValueUnsignedInt,
+		String defaultValueUri,
+		Element elementDefaultValueUri,
+		String defaultValueUrl,
+		Element elementDefaultValueUrl,
+		String defaultValueUuid,
+		Element elementDefaultValueUuid,
+		Address defaultValueAddress,
+		Age defaultValueAge,
+		Annotation defaultValueAnnotation,
+		Attachment defaultValueAttachment,
+		CodeableConcept defaultValueCodeableConcept,
+		Coding defaultValueCoding,
+		ContactPoint defaultValueContactPoint,
+		Count defaultValueCount,
+		Distance defaultValueDistance,
+		Duration defaultValueDuration,
+		HumanName defaultValueHumanName,
+		Identifier defaultValueIdentifier,
+		Money defaultValueMoney,
+		Period defaultValuePeriod,
+		Quantity defaultValueQuantity,
+		Range defaultValueRange,
+		Ratio defaultValueRatio,
+		Reference defaultValueReference,
+		SampledData defaultValueSampledData,
+		Signature defaultValueSignature,
+		Timing defaultValueTiming,
+		ContactDetail defaultValueContactDetail,
+		Contributor defaultValueContributor,
+		DataRequirement defaultValueDataRequirement,
+		Expression defaultValueExpression,
+		ParameterDefinition defaultValueParameterDefinition,
+		RelatedArtifact defaultValueRelatedArtifact,
+		TriggerDefinition defaultValueTriggerDefinition,
+		UsageContext defaultValueUsageContext,
+		Dosage defaultValueDosage,
+		Meta defaultValueMeta,
+		String meaningWhenMissing,
+		Element elementMeaningWhenMissing,
+		String orderMeaning,
+		Element elementOrderMeaning,
+		String fixedBase64Binary,
+		Element elementFixedBase64Binary,
+		bool fixedBoolean,
+		Element elementFixedBoolean,
+		String fixedCanonical,
+		Element elementFixedCanonical,
+		String fixedCode,
+		Element elementFixedCode,
+		String fixedDate,
+		Element elementFixedDate,
+		String fixedDateTime,
+		Element elementFixedDateTime,
+		double fixedDecimal,
+		Element elementFixedDecimal,
+		String fixedId,
+		Element elementFixedId,
+		String fixedInstant,
+		Element elementFixedInstant,
+		int fixedInteger,
+		Element elementFixedInteger,
+		String fixedMarkdown,
+		Element elementFixedMarkdown,
+		String fixedOid,
+		Element elementFixedOid,
+		int fixedPositiveInt,
+		Element elementFixedPositiveInt,
+		String fixedString,
+		Element elementFixedString,
+		String fixedTime,
+		Element elementFixedTime,
+		int fixedUnsignedInt,
+		Element elementFixedUnsignedInt,
+		String fixedUri,
+		Element elementFixedUri,
+		String fixedUrl,
+		Element elementFixedUrl,
+		String fixedUuid,
+		Element elementFixedUuid,
+		Address fixedAddress,
+		Age fixedAge,
+		Annotation fixedAnnotation,
+		Attachment fixedAttachment,
+		CodeableConcept fixedCodeableConcept,
+		Coding fixedCoding,
+		ContactPoint fixedContactPoint,
+		Count fixedCount,
+		Distance fixedDistance,
+		Duration fixedDuration,
+		HumanName fixedHumanName,
+		Identifier fixedIdentifier,
+		Money fixedMoney,
+		Period fixedPeriod,
+		Quantity fixedQuantity,
+		Range fixedRange,
+		Ratio fixedRatio,
+		Reference fixedReference,
+		SampledData fixedSampledData,
+		Signature fixedSignature,
+		Timing fixedTiming,
+		ContactDetail fixedContactDetail,
+		Contributor fixedContributor,
+		DataRequirement fixedDataRequirement,
+		Expression fixedExpression,
+		ParameterDefinition fixedParameterDefinition,
+		RelatedArtifact fixedRelatedArtifact,
+		TriggerDefinition fixedTriggerDefinition,
+		UsageContext fixedUsageContext,
+		Dosage fixedDosage,
+		Meta fixedMeta,
+		String patternBase64Binary,
+		Element elementPatternBase64Binary,
+		bool patternBoolean,
+		Element elementPatternBoolean,
+		String patternCanonical,
+		Element elementPatternCanonical,
+		String patternCode,
+		Element elementPatternCode,
+		String patternDate,
+		Element elementPatternDate,
+		String patternDateTime,
+		Element elementPatternDateTime,
+		double patternDecimal,
+		Element elementPatternDecimal,
+		String patternId,
+		Element elementPatternId,
+		String patternInstant,
+		Element elementPatternInstant,
+		int patternInteger,
+		Element elementPatternInteger,
+		String patternMarkdown,
+		Element elementPatternMarkdown,
+		String patternOid,
+		Element elementPatternOid,
+		int patternPositiveInt,
+		Element elementPatternPositiveInt,
+		String patternString,
+		Element elementPatternString,
+		String patternTime,
+		Element elementPatternTime,
+		int patternUnsignedInt,
+		Element elementPatternUnsignedInt,
+		String patternUri,
+		Element elementPatternUri,
+		String patternUrl,
+		Element elementPatternUrl,
+		String patternUuid,
+		Element elementPatternUuid,
+		Address patternAddress,
+		Age patternAge,
+		Annotation patternAnnotation,
+		Attachment patternAttachment,
+		CodeableConcept patternCodeableConcept,
+		Coding patternCoding,
+		ContactPoint patternContactPoint,
+		Count patternCount,
+		Distance patternDistance,
+		Duration patternDuration,
+		HumanName patternHumanName,
+		Identifier patternIdentifier,
+		Money patternMoney,
+		Period patternPeriod,
+		Quantity patternQuantity,
+		Range patternRange,
+		Ratio patternRatio,
+		Reference patternReference,
+		SampledData patternSampledData,
+		Signature patternSignature,
+		Timing patternTiming,
+		ContactDetail patternContactDetail,
+		Contributor patternContributor,
+		DataRequirement patternDataRequirement,
+		Expression patternExpression,
+		ParameterDefinition patternParameterDefinition,
+		RelatedArtifact patternRelatedArtifact,
+		TriggerDefinition patternTriggerDefinition,
+		UsageContext patternUsageContext,
+		Dosage patternDosage,
+		Meta patternMeta,
+		List<ElementDefinition_Example> example,
+		String minValueDate,
+		Element elementMinValueDate,
+		String minValueDateTime,
+		Element elementMinValueDateTime,
+		String minValueInstant,
+		Element elementMinValueInstant,
+		String minValueTime,
+		Element elementMinValueTime,
+		double minValueDecimal,
+		Element elementMinValueDecimal,
+		int minValueInteger,
+		Element elementMinValueInteger,
+		int minValuePositiveInt,
+		Element elementMinValuePositiveInt,
+		int minValueUnsignedInt,
+		Element elementMinValueUnsignedInt,
+		Quantity minValueQuantity,
+		String maxValueDate,
+		Element elementMaxValueDate,
+		String maxValueDateTime,
+		Element elementMaxValueDateTime,
+		String maxValueInstant,
+		Element elementMaxValueInstant,
+		String maxValueTime,
+		Element elementMaxValueTime,
+		double maxValueDecimal,
+		Element elementMaxValueDecimal,
+		int maxValueInteger,
+		Element elementMaxValueInteger,
+		int maxValuePositiveInt,
+		Element elementMaxValuePositiveInt,
+		int maxValueUnsignedInt,
+		Element elementMaxValueUnsignedInt,
+		Quantity maxValueQuantity,
+		int maxLength,
+		Element elementMaxLength,
+		List<String> condition,
+		List<Element> elementCondition,
+		List<ElementDefinition_Constraint> constraint,
+		bool mustSupport,
+		Element elementMustSupport,
+		bool isModifier,
+		Element elementIsModifier,
+		String isModifierReason,
+		Element elementIsModifierReason,
+		bool isSummary,
+		Element elementIsSummary,
+		ElementDefinition_Binding binding,
+		List<ElementDefinition_Mapping> mapping}) async {
+	 return ElementDefinition(
+			id: await newEntry('ElementDefinition'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			path: path,
+			elementPath: elementPath,
+			representation: representation,
+			elementRepresentation: elementRepresentation,
+			sliceName: sliceName,
+			elementSliceName: elementSliceName,
+			sliceIsConstraining: sliceIsConstraining,
+			elementSliceIsConstraining: elementSliceIsConstraining,
+			label: label,
+			elementLabel: elementLabel,
+			code: code,
+			slicing: slicing,
+			short: short,
+			elementShort: elementShort,
+			definition: definition,
+			elementDefinition: elementDefinition,
+			comment: comment,
+			elementComment: elementComment,
+			requirements: requirements,
+			elementRequirements: elementRequirements,
+			alias: alias,
+			elementAlias: elementAlias,
+			min: min,
+			elementMin: elementMin,
+			max: max,
+			elementMax: elementMax,
+			base: base,
+			contentReference: contentReference,
+			elementContentReference: elementContentReference,
+			type: type,
+			defaultValueBase64Binary: defaultValueBase64Binary,
+			elementDefaultValueBase64Binary: elementDefaultValueBase64Binary,
+			defaultValueBoolean: defaultValueBoolean,
+			elementDefaultValueBoolean: elementDefaultValueBoolean,
+			defaultValueCanonical: defaultValueCanonical,
+			elementDefaultValueCanonical: elementDefaultValueCanonical,
+			defaultValueCode: defaultValueCode,
+			elementDefaultValueCode: elementDefaultValueCode,
+			defaultValueDate: defaultValueDate,
+			elementDefaultValueDate: elementDefaultValueDate,
+			defaultValueDateTime: defaultValueDateTime,
+			elementDefaultValueDateTime: elementDefaultValueDateTime,
+			defaultValueDecimal: defaultValueDecimal,
+			elementDefaultValueDecimal: elementDefaultValueDecimal,
+			defaultValueId: defaultValueId,
+			elementDefaultValueId: elementDefaultValueId,
+			defaultValueInstant: defaultValueInstant,
+			elementDefaultValueInstant: elementDefaultValueInstant,
+			defaultValueInteger: defaultValueInteger,
+			elementDefaultValueInteger: elementDefaultValueInteger,
+			defaultValueMarkdown: defaultValueMarkdown,
+			elementDefaultValueMarkdown: elementDefaultValueMarkdown,
+			defaultValueOid: defaultValueOid,
+			elementDefaultValueOid: elementDefaultValueOid,
+			defaultValuePositiveInt: defaultValuePositiveInt,
+			elementDefaultValuePositiveInt: elementDefaultValuePositiveInt,
+			defaultValueString: defaultValueString,
+			elementDefaultValueString: elementDefaultValueString,
+			defaultValueTime: defaultValueTime,
+			elementDefaultValueTime: elementDefaultValueTime,
+			defaultValueUnsignedInt: defaultValueUnsignedInt,
+			elementDefaultValueUnsignedInt: elementDefaultValueUnsignedInt,
+			defaultValueUri: defaultValueUri,
+			elementDefaultValueUri: elementDefaultValueUri,
+			defaultValueUrl: defaultValueUrl,
+			elementDefaultValueUrl: elementDefaultValueUrl,
+			defaultValueUuid: defaultValueUuid,
+			elementDefaultValueUuid: elementDefaultValueUuid,
+			defaultValueAddress: defaultValueAddress,
+			defaultValueAge: defaultValueAge,
+			defaultValueAnnotation: defaultValueAnnotation,
+			defaultValueAttachment: defaultValueAttachment,
+			defaultValueCodeableConcept: defaultValueCodeableConcept,
+			defaultValueCoding: defaultValueCoding,
+			defaultValueContactPoint: defaultValueContactPoint,
+			defaultValueCount: defaultValueCount,
+			defaultValueDistance: defaultValueDistance,
+			defaultValueDuration: defaultValueDuration,
+			defaultValueHumanName: defaultValueHumanName,
+			defaultValueIdentifier: defaultValueIdentifier,
+			defaultValueMoney: defaultValueMoney,
+			defaultValuePeriod: defaultValuePeriod,
+			defaultValueQuantity: defaultValueQuantity,
+			defaultValueRange: defaultValueRange,
+			defaultValueRatio: defaultValueRatio,
+			defaultValueReference: defaultValueReference,
+			defaultValueSampledData: defaultValueSampledData,
+			defaultValueSignature: defaultValueSignature,
+			defaultValueTiming: defaultValueTiming,
+			defaultValueContactDetail: defaultValueContactDetail,
+			defaultValueContributor: defaultValueContributor,
+			defaultValueDataRequirement: defaultValueDataRequirement,
+			defaultValueExpression: defaultValueExpression,
+			defaultValueParameterDefinition: defaultValueParameterDefinition,
+			defaultValueRelatedArtifact: defaultValueRelatedArtifact,
+			defaultValueTriggerDefinition: defaultValueTriggerDefinition,
+			defaultValueUsageContext: defaultValueUsageContext,
+			defaultValueDosage: defaultValueDosage,
+			defaultValueMeta: defaultValueMeta,
+			meaningWhenMissing: meaningWhenMissing,
+			elementMeaningWhenMissing: elementMeaningWhenMissing,
+			orderMeaning: orderMeaning,
+			elementOrderMeaning: elementOrderMeaning,
+			fixedBase64Binary: fixedBase64Binary,
+			elementFixedBase64Binary: elementFixedBase64Binary,
+			fixedBoolean: fixedBoolean,
+			elementFixedBoolean: elementFixedBoolean,
+			fixedCanonical: fixedCanonical,
+			elementFixedCanonical: elementFixedCanonical,
+			fixedCode: fixedCode,
+			elementFixedCode: elementFixedCode,
+			fixedDate: fixedDate,
+			elementFixedDate: elementFixedDate,
+			fixedDateTime: fixedDateTime,
+			elementFixedDateTime: elementFixedDateTime,
+			fixedDecimal: fixedDecimal,
+			elementFixedDecimal: elementFixedDecimal,
+			fixedId: fixedId,
+			elementFixedId: elementFixedId,
+			fixedInstant: fixedInstant,
+			elementFixedInstant: elementFixedInstant,
+			fixedInteger: fixedInteger,
+			elementFixedInteger: elementFixedInteger,
+			fixedMarkdown: fixedMarkdown,
+			elementFixedMarkdown: elementFixedMarkdown,
+			fixedOid: fixedOid,
+			elementFixedOid: elementFixedOid,
+			fixedPositiveInt: fixedPositiveInt,
+			elementFixedPositiveInt: elementFixedPositiveInt,
+			fixedString: fixedString,
+			elementFixedString: elementFixedString,
+			fixedTime: fixedTime,
+			elementFixedTime: elementFixedTime,
+			fixedUnsignedInt: fixedUnsignedInt,
+			elementFixedUnsignedInt: elementFixedUnsignedInt,
+			fixedUri: fixedUri,
+			elementFixedUri: elementFixedUri,
+			fixedUrl: fixedUrl,
+			elementFixedUrl: elementFixedUrl,
+			fixedUuid: fixedUuid,
+			elementFixedUuid: elementFixedUuid,
+			fixedAddress: fixedAddress,
+			fixedAge: fixedAge,
+			fixedAnnotation: fixedAnnotation,
+			fixedAttachment: fixedAttachment,
+			fixedCodeableConcept: fixedCodeableConcept,
+			fixedCoding: fixedCoding,
+			fixedContactPoint: fixedContactPoint,
+			fixedCount: fixedCount,
+			fixedDistance: fixedDistance,
+			fixedDuration: fixedDuration,
+			fixedHumanName: fixedHumanName,
+			fixedIdentifier: fixedIdentifier,
+			fixedMoney: fixedMoney,
+			fixedPeriod: fixedPeriod,
+			fixedQuantity: fixedQuantity,
+			fixedRange: fixedRange,
+			fixedRatio: fixedRatio,
+			fixedReference: fixedReference,
+			fixedSampledData: fixedSampledData,
+			fixedSignature: fixedSignature,
+			fixedTiming: fixedTiming,
+			fixedContactDetail: fixedContactDetail,
+			fixedContributor: fixedContributor,
+			fixedDataRequirement: fixedDataRequirement,
+			fixedExpression: fixedExpression,
+			fixedParameterDefinition: fixedParameterDefinition,
+			fixedRelatedArtifact: fixedRelatedArtifact,
+			fixedTriggerDefinition: fixedTriggerDefinition,
+			fixedUsageContext: fixedUsageContext,
+			fixedDosage: fixedDosage,
+			fixedMeta: fixedMeta,
+			patternBase64Binary: patternBase64Binary,
+			elementPatternBase64Binary: elementPatternBase64Binary,
+			patternBoolean: patternBoolean,
+			elementPatternBoolean: elementPatternBoolean,
+			patternCanonical: patternCanonical,
+			elementPatternCanonical: elementPatternCanonical,
+			patternCode: patternCode,
+			elementPatternCode: elementPatternCode,
+			patternDate: patternDate,
+			elementPatternDate: elementPatternDate,
+			patternDateTime: patternDateTime,
+			elementPatternDateTime: elementPatternDateTime,
+			patternDecimal: patternDecimal,
+			elementPatternDecimal: elementPatternDecimal,
+			patternId: patternId,
+			elementPatternId: elementPatternId,
+			patternInstant: patternInstant,
+			elementPatternInstant: elementPatternInstant,
+			patternInteger: patternInteger,
+			elementPatternInteger: elementPatternInteger,
+			patternMarkdown: patternMarkdown,
+			elementPatternMarkdown: elementPatternMarkdown,
+			patternOid: patternOid,
+			elementPatternOid: elementPatternOid,
+			patternPositiveInt: patternPositiveInt,
+			elementPatternPositiveInt: elementPatternPositiveInt,
+			patternString: patternString,
+			elementPatternString: elementPatternString,
+			patternTime: patternTime,
+			elementPatternTime: elementPatternTime,
+			patternUnsignedInt: patternUnsignedInt,
+			elementPatternUnsignedInt: elementPatternUnsignedInt,
+			patternUri: patternUri,
+			elementPatternUri: elementPatternUri,
+			patternUrl: patternUrl,
+			elementPatternUrl: elementPatternUrl,
+			patternUuid: patternUuid,
+			elementPatternUuid: elementPatternUuid,
+			patternAddress: patternAddress,
+			patternAge: patternAge,
+			patternAnnotation: patternAnnotation,
+			patternAttachment: patternAttachment,
+			patternCodeableConcept: patternCodeableConcept,
+			patternCoding: patternCoding,
+			patternContactPoint: patternContactPoint,
+			patternCount: patternCount,
+			patternDistance: patternDistance,
+			patternDuration: patternDuration,
+			patternHumanName: patternHumanName,
+			patternIdentifier: patternIdentifier,
+			patternMoney: patternMoney,
+			patternPeriod: patternPeriod,
+			patternQuantity: patternQuantity,
+			patternRange: patternRange,
+			patternRatio: patternRatio,
+			patternReference: patternReference,
+			patternSampledData: patternSampledData,
+			patternSignature: patternSignature,
+			patternTiming: patternTiming,
+			patternContactDetail: patternContactDetail,
+			patternContributor: patternContributor,
+			patternDataRequirement: patternDataRequirement,
+			patternExpression: patternExpression,
+			patternParameterDefinition: patternParameterDefinition,
+			patternRelatedArtifact: patternRelatedArtifact,
+			patternTriggerDefinition: patternTriggerDefinition,
+			patternUsageContext: patternUsageContext,
+			patternDosage: patternDosage,
+			patternMeta: patternMeta,
+			example: example,
+			minValueDate: minValueDate,
+			elementMinValueDate: elementMinValueDate,
+			minValueDateTime: minValueDateTime,
+			elementMinValueDateTime: elementMinValueDateTime,
+			minValueInstant: minValueInstant,
+			elementMinValueInstant: elementMinValueInstant,
+			minValueTime: minValueTime,
+			elementMinValueTime: elementMinValueTime,
+			minValueDecimal: minValueDecimal,
+			elementMinValueDecimal: elementMinValueDecimal,
+			minValueInteger: minValueInteger,
+			elementMinValueInteger: elementMinValueInteger,
+			minValuePositiveInt: minValuePositiveInt,
+			elementMinValuePositiveInt: elementMinValuePositiveInt,
+			minValueUnsignedInt: minValueUnsignedInt,
+			elementMinValueUnsignedInt: elementMinValueUnsignedInt,
+			minValueQuantity: minValueQuantity,
+			maxValueDate: maxValueDate,
+			elementMaxValueDate: elementMaxValueDate,
+			maxValueDateTime: maxValueDateTime,
+			elementMaxValueDateTime: elementMaxValueDateTime,
+			maxValueInstant: maxValueInstant,
+			elementMaxValueInstant: elementMaxValueInstant,
+			maxValueTime: maxValueTime,
+			elementMaxValueTime: elementMaxValueTime,
+			maxValueDecimal: maxValueDecimal,
+			elementMaxValueDecimal: elementMaxValueDecimal,
+			maxValueInteger: maxValueInteger,
+			elementMaxValueInteger: elementMaxValueInteger,
+			maxValuePositiveInt: maxValuePositiveInt,
+			elementMaxValuePositiveInt: elementMaxValuePositiveInt,
+			maxValueUnsignedInt: maxValueUnsignedInt,
+			elementMaxValueUnsignedInt: elementMaxValueUnsignedInt,
+			maxValueQuantity: maxValueQuantity,
+			maxLength: maxLength,
+			elementMaxLength: elementMaxLength,
+			condition: condition,
+			elementCondition: elementCondition,
+			constraint: constraint,
+			mustSupport: mustSupport,
+			elementMustSupport: elementMustSupport,
+			isModifier: isModifier,
+			elementIsModifier: elementIsModifier,
+			isModifierReason: isModifierReason,
+			elementIsModifierReason: elementIsModifierReason,
+			isSummary: isSummary,
+			elementIsSummary: elementIsSummary,
+			binding: binding,
+			mapping: mapping);
+	}
+
   @HiveField(0)
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   @HiveField(1)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   @HiveField(2)
   List<Extension> modifierExtension;
-
-  //  The path identifies the element and is expressed as a "."-separated
-  // list of ancestor elements, beginning with the name of the resource or
-  // extension.
   @HiveField(3)
   String path;
-
-  //  Extensions for path
   @HiveField(4)
   Element elementPath;
-
-  //  Codes that define how this element is represented in instances, when
-  // the deviation varies from the normal case.
   @HiveField(5)
   List<String> representation; // <code> enum: xmlAttr/xmlText/typeAttr/cdaText/xhtml> representation;
-
-  //  Extensions for representation
   @HiveField(6)
   List<Element> elementRepresentation;
-
-  //  The name of this element definition slice, when slicing is working.
-  // The name must be a token with no dots or spaces. This is a unique name
-  // referring to a specific set of constraints applied to this element,
-  // used to provide a name to different slices of the same element.
   @HiveField(7)
   String sliceName;
-
-  //  Extensions for sliceName
   @HiveField(8)
   Element elementSliceName;
-
-  //  If true, indicates that this slice definition is constraining a slice
-  // definition with the same name in an inherited profile. If false, the
-  // slice is not overriding any slice in an inherited profile. If missing,
-  // the slice might or might not be overriding a slice in an inherited
-  // profile, depending on the sliceName.
   @HiveField(9)
   bool sliceIsConstraining;
-
-  //  Extensions for sliceIsConstraining
   @HiveField(10)
   Element elementSliceIsConstraining;
-
-  //  A single preferred label which is the text to display beside the
-  // element indicating its meaning or to use to prompt for the element in a
-  // user display or form.
   @HiveField(11)
   String label;
-
-  //  Extensions for label
   @HiveField(12)
   Element elementLabel;
-
-  //  A code that has the same meaning as the element in a particular
-  // terminology.
   @HiveField(13)
   List<Coding> code;
-
-  //  Indicates that the element is sliced into a set of alternative
-  // definitions (i.e. in a structure definition, there are multiple
-  // different constraints on a single element in the base resource).
-  // Slicing can be used in any resource that has cardinality ..* on the
-  // base resource, or any resource with a choice of types. The set of
-  // slices is any elements that come after this in the element sequence
-  // that have the same path, until a shorter path occurs (the shorter path
-  // terminates the set).
   @HiveField(14)
   ElementDefinition_Slicing slicing;
-
-  //  A concise description of what this element means (e.g. for use in
-  // autogenerated summaries).
   @HiveField(15)
   String short;
-
-  //  Extensions for short
   @HiveField(16)
   Element elementShort;
-
-  //  Provides a complete explanation of the meaning of the data element for
-  // human readability.  For the case of elements derived from existing
-  // elements (e.g. constraints), the definition SHALL be consistent with
-  // the base definition, but convey the meaning of the element in the
-  // particular context of use of the resource. (Note: The text you are
-  // reading is specified in ElementDefinition.definition).
   @HiveField(17)
   String definition;
-
-  //  Extensions for definition
   @HiveField(18)
   Element elementDefinition;
-
-  //  Explanatory notes and implementation guidance about the data element,
-  // including notes about how to use the data properly, exceptions to
-  // proper use, etc. (Note: The text you are reading is specified in
-  // ElementDefinition.comment).
   @HiveField(19)
   String comment;
-
-  //  Extensions for comment
   @HiveField(20)
   Element elementComment;
-
-  //  This element is for traceability of why the element was created and
-  // why the constraints exist as they do. This may be used to point to
-  // source materials or specifications that drove the structure of this
-  // element.
   @HiveField(21)
   String requirements;
-
-  //  Extensions for requirements
   @HiveField(22)
   Element elementRequirements;
-
-  //  Identifies additional names by which this element might also be known.
   @HiveField(23)
   List<String> alias;
-
-  //  Extensions for alias
   @HiveField(24)
   List<Element> elementAlias;
-
-  //  The minimum number of times this element SHALL appear in the instance.
   @HiveField(25)
   int min;
-
-  //  Extensions for min
   @HiveField(26)
   Element elementMin;
-
-  //  The maximum number of times this element is permitted to appear in the
-  // instance.
   @HiveField(27)
   String max;
-
-  //  Extensions for max
   @HiveField(28)
   Element elementMax;
-
-  //  Information about the base definition of the element, provided to make
-  // it unnecessary for tools to trace the deviation of the element through
-  // the derived and related profiles. When the element definition is not
-  // the original definition of an element - i.g. either in a constraint on
-  // another type, or for elements from a super type in a snap shot - then
-  // the information in provided in the element definition may be different
-  // to the base definition. On the original definition of the element, it
-  // will be same.
   @HiveField(29)
   ElementDefinition_Base base;
-
-  //  Identifies an element defined elsewhere in the definition whose
-  // content rules should be applied to the current element.
-  // ContentReferences bring across all the rules that are in the
-  // ElementDefinition for the element, including definitions, cardinality
-  // constraints, bindings, invariants etc.
   @HiveField(30)
   String contentReference;
-
-  //  Extensions for contentReference
   @HiveField(31)
   Element elementContentReference;
-
-  //  The data type or resource that the value of this element is permitted
-  // to be.
   @HiveField(32)
   List<ElementDefinition_Type> type;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(33)
   String defaultValueBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
-
-  //  Extensions for defaultValueBase64Binary
   @HiveField(34)
   Element elementDefaultValueBase64Binary;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(35)
   bool defaultValueBoolean; //  pattern: ^true|false$
-
-  //  Extensions for defaultValueBoolean
   @HiveField(36)
   Element elementDefaultValueBoolean;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(37)
   String defaultValueCanonical; //  pattern: ^\S*$
-
-  //  Extensions for defaultValueCanonical
   @HiveField(38)
   Element elementDefaultValueCanonical;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(39)
   String defaultValueCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
-
-  //  Extensions for defaultValueCode
   @HiveField(40)
   Element elementDefaultValueCode;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(41)
   String defaultValueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
-
-  //  Extensions for defaultValueDate
   @HiveField(42)
   Element elementDefaultValueDate;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(43)
   String defaultValueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for defaultValueDateTime
   @HiveField(44)
   Element elementDefaultValueDateTime;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   double defaultValueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
-
-  //  Extensions for defaultValueDecimal
   @HiveField(46)
   Element elementDefaultValueDecimal;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(47)
   String defaultValueId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
-
-  //  Extensions for defaultValueId
   @HiveField(48)
   Element elementDefaultValueId;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(49)
   String defaultValueInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
-
-  //  Extensions for defaultValueInstant
   @HiveField(50)
   Element elementDefaultValueInstant;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   int defaultValueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
-
-  //  Extensions for defaultValueInteger
   @HiveField(52)
   Element elementDefaultValueInteger;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(53)
   String defaultValueMarkdown; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for defaultValueMarkdown
   @HiveField(54)
   Element elementDefaultValueMarkdown;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(55)
   String defaultValueOid; //  pattern: ^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$
-
-  //  Extensions for defaultValueOid
   @HiveField(56)
   Element elementDefaultValueOid;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   int defaultValuePositiveInt; //  pattern: ^[1-9][0-9]*$
-
-  //  Extensions for defaultValuePositiveInt
   @HiveField(58)
   Element elementDefaultValuePositiveInt;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(59)
   String defaultValueString; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for defaultValueString
   @HiveField(60)
   Element elementDefaultValueString;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(61)
   String defaultValueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
-
-  //  Extensions for defaultValueTime
   @HiveField(62)
   Element elementDefaultValueTime;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   int defaultValueUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
-
-  //  Extensions for defaultValueUnsignedInt
   @HiveField(64)
   Element elementDefaultValueUnsignedInt;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(65)
   String defaultValueUri; //  pattern: ^\S*$
-
-  //  Extensions for defaultValueUri
   @HiveField(66)
   Element elementDefaultValueUri;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(67)
   String defaultValueUrl; //  pattern: ^\S*$
-
-  //  Extensions for defaultValueUrl
   @HiveField(68)
   Element elementDefaultValueUrl;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(69)
   String defaultValueUuid; //  pattern: ^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
-
-  //  Extensions for defaultValueUuid
   @HiveField(70)
   Element elementDefaultValueUuid;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(71)
   Address defaultValueAddress;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(72)
   Age defaultValueAge;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(73)
   Annotation defaultValueAnnotation;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(74)
   Attachment defaultValueAttachment;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(75)
   CodeableConcept defaultValueCodeableConcept;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(76)
   Coding defaultValueCoding;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(77)
   ContactPoint defaultValueContactPoint;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(78)
   Count defaultValueCount;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(79)
   Distance defaultValueDistance;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(80)
   Duration defaultValueDuration;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(81)
   HumanName defaultValueHumanName;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(82)
   Identifier defaultValueIdentifier;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(83)
   Money defaultValueMoney;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(84)
   Period defaultValuePeriod;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(85)
   Quantity defaultValueQuantity;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(86)
   Range defaultValueRange;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(87)
   Ratio defaultValueRatio;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(88)
   Reference defaultValueReference;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(89)
   SampledData defaultValueSampledData;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(90)
   Signature defaultValueSignature;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(91)
   Timing defaultValueTiming;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(92)
   ContactDetail defaultValueContactDetail;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(93)
   Contributor defaultValueContributor;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(94)
   DataRequirement defaultValueDataRequirement;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(95)
   Expression defaultValueExpression;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(96)
   ParameterDefinition defaultValueParameterDefinition;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(97)
   RelatedArtifact defaultValueRelatedArtifact;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(98)
   TriggerDefinition defaultValueTriggerDefinition;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(99)
   UsageContext defaultValueUsageContext;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(100)
   Dosage defaultValueDosage;
-
-  //  The value that should be used if there is no value stated in the
-  // instance (e.g. 'if not otherwise specified, the abstract is false').
   @HiveField(101)
   Meta defaultValueMeta;
-
-  //  The Implicit meaning that is to be understood when this element is
-  // missing (e.g. 'when this element is missing, the period is ongoing').
   @HiveField(102)
   String meaningWhenMissing;
-
-  //  Extensions for meaningWhenMissing
   @HiveField(103)
   Element elementMeaningWhenMissing;
-
-  //  If present, indicates that the order of the repeating element has
-  // meaning and describes what that meaning is.  If absent, it means that
-  // the order of the element has no meaning.
   @HiveField(104)
   String orderMeaning;
-
-  //  Extensions for orderMeaning
   @HiveField(105)
   Element elementOrderMeaning;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(106)
   String fixedBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
-
-  //  Extensions for fixedBase64Binary
   @HiveField(107)
   Element elementFixedBase64Binary;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(108)
   bool fixedBoolean; //  pattern: ^true|false$
-
-  //  Extensions for fixedBoolean
   @HiveField(109)
   Element elementFixedBoolean;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(110)
   String fixedCanonical; //  pattern: ^\S*$
-
-  //  Extensions for fixedCanonical
   @HiveField(111)
   Element elementFixedCanonical;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(112)
   String fixedCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
-
-  //  Extensions for fixedCode
   @HiveField(113)
   Element elementFixedCode;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(114)
   String fixedDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
-
-  //  Extensions for fixedDate
   @HiveField(115)
   Element elementFixedDate;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(116)
   String fixedDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for fixedDateTime
   @HiveField(117)
   Element elementFixedDateTime;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   double fixedDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
-
-  //  Extensions for fixedDecimal
   @HiveField(119)
   Element elementFixedDecimal;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(120)
   String fixedId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
-
-  //  Extensions for fixedId
   @HiveField(121)
   Element elementFixedId;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(122)
   String fixedInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
-
-  //  Extensions for fixedInstant
   @HiveField(123)
   Element elementFixedInstant;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   int fixedInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
-
-  //  Extensions for fixedInteger
   @HiveField(125)
   Element elementFixedInteger;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(126)
   String fixedMarkdown; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for fixedMarkdown
   @HiveField(127)
   Element elementFixedMarkdown;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(128)
   String fixedOid; //  pattern: ^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$
-
-  //  Extensions for fixedOid
   @HiveField(129)
   Element elementFixedOid;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   int fixedPositiveInt; //  pattern: ^[1-9][0-9]*$
-
-  //  Extensions for fixedPositiveInt
   @HiveField(131)
   Element elementFixedPositiveInt;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(132)
   String fixedString; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for fixedString
   @HiveField(133)
   Element elementFixedString;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(134)
   String fixedTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
-
-  //  Extensions for fixedTime
   @HiveField(135)
   Element elementFixedTime;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   int fixedUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
-
-  //  Extensions for fixedUnsignedInt
   @HiveField(137)
   Element elementFixedUnsignedInt;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(138)
   String fixedUri; //  pattern: ^\S*$
-
-  //  Extensions for fixedUri
   @HiveField(139)
   Element elementFixedUri;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(140)
   String fixedUrl; //  pattern: ^\S*$
-
-  //  Extensions for fixedUrl
   @HiveField(141)
   Element elementFixedUrl;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(142)
   String fixedUuid; //  pattern: ^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
-
-  //  Extensions for fixedUuid
   @HiveField(143)
   Element elementFixedUuid;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(144)
   Address fixedAddress;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(145)
   Age fixedAge;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(146)
   Annotation fixedAnnotation;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(147)
   Attachment fixedAttachment;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(148)
   CodeableConcept fixedCodeableConcept;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(149)
   Coding fixedCoding;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(150)
   ContactPoint fixedContactPoint;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(151)
   Count fixedCount;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(152)
   Distance fixedDistance;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(153)
   Duration fixedDuration;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(154)
   HumanName fixedHumanName;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(155)
   Identifier fixedIdentifier;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(156)
   Money fixedMoney;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(157)
   Period fixedPeriod;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(158)
   Quantity fixedQuantity;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(159)
   Range fixedRange;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(160)
   Ratio fixedRatio;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(161)
   Reference fixedReference;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(162)
   SampledData fixedSampledData;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(163)
   Signature fixedSignature;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(164)
   Timing fixedTiming;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(165)
   ContactDetail fixedContactDetail;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(166)
   Contributor fixedContributor;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(167)
   DataRequirement fixedDataRequirement;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(168)
   Expression fixedExpression;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(169)
   ParameterDefinition fixedParameterDefinition;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(170)
   RelatedArtifact fixedRelatedArtifact;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(171)
   TriggerDefinition fixedTriggerDefinition;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(172)
   UsageContext fixedUsageContext;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(173)
   Dosage fixedDosage;
-
-  //  Specifies a value that SHALL be exactly the value  for this element in
-  // the instance. For purposes of comparison, non-significant whitespace is
-  // ignored, and all values must be an exact match (case and accent
-  // sensitive). Missing elements/attributes must also be missing.
   @HiveField(174)
   Meta fixedMeta;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(175)
   String patternBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
-
-  //  Extensions for patternBase64Binary
   @HiveField(176)
   Element elementPatternBase64Binary;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(177)
   bool patternBoolean; //  pattern: ^true|false$
-
-  //  Extensions for patternBoolean
   @HiveField(178)
   Element elementPatternBoolean;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(179)
   String patternCanonical; //  pattern: ^\S*$
-
-  //  Extensions for patternCanonical
   @HiveField(180)
   Element elementPatternCanonical;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(181)
   String patternCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
-
-  //  Extensions for patternCode
   @HiveField(182)
   Element elementPatternCode;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(183)
   String patternDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
-
-  //  Extensions for patternDate
   @HiveField(184)
   Element elementPatternDate;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(185)
   String patternDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for patternDateTime
   @HiveField(186)
   Element elementPatternDateTime;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   double patternDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
-
-  //  Extensions for patternDecimal
   @HiveField(188)
   Element elementPatternDecimal;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(189)
   String patternId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
-
-  //  Extensions for patternId
   @HiveField(190)
   Element elementPatternId;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(191)
   String patternInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
-
-  //  Extensions for patternInstant
   @HiveField(192)
   Element elementPatternInstant;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   int patternInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
-
-  //  Extensions for patternInteger
   @HiveField(194)
   Element elementPatternInteger;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(195)
   String patternMarkdown; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for patternMarkdown
   @HiveField(196)
   Element elementPatternMarkdown;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(197)
   String patternOid; //  pattern: ^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$
-
-  //  Extensions for patternOid
   @HiveField(198)
   Element elementPatternOid;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   int patternPositiveInt; //  pattern: ^[1-9][0-9]*$
-
-  //  Extensions for patternPositiveInt
   @HiveField(200)
   Element elementPatternPositiveInt;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(201)
   String patternString; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for patternString
   @HiveField(202)
   Element elementPatternString;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(203)
   String patternTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
-
-  //  Extensions for patternTime
   @HiveField(204)
   Element elementPatternTime;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   int patternUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
-
-  //  Extensions for patternUnsignedInt
   @HiveField(206)
   Element elementPatternUnsignedInt;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(207)
   String patternUri; //  pattern: ^\S*$
-
-  //  Extensions for patternUri
   @HiveField(208)
   Element elementPatternUri;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(209)
   String patternUrl; //  pattern: ^\S*$
-
-  //  Extensions for patternUrl
   @HiveField(210)
   Element elementPatternUrl;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(211)
   String patternUuid; //  pattern: ^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
-
-  //  Extensions for patternUuid
   @HiveField(212)
   Element elementPatternUuid;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(213)
   Address patternAddress;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(214)
   Age patternAge;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(215)
   Annotation patternAnnotation;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(216)
   Attachment patternAttachment;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(217)
   CodeableConcept patternCodeableConcept;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(218)
   Coding patternCoding;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(219)
   ContactPoint patternContactPoint;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(220)
   Count patternCount;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(221)
   Distance patternDistance;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(222)
   Duration patternDuration;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(223)
   HumanName patternHumanName;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(224)
   Identifier patternIdentifier;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(225)
   Money patternMoney;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(226)
   Period patternPeriod;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(227)
   Quantity patternQuantity;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(228)
   Range patternRange;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(229)
   Ratio patternRatio;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(230)
   Reference patternReference;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(231)
   SampledData patternSampledData;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(232)
   Signature patternSignature;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(233)
   Timing patternTiming;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(234)
   ContactDetail patternContactDetail;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(235)
   Contributor patternContributor;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(236)
   DataRequirement patternDataRequirement;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(237)
   Expression patternExpression;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(238)
   ParameterDefinition patternParameterDefinition;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(239)
   RelatedArtifact patternRelatedArtifact;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(240)
   TriggerDefinition patternTriggerDefinition;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(241)
   UsageContext patternUsageContext;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(242)
   Dosage patternDosage;
-
-  //  Specifies a value that the value in the instance SHALL follow - that
-  // is, any value in the pattern must be found in the instance. Other
-  // additional values may be found too. This is effectively constraint by
-  // example.   When pattern[x] is used to constrain a primitive, it means
-  // that the value provided in the pattern[x] must match the instance value
-  // exactly. When pattern[x] is used to constrain an array, it means that
-  // each element provided in the pattern[x] array must (recursively) match
-  // at least one element from the instance array. When pattern[x] is used
-  // to constrain a complex object, it means that each property in the
-  // pattern must be present in the complex object, and its value must
-  // recursively match -- i.e., 1. If primitive: it must match exactly the
-  // pattern value 2. If a complex object: it must match (recursively) the
-  // pattern value 3. If an array: it must match (recursively) the pattern
-  // value.
   @HiveField(243)
   Meta patternMeta;
-
-  //  A sample value for this element demonstrating the type of information
-  // that would typically be found in the element.
   @HiveField(244)
   List<ElementDefinition_Example> example;
-
-  //  The minimum allowed value for the element. The value is inclusive.
-  // This is allowed for the types date, dateTime, instant, time, decimal,
-  // integer, and Quantity.
   @HiveField(245)
   String minValueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
-
-  //  Extensions for minValueDate
   @HiveField(246)
   Element elementMinValueDate;
-
-  //  The minimum allowed value for the element. The value is inclusive.
-  // This is allowed for the types date, dateTime, instant, time, decimal,
-  // integer, and Quantity.
   @HiveField(247)
   String minValueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for minValueDateTime
   @HiveField(248)
   Element elementMinValueDateTime;
-
-  //  The minimum allowed value for the element. The value is inclusive.
-  // This is allowed for the types date, dateTime, instant, time, decimal,
-  // integer, and Quantity.
   @HiveField(249)
   String minValueInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
-
-  //  Extensions for minValueInstant
   @HiveField(250)
   Element elementMinValueInstant;
-
-  //  The minimum allowed value for the element. The value is inclusive.
-  // This is allowed for the types date, dateTime, instant, time, decimal,
-  // integer, and Quantity.
   @HiveField(251)
   String minValueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
-
-  //  Extensions for minValueTime
   @HiveField(252)
   Element elementMinValueTime;
-
-  //  The minimum allowed value for the element. The value is inclusive.
-  // This is allowed for the types date, dateTime, instant, time, decimal,
-  // integer, and Quantity.
   double minValueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
-
-  //  Extensions for minValueDecimal
   @HiveField(254)
   Element elementMinValueDecimal;
-
-  //  The minimum allowed value for the element. The value is inclusive.
-  // This is allowed for the types date, dateTime, instant, time, decimal,
-  // integer, and Quantity.
   int minValueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
-
-  //  Extensions for minValueInteger
   @HiveField(256)
   Element elementMinValueInteger;
-
-  //  The minimum allowed value for the element. The value is inclusive.
-  // This is allowed for the types date, dateTime, instant, time, decimal,
-  // integer, and Quantity.
   int minValuePositiveInt; //  pattern: ^[1-9][0-9]*$
-
-  //  Extensions for minValuePositiveInt
   @HiveField(258)
   Element elementMinValuePositiveInt;
-
-  //  The minimum allowed value for the element. The value is inclusive.
-  // This is allowed for the types date, dateTime, instant, time, decimal,
-  // integer, and Quantity.
   int minValueUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
-
-  //  Extensions for minValueUnsignedInt
   @HiveField(260)
   Element elementMinValueUnsignedInt;
-
-  //  The minimum allowed value for the element. The value is inclusive.
-  // This is allowed for the types date, dateTime, instant, time, decimal,
-  // integer, and Quantity.
   @HiveField(261)
   Quantity minValueQuantity;
-
-  //  The maximum allowed value for the element. The value is inclusive.
-  // This is allowed for the types date, dateTime, instant, time, decimal,
-  // integer, and Quantity.
   @HiveField(262)
   String maxValueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
-
-  //  Extensions for maxValueDate
   @HiveField(263)
   Element elementMaxValueDate;
-
-  //  The maximum allowed value for the element. The value is inclusive.
-  // This is allowed for the types date, dateTime, instant, time, decimal,
-  // integer, and Quantity.
   @HiveField(264)
   String maxValueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for maxValueDateTime
   @HiveField(265)
   Element elementMaxValueDateTime;
-
-  //  The maximum allowed value for the element. The value is inclusive.
-  // This is allowed for the types date, dateTime, instant, time, decimal,
-  // integer, and Quantity.
   @HiveField(266)
   String maxValueInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
-
-  //  Extensions for maxValueInstant
   @HiveField(267)
   Element elementMaxValueInstant;
-
-  //  The maximum allowed value for the element. The value is inclusive.
-  // This is allowed for the types date, dateTime, instant, time, decimal,
-  // integer, and Quantity.
   @HiveField(268)
   String maxValueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
-
-  //  Extensions for maxValueTime
   @HiveField(269)
   Element elementMaxValueTime;
-
-  //  The maximum allowed value for the element. The value is inclusive.
-  // This is allowed for the types date, dateTime, instant, time, decimal,
-  // integer, and Quantity.
   double maxValueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
-
-  //  Extensions for maxValueDecimal
   @HiveField(271)
   Element elementMaxValueDecimal;
-
-  //  The maximum allowed value for the element. The value is inclusive.
-  // This is allowed for the types date, dateTime, instant, time, decimal,
-  // integer, and Quantity.
   int maxValueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
-
-  //  Extensions for maxValueInteger
   @HiveField(273)
   Element elementMaxValueInteger;
-
-  //  The maximum allowed value for the element. The value is inclusive.
-  // This is allowed for the types date, dateTime, instant, time, decimal,
-  // integer, and Quantity.
   int maxValuePositiveInt; //  pattern: ^[1-9][0-9]*$
-
-  //  Extensions for maxValuePositiveInt
   @HiveField(275)
   Element elementMaxValuePositiveInt;
-
-  //  The maximum allowed value for the element. The value is inclusive.
-  // This is allowed for the types date, dateTime, instant, time, decimal,
-  // integer, and Quantity.
   int maxValueUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
-
-  //  Extensions for maxValueUnsignedInt
   @HiveField(277)
   Element elementMaxValueUnsignedInt;
-
-  //  The maximum allowed value for the element. The value is inclusive.
-  // This is allowed for the types date, dateTime, instant, time, decimal,
-  // integer, and Quantity.
   @HiveField(278)
   Quantity maxValueQuantity;
-
-  //  Indicates the maximum length in characters that is permitted to be
-  // present in conformant instances and which is expected to be supported
-  // by conformant consumers that support the element.
   @HiveField(279)
   int maxLength;
-
-  //  Extensions for maxLength
   @HiveField(280)
   Element elementMaxLength;
-
-  //  A reference to an invariant that may make additional statements about
-  // the cardinality or value in the instance.
   @HiveField(281)
   List<String> condition;
-
-  //  Extensions for condition
   @HiveField(282)
   List<Element> elementCondition;
-
-  //  Formal constraints such as co-occurrence and other constraints that
-  // can be computationally evaluated within the context of the instance.
   @HiveField(283)
   List<ElementDefinition_Constraint> constraint;
-
-  //  If true, implementations that produce or consume resources SHALL
-  // provide "support" for the element in some meaningful way.  If false,
-  // the element may be ignored and not supported. If false, whether to
-  // populate or use the data element in any way is at the discretion of the
-  // implementation.
   @HiveField(284)
   bool mustSupport;
-
-  //  Extensions for mustSupport
   @HiveField(285)
   Element elementMustSupport;
-
-  //  If true, the value of this element affects the interpretation of the
-  // element or resource that contains it, and the value of the element
-  // cannot be ignored. Typically, this is used for status, negation and
-  // qualification codes. The effect of this is that the element cannot be
-  // ignored by systems: they SHALL either recognize the element and process
-  // it, and/or a pre-determination has been made that it is not relevant to
-  // their particular system.
   @HiveField(286)
   bool isModifier;
-
-  //  Extensions for isModifier
   @HiveField(287)
   Element elementIsModifier;
-
-  //  Explains how that element affects the interpretation of the resource
-  // or element that contains it.
   @HiveField(288)
   String isModifierReason;
-
-  //  Extensions for isModifierReason
   @HiveField(289)
   Element elementIsModifierReason;
-
-  //  Whether the element should be included if a client requests a search
-  // with the parameter _summary=true.
   @HiveField(290)
   bool isSummary;
-
-  //  Extensions for isSummary
   @HiveField(291)
   Element elementIsSummary;
-
-  //  Binds to a value set if this element is coded (code, Coding,
-  // CodeableConcept, Quantity), or the data types (string, uri).
   @HiveField(292)
   ElementDefinition_Binding binding;
-
-  //  Identifies a concept from an external specification that roughly
-  // corresponds to this element.
   @HiveField(293)
   List<ElementDefinition_Mapping> mapping;
 
@@ -2469,60 +1505,39 @@ ElementDefinition(
 @JsonSerializable(explicitToJson: true)
 class ElementDefinition_Slicing {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ElementDefinition_Slicing> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<ElementDefinition_Discriminator> discriminator,
+		String description,
+		Element elementDescription,
+		bool ordered,
+		Element elementOrdered,
+		String rules,
+		Element elementRules}) async {
+	 return ElementDefinition_Slicing(
+			id: await newEntry('ElementDefinition_Slicing'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			discriminator: discriminator,
+			description: description,
+			elementDescription: elementDescription,
+			ordered: ordered,
+			elementOrdered: elementOrdered,
+			rules: rules,
+			elementRules: elementRules);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Designates which child elements are used to discriminate between the
-  // slices when processing an instance. If one or more discriminators are
-  // provided, the value of the child elements in the instance data SHALL
-  // completely distinguish which slice the element in the resource matches
-  // based on the allowed values for those elements in each of the slices.
   List<ElementDefinition_Discriminator> discriminator;
-
-  //  A human-readable text description of how the slicing works. If there
-  // is no discriminator, this is required to be present to provide whatever
-  // information is possible about how the slices can be differentiated.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  If the matching elements have to occur in the same order as defined in
-  // the profile.
   bool ordered;
-
-  //  Extensions for ordered
   Element elementOrdered;
-
-  //  Whether additional slices are allowed or not. When the slices are
-  // ordered, profile authors can also say that additional slices are only
-  // allowed at the end.
   String rules; // <code> enum: closed/open/openAtEnd;
-
-  //  Extensions for rules
   Element elementRules;
 
 ElementDefinition_Slicing(
@@ -2545,44 +1560,30 @@ ElementDefinition_Slicing(
 @JsonSerializable(explicitToJson: true)
 class ElementDefinition_Discriminator {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ElementDefinition_Discriminator> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String type,
+		Element elementType,
+		String path,
+		Element elementPath}) async {
+	 return ElementDefinition_Discriminator(
+			id: await newEntry('ElementDefinition_Discriminator'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			type: type,
+			elementType: elementType,
+			path: path,
+			elementPath: elementPath);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  How the element value is interpreted when discrimination is evaluated.
   String type; // <code> enum: value/exists/pattern/type/profile;
-
-  //  Extensions for type
   Element elementType;
-
-  //  A FHIRPath expression, using [the simple subset of
-  // FHIRPath](fhirpath.html#simple), that is used to identify the element
-  // on which discrimination is based.
   String path;
-
-  //  Extensions for path
   Element elementPath;
 
 ElementDefinition_Discriminator(
@@ -2602,51 +1603,36 @@ ElementDefinition_Discriminator(
 @JsonSerializable(explicitToJson: true)
 class ElementDefinition_Base {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ElementDefinition_Base> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String path,
+		Element elementPath,
+		int min,
+		Element elementMin,
+		String max,
+		Element elementMax}) async {
+	 return ElementDefinition_Base(
+			id: await newEntry('ElementDefinition_Base'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			path: path,
+			elementPath: elementPath,
+			min: min,
+			elementMin: elementMin,
+			max: max,
+			elementMax: elementMax);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The Path that identifies the base element - this matches the
-  // ElementDefinition.path for that element. Across FHIR, there is only one
-  // base definition of any element - that is, an element definition on a
-  // [[[StructureDefinition]]] without a StructureDefinition.base.
   String path;
-
-  //  Extensions for path
   Element elementPath;
-
-  //  Minimum cardinality of the base element identified by the path.
   int min;
-
-  //  Extensions for min
   Element elementMin;
-
-  //  Maximum cardinality of the base element identified by the path.
   String max;
-
-  //  Extensions for max
   Element elementMax;
 
 ElementDefinition_Base(
@@ -2668,74 +1654,42 @@ ElementDefinition_Base(
 @JsonSerializable(explicitToJson: true)
 class ElementDefinition_Type {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ElementDefinition_Type> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String code,
+		Element elementCode,
+		List<String> profile,
+		List<String> targetProfile,
+		List<String> aggregation,
+		List<Element> elementAggregation,
+		String versioning,
+		Element elementVersioning}) async {
+	 return ElementDefinition_Type(
+			id: await newEntry('ElementDefinition_Type'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			code: code,
+			elementCode: elementCode,
+			profile: profile,
+			targetProfile: targetProfile,
+			aggregation: aggregation,
+			elementAggregation: elementAggregation,
+			versioning: versioning,
+			elementVersioning: elementVersioning);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  URL of Data type or Resource that is a(or the) type used for this
-  // element. References are URLs that are relative to
-  // http://hl7.org/fhir/StructureDefinition e.g. "string" is a reference to
-  // http://hl7.org/fhir/StructureDefinition/string. Absolute URLs are only
-  // allowed in logical models.
   String code;
-
-  //  Extensions for code
   Element elementCode;
-
-  //  Identifies a profile structure or implementation Guide that applies to
-  // the datatype this element refers to. If any profiles are specified,
-  // then the content must conform to at least one of them. The URL can be a
-  // local reference - to a contained StructureDefinition, or a reference to
-  // another StructureDefinition or Implementation Guide by a canonical URL.
-  // When an implementation guide is specified, the type SHALL conform to at
-  // least one profile defined in the implementation guide.
   List<String> profile;
-
-  //  Used when the type is "Reference" or "canonical", and identifies a
-  // profile structure or implementation Guide that applies to the target of
-  // the reference this element refers to. If any profiles are specified,
-  // then the content must conform to at least one of them. The URL can be a
-  // local reference - to a contained StructureDefinition, or a reference to
-  // another StructureDefinition or Implementation Guide by a canonical URL.
-  // When an implementation guide is specified, the target resource SHALL
-  // conform to at least one profile defined in the implementation guide.
   List<String> targetProfile;
-
-  //  If the type is a reference to another resource, how the resource is or
-  // can be aggregated - is it a contained resource, or a reference, and if
-  // the context is a bundle, is it included in the bundle.
   List<String> aggregation; // <code> enum: contained/referenced/bundled> aggregation;
-
-  //  Extensions for aggregation
   List<Element> elementAggregation;
-
-  //  Whether this reference needs to be version specific or version
-  // independent, or whether either can be used.
   String versioning; // <code> enum: either/independent/specific;
-
-  //  Extensions for versioning
   Element elementVersioning;
 
 ElementDefinition_Type(
@@ -2759,293 +1713,231 @@ ElementDefinition_Type(
 @JsonSerializable(explicitToJson: true)
 class ElementDefinition_Example {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ElementDefinition_Example> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String label,
+		Element elementLabel,
+		String valueBase64Binary,
+		Element elementValueBase64Binary,
+		bool valueBoolean,
+		Element elementValueBoolean,
+		String valueCanonical,
+		Element elementValueCanonical,
+		String valueCode,
+		Element elementValueCode,
+		String valueDate,
+		Element elementValueDate,
+		String valueDateTime,
+		Element elementValueDateTime,
+		double valueDecimal,
+		Element elementValueDecimal,
+		String valueId,
+		Element elementValueId,
+		String valueInstant,
+		Element elementValueInstant,
+		int valueInteger,
+		Element elementValueInteger,
+		String valueMarkdown,
+		Element elementValueMarkdown,
+		String valueOid,
+		Element elementValueOid,
+		int valuePositiveInt,
+		Element elementValuePositiveInt,
+		String valueString,
+		Element elementValueString,
+		String valueTime,
+		Element elementValueTime,
+		int valueUnsignedInt,
+		Element elementValueUnsignedInt,
+		String valueUri,
+		Element elementValueUri,
+		String valueUrl,
+		Element elementValueUrl,
+		String valueUuid,
+		Element elementValueUuid,
+		Address valueAddress,
+		Age valueAge,
+		Annotation valueAnnotation,
+		Attachment valueAttachment,
+		CodeableConcept valueCodeableConcept,
+		Coding valueCoding,
+		ContactPoint valueContactPoint,
+		Count valueCount,
+		Distance valueDistance,
+		Duration valueDuration,
+		HumanName valueHumanName,
+		Identifier valueIdentifier,
+		Money valueMoney,
+		Period valuePeriod,
+		Quantity valueQuantity,
+		Range valueRange,
+		Ratio valueRatio,
+		Reference valueReference,
+		SampledData valueSampledData,
+		Signature valueSignature,
+		Timing valueTiming,
+		ContactDetail valueContactDetail,
+		Contributor valueContributor,
+		DataRequirement valueDataRequirement,
+		Expression valueExpression,
+		ParameterDefinition valueParameterDefinition,
+		RelatedArtifact valueRelatedArtifact,
+		TriggerDefinition valueTriggerDefinition,
+		UsageContext valueUsageContext,
+		Dosage valueDosage,
+		Meta valueMeta}) async {
+	 return ElementDefinition_Example(
+			id: await newEntry('ElementDefinition_Example'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			label: label,
+			elementLabel: elementLabel,
+			valueBase64Binary: valueBase64Binary,
+			elementValueBase64Binary: elementValueBase64Binary,
+			valueBoolean: valueBoolean,
+			elementValueBoolean: elementValueBoolean,
+			valueCanonical: valueCanonical,
+			elementValueCanonical: elementValueCanonical,
+			valueCode: valueCode,
+			elementValueCode: elementValueCode,
+			valueDate: valueDate,
+			elementValueDate: elementValueDate,
+			valueDateTime: valueDateTime,
+			elementValueDateTime: elementValueDateTime,
+			valueDecimal: valueDecimal,
+			elementValueDecimal: elementValueDecimal,
+			valueId: valueId,
+			elementValueId: elementValueId,
+			valueInstant: valueInstant,
+			elementValueInstant: elementValueInstant,
+			valueInteger: valueInteger,
+			elementValueInteger: elementValueInteger,
+			valueMarkdown: valueMarkdown,
+			elementValueMarkdown: elementValueMarkdown,
+			valueOid: valueOid,
+			elementValueOid: elementValueOid,
+			valuePositiveInt: valuePositiveInt,
+			elementValuePositiveInt: elementValuePositiveInt,
+			valueString: valueString,
+			elementValueString: elementValueString,
+			valueTime: valueTime,
+			elementValueTime: elementValueTime,
+			valueUnsignedInt: valueUnsignedInt,
+			elementValueUnsignedInt: elementValueUnsignedInt,
+			valueUri: valueUri,
+			elementValueUri: elementValueUri,
+			valueUrl: valueUrl,
+			elementValueUrl: elementValueUrl,
+			valueUuid: valueUuid,
+			elementValueUuid: elementValueUuid,
+			valueAddress: valueAddress,
+			valueAge: valueAge,
+			valueAnnotation: valueAnnotation,
+			valueAttachment: valueAttachment,
+			valueCodeableConcept: valueCodeableConcept,
+			valueCoding: valueCoding,
+			valueContactPoint: valueContactPoint,
+			valueCount: valueCount,
+			valueDistance: valueDistance,
+			valueDuration: valueDuration,
+			valueHumanName: valueHumanName,
+			valueIdentifier: valueIdentifier,
+			valueMoney: valueMoney,
+			valuePeriod: valuePeriod,
+			valueQuantity: valueQuantity,
+			valueRange: valueRange,
+			valueRatio: valueRatio,
+			valueReference: valueReference,
+			valueSampledData: valueSampledData,
+			valueSignature: valueSignature,
+			valueTiming: valueTiming,
+			valueContactDetail: valueContactDetail,
+			valueContributor: valueContributor,
+			valueDataRequirement: valueDataRequirement,
+			valueExpression: valueExpression,
+			valueParameterDefinition: valueParameterDefinition,
+			valueRelatedArtifact: valueRelatedArtifact,
+			valueTriggerDefinition: valueTriggerDefinition,
+			valueUsageContext: valueUsageContext,
+			valueDosage: valueDosage,
+			valueMeta: valueMeta);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Describes the purpose of this example amoung the set of examples.
   String label;
-
-  //  Extensions for label
   Element elementLabel;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   String valueBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
-
-  //  Extensions for valueBase64Binary
   Element elementValueBase64Binary;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   bool valueBoolean; //  pattern: ^true|false$
-
-  //  Extensions for valueBoolean
   Element elementValueBoolean;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   String valueCanonical; //  pattern: ^\S*$
-
-  //  Extensions for valueCanonical
   Element elementValueCanonical;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   String valueCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
-
-  //  Extensions for valueCode
   Element elementValueCode;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   String valueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
-
-  //  Extensions for valueDate
   Element elementValueDate;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for valueDateTime
   Element elementValueDateTime;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
-
-  //  Extensions for valueDecimal
   Element elementValueDecimal;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   String valueId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
-
-  //  Extensions for valueId
   Element elementValueId;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   String valueInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
-
-  //  Extensions for valueInstant
   Element elementValueInstant;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
-
-  //  Extensions for valueInteger
   Element elementValueInteger;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   String valueMarkdown; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for valueMarkdown
   Element elementValueMarkdown;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   String valueOid; //  pattern: ^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$
-
-  //  Extensions for valueOid
   Element elementValueOid;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   int valuePositiveInt; //  pattern: ^[1-9][0-9]*$
-
-  //  Extensions for valuePositiveInt
   Element elementValuePositiveInt;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   String valueString; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for valueString
   Element elementValueString;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   String valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
-
-  //  Extensions for valueTime
   Element elementValueTime;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   int valueUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
-
-  //  Extensions for valueUnsignedInt
   Element elementValueUnsignedInt;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   String valueUri; //  pattern: ^\S*$
-
-  //  Extensions for valueUri
   Element elementValueUri;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   String valueUrl; //  pattern: ^\S*$
-
-  //  Extensions for valueUrl
   Element elementValueUrl;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   String valueUuid; //  pattern: ^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
-
-  //  Extensions for valueUuid
   Element elementValueUuid;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   Address valueAddress;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   Age valueAge;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   Annotation valueAnnotation;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   Attachment valueAttachment;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   CodeableConcept valueCodeableConcept;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   Coding valueCoding;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   ContactPoint valueContactPoint;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   Count valueCount;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   Distance valueDistance;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   Duration valueDuration;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   HumanName valueHumanName;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   Identifier valueIdentifier;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   Money valueMoney;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   Period valuePeriod;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   Quantity valueQuantity;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   Range valueRange;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   Ratio valueRatio;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   Reference valueReference;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   SampledData valueSampledData;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   Signature valueSignature;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   Timing valueTiming;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   ContactDetail valueContactDetail;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   Contributor valueContributor;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   DataRequirement valueDataRequirement;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   Expression valueExpression;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   ParameterDefinition valueParameterDefinition;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   RelatedArtifact valueRelatedArtifact;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   TriggerDefinition valueTriggerDefinition;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   UsageContext valueUsageContext;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   Dosage valueDosage;
-
-  //  The actual value for the element, which must be one of the types
-  // allowed for this element.
   Meta valueMeta;
 
 ElementDefinition_Example(
@@ -3132,76 +2024,57 @@ ElementDefinition_Example(
 @JsonSerializable(explicitToJson: true)
 class ElementDefinition_Constraint {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ElementDefinition_Constraint> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String key,
+		Element elementKey,
+		String requirements,
+		Element elementRequirements,
+		String severity,
+		Element elementSeverity,
+		String human,
+		Element elementHuman,
+		String expression,
+		Element elementExpression,
+		String xpath,
+		Element elementXpath,
+		String source}) async {
+	 return ElementDefinition_Constraint(
+			id: await newEntry('ElementDefinition_Constraint'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			key: key,
+			elementKey: elementKey,
+			requirements: requirements,
+			elementRequirements: elementRequirements,
+			severity: severity,
+			elementSeverity: elementSeverity,
+			human: human,
+			elementHuman: elementHuman,
+			expression: expression,
+			elementExpression: elementExpression,
+			xpath: xpath,
+			elementXpath: elementXpath,
+			source: source);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Allows identification of which elements have their cardinalities
-  // impacted by the constraint.  Will not be referenced for constraints
-  // that do not affect cardinality.
   String key;
-
-  //  Extensions for key
   Element elementKey;
-
-  //  Description of why this constraint is necessary or appropriate.
   String requirements;
-
-  //  Extensions for requirements
   Element elementRequirements;
-
-  //  Identifies the impact constraint violation has on the conformance of
-  // the instance.
   String severity; // <code> enum: error/warning;
-
-  //  Extensions for severity
   Element elementSeverity;
-
-  //  Text that can be used to describe the constraint in messages
-  // identifying that the constraint has been violated.
   String human;
-
-  //  Extensions for human
   Element elementHuman;
-
-  //  A [FHIRPath](fhirpath.html) expression of constraint that can be
-  // executed to see if this constraint is met.
   String expression;
-
-  //  Extensions for expression
   Element elementExpression;
-
-  //  An XPath expression of constraint that can be executed to see if this
-  // constraint is met.
   String xpath;
-
-  //  Extensions for xpath
   Element elementXpath;
-
-  //  A reference to the original source of the constraint, for traceability
-  // purposes.
   String source;
 
 ElementDefinition_Constraint(
@@ -3230,48 +2103,33 @@ ElementDefinition_Constraint(
 @JsonSerializable(explicitToJson: true)
 class ElementDefinition_Binding {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ElementDefinition_Binding> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String strength,
+		Element elementStrength,
+		String description,
+		Element elementDescription,
+		String valueSet}) async {
+	 return ElementDefinition_Binding(
+			id: await newEntry('ElementDefinition_Binding'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			strength: strength,
+			elementStrength: elementStrength,
+			description: description,
+			elementDescription: elementDescription,
+			valueSet: valueSet);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Indicates the degree of conformance expectations associated with this
-  // binding - that is, the degree to which the provided value set must be
-  // adhered to in the instances.
   String strength; // <code> enum: required/extensible/preferred/example;
-
-  //  Extensions for strength
   Element elementStrength;
-
-  //  Describes the intended use of this particular set of codes.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  Refers to the value set that identifies the set of codes the binding
-  // refers to.
   String valueSet;
 
 ElementDefinition_Binding(
@@ -3292,55 +2150,42 @@ ElementDefinition_Binding(
 @JsonSerializable(explicitToJson: true)
 class ElementDefinition_Mapping {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ElementDefinition_Mapping> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String identity,
+		Element elementIdentity,
+		String language,
+		Element elementLanguage,
+		String map,
+		Element elementMap,
+		String comment,
+		Element elementComment}) async {
+	 return ElementDefinition_Mapping(
+			id: await newEntry('ElementDefinition_Mapping'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identity: identity,
+			elementIdentity: elementIdentity,
+			language: language,
+			elementLanguage: elementLanguage,
+			map: map,
+			elementMap: elementMap,
+			comment: comment,
+			elementComment: elementComment);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  An internal reference to the definition of a mapping.
   String identity;
-
-  //  Extensions for identity
   Element elementIdentity;
-
-  //  Identifies the computable language in which mapping.map is expressed.
   String language;
-
-  //  Extensions for language
   Element elementLanguage;
-
-  //  Expresses what part of the target specification corresponds to this
-  // element.
   String map;
-
-  //  Extensions for map
   Element elementMap;
-
-  //  Comments that provide information about the mapping or its use.
   String comment;
-
-  //  Extensions for comment
   Element elementComment;
 
 ElementDefinition_Mapping(

@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -15,176 +18,131 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 81)
 class Composition {
 
-  //  This is a Composition resource
+	static Future<Composition> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Identifier identifier,
+		String status,
+		Element elementStatus,
+		CodeableConcept type,
+		List<CodeableConcept> category,
+		Reference subject,
+		Reference encounter,
+		DateTime date,
+		Element elementDate,
+		List<Reference> author,
+		String title,
+		Element elementTitle,
+		String confidentiality,
+		Element elementConfidentiality,
+		List<Composition_Attester> attester,
+		Reference custodian,
+		List<Composition_RelatesTo> relatesTo,
+		List<Composition_Event> event,
+		List<Composition_Section> section}) async {
+	 return Composition(
+			id: await newEntry('Composition'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			status: status,
+			elementStatus: elementStatus,
+			type: type,
+			category: category,
+			subject: subject,
+			encounter: encounter,
+			date: date,
+			elementDate: elementDate,
+			author: author,
+			title: title,
+			elementTitle: elementTitle,
+			confidentiality: confidentiality,
+			elementConfidentiality: elementConfidentiality,
+			attester: attester,
+			custodian: custodian,
+			relatesTo: relatesTo,
+			event: event,
+			section: section);
+	}
+
   @HiveField(0)
   final String resourceType= 'Composition';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  A version-independent identifier for the Composition. This identifier
-  // stays constant as the composition is changed over time.
   @HiveField(11)
   Identifier identifier;
-
-  //  The workflow/clinical status of this composition. The status is a
-  // marker for the clinical standing of the document.
   @HiveField(12)
   String status; // <code> enum: preliminary/final/amended/entered-in-error;
-
-  //  Extensions for status
   @HiveField(13)
   Element elementStatus;
-
-  //  Specifies the particular kind of composition (e.g. History and
-  // Physical, Discharge Summary, Progress Note). This usually equates to
-  // the purpose of making the composition.
   @HiveField(14)
   CodeableConcept type;
-
-  //  A categorization for the type of the composition - helps for indexing
-  // and searching. This may be implied by or derived from the code
-  // specified in the Composition Type.
   @HiveField(15)
   List<CodeableConcept> category;
-
-  //  Who or what the composition is about. The composition can be about a
-  // person, (patient or healthcare practitioner), a device (e.g. a machine)
-  // or even a group of subjects (such as a document about a herd of
-  // livestock, or a set of patients that share a common exposure).
   @HiveField(16)
   Reference subject;
-
-  //  Describes the clinical encounter or type of care this documentation is
-  // associated with.
   @HiveField(17)
   Reference encounter;
-
-  //  The composition editing time, when the composition was last logically
-  // changed by the author.
   @HiveField(18)
   DateTime date;
-
-  //  Extensions for date
   @HiveField(19)
   Element elementDate;
-
-  //  Identifies who is responsible for the information in the composition,
-  // not necessarily who typed it in.
   @HiveField(20)
   List<Reference> author;
-
-  //  Official human-readable label for the composition.
   @HiveField(21)
   String title;
-
-  //  Extensions for title
   @HiveField(22)
   Element elementTitle;
-
-  //  The code specifying the level of confidentiality of the Composition.
   @HiveField(23)
   String confidentiality;
-
-  //  Extensions for confidentiality
   @HiveField(24)
   Element elementConfidentiality;
-
-  //  A participant who has attested to the accuracy of the
-  // composition/document.
   @HiveField(25)
   List<Composition_Attester> attester;
-
-  //  Identifies the organization or group who is responsible for ongoing
-  // maintenance of and access to the composition/document information.
   @HiveField(26)
   Reference custodian;
-
-  //  Relationships that this composition has with other compositions or
-  // documents that already exist.
   @HiveField(27)
   List<Composition_RelatesTo> relatesTo;
-
-  //  The clinical service, such as a colonoscopy or an appendectomy, being
-  // documented.
   @HiveField(28)
   List<Composition_Event> event;
-
-  //  The root of the sections that make up the composition.
   @HiveField(29)
   List<Composition_Section> section;
 
 Composition(
-  this.type,
-    this.author,
-    {this.id,
+  {this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -197,11 +155,13 @@ Composition(
     this.identifier,
     this.status,
     this.elementStatus,
+    @required this.type,
     this.category,
     this.subject,
     this.encounter,
     this.date,
     this.elementDate,
+    @required this.author,
     this.title,
     this.elementTitle,
     this.confidentiality,
@@ -220,45 +180,33 @@ Composition(
 @JsonSerializable(explicitToJson: true)
 class Composition_Attester {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Composition_Attester> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String mode,
+		Element elementMode,
+		DateTime time,
+		Element elementTime,
+		Reference party}) async {
+	 return Composition_Attester(
+			id: await newEntry('Composition_Attester'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			mode: mode,
+			elementMode: elementMode,
+			time: time,
+			elementTime: elementTime,
+			party: party);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The type of attestation the authenticator offers.
   String mode; // <code> enum: personal/professional/legal/official;
-
-  //  Extensions for mode
   Element elementMode;
-
-  //  When the composition was attested by the party.
   DateTime time;
-
-  //  Extensions for time
   Element elementTime;
-
-  //  Who attested the composition in the specified way.
   Reference party;
 
 Composition_Attester(
@@ -279,43 +227,30 @@ Composition_Attester(
 @JsonSerializable(explicitToJson: true)
 class Composition_RelatesTo {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Composition_RelatesTo> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String code,
+		Element elementCode,
+		Identifier targetIdentifier,
+		Reference targetReference}) async {
+	 return Composition_RelatesTo(
+			id: await newEntry('Composition_RelatesTo'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			code: code,
+			elementCode: elementCode,
+			targetIdentifier: targetIdentifier,
+			targetReference: targetReference);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The type of relationship that this composition has with anther
-  // composition or document.
   String code;
-
-  //  Extensions for code
   Element elementCode;
-
-  //  The target composition/document of this relationship.
   Identifier targetIdentifier;
-
-  //  The target composition/document of this relationship.
   Reference targetReference;
 
 Composition_RelatesTo(
@@ -335,47 +270,27 @@ Composition_RelatesTo(
 @JsonSerializable(explicitToJson: true)
 class Composition_Event {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Composition_Event> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<CodeableConcept> code,
+		Period period,
+		List<Reference> detail}) async {
+	 return Composition_Event(
+			id: await newEntry('Composition_Event'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			code: code,
+			period: period,
+			detail: detail);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  This list of codes represents the main clinical acts, such as a
-  // colonoscopy or an appendectomy, being documented. In some cases, the
-  // event is inherent in the typeCode, such as a "History and Physical
-  // Report" in which the procedure being documented is necessarily a
-  // "History and Physical" act.
   List<CodeableConcept> code;
-
-  //  The period of time covered by the documentation. There is no assertion
-  // that the documentation is a complete representation for this period,
-  // only that it documents events during this time.
   Period period;
-
-  //  The description and/or reference of the event(s) being documented. For
-  // example, this could be used to document such a colonoscopy or an
-  // appendectomy.
   List<Reference> detail;
 
 Composition_Event(
@@ -394,87 +309,54 @@ Composition_Event(
 @JsonSerializable(explicitToJson: true)
 class Composition_Section {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Composition_Section> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String title,
+		Element elementTitle,
+		CodeableConcept code,
+		List<Reference> author,
+		Reference focus,
+		Narrative text,
+		String mode,
+		Element elementMode,
+		CodeableConcept orderedBy,
+		List<Reference> entry,
+		CodeableConcept emptyReason,
+		List<Composition_Section> section}) async {
+	 return Composition_Section(
+			id: await newEntry('Composition_Section'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			title: title,
+			elementTitle: elementTitle,
+			code: code,
+			author: author,
+			focus: focus,
+			text: text,
+			mode: mode,
+			elementMode: elementMode,
+			orderedBy: orderedBy,
+			entry: entry,
+			emptyReason: emptyReason,
+			section: section);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The label for this particular section.  This will be part of the
-  // rendered content for the document, and is often used to build a table
-  // of contents.
   String title;
-
-  //  Extensions for title
   Element elementTitle;
-
-  //  A code identifying the kind of content contained within the section.
-  // This must be consistent with the section title.
   CodeableConcept code;
-
-  //  Identifies who is responsible for the information in this section, not
-  // necessarily who typed it in.
   List<Reference> author;
-
-  //  The actual focus of the section when it is not the subject of the
-  // composition, but instead represents something or someone associated
-  // with the subject such as (for a patient subject) a spouse, parent,
-  // fetus, or donor. If not focus is specified, the focus is assumed to be
-  // focus of the parent section, or, for a section in the Composition
-  // itself, the subject of the composition. Sections with a focus SHALL
-  // only include resources where the logical subject (patient, subject,
-  // focus, etc.) matches the section focus, or the resources have no
-  // logical subject (few resources).
   Reference focus;
-
-  //  A human-readable narrative that contains the attested content of the
-  // section, used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative.
   Narrative text;
-
-  //  How the entry list was prepared - whether it is a working list that is
-  // suitable for being maintained on an ongoing basis, or if it represents
-  // a snapshot of a list of items from another source, or whether it is a
-  // prepared list where items may be marked as added, modified or deleted.
   String mode;
-
-  //  Extensions for mode
   Element elementMode;
-
-  //  Specifies the order applied to the items in the section entries.
   CodeableConcept orderedBy;
-
-  //  A reference to the actual resource from which the narrative in the
-  // section is derived.
   List<Reference> entry;
-
-  //  If the section is empty, why the list is empty. An empty section
-  // typically has some text explaining the empty reason.
   CodeableConcept emptyReason;
-
-  //  A nested sub-section within this section.
   List<Composition_Section> section;
 
 Composition_Section(
@@ -516,8 +398,6 @@ class CompositionAdapter extends TypeAdapter<Composition> {
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Composition(
-      fields[14] as CodeableConcept,
-      (fields[20] as List)?.cast<Reference>(),
       id: fields[1] as String,
       meta: fields[2] as Meta,
       implicitRules: fields[3] as String,
@@ -531,11 +411,13 @@ class CompositionAdapter extends TypeAdapter<Composition> {
       identifier: fields[11] as Identifier,
       status: fields[12] as String,
       elementStatus: fields[13] as Element,
+      type: fields[14] as CodeableConcept,
       category: (fields[15] as List)?.cast<CodeableConcept>(),
       subject: fields[16] as Reference,
       encounter: fields[17] as Reference,
       date: fields[18] as DateTime,
       elementDate: fields[19] as Element,
+      author: (fields[20] as List)?.cast<Reference>(),
       title: fields[21] as String,
       elementTitle: fields[22] as Element,
       confidentiality: fields[23] as String,
@@ -621,13 +503,6 @@ class CompositionAdapter extends TypeAdapter<Composition> {
 
 Composition _$CompositionFromJson(Map<String, dynamic> json) {
   return Composition(
-    json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
-    (json['author'] as List)
-        ?.map((e) =>
-            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -663,6 +538,9 @@ Composition _$CompositionFromJson(Map<String, dynamic> json) {
     elementStatus: json['elementStatus'] == null
         ? null
         : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
+    type: json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     category: (json['category'] as List)
         ?.map((e) => e == null
             ? null
@@ -678,6 +556,10 @@ Composition _$CompositionFromJson(Map<String, dynamic> json) {
     elementDate: json['elementDate'] == null
         ? null
         : Element.fromJson(json['elementDate'] as Map<String, dynamic>),
+    author: (json['author'] as List)
+        ?.map((e) =>
+            e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     title: json['title'] as String,
     elementTitle: json['elementTitle'] == null
         ? null

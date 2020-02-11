@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/duration.dart';
@@ -18,146 +19,110 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 181)
 class Specimen {
 
-  //  This is a Specimen resource
+	static Future<Specimen> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Identifier> identifier,
+		Identifier accessionIdentifier,
+		String status,
+		Element elementStatus,
+		CodeableConcept type,
+		Reference subject,
+		DateTime receivedTime,
+		Element elementReceivedTime,
+		List<Reference> parent,
+		List<Reference> request,
+		Specimen_Collection collection,
+		List<Specimen_Processing> processing,
+		List<Specimen_Container> container,
+		List<CodeableConcept> condition,
+		List<Annotation> note}) async {
+	 return Specimen(
+			id: await newEntry('Specimen'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			accessionIdentifier: accessionIdentifier,
+			status: status,
+			elementStatus: elementStatus,
+			type: type,
+			subject: subject,
+			receivedTime: receivedTime,
+			elementReceivedTime: elementReceivedTime,
+			parent: parent,
+			request: request,
+			collection: collection,
+			processing: processing,
+			container: container,
+			condition: condition,
+			note: note);
+	}
+
   @HiveField(0)
   final String resourceType= 'Specimen';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  Id for specimen.
   @HiveField(11)
   List<Identifier> identifier;
-
-  //  The identifier assigned by the lab when accessioning specimen(s). This
-  // is not necessarily the same as the specimen identifier, depending on
-  // local lab procedures.
   @HiveField(12)
   Identifier accessionIdentifier;
-
-  //  The availability of the specimen.
   @HiveField(13)
   String status; // <code> enum: available/unavailable/unsatisfactory/entered-in-error;
-
-  //  Extensions for status
   @HiveField(14)
   Element elementStatus;
-
-  //  The kind of material that forms the specimen.
   @HiveField(15)
   CodeableConcept type;
-
-  //  Where the specimen came from. This may be from patient(s), from a
-  // location (e.g., the source of an environmental sample), or a sampling
-  // of a substance or a device.
   @HiveField(16)
   Reference subject;
-
-  //  Time when specimen was received for processing or testing.
   @HiveField(17)
   DateTime receivedTime;
-
-  //  Extensions for receivedTime
   @HiveField(18)
   Element elementReceivedTime;
-
-  //  Reference to the parent (source) specimen which is used when the
-  // specimen was either derived from or a component of another specimen.
   @HiveField(19)
   List<Reference> parent;
-
-  //  Details concerning a service request that required a specimen to be
-  // collected.
   @HiveField(20)
   List<Reference> request;
-
-  //  Details concerning the specimen collection.
   @HiveField(21)
   Specimen_Collection collection;
-
-  //  Details concerning processing and processing steps for the specimen.
   @HiveField(22)
   List<Specimen_Processing> processing;
-
-  //  The container holding the specimen.  The recursive nature of
-  // containers; i.e. blood in tube in tray in rack is not addressed here.
   @HiveField(23)
   List<Specimen_Container> container;
-
-  //  A mode or state of being that describes the nature of the specimen.
   @HiveField(24)
   List<CodeableConcept> condition;
-
-  //  To communicate any details or issues about the specimen or during the
-  // specimen collection. (for example: broken vial, sent with patient,
-  // frozen).
   @HiveField(25)
   List<Annotation> note;
 
@@ -196,68 +161,48 @@ Specimen(
 @JsonSerializable(explicitToJson: true)
 class Specimen_Collection {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Specimen_Collection> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Reference collector,
+		String collectedDateTime,
+		Element elementCollectedDateTime,
+		Period collectedPeriod,
+		Duration duration,
+		Quantity quantity,
+		CodeableConcept method,
+		CodeableConcept bodySite,
+		CodeableConcept fastingStatusCodeableConcept,
+		Duration fastingStatusDuration}) async {
+	 return Specimen_Collection(
+			id: await newEntry('Specimen_Collection'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			collector: collector,
+			collectedDateTime: collectedDateTime,
+			elementCollectedDateTime: elementCollectedDateTime,
+			collectedPeriod: collectedPeriod,
+			duration: duration,
+			quantity: quantity,
+			method: method,
+			bodySite: bodySite,
+			fastingStatusCodeableConcept: fastingStatusCodeableConcept,
+			fastingStatusDuration: fastingStatusDuration);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Person who collected the specimen.
   Reference collector;
-
-  //  Time when specimen was collected from subject - the physiologically
-  // relevant time.
   String collectedDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for collectedDateTime
   Element elementCollectedDateTime;
-
-  //  Time when specimen was collected from subject - the physiologically
-  // relevant time.
   Period collectedPeriod;
-
-  //  The span of time over which the collection of a specimen occurred.
   Duration duration;
-
-  //  The quantity of specimen collected; for instance the volume of a blood
-  // sample, or the physical measurement of an anatomic pathology sample.
   Quantity quantity;
-
-  //  A coded value specifying the technique that is used to perform the
-  // procedure.
   CodeableConcept method;
-
-  //  Anatomical location from which the specimen was collected (if subject
-  // is a patient). This is the target site.  This element is not used for
-  // environmental specimens.
   CodeableConcept bodySite;
-
-  //  Abstinence or reduction from some or all food, drink, or both, for a
-  // period of time prior to sample collection.
   CodeableConcept fastingStatusCodeableConcept;
-
-  //  Abstinence or reduction from some or all food, drink, or both, for a
-  // period of time prior to sample collection.
   Duration fastingStatusDuration;
 
 Specimen_Collection(
@@ -283,55 +228,39 @@ Specimen_Collection(
 @JsonSerializable(explicitToJson: true)
 class Specimen_Processing {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Specimen_Processing> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String description,
+		Element elementDescription,
+		CodeableConcept procedure,
+		List<Reference> additive,
+		String timeDateTime,
+		Element elementTimeDateTime,
+		Period timePeriod}) async {
+	 return Specimen_Processing(
+			id: await newEntry('Specimen_Processing'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			description: description,
+			elementDescription: elementDescription,
+			procedure: procedure,
+			additive: additive,
+			timeDateTime: timeDateTime,
+			elementTimeDateTime: elementTimeDateTime,
+			timePeriod: timePeriod);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Textual description of procedure.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  A coded value specifying the procedure used to process the specimen.
   CodeableConcept procedure;
-
-  //  Material used in the processing step.
   List<Reference> additive;
-
-  //  A record of the time or period when the specimen processing occurred. 
-  // For example the time of sample fixation or the period of time the
-  // sample was in formalin.
   String timeDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for timeDateTime
   Element elementTimeDateTime;
-
-  //  A record of the time or period when the specimen processing occurred. 
-  // For example the time of sample fixation or the period of time the
-  // sample was in formalin.
   Period timePeriod;
 
 Specimen_Processing(
@@ -354,60 +283,42 @@ Specimen_Processing(
 @JsonSerializable(explicitToJson: true)
 class Specimen_Container {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Specimen_Container> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Identifier> identifier,
+		String description,
+		Element elementDescription,
+		CodeableConcept type,
+		Quantity capacity,
+		Quantity specimenQuantity,
+		CodeableConcept additiveCodeableConcept,
+		Reference additiveReference}) async {
+	 return Specimen_Container(
+			id: await newEntry('Specimen_Container'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			description: description,
+			elementDescription: elementDescription,
+			type: type,
+			capacity: capacity,
+			specimenQuantity: specimenQuantity,
+			additiveCodeableConcept: additiveCodeableConcept,
+			additiveReference: additiveReference);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Id for container. There may be multiple; a manufacturer's bar code,
-  // lab assigned identifier, etc. The container ID may differ from the
-  // specimen id in some circumstances.
   List<Identifier> identifier;
-
-  //  Textual description of the container.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  The type of container associated with the specimen (e.g. slide,
-  // aliquot, etc.).
   CodeableConcept type;
-
-  //  The capacity (volume or other measure) the container may contain.
   Quantity capacity;
-
-  //  The quantity of specimen in the container; may be volume, dimensions,
-  // or other appropriate measurements, depending on the specimen type.
   Quantity specimenQuantity;
-
-  //  Introduced substance to preserve, maintain or enhance the specimen.
-  // Examples: Formalin, Citrate, EDTA.
   CodeableConcept additiveCodeableConcept;
-
-  //  Introduced substance to preserve, maintain or enhance the specimen.
-  // Examples: Formalin, Citrate, EDTA.
   Reference additiveReference;
 
 Specimen_Container(

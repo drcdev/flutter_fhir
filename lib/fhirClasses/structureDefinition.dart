@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/elementDefinition.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
@@ -17,310 +20,226 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 183)
 class StructureDefinition {
 
-  //  This is a StructureDefinition resource
+	static Future<StructureDefinition> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String url,
+		Element elementUrl,
+		List<Identifier> identifier,
+		String version,
+		Element elementVersion,
+		String name,
+		Element elementName,
+		String title,
+		Element elementTitle,
+		String status,
+		Element elementStatus,
+		bool experimental,
+		Element elementExperimental,
+		DateTime date,
+		Element elementDate,
+		String publisher,
+		Element elementPublisher,
+		List<ContactDetail> contact,
+		String description,
+		Element elementDescription,
+		List<UsageContext> useContext,
+		List<CodeableConcept> jurisdiction,
+		String purpose,
+		Element elementPurpose,
+		String copyright,
+		Element elementCopyright,
+		List<Coding> keyword,
+		String fhirVersion,
+		Element elementFhirVersion,
+		List<StructureDefinition_Mapping> mapping,
+		String kind,
+		Element elementKind,
+		bool abstract,
+		Element elementAbstract,
+		List<StructureDefinition_Context> context,
+		List<String> contextInvariant,
+		List<Element> elementContextInvariant,
+		String type,
+		Element elementType,
+		String baseDefinition,
+		String derivation,
+		Element elementDerivation,
+		StructureDefinition_Snapshot snapshot,
+		StructureDefinition_Differential differential}) async {
+	 return StructureDefinition(
+			id: await newEntry('StructureDefinition'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			url: url,
+			elementUrl: elementUrl,
+			identifier: identifier,
+			version: version,
+			elementVersion: elementVersion,
+			name: name,
+			elementName: elementName,
+			title: title,
+			elementTitle: elementTitle,
+			status: status,
+			elementStatus: elementStatus,
+			experimental: experimental,
+			elementExperimental: elementExperimental,
+			date: date,
+			elementDate: elementDate,
+			publisher: publisher,
+			elementPublisher: elementPublisher,
+			contact: contact,
+			description: description,
+			elementDescription: elementDescription,
+			useContext: useContext,
+			jurisdiction: jurisdiction,
+			purpose: purpose,
+			elementPurpose: elementPurpose,
+			copyright: copyright,
+			elementCopyright: elementCopyright,
+			keyword: keyword,
+			fhirVersion: fhirVersion,
+			elementFhirVersion: elementFhirVersion,
+			mapping: mapping,
+			kind: kind,
+			elementKind: elementKind,
+			abstract: abstract,
+			elementAbstract: elementAbstract,
+			context: context,
+			contextInvariant: contextInvariant,
+			elementContextInvariant: elementContextInvariant,
+			type: type,
+			elementType: elementType,
+			baseDefinition: baseDefinition,
+			derivation: derivation,
+			elementDerivation: elementDerivation,
+			snapshot: snapshot,
+			differential: differential);
+	}
+
   @HiveField(0)
   final String resourceType= 'StructureDefinition';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  An absolute URI that is used to identify this structure definition
-  // when it is referenced in a specification, model, design or an instance;
-  // also called its canonical identifier. This SHOULD be globally unique
-  // and SHOULD be a literal address at which at which an authoritative
-  // instance of this structure definition is (or will be) published. This
-  // URL can be the target of a canonical reference. It SHALL remain the
-  // same when the structure definition is stored on different servers.
   @HiveField(11)
   String url;
-
-  //  Extensions for url
   @HiveField(12)
   Element elementUrl;
-
-  //  A formal identifier that is used to identify this structure definition
-  // when it is represented in other formats, or referenced in a
-  // specification, model, design or an instance.
   @HiveField(13)
   List<Identifier> identifier;
-
-  //  The identifier that is used to identify this version of the structure
-  // definition when it is referenced in a specification, model, design or
-  // instance. This is an arbitrary value managed by the structure
-  // definition author and is not expected to be globally unique. For
-  // example, it might be a timestamp (e.g. yyyymmdd) if a managed version
-  // is not available. There is also no expectation that versions can be
-  // placed in a lexicographical sequence.
   @HiveField(14)
   String version;
-
-  //  Extensions for version
   @HiveField(15)
   Element elementVersion;
-
-  //  A natural language name identifying the structure definition. This
-  // name should be usable as an identifier for the module by machine
-  // processing applications such as code generation.
   @HiveField(16)
   String name;
-
-  //  Extensions for name
   @HiveField(17)
   Element elementName;
-
-  //  A short, descriptive, user-friendly title for the structure
-  // definition.
   @HiveField(18)
   String title;
-
-  //  Extensions for title
   @HiveField(19)
   Element elementTitle;
-
-  //  The status of this structure definition. Enables tracking the
-  // life-cycle of the content.
   @HiveField(20)
   String status; // <code> enum: draft/active/retired/unknown;
-
-  //  Extensions for status
   @HiveField(21)
   Element elementStatus;
-
-  //  A Boolean value to indicate that this structure definition is authored
-  // for testing purposes (or education/evaluation/marketing) and is not
-  // intended to be used for genuine usage.
   @HiveField(22)
   bool experimental;
-
-  //  Extensions for experimental
   @HiveField(23)
   Element elementExperimental;
-
-  //  The date  (and optionally time) when the structure definition was
-  // published. The date must change when the business version changes and
-  // it must change if the status code changes. In addition, it should
-  // change when the substantive content of the structure definition
-  // changes.
   @HiveField(24)
   DateTime date;
-
-  //  Extensions for date
   @HiveField(25)
   Element elementDate;
-
-  //  The name of the organization or individual that published the
-  // structure definition.
   @HiveField(26)
   String publisher;
-
-  //  Extensions for publisher
   @HiveField(27)
   Element elementPublisher;
-
-  //  Contact details to assist a user in finding and communicating with the
-  // publisher.
   @HiveField(28)
   List<ContactDetail> contact;
-
-  //  A free text natural language description of the structure definition
-  // from a consumer's perspective.
   @HiveField(29)
   String description;
-
-  //  Extensions for description
   @HiveField(30)
   Element elementDescription;
-
-  //  The content was developed with a focus and intent of supporting the
-  // contexts that are listed. These contexts may be general categories
-  // (gender, age, ...) or may be references to specific programs (insurance
-  // plans, studies, ...) and may be used to assist with indexing and
-  // searching for appropriate structure definition instances.
   @HiveField(31)
   List<UsageContext> useContext;
-
-  //  A legal or geographic region in which the structure definition is
-  // intended to be used.
   @HiveField(32)
   List<CodeableConcept> jurisdiction;
-
-  //  Explanation of why this structure definition is needed and why it has
-  // been designed as it has.
   @HiveField(33)
   String purpose;
-
-  //  Extensions for purpose
   @HiveField(34)
   Element elementPurpose;
-
-  //  A copyright statement relating to the structure definition and/or its
-  // contents. Copyright statements are generally legal restrictions on the
-  // use and publishing of the structure definition.
   @HiveField(35)
   String copyright;
-
-  //  Extensions for copyright
   @HiveField(36)
   Element elementCopyright;
-
-  //  A set of key words or terms from external terminologies that may be
-  // used to assist with indexing and searching of templates nby describing
-  // the use of this structure definition, or the content it describes.
   @HiveField(37)
   List<Coding> keyword;
-
-  //  The version of the FHIR specification on which this
-  // StructureDefinition is based - this is the formal version of the
-  // specification, without the revision number, e.g.
-  // [publication].[major].[minor], which is 4.0.1. for this version.
   @HiveField(38)
   String fhirVersion; // <code> enum: 0.01/0.05/0.06/0.11/0.0.80/0.0.81/0.0.82/0.4.0/0.5.0/1.0.0/1.0.1/1.0.2/1.1.0/1.4.0/1.6.0/1.8.0/3.0.0/3.0.1/3.3.0/3.5.0/4.0.0/4.0.1;
-
-  //  Extensions for fhirVersion
   @HiveField(39)
   Element elementFhirVersion;
-
-  //  An external specification that the content is mapped to.
   @HiveField(40)
   List<StructureDefinition_Mapping> mapping;
-
-  //  Defines the kind of structure that this definition is describing.
   @HiveField(41)
   String kind; // <code> enum: primitive-type/complex-type/resource/logical;
-
-  //  Extensions for kind
   @HiveField(42)
   Element elementKind;
-
-  //  Whether structure this definition describes is abstract or not  - that
-  // is, whether the structure is not intended to be instantiated. For
-  // Resources and Data types, abstract types will never be exchanged 
-  // between systems.
   @HiveField(43)
   bool abstract;
-
-  //  Extensions for abstract
   @HiveField(44)
   Element elementAbstract;
-
-  //  Identifies the types of resource or data type elements to which the
-  // extension can be applied.
   @HiveField(45)
   List<StructureDefinition_Context> context;
-
-  //  A set of rules as FHIRPath Invariants about when the extension can be
-  // used (e.g. co-occurrence variants for the extension). All the rules
-  // must be true.
   @HiveField(46)
   List<String> contextInvariant;
-
-  //  Extensions for contextInvariant
   @HiveField(47)
   List<Element> elementContextInvariant;
-
-  //  The type this structure describes. If the derivation kind is
-  // 'specialization' then this is the master definition for a type, and
-  // there is always one of these (a data type, an extension, a resource,
-  // including abstract ones). Otherwise the structure definition is a
-  // constraint on the stated type (and in this case, the type cannot be an
-  // abstract type).  References are URLs that are relative to
-  // http://hl7.org/fhir/StructureDefinition e.g. "string" is a reference to
-  // http://hl7.org/fhir/StructureDefinition/string. Absolute URLs are only
-  // allowed in logical models.
   @HiveField(48)
   String type;
-
-  //  Extensions for type
   @HiveField(49)
   Element elementType;
-
-  //  An absolute URI that is the base structure from which this type is
-  // derived, either by specialization or constraint.
   @HiveField(50)
   String baseDefinition;
-
-  //  How the type relates to the baseDefinition.
   @HiveField(51)
   String derivation; // <code> enum: specialization/constraint;
-
-  //  Extensions for derivation
   @HiveField(52)
   Element elementDerivation;
-
-  //  A snapshot view is expressed in a standalone form that can be used and
-  // interpreted without considering the base StructureDefinition.
   @HiveField(53)
   StructureDefinition_Snapshot snapshot;
-
-  //  A differential view is expressed relative to the base
-  // StructureDefinition - a statement of differences that it applies.
   @HiveField(54)
   StructureDefinition_Differential differential;
 
@@ -388,57 +307,42 @@ StructureDefinition(
 @JsonSerializable(explicitToJson: true)
 class StructureDefinition_Mapping {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<StructureDefinition_Mapping> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String identity,
+		Element elementIdentity,
+		String uri,
+		Element elementUri,
+		String name,
+		Element elementName,
+		String comment,
+		Element elementComment}) async {
+	 return StructureDefinition_Mapping(
+			id: await newEntry('StructureDefinition_Mapping'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identity: identity,
+			elementIdentity: elementIdentity,
+			uri: uri,
+			elementUri: elementUri,
+			name: name,
+			elementName: elementName,
+			comment: comment,
+			elementComment: elementComment);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  An Internal id that is used to identify this mapping set when specific
-  // mappings are made.
   String identity;
-
-  //  Extensions for identity
   Element elementIdentity;
-
-  //  An absolute URI that identifies the specification that this mapping is
-  // expressed to.
   String uri;
-
-  //  Extensions for uri
   Element elementUri;
-
-  //  A name for the specification that is being mapped to.
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  Comments about this mapping, including version notes, issues, scope
-  // limitations, and other important notes for usage.
   String comment;
-
-  //  Extensions for comment
   Element elementComment;
 
 StructureDefinition_Mapping(
@@ -462,44 +366,30 @@ StructureDefinition_Mapping(
 @JsonSerializable(explicitToJson: true)
 class StructureDefinition_Context {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<StructureDefinition_Context> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String type,
+		Element elementType,
+		String expression,
+		Element elementExpression}) async {
+	 return StructureDefinition_Context(
+			id: await newEntry('StructureDefinition_Context'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			type: type,
+			elementType: elementType,
+			expression: expression,
+			elementExpression: elementExpression);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Defines how to interpret the expression that defines what the context
-  // of the extension is.
   String type; // <code> enum: fhirpath/element/extension;
-
-  //  Extensions for type
   Element elementType;
-
-  //  An expression that defines where an extension can be used in
-  // resources.
   String expression;
-
-  //  Extensions for expression
   Element elementExpression;
 
 StructureDefinition_Context(
@@ -519,40 +409,28 @@ StructureDefinition_Context(
 @JsonSerializable(explicitToJson: true)
 class StructureDefinition_Snapshot {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<StructureDefinition_Snapshot> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<ElementDefinition> element}) async {
+	 return StructureDefinition_Snapshot(
+			id: await newEntry('StructureDefinition_Snapshot'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			element: element);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Captures constraints on each element within the resource.
   List<ElementDefinition> element;
 
 StructureDefinition_Snapshot(
-  this.element,
-    {this.id,
+  {this.id,
     this.extension,
-    this.modifierExtension
+    this.modifierExtension,
+    @required this.element
     });
 
   factory StructureDefinition_Snapshot.fromJson(Map<String, dynamic> json) => _$StructureDefinition_SnapshotFromJson(json);
@@ -562,40 +440,28 @@ StructureDefinition_Snapshot(
 @JsonSerializable(explicitToJson: true)
 class StructureDefinition_Differential {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<StructureDefinition_Differential> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<ElementDefinition> element}) async {
+	 return StructureDefinition_Differential(
+			id: await newEntry('StructureDefinition_Differential'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			element: element);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Captures constraints on each element within the resource.
   List<ElementDefinition> element;
 
 StructureDefinition_Differential(
-  this.element,
-    {this.id,
+  {this.id,
     this.extension,
-    this.modifierExtension
+    this.modifierExtension,
+    @required this.element
     });
 
   factory StructureDefinition_Differential.fromJson(Map<String, dynamic> json) => _$StructureDefinition_DifferentialFromJson(json);
@@ -1089,11 +955,6 @@ Map<String, dynamic> _$StructureDefinition_ContextToJson(
 StructureDefinition_Snapshot _$StructureDefinition_SnapshotFromJson(
     Map<String, dynamic> json) {
   return StructureDefinition_Snapshot(
-    (json['element'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ElementDefinition.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1102,6 +963,11 @@ StructureDefinition_Snapshot _$StructureDefinition_SnapshotFromJson(
     modifierExtension: (json['modifierExtension'] as List)
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    element: (json['element'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ElementDefinition.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   );
 }
@@ -1119,11 +985,6 @@ Map<String, dynamic> _$StructureDefinition_SnapshotToJson(
 StructureDefinition_Differential _$StructureDefinition_DifferentialFromJson(
     Map<String, dynamic> json) {
   return StructureDefinition_Differential(
-    (json['element'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ElementDefinition.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1132,6 +993,11 @@ StructureDefinition_Differential _$StructureDefinition_DifferentialFromJson(
     modifierExtension: (json['modifierExtension'] as List)
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    element: (json['element'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ElementDefinition.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   );
 }

@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -11,56 +12,52 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @HiveType(typeId: 21)
 class Identifier {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Identifier> newInstance({
+		String id,
+		List<Extension> extension,
+		String use,
+		Element elementUse,
+		CodeableConcept type,
+		String system,
+		Element elementSystem,
+		String value,
+		Element elementValue,
+		Period period,
+		Reference assigner}) async {
+	 return Identifier(
+			id: await newEntry('Identifier'),
+			extension: extension,
+			use: use,
+			elementUse: elementUse,
+			type: type,
+			system: system,
+			elementSystem: elementSystem,
+			value: value,
+			elementValue: elementValue,
+			period: period,
+			assigner: assigner);
+	}
+
   @HiveField(0)
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   @HiveField(1)
   List<Extension> extension;
-
-  //  The purpose of this identifier.
   @HiveField(2)
   String use; // <code> enum: usual/official/temp/secondary/old;
-
-  //  Extensions for use
   @HiveField(3)
   Element elementUse;
-
-  //  A coded type for the identifier that can be used to determine which
-  // identifier to use for a specific purpose.
   @HiveField(4)
   CodeableConcept type;
-
-  //  Establishes the namespace for the value - that is, a URL that
-  // describes a set values that are unique.
   @HiveField(5)
   String system;
-
-  //  Extensions for system
   @HiveField(6)
   Element elementSystem;
-
-  //  The portion of the identifier typically relevant to the user and which
-  // is unique within the context of the system.
   @HiveField(7)
   String value;
-
-  //  Extensions for value
   @HiveField(8)
   Element elementValue;
-
-  //  Time period during which identifier is/was valid for use.
   @HiveField(9)
   Period period;
-
-  //  Organization that issued/manages the identifier.
   @HiveField(10)
   Reference assigner;
 

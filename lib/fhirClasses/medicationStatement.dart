@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/dosage.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
@@ -17,199 +20,143 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 135)
 class MedicationStatement {
 
-  //  This is a MedicationStatement resource
+	static Future<MedicationStatement> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Identifier> identifier,
+		List<Reference> basedOn,
+		List<Reference> partOf,
+		String status,
+		Element elementStatus,
+		List<CodeableConcept> statusReason,
+		CodeableConcept category,
+		CodeableConcept medicationCodeableConcept,
+		Reference medicationReference,
+		Reference subject,
+		Reference context,
+		String effectiveDateTime,
+		Element elementEffectiveDateTime,
+		Period effectivePeriod,
+		DateTime dateAsserted,
+		Element elementDateAsserted,
+		Reference informationSource,
+		List<Reference> derivedFrom,
+		List<CodeableConcept> reasonCode,
+		List<Reference> reasonReference,
+		List<Annotation> note,
+		List<Dosage> dosage}) async {
+	 return MedicationStatement(
+			id: await newEntry('MedicationStatement'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			basedOn: basedOn,
+			partOf: partOf,
+			status: status,
+			elementStatus: elementStatus,
+			statusReason: statusReason,
+			category: category,
+			medicationCodeableConcept: medicationCodeableConcept,
+			medicationReference: medicationReference,
+			subject: subject,
+			context: context,
+			effectiveDateTime: effectiveDateTime,
+			elementEffectiveDateTime: elementEffectiveDateTime,
+			effectivePeriod: effectivePeriod,
+			dateAsserted: dateAsserted,
+			elementDateAsserted: elementDateAsserted,
+			informationSource: informationSource,
+			derivedFrom: derivedFrom,
+			reasonCode: reasonCode,
+			reasonReference: reasonReference,
+			note: note,
+			dosage: dosage);
+	}
+
   @HiveField(0)
   final String resourceType= 'MedicationStatement';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  Identifiers associated with this Medication Statement that are defined
-  // by business processes and/or used to refer to it when a direct URL
-  // reference to the resource itself is not appropriate. They are business
-  // identifiers assigned to this resource by the performer or other systems
-  // and remain constant as the resource is updated and propagates from
-  // server to server.
   @HiveField(11)
   List<Identifier> identifier;
-
-  //  A plan, proposal or order that is fulfilled in whole or in part by
-  // this event.
   @HiveField(12)
   List<Reference> basedOn;
-
-  //  A larger event of which this particular event is a component or step.
   @HiveField(13)
   List<Reference> partOf;
-
-  //  A code representing the patient or other source's judgment about the
-  // state of the medication used that this statement is about.  Generally,
-  // this will be active or completed.
   @HiveField(14)
   String status;
-
-  //  Extensions for status
   @HiveField(15)
   Element elementStatus;
-
-  //  Captures the reason for the current state of the MedicationStatement.
   @HiveField(16)
   List<CodeableConcept> statusReason;
-
-  //  Indicates where the medication is expected to be consumed or
-  // administered.
   @HiveField(17)
   CodeableConcept category;
-
-  //  Identifies the medication being administered. This is either a link to
-  // a resource representing the details of the medication or a simple
-  // attribute carrying a code that identifies the medication from a known
-  // list of medications.
   @HiveField(18)
   CodeableConcept medicationCodeableConcept;
-
-  //  Identifies the medication being administered. This is either a link to
-  // a resource representing the details of the medication or a simple
-  // attribute carrying a code that identifies the medication from a known
-  // list of medications.
   @HiveField(19)
   Reference medicationReference;
-
-  //  The person, animal or group who is/was taking the medication.
   @HiveField(20)
   Reference subject;
-
-  //  The encounter or episode of care that establishes the context for this
-  // MedicationStatement.
   @HiveField(21)
   Reference context;
-
-  //  The interval of time during which it is being asserted that the
-  // patient is/was/will be taking the medication (or was not taking, when
-  // the MedicationStatement.taken element is No).
   @HiveField(22)
   String effectiveDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for effectiveDateTime
   @HiveField(23)
   Element elementEffectiveDateTime;
-
-  //  The interval of time during which it is being asserted that the
-  // patient is/was/will be taking the medication (or was not taking, when
-  // the MedicationStatement.taken element is No).
   @HiveField(24)
   Period effectivePeriod;
-
-  //  The date when the medication statement was asserted by the information
-  // source.
   @HiveField(25)
   DateTime dateAsserted;
-
-  //  Extensions for dateAsserted
   @HiveField(26)
   Element elementDateAsserted;
-
-  //  The person or organization that provided the information about the
-  // taking of this medication. Note: Use derivedFrom when a
-  // MedicationStatement is derived from other resources, e.g. Claim or
-  // MedicationRequest.
   @HiveField(27)
   Reference informationSource;
-
-  //  Allows linking the MedicationStatement to the underlying
-  // MedicationRequest, or to other information that supports or is used to
-  // derive the MedicationStatement.
   @HiveField(28)
   List<Reference> derivedFrom;
-
-  //  A reason for why the medication is being/was taken.
   @HiveField(29)
   List<CodeableConcept> reasonCode;
-
-  //  Condition or observation that supports why the medication is being/was
-  // taken.
   @HiveField(30)
   List<Reference> reasonReference;
-
-  //  Provides extra information about the medication statement that is not
-  // conveyed by the other attributes.
   @HiveField(31)
   List<Annotation> note;
-
-  //  Indicates how the medication is/was or should be taken by the patient.
   @HiveField(32)
   List<Dosage> dosage;
 
 MedicationStatement(
-  this.subject,
-    {this.id,
+  {this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -228,6 +175,7 @@ MedicationStatement(
     this.category,
     this.medicationCodeableConcept,
     this.medicationReference,
+    @required this.subject,
     this.context,
     this.effectiveDateTime,
     this.elementEffectiveDateTime,
@@ -263,7 +211,6 @@ class MedicationStatementAdapter extends TypeAdapter<MedicationStatement> {
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return MedicationStatement(
-      fields[20] as Reference,
       id: fields[1] as String,
       meta: fields[2] as Meta,
       implicitRules: fields[3] as String,
@@ -283,6 +230,7 @@ class MedicationStatementAdapter extends TypeAdapter<MedicationStatement> {
       category: fields[17] as CodeableConcept,
       medicationCodeableConcept: fields[18] as CodeableConcept,
       medicationReference: fields[19] as Reference,
+      subject: fields[20] as Reference,
       context: fields[21] as Reference,
       effectiveDateTime: fields[22] as String,
       elementEffectiveDateTime: fields[23] as Element,
@@ -377,9 +325,6 @@ class MedicationStatementAdapter extends TypeAdapter<MedicationStatement> {
 
 MedicationStatement _$MedicationStatementFromJson(Map<String, dynamic> json) {
   return MedicationStatement(
-    json['subject'] == null
-        ? null
-        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -440,6 +385,9 @@ MedicationStatement _$MedicationStatementFromJson(Map<String, dynamic> json) {
         ? null
         : Reference.fromJson(
             json['medicationReference'] as Map<String, dynamic>),
+    subject: json['subject'] == null
+        ? null
+        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     context: json['context'] == null
         ? null
         : Reference.fromJson(json['context'] as Map<String, dynamic>),

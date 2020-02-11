@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/duration.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -17,210 +20,151 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 99)
 class Encounter {
 
-  //  This is a Encounter resource
+	static Future<Encounter> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Identifier> identifier,
+		String status,
+		Element elementStatus,
+		List<Encounter_StatusHistory> statusHistory,
+		Coding classs,
+		List<Encounter_ClassHistory> classHistory,
+		List<CodeableConcept> type,
+		CodeableConcept serviceType,
+		CodeableConcept priority,
+		Reference subject,
+		List<Reference> episodeOfCare,
+		List<Reference> basedOn,
+		List<Encounter_Participant> participant,
+		List<Reference> appointment,
+		Period period,
+		Duration length,
+		List<CodeableConcept> reasonCode,
+		List<Reference> reasonReference,
+		List<Encounter_Diagnosis> diagnosis,
+		List<Reference> account,
+		Encounter_Hospitalization hospitalization,
+		List<Encounter_Location> location,
+		Reference serviceProvider,
+		Reference partOf}) async {
+	 return Encounter(
+			id: await newEntry('Encounter'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			status: status,
+			elementStatus: elementStatus,
+			statusHistory: statusHistory,
+			classs: classs,
+			classHistory: classHistory,
+			type: type,
+			serviceType: serviceType,
+			priority: priority,
+			subject: subject,
+			episodeOfCare: episodeOfCare,
+			basedOn: basedOn,
+			participant: participant,
+			appointment: appointment,
+			period: period,
+			length: length,
+			reasonCode: reasonCode,
+			reasonReference: reasonReference,
+			diagnosis: diagnosis,
+			account: account,
+			hospitalization: hospitalization,
+			location: location,
+			serviceProvider: serviceProvider,
+			partOf: partOf);
+	}
+
   @HiveField(0)
   final String resourceType= 'Encounter';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  Identifier(s) by which this encounter is known.
   @HiveField(11)
   List<Identifier> identifier;
-
-  //  planned | arrived | triaged | in-progress | onleave | finished |
-  // cancelled +.
   @HiveField(12)
   String status; // <code> enum: planned/arrived/triaged/in-progress/onleave/finished/cancelled/entered-in-error/unknown;
-
-  //  Extensions for status
   @HiveField(13)
   Element elementStatus;
-
-  //  The status history permits the encounter resource to contain the
-  // status history without needing to read through the historical versions
-  // of the resource, or even have the server store them.
   @HiveField(14)
   List<Encounter_StatusHistory> statusHistory;
-
-  //  Concepts representing classification of patient encounter such as
-  // ambulatory (outpatient), inpatient, emergency, home health or others
-  // due to local variations.
   @HiveField(15)
   Coding classs;
-
-  //  The class history permits the tracking of the encounters transitions
-  // without needing to go  through the resource history.  This would be
-  // used for a case where an admission starts of as an emergency encounter,
-  // then transitions into an inpatient scenario. Doing this and not
-  // restarting a new encounter ensures that any lab/diagnostic results can
-  // more easily follow the patient and not require re-processing and not
-  // get lost or cancelled during a kind of discharge from emergency to
-  // inpatient.
   @HiveField(16)
   List<Encounter_ClassHistory> classHistory;
-
-  //  Specific type of encounter (e.g. e-mail consultation, surgical
-  // day-care, skilled nursing, rehabilitation).
   @HiveField(17)
   List<CodeableConcept> type;
-
-  //  Broad categorization of the service that is to be provided (e.g.
-  // cardiology).
   @HiveField(18)
   CodeableConcept serviceType;
-
-  //  Indicates the urgency of the encounter.
   @HiveField(19)
   CodeableConcept priority;
-
-  //  The patient or group present at the encounter.
   @HiveField(20)
   Reference subject;
-
-  //  Where a specific encounter should be classified as a part of a
-  // specific episode(s) of care this field should be used. This association
-  // can facilitate grouping of related encounters together for a specific
-  // purpose, such as government reporting, issue tracking, association via
-  // a common problem.  The association is recorded on the encounter as
-  // these are typically created after the episode of care and grouped on
-  // entry rather than editing the episode of care to append another
-  // encounter to it (the episode of care could span years).
   @HiveField(21)
   List<Reference> episodeOfCare;
-
-  //  The request this encounter satisfies (e.g. incoming referral or
-  // procedure request).
   @HiveField(22)
   List<Reference> basedOn;
-
-  //  The list of people responsible for providing the service.
   @HiveField(23)
   List<Encounter_Participant> participant;
-
-  //  The appointment that scheduled this encounter.
   @HiveField(24)
   List<Reference> appointment;
-
-  //  The start and end time of the encounter.
   @HiveField(25)
   Period period;
-
-  //  Quantity of time the encounter lasted. This excludes the time during
-  // leaves of absence.
   @HiveField(26)
   Duration length;
-
-  //  Reason the encounter takes place, expressed as a code. For admissions,
-  // this can be used for a coded admission diagnosis.
   @HiveField(27)
   List<CodeableConcept> reasonCode;
-
-  //  Reason the encounter takes place, expressed as a code. For admissions,
-  // this can be used for a coded admission diagnosis.
   @HiveField(28)
   List<Reference> reasonReference;
-
-  //  The list of diagnosis relevant to this encounter.
   @HiveField(29)
   List<Encounter_Diagnosis> diagnosis;
-
-  //  The set of accounts that may be used for billing for this Encounter.
   @HiveField(30)
   List<Reference> account;
-
-  //  Details about the admission to a healthcare service.
   @HiveField(31)
   Encounter_Hospitalization hospitalization;
-
-  //  List of locations where  the patient has been during this encounter.
   @HiveField(32)
   List<Encounter_Location> location;
-
-  //  The organization that is primarily responsible for this Encounter's
-  // services. This MAY be the same as the organization on the Patient
-  // record, however it could be different, such as if the actor performing
-  // the services was from an external organization (which may be billed
-  // seperately) for an external consultation.  Refer to the example bundle
-  // showing an abbreviated set of Encounters for a colonoscopy.
   @HiveField(33)
   Reference serviceProvider;
-
-  //  Another Encounter of which this encounter is a part of
-  // (administratively or in time).
   @HiveField(34)
   Reference partOf;
 
 Encounter(
-  this.classs,
-    {this.id,
+  {this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -234,6 +178,7 @@ Encounter(
     this.status,
     this.elementStatus,
     this.statusHistory,
+    @required this.classs,
     this.classHistory,
     this.type,
     this.serviceType,
@@ -262,49 +207,36 @@ Encounter(
 @JsonSerializable(explicitToJson: true)
 class Encounter_StatusHistory {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Encounter_StatusHistory> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String status,
+		Element elementStatus,
+		Period period}) async {
+	 return Encounter_StatusHistory(
+			id: await newEntry('Encounter_StatusHistory'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			status: status,
+			elementStatus: elementStatus,
+			period: period);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  planned | arrived | triaged | in-progress | onleave | finished |
-  // cancelled +.
   String status; // <code> enum: planned/arrived/triaged/in-progress/onleave/finished/cancelled/entered-in-error/unknown;
-
-  //  Extensions for status
   Element elementStatus;
-
-  //  The time that the episode was in the specified status.
   Period period;
 
 Encounter_StatusHistory(
-  this.period,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.status,
-    this.elementStatus
+    this.elementStatus,
+    @required this.period
     });
 
   factory Encounter_StatusHistory.fromJson(Map<String, dynamic> json) => _$Encounter_StatusHistoryFromJson(json);
@@ -314,44 +246,32 @@ Encounter_StatusHistory(
 @JsonSerializable(explicitToJson: true)
 class Encounter_ClassHistory {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Encounter_ClassHistory> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Coding classs,
+		Period period}) async {
+	 return Encounter_ClassHistory(
+			id: await newEntry('Encounter_ClassHistory'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			classs: classs,
+			period: period);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  inpatient | outpatient | ambulatory | emergency +.
   Coding classs;
-
-  //  The time that the episode was in the specified class.
   Period period;
 
 Encounter_ClassHistory(
-  this.classs,
-    this.period,
-    {this.id,
+  {this.id,
     this.extension,
-    this.modifierExtension
+    this.modifierExtension,
+    @required this.classs,
+    @required this.period
     });
 
   factory Encounter_ClassHistory.fromJson(Map<String, dynamic> json) => _$Encounter_ClassHistoryFromJson(json);
@@ -361,41 +281,27 @@ Encounter_ClassHistory(
 @JsonSerializable(explicitToJson: true)
 class Encounter_Participant {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Encounter_Participant> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<CodeableConcept> type,
+		Period period,
+		Reference individual}) async {
+	 return Encounter_Participant(
+			id: await newEntry('Encounter_Participant'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			type: type,
+			period: period,
+			individual: individual);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Role of participant in encounter.
   List<CodeableConcept> type;
-
-  //  The period of time that the specified participant participated in the
-  // encounter. These can overlap or be sub-sets of the overall encounter's
-  // period.
   Period period;
-
-  //  Persons involved in the encounter other than the patient.
   Reference individual;
 
 Encounter_Participant(
@@ -414,53 +320,37 @@ Encounter_Participant(
 @JsonSerializable(explicitToJson: true)
 class Encounter_Diagnosis {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Encounter_Diagnosis> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Reference condition,
+		CodeableConcept use,
+		int rank,
+		Element elementRank}) async {
+	 return Encounter_Diagnosis(
+			id: await newEntry('Encounter_Diagnosis'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			condition: condition,
+			use: use,
+			rank: rank,
+			elementRank: elementRank);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Reason the encounter takes place, as specified using information from
-  // another resource. For admissions, this is the admission diagnosis. The
-  // indication will typically be a Condition (with other resources
-  // referenced in the evidence.detail), or a Procedure.
   Reference condition;
-
-  //  Role that this diagnosis has within the encounter (e.g. admission,
-  // billing, discharge …).
   CodeableConcept use;
-
-  //  Ranking of the diagnosis (for each role type).
   int rank;
-
-  //  Extensions for rank
   Element elementRank;
 
 Encounter_Diagnosis(
-  this.condition,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
+    @required this.condition,
     this.use,
     this.rank,
     this.elementRank
@@ -473,59 +363,45 @@ Encounter_Diagnosis(
 @JsonSerializable(explicitToJson: true)
 class Encounter_Hospitalization {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Encounter_Hospitalization> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Identifier preAdmissionIdentifier,
+		Reference origin,
+		CodeableConcept admitSource,
+		CodeableConcept reAdmission,
+		List<CodeableConcept> dietPreference,
+		List<CodeableConcept> specialCourtesy,
+		List<CodeableConcept> specialArrangement,
+		Reference destination,
+		CodeableConcept dischargeDisposition}) async {
+	 return Encounter_Hospitalization(
+			id: await newEntry('Encounter_Hospitalization'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			preAdmissionIdentifier: preAdmissionIdentifier,
+			origin: origin,
+			admitSource: admitSource,
+			reAdmission: reAdmission,
+			dietPreference: dietPreference,
+			specialCourtesy: specialCourtesy,
+			specialArrangement: specialArrangement,
+			destination: destination,
+			dischargeDisposition: dischargeDisposition);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Pre-admission identifier.
   Identifier preAdmissionIdentifier;
-
-  //  The location/organization from which the patient came before
-  // admission.
   Reference origin;
-
-  //  From where patient was admitted (physician referral, transfer).
   CodeableConcept admitSource;
-
-  //  Whether this hospitalization is a readmission and why if known.
   CodeableConcept reAdmission;
-
-  //  Diet preferences reported by the patient.
   List<CodeableConcept> dietPreference;
-
-  //  Special courtesies (VIP, board member).
   List<CodeableConcept> specialCourtesy;
-
-  //  Any special requests that have been made for this hospitalization
-  // encounter, such as the provision of specific equipment or other things.
   List<CodeableConcept> specialArrangement;
-
-  //  Location/organization to which the patient is discharged.
   Reference destination;
-
-  //  Category or kind of location after discharge.
   CodeableConcept dischargeDisposition;
 
 Encounter_Hospitalization(
@@ -550,55 +426,40 @@ Encounter_Hospitalization(
 @JsonSerializable(explicitToJson: true)
 class Encounter_Location {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Encounter_Location> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Reference location,
+		String status,
+		Element elementStatus,
+		CodeableConcept physicalType,
+		Period period}) async {
+	 return Encounter_Location(
+			id: await newEntry('Encounter_Location'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			location: location,
+			status: status,
+			elementStatus: elementStatus,
+			physicalType: physicalType,
+			period: period);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The location where the encounter takes place.
   Reference location;
-
-  //  The status of the participants' presence at the specified location
-  // during the period specified. If the participant is no longer at the
-  // location, then the period will have an end date/time.
   String status; // <code> enum: planned/active/reserved/completed;
-
-  //  Extensions for status
   Element elementStatus;
-
-  //  This will be used to specify the required levels (bed/ward/room/etc.)
-  // desired to be recorded to simplify either messaging or query.
   CodeableConcept physicalType;
-
-  //  Time period during which the patient was present at the location.
   Period period;
 
 Encounter_Location(
-  this.location,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
+    @required this.location,
     this.status,
     this.elementStatus,
     this.physicalType,
@@ -626,7 +487,6 @@ class EncounterAdapter extends TypeAdapter<Encounter> {
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Encounter(
-      fields[15] as Coding,
       id: fields[1] as String,
       meta: fields[2] as Meta,
       implicitRules: fields[3] as String,
@@ -641,6 +501,7 @@ class EncounterAdapter extends TypeAdapter<Encounter> {
       status: fields[12] as String,
       elementStatus: fields[13] as Element,
       statusHistory: (fields[14] as List)?.cast<Encounter_StatusHistory>(),
+      classs: fields[15] as Coding,
       classHistory: (fields[16] as List)?.cast<Encounter_ClassHistory>(),
       type: (fields[17] as List)?.cast<CodeableConcept>(),
       serviceType: fields[18] as CodeableConcept,
@@ -746,9 +607,6 @@ class EncounterAdapter extends TypeAdapter<Encounter> {
 
 Encounter _$EncounterFromJson(Map<String, dynamic> json) {
   return Encounter(
-    json['classs'] == null
-        ? null
-        : Coding.fromJson(json['classs'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -790,6 +648,9 @@ Encounter _$EncounterFromJson(Map<String, dynamic> json) {
             ? null
             : Encounter_StatusHistory.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    classs: json['classs'] == null
+        ? null
+        : Coding.fromJson(json['classs'] as Map<String, dynamic>),
     classHistory: (json['classHistory'] as List)
         ?.map((e) => e == null
             ? null
@@ -912,9 +773,6 @@ Map<String, dynamic> _$EncounterToJson(Encounter instance) => <String, dynamic>{
 Encounter_StatusHistory _$Encounter_StatusHistoryFromJson(
     Map<String, dynamic> json) {
   return Encounter_StatusHistory(
-    json['period'] == null
-        ? null
-        : Period.fromJson(json['period'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -928,6 +786,9 @@ Encounter_StatusHistory _$Encounter_StatusHistoryFromJson(
     elementStatus: json['elementStatus'] == null
         ? null
         : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
+    period: json['period'] == null
+        ? null
+        : Period.fromJson(json['period'] as Map<String, dynamic>),
   );
 }
 
@@ -946,12 +807,6 @@ Map<String, dynamic> _$Encounter_StatusHistoryToJson(
 Encounter_ClassHistory _$Encounter_ClassHistoryFromJson(
     Map<String, dynamic> json) {
   return Encounter_ClassHistory(
-    json['classs'] == null
-        ? null
-        : Coding.fromJson(json['classs'] as Map<String, dynamic>),
-    json['period'] == null
-        ? null
-        : Period.fromJson(json['period'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -961,6 +816,12 @@ Encounter_ClassHistory _$Encounter_ClassHistoryFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    classs: json['classs'] == null
+        ? null
+        : Coding.fromJson(json['classs'] as Map<String, dynamic>),
+    period: json['period'] == null
+        ? null
+        : Period.fromJson(json['period'] as Map<String, dynamic>),
   );
 }
 
@@ -1015,9 +876,6 @@ Map<String, dynamic> _$Encounter_ParticipantToJson(
 
 Encounter_Diagnosis _$Encounter_DiagnosisFromJson(Map<String, dynamic> json) {
   return Encounter_Diagnosis(
-    json['condition'] == null
-        ? null
-        : Reference.fromJson(json['condition'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1027,6 +885,9 @@ Encounter_Diagnosis _$Encounter_DiagnosisFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    condition: json['condition'] == null
+        ? null
+        : Reference.fromJson(json['condition'] as Map<String, dynamic>),
     use: json['use'] == null
         ? null
         : CodeableConcept.fromJson(json['use'] as Map<String, dynamic>),
@@ -1123,9 +984,6 @@ Map<String, dynamic> _$Encounter_HospitalizationToJson(
 
 Encounter_Location _$Encounter_LocationFromJson(Map<String, dynamic> json) {
   return Encounter_Location(
-    json['location'] == null
-        ? null
-        : Reference.fromJson(json['location'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1135,6 +993,9 @@ Encounter_Location _$Encounter_LocationFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    location: json['location'] == null
+        ? null
+        : Reference.fromJson(json['location'] as Map<String, dynamic>),
     status: json['status'] as String,
     elementStatus: json['elementStatus'] == null
         ? null

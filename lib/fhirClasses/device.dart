@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
@@ -17,239 +20,194 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 90)
 class Device {
 
-  //  This is a Device resource
+	static Future<Device> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Identifier> identifier,
+		Reference definition,
+		List<Device_UdiCarrier> udiCarrier,
+		String status,
+		Element elementStatus,
+		List<CodeableConcept> statusReason,
+		String distinctIdentifier,
+		Element elementDistinctIdentifier,
+		String manufacturer,
+		Element elementManufacturer,
+		DateTime manufactureDate,
+		Element elementManufactureDate,
+		DateTime expirationDate,
+		Element elementExpirationDate,
+		String lotNumber,
+		Element elementLotNumber,
+		String serialNumber,
+		Element elementSerialNumber,
+		List<Device_DeviceName> deviceName,
+		String modelNumber,
+		Element elementModelNumber,
+		String partNumber,
+		Element elementPartNumber,
+		CodeableConcept type,
+		List<Device_Specialization> specialization,
+		List<Device_Version> version,
+		List<Device_Property> property,
+		Reference patient,
+		Reference owner,
+		List<ContactPoint> contact,
+		Reference location,
+		String url,
+		Element elementUrl,
+		List<Annotation> note,
+		List<CodeableConcept> safety,
+		Reference parent}) async {
+	 return Device(
+			id: await newEntry('Device'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			definition: definition,
+			udiCarrier: udiCarrier,
+			status: status,
+			elementStatus: elementStatus,
+			statusReason: statusReason,
+			distinctIdentifier: distinctIdentifier,
+			elementDistinctIdentifier: elementDistinctIdentifier,
+			manufacturer: manufacturer,
+			elementManufacturer: elementManufacturer,
+			manufactureDate: manufactureDate,
+			elementManufactureDate: elementManufactureDate,
+			expirationDate: expirationDate,
+			elementExpirationDate: elementExpirationDate,
+			lotNumber: lotNumber,
+			elementLotNumber: elementLotNumber,
+			serialNumber: serialNumber,
+			elementSerialNumber: elementSerialNumber,
+			deviceName: deviceName,
+			modelNumber: modelNumber,
+			elementModelNumber: elementModelNumber,
+			partNumber: partNumber,
+			elementPartNumber: elementPartNumber,
+			type: type,
+			specialization: specialization,
+			version: version,
+			property: property,
+			patient: patient,
+			owner: owner,
+			contact: contact,
+			location: location,
+			url: url,
+			elementUrl: elementUrl,
+			note: note,
+			safety: safety,
+			parent: parent);
+	}
+
   @HiveField(0)
   final String resourceType= 'Device';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  Unique instance identifiers assigned to a device by manufacturers
-  // other organizations or owners.
   @HiveField(11)
   List<Identifier> identifier;
-
-  //  The reference to the definition for the device.
   @HiveField(12)
   Reference definition;
-
-  //  Unique device identifier (UDI) assigned to device label or package. 
-  // Note that the Device may include multiple udiCarriers as it either may
-  // include just the udiCarrier for the jurisdiction it is sold, or for
-  // multiple jurisdictions it could have been sold.
   @HiveField(13)
   List<Device_UdiCarrier> udiCarrier;
-
-  //  Status of the Device availability.
   @HiveField(14)
   String status; // <code> enum: active/inactive/entered-in-error/unknown;
-
-  //  Extensions for status
   @HiveField(15)
   Element elementStatus;
-
-  //  Reason for the dtatus of the Device availability.
   @HiveField(16)
   List<CodeableConcept> statusReason;
-
-  //  The distinct identification string as required by regulation for a
-  // human cell, tissue, or cellular and tissue-based product.
   @HiveField(17)
   String distinctIdentifier;
-
-  //  Extensions for distinctIdentifier
   @HiveField(18)
   Element elementDistinctIdentifier;
-
-  //  A name of the manufacturer.
   @HiveField(19)
   String manufacturer;
-
-  //  Extensions for manufacturer
   @HiveField(20)
   Element elementManufacturer;
-
-  //  The date and time when the device was manufactured.
   @HiveField(21)
   DateTime manufactureDate;
-
-  //  Extensions for manufactureDate
   @HiveField(22)
   Element elementManufactureDate;
-
-  //  The date and time beyond which this device is no longer valid or
-  // should not be used (if applicable).
   @HiveField(23)
   DateTime expirationDate;
-
-  //  Extensions for expirationDate
   @HiveField(24)
   Element elementExpirationDate;
-
-  //  Lot number assigned by the manufacturer.
   @HiveField(25)
   String lotNumber;
-
-  //  Extensions for lotNumber
   @HiveField(26)
   Element elementLotNumber;
-
-  //  The serial number assigned by the organization when the device was
-  // manufactured.
   @HiveField(27)
   String serialNumber;
-
-  //  Extensions for serialNumber
   @HiveField(28)
   Element elementSerialNumber;
-
-  //  This represents the manufacturer's name of the device as provided by
-  // the device, from a UDI label, or by a person describing the Device. 
-  // This typically would be used when a person provides the name(s) or when
-  // the device represents one of the names available from DeviceDefinition.
   @HiveField(29)
   List<Device_DeviceName> deviceName;
-
-  //  The model number for the device.
   @HiveField(30)
   String modelNumber;
-
-  //  Extensions for modelNumber
   @HiveField(31)
   Element elementModelNumber;
-
-  //  The part number of the device.
   @HiveField(32)
   String partNumber;
-
-  //  Extensions for partNumber
   @HiveField(33)
   Element elementPartNumber;
-
-  //  The kind or type of device.
   @HiveField(34)
   CodeableConcept type;
-
-  //  The capabilities supported on a  device, the standards to which the
-  // device conforms for a particular purpose, and used for the
-  // communication.
   @HiveField(35)
   List<Device_Specialization> specialization;
-
-  //  The actual design of the device or software version running on the
-  // device.
   @HiveField(36)
   List<Device_Version> version;
-
-  //  The actual configuration settings of a device as it actually operates,
-  // e.g., regulation status, time properties.
   @HiveField(37)
   List<Device_Property> property;
-
-  //  Patient information, If the device is affixed to a person.
   @HiveField(38)
   Reference patient;
-
-  //  An organization that is responsible for the provision and ongoing
-  // maintenance of the device.
   @HiveField(39)
   Reference owner;
-
-  //  Contact details for an organization or a particular human that is
-  // responsible for the device.
   @HiveField(40)
   List<ContactPoint> contact;
-
-  //  The place where the device can be found.
   @HiveField(41)
   Reference location;
-
-  //  A network address on which the device may be contacted directly.
   @HiveField(42)
   String url;
-
-  //  Extensions for url
   @HiveField(43)
   Element elementUrl;
-
-  //  Descriptive information, usage information or implantation information
-  // that is not captured in an existing element.
   @HiveField(44)
   List<Annotation> note;
-
-  //  Provides additional safety characteristics about a medical device. 
-  // For example devices containing latex.
   @HiveField(45)
   List<CodeableConcept> safety;
-
-  //  The parent device.
   @HiveField(46)
   Reference parent;
 
@@ -309,81 +267,54 @@ Device(
 @JsonSerializable(explicitToJson: true)
 class Device_UdiCarrier {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Device_UdiCarrier> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String deviceIdentifier,
+		Element elementDeviceIdentifier,
+		String issuer,
+		Element elementIssuer,
+		String jurisdiction,
+		Element elementJurisdiction,
+		String carrierAIDC,
+		Element elementCarrierAIDC,
+		String carrierHRF,
+		Element elementCarrierHRF,
+		String entryType,
+		Element elementEntryType}) async {
+	 return Device_UdiCarrier(
+			id: await newEntry('Device_UdiCarrier'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			deviceIdentifier: deviceIdentifier,
+			elementDeviceIdentifier: elementDeviceIdentifier,
+			issuer: issuer,
+			elementIssuer: elementIssuer,
+			jurisdiction: jurisdiction,
+			elementJurisdiction: elementJurisdiction,
+			carrierAIDC: carrierAIDC,
+			elementCarrierAIDC: elementCarrierAIDC,
+			carrierHRF: carrierHRF,
+			elementCarrierHRF: elementCarrierHRF,
+			entryType: entryType,
+			elementEntryType: elementEntryType);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The device identifier (DI) is a mandatory, fixed portion of a UDI that
-  // identifies the labeler and the specific version or model of a device.
   String deviceIdentifier;
-
-  //  Extensions for deviceIdentifier
   Element elementDeviceIdentifier;
-
-  //  Organization that is charged with issuing UDIs for devices.  For
-  // example, the US FDA issuers include : 1) GS1: 
-  // http://hl7.org/fhir/NamingSystem/gs1-di,  2) HIBCC:
-  // http://hl7.org/fhir/NamingSystem/hibcc-dI,  3) ICCBBA for blood
-  // containers: http://hl7.org/fhir/NamingSystem/iccbba-blood-di,  4) ICCBA
-  // for other devices: http://hl7.org/fhir/NamingSystem/iccbba-other-di.
   String issuer;
-
-  //  Extensions for issuer
   Element elementIssuer;
-
-  //  The identity of the authoritative source for UDI generation within a 
-  // jurisdiction.  All UDIs are globally unique within a single namespace
-  // with the appropriate repository uri as the system.  For example,  UDIs
-  // of devices managed in the U.S. by the FDA, the value is 
-  // http://hl7.org/fhir/NamingSystem/fda-udi.
   String jurisdiction;
-
-  //  Extensions for jurisdiction
   Element elementJurisdiction;
-
-  //  The full UDI carrier of the Automatic Identification and Data Capture
-  // (AIDC) technology representation of the barcode string as printed on
-  // the packaging of the device - e.g., a barcode or RFID.   Because of
-  // limitations on character sets in XML and the need to round-trip JSON
-  // data through XML, AIDC Formats *SHALL* be base64 encoded.
   String carrierAIDC;
-
-  //  Extensions for carrierAIDC
   Element elementCarrierAIDC;
-
-  //  The full UDI carrier as the human readable form (HRF) representation
-  // of the barcode string as printed on the packaging of the device.
   String carrierHRF;
-
-  //  Extensions for carrierHRF
   Element elementCarrierHRF;
-
-  //  A coded entry to indicate how the data was entered.
   String entryType; // <code> enum: barcode/rfid/manual/card/self-reported/unknown;
-
-  //  Extensions for entryType
   Element elementEntryType;
 
 Device_UdiCarrier(
@@ -411,43 +342,30 @@ Device_UdiCarrier(
 @JsonSerializable(explicitToJson: true)
 class Device_DeviceName {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Device_DeviceName> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String name,
+		Element elementName,
+		String type,
+		Element elementType}) async {
+	 return Device_DeviceName(
+			id: await newEntry('Device_DeviceName'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			name: name,
+			elementName: elementName,
+			type: type,
+			elementType: elementType);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The name of the device.
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  The type of deviceName. UDILabelName | UserFriendlyName |
-  // PatientReportedName | ManufactureDeviceName | ModelName.
   String type; // <code> enum: udi-label-name/user-friendly-name/patient-reported-name/manufacturer-name/model-name/other;
-
-  //  Extensions for type
   Element elementType;
 
 Device_DeviceName(
@@ -467,46 +385,34 @@ Device_DeviceName(
 @JsonSerializable(explicitToJson: true)
 class Device_Specialization {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Device_Specialization> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept systemType,
+		String version,
+		Element elementVersion}) async {
+	 return Device_Specialization(
+			id: await newEntry('Device_Specialization'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			systemType: systemType,
+			version: version,
+			elementVersion: elementVersion);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The standard that is used to operate and communicate.
   CodeableConcept systemType;
-
-  //  The version of the standard that is used to operate and communicate.
   String version;
-
-  //  Extensions for version
   Element elementVersion;
 
 Device_Specialization(
-  this.systemType,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
+    @required this.systemType,
     this.version,
     this.elementVersion
     });
@@ -518,42 +424,30 @@ Device_Specialization(
 @JsonSerializable(explicitToJson: true)
 class Device_Version {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Device_Version> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept type,
+		Identifier component,
+		String value,
+		Element elementValue}) async {
+	 return Device_Version(
+			id: await newEntry('Device_Version'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			type: type,
+			component: component,
+			value: value,
+			elementValue: elementValue);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The type of the device version.
   CodeableConcept type;
-
-  //  A single component of the device version.
   Identifier component;
-
-  //  The version text.
   String value;
-
-  //  Extensions for value
   Element elementValue;
 
 Device_Version(
@@ -573,47 +467,34 @@ Device_Version(
 @JsonSerializable(explicitToJson: true)
 class Device_Property {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Device_Property> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept type,
+		List<Quantity> valueQuantity,
+		List<CodeableConcept> valueCode}) async {
+	 return Device_Property(
+			id: await newEntry('Device_Property'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			type: type,
+			valueQuantity: valueQuantity,
+			valueCode: valueCode);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Code that specifies the property DeviceDefinitionPropetyCode
-  // (Extensible).
   CodeableConcept type;
-
-  //  Property value as a quantity.
   List<Quantity> valueQuantity;
-
-  //  Property value as a code, e.g., NTP4 (synced to NTP).
   List<CodeableConcept> valueCode;
 
 Device_Property(
-  this.type,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
+    @required this.type,
     this.valueQuantity,
     this.valueCode
     });
@@ -1085,9 +966,6 @@ Map<String, dynamic> _$Device_DeviceNameToJson(Device_DeviceName instance) =>
 Device_Specialization _$Device_SpecializationFromJson(
     Map<String, dynamic> json) {
   return Device_Specialization(
-    json['systemType'] == null
-        ? null
-        : CodeableConcept.fromJson(json['systemType'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1097,6 +975,9 @@ Device_Specialization _$Device_SpecializationFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    systemType: json['systemType'] == null
+        ? null
+        : CodeableConcept.fromJson(json['systemType'] as Map<String, dynamic>),
     version: json['version'] as String,
     elementVersion: json['elementVersion'] == null
         ? null
@@ -1154,9 +1035,6 @@ Map<String, dynamic> _$Device_VersionToJson(Device_Version instance) =>
 
 Device_Property _$Device_PropertyFromJson(Map<String, dynamic> json) {
   return Device_Property(
-    json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1166,6 +1044,9 @@ Device_Property _$Device_PropertyFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    type: json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     valueQuantity: (json['valueQuantity'] as List)
         ?.map((e) =>
             e == null ? null : Quantity.fromJson(e as Map<String, dynamic>))

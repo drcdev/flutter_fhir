@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
@@ -14,312 +17,238 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 178)
 class SearchParameter {
 
-  //  This is a SearchParameter resource
+	static Future<SearchParameter> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String url,
+		Element elementUrl,
+		String version,
+		Element elementVersion,
+		String name,
+		Element elementName,
+		String derivedFrom,
+		String status,
+		Element elementStatus,
+		bool experimental,
+		Element elementExperimental,
+		DateTime date,
+		Element elementDate,
+		String publisher,
+		Element elementPublisher,
+		List<ContactDetail> contact,
+		String description,
+		Element elementDescription,
+		List<UsageContext> useContext,
+		List<CodeableConcept> jurisdiction,
+		String purpose,
+		Element elementPurpose,
+		String code,
+		Element elementCode,
+		List<String> base,
+		List<Element> elementBase,
+		String type,
+		Element elementType,
+		String expression,
+		Element elementExpression,
+		String xpath,
+		Element elementXpath,
+		String xpathUsage,
+		Element elementXpathUsage,
+		List<String> target,
+		List<Element> elementTarget,
+		bool multipleOr,
+		Element elementMultipleOr,
+		bool multipleAnd,
+		Element elementMultipleAnd,
+		List<String> comparator,
+		List<Element> elementComparator,
+		List<String> modifier,
+		List<Element> elementModifier,
+		List<String> chain,
+		List<Element> elementChain,
+		List<SearchParameter_Component> component}) async {
+	 return SearchParameter(
+			id: await newEntry('SearchParameter'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			url: url,
+			elementUrl: elementUrl,
+			version: version,
+			elementVersion: elementVersion,
+			name: name,
+			elementName: elementName,
+			derivedFrom: derivedFrom,
+			status: status,
+			elementStatus: elementStatus,
+			experimental: experimental,
+			elementExperimental: elementExperimental,
+			date: date,
+			elementDate: elementDate,
+			publisher: publisher,
+			elementPublisher: elementPublisher,
+			contact: contact,
+			description: description,
+			elementDescription: elementDescription,
+			useContext: useContext,
+			jurisdiction: jurisdiction,
+			purpose: purpose,
+			elementPurpose: elementPurpose,
+			code: code,
+			elementCode: elementCode,
+			base: base,
+			elementBase: elementBase,
+			type: type,
+			elementType: elementType,
+			expression: expression,
+			elementExpression: elementExpression,
+			xpath: xpath,
+			elementXpath: elementXpath,
+			xpathUsage: xpathUsage,
+			elementXpathUsage: elementXpathUsage,
+			target: target,
+			elementTarget: elementTarget,
+			multipleOr: multipleOr,
+			elementMultipleOr: elementMultipleOr,
+			multipleAnd: multipleAnd,
+			elementMultipleAnd: elementMultipleAnd,
+			comparator: comparator,
+			elementComparator: elementComparator,
+			modifier: modifier,
+			elementModifier: elementModifier,
+			chain: chain,
+			elementChain: elementChain,
+			component: component);
+	}
+
   @HiveField(0)
   final String resourceType= 'SearchParameter';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  An absolute URI that is used to identify this search parameter when it
-  // is referenced in a specification, model, design or an instance; also
-  // called its canonical identifier. This SHOULD be globally unique and
-  // SHOULD be a literal address at which at which an authoritative instance
-  // of this search parameter is (or will be) published. This URL can be the
-  // target of a canonical reference. It SHALL remain the same when the
-  // search parameter is stored on different servers.
   @HiveField(11)
   String url;
-
-  //  Extensions for url
   @HiveField(12)
   Element elementUrl;
-
-  //  The identifier that is used to identify this version of the search
-  // parameter when it is referenced in a specification, model, design or
-  // instance. This is an arbitrary value managed by the search parameter
-  // author and is not expected to be globally unique. For example, it might
-  // be a timestamp (e.g. yyyymmdd) if a managed version is not available.
-  // There is also no expectation that versions can be placed in a
-  // lexicographical sequence.
   @HiveField(13)
   String version;
-
-  //  Extensions for version
   @HiveField(14)
   Element elementVersion;
-
-  //  A natural language name identifying the search parameter. This name
-  // should be usable as an identifier for the module by machine processing
-  // applications such as code generation.
   @HiveField(15)
   String name;
-
-  //  Extensions for name
   @HiveField(16)
   Element elementName;
-
-  //  Where this search parameter is originally defined. If a derivedFrom is
-  // provided, then the details in the search parameter must be consistent
-  // with the definition from which it is defined. i.e. the parameter should
-  // have the same meaning, and (usually) the functionality should be a
-  // proper subset of the underlying search parameter.
   @HiveField(17)
   String derivedFrom;
-
-  //  The status of this search parameter. Enables tracking the life-cycle
-  // of the content.
   @HiveField(18)
   String status; // <code> enum: draft/active/retired/unknown;
-
-  //  Extensions for status
   @HiveField(19)
   Element elementStatus;
-
-  //  A Boolean value to indicate that this search parameter is authored for
-  // testing purposes (or education/evaluation/marketing) and is not
-  // intended to be used for genuine usage.
   @HiveField(20)
   bool experimental;
-
-  //  Extensions for experimental
   @HiveField(21)
   Element elementExperimental;
-
-  //  The date  (and optionally time) when the search parameter was
-  // published. The date must change when the business version changes and
-  // it must change if the status code changes. In addition, it should
-  // change when the substantive content of the search parameter changes.
   @HiveField(22)
   DateTime date;
-
-  //  Extensions for date
   @HiveField(23)
   Element elementDate;
-
-  //  The name of the organization or individual that published the search
-  // parameter.
   @HiveField(24)
   String publisher;
-
-  //  Extensions for publisher
   @HiveField(25)
   Element elementPublisher;
-
-  //  Contact details to assist a user in finding and communicating with the
-  // publisher.
   @HiveField(26)
   List<ContactDetail> contact;
-
-  //  And how it used.
   @HiveField(27)
   String description;
-
-  //  Extensions for description
   @HiveField(28)
   Element elementDescription;
-
-  //  The content was developed with a focus and intent of supporting the
-  // contexts that are listed. These contexts may be general categories
-  // (gender, age, ...) or may be references to specific programs (insurance
-  // plans, studies, ...) and may be used to assist with indexing and
-  // searching for appropriate search parameter instances.
   @HiveField(29)
   List<UsageContext> useContext;
-
-  //  A legal or geographic region in which the search parameter is intended
-  // to be used.
   @HiveField(30)
   List<CodeableConcept> jurisdiction;
-
-  //  Explanation of why this search parameter is needed and why it has been
-  // designed as it has.
   @HiveField(31)
   String purpose;
-
-  //  Extensions for purpose
   @HiveField(32)
   Element elementPurpose;
-
-  //  The code used in the URL or the parameter name in a parameters
-  // resource for this search parameter.
   @HiveField(33)
   String code;
-
-  //  Extensions for code
   @HiveField(34)
   Element elementCode;
-
-  //  The base resource type(s) that this search parameter can be used
-  // against.
   @HiveField(35)
   List<String> base;
-
-  //  Extensions for base
   @HiveField(36)
   List<Element> elementBase;
-
-  //  The type of value that a search parameter may contain, and how the
-  // content is interpreted.
   @HiveField(37)
   String type; // <code> enum: number/date/string/token/reference/composite/quantity/uri/special;
-
-  //  Extensions for type
   @HiveField(38)
   Element elementType;
-
-  //  A FHIRPath expression that returns a set of elements for the search
-  // parameter.
   @HiveField(39)
   String expression;
-
-  //  Extensions for expression
   @HiveField(40)
   Element elementExpression;
-
-  //  An XPath expression that returns a set of elements for the search
-  // parameter.
   @HiveField(41)
   String xpath;
-
-  //  Extensions for xpath
   @HiveField(42)
   Element elementXpath;
-
-  //  How the search parameter relates to the set of elements returned by
-  // evaluating the xpath query.
   @HiveField(43)
   String xpathUsage; // <code> enum: normal/phonetic/nearby/distance/other;
-
-  //  Extensions for xpathUsage
   @HiveField(44)
   Element elementXpathUsage;
-
-  //  Types of resource (if a resource is referenced).
   @HiveField(45)
   List<String> target;
-
-  //  Extensions for target
   @HiveField(46)
   List<Element> elementTarget;
-
-  //  Whether multiple values are allowed for each time the parameter
-  // exists. Values are separated by commas, and the parameter matches if
-  // any of the values match.
   @HiveField(47)
   bool multipleOr;
-
-  //  Extensions for multipleOr
   @HiveField(48)
   Element elementMultipleOr;
-
-  //  Whether multiple parameters are allowed - e.g. more than one parameter
-  // with the same name. The search matches if all the parameters match.
   @HiveField(49)
   bool multipleAnd;
-
-  //  Extensions for multipleAnd
   @HiveField(50)
   Element elementMultipleAnd;
-
-  //  Comparators supported for the search parameter.
   @HiveField(51)
   List<String> comparator; // <code> enum: eq/ne/gt/lt/ge/le/sa/eb/ap> comparator;
-
-  //  Extensions for comparator
   @HiveField(52)
   List<Element> elementComparator;
-
-  //  A modifier supported for the search parameter.
   @HiveField(53)
   List<String> modifier; // <code> enum: missing/exact/contains/not/text/in/not-in/below/above/type/identifier/ofType> modifier;
-
-  //  Extensions for modifier
   @HiveField(54)
   List<Element> elementModifier;
-
-  //  Contains the names of any search parameters which may be chained to
-  // the containing search parameter. Chained parameters may be added to
-  // search parameters of type reference and specify that resources will
-  // only be returned if they contain a reference to a resource which
-  // matches the chained parameter value. Values for this field should be
-  // drawn from SearchParameter.code for a parameter on the target resource
-  // type.
   @HiveField(55)
   List<String> chain;
-
-  //  Extensions for chain
   @HiveField(56)
   List<Element> elementChain;
-
-  //  Used to define the parts of a composite search parameter.
   @HiveField(57)
   List<SearchParameter_Component> component;
 
@@ -390,47 +319,34 @@ SearchParameter(
 @JsonSerializable(explicitToJson: true)
 class SearchParameter_Component {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<SearchParameter_Component> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String definition,
+		String expression,
+		Element elementExpression}) async {
+	 return SearchParameter_Component(
+			id: await newEntry('SearchParameter_Component'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			definition: definition,
+			expression: expression,
+			elementExpression: elementExpression);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The definition of the search parameter that describes this part.
   String definition;
-
-  //  A sub-expression that defines how to extract values for this component
-  // from the output of the main SearchParameter.expression.
   String expression;
-
-  //  Extensions for expression
   Element elementExpression;
 
 SearchParameter_Component(
-  this.definition,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
+    @required this.definition,
     this.expression,
     this.elementExpression
     });
@@ -853,7 +769,6 @@ Map<String, dynamic> _$SearchParameterToJson(SearchParameter instance) =>
 SearchParameter_Component _$SearchParameter_ComponentFromJson(
     Map<String, dynamic> json) {
   return SearchParameter_Component(
-    json['definition'] as String,
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -863,6 +778,7 @@ SearchParameter_Component _$SearchParameter_ComponentFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    definition: json['definition'] as String,
     expression: json['expression'] as String,
     elementExpression: json['elementExpression'] == null
         ? null

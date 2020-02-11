@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
@@ -10,81 +13,70 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @HiveType(typeId: 35)
 class Signature {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Signature> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Coding> type,
+		DateTime when,
+		Element elementWhen,
+		Reference who,
+		Reference onBehalfOf,
+		String targetFormat,
+		Element elementTargetFormat,
+		String sigFormat,
+		Element elementSigFormat,
+		String data,
+		Element elementData}) async {
+	 return Signature(
+			id: await newEntry('Signature'),
+			extension: extension,
+			type: type,
+			when: when,
+			elementWhen: elementWhen,
+			who: who,
+			onBehalfOf: onBehalfOf,
+			targetFormat: targetFormat,
+			elementTargetFormat: elementTargetFormat,
+			sigFormat: sigFormat,
+			elementSigFormat: elementSigFormat,
+			data: data,
+			elementData: elementData);
+	}
+
   @HiveField(0)
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   @HiveField(1)
   List<Extension> extension;
-
-  //  An indication of the reason that the entity signed this document. This
-  // may be explicitly included as part of the signature information and can
-  // be used when determining accountability for various actions concerning
-  // the document.
   @HiveField(2)
   List<Coding> type;
-
-  //  When the digital signature was signed.
   @HiveField(3)
   DateTime when;
-
-  //  Extensions for when
   @HiveField(4)
   Element elementWhen;
-
-  //  A reference to an application-usable description of the identity that
-  // signed  (e.g. the signature used their private key).
   @HiveField(5)
   Reference who;
-
-  //  A reference to an application-usable description of the identity that
-  // is represented by the signature.
   @HiveField(6)
   Reference onBehalfOf;
-
-  //  A mime type that indicates the technical format of the target
-  // resources signed by the signature.
   @HiveField(7)
   String targetFormat;
-
-  //  Extensions for targetFormat
   @HiveField(8)
   Element elementTargetFormat;
-
-  //  A mime type that indicates the technical format of the signature.
-  // Important mime types are application/signature+xml for X ML DigSig,
-  // application/jose for JWS, and image/* for a graphical image of a
-  // signature, etc.
   @HiveField(9)
   String sigFormat;
-
-  //  Extensions for sigFormat
   @HiveField(10)
   Element elementSigFormat;
-
-  //  The base64 encoding of the Signature content. When signature is not
-  // recorded electronically this element would be empty.
   @HiveField(11)
   String data;
-
-  //  Extensions for data
   @HiveField(12)
   Element elementData;
 
 Signature(
-  this.type,
-    this.who,
-    {this.id,
+  {this.id,
     this.extension,
+    @required this.type,
     this.when,
     this.elementWhen,
+    @required this.who,
     this.onBehalfOf,
     this.targetFormat,
     this.elementTargetFormat,
@@ -115,12 +107,12 @@ class SignatureAdapter extends TypeAdapter<Signature> {
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Signature(
-      (fields[2] as List)?.cast<Coding>(),
-      fields[5] as Reference,
       id: fields[0] as String,
       extension: (fields[1] as List)?.cast<Extension>(),
+      type: (fields[2] as List)?.cast<Coding>(),
       when: fields[3] as DateTime,
       elementWhen: fields[4] as Element,
+      who: fields[5] as Reference,
       onBehalfOf: fields[6] as Reference,
       targetFormat: fields[7] as String,
       elementTargetFormat: fields[8] as Element,
@@ -170,22 +162,22 @@ class SignatureAdapter extends TypeAdapter<Signature> {
 
 Signature _$SignatureFromJson(Map<String, dynamic> json) {
   return Signature(
-    (json['type'] as List)
-        ?.map((e) =>
-            e == null ? null : Coding.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    json['who'] == null
-        ? null
-        : Reference.fromJson(json['who'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    type: (json['type'] as List)
+        ?.map((e) =>
+            e == null ? null : Coding.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     when: json['when'] == null ? null : DateTime.parse(json['when'] as String),
     elementWhen: json['elementWhen'] == null
         ? null
         : Element.fromJson(json['elementWhen'] as Map<String, dynamic>),
+    who: json['who'] == null
+        ? null
+        : Reference.fromJson(json['who'] as Map<String, dynamic>),
     onBehalfOf: json['onBehalfOf'] == null
         ? null
         : Reference.fromJson(json['onBehalfOf'] as Map<String, dynamic>),

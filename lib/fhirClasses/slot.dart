@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -14,156 +17,119 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 180)
 class Slot {
 
-  //  This is a Slot resource
+	static Future<Slot> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Identifier> identifier,
+		List<CodeableConcept> serviceCategory,
+		List<CodeableConcept> serviceType,
+		List<CodeableConcept> specialty,
+		CodeableConcept appointmentType,
+		Reference schedule,
+		String status,
+		Element elementStatus,
+		DateTime start,
+		Element elementStart,
+		DateTime end,
+		Element elementEnd,
+		bool overbooked,
+		Element elementOverbooked,
+		String comment,
+		Element elementComment}) async {
+	 return Slot(
+			id: await newEntry('Slot'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			serviceCategory: serviceCategory,
+			serviceType: serviceType,
+			specialty: specialty,
+			appointmentType: appointmentType,
+			schedule: schedule,
+			status: status,
+			elementStatus: elementStatus,
+			start: start,
+			elementStart: elementStart,
+			end: end,
+			elementEnd: elementEnd,
+			overbooked: overbooked,
+			elementOverbooked: elementOverbooked,
+			comment: comment,
+			elementComment: elementComment);
+	}
+
   @HiveField(0)
   final String resourceType= 'Slot';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  External Ids for this item.
   @HiveField(11)
   List<Identifier> identifier;
-
-  //  A broad categorization of the service that is to be performed during
-  // this appointment.
   @HiveField(12)
   List<CodeableConcept> serviceCategory;
-
-  //  The type of appointments that can be booked into this slot (ideally
-  // this would be an identifiable service - which is at a location, rather
-  // than the location itself). If provided then this overrides the value
-  // provided on the availability resource.
   @HiveField(13)
   List<CodeableConcept> serviceType;
-
-  //  The specialty of a practitioner that would be required to perform the
-  // service requested in this appointment.
   @HiveField(14)
   List<CodeableConcept> specialty;
-
-  //  The style of appointment or patient that may be booked in the slot
-  // (not service type).
   @HiveField(15)
   CodeableConcept appointmentType;
-
-  //  The schedule resource that this slot defines an interval of status
-  // information.
   @HiveField(16)
   Reference schedule;
-
-  //  busy | free | busy-unavailable | busy-tentative | entered-in-error.
   @HiveField(17)
   String status; // <code> enum: busy/free/busy-unavailable/busy-tentative/entered-in-error;
-
-  //  Extensions for status
   @HiveField(18)
   Element elementStatus;
-
-  //  Date/Time that the slot is to begin.
   @HiveField(19)
   DateTime start;
-
-  //  Extensions for start
   @HiveField(20)
   Element elementStart;
-
-  //  Date/Time that the slot is to conclude.
   @HiveField(21)
   DateTime end;
-
-  //  Extensions for end
   @HiveField(22)
   Element elementEnd;
-
-  //  This slot has already been overbooked, appointments are unlikely to be
-  // accepted for this time.
   @HiveField(23)
   bool overbooked;
-
-  //  Extensions for overbooked
   @HiveField(24)
   Element elementOverbooked;
-
-  //  Comments on the slot to describe any extended information. Such as
-  // custom constraints on the slot.
   @HiveField(25)
   String comment;
-
-  //  Extensions for comment
   @HiveField(26)
   Element elementComment;
 
 Slot(
-  this.schedule,
-    {this.id,
+  {this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -178,6 +144,7 @@ Slot(
     this.serviceType,
     this.specialty,
     this.appointmentType,
+    @required this.schedule,
     this.status,
     this.elementStatus,
     this.start,
@@ -211,7 +178,6 @@ class SlotAdapter extends TypeAdapter<Slot> {
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Slot(
-      fields[16] as Reference,
       id: fields[1] as String,
       meta: fields[2] as Meta,
       implicitRules: fields[3] as String,
@@ -227,6 +193,7 @@ class SlotAdapter extends TypeAdapter<Slot> {
       serviceType: (fields[13] as List)?.cast<CodeableConcept>(),
       specialty: (fields[14] as List)?.cast<CodeableConcept>(),
       appointmentType: fields[15] as CodeableConcept,
+      schedule: fields[16] as Reference,
       status: fields[17] as String,
       elementStatus: fields[18] as Element,
       start: fields[19] as DateTime,
@@ -307,9 +274,6 @@ class SlotAdapter extends TypeAdapter<Slot> {
 
 Slot _$SlotFromJson(Map<String, dynamic> json) {
   return Slot(
-    json['schedule'] == null
-        ? null
-        : Reference.fromJson(json['schedule'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -361,6 +325,9 @@ Slot _$SlotFromJson(Map<String, dynamic> json) {
         ? null
         : CodeableConcept.fromJson(
             json['appointmentType'] as Map<String, dynamic>),
+    schedule: json['schedule'] == null
+        ? null
+        : Reference.fromJson(json['schedule'] as Map<String, dynamic>),
     status: json['status'] as String,
     elementStatus: json['elementStatus'] == null
         ? null

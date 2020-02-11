@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -16,203 +19,155 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 116)
 class ImagingStudy {
 
-  //  This is a ImagingStudy resource
+	static Future<ImagingStudy> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Identifier> identifier,
+		String status,
+		Element elementStatus,
+		List<Coding> modality,
+		Reference subject,
+		Reference encounter,
+		DateTime started,
+		Element elementStarted,
+		List<Reference> basedOn,
+		Reference referrer,
+		List<Reference> interpreter,
+		List<Reference> endpoint,
+		int numberOfSeries,
+		Element elementNumberOfSeries,
+		int numberOfInstances,
+		Element elementNumberOfInstances,
+		Reference procedureReference,
+		List<CodeableConcept> procedureCode,
+		Reference location,
+		List<CodeableConcept> reasonCode,
+		List<Reference> reasonReference,
+		List<Annotation> note,
+		String description,
+		Element elementDescription,
+		List<ImagingStudy_Series> series}) async {
+	 return ImagingStudy(
+			id: await newEntry('ImagingStudy'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			status: status,
+			elementStatus: elementStatus,
+			modality: modality,
+			subject: subject,
+			encounter: encounter,
+			started: started,
+			elementStarted: elementStarted,
+			basedOn: basedOn,
+			referrer: referrer,
+			interpreter: interpreter,
+			endpoint: endpoint,
+			numberOfSeries: numberOfSeries,
+			elementNumberOfSeries: elementNumberOfSeries,
+			numberOfInstances: numberOfInstances,
+			elementNumberOfInstances: elementNumberOfInstances,
+			procedureReference: procedureReference,
+			procedureCode: procedureCode,
+			location: location,
+			reasonCode: reasonCode,
+			reasonReference: reasonReference,
+			note: note,
+			description: description,
+			elementDescription: elementDescription,
+			series: series);
+	}
+
   @HiveField(0)
   final String resourceType= 'ImagingStudy';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  Identifiers for the ImagingStudy such as DICOM Study Instance UID, and
-  // Accession Number.
   @HiveField(11)
   List<Identifier> identifier;
-
-  //  The current state of the ImagingStudy.
   @HiveField(12)
   String status; // <code> enum: registered/available/cancelled/entered-in-error/unknown;
-
-  //  Extensions for status
   @HiveField(13)
   Element elementStatus;
-
-  //  A list of all the series.modality values that are actual acquisition
-  // modalities, i.e. those in the DICOM Context Group 29 (value set OID
-  // 1.2.840.10008.6.1.19).
   @HiveField(14)
   List<Coding> modality;
-
-  //  The subject, typically a patient, of the imaging study.
   @HiveField(15)
   Reference subject;
-
-  //  The healthcare event (e.g. a patient and healthcare provider
-  // interaction) during which this ImagingStudy is made.
   @HiveField(16)
   Reference encounter;
-
-  //  Date and time the study started.
   @HiveField(17)
   DateTime started;
-
-  //  Extensions for started
   @HiveField(18)
   Element elementStarted;
-
-  //  A list of the diagnostic requests that resulted in this imaging study
-  // being performed.
   @HiveField(19)
   List<Reference> basedOn;
-
-  //  The requesting/referring physician.
   @HiveField(20)
   Reference referrer;
-
-  //  Who read the study and interpreted the images or other content.
   @HiveField(21)
   List<Reference> interpreter;
-
-  //  The network service providing access (e.g., query, view, or retrieval)
-  // for the study. See implementation notes for information about using
-  // DICOM endpoints. A study-level endpoint applies to each series in the
-  // study, unless overridden by a series-level endpoint with the same
-  // Endpoint.connectionType.
   @HiveField(22)
   List<Reference> endpoint;
-
-  //  Number of Series in the Study. This value given may be larger than the
-  // number of series elements this Resource contains due to resource
-  // availability, security, or other factors. This element should be
-  // present if any series elements are present.
   @HiveField(23)
   int numberOfSeries;
-
-  //  Extensions for numberOfSeries
   @HiveField(24)
   Element elementNumberOfSeries;
-
-  //  Number of SOP Instances in Study. This value given may be larger than
-  // the number of instance elements this resource contains due to resource
-  // availability, security, or other factors. This element should be
-  // present if any instance elements are present.
   @HiveField(25)
   int numberOfInstances;
-
-  //  Extensions for numberOfInstances
   @HiveField(26)
   Element elementNumberOfInstances;
-
-  //  The procedure which this ImagingStudy was part of.
   @HiveField(27)
   Reference procedureReference;
-
-  //  The code for the performed procedure type.
   @HiveField(28)
   List<CodeableConcept> procedureCode;
-
-  //  The principal physical location where the ImagingStudy was performed.
   @HiveField(29)
   Reference location;
-
-  //  Description of clinical condition indicating why the ImagingStudy was
-  // requested.
   @HiveField(30)
   List<CodeableConcept> reasonCode;
-
-  //  Indicates another resource whose existence justifies this Study.
   @HiveField(31)
   List<Reference> reasonReference;
-
-  //  Per the recommended DICOM mapping, this element is derived from the
-  // Study Description attribute (0008,1030). Observations or findings about
-  // the imaging study should be recorded in another resource, e.g.
-  // Observation, and not in this element.
   @HiveField(32)
   List<Annotation> note;
-
-  //  The Imaging Manager description of the study. Institution-generated
-  // description or classification of the Study (component) performed.
   @HiveField(33)
   String description;
-
-  //  Extensions for description
   @HiveField(34)
   Element elementDescription;
-
-  //  Each study has one or more series of images or other content.
   @HiveField(35)
   List<ImagingStudy_Series> series;
 
 ImagingStudy(
-  this.subject,
-    {this.id,
+  {this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -226,6 +181,7 @@ ImagingStudy(
     this.status,
     this.elementStatus,
     this.modality,
+    @required this.subject,
     this.encounter,
     this.started,
     this.elementStarted,
@@ -255,106 +211,80 @@ ImagingStudy(
 @JsonSerializable(explicitToJson: true)
 class ImagingStudy_Series {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ImagingStudy_Series> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String uid,
+		Element elementUid,
+		int number,
+		Element elementNumber,
+		Coding modality,
+		String description,
+		Element elementDescription,
+		int numberOfInstances,
+		Element elementNumberOfInstances,
+		List<Reference> endpoint,
+		Coding bodySite,
+		Coding laterality,
+		List<Reference> specimen,
+		DateTime started,
+		Element elementStarted,
+		List<ImagingStudy_Performer> performer,
+		List<ImagingStudy_Instance> instance}) async {
+	 return ImagingStudy_Series(
+			id: await newEntry('ImagingStudy_Series'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			uid: uid,
+			elementUid: elementUid,
+			number: number,
+			elementNumber: elementNumber,
+			modality: modality,
+			description: description,
+			elementDescription: elementDescription,
+			numberOfInstances: numberOfInstances,
+			elementNumberOfInstances: elementNumberOfInstances,
+			endpoint: endpoint,
+			bodySite: bodySite,
+			laterality: laterality,
+			specimen: specimen,
+			started: started,
+			elementStarted: elementStarted,
+			performer: performer,
+			instance: instance);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The DICOM Series Instance UID for the series.
   String uid;
-
-  //  Extensions for uid
   Element elementUid;
-
-  //  The numeric identifier of this series in the study.
   int number;
-
-  //  Extensions for number
   Element elementNumber;
-
-  //  The modality of this series sequence.
   Coding modality;
-
-  //  A description of the series.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  Number of SOP Instances in the Study. The value given may be larger
-  // than the number of instance elements this resource contains due to
-  // resource availability, security, or other factors. This element should
-  // be present if any instance elements are present.
   int numberOfInstances;
-
-  //  Extensions for numberOfInstances
   Element elementNumberOfInstances;
-
-  //  The network service providing access (e.g., query, view, or retrieval)
-  // for this series. See implementation notes for information about using
-  // DICOM endpoints. A series-level endpoint, if present, has precedence
-  // over a study-level endpoint with the same Endpoint.connectionType.
   List<Reference> endpoint;
-
-  //  The anatomic structures examined. See DICOM Part 16 Annex L
-  // (http://dicom.nema.org/medical/dicom/current/output/chtml/part16/chapter_L.html)
-  // for DICOM to SNOMED-CT mappings. The bodySite may indicate the
-  // laterality of body part imaged; if so, it shall be consistent with any
-  // content of ImagingStudy.series.laterality.
   Coding bodySite;
-
-  //  The laterality of the (possibly paired) anatomic structures examined.
-  // E.g., the left knee, both lungs, or unpaired abdomen. If present, shall
-  // be consistent with any laterality information indicated in
-  // ImagingStudy.series.bodySite.
   Coding laterality;
-
-  //  The specimen imaged, e.g., for whole slide imaging of a biopsy.
   List<Reference> specimen;
-
-  //  The date and time the series was started.
   DateTime started;
-
-  //  Extensions for started
   Element elementStarted;
-
-  //  Indicates who or what performed the series and how they were involved.
   List<ImagingStudy_Performer> performer;
-
-  //  A single SOP instance within the series, e.g. an image, or
-  // presentation state.
   List<ImagingStudy_Instance> instance;
 
 ImagingStudy_Series(
-  this.modality,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.uid,
     this.elementUid,
     this.number,
     this.elementNumber,
+    @required this.modality,
     this.description,
     this.elementDescription,
     this.numberOfInstances,
@@ -376,44 +306,32 @@ ImagingStudy_Series(
 @JsonSerializable(explicitToJson: true)
 class ImagingStudy_Performer {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ImagingStudy_Performer> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept function,
+		Reference actor}) async {
+	 return ImagingStudy_Performer(
+			id: await newEntry('ImagingStudy_Performer'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			function: function,
+			actor: actor);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Distinguishes the type of involvement of the performer in the series.
   CodeableConcept function;
-
-  //  Indicates who or what performed the series.
   Reference actor;
 
 ImagingStudy_Performer(
-  this.actor,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
-    this.function
+    this.function,
+    @required this.actor
     });
 
   factory ImagingStudy_Performer.fromJson(Map<String, dynamic> json) => _$ImagingStudy_PerformerFromJson(json);
@@ -423,60 +341,48 @@ ImagingStudy_Performer(
 @JsonSerializable(explicitToJson: true)
 class ImagingStudy_Instance {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ImagingStudy_Instance> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String uid,
+		Element elementUid,
+		Coding sopClass,
+		int number,
+		Element elementNumber,
+		String title,
+		Element elementTitle}) async {
+	 return ImagingStudy_Instance(
+			id: await newEntry('ImagingStudy_Instance'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			uid: uid,
+			elementUid: elementUid,
+			sopClass: sopClass,
+			number: number,
+			elementNumber: elementNumber,
+			title: title,
+			elementTitle: elementTitle);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The DICOM SOP Instance UID for this image or other DICOM content.
   String uid;
-
-  //  Extensions for uid
   Element elementUid;
-
-  //  DICOM instance  type.
   Coding sopClass;
-
-  //  The number of instance in the series.
   int number;
-
-  //  Extensions for number
   Element elementNumber;
-
-  //  The description of the instance.
   String title;
-
-  //  Extensions for title
   Element elementTitle;
 
 ImagingStudy_Instance(
-  this.sopClass,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.uid,
     this.elementUid,
+    @required this.sopClass,
     this.number,
     this.elementNumber,
     this.title,
@@ -504,7 +410,6 @@ class ImagingStudyAdapter extends TypeAdapter<ImagingStudy> {
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return ImagingStudy(
-      fields[15] as Reference,
       id: fields[1] as String,
       meta: fields[2] as Meta,
       implicitRules: fields[3] as String,
@@ -519,6 +424,7 @@ class ImagingStudyAdapter extends TypeAdapter<ImagingStudy> {
       status: fields[12] as String,
       elementStatus: fields[13] as Element,
       modality: (fields[14] as List)?.cast<Coding>(),
+      subject: fields[15] as Reference,
       encounter: fields[16] as Reference,
       started: fields[17] as DateTime,
       elementStarted: fields[18] as Element,
@@ -627,9 +533,6 @@ class ImagingStudyAdapter extends TypeAdapter<ImagingStudy> {
 
 ImagingStudy _$ImagingStudyFromJson(Map<String, dynamic> json) {
   return ImagingStudy(
-    json['subject'] == null
-        ? null
-        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -670,6 +573,9 @@ ImagingStudy _$ImagingStudyFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Coding.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    subject: json['subject'] == null
+        ? null
+        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     encounter: json['encounter'] == null
         ? null
         : Reference.fromJson(json['encounter'] as Map<String, dynamic>),
@@ -785,9 +691,6 @@ Map<String, dynamic> _$ImagingStudyToJson(ImagingStudy instance) =>
 
 ImagingStudy_Series _$ImagingStudy_SeriesFromJson(Map<String, dynamic> json) {
   return ImagingStudy_Series(
-    json['modality'] == null
-        ? null
-        : Coding.fromJson(json['modality'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -805,6 +708,9 @@ ImagingStudy_Series _$ImagingStudy_SeriesFromJson(Map<String, dynamic> json) {
     elementNumber: json['elementNumber'] == null
         ? null
         : Element.fromJson(json['elementNumber'] as Map<String, dynamic>),
+    modality: json['modality'] == null
+        ? null
+        : Coding.fromJson(json['modality'] as Map<String, dynamic>),
     description: json['description'] as String,
     elementDescription: json['elementDescription'] == null
         ? null
@@ -876,9 +782,6 @@ Map<String, dynamic> _$ImagingStudy_SeriesToJson(
 ImagingStudy_Performer _$ImagingStudy_PerformerFromJson(
     Map<String, dynamic> json) {
   return ImagingStudy_Performer(
-    json['actor'] == null
-        ? null
-        : Reference.fromJson(json['actor'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -891,6 +794,9 @@ ImagingStudy_Performer _$ImagingStudy_PerformerFromJson(
     function: json['function'] == null
         ? null
         : CodeableConcept.fromJson(json['function'] as Map<String, dynamic>),
+    actor: json['actor'] == null
+        ? null
+        : Reference.fromJson(json['actor'] as Map<String, dynamic>),
   );
 }
 
@@ -908,9 +814,6 @@ Map<String, dynamic> _$ImagingStudy_PerformerToJson(
 ImagingStudy_Instance _$ImagingStudy_InstanceFromJson(
     Map<String, dynamic> json) {
   return ImagingStudy_Instance(
-    json['sopClass'] == null
-        ? null
-        : Coding.fromJson(json['sopClass'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -924,6 +827,9 @@ ImagingStudy_Instance _$ImagingStudy_InstanceFromJson(
     elementUid: json['elementUid'] == null
         ? null
         : Element.fromJson(json['elementUid'] as Map<String, dynamic>),
+    sopClass: json['sopClass'] == null
+        ? null
+        : Coding.fromJson(json['sopClass'] as Map<String, dynamic>),
     number: json['number'] as int,
     elementNumber: json['elementNumber'] == null
         ? null

@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -15,145 +18,107 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 103)
 class EpisodeOfCare {
 
-  //  This is a EpisodeOfCare resource
+	static Future<EpisodeOfCare> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Identifier> identifier,
+		String status,
+		Element elementStatus,
+		List<EpisodeOfCare_StatusHistory> statusHistory,
+		List<CodeableConcept> type,
+		List<EpisodeOfCare_Diagnosis> diagnosis,
+		Reference patient,
+		Reference managingOrganization,
+		Period period,
+		List<Reference> referralRequest,
+		Reference careManager,
+		List<Reference> team,
+		List<Reference> account}) async {
+	 return EpisodeOfCare(
+			id: await newEntry('EpisodeOfCare'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			status: status,
+			elementStatus: elementStatus,
+			statusHistory: statusHistory,
+			type: type,
+			diagnosis: diagnosis,
+			patient: patient,
+			managingOrganization: managingOrganization,
+			period: period,
+			referralRequest: referralRequest,
+			careManager: careManager,
+			team: team,
+			account: account);
+	}
+
   @HiveField(0)
   final String resourceType= 'EpisodeOfCare';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  The EpisodeOfCare may be known by different identifiers for different
-  // contexts of use, such as when an external agency is tracking the
-  // Episode for funding purposes.
   @HiveField(11)
   List<Identifier> identifier;
-
-  //  planned | waitlist | active | onhold | finished | cancelled.
   @HiveField(12)
   String status; // <code> enum: planned/waitlist/active/onhold/finished/cancelled/entered-in-error;
-
-  //  Extensions for status
   @HiveField(13)
   Element elementStatus;
-
-  //  The history of statuses that the EpisodeOfCare has been through
-  // (without requiring processing the history of the resource).
   @HiveField(14)
   List<EpisodeOfCare_StatusHistory> statusHistory;
-
-  //  A classification of the type of episode of care; e.g. specialist
-  // referral, disease management, type of funded care.
   @HiveField(15)
   List<CodeableConcept> type;
-
-  //  The list of diagnosis relevant to this episode of care.
   @HiveField(16)
   List<EpisodeOfCare_Diagnosis> diagnosis;
-
-  //  The patient who is the focus of this episode of care.
   @HiveField(17)
   Reference patient;
-
-  //  The organization that has assumed the specific responsibilities for
-  // the specified duration.
   @HiveField(18)
   Reference managingOrganization;
-
-  //  The interval during which the managing organization assumes the
-  // defined responsibility.
   @HiveField(19)
   Period period;
-
-  //  Referral Request(s) that are fulfilled by this EpisodeOfCare, incoming
-  // referrals.
   @HiveField(20)
   List<Reference> referralRequest;
-
-  //  The practitioner that is the care manager/care coordinator for this
-  // patient.
   @HiveField(21)
   Reference careManager;
-
-  //  The list of practitioners that may be facilitating this episode of
-  // care for specific purposes.
   @HiveField(22)
   List<Reference> team;
-
-  //  The set of accounts that may be used for billing for this
-  // EpisodeOfCare.
   @HiveField(23)
   List<Reference> account;
 
 EpisodeOfCare(
-  this.patient,
-    {this.id,
+  {this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -169,6 +134,7 @@ EpisodeOfCare(
     this.statusHistory,
     this.type,
     this.diagnosis,
+    @required this.patient,
     this.managingOrganization,
     this.period,
     this.referralRequest,
@@ -184,48 +150,36 @@ EpisodeOfCare(
 @JsonSerializable(explicitToJson: true)
 class EpisodeOfCare_StatusHistory {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<EpisodeOfCare_StatusHistory> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String status,
+		Element elementStatus,
+		Period period}) async {
+	 return EpisodeOfCare_StatusHistory(
+			id: await newEntry('EpisodeOfCare_StatusHistory'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			status: status,
+			elementStatus: elementStatus,
+			period: period);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  planned | waitlist | active | onhold | finished | cancelled.
   String status; // <code> enum: planned/waitlist/active/onhold/finished/cancelled/entered-in-error;
-
-  //  Extensions for status
   Element elementStatus;
-
-  //  The period during this EpisodeOfCare that the specific status applied.
   Period period;
 
 EpisodeOfCare_StatusHistory(
-  this.period,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.status,
-    this.elementStatus
+    this.elementStatus,
+    @required this.period
     });
 
   factory EpisodeOfCare_StatusHistory.fromJson(Map<String, dynamic> json) => _$EpisodeOfCare_StatusHistoryFromJson(json);
@@ -235,51 +189,37 @@ EpisodeOfCare_StatusHistory(
 @JsonSerializable(explicitToJson: true)
 class EpisodeOfCare_Diagnosis {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<EpisodeOfCare_Diagnosis> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Reference condition,
+		CodeableConcept role,
+		int rank,
+		Element elementRank}) async {
+	 return EpisodeOfCare_Diagnosis(
+			id: await newEntry('EpisodeOfCare_Diagnosis'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			condition: condition,
+			role: role,
+			rank: rank,
+			elementRank: elementRank);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A list of conditions/problems/diagnoses that this episode of care is
-  // intended to be providing care for.
   Reference condition;
-
-  //  Role that this diagnosis has within the episode of care (e.g.
-  // admission, billing, discharge …).
   CodeableConcept role;
-
-  //  Ranking of the diagnosis (for each role type).
   int rank;
-
-  //  Extensions for rank
   Element elementRank;
 
 EpisodeOfCare_Diagnosis(
-  this.condition,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
+    @required this.condition,
     this.role,
     this.rank,
     this.elementRank
@@ -306,7 +246,6 @@ class EpisodeOfCareAdapter extends TypeAdapter<EpisodeOfCare> {
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return EpisodeOfCare(
-      fields[17] as Reference,
       id: fields[1] as String,
       meta: fields[2] as Meta,
       implicitRules: fields[3] as String,
@@ -323,6 +262,7 @@ class EpisodeOfCareAdapter extends TypeAdapter<EpisodeOfCare> {
       statusHistory: (fields[14] as List)?.cast<EpisodeOfCare_StatusHistory>(),
       type: (fields[15] as List)?.cast<CodeableConcept>(),
       diagnosis: (fields[16] as List)?.cast<EpisodeOfCare_Diagnosis>(),
+      patient: fields[17] as Reference,
       managingOrganization: fields[18] as Reference,
       period: fields[19] as Period,
       referralRequest: (fields[20] as List)?.cast<Reference>(),
@@ -393,9 +333,6 @@ class EpisodeOfCareAdapter extends TypeAdapter<EpisodeOfCare> {
 
 EpisodeOfCare _$EpisodeOfCareFromJson(Map<String, dynamic> json) {
   return EpisodeOfCare(
-    json['patient'] == null
-        ? null
-        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -447,6 +384,9 @@ EpisodeOfCare _$EpisodeOfCareFromJson(Map<String, dynamic> json) {
             ? null
             : EpisodeOfCare_Diagnosis.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    patient: json['patient'] == null
+        ? null
+        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
     managingOrganization: json['managingOrganization'] == null
         ? null
         : Reference.fromJson(
@@ -505,9 +445,6 @@ Map<String, dynamic> _$EpisodeOfCareToJson(EpisodeOfCare instance) =>
 EpisodeOfCare_StatusHistory _$EpisodeOfCare_StatusHistoryFromJson(
     Map<String, dynamic> json) {
   return EpisodeOfCare_StatusHistory(
-    json['period'] == null
-        ? null
-        : Period.fromJson(json['period'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -521,6 +458,9 @@ EpisodeOfCare_StatusHistory _$EpisodeOfCare_StatusHistoryFromJson(
     elementStatus: json['elementStatus'] == null
         ? null
         : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
+    period: json['period'] == null
+        ? null
+        : Period.fromJson(json['period'] as Map<String, dynamic>),
   );
 }
 
@@ -539,9 +479,6 @@ Map<String, dynamic> _$EpisodeOfCare_StatusHistoryToJson(
 EpisodeOfCare_Diagnosis _$EpisodeOfCare_DiagnosisFromJson(
     Map<String, dynamic> json) {
   return EpisodeOfCare_Diagnosis(
-    json['condition'] == null
-        ? null
-        : Reference.fromJson(json['condition'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -551,6 +488,9 @@ EpisodeOfCare_Diagnosis _$EpisodeOfCare_DiagnosisFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    condition: json['condition'] == null
+        ? null
+        : Reference.fromJson(json['condition'] as Map<String, dynamic>),
     role: json['role'] == null
         ? null
         : CodeableConcept.fromJson(json['role'] as Map<String, dynamic>),

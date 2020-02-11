@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/money.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -18,264 +19,190 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 73)
 class ChargeItemDefinition {
 
-  //  This is a ChargeItemDefinition resource
+	static Future<ChargeItemDefinition> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String url,
+		Element elementUrl,
+		List<Identifier> identifier,
+		String version,
+		Element elementVersion,
+		String title,
+		Element elementTitle,
+		List<String> derivedFromUri,
+		List<Element> elementDerivedFromUri,
+		List<String> partOf,
+		List<String> replaces,
+		String status,
+		Element elementStatus,
+		bool experimental,
+		Element elementExperimental,
+		DateTime date,
+		Element elementDate,
+		String publisher,
+		Element elementPublisher,
+		List<ContactDetail> contact,
+		String description,
+		Element elementDescription,
+		List<UsageContext> useContext,
+		List<CodeableConcept> jurisdiction,
+		String copyright,
+		Element elementCopyright,
+		String approvalDate,
+		Element elementApprovalDate,
+		String lastReviewDate,
+		Element elementLastReviewDate,
+		Period effectivePeriod,
+		CodeableConcept code,
+		List<Reference> instance,
+		List<ChargeItemDefinition_Applicability> applicability,
+		List<ChargeItemDefinition_PropertyGroup> propertyGroup}) async {
+	 return ChargeItemDefinition(
+			id: await newEntry('ChargeItemDefinition'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			url: url,
+			elementUrl: elementUrl,
+			identifier: identifier,
+			version: version,
+			elementVersion: elementVersion,
+			title: title,
+			elementTitle: elementTitle,
+			derivedFromUri: derivedFromUri,
+			elementDerivedFromUri: elementDerivedFromUri,
+			partOf: partOf,
+			replaces: replaces,
+			status: status,
+			elementStatus: elementStatus,
+			experimental: experimental,
+			elementExperimental: elementExperimental,
+			date: date,
+			elementDate: elementDate,
+			publisher: publisher,
+			elementPublisher: elementPublisher,
+			contact: contact,
+			description: description,
+			elementDescription: elementDescription,
+			useContext: useContext,
+			jurisdiction: jurisdiction,
+			copyright: copyright,
+			elementCopyright: elementCopyright,
+			approvalDate: approvalDate,
+			elementApprovalDate: elementApprovalDate,
+			lastReviewDate: lastReviewDate,
+			elementLastReviewDate: elementLastReviewDate,
+			effectivePeriod: effectivePeriod,
+			code: code,
+			instance: instance,
+			applicability: applicability,
+			propertyGroup: propertyGroup);
+	}
+
   @HiveField(0)
   final String resourceType= 'ChargeItemDefinition';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  An absolute URI that is used to identify this charge item definition
-  // when it is referenced in a specification, model, design or an instance;
-  // also called its canonical identifier. This SHOULD be globally unique
-  // and SHOULD be a literal address at which at which an authoritative
-  // instance of this charge item definition is (or will be) published. This
-  // URL can be the target of a canonical reference. It SHALL remain the
-  // same when the charge item definition is stored on different servers.
   @HiveField(11)
   String url;
-
-  //  Extensions for url
   @HiveField(12)
   Element elementUrl;
-
-  //  A formal identifier that is used to identify this charge item
-  // definition when it is represented in other formats, or referenced in a
-  // specification, model, design or an instance.
   @HiveField(13)
   List<Identifier> identifier;
-
-  //  The identifier that is used to identify this version of the charge
-  // item definition when it is referenced in a specification, model, design
-  // or instance. This is an arbitrary value managed by the charge item
-  // definition author and is not expected to be globally unique. For
-  // example, it might be a timestamp (e.g. yyyymmdd) if a managed version
-  // is not available. There is also no expectation that versions can be
-  // placed in a lexicographical sequence. To provide a version consistent
-  // with the Decision Support Service specification, use the format
-  // Major.Minor.Revision (e.g. 1.0.0). For more information on versioning
-  // knowledge assets, refer to the Decision Support Service specification.
-  // Note that a version is required for non-experimental active assets.
   @HiveField(14)
   String version;
-
-  //  Extensions for version
   @HiveField(15)
   Element elementVersion;
-
-  //  A short, descriptive, user-friendly title for the charge item
-  // definition.
   @HiveField(16)
   String title;
-
-  //  Extensions for title
   @HiveField(17)
   Element elementTitle;
-
-  //  The URL pointing to an externally-defined charge item definition that
-  // is adhered to in whole or in part by this definition.
   @HiveField(18)
   List<String> derivedFromUri;
-
-  //  Extensions for derivedFromUri
   @HiveField(19)
   List<Element> elementDerivedFromUri;
-
-  //  A larger definition of which this particular definition is a component
-  // or step.
   @HiveField(20)
   List<String> partOf;
-
-  //  As new versions of a protocol or guideline are defined, allows
-  // identification of what versions are replaced by a new instance.
   @HiveField(21)
   List<String> replaces;
-
-  //  The current state of the ChargeItemDefinition.
   @HiveField(22)
   String status; // <code> enum: draft/active/retired/unknown;
-
-  //  Extensions for status
   @HiveField(23)
   Element elementStatus;
-
-  //  A Boolean value to indicate that this charge item definition is
-  // authored for testing purposes (or education/evaluation/marketing) and
-  // is not intended to be used for genuine usage.
   @HiveField(24)
   bool experimental;
-
-  //  Extensions for experimental
   @HiveField(25)
   Element elementExperimental;
-
-  //  The date  (and optionally time) when the charge item definition was
-  // published. The date must change when the business version changes and
-  // it must change if the status code changes. In addition, it should
-  // change when the substantive content of the charge item definition
-  // changes.
   @HiveField(26)
   DateTime date;
-
-  //  Extensions for date
   @HiveField(27)
   Element elementDate;
-
-  //  The name of the organization or individual that published the charge
-  // item definition.
   @HiveField(28)
   String publisher;
-
-  //  Extensions for publisher
   @HiveField(29)
   Element elementPublisher;
-
-  //  Contact details to assist a user in finding and communicating with the
-  // publisher.
   @HiveField(30)
   List<ContactDetail> contact;
-
-  //  A free text natural language description of the charge item definition
-  // from a consumer's perspective.
   @HiveField(31)
   String description;
-
-  //  Extensions for description
   @HiveField(32)
   Element elementDescription;
-
-  //  The content was developed with a focus and intent of supporting the
-  // contexts that are listed. These contexts may be general categories
-  // (gender, age, ...) or may be references to specific programs (insurance
-  // plans, studies, ...) and may be used to assist with indexing and
-  // searching for appropriate charge item definition instances.
   @HiveField(33)
   List<UsageContext> useContext;
-
-  //  A legal or geographic region in which the charge item definition is
-  // intended to be used.
   @HiveField(34)
   List<CodeableConcept> jurisdiction;
-
-  //  A copyright statement relating to the charge item definition and/or
-  // its contents. Copyright statements are generally legal restrictions on
-  // the use and publishing of the charge item definition.
   @HiveField(35)
   String copyright;
-
-  //  Extensions for copyright
   @HiveField(36)
   Element elementCopyright;
-
-  //  The date on which the resource content was approved by the publisher.
-  // Approval happens once when the content is officially approved for
-  // usage.
   @HiveField(37)
   String approvalDate;
-
-  //  Extensions for approvalDate
   @HiveField(38)
   Element elementApprovalDate;
-
-  //  The date on which the resource content was last reviewed. Review
-  // happens periodically after approval but does not change the original
-  // approval date.
   @HiveField(39)
   String lastReviewDate;
-
-  //  Extensions for lastReviewDate
   @HiveField(40)
   Element elementLastReviewDate;
-
-  //  The period during which the charge item definition content was or is
-  // planned to be in active use.
   @HiveField(41)
   Period effectivePeriod;
-
-  //  The defined billing details in this resource pertain to the given
-  // billing code.
   @HiveField(42)
   CodeableConcept code;
-
-  //  The defined billing details in this resource pertain to the given
-  // product instance(s).
   @HiveField(43)
   List<Reference> instance;
-
-  //  Expressions that describe applicability criteria for the billing code.
   @HiveField(44)
   List<ChargeItemDefinition_Applicability> applicability;
-
-  //  Group of properties which are applicable under the same conditions. If
-  // no applicability rules are established for the group, then all
-  // properties always apply.
   @HiveField(45)
   List<ChargeItemDefinition_PropertyGroup> propertyGroup;
 
@@ -334,54 +261,36 @@ ChargeItemDefinition(
 @JsonSerializable(explicitToJson: true)
 class ChargeItemDefinition_Applicability {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ChargeItemDefinition_Applicability> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String description,
+		Element elementDescription,
+		String language,
+		Element elementLanguage,
+		String expression,
+		Element elementExpression}) async {
+	 return ChargeItemDefinition_Applicability(
+			id: await newEntry('ChargeItemDefinition_Applicability'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			description: description,
+			elementDescription: elementDescription,
+			language: language,
+			elementLanguage: elementLanguage,
+			expression: expression,
+			elementExpression: elementExpression);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A brief, natural language description of the condition that
-  // effectively communicates the intended semantics.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  The media type of the language for the expression, e.g. "text/cql" for
-  // Clinical Query Language expressions or "text/fhirpath" for FHIRPath
-  // expressions.
   String language;
-
-  //  Extensions for language
   Element elementLanguage;
-
-  //  An expression that returns true or false, indicating whether the
-  // condition is satisfied. When using FHIRPath expressions, the %context
-  // environment variable must be replaced at runtime with the ChargeItem
-  // resource to which this definition is applied.
   String expression;
-
-  //  Extensions for expression
   Element elementExpression;
 
 ChargeItemDefinition_Applicability(
@@ -403,42 +312,24 @@ ChargeItemDefinition_Applicability(
 @JsonSerializable(explicitToJson: true)
 class ChargeItemDefinition_PropertyGroup {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ChargeItemDefinition_PropertyGroup> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<ChargeItemDefinition_Applicability> applicability,
+		List<ChargeItemDefinition_PriceComponent> priceComponent}) async {
+	 return ChargeItemDefinition_PropertyGroup(
+			id: await newEntry('ChargeItemDefinition_PropertyGroup'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			applicability: applicability,
+			priceComponent: priceComponent);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Expressions that describe applicability criteria for the
-  // priceComponent.
   List<ChargeItemDefinition_Applicability> applicability;
-
-  //  The price for a ChargeItem may be calculated as a base price with
-  // surcharges/deductions that apply in certain conditions. A
-  // ChargeItemDefinition resource that defines the prices, factors and
-  // conditions that apply to a billing code is currently under development.
-  // The priceComponent element can be used to offer transparency to the
-  // recipient of the Invoice of how the prices have been calculated.
   List<ChargeItemDefinition_PriceComponent> priceComponent;
 
 ChargeItemDefinition_PropertyGroup(
@@ -456,50 +347,36 @@ ChargeItemDefinition_PropertyGroup(
 @JsonSerializable(explicitToJson: true)
 class ChargeItemDefinition_PriceComponent {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ChargeItemDefinition_PriceComponent> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String type,
+		Element elementType,
+		CodeableConcept code,
+		double factor,
+		Element elementFactor,
+		Money amount}) async {
+	 return ChargeItemDefinition_PriceComponent(
+			id: await newEntry('ChargeItemDefinition_PriceComponent'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			type: type,
+			elementType: elementType,
+			code: code,
+			factor: factor,
+			elementFactor: elementFactor,
+			amount: amount);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  This code identifies the type of the component.
   String type;
-
-  //  Extensions for type
   Element elementType;
-
-  //  A code that identifies the component. Codes may be used to
-  // differentiate between kinds of taxes, surcharges, discounts etc.
   CodeableConcept code;
-
-  //  The factor that has been applied on the base price for calculating
-  // this component.
   double factor;
-
-  //  Extensions for factor
   Element elementFactor;
-
-  //  The amount calculated for this component.
   Money amount;
 
 ChargeItemDefinition_PriceComponent(

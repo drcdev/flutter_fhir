@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -16,199 +19,147 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 95)
 class DiagnosticReport {
 
-  //  This is a DiagnosticReport resource
+	static Future<DiagnosticReport> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Identifier> identifier,
+		List<Reference> basedOn,
+		String status,
+		Element elementStatus,
+		List<CodeableConcept> category,
+		CodeableConcept code,
+		Reference subject,
+		Reference encounter,
+		String effectiveDateTime,
+		Element elementEffectiveDateTime,
+		Period effectivePeriod,
+		DateTime issued,
+		Element elementIssued,
+		List<Reference> performer,
+		List<Reference> resultsInterpreter,
+		List<Reference> specimen,
+		List<Reference> result,
+		List<Reference> imagingStudy,
+		List<DiagnosticReport_Media> media,
+		String conclusion,
+		Element elementConclusion,
+		List<CodeableConcept> conclusionCode,
+		List<Attachment> presentedForm}) async {
+	 return DiagnosticReport(
+			id: await newEntry('DiagnosticReport'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			basedOn: basedOn,
+			status: status,
+			elementStatus: elementStatus,
+			category: category,
+			code: code,
+			subject: subject,
+			encounter: encounter,
+			effectiveDateTime: effectiveDateTime,
+			elementEffectiveDateTime: elementEffectiveDateTime,
+			effectivePeriod: effectivePeriod,
+			issued: issued,
+			elementIssued: elementIssued,
+			performer: performer,
+			resultsInterpreter: resultsInterpreter,
+			specimen: specimen,
+			result: result,
+			imagingStudy: imagingStudy,
+			media: media,
+			conclusion: conclusion,
+			elementConclusion: elementConclusion,
+			conclusionCode: conclusionCode,
+			presentedForm: presentedForm);
+	}
+
   @HiveField(0)
   final String resourceType= 'DiagnosticReport';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  Identifiers assigned to this report by the performer or other systems.
   @HiveField(11)
   List<Identifier> identifier;
-
-  //  Details concerning a service requested.
   @HiveField(12)
   List<Reference> basedOn;
-
-  //  The status of the diagnostic report.
   @HiveField(13)
   String status; // <code> enum: registered/partial/preliminary/final/amended/corrected/appended/cancelled/entered-in-error/unknown;
-
-  //  Extensions for status
   @HiveField(14)
   Element elementStatus;
-
-  //  A code that classifies the clinical discipline, department or
-  // diagnostic service that created the report (e.g. cardiology,
-  // biochemistry, hematology, MRI). This is used for searching, sorting and
-  // display purposes.
   @HiveField(15)
   List<CodeableConcept> category;
-
-  //  A code or name that describes this diagnostic report.
   @HiveField(16)
   CodeableConcept code;
-
-  //  The subject of the report. Usually, but not always, this is a patient.
-  // However, diagnostic services also perform analyses on specimens
-  // collected from a variety of other sources.
   @HiveField(17)
   Reference subject;
-
-  //  The healthcare event  (e.g. a patient and healthcare provider
-  // interaction) which this DiagnosticReport is about.
   @HiveField(18)
   Reference encounter;
-
-  //  The time or time-period the observed values are related to. When the
-  // subject of the report is a patient, this is usually either the time of
-  // the procedure or of specimen collection(s), but very often the source
-  // of the date/time is not known, only the date/time itself.
   @HiveField(19)
   String effectiveDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for effectiveDateTime
   @HiveField(20)
   Element elementEffectiveDateTime;
-
-  //  The time or time-period the observed values are related to. When the
-  // subject of the report is a patient, this is usually either the time of
-  // the procedure or of specimen collection(s), but very often the source
-  // of the date/time is not known, only the date/time itself.
   @HiveField(21)
   Period effectivePeriod;
-
-  //  The date and time that this version of the report was made available
-  // to providers, typically after the report was reviewed and verified.
   @HiveField(22)
   DateTime issued;
-
-  //  Extensions for issued
   @HiveField(23)
   Element elementIssued;
-
-  //  The diagnostic service that is responsible for issuing the report.
   @HiveField(24)
   List<Reference> performer;
-
-  //  The practitioner or organization that is responsible for the report's
-  // conclusions and interpretations.
   @HiveField(25)
   List<Reference> resultsInterpreter;
-
-  //  Details about the specimens on which this diagnostic report is based.
   @HiveField(26)
   List<Reference> specimen;
-
-  //  [Observations](observation.html)  that are part of this diagnostic
-  // report.
   @HiveField(27)
   List<Reference> result;
-
-  //  One or more links to full details of any imaging performed during the
-  // diagnostic investigation. Typically, this is imaging performed by DICOM
-  // enabled modalities, but this is not required. A fully enabled PACS
-  // viewer can use this information to provide views of the source images.
   @HiveField(28)
   List<Reference> imagingStudy;
-
-  //  A list of key images associated with this report. The images are
-  // generally created during the diagnostic process, and may be directly of
-  // the patient, or of treated specimens (i.e. slides of interest).
   @HiveField(29)
   List<DiagnosticReport_Media> media;
-
-  //  Concise and clinically contextualized summary conclusion
-  // (interpretation/impression) of the diagnostic report.
   @HiveField(30)
   String conclusion;
-
-  //  Extensions for conclusion
   @HiveField(31)
   Element elementConclusion;
-
-  //  One or more codes that represent the summary conclusion
-  // (interpretation/impression) of the diagnostic report.
   @HiveField(32)
   List<CodeableConcept> conclusionCode;
-
-  //  Rich text representation of the entire result as issued by the
-  // diagnostic service. Multiple formats are allowed but they SHALL be
-  // semantically equivalent.
   @HiveField(33)
   List<Attachment> presentedForm;
 
 DiagnosticReport(
-  this.code,
-    {this.id,
+  {this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -223,6 +174,7 @@ DiagnosticReport(
     this.status,
     this.elementStatus,
     this.category,
+    @required this.code,
     this.subject,
     this.encounter,
     this.effectiveDateTime,
@@ -249,50 +201,36 @@ DiagnosticReport(
 @JsonSerializable(explicitToJson: true)
 class DiagnosticReport_Media {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<DiagnosticReport_Media> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String comment,
+		Element elementComment,
+		Reference link}) async {
+	 return DiagnosticReport_Media(
+			id: await newEntry('DiagnosticReport_Media'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			comment: comment,
+			elementComment: elementComment,
+			link: link);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A comment about the image. Typically, this is used to provide an
-  // explanation for why the image is included, or to draw the viewer's
-  // attention to important features.
   String comment;
-
-  //  Extensions for comment
   Element elementComment;
-
-  //  Reference to the image source.
   Reference link;
 
 DiagnosticReport_Media(
-  this.link,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.comment,
-    this.elementComment
+    this.elementComment,
+    @required this.link
     });
 
   factory DiagnosticReport_Media.fromJson(Map<String, dynamic> json) => _$DiagnosticReport_MediaFromJson(json);
@@ -316,7 +254,6 @@ class DiagnosticReportAdapter extends TypeAdapter<DiagnosticReport> {
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return DiagnosticReport(
-      fields[16] as CodeableConcept,
       id: fields[1] as String,
       meta: fields[2] as Meta,
       implicitRules: fields[3] as String,
@@ -332,6 +269,7 @@ class DiagnosticReportAdapter extends TypeAdapter<DiagnosticReport> {
       status: fields[13] as String,
       elementStatus: fields[14] as Element,
       category: (fields[15] as List)?.cast<CodeableConcept>(),
+      code: fields[16] as CodeableConcept,
       subject: fields[17] as Reference,
       encounter: fields[18] as Reference,
       effectiveDateTime: fields[19] as String,
@@ -433,9 +371,6 @@ class DiagnosticReportAdapter extends TypeAdapter<DiagnosticReport> {
 
 DiagnosticReport _$DiagnosticReportFromJson(Map<String, dynamic> json) {
   return DiagnosticReport(
-    json['code'] == null
-        ? null
-        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -481,6 +416,9 @@ DiagnosticReport _$DiagnosticReportFromJson(Map<String, dynamic> json) {
             ? null
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    code: json['code'] == null
+        ? null
+        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     subject: json['subject'] == null
         ? null
         : Reference.fromJson(json['subject'] as Map<String, dynamic>),
@@ -586,9 +524,6 @@ Map<String, dynamic> _$DiagnosticReportToJson(DiagnosticReport instance) =>
 DiagnosticReport_Media _$DiagnosticReport_MediaFromJson(
     Map<String, dynamic> json) {
   return DiagnosticReport_Media(
-    json['link'] == null
-        ? null
-        : Reference.fromJson(json['link'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -602,6 +537,9 @@ DiagnosticReport_Media _$DiagnosticReport_MediaFromJson(
     elementComment: json['elementComment'] == null
         ? null
         : Element.fromJson(json['elementComment'] as Map<String, dynamic>),
+    link: json['link'] == null
+        ? null
+        : Reference.fromJson(json['link'] as Map<String, dynamic>),
   );
 }
 

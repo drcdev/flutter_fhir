@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -16,248 +19,203 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 117)
 class Immunization {
 
-  //  This is a Immunization resource
+	static Future<Immunization> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Identifier> identifier,
+		String status,
+		Element elementStatus,
+		CodeableConcept statusReason,
+		CodeableConcept vaccineCode,
+		Reference patient,
+		Reference encounter,
+		String occurrenceDateTime,
+		Element elementOccurrenceDateTime,
+		String occurrenceString,
+		Element elementOccurrenceString,
+		DateTime recorded,
+		Element elementRecorded,
+		bool primarySource,
+		Element elementPrimarySource,
+		CodeableConcept reportOrigin,
+		Reference location,
+		Reference manufacturer,
+		String lotNumber,
+		Element elementLotNumber,
+		String expirationDate,
+		Element elementExpirationDate,
+		CodeableConcept site,
+		CodeableConcept route,
+		Quantity doseQuantity,
+		List<Immunization_Performer> performer,
+		List<Annotation> note,
+		List<CodeableConcept> reasonCode,
+		List<Reference> reasonReference,
+		bool isSubpotent,
+		Element elementIsSubpotent,
+		List<CodeableConcept> subpotentReason,
+		List<Immunization_Education> education,
+		List<CodeableConcept> programEligibility,
+		CodeableConcept fundingSource,
+		List<Immunization_Reaction> reaction,
+		List<Immunization_ProtocolApplied> protocolApplied}) async {
+	 return Immunization(
+			id: await newEntry('Immunization'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			status: status,
+			elementStatus: elementStatus,
+			statusReason: statusReason,
+			vaccineCode: vaccineCode,
+			patient: patient,
+			encounter: encounter,
+			occurrenceDateTime: occurrenceDateTime,
+			elementOccurrenceDateTime: elementOccurrenceDateTime,
+			occurrenceString: occurrenceString,
+			elementOccurrenceString: elementOccurrenceString,
+			recorded: recorded,
+			elementRecorded: elementRecorded,
+			primarySource: primarySource,
+			elementPrimarySource: elementPrimarySource,
+			reportOrigin: reportOrigin,
+			location: location,
+			manufacturer: manufacturer,
+			lotNumber: lotNumber,
+			elementLotNumber: elementLotNumber,
+			expirationDate: expirationDate,
+			elementExpirationDate: elementExpirationDate,
+			site: site,
+			route: route,
+			doseQuantity: doseQuantity,
+			performer: performer,
+			note: note,
+			reasonCode: reasonCode,
+			reasonReference: reasonReference,
+			isSubpotent: isSubpotent,
+			elementIsSubpotent: elementIsSubpotent,
+			subpotentReason: subpotentReason,
+			education: education,
+			programEligibility: programEligibility,
+			fundingSource: fundingSource,
+			reaction: reaction,
+			protocolApplied: protocolApplied);
+	}
+
   @HiveField(0)
   final String resourceType= 'Immunization';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  A unique identifier assigned to this immunization record.
   @HiveField(11)
   List<Identifier> identifier;
-
-  //  Indicates the current status of the immunization event.
   @HiveField(12)
   String status;
-
-  //  Extensions for status
   @HiveField(13)
   Element elementStatus;
-
-  //  Indicates the reason the immunization event was not performed.
   @HiveField(14)
   CodeableConcept statusReason;
-
-  //  Vaccine that was administered or was to be administered.
   @HiveField(15)
   CodeableConcept vaccineCode;
-
-  //  The patient who either received or did not receive the immunization.
   @HiveField(16)
   Reference patient;
-
-  //  The visit or admission or other contact between patient and health
-  // care provider the immunization was performed as part of.
   @HiveField(17)
   Reference encounter;
-
-  //  Date vaccine administered or was to be administered.
   @HiveField(18)
   String occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for occurrenceDateTime
   @HiveField(19)
   Element elementOccurrenceDateTime;
-
-  //  Date vaccine administered or was to be administered.
   @HiveField(20)
   String occurrenceString; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for occurrenceString
   @HiveField(21)
   Element elementOccurrenceString;
-
-  //  The date the occurrence of the immunization was first captured in the
-  // record - potentially significantly after the occurrence of the event.
   @HiveField(22)
   DateTime recorded;
-
-  //  Extensions for recorded
   @HiveField(23)
   Element elementRecorded;
-
-  //  An indication that the content of the record is based on information
-  // from the person who administered the vaccine. This reflects the context
-  // under which the data was originally recorded.
   @HiveField(24)
   bool primarySource;
-
-  //  Extensions for primarySource
   @HiveField(25)
   Element elementPrimarySource;
-
-  //  The source of the data when the report of the immunization event is
-  // not based on information from the person who administered the vaccine.
   @HiveField(26)
   CodeableConcept reportOrigin;
-
-  //  The service delivery location where the vaccine administration
-  // occurred.
   @HiveField(27)
   Reference location;
-
-  //  Name of vaccine manufacturer.
   @HiveField(28)
   Reference manufacturer;
-
-  //  Lot number of the  vaccine product.
   @HiveField(29)
   String lotNumber;
-
-  //  Extensions for lotNumber
   @HiveField(30)
   Element elementLotNumber;
-
-  //  Date vaccine batch expires.
   @HiveField(31)
   String expirationDate;
-
-  //  Extensions for expirationDate
   @HiveField(32)
   Element elementExpirationDate;
-
-  //  Body site where vaccine was administered.
   @HiveField(33)
   CodeableConcept site;
-
-  //  The path by which the vaccine product is taken into the body.
   @HiveField(34)
   CodeableConcept route;
-
-  //  The quantity of vaccine product that was administered.
   @HiveField(35)
   Quantity doseQuantity;
-
-  //  Indicates who performed the immunization event.
   @HiveField(36)
   List<Immunization_Performer> performer;
-
-  //  Extra information about the immunization that is not conveyed by the
-  // other attributes.
   @HiveField(37)
   List<Annotation> note;
-
-  //  Reasons why the vaccine was administered.
   @HiveField(38)
   List<CodeableConcept> reasonCode;
-
-  //  Condition, Observation or DiagnosticReport that supports why the
-  // immunization was administered.
   @HiveField(39)
   List<Reference> reasonReference;
-
-  //  Indication if a dose is considered to be subpotent. By default, a dose
-  // should be considered to be potent.
   @HiveField(40)
   bool isSubpotent;
-
-  //  Extensions for isSubpotent
   @HiveField(41)
   Element elementIsSubpotent;
-
-  //  Reason why a dose is considered to be subpotent.
   @HiveField(42)
   List<CodeableConcept> subpotentReason;
-
-  //  Educational material presented to the patient (or guardian) at the
-  // time of vaccine administration.
   @HiveField(43)
   List<Immunization_Education> education;
-
-  //  Indicates a patient's eligibility for a funding program.
   @HiveField(44)
   List<CodeableConcept> programEligibility;
-
-  //  Indicates the source of the vaccine actually administered. This may be
-  // different than the patient eligibility (e.g. the patient may be
-  // eligible for a publically purchased vaccine but due to inventory
-  // issues, vaccine purchased with private funds was actually
-  // administered).
   @HiveField(45)
   CodeableConcept fundingSource;
-
-  //  Categorical data indicating that an adverse event is associated in
-  // time to an immunization.
   @HiveField(46)
   List<Immunization_Reaction> reaction;
-
-  //  The protocol (set of recommendations) being followed by the provider
-  // who administered the dose.
   @HiveField(47)
   List<Immunization_ProtocolApplied> protocolApplied;
 
 Immunization(
-  this.vaccineCode,
-    this.patient,
-    {this.id,
+  {this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -271,6 +229,8 @@ Immunization(
     this.status,
     this.elementStatus,
     this.statusReason,
+    @required this.vaccineCode,
+    @required this.patient,
     this.encounter,
     this.occurrenceDateTime,
     this.elementOccurrenceDateTime,
@@ -311,45 +271,32 @@ Immunization(
 @JsonSerializable(explicitToJson: true)
 class Immunization_Performer {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Immunization_Performer> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept function,
+		Reference actor}) async {
+	 return Immunization_Performer(
+			id: await newEntry('Immunization_Performer'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			function: function,
+			actor: actor);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Describes the type of performance (e.g. ordering provider,
-  // administering provider, etc.).
   CodeableConcept function;
-
-  //  The practitioner or organization who performed the action.
   Reference actor;
 
 Immunization_Performer(
-  this.actor,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
-    this.function
+    this.function,
+    @required this.actor
     });
 
   factory Immunization_Performer.fromJson(Map<String, dynamic> json) => _$Immunization_PerformerFromJson(json);
@@ -359,55 +306,42 @@ Immunization_Performer(
 @JsonSerializable(explicitToJson: true)
 class Immunization_Education {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Immunization_Education> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String documentType,
+		Element elementDocumentType,
+		String reference,
+		Element elementReference,
+		DateTime publicationDate,
+		Element elementPublicationDate,
+		DateTime presentationDate,
+		Element elementPresentationDate}) async {
+	 return Immunization_Education(
+			id: await newEntry('Immunization_Education'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			documentType: documentType,
+			elementDocumentType: elementDocumentType,
+			reference: reference,
+			elementReference: elementReference,
+			publicationDate: publicationDate,
+			elementPublicationDate: elementPublicationDate,
+			presentationDate: presentationDate,
+			elementPresentationDate: elementPresentationDate);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Identifier of the material presented to the patient.
   String documentType;
-
-  //  Extensions for documentType
   Element elementDocumentType;
-
-  //  Reference pointer to the educational material given to the patient if
-  // the information was on line.
   String reference;
-
-  //  Extensions for reference
   Element elementReference;
-
-  //  Date the educational material was published.
   DateTime publicationDate;
-
-  //  Extensions for publicationDate
   Element elementPublicationDate;
-
-  //  Date the educational material was given to the patient.
   DateTime presentationDate;
-
-  //  Extensions for presentationDate
   Element elementPresentationDate;
 
 Immunization_Education(
@@ -431,45 +365,33 @@ Immunization_Education(
 @JsonSerializable(explicitToJson: true)
 class Immunization_Reaction {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Immunization_Reaction> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		DateTime date,
+		Element elementDate,
+		Reference detail,
+		bool reported,
+		Element elementReported}) async {
+	 return Immunization_Reaction(
+			id: await newEntry('Immunization_Reaction'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			date: date,
+			elementDate: elementDate,
+			detail: detail,
+			reported: reported,
+			elementReported: elementReported);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Date of reaction to the immunization.
   DateTime date;
-
-  //  Extensions for date
   Element elementDate;
-
-  //  Details of the reaction.
   Reference detail;
-
-  //  Self-reported indicator.
   bool reported;
-
-  //  Extensions for reported
   Element elementReported;
 
 Immunization_Reaction(
@@ -490,69 +412,54 @@ Immunization_Reaction(
 @JsonSerializable(explicitToJson: true)
 class Immunization_ProtocolApplied {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Immunization_ProtocolApplied> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String series,
+		Element elementSeries,
+		Reference authority,
+		List<CodeableConcept> targetDisease,
+		int doseNumberPositiveInt,
+		Element elementDoseNumberPositiveInt,
+		String doseNumberString,
+		Element elementDoseNumberString,
+		int seriesDosesPositiveInt,
+		Element elementSeriesDosesPositiveInt,
+		String seriesDosesString,
+		Element elementSeriesDosesString}) async {
+	 return Immunization_ProtocolApplied(
+			id: await newEntry('Immunization_ProtocolApplied'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			series: series,
+			elementSeries: elementSeries,
+			authority: authority,
+			targetDisease: targetDisease,
+			doseNumberPositiveInt: doseNumberPositiveInt,
+			elementDoseNumberPositiveInt: elementDoseNumberPositiveInt,
+			doseNumberString: doseNumberString,
+			elementDoseNumberString: elementDoseNumberString,
+			seriesDosesPositiveInt: seriesDosesPositiveInt,
+			elementSeriesDosesPositiveInt: elementSeriesDosesPositiveInt,
+			seriesDosesString: seriesDosesString,
+			elementSeriesDosesString: elementSeriesDosesString);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  One possible path to achieve presumed immunity against a disease -
-  // within the context of an authority.
   String series;
-
-  //  Extensions for series
   Element elementSeries;
-
-  //  Indicates the authority who published the protocol (e.g. ACIP) that is
-  // being followed.
   Reference authority;
-
-  //  The vaccine preventable disease the dose is being administered
-  // against.
   List<CodeableConcept> targetDisease;
-
-  //  Nominal position in a series.
   int doseNumberPositiveInt; //  pattern: ^[1-9][0-9]*$
-
-  //  Extensions for doseNumberPositiveInt
   Element elementDoseNumberPositiveInt;
-
-  //  Nominal position in a series.
   String doseNumberString; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for doseNumberString
   Element elementDoseNumberString;
-
-  //  The recommended number of doses to achieve immunity.
   int seriesDosesPositiveInt; //  pattern: ^[1-9][0-9]*$
-
-  //  Extensions for seriesDosesPositiveInt
   Element elementSeriesDosesPositiveInt;
-
-  //  The recommended number of doses to achieve immunity.
   String seriesDosesString; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for seriesDosesString
   Element elementSeriesDosesString;
 
 Immunization_ProtocolApplied(
@@ -594,8 +501,6 @@ class ImmunizationAdapter extends TypeAdapter<Immunization> {
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Immunization(
-      fields[15] as CodeableConcept,
-      fields[16] as Reference,
       id: fields[1] as String,
       meta: fields[2] as Meta,
       implicitRules: fields[3] as String,
@@ -610,6 +515,8 @@ class ImmunizationAdapter extends TypeAdapter<Immunization> {
       status: fields[12] as String,
       elementStatus: fields[13] as Element,
       statusReason: fields[14] as CodeableConcept,
+      vaccineCode: fields[15] as CodeableConcept,
+      patient: fields[16] as Reference,
       encounter: fields[17] as Reference,
       occurrenceDateTime: fields[18] as String,
       elementOccurrenceDateTime: fields[19] as Element,
@@ -754,12 +661,6 @@ class ImmunizationAdapter extends TypeAdapter<Immunization> {
 
 Immunization _$ImmunizationFromJson(Map<String, dynamic> json) {
   return Immunization(
-    json['vaccineCode'] == null
-        ? null
-        : CodeableConcept.fromJson(json['vaccineCode'] as Map<String, dynamic>),
-    json['patient'] == null
-        ? null
-        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -800,6 +701,12 @@ Immunization _$ImmunizationFromJson(Map<String, dynamic> json) {
         ? null
         : CodeableConcept.fromJson(
             json['statusReason'] as Map<String, dynamic>),
+    vaccineCode: json['vaccineCode'] == null
+        ? null
+        : CodeableConcept.fromJson(json['vaccineCode'] as Map<String, dynamic>),
+    patient: json['patient'] == null
+        ? null
+        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
     encounter: json['encounter'] == null
         ? null
         : Reference.fromJson(json['encounter'] as Map<String, dynamic>),
@@ -965,9 +872,6 @@ Map<String, dynamic> _$ImmunizationToJson(Immunization instance) =>
 Immunization_Performer _$Immunization_PerformerFromJson(
     Map<String, dynamic> json) {
   return Immunization_Performer(
-    json['actor'] == null
-        ? null
-        : Reference.fromJson(json['actor'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -980,6 +884,9 @@ Immunization_Performer _$Immunization_PerformerFromJson(
     function: json['function'] == null
         ? null
         : CodeableConcept.fromJson(json['function'] as Map<String, dynamic>),
+    actor: json['actor'] == null
+        ? null
+        : Reference.fromJson(json['actor'] as Map<String, dynamic>),
   );
 }
 

@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -15,155 +18,123 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 71)
 class CatalogEntry {
 
-  //  This is a CatalogEntry resource
+	static Future<CatalogEntry> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Identifier> identifier,
+		CodeableConcept type,
+		bool orderable,
+		Element elementOrderable,
+		Reference referencedItem,
+		List<Identifier> additionalIdentifier,
+		List<CodeableConcept> classification,
+		String status,
+		Element elementStatus,
+		Period validityPeriod,
+		DateTime validTo,
+		Element elementValidTo,
+		DateTime lastUpdated,
+		Element elementLastUpdated,
+		List<CodeableConcept> additionalCharacteristic,
+		List<CodeableConcept> additionalClassification,
+		List<CatalogEntry_RelatedEntry> relatedEntry}) async {
+	 return CatalogEntry(
+			id: await newEntry('CatalogEntry'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			type: type,
+			orderable: orderable,
+			elementOrderable: elementOrderable,
+			referencedItem: referencedItem,
+			additionalIdentifier: additionalIdentifier,
+			classification: classification,
+			status: status,
+			elementStatus: elementStatus,
+			validityPeriod: validityPeriod,
+			validTo: validTo,
+			elementValidTo: elementValidTo,
+			lastUpdated: lastUpdated,
+			elementLastUpdated: elementLastUpdated,
+			additionalCharacteristic: additionalCharacteristic,
+			additionalClassification: additionalClassification,
+			relatedEntry: relatedEntry);
+	}
+
   @HiveField(0)
   final String resourceType= 'CatalogEntry';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  Used in supporting different identifiers for the same product, e.g.
-  // manufacturer code and retailer code.
   @HiveField(11)
   List<Identifier> identifier;
-
-  //  The type of item - medication, device, service, protocol or other.
   @HiveField(12)
   CodeableConcept type;
-
-  //  Whether the entry represents an orderable item.
   @HiveField(13)
   bool orderable;
-
-  //  Extensions for orderable
   @HiveField(14)
   Element elementOrderable;
-
-  //  The item in a catalog or definition.
   @HiveField(15)
   Reference referencedItem;
-
-  //  Used in supporting related concepts, e.g. NDC to RxNorm.
   @HiveField(16)
   List<Identifier> additionalIdentifier;
-
-  //  Classes of devices, or ATC for medication.
   @HiveField(17)
   List<CodeableConcept> classification;
-
-  //  Used to support catalog exchange even for unsupported products, e.g.
-  // getting list of medications even if not prescribable.
   @HiveField(18)
   String status; // <code> enum: draft/active/retired/unknown;
-
-  //  Extensions for status
   @HiveField(19)
   Element elementStatus;
-
-  //  The time period in which this catalog entry is expected to be active.
   @HiveField(20)
   Period validityPeriod;
-
-  //  The date until which this catalog entry is expected to be active.
   @HiveField(21)
   DateTime validTo;
-
-  //  Extensions for validTo
   @HiveField(22)
   Element elementValidTo;
-
-  //  Typically date of issue is different from the beginning of the
-  // validity. This can be used to see when an item was last updated.
   @HiveField(23)
   DateTime lastUpdated;
-
-  //  Extensions for lastUpdated
   @HiveField(24)
   Element elementLastUpdated;
-
-  //  Used for examplefor Out of Formulary, or any specifics.
   @HiveField(25)
   List<CodeableConcept> additionalCharacteristic;
-
-  //  User for example for ATC classification, or.
   @HiveField(26)
   List<CodeableConcept> additionalClassification;
-
-  //  Used for example, to point to a substance, or to a device used to
-  // administer a medication.
   @HiveField(27)
   List<CatalogEntry_RelatedEntry> relatedEntry;
 
 CatalogEntry(
-  this.referencedItem,
-    {this.id,
+  {this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -177,6 +148,7 @@ CatalogEntry(
     this.type,
     this.orderable,
     this.elementOrderable,
+    @required this.referencedItem,
     this.additionalIdentifier,
     this.classification,
     this.status,
@@ -198,49 +170,36 @@ CatalogEntry(
 @JsonSerializable(explicitToJson: true)
 class CatalogEntry_RelatedEntry {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<CatalogEntry_RelatedEntry> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String relationtype,
+		Element elementRelationtype,
+		Reference item}) async {
+	 return CatalogEntry_RelatedEntry(
+			id: await newEntry('CatalogEntry_RelatedEntry'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			relationtype: relationtype,
+			elementRelationtype: elementRelationtype,
+			item: item);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The type of relation to the related item: child, parent,
-  // packageContent, containerPackage, usedIn, uses, requires, etc.
   String relationtype; // <code> enum: triggers/is-replaced-by;
-
-  //  Extensions for relationtype
   Element elementRelationtype;
-
-  //  The reference to the related item.
   Reference item;
 
 CatalogEntry_RelatedEntry(
-  this.item,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.relationtype,
-    this.elementRelationtype
+    this.elementRelationtype,
+    @required this.item
     });
 
   factory CatalogEntry_RelatedEntry.fromJson(Map<String, dynamic> json) => _$CatalogEntry_RelatedEntryFromJson(json);
@@ -264,7 +223,6 @@ class CatalogEntryAdapter extends TypeAdapter<CatalogEntry> {
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return CatalogEntry(
-      fields[15] as Reference,
       id: fields[1] as String,
       meta: fields[2] as Meta,
       implicitRules: fields[3] as String,
@@ -279,6 +237,7 @@ class CatalogEntryAdapter extends TypeAdapter<CatalogEntry> {
       type: fields[12] as CodeableConcept,
       orderable: fields[13] as bool,
       elementOrderable: fields[14] as Element,
+      referencedItem: fields[15] as Reference,
       additionalIdentifier: (fields[16] as List)?.cast<Identifier>(),
       classification: (fields[17] as List)?.cast<CodeableConcept>(),
       status: fields[18] as String,
@@ -363,9 +322,6 @@ class CatalogEntryAdapter extends TypeAdapter<CatalogEntry> {
 
 CatalogEntry _$CatalogEntryFromJson(Map<String, dynamic> json) {
   return CatalogEntry(
-    json['referencedItem'] == null
-        ? null
-        : Reference.fromJson(json['referencedItem'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -405,6 +361,9 @@ CatalogEntry _$CatalogEntryFromJson(Map<String, dynamic> json) {
     elementOrderable: json['elementOrderable'] == null
         ? null
         : Element.fromJson(json['elementOrderable'] as Map<String, dynamic>),
+    referencedItem: json['referencedItem'] == null
+        ? null
+        : Reference.fromJson(json['referencedItem'] as Map<String, dynamic>),
     additionalIdentifier: (json['additionalIdentifier'] as List)
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
@@ -490,9 +449,6 @@ Map<String, dynamic> _$CatalogEntryToJson(CatalogEntry instance) =>
 CatalogEntry_RelatedEntry _$CatalogEntry_RelatedEntryFromJson(
     Map<String, dynamic> json) {
   return CatalogEntry_RelatedEntry(
-    json['item'] == null
-        ? null
-        : Reference.fromJson(json['item'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -506,6 +462,9 @@ CatalogEntry_RelatedEntry _$CatalogEntry_RelatedEntryFromJson(
     elementRelationtype: json['elementRelationtype'] == null
         ? null
         : Element.fromJson(json['elementRelationtype'] as Map<String, dynamic>),
+    item: json['item'] == null
+        ? null
+        : Reference.fromJson(json['item'] as Map<String, dynamic>),
   );
 }
 

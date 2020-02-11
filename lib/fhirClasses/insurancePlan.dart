@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/money.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -20,156 +23,118 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 121)
 class InsurancePlan {
 
-  //  This is a InsurancePlan resource
+	static Future<InsurancePlan> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Identifier> identifier,
+		String status,
+		Element elementStatus,
+		List<CodeableConcept> type,
+		String name,
+		Element elementName,
+		List<String> alias,
+		List<Element> elementAlias,
+		Period period,
+		Reference ownedBy,
+		Reference administeredBy,
+		List<Reference> coverageArea,
+		List<InsurancePlan_Contact> contact,
+		List<Reference> endpoint,
+		List<Reference> network,
+		List<InsurancePlan_Coverage> coverage,
+		List<InsurancePlan_Plan> plan}) async {
+	 return InsurancePlan(
+			id: await newEntry('InsurancePlan'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			status: status,
+			elementStatus: elementStatus,
+			type: type,
+			name: name,
+			elementName: elementName,
+			alias: alias,
+			elementAlias: elementAlias,
+			period: period,
+			ownedBy: ownedBy,
+			administeredBy: administeredBy,
+			coverageArea: coverageArea,
+			contact: contact,
+			endpoint: endpoint,
+			network: network,
+			coverage: coverage,
+			plan: plan);
+	}
+
   @HiveField(0)
   final String resourceType= 'InsurancePlan';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  Business identifiers assigned to this health insurance product which
-  // remain constant as the resource is updated and propagates from server
-  // to server.
   @HiveField(11)
   List<Identifier> identifier;
-
-  //  The current state of the health insurance product.
   @HiveField(12)
   String status; // <code> enum: draft/active/retired/unknown;
-
-  //  Extensions for status
   @HiveField(13)
   Element elementStatus;
-
-  //  The kind of health insurance product.
   @HiveField(14)
   List<CodeableConcept> type;
-
-  //  Official name of the health insurance product as designated by the
-  // owner.
   @HiveField(15)
   String name;
-
-  //  Extensions for name
   @HiveField(16)
   Element elementName;
-
-  //  A list of alternate names that the product is known as, or was known
-  // as in the past.
   @HiveField(17)
   List<String> alias;
-
-  //  Extensions for alias
   @HiveField(18)
   List<Element> elementAlias;
-
-  //  The period of time that the health insurance product is available.
   @HiveField(19)
   Period period;
-
-  //  The entity that is providing  the health insurance product and
-  // underwriting the risk.  This is typically an insurance carriers, other
-  // third-party payers, or health plan sponsors comonly referred to as
-  // 'payers'.
   @HiveField(20)
   Reference ownedBy;
-
-  //  An organization which administer other services such as underwriting,
-  // customer service and/or claims processing on behalf of the health
-  // insurance product owner.
   @HiveField(21)
   Reference administeredBy;
-
-  //  The geographic region in which a health insurance product's benefits
-  // apply.
   @HiveField(22)
   List<Reference> coverageArea;
-
-  //  The contact for the health insurance product for a certain purpose.
   @HiveField(23)
   List<InsurancePlan_Contact> contact;
-
-  //  The technical endpoints providing access to services operated for the
-  // health insurance product.
   @HiveField(24)
   List<Reference> endpoint;
-
-  //  Reference to the network included in the health insurance product.
   @HiveField(25)
   List<Reference> network;
-
-  //  Details about the coverage offered by the insurance product.
   @HiveField(26)
   List<InsurancePlan_Coverage> coverage;
-
-  //  Details about an insurance plan.
   @HiveField(27)
   List<InsurancePlan_Plan> plan;
 
@@ -210,43 +175,30 @@ InsurancePlan(
 @JsonSerializable(explicitToJson: true)
 class InsurancePlan_Contact {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<InsurancePlan_Contact> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept purpose,
+		HumanName name,
+		List<ContactPoint> telecom,
+		Address address}) async {
+	 return InsurancePlan_Contact(
+			id: await newEntry('InsurancePlan_Contact'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			purpose: purpose,
+			name: name,
+			telecom: telecom,
+			address: address);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Indicates a purpose for which the contact can be reached.
   CodeableConcept purpose;
-
-  //  A name associated with the contact.
   HumanName name;
-
-  //  A contact detail (e.g. a telephone number or an email address) by
-  // which the party may be contacted.
   List<ContactPoint> telecom;
-
-  //  Visiting or postal addresses for the contact.
   Address address;
 
 InsurancePlan_Contact(
@@ -266,49 +218,36 @@ InsurancePlan_Contact(
 @JsonSerializable(explicitToJson: true)
 class InsurancePlan_Coverage {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<InsurancePlan_Coverage> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept type,
+		List<Reference> network,
+		List<InsurancePlan_Benefit> benefit}) async {
+	 return InsurancePlan_Coverage(
+			id: await newEntry('InsurancePlan_Coverage'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			type: type,
+			network: network,
+			benefit: benefit);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Type of coverage  (Medical; Dental; Mental Health; Substance Abuse;
-  // Vision; Drug; Short Term; Long Term Care; Hospice; Home Health).
   CodeableConcept type;
-
-  //  Reference to the network that providing the type of coverage.
   List<Reference> network;
-
-  //  Specific benefits under this type of coverage.
   List<InsurancePlan_Benefit> benefit;
 
 InsurancePlan_Coverage(
-  this.type,
-    this.benefit,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
-    this.network
+    @required this.type,
+    this.network,
+    @required this.benefit
     });
 
   factory InsurancePlan_Coverage.fromJson(Map<String, dynamic> json) => _$InsurancePlan_CoverageFromJson(json);
@@ -318,50 +257,37 @@ InsurancePlan_Coverage(
 @JsonSerializable(explicitToJson: true)
 class InsurancePlan_Benefit {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<InsurancePlan_Benefit> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept type,
+		String requirement,
+		Element elementRequirement,
+		List<InsurancePlan_Limit> limit}) async {
+	 return InsurancePlan_Benefit(
+			id: await newEntry('InsurancePlan_Benefit'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			type: type,
+			requirement: requirement,
+			elementRequirement: elementRequirement,
+			limit: limit);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Type of benefit (primary care; speciality care; inpatient;
-  // outpatient).
   CodeableConcept type;
-
-  //  The referral requirements to have access/coverage for this benefit.
   String requirement;
-
-  //  Extensions for requirement
   Element elementRequirement;
-
-  //  The specific limits on the benefit.
   List<InsurancePlan_Limit> limit;
 
 InsurancePlan_Benefit(
-  this.type,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
+    @required this.type,
     this.requirement,
     this.elementRequirement,
     this.limit
@@ -374,37 +300,24 @@ InsurancePlan_Benefit(
 @JsonSerializable(explicitToJson: true)
 class InsurancePlan_Limit {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<InsurancePlan_Limit> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Quantity value,
+		CodeableConcept code}) async {
+	 return InsurancePlan_Limit(
+			id: await newEntry('InsurancePlan_Limit'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			value: value,
+			code: code);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The maximum amount of a service item a plan will pay for a covered
-  // benefit.  For examples. wellness visits, or eyeglasses.
   Quantity value;
-
-  //  The specific limit on the benefit.
   CodeableConcept code;
 
 InsurancePlan_Limit(
@@ -422,51 +335,36 @@ InsurancePlan_Limit(
 @JsonSerializable(explicitToJson: true)
 class InsurancePlan_Plan {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<InsurancePlan_Plan> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Identifier> identifier,
+		CodeableConcept type,
+		List<Reference> coverageArea,
+		List<Reference> network,
+		List<InsurancePlan_GeneralCost> generalCost,
+		List<InsurancePlan_SpecificCost> specificCost}) async {
+	 return InsurancePlan_Plan(
+			id: await newEntry('InsurancePlan_Plan'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			type: type,
+			coverageArea: coverageArea,
+			network: network,
+			generalCost: generalCost,
+			specificCost: specificCost);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Business identifiers assigned to this health insurance plan which
-  // remain constant as the resource is updated and propagates from server
-  // to server.
   List<Identifier> identifier;
-
-  //  Type of plan. For example, "Platinum" or "High Deductable".
   CodeableConcept type;
-
-  //  The geographic region in which a health insurance plan's benefits
-  // apply.
   List<Reference> coverageArea;
-
-  //  Reference to the network that providing the type of coverage.
   List<Reference> network;
-
-  //  Overall costs associated with the plan.
   List<InsurancePlan_GeneralCost> generalCost;
-
-  //  Costs associated with the coverage provided by the product.
   List<InsurancePlan_SpecificCost> specificCost;
 
 InsurancePlan_Plan(
@@ -488,49 +386,36 @@ InsurancePlan_Plan(
 @JsonSerializable(explicitToJson: true)
 class InsurancePlan_GeneralCost {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<InsurancePlan_GeneralCost> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept type,
+		int groupSize,
+		Element elementGroupSize,
+		Money cost,
+		String comment,
+		Element elementComment}) async {
+	 return InsurancePlan_GeneralCost(
+			id: await newEntry('InsurancePlan_GeneralCost'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			type: type,
+			groupSize: groupSize,
+			elementGroupSize: elementGroupSize,
+			cost: cost,
+			comment: comment,
+			elementComment: elementComment);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Type of cost.
   CodeableConcept type;
-
-  //  Number of participants enrolled in the plan.
   int groupSize;
-
-  //  Extensions for groupSize
   Element elementGroupSize;
-
-  //  Value of the cost.
   Money cost;
-
-  //  Additional information about the general costs associated with this
-  // plan.
   String comment;
-
-  //  Extensions for comment
   Element elementComment;
 
 InsurancePlan_GeneralCost(
@@ -552,44 +437,31 @@ InsurancePlan_GeneralCost(
 @JsonSerializable(explicitToJson: true)
 class InsurancePlan_SpecificCost {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<InsurancePlan_SpecificCost> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept category,
+		List<InsurancePlan_Benefit1> benefit}) async {
+	 return InsurancePlan_SpecificCost(
+			id: await newEntry('InsurancePlan_SpecificCost'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			category: category,
+			benefit: benefit);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  General category of benefit (Medical; Dental; Vision; Drug; Mental
-  // Health; Substance Abuse; Hospice, Home Health).
   CodeableConcept category;
-
-  //  List of the specific benefits under this category of benefit.
   List<InsurancePlan_Benefit1> benefit;
 
 InsurancePlan_SpecificCost(
-  this.category,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
+    @required this.category,
     this.benefit
     });
 
@@ -600,44 +472,31 @@ InsurancePlan_SpecificCost(
 @JsonSerializable(explicitToJson: true)
 class InsurancePlan_Benefit1 {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<InsurancePlan_Benefit1> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept type,
+		List<InsurancePlan_Cost> cost}) async {
+	 return InsurancePlan_Benefit1(
+			id: await newEntry('InsurancePlan_Benefit1'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			type: type,
+			cost: cost);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Type of specific benefit (preventative; primary care office visit;
-  // speciality office visit; hospitalization; emergency room; urgent care).
   CodeableConcept type;
-
-  //  List of the costs associated with a specific benefit.
   List<InsurancePlan_Cost> cost;
 
 InsurancePlan_Benefit1(
-  this.type,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
+    @required this.type,
     this.cost
     });
 
@@ -648,53 +507,37 @@ InsurancePlan_Benefit1(
 @JsonSerializable(explicitToJson: true)
 class InsurancePlan_Cost {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<InsurancePlan_Cost> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept type,
+		CodeableConcept applicability,
+		List<CodeableConcept> qualifiers,
+		Quantity value}) async {
+	 return InsurancePlan_Cost(
+			id: await newEntry('InsurancePlan_Cost'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			type: type,
+			applicability: applicability,
+			qualifiers: qualifiers,
+			value: value);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Type of cost (copay; individual cap; family cap; coinsurance;
-  // deductible).
   CodeableConcept type;
-
-  //  Whether the cost applies to in-network or out-of-network providers
-  // (in-network; out-of-network; other).
   CodeableConcept applicability;
-
-  //  Additional information about the cost, such as information about
-  // funding sources (e.g. HSA, HRA, FSA, RRA).
   List<CodeableConcept> qualifiers;
-
-  //  The actual cost value. (some of the costs may be represented as
-  // percentages rather than currency, e.g. 10% coinsurance).
   Quantity value;
 
 InsurancePlan_Cost(
-  this.type,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
+    @required this.type,
     this.applicability,
     this.qualifiers,
     this.value
@@ -985,14 +828,6 @@ Map<String, dynamic> _$InsurancePlan_ContactToJson(
 InsurancePlan_Coverage _$InsurancePlan_CoverageFromJson(
     Map<String, dynamic> json) {
   return InsurancePlan_Coverage(
-    json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
-    (json['benefit'] as List)
-        ?.map((e) => e == null
-            ? null
-            : InsurancePlan_Benefit.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1002,9 +837,17 @@ InsurancePlan_Coverage _$InsurancePlan_CoverageFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    type: json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     network: (json['network'] as List)
         ?.map((e) =>
             e == null ? null : Reference.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    benefit: (json['benefit'] as List)
+        ?.map((e) => e == null
+            ? null
+            : InsurancePlan_Benefit.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   );
 }
@@ -1024,9 +867,6 @@ Map<String, dynamic> _$InsurancePlan_CoverageToJson(
 InsurancePlan_Benefit _$InsurancePlan_BenefitFromJson(
     Map<String, dynamic> json) {
   return InsurancePlan_Benefit(
-    json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1036,6 +876,9 @@ InsurancePlan_Benefit _$InsurancePlan_BenefitFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    type: json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     requirement: json['requirement'] as String,
     elementRequirement: json['elementRequirement'] == null
         ? null
@@ -1192,9 +1035,6 @@ Map<String, dynamic> _$InsurancePlan_GeneralCostToJson(
 InsurancePlan_SpecificCost _$InsurancePlan_SpecificCostFromJson(
     Map<String, dynamic> json) {
   return InsurancePlan_SpecificCost(
-    json['category'] == null
-        ? null
-        : CodeableConcept.fromJson(json['category'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1204,6 +1044,9 @@ InsurancePlan_SpecificCost _$InsurancePlan_SpecificCostFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    category: json['category'] == null
+        ? null
+        : CodeableConcept.fromJson(json['category'] as Map<String, dynamic>),
     benefit: (json['benefit'] as List)
         ?.map((e) => e == null
             ? null
@@ -1226,9 +1069,6 @@ Map<String, dynamic> _$InsurancePlan_SpecificCostToJson(
 InsurancePlan_Benefit1 _$InsurancePlan_Benefit1FromJson(
     Map<String, dynamic> json) {
   return InsurancePlan_Benefit1(
-    json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1238,6 +1078,9 @@ InsurancePlan_Benefit1 _$InsurancePlan_Benefit1FromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    type: json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     cost: (json['cost'] as List)
         ?.map((e) => e == null
             ? null
@@ -1259,9 +1102,6 @@ Map<String, dynamic> _$InsurancePlan_Benefit1ToJson(
 
 InsurancePlan_Cost _$InsurancePlan_CostFromJson(Map<String, dynamic> json) {
   return InsurancePlan_Cost(
-    json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1271,6 +1111,9 @@ InsurancePlan_Cost _$InsurancePlan_CostFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    type: json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     applicability: json['applicability'] == null
         ? null
         : CodeableConcept.fromJson(

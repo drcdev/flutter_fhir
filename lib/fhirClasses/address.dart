@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
@@ -9,102 +10,92 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @HiveType(typeId: 37)
 class Address {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Address> newInstance({
+		String id,
+		List<Extension> extension,
+		String use,
+		Element elementUse,
+		String type,
+		Element elementType,
+		String text,
+		Element elementText,
+		List<String> line,
+		List<Element> elementLine,
+		String city,
+		Element elementCity,
+		String district,
+		Element elementDistrict,
+		String state,
+		Element elementState,
+		String postalCode,
+		Element elementPostalCode,
+		String country,
+		Element elementCountry,
+		Period period}) async {
+	 return Address(
+			id: await newEntry('Address'),
+			extension: extension,
+			use: use,
+			elementUse: elementUse,
+			type: type,
+			elementType: elementType,
+			text: text,
+			elementText: elementText,
+			line: line,
+			elementLine: elementLine,
+			city: city,
+			elementCity: elementCity,
+			district: district,
+			elementDistrict: elementDistrict,
+			state: state,
+			elementState: elementState,
+			postalCode: postalCode,
+			elementPostalCode: elementPostalCode,
+			country: country,
+			elementCountry: elementCountry,
+			period: period);
+	}
+
   @HiveField(0)
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   @HiveField(1)
   List<Extension> extension;
-
-  //  The purpose of this address.
   @HiveField(2)
   String use; // <code> enum: home/work/temp/old/billing;
-
-  //  Extensions for use
   @HiveField(3)
   Element elementUse;
-
-  //  Distinguishes between physical addresses (those you can visit) and
-  // mailing addresses (e.g. PO Boxes and care-of addresses). Most addresses
-  // are both.
   @HiveField(4)
   String type; // <code> enum: postal/physical/both;
-
-  //  Extensions for type
   @HiveField(5)
   Element elementType;
-
-  //  Specifies the entire address as it should be displayed e.g. on a
-  // postal label. This may be provided instead of or as well as the
-  // specific parts.
   @HiveField(6)
   String text;
-
-  //  Extensions for text
   @HiveField(7)
   Element elementText;
-
-  //  This component contains the house number, apartment number, street
-  // name, street direction,  P.O. Box number, delivery hints, and similar
-  // address information.
   @HiveField(8)
   List<String> line;
-
-  //  Extensions for line
   @HiveField(9)
   List<Element> elementLine;
-
-  //  The name of the city, town, suburb, village or other community or
-  // delivery center.
   @HiveField(10)
   String city;
-
-  //  Extensions for city
   @HiveField(11)
   Element elementCity;
-
-  //  The name of the administrative area (county).
   @HiveField(12)
   String district;
-
-  //  Extensions for district
   @HiveField(13)
   Element elementDistrict;
-
-  //  Sub-unit of a country with limited sovereignty in a federally
-  // organized country. A code may be used if codes are in common use (e.g.
-  // US 2 letter state codes).
   @HiveField(14)
   String state;
-
-  //  Extensions for state
   @HiveField(15)
   Element elementState;
-
-  //  A postal code designating a region defined by the postal service.
   @HiveField(16)
   String postalCode;
-
-  //  Extensions for postalCode
   @HiveField(17)
   Element elementPostalCode;
-
-  //  Country - a nation as commonly understood or generally accepted.
   @HiveField(18)
   String country;
-
-  //  Extensions for country
   @HiveField(19)
   Element elementCountry;
-
-  //  Time period when address was/is in use.
   @HiveField(20)
   Period period;
 

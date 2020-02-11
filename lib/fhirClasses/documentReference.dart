@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
@@ -17,183 +20,135 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 97)
 class DocumentReference {
 
-  //  This is a DocumentReference resource
+	static Future<DocumentReference> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Identifier masterIdentifier,
+		List<Identifier> identifier,
+		String status,
+		Element elementStatus,
+		String docStatus,
+		Element elementDocStatus,
+		CodeableConcept type,
+		List<CodeableConcept> category,
+		Reference subject,
+		DateTime date,
+		Element elementDate,
+		List<Reference> author,
+		Reference authenticator,
+		Reference custodian,
+		List<DocumentReference_RelatesTo> relatesTo,
+		String description,
+		Element elementDescription,
+		List<CodeableConcept> securityLabel,
+		List<DocumentReference_Content> content,
+		DocumentReference_Context context}) async {
+	 return DocumentReference(
+			id: await newEntry('DocumentReference'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			masterIdentifier: masterIdentifier,
+			identifier: identifier,
+			status: status,
+			elementStatus: elementStatus,
+			docStatus: docStatus,
+			elementDocStatus: elementDocStatus,
+			type: type,
+			category: category,
+			subject: subject,
+			date: date,
+			elementDate: elementDate,
+			author: author,
+			authenticator: authenticator,
+			custodian: custodian,
+			relatesTo: relatesTo,
+			description: description,
+			elementDescription: elementDescription,
+			securityLabel: securityLabel,
+			content: content,
+			context: context);
+	}
+
   @HiveField(0)
   final String resourceType= 'DocumentReference';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  Document identifier as assigned by the source of the document. This
-  // identifier is specific to this version of the document. This unique
-  // identifier may be used elsewhere to identify this version of the
-  // document.
   @HiveField(11)
   Identifier masterIdentifier;
-
-  //  Other identifiers associated with the document, including version
-  // independent identifiers.
   @HiveField(12)
   List<Identifier> identifier;
-
-  //  The status of this document reference.
   @HiveField(13)
   String status; // <code> enum: current/superseded/entered-in-error;
-
-  //  Extensions for status
   @HiveField(14)
   Element elementStatus;
-
-  //  The status of the underlying document.
   @HiveField(15)
   String docStatus;
-
-  //  Extensions for docStatus
   @HiveField(16)
   Element elementDocStatus;
-
-  //  Specifies the particular kind of document referenced  (e.g. History
-  // and Physical, Discharge Summary, Progress Note). This usually equates
-  // to the purpose of making the document referenced.
   @HiveField(17)
   CodeableConcept type;
-
-  //  A categorization for the type of document referenced - helps for
-  // indexing and searching. This may be implied by or derived from the code
-  // specified in the DocumentReference.type.
   @HiveField(18)
   List<CodeableConcept> category;
-
-  //  Who or what the document is about. The document can be about a person,
-  // (patient or healthcare practitioner), a device (e.g. a machine) or even
-  // a group of subjects (such as a document about a herd of farm animals,
-  // or a set of patients that share a common exposure).
   @HiveField(19)
   Reference subject;
-
-  //  When the document reference was created.
   @HiveField(20)
   DateTime date;
-
-  //  Extensions for date
   @HiveField(21)
   Element elementDate;
-
-  //  Identifies who is responsible for adding the information to the
-  // document.
   @HiveField(22)
   List<Reference> author;
-
-  //  Which person or organization authenticates that this document is
-  // valid.
   @HiveField(23)
   Reference authenticator;
-
-  //  Identifies the organization or group who is responsible for ongoing
-  // maintenance of and access to the document.
   @HiveField(24)
   Reference custodian;
-
-  //  Relationships that this document has with other document references
-  // that already exist.
   @HiveField(25)
   List<DocumentReference_RelatesTo> relatesTo;
-
-  //  Human-readable description of the source document.
   @HiveField(26)
   String description;
-
-  //  Extensions for description
   @HiveField(27)
   Element elementDescription;
-
-  //  A set of Security-Tag codes specifying the level of privacy/security
-  // of the Document. Note that DocumentReference.meta.security contains the
-  // security labels of the "reference" to the document, while
-  // DocumentReference.securityLabel contains a snapshot of the security
-  // labels on the document the reference refers to.
   @HiveField(28)
   List<CodeableConcept> securityLabel;
-
-  //  The document and format referenced. There may be multiple content
-  // element repetitions, each with a different format.
   @HiveField(29)
   List<DocumentReference_Content> content;
-
-  //  The clinical context in which the document was prepared.
   @HiveField(30)
   DocumentReference_Context context;
 
 DocumentReference(
-  this.content,
-    {this.id,
+  {this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -221,6 +176,7 @@ DocumentReference(
     this.description,
     this.elementDescription,
     this.securityLabel,
+    @required this.content,
     this.context
     });
 
@@ -231,48 +187,36 @@ DocumentReference(
 @JsonSerializable(explicitToJson: true)
 class DocumentReference_RelatesTo {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<DocumentReference_RelatesTo> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String code,
+		Element elementCode,
+		Reference target}) async {
+	 return DocumentReference_RelatesTo(
+			id: await newEntry('DocumentReference_RelatesTo'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			code: code,
+			elementCode: elementCode,
+			target: target);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The type of relationship that this document has with anther document.
   String code; // <code> enum: replaces/transforms/signs/appends;
-
-  //  Extensions for code
   Element elementCode;
-
-  //  The target document of this relationship.
   Reference target;
 
 DocumentReference_RelatesTo(
-  this.target,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.code,
-    this.elementCode
+    this.elementCode,
+    @required this.target
     });
 
   factory DocumentReference_RelatesTo.fromJson(Map<String, dynamic> json) => _$DocumentReference_RelatesToFromJson(json);
@@ -282,46 +226,31 @@ DocumentReference_RelatesTo(
 @JsonSerializable(explicitToJson: true)
 class DocumentReference_Content {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<DocumentReference_Content> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Attachment attachment,
+		Coding format}) async {
+	 return DocumentReference_Content(
+			id: await newEntry('DocumentReference_Content'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			attachment: attachment,
+			format: format);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The document or URL of the document along with critical metadata to
-  // prove content has integrity.
   Attachment attachment;
-
-  //  An identifier of the document encoding, structure, and template that
-  // the document conforms to beyond the base format indicated in the
-  // mimeType.
   Coding format;
 
 DocumentReference_Content(
-  this.attachment,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
+    @required this.attachment,
     this.format
     });
 
@@ -332,60 +261,39 @@ DocumentReference_Content(
 @JsonSerializable(explicitToJson: true)
 class DocumentReference_Context {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<DocumentReference_Context> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Reference> encounter,
+		List<CodeableConcept> event,
+		Period period,
+		CodeableConcept facilityType,
+		CodeableConcept practiceSetting,
+		Reference sourcePatientInfo,
+		List<Reference> related}) async {
+	 return DocumentReference_Context(
+			id: await newEntry('DocumentReference_Context'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			encounter: encounter,
+			event: event,
+			period: period,
+			facilityType: facilityType,
+			practiceSetting: practiceSetting,
+			sourcePatientInfo: sourcePatientInfo,
+			related: related);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Describes the clinical encounter or type of care that the document
-  // content is associated with.
   List<Reference> encounter;
-
-  //  This list of codes represents the main clinical acts, such as a
-  // colonoscopy or an appendectomy, being documented. In some cases, the
-  // event is inherent in the type Code, such as a "History and Physical
-  // Report" in which the procedure being documented is necessarily a
-  // "History and Physical" act.
   List<CodeableConcept> event;
-
-  //  The time period over which the service that is described by the
-  // document was provided.
   Period period;
-
-  //  The kind of facility where the patient was seen.
   CodeableConcept facilityType;
-
-  //  This property may convey specifics about the practice setting where
-  // the content was created, often reflecting the clinical specialty.
   CodeableConcept practiceSetting;
-
-  //  The Patient Information as known when the document was published. May
-  // be a reference to a version specific, or contained.
   Reference sourcePatientInfo;
-
-  //  Related identifiers or resources associated with the
-  // DocumentReference.
   List<Reference> related;
 
 DocumentReference_Context(
@@ -422,7 +330,6 @@ class DocumentReferenceAdapter extends TypeAdapter<DocumentReference> {
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return DocumentReference(
-      (fields[29] as List)?.cast<DocumentReference_Content>(),
       id: fields[1] as String,
       meta: fields[2] as Meta,
       implicitRules: fields[3] as String,
@@ -451,6 +358,7 @@ class DocumentReferenceAdapter extends TypeAdapter<DocumentReference> {
       description: fields[26] as String,
       elementDescription: fields[27] as Element,
       securityLabel: (fields[28] as List)?.cast<CodeableConcept>(),
+      content: (fields[29] as List)?.cast<DocumentReference_Content>(),
       context: fields[30] as DocumentReference_Context,
     );
   }
@@ -530,11 +438,6 @@ class DocumentReferenceAdapter extends TypeAdapter<DocumentReference> {
 
 DocumentReference _$DocumentReferenceFromJson(Map<String, dynamic> json) {
   return DocumentReference(
-    (json['content'] as List)
-        ?.map((e) => e == null
-            ? null
-            : DocumentReference_Content.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -617,6 +520,11 @@ DocumentReference _$DocumentReferenceFromJson(Map<String, dynamic> json) {
             ? null
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    content: (json['content'] as List)
+        ?.map((e) => e == null
+            ? null
+            : DocumentReference_Content.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     context: json['context'] == null
         ? null
         : DocumentReference_Context.fromJson(
@@ -663,9 +571,6 @@ Map<String, dynamic> _$DocumentReferenceToJson(DocumentReference instance) =>
 DocumentReference_RelatesTo _$DocumentReference_RelatesToFromJson(
     Map<String, dynamic> json) {
   return DocumentReference_RelatesTo(
-    json['target'] == null
-        ? null
-        : Reference.fromJson(json['target'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -679,6 +584,9 @@ DocumentReference_RelatesTo _$DocumentReference_RelatesToFromJson(
     elementCode: json['elementCode'] == null
         ? null
         : Element.fromJson(json['elementCode'] as Map<String, dynamic>),
+    target: json['target'] == null
+        ? null
+        : Reference.fromJson(json['target'] as Map<String, dynamic>),
   );
 }
 
@@ -697,9 +605,6 @@ Map<String, dynamic> _$DocumentReference_RelatesToToJson(
 DocumentReference_Content _$DocumentReference_ContentFromJson(
     Map<String, dynamic> json) {
   return DocumentReference_Content(
-    json['attachment'] == null
-        ? null
-        : Attachment.fromJson(json['attachment'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -709,6 +614,9 @@ DocumentReference_Content _$DocumentReference_ContentFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    attachment: json['attachment'] == null
+        ? null
+        : Attachment.fromJson(json['attachment'] as Map<String, dynamic>),
     format: json['format'] == null
         ? null
         : Coding.fromJson(json['format'] as Map<String, dynamic>),

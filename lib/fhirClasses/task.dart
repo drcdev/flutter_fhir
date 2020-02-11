@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/dosage.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
@@ -41,254 +44,202 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 195)
 class Task {
 
-  //  This is a Task resource
+	static Future<Task> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Identifier> identifier,
+		String instantiatesCanonical,
+		String instantiatesUri,
+		Element elementInstantiatesUri,
+		List<Reference> basedOn,
+		Identifier groupIdentifier,
+		List<Reference> partOf,
+		String status,
+		Element elementStatus,
+		CodeableConcept statusReason,
+		CodeableConcept businessStatus,
+		String intent,
+		Element elementIntent,
+		String priority,
+		Element elementPriority,
+		CodeableConcept code,
+		String description,
+		Element elementDescription,
+		Reference focus,
+		Reference fore,
+		Reference encounter,
+		Period executionPeriod,
+		DateTime authoredOn,
+		Element elementAuthoredOn,
+		DateTime lastModified,
+		Element elementLastModified,
+		Reference requester,
+		List<CodeableConcept> performerType,
+		Reference owner,
+		Reference location,
+		CodeableConcept reasonCode,
+		Reference reasonReference,
+		List<Reference> insurance,
+		List<Annotation> note,
+		List<Reference> relevantHistory,
+		Task_Restriction restriction,
+		List<Task_Input> input,
+		List<Task_Output> output}) async {
+	 return Task(
+			id: await newEntry('Task'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			instantiatesCanonical: instantiatesCanonical,
+			instantiatesUri: instantiatesUri,
+			elementInstantiatesUri: elementInstantiatesUri,
+			basedOn: basedOn,
+			groupIdentifier: groupIdentifier,
+			partOf: partOf,
+			status: status,
+			elementStatus: elementStatus,
+			statusReason: statusReason,
+			businessStatus: businessStatus,
+			intent: intent,
+			elementIntent: elementIntent,
+			priority: priority,
+			elementPriority: elementPriority,
+			code: code,
+			description: description,
+			elementDescription: elementDescription,
+			focus: focus,
+			fore: fore,
+			encounter: encounter,
+			executionPeriod: executionPeriod,
+			authoredOn: authoredOn,
+			elementAuthoredOn: elementAuthoredOn,
+			lastModified: lastModified,
+			elementLastModified: elementLastModified,
+			requester: requester,
+			performerType: performerType,
+			owner: owner,
+			location: location,
+			reasonCode: reasonCode,
+			reasonReference: reasonReference,
+			insurance: insurance,
+			note: note,
+			relevantHistory: relevantHistory,
+			restriction: restriction,
+			input: input,
+			output: output);
+	}
+
   @HiveField(0)
   final String resourceType= 'Task';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  The business identifier for this task.
   @HiveField(11)
   List<Identifier> identifier;
-
-  //  The URL pointing to a *FHIR*-defined protocol, guideline, orderset or
-  // other definition that is adhered to in whole or in part by this Task.
   @HiveField(12)
   String instantiatesCanonical;
-
-  //  The URL pointing to an *externally* maintained  protocol, guideline,
-  // orderset or other definition that is adhered to in whole or in part by
-  // this Task.
   @HiveField(13)
   String instantiatesUri;
-
-  //  Extensions for instantiatesUri
   @HiveField(14)
   Element elementInstantiatesUri;
-
-  //  BasedOn refers to a higher-level authorization that triggered the
-  // creation of the task.  It references a "request" resource such as a
-  // ServiceRequest, MedicationRequest, ServiceRequest, CarePlan, etc. which
-  // is distinct from the "request" resource the task is seeking to fulfill.
-  //  This latter resource is referenced by FocusOn.  For example, based on
-  // a ServiceRequest (= BasedOn), a task is created to fulfill a
-  // procedureRequest ( = FocusOn ) to collect a specimen from a patient.
   @HiveField(15)
   List<Reference> basedOn;
-
-  //  An identifier that links together multiple tasks and other requests
-  // that were created in the same context.
   @HiveField(16)
   Identifier groupIdentifier;
-
-  //  Task that this particular task is part of.
   @HiveField(17)
   List<Reference> partOf;
-
-  //  The current status of the task.
   @HiveField(18)
   String status; // <code> enum: draft/requested/received/accepted/rejected/ready/cancelled/in-progress/on-hold/failed/completed/entered-in-error;
-
-  //  Extensions for status
   @HiveField(19)
   Element elementStatus;
-
-  //  An explanation as to why this task is held, failed, was refused, etc.
   @HiveField(20)
   CodeableConcept statusReason;
-
-  //  Contains business-specific nuances of the business state.
   @HiveField(21)
   CodeableConcept businessStatus;
-
-  //  Indicates the "level" of actionability associated with the Task, i.e.
-  // i+R[9]Cs this a proposed task, a planned task, an actionable task, etc.
   @HiveField(22)
   String intent; // <code> enum: unknown/proposal/plan/order/original-order/reflex-order/filler-order/instance-order/option;
-
-  //  Extensions for intent
   @HiveField(23)
   Element elementIntent;
-
-  //  Indicates how quickly the Task should be addressed with respect to
-  // other requests.
   @HiveField(24)
   String priority;
-
-  //  Extensions for priority
   @HiveField(25)
   Element elementPriority;
-
-  //  A name or code (or both) briefly describing what the task involves.
   @HiveField(26)
   CodeableConcept code;
-
-  //  A free-text description of what is to be performed.
   @HiveField(27)
   String description;
-
-  //  Extensions for description
   @HiveField(28)
   Element elementDescription;
-
-  //  The request being actioned or the resource being manipulated by this
-  // task.
   @HiveField(29)
   Reference focus;
-
-  //  The entity who benefits from the performance of the service specified
-  // in the task (e.g., the patient).
   @HiveField(30)
   Reference fore;
-
-  //  The healthcare event  (e.g. a patient and healthcare provider
-  // interaction) during which this task was created.
   @HiveField(31)
   Reference encounter;
-
-  //  Identifies the time action was first taken against the task (start)
-  // and/or the time final action was taken against the task prior to
-  // marking it as completed (end).
   @HiveField(32)
   Period executionPeriod;
-
-  //  The date and time this task was created.
   @HiveField(33)
   DateTime authoredOn;
-
-  //  Extensions for authoredOn
   @HiveField(34)
   Element elementAuthoredOn;
-
-  //  The date and time of last modification to this task.
   @HiveField(35)
   DateTime lastModified;
-
-  //  Extensions for lastModified
   @HiveField(36)
   Element elementLastModified;
-
-  //  The creator of the task.
   @HiveField(37)
   Reference requester;
-
-  //  The kind of participant that should perform the task.
   @HiveField(38)
   List<CodeableConcept> performerType;
-
-  //  Individual organization or Device currently responsible for task
-  // execution.
   @HiveField(39)
   Reference owner;
-
-  //  Principal physical location where the this task is performed.
   @HiveField(40)
   Reference location;
-
-  //  A description or code indicating why this task needs to be performed.
   @HiveField(41)
   CodeableConcept reasonCode;
-
-  //  A resource reference indicating why this task needs to be performed.
   @HiveField(42)
   Reference reasonReference;
-
-  //  Insurance plans, coverage extensions, pre-authorizations and/or
-  // pre-determinations that may be relevant to the Task.
   @HiveField(43)
   List<Reference> insurance;
-
-  //  Free-text information captured about the task as it progresses.
   @HiveField(44)
   List<Annotation> note;
-
-  //  Links to Provenance records for past versions of this Task that
-  // identify key state transitions or updates that are likely to be
-  // relevant to a user looking at the current version of the task.
   @HiveField(45)
   List<Reference> relevantHistory;
-
-  //  If the Task.focus is a request resource and the task is seeking
-  // fulfillment (i.e. is asking for the request to be actioned), this
-  // element identifies any limitations on what parts of the referenced
-  // request should be actioned.
   @HiveField(46)
   Task_Restriction restriction;
-
-  //  Additional information that may be needed in the execution of the
-  // task.
   @HiveField(47)
   List<Task_Input> input;
-
-  //  Outputs produced by the Task.
   @HiveField(48)
   List<Task_Output> output;
 
@@ -350,43 +301,30 @@ Task(
 @JsonSerializable(explicitToJson: true)
 class Task_Restriction {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Task_Restriction> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		int repetitions,
+		Element elementRepetitions,
+		Period period,
+		List<Reference> recipient}) async {
+	 return Task_Restriction(
+			id: await newEntry('Task_Restriction'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			repetitions: repetitions,
+			elementRepetitions: elementRepetitions,
+			period: period,
+			recipient: recipient);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Indicates the number of times the requested action should occur.
   int repetitions;
-
-  //  Extensions for repetitions
   Element elementRepetitions;
-
-  //  Over what time-period is fulfillment sought.
   Period period;
-
-  //  For requests that are targeted to more than on potential
-  // recipient/target, for whom is fulfillment sought?
   List<Reference> recipient;
 
 Task_Restriction(
@@ -406,248 +344,235 @@ Task_Restriction(
 @JsonSerializable(explicitToJson: true)
 class Task_Input {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Task_Input> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept type,
+		String valueBase64Binary,
+		Element elementValueBase64Binary,
+		bool valueBoolean,
+		Element elementValueBoolean,
+		String valueCanonical,
+		Element elementValueCanonical,
+		String valueCode,
+		Element elementValueCode,
+		String valueDate,
+		Element elementValueDate,
+		String valueDateTime,
+		Element elementValueDateTime,
+		double valueDecimal,
+		Element elementValueDecimal,
+		String valueId,
+		Element elementValueId,
+		String valueInstant,
+		Element elementValueInstant,
+		int valueInteger,
+		Element elementValueInteger,
+		String valueMarkdown,
+		Element elementValueMarkdown,
+		String valueOid,
+		Element elementValueOid,
+		int valuePositiveInt,
+		Element elementValuePositiveInt,
+		String valueString,
+		Element elementValueString,
+		String valueTime,
+		Element elementValueTime,
+		int valueUnsignedInt,
+		Element elementValueUnsignedInt,
+		String valueUri,
+		Element elementValueUri,
+		String valueUrl,
+		Element elementValueUrl,
+		String valueUuid,
+		Element elementValueUuid,
+		Address valueAddress,
+		Age valueAge,
+		Annotation valueAnnotation,
+		Attachment valueAttachment,
+		CodeableConcept valueCodeableConcept,
+		Coding valueCoding,
+		ContactPoint valueContactPoint,
+		Count valueCount,
+		Distance valueDistance,
+		Duration valueDuration,
+		HumanName valueHumanName,
+		Identifier valueIdentifier,
+		Money valueMoney,
+		Period valuePeriod,
+		Quantity valueQuantity,
+		Range valueRange,
+		Ratio valueRatio,
+		Reference valueReference,
+		SampledData valueSampledData,
+		Signature valueSignature,
+		Timing valueTiming,
+		ContactDetail valueContactDetail,
+		Contributor valueContributor,
+		DataRequirement valueDataRequirement,
+		Expression valueExpression,
+		ParameterDefinition valueParameterDefinition,
+		RelatedArtifact valueRelatedArtifact,
+		TriggerDefinition valueTriggerDefinition,
+		UsageContext valueUsageContext,
+		Dosage valueDosage,
+		Meta valueMeta}) async {
+	 return Task_Input(
+			id: await newEntry('Task_Input'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			type: type,
+			valueBase64Binary: valueBase64Binary,
+			elementValueBase64Binary: elementValueBase64Binary,
+			valueBoolean: valueBoolean,
+			elementValueBoolean: elementValueBoolean,
+			valueCanonical: valueCanonical,
+			elementValueCanonical: elementValueCanonical,
+			valueCode: valueCode,
+			elementValueCode: elementValueCode,
+			valueDate: valueDate,
+			elementValueDate: elementValueDate,
+			valueDateTime: valueDateTime,
+			elementValueDateTime: elementValueDateTime,
+			valueDecimal: valueDecimal,
+			elementValueDecimal: elementValueDecimal,
+			valueId: valueId,
+			elementValueId: elementValueId,
+			valueInstant: valueInstant,
+			elementValueInstant: elementValueInstant,
+			valueInteger: valueInteger,
+			elementValueInteger: elementValueInteger,
+			valueMarkdown: valueMarkdown,
+			elementValueMarkdown: elementValueMarkdown,
+			valueOid: valueOid,
+			elementValueOid: elementValueOid,
+			valuePositiveInt: valuePositiveInt,
+			elementValuePositiveInt: elementValuePositiveInt,
+			valueString: valueString,
+			elementValueString: elementValueString,
+			valueTime: valueTime,
+			elementValueTime: elementValueTime,
+			valueUnsignedInt: valueUnsignedInt,
+			elementValueUnsignedInt: elementValueUnsignedInt,
+			valueUri: valueUri,
+			elementValueUri: elementValueUri,
+			valueUrl: valueUrl,
+			elementValueUrl: elementValueUrl,
+			valueUuid: valueUuid,
+			elementValueUuid: elementValueUuid,
+			valueAddress: valueAddress,
+			valueAge: valueAge,
+			valueAnnotation: valueAnnotation,
+			valueAttachment: valueAttachment,
+			valueCodeableConcept: valueCodeableConcept,
+			valueCoding: valueCoding,
+			valueContactPoint: valueContactPoint,
+			valueCount: valueCount,
+			valueDistance: valueDistance,
+			valueDuration: valueDuration,
+			valueHumanName: valueHumanName,
+			valueIdentifier: valueIdentifier,
+			valueMoney: valueMoney,
+			valuePeriod: valuePeriod,
+			valueQuantity: valueQuantity,
+			valueRange: valueRange,
+			valueRatio: valueRatio,
+			valueReference: valueReference,
+			valueSampledData: valueSampledData,
+			valueSignature: valueSignature,
+			valueTiming: valueTiming,
+			valueContactDetail: valueContactDetail,
+			valueContributor: valueContributor,
+			valueDataRequirement: valueDataRequirement,
+			valueExpression: valueExpression,
+			valueParameterDefinition: valueParameterDefinition,
+			valueRelatedArtifact: valueRelatedArtifact,
+			valueTriggerDefinition: valueTriggerDefinition,
+			valueUsageContext: valueUsageContext,
+			valueDosage: valueDosage,
+			valueMeta: valueMeta);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A code or description indicating how the input is intended to be used
-  // as part of the task execution.
   CodeableConcept type;
-
-  //  The value of the input parameter as a basic type.
   String valueBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
-
-  //  Extensions for valueBase64Binary
   Element elementValueBase64Binary;
-
-  //  The value of the input parameter as a basic type.
   bool valueBoolean; //  pattern: ^true|false$
-
-  //  Extensions for valueBoolean
   Element elementValueBoolean;
-
-  //  The value of the input parameter as a basic type.
   String valueCanonical; //  pattern: ^\S*$
-
-  //  Extensions for valueCanonical
   Element elementValueCanonical;
-
-  //  The value of the input parameter as a basic type.
   String valueCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
-
-  //  Extensions for valueCode
   Element elementValueCode;
-
-  //  The value of the input parameter as a basic type.
   String valueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
-
-  //  Extensions for valueDate
   Element elementValueDate;
-
-  //  The value of the input parameter as a basic type.
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for valueDateTime
   Element elementValueDateTime;
-
-  //  The value of the input parameter as a basic type.
   double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
-
-  //  Extensions for valueDecimal
   Element elementValueDecimal;
-
-  //  The value of the input parameter as a basic type.
   String valueId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
-
-  //  Extensions for valueId
   Element elementValueId;
-
-  //  The value of the input parameter as a basic type.
   String valueInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
-
-  //  Extensions for valueInstant
   Element elementValueInstant;
-
-  //  The value of the input parameter as a basic type.
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
-
-  //  Extensions for valueInteger
   Element elementValueInteger;
-
-  //  The value of the input parameter as a basic type.
   String valueMarkdown; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for valueMarkdown
   Element elementValueMarkdown;
-
-  //  The value of the input parameter as a basic type.
   String valueOid; //  pattern: ^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$
-
-  //  Extensions for valueOid
   Element elementValueOid;
-
-  //  The value of the input parameter as a basic type.
   int valuePositiveInt; //  pattern: ^[1-9][0-9]*$
-
-  //  Extensions for valuePositiveInt
   Element elementValuePositiveInt;
-
-  //  The value of the input parameter as a basic type.
   String valueString; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for valueString
   Element elementValueString;
-
-  //  The value of the input parameter as a basic type.
   String valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
-
-  //  Extensions for valueTime
   Element elementValueTime;
-
-  //  The value of the input parameter as a basic type.
   int valueUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
-
-  //  Extensions for valueUnsignedInt
   Element elementValueUnsignedInt;
-
-  //  The value of the input parameter as a basic type.
   String valueUri; //  pattern: ^\S*$
-
-  //  Extensions for valueUri
   Element elementValueUri;
-
-  //  The value of the input parameter as a basic type.
   String valueUrl; //  pattern: ^\S*$
-
-  //  Extensions for valueUrl
   Element elementValueUrl;
-
-  //  The value of the input parameter as a basic type.
   String valueUuid; //  pattern: ^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
-
-  //  Extensions for valueUuid
   Element elementValueUuid;
-
-  //  The value of the input parameter as a basic type.
   Address valueAddress;
-
-  //  The value of the input parameter as a basic type.
   Age valueAge;
-
-  //  The value of the input parameter as a basic type.
   Annotation valueAnnotation;
-
-  //  The value of the input parameter as a basic type.
   Attachment valueAttachment;
-
-  //  The value of the input parameter as a basic type.
   CodeableConcept valueCodeableConcept;
-
-  //  The value of the input parameter as a basic type.
   Coding valueCoding;
-
-  //  The value of the input parameter as a basic type.
   ContactPoint valueContactPoint;
-
-  //  The value of the input parameter as a basic type.
   Count valueCount;
-
-  //  The value of the input parameter as a basic type.
   Distance valueDistance;
-
-  //  The value of the input parameter as a basic type.
   Duration valueDuration;
-
-  //  The value of the input parameter as a basic type.
   HumanName valueHumanName;
-
-  //  The value of the input parameter as a basic type.
   Identifier valueIdentifier;
-
-  //  The value of the input parameter as a basic type.
   Money valueMoney;
-
-  //  The value of the input parameter as a basic type.
   Period valuePeriod;
-
-  //  The value of the input parameter as a basic type.
   Quantity valueQuantity;
-
-  //  The value of the input parameter as a basic type.
   Range valueRange;
-
-  //  The value of the input parameter as a basic type.
   Ratio valueRatio;
-
-  //  The value of the input parameter as a basic type.
   Reference valueReference;
-
-  //  The value of the input parameter as a basic type.
   SampledData valueSampledData;
-
-  //  The value of the input parameter as a basic type.
   Signature valueSignature;
-
-  //  The value of the input parameter as a basic type.
   Timing valueTiming;
-
-  //  The value of the input parameter as a basic type.
   ContactDetail valueContactDetail;
-
-  //  The value of the input parameter as a basic type.
   Contributor valueContributor;
-
-  //  The value of the input parameter as a basic type.
   DataRequirement valueDataRequirement;
-
-  //  The value of the input parameter as a basic type.
   Expression valueExpression;
-
-  //  The value of the input parameter as a basic type.
   ParameterDefinition valueParameterDefinition;
-
-  //  The value of the input parameter as a basic type.
   RelatedArtifact valueRelatedArtifact;
-
-  //  The value of the input parameter as a basic type.
   TriggerDefinition valueTriggerDefinition;
-
-  //  The value of the input parameter as a basic type.
   UsageContext valueUsageContext;
-
-  //  The value of the input parameter as a basic type.
   Dosage valueDosage;
-
-  //  The value of the input parameter as a basic type.
   Meta valueMeta;
 
 Task_Input(
-  this.type,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
+    @required this.type,
     this.valueBase64Binary,
     this.elementValueBase64Binary,
     this.valueBoolean,
@@ -726,247 +651,235 @@ Task_Input(
 @JsonSerializable(explicitToJson: true)
 class Task_Output {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Task_Output> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept type,
+		String valueBase64Binary,
+		Element elementValueBase64Binary,
+		bool valueBoolean,
+		Element elementValueBoolean,
+		String valueCanonical,
+		Element elementValueCanonical,
+		String valueCode,
+		Element elementValueCode,
+		String valueDate,
+		Element elementValueDate,
+		String valueDateTime,
+		Element elementValueDateTime,
+		double valueDecimal,
+		Element elementValueDecimal,
+		String valueId,
+		Element elementValueId,
+		String valueInstant,
+		Element elementValueInstant,
+		int valueInteger,
+		Element elementValueInteger,
+		String valueMarkdown,
+		Element elementValueMarkdown,
+		String valueOid,
+		Element elementValueOid,
+		int valuePositiveInt,
+		Element elementValuePositiveInt,
+		String valueString,
+		Element elementValueString,
+		String valueTime,
+		Element elementValueTime,
+		int valueUnsignedInt,
+		Element elementValueUnsignedInt,
+		String valueUri,
+		Element elementValueUri,
+		String valueUrl,
+		Element elementValueUrl,
+		String valueUuid,
+		Element elementValueUuid,
+		Address valueAddress,
+		Age valueAge,
+		Annotation valueAnnotation,
+		Attachment valueAttachment,
+		CodeableConcept valueCodeableConcept,
+		Coding valueCoding,
+		ContactPoint valueContactPoint,
+		Count valueCount,
+		Distance valueDistance,
+		Duration valueDuration,
+		HumanName valueHumanName,
+		Identifier valueIdentifier,
+		Money valueMoney,
+		Period valuePeriod,
+		Quantity valueQuantity,
+		Range valueRange,
+		Ratio valueRatio,
+		Reference valueReference,
+		SampledData valueSampledData,
+		Signature valueSignature,
+		Timing valueTiming,
+		ContactDetail valueContactDetail,
+		Contributor valueContributor,
+		DataRequirement valueDataRequirement,
+		Expression valueExpression,
+		ParameterDefinition valueParameterDefinition,
+		RelatedArtifact valueRelatedArtifact,
+		TriggerDefinition valueTriggerDefinition,
+		UsageContext valueUsageContext,
+		Dosage valueDosage,
+		Meta valueMeta}) async {
+	 return Task_Output(
+			id: await newEntry('Task_Output'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			type: type,
+			valueBase64Binary: valueBase64Binary,
+			elementValueBase64Binary: elementValueBase64Binary,
+			valueBoolean: valueBoolean,
+			elementValueBoolean: elementValueBoolean,
+			valueCanonical: valueCanonical,
+			elementValueCanonical: elementValueCanonical,
+			valueCode: valueCode,
+			elementValueCode: elementValueCode,
+			valueDate: valueDate,
+			elementValueDate: elementValueDate,
+			valueDateTime: valueDateTime,
+			elementValueDateTime: elementValueDateTime,
+			valueDecimal: valueDecimal,
+			elementValueDecimal: elementValueDecimal,
+			valueId: valueId,
+			elementValueId: elementValueId,
+			valueInstant: valueInstant,
+			elementValueInstant: elementValueInstant,
+			valueInteger: valueInteger,
+			elementValueInteger: elementValueInteger,
+			valueMarkdown: valueMarkdown,
+			elementValueMarkdown: elementValueMarkdown,
+			valueOid: valueOid,
+			elementValueOid: elementValueOid,
+			valuePositiveInt: valuePositiveInt,
+			elementValuePositiveInt: elementValuePositiveInt,
+			valueString: valueString,
+			elementValueString: elementValueString,
+			valueTime: valueTime,
+			elementValueTime: elementValueTime,
+			valueUnsignedInt: valueUnsignedInt,
+			elementValueUnsignedInt: elementValueUnsignedInt,
+			valueUri: valueUri,
+			elementValueUri: elementValueUri,
+			valueUrl: valueUrl,
+			elementValueUrl: elementValueUrl,
+			valueUuid: valueUuid,
+			elementValueUuid: elementValueUuid,
+			valueAddress: valueAddress,
+			valueAge: valueAge,
+			valueAnnotation: valueAnnotation,
+			valueAttachment: valueAttachment,
+			valueCodeableConcept: valueCodeableConcept,
+			valueCoding: valueCoding,
+			valueContactPoint: valueContactPoint,
+			valueCount: valueCount,
+			valueDistance: valueDistance,
+			valueDuration: valueDuration,
+			valueHumanName: valueHumanName,
+			valueIdentifier: valueIdentifier,
+			valueMoney: valueMoney,
+			valuePeriod: valuePeriod,
+			valueQuantity: valueQuantity,
+			valueRange: valueRange,
+			valueRatio: valueRatio,
+			valueReference: valueReference,
+			valueSampledData: valueSampledData,
+			valueSignature: valueSignature,
+			valueTiming: valueTiming,
+			valueContactDetail: valueContactDetail,
+			valueContributor: valueContributor,
+			valueDataRequirement: valueDataRequirement,
+			valueExpression: valueExpression,
+			valueParameterDefinition: valueParameterDefinition,
+			valueRelatedArtifact: valueRelatedArtifact,
+			valueTriggerDefinition: valueTriggerDefinition,
+			valueUsageContext: valueUsageContext,
+			valueDosage: valueDosage,
+			valueMeta: valueMeta);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The name of the Output parameter.
   CodeableConcept type;
-
-  //  The value of the Output parameter as a basic type.
   String valueBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
-
-  //  Extensions for valueBase64Binary
   Element elementValueBase64Binary;
-
-  //  The value of the Output parameter as a basic type.
   bool valueBoolean; //  pattern: ^true|false$
-
-  //  Extensions for valueBoolean
   Element elementValueBoolean;
-
-  //  The value of the Output parameter as a basic type.
   String valueCanonical; //  pattern: ^\S*$
-
-  //  Extensions for valueCanonical
   Element elementValueCanonical;
-
-  //  The value of the Output parameter as a basic type.
   String valueCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
-
-  //  Extensions for valueCode
   Element elementValueCode;
-
-  //  The value of the Output parameter as a basic type.
   String valueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
-
-  //  Extensions for valueDate
   Element elementValueDate;
-
-  //  The value of the Output parameter as a basic type.
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for valueDateTime
   Element elementValueDateTime;
-
-  //  The value of the Output parameter as a basic type.
   double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
-
-  //  Extensions for valueDecimal
   Element elementValueDecimal;
-
-  //  The value of the Output parameter as a basic type.
   String valueId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
-
-  //  Extensions for valueId
   Element elementValueId;
-
-  //  The value of the Output parameter as a basic type.
   String valueInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
-
-  //  Extensions for valueInstant
   Element elementValueInstant;
-
-  //  The value of the Output parameter as a basic type.
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
-
-  //  Extensions for valueInteger
   Element elementValueInteger;
-
-  //  The value of the Output parameter as a basic type.
   String valueMarkdown; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for valueMarkdown
   Element elementValueMarkdown;
-
-  //  The value of the Output parameter as a basic type.
   String valueOid; //  pattern: ^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$
-
-  //  Extensions for valueOid
   Element elementValueOid;
-
-  //  The value of the Output parameter as a basic type.
   int valuePositiveInt; //  pattern: ^[1-9][0-9]*$
-
-  //  Extensions for valuePositiveInt
   Element elementValuePositiveInt;
-
-  //  The value of the Output parameter as a basic type.
   String valueString; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for valueString
   Element elementValueString;
-
-  //  The value of the Output parameter as a basic type.
   String valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
-
-  //  Extensions for valueTime
   Element elementValueTime;
-
-  //  The value of the Output parameter as a basic type.
   int valueUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
-
-  //  Extensions for valueUnsignedInt
   Element elementValueUnsignedInt;
-
-  //  The value of the Output parameter as a basic type.
   String valueUri; //  pattern: ^\S*$
-
-  //  Extensions for valueUri
   Element elementValueUri;
-
-  //  The value of the Output parameter as a basic type.
   String valueUrl; //  pattern: ^\S*$
-
-  //  Extensions for valueUrl
   Element elementValueUrl;
-
-  //  The value of the Output parameter as a basic type.
   String valueUuid; //  pattern: ^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
-
-  //  Extensions for valueUuid
   Element elementValueUuid;
-
-  //  The value of the Output parameter as a basic type.
   Address valueAddress;
-
-  //  The value of the Output parameter as a basic type.
   Age valueAge;
-
-  //  The value of the Output parameter as a basic type.
   Annotation valueAnnotation;
-
-  //  The value of the Output parameter as a basic type.
   Attachment valueAttachment;
-
-  //  The value of the Output parameter as a basic type.
   CodeableConcept valueCodeableConcept;
-
-  //  The value of the Output parameter as a basic type.
   Coding valueCoding;
-
-  //  The value of the Output parameter as a basic type.
   ContactPoint valueContactPoint;
-
-  //  The value of the Output parameter as a basic type.
   Count valueCount;
-
-  //  The value of the Output parameter as a basic type.
   Distance valueDistance;
-
-  //  The value of the Output parameter as a basic type.
   Duration valueDuration;
-
-  //  The value of the Output parameter as a basic type.
   HumanName valueHumanName;
-
-  //  The value of the Output parameter as a basic type.
   Identifier valueIdentifier;
-
-  //  The value of the Output parameter as a basic type.
   Money valueMoney;
-
-  //  The value of the Output parameter as a basic type.
   Period valuePeriod;
-
-  //  The value of the Output parameter as a basic type.
   Quantity valueQuantity;
-
-  //  The value of the Output parameter as a basic type.
   Range valueRange;
-
-  //  The value of the Output parameter as a basic type.
   Ratio valueRatio;
-
-  //  The value of the Output parameter as a basic type.
   Reference valueReference;
-
-  //  The value of the Output parameter as a basic type.
   SampledData valueSampledData;
-
-  //  The value of the Output parameter as a basic type.
   Signature valueSignature;
-
-  //  The value of the Output parameter as a basic type.
   Timing valueTiming;
-
-  //  The value of the Output parameter as a basic type.
   ContactDetail valueContactDetail;
-
-  //  The value of the Output parameter as a basic type.
   Contributor valueContributor;
-
-  //  The value of the Output parameter as a basic type.
   DataRequirement valueDataRequirement;
-
-  //  The value of the Output parameter as a basic type.
   Expression valueExpression;
-
-  //  The value of the Output parameter as a basic type.
   ParameterDefinition valueParameterDefinition;
-
-  //  The value of the Output parameter as a basic type.
   RelatedArtifact valueRelatedArtifact;
-
-  //  The value of the Output parameter as a basic type.
   TriggerDefinition valueTriggerDefinition;
-
-  //  The value of the Output parameter as a basic type.
   UsageContext valueUsageContext;
-
-  //  The value of the Output parameter as a basic type.
   Dosage valueDosage;
-
-  //  The value of the Output parameter as a basic type.
   Meta valueMeta;
 
 Task_Output(
-  this.type,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
+    @required this.type,
     this.valueBase64Binary,
     this.elementValueBase64Binary,
     this.valueBoolean,
@@ -1461,9 +1374,6 @@ Map<String, dynamic> _$Task_RestrictionToJson(Task_Restriction instance) =>
 
 Task_Input _$Task_InputFromJson(Map<String, dynamic> json) {
   return Task_Input(
-    json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1473,6 +1383,9 @@ Task_Input _$Task_InputFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    type: json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     valueBase64Binary: json['valueBase64Binary'] as String,
     elementValueBase64Binary: json['elementValueBase64Binary'] == null
         ? null
@@ -1741,9 +1654,6 @@ Map<String, dynamic> _$Task_InputToJson(Task_Input instance) =>
 
 Task_Output _$Task_OutputFromJson(Map<String, dynamic> json) {
   return Task_Output(
-    json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1753,6 +1663,9 @@ Task_Output _$Task_OutputFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    type: json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     valueBase64Binary: json['valueBase64Binary'] as String,
     elementValueBase64Binary: json['elementValueBase64Binary'] == null
         ? null

@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -16,296 +17,222 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 77)
 class CodeSystem {
 
-  //  This is a CodeSystem resource
+	static Future<CodeSystem> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String url,
+		Element elementUrl,
+		List<Identifier> identifier,
+		String version,
+		Element elementVersion,
+		String name,
+		Element elementName,
+		String title,
+		Element elementTitle,
+		String status,
+		Element elementStatus,
+		bool experimental,
+		Element elementExperimental,
+		DateTime date,
+		Element elementDate,
+		String publisher,
+		Element elementPublisher,
+		List<ContactDetail> contact,
+		String description,
+		Element elementDescription,
+		List<UsageContext> useContext,
+		List<CodeableConcept> jurisdiction,
+		String purpose,
+		Element elementPurpose,
+		String copyright,
+		Element elementCopyright,
+		bool caseSensitive,
+		Element elementCaseSensitive,
+		String valueSet,
+		String hierarchyMeaning,
+		Element elementHierarchyMeaning,
+		bool compositional,
+		Element elementCompositional,
+		bool versionNeeded,
+		Element elementVersionNeeded,
+		String content,
+		Element elementContent,
+		String supplements,
+		int count,
+		Element elementCount,
+		List<CodeSystem_Filter> filter,
+		List<CodeSystem_Property> property,
+		List<CodeSystem_Concept> concept}) async {
+	 return CodeSystem(
+			id: await newEntry('CodeSystem'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			url: url,
+			elementUrl: elementUrl,
+			identifier: identifier,
+			version: version,
+			elementVersion: elementVersion,
+			name: name,
+			elementName: elementName,
+			title: title,
+			elementTitle: elementTitle,
+			status: status,
+			elementStatus: elementStatus,
+			experimental: experimental,
+			elementExperimental: elementExperimental,
+			date: date,
+			elementDate: elementDate,
+			publisher: publisher,
+			elementPublisher: elementPublisher,
+			contact: contact,
+			description: description,
+			elementDescription: elementDescription,
+			useContext: useContext,
+			jurisdiction: jurisdiction,
+			purpose: purpose,
+			elementPurpose: elementPurpose,
+			copyright: copyright,
+			elementCopyright: elementCopyright,
+			caseSensitive: caseSensitive,
+			elementCaseSensitive: elementCaseSensitive,
+			valueSet: valueSet,
+			hierarchyMeaning: hierarchyMeaning,
+			elementHierarchyMeaning: elementHierarchyMeaning,
+			compositional: compositional,
+			elementCompositional: elementCompositional,
+			versionNeeded: versionNeeded,
+			elementVersionNeeded: elementVersionNeeded,
+			content: content,
+			elementContent: elementContent,
+			supplements: supplements,
+			count: count,
+			elementCount: elementCount,
+			filter: filter,
+			property: property,
+			concept: concept);
+	}
+
   @HiveField(0)
   final String resourceType= 'CodeSystem';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  An absolute URI that is used to identify this code system when it is
-  // referenced in a specification, model, design or an instance; also
-  // called its canonical identifier. This SHOULD be globally unique and
-  // SHOULD be a literal address at which at which an authoritative instance
-  // of this code system is (or will be) published. This URL can be the
-  // target of a canonical reference. It SHALL remain the same when the code
-  // system is stored on different servers. This is used in
-  // [Coding](datatypes.html#Coding).system.
   @HiveField(11)
   String url;
-
-  //  Extensions for url
   @HiveField(12)
   Element elementUrl;
-
-  //  A formal identifier that is used to identify this code system when it
-  // is represented in other formats, or referenced in a specification,
-  // model, design or an instance.
   @HiveField(13)
   List<Identifier> identifier;
-
-  //  The identifier that is used to identify this version of the code
-  // system when it is referenced in a specification, model, design or
-  // instance. This is an arbitrary value managed by the code system author
-  // and is not expected to be globally unique. For example, it might be a
-  // timestamp (e.g. yyyymmdd) if a managed version is not available. There
-  // is also no expectation that versions can be placed in a lexicographical
-  // sequence. This is used in [Coding](datatypes.html#Coding).version.
   @HiveField(14)
   String version;
-
-  //  Extensions for version
   @HiveField(15)
   Element elementVersion;
-
-  //  A natural language name identifying the code system. This name should
-  // be usable as an identifier for the module by machine processing
-  // applications such as code generation.
   @HiveField(16)
   String name;
-
-  //  Extensions for name
   @HiveField(17)
   Element elementName;
-
-  //  A short, descriptive, user-friendly title for the code system.
   @HiveField(18)
   String title;
-
-  //  Extensions for title
   @HiveField(19)
   Element elementTitle;
-
-  //  The date (and optionally time) when the code system resource was
-  // created or revised.
   @HiveField(20)
   String status; // <code> enum: draft/active/retired/unknown;
-
-  //  Extensions for status
   @HiveField(21)
   Element elementStatus;
-
-  //  A Boolean value to indicate that this code system is authored for
-  // testing purposes (or education/evaluation/marketing) and is not
-  // intended to be used for genuine usage.
   @HiveField(22)
   bool experimental;
-
-  //  Extensions for experimental
   @HiveField(23)
   Element elementExperimental;
-
-  //  The date  (and optionally time) when the code system was published.
-  // The date must change when the business version changes and it must
-  // change if the status code changes. In addition, it should change when
-  // the substantive content of the code system changes.
   @HiveField(24)
   DateTime date;
-
-  //  Extensions for date
   @HiveField(25)
   Element elementDate;
-
-  //  The name of the organization or individual that published the code
-  // system.
   @HiveField(26)
   String publisher;
-
-  //  Extensions for publisher
   @HiveField(27)
   Element elementPublisher;
-
-  //  Contact details to assist a user in finding and communicating with the
-  // publisher.
   @HiveField(28)
   List<ContactDetail> contact;
-
-  //  A free text natural language description of the code system from a
-  // consumer's perspective.
   @HiveField(29)
   String description;
-
-  //  Extensions for description
   @HiveField(30)
   Element elementDescription;
-
-  //  The content was developed with a focus and intent of supporting the
-  // contexts that are listed. These contexts may be general categories
-  // (gender, age, ...) or may be references to specific programs (insurance
-  // plans, studies, ...) and may be used to assist with indexing and
-  // searching for appropriate code system instances.
   @HiveField(31)
   List<UsageContext> useContext;
-
-  //  A legal or geographic region in which the code system is intended to
-  // be used.
   @HiveField(32)
   List<CodeableConcept> jurisdiction;
-
-  //  Explanation of why this code system is needed and why it has been
-  // designed as it has.
   @HiveField(33)
   String purpose;
-
-  //  Extensions for purpose
   @HiveField(34)
   Element elementPurpose;
-
-  //  A copyright statement relating to the code system and/or its contents.
-  // Copyright statements are generally legal restrictions on the use and
-  // publishing of the code system.
   @HiveField(35)
   String copyright;
-
-  //  Extensions for copyright
   @HiveField(36)
   Element elementCopyright;
-
-  //  If code comparison is case sensitive when codes within this system are
-  // compared to each other.
   @HiveField(37)
   bool caseSensitive;
-
-  //  Extensions for caseSensitive
   @HiveField(38)
   Element elementCaseSensitive;
-
-  //  Canonical reference to the value set that contains the entire code
-  // system.
   @HiveField(39)
   String valueSet;
-
-  //  The meaning of the hierarchy of concepts as represented in this
-  // resource.
   @HiveField(40)
   String hierarchyMeaning; // <code> enum: grouped-by/is-a/part-of/classified-with;
-
-  //  Extensions for hierarchyMeaning
   @HiveField(41)
   Element elementHierarchyMeaning;
-
-  //  The code system defines a compositional (post-coordination) grammar.
   @HiveField(42)
   bool compositional;
-
-  //  Extensions for compositional
   @HiveField(43)
   Element elementCompositional;
-
-  //  This flag is used to signify that the code system does not commit to
-  // concept permanence across versions. If true, a version must be
-  // specified when referencing this code system.
   @HiveField(44)
   bool versionNeeded;
-
-  //  Extensions for versionNeeded
   @HiveField(45)
   Element elementVersionNeeded;
-
-  //  The extent of the content of the code system (the concepts and codes
-  // it defines) are represented in this resource instance.
   @HiveField(46)
   String content; // <code> enum: not-present/example/fragment/complete/supplement;
-
-  //  Extensions for content
   @HiveField(47)
   Element elementContent;
-
-  //  The canonical URL of the code system that this code system supplement
-  // is adding designations and properties to.
   @HiveField(48)
   String supplements;
-
-  //  The total number of concepts defined by the code system. Where the
-  // code system has a compositional grammar, the basis of this count is
-  // defined by the system steward.
   @HiveField(49)
   int count;
-
-  //  Extensions for count
   @HiveField(50)
   Element elementCount;
-
-  //  A filter that can be used in a value set compose statement when
-  // selecting concepts using a filter.
   @HiveField(51)
   List<CodeSystem_Filter> filter;
-
-  //  A property defines an additional slot through which additional
-  // information can be provided about a concept.
   @HiveField(52)
   List<CodeSystem_Property> property;
-
-  //  Concepts that are in the code system. The concept definitions are
-  // inherently hierarchical, but the definitions must be consulted to
-  // determine what the meanings of the hierarchical relationships are.
   @HiveField(53)
   List<CodeSystem_Concept> concept;
 
@@ -372,55 +299,42 @@ CodeSystem(
 @JsonSerializable(explicitToJson: true)
 class CodeSystem_Filter {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<CodeSystem_Filter> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String code,
+		Element elementCode,
+		String description,
+		Element elementDescription,
+		List<String> operator,
+		List<Element> elementOperator,
+		String value,
+		Element elementValue}) async {
+	 return CodeSystem_Filter(
+			id: await newEntry('CodeSystem_Filter'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			code: code,
+			elementCode: elementCode,
+			description: description,
+			elementDescription: elementDescription,
+			operator: operator,
+			elementOperator: elementOperator,
+			value: value,
+			elementValue: elementValue);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The code that identifies this filter when it is used as a filter in
-  // [[[ValueSet]]].compose.include.filter.
   String code;
-
-  //  Extensions for code
   Element elementCode;
-
-  //  A description of how or why the filter is used.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  A list of operators that can be used with the filter.
   List<String> operator;
-
-  //  Extensions for operator
   List<Element> elementOperator;
-
-  //  A description of what the value for the filter should be.
   String value;
-
-  //  Extensions for value
   Element elementValue;
 
 CodeSystem_Filter(
@@ -444,61 +358,42 @@ CodeSystem_Filter(
 @JsonSerializable(explicitToJson: true)
 class CodeSystem_Property {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<CodeSystem_Property> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String code,
+		Element elementCode,
+		String uri,
+		Element elementUri,
+		String description,
+		Element elementDescription,
+		String type,
+		Element elementType}) async {
+	 return CodeSystem_Property(
+			id: await newEntry('CodeSystem_Property'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			code: code,
+			elementCode: elementCode,
+			uri: uri,
+			elementUri: elementUri,
+			description: description,
+			elementDescription: elementDescription,
+			type: type,
+			elementType: elementType);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A code that is used to identify the property. The code is used
-  // internally (in CodeSystem.concept.property.code) and also externally,
-  // such as in property filters.
   String code;
-
-  //  Extensions for code
   Element elementCode;
-
-  //  Reference to the formal meaning of the property. One possible source
-  // of meaning is the [Concept
-  // Properties](codesystem-concept-properties.html) code system.
   String uri;
-
-  //  Extensions for uri
   Element elementUri;
-
-  //  A description of the property- why it is defined, and how its value
-  // might be used.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  The type of the property value. Properties of type "code" contain a
-  // code defined by the code system (e.g. a reference to another defined
-  // concept).
   String type; // <code> enum: code/Coding/string/integer/boolean/dateTime/decimal;
-
-  //  Extensions for type
   Element elementType;
 
 CodeSystem_Property(
@@ -522,65 +417,45 @@ CodeSystem_Property(
 @JsonSerializable(explicitToJson: true)
 class CodeSystem_Concept {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<CodeSystem_Concept> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String code,
+		Element elementCode,
+		String display,
+		Element elementDisplay,
+		String definition,
+		Element elementDefinition,
+		List<CodeSystem_Designation> designation,
+		List<CodeSystem_Property1> property,
+		List<CodeSystem_Concept> concept}) async {
+	 return CodeSystem_Concept(
+			id: await newEntry('CodeSystem_Concept'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			code: code,
+			elementCode: elementCode,
+			display: display,
+			elementDisplay: elementDisplay,
+			definition: definition,
+			elementDefinition: elementDefinition,
+			designation: designation,
+			property: property,
+			concept: concept);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A code - a text symbol - that uniquely identifies the concept within
-  // the code system.
   String code;
-
-  //  Extensions for code
   Element elementCode;
-
-  //  A human readable string that is the recommended default way to present
-  // this concept to a user.
   String display;
-
-  //  Extensions for display
   Element elementDisplay;
-
-  //  The formal definition of the concept. The code system resource does
-  // not make formal definitions required, because of the prevalence of
-  // legacy systems. However, they are highly recommended, as without them
-  // there is no formal meaning associated with the concept.
   String definition;
-
-  //  Extensions for definition
   Element elementDefinition;
-
-  //  Additional representations for the concept - other languages, aliases,
-  // specialized purposes, used for particular purposes, etc.
   List<CodeSystem_Designation> designation;
-
-  //  A property value for this concept.
   List<CodeSystem_Property1> property;
-
-  //  Defines children of a concept to produce a hierarchy of concepts. The
-  // nature of the relationships is variable (is-a/contains/categorizes) -
-  // see hierarchyMeaning.
   List<CodeSystem_Concept> concept;
 
 CodeSystem_Concept(
@@ -605,45 +480,33 @@ CodeSystem_Concept(
 @JsonSerializable(explicitToJson: true)
 class CodeSystem_Designation {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<CodeSystem_Designation> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String language,
+		Element elementLanguage,
+		Coding use,
+		String value,
+		Element elementValue}) async {
+	 return CodeSystem_Designation(
+			id: await newEntry('CodeSystem_Designation'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			language: language,
+			elementLanguage: elementLanguage,
+			use: use,
+			value: value,
+			elementValue: elementValue);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The language this designation is defined for.
   String language;
-
-  //  Extensions for language
   Element elementLanguage;
-
-  //  A code that details how this designation would be used.
   Coding use;
-
-  //  The text value for this designation.
   String value;
-
-  //  Extensions for value
   Element elementValue;
 
 CodeSystem_Designation(
@@ -664,75 +527,63 @@ CodeSystem_Designation(
 @JsonSerializable(explicitToJson: true)
 class CodeSystem_Property1 {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<CodeSystem_Property1> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String code,
+		Element elementCode,
+		String valueCode,
+		Element elementValueCode,
+		Coding valueCoding,
+		String valueString,
+		Element elementValueString,
+		int valueInteger,
+		Element elementValueInteger,
+		bool valueBoolean,
+		Element elementValueBoolean,
+		String valueDateTime,
+		Element elementValueDateTime,
+		double valueDecimal,
+		Element elementValueDecimal}) async {
+	 return CodeSystem_Property1(
+			id: await newEntry('CodeSystem_Property1'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			code: code,
+			elementCode: elementCode,
+			valueCode: valueCode,
+			elementValueCode: elementValueCode,
+			valueCoding: valueCoding,
+			valueString: valueString,
+			elementValueString: elementValueString,
+			valueInteger: valueInteger,
+			elementValueInteger: elementValueInteger,
+			valueBoolean: valueBoolean,
+			elementValueBoolean: elementValueBoolean,
+			valueDateTime: valueDateTime,
+			elementValueDateTime: elementValueDateTime,
+			valueDecimal: valueDecimal,
+			elementValueDecimal: elementValueDecimal);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A code that is a reference to CodeSystem.property.code.
   String code;
-
-  //  Extensions for code
   Element elementCode;
-
-  //  The value of this property.
   String valueCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
-
-  //  Extensions for valueCode
   Element elementValueCode;
-
-  //  The value of this property.
   Coding valueCoding;
-
-  //  The value of this property.
   String valueString; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for valueString
   Element elementValueString;
-
-  //  The value of this property.
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
-
-  //  Extensions for valueInteger
   Element elementValueInteger;
-
-  //  The value of this property.
   bool valueBoolean; //  pattern: ^true|false$
-
-  //  Extensions for valueBoolean
   Element elementValueBoolean;
-
-  //  The value of this property.
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for valueDateTime
   Element elementValueDateTime;
-
-  //  The value of this property.
   double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
-
-  //  Extensions for valueDecimal
   Element elementValueDecimal;
 
 CodeSystem_Property1(

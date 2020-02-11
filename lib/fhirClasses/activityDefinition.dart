@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/expression.dart';
 import 'package:flutter_fhir/fhirClasses/dosage.dart';
@@ -25,455 +28,342 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 57)
 class ActivityDefinition {
 
-  //  This is a ActivityDefinition resource
+	static Future<ActivityDefinition> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String url,
+		Element elementUrl,
+		List<Identifier> identifier,
+		String version,
+		Element elementVersion,
+		String name,
+		Element elementName,
+		String title,
+		Element elementTitle,
+		String subtitle,
+		Element elementSubtitle,
+		String status,
+		Element elementStatus,
+		bool experimental,
+		Element elementExperimental,
+		CodeableConcept subjectCodeableConcept,
+		Reference subjectReference,
+		DateTime date,
+		Element elementDate,
+		String publisher,
+		Element elementPublisher,
+		List<ContactDetail> contact,
+		String description,
+		Element elementDescription,
+		List<UsageContext> useContext,
+		List<CodeableConcept> jurisdiction,
+		String purpose,
+		Element elementPurpose,
+		String usage,
+		Element elementUsage,
+		String copyright,
+		Element elementCopyright,
+		String approvalDate,
+		Element elementApprovalDate,
+		String lastReviewDate,
+		Element elementLastReviewDate,
+		Period effectivePeriod,
+		List<CodeableConcept> topic,
+		List<ContactDetail> author,
+		List<ContactDetail> editor,
+		List<ContactDetail> reviewer,
+		List<ContactDetail> endorser,
+		List<RelatedArtifact> relatedArtifact,
+		List<String> library,
+		String kind,
+		Element elementKind,
+		String profile,
+		CodeableConcept code,
+		String intent,
+		Element elementIntent,
+		String priority,
+		Element elementPriority,
+		bool doNotPerform,
+		Element elementDoNotPerform,
+		Timing timingTiming,
+		String timingDateTime,
+		Element elementTimingDateTime,
+		Age timingAge,
+		Period timingPeriod,
+		Range timingRange,
+		Duration timingDuration,
+		Reference location,
+		List<ActivityDefinition_Participant> participant,
+		Reference productReference,
+		CodeableConcept productCodeableConcept,
+		Quantity quantity,
+		List<Dosage> dosage,
+		List<CodeableConcept> bodySite,
+		List<Reference> specimenRequirement,
+		List<Reference> observationRequirement,
+		List<Reference> observationResultRequirement,
+		String transform,
+		List<ActivityDefinition_DynamicValue> dynamicValue}) async {
+	 return ActivityDefinition(
+			id: await newEntry('ActivityDefinition'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			url: url,
+			elementUrl: elementUrl,
+			identifier: identifier,
+			version: version,
+			elementVersion: elementVersion,
+			name: name,
+			elementName: elementName,
+			title: title,
+			elementTitle: elementTitle,
+			subtitle: subtitle,
+			elementSubtitle: elementSubtitle,
+			status: status,
+			elementStatus: elementStatus,
+			experimental: experimental,
+			elementExperimental: elementExperimental,
+			subjectCodeableConcept: subjectCodeableConcept,
+			subjectReference: subjectReference,
+			date: date,
+			elementDate: elementDate,
+			publisher: publisher,
+			elementPublisher: elementPublisher,
+			contact: contact,
+			description: description,
+			elementDescription: elementDescription,
+			useContext: useContext,
+			jurisdiction: jurisdiction,
+			purpose: purpose,
+			elementPurpose: elementPurpose,
+			usage: usage,
+			elementUsage: elementUsage,
+			copyright: copyright,
+			elementCopyright: elementCopyright,
+			approvalDate: approvalDate,
+			elementApprovalDate: elementApprovalDate,
+			lastReviewDate: lastReviewDate,
+			elementLastReviewDate: elementLastReviewDate,
+			effectivePeriod: effectivePeriod,
+			topic: topic,
+			author: author,
+			editor: editor,
+			reviewer: reviewer,
+			endorser: endorser,
+			relatedArtifact: relatedArtifact,
+			library: library,
+			kind: kind,
+			elementKind: elementKind,
+			profile: profile,
+			code: code,
+			intent: intent,
+			elementIntent: elementIntent,
+			priority: priority,
+			elementPriority: elementPriority,
+			doNotPerform: doNotPerform,
+			elementDoNotPerform: elementDoNotPerform,
+			timingTiming: timingTiming,
+			timingDateTime: timingDateTime,
+			elementTimingDateTime: elementTimingDateTime,
+			timingAge: timingAge,
+			timingPeriod: timingPeriod,
+			timingRange: timingRange,
+			timingDuration: timingDuration,
+			location: location,
+			participant: participant,
+			productReference: productReference,
+			productCodeableConcept: productCodeableConcept,
+			quantity: quantity,
+			dosage: dosage,
+			bodySite: bodySite,
+			specimenRequirement: specimenRequirement,
+			observationRequirement: observationRequirement,
+			observationResultRequirement: observationResultRequirement,
+			transform: transform,
+			dynamicValue: dynamicValue);
+	}
+
   @HiveField(0)
   final String resourceType= 'ActivityDefinition';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  An absolute URI that is used to identify this activity definition when
-  // it is referenced in a specification, model, design or an instance; also
-  // called its canonical identifier. This SHOULD be globally unique and
-  // SHOULD be a literal address at which at which an authoritative instance
-  // of this activity definition is (or will be) published. This URL can be
-  // the target of a canonical reference. It SHALL remain the same when the
-  // activity definition is stored on different servers.
   @HiveField(11)
   String url;
-
-  //  Extensions for url
   @HiveField(12)
   Element elementUrl;
-
-  //  A formal identifier that is used to identify this activity definition
-  // when it is represented in other formats, or referenced in a
-  // specification, model, design or an instance.
   @HiveField(13)
   List<Identifier> identifier;
-
-  //  The identifier that is used to identify this version of the activity
-  // definition when it is referenced in a specification, model, design or
-  // instance. This is an arbitrary value managed by the activity definition
-  // author and is not expected to be globally unique. For example, it might
-  // be a timestamp (e.g. yyyymmdd) if a managed version is not available.
-  // There is also no expectation that versions can be placed in a
-  // lexicographical sequence. To provide a version consistent with the
-  // Decision Support Service specification, use the format
-  // Major.Minor.Revision (e.g. 1.0.0). For more information on versioning
-  // knowledge assets, refer to the Decision Support Service specification.
-  // Note that a version is required for non-experimental active assets.
   @HiveField(14)
   String version;
-
-  //  Extensions for version
   @HiveField(15)
   Element elementVersion;
-
-  //  A natural language name identifying the activity definition. This name
-  // should be usable as an identifier for the module by machine processing
-  // applications such as code generation.
   @HiveField(16)
   String name;
-
-  //  Extensions for name
   @HiveField(17)
   Element elementName;
-
-  //  A short, descriptive, user-friendly title for the activity definition.
   @HiveField(18)
   String title;
-
-  //  Extensions for title
   @HiveField(19)
   Element elementTitle;
-
-  //  An explanatory or alternate title for the activity definition giving
-  // additional information about its content.
   @HiveField(20)
   String subtitle;
-
-  //  Extensions for subtitle
   @HiveField(21)
   Element elementSubtitle;
-
-  //  The status of this activity definition. Enables tracking the
-  // life-cycle of the content.
   @HiveField(22)
   String status; // <code> enum: draft/active/retired/unknown;
-
-  //  Extensions for status
   @HiveField(23)
   Element elementStatus;
-
-  //  A Boolean value to indicate that this activity definition is authored
-  // for testing purposes (or education/evaluation/marketing) and is not
-  // intended to be used for genuine usage.
   @HiveField(24)
   bool experimental;
-
-  //  Extensions for experimental
   @HiveField(25)
   Element elementExperimental;
-
-  //  A code or group definition that describes the intended subject of the
-  // activity being defined.
   @HiveField(26)
   CodeableConcept subjectCodeableConcept;
-
-  //  A code or group definition that describes the intended subject of the
-  // activity being defined.
   @HiveField(27)
   Reference subjectReference;
-
-  //  The date  (and optionally time) when the activity definition was
-  // published. The date must change when the business version changes and
-  // it must change if the status code changes. In addition, it should
-  // change when the substantive content of the activity definition changes.
   @HiveField(28)
   DateTime date;
-
-  //  Extensions for date
   @HiveField(29)
   Element elementDate;
-
-  //  The name of the organization or individual that published the activity
-  // definition.
   @HiveField(30)
   String publisher;
-
-  //  Extensions for publisher
   @HiveField(31)
   Element elementPublisher;
-
-  //  Contact details to assist a user in finding and communicating with the
-  // publisher.
   @HiveField(32)
   List<ContactDetail> contact;
-
-  //  A free text natural language description of the activity definition
-  // from a consumer's perspective.
   @HiveField(33)
   String description;
-
-  //  Extensions for description
   @HiveField(34)
   Element elementDescription;
-
-  //  The content was developed with a focus and intent of supporting the
-  // contexts that are listed. These contexts may be general categories
-  // (gender, age, ...) or may be references to specific programs (insurance
-  // plans, studies, ...) and may be used to assist with indexing and
-  // searching for appropriate activity definition instances.
   @HiveField(35)
   List<UsageContext> useContext;
-
-  //  A legal or geographic region in which the activity definition is
-  // intended to be used.
   @HiveField(36)
   List<CodeableConcept> jurisdiction;
-
-  //  Explanation of why this activity definition is needed and why it has
-  // been designed as it has.
   @HiveField(37)
   String purpose;
-
-  //  Extensions for purpose
   @HiveField(38)
   Element elementPurpose;
-
-  //  A detailed description of how the activity definition is used from a
-  // clinical perspective.
   @HiveField(39)
   String usage;
-
-  //  Extensions for usage
   @HiveField(40)
   Element elementUsage;
-
-  //  A copyright statement relating to the activity definition and/or its
-  // contents. Copyright statements are generally legal restrictions on the
-  // use and publishing of the activity definition.
   @HiveField(41)
   String copyright;
-
-  //  Extensions for copyright
   @HiveField(42)
   Element elementCopyright;
-
-  //  The date on which the resource content was approved by the publisher.
-  // Approval happens once when the content is officially approved for
-  // usage.
   @HiveField(43)
   String approvalDate;
-
-  //  Extensions for approvalDate
   @HiveField(44)
   Element elementApprovalDate;
-
-  //  The date on which the resource content was last reviewed. Review
-  // happens periodically after approval but does not change the original
-  // approval date.
   @HiveField(45)
   String lastReviewDate;
-
-  //  Extensions for lastReviewDate
   @HiveField(46)
   Element elementLastReviewDate;
-
-  //  The period during which the activity definition content was or is
-  // planned to be in active use.
   @HiveField(47)
   Period effectivePeriod;
-
-  //  Descriptive topics related to the content of the activity. Topics
-  // provide a high-level categorization of the activity that can be useful
-  // for filtering and searching.
   @HiveField(48)
   List<CodeableConcept> topic;
-
-  //  An individiual or organization primarily involved in the creation and
-  // maintenance of the content.
   @HiveField(49)
   List<ContactDetail> author;
-
-  //  An individual or organization primarily responsible for internal
-  // coherence of the content.
   @HiveField(50)
   List<ContactDetail> editor;
-
-  //  An individual or organization primarily responsible for review of some
-  // aspect of the content.
   @HiveField(51)
   List<ContactDetail> reviewer;
-
-  //  An individual or organization responsible for officially endorsing the
-  // content for use in some setting.
   @HiveField(52)
   List<ContactDetail> endorser;
-
-  //  Related artifacts such as additional documentation, justification, or
-  // bibliographic references.
   @HiveField(53)
   List<RelatedArtifact> relatedArtifact;
-
-  //  A reference to a Library resource containing any formal logic used by
-  // the activity definition.
   @HiveField(54)
   List<String> library;
-
-  //  A description of the kind of resource the activity definition is
-  // representing. For example, a MedicationRequest, a ServiceRequest, or a
-  // CommunicationRequest. Typically, but not always, this is a Request
-  // resource.
   @HiveField(55)
   String kind;
-
-  //  Extensions for kind
   @HiveField(56)
   Element elementKind;
-
-  //  A profile to which the target of the activity definition is expected
-  // to conform.
   @HiveField(57)
   String profile;
-
-  //  Detailed description of the type of activity; e.g. What lab test, what
-  // procedure, what kind of encounter.
   @HiveField(58)
   CodeableConcept code;
-
-  //  Indicates the level of authority/intentionality associated with the
-  // activity and where the request should fit into the workflow chain.
   @HiveField(59)
   String intent;
-
-  //  Extensions for intent
   @HiveField(60)
   Element elementIntent;
-
-  //  Indicates how quickly the activity  should be addressed with respect
-  // to other requests.
   @HiveField(61)
   String priority;
-
-  //  Extensions for priority
   @HiveField(62)
   Element elementPriority;
-
-  //  Set this to true if the definition is to indicate that a particular
-  // activity should NOT be performed. If true, this element should be
-  // interpreted to reinforce a negative coding. For example NPO as a code
-  // with a doNotPerform of true would still indicate to NOT perform the
-  // action.
   @HiveField(63)
   bool doNotPerform;
-
-  //  Extensions for doNotPerform
   @HiveField(64)
   Element elementDoNotPerform;
-
-  //  The period, timing or frequency upon which the described activity is
-  // to occur.
   @HiveField(65)
   Timing timingTiming;
-
-  //  The period, timing or frequency upon which the described activity is
-  // to occur.
   @HiveField(66)
   String timingDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for timingDateTime
   @HiveField(67)
   Element elementTimingDateTime;
-
-  //  The period, timing or frequency upon which the described activity is
-  // to occur.
   @HiveField(68)
   Age timingAge;
-
-  //  The period, timing or frequency upon which the described activity is
-  // to occur.
   @HiveField(69)
   Period timingPeriod;
-
-  //  The period, timing or frequency upon which the described activity is
-  // to occur.
   @HiveField(70)
   Range timingRange;
-
-  //  The period, timing or frequency upon which the described activity is
-  // to occur.
   @HiveField(71)
   Duration timingDuration;
-
-  //  Identifies the facility where the activity will occur; e.g. home,
-  // hospital, specific clinic, etc.
   @HiveField(72)
   Reference location;
-
-  //  Indicates who should participate in performing the action described.
   @HiveField(73)
   List<ActivityDefinition_Participant> participant;
-
-  //  Identifies the food, drug or other product being consumed or supplied
-  // in the activity.
   @HiveField(74)
   Reference productReference;
-
-  //  Identifies the food, drug or other product being consumed or supplied
-  // in the activity.
   @HiveField(75)
   CodeableConcept productCodeableConcept;
-
-  //  Identifies the quantity expected to be consumed at once (per dose, per
-  // meal, etc.).
   @HiveField(76)
   Quantity quantity;
-
-  //  Provides detailed dosage instructions in the same way that they are
-  // described for MedicationRequest resources.
   @HiveField(77)
   List<Dosage> dosage;
-
-  //  Indicates the sites on the subject's body where the procedure should
-  // be performed (I.e. the target sites).
   @HiveField(78)
   List<CodeableConcept> bodySite;
-
-  //  Defines specimen requirements for the action to be performed, such as
-  // required specimens for a lab test.
   @HiveField(79)
   List<Reference> specimenRequirement;
-
-  //  Defines observation requirements for the action to be performed, such
-  // as body weight or surface area.
   @HiveField(80)
   List<Reference> observationRequirement;
-
-  //  Defines the observations that are expected to be produced by the
-  // action.
   @HiveField(81)
   List<Reference> observationResultRequirement;
-
-  //  A reference to a StructureMap resource that defines a transform that
-  // can be executed to produce the intent resource using the
-  // ActivityDefinition instance as the input.
   @HiveField(82)
   String transform;
-
-  //  Dynamic values that will be evaluated to produce values for elements
-  // of the resulting resource. For example, if the dosage of a medication
-  // must be computed based on the patient's weight, a dynamic value would
-  // be used to specify an expression that calculated the weight, and the
-  // path on the request resource that would contain the result.
   @HiveField(83)
   List<ActivityDefinition_DynamicValue> dynamicValue;
 
@@ -570,40 +460,27 @@ ActivityDefinition(
 @JsonSerializable(explicitToJson: true)
 class ActivityDefinition_Participant {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ActivityDefinition_Participant> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String type,
+		Element elementType,
+		CodeableConcept role}) async {
+	 return ActivityDefinition_Participant(
+			id: await newEntry('ActivityDefinition_Participant'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			type: type,
+			elementType: elementType,
+			role: role);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The type of participant in the action.
   String type;
-
-  //  Extensions for type
   Element elementType;
-
-  //  The role the participant should play in performing the described
-  // action.
   CodeableConcept role;
 
 ActivityDefinition_Participant(
@@ -622,56 +499,36 @@ ActivityDefinition_Participant(
 @JsonSerializable(explicitToJson: true)
 class ActivityDefinition_DynamicValue {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ActivityDefinition_DynamicValue> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String path,
+		Element elementPath,
+		Expression expression}) async {
+	 return ActivityDefinition_DynamicValue(
+			id: await newEntry('ActivityDefinition_DynamicValue'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			path: path,
+			elementPath: elementPath,
+			expression: expression);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The path to the element to be customized. This is the path on the
-  // resource that will hold the result of the calculation defined by the
-  // expression. The specified path SHALL be a FHIRPath resolveable on the
-  // specified target type of the ActivityDefinition, and SHALL consist only
-  // of identifiers, constant indexers, and a restricted subset of
-  // functions. The path is allowed to contain qualifiers (.) to traverse
-  // sub-elements, as well as indexers ([x]) to traverse
-  // multiple-cardinality sub-elements (see the [Simple FHIRPath
-  // Profile](fhirpath.html#simple) for full details).
   String path;
-
-  //  Extensions for path
   Element elementPath;
-
-  //  An expression specifying the value of the customized element.
   Expression expression;
 
 ActivityDefinition_DynamicValue(
-  this.expression,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.path,
-    this.elementPath
+    this.elementPath,
+    @required this.expression
     });
 
   factory ActivityDefinition_DynamicValue.fromJson(Map<String, dynamic> json) => _$ActivityDefinition_DynamicValueFromJson(json);
@@ -1331,9 +1188,6 @@ Map<String, dynamic> _$ActivityDefinition_ParticipantToJson(
 ActivityDefinition_DynamicValue _$ActivityDefinition_DynamicValueFromJson(
     Map<String, dynamic> json) {
   return ActivityDefinition_DynamicValue(
-    json['expression'] == null
-        ? null
-        : Expression.fromJson(json['expression'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1347,6 +1201,9 @@ ActivityDefinition_DynamicValue _$ActivityDefinition_DynamicValueFromJson(
     elementPath: json['elementPath'] == null
         ? null
         : Element.fromJson(json['elementPath'] as Map<String, dynamic>),
+    expression: json['expression'] == null
+        ? null
+        : Expression.fromJson(json['expression'] as Map<String, dynamic>),
   );
 }
 

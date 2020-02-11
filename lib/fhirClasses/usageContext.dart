@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
@@ -12,49 +15,43 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @HiveType(typeId: 47)
 class UsageContext {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<UsageContext> newInstance({
+		String id,
+		List<Extension> extension,
+		Coding code,
+		CodeableConcept valueCodeableConcept,
+		Quantity valueQuantity,
+		Range valueRange,
+		Reference valueReference}) async {
+	 return UsageContext(
+			id: await newEntry('UsageContext'),
+			extension: extension,
+			code: code,
+			valueCodeableConcept: valueCodeableConcept,
+			valueQuantity: valueQuantity,
+			valueRange: valueRange,
+			valueReference: valueReference);
+	}
+
   @HiveField(0)
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   @HiveField(1)
   List<Extension> extension;
-
-  //  A code that identifies the type of context being specified by this
-  // usage context.
   @HiveField(2)
   Coding code;
-
-  //  A value that defines the context specified in this context of use. The
-  // interpretation of the value is defined by the code.
   @HiveField(3)
   CodeableConcept valueCodeableConcept;
-
-  //  A value that defines the context specified in this context of use. The
-  // interpretation of the value is defined by the code.
   @HiveField(4)
   Quantity valueQuantity;
-
-  //  A value that defines the context specified in this context of use. The
-  // interpretation of the value is defined by the code.
   @HiveField(5)
   Range valueRange;
-
-  //  A value that defines the context specified in this context of use. The
-  // interpretation of the value is defined by the code.
   @HiveField(6)
   Reference valueReference;
 
 UsageContext(
-  this.code,
-    {this.id,
+  {this.id,
     this.extension,
+    @required this.code,
     this.valueCodeableConcept,
     this.valueQuantity,
     this.valueRange,
@@ -82,9 +79,9 @@ class UsageContextAdapter extends TypeAdapter<UsageContext> {
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return UsageContext(
-      fields[2] as Coding,
       id: fields[0] as String,
       extension: (fields[1] as List)?.cast<Extension>(),
+      code: fields[2] as Coding,
       valueCodeableConcept: fields[3] as CodeableConcept,
       valueQuantity: fields[4] as Quantity,
       valueRange: fields[5] as Range,
@@ -119,14 +116,14 @@ class UsageContextAdapter extends TypeAdapter<UsageContext> {
 
 UsageContext _$UsageContextFromJson(Map<String, dynamic> json) {
   return UsageContext(
-    json['code'] == null
-        ? null
-        : Coding.fromJson(json['code'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    code: json['code'] == null
+        ? null
+        : Coding.fromJson(json['code'] as Map<String, dynamic>),
     valueCodeableConcept: json['valueCodeableConcept'] == null
         ? null
         : CodeableConcept.fromJson(

@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/timing.dart';
@@ -20,320 +23,243 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 179)
 class ServiceRequest {
 
-  //  This is a ServiceRequest resource
+	static Future<ServiceRequest> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Identifier> identifier,
+		List<String> instantiatesCanonical,
+		List<String> instantiatesUri,
+		List<Element> elementInstantiatesUri,
+		List<Reference> basedOn,
+		List<Reference> replaces,
+		Identifier requisition,
+		String status,
+		Element elementStatus,
+		String intent,
+		Element elementIntent,
+		List<CodeableConcept> category,
+		String priority,
+		Element elementPriority,
+		bool doNotPerform,
+		Element elementDoNotPerform,
+		CodeableConcept code,
+		List<CodeableConcept> orderDetail,
+		Quantity quantityQuantity,
+		Ratio quantityRatio,
+		Range quantityRange,
+		Reference subject,
+		Reference encounter,
+		String occurrenceDateTime,
+		Element elementOccurrenceDateTime,
+		Period occurrencePeriod,
+		Timing occurrenceTiming,
+		bool asNeededBoolean,
+		Element elementAsNeededBoolean,
+		CodeableConcept asNeededCodeableConcept,
+		DateTime authoredOn,
+		Element elementAuthoredOn,
+		Reference requester,
+		CodeableConcept performerType,
+		List<Reference> performer,
+		List<CodeableConcept> locationCode,
+		List<Reference> locationReference,
+		List<CodeableConcept> reasonCode,
+		List<Reference> reasonReference,
+		List<Reference> insurance,
+		List<Reference> supportingInfo,
+		List<Reference> specimen,
+		List<CodeableConcept> bodySite,
+		List<Annotation> note,
+		String patientInstruction,
+		Element elementPatientInstruction,
+		List<Reference> relevantHistory}) async {
+	 return ServiceRequest(
+			id: await newEntry('ServiceRequest'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			instantiatesCanonical: instantiatesCanonical,
+			instantiatesUri: instantiatesUri,
+			elementInstantiatesUri: elementInstantiatesUri,
+			basedOn: basedOn,
+			replaces: replaces,
+			requisition: requisition,
+			status: status,
+			elementStatus: elementStatus,
+			intent: intent,
+			elementIntent: elementIntent,
+			category: category,
+			priority: priority,
+			elementPriority: elementPriority,
+			doNotPerform: doNotPerform,
+			elementDoNotPerform: elementDoNotPerform,
+			code: code,
+			orderDetail: orderDetail,
+			quantityQuantity: quantityQuantity,
+			quantityRatio: quantityRatio,
+			quantityRange: quantityRange,
+			subject: subject,
+			encounter: encounter,
+			occurrenceDateTime: occurrenceDateTime,
+			elementOccurrenceDateTime: elementOccurrenceDateTime,
+			occurrencePeriod: occurrencePeriod,
+			occurrenceTiming: occurrenceTiming,
+			asNeededBoolean: asNeededBoolean,
+			elementAsNeededBoolean: elementAsNeededBoolean,
+			asNeededCodeableConcept: asNeededCodeableConcept,
+			authoredOn: authoredOn,
+			elementAuthoredOn: elementAuthoredOn,
+			requester: requester,
+			performerType: performerType,
+			performer: performer,
+			locationCode: locationCode,
+			locationReference: locationReference,
+			reasonCode: reasonCode,
+			reasonReference: reasonReference,
+			insurance: insurance,
+			supportingInfo: supportingInfo,
+			specimen: specimen,
+			bodySite: bodySite,
+			note: note,
+			patientInstruction: patientInstruction,
+			elementPatientInstruction: elementPatientInstruction,
+			relevantHistory: relevantHistory);
+	}
+
   @HiveField(0)
   final String resourceType= 'ServiceRequest';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  Identifiers assigned to this order instance by the orderer and/or the
-  // receiver and/or order fulfiller.
   @HiveField(11)
   List<Identifier> identifier;
-
-  //  The URL pointing to a FHIR-defined protocol, guideline, orderset or
-  // other definition that is adhered to in whole or in part by this
-  // ServiceRequest.
   @HiveField(12)
   List<String> instantiatesCanonical;
-
-  //  The URL pointing to an externally maintained protocol, guideline,
-  // orderset or other definition that is adhered to in whole or in part by
-  // this ServiceRequest.
   @HiveField(13)
   List<String> instantiatesUri;
-
-  //  Extensions for instantiatesUri
   @HiveField(14)
   List<Element> elementInstantiatesUri;
-
-  //  Plan/proposal/order fulfilled by this request.
   @HiveField(15)
   List<Reference> basedOn;
-
-  //  The request takes the place of the referenced completed or terminated
-  // request(s).
   @HiveField(16)
   List<Reference> replaces;
-
-  //  A shared identifier common to all service requests that were
-  // authorized more or less simultaneously by a single author, representing
-  // the composite or group identifier.
   @HiveField(17)
   Identifier requisition;
-
-  //  The status of the order.
   @HiveField(18)
   String status;
-
-  //  Extensions for status
   @HiveField(19)
   Element elementStatus;
-
-  //  Whether the request is a proposal, plan, an original order or a reflex
-  // order.
   @HiveField(20)
   String intent;
-
-  //  Extensions for intent
   @HiveField(21)
   Element elementIntent;
-
-  //  A code that classifies the service for searching, sorting and display
-  // purposes (e.g. "Surgical Procedure").
   @HiveField(22)
   List<CodeableConcept> category;
-
-  //  Indicates how quickly the ServiceRequest should be addressed with
-  // respect to other requests.
   @HiveField(23)
   String priority;
-
-  //  Extensions for priority
   @HiveField(24)
   Element elementPriority;
-
-  //  Set this to true if the record is saying that the service/procedure
-  // should NOT be performed.
   @HiveField(25)
   bool doNotPerform;
-
-  //  Extensions for doNotPerform
   @HiveField(26)
   Element elementDoNotPerform;
-
-  //  A code that identifies a particular service (i.e., procedure,
-  // diagnostic investigation, or panel of investigations) that have been
-  // requested.
   @HiveField(27)
   CodeableConcept code;
-
-  //  Additional details and instructions about the how the services are to
-  // be delivered.   For example, and order for a urinary catheter may have
-  // an order detail for an external or indwelling catheter, or an order for
-  // a bandage may require additional instructions specifying how the
-  // bandage should be applied.
   @HiveField(28)
   List<CodeableConcept> orderDetail;
-
-  //  An amount of service being requested which can be a quantity ( for
-  // example $1,500 home modification), a ratio ( for example, 20 half day
-  // visits per month), or a range (2.0 to 1.8 Gy per fraction).
   @HiveField(29)
   Quantity quantityQuantity;
-
-  //  An amount of service being requested which can be a quantity ( for
-  // example $1,500 home modification), a ratio ( for example, 20 half day
-  // visits per month), or a range (2.0 to 1.8 Gy per fraction).
   @HiveField(30)
   Ratio quantityRatio;
-
-  //  An amount of service being requested which can be a quantity ( for
-  // example $1,500 home modification), a ratio ( for example, 20 half day
-  // visits per month), or a range (2.0 to 1.8 Gy per fraction).
   @HiveField(31)
   Range quantityRange;
-
-  //  On whom or what the service is to be performed. This is usually a
-  // human patient, but can also be requested on animals, groups of humans
-  // or animals, devices such as dialysis machines, or even locations
-  // (typically for environmental scans).
   @HiveField(32)
   Reference subject;
-
-  //  An encounter that provides additional information about the healthcare
-  // context in which this request is made.
   @HiveField(33)
   Reference encounter;
-
-  //  The date/time at which the requested service should occur.
   @HiveField(34)
   String occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for occurrenceDateTime
   @HiveField(35)
   Element elementOccurrenceDateTime;
-
-  //  The date/time at which the requested service should occur.
   @HiveField(36)
   Period occurrencePeriod;
-
-  //  The date/time at which the requested service should occur.
   @HiveField(37)
   Timing occurrenceTiming;
-
-  //  If a CodeableConcept is present, it indicates the pre-condition for
-  // performing the service.  For example "pain", "on flare-up", etc.
   @HiveField(38)
   bool asNeededBoolean; //  pattern: ^true|false$
-
-  //  Extensions for asNeededBoolean
   @HiveField(39)
   Element elementAsNeededBoolean;
-
-  //  If a CodeableConcept is present, it indicates the pre-condition for
-  // performing the service.  For example "pain", "on flare-up", etc.
   @HiveField(40)
   CodeableConcept asNeededCodeableConcept;
-
-  //  When the request transitioned to being actionable.
   @HiveField(41)
   DateTime authoredOn;
-
-  //  Extensions for authoredOn
   @HiveField(42)
   Element elementAuthoredOn;
-
-  //  The individual who initiated the request and has responsibility for
-  // its activation.
   @HiveField(43)
   Reference requester;
-
-  //  Desired type of performer for doing the requested service.
   @HiveField(44)
   CodeableConcept performerType;
-
-  //  The desired performer for doing the requested service.  For example,
-  // the surgeon, dermatopathologist, endoscopist, etc.
   @HiveField(45)
   List<Reference> performer;
-
-  //  The preferred location(s) where the procedure should actually happen
-  // in coded or free text form. E.g. at home or nursing day care center.
   @HiveField(46)
   List<CodeableConcept> locationCode;
-
-  //  A reference to the the preferred location(s) where the procedure
-  // should actually happen. E.g. at home or nursing day care center.
   @HiveField(47)
   List<Reference> locationReference;
-
-  //  An explanation or justification for why this service is being
-  // requested in coded or textual form.   This is often for billing
-  // purposes.  May relate to the resources referred to in `supportingInfo`.
   @HiveField(48)
   List<CodeableConcept> reasonCode;
-
-  //  Indicates another resource that provides a justification for why this
-  // service is being requested.   May relate to the resources referred to
-  // in `supportingInfo`.
   @HiveField(49)
   List<Reference> reasonReference;
-
-  //  Insurance plans, coverage extensions, pre-authorizations and/or
-  // pre-determinations that may be needed for delivering the requested
-  // service.
   @HiveField(50)
   List<Reference> insurance;
-
-  //  Additional clinical information about the patient or specimen that may
-  // influence the services or their interpretations.     This information
-  // includes diagnosis, clinical findings and other observations.  In
-  // laboratory ordering these are typically referred to as "ask at order
-  // entry questions (AOEs)".  This includes observations explicitly
-  // requested by the producer (filler) to provide context or supporting
-  // information needed to complete the order. For example,  reporting the
-  // amount of inspired oxygen for blood gas measurements.
   @HiveField(51)
   List<Reference> supportingInfo;
-
-  //  One or more specimens that the laboratory procedure will use.
   @HiveField(52)
   List<Reference> specimen;
-
-  //  Anatomic location where the procedure should be performed. This is the
-  // target site.
   @HiveField(53)
   List<CodeableConcept> bodySite;
-
-  //  Any other notes and comments made about the service request. For
-  // example, internal billing notes.
   @HiveField(54)
   List<Annotation> note;
-
-  //  Instructions in terms that are understood by the patient or consumer.
   @HiveField(55)
   String patientInstruction;
-
-  //  Extensions for patientInstruction
   @HiveField(56)
   Element elementPatientInstruction;
-
-  //  Key events in the history of the request.
   @HiveField(57)
   List<Reference> relevantHistory;
 
 ServiceRequest(
-  this.subject,
-    {this.id,
+  {this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -364,6 +290,7 @@ ServiceRequest(
     this.quantityQuantity,
     this.quantityRatio,
     this.quantityRange,
+    @required this.subject,
     this.encounter,
     this.occurrenceDateTime,
     this.elementOccurrenceDateTime,
@@ -412,7 +339,6 @@ class ServiceRequestAdapter extends TypeAdapter<ServiceRequest> {
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return ServiceRequest(
-      fields[32] as Reference,
       id: fields[1] as String,
       meta: fields[2] as Meta,
       implicitRules: fields[3] as String,
@@ -444,6 +370,7 @@ class ServiceRequestAdapter extends TypeAdapter<ServiceRequest> {
       quantityQuantity: fields[29] as Quantity,
       quantityRatio: fields[30] as Ratio,
       quantityRange: fields[31] as Range,
+      subject: fields[32] as Reference,
       encounter: fields[33] as Reference,
       occurrenceDateTime: fields[34] as String,
       elementOccurrenceDateTime: fields[35] as Element,
@@ -601,9 +528,6 @@ class ServiceRequestAdapter extends TypeAdapter<ServiceRequest> {
 
 ServiceRequest _$ServiceRequestFromJson(Map<String, dynamic> json) {
   return ServiceRequest(
-    json['subject'] == null
-        ? null
-        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -694,6 +618,9 @@ ServiceRequest _$ServiceRequestFromJson(Map<String, dynamic> json) {
     quantityRange: json['quantityRange'] == null
         ? null
         : Range.fromJson(json['quantityRange'] as Map<String, dynamic>),
+    subject: json['subject'] == null
+        ? null
+        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     encounter: json['encounter'] == null
         ? null
         : Reference.fromJson(json['encounter'] as Map<String, dynamic>),

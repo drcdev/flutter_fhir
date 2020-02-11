@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
@@ -15,258 +18,190 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 82)
 class ConceptMap {
 
-  //  This is a ConceptMap resource
+	static Future<ConceptMap> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String url,
+		Element elementUrl,
+		Identifier identifier,
+		String version,
+		Element elementVersion,
+		String name,
+		Element elementName,
+		String title,
+		Element elementTitle,
+		String status,
+		Element elementStatus,
+		bool experimental,
+		Element elementExperimental,
+		DateTime date,
+		Element elementDate,
+		String publisher,
+		Element elementPublisher,
+		List<ContactDetail> contact,
+		String description,
+		Element elementDescription,
+		List<UsageContext> useContext,
+		List<CodeableConcept> jurisdiction,
+		String purpose,
+		Element elementPurpose,
+		String copyright,
+		Element elementCopyright,
+		String sourceUri,
+		Element elementSourceUri,
+		String sourceCanonical,
+		Element elementSourceCanonical,
+		String targetUri,
+		Element elementTargetUri,
+		String targetCanonical,
+		Element elementTargetCanonical,
+		List<ConceptMap_Group> group}) async {
+	 return ConceptMap(
+			id: await newEntry('ConceptMap'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			url: url,
+			elementUrl: elementUrl,
+			identifier: identifier,
+			version: version,
+			elementVersion: elementVersion,
+			name: name,
+			elementName: elementName,
+			title: title,
+			elementTitle: elementTitle,
+			status: status,
+			elementStatus: elementStatus,
+			experimental: experimental,
+			elementExperimental: elementExperimental,
+			date: date,
+			elementDate: elementDate,
+			publisher: publisher,
+			elementPublisher: elementPublisher,
+			contact: contact,
+			description: description,
+			elementDescription: elementDescription,
+			useContext: useContext,
+			jurisdiction: jurisdiction,
+			purpose: purpose,
+			elementPurpose: elementPurpose,
+			copyright: copyright,
+			elementCopyright: elementCopyright,
+			sourceUri: sourceUri,
+			elementSourceUri: elementSourceUri,
+			sourceCanonical: sourceCanonical,
+			elementSourceCanonical: elementSourceCanonical,
+			targetUri: targetUri,
+			elementTargetUri: elementTargetUri,
+			targetCanonical: targetCanonical,
+			elementTargetCanonical: elementTargetCanonical,
+			group: group);
+	}
+
   @HiveField(0)
   final String resourceType= 'ConceptMap';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  An absolute URI that is used to identify this concept map when it is
-  // referenced in a specification, model, design or an instance; also
-  // called its canonical identifier. This SHOULD be globally unique and
-  // SHOULD be a literal address at which at which an authoritative instance
-  // of this concept map is (or will be) published. This URL can be the
-  // target of a canonical reference. It SHALL remain the same when the
-  // concept map is stored on different servers.
   @HiveField(11)
   String url;
-
-  //  Extensions for url
   @HiveField(12)
   Element elementUrl;
-
-  //  A formal identifier that is used to identify this concept map when it
-  // is represented in other formats, or referenced in a specification,
-  // model, design or an instance.
   @HiveField(13)
   Identifier identifier;
-
-  //  The identifier that is used to identify this version of the concept
-  // map when it is referenced in a specification, model, design or
-  // instance. This is an arbitrary value managed by the concept map author
-  // and is not expected to be globally unique. For example, it might be a
-  // timestamp (e.g. yyyymmdd) if a managed version is not available. There
-  // is also no expectation that versions can be placed in a lexicographical
-  // sequence.
   @HiveField(14)
   String version;
-
-  //  Extensions for version
   @HiveField(15)
   Element elementVersion;
-
-  //  A natural language name identifying the concept map. This name should
-  // be usable as an identifier for the module by machine processing
-  // applications such as code generation.
   @HiveField(16)
   String name;
-
-  //  Extensions for name
   @HiveField(17)
   Element elementName;
-
-  //  A short, descriptive, user-friendly title for the concept map.
   @HiveField(18)
   String title;
-
-  //  Extensions for title
   @HiveField(19)
   Element elementTitle;
-
-  //  The status of this concept map. Enables tracking the life-cycle of the
-  // content.
   @HiveField(20)
   String status; // <code> enum: draft/active/retired/unknown;
-
-  //  Extensions for status
   @HiveField(21)
   Element elementStatus;
-
-  //  A Boolean value to indicate that this concept map is authored for
-  // testing purposes (or education/evaluation/marketing) and is not
-  // intended to be used for genuine usage.
   @HiveField(22)
   bool experimental;
-
-  //  Extensions for experimental
   @HiveField(23)
   Element elementExperimental;
-
-  //  The date  (and optionally time) when the concept map was published.
-  // The date must change when the business version changes and it must
-  // change if the status code changes. In addition, it should change when
-  // the substantive content of the concept map changes.
   @HiveField(24)
   DateTime date;
-
-  //  Extensions for date
   @HiveField(25)
   Element elementDate;
-
-  //  The name of the organization or individual that published the concept
-  // map.
   @HiveField(26)
   String publisher;
-
-  //  Extensions for publisher
   @HiveField(27)
   Element elementPublisher;
-
-  //  Contact details to assist a user in finding and communicating with the
-  // publisher.
   @HiveField(28)
   List<ContactDetail> contact;
-
-  //  A free text natural language description of the concept map from a
-  // consumer's perspective.
   @HiveField(29)
   String description;
-
-  //  Extensions for description
   @HiveField(30)
   Element elementDescription;
-
-  //  The content was developed with a focus and intent of supporting the
-  // contexts that are listed. These contexts may be general categories
-  // (gender, age, ...) or may be references to specific programs (insurance
-  // plans, studies, ...) and may be used to assist with indexing and
-  // searching for appropriate concept map instances.
   @HiveField(31)
   List<UsageContext> useContext;
-
-  //  A legal or geographic region in which the concept map is intended to
-  // be used.
   @HiveField(32)
   List<CodeableConcept> jurisdiction;
-
-  //  Explanation of why this concept map is needed and why it has been
-  // designed as it has.
   @HiveField(33)
   String purpose;
-
-  //  Extensions for purpose
   @HiveField(34)
   Element elementPurpose;
-
-  //  A copyright statement relating to the concept map and/or its contents.
-  // Copyright statements are generally legal restrictions on the use and
-  // publishing of the concept map.
   @HiveField(35)
   String copyright;
-
-  //  Extensions for copyright
   @HiveField(36)
   Element elementCopyright;
-
-  //  Identifier for the source value set that contains the concepts that
-  // are being mapped and provides context for the mappings.
   @HiveField(37)
   String sourceUri; //  pattern: ^\S*$
-
-  //  Extensions for sourceUri
   @HiveField(38)
   Element elementSourceUri;
-
-  //  Identifier for the source value set that contains the concepts that
-  // are being mapped and provides context for the mappings.
   @HiveField(39)
   String sourceCanonical; //  pattern: ^\S*$
-
-  //  Extensions for sourceCanonical
   @HiveField(40)
   Element elementSourceCanonical;
-
-  //  The target value set provides context for the mappings. Note that the
-  // mapping is made between concepts, not between value sets, but the value
-  // set provides important context about how the concept mapping choices
-  // are made.
   @HiveField(41)
   String targetUri; //  pattern: ^\S*$
-
-  //  Extensions for targetUri
   @HiveField(42)
   Element elementTargetUri;
-
-  //  The target value set provides context for the mappings. Note that the
-  // mapping is made between concepts, not between value sets, but the value
-  // set provides important context about how the concept mapping choices
-  // are made.
   @HiveField(43)
   String targetCanonical; //  pattern: ^\S*$
-
-  //  Extensions for targetCanonical
   @HiveField(44)
   Element elementTargetCanonical;
-
-  //  A group of mappings that all have the same source and target system.
   @HiveField(45)
   List<ConceptMap_Group> group;
 
@@ -325,72 +260,52 @@ ConceptMap(
 @JsonSerializable(explicitToJson: true)
 class ConceptMap_Group {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ConceptMap_Group> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String source,
+		Element elementSource,
+		String sourceVersion,
+		Element elementSourceVersion,
+		String target,
+		Element elementTarget,
+		String targetVersion,
+		Element elementTargetVersion,
+		List<ConceptMap_Element> element,
+		ConceptMap_Unmapped unmapped}) async {
+	 return ConceptMap_Group(
+			id: await newEntry('ConceptMap_Group'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			source: source,
+			elementSource: elementSource,
+			sourceVersion: sourceVersion,
+			elementSourceVersion: elementSourceVersion,
+			target: target,
+			elementTarget: elementTarget,
+			targetVersion: targetVersion,
+			elementTargetVersion: elementTargetVersion,
+			element: element,
+			unmapped: unmapped);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  An absolute URI that identifies the source system where the concepts
-  // to be mapped are defined.
   String source;
-
-  //  Extensions for source
   Element elementSource;
-
-  //  The specific version of the code system, as determined by the code
-  // system authority.
   String sourceVersion;
-
-  //  Extensions for sourceVersion
   Element elementSourceVersion;
-
-  //  An absolute URI that identifies the target system that the concepts
-  // will be mapped to.
   String target;
-
-  //  Extensions for target
   Element elementTarget;
-
-  //  The specific version of the code system, as determined by the code
-  // system authority.
   String targetVersion;
-
-  //  Extensions for targetVersion
   Element elementTargetVersion;
-
-  //  Mappings for an individual concept in the source to one or more
-  // concepts in the target.
   List<ConceptMap_Element> element;
-
-  //  What to do when there is no mapping for the source concept. "Unmapped"
-  // does not include codes that are unmatched, and the unmapped element is
-  // ignored in a code is specified to have equivalence = unmatched.
   ConceptMap_Unmapped unmapped;
 
 ConceptMap_Group(
-  this.element,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.source,
@@ -401,6 +316,7 @@ ConceptMap_Group(
     this.elementTarget,
     this.targetVersion,
     this.elementTargetVersion,
+    @required this.element,
     this.unmapped
     });
 
@@ -411,46 +327,33 @@ ConceptMap_Group(
 @JsonSerializable(explicitToJson: true)
 class ConceptMap_Element {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ConceptMap_Element> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String code,
+		Element elementCode,
+		String display,
+		Element elementDisplay,
+		List<ConceptMap_Target> target}) async {
+	 return ConceptMap_Element(
+			id: await newEntry('ConceptMap_Element'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			code: code,
+			elementCode: elementCode,
+			display: display,
+			elementDisplay: elementDisplay,
+			target: target);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Identity (code or path) or the element/item being mapped.
   String code;
-
-  //  Extensions for code
   Element elementCode;
-
-  //  The display for the code. The display is only provided to help editors
-  // when editing the concept map.
   String display;
-
-  //  Extensions for display
   Element elementDisplay;
-
-  //  A concept from the target value set that this concept maps to.
   List<ConceptMap_Target> target;
 
 ConceptMap_Element(
@@ -471,70 +374,48 @@ ConceptMap_Element(
 @JsonSerializable(explicitToJson: true)
 class ConceptMap_Target {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ConceptMap_Target> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String code,
+		Element elementCode,
+		String display,
+		Element elementDisplay,
+		String equivalence,
+		Element elementEquivalence,
+		String comment,
+		Element elementComment,
+		List<ConceptMap_DependsOn> dependsOn,
+		List<ConceptMap_DependsOn> product}) async {
+	 return ConceptMap_Target(
+			id: await newEntry('ConceptMap_Target'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			code: code,
+			elementCode: elementCode,
+			display: display,
+			elementDisplay: elementDisplay,
+			equivalence: equivalence,
+			elementEquivalence: elementEquivalence,
+			comment: comment,
+			elementComment: elementComment,
+			dependsOn: dependsOn,
+			product: product);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Identity (code or path) or the element/item that the map refers to.
   String code;
-
-  //  Extensions for code
   Element elementCode;
-
-  //  The display for the code. The display is only provided to help editors
-  // when editing the concept map.
   String display;
-
-  //  Extensions for display
   Element elementDisplay;
-
-  //  The equivalence between the source and target concepts (counting for
-  // the dependencies and products). The equivalence is read from target to
-  // source (e.g. the target is 'wider' than the source).
   String equivalence; // <code> enum: relatedto/equivalent/equal/wider/subsumes/narrower/specializes/inexact/unmatched/disjoint;
-
-  //  Extensions for equivalence
   Element elementEquivalence;
-
-  //  A description of status/issues in mapping that conveys additional
-  // information not represented in  the structured data.
   String comment;
-
-  //  Extensions for comment
   Element elementComment;
-
-  //  A set of additional dependencies for this mapping to hold. This
-  // mapping is only applicable if the specified element can be resolved,
-  // and it has the specified value.
   List<ConceptMap_DependsOn> dependsOn;
-
-  //  A set of additional outcomes from this mapping to other elements. To
-  // properly execute this mapping, the specified element must be mapped to
-  // some data element or source that is in context. The mapping may still
-  // be useful without a place for the additional data elements, but the
-  // equivalence cannot be relied on.
   List<ConceptMap_DependsOn> product;
 
 ConceptMap_Target(
@@ -560,57 +441,39 @@ ConceptMap_Target(
 @JsonSerializable(explicitToJson: true)
 class ConceptMap_DependsOn {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ConceptMap_DependsOn> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String property,
+		Element elementProperty,
+		String system,
+		String value,
+		Element elementValue,
+		String display,
+		Element elementDisplay}) async {
+	 return ConceptMap_DependsOn(
+			id: await newEntry('ConceptMap_DependsOn'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			property: property,
+			elementProperty: elementProperty,
+			system: system,
+			value: value,
+			elementValue: elementValue,
+			display: display,
+			elementDisplay: elementDisplay);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A reference to an element that holds a coded value that corresponds to
-  // a code system property. The idea is that the information model carries
-  // an element somewhere that is labeled to correspond with a code system
-  // property.
   String property;
-
-  //  Extensions for property
   Element elementProperty;
-
-  //  An absolute URI that identifies the code system of the dependency code
-  // (if the source/dependency is a value set that crosses code systems).
   String system;
-
-  //  Identity (code or path) or the element/item/ValueSet/text that the map
-  // depends on / refers to.
   String value;
-
-  //  Extensions for value
   Element elementValue;
-
-  //  The display for the code. The display is only provided to help editors
-  // when editing the concept map.
   String display;
-
-  //  Extensions for display
   Element elementDisplay;
 
 ConceptMap_DependsOn(
@@ -633,60 +496,39 @@ ConceptMap_DependsOn(
 @JsonSerializable(explicitToJson: true)
 class ConceptMap_Unmapped {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ConceptMap_Unmapped> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String mode,
+		Element elementMode,
+		String code,
+		Element elementCode,
+		String display,
+		Element elementDisplay,
+		String url}) async {
+	 return ConceptMap_Unmapped(
+			id: await newEntry('ConceptMap_Unmapped'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			mode: mode,
+			elementMode: elementMode,
+			code: code,
+			elementCode: elementCode,
+			display: display,
+			elementDisplay: elementDisplay,
+			url: url);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Defines which action to take if there is no match for the source
-  // concept in the target system designated for the group. One of 3 actions
-  // are possible: use the unmapped code (this is useful when doing a
-  // mapping between versions, and only a few codes have changed), use a
-  // fixed code (a default code), or alternatively, a reference to a
-  // different concept map can be provided (by canonical URL).
   String mode; // <code> enum: provided/fixed/other-map;
-
-  //  Extensions for mode
   Element elementMode;
-
-  //  The fixed code to use when the mode = 'fixed'  - all unmapped codes
-  // are mapped to a single fixed code.
   String code;
-
-  //  Extensions for code
   Element elementCode;
-
-  //  The display for the code. The display is only provided to help editors
-  // when editing the concept map.
   String display;
-
-  //  Extensions for display
   Element elementDisplay;
-
-  //  The canonical reference to an additional ConceptMap resource instance
-  // to use for mapping if this ConceptMap resource contains no matching
-  // mapping for the source concept.
   String url;
 
 ConceptMap_Unmapped(
@@ -1043,11 +885,6 @@ Map<String, dynamic> _$ConceptMapToJson(ConceptMap instance) =>
 
 ConceptMap_Group _$ConceptMap_GroupFromJson(Map<String, dynamic> json) {
   return ConceptMap_Group(
-    (json['element'] as List)
-        ?.map((e) => e == null
-            ? null
-            : ConceptMap_Element.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1075,6 +912,11 @@ ConceptMap_Group _$ConceptMap_GroupFromJson(Map<String, dynamic> json) {
         ? null
         : Element.fromJson(
             json['elementTargetVersion'] as Map<String, dynamic>),
+    element: (json['element'] as List)
+        ?.map((e) => e == null
+            ? null
+            : ConceptMap_Element.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     unmapped: json['unmapped'] == null
         ? null
         : ConceptMap_Unmapped.fromJson(

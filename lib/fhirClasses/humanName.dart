@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/period.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
@@ -9,77 +10,68 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @HiveType(typeId: 36)
 class HumanName {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<HumanName> newInstance({
+		String id,
+		List<Extension> extension,
+		String use,
+		Element elementUse,
+		String text,
+		Element elementText,
+		String family,
+		Element elementFamily,
+		List<String> given,
+		List<Element> elementGiven,
+		List<String> prefix,
+		List<Element> elementPrefix,
+		List<String> suffix,
+		List<Element> elementSuffix,
+		Period period}) async {
+	 return HumanName(
+			id: await newEntry('HumanName'),
+			extension: extension,
+			use: use,
+			elementUse: elementUse,
+			text: text,
+			elementText: elementText,
+			family: family,
+			elementFamily: elementFamily,
+			given: given,
+			elementGiven: elementGiven,
+			prefix: prefix,
+			elementPrefix: elementPrefix,
+			suffix: suffix,
+			elementSuffix: elementSuffix,
+			period: period);
+	}
+
   @HiveField(0)
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   @HiveField(1)
   List<Extension> extension;
-
-  //  Identifies the purpose for this name.
   @HiveField(2)
   String use; // <code> enum: usual/official/temp/nickname/anonymous/old/maiden;
-
-  //  Extensions for use
   @HiveField(3)
   Element elementUse;
-
-  //  Specifies the entire name as it should be displayed e.g. on an
-  // application UI. This may be provided instead of or as well as the
-  // specific parts.
   @HiveField(4)
   String text;
-
-  //  Extensions for text
   @HiveField(5)
   Element elementText;
-
-  //  The part of a name that links to the genealogy. In some cultures (e.g.
-  // Eritrea) the family name of a son is the first name of his father.
   @HiveField(6)
   String family;
-
-  //  Extensions for family
   @HiveField(7)
   Element elementFamily;
-
-  //  Given name.
   @HiveField(8)
   List<String> given;
-
-  //  Extensions for given
   @HiveField(9)
   List<Element> elementGiven;
-
-  //  Part of the name that is acquired as a title due to academic, legal,
-  // employment or nobility status, etc. and that appears at the start of
-  // the name.
   @HiveField(10)
   List<String> prefix;
-
-  //  Extensions for prefix
   @HiveField(11)
   List<Element> elementPrefix;
-
-  //  Part of the name that is acquired as a title due to academic, legal,
-  // employment or nobility status, etc. and that appears at the end of the
-  // name.
   @HiveField(12)
   List<String> suffix;
-
-  //  Extensions for suffix
   @HiveField(13)
   List<Element> elementSuffix;
-
-  //  Indicates the period of time when this name was valid for the named
-  // person.
   @HiveField(14)
   Period period;
 

@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -8,63 +9,56 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @HiveType(typeId: 27)
 class Count {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Count> newInstance({
+		String id,
+		List<Extension> extension,
+		double value,
+		Element elementValue,
+		String comparator,
+		Element elementComparator,
+		String unit,
+		Element elementUnit,
+		String system,
+		Element elementSystem,
+		String code,
+		Element elementCode}) async {
+	 return Count(
+			id: await newEntry('Count'),
+			extension: extension,
+			value: value,
+			elementValue: elementValue,
+			comparator: comparator,
+			elementComparator: elementComparator,
+			unit: unit,
+			elementUnit: elementUnit,
+			system: system,
+			elementSystem: elementSystem,
+			code: code,
+			elementCode: elementCode);
+	}
+
   @HiveField(0)
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   @HiveField(1)
   List<Extension> extension;
-
-  //  The value of the measured amount. The value includes an implicit
-  // precision in the presentation of the value.
   @HiveField(2)
   double value;
-
-  //  Extensions for value
   @HiveField(3)
   Element elementValue;
-
-  //  How the value should be understood and represented - whether the
-  // actual value is greater or less than the stated value due to
-  // measurement issues; e.g. if the comparator is "<" , then the real value
-  // is < stated value.
   @HiveField(4)
   String comparator; // <code> enum: </<=/>=/>;
-
-  //  Extensions for comparator
   @HiveField(5)
   Element elementComparator;
-
-  //  A human-readable form of the unit.
   @HiveField(6)
   String unit;
-
-  //  Extensions for unit
   @HiveField(7)
   Element elementUnit;
-
-  //  The identification of the system that provides the coded form of the
-  // unit.
   @HiveField(8)
   String system;
-
-  //  Extensions for system
   @HiveField(9)
   Element elementSystem;
-
-  //  A computer processable form of the unit in some unit representation
-  // system.
   @HiveField(10)
   String code;
-
-  //  Extensions for code
   @HiveField(11)
   Element elementCode;
 

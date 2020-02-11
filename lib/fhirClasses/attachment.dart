@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -8,86 +9,80 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @HiveType(typeId: 20)
 class Attachment {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Attachment> newInstance({
+		String id,
+		List<Extension> extension,
+		String contentType,
+		Element elementContentType,
+		String language,
+		Element elementLanguage,
+		String data,
+		Element elementData,
+		String url,
+		Element elementUrl,
+		int size,
+		Element elementSize,
+		String hash,
+		Element elementHash,
+		String title,
+		Element elementTitle,
+		DateTime creation,
+		Element elementCreation}) async {
+	 return Attachment(
+			id: await newEntry('Attachment'),
+			extension: extension,
+			contentType: contentType,
+			elementContentType: elementContentType,
+			language: language,
+			elementLanguage: elementLanguage,
+			data: data,
+			elementData: elementData,
+			url: url,
+			elementUrl: elementUrl,
+			size: size,
+			elementSize: elementSize,
+			hash: hash,
+			elementHash: elementHash,
+			title: title,
+			elementTitle: elementTitle,
+			creation: creation,
+			elementCreation: elementCreation);
+	}
+
   @HiveField(0)
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   @HiveField(1)
   List<Extension> extension;
-
-  //  Identifies the type of the data in the attachment and allows a method
-  // to be chosen to interpret or render the data. Includes mime type
-  // parameters such as charset where appropriate.
   @HiveField(2)
   String contentType;
-
-  //  Extensions for contentType
   @HiveField(3)
   Element elementContentType;
-
-  //  The human language of the content. The value can be any valid value
-  // according to BCP 47.
   @HiveField(4)
   String language;
-
-  //  Extensions for language
   @HiveField(5)
   Element elementLanguage;
-
-  //  The actual data of the attachment - a sequence of bytes, base64
-  // encoded.
   @HiveField(6)
   String data;
-
-  //  Extensions for data
   @HiveField(7)
   Element elementData;
-
-  //  A location where the data can be accessed.
   @HiveField(8)
   String url;
-
-  //  Extensions for url
   @HiveField(9)
   Element elementUrl;
-
-  //  The number of bytes of data that make up this attachment (before
-  // base64 encoding, if that is done).
   @HiveField(10)
   int size;
-
-  //  Extensions for size
   @HiveField(11)
   Element elementSize;
-
-  //  The calculated hash of the data using SHA-1. Represented using base64.
   @HiveField(12)
   String hash;
-
-  //  Extensions for hash
   @HiveField(13)
   Element elementHash;
-
-  //  A label or set of text to display in place of the data.
   @HiveField(14)
   String title;
-
-  //  Extensions for title
   @HiveField(15)
   Element elementTitle;
-
-  //  The date that the attachment was first created.
   @HiveField(16)
   DateTime creation;
-
-  //  Extensions for creation
   @HiveField(17)
   Element elementCreation;
 

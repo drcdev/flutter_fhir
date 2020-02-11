@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/address.dart';
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
@@ -19,229 +22,175 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 74)
 class Claim {
 
-  //  This is a Claim resource
+	static Future<Claim> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Identifier> identifier,
+		String status,
+		Element elementStatus,
+		CodeableConcept type,
+		CodeableConcept subType,
+		String use,
+		Element elementUse,
+		Reference patient,
+		Period billablePeriod,
+		DateTime created,
+		Element elementCreated,
+		Reference enterer,
+		Reference insurer,
+		Reference provider,
+		CodeableConcept priority,
+		CodeableConcept fundsReserve,
+		List<Claim_Related> related,
+		Reference prescription,
+		Reference originalPrescription,
+		Claim_Payee payee,
+		Reference referral,
+		Reference facility,
+		List<Claim_CareTeam> careTeam,
+		List<Claim_SupportingInfo> supportingInfo,
+		List<Claim_Diagnosis> diagnosis,
+		List<Claim_Procedure> procedure,
+		List<Claim_Insurance> insurance,
+		Claim_Accident accident,
+		List<Claim_Item> item,
+		Money total}) async {
+	 return Claim(
+			id: await newEntry('Claim'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			status: status,
+			elementStatus: elementStatus,
+			type: type,
+			subType: subType,
+			use: use,
+			elementUse: elementUse,
+			patient: patient,
+			billablePeriod: billablePeriod,
+			created: created,
+			elementCreated: elementCreated,
+			enterer: enterer,
+			insurer: insurer,
+			provider: provider,
+			priority: priority,
+			fundsReserve: fundsReserve,
+			related: related,
+			prescription: prescription,
+			originalPrescription: originalPrescription,
+			payee: payee,
+			referral: referral,
+			facility: facility,
+			careTeam: careTeam,
+			supportingInfo: supportingInfo,
+			diagnosis: diagnosis,
+			procedure: procedure,
+			insurance: insurance,
+			accident: accident,
+			item: item,
+			total: total);
+	}
+
   @HiveField(0)
   final String resourceType= 'Claim';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  A unique identifier assigned to this claim.
   @HiveField(11)
   List<Identifier> identifier;
-
-  //  The status of the resource instance.
   @HiveField(12)
   String status;
-
-  //  Extensions for status
   @HiveField(13)
   Element elementStatus;
-
-  //  The category of claim, e.g. oral, pharmacy, vision, institutional,
-  // professional.
   @HiveField(14)
   CodeableConcept type;
-
-  //  A finer grained suite of claim type codes which may convey additional
-  // information such as Inpatient vs Outpatient and/or a specialty service.
   @HiveField(15)
   CodeableConcept subType;
-
-  //  A code to indicate whether the nature of the request is: to request
-  // adjudication of products and services previously rendered; or
-  // requesting authorization and adjudication for provision in the future;
-  // or requesting the non-binding adjudication of the listed products and
-  // services which could be provided in the future.
   @HiveField(16)
   String use; // <code> enum: claim/preauthorization/predetermination;
-
-  //  Extensions for use
   @HiveField(17)
   Element elementUse;
-
-  //  The party to whom the professional services and/or products have been
-  // supplied or are being considered and for whom actual or forecast
-  // reimbursement is sought.
   @HiveField(18)
   Reference patient;
-
-  //  The period for which charges are being submitted.
   @HiveField(19)
   Period billablePeriod;
-
-  //  The date this resource was created.
   @HiveField(20)
   DateTime created;
-
-  //  Extensions for created
   @HiveField(21)
   Element elementCreated;
-
-  //  Individual who created the claim, predetermination or
-  // preauthorization.
   @HiveField(22)
   Reference enterer;
-
-  //  The Insurer who is target of the request.
   @HiveField(23)
   Reference insurer;
-
-  //  The provider which is responsible for the claim, predetermination or
-  // preauthorization.
   @HiveField(24)
   Reference provider;
-
-  //  The provider-required urgency of processing the request. Typical
-  // values include: stat, routine deferred.
   @HiveField(25)
   CodeableConcept priority;
-
-  //  A code to indicate whether and for whom funds are to be reserved for
-  // future claims.
   @HiveField(26)
   CodeableConcept fundsReserve;
-
-  //  Other claims which are related to this claim such as prior submissions
-  // or claims for related services or for the same event.
   @HiveField(27)
   List<Claim_Related> related;
-
-  //  Prescription to support the dispensing of pharmacy, device or vision
-  // products.
   @HiveField(28)
   Reference prescription;
-
-  //  Original prescription which has been superseded by this prescription
-  // to support the dispensing of pharmacy services, medications or
-  // products.
   @HiveField(29)
   Reference originalPrescription;
-
-  //  The party to be reimbursed for cost of the products and services
-  // according to the terms of the policy.
   @HiveField(30)
   Claim_Payee payee;
-
-  //  A reference to a referral resource.
   @HiveField(31)
   Reference referral;
-
-  //  Facility where the services were provided.
   @HiveField(32)
   Reference facility;
-
-  //  The members of the team who provided the products and services.
   @HiveField(33)
   List<Claim_CareTeam> careTeam;
-
-  //  Additional information codes regarding exceptions, special
-  // considerations, the condition, situation, prior or concurrent issues.
   @HiveField(34)
   List<Claim_SupportingInfo> supportingInfo;
-
-  //  Information about diagnoses relevant to the claim items.
   @HiveField(35)
   List<Claim_Diagnosis> diagnosis;
-
-  //  Procedures performed on the patient relevant to the billing items with
-  // the claim.
   @HiveField(36)
   List<Claim_Procedure> procedure;
-
-  //  Financial instruments for reimbursement for the health care products
-  // and services specified on the claim.
   @HiveField(37)
   List<Claim_Insurance> insurance;
-
-  //  Details of an accident which resulted in injuries which required the
-  // products and services listed in the claim.
   @HiveField(38)
   Claim_Accident accident;
-
-  //  A claim line. Either a simple  product or service or a 'group' of
-  // details which can each be a simple items or groups of sub-details.
   @HiveField(39)
   List<Claim_Item> item;
-
-  //  The total value of the all the items in the claim.
   @HiveField(40)
   Money total;
 
 Claim(
-  this.type,
-    this.patient,
-    this.provider,
-    this.priority,
-    this.insurance,
-    {this.id,
+  {this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -254,14 +203,18 @@ Claim(
     this.identifier,
     this.status,
     this.elementStatus,
+    @required this.type,
     this.subType,
     this.use,
     this.elementUse,
+    @required this.patient,
     this.billablePeriod,
     this.created,
     this.elementCreated,
     this.enterer,
     this.insurer,
+    @required this.provider,
+    @required this.priority,
     this.fundsReserve,
     this.related,
     this.prescription,
@@ -273,6 +226,7 @@ Claim(
     this.supportingInfo,
     this.diagnosis,
     this.procedure,
+    @required this.insurance,
     this.accident,
     this.item,
     this.total
@@ -285,40 +239,27 @@ Claim(
 @JsonSerializable(explicitToJson: true)
 class Claim_Related {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Claim_Related> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Reference claim,
+		CodeableConcept relationship,
+		Identifier reference}) async {
+	 return Claim_Related(
+			id: await newEntry('Claim_Related'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			claim: claim,
+			relationship: relationship,
+			reference: reference);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Reference to a related claim.
   Reference claim;
-
-  //  A code to convey how the claims are related.
   CodeableConcept relationship;
-
-  //  An alternate organizational reference to the case or file to which
-  // this particular claim pertains.
   Identifier reference;
 
 Claim_Related(
@@ -337,44 +278,31 @@ Claim_Related(
 @JsonSerializable(explicitToJson: true)
 class Claim_Payee {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Claim_Payee> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept type,
+		Reference party}) async {
+	 return Claim_Payee(
+			id: await newEntry('Claim_Payee'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			type: type,
+			party: party);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Type of Party to be reimbursed: subscriber, provider, other.
   CodeableConcept type;
-
-  //  Reference to the individual or organization to whom any payment will
-  // be made.
   Reference party;
 
 Claim_Payee(
-  this.type,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
+    @required this.type,
     this.party
     });
 
@@ -385,63 +313,48 @@ Claim_Payee(
 @JsonSerializable(explicitToJson: true)
 class Claim_CareTeam {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Claim_CareTeam> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		int sequence,
+		Element elementSequence,
+		Reference provider,
+		bool responsible,
+		Element elementResponsible,
+		CodeableConcept role,
+		CodeableConcept qualification}) async {
+	 return Claim_CareTeam(
+			id: await newEntry('Claim_CareTeam'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			sequence: sequence,
+			elementSequence: elementSequence,
+			provider: provider,
+			responsible: responsible,
+			elementResponsible: elementResponsible,
+			role: role,
+			qualification: qualification);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A number to uniquely identify care team entries.
   int sequence;
-
-  //  Extensions for sequence
   Element elementSequence;
-
-  //  Member of the team who provided the product or service.
   Reference provider;
-
-  //  The party who is billing and/or responsible for the claimed products
-  // or services.
   bool responsible;
-
-  //  Extensions for responsible
   Element elementResponsible;
-
-  //  The lead, assisting or supervising practitioner and their discipline
-  // if a multidisciplinary team.
   CodeableConcept role;
-
-  //  The qualification of the practitioner which is applicable for this
-  // service.
   CodeableConcept qualification;
 
 Claim_CareTeam(
-  this.provider,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.sequence,
     this.elementSequence,
+    @required this.provider,
     this.responsible,
     this.elementResponsible,
     this.role,
@@ -455,98 +368,72 @@ Claim_CareTeam(
 @JsonSerializable(explicitToJson: true)
 class Claim_SupportingInfo {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Claim_SupportingInfo> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		int sequence,
+		Element elementSequence,
+		CodeableConcept category,
+		CodeableConcept code,
+		String timingDate,
+		Element elementTimingDate,
+		Period timingPeriod,
+		bool valueBoolean,
+		Element elementValueBoolean,
+		String valueString,
+		Element elementValueString,
+		Quantity valueQuantity,
+		Attachment valueAttachment,
+		Reference valueReference,
+		CodeableConcept reason}) async {
+	 return Claim_SupportingInfo(
+			id: await newEntry('Claim_SupportingInfo'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			sequence: sequence,
+			elementSequence: elementSequence,
+			category: category,
+			code: code,
+			timingDate: timingDate,
+			elementTimingDate: elementTimingDate,
+			timingPeriod: timingPeriod,
+			valueBoolean: valueBoolean,
+			elementValueBoolean: elementValueBoolean,
+			valueString: valueString,
+			elementValueString: elementValueString,
+			valueQuantity: valueQuantity,
+			valueAttachment: valueAttachment,
+			valueReference: valueReference,
+			reason: reason);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A number to uniquely identify supporting information entries.
   int sequence;
-
-  //  Extensions for sequence
   Element elementSequence;
-
-  //  The general class of the information supplied: information; exception;
-  // accident, employment; onset, etc.
   CodeableConcept category;
-
-  //  System and code pertaining to the specific information regarding
-  // special conditions relating to the setting, treatment or patient  for
-  // which care is sought.
   CodeableConcept code;
-
-  //  The date when or period to which this information refers.
   String timingDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
-
-  //  Extensions for timingDate
   Element elementTimingDate;
-
-  //  The date when or period to which this information refers.
   Period timingPeriod;
-
-  //  Additional data or information such as resources, documents, images
-  // etc. including references to the data or the actual inclusion of the
-  // data.
   bool valueBoolean; //  pattern: ^true|false$
-
-  //  Extensions for valueBoolean
   Element elementValueBoolean;
-
-  //  Additional data or information such as resources, documents, images
-  // etc. including references to the data or the actual inclusion of the
-  // data.
   String valueString; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for valueString
   Element elementValueString;
-
-  //  Additional data or information such as resources, documents, images
-  // etc. including references to the data or the actual inclusion of the
-  // data.
   Quantity valueQuantity;
-
-  //  Additional data or information such as resources, documents, images
-  // etc. including references to the data or the actual inclusion of the
-  // data.
   Attachment valueAttachment;
-
-  //  Additional data or information such as resources, documents, images
-  // etc. including references to the data or the actual inclusion of the
-  // data.
   Reference valueReference;
-
-  //  Provides the reason in the situation where a reason code is required
-  // in addition to the content.
   CodeableConcept reason;
 
 Claim_SupportingInfo(
-  this.category,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.sequence,
     this.elementSequence,
+    @required this.category,
     this.code,
     this.timingDate,
     this.elementTimingDate,
@@ -568,56 +455,39 @@ Claim_SupportingInfo(
 @JsonSerializable(explicitToJson: true)
 class Claim_Diagnosis {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Claim_Diagnosis> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		int sequence,
+		Element elementSequence,
+		CodeableConcept diagnosisCodeableConcept,
+		Reference diagnosisReference,
+		List<CodeableConcept> type,
+		CodeableConcept onAdmission,
+		CodeableConcept packageCode}) async {
+	 return Claim_Diagnosis(
+			id: await newEntry('Claim_Diagnosis'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			sequence: sequence,
+			elementSequence: elementSequence,
+			diagnosisCodeableConcept: diagnosisCodeableConcept,
+			diagnosisReference: diagnosisReference,
+			type: type,
+			onAdmission: onAdmission,
+			packageCode: packageCode);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A number to uniquely identify diagnosis entries.
   int sequence;
-
-  //  Extensions for sequence
   Element elementSequence;
-
-  //  The nature of illness or problem in a coded form or as a reference to
-  // an external defined Condition.
   CodeableConcept diagnosisCodeableConcept;
-
-  //  The nature of illness or problem in a coded form or as a reference to
-  // an external defined Condition.
   Reference diagnosisReference;
-
-  //  When the condition was observed or the relative ranking.
   List<CodeableConcept> type;
-
-  //  Indication of whether the diagnosis was present on admission to a
-  // facility.
   CodeableConcept onAdmission;
-
-  //  A package billing code or bundle code used to group products and
-  // services to a particular health condition (such as heart attack) which
-  // is based on a predetermined grouping code system.
   CodeableConcept packageCode;
 
 Claim_Diagnosis(
@@ -640,56 +510,42 @@ Claim_Diagnosis(
 @JsonSerializable(explicitToJson: true)
 class Claim_Procedure {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Claim_Procedure> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		int sequence,
+		Element elementSequence,
+		List<CodeableConcept> type,
+		DateTime date,
+		Element elementDate,
+		CodeableConcept procedureCodeableConcept,
+		Reference procedureReference,
+		List<Reference> udi}) async {
+	 return Claim_Procedure(
+			id: await newEntry('Claim_Procedure'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			sequence: sequence,
+			elementSequence: elementSequence,
+			type: type,
+			date: date,
+			elementDate: elementDate,
+			procedureCodeableConcept: procedureCodeableConcept,
+			procedureReference: procedureReference,
+			udi: udi);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A number to uniquely identify procedure entries.
   int sequence;
-
-  //  Extensions for sequence
   Element elementSequence;
-
-  //  When the condition was observed or the relative ranking.
   List<CodeableConcept> type;
-
-  //  Date and optionally time the procedure was performed.
   DateTime date;
-
-  //  Extensions for date
   Element elementDate;
-
-  //  The code or reference to a Procedure resource which identifies the
-  // clinical intervention performed.
   CodeableConcept procedureCodeableConcept;
-
-  //  The code or reference to a Procedure resource which identifies the
-  // clinical intervention performed.
   Reference procedureReference;
-
-  //  Unique Device Identifiers associated with this line item.
   List<Reference> udi;
 
 Claim_Procedure(
@@ -713,78 +569,55 @@ Claim_Procedure(
 @JsonSerializable(explicitToJson: true)
 class Claim_Insurance {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Claim_Insurance> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		int sequence,
+		Element elementSequence,
+		bool focal,
+		Element elementFocal,
+		Identifier identifier,
+		Reference coverage,
+		String businessArrangement,
+		Element elementBusinessArrangement,
+		List<String> preAuthRef,
+		List<Element> elementPreAuthRef,
+		Reference claimResponse}) async {
+	 return Claim_Insurance(
+			id: await newEntry('Claim_Insurance'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			sequence: sequence,
+			elementSequence: elementSequence,
+			focal: focal,
+			elementFocal: elementFocal,
+			identifier: identifier,
+			coverage: coverage,
+			businessArrangement: businessArrangement,
+			elementBusinessArrangement: elementBusinessArrangement,
+			preAuthRef: preAuthRef,
+			elementPreAuthRef: elementPreAuthRef,
+			claimResponse: claimResponse);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A number to uniquely identify insurance entries and provide a sequence
-  // of coverages to convey coordination of benefit order.
   int sequence;
-
-  //  Extensions for sequence
   Element elementSequence;
-
-  //  A flag to indicate that this Coverage is to be used for adjudication
-  // of this claim when set to true.
   bool focal;
-
-  //  Extensions for focal
   Element elementFocal;
-
-  //  The business identifier to be used when the claim is sent for
-  // adjudication against this insurance policy.
   Identifier identifier;
-
-  //  Reference to the insurance card level information contained in the
-  // Coverage resource. The coverage issuing insurer will use these details
-  // to locate the patient's actual coverage within the insurer's
-  // information system.
   Reference coverage;
-
-  //  A business agreement number established between the provider and the
-  // insurer for special business processing purposes.
   String businessArrangement;
-
-  //  Extensions for businessArrangement
   Element elementBusinessArrangement;
-
-  //  Reference numbers previously provided by the insurer to the provider
-  // to be quoted on subsequent claims containing services or products
-  // related to the prior authorization.
   List<String> preAuthRef;
-
-  //  Extensions for preAuthRef
   List<Element> elementPreAuthRef;
-
-  //  The result of the adjudication of the line items for the Coverage
-  // specified in this insurance.
   Reference claimResponse;
 
 Claim_Insurance(
-  this.coverage,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.sequence,
@@ -792,6 +625,7 @@ Claim_Insurance(
     this.focal,
     this.elementFocal,
     this.identifier,
+    @required this.coverage,
     this.businessArrangement,
     this.elementBusinessArrangement,
     this.preAuthRef,
@@ -806,48 +640,33 @@ Claim_Insurance(
 @JsonSerializable(explicitToJson: true)
 class Claim_Accident {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Claim_Accident> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String date,
+		Element elementDate,
+		CodeableConcept type,
+		Address locationAddress,
+		Reference locationReference}) async {
+	 return Claim_Accident(
+			id: await newEntry('Claim_Accident'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			date: date,
+			elementDate: elementDate,
+			type: type,
+			locationAddress: locationAddress,
+			locationReference: locationReference);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Date of an accident event  related to the products and services
-  // contained in the claim.
   String date;
-
-  //  Extensions for date
   Element elementDate;
-
-  //  The type or context of the accident event for the purposes of
-  // selection of potential insurance coverages and determination of
-  // coordination between insurers.
   CodeableConcept type;
-
-  //  The physical location of the accident event.
   Address locationAddress;
-
-  //  The physical location of the accident event.
   Reference locationReference;
 
 Claim_Accident(
@@ -868,145 +687,115 @@ Claim_Accident(
 @JsonSerializable(explicitToJson: true)
 class Claim_Item {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Claim_Item> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		int sequence,
+		Element elementSequence,
+		List<int> careTeamSequence,
+		List<Element> elementCareTeamSequence,
+		List<int> diagnosisSequence,
+		List<Element> elementDiagnosisSequence,
+		List<int> procedureSequence,
+		List<Element> elementProcedureSequence,
+		List<int> informationSequence,
+		List<Element> elementInformationSequence,
+		CodeableConcept revenue,
+		CodeableConcept category,
+		CodeableConcept productOrService,
+		List<CodeableConcept> modifier,
+		List<CodeableConcept> programCode,
+		String servicedDate,
+		Element elementServicedDate,
+		Period servicedPeriod,
+		CodeableConcept locationCodeableConcept,
+		Address locationAddress,
+		Reference locationReference,
+		Quantity quantity,
+		Money unitPrice,
+		double factor,
+		Element elementFactor,
+		Money net,
+		List<Reference> udi,
+		CodeableConcept bodySite,
+		List<CodeableConcept> subSite,
+		List<Reference> encounter,
+		List<Claim_Detail> detail}) async {
+	 return Claim_Item(
+			id: await newEntry('Claim_Item'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			sequence: sequence,
+			elementSequence: elementSequence,
+			careTeamSequence: careTeamSequence,
+			elementCareTeamSequence: elementCareTeamSequence,
+			diagnosisSequence: diagnosisSequence,
+			elementDiagnosisSequence: elementDiagnosisSequence,
+			procedureSequence: procedureSequence,
+			elementProcedureSequence: elementProcedureSequence,
+			informationSequence: informationSequence,
+			elementInformationSequence: elementInformationSequence,
+			revenue: revenue,
+			category: category,
+			productOrService: productOrService,
+			modifier: modifier,
+			programCode: programCode,
+			servicedDate: servicedDate,
+			elementServicedDate: elementServicedDate,
+			servicedPeriod: servicedPeriod,
+			locationCodeableConcept: locationCodeableConcept,
+			locationAddress: locationAddress,
+			locationReference: locationReference,
+			quantity: quantity,
+			unitPrice: unitPrice,
+			factor: factor,
+			elementFactor: elementFactor,
+			net: net,
+			udi: udi,
+			bodySite: bodySite,
+			subSite: subSite,
+			encounter: encounter,
+			detail: detail);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A number to uniquely identify item entries.
   int sequence;
-
-  //  Extensions for sequence
   Element elementSequence;
-
-  //  CareTeam members related to this service or product.
   List<int> careTeamSequence;
-
-  //  Extensions for careTeamSequence
   List<Element> elementCareTeamSequence;
-
-  //  Diagnosis applicable for this service or product.
   List<int> diagnosisSequence;
-
-  //  Extensions for diagnosisSequence
   List<Element> elementDiagnosisSequence;
-
-  //  Procedures applicable for this service or product.
   List<int> procedureSequence;
-
-  //  Extensions for procedureSequence
   List<Element> elementProcedureSequence;
-
-  //  Exceptions, special conditions and supporting information applicable
-  // for this service or product.
   List<int> informationSequence;
-
-  //  Extensions for informationSequence
   List<Element> elementInformationSequence;
-
-  //  The type of revenue or cost center providing the product and/or
-  // service.
   CodeableConcept revenue;
-
-  //  Code to identify the general type of benefits under which products and
-  // services are provided.
   CodeableConcept category;
-
-  //  When the value is a group code then this item collects a set of
-  // related claim details, otherwise this contains the product, service,
-  // drug or other billing code for the item.
   CodeableConcept productOrService;
-
-  //  Item typification or modifiers codes to convey additional context for
-  // the product or service.
   List<CodeableConcept> modifier;
-
-  //  Identifies the program under which this may be recovered.
   List<CodeableConcept> programCode;
-
-  //  The date or dates when the service or product was supplied, performed
-  // or completed.
   String servicedDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
-
-  //  Extensions for servicedDate
   Element elementServicedDate;
-
-  //  The date or dates when the service or product was supplied, performed
-  // or completed.
   Period servicedPeriod;
-
-  //  Where the product or service was provided.
   CodeableConcept locationCodeableConcept;
-
-  //  Where the product or service was provided.
   Address locationAddress;
-
-  //  Where the product or service was provided.
   Reference locationReference;
-
-  //  The number of repetitions of a service or product.
   Quantity quantity;
-
-  //  If the item is not a group then this is the fee for the product or
-  // service, otherwise this is the total of the fees for the details of the
-  // group.
   Money unitPrice;
-
-  //  A real number that represents a multiplier used in determining the
-  // overall value of services delivered and/or goods received. The concept
-  // of a Factor allows for a discount or surcharge multiplier to be applied
-  // to a monetary amount.
   double factor;
-
-  //  Extensions for factor
   Element elementFactor;
-
-  //  The quantity times the unit price for an additional service or product
-  // or charge.
   Money net;
-
-  //  Unique Device Identifiers associated with this line item.
   List<Reference> udi;
-
-  //  Physical service site on the patient (limb, tooth, etc.).
   CodeableConcept bodySite;
-
-  //  A region or surface of the bodySite, e.g. limb region or tooth
-  // surface(s).
   List<CodeableConcept> subSite;
-
-  //  The Encounters during which this Claim was created or to which the
-  // creation of this record is tightly associated.
   List<Reference> encounter;
-
-  //  A claim detail line. Either a simple (a product or service) or a
-  // 'group' of sub-details which are simple items.
   List<Claim_Detail> detail;
 
 Claim_Item(
-  this.productOrService,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.sequence,
@@ -1021,6 +810,7 @@ Claim_Item(
     this.elementInformationSequence,
     this.revenue,
     this.category,
+    @required this.productOrService,
     this.modifier,
     this.programCode,
     this.servicedDate,
@@ -1048,95 +838,71 @@ Claim_Item(
 @JsonSerializable(explicitToJson: true)
 class Claim_Detail {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Claim_Detail> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		int sequence,
+		Element elementSequence,
+		CodeableConcept revenue,
+		CodeableConcept category,
+		CodeableConcept productOrService,
+		List<CodeableConcept> modifier,
+		List<CodeableConcept> programCode,
+		Quantity quantity,
+		Money unitPrice,
+		double factor,
+		Element elementFactor,
+		Money net,
+		List<Reference> udi,
+		List<Claim_SubDetail> subDetail}) async {
+	 return Claim_Detail(
+			id: await newEntry('Claim_Detail'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			sequence: sequence,
+			elementSequence: elementSequence,
+			revenue: revenue,
+			category: category,
+			productOrService: productOrService,
+			modifier: modifier,
+			programCode: programCode,
+			quantity: quantity,
+			unitPrice: unitPrice,
+			factor: factor,
+			elementFactor: elementFactor,
+			net: net,
+			udi: udi,
+			subDetail: subDetail);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A number to uniquely identify item entries.
   int sequence;
-
-  //  Extensions for sequence
   Element elementSequence;
-
-  //  The type of revenue or cost center providing the product and/or
-  // service.
   CodeableConcept revenue;
-
-  //  Code to identify the general type of benefits under which products and
-  // services are provided.
   CodeableConcept category;
-
-  //  When the value is a group code then this item collects a set of
-  // related claim details, otherwise this contains the product, service,
-  // drug or other billing code for the item.
   CodeableConcept productOrService;
-
-  //  Item typification or modifiers codes to convey additional context for
-  // the product or service.
   List<CodeableConcept> modifier;
-
-  //  Identifies the program under which this may be recovered.
   List<CodeableConcept> programCode;
-
-  //  The number of repetitions of a service or product.
   Quantity quantity;
-
-  //  If the item is not a group then this is the fee for the product or
-  // service, otherwise this is the total of the fees for the details of the
-  // group.
   Money unitPrice;
-
-  //  A real number that represents a multiplier used in determining the
-  // overall value of services delivered and/or goods received. The concept
-  // of a Factor allows for a discount or surcharge multiplier to be applied
-  // to a monetary amount.
   double factor;
-
-  //  Extensions for factor
   Element elementFactor;
-
-  //  The quantity times the unit price for an additional service or product
-  // or charge.
   Money net;
-
-  //  Unique Device Identifiers associated with this line item.
   List<Reference> udi;
-
-  //  A claim detail line. Either a simple (a product or service) or a
-  // 'group' of sub-details which are simple items.
   List<Claim_SubDetail> subDetail;
 
 Claim_Detail(
-  this.productOrService,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.sequence,
     this.elementSequence,
     this.revenue,
     this.category,
+    @required this.productOrService,
     this.modifier,
     this.programCode,
     this.quantity,
@@ -1155,91 +921,68 @@ Claim_Detail(
 @JsonSerializable(explicitToJson: true)
 class Claim_SubDetail {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Claim_SubDetail> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		int sequence,
+		Element elementSequence,
+		CodeableConcept revenue,
+		CodeableConcept category,
+		CodeableConcept productOrService,
+		List<CodeableConcept> modifier,
+		List<CodeableConcept> programCode,
+		Quantity quantity,
+		Money unitPrice,
+		double factor,
+		Element elementFactor,
+		Money net,
+		List<Reference> udi}) async {
+	 return Claim_SubDetail(
+			id: await newEntry('Claim_SubDetail'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			sequence: sequence,
+			elementSequence: elementSequence,
+			revenue: revenue,
+			category: category,
+			productOrService: productOrService,
+			modifier: modifier,
+			programCode: programCode,
+			quantity: quantity,
+			unitPrice: unitPrice,
+			factor: factor,
+			elementFactor: elementFactor,
+			net: net,
+			udi: udi);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A number to uniquely identify item entries.
   int sequence;
-
-  //  Extensions for sequence
   Element elementSequence;
-
-  //  The type of revenue or cost center providing the product and/or
-  // service.
   CodeableConcept revenue;
-
-  //  Code to identify the general type of benefits under which products and
-  // services are provided.
   CodeableConcept category;
-
-  //  When the value is a group code then this item collects a set of
-  // related claim details, otherwise this contains the product, service,
-  // drug or other billing code for the item.
   CodeableConcept productOrService;
-
-  //  Item typification or modifiers codes to convey additional context for
-  // the product or service.
   List<CodeableConcept> modifier;
-
-  //  Identifies the program under which this may be recovered.
   List<CodeableConcept> programCode;
-
-  //  The number of repetitions of a service or product.
   Quantity quantity;
-
-  //  If the item is not a group then this is the fee for the product or
-  // service, otherwise this is the total of the fees for the details of the
-  // group.
   Money unitPrice;
-
-  //  A real number that represents a multiplier used in determining the
-  // overall value of services delivered and/or goods received. The concept
-  // of a Factor allows for a discount or surcharge multiplier to be applied
-  // to a monetary amount.
   double factor;
-
-  //  Extensions for factor
   Element elementFactor;
-
-  //  The quantity times the unit price for an additional service or product
-  // or charge.
   Money net;
-
-  //  Unique Device Identifiers associated with this line item.
   List<Reference> udi;
 
 Claim_SubDetail(
-  this.productOrService,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.sequence,
     this.elementSequence,
     this.revenue,
     this.category,
+    @required this.productOrService,
     this.modifier,
     this.programCode,
     this.quantity,
@@ -1271,11 +1014,6 @@ class ClaimAdapter extends TypeAdapter<Claim> {
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Claim(
-      fields[14] as CodeableConcept,
-      fields[18] as Reference,
-      fields[24] as Reference,
-      fields[25] as CodeableConcept,
-      (fields[37] as List)?.cast<Claim_Insurance>(),
       id: fields[1] as String,
       meta: fields[2] as Meta,
       implicitRules: fields[3] as String,
@@ -1289,14 +1027,18 @@ class ClaimAdapter extends TypeAdapter<Claim> {
       identifier: (fields[11] as List)?.cast<Identifier>(),
       status: fields[12] as String,
       elementStatus: fields[13] as Element,
+      type: fields[14] as CodeableConcept,
       subType: fields[15] as CodeableConcept,
       use: fields[16] as String,
       elementUse: fields[17] as Element,
+      patient: fields[18] as Reference,
       billablePeriod: fields[19] as Period,
       created: fields[20] as DateTime,
       elementCreated: fields[21] as Element,
       enterer: fields[22] as Reference,
       insurer: fields[23] as Reference,
+      provider: fields[24] as Reference,
+      priority: fields[25] as CodeableConcept,
       fundsReserve: fields[26] as CodeableConcept,
       related: (fields[27] as List)?.cast<Claim_Related>(),
       prescription: fields[28] as Reference,
@@ -1308,6 +1050,7 @@ class ClaimAdapter extends TypeAdapter<Claim> {
       supportingInfo: (fields[34] as List)?.cast<Claim_SupportingInfo>(),
       diagnosis: (fields[35] as List)?.cast<Claim_Diagnosis>(),
       procedure: (fields[36] as List)?.cast<Claim_Procedure>(),
+      insurance: (fields[37] as List)?.cast<Claim_Insurance>(),
       accident: fields[38] as Claim_Accident,
       item: (fields[39] as List)?.cast<Claim_Item>(),
       total: fields[40] as Money,
@@ -1409,23 +1152,6 @@ class ClaimAdapter extends TypeAdapter<Claim> {
 
 Claim _$ClaimFromJson(Map<String, dynamic> json) {
   return Claim(
-    json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
-    json['patient'] == null
-        ? null
-        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
-    json['provider'] == null
-        ? null
-        : Reference.fromJson(json['provider'] as Map<String, dynamic>),
-    json['priority'] == null
-        ? null
-        : CodeableConcept.fromJson(json['priority'] as Map<String, dynamic>),
-    (json['insurance'] as List)
-        ?.map((e) => e == null
-            ? null
-            : Claim_Insurance.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -1462,6 +1188,9 @@ Claim _$ClaimFromJson(Map<String, dynamic> json) {
     elementStatus: json['elementStatus'] == null
         ? null
         : Element.fromJson(json['elementStatus'] as Map<String, dynamic>),
+    type: json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     subType: json['subType'] == null
         ? null
         : CodeableConcept.fromJson(json['subType'] as Map<String, dynamic>),
@@ -1469,6 +1198,9 @@ Claim _$ClaimFromJson(Map<String, dynamic> json) {
     elementUse: json['elementUse'] == null
         ? null
         : Element.fromJson(json['elementUse'] as Map<String, dynamic>),
+    patient: json['patient'] == null
+        ? null
+        : Reference.fromJson(json['patient'] as Map<String, dynamic>),
     billablePeriod: json['billablePeriod'] == null
         ? null
         : Period.fromJson(json['billablePeriod'] as Map<String, dynamic>),
@@ -1484,6 +1216,12 @@ Claim _$ClaimFromJson(Map<String, dynamic> json) {
     insurer: json['insurer'] == null
         ? null
         : Reference.fromJson(json['insurer'] as Map<String, dynamic>),
+    provider: json['provider'] == null
+        ? null
+        : Reference.fromJson(json['provider'] as Map<String, dynamic>),
+    priority: json['priority'] == null
+        ? null
+        : CodeableConcept.fromJson(json['priority'] as Map<String, dynamic>),
     fundsReserve: json['fundsReserve'] == null
         ? null
         : CodeableConcept.fromJson(
@@ -1528,6 +1266,11 @@ Claim _$ClaimFromJson(Map<String, dynamic> json) {
         ?.map((e) => e == null
             ? null
             : Claim_Procedure.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    insurance: (json['insurance'] as List)
+        ?.map((e) => e == null
+            ? null
+            : Claim_Insurance.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     accident: json['accident'] == null
         ? null
@@ -1624,9 +1367,6 @@ Map<String, dynamic> _$Claim_RelatedToJson(Claim_Related instance) =>
 
 Claim_Payee _$Claim_PayeeFromJson(Map<String, dynamic> json) {
   return Claim_Payee(
-    json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1636,6 +1376,9 @@ Claim_Payee _$Claim_PayeeFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    type: json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     party: json['party'] == null
         ? null
         : Reference.fromJson(json['party'] as Map<String, dynamic>),
@@ -1654,9 +1397,6 @@ Map<String, dynamic> _$Claim_PayeeToJson(Claim_Payee instance) =>
 
 Claim_CareTeam _$Claim_CareTeamFromJson(Map<String, dynamic> json) {
   return Claim_CareTeam(
-    json['provider'] == null
-        ? null
-        : Reference.fromJson(json['provider'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1670,6 +1410,9 @@ Claim_CareTeam _$Claim_CareTeamFromJson(Map<String, dynamic> json) {
     elementSequence: json['elementSequence'] == null
         ? null
         : Element.fromJson(json['elementSequence'] as Map<String, dynamic>),
+    provider: json['provider'] == null
+        ? null
+        : Reference.fromJson(json['provider'] as Map<String, dynamic>),
     responsible: json['responsible'] as bool,
     elementResponsible: json['elementResponsible'] == null
         ? null
@@ -1701,9 +1444,6 @@ Map<String, dynamic> _$Claim_CareTeamToJson(Claim_CareTeam instance) =>
 
 Claim_SupportingInfo _$Claim_SupportingInfoFromJson(Map<String, dynamic> json) {
   return Claim_SupportingInfo(
-    json['category'] == null
-        ? null
-        : CodeableConcept.fromJson(json['category'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1717,6 +1457,9 @@ Claim_SupportingInfo _$Claim_SupportingInfoFromJson(Map<String, dynamic> json) {
     elementSequence: json['elementSequence'] == null
         ? null
         : Element.fromJson(json['elementSequence'] as Map<String, dynamic>),
+    category: json['category'] == null
+        ? null
+        : CodeableConcept.fromJson(json['category'] as Map<String, dynamic>),
     code: json['code'] == null
         ? null
         : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
@@ -1883,9 +1626,6 @@ Map<String, dynamic> _$Claim_ProcedureToJson(Claim_Procedure instance) =>
 
 Claim_Insurance _$Claim_InsuranceFromJson(Map<String, dynamic> json) {
   return Claim_Insurance(
-    json['coverage'] == null
-        ? null
-        : Reference.fromJson(json['coverage'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1906,6 +1646,9 @@ Claim_Insurance _$Claim_InsuranceFromJson(Map<String, dynamic> json) {
     identifier: json['identifier'] == null
         ? null
         : Identifier.fromJson(json['identifier'] as Map<String, dynamic>),
+    coverage: json['coverage'] == null
+        ? null
+        : Reference.fromJson(json['coverage'] as Map<String, dynamic>),
     businessArrangement: json['businessArrangement'] as String,
     elementBusinessArrangement: json['elementBusinessArrangement'] == null
         ? null
@@ -1985,10 +1728,6 @@ Map<String, dynamic> _$Claim_AccidentToJson(Claim_Accident instance) =>
 
 Claim_Item _$Claim_ItemFromJson(Map<String, dynamic> json) {
   return Claim_Item(
-    json['productOrService'] == null
-        ? null
-        : CodeableConcept.fromJson(
-            json['productOrService'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -2032,6 +1771,10 @@ Claim_Item _$Claim_ItemFromJson(Map<String, dynamic> json) {
     category: json['category'] == null
         ? null
         : CodeableConcept.fromJson(json['category'] as Map<String, dynamic>),
+    productOrService: json['productOrService'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['productOrService'] as Map<String, dynamic>),
     modifier: (json['modifier'] as List)
         ?.map((e) => e == null
             ? null
@@ -2141,10 +1884,6 @@ Map<String, dynamic> _$Claim_ItemToJson(Claim_Item instance) =>
 
 Claim_Detail _$Claim_DetailFromJson(Map<String, dynamic> json) {
   return Claim_Detail(
-    json['productOrService'] == null
-        ? null
-        : CodeableConcept.fromJson(
-            json['productOrService'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -2164,6 +1903,10 @@ Claim_Detail _$Claim_DetailFromJson(Map<String, dynamic> json) {
     category: json['category'] == null
         ? null
         : CodeableConcept.fromJson(json['category'] as Map<String, dynamic>),
+    productOrService: json['productOrService'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['productOrService'] as Map<String, dynamic>),
     modifier: (json['modifier'] as List)
         ?.map((e) => e == null
             ? null
@@ -2223,10 +1966,6 @@ Map<String, dynamic> _$Claim_DetailToJson(Claim_Detail instance) =>
 
 Claim_SubDetail _$Claim_SubDetailFromJson(Map<String, dynamic> json) {
   return Claim_SubDetail(
-    json['productOrService'] == null
-        ? null
-        : CodeableConcept.fromJson(
-            json['productOrService'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -2246,6 +1985,10 @@ Claim_SubDetail _$Claim_SubDetailFromJson(Map<String, dynamic> json) {
     category: json['category'] == null
         ? null
         : CodeableConcept.fromJson(json['category'] as Map<String, dynamic>),
+    productOrService: json['productOrService'] == null
+        ? null
+        : CodeableConcept.fromJson(
+            json['productOrService'] as Map<String, dynamic>),
     modifier: (json['modifier'] as List)
         ?.map((e) => e == null
             ? null

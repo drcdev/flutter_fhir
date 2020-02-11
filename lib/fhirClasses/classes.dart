@@ -668,7 +668,7 @@ classesSetup() async {
     'VisionPrescription_LensSpecification',
     'VisionPrescription_Prism'
   ];
-
+  
   Hive.registerAdapter(ClassesAdapter());
   final appDocumentDir = await getApplicationDocumentsDirectory();
   Hive.init(appDocumentDir.path);
@@ -676,7 +676,7 @@ classesSetup() async {
   DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
   AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
   int tableId = 16;
-
+  
   for (String type in types) {
     if(classesBox.get(type) == null) {
       classesBox.put(
@@ -698,23 +698,22 @@ Future<String> newEntry(String resource) async {
   return tempResource.lastId;
 }
 
-@JsonSerializable(explicitToJson: true)
 @HiveType(typeId: 0)
 class Classes {
   @HiveField(0)
   final String resourceType;
-
+  
   @HiveField(1)
   final String id;
-
+  
   @HiveField(2)
   final String deviceId;
-
+  
   @HiveField(3)
   String lastId;
-
+  
   Classes(this.resourceType, this.id, this.deviceId, this.lastId);
-
+  
   factory Classes.fromJson(Map<String, dynamic> json) =>
       _$ClassesFromJson(json);
   Map<String, dynamic> toJson() => _$ClassesToJson(this);
@@ -729,7 +728,7 @@ class Classes {
 class ClassesAdapter extends TypeAdapter<Classes> {
   @override
   final typeId = 0;
-
+  
   @override
   Classes read(BinaryReader reader) {
     var numOfFields = reader.readByte();
@@ -743,7 +742,7 @@ class ClassesAdapter extends TypeAdapter<Classes> {
       fields[3] as String,
     );
   }
-
+  
   @override
   void write(BinaryWriter writer, Classes obj) {
     writer

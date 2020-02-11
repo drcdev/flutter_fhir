@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/usageContext.dart';
@@ -15,215 +16,154 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 107)
 class ExampleScenario {
 
-  //  This is a ExampleScenario resource
+	static Future<ExampleScenario> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String url,
+		Element elementUrl,
+		List<Identifier> identifier,
+		String version,
+		Element elementVersion,
+		String name,
+		Element elementName,
+		String status,
+		Element elementStatus,
+		bool experimental,
+		Element elementExperimental,
+		DateTime date,
+		Element elementDate,
+		String publisher,
+		Element elementPublisher,
+		List<ContactDetail> contact,
+		List<UsageContext> useContext,
+		List<CodeableConcept> jurisdiction,
+		String copyright,
+		Element elementCopyright,
+		String purpose,
+		Element elementPurpose,
+		List<ExampleScenario_Actor> actor,
+		List<ExampleScenario_Instance> instance,
+		List<ExampleScenario_Process> process,
+		List<String> workflow}) async {
+	 return ExampleScenario(
+			id: await newEntry('ExampleScenario'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			url: url,
+			elementUrl: elementUrl,
+			identifier: identifier,
+			version: version,
+			elementVersion: elementVersion,
+			name: name,
+			elementName: elementName,
+			status: status,
+			elementStatus: elementStatus,
+			experimental: experimental,
+			elementExperimental: elementExperimental,
+			date: date,
+			elementDate: elementDate,
+			publisher: publisher,
+			elementPublisher: elementPublisher,
+			contact: contact,
+			useContext: useContext,
+			jurisdiction: jurisdiction,
+			copyright: copyright,
+			elementCopyright: elementCopyright,
+			purpose: purpose,
+			elementPurpose: elementPurpose,
+			actor: actor,
+			instance: instance,
+			process: process,
+			workflow: workflow);
+	}
+
   @HiveField(0)
   final String resourceType= 'ExampleScenario';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  An absolute URI that is used to identify this example scenario when it
-  // is referenced in a specification, model, design or an instance; also
-  // called its canonical identifier. This SHOULD be globally unique and
-  // SHOULD be a literal address at which at which an authoritative instance
-  // of this example scenario is (or will be) published. This URL can be the
-  // target of a canonical reference. It SHALL remain the same when the
-  // example scenario is stored on different servers.
   @HiveField(11)
   String url;
-
-  //  Extensions for url
   @HiveField(12)
   Element elementUrl;
-
-  //  A formal identifier that is used to identify this example scenario
-  // when it is represented in other formats, or referenced in a
-  // specification, model, design or an instance.
   @HiveField(13)
   List<Identifier> identifier;
-
-  //  The identifier that is used to identify this version of the example
-  // scenario when it is referenced in a specification, model, design or
-  // instance. This is an arbitrary value managed by the example scenario
-  // author and is not expected to be globally unique. For example, it might
-  // be a timestamp (e.g. yyyymmdd) if a managed version is not available.
-  // There is also no expectation that versions can be placed in a
-  // lexicographical sequence.
   @HiveField(14)
   String version;
-
-  //  Extensions for version
   @HiveField(15)
   Element elementVersion;
-
-  //  A natural language name identifying the example scenario. This name
-  // should be usable as an identifier for the module by machine processing
-  // applications such as code generation.
   @HiveField(16)
   String name;
-
-  //  Extensions for name
   @HiveField(17)
   Element elementName;
-
-  //  The status of this example scenario. Enables tracking the life-cycle
-  // of the content.
   @HiveField(18)
   String status; // <code> enum: draft/active/retired/unknown;
-
-  //  Extensions for status
   @HiveField(19)
   Element elementStatus;
-
-  //  A Boolean value to indicate that this example scenario is authored for
-  // testing purposes (or education/evaluation/marketing) and is not
-  // intended to be used for genuine usage.
   @HiveField(20)
   bool experimental;
-
-  //  Extensions for experimental
   @HiveField(21)
   Element elementExperimental;
-
-  //  The date  (and optionally time) when the example scenario was
-  // published. The date must change when the business version changes and
-  // it must change if the status code changes. In addition, it should
-  // change when the substantive content of the example scenario changes.
-  // (e.g. the 'content logical definition').
   @HiveField(22)
   DateTime date;
-
-  //  Extensions for date
   @HiveField(23)
   Element elementDate;
-
-  //  The name of the organization or individual that published the example
-  // scenario.
   @HiveField(24)
   String publisher;
-
-  //  Extensions for publisher
   @HiveField(25)
   Element elementPublisher;
-
-  //  Contact details to assist a user in finding and communicating with the
-  // publisher.
   @HiveField(26)
   List<ContactDetail> contact;
-
-  //  The content was developed with a focus and intent of supporting the
-  // contexts that are listed. These contexts may be general categories
-  // (gender, age, ...) or may be references to specific programs (insurance
-  // plans, studies, ...) and may be used to assist with indexing and
-  // searching for appropriate example scenario instances.
   @HiveField(27)
   List<UsageContext> useContext;
-
-  //  A legal or geographic region in which the example scenario is intended
-  // to be used.
   @HiveField(28)
   List<CodeableConcept> jurisdiction;
-
-  //  A copyright statement relating to the example scenario and/or its
-  // contents. Copyright statements are generally legal restrictions on the
-  // use and publishing of the example scenario.
   @HiveField(29)
   String copyright;
-
-  //  Extensions for copyright
   @HiveField(30)
   Element elementCopyright;
-
-  //  What the example scenario resource is created for. This should not be
-  // used to show the business purpose of the scenario itself, but the
-  // purpose of documenting a scenario.
   @HiveField(31)
   String purpose;
-
-  //  Extensions for purpose
   @HiveField(32)
   Element elementPurpose;
-
-  //  Actor participating in the resource.
   @HiveField(33)
   List<ExampleScenario_Actor> actor;
-
-  //  Each resource and each version that is present in the workflow.
   @HiveField(34)
   List<ExampleScenario_Instance> instance;
-
-  //  Each major process - a group of operations.
   @HiveField(35)
   List<ExampleScenario_Process> process;
-
-  //  Another nested workflow.
   @HiveField(36)
   List<String> workflow;
 
@@ -273,54 +213,42 @@ ExampleScenario(
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_Actor {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ExampleScenario_Actor> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String actorId,
+		Element elementActorId,
+		String type,
+		Element elementType,
+		String name,
+		Element elementName,
+		String description,
+		Element elementDescription}) async {
+	 return ExampleScenario_Actor(
+			id: await newEntry('ExampleScenario_Actor'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			actorId: actorId,
+			elementActorId: elementActorId,
+			type: type,
+			elementType: elementType,
+			name: name,
+			elementName: elementName,
+			description: description,
+			elementDescription: elementDescription);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  ID or acronym of actor.
   String actorId;
-
-  //  Extensions for actorId
   Element elementActorId;
-
-  //  The type of actor - person or system.
   String type; // <code> enum: person/entity;
-
-  //  Extensions for type
   Element elementType;
-
-  //  The name of the actor as shown in the page.
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  The description of the actor.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
 
 ExampleScenario_Actor(
@@ -344,61 +272,47 @@ ExampleScenario_Actor(
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_Instance {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ExampleScenario_Instance> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String resourceId,
+		Element elementResourceId,
+		String resourceType,
+		Element elementResourceType,
+		String name,
+		Element elementName,
+		String description,
+		Element elementDescription,
+		List<ExampleScenario_Version> version,
+		List<ExampleScenario_ContainedInstance> containedInstance}) async {
+	 return ExampleScenario_Instance(
+			id: await newEntry('ExampleScenario_Instance'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			resourceId: resourceId,
+			elementResourceId: elementResourceId,
+			elementResourceType: elementResourceType,
+			name: name,
+			elementName: elementName,
+			description: description,
+			elementDescription: elementDescription,
+			version: version,
+			containedInstance: containedInstance);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The id of the resource for referencing.
   String resourceId;
-
-  //  Extensions for resourceId
   Element elementResourceId;
-
-  //  The type of the resource.
   String resourceType;
-
-  //  Extensions for resourceType
   Element elementResourceType;
-
-  //  A short name for the resource instance.
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  Human-friendly description of the resource instance.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  A specific version of the resource.
   List<ExampleScenario_Version> version;
-
-  //  Resources contained in the instance (e.g. the observations contained
-  // in a bundle).
   List<ExampleScenario_ContainedInstance> containedInstance;
 
 ExampleScenario_Instance(
@@ -423,42 +337,30 @@ ExampleScenario_Instance(
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_Version {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ExampleScenario_Version> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String versionId,
+		Element elementVersionId,
+		String description,
+		Element elementDescription}) async {
+	 return ExampleScenario_Version(
+			id: await newEntry('ExampleScenario_Version'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			versionId: versionId,
+			elementVersionId: elementVersionId,
+			description: description,
+			elementDescription: elementDescription);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The identifier of a specific version of a resource.
   String versionId;
-
-  //  Extensions for versionId
   Element elementVersionId;
-
-  //  The description of the resource version.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
 
 ExampleScenario_Version(
@@ -478,42 +380,30 @@ ExampleScenario_Version(
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_ContainedInstance {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ExampleScenario_ContainedInstance> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String resourceId,
+		Element elementResourceId,
+		String versionId,
+		Element elementVersionId}) async {
+	 return ExampleScenario_ContainedInstance(
+			id: await newEntry('ExampleScenario_ContainedInstance'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			resourceId: resourceId,
+			elementResourceId: elementResourceId,
+			versionId: versionId,
+			elementVersionId: elementVersionId);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Each resource contained in the instance.
   String resourceId;
-
-  //  Extensions for resourceId
   Element elementResourceId;
-
-  //  A specific version of a resource contained in the instance.
   String versionId;
-
-  //  Extensions for versionId
   Element elementVersionId;
 
 ExampleScenario_ContainedInstance(
@@ -533,57 +423,45 @@ ExampleScenario_ContainedInstance(
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_Process {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ExampleScenario_Process> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String title,
+		Element elementTitle,
+		String description,
+		Element elementDescription,
+		String preConditions,
+		Element elementPreConditions,
+		String postConditions,
+		Element elementPostConditions,
+		List<ExampleScenario_Step> step}) async {
+	 return ExampleScenario_Process(
+			id: await newEntry('ExampleScenario_Process'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			title: title,
+			elementTitle: elementTitle,
+			description: description,
+			elementDescription: elementDescription,
+			preConditions: preConditions,
+			elementPreConditions: elementPreConditions,
+			postConditions: postConditions,
+			elementPostConditions: elementPostConditions,
+			step: step);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The diagram title of the group of operations.
   String title;
-
-  //  Extensions for title
   Element elementTitle;
-
-  //  A longer description of the group of operations.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  Description of initial status before the process starts.
   String preConditions;
-
-  //  Extensions for preConditions
   Element elementPreConditions;
-
-  //  Description of final status after the process ends.
   String postConditions;
-
-  //  Extensions for postConditions
   Element elementPostConditions;
-
-  //  Each step of the process.
   List<ExampleScenario_Step> step;
 
 ExampleScenario_Process(
@@ -608,46 +486,33 @@ ExampleScenario_Process(
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_Step {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ExampleScenario_Step> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<ExampleScenario_Process> process,
+		bool pause,
+		Element elementPause,
+		ExampleScenario_Operation operation,
+		List<ExampleScenario_Alternative> alternative}) async {
+	 return ExampleScenario_Step(
+			id: await newEntry('ExampleScenario_Step'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			process: process,
+			pause: pause,
+			elementPause: elementPause,
+			operation: operation,
+			alternative: alternative);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Nested process.
   List<ExampleScenario_Process> process;
-
-  //  If there is a pause in the flow.
   bool pause;
-
-  //  Extensions for pause
   Element elementPause;
-
-  //  Each interaction or action.
   ExampleScenario_Operation operation;
-
-  //  Indicates an alternative step that can be taken instead of the
-  // operations on the base step in exceptional/atypical circumstances.
   List<ExampleScenario_Alternative> alternative;
 
 ExampleScenario_Step(
@@ -668,84 +533,72 @@ ExampleScenario_Step(
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_Operation {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ExampleScenario_Operation> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String number,
+		Element elementNumber,
+		String type,
+		Element elementType,
+		String name,
+		Element elementName,
+		String initiator,
+		Element elementInitiator,
+		String receiver,
+		Element elementReceiver,
+		String description,
+		Element elementDescription,
+		bool initiatorActive,
+		Element elementInitiatorActive,
+		bool receiverActive,
+		Element elementReceiverActive,
+		ExampleScenario_ContainedInstance request,
+		ExampleScenario_ContainedInstance response}) async {
+	 return ExampleScenario_Operation(
+			id: await newEntry('ExampleScenario_Operation'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			number: number,
+			elementNumber: elementNumber,
+			type: type,
+			elementType: elementType,
+			name: name,
+			elementName: elementName,
+			initiator: initiator,
+			elementInitiator: elementInitiator,
+			receiver: receiver,
+			elementReceiver: elementReceiver,
+			description: description,
+			elementDescription: elementDescription,
+			initiatorActive: initiatorActive,
+			elementInitiatorActive: elementInitiatorActive,
+			receiverActive: receiverActive,
+			elementReceiverActive: elementReceiverActive,
+			request: request,
+			response: response);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The sequential number of the interaction, e.g. 1.2.5.
   String number;
-
-  //  Extensions for number
   Element elementNumber;
-
-  //  The type of operation - CRUD.
   String type;
-
-  //  Extensions for type
   Element elementType;
-
-  //  The human-friendly name of the interaction.
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  Who starts the transaction.
   String initiator;
-
-  //  Extensions for initiator
   Element elementInitiator;
-
-  //  Who receives the transaction.
   String receiver;
-
-  //  Extensions for receiver
   Element elementReceiver;
-
-  //  A comment to be inserted in the diagram.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  Whether the initiator is deactivated right after the transaction.
   bool initiatorActive;
-
-  //  Extensions for initiatorActive
   Element elementInitiatorActive;
-
-  //  Whether the receiver is deactivated right after the transaction.
   bool receiverActive;
-
-  //  Extensions for receiverActive
   Element elementReceiverActive;
-
-  //  Each resource instance used by the initiator.
   ExampleScenario_ContainedInstance request;
-
-  //  Each resource instance used by the responder.
   ExampleScenario_ContainedInstance response;
 
 ExampleScenario_Operation(
@@ -779,47 +632,33 @@ ExampleScenario_Operation(
 @JsonSerializable(explicitToJson: true)
 class ExampleScenario_Alternative {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ExampleScenario_Alternative> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String title,
+		Element elementTitle,
+		String description,
+		Element elementDescription,
+		List<ExampleScenario_Step> step}) async {
+	 return ExampleScenario_Alternative(
+			id: await newEntry('ExampleScenario_Alternative'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			title: title,
+			elementTitle: elementTitle,
+			description: description,
+			elementDescription: elementDescription,
+			step: step);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The label to display for the alternative that gives a sense of the
-  // circumstance in which the alternative should be invoked.
   String title;
-
-  //  Extensions for title
   Element elementTitle;
-
-  //  A human-readable description of the alternative explaining when the
-  // alternative should occur rather than the base step.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  What happens in each alternative option.
   List<ExampleScenario_Step> step;
 
 ExampleScenario_Alternative(

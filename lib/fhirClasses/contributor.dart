@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/contactDetail.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
@@ -9,39 +10,36 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @HiveType(typeId: 42)
 class Contributor {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Contributor> newInstance({
+		String id,
+		List<Extension> extension,
+		String type,
+		Element elementType,
+		String name,
+		Element elementName,
+		List<ContactDetail> contact}) async {
+	 return Contributor(
+			id: await newEntry('Contributor'),
+			extension: extension,
+			type: type,
+			elementType: elementType,
+			name: name,
+			elementName: elementName,
+			contact: contact);
+	}
+
   @HiveField(0)
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   @HiveField(1)
   List<Extension> extension;
-
-  //  The type of contributor.
   @HiveField(2)
   String type; // <code> enum: author/editor/reviewer/endorser;
-
-  //  Extensions for type
   @HiveField(3)
   Element elementType;
-
-  //  The name of the individual or organization responsible for the
-  // contribution.
   @HiveField(4)
   String name;
-
-  //  Extensions for name
   @HiveField(5)
   Element elementName;
-
-  //  Contact details to assist a user in finding and communicating with the
-  // contributor.
   @HiveField(6)
   List<ContactDetail> contact;
 

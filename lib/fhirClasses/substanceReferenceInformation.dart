@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -16,101 +17,74 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 190)
 class SubstanceReferenceInformation {
 
-  //  This is a SubstanceReferenceInformation resource
+	static Future<SubstanceReferenceInformation> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String comment,
+		Element elementComment,
+		List<SubstanceReferenceInformation_Gene> gene,
+		List<SubstanceReferenceInformation_GeneElement> geneElement,
+		List<SubstanceReferenceInformation_Classification> classification,
+		List<SubstanceReferenceInformation_Target> target}) async {
+	 return SubstanceReferenceInformation(
+			id: await newEntry('SubstanceReferenceInformation'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			comment: comment,
+			elementComment: elementComment,
+			gene: gene,
+			geneElement: geneElement,
+			classification: classification,
+			target: target);
+	}
+
   @HiveField(0)
   final String resourceType= 'SubstanceReferenceInformation';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  Todo.
   @HiveField(11)
   String comment;
-
-  //  Extensions for comment
   @HiveField(12)
   Element elementComment;
-
-  //  Todo.
   @HiveField(13)
   List<SubstanceReferenceInformation_Gene> gene;
-
-  //  Todo.
   @HiveField(14)
   List<SubstanceReferenceInformation_GeneElement> geneElement;
-
-  //  Todo.
   @HiveField(15)
   List<SubstanceReferenceInformation_Classification> classification;
-
-  //  Todo.
   @HiveField(16)
   List<SubstanceReferenceInformation_Target> target;
 
@@ -140,39 +114,27 @@ SubstanceReferenceInformation(
 @JsonSerializable(explicitToJson: true)
 class SubstanceReferenceInformation_Gene {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<SubstanceReferenceInformation_Gene> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept geneSequenceOrigin,
+		CodeableConcept gene,
+		List<Reference> source}) async {
+	 return SubstanceReferenceInformation_Gene(
+			id: await newEntry('SubstanceReferenceInformation_Gene'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			geneSequenceOrigin: geneSequenceOrigin,
+			gene: gene,
+			source: source);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Todo.
   CodeableConcept geneSequenceOrigin;
-
-  //  Todo.
   CodeableConcept gene;
-
-  //  Todo.
   List<Reference> source;
 
 SubstanceReferenceInformation_Gene(
@@ -191,39 +153,27 @@ SubstanceReferenceInformation_Gene(
 @JsonSerializable(explicitToJson: true)
 class SubstanceReferenceInformation_GeneElement {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<SubstanceReferenceInformation_GeneElement> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept type,
+		Identifier element,
+		List<Reference> source}) async {
+	 return SubstanceReferenceInformation_GeneElement(
+			id: await newEntry('SubstanceReferenceInformation_GeneElement'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			type: type,
+			element: element,
+			source: source);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Todo.
   CodeableConcept type;
-
-  //  Todo.
   Identifier element;
-
-  //  Todo.
   List<Reference> source;
 
 SubstanceReferenceInformation_GeneElement(
@@ -242,42 +192,30 @@ SubstanceReferenceInformation_GeneElement(
 @JsonSerializable(explicitToJson: true)
 class SubstanceReferenceInformation_Classification {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<SubstanceReferenceInformation_Classification> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept domain,
+		CodeableConcept classification,
+		List<CodeableConcept> subtype,
+		List<Reference> source}) async {
+	 return SubstanceReferenceInformation_Classification(
+			id: await newEntry('SubstanceReferenceInformation_Classification'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			domain: domain,
+			classification: classification,
+			subtype: subtype,
+			source: source);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Todo.
   CodeableConcept domain;
-
-  //  Todo.
   CodeableConcept classification;
-
-  //  Todo.
   List<CodeableConcept> subtype;
-
-  //  Todo.
   List<Reference> source;
 
 SubstanceReferenceInformation_Classification(
@@ -297,63 +235,51 @@ SubstanceReferenceInformation_Classification(
 @JsonSerializable(explicitToJson: true)
 class SubstanceReferenceInformation_Target {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<SubstanceReferenceInformation_Target> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Identifier target,
+		CodeableConcept type,
+		CodeableConcept interaction,
+		CodeableConcept organism,
+		CodeableConcept organismType,
+		Quantity amountQuantity,
+		Range amountRange,
+		String amountString,
+		Element elementAmountString,
+		CodeableConcept amountType,
+		List<Reference> source}) async {
+	 return SubstanceReferenceInformation_Target(
+			id: await newEntry('SubstanceReferenceInformation_Target'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			target: target,
+			type: type,
+			interaction: interaction,
+			organism: organism,
+			organismType: organismType,
+			amountQuantity: amountQuantity,
+			amountRange: amountRange,
+			amountString: amountString,
+			elementAmountString: elementAmountString,
+			amountType: amountType,
+			source: source);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Todo.
   Identifier target;
-
-  //  Todo.
   CodeableConcept type;
-
-  //  Todo.
   CodeableConcept interaction;
-
-  //  Todo.
   CodeableConcept organism;
-
-  //  Todo.
   CodeableConcept organismType;
-
-  //  Todo.
   Quantity amountQuantity;
-
-  //  Todo.
   Range amountRange;
-
-  //  Todo.
   String amountString; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for amountString
   Element elementAmountString;
-
-  //  Todo.
   CodeableConcept amountType;
-
-  //  Todo.
   List<Reference> source;
 
 SubstanceReferenceInformation_Target(

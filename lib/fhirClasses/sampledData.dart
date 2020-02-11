@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -9,86 +12,75 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @HiveType(typeId: 34)
 class SampledData {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<SampledData> newInstance({
+		String id,
+		List<Extension> extension,
+		Quantity origin,
+		double period,
+		Element elementPeriod,
+		double factor,
+		Element elementFactor,
+		double lowerLimit,
+		Element elementLowerLimit,
+		double upperLimit,
+		Element elementUpperLimit,
+		int dimensions,
+		Element elementDimensions,
+		String data,
+		Element elementData}) async {
+	 return SampledData(
+			id: await newEntry('SampledData'),
+			extension: extension,
+			origin: origin,
+			period: period,
+			elementPeriod: elementPeriod,
+			factor: factor,
+			elementFactor: elementFactor,
+			lowerLimit: lowerLimit,
+			elementLowerLimit: elementLowerLimit,
+			upperLimit: upperLimit,
+			elementUpperLimit: elementUpperLimit,
+			dimensions: dimensions,
+			elementDimensions: elementDimensions,
+			data: data,
+			elementData: elementData);
+	}
+
   @HiveField(0)
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   @HiveField(1)
   List<Extension> extension;
-
-  //  The base quantity that a measured value of zero represents. In
-  // addition, this provides the units of the entire measurement series.
   @HiveField(2)
   Quantity origin;
-
-  //  The length of time between sampling times, measured in milliseconds.
   @HiveField(3)
   double period;
-
-  //  Extensions for period
   @HiveField(4)
   Element elementPeriod;
-
-  //  A correction factor that is applied to the sampled data points before
-  // they are added to the origin.
   @HiveField(5)
   double factor;
-
-  //  Extensions for factor
   @HiveField(6)
   Element elementFactor;
-
-  //  The lower limit of detection of the measured points. This is needed if
-  // any of the data points have the value "L" (lower than detection limit).
   @HiveField(7)
   double lowerLimit;
-
-  //  Extensions for lowerLimit
   @HiveField(8)
   Element elementLowerLimit;
-
-  //  The upper limit of detection of the measured points. This is needed if
-  // any of the data points have the value "U" (higher than detection
-  // limit).
   @HiveField(9)
   double upperLimit;
-
-  //  Extensions for upperLimit
   @HiveField(10)
   Element elementUpperLimit;
-
-  //  The number of sample points at each time point. If this value is
-  // greater than one, then the dimensions will be interlaced - all the
-  // sample points for a point in time will be recorded at once.
   @HiveField(11)
   int dimensions;
-
-  //  Extensions for dimensions
   @HiveField(12)
   Element elementDimensions;
-
-  //  A series of data points which are decimal values separated by a single
-  // space (character u20). The special values "E" (error), "L" (below
-  // detection limit) and "U" (above detection limit) can also be used in
-  // place of a decimal value.
   @HiveField(13)
   String data;
-
-  //  Extensions for data
   @HiveField(14)
   Element elementData;
 
 SampledData(
-  this.origin,
-    {this.id,
+  {this.id,
     this.extension,
+    @required this.origin,
     this.period,
     this.elementPeriod,
     this.factor,
@@ -124,9 +116,9 @@ class SampledDataAdapter extends TypeAdapter<SampledData> {
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return SampledData(
-      fields[2] as Quantity,
       id: fields[0] as String,
       extension: (fields[1] as List)?.cast<Extension>(),
+      origin: fields[2] as Quantity,
       period: fields[3] as double,
       elementPeriod: fields[4] as Element,
       factor: fields[5] as double,
@@ -185,14 +177,14 @@ class SampledDataAdapter extends TypeAdapter<SampledData> {
 
 SampledData _$SampledDataFromJson(Map<String, dynamic> json) {
   return SampledData(
-    json['origin'] == null
-        ? null
-        : Quantity.fromJson(json['origin'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    origin: json['origin'] == null
+        ? null
+        : Quantity.fromJson(json['origin'] as Map<String, dynamic>),
     period: (json['period'] as num)?.toDouble(),
     elementPeriod: json['elementPeriod'] == null
         ? null

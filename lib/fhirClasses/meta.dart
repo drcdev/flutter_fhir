@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
@@ -9,65 +10,52 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @HiveType(typeId: 40)
 class Meta {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Meta> newInstance({
+		String id,
+		List<Extension> extension,
+		String versionId,
+		Element elementVersionId,
+		DateTime lastUpdated,
+		Element elementLastUpdated,
+		String source,
+		Element elementSource,
+		List<String> profile,
+		List<Coding> security,
+		List<Coding> tag}) async {
+	 return Meta(
+			id: await newEntry('Meta'),
+			extension: extension,
+			versionId: versionId,
+			elementVersionId: elementVersionId,
+			lastUpdated: lastUpdated,
+			elementLastUpdated: elementLastUpdated,
+			source: source,
+			elementSource: elementSource,
+			profile: profile,
+			security: security,
+			tag: tag);
+	}
+
   @HiveField(0)
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   @HiveField(1)
   List<Extension> extension;
-
-  //  The version specific identifier, as it appears in the version portion
-  // of the URL. This value changes when the resource is created, updated,
-  // or deleted.
   @HiveField(2)
   String versionId;
-
-  //  Extensions for versionId
   @HiveField(3)
   Element elementVersionId;
-
-  //  When the resource last changed - e.g. when the version changed.
   @HiveField(4)
   DateTime lastUpdated;
-
-  //  Extensions for lastUpdated
   @HiveField(5)
   Element elementLastUpdated;
-
-  //  A uri that identifies the source system of the resource. This provides
-  // a minimal amount of [[[Provenance]]] information that can be used to
-  // track or differentiate the source of information in the resource. The
-  // source may identify another FHIR server, document, message, database,
-  // etc.
   @HiveField(6)
   String source;
-
-  //  Extensions for source
   @HiveField(7)
   Element elementSource;
-
-  //  A list of profiles (references to [[[StructureDefinition]]] resources)
-  // that this resource claims to conform to. The URL is a reference to
-  // [[[StructureDefinition.url]]].
   @HiveField(8)
   List<String> profile;
-
-  //  Security labels applied to this resource. These tags connect specific
-  // resources to the overall security policy and infrastructure.
   @HiveField(9)
   List<Coding> security;
-
-  //  Tags applied to this resource. Tags are intended to be used to
-  // identify and relate resources to process and workflow, and applications
-  // are not required to consider the tags when interpreting the meaning of
-  // a resource.
   @HiveField(10)
   List<Coding> tag;
 

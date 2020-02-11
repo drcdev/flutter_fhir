@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/timing.dart';
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -15,161 +18,107 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 92)
 class DeviceMetric {
 
-  //  This is a DeviceMetric resource
+	static Future<DeviceMetric> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Identifier> identifier,
+		CodeableConcept type,
+		CodeableConcept unit,
+		Reference source,
+		Reference parent,
+		String operationalStatus,
+		Element elementOperationalStatus,
+		String color,
+		Element elementColor,
+		String category,
+		Element elementCategory,
+		Timing measurementPeriod,
+		List<DeviceMetric_Calibration> calibration}) async {
+	 return DeviceMetric(
+			id: await newEntry('DeviceMetric'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			type: type,
+			unit: unit,
+			source: source,
+			parent: parent,
+			operationalStatus: operationalStatus,
+			elementOperationalStatus: elementOperationalStatus,
+			color: color,
+			elementColor: elementColor,
+			category: category,
+			elementCategory: elementCategory,
+			measurementPeriod: measurementPeriod,
+			calibration: calibration);
+	}
+
   @HiveField(0)
   final String resourceType= 'DeviceMetric';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  Unique instance identifiers assigned to a device by the device or
-  // gateway software, manufacturers, other organizations or owners. For
-  // example: handle ID.
   @HiveField(11)
   List<Identifier> identifier;
-
-  //  Describes the type of the metric. For example: Heart Rate, PEEP
-  // Setting, etc.
   @HiveField(12)
   CodeableConcept type;
-
-  //  Describes the unit that an observed value determined for this metric
-  // will have. For example: Percent, Seconds, etc.
   @HiveField(13)
   CodeableConcept unit;
-
-  //  Describes the link to the  Device that this DeviceMetric belongs to
-  // and that contains administrative device information such as
-  // manufacturer, serial number, etc.
   @HiveField(14)
   Reference source;
-
-  //  Describes the link to the  Device that this DeviceMetric belongs to
-  // and that provide information about the location of this DeviceMetric in
-  // the containment structure of the parent Device. An example would be a
-  // Device that represents a Channel. This reference can be used by a
-  // client application to distinguish DeviceMetrics that have the same
-  // type, but should be interpreted based on their containment location.
   @HiveField(15)
   Reference parent;
-
-  //  Indicates current operational state of the device. For example: On,
-  // Off, Standby, etc.
   @HiveField(16)
   String operationalStatus; // <code> enum: on/off/standby/entered-in-error;
-
-  //  Extensions for operationalStatus
   @HiveField(17)
   Element elementOperationalStatus;
-
-  //  Describes the color representation for the metric. This is often used
-  // to aid clinicians to track and identify parameter types by color. In
-  // practice, consider a Patient Monitor that has ECG/HR and Pleth for
-  // example; the parameters are displayed in different characteristic
-  // colors, such as HR-blue, BP-green, and PR and SpO2- magenta.
   @HiveField(18)
   String color; // <code> enum: black/red/green/yellow/blue/magenta/cyan/white;
-
-  //  Extensions for color
   @HiveField(19)
   Element elementColor;
-
-  //  Indicates the category of the observation generation process. A
-  // DeviceMetric can be for example a setting, measurement, or calculation.
   @HiveField(20)
   String category; // <code> enum: measurement/setting/calculation/unspecified;
-
-  //  Extensions for category
   @HiveField(21)
   Element elementCategory;
-
-  //  Describes the measurement repetition time. This is not necessarily the
-  // same as the update period. The measurement repetition time can range
-  // from milliseconds up to hours. An example for a measurement repetition
-  // time in the range of milliseconds is the sampling rate of an ECG. An
-  // example for a measurement repetition time in the range of hours is a
-  // NIBP that is triggered automatically every hour. The update period may
-  // be different than the measurement repetition time, if the device does
-  // not update the published observed value with the same frequency as it
-  // was measured.
   @HiveField(22)
   Timing measurementPeriod;
-
-  //  Describes the calibrations that have been performed or that are
-  // required to be performed.
   @HiveField(23)
   List<DeviceMetric_Calibration> calibration;
 
 DeviceMetric(
-  this.type,
-    {this.id,
+  {this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -180,6 +129,7 @@ DeviceMetric(
     this.extension,
     this.modifierExtension,
     this.identifier,
+    @required this.type,
     this.unit,
     this.source,
     this.parent,
@@ -200,48 +150,36 @@ DeviceMetric(
 @JsonSerializable(explicitToJson: true)
 class DeviceMetric_Calibration {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<DeviceMetric_Calibration> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String type,
+		Element elementType,
+		String state,
+		Element elementState,
+		DateTime time,
+		Element elementTime}) async {
+	 return DeviceMetric_Calibration(
+			id: await newEntry('DeviceMetric_Calibration'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			type: type,
+			elementType: elementType,
+			state: state,
+			elementState: elementState,
+			time: time,
+			elementTime: elementTime);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Describes the type of the calibration method.
   String type; // <code> enum: unspecified/offset/gain/two-point;
-
-  //  Extensions for type
   Element elementType;
-
-  //  Describes the state of the calibration.
   String state; // <code> enum: not-calibrated/calibration-required/calibrated/unspecified;
-
-  //  Extensions for state
   Element elementState;
-
-  //  Describes the time last calibration has been performed.
   DateTime time;
-
-  //  Extensions for time
   Element elementTime;
 
 DeviceMetric_Calibration(
@@ -277,7 +215,6 @@ class DeviceMetricAdapter extends TypeAdapter<DeviceMetric> {
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return DeviceMetric(
-      fields[12] as CodeableConcept,
       id: fields[1] as String,
       meta: fields[2] as Meta,
       implicitRules: fields[3] as String,
@@ -289,6 +226,7 @@ class DeviceMetricAdapter extends TypeAdapter<DeviceMetric> {
       extension: (fields[9] as List)?.cast<Extension>(),
       modifierExtension: (fields[10] as List)?.cast<Extension>(),
       identifier: (fields[11] as List)?.cast<Identifier>(),
+      type: fields[12] as CodeableConcept,
       unit: fields[13] as CodeableConcept,
       source: fields[14] as Reference,
       parent: fields[15] as Reference,
@@ -364,9 +302,6 @@ class DeviceMetricAdapter extends TypeAdapter<DeviceMetric> {
 
 DeviceMetric _$DeviceMetricFromJson(Map<String, dynamic> json) {
   return DeviceMetric(
-    json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -399,6 +334,9 @@ DeviceMetric _$DeviceMetricFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    type: json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
     unit: json['unit'] == null
         ? null
         : CodeableConcept.fromJson(json['unit'] as Map<String, dynamic>),

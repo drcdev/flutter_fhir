@@ -1,6 +1,6 @@
-import 'package:flutter_fhir/fhirClasses/classes.dart';
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -9,66 +9,48 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @HiveType(typeId: 31)
 class Period {
 
-  static Future<Period> newInstance({
-      String id,
-      List<Extension> extension,
-      DateTime start,
-      Element elementStart,
-      DateTime end,
-      Element elementEnd}) async {
-    return Period(
-        id: await newEntry('Period'),
-        extension: extension,
-        start: start,
-        elementStart: elementStart,
-        end: end,
-        elementEnd: elementEnd);
-  }
+	static Future<Period> newInstance({
+		String id,
+		List<Extension> extension,
+		DateTime start,
+		Element elementStart,
+		DateTime end,
+		Element elementEnd}) async {
+	 return Period(
+			id: await newEntry('Period'),
+			extension: extension,
+			start: start,
+			elementStart: elementStart,
+			end: end,
+			elementEnd: elementEnd);
+	}
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
   @HiveField(0)
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   @HiveField(1)
   List<Extension> extension;
-
-  //  The start of the period. The boundary is inclusive.
   @HiveField(2)
   DateTime start;
-
-  //  Extensions for start
   @HiveField(3)
   Element elementStart;
-
-  //  The end of the period. If the end of the period is missing, it means
-  // no end was known or planned at the time the instance was created. The
-  // start may be in the past, and the end date in the future, which means
-  // that period is expected/planned to end at that time.
   @HiveField(4)
   DateTime end;
-
-  //  Extensions for end
   @HiveField(5)
   Element elementEnd;
 
-  Period(
-      {this.id,
-      this.extension,
-      this.start,
-      this.elementStart,
-      this.end,
-      this.elementEnd});
+Period(
+  {this.id,
+    this.extension,
+    this.start,
+    this.elementStart,
+    this.end,
+    this.elementEnd
+    });
 
   factory Period.fromJson(Map<String, dynamic> json) => _$PeriodFromJson(json);
   Map<String, dynamic> toJson() => _$PeriodToJson(this);
 }
+
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // **************************************************************************

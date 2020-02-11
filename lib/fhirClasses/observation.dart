@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/sampledData.dart';
@@ -21,327 +24,238 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 151)
 class Observation {
 
-  //  This is a Observation resource
+	static Future<Observation> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Identifier> identifier,
+		List<Reference> basedOn,
+		List<Reference> partOf,
+		String status,
+		Element elementStatus,
+		List<CodeableConcept> category,
+		CodeableConcept code,
+		Reference subject,
+		List<Reference> focus,
+		Reference encounter,
+		String effectiveDateTime,
+		Element elementEffectiveDateTime,
+		Period effectivePeriod,
+		Timing effectiveTiming,
+		String effectiveInstant,
+		Element elementEffectiveInstant,
+		DateTime issued,
+		Element elementIssued,
+		List<Reference> performer,
+		Quantity valueQuantity,
+		CodeableConcept valueCodeableConcept,
+		String valueString,
+		Element elementValueString,
+		bool valueBoolean,
+		Element elementValueBoolean,
+		int valueInteger,
+		Element elementValueInteger,
+		Range valueRange,
+		Ratio valueRatio,
+		SampledData valueSampledData,
+		String valueTime,
+		Element elementValueTime,
+		String valueDateTime,
+		Element elementValueDateTime,
+		Period valuePeriod,
+		CodeableConcept dataAbsentReason,
+		List<CodeableConcept> interpretation,
+		List<Annotation> note,
+		CodeableConcept bodySite,
+		CodeableConcept method,
+		Reference specimen,
+		Reference device,
+		List<Observation_ReferenceRange> referenceRange,
+		List<Reference> hasMember,
+		List<Reference> derivedFrom,
+		List<Observation_Component> component}) async {
+	 return Observation(
+			id: await newEntry('Observation'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			basedOn: basedOn,
+			partOf: partOf,
+			status: status,
+			elementStatus: elementStatus,
+			category: category,
+			code: code,
+			subject: subject,
+			focus: focus,
+			encounter: encounter,
+			effectiveDateTime: effectiveDateTime,
+			elementEffectiveDateTime: elementEffectiveDateTime,
+			effectivePeriod: effectivePeriod,
+			effectiveTiming: effectiveTiming,
+			effectiveInstant: effectiveInstant,
+			elementEffectiveInstant: elementEffectiveInstant,
+			issued: issued,
+			elementIssued: elementIssued,
+			performer: performer,
+			valueQuantity: valueQuantity,
+			valueCodeableConcept: valueCodeableConcept,
+			valueString: valueString,
+			elementValueString: elementValueString,
+			valueBoolean: valueBoolean,
+			elementValueBoolean: elementValueBoolean,
+			valueInteger: valueInteger,
+			elementValueInteger: elementValueInteger,
+			valueRange: valueRange,
+			valueRatio: valueRatio,
+			valueSampledData: valueSampledData,
+			valueTime: valueTime,
+			elementValueTime: elementValueTime,
+			valueDateTime: valueDateTime,
+			elementValueDateTime: elementValueDateTime,
+			valuePeriod: valuePeriod,
+			dataAbsentReason: dataAbsentReason,
+			interpretation: interpretation,
+			note: note,
+			bodySite: bodySite,
+			method: method,
+			specimen: specimen,
+			device: device,
+			referenceRange: referenceRange,
+			hasMember: hasMember,
+			derivedFrom: derivedFrom,
+			component: component);
+	}
+
   @HiveField(0)
   final String resourceType= 'Observation';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  A unique identifier assigned to this observation.
   @HiveField(11)
   List<Identifier> identifier;
-
-  //  A plan, proposal or order that is fulfilled in whole or in part by
-  // this event.  For example, a MedicationRequest may require a patient to
-  // have laboratory test performed before  it is dispensed.
   @HiveField(12)
   List<Reference> basedOn;
-
-  //  A larger event of which this particular Observation is a component or
-  // step.  For example,  an observation as part of a procedure.
   @HiveField(13)
   List<Reference> partOf;
-
-  //  The status of the result value.
   @HiveField(14)
   String status; // <code> enum: registered/preliminary/final/amended/corrected/cancelled/entered-in-error/unknown;
-
-  //  Extensions for status
   @HiveField(15)
   Element elementStatus;
-
-  //  A code that classifies the general type of observation being made.
   @HiveField(16)
   List<CodeableConcept> category;
-
-  //  Describes what was observed. Sometimes this is called the observation
-  // "name".
   @HiveField(17)
   CodeableConcept code;
-
-  //  The patient, or group of patients, location, or device this
-  // observation is about and into whose record the observation is placed.
-  // If the actual focus of the observation is different from the subject
-  // (or a sample of, part, or region of the subject), the `focus` element
-  // or the `code` itself specifies the actual focus of the observation.
   @HiveField(18)
   Reference subject;
-
-  //  The actual focus of an observation when it is not the patient of
-  // record representing something or someone associated with the patient
-  // such as a spouse, parent, fetus, or donor. For example, fetus
-  // observations in a mother's record.  The focus of an observation could
-  // also be an existing condition,  an intervention, the subject's diet, 
-  // another observation of the subject,  or a body structure such as tumor
-  // or implanted device.   An example use case would be using the
-  // Observation resource to capture whether the mother is trained to change
-  // her child's tracheostomy tube. In this example, the child is the
-  // patient of record and the mother is the focus.
   @HiveField(19)
   List<Reference> focus;
-
-  //  The healthcare event  (e.g. a patient and healthcare provider
-  // interaction) during which this observation is made.
   @HiveField(20)
   Reference encounter;
-
-  //  The time or time-period the observed value is asserted as being true.
-  // For biological subjects - e.g. human patients - this is usually called
-  // the "physiologically relevant time". This is usually either the time of
-  // the procedure or of specimen collection, but very often the source of
-  // the date/time is not known, only the date/time itself.
   @HiveField(21)
   String effectiveDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for effectiveDateTime
   @HiveField(22)
   Element elementEffectiveDateTime;
-
-  //  The time or time-period the observed value is asserted as being true.
-  // For biological subjects - e.g. human patients - this is usually called
-  // the "physiologically relevant time". This is usually either the time of
-  // the procedure or of specimen collection, but very often the source of
-  // the date/time is not known, only the date/time itself.
   @HiveField(23)
   Period effectivePeriod;
-
-  //  The time or time-period the observed value is asserted as being true.
-  // For biological subjects - e.g. human patients - this is usually called
-  // the "physiologically relevant time". This is usually either the time of
-  // the procedure or of specimen collection, but very often the source of
-  // the date/time is not known, only the date/time itself.
   @HiveField(24)
   Timing effectiveTiming;
-
-  //  The time or time-period the observed value is asserted as being true.
-  // For biological subjects - e.g. human patients - this is usually called
-  // the "physiologically relevant time". This is usually either the time of
-  // the procedure or of specimen collection, but very often the source of
-  // the date/time is not known, only the date/time itself.
   @HiveField(25)
   String effectiveInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
-
-  //  Extensions for effectiveInstant
   @HiveField(26)
   Element elementEffectiveInstant;
-
-  //  The date and time this version of the observation was made available
-  // to providers, typically after the results have been reviewed and
-  // verified.
   @HiveField(27)
   DateTime issued;
-
-  //  Extensions for issued
   @HiveField(28)
   Element elementIssued;
-
-  //  Who was responsible for asserting the observed value as "true".
   @HiveField(29)
   List<Reference> performer;
-
-  //  The information determined as a result of making the observation, if
-  // the information has a simple value.
   @HiveField(30)
   Quantity valueQuantity;
-
-  //  The information determined as a result of making the observation, if
-  // the information has a simple value.
   @HiveField(31)
   CodeableConcept valueCodeableConcept;
-
-  //  The information determined as a result of making the observation, if
-  // the information has a simple value.
   @HiveField(32)
   String valueString; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for valueString
   @HiveField(33)
   Element elementValueString;
-
-  //  The information determined as a result of making the observation, if
-  // the information has a simple value.
   @HiveField(34)
   bool valueBoolean; //  pattern: ^true|false$
-
-  //  Extensions for valueBoolean
   @HiveField(35)
   Element elementValueBoolean;
-
-  //  The information determined as a result of making the observation, if
-  // the information has a simple value.
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
-
-  //  Extensions for valueInteger
   @HiveField(37)
   Element elementValueInteger;
-
-  //  The information determined as a result of making the observation, if
-  // the information has a simple value.
   @HiveField(38)
   Range valueRange;
-
-  //  The information determined as a result of making the observation, if
-  // the information has a simple value.
   @HiveField(39)
   Ratio valueRatio;
-
-  //  The information determined as a result of making the observation, if
-  // the information has a simple value.
   @HiveField(40)
   SampledData valueSampledData;
-
-  //  The information determined as a result of making the observation, if
-  // the information has a simple value.
   @HiveField(41)
   String valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
-
-  //  Extensions for valueTime
   @HiveField(42)
   Element elementValueTime;
-
-  //  The information determined as a result of making the observation, if
-  // the information has a simple value.
   @HiveField(43)
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for valueDateTime
   @HiveField(44)
   Element elementValueDateTime;
-
-  //  The information determined as a result of making the observation, if
-  // the information has a simple value.
   @HiveField(45)
   Period valuePeriod;
-
-  //  Provides a reason why the expected value in the element
-  // Observation.value[x] is missing.
   @HiveField(46)
   CodeableConcept dataAbsentReason;
-
-  //  A categorical assessment of an observation value.  For example, high,
-  // low, normal.
   @HiveField(47)
   List<CodeableConcept> interpretation;
-
-  //  Comments about the observation or the results.
   @HiveField(48)
   List<Annotation> note;
-
-  //  Indicates the site on the subject's body where the observation was
-  // made (i.e. the target site).
   @HiveField(49)
   CodeableConcept bodySite;
-
-  //  Indicates the mechanism used to perform the observation.
   @HiveField(50)
   CodeableConcept method;
-
-  //  The specimen that was used when this observation was made.
   @HiveField(51)
   Reference specimen;
-
-  //  The device used to generate the observation data.
   @HiveField(52)
   Reference device;
-
-  //  Guidance on how to interpret the value by comparison to a normal or
-  // recommended range.  Multiple reference ranges are interpreted as an
-  // "OR".   In other words, to represent two distinct target populations,
-  // two `referenceRange` elements would be used.
   @HiveField(53)
   List<Observation_ReferenceRange> referenceRange;
-
-  //  This observation is a group observation (e.g. a battery, a panel of
-  // tests, a set of vital sign measurements) that includes the target as a
-  // member of the group.
   @HiveField(54)
   List<Reference> hasMember;
-
-  //  The target resource that represents a measurement from which this
-  // observation value is derived. For example, a calculated anion gap or a
-  // fetal measurement based on an ultrasound image.
   @HiveField(55)
   List<Reference> derivedFrom;
-
-  //  Some observations have multiple component observations.  These
-  // component observations are expressed as separate code value pairs that
-  // share the same attributes.  Examples include systolic and diastolic
-  // component observations for blood pressure measurement and multiple
-  // component observations for genetics observations.
   @HiveField(56)
   List<Observation_Component> component;
 
 Observation(
-  this.code,
-    {this.id,
+  {this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -357,6 +271,7 @@ Observation(
     this.status,
     this.elementStatus,
     this.category,
+    @required this.code,
     this.subject,
     this.focus,
     this.encounter,
@@ -405,67 +320,39 @@ Observation(
 @JsonSerializable(explicitToJson: true)
 class Observation_ReferenceRange {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Observation_ReferenceRange> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Quantity low,
+		Quantity high,
+		CodeableConcept type,
+		List<CodeableConcept> appliesTo,
+		Range age,
+		String text,
+		Element elementText}) async {
+	 return Observation_ReferenceRange(
+			id: await newEntry('Observation_ReferenceRange'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			low: low,
+			high: high,
+			type: type,
+			appliesTo: appliesTo,
+			age: age,
+			text: text,
+			elementText: elementText);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The value of the low bound of the reference range.  The low bound of
-  // the reference range endpoint is inclusive of the value (e.g.  reference
-  // range is >=5 - <=9). If the low bound is omitted,  it is assumed to be
-  // meaningless (e.g. reference range is <=2.3).
   Quantity low;
-
-  //  The value of the high bound of the reference range.  The high bound of
-  // the reference range endpoint is inclusive of the value (e.g.  reference
-  // range is >=5 - <=9). If the high bound is omitted,  it is assumed to be
-  // meaningless (e.g. reference range is >= 2.3).
   Quantity high;
-
-  //  Codes to indicate the what part of the targeted reference population
-  // it applies to. For example, the normal or therapeutic range.
   CodeableConcept type;
-
-  //  Codes to indicate the target population this reference range applies
-  // to.  For example, a reference range may be based on the normal
-  // population or a particular sex or race.  Multiple `appliesTo`  are
-  // interpreted as an "AND" of the target populations.  For example, to
-  // represent a target population of African American females, both a code
-  // of female and a code for African American would be used.
   List<CodeableConcept> appliesTo;
-
-  //  The age at which this reference range is applicable. This is a
-  // neonatal age (e.g. number of weeks at term) if the meaning says so.
   Range age;
-
-  //  Text based reference range in an observation which may be used when a
-  // quantitative range is not appropriate for an observation.  An example
-  // would be a reference value of "Negative" or a list or table of
-  // "normals".
   String text;
-
-  //  Extensions for text
   Element elementText;
 
 Observation_ReferenceRange(
@@ -488,112 +375,85 @@ Observation_ReferenceRange(
 @JsonSerializable(explicitToJson: true)
 class Observation_Component {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Observation_Component> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept code,
+		Quantity valueQuantity,
+		CodeableConcept valueCodeableConcept,
+		String valueString,
+		Element elementValueString,
+		bool valueBoolean,
+		Element elementValueBoolean,
+		int valueInteger,
+		Element elementValueInteger,
+		Range valueRange,
+		Ratio valueRatio,
+		SampledData valueSampledData,
+		String valueTime,
+		Element elementValueTime,
+		String valueDateTime,
+		Element elementValueDateTime,
+		Period valuePeriod,
+		CodeableConcept dataAbsentReason,
+		List<CodeableConcept> interpretation,
+		List<Observation_ReferenceRange> referenceRange}) async {
+	 return Observation_Component(
+			id: await newEntry('Observation_Component'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			code: code,
+			valueQuantity: valueQuantity,
+			valueCodeableConcept: valueCodeableConcept,
+			valueString: valueString,
+			elementValueString: elementValueString,
+			valueBoolean: valueBoolean,
+			elementValueBoolean: elementValueBoolean,
+			valueInteger: valueInteger,
+			elementValueInteger: elementValueInteger,
+			valueRange: valueRange,
+			valueRatio: valueRatio,
+			valueSampledData: valueSampledData,
+			valueTime: valueTime,
+			elementValueTime: elementValueTime,
+			valueDateTime: valueDateTime,
+			elementValueDateTime: elementValueDateTime,
+			valuePeriod: valuePeriod,
+			dataAbsentReason: dataAbsentReason,
+			interpretation: interpretation,
+			referenceRange: referenceRange);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Describes what was observed. Sometimes this is called the observation
-  // "code".
   CodeableConcept code;
-
-  //  The information determined as a result of making the observation, if
-  // the information has a simple value.
   Quantity valueQuantity;
-
-  //  The information determined as a result of making the observation, if
-  // the information has a simple value.
   CodeableConcept valueCodeableConcept;
-
-  //  The information determined as a result of making the observation, if
-  // the information has a simple value.
   String valueString; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for valueString
   Element elementValueString;
-
-  //  The information determined as a result of making the observation, if
-  // the information has a simple value.
   bool valueBoolean; //  pattern: ^true|false$
-
-  //  Extensions for valueBoolean
   Element elementValueBoolean;
-
-  //  The information determined as a result of making the observation, if
-  // the information has a simple value.
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
-
-  //  Extensions for valueInteger
   Element elementValueInteger;
-
-  //  The information determined as a result of making the observation, if
-  // the information has a simple value.
   Range valueRange;
-
-  //  The information determined as a result of making the observation, if
-  // the information has a simple value.
   Ratio valueRatio;
-
-  //  The information determined as a result of making the observation, if
-  // the information has a simple value.
   SampledData valueSampledData;
-
-  //  The information determined as a result of making the observation, if
-  // the information has a simple value.
   String valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
-
-  //  Extensions for valueTime
   Element elementValueTime;
-
-  //  The information determined as a result of making the observation, if
-  // the information has a simple value.
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for valueDateTime
   Element elementValueDateTime;
-
-  //  The information determined as a result of making the observation, if
-  // the information has a simple value.
   Period valuePeriod;
-
-  //  Provides a reason why the expected value in the element
-  // Observation.component.value[x] is missing.
   CodeableConcept dataAbsentReason;
-
-  //  A categorical assessment of an observation value.  For example, high,
-  // low, normal.
   List<CodeableConcept> interpretation;
-
-  //  Guidance on how to interpret the value by comparison to a normal or
-  // recommended range.
   List<Observation_ReferenceRange> referenceRange;
 
 Observation_Component(
-  this.code,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
+    @required this.code,
     this.valueQuantity,
     this.valueCodeableConcept,
     this.valueString,
@@ -636,7 +496,6 @@ class ObservationAdapter extends TypeAdapter<Observation> {
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Observation(
-      fields[17] as CodeableConcept,
       id: fields[1] as String,
       meta: fields[2] as Meta,
       implicitRules: fields[3] as String,
@@ -653,6 +512,7 @@ class ObservationAdapter extends TypeAdapter<Observation> {
       status: fields[14] as String,
       elementStatus: fields[15] as Element,
       category: (fields[16] as List)?.cast<CodeableConcept>(),
+      code: fields[17] as CodeableConcept,
       subject: fields[18] as Reference,
       focus: (fields[19] as List)?.cast<Reference>(),
       encounter: fields[20] as Reference,
@@ -819,9 +679,6 @@ class ObservationAdapter extends TypeAdapter<Observation> {
 
 Observation _$ObservationFromJson(Map<String, dynamic> json) {
   return Observation(
-    json['code'] == null
-        ? null
-        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -871,6 +728,9 @@ Observation _$ObservationFromJson(Map<String, dynamic> json) {
             ? null
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    code: json['code'] == null
+        ? null
+        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     subject: json['subject'] == null
         ? null
         : Reference.fromJson(json['subject'] as Map<String, dynamic>),
@@ -1112,9 +972,6 @@ Map<String, dynamic> _$Observation_ReferenceRangeToJson(
 Observation_Component _$Observation_ComponentFromJson(
     Map<String, dynamic> json) {
   return Observation_Component(
-    json['code'] == null
-        ? null
-        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1124,6 +981,9 @@ Observation_Component _$Observation_ComponentFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    code: json['code'] == null
+        ? null
+        : CodeableConcept.fromJson(json['code'] as Map<String, dynamic>),
     valueQuantity: json['valueQuantity'] == null
         ? null
         : Quantity.fromJson(json['valueQuantity'] as Map<String, dynamic>),

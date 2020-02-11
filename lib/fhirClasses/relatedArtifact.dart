@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/attachment.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
@@ -9,71 +10,64 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @HiveType(typeId: 45)
 class RelatedArtifact {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<RelatedArtifact> newInstance({
+		String id,
+		List<Extension> extension,
+		String type,
+		Element elementType,
+		String label,
+		Element elementLabel,
+		String display,
+		Element elementDisplay,
+		String citation,
+		Element elementCitation,
+		String url,
+		Element elementUrl,
+		Attachment document,
+		String resource}) async {
+	 return RelatedArtifact(
+			id: await newEntry('RelatedArtifact'),
+			extension: extension,
+			type: type,
+			elementType: elementType,
+			label: label,
+			elementLabel: elementLabel,
+			display: display,
+			elementDisplay: elementDisplay,
+			citation: citation,
+			elementCitation: elementCitation,
+			url: url,
+			elementUrl: elementUrl,
+			document: document,
+			resource: resource);
+	}
+
   @HiveField(0)
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   @HiveField(1)
   List<Extension> extension;
-
-  //  The type of relationship to the related artifact.
   @HiveField(2)
   String type; // <code> enum: documentation/justification/citation/predecessor/successor/derived-from/depends-on/composed-of;
-
-  //  Extensions for type
   @HiveField(3)
   Element elementType;
-
-  //  A short label that can be used to reference the citation from
-  // elsewhere in the containing artifact, such as a footnote index.
   @HiveField(4)
   String label;
-
-  //  Extensions for label
   @HiveField(5)
   Element elementLabel;
-
-  //  A brief description of the document or knowledge resource being
-  // referenced, suitable for display to a consumer.
   @HiveField(6)
   String display;
-
-  //  Extensions for display
   @HiveField(7)
   Element elementDisplay;
-
-  //  A bibliographic citation for the related artifact. This text SHOULD be
-  // formatted according to an accepted citation format.
   @HiveField(8)
   String citation;
-
-  //  Extensions for citation
   @HiveField(9)
   Element elementCitation;
-
-  //  A url for the artifact that can be followed to access the actual
-  // content.
   @HiveField(10)
   String url;
-
-  //  Extensions for url
   @HiveField(11)
   Element elementUrl;
-
-  //  The document being referenced, represented as an attachment. This is
-  // exclusive with the resource element.
   @HiveField(12)
   Attachment document;
-
-  //  The related resource, such as a library, value set, profile, or other
-  // knowledge resource.
   @HiveField(13)
   String resource;
 

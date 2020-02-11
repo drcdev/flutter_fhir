@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -8,25 +9,24 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @HiveType(typeId: 32)
 class Ratio {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Ratio> newInstance({
+		String id,
+		List<Extension> extension,
+		Quantity numerator,
+		Quantity denominator}) async {
+	 return Ratio(
+			id: await newEntry('Ratio'),
+			extension: extension,
+			numerator: numerator,
+			denominator: denominator);
+	}
+
   @HiveField(0)
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   @HiveField(1)
   List<Extension> extension;
-
-  //  The value of the numerator.
   @HiveField(2)
   Quantity numerator;
-
-  //  The value of the denominator.
   @HiveField(3)
   Quantity denominator;
 

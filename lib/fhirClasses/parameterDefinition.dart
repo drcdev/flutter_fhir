@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -8,74 +9,68 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @HiveType(typeId: 44)
 class ParameterDefinition {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<ParameterDefinition> newInstance({
+		String id,
+		List<Extension> extension,
+		String name,
+		Element elementName,
+		String use,
+		Element elementUse,
+		int min,
+		Element elementMin,
+		String max,
+		Element elementMax,
+		String documentation,
+		Element elementDocumentation,
+		String type,
+		Element elementType,
+		String profile}) async {
+	 return ParameterDefinition(
+			id: await newEntry('ParameterDefinition'),
+			extension: extension,
+			name: name,
+			elementName: elementName,
+			use: use,
+			elementUse: elementUse,
+			min: min,
+			elementMin: elementMin,
+			max: max,
+			elementMax: elementMax,
+			documentation: documentation,
+			elementDocumentation: elementDocumentation,
+			type: type,
+			elementType: elementType,
+			profile: profile);
+	}
+
   @HiveField(0)
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   @HiveField(1)
   List<Extension> extension;
-
-  //  The name of the parameter used to allow access to the value of the
-  // parameter in evaluation contexts.
   @HiveField(2)
   String name;
-
-  //  Extensions for name
   @HiveField(3)
   Element elementName;
-
-  //  Whether the parameter is input or output for the module.
   @HiveField(4)
   String use;
-
-  //  Extensions for use
   @HiveField(5)
   Element elementUse;
-
-  //  The minimum number of times this parameter SHALL appear in the request
-  // or response.
   @HiveField(6)
   int min;
-
-  //  Extensions for min
   @HiveField(7)
   Element elementMin;
-
-  //  The maximum number of times this element is permitted to appear in the
-  // request or response.
   @HiveField(8)
   String max;
-
-  //  Extensions for max
   @HiveField(9)
   Element elementMax;
-
-  //  A brief discussion of what the parameter is for and how it is used by
-  // the module.
   @HiveField(10)
   String documentation;
-
-  //  Extensions for documentation
   @HiveField(11)
   Element elementDocumentation;
-
-  //  The type of the parameter.
   @HiveField(12)
   String type;
-
-  //  Extensions for type
   @HiveField(13)
   Element elementType;
-
-  //  If specified, this indicates a profile that the input data must
-  // conform to, or that the output data will conform to.
   @HiveField(14)
   String profile;
 

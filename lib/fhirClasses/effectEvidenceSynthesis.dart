@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/relatedArtifact.dart';
@@ -19,314 +22,231 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 98)
 class EffectEvidenceSynthesis {
 
-  //  This is a EffectEvidenceSynthesis resource
+	static Future<EffectEvidenceSynthesis> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String url,
+		Element elementUrl,
+		List<Identifier> identifier,
+		String version,
+		Element elementVersion,
+		String name,
+		Element elementName,
+		String title,
+		Element elementTitle,
+		String status,
+		Element elementStatus,
+		DateTime date,
+		Element elementDate,
+		String publisher,
+		Element elementPublisher,
+		List<ContactDetail> contact,
+		String description,
+		Element elementDescription,
+		List<Annotation> note,
+		List<UsageContext> useContext,
+		List<CodeableConcept> jurisdiction,
+		String copyright,
+		Element elementCopyright,
+		String approvalDate,
+		Element elementApprovalDate,
+		String lastReviewDate,
+		Element elementLastReviewDate,
+		Period effectivePeriod,
+		List<CodeableConcept> topic,
+		List<ContactDetail> author,
+		List<ContactDetail> editor,
+		List<ContactDetail> reviewer,
+		List<ContactDetail> endorser,
+		List<RelatedArtifact> relatedArtifact,
+		CodeableConcept synthesisType,
+		CodeableConcept studyType,
+		Reference population,
+		Reference exposure,
+		Reference exposureAlternative,
+		Reference outcome,
+		EffectEvidenceSynthesis_SampleSize sampleSize,
+		List<EffectEvidenceSynthesis_ResultsByExposure> resultsByExposure,
+		List<EffectEvidenceSynthesis_EffectEstimate> effectEstimate,
+		List<EffectEvidenceSynthesis_Certainty> certainty}) async {
+	 return EffectEvidenceSynthesis(
+			id: await newEntry('EffectEvidenceSynthesis'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			url: url,
+			elementUrl: elementUrl,
+			identifier: identifier,
+			version: version,
+			elementVersion: elementVersion,
+			name: name,
+			elementName: elementName,
+			title: title,
+			elementTitle: elementTitle,
+			status: status,
+			elementStatus: elementStatus,
+			date: date,
+			elementDate: elementDate,
+			publisher: publisher,
+			elementPublisher: elementPublisher,
+			contact: contact,
+			description: description,
+			elementDescription: elementDescription,
+			note: note,
+			useContext: useContext,
+			jurisdiction: jurisdiction,
+			copyright: copyright,
+			elementCopyright: elementCopyright,
+			approvalDate: approvalDate,
+			elementApprovalDate: elementApprovalDate,
+			lastReviewDate: lastReviewDate,
+			elementLastReviewDate: elementLastReviewDate,
+			effectivePeriod: effectivePeriod,
+			topic: topic,
+			author: author,
+			editor: editor,
+			reviewer: reviewer,
+			endorser: endorser,
+			relatedArtifact: relatedArtifact,
+			synthesisType: synthesisType,
+			studyType: studyType,
+			population: population,
+			exposure: exposure,
+			exposureAlternative: exposureAlternative,
+			outcome: outcome,
+			sampleSize: sampleSize,
+			resultsByExposure: resultsByExposure,
+			effectEstimate: effectEstimate,
+			certainty: certainty);
+	}
+
   @HiveField(0)
   final String resourceType= 'EffectEvidenceSynthesis';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  An absolute URI that is used to identify this effect evidence
-  // synthesis when it is referenced in a specification, model, design or an
-  // instance; also called its canonical identifier. This SHOULD be globally
-  // unique and SHOULD be a literal address at which at which an
-  // authoritative instance of this effect evidence synthesis is (or will
-  // be) published. This URL can be the target of a canonical reference. It
-  // SHALL remain the same when the effect evidence synthesis is stored on
-  // different servers.
   @HiveField(11)
   String url;
-
-  //  Extensions for url
   @HiveField(12)
   Element elementUrl;
-
-  //  A formal identifier that is used to identify this effect evidence
-  // synthesis when it is represented in other formats, or referenced in a
-  // specification, model, design or an instance.
   @HiveField(13)
   List<Identifier> identifier;
-
-  //  The identifier that is used to identify this version of the effect
-  // evidence synthesis when it is referenced in a specification, model,
-  // design or instance. This is an arbitrary value managed by the effect
-  // evidence synthesis author and is not expected to be globally unique.
-  // For example, it might be a timestamp (e.g. yyyymmdd) if a managed
-  // version is not available. There is also no expectation that versions
-  // can be placed in a lexicographical sequence.
   @HiveField(14)
   String version;
-
-  //  Extensions for version
   @HiveField(15)
   Element elementVersion;
-
-  //  A natural language name identifying the effect evidence synthesis.
-  // This name should be usable as an identifier for the module by machine
-  // processing applications such as code generation.
   @HiveField(16)
   String name;
-
-  //  Extensions for name
   @HiveField(17)
   Element elementName;
-
-  //  A short, descriptive, user-friendly title for the effect evidence
-  // synthesis.
   @HiveField(18)
   String title;
-
-  //  Extensions for title
   @HiveField(19)
   Element elementTitle;
-
-  //  The status of this effect evidence synthesis. Enables tracking the
-  // life-cycle of the content.
   @HiveField(20)
   String status; // <code> enum: draft/active/retired/unknown;
-
-  //  Extensions for status
   @HiveField(21)
   Element elementStatus;
-
-  //  The date  (and optionally time) when the effect evidence synthesis was
-  // published. The date must change when the business version changes and
-  // it must change if the status code changes. In addition, it should
-  // change when the substantive content of the effect evidence synthesis
-  // changes.
   @HiveField(22)
   DateTime date;
-
-  //  Extensions for date
   @HiveField(23)
   Element elementDate;
-
-  //  The name of the organization or individual that published the effect
-  // evidence synthesis.
   @HiveField(24)
   String publisher;
-
-  //  Extensions for publisher
   @HiveField(25)
   Element elementPublisher;
-
-  //  Contact details to assist a user in finding and communicating with the
-  // publisher.
   @HiveField(26)
   List<ContactDetail> contact;
-
-  //  A free text natural language description of the effect evidence
-  // synthesis from a consumer's perspective.
   @HiveField(27)
   String description;
-
-  //  Extensions for description
   @HiveField(28)
   Element elementDescription;
-
-  //  A human-readable string to clarify or explain concepts about the
-  // resource.
   @HiveField(29)
   List<Annotation> note;
-
-  //  The content was developed with a focus and intent of supporting the
-  // contexts that are listed. These contexts may be general categories
-  // (gender, age, ...) or may be references to specific programs (insurance
-  // plans, studies, ...) and may be used to assist with indexing and
-  // searching for appropriate effect evidence synthesis instances.
   @HiveField(30)
   List<UsageContext> useContext;
-
-  //  A legal or geographic region in which the effect evidence synthesis is
-  // intended to be used.
   @HiveField(31)
   List<CodeableConcept> jurisdiction;
-
-  //  A copyright statement relating to the effect evidence synthesis and/or
-  // its contents. Copyright statements are generally legal restrictions on
-  // the use and publishing of the effect evidence synthesis.
   @HiveField(32)
   String copyright;
-
-  //  Extensions for copyright
   @HiveField(33)
   Element elementCopyright;
-
-  //  The date on which the resource content was approved by the publisher.
-  // Approval happens once when the content is officially approved for
-  // usage.
   @HiveField(34)
   String approvalDate;
-
-  //  Extensions for approvalDate
   @HiveField(35)
   Element elementApprovalDate;
-
-  //  The date on which the resource content was last reviewed. Review
-  // happens periodically after approval but does not change the original
-  // approval date.
   @HiveField(36)
   String lastReviewDate;
-
-  //  Extensions for lastReviewDate
   @HiveField(37)
   Element elementLastReviewDate;
-
-  //  The period during which the effect evidence synthesis content was or
-  // is planned to be in active use.
   @HiveField(38)
   Period effectivePeriod;
-
-  //  Descriptive topics related to the content of the
-  // EffectEvidenceSynthesis. Topics provide a high-level categorization
-  // grouping types of EffectEvidenceSynthesiss that can be useful for
-  // filtering and searching.
   @HiveField(39)
   List<CodeableConcept> topic;
-
-  //  An individiual or organization primarily involved in the creation and
-  // maintenance of the content.
   @HiveField(40)
   List<ContactDetail> author;
-
-  //  An individual or organization primarily responsible for internal
-  // coherence of the content.
   @HiveField(41)
   List<ContactDetail> editor;
-
-  //  An individual or organization primarily responsible for review of some
-  // aspect of the content.
   @HiveField(42)
   List<ContactDetail> reviewer;
-
-  //  An individual or organization responsible for officially endorsing the
-  // content for use in some setting.
   @HiveField(43)
   List<ContactDetail> endorser;
-
-  //  Related artifacts such as additional documentation, justification, or
-  // bibliographic references.
   @HiveField(44)
   List<RelatedArtifact> relatedArtifact;
-
-  //  Type of synthesis eg meta-analysis.
   @HiveField(45)
   CodeableConcept synthesisType;
-
-  //  Type of study eg randomized trial.
   @HiveField(46)
   CodeableConcept studyType;
-
-  //  A reference to a EvidenceVariable resource that defines the population
-  // for the research.
   @HiveField(47)
   Reference population;
-
-  //  A reference to a EvidenceVariable resource that defines the exposure
-  // for the research.
   @HiveField(48)
   Reference exposure;
-
-  //  A reference to a EvidenceVariable resource that defines the comparison
-  // exposure for the research.
   @HiveField(49)
   Reference exposureAlternative;
-
-  //  A reference to a EvidenceVariable resomece that defines the outcome
-  // for the research.
   @HiveField(50)
   Reference outcome;
-
-  //  A description of the size of the sample involved in the synthesis.
   @HiveField(51)
   EffectEvidenceSynthesis_SampleSize sampleSize;
-
-  //  A description of the results for each exposure considered in the
-  // effect estimate.
   @HiveField(52)
   List<EffectEvidenceSynthesis_ResultsByExposure> resultsByExposure;
-
-  //  The estimated effect of the exposure variant.
   @HiveField(53)
   List<EffectEvidenceSynthesis_EffectEstimate> effectEstimate;
-
-  //  A description of the certainty of the effect estimate.
   @HiveField(54)
   List<EffectEvidenceSynthesis_Certainty> certainty;
 
 EffectEvidenceSynthesis(
-  this.population,
-    this.exposure,
-    this.exposureAlternative,
-    this.outcome,
-    {this.id,
+  {this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -372,6 +292,10 @@ EffectEvidenceSynthesis(
     this.relatedArtifact,
     this.synthesisType,
     this.studyType,
+    @required this.population,
+    @required this.exposure,
+    @required this.exposureAlternative,
+    @required this.outcome,
     this.sampleSize,
     this.resultsByExposure,
     this.effectEstimate,
@@ -385,48 +309,36 @@ EffectEvidenceSynthesis(
 @JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_SampleSize {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<EffectEvidenceSynthesis_SampleSize> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String description,
+		Element elementDescription,
+		int numberOfStudies,
+		Element elementNumberOfStudies,
+		int numberOfParticipants,
+		Element elementNumberOfParticipants}) async {
+	 return EffectEvidenceSynthesis_SampleSize(
+			id: await newEntry('EffectEvidenceSynthesis_SampleSize'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			description: description,
+			elementDescription: elementDescription,
+			numberOfStudies: numberOfStudies,
+			elementNumberOfStudies: elementNumberOfStudies,
+			numberOfParticipants: numberOfParticipants,
+			elementNumberOfParticipants: elementNumberOfParticipants);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Human-readable summary of sample size.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  Number of studies included in this evidence synthesis.
   int numberOfStudies;
-
-  //  Extensions for numberOfStudies
   Element elementNumberOfStudies;
-
-  //  Number of participants included in this evidence synthesis.
   int numberOfParticipants;
-
-  //  Extensions for numberOfParticipants
   Element elementNumberOfParticipants;
 
 EffectEvidenceSynthesis_SampleSize(
@@ -448,61 +360,48 @@ EffectEvidenceSynthesis_SampleSize(
 @JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_ResultsByExposure {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<EffectEvidenceSynthesis_ResultsByExposure> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String description,
+		Element elementDescription,
+		String exposureState,
+		Element elementExposureState,
+		CodeableConcept variantState,
+		Reference riskEvidenceSynthesis}) async {
+	 return EffectEvidenceSynthesis_ResultsByExposure(
+			id: await newEntry('EffectEvidenceSynthesis_ResultsByExposure'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			description: description,
+			elementDescription: elementDescription,
+			exposureState: exposureState,
+			elementExposureState: elementExposureState,
+			variantState: variantState,
+			riskEvidenceSynthesis: riskEvidenceSynthesis);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Human-readable summary of results by exposure state.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  Whether these results are for the exposure state or alternative
-  // exposure state.
   String exposureState; // <code> enum: exposure/exposure-alternative;
-
-  //  Extensions for exposureState
   Element elementExposureState;
-
-  //  Used to define variant exposure states such as low-risk state.
   CodeableConcept variantState;
-
-  //  Reference to a RiskEvidenceSynthesis resource.
   Reference riskEvidenceSynthesis;
 
 EffectEvidenceSynthesis_ResultsByExposure(
-  this.riskEvidenceSynthesis,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.description,
     this.elementDescription,
     this.exposureState,
     this.elementExposureState,
-    this.variantState
+    this.variantState,
+    @required this.riskEvidenceSynthesis
     });
 
   factory EffectEvidenceSynthesis_ResultsByExposure.fromJson(Map<String, dynamic> json) => _$EffectEvidenceSynthesis_ResultsByExposureFromJson(json);
@@ -512,54 +411,42 @@ EffectEvidenceSynthesis_ResultsByExposure(
 @JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_EffectEstimate {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<EffectEvidenceSynthesis_EffectEstimate> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String description,
+		Element elementDescription,
+		CodeableConcept type,
+		CodeableConcept variantState,
+		double value,
+		Element elementValue,
+		CodeableConcept unitOfMeasure,
+		List<EffectEvidenceSynthesis_PrecisionEstimate> precisionEstimate}) async {
+	 return EffectEvidenceSynthesis_EffectEstimate(
+			id: await newEntry('EffectEvidenceSynthesis_EffectEstimate'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			description: description,
+			elementDescription: elementDescription,
+			type: type,
+			variantState: variantState,
+			value: value,
+			elementValue: elementValue,
+			unitOfMeasure: unitOfMeasure,
+			precisionEstimate: precisionEstimate);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Human-readable summary of effect estimate.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  Examples include relative risk and mean difference.
   CodeableConcept type;
-
-  //  Used to define variant exposure states such as low-risk state.
   CodeableConcept variantState;
-
-  //  The point estimate of the effect estimate.
   double value;
-
-  //  Extensions for value
   Element elementValue;
-
-  //  Specifies the UCUM unit for the outcome.
   CodeableConcept unitOfMeasure;
-
-  //  A description of the precision of the estimate for the effect.
   List<EffectEvidenceSynthesis_PrecisionEstimate> precisionEstimate;
 
 EffectEvidenceSynthesis_EffectEstimate(
@@ -583,51 +470,39 @@ EffectEvidenceSynthesis_EffectEstimate(
 @JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_PrecisionEstimate {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<EffectEvidenceSynthesis_PrecisionEstimate> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept type,
+		double level,
+		Element elementLevel,
+		double from,
+		Element elementFrom,
+		double to,
+		Element elementTo}) async {
+	 return EffectEvidenceSynthesis_PrecisionEstimate(
+			id: await newEntry('EffectEvidenceSynthesis_PrecisionEstimate'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			type: type,
+			level: level,
+			elementLevel: elementLevel,
+			from: from,
+			elementFrom: elementFrom,
+			to: to,
+			elementTo: elementTo);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Examples include confidence interval and interquartile range.
   CodeableConcept type;
-
-  //  Use 95 for a 95% confidence interval.
   double level;
-
-  //  Extensions for level
   Element elementLevel;
-
-  //  Lower bound of confidence interval.
   double from;
-
-  //  Extensions for from
   Element elementFrom;
-
-  //  Upper bound of confidence interval.
   double to;
-
-  //  Extensions for to
   Element elementTo;
 
 EffectEvidenceSynthesis_PrecisionEstimate(
@@ -650,40 +525,27 @@ EffectEvidenceSynthesis_PrecisionEstimate(
 @JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_Certainty {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<EffectEvidenceSynthesis_Certainty> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<CodeableConcept> rating,
+		List<Annotation> note,
+		List<EffectEvidenceSynthesis_CertaintySubcomponent> certaintySubcomponent}) async {
+	 return EffectEvidenceSynthesis_Certainty(
+			id: await newEntry('EffectEvidenceSynthesis_Certainty'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			rating: rating,
+			note: note,
+			certaintySubcomponent: certaintySubcomponent);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A rating of the certainty of the effect estimate.
   List<CodeableConcept> rating;
-
-  //  A human-readable string to clarify or explain concepts about the
-  // resource.
   List<Annotation> note;
-
-  //  A description of a component of the overall certainty.
   List<EffectEvidenceSynthesis_CertaintySubcomponent> certaintySubcomponent;
 
 EffectEvidenceSynthesis_Certainty(
@@ -702,40 +564,27 @@ EffectEvidenceSynthesis_Certainty(
 @JsonSerializable(explicitToJson: true)
 class EffectEvidenceSynthesis_CertaintySubcomponent {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<EffectEvidenceSynthesis_CertaintySubcomponent> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept type,
+		List<CodeableConcept> rating,
+		List<Annotation> note}) async {
+	 return EffectEvidenceSynthesis_CertaintySubcomponent(
+			id: await newEntry('EffectEvidenceSynthesis_CertaintySubcomponent'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			type: type,
+			rating: rating,
+			note: note);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Type of subcomponent of certainty rating.
   CodeableConcept type;
-
-  //  A rating of a subcomponent of rating certainty.
   List<CodeableConcept> rating;
-
-  //  A human-readable string to clarify or explain concepts about the
-  // resource.
   List<Annotation> note;
 
 EffectEvidenceSynthesis_CertaintySubcomponent(
@@ -769,10 +618,6 @@ class EffectEvidenceSynthesisAdapter
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return EffectEvidenceSynthesis(
-      fields[47] as Reference,
-      fields[48] as Reference,
-      fields[49] as Reference,
-      fields[50] as Reference,
       id: fields[1] as String,
       meta: fields[2] as Meta,
       implicitRules: fields[3] as String,
@@ -819,6 +664,10 @@ class EffectEvidenceSynthesisAdapter
       relatedArtifact: (fields[44] as List)?.cast<RelatedArtifact>(),
       synthesisType: fields[45] as CodeableConcept,
       studyType: fields[46] as CodeableConcept,
+      population: fields[47] as Reference,
+      exposure: fields[48] as Reference,
+      exposureAlternative: fields[49] as Reference,
+      outcome: fields[50] as Reference,
       sampleSize: fields[51] as EffectEvidenceSynthesis_SampleSize,
       resultsByExposure: (fields[52] as List)
           ?.cast<EffectEvidenceSynthesis_ResultsByExposure>(),
@@ -953,19 +802,6 @@ class EffectEvidenceSynthesisAdapter
 EffectEvidenceSynthesis _$EffectEvidenceSynthesisFromJson(
     Map<String, dynamic> json) {
   return EffectEvidenceSynthesis(
-    json['population'] == null
-        ? null
-        : Reference.fromJson(json['population'] as Map<String, dynamic>),
-    json['exposure'] == null
-        ? null
-        : Reference.fromJson(json['exposure'] as Map<String, dynamic>),
-    json['exposureAlternative'] == null
-        ? null
-        : Reference.fromJson(
-            json['exposureAlternative'] as Map<String, dynamic>),
-    json['outcome'] == null
-        ? null
-        : Reference.fromJson(json['outcome'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -1101,6 +937,19 @@ EffectEvidenceSynthesis _$EffectEvidenceSynthesisFromJson(
     studyType: json['studyType'] == null
         ? null
         : CodeableConcept.fromJson(json['studyType'] as Map<String, dynamic>),
+    population: json['population'] == null
+        ? null
+        : Reference.fromJson(json['population'] as Map<String, dynamic>),
+    exposure: json['exposure'] == null
+        ? null
+        : Reference.fromJson(json['exposure'] as Map<String, dynamic>),
+    exposureAlternative: json['exposureAlternative'] == null
+        ? null
+        : Reference.fromJson(
+            json['exposureAlternative'] as Map<String, dynamic>),
+    outcome: json['outcome'] == null
+        ? null
+        : Reference.fromJson(json['outcome'] as Map<String, dynamic>),
     sampleSize: json['sampleSize'] == null
         ? null
         : EffectEvidenceSynthesis_SampleSize.fromJson(
@@ -1238,10 +1087,6 @@ EffectEvidenceSynthesis_ResultsByExposure
     _$EffectEvidenceSynthesis_ResultsByExposureFromJson(
         Map<String, dynamic> json) {
   return EffectEvidenceSynthesis_ResultsByExposure(
-    json['riskEvidenceSynthesis'] == null
-        ? null
-        : Reference.fromJson(
-            json['riskEvidenceSynthesis'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1264,6 +1109,10 @@ EffectEvidenceSynthesis_ResultsByExposure
         ? null
         : CodeableConcept.fromJson(
             json['variantState'] as Map<String, dynamic>),
+    riskEvidenceSynthesis: json['riskEvidenceSynthesis'] == null
+        ? null
+        : Reference.fromJson(
+            json['riskEvidenceSynthesis'] as Map<String, dynamic>),
   );
 }
 

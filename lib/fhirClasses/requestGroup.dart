@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/expression.dart';
 import 'package:flutter_fhir/fhirClasses/timing.dart';
@@ -22,187 +23,146 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 170)
 class RequestGroup {
 
-  //  This is a RequestGroup resource
+	static Future<RequestGroup> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Identifier> identifier,
+		List<String> instantiatesCanonical,
+		List<Element> elementInstantiatesCanonical,
+		List<String> instantiatesUri,
+		List<Element> elementInstantiatesUri,
+		List<Reference> basedOn,
+		List<Reference> replaces,
+		Identifier groupIdentifier,
+		String status,
+		Element elementStatus,
+		String intent,
+		Element elementIntent,
+		String priority,
+		Element elementPriority,
+		CodeableConcept code,
+		Reference subject,
+		Reference encounter,
+		DateTime authoredOn,
+		Element elementAuthoredOn,
+		Reference author,
+		List<CodeableConcept> reasonCode,
+		List<Reference> reasonReference,
+		List<Annotation> note,
+		List<RequestGroup_Action> action}) async {
+	 return RequestGroup(
+			id: await newEntry('RequestGroup'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			instantiatesCanonical: instantiatesCanonical,
+			elementInstantiatesCanonical: elementInstantiatesCanonical,
+			instantiatesUri: instantiatesUri,
+			elementInstantiatesUri: elementInstantiatesUri,
+			basedOn: basedOn,
+			replaces: replaces,
+			groupIdentifier: groupIdentifier,
+			status: status,
+			elementStatus: elementStatus,
+			intent: intent,
+			elementIntent: elementIntent,
+			priority: priority,
+			elementPriority: elementPriority,
+			code: code,
+			subject: subject,
+			encounter: encounter,
+			authoredOn: authoredOn,
+			elementAuthoredOn: elementAuthoredOn,
+			author: author,
+			reasonCode: reasonCode,
+			reasonReference: reasonReference,
+			note: note,
+			action: action);
+	}
+
   @HiveField(0)
   final String resourceType= 'RequestGroup';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  Allows a service to provide a unique, business identifier for the
-  // request.
   @HiveField(11)
   List<Identifier> identifier;
-
-  //  A canonical URL referencing a FHIR-defined protocol, guideline,
-  // orderset or other definition that is adhered to in whole or in part by
-  // this request.
   @HiveField(12)
   List<String> instantiatesCanonical;
-
-  //  Extensions for instantiatesCanonical
   @HiveField(13)
   List<Element> elementInstantiatesCanonical;
-
-  //  A URL referencing an externally defined protocol, guideline, orderset
-  // or other definition that is adhered to in whole or in part by this
-  // request.
   @HiveField(14)
   List<String> instantiatesUri;
-
-  //  Extensions for instantiatesUri
   @HiveField(15)
   List<Element> elementInstantiatesUri;
-
-  //  A plan, proposal or order that is fulfilled in whole or in part by
-  // this request.
   @HiveField(16)
   List<Reference> basedOn;
-
-  //  Completed or terminated request(s) whose function is taken by this new
-  // request.
   @HiveField(17)
   List<Reference> replaces;
-
-  //  A shared identifier common to all requests that were authorized more
-  // or less simultaneously by a single author, representing the identifier
-  // of the requisition, prescription or similar form.
   @HiveField(18)
   Identifier groupIdentifier;
-
-  //  The current state of the request. For request groups, the status
-  // reflects the status of all the requests in the group.
   @HiveField(19)
   String status;
-
-  //  Extensions for status
   @HiveField(20)
   Element elementStatus;
-
-  //  Indicates the level of authority/intentionality associated with the
-  // request and where the request fits into the workflow chain.
   @HiveField(21)
   String intent;
-
-  //  Extensions for intent
   @HiveField(22)
   Element elementIntent;
-
-  //  Indicates how quickly the request should be addressed with respect to
-  // other requests.
   @HiveField(23)
   String priority;
-
-  //  Extensions for priority
   @HiveField(24)
   Element elementPriority;
-
-  //  A code that identifies what the overall request group is.
   @HiveField(25)
   CodeableConcept code;
-
-  //  The subject for which the request group was created.
   @HiveField(26)
   Reference subject;
-
-  //  Describes the context of the request group, if any.
   @HiveField(27)
   Reference encounter;
-
-  //  Indicates when the request group was created.
   @HiveField(28)
   DateTime authoredOn;
-
-  //  Extensions for authoredOn
   @HiveField(29)
   Element elementAuthoredOn;
-
-  //  Provides a reference to the author of the request group.
   @HiveField(30)
   Reference author;
-
-  //  Describes the reason for the request group in coded or textual form.
   @HiveField(31)
   List<CodeableConcept> reasonCode;
-
-  //  Indicates another resource whose existence justifies this request
-  // group.
   @HiveField(32)
   List<Reference> reasonReference;
-
-  //  Provides a mechanism to communicate additional information about the
-  // response.
   @HiveField(33)
   List<Annotation> note;
-
-  //  The actions, if any, produced by the evaluation of the artifact.
   @HiveField(34)
   List<RequestGroup_Action> action;
 
@@ -250,147 +210,123 @@ RequestGroup(
 @JsonSerializable(explicitToJson: true)
 class RequestGroup_Action {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<RequestGroup_Action> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String prefix,
+		Element elementPrefix,
+		String title,
+		Element elementTitle,
+		String description,
+		Element elementDescription,
+		String textEquivalent,
+		Element elementTextEquivalent,
+		String priority,
+		Element elementPriority,
+		List<CodeableConcept> code,
+		List<RelatedArtifact> documentation,
+		List<RequestGroup_Condition> condition,
+		List<RequestGroup_RelatedAction> relatedAction,
+		String timingDateTime,
+		Element elementTimingDateTime,
+		Age timingAge,
+		Period timingPeriod,
+		Duration timingDuration,
+		Range timingRange,
+		Timing timingTiming,
+		List<Reference> participant,
+		CodeableConcept type,
+		String groupingBehavior,
+		Element elementGroupingBehavior,
+		String selectionBehavior,
+		Element elementSelectionBehavior,
+		String requiredBehavior,
+		Element elementRequiredBehavior,
+		String precheckBehavior,
+		Element elementPrecheckBehavior,
+		String cardinalityBehavior,
+		Element elementCardinalityBehavior,
+		Reference resource,
+		List<RequestGroup_Action> action}) async {
+	 return RequestGroup_Action(
+			id: await newEntry('RequestGroup_Action'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			prefix: prefix,
+			elementPrefix: elementPrefix,
+			title: title,
+			elementTitle: elementTitle,
+			description: description,
+			elementDescription: elementDescription,
+			textEquivalent: textEquivalent,
+			elementTextEquivalent: elementTextEquivalent,
+			priority: priority,
+			elementPriority: elementPriority,
+			code: code,
+			documentation: documentation,
+			condition: condition,
+			relatedAction: relatedAction,
+			timingDateTime: timingDateTime,
+			elementTimingDateTime: elementTimingDateTime,
+			timingAge: timingAge,
+			timingPeriod: timingPeriod,
+			timingDuration: timingDuration,
+			timingRange: timingRange,
+			timingTiming: timingTiming,
+			participant: participant,
+			type: type,
+			groupingBehavior: groupingBehavior,
+			elementGroupingBehavior: elementGroupingBehavior,
+			selectionBehavior: selectionBehavior,
+			elementSelectionBehavior: elementSelectionBehavior,
+			requiredBehavior: requiredBehavior,
+			elementRequiredBehavior: elementRequiredBehavior,
+			precheckBehavior: precheckBehavior,
+			elementPrecheckBehavior: elementPrecheckBehavior,
+			cardinalityBehavior: cardinalityBehavior,
+			elementCardinalityBehavior: elementCardinalityBehavior,
+			resource: resource,
+			action: action);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A user-visible prefix for the action.
   String prefix;
-
-  //  Extensions for prefix
   Element elementPrefix;
-
-  //  The title of the action displayed to a user.
   String title;
-
-  //  Extensions for title
   Element elementTitle;
-
-  //  A short description of the action used to provide a summary to display
-  // to the user.
   String description;
-
-  //  Extensions for description
   Element elementDescription;
-
-  //  A text equivalent of the action to be performed. This provides a
-  // human-interpretable description of the action when the definition is
-  // consumed by a system that might not be capable of interpreting it
-  // dynamically.
   String textEquivalent;
-
-  //  Extensions for textEquivalent
   Element elementTextEquivalent;
-
-  //  Indicates how quickly the action should be addressed with respect to
-  // other actions.
   String priority;
-
-  //  Extensions for priority
   Element elementPriority;
-
-  //  A code that provides meaning for the action or action group. For
-  // example, a section may have a LOINC code for a section of a
-  // documentation template.
   List<CodeableConcept> code;
-
-  //  Didactic or other informational resources associated with the action
-  // that can be provided to the CDS recipient. Information resources can
-  // include inline text commentary and links to web resources.
   List<RelatedArtifact> documentation;
-
-  //  An expression that describes applicability criteria, or start/stop
-  // conditions for the action.
   List<RequestGroup_Condition> condition;
-
-  //  A relationship to another action such as "before" or "30-60 minutes
-  // after start of".
   List<RequestGroup_RelatedAction> relatedAction;
-
-  //  An optional value describing when the action should be performed.
   String timingDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for timingDateTime
   Element elementTimingDateTime;
-
-  //  An optional value describing when the action should be performed.
   Age timingAge;
-
-  //  An optional value describing when the action should be performed.
   Period timingPeriod;
-
-  //  An optional value describing when the action should be performed.
   Duration timingDuration;
-
-  //  An optional value describing when the action should be performed.
   Range timingRange;
-
-  //  An optional value describing when the action should be performed.
   Timing timingTiming;
-
-  //  The participant that should perform or be responsible for this action.
   List<Reference> participant;
-
-  //  The type of action to perform (create, update, remove).
   CodeableConcept type;
-
-  //  Defines the grouping behavior for the action and its children.
   String groupingBehavior;
-
-  //  Extensions for groupingBehavior
   Element elementGroupingBehavior;
-
-  //  Defines the selection behavior for the action and its children.
   String selectionBehavior;
-
-  //  Extensions for selectionBehavior
   Element elementSelectionBehavior;
-
-  //  Defines expectations around whether an action is required.
   String requiredBehavior;
-
-  //  Extensions for requiredBehavior
   Element elementRequiredBehavior;
-
-  //  Defines whether the action should usually be preselected.
   String precheckBehavior;
-
-  //  Extensions for precheckBehavior
   Element elementPrecheckBehavior;
-
-  //  Defines whether the action can be selected multiple times.
   String cardinalityBehavior;
-
-  //  Extensions for cardinalityBehavior
   Element elementCardinalityBehavior;
-
-  //  The resource that is the target of the action (e.g.
-  // CommunicationRequest).
   Reference resource;
-
-  //  Sub actions.
   List<RequestGroup_Action> action;
 
 RequestGroup_Action(
@@ -441,40 +377,27 @@ RequestGroup_Action(
 @JsonSerializable(explicitToJson: true)
 class RequestGroup_Condition {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<RequestGroup_Condition> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String kind,
+		Element elementKind,
+		Expression expression}) async {
+	 return RequestGroup_Condition(
+			id: await newEntry('RequestGroup_Condition'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			kind: kind,
+			elementKind: elementKind,
+			expression: expression);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The kind of condition.
   String kind;
-
-  //  Extensions for kind
   Element elementKind;
-
-  //  An expression that returns true or false, indicating whether or not
-  // the condition is satisfied.
   Expression expression;
 
 RequestGroup_Condition(
@@ -493,50 +416,36 @@ RequestGroup_Condition(
 @JsonSerializable(explicitToJson: true)
 class RequestGroup_RelatedAction {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<RequestGroup_RelatedAction> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String actionId,
+		Element elementActionId,
+		String relationship,
+		Element elementRelationship,
+		Duration offsetDuration,
+		Range offsetRange}) async {
+	 return RequestGroup_RelatedAction(
+			id: await newEntry('RequestGroup_RelatedAction'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			actionId: actionId,
+			elementActionId: elementActionId,
+			relationship: relationship,
+			elementRelationship: elementRelationship,
+			offsetDuration: offsetDuration,
+			offsetRange: offsetRange);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The element id of the action this is related to.
   String actionId;
-
-  //  Extensions for actionId
   Element elementActionId;
-
-  //  The relationship of this action to the related action.
   String relationship;
-
-  //  Extensions for relationship
   Element elementRelationship;
-
-  //  A duration or range of durations to apply to the relationship. For
-  // example, 30-60 minutes before.
   Duration offsetDuration;
-
-  //  A duration or range of durations to apply to the relationship. For
-  // example, 30-60 minutes before.
   Range offsetRange;
 
 RequestGroup_RelatedAction(

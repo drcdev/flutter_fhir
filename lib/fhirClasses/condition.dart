@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
 import 'package:flutter_fhir/fhirClasses/range.dart';
@@ -18,236 +21,175 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 83)
 class Condition {
 
-  //  This is a Condition resource
+	static Future<Condition> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Identifier> identifier,
+		CodeableConcept clinicalStatus,
+		CodeableConcept verificationStatus,
+		List<CodeableConcept> category,
+		CodeableConcept severity,
+		CodeableConcept code,
+		List<CodeableConcept> bodySite,
+		Reference subject,
+		Reference encounter,
+		String onsetDateTime,
+		Element elementOnsetDateTime,
+		Age onsetAge,
+		Period onsetPeriod,
+		Range onsetRange,
+		String onsetString,
+		Element elementOnsetString,
+		String abatementDateTime,
+		Element elementAbatementDateTime,
+		Age abatementAge,
+		Period abatementPeriod,
+		Range abatementRange,
+		String abatementString,
+		Element elementAbatementString,
+		DateTime recordedDate,
+		Element elementRecordedDate,
+		Reference recorder,
+		Reference asserter,
+		List<Condition_Stage> stage,
+		List<Condition_Evidence> evidence,
+		List<Annotation> note}) async {
+	 return Condition(
+			id: await newEntry('Condition'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			clinicalStatus: clinicalStatus,
+			verificationStatus: verificationStatus,
+			category: category,
+			severity: severity,
+			code: code,
+			bodySite: bodySite,
+			subject: subject,
+			encounter: encounter,
+			onsetDateTime: onsetDateTime,
+			elementOnsetDateTime: elementOnsetDateTime,
+			onsetAge: onsetAge,
+			onsetPeriod: onsetPeriod,
+			onsetRange: onsetRange,
+			onsetString: onsetString,
+			elementOnsetString: elementOnsetString,
+			abatementDateTime: abatementDateTime,
+			elementAbatementDateTime: elementAbatementDateTime,
+			abatementAge: abatementAge,
+			abatementPeriod: abatementPeriod,
+			abatementRange: abatementRange,
+			abatementString: abatementString,
+			elementAbatementString: elementAbatementString,
+			recordedDate: recordedDate,
+			elementRecordedDate: elementRecordedDate,
+			recorder: recorder,
+			asserter: asserter,
+			stage: stage,
+			evidence: evidence,
+			note: note);
+	}
+
   @HiveField(0)
   final String resourceType= 'Condition';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  Business identifiers assigned to this condition by the performer or
-  // other systems which remain constant as the resource is updated and
-  // propagates from server to server.
   @HiveField(11)
   List<Identifier> identifier;
-
-  //  The clinical status of the condition.
   @HiveField(12)
   CodeableConcept clinicalStatus;
-
-  //  The verification status to support the clinical status of the
-  // condition.
   @HiveField(13)
   CodeableConcept verificationStatus;
-
-  //  A category assigned to the condition.
   @HiveField(14)
   List<CodeableConcept> category;
-
-  //  A subjective assessment of the severity of the condition as evaluated
-  // by the clinician.
   @HiveField(15)
   CodeableConcept severity;
-
-  //  Identification of the condition, problem or diagnosis.
   @HiveField(16)
   CodeableConcept code;
-
-  //  The anatomical location where this condition manifests itself.
   @HiveField(17)
   List<CodeableConcept> bodySite;
-
-  //  Indicates the patient or group who the condition record is associated
-  // with.
   @HiveField(18)
   Reference subject;
-
-  //  The Encounter during which this Condition was created or to which the
-  // creation of this record is tightly associated.
   @HiveField(19)
   Reference encounter;
-
-  //  Estimated or actual date or date-time  the condition began, in the
-  // opinion of the clinician.
   @HiveField(20)
   String onsetDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for onsetDateTime
   @HiveField(21)
   Element elementOnsetDateTime;
-
-  //  Estimated or actual date or date-time  the condition began, in the
-  // opinion of the clinician.
   @HiveField(22)
   Age onsetAge;
-
-  //  Estimated or actual date or date-time  the condition began, in the
-  // opinion of the clinician.
   @HiveField(23)
   Period onsetPeriod;
-
-  //  Estimated or actual date or date-time  the condition began, in the
-  // opinion of the clinician.
   @HiveField(24)
   Range onsetRange;
-
-  //  Estimated or actual date or date-time  the condition began, in the
-  // opinion of the clinician.
   @HiveField(25)
   String onsetString; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for onsetString
   @HiveField(26)
   Element elementOnsetString;
-
-  //  The date or estimated date that the condition resolved or went into
-  // remission. This is called "abatement" because of the many overloaded
-  // connotations associated with "remission" or "resolution" - Conditions
-  // are never really resolved, but they can abate.
   @HiveField(27)
   String abatementDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for abatementDateTime
   @HiveField(28)
   Element elementAbatementDateTime;
-
-  //  The date or estimated date that the condition resolved or went into
-  // remission. This is called "abatement" because of the many overloaded
-  // connotations associated with "remission" or "resolution" - Conditions
-  // are never really resolved, but they can abate.
   @HiveField(29)
   Age abatementAge;
-
-  //  The date or estimated date that the condition resolved or went into
-  // remission. This is called "abatement" because of the many overloaded
-  // connotations associated with "remission" or "resolution" - Conditions
-  // are never really resolved, but they can abate.
   @HiveField(30)
   Period abatementPeriod;
-
-  //  The date or estimated date that the condition resolved or went into
-  // remission. This is called "abatement" because of the many overloaded
-  // connotations associated with "remission" or "resolution" - Conditions
-  // are never really resolved, but they can abate.
   @HiveField(31)
   Range abatementRange;
-
-  //  The date or estimated date that the condition resolved or went into
-  // remission. This is called "abatement" because of the many overloaded
-  // connotations associated with "remission" or "resolution" - Conditions
-  // are never really resolved, but they can abate.
   @HiveField(32)
   String abatementString; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for abatementString
   @HiveField(33)
   Element elementAbatementString;
-
-  //  The recordedDate represents when this particular Condition record was
-  // created in the system, which is often a system-generated date.
   @HiveField(34)
   DateTime recordedDate;
-
-  //  Extensions for recordedDate
   @HiveField(35)
   Element elementRecordedDate;
-
-  //  Individual who recorded the record and takes responsibility for its
-  // content.
   @HiveField(36)
   Reference recorder;
-
-  //  Individual who is making the condition statement.
   @HiveField(37)
   Reference asserter;
-
-  //  Clinical stage or grade of a condition. May include formal severity
-  // assessments.
   @HiveField(38)
   List<Condition_Stage> stage;
-
-  //  Supporting evidence / manifestations that are the basis of the
-  // Condition's verification status, such as evidence that confirmed or
-  // refuted the condition.
   @HiveField(39)
   List<Condition_Evidence> evidence;
-
-  //  Additional information about the Condition. This is a general
-  // notes/comments entry  for description of the Condition, its diagnosis
-  // and prognosis.
   @HiveField(40)
   List<Annotation> note;
 
 Condition(
-  this.subject,
-    {this.id,
+  {this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -264,6 +206,7 @@ Condition(
     this.severity,
     this.code,
     this.bodySite,
+    @required this.subject,
     this.encounter,
     this.onsetDateTime,
     this.elementOnsetDateTime,
@@ -295,41 +238,27 @@ Condition(
 @JsonSerializable(explicitToJson: true)
 class Condition_Stage {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Condition_Stage> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept summary,
+		List<Reference> assessment,
+		CodeableConcept type}) async {
+	 return Condition_Stage(
+			id: await newEntry('Condition_Stage'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			summary: summary,
+			assessment: assessment,
+			type: type);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A simple summary of the stage such as "Stage 3". The determination of
-  // the stage is disease-specific.
   CodeableConcept summary;
-
-  //  Reference to a formal record of the evidence on which the staging
-  // assessment is based.
   List<Reference> assessment;
-
-  //  The kind of staging, such as pathological or clinical staging.
   CodeableConcept type;
 
 Condition_Stage(
@@ -348,37 +277,24 @@ Condition_Stage(
 @JsonSerializable(explicitToJson: true)
 class Condition_Evidence {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Condition_Evidence> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<CodeableConcept> code,
+		List<Reference> detail}) async {
+	 return Condition_Evidence(
+			id: await newEntry('Condition_Evidence'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			code: code,
+			detail: detail);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A manifestation or symptom that led to the recording of this
-  // condition.
   List<CodeableConcept> code;
-
-  //  Links to other relevant information, including pathology reports.
   List<Reference> detail;
 
 Condition_Evidence(
@@ -410,7 +326,6 @@ class ConditionAdapter extends TypeAdapter<Condition> {
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Condition(
-      fields[18] as Reference,
       id: fields[1] as String,
       meta: fields[2] as Meta,
       implicitRules: fields[3] as String,
@@ -428,6 +343,7 @@ class ConditionAdapter extends TypeAdapter<Condition> {
       severity: fields[15] as CodeableConcept,
       code: fields[16] as CodeableConcept,
       bodySite: (fields[17] as List)?.cast<CodeableConcept>(),
+      subject: fields[18] as Reference,
       encounter: fields[19] as Reference,
       onsetDateTime: fields[20] as String,
       elementOnsetDateTime: fields[21] as Element,
@@ -548,9 +464,6 @@ class ConditionAdapter extends TypeAdapter<Condition> {
 
 Condition _$ConditionFromJson(Map<String, dynamic> json) {
   return Condition(
-    json['subject'] == null
-        ? null
-        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -607,6 +520,9 @@ Condition _$ConditionFromJson(Map<String, dynamic> json) {
             ? null
             : CodeableConcept.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    subject: json['subject'] == null
+        ? null
+        : Reference.fromJson(json['subject'] as Map<String, dynamic>),
     encounter: json['encounter'] == null
         ? null
         : Reference.fromJson(json['encounter'] as Map<String, dynamic>),

@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
@@ -8,66 +9,56 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @HiveType(typeId: 23)
 class Coding {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Coding> newInstance({
+		String id,
+		List<Extension> extension,
+		String system,
+		Element elementSystem,
+		String version,
+		Element elementVersion,
+		String code,
+		Element elementCode,
+		String display,
+		Element elementDisplay,
+		bool userSelected,
+		Element elementUserSelected}) async {
+	 return Coding(
+			id: await newEntry('Coding'),
+			extension: extension,
+			system: system,
+			elementSystem: elementSystem,
+			version: version,
+			elementVersion: elementVersion,
+			code: code,
+			elementCode: elementCode,
+			display: display,
+			elementDisplay: elementDisplay,
+			userSelected: userSelected,
+			elementUserSelected: elementUserSelected);
+	}
+
   @HiveField(0)
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   @HiveField(1)
   List<Extension> extension;
-
-  //  The identification of the code system that defines the meaning of the
-  // symbol in the code.
   @HiveField(2)
   String system;
-
-  //  Extensions for system
   @HiveField(3)
   Element elementSystem;
-
-  //  The version of the code system which was used when choosing this code.
-  // Note that a well-maintained code system does not need the version
-  // reported, because the meaning of codes is consistent across versions.
-  // However this cannot consistently be assured, and when the meaning is
-  // not guaranteed to be consistent, the version SHOULD be exchanged.
   @HiveField(4)
   String version;
-
-  //  Extensions for version
   @HiveField(5)
   Element elementVersion;
-
-  //  A symbol in syntax defined by the system. The symbol may be a
-  // predefined code or an expression in a syntax defined by the coding
-  // system (e.g. post-coordination).
   @HiveField(6)
   String code;
-
-  //  Extensions for code
   @HiveField(7)
   Element elementCode;
-
-  //  A representation of the meaning of the code in the system, following
-  // the rules of the system.
   @HiveField(8)
   String display;
-
-  //  Extensions for display
   @HiveField(9)
   Element elementDisplay;
-
-  //  Indicates that this coding was chosen by a user directly - e.g. off a
-  // pick list of available items (codes or displays).
   @HiveField(10)
   bool userSelected;
-
-  //  Extensions for userSelected
   @HiveField(11)
   Element elementUserSelected;
 

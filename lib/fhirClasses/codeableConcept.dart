@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/coding.dart';
@@ -9,31 +10,28 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @HiveType(typeId: 22)
 class CodeableConcept {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<CodeableConcept> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Coding> coding,
+		String text,
+		Element elementText}) async {
+	 return CodeableConcept(
+			id: await newEntry('CodeableConcept'),
+			extension: extension,
+			coding: coding,
+			text: text,
+			elementText: elementText);
+	}
+
   @HiveField(0)
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   @HiveField(1)
   List<Extension> extension;
-
-  //  A reference to a code defined by a terminology system.
   @HiveField(2)
   List<Coding> coding;
-
-  //  A human language representation of the concept as
-  // seen/selected/uttered by the user who entered the data and/or which
-  // represents the intended meaning of the user.
   @HiveField(3)
   String text;
-
-  //  Extensions for text
   @HiveField(4)
   Element elementText;
 

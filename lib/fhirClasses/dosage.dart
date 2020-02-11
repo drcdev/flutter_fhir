@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -13,112 +14,92 @@ import 'package:flutter_fhir/fhirClasses/extension.dart';
 @HiveType(typeId: 48)
 class Dosage {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Dosage> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		int sequence,
+		Element elementSequence,
+		String text,
+		Element elementText,
+		List<CodeableConcept> additionalInstruction,
+		String patientInstruction,
+		Element elementPatientInstruction,
+		Timing timing,
+		bool asNeededBoolean,
+		Element elementAsNeededBoolean,
+		CodeableConcept asNeededCodeableConcept,
+		CodeableConcept site,
+		CodeableConcept route,
+		CodeableConcept method,
+		List<Dosage_DoseAndRate> doseAndRate,
+		Ratio maxDosePerPeriod,
+		Quantity maxDosePerAdministration,
+		Quantity maxDosePerLifetime}) async {
+	 return Dosage(
+			id: await newEntry('Dosage'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			sequence: sequence,
+			elementSequence: elementSequence,
+			text: text,
+			elementText: elementText,
+			additionalInstruction: additionalInstruction,
+			patientInstruction: patientInstruction,
+			elementPatientInstruction: elementPatientInstruction,
+			timing: timing,
+			asNeededBoolean: asNeededBoolean,
+			elementAsNeededBoolean: elementAsNeededBoolean,
+			asNeededCodeableConcept: asNeededCodeableConcept,
+			site: site,
+			route: route,
+			method: method,
+			doseAndRate: doseAndRate,
+			maxDosePerPeriod: maxDosePerPeriod,
+			maxDosePerAdministration: maxDosePerAdministration,
+			maxDosePerLifetime: maxDosePerLifetime);
+	}
+
   @HiveField(0)
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   @HiveField(1)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   @HiveField(2)
   List<Extension> modifierExtension;
-
-  //  Indicates the order in which the dosage instructions should be applied
-  // or interpreted.
   @HiveField(3)
   int sequence;
-
-  //  Extensions for sequence
   @HiveField(4)
   Element elementSequence;
-
-  //  Free text dosage instructions e.g. SIG.
   @HiveField(5)
   String text;
-
-  //  Extensions for text
   @HiveField(6)
   Element elementText;
-
-  //  Supplemental instructions to the patient on how to take the medication
-  //  (e.g. "with meals" or"take half to one hour before food") or warnings
-  // for the patient about the medication (e.g. "may cause drowsiness" or
-  // "avoid exposure of skin to direct sunlight or sunlamps").
   @HiveField(7)
   List<CodeableConcept> additionalInstruction;
-
-  //  Instructions in terms that are understood by the patient or consumer.
   @HiveField(8)
   String patientInstruction;
-
-  //  Extensions for patientInstruction
   @HiveField(9)
   Element elementPatientInstruction;
-
-  //  When medication should be administered.
   @HiveField(10)
   Timing timing;
-
-  //  Indicates whether the Medication is only taken when needed within a
-  // specific dosing schedule (Boolean option), or it indicates the
-  // precondition for taking the Medication (CodeableConcept).
   @HiveField(11)
   bool asNeededBoolean; //  pattern: ^true|false$
-
-  //  Extensions for asNeededBoolean
   @HiveField(12)
   Element elementAsNeededBoolean;
-
-  //  Indicates whether the Medication is only taken when needed within a
-  // specific dosing schedule (Boolean option), or it indicates the
-  // precondition for taking the Medication (CodeableConcept).
   @HiveField(13)
   CodeableConcept asNeededCodeableConcept;
-
-  //  Body site to administer to.
   @HiveField(14)
   CodeableConcept site;
-
-  //  How drug should enter body.
   @HiveField(15)
   CodeableConcept route;
-
-  //  Technique for administering medication.
   @HiveField(16)
   CodeableConcept method;
-
-  //  The amount of medication administered.
   @HiveField(17)
   List<Dosage_DoseAndRate> doseAndRate;
-
-  //  Upper limit on medication per unit of time.
   @HiveField(18)
   Ratio maxDosePerPeriod;
-
-  //  Upper limit on medication per administration.
   @HiveField(19)
   Quantity maxDosePerAdministration;
-
-  //  Upper limit on medication per lifetime of the patient.
   @HiveField(20)
   Quantity maxDosePerLifetime;
 
@@ -153,49 +134,36 @@ Dosage(
 @JsonSerializable(explicitToJson: true)
 class Dosage_DoseAndRate {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Dosage_DoseAndRate> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		CodeableConcept type,
+		Range doseRange,
+		Quantity doseQuantity,
+		Ratio rateRatio,
+		Range rateRange,
+		Quantity rateQuantity}) async {
+	 return Dosage_DoseAndRate(
+			id: await newEntry('Dosage_DoseAndRate'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			type: type,
+			doseRange: doseRange,
+			doseQuantity: doseQuantity,
+			rateRatio: rateRatio,
+			rateRange: rateRange,
+			rateQuantity: rateQuantity);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The kind of dose or rate specified, for example, ordered or
-  // calculated.
   CodeableConcept type;
-
-  //  Amount of medication per dose.
   Range doseRange;
-
-  //  Amount of medication per dose.
   Quantity doseQuantity;
-
-  //  Amount of medication per unit of time.
   Ratio rateRatio;
-
-  //  Amount of medication per unit of time.
   Range rateRange;
-
-  //  Amount of medication per unit of time.
   Quantity rateQuantity;
 
 Dosage_DoseAndRate(

@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/productShelfLife.dart';
 import 'package:flutter_fhir/fhirClasses/prodCharacteristic.dart';
@@ -18,125 +21,95 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 143)
 class MedicinalProductPackaged {
 
-  //  This is a MedicinalProductPackaged resource
+	static Future<MedicinalProductPackaged> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Identifier> identifier,
+		List<Reference> subject,
+		String description,
+		Element elementDescription,
+		CodeableConcept legalStatusOfSupply,
+		List<MarketingStatus> marketingStatus,
+		Reference marketingAuthorization,
+		List<Reference> manufacturer,
+		List<MedicinalProductPackaged_BatchIdentifier> batchIdentifier,
+		List<MedicinalProductPackaged_PackageItem> packageItem}) async {
+	 return MedicinalProductPackaged(
+			id: await newEntry('MedicinalProductPackaged'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			subject: subject,
+			description: description,
+			elementDescription: elementDescription,
+			legalStatusOfSupply: legalStatusOfSupply,
+			marketingStatus: marketingStatus,
+			marketingAuthorization: marketingAuthorization,
+			manufacturer: manufacturer,
+			batchIdentifier: batchIdentifier,
+			packageItem: packageItem);
+	}
+
   @HiveField(0)
   final String resourceType= 'MedicinalProductPackaged';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  Unique identifier.
   @HiveField(11)
   List<Identifier> identifier;
-
-  //  The product with this is a pack for.
   @HiveField(12)
   List<Reference> subject;
-
-  //  Textual description.
   @HiveField(13)
   String description;
-
-  //  Extensions for description
   @HiveField(14)
   Element elementDescription;
-
-  //  The legal status of supply of the medicinal product as classified by
-  // the regulator.
   @HiveField(15)
   CodeableConcept legalStatusOfSupply;
-
-  //  Marketing information.
   @HiveField(16)
   List<MarketingStatus> marketingStatus;
-
-  //  Manufacturer of this Package Item.
   @HiveField(17)
   Reference marketingAuthorization;
-
-  //  Manufacturer of this Package Item.
   @HiveField(18)
   List<Reference> manufacturer;
-
-  //  Batch numbering.
   @HiveField(19)
   List<MedicinalProductPackaged_BatchIdentifier> batchIdentifier;
-
-  //  A packaging item, as a contained for medicine, possibly with other
-  // packaging items within.
   @HiveField(20)
   List<MedicinalProductPackaged_PackageItem> packageItem;
 
 MedicinalProductPackaged(
-  this.packageItem,
-    {this.id,
+  {this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -154,7 +127,8 @@ MedicinalProductPackaged(
     this.marketingStatus,
     this.marketingAuthorization,
     this.manufacturer,
-    this.batchIdentifier
+    this.batchIdentifier,
+    @required this.packageItem
     });
 
   factory MedicinalProductPackaged.fromJson(Map<String, dynamic> json) => _$MedicinalProductPackagedFromJson(json);
@@ -164,44 +138,31 @@ MedicinalProductPackaged(
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductPackaged_BatchIdentifier {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<MedicinalProductPackaged_BatchIdentifier> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		Identifier outerPackaging,
+		Identifier immediatePackaging}) async {
+	 return MedicinalProductPackaged_BatchIdentifier(
+			id: await newEntry('MedicinalProductPackaged_BatchIdentifier'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			outerPackaging: outerPackaging,
+			immediatePackaging: immediatePackaging);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A number appearing on the outer packaging of a specific batch.
   Identifier outerPackaging;
-
-  //  A number appearing on the immediate packaging (and not the outer
-  // packaging).
   Identifier immediatePackaging;
 
 MedicinalProductPackaged_BatchIdentifier(
-  this.outerPackaging,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
+    @required this.outerPackaging,
     this.immediatePackaging
     });
 
@@ -212,76 +173,63 @@ MedicinalProductPackaged_BatchIdentifier(
 @JsonSerializable(explicitToJson: true)
 class MedicinalProductPackaged_PackageItem {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<MedicinalProductPackaged_PackageItem> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		List<Identifier> identifier,
+		CodeableConcept type,
+		Quantity quantity,
+		List<CodeableConcept> material,
+		List<CodeableConcept> alternateMaterial,
+		List<Reference> device,
+		List<Reference> manufacturedItem,
+		List<MedicinalProductPackaged_PackageItem> packageItem,
+		ProdCharacteristic physicalCharacteristics,
+		List<CodeableConcept> otherCharacteristics,
+		List<ProductShelfLife> shelfLifeStorage,
+		List<Reference> manufacturer}) async {
+	 return MedicinalProductPackaged_PackageItem(
+			id: await newEntry('MedicinalProductPackaged_PackageItem'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			identifier: identifier,
+			type: type,
+			quantity: quantity,
+			material: material,
+			alternateMaterial: alternateMaterial,
+			device: device,
+			manufacturedItem: manufacturedItem,
+			packageItem: packageItem,
+			physicalCharacteristics: physicalCharacteristics,
+			otherCharacteristics: otherCharacteristics,
+			shelfLifeStorage: shelfLifeStorage,
+			manufacturer: manufacturer);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Including possibly Data Carrier Identifier.
   List<Identifier> identifier;
-
-  //  The physical type of the container of the medicine.
   CodeableConcept type;
-
-  //  The quantity of this package in the medicinal product, at the current
-  // level of packaging. The outermost is always 1.
   Quantity quantity;
-
-  //  Material type of the package item.
   List<CodeableConcept> material;
-
-  //  A possible alternate material for the packaging.
   List<CodeableConcept> alternateMaterial;
-
-  //  A device accompanying a medicinal product.
   List<Reference> device;
-
-  //  The manufactured item as contained in the packaged medicinal product.
   List<Reference> manufacturedItem;
-
-  //  Allows containers within containers.
   List<MedicinalProductPackaged_PackageItem> packageItem;
-
-  //  Dimensions, color etc.
   ProdCharacteristic physicalCharacteristics;
-
-  //  Other codeable characteristics.
   List<CodeableConcept> otherCharacteristics;
-
-  //  Shelf Life and storage information.
   List<ProductShelfLife> shelfLifeStorage;
-
-  //  Manufacturer of this Package Item.
   List<Reference> manufacturer;
 
 MedicinalProductPackaged_PackageItem(
-  this.type,
-    this.quantity,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.identifier,
+    @required this.type,
+    @required this.quantity,
     this.material,
     this.alternateMaterial,
     this.device,
@@ -315,7 +263,6 @@ class MedicinalProductPackagedAdapter
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return MedicinalProductPackaged(
-      (fields[20] as List)?.cast<MedicinalProductPackaged_PackageItem>(),
       id: fields[1] as String,
       meta: fields[2] as Meta,
       implicitRules: fields[3] as String,
@@ -336,6 +283,8 @@ class MedicinalProductPackagedAdapter
       manufacturer: (fields[18] as List)?.cast<Reference>(),
       batchIdentifier: (fields[19] as List)
           ?.cast<MedicinalProductPackaged_BatchIdentifier>(),
+      packageItem:
+          (fields[20] as List)?.cast<MedicinalProductPackaged_PackageItem>(),
     );
   }
 
@@ -395,12 +344,6 @@ class MedicinalProductPackagedAdapter
 MedicinalProductPackaged _$MedicinalProductPackagedFromJson(
     Map<String, dynamic> json) {
   return MedicinalProductPackaged(
-    (json['packageItem'] as List)
-        ?.map((e) => e == null
-            ? null
-            : MedicinalProductPackaged_PackageItem.fromJson(
-                e as Map<String, dynamic>))
-        ?.toList(),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -464,6 +407,12 @@ MedicinalProductPackaged _$MedicinalProductPackagedFromJson(
             : MedicinalProductPackaged_BatchIdentifier.fromJson(
                 e as Map<String, dynamic>))
         ?.toList(),
+    packageItem: (json['packageItem'] as List)
+        ?.map((e) => e == null
+            ? null
+            : MedicinalProductPackaged_PackageItem.fromJson(
+                e as Map<String, dynamic>))
+        ?.toList(),
   );
 }
 
@@ -499,9 +448,6 @@ MedicinalProductPackaged_BatchIdentifier
     _$MedicinalProductPackaged_BatchIdentifierFromJson(
         Map<String, dynamic> json) {
   return MedicinalProductPackaged_BatchIdentifier(
-    json['outerPackaging'] == null
-        ? null
-        : Identifier.fromJson(json['outerPackaging'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -511,6 +457,9 @@ MedicinalProductPackaged_BatchIdentifier
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    outerPackaging: json['outerPackaging'] == null
+        ? null
+        : Identifier.fromJson(json['outerPackaging'] as Map<String, dynamic>),
     immediatePackaging: json['immediatePackaging'] == null
         ? null
         : Identifier.fromJson(
@@ -532,12 +481,6 @@ Map<String, dynamic> _$MedicinalProductPackaged_BatchIdentifierToJson(
 MedicinalProductPackaged_PackageItem
     _$MedicinalProductPackaged_PackageItemFromJson(Map<String, dynamic> json) {
   return MedicinalProductPackaged_PackageItem(
-    json['type'] == null
-        ? null
-        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
-    json['quantity'] == null
-        ? null
-        : Quantity.fromJson(json['quantity'] as Map<String, dynamic>),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -551,6 +494,12 @@ MedicinalProductPackaged_PackageItem
         ?.map((e) =>
             e == null ? null : Identifier.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    type: json['type'] == null
+        ? null
+        : CodeableConcept.fromJson(json['type'] as Map<String, dynamic>),
+    quantity: json['quantity'] == null
+        ? null
+        : Quantity.fromJson(json['quantity'] as Map<String, dynamic>),
     material: (json['material'] as List)
         ?.map((e) => e == null
             ? null

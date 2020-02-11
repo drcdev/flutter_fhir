@@ -1,5 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/dosage.dart';
 import 'package:flutter_fhir/fhirClasses/triggerDefinition.dart';
@@ -41,235 +44,171 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 184)
 class StructureMap {
 
-  //  This is a StructureMap resource
+	static Future<StructureMap> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		Narrative text,
+		List<dynamic> contained,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String url,
+		Element elementUrl,
+		List<Identifier> identifier,
+		String version,
+		Element elementVersion,
+		String name,
+		Element elementName,
+		String title,
+		Element elementTitle,
+		String status,
+		Element elementStatus,
+		bool experimental,
+		Element elementExperimental,
+		DateTime date,
+		Element elementDate,
+		String publisher,
+		Element elementPublisher,
+		List<ContactDetail> contact,
+		String description,
+		Element elementDescription,
+		List<UsageContext> useContext,
+		List<CodeableConcept> jurisdiction,
+		String purpose,
+		Element elementPurpose,
+		String copyright,
+		Element elementCopyright,
+		List<StructureMap_Structure> structure,
+		List<String> import,
+		List<StructureMap_Group> group}) async {
+	 return StructureMap(
+			id: await newEntry('StructureMap'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			text: text,
+			contained: contained,
+			extension: extension,
+			modifierExtension: modifierExtension,
+			url: url,
+			elementUrl: elementUrl,
+			identifier: identifier,
+			version: version,
+			elementVersion: elementVersion,
+			name: name,
+			elementName: elementName,
+			title: title,
+			elementTitle: elementTitle,
+			status: status,
+			elementStatus: elementStatus,
+			experimental: experimental,
+			elementExperimental: elementExperimental,
+			date: date,
+			elementDate: elementDate,
+			publisher: publisher,
+			elementPublisher: elementPublisher,
+			contact: contact,
+			description: description,
+			elementDescription: elementDescription,
+			useContext: useContext,
+			jurisdiction: jurisdiction,
+			purpose: purpose,
+			elementPurpose: elementPurpose,
+			copyright: copyright,
+			elementCopyright: elementCopyright,
+			structure: structure,
+			import: import,
+			group: group);
+	}
+
   @HiveField(0)
   final String resourceType= 'StructureMap';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A human-readable narrative that contains a summary of the resource and
-  // can be used to represent the content of the resource to a human. The
-  // narrative need not encode all the structured data, but is required to
-  // contain sufficient detail to make it "clinically safe" for a human to
-  // just read the narrative. Resource definitions may define what content
-  // should be represented in the narrative to ensure clinical safety.
   @HiveField(7)
   Narrative text;
-
-  //  These resources do not have an independent existence apart from the
-  // resource that contains them - they cannot be identified independently,
-  // and nor can they have their own independent transaction scope.
   @HiveField(8)
   List<dynamic> contained;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource. To make the use of extensions
-  // safe and manageable, there is a strict set of governance  applied to
-  // the definition and use of extensions. Though any implementer can define
-  // an extension, there is a set of requirements that SHALL be met as part
-  // of the definition of the extension.
   @HiveField(9)
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the resource and that modifies the
-  // understanding of the element that contains it and/or the understanding
-  // of the containing element's descendants. Usually modifier elements
-  // provide negation or qualification. To make the use of extensions safe
-  // and manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer is allowed to
-  // define an extension, there is a set of requirements that SHALL be met
-  // as part of the definition of the extension. Applications processing a
-  // resource are required to check for modifier extensions. Modifier
-  // extensions SHALL NOT change the meaning of any elements on Resource or
-  // DomainResource (including cannot change the meaning of
-  // modifierExtension itself).
   @HiveField(10)
   List<Extension> modifierExtension;
-
-  //  An absolute URI that is used to identify this structure map when it is
-  // referenced in a specification, model, design or an instance; also
-  // called its canonical identifier. This SHOULD be globally unique and
-  // SHOULD be a literal address at which at which an authoritative instance
-  // of this structure map is (or will be) published. This URL can be the
-  // target of a canonical reference. It SHALL remain the same when the
-  // structure map is stored on different servers.
   @HiveField(11)
   String url;
-
-  //  Extensions for url
   @HiveField(12)
   Element elementUrl;
-
-  //  A formal identifier that is used to identify this structure map when
-  // it is represented in other formats, or referenced in a specification,
-  // model, design or an instance.
   @HiveField(13)
   List<Identifier> identifier;
-
-  //  The identifier that is used to identify this version of the structure
-  // map when it is referenced in a specification, model, design or
-  // instance. This is an arbitrary value managed by the structure map
-  // author and is not expected to be globally unique. For example, it might
-  // be a timestamp (e.g. yyyymmdd) if a managed version is not available.
-  // There is also no expectation that versions can be placed in a
-  // lexicographical sequence.
   @HiveField(14)
   String version;
-
-  //  Extensions for version
   @HiveField(15)
   Element elementVersion;
-
-  //  A natural language name identifying the structure map. This name
-  // should be usable as an identifier for the module by machine processing
-  // applications such as code generation.
   @HiveField(16)
   String name;
-
-  //  Extensions for name
   @HiveField(17)
   Element elementName;
-
-  //  A short, descriptive, user-friendly title for the structure map.
   @HiveField(18)
   String title;
-
-  //  Extensions for title
   @HiveField(19)
   Element elementTitle;
-
-  //  The status of this structure map. Enables tracking the life-cycle of
-  // the content.
   @HiveField(20)
   String status; // <code> enum: draft/active/retired/unknown;
-
-  //  Extensions for status
   @HiveField(21)
   Element elementStatus;
-
-  //  A Boolean value to indicate that this structure map is authored for
-  // testing purposes (or education/evaluation/marketing) and is not
-  // intended to be used for genuine usage.
   @HiveField(22)
   bool experimental;
-
-  //  Extensions for experimental
   @HiveField(23)
   Element elementExperimental;
-
-  //  The date  (and optionally time) when the structure map was published.
-  // The date must change when the business version changes and it must
-  // change if the status code changes. In addition, it should change when
-  // the substantive content of the structure map changes.
   @HiveField(24)
   DateTime date;
-
-  //  Extensions for date
   @HiveField(25)
   Element elementDate;
-
-  //  The name of the organization or individual that published the
-  // structure map.
   @HiveField(26)
   String publisher;
-
-  //  Extensions for publisher
   @HiveField(27)
   Element elementPublisher;
-
-  //  Contact details to assist a user in finding and communicating with the
-  // publisher.
   @HiveField(28)
   List<ContactDetail> contact;
-
-  //  A free text natural language description of the structure map from a
-  // consumer's perspective.
   @HiveField(29)
   String description;
-
-  //  Extensions for description
   @HiveField(30)
   Element elementDescription;
-
-  //  The content was developed with a focus and intent of supporting the
-  // contexts that are listed. These contexts may be general categories
-  // (gender, age, ...) or may be references to specific programs (insurance
-  // plans, studies, ...) and may be used to assist with indexing and
-  // searching for appropriate structure map instances.
   @HiveField(31)
   List<UsageContext> useContext;
-
-  //  A legal or geographic region in which the structure map is intended to
-  // be used.
   @HiveField(32)
   List<CodeableConcept> jurisdiction;
-
-  //  Explanation of why this structure map is needed and why it has been
-  // designed as it has.
   @HiveField(33)
   String purpose;
-
-  //  Extensions for purpose
   @HiveField(34)
   Element elementPurpose;
-
-  //  A copyright statement relating to the structure map and/or its
-  // contents. Copyright statements are generally legal restrictions on the
-  // use and publishing of the structure map.
   @HiveField(35)
   String copyright;
-
-  //  Extensions for copyright
   @HiveField(36)
   Element elementCopyright;
-
-  //  A structure definition used by this map. The structure definition may
-  // describe instances that are converted, or the instances that are
-  // produced.
   @HiveField(37)
   List<StructureMap_Structure> structure;
-
-  //  Other maps used by this map (canonical URLs).
   @HiveField(38)
   List<String> import;
-
-  //  Organizes the mapping into manageable chunks for human review/ease of
-  // maintenance.
   @HiveField(39)
   List<StructureMap_Group> group;
 
 StructureMap(
-  this.group,
-    {this.id,
+  {this.id,
     this.meta,
     this.implicitRules,
     this.elementImplicitRules,
@@ -306,7 +245,8 @@ StructureMap(
     this.copyright,
     this.elementCopyright,
     this.structure,
-    this.import
+    this.import,
+    @required this.group
     });
 
   factory StructureMap.fromJson(Map<String, dynamic> json) => _$StructureMapFromJson(json);
@@ -316,58 +256,46 @@ StructureMap(
 @JsonSerializable(explicitToJson: true)
 class StructureMap_Structure {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<StructureMap_Structure> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String url,
+		String mode,
+		Element elementMode,
+		String alias,
+		Element elementAlias,
+		String documentation,
+		Element elementDocumentation}) async {
+	 return StructureMap_Structure(
+			id: await newEntry('StructureMap_Structure'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			url: url,
+			mode: mode,
+			elementMode: elementMode,
+			alias: alias,
+			elementAlias: elementAlias,
+			documentation: documentation,
+			elementDocumentation: elementDocumentation);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The canonical reference to the structure.
   String url;
-
-  //  How the referenced structure is used in this mapping.
   String mode; // <code> enum: source/queried/target/produced;
-
-  //  Extensions for mode
   Element elementMode;
-
-  //  The name used for this type in the map.
   String alias;
-
-  //  Extensions for alias
   Element elementAlias;
-
-  //  Documentation that describes how the structure is used in the mapping.
   String documentation;
-
-  //  Extensions for documentation
   Element elementDocumentation;
 
 StructureMap_Structure(
-  this.url,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
+    @required this.url,
     this.mode,
     this.elementMode,
     this.alias,
@@ -383,69 +311,52 @@ StructureMap_Structure(
 @JsonSerializable(explicitToJson: true)
 class StructureMap_Group {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<StructureMap_Group> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String name,
+		Element elementName,
+		String extend,
+		Element elementExtends,
+		String typeMode,
+		Element elementTypeMode,
+		String documentation,
+		Element elementDocumentation,
+		List<StructureMap_Input> input,
+		List<StructureMap_Rule> rule}) async {
+	 return StructureMap_Group(
+			id: await newEntry('StructureMap_Group'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			name: name,
+			elementName: elementName,
+			extend: extend,
+			elementExtends: elementExtends,
+			typeMode: typeMode,
+			elementTypeMode: elementTypeMode,
+			documentation: documentation,
+			elementDocumentation: elementDocumentation,
+			input: input,
+			rule: rule);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  A unique name for the group for the convenience of human readers.
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  Another group that this group adds rules to.
   String extend;
-
-  //  Extensions for extends
   Element elementExtends;
-
-  //  If this is the default rule set to apply for the source type or this
-  // combination of types.
   String typeMode; // <code> enum: none/types/type-and-types;
-
-  //  Extensions for typeMode
   Element elementTypeMode;
-
-  //  Additional supporting documentation that explains the purpose of the
-  // group and the types of mappings within it.
   String documentation;
-
-  //  Extensions for documentation
   Element elementDocumentation;
-
-  //  A name assigned to an instance of data. The instance must be provided
-  // when the mapping is invoked.
   List<StructureMap_Input> input;
-
-  //  Transform Rule from source to target.
   List<StructureMap_Rule> rule;
 
 StructureMap_Group(
-  this.input,
-    this.rule,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.name,
@@ -455,7 +366,9 @@ StructureMap_Group(
     this.typeMode,
     this.elementTypeMode,
     this.documentation,
-    this.elementDocumentation
+    this.elementDocumentation,
+    @required this.input,
+    @required this.rule
     });
 
   factory StructureMap_Group.fromJson(Map<String, dynamic> json) => _$StructureMap_GroupFromJson(json);
@@ -465,54 +378,42 @@ StructureMap_Group(
 @JsonSerializable(explicitToJson: true)
 class StructureMap_Input {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<StructureMap_Input> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String name,
+		Element elementName,
+		String type,
+		Element elementType,
+		String mode,
+		Element elementMode,
+		String documentation,
+		Element elementDocumentation}) async {
+	 return StructureMap_Input(
+			id: await newEntry('StructureMap_Input'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			name: name,
+			elementName: elementName,
+			type: type,
+			elementType: elementType,
+			mode: mode,
+			elementMode: elementMode,
+			documentation: documentation,
+			elementDocumentation: elementDocumentation);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Name for this instance of data.
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  Type for this instance of data.
   String type;
-
-  //  Extensions for type
   Element elementType;
-
-  //  Mode for this instance of data.
   String mode; // <code> enum: source/target;
-
-  //  Extensions for mode
   Element elementMode;
-
-  //  Documentation for this instance of data.
   String documentation;
-
-  //  Extensions for documentation
   Element elementDocumentation;
 
 StructureMap_Input(
@@ -536,63 +437,51 @@ StructureMap_Input(
 @JsonSerializable(explicitToJson: true)
 class StructureMap_Rule {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<StructureMap_Rule> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String name,
+		Element elementName,
+		List<StructureMap_Source> source,
+		List<StructureMap_Target> target,
+		List<StructureMap_Rule> rule,
+		List<StructureMap_Dependent> dependent,
+		String documentation,
+		Element elementDocumentation}) async {
+	 return StructureMap_Rule(
+			id: await newEntry('StructureMap_Rule'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			name: name,
+			elementName: elementName,
+			source: source,
+			target: target,
+			rule: rule,
+			dependent: dependent,
+			documentation: documentation,
+			elementDocumentation: elementDocumentation);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Name of the rule for internal references.
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  Source inputs to the mapping.
   List<StructureMap_Source> source;
-
-  //  Content to create because of this mapping rule.
   List<StructureMap_Target> target;
-
-  //  Rules contained in this rule.
   List<StructureMap_Rule> rule;
-
-  //  Which other rules to apply in the context of this rule.
   List<StructureMap_Dependent> dependent;
-
-  //  Documentation for this instance of data.
   String documentation;
-
-  //  Extensions for documentation
   Element elementDocumentation;
 
 StructureMap_Rule(
-  this.source,
-    {this.id,
+  {this.id,
     this.extension,
     this.modifierExtension,
     this.name,
     this.elementName,
+    @required this.source,
     this.target,
     this.rule,
     this.dependent,
@@ -607,303 +496,285 @@ StructureMap_Rule(
 @JsonSerializable(explicitToJson: true)
 class StructureMap_Source {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<StructureMap_Source> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String context,
+		Element elementContext,
+		int min,
+		Element elementMin,
+		String max,
+		Element elementMax,
+		String type,
+		Element elementType,
+		String defaultValueBase64Binary,
+		Element elementDefaultValueBase64Binary,
+		bool defaultValueBoolean,
+		Element elementDefaultValueBoolean,
+		String defaultValueCanonical,
+		Element elementDefaultValueCanonical,
+		String defaultValueCode,
+		Element elementDefaultValueCode,
+		String defaultValueDate,
+		Element elementDefaultValueDate,
+		String defaultValueDateTime,
+		Element elementDefaultValueDateTime,
+		double defaultValueDecimal,
+		Element elementDefaultValueDecimal,
+		String defaultValueId,
+		Element elementDefaultValueId,
+		String defaultValueInstant,
+		Element elementDefaultValueInstant,
+		int defaultValueInteger,
+		Element elementDefaultValueInteger,
+		String defaultValueMarkdown,
+		Element elementDefaultValueMarkdown,
+		String defaultValueOid,
+		Element elementDefaultValueOid,
+		int defaultValuePositiveInt,
+		Element elementDefaultValuePositiveInt,
+		String defaultValueString,
+		Element elementDefaultValueString,
+		String defaultValueTime,
+		Element elementDefaultValueTime,
+		int defaultValueUnsignedInt,
+		Element elementDefaultValueUnsignedInt,
+		String defaultValueUri,
+		Element elementDefaultValueUri,
+		String defaultValueUrl,
+		Element elementDefaultValueUrl,
+		String defaultValueUuid,
+		Element elementDefaultValueUuid,
+		Address defaultValueAddress,
+		Age defaultValueAge,
+		Annotation defaultValueAnnotation,
+		Attachment defaultValueAttachment,
+		CodeableConcept defaultValueCodeableConcept,
+		Coding defaultValueCoding,
+		ContactPoint defaultValueContactPoint,
+		Count defaultValueCount,
+		Distance defaultValueDistance,
+		Duration defaultValueDuration,
+		HumanName defaultValueHumanName,
+		Identifier defaultValueIdentifier,
+		Money defaultValueMoney,
+		Period defaultValuePeriod,
+		Quantity defaultValueQuantity,
+		Range defaultValueRange,
+		Ratio defaultValueRatio,
+		Reference defaultValueReference,
+		SampledData defaultValueSampledData,
+		Signature defaultValueSignature,
+		Timing defaultValueTiming,
+		ContactDetail defaultValueContactDetail,
+		Contributor defaultValueContributor,
+		DataRequirement defaultValueDataRequirement,
+		Expression defaultValueExpression,
+		ParameterDefinition defaultValueParameterDefinition,
+		RelatedArtifact defaultValueRelatedArtifact,
+		TriggerDefinition defaultValueTriggerDefinition,
+		UsageContext defaultValueUsageContext,
+		Dosage defaultValueDosage,
+		Meta defaultValueMeta,
+		String element,
+		Element elementElement,
+		String listMode,
+		Element elementListMode,
+		String variable,
+		Element elementVariable,
+		String condition,
+		Element elementCondition,
+		String check,
+		Element elementCheck,
+		String logMessage,
+		Element elementLogMessage}) async {
+	 return StructureMap_Source(
+			id: await newEntry('StructureMap_Source'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			context: context,
+			elementContext: elementContext,
+			min: min,
+			elementMin: elementMin,
+			max: max,
+			elementMax: elementMax,
+			type: type,
+			elementType: elementType,
+			defaultValueBase64Binary: defaultValueBase64Binary,
+			elementDefaultValueBase64Binary: elementDefaultValueBase64Binary,
+			defaultValueBoolean: defaultValueBoolean,
+			elementDefaultValueBoolean: elementDefaultValueBoolean,
+			defaultValueCanonical: defaultValueCanonical,
+			elementDefaultValueCanonical: elementDefaultValueCanonical,
+			defaultValueCode: defaultValueCode,
+			elementDefaultValueCode: elementDefaultValueCode,
+			defaultValueDate: defaultValueDate,
+			elementDefaultValueDate: elementDefaultValueDate,
+			defaultValueDateTime: defaultValueDateTime,
+			elementDefaultValueDateTime: elementDefaultValueDateTime,
+			defaultValueDecimal: defaultValueDecimal,
+			elementDefaultValueDecimal: elementDefaultValueDecimal,
+			defaultValueId: defaultValueId,
+			elementDefaultValueId: elementDefaultValueId,
+			defaultValueInstant: defaultValueInstant,
+			elementDefaultValueInstant: elementDefaultValueInstant,
+			defaultValueInteger: defaultValueInteger,
+			elementDefaultValueInteger: elementDefaultValueInteger,
+			defaultValueMarkdown: defaultValueMarkdown,
+			elementDefaultValueMarkdown: elementDefaultValueMarkdown,
+			defaultValueOid: defaultValueOid,
+			elementDefaultValueOid: elementDefaultValueOid,
+			defaultValuePositiveInt: defaultValuePositiveInt,
+			elementDefaultValuePositiveInt: elementDefaultValuePositiveInt,
+			defaultValueString: defaultValueString,
+			elementDefaultValueString: elementDefaultValueString,
+			defaultValueTime: defaultValueTime,
+			elementDefaultValueTime: elementDefaultValueTime,
+			defaultValueUnsignedInt: defaultValueUnsignedInt,
+			elementDefaultValueUnsignedInt: elementDefaultValueUnsignedInt,
+			defaultValueUri: defaultValueUri,
+			elementDefaultValueUri: elementDefaultValueUri,
+			defaultValueUrl: defaultValueUrl,
+			elementDefaultValueUrl: elementDefaultValueUrl,
+			defaultValueUuid: defaultValueUuid,
+			elementDefaultValueUuid: elementDefaultValueUuid,
+			defaultValueAddress: defaultValueAddress,
+			defaultValueAge: defaultValueAge,
+			defaultValueAnnotation: defaultValueAnnotation,
+			defaultValueAttachment: defaultValueAttachment,
+			defaultValueCodeableConcept: defaultValueCodeableConcept,
+			defaultValueCoding: defaultValueCoding,
+			defaultValueContactPoint: defaultValueContactPoint,
+			defaultValueCount: defaultValueCount,
+			defaultValueDistance: defaultValueDistance,
+			defaultValueDuration: defaultValueDuration,
+			defaultValueHumanName: defaultValueHumanName,
+			defaultValueIdentifier: defaultValueIdentifier,
+			defaultValueMoney: defaultValueMoney,
+			defaultValuePeriod: defaultValuePeriod,
+			defaultValueQuantity: defaultValueQuantity,
+			defaultValueRange: defaultValueRange,
+			defaultValueRatio: defaultValueRatio,
+			defaultValueReference: defaultValueReference,
+			defaultValueSampledData: defaultValueSampledData,
+			defaultValueSignature: defaultValueSignature,
+			defaultValueTiming: defaultValueTiming,
+			defaultValueContactDetail: defaultValueContactDetail,
+			defaultValueContributor: defaultValueContributor,
+			defaultValueDataRequirement: defaultValueDataRequirement,
+			defaultValueExpression: defaultValueExpression,
+			defaultValueParameterDefinition: defaultValueParameterDefinition,
+			defaultValueRelatedArtifact: defaultValueRelatedArtifact,
+			defaultValueTriggerDefinition: defaultValueTriggerDefinition,
+			defaultValueUsageContext: defaultValueUsageContext,
+			defaultValueDosage: defaultValueDosage,
+			defaultValueMeta: defaultValueMeta,
+			element: element,
+			elementElement: elementElement,
+			listMode: listMode,
+			elementListMode: elementListMode,
+			variable: variable,
+			elementVariable: elementVariable,
+			condition: condition,
+			elementCondition: elementCondition,
+			check: check,
+			elementCheck: elementCheck,
+			logMessage: logMessage,
+			elementLogMessage: elementLogMessage);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Type or variable this rule applies to.
   String context;
-
-  //  Extensions for context
   Element elementContext;
-
-  //  Specified minimum cardinality for the element. This is optional; if
-  // present, it acts an implicit check on the input content.
   int min;
-
-  //  Extensions for min
   Element elementMin;
-
-  //  Specified maximum cardinality for the element - a number or a "*".
-  // This is optional; if present, it acts an implicit check on the input
-  // content (* just serves as documentation; it's the default value).
   String max;
-
-  //  Extensions for max
   Element elementMax;
-
-  //  Specified type for the element. This works as a condition on the
-  // mapping - use for polymorphic elements.
   String type;
-
-  //  Extensions for type
   Element elementType;
-
-  //  A value to use if there is no existing value in the source object.
   String defaultValueBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
-
-  //  Extensions for defaultValueBase64Binary
   Element elementDefaultValueBase64Binary;
-
-  //  A value to use if there is no existing value in the source object.
   bool defaultValueBoolean; //  pattern: ^true|false$
-
-  //  Extensions for defaultValueBoolean
   Element elementDefaultValueBoolean;
-
-  //  A value to use if there is no existing value in the source object.
   String defaultValueCanonical; //  pattern: ^\S*$
-
-  //  Extensions for defaultValueCanonical
   Element elementDefaultValueCanonical;
-
-  //  A value to use if there is no existing value in the source object.
   String defaultValueCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
-
-  //  Extensions for defaultValueCode
   Element elementDefaultValueCode;
-
-  //  A value to use if there is no existing value in the source object.
   String defaultValueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
-
-  //  Extensions for defaultValueDate
   Element elementDefaultValueDate;
-
-  //  A value to use if there is no existing value in the source object.
   String defaultValueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for defaultValueDateTime
   Element elementDefaultValueDateTime;
-
-  //  A value to use if there is no existing value in the source object.
   double defaultValueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
-
-  //  Extensions for defaultValueDecimal
   Element elementDefaultValueDecimal;
-
-  //  A value to use if there is no existing value in the source object.
   String defaultValueId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
-
-  //  Extensions for defaultValueId
   Element elementDefaultValueId;
-
-  //  A value to use if there is no existing value in the source object.
   String defaultValueInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
-
-  //  Extensions for defaultValueInstant
   Element elementDefaultValueInstant;
-
-  //  A value to use if there is no existing value in the source object.
   int defaultValueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
-
-  //  Extensions for defaultValueInteger
   Element elementDefaultValueInteger;
-
-  //  A value to use if there is no existing value in the source object.
   String defaultValueMarkdown; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for defaultValueMarkdown
   Element elementDefaultValueMarkdown;
-
-  //  A value to use if there is no existing value in the source object.
   String defaultValueOid; //  pattern: ^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$
-
-  //  Extensions for defaultValueOid
   Element elementDefaultValueOid;
-
-  //  A value to use if there is no existing value in the source object.
   int defaultValuePositiveInt; //  pattern: ^[1-9][0-9]*$
-
-  //  Extensions for defaultValuePositiveInt
   Element elementDefaultValuePositiveInt;
-
-  //  A value to use if there is no existing value in the source object.
   String defaultValueString; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for defaultValueString
   Element elementDefaultValueString;
-
-  //  A value to use if there is no existing value in the source object.
   String defaultValueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
-
-  //  Extensions for defaultValueTime
   Element elementDefaultValueTime;
-
-  //  A value to use if there is no existing value in the source object.
   int defaultValueUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
-
-  //  Extensions for defaultValueUnsignedInt
   Element elementDefaultValueUnsignedInt;
-
-  //  A value to use if there is no existing value in the source object.
   String defaultValueUri; //  pattern: ^\S*$
-
-  //  Extensions for defaultValueUri
   Element elementDefaultValueUri;
-
-  //  A value to use if there is no existing value in the source object.
   String defaultValueUrl; //  pattern: ^\S*$
-
-  //  Extensions for defaultValueUrl
   Element elementDefaultValueUrl;
-
-  //  A value to use if there is no existing value in the source object.
   String defaultValueUuid; //  pattern: ^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
-
-  //  Extensions for defaultValueUuid
   Element elementDefaultValueUuid;
-
-  //  A value to use if there is no existing value in the source object.
   Address defaultValueAddress;
-
-  //  A value to use if there is no existing value in the source object.
   Age defaultValueAge;
-
-  //  A value to use if there is no existing value in the source object.
   Annotation defaultValueAnnotation;
-
-  //  A value to use if there is no existing value in the source object.
   Attachment defaultValueAttachment;
-
-  //  A value to use if there is no existing value in the source object.
   CodeableConcept defaultValueCodeableConcept;
-
-  //  A value to use if there is no existing value in the source object.
   Coding defaultValueCoding;
-
-  //  A value to use if there is no existing value in the source object.
   ContactPoint defaultValueContactPoint;
-
-  //  A value to use if there is no existing value in the source object.
   Count defaultValueCount;
-
-  //  A value to use if there is no existing value in the source object.
   Distance defaultValueDistance;
-
-  //  A value to use if there is no existing value in the source object.
   Duration defaultValueDuration;
-
-  //  A value to use if there is no existing value in the source object.
   HumanName defaultValueHumanName;
-
-  //  A value to use if there is no existing value in the source object.
   Identifier defaultValueIdentifier;
-
-  //  A value to use if there is no existing value in the source object.
   Money defaultValueMoney;
-
-  //  A value to use if there is no existing value in the source object.
   Period defaultValuePeriod;
-
-  //  A value to use if there is no existing value in the source object.
   Quantity defaultValueQuantity;
-
-  //  A value to use if there is no existing value in the source object.
   Range defaultValueRange;
-
-  //  A value to use if there is no existing value in the source object.
   Ratio defaultValueRatio;
-
-  //  A value to use if there is no existing value in the source object.
   Reference defaultValueReference;
-
-  //  A value to use if there is no existing value in the source object.
   SampledData defaultValueSampledData;
-
-  //  A value to use if there is no existing value in the source object.
   Signature defaultValueSignature;
-
-  //  A value to use if there is no existing value in the source object.
   Timing defaultValueTiming;
-
-  //  A value to use if there is no existing value in the source object.
   ContactDetail defaultValueContactDetail;
-
-  //  A value to use if there is no existing value in the source object.
   Contributor defaultValueContributor;
-
-  //  A value to use if there is no existing value in the source object.
   DataRequirement defaultValueDataRequirement;
-
-  //  A value to use if there is no existing value in the source object.
   Expression defaultValueExpression;
-
-  //  A value to use if there is no existing value in the source object.
   ParameterDefinition defaultValueParameterDefinition;
-
-  //  A value to use if there is no existing value in the source object.
   RelatedArtifact defaultValueRelatedArtifact;
-
-  //  A value to use if there is no existing value in the source object.
   TriggerDefinition defaultValueTriggerDefinition;
-
-  //  A value to use if there is no existing value in the source object.
   UsageContext defaultValueUsageContext;
-
-  //  A value to use if there is no existing value in the source object.
   Dosage defaultValueDosage;
-
-  //  A value to use if there is no existing value in the source object.
   Meta defaultValueMeta;
-
-  //  Optional field for this source.
   String element;
-
-  //  Extensions for element
   Element elementElement;
-
-  //  How to handle the list mode for this element.
   String listMode; // <code> enum: first/not_first/last/not_last/only_one;
-
-  //  Extensions for listMode
   Element elementListMode;
-
-  //  Named context for field, if a field is specified.
   String variable;
-
-  //  Extensions for variable
   Element elementVariable;
-
-  //  FHIRPath expression  - must be true or the rule does not apply.
   String condition;
-
-  //  Extensions for condition
   Element elementCondition;
-
-  //  FHIRPath expression  - must be true or the mapping engine throws an
-  // error instead of completing.
   String check;
-
-  //  Extensions for check
   Element elementCheck;
-
-  //  A FHIRPath expression which specifies a message to put in the
-  // transform log when content matching the source rule is found.
   String logMessage;
-
-  //  Extensions for logMessage
   Element elementLogMessage;
 
 StructureMap_Source(
@@ -1008,75 +879,63 @@ StructureMap_Source(
 @JsonSerializable(explicitToJson: true)
 class StructureMap_Target {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<StructureMap_Target> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String context,
+		Element elementContext,
+		String contextType,
+		Element elementContextType,
+		String element,
+		Element elementElement,
+		String variable,
+		Element elementVariable,
+		List<String> listMode,
+		List<Element> elementListMode,
+		String listRuleId,
+		Element elementListRuleId,
+		String transform,
+		Element elementTransform,
+		List<StructureMap_Parameter> parameter}) async {
+	 return StructureMap_Target(
+			id: await newEntry('StructureMap_Target'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			context: context,
+			elementContext: elementContext,
+			contextType: contextType,
+			elementContextType: elementContextType,
+			element: element,
+			elementElement: elementElement,
+			variable: variable,
+			elementVariable: elementVariable,
+			listMode: listMode,
+			elementListMode: elementListMode,
+			listRuleId: listRuleId,
+			elementListRuleId: elementListRuleId,
+			transform: transform,
+			elementTransform: elementTransform,
+			parameter: parameter);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Type or variable this rule applies to.
   String context;
-
-  //  Extensions for context
   Element elementContext;
-
-  //  How to interpret the context.
   String contextType; // <code> enum: type/variable;
-
-  //  Extensions for contextType
   Element elementContextType;
-
-  //  Field to create in the context.
   String element;
-
-  //  Extensions for element
   Element elementElement;
-
-  //  Named context for field, if desired, and a field is specified.
   String variable;
-
-  //  Extensions for variable
   Element elementVariable;
-
-  //  If field is a list, how to manage the list.
   List<String> listMode; // <code> enum: first/share/last/collate> listMode;
-
-  //  Extensions for listMode
   List<Element> elementListMode;
-
-  //  Internal rule reference for shared list items.
   String listRuleId;
-
-  //  Extensions for listRuleId
   Element elementListRuleId;
-
-  //  How the data is copied / created.
   String transform; // <code> enum: create/copy/truncate/escape/cast/append/translate/reference/dateOp/uuid/pointer/evaluate/cc/c/qty/id/cp;
-
-  //  Extensions for transform
   Element elementTransform;
-
-  //  Parameters to the transform.
   List<StructureMap_Parameter> parameter;
 
 StructureMap_Target(
@@ -1107,60 +966,48 @@ StructureMap_Target(
 @JsonSerializable(explicitToJson: true)
 class StructureMap_Parameter {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<StructureMap_Parameter> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String valueId,
+		Element elementValueId,
+		String valueString,
+		Element elementValueString,
+		bool valueBoolean,
+		Element elementValueBoolean,
+		int valueInteger,
+		Element elementValueInteger,
+		double valueDecimal,
+		Element elementValueDecimal}) async {
+	 return StructureMap_Parameter(
+			id: await newEntry('StructureMap_Parameter'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			valueId: valueId,
+			elementValueId: elementValueId,
+			valueString: valueString,
+			elementValueString: elementValueString,
+			valueBoolean: valueBoolean,
+			elementValueBoolean: elementValueBoolean,
+			valueInteger: valueInteger,
+			elementValueInteger: elementValueInteger,
+			valueDecimal: valueDecimal,
+			elementValueDecimal: elementValueDecimal);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Parameter value - variable or literal.
   String valueId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
-
-  //  Extensions for valueId
   Element elementValueId;
-
-  //  Parameter value - variable or literal.
   String valueString; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for valueString
   Element elementValueString;
-
-  //  Parameter value - variable or literal.
   bool valueBoolean; //  pattern: ^true|false$
-
-  //  Extensions for valueBoolean
   Element elementValueBoolean;
-
-  //  Parameter value - variable or literal.
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
-
-  //  Extensions for valueInteger
   Element elementValueInteger;
-
-  //  Parameter value - variable or literal.
   double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
-
-  //  Extensions for valueDecimal
   Element elementValueDecimal;
 
 StructureMap_Parameter(
@@ -1186,42 +1033,30 @@ StructureMap_Parameter(
 @JsonSerializable(explicitToJson: true)
 class StructureMap_Dependent {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<StructureMap_Dependent> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String name,
+		Element elementName,
+		List<String> variable,
+		List<Element> elementVariable}) async {
+	 return StructureMap_Dependent(
+			id: await newEntry('StructureMap_Dependent'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			name: name,
+			elementName: elementName,
+			variable: variable,
+			elementVariable: elementVariable);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  Name of a rule or group to apply.
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  Variable to pass to the rule or group.
   List<String> variable;
-
-  //  Extensions for variable
   List<Element> elementVariable;
 
 StructureMap_Dependent(
@@ -1255,7 +1090,6 @@ class StructureMapAdapter extends TypeAdapter<StructureMap> {
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return StructureMap(
-      (fields[39] as List)?.cast<StructureMap_Group>(),
       id: fields[1] as String,
       meta: fields[2] as Meta,
       implicitRules: fields[3] as String,
@@ -1294,6 +1128,7 @@ class StructureMapAdapter extends TypeAdapter<StructureMap> {
       elementCopyright: fields[36] as Element,
       structure: (fields[37] as List)?.cast<StructureMap_Structure>(),
       import: (fields[38] as List)?.cast<String>(),
+      group: (fields[39] as List)?.cast<StructureMap_Group>(),
     );
   }
 
@@ -1390,11 +1225,6 @@ class StructureMapAdapter extends TypeAdapter<StructureMap> {
 
 StructureMap _$StructureMapFromJson(Map<String, dynamic> json) {
   return StructureMap(
-    (json['group'] as List)
-        ?.map((e) => e == null
-            ? null
-            : StructureMap_Group.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     id: json['id'] as String,
     meta: json['meta'] == null
         ? null
@@ -1491,6 +1321,11 @@ StructureMap _$StructureMapFromJson(Map<String, dynamic> json) {
             : StructureMap_Structure.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     import: (json['import'] as List)?.map((e) => e as String)?.toList(),
+    group: (json['group'] as List)
+        ?.map((e) => e == null
+            ? null
+            : StructureMap_Group.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
   );
 }
 
@@ -1541,7 +1376,6 @@ Map<String, dynamic> _$StructureMapToJson(StructureMap instance) =>
 StructureMap_Structure _$StructureMap_StructureFromJson(
     Map<String, dynamic> json) {
   return StructureMap_Structure(
-    json['url'] as String,
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1551,6 +1385,7 @@ StructureMap_Structure _$StructureMap_StructureFromJson(
         ?.map((e) =>
             e == null ? null : Extension.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    url: json['url'] as String,
     mode: json['mode'] as String,
     elementMode: json['elementMode'] == null
         ? null
@@ -1585,16 +1420,6 @@ Map<String, dynamic> _$StructureMap_StructureToJson(
 
 StructureMap_Group _$StructureMap_GroupFromJson(Map<String, dynamic> json) {
   return StructureMap_Group(
-    (json['input'] as List)
-        ?.map((e) => e == null
-            ? null
-            : StructureMap_Input.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    (json['rule'] as List)
-        ?.map((e) => e == null
-            ? null
-            : StructureMap_Rule.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1621,6 +1446,16 @@ StructureMap_Group _$StructureMap_GroupFromJson(Map<String, dynamic> json) {
         ? null
         : Element.fromJson(
             json['elementDocumentation'] as Map<String, dynamic>),
+    input: (json['input'] as List)
+        ?.map((e) => e == null
+            ? null
+            : StructureMap_Input.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    rule: (json['rule'] as List)
+        ?.map((e) => e == null
+            ? null
+            : StructureMap_Rule.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
   );
 }
 
@@ -1691,11 +1526,6 @@ Map<String, dynamic> _$StructureMap_InputToJson(StructureMap_Input instance) =>
 
 StructureMap_Rule _$StructureMap_RuleFromJson(Map<String, dynamic> json) {
   return StructureMap_Rule(
-    (json['source'] as List)
-        ?.map((e) => e == null
-            ? null
-            : StructureMap_Source.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
     id: json['id'] as String,
     extension: (json['extension'] as List)
         ?.map((e) =>
@@ -1709,6 +1539,11 @@ StructureMap_Rule _$StructureMap_RuleFromJson(Map<String, dynamic> json) {
     elementName: json['elementName'] == null
         ? null
         : Element.fromJson(json['elementName'] as Map<String, dynamic>),
+    source: (json['source'] as List)
+        ?.map((e) => e == null
+            ? null
+            : StructureMap_Source.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     target: (json['target'] as List)
         ?.map((e) => e == null
             ? null

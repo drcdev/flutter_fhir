@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_fhir/fhirClasses/classes.dart';
 
 import 'package:flutter_fhir/fhirClasses/resourceList.dart';
 import 'package:flutter_fhir/fhirClasses/dosage.dart';
@@ -40,41 +41,38 @@ import 'package:flutter_fhir/fhirClasses/meta.dart';
 @HiveType(typeId: 157)
 class Parameters {
 
-  //  This is a Parameters resource
+	static Future<Parameters> newInstance({
+		String id,
+		Meta meta,
+		String implicitRules,
+		Element elementImplicitRules,
+		String language,
+		Element elementLanguage,
+		List<Parameters_Parameter> parameter}) async {
+	 return Parameters(
+			id: await newEntry('Parameters'),
+			meta: meta,
+			implicitRules: implicitRules,
+			elementImplicitRules: elementImplicitRules,
+			language: language,
+			elementLanguage: elementLanguage,
+			parameter: parameter);
+	}
+
   @HiveField(0)
   final String resourceType= 'Parameters';
-
-  //  The logical id of the resource, as used in the URL for the resource.
-  // Once assigned, this value never changes.
   @HiveField(1)
   String id;
-
-  //  The metadata about the resource. This is content that is maintained by
-  // the infrastructure. Changes to the content might not always be
-  // associated with version changes to the resource.
   @HiveField(2)
   Meta meta;
-
-  //  A reference to a set of rules that were followed when the resource was
-  // constructed, and which must be understood when processing the content.
-  // Often, this is a reference to an implementation guide that defines the
-  // special rules along with other profiles etc.
   @HiveField(3)
   String implicitRules;
-
-  //  Extensions for implicitRules
   @HiveField(4)
   Element elementImplicitRules;
-
-  //  The base language in which the resource is written.
   @HiveField(5)
   String language;
-
-  //  Extensions for language
   @HiveField(6)
   Element elementLanguage;
-
-  //  A parameter passed to or received from the operation.
   @HiveField(7)
   List<Parameters_Parameter> parameter;
 
@@ -95,249 +93,237 @@ Parameters(
 @JsonSerializable(explicitToJson: true)
 class Parameters_Parameter {
 
-  //  Unique id for the element within a resource (for internal references).
-  // This may be any string value that does not contain spaces.
+	static Future<Parameters_Parameter> newInstance({
+		String id,
+		List<Extension> extension,
+		List<Extension> modifierExtension,
+		String name,
+		Element elementName,
+		String valueBase64Binary,
+		Element elementValueBase64Binary,
+		bool valueBoolean,
+		Element elementValueBoolean,
+		String valueCanonical,
+		Element elementValueCanonical,
+		String valueCode,
+		Element elementValueCode,
+		String valueDate,
+		Element elementValueDate,
+		String valueDateTime,
+		Element elementValueDateTime,
+		double valueDecimal,
+		Element elementValueDecimal,
+		String valueId,
+		Element elementValueId,
+		String valueInstant,
+		Element elementValueInstant,
+		int valueInteger,
+		Element elementValueInteger,
+		String valueMarkdown,
+		Element elementValueMarkdown,
+		String valueOid,
+		Element elementValueOid,
+		int valuePositiveInt,
+		Element elementValuePositiveInt,
+		String valueString,
+		Element elementValueString,
+		String valueTime,
+		Element elementValueTime,
+		int valueUnsignedInt,
+		Element elementValueUnsignedInt,
+		String valueUri,
+		Element elementValueUri,
+		String valueUrl,
+		Element elementValueUrl,
+		String valueUuid,
+		Element elementValueUuid,
+		Address valueAddress,
+		Age valueAge,
+		Annotation valueAnnotation,
+		Attachment valueAttachment,
+		CodeableConcept valueCodeableConcept,
+		Coding valueCoding,
+		ContactPoint valueContactPoint,
+		Count valueCount,
+		Distance valueDistance,
+		Duration valueDuration,
+		HumanName valueHumanName,
+		Identifier valueIdentifier,
+		Money valueMoney,
+		Period valuePeriod,
+		Quantity valueQuantity,
+		Range valueRange,
+		Ratio valueRatio,
+		Reference valueReference,
+		SampledData valueSampledData,
+		Signature valueSignature,
+		Timing valueTiming,
+		ContactDetail valueContactDetail,
+		Contributor valueContributor,
+		DataRequirement valueDataRequirement,
+		Expression valueExpression,
+		ParameterDefinition valueParameterDefinition,
+		RelatedArtifact valueRelatedArtifact,
+		TriggerDefinition valueTriggerDefinition,
+		UsageContext valueUsageContext,
+		Dosage valueDosage,
+		Meta valueMeta,
+		dynamic resource,
+		List<Parameters_Parameter> part}) async {
+	 return Parameters_Parameter(
+			id: await newEntry('Parameters_Parameter'),
+			extension: extension,
+			modifierExtension: modifierExtension,
+			name: name,
+			elementName: elementName,
+			valueBase64Binary: valueBase64Binary,
+			elementValueBase64Binary: elementValueBase64Binary,
+			valueBoolean: valueBoolean,
+			elementValueBoolean: elementValueBoolean,
+			valueCanonical: valueCanonical,
+			elementValueCanonical: elementValueCanonical,
+			valueCode: valueCode,
+			elementValueCode: elementValueCode,
+			valueDate: valueDate,
+			elementValueDate: elementValueDate,
+			valueDateTime: valueDateTime,
+			elementValueDateTime: elementValueDateTime,
+			valueDecimal: valueDecimal,
+			elementValueDecimal: elementValueDecimal,
+			valueId: valueId,
+			elementValueId: elementValueId,
+			valueInstant: valueInstant,
+			elementValueInstant: elementValueInstant,
+			valueInteger: valueInteger,
+			elementValueInteger: elementValueInteger,
+			valueMarkdown: valueMarkdown,
+			elementValueMarkdown: elementValueMarkdown,
+			valueOid: valueOid,
+			elementValueOid: elementValueOid,
+			valuePositiveInt: valuePositiveInt,
+			elementValuePositiveInt: elementValuePositiveInt,
+			valueString: valueString,
+			elementValueString: elementValueString,
+			valueTime: valueTime,
+			elementValueTime: elementValueTime,
+			valueUnsignedInt: valueUnsignedInt,
+			elementValueUnsignedInt: elementValueUnsignedInt,
+			valueUri: valueUri,
+			elementValueUri: elementValueUri,
+			valueUrl: valueUrl,
+			elementValueUrl: elementValueUrl,
+			valueUuid: valueUuid,
+			elementValueUuid: elementValueUuid,
+			valueAddress: valueAddress,
+			valueAge: valueAge,
+			valueAnnotation: valueAnnotation,
+			valueAttachment: valueAttachment,
+			valueCodeableConcept: valueCodeableConcept,
+			valueCoding: valueCoding,
+			valueContactPoint: valueContactPoint,
+			valueCount: valueCount,
+			valueDistance: valueDistance,
+			valueDuration: valueDuration,
+			valueHumanName: valueHumanName,
+			valueIdentifier: valueIdentifier,
+			valueMoney: valueMoney,
+			valuePeriod: valuePeriod,
+			valueQuantity: valueQuantity,
+			valueRange: valueRange,
+			valueRatio: valueRatio,
+			valueReference: valueReference,
+			valueSampledData: valueSampledData,
+			valueSignature: valueSignature,
+			valueTiming: valueTiming,
+			valueContactDetail: valueContactDetail,
+			valueContributor: valueContributor,
+			valueDataRequirement: valueDataRequirement,
+			valueExpression: valueExpression,
+			valueParameterDefinition: valueParameterDefinition,
+			valueRelatedArtifact: valueRelatedArtifact,
+			valueTriggerDefinition: valueTriggerDefinition,
+			valueUsageContext: valueUsageContext,
+			valueDosage: valueDosage,
+			valueMeta: valueMeta,
+			resource: resource,
+			part: part);
+	}
+
   String id;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element. To make the use of extensions safe
-  // and manageable, there is a strict set of governance  applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension.
   List<Extension> extension;
-
-  //  May be used to represent additional information that is not part of
-  // the basic definition of the element and that modifies the understanding
-  // of the element in which it is contained and/or the understanding of the
-  // containing element's descendants. Usually modifier elements provide
-  // negation or qualification. To make the use of extensions safe and
-  // manageable, there is a strict set of governance applied to the
-  // definition and use of extensions. Though any implementer can define an
-  // extension, there is a set of requirements that SHALL be met as part of
-  // the definition of the extension. Applications processing a resource are
-  // required to check for modifier extensions. Modifier extensions SHALL
-  // NOT change the meaning of any elements on Resource or DomainResource
-  // (including cannot change the meaning of modifierExtension itself).
   List<Extension> modifierExtension;
-
-  //  The name of the parameter (reference to the operation definition).
   String name;
-
-  //  Extensions for name
   Element elementName;
-
-  //  If the parameter is a data type.
   String valueBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
-
-  //  Extensions for valueBase64Binary
   Element elementValueBase64Binary;
-
-  //  If the parameter is a data type.
   bool valueBoolean; //  pattern: ^true|false$
-
-  //  Extensions for valueBoolean
   Element elementValueBoolean;
-
-  //  If the parameter is a data type.
   String valueCanonical; //  pattern: ^\S*$
-
-  //  Extensions for valueCanonical
   Element elementValueCanonical;
-
-  //  If the parameter is a data type.
   String valueCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
-
-  //  Extensions for valueCode
   Element elementValueCode;
-
-  //  If the parameter is a data type.
   String valueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
-
-  //  Extensions for valueDate
   Element elementValueDate;
-
-  //  If the parameter is a data type.
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-
-  //  Extensions for valueDateTime
   Element elementValueDateTime;
-
-  //  If the parameter is a data type.
   double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
-
-  //  Extensions for valueDecimal
   Element elementValueDecimal;
-
-  //  If the parameter is a data type.
   String valueId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
-
-  //  Extensions for valueId
   Element elementValueId;
-
-  //  If the parameter is a data type.
   String valueInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
-
-  //  Extensions for valueInstant
   Element elementValueInstant;
-
-  //  If the parameter is a data type.
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
-
-  //  Extensions for valueInteger
   Element elementValueInteger;
-
-  //  If the parameter is a data type.
   String valueMarkdown; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for valueMarkdown
   Element elementValueMarkdown;
-
-  //  If the parameter is a data type.
   String valueOid; //  pattern: ^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$
-
-  //  Extensions for valueOid
   Element elementValueOid;
-
-  //  If the parameter is a data type.
   int valuePositiveInt; //  pattern: ^[1-9][0-9]*$
-
-  //  Extensions for valuePositiveInt
   Element elementValuePositiveInt;
-
-  //  If the parameter is a data type.
   String valueString; //  pattern: ^[ \r\n\t\S]+$
-
-  //  Extensions for valueString
   Element elementValueString;
-
-  //  If the parameter is a data type.
   String valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
-
-  //  Extensions for valueTime
   Element elementValueTime;
-
-  //  If the parameter is a data type.
   int valueUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
-
-  //  Extensions for valueUnsignedInt
   Element elementValueUnsignedInt;
-
-  //  If the parameter is a data type.
   String valueUri; //  pattern: ^\S*$
-
-  //  Extensions for valueUri
   Element elementValueUri;
-
-  //  If the parameter is a data type.
   String valueUrl; //  pattern: ^\S*$
-
-  //  Extensions for valueUrl
   Element elementValueUrl;
-
-  //  If the parameter is a data type.
   String valueUuid; //  pattern: ^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
-
-  //  Extensions for valueUuid
   Element elementValueUuid;
-
-  //  If the parameter is a data type.
   Address valueAddress;
-
-  //  If the parameter is a data type.
   Age valueAge;
-
-  //  If the parameter is a data type.
   Annotation valueAnnotation;
-
-  //  If the parameter is a data type.
   Attachment valueAttachment;
-
-  //  If the parameter is a data type.
   CodeableConcept valueCodeableConcept;
-
-  //  If the parameter is a data type.
   Coding valueCoding;
-
-  //  If the parameter is a data type.
   ContactPoint valueContactPoint;
-
-  //  If the parameter is a data type.
   Count valueCount;
-
-  //  If the parameter is a data type.
   Distance valueDistance;
-
-  //  If the parameter is a data type.
   Duration valueDuration;
-
-  //  If the parameter is a data type.
   HumanName valueHumanName;
-
-  //  If the parameter is a data type.
   Identifier valueIdentifier;
-
-  //  If the parameter is a data type.
   Money valueMoney;
-
-  //  If the parameter is a data type.
   Period valuePeriod;
-
-  //  If the parameter is a data type.
   Quantity valueQuantity;
-
-  //  If the parameter is a data type.
   Range valueRange;
-
-  //  If the parameter is a data type.
   Ratio valueRatio;
-
-  //  If the parameter is a data type.
   Reference valueReference;
-
-  //  If the parameter is a data type.
   SampledData valueSampledData;
-
-  //  If the parameter is a data type.
   Signature valueSignature;
-
-  //  If the parameter is a data type.
   Timing valueTiming;
-
-  //  If the parameter is a data type.
   ContactDetail valueContactDetail;
-
-  //  If the parameter is a data type.
   Contributor valueContributor;
-
-  //  If the parameter is a data type.
   DataRequirement valueDataRequirement;
-
-  //  If the parameter is a data type.
   Expression valueExpression;
-
-  //  If the parameter is a data type.
   ParameterDefinition valueParameterDefinition;
-
-  //  If the parameter is a data type.
   RelatedArtifact valueRelatedArtifact;
-
-  //  If the parameter is a data type.
   TriggerDefinition valueTriggerDefinition;
-
-  //  If the parameter is a data type.
   UsageContext valueUsageContext;
-
-  //  If the parameter is a data type.
   Dosage valueDosage;
-
-  //  If the parameter is a data type.
   Meta valueMeta;
-
-  //  If the parameter is a whole resource.
   dynamic resource;
-
-  //  A named part of a multi-part parameter.
   List<Parameters_Parameter> part;
 
 Parameters_Parameter(
