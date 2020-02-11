@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -15,61 +16,309 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 234)
 class EffectEvidenceSynthesis {
+
+  //  This is a EffectEvidenceSynthesis resource
+  @HiveField(0)
   final String resourceType= 'EffectEvidenceSynthesis';
+
+  //  The logical id of the resource, as used in the URL for the resource.
+  // Once assigned, this value never changes.
+  @HiveField(1)
   String id;
+
+  //  The metadata about the resource. This is content that is maintained by
+  // the infrastructure. Changes to the content might not always be
+  // associated with version changes to the resource.
+  @HiveField(2)
   Meta meta;
+
+  //  A reference to a set of rules that were followed when the resource was
+  // constructed, and which must be understood when processing the content.
+  // Often, this is a reference to an implementation guide that defines the
+  // special rules along with other profiles etc.
+  @HiveField(3)
   String implicitRules;
+
+  //  Extensions for implicitRules
+  @HiveField(4)
   Element elementImplicitRules;
+
+  //  The base language in which the resource is written.
+  @HiveField(5)
   String language;
+
+  //  Extensions for language
+  @HiveField(6)
   Element elementLanguage;
+
+  //  A human-readable narrative that contains a summary of the resource and
+  // can be used to represent the content of the resource to a human. The
+  // narrative need not encode all the structured data, but is required to
+  // contain sufficient detail to make it "clinically safe" for a human to
+  // just read the narrative. Resource definitions may define what content
+  // should be represented in the narrative to ensure clinical safety.
+  @HiveField(7)
   Narrative text;
+
+  //  These resources do not have an independent existence apart from the
+  // resource that contains them - they cannot be identified independently,
+  // and nor can they have their own independent transaction scope.
+  @HiveField(8)
   List<dynamic> contained;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource. To make the use of extensions
+  // safe and manageable, there is a strict set of governance  applied to
+  // the definition and use of extensions. Though any implementer can define
+  // an extension, there is a set of requirements that SHALL be met as part
+  // of the definition of the extension.
+  @HiveField(9)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource and that modifies the
+  // understanding of the element that contains it and/or the understanding
+  // of the containing element's descendants. Usually modifier elements
+  // provide negation or qualification. To make the use of extensions safe
+  // and manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer is allowed to
+  // define an extension, there is a set of requirements that SHALL be met
+  // as part of the definition of the extension. Applications processing a
+  // resource are required to check for modifier extensions. Modifier
+  // extensions SHALL NOT change the meaning of any elements on Resource or
+  // DomainResource (including cannot change the meaning of
+  // modifierExtension itself).
+  @HiveField(10)
   List<Extension> modifierExtension;
+
+  //  An absolute URI that is used to identify this effect evidence
+  // synthesis when it is referenced in a specification, model, design or an
+  // instance; also called its canonical identifier. This SHOULD be globally
+  // unique and SHOULD be a literal address at which at which an
+  // authoritative instance of this effect evidence synthesis is (or will
+  // be) published. This URL can be the target of a canonical reference. It
+  // SHALL remain the same when the effect evidence synthesis is stored on
+  // different servers.
+  @HiveField(11)
   String url;
+
+  //  Extensions for url
+  @HiveField(12)
   Element elementUrl;
+
+  //  A formal identifier that is used to identify this effect evidence
+  // synthesis when it is represented in other formats, or referenced in a
+  // specification, model, design or an instance.
+  @HiveField(13)
   List<Identifier> identifier;
+
+  //  The identifier that is used to identify this version of the effect
+  // evidence synthesis when it is referenced in a specification, model,
+  // design or instance. This is an arbitrary value managed by the effect
+  // evidence synthesis author and is not expected to be globally unique.
+  // For example, it might be a timestamp (e.g. yyyymmdd) if a managed
+  // version is not available. There is also no expectation that versions
+  // can be placed in a lexicographical sequence.
+  @HiveField(14)
   String version;
+
+  //  Extensions for version
+  @HiveField(15)
   Element elementVersion;
+
+  //  A natural language name identifying the effect evidence synthesis.
+  // This name should be usable as an identifier for the module by machine
+  // processing applications such as code generation.
+  @HiveField(16)
   String name;
+
+  //  Extensions for name
+  @HiveField(17)
   Element elementName;
+
+  //  A short, descriptive, user-friendly title for the effect evidence
+  // synthesis.
+  @HiveField(18)
   String title;
+
+  //  Extensions for title
+  @HiveField(19)
   Element elementTitle;
+
+  //  The status of this effect evidence synthesis. Enables tracking the
+  // life-cycle of the content.
+  @HiveField(20)
   String status; // <code> enum: draft/active/retired/unknown;
+
+  //  Extensions for status
+  @HiveField(21)
   Element elementStatus;
+
+  //  The date  (and optionally time) when the effect evidence synthesis was
+  // published. The date must change when the business version changes and
+  // it must change if the status code changes. In addition, it should
+  // change when the substantive content of the effect evidence synthesis
+  // changes.
+  @HiveField(22)
   DateTime date;
+
+  //  Extensions for date
+  @HiveField(23)
   Element elementDate;
+
+  //  The name of the organization or individual that published the effect
+  // evidence synthesis.
+  @HiveField(24)
   String publisher;
+
+  //  Extensions for publisher
+  @HiveField(25)
   Element elementPublisher;
+
+  //  Contact details to assist a user in finding and communicating with the
+  // publisher.
+  @HiveField(26)
   List<ContactDetail> contact;
+
+  //  A free text natural language description of the effect evidence
+  // synthesis from a consumer's perspective.
+  @HiveField(27)
   String description;
+
+  //  Extensions for description
+  @HiveField(28)
   Element elementDescription;
+
+  //  A human-readable string to clarify or explain concepts about the
+  // resource.
+  @HiveField(29)
   List<Annotation> note;
+
+  //  The content was developed with a focus and intent of supporting the
+  // contexts that are listed. These contexts may be general categories
+  // (gender, age, ...) or may be references to specific programs (insurance
+  // plans, studies, ...) and may be used to assist with indexing and
+  // searching for appropriate effect evidence synthesis instances.
+  @HiveField(30)
   List<UsageContext> useContext;
+
+  //  A legal or geographic region in which the effect evidence synthesis is
+  // intended to be used.
+  @HiveField(31)
   List<CodeableConcept> jurisdiction;
+
+  //  A copyright statement relating to the effect evidence synthesis and/or
+  // its contents. Copyright statements are generally legal restrictions on
+  // the use and publishing of the effect evidence synthesis.
+  @HiveField(32)
   String copyright;
+
+  //  Extensions for copyright
+  @HiveField(33)
   Element elementCopyright;
+
+  //  The date on which the resource content was approved by the publisher.
+  // Approval happens once when the content is officially approved for
+  // usage.
+  @HiveField(34)
   String approvalDate;
+
+  //  Extensions for approvalDate
+  @HiveField(35)
   Element elementApprovalDate;
+
+  //  The date on which the resource content was last reviewed. Review
+  // happens periodically after approval but does not change the original
+  // approval date.
+  @HiveField(36)
   String lastReviewDate;
+
+  //  Extensions for lastReviewDate
+  @HiveField(37)
   Element elementLastReviewDate;
+
+  //  The period during which the effect evidence synthesis content was or
+  // is planned to be in active use.
+  @HiveField(38)
   Period effectivePeriod;
+
+  //  Descriptive topics related to the content of the
+  // EffectEvidenceSynthesis. Topics provide a high-level categorization
+  // grouping types of EffectEvidenceSynthesiss that can be useful for
+  // filtering and searching.
+  @HiveField(39)
   List<CodeableConcept> topic;
+
+  //  An individiual or organization primarily involved in the creation and
+  // maintenance of the content.
+  @HiveField(40)
   List<ContactDetail> author;
+
+  //  An individual or organization primarily responsible for internal
+  // coherence of the content.
+  @HiveField(41)
   List<ContactDetail> editor;
+
+  //  An individual or organization primarily responsible for review of some
+  // aspect of the content.
+  @HiveField(42)
   List<ContactDetail> reviewer;
+
+  //  An individual or organization responsible for officially endorsing the
+  // content for use in some setting.
+  @HiveField(43)
   List<ContactDetail> endorser;
+
+  //  Related artifacts such as additional documentation, justification, or
+  // bibliographic references.
+  @HiveField(44)
   List<RelatedArtifact> relatedArtifact;
+
+  //  Type of synthesis eg meta-analysis.
+  @HiveField(45)
   CodeableConcept synthesisType;
+
+  //  Type of study eg randomized trial.
+  @HiveField(46)
   CodeableConcept studyType;
+
+  //  A reference to a EvidenceVariable resource that defines the population
+  // for the research.
+  @HiveField(47)
   Reference population;
+
+  //  A reference to a EvidenceVariable resource that defines the exposure
+  // for the research.
+  @HiveField(48)
   Reference exposure;
+
+  //  A reference to a EvidenceVariable resource that defines the comparison
+  // exposure for the research.
+  @HiveField(49)
   Reference exposureAlternative;
+
+  //  A reference to a EvidenceVariable resomece that defines the outcome
+  // for the research.
+  @HiveField(50)
   Reference outcome;
+
+  //  A description of the size of the sample involved in the synthesis.
+  @HiveField(51)
   EffectEvidenceSynthesis_SampleSize sampleSize;
+
+  //  A description of the results for each exposure considered in the
+  // effect estimate.
+  @HiveField(52)
   List<EffectEvidenceSynthesis_ResultsByExposure> resultsByExposure;
+
+  //  The estimated effect of the exposure variant.
+  @HiveField(53)
   List<EffectEvidenceSynthesis_EffectEstimate> effectEstimate;
+
+  //  A description of the certainty of the effect estimate.
+  @HiveField(54)
   List<EffectEvidenceSynthesis_Certainty> certainty;
 
 EffectEvidenceSynthesis(
@@ -134,15 +383,60 @@ EffectEvidenceSynthesis(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 235)
 class EffectEvidenceSynthesis_SampleSize {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Human-readable summary of sample size.
+  @HiveField(3)
   String description;
+
+  //  Extensions for description
+  @HiveField(4)
   Element elementDescription;
+
+  //  Number of studies included in this evidence synthesis.
+  @HiveField(5)
   int numberOfStudies;
+
+  //  Extensions for numberOfStudies
+  @HiveField(6)
   Element elementNumberOfStudies;
+
+  //  Number of participants included in this evidence synthesis.
+  @HiveField(7)
   int numberOfParticipants;
+
+  //  Extensions for numberOfParticipants
+  @HiveField(8)
   Element elementNumberOfParticipants;
 
 EffectEvidenceSynthesis_SampleSize(
@@ -162,15 +456,61 @@ EffectEvidenceSynthesis_SampleSize(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 236)
 class EffectEvidenceSynthesis_ResultsByExposure {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Human-readable summary of results by exposure state.
+  @HiveField(3)
   String description;
+
+  //  Extensions for description
+  @HiveField(4)
   Element elementDescription;
+
+  //  Whether these results are for the exposure state or alternative
+  // exposure state.
+  @HiveField(5)
   String exposureState; // <code> enum: exposure/exposure-alternative;
+
+  //  Extensions for exposureState
+  @HiveField(6)
   Element elementExposureState;
+
+  //  Used to define variant exposure states such as low-risk state.
+  @HiveField(7)
   CodeableConcept variantState;
+
+  //  Reference to a RiskEvidenceSynthesis resource.
+  @HiveField(8)
   Reference riskEvidenceSynthesis;
 
 EffectEvidenceSynthesis_ResultsByExposure(
@@ -190,17 +530,68 @@ EffectEvidenceSynthesis_ResultsByExposure(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 237)
 class EffectEvidenceSynthesis_EffectEstimate {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Human-readable summary of effect estimate.
+  @HiveField(3)
   String description;
+
+  //  Extensions for description
+  @HiveField(4)
   Element elementDescription;
+
+  //  Examples include relative risk and mean difference.
+  @HiveField(5)
   CodeableConcept type;
+
+  //  Used to define variant exposure states such as low-risk state.
+  @HiveField(6)
   CodeableConcept variantState;
+
+  //  The point estimate of the effect estimate.
+  @HiveField(7)
   double value;
+
+  //  Extensions for value
+  @HiveField(8)
   Element elementValue;
+
+  //  Specifies the UCUM unit for the outcome.
+  @HiveField(9)
   CodeableConcept unitOfMeasure;
+
+  //  A description of the precision of the estimate for the effect.
+  @HiveField(10)
   List<EffectEvidenceSynthesis_PrecisionEstimate> precisionEstimate;
 
 EffectEvidenceSynthesis_EffectEstimate(
@@ -222,16 +613,64 @@ EffectEvidenceSynthesis_EffectEstimate(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 238)
 class EffectEvidenceSynthesis_PrecisionEstimate {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Examples include confidence interval and interquartile range.
+  @HiveField(3)
   CodeableConcept type;
+
+  //  Use 95 for a 95% confidence interval.
+  @HiveField(4)
   double level;
+
+  //  Extensions for level
+  @HiveField(5)
   Element elementLevel;
+
+  //  Lower bound of confidence interval.
+  @HiveField(6)
   double from;
+
+  //  Extensions for from
+  @HiveField(7)
   Element elementFrom;
+
+  //  Upper bound of confidence interval.
+  @HiveField(8)
   double to;
+
+  //  Extensions for to
+  @HiveField(9)
   Element elementTo;
 
 EffectEvidenceSynthesis_PrecisionEstimate(
@@ -252,12 +691,49 @@ EffectEvidenceSynthesis_PrecisionEstimate(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 239)
 class EffectEvidenceSynthesis_Certainty {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  A rating of the certainty of the effect estimate.
+  @HiveField(3)
   List<CodeableConcept> rating;
+
+  //  A human-readable string to clarify or explain concepts about the
+  // resource.
+  @HiveField(4)
   List<Annotation> note;
+
+  //  A description of a component of the overall certainty.
+  @HiveField(5)
   List<EffectEvidenceSynthesis_CertaintySubcomponent> certaintySubcomponent;
 
 EffectEvidenceSynthesis_Certainty(
@@ -274,12 +750,49 @@ EffectEvidenceSynthesis_Certainty(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 240)
 class EffectEvidenceSynthesis_CertaintySubcomponent {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Type of subcomponent of certainty rating.
+  @HiveField(3)
   CodeableConcept type;
+
+  //  A rating of a subcomponent of rating certainty.
+  @HiveField(4)
   List<CodeableConcept> rating;
+
+  //  A human-readable string to clarify or explain concepts about the
+  // resource.
+  @HiveField(5)
   List<Annotation> note;
 
 EffectEvidenceSynthesis_CertaintySubcomponent(
@@ -297,6 +810,489 @@ EffectEvidenceSynthesis_CertaintySubcomponent(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class EffectEvidenceSynthesisAdapter
+    extends TypeAdapter<EffectEvidenceSynthesis> {
+  @override
+  final typeId = 234;
+
+  @override
+  EffectEvidenceSynthesis read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return EffectEvidenceSynthesis(
+      fields[47] as Reference,
+      fields[48] as Reference,
+      fields[49] as Reference,
+      fields[50] as Reference,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      url: fields[11] as String,
+      elementUrl: fields[12] as Element,
+      identifier: (fields[13] as List)?.cast<Identifier>(),
+      version: fields[14] as String,
+      elementVersion: fields[15] as Element,
+      name: fields[16] as String,
+      elementName: fields[17] as Element,
+      title: fields[18] as String,
+      elementTitle: fields[19] as Element,
+      status: fields[20] as String,
+      elementStatus: fields[21] as Element,
+      date: fields[22] as DateTime,
+      elementDate: fields[23] as Element,
+      publisher: fields[24] as String,
+      elementPublisher: fields[25] as Element,
+      contact: (fields[26] as List)?.cast<ContactDetail>(),
+      description: fields[27] as String,
+      elementDescription: fields[28] as Element,
+      note: (fields[29] as List)?.cast<Annotation>(),
+      useContext: (fields[30] as List)?.cast<UsageContext>(),
+      jurisdiction: (fields[31] as List)?.cast<CodeableConcept>(),
+      copyright: fields[32] as String,
+      elementCopyright: fields[33] as Element,
+      approvalDate: fields[34] as String,
+      elementApprovalDate: fields[35] as Element,
+      lastReviewDate: fields[36] as String,
+      elementLastReviewDate: fields[37] as Element,
+      effectivePeriod: fields[38] as Period,
+      topic: (fields[39] as List)?.cast<CodeableConcept>(),
+      author: (fields[40] as List)?.cast<ContactDetail>(),
+      editor: (fields[41] as List)?.cast<ContactDetail>(),
+      reviewer: (fields[42] as List)?.cast<ContactDetail>(),
+      endorser: (fields[43] as List)?.cast<ContactDetail>(),
+      relatedArtifact: (fields[44] as List)?.cast<RelatedArtifact>(),
+      synthesisType: fields[45] as CodeableConcept,
+      studyType: fields[46] as CodeableConcept,
+      sampleSize: fields[51] as EffectEvidenceSynthesis_SampleSize,
+      resultsByExposure: (fields[52] as List)
+          ?.cast<EffectEvidenceSynthesis_ResultsByExposure>(),
+      effectEstimate:
+          (fields[53] as List)?.cast<EffectEvidenceSynthesis_EffectEstimate>(),
+      certainty:
+          (fields[54] as List)?.cast<EffectEvidenceSynthesis_Certainty>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, EffectEvidenceSynthesis obj) {
+    writer
+      ..writeByte(55)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.url)
+      ..writeByte(12)
+      ..write(obj.elementUrl)
+      ..writeByte(13)
+      ..write(obj.identifier)
+      ..writeByte(14)
+      ..write(obj.version)
+      ..writeByte(15)
+      ..write(obj.elementVersion)
+      ..writeByte(16)
+      ..write(obj.name)
+      ..writeByte(17)
+      ..write(obj.elementName)
+      ..writeByte(18)
+      ..write(obj.title)
+      ..writeByte(19)
+      ..write(obj.elementTitle)
+      ..writeByte(20)
+      ..write(obj.status)
+      ..writeByte(21)
+      ..write(obj.elementStatus)
+      ..writeByte(22)
+      ..write(obj.date)
+      ..writeByte(23)
+      ..write(obj.elementDate)
+      ..writeByte(24)
+      ..write(obj.publisher)
+      ..writeByte(25)
+      ..write(obj.elementPublisher)
+      ..writeByte(26)
+      ..write(obj.contact)
+      ..writeByte(27)
+      ..write(obj.description)
+      ..writeByte(28)
+      ..write(obj.elementDescription)
+      ..writeByte(29)
+      ..write(obj.note)
+      ..writeByte(30)
+      ..write(obj.useContext)
+      ..writeByte(31)
+      ..write(obj.jurisdiction)
+      ..writeByte(32)
+      ..write(obj.copyright)
+      ..writeByte(33)
+      ..write(obj.elementCopyright)
+      ..writeByte(34)
+      ..write(obj.approvalDate)
+      ..writeByte(35)
+      ..write(obj.elementApprovalDate)
+      ..writeByte(36)
+      ..write(obj.lastReviewDate)
+      ..writeByte(37)
+      ..write(obj.elementLastReviewDate)
+      ..writeByte(38)
+      ..write(obj.effectivePeriod)
+      ..writeByte(39)
+      ..write(obj.topic)
+      ..writeByte(40)
+      ..write(obj.author)
+      ..writeByte(41)
+      ..write(obj.editor)
+      ..writeByte(42)
+      ..write(obj.reviewer)
+      ..writeByte(43)
+      ..write(obj.endorser)
+      ..writeByte(44)
+      ..write(obj.relatedArtifact)
+      ..writeByte(45)
+      ..write(obj.synthesisType)
+      ..writeByte(46)
+      ..write(obj.studyType)
+      ..writeByte(47)
+      ..write(obj.population)
+      ..writeByte(48)
+      ..write(obj.exposure)
+      ..writeByte(49)
+      ..write(obj.exposureAlternative)
+      ..writeByte(50)
+      ..write(obj.outcome)
+      ..writeByte(51)
+      ..write(obj.sampleSize)
+      ..writeByte(52)
+      ..write(obj.resultsByExposure)
+      ..writeByte(53)
+      ..write(obj.effectEstimate)
+      ..writeByte(54)
+      ..write(obj.certainty);
+  }
+}
+
+class EffectEvidenceSynthesis_SampleSizeAdapter
+    extends TypeAdapter<EffectEvidenceSynthesis_SampleSize> {
+  @override
+  final typeId = 235;
+
+  @override
+  EffectEvidenceSynthesis_SampleSize read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return EffectEvidenceSynthesis_SampleSize(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      description: fields[3] as String,
+      elementDescription: fields[4] as Element,
+      numberOfStudies: fields[5] as int,
+      elementNumberOfStudies: fields[6] as Element,
+      numberOfParticipants: fields[7] as int,
+      elementNumberOfParticipants: fields[8] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, EffectEvidenceSynthesis_SampleSize obj) {
+    writer
+      ..writeByte(9)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.description)
+      ..writeByte(4)
+      ..write(obj.elementDescription)
+      ..writeByte(5)
+      ..write(obj.numberOfStudies)
+      ..writeByte(6)
+      ..write(obj.elementNumberOfStudies)
+      ..writeByte(7)
+      ..write(obj.numberOfParticipants)
+      ..writeByte(8)
+      ..write(obj.elementNumberOfParticipants);
+  }
+}
+
+class EffectEvidenceSynthesis_ResultsByExposureAdapter
+    extends TypeAdapter<EffectEvidenceSynthesis_ResultsByExposure> {
+  @override
+  final typeId = 236;
+
+  @override
+  EffectEvidenceSynthesis_ResultsByExposure read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return EffectEvidenceSynthesis_ResultsByExposure(
+      fields[8] as Reference,
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      description: fields[3] as String,
+      elementDescription: fields[4] as Element,
+      exposureState: fields[5] as String,
+      elementExposureState: fields[6] as Element,
+      variantState: fields[7] as CodeableConcept,
+    );
+  }
+
+  @override
+  void write(
+      BinaryWriter writer, EffectEvidenceSynthesis_ResultsByExposure obj) {
+    writer
+      ..writeByte(9)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.description)
+      ..writeByte(4)
+      ..write(obj.elementDescription)
+      ..writeByte(5)
+      ..write(obj.exposureState)
+      ..writeByte(6)
+      ..write(obj.elementExposureState)
+      ..writeByte(7)
+      ..write(obj.variantState)
+      ..writeByte(8)
+      ..write(obj.riskEvidenceSynthesis);
+  }
+}
+
+class EffectEvidenceSynthesis_EffectEstimateAdapter
+    extends TypeAdapter<EffectEvidenceSynthesis_EffectEstimate> {
+  @override
+  final typeId = 237;
+
+  @override
+  EffectEvidenceSynthesis_EffectEstimate read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return EffectEvidenceSynthesis_EffectEstimate(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      description: fields[3] as String,
+      elementDescription: fields[4] as Element,
+      type: fields[5] as CodeableConcept,
+      variantState: fields[6] as CodeableConcept,
+      value: fields[7] as double,
+      elementValue: fields[8] as Element,
+      unitOfMeasure: fields[9] as CodeableConcept,
+      precisionEstimate: (fields[10] as List)
+          ?.cast<EffectEvidenceSynthesis_PrecisionEstimate>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, EffectEvidenceSynthesis_EffectEstimate obj) {
+    writer
+      ..writeByte(11)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.description)
+      ..writeByte(4)
+      ..write(obj.elementDescription)
+      ..writeByte(5)
+      ..write(obj.type)
+      ..writeByte(6)
+      ..write(obj.variantState)
+      ..writeByte(7)
+      ..write(obj.value)
+      ..writeByte(8)
+      ..write(obj.elementValue)
+      ..writeByte(9)
+      ..write(obj.unitOfMeasure)
+      ..writeByte(10)
+      ..write(obj.precisionEstimate);
+  }
+}
+
+class EffectEvidenceSynthesis_PrecisionEstimateAdapter
+    extends TypeAdapter<EffectEvidenceSynthesis_PrecisionEstimate> {
+  @override
+  final typeId = 238;
+
+  @override
+  EffectEvidenceSynthesis_PrecisionEstimate read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return EffectEvidenceSynthesis_PrecisionEstimate(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      type: fields[3] as CodeableConcept,
+      level: fields[4] as double,
+      elementLevel: fields[5] as Element,
+      from: fields[6] as double,
+      elementFrom: fields[7] as Element,
+      to: fields[8] as double,
+      elementTo: fields[9] as Element,
+    );
+  }
+
+  @override
+  void write(
+      BinaryWriter writer, EffectEvidenceSynthesis_PrecisionEstimate obj) {
+    writer
+      ..writeByte(10)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.level)
+      ..writeByte(5)
+      ..write(obj.elementLevel)
+      ..writeByte(6)
+      ..write(obj.from)
+      ..writeByte(7)
+      ..write(obj.elementFrom)
+      ..writeByte(8)
+      ..write(obj.to)
+      ..writeByte(9)
+      ..write(obj.elementTo);
+  }
+}
+
+class EffectEvidenceSynthesis_CertaintyAdapter
+    extends TypeAdapter<EffectEvidenceSynthesis_Certainty> {
+  @override
+  final typeId = 239;
+
+  @override
+  EffectEvidenceSynthesis_Certainty read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return EffectEvidenceSynthesis_Certainty(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      rating: (fields[3] as List)?.cast<CodeableConcept>(),
+      note: (fields[4] as List)?.cast<Annotation>(),
+      certaintySubcomponent: (fields[5] as List)
+          ?.cast<EffectEvidenceSynthesis_CertaintySubcomponent>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, EffectEvidenceSynthesis_Certainty obj) {
+    writer
+      ..writeByte(6)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.rating)
+      ..writeByte(4)
+      ..write(obj.note)
+      ..writeByte(5)
+      ..write(obj.certaintySubcomponent);
+  }
+}
+
+class EffectEvidenceSynthesis_CertaintySubcomponentAdapter
+    extends TypeAdapter<EffectEvidenceSynthesis_CertaintySubcomponent> {
+  @override
+  final typeId = 240;
+
+  @override
+  EffectEvidenceSynthesis_CertaintySubcomponent read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return EffectEvidenceSynthesis_CertaintySubcomponent(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      type: fields[3] as CodeableConcept,
+      rating: (fields[4] as List)?.cast<CodeableConcept>(),
+      note: (fields[5] as List)?.cast<Annotation>(),
+    );
+  }
+
+  @override
+  void write(
+      BinaryWriter writer, EffectEvidenceSynthesis_CertaintySubcomponent obj) {
+    writer
+      ..writeByte(6)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.rating)
+      ..writeByte(5)
+      ..write(obj.note);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

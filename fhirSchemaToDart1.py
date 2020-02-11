@@ -2,7 +2,6 @@
 
 import json
 import re
-import os
 
 #makes first letter of word lowercase
 def lowcc(string):
@@ -73,8 +72,9 @@ importDict = {}
 #iterates through the different entities in fhir.schema.json
 #only looks in definitions (these are mostly resources, not primitives)
 definitions = schema['definitions']
+HiveType = -1
 for objects in definitions:
-
+    
     #ignore any of those that are in the ResourceList (names, no definitions)
     if('properties' in definitions[objects] and str(objects) != 'ResourceList'):
         objected = 'Lists' if objects == 'List' else objects
@@ -90,8 +90,12 @@ for objects in definitions:
             importL = 'lists' if importL == 'list' else importL
             
         #add JsonSerializable code at top of Dart class
+        HiveType += 1
         dartCode = ''.join([dartCode, 
-                            '@JsonSerializable(explicitToJson: true)\nclass ', 
+                            '@JsonSerializable(explicitToJson: true)\n', 
+                            '@HiveType(typeId: ',
+                            str(HiveType),
+                            ')\nclass ',
                             objected, 
                             ' {\n'])
         
@@ -100,16 +104,18 @@ for objects in definitions:
         
         #look in the properties section of each resource to see what pattern
         #it fits and based on that, print out specific information
+        HiveField = 0
         properties = definitions[objects]['properties']
-        for field in properties:            
+        for field in properties:      
+            
             
 #******************************************************************************
 #***** This adds comments to the files, but adds notable extra time to run this program *****
         #prints comment to the Dart code, formatted lines <= 70 characters
-            # comments = properties[field]['description']
-            # comments = re.sub(r'\n+', ' ', comments)
-            # comments = re.sub(r'\r', ' ', comments)
-            # dartCode = ''.join([dartCode, less70(comments), '\n'])
+            comments = properties[field]['description']
+            comments = re.sub(r'\n+', ' ', comments)
+            comments = re.sub(r'\r', ' ', comments)
+            dartCode = ''.join([dartCode, less70(comments), '\n'])
 #******************************************************************************
                                     
             #if items is NOT included it means that the item is NOT an array/list
@@ -120,6 +126,9 @@ for objects in definitions:
                     ref = properties[field]['$ref']
                     ref = ref.split('/definitions/')[1]
                     dartCode = ''.join([dartCode, 
+                                        '  @HiveField(',
+                                        str(HiveField),
+                                        ')\n',
                                         '  ',
                                         primitiveDart(ref), 
                                         ' ', 
@@ -140,6 +149,9 @@ for objects in definitions:
                         
                     #if it's resourceType it's a final string
                     dartCode = ''.join([dartCode,
+                                        '  @HiveField(',
+                                        str(HiveField),
+                                        ')\n',
                                         '  ',
                                         primitiveDart(value2), 
                                         ' ', 
@@ -164,6 +176,9 @@ for objects in definitions:
                             dartCode = ''.join([dartCode, '  int '])
                     else:
                         dartCode = ''.join([dartCode, 
+                                            '  @HiveField(',
+                                            str(HiveField),
+                                            ')\n',
                                             '  ',
                                             primitiveDart(value['type']), 
                                             ' '])
@@ -184,6 +199,9 @@ for objects in definitions:
                 elif('enum' in properties[field]):
 
                     dartCode = ''.join([dartCode, 
+                                        '  @HiveField(',
+                                        str(HiveField),
+                                        ')\n',
                                         '  ',
                                         'String ', 
                                         rem_(field), 
@@ -198,6 +216,9 @@ for objects in definitions:
                 
                 #make the item a list since it's an array in json
                 dartCode = ''.join([dartCode,  
+                                    '  @HiveField(',
+                                    str(HiveField),
+                                    ')\n',
                                     '  ',
                                     'List<', 
                                     primitiveDart(value), 
@@ -213,6 +234,9 @@ for objects in definitions:
                 
                 #make the item a list since it's an array in json
                 dartCode = ''.join([dartCode, 
+                                    '  @HiveField(',
+                                    str(HiveField),
+                                    ')\n',
                                     '  ',
                                     'List<String> ', 
                                     rem_(field), 
@@ -221,6 +245,8 @@ for objects in definitions:
                                     '/'.join(properties[field]['items']['enum']),
                                     '> ', 
                                     rem_(field), ';\n'])   
+            
+            HiveField += 1
                                   
         #add more constructor code
         dartCode = ''.join([dartCode, '\n', objected, '(\n  '])
@@ -304,6 +330,7 @@ for code in dartCode:
                                 lowcc(l), ".dart';\n", code])
         code = code.replace(',\n    });', '\n    });')
         code = ''.join(["import 'package:json_annotation/json_annotation.dart';\n\n", code])
+        code = ''.join(["import 'package:hive/hive.dart';\n", code])
         with open(fhirDir + lowcc(g) + ".dart","w", encoding="utf-8") as f:
             f.write(code)
         f.close()

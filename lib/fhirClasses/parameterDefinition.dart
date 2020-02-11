@@ -1,24 +1,82 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 32)
 class ParameterDefinition {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  The name of the parameter used to allow access to the value of the
+  // parameter in evaluation contexts.
+  @HiveField(2)
   String name;
+
+  //  Extensions for name
+  @HiveField(3)
   Element elementName;
+
+  //  Whether the parameter is input or output for the module.
+  @HiveField(4)
   String use;
+
+  //  Extensions for use
+  @HiveField(5)
   Element elementUse;
+
+  //  The minimum number of times this parameter SHALL appear in the request
+  // or response.
+  @HiveField(6)
   int min;
+
+  //  Extensions for min
+  @HiveField(7)
   Element elementMin;
+
+  //  The maximum number of times this element is permitted to appear in the
+  // request or response.
+  @HiveField(8)
   String max;
+
+  //  Extensions for max
+  @HiveField(9)
   Element elementMax;
+
+  //  A brief discussion of what the parameter is for and how it is used by
+  // the module.
+  @HiveField(10)
   String documentation;
+
+  //  Extensions for documentation
+  @HiveField(11)
   Element elementDocumentation;
+
+  //  The type of the parameter.
+  @HiveField(12)
   String type;
+
+  //  Extensions for type
+  @HiveField(13)
   Element elementType;
+
+  //  If specified, this indicates a profile that the input data must
+  // conform to, or that the output data will conform to.
+  @HiveField(14)
   String profile;
 
 ParameterDefinition(
@@ -45,6 +103,76 @@ ParameterDefinition(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class ParameterDefinitionAdapter extends TypeAdapter<ParameterDefinition> {
+  @override
+  final typeId = 32;
+
+  @override
+  ParameterDefinition read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ParameterDefinition(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      name: fields[2] as String,
+      elementName: fields[3] as Element,
+      use: fields[4] as String,
+      elementUse: fields[5] as Element,
+      min: fields[6] as int,
+      elementMin: fields[7] as Element,
+      max: fields[8] as String,
+      elementMax: fields[9] as Element,
+      documentation: fields[10] as String,
+      elementDocumentation: fields[11] as Element,
+      type: fields[12] as String,
+      elementType: fields[13] as Element,
+      profile: fields[14] as String,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ParameterDefinition obj) {
+    writer
+      ..writeByte(15)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.name)
+      ..writeByte(3)
+      ..write(obj.elementName)
+      ..writeByte(4)
+      ..write(obj.use)
+      ..writeByte(5)
+      ..write(obj.elementUse)
+      ..writeByte(6)
+      ..write(obj.min)
+      ..writeByte(7)
+      ..write(obj.elementMin)
+      ..writeByte(8)
+      ..write(obj.max)
+      ..writeByte(9)
+      ..write(obj.elementMax)
+      ..writeByte(10)
+      ..write(obj.documentation)
+      ..writeByte(11)
+      ..write(obj.elementDocumentation)
+      ..writeByte(12)
+      ..write(obj.type)
+      ..writeByte(13)
+      ..write(obj.elementType)
+      ..writeByte(14)
+      ..write(obj.profile);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

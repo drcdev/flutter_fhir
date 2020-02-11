@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
@@ -13,35 +14,163 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 225)
 class DeviceUseStatement {
+
+  //  This is a DeviceUseStatement resource
+  @HiveField(0)
   final String resourceType= 'DeviceUseStatement';
+
+  //  The logical id of the resource, as used in the URL for the resource.
+  // Once assigned, this value never changes.
+  @HiveField(1)
   String id;
+
+  //  The metadata about the resource. This is content that is maintained by
+  // the infrastructure. Changes to the content might not always be
+  // associated with version changes to the resource.
+  @HiveField(2)
   Meta meta;
+
+  //  A reference to a set of rules that were followed when the resource was
+  // constructed, and which must be understood when processing the content.
+  // Often, this is a reference to an implementation guide that defines the
+  // special rules along with other profiles etc.
+  @HiveField(3)
   String implicitRules;
+
+  //  Extensions for implicitRules
+  @HiveField(4)
   Element elementImplicitRules;
+
+  //  The base language in which the resource is written.
+  @HiveField(5)
   String language;
+
+  //  Extensions for language
+  @HiveField(6)
   Element elementLanguage;
+
+  //  A human-readable narrative that contains a summary of the resource and
+  // can be used to represent the content of the resource to a human. The
+  // narrative need not encode all the structured data, but is required to
+  // contain sufficient detail to make it "clinically safe" for a human to
+  // just read the narrative. Resource definitions may define what content
+  // should be represented in the narrative to ensure clinical safety.
+  @HiveField(7)
   Narrative text;
+
+  //  These resources do not have an independent existence apart from the
+  // resource that contains them - they cannot be identified independently,
+  // and nor can they have their own independent transaction scope.
+  @HiveField(8)
   List<dynamic> contained;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource. To make the use of extensions
+  // safe and manageable, there is a strict set of governance  applied to
+  // the definition and use of extensions. Though any implementer can define
+  // an extension, there is a set of requirements that SHALL be met as part
+  // of the definition of the extension.
+  @HiveField(9)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource and that modifies the
+  // understanding of the element that contains it and/or the understanding
+  // of the containing element's descendants. Usually modifier elements
+  // provide negation or qualification. To make the use of extensions safe
+  // and manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer is allowed to
+  // define an extension, there is a set of requirements that SHALL be met
+  // as part of the definition of the extension. Applications processing a
+  // resource are required to check for modifier extensions. Modifier
+  // extensions SHALL NOT change the meaning of any elements on Resource or
+  // DomainResource (including cannot change the meaning of
+  // modifierExtension itself).
+  @HiveField(10)
   List<Extension> modifierExtension;
+
+  //  An external identifier for this statement such as an IRI.
+  @HiveField(11)
   List<Identifier> identifier;
+
+  //  A plan, proposal or order that is fulfilled in whole or in part by
+  // this DeviceUseStatement.
+  @HiveField(12)
   List<Reference> basedOn;
+
+  //  A code representing the patient or other source's judgment about the
+  // state of the device used that this statement is about.  Generally this
+  // will be active or completed.
+  @HiveField(13)
   String status; // <code> enum: active/completed/entered-in-error/intended/stopped/on-hold;
+
+  //  Extensions for status
+  @HiveField(14)
   Element elementStatus;
+
+  //  The patient who used the device.
+  @HiveField(15)
   Reference subject;
+
+  //  Allows linking the DeviceUseStatement to the underlying Request, or to
+  // other information that supports or is used to derive the
+  // DeviceUseStatement.
+  @HiveField(16)
   List<Reference> derivedFrom;
+
+  //  How often the device was used.
+  @HiveField(17)
   Timing timingTiming;
+
+  //  How often the device was used.
+  @HiveField(18)
   Period timingPeriod;
+
+  //  How often the device was used.
+  @HiveField(19)
   String timingDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+
+  //  Extensions for timingDateTime
+  @HiveField(20)
   Element elementTimingDateTime;
+
+  //  The time at which the statement was made/recorded.
+  @HiveField(21)
   DateTime recordedOn;
+
+  //  Extensions for recordedOn
+  @HiveField(22)
   Element elementRecordedOn;
+
+  //  Who reported the device was being used by the patient.
+  @HiveField(23)
   Reference source;
+
+  //  The details of the device used.
+  @HiveField(24)
   Reference device;
+
+  //  Reason or justification for the use of the device.
+  @HiveField(25)
   List<CodeableConcept> reasonCode;
+
+  //  Indicates another resource whose existence justifies this
+  // DeviceUseStatement.
+  @HiveField(26)
   List<Reference> reasonReference;
+
+  //  Indicates the anotomic location on the subject's body where the device
+  // was used ( i.e. the target).
+  @HiveField(27)
   CodeableConcept bodySite;
+
+  //  Details about the device statement that were not represented at all or
+  // sufficiently in one of the attributes provided in a class. These may
+  // include for example a comment, an instruction, or a note associated
+  // with the statement.
+  @HiveField(28)
   List<Annotation> note;
 
 DeviceUseStatement(
@@ -81,6 +210,117 @@ DeviceUseStatement(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class DeviceUseStatementAdapter extends TypeAdapter<DeviceUseStatement> {
+  @override
+  final typeId = 225;
+
+  @override
+  DeviceUseStatement read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return DeviceUseStatement(
+      fields[15] as Reference,
+      fields[24] as Reference,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      basedOn: (fields[12] as List)?.cast<Reference>(),
+      status: fields[13] as String,
+      elementStatus: fields[14] as Element,
+      derivedFrom: (fields[16] as List)?.cast<Reference>(),
+      timingTiming: fields[17] as Timing,
+      timingPeriod: fields[18] as Period,
+      timingDateTime: fields[19] as String,
+      elementTimingDateTime: fields[20] as Element,
+      recordedOn: fields[21] as DateTime,
+      elementRecordedOn: fields[22] as Element,
+      source: fields[23] as Reference,
+      reasonCode: (fields[25] as List)?.cast<CodeableConcept>(),
+      reasonReference: (fields[26] as List)?.cast<Reference>(),
+      bodySite: fields[27] as CodeableConcept,
+      note: (fields[28] as List)?.cast<Annotation>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, DeviceUseStatement obj) {
+    writer
+      ..writeByte(29)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.basedOn)
+      ..writeByte(13)
+      ..write(obj.status)
+      ..writeByte(14)
+      ..write(obj.elementStatus)
+      ..writeByte(15)
+      ..write(obj.subject)
+      ..writeByte(16)
+      ..write(obj.derivedFrom)
+      ..writeByte(17)
+      ..write(obj.timingTiming)
+      ..writeByte(18)
+      ..write(obj.timingPeriod)
+      ..writeByte(19)
+      ..write(obj.timingDateTime)
+      ..writeByte(20)
+      ..write(obj.elementTimingDateTime)
+      ..writeByte(21)
+      ..write(obj.recordedOn)
+      ..writeByte(22)
+      ..write(obj.elementRecordedOn)
+      ..writeByte(23)
+      ..write(obj.source)
+      ..writeByte(24)
+      ..write(obj.device)
+      ..writeByte(25)
+      ..write(obj.reasonCode)
+      ..writeByte(26)
+      ..write(obj.reasonReference)
+      ..writeByte(27)
+      ..write(obj.bodySite)
+      ..writeByte(28)
+      ..write(obj.note);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

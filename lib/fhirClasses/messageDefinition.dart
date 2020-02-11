@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/fhirClasses/coding.dart';
@@ -12,56 +13,276 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 427)
 class MessageDefinition {
+
+  //  This is a MessageDefinition resource
+  @HiveField(0)
   final String resourceType= 'MessageDefinition';
+
+  //  The logical id of the resource, as used in the URL for the resource.
+  // Once assigned, this value never changes.
+  @HiveField(1)
   String id;
+
+  //  The metadata about the resource. This is content that is maintained by
+  // the infrastructure. Changes to the content might not always be
+  // associated with version changes to the resource.
+  @HiveField(2)
   Meta meta;
+
+  //  A reference to a set of rules that were followed when the resource was
+  // constructed, and which must be understood when processing the content.
+  // Often, this is a reference to an implementation guide that defines the
+  // special rules along with other profiles etc.
+  @HiveField(3)
   String implicitRules;
+
+  //  Extensions for implicitRules
+  @HiveField(4)
   Element elementImplicitRules;
+
+  //  The base language in which the resource is written.
+  @HiveField(5)
   String language;
+
+  //  Extensions for language
+  @HiveField(6)
   Element elementLanguage;
+
+  //  A human-readable narrative that contains a summary of the resource and
+  // can be used to represent the content of the resource to a human. The
+  // narrative need not encode all the structured data, but is required to
+  // contain sufficient detail to make it "clinically safe" for a human to
+  // just read the narrative. Resource definitions may define what content
+  // should be represented in the narrative to ensure clinical safety.
+  @HiveField(7)
   Narrative text;
+
+  //  These resources do not have an independent existence apart from the
+  // resource that contains them - they cannot be identified independently,
+  // and nor can they have their own independent transaction scope.
+  @HiveField(8)
   List<dynamic> contained;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource. To make the use of extensions
+  // safe and manageable, there is a strict set of governance  applied to
+  // the definition and use of extensions. Though any implementer can define
+  // an extension, there is a set of requirements that SHALL be met as part
+  // of the definition of the extension.
+  @HiveField(9)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource and that modifies the
+  // understanding of the element that contains it and/or the understanding
+  // of the containing element's descendants. Usually modifier elements
+  // provide negation or qualification. To make the use of extensions safe
+  // and manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer is allowed to
+  // define an extension, there is a set of requirements that SHALL be met
+  // as part of the definition of the extension. Applications processing a
+  // resource are required to check for modifier extensions. Modifier
+  // extensions SHALL NOT change the meaning of any elements on Resource or
+  // DomainResource (including cannot change the meaning of
+  // modifierExtension itself).
+  @HiveField(10)
   List<Extension> modifierExtension;
+
+  //  The business identifier that is used to reference the
+  // MessageDefinition and *is* expected to be consistent from server to
+  // server.
+  @HiveField(11)
   String url;
+
+  //  Extensions for url
+  @HiveField(12)
   Element elementUrl;
+
+  //  A formal identifier that is used to identify this message definition
+  // when it is represented in other formats, or referenced in a
+  // specification, model, design or an instance.
+  @HiveField(13)
   List<Identifier> identifier;
+
+  //  The identifier that is used to identify this version of the message
+  // definition when it is referenced in a specification, model, design or
+  // instance. This is an arbitrary value managed by the message definition
+  // author and is not expected to be globally unique. For example, it might
+  // be a timestamp (e.g. yyyymmdd) if a managed version is not available.
+  // There is also no expectation that versions can be placed in a
+  // lexicographical sequence.
+  @HiveField(14)
   String version;
+
+  //  Extensions for version
+  @HiveField(15)
   Element elementVersion;
+
+  //  A natural language name identifying the message definition. This name
+  // should be usable as an identifier for the module by machine processing
+  // applications such as code generation.
+  @HiveField(16)
   String name;
+
+  //  Extensions for name
+  @HiveField(17)
   Element elementName;
+
+  //  A short, descriptive, user-friendly title for the message definition.
+  @HiveField(18)
   String title;
+
+  //  Extensions for title
+  @HiveField(19)
   Element elementTitle;
+
+  //  A MessageDefinition that is superseded by this definition.
+  @HiveField(20)
   List<String> replaces;
+
+  //  The status of this message definition. Enables tracking the life-cycle
+  // of the content.
+  @HiveField(21)
   String status; // <code> enum: draft/active/retired/unknown;
+
+  //  Extensions for status
+  @HiveField(22)
   Element elementStatus;
+
+  //  A Boolean value to indicate that this message definition is authored
+  // for testing purposes (or education/evaluation/marketing) and is not
+  // intended to be used for genuine usage.
+  @HiveField(23)
   bool experimental;
+
+  //  Extensions for experimental
+  @HiveField(24)
   Element elementExperimental;
+
+  //  The date  (and optionally time) when the message definition was
+  // published. The date must change when the business version changes and
+  // it must change if the status code changes. In addition, it should
+  // change when the substantive content of the message definition changes.
+  @HiveField(25)
   DateTime date;
+
+  //  Extensions for date
+  @HiveField(26)
   Element elementDate;
+
+  //  The name of the organization or individual that published the message
+  // definition.
+  @HiveField(27)
   String publisher;
+
+  //  Extensions for publisher
+  @HiveField(28)
   Element elementPublisher;
+
+  //  Contact details to assist a user in finding and communicating with the
+  // publisher.
+  @HiveField(29)
   List<ContactDetail> contact;
+
+  //  A free text natural language description of the message definition
+  // from a consumer's perspective.
+  @HiveField(30)
   String description;
+
+  //  Extensions for description
+  @HiveField(31)
   Element elementDescription;
+
+  //  The content was developed with a focus and intent of supporting the
+  // contexts that are listed. These contexts may be general categories
+  // (gender, age, ...) or may be references to specific programs (insurance
+  // plans, studies, ...) and may be used to assist with indexing and
+  // searching for appropriate message definition instances.
+  @HiveField(32)
   List<UsageContext> useContext;
+
+  //  A legal or geographic region in which the message definition is
+  // intended to be used.
+  @HiveField(33)
   List<CodeableConcept> jurisdiction;
+
+  //  Explanation of why this message definition is needed and why it has
+  // been designed as it has.
+  @HiveField(34)
   String purpose;
+
+  //  Extensions for purpose
+  @HiveField(35)
   Element elementPurpose;
+
+  //  A copyright statement relating to the message definition and/or its
+  // contents. Copyright statements are generally legal restrictions on the
+  // use and publishing of the message definition.
+  @HiveField(36)
   String copyright;
+
+  //  Extensions for copyright
+  @HiveField(37)
   Element elementCopyright;
+
+  //  The MessageDefinition that is the basis for the contents of this
+  // resource.
+  @HiveField(38)
   String base;
+
+  //  Identifies a protocol or workflow that this MessageDefinition
+  // represents a step in.
+  @HiveField(39)
   List<String> parent;
+
+  //  Event code or link to the EventDefinition.
+  @HiveField(40)
   Coding eventCoding;
+
+  //  Event code or link to the EventDefinition.
+  @HiveField(41)
   String eventUri; //  pattern: ^\S*$
+
+  //  Extensions for eventUri
+  @HiveField(42)
   Element elementEventUri;
+
+  //  The impact of the content of the message.
+  @HiveField(43)
   String category; // <code> enum: consequence/currency/notification;
+
+  //  Extensions for category
+  @HiveField(44)
   Element elementCategory;
+
+  //  Identifies the resource (or resources) that are being addressed by the
+  // event.  For example, the Encounter for an admit message or two Account
+  // records for a merge.
+  @HiveField(45)
   List<MessageDefinition_Focus> focus;
+
+  //  Declare at a message definition level whether a response is required
+  // or only upon error or success, or never.
+  @HiveField(46)
   String responseRequired; // <code> enum: always/on-error/never/on-success;
+
+  //  Extensions for responseRequired
+  @HiveField(47)
   Element elementResponseRequired;
+
+  //  Indicates what types of messages may be sent as an application-level
+  // response to this message.
+  @HiveField(48)
   List<MessageDefinition_AllowedResponse> allowedResponse;
+
+  //  Canonical reference to a GraphDefinition. If a URL is provided, it is
+  // the canonical reference to a [[[GraphDefinition]]] that it controls
+  // what resources are to be added to the bundle when building the
+  // document. The GraphDefinition can also specify profiles that apply to
+  // the various resources.
+  @HiveField(49)
   List<String> graph;
 
 MessageDefinition(
@@ -121,16 +342,69 @@ MessageDefinition(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 428)
 class MessageDefinition_Focus {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The kind of resource that must be the focus for this message.
+  @HiveField(3)
   String code;
+
+  //  Extensions for code
+  @HiveField(4)
   Element elementCode;
+
+  //  A profile that reflects constraints for the focal resource (and
+  // potentially for related resources).
+  @HiveField(5)
   String profile;
+
+  //  Identifies the minimum number of resources of this type that must be
+  // pointed to by a message in order for it to be valid against this
+  // MessageDefinition.
+  @HiveField(6)
   int min;
+
+  //  Extensions for min
+  @HiveField(7)
   Element elementMin;
+
+  //  Identifies the maximum number of resources of this type that must be
+  // pointed to by a message in order for it to be valid against this
+  // MessageDefinition.
+  @HiveField(8)
   String max;
+
+  //  Extensions for max
+  @HiveField(9)
   Element elementMax;
 
 MessageDefinition_Focus(
@@ -151,12 +425,50 @@ MessageDefinition_Focus(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 429)
 class MessageDefinition_AllowedResponse {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  A reference to the message definition that must be adhered to by this
+  // supported response.
+  @HiveField(3)
   String message;
+
+  //  Provides a description of the circumstances in which this response
+  // should be used (as opposed to one of the alternative responses).
+  @HiveField(4)
   String situation;
+
+  //  Extensions for situation
+  @HiveField(5)
   Element elementSituation;
 
 MessageDefinition_AllowedResponse(
@@ -174,6 +486,273 @@ MessageDefinition_AllowedResponse(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class MessageDefinitionAdapter extends TypeAdapter<MessageDefinition> {
+  @override
+  final typeId = 427;
+
+  @override
+  MessageDefinition read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MessageDefinition(
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      url: fields[11] as String,
+      elementUrl: fields[12] as Element,
+      identifier: (fields[13] as List)?.cast<Identifier>(),
+      version: fields[14] as String,
+      elementVersion: fields[15] as Element,
+      name: fields[16] as String,
+      elementName: fields[17] as Element,
+      title: fields[18] as String,
+      elementTitle: fields[19] as Element,
+      replaces: (fields[20] as List)?.cast<String>(),
+      status: fields[21] as String,
+      elementStatus: fields[22] as Element,
+      experimental: fields[23] as bool,
+      elementExperimental: fields[24] as Element,
+      date: fields[25] as DateTime,
+      elementDate: fields[26] as Element,
+      publisher: fields[27] as String,
+      elementPublisher: fields[28] as Element,
+      contact: (fields[29] as List)?.cast<ContactDetail>(),
+      description: fields[30] as String,
+      elementDescription: fields[31] as Element,
+      useContext: (fields[32] as List)?.cast<UsageContext>(),
+      jurisdiction: (fields[33] as List)?.cast<CodeableConcept>(),
+      purpose: fields[34] as String,
+      elementPurpose: fields[35] as Element,
+      copyright: fields[36] as String,
+      elementCopyright: fields[37] as Element,
+      base: fields[38] as String,
+      parent: (fields[39] as List)?.cast<String>(),
+      eventCoding: fields[40] as Coding,
+      eventUri: fields[41] as String,
+      elementEventUri: fields[42] as Element,
+      category: fields[43] as String,
+      elementCategory: fields[44] as Element,
+      focus: (fields[45] as List)?.cast<MessageDefinition_Focus>(),
+      responseRequired: fields[46] as String,
+      elementResponseRequired: fields[47] as Element,
+      allowedResponse:
+          (fields[48] as List)?.cast<MessageDefinition_AllowedResponse>(),
+      graph: (fields[49] as List)?.cast<String>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MessageDefinition obj) {
+    writer
+      ..writeByte(50)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.url)
+      ..writeByte(12)
+      ..write(obj.elementUrl)
+      ..writeByte(13)
+      ..write(obj.identifier)
+      ..writeByte(14)
+      ..write(obj.version)
+      ..writeByte(15)
+      ..write(obj.elementVersion)
+      ..writeByte(16)
+      ..write(obj.name)
+      ..writeByte(17)
+      ..write(obj.elementName)
+      ..writeByte(18)
+      ..write(obj.title)
+      ..writeByte(19)
+      ..write(obj.elementTitle)
+      ..writeByte(20)
+      ..write(obj.replaces)
+      ..writeByte(21)
+      ..write(obj.status)
+      ..writeByte(22)
+      ..write(obj.elementStatus)
+      ..writeByte(23)
+      ..write(obj.experimental)
+      ..writeByte(24)
+      ..write(obj.elementExperimental)
+      ..writeByte(25)
+      ..write(obj.date)
+      ..writeByte(26)
+      ..write(obj.elementDate)
+      ..writeByte(27)
+      ..write(obj.publisher)
+      ..writeByte(28)
+      ..write(obj.elementPublisher)
+      ..writeByte(29)
+      ..write(obj.contact)
+      ..writeByte(30)
+      ..write(obj.description)
+      ..writeByte(31)
+      ..write(obj.elementDescription)
+      ..writeByte(32)
+      ..write(obj.useContext)
+      ..writeByte(33)
+      ..write(obj.jurisdiction)
+      ..writeByte(34)
+      ..write(obj.purpose)
+      ..writeByte(35)
+      ..write(obj.elementPurpose)
+      ..writeByte(36)
+      ..write(obj.copyright)
+      ..writeByte(37)
+      ..write(obj.elementCopyright)
+      ..writeByte(38)
+      ..write(obj.base)
+      ..writeByte(39)
+      ..write(obj.parent)
+      ..writeByte(40)
+      ..write(obj.eventCoding)
+      ..writeByte(41)
+      ..write(obj.eventUri)
+      ..writeByte(42)
+      ..write(obj.elementEventUri)
+      ..writeByte(43)
+      ..write(obj.category)
+      ..writeByte(44)
+      ..write(obj.elementCategory)
+      ..writeByte(45)
+      ..write(obj.focus)
+      ..writeByte(46)
+      ..write(obj.responseRequired)
+      ..writeByte(47)
+      ..write(obj.elementResponseRequired)
+      ..writeByte(48)
+      ..write(obj.allowedResponse)
+      ..writeByte(49)
+      ..write(obj.graph);
+  }
+}
+
+class MessageDefinition_FocusAdapter
+    extends TypeAdapter<MessageDefinition_Focus> {
+  @override
+  final typeId = 428;
+
+  @override
+  MessageDefinition_Focus read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MessageDefinition_Focus(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      code: fields[3] as String,
+      elementCode: fields[4] as Element,
+      profile: fields[5] as String,
+      min: fields[6] as int,
+      elementMin: fields[7] as Element,
+      max: fields[8] as String,
+      elementMax: fields[9] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MessageDefinition_Focus obj) {
+    writer
+      ..writeByte(10)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code)
+      ..writeByte(4)
+      ..write(obj.elementCode)
+      ..writeByte(5)
+      ..write(obj.profile)
+      ..writeByte(6)
+      ..write(obj.min)
+      ..writeByte(7)
+      ..write(obj.elementMin)
+      ..writeByte(8)
+      ..write(obj.max)
+      ..writeByte(9)
+      ..write(obj.elementMax);
+  }
+}
+
+class MessageDefinition_AllowedResponseAdapter
+    extends TypeAdapter<MessageDefinition_AllowedResponse> {
+  @override
+  final typeId = 429;
+
+  @override
+  MessageDefinition_AllowedResponse read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MessageDefinition_AllowedResponse(
+      fields[3] as String,
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      situation: fields[4] as String,
+      elementSituation: fields[5] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MessageDefinition_AllowedResponse obj) {
+    writer
+      ..writeByte(6)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.message)
+      ..writeByte(4)
+      ..write(obj.situation)
+      ..writeByte(5)
+      ..write(obj.elementSituation);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

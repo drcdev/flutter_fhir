@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -13,32 +14,150 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 297)
 class Group {
+
+  //  This is a Group resource
+  @HiveField(0)
   final String resourceType= 'Group';
+
+  //  The logical id of the resource, as used in the URL for the resource.
+  // Once assigned, this value never changes.
+  @HiveField(1)
   String id;
+
+  //  The metadata about the resource. This is content that is maintained by
+  // the infrastructure. Changes to the content might not always be
+  // associated with version changes to the resource.
+  @HiveField(2)
   Meta meta;
+
+  //  A reference to a set of rules that were followed when the resource was
+  // constructed, and which must be understood when processing the content.
+  // Often, this is a reference to an implementation guide that defines the
+  // special rules along with other profiles etc.
+  @HiveField(3)
   String implicitRules;
+
+  //  Extensions for implicitRules
+  @HiveField(4)
   Element elementImplicitRules;
+
+  //  The base language in which the resource is written.
+  @HiveField(5)
   String language;
+
+  //  Extensions for language
+  @HiveField(6)
   Element elementLanguage;
+
+  //  A human-readable narrative that contains a summary of the resource and
+  // can be used to represent the content of the resource to a human. The
+  // narrative need not encode all the structured data, but is required to
+  // contain sufficient detail to make it "clinically safe" for a human to
+  // just read the narrative. Resource definitions may define what content
+  // should be represented in the narrative to ensure clinical safety.
+  @HiveField(7)
   Narrative text;
+
+  //  These resources do not have an independent existence apart from the
+  // resource that contains them - they cannot be identified independently,
+  // and nor can they have their own independent transaction scope.
+  @HiveField(8)
   List<dynamic> contained;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource. To make the use of extensions
+  // safe and manageable, there is a strict set of governance  applied to
+  // the definition and use of extensions. Though any implementer can define
+  // an extension, there is a set of requirements that SHALL be met as part
+  // of the definition of the extension.
+  @HiveField(9)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource and that modifies the
+  // understanding of the element that contains it and/or the understanding
+  // of the containing element's descendants. Usually modifier elements
+  // provide negation or qualification. To make the use of extensions safe
+  // and manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer is allowed to
+  // define an extension, there is a set of requirements that SHALL be met
+  // as part of the definition of the extension. Applications processing a
+  // resource are required to check for modifier extensions. Modifier
+  // extensions SHALL NOT change the meaning of any elements on Resource or
+  // DomainResource (including cannot change the meaning of
+  // modifierExtension itself).
+  @HiveField(10)
   List<Extension> modifierExtension;
+
+  //  A unique business identifier for this group.
+  @HiveField(11)
   List<Identifier> identifier;
+
+  //  Indicates whether the record for the group is available for use or is
+  // merely being retained for historical purposes.
+  @HiveField(12)
   bool active;
+
+  //  Extensions for active
+  @HiveField(13)
   Element elementActive;
+
+  //  Identifies the broad classification of the kind of resources the group
+  // includes.
+  @HiveField(14)
   String type; // <code> enum: person/animal/practitioner/device/medication/substance;
+
+  //  Extensions for type
+  @HiveField(15)
   Element elementType;
+
+  //  If true, indicates that the resource refers to a specific group of
+  // real individuals.  If false, the group defines a set of intended
+  // individuals.
+  @HiveField(16)
   bool actual;
+
+  //  Extensions for actual
+  @HiveField(17)
   Element elementActual;
+
+  //  Provides a specific type of resource the group includes; e.g. "cow",
+  // "syringe", etc.
+  @HiveField(18)
   CodeableConcept code;
+
+  //  A label assigned to the group for human identification and
+  // communication.
+  @HiveField(19)
   String name;
+
+  //  Extensions for name
+  @HiveField(20)
   Element elementName;
+
+  //  A count of the number of resource instances that are part of the
+  // group.
+  @HiveField(21)
   int quantity;
+
+  //  Extensions for quantity
+  @HiveField(22)
   Element elementQuantity;
+
+  //  Entity responsible for defining and maintaining Group characteristics
+  // and/or registered members.
+  @HiveField(23)
   Reference managingEntity;
+
+  //  Identifies traits whose presence r absence is shared by members of the
+  // group.
+  @HiveField(24)
   List<Group_Characteristic> characteristic;
+
+  //  Identifies the resource instances that are members of the group.
+  @HiveField(25)
   List<Group_Member> member;
 
 Group(
@@ -74,19 +193,83 @@ Group(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 298)
 class Group_Characteristic {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  A code that identifies the kind of trait being asserted.
+  @HiveField(3)
   CodeableConcept code;
+
+  //  The value of the trait that holds (or does not hold - see 'exclude')
+  // for members of the group.
+  @HiveField(4)
   CodeableConcept valueCodeableConcept;
+
+  //  The value of the trait that holds (or does not hold - see 'exclude')
+  // for members of the group.
+  @HiveField(5)
   bool valueBoolean; //  pattern: ^true|false$
+
+  //  Extensions for valueBoolean
+  @HiveField(6)
   Element elementValueBoolean;
+
+  //  The value of the trait that holds (or does not hold - see 'exclude')
+  // for members of the group.
+  @HiveField(7)
   Quantity valueQuantity;
+
+  //  The value of the trait that holds (or does not hold - see 'exclude')
+  // for members of the group.
+  @HiveField(8)
   Range valueRange;
+
+  //  The value of the trait that holds (or does not hold - see 'exclude')
+  // for members of the group.
+  @HiveField(9)
   Reference valueReference;
+
+  //  If true, indicates the characteristic is one that is NOT held by
+  // members of the group.
+  @HiveField(10)
   bool exclude;
+
+  //  Extensions for exclude
+  @HiveField(11)
   Element elementExclude;
+
+  //  The period over which the characteristic is tested; e.g. the patient
+  // had an operation during the month of June.
+  @HiveField(12)
   Period period;
 
 Group_Characteristic(
@@ -110,13 +293,55 @@ Group_Characteristic(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 299)
 class Group_Member {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  A reference to the entity that is a member of the group. Must be
+  // consistent with Group.type. If the entity is another group, then the
+  // type must be the same.
+  @HiveField(3)
   Reference entity;
+
+  //  The period that the member was in the group, if known.
+  @HiveField(4)
   Period period;
+
+  //  A flag to indicate that the member is no longer in the group, but
+  // previously may have been a member.
+  @HiveField(5)
   bool inactive;
+
+  //  Extensions for inactive
+  @HiveField(6)
   Element elementInactive;
 
 Group_Member(
@@ -135,6 +360,210 @@ Group_Member(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class GroupAdapter extends TypeAdapter<Group> {
+  @override
+  final typeId = 297;
+
+  @override
+  Group read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Group(
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      active: fields[12] as bool,
+      elementActive: fields[13] as Element,
+      type: fields[14] as String,
+      elementType: fields[15] as Element,
+      actual: fields[16] as bool,
+      elementActual: fields[17] as Element,
+      code: fields[18] as CodeableConcept,
+      name: fields[19] as String,
+      elementName: fields[20] as Element,
+      quantity: fields[21] as int,
+      elementQuantity: fields[22] as Element,
+      managingEntity: fields[23] as Reference,
+      characteristic: (fields[24] as List)?.cast<Group_Characteristic>(),
+      member: (fields[25] as List)?.cast<Group_Member>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Group obj) {
+    writer
+      ..writeByte(26)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.active)
+      ..writeByte(13)
+      ..write(obj.elementActive)
+      ..writeByte(14)
+      ..write(obj.type)
+      ..writeByte(15)
+      ..write(obj.elementType)
+      ..writeByte(16)
+      ..write(obj.actual)
+      ..writeByte(17)
+      ..write(obj.elementActual)
+      ..writeByte(18)
+      ..write(obj.code)
+      ..writeByte(19)
+      ..write(obj.name)
+      ..writeByte(20)
+      ..write(obj.elementName)
+      ..writeByte(21)
+      ..write(obj.quantity)
+      ..writeByte(22)
+      ..write(obj.elementQuantity)
+      ..writeByte(23)
+      ..write(obj.managingEntity)
+      ..writeByte(24)
+      ..write(obj.characteristic)
+      ..writeByte(25)
+      ..write(obj.member);
+  }
+}
+
+class Group_CharacteristicAdapter extends TypeAdapter<Group_Characteristic> {
+  @override
+  final typeId = 298;
+
+  @override
+  Group_Characteristic read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Group_Characteristic(
+      fields[3] as CodeableConcept,
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      valueCodeableConcept: fields[4] as CodeableConcept,
+      valueBoolean: fields[5] as bool,
+      elementValueBoolean: fields[6] as Element,
+      valueQuantity: fields[7] as Quantity,
+      valueRange: fields[8] as Range,
+      valueReference: fields[9] as Reference,
+      exclude: fields[10] as bool,
+      elementExclude: fields[11] as Element,
+      period: fields[12] as Period,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Group_Characteristic obj) {
+    writer
+      ..writeByte(13)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code)
+      ..writeByte(4)
+      ..write(obj.valueCodeableConcept)
+      ..writeByte(5)
+      ..write(obj.valueBoolean)
+      ..writeByte(6)
+      ..write(obj.elementValueBoolean)
+      ..writeByte(7)
+      ..write(obj.valueQuantity)
+      ..writeByte(8)
+      ..write(obj.valueRange)
+      ..writeByte(9)
+      ..write(obj.valueReference)
+      ..writeByte(10)
+      ..write(obj.exclude)
+      ..writeByte(11)
+      ..write(obj.elementExclude)
+      ..writeByte(12)
+      ..write(obj.period);
+  }
+}
+
+class Group_MemberAdapter extends TypeAdapter<Group_Member> {
+  @override
+  final typeId = 299;
+
+  @override
+  Group_Member read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Group_Member(
+      fields[3] as Reference,
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      period: fields[4] as Period,
+      inactive: fields[5] as bool,
+      elementInactive: fields[6] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Group_Member obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.entity)
+      ..writeByte(4)
+      ..write(obj.period)
+      ..writeByte(5)
+      ..write(obj.inactive)
+      ..writeByte(6)
+      ..write(obj.elementInactive);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

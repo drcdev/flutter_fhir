@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/fhirClasses/coding.dart';
@@ -12,60 +13,300 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 143)
 class CodeSystem {
+
+  //  This is a CodeSystem resource
+  @HiveField(0)
   final String resourceType= 'CodeSystem';
+
+  //  The logical id of the resource, as used in the URL for the resource.
+  // Once assigned, this value never changes.
+  @HiveField(1)
   String id;
+
+  //  The metadata about the resource. This is content that is maintained by
+  // the infrastructure. Changes to the content might not always be
+  // associated with version changes to the resource.
+  @HiveField(2)
   Meta meta;
+
+  //  A reference to a set of rules that were followed when the resource was
+  // constructed, and which must be understood when processing the content.
+  // Often, this is a reference to an implementation guide that defines the
+  // special rules along with other profiles etc.
+  @HiveField(3)
   String implicitRules;
+
+  //  Extensions for implicitRules
+  @HiveField(4)
   Element elementImplicitRules;
+
+  //  The base language in which the resource is written.
+  @HiveField(5)
   String language;
+
+  //  Extensions for language
+  @HiveField(6)
   Element elementLanguage;
+
+  //  A human-readable narrative that contains a summary of the resource and
+  // can be used to represent the content of the resource to a human. The
+  // narrative need not encode all the structured data, but is required to
+  // contain sufficient detail to make it "clinically safe" for a human to
+  // just read the narrative. Resource definitions may define what content
+  // should be represented in the narrative to ensure clinical safety.
+  @HiveField(7)
   Narrative text;
+
+  //  These resources do not have an independent existence apart from the
+  // resource that contains them - they cannot be identified independently,
+  // and nor can they have their own independent transaction scope.
+  @HiveField(8)
   List<dynamic> contained;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource. To make the use of extensions
+  // safe and manageable, there is a strict set of governance  applied to
+  // the definition and use of extensions. Though any implementer can define
+  // an extension, there is a set of requirements that SHALL be met as part
+  // of the definition of the extension.
+  @HiveField(9)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource and that modifies the
+  // understanding of the element that contains it and/or the understanding
+  // of the containing element's descendants. Usually modifier elements
+  // provide negation or qualification. To make the use of extensions safe
+  // and manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer is allowed to
+  // define an extension, there is a set of requirements that SHALL be met
+  // as part of the definition of the extension. Applications processing a
+  // resource are required to check for modifier extensions. Modifier
+  // extensions SHALL NOT change the meaning of any elements on Resource or
+  // DomainResource (including cannot change the meaning of
+  // modifierExtension itself).
+  @HiveField(10)
   List<Extension> modifierExtension;
+
+  //  An absolute URI that is used to identify this code system when it is
+  // referenced in a specification, model, design or an instance; also
+  // called its canonical identifier. This SHOULD be globally unique and
+  // SHOULD be a literal address at which at which an authoritative instance
+  // of this code system is (or will be) published. This URL can be the
+  // target of a canonical reference. It SHALL remain the same when the code
+  // system is stored on different servers. This is used in
+  // [Coding](datatypes.html#Coding).system.
+  @HiveField(11)
   String url;
+
+  //  Extensions for url
+  @HiveField(12)
   Element elementUrl;
+
+  //  A formal identifier that is used to identify this code system when it
+  // is represented in other formats, or referenced in a specification,
+  // model, design or an instance.
+  @HiveField(13)
   List<Identifier> identifier;
+
+  //  The identifier that is used to identify this version of the code
+  // system when it is referenced in a specification, model, design or
+  // instance. This is an arbitrary value managed by the code system author
+  // and is not expected to be globally unique. For example, it might be a
+  // timestamp (e.g. yyyymmdd) if a managed version is not available. There
+  // is also no expectation that versions can be placed in a lexicographical
+  // sequence. This is used in [Coding](datatypes.html#Coding).version.
+  @HiveField(14)
   String version;
+
+  //  Extensions for version
+  @HiveField(15)
   Element elementVersion;
+
+  //  A natural language name identifying the code system. This name should
+  // be usable as an identifier for the module by machine processing
+  // applications such as code generation.
+  @HiveField(16)
   String name;
+
+  //  Extensions for name
+  @HiveField(17)
   Element elementName;
+
+  //  A short, descriptive, user-friendly title for the code system.
+  @HiveField(18)
   String title;
+
+  //  Extensions for title
+  @HiveField(19)
   Element elementTitle;
+
+  //  The date (and optionally time) when the code system resource was
+  // created or revised.
+  @HiveField(20)
   String status; // <code> enum: draft/active/retired/unknown;
+
+  //  Extensions for status
+  @HiveField(21)
   Element elementStatus;
+
+  //  A Boolean value to indicate that this code system is authored for
+  // testing purposes (or education/evaluation/marketing) and is not
+  // intended to be used for genuine usage.
+  @HiveField(22)
   bool experimental;
+
+  //  Extensions for experimental
+  @HiveField(23)
   Element elementExperimental;
+
+  //  The date  (and optionally time) when the code system was published.
+  // The date must change when the business version changes and it must
+  // change if the status code changes. In addition, it should change when
+  // the substantive content of the code system changes.
+  @HiveField(24)
   DateTime date;
+
+  //  Extensions for date
+  @HiveField(25)
   Element elementDate;
+
+  //  The name of the organization or individual that published the code
+  // system.
+  @HiveField(26)
   String publisher;
+
+  //  Extensions for publisher
+  @HiveField(27)
   Element elementPublisher;
+
+  //  Contact details to assist a user in finding and communicating with the
+  // publisher.
+  @HiveField(28)
   List<ContactDetail> contact;
+
+  //  A free text natural language description of the code system from a
+  // consumer's perspective.
+  @HiveField(29)
   String description;
+
+  //  Extensions for description
+  @HiveField(30)
   Element elementDescription;
+
+  //  The content was developed with a focus and intent of supporting the
+  // contexts that are listed. These contexts may be general categories
+  // (gender, age, ...) or may be references to specific programs (insurance
+  // plans, studies, ...) and may be used to assist with indexing and
+  // searching for appropriate code system instances.
+  @HiveField(31)
   List<UsageContext> useContext;
+
+  //  A legal or geographic region in which the code system is intended to
+  // be used.
+  @HiveField(32)
   List<CodeableConcept> jurisdiction;
+
+  //  Explanation of why this code system is needed and why it has been
+  // designed as it has.
+  @HiveField(33)
   String purpose;
+
+  //  Extensions for purpose
+  @HiveField(34)
   Element elementPurpose;
+
+  //  A copyright statement relating to the code system and/or its contents.
+  // Copyright statements are generally legal restrictions on the use and
+  // publishing of the code system.
+  @HiveField(35)
   String copyright;
+
+  //  Extensions for copyright
+  @HiveField(36)
   Element elementCopyright;
+
+  //  If code comparison is case sensitive when codes within this system are
+  // compared to each other.
+  @HiveField(37)
   bool caseSensitive;
+
+  //  Extensions for caseSensitive
+  @HiveField(38)
   Element elementCaseSensitive;
+
+  //  Canonical reference to the value set that contains the entire code
+  // system.
+  @HiveField(39)
   String valueSet;
+
+  //  The meaning of the hierarchy of concepts as represented in this
+  // resource.
+  @HiveField(40)
   String hierarchyMeaning; // <code> enum: grouped-by/is-a/part-of/classified-with;
+
+  //  Extensions for hierarchyMeaning
+  @HiveField(41)
   Element elementHierarchyMeaning;
+
+  //  The code system defines a compositional (post-coordination) grammar.
+  @HiveField(42)
   bool compositional;
+
+  //  Extensions for compositional
+  @HiveField(43)
   Element elementCompositional;
+
+  //  This flag is used to signify that the code system does not commit to
+  // concept permanence across versions. If true, a version must be
+  // specified when referencing this code system.
+  @HiveField(44)
   bool versionNeeded;
+
+  //  Extensions for versionNeeded
+  @HiveField(45)
   Element elementVersionNeeded;
+
+  //  The extent of the content of the code system (the concepts and codes
+  // it defines) are represented in this resource instance.
+  @HiveField(46)
   String content; // <code> enum: not-present/example/fragment/complete/supplement;
+
+  //  Extensions for content
+  @HiveField(47)
   Element elementContent;
+
+  //  The canonical URL of the code system that this code system supplement
+  // is adding designations and properties to.
+  @HiveField(48)
   String supplements;
+
+  //  The total number of concepts defined by the code system. Where the
+  // code system has a compositional grammar, the basis of this count is
+  // defined by the system steward.
+  @HiveField(49)
   int count;
+
+  //  Extensions for count
+  @HiveField(50)
   Element elementCount;
+
+  //  A filter that can be used in a value set compose statement when
+  // selecting concepts using a filter.
+  @HiveField(51)
   List<CodeSystem_Filter> filter;
+
+  //  A property defines an additional slot through which additional
+  // information can be provided about a concept.
+  @HiveField(52)
   List<CodeSystem_Property> property;
+
+  //  Concepts that are in the code system. The concept definitions are
+  // inherently hierarchical, but the definitions must be consulted to
+  // determine what the meanings of the hierarchical relationships are.
+  @HiveField(53)
   List<CodeSystem_Concept> concept;
 
 CodeSystem(
@@ -129,17 +370,69 @@ CodeSystem(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 144)
 class CodeSystem_Filter {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The code that identifies this filter when it is used as a filter in
+  // [[[ValueSet]]].compose.include.filter.
+  @HiveField(3)
   String code;
+
+  //  Extensions for code
+  @HiveField(4)
   Element elementCode;
+
+  //  A description of how or why the filter is used.
+  @HiveField(5)
   String description;
+
+  //  Extensions for description
+  @HiveField(6)
   Element elementDescription;
+
+  //  A list of operators that can be used with the filter.
+  @HiveField(7)
   List<String> operator;
+
+  //  Extensions for operator
+  @HiveField(8)
   List<Element> elementOperator;
+
+  //  A description of what the value for the filter should be.
+  @HiveField(9)
   String value;
+
+  //  Extensions for value
+  @HiveField(10)
   Element elementValue;
 
 CodeSystem_Filter(
@@ -161,17 +454,75 @@ CodeSystem_Filter(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 145)
 class CodeSystem_Property {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  A code that is used to identify the property. The code is used
+  // internally (in CodeSystem.concept.property.code) and also externally,
+  // such as in property filters.
+  @HiveField(3)
   String code;
+
+  //  Extensions for code
+  @HiveField(4)
   Element elementCode;
+
+  //  Reference to the formal meaning of the property. One possible source
+  // of meaning is the [Concept
+  // Properties](codesystem-concept-properties.html) code system.
+  @HiveField(5)
   String uri;
+
+  //  Extensions for uri
+  @HiveField(6)
   Element elementUri;
+
+  //  A description of the property- why it is defined, and how its value
+  // might be used.
+  @HiveField(7)
   String description;
+
+  //  Extensions for description
+  @HiveField(8)
   Element elementDescription;
+
+  //  The type of the property value. Properties of type "code" contain a
+  // code defined by the code system (e.g. a reference to another defined
+  // concept).
+  @HiveField(9)
   String type; // <code> enum: code/Coding/string/integer/boolean/dateTime/decimal;
+
+  //  Extensions for type
+  @HiveField(10)
   Element elementType;
 
 CodeSystem_Property(
@@ -193,18 +544,80 @@ CodeSystem_Property(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 146)
 class CodeSystem_Concept {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  A code - a text symbol - that uniquely identifies the concept within
+  // the code system.
+  @HiveField(3)
   String code;
+
+  //  Extensions for code
+  @HiveField(4)
   Element elementCode;
+
+  //  A human readable string that is the recommended default way to present
+  // this concept to a user.
+  @HiveField(5)
   String display;
+
+  //  Extensions for display
+  @HiveField(6)
   Element elementDisplay;
+
+  //  The formal definition of the concept. The code system resource does
+  // not make formal definitions required, because of the prevalence of
+  // legacy systems. However, they are highly recommended, as without them
+  // there is no formal meaning associated with the concept.
+  @HiveField(7)
   String definition;
+
+  //  Extensions for definition
+  @HiveField(8)
   Element elementDefinition;
+
+  //  Additional representations for the concept - other languages, aliases,
+  // specialized purposes, used for particular purposes, etc.
+  @HiveField(9)
   List<CodeSystem_Designation> designation;
+
+  //  A property value for this concept.
+  @HiveField(10)
   List<CodeSystem_Property1> property;
+
+  //  Defines children of a concept to produce a hierarchy of concepts. The
+  // nature of the relationships is variable (is-a/contains/categorizes) -
+  // see hierarchyMeaning.
+  @HiveField(11)
   List<CodeSystem_Concept> concept;
 
 CodeSystem_Concept(
@@ -227,14 +640,56 @@ CodeSystem_Concept(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 147)
 class CodeSystem_Designation {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The language this designation is defined for.
+  @HiveField(3)
   String language;
+
+  //  Extensions for language
+  @HiveField(4)
   Element elementLanguage;
+
+  //  A code that details how this designation would be used.
+  @HiveField(5)
   Coding use;
+
+  //  The text value for this designation.
+  @HiveField(6)
   String value;
+
+  //  Extensions for value
+  @HiveField(7)
   Element elementValue;
 
 CodeSystem_Designation(
@@ -253,24 +708,94 @@ CodeSystem_Designation(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 148)
 class CodeSystem_Property1 {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  A code that is a reference to CodeSystem.property.code.
+  @HiveField(3)
   String code;
+
+  //  Extensions for code
+  @HiveField(4)
   Element elementCode;
+
+  //  The value of this property.
+  @HiveField(5)
   String valueCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
+
+  //  Extensions for valueCode
+  @HiveField(6)
   Element elementValueCode;
+
+  //  The value of this property.
+  @HiveField(7)
   Coding valueCoding;
+
+  //  The value of this property.
+  @HiveField(8)
   String valueString; //  pattern: ^[ \r\n\t\S]+$
+
+  //  Extensions for valueString
+  @HiveField(9)
   Element elementValueString;
+
+  //  The value of this property.
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
+
+  //  Extensions for valueInteger
+  @HiveField(11)
   Element elementValueInteger;
+
+  //  The value of this property.
+  @HiveField(12)
   bool valueBoolean; //  pattern: ^true|false$
+
+  //  Extensions for valueBoolean
+  @HiveField(13)
   Element elementValueBoolean;
+
+  //  The value of this property.
+  @HiveField(14)
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+
+  //  Extensions for valueDateTime
+  @HiveField(15)
   Element elementValueDateTime;
+
+  //  The value of this property.
   double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+
+  //  Extensions for valueDecimal
+  @HiveField(17)
   Element elementValueDecimal;
 
 CodeSystem_Property1(
@@ -300,6 +825,472 @@ CodeSystem_Property1(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class CodeSystemAdapter extends TypeAdapter<CodeSystem> {
+  @override
+  final typeId = 143;
+
+  @override
+  CodeSystem read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CodeSystem(
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      url: fields[11] as String,
+      elementUrl: fields[12] as Element,
+      identifier: (fields[13] as List)?.cast<Identifier>(),
+      version: fields[14] as String,
+      elementVersion: fields[15] as Element,
+      name: fields[16] as String,
+      elementName: fields[17] as Element,
+      title: fields[18] as String,
+      elementTitle: fields[19] as Element,
+      status: fields[20] as String,
+      elementStatus: fields[21] as Element,
+      experimental: fields[22] as bool,
+      elementExperimental: fields[23] as Element,
+      date: fields[24] as DateTime,
+      elementDate: fields[25] as Element,
+      publisher: fields[26] as String,
+      elementPublisher: fields[27] as Element,
+      contact: (fields[28] as List)?.cast<ContactDetail>(),
+      description: fields[29] as String,
+      elementDescription: fields[30] as Element,
+      useContext: (fields[31] as List)?.cast<UsageContext>(),
+      jurisdiction: (fields[32] as List)?.cast<CodeableConcept>(),
+      purpose: fields[33] as String,
+      elementPurpose: fields[34] as Element,
+      copyright: fields[35] as String,
+      elementCopyright: fields[36] as Element,
+      caseSensitive: fields[37] as bool,
+      elementCaseSensitive: fields[38] as Element,
+      valueSet: fields[39] as String,
+      hierarchyMeaning: fields[40] as String,
+      elementHierarchyMeaning: fields[41] as Element,
+      compositional: fields[42] as bool,
+      elementCompositional: fields[43] as Element,
+      versionNeeded: fields[44] as bool,
+      elementVersionNeeded: fields[45] as Element,
+      content: fields[46] as String,
+      elementContent: fields[47] as Element,
+      supplements: fields[48] as String,
+      count: fields[49] as int,
+      elementCount: fields[50] as Element,
+      filter: (fields[51] as List)?.cast<CodeSystem_Filter>(),
+      property: (fields[52] as List)?.cast<CodeSystem_Property>(),
+      concept: (fields[53] as List)?.cast<CodeSystem_Concept>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, CodeSystem obj) {
+    writer
+      ..writeByte(54)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.url)
+      ..writeByte(12)
+      ..write(obj.elementUrl)
+      ..writeByte(13)
+      ..write(obj.identifier)
+      ..writeByte(14)
+      ..write(obj.version)
+      ..writeByte(15)
+      ..write(obj.elementVersion)
+      ..writeByte(16)
+      ..write(obj.name)
+      ..writeByte(17)
+      ..write(obj.elementName)
+      ..writeByte(18)
+      ..write(obj.title)
+      ..writeByte(19)
+      ..write(obj.elementTitle)
+      ..writeByte(20)
+      ..write(obj.status)
+      ..writeByte(21)
+      ..write(obj.elementStatus)
+      ..writeByte(22)
+      ..write(obj.experimental)
+      ..writeByte(23)
+      ..write(obj.elementExperimental)
+      ..writeByte(24)
+      ..write(obj.date)
+      ..writeByte(25)
+      ..write(obj.elementDate)
+      ..writeByte(26)
+      ..write(obj.publisher)
+      ..writeByte(27)
+      ..write(obj.elementPublisher)
+      ..writeByte(28)
+      ..write(obj.contact)
+      ..writeByte(29)
+      ..write(obj.description)
+      ..writeByte(30)
+      ..write(obj.elementDescription)
+      ..writeByte(31)
+      ..write(obj.useContext)
+      ..writeByte(32)
+      ..write(obj.jurisdiction)
+      ..writeByte(33)
+      ..write(obj.purpose)
+      ..writeByte(34)
+      ..write(obj.elementPurpose)
+      ..writeByte(35)
+      ..write(obj.copyright)
+      ..writeByte(36)
+      ..write(obj.elementCopyright)
+      ..writeByte(37)
+      ..write(obj.caseSensitive)
+      ..writeByte(38)
+      ..write(obj.elementCaseSensitive)
+      ..writeByte(39)
+      ..write(obj.valueSet)
+      ..writeByte(40)
+      ..write(obj.hierarchyMeaning)
+      ..writeByte(41)
+      ..write(obj.elementHierarchyMeaning)
+      ..writeByte(42)
+      ..write(obj.compositional)
+      ..writeByte(43)
+      ..write(obj.elementCompositional)
+      ..writeByte(44)
+      ..write(obj.versionNeeded)
+      ..writeByte(45)
+      ..write(obj.elementVersionNeeded)
+      ..writeByte(46)
+      ..write(obj.content)
+      ..writeByte(47)
+      ..write(obj.elementContent)
+      ..writeByte(48)
+      ..write(obj.supplements)
+      ..writeByte(49)
+      ..write(obj.count)
+      ..writeByte(50)
+      ..write(obj.elementCount)
+      ..writeByte(51)
+      ..write(obj.filter)
+      ..writeByte(52)
+      ..write(obj.property)
+      ..writeByte(53)
+      ..write(obj.concept);
+  }
+}
+
+class CodeSystem_FilterAdapter extends TypeAdapter<CodeSystem_Filter> {
+  @override
+  final typeId = 144;
+
+  @override
+  CodeSystem_Filter read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CodeSystem_Filter(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      code: fields[3] as String,
+      elementCode: fields[4] as Element,
+      description: fields[5] as String,
+      elementDescription: fields[6] as Element,
+      operator: (fields[7] as List)?.cast<String>(),
+      elementOperator: (fields[8] as List)?.cast<Element>(),
+      value: fields[9] as String,
+      elementValue: fields[10] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, CodeSystem_Filter obj) {
+    writer
+      ..writeByte(11)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code)
+      ..writeByte(4)
+      ..write(obj.elementCode)
+      ..writeByte(5)
+      ..write(obj.description)
+      ..writeByte(6)
+      ..write(obj.elementDescription)
+      ..writeByte(7)
+      ..write(obj.operator)
+      ..writeByte(8)
+      ..write(obj.elementOperator)
+      ..writeByte(9)
+      ..write(obj.value)
+      ..writeByte(10)
+      ..write(obj.elementValue);
+  }
+}
+
+class CodeSystem_PropertyAdapter extends TypeAdapter<CodeSystem_Property> {
+  @override
+  final typeId = 145;
+
+  @override
+  CodeSystem_Property read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CodeSystem_Property(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      code: fields[3] as String,
+      elementCode: fields[4] as Element,
+      uri: fields[5] as String,
+      elementUri: fields[6] as Element,
+      description: fields[7] as String,
+      elementDescription: fields[8] as Element,
+      type: fields[9] as String,
+      elementType: fields[10] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, CodeSystem_Property obj) {
+    writer
+      ..writeByte(11)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code)
+      ..writeByte(4)
+      ..write(obj.elementCode)
+      ..writeByte(5)
+      ..write(obj.uri)
+      ..writeByte(6)
+      ..write(obj.elementUri)
+      ..writeByte(7)
+      ..write(obj.description)
+      ..writeByte(8)
+      ..write(obj.elementDescription)
+      ..writeByte(9)
+      ..write(obj.type)
+      ..writeByte(10)
+      ..write(obj.elementType);
+  }
+}
+
+class CodeSystem_ConceptAdapter extends TypeAdapter<CodeSystem_Concept> {
+  @override
+  final typeId = 146;
+
+  @override
+  CodeSystem_Concept read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CodeSystem_Concept(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      code: fields[3] as String,
+      elementCode: fields[4] as Element,
+      display: fields[5] as String,
+      elementDisplay: fields[6] as Element,
+      definition: fields[7] as String,
+      elementDefinition: fields[8] as Element,
+      designation: (fields[9] as List)?.cast<CodeSystem_Designation>(),
+      property: (fields[10] as List)?.cast<CodeSystem_Property1>(),
+      concept: (fields[11] as List)?.cast<CodeSystem_Concept>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, CodeSystem_Concept obj) {
+    writer
+      ..writeByte(12)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code)
+      ..writeByte(4)
+      ..write(obj.elementCode)
+      ..writeByte(5)
+      ..write(obj.display)
+      ..writeByte(6)
+      ..write(obj.elementDisplay)
+      ..writeByte(7)
+      ..write(obj.definition)
+      ..writeByte(8)
+      ..write(obj.elementDefinition)
+      ..writeByte(9)
+      ..write(obj.designation)
+      ..writeByte(10)
+      ..write(obj.property)
+      ..writeByte(11)
+      ..write(obj.concept);
+  }
+}
+
+class CodeSystem_DesignationAdapter
+    extends TypeAdapter<CodeSystem_Designation> {
+  @override
+  final typeId = 147;
+
+  @override
+  CodeSystem_Designation read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CodeSystem_Designation(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      language: fields[3] as String,
+      elementLanguage: fields[4] as Element,
+      use: fields[5] as Coding,
+      value: fields[6] as String,
+      elementValue: fields[7] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, CodeSystem_Designation obj) {
+    writer
+      ..writeByte(8)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.language)
+      ..writeByte(4)
+      ..write(obj.elementLanguage)
+      ..writeByte(5)
+      ..write(obj.use)
+      ..writeByte(6)
+      ..write(obj.value)
+      ..writeByte(7)
+      ..write(obj.elementValue);
+  }
+}
+
+class CodeSystem_Property1Adapter extends TypeAdapter<CodeSystem_Property1> {
+  @override
+  final typeId = 148;
+
+  @override
+  CodeSystem_Property1 read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CodeSystem_Property1(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      code: fields[3] as String,
+      elementCode: fields[4] as Element,
+      valueCode: fields[5] as String,
+      elementValueCode: fields[6] as Element,
+      valueCoding: fields[7] as Coding,
+      valueString: fields[8] as String,
+      elementValueString: fields[9] as Element,
+      elementValueInteger: fields[11] as Element,
+      valueBoolean: fields[12] as bool,
+      elementValueBoolean: fields[13] as Element,
+      valueDateTime: fields[14] as String,
+      elementValueDateTime: fields[15] as Element,
+      elementValueDecimal: fields[17] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, CodeSystem_Property1 obj) {
+    writer
+      ..writeByte(16)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code)
+      ..writeByte(4)
+      ..write(obj.elementCode)
+      ..writeByte(5)
+      ..write(obj.valueCode)
+      ..writeByte(6)
+      ..write(obj.elementValueCode)
+      ..writeByte(7)
+      ..write(obj.valueCoding)
+      ..writeByte(8)
+      ..write(obj.valueString)
+      ..writeByte(9)
+      ..write(obj.elementValueString)
+      ..writeByte(11)
+      ..write(obj.elementValueInteger)
+      ..writeByte(12)
+      ..write(obj.valueBoolean)
+      ..writeByte(13)
+      ..write(obj.elementValueBoolean)
+      ..writeByte(14)
+      ..write(obj.valueDateTime)
+      ..writeByte(15)
+      ..write(obj.elementValueDateTime)
+      ..writeByte(17)
+      ..write(obj.elementValueDecimal);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

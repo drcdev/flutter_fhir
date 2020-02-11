@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/fhirClasses/annotation.dart';
@@ -14,44 +15,216 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 516)
 class ResearchStudy {
+
+  //  This is a ResearchStudy resource
+  @HiveField(0)
   final String resourceType= 'ResearchStudy';
+
+  //  The logical id of the resource, as used in the URL for the resource.
+  // Once assigned, this value never changes.
+  @HiveField(1)
   String id;
+
+  //  The metadata about the resource. This is content that is maintained by
+  // the infrastructure. Changes to the content might not always be
+  // associated with version changes to the resource.
+  @HiveField(2)
   Meta meta;
+
+  //  A reference to a set of rules that were followed when the resource was
+  // constructed, and which must be understood when processing the content.
+  // Often, this is a reference to an implementation guide that defines the
+  // special rules along with other profiles etc.
+  @HiveField(3)
   String implicitRules;
+
+  //  Extensions for implicitRules
+  @HiveField(4)
   Element elementImplicitRules;
+
+  //  The base language in which the resource is written.
+  @HiveField(5)
   String language;
+
+  //  Extensions for language
+  @HiveField(6)
   Element elementLanguage;
+
+  //  A human-readable narrative that contains a summary of the resource and
+  // can be used to represent the content of the resource to a human. The
+  // narrative need not encode all the structured data, but is required to
+  // contain sufficient detail to make it "clinically safe" for a human to
+  // just read the narrative. Resource definitions may define what content
+  // should be represented in the narrative to ensure clinical safety.
+  @HiveField(7)
   Narrative text;
+
+  //  These resources do not have an independent existence apart from the
+  // resource that contains them - they cannot be identified independently,
+  // and nor can they have their own independent transaction scope.
+  @HiveField(8)
   List<dynamic> contained;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource. To make the use of extensions
+  // safe and manageable, there is a strict set of governance  applied to
+  // the definition and use of extensions. Though any implementer can define
+  // an extension, there is a set of requirements that SHALL be met as part
+  // of the definition of the extension.
+  @HiveField(9)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource and that modifies the
+  // understanding of the element that contains it and/or the understanding
+  // of the containing element's descendants. Usually modifier elements
+  // provide negation or qualification. To make the use of extensions safe
+  // and manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer is allowed to
+  // define an extension, there is a set of requirements that SHALL be met
+  // as part of the definition of the extension. Applications processing a
+  // resource are required to check for modifier extensions. Modifier
+  // extensions SHALL NOT change the meaning of any elements on Resource or
+  // DomainResource (including cannot change the meaning of
+  // modifierExtension itself).
+  @HiveField(10)
   List<Extension> modifierExtension;
+
+  //  Identifiers assigned to this research study by the sponsor or other
+  // systems.
+  @HiveField(11)
   List<Identifier> identifier;
+
+  //  A short, descriptive user-friendly label for the study.
+  @HiveField(12)
   String title;
+
+  //  Extensions for title
+  @HiveField(13)
   Element elementTitle;
+
+  //  The set of steps expected to be performed as part of the execution of
+  // the study.
+  @HiveField(14)
   List<Reference> protocol;
+
+  //  A larger research study of which this particular study is a component
+  // or step.
+  @HiveField(15)
   List<Reference> partOf;
+
+  //  The current state of the study.
+  @HiveField(16)
   String status; // <code> enum: active/administratively-completed/approved/closed-to-accrual/closed-to-accrual-and-intervention/completed/disapproved/in-review/temporarily-closed-to-accrual/temporarily-closed-to-accrual-and-intervention/withdrawn;
+
+  //  Extensions for status
+  @HiveField(17)
   Element elementStatus;
+
+  //  The type of study based upon the intent of the study's activities. A
+  // classification of the intent of the study.
+  @HiveField(18)
   CodeableConcept primaryPurposeType;
+
+  //  The stage in the progression of a therapy from initial experimental
+  // use in humans in clinical trials to post-market evaluation.
+  @HiveField(19)
   CodeableConcept phase;
+
+  //  Codes categorizing the type of study such as investigational vs.
+  // observational, type of blinding, type of randomization, safety vs.
+  // efficacy, etc.
+  @HiveField(20)
   List<CodeableConcept> category;
+
+  //  The medication(s), food(s), therapy(ies), device(s) or other concerns
+  // or interventions that the study is seeking to gain more information
+  // about.
+  @HiveField(21)
   List<CodeableConcept> focus;
+
+  //  The condition that is the focus of the study.  For example, In a study
+  // to examine risk factors for Lupus, might have as an inclusion criterion
+  // "healthy volunteer", but the target condition code would be a Lupus
+  // SNOMED code.
+  @HiveField(22)
   List<CodeableConcept> condition;
+
+  //  Contact details to assist a user in learning more about or engaging
+  // with the study.
+  @HiveField(23)
   List<ContactDetail> contact;
+
+  //  Citations, references and other related documents.
+  @HiveField(24)
   List<RelatedArtifact> relatedArtifact;
+
+  //  Key terms to aid in searching for or filtering the study.
+  @HiveField(25)
   List<CodeableConcept> keyword;
+
+  //  Indicates a country, state or other region where the study is taking
+  // place.
+  @HiveField(26)
   List<CodeableConcept> location;
+
+  //  A full description of how the study is being conducted.
+  @HiveField(27)
   String description;
+
+  //  Extensions for description
+  @HiveField(28)
   Element elementDescription;
+
+  //  Reference to a Group that defines the criteria for and quantity of
+  // subjects participating in the study.  E.g. " 200 female Europeans
+  // between the ages of 20 and 45 with early onset diabetes".
+  @HiveField(29)
   List<Reference> enrollment;
+
+  //  Identifies the start date and the expected (or actual, depending on
+  // status) end date for the study.
+  @HiveField(30)
   Period period;
+
+  //  An organization that initiates the investigation and is legally
+  // responsible for the study.
+  @HiveField(31)
   Reference sponsor;
+
+  //  A researcher in a study who oversees multiple aspects of the study,
+  // such as concept development, protocol writing, protocol submission for
+  // IRB approval, participant recruitment, informed consent, data
+  // collection, analysis, interpretation and presentation.
+  @HiveField(32)
   Reference principalInvestigator;
+
+  //  A facility in which study activities are conducted.
+  @HiveField(33)
   List<Reference> site;
+
+  //  A description and/or code explaining the premature termination of the
+  // study.
+  @HiveField(34)
   CodeableConcept reasonStopped;
+
+  //  Comments made about the study by the performer, subject or other
+  // participants.
+  @HiveField(35)
   List<Annotation> note;
+
+  //  Describes an expected sequence of events for one of the participants
+  // of a study.  E.g. Exposure to drug A, wash-out, exposure to drug B,
+  // wash-out, follow-up.
+  @HiveField(36)
   List<ResearchStudy_Arm> arm;
+
+  //  A goal that the study is aiming to achieve in terms of a scientific
+  // question to be answered by the analysis of data collected during the
+  // study.
+  @HiveField(37)
   List<ResearchStudy_Objective> objective;
 
 ResearchStudy(
@@ -99,14 +272,58 @@ ResearchStudy(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 517)
 class ResearchStudy_Arm {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Unique, human-readable label for this arm of the study.
+  @HiveField(3)
   String name;
+
+  //  Extensions for name
+  @HiveField(4)
   Element elementName;
+
+  //  Categorization of study arm, e.g. experimental, active comparator,
+  // placebo comparater.
+  @HiveField(5)
   CodeableConcept type;
+
+  //  A succinct description of the path through the study that would be
+  // followed by a subject adhering to this arm.
+  @HiveField(6)
   String description;
+
+  //  Extensions for description
+  @HiveField(7)
   Element elementDescription;
 
 ResearchStudy_Arm(
@@ -125,12 +342,48 @@ ResearchStudy_Arm(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 518)
 class ResearchStudy_Objective {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Unique, human-readable label for this objective of the study.
+  @HiveField(3)
   String name;
+
+  //  Extensions for name
+  @HiveField(4)
   Element elementName;
+
+  //  The kind of study objective.
+  @HiveField(5)
   CodeableConcept type;
 
 ResearchStudy_Objective(
@@ -148,6 +401,229 @@ ResearchStudy_Objective(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class ResearchStudyAdapter extends TypeAdapter<ResearchStudy> {
+  @override
+  final typeId = 516;
+
+  @override
+  ResearchStudy read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ResearchStudy(
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      title: fields[12] as String,
+      elementTitle: fields[13] as Element,
+      protocol: (fields[14] as List)?.cast<Reference>(),
+      partOf: (fields[15] as List)?.cast<Reference>(),
+      status: fields[16] as String,
+      elementStatus: fields[17] as Element,
+      primaryPurposeType: fields[18] as CodeableConcept,
+      phase: fields[19] as CodeableConcept,
+      category: (fields[20] as List)?.cast<CodeableConcept>(),
+      focus: (fields[21] as List)?.cast<CodeableConcept>(),
+      condition: (fields[22] as List)?.cast<CodeableConcept>(),
+      contact: (fields[23] as List)?.cast<ContactDetail>(),
+      relatedArtifact: (fields[24] as List)?.cast<RelatedArtifact>(),
+      keyword: (fields[25] as List)?.cast<CodeableConcept>(),
+      location: (fields[26] as List)?.cast<CodeableConcept>(),
+      description: fields[27] as String,
+      elementDescription: fields[28] as Element,
+      enrollment: (fields[29] as List)?.cast<Reference>(),
+      period: fields[30] as Period,
+      sponsor: fields[31] as Reference,
+      principalInvestigator: fields[32] as Reference,
+      site: (fields[33] as List)?.cast<Reference>(),
+      reasonStopped: fields[34] as CodeableConcept,
+      note: (fields[35] as List)?.cast<Annotation>(),
+      arm: (fields[36] as List)?.cast<ResearchStudy_Arm>(),
+      objective: (fields[37] as List)?.cast<ResearchStudy_Objective>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ResearchStudy obj) {
+    writer
+      ..writeByte(38)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.title)
+      ..writeByte(13)
+      ..write(obj.elementTitle)
+      ..writeByte(14)
+      ..write(obj.protocol)
+      ..writeByte(15)
+      ..write(obj.partOf)
+      ..writeByte(16)
+      ..write(obj.status)
+      ..writeByte(17)
+      ..write(obj.elementStatus)
+      ..writeByte(18)
+      ..write(obj.primaryPurposeType)
+      ..writeByte(19)
+      ..write(obj.phase)
+      ..writeByte(20)
+      ..write(obj.category)
+      ..writeByte(21)
+      ..write(obj.focus)
+      ..writeByte(22)
+      ..write(obj.condition)
+      ..writeByte(23)
+      ..write(obj.contact)
+      ..writeByte(24)
+      ..write(obj.relatedArtifact)
+      ..writeByte(25)
+      ..write(obj.keyword)
+      ..writeByte(26)
+      ..write(obj.location)
+      ..writeByte(27)
+      ..write(obj.description)
+      ..writeByte(28)
+      ..write(obj.elementDescription)
+      ..writeByte(29)
+      ..write(obj.enrollment)
+      ..writeByte(30)
+      ..write(obj.period)
+      ..writeByte(31)
+      ..write(obj.sponsor)
+      ..writeByte(32)
+      ..write(obj.principalInvestigator)
+      ..writeByte(33)
+      ..write(obj.site)
+      ..writeByte(34)
+      ..write(obj.reasonStopped)
+      ..writeByte(35)
+      ..write(obj.note)
+      ..writeByte(36)
+      ..write(obj.arm)
+      ..writeByte(37)
+      ..write(obj.objective);
+  }
+}
+
+class ResearchStudy_ArmAdapter extends TypeAdapter<ResearchStudy_Arm> {
+  @override
+  final typeId = 517;
+
+  @override
+  ResearchStudy_Arm read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ResearchStudy_Arm(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      name: fields[3] as String,
+      elementName: fields[4] as Element,
+      type: fields[5] as CodeableConcept,
+      description: fields[6] as String,
+      elementDescription: fields[7] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ResearchStudy_Arm obj) {
+    writer
+      ..writeByte(8)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.name)
+      ..writeByte(4)
+      ..write(obj.elementName)
+      ..writeByte(5)
+      ..write(obj.type)
+      ..writeByte(6)
+      ..write(obj.description)
+      ..writeByte(7)
+      ..write(obj.elementDescription);
+  }
+}
+
+class ResearchStudy_ObjectiveAdapter
+    extends TypeAdapter<ResearchStudy_Objective> {
+  @override
+  final typeId = 518;
+
+  @override
+  ResearchStudy_Objective read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ResearchStudy_Objective(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      name: fields[3] as String,
+      elementName: fields[4] as Element,
+      type: fields[5] as CodeableConcept,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ResearchStudy_Objective obj) {
+    writer
+      ..writeByte(6)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.name)
+      ..writeByte(4)
+      ..write(obj.elementName)
+      ..writeByte(5)
+      ..write(obj.type);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

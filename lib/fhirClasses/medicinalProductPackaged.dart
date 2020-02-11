@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/fhirClasses/productShelfLife.dart';
@@ -14,27 +15,123 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 418)
 class MedicinalProductPackaged {
+
+  //  This is a MedicinalProductPackaged resource
+  @HiveField(0)
   final String resourceType= 'MedicinalProductPackaged';
+
+  //  The logical id of the resource, as used in the URL for the resource.
+  // Once assigned, this value never changes.
+  @HiveField(1)
   String id;
+
+  //  The metadata about the resource. This is content that is maintained by
+  // the infrastructure. Changes to the content might not always be
+  // associated with version changes to the resource.
+  @HiveField(2)
   Meta meta;
+
+  //  A reference to a set of rules that were followed when the resource was
+  // constructed, and which must be understood when processing the content.
+  // Often, this is a reference to an implementation guide that defines the
+  // special rules along with other profiles etc.
+  @HiveField(3)
   String implicitRules;
+
+  //  Extensions for implicitRules
+  @HiveField(4)
   Element elementImplicitRules;
+
+  //  The base language in which the resource is written.
+  @HiveField(5)
   String language;
+
+  //  Extensions for language
+  @HiveField(6)
   Element elementLanguage;
+
+  //  A human-readable narrative that contains a summary of the resource and
+  // can be used to represent the content of the resource to a human. The
+  // narrative need not encode all the structured data, but is required to
+  // contain sufficient detail to make it "clinically safe" for a human to
+  // just read the narrative. Resource definitions may define what content
+  // should be represented in the narrative to ensure clinical safety.
+  @HiveField(7)
   Narrative text;
+
+  //  These resources do not have an independent existence apart from the
+  // resource that contains them - they cannot be identified independently,
+  // and nor can they have their own independent transaction scope.
+  @HiveField(8)
   List<dynamic> contained;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource. To make the use of extensions
+  // safe and manageable, there is a strict set of governance  applied to
+  // the definition and use of extensions. Though any implementer can define
+  // an extension, there is a set of requirements that SHALL be met as part
+  // of the definition of the extension.
+  @HiveField(9)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource and that modifies the
+  // understanding of the element that contains it and/or the understanding
+  // of the containing element's descendants. Usually modifier elements
+  // provide negation or qualification. To make the use of extensions safe
+  // and manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer is allowed to
+  // define an extension, there is a set of requirements that SHALL be met
+  // as part of the definition of the extension. Applications processing a
+  // resource are required to check for modifier extensions. Modifier
+  // extensions SHALL NOT change the meaning of any elements on Resource or
+  // DomainResource (including cannot change the meaning of
+  // modifierExtension itself).
+  @HiveField(10)
   List<Extension> modifierExtension;
+
+  //  Unique identifier.
+  @HiveField(11)
   List<Identifier> identifier;
+
+  //  The product with this is a pack for.
+  @HiveField(12)
   List<Reference> subject;
+
+  //  Textual description.
+  @HiveField(13)
   String description;
+
+  //  Extensions for description
+  @HiveField(14)
   Element elementDescription;
+
+  //  The legal status of supply of the medicinal product as classified by
+  // the regulator.
+  @HiveField(15)
   CodeableConcept legalStatusOfSupply;
+
+  //  Marketing information.
+  @HiveField(16)
   List<MarketingStatus> marketingStatus;
+
+  //  Manufacturer of this Package Item.
+  @HiveField(17)
   Reference marketingAuthorization;
+
+  //  Manufacturer of this Package Item.
+  @HiveField(18)
   List<Reference> manufacturer;
+
+  //  Batch numbering.
+  @HiveField(19)
   List<MedicinalProductPackaged_BatchIdentifier> batchIdentifier;
+
+  //  A packaging item, as a contained for medicine, possibly with other
+  // packaging items within.
+  @HiveField(20)
   List<MedicinalProductPackaged_PackageItem> packageItem;
 
 MedicinalProductPackaged(
@@ -65,11 +162,45 @@ MedicinalProductPackaged(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 419)
 class MedicinalProductPackaged_BatchIdentifier {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  A number appearing on the outer packaging of a specific batch.
+  @HiveField(3)
   Identifier outerPackaging;
+
+  //  A number appearing on the immediate packaging (and not the outer
+  // packaging).
+  @HiveField(4)
   Identifier immediatePackaging;
 
 MedicinalProductPackaged_BatchIdentifier(
@@ -85,21 +216,85 @@ MedicinalProductPackaged_BatchIdentifier(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 420)
 class MedicinalProductPackaged_PackageItem {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Including possibly Data Carrier Identifier.
+  @HiveField(3)
   List<Identifier> identifier;
+
+  //  The physical type of the container of the medicine.
+  @HiveField(4)
   CodeableConcept type;
+
+  //  The quantity of this package in the medicinal product, at the current
+  // level of packaging. The outermost is always 1.
+  @HiveField(5)
   Quantity quantity;
+
+  //  Material type of the package item.
+  @HiveField(6)
   List<CodeableConcept> material;
+
+  //  A possible alternate material for the packaging.
+  @HiveField(7)
   List<CodeableConcept> alternateMaterial;
+
+  //  A device accompanying a medicinal product.
+  @HiveField(8)
   List<Reference> device;
+
+  //  The manufactured item as contained in the packaged medicinal product.
+  @HiveField(9)
   List<Reference> manufacturedItem;
+
+  //  Allows containers within containers.
+  @HiveField(10)
   List<MedicinalProductPackaged_PackageItem> packageItem;
+
+  //  Dimensions, color etc.
+  @HiveField(11)
   ProdCharacteristic physicalCharacteristics;
+
+  //  Other codeable characteristics.
+  @HiveField(12)
   List<CodeableConcept> otherCharacteristics;
+
+  //  Shelf Life and storage information.
+  @HiveField(13)
   List<ProductShelfLife> shelfLifeStorage;
+
+  //  Manufacturer of this Package Item.
+  @HiveField(14)
   List<Reference> manufacturer;
 
 MedicinalProductPackaged_PackageItem(
@@ -126,6 +321,201 @@ MedicinalProductPackaged_PackageItem(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class MedicinalProductPackagedAdapter
+    extends TypeAdapter<MedicinalProductPackaged> {
+  @override
+  final typeId = 418;
+
+  @override
+  MedicinalProductPackaged read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicinalProductPackaged(
+      (fields[20] as List)?.cast<MedicinalProductPackaged_PackageItem>(),
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      subject: (fields[12] as List)?.cast<Reference>(),
+      description: fields[13] as String,
+      elementDescription: fields[14] as Element,
+      legalStatusOfSupply: fields[15] as CodeableConcept,
+      marketingStatus: (fields[16] as List)?.cast<MarketingStatus>(),
+      marketingAuthorization: fields[17] as Reference,
+      manufacturer: (fields[18] as List)?.cast<Reference>(),
+      batchIdentifier: (fields[19] as List)
+          ?.cast<MedicinalProductPackaged_BatchIdentifier>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MedicinalProductPackaged obj) {
+    writer
+      ..writeByte(21)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.subject)
+      ..writeByte(13)
+      ..write(obj.description)
+      ..writeByte(14)
+      ..write(obj.elementDescription)
+      ..writeByte(15)
+      ..write(obj.legalStatusOfSupply)
+      ..writeByte(16)
+      ..write(obj.marketingStatus)
+      ..writeByte(17)
+      ..write(obj.marketingAuthorization)
+      ..writeByte(18)
+      ..write(obj.manufacturer)
+      ..writeByte(19)
+      ..write(obj.batchIdentifier)
+      ..writeByte(20)
+      ..write(obj.packageItem);
+  }
+}
+
+class MedicinalProductPackaged_BatchIdentifierAdapter
+    extends TypeAdapter<MedicinalProductPackaged_BatchIdentifier> {
+  @override
+  final typeId = 419;
+
+  @override
+  MedicinalProductPackaged_BatchIdentifier read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicinalProductPackaged_BatchIdentifier(
+      fields[3] as Identifier,
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      immediatePackaging: fields[4] as Identifier,
+    );
+  }
+
+  @override
+  void write(
+      BinaryWriter writer, MedicinalProductPackaged_BatchIdentifier obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.outerPackaging)
+      ..writeByte(4)
+      ..write(obj.immediatePackaging);
+  }
+}
+
+class MedicinalProductPackaged_PackageItemAdapter
+    extends TypeAdapter<MedicinalProductPackaged_PackageItem> {
+  @override
+  final typeId = 420;
+
+  @override
+  MedicinalProductPackaged_PackageItem read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicinalProductPackaged_PackageItem(
+      fields[4] as CodeableConcept,
+      fields[5] as Quantity,
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      identifier: (fields[3] as List)?.cast<Identifier>(),
+      material: (fields[6] as List)?.cast<CodeableConcept>(),
+      alternateMaterial: (fields[7] as List)?.cast<CodeableConcept>(),
+      device: (fields[8] as List)?.cast<Reference>(),
+      manufacturedItem: (fields[9] as List)?.cast<Reference>(),
+      packageItem:
+          (fields[10] as List)?.cast<MedicinalProductPackaged_PackageItem>(),
+      physicalCharacteristics: fields[11] as ProdCharacteristic,
+      otherCharacteristics: (fields[12] as List)?.cast<CodeableConcept>(),
+      shelfLifeStorage: (fields[13] as List)?.cast<ProductShelfLife>(),
+      manufacturer: (fields[14] as List)?.cast<Reference>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MedicinalProductPackaged_PackageItem obj) {
+    writer
+      ..writeByte(15)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.identifier)
+      ..writeByte(4)
+      ..write(obj.type)
+      ..writeByte(5)
+      ..write(obj.quantity)
+      ..writeByte(6)
+      ..write(obj.material)
+      ..writeByte(7)
+      ..write(obj.alternateMaterial)
+      ..writeByte(8)
+      ..write(obj.device)
+      ..writeByte(9)
+      ..write(obj.manufacturedItem)
+      ..writeByte(10)
+      ..write(obj.packageItem)
+      ..writeByte(11)
+      ..write(obj.physicalCharacteristics)
+      ..writeByte(12)
+      ..write(obj.otherCharacteristics)
+      ..writeByte(13)
+      ..write(obj.shelfLifeStorage)
+      ..writeByte(14)
+      ..write(obj.manufacturer);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/fhirClasses/duration.dart';
@@ -13,24 +14,110 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 421)
 class MedicinalProductPharmaceutical {
+
+  //  This is a MedicinalProductPharmaceutical resource
+  @HiveField(0)
   final String resourceType= 'MedicinalProductPharmaceutical';
+
+  //  The logical id of the resource, as used in the URL for the resource.
+  // Once assigned, this value never changes.
+  @HiveField(1)
   String id;
+
+  //  The metadata about the resource. This is content that is maintained by
+  // the infrastructure. Changes to the content might not always be
+  // associated with version changes to the resource.
+  @HiveField(2)
   Meta meta;
+
+  //  A reference to a set of rules that were followed when the resource was
+  // constructed, and which must be understood when processing the content.
+  // Often, this is a reference to an implementation guide that defines the
+  // special rules along with other profiles etc.
+  @HiveField(3)
   String implicitRules;
+
+  //  Extensions for implicitRules
+  @HiveField(4)
   Element elementImplicitRules;
+
+  //  The base language in which the resource is written.
+  @HiveField(5)
   String language;
+
+  //  Extensions for language
+  @HiveField(6)
   Element elementLanguage;
+
+  //  A human-readable narrative that contains a summary of the resource and
+  // can be used to represent the content of the resource to a human. The
+  // narrative need not encode all the structured data, but is required to
+  // contain sufficient detail to make it "clinically safe" for a human to
+  // just read the narrative. Resource definitions may define what content
+  // should be represented in the narrative to ensure clinical safety.
+  @HiveField(7)
   Narrative text;
+
+  //  These resources do not have an independent existence apart from the
+  // resource that contains them - they cannot be identified independently,
+  // and nor can they have their own independent transaction scope.
+  @HiveField(8)
   List<dynamic> contained;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource. To make the use of extensions
+  // safe and manageable, there is a strict set of governance  applied to
+  // the definition and use of extensions. Though any implementer can define
+  // an extension, there is a set of requirements that SHALL be met as part
+  // of the definition of the extension.
+  @HiveField(9)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource and that modifies the
+  // understanding of the element that contains it and/or the understanding
+  // of the containing element's descendants. Usually modifier elements
+  // provide negation or qualification. To make the use of extensions safe
+  // and manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer is allowed to
+  // define an extension, there is a set of requirements that SHALL be met
+  // as part of the definition of the extension. Applications processing a
+  // resource are required to check for modifier extensions. Modifier
+  // extensions SHALL NOT change the meaning of any elements on Resource or
+  // DomainResource (including cannot change the meaning of
+  // modifierExtension itself).
+  @HiveField(10)
   List<Extension> modifierExtension;
+
+  //  An identifier for the pharmaceutical medicinal product.
+  @HiveField(11)
   List<Identifier> identifier;
+
+  //  The administrable dose form, after necessary reconstitution.
+  @HiveField(12)
   CodeableConcept administrableDoseForm;
+
+  //  Todo.
+  @HiveField(13)
   CodeableConcept unitOfPresentation;
+
+  //  Ingredient.
+  @HiveField(14)
   List<Reference> ingredient;
+
+  //  Accompanying device.
+  @HiveField(15)
   List<Reference> device;
+
+  //  Characteristics e.g. a products onset of action.
+  @HiveField(16)
   List<MedicinalProductPharmaceutical_Characteristics> characteristics;
+
+  //  The path by which the pharmaceutical product is taken into or makes
+  // contact with the body.
+  @HiveField(17)
   List<MedicinalProductPharmaceutical_RouteOfAdministration> routeOfAdministration;
 
 MedicinalProductPharmaceutical(
@@ -58,11 +145,44 @@ MedicinalProductPharmaceutical(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 422)
 class MedicinalProductPharmaceutical_Characteristics {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  A coded characteristic.
+  @HiveField(3)
   CodeableConcept code;
+
+  //  The status of characteristic e.g. assigned or pending.
+  @HiveField(4)
   CodeableConcept status;
 
 MedicinalProductPharmaceutical_Characteristics(
@@ -78,16 +198,73 @@ MedicinalProductPharmaceutical_Characteristics(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 423)
 class MedicinalProductPharmaceutical_RouteOfAdministration {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Coded expression for the route.
+  @HiveField(3)
   CodeableConcept code;
+
+  //  The first dose (dose quantity) administered in humans can be
+  // specified, for a product under investigation, using a numerical value
+  // and its unit of measurement.
+  @HiveField(4)
   Quantity firstDose;
+
+  //  The maximum single dose that can be administered as per the protocol
+  // of a clinical trial can be specified using a numerical value and its
+  // unit of measurement.
+  @HiveField(5)
   Quantity maxSingleDose;
+
+  //  The maximum dose per day (maximum dose quantity to be administered in
+  // any one 24-h period) that can be administered as per the protocol
+  // referenced in the clinical trial authorisation.
+  @HiveField(6)
   Quantity maxDosePerDay;
+
+  //  The maximum dose per treatment period that can be administered as per
+  // the protocol referenced in the clinical trial authorisation.
+  @HiveField(7)
   Ratio maxDosePerTreatmentPeriod;
+
+  //  The maximum treatment period during which an Investigational Medicinal
+  // Product can be administered as per the protocol referenced in the
+  // clinical trial authorisation.
+  @HiveField(8)
   Duration maxTreatmentPeriod;
+
+  //  A species for which this route applies.
+  @HiveField(9)
   List<MedicinalProductPharmaceutical_TargetSpecies> targetSpecies;
 
 MedicinalProductPharmaceutical_RouteOfAdministration(
@@ -108,11 +285,45 @@ MedicinalProductPharmaceutical_RouteOfAdministration(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 424)
 class MedicinalProductPharmaceutical_TargetSpecies {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Coded expression for the species.
+  @HiveField(3)
   CodeableConcept code;
+
+  //  A species specific time during which consumption of animal product is
+  // not appropriate.
+  @HiveField(4)
   List<MedicinalProductPharmaceutical_WithdrawalPeriod> withdrawalPeriod;
 
 MedicinalProductPharmaceutical_TargetSpecies(
@@ -128,13 +339,53 @@ MedicinalProductPharmaceutical_TargetSpecies(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 425)
 class MedicinalProductPharmaceutical_WithdrawalPeriod {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Coded expression for the type of tissue for which the withdrawal
+  // period applues, e.g. meat, milk.
+  @HiveField(3)
   CodeableConcept tissue;
+
+  //  A value for the time.
+  @HiveField(4)
   Quantity value;
+
+  //  Extra information about the withdrawal period.
+  @HiveField(5)
   String supportingInformation;
+
+  //  Extensions for supportingInformation
+  @HiveField(6)
   Element elementSupportingInformation;
 
 MedicinalProductPharmaceutical_WithdrawalPeriod(
@@ -153,6 +404,263 @@ MedicinalProductPharmaceutical_WithdrawalPeriod(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class MedicinalProductPharmaceuticalAdapter
+    extends TypeAdapter<MedicinalProductPharmaceutical> {
+  @override
+  final typeId = 421;
+
+  @override
+  MedicinalProductPharmaceutical read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicinalProductPharmaceutical(
+      fields[12] as CodeableConcept,
+      (fields[17] as List)
+          ?.cast<MedicinalProductPharmaceutical_RouteOfAdministration>(),
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      unitOfPresentation: fields[13] as CodeableConcept,
+      ingredient: (fields[14] as List)?.cast<Reference>(),
+      device: (fields[15] as List)?.cast<Reference>(),
+      characteristics: (fields[16] as List)
+          ?.cast<MedicinalProductPharmaceutical_Characteristics>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MedicinalProductPharmaceutical obj) {
+    writer
+      ..writeByte(18)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.administrableDoseForm)
+      ..writeByte(13)
+      ..write(obj.unitOfPresentation)
+      ..writeByte(14)
+      ..write(obj.ingredient)
+      ..writeByte(15)
+      ..write(obj.device)
+      ..writeByte(16)
+      ..write(obj.characteristics)
+      ..writeByte(17)
+      ..write(obj.routeOfAdministration);
+  }
+}
+
+class MedicinalProductPharmaceutical_CharacteristicsAdapter
+    extends TypeAdapter<MedicinalProductPharmaceutical_Characteristics> {
+  @override
+  final typeId = 422;
+
+  @override
+  MedicinalProductPharmaceutical_Characteristics read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicinalProductPharmaceutical_Characteristics(
+      fields[3] as CodeableConcept,
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      status: fields[4] as CodeableConcept,
+    );
+  }
+
+  @override
+  void write(
+      BinaryWriter writer, MedicinalProductPharmaceutical_Characteristics obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code)
+      ..writeByte(4)
+      ..write(obj.status);
+  }
+}
+
+class MedicinalProductPharmaceutical_RouteOfAdministrationAdapter
+    extends TypeAdapter<MedicinalProductPharmaceutical_RouteOfAdministration> {
+  @override
+  final typeId = 423;
+
+  @override
+  MedicinalProductPharmaceutical_RouteOfAdministration read(
+      BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicinalProductPharmaceutical_RouteOfAdministration(
+      fields[3] as CodeableConcept,
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      firstDose: fields[4] as Quantity,
+      maxSingleDose: fields[5] as Quantity,
+      maxDosePerDay: fields[6] as Quantity,
+      maxDosePerTreatmentPeriod: fields[7] as Ratio,
+      maxTreatmentPeriod: fields[8] as Duration,
+      targetSpecies: (fields[9] as List)
+          ?.cast<MedicinalProductPharmaceutical_TargetSpecies>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer,
+      MedicinalProductPharmaceutical_RouteOfAdministration obj) {
+    writer
+      ..writeByte(10)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code)
+      ..writeByte(4)
+      ..write(obj.firstDose)
+      ..writeByte(5)
+      ..write(obj.maxSingleDose)
+      ..writeByte(6)
+      ..write(obj.maxDosePerDay)
+      ..writeByte(7)
+      ..write(obj.maxDosePerTreatmentPeriod)
+      ..writeByte(8)
+      ..write(obj.maxTreatmentPeriod)
+      ..writeByte(9)
+      ..write(obj.targetSpecies);
+  }
+}
+
+class MedicinalProductPharmaceutical_TargetSpeciesAdapter
+    extends TypeAdapter<MedicinalProductPharmaceutical_TargetSpecies> {
+  @override
+  final typeId = 424;
+
+  @override
+  MedicinalProductPharmaceutical_TargetSpecies read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicinalProductPharmaceutical_TargetSpecies(
+      fields[3] as CodeableConcept,
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      withdrawalPeriod: (fields[4] as List)
+          ?.cast<MedicinalProductPharmaceutical_WithdrawalPeriod>(),
+    );
+  }
+
+  @override
+  void write(
+      BinaryWriter writer, MedicinalProductPharmaceutical_TargetSpecies obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code)
+      ..writeByte(4)
+      ..write(obj.withdrawalPeriod);
+  }
+}
+
+class MedicinalProductPharmaceutical_WithdrawalPeriodAdapter
+    extends TypeAdapter<MedicinalProductPharmaceutical_WithdrawalPeriod> {
+  @override
+  final typeId = 425;
+
+  @override
+  MedicinalProductPharmaceutical_WithdrawalPeriod read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MedicinalProductPharmaceutical_WithdrawalPeriod(
+      fields[3] as CodeableConcept,
+      fields[4] as Quantity,
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      supportingInformation: fields[5] as String,
+      elementSupportingInformation: fields[6] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer,
+      MedicinalProductPharmaceutical_WithdrawalPeriod obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.tissue)
+      ..writeByte(4)
+      ..write(obj.value)
+      ..writeByte(5)
+      ..write(obj.supportingInformation)
+      ..writeByte(6)
+      ..write(obj.elementSupportingInformation);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

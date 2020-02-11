@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/fhirClasses/coding.dart';
@@ -12,47 +13,241 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 643)
 class ValueSet {
+
+  //  This is a ValueSet resource
+  @HiveField(0)
   final String resourceType= 'ValueSet';
+
+  //  The logical id of the resource, as used in the URL for the resource.
+  // Once assigned, this value never changes.
+  @HiveField(1)
   String id;
+
+  //  The metadata about the resource. This is content that is maintained by
+  // the infrastructure. Changes to the content might not always be
+  // associated with version changes to the resource.
+  @HiveField(2)
   Meta meta;
+
+  //  A reference to a set of rules that were followed when the resource was
+  // constructed, and which must be understood when processing the content.
+  // Often, this is a reference to an implementation guide that defines the
+  // special rules along with other profiles etc.
+  @HiveField(3)
   String implicitRules;
+
+  //  Extensions for implicitRules
+  @HiveField(4)
   Element elementImplicitRules;
+
+  //  The base language in which the resource is written.
+  @HiveField(5)
   String language;
+
+  //  Extensions for language
+  @HiveField(6)
   Element elementLanguage;
+
+  //  A human-readable narrative that contains a summary of the resource and
+  // can be used to represent the content of the resource to a human. The
+  // narrative need not encode all the structured data, but is required to
+  // contain sufficient detail to make it "clinically safe" for a human to
+  // just read the narrative. Resource definitions may define what content
+  // should be represented in the narrative to ensure clinical safety.
+  @HiveField(7)
   Narrative text;
+
+  //  These resources do not have an independent existence apart from the
+  // resource that contains them - they cannot be identified independently,
+  // and nor can they have their own independent transaction scope.
+  @HiveField(8)
   List<dynamic> contained;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource. To make the use of extensions
+  // safe and manageable, there is a strict set of governance  applied to
+  // the definition and use of extensions. Though any implementer can define
+  // an extension, there is a set of requirements that SHALL be met as part
+  // of the definition of the extension.
+  @HiveField(9)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource and that modifies the
+  // understanding of the element that contains it and/or the understanding
+  // of the containing element's descendants. Usually modifier elements
+  // provide negation or qualification. To make the use of extensions safe
+  // and manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer is allowed to
+  // define an extension, there is a set of requirements that SHALL be met
+  // as part of the definition of the extension. Applications processing a
+  // resource are required to check for modifier extensions. Modifier
+  // extensions SHALL NOT change the meaning of any elements on Resource or
+  // DomainResource (including cannot change the meaning of
+  // modifierExtension itself).
+  @HiveField(10)
   List<Extension> modifierExtension;
+
+  //  An absolute URI that is used to identify this value set when it is
+  // referenced in a specification, model, design or an instance; also
+  // called its canonical identifier. This SHOULD be globally unique and
+  // SHOULD be a literal address at which at which an authoritative instance
+  // of this value set is (or will be) published. This URL can be the target
+  // of a canonical reference. It SHALL remain the same when the value set
+  // is stored on different servers.
+  @HiveField(11)
   String url;
+
+  //  Extensions for url
+  @HiveField(12)
   Element elementUrl;
+
+  //  A formal identifier that is used to identify this value set when it is
+  // represented in other formats, or referenced in a specification, model,
+  // design or an instance.
+  @HiveField(13)
   List<Identifier> identifier;
+
+  //  The identifier that is used to identify this version of the value set
+  // when it is referenced in a specification, model, design or instance.
+  // This is an arbitrary value managed by the value set author and is not
+  // expected to be globally unique. For example, it might be a timestamp
+  // (e.g. yyyymmdd) if a managed version is not available. There is also no
+  // expectation that versions can be placed in a lexicographical sequence.
+  @HiveField(14)
   String version;
+
+  //  Extensions for version
+  @HiveField(15)
   Element elementVersion;
+
+  //  A natural language name identifying the value set. This name should be
+  // usable as an identifier for the module by machine processing
+  // applications such as code generation.
+  @HiveField(16)
   String name;
+
+  //  Extensions for name
+  @HiveField(17)
   Element elementName;
+
+  //  A short, descriptive, user-friendly title for the value set.
+  @HiveField(18)
   String title;
+
+  //  Extensions for title
+  @HiveField(19)
   Element elementTitle;
+
+  //  The status of this value set. Enables tracking the life-cycle of the
+  // content. The status of the value set applies to the value set
+  // definition (ValueSet.compose) and the associated ValueSet metadata.
+  // Expansions do not have a state.
+  @HiveField(20)
   String status; // <code> enum: draft/active/retired/unknown;
+
+  //  Extensions for status
+  @HiveField(21)
   Element elementStatus;
+
+  //  A Boolean value to indicate that this value set is authored for
+  // testing purposes (or education/evaluation/marketing) and is not
+  // intended to be used for genuine usage.
+  @HiveField(22)
   bool experimental;
+
+  //  Extensions for experimental
+  @HiveField(23)
   Element elementExperimental;
+
+  //  The date (and optionally time) when the value set was created or
+  // revised (e.g. the 'content logical definition').
+  @HiveField(24)
   DateTime date;
+
+  //  Extensions for date
+  @HiveField(25)
   Element elementDate;
+
+  //  The name of the organization or individual that published the value
+  // set.
+  @HiveField(26)
   String publisher;
+
+  //  Extensions for publisher
+  @HiveField(27)
   Element elementPublisher;
+
+  //  Contact details to assist a user in finding and communicating with the
+  // publisher.
+  @HiveField(28)
   List<ContactDetail> contact;
+
+  //  A free text natural language description of the value set from a
+  // consumer's perspective. The textual description specifies the span of
+  // meanings for concepts to be included within the Value Set Expansion,
+  // and also may specify the intended use and limitations of the Value Set.
+  @HiveField(29)
   String description;
+
+  //  Extensions for description
+  @HiveField(30)
   Element elementDescription;
+
+  //  The content was developed with a focus and intent of supporting the
+  // contexts that are listed. These contexts may be general categories
+  // (gender, age, ...) or may be references to specific programs (insurance
+  // plans, studies, ...) and may be used to assist with indexing and
+  // searching for appropriate value set instances.
+  @HiveField(31)
   List<UsageContext> useContext;
+
+  //  A legal or geographic region in which the value set is intended to be
+  // used.
+  @HiveField(32)
   List<CodeableConcept> jurisdiction;
+
+  //  If this is set to 'true', then no new versions of the content logical
+  // definition can be created.  Note: Other metadata might still change.
+  @HiveField(33)
   bool immutable;
+
+  //  Extensions for immutable
+  @HiveField(34)
   Element elementImmutable;
+
+  //  Explanation of why this value set is needed and why it has been
+  // designed as it has.
+  @HiveField(35)
   String purpose;
+
+  //  Extensions for purpose
+  @HiveField(36)
   Element elementPurpose;
+
+  //  A copyright statement relating to the value set and/or its contents.
+  // Copyright statements are generally legal restrictions on the use and
+  // publishing of the value set.
+  @HiveField(37)
   String copyright;
+
+  //  Extensions for copyright
+  @HiveField(38)
   Element elementCopyright;
+
+  //  A set of criteria that define the contents of the value set by
+  // including or excluding codes selected from the specified code system(s)
+  // that the value set draws from. This is also known as the Content
+  // Logical Definition (CLD).
+  @HiveField(39)
   ValueSet_Compose compose;
+
+  //  A value set can also be "expanded", where the value set is turned into
+  // a simple collection of enumerated codes. This element holds the
+  // expansion, if it has been performed.
+  @HiveField(40)
   ValueSet_Expansion expansion;
 
 ValueSet(
@@ -103,15 +298,69 @@ ValueSet(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 644)
 class ValueSet_Compose {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The Locked Date is  the effective date that is used to determine the
+  // version of all referenced Code Systems and Value Set Definitions
+  // included in the compose that are not already tied to a specific
+  // version.
+  @HiveField(3)
   String lockedDate;
+
+  //  Extensions for lockedDate
+  @HiveField(4)
   Element elementLockedDate;
+
+  //  Whether inactive codes - codes that are not approved for current use -
+  // are in the value set. If inactive = true, inactive codes are to be
+  // included in the expansion, if inactive = false, the inactive codes will
+  // not be included in the expansion. If absent, the behavior is determined
+  // by the implementation, or by the applicable $expand parameters (but
+  // generally, inactive codes would be expected to be included).
+  @HiveField(5)
   bool inactive;
+
+  //  Extensions for inactive
+  @HiveField(6)
   Element elementInactive;
+
+  //  Include one or more codes from a code system or other value set(s).
+  @HiveField(7)
   List<ValueSet_Include> include;
+
+  //  Exclude one or more codes from the value set based on code system
+  // filters and/or other value sets.
+  @HiveField(8)
   List<ValueSet_Include> exclude;
 
 ValueSet_Compose(
@@ -131,16 +380,72 @@ ValueSet_Compose(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 645)
 class ValueSet_Include {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  An absolute URI which is the code system from which the selected codes
+  // come from.
+  @HiveField(3)
   String system;
+
+  //  Extensions for system
+  @HiveField(4)
   Element elementSystem;
+
+  //  The version of the code system that the codes are selected from, or
+  // the special version '*' for all versions.
+  @HiveField(5)
   String version;
+
+  //  Extensions for version
+  @HiveField(6)
   Element elementVersion;
+
+  //  Specifies a concept to be included or excluded.
+  @HiveField(7)
   List<ValueSet_Concept> concept;
+
+  //  Select concepts by specify a matching criterion based on the
+  // properties (including relationships) defined by the system, or on
+  // filters defined by the system. If multiple filters are specified, they
+  // SHALL all be true.
+  @HiveField(8)
   List<ValueSet_Filter> filter;
+
+  //  Selects the concepts found in this value set (based on its value set
+  // definition). This is an absolute URI that is a reference to
+  // ValueSet.url.  If multiple value sets are specified this includes the
+  // union of the contents of all of the referenced value sets.
+  @HiveField(9)
   List<String> valueSet;
 
 ValueSet_Include(
@@ -161,14 +466,60 @@ ValueSet_Include(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 646)
 class ValueSet_Concept {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Specifies a code for the concept to be included or excluded.
+  @HiveField(3)
   String code;
+
+  //  Extensions for code
+  @HiveField(4)
   Element elementCode;
+
+  //  The text to display to the user for this concept in the context of
+  // this valueset. If no display is provided, then applications using the
+  // value set use the display specified for the code by the system.
+  @HiveField(5)
   String display;
+
+  //  Extensions for display
+  @HiveField(6)
   Element elementDisplay;
+
+  //  Additional representations for this concept when used in this value
+  // set - other languages, aliases, specialized purposes, used for
+  // particular purposes, etc.
+  @HiveField(7)
   List<ValueSet_Designation> designation;
 
 ValueSet_Concept(
@@ -187,14 +538,56 @@ ValueSet_Concept(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 647)
 class ValueSet_Designation {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The language this designation is defined for.
+  @HiveField(3)
   String language;
+
+  //  Extensions for language
+  @HiveField(4)
   Element elementLanguage;
+
+  //  A code that represents types of uses of designations.
+  @HiveField(5)
   Coding use;
+
+  //  The text value for this designation.
+  @HiveField(6)
   String value;
+
+  //  Extensions for value
+  @HiveField(7)
   Element elementValue;
 
 ValueSet_Designation(
@@ -213,15 +606,66 @@ ValueSet_Designation(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 648)
 class ValueSet_Filter {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  A code that identifies a property or a filter defined in the code
+  // system.
+  @HiveField(3)
   String property;
+
+  //  Extensions for property
+  @HiveField(4)
   Element elementProperty;
+
+  //  The kind of operation to perform as a part of the filter criteria.
+  @HiveField(5)
   String op; // <code> enum: =/is-a/descendent-of/is-not-a/regex/in/not-in/generalizes/exists;
+
+  //  Extensions for op
+  @HiveField(6)
   Element elementOp;
+
+  //  The match value may be either a code defined by the system, or a
+  // string value, which is a regex match on the literal string of the
+  // property value  (if the filter represents a property defined in
+  // CodeSystem) or of the system filter value (if the filter represents a
+  // filter defined in CodeSystem) when the operation is 'regex', or one of
+  // the values (true and false), when the operation is 'exists'.
+  @HiveField(7)
   String value;
+
+  //  Extensions for value
+  @HiveField(8)
   Element elementValue;
 
 ValueSet_Filter(
@@ -241,19 +685,88 @@ ValueSet_Filter(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 649)
 class ValueSet_Expansion {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  An identifier that uniquely identifies this expansion of the valueset,
+  // based on a unique combination of the provided parameters, the system
+  // default parameters, and the underlying system code system versions etc.
+  // Systems may re-use the same identifier as long as those factors remain
+  // the same, and the expansion is the same, but are not required to do so.
+  // This is a business identifier.
+  @HiveField(3)
   String identifier;
+
+  //  Extensions for identifier
+  @HiveField(4)
   Element elementIdentifier;
+
+  //  The time at which the expansion was produced by the expanding system.
+  @HiveField(5)
   DateTime timestamp;
+
+  //  Extensions for timestamp
+  @HiveField(6)
   Element elementTimestamp;
+
+  //  The total number of concepts in the expansion. If the number of
+  // concept nodes in this resource is less than the stated number, then the
+  // server can return more using the offset parameter.
+  @HiveField(7)
   int total;
+
+  //  Extensions for total
+  @HiveField(8)
   Element elementTotal;
+
+  //  If paging is being used, the offset at which this resource starts. 
+  // I.e. this resource is a partial view into the expansion. If paging is
+  // not being used, this element SHALL NOT be present.
+  @HiveField(9)
   int offset;
+
+  //  Extensions for offset
+  @HiveField(10)
   Element elementOffset;
+
+  //  A parameter that controlled the expansion process. These parameters
+  // may be used by users of expanded value sets to check whether the
+  // expansion is suitable for a particular purpose, or to pick the correct
+  // expansion.
+  @HiveField(11)
   List<ValueSet_Parameter> parameter;
+
+  //  The codes that are contained in the value set expansion.
+  @HiveField(12)
   List<ValueSet_Contains> contains;
 
 ValueSet_Expansion(
@@ -277,25 +790,100 @@ ValueSet_Expansion(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 650)
 class ValueSet_Parameter {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Name of the input parameter to the $expand operation; may be a
+  // server-assigned name for additional default or other server-supplied
+  // parameters used to control the expansion process.
+  @HiveField(3)
   String name;
+
+  //  Extensions for name
+  @HiveField(4)
   Element elementName;
+
+  //  The value of the parameter.
+  @HiveField(5)
   String valueString; //  pattern: ^[ \r\n\t\S]+$
+
+  //  Extensions for valueString
+  @HiveField(6)
   Element elementValueString;
+
+  //  The value of the parameter.
+  @HiveField(7)
   bool valueBoolean; //  pattern: ^true|false$
+
+  //  Extensions for valueBoolean
+  @HiveField(8)
   Element elementValueBoolean;
+
+  //  The value of the parameter.
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
+
+  //  Extensions for valueInteger
+  @HiveField(10)
   Element elementValueInteger;
+
+  //  The value of the parameter.
   double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+
+  //  Extensions for valueDecimal
+  @HiveField(12)
   Element elementValueDecimal;
+
+  //  The value of the parameter.
+  @HiveField(13)
   String valueUri; //  pattern: ^\S*$
+
+  //  Extensions for valueUri
+  @HiveField(14)
   Element elementValueUri;
+
+  //  The value of the parameter.
+  @HiveField(15)
   String valueCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
+
+  //  Extensions for valueCode
+  @HiveField(16)
   Element elementValueCode;
+
+  //  The value of the parameter.
+  @HiveField(17)
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+
+  //  Extensions for valueDateTime
+  @HiveField(18)
   Element elementValueDateTime;
 
 ValueSet_Parameter(
@@ -325,23 +913,108 @@ ValueSet_Parameter(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 651)
 class ValueSet_Contains {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  An absolute URI which is the code system in which the code for this
+  // item in the expansion is defined.
+  @HiveField(3)
   String system;
+
+  //  Extensions for system
+  @HiveField(4)
   Element elementSystem;
+
+  //  If true, this entry is included in the expansion for navigational
+  // purposes, and the user cannot select the code directly as a proper
+  // value.
+  @HiveField(5)
   bool abstract;
+
+  //  Extensions for abstract
+  @HiveField(6)
   Element elementAbstract;
+
+  //  If the concept is inactive in the code system that defines it.
+  // Inactive codes are those that are no longer to be used, but are
+  // maintained by the code system for understanding legacy data. It might
+  // not be known or specified whether an concept is inactive (and it may
+  // depend on the context of use).
+  @HiveField(7)
   bool inactive;
+
+  //  Extensions for inactive
+  @HiveField(8)
   Element elementInactive;
+
+  //  The version of the code system from this code was taken. Note that a
+  // well-maintained code system does not need the version reported, because
+  // the meaning of codes is consistent across versions. However this cannot
+  // consistently be assured, and when the meaning is not guaranteed to be
+  // consistent, the version SHOULD be exchanged.
+  @HiveField(9)
   String version;
+
+  //  Extensions for version
+  @HiveField(10)
   Element elementVersion;
+
+  //  The code for this item in the expansion hierarchy. If this code is
+  // missing the entry in the hierarchy is a place holder (abstract) and
+  // does not represent a valid code in the value set.
+  @HiveField(11)
   String code;
+
+  //  Extensions for code
+  @HiveField(12)
   Element elementCode;
+
+  //  The recommended display for this item in the expansion.
+  @HiveField(13)
   String display;
+
+  //  Extensions for display
+  @HiveField(14)
   Element elementDisplay;
+
+  //  Additional representations for this item - other languages, aliases,
+  // specialized purposes, used for particular purposes, etc. These are
+  // relevant when the conditions of the expansion do not fix to a single
+  // correct representation.
+  @HiveField(15)
   List<ValueSet_Designation> designation;
+
+  //  Other codes and entries contained under this entry in the hierarchy.
+  @HiveField(16)
   List<ValueSet_Contains> contains;
 
 ValueSet_Contains(
@@ -370,6 +1043,594 @@ ValueSet_Contains(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class ValueSetAdapter extends TypeAdapter<ValueSet> {
+  @override
+  final typeId = 643;
+
+  @override
+  ValueSet read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ValueSet(
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      url: fields[11] as String,
+      elementUrl: fields[12] as Element,
+      identifier: (fields[13] as List)?.cast<Identifier>(),
+      version: fields[14] as String,
+      elementVersion: fields[15] as Element,
+      name: fields[16] as String,
+      elementName: fields[17] as Element,
+      title: fields[18] as String,
+      elementTitle: fields[19] as Element,
+      status: fields[20] as String,
+      elementStatus: fields[21] as Element,
+      experimental: fields[22] as bool,
+      elementExperimental: fields[23] as Element,
+      date: fields[24] as DateTime,
+      elementDate: fields[25] as Element,
+      publisher: fields[26] as String,
+      elementPublisher: fields[27] as Element,
+      contact: (fields[28] as List)?.cast<ContactDetail>(),
+      description: fields[29] as String,
+      elementDescription: fields[30] as Element,
+      useContext: (fields[31] as List)?.cast<UsageContext>(),
+      jurisdiction: (fields[32] as List)?.cast<CodeableConcept>(),
+      immutable: fields[33] as bool,
+      elementImmutable: fields[34] as Element,
+      purpose: fields[35] as String,
+      elementPurpose: fields[36] as Element,
+      copyright: fields[37] as String,
+      elementCopyright: fields[38] as Element,
+      compose: fields[39] as ValueSet_Compose,
+      expansion: fields[40] as ValueSet_Expansion,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ValueSet obj) {
+    writer
+      ..writeByte(41)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.url)
+      ..writeByte(12)
+      ..write(obj.elementUrl)
+      ..writeByte(13)
+      ..write(obj.identifier)
+      ..writeByte(14)
+      ..write(obj.version)
+      ..writeByte(15)
+      ..write(obj.elementVersion)
+      ..writeByte(16)
+      ..write(obj.name)
+      ..writeByte(17)
+      ..write(obj.elementName)
+      ..writeByte(18)
+      ..write(obj.title)
+      ..writeByte(19)
+      ..write(obj.elementTitle)
+      ..writeByte(20)
+      ..write(obj.status)
+      ..writeByte(21)
+      ..write(obj.elementStatus)
+      ..writeByte(22)
+      ..write(obj.experimental)
+      ..writeByte(23)
+      ..write(obj.elementExperimental)
+      ..writeByte(24)
+      ..write(obj.date)
+      ..writeByte(25)
+      ..write(obj.elementDate)
+      ..writeByte(26)
+      ..write(obj.publisher)
+      ..writeByte(27)
+      ..write(obj.elementPublisher)
+      ..writeByte(28)
+      ..write(obj.contact)
+      ..writeByte(29)
+      ..write(obj.description)
+      ..writeByte(30)
+      ..write(obj.elementDescription)
+      ..writeByte(31)
+      ..write(obj.useContext)
+      ..writeByte(32)
+      ..write(obj.jurisdiction)
+      ..writeByte(33)
+      ..write(obj.immutable)
+      ..writeByte(34)
+      ..write(obj.elementImmutable)
+      ..writeByte(35)
+      ..write(obj.purpose)
+      ..writeByte(36)
+      ..write(obj.elementPurpose)
+      ..writeByte(37)
+      ..write(obj.copyright)
+      ..writeByte(38)
+      ..write(obj.elementCopyright)
+      ..writeByte(39)
+      ..write(obj.compose)
+      ..writeByte(40)
+      ..write(obj.expansion);
+  }
+}
+
+class ValueSet_ComposeAdapter extends TypeAdapter<ValueSet_Compose> {
+  @override
+  final typeId = 644;
+
+  @override
+  ValueSet_Compose read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ValueSet_Compose(
+      (fields[7] as List)?.cast<ValueSet_Include>(),
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      lockedDate: fields[3] as String,
+      elementLockedDate: fields[4] as Element,
+      inactive: fields[5] as bool,
+      elementInactive: fields[6] as Element,
+      exclude: (fields[8] as List)?.cast<ValueSet_Include>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ValueSet_Compose obj) {
+    writer
+      ..writeByte(9)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.lockedDate)
+      ..writeByte(4)
+      ..write(obj.elementLockedDate)
+      ..writeByte(5)
+      ..write(obj.inactive)
+      ..writeByte(6)
+      ..write(obj.elementInactive)
+      ..writeByte(7)
+      ..write(obj.include)
+      ..writeByte(8)
+      ..write(obj.exclude);
+  }
+}
+
+class ValueSet_IncludeAdapter extends TypeAdapter<ValueSet_Include> {
+  @override
+  final typeId = 645;
+
+  @override
+  ValueSet_Include read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ValueSet_Include(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      system: fields[3] as String,
+      elementSystem: fields[4] as Element,
+      version: fields[5] as String,
+      elementVersion: fields[6] as Element,
+      concept: (fields[7] as List)?.cast<ValueSet_Concept>(),
+      filter: (fields[8] as List)?.cast<ValueSet_Filter>(),
+      valueSet: (fields[9] as List)?.cast<String>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ValueSet_Include obj) {
+    writer
+      ..writeByte(10)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.system)
+      ..writeByte(4)
+      ..write(obj.elementSystem)
+      ..writeByte(5)
+      ..write(obj.version)
+      ..writeByte(6)
+      ..write(obj.elementVersion)
+      ..writeByte(7)
+      ..write(obj.concept)
+      ..writeByte(8)
+      ..write(obj.filter)
+      ..writeByte(9)
+      ..write(obj.valueSet);
+  }
+}
+
+class ValueSet_ConceptAdapter extends TypeAdapter<ValueSet_Concept> {
+  @override
+  final typeId = 646;
+
+  @override
+  ValueSet_Concept read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ValueSet_Concept(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      code: fields[3] as String,
+      elementCode: fields[4] as Element,
+      display: fields[5] as String,
+      elementDisplay: fields[6] as Element,
+      designation: (fields[7] as List)?.cast<ValueSet_Designation>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ValueSet_Concept obj) {
+    writer
+      ..writeByte(8)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code)
+      ..writeByte(4)
+      ..write(obj.elementCode)
+      ..writeByte(5)
+      ..write(obj.display)
+      ..writeByte(6)
+      ..write(obj.elementDisplay)
+      ..writeByte(7)
+      ..write(obj.designation);
+  }
+}
+
+class ValueSet_DesignationAdapter extends TypeAdapter<ValueSet_Designation> {
+  @override
+  final typeId = 647;
+
+  @override
+  ValueSet_Designation read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ValueSet_Designation(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      language: fields[3] as String,
+      elementLanguage: fields[4] as Element,
+      use: fields[5] as Coding,
+      value: fields[6] as String,
+      elementValue: fields[7] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ValueSet_Designation obj) {
+    writer
+      ..writeByte(8)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.language)
+      ..writeByte(4)
+      ..write(obj.elementLanguage)
+      ..writeByte(5)
+      ..write(obj.use)
+      ..writeByte(6)
+      ..write(obj.value)
+      ..writeByte(7)
+      ..write(obj.elementValue);
+  }
+}
+
+class ValueSet_FilterAdapter extends TypeAdapter<ValueSet_Filter> {
+  @override
+  final typeId = 648;
+
+  @override
+  ValueSet_Filter read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ValueSet_Filter(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      property: fields[3] as String,
+      elementProperty: fields[4] as Element,
+      op: fields[5] as String,
+      elementOp: fields[6] as Element,
+      value: fields[7] as String,
+      elementValue: fields[8] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ValueSet_Filter obj) {
+    writer
+      ..writeByte(9)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.property)
+      ..writeByte(4)
+      ..write(obj.elementProperty)
+      ..writeByte(5)
+      ..write(obj.op)
+      ..writeByte(6)
+      ..write(obj.elementOp)
+      ..writeByte(7)
+      ..write(obj.value)
+      ..writeByte(8)
+      ..write(obj.elementValue);
+  }
+}
+
+class ValueSet_ExpansionAdapter extends TypeAdapter<ValueSet_Expansion> {
+  @override
+  final typeId = 649;
+
+  @override
+  ValueSet_Expansion read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ValueSet_Expansion(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      identifier: fields[3] as String,
+      elementIdentifier: fields[4] as Element,
+      timestamp: fields[5] as DateTime,
+      elementTimestamp: fields[6] as Element,
+      total: fields[7] as int,
+      elementTotal: fields[8] as Element,
+      offset: fields[9] as int,
+      elementOffset: fields[10] as Element,
+      parameter: (fields[11] as List)?.cast<ValueSet_Parameter>(),
+      contains: (fields[12] as List)?.cast<ValueSet_Contains>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ValueSet_Expansion obj) {
+    writer
+      ..writeByte(13)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.identifier)
+      ..writeByte(4)
+      ..write(obj.elementIdentifier)
+      ..writeByte(5)
+      ..write(obj.timestamp)
+      ..writeByte(6)
+      ..write(obj.elementTimestamp)
+      ..writeByte(7)
+      ..write(obj.total)
+      ..writeByte(8)
+      ..write(obj.elementTotal)
+      ..writeByte(9)
+      ..write(obj.offset)
+      ..writeByte(10)
+      ..write(obj.elementOffset)
+      ..writeByte(11)
+      ..write(obj.parameter)
+      ..writeByte(12)
+      ..write(obj.contains);
+  }
+}
+
+class ValueSet_ParameterAdapter extends TypeAdapter<ValueSet_Parameter> {
+  @override
+  final typeId = 650;
+
+  @override
+  ValueSet_Parameter read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ValueSet_Parameter(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      name: fields[3] as String,
+      elementName: fields[4] as Element,
+      valueString: fields[5] as String,
+      elementValueString: fields[6] as Element,
+      valueBoolean: fields[7] as bool,
+      elementValueBoolean: fields[8] as Element,
+      elementValueInteger: fields[10] as Element,
+      elementValueDecimal: fields[12] as Element,
+      valueUri: fields[13] as String,
+      elementValueUri: fields[14] as Element,
+      valueCode: fields[15] as String,
+      elementValueCode: fields[16] as Element,
+      valueDateTime: fields[17] as String,
+      elementValueDateTime: fields[18] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ValueSet_Parameter obj) {
+    writer
+      ..writeByte(17)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.name)
+      ..writeByte(4)
+      ..write(obj.elementName)
+      ..writeByte(5)
+      ..write(obj.valueString)
+      ..writeByte(6)
+      ..write(obj.elementValueString)
+      ..writeByte(7)
+      ..write(obj.valueBoolean)
+      ..writeByte(8)
+      ..write(obj.elementValueBoolean)
+      ..writeByte(10)
+      ..write(obj.elementValueInteger)
+      ..writeByte(12)
+      ..write(obj.elementValueDecimal)
+      ..writeByte(13)
+      ..write(obj.valueUri)
+      ..writeByte(14)
+      ..write(obj.elementValueUri)
+      ..writeByte(15)
+      ..write(obj.valueCode)
+      ..writeByte(16)
+      ..write(obj.elementValueCode)
+      ..writeByte(17)
+      ..write(obj.valueDateTime)
+      ..writeByte(18)
+      ..write(obj.elementValueDateTime);
+  }
+}
+
+class ValueSet_ContainsAdapter extends TypeAdapter<ValueSet_Contains> {
+  @override
+  final typeId = 651;
+
+  @override
+  ValueSet_Contains read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ValueSet_Contains(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      system: fields[3] as String,
+      elementSystem: fields[4] as Element,
+      abstract: fields[5] as bool,
+      elementAbstract: fields[6] as Element,
+      inactive: fields[7] as bool,
+      elementInactive: fields[8] as Element,
+      version: fields[9] as String,
+      elementVersion: fields[10] as Element,
+      code: fields[11] as String,
+      elementCode: fields[12] as Element,
+      display: fields[13] as String,
+      elementDisplay: fields[14] as Element,
+      designation: (fields[15] as List)?.cast<ValueSet_Designation>(),
+      contains: (fields[16] as List)?.cast<ValueSet_Contains>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ValueSet_Contains obj) {
+    writer
+      ..writeByte(17)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.system)
+      ..writeByte(4)
+      ..write(obj.elementSystem)
+      ..writeByte(5)
+      ..write(obj.abstract)
+      ..writeByte(6)
+      ..write(obj.elementAbstract)
+      ..writeByte(7)
+      ..write(obj.inactive)
+      ..writeByte(8)
+      ..write(obj.elementInactive)
+      ..writeByte(9)
+      ..write(obj.version)
+      ..writeByte(10)
+      ..write(obj.elementVersion)
+      ..writeByte(11)
+      ..write(obj.code)
+      ..writeByte(12)
+      ..write(obj.elementCode)
+      ..writeByte(13)
+      ..write(obj.display)
+      ..writeByte(14)
+      ..write(obj.elementDisplay)
+      ..writeByte(15)
+      ..write(obj.designation)
+      ..writeByte(16)
+      ..write(obj.contains);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

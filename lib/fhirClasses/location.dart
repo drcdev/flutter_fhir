@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -13,40 +14,189 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 349)
 class Location {
+
+  //  This is a Location resource
+  @HiveField(0)
   final String resourceType= 'Location';
+
+  //  The logical id of the resource, as used in the URL for the resource.
+  // Once assigned, this value never changes.
+  @HiveField(1)
   String id;
+
+  //  The metadata about the resource. This is content that is maintained by
+  // the infrastructure. Changes to the content might not always be
+  // associated with version changes to the resource.
+  @HiveField(2)
   Meta meta;
+
+  //  A reference to a set of rules that were followed when the resource was
+  // constructed, and which must be understood when processing the content.
+  // Often, this is a reference to an implementation guide that defines the
+  // special rules along with other profiles etc.
+  @HiveField(3)
   String implicitRules;
+
+  //  Extensions for implicitRules
+  @HiveField(4)
   Element elementImplicitRules;
+
+  //  The base language in which the resource is written.
+  @HiveField(5)
   String language;
+
+  //  Extensions for language
+  @HiveField(6)
   Element elementLanguage;
+
+  //  A human-readable narrative that contains a summary of the resource and
+  // can be used to represent the content of the resource to a human. The
+  // narrative need not encode all the structured data, but is required to
+  // contain sufficient detail to make it "clinically safe" for a human to
+  // just read the narrative. Resource definitions may define what content
+  // should be represented in the narrative to ensure clinical safety.
+  @HiveField(7)
   Narrative text;
+
+  //  These resources do not have an independent existence apart from the
+  // resource that contains them - they cannot be identified independently,
+  // and nor can they have their own independent transaction scope.
+  @HiveField(8)
   List<dynamic> contained;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource. To make the use of extensions
+  // safe and manageable, there is a strict set of governance  applied to
+  // the definition and use of extensions. Though any implementer can define
+  // an extension, there is a set of requirements that SHALL be met as part
+  // of the definition of the extension.
+  @HiveField(9)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource and that modifies the
+  // understanding of the element that contains it and/or the understanding
+  // of the containing element's descendants. Usually modifier elements
+  // provide negation or qualification. To make the use of extensions safe
+  // and manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer is allowed to
+  // define an extension, there is a set of requirements that SHALL be met
+  // as part of the definition of the extension. Applications processing a
+  // resource are required to check for modifier extensions. Modifier
+  // extensions SHALL NOT change the meaning of any elements on Resource or
+  // DomainResource (including cannot change the meaning of
+  // modifierExtension itself).
+  @HiveField(10)
   List<Extension> modifierExtension;
+
+  //  Unique code or number identifying the location to its users.
+  @HiveField(11)
   List<Identifier> identifier;
+
+  //  The status property covers the general availability of the resource,
+  // not the current value which may be covered by the operationStatus, or
+  // by a schedule/slots if they are configured for the location.
+  @HiveField(12)
   String status; // <code> enum: active/suspended/inactive;
+
+  //  Extensions for status
+  @HiveField(13)
   Element elementStatus;
+
+  //  The operational status covers operation values most relevant to beds
+  // (but can also apply to rooms/units/chairs/etc. such as an isolation
+  // unit/dialysis chair). This typically covers concepts such as
+  // contamination, housekeeping, and other activities like maintenance.
+  @HiveField(14)
   Coding operationalStatus;
+
+  //  Name of the location as used by humans. Does not need to be unique.
+  @HiveField(15)
   String name;
+
+  //  Extensions for name
+  @HiveField(16)
   Element elementName;
+
+  //  A list of alternate names that the location is known as, or was known
+  // as, in the past.
+  @HiveField(17)
   List<String> alias;
+
+  //  Extensions for alias
+  @HiveField(18)
   List<Element> elementAlias;
+
+  //  Description of the Location, which helps in finding or referencing the
+  // place.
+  @HiveField(19)
   String description;
+
+  //  Extensions for description
+  @HiveField(20)
   Element elementDescription;
+
+  //  Indicates whether a resource instance represents a specific location
+  // or a class of locations.
+  @HiveField(21)
   String mode; // <code> enum: instance/kind;
+
+  //  Extensions for mode
+  @HiveField(22)
   Element elementMode;
+
+  //  Indicates the type of function performed at the location.
+  @HiveField(23)
   List<CodeableConcept> type;
+
+  //  The contact details of communication devices available at the
+  // location. This can include phone numbers, fax numbers, mobile numbers,
+  // email addresses and web sites.
+  @HiveField(24)
   List<ContactPoint> telecom;
+
+  //  Physical location.
+  @HiveField(25)
   Address address;
+
+  //  Physical form of the location, e.g. building, room, vehicle, road.
+  @HiveField(26)
   CodeableConcept physicalType;
+
+  //  The absolute geographic location of the Location, expressed using the
+  // WGS84 datum (This is the same co-ordinate system used in KML).
+  @HiveField(27)
   Location_Position position;
+
+  //  The organization responsible for the provisioning and upkeep of the
+  // location.
+  @HiveField(28)
   Reference managingOrganization;
+
+  //  Another Location of which this Location is physically a part of.
+  @HiveField(29)
   Reference partOf;
+
+  //  What days/times during a week is this location usually open.
+  @HiveField(30)
   List<Location_HoursOfOperation> hoursOfOperation;
+
+  //  A description of when the locations opening ours are different to
+  // normal, e.g. public holiday availability. Succinctly describing all
+  // possible exceptions to normal site availability as detailed in the
+  // opening hours Times.
+  @HiveField(31)
   String availabilityExceptions;
+
+  //  Extensions for availabilityExceptions
+  @HiveField(32)
   Element elementAvailabilityExceptions;
+
+  //  Technical endpoints providing access to services operated for the
+  // location.
+  @HiveField(33)
   List<Reference> endpoint;
 
 Location(
@@ -90,15 +240,63 @@ Location(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 350)
 class Location_Position {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Longitude. The value domain and the interpretation are the same as for
+  // the text of the longitude element in KML (see notes below).
+  @HiveField(3)
   double longitude;
+
+  //  Extensions for longitude
+  @HiveField(4)
   Element elementLongitude;
+
+  //  Latitude. The value domain and the interpretation are the same as for
+  // the text of the latitude element in KML (see notes below).
+  @HiveField(5)
   double latitude;
+
+  //  Extensions for latitude
+  @HiveField(6)
   Element elementLatitude;
+
+  //  Altitude. The value domain and the interpretation are the same as for
+  // the text of the altitude element in KML (see notes below).
+  @HiveField(7)
   double altitude;
+
+  //  Extensions for altitude
+  @HiveField(8)
   Element elementAltitude;
 
 Location_Position(
@@ -118,17 +316,69 @@ Location_Position(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 351)
 class Location_HoursOfOperation {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Indicates which days of the week are available between the start and
+  // end Times.
+  @HiveField(3)
   List<String> daysOfWeek;
+
+  //  Extensions for daysOfWeek
+  @HiveField(4)
   List<Element> elementDaysOfWeek;
+
+  //  The Location is open all day.
+  @HiveField(5)
   bool allDay;
+
+  //  Extensions for allDay
+  @HiveField(6)
   Element elementAllDay;
+
+  //  Time that the Location opens.
+  @HiveField(7)
   String openingTime;
+
+  //  Extensions for openingTime
+  @HiveField(8)
   Element elementOpeningTime;
+
+  //  Time that the Location closes.
+  @HiveField(9)
   String closingTime;
+
+  //  Extensions for closingTime
+  @HiveField(10)
   Element elementClosingTime;
 
 Location_HoursOfOperation(
@@ -151,6 +401,235 @@ Location_HoursOfOperation(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class LocationAdapter extends TypeAdapter<Location> {
+  @override
+  final typeId = 349;
+
+  @override
+  Location read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Location(
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      status: fields[12] as String,
+      elementStatus: fields[13] as Element,
+      operationalStatus: fields[14] as Coding,
+      name: fields[15] as String,
+      elementName: fields[16] as Element,
+      alias: (fields[17] as List)?.cast<String>(),
+      elementAlias: (fields[18] as List)?.cast<Element>(),
+      description: fields[19] as String,
+      elementDescription: fields[20] as Element,
+      mode: fields[21] as String,
+      elementMode: fields[22] as Element,
+      type: (fields[23] as List)?.cast<CodeableConcept>(),
+      telecom: (fields[24] as List)?.cast<ContactPoint>(),
+      address: fields[25] as Address,
+      physicalType: fields[26] as CodeableConcept,
+      position: fields[27] as Location_Position,
+      managingOrganization: fields[28] as Reference,
+      partOf: fields[29] as Reference,
+      hoursOfOperation: (fields[30] as List)?.cast<Location_HoursOfOperation>(),
+      availabilityExceptions: fields[31] as String,
+      elementAvailabilityExceptions: fields[32] as Element,
+      endpoint: (fields[33] as List)?.cast<Reference>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Location obj) {
+    writer
+      ..writeByte(34)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.status)
+      ..writeByte(13)
+      ..write(obj.elementStatus)
+      ..writeByte(14)
+      ..write(obj.operationalStatus)
+      ..writeByte(15)
+      ..write(obj.name)
+      ..writeByte(16)
+      ..write(obj.elementName)
+      ..writeByte(17)
+      ..write(obj.alias)
+      ..writeByte(18)
+      ..write(obj.elementAlias)
+      ..writeByte(19)
+      ..write(obj.description)
+      ..writeByte(20)
+      ..write(obj.elementDescription)
+      ..writeByte(21)
+      ..write(obj.mode)
+      ..writeByte(22)
+      ..write(obj.elementMode)
+      ..writeByte(23)
+      ..write(obj.type)
+      ..writeByte(24)
+      ..write(obj.telecom)
+      ..writeByte(25)
+      ..write(obj.address)
+      ..writeByte(26)
+      ..write(obj.physicalType)
+      ..writeByte(27)
+      ..write(obj.position)
+      ..writeByte(28)
+      ..write(obj.managingOrganization)
+      ..writeByte(29)
+      ..write(obj.partOf)
+      ..writeByte(30)
+      ..write(obj.hoursOfOperation)
+      ..writeByte(31)
+      ..write(obj.availabilityExceptions)
+      ..writeByte(32)
+      ..write(obj.elementAvailabilityExceptions)
+      ..writeByte(33)
+      ..write(obj.endpoint);
+  }
+}
+
+class Location_PositionAdapter extends TypeAdapter<Location_Position> {
+  @override
+  final typeId = 350;
+
+  @override
+  Location_Position read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Location_Position(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      longitude: fields[3] as double,
+      elementLongitude: fields[4] as Element,
+      latitude: fields[5] as double,
+      elementLatitude: fields[6] as Element,
+      altitude: fields[7] as double,
+      elementAltitude: fields[8] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Location_Position obj) {
+    writer
+      ..writeByte(9)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.longitude)
+      ..writeByte(4)
+      ..write(obj.elementLongitude)
+      ..writeByte(5)
+      ..write(obj.latitude)
+      ..writeByte(6)
+      ..write(obj.elementLatitude)
+      ..writeByte(7)
+      ..write(obj.altitude)
+      ..writeByte(8)
+      ..write(obj.elementAltitude);
+  }
+}
+
+class Location_HoursOfOperationAdapter
+    extends TypeAdapter<Location_HoursOfOperation> {
+  @override
+  final typeId = 351;
+
+  @override
+  Location_HoursOfOperation read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Location_HoursOfOperation(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      daysOfWeek: (fields[3] as List)?.cast<String>(),
+      elementDaysOfWeek: (fields[4] as List)?.cast<Element>(),
+      allDay: fields[5] as bool,
+      elementAllDay: fields[6] as Element,
+      openingTime: fields[7] as String,
+      elementOpeningTime: fields[8] as Element,
+      closingTime: fields[9] as String,
+      elementClosingTime: fields[10] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Location_HoursOfOperation obj) {
+    writer
+      ..writeByte(11)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.daysOfWeek)
+      ..writeByte(4)
+      ..write(obj.elementDaysOfWeek)
+      ..writeByte(5)
+      ..write(obj.allDay)
+      ..writeByte(6)
+      ..write(obj.elementAllDay)
+      ..writeByte(7)
+      ..write(obj.openingTime)
+      ..writeByte(8)
+      ..write(obj.elementOpeningTime)
+      ..writeByte(9)
+      ..write(obj.closingTime)
+      ..writeByte(10)
+      ..write(obj.elementClosingTime);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

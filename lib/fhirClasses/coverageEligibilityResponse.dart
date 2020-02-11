@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/fhirClasses/money.dart';
@@ -12,40 +13,183 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 200)
 class CoverageEligibilityResponse {
+
+  //  This is a CoverageEligibilityResponse resource
+  @HiveField(0)
   final String resourceType= 'CoverageEligibilityResponse';
+
+  //  The logical id of the resource, as used in the URL for the resource.
+  // Once assigned, this value never changes.
+  @HiveField(1)
   String id;
+
+  //  The metadata about the resource. This is content that is maintained by
+  // the infrastructure. Changes to the content might not always be
+  // associated with version changes to the resource.
+  @HiveField(2)
   Meta meta;
+
+  //  A reference to a set of rules that were followed when the resource was
+  // constructed, and which must be understood when processing the content.
+  // Often, this is a reference to an implementation guide that defines the
+  // special rules along with other profiles etc.
+  @HiveField(3)
   String implicitRules;
+
+  //  Extensions for implicitRules
+  @HiveField(4)
   Element elementImplicitRules;
+
+  //  The base language in which the resource is written.
+  @HiveField(5)
   String language;
+
+  //  Extensions for language
+  @HiveField(6)
   Element elementLanguage;
+
+  //  A human-readable narrative that contains a summary of the resource and
+  // can be used to represent the content of the resource to a human. The
+  // narrative need not encode all the structured data, but is required to
+  // contain sufficient detail to make it "clinically safe" for a human to
+  // just read the narrative. Resource definitions may define what content
+  // should be represented in the narrative to ensure clinical safety.
+  @HiveField(7)
   Narrative text;
+
+  //  These resources do not have an independent existence apart from the
+  // resource that contains them - they cannot be identified independently,
+  // and nor can they have their own independent transaction scope.
+  @HiveField(8)
   List<dynamic> contained;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource. To make the use of extensions
+  // safe and manageable, there is a strict set of governance  applied to
+  // the definition and use of extensions. Though any implementer can define
+  // an extension, there is a set of requirements that SHALL be met as part
+  // of the definition of the extension.
+  @HiveField(9)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource and that modifies the
+  // understanding of the element that contains it and/or the understanding
+  // of the containing element's descendants. Usually modifier elements
+  // provide negation or qualification. To make the use of extensions safe
+  // and manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer is allowed to
+  // define an extension, there is a set of requirements that SHALL be met
+  // as part of the definition of the extension. Applications processing a
+  // resource are required to check for modifier extensions. Modifier
+  // extensions SHALL NOT change the meaning of any elements on Resource or
+  // DomainResource (including cannot change the meaning of
+  // modifierExtension itself).
+  @HiveField(10)
   List<Extension> modifierExtension;
+
+  //  A unique identifier assigned to this coverage eligiblity request.
+  @HiveField(11)
   List<Identifier> identifier;
+
+  //  The status of the resource instance.
+  @HiveField(12)
   String status;
+
+  //  Extensions for status
+  @HiveField(13)
   Element elementStatus;
+
+  //  Code to specify whether requesting: prior authorization requirements
+  // for some service categories or billing codes; benefits for coverages
+  // specified or discovered; discovery and return of coverages for the
+  // patient; and/or validation that the specified coverage is in-force at
+  // the date/period specified or 'now' if not specified.
+  @HiveField(14)
   List<String> purpose; // <code> enum: auth-requirements/benefits/discovery/validation> purpose;
+
+  //  Extensions for purpose
+  @HiveField(15)
   List<Element> elementPurpose;
+
+  //  The party who is the beneficiary of the supplied coverage and for whom
+  // eligibility is sought.
+  @HiveField(16)
   Reference patient;
+
+  //  The date or dates when the enclosed suite of services were performed
+  // or completed.
+  @HiveField(17)
   String servicedDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
+
+  //  Extensions for servicedDate
+  @HiveField(18)
   Element elementServicedDate;
+
+  //  The date or dates when the enclosed suite of services were performed
+  // or completed.
+  @HiveField(19)
   Period servicedPeriod;
+
+  //  The date this resource was created.
+  @HiveField(20)
   DateTime created;
+
+  //  Extensions for created
+  @HiveField(21)
   Element elementCreated;
+
+  //  The provider which is responsible for the request.
+  @HiveField(22)
   Reference requestor;
+
+  //  Reference to the original request resource.
+  @HiveField(23)
   Reference request;
+
+  //  The outcome of the request processing.
+  @HiveField(24)
   String outcome; // <code> enum: queued/complete/error/partial;
+
+  //  Extensions for outcome
+  @HiveField(25)
   Element elementOutcome;
+
+  //  A human readable description of the status of the adjudication.
+  @HiveField(26)
   String disposition;
+
+  //  Extensions for disposition
+  @HiveField(27)
   Element elementDisposition;
+
+  //  The Insurer who issued the coverage in question and is the author of
+  // the response.
+  @HiveField(28)
   Reference insurer;
+
+  //  Financial instruments for reimbursement for the health care products
+  // and services.
+  @HiveField(29)
   List<CoverageEligibilityResponse_Insurance> insurance;
+
+  //  A reference from the Insurer to which these services pertain to be
+  // used on further communication and as proof that the request occurred.
+  @HiveField(30)
   String preAuthRef;
+
+  //  Extensions for preAuthRef
+  @HiveField(31)
   Element elementPreAuthRef;
+
+  //  A code for the form to be used for printing the content.
+  @HiveField(32)
   CodeableConcept form;
+
+  //  Errors encountered during the processing of the request.
+  @HiveField(33)
   List<CoverageEligibilityResponse_Error> error;
 
 CoverageEligibilityResponse(
@@ -89,14 +233,62 @@ CoverageEligibilityResponse(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 201)
 class CoverageEligibilityResponse_Insurance {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Reference to the insurance card level information contained in the
+  // Coverage resource. The coverage issuing insurer will use these details
+  // to locate the patient's actual coverage within the insurer's
+  // information system.
+  @HiveField(3)
   Reference coverage;
+
+  //  Flag indicating if the coverage provided is inforce currently if no
+  // service date(s) specified or for the whole duration of the service
+  // dates.
+  @HiveField(4)
   bool inforce;
+
+  //  Extensions for inforce
+  @HiveField(5)
   Element elementInforce;
+
+  //  The term of the benefits documented in this response.
+  @HiveField(6)
   Period benefitPeriod;
+
+  //  Benefits and optionally current balances, and authorization details by
+  // category or service.
+  @HiveField(7)
   List<CoverageEligibilityResponse_Item> item;
 
 CoverageEligibilityResponse_Insurance(
@@ -115,28 +307,123 @@ CoverageEligibilityResponse_Insurance(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 202)
 class CoverageEligibilityResponse_Item {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Code to identify the general type of benefits under which products and
+  // services are provided.
+  @HiveField(3)
   CodeableConcept category;
+
+  //  This contains the product, service, drug or other billing code for the
+  // item.
+  @HiveField(4)
   CodeableConcept productOrService;
+
+  //  Item typification or modifiers codes to convey additional context for
+  // the product or service.
+  @HiveField(5)
   List<CodeableConcept> modifier;
+
+  //  The practitioner who is eligible for the provision of the product or
+  // service.
+  @HiveField(6)
   Reference provider;
+
+  //  True if the indicated class of service is excluded from the plan,
+  // missing or False indicates the product or service is included in the
+  // coverage.
+  @HiveField(7)
   bool excluded;
+
+  //  Extensions for excluded
+  @HiveField(8)
   Element elementExcluded;
+
+  //  A short name or tag for the benefit.
+  @HiveField(9)
   String name;
+
+  //  Extensions for name
+  @HiveField(10)
   Element elementName;
+
+  //  A richer description of the benefit or services covered.
+  @HiveField(11)
   String description;
+
+  //  Extensions for description
+  @HiveField(12)
   Element elementDescription;
+
+  //  Is a flag to indicate whether the benefits refer to in-network
+  // providers or out-of-network providers.
+  @HiveField(13)
   CodeableConcept network;
+
+  //  Indicates if the benefits apply to an individual or to the family.
+  @HiveField(14)
   CodeableConcept unit;
+
+  //  The term or period of the values such as 'maximum lifetime benefit' or
+  // 'maximum annual visits'.
+  @HiveField(15)
   CodeableConcept term;
+
+  //  Benefits used to date.
+  @HiveField(16)
   List<CoverageEligibilityResponse_Benefit> benefit;
+
+  //  A boolean flag indicating whether a preauthorization is required prior
+  // to actual service delivery.
+  @HiveField(17)
   bool authorizationRequired;
+
+  //  Extensions for authorizationRequired
+  @HiveField(18)
   Element elementAuthorizationRequired;
+
+  //  Codes or comments regarding information or actions associated with the
+  // preauthorization.
+  @HiveField(19)
   List<CodeableConcept> authorizationSupporting;
+
+  //  A web location for obtaining requirements or descriptive information
+  // regarding the preauthorization.
+  @HiveField(20)
   String authorizationUrl;
+
+  //  Extensions for authorizationUrl
+  @HiveField(21)
   Element elementAuthorizationUrl;
 
 CoverageEligibilityResponse_Item(
@@ -169,20 +456,78 @@ CoverageEligibilityResponse_Item(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 203)
 class CoverageEligibilityResponse_Benefit {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Classification of benefit being provided.
+  @HiveField(3)
   CodeableConcept type;
+
+  //  The quantity of the benefit which is permitted under the coverage.
   int allowedUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
+
+  //  Extensions for allowedUnsignedInt
+  @HiveField(5)
   Element elementAllowedUnsignedInt;
+
+  //  The quantity of the benefit which is permitted under the coverage.
+  @HiveField(6)
   String allowedString; //  pattern: ^[ \r\n\t\S]+$
+
+  //  Extensions for allowedString
+  @HiveField(7)
   Element elementAllowedString;
+
+  //  The quantity of the benefit which is permitted under the coverage.
+  @HiveField(8)
   Money allowedMoney;
+
+  //  The quantity of the benefit which have been consumed to date.
   int usedUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
+
+  //  Extensions for usedUnsignedInt
+  @HiveField(10)
   Element elementUsedUnsignedInt;
+
+  //  The quantity of the benefit which have been consumed to date.
+  @HiveField(11)
   String usedString; //  pattern: ^[ \r\n\t\S]+$
+
+  //  Extensions for usedString
+  @HiveField(12)
   Element elementUsedString;
+
+  //  The quantity of the benefit which have been consumed to date.
+  @HiveField(13)
   Money usedMoney;
 
 CoverageEligibilityResponse_Benefit(
@@ -207,10 +552,41 @@ CoverageEligibilityResponse_Benefit(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 204)
 class CoverageEligibilityResponse_Error {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  An error code,from a specified code system, which details why the
+  // eligibility check could not be performed.
+  @HiveField(3)
   CodeableConcept code;
 
 CoverageEligibilityResponse_Error(
@@ -226,6 +602,361 @@ CoverageEligibilityResponse_Error(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class CoverageEligibilityResponseAdapter
+    extends TypeAdapter<CoverageEligibilityResponse> {
+  @override
+  final typeId = 200;
+
+  @override
+  CoverageEligibilityResponse read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CoverageEligibilityResponse(
+      fields[16] as Reference,
+      fields[23] as Reference,
+      fields[28] as Reference,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      status: fields[12] as String,
+      elementStatus: fields[13] as Element,
+      purpose: (fields[14] as List)?.cast<String>(),
+      elementPurpose: (fields[15] as List)?.cast<Element>(),
+      servicedDate: fields[17] as String,
+      elementServicedDate: fields[18] as Element,
+      servicedPeriod: fields[19] as Period,
+      created: fields[20] as DateTime,
+      elementCreated: fields[21] as Element,
+      requestor: fields[22] as Reference,
+      outcome: fields[24] as String,
+      elementOutcome: fields[25] as Element,
+      disposition: fields[26] as String,
+      elementDisposition: fields[27] as Element,
+      insurance:
+          (fields[29] as List)?.cast<CoverageEligibilityResponse_Insurance>(),
+      preAuthRef: fields[30] as String,
+      elementPreAuthRef: fields[31] as Element,
+      form: fields[32] as CodeableConcept,
+      error: (fields[33] as List)?.cast<CoverageEligibilityResponse_Error>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, CoverageEligibilityResponse obj) {
+    writer
+      ..writeByte(34)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.status)
+      ..writeByte(13)
+      ..write(obj.elementStatus)
+      ..writeByte(14)
+      ..write(obj.purpose)
+      ..writeByte(15)
+      ..write(obj.elementPurpose)
+      ..writeByte(16)
+      ..write(obj.patient)
+      ..writeByte(17)
+      ..write(obj.servicedDate)
+      ..writeByte(18)
+      ..write(obj.elementServicedDate)
+      ..writeByte(19)
+      ..write(obj.servicedPeriod)
+      ..writeByte(20)
+      ..write(obj.created)
+      ..writeByte(21)
+      ..write(obj.elementCreated)
+      ..writeByte(22)
+      ..write(obj.requestor)
+      ..writeByte(23)
+      ..write(obj.request)
+      ..writeByte(24)
+      ..write(obj.outcome)
+      ..writeByte(25)
+      ..write(obj.elementOutcome)
+      ..writeByte(26)
+      ..write(obj.disposition)
+      ..writeByte(27)
+      ..write(obj.elementDisposition)
+      ..writeByte(28)
+      ..write(obj.insurer)
+      ..writeByte(29)
+      ..write(obj.insurance)
+      ..writeByte(30)
+      ..write(obj.preAuthRef)
+      ..writeByte(31)
+      ..write(obj.elementPreAuthRef)
+      ..writeByte(32)
+      ..write(obj.form)
+      ..writeByte(33)
+      ..write(obj.error);
+  }
+}
+
+class CoverageEligibilityResponse_InsuranceAdapter
+    extends TypeAdapter<CoverageEligibilityResponse_Insurance> {
+  @override
+  final typeId = 201;
+
+  @override
+  CoverageEligibilityResponse_Insurance read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CoverageEligibilityResponse_Insurance(
+      fields[3] as Reference,
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      inforce: fields[4] as bool,
+      elementInforce: fields[5] as Element,
+      benefitPeriod: fields[6] as Period,
+      item: (fields[7] as List)?.cast<CoverageEligibilityResponse_Item>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, CoverageEligibilityResponse_Insurance obj) {
+    writer
+      ..writeByte(8)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.coverage)
+      ..writeByte(4)
+      ..write(obj.inforce)
+      ..writeByte(5)
+      ..write(obj.elementInforce)
+      ..writeByte(6)
+      ..write(obj.benefitPeriod)
+      ..writeByte(7)
+      ..write(obj.item);
+  }
+}
+
+class CoverageEligibilityResponse_ItemAdapter
+    extends TypeAdapter<CoverageEligibilityResponse_Item> {
+  @override
+  final typeId = 202;
+
+  @override
+  CoverageEligibilityResponse_Item read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CoverageEligibilityResponse_Item(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      category: fields[3] as CodeableConcept,
+      productOrService: fields[4] as CodeableConcept,
+      modifier: (fields[5] as List)?.cast<CodeableConcept>(),
+      provider: fields[6] as Reference,
+      excluded: fields[7] as bool,
+      elementExcluded: fields[8] as Element,
+      name: fields[9] as String,
+      elementName: fields[10] as Element,
+      description: fields[11] as String,
+      elementDescription: fields[12] as Element,
+      network: fields[13] as CodeableConcept,
+      unit: fields[14] as CodeableConcept,
+      term: fields[15] as CodeableConcept,
+      benefit:
+          (fields[16] as List)?.cast<CoverageEligibilityResponse_Benefit>(),
+      authorizationRequired: fields[17] as bool,
+      elementAuthorizationRequired: fields[18] as Element,
+      authorizationSupporting: (fields[19] as List)?.cast<CodeableConcept>(),
+      authorizationUrl: fields[20] as String,
+      elementAuthorizationUrl: fields[21] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, CoverageEligibilityResponse_Item obj) {
+    writer
+      ..writeByte(22)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.category)
+      ..writeByte(4)
+      ..write(obj.productOrService)
+      ..writeByte(5)
+      ..write(obj.modifier)
+      ..writeByte(6)
+      ..write(obj.provider)
+      ..writeByte(7)
+      ..write(obj.excluded)
+      ..writeByte(8)
+      ..write(obj.elementExcluded)
+      ..writeByte(9)
+      ..write(obj.name)
+      ..writeByte(10)
+      ..write(obj.elementName)
+      ..writeByte(11)
+      ..write(obj.description)
+      ..writeByte(12)
+      ..write(obj.elementDescription)
+      ..writeByte(13)
+      ..write(obj.network)
+      ..writeByte(14)
+      ..write(obj.unit)
+      ..writeByte(15)
+      ..write(obj.term)
+      ..writeByte(16)
+      ..write(obj.benefit)
+      ..writeByte(17)
+      ..write(obj.authorizationRequired)
+      ..writeByte(18)
+      ..write(obj.elementAuthorizationRequired)
+      ..writeByte(19)
+      ..write(obj.authorizationSupporting)
+      ..writeByte(20)
+      ..write(obj.authorizationUrl)
+      ..writeByte(21)
+      ..write(obj.elementAuthorizationUrl);
+  }
+}
+
+class CoverageEligibilityResponse_BenefitAdapter
+    extends TypeAdapter<CoverageEligibilityResponse_Benefit> {
+  @override
+  final typeId = 203;
+
+  @override
+  CoverageEligibilityResponse_Benefit read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CoverageEligibilityResponse_Benefit(
+      fields[3] as CodeableConcept,
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      elementAllowedUnsignedInt: fields[5] as Element,
+      allowedString: fields[6] as String,
+      elementAllowedString: fields[7] as Element,
+      allowedMoney: fields[8] as Money,
+      elementUsedUnsignedInt: fields[10] as Element,
+      usedString: fields[11] as String,
+      elementUsedString: fields[12] as Element,
+      usedMoney: fields[13] as Money,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, CoverageEligibilityResponse_Benefit obj) {
+    writer
+      ..writeByte(12)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(5)
+      ..write(obj.elementAllowedUnsignedInt)
+      ..writeByte(6)
+      ..write(obj.allowedString)
+      ..writeByte(7)
+      ..write(obj.elementAllowedString)
+      ..writeByte(8)
+      ..write(obj.allowedMoney)
+      ..writeByte(10)
+      ..write(obj.elementUsedUnsignedInt)
+      ..writeByte(11)
+      ..write(obj.usedString)
+      ..writeByte(12)
+      ..write(obj.elementUsedString)
+      ..writeByte(13)
+      ..write(obj.usedMoney);
+  }
+}
+
+class CoverageEligibilityResponse_ErrorAdapter
+    extends TypeAdapter<CoverageEligibilityResponse_Error> {
+  @override
+  final typeId = 204;
+
+  @override
+  CoverageEligibilityResponse_Error read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return CoverageEligibilityResponse_Error(
+      fields[3] as CodeableConcept,
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, CoverageEligibilityResponse_Error obj) {
+    writer
+      ..writeByte(4)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.code);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

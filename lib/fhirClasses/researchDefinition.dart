@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/fhirClasses/relatedArtifact.dart';
@@ -14,69 +15,351 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 513)
 class ResearchDefinition {
+
+  //  This is a ResearchDefinition resource
+  @HiveField(0)
   final String resourceType= 'ResearchDefinition';
+
+  //  The logical id of the resource, as used in the URL for the resource.
+  // Once assigned, this value never changes.
+  @HiveField(1)
   String id;
+
+  //  The metadata about the resource. This is content that is maintained by
+  // the infrastructure. Changes to the content might not always be
+  // associated with version changes to the resource.
+  @HiveField(2)
   Meta meta;
+
+  //  A reference to a set of rules that were followed when the resource was
+  // constructed, and which must be understood when processing the content.
+  // Often, this is a reference to an implementation guide that defines the
+  // special rules along with other profiles etc.
+  @HiveField(3)
   String implicitRules;
+
+  //  Extensions for implicitRules
+  @HiveField(4)
   Element elementImplicitRules;
+
+  //  The base language in which the resource is written.
+  @HiveField(5)
   String language;
+
+  //  Extensions for language
+  @HiveField(6)
   Element elementLanguage;
+
+  //  A human-readable narrative that contains a summary of the resource and
+  // can be used to represent the content of the resource to a human. The
+  // narrative need not encode all the structured data, but is required to
+  // contain sufficient detail to make it "clinically safe" for a human to
+  // just read the narrative. Resource definitions may define what content
+  // should be represented in the narrative to ensure clinical safety.
+  @HiveField(7)
   Narrative text;
+
+  //  These resources do not have an independent existence apart from the
+  // resource that contains them - they cannot be identified independently,
+  // and nor can they have their own independent transaction scope.
+  @HiveField(8)
   List<dynamic> contained;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource. To make the use of extensions
+  // safe and manageable, there is a strict set of governance  applied to
+  // the definition and use of extensions. Though any implementer can define
+  // an extension, there is a set of requirements that SHALL be met as part
+  // of the definition of the extension.
+  @HiveField(9)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource and that modifies the
+  // understanding of the element that contains it and/or the understanding
+  // of the containing element's descendants. Usually modifier elements
+  // provide negation or qualification. To make the use of extensions safe
+  // and manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer is allowed to
+  // define an extension, there is a set of requirements that SHALL be met
+  // as part of the definition of the extension. Applications processing a
+  // resource are required to check for modifier extensions. Modifier
+  // extensions SHALL NOT change the meaning of any elements on Resource or
+  // DomainResource (including cannot change the meaning of
+  // modifierExtension itself).
+  @HiveField(10)
   List<Extension> modifierExtension;
+
+  //  An absolute URI that is used to identify this research definition when
+  // it is referenced in a specification, model, design or an instance; also
+  // called its canonical identifier. This SHOULD be globally unique and
+  // SHOULD be a literal address at which at which an authoritative instance
+  // of this research definition is (or will be) published. This URL can be
+  // the target of a canonical reference. It SHALL remain the same when the
+  // research definition is stored on different servers.
+  @HiveField(11)
   String url;
+
+  //  Extensions for url
+  @HiveField(12)
   Element elementUrl;
+
+  //  A formal identifier that is used to identify this research definition
+  // when it is represented in other formats, or referenced in a
+  // specification, model, design or an instance.
+  @HiveField(13)
   List<Identifier> identifier;
+
+  //  The identifier that is used to identify this version of the research
+  // definition when it is referenced in a specification, model, design or
+  // instance. This is an arbitrary value managed by the research definition
+  // author and is not expected to be globally unique. For example, it might
+  // be a timestamp (e.g. yyyymmdd) if a managed version is not available.
+  // There is also no expectation that versions can be placed in a
+  // lexicographical sequence. To provide a version consistent with the
+  // Decision Support Service specification, use the format
+  // Major.Minor.Revision (e.g. 1.0.0). For more information on versioning
+  // knowledge assets, refer to the Decision Support Service specification.
+  // Note that a version is required for non-experimental active artifacts.
+  @HiveField(14)
   String version;
+
+  //  Extensions for version
+  @HiveField(15)
   Element elementVersion;
+
+  //  A natural language name identifying the research definition. This name
+  // should be usable as an identifier for the module by machine processing
+  // applications such as code generation.
+  @HiveField(16)
   String name;
+
+  //  Extensions for name
+  @HiveField(17)
   Element elementName;
+
+  //  A short, descriptive, user-friendly title for the research definition.
+  @HiveField(18)
   String title;
+
+  //  Extensions for title
+  @HiveField(19)
   Element elementTitle;
+
+  //  The short title provides an alternate title for use in informal
+  // descriptive contexts where the full, formal title is not necessary.
+  @HiveField(20)
   String shortTitle;
+
+  //  Extensions for shortTitle
+  @HiveField(21)
   Element elementShortTitle;
+
+  //  An explanatory or alternate title for the ResearchDefinition giving
+  // additional information about its content.
+  @HiveField(22)
   String subtitle;
+
+  //  Extensions for subtitle
+  @HiveField(23)
   Element elementSubtitle;
+
+  //  The status of this research definition. Enables tracking the
+  // life-cycle of the content.
+  @HiveField(24)
   String status; // <code> enum: draft/active/retired/unknown;
+
+  //  Extensions for status
+  @HiveField(25)
   Element elementStatus;
+
+  //  A Boolean value to indicate that this research definition is authored
+  // for testing purposes (or education/evaluation/marketing) and is not
+  // intended to be used for genuine usage.
+  @HiveField(26)
   bool experimental;
+
+  //  Extensions for experimental
+  @HiveField(27)
   Element elementExperimental;
+
+  //  The intended subjects for the ResearchDefinition. If this element is
+  // not provided, a Patient subject is assumed, but the subject of the
+  // ResearchDefinition can be anything.
+  @HiveField(28)
   CodeableConcept subjectCodeableConcept;
+
+  //  The intended subjects for the ResearchDefinition. If this element is
+  // not provided, a Patient subject is assumed, but the subject of the
+  // ResearchDefinition can be anything.
+  @HiveField(29)
   Reference subjectReference;
+
+  //  The date  (and optionally time) when the research definition was
+  // published. The date must change when the business version changes and
+  // it must change if the status code changes. In addition, it should
+  // change when the substantive content of the research definition changes.
+  @HiveField(30)
   DateTime date;
+
+  //  Extensions for date
+  @HiveField(31)
   Element elementDate;
+
+  //  The name of the organization or individual that published the research
+  // definition.
+  @HiveField(32)
   String publisher;
+
+  //  Extensions for publisher
+  @HiveField(33)
   Element elementPublisher;
+
+  //  Contact details to assist a user in finding and communicating with the
+  // publisher.
+  @HiveField(34)
   List<ContactDetail> contact;
+
+  //  A free text natural language description of the research definition
+  // from a consumer's perspective.
+  @HiveField(35)
   String description;
+
+  //  Extensions for description
+  @HiveField(36)
   Element elementDescription;
+
+  //  A human-readable string to clarify or explain concepts about the
+  // resource.
+  @HiveField(37)
   List<String> comment;
+
+  //  Extensions for comment
+  @HiveField(38)
   List<Element> elementComment;
+
+  //  The content was developed with a focus and intent of supporting the
+  // contexts that are listed. These contexts may be general categories
+  // (gender, age, ...) or may be references to specific programs (insurance
+  // plans, studies, ...) and may be used to assist with indexing and
+  // searching for appropriate research definition instances.
+  @HiveField(39)
   List<UsageContext> useContext;
+
+  //  A legal or geographic region in which the research definition is
+  // intended to be used.
+  @HiveField(40)
   List<CodeableConcept> jurisdiction;
+
+  //  Explanation of why this research definition is needed and why it has
+  // been designed as it has.
+  @HiveField(41)
   String purpose;
+
+  //  Extensions for purpose
+  @HiveField(42)
   Element elementPurpose;
+
+  //  A detailed description, from a clinical perspective, of how the
+  // ResearchDefinition is used.
+  @HiveField(43)
   String usage;
+
+  //  Extensions for usage
+  @HiveField(44)
   Element elementUsage;
+
+  //  A copyright statement relating to the research definition and/or its
+  // contents. Copyright statements are generally legal restrictions on the
+  // use and publishing of the research definition.
+  @HiveField(45)
   String copyright;
+
+  //  Extensions for copyright
+  @HiveField(46)
   Element elementCopyright;
+
+  //  The date on which the resource content was approved by the publisher.
+  // Approval happens once when the content is officially approved for
+  // usage.
+  @HiveField(47)
   String approvalDate;
+
+  //  Extensions for approvalDate
+  @HiveField(48)
   Element elementApprovalDate;
+
+  //  The date on which the resource content was last reviewed. Review
+  // happens periodically after approval but does not change the original
+  // approval date.
+  @HiveField(49)
   String lastReviewDate;
+
+  //  Extensions for lastReviewDate
+  @HiveField(50)
   Element elementLastReviewDate;
+
+  //  The period during which the research definition content was or is
+  // planned to be in active use.
+  @HiveField(51)
   Period effectivePeriod;
+
+  //  Descriptive topics related to the content of the ResearchDefinition.
+  // Topics provide a high-level categorization grouping types of
+  // ResearchDefinitions that can be useful for filtering and searching.
+  @HiveField(52)
   List<CodeableConcept> topic;
+
+  //  An individiual or organization primarily involved in the creation and
+  // maintenance of the content.
+  @HiveField(53)
   List<ContactDetail> author;
+
+  //  An individual or organization primarily responsible for internal
+  // coherence of the content.
+  @HiveField(54)
   List<ContactDetail> editor;
+
+  //  An individual or organization primarily responsible for review of some
+  // aspect of the content.
+  @HiveField(55)
   List<ContactDetail> reviewer;
+
+  //  An individual or organization responsible for officially endorsing the
+  // content for use in some setting.
+  @HiveField(56)
   List<ContactDetail> endorser;
+
+  //  Related artifacts such as additional documentation, justification, or
+  // bibliographic references.
+  @HiveField(57)
   List<RelatedArtifact> relatedArtifact;
+
+  //  A reference to a Library resource containing the formal logic used by
+  // the ResearchDefinition.
+  @HiveField(58)
   List<String> library;
+
+  //  A reference to a ResearchElementDefinition resource that defines the
+  // population for the research.
+  @HiveField(59)
   Reference population;
+
+  //  A reference to a ResearchElementDefinition resource that defines the
+  // exposure for the research.
+  @HiveField(60)
   Reference exposure;
+
+  //  A reference to a ResearchElementDefinition resource that defines the
+  // exposureAlternative for the research.
+  @HiveField(61)
   Reference exposureAlternative;
+
+  //  A reference to a ResearchElementDefinition resomece that defines the
+  // outcome for the research.
+  @HiveField(62)
   Reference outcome;
 
 ResearchDefinition(
@@ -150,6 +433,219 @@ ResearchDefinition(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class ResearchDefinitionAdapter extends TypeAdapter<ResearchDefinition> {
+  @override
+  final typeId = 513;
+
+  @override
+  ResearchDefinition read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ResearchDefinition(
+      fields[59] as Reference,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      url: fields[11] as String,
+      elementUrl: fields[12] as Element,
+      identifier: (fields[13] as List)?.cast<Identifier>(),
+      version: fields[14] as String,
+      elementVersion: fields[15] as Element,
+      name: fields[16] as String,
+      elementName: fields[17] as Element,
+      title: fields[18] as String,
+      elementTitle: fields[19] as Element,
+      shortTitle: fields[20] as String,
+      elementShortTitle: fields[21] as Element,
+      subtitle: fields[22] as String,
+      elementSubtitle: fields[23] as Element,
+      status: fields[24] as String,
+      elementStatus: fields[25] as Element,
+      experimental: fields[26] as bool,
+      elementExperimental: fields[27] as Element,
+      subjectCodeableConcept: fields[28] as CodeableConcept,
+      subjectReference: fields[29] as Reference,
+      date: fields[30] as DateTime,
+      elementDate: fields[31] as Element,
+      publisher: fields[32] as String,
+      elementPublisher: fields[33] as Element,
+      contact: (fields[34] as List)?.cast<ContactDetail>(),
+      description: fields[35] as String,
+      elementDescription: fields[36] as Element,
+      comment: (fields[37] as List)?.cast<String>(),
+      elementComment: (fields[38] as List)?.cast<Element>(),
+      useContext: (fields[39] as List)?.cast<UsageContext>(),
+      jurisdiction: (fields[40] as List)?.cast<CodeableConcept>(),
+      purpose: fields[41] as String,
+      elementPurpose: fields[42] as Element,
+      usage: fields[43] as String,
+      elementUsage: fields[44] as Element,
+      copyright: fields[45] as String,
+      elementCopyright: fields[46] as Element,
+      approvalDate: fields[47] as String,
+      elementApprovalDate: fields[48] as Element,
+      lastReviewDate: fields[49] as String,
+      elementLastReviewDate: fields[50] as Element,
+      effectivePeriod: fields[51] as Period,
+      topic: (fields[52] as List)?.cast<CodeableConcept>(),
+      author: (fields[53] as List)?.cast<ContactDetail>(),
+      editor: (fields[54] as List)?.cast<ContactDetail>(),
+      reviewer: (fields[55] as List)?.cast<ContactDetail>(),
+      endorser: (fields[56] as List)?.cast<ContactDetail>(),
+      relatedArtifact: (fields[57] as List)?.cast<RelatedArtifact>(),
+      library: (fields[58] as List)?.cast<String>(),
+      exposure: fields[60] as Reference,
+      exposureAlternative: fields[61] as Reference,
+      outcome: fields[62] as Reference,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ResearchDefinition obj) {
+    writer
+      ..writeByte(63)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.url)
+      ..writeByte(12)
+      ..write(obj.elementUrl)
+      ..writeByte(13)
+      ..write(obj.identifier)
+      ..writeByte(14)
+      ..write(obj.version)
+      ..writeByte(15)
+      ..write(obj.elementVersion)
+      ..writeByte(16)
+      ..write(obj.name)
+      ..writeByte(17)
+      ..write(obj.elementName)
+      ..writeByte(18)
+      ..write(obj.title)
+      ..writeByte(19)
+      ..write(obj.elementTitle)
+      ..writeByte(20)
+      ..write(obj.shortTitle)
+      ..writeByte(21)
+      ..write(obj.elementShortTitle)
+      ..writeByte(22)
+      ..write(obj.subtitle)
+      ..writeByte(23)
+      ..write(obj.elementSubtitle)
+      ..writeByte(24)
+      ..write(obj.status)
+      ..writeByte(25)
+      ..write(obj.elementStatus)
+      ..writeByte(26)
+      ..write(obj.experimental)
+      ..writeByte(27)
+      ..write(obj.elementExperimental)
+      ..writeByte(28)
+      ..write(obj.subjectCodeableConcept)
+      ..writeByte(29)
+      ..write(obj.subjectReference)
+      ..writeByte(30)
+      ..write(obj.date)
+      ..writeByte(31)
+      ..write(obj.elementDate)
+      ..writeByte(32)
+      ..write(obj.publisher)
+      ..writeByte(33)
+      ..write(obj.elementPublisher)
+      ..writeByte(34)
+      ..write(obj.contact)
+      ..writeByte(35)
+      ..write(obj.description)
+      ..writeByte(36)
+      ..write(obj.elementDescription)
+      ..writeByte(37)
+      ..write(obj.comment)
+      ..writeByte(38)
+      ..write(obj.elementComment)
+      ..writeByte(39)
+      ..write(obj.useContext)
+      ..writeByte(40)
+      ..write(obj.jurisdiction)
+      ..writeByte(41)
+      ..write(obj.purpose)
+      ..writeByte(42)
+      ..write(obj.elementPurpose)
+      ..writeByte(43)
+      ..write(obj.usage)
+      ..writeByte(44)
+      ..write(obj.elementUsage)
+      ..writeByte(45)
+      ..write(obj.copyright)
+      ..writeByte(46)
+      ..write(obj.elementCopyright)
+      ..writeByte(47)
+      ..write(obj.approvalDate)
+      ..writeByte(48)
+      ..write(obj.elementApprovalDate)
+      ..writeByte(49)
+      ..write(obj.lastReviewDate)
+      ..writeByte(50)
+      ..write(obj.elementLastReviewDate)
+      ..writeByte(51)
+      ..write(obj.effectivePeriod)
+      ..writeByte(52)
+      ..write(obj.topic)
+      ..writeByte(53)
+      ..write(obj.author)
+      ..writeByte(54)
+      ..write(obj.editor)
+      ..writeByte(55)
+      ..write(obj.reviewer)
+      ..writeByte(56)
+      ..write(obj.endorser)
+      ..writeByte(57)
+      ..write(obj.relatedArtifact)
+      ..writeByte(58)
+      ..write(obj.library)
+      ..writeByte(59)
+      ..write(obj.population)
+      ..writeByte(60)
+      ..write(obj.exposure)
+      ..writeByte(61)
+      ..write(obj.exposureAlternative)
+      ..writeByte(62)
+      ..write(obj.outcome);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/fhirClasses/period.dart';
@@ -8,13 +9,58 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 23)
 class Timing {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Identifies specific times when the event occurs.
+  @HiveField(3)
   List<DateTime> event;
+
+  //  Extensions for event
+  @HiveField(4)
   List<Element> elementEvent;
+
+  //  A set of rules that describe when the event is scheduled.
+  @HiveField(5)
   Timing_Repeat repeat;
+
+  //  A code for the timing schedule (or just text in code.text). Some codes
+  // such as BID are ubiquitous, but many institutions define their own
+  // additional codes. If a code is provided, the code is understood to be a
+  // complete statement of whatever is specified in the structured timing
+  // data, and either the code or the data may be used to interpret the
+  // Timing, with the exception that .repeat.bounds still applies over the
+  // code (and is not contained in the code).
+  @HiveField(6)
   CodeableConcept code;
 
 Timing(
@@ -32,40 +78,185 @@ Timing(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 24)
 class Timing_Repeat {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Either a duration for the length of the timing schedule, a range of
+  // possible length, or outer bounds for start and/or end limits of the
+  // timing schedule.
+  @HiveField(3)
   Duration boundsDuration;
+
+  //  Either a duration for the length of the timing schedule, a range of
+  // possible length, or outer bounds for start and/or end limits of the
+  // timing schedule.
+  @HiveField(4)
   Range boundsRange;
+
+  //  Either a duration for the length of the timing schedule, a range of
+  // possible length, or outer bounds for start and/or end limits of the
+  // timing schedule.
+  @HiveField(5)
   Period boundsPeriod;
+
+  //  A total count of the desired number of repetitions across the duration
+  // of the entire timing specification. If countMax is present, this
+  // element indicates the lower bound of the allowed range of count values.
+  @HiveField(6)
   int count;
+
+  //  Extensions for count
+  @HiveField(7)
   Element elementCount;
+
+  //  If present, indicates that the count is a range - so to perform the
+  // action between [count] and [countMax] times.
+  @HiveField(8)
   int countMax;
+
+  //  Extensions for countMax
+  @HiveField(9)
   Element elementCountMax;
+
+  //  How long this thing happens for when it happens. If durationMax is
+  // present, this element indicates the lower bound of the allowed range of
+  // the duration.
+  @HiveField(10)
   double duration;
+
+  //  Extensions for duration
+  @HiveField(11)
   Element elementDuration;
+
+  //  If present, indicates that the duration is a range - so to perform the
+  // action between [duration] and [durationMax] time length.
+  @HiveField(12)
   double durationMax;
+
+  //  Extensions for durationMax
+  @HiveField(13)
   Element elementDurationMax;
+
+  //  The units of time for the duration, in UCUM units.
+  @HiveField(14)
   String durationUnit; // <code> enum: s/min/h/d/wk/mo/a;
+
+  //  Extensions for durationUnit
+  @HiveField(15)
   Element elementDurationUnit;
+
+  //  The number of times to repeat the action within the specified period.
+  // If frequencyMax is present, this element indicates the lower bound of
+  // the allowed range of the frequency.
+  @HiveField(16)
   int frequency;
+
+  //  Extensions for frequency
+  @HiveField(17)
   Element elementFrequency;
+
+  //  If present, indicates that the frequency is a range - so to repeat
+  // between [frequency] and [frequencyMax] times within the period or
+  // period range.
+  @HiveField(18)
   int frequencyMax;
+
+  //  Extensions for frequencyMax
+  @HiveField(19)
   Element elementFrequencyMax;
+
+  //  Indicates the duration of time over which repetitions are to occur;
+  // e.g. to express "3 times per day", 3 would be the frequency and "1 day"
+  // would be the period. If periodMax is present, this element indicates
+  // the lower bound of the allowed range of the period length.
+  @HiveField(20)
   double period;
+
+  //  Extensions for period
+  @HiveField(21)
   Element elementPeriod;
+
+  //  If present, indicates that the period is a range from [period] to
+  // [periodMax], allowing expressing concepts such as "do this once every
+  // 3-5 days.
+  @HiveField(22)
   double periodMax;
+
+  //  Extensions for periodMax
+  @HiveField(23)
   Element elementPeriodMax;
+
+  //  The units of time for the period in UCUM units.
+  @HiveField(24)
   String periodUnit; // <code> enum: s/min/h/d/wk/mo/a;
+
+  //  Extensions for periodUnit
+  @HiveField(25)
   Element elementPeriodUnit;
+
+  //  If one or more days of week is provided, then the action happens only
+  // on the specified day(s).
+  @HiveField(26)
   List<String> dayOfWeek;
+
+  //  Extensions for dayOfWeek
+  @HiveField(27)
   List<Element> elementDayOfWeek;
+
+  //  Specified time of day for action to take place.
+  @HiveField(28)
   List<String> timeOfDay;
+
+  //  Extensions for timeOfDay
+  @HiveField(29)
   List<Element> elementTimeOfDay;
+
+  //  An approximate time period during the day, potentially linked to an
+  // event of daily living that indicates when the action should occur.
+  @HiveField(30)
   List<String> when; // <code> enum: MORN/MORN.early/MORN.late/NOON/AFT/AFT.early/AFT.late/EVE/EVE.early/EVE.late/NIGHT/PHS/HS/WAKE/C/CM/CD/CV/AC/ACM/ACD/ACV/PC/PCM/PCD/PCV> when;
+
+  //  Extensions for when
+  @HiveField(31)
   List<Element> elementWhen;
+
+  //  The number of minutes from the event. If the event code does not
+  // indicate whether the minutes is before or after the event, then the
+  // offset is assumed to be after the event.
+  @HiveField(32)
   int offset;
+
+  //  Extensions for offset
+  @HiveField(33)
   Element elementOffset;
 
 Timing_Repeat(
@@ -111,6 +302,175 @@ Timing_Repeat(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class TimingAdapter extends TypeAdapter<Timing> {
+  @override
+  final typeId = 23;
+
+  @override
+  Timing read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Timing(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      event: (fields[3] as List)?.cast<DateTime>(),
+      elementEvent: (fields[4] as List)?.cast<Element>(),
+      repeat: fields[5] as Timing_Repeat,
+      code: fields[6] as CodeableConcept,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Timing obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.event)
+      ..writeByte(4)
+      ..write(obj.elementEvent)
+      ..writeByte(5)
+      ..write(obj.repeat)
+      ..writeByte(6)
+      ..write(obj.code);
+  }
+}
+
+class Timing_RepeatAdapter extends TypeAdapter<Timing_Repeat> {
+  @override
+  final typeId = 24;
+
+  @override
+  Timing_Repeat read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Timing_Repeat(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      boundsDuration: fields[3] as Duration,
+      boundsRange: fields[4] as Range,
+      boundsPeriod: fields[5] as Period,
+      count: fields[6] as int,
+      elementCount: fields[7] as Element,
+      countMax: fields[8] as int,
+      elementCountMax: fields[9] as Element,
+      duration: fields[10] as double,
+      elementDuration: fields[11] as Element,
+      durationMax: fields[12] as double,
+      elementDurationMax: fields[13] as Element,
+      durationUnit: fields[14] as String,
+      elementDurationUnit: fields[15] as Element,
+      frequency: fields[16] as int,
+      elementFrequency: fields[17] as Element,
+      frequencyMax: fields[18] as int,
+      elementFrequencyMax: fields[19] as Element,
+      period: fields[20] as double,
+      elementPeriod: fields[21] as Element,
+      periodMax: fields[22] as double,
+      elementPeriodMax: fields[23] as Element,
+      periodUnit: fields[24] as String,
+      elementPeriodUnit: fields[25] as Element,
+      dayOfWeek: (fields[26] as List)?.cast<String>(),
+      elementDayOfWeek: (fields[27] as List)?.cast<Element>(),
+      timeOfDay: (fields[28] as List)?.cast<String>(),
+      elementTimeOfDay: (fields[29] as List)?.cast<Element>(),
+      when: (fields[30] as List)?.cast<String>(),
+      elementWhen: (fields[31] as List)?.cast<Element>(),
+      offset: fields[32] as int,
+      elementOffset: fields[33] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Timing_Repeat obj) {
+    writer
+      ..writeByte(34)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.boundsDuration)
+      ..writeByte(4)
+      ..write(obj.boundsRange)
+      ..writeByte(5)
+      ..write(obj.boundsPeriod)
+      ..writeByte(6)
+      ..write(obj.count)
+      ..writeByte(7)
+      ..write(obj.elementCount)
+      ..writeByte(8)
+      ..write(obj.countMax)
+      ..writeByte(9)
+      ..write(obj.elementCountMax)
+      ..writeByte(10)
+      ..write(obj.duration)
+      ..writeByte(11)
+      ..write(obj.elementDuration)
+      ..writeByte(12)
+      ..write(obj.durationMax)
+      ..writeByte(13)
+      ..write(obj.elementDurationMax)
+      ..writeByte(14)
+      ..write(obj.durationUnit)
+      ..writeByte(15)
+      ..write(obj.elementDurationUnit)
+      ..writeByte(16)
+      ..write(obj.frequency)
+      ..writeByte(17)
+      ..write(obj.elementFrequency)
+      ..writeByte(18)
+      ..write(obj.frequencyMax)
+      ..writeByte(19)
+      ..write(obj.elementFrequencyMax)
+      ..writeByte(20)
+      ..write(obj.period)
+      ..writeByte(21)
+      ..write(obj.elementPeriod)
+      ..writeByte(22)
+      ..write(obj.periodMax)
+      ..writeByte(23)
+      ..write(obj.elementPeriodMax)
+      ..writeByte(24)
+      ..write(obj.periodUnit)
+      ..writeByte(25)
+      ..write(obj.elementPeriodUnit)
+      ..writeByte(26)
+      ..write(obj.dayOfWeek)
+      ..writeByte(27)
+      ..write(obj.elementDayOfWeek)
+      ..writeByte(28)
+      ..write(obj.timeOfDay)
+      ..writeByte(29)
+      ..write(obj.elementTimeOfDay)
+      ..writeByte(30)
+      ..write(obj.when)
+      ..writeByte(31)
+      ..write(obj.elementWhen)
+      ..writeByte(32)
+      ..write(obj.offset)
+      ..writeByte(33)
+      ..write(obj.elementOffset);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

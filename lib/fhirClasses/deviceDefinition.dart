@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -15,45 +16,207 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 214)
 class DeviceDefinition {
+
+  //  This is a DeviceDefinition resource
+  @HiveField(0)
   final String resourceType= 'DeviceDefinition';
+
+  //  The logical id of the resource, as used in the URL for the resource.
+  // Once assigned, this value never changes.
+  @HiveField(1)
   String id;
+
+  //  The metadata about the resource. This is content that is maintained by
+  // the infrastructure. Changes to the content might not always be
+  // associated with version changes to the resource.
+  @HiveField(2)
   Meta meta;
+
+  //  A reference to a set of rules that were followed when the resource was
+  // constructed, and which must be understood when processing the content.
+  // Often, this is a reference to an implementation guide that defines the
+  // special rules along with other profiles etc.
+  @HiveField(3)
   String implicitRules;
+
+  //  Extensions for implicitRules
+  @HiveField(4)
   Element elementImplicitRules;
+
+  //  The base language in which the resource is written.
+  @HiveField(5)
   String language;
+
+  //  Extensions for language
+  @HiveField(6)
   Element elementLanguage;
+
+  //  A human-readable narrative that contains a summary of the resource and
+  // can be used to represent the content of the resource to a human. The
+  // narrative need not encode all the structured data, but is required to
+  // contain sufficient detail to make it "clinically safe" for a human to
+  // just read the narrative. Resource definitions may define what content
+  // should be represented in the narrative to ensure clinical safety.
+  @HiveField(7)
   Narrative text;
+
+  //  These resources do not have an independent existence apart from the
+  // resource that contains them - they cannot be identified independently,
+  // and nor can they have their own independent transaction scope.
+  @HiveField(8)
   List<dynamic> contained;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource. To make the use of extensions
+  // safe and manageable, there is a strict set of governance  applied to
+  // the definition and use of extensions. Though any implementer can define
+  // an extension, there is a set of requirements that SHALL be met as part
+  // of the definition of the extension.
+  @HiveField(9)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource and that modifies the
+  // understanding of the element that contains it and/or the understanding
+  // of the containing element's descendants. Usually modifier elements
+  // provide negation or qualification. To make the use of extensions safe
+  // and manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer is allowed to
+  // define an extension, there is a set of requirements that SHALL be met
+  // as part of the definition of the extension. Applications processing a
+  // resource are required to check for modifier extensions. Modifier
+  // extensions SHALL NOT change the meaning of any elements on Resource or
+  // DomainResource (including cannot change the meaning of
+  // modifierExtension itself).
+  @HiveField(10)
   List<Extension> modifierExtension;
+
+  //  Unique instance identifiers assigned to a device by the software,
+  // manufacturers, other organizations or owners. For example: handle ID.
+  @HiveField(11)
   List<Identifier> identifier;
+
+  //  Unique device identifier (UDI) assigned to device label or package. 
+  // Note that the Device may include multiple udiCarriers as it either may
+  // include just the udiCarrier for the jurisdiction it is sold, or for
+  // multiple jurisdictions it could have been sold.
+  @HiveField(12)
   List<DeviceDefinition_UdiDeviceIdentifier> udiDeviceIdentifier;
+
+  //  A name of the manufacturer.
+  @HiveField(13)
   String manufacturerString; //  pattern: ^[ \r\n\t\S]+$
+
+  //  Extensions for manufacturerString
+  @HiveField(14)
   Element elementManufacturerString;
+
+  //  A name of the manufacturer.
+  @HiveField(15)
   Reference manufacturerReference;
+
+  //  A name given to the device to identify it.
+  @HiveField(16)
   List<DeviceDefinition_DeviceName> deviceName;
+
+  //  The model number for the device.
+  @HiveField(17)
   String modelNumber;
+
+  //  Extensions for modelNumber
+  @HiveField(18)
   Element elementModelNumber;
+
+  //  What kind of device or device system this is.
+  @HiveField(19)
   CodeableConcept type;
+
+  //  The capabilities supported on a  device, the standards to which the
+  // device conforms for a particular purpose, and used for the
+  // communication.
+  @HiveField(20)
   List<DeviceDefinition_Specialization> specialization;
+
+  //  The available versions of the device, e.g., software versions.
+  @HiveField(21)
   List<String> version;
+
+  //  Extensions for version
+  @HiveField(22)
   List<Element> elementVersion;
+
+  //  Safety characteristics of the device.
+  @HiveField(23)
   List<CodeableConcept> safety;
+
+  //  Shelf Life and storage information.
+  @HiveField(24)
   List<ProductShelfLife> shelfLifeStorage;
+
+  //  Dimensions, color etc.
+  @HiveField(25)
   ProdCharacteristic physicalCharacteristics;
+
+  //  Language code for the human-readable text strings produced by the
+  // device (all supported).
+  @HiveField(26)
   List<CodeableConcept> languageCode;
+
+  //  Device capabilities.
+  @HiveField(27)
   List<DeviceDefinition_Capability> capability;
+
+  //  The actual configuration settings of a device as it actually operates,
+  // e.g., regulation status, time properties.
+  @HiveField(28)
   List<DeviceDefinition_Property> property;
+
+  //  An organization that is responsible for the provision and ongoing
+  // maintenance of the device.
+  @HiveField(29)
   Reference owner;
+
+  //  Contact details for an organization or a particular human that is
+  // responsible for the device.
+  @HiveField(30)
   List<ContactPoint> contact;
+
+  //  A network address on which the device may be contacted directly.
+  @HiveField(31)
   String url;
+
+  //  Extensions for url
+  @HiveField(32)
   Element elementUrl;
+
+  //  Access to on-line information about the device.
+  @HiveField(33)
   String onlineInformation;
+
+  //  Extensions for onlineInformation
+  @HiveField(34)
   Element elementOnlineInformation;
+
+  //  Descriptive information, usage information or implantation information
+  // that is not captured in an existing element.
+  @HiveField(35)
   List<Annotation> note;
+
+  //  The quantity of the device present in the packaging (e.g. the number
+  // of devices present in a pack, or the number of devices in the same
+  // package of the medicinal product).
+  @HiveField(36)
   Quantity quantity;
+
+  //  The parent device it can be part of.
+  @HiveField(37)
   Reference parentDevice;
+
+  //  A substance used to create the material(s) of which the device is
+  // made.
+  @HiveField(38)
   List<DeviceDefinition_Material> material;
 
 DeviceDefinition(
@@ -102,15 +265,62 @@ DeviceDefinition(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 215)
 class DeviceDefinition_UdiDeviceIdentifier {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The identifier that is to be associated with every Device that
+  // references this DeviceDefintiion for the issuer and jurisdication
+  // porvided in the DeviceDefinition.udiDeviceIdentifier.
+  @HiveField(3)
   String deviceIdentifier;
+
+  //  Extensions for deviceIdentifier
+  @HiveField(4)
   Element elementDeviceIdentifier;
+
+  //  The organization that assigns the identifier algorithm.
+  @HiveField(5)
   String issuer;
+
+  //  Extensions for issuer
+  @HiveField(6)
   Element elementIssuer;
+
+  //  The jurisdiction to which the deviceIdentifier applies.
+  @HiveField(7)
   String jurisdiction;
+
+  //  Extensions for jurisdiction
+  @HiveField(8)
   Element elementJurisdiction;
 
 DeviceDefinition_UdiDeviceIdentifier(
@@ -130,13 +340,53 @@ DeviceDefinition_UdiDeviceIdentifier(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 216)
 class DeviceDefinition_DeviceName {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The name of the device.
+  @HiveField(3)
   String name;
+
+  //  Extensions for name
+  @HiveField(4)
   Element elementName;
+
+  //  The type of deviceName. UDILabelName | UserFriendlyName |
+  // PatientReportedName | ManufactureDeviceName | ModelName.
+  @HiveField(5)
   String type; // <code> enum: udi-label-name/user-friendly-name/patient-reported-name/manufacturer-name/model-name/other;
+
+  //  Extensions for type
+  @HiveField(6)
   Element elementType;
 
 DeviceDefinition_DeviceName(
@@ -154,13 +404,52 @@ DeviceDefinition_DeviceName(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 217)
 class DeviceDefinition_Specialization {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The standard that is used to operate and communicate.
+  @HiveField(3)
   String systemType;
+
+  //  Extensions for systemType
+  @HiveField(4)
   Element elementSystemType;
+
+  //  The version of the standard that is used to operate and communicate.
+  @HiveField(5)
   String version;
+
+  //  Extensions for version
+  @HiveField(6)
   Element elementVersion;
 
 DeviceDefinition_Specialization(
@@ -178,11 +467,44 @@ DeviceDefinition_Specialization(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 218)
 class DeviceDefinition_Capability {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Type of capability.
+  @HiveField(3)
   CodeableConcept type;
+
+  //  Description of capability.
+  @HiveField(4)
   List<CodeableConcept> description;
 
 DeviceDefinition_Capability(
@@ -198,12 +520,49 @@ DeviceDefinition_Capability(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 219)
 class DeviceDefinition_Property {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Code that specifies the property DeviceDefinitionPropetyCode
+  // (Extensible).
+  @HiveField(3)
   CodeableConcept type;
+
+  //  Property value as a quantity.
+  @HiveField(4)
   List<Quantity> valueQuantity;
+
+  //  Property value as a code, e.g., NTP4 (synced to NTP).
+  @HiveField(5)
   List<CodeableConcept> valueCode;
 
 DeviceDefinition_Property(
@@ -220,14 +579,56 @@ DeviceDefinition_Property(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 220)
 class DeviceDefinition_Material {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The substance.
+  @HiveField(3)
   CodeableConcept substance;
+
+  //  Indicates an alternative material of the device.
+  @HiveField(4)
   bool alternate;
+
+  //  Extensions for alternate
+  @HiveField(5)
   Element elementAlternate;
+
+  //  Whether the substance is a known or suspected allergen.
+  @HiveField(6)
   bool allergenicIndicator;
+
+  //  Extensions for allergenicIndicator
+  @HiveField(7)
   Element elementAllergenicIndicator;
 
 DeviceDefinition_Material(
@@ -247,6 +648,407 @@ DeviceDefinition_Material(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class DeviceDefinitionAdapter extends TypeAdapter<DeviceDefinition> {
+  @override
+  final typeId = 214;
+
+  @override
+  DeviceDefinition read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return DeviceDefinition(
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      udiDeviceIdentifier:
+          (fields[12] as List)?.cast<DeviceDefinition_UdiDeviceIdentifier>(),
+      manufacturerString: fields[13] as String,
+      elementManufacturerString: fields[14] as Element,
+      manufacturerReference: fields[15] as Reference,
+      deviceName: (fields[16] as List)?.cast<DeviceDefinition_DeviceName>(),
+      modelNumber: fields[17] as String,
+      elementModelNumber: fields[18] as Element,
+      type: fields[19] as CodeableConcept,
+      specialization:
+          (fields[20] as List)?.cast<DeviceDefinition_Specialization>(),
+      version: (fields[21] as List)?.cast<String>(),
+      elementVersion: (fields[22] as List)?.cast<Element>(),
+      safety: (fields[23] as List)?.cast<CodeableConcept>(),
+      shelfLifeStorage: (fields[24] as List)?.cast<ProductShelfLife>(),
+      physicalCharacteristics: fields[25] as ProdCharacteristic,
+      languageCode: (fields[26] as List)?.cast<CodeableConcept>(),
+      capability: (fields[27] as List)?.cast<DeviceDefinition_Capability>(),
+      property: (fields[28] as List)?.cast<DeviceDefinition_Property>(),
+      owner: fields[29] as Reference,
+      contact: (fields[30] as List)?.cast<ContactPoint>(),
+      url: fields[31] as String,
+      elementUrl: fields[32] as Element,
+      onlineInformation: fields[33] as String,
+      elementOnlineInformation: fields[34] as Element,
+      note: (fields[35] as List)?.cast<Annotation>(),
+      quantity: fields[36] as Quantity,
+      parentDevice: fields[37] as Reference,
+      material: (fields[38] as List)?.cast<DeviceDefinition_Material>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, DeviceDefinition obj) {
+    writer
+      ..writeByte(39)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.udiDeviceIdentifier)
+      ..writeByte(13)
+      ..write(obj.manufacturerString)
+      ..writeByte(14)
+      ..write(obj.elementManufacturerString)
+      ..writeByte(15)
+      ..write(obj.manufacturerReference)
+      ..writeByte(16)
+      ..write(obj.deviceName)
+      ..writeByte(17)
+      ..write(obj.modelNumber)
+      ..writeByte(18)
+      ..write(obj.elementModelNumber)
+      ..writeByte(19)
+      ..write(obj.type)
+      ..writeByte(20)
+      ..write(obj.specialization)
+      ..writeByte(21)
+      ..write(obj.version)
+      ..writeByte(22)
+      ..write(obj.elementVersion)
+      ..writeByte(23)
+      ..write(obj.safety)
+      ..writeByte(24)
+      ..write(obj.shelfLifeStorage)
+      ..writeByte(25)
+      ..write(obj.physicalCharacteristics)
+      ..writeByte(26)
+      ..write(obj.languageCode)
+      ..writeByte(27)
+      ..write(obj.capability)
+      ..writeByte(28)
+      ..write(obj.property)
+      ..writeByte(29)
+      ..write(obj.owner)
+      ..writeByte(30)
+      ..write(obj.contact)
+      ..writeByte(31)
+      ..write(obj.url)
+      ..writeByte(32)
+      ..write(obj.elementUrl)
+      ..writeByte(33)
+      ..write(obj.onlineInformation)
+      ..writeByte(34)
+      ..write(obj.elementOnlineInformation)
+      ..writeByte(35)
+      ..write(obj.note)
+      ..writeByte(36)
+      ..write(obj.quantity)
+      ..writeByte(37)
+      ..write(obj.parentDevice)
+      ..writeByte(38)
+      ..write(obj.material);
+  }
+}
+
+class DeviceDefinition_UdiDeviceIdentifierAdapter
+    extends TypeAdapter<DeviceDefinition_UdiDeviceIdentifier> {
+  @override
+  final typeId = 215;
+
+  @override
+  DeviceDefinition_UdiDeviceIdentifier read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return DeviceDefinition_UdiDeviceIdentifier(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      deviceIdentifier: fields[3] as String,
+      elementDeviceIdentifier: fields[4] as Element,
+      issuer: fields[5] as String,
+      elementIssuer: fields[6] as Element,
+      jurisdiction: fields[7] as String,
+      elementJurisdiction: fields[8] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, DeviceDefinition_UdiDeviceIdentifier obj) {
+    writer
+      ..writeByte(9)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.deviceIdentifier)
+      ..writeByte(4)
+      ..write(obj.elementDeviceIdentifier)
+      ..writeByte(5)
+      ..write(obj.issuer)
+      ..writeByte(6)
+      ..write(obj.elementIssuer)
+      ..writeByte(7)
+      ..write(obj.jurisdiction)
+      ..writeByte(8)
+      ..write(obj.elementJurisdiction);
+  }
+}
+
+class DeviceDefinition_DeviceNameAdapter
+    extends TypeAdapter<DeviceDefinition_DeviceName> {
+  @override
+  final typeId = 216;
+
+  @override
+  DeviceDefinition_DeviceName read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return DeviceDefinition_DeviceName(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      name: fields[3] as String,
+      elementName: fields[4] as Element,
+      type: fields[5] as String,
+      elementType: fields[6] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, DeviceDefinition_DeviceName obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.name)
+      ..writeByte(4)
+      ..write(obj.elementName)
+      ..writeByte(5)
+      ..write(obj.type)
+      ..writeByte(6)
+      ..write(obj.elementType);
+  }
+}
+
+class DeviceDefinition_SpecializationAdapter
+    extends TypeAdapter<DeviceDefinition_Specialization> {
+  @override
+  final typeId = 217;
+
+  @override
+  DeviceDefinition_Specialization read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return DeviceDefinition_Specialization(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      systemType: fields[3] as String,
+      elementSystemType: fields[4] as Element,
+      version: fields[5] as String,
+      elementVersion: fields[6] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, DeviceDefinition_Specialization obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.systemType)
+      ..writeByte(4)
+      ..write(obj.elementSystemType)
+      ..writeByte(5)
+      ..write(obj.version)
+      ..writeByte(6)
+      ..write(obj.elementVersion);
+  }
+}
+
+class DeviceDefinition_CapabilityAdapter
+    extends TypeAdapter<DeviceDefinition_Capability> {
+  @override
+  final typeId = 218;
+
+  @override
+  DeviceDefinition_Capability read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return DeviceDefinition_Capability(
+      fields[3] as CodeableConcept,
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      description: (fields[4] as List)?.cast<CodeableConcept>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, DeviceDefinition_Capability obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.description);
+  }
+}
+
+class DeviceDefinition_PropertyAdapter
+    extends TypeAdapter<DeviceDefinition_Property> {
+  @override
+  final typeId = 219;
+
+  @override
+  DeviceDefinition_Property read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return DeviceDefinition_Property(
+      fields[3] as CodeableConcept,
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      valueQuantity: (fields[4] as List)?.cast<Quantity>(),
+      valueCode: (fields[5] as List)?.cast<CodeableConcept>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, DeviceDefinition_Property obj) {
+    writer
+      ..writeByte(6)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.valueQuantity)
+      ..writeByte(5)
+      ..write(obj.valueCode);
+  }
+}
+
+class DeviceDefinition_MaterialAdapter
+    extends TypeAdapter<DeviceDefinition_Material> {
+  @override
+  final typeId = 220;
+
+  @override
+  DeviceDefinition_Material read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return DeviceDefinition_Material(
+      fields[3] as CodeableConcept,
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      alternate: fields[4] as bool,
+      elementAlternate: fields[5] as Element,
+      allergenicIndicator: fields[6] as bool,
+      elementAllergenicIndicator: fields[7] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, DeviceDefinition_Material obj) {
+    writer
+      ..writeByte(8)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.substance)
+      ..writeByte(4)
+      ..write(obj.alternate)
+      ..writeByte(5)
+      ..write(obj.elementAlternate)
+      ..writeByte(6)
+      ..write(obj.allergenicIndicator)
+      ..writeByte(7)
+      ..write(obj.elementAllergenicIndicator);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

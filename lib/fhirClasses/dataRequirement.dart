@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/fhirClasses/duration.dart';
@@ -9,20 +10,89 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 28)
 class DataRequirement {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  The type of the required data, specified as the type name of a
+  // resource. For profiles, this value is set to the type of the base
+  // resource of the profile.
+  @HiveField(2)
   String type;
+
+  //  Extensions for type
+  @HiveField(3)
   Element elementType;
+
+  //  The profile of the required data, specified as the uri of the profile
+  // definition.
+  @HiveField(4)
   List<String> profile;
+
+  //  The intended subjects of the data requirement. If this element is not
+  // provided, a Patient subject is assumed.
+  @HiveField(5)
   CodeableConcept subjectCodeableConcept;
+
+  //  The intended subjects of the data requirement. If this element is not
+  // provided, a Patient subject is assumed.
+  @HiveField(6)
   Reference subjectReference;
+
+  //  Indicates that specific elements of the type are referenced by the
+  // knowledge module and must be supported by the consumer in order to
+  // obtain an effective evaluation. This does not mean that a value is
+  // required for this element, only that the consuming system must
+  // understand the element and be able to provide values for it if they are
+  // available.  The value of mustSupport SHALL be a FHIRPath resolveable on
+  // the type of the DataRequirement. The path SHALL consist only of
+  // identifiers, constant indexers, and .resolve() (see the [Simple
+  // FHIRPath Profile](fhirpath.html#simple) for full details).
+  @HiveField(7)
   List<String> mustSupport;
+
+  //  Extensions for mustSupport
+  @HiveField(8)
   List<Element> elementMustSupport;
+
+  //  Code filters specify additional constraints on the data, specifying
+  // the value set of interest for a particular element of the data. Each
+  // code filter defines an additional constraint on the data, i.e. code
+  // filters are AND'ed, not OR'ed.
+  @HiveField(9)
   List<DataRequirement_CodeFilter> codeFilter;
+
+  //  Date filters specify additional constraints on the data in terms of
+  // the applicable date range for specific elements. Each date filter
+  // specifies an additional constraint on the data, i.e. date filters are
+  // AND'ed, not OR'ed.
+  @HiveField(10)
   List<DataRequirement_DateFilter> dateFilter;
+
+  //  Specifies a maximum number of results that are required (uses the
+  // _count search parameter).
+  @HiveField(11)
   int limit;
+
+  //  Extensions for limit
+  @HiveField(12)
   Element elementLimit;
+
+  //  Specifies the order of the results to be returned.
+  @HiveField(13)
   List<DataRequirement_Sort> sort;
 
 DataRequirement(
@@ -47,15 +117,76 @@ DataRequirement(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 29)
 class DataRequirement_CodeFilter {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The code-valued attribute of the filter. The specified path SHALL be a
+  // FHIRPath resolveable on the specified type of the DataRequirement, and
+  // SHALL consist only of identifiers, constant indexers, and .resolve().
+  // The path is allowed to contain qualifiers (.) to traverse sub-elements,
+  // as well as indexers ([x]) to traverse multiple-cardinality sub-elements
+  // (see the [Simple FHIRPath Profile](fhirpath.html#simple) for full
+  // details). Note that the index must be an integer constant. The path
+  // must resolve to an element of type code, Coding, or CodeableConcept.
+  @HiveField(3)
   String path;
+
+  //  Extensions for path
+  @HiveField(4)
   Element elementPath;
+
+  //  A token parameter that refers to a search parameter defined on the
+  // specified type of the DataRequirement, and which searches on elements
+  // of type code, Coding, or CodeableConcept.
+  @HiveField(5)
   String searchParam;
+
+  //  Extensions for searchParam
+  @HiveField(6)
   Element elementSearchParam;
+
+  //  The valueset for the code filter. The valueSet and code elements are
+  // additive. If valueSet is specified, the filter will return only those
+  // data items for which the value of the code-valued element specified in
+  // the path is a member of the specified valueset.
+  @HiveField(7)
   String valueSet;
+
+  //  The codes for the code filter. If values are given, the filter will
+  // return only those data items for which the code-valued attribute
+  // specified by the path has a value that is one of the specified codes.
+  // If codes are specified in addition to a value set, the filter returns
+  // items matching a code in the value set or one of the specified codes.
+  @HiveField(8)
   List<Coding> code;
 
 DataRequirement_CodeFilter(
@@ -75,17 +206,93 @@ DataRequirement_CodeFilter(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 30)
 class DataRequirement_DateFilter {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The date-valued attribute of the filter. The specified path SHALL be a
+  // FHIRPath resolveable on the specified type of the DataRequirement, and
+  // SHALL consist only of identifiers, constant indexers, and .resolve().
+  // The path is allowed to contain qualifiers (.) to traverse sub-elements,
+  // as well as indexers ([x]) to traverse multiple-cardinality sub-elements
+  // (see the [Simple FHIRPath Profile](fhirpath.html#simple) for full
+  // details). Note that the index must be an integer constant. The path
+  // must resolve to an element of type date, dateTime, Period, Schedule, or
+  // Timing.
+  @HiveField(3)
   String path;
+
+  //  Extensions for path
+  @HiveField(4)
   Element elementPath;
+
+  //  A date parameter that refers to a search parameter defined on the
+  // specified type of the DataRequirement, and which searches on elements
+  // of type date, dateTime, Period, Schedule, or Timing.
+  @HiveField(5)
   String searchParam;
+
+  //  Extensions for searchParam
+  @HiveField(6)
   Element elementSearchParam;
+
+  //  The value of the filter. If period is specified, the filter will
+  // return only those data items that fall within the bounds determined by
+  // the Period, inclusive of the period boundaries. If dateTime is
+  // specified, the filter will return only those data items that are equal
+  // to the specified dateTime. If a Duration is specified, the filter will
+  // return only those data items that fall within Duration before now.
+  @HiveField(7)
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+
+  //  Extensions for valueDateTime
+  @HiveField(8)
   Element elementValueDateTime;
+
+  //  The value of the filter. If period is specified, the filter will
+  // return only those data items that fall within the bounds determined by
+  // the Period, inclusive of the period boundaries. If dateTime is
+  // specified, the filter will return only those data items that are equal
+  // to the specified dateTime. If a Duration is specified, the filter will
+  // return only those data items that fall within Duration before now.
+  @HiveField(9)
   Period valuePeriod;
+
+  //  The value of the filter. If period is specified, the filter will
+  // return only those data items that fall within the bounds determined by
+  // the Period, inclusive of the period boundaries. If dateTime is
+  // specified, the filter will return only those data items that are equal
+  // to the specified dateTime. If a Duration is specified, the filter will
+  // return only those data items that fall within Duration before now.
+  @HiveField(10)
   Duration valueDuration;
 
 DataRequirement_DateFilter(
@@ -107,13 +314,56 @@ DataRequirement_DateFilter(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 31)
 class DataRequirement_Sort {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The attribute of the sort. The specified path must be resolvable from
+  // the type of the required data. The path is allowed to contain
+  // qualifiers (.) to traverse sub-elements, as well as indexers ([x]) to
+  // traverse multiple-cardinality sub-elements. Note that the index must be
+  // an integer constant.
+  @HiveField(3)
   String path;
+
+  //  Extensions for path
+  @HiveField(4)
   Element elementPath;
+
+  //  The direction of the sort, ascending or descending.
+  @HiveField(5)
   String direction; // <code> enum: ascending/descending;
+
+  //  Extensions for direction
+  @HiveField(6)
   Element elementDirection;
 
 DataRequirement_Sort(
@@ -132,6 +382,219 @@ DataRequirement_Sort(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class DataRequirementAdapter extends TypeAdapter<DataRequirement> {
+  @override
+  final typeId = 28;
+
+  @override
+  DataRequirement read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return DataRequirement(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      type: fields[2] as String,
+      elementType: fields[3] as Element,
+      profile: (fields[4] as List)?.cast<String>(),
+      subjectCodeableConcept: fields[5] as CodeableConcept,
+      subjectReference: fields[6] as Reference,
+      mustSupport: (fields[7] as List)?.cast<String>(),
+      elementMustSupport: (fields[8] as List)?.cast<Element>(),
+      codeFilter: (fields[9] as List)?.cast<DataRequirement_CodeFilter>(),
+      dateFilter: (fields[10] as List)?.cast<DataRequirement_DateFilter>(),
+      limit: fields[11] as int,
+      elementLimit: fields[12] as Element,
+      sort: (fields[13] as List)?.cast<DataRequirement_Sort>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, DataRequirement obj) {
+    writer
+      ..writeByte(14)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.type)
+      ..writeByte(3)
+      ..write(obj.elementType)
+      ..writeByte(4)
+      ..write(obj.profile)
+      ..writeByte(5)
+      ..write(obj.subjectCodeableConcept)
+      ..writeByte(6)
+      ..write(obj.subjectReference)
+      ..writeByte(7)
+      ..write(obj.mustSupport)
+      ..writeByte(8)
+      ..write(obj.elementMustSupport)
+      ..writeByte(9)
+      ..write(obj.codeFilter)
+      ..writeByte(10)
+      ..write(obj.dateFilter)
+      ..writeByte(11)
+      ..write(obj.limit)
+      ..writeByte(12)
+      ..write(obj.elementLimit)
+      ..writeByte(13)
+      ..write(obj.sort);
+  }
+}
+
+class DataRequirement_CodeFilterAdapter
+    extends TypeAdapter<DataRequirement_CodeFilter> {
+  @override
+  final typeId = 29;
+
+  @override
+  DataRequirement_CodeFilter read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return DataRequirement_CodeFilter(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      path: fields[3] as String,
+      elementPath: fields[4] as Element,
+      searchParam: fields[5] as String,
+      elementSearchParam: fields[6] as Element,
+      valueSet: fields[7] as String,
+      code: (fields[8] as List)?.cast<Coding>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, DataRequirement_CodeFilter obj) {
+    writer
+      ..writeByte(9)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.path)
+      ..writeByte(4)
+      ..write(obj.elementPath)
+      ..writeByte(5)
+      ..write(obj.searchParam)
+      ..writeByte(6)
+      ..write(obj.elementSearchParam)
+      ..writeByte(7)
+      ..write(obj.valueSet)
+      ..writeByte(8)
+      ..write(obj.code);
+  }
+}
+
+class DataRequirement_DateFilterAdapter
+    extends TypeAdapter<DataRequirement_DateFilter> {
+  @override
+  final typeId = 30;
+
+  @override
+  DataRequirement_DateFilter read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return DataRequirement_DateFilter(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      path: fields[3] as String,
+      elementPath: fields[4] as Element,
+      searchParam: fields[5] as String,
+      elementSearchParam: fields[6] as Element,
+      valueDateTime: fields[7] as String,
+      elementValueDateTime: fields[8] as Element,
+      valuePeriod: fields[9] as Period,
+      valueDuration: fields[10] as Duration,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, DataRequirement_DateFilter obj) {
+    writer
+      ..writeByte(11)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.path)
+      ..writeByte(4)
+      ..write(obj.elementPath)
+      ..writeByte(5)
+      ..write(obj.searchParam)
+      ..writeByte(6)
+      ..write(obj.elementSearchParam)
+      ..writeByte(7)
+      ..write(obj.valueDateTime)
+      ..writeByte(8)
+      ..write(obj.elementValueDateTime)
+      ..writeByte(9)
+      ..write(obj.valuePeriod)
+      ..writeByte(10)
+      ..write(obj.valueDuration);
+  }
+}
+
+class DataRequirement_SortAdapter extends TypeAdapter<DataRequirement_Sort> {
+  @override
+  final typeId = 31;
+
+  @override
+  DataRequirement_Sort read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return DataRequirement_Sort(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      path: fields[3] as String,
+      elementPath: fields[4] as Element,
+      direction: fields[5] as String,
+      elementDirection: fields[6] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, DataRequirement_Sort obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.path)
+      ..writeByte(4)
+      ..write(obj.elementPath)
+      ..writeByte(5)
+      ..write(obj.direction)
+      ..writeByte(6)
+      ..write(obj.elementDirection);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

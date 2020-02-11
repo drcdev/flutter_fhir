@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'dart:io';
 import 'dart:convert';
 
@@ -19,42 +20,191 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 470)
 class Patient {
+
+  //  This is a Patient resource
+  @HiveField(0)
   final String resourceType= 'Patient';
+
+  //  The logical id of the resource, as used in the URL for the resource.
+  // Once assigned, this value never changes.
+  @HiveField(1)
   String id;
+
+  //  The metadata about the resource. This is content that is maintained by
+  // the infrastructure. Changes to the content might not always be
+  // associated with version changes to the resource.
+  @HiveField(2)
   Meta meta;
+
+  //  A reference to a set of rules that were followed when the resource was
+  // constructed, and which must be understood when processing the content.
+  // Often, this is a reference to an implementation guide that defines the
+  // special rules along with other profiles etc.
+  @HiveField(3)
   String implicitRules;
+
+  //  Extensions for implicitRules
+  @HiveField(4)
   Element elementImplicitRules;
+
+  //  The base language in which the resource is written.
+  @HiveField(5)
   String language;
+
+  //  Extensions for language
+  @HiveField(6)
   Element elementLanguage;
+
+  //  A human-readable narrative that contains a summary of the resource and
+  // can be used to represent the content of the resource to a human. The
+  // narrative need not encode all the structured data, but is required to
+  // contain sufficient detail to make it "clinically safe" for a human to
+  // just read the narrative. Resource definitions may define what content
+  // should be represented in the narrative to ensure clinical safety.
+  @HiveField(7)
   Narrative text;
+
+  //  These resources do not have an independent existence apart from the
+  // resource that contains them - they cannot be identified independently,
+  // and nor can they have their own independent transaction scope.
+  @HiveField(8)
   List<dynamic> contained;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource. To make the use of extensions
+  // safe and manageable, there is a strict set of governance  applied to
+  // the definition and use of extensions. Though any implementer can define
+  // an extension, there is a set of requirements that SHALL be met as part
+  // of the definition of the extension.
+  @HiveField(9)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource and that modifies the
+  // understanding of the element that contains it and/or the understanding
+  // of the containing element's descendants. Usually modifier elements
+  // provide negation or qualification. To make the use of extensions safe
+  // and manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer is allowed to
+  // define an extension, there is a set of requirements that SHALL be met
+  // as part of the definition of the extension. Applications processing a
+  // resource are required to check for modifier extensions. Modifier
+  // extensions SHALL NOT change the meaning of any elements on Resource or
+  // DomainResource (including cannot change the meaning of
+  // modifierExtension itself).
+  @HiveField(10)
   List<Extension> modifierExtension;
+
+  //  An identifier for this patient.
+  @HiveField(11)
   List<Identifier> identifier;
+
+  //  Whether this patient record is in active use.  Many systems use this
+  // property to mark as non-current patients, such as those that have not
+  // been seen for a period of time based on an organization's business
+  // rules. It is often used to filter patient lists to exclude inactive
+  // patients Deceased patients may also be marked as inactive for the same
+  // reasons, but may be active for some time after death.
+  @HiveField(12)
   bool active;
+
+  //  Extensions for active
+  @HiveField(13)
   Element elementActive;
+
+  //  A name associated with the individual.
+  @HiveField(14)
   List<HumanName> name;
+
+  //  A contact detail (e.g. a telephone number or an email address) by
+  // which the individual may be contacted.
+  @HiveField(15)
   List<ContactPoint> telecom;
+
+  //  Administrative Gender - the gender that the patient is considered to
+  // have for administration and record keeping purposes.
+  @HiveField(16)
   String gender; // <code> enum: male/female/other/unknown;
+
+  //  Extensions for gender
+  @HiveField(17)
   Element elementGender;
+
+  //  The date of birth for the individual.
+  @HiveField(18)
   String birthDate;
+
+  //  Extensions for birthDate
+  @HiveField(19)
   Element elementBirthDate;
+
+  //  Indicates if the individual is deceased or not.
+  @HiveField(20)
   bool deceasedBoolean; //  pattern: ^true|false$
+
+  //  Extensions for deceasedBoolean
+  @HiveField(21)
   Element elementDeceasedBoolean;
+
+  //  Indicates if the individual is deceased or not.
+  @HiveField(22)
   String deceasedDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+
+  //  Extensions for deceasedDateTime
+  @HiveField(23)
   Element elementDeceasedDateTime;
+
+  //  An address for the individual.
+  @HiveField(24)
   List<Address> address;
+
+  //  This field contains a patient's most recent marital (civil) status.
+  @HiveField(25)
   CodeableConcept maritalStatus;
+
+  //  Indicates whether the patient is part of a multiple (boolean) or
+  // indicates the actual birth order (integer).
+  @HiveField(26)
   bool multipleBirthBoolean; //  pattern: ^true|false$
+
+  //  Extensions for multipleBirthBoolean
+  @HiveField(27)
   Element elementMultipleBirthBoolean;
+
+  //  Indicates whether the patient is part of a multiple (boolean) or
+  // indicates the actual birth order (integer).
   int multipleBirthInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
+
+  //  Extensions for multipleBirthInteger
+  @HiveField(29)
   Element elementMultipleBirthInteger;
+
+  //  Image of the patient.
+  @HiveField(30)
   List<Attachment> photo;
+
+  //  A contact party (e.g. guardian, partner, friend) for the patient.
+  @HiveField(31)
   List<Patient_Contact> contact;
+
+  //  A language which may be used to communicate with the patient about his
+  // or her health.
+  @HiveField(32)
   List<Patient_Communication> communication;
+
+  //  Patient's nominated care provider.
+  @HiveField(33)
   List<Reference> generalPractitioner;
+
+  //  Organization that is the custodian of the patient record.
+  @HiveField(34)
   Reference managingOrganization;
+
+  //  Link to another patient resource that concerns the same actual
+  // patient.
+  @HiveField(35)
   List<Patient_Link> link;
 
 Patient(
@@ -125,17 +275,73 @@ Future<List<Patient>> readPtList() async {
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 471)
 class Patient_Contact {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The nature of the relationship between the patient and the contact
+  // person.
+  @HiveField(3)
   List<CodeableConcept> relationship;
+
+  //  A name associated with the contact person.
+  @HiveField(4)
   HumanName name;
+
+  //  A contact detail for the person, e.g. a telephone number or an email
+  // address.
+  @HiveField(5)
   List<ContactPoint> telecom;
+
+  //  Address for the contact person.
+  @HiveField(6)
   Address address;
+
+  //  Administrative Gender - the gender that the contact person is
+  // considered to have for administration and record keeping purposes.
+  @HiveField(7)
   String gender; // <code> enum: male/female/other/unknown;
+
+  //  Extensions for gender
+  @HiveField(8)
   Element elementGender;
+
+  //  Organization on behalf of which the contact is acting or for which the
+  // contact is working.
+  @HiveField(9)
   Reference organization;
+
+  //  The period during which this contact person or organization is valid
+  // to be contacted relating to this patient.
+  @HiveField(10)
   Period period;
 
 Patient_Contact(
@@ -157,12 +363,52 @@ Patient_Contact(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 472)
 class Patient_Communication {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The ISO-639-1 alpha 2 code in lower case for the language, optionally
+  // followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in
+  // upper case; e.g. "en" for English, or "en-US" for American English
+  // versus "en-EN" for England English.
+  @HiveField(3)
   CodeableConcept language;
+
+  //  Indicates whether or not the patient prefers this language (over other
+  // languages he masters up a certain level).
+  @HiveField(4)
   bool preferred;
+
+  //  Extensions for preferred
+  @HiveField(5)
   Element elementPreferred;
 
 Patient_Communication(
@@ -179,12 +425,49 @@ Patient_Communication(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 473)
 class Patient_Link {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The other patient resource that the link refers to.
+  @HiveField(3)
   Reference other;
+
+  //  The type of link between this patient resource and another patient
+  // resource.
+  @HiveField(4)
   String type; // <code> enum: replaced-by/replaces/refer/seealso;
+
+  //  Extensions for type
+  @HiveField(5)
   Element elementType;
 
 Patient_Link(
@@ -202,6 +485,267 @@ Patient_Link(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class PatientAdapter extends TypeAdapter<Patient> {
+  @override
+  final typeId = 470;
+
+  @override
+  Patient read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Patient(
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      active: fields[12] as bool,
+      elementActive: fields[13] as Element,
+      name: (fields[14] as List)?.cast<HumanName>(),
+      telecom: (fields[15] as List)?.cast<ContactPoint>(),
+      gender: fields[16] as String,
+      elementGender: fields[17] as Element,
+      birthDate: fields[18] as String,
+      elementBirthDate: fields[19] as Element,
+      deceasedBoolean: fields[20] as bool,
+      elementDeceasedBoolean: fields[21] as Element,
+      deceasedDateTime: fields[22] as String,
+      elementDeceasedDateTime: fields[23] as Element,
+      address: (fields[24] as List)?.cast<Address>(),
+      maritalStatus: fields[25] as CodeableConcept,
+      multipleBirthBoolean: fields[26] as bool,
+      elementMultipleBirthBoolean: fields[27] as Element,
+      elementMultipleBirthInteger: fields[29] as Element,
+      photo: (fields[30] as List)?.cast<Attachment>(),
+      contact: (fields[31] as List)?.cast<Patient_Contact>(),
+      communication: (fields[32] as List)?.cast<Patient_Communication>(),
+      generalPractitioner: (fields[33] as List)?.cast<Reference>(),
+      managingOrganization: fields[34] as Reference,
+      link: (fields[35] as List)?.cast<Patient_Link>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Patient obj) {
+    writer
+      ..writeByte(35)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.active)
+      ..writeByte(13)
+      ..write(obj.elementActive)
+      ..writeByte(14)
+      ..write(obj.name)
+      ..writeByte(15)
+      ..write(obj.telecom)
+      ..writeByte(16)
+      ..write(obj.gender)
+      ..writeByte(17)
+      ..write(obj.elementGender)
+      ..writeByte(18)
+      ..write(obj.birthDate)
+      ..writeByte(19)
+      ..write(obj.elementBirthDate)
+      ..writeByte(20)
+      ..write(obj.deceasedBoolean)
+      ..writeByte(21)
+      ..write(obj.elementDeceasedBoolean)
+      ..writeByte(22)
+      ..write(obj.deceasedDateTime)
+      ..writeByte(23)
+      ..write(obj.elementDeceasedDateTime)
+      ..writeByte(24)
+      ..write(obj.address)
+      ..writeByte(25)
+      ..write(obj.maritalStatus)
+      ..writeByte(26)
+      ..write(obj.multipleBirthBoolean)
+      ..writeByte(27)
+      ..write(obj.elementMultipleBirthBoolean)
+      ..writeByte(29)
+      ..write(obj.elementMultipleBirthInteger)
+      ..writeByte(30)
+      ..write(obj.photo)
+      ..writeByte(31)
+      ..write(obj.contact)
+      ..writeByte(32)
+      ..write(obj.communication)
+      ..writeByte(33)
+      ..write(obj.generalPractitioner)
+      ..writeByte(34)
+      ..write(obj.managingOrganization)
+      ..writeByte(35)
+      ..write(obj.link);
+  }
+}
+
+class Patient_ContactAdapter extends TypeAdapter<Patient_Contact> {
+  @override
+  final typeId = 471;
+
+  @override
+  Patient_Contact read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Patient_Contact(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      relationship: (fields[3] as List)?.cast<CodeableConcept>(),
+      name: fields[4] as HumanName,
+      telecom: (fields[5] as List)?.cast<ContactPoint>(),
+      address: fields[6] as Address,
+      gender: fields[7] as String,
+      elementGender: fields[8] as Element,
+      organization: fields[9] as Reference,
+      period: fields[10] as Period,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Patient_Contact obj) {
+    writer
+      ..writeByte(11)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.relationship)
+      ..writeByte(4)
+      ..write(obj.name)
+      ..writeByte(5)
+      ..write(obj.telecom)
+      ..writeByte(6)
+      ..write(obj.address)
+      ..writeByte(7)
+      ..write(obj.gender)
+      ..writeByte(8)
+      ..write(obj.elementGender)
+      ..writeByte(9)
+      ..write(obj.organization)
+      ..writeByte(10)
+      ..write(obj.period);
+  }
+}
+
+class Patient_CommunicationAdapter extends TypeAdapter<Patient_Communication> {
+  @override
+  final typeId = 472;
+
+  @override
+  Patient_Communication read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Patient_Communication(
+      fields[3] as CodeableConcept,
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      preferred: fields[4] as bool,
+      elementPreferred: fields[5] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Patient_Communication obj) {
+    writer
+      ..writeByte(6)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.language)
+      ..writeByte(4)
+      ..write(obj.preferred)
+      ..writeByte(5)
+      ..write(obj.elementPreferred);
+  }
+}
+
+class Patient_LinkAdapter extends TypeAdapter<Patient_Link> {
+  @override
+  final typeId = 473;
+
+  @override
+  Patient_Link read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Patient_Link(
+      fields[3] as Reference,
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      type: fields[4] as String,
+      elementType: fields[5] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Patient_Link obj) {
+    writer
+      ..writeByte(6)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.other)
+      ..writeByte(4)
+      ..write(obj.type)
+      ..writeByte(5)
+      ..write(obj.elementType);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

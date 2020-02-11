@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/fhirClasses/signature.dart';
@@ -11,36 +12,162 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 652)
 class VerificationResult {
+
+  //  This is a VerificationResult resource
+  @HiveField(0)
   final String resourceType= 'VerificationResult';
+
+  //  The logical id of the resource, as used in the URL for the resource.
+  // Once assigned, this value never changes.
+  @HiveField(1)
   String id;
+
+  //  The metadata about the resource. This is content that is maintained by
+  // the infrastructure. Changes to the content might not always be
+  // associated with version changes to the resource.
+  @HiveField(2)
   Meta meta;
+
+  //  A reference to a set of rules that were followed when the resource was
+  // constructed, and which must be understood when processing the content.
+  // Often, this is a reference to an implementation guide that defines the
+  // special rules along with other profiles etc.
+  @HiveField(3)
   String implicitRules;
+
+  //  Extensions for implicitRules
+  @HiveField(4)
   Element elementImplicitRules;
+
+  //  The base language in which the resource is written.
+  @HiveField(5)
   String language;
+
+  //  Extensions for language
+  @HiveField(6)
   Element elementLanguage;
+
+  //  A human-readable narrative that contains a summary of the resource and
+  // can be used to represent the content of the resource to a human. The
+  // narrative need not encode all the structured data, but is required to
+  // contain sufficient detail to make it "clinically safe" for a human to
+  // just read the narrative. Resource definitions may define what content
+  // should be represented in the narrative to ensure clinical safety.
+  @HiveField(7)
   Narrative text;
+
+  //  These resources do not have an independent existence apart from the
+  // resource that contains them - they cannot be identified independently,
+  // and nor can they have their own independent transaction scope.
+  @HiveField(8)
   List<dynamic> contained;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource. To make the use of extensions
+  // safe and manageable, there is a strict set of governance  applied to
+  // the definition and use of extensions. Though any implementer can define
+  // an extension, there is a set of requirements that SHALL be met as part
+  // of the definition of the extension.
+  @HiveField(9)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource and that modifies the
+  // understanding of the element that contains it and/or the understanding
+  // of the containing element's descendants. Usually modifier elements
+  // provide negation or qualification. To make the use of extensions safe
+  // and manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer is allowed to
+  // define an extension, there is a set of requirements that SHALL be met
+  // as part of the definition of the extension. Applications processing a
+  // resource are required to check for modifier extensions. Modifier
+  // extensions SHALL NOT change the meaning of any elements on Resource or
+  // DomainResource (including cannot change the meaning of
+  // modifierExtension itself).
+  @HiveField(10)
   List<Extension> modifierExtension;
+
+  //  A resource that was validated.
+  @HiveField(11)
   List<Reference> target;
+
+  //  The fhirpath location(s) within the resource that was validated.
+  @HiveField(12)
   List<String> targetLocation;
+
+  //  Extensions for targetLocation
+  @HiveField(13)
   List<Element> elementTargetLocation;
+
+  //  The frequency with which the target must be validated (none; initial;
+  // periodic).
+  @HiveField(14)
   CodeableConcept need;
+
+  //  The validation status of the target (attested; validated; in process;
+  // requires revalidation; validation failed; revalidation failed).
+  @HiveField(15)
   String status;
+
+  //  Extensions for status
+  @HiveField(16)
   Element elementStatus;
+
+  //  When the validation status was updated.
+  @HiveField(17)
   DateTime statusDate;
+
+  //  Extensions for statusDate
+  @HiveField(18)
   Element elementStatusDate;
+
+  //  What the target is validated against (nothing; primary source;
+  // multiple sources).
+  @HiveField(19)
   CodeableConcept validationType;
+
+  //  The primary process by which the target is validated (edit check;
+  // value set; primary source; multiple sources; standalone; in context).
+  @HiveField(20)
   List<CodeableConcept> validationProcess;
+
+  //  Frequency of revalidation.
+  @HiveField(21)
   Timing frequency;
+
+  //  The date/time validation was last completed (including failed
+  // validations).
+  @HiveField(22)
   DateTime lastPerformed;
+
+  //  Extensions for lastPerformed
+  @HiveField(23)
   Element elementLastPerformed;
+
+  //  The date when target is next validated, if appropriate.
+  @HiveField(24)
   String nextScheduled;
+
+  //  Extensions for nextScheduled
+  @HiveField(25)
   Element elementNextScheduled;
+
+  //  The result if validation fails (fatal; warning; record only; none).
+  @HiveField(26)
   CodeableConcept failureAction;
+
+  //  Information about the primary source(s) involved in validation.
+  @HiveField(27)
   List<VerificationResult_PrimarySource> primarySource;
+
+  //  Information about the entity attesting to information.
+  @HiveField(28)
   VerificationResult_Attestation attestation;
+
+  //  Information about the entity validating information.
+  @HiveField(29)
   List<VerificationResult_Validator> validator;
 
 VerificationResult(
@@ -80,17 +207,73 @@ VerificationResult(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 653)
 class VerificationResult_PrimarySource {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Reference to the primary source.
+  @HiveField(3)
   Reference who;
+
+  //  Type of primary source (License Board; Primary Education; Continuing
+  // Education; Postal Service; Relationship owner; Registration Authority;
+  // legal source; issuing source; authoritative source).
+  @HiveField(4)
   List<CodeableConcept> type;
+
+  //  Method for communicating with the primary source (manual; API; Push).
+  @HiveField(5)
   List<CodeableConcept> communicationMethod;
+
+  //  Status of the validation of the target against the primary source
+  // (successful; failed; unknown).
+  @HiveField(6)
   CodeableConcept validationStatus;
+
+  //  When the target was validated against the primary source.
+  @HiveField(7)
   DateTime validationDate;
+
+  //  Extensions for validationDate
+  @HiveField(8)
   Element elementValidationDate;
+
+  //  Ability of the primary source to push updates/alerts (yes; no;
+  // undetermined).
+  @HiveField(9)
   CodeableConcept canPushUpdates;
+
+  //  Type of alerts/updates the primary source can send (specific requested
+  // changes; any changes; as defined by source).
+  @HiveField(10)
   List<CodeableConcept> pushTypeAvailable;
 
 VerificationResult_PrimarySource(
@@ -112,20 +295,86 @@ VerificationResult_PrimarySource(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 654)
 class VerificationResult_Attestation {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The individual or organization attesting to information.
+  @HiveField(3)
   Reference who;
+
+  //  When the who is asserting on behalf of another (organization or
+  // individual).
+  @HiveField(4)
   Reference onBehalfOf;
+
+  //  The method by which attested information was submitted/retrieved
+  // (manual; API; Push).
+  @HiveField(5)
   CodeableConcept communicationMethod;
+
+  //  The date the information was attested to.
+  @HiveField(6)
   String date;
+
+  //  Extensions for date
+  @HiveField(7)
   Element elementDate;
+
+  //  A digital identity certificate associated with the attestation source.
+  @HiveField(8)
   String sourceIdentityCertificate;
+
+  //  Extensions for sourceIdentityCertificate
+  @HiveField(9)
   Element elementSourceIdentityCertificate;
+
+  //  A digital identity certificate associated with the proxy entity
+  // submitting attested information on behalf of the attestation source.
+  @HiveField(10)
   String proxyIdentityCertificate;
+
+  //  Extensions for proxyIdentityCertificate
+  @HiveField(11)
   Element elementProxyIdentityCertificate;
+
+  //  Signed assertion by the proxy entity indicating that they have the
+  // right to submit attested information on behalf of the attestation
+  // source.
+  @HiveField(12)
   Signature proxySignature;
+
+  //  Signed assertion by the attestation source that they have attested to
+  // the information.
+  @HiveField(13)
   Signature sourceSignature;
 
 VerificationResult_Attestation(
@@ -150,13 +399,53 @@ VerificationResult_Attestation(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 655)
 class VerificationResult_Validator {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Reference to the organization validating information.
+  @HiveField(3)
   Reference organization;
+
+  //  A digital identity certificate associated with the validator.
+  @HiveField(4)
   String identityCertificate;
+
+  //  Extensions for identityCertificate
+  @HiveField(5)
   Element elementIdentityCertificate;
+
+  //  Signed assertion by the validator that they have validated the
+  // information.
+  @HiveField(6)
   Signature attestationSignature;
 
 VerificationResult_Validator(
@@ -175,6 +464,283 @@ VerificationResult_Validator(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class VerificationResultAdapter extends TypeAdapter<VerificationResult> {
+  @override
+  final typeId = 652;
+
+  @override
+  VerificationResult read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return VerificationResult(
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      target: (fields[11] as List)?.cast<Reference>(),
+      targetLocation: (fields[12] as List)?.cast<String>(),
+      elementTargetLocation: (fields[13] as List)?.cast<Element>(),
+      need: fields[14] as CodeableConcept,
+      status: fields[15] as String,
+      elementStatus: fields[16] as Element,
+      statusDate: fields[17] as DateTime,
+      elementStatusDate: fields[18] as Element,
+      validationType: fields[19] as CodeableConcept,
+      validationProcess: (fields[20] as List)?.cast<CodeableConcept>(),
+      frequency: fields[21] as Timing,
+      lastPerformed: fields[22] as DateTime,
+      elementLastPerformed: fields[23] as Element,
+      nextScheduled: fields[24] as String,
+      elementNextScheduled: fields[25] as Element,
+      failureAction: fields[26] as CodeableConcept,
+      primarySource:
+          (fields[27] as List)?.cast<VerificationResult_PrimarySource>(),
+      attestation: fields[28] as VerificationResult_Attestation,
+      validator: (fields[29] as List)?.cast<VerificationResult_Validator>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, VerificationResult obj) {
+    writer
+      ..writeByte(30)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.target)
+      ..writeByte(12)
+      ..write(obj.targetLocation)
+      ..writeByte(13)
+      ..write(obj.elementTargetLocation)
+      ..writeByte(14)
+      ..write(obj.need)
+      ..writeByte(15)
+      ..write(obj.status)
+      ..writeByte(16)
+      ..write(obj.elementStatus)
+      ..writeByte(17)
+      ..write(obj.statusDate)
+      ..writeByte(18)
+      ..write(obj.elementStatusDate)
+      ..writeByte(19)
+      ..write(obj.validationType)
+      ..writeByte(20)
+      ..write(obj.validationProcess)
+      ..writeByte(21)
+      ..write(obj.frequency)
+      ..writeByte(22)
+      ..write(obj.lastPerformed)
+      ..writeByte(23)
+      ..write(obj.elementLastPerformed)
+      ..writeByte(24)
+      ..write(obj.nextScheduled)
+      ..writeByte(25)
+      ..write(obj.elementNextScheduled)
+      ..writeByte(26)
+      ..write(obj.failureAction)
+      ..writeByte(27)
+      ..write(obj.primarySource)
+      ..writeByte(28)
+      ..write(obj.attestation)
+      ..writeByte(29)
+      ..write(obj.validator);
+  }
+}
+
+class VerificationResult_PrimarySourceAdapter
+    extends TypeAdapter<VerificationResult_PrimarySource> {
+  @override
+  final typeId = 653;
+
+  @override
+  VerificationResult_PrimarySource read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return VerificationResult_PrimarySource(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      who: fields[3] as Reference,
+      type: (fields[4] as List)?.cast<CodeableConcept>(),
+      communicationMethod: (fields[5] as List)?.cast<CodeableConcept>(),
+      validationStatus: fields[6] as CodeableConcept,
+      validationDate: fields[7] as DateTime,
+      elementValidationDate: fields[8] as Element,
+      canPushUpdates: fields[9] as CodeableConcept,
+      pushTypeAvailable: (fields[10] as List)?.cast<CodeableConcept>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, VerificationResult_PrimarySource obj) {
+    writer
+      ..writeByte(11)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.who)
+      ..writeByte(4)
+      ..write(obj.type)
+      ..writeByte(5)
+      ..write(obj.communicationMethod)
+      ..writeByte(6)
+      ..write(obj.validationStatus)
+      ..writeByte(7)
+      ..write(obj.validationDate)
+      ..writeByte(8)
+      ..write(obj.elementValidationDate)
+      ..writeByte(9)
+      ..write(obj.canPushUpdates)
+      ..writeByte(10)
+      ..write(obj.pushTypeAvailable);
+  }
+}
+
+class VerificationResult_AttestationAdapter
+    extends TypeAdapter<VerificationResult_Attestation> {
+  @override
+  final typeId = 654;
+
+  @override
+  VerificationResult_Attestation read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return VerificationResult_Attestation(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      who: fields[3] as Reference,
+      onBehalfOf: fields[4] as Reference,
+      communicationMethod: fields[5] as CodeableConcept,
+      date: fields[6] as String,
+      elementDate: fields[7] as Element,
+      sourceIdentityCertificate: fields[8] as String,
+      elementSourceIdentityCertificate: fields[9] as Element,
+      proxyIdentityCertificate: fields[10] as String,
+      elementProxyIdentityCertificate: fields[11] as Element,
+      proxySignature: fields[12] as Signature,
+      sourceSignature: fields[13] as Signature,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, VerificationResult_Attestation obj) {
+    writer
+      ..writeByte(14)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.who)
+      ..writeByte(4)
+      ..write(obj.onBehalfOf)
+      ..writeByte(5)
+      ..write(obj.communicationMethod)
+      ..writeByte(6)
+      ..write(obj.date)
+      ..writeByte(7)
+      ..write(obj.elementDate)
+      ..writeByte(8)
+      ..write(obj.sourceIdentityCertificate)
+      ..writeByte(9)
+      ..write(obj.elementSourceIdentityCertificate)
+      ..writeByte(10)
+      ..write(obj.proxyIdentityCertificate)
+      ..writeByte(11)
+      ..write(obj.elementProxyIdentityCertificate)
+      ..writeByte(12)
+      ..write(obj.proxySignature)
+      ..writeByte(13)
+      ..write(obj.sourceSignature);
+  }
+}
+
+class VerificationResult_ValidatorAdapter
+    extends TypeAdapter<VerificationResult_Validator> {
+  @override
+  final typeId = 655;
+
+  @override
+  VerificationResult_Validator read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return VerificationResult_Validator(
+      fields[3] as Reference,
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      identityCertificate: fields[4] as String,
+      elementIdentityCertificate: fields[5] as Element,
+      attestationSignature: fields[6] as Signature,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, VerificationResult_Validator obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.organization)
+      ..writeByte(4)
+      ..write(obj.identityCertificate)
+      ..writeByte(5)
+      ..write(obj.elementIdentityCertificate)
+      ..writeByte(6)
+      ..write(obj.attestationSignature);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

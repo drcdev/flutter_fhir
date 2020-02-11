@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
@@ -11,43 +12,219 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 258)
 class ExampleScenario {
+
+  //  This is a ExampleScenario resource
+  @HiveField(0)
   final String resourceType= 'ExampleScenario';
+
+  //  The logical id of the resource, as used in the URL for the resource.
+  // Once assigned, this value never changes.
+  @HiveField(1)
   String id;
+
+  //  The metadata about the resource. This is content that is maintained by
+  // the infrastructure. Changes to the content might not always be
+  // associated with version changes to the resource.
+  @HiveField(2)
   Meta meta;
+
+  //  A reference to a set of rules that were followed when the resource was
+  // constructed, and which must be understood when processing the content.
+  // Often, this is a reference to an implementation guide that defines the
+  // special rules along with other profiles etc.
+  @HiveField(3)
   String implicitRules;
+
+  //  Extensions for implicitRules
+  @HiveField(4)
   Element elementImplicitRules;
+
+  //  The base language in which the resource is written.
+  @HiveField(5)
   String language;
+
+  //  Extensions for language
+  @HiveField(6)
   Element elementLanguage;
+
+  //  A human-readable narrative that contains a summary of the resource and
+  // can be used to represent the content of the resource to a human. The
+  // narrative need not encode all the structured data, but is required to
+  // contain sufficient detail to make it "clinically safe" for a human to
+  // just read the narrative. Resource definitions may define what content
+  // should be represented in the narrative to ensure clinical safety.
+  @HiveField(7)
   Narrative text;
+
+  //  These resources do not have an independent existence apart from the
+  // resource that contains them - they cannot be identified independently,
+  // and nor can they have their own independent transaction scope.
+  @HiveField(8)
   List<dynamic> contained;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource. To make the use of extensions
+  // safe and manageable, there is a strict set of governance  applied to
+  // the definition and use of extensions. Though any implementer can define
+  // an extension, there is a set of requirements that SHALL be met as part
+  // of the definition of the extension.
+  @HiveField(9)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource and that modifies the
+  // understanding of the element that contains it and/or the understanding
+  // of the containing element's descendants. Usually modifier elements
+  // provide negation or qualification. To make the use of extensions safe
+  // and manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer is allowed to
+  // define an extension, there is a set of requirements that SHALL be met
+  // as part of the definition of the extension. Applications processing a
+  // resource are required to check for modifier extensions. Modifier
+  // extensions SHALL NOT change the meaning of any elements on Resource or
+  // DomainResource (including cannot change the meaning of
+  // modifierExtension itself).
+  @HiveField(10)
   List<Extension> modifierExtension;
+
+  //  An absolute URI that is used to identify this example scenario when it
+  // is referenced in a specification, model, design or an instance; also
+  // called its canonical identifier. This SHOULD be globally unique and
+  // SHOULD be a literal address at which at which an authoritative instance
+  // of this example scenario is (or will be) published. This URL can be the
+  // target of a canonical reference. It SHALL remain the same when the
+  // example scenario is stored on different servers.
+  @HiveField(11)
   String url;
+
+  //  Extensions for url
+  @HiveField(12)
   Element elementUrl;
+
+  //  A formal identifier that is used to identify this example scenario
+  // when it is represented in other formats, or referenced in a
+  // specification, model, design or an instance.
+  @HiveField(13)
   List<Identifier> identifier;
+
+  //  The identifier that is used to identify this version of the example
+  // scenario when it is referenced in a specification, model, design or
+  // instance. This is an arbitrary value managed by the example scenario
+  // author and is not expected to be globally unique. For example, it might
+  // be a timestamp (e.g. yyyymmdd) if a managed version is not available.
+  // There is also no expectation that versions can be placed in a
+  // lexicographical sequence.
+  @HiveField(14)
   String version;
+
+  //  Extensions for version
+  @HiveField(15)
   Element elementVersion;
+
+  //  A natural language name identifying the example scenario. This name
+  // should be usable as an identifier for the module by machine processing
+  // applications such as code generation.
+  @HiveField(16)
   String name;
+
+  //  Extensions for name
+  @HiveField(17)
   Element elementName;
+
+  //  The status of this example scenario. Enables tracking the life-cycle
+  // of the content.
+  @HiveField(18)
   String status; // <code> enum: draft/active/retired/unknown;
+
+  //  Extensions for status
+  @HiveField(19)
   Element elementStatus;
+
+  //  A Boolean value to indicate that this example scenario is authored for
+  // testing purposes (or education/evaluation/marketing) and is not
+  // intended to be used for genuine usage.
+  @HiveField(20)
   bool experimental;
+
+  //  Extensions for experimental
+  @HiveField(21)
   Element elementExperimental;
+
+  //  The date  (and optionally time) when the example scenario was
+  // published. The date must change when the business version changes and
+  // it must change if the status code changes. In addition, it should
+  // change when the substantive content of the example scenario changes.
+  // (e.g. the 'content logical definition').
+  @HiveField(22)
   DateTime date;
+
+  //  Extensions for date
+  @HiveField(23)
   Element elementDate;
+
+  //  The name of the organization or individual that published the example
+  // scenario.
+  @HiveField(24)
   String publisher;
+
+  //  Extensions for publisher
+  @HiveField(25)
   Element elementPublisher;
+
+  //  Contact details to assist a user in finding and communicating with the
+  // publisher.
+  @HiveField(26)
   List<ContactDetail> contact;
+
+  //  The content was developed with a focus and intent of supporting the
+  // contexts that are listed. These contexts may be general categories
+  // (gender, age, ...) or may be references to specific programs (insurance
+  // plans, studies, ...) and may be used to assist with indexing and
+  // searching for appropriate example scenario instances.
+  @HiveField(27)
   List<UsageContext> useContext;
+
+  //  A legal or geographic region in which the example scenario is intended
+  // to be used.
+  @HiveField(28)
   List<CodeableConcept> jurisdiction;
+
+  //  A copyright statement relating to the example scenario and/or its
+  // contents. Copyright statements are generally legal restrictions on the
+  // use and publishing of the example scenario.
+  @HiveField(29)
   String copyright;
+
+  //  Extensions for copyright
+  @HiveField(30)
   Element elementCopyright;
+
+  //  What the example scenario resource is created for. This should not be
+  // used to show the business purpose of the scenario itself, but the
+  // purpose of documenting a scenario.
+  @HiveField(31)
   String purpose;
+
+  //  Extensions for purpose
+  @HiveField(32)
   Element elementPurpose;
+
+  //  Actor participating in the resource.
+  @HiveField(33)
   List<ExampleScenario_Actor> actor;
+
+  //  Each resource and each version that is present in the workflow.
+  @HiveField(34)
   List<ExampleScenario_Instance> instance;
+
+  //  Each major process - a group of operations.
+  @HiveField(35)
   List<ExampleScenario_Process> process;
+
+  //  Another nested workflow.
+  @HiveField(36)
   List<String> workflow;
 
 ExampleScenario(
@@ -94,17 +271,68 @@ ExampleScenario(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 259)
 class ExampleScenario_Actor {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  ID or acronym of actor.
+  @HiveField(3)
   String actorId;
+
+  //  Extensions for actorId
+  @HiveField(4)
   Element elementActorId;
+
+  //  The type of actor - person or system.
+  @HiveField(5)
   String type; // <code> enum: person/entity;
+
+  //  Extensions for type
+  @HiveField(6)
   Element elementType;
+
+  //  The name of the actor as shown in the page.
+  @HiveField(7)
   String name;
+
+  //  Extensions for name
+  @HiveField(8)
   Element elementName;
+
+  //  The description of the actor.
+  @HiveField(9)
   String description;
+
+  //  Extensions for description
+  @HiveField(10)
   Element elementDescription;
 
 ExampleScenario_Actor(
@@ -126,19 +354,77 @@ ExampleScenario_Actor(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 260)
 class ExampleScenario_Instance {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The id of the resource for referencing.
+  @HiveField(3)
   String resourceId;
+
+  //  Extensions for resourceId
+  @HiveField(4)
   Element elementResourceId;
+
+  //  The type of the resource.
+  @HiveField(5)
   String resourceType;
+
+  //  Extensions for resourceType
+  @HiveField(6)
   Element elementResourceType;
+
+  //  A short name for the resource instance.
+  @HiveField(7)
   String name;
+
+  //  Extensions for name
+  @HiveField(8)
   Element elementName;
+
+  //  Human-friendly description of the resource instance.
+  @HiveField(9)
   String description;
+
+  //  Extensions for description
+  @HiveField(10)
   Element elementDescription;
+
+  //  A specific version of the resource.
+  @HiveField(11)
   List<ExampleScenario_Version> version;
+
+  //  Resources contained in the instance (e.g. the observations contained
+  // in a bundle).
+  @HiveField(12)
   List<ExampleScenario_ContainedInstance> containedInstance;
 
 ExampleScenario_Instance(
@@ -161,13 +447,52 @@ ExampleScenario_Instance(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 261)
 class ExampleScenario_Version {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The identifier of a specific version of a resource.
+  @HiveField(3)
   String versionId;
+
+  //  Extensions for versionId
+  @HiveField(4)
   Element elementVersionId;
+
+  //  The description of the resource version.
+  @HiveField(5)
   String description;
+
+  //  Extensions for description
+  @HiveField(6)
   Element elementDescription;
 
 ExampleScenario_Version(
@@ -185,13 +510,52 @@ ExampleScenario_Version(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 262)
 class ExampleScenario_ContainedInstance {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Each resource contained in the instance.
+  @HiveField(3)
   String resourceId;
+
+  //  Extensions for resourceId
+  @HiveField(4)
   Element elementResourceId;
+
+  //  A specific version of a resource contained in the instance.
+  @HiveField(5)
   String versionId;
+
+  //  Extensions for versionId
+  @HiveField(6)
   Element elementVersionId;
 
 ExampleScenario_ContainedInstance(
@@ -209,18 +573,72 @@ ExampleScenario_ContainedInstance(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 263)
 class ExampleScenario_Process {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The diagram title of the group of operations.
+  @HiveField(3)
   String title;
+
+  //  Extensions for title
+  @HiveField(4)
   Element elementTitle;
+
+  //  A longer description of the group of operations.
+  @HiveField(5)
   String description;
+
+  //  Extensions for description
+  @HiveField(6)
   Element elementDescription;
+
+  //  Description of initial status before the process starts.
+  @HiveField(7)
   String preConditions;
+
+  //  Extensions for preConditions
+  @HiveField(8)
   Element elementPreConditions;
+
+  //  Description of final status after the process ends.
+  @HiveField(9)
   String postConditions;
+
+  //  Extensions for postConditions
+  @HiveField(10)
   Element elementPostConditions;
+
+  //  Each step of the process.
+  @HiveField(11)
   List<ExampleScenario_Step> step;
 
 ExampleScenario_Process(
@@ -243,14 +661,57 @@ ExampleScenario_Process(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 264)
 class ExampleScenario_Step {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Nested process.
+  @HiveField(3)
   List<ExampleScenario_Process> process;
+
+  //  If there is a pause in the flow.
+  @HiveField(4)
   bool pause;
+
+  //  Extensions for pause
+  @HiveField(5)
   Element elementPause;
+
+  //  Each interaction or action.
+  @HiveField(6)
   ExampleScenario_Operation operation;
+
+  //  Indicates an alternative step that can be taken instead of the
+  // operations on the base step in exceptional/atypical circumstances.
+  @HiveField(7)
   List<ExampleScenario_Alternative> alternative;
 
 ExampleScenario_Step(
@@ -269,27 +730,108 @@ ExampleScenario_Step(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 265)
 class ExampleScenario_Operation {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The sequential number of the interaction, e.g. 1.2.5.
+  @HiveField(3)
   String number;
+
+  //  Extensions for number
+  @HiveField(4)
   Element elementNumber;
+
+  //  The type of operation - CRUD.
+  @HiveField(5)
   String type;
+
+  //  Extensions for type
+  @HiveField(6)
   Element elementType;
+
+  //  The human-friendly name of the interaction.
+  @HiveField(7)
   String name;
+
+  //  Extensions for name
+  @HiveField(8)
   Element elementName;
+
+  //  Who starts the transaction.
+  @HiveField(9)
   String initiator;
+
+  //  Extensions for initiator
+  @HiveField(10)
   Element elementInitiator;
+
+  //  Who receives the transaction.
+  @HiveField(11)
   String receiver;
+
+  //  Extensions for receiver
+  @HiveField(12)
   Element elementReceiver;
+
+  //  A comment to be inserted in the diagram.
+  @HiveField(13)
   String description;
+
+  //  Extensions for description
+  @HiveField(14)
   Element elementDescription;
+
+  //  Whether the initiator is deactivated right after the transaction.
+  @HiveField(15)
   bool initiatorActive;
+
+  //  Extensions for initiatorActive
+  @HiveField(16)
   Element elementInitiatorActive;
+
+  //  Whether the receiver is deactivated right after the transaction.
+  @HiveField(17)
   bool receiverActive;
+
+  //  Extensions for receiverActive
+  @HiveField(18)
   Element elementReceiverActive;
+
+  //  Each resource instance used by the initiator.
+  @HiveField(19)
   ExampleScenario_ContainedInstance request;
+
+  //  Each resource instance used by the responder.
+  @HiveField(20)
   ExampleScenario_ContainedInstance response;
 
 ExampleScenario_Operation(
@@ -321,14 +863,58 @@ ExampleScenario_Operation(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 266)
 class ExampleScenario_Alternative {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The label to display for the alternative that gives a sense of the
+  // circumstance in which the alternative should be invoked.
+  @HiveField(3)
   String title;
+
+  //  Extensions for title
+  @HiveField(4)
   Element elementTitle;
+
+  //  A human-readable description of the alternative explaining when the
+  // alternative should occur rather than the base step.
+  @HiveField(5)
   String description;
+
+  //  Extensions for description
+  @HiveField(6)
   Element elementDescription;
+
+  //  What happens in each alternative option.
+  @HiveField(7)
   List<ExampleScenario_Step> step;
 
 ExampleScenario_Alternative(
@@ -348,6 +934,576 @@ ExampleScenario_Alternative(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class ExampleScenarioAdapter extends TypeAdapter<ExampleScenario> {
+  @override
+  final typeId = 258;
+
+  @override
+  ExampleScenario read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ExampleScenario(
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      url: fields[11] as String,
+      elementUrl: fields[12] as Element,
+      identifier: (fields[13] as List)?.cast<Identifier>(),
+      version: fields[14] as String,
+      elementVersion: fields[15] as Element,
+      name: fields[16] as String,
+      elementName: fields[17] as Element,
+      status: fields[18] as String,
+      elementStatus: fields[19] as Element,
+      experimental: fields[20] as bool,
+      elementExperimental: fields[21] as Element,
+      date: fields[22] as DateTime,
+      elementDate: fields[23] as Element,
+      publisher: fields[24] as String,
+      elementPublisher: fields[25] as Element,
+      contact: (fields[26] as List)?.cast<ContactDetail>(),
+      useContext: (fields[27] as List)?.cast<UsageContext>(),
+      jurisdiction: (fields[28] as List)?.cast<CodeableConcept>(),
+      copyright: fields[29] as String,
+      elementCopyright: fields[30] as Element,
+      purpose: fields[31] as String,
+      elementPurpose: fields[32] as Element,
+      actor: (fields[33] as List)?.cast<ExampleScenario_Actor>(),
+      instance: (fields[34] as List)?.cast<ExampleScenario_Instance>(),
+      process: (fields[35] as List)?.cast<ExampleScenario_Process>(),
+      workflow: (fields[36] as List)?.cast<String>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ExampleScenario obj) {
+    writer
+      ..writeByte(37)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.url)
+      ..writeByte(12)
+      ..write(obj.elementUrl)
+      ..writeByte(13)
+      ..write(obj.identifier)
+      ..writeByte(14)
+      ..write(obj.version)
+      ..writeByte(15)
+      ..write(obj.elementVersion)
+      ..writeByte(16)
+      ..write(obj.name)
+      ..writeByte(17)
+      ..write(obj.elementName)
+      ..writeByte(18)
+      ..write(obj.status)
+      ..writeByte(19)
+      ..write(obj.elementStatus)
+      ..writeByte(20)
+      ..write(obj.experimental)
+      ..writeByte(21)
+      ..write(obj.elementExperimental)
+      ..writeByte(22)
+      ..write(obj.date)
+      ..writeByte(23)
+      ..write(obj.elementDate)
+      ..writeByte(24)
+      ..write(obj.publisher)
+      ..writeByte(25)
+      ..write(obj.elementPublisher)
+      ..writeByte(26)
+      ..write(obj.contact)
+      ..writeByte(27)
+      ..write(obj.useContext)
+      ..writeByte(28)
+      ..write(obj.jurisdiction)
+      ..writeByte(29)
+      ..write(obj.copyright)
+      ..writeByte(30)
+      ..write(obj.elementCopyright)
+      ..writeByte(31)
+      ..write(obj.purpose)
+      ..writeByte(32)
+      ..write(obj.elementPurpose)
+      ..writeByte(33)
+      ..write(obj.actor)
+      ..writeByte(34)
+      ..write(obj.instance)
+      ..writeByte(35)
+      ..write(obj.process)
+      ..writeByte(36)
+      ..write(obj.workflow);
+  }
+}
+
+class ExampleScenario_ActorAdapter extends TypeAdapter<ExampleScenario_Actor> {
+  @override
+  final typeId = 259;
+
+  @override
+  ExampleScenario_Actor read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ExampleScenario_Actor(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      actorId: fields[3] as String,
+      elementActorId: fields[4] as Element,
+      type: fields[5] as String,
+      elementType: fields[6] as Element,
+      name: fields[7] as String,
+      elementName: fields[8] as Element,
+      description: fields[9] as String,
+      elementDescription: fields[10] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ExampleScenario_Actor obj) {
+    writer
+      ..writeByte(11)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.actorId)
+      ..writeByte(4)
+      ..write(obj.elementActorId)
+      ..writeByte(5)
+      ..write(obj.type)
+      ..writeByte(6)
+      ..write(obj.elementType)
+      ..writeByte(7)
+      ..write(obj.name)
+      ..writeByte(8)
+      ..write(obj.elementName)
+      ..writeByte(9)
+      ..write(obj.description)
+      ..writeByte(10)
+      ..write(obj.elementDescription);
+  }
+}
+
+class ExampleScenario_InstanceAdapter
+    extends TypeAdapter<ExampleScenario_Instance> {
+  @override
+  final typeId = 260;
+
+  @override
+  ExampleScenario_Instance read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ExampleScenario_Instance(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      resourceId: fields[3] as String,
+      elementResourceId: fields[4] as Element,
+      elementResourceType: fields[6] as Element,
+      name: fields[7] as String,
+      elementName: fields[8] as Element,
+      description: fields[9] as String,
+      elementDescription: fields[10] as Element,
+      version: (fields[11] as List)?.cast<ExampleScenario_Version>(),
+      containedInstance:
+          (fields[12] as List)?.cast<ExampleScenario_ContainedInstance>(),
+    )..resourceType = fields[5] as String;
+  }
+
+  @override
+  void write(BinaryWriter writer, ExampleScenario_Instance obj) {
+    writer
+      ..writeByte(13)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.resourceId)
+      ..writeByte(4)
+      ..write(obj.elementResourceId)
+      ..writeByte(5)
+      ..write(obj.resourceType)
+      ..writeByte(6)
+      ..write(obj.elementResourceType)
+      ..writeByte(7)
+      ..write(obj.name)
+      ..writeByte(8)
+      ..write(obj.elementName)
+      ..writeByte(9)
+      ..write(obj.description)
+      ..writeByte(10)
+      ..write(obj.elementDescription)
+      ..writeByte(11)
+      ..write(obj.version)
+      ..writeByte(12)
+      ..write(obj.containedInstance);
+  }
+}
+
+class ExampleScenario_VersionAdapter
+    extends TypeAdapter<ExampleScenario_Version> {
+  @override
+  final typeId = 261;
+
+  @override
+  ExampleScenario_Version read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ExampleScenario_Version(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      versionId: fields[3] as String,
+      elementVersionId: fields[4] as Element,
+      description: fields[5] as String,
+      elementDescription: fields[6] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ExampleScenario_Version obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.versionId)
+      ..writeByte(4)
+      ..write(obj.elementVersionId)
+      ..writeByte(5)
+      ..write(obj.description)
+      ..writeByte(6)
+      ..write(obj.elementDescription);
+  }
+}
+
+class ExampleScenario_ContainedInstanceAdapter
+    extends TypeAdapter<ExampleScenario_ContainedInstance> {
+  @override
+  final typeId = 262;
+
+  @override
+  ExampleScenario_ContainedInstance read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ExampleScenario_ContainedInstance(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      resourceId: fields[3] as String,
+      elementResourceId: fields[4] as Element,
+      versionId: fields[5] as String,
+      elementVersionId: fields[6] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ExampleScenario_ContainedInstance obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.resourceId)
+      ..writeByte(4)
+      ..write(obj.elementResourceId)
+      ..writeByte(5)
+      ..write(obj.versionId)
+      ..writeByte(6)
+      ..write(obj.elementVersionId);
+  }
+}
+
+class ExampleScenario_ProcessAdapter
+    extends TypeAdapter<ExampleScenario_Process> {
+  @override
+  final typeId = 263;
+
+  @override
+  ExampleScenario_Process read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ExampleScenario_Process(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      title: fields[3] as String,
+      elementTitle: fields[4] as Element,
+      description: fields[5] as String,
+      elementDescription: fields[6] as Element,
+      preConditions: fields[7] as String,
+      elementPreConditions: fields[8] as Element,
+      postConditions: fields[9] as String,
+      elementPostConditions: fields[10] as Element,
+      step: (fields[11] as List)?.cast<ExampleScenario_Step>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ExampleScenario_Process obj) {
+    writer
+      ..writeByte(12)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.title)
+      ..writeByte(4)
+      ..write(obj.elementTitle)
+      ..writeByte(5)
+      ..write(obj.description)
+      ..writeByte(6)
+      ..write(obj.elementDescription)
+      ..writeByte(7)
+      ..write(obj.preConditions)
+      ..writeByte(8)
+      ..write(obj.elementPreConditions)
+      ..writeByte(9)
+      ..write(obj.postConditions)
+      ..writeByte(10)
+      ..write(obj.elementPostConditions)
+      ..writeByte(11)
+      ..write(obj.step);
+  }
+}
+
+class ExampleScenario_StepAdapter extends TypeAdapter<ExampleScenario_Step> {
+  @override
+  final typeId = 264;
+
+  @override
+  ExampleScenario_Step read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ExampleScenario_Step(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      process: (fields[3] as List)?.cast<ExampleScenario_Process>(),
+      pause: fields[4] as bool,
+      elementPause: fields[5] as Element,
+      operation: fields[6] as ExampleScenario_Operation,
+      alternative: (fields[7] as List)?.cast<ExampleScenario_Alternative>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ExampleScenario_Step obj) {
+    writer
+      ..writeByte(8)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.process)
+      ..writeByte(4)
+      ..write(obj.pause)
+      ..writeByte(5)
+      ..write(obj.elementPause)
+      ..writeByte(6)
+      ..write(obj.operation)
+      ..writeByte(7)
+      ..write(obj.alternative);
+  }
+}
+
+class ExampleScenario_OperationAdapter
+    extends TypeAdapter<ExampleScenario_Operation> {
+  @override
+  final typeId = 265;
+
+  @override
+  ExampleScenario_Operation read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ExampleScenario_Operation(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      number: fields[3] as String,
+      elementNumber: fields[4] as Element,
+      type: fields[5] as String,
+      elementType: fields[6] as Element,
+      name: fields[7] as String,
+      elementName: fields[8] as Element,
+      initiator: fields[9] as String,
+      elementInitiator: fields[10] as Element,
+      receiver: fields[11] as String,
+      elementReceiver: fields[12] as Element,
+      description: fields[13] as String,
+      elementDescription: fields[14] as Element,
+      initiatorActive: fields[15] as bool,
+      elementInitiatorActive: fields[16] as Element,
+      receiverActive: fields[17] as bool,
+      elementReceiverActive: fields[18] as Element,
+      request: fields[19] as ExampleScenario_ContainedInstance,
+      response: fields[20] as ExampleScenario_ContainedInstance,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ExampleScenario_Operation obj) {
+    writer
+      ..writeByte(21)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.number)
+      ..writeByte(4)
+      ..write(obj.elementNumber)
+      ..writeByte(5)
+      ..write(obj.type)
+      ..writeByte(6)
+      ..write(obj.elementType)
+      ..writeByte(7)
+      ..write(obj.name)
+      ..writeByte(8)
+      ..write(obj.elementName)
+      ..writeByte(9)
+      ..write(obj.initiator)
+      ..writeByte(10)
+      ..write(obj.elementInitiator)
+      ..writeByte(11)
+      ..write(obj.receiver)
+      ..writeByte(12)
+      ..write(obj.elementReceiver)
+      ..writeByte(13)
+      ..write(obj.description)
+      ..writeByte(14)
+      ..write(obj.elementDescription)
+      ..writeByte(15)
+      ..write(obj.initiatorActive)
+      ..writeByte(16)
+      ..write(obj.elementInitiatorActive)
+      ..writeByte(17)
+      ..write(obj.receiverActive)
+      ..writeByte(18)
+      ..write(obj.elementReceiverActive)
+      ..writeByte(19)
+      ..write(obj.request)
+      ..writeByte(20)
+      ..write(obj.response);
+  }
+}
+
+class ExampleScenario_AlternativeAdapter
+    extends TypeAdapter<ExampleScenario_Alternative> {
+  @override
+  final typeId = 266;
+
+  @override
+  ExampleScenario_Alternative read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ExampleScenario_Alternative(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      title: fields[3] as String,
+      elementTitle: fields[4] as Element,
+      description: fields[5] as String,
+      elementDescription: fields[6] as Element,
+      step: (fields[7] as List)?.cast<ExampleScenario_Step>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ExampleScenario_Alternative obj) {
+    writer
+      ..writeByte(8)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.title)
+      ..writeByte(4)
+      ..write(obj.elementTitle)
+      ..writeByte(5)
+      ..write(obj.description)
+      ..writeByte(6)
+      ..write(obj.elementDescription)
+      ..writeByte(7)
+      ..write(obj.step);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

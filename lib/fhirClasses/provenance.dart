@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/fhirClasses/signature.dart';
@@ -11,31 +12,145 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 496)
 class Provenance {
+
+  //  This is a Provenance resource
+  @HiveField(0)
   final String resourceType= 'Provenance';
+
+  //  The logical id of the resource, as used in the URL for the resource.
+  // Once assigned, this value never changes.
+  @HiveField(1)
   String id;
+
+  //  The metadata about the resource. This is content that is maintained by
+  // the infrastructure. Changes to the content might not always be
+  // associated with version changes to the resource.
+  @HiveField(2)
   Meta meta;
+
+  //  A reference to a set of rules that were followed when the resource was
+  // constructed, and which must be understood when processing the content.
+  // Often, this is a reference to an implementation guide that defines the
+  // special rules along with other profiles etc.
+  @HiveField(3)
   String implicitRules;
+
+  //  Extensions for implicitRules
+  @HiveField(4)
   Element elementImplicitRules;
+
+  //  The base language in which the resource is written.
+  @HiveField(5)
   String language;
+
+  //  Extensions for language
+  @HiveField(6)
   Element elementLanguage;
+
+  //  A human-readable narrative that contains a summary of the resource and
+  // can be used to represent the content of the resource to a human. The
+  // narrative need not encode all the structured data, but is required to
+  // contain sufficient detail to make it "clinically safe" for a human to
+  // just read the narrative. Resource definitions may define what content
+  // should be represented in the narrative to ensure clinical safety.
+  @HiveField(7)
   Narrative text;
+
+  //  These resources do not have an independent existence apart from the
+  // resource that contains them - they cannot be identified independently,
+  // and nor can they have their own independent transaction scope.
+  @HiveField(8)
   List<dynamic> contained;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource. To make the use of extensions
+  // safe and manageable, there is a strict set of governance  applied to
+  // the definition and use of extensions. Though any implementer can define
+  // an extension, there is a set of requirements that SHALL be met as part
+  // of the definition of the extension.
+  @HiveField(9)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource and that modifies the
+  // understanding of the element that contains it and/or the understanding
+  // of the containing element's descendants. Usually modifier elements
+  // provide negation or qualification. To make the use of extensions safe
+  // and manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer is allowed to
+  // define an extension, there is a set of requirements that SHALL be met
+  // as part of the definition of the extension. Applications processing a
+  // resource are required to check for modifier extensions. Modifier
+  // extensions SHALL NOT change the meaning of any elements on Resource or
+  // DomainResource (including cannot change the meaning of
+  // modifierExtension itself).
+  @HiveField(10)
   List<Extension> modifierExtension;
+
+  //  The Reference(s) that were generated or updated by  the activity
+  // described in this resource. A provenance can point to more than one
+  // target if multiple resources were created/updated by the same activity.
+  @HiveField(11)
   List<Reference> target;
+
+  //  The period during which the activity occurred.
+  @HiveField(12)
   Period occurredPeriod;
+
+  //  The period during which the activity occurred.
+  @HiveField(13)
   String occurredDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+
+  //  Extensions for occurredDateTime
+  @HiveField(14)
   Element elementOccurredDateTime;
+
+  //  The instant of time at which the activity was recorded.
+  @HiveField(15)
   DateTime recorded;
+
+  //  Extensions for recorded
+  @HiveField(16)
   Element elementRecorded;
+
+  //  Policy or plan the activity was defined by. Typically, a single
+  // activity may have multiple applicable policy documents, such as patient
+  // consent, guarantor funding, etc.
+  @HiveField(17)
   List<String> policy;
+
+  //  Extensions for policy
+  @HiveField(18)
   List<Element> elementPolicy;
+
+  //  Where the activity occurred, if relevant.
+  @HiveField(19)
   Reference location;
+
+  //  The reason that the activity was taking place.
+  @HiveField(20)
   List<CodeableConcept> reason;
+
+  //  An activity is something that occurs over a period of time and acts
+  // upon or with entities; it may include consuming, processing,
+  // transforming, modifying, relocating, using, or generating entities.
+  @HiveField(21)
   CodeableConcept activity;
+
+  //  An actor taking a role in an activity  for which it can be assigned
+  // some degree of responsibility for the activity taking place.
+  @HiveField(22)
   List<Provenance_Agent> agent;
+
+  //  An entity used in this activity.
+  @HiveField(23)
   List<Provenance_Entity> entity;
+
+  //  A digital signature on the target Reference(s). The signer should
+  // match a Provenance.agent. The purpose of the signature is indicated.
+  @HiveField(24)
   List<Signature> signature;
 
 Provenance(
@@ -70,13 +185,53 @@ Provenance(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 497)
 class Provenance_Agent {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The participation the agent had with respect to the activity.
+  @HiveField(3)
   CodeableConcept type;
+
+  //  The function of the agent with respect to the activity. The security
+  // role enabling the agent with respect to the activity.
+  @HiveField(4)
   List<CodeableConcept> role;
+
+  //  The individual, device or organization that participated in the event.
+  @HiveField(5)
   Reference who;
+
+  //  The individual, device, or organization for whom the change was made.
+  @HiveField(6)
   Reference onBehalfOf;
 
 Provenance_Agent(
@@ -94,13 +249,56 @@ Provenance_Agent(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 498)
 class Provenance_Entity {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  How the entity was used during the activity.
+  @HiveField(3)
   String role; // <code> enum: derivation/revision/quotation/source/removal;
+
+  //  Extensions for role
+  @HiveField(4)
   Element elementRole;
+
+  //  Identity of the  Entity used. May be a logical or physical uri and
+  // maybe absolute or relative.
+  @HiveField(5)
   Reference what;
+
+  //  The entity is attributed to an agent to express the agent's
+  // responsibility for that entity, possibly along with other agents. This
+  // description can be understood as shorthand for saying that the agent
+  // was responsible for the activity which generated the entity.
+  @HiveField(6)
   List<Provenance_Agent> agent;
 
 Provenance_Entity(
@@ -119,6 +317,189 @@ Provenance_Entity(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class ProvenanceAdapter extends TypeAdapter<Provenance> {
+  @override
+  final typeId = 496;
+
+  @override
+  Provenance read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Provenance(
+      (fields[11] as List)?.cast<Reference>(),
+      (fields[22] as List)?.cast<Provenance_Agent>(),
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      occurredPeriod: fields[12] as Period,
+      occurredDateTime: fields[13] as String,
+      elementOccurredDateTime: fields[14] as Element,
+      recorded: fields[15] as DateTime,
+      elementRecorded: fields[16] as Element,
+      policy: (fields[17] as List)?.cast<String>(),
+      elementPolicy: (fields[18] as List)?.cast<Element>(),
+      location: fields[19] as Reference,
+      reason: (fields[20] as List)?.cast<CodeableConcept>(),
+      activity: fields[21] as CodeableConcept,
+      entity: (fields[23] as List)?.cast<Provenance_Entity>(),
+      signature: (fields[24] as List)?.cast<Signature>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Provenance obj) {
+    writer
+      ..writeByte(25)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.target)
+      ..writeByte(12)
+      ..write(obj.occurredPeriod)
+      ..writeByte(13)
+      ..write(obj.occurredDateTime)
+      ..writeByte(14)
+      ..write(obj.elementOccurredDateTime)
+      ..writeByte(15)
+      ..write(obj.recorded)
+      ..writeByte(16)
+      ..write(obj.elementRecorded)
+      ..writeByte(17)
+      ..write(obj.policy)
+      ..writeByte(18)
+      ..write(obj.elementPolicy)
+      ..writeByte(19)
+      ..write(obj.location)
+      ..writeByte(20)
+      ..write(obj.reason)
+      ..writeByte(21)
+      ..write(obj.activity)
+      ..writeByte(22)
+      ..write(obj.agent)
+      ..writeByte(23)
+      ..write(obj.entity)
+      ..writeByte(24)
+      ..write(obj.signature);
+  }
+}
+
+class Provenance_AgentAdapter extends TypeAdapter<Provenance_Agent> {
+  @override
+  final typeId = 497;
+
+  @override
+  Provenance_Agent read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Provenance_Agent(
+      fields[5] as Reference,
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      type: fields[3] as CodeableConcept,
+      role: (fields[4] as List)?.cast<CodeableConcept>(),
+      onBehalfOf: fields[6] as Reference,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Provenance_Agent obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.role)
+      ..writeByte(5)
+      ..write(obj.who)
+      ..writeByte(6)
+      ..write(obj.onBehalfOf);
+  }
+}
+
+class Provenance_EntityAdapter extends TypeAdapter<Provenance_Entity> {
+  @override
+  final typeId = 498;
+
+  @override
+  Provenance_Entity read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Provenance_Entity(
+      fields[5] as Reference,
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      role: fields[3] as String,
+      elementRole: fields[4] as Element,
+      agent: (fields[6] as List)?.cast<Provenance_Agent>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Provenance_Entity obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.role)
+      ..writeByte(4)
+      ..write(obj.elementRole)
+      ..writeByte(5)
+      ..write(obj.what)
+      ..writeByte(6)
+      ..write(obj.agent);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

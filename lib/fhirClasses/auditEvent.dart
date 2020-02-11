@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -11,32 +12,146 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 68)
 class AuditEvent {
+
+  //  This is a AuditEvent resource
+  @HiveField(0)
   final String resourceType= 'AuditEvent';
+
+  //  The logical id of the resource, as used in the URL for the resource.
+  // Once assigned, this value never changes.
+  @HiveField(1)
   String id;
+
+  //  The metadata about the resource. This is content that is maintained by
+  // the infrastructure. Changes to the content might not always be
+  // associated with version changes to the resource.
+  @HiveField(2)
   Meta meta;
+
+  //  A reference to a set of rules that were followed when the resource was
+  // constructed, and which must be understood when processing the content.
+  // Often, this is a reference to an implementation guide that defines the
+  // special rules along with other profiles etc.
+  @HiveField(3)
   String implicitRules;
+
+  //  Extensions for implicitRules
+  @HiveField(4)
   Element elementImplicitRules;
+
+  //  The base language in which the resource is written.
+  @HiveField(5)
   String language;
+
+  //  Extensions for language
+  @HiveField(6)
   Element elementLanguage;
+
+  //  A human-readable narrative that contains a summary of the resource and
+  // can be used to represent the content of the resource to a human. The
+  // narrative need not encode all the structured data, but is required to
+  // contain sufficient detail to make it "clinically safe" for a human to
+  // just read the narrative. Resource definitions may define what content
+  // should be represented in the narrative to ensure clinical safety.
+  @HiveField(7)
   Narrative text;
+
+  //  These resources do not have an independent existence apart from the
+  // resource that contains them - they cannot be identified independently,
+  // and nor can they have their own independent transaction scope.
+  @HiveField(8)
   List<dynamic> contained;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource. To make the use of extensions
+  // safe and manageable, there is a strict set of governance  applied to
+  // the definition and use of extensions. Though any implementer can define
+  // an extension, there is a set of requirements that SHALL be met as part
+  // of the definition of the extension.
+  @HiveField(9)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource and that modifies the
+  // understanding of the element that contains it and/or the understanding
+  // of the containing element's descendants. Usually modifier elements
+  // provide negation or qualification. To make the use of extensions safe
+  // and manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer is allowed to
+  // define an extension, there is a set of requirements that SHALL be met
+  // as part of the definition of the extension. Applications processing a
+  // resource are required to check for modifier extensions. Modifier
+  // extensions SHALL NOT change the meaning of any elements on Resource or
+  // DomainResource (including cannot change the meaning of
+  // modifierExtension itself).
+  @HiveField(10)
   List<Extension> modifierExtension;
+
+  //  Identifier for a family of the event.  For example, a menu item,
+  // program, rule, policy, function code, application name or URL. It
+  // identifies the performed function.
+  @HiveField(11)
   Coding type;
+
+  //  Identifier for the category of event.
+  @HiveField(12)
   List<Coding> subtype;
+
+  //  Indicator for type of action performed during the event that generated
+  // the audit.
+  @HiveField(13)
   String action; // <code> enum: C/R/U/D/E;
+
+  //  Extensions for action
+  @HiveField(14)
   Element elementAction;
+
+  //  The period during which the activity occurred.
+  @HiveField(15)
   Period period;
+
+  //  The time when the event was recorded.
+  @HiveField(16)
   DateTime recorded;
+
+  //  Extensions for recorded
+  @HiveField(17)
   Element elementRecorded;
+
+  //  Indicates whether the event succeeded or failed.
+  @HiveField(18)
   String outcome; // <code> enum: 0/4/8/12;
+
+  //  Extensions for outcome
+  @HiveField(19)
   Element elementOutcome;
+
+  //  A free text description of the outcome of the event.
+  @HiveField(20)
   String outcomeDesc;
+
+  //  Extensions for outcomeDesc
+  @HiveField(21)
   Element elementOutcomeDesc;
+
+  //  The purposeOfUse (reason) that was used during the event being
+  // recorded.
+  @HiveField(22)
   List<CodeableConcept> purposeOfEvent;
+
+  //  An actor taking an active role in the event or activity that is
+  // logged.
+  @HiveField(23)
   List<AuditEvent_Agent> agent;
+
+  //  The system that is reporting the event.
+  @HiveField(24)
   AuditEvent_Source source;
+
+  //  Specific instances of data or objects that have been accessed.
+  @HiveField(25)
   List<AuditEvent_Entity> entity;
 
 AuditEvent(
@@ -72,24 +187,109 @@ AuditEvent(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 69)
 class AuditEvent_Agent {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Specification of the participation type the user plays when performing
+  // the event.
+  @HiveField(3)
   CodeableConcept type;
+
+  //  The security role that the user was acting under, that come from local
+  // codes defined by the access control security system (e.g. RBAC, ABAC)
+  // used in the local context.
+  @HiveField(4)
   List<CodeableConcept> role;
+
+  //  Reference to who this agent is that was involved in the event.
+  @HiveField(5)
   Reference who;
+
+  //  Alternative agent Identifier. For a human, this should be a user
+  // identifier text string from authentication system. This identifier
+  // would be one known to a common authentication system (e.g. single
+  // sign-on), if available.
+  @HiveField(6)
   String altId;
+
+  //  Extensions for altId
+  @HiveField(7)
   Element elementAltId;
+
+  //  Human-meaningful name for the agent.
+  @HiveField(8)
   String name;
+
+  //  Extensions for name
+  @HiveField(9)
   Element elementName;
+
+  //  Indicator that the user is or is not the requestor, or initiator, for
+  // the event being audited.
+  @HiveField(10)
   bool requestor;
+
+  //  Extensions for requestor
+  @HiveField(11)
   Element elementRequestor;
+
+  //  Where the event occurred.
+  @HiveField(12)
   Reference location;
+
+  //  The policy or plan that authorized the activity being recorded.
+  // Typically, a single activity may have multiple applicable policies,
+  // such as patient consent, guarantor funding, etc. The policy would also
+  // indicate the security token used.
+  @HiveField(13)
   List<String> policy;
+
+  //  Extensions for policy
+  @HiveField(14)
   List<Element> elementPolicy;
+
+  //  Type of media involved. Used when the event is about
+  // exporting/importing onto media.
+  @HiveField(15)
   Coding media;
+
+  //  Logical network location for application activity, if the activity has
+  // a network location.
+  @HiveField(16)
   AuditEvent_Network network;
+
+  //  The reason (purpose of use), specific to this agent, that was used
+  // during the event being recorded.
+  @HiveField(17)
   List<CodeableConcept> purposeOfUse;
 
 AuditEvent_Agent(
@@ -118,13 +318,54 @@ AuditEvent_Agent(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 70)
 class AuditEvent_Network {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  An identifier for the network access point of the user device for the
+  // audit event.
+  @HiveField(3)
   String address;
+
+  //  Extensions for address
+  @HiveField(4)
   Element elementAddress;
+
+  //  An identifier for the type of network access point that originated the
+  // audit event.
+  @HiveField(5)
   String type; // <code> enum: 1/2/3/4/5;
+
+  //  Extensions for type
+  @HiveField(6)
   Element elementType;
 
 AuditEvent_Network(
@@ -142,13 +383,54 @@ AuditEvent_Network(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 71)
 class AuditEvent_Source {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Logical source location within the healthcare enterprise network.  For
+  // example, a hospital or other provider location within a multi-entity
+  // provider group.
+  @HiveField(3)
   String site;
+
+  //  Extensions for site
+  @HiveField(4)
   Element elementSite;
+
+  //  Identifier of the source where the event was detected.
+  @HiveField(5)
   Reference observer;
+
+  //  Code specifying the type of source where event originated.
+  @HiveField(6)
   List<Coding> type;
 
 AuditEvent_Source(
@@ -166,21 +448,87 @@ AuditEvent_Source(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 72)
 class AuditEvent_Entity {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Identifies a specific instance of the entity. The reference should be
+  // version specific.
+  @HiveField(3)
   Reference what;
+
+  //  The type of the object that was involved in this audit event.
+  @HiveField(4)
   Coding type;
+
+  //  Code representing the role the entity played in the event being
+  // audited.
+  @HiveField(5)
   Coding role;
+
+  //  Identifier for the data life-cycle stage for the entity.
+  @HiveField(6)
   Coding lifecycle;
+
+  //  Security labels for the identified entity.
+  @HiveField(7)
   List<Coding> securityLabel;
+
+  //  A name of the entity in the audit event.
+  @HiveField(8)
   String name;
+
+  //  Extensions for name
+  @HiveField(9)
   Element elementName;
+
+  //  Text that describes the entity in more detail.
+  @HiveField(10)
   String description;
+
+  //  Extensions for description
+  @HiveField(11)
   Element elementDescription;
+
+  //  The query parameters for a query-type entities.
+  @HiveField(12)
   String query;
+
+  //  Extensions for query
+  @HiveField(13)
   Element elementQuery;
+
+  //  Tagged value pairs for conveying additional information about the
+  // entity.
+  @HiveField(14)
   List<AuditEvent_Detail> detail;
 
 AuditEvent_Entity(
@@ -206,15 +554,60 @@ AuditEvent_Entity(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 73)
 class AuditEvent_Detail {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The type of extra detail provided in the value.
+  @HiveField(3)
   String type;
+
+  //  Extensions for type
+  @HiveField(4)
   Element elementType;
+
+  //  The  value of the extra detail.
+  @HiveField(5)
   String valueString; //  pattern: ^[ \r\n\t\S]+$
+
+  //  Extensions for valueString
+  @HiveField(6)
   Element elementValueString;
+
+  //  The  value of the extra detail.
+  @HiveField(7)
   String valueBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
+
+  //  Extensions for valueBase64Binary
+  @HiveField(8)
   Element elementValueBase64Binary;
 
 AuditEvent_Detail(
@@ -235,6 +628,381 @@ AuditEvent_Detail(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class AuditEventAdapter extends TypeAdapter<AuditEvent> {
+  @override
+  final typeId = 68;
+
+  @override
+  AuditEvent read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return AuditEvent(
+      fields[11] as Coding,
+      (fields[23] as List)?.cast<AuditEvent_Agent>(),
+      fields[24] as AuditEvent_Source,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      subtype: (fields[12] as List)?.cast<Coding>(),
+      action: fields[13] as String,
+      elementAction: fields[14] as Element,
+      period: fields[15] as Period,
+      recorded: fields[16] as DateTime,
+      elementRecorded: fields[17] as Element,
+      outcome: fields[18] as String,
+      elementOutcome: fields[19] as Element,
+      outcomeDesc: fields[20] as String,
+      elementOutcomeDesc: fields[21] as Element,
+      purposeOfEvent: (fields[22] as List)?.cast<CodeableConcept>(),
+      entity: (fields[25] as List)?.cast<AuditEvent_Entity>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, AuditEvent obj) {
+    writer
+      ..writeByte(26)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.type)
+      ..writeByte(12)
+      ..write(obj.subtype)
+      ..writeByte(13)
+      ..write(obj.action)
+      ..writeByte(14)
+      ..write(obj.elementAction)
+      ..writeByte(15)
+      ..write(obj.period)
+      ..writeByte(16)
+      ..write(obj.recorded)
+      ..writeByte(17)
+      ..write(obj.elementRecorded)
+      ..writeByte(18)
+      ..write(obj.outcome)
+      ..writeByte(19)
+      ..write(obj.elementOutcome)
+      ..writeByte(20)
+      ..write(obj.outcomeDesc)
+      ..writeByte(21)
+      ..write(obj.elementOutcomeDesc)
+      ..writeByte(22)
+      ..write(obj.purposeOfEvent)
+      ..writeByte(23)
+      ..write(obj.agent)
+      ..writeByte(24)
+      ..write(obj.source)
+      ..writeByte(25)
+      ..write(obj.entity);
+  }
+}
+
+class AuditEvent_AgentAdapter extends TypeAdapter<AuditEvent_Agent> {
+  @override
+  final typeId = 69;
+
+  @override
+  AuditEvent_Agent read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return AuditEvent_Agent(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      type: fields[3] as CodeableConcept,
+      role: (fields[4] as List)?.cast<CodeableConcept>(),
+      who: fields[5] as Reference,
+      altId: fields[6] as String,
+      elementAltId: fields[7] as Element,
+      name: fields[8] as String,
+      elementName: fields[9] as Element,
+      requestor: fields[10] as bool,
+      elementRequestor: fields[11] as Element,
+      location: fields[12] as Reference,
+      policy: (fields[13] as List)?.cast<String>(),
+      elementPolicy: (fields[14] as List)?.cast<Element>(),
+      media: fields[15] as Coding,
+      network: fields[16] as AuditEvent_Network,
+      purposeOfUse: (fields[17] as List)?.cast<CodeableConcept>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, AuditEvent_Agent obj) {
+    writer
+      ..writeByte(18)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.role)
+      ..writeByte(5)
+      ..write(obj.who)
+      ..writeByte(6)
+      ..write(obj.altId)
+      ..writeByte(7)
+      ..write(obj.elementAltId)
+      ..writeByte(8)
+      ..write(obj.name)
+      ..writeByte(9)
+      ..write(obj.elementName)
+      ..writeByte(10)
+      ..write(obj.requestor)
+      ..writeByte(11)
+      ..write(obj.elementRequestor)
+      ..writeByte(12)
+      ..write(obj.location)
+      ..writeByte(13)
+      ..write(obj.policy)
+      ..writeByte(14)
+      ..write(obj.elementPolicy)
+      ..writeByte(15)
+      ..write(obj.media)
+      ..writeByte(16)
+      ..write(obj.network)
+      ..writeByte(17)
+      ..write(obj.purposeOfUse);
+  }
+}
+
+class AuditEvent_NetworkAdapter extends TypeAdapter<AuditEvent_Network> {
+  @override
+  final typeId = 70;
+
+  @override
+  AuditEvent_Network read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return AuditEvent_Network(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      address: fields[3] as String,
+      elementAddress: fields[4] as Element,
+      type: fields[5] as String,
+      elementType: fields[6] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, AuditEvent_Network obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.address)
+      ..writeByte(4)
+      ..write(obj.elementAddress)
+      ..writeByte(5)
+      ..write(obj.type)
+      ..writeByte(6)
+      ..write(obj.elementType);
+  }
+}
+
+class AuditEvent_SourceAdapter extends TypeAdapter<AuditEvent_Source> {
+  @override
+  final typeId = 71;
+
+  @override
+  AuditEvent_Source read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return AuditEvent_Source(
+      fields[5] as Reference,
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      site: fields[3] as String,
+      elementSite: fields[4] as Element,
+      type: (fields[6] as List)?.cast<Coding>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, AuditEvent_Source obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.site)
+      ..writeByte(4)
+      ..write(obj.elementSite)
+      ..writeByte(5)
+      ..write(obj.observer)
+      ..writeByte(6)
+      ..write(obj.type);
+  }
+}
+
+class AuditEvent_EntityAdapter extends TypeAdapter<AuditEvent_Entity> {
+  @override
+  final typeId = 72;
+
+  @override
+  AuditEvent_Entity read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return AuditEvent_Entity(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      what: fields[3] as Reference,
+      type: fields[4] as Coding,
+      role: fields[5] as Coding,
+      lifecycle: fields[6] as Coding,
+      securityLabel: (fields[7] as List)?.cast<Coding>(),
+      name: fields[8] as String,
+      elementName: fields[9] as Element,
+      description: fields[10] as String,
+      elementDescription: fields[11] as Element,
+      query: fields[12] as String,
+      elementQuery: fields[13] as Element,
+      detail: (fields[14] as List)?.cast<AuditEvent_Detail>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, AuditEvent_Entity obj) {
+    writer
+      ..writeByte(15)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.what)
+      ..writeByte(4)
+      ..write(obj.type)
+      ..writeByte(5)
+      ..write(obj.role)
+      ..writeByte(6)
+      ..write(obj.lifecycle)
+      ..writeByte(7)
+      ..write(obj.securityLabel)
+      ..writeByte(8)
+      ..write(obj.name)
+      ..writeByte(9)
+      ..write(obj.elementName)
+      ..writeByte(10)
+      ..write(obj.description)
+      ..writeByte(11)
+      ..write(obj.elementDescription)
+      ..writeByte(12)
+      ..write(obj.query)
+      ..writeByte(13)
+      ..write(obj.elementQuery)
+      ..writeByte(14)
+      ..write(obj.detail);
+  }
+}
+
+class AuditEvent_DetailAdapter extends TypeAdapter<AuditEvent_Detail> {
+  @override
+  final typeId = 73;
+
+  @override
+  AuditEvent_Detail read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return AuditEvent_Detail(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      type: fields[3] as String,
+      elementType: fields[4] as Element,
+      valueString: fields[5] as String,
+      elementValueString: fields[6] as Element,
+      valueBase64Binary: fields[7] as String,
+      elementValueBase64Binary: fields[8] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, AuditEvent_Detail obj) {
+    writer
+      ..writeByte(9)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.elementType)
+      ..writeByte(5)
+      ..write(obj.valueString)
+      ..writeByte(6)
+      ..write(obj.elementValueString)
+      ..writeByte(7)
+      ..write(obj.valueBase64Binary)
+      ..writeByte(8)
+      ..write(obj.elementValueBase64Binary);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

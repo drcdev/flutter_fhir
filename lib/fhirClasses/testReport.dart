@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/fhirClasses/reference.dart';
@@ -9,35 +10,160 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 616)
 class TestReport {
+
+  //  This is a TestReport resource
+  @HiveField(0)
   final String resourceType= 'TestReport';
+
+  //  The logical id of the resource, as used in the URL for the resource.
+  // Once assigned, this value never changes.
+  @HiveField(1)
   String id;
+
+  //  The metadata about the resource. This is content that is maintained by
+  // the infrastructure. Changes to the content might not always be
+  // associated with version changes to the resource.
+  @HiveField(2)
   Meta meta;
+
+  //  A reference to a set of rules that were followed when the resource was
+  // constructed, and which must be understood when processing the content.
+  // Often, this is a reference to an implementation guide that defines the
+  // special rules along with other profiles etc.
+  @HiveField(3)
   String implicitRules;
+
+  //  Extensions for implicitRules
+  @HiveField(4)
   Element elementImplicitRules;
+
+  //  The base language in which the resource is written.
+  @HiveField(5)
   String language;
+
+  //  Extensions for language
+  @HiveField(6)
   Element elementLanguage;
+
+  //  A human-readable narrative that contains a summary of the resource and
+  // can be used to represent the content of the resource to a human. The
+  // narrative need not encode all the structured data, but is required to
+  // contain sufficient detail to make it "clinically safe" for a human to
+  // just read the narrative. Resource definitions may define what content
+  // should be represented in the narrative to ensure clinical safety.
+  @HiveField(7)
   Narrative text;
+
+  //  These resources do not have an independent existence apart from the
+  // resource that contains them - they cannot be identified independently,
+  // and nor can they have their own independent transaction scope.
+  @HiveField(8)
   List<dynamic> contained;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource. To make the use of extensions
+  // safe and manageable, there is a strict set of governance  applied to
+  // the definition and use of extensions. Though any implementer can define
+  // an extension, there is a set of requirements that SHALL be met as part
+  // of the definition of the extension.
+  @HiveField(9)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource and that modifies the
+  // understanding of the element that contains it and/or the understanding
+  // of the containing element's descendants. Usually modifier elements
+  // provide negation or qualification. To make the use of extensions safe
+  // and manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer is allowed to
+  // define an extension, there is a set of requirements that SHALL be met
+  // as part of the definition of the extension. Applications processing a
+  // resource are required to check for modifier extensions. Modifier
+  // extensions SHALL NOT change the meaning of any elements on Resource or
+  // DomainResource (including cannot change the meaning of
+  // modifierExtension itself).
+  @HiveField(10)
   List<Extension> modifierExtension;
+
+  //  Identifier for the TestScript assigned for external purposes outside
+  // the context of FHIR.
+  @HiveField(11)
   Identifier identifier;
+
+  //  A free text natural language name identifying the executed TestScript.
+  @HiveField(12)
   String name;
+
+  //  Extensions for name
+  @HiveField(13)
   Element elementName;
+
+  //  The current state of this test report.
+  @HiveField(14)
   String status; // <code> enum: completed/in-progress/waiting/stopped/entered-in-error;
+
+  //  Extensions for status
+  @HiveField(15)
   Element elementStatus;
+
+  //  Ideally this is an absolute URL that is used to identify the
+  // version-specific TestScript that was executed, matching the
+  // `TestScript.url`.
+  @HiveField(16)
   Reference testScript;
+
+  //  The overall result from the execution of the TestScript.
+  @HiveField(17)
   String result; // <code> enum: pass/fail/pending;
+
+  //  Extensions for result
+  @HiveField(18)
   Element elementResult;
+
+  //  The final score (percentage of tests passed) resulting from the
+  // execution of the TestScript.
+  @HiveField(19)
   double score;
+
+  //  Extensions for score
+  @HiveField(20)
   Element elementScore;
+
+  //  Name of the tester producing this report (Organization or individual).
+  @HiveField(21)
   String tester;
+
+  //  Extensions for tester
+  @HiveField(22)
   Element elementTester;
+
+  //  When the TestScript was executed and this TestReport was generated.
+  @HiveField(23)
   DateTime issued;
+
+  //  Extensions for issued
+  @HiveField(24)
   Element elementIssued;
+
+  //  A participant in the test execution, either the execution engine, a
+  // client, or a server.
+  @HiveField(25)
   List<TestReport_Participant> participant;
+
+  //  The results of the series of required setup operations before the
+  // tests were executed.
+  @HiveField(26)
   TestReport_Setup setup;
+
+  //  A test executed from the test script.
+  @HiveField(27)
   List<TestReport_Test> test;
+
+  //  The results of the series of operations required to clean up after all
+  // the tests were executed (successfully or otherwise).
+  @HiveField(28)
   TestReport_Teardown teardown;
 
 TestReport(
@@ -76,15 +202,60 @@ TestReport(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 617)
 class TestReport_Participant {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The type of participant.
+  @HiveField(3)
   String type; // <code> enum: test-engine/client/server;
+
+  //  Extensions for type
+  @HiveField(4)
   Element elementType;
+
+  //  The uri of the participant. An absolute URL is preferred.
+  @HiveField(5)
   String uri;
+
+  //  Extensions for uri
+  @HiveField(6)
   Element elementUri;
+
+  //  The display name of the participant.
+  @HiveField(7)
   String display;
+
+  //  Extensions for display
+  @HiveField(8)
   Element elementDisplay;
 
 TestReport_Participant(
@@ -104,10 +275,40 @@ TestReport_Participant(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 618)
 class TestReport_Setup {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Action would contain either an operation or an assertion.
+  @HiveField(3)
   List<TestReport_Action> action;
 
 TestReport_Setup(
@@ -122,11 +323,44 @@ TestReport_Setup(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 619)
 class TestReport_Action {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The operation performed.
+  @HiveField(3)
   TestReport_Operation operation;
+
+  //  The results of the assertion performed on the previous operations.
+  @HiveField(4)
   TestReport_Assert asserts;
 
 TestReport_Action(
@@ -142,15 +376,60 @@ TestReport_Action(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 620)
 class TestReport_Operation {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The result of this operation.
+  @HiveField(3)
   String result; // <code> enum: pass/skip/fail/warning/error;
+
+  //  Extensions for result
+  @HiveField(4)
   Element elementResult;
+
+  //  An explanatory message associated with the result.
+  @HiveField(5)
   String message;
+
+  //  Extensions for message
+  @HiveField(6)
   Element elementMessage;
+
+  //  A link to further details on the result.
+  @HiveField(7)
   String detail;
+
+  //  Extensions for detail
+  @HiveField(8)
   Element elementDetail;
 
 TestReport_Operation(
@@ -170,15 +449,60 @@ TestReport_Operation(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 621)
 class TestReport_Assert {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The result of this assertion.
+  @HiveField(3)
   String result; // <code> enum: pass/skip/fail/warning/error;
+
+  //  Extensions for result
+  @HiveField(4)
   Element elementResult;
+
+  //  An explanatory message associated with the result.
+  @HiveField(5)
   String message;
+
+  //  Extensions for message
+  @HiveField(6)
   Element elementMessage;
+
+  //  A link to further details on the result.
+  @HiveField(7)
   String detail;
+
+  //  Extensions for detail
+  @HiveField(8)
   Element elementDetail;
 
 TestReport_Assert(
@@ -198,14 +522,58 @@ TestReport_Assert(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 622)
 class TestReport_Test {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The name of this test used for tracking/logging purposes by test
+  // engines.
+  @HiveField(3)
   String name;
+
+  //  Extensions for name
+  @HiveField(4)
   Element elementName;
+
+  //  A short description of the test used by test engines for tracking and
+  // reporting purposes.
+  @HiveField(5)
   String description;
+
+  //  Extensions for description
+  @HiveField(6)
   Element elementDescription;
+
+  //  Action would contain either an operation or an assertion.
+  @HiveField(7)
   List<TestReport_Action1> action;
 
 TestReport_Test(
@@ -224,11 +592,44 @@ TestReport_Test(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 623)
 class TestReport_Action1 {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  An operation would involve a REST request to a server.
+  @HiveField(3)
   TestReport_Operation operation;
+
+  //  The results of the assertion performed on the previous operations.
+  @HiveField(4)
   TestReport_Assert asserts;
 
 TestReport_Action1(
@@ -244,10 +645,40 @@ TestReport_Action1(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 624)
 class TestReport_Teardown {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The teardown action will only contain an operation.
+  @HiveField(3)
   List<TestReport_Action2> action;
 
 TestReport_Teardown(
@@ -262,10 +693,40 @@ TestReport_Teardown(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 625)
 class TestReport_Action2 {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  An operation would involve a REST request to a server.
+  @HiveField(3)
   TestReport_Operation operation;
 
 TestReport_Action2(
@@ -281,6 +742,478 @@ TestReport_Action2(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class TestReportAdapter extends TypeAdapter<TestReport> {
+  @override
+  final typeId = 616;
+
+  @override
+  TestReport read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return TestReport(
+      fields[16] as Reference,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: fields[11] as Identifier,
+      name: fields[12] as String,
+      elementName: fields[13] as Element,
+      status: fields[14] as String,
+      elementStatus: fields[15] as Element,
+      result: fields[17] as String,
+      elementResult: fields[18] as Element,
+      score: fields[19] as double,
+      elementScore: fields[20] as Element,
+      tester: fields[21] as String,
+      elementTester: fields[22] as Element,
+      issued: fields[23] as DateTime,
+      elementIssued: fields[24] as Element,
+      participant: (fields[25] as List)?.cast<TestReport_Participant>(),
+      setup: fields[26] as TestReport_Setup,
+      test: (fields[27] as List)?.cast<TestReport_Test>(),
+      teardown: fields[28] as TestReport_Teardown,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, TestReport obj) {
+    writer
+      ..writeByte(29)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.name)
+      ..writeByte(13)
+      ..write(obj.elementName)
+      ..writeByte(14)
+      ..write(obj.status)
+      ..writeByte(15)
+      ..write(obj.elementStatus)
+      ..writeByte(16)
+      ..write(obj.testScript)
+      ..writeByte(17)
+      ..write(obj.result)
+      ..writeByte(18)
+      ..write(obj.elementResult)
+      ..writeByte(19)
+      ..write(obj.score)
+      ..writeByte(20)
+      ..write(obj.elementScore)
+      ..writeByte(21)
+      ..write(obj.tester)
+      ..writeByte(22)
+      ..write(obj.elementTester)
+      ..writeByte(23)
+      ..write(obj.issued)
+      ..writeByte(24)
+      ..write(obj.elementIssued)
+      ..writeByte(25)
+      ..write(obj.participant)
+      ..writeByte(26)
+      ..write(obj.setup)
+      ..writeByte(27)
+      ..write(obj.test)
+      ..writeByte(28)
+      ..write(obj.teardown);
+  }
+}
+
+class TestReport_ParticipantAdapter
+    extends TypeAdapter<TestReport_Participant> {
+  @override
+  final typeId = 617;
+
+  @override
+  TestReport_Participant read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return TestReport_Participant(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      type: fields[3] as String,
+      elementType: fields[4] as Element,
+      uri: fields[5] as String,
+      elementUri: fields[6] as Element,
+      display: fields[7] as String,
+      elementDisplay: fields[8] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, TestReport_Participant obj) {
+    writer
+      ..writeByte(9)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.elementType)
+      ..writeByte(5)
+      ..write(obj.uri)
+      ..writeByte(6)
+      ..write(obj.elementUri)
+      ..writeByte(7)
+      ..write(obj.display)
+      ..writeByte(8)
+      ..write(obj.elementDisplay);
+  }
+}
+
+class TestReport_SetupAdapter extends TypeAdapter<TestReport_Setup> {
+  @override
+  final typeId = 618;
+
+  @override
+  TestReport_Setup read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return TestReport_Setup(
+      (fields[3] as List)?.cast<TestReport_Action>(),
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, TestReport_Setup obj) {
+    writer
+      ..writeByte(4)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.action);
+  }
+}
+
+class TestReport_ActionAdapter extends TypeAdapter<TestReport_Action> {
+  @override
+  final typeId = 619;
+
+  @override
+  TestReport_Action read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return TestReport_Action(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      operation: fields[3] as TestReport_Operation,
+      asserts: fields[4] as TestReport_Assert,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, TestReport_Action obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.operation)
+      ..writeByte(4)
+      ..write(obj.asserts);
+  }
+}
+
+class TestReport_OperationAdapter extends TypeAdapter<TestReport_Operation> {
+  @override
+  final typeId = 620;
+
+  @override
+  TestReport_Operation read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return TestReport_Operation(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      result: fields[3] as String,
+      elementResult: fields[4] as Element,
+      message: fields[5] as String,
+      elementMessage: fields[6] as Element,
+      detail: fields[7] as String,
+      elementDetail: fields[8] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, TestReport_Operation obj) {
+    writer
+      ..writeByte(9)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.result)
+      ..writeByte(4)
+      ..write(obj.elementResult)
+      ..writeByte(5)
+      ..write(obj.message)
+      ..writeByte(6)
+      ..write(obj.elementMessage)
+      ..writeByte(7)
+      ..write(obj.detail)
+      ..writeByte(8)
+      ..write(obj.elementDetail);
+  }
+}
+
+class TestReport_AssertAdapter extends TypeAdapter<TestReport_Assert> {
+  @override
+  final typeId = 621;
+
+  @override
+  TestReport_Assert read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return TestReport_Assert(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      result: fields[3] as String,
+      elementResult: fields[4] as Element,
+      message: fields[5] as String,
+      elementMessage: fields[6] as Element,
+      detail: fields[7] as String,
+      elementDetail: fields[8] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, TestReport_Assert obj) {
+    writer
+      ..writeByte(9)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.result)
+      ..writeByte(4)
+      ..write(obj.elementResult)
+      ..writeByte(5)
+      ..write(obj.message)
+      ..writeByte(6)
+      ..write(obj.elementMessage)
+      ..writeByte(7)
+      ..write(obj.detail)
+      ..writeByte(8)
+      ..write(obj.elementDetail);
+  }
+}
+
+class TestReport_TestAdapter extends TypeAdapter<TestReport_Test> {
+  @override
+  final typeId = 622;
+
+  @override
+  TestReport_Test read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return TestReport_Test(
+      (fields[7] as List)?.cast<TestReport_Action1>(),
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      name: fields[3] as String,
+      elementName: fields[4] as Element,
+      description: fields[5] as String,
+      elementDescription: fields[6] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, TestReport_Test obj) {
+    writer
+      ..writeByte(8)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.name)
+      ..writeByte(4)
+      ..write(obj.elementName)
+      ..writeByte(5)
+      ..write(obj.description)
+      ..writeByte(6)
+      ..write(obj.elementDescription)
+      ..writeByte(7)
+      ..write(obj.action);
+  }
+}
+
+class TestReport_Action1Adapter extends TypeAdapter<TestReport_Action1> {
+  @override
+  final typeId = 623;
+
+  @override
+  TestReport_Action1 read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return TestReport_Action1(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      operation: fields[3] as TestReport_Operation,
+      asserts: fields[4] as TestReport_Assert,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, TestReport_Action1 obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.operation)
+      ..writeByte(4)
+      ..write(obj.asserts);
+  }
+}
+
+class TestReport_TeardownAdapter extends TypeAdapter<TestReport_Teardown> {
+  @override
+  final typeId = 624;
+
+  @override
+  TestReport_Teardown read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return TestReport_Teardown(
+      (fields[3] as List)?.cast<TestReport_Action2>(),
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, TestReport_Teardown obj) {
+    writer
+      ..writeByte(4)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.action);
+  }
+}
+
+class TestReport_Action2Adapter extends TypeAdapter<TestReport_Action2> {
+  @override
+  final typeId = 625;
+
+  @override
+  TestReport_Action2 read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return TestReport_Action2(
+      fields[3] as TestReport_Operation,
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, TestReport_Action2 obj) {
+    writer
+      ..writeByte(4)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.operation);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

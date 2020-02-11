@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/fhirClasses/ratio.dart';
@@ -14,39 +15,197 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 445)
 class NutritionOrder {
+
+  //  This is a NutritionOrder resource
+  @HiveField(0)
   final String resourceType= 'NutritionOrder';
+
+  //  The logical id of the resource, as used in the URL for the resource.
+  // Once assigned, this value never changes.
+  @HiveField(1)
   String id;
+
+  //  The metadata about the resource. This is content that is maintained by
+  // the infrastructure. Changes to the content might not always be
+  // associated with version changes to the resource.
+  @HiveField(2)
   Meta meta;
+
+  //  A reference to a set of rules that were followed when the resource was
+  // constructed, and which must be understood when processing the content.
+  // Often, this is a reference to an implementation guide that defines the
+  // special rules along with other profiles etc.
+  @HiveField(3)
   String implicitRules;
+
+  //  Extensions for implicitRules
+  @HiveField(4)
   Element elementImplicitRules;
+
+  //  The base language in which the resource is written.
+  @HiveField(5)
   String language;
+
+  //  Extensions for language
+  @HiveField(6)
   Element elementLanguage;
+
+  //  A human-readable narrative that contains a summary of the resource and
+  // can be used to represent the content of the resource to a human. The
+  // narrative need not encode all the structured data, but is required to
+  // contain sufficient detail to make it "clinically safe" for a human to
+  // just read the narrative. Resource definitions may define what content
+  // should be represented in the narrative to ensure clinical safety.
+  @HiveField(7)
   Narrative text;
+
+  //  These resources do not have an independent existence apart from the
+  // resource that contains them - they cannot be identified independently,
+  // and nor can they have their own independent transaction scope.
+  @HiveField(8)
   List<dynamic> contained;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource. To make the use of extensions
+  // safe and manageable, there is a strict set of governance  applied to
+  // the definition and use of extensions. Though any implementer can define
+  // an extension, there is a set of requirements that SHALL be met as part
+  // of the definition of the extension.
+  @HiveField(9)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource and that modifies the
+  // understanding of the element that contains it and/or the understanding
+  // of the containing element's descendants. Usually modifier elements
+  // provide negation or qualification. To make the use of extensions safe
+  // and manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer is allowed to
+  // define an extension, there is a set of requirements that SHALL be met
+  // as part of the definition of the extension. Applications processing a
+  // resource are required to check for modifier extensions. Modifier
+  // extensions SHALL NOT change the meaning of any elements on Resource or
+  // DomainResource (including cannot change the meaning of
+  // modifierExtension itself).
+  @HiveField(10)
   List<Extension> modifierExtension;
+
+  //  Identifiers assigned to this order by the order sender or by the order
+  // receiver.
+  @HiveField(11)
   List<Identifier> identifier;
+
+  //  The URL pointing to a FHIR-defined protocol, guideline, orderset or
+  // other definition that is adhered to in whole or in part by this
+  // NutritionOrder.
+  @HiveField(12)
   List<String> instantiatesCanonical;
+
+  //  The URL pointing to an externally maintained protocol, guideline,
+  // orderset or other definition that is adhered to in whole or in part by
+  // this NutritionOrder.
+  @HiveField(13)
   List<String> instantiatesUri;
+
+  //  Extensions for instantiatesUri
+  @HiveField(14)
   List<Element> elementInstantiatesUri;
+
+  //  The URL pointing to a protocol, guideline, orderset or other
+  // definition that is adhered to in whole or in part by this
+  // NutritionOrder.
+  @HiveField(15)
   List<String> instantiates;
+
+  //  Extensions for instantiates
+  @HiveField(16)
   List<Element> elementInstantiates;
+
+  //  The workflow status of the nutrition order/request.
+  @HiveField(17)
   String status;
+
+  //  Extensions for status
+  @HiveField(18)
   Element elementStatus;
+
+  //  Indicates the level of authority/intentionality associated with the
+  // NutrionOrder and where the request fits into the workflow chain.
+  @HiveField(19)
   String intent;
+
+  //  Extensions for intent
+  @HiveField(20)
   Element elementIntent;
+
+  //  The person (patient) who needs the nutrition order for an oral diet,
+  // nutritional supplement and/or enteral or formula feeding.
+  @HiveField(21)
   Reference patient;
+
+  //  An encounter that provides additional information about the healthcare
+  // context in which this request is made.
+  @HiveField(22)
   Reference encounter;
+
+  //  The date and time that this nutrition order was requested.
+  @HiveField(23)
   DateTime dateTime;
+
+  //  Extensions for dateTime
+  @HiveField(24)
   Element elementDateTime;
+
+  //  The practitioner that holds legal responsibility for ordering the
+  // diet, nutritional supplement, or formula feedings.
+  @HiveField(25)
   Reference orderer;
+
+  //  A link to a record of allergies or intolerances  which should be
+  // included in the nutrition order.
+  @HiveField(26)
   List<Reference> allergyIntolerance;
+
+  //  This modifier is used to convey order-specific modifiers about the
+  // type of food that should be given. These can be derived from patient
+  // allergies, intolerances, or preferences such as Halal, Vegan or Kosher.
+  // This modifier applies to the entire nutrition order inclusive of the
+  // oral diet, nutritional supplements and enteral formula feedings.
+  @HiveField(27)
   List<CodeableConcept> foodPreferenceModifier;
+
+  //  This modifier is used to convey Order-specific modifier about the type
+  // of oral food or oral fluids that should not be given. These can be
+  // derived from patient allergies, intolerances, or preferences such as No
+  // Red Meat, No Soy or No Wheat or  Gluten-Free.  While it should not be
+  // necessary to repeat allergy or intolerance information captured in the
+  // referenced AllergyIntolerance resource in the excludeFoodModifier, this
+  // element may be used to convey additional specificity related to foods
+  // that should be eliminated from the patient’s diet for any reason.  This
+  // modifier applies to the entire nutrition order inclusive of the oral
+  // diet, nutritional supplements and enteral formula feedings.
+  @HiveField(28)
   List<CodeableConcept> excludeFoodModifier;
+
+  //  Diet given orally in contrast to enteral (tube) feeding.
+  @HiveField(29)
   NutritionOrder_OralDiet oralDiet;
+
+  //  Oral nutritional products given in order to add further nutritional
+  // value to the patient's diet.
+  @HiveField(30)
   List<NutritionOrder_Supplement> supplement;
+
+  //  Feeding provided through the gastrointestinal tract via a tube,
+  // catheter, or stoma that delivers nutrition distal to the oral cavity.
+  @HiveField(31)
   NutritionOrder_EnteralFormula enteralFormula;
+
+  //  Comments made about the {{title}} by the requester, performer, subject
+  // or other participants.
+  @HiveField(32)
   List<Annotation> note;
 
 NutritionOrder(
@@ -89,16 +248,71 @@ NutritionOrder(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 446)
 class NutritionOrder_OralDiet {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The kind of diet or dietary restriction such as fiber restricted diet
+  // or diabetic diet.
+  @HiveField(3)
   List<CodeableConcept> type;
+
+  //  The time period and frequency at which the diet should be given.  The
+  // diet should be given for the combination of all schedules if more than
+  // one schedule is present.
+  @HiveField(4)
   List<Timing> schedule;
+
+  //  Class that defines the quantity and type of nutrient modifications
+  // (for example carbohydrate, fiber or sodium) required for the oral diet.
+  @HiveField(5)
   List<NutritionOrder_Nutrient> nutrient;
+
+  //  Class that describes any texture modifications required for the
+  // patient to safely consume various types of solid foods.
+  @HiveField(6)
   List<NutritionOrder_Texture> texture;
+
+  //  The required consistency (e.g. honey-thick, nectar-thick, thin,
+  // thickened.) of liquids or fluids served to the patient.
+  @HiveField(7)
   List<CodeableConcept> fluidConsistencyType;
+
+  //  Free text or additional instructions or information pertaining to the
+  // oral diet.
+  @HiveField(8)
   String instruction;
+
+  //  Extensions for instruction
+  @HiveField(9)
   Element elementInstruction;
 
 NutritionOrder_OralDiet(
@@ -119,11 +333,44 @@ NutritionOrder_OralDiet(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 447)
 class NutritionOrder_Nutrient {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The nutrient that is being modified such as carbohydrate or sodium.
+  @HiveField(3)
   CodeableConcept modifier;
+
+  //  The quantity of the specified nutrient to include in diet.
+  @HiveField(4)
   Quantity amount;
 
 NutritionOrder_Nutrient(
@@ -139,11 +386,46 @@ NutritionOrder_Nutrient(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 448)
 class NutritionOrder_Texture {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Any texture modifications (for solid foods) that should be made, e.g.
+  // easy to chew, chopped, ground, and pureed.
+  @HiveField(3)
   CodeableConcept modifier;
+
+  //  The food type(s) (e.g. meats, all foods)  that the texture
+  // modification applies to.  This could be all foods types.
+  @HiveField(4)
   CodeableConcept foodType;
 
 NutritionOrder_Texture(
@@ -159,16 +441,69 @@ NutritionOrder_Texture(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 449)
 class NutritionOrder_Supplement {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The kind of nutritional supplement product required such as a high
+  // protein or pediatric clear liquid supplement.
+  @HiveField(3)
   CodeableConcept type;
+
+  //  The product or brand name of the nutritional supplement such as "Acme
+  // Protein Shake".
+  @HiveField(4)
   String productName;
+
+  //  Extensions for productName
+  @HiveField(5)
   Element elementProductName;
+
+  //  The time period and frequency at which the supplement(s) should be
+  // given.  The supplement should be given for the combination of all
+  // schedules if more than one schedule is present.
+  @HiveField(6)
   List<Timing> schedule;
+
+  //  The amount of the nutritional supplement to be given.
+  @HiveField(7)
   Quantity quantity;
+
+  //  Free text or additional instructions or information pertaining to the
+  // oral supplement.
+  @HiveField(8)
   String instruction;
+
+  //  Extensions for instruction
+  @HiveField(9)
   Element elementInstruction;
 
 NutritionOrder_Supplement(
@@ -189,21 +524,100 @@ NutritionOrder_Supplement(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 450)
 class NutritionOrder_EnteralFormula {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The type of enteral or infant formula such as an adult standard
+  // formula with fiber or a soy-based infant formula.
+  @HiveField(3)
   CodeableConcept baseFormulaType;
+
+  //  The product or brand name of the enteral or infant formula product
+  // such as "ACME Adult Standard Formula".
+  @HiveField(4)
   String baseFormulaProductName;
+
+  //  Extensions for baseFormulaProductName
+  @HiveField(5)
   Element elementBaseFormulaProductName;
+
+  //  Indicates the type of modular component such as protein, carbohydrate,
+  // fat or fiber to be provided in addition to or mixed with the base
+  // formula.
+  @HiveField(6)
   CodeableConcept additiveType;
+
+  //  The product or brand name of the type of modular component to be added
+  // to the formula.
+  @HiveField(7)
   String additiveProductName;
+
+  //  Extensions for additiveProductName
+  @HiveField(8)
   Element elementAdditiveProductName;
+
+  //  The amount of energy (calories) that the formula should provide per
+  // specified volume, typically per mL or fluid oz.  For example, an infant
+  // may require a formula that provides 24 calories per fluid ounce or an
+  // adult may require an enteral formula that provides 1.5 calorie/mL.
+  @HiveField(9)
   Quantity caloricDensity;
+
+  //  The route or physiological path of administration into the patient's
+  // gastrointestinal  tract for purposes of providing the formula feeding,
+  // e.g. nasogastric tube.
+  @HiveField(10)
   CodeableConcept routeofAdministration;
+
+  //  Formula administration instructions as structured data.  This
+  // repeating structure allows for changing the administration rate or
+  // volume over time for both bolus and continuous feeding.  An example of
+  // this would be an instruction to increase the rate of continuous feeding
+  // every 2 hours.
+  @HiveField(11)
   List<NutritionOrder_Administration> administration;
+
+  //  The maximum total quantity of formula that may be administered to a
+  // subject over the period of time, e.g. 1440 mL over 24 hours.
+  @HiveField(12)
   Quantity maxVolumeToDeliver;
+
+  //  Free text formula administration, feeding instructions or additional
+  // instructions or information.
+  @HiveField(13)
   String administrationInstruction;
+
+  //  Extensions for administrationInstruction
+  @HiveField(14)
   Element elementAdministrationInstruction;
 
 NutritionOrder_EnteralFormula(
@@ -229,13 +643,56 @@ NutritionOrder_EnteralFormula(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 451)
 class NutritionOrder_Administration {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The time period and frequency at which the enteral formula should be
+  // delivered to the patient.
+  @HiveField(3)
   Timing schedule;
+
+  //  The volume of formula to provide to the patient per the specified
+  // administration schedule.
+  @HiveField(4)
   Quantity quantity;
+
+  //  The rate of administration of formula via a feeding pump, e.g. 60 mL
+  // per hour, according to the specified schedule.
+  @HiveField(5)
   Quantity rateQuantity;
+
+  //  The rate of administration of formula via a feeding pump, e.g. 60 mL
+  // per hour, according to the specified schedule.
+  @HiveField(6)
   Ratio rateRatio;
 
 NutritionOrder_Administration(
@@ -254,6 +711,418 @@ NutritionOrder_Administration(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class NutritionOrderAdapter extends TypeAdapter<NutritionOrder> {
+  @override
+  final typeId = 445;
+
+  @override
+  NutritionOrder read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return NutritionOrder(
+      fields[21] as Reference,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      instantiatesCanonical: (fields[12] as List)?.cast<String>(),
+      instantiatesUri: (fields[13] as List)?.cast<String>(),
+      elementInstantiatesUri: (fields[14] as List)?.cast<Element>(),
+      instantiates: (fields[15] as List)?.cast<String>(),
+      elementInstantiates: (fields[16] as List)?.cast<Element>(),
+      status: fields[17] as String,
+      elementStatus: fields[18] as Element,
+      intent: fields[19] as String,
+      elementIntent: fields[20] as Element,
+      encounter: fields[22] as Reference,
+      dateTime: fields[23] as DateTime,
+      elementDateTime: fields[24] as Element,
+      orderer: fields[25] as Reference,
+      allergyIntolerance: (fields[26] as List)?.cast<Reference>(),
+      foodPreferenceModifier: (fields[27] as List)?.cast<CodeableConcept>(),
+      excludeFoodModifier: (fields[28] as List)?.cast<CodeableConcept>(),
+      oralDiet: fields[29] as NutritionOrder_OralDiet,
+      supplement: (fields[30] as List)?.cast<NutritionOrder_Supplement>(),
+      enteralFormula: fields[31] as NutritionOrder_EnteralFormula,
+      note: (fields[32] as List)?.cast<Annotation>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, NutritionOrder obj) {
+    writer
+      ..writeByte(33)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.instantiatesCanonical)
+      ..writeByte(13)
+      ..write(obj.instantiatesUri)
+      ..writeByte(14)
+      ..write(obj.elementInstantiatesUri)
+      ..writeByte(15)
+      ..write(obj.instantiates)
+      ..writeByte(16)
+      ..write(obj.elementInstantiates)
+      ..writeByte(17)
+      ..write(obj.status)
+      ..writeByte(18)
+      ..write(obj.elementStatus)
+      ..writeByte(19)
+      ..write(obj.intent)
+      ..writeByte(20)
+      ..write(obj.elementIntent)
+      ..writeByte(21)
+      ..write(obj.patient)
+      ..writeByte(22)
+      ..write(obj.encounter)
+      ..writeByte(23)
+      ..write(obj.dateTime)
+      ..writeByte(24)
+      ..write(obj.elementDateTime)
+      ..writeByte(25)
+      ..write(obj.orderer)
+      ..writeByte(26)
+      ..write(obj.allergyIntolerance)
+      ..writeByte(27)
+      ..write(obj.foodPreferenceModifier)
+      ..writeByte(28)
+      ..write(obj.excludeFoodModifier)
+      ..writeByte(29)
+      ..write(obj.oralDiet)
+      ..writeByte(30)
+      ..write(obj.supplement)
+      ..writeByte(31)
+      ..write(obj.enteralFormula)
+      ..writeByte(32)
+      ..write(obj.note);
+  }
+}
+
+class NutritionOrder_OralDietAdapter
+    extends TypeAdapter<NutritionOrder_OralDiet> {
+  @override
+  final typeId = 446;
+
+  @override
+  NutritionOrder_OralDiet read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return NutritionOrder_OralDiet(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      type: (fields[3] as List)?.cast<CodeableConcept>(),
+      schedule: (fields[4] as List)?.cast<Timing>(),
+      nutrient: (fields[5] as List)?.cast<NutritionOrder_Nutrient>(),
+      texture: (fields[6] as List)?.cast<NutritionOrder_Texture>(),
+      fluidConsistencyType: (fields[7] as List)?.cast<CodeableConcept>(),
+      instruction: fields[8] as String,
+      elementInstruction: fields[9] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, NutritionOrder_OralDiet obj) {
+    writer
+      ..writeByte(10)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.schedule)
+      ..writeByte(5)
+      ..write(obj.nutrient)
+      ..writeByte(6)
+      ..write(obj.texture)
+      ..writeByte(7)
+      ..write(obj.fluidConsistencyType)
+      ..writeByte(8)
+      ..write(obj.instruction)
+      ..writeByte(9)
+      ..write(obj.elementInstruction);
+  }
+}
+
+class NutritionOrder_NutrientAdapter
+    extends TypeAdapter<NutritionOrder_Nutrient> {
+  @override
+  final typeId = 447;
+
+  @override
+  NutritionOrder_Nutrient read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return NutritionOrder_Nutrient(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      modifier: fields[3] as CodeableConcept,
+      amount: fields[4] as Quantity,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, NutritionOrder_Nutrient obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.modifier)
+      ..writeByte(4)
+      ..write(obj.amount);
+  }
+}
+
+class NutritionOrder_TextureAdapter
+    extends TypeAdapter<NutritionOrder_Texture> {
+  @override
+  final typeId = 448;
+
+  @override
+  NutritionOrder_Texture read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return NutritionOrder_Texture(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      modifier: fields[3] as CodeableConcept,
+      foodType: fields[4] as CodeableConcept,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, NutritionOrder_Texture obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.modifier)
+      ..writeByte(4)
+      ..write(obj.foodType);
+  }
+}
+
+class NutritionOrder_SupplementAdapter
+    extends TypeAdapter<NutritionOrder_Supplement> {
+  @override
+  final typeId = 449;
+
+  @override
+  NutritionOrder_Supplement read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return NutritionOrder_Supplement(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      type: fields[3] as CodeableConcept,
+      productName: fields[4] as String,
+      elementProductName: fields[5] as Element,
+      schedule: (fields[6] as List)?.cast<Timing>(),
+      quantity: fields[7] as Quantity,
+      instruction: fields[8] as String,
+      elementInstruction: fields[9] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, NutritionOrder_Supplement obj) {
+    writer
+      ..writeByte(10)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.productName)
+      ..writeByte(5)
+      ..write(obj.elementProductName)
+      ..writeByte(6)
+      ..write(obj.schedule)
+      ..writeByte(7)
+      ..write(obj.quantity)
+      ..writeByte(8)
+      ..write(obj.instruction)
+      ..writeByte(9)
+      ..write(obj.elementInstruction);
+  }
+}
+
+class NutritionOrder_EnteralFormulaAdapter
+    extends TypeAdapter<NutritionOrder_EnteralFormula> {
+  @override
+  final typeId = 450;
+
+  @override
+  NutritionOrder_EnteralFormula read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return NutritionOrder_EnteralFormula(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      baseFormulaType: fields[3] as CodeableConcept,
+      baseFormulaProductName: fields[4] as String,
+      elementBaseFormulaProductName: fields[5] as Element,
+      additiveType: fields[6] as CodeableConcept,
+      additiveProductName: fields[7] as String,
+      elementAdditiveProductName: fields[8] as Element,
+      caloricDensity: fields[9] as Quantity,
+      routeofAdministration: fields[10] as CodeableConcept,
+      administration:
+          (fields[11] as List)?.cast<NutritionOrder_Administration>(),
+      maxVolumeToDeliver: fields[12] as Quantity,
+      administrationInstruction: fields[13] as String,
+      elementAdministrationInstruction: fields[14] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, NutritionOrder_EnteralFormula obj) {
+    writer
+      ..writeByte(15)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.baseFormulaType)
+      ..writeByte(4)
+      ..write(obj.baseFormulaProductName)
+      ..writeByte(5)
+      ..write(obj.elementBaseFormulaProductName)
+      ..writeByte(6)
+      ..write(obj.additiveType)
+      ..writeByte(7)
+      ..write(obj.additiveProductName)
+      ..writeByte(8)
+      ..write(obj.elementAdditiveProductName)
+      ..writeByte(9)
+      ..write(obj.caloricDensity)
+      ..writeByte(10)
+      ..write(obj.routeofAdministration)
+      ..writeByte(11)
+      ..write(obj.administration)
+      ..writeByte(12)
+      ..write(obj.maxVolumeToDeliver)
+      ..writeByte(13)
+      ..write(obj.administrationInstruction)
+      ..writeByte(14)
+      ..write(obj.elementAdministrationInstruction);
+  }
+}
+
+class NutritionOrder_AdministrationAdapter
+    extends TypeAdapter<NutritionOrder_Administration> {
+  @override
+  final typeId = 451;
+
+  @override
+  NutritionOrder_Administration read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return NutritionOrder_Administration(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      schedule: fields[3] as Timing,
+      quantity: fields[4] as Quantity,
+      rateQuantity: fields[5] as Quantity,
+      rateRatio: fields[6] as Ratio,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, NutritionOrder_Administration obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.schedule)
+      ..writeByte(4)
+      ..write(obj.quantity)
+      ..writeByte(5)
+      ..write(obj.rateQuantity)
+      ..writeByte(6)
+      ..write(obj.rateRatio);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/fhirClasses/range.dart';
@@ -12,23 +13,105 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 574)
 class SubstanceReferenceInformation {
+
+  //  This is a SubstanceReferenceInformation resource
+  @HiveField(0)
   final String resourceType= 'SubstanceReferenceInformation';
+
+  //  The logical id of the resource, as used in the URL for the resource.
+  // Once assigned, this value never changes.
+  @HiveField(1)
   String id;
+
+  //  The metadata about the resource. This is content that is maintained by
+  // the infrastructure. Changes to the content might not always be
+  // associated with version changes to the resource.
+  @HiveField(2)
   Meta meta;
+
+  //  A reference to a set of rules that were followed when the resource was
+  // constructed, and which must be understood when processing the content.
+  // Often, this is a reference to an implementation guide that defines the
+  // special rules along with other profiles etc.
+  @HiveField(3)
   String implicitRules;
+
+  //  Extensions for implicitRules
+  @HiveField(4)
   Element elementImplicitRules;
+
+  //  The base language in which the resource is written.
+  @HiveField(5)
   String language;
+
+  //  Extensions for language
+  @HiveField(6)
   Element elementLanguage;
+
+  //  A human-readable narrative that contains a summary of the resource and
+  // can be used to represent the content of the resource to a human. The
+  // narrative need not encode all the structured data, but is required to
+  // contain sufficient detail to make it "clinically safe" for a human to
+  // just read the narrative. Resource definitions may define what content
+  // should be represented in the narrative to ensure clinical safety.
+  @HiveField(7)
   Narrative text;
+
+  //  These resources do not have an independent existence apart from the
+  // resource that contains them - they cannot be identified independently,
+  // and nor can they have their own independent transaction scope.
+  @HiveField(8)
   List<dynamic> contained;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource. To make the use of extensions
+  // safe and manageable, there is a strict set of governance  applied to
+  // the definition and use of extensions. Though any implementer can define
+  // an extension, there is a set of requirements that SHALL be met as part
+  // of the definition of the extension.
+  @HiveField(9)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource and that modifies the
+  // understanding of the element that contains it and/or the understanding
+  // of the containing element's descendants. Usually modifier elements
+  // provide negation or qualification. To make the use of extensions safe
+  // and manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer is allowed to
+  // define an extension, there is a set of requirements that SHALL be met
+  // as part of the definition of the extension. Applications processing a
+  // resource are required to check for modifier extensions. Modifier
+  // extensions SHALL NOT change the meaning of any elements on Resource or
+  // DomainResource (including cannot change the meaning of
+  // modifierExtension itself).
+  @HiveField(10)
   List<Extension> modifierExtension;
+
+  //  Todo.
+  @HiveField(11)
   String comment;
+
+  //  Extensions for comment
+  @HiveField(12)
   Element elementComment;
+
+  //  Todo.
+  @HiveField(13)
   List<SubstanceReferenceInformation_Gene> gene;
+
+  //  Todo.
+  @HiveField(14)
   List<SubstanceReferenceInformation_GeneElement> geneElement;
+
+  //  Todo.
+  @HiveField(15)
   List<SubstanceReferenceInformation_Classification> classification;
+
+  //  Todo.
+  @HiveField(16)
   List<SubstanceReferenceInformation_Target> target;
 
 SubstanceReferenceInformation(
@@ -55,12 +138,48 @@ SubstanceReferenceInformation(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 575)
 class SubstanceReferenceInformation_Gene {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Todo.
+  @HiveField(3)
   CodeableConcept geneSequenceOrigin;
+
+  //  Todo.
+  @HiveField(4)
   CodeableConcept gene;
+
+  //  Todo.
+  @HiveField(5)
   List<Reference> source;
 
 SubstanceReferenceInformation_Gene(
@@ -77,12 +196,48 @@ SubstanceReferenceInformation_Gene(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 576)
 class SubstanceReferenceInformation_GeneElement {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Todo.
+  @HiveField(3)
   CodeableConcept type;
+
+  //  Todo.
+  @HiveField(4)
   Identifier element;
+
+  //  Todo.
+  @HiveField(5)
   List<Reference> source;
 
 SubstanceReferenceInformation_GeneElement(
@@ -99,13 +254,52 @@ SubstanceReferenceInformation_GeneElement(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 577)
 class SubstanceReferenceInformation_Classification {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Todo.
+  @HiveField(3)
   CodeableConcept domain;
+
+  //  Todo.
+  @HiveField(4)
   CodeableConcept classification;
+
+  //  Todo.
+  @HiveField(5)
   List<CodeableConcept> subtype;
+
+  //  Todo.
+  @HiveField(6)
   List<Reference> source;
 
 SubstanceReferenceInformation_Classification(
@@ -123,20 +317,80 @@ SubstanceReferenceInformation_Classification(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 578)
 class SubstanceReferenceInformation_Target {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Todo.
+  @HiveField(3)
   Identifier target;
+
+  //  Todo.
+  @HiveField(4)
   CodeableConcept type;
+
+  //  Todo.
+  @HiveField(5)
   CodeableConcept interaction;
+
+  //  Todo.
+  @HiveField(6)
   CodeableConcept organism;
+
+  //  Todo.
+  @HiveField(7)
   CodeableConcept organismType;
+
+  //  Todo.
+  @HiveField(8)
   Quantity amountQuantity;
+
+  //  Todo.
+  @HiveField(9)
   Range amountRange;
+
+  //  Todo.
+  @HiveField(10)
   String amountString; //  pattern: ^[ \r\n\t\S]+$
+
+  //  Extensions for amountString
+  @HiveField(11)
   Element elementAmountString;
+
+  //  Todo.
+  @HiveField(12)
   CodeableConcept amountType;
+
+  //  Todo.
+  @HiveField(13)
   List<Reference> source;
 
 SubstanceReferenceInformation_Target(
@@ -162,6 +416,274 @@ SubstanceReferenceInformation_Target(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class SubstanceReferenceInformationAdapter
+    extends TypeAdapter<SubstanceReferenceInformation> {
+  @override
+  final typeId = 574;
+
+  @override
+  SubstanceReferenceInformation read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return SubstanceReferenceInformation(
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      comment: fields[11] as String,
+      elementComment: fields[12] as Element,
+      gene: (fields[13] as List)?.cast<SubstanceReferenceInformation_Gene>(),
+      geneElement: (fields[14] as List)
+          ?.cast<SubstanceReferenceInformation_GeneElement>(),
+      classification: (fields[15] as List)
+          ?.cast<SubstanceReferenceInformation_Classification>(),
+      target:
+          (fields[16] as List)?.cast<SubstanceReferenceInformation_Target>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, SubstanceReferenceInformation obj) {
+    writer
+      ..writeByte(17)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.comment)
+      ..writeByte(12)
+      ..write(obj.elementComment)
+      ..writeByte(13)
+      ..write(obj.gene)
+      ..writeByte(14)
+      ..write(obj.geneElement)
+      ..writeByte(15)
+      ..write(obj.classification)
+      ..writeByte(16)
+      ..write(obj.target);
+  }
+}
+
+class SubstanceReferenceInformation_GeneAdapter
+    extends TypeAdapter<SubstanceReferenceInformation_Gene> {
+  @override
+  final typeId = 575;
+
+  @override
+  SubstanceReferenceInformation_Gene read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return SubstanceReferenceInformation_Gene(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      geneSequenceOrigin: fields[3] as CodeableConcept,
+      gene: fields[4] as CodeableConcept,
+      source: (fields[5] as List)?.cast<Reference>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, SubstanceReferenceInformation_Gene obj) {
+    writer
+      ..writeByte(6)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.geneSequenceOrigin)
+      ..writeByte(4)
+      ..write(obj.gene)
+      ..writeByte(5)
+      ..write(obj.source);
+  }
+}
+
+class SubstanceReferenceInformation_GeneElementAdapter
+    extends TypeAdapter<SubstanceReferenceInformation_GeneElement> {
+  @override
+  final typeId = 576;
+
+  @override
+  SubstanceReferenceInformation_GeneElement read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return SubstanceReferenceInformation_GeneElement(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      type: fields[3] as CodeableConcept,
+      element: fields[4] as Identifier,
+      source: (fields[5] as List)?.cast<Reference>(),
+    );
+  }
+
+  @override
+  void write(
+      BinaryWriter writer, SubstanceReferenceInformation_GeneElement obj) {
+    writer
+      ..writeByte(6)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.element)
+      ..writeByte(5)
+      ..write(obj.source);
+  }
+}
+
+class SubstanceReferenceInformation_ClassificationAdapter
+    extends TypeAdapter<SubstanceReferenceInformation_Classification> {
+  @override
+  final typeId = 577;
+
+  @override
+  SubstanceReferenceInformation_Classification read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return SubstanceReferenceInformation_Classification(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      domain: fields[3] as CodeableConcept,
+      classification: fields[4] as CodeableConcept,
+      subtype: (fields[5] as List)?.cast<CodeableConcept>(),
+      source: (fields[6] as List)?.cast<Reference>(),
+    );
+  }
+
+  @override
+  void write(
+      BinaryWriter writer, SubstanceReferenceInformation_Classification obj) {
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.domain)
+      ..writeByte(4)
+      ..write(obj.classification)
+      ..writeByte(5)
+      ..write(obj.subtype)
+      ..writeByte(6)
+      ..write(obj.source);
+  }
+}
+
+class SubstanceReferenceInformation_TargetAdapter
+    extends TypeAdapter<SubstanceReferenceInformation_Target> {
+  @override
+  final typeId = 578;
+
+  @override
+  SubstanceReferenceInformation_Target read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return SubstanceReferenceInformation_Target(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      target: fields[3] as Identifier,
+      type: fields[4] as CodeableConcept,
+      interaction: fields[5] as CodeableConcept,
+      organism: fields[6] as CodeableConcept,
+      organismType: fields[7] as CodeableConcept,
+      amountQuantity: fields[8] as Quantity,
+      amountRange: fields[9] as Range,
+      amountString: fields[10] as String,
+      elementAmountString: fields[11] as Element,
+      amountType: fields[12] as CodeableConcept,
+      source: (fields[13] as List)?.cast<Reference>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, SubstanceReferenceInformation_Target obj) {
+    writer
+      ..writeByte(14)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.target)
+      ..writeByte(4)
+      ..write(obj.type)
+      ..writeByte(5)
+      ..write(obj.interaction)
+      ..writeByte(6)
+      ..write(obj.organism)
+      ..writeByte(7)
+      ..write(obj.organismType)
+      ..writeByte(8)
+      ..write(obj.amountQuantity)
+      ..writeByte(9)
+      ..write(obj.amountRange)
+      ..writeByte(10)
+      ..write(obj.amountString)
+      ..writeByte(11)
+      ..write(obj.elementAmountString)
+      ..writeByte(12)
+      ..write(obj.amountType)
+      ..writeByte(13)
+      ..write(obj.source);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/fhirClasses/quantity.dart';
@@ -15,50 +16,232 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 127)
 class ClaimResponse {
+
+  //  This is a ClaimResponse resource
+  @HiveField(0)
   final String resourceType= 'ClaimResponse';
+
+  //  The logical id of the resource, as used in the URL for the resource.
+  // Once assigned, this value never changes.
+  @HiveField(1)
   String id;
+
+  //  The metadata about the resource. This is content that is maintained by
+  // the infrastructure. Changes to the content might not always be
+  // associated with version changes to the resource.
+  @HiveField(2)
   Meta meta;
+
+  //  A reference to a set of rules that were followed when the resource was
+  // constructed, and which must be understood when processing the content.
+  // Often, this is a reference to an implementation guide that defines the
+  // special rules along with other profiles etc.
+  @HiveField(3)
   String implicitRules;
+
+  //  Extensions for implicitRules
+  @HiveField(4)
   Element elementImplicitRules;
+
+  //  The base language in which the resource is written.
+  @HiveField(5)
   String language;
+
+  //  Extensions for language
+  @HiveField(6)
   Element elementLanguage;
+
+  //  A human-readable narrative that contains a summary of the resource and
+  // can be used to represent the content of the resource to a human. The
+  // narrative need not encode all the structured data, but is required to
+  // contain sufficient detail to make it "clinically safe" for a human to
+  // just read the narrative. Resource definitions may define what content
+  // should be represented in the narrative to ensure clinical safety.
+  @HiveField(7)
   Narrative text;
+
+  //  These resources do not have an independent existence apart from the
+  // resource that contains them - they cannot be identified independently,
+  // and nor can they have their own independent transaction scope.
+  @HiveField(8)
   List<dynamic> contained;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource. To make the use of extensions
+  // safe and manageable, there is a strict set of governance  applied to
+  // the definition and use of extensions. Though any implementer can define
+  // an extension, there is a set of requirements that SHALL be met as part
+  // of the definition of the extension.
+  @HiveField(9)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource and that modifies the
+  // understanding of the element that contains it and/or the understanding
+  // of the containing element's descendants. Usually modifier elements
+  // provide negation or qualification. To make the use of extensions safe
+  // and manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer is allowed to
+  // define an extension, there is a set of requirements that SHALL be met
+  // as part of the definition of the extension. Applications processing a
+  // resource are required to check for modifier extensions. Modifier
+  // extensions SHALL NOT change the meaning of any elements on Resource or
+  // DomainResource (including cannot change the meaning of
+  // modifierExtension itself).
+  @HiveField(10)
   List<Extension> modifierExtension;
+
+  //  A unique identifier assigned to this claim response.
+  @HiveField(11)
   List<Identifier> identifier;
+
+  //  The status of the resource instance.
+  @HiveField(12)
   String status;
+
+  //  Extensions for status
+  @HiveField(13)
   Element elementStatus;
+
+  //  A finer grained suite of claim type codes which may convey additional
+  // information such as Inpatient vs Outpatient and/or a specialty service.
+  @HiveField(14)
   CodeableConcept type;
+
+  //  A finer grained suite of claim type codes which may convey additional
+  // information such as Inpatient vs Outpatient and/or a specialty service.
+  @HiveField(15)
   CodeableConcept subType;
+
+  //  A code to indicate whether the nature of the request is: to request
+  // adjudication of products and services previously rendered; or
+  // requesting authorization and adjudication for provision in the future;
+  // or requesting the non-binding adjudication of the listed products and
+  // services which could be provided in the future.
+  @HiveField(16)
   String use;
+
+  //  Extensions for use
+  @HiveField(17)
   Element elementUse;
+
+  //  The party to whom the professional services and/or products have been
+  // supplied or are being considered and for whom actual for facast
+  // reimbursement is sought.
+  @HiveField(18)
   Reference patient;
+
+  //  The date this resource was created.
+  @HiveField(19)
   DateTime created;
+
+  //  Extensions for created
+  @HiveField(20)
   Element elementCreated;
+
+  //  The party responsible for authorization, adjudication and
+  // reimbursement.
+  @HiveField(21)
   Reference insurer;
+
+  //  The provider which is responsible for the claim, predetermination or
+  // preauthorization.
+  @HiveField(22)
   Reference requestor;
+
+  //  Original request resource reference.
+  @HiveField(23)
   Reference request;
+
+  //  The outcome of the claim, predetermination, or preauthorization
+  // processing.
+  @HiveField(24)
   String outcome;
+
+  //  Extensions for outcome
+  @HiveField(25)
   Element elementOutcome;
+
+  //  A human readable description of the status of the adjudication.
+  @HiveField(26)
   String disposition;
+
+  //  Extensions for disposition
+  @HiveField(27)
   Element elementDisposition;
+
+  //  Reference from the Insurer which is used in later communications which
+  // refers to this adjudication.
+  @HiveField(28)
   String preAuthRef;
+
+  //  Extensions for preAuthRef
+  @HiveField(29)
   Element elementPreAuthRef;
+
+  //  The time frame during which this authorization is effective.
+  @HiveField(30)
   Period preAuthPeriod;
+
+  //  Type of Party to be reimbursed: subscriber, provider, other.
+  @HiveField(31)
   CodeableConcept payeeType;
+
+  //  A claim line. Either a simple (a product or service) or a 'group' of
+  // details which can also be a simple items or groups of sub-details.
+  @HiveField(32)
   List<ClaimResponse_Item> item;
+
+  //  The first-tier service adjudications for payor added product or
+  // service lines.
+  @HiveField(33)
   List<ClaimResponse_AddItem> addItem;
+
+  //  The adjudication results which are presented at the header level
+  // rather than at the line-item or add-item levels.
+  @HiveField(34)
   List<ClaimResponse_Adjudication> adjudication;
+
+  //  Categorized monetary totals for the adjudication.
+  @HiveField(35)
   List<ClaimResponse_Total> total;
+
+  //  Payment details for the adjudication of the claim.
+  @HiveField(36)
   ClaimResponse_Payment payment;
+
+  //  A code, used only on a response to a preauthorization, to indicate
+  // whether the benefits payable have been reserved and for whom.
+  @HiveField(37)
   CodeableConcept fundsReserve;
+
+  //  A code for the form to be used for printing the content.
+  @HiveField(38)
   CodeableConcept formCode;
+
+  //  The actual form, by reference or inclusion, for printing the content
+  // or an EOB.
+  @HiveField(39)
   Attachment form;
+
+  //  A note that describes or explains adjudication results in a human
+  // readable form.
+  @HiveField(40)
   List<ClaimResponse_ProcessNote> processNote;
+
+  //  Request for additional supporting or authorizing information.
+  @HiveField(41)
   List<Reference> communicationRequest;
+
+  //  Financial instruments for reimbursement for the health care products
+  // and services specified on the claim.
+  @HiveField(42)
   List<ClaimResponse_Insurance> insurance;
+
+  //  Errors encountered during the processing of the adjudication.
+  @HiveField(43)
   List<ClaimResponse_Error> error;
 
 ClaimResponse(
@@ -112,15 +295,64 @@ ClaimResponse(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 128)
 class ClaimResponse_Item {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  A number to uniquely reference the claim item entries.
+  @HiveField(3)
   int itemSequence;
+
+  //  Extensions for itemSequence
+  @HiveField(4)
   Element elementItemSequence;
+
+  //  The numbers associated with notes below which apply to the
+  // adjudication of this item.
+  @HiveField(5)
   List<int> noteNumber;
+
+  //  Extensions for noteNumber
+  @HiveField(6)
   List<Element> elementNoteNumber;
+
+  //  If this item is a group then the values here are a summary of the
+  // adjudication of the detail items. If this item is a simple product or
+  // service then this is the result of the adjudication of this item.
+  @HiveField(7)
   List<ClaimResponse_Adjudication> adjudication;
+
+  //  A claim detail. Either a simple (a product or service) or a 'group' of
+  // sub-details which are simple items.
+  @HiveField(8)
   List<ClaimResponse_Detail> detail;
 
 ClaimResponse_Item(
@@ -140,14 +372,63 @@ ClaimResponse_Item(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 129)
 class ClaimResponse_Adjudication {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  A code to indicate the information type of this adjudication record.
+  // Information types may include the value submitted, maximum values or
+  // percentages allowed or payable under the plan, amounts that: the
+  // patient is responsible for in aggregate or pertaining to this item;
+  // amounts paid by other coverages; and, the benefit payable for this
+  // item.
+  @HiveField(3)
   CodeableConcept category;
+
+  //  A code supporting the understanding of the adjudication result and
+  // explaining variance from expected amount.
+  @HiveField(4)
   CodeableConcept reason;
+
+  //  Monetary amount associated with the category.
+  @HiveField(5)
   Money amount;
+
+  //  A non-monetary value associated with the category. Mutually exclusive
+  // to the amount element above.
+  @HiveField(6)
   double value;
+
+  //  Extensions for value
+  @HiveField(7)
   Element elementValue;
 
 ClaimResponse_Adjudication(
@@ -166,15 +447,61 @@ ClaimResponse_Adjudication(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 130)
 class ClaimResponse_Detail {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  A number to uniquely reference the claim detail entry.
+  @HiveField(3)
   int detailSequence;
+
+  //  Extensions for detailSequence
+  @HiveField(4)
   Element elementDetailSequence;
+
+  //  The numbers associated with notes below which apply to the
+  // adjudication of this item.
+  @HiveField(5)
   List<int> noteNumber;
+
+  //  Extensions for noteNumber
+  @HiveField(6)
   List<Element> elementNoteNumber;
+
+  //  The adjudication results.
+  @HiveField(7)
   List<ClaimResponse_Adjudication> adjudication;
+
+  //  A sub-detail adjudication of a simple product or service.
+  @HiveField(8)
   List<ClaimResponse_SubDetail> subDetail;
 
 ClaimResponse_Detail(
@@ -194,14 +521,57 @@ ClaimResponse_Detail(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 131)
 class ClaimResponse_SubDetail {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  A number to uniquely reference the claim sub-detail entry.
+  @HiveField(3)
   int subDetailSequence;
+
+  //  Extensions for subDetailSequence
+  @HiveField(4)
   Element elementSubDetailSequence;
+
+  //  The numbers associated with notes below which apply to the
+  // adjudication of this item.
+  @HiveField(5)
   List<int> noteNumber;
+
+  //  Extensions for noteNumber
+  @HiveField(6)
   List<Element> elementNoteNumber;
+
+  //  The adjudication results.
+  @HiveField(7)
   List<ClaimResponse_Adjudication> adjudication;
 
 ClaimResponse_SubDetail(
@@ -220,36 +590,160 @@ ClaimResponse_SubDetail(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 132)
 class ClaimResponse_AddItem {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Claim items which this service line is intended to replace.
+  @HiveField(3)
   List<int> itemSequence;
+
+  //  Extensions for itemSequence
+  @HiveField(4)
   List<Element> elementItemSequence;
+
+  //  The sequence number of the details within the claim item which this
+  // line is intended to replace.
+  @HiveField(5)
   List<int> detailSequence;
+
+  //  Extensions for detailSequence
+  @HiveField(6)
   List<Element> elementDetailSequence;
+
+  //  The sequence number of the sub-details within the details within the
+  // claim item which this line is intended to replace.
+  @HiveField(7)
   List<int> subdetailSequence;
+
+  //  Extensions for subdetailSequence
+  @HiveField(8)
   List<Element> elementSubdetailSequence;
+
+  //  The providers who are authorized for the services rendered to the
+  // patient.
+  @HiveField(9)
   List<Reference> provider;
+
+  //  When the value is a group code then this item collects a set of
+  // related claim details, otherwise this contains the product, service,
+  // drug or other billing code for the item.
+  @HiveField(10)
   CodeableConcept productOrService;
+
+  //  Item typification or modifiers codes to convey additional context for
+  // the product or service.
+  @HiveField(11)
   List<CodeableConcept> modifier;
+
+  //  Identifies the program under which this may be recovered.
+  @HiveField(12)
   List<CodeableConcept> programCode;
+
+  //  The date or dates when the service or product was supplied, performed
+  // or completed.
+  @HiveField(13)
   String servicedDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
+
+  //  Extensions for servicedDate
+  @HiveField(14)
   Element elementServicedDate;
+
+  //  The date or dates when the service or product was supplied, performed
+  // or completed.
+  @HiveField(15)
   Period servicedPeriod;
+
+  //  Where the product or service was provided.
+  @HiveField(16)
   CodeableConcept locationCodeableConcept;
+
+  //  Where the product or service was provided.
+  @HiveField(17)
   Address locationAddress;
+
+  //  Where the product or service was provided.
+  @HiveField(18)
   Reference locationReference;
+
+  //  The number of repetitions of a service or product.
+  @HiveField(19)
   Quantity quantity;
+
+  //  If the item is not a group then this is the fee for the product or
+  // service, otherwise this is the total of the fees for the details of the
+  // group.
+  @HiveField(20)
   Money unitPrice;
+
+  //  A real number that represents a multiplier used in determining the
+  // overall value of services delivered and/or goods received. The concept
+  // of a Factor allows for a discount or surcharge multiplier to be applied
+  // to a monetary amount.
+  @HiveField(21)
   double factor;
+
+  //  Extensions for factor
+  @HiveField(22)
   Element elementFactor;
+
+  //  The quantity times the unit price for an additional service or product
+  // or charge.
+  @HiveField(23)
   Money net;
+
+  //  Physical service site on the patient (limb, tooth, etc.).
+  @HiveField(24)
   CodeableConcept bodySite;
+
+  //  A region or surface of the bodySite, e.g. limb region or tooth
+  // surface(s).
+  @HiveField(25)
   List<CodeableConcept> subSite;
+
+  //  The numbers associated with notes below which apply to the
+  // adjudication of this item.
+  @HiveField(26)
   List<int> noteNumber;
+
+  //  Extensions for noteNumber
+  @HiveField(27)
   List<Element> elementNoteNumber;
+
+  //  The adjudication results.
+  @HiveField(28)
   List<ClaimResponse_Adjudication> adjudication;
+
+  //  The second-tier service adjudications for payor added services.
+  @HiveField(29)
   List<ClaimResponse_Detail1> detail;
 
 ClaimResponse_AddItem(
@@ -290,20 +784,90 @@ ClaimResponse_AddItem(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 133)
 class ClaimResponse_Detail1 {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  When the value is a group code then this item collects a set of
+  // related claim details, otherwise this contains the product, service,
+  // drug or other billing code for the item.
+  @HiveField(3)
   CodeableConcept productOrService;
+
+  //  Item typification or modifiers codes to convey additional context for
+  // the product or service.
+  @HiveField(4)
   List<CodeableConcept> modifier;
+
+  //  The number of repetitions of a service or product.
+  @HiveField(5)
   Quantity quantity;
+
+  //  If the item is not a group then this is the fee for the product or
+  // service, otherwise this is the total of the fees for the details of the
+  // group.
+  @HiveField(6)
   Money unitPrice;
+
+  //  A real number that represents a multiplier used in determining the
+  // overall value of services delivered and/or goods received. The concept
+  // of a Factor allows for a discount or surcharge multiplier to be applied
+  // to a monetary amount.
+  @HiveField(7)
   double factor;
+
+  //  Extensions for factor
+  @HiveField(8)
   Element elementFactor;
+
+  //  The quantity times the unit price for an additional service or product
+  // or charge.
+  @HiveField(9)
   Money net;
+
+  //  The numbers associated with notes below which apply to the
+  // adjudication of this item.
+  @HiveField(10)
   List<int> noteNumber;
+
+  //  Extensions for noteNumber
+  @HiveField(11)
   List<Element> elementNoteNumber;
+
+  //  The adjudication results.
+  @HiveField(12)
   List<ClaimResponse_Adjudication> adjudication;
+
+  //  The third-tier service adjudications for payor added services.
+  @HiveField(13)
   List<ClaimResponse_SubDetail1> subDetail;
 
 ClaimResponse_Detail1(
@@ -328,19 +892,86 @@ ClaimResponse_Detail1(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 134)
 class ClaimResponse_SubDetail1 {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  When the value is a group code then this item collects a set of
+  // related claim details, otherwise this contains the product, service,
+  // drug or other billing code for the item.
+  @HiveField(3)
   CodeableConcept productOrService;
+
+  //  Item typification or modifiers codes to convey additional context for
+  // the product or service.
+  @HiveField(4)
   List<CodeableConcept> modifier;
+
+  //  The number of repetitions of a service or product.
+  @HiveField(5)
   Quantity quantity;
+
+  //  If the item is not a group then this is the fee for the product or
+  // service, otherwise this is the total of the fees for the details of the
+  // group.
+  @HiveField(6)
   Money unitPrice;
+
+  //  A real number that represents a multiplier used in determining the
+  // overall value of services delivered and/or goods received. The concept
+  // of a Factor allows for a discount or surcharge multiplier to be applied
+  // to a monetary amount.
+  @HiveField(7)
   double factor;
+
+  //  Extensions for factor
+  @HiveField(8)
   Element elementFactor;
+
+  //  The quantity times the unit price for an additional service or product
+  // or charge.
+  @HiveField(9)
   Money net;
+
+  //  The numbers associated with notes below which apply to the
+  // adjudication of this item.
+  @HiveField(10)
   List<int> noteNumber;
+
+  //  Extensions for noteNumber
+  @HiveField(11)
   List<Element> elementNoteNumber;
+
+  //  The adjudication results.
+  @HiveField(12)
   List<ClaimResponse_Adjudication> adjudication;
 
 ClaimResponse_SubDetail1(
@@ -364,11 +995,48 @@ ClaimResponse_SubDetail1(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 135)
 class ClaimResponse_Total {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  A code to indicate the information type of this adjudication record.
+  // Information types may include: the value submitted, maximum values or
+  // percentages allowed or payable under the plan, amounts that the patient
+  // is responsible for in aggregate or pertaining to this item, amounts
+  // paid by other coverages, and the benefit payable for this item.
+  @HiveField(3)
   CodeableConcept category;
+
+  //  Monetary total amount associated with the category.
+  @HiveField(4)
   Money amount;
 
 ClaimResponse_Total(
@@ -384,16 +1052,67 @@ ClaimResponse_Total(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 136)
 class ClaimResponse_Payment {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Whether this represents partial or complete payment of the benefits
+  // payable.
+  @HiveField(3)
   CodeableConcept type;
+
+  //  Total amount of all adjustments to this payment included in this
+  // transaction which are not related to this claim's adjudication.
+  @HiveField(4)
   Money adjustment;
+
+  //  Reason for the payment adjustment.
+  @HiveField(5)
   CodeableConcept adjustmentReason;
+
+  //  Estimated date the payment will be issued or the actual issue date of
+  // payment.
+  @HiveField(6)
   String date;
+
+  //  Extensions for date
+  @HiveField(7)
   Element elementDate;
+
+  //  Benefits payable less any payment adjustment.
+  @HiveField(8)
   Money amount;
+
+  //  Issuer's unique identifier for the payment instrument.
+  @HiveField(9)
   Identifier identifier;
 
 ClaimResponse_Payment(
@@ -414,16 +1133,64 @@ ClaimResponse_Payment(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 137)
 class ClaimResponse_ProcessNote {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  A number to uniquely identify a note entry.
+  @HiveField(3)
   int number;
+
+  //  Extensions for number
+  @HiveField(4)
   Element elementNumber;
+
+  //  The business purpose of the note text.
+  @HiveField(5)
   String type; // <code> enum: display/print/printoper;
+
+  //  Extensions for type
+  @HiveField(6)
   Element elementType;
+
+  //  The explanation or description associated with the processing.
+  @HiveField(7)
   String text;
+
+  //  Extensions for text
+  @HiveField(8)
   Element elementText;
+
+  //  A code to define the language used in the text of the note.
+  @HiveField(9)
   CodeableConcept language;
 
 ClaimResponse_ProcessNote(
@@ -444,17 +1211,75 @@ ClaimResponse_ProcessNote(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 138)
 class ClaimResponse_Insurance {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  A number to uniquely identify insurance entries and provide a sequence
+  // of coverages to convey coordination of benefit order.
+  @HiveField(3)
   int sequence;
+
+  //  Extensions for sequence
+  @HiveField(4)
   Element elementSequence;
+
+  //  A flag to indicate that this Coverage is to be used for adjudication
+  // of this claim when set to true.
+  @HiveField(5)
   bool focal;
+
+  //  Extensions for focal
+  @HiveField(6)
   Element elementFocal;
+
+  //  Reference to the insurance card level information contained in the
+  // Coverage resource. The coverage issuing insurer will use these details
+  // to locate the patient's actual coverage within the insurer's
+  // information system.
+  @HiveField(7)
   Reference coverage;
+
+  //  A business agreement number established between the provider and the
+  // insurer for special business processing purposes.
+  @HiveField(8)
   String businessArrangement;
+
+  //  Extensions for businessArrangement
+  @HiveField(9)
   Element elementBusinessArrangement;
+
+  //  The result of the adjudication of the line items for the Coverage
+  // specified in this insurance.
+  @HiveField(10)
   Reference claimResponse;
 
 ClaimResponse_Insurance(
@@ -476,16 +1301,71 @@ ClaimResponse_Insurance(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 139)
 class ClaimResponse_Error {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The sequence number of the line item submitted which contains the
+  // error. This value is omitted when the error occurs outside of the item
+  // structure.
+  @HiveField(3)
   int itemSequence;
+
+  //  Extensions for itemSequence
+  @HiveField(4)
   Element elementItemSequence;
+
+  //  The sequence number of the detail within the line item submitted which
+  // contains the error. This value is omitted when the error occurs outside
+  // of the item structure.
+  @HiveField(5)
   int detailSequence;
+
+  //  Extensions for detailSequence
+  @HiveField(6)
   Element elementDetailSequence;
+
+  //  The sequence number of the sub-detail within the detail within the
+  // line item submitted which contains the error. This value is omitted
+  // when the error occurs outside of the item structure.
+  @HiveField(7)
   int subDetailSequence;
+
+  //  Extensions for subDetailSequence
+  @HiveField(8)
   Element elementSubDetailSequence;
+
+  //  An error code, from a specified code system, which details why the
+  // claim could not be adjudicated.
+  @HiveField(9)
   CodeableConcept code;
 
 ClaimResponse_Error(
@@ -507,6 +1387,830 @@ ClaimResponse_Error(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class ClaimResponseAdapter extends TypeAdapter<ClaimResponse> {
+  @override
+  final typeId = 127;
+
+  @override
+  ClaimResponse read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ClaimResponse(
+      fields[14] as CodeableConcept,
+      fields[18] as Reference,
+      fields[21] as Reference,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      identifier: (fields[11] as List)?.cast<Identifier>(),
+      status: fields[12] as String,
+      elementStatus: fields[13] as Element,
+      subType: fields[15] as CodeableConcept,
+      use: fields[16] as String,
+      elementUse: fields[17] as Element,
+      created: fields[19] as DateTime,
+      elementCreated: fields[20] as Element,
+      requestor: fields[22] as Reference,
+      request: fields[23] as Reference,
+      outcome: fields[24] as String,
+      elementOutcome: fields[25] as Element,
+      disposition: fields[26] as String,
+      elementDisposition: fields[27] as Element,
+      preAuthRef: fields[28] as String,
+      elementPreAuthRef: fields[29] as Element,
+      preAuthPeriod: fields[30] as Period,
+      payeeType: fields[31] as CodeableConcept,
+      item: (fields[32] as List)?.cast<ClaimResponse_Item>(),
+      addItem: (fields[33] as List)?.cast<ClaimResponse_AddItem>(),
+      adjudication: (fields[34] as List)?.cast<ClaimResponse_Adjudication>(),
+      total: (fields[35] as List)?.cast<ClaimResponse_Total>(),
+      payment: fields[36] as ClaimResponse_Payment,
+      fundsReserve: fields[37] as CodeableConcept,
+      formCode: fields[38] as CodeableConcept,
+      form: fields[39] as Attachment,
+      processNote: (fields[40] as List)?.cast<ClaimResponse_ProcessNote>(),
+      communicationRequest: (fields[41] as List)?.cast<Reference>(),
+      insurance: (fields[42] as List)?.cast<ClaimResponse_Insurance>(),
+      error: (fields[43] as List)?.cast<ClaimResponse_Error>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ClaimResponse obj) {
+    writer
+      ..writeByte(44)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.identifier)
+      ..writeByte(12)
+      ..write(obj.status)
+      ..writeByte(13)
+      ..write(obj.elementStatus)
+      ..writeByte(14)
+      ..write(obj.type)
+      ..writeByte(15)
+      ..write(obj.subType)
+      ..writeByte(16)
+      ..write(obj.use)
+      ..writeByte(17)
+      ..write(obj.elementUse)
+      ..writeByte(18)
+      ..write(obj.patient)
+      ..writeByte(19)
+      ..write(obj.created)
+      ..writeByte(20)
+      ..write(obj.elementCreated)
+      ..writeByte(21)
+      ..write(obj.insurer)
+      ..writeByte(22)
+      ..write(obj.requestor)
+      ..writeByte(23)
+      ..write(obj.request)
+      ..writeByte(24)
+      ..write(obj.outcome)
+      ..writeByte(25)
+      ..write(obj.elementOutcome)
+      ..writeByte(26)
+      ..write(obj.disposition)
+      ..writeByte(27)
+      ..write(obj.elementDisposition)
+      ..writeByte(28)
+      ..write(obj.preAuthRef)
+      ..writeByte(29)
+      ..write(obj.elementPreAuthRef)
+      ..writeByte(30)
+      ..write(obj.preAuthPeriod)
+      ..writeByte(31)
+      ..write(obj.payeeType)
+      ..writeByte(32)
+      ..write(obj.item)
+      ..writeByte(33)
+      ..write(obj.addItem)
+      ..writeByte(34)
+      ..write(obj.adjudication)
+      ..writeByte(35)
+      ..write(obj.total)
+      ..writeByte(36)
+      ..write(obj.payment)
+      ..writeByte(37)
+      ..write(obj.fundsReserve)
+      ..writeByte(38)
+      ..write(obj.formCode)
+      ..writeByte(39)
+      ..write(obj.form)
+      ..writeByte(40)
+      ..write(obj.processNote)
+      ..writeByte(41)
+      ..write(obj.communicationRequest)
+      ..writeByte(42)
+      ..write(obj.insurance)
+      ..writeByte(43)
+      ..write(obj.error);
+  }
+}
+
+class ClaimResponse_ItemAdapter extends TypeAdapter<ClaimResponse_Item> {
+  @override
+  final typeId = 128;
+
+  @override
+  ClaimResponse_Item read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ClaimResponse_Item(
+      (fields[7] as List)?.cast<ClaimResponse_Adjudication>(),
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      itemSequence: fields[3] as int,
+      elementItemSequence: fields[4] as Element,
+      noteNumber: (fields[5] as List)?.cast<int>(),
+      elementNoteNumber: (fields[6] as List)?.cast<Element>(),
+      detail: (fields[8] as List)?.cast<ClaimResponse_Detail>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ClaimResponse_Item obj) {
+    writer
+      ..writeByte(9)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.itemSequence)
+      ..writeByte(4)
+      ..write(obj.elementItemSequence)
+      ..writeByte(5)
+      ..write(obj.noteNumber)
+      ..writeByte(6)
+      ..write(obj.elementNoteNumber)
+      ..writeByte(7)
+      ..write(obj.adjudication)
+      ..writeByte(8)
+      ..write(obj.detail);
+  }
+}
+
+class ClaimResponse_AdjudicationAdapter
+    extends TypeAdapter<ClaimResponse_Adjudication> {
+  @override
+  final typeId = 129;
+
+  @override
+  ClaimResponse_Adjudication read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ClaimResponse_Adjudication(
+      fields[3] as CodeableConcept,
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      reason: fields[4] as CodeableConcept,
+      amount: fields[5] as Money,
+      value: fields[6] as double,
+      elementValue: fields[7] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ClaimResponse_Adjudication obj) {
+    writer
+      ..writeByte(8)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.category)
+      ..writeByte(4)
+      ..write(obj.reason)
+      ..writeByte(5)
+      ..write(obj.amount)
+      ..writeByte(6)
+      ..write(obj.value)
+      ..writeByte(7)
+      ..write(obj.elementValue);
+  }
+}
+
+class ClaimResponse_DetailAdapter extends TypeAdapter<ClaimResponse_Detail> {
+  @override
+  final typeId = 130;
+
+  @override
+  ClaimResponse_Detail read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ClaimResponse_Detail(
+      (fields[7] as List)?.cast<ClaimResponse_Adjudication>(),
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      detailSequence: fields[3] as int,
+      elementDetailSequence: fields[4] as Element,
+      noteNumber: (fields[5] as List)?.cast<int>(),
+      elementNoteNumber: (fields[6] as List)?.cast<Element>(),
+      subDetail: (fields[8] as List)?.cast<ClaimResponse_SubDetail>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ClaimResponse_Detail obj) {
+    writer
+      ..writeByte(9)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.detailSequence)
+      ..writeByte(4)
+      ..write(obj.elementDetailSequence)
+      ..writeByte(5)
+      ..write(obj.noteNumber)
+      ..writeByte(6)
+      ..write(obj.elementNoteNumber)
+      ..writeByte(7)
+      ..write(obj.adjudication)
+      ..writeByte(8)
+      ..write(obj.subDetail);
+  }
+}
+
+class ClaimResponse_SubDetailAdapter
+    extends TypeAdapter<ClaimResponse_SubDetail> {
+  @override
+  final typeId = 131;
+
+  @override
+  ClaimResponse_SubDetail read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ClaimResponse_SubDetail(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      subDetailSequence: fields[3] as int,
+      elementSubDetailSequence: fields[4] as Element,
+      noteNumber: (fields[5] as List)?.cast<int>(),
+      elementNoteNumber: (fields[6] as List)?.cast<Element>(),
+      adjudication: (fields[7] as List)?.cast<ClaimResponse_Adjudication>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ClaimResponse_SubDetail obj) {
+    writer
+      ..writeByte(8)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.subDetailSequence)
+      ..writeByte(4)
+      ..write(obj.elementSubDetailSequence)
+      ..writeByte(5)
+      ..write(obj.noteNumber)
+      ..writeByte(6)
+      ..write(obj.elementNoteNumber)
+      ..writeByte(7)
+      ..write(obj.adjudication);
+  }
+}
+
+class ClaimResponse_AddItemAdapter extends TypeAdapter<ClaimResponse_AddItem> {
+  @override
+  final typeId = 132;
+
+  @override
+  ClaimResponse_AddItem read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ClaimResponse_AddItem(
+      fields[10] as CodeableConcept,
+      (fields[28] as List)?.cast<ClaimResponse_Adjudication>(),
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      itemSequence: (fields[3] as List)?.cast<int>(),
+      elementItemSequence: (fields[4] as List)?.cast<Element>(),
+      detailSequence: (fields[5] as List)?.cast<int>(),
+      elementDetailSequence: (fields[6] as List)?.cast<Element>(),
+      subdetailSequence: (fields[7] as List)?.cast<int>(),
+      elementSubdetailSequence: (fields[8] as List)?.cast<Element>(),
+      provider: (fields[9] as List)?.cast<Reference>(),
+      modifier: (fields[11] as List)?.cast<CodeableConcept>(),
+      programCode: (fields[12] as List)?.cast<CodeableConcept>(),
+      servicedDate: fields[13] as String,
+      elementServicedDate: fields[14] as Element,
+      servicedPeriod: fields[15] as Period,
+      locationCodeableConcept: fields[16] as CodeableConcept,
+      locationAddress: fields[17] as Address,
+      locationReference: fields[18] as Reference,
+      quantity: fields[19] as Quantity,
+      unitPrice: fields[20] as Money,
+      factor: fields[21] as double,
+      elementFactor: fields[22] as Element,
+      net: fields[23] as Money,
+      bodySite: fields[24] as CodeableConcept,
+      subSite: (fields[25] as List)?.cast<CodeableConcept>(),
+      noteNumber: (fields[26] as List)?.cast<int>(),
+      elementNoteNumber: (fields[27] as List)?.cast<Element>(),
+      detail: (fields[29] as List)?.cast<ClaimResponse_Detail1>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ClaimResponse_AddItem obj) {
+    writer
+      ..writeByte(30)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.itemSequence)
+      ..writeByte(4)
+      ..write(obj.elementItemSequence)
+      ..writeByte(5)
+      ..write(obj.detailSequence)
+      ..writeByte(6)
+      ..write(obj.elementDetailSequence)
+      ..writeByte(7)
+      ..write(obj.subdetailSequence)
+      ..writeByte(8)
+      ..write(obj.elementSubdetailSequence)
+      ..writeByte(9)
+      ..write(obj.provider)
+      ..writeByte(10)
+      ..write(obj.productOrService)
+      ..writeByte(11)
+      ..write(obj.modifier)
+      ..writeByte(12)
+      ..write(obj.programCode)
+      ..writeByte(13)
+      ..write(obj.servicedDate)
+      ..writeByte(14)
+      ..write(obj.elementServicedDate)
+      ..writeByte(15)
+      ..write(obj.servicedPeriod)
+      ..writeByte(16)
+      ..write(obj.locationCodeableConcept)
+      ..writeByte(17)
+      ..write(obj.locationAddress)
+      ..writeByte(18)
+      ..write(obj.locationReference)
+      ..writeByte(19)
+      ..write(obj.quantity)
+      ..writeByte(20)
+      ..write(obj.unitPrice)
+      ..writeByte(21)
+      ..write(obj.factor)
+      ..writeByte(22)
+      ..write(obj.elementFactor)
+      ..writeByte(23)
+      ..write(obj.net)
+      ..writeByte(24)
+      ..write(obj.bodySite)
+      ..writeByte(25)
+      ..write(obj.subSite)
+      ..writeByte(26)
+      ..write(obj.noteNumber)
+      ..writeByte(27)
+      ..write(obj.elementNoteNumber)
+      ..writeByte(28)
+      ..write(obj.adjudication)
+      ..writeByte(29)
+      ..write(obj.detail);
+  }
+}
+
+class ClaimResponse_Detail1Adapter extends TypeAdapter<ClaimResponse_Detail1> {
+  @override
+  final typeId = 133;
+
+  @override
+  ClaimResponse_Detail1 read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ClaimResponse_Detail1(
+      fields[3] as CodeableConcept,
+      (fields[12] as List)?.cast<ClaimResponse_Adjudication>(),
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      modifier: (fields[4] as List)?.cast<CodeableConcept>(),
+      quantity: fields[5] as Quantity,
+      unitPrice: fields[6] as Money,
+      factor: fields[7] as double,
+      elementFactor: fields[8] as Element,
+      net: fields[9] as Money,
+      noteNumber: (fields[10] as List)?.cast<int>(),
+      elementNoteNumber: (fields[11] as List)?.cast<Element>(),
+      subDetail: (fields[13] as List)?.cast<ClaimResponse_SubDetail1>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ClaimResponse_Detail1 obj) {
+    writer
+      ..writeByte(14)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.productOrService)
+      ..writeByte(4)
+      ..write(obj.modifier)
+      ..writeByte(5)
+      ..write(obj.quantity)
+      ..writeByte(6)
+      ..write(obj.unitPrice)
+      ..writeByte(7)
+      ..write(obj.factor)
+      ..writeByte(8)
+      ..write(obj.elementFactor)
+      ..writeByte(9)
+      ..write(obj.net)
+      ..writeByte(10)
+      ..write(obj.noteNumber)
+      ..writeByte(11)
+      ..write(obj.elementNoteNumber)
+      ..writeByte(12)
+      ..write(obj.adjudication)
+      ..writeByte(13)
+      ..write(obj.subDetail);
+  }
+}
+
+class ClaimResponse_SubDetail1Adapter
+    extends TypeAdapter<ClaimResponse_SubDetail1> {
+  @override
+  final typeId = 134;
+
+  @override
+  ClaimResponse_SubDetail1 read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ClaimResponse_SubDetail1(
+      fields[3] as CodeableConcept,
+      (fields[12] as List)?.cast<ClaimResponse_Adjudication>(),
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      modifier: (fields[4] as List)?.cast<CodeableConcept>(),
+      quantity: fields[5] as Quantity,
+      unitPrice: fields[6] as Money,
+      factor: fields[7] as double,
+      elementFactor: fields[8] as Element,
+      net: fields[9] as Money,
+      noteNumber: (fields[10] as List)?.cast<int>(),
+      elementNoteNumber: (fields[11] as List)?.cast<Element>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ClaimResponse_SubDetail1 obj) {
+    writer
+      ..writeByte(13)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.productOrService)
+      ..writeByte(4)
+      ..write(obj.modifier)
+      ..writeByte(5)
+      ..write(obj.quantity)
+      ..writeByte(6)
+      ..write(obj.unitPrice)
+      ..writeByte(7)
+      ..write(obj.factor)
+      ..writeByte(8)
+      ..write(obj.elementFactor)
+      ..writeByte(9)
+      ..write(obj.net)
+      ..writeByte(10)
+      ..write(obj.noteNumber)
+      ..writeByte(11)
+      ..write(obj.elementNoteNumber)
+      ..writeByte(12)
+      ..write(obj.adjudication);
+  }
+}
+
+class ClaimResponse_TotalAdapter extends TypeAdapter<ClaimResponse_Total> {
+  @override
+  final typeId = 135;
+
+  @override
+  ClaimResponse_Total read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ClaimResponse_Total(
+      fields[3] as CodeableConcept,
+      fields[4] as Money,
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ClaimResponse_Total obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.category)
+      ..writeByte(4)
+      ..write(obj.amount);
+  }
+}
+
+class ClaimResponse_PaymentAdapter extends TypeAdapter<ClaimResponse_Payment> {
+  @override
+  final typeId = 136;
+
+  @override
+  ClaimResponse_Payment read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ClaimResponse_Payment(
+      fields[3] as CodeableConcept,
+      fields[8] as Money,
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      adjustment: fields[4] as Money,
+      adjustmentReason: fields[5] as CodeableConcept,
+      date: fields[6] as String,
+      elementDate: fields[7] as Element,
+      identifier: fields[9] as Identifier,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ClaimResponse_Payment obj) {
+    writer
+      ..writeByte(10)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.type)
+      ..writeByte(4)
+      ..write(obj.adjustment)
+      ..writeByte(5)
+      ..write(obj.adjustmentReason)
+      ..writeByte(6)
+      ..write(obj.date)
+      ..writeByte(7)
+      ..write(obj.elementDate)
+      ..writeByte(8)
+      ..write(obj.amount)
+      ..writeByte(9)
+      ..write(obj.identifier);
+  }
+}
+
+class ClaimResponse_ProcessNoteAdapter
+    extends TypeAdapter<ClaimResponse_ProcessNote> {
+  @override
+  final typeId = 137;
+
+  @override
+  ClaimResponse_ProcessNote read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ClaimResponse_ProcessNote(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      number: fields[3] as int,
+      elementNumber: fields[4] as Element,
+      type: fields[5] as String,
+      elementType: fields[6] as Element,
+      text: fields[7] as String,
+      elementText: fields[8] as Element,
+      language: fields[9] as CodeableConcept,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ClaimResponse_ProcessNote obj) {
+    writer
+      ..writeByte(10)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.number)
+      ..writeByte(4)
+      ..write(obj.elementNumber)
+      ..writeByte(5)
+      ..write(obj.type)
+      ..writeByte(6)
+      ..write(obj.elementType)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.elementText)
+      ..writeByte(9)
+      ..write(obj.language);
+  }
+}
+
+class ClaimResponse_InsuranceAdapter
+    extends TypeAdapter<ClaimResponse_Insurance> {
+  @override
+  final typeId = 138;
+
+  @override
+  ClaimResponse_Insurance read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ClaimResponse_Insurance(
+      fields[7] as Reference,
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      sequence: fields[3] as int,
+      elementSequence: fields[4] as Element,
+      focal: fields[5] as bool,
+      elementFocal: fields[6] as Element,
+      businessArrangement: fields[8] as String,
+      elementBusinessArrangement: fields[9] as Element,
+      claimResponse: fields[10] as Reference,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ClaimResponse_Insurance obj) {
+    writer
+      ..writeByte(11)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.sequence)
+      ..writeByte(4)
+      ..write(obj.elementSequence)
+      ..writeByte(5)
+      ..write(obj.focal)
+      ..writeByte(6)
+      ..write(obj.elementFocal)
+      ..writeByte(7)
+      ..write(obj.coverage)
+      ..writeByte(8)
+      ..write(obj.businessArrangement)
+      ..writeByte(9)
+      ..write(obj.elementBusinessArrangement)
+      ..writeByte(10)
+      ..write(obj.claimResponse);
+  }
+}
+
+class ClaimResponse_ErrorAdapter extends TypeAdapter<ClaimResponse_Error> {
+  @override
+  final typeId = 139;
+
+  @override
+  ClaimResponse_Error read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return ClaimResponse_Error(
+      fields[9] as CodeableConcept,
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      itemSequence: fields[3] as int,
+      elementItemSequence: fields[4] as Element,
+      detailSequence: fields[5] as int,
+      elementDetailSequence: fields[6] as Element,
+      subDetailSequence: fields[7] as int,
+      elementSubDetailSequence: fields[8] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, ClaimResponse_Error obj) {
+    writer
+      ..writeByte(10)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.itemSequence)
+      ..writeByte(4)
+      ..write(obj.elementItemSequence)
+      ..writeByte(5)
+      ..write(obj.detailSequence)
+      ..writeByte(6)
+      ..write(obj.elementDetailSequence)
+      ..writeByte(7)
+      ..write(obj.subDetailSequence)
+      ..writeByte(8)
+      ..write(obj.elementSubDetailSequence)
+      ..writeByte(9)
+      ..write(obj.code);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

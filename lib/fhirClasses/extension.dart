@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/fhirClasses/meta.dart';
@@ -34,79 +35,352 @@ import 'package:flutter_fhir/fhirClasses/address.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 1)
 class Extension {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  Source of the definition for the extension code - a logical name or a
+  // URL.
+  @HiveField(2)
   String url;
+
+  //  Extensions for url
+  @HiveField(3)
   Element elementUrl;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(4)
   String valueBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
+
+  //  Extensions for valueBase64Binary
+  @HiveField(5)
   Element elementValueBase64Binary;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(6)
   bool valueBoolean; //  pattern: ^true|false$
+
+  //  Extensions for valueBoolean
+  @HiveField(7)
   Element elementValueBoolean;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(8)
   String valueCanonical; //  pattern: ^\S*$
+
+  //  Extensions for valueCanonical
+  @HiveField(9)
   Element elementValueCanonical;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(10)
   String valueCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
+
+  //  Extensions for valueCode
+  @HiveField(11)
   Element elementValueCode;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(12)
   String valueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
+
+  //  Extensions for valueDate
+  @HiveField(13)
   Element elementValueDate;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(14)
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
+
+  //  Extensions for valueDateTime
+  @HiveField(15)
   Element elementValueDateTime;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
   double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
+
+  //  Extensions for valueDecimal
+  @HiveField(17)
   Element elementValueDecimal;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(18)
   String valueId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
+
+  //  Extensions for valueId
+  @HiveField(19)
   Element elementValueId;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(20)
   String valueInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
+
+  //  Extensions for valueInstant
+  @HiveField(21)
   Element elementValueInstant;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
+
+  //  Extensions for valueInteger
+  @HiveField(23)
   Element elementValueInteger;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(24)
   String valueMarkdown; //  pattern: ^[ \r\n\t\S]+$
+
+  //  Extensions for valueMarkdown
+  @HiveField(25)
   Element elementValueMarkdown;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(26)
   String valueOid; //  pattern: ^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$
+
+  //  Extensions for valueOid
+  @HiveField(27)
   Element elementValueOid;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
   int valuePositiveInt; //  pattern: ^[1-9][0-9]*$
+
+  //  Extensions for valuePositiveInt
+  @HiveField(29)
   Element elementValuePositiveInt;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(30)
   String valueString; //  pattern: ^[ \r\n\t\S]+$
+
+  //  Extensions for valueString
+  @HiveField(31)
   Element elementValueString;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(32)
   String valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
+
+  //  Extensions for valueTime
+  @HiveField(33)
   Element elementValueTime;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
   int valueUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
+
+  //  Extensions for valueUnsignedInt
+  @HiveField(35)
   Element elementValueUnsignedInt;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(36)
   String valueUri; //  pattern: ^\S*$
+
+  //  Extensions for valueUri
+  @HiveField(37)
   Element elementValueUri;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(38)
   String valueUrl; //  pattern: ^\S*$
+
+  //  Extensions for valueUrl
+  @HiveField(39)
   Element elementValueUrl;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(40)
   String valueUuid; //  pattern: ^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
+
+  //  Extensions for valueUuid
+  @HiveField(41)
   Element elementValueUuid;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(42)
   Address valueAddress;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(43)
   Age valueAge;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(44)
   Annotation valueAnnotation;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(45)
   Attachment valueAttachment;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(46)
   CodeableConcept valueCodeableConcept;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(47)
   Coding valueCoding;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(48)
   ContactPoint valueContactPoint;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(49)
   Count valueCount;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(50)
   Distance valueDistance;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(51)
   Duration valueDuration;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(52)
   HumanName valueHumanName;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(53)
   Identifier valueIdentifier;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(54)
   Money valueMoney;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(55)
   Period valuePeriod;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(56)
   Quantity valueQuantity;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(57)
   Range valueRange;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(58)
   Ratio valueRatio;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(59)
   Reference valueReference;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(60)
   SampledData valueSampledData;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(61)
   Signature valueSignature;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(62)
   Timing valueTiming;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(63)
   ContactDetail valueContactDetail;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(64)
   Contributor valueContributor;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(65)
   DataRequirement valueDataRequirement;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(66)
   Expression valueExpression;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(67)
   ParameterDefinition valueParameterDefinition;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(68)
   RelatedArtifact valueRelatedArtifact;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(69)
   TriggerDefinition valueTriggerDefinition;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(70)
   UsageContext valueUsageContext;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(71)
   Dosage valueDosage;
+
+  //  Value of extension - must be one of a constrained set of the data
+  // types (see [Extensibility](extensibility.html) for a list).
+  @HiveField(72)
   Meta valueMeta;
 
 Extension(
@@ -191,6 +465,238 @@ Extension(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class ExtensionAdapter extends TypeAdapter<Extension> {
+  @override
+  final typeId = 1;
+
+  @override
+  Extension read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return Extension(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      url: fields[2] as String,
+      elementUrl: fields[3] as Element,
+      valueBase64Binary: fields[4] as String,
+      elementValueBase64Binary: fields[5] as Element,
+      valueBoolean: fields[6] as bool,
+      elementValueBoolean: fields[7] as Element,
+      valueCanonical: fields[8] as String,
+      elementValueCanonical: fields[9] as Element,
+      valueCode: fields[10] as String,
+      elementValueCode: fields[11] as Element,
+      valueDate: fields[12] as String,
+      elementValueDate: fields[13] as Element,
+      valueDateTime: fields[14] as String,
+      elementValueDateTime: fields[15] as Element,
+      elementValueDecimal: fields[17] as Element,
+      valueId: fields[18] as String,
+      elementValueId: fields[19] as Element,
+      valueInstant: fields[20] as String,
+      elementValueInstant: fields[21] as Element,
+      elementValueInteger: fields[23] as Element,
+      valueMarkdown: fields[24] as String,
+      elementValueMarkdown: fields[25] as Element,
+      valueOid: fields[26] as String,
+      elementValueOid: fields[27] as Element,
+      elementValuePositiveInt: fields[29] as Element,
+      valueString: fields[30] as String,
+      elementValueString: fields[31] as Element,
+      valueTime: fields[32] as String,
+      elementValueTime: fields[33] as Element,
+      elementValueUnsignedInt: fields[35] as Element,
+      valueUri: fields[36] as String,
+      elementValueUri: fields[37] as Element,
+      valueUrl: fields[38] as String,
+      elementValueUrl: fields[39] as Element,
+      valueUuid: fields[40] as String,
+      elementValueUuid: fields[41] as Element,
+      valueAddress: fields[42] as Address,
+      valueAge: fields[43] as Age,
+      valueAnnotation: fields[44] as Annotation,
+      valueAttachment: fields[45] as Attachment,
+      valueCodeableConcept: fields[46] as CodeableConcept,
+      valueCoding: fields[47] as Coding,
+      valueContactPoint: fields[48] as ContactPoint,
+      valueCount: fields[49] as Count,
+      valueDistance: fields[50] as Distance,
+      valueDuration: fields[51] as Duration,
+      valueHumanName: fields[52] as HumanName,
+      valueIdentifier: fields[53] as Identifier,
+      valueMoney: fields[54] as Money,
+      valuePeriod: fields[55] as Period,
+      valueQuantity: fields[56] as Quantity,
+      valueRange: fields[57] as Range,
+      valueRatio: fields[58] as Ratio,
+      valueReference: fields[59] as Reference,
+      valueSampledData: fields[60] as SampledData,
+      valueSignature: fields[61] as Signature,
+      valueTiming: fields[62] as Timing,
+      valueContactDetail: fields[63] as ContactDetail,
+      valueContributor: fields[64] as Contributor,
+      valueDataRequirement: fields[65] as DataRequirement,
+      valueExpression: fields[66] as Expression,
+      valueParameterDefinition: fields[67] as ParameterDefinition,
+      valueRelatedArtifact: fields[68] as RelatedArtifact,
+      valueTriggerDefinition: fields[69] as TriggerDefinition,
+      valueUsageContext: fields[70] as UsageContext,
+      valueDosage: fields[71] as Dosage,
+      valueMeta: fields[72] as Meta,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, Extension obj) {
+    writer
+      ..writeByte(69)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.url)
+      ..writeByte(3)
+      ..write(obj.elementUrl)
+      ..writeByte(4)
+      ..write(obj.valueBase64Binary)
+      ..writeByte(5)
+      ..write(obj.elementValueBase64Binary)
+      ..writeByte(6)
+      ..write(obj.valueBoolean)
+      ..writeByte(7)
+      ..write(obj.elementValueBoolean)
+      ..writeByte(8)
+      ..write(obj.valueCanonical)
+      ..writeByte(9)
+      ..write(obj.elementValueCanonical)
+      ..writeByte(10)
+      ..write(obj.valueCode)
+      ..writeByte(11)
+      ..write(obj.elementValueCode)
+      ..writeByte(12)
+      ..write(obj.valueDate)
+      ..writeByte(13)
+      ..write(obj.elementValueDate)
+      ..writeByte(14)
+      ..write(obj.valueDateTime)
+      ..writeByte(15)
+      ..write(obj.elementValueDateTime)
+      ..writeByte(17)
+      ..write(obj.elementValueDecimal)
+      ..writeByte(18)
+      ..write(obj.valueId)
+      ..writeByte(19)
+      ..write(obj.elementValueId)
+      ..writeByte(20)
+      ..write(obj.valueInstant)
+      ..writeByte(21)
+      ..write(obj.elementValueInstant)
+      ..writeByte(23)
+      ..write(obj.elementValueInteger)
+      ..writeByte(24)
+      ..write(obj.valueMarkdown)
+      ..writeByte(25)
+      ..write(obj.elementValueMarkdown)
+      ..writeByte(26)
+      ..write(obj.valueOid)
+      ..writeByte(27)
+      ..write(obj.elementValueOid)
+      ..writeByte(29)
+      ..write(obj.elementValuePositiveInt)
+      ..writeByte(30)
+      ..write(obj.valueString)
+      ..writeByte(31)
+      ..write(obj.elementValueString)
+      ..writeByte(32)
+      ..write(obj.valueTime)
+      ..writeByte(33)
+      ..write(obj.elementValueTime)
+      ..writeByte(35)
+      ..write(obj.elementValueUnsignedInt)
+      ..writeByte(36)
+      ..write(obj.valueUri)
+      ..writeByte(37)
+      ..write(obj.elementValueUri)
+      ..writeByte(38)
+      ..write(obj.valueUrl)
+      ..writeByte(39)
+      ..write(obj.elementValueUrl)
+      ..writeByte(40)
+      ..write(obj.valueUuid)
+      ..writeByte(41)
+      ..write(obj.elementValueUuid)
+      ..writeByte(42)
+      ..write(obj.valueAddress)
+      ..writeByte(43)
+      ..write(obj.valueAge)
+      ..writeByte(44)
+      ..write(obj.valueAnnotation)
+      ..writeByte(45)
+      ..write(obj.valueAttachment)
+      ..writeByte(46)
+      ..write(obj.valueCodeableConcept)
+      ..writeByte(47)
+      ..write(obj.valueCoding)
+      ..writeByte(48)
+      ..write(obj.valueContactPoint)
+      ..writeByte(49)
+      ..write(obj.valueCount)
+      ..writeByte(50)
+      ..write(obj.valueDistance)
+      ..writeByte(51)
+      ..write(obj.valueDuration)
+      ..writeByte(52)
+      ..write(obj.valueHumanName)
+      ..writeByte(53)
+      ..write(obj.valueIdentifier)
+      ..writeByte(54)
+      ..write(obj.valueMoney)
+      ..writeByte(55)
+      ..write(obj.valuePeriod)
+      ..writeByte(56)
+      ..write(obj.valueQuantity)
+      ..writeByte(57)
+      ..write(obj.valueRange)
+      ..writeByte(58)
+      ..write(obj.valueRatio)
+      ..writeByte(59)
+      ..write(obj.valueReference)
+      ..writeByte(60)
+      ..write(obj.valueSampledData)
+      ..writeByte(61)
+      ..write(obj.valueSignature)
+      ..writeByte(62)
+      ..write(obj.valueTiming)
+      ..writeByte(63)
+      ..write(obj.valueContactDetail)
+      ..writeByte(64)
+      ..write(obj.valueContributor)
+      ..writeByte(65)
+      ..write(obj.valueDataRequirement)
+      ..writeByte(66)
+      ..write(obj.valueExpression)
+      ..writeByte(67)
+      ..write(obj.valueParameterDefinition)
+      ..writeByte(68)
+      ..write(obj.valueRelatedArtifact)
+      ..writeByte(69)
+      ..write(obj.valueTriggerDefinition)
+      ..writeByte(70)
+      ..write(obj.valueUsageContext)
+      ..writeByte(71)
+      ..write(obj.valueDosage)
+      ..writeByte(72)
+      ..write(obj.valueMeta);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

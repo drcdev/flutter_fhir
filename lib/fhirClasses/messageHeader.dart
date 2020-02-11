@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:flutter_fhir/fhirClasses/contactPoint.dart';
@@ -11,30 +12,152 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 430)
 class MessageHeader {
+
+  //  This is a MessageHeader resource
+  @HiveField(0)
   final String resourceType= 'MessageHeader';
+
+  //  The logical id of the resource, as used in the URL for the resource.
+  // Once assigned, this value never changes.
+  @HiveField(1)
   String id;
+
+  //  The metadata about the resource. This is content that is maintained by
+  // the infrastructure. Changes to the content might not always be
+  // associated with version changes to the resource.
+  @HiveField(2)
   Meta meta;
+
+  //  A reference to a set of rules that were followed when the resource was
+  // constructed, and which must be understood when processing the content.
+  // Often, this is a reference to an implementation guide that defines the
+  // special rules along with other profiles etc.
+  @HiveField(3)
   String implicitRules;
+
+  //  Extensions for implicitRules
+  @HiveField(4)
   Element elementImplicitRules;
+
+  //  The base language in which the resource is written.
+  @HiveField(5)
   String language;
+
+  //  Extensions for language
+  @HiveField(6)
   Element elementLanguage;
+
+  //  A human-readable narrative that contains a summary of the resource and
+  // can be used to represent the content of the resource to a human. The
+  // narrative need not encode all the structured data, but is required to
+  // contain sufficient detail to make it "clinically safe" for a human to
+  // just read the narrative. Resource definitions may define what content
+  // should be represented in the narrative to ensure clinical safety.
+  @HiveField(7)
   Narrative text;
+
+  //  These resources do not have an independent existence apart from the
+  // resource that contains them - they cannot be identified independently,
+  // and nor can they have their own independent transaction scope.
+  @HiveField(8)
   List<dynamic> contained;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource. To make the use of extensions
+  // safe and manageable, there is a strict set of governance  applied to
+  // the definition and use of extensions. Though any implementer can define
+  // an extension, there is a set of requirements that SHALL be met as part
+  // of the definition of the extension.
+  @HiveField(9)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the resource and that modifies the
+  // understanding of the element that contains it and/or the understanding
+  // of the containing element's descendants. Usually modifier elements
+  // provide negation or qualification. To make the use of extensions safe
+  // and manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer is allowed to
+  // define an extension, there is a set of requirements that SHALL be met
+  // as part of the definition of the extension. Applications processing a
+  // resource are required to check for modifier extensions. Modifier
+  // extensions SHALL NOT change the meaning of any elements on Resource or
+  // DomainResource (including cannot change the meaning of
+  // modifierExtension itself).
+  @HiveField(10)
   List<Extension> modifierExtension;
+
+  //  Code that identifies the event this message represents and connects it
+  // with its definition. Events defined as part of the FHIR specification
+  // have the system value
+  // "http://terminology.hl7.org/CodeSystem/message-events".  Alternatively
+  // uri to the EventDefinition.
+  @HiveField(11)
   Coding eventCoding;
+
+  //  Code that identifies the event this message represents and connects it
+  // with its definition. Events defined as part of the FHIR specification
+  // have the system value
+  // "http://terminology.hl7.org/CodeSystem/message-events".  Alternatively
+  // uri to the EventDefinition.
+  @HiveField(12)
   String eventUri; //  pattern: ^\S*$
+
+  //  Extensions for eventUri
+  @HiveField(13)
   Element elementEventUri;
+
+  //  The destination application which the message is intended for.
+  @HiveField(14)
   List<MessageHeader_Destination> destination;
+
+  //  Identifies the sending system to allow the use of a trust
+  // relationship.
+  @HiveField(15)
   Reference sender;
+
+  //  The person or device that performed the data entry leading to this
+  // message. When there is more than one candidate, pick the most proximal
+  // to the message. Can provide other enterers in extensions.
+  @HiveField(16)
   Reference enterer;
+
+  //  The logical author of the message - the person or device that decided
+  // the described event should happen. When there is more than one
+  // candidate, pick the most proximal to the MessageHeader. Can provide
+  // other authors in extensions.
+  @HiveField(17)
   Reference author;
+
+  //  The source application from which this message originated.
+  @HiveField(18)
   MessageHeader_Source source;
+
+  //  The person or organization that accepts overall responsibility for the
+  // contents of the message. The implication is that the message event
+  // happened under the policies of the responsible party.
+  @HiveField(19)
   Reference responsible;
+
+  //  Coded indication of the cause for the event - indicates  a reason for
+  // the occurrence of the event that is a focus of this message.
+  @HiveField(20)
   CodeableConcept reason;
+
+  //  Information about the message that this message is a response to. 
+  // Only present if this message is a response.
+  @HiveField(21)
   MessageHeader_Response response;
+
+  //  The actual data of the message - a reference to the root/focus class
+  // of the event.
+  @HiveField(22)
   List<Reference> focus;
+
+  //  Permanent link to the MessageDefinition for this message.
+  @HiveField(23)
   String definition;
 
 MessageHeader(
@@ -68,15 +191,63 @@ MessageHeader(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 431)
 class MessageHeader_Destination {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Human-readable name for the target system.
+  @HiveField(3)
   String name;
+
+  //  Extensions for name
+  @HiveField(4)
   Element elementName;
+
+  //  Identifies the target end system in situations where the initial
+  // message transmission is to an intermediary system.
+  @HiveField(5)
   Reference target;
+
+  //  Indicates where the message should be routed to.
+  @HiveField(6)
   String endpoint;
+
+  //  Extensions for endpoint
+  @HiveField(7)
   Element elementEndpoint;
+
+  //  Allows data conveyed by a message to be addressed to a particular
+  // person or department when routing to a specific application isn't
+  // sufficient.
+  @HiveField(8)
   Reference receiver;
 
 MessageHeader_Destination(
@@ -96,18 +267,74 @@ MessageHeader_Destination(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 432)
 class MessageHeader_Source {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  Human-readable name for the source system.
+  @HiveField(3)
   String name;
+
+  //  Extensions for name
+  @HiveField(4)
   Element elementName;
+
+  //  May include configuration or other information useful in debugging.
+  @HiveField(5)
   String software;
+
+  //  Extensions for software
+  @HiveField(6)
   Element elementSoftware;
+
+  //  Can convey versions of multiple systems in situations where a message
+  // passes through multiple hands.
+  @HiveField(7)
   String version;
+
+  //  Extensions for version
+  @HiveField(8)
   Element elementVersion;
+
+  //  An e-mail, phone, website or other contact point to use to resolve
+  // issues with message communications.
+  @HiveField(9)
   ContactPoint contact;
+
+  //  Identifies the routing target to send acknowledgements to.
+  @HiveField(10)
   String endpoint;
+
+  //  Extensions for endpoint
+  @HiveField(11)
   Element elementEndpoint;
 
 MessageHeader_Source(
@@ -130,14 +357,58 @@ MessageHeader_Source(
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 433)
 class MessageHeader_Response {
+
+  //  Unique id for the element within a resource (for internal references).
+  // This may be any string value that does not contain spaces.
+  @HiveField(0)
   String id;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element. To make the use of extensions safe
+  // and manageable, there is a strict set of governance  applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension.
+  @HiveField(1)
   List<Extension> extension;
+
+  //  May be used to represent additional information that is not part of
+  // the basic definition of the element and that modifies the understanding
+  // of the element in which it is contained and/or the understanding of the
+  // containing element's descendants. Usually modifier elements provide
+  // negation or qualification. To make the use of extensions safe and
+  // manageable, there is a strict set of governance applied to the
+  // definition and use of extensions. Though any implementer can define an
+  // extension, there is a set of requirements that SHALL be met as part of
+  // the definition of the extension. Applications processing a resource are
+  // required to check for modifier extensions. Modifier extensions SHALL
+  // NOT change the meaning of any elements on Resource or DomainResource
+  // (including cannot change the meaning of modifierExtension itself).
+  @HiveField(2)
   List<Extension> modifierExtension;
+
+  //  The MessageHeader.id of the message to which this message is a
+  // response.
+  @HiveField(3)
   String identifier;
+
+  //  Extensions for identifier
+  @HiveField(4)
   Element elementIdentifier;
+
+  //  Code that identifies the type of response to the message - whether it
+  // was successful or not, and whether it should be resent or not.
+  @HiveField(5)
   String code; // <code> enum: ok/transient-error/fatal-error;
+
+  //  Extensions for code
+  @HiveField(6)
   Element elementCode;
+
+  //  Full details of any issues found in the message.
+  @HiveField(7)
   Reference details;
 
 MessageHeader_Response(
@@ -157,6 +428,254 @@ MessageHeader_Response(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class MessageHeaderAdapter extends TypeAdapter<MessageHeader> {
+  @override
+  final typeId = 430;
+
+  @override
+  MessageHeader read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MessageHeader(
+      fields[18] as MessageHeader_Source,
+      id: fields[1] as String,
+      meta: fields[2] as Meta,
+      implicitRules: fields[3] as String,
+      elementImplicitRules: fields[4] as Element,
+      language: fields[5] as String,
+      elementLanguage: fields[6] as Element,
+      text: fields[7] as Narrative,
+      contained: (fields[8] as List)?.cast<dynamic>(),
+      extension: (fields[9] as List)?.cast<Extension>(),
+      modifierExtension: (fields[10] as List)?.cast<Extension>(),
+      eventCoding: fields[11] as Coding,
+      eventUri: fields[12] as String,
+      elementEventUri: fields[13] as Element,
+      destination: (fields[14] as List)?.cast<MessageHeader_Destination>(),
+      sender: fields[15] as Reference,
+      enterer: fields[16] as Reference,
+      author: fields[17] as Reference,
+      responsible: fields[19] as Reference,
+      reason: fields[20] as CodeableConcept,
+      response: fields[21] as MessageHeader_Response,
+      focus: (fields[22] as List)?.cast<Reference>(),
+      definition: fields[23] as String,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MessageHeader obj) {
+    writer
+      ..writeByte(24)
+      ..writeByte(0)
+      ..write(obj.resourceType)
+      ..writeByte(1)
+      ..write(obj.id)
+      ..writeByte(2)
+      ..write(obj.meta)
+      ..writeByte(3)
+      ..write(obj.implicitRules)
+      ..writeByte(4)
+      ..write(obj.elementImplicitRules)
+      ..writeByte(5)
+      ..write(obj.language)
+      ..writeByte(6)
+      ..write(obj.elementLanguage)
+      ..writeByte(7)
+      ..write(obj.text)
+      ..writeByte(8)
+      ..write(obj.contained)
+      ..writeByte(9)
+      ..write(obj.extension)
+      ..writeByte(10)
+      ..write(obj.modifierExtension)
+      ..writeByte(11)
+      ..write(obj.eventCoding)
+      ..writeByte(12)
+      ..write(obj.eventUri)
+      ..writeByte(13)
+      ..write(obj.elementEventUri)
+      ..writeByte(14)
+      ..write(obj.destination)
+      ..writeByte(15)
+      ..write(obj.sender)
+      ..writeByte(16)
+      ..write(obj.enterer)
+      ..writeByte(17)
+      ..write(obj.author)
+      ..writeByte(18)
+      ..write(obj.source)
+      ..writeByte(19)
+      ..write(obj.responsible)
+      ..writeByte(20)
+      ..write(obj.reason)
+      ..writeByte(21)
+      ..write(obj.response)
+      ..writeByte(22)
+      ..write(obj.focus)
+      ..writeByte(23)
+      ..write(obj.definition);
+  }
+}
+
+class MessageHeader_DestinationAdapter
+    extends TypeAdapter<MessageHeader_Destination> {
+  @override
+  final typeId = 431;
+
+  @override
+  MessageHeader_Destination read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MessageHeader_Destination(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      name: fields[3] as String,
+      elementName: fields[4] as Element,
+      target: fields[5] as Reference,
+      endpoint: fields[6] as String,
+      elementEndpoint: fields[7] as Element,
+      receiver: fields[8] as Reference,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MessageHeader_Destination obj) {
+    writer
+      ..writeByte(9)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.name)
+      ..writeByte(4)
+      ..write(obj.elementName)
+      ..writeByte(5)
+      ..write(obj.target)
+      ..writeByte(6)
+      ..write(obj.endpoint)
+      ..writeByte(7)
+      ..write(obj.elementEndpoint)
+      ..writeByte(8)
+      ..write(obj.receiver);
+  }
+}
+
+class MessageHeader_SourceAdapter extends TypeAdapter<MessageHeader_Source> {
+  @override
+  final typeId = 432;
+
+  @override
+  MessageHeader_Source read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MessageHeader_Source(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      name: fields[3] as String,
+      elementName: fields[4] as Element,
+      software: fields[5] as String,
+      elementSoftware: fields[6] as Element,
+      version: fields[7] as String,
+      elementVersion: fields[8] as Element,
+      contact: fields[9] as ContactPoint,
+      endpoint: fields[10] as String,
+      elementEndpoint: fields[11] as Element,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MessageHeader_Source obj) {
+    writer
+      ..writeByte(12)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.name)
+      ..writeByte(4)
+      ..write(obj.elementName)
+      ..writeByte(5)
+      ..write(obj.software)
+      ..writeByte(6)
+      ..write(obj.elementSoftware)
+      ..writeByte(7)
+      ..write(obj.version)
+      ..writeByte(8)
+      ..write(obj.elementVersion)
+      ..writeByte(9)
+      ..write(obj.contact)
+      ..writeByte(10)
+      ..write(obj.endpoint)
+      ..writeByte(11)
+      ..write(obj.elementEndpoint);
+  }
+}
+
+class MessageHeader_ResponseAdapter
+    extends TypeAdapter<MessageHeader_Response> {
+  @override
+  final typeId = 433;
+
+  @override
+  MessageHeader_Response read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return MessageHeader_Response(
+      id: fields[0] as String,
+      extension: (fields[1] as List)?.cast<Extension>(),
+      modifierExtension: (fields[2] as List)?.cast<Extension>(),
+      identifier: fields[3] as String,
+      elementIdentifier: fields[4] as Element,
+      code: fields[5] as String,
+      elementCode: fields[6] as Element,
+      details: fields[7] as Reference,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, MessageHeader_Response obj) {
+    writer
+      ..writeByte(8)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.extension)
+      ..writeByte(2)
+      ..write(obj.modifierExtension)
+      ..writeByte(3)
+      ..write(obj.identifier)
+      ..writeByte(4)
+      ..write(obj.elementIdentifier)
+      ..writeByte(5)
+      ..write(obj.code)
+      ..writeByte(6)
+      ..write(obj.elementCode)
+      ..writeByte(7)
+      ..write(obj.details);
+  }
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
