@@ -372,12 +372,10 @@ EvidenceVariable(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 257)
 class EvidenceVariable_Characteristic {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -386,7 +384,6 @@ class EvidenceVariable_Characteristic {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -401,109 +398,88 @@ class EvidenceVariable_Characteristic {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A short, natural language description of the characteristic that could
   // be used to communicate the criteria to an end-user.
-  @HiveField(3)
   String description;
 
   //  Extensions for description
-  @HiveField(4)
   Element elementDescription;
 
   //  Define members of the evidence element using Codes (such as condition,
   // medication, or observation), Expressions ( using an expression language
   // such as FHIRPath or CQL) or DataRequirements (such as Diabetes
   // diagnosis onset in the last year).
-  @HiveField(5)
   Reference definitionReference;
 
   //  Define members of the evidence element using Codes (such as condition,
   // medication, or observation), Expressions ( using an expression language
   // such as FHIRPath or CQL) or DataRequirements (such as Diabetes
   // diagnosis onset in the last year).
-  @HiveField(6)
   String definitionCanonical; //  pattern: ^\S*$
 
   //  Extensions for definitionCanonical
-  @HiveField(7)
   Element elementDefinitionCanonical;
 
   //  Define members of the evidence element using Codes (such as condition,
   // medication, or observation), Expressions ( using an expression language
   // such as FHIRPath or CQL) or DataRequirements (such as Diabetes
   // diagnosis onset in the last year).
-  @HiveField(8)
   CodeableConcept definitionCodeableConcept;
 
   //  Define members of the evidence element using Codes (such as condition,
   // medication, or observation), Expressions ( using an expression language
   // such as FHIRPath or CQL) or DataRequirements (such as Diabetes
   // diagnosis onset in the last year).
-  @HiveField(9)
   Expression definitionExpression;
 
   //  Define members of the evidence element using Codes (such as condition,
   // medication, or observation), Expressions ( using an expression language
   // such as FHIRPath or CQL) or DataRequirements (such as Diabetes
   // diagnosis onset in the last year).
-  @HiveField(10)
   DataRequirement definitionDataRequirement;
 
   //  Define members of the evidence element using Codes (such as condition,
   // medication, or observation), Expressions ( using an expression language
   // such as FHIRPath or CQL) or DataRequirements (such as Diabetes
   // diagnosis onset in the last year).
-  @HiveField(11)
   TriggerDefinition definitionTriggerDefinition;
 
   //  Use UsageContext to define the members of the population, such as Age
   // Ranges, Genders, Settings.
-  @HiveField(12)
   List<UsageContext> usageContext;
 
   //  When true, members with this characteristic are excluded from the
   // element.
-  @HiveField(13)
   bool exclude;
 
   //  Extensions for exclude
-  @HiveField(14)
   Element elementExclude;
 
   //  Indicates what effective period the study covers.
-  @HiveField(15)
   String participantEffectiveDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for participantEffectiveDateTime
-  @HiveField(16)
   Element elementParticipantEffectiveDateTime;
 
   //  Indicates what effective period the study covers.
-  @HiveField(17)
   Period participantEffectivePeriod;
 
   //  Indicates what effective period the study covers.
-  @HiveField(18)
   Duration participantEffectiveDuration;
 
   //  Indicates what effective period the study covers.
-  @HiveField(19)
   Timing participantEffectiveTiming;
 
   //  Indicates duration from the participant's study entry.
-  @HiveField(20)
   Duration timeFromStart;
 
   //  Indicates how elements are aggregated within the study effective
   // period.
-  @HiveField(21)
   String groupMeasure; // <code> enum: mean/median/mean-of-mean/mean-of-median/median-of-mean/median-of-median;
 
   //  Extensions for groupMeasure
-  @HiveField(22)
   Element elementGroupMeasure;
 
 EvidenceVariable_Characteristic(
@@ -715,97 +691,6 @@ class EvidenceVariableAdapter extends TypeAdapter<EvidenceVariable> {
       ..write(obj.elementType)
       ..writeByte(51)
       ..write(obj.characteristic);
-  }
-}
-
-class EvidenceVariable_CharacteristicAdapter
-    extends TypeAdapter<EvidenceVariable_Characteristic> {
-  @override
-  final typeId = 257;
-
-  @override
-  EvidenceVariable_Characteristic read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return EvidenceVariable_Characteristic(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      description: fields[3] as String,
-      elementDescription: fields[4] as Element,
-      definitionReference: fields[5] as Reference,
-      definitionCanonical: fields[6] as String,
-      elementDefinitionCanonical: fields[7] as Element,
-      definitionCodeableConcept: fields[8] as CodeableConcept,
-      definitionExpression: fields[9] as Expression,
-      definitionDataRequirement: fields[10] as DataRequirement,
-      definitionTriggerDefinition: fields[11] as TriggerDefinition,
-      usageContext: (fields[12] as List)?.cast<UsageContext>(),
-      exclude: fields[13] as bool,
-      elementExclude: fields[14] as Element,
-      participantEffectiveDateTime: fields[15] as String,
-      elementParticipantEffectiveDateTime: fields[16] as Element,
-      participantEffectivePeriod: fields[17] as Period,
-      participantEffectiveDuration: fields[18] as Duration,
-      participantEffectiveTiming: fields[19] as Timing,
-      timeFromStart: fields[20] as Duration,
-      groupMeasure: fields[21] as String,
-      elementGroupMeasure: fields[22] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, EvidenceVariable_Characteristic obj) {
-    writer
-      ..writeByte(23)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.description)
-      ..writeByte(4)
-      ..write(obj.elementDescription)
-      ..writeByte(5)
-      ..write(obj.definitionReference)
-      ..writeByte(6)
-      ..write(obj.definitionCanonical)
-      ..writeByte(7)
-      ..write(obj.elementDefinitionCanonical)
-      ..writeByte(8)
-      ..write(obj.definitionCodeableConcept)
-      ..writeByte(9)
-      ..write(obj.definitionExpression)
-      ..writeByte(10)
-      ..write(obj.definitionDataRequirement)
-      ..writeByte(11)
-      ..write(obj.definitionTriggerDefinition)
-      ..writeByte(12)
-      ..write(obj.usageContext)
-      ..writeByte(13)
-      ..write(obj.exclude)
-      ..writeByte(14)
-      ..write(obj.elementExclude)
-      ..writeByte(15)
-      ..write(obj.participantEffectiveDateTime)
-      ..writeByte(16)
-      ..write(obj.elementParticipantEffectiveDateTime)
-      ..writeByte(17)
-      ..write(obj.participantEffectivePeriod)
-      ..writeByte(18)
-      ..write(obj.participantEffectiveDuration)
-      ..writeByte(19)
-      ..write(obj.participantEffectiveTiming)
-      ..writeByte(20)
-      ..write(obj.timeFromStart)
-      ..writeByte(21)
-      ..write(obj.groupMeasure)
-      ..writeByte(22)
-      ..write(obj.elementGroupMeasure);
   }
 }
 

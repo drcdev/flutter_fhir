@@ -226,12 +226,10 @@ Goal(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 292)
 class Goal_Target {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -240,7 +238,6 @@ class Goal_Target {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -255,12 +252,10 @@ class Goal_Target {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The parameter whose value is being tracked, e.g. body weight, blood
   // pressure, or hemoglobin A1c level.
-  @HiveField(3)
   CodeableConcept measure;
 
   //  The target value of the focus to be achieved to signify the
@@ -270,7 +265,6 @@ class Goal_Target {
   // or below the high value. Similarly, if the high value is missing, it
   // indicates that the goal is achieved at any focus value at or above the
   // low value.
-  @HiveField(4)
   Quantity detailQuantity;
 
   //  The target value of the focus to be achieved to signify the
@@ -280,7 +274,6 @@ class Goal_Target {
   // or below the high value. Similarly, if the high value is missing, it
   // indicates that the goal is achieved at any focus value at or above the
   // low value.
-  @HiveField(5)
   Range detailRange;
 
   //  The target value of the focus to be achieved to signify the
@@ -290,7 +283,6 @@ class Goal_Target {
   // or below the high value. Similarly, if the high value is missing, it
   // indicates that the goal is achieved at any focus value at or above the
   // low value.
-  @HiveField(6)
   CodeableConcept detailCodeableConcept;
 
   //  The target value of the focus to be achieved to signify the
@@ -300,11 +292,9 @@ class Goal_Target {
   // or below the high value. Similarly, if the high value is missing, it
   // indicates that the goal is achieved at any focus value at or above the
   // low value.
-  @HiveField(7)
   String detailString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for detailString
-  @HiveField(8)
   Element elementDetailString;
 
   //  The target value of the focus to be achieved to signify the
@@ -314,11 +304,9 @@ class Goal_Target {
   // or below the high value. Similarly, if the high value is missing, it
   // indicates that the goal is achieved at any focus value at or above the
   // low value.
-  @HiveField(9)
   bool detailBoolean; //  pattern: ^true|false$
 
   //  Extensions for detailBoolean
-  @HiveField(10)
   Element elementDetailBoolean;
 
   //  The target value of the focus to be achieved to signify the
@@ -331,7 +319,6 @@ class Goal_Target {
   int detailInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
 
   //  Extensions for detailInteger
-  @HiveField(12)
   Element elementDetailInteger;
 
   //  The target value of the focus to be achieved to signify the
@@ -341,21 +328,17 @@ class Goal_Target {
   // or below the high value. Similarly, if the high value is missing, it
   // indicates that the goal is achieved at any focus value at or above the
   // low value.
-  @HiveField(13)
   Ratio detailRatio;
 
   //  Indicates either the date or the duration after start by which the
   // goal should be met.
-  @HiveField(14)
   String dueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for dueDate
-  @HiveField(15)
   Element elementDueDate;
 
   //  Indicates either the date or the duration after start by which the
   // goal should be met.
-  @HiveField(16)
   Duration dueDuration;
 
 Goal_Target(
@@ -501,75 +484,6 @@ class GoalAdapter extends TypeAdapter<Goal> {
       ..write(obj.outcomeCode)
       ..writeByte(31)
       ..write(obj.outcomeReference);
-  }
-}
-
-class Goal_TargetAdapter extends TypeAdapter<Goal_Target> {
-  @override
-  final typeId = 292;
-
-  @override
-  Goal_Target read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Goal_Target(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      measure: fields[3] as CodeableConcept,
-      detailQuantity: fields[4] as Quantity,
-      detailRange: fields[5] as Range,
-      detailCodeableConcept: fields[6] as CodeableConcept,
-      detailString: fields[7] as String,
-      elementDetailString: fields[8] as Element,
-      detailBoolean: fields[9] as bool,
-      elementDetailBoolean: fields[10] as Element,
-      elementDetailInteger: fields[12] as Element,
-      detailRatio: fields[13] as Ratio,
-      dueDate: fields[14] as String,
-      elementDueDate: fields[15] as Element,
-      dueDuration: fields[16] as Duration,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Goal_Target obj) {
-    writer
-      ..writeByte(16)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.measure)
-      ..writeByte(4)
-      ..write(obj.detailQuantity)
-      ..writeByte(5)
-      ..write(obj.detailRange)
-      ..writeByte(6)
-      ..write(obj.detailCodeableConcept)
-      ..writeByte(7)
-      ..write(obj.detailString)
-      ..writeByte(8)
-      ..write(obj.elementDetailString)
-      ..writeByte(9)
-      ..write(obj.detailBoolean)
-      ..writeByte(10)
-      ..write(obj.elementDetailBoolean)
-      ..writeByte(12)
-      ..write(obj.elementDetailInteger)
-      ..writeByte(13)
-      ..write(obj.detailRatio)
-      ..writeByte(14)
-      ..write(obj.dueDate)
-      ..writeByte(15)
-      ..write(obj.elementDueDate)
-      ..writeByte(16)
-      ..write(obj.dueDuration);
   }
 }
 

@@ -222,12 +222,10 @@ MedicinalProduct(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 398)
 class MedicinalProduct_Name {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -236,7 +234,6 @@ class MedicinalProduct_Name {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -251,23 +248,18 @@ class MedicinalProduct_Name {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The full product name.
-  @HiveField(3)
   String productName;
 
   //  Extensions for productName
-  @HiveField(4)
   Element elementProductName;
 
   //  Coding words or phrases of the name.
-  @HiveField(5)
   List<MedicinalProduct_NamePart> namePart;
 
   //  Country where the name applies.
-  @HiveField(6)
   List<MedicinalProduct_CountryLanguage> countryLanguage;
 
 MedicinalProduct_Name(
@@ -285,12 +277,10 @@ MedicinalProduct_Name(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 399)
 class MedicinalProduct_NamePart {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -299,7 +289,6 @@ class MedicinalProduct_NamePart {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -314,19 +303,15 @@ class MedicinalProduct_NamePart {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A fragment of a product name.
-  @HiveField(3)
   String part;
 
   //  Extensions for part
-  @HiveField(4)
   Element elementPart;
 
   //  Idenifying type for this part of the name (e.g. strength part).
-  @HiveField(5)
   Coding type;
 
 MedicinalProduct_NamePart(
@@ -343,12 +328,10 @@ MedicinalProduct_NamePart(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 400)
 class MedicinalProduct_CountryLanguage {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -357,7 +340,6 @@ class MedicinalProduct_CountryLanguage {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -372,19 +354,15 @@ class MedicinalProduct_CountryLanguage {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Country code for where this name applies.
-  @HiveField(3)
   CodeableConcept country;
 
   //  Jurisdiction code for where this name applies.
-  @HiveField(4)
   CodeableConcept jurisdiction;
 
   //  Language code for this name.
-  @HiveField(5)
   CodeableConcept language;
 
 MedicinalProduct_CountryLanguage(
@@ -401,12 +379,10 @@ MedicinalProduct_CountryLanguage(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 401)
 class MedicinalProduct_ManufacturingBusinessOperation {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -415,7 +391,6 @@ class MedicinalProduct_ManufacturingBusinessOperation {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -430,35 +405,27 @@ class MedicinalProduct_ManufacturingBusinessOperation {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The type of manufacturing operation.
-  @HiveField(3)
   CodeableConcept operationType;
 
   //  Regulatory authorization reference number.
-  @HiveField(4)
   Identifier authorisationReferenceNumber;
 
   //  Regulatory authorization date.
-  @HiveField(5)
   DateTime effectiveDate;
 
   //  Extensions for effectiveDate
-  @HiveField(6)
   Element elementEffectiveDate;
 
   //  To indicate if this proces is commercially confidential.
-  @HiveField(7)
   CodeableConcept confidentialityIndicator;
 
   //  The manufacturer or establishment associated with the process.
-  @HiveField(8)
   List<Reference> manufacturer;
 
   //  A regulator which oversees the operation.
-  @HiveField(9)
   Reference regulator;
 
 MedicinalProduct_ManufacturingBusinessOperation(
@@ -479,12 +446,10 @@ MedicinalProduct_ManufacturingBusinessOperation(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 402)
 class MedicinalProduct_SpecialDesignation {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -493,7 +458,6 @@ class MedicinalProduct_SpecialDesignation {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -508,43 +472,33 @@ class MedicinalProduct_SpecialDesignation {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Identifier for the designation, or procedure number.
-  @HiveField(3)
   List<Identifier> identifier;
 
   //  The type of special designation, e.g. orphan drug, minor use.
-  @HiveField(4)
   CodeableConcept type;
 
   //  The intended use of the product, e.g. prevention, treatment.
-  @HiveField(5)
   CodeableConcept intendedUse;
 
   //  Condition for which the medicinal use applies.
-  @HiveField(6)
   CodeableConcept indicationCodeableConcept;
 
   //  Condition for which the medicinal use applies.
-  @HiveField(7)
   Reference indicationReference;
 
   //  For example granted, pending, expired or withdrawn.
-  @HiveField(8)
   CodeableConcept status;
 
   //  Date when the designation was granted.
-  @HiveField(9)
   DateTime date;
 
   //  Extensions for date
-  @HiveField(10)
   Element elementDate;
 
   //  Animal species for which this applies.
-  @HiveField(11)
   CodeableConcept species;
 
 MedicinalProduct_SpecialDesignation(
@@ -687,240 +641,6 @@ class MedicinalProductAdapter extends TypeAdapter<MedicinalProduct> {
       ..write(obj.manufacturingBusinessOperation)
       ..writeByte(31)
       ..write(obj.specialDesignation);
-  }
-}
-
-class MedicinalProduct_NameAdapter extends TypeAdapter<MedicinalProduct_Name> {
-  @override
-  final typeId = 398;
-
-  @override
-  MedicinalProduct_Name read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProduct_Name(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      productName: fields[3] as String,
-      elementProductName: fields[4] as Element,
-      namePart: (fields[5] as List)?.cast<MedicinalProduct_NamePart>(),
-      countryLanguage:
-          (fields[6] as List)?.cast<MedicinalProduct_CountryLanguage>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicinalProduct_Name obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.productName)
-      ..writeByte(4)
-      ..write(obj.elementProductName)
-      ..writeByte(5)
-      ..write(obj.namePart)
-      ..writeByte(6)
-      ..write(obj.countryLanguage);
-  }
-}
-
-class MedicinalProduct_NamePartAdapter
-    extends TypeAdapter<MedicinalProduct_NamePart> {
-  @override
-  final typeId = 399;
-
-  @override
-  MedicinalProduct_NamePart read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProduct_NamePart(
-      fields[5] as Coding,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      part: fields[3] as String,
-      elementPart: fields[4] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicinalProduct_NamePart obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.part)
-      ..writeByte(4)
-      ..write(obj.elementPart)
-      ..writeByte(5)
-      ..write(obj.type);
-  }
-}
-
-class MedicinalProduct_CountryLanguageAdapter
-    extends TypeAdapter<MedicinalProduct_CountryLanguage> {
-  @override
-  final typeId = 400;
-
-  @override
-  MedicinalProduct_CountryLanguage read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProduct_CountryLanguage(
-      fields[3] as CodeableConcept,
-      fields[5] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      jurisdiction: fields[4] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicinalProduct_CountryLanguage obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.country)
-      ..writeByte(4)
-      ..write(obj.jurisdiction)
-      ..writeByte(5)
-      ..write(obj.language);
-  }
-}
-
-class MedicinalProduct_ManufacturingBusinessOperationAdapter
-    extends TypeAdapter<MedicinalProduct_ManufacturingBusinessOperation> {
-  @override
-  final typeId = 401;
-
-  @override
-  MedicinalProduct_ManufacturingBusinessOperation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProduct_ManufacturingBusinessOperation(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      operationType: fields[3] as CodeableConcept,
-      authorisationReferenceNumber: fields[4] as Identifier,
-      effectiveDate: fields[5] as DateTime,
-      elementEffectiveDate: fields[6] as Element,
-      confidentialityIndicator: fields[7] as CodeableConcept,
-      manufacturer: (fields[8] as List)?.cast<Reference>(),
-      regulator: fields[9] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer,
-      MedicinalProduct_ManufacturingBusinessOperation obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.operationType)
-      ..writeByte(4)
-      ..write(obj.authorisationReferenceNumber)
-      ..writeByte(5)
-      ..write(obj.effectiveDate)
-      ..writeByte(6)
-      ..write(obj.elementEffectiveDate)
-      ..writeByte(7)
-      ..write(obj.confidentialityIndicator)
-      ..writeByte(8)
-      ..write(obj.manufacturer)
-      ..writeByte(9)
-      ..write(obj.regulator);
-  }
-}
-
-class MedicinalProduct_SpecialDesignationAdapter
-    extends TypeAdapter<MedicinalProduct_SpecialDesignation> {
-  @override
-  final typeId = 402;
-
-  @override
-  MedicinalProduct_SpecialDesignation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProduct_SpecialDesignation(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      identifier: (fields[3] as List)?.cast<Identifier>(),
-      type: fields[4] as CodeableConcept,
-      intendedUse: fields[5] as CodeableConcept,
-      indicationCodeableConcept: fields[6] as CodeableConcept,
-      indicationReference: fields[7] as Reference,
-      status: fields[8] as CodeableConcept,
-      date: fields[9] as DateTime,
-      elementDate: fields[10] as Element,
-      species: fields[11] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicinalProduct_SpecialDesignation obj) {
-    writer
-      ..writeByte(12)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.identifier)
-      ..writeByte(4)
-      ..write(obj.type)
-      ..writeByte(5)
-      ..write(obj.intendedUse)
-      ..writeByte(6)
-      ..write(obj.indicationCodeableConcept)
-      ..writeByte(7)
-      ..write(obj.indicationReference)
-      ..writeByte(8)
-      ..write(obj.status)
-      ..writeByte(9)
-      ..write(obj.date)
-      ..writeByte(10)
-      ..write(obj.elementDate)
-      ..writeByte(11)
-      ..write(obj.species);
   }
 }
 

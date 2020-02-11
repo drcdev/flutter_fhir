@@ -197,12 +197,10 @@ ObservationDefinition(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 456)
 class ObservationDefinition_QuantitativeDetails {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -211,7 +209,6 @@ class ObservationDefinition_QuantitativeDetails {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -226,35 +223,28 @@ class ObservationDefinition_QuantitativeDetails {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Customary unit used to report quantitative results of observations
   // conforming to this ObservationDefinition.
-  @HiveField(3)
   CodeableConcept customaryUnit;
 
   //  SI unit used to report quantitative results of observations conforming
   // to this ObservationDefinition.
-  @HiveField(4)
   CodeableConcept unit;
 
   //  Factor for converting value expressed with SI unit to value expressed
   // with customary unit.
-  @HiveField(5)
   double conversionFactor;
 
   //  Extensions for conversionFactor
-  @HiveField(6)
   Element elementConversionFactor;
 
   //  Number of digits after decimal separator when the results of such
   // observations are of type Quantity.
-  @HiveField(7)
   int decimalPrecision;
 
   //  Extensions for decimalPrecision
-  @HiveField(8)
   Element elementDecimalPrecision;
 
 ObservationDefinition_QuantitativeDetails(
@@ -274,12 +264,10 @@ ObservationDefinition_QuantitativeDetails(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 457)
 class ObservationDefinition_QualifiedInterval {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -288,7 +276,6 @@ class ObservationDefinition_QualifiedInterval {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -303,57 +290,45 @@ class ObservationDefinition_QualifiedInterval {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The category of interval of values for continuous or ordinal
   // observations conforming to this ObservationDefinition.
-  @HiveField(3)
   String category; // <code> enum: reference/critical/absolute;
 
   //  Extensions for category
-  @HiveField(4)
   Element elementCategory;
 
   //  The low and high values determining the interval. There may be only
   // one of the two.
-  @HiveField(5)
   Range range;
 
   //  Codes to indicate the health context the range applies to. For
   // example, the normal or therapeutic range.
-  @HiveField(6)
   CodeableConcept context;
 
   //  Codes to indicate the target population this reference range applies
   // to.
-  @HiveField(7)
   List<CodeableConcept> appliesTo;
 
   //  Sex of the population the range applies to.
-  @HiveField(8)
   String gender; // <code> enum: male/female/other/unknown;
 
   //  Extensions for gender
-  @HiveField(9)
   Element elementGender;
 
   //  The age at which this reference range is applicable. This is a
   // neonatal age (e.g. number of weeks at term) if the meaning says so.
-  @HiveField(10)
   Range age;
 
   //  The gestational age to which this reference range is applicable, in
   // the context of pregnancy.
-  @HiveField(11)
   Range gestationalAge;
 
   //  Text based condition for which the reference range is valid.
-  @HiveField(12)
   String condition;
 
   //  Extensions for condition
-  @HiveField(13)
   Element elementCondition;
 
 ObservationDefinition_QualifiedInterval(
@@ -483,120 +458,6 @@ class ObservationDefinitionAdapter extends TypeAdapter<ObservationDefinition> {
       ..write(obj.abnormalCodedValueSet)
       ..writeByte(26)
       ..write(obj.criticalCodedValueSet);
-  }
-}
-
-class ObservationDefinition_QuantitativeDetailsAdapter
-    extends TypeAdapter<ObservationDefinition_QuantitativeDetails> {
-  @override
-  final typeId = 456;
-
-  @override
-  ObservationDefinition_QuantitativeDetails read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ObservationDefinition_QuantitativeDetails(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      customaryUnit: fields[3] as CodeableConcept,
-      unit: fields[4] as CodeableConcept,
-      conversionFactor: fields[5] as double,
-      elementConversionFactor: fields[6] as Element,
-      decimalPrecision: fields[7] as int,
-      elementDecimalPrecision: fields[8] as Element,
-    );
-  }
-
-  @override
-  void write(
-      BinaryWriter writer, ObservationDefinition_QuantitativeDetails obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.customaryUnit)
-      ..writeByte(4)
-      ..write(obj.unit)
-      ..writeByte(5)
-      ..write(obj.conversionFactor)
-      ..writeByte(6)
-      ..write(obj.elementConversionFactor)
-      ..writeByte(7)
-      ..write(obj.decimalPrecision)
-      ..writeByte(8)
-      ..write(obj.elementDecimalPrecision);
-  }
-}
-
-class ObservationDefinition_QualifiedIntervalAdapter
-    extends TypeAdapter<ObservationDefinition_QualifiedInterval> {
-  @override
-  final typeId = 457;
-
-  @override
-  ObservationDefinition_QualifiedInterval read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ObservationDefinition_QualifiedInterval(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      category: fields[3] as String,
-      elementCategory: fields[4] as Element,
-      range: fields[5] as Range,
-      context: fields[6] as CodeableConcept,
-      appliesTo: (fields[7] as List)?.cast<CodeableConcept>(),
-      gender: fields[8] as String,
-      elementGender: fields[9] as Element,
-      age: fields[10] as Range,
-      gestationalAge: fields[11] as Range,
-      condition: fields[12] as String,
-      elementCondition: fields[13] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ObservationDefinition_QualifiedInterval obj) {
-    writer
-      ..writeByte(14)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.category)
-      ..writeByte(4)
-      ..write(obj.elementCategory)
-      ..writeByte(5)
-      ..write(obj.range)
-      ..writeByte(6)
-      ..write(obj.context)
-      ..writeByte(7)
-      ..write(obj.appliesTo)
-      ..writeByte(8)
-      ..write(obj.gender)
-      ..writeByte(9)
-      ..write(obj.elementGender)
-      ..writeByte(10)
-      ..write(obj.age)
-      ..writeByte(11)
-      ..write(obj.gestationalAge)
-      ..writeByte(12)
-      ..write(obj.condition)
-      ..writeByte(13)
-      ..write(obj.elementCondition);
   }
 }
 

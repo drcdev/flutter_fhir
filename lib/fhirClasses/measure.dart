@@ -504,12 +504,10 @@ Measure(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 353)
 class Measure_Group {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -518,7 +516,6 @@ class Measure_Group {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -533,31 +530,25 @@ class Measure_Group {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Indicates a meaning for the group. This can be as simple as a unique
   // identifier, or it can establish meaning in a broader context by drawing
   // from a terminology, allowing groups to be correlated across measures.
-  @HiveField(3)
   CodeableConcept code;
 
   //  The human readable description of this population group.
-  @HiveField(4)
   String description;
 
   //  Extensions for description
-  @HiveField(5)
   Element elementDescription;
 
   //  A population criteria for the measure.
-  @HiveField(6)
   List<Measure_Population> population;
 
   //  The stratifier criteria for the measure report, specified as either
   // the name of a valid CQL expression defined within a referenced library
   // or a valid FHIR Resource Path.
-  @HiveField(7)
   List<Measure_Stratifier> stratifier;
 
 Measure_Group(
@@ -576,12 +567,10 @@ Measure_Group(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 354)
 class Measure_Population {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -590,7 +579,6 @@ class Measure_Population {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -605,24 +593,19 @@ class Measure_Population {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The type of population criteria.
-  @HiveField(3)
   CodeableConcept code;
 
   //  The human readable description of this population criteria.
-  @HiveField(4)
   String description;
 
   //  Extensions for description
-  @HiveField(5)
   Element elementDescription;
 
   //  An expression that specifies the criteria for the population,
   // typically the name of an expression in a library.
-  @HiveField(6)
   Expression criteria;
 
 Measure_Population(
@@ -640,12 +623,10 @@ Measure_Population(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 355)
 class Measure_Stratifier {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -654,7 +635,6 @@ class Measure_Stratifier {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -669,34 +649,28 @@ class Measure_Stratifier {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Indicates a meaning for the stratifier. This can be as simple as a
   // unique identifier, or it can establish meaning in a broader context by
   // drawing from a terminology, allowing stratifiers to be correlated
   // across measures.
-  @HiveField(3)
   CodeableConcept code;
 
   //  The human readable description of this stratifier criteria.
-  @HiveField(4)
   String description;
 
   //  Extensions for description
-  @HiveField(5)
   Element elementDescription;
 
   //  An expression that specifies the criteria for the stratifier. This is
   // typically the name of an expression defined within a referenced
   // library, but it may also be a path to a stratifier element.
-  @HiveField(6)
   Expression criteria;
 
   //  A component of the stratifier criteria for the measure report,
   // specified as either the name of a valid CQL expression defined within a
   // referenced library or a valid FHIR Resource Path.
-  @HiveField(7)
   List<Measure_Component> component;
 
 Measure_Stratifier(
@@ -715,12 +689,10 @@ Measure_Stratifier(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 356)
 class Measure_Component {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -729,7 +701,6 @@ class Measure_Component {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -744,29 +715,24 @@ class Measure_Component {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Indicates a meaning for the stratifier component. This can be as
   // simple as a unique identifier, or it can establish meaning in a broader
   // context by drawing from a terminology, allowing stratifiers to be
   // correlated across measures.
-  @HiveField(3)
   CodeableConcept code;
 
   //  The human readable description of this stratifier criteria component.
-  @HiveField(4)
   String description;
 
   //  Extensions for description
-  @HiveField(5)
   Element elementDescription;
 
   //  An expression that specifies the criteria for this component of the
   // stratifier. This is typically the name of an expression defined within
   // a referenced library, but it may also be a path to a stratifier
   // element.
-  @HiveField(6)
   Expression criteria;
 
 Measure_Component(
@@ -784,12 +750,10 @@ Measure_Component(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 357)
 class Measure_SupplementalData {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -798,7 +762,6 @@ class Measure_SupplementalData {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -813,14 +776,12 @@ class Measure_SupplementalData {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Indicates a meaning for the supplemental data. This can be as simple
   // as a unique identifier, or it can establish meaning in a broader
   // context by drawing from a terminology, allowing supplemental data to be
   // correlated across measures.
-  @HiveField(3)
   CodeableConcept code;
 
   //  An indicator of the intended usage for the supplemental data element.
@@ -829,22 +790,18 @@ class Measure_SupplementalData {
   // indicates the data is additional information used to calculate risk
   // adjustment factors when applying a risk model to the measure
   // calculation.
-  @HiveField(4)
   List<CodeableConcept> usage;
 
   //  The human readable description of this supplemental data.
-  @HiveField(5)
   String description;
 
   //  Extensions for description
-  @HiveField(6)
   Element elementDescription;
 
   //  The criteria for the supplemental data. This is typically the name of
   // a valid expression defined within a referenced library, but it may also
   // be a path to a specific data element. The criteria defines the data to
   // be returned for this element.
-  @HiveField(7)
   Expression criteria;
 
 Measure_SupplementalData(
@@ -1110,226 +1067,6 @@ class MeasureAdapter extends TypeAdapter<Measure> {
       ..write(obj.group)
       ..writeByte(74)
       ..write(obj.supplementalData);
-  }
-}
-
-class Measure_GroupAdapter extends TypeAdapter<Measure_Group> {
-  @override
-  final typeId = 353;
-
-  @override
-  Measure_Group read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Measure_Group(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as CodeableConcept,
-      description: fields[4] as String,
-      elementDescription: fields[5] as Element,
-      population: (fields[6] as List)?.cast<Measure_Population>(),
-      stratifier: (fields[7] as List)?.cast<Measure_Stratifier>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Measure_Group obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.description)
-      ..writeByte(5)
-      ..write(obj.elementDescription)
-      ..writeByte(6)
-      ..write(obj.population)
-      ..writeByte(7)
-      ..write(obj.stratifier);
-  }
-}
-
-class Measure_PopulationAdapter extends TypeAdapter<Measure_Population> {
-  @override
-  final typeId = 354;
-
-  @override
-  Measure_Population read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Measure_Population(
-      fields[6] as Expression,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as CodeableConcept,
-      description: fields[4] as String,
-      elementDescription: fields[5] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Measure_Population obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.description)
-      ..writeByte(5)
-      ..write(obj.elementDescription)
-      ..writeByte(6)
-      ..write(obj.criteria);
-  }
-}
-
-class Measure_StratifierAdapter extends TypeAdapter<Measure_Stratifier> {
-  @override
-  final typeId = 355;
-
-  @override
-  Measure_Stratifier read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Measure_Stratifier(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as CodeableConcept,
-      description: fields[4] as String,
-      elementDescription: fields[5] as Element,
-      criteria: fields[6] as Expression,
-      component: (fields[7] as List)?.cast<Measure_Component>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Measure_Stratifier obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.description)
-      ..writeByte(5)
-      ..write(obj.elementDescription)
-      ..writeByte(6)
-      ..write(obj.criteria)
-      ..writeByte(7)
-      ..write(obj.component);
-  }
-}
-
-class Measure_ComponentAdapter extends TypeAdapter<Measure_Component> {
-  @override
-  final typeId = 356;
-
-  @override
-  Measure_Component read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Measure_Component(
-      fields[6] as Expression,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as CodeableConcept,
-      description: fields[4] as String,
-      elementDescription: fields[5] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Measure_Component obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.description)
-      ..writeByte(5)
-      ..write(obj.elementDescription)
-      ..writeByte(6)
-      ..write(obj.criteria);
-  }
-}
-
-class Measure_SupplementalDataAdapter
-    extends TypeAdapter<Measure_SupplementalData> {
-  @override
-  final typeId = 357;
-
-  @override
-  Measure_SupplementalData read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Measure_SupplementalData(
-      fields[7] as Expression,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as CodeableConcept,
-      usage: (fields[4] as List)?.cast<CodeableConcept>(),
-      description: fields[5] as String,
-      elementDescription: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Measure_SupplementalData obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.usage)
-      ..writeByte(5)
-      ..write(obj.description)
-      ..writeByte(6)
-      ..write(obj.elementDescription)
-      ..writeByte(7)
-      ..write(obj.criteria);
   }
 }
 

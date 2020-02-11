@@ -218,12 +218,10 @@ Composition(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 156)
 class Composition_Attester {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -232,7 +230,6 @@ class Composition_Attester {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -247,27 +244,21 @@ class Composition_Attester {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The type of attestation the authenticator offers.
-  @HiveField(3)
   String mode; // <code> enum: personal/professional/legal/official;
 
   //  Extensions for mode
-  @HiveField(4)
   Element elementMode;
 
   //  When the composition was attested by the party.
-  @HiveField(5)
   DateTime time;
 
   //  Extensions for time
-  @HiveField(6)
   Element elementTime;
 
   //  Who attested the composition in the specified way.
-  @HiveField(7)
   Reference party;
 
 Composition_Attester(
@@ -286,12 +277,10 @@ Composition_Attester(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 157)
 class Composition_RelatesTo {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -300,7 +289,6 @@ class Composition_RelatesTo {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -315,24 +303,19 @@ class Composition_RelatesTo {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The type of relationship that this composition has with anther
   // composition or document.
-  @HiveField(3)
   String code;
 
   //  Extensions for code
-  @HiveField(4)
   Element elementCode;
 
   //  The target composition/document of this relationship.
-  @HiveField(5)
   Identifier targetIdentifier;
 
   //  The target composition/document of this relationship.
-  @HiveField(6)
   Reference targetReference;
 
 Composition_RelatesTo(
@@ -350,12 +333,10 @@ Composition_RelatesTo(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 158)
 class Composition_Event {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -364,7 +345,6 @@ class Composition_Event {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -379,7 +359,6 @@ class Composition_Event {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  This list of codes represents the main clinical acts, such as a
@@ -387,19 +366,16 @@ class Composition_Event {
   // event is inherent in the typeCode, such as a "History and Physical
   // Report" in which the procedure being documented is necessarily a
   // "History and Physical" act.
-  @HiveField(3)
   List<CodeableConcept> code;
 
   //  The period of time covered by the documentation. There is no assertion
   // that the documentation is a complete representation for this period,
   // only that it documents events during this time.
-  @HiveField(4)
   Period period;
 
   //  The description and/or reference of the event(s) being documented. For
   // example, this could be used to document such a colonoscopy or an
   // appendectomy.
-  @HiveField(5)
   List<Reference> detail;
 
 Composition_Event(
@@ -416,12 +392,10 @@ Composition_Event(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 159)
 class Composition_Section {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -430,7 +404,6 @@ class Composition_Section {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -445,27 +418,22 @@ class Composition_Section {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The label for this particular section.  This will be part of the
   // rendered content for the document, and is often used to build a table
   // of contents.
-  @HiveField(3)
   String title;
 
   //  Extensions for title
-  @HiveField(4)
   Element elementTitle;
 
   //  A code identifying the kind of content contained within the section.
   // This must be consistent with the section title.
-  @HiveField(5)
   CodeableConcept code;
 
   //  Identifies who is responsible for the information in this section, not
   // necessarily who typed it in.
-  @HiveField(6)
   List<Reference> author;
 
   //  The actual focus of the section when it is not the subject of the
@@ -477,7 +445,6 @@ class Composition_Section {
   // only include resources where the logical subject (patient, subject,
   // focus, etc.) matches the section focus, or the resources have no
   // logical subject (few resources).
-  @HiveField(7)
   Reference focus;
 
   //  A human-readable narrative that contains the attested content of the
@@ -485,36 +452,29 @@ class Composition_Section {
   // narrative need not encode all the structured data, but is required to
   // contain sufficient detail to make it "clinically safe" for a human to
   // just read the narrative.
-  @HiveField(8)
   Narrative text;
 
   //  How the entry list was prepared - whether it is a working list that is
   // suitable for being maintained on an ongoing basis, or if it represents
   // a snapshot of a list of items from another source, or whether it is a
   // prepared list where items may be marked as added, modified or deleted.
-  @HiveField(9)
   String mode;
 
   //  Extensions for mode
-  @HiveField(10)
   Element elementMode;
 
   //  Specifies the order applied to the items in the section entries.
-  @HiveField(11)
   CodeableConcept orderedBy;
 
   //  A reference to the actual resource from which the narrative in the
   // section is derived.
-  @HiveField(12)
   List<Reference> entry;
 
   //  If the section is empty, why the list is empty. An empty section
   // typically has some text explaining the empty reason.
-  @HiveField(13)
   CodeableConcept emptyReason;
 
   //  A nested sub-section within this section.
-  @HiveField(14)
   List<Composition_Section> section;
 
 Composition_Section(
@@ -651,198 +611,6 @@ class CompositionAdapter extends TypeAdapter<Composition> {
       ..writeByte(28)
       ..write(obj.event)
       ..writeByte(29)
-      ..write(obj.section);
-  }
-}
-
-class Composition_AttesterAdapter extends TypeAdapter<Composition_Attester> {
-  @override
-  final typeId = 156;
-
-  @override
-  Composition_Attester read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Composition_Attester(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      mode: fields[3] as String,
-      elementMode: fields[4] as Element,
-      time: fields[5] as DateTime,
-      elementTime: fields[6] as Element,
-      party: fields[7] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Composition_Attester obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.mode)
-      ..writeByte(4)
-      ..write(obj.elementMode)
-      ..writeByte(5)
-      ..write(obj.time)
-      ..writeByte(6)
-      ..write(obj.elementTime)
-      ..writeByte(7)
-      ..write(obj.party);
-  }
-}
-
-class Composition_RelatesToAdapter extends TypeAdapter<Composition_RelatesTo> {
-  @override
-  final typeId = 157;
-
-  @override
-  Composition_RelatesTo read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Composition_RelatesTo(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as String,
-      elementCode: fields[4] as Element,
-      targetIdentifier: fields[5] as Identifier,
-      targetReference: fields[6] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Composition_RelatesTo obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.elementCode)
-      ..writeByte(5)
-      ..write(obj.targetIdentifier)
-      ..writeByte(6)
-      ..write(obj.targetReference);
-  }
-}
-
-class Composition_EventAdapter extends TypeAdapter<Composition_Event> {
-  @override
-  final typeId = 158;
-
-  @override
-  Composition_Event read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Composition_Event(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: (fields[3] as List)?.cast<CodeableConcept>(),
-      period: fields[4] as Period,
-      detail: (fields[5] as List)?.cast<Reference>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Composition_Event obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.period)
-      ..writeByte(5)
-      ..write(obj.detail);
-  }
-}
-
-class Composition_SectionAdapter extends TypeAdapter<Composition_Section> {
-  @override
-  final typeId = 159;
-
-  @override
-  Composition_Section read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Composition_Section(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      title: fields[3] as String,
-      elementTitle: fields[4] as Element,
-      code: fields[5] as CodeableConcept,
-      author: (fields[6] as List)?.cast<Reference>(),
-      focus: fields[7] as Reference,
-      text: fields[8] as Narrative,
-      mode: fields[9] as String,
-      elementMode: fields[10] as Element,
-      orderedBy: fields[11] as CodeableConcept,
-      entry: (fields[12] as List)?.cast<Reference>(),
-      emptyReason: fields[13] as CodeableConcept,
-      section: (fields[14] as List)?.cast<Composition_Section>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Composition_Section obj) {
-    writer
-      ..writeByte(15)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.title)
-      ..writeByte(4)
-      ..write(obj.elementTitle)
-      ..writeByte(5)
-      ..write(obj.code)
-      ..writeByte(6)
-      ..write(obj.author)
-      ..writeByte(7)
-      ..write(obj.focus)
-      ..writeByte(8)
-      ..write(obj.text)
-      ..writeByte(9)
-      ..write(obj.mode)
-      ..writeByte(10)
-      ..write(obj.elementMode)
-      ..writeByte(11)
-      ..write(obj.orderedBy)
-      ..writeByte(12)
-      ..write(obj.entry)
-      ..writeByte(13)
-      ..write(obj.emptyReason)
-      ..writeByte(14)
       ..write(obj.section);
   }
 }

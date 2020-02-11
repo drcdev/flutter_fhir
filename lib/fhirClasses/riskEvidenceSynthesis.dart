@@ -371,12 +371,10 @@ RiskEvidenceSynthesis(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 523)
 class RiskEvidenceSynthesis_SampleSize {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -385,7 +383,6 @@ class RiskEvidenceSynthesis_SampleSize {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -400,31 +397,24 @@ class RiskEvidenceSynthesis_SampleSize {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Human-readable summary of sample size.
-  @HiveField(3)
   String description;
 
   //  Extensions for description
-  @HiveField(4)
   Element elementDescription;
 
   //  Number of studies included in this evidence synthesis.
-  @HiveField(5)
   int numberOfStudies;
 
   //  Extensions for numberOfStudies
-  @HiveField(6)
   Element elementNumberOfStudies;
 
   //  Number of participants included in this evidence synthesis.
-  @HiveField(7)
   int numberOfParticipants;
 
   //  Extensions for numberOfParticipants
-  @HiveField(8)
   Element elementNumberOfParticipants;
 
 RiskEvidenceSynthesis_SampleSize(
@@ -444,12 +434,10 @@ RiskEvidenceSynthesis_SampleSize(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 524)
 class RiskEvidenceSynthesis_RiskEstimate {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -458,7 +446,6 @@ class RiskEvidenceSynthesis_RiskEstimate {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -473,52 +460,40 @@ class RiskEvidenceSynthesis_RiskEstimate {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Human-readable summary of risk estimate.
-  @HiveField(3)
   String description;
 
   //  Extensions for description
-  @HiveField(4)
   Element elementDescription;
 
   //  Examples include proportion and mean.
-  @HiveField(5)
   CodeableConcept type;
 
   //  The point estimate of the risk estimate.
-  @HiveField(6)
   double value;
 
   //  Extensions for value
-  @HiveField(7)
   Element elementValue;
 
   //  Specifies the UCUM unit for the outcome.
-  @HiveField(8)
   CodeableConcept unitOfMeasure;
 
   //  The sample size for the group that was measured for this risk
   // estimate.
-  @HiveField(9)
   int denominatorCount;
 
   //  Extensions for denominatorCount
-  @HiveField(10)
   Element elementDenominatorCount;
 
   //  The number of group members with the outcome of interest.
-  @HiveField(11)
   int numeratorCount;
 
   //  Extensions for numeratorCount
-  @HiveField(12)
   Element elementNumeratorCount;
 
   //  A description of the precision of the estimate for the effect.
-  @HiveField(13)
   List<RiskEvidenceSynthesis_PrecisionEstimate> precisionEstimate;
 
 RiskEvidenceSynthesis_RiskEstimate(
@@ -543,12 +518,10 @@ RiskEvidenceSynthesis_RiskEstimate(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 525)
 class RiskEvidenceSynthesis_PrecisionEstimate {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -557,7 +530,6 @@ class RiskEvidenceSynthesis_PrecisionEstimate {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -572,35 +544,27 @@ class RiskEvidenceSynthesis_PrecisionEstimate {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Examples include confidence interval and interquartile range.
-  @HiveField(3)
   CodeableConcept type;
 
   //  Use 95 for a 95% confidence interval.
-  @HiveField(4)
   double level;
 
   //  Extensions for level
-  @HiveField(5)
   Element elementLevel;
 
   //  Lower bound of confidence interval.
-  @HiveField(6)
   double from;
 
   //  Extensions for from
-  @HiveField(7)
   Element elementFrom;
 
   //  Upper bound of confidence interval.
-  @HiveField(8)
   double to;
 
   //  Extensions for to
-  @HiveField(9)
   Element elementTo;
 
 RiskEvidenceSynthesis_PrecisionEstimate(
@@ -621,12 +585,10 @@ RiskEvidenceSynthesis_PrecisionEstimate(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 526)
 class RiskEvidenceSynthesis_Certainty {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -635,7 +597,6 @@ class RiskEvidenceSynthesis_Certainty {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -650,20 +611,16 @@ class RiskEvidenceSynthesis_Certainty {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A rating of the certainty of the effect estimate.
-  @HiveField(3)
   List<CodeableConcept> rating;
 
   //  A human-readable string to clarify or explain concepts about the
   // resource.
-  @HiveField(4)
   List<Annotation> note;
 
   //  A description of a component of the overall certainty.
-  @HiveField(5)
   List<RiskEvidenceSynthesis_CertaintySubcomponent> certaintySubcomponent;
 
 RiskEvidenceSynthesis_Certainty(
@@ -680,12 +637,10 @@ RiskEvidenceSynthesis_Certainty(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 527)
 class RiskEvidenceSynthesis_CertaintySubcomponent {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -694,7 +649,6 @@ class RiskEvidenceSynthesis_CertaintySubcomponent {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -709,20 +663,16 @@ class RiskEvidenceSynthesis_CertaintySubcomponent {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Type of subcomponent of certainty rating.
-  @HiveField(3)
   CodeableConcept type;
 
   //  A rating of a subcomponent of rating certainty.
-  @HiveField(4)
   List<CodeableConcept> rating;
 
   //  A human-readable string to clarify or explain concepts about the
   // resource.
-  @HiveField(5)
   List<Annotation> note;
 
 RiskEvidenceSynthesis_CertaintySubcomponent(
@@ -920,254 +870,6 @@ class RiskEvidenceSynthesisAdapter extends TypeAdapter<RiskEvidenceSynthesis> {
       ..write(obj.riskEstimate)
       ..writeByte(52)
       ..write(obj.certainty);
-  }
-}
-
-class RiskEvidenceSynthesis_SampleSizeAdapter
-    extends TypeAdapter<RiskEvidenceSynthesis_SampleSize> {
-  @override
-  final typeId = 523;
-
-  @override
-  RiskEvidenceSynthesis_SampleSize read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return RiskEvidenceSynthesis_SampleSize(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      description: fields[3] as String,
-      elementDescription: fields[4] as Element,
-      numberOfStudies: fields[5] as int,
-      elementNumberOfStudies: fields[6] as Element,
-      numberOfParticipants: fields[7] as int,
-      elementNumberOfParticipants: fields[8] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, RiskEvidenceSynthesis_SampleSize obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.description)
-      ..writeByte(4)
-      ..write(obj.elementDescription)
-      ..writeByte(5)
-      ..write(obj.numberOfStudies)
-      ..writeByte(6)
-      ..write(obj.elementNumberOfStudies)
-      ..writeByte(7)
-      ..write(obj.numberOfParticipants)
-      ..writeByte(8)
-      ..write(obj.elementNumberOfParticipants);
-  }
-}
-
-class RiskEvidenceSynthesis_RiskEstimateAdapter
-    extends TypeAdapter<RiskEvidenceSynthesis_RiskEstimate> {
-  @override
-  final typeId = 524;
-
-  @override
-  RiskEvidenceSynthesis_RiskEstimate read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return RiskEvidenceSynthesis_RiskEstimate(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      description: fields[3] as String,
-      elementDescription: fields[4] as Element,
-      type: fields[5] as CodeableConcept,
-      value: fields[6] as double,
-      elementValue: fields[7] as Element,
-      unitOfMeasure: fields[8] as CodeableConcept,
-      denominatorCount: fields[9] as int,
-      elementDenominatorCount: fields[10] as Element,
-      numeratorCount: fields[11] as int,
-      elementNumeratorCount: fields[12] as Element,
-      precisionEstimate:
-          (fields[13] as List)?.cast<RiskEvidenceSynthesis_PrecisionEstimate>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, RiskEvidenceSynthesis_RiskEstimate obj) {
-    writer
-      ..writeByte(14)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.description)
-      ..writeByte(4)
-      ..write(obj.elementDescription)
-      ..writeByte(5)
-      ..write(obj.type)
-      ..writeByte(6)
-      ..write(obj.value)
-      ..writeByte(7)
-      ..write(obj.elementValue)
-      ..writeByte(8)
-      ..write(obj.unitOfMeasure)
-      ..writeByte(9)
-      ..write(obj.denominatorCount)
-      ..writeByte(10)
-      ..write(obj.elementDenominatorCount)
-      ..writeByte(11)
-      ..write(obj.numeratorCount)
-      ..writeByte(12)
-      ..write(obj.elementNumeratorCount)
-      ..writeByte(13)
-      ..write(obj.precisionEstimate);
-  }
-}
-
-class RiskEvidenceSynthesis_PrecisionEstimateAdapter
-    extends TypeAdapter<RiskEvidenceSynthesis_PrecisionEstimate> {
-  @override
-  final typeId = 525;
-
-  @override
-  RiskEvidenceSynthesis_PrecisionEstimate read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return RiskEvidenceSynthesis_PrecisionEstimate(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as CodeableConcept,
-      level: fields[4] as double,
-      elementLevel: fields[5] as Element,
-      from: fields[6] as double,
-      elementFrom: fields[7] as Element,
-      to: fields[8] as double,
-      elementTo: fields[9] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, RiskEvidenceSynthesis_PrecisionEstimate obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.level)
-      ..writeByte(5)
-      ..write(obj.elementLevel)
-      ..writeByte(6)
-      ..write(obj.from)
-      ..writeByte(7)
-      ..write(obj.elementFrom)
-      ..writeByte(8)
-      ..write(obj.to)
-      ..writeByte(9)
-      ..write(obj.elementTo);
-  }
-}
-
-class RiskEvidenceSynthesis_CertaintyAdapter
-    extends TypeAdapter<RiskEvidenceSynthesis_Certainty> {
-  @override
-  final typeId = 526;
-
-  @override
-  RiskEvidenceSynthesis_Certainty read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return RiskEvidenceSynthesis_Certainty(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      rating: (fields[3] as List)?.cast<CodeableConcept>(),
-      note: (fields[4] as List)?.cast<Annotation>(),
-      certaintySubcomponent: (fields[5] as List)
-          ?.cast<RiskEvidenceSynthesis_CertaintySubcomponent>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, RiskEvidenceSynthesis_Certainty obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.rating)
-      ..writeByte(4)
-      ..write(obj.note)
-      ..writeByte(5)
-      ..write(obj.certaintySubcomponent);
-  }
-}
-
-class RiskEvidenceSynthesis_CertaintySubcomponentAdapter
-    extends TypeAdapter<RiskEvidenceSynthesis_CertaintySubcomponent> {
-  @override
-  final typeId = 527;
-
-  @override
-  RiskEvidenceSynthesis_CertaintySubcomponent read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return RiskEvidenceSynthesis_CertaintySubcomponent(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as CodeableConcept,
-      rating: (fields[4] as List)?.cast<CodeableConcept>(),
-      note: (fields[5] as List)?.cast<Annotation>(),
-    );
-  }
-
-  @override
-  void write(
-      BinaryWriter writer, RiskEvidenceSynthesis_CertaintySubcomponent obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.rating)
-      ..writeByte(5)
-      ..write(obj.note);
   }
 }
 

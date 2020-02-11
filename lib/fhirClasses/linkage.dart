@@ -129,12 +129,10 @@ Linkage(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 346)
 class Linkage_Item {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -143,7 +141,6 @@ class Linkage_Item {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -158,20 +155,16 @@ class Linkage_Item {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Distinguishes which item is "source of truth" (if any) and which items
   // are no longer considered to be current representations.
-  @HiveField(3)
   String type; // <code> enum: source/alternate/historical;
 
   //  Extensions for type
-  @HiveField(4)
   Element elementType;
 
   //  The resource instance being linked as part of the group.
-  @HiveField(5)
   Reference resource;
 
 Linkage_Item(
@@ -255,45 +248,6 @@ class LinkageAdapter extends TypeAdapter<Linkage> {
       ..write(obj.author)
       ..writeByte(14)
       ..write(obj.item);
-  }
-}
-
-class Linkage_ItemAdapter extends TypeAdapter<Linkage_Item> {
-  @override
-  final typeId = 346;
-
-  @override
-  Linkage_Item read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Linkage_Item(
-      fields[5] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as String,
-      elementType: fields[4] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Linkage_Item obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.elementType)
-      ..writeByte(5)
-      ..write(obj.resource);
   }
 }
 

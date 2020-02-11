@@ -213,12 +213,10 @@ PaymentReconciliation(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 476)
 class PaymentReconciliation_Detail {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -227,7 +225,6 @@ class PaymentReconciliation_Detail {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -242,56 +239,44 @@ class PaymentReconciliation_Detail {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Unique identifier for the current payment item for the referenced
   // payable.
-  @HiveField(3)
   Identifier identifier;
 
   //  Unique identifier for the prior payment item for the referenced
   // payable.
-  @HiveField(4)
   Identifier predecessor;
 
   //  Code to indicate the nature of the payment.
-  @HiveField(5)
   CodeableConcept type;
 
   //  A resource, such as a Claim, the evaluation of which could lead to
   // payment.
-  @HiveField(6)
   Reference request;
 
   //  The party which submitted the claim or financial transaction.
-  @HiveField(7)
   Reference submitter;
 
   //  A resource, such as a ClaimResponse, which contains a commitment to
   // payment.
-  @HiveField(8)
   Reference response;
 
   //  The date from the response resource containing a commitment to pay.
-  @HiveField(9)
   String date;
 
   //  Extensions for date
-  @HiveField(10)
   Element elementDate;
 
   //  A reference to the individual who is responsible for inquiries
   // regarding the response and its payment.
-  @HiveField(11)
   Reference responsible;
 
   //  The party which is receiving the payment.
-  @HiveField(12)
   Reference payee;
 
   //  The monetary amount allocated from the total payment to the payable.
-  @HiveField(13)
   Money amount;
 
 PaymentReconciliation_Detail(
@@ -316,12 +301,10 @@ PaymentReconciliation_Detail(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 477)
 class PaymentReconciliation_ProcessNote {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -330,7 +313,6 @@ class PaymentReconciliation_ProcessNote {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -345,23 +327,18 @@ class PaymentReconciliation_ProcessNote {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The business purpose of the note text.
-  @HiveField(3)
   String type; // <code> enum: display/print/printoper;
 
   //  Extensions for type
-  @HiveField(4)
   Element elementType;
 
   //  The explanation or description associated with the processing.
-  @HiveField(5)
   String text;
 
   //  Extensions for text
-  @HiveField(6)
   Element elementText;
 
 PaymentReconciliation_ProcessNote(
@@ -495,113 +472,6 @@ class PaymentReconciliationAdapter extends TypeAdapter<PaymentReconciliation> {
       ..write(obj.formCode)
       ..writeByte(30)
       ..write(obj.processNote);
-  }
-}
-
-class PaymentReconciliation_DetailAdapter
-    extends TypeAdapter<PaymentReconciliation_Detail> {
-  @override
-  final typeId = 476;
-
-  @override
-  PaymentReconciliation_Detail read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return PaymentReconciliation_Detail(
-      fields[5] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      identifier: fields[3] as Identifier,
-      predecessor: fields[4] as Identifier,
-      request: fields[6] as Reference,
-      submitter: fields[7] as Reference,
-      response: fields[8] as Reference,
-      date: fields[9] as String,
-      elementDate: fields[10] as Element,
-      responsible: fields[11] as Reference,
-      payee: fields[12] as Reference,
-      amount: fields[13] as Money,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, PaymentReconciliation_Detail obj) {
-    writer
-      ..writeByte(14)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.identifier)
-      ..writeByte(4)
-      ..write(obj.predecessor)
-      ..writeByte(5)
-      ..write(obj.type)
-      ..writeByte(6)
-      ..write(obj.request)
-      ..writeByte(7)
-      ..write(obj.submitter)
-      ..writeByte(8)
-      ..write(obj.response)
-      ..writeByte(9)
-      ..write(obj.date)
-      ..writeByte(10)
-      ..write(obj.elementDate)
-      ..writeByte(11)
-      ..write(obj.responsible)
-      ..writeByte(12)
-      ..write(obj.payee)
-      ..writeByte(13)
-      ..write(obj.amount);
-  }
-}
-
-class PaymentReconciliation_ProcessNoteAdapter
-    extends TypeAdapter<PaymentReconciliation_ProcessNote> {
-  @override
-  final typeId = 477;
-
-  @override
-  PaymentReconciliation_ProcessNote read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return PaymentReconciliation_ProcessNote(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as String,
-      elementType: fields[4] as Element,
-      text: fields[5] as String,
-      elementText: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, PaymentReconciliation_ProcessNote obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.elementType)
-      ..writeByte(5)
-      ..write(obj.text)
-      ..writeByte(6)
-      ..write(obj.elementText);
   }
 }
 

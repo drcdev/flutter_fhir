@@ -298,12 +298,10 @@ ValueSet(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 644)
 class ValueSet_Compose {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -312,7 +310,6 @@ class ValueSet_Compose {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -327,18 +324,15 @@ class ValueSet_Compose {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The Locked Date is  the effective date that is used to determine the
   // version of all referenced Code Systems and Value Set Definitions
   // included in the compose that are not already tied to a specific
   // version.
-  @HiveField(3)
   String lockedDate;
 
   //  Extensions for lockedDate
-  @HiveField(4)
   Element elementLockedDate;
 
   //  Whether inactive codes - codes that are not approved for current use -
@@ -347,20 +341,16 @@ class ValueSet_Compose {
   // not be included in the expansion. If absent, the behavior is determined
   // by the implementation, or by the applicable $expand parameters (but
   // generally, inactive codes would be expected to be included).
-  @HiveField(5)
   bool inactive;
 
   //  Extensions for inactive
-  @HiveField(6)
   Element elementInactive;
 
   //  Include one or more codes from a code system or other value set(s).
-  @HiveField(7)
   List<ValueSet_Include> include;
 
   //  Exclude one or more codes from the value set based on code system
   // filters and/or other value sets.
-  @HiveField(8)
   List<ValueSet_Include> exclude;
 
 ValueSet_Compose(
@@ -380,12 +370,10 @@ ValueSet_Compose(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 645)
 class ValueSet_Include {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -394,7 +382,6 @@ class ValueSet_Include {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -409,43 +396,35 @@ class ValueSet_Include {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  An absolute URI which is the code system from which the selected codes
   // come from.
-  @HiveField(3)
   String system;
 
   //  Extensions for system
-  @HiveField(4)
   Element elementSystem;
 
   //  The version of the code system that the codes are selected from, or
   // the special version '*' for all versions.
-  @HiveField(5)
   String version;
 
   //  Extensions for version
-  @HiveField(6)
   Element elementVersion;
 
   //  Specifies a concept to be included or excluded.
-  @HiveField(7)
   List<ValueSet_Concept> concept;
 
   //  Select concepts by specify a matching criterion based on the
   // properties (including relationships) defined by the system, or on
   // filters defined by the system. If multiple filters are specified, they
   // SHALL all be true.
-  @HiveField(8)
   List<ValueSet_Filter> filter;
 
   //  Selects the concepts found in this value set (based on its value set
   // definition). This is an absolute URI that is a reference to
   // ValueSet.url.  If multiple value sets are specified this includes the
   // union of the contents of all of the referenced value sets.
-  @HiveField(9)
   List<String> valueSet;
 
 ValueSet_Include(
@@ -466,12 +445,10 @@ ValueSet_Include(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 646)
 class ValueSet_Concept {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -480,7 +457,6 @@ class ValueSet_Concept {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -495,31 +471,25 @@ class ValueSet_Concept {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Specifies a code for the concept to be included or excluded.
-  @HiveField(3)
   String code;
 
   //  Extensions for code
-  @HiveField(4)
   Element elementCode;
 
   //  The text to display to the user for this concept in the context of
   // this valueset. If no display is provided, then applications using the
   // value set use the display specified for the code by the system.
-  @HiveField(5)
   String display;
 
   //  Extensions for display
-  @HiveField(6)
   Element elementDisplay;
 
   //  Additional representations for this concept when used in this value
   // set - other languages, aliases, specialized purposes, used for
   // particular purposes, etc.
-  @HiveField(7)
   List<ValueSet_Designation> designation;
 
 ValueSet_Concept(
@@ -538,12 +508,10 @@ ValueSet_Concept(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 647)
 class ValueSet_Designation {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -552,7 +520,6 @@ class ValueSet_Designation {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -567,27 +534,21 @@ class ValueSet_Designation {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The language this designation is defined for.
-  @HiveField(3)
   String language;
 
   //  Extensions for language
-  @HiveField(4)
   Element elementLanguage;
 
   //  A code that represents types of uses of designations.
-  @HiveField(5)
   Coding use;
 
   //  The text value for this designation.
-  @HiveField(6)
   String value;
 
   //  Extensions for value
-  @HiveField(7)
   Element elementValue;
 
 ValueSet_Designation(
@@ -606,12 +567,10 @@ ValueSet_Designation(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 648)
 class ValueSet_Filter {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -620,7 +579,6 @@ class ValueSet_Filter {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -635,24 +593,19 @@ class ValueSet_Filter {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A code that identifies a property or a filter defined in the code
   // system.
-  @HiveField(3)
   String property;
 
   //  Extensions for property
-  @HiveField(4)
   Element elementProperty;
 
   //  The kind of operation to perform as a part of the filter criteria.
-  @HiveField(5)
   String op; // <code> enum: =/is-a/descendent-of/is-not-a/regex/in/not-in/generalizes/exists;
 
   //  Extensions for op
-  @HiveField(6)
   Element elementOp;
 
   //  The match value may be either a code defined by the system, or a
@@ -661,11 +614,9 @@ class ValueSet_Filter {
   // CodeSystem) or of the system filter value (if the filter represents a
   // filter defined in CodeSystem) when the operation is 'regex', or one of
   // the values (true and false), when the operation is 'exists'.
-  @HiveField(7)
   String value;
 
   //  Extensions for value
-  @HiveField(8)
   Element elementValue;
 
 ValueSet_Filter(
@@ -685,12 +636,10 @@ ValueSet_Filter(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 649)
 class ValueSet_Expansion {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -699,7 +648,6 @@ class ValueSet_Expansion {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -714,7 +662,6 @@ class ValueSet_Expansion {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  An identifier that uniquely identifies this expansion of the valueset,
@@ -723,50 +670,40 @@ class ValueSet_Expansion {
   // Systems may re-use the same identifier as long as those factors remain
   // the same, and the expansion is the same, but are not required to do so.
   // This is a business identifier.
-  @HiveField(3)
   String identifier;
 
   //  Extensions for identifier
-  @HiveField(4)
   Element elementIdentifier;
 
   //  The time at which the expansion was produced by the expanding system.
-  @HiveField(5)
   DateTime timestamp;
 
   //  Extensions for timestamp
-  @HiveField(6)
   Element elementTimestamp;
 
   //  The total number of concepts in the expansion. If the number of
   // concept nodes in this resource is less than the stated number, then the
   // server can return more using the offset parameter.
-  @HiveField(7)
   int total;
 
   //  Extensions for total
-  @HiveField(8)
   Element elementTotal;
 
   //  If paging is being used, the offset at which this resource starts. 
   // I.e. this resource is a partial view into the expansion. If paging is
   // not being used, this element SHALL NOT be present.
-  @HiveField(9)
   int offset;
 
   //  Extensions for offset
-  @HiveField(10)
   Element elementOffset;
 
   //  A parameter that controlled the expansion process. These parameters
   // may be used by users of expanded value sets to check whether the
   // expansion is suitable for a particular purpose, or to pick the correct
   // expansion.
-  @HiveField(11)
   List<ValueSet_Parameter> parameter;
 
   //  The codes that are contained in the value set expansion.
-  @HiveField(12)
   List<ValueSet_Contains> contains;
 
 ValueSet_Expansion(
@@ -790,12 +727,10 @@ ValueSet_Expansion(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 650)
 class ValueSet_Parameter {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -804,7 +739,6 @@ class ValueSet_Parameter {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -819,71 +753,56 @@ class ValueSet_Parameter {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Name of the input parameter to the $expand operation; may be a
   // server-assigned name for additional default or other server-supplied
   // parameters used to control the expansion process.
-  @HiveField(3)
   String name;
 
   //  Extensions for name
-  @HiveField(4)
   Element elementName;
 
   //  The value of the parameter.
-  @HiveField(5)
   String valueString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for valueString
-  @HiveField(6)
   Element elementValueString;
 
   //  The value of the parameter.
-  @HiveField(7)
   bool valueBoolean; //  pattern: ^true|false$
 
   //  Extensions for valueBoolean
-  @HiveField(8)
   Element elementValueBoolean;
 
   //  The value of the parameter.
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
 
   //  Extensions for valueInteger
-  @HiveField(10)
   Element elementValueInteger;
 
   //  The value of the parameter.
   double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
 
   //  Extensions for valueDecimal
-  @HiveField(12)
   Element elementValueDecimal;
 
   //  The value of the parameter.
-  @HiveField(13)
   String valueUri; //  pattern: ^\S*$
 
   //  Extensions for valueUri
-  @HiveField(14)
   Element elementValueUri;
 
   //  The value of the parameter.
-  @HiveField(15)
   String valueCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
 
   //  Extensions for valueCode
-  @HiveField(16)
   Element elementValueCode;
 
   //  The value of the parameter.
-  @HiveField(17)
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for valueDateTime
-  @HiveField(18)
   Element elementValueDateTime;
 
 ValueSet_Parameter(
@@ -913,12 +832,10 @@ ValueSet_Parameter(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 651)
 class ValueSet_Contains {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -927,7 +844,6 @@ class ValueSet_Contains {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -942,26 +858,21 @@ class ValueSet_Contains {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  An absolute URI which is the code system in which the code for this
   // item in the expansion is defined.
-  @HiveField(3)
   String system;
 
   //  Extensions for system
-  @HiveField(4)
   Element elementSystem;
 
   //  If true, this entry is included in the expansion for navigational
   // purposes, and the user cannot select the code directly as a proper
   // value.
-  @HiveField(5)
   bool abstract;
 
   //  Extensions for abstract
-  @HiveField(6)
   Element elementAbstract;
 
   //  If the concept is inactive in the code system that defines it.
@@ -969,11 +880,9 @@ class ValueSet_Contains {
   // maintained by the code system for understanding legacy data. It might
   // not be known or specified whether an concept is inactive (and it may
   // depend on the context of use).
-  @HiveField(7)
   bool inactive;
 
   //  Extensions for inactive
-  @HiveField(8)
   Element elementInactive;
 
   //  The version of the code system from this code was taken. Note that a
@@ -981,40 +890,32 @@ class ValueSet_Contains {
   // the meaning of codes is consistent across versions. However this cannot
   // consistently be assured, and when the meaning is not guaranteed to be
   // consistent, the version SHOULD be exchanged.
-  @HiveField(9)
   String version;
 
   //  Extensions for version
-  @HiveField(10)
   Element elementVersion;
 
   //  The code for this item in the expansion hierarchy. If this code is
   // missing the entry in the hierarchy is a place holder (abstract) and
   // does not represent a valid code in the value set.
-  @HiveField(11)
   String code;
 
   //  Extensions for code
-  @HiveField(12)
   Element elementCode;
 
   //  The recommended display for this item in the expansion.
-  @HiveField(13)
   String display;
 
   //  Extensions for display
-  @HiveField(14)
   Element elementDisplay;
 
   //  Additional representations for this item - other languages, aliases,
   // specialized purposes, used for particular purposes, etc. These are
   // relevant when the conditions of the expansion do not fix to a single
   // correct representation.
-  @HiveField(15)
   List<ValueSet_Designation> designation;
 
   //  Other codes and entries contained under this entry in the hierarchy.
-  @HiveField(16)
   List<ValueSet_Contains> contains;
 
 ValueSet_Contains(
@@ -1187,447 +1088,6 @@ class ValueSetAdapter extends TypeAdapter<ValueSet> {
       ..write(obj.compose)
       ..writeByte(40)
       ..write(obj.expansion);
-  }
-}
-
-class ValueSet_ComposeAdapter extends TypeAdapter<ValueSet_Compose> {
-  @override
-  final typeId = 644;
-
-  @override
-  ValueSet_Compose read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ValueSet_Compose(
-      (fields[7] as List)?.cast<ValueSet_Include>(),
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      lockedDate: fields[3] as String,
-      elementLockedDate: fields[4] as Element,
-      inactive: fields[5] as bool,
-      elementInactive: fields[6] as Element,
-      exclude: (fields[8] as List)?.cast<ValueSet_Include>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ValueSet_Compose obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.lockedDate)
-      ..writeByte(4)
-      ..write(obj.elementLockedDate)
-      ..writeByte(5)
-      ..write(obj.inactive)
-      ..writeByte(6)
-      ..write(obj.elementInactive)
-      ..writeByte(7)
-      ..write(obj.include)
-      ..writeByte(8)
-      ..write(obj.exclude);
-  }
-}
-
-class ValueSet_IncludeAdapter extends TypeAdapter<ValueSet_Include> {
-  @override
-  final typeId = 645;
-
-  @override
-  ValueSet_Include read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ValueSet_Include(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      system: fields[3] as String,
-      elementSystem: fields[4] as Element,
-      version: fields[5] as String,
-      elementVersion: fields[6] as Element,
-      concept: (fields[7] as List)?.cast<ValueSet_Concept>(),
-      filter: (fields[8] as List)?.cast<ValueSet_Filter>(),
-      valueSet: (fields[9] as List)?.cast<String>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ValueSet_Include obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.system)
-      ..writeByte(4)
-      ..write(obj.elementSystem)
-      ..writeByte(5)
-      ..write(obj.version)
-      ..writeByte(6)
-      ..write(obj.elementVersion)
-      ..writeByte(7)
-      ..write(obj.concept)
-      ..writeByte(8)
-      ..write(obj.filter)
-      ..writeByte(9)
-      ..write(obj.valueSet);
-  }
-}
-
-class ValueSet_ConceptAdapter extends TypeAdapter<ValueSet_Concept> {
-  @override
-  final typeId = 646;
-
-  @override
-  ValueSet_Concept read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ValueSet_Concept(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as String,
-      elementCode: fields[4] as Element,
-      display: fields[5] as String,
-      elementDisplay: fields[6] as Element,
-      designation: (fields[7] as List)?.cast<ValueSet_Designation>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ValueSet_Concept obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.elementCode)
-      ..writeByte(5)
-      ..write(obj.display)
-      ..writeByte(6)
-      ..write(obj.elementDisplay)
-      ..writeByte(7)
-      ..write(obj.designation);
-  }
-}
-
-class ValueSet_DesignationAdapter extends TypeAdapter<ValueSet_Designation> {
-  @override
-  final typeId = 647;
-
-  @override
-  ValueSet_Designation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ValueSet_Designation(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      language: fields[3] as String,
-      elementLanguage: fields[4] as Element,
-      use: fields[5] as Coding,
-      value: fields[6] as String,
-      elementValue: fields[7] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ValueSet_Designation obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.language)
-      ..writeByte(4)
-      ..write(obj.elementLanguage)
-      ..writeByte(5)
-      ..write(obj.use)
-      ..writeByte(6)
-      ..write(obj.value)
-      ..writeByte(7)
-      ..write(obj.elementValue);
-  }
-}
-
-class ValueSet_FilterAdapter extends TypeAdapter<ValueSet_Filter> {
-  @override
-  final typeId = 648;
-
-  @override
-  ValueSet_Filter read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ValueSet_Filter(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      property: fields[3] as String,
-      elementProperty: fields[4] as Element,
-      op: fields[5] as String,
-      elementOp: fields[6] as Element,
-      value: fields[7] as String,
-      elementValue: fields[8] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ValueSet_Filter obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.property)
-      ..writeByte(4)
-      ..write(obj.elementProperty)
-      ..writeByte(5)
-      ..write(obj.op)
-      ..writeByte(6)
-      ..write(obj.elementOp)
-      ..writeByte(7)
-      ..write(obj.value)
-      ..writeByte(8)
-      ..write(obj.elementValue);
-  }
-}
-
-class ValueSet_ExpansionAdapter extends TypeAdapter<ValueSet_Expansion> {
-  @override
-  final typeId = 649;
-
-  @override
-  ValueSet_Expansion read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ValueSet_Expansion(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      identifier: fields[3] as String,
-      elementIdentifier: fields[4] as Element,
-      timestamp: fields[5] as DateTime,
-      elementTimestamp: fields[6] as Element,
-      total: fields[7] as int,
-      elementTotal: fields[8] as Element,
-      offset: fields[9] as int,
-      elementOffset: fields[10] as Element,
-      parameter: (fields[11] as List)?.cast<ValueSet_Parameter>(),
-      contains: (fields[12] as List)?.cast<ValueSet_Contains>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ValueSet_Expansion obj) {
-    writer
-      ..writeByte(13)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.identifier)
-      ..writeByte(4)
-      ..write(obj.elementIdentifier)
-      ..writeByte(5)
-      ..write(obj.timestamp)
-      ..writeByte(6)
-      ..write(obj.elementTimestamp)
-      ..writeByte(7)
-      ..write(obj.total)
-      ..writeByte(8)
-      ..write(obj.elementTotal)
-      ..writeByte(9)
-      ..write(obj.offset)
-      ..writeByte(10)
-      ..write(obj.elementOffset)
-      ..writeByte(11)
-      ..write(obj.parameter)
-      ..writeByte(12)
-      ..write(obj.contains);
-  }
-}
-
-class ValueSet_ParameterAdapter extends TypeAdapter<ValueSet_Parameter> {
-  @override
-  final typeId = 650;
-
-  @override
-  ValueSet_Parameter read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ValueSet_Parameter(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      name: fields[3] as String,
-      elementName: fields[4] as Element,
-      valueString: fields[5] as String,
-      elementValueString: fields[6] as Element,
-      valueBoolean: fields[7] as bool,
-      elementValueBoolean: fields[8] as Element,
-      elementValueInteger: fields[10] as Element,
-      elementValueDecimal: fields[12] as Element,
-      valueUri: fields[13] as String,
-      elementValueUri: fields[14] as Element,
-      valueCode: fields[15] as String,
-      elementValueCode: fields[16] as Element,
-      valueDateTime: fields[17] as String,
-      elementValueDateTime: fields[18] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ValueSet_Parameter obj) {
-    writer
-      ..writeByte(17)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.name)
-      ..writeByte(4)
-      ..write(obj.elementName)
-      ..writeByte(5)
-      ..write(obj.valueString)
-      ..writeByte(6)
-      ..write(obj.elementValueString)
-      ..writeByte(7)
-      ..write(obj.valueBoolean)
-      ..writeByte(8)
-      ..write(obj.elementValueBoolean)
-      ..writeByte(10)
-      ..write(obj.elementValueInteger)
-      ..writeByte(12)
-      ..write(obj.elementValueDecimal)
-      ..writeByte(13)
-      ..write(obj.valueUri)
-      ..writeByte(14)
-      ..write(obj.elementValueUri)
-      ..writeByte(15)
-      ..write(obj.valueCode)
-      ..writeByte(16)
-      ..write(obj.elementValueCode)
-      ..writeByte(17)
-      ..write(obj.valueDateTime)
-      ..writeByte(18)
-      ..write(obj.elementValueDateTime);
-  }
-}
-
-class ValueSet_ContainsAdapter extends TypeAdapter<ValueSet_Contains> {
-  @override
-  final typeId = 651;
-
-  @override
-  ValueSet_Contains read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ValueSet_Contains(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      system: fields[3] as String,
-      elementSystem: fields[4] as Element,
-      abstract: fields[5] as bool,
-      elementAbstract: fields[6] as Element,
-      inactive: fields[7] as bool,
-      elementInactive: fields[8] as Element,
-      version: fields[9] as String,
-      elementVersion: fields[10] as Element,
-      code: fields[11] as String,
-      elementCode: fields[12] as Element,
-      display: fields[13] as String,
-      elementDisplay: fields[14] as Element,
-      designation: (fields[15] as List)?.cast<ValueSet_Designation>(),
-      contains: (fields[16] as List)?.cast<ValueSet_Contains>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ValueSet_Contains obj) {
-    writer
-      ..writeByte(17)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.system)
-      ..writeByte(4)
-      ..write(obj.elementSystem)
-      ..writeByte(5)
-      ..write(obj.abstract)
-      ..writeByte(6)
-      ..write(obj.elementAbstract)
-      ..writeByte(7)
-      ..write(obj.inactive)
-      ..writeByte(8)
-      ..write(obj.elementInactive)
-      ..writeByte(9)
-      ..write(obj.version)
-      ..writeByte(10)
-      ..write(obj.elementVersion)
-      ..writeByte(11)
-      ..write(obj.code)
-      ..writeByte(12)
-      ..write(obj.elementCode)
-      ..writeByte(13)
-      ..write(obj.display)
-      ..writeByte(14)
-      ..write(obj.elementDisplay)
-      ..writeByte(15)
-      ..write(obj.designation)
-      ..writeByte(16)
-      ..write(obj.contains);
   }
 }
 

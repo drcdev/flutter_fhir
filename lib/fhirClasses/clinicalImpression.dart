@@ -259,12 +259,10 @@ ClinicalImpression(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 141)
 class ClinicalImpression_Investigation {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -273,7 +271,6 @@ class ClinicalImpression_Investigation {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -288,18 +285,15 @@ class ClinicalImpression_Investigation {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A name/code for the group ("set") of investigations. Typically, this
   // will be something like "signs", "symptoms", "clinical", "diagnostic",
   // but the list is not constrained, and others such groups such as
   // (exposure|family|travel|nutritional) history may be used.
-  @HiveField(3)
   CodeableConcept code;
 
   //  A record of a specific investigation that was undertaken.
-  @HiveField(4)
   List<Reference> item;
 
 ClinicalImpression_Investigation(
@@ -315,12 +309,10 @@ ClinicalImpression_Investigation(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 142)
 class ClinicalImpression_Finding {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -329,7 +321,6 @@ class ClinicalImpression_Finding {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -344,25 +335,20 @@ class ClinicalImpression_Finding {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Specific text or code for finding or diagnosis, which may include
   // ruled-out or resolved conditions.
-  @HiveField(3)
   CodeableConcept itemCodeableConcept;
 
   //  Specific reference for finding or diagnosis, which may include
   // ruled-out or resolved conditions.
-  @HiveField(4)
   Reference itemReference;
 
   //  Which investigations support finding or diagnosis.
-  @HiveField(5)
   String basis;
 
   //  Extensions for basis
-  @HiveField(6)
   Element elementBasis;
 
 ClinicalImpression_Finding(
@@ -517,86 +503,6 @@ class ClinicalImpressionAdapter extends TypeAdapter<ClinicalImpression> {
       ..write(obj.supportingInfo)
       ..writeByte(37)
       ..write(obj.note);
-  }
-}
-
-class ClinicalImpression_InvestigationAdapter
-    extends TypeAdapter<ClinicalImpression_Investigation> {
-  @override
-  final typeId = 141;
-
-  @override
-  ClinicalImpression_Investigation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ClinicalImpression_Investigation(
-      fields[3] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      item: (fields[4] as List)?.cast<Reference>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ClinicalImpression_Investigation obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.item);
-  }
-}
-
-class ClinicalImpression_FindingAdapter
-    extends TypeAdapter<ClinicalImpression_Finding> {
-  @override
-  final typeId = 142;
-
-  @override
-  ClinicalImpression_Finding read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ClinicalImpression_Finding(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      itemCodeableConcept: fields[3] as CodeableConcept,
-      itemReference: fields[4] as Reference,
-      basis: fields[5] as String,
-      elementBasis: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ClinicalImpression_Finding obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.itemCodeableConcept)
-      ..writeByte(4)
-      ..write(obj.itemReference)
-      ..writeByte(5)
-      ..write(obj.basis)
-      ..writeByte(6)
-      ..write(obj.elementBasis);
   }
 }
 

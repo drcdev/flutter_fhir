@@ -316,12 +316,10 @@ ImplementationGuide(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 319)
 class ImplementationGuide_DependsOn {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -330,7 +328,6 @@ class ImplementationGuide_DependsOn {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -345,29 +342,23 @@ class ImplementationGuide_DependsOn {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A canonical reference to the Implementation guide for the dependency.
-  @HiveField(3)
   String uri;
 
   //  The NPM package name for the Implementation Guide that this IG depends
   // on.
-  @HiveField(4)
   String packageId;
 
   //  Extensions for packageId
-  @HiveField(5)
   Element elementPackageId;
 
   //  The version of the IG that is depended on, when the correct version is
   // required to understand the IG correctly.
-  @HiveField(6)
   String version;
 
   //  Extensions for version
-  @HiveField(7)
   Element elementVersion;
 
 ImplementationGuide_DependsOn(
@@ -386,12 +377,10 @@ ImplementationGuide_DependsOn(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 320)
 class ImplementationGuide_Global {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -400,7 +389,6 @@ class ImplementationGuide_Global {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -415,19 +403,15 @@ class ImplementationGuide_Global {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The type of resource that all instances must conform to.
-  @HiveField(3)
   String type;
 
   //  Extensions for type
-  @HiveField(4)
   Element elementType;
 
   //  A reference to the profile that all instances must conform to.
-  @HiveField(5)
   String profile;
 
 ImplementationGuide_Global(
@@ -444,12 +428,10 @@ ImplementationGuide_Global(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 321)
 class ImplementationGuide_Definition {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -458,7 +440,6 @@ class ImplementationGuide_Definition {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -473,32 +454,26 @@ class ImplementationGuide_Definition {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A logical group of resources. Logical groups can be used when building
   // pages.
-  @HiveField(3)
   List<ImplementationGuide_Grouping> grouping;
 
   //  A resource that is part of the implementation guide. Conformance
   // resources (value set, structure definition, capability statements etc.)
   // are obvious candidates for inclusion, but any kind of resource can be
   // included as an example resource.
-  @HiveField(4)
   List<ImplementationGuide_Resource> resource;
 
   //  A page / section in the implementation guide. The root page is the
   // implementation guide home page.
-  @HiveField(5)
   ImplementationGuide_Page page;
 
   //  Defines how IG is built by tools.
-  @HiveField(6)
   List<ImplementationGuide_Parameter> parameter;
 
   //  A template for building resources.
-  @HiveField(7)
   List<ImplementationGuide_Template> template;
 
 ImplementationGuide_Definition(
@@ -517,12 +492,10 @@ ImplementationGuide_Definition(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 322)
 class ImplementationGuide_Grouping {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -531,7 +504,6 @@ class ImplementationGuide_Grouping {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -546,24 +518,19 @@ class ImplementationGuide_Grouping {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The human-readable title to display for the package of resources when
   // rendering the implementation guide.
-  @HiveField(3)
   String name;
 
   //  Extensions for name
-  @HiveField(4)
   Element elementName;
 
   //  Human readable text describing the package.
-  @HiveField(5)
   String description;
 
   //  Extensions for description
-  @HiveField(6)
   Element elementDescription;
 
 ImplementationGuide_Grouping(
@@ -581,12 +548,10 @@ ImplementationGuide_Grouping(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 323)
 class ImplementationGuide_Resource {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -595,7 +560,6 @@ class ImplementationGuide_Resource {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -610,68 +574,54 @@ class ImplementationGuide_Resource {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Where this resource is found.
-  @HiveField(3)
   Reference reference;
 
   //  Indicates the FHIR Version(s) this artifact is intended to apply to.
   // If no versions are specified, the resource is assumed to apply to all
   // the versions stated in ImplementationGuide.fhirVersion.
-  @HiveField(4)
   List<String> fhirVersion; // <code> enum: 0.01/0.05/0.06/0.11/0.0.80/0.0.81/0.0.82/0.4.0/0.5.0/1.0.0/1.0.1/1.0.2/1.1.0/1.4.0/1.6.0/1.8.0/3.0.0/3.0.1/3.3.0/3.5.0/4.0.0/4.0.1> fhirVersion;
 
   //  Extensions for fhirVersion
-  @HiveField(5)
   List<Element> elementFhirVersion;
 
   //  A human assigned name for the resource. All resources SHOULD have a
   // name, but the name may be extracted from the resource (e.g.
   // ValueSet.name).
-  @HiveField(6)
   String name;
 
   //  Extensions for name
-  @HiveField(7)
   Element elementName;
 
   //  A description of the reason that a resource has been included in the
   // implementation guide.
-  @HiveField(8)
   String description;
 
   //  Extensions for description
-  @HiveField(9)
   Element elementDescription;
 
   //  If true or a reference, indicates the resource is an example instance.
   //  If a reference is present, indicates that the example is an example of
   // the specified profile.
-  @HiveField(10)
   bool exampleBoolean; //  pattern: ^true|false$
 
   //  Extensions for exampleBoolean
-  @HiveField(11)
   Element elementExampleBoolean;
 
   //  If true or a reference, indicates the resource is an example instance.
   //  If a reference is present, indicates that the example is an example of
   // the specified profile.
-  @HiveField(12)
   String exampleCanonical; //  pattern: ^\S*$
 
   //  Extensions for exampleCanonical
-  @HiveField(13)
   Element elementExampleCanonical;
 
   //  Reference to the id of the grouping this resource appears in.
-  @HiveField(14)
   String groupingId;
 
   //  Extensions for groupingId
-  @HiveField(15)
   Element elementGroupingId;
 
 ImplementationGuide_Resource(
@@ -698,12 +648,10 @@ ImplementationGuide_Resource(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 324)
 class ImplementationGuide_Page {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -712,7 +660,6 @@ class ImplementationGuide_Page {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -727,40 +674,31 @@ class ImplementationGuide_Page {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The source address for the page.
-  @HiveField(3)
   String nameUrl; //  pattern: ^\S*$
 
   //  Extensions for nameUrl
-  @HiveField(4)
   Element elementNameUrl;
 
   //  The source address for the page.
-  @HiveField(5)
   Reference nameReference;
 
   //  A short title used to represent this page in navigational structures
   // such as table of contents, bread crumbs, etc.
-  @HiveField(6)
   String title;
 
   //  Extensions for title
-  @HiveField(7)
   Element elementTitle;
 
   //  A code that indicates how the page is generated.
-  @HiveField(8)
   String generation; // <code> enum: html/markdown/xml/generated;
 
   //  Extensions for generation
-  @HiveField(9)
   Element elementGeneration;
 
   //  Nested Pages/Sections under this page.
-  @HiveField(10)
   List<ImplementationGuide_Page> page;
 
 ImplementationGuide_Page(
@@ -782,12 +720,10 @@ ImplementationGuide_Page(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 325)
 class ImplementationGuide_Parameter {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -796,7 +732,6 @@ class ImplementationGuide_Parameter {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -811,25 +746,20 @@ class ImplementationGuide_Parameter {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  apply | path-resource | path-pages | path-tx-cache |
   // expansion-parameter | rule-broken-links | generate-xml | generate-json
   // | generate-turtle | html-template.
-  @HiveField(3)
   String code; // <code> enum: apply/path-resource/path-pages/path-tx-cache/expansion-parameter/rule-broken-links/generate-xml/generate-json/generate-turtle/html-template;
 
   //  Extensions for code
-  @HiveField(4)
   Element elementCode;
 
   //  Value for named type.
-  @HiveField(5)
   String value;
 
   //  Extensions for value
-  @HiveField(6)
   Element elementValue;
 
 ImplementationGuide_Parameter(
@@ -847,12 +777,10 @@ ImplementationGuide_Parameter(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 326)
 class ImplementationGuide_Template {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -861,7 +789,6 @@ class ImplementationGuide_Template {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -876,31 +803,24 @@ class ImplementationGuide_Template {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Type of template specified.
-  @HiveField(3)
   String code;
 
   //  Extensions for code
-  @HiveField(4)
   Element elementCode;
 
   //  The source location for the template.
-  @HiveField(5)
   String source;
 
   //  Extensions for source
-  @HiveField(6)
   Element elementSource;
 
   //  The scope in which the template applies.
-  @HiveField(7)
   String scope;
 
   //  Extensions for scope
-  @HiveField(8)
   Element elementScope;
 
 ImplementationGuide_Template(
@@ -920,12 +840,10 @@ ImplementationGuide_Template(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 327)
 class ImplementationGuide_Manifest {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -934,7 +852,6 @@ class ImplementationGuide_Manifest {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -949,45 +866,36 @@ class ImplementationGuide_Manifest {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A pointer to official web page, PDF or other rendering of the
   // implementation guide.
-  @HiveField(3)
   String rendering;
 
   //  Extensions for rendering
-  @HiveField(4)
   Element elementRendering;
 
   //  A resource that is part of the implementation guide. Conformance
   // resources (value set, structure definition, capability statements etc.)
   // are obvious candidates for inclusion, but any kind of resource can be
   // included as an example resource.
-  @HiveField(5)
   List<ImplementationGuide_Resource1> resource;
 
   //  Information about a page within the IG.
-  @HiveField(6)
   List<ImplementationGuide_Page1> page;
 
   //  Indicates a relative path to an image that exists within the IG.
-  @HiveField(7)
   List<String> image;
 
   //  Extensions for image
-  @HiveField(8)
   List<Element> elementImage;
 
   //  Indicates the relative path of an additional non-page, non-image file
   // that is part of the IG - e.g. zip, jar and similar files that could be
   // the target of a hyperlink in a derived IG.
-  @HiveField(9)
   List<String> other;
 
   //  Extensions for other
-  @HiveField(10)
   List<Element> elementOther;
 
 ImplementationGuide_Manifest(
@@ -1009,12 +917,10 @@ ImplementationGuide_Manifest(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 328)
 class ImplementationGuide_Resource1 {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -1023,7 +929,6 @@ class ImplementationGuide_Resource1 {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -1038,39 +943,31 @@ class ImplementationGuide_Resource1 {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Where this resource is found.
-  @HiveField(3)
   Reference reference;
 
   //  If true or a reference, indicates the resource is an example instance.
   //  If a reference is present, indicates that the example is an example of
   // the specified profile.
-  @HiveField(4)
   bool exampleBoolean; //  pattern: ^true|false$
 
   //  Extensions for exampleBoolean
-  @HiveField(5)
   Element elementExampleBoolean;
 
   //  If true or a reference, indicates the resource is an example instance.
   //  If a reference is present, indicates that the example is an example of
   // the specified profile.
-  @HiveField(6)
   String exampleCanonical; //  pattern: ^\S*$
 
   //  Extensions for exampleCanonical
-  @HiveField(7)
   Element elementExampleCanonical;
 
   //  The relative path for primary page for this resource within the IG.
-  @HiveField(8)
   String relativePath;
 
   //  Extensions for relativePath
-  @HiveField(9)
   Element elementRelativePath;
 
 ImplementationGuide_Resource1(
@@ -1091,12 +988,10 @@ ImplementationGuide_Resource1(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 329)
 class ImplementationGuide_Page1 {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -1105,7 +1000,6 @@ class ImplementationGuide_Page1 {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -1120,31 +1014,24 @@ class ImplementationGuide_Page1 {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Relative path to the page.
-  @HiveField(3)
   String name;
 
   //  Extensions for name
-  @HiveField(4)
   Element elementName;
 
   //  Label for the page intended for human display.
-  @HiveField(5)
   String title;
 
   //  Extensions for title
-  @HiveField(6)
   Element elementTitle;
 
   //  The name of an anchor available on the page.
-  @HiveField(7)
   List<String> anchor;
 
   //  Extensions for anchor
-  @HiveField(8)
   List<Element> elementAnchor;
 
 ImplementationGuide_Page1(
@@ -1318,554 +1205,6 @@ class ImplementationGuideAdapter extends TypeAdapter<ImplementationGuide> {
       ..write(obj.definition)
       ..writeByte(43)
       ..write(obj.manifest);
-  }
-}
-
-class ImplementationGuide_DependsOnAdapter
-    extends TypeAdapter<ImplementationGuide_DependsOn> {
-  @override
-  final typeId = 319;
-
-  @override
-  ImplementationGuide_DependsOn read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ImplementationGuide_DependsOn(
-      fields[3] as String,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      packageId: fields[4] as String,
-      elementPackageId: fields[5] as Element,
-      version: fields[6] as String,
-      elementVersion: fields[7] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ImplementationGuide_DependsOn obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.uri)
-      ..writeByte(4)
-      ..write(obj.packageId)
-      ..writeByte(5)
-      ..write(obj.elementPackageId)
-      ..writeByte(6)
-      ..write(obj.version)
-      ..writeByte(7)
-      ..write(obj.elementVersion);
-  }
-}
-
-class ImplementationGuide_GlobalAdapter
-    extends TypeAdapter<ImplementationGuide_Global> {
-  @override
-  final typeId = 320;
-
-  @override
-  ImplementationGuide_Global read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ImplementationGuide_Global(
-      fields[5] as String,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as String,
-      elementType: fields[4] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ImplementationGuide_Global obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.elementType)
-      ..writeByte(5)
-      ..write(obj.profile);
-  }
-}
-
-class ImplementationGuide_DefinitionAdapter
-    extends TypeAdapter<ImplementationGuide_Definition> {
-  @override
-  final typeId = 321;
-
-  @override
-  ImplementationGuide_Definition read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ImplementationGuide_Definition(
-      (fields[4] as List)?.cast<ImplementationGuide_Resource>(),
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      grouping: (fields[3] as List)?.cast<ImplementationGuide_Grouping>(),
-      page: fields[5] as ImplementationGuide_Page,
-      parameter: (fields[6] as List)?.cast<ImplementationGuide_Parameter>(),
-      template: (fields[7] as List)?.cast<ImplementationGuide_Template>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ImplementationGuide_Definition obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.grouping)
-      ..writeByte(4)
-      ..write(obj.resource)
-      ..writeByte(5)
-      ..write(obj.page)
-      ..writeByte(6)
-      ..write(obj.parameter)
-      ..writeByte(7)
-      ..write(obj.template);
-  }
-}
-
-class ImplementationGuide_GroupingAdapter
-    extends TypeAdapter<ImplementationGuide_Grouping> {
-  @override
-  final typeId = 322;
-
-  @override
-  ImplementationGuide_Grouping read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ImplementationGuide_Grouping(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      name: fields[3] as String,
-      elementName: fields[4] as Element,
-      description: fields[5] as String,
-      elementDescription: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ImplementationGuide_Grouping obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.name)
-      ..writeByte(4)
-      ..write(obj.elementName)
-      ..writeByte(5)
-      ..write(obj.description)
-      ..writeByte(6)
-      ..write(obj.elementDescription);
-  }
-}
-
-class ImplementationGuide_ResourceAdapter
-    extends TypeAdapter<ImplementationGuide_Resource> {
-  @override
-  final typeId = 323;
-
-  @override
-  ImplementationGuide_Resource read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ImplementationGuide_Resource(
-      fields[3] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      fhirVersion: (fields[4] as List)?.cast<String>(),
-      elementFhirVersion: (fields[5] as List)?.cast<Element>(),
-      name: fields[6] as String,
-      elementName: fields[7] as Element,
-      description: fields[8] as String,
-      elementDescription: fields[9] as Element,
-      exampleBoolean: fields[10] as bool,
-      elementExampleBoolean: fields[11] as Element,
-      exampleCanonical: fields[12] as String,
-      elementExampleCanonical: fields[13] as Element,
-      groupingId: fields[14] as String,
-      elementGroupingId: fields[15] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ImplementationGuide_Resource obj) {
-    writer
-      ..writeByte(16)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.reference)
-      ..writeByte(4)
-      ..write(obj.fhirVersion)
-      ..writeByte(5)
-      ..write(obj.elementFhirVersion)
-      ..writeByte(6)
-      ..write(obj.name)
-      ..writeByte(7)
-      ..write(obj.elementName)
-      ..writeByte(8)
-      ..write(obj.description)
-      ..writeByte(9)
-      ..write(obj.elementDescription)
-      ..writeByte(10)
-      ..write(obj.exampleBoolean)
-      ..writeByte(11)
-      ..write(obj.elementExampleBoolean)
-      ..writeByte(12)
-      ..write(obj.exampleCanonical)
-      ..writeByte(13)
-      ..write(obj.elementExampleCanonical)
-      ..writeByte(14)
-      ..write(obj.groupingId)
-      ..writeByte(15)
-      ..write(obj.elementGroupingId);
-  }
-}
-
-class ImplementationGuide_PageAdapter
-    extends TypeAdapter<ImplementationGuide_Page> {
-  @override
-  final typeId = 324;
-
-  @override
-  ImplementationGuide_Page read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ImplementationGuide_Page(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      nameUrl: fields[3] as String,
-      elementNameUrl: fields[4] as Element,
-      nameReference: fields[5] as Reference,
-      title: fields[6] as String,
-      elementTitle: fields[7] as Element,
-      generation: fields[8] as String,
-      elementGeneration: fields[9] as Element,
-      page: (fields[10] as List)?.cast<ImplementationGuide_Page>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ImplementationGuide_Page obj) {
-    writer
-      ..writeByte(11)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.nameUrl)
-      ..writeByte(4)
-      ..write(obj.elementNameUrl)
-      ..writeByte(5)
-      ..write(obj.nameReference)
-      ..writeByte(6)
-      ..write(obj.title)
-      ..writeByte(7)
-      ..write(obj.elementTitle)
-      ..writeByte(8)
-      ..write(obj.generation)
-      ..writeByte(9)
-      ..write(obj.elementGeneration)
-      ..writeByte(10)
-      ..write(obj.page);
-  }
-}
-
-class ImplementationGuide_ParameterAdapter
-    extends TypeAdapter<ImplementationGuide_Parameter> {
-  @override
-  final typeId = 325;
-
-  @override
-  ImplementationGuide_Parameter read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ImplementationGuide_Parameter(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as String,
-      elementCode: fields[4] as Element,
-      value: fields[5] as String,
-      elementValue: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ImplementationGuide_Parameter obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.elementCode)
-      ..writeByte(5)
-      ..write(obj.value)
-      ..writeByte(6)
-      ..write(obj.elementValue);
-  }
-}
-
-class ImplementationGuide_TemplateAdapter
-    extends TypeAdapter<ImplementationGuide_Template> {
-  @override
-  final typeId = 326;
-
-  @override
-  ImplementationGuide_Template read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ImplementationGuide_Template(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as String,
-      elementCode: fields[4] as Element,
-      source: fields[5] as String,
-      elementSource: fields[6] as Element,
-      scope: fields[7] as String,
-      elementScope: fields[8] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ImplementationGuide_Template obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.elementCode)
-      ..writeByte(5)
-      ..write(obj.source)
-      ..writeByte(6)
-      ..write(obj.elementSource)
-      ..writeByte(7)
-      ..write(obj.scope)
-      ..writeByte(8)
-      ..write(obj.elementScope);
-  }
-}
-
-class ImplementationGuide_ManifestAdapter
-    extends TypeAdapter<ImplementationGuide_Manifest> {
-  @override
-  final typeId = 327;
-
-  @override
-  ImplementationGuide_Manifest read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ImplementationGuide_Manifest(
-      (fields[5] as List)?.cast<ImplementationGuide_Resource1>(),
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      rendering: fields[3] as String,
-      elementRendering: fields[4] as Element,
-      page: (fields[6] as List)?.cast<ImplementationGuide_Page1>(),
-      image: (fields[7] as List)?.cast<String>(),
-      elementImage: (fields[8] as List)?.cast<Element>(),
-      other: (fields[9] as List)?.cast<String>(),
-      elementOther: (fields[10] as List)?.cast<Element>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ImplementationGuide_Manifest obj) {
-    writer
-      ..writeByte(11)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.rendering)
-      ..writeByte(4)
-      ..write(obj.elementRendering)
-      ..writeByte(5)
-      ..write(obj.resource)
-      ..writeByte(6)
-      ..write(obj.page)
-      ..writeByte(7)
-      ..write(obj.image)
-      ..writeByte(8)
-      ..write(obj.elementImage)
-      ..writeByte(9)
-      ..write(obj.other)
-      ..writeByte(10)
-      ..write(obj.elementOther);
-  }
-}
-
-class ImplementationGuide_Resource1Adapter
-    extends TypeAdapter<ImplementationGuide_Resource1> {
-  @override
-  final typeId = 328;
-
-  @override
-  ImplementationGuide_Resource1 read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ImplementationGuide_Resource1(
-      fields[3] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      exampleBoolean: fields[4] as bool,
-      elementExampleBoolean: fields[5] as Element,
-      exampleCanonical: fields[6] as String,
-      elementExampleCanonical: fields[7] as Element,
-      relativePath: fields[8] as String,
-      elementRelativePath: fields[9] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ImplementationGuide_Resource1 obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.reference)
-      ..writeByte(4)
-      ..write(obj.exampleBoolean)
-      ..writeByte(5)
-      ..write(obj.elementExampleBoolean)
-      ..writeByte(6)
-      ..write(obj.exampleCanonical)
-      ..writeByte(7)
-      ..write(obj.elementExampleCanonical)
-      ..writeByte(8)
-      ..write(obj.relativePath)
-      ..writeByte(9)
-      ..write(obj.elementRelativePath);
-  }
-}
-
-class ImplementationGuide_Page1Adapter
-    extends TypeAdapter<ImplementationGuide_Page1> {
-  @override
-  final typeId = 329;
-
-  @override
-  ImplementationGuide_Page1 read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ImplementationGuide_Page1(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      name: fields[3] as String,
-      elementName: fields[4] as Element,
-      title: fields[5] as String,
-      elementTitle: fields[6] as Element,
-      anchor: (fields[7] as List)?.cast<String>(),
-      elementAnchor: (fields[8] as List)?.cast<Element>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ImplementationGuide_Page1 obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.name)
-      ..writeByte(4)
-      ..write(obj.elementName)
-      ..writeByte(5)
-      ..write(obj.title)
-      ..writeByte(6)
-      ..write(obj.elementTitle)
-      ..writeByte(7)
-      ..write(obj.anchor)
-      ..writeByte(8)
-      ..write(obj.elementAnchor);
   }
 }
 

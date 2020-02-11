@@ -182,12 +182,10 @@ EpisodeOfCare(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 252)
 class EpisodeOfCare_StatusHistory {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -196,7 +194,6 @@ class EpisodeOfCare_StatusHistory {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -211,19 +208,15 @@ class EpisodeOfCare_StatusHistory {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  planned | waitlist | active | onhold | finished | cancelled.
-  @HiveField(3)
   String status; // <code> enum: planned/waitlist/active/onhold/finished/cancelled/entered-in-error;
 
   //  Extensions for status
-  @HiveField(4)
   Element elementStatus;
 
   //  The period during this EpisodeOfCare that the specific status applied.
-  @HiveField(5)
   Period period;
 
 EpisodeOfCare_StatusHistory(
@@ -240,12 +233,10 @@ EpisodeOfCare_StatusHistory(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 253)
 class EpisodeOfCare_Diagnosis {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -254,7 +245,6 @@ class EpisodeOfCare_Diagnosis {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -269,25 +259,20 @@ class EpisodeOfCare_Diagnosis {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A list of conditions/problems/diagnoses that this episode of care is
   // intended to be providing care for.
-  @HiveField(3)
   Reference condition;
 
   //  Role that this diagnosis has within the episode of care (e.g.
   // admission, billing, discharge …).
-  @HiveField(4)
   CodeableConcept role;
 
   //  Ranking of the diagnosis (for each role type).
-  @HiveField(5)
   int rank;
 
   //  Extensions for rank
-  @HiveField(6)
   Element elementRank;
 
 EpisodeOfCare_Diagnosis(
@@ -399,89 +384,6 @@ class EpisodeOfCareAdapter extends TypeAdapter<EpisodeOfCare> {
       ..write(obj.team)
       ..writeByte(23)
       ..write(obj.account);
-  }
-}
-
-class EpisodeOfCare_StatusHistoryAdapter
-    extends TypeAdapter<EpisodeOfCare_StatusHistory> {
-  @override
-  final typeId = 252;
-
-  @override
-  EpisodeOfCare_StatusHistory read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return EpisodeOfCare_StatusHistory(
-      fields[5] as Period,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      status: fields[3] as String,
-      elementStatus: fields[4] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, EpisodeOfCare_StatusHistory obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.status)
-      ..writeByte(4)
-      ..write(obj.elementStatus)
-      ..writeByte(5)
-      ..write(obj.period);
-  }
-}
-
-class EpisodeOfCare_DiagnosisAdapter
-    extends TypeAdapter<EpisodeOfCare_Diagnosis> {
-  @override
-  final typeId = 253;
-
-  @override
-  EpisodeOfCare_Diagnosis read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return EpisodeOfCare_Diagnosis(
-      fields[3] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      role: fields[4] as CodeableConcept,
-      rank: fields[5] as int,
-      elementRank: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, EpisodeOfCare_Diagnosis obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.condition)
-      ..writeByte(4)
-      ..write(obj.role)
-      ..writeByte(5)
-      ..write(obj.rank)
-      ..writeByte(6)
-      ..write(obj.elementRank);
   }
 }
 

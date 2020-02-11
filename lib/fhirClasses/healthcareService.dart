@@ -283,12 +283,10 @@ HealthcareService(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 302)
 class HealthcareService_Eligibility {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -297,7 +295,6 @@ class HealthcareService_Eligibility {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -312,19 +309,15 @@ class HealthcareService_Eligibility {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Coded value for the eligibility.
-  @HiveField(3)
   CodeableConcept code;
 
   //  Describes the eligibility conditions for the service.
-  @HiveField(4)
   String comment;
 
   //  Extensions for comment
-  @HiveField(5)
   Element elementComment;
 
 HealthcareService_Eligibility(
@@ -341,12 +334,10 @@ HealthcareService_Eligibility(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 303)
 class HealthcareService_AvailableTime {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -355,7 +346,6 @@ class HealthcareService_AvailableTime {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -370,43 +360,34 @@ class HealthcareService_AvailableTime {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Indicates which days of the week are available between the start and
   // end Times.
-  @HiveField(3)
   List<String> daysOfWeek; // <code> enum: mon/tue/wed/thu/fri/sat/sun> daysOfWeek;
 
   //  Extensions for daysOfWeek
-  @HiveField(4)
   List<Element> elementDaysOfWeek;
 
   //  Is this always available? (hence times are irrelevant) e.g. 24 hour
   // service.
-  @HiveField(5)
   bool allDay;
 
   //  Extensions for allDay
-  @HiveField(6)
   Element elementAllDay;
 
   //  The opening time of day. Note: If the AllDay flag is set, then this
   // time is ignored.
-  @HiveField(7)
   String availableStartTime;
 
   //  Extensions for availableStartTime
-  @HiveField(8)
   Element elementAvailableStartTime;
 
   //  The closing time of day. Note: If the AllDay flag is set, then this
   // time is ignored.
-  @HiveField(9)
   String availableEndTime;
 
   //  Extensions for availableEndTime
-  @HiveField(10)
   Element elementAvailableEndTime;
 
 HealthcareService_AvailableTime(
@@ -428,12 +409,10 @@ HealthcareService_AvailableTime(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 304)
 class HealthcareService_NotAvailable {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -442,7 +421,6 @@ class HealthcareService_NotAvailable {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -457,21 +435,17 @@ class HealthcareService_NotAvailable {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The reason that can be presented to the user as to why this time is
   // not available.
-  @HiveField(3)
   String description;
 
   //  Extensions for description
-  @HiveField(4)
   Element elementDescription;
 
   //  Service is not available (seasonally or for a public holiday) from
   // this date.
-  @HiveField(5)
   Period during;
 
 HealthcareService_NotAvailable(
@@ -635,141 +609,6 @@ class HealthcareServiceAdapter extends TypeAdapter<HealthcareService> {
       ..write(obj.elementAvailabilityExceptions)
       ..writeByte(40)
       ..write(obj.endpoint);
-  }
-}
-
-class HealthcareService_EligibilityAdapter
-    extends TypeAdapter<HealthcareService_Eligibility> {
-  @override
-  final typeId = 302;
-
-  @override
-  HealthcareService_Eligibility read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return HealthcareService_Eligibility(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as CodeableConcept,
-      comment: fields[4] as String,
-      elementComment: fields[5] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, HealthcareService_Eligibility obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.comment)
-      ..writeByte(5)
-      ..write(obj.elementComment);
-  }
-}
-
-class HealthcareService_AvailableTimeAdapter
-    extends TypeAdapter<HealthcareService_AvailableTime> {
-  @override
-  final typeId = 303;
-
-  @override
-  HealthcareService_AvailableTime read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return HealthcareService_AvailableTime(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      daysOfWeek: (fields[3] as List)?.cast<String>(),
-      elementDaysOfWeek: (fields[4] as List)?.cast<Element>(),
-      allDay: fields[5] as bool,
-      elementAllDay: fields[6] as Element,
-      availableStartTime: fields[7] as String,
-      elementAvailableStartTime: fields[8] as Element,
-      availableEndTime: fields[9] as String,
-      elementAvailableEndTime: fields[10] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, HealthcareService_AvailableTime obj) {
-    writer
-      ..writeByte(11)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.daysOfWeek)
-      ..writeByte(4)
-      ..write(obj.elementDaysOfWeek)
-      ..writeByte(5)
-      ..write(obj.allDay)
-      ..writeByte(6)
-      ..write(obj.elementAllDay)
-      ..writeByte(7)
-      ..write(obj.availableStartTime)
-      ..writeByte(8)
-      ..write(obj.elementAvailableStartTime)
-      ..writeByte(9)
-      ..write(obj.availableEndTime)
-      ..writeByte(10)
-      ..write(obj.elementAvailableEndTime);
-  }
-}
-
-class HealthcareService_NotAvailableAdapter
-    extends TypeAdapter<HealthcareService_NotAvailable> {
-  @override
-  final typeId = 304;
-
-  @override
-  HealthcareService_NotAvailable read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return HealthcareService_NotAvailable(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      description: fields[3] as String,
-      elementDescription: fields[4] as Element,
-      during: fields[5] as Period,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, HealthcareService_NotAvailable obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.description)
-      ..writeByte(4)
-      ..write(obj.elementDescription)
-      ..writeByte(5)
-      ..write(obj.during);
   }
 }
 

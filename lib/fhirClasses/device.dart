@@ -307,12 +307,10 @@ Device(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 209)
 class Device_UdiCarrier {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -321,7 +319,6 @@ class Device_UdiCarrier {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -336,16 +333,13 @@ class Device_UdiCarrier {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The device identifier (DI) is a mandatory, fixed portion of a UDI that
   // identifies the labeler and the specific version or model of a device.
-  @HiveField(3)
   String deviceIdentifier;
 
   //  Extensions for deviceIdentifier
-  @HiveField(4)
   Element elementDeviceIdentifier;
 
   //  Organization that is charged with issuing UDIs for devices.  For
@@ -354,11 +348,9 @@ class Device_UdiCarrier {
   // http://hl7.org/fhir/NamingSystem/hibcc-dI,  3) ICCBBA for blood
   // containers: http://hl7.org/fhir/NamingSystem/iccbba-blood-di,  4) ICCBA
   // for other devices: http://hl7.org/fhir/NamingSystem/iccbba-other-di.
-  @HiveField(5)
   String issuer;
 
   //  Extensions for issuer
-  @HiveField(6)
   Element elementIssuer;
 
   //  The identity of the authoritative source for UDI generation within a 
@@ -366,11 +358,9 @@ class Device_UdiCarrier {
   // with the appropriate repository uri as the system.  For example,  UDIs
   // of devices managed in the U.S. by the FDA, the value is 
   // http://hl7.org/fhir/NamingSystem/fda-udi.
-  @HiveField(7)
   String jurisdiction;
 
   //  Extensions for jurisdiction
-  @HiveField(8)
   Element elementJurisdiction;
 
   //  The full UDI carrier of the Automatic Identification and Data Capture
@@ -378,28 +368,22 @@ class Device_UdiCarrier {
   // the packaging of the device - e.g., a barcode or RFID.   Because of
   // limitations on character sets in XML and the need to round-trip JSON
   // data through XML, AIDC Formats *SHALL* be base64 encoded.
-  @HiveField(9)
   String carrierAIDC;
 
   //  Extensions for carrierAIDC
-  @HiveField(10)
   Element elementCarrierAIDC;
 
   //  The full UDI carrier as the human readable form (HRF) representation
   // of the barcode string as printed on the packaging of the device.
-  @HiveField(11)
   String carrierHRF;
 
   //  Extensions for carrierHRF
-  @HiveField(12)
   Element elementCarrierHRF;
 
   //  A coded entry to indicate how the data was entered.
-  @HiveField(13)
   String entryType; // <code> enum: barcode/rfid/manual/card/self-reported/unknown;
 
   //  Extensions for entryType
-  @HiveField(14)
   Element elementEntryType;
 
 Device_UdiCarrier(
@@ -425,12 +409,10 @@ Device_UdiCarrier(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 210)
 class Device_DeviceName {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -439,7 +421,6 @@ class Device_DeviceName {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -454,24 +435,19 @@ class Device_DeviceName {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The name of the device.
-  @HiveField(3)
   String name;
 
   //  Extensions for name
-  @HiveField(4)
   Element elementName;
 
   //  The type of deviceName. UDILabelName | UserFriendlyName |
   // PatientReportedName | ManufactureDeviceName | ModelName.
-  @HiveField(5)
   String type; // <code> enum: udi-label-name/user-friendly-name/patient-reported-name/manufacturer-name/model-name/other;
 
   //  Extensions for type
-  @HiveField(6)
   Element elementType;
 
 Device_DeviceName(
@@ -489,12 +465,10 @@ Device_DeviceName(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 211)
 class Device_Specialization {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -503,7 +477,6 @@ class Device_Specialization {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -518,19 +491,15 @@ class Device_Specialization {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The standard that is used to operate and communicate.
-  @HiveField(3)
   CodeableConcept systemType;
 
   //  The version of the standard that is used to operate and communicate.
-  @HiveField(4)
   String version;
 
   //  Extensions for version
-  @HiveField(5)
   Element elementVersion;
 
 Device_Specialization(
@@ -547,12 +516,10 @@ Device_Specialization(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 212)
 class Device_Version {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -561,7 +528,6 @@ class Device_Version {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -576,23 +542,18 @@ class Device_Version {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The type of the device version.
-  @HiveField(3)
   CodeableConcept type;
 
   //  A single component of the device version.
-  @HiveField(4)
   Identifier component;
 
   //  The version text.
-  @HiveField(5)
   String value;
 
   //  Extensions for value
-  @HiveField(6)
   Element elementValue;
 
 Device_Version(
@@ -610,12 +571,10 @@ Device_Version(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 213)
 class Device_Property {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -624,7 +583,6 @@ class Device_Property {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -639,20 +597,16 @@ class Device_Property {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Code that specifies the property DeviceDefinitionPropetyCode
   // (Extensible).
-  @HiveField(3)
   CodeableConcept type;
 
   //  Property value as a quantity.
-  @HiveField(4)
   List<Quantity> valueQuantity;
 
   //  Property value as a code, e.g., NTP4 (synced to NTP).
-  @HiveField(5)
   List<CodeableConcept> valueCode;
 
 Device_Property(
@@ -832,234 +786,6 @@ class DeviceAdapter extends TypeAdapter<Device> {
       ..write(obj.safety)
       ..writeByte(46)
       ..write(obj.parent);
-  }
-}
-
-class Device_UdiCarrierAdapter extends TypeAdapter<Device_UdiCarrier> {
-  @override
-  final typeId = 209;
-
-  @override
-  Device_UdiCarrier read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Device_UdiCarrier(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      deviceIdentifier: fields[3] as String,
-      elementDeviceIdentifier: fields[4] as Element,
-      issuer: fields[5] as String,
-      elementIssuer: fields[6] as Element,
-      jurisdiction: fields[7] as String,
-      elementJurisdiction: fields[8] as Element,
-      carrierAIDC: fields[9] as String,
-      elementCarrierAIDC: fields[10] as Element,
-      carrierHRF: fields[11] as String,
-      elementCarrierHRF: fields[12] as Element,
-      entryType: fields[13] as String,
-      elementEntryType: fields[14] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Device_UdiCarrier obj) {
-    writer
-      ..writeByte(15)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.deviceIdentifier)
-      ..writeByte(4)
-      ..write(obj.elementDeviceIdentifier)
-      ..writeByte(5)
-      ..write(obj.issuer)
-      ..writeByte(6)
-      ..write(obj.elementIssuer)
-      ..writeByte(7)
-      ..write(obj.jurisdiction)
-      ..writeByte(8)
-      ..write(obj.elementJurisdiction)
-      ..writeByte(9)
-      ..write(obj.carrierAIDC)
-      ..writeByte(10)
-      ..write(obj.elementCarrierAIDC)
-      ..writeByte(11)
-      ..write(obj.carrierHRF)
-      ..writeByte(12)
-      ..write(obj.elementCarrierHRF)
-      ..writeByte(13)
-      ..write(obj.entryType)
-      ..writeByte(14)
-      ..write(obj.elementEntryType);
-  }
-}
-
-class Device_DeviceNameAdapter extends TypeAdapter<Device_DeviceName> {
-  @override
-  final typeId = 210;
-
-  @override
-  Device_DeviceName read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Device_DeviceName(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      name: fields[3] as String,
-      elementName: fields[4] as Element,
-      type: fields[5] as String,
-      elementType: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Device_DeviceName obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.name)
-      ..writeByte(4)
-      ..write(obj.elementName)
-      ..writeByte(5)
-      ..write(obj.type)
-      ..writeByte(6)
-      ..write(obj.elementType);
-  }
-}
-
-class Device_SpecializationAdapter extends TypeAdapter<Device_Specialization> {
-  @override
-  final typeId = 211;
-
-  @override
-  Device_Specialization read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Device_Specialization(
-      fields[3] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      version: fields[4] as String,
-      elementVersion: fields[5] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Device_Specialization obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.systemType)
-      ..writeByte(4)
-      ..write(obj.version)
-      ..writeByte(5)
-      ..write(obj.elementVersion);
-  }
-}
-
-class Device_VersionAdapter extends TypeAdapter<Device_Version> {
-  @override
-  final typeId = 212;
-
-  @override
-  Device_Version read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Device_Version(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as CodeableConcept,
-      component: fields[4] as Identifier,
-      value: fields[5] as String,
-      elementValue: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Device_Version obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.component)
-      ..writeByte(5)
-      ..write(obj.value)
-      ..writeByte(6)
-      ..write(obj.elementValue);
-  }
-}
-
-class Device_PropertyAdapter extends TypeAdapter<Device_Property> {
-  @override
-  final typeId = 213;
-
-  @override
-  Device_Property read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Device_Property(
-      fields[3] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      valueQuantity: (fields[4] as List)?.cast<Quantity>(),
-      valueCode: (fields[5] as List)?.cast<CodeableConcept>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Device_Property obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.valueQuantity)
-      ..writeByte(5)
-      ..write(obj.valueCode);
   }
 }
 

@@ -1,3 +1,4 @@
+import 'package:path_provider/path_provider.dart';
 import 'package:hive/hive.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +30,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
   String sexAtBirth;
   String response = '';
   String barrio = 'Escoje Barrio';
+  var patientBox;
+  var appDocumentDir;
 
   @override
   void dispose() {
@@ -36,6 +39,22 @@ class _RegistrationFormState extends State<RegistrationForm> {
     familyNameController.dispose();
     super.dispose();
     Hive.close();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    print('here');
+    Hive.registerAdapter(PatientAdapter());
+    print('here also');
+    _getPatientBox();
+  }
+
+  Future _getPatientBox() async{
+    appDocumentDir = await getApplicationDocumentsDirectory();
+    Hive.init(appDocumentDir.path);
+    print('here');
+    patientBox = await Hive.openBox('Patient');
   }
 
   //select birthdate async function
@@ -181,25 +200,27 @@ class _RegistrationFormState extends State<RegistrationForm> {
                                     given: [givenNameController.text],
                                     family: familyNameController.text)
                               ], birthDate: _birthDate.toString());
-                              pt.id = await ObjectId(pt.runtimeType.toString());
+                              patientBox.add(pt);
+//                              pt.id = await ObjectId(pt.runtimeType.toString());
                               Write(pt);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => RegisterFamily(
-                                          pt: pt,
-                                        )),
-                              );
+//                              Navigator.push(
+//                                context,
+//                                MaterialPageRoute(
+//                                    builder: (context) => RegisterFamily(
+//                                          pt: pt,
+//                                        )),
+//                              );
                             },
                             child: Text('Press to Create Patient'),
                           ),
                           RaisedButton(
                             onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => MainMenu()),
-                              );
+
+//                              Navigator.push(
+//                                context,
+//                                MaterialPageRoute(
+//                                    builder: (context) => MainMenu()),
+//                              );
                             },
                             child: Text('Return to Opening Page'),
                           ),

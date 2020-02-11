@@ -117,12 +117,10 @@ DataRequirement(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 29)
 class DataRequirement_CodeFilter {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -131,7 +129,6 @@ class DataRequirement_CodeFilter {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -146,7 +143,6 @@ class DataRequirement_CodeFilter {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The code-valued attribute of the filter. The specified path SHALL be a
@@ -157,28 +153,23 @@ class DataRequirement_CodeFilter {
   // (see the [Simple FHIRPath Profile](fhirpath.html#simple) for full
   // details). Note that the index must be an integer constant. The path
   // must resolve to an element of type code, Coding, or CodeableConcept.
-  @HiveField(3)
   String path;
 
   //  Extensions for path
-  @HiveField(4)
   Element elementPath;
 
   //  A token parameter that refers to a search parameter defined on the
   // specified type of the DataRequirement, and which searches on elements
   // of type code, Coding, or CodeableConcept.
-  @HiveField(5)
   String searchParam;
 
   //  Extensions for searchParam
-  @HiveField(6)
   Element elementSearchParam;
 
   //  The valueset for the code filter. The valueSet and code elements are
   // additive. If valueSet is specified, the filter will return only those
   // data items for which the value of the code-valued element specified in
   // the path is a member of the specified valueset.
-  @HiveField(7)
   String valueSet;
 
   //  The codes for the code filter. If values are given, the filter will
@@ -186,7 +177,6 @@ class DataRequirement_CodeFilter {
   // specified by the path has a value that is one of the specified codes.
   // If codes are specified in addition to a value set, the filter returns
   // items matching a code in the value set or one of the specified codes.
-  @HiveField(8)
   List<Coding> code;
 
 DataRequirement_CodeFilter(
@@ -206,12 +196,10 @@ DataRequirement_CodeFilter(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 30)
 class DataRequirement_DateFilter {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -220,7 +208,6 @@ class DataRequirement_DateFilter {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -235,7 +222,6 @@ class DataRequirement_DateFilter {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The date-valued attribute of the filter. The specified path SHALL be a
@@ -247,21 +233,17 @@ class DataRequirement_DateFilter {
   // details). Note that the index must be an integer constant. The path
   // must resolve to an element of type date, dateTime, Period, Schedule, or
   // Timing.
-  @HiveField(3)
   String path;
 
   //  Extensions for path
-  @HiveField(4)
   Element elementPath;
 
   //  A date parameter that refers to a search parameter defined on the
   // specified type of the DataRequirement, and which searches on elements
   // of type date, dateTime, Period, Schedule, or Timing.
-  @HiveField(5)
   String searchParam;
 
   //  Extensions for searchParam
-  @HiveField(6)
   Element elementSearchParam;
 
   //  The value of the filter. If period is specified, the filter will
@@ -270,11 +252,9 @@ class DataRequirement_DateFilter {
   // specified, the filter will return only those data items that are equal
   // to the specified dateTime. If a Duration is specified, the filter will
   // return only those data items that fall within Duration before now.
-  @HiveField(7)
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for valueDateTime
-  @HiveField(8)
   Element elementValueDateTime;
 
   //  The value of the filter. If period is specified, the filter will
@@ -283,7 +263,6 @@ class DataRequirement_DateFilter {
   // specified, the filter will return only those data items that are equal
   // to the specified dateTime. If a Duration is specified, the filter will
   // return only those data items that fall within Duration before now.
-  @HiveField(9)
   Period valuePeriod;
 
   //  The value of the filter. If period is specified, the filter will
@@ -292,7 +271,6 @@ class DataRequirement_DateFilter {
   // specified, the filter will return only those data items that are equal
   // to the specified dateTime. If a Duration is specified, the filter will
   // return only those data items that fall within Duration before now.
-  @HiveField(10)
   Duration valueDuration;
 
 DataRequirement_DateFilter(
@@ -314,12 +292,10 @@ DataRequirement_DateFilter(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 31)
 class DataRequirement_Sort {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -328,7 +304,6 @@ class DataRequirement_Sort {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -343,7 +318,6 @@ class DataRequirement_Sort {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The attribute of the sort. The specified path must be resolvable from
@@ -351,19 +325,15 @@ class DataRequirement_Sort {
   // qualifiers (.) to traverse sub-elements, as well as indexers ([x]) to
   // traverse multiple-cardinality sub-elements. Note that the index must be
   // an integer constant.
-  @HiveField(3)
   String path;
 
   //  Extensions for path
-  @HiveField(4)
   Element elementPath;
 
   //  The direction of the sort, ascending or descending.
-  @HiveField(5)
   String direction; // <code> enum: ascending/descending;
 
   //  Extensions for direction
-  @HiveField(6)
   Element elementDirection;
 
 DataRequirement_Sort(
@@ -446,152 +416,6 @@ class DataRequirementAdapter extends TypeAdapter<DataRequirement> {
       ..write(obj.elementLimit)
       ..writeByte(13)
       ..write(obj.sort);
-  }
-}
-
-class DataRequirement_CodeFilterAdapter
-    extends TypeAdapter<DataRequirement_CodeFilter> {
-  @override
-  final typeId = 29;
-
-  @override
-  DataRequirement_CodeFilter read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return DataRequirement_CodeFilter(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      path: fields[3] as String,
-      elementPath: fields[4] as Element,
-      searchParam: fields[5] as String,
-      elementSearchParam: fields[6] as Element,
-      valueSet: fields[7] as String,
-      code: (fields[8] as List)?.cast<Coding>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, DataRequirement_CodeFilter obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.path)
-      ..writeByte(4)
-      ..write(obj.elementPath)
-      ..writeByte(5)
-      ..write(obj.searchParam)
-      ..writeByte(6)
-      ..write(obj.elementSearchParam)
-      ..writeByte(7)
-      ..write(obj.valueSet)
-      ..writeByte(8)
-      ..write(obj.code);
-  }
-}
-
-class DataRequirement_DateFilterAdapter
-    extends TypeAdapter<DataRequirement_DateFilter> {
-  @override
-  final typeId = 30;
-
-  @override
-  DataRequirement_DateFilter read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return DataRequirement_DateFilter(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      path: fields[3] as String,
-      elementPath: fields[4] as Element,
-      searchParam: fields[5] as String,
-      elementSearchParam: fields[6] as Element,
-      valueDateTime: fields[7] as String,
-      elementValueDateTime: fields[8] as Element,
-      valuePeriod: fields[9] as Period,
-      valueDuration: fields[10] as Duration,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, DataRequirement_DateFilter obj) {
-    writer
-      ..writeByte(11)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.path)
-      ..writeByte(4)
-      ..write(obj.elementPath)
-      ..writeByte(5)
-      ..write(obj.searchParam)
-      ..writeByte(6)
-      ..write(obj.elementSearchParam)
-      ..writeByte(7)
-      ..write(obj.valueDateTime)
-      ..writeByte(8)
-      ..write(obj.elementValueDateTime)
-      ..writeByte(9)
-      ..write(obj.valuePeriod)
-      ..writeByte(10)
-      ..write(obj.valueDuration);
-  }
-}
-
-class DataRequirement_SortAdapter extends TypeAdapter<DataRequirement_Sort> {
-  @override
-  final typeId = 31;
-
-  @override
-  DataRequirement_Sort read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return DataRequirement_Sort(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      path: fields[3] as String,
-      elementPath: fields[4] as Element,
-      direction: fields[5] as String,
-      elementDirection: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, DataRequirement_Sort obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.path)
-      ..writeByte(4)
-      ..write(obj.elementPath)
-      ..writeByte(5)
-      ..write(obj.direction)
-      ..writeByte(6)
-      ..write(obj.elementDirection);
   }
 }
 

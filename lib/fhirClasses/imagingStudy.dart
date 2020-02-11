@@ -253,12 +253,10 @@ ImagingStudy(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 306)
 class ImagingStudy_Series {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -267,7 +265,6 @@ class ImagingStudy_Series {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -282,53 +279,42 @@ class ImagingStudy_Series {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The DICOM Series Instance UID for the series.
-  @HiveField(3)
   String uid;
 
   //  Extensions for uid
-  @HiveField(4)
   Element elementUid;
 
   //  The numeric identifier of this series in the study.
-  @HiveField(5)
   int number;
 
   //  Extensions for number
-  @HiveField(6)
   Element elementNumber;
 
   //  The modality of this series sequence.
-  @HiveField(7)
   Coding modality;
 
   //  A description of the series.
-  @HiveField(8)
   String description;
 
   //  Extensions for description
-  @HiveField(9)
   Element elementDescription;
 
   //  Number of SOP Instances in the Study. The value given may be larger
   // than the number of instance elements this resource contains due to
   // resource availability, security, or other factors. This element should
   // be present if any instance elements are present.
-  @HiveField(10)
   int numberOfInstances;
 
   //  Extensions for numberOfInstances
-  @HiveField(11)
   Element elementNumberOfInstances;
 
   //  The network service providing access (e.g., query, view, or retrieval)
   // for this series. See implementation notes for information about using
   // DICOM endpoints. A series-level endpoint, if present, has precedence
   // over a study-level endpoint with the same Endpoint.connectionType.
-  @HiveField(12)
   List<Reference> endpoint;
 
   //  The anatomic structures examined. See DICOM Part 16 Annex L
@@ -336,35 +322,28 @@ class ImagingStudy_Series {
   // for DICOM to SNOMED-CT mappings. The bodySite may indicate the
   // laterality of body part imaged; if so, it shall be consistent with any
   // content of ImagingStudy.series.laterality.
-  @HiveField(13)
   Coding bodySite;
 
   //  The laterality of the (possibly paired) anatomic structures examined.
   // E.g., the left knee, both lungs, or unpaired abdomen. If present, shall
   // be consistent with any laterality information indicated in
   // ImagingStudy.series.bodySite.
-  @HiveField(14)
   Coding laterality;
 
   //  The specimen imaged, e.g., for whole slide imaging of a biopsy.
-  @HiveField(15)
   List<Reference> specimen;
 
   //  The date and time the series was started.
-  @HiveField(16)
   DateTime started;
 
   //  Extensions for started
-  @HiveField(17)
   Element elementStarted;
 
   //  Indicates who or what performed the series and how they were involved.
-  @HiveField(18)
   List<ImagingStudy_Performer> performer;
 
   //  A single SOP instance within the series, e.g. an image, or
   // presentation state.
-  @HiveField(19)
   List<ImagingStudy_Instance> instance;
 
 ImagingStudy_Series(
@@ -395,12 +374,10 @@ ImagingStudy_Series(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 307)
 class ImagingStudy_Performer {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -409,7 +386,6 @@ class ImagingStudy_Performer {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -424,15 +400,12 @@ class ImagingStudy_Performer {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Distinguishes the type of involvement of the performer in the series.
-  @HiveField(3)
   CodeableConcept function;
 
   //  Indicates who or what performed the series.
-  @HiveField(4)
   Reference actor;
 
 ImagingStudy_Performer(
@@ -448,12 +421,10 @@ ImagingStudy_Performer(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 308)
 class ImagingStudy_Instance {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -462,7 +433,6 @@ class ImagingStudy_Instance {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -477,35 +447,27 @@ class ImagingStudy_Instance {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The DICOM SOP Instance UID for this image or other DICOM content.
-  @HiveField(3)
   String uid;
 
   //  Extensions for uid
-  @HiveField(4)
   Element elementUid;
 
   //  DICOM instance  type.
-  @HiveField(5)
   Coding sopClass;
 
   //  The number of instance in the series.
-  @HiveField(6)
   int number;
 
   //  Extensions for number
-  @HiveField(7)
   Element elementNumber;
 
   //  The description of the instance.
-  @HiveField(8)
   String title;
 
   //  Extensions for title
-  @HiveField(9)
   Element elementTitle;
 
 ImagingStudy_Instance(
@@ -656,175 +618,6 @@ class ImagingStudyAdapter extends TypeAdapter<ImagingStudy> {
       ..write(obj.elementDescription)
       ..writeByte(35)
       ..write(obj.series);
-  }
-}
-
-class ImagingStudy_SeriesAdapter extends TypeAdapter<ImagingStudy_Series> {
-  @override
-  final typeId = 306;
-
-  @override
-  ImagingStudy_Series read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ImagingStudy_Series(
-      fields[7] as Coding,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      uid: fields[3] as String,
-      elementUid: fields[4] as Element,
-      number: fields[5] as int,
-      elementNumber: fields[6] as Element,
-      description: fields[8] as String,
-      elementDescription: fields[9] as Element,
-      numberOfInstances: fields[10] as int,
-      elementNumberOfInstances: fields[11] as Element,
-      endpoint: (fields[12] as List)?.cast<Reference>(),
-      bodySite: fields[13] as Coding,
-      laterality: fields[14] as Coding,
-      specimen: (fields[15] as List)?.cast<Reference>(),
-      started: fields[16] as DateTime,
-      elementStarted: fields[17] as Element,
-      performer: (fields[18] as List)?.cast<ImagingStudy_Performer>(),
-      instance: (fields[19] as List)?.cast<ImagingStudy_Instance>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ImagingStudy_Series obj) {
-    writer
-      ..writeByte(20)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.uid)
-      ..writeByte(4)
-      ..write(obj.elementUid)
-      ..writeByte(5)
-      ..write(obj.number)
-      ..writeByte(6)
-      ..write(obj.elementNumber)
-      ..writeByte(7)
-      ..write(obj.modality)
-      ..writeByte(8)
-      ..write(obj.description)
-      ..writeByte(9)
-      ..write(obj.elementDescription)
-      ..writeByte(10)
-      ..write(obj.numberOfInstances)
-      ..writeByte(11)
-      ..write(obj.elementNumberOfInstances)
-      ..writeByte(12)
-      ..write(obj.endpoint)
-      ..writeByte(13)
-      ..write(obj.bodySite)
-      ..writeByte(14)
-      ..write(obj.laterality)
-      ..writeByte(15)
-      ..write(obj.specimen)
-      ..writeByte(16)
-      ..write(obj.started)
-      ..writeByte(17)
-      ..write(obj.elementStarted)
-      ..writeByte(18)
-      ..write(obj.performer)
-      ..writeByte(19)
-      ..write(obj.instance);
-  }
-}
-
-class ImagingStudy_PerformerAdapter
-    extends TypeAdapter<ImagingStudy_Performer> {
-  @override
-  final typeId = 307;
-
-  @override
-  ImagingStudy_Performer read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ImagingStudy_Performer(
-      fields[4] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      function: fields[3] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ImagingStudy_Performer obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.function)
-      ..writeByte(4)
-      ..write(obj.actor);
-  }
-}
-
-class ImagingStudy_InstanceAdapter extends TypeAdapter<ImagingStudy_Instance> {
-  @override
-  final typeId = 308;
-
-  @override
-  ImagingStudy_Instance read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ImagingStudy_Instance(
-      fields[5] as Coding,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      uid: fields[3] as String,
-      elementUid: fields[4] as Element,
-      number: fields[6] as int,
-      elementNumber: fields[7] as Element,
-      title: fields[8] as String,
-      elementTitle: fields[9] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ImagingStudy_Instance obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.uid)
-      ..writeByte(4)
-      ..write(obj.elementUid)
-      ..writeByte(5)
-      ..write(obj.sopClass)
-      ..writeByte(6)
-      ..write(obj.number)
-      ..writeByte(7)
-      ..write(obj.elementNumber)
-      ..writeByte(8)
-      ..write(obj.title)
-      ..writeByte(9)
-      ..write(obj.elementTitle);
   }
 }
 

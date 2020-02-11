@@ -198,12 +198,10 @@ DeviceMetric(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 222)
 class DeviceMetric_Calibration {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -212,7 +210,6 @@ class DeviceMetric_Calibration {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -227,31 +224,24 @@ class DeviceMetric_Calibration {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Describes the type of the calibration method.
-  @HiveField(3)
   String type; // <code> enum: unspecified/offset/gain/two-point;
 
   //  Extensions for type
-  @HiveField(4)
   Element elementType;
 
   //  Describes the state of the calibration.
-  @HiveField(5)
   String state; // <code> enum: not-calibrated/calibration-required/calibrated/unspecified;
 
   //  Extensions for state
-  @HiveField(6)
   Element elementState;
 
   //  Describes the time last calibration has been performed.
-  @HiveField(7)
   DateTime time;
 
   //  Extensions for time
-  @HiveField(8)
   Element elementTime;
 
 DeviceMetric_Calibration(
@@ -365,55 +355,6 @@ class DeviceMetricAdapter extends TypeAdapter<DeviceMetric> {
       ..write(obj.measurementPeriod)
       ..writeByte(23)
       ..write(obj.calibration);
-  }
-}
-
-class DeviceMetric_CalibrationAdapter
-    extends TypeAdapter<DeviceMetric_Calibration> {
-  @override
-  final typeId = 222;
-
-  @override
-  DeviceMetric_Calibration read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return DeviceMetric_Calibration(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as String,
-      elementType: fields[4] as Element,
-      state: fields[5] as String,
-      elementState: fields[6] as Element,
-      time: fields[7] as DateTime,
-      elementTime: fields[8] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, DeviceMetric_Calibration obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.elementType)
-      ..writeByte(5)
-      ..write(obj.state)
-      ..writeByte(6)
-      ..write(obj.elementState)
-      ..writeByte(7)
-      ..write(obj.time)
-      ..writeByte(8)
-      ..write(obj.elementTime);
   }
 }
 

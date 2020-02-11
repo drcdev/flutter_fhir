@@ -265,12 +265,10 @@ DeviceDefinition(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 215)
 class DeviceDefinition_UdiDeviceIdentifier {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -279,7 +277,6 @@ class DeviceDefinition_UdiDeviceIdentifier {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -294,33 +291,26 @@ class DeviceDefinition_UdiDeviceIdentifier {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The identifier that is to be associated with every Device that
   // references this DeviceDefintiion for the issuer and jurisdication
   // porvided in the DeviceDefinition.udiDeviceIdentifier.
-  @HiveField(3)
   String deviceIdentifier;
 
   //  Extensions for deviceIdentifier
-  @HiveField(4)
   Element elementDeviceIdentifier;
 
   //  The organization that assigns the identifier algorithm.
-  @HiveField(5)
   String issuer;
 
   //  Extensions for issuer
-  @HiveField(6)
   Element elementIssuer;
 
   //  The jurisdiction to which the deviceIdentifier applies.
-  @HiveField(7)
   String jurisdiction;
 
   //  Extensions for jurisdiction
-  @HiveField(8)
   Element elementJurisdiction;
 
 DeviceDefinition_UdiDeviceIdentifier(
@@ -340,12 +330,10 @@ DeviceDefinition_UdiDeviceIdentifier(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 216)
 class DeviceDefinition_DeviceName {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -354,7 +342,6 @@ class DeviceDefinition_DeviceName {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -369,24 +356,19 @@ class DeviceDefinition_DeviceName {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The name of the device.
-  @HiveField(3)
   String name;
 
   //  Extensions for name
-  @HiveField(4)
   Element elementName;
 
   //  The type of deviceName. UDILabelName | UserFriendlyName |
   // PatientReportedName | ManufactureDeviceName | ModelName.
-  @HiveField(5)
   String type; // <code> enum: udi-label-name/user-friendly-name/patient-reported-name/manufacturer-name/model-name/other;
 
   //  Extensions for type
-  @HiveField(6)
   Element elementType;
 
 DeviceDefinition_DeviceName(
@@ -404,12 +386,10 @@ DeviceDefinition_DeviceName(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 217)
 class DeviceDefinition_Specialization {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -418,7 +398,6 @@ class DeviceDefinition_Specialization {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -433,23 +412,18 @@ class DeviceDefinition_Specialization {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The standard that is used to operate and communicate.
-  @HiveField(3)
   String systemType;
 
   //  Extensions for systemType
-  @HiveField(4)
   Element elementSystemType;
 
   //  The version of the standard that is used to operate and communicate.
-  @HiveField(5)
   String version;
 
   //  Extensions for version
-  @HiveField(6)
   Element elementVersion;
 
 DeviceDefinition_Specialization(
@@ -467,12 +441,10 @@ DeviceDefinition_Specialization(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 218)
 class DeviceDefinition_Capability {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -481,7 +453,6 @@ class DeviceDefinition_Capability {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -496,15 +467,12 @@ class DeviceDefinition_Capability {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Type of capability.
-  @HiveField(3)
   CodeableConcept type;
 
   //  Description of capability.
-  @HiveField(4)
   List<CodeableConcept> description;
 
 DeviceDefinition_Capability(
@@ -520,12 +488,10 @@ DeviceDefinition_Capability(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 219)
 class DeviceDefinition_Property {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -534,7 +500,6 @@ class DeviceDefinition_Property {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -549,20 +514,16 @@ class DeviceDefinition_Property {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Code that specifies the property DeviceDefinitionPropetyCode
   // (Extensible).
-  @HiveField(3)
   CodeableConcept type;
 
   //  Property value as a quantity.
-  @HiveField(4)
   List<Quantity> valueQuantity;
 
   //  Property value as a code, e.g., NTP4 (synced to NTP).
-  @HiveField(5)
   List<CodeableConcept> valueCode;
 
 DeviceDefinition_Property(
@@ -579,12 +540,10 @@ DeviceDefinition_Property(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 220)
 class DeviceDefinition_Material {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -593,7 +552,6 @@ class DeviceDefinition_Material {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -608,27 +566,21 @@ class DeviceDefinition_Material {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The substance.
-  @HiveField(3)
   CodeableConcept substance;
 
   //  Indicates an alternative material of the device.
-  @HiveField(4)
   bool alternate;
 
   //  Extensions for alternate
-  @HiveField(5)
   Element elementAlternate;
 
   //  Whether the substance is a known or suspected allergen.
-  @HiveField(6)
   bool allergenicIndicator;
 
   //  Extensions for allergenicIndicator
-  @HiveField(7)
   Element elementAllergenicIndicator;
 
 DeviceDefinition_Material(
@@ -788,264 +740,6 @@ class DeviceDefinitionAdapter extends TypeAdapter<DeviceDefinition> {
       ..write(obj.parentDevice)
       ..writeByte(38)
       ..write(obj.material);
-  }
-}
-
-class DeviceDefinition_UdiDeviceIdentifierAdapter
-    extends TypeAdapter<DeviceDefinition_UdiDeviceIdentifier> {
-  @override
-  final typeId = 215;
-
-  @override
-  DeviceDefinition_UdiDeviceIdentifier read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return DeviceDefinition_UdiDeviceIdentifier(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      deviceIdentifier: fields[3] as String,
-      elementDeviceIdentifier: fields[4] as Element,
-      issuer: fields[5] as String,
-      elementIssuer: fields[6] as Element,
-      jurisdiction: fields[7] as String,
-      elementJurisdiction: fields[8] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, DeviceDefinition_UdiDeviceIdentifier obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.deviceIdentifier)
-      ..writeByte(4)
-      ..write(obj.elementDeviceIdentifier)
-      ..writeByte(5)
-      ..write(obj.issuer)
-      ..writeByte(6)
-      ..write(obj.elementIssuer)
-      ..writeByte(7)
-      ..write(obj.jurisdiction)
-      ..writeByte(8)
-      ..write(obj.elementJurisdiction);
-  }
-}
-
-class DeviceDefinition_DeviceNameAdapter
-    extends TypeAdapter<DeviceDefinition_DeviceName> {
-  @override
-  final typeId = 216;
-
-  @override
-  DeviceDefinition_DeviceName read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return DeviceDefinition_DeviceName(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      name: fields[3] as String,
-      elementName: fields[4] as Element,
-      type: fields[5] as String,
-      elementType: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, DeviceDefinition_DeviceName obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.name)
-      ..writeByte(4)
-      ..write(obj.elementName)
-      ..writeByte(5)
-      ..write(obj.type)
-      ..writeByte(6)
-      ..write(obj.elementType);
-  }
-}
-
-class DeviceDefinition_SpecializationAdapter
-    extends TypeAdapter<DeviceDefinition_Specialization> {
-  @override
-  final typeId = 217;
-
-  @override
-  DeviceDefinition_Specialization read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return DeviceDefinition_Specialization(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      systemType: fields[3] as String,
-      elementSystemType: fields[4] as Element,
-      version: fields[5] as String,
-      elementVersion: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, DeviceDefinition_Specialization obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.systemType)
-      ..writeByte(4)
-      ..write(obj.elementSystemType)
-      ..writeByte(5)
-      ..write(obj.version)
-      ..writeByte(6)
-      ..write(obj.elementVersion);
-  }
-}
-
-class DeviceDefinition_CapabilityAdapter
-    extends TypeAdapter<DeviceDefinition_Capability> {
-  @override
-  final typeId = 218;
-
-  @override
-  DeviceDefinition_Capability read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return DeviceDefinition_Capability(
-      fields[3] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      description: (fields[4] as List)?.cast<CodeableConcept>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, DeviceDefinition_Capability obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.description);
-  }
-}
-
-class DeviceDefinition_PropertyAdapter
-    extends TypeAdapter<DeviceDefinition_Property> {
-  @override
-  final typeId = 219;
-
-  @override
-  DeviceDefinition_Property read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return DeviceDefinition_Property(
-      fields[3] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      valueQuantity: (fields[4] as List)?.cast<Quantity>(),
-      valueCode: (fields[5] as List)?.cast<CodeableConcept>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, DeviceDefinition_Property obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.valueQuantity)
-      ..writeByte(5)
-      ..write(obj.valueCode);
-  }
-}
-
-class DeviceDefinition_MaterialAdapter
-    extends TypeAdapter<DeviceDefinition_Material> {
-  @override
-  final typeId = 220;
-
-  @override
-  DeviceDefinition_Material read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return DeviceDefinition_Material(
-      fields[3] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      alternate: fields[4] as bool,
-      elementAlternate: fields[5] as Element,
-      allergenicIndicator: fields[6] as bool,
-      elementAllergenicIndicator: fields[7] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, DeviceDefinition_Material obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.substance)
-      ..writeByte(4)
-      ..write(obj.alternate)
-      ..writeByte(5)
-      ..write(obj.elementAlternate)
-      ..writeByte(6)
-      ..write(obj.allergenicIndicator)
-      ..writeByte(7)
-      ..write(obj.elementAllergenicIndicator);
   }
 }
 

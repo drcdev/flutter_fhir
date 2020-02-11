@@ -194,12 +194,10 @@ CareTeam(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 106)
 class CareTeam_Participant {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -208,7 +206,6 @@ class CareTeam_Participant {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -223,27 +220,22 @@ class CareTeam_Participant {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Indicates specific responsibility of an individual within the care
   // team, such as "Primary care physician", "Trained social worker
   // counselor", "Caregiver", etc.
-  @HiveField(3)
   List<CodeableConcept> role;
 
   //  The specific person or organization who is participating/expected to
   // participate in the care team.
-  @HiveField(4)
   Reference member;
 
   //  The organization of the practitioner.
-  @HiveField(5)
   Reference onBehalfOf;
 
   //  Indicates when the specific member or organization did (or is intended
   // to) come into effect and end.
-  @HiveField(6)
   Period period;
 
 CareTeam_Participant(
@@ -361,48 +353,6 @@ class CareTeamAdapter extends TypeAdapter<CareTeam> {
       ..write(obj.telecom)
       ..writeByte(25)
       ..write(obj.note);
-  }
-}
-
-class CareTeam_ParticipantAdapter extends TypeAdapter<CareTeam_Participant> {
-  @override
-  final typeId = 106;
-
-  @override
-  CareTeam_Participant read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CareTeam_Participant(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      role: (fields[3] as List)?.cast<CodeableConcept>(),
-      member: fields[4] as Reference,
-      onBehalfOf: fields[5] as Reference,
-      period: fields[6] as Period,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CareTeam_Participant obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.role)
-      ..writeByte(4)
-      ..write(obj.member)
-      ..writeByte(5)
-      ..write(obj.onBehalfOf)
-      ..writeByte(6)
-      ..write(obj.period);
   }
 }
 

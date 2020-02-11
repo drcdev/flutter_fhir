@@ -248,12 +248,10 @@ RequestGroup(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 510)
 class RequestGroup_Action {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -262,7 +260,6 @@ class RequestGroup_Action {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -277,159 +274,123 @@ class RequestGroup_Action {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A user-visible prefix for the action.
-  @HiveField(3)
   String prefix;
 
   //  Extensions for prefix
-  @HiveField(4)
   Element elementPrefix;
 
   //  The title of the action displayed to a user.
-  @HiveField(5)
   String title;
 
   //  Extensions for title
-  @HiveField(6)
   Element elementTitle;
 
   //  A short description of the action used to provide a summary to display
   // to the user.
-  @HiveField(7)
   String description;
 
   //  Extensions for description
-  @HiveField(8)
   Element elementDescription;
 
   //  A text equivalent of the action to be performed. This provides a
   // human-interpretable description of the action when the definition is
   // consumed by a system that might not be capable of interpreting it
   // dynamically.
-  @HiveField(9)
   String textEquivalent;
 
   //  Extensions for textEquivalent
-  @HiveField(10)
   Element elementTextEquivalent;
 
   //  Indicates how quickly the action should be addressed with respect to
   // other actions.
-  @HiveField(11)
   String priority;
 
   //  Extensions for priority
-  @HiveField(12)
   Element elementPriority;
 
   //  A code that provides meaning for the action or action group. For
   // example, a section may have a LOINC code for a section of a
   // documentation template.
-  @HiveField(13)
   List<CodeableConcept> code;
 
   //  Didactic or other informational resources associated with the action
   // that can be provided to the CDS recipient. Information resources can
   // include inline text commentary and links to web resources.
-  @HiveField(14)
   List<RelatedArtifact> documentation;
 
   //  An expression that describes applicability criteria, or start/stop
   // conditions for the action.
-  @HiveField(15)
   List<RequestGroup_Condition> condition;
 
   //  A relationship to another action such as "before" or "30-60 minutes
   // after start of".
-  @HiveField(16)
   List<RequestGroup_RelatedAction> relatedAction;
 
   //  An optional value describing when the action should be performed.
-  @HiveField(17)
   String timingDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for timingDateTime
-  @HiveField(18)
   Element elementTimingDateTime;
 
   //  An optional value describing when the action should be performed.
-  @HiveField(19)
   Age timingAge;
 
   //  An optional value describing when the action should be performed.
-  @HiveField(20)
   Period timingPeriod;
 
   //  An optional value describing when the action should be performed.
-  @HiveField(21)
   Duration timingDuration;
 
   //  An optional value describing when the action should be performed.
-  @HiveField(22)
   Range timingRange;
 
   //  An optional value describing when the action should be performed.
-  @HiveField(23)
   Timing timingTiming;
 
   //  The participant that should perform or be responsible for this action.
-  @HiveField(24)
   List<Reference> participant;
 
   //  The type of action to perform (create, update, remove).
-  @HiveField(25)
   CodeableConcept type;
 
   //  Defines the grouping behavior for the action and its children.
-  @HiveField(26)
   String groupingBehavior;
 
   //  Extensions for groupingBehavior
-  @HiveField(27)
   Element elementGroupingBehavior;
 
   //  Defines the selection behavior for the action and its children.
-  @HiveField(28)
   String selectionBehavior;
 
   //  Extensions for selectionBehavior
-  @HiveField(29)
   Element elementSelectionBehavior;
 
   //  Defines expectations around whether an action is required.
-  @HiveField(30)
   String requiredBehavior;
 
   //  Extensions for requiredBehavior
-  @HiveField(31)
   Element elementRequiredBehavior;
 
   //  Defines whether the action should usually be preselected.
-  @HiveField(32)
   String precheckBehavior;
 
   //  Extensions for precheckBehavior
-  @HiveField(33)
   Element elementPrecheckBehavior;
 
   //  Defines whether the action can be selected multiple times.
-  @HiveField(34)
   String cardinalityBehavior;
 
   //  Extensions for cardinalityBehavior
-  @HiveField(35)
   Element elementCardinalityBehavior;
 
   //  The resource that is the target of the action (e.g.
   // CommunicationRequest).
-  @HiveField(36)
   Reference resource;
 
   //  Sub actions.
-  @HiveField(37)
   List<RequestGroup_Action> action;
 
 RequestGroup_Action(
@@ -478,12 +439,10 @@ RequestGroup_Action(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 511)
 class RequestGroup_Condition {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -492,7 +451,6 @@ class RequestGroup_Condition {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -507,20 +465,16 @@ class RequestGroup_Condition {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The kind of condition.
-  @HiveField(3)
   String kind;
 
   //  Extensions for kind
-  @HiveField(4)
   Element elementKind;
 
   //  An expression that returns true or false, indicating whether or not
   // the condition is satisfied.
-  @HiveField(5)
   Expression expression;
 
 RequestGroup_Condition(
@@ -537,12 +491,10 @@ RequestGroup_Condition(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 512)
 class RequestGroup_RelatedAction {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -551,7 +503,6 @@ class RequestGroup_RelatedAction {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -566,33 +517,26 @@ class RequestGroup_RelatedAction {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The element id of the action this is related to.
-  @HiveField(3)
   String actionId;
 
   //  Extensions for actionId
-  @HiveField(4)
   Element elementActionId;
 
   //  The relationship of this action to the related action.
-  @HiveField(5)
   String relationship;
 
   //  Extensions for relationship
-  @HiveField(6)
   Element elementRelationship;
 
   //  A duration or range of durations to apply to the relationship. For
   // example, 30-60 minutes before.
-  @HiveField(7)
   Duration offsetDuration;
 
   //  A duration or range of durations to apply to the relationship. For
   // example, 30-60 minutes before.
-  @HiveField(8)
   Range offsetRange;
 
 RequestGroup_RelatedAction(
@@ -739,230 +683,6 @@ class RequestGroupAdapter extends TypeAdapter<RequestGroup> {
       ..write(obj.note)
       ..writeByte(34)
       ..write(obj.action);
-  }
-}
-
-class RequestGroup_ActionAdapter extends TypeAdapter<RequestGroup_Action> {
-  @override
-  final typeId = 510;
-
-  @override
-  RequestGroup_Action read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return RequestGroup_Action(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      prefix: fields[3] as String,
-      elementPrefix: fields[4] as Element,
-      title: fields[5] as String,
-      elementTitle: fields[6] as Element,
-      description: fields[7] as String,
-      elementDescription: fields[8] as Element,
-      textEquivalent: fields[9] as String,
-      elementTextEquivalent: fields[10] as Element,
-      priority: fields[11] as String,
-      elementPriority: fields[12] as Element,
-      code: (fields[13] as List)?.cast<CodeableConcept>(),
-      documentation: (fields[14] as List)?.cast<RelatedArtifact>(),
-      condition: (fields[15] as List)?.cast<RequestGroup_Condition>(),
-      relatedAction: (fields[16] as List)?.cast<RequestGroup_RelatedAction>(),
-      timingDateTime: fields[17] as String,
-      elementTimingDateTime: fields[18] as Element,
-      timingAge: fields[19] as Age,
-      timingPeriod: fields[20] as Period,
-      timingDuration: fields[21] as Duration,
-      timingRange: fields[22] as Range,
-      timingTiming: fields[23] as Timing,
-      participant: (fields[24] as List)?.cast<Reference>(),
-      type: fields[25] as CodeableConcept,
-      groupingBehavior: fields[26] as String,
-      elementGroupingBehavior: fields[27] as Element,
-      selectionBehavior: fields[28] as String,
-      elementSelectionBehavior: fields[29] as Element,
-      requiredBehavior: fields[30] as String,
-      elementRequiredBehavior: fields[31] as Element,
-      precheckBehavior: fields[32] as String,
-      elementPrecheckBehavior: fields[33] as Element,
-      cardinalityBehavior: fields[34] as String,
-      elementCardinalityBehavior: fields[35] as Element,
-      resource: fields[36] as Reference,
-      action: (fields[37] as List)?.cast<RequestGroup_Action>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, RequestGroup_Action obj) {
-    writer
-      ..writeByte(38)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.prefix)
-      ..writeByte(4)
-      ..write(obj.elementPrefix)
-      ..writeByte(5)
-      ..write(obj.title)
-      ..writeByte(6)
-      ..write(obj.elementTitle)
-      ..writeByte(7)
-      ..write(obj.description)
-      ..writeByte(8)
-      ..write(obj.elementDescription)
-      ..writeByte(9)
-      ..write(obj.textEquivalent)
-      ..writeByte(10)
-      ..write(obj.elementTextEquivalent)
-      ..writeByte(11)
-      ..write(obj.priority)
-      ..writeByte(12)
-      ..write(obj.elementPriority)
-      ..writeByte(13)
-      ..write(obj.code)
-      ..writeByte(14)
-      ..write(obj.documentation)
-      ..writeByte(15)
-      ..write(obj.condition)
-      ..writeByte(16)
-      ..write(obj.relatedAction)
-      ..writeByte(17)
-      ..write(obj.timingDateTime)
-      ..writeByte(18)
-      ..write(obj.elementTimingDateTime)
-      ..writeByte(19)
-      ..write(obj.timingAge)
-      ..writeByte(20)
-      ..write(obj.timingPeriod)
-      ..writeByte(21)
-      ..write(obj.timingDuration)
-      ..writeByte(22)
-      ..write(obj.timingRange)
-      ..writeByte(23)
-      ..write(obj.timingTiming)
-      ..writeByte(24)
-      ..write(obj.participant)
-      ..writeByte(25)
-      ..write(obj.type)
-      ..writeByte(26)
-      ..write(obj.groupingBehavior)
-      ..writeByte(27)
-      ..write(obj.elementGroupingBehavior)
-      ..writeByte(28)
-      ..write(obj.selectionBehavior)
-      ..writeByte(29)
-      ..write(obj.elementSelectionBehavior)
-      ..writeByte(30)
-      ..write(obj.requiredBehavior)
-      ..writeByte(31)
-      ..write(obj.elementRequiredBehavior)
-      ..writeByte(32)
-      ..write(obj.precheckBehavior)
-      ..writeByte(33)
-      ..write(obj.elementPrecheckBehavior)
-      ..writeByte(34)
-      ..write(obj.cardinalityBehavior)
-      ..writeByte(35)
-      ..write(obj.elementCardinalityBehavior)
-      ..writeByte(36)
-      ..write(obj.resource)
-      ..writeByte(37)
-      ..write(obj.action);
-  }
-}
-
-class RequestGroup_ConditionAdapter
-    extends TypeAdapter<RequestGroup_Condition> {
-  @override
-  final typeId = 511;
-
-  @override
-  RequestGroup_Condition read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return RequestGroup_Condition(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      kind: fields[3] as String,
-      elementKind: fields[4] as Element,
-      expression: fields[5] as Expression,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, RequestGroup_Condition obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.kind)
-      ..writeByte(4)
-      ..write(obj.elementKind)
-      ..writeByte(5)
-      ..write(obj.expression);
-  }
-}
-
-class RequestGroup_RelatedActionAdapter
-    extends TypeAdapter<RequestGroup_RelatedAction> {
-  @override
-  final typeId = 512;
-
-  @override
-  RequestGroup_RelatedAction read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return RequestGroup_RelatedAction(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      actionId: fields[3] as String,
-      elementActionId: fields[4] as Element,
-      relationship: fields[5] as String,
-      elementRelationship: fields[6] as Element,
-      offsetDuration: fields[7] as Duration,
-      offsetRange: fields[8] as Range,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, RequestGroup_RelatedAction obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.actionId)
-      ..writeByte(4)
-      ..write(obj.elementActionId)
-      ..writeByte(5)
-      ..write(obj.relationship)
-      ..writeByte(6)
-      ..write(obj.elementRelationship)
-      ..writeByte(7)
-      ..write(obj.offsetDuration)
-      ..writeByte(8)
-      ..write(obj.offsetRange);
   }
 }
 

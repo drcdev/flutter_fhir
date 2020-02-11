@@ -242,12 +242,10 @@ Coverage(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 192)
 class Coverage_Class {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -256,7 +254,6 @@ class Coverage_Class {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -271,30 +268,24 @@ class Coverage_Class {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The type of classification for which an insurer-specific class label
   // or number and optional name is provided, for example may be used to
   // identify a class of coverage or employer group, Policy, Plan.
-  @HiveField(3)
   CodeableConcept type;
 
   //  The alphanumeric string value associated with the insurer issued
   // label.
-  @HiveField(4)
   String value;
 
   //  Extensions for value
-  @HiveField(5)
   Element elementValue;
 
   //  A short description for the class.
-  @HiveField(6)
   String name;
 
   //  Extensions for name
-  @HiveField(7)
   Element elementName;
 
 Coverage_Class(
@@ -313,12 +304,10 @@ Coverage_Class(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 193)
 class Coverage_CostToBeneficiary {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -327,7 +316,6 @@ class Coverage_CostToBeneficiary {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -342,24 +330,19 @@ class Coverage_CostToBeneficiary {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The category of patient centric costs associated with treatment.
-  @HiveField(3)
   CodeableConcept type;
 
   //  The amount due from the patient for the cost category.
-  @HiveField(4)
   Quantity valueQuantity;
 
   //  The amount due from the patient for the cost category.
-  @HiveField(5)
   Money valueMoney;
 
   //  A suite of codes indicating exceptions or reductions to patient costs
   // and their effective periods.
-  @HiveField(6)
   List<Coverage_Exception> exception;
 
 Coverage_CostToBeneficiary(
@@ -377,12 +360,10 @@ Coverage_CostToBeneficiary(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 194)
 class Coverage_Exception {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -391,7 +372,6 @@ class Coverage_Exception {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -406,15 +386,12 @@ class Coverage_Exception {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The code for the specific exception.
-  @HiveField(3)
   CodeableConcept type;
 
   //  The timeframe during when the exception is in force.
-  @HiveField(4)
   Period period;
 
 Coverage_Exception(
@@ -555,130 +532,6 @@ class CoverageAdapter extends TypeAdapter<Coverage> {
       ..write(obj.elementSubrogation)
       ..writeByte(33)
       ..write(obj.contract);
-  }
-}
-
-class Coverage_ClassAdapter extends TypeAdapter<Coverage_Class> {
-  @override
-  final typeId = 192;
-
-  @override
-  Coverage_Class read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Coverage_Class(
-      fields[3] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      value: fields[4] as String,
-      elementValue: fields[5] as Element,
-      name: fields[6] as String,
-      elementName: fields[7] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Coverage_Class obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.value)
-      ..writeByte(5)
-      ..write(obj.elementValue)
-      ..writeByte(6)
-      ..write(obj.name)
-      ..writeByte(7)
-      ..write(obj.elementName);
-  }
-}
-
-class Coverage_CostToBeneficiaryAdapter
-    extends TypeAdapter<Coverage_CostToBeneficiary> {
-  @override
-  final typeId = 193;
-
-  @override
-  Coverage_CostToBeneficiary read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Coverage_CostToBeneficiary(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as CodeableConcept,
-      valueQuantity: fields[4] as Quantity,
-      valueMoney: fields[5] as Money,
-      exception: (fields[6] as List)?.cast<Coverage_Exception>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Coverage_CostToBeneficiary obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.valueQuantity)
-      ..writeByte(5)
-      ..write(obj.valueMoney)
-      ..writeByte(6)
-      ..write(obj.exception);
-  }
-}
-
-class Coverage_ExceptionAdapter extends TypeAdapter<Coverage_Exception> {
-  @override
-  final typeId = 194;
-
-  @override
-  Coverage_Exception read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Coverage_Exception(
-      fields[3] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      period: fields[4] as Period,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Coverage_Exception obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.period);
   }
 }
 

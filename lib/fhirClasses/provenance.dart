@@ -185,12 +185,10 @@ Provenance(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 497)
 class Provenance_Agent {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -199,7 +197,6 @@ class Provenance_Agent {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -214,24 +211,19 @@ class Provenance_Agent {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The participation the agent had with respect to the activity.
-  @HiveField(3)
   CodeableConcept type;
 
   //  The function of the agent with respect to the activity. The security
   // role enabling the agent with respect to the activity.
-  @HiveField(4)
   List<CodeableConcept> role;
 
   //  The individual, device or organization that participated in the event.
-  @HiveField(5)
   Reference who;
 
   //  The individual, device, or organization for whom the change was made.
-  @HiveField(6)
   Reference onBehalfOf;
 
 Provenance_Agent(
@@ -249,12 +241,10 @@ Provenance_Agent(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 498)
 class Provenance_Entity {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -263,7 +253,6 @@ class Provenance_Entity {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -278,27 +267,22 @@ class Provenance_Entity {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  How the entity was used during the activity.
-  @HiveField(3)
   String role; // <code> enum: derivation/revision/quotation/source/removal;
 
   //  Extensions for role
-  @HiveField(4)
   Element elementRole;
 
   //  Identity of the  Entity used. May be a logical or physical uri and
   // maybe absolute or relative.
-  @HiveField(5)
   Reference what;
 
   //  The entity is attributed to an agent to express the agent's
   // responsibility for that entity, possibly along with other agents. This
   // description can be understood as shorthand for saying that the agent
   // was responsible for the activity which generated the entity.
-  @HiveField(6)
   List<Provenance_Agent> agent;
 
 Provenance_Entity(
@@ -413,90 +397,6 @@ class ProvenanceAdapter extends TypeAdapter<Provenance> {
       ..write(obj.entity)
       ..writeByte(24)
       ..write(obj.signature);
-  }
-}
-
-class Provenance_AgentAdapter extends TypeAdapter<Provenance_Agent> {
-  @override
-  final typeId = 497;
-
-  @override
-  Provenance_Agent read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Provenance_Agent(
-      fields[5] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as CodeableConcept,
-      role: (fields[4] as List)?.cast<CodeableConcept>(),
-      onBehalfOf: fields[6] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Provenance_Agent obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.role)
-      ..writeByte(5)
-      ..write(obj.who)
-      ..writeByte(6)
-      ..write(obj.onBehalfOf);
-  }
-}
-
-class Provenance_EntityAdapter extends TypeAdapter<Provenance_Entity> {
-  @override
-  final typeId = 498;
-
-  @override
-  Provenance_Entity read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Provenance_Entity(
-      fields[5] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      role: fields[3] as String,
-      elementRole: fields[4] as Element,
-      agent: (fields[6] as List)?.cast<Provenance_Agent>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Provenance_Entity obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.role)
-      ..writeByte(4)
-      ..write(obj.elementRole)
-      ..writeByte(5)
-      ..write(obj.what)
-      ..writeByte(6)
-      ..write(obj.agent);
   }
 }
 

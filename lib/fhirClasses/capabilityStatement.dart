@@ -370,12 +370,10 @@ CapabilityStatement(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 89)
 class CapabilityStatement_Software {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -384,7 +382,6 @@ class CapabilityStatement_Software {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -399,31 +396,24 @@ class CapabilityStatement_Software {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Name the software is known by.
-  @HiveField(3)
   String name;
 
   //  Extensions for name
-  @HiveField(4)
   Element elementName;
 
   //  The version identifier for the software covered by this statement.
-  @HiveField(5)
   String version;
 
   //  Extensions for version
-  @HiveField(6)
   Element elementVersion;
 
   //  Date this version of the software was released.
-  @HiveField(7)
   DateTime releaseDate;
 
   //  Extensions for releaseDate
-  @HiveField(8)
   Element elementReleaseDate;
 
 CapabilityStatement_Software(
@@ -443,12 +433,10 @@ CapabilityStatement_Software(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 90)
 class CapabilityStatement_Implementation {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -457,7 +445,6 @@ class CapabilityStatement_Implementation {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -472,30 +459,24 @@ class CapabilityStatement_Implementation {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Information about the specific installation that this capability
   // statement relates to.
-  @HiveField(3)
   String description;
 
   //  Extensions for description
-  @HiveField(4)
   Element elementDescription;
 
   //  An absolute base URL for the implementation.  This forms the base for
   // REST interfaces as well as the mailbox and document interfaces.
-  @HiveField(5)
   String url;
 
   //  Extensions for url
-  @HiveField(6)
   Element elementUrl;
 
   //  The organization responsible for the management of the instance and
   // oversight of the data on the server at the specified URL.
-  @HiveField(7)
   Reference custodian;
 
 CapabilityStatement_Implementation(
@@ -514,12 +495,10 @@ CapabilityStatement_Implementation(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 91)
 class CapabilityStatement_Rest {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -528,7 +507,6 @@ class CapabilityStatement_Rest {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -543,57 +521,46 @@ class CapabilityStatement_Rest {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Identifies whether this portion of the statement is describing the
   // ability to initiate or receive restful operations.
-  @HiveField(3)
   String mode; // <code> enum: client/server;
 
   //  Extensions for mode
-  @HiveField(4)
   Element elementMode;
 
   //  Information about the system's restful capabilities that apply across
   // all applications, such as security.
-  @HiveField(5)
   String documentation;
 
   //  Extensions for documentation
-  @HiveField(6)
   Element elementDocumentation;
 
   //  Information about security implementation from an interface
   // perspective - what a client needs to know.
-  @HiveField(7)
   CapabilityStatement_Security security;
 
   //  A specification of the restful capabilities of the solution for a
   // specific resource type.
-  @HiveField(8)
   List<CapabilityStatement_Resource> resource;
 
   //  A specification of restful operations supported by the system.
-  @HiveField(9)
   List<CapabilityStatement_Interaction1> interaction;
 
   //  Search parameters that are supported for searching all resources for
   // implementations to support and/or make use of - either references to
   // ones defined in the specification, or additional ones defined for/by
   // the implementation.
-  @HiveField(10)
   List<CapabilityStatement_SearchParam> searchParam;
 
   //  Definition of an operation or a named query together with its
   // parameters and their meaning and type.
-  @HiveField(11)
   List<CapabilityStatement_Operation> operation;
 
   //  An absolute URI which is a reference to the definition of a
   // compartment that the system supports. The reference is to a
   // CompartmentDefinition resource by its canonical URL .
-  @HiveField(12)
   List<String> compartment;
 
 CapabilityStatement_Rest(
@@ -617,12 +584,10 @@ CapabilityStatement_Rest(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 92)
 class CapabilityStatement_Security {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -631,7 +596,6 @@ class CapabilityStatement_Security {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -646,28 +610,22 @@ class CapabilityStatement_Security {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Server adds CORS headers when responding to requests - this enables
   // Javascript applications to use the server.
-  @HiveField(3)
   bool cors;
 
   //  Extensions for cors
-  @HiveField(4)
   Element elementCors;
 
   //  Types of security services that are supported/required by the system.
-  @HiveField(5)
   List<CodeableConcept> service;
 
   //  General description of how security works.
-  @HiveField(6)
   String description;
 
   //  Extensions for description
-  @HiveField(7)
   Element elementDescription;
 
 CapabilityStatement_Security(
@@ -686,12 +644,10 @@ CapabilityStatement_Security(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 93)
 class CapabilityStatement_Resource {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -700,7 +656,6 @@ class CapabilityStatement_Resource {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -715,22 +670,18 @@ class CapabilityStatement_Resource {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A type of resource exposed via the restful interface.
-  @HiveField(3)
   String type;
 
   //  Extensions for type
-  @HiveField(4)
   Element elementType;
 
   //  A specification of the profile that describes the solution's overall
   // support for the resource, including any constraints on cardinality,
   // bindings, lengths or other limitations. See further discussion in
   // [Using Profiles](profiling.html#profile-uses).
-  @HiveField(5)
   String profile;
 
   //  A list of profiles that represent different use cases supported by the
@@ -741,19 +692,15 @@ class CapabilityStatement_Resource {
   // will search by this profile and process data according to the guidance
   // implicit in the profile. See further discussion in [Using
   // Profiles](profiling.html#profile-uses).
-  @HiveField(6)
   List<String> supportedProfile;
 
   //  Additional information about the resource type used by the system.
-  @HiveField(7)
   String documentation;
 
   //  Extensions for documentation
-  @HiveField(8)
   Element elementDocumentation;
 
   //  Identifies a restful operation supported by the solution.
-  @HiveField(9)
   List<CapabilityStatement_Interaction> interaction;
 
   //  This field is set to no-version to specify that the system does not
@@ -762,20 +709,16 @@ class CapabilityStatement_Resource {
   // populate the versionId meta-property on resources. If the value is
   // 'versioned-update', then the server supports all the versioning
   // features, including using e-tags for version integrity in the API.
-  @HiveField(10)
   String versioning; // <code> enum: no-version/versioned/versioned-update;
 
   //  Extensions for versioning
-  @HiveField(11)
   Element elementVersioning;
 
   //  A flag for whether the server is able to return past versions as part
   // of the vRead operation.
-  @HiveField(12)
   bool readHistory;
 
   //  Extensions for readHistory
-  @HiveField(13)
   Element elementReadHistory;
 
   //  A flag to indicate that the server allows or needs to allow the client
@@ -783,81 +726,63 @@ class CapabilityStatement_Resource {
   // location where there is no existing resource). Allowing this operation
   // means that the server allows the client to create new identities on the
   // server.
-  @HiveField(14)
   bool updateCreate;
 
   //  Extensions for updateCreate
-  @HiveField(15)
   Element elementUpdateCreate;
 
   //  A flag that indicates that the server supports conditional create.
-  @HiveField(16)
   bool conditionalCreate;
 
   //  Extensions for conditionalCreate
-  @HiveField(17)
   Element elementConditionalCreate;
 
   //  A code that indicates how the server supports conditional read.
-  @HiveField(18)
   String conditionalRead; // <code> enum: not-supported/modified-since/not-match/full-support;
 
   //  Extensions for conditionalRead
-  @HiveField(19)
   Element elementConditionalRead;
 
   //  A flag that indicates that the server supports conditional update.
-  @HiveField(20)
   bool conditionalUpdate;
 
   //  Extensions for conditionalUpdate
-  @HiveField(21)
   Element elementConditionalUpdate;
 
   //  A code that indicates how the server supports conditional delete.
-  @HiveField(22)
   String conditionalDelete; // <code> enum: not-supported/single/multiple;
 
   //  Extensions for conditionalDelete
-  @HiveField(23)
   Element elementConditionalDelete;
 
   //  A set of flags that defines how references are supported.
-  @HiveField(24)
   List<String> referencePolicy; // <code> enum: literal/logical/resolves/enforced/local> referencePolicy;
 
   //  Extensions for referencePolicy
-  @HiveField(25)
   List<Element> elementReferencePolicy;
 
   //  A list of _include values supported by the server.
-  @HiveField(26)
   List<String> searchInclude;
 
   //  Extensions for searchInclude
-  @HiveField(27)
   List<Element> elementSearchInclude;
 
   //  A list of _revinclude (reverse include) values supported by the
   // server.
-  @HiveField(28)
   List<String> searchRevInclude;
 
   //  Extensions for searchRevInclude
-  @HiveField(29)
   List<Element> elementSearchRevInclude;
 
   //  Search parameters for implementations to support and/or make use of -
   // either references to ones defined in the specification, or additional
   // ones defined for/by the implementation.
-  @HiveField(30)
   List<CapabilityStatement_SearchParam> searchParam;
 
   //  Definition of an operation or a named query together with its
   // parameters and their meaning and type. Consult the definition of the
   // operation for details about how to invoke the operation, and the
   // parameters.
-  @HiveField(31)
   List<CapabilityStatement_Operation> operation;
 
 CapabilityStatement_Resource(
@@ -900,12 +825,10 @@ CapabilityStatement_Resource(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 94)
 class CapabilityStatement_Interaction {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -914,7 +837,6 @@ class CapabilityStatement_Interaction {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -929,25 +851,20 @@ class CapabilityStatement_Interaction {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Coded identifier of the operation, supported by the system resource.
-  @HiveField(3)
   String code; // <code> enum: read/vread/update/patch/delete/history-instance/history-type/create/search-type;
 
   //  Extensions for code
-  @HiveField(4)
   Element elementCode;
 
   //  Guidance specific to the implementation of this operation, such as
   // 'delete is a logical delete' or 'updates are only allowed with version
   // id' or 'creates permitted from pre-authorized certificates only'.
-  @HiveField(5)
   String documentation;
 
   //  Extensions for documentation
-  @HiveField(6)
   Element elementDocumentation;
 
 CapabilityStatement_Interaction(
@@ -965,12 +882,10 @@ CapabilityStatement_Interaction(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 95)
 class CapabilityStatement_SearchParam {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -979,7 +894,6 @@ class CapabilityStatement_SearchParam {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -994,15 +908,12 @@ class CapabilityStatement_SearchParam {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The name of the search parameter used in the interface.
-  @HiveField(3)
   String name;
 
   //  Extensions for name
-  @HiveField(4)
   Element elementName;
 
   //  An absolute URI that is a formal reference to where this parameter was
@@ -1011,25 +922,20 @@ class CapabilityStatement_SearchParam {
   // element SHALL be populated if the search parameter refers to a
   // SearchParameter defined by the FHIR core specification or externally
   // defined IGs.
-  @HiveField(5)
   String definition;
 
   //  The type of value a search parameter refers to, and how the content is
   // interpreted.
-  @HiveField(6)
   String type; // <code> enum: number/date/string/token/reference/composite/quantity/uri/special;
 
   //  Extensions for type
-  @HiveField(7)
   Element elementType;
 
   //  This allows documentation of any distinct behaviors about how the
   // search parameter is used.  For example, text matching algorithms.
-  @HiveField(8)
   String documentation;
 
   //  Extensions for documentation
-  @HiveField(9)
   Element elementDocumentation;
 
 CapabilityStatement_SearchParam(
@@ -1050,12 +956,10 @@ CapabilityStatement_SearchParam(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 96)
 class CapabilityStatement_Operation {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -1064,7 +968,6 @@ class CapabilityStatement_Operation {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -1079,17 +982,14 @@ class CapabilityStatement_Operation {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The name of the operation or query. For an operation, this is the name
   //  prefixed with $ and used in the URL. For a query, this is the name
   // used in the _query parameter when the query is called.
-  @HiveField(3)
   String name;
 
   //  Extensions for name
-  @HiveField(4)
   Element elementName;
 
   //  Where the formal definition can be found. If a server references the
@@ -1100,17 +1000,14 @@ class CapabilityStatement_Operation {
   // define its own custom [[[OperationDefinition]]] with a 'base' of the
   // original OperationDefinition.  The custom definition would describe the
   // specific subset of functionality supported.
-  @HiveField(5)
   String definition;
 
   //  Documentation that describes anything special about the operation
   // behavior, possibly detailing different behavior for system, type and
   // instance-level invocation of the operation.
-  @HiveField(6)
   String documentation;
 
   //  Extensions for documentation
-  @HiveField(7)
   Element elementDocumentation;
 
 CapabilityStatement_Operation(
@@ -1129,12 +1026,10 @@ CapabilityStatement_Operation(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 97)
 class CapabilityStatement_Interaction1 {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -1143,7 +1038,6 @@ class CapabilityStatement_Interaction1 {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -1158,25 +1052,20 @@ class CapabilityStatement_Interaction1 {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A coded identifier of the operation, supported by the system.
-  @HiveField(3)
   String code; // <code> enum: transaction/batch/search-system/history-system;
 
   //  Extensions for code
-  @HiveField(4)
   Element elementCode;
 
   //  Guidance specific to the implementation of this operation, such as
   // limitations on the kind of transactions allowed, or information about
   // system wide search is implemented.
-  @HiveField(5)
   String documentation;
 
   //  Extensions for documentation
-  @HiveField(6)
   Element elementDocumentation;
 
 CapabilityStatement_Interaction1(
@@ -1194,12 +1083,10 @@ CapabilityStatement_Interaction1(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 98)
 class CapabilityStatement_Messaging {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -1208,7 +1095,6 @@ class CapabilityStatement_Messaging {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -1223,38 +1109,31 @@ class CapabilityStatement_Messaging {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  An endpoint (network accessible address) to which messages and/or
   // replies are to be sent.
-  @HiveField(3)
   List<CapabilityStatement_Endpoint> endpoint;
 
   //  Length if the receiver's reliable messaging cache in minutes (if a
   // receiver) or how long the cache length on the receiver should be (if a
   // sender).
-  @HiveField(4)
   int reliableCache;
 
   //  Extensions for reliableCache
-  @HiveField(5)
   Element elementReliableCache;
 
   //  Documentation about the system's messaging capabilities for this
   // endpoint not otherwise documented by the capability statement.  For
   // example, the process for becoming an authorized messaging exchange
   // partner.
-  @HiveField(6)
   String documentation;
 
   //  Extensions for documentation
-  @HiveField(7)
   Element elementDocumentation;
 
   //  References to message definitions for messages this system can send or
   // receive.
-  @HiveField(8)
   List<CapabilityStatement_SupportedMessage> supportedMessage;
 
 CapabilityStatement_Messaging(
@@ -1274,12 +1153,10 @@ CapabilityStatement_Messaging(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 99)
 class CapabilityStatement_Endpoint {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -1288,7 +1165,6 @@ class CapabilityStatement_Endpoint {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -1303,21 +1179,17 @@ class CapabilityStatement_Endpoint {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A list of the messaging transport protocol(s) identifiers, supported
   // by this endpoint.
-  @HiveField(3)
   Coding protocol;
 
   //  The network address of the endpoint. For solutions that do not use
   // network addresses for routing, it can be just an identifier.
-  @HiveField(4)
   String address;
 
   //  Extensions for address
-  @HiveField(5)
   Element elementAddress;
 
 CapabilityStatement_Endpoint(
@@ -1334,12 +1206,10 @@ CapabilityStatement_Endpoint(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 100)
 class CapabilityStatement_SupportedMessage {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -1348,7 +1218,6 @@ class CapabilityStatement_SupportedMessage {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -1363,21 +1232,17 @@ class CapabilityStatement_SupportedMessage {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The mode of this event declaration - whether application is sender or
   // receiver.
-  @HiveField(3)
   String mode; // <code> enum: sender/receiver;
 
   //  Extensions for mode
-  @HiveField(4)
   Element elementMode;
 
   //  Points to a message definition that identifies the messaging event,
   // message structure, allowed responses, etc.
-  @HiveField(5)
   String definition;
 
 CapabilityStatement_SupportedMessage(
@@ -1394,12 +1259,10 @@ CapabilityStatement_SupportedMessage(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 101)
 class CapabilityStatement_Document {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -1408,7 +1271,6 @@ class CapabilityStatement_Document {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -1423,31 +1285,25 @@ class CapabilityStatement_Document {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Mode of this document declaration - whether an application is a
   // producer or consumer.
-  @HiveField(3)
   String mode; // <code> enum: producer/consumer;
 
   //  Extensions for mode
-  @HiveField(4)
   Element elementMode;
 
   //  A description of how the application supports or uses the specified
   // document profile.  For example, when documents are created, what action
   // is taken with consumed documents, etc.
-  @HiveField(5)
   String documentation;
 
   //  Extensions for documentation
-  @HiveField(6)
   Element elementDocumentation;
 
   //  A profile on the document Bundle that constrains which resources are
   // present, and their contents.
-  @HiveField(7)
   String profile;
 
 CapabilityStatement_Document(
@@ -1644,689 +1500,6 @@ class CapabilityStatementAdapter extends TypeAdapter<CapabilityStatement> {
       ..write(obj.messaging)
       ..writeByte(51)
       ..write(obj.document);
-  }
-}
-
-class CapabilityStatement_SoftwareAdapter
-    extends TypeAdapter<CapabilityStatement_Software> {
-  @override
-  final typeId = 89;
-
-  @override
-  CapabilityStatement_Software read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CapabilityStatement_Software(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      name: fields[3] as String,
-      elementName: fields[4] as Element,
-      version: fields[5] as String,
-      elementVersion: fields[6] as Element,
-      releaseDate: fields[7] as DateTime,
-      elementReleaseDate: fields[8] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CapabilityStatement_Software obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.name)
-      ..writeByte(4)
-      ..write(obj.elementName)
-      ..writeByte(5)
-      ..write(obj.version)
-      ..writeByte(6)
-      ..write(obj.elementVersion)
-      ..writeByte(7)
-      ..write(obj.releaseDate)
-      ..writeByte(8)
-      ..write(obj.elementReleaseDate);
-  }
-}
-
-class CapabilityStatement_ImplementationAdapter
-    extends TypeAdapter<CapabilityStatement_Implementation> {
-  @override
-  final typeId = 90;
-
-  @override
-  CapabilityStatement_Implementation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CapabilityStatement_Implementation(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      description: fields[3] as String,
-      elementDescription: fields[4] as Element,
-      url: fields[5] as String,
-      elementUrl: fields[6] as Element,
-      custodian: fields[7] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CapabilityStatement_Implementation obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.description)
-      ..writeByte(4)
-      ..write(obj.elementDescription)
-      ..writeByte(5)
-      ..write(obj.url)
-      ..writeByte(6)
-      ..write(obj.elementUrl)
-      ..writeByte(7)
-      ..write(obj.custodian);
-  }
-}
-
-class CapabilityStatement_RestAdapter
-    extends TypeAdapter<CapabilityStatement_Rest> {
-  @override
-  final typeId = 91;
-
-  @override
-  CapabilityStatement_Rest read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CapabilityStatement_Rest(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      mode: fields[3] as String,
-      elementMode: fields[4] as Element,
-      documentation: fields[5] as String,
-      elementDocumentation: fields[6] as Element,
-      security: fields[7] as CapabilityStatement_Security,
-      resource: (fields[8] as List)?.cast<CapabilityStatement_Resource>(),
-      interaction:
-          (fields[9] as List)?.cast<CapabilityStatement_Interaction1>(),
-      searchParam:
-          (fields[10] as List)?.cast<CapabilityStatement_SearchParam>(),
-      operation: (fields[11] as List)?.cast<CapabilityStatement_Operation>(),
-      compartment: (fields[12] as List)?.cast<String>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CapabilityStatement_Rest obj) {
-    writer
-      ..writeByte(13)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.mode)
-      ..writeByte(4)
-      ..write(obj.elementMode)
-      ..writeByte(5)
-      ..write(obj.documentation)
-      ..writeByte(6)
-      ..write(obj.elementDocumentation)
-      ..writeByte(7)
-      ..write(obj.security)
-      ..writeByte(8)
-      ..write(obj.resource)
-      ..writeByte(9)
-      ..write(obj.interaction)
-      ..writeByte(10)
-      ..write(obj.searchParam)
-      ..writeByte(11)
-      ..write(obj.operation)
-      ..writeByte(12)
-      ..write(obj.compartment);
-  }
-}
-
-class CapabilityStatement_SecurityAdapter
-    extends TypeAdapter<CapabilityStatement_Security> {
-  @override
-  final typeId = 92;
-
-  @override
-  CapabilityStatement_Security read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CapabilityStatement_Security(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      cors: fields[3] as bool,
-      elementCors: fields[4] as Element,
-      service: (fields[5] as List)?.cast<CodeableConcept>(),
-      description: fields[6] as String,
-      elementDescription: fields[7] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CapabilityStatement_Security obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.cors)
-      ..writeByte(4)
-      ..write(obj.elementCors)
-      ..writeByte(5)
-      ..write(obj.service)
-      ..writeByte(6)
-      ..write(obj.description)
-      ..writeByte(7)
-      ..write(obj.elementDescription);
-  }
-}
-
-class CapabilityStatement_ResourceAdapter
-    extends TypeAdapter<CapabilityStatement_Resource> {
-  @override
-  final typeId = 93;
-
-  @override
-  CapabilityStatement_Resource read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CapabilityStatement_Resource(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as String,
-      elementType: fields[4] as Element,
-      profile: fields[5] as String,
-      supportedProfile: (fields[6] as List)?.cast<String>(),
-      documentation: fields[7] as String,
-      elementDocumentation: fields[8] as Element,
-      interaction: (fields[9] as List)?.cast<CapabilityStatement_Interaction>(),
-      versioning: fields[10] as String,
-      elementVersioning: fields[11] as Element,
-      readHistory: fields[12] as bool,
-      elementReadHistory: fields[13] as Element,
-      updateCreate: fields[14] as bool,
-      elementUpdateCreate: fields[15] as Element,
-      conditionalCreate: fields[16] as bool,
-      elementConditionalCreate: fields[17] as Element,
-      conditionalRead: fields[18] as String,
-      elementConditionalRead: fields[19] as Element,
-      conditionalUpdate: fields[20] as bool,
-      elementConditionalUpdate: fields[21] as Element,
-      conditionalDelete: fields[22] as String,
-      elementConditionalDelete: fields[23] as Element,
-      referencePolicy: (fields[24] as List)?.cast<String>(),
-      elementReferencePolicy: (fields[25] as List)?.cast<Element>(),
-      searchInclude: (fields[26] as List)?.cast<String>(),
-      elementSearchInclude: (fields[27] as List)?.cast<Element>(),
-      searchRevInclude: (fields[28] as List)?.cast<String>(),
-      elementSearchRevInclude: (fields[29] as List)?.cast<Element>(),
-      searchParam:
-          (fields[30] as List)?.cast<CapabilityStatement_SearchParam>(),
-      operation: (fields[31] as List)?.cast<CapabilityStatement_Operation>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CapabilityStatement_Resource obj) {
-    writer
-      ..writeByte(32)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.elementType)
-      ..writeByte(5)
-      ..write(obj.profile)
-      ..writeByte(6)
-      ..write(obj.supportedProfile)
-      ..writeByte(7)
-      ..write(obj.documentation)
-      ..writeByte(8)
-      ..write(obj.elementDocumentation)
-      ..writeByte(9)
-      ..write(obj.interaction)
-      ..writeByte(10)
-      ..write(obj.versioning)
-      ..writeByte(11)
-      ..write(obj.elementVersioning)
-      ..writeByte(12)
-      ..write(obj.readHistory)
-      ..writeByte(13)
-      ..write(obj.elementReadHistory)
-      ..writeByte(14)
-      ..write(obj.updateCreate)
-      ..writeByte(15)
-      ..write(obj.elementUpdateCreate)
-      ..writeByte(16)
-      ..write(obj.conditionalCreate)
-      ..writeByte(17)
-      ..write(obj.elementConditionalCreate)
-      ..writeByte(18)
-      ..write(obj.conditionalRead)
-      ..writeByte(19)
-      ..write(obj.elementConditionalRead)
-      ..writeByte(20)
-      ..write(obj.conditionalUpdate)
-      ..writeByte(21)
-      ..write(obj.elementConditionalUpdate)
-      ..writeByte(22)
-      ..write(obj.conditionalDelete)
-      ..writeByte(23)
-      ..write(obj.elementConditionalDelete)
-      ..writeByte(24)
-      ..write(obj.referencePolicy)
-      ..writeByte(25)
-      ..write(obj.elementReferencePolicy)
-      ..writeByte(26)
-      ..write(obj.searchInclude)
-      ..writeByte(27)
-      ..write(obj.elementSearchInclude)
-      ..writeByte(28)
-      ..write(obj.searchRevInclude)
-      ..writeByte(29)
-      ..write(obj.elementSearchRevInclude)
-      ..writeByte(30)
-      ..write(obj.searchParam)
-      ..writeByte(31)
-      ..write(obj.operation);
-  }
-}
-
-class CapabilityStatement_InteractionAdapter
-    extends TypeAdapter<CapabilityStatement_Interaction> {
-  @override
-  final typeId = 94;
-
-  @override
-  CapabilityStatement_Interaction read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CapabilityStatement_Interaction(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as String,
-      elementCode: fields[4] as Element,
-      documentation: fields[5] as String,
-      elementDocumentation: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CapabilityStatement_Interaction obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.elementCode)
-      ..writeByte(5)
-      ..write(obj.documentation)
-      ..writeByte(6)
-      ..write(obj.elementDocumentation);
-  }
-}
-
-class CapabilityStatement_SearchParamAdapter
-    extends TypeAdapter<CapabilityStatement_SearchParam> {
-  @override
-  final typeId = 95;
-
-  @override
-  CapabilityStatement_SearchParam read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CapabilityStatement_SearchParam(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      name: fields[3] as String,
-      elementName: fields[4] as Element,
-      definition: fields[5] as String,
-      type: fields[6] as String,
-      elementType: fields[7] as Element,
-      documentation: fields[8] as String,
-      elementDocumentation: fields[9] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CapabilityStatement_SearchParam obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.name)
-      ..writeByte(4)
-      ..write(obj.elementName)
-      ..writeByte(5)
-      ..write(obj.definition)
-      ..writeByte(6)
-      ..write(obj.type)
-      ..writeByte(7)
-      ..write(obj.elementType)
-      ..writeByte(8)
-      ..write(obj.documentation)
-      ..writeByte(9)
-      ..write(obj.elementDocumentation);
-  }
-}
-
-class CapabilityStatement_OperationAdapter
-    extends TypeAdapter<CapabilityStatement_Operation> {
-  @override
-  final typeId = 96;
-
-  @override
-  CapabilityStatement_Operation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CapabilityStatement_Operation(
-      fields[5] as String,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      name: fields[3] as String,
-      elementName: fields[4] as Element,
-      documentation: fields[6] as String,
-      elementDocumentation: fields[7] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CapabilityStatement_Operation obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.name)
-      ..writeByte(4)
-      ..write(obj.elementName)
-      ..writeByte(5)
-      ..write(obj.definition)
-      ..writeByte(6)
-      ..write(obj.documentation)
-      ..writeByte(7)
-      ..write(obj.elementDocumentation);
-  }
-}
-
-class CapabilityStatement_Interaction1Adapter
-    extends TypeAdapter<CapabilityStatement_Interaction1> {
-  @override
-  final typeId = 97;
-
-  @override
-  CapabilityStatement_Interaction1 read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CapabilityStatement_Interaction1(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as String,
-      elementCode: fields[4] as Element,
-      documentation: fields[5] as String,
-      elementDocumentation: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CapabilityStatement_Interaction1 obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.elementCode)
-      ..writeByte(5)
-      ..write(obj.documentation)
-      ..writeByte(6)
-      ..write(obj.elementDocumentation);
-  }
-}
-
-class CapabilityStatement_MessagingAdapter
-    extends TypeAdapter<CapabilityStatement_Messaging> {
-  @override
-  final typeId = 98;
-
-  @override
-  CapabilityStatement_Messaging read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CapabilityStatement_Messaging(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      endpoint: (fields[3] as List)?.cast<CapabilityStatement_Endpoint>(),
-      reliableCache: fields[4] as int,
-      elementReliableCache: fields[5] as Element,
-      documentation: fields[6] as String,
-      elementDocumentation: fields[7] as Element,
-      supportedMessage:
-          (fields[8] as List)?.cast<CapabilityStatement_SupportedMessage>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CapabilityStatement_Messaging obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.endpoint)
-      ..writeByte(4)
-      ..write(obj.reliableCache)
-      ..writeByte(5)
-      ..write(obj.elementReliableCache)
-      ..writeByte(6)
-      ..write(obj.documentation)
-      ..writeByte(7)
-      ..write(obj.elementDocumentation)
-      ..writeByte(8)
-      ..write(obj.supportedMessage);
-  }
-}
-
-class CapabilityStatement_EndpointAdapter
-    extends TypeAdapter<CapabilityStatement_Endpoint> {
-  @override
-  final typeId = 99;
-
-  @override
-  CapabilityStatement_Endpoint read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CapabilityStatement_Endpoint(
-      fields[3] as Coding,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      address: fields[4] as String,
-      elementAddress: fields[5] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CapabilityStatement_Endpoint obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.protocol)
-      ..writeByte(4)
-      ..write(obj.address)
-      ..writeByte(5)
-      ..write(obj.elementAddress);
-  }
-}
-
-class CapabilityStatement_SupportedMessageAdapter
-    extends TypeAdapter<CapabilityStatement_SupportedMessage> {
-  @override
-  final typeId = 100;
-
-  @override
-  CapabilityStatement_SupportedMessage read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CapabilityStatement_SupportedMessage(
-      fields[5] as String,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      mode: fields[3] as String,
-      elementMode: fields[4] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CapabilityStatement_SupportedMessage obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.mode)
-      ..writeByte(4)
-      ..write(obj.elementMode)
-      ..writeByte(5)
-      ..write(obj.definition);
-  }
-}
-
-class CapabilityStatement_DocumentAdapter
-    extends TypeAdapter<CapabilityStatement_Document> {
-  @override
-  final typeId = 101;
-
-  @override
-  CapabilityStatement_Document read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CapabilityStatement_Document(
-      fields[7] as String,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      mode: fields[3] as String,
-      elementMode: fields[4] as Element,
-      documentation: fields[5] as String,
-      elementDocumentation: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CapabilityStatement_Document obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.mode)
-      ..writeByte(4)
-      ..write(obj.elementMode)
-      ..writeByte(5)
-      ..write(obj.documentation)
-      ..writeByte(6)
-      ..write(obj.elementDocumentation)
-      ..writeByte(7)
-      ..write(obj.profile);
   }
 }
 

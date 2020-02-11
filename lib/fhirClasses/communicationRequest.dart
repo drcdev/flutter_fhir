@@ -267,12 +267,10 @@ CommunicationRequest(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 152)
 class CommunicationRequest_Payload {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -281,7 +279,6 @@ class CommunicationRequest_Payload {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -296,26 +293,21 @@ class CommunicationRequest_Payload {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The communicated content (or for multi-part communications, one
   // portion of the communication).
-  @HiveField(3)
   String contentString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for contentString
-  @HiveField(4)
   Element elementContentString;
 
   //  The communicated content (or for multi-part communications, one
   // portion of the communication).
-  @HiveField(5)
   Attachment contentAttachment;
 
   //  The communicated content (or for multi-part communications, one
   // portion of the communication).
-  @HiveField(6)
   Reference contentReference;
 
 CommunicationRequest_Payload(
@@ -472,49 +464,6 @@ class CommunicationRequestAdapter extends TypeAdapter<CommunicationRequest> {
       ..write(obj.reasonReference)
       ..writeByte(38)
       ..write(obj.note);
-  }
-}
-
-class CommunicationRequest_PayloadAdapter
-    extends TypeAdapter<CommunicationRequest_Payload> {
-  @override
-  final typeId = 152;
-
-  @override
-  CommunicationRequest_Payload read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CommunicationRequest_Payload(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      contentString: fields[3] as String,
-      elementContentString: fields[4] as Element,
-      contentAttachment: fields[5] as Attachment,
-      contentReference: fields[6] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CommunicationRequest_Payload obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.contentString)
-      ..writeByte(4)
-      ..write(obj.elementContentString)
-      ..writeByte(5)
-      ..write(obj.contentAttachment)
-      ..writeByte(6)
-      ..write(obj.contentReference);
   }
 }
 

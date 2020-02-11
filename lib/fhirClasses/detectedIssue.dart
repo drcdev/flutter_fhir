@@ -208,12 +208,10 @@ DetectedIssue(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 206)
 class DetectedIssue_Evidence {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -222,7 +220,6 @@ class DetectedIssue_Evidence {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -237,16 +234,13 @@ class DetectedIssue_Evidence {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A manifestation that led to the recording of this detected issue.
-  @HiveField(3)
   List<CodeableConcept> code;
 
   //  Links to resources that constitute evidence for the detected issue
   // such as a GuidanceResponse or MeasureReport.
-  @HiveField(4)
   List<Reference> detail;
 
 DetectedIssue_Evidence(
@@ -262,12 +256,10 @@ DetectedIssue_Evidence(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 207)
 class DetectedIssue_Mitigation {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -276,7 +268,6 @@ class DetectedIssue_Mitigation {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -291,25 +282,20 @@ class DetectedIssue_Mitigation {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Describes the action that was taken or the observation that was made
   // that reduces/eliminates the risk associated with the identified issue.
-  @HiveField(3)
   CodeableConcept action;
 
   //  Indicates when the mitigating action was documented.
-  @HiveField(4)
   DateTime date;
 
   //  Extensions for date
-  @HiveField(5)
   Element elementDate;
 
   //  Identifies the practitioner who determined the mitigation and takes
   // responsibility for the mitigation step occurring.
-  @HiveField(6)
   Reference author;
 
 DetectedIssue_Mitigation(
@@ -436,86 +422,6 @@ class DetectedIssueAdapter extends TypeAdapter<DetectedIssue> {
       ..write(obj.elementReference)
       ..writeByte(28)
       ..write(obj.mitigation);
-  }
-}
-
-class DetectedIssue_EvidenceAdapter
-    extends TypeAdapter<DetectedIssue_Evidence> {
-  @override
-  final typeId = 206;
-
-  @override
-  DetectedIssue_Evidence read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return DetectedIssue_Evidence(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: (fields[3] as List)?.cast<CodeableConcept>(),
-      detail: (fields[4] as List)?.cast<Reference>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, DetectedIssue_Evidence obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.detail);
-  }
-}
-
-class DetectedIssue_MitigationAdapter
-    extends TypeAdapter<DetectedIssue_Mitigation> {
-  @override
-  final typeId = 207;
-
-  @override
-  DetectedIssue_Mitigation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return DetectedIssue_Mitigation(
-      fields[3] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      date: fields[4] as DateTime,
-      elementDate: fields[5] as Element,
-      author: fields[6] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, DetectedIssue_Mitigation obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.action)
-      ..writeByte(4)
-      ..write(obj.date)
-      ..writeByte(5)
-      ..write(obj.elementDate)
-      ..writeByte(6)
-      ..write(obj.author);
   }
 }
 

@@ -386,12 +386,10 @@ StructureDefinition(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 543)
 class StructureDefinition_Mapping {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -400,7 +398,6 @@ class StructureDefinition_Mapping {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -415,42 +412,33 @@ class StructureDefinition_Mapping {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  An Internal id that is used to identify this mapping set when specific
   // mappings are made.
-  @HiveField(3)
   String identity;
 
   //  Extensions for identity
-  @HiveField(4)
   Element elementIdentity;
 
   //  An absolute URI that identifies the specification that this mapping is
   // expressed to.
-  @HiveField(5)
   String uri;
 
   //  Extensions for uri
-  @HiveField(6)
   Element elementUri;
 
   //  A name for the specification that is being mapped to.
-  @HiveField(7)
   String name;
 
   //  Extensions for name
-  @HiveField(8)
   Element elementName;
 
   //  Comments about this mapping, including version notes, issues, scope
   // limitations, and other important notes for usage.
-  @HiveField(9)
   String comment;
 
   //  Extensions for comment
-  @HiveField(10)
   Element elementComment;
 
 StructureDefinition_Mapping(
@@ -472,12 +460,10 @@ StructureDefinition_Mapping(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 544)
 class StructureDefinition_Context {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -486,7 +472,6 @@ class StructureDefinition_Context {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -501,25 +486,20 @@ class StructureDefinition_Context {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Defines how to interpret the expression that defines what the context
   // of the extension is.
-  @HiveField(3)
   String type; // <code> enum: fhirpath/element/extension;
 
   //  Extensions for type
-  @HiveField(4)
   Element elementType;
 
   //  An expression that defines where an extension can be used in
   // resources.
-  @HiveField(5)
   String expression;
 
   //  Extensions for expression
-  @HiveField(6)
   Element elementExpression;
 
 StructureDefinition_Context(
@@ -537,12 +517,10 @@ StructureDefinition_Context(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 545)
 class StructureDefinition_Snapshot {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -551,7 +529,6 @@ class StructureDefinition_Snapshot {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -566,11 +543,9 @@ class StructureDefinition_Snapshot {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Captures constraints on each element within the resource.
-  @HiveField(3)
   List<ElementDefinition> element;
 
 StructureDefinition_Snapshot(
@@ -585,12 +560,10 @@ StructureDefinition_Snapshot(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 546)
 class StructureDefinition_Differential {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -599,7 +572,6 @@ class StructureDefinition_Differential {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -614,11 +586,9 @@ class StructureDefinition_Differential {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Captures constraints on each element within the resource.
-  @HiveField(3)
   List<ElementDefinition> element;
 
 StructureDefinition_Differential(
@@ -820,172 +790,6 @@ class StructureDefinitionAdapter extends TypeAdapter<StructureDefinition> {
       ..write(obj.snapshot)
       ..writeByte(54)
       ..write(obj.differential);
-  }
-}
-
-class StructureDefinition_MappingAdapter
-    extends TypeAdapter<StructureDefinition_Mapping> {
-  @override
-  final typeId = 543;
-
-  @override
-  StructureDefinition_Mapping read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return StructureDefinition_Mapping(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      identity: fields[3] as String,
-      elementIdentity: fields[4] as Element,
-      uri: fields[5] as String,
-      elementUri: fields[6] as Element,
-      name: fields[7] as String,
-      elementName: fields[8] as Element,
-      comment: fields[9] as String,
-      elementComment: fields[10] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, StructureDefinition_Mapping obj) {
-    writer
-      ..writeByte(11)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.identity)
-      ..writeByte(4)
-      ..write(obj.elementIdentity)
-      ..writeByte(5)
-      ..write(obj.uri)
-      ..writeByte(6)
-      ..write(obj.elementUri)
-      ..writeByte(7)
-      ..write(obj.name)
-      ..writeByte(8)
-      ..write(obj.elementName)
-      ..writeByte(9)
-      ..write(obj.comment)
-      ..writeByte(10)
-      ..write(obj.elementComment);
-  }
-}
-
-class StructureDefinition_ContextAdapter
-    extends TypeAdapter<StructureDefinition_Context> {
-  @override
-  final typeId = 544;
-
-  @override
-  StructureDefinition_Context read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return StructureDefinition_Context(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as String,
-      elementType: fields[4] as Element,
-      expression: fields[5] as String,
-      elementExpression: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, StructureDefinition_Context obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.elementType)
-      ..writeByte(5)
-      ..write(obj.expression)
-      ..writeByte(6)
-      ..write(obj.elementExpression);
-  }
-}
-
-class StructureDefinition_SnapshotAdapter
-    extends TypeAdapter<StructureDefinition_Snapshot> {
-  @override
-  final typeId = 545;
-
-  @override
-  StructureDefinition_Snapshot read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return StructureDefinition_Snapshot(
-      (fields[3] as List)?.cast<ElementDefinition>(),
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, StructureDefinition_Snapshot obj) {
-    writer
-      ..writeByte(4)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.element);
-  }
-}
-
-class StructureDefinition_DifferentialAdapter
-    extends TypeAdapter<StructureDefinition_Differential> {
-  @override
-  final typeId = 546;
-
-  @override
-  StructureDefinition_Differential read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return StructureDefinition_Differential(
-      (fields[3] as List)?.cast<ElementDefinition>(),
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, StructureDefinition_Differential obj) {
-    writer
-      ..writeByte(4)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.element);
   }
 }
 

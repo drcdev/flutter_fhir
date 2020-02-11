@@ -177,12 +177,10 @@ Organization(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 466)
 class Organization_Contact {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -191,7 +189,6 @@ class Organization_Contact {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -206,24 +203,19 @@ class Organization_Contact {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Indicates a purpose for which the contact can be reached.
-  @HiveField(3)
   CodeableConcept purpose;
 
   //  A name associated with the contact.
-  @HiveField(4)
   HumanName name;
 
   //  A contact detail (e.g. a telephone number or an email address) by
   // which the party may be contacted.
-  @HiveField(5)
   List<ContactPoint> telecom;
 
   //  Visiting or postal addresses for the contact.
-  @HiveField(6)
   Address address;
 
 Organization_Contact(
@@ -335,48 +327,6 @@ class OrganizationAdapter extends TypeAdapter<Organization> {
       ..write(obj.contact)
       ..writeByte(23)
       ..write(obj.endpoint);
-  }
-}
-
-class Organization_ContactAdapter extends TypeAdapter<Organization_Contact> {
-  @override
-  final typeId = 466;
-
-  @override
-  Organization_Contact read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Organization_Contact(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      purpose: fields[3] as CodeableConcept,
-      name: fields[4] as HumanName,
-      telecom: (fields[5] as List)?.cast<ContactPoint>(),
-      address: fields[6] as Address,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Organization_Contact obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.purpose)
-      ..writeByte(4)
-      ..write(obj.name)
-      ..writeByte(5)
-      ..write(obj.telecom)
-      ..writeByte(6)
-      ..write(obj.address);
   }
 }
 

@@ -293,12 +293,10 @@ Condition(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 167)
 class Condition_Stage {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -307,7 +305,6 @@ class Condition_Stage {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -322,21 +319,17 @@ class Condition_Stage {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A simple summary of the stage such as "Stage 3". The determination of
   // the stage is disease-specific.
-  @HiveField(3)
   CodeableConcept summary;
 
   //  Reference to a formal record of the evidence on which the staging
   // assessment is based.
-  @HiveField(4)
   List<Reference> assessment;
 
   //  The kind of staging, such as pathological or clinical staging.
-  @HiveField(5)
   CodeableConcept type;
 
 Condition_Stage(
@@ -353,12 +346,10 @@ Condition_Stage(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 168)
 class Condition_Evidence {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -367,7 +358,6 @@ class Condition_Evidence {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -382,16 +372,13 @@ class Condition_Evidence {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A manifestation or symptom that led to the recording of this
   // condition.
-  @HiveField(3)
   List<CodeableConcept> code;
 
   //  Links to other relevant information, including pathology reports.
-  @HiveField(4)
   List<Reference> detail;
 
 Condition_Evidence(
@@ -552,81 +539,6 @@ class ConditionAdapter extends TypeAdapter<Condition> {
       ..write(obj.evidence)
       ..writeByte(40)
       ..write(obj.note);
-  }
-}
-
-class Condition_StageAdapter extends TypeAdapter<Condition_Stage> {
-  @override
-  final typeId = 167;
-
-  @override
-  Condition_Stage read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Condition_Stage(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      summary: fields[3] as CodeableConcept,
-      assessment: (fields[4] as List)?.cast<Reference>(),
-      type: fields[5] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Condition_Stage obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.summary)
-      ..writeByte(4)
-      ..write(obj.assessment)
-      ..writeByte(5)
-      ..write(obj.type);
-  }
-}
-
-class Condition_EvidenceAdapter extends TypeAdapter<Condition_Evidence> {
-  @override
-  final typeId = 168;
-
-  @override
-  Condition_Evidence read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Condition_Evidence(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: (fields[3] as List)?.cast<CodeableConcept>(),
-      detail: (fields[4] as List)?.cast<Reference>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Condition_Evidence obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.detail);
   }
 }
 

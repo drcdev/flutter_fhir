@@ -216,12 +216,10 @@ MedicinalProductAuthorization(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 404)
 class MedicinalProductAuthorization_JurisdictionalAuthorization {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -230,7 +228,6 @@ class MedicinalProductAuthorization_JurisdictionalAuthorization {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -245,27 +242,21 @@ class MedicinalProductAuthorization_JurisdictionalAuthorization {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The assigned number for the marketing authorization.
-  @HiveField(3)
   List<Identifier> identifier;
 
   //  Country of authorization.
-  @HiveField(4)
   CodeableConcept country;
 
   //  Jurisdiction within a country.
-  @HiveField(5)
   List<CodeableConcept> jurisdiction;
 
   //  The legal status of supply in a jurisdiction or region.
-  @HiveField(6)
   CodeableConcept legalStatusOfSupply;
 
   //  The start and expected end date of the authorization.
-  @HiveField(7)
   Period validityPeriod;
 
 MedicinalProductAuthorization_JurisdictionalAuthorization(
@@ -284,12 +275,10 @@ MedicinalProductAuthorization_JurisdictionalAuthorization(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 405)
 class MedicinalProductAuthorization_Procedure {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -298,7 +287,6 @@ class MedicinalProductAuthorization_Procedure {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -313,31 +301,24 @@ class MedicinalProductAuthorization_Procedure {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Identifier for this procedure.
-  @HiveField(3)
   Identifier identifier;
 
   //  Type of procedure.
-  @HiveField(4)
   CodeableConcept type;
 
   //  Date of procedure.
-  @HiveField(5)
   Period datePeriod;
 
   //  Date of procedure.
-  @HiveField(6)
   String dateDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for dateDateTime
-  @HiveField(7)
   Element elementDateDateTime;
 
   //  Applcations submitted to obtain a marketing authorization.
-  @HiveField(8)
   List<MedicinalProductAuthorization_Procedure> application;
 
 MedicinalProductAuthorization_Procedure(
@@ -474,105 +455,6 @@ class MedicinalProductAuthorizationAdapter
       ..write(obj.regulator)
       ..writeByte(30)
       ..write(obj.procedure);
-  }
-}
-
-class MedicinalProductAuthorization_JurisdictionalAuthorizationAdapter
-    extends TypeAdapter<
-        MedicinalProductAuthorization_JurisdictionalAuthorization> {
-  @override
-  final typeId = 404;
-
-  @override
-  MedicinalProductAuthorization_JurisdictionalAuthorization read(
-      BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProductAuthorization_JurisdictionalAuthorization(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      identifier: (fields[3] as List)?.cast<Identifier>(),
-      country: fields[4] as CodeableConcept,
-      jurisdiction: (fields[5] as List)?.cast<CodeableConcept>(),
-      legalStatusOfSupply: fields[6] as CodeableConcept,
-      validityPeriod: fields[7] as Period,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer,
-      MedicinalProductAuthorization_JurisdictionalAuthorization obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.identifier)
-      ..writeByte(4)
-      ..write(obj.country)
-      ..writeByte(5)
-      ..write(obj.jurisdiction)
-      ..writeByte(6)
-      ..write(obj.legalStatusOfSupply)
-      ..writeByte(7)
-      ..write(obj.validityPeriod);
-  }
-}
-
-class MedicinalProductAuthorization_ProcedureAdapter
-    extends TypeAdapter<MedicinalProductAuthorization_Procedure> {
-  @override
-  final typeId = 405;
-
-  @override
-  MedicinalProductAuthorization_Procedure read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProductAuthorization_Procedure(
-      fields[4] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      identifier: fields[3] as Identifier,
-      datePeriod: fields[5] as Period,
-      dateDateTime: fields[6] as String,
-      elementDateDateTime: fields[7] as Element,
-      application:
-          (fields[8] as List)?.cast<MedicinalProductAuthorization_Procedure>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicinalProductAuthorization_Procedure obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.identifier)
-      ..writeByte(4)
-      ..write(obj.type)
-      ..writeByte(5)
-      ..write(obj.datePeriod)
-      ..writeByte(6)
-      ..write(obj.dateDateTime)
-      ..writeByte(7)
-      ..write(obj.elementDateDateTime)
-      ..writeByte(8)
-      ..write(obj.application);
   }
 }
 

@@ -245,12 +245,10 @@ AdverseEvent(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 61)
 class AdverseEvent_SuspectEntity {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -259,7 +257,6 @@ class AdverseEvent_SuspectEntity {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -274,17 +271,14 @@ class AdverseEvent_SuspectEntity {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Identifies the actual instance of what caused the adverse event.  May
   // be a substance, medication, medication administration, medication
   // statement or a device.
-  @HiveField(3)
   Reference instance;
 
   //  Information on the possible cause of the event.
-  @HiveField(4)
   List<AdverseEvent_Causality> causality;
 
 AdverseEvent_SuspectEntity(
@@ -300,12 +294,10 @@ AdverseEvent_SuspectEntity(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 62)
 class AdverseEvent_Causality {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -314,7 +306,6 @@ class AdverseEvent_Causality {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -329,27 +320,21 @@ class AdverseEvent_Causality {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Assessment of if the entity caused the event.
-  @HiveField(3)
   CodeableConcept assessment;
 
   //  AdverseEvent.suspectEntity.causalityProductRelatedness.
-  @HiveField(4)
   String productRelatedness;
 
   //  Extensions for productRelatedness
-  @HiveField(5)
   Element elementProductRelatedness;
 
   //  AdverseEvent.suspectEntity.causalityAuthor.
-  @HiveField(6)
   Reference author;
 
   //  ProbabilityScale | Bayesian | Checklist.
-  @HiveField(7)
   CodeableConcept method;
 
 AdverseEvent_Causality(
@@ -495,89 +480,6 @@ class AdverseEventAdapter extends TypeAdapter<AdverseEvent> {
       ..write(obj.referenceDocument)
       ..writeByte(34)
       ..write(obj.study);
-  }
-}
-
-class AdverseEvent_SuspectEntityAdapter
-    extends TypeAdapter<AdverseEvent_SuspectEntity> {
-  @override
-  final typeId = 61;
-
-  @override
-  AdverseEvent_SuspectEntity read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return AdverseEvent_SuspectEntity(
-      fields[3] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      causality: (fields[4] as List)?.cast<AdverseEvent_Causality>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, AdverseEvent_SuspectEntity obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.instance)
-      ..writeByte(4)
-      ..write(obj.causality);
-  }
-}
-
-class AdverseEvent_CausalityAdapter
-    extends TypeAdapter<AdverseEvent_Causality> {
-  @override
-  final typeId = 62;
-
-  @override
-  AdverseEvent_Causality read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return AdverseEvent_Causality(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      assessment: fields[3] as CodeableConcept,
-      productRelatedness: fields[4] as String,
-      elementProductRelatedness: fields[5] as Element,
-      author: fields[6] as Reference,
-      method: fields[7] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, AdverseEvent_Causality obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.assessment)
-      ..writeByte(4)
-      ..write(obj.productRelatedness)
-      ..writeByte(5)
-      ..write(obj.elementProductRelatedness)
-      ..writeByte(6)
-      ..write(obj.author)
-      ..writeByte(7)
-      ..write(obj.method);
   }
 }
 

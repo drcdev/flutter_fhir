@@ -260,12 +260,10 @@ GraphDefinition(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 294)
 class GraphDefinition_Link {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -274,7 +272,6 @@ class GraphDefinition_Link {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -289,53 +286,41 @@ class GraphDefinition_Link {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A FHIR expression that identifies one of FHIR References to other
   // resources.
-  @HiveField(3)
   String path;
 
   //  Extensions for path
-  @HiveField(4)
   Element elementPath;
 
   //  Which slice (if profiled).
-  @HiveField(5)
   String sliceName;
 
   //  Extensions for sliceName
-  @HiveField(6)
   Element elementSliceName;
 
   //  Minimum occurrences for this link.
-  @HiveField(7)
   int min;
 
   //  Extensions for min
-  @HiveField(8)
   Element elementMin;
 
   //  Maximum occurrences for this link.
-  @HiveField(9)
   String max;
 
   //  Extensions for max
-  @HiveField(10)
   Element elementMax;
 
   //  Information about why this link is of interest in this graph
   // definition.
-  @HiveField(11)
   String description;
 
   //  Extensions for description
-  @HiveField(12)
   Element elementDescription;
 
   //  Potential target for the link.
-  @HiveField(13)
   List<GraphDefinition_Target> target;
 
 GraphDefinition_Link(
@@ -360,12 +345,10 @@ GraphDefinition_Link(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 295)
 class GraphDefinition_Target {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -374,7 +357,6 @@ class GraphDefinition_Target {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -389,35 +371,27 @@ class GraphDefinition_Target {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Type of resource this link refers to.
-  @HiveField(3)
   String type;
 
   //  Extensions for type
-  @HiveField(4)
   Element elementType;
 
   //  A set of parameters to look up.
-  @HiveField(5)
   String params;
 
   //  Extensions for params
-  @HiveField(6)
   Element elementParams;
 
   //  Profile for the target resource.
-  @HiveField(7)
   String profile;
 
   //  Compartment Consistency Rules.
-  @HiveField(8)
   List<GraphDefinition_Compartment> compartment;
 
   //  Additional links from target resource.
-  @HiveField(9)
   List<GraphDefinition_Link> link;
 
 GraphDefinition_Target(
@@ -438,12 +412,10 @@ GraphDefinition_Target(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 296)
 class GraphDefinition_Compartment {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -452,7 +424,6 @@ class GraphDefinition_Compartment {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -467,49 +438,38 @@ class GraphDefinition_Compartment {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Defines how the compartment rule is used - whether it it is used to
   // test whether resources are subject to the rule, or whether it is a rule
   // that must be followed.
-  @HiveField(3)
   String use; // <code> enum: condition/requirement;
 
   //  Extensions for use
-  @HiveField(4)
   Element elementUse;
 
   //  Identifies the compartment.
-  @HiveField(5)
   String code;
 
   //  Extensions for code
-  @HiveField(6)
   Element elementCode;
 
   //  identical | matching | different | no-rule | custom.
-  @HiveField(7)
   String rule; // <code> enum: identical/matching/different/custom;
 
   //  Extensions for rule
-  @HiveField(8)
   Element elementRule;
 
   //  Custom rule, as a FHIRPath expression.
-  @HiveField(9)
   String expression;
 
   //  Extensions for expression
-  @HiveField(10)
   Element elementExpression;
 
   //  Documentation for FHIRPath expression.
-  @HiveField(11)
   String description;
 
   //  Extensions for description
-  @HiveField(12)
   Element elementDescription;
 
 GraphDefinition_Compartment(
@@ -663,182 +623,6 @@ class GraphDefinitionAdapter extends TypeAdapter<GraphDefinition> {
       ..write(obj.profile)
       ..writeByte(35)
       ..write(obj.link);
-  }
-}
-
-class GraphDefinition_LinkAdapter extends TypeAdapter<GraphDefinition_Link> {
-  @override
-  final typeId = 294;
-
-  @override
-  GraphDefinition_Link read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return GraphDefinition_Link(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      path: fields[3] as String,
-      elementPath: fields[4] as Element,
-      sliceName: fields[5] as String,
-      elementSliceName: fields[6] as Element,
-      min: fields[7] as int,
-      elementMin: fields[8] as Element,
-      max: fields[9] as String,
-      elementMax: fields[10] as Element,
-      description: fields[11] as String,
-      elementDescription: fields[12] as Element,
-      target: (fields[13] as List)?.cast<GraphDefinition_Target>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, GraphDefinition_Link obj) {
-    writer
-      ..writeByte(14)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.path)
-      ..writeByte(4)
-      ..write(obj.elementPath)
-      ..writeByte(5)
-      ..write(obj.sliceName)
-      ..writeByte(6)
-      ..write(obj.elementSliceName)
-      ..writeByte(7)
-      ..write(obj.min)
-      ..writeByte(8)
-      ..write(obj.elementMin)
-      ..writeByte(9)
-      ..write(obj.max)
-      ..writeByte(10)
-      ..write(obj.elementMax)
-      ..writeByte(11)
-      ..write(obj.description)
-      ..writeByte(12)
-      ..write(obj.elementDescription)
-      ..writeByte(13)
-      ..write(obj.target);
-  }
-}
-
-class GraphDefinition_TargetAdapter
-    extends TypeAdapter<GraphDefinition_Target> {
-  @override
-  final typeId = 295;
-
-  @override
-  GraphDefinition_Target read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return GraphDefinition_Target(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as String,
-      elementType: fields[4] as Element,
-      params: fields[5] as String,
-      elementParams: fields[6] as Element,
-      profile: fields[7] as String,
-      compartment: (fields[8] as List)?.cast<GraphDefinition_Compartment>(),
-      link: (fields[9] as List)?.cast<GraphDefinition_Link>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, GraphDefinition_Target obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.elementType)
-      ..writeByte(5)
-      ..write(obj.params)
-      ..writeByte(6)
-      ..write(obj.elementParams)
-      ..writeByte(7)
-      ..write(obj.profile)
-      ..writeByte(8)
-      ..write(obj.compartment)
-      ..writeByte(9)
-      ..write(obj.link);
-  }
-}
-
-class GraphDefinition_CompartmentAdapter
-    extends TypeAdapter<GraphDefinition_Compartment> {
-  @override
-  final typeId = 296;
-
-  @override
-  GraphDefinition_Compartment read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return GraphDefinition_Compartment(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      use: fields[3] as String,
-      elementUse: fields[4] as Element,
-      code: fields[5] as String,
-      elementCode: fields[6] as Element,
-      rule: fields[7] as String,
-      elementRule: fields[8] as Element,
-      expression: fields[9] as String,
-      elementExpression: fields[10] as Element,
-      description: fields[11] as String,
-      elementDescription: fields[12] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, GraphDefinition_Compartment obj) {
-    writer
-      ..writeByte(13)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.use)
-      ..writeByte(4)
-      ..write(obj.elementUse)
-      ..writeByte(5)
-      ..write(obj.code)
-      ..writeByte(6)
-      ..write(obj.elementCode)
-      ..writeByte(7)
-      ..write(obj.rule)
-      ..writeByte(8)
-      ..write(obj.elementRule)
-      ..writeByte(9)
-      ..write(obj.expression)
-      ..writeByte(10)
-      ..write(obj.elementExpression)
-      ..writeByte(11)
-      ..write(obj.description)
-      ..writeByte(12)
-      ..write(obj.elementDescription);
   }
 }
 

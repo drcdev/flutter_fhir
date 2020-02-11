@@ -323,12 +323,10 @@ ConceptMap(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 161)
 class ConceptMap_Group {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -337,7 +335,6 @@ class ConceptMap_Group {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -352,54 +349,43 @@ class ConceptMap_Group {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  An absolute URI that identifies the source system where the concepts
   // to be mapped are defined.
-  @HiveField(3)
   String source;
 
   //  Extensions for source
-  @HiveField(4)
   Element elementSource;
 
   //  The specific version of the code system, as determined by the code
   // system authority.
-  @HiveField(5)
   String sourceVersion;
 
   //  Extensions for sourceVersion
-  @HiveField(6)
   Element elementSourceVersion;
 
   //  An absolute URI that identifies the target system that the concepts
   // will be mapped to.
-  @HiveField(7)
   String target;
 
   //  Extensions for target
-  @HiveField(8)
   Element elementTarget;
 
   //  The specific version of the code system, as determined by the code
   // system authority.
-  @HiveField(9)
   String targetVersion;
 
   //  Extensions for targetVersion
-  @HiveField(10)
   Element elementTargetVersion;
 
   //  Mappings for an individual concept in the source to one or more
   // concepts in the target.
-  @HiveField(11)
   List<ConceptMap_Element> element;
 
   //  What to do when there is no mapping for the source concept. "Unmapped"
   // does not include codes that are unmatched, and the unmapped element is
   // ignored in a code is specified to have equivalence = unmatched.
-  @HiveField(12)
   ConceptMap_Unmapped unmapped;
 
 ConceptMap_Group(
@@ -423,12 +409,10 @@ ConceptMap_Group(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 162)
 class ConceptMap_Element {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -437,7 +421,6 @@ class ConceptMap_Element {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -452,28 +435,22 @@ class ConceptMap_Element {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Identity (code or path) or the element/item being mapped.
-  @HiveField(3)
   String code;
 
   //  Extensions for code
-  @HiveField(4)
   Element elementCode;
 
   //  The display for the code. The display is only provided to help editors
   // when editing the concept map.
-  @HiveField(5)
   String display;
 
   //  Extensions for display
-  @HiveField(6)
   Element elementDisplay;
 
   //  A concept from the target value set that this concept maps to.
-  @HiveField(7)
   List<ConceptMap_Target> target;
 
 ConceptMap_Element(
@@ -492,12 +469,10 @@ ConceptMap_Element(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 163)
 class ConceptMap_Target {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -506,7 +481,6 @@ class ConceptMap_Target {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -521,49 +495,39 @@ class ConceptMap_Target {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Identity (code or path) or the element/item that the map refers to.
-  @HiveField(3)
   String code;
 
   //  Extensions for code
-  @HiveField(4)
   Element elementCode;
 
   //  The display for the code. The display is only provided to help editors
   // when editing the concept map.
-  @HiveField(5)
   String display;
 
   //  Extensions for display
-  @HiveField(6)
   Element elementDisplay;
 
   //  The equivalence between the source and target concepts (counting for
   // the dependencies and products). The equivalence is read from target to
   // source (e.g. the target is 'wider' than the source).
-  @HiveField(7)
   String equivalence; // <code> enum: relatedto/equivalent/equal/wider/subsumes/narrower/specializes/inexact/unmatched/disjoint;
 
   //  Extensions for equivalence
-  @HiveField(8)
   Element elementEquivalence;
 
   //  A description of status/issues in mapping that conveys additional
   // information not represented in  the structured data.
-  @HiveField(9)
   String comment;
 
   //  Extensions for comment
-  @HiveField(10)
   Element elementComment;
 
   //  A set of additional dependencies for this mapping to hold. This
   // mapping is only applicable if the specified element can be resolved,
   // and it has the specified value.
-  @HiveField(11)
   List<ConceptMap_DependsOn> dependsOn;
 
   //  A set of additional outcomes from this mapping to other elements. To
@@ -571,7 +535,6 @@ class ConceptMap_Target {
   // some data element or source that is in context. The mapping may still
   // be useful without a place for the additional data elements, but the
   // equivalence cannot be relied on.
-  @HiveField(12)
   List<ConceptMap_DependsOn> product;
 
 ConceptMap_Target(
@@ -595,12 +558,10 @@ ConceptMap_Target(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 164)
 class ConceptMap_DependsOn {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -609,7 +570,6 @@ class ConceptMap_DependsOn {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -624,41 +584,33 @@ class ConceptMap_DependsOn {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A reference to an element that holds a coded value that corresponds to
   // a code system property. The idea is that the information model carries
   // an element somewhere that is labeled to correspond with a code system
   // property.
-  @HiveField(3)
   String property;
 
   //  Extensions for property
-  @HiveField(4)
   Element elementProperty;
 
   //  An absolute URI that identifies the code system of the dependency code
   // (if the source/dependency is a value set that crosses code systems).
-  @HiveField(5)
   String system;
 
   //  Identity (code or path) or the element/item/ValueSet/text that the map
   // depends on / refers to.
-  @HiveField(6)
   String value;
 
   //  Extensions for value
-  @HiveField(7)
   Element elementValue;
 
   //  The display for the code. The display is only provided to help editors
   // when editing the concept map.
-  @HiveField(8)
   String display;
 
   //  Extensions for display
-  @HiveField(9)
   Element elementDisplay;
 
 ConceptMap_DependsOn(
@@ -679,12 +631,10 @@ ConceptMap_DependsOn(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 165)
 class ConceptMap_Unmapped {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -693,7 +643,6 @@ class ConceptMap_Unmapped {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -708,7 +657,6 @@ class ConceptMap_Unmapped {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Defines which action to take if there is no match for the source
@@ -717,35 +665,28 @@ class ConceptMap_Unmapped {
   // mapping between versions, and only a few codes have changed), use a
   // fixed code (a default code), or alternatively, a reference to a
   // different concept map can be provided (by canonical URL).
-  @HiveField(3)
   String mode; // <code> enum: provided/fixed/other-map;
 
   //  Extensions for mode
-  @HiveField(4)
   Element elementMode;
 
   //  The fixed code to use when the mode = 'fixed'  - all unmapped codes
   // are mapped to a single fixed code.
-  @HiveField(5)
   String code;
 
   //  Extensions for code
-  @HiveField(6)
   Element elementCode;
 
   //  The display for the code. The display is only provided to help editors
   // when editing the concept map.
-  @HiveField(7)
   String display;
 
   //  Extensions for display
-  @HiveField(8)
   Element elementDisplay;
 
   //  The canonical reference to an additional ConceptMap resource instance
   // to use for mapping if this ConceptMap resource contains no matching
   // mapping for the source concept.
-  @HiveField(9)
   String url;
 
 ConceptMap_Unmapped(
@@ -926,273 +867,6 @@ class ConceptMapAdapter extends TypeAdapter<ConceptMap> {
       ..write(obj.elementTargetCanonical)
       ..writeByte(45)
       ..write(obj.group);
-  }
-}
-
-class ConceptMap_GroupAdapter extends TypeAdapter<ConceptMap_Group> {
-  @override
-  final typeId = 161;
-
-  @override
-  ConceptMap_Group read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ConceptMap_Group(
-      (fields[11] as List)?.cast<ConceptMap_Element>(),
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      source: fields[3] as String,
-      elementSource: fields[4] as Element,
-      sourceVersion: fields[5] as String,
-      elementSourceVersion: fields[6] as Element,
-      target: fields[7] as String,
-      elementTarget: fields[8] as Element,
-      targetVersion: fields[9] as String,
-      elementTargetVersion: fields[10] as Element,
-      unmapped: fields[12] as ConceptMap_Unmapped,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ConceptMap_Group obj) {
-    writer
-      ..writeByte(13)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.source)
-      ..writeByte(4)
-      ..write(obj.elementSource)
-      ..writeByte(5)
-      ..write(obj.sourceVersion)
-      ..writeByte(6)
-      ..write(obj.elementSourceVersion)
-      ..writeByte(7)
-      ..write(obj.target)
-      ..writeByte(8)
-      ..write(obj.elementTarget)
-      ..writeByte(9)
-      ..write(obj.targetVersion)
-      ..writeByte(10)
-      ..write(obj.elementTargetVersion)
-      ..writeByte(11)
-      ..write(obj.element)
-      ..writeByte(12)
-      ..write(obj.unmapped);
-  }
-}
-
-class ConceptMap_ElementAdapter extends TypeAdapter<ConceptMap_Element> {
-  @override
-  final typeId = 162;
-
-  @override
-  ConceptMap_Element read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ConceptMap_Element(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as String,
-      elementCode: fields[4] as Element,
-      display: fields[5] as String,
-      elementDisplay: fields[6] as Element,
-      target: (fields[7] as List)?.cast<ConceptMap_Target>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ConceptMap_Element obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.elementCode)
-      ..writeByte(5)
-      ..write(obj.display)
-      ..writeByte(6)
-      ..write(obj.elementDisplay)
-      ..writeByte(7)
-      ..write(obj.target);
-  }
-}
-
-class ConceptMap_TargetAdapter extends TypeAdapter<ConceptMap_Target> {
-  @override
-  final typeId = 163;
-
-  @override
-  ConceptMap_Target read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ConceptMap_Target(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as String,
-      elementCode: fields[4] as Element,
-      display: fields[5] as String,
-      elementDisplay: fields[6] as Element,
-      equivalence: fields[7] as String,
-      elementEquivalence: fields[8] as Element,
-      comment: fields[9] as String,
-      elementComment: fields[10] as Element,
-      dependsOn: (fields[11] as List)?.cast<ConceptMap_DependsOn>(),
-      product: (fields[12] as List)?.cast<ConceptMap_DependsOn>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ConceptMap_Target obj) {
-    writer
-      ..writeByte(13)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.elementCode)
-      ..writeByte(5)
-      ..write(obj.display)
-      ..writeByte(6)
-      ..write(obj.elementDisplay)
-      ..writeByte(7)
-      ..write(obj.equivalence)
-      ..writeByte(8)
-      ..write(obj.elementEquivalence)
-      ..writeByte(9)
-      ..write(obj.comment)
-      ..writeByte(10)
-      ..write(obj.elementComment)
-      ..writeByte(11)
-      ..write(obj.dependsOn)
-      ..writeByte(12)
-      ..write(obj.product);
-  }
-}
-
-class ConceptMap_DependsOnAdapter extends TypeAdapter<ConceptMap_DependsOn> {
-  @override
-  final typeId = 164;
-
-  @override
-  ConceptMap_DependsOn read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ConceptMap_DependsOn(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      property: fields[3] as String,
-      elementProperty: fields[4] as Element,
-      system: fields[5] as String,
-      value: fields[6] as String,
-      elementValue: fields[7] as Element,
-      display: fields[8] as String,
-      elementDisplay: fields[9] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ConceptMap_DependsOn obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.property)
-      ..writeByte(4)
-      ..write(obj.elementProperty)
-      ..writeByte(5)
-      ..write(obj.system)
-      ..writeByte(6)
-      ..write(obj.value)
-      ..writeByte(7)
-      ..write(obj.elementValue)
-      ..writeByte(8)
-      ..write(obj.display)
-      ..writeByte(9)
-      ..write(obj.elementDisplay);
-  }
-}
-
-class ConceptMap_UnmappedAdapter extends TypeAdapter<ConceptMap_Unmapped> {
-  @override
-  final typeId = 165;
-
-  @override
-  ConceptMap_Unmapped read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ConceptMap_Unmapped(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      mode: fields[3] as String,
-      elementMode: fields[4] as Element,
-      code: fields[5] as String,
-      elementCode: fields[6] as Element,
-      display: fields[7] as String,
-      elementDisplay: fields[8] as Element,
-      url: fields[9] as String,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ConceptMap_Unmapped obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.mode)
-      ..writeByte(4)
-      ..write(obj.elementMode)
-      ..writeByte(5)
-      ..write(obj.code)
-      ..writeByte(6)
-      ..write(obj.elementCode)
-      ..writeByte(7)
-      ..write(obj.display)
-      ..writeByte(8)
-      ..write(obj.elementDisplay)
-      ..writeByte(9)
-      ..write(obj.url);
   }
 }
 

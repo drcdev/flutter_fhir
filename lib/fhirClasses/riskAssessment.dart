@@ -219,12 +219,10 @@ RiskAssessment(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 521)
 class RiskAssessment_Prediction {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -233,7 +231,6 @@ class RiskAssessment_Prediction {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -248,57 +245,46 @@ class RiskAssessment_Prediction {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  One of the potential outcomes for the patient (e.g. remission, death, 
   // a particular condition).
-  @HiveField(3)
   CodeableConcept outcome;
 
   //  Indicates how likely the outcome is (in the specified timeframe).
   double probabilityDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
 
   //  Extensions for probabilityDecimal
-  @HiveField(5)
   Element elementProbabilityDecimal;
 
   //  Indicates how likely the outcome is (in the specified timeframe).
-  @HiveField(6)
   Range probabilityRange;
 
   //  Indicates how likely the outcome is (in the specified timeframe),
   // expressed as a qualitative value (e.g. low, medium, or high).
-  @HiveField(7)
   CodeableConcept qualitativeRisk;
 
   //  Indicates the risk for this particular subject (with their specific
   // characteristics) divided by the risk of the population in general. 
   // (Numbers greater than 1 = higher risk than the population, numbers less
   // than 1 = lower risk.).
-  @HiveField(8)
   double relativeRisk;
 
   //  Extensions for relativeRisk
-  @HiveField(9)
   Element elementRelativeRisk;
 
   //  Indicates the period of time or age range of the subject to which the
   // specified probability applies.
-  @HiveField(10)
   Period whenPeriod;
 
   //  Indicates the period of time or age range of the subject to which the
   // specified probability applies.
-  @HiveField(11)
   Range whenRange;
 
   //  Additional information explaining the basis for the prediction.
-  @HiveField(12)
   String rationale;
 
   //  Extensions for rationale
-  @HiveField(13)
   Element elementRationale;
 
 RiskAssessment_Prediction(
@@ -441,67 +427,6 @@ class RiskAssessmentAdapter extends TypeAdapter<RiskAssessment> {
       ..write(obj.elementMitigation)
       ..writeByte(31)
       ..write(obj.note);
-  }
-}
-
-class RiskAssessment_PredictionAdapter
-    extends TypeAdapter<RiskAssessment_Prediction> {
-  @override
-  final typeId = 521;
-
-  @override
-  RiskAssessment_Prediction read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return RiskAssessment_Prediction(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      outcome: fields[3] as CodeableConcept,
-      elementProbabilityDecimal: fields[5] as Element,
-      probabilityRange: fields[6] as Range,
-      qualitativeRisk: fields[7] as CodeableConcept,
-      relativeRisk: fields[8] as double,
-      elementRelativeRisk: fields[9] as Element,
-      whenPeriod: fields[10] as Period,
-      whenRange: fields[11] as Range,
-      rationale: fields[12] as String,
-      elementRationale: fields[13] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, RiskAssessment_Prediction obj) {
-    writer
-      ..writeByte(13)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.outcome)
-      ..writeByte(5)
-      ..write(obj.elementProbabilityDecimal)
-      ..writeByte(6)
-      ..write(obj.probabilityRange)
-      ..writeByte(7)
-      ..write(obj.qualitativeRisk)
-      ..writeByte(8)
-      ..write(obj.relativeRisk)
-      ..writeByte(9)
-      ..write(obj.elementRelativeRisk)
-      ..writeByte(10)
-      ..write(obj.whenPeriod)
-      ..writeByte(11)
-      ..write(obj.whenRange)
-      ..writeByte(12)
-      ..write(obj.rationale)
-      ..writeByte(13)
-      ..write(obj.elementRationale);
   }
 }
 

@@ -136,12 +136,10 @@ ImmunizationRecommendation(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 316)
 class ImmunizationRecommendation_Recommendation {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -150,7 +148,6 @@ class ImmunizationRecommendation_Recommendation {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -165,51 +162,40 @@ class ImmunizationRecommendation_Recommendation {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Vaccine(s) or vaccine group that pertain to the recommendation.
-  @HiveField(3)
   List<CodeableConcept> vaccineCode;
 
   //  The targeted disease for the recommendation.
-  @HiveField(4)
   CodeableConcept targetDisease;
 
   //  Vaccine(s) which should not be used to fulfill the recommendation.
-  @HiveField(5)
   List<CodeableConcept> contraindicatedVaccineCode;
 
   //  Indicates the patient status with respect to the path to immunity for
   // the target disease.
-  @HiveField(6)
   CodeableConcept forecastStatus;
 
   //  The reason for the assigned forecast status.
-  @HiveField(7)
   List<CodeableConcept> forecastReason;
 
   //  Vaccine date recommendations.  For example, earliest date to
   // administer, latest date to administer, etc.
-  @HiveField(8)
   List<ImmunizationRecommendation_DateCriterion> dateCriterion;
 
   //  Contains the description about the protocol under which the vaccine
   // was administered.
-  @HiveField(9)
   String description;
 
   //  Extensions for description
-  @HiveField(10)
   Element elementDescription;
 
   //  One possible path to achieve presumed immunity against a disease -
   // within the context of an authority.
-  @HiveField(11)
   String series;
 
   //  Extensions for series
-  @HiveField(12)
   Element elementSeries;
 
   //  Nominal position of the recommended dose in a series (e.g. dose 2 is
@@ -217,42 +203,34 @@ class ImmunizationRecommendation_Recommendation {
   int doseNumberPositiveInt; //  pattern: ^[1-9][0-9]*$
 
   //  Extensions for doseNumberPositiveInt
-  @HiveField(14)
   Element elementDoseNumberPositiveInt;
 
   //  Nominal position of the recommended dose in a series (e.g. dose 2 is
   // the next recommended dose).
-  @HiveField(15)
   String doseNumberString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for doseNumberString
-  @HiveField(16)
   Element elementDoseNumberString;
 
   //  The recommended number of doses to achieve immunity.
   int seriesDosesPositiveInt; //  pattern: ^[1-9][0-9]*$
 
   //  Extensions for seriesDosesPositiveInt
-  @HiveField(18)
   Element elementSeriesDosesPositiveInt;
 
   //  The recommended number of doses to achieve immunity.
-  @HiveField(19)
   String seriesDosesString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for seriesDosesString
-  @HiveField(20)
   Element elementSeriesDosesString;
 
   //  Immunization event history and/or evaluation that supports the status
   // and recommendation.
-  @HiveField(21)
   List<Reference> supportingImmunization;
 
   //  Patient Information that supports the status and recommendation.  This
   // includes patient observations, adverse reactions and
   // allergy/intolerance information.
-  @HiveField(22)
   List<Reference> supportingPatientInformation;
 
 ImmunizationRecommendation_Recommendation(
@@ -286,12 +264,10 @@ ImmunizationRecommendation_Recommendation(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 317)
 class ImmunizationRecommendation_DateCriterion {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -300,7 +276,6 @@ class ImmunizationRecommendation_DateCriterion {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -315,20 +290,16 @@ class ImmunizationRecommendation_DateCriterion {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Date classification of recommendation.  For example, earliest date to
   // give, latest date to give, etc.
-  @HiveField(3)
   CodeableConcept code;
 
   //  The date whose meaning is specified by dateCriterion.code.
-  @HiveField(4)
   DateTime value;
 
   //  Extensions for value
-  @HiveField(5)
   Element elementValue;
 
 ImmunizationRecommendation_DateCriterion(
@@ -419,134 +390,6 @@ class ImmunizationRecommendationAdapter
       ..write(obj.authority)
       ..writeByte(16)
       ..write(obj.recommendation);
-  }
-}
-
-class ImmunizationRecommendation_RecommendationAdapter
-    extends TypeAdapter<ImmunizationRecommendation_Recommendation> {
-  @override
-  final typeId = 316;
-
-  @override
-  ImmunizationRecommendation_Recommendation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ImmunizationRecommendation_Recommendation(
-      fields[6] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      vaccineCode: (fields[3] as List)?.cast<CodeableConcept>(),
-      targetDisease: fields[4] as CodeableConcept,
-      contraindicatedVaccineCode: (fields[5] as List)?.cast<CodeableConcept>(),
-      forecastReason: (fields[7] as List)?.cast<CodeableConcept>(),
-      dateCriterion:
-          (fields[8] as List)?.cast<ImmunizationRecommendation_DateCriterion>(),
-      description: fields[9] as String,
-      elementDescription: fields[10] as Element,
-      series: fields[11] as String,
-      elementSeries: fields[12] as Element,
-      elementDoseNumberPositiveInt: fields[14] as Element,
-      doseNumberString: fields[15] as String,
-      elementDoseNumberString: fields[16] as Element,
-      elementSeriesDosesPositiveInt: fields[18] as Element,
-      seriesDosesString: fields[19] as String,
-      elementSeriesDosesString: fields[20] as Element,
-      supportingImmunization: (fields[21] as List)?.cast<Reference>(),
-      supportingPatientInformation: (fields[22] as List)?.cast<Reference>(),
-    );
-  }
-
-  @override
-  void write(
-      BinaryWriter writer, ImmunizationRecommendation_Recommendation obj) {
-    writer
-      ..writeByte(21)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.vaccineCode)
-      ..writeByte(4)
-      ..write(obj.targetDisease)
-      ..writeByte(5)
-      ..write(obj.contraindicatedVaccineCode)
-      ..writeByte(6)
-      ..write(obj.forecastStatus)
-      ..writeByte(7)
-      ..write(obj.forecastReason)
-      ..writeByte(8)
-      ..write(obj.dateCriterion)
-      ..writeByte(9)
-      ..write(obj.description)
-      ..writeByte(10)
-      ..write(obj.elementDescription)
-      ..writeByte(11)
-      ..write(obj.series)
-      ..writeByte(12)
-      ..write(obj.elementSeries)
-      ..writeByte(14)
-      ..write(obj.elementDoseNumberPositiveInt)
-      ..writeByte(15)
-      ..write(obj.doseNumberString)
-      ..writeByte(16)
-      ..write(obj.elementDoseNumberString)
-      ..writeByte(18)
-      ..write(obj.elementSeriesDosesPositiveInt)
-      ..writeByte(19)
-      ..write(obj.seriesDosesString)
-      ..writeByte(20)
-      ..write(obj.elementSeriesDosesString)
-      ..writeByte(21)
-      ..write(obj.supportingImmunization)
-      ..writeByte(22)
-      ..write(obj.supportingPatientInformation);
-  }
-}
-
-class ImmunizationRecommendation_DateCriterionAdapter
-    extends TypeAdapter<ImmunizationRecommendation_DateCriterion> {
-  @override
-  final typeId = 317;
-
-  @override
-  ImmunizationRecommendation_DateCriterion read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ImmunizationRecommendation_DateCriterion(
-      fields[3] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      value: fields[4] as DateTime,
-      elementValue: fields[5] as Element,
-    );
-  }
-
-  @override
-  void write(
-      BinaryWriter writer, ImmunizationRecommendation_DateCriterion obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.value)
-      ..writeByte(5)
-      ..write(obj.elementValue);
   }
 }
 

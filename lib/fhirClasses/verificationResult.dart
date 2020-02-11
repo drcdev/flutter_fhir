@@ -207,12 +207,10 @@ VerificationResult(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 653)
 class VerificationResult_PrimarySource {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -221,7 +219,6 @@ class VerificationResult_PrimarySource {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -236,44 +233,35 @@ class VerificationResult_PrimarySource {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Reference to the primary source.
-  @HiveField(3)
   Reference who;
 
   //  Type of primary source (License Board; Primary Education; Continuing
   // Education; Postal Service; Relationship owner; Registration Authority;
   // legal source; issuing source; authoritative source).
-  @HiveField(4)
   List<CodeableConcept> type;
 
   //  Method for communicating with the primary source (manual; API; Push).
-  @HiveField(5)
   List<CodeableConcept> communicationMethod;
 
   //  Status of the validation of the target against the primary source
   // (successful; failed; unknown).
-  @HiveField(6)
   CodeableConcept validationStatus;
 
   //  When the target was validated against the primary source.
-  @HiveField(7)
   DateTime validationDate;
 
   //  Extensions for validationDate
-  @HiveField(8)
   Element elementValidationDate;
 
   //  Ability of the primary source to push updates/alerts (yes; no;
   // undetermined).
-  @HiveField(9)
   CodeableConcept canPushUpdates;
 
   //  Type of alerts/updates the primary source can send (specific requested
   // changes; any changes; as defined by source).
-  @HiveField(10)
   List<CodeableConcept> pushTypeAvailable;
 
 VerificationResult_PrimarySource(
@@ -295,12 +283,10 @@ VerificationResult_PrimarySource(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 654)
 class VerificationResult_Attestation {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -309,7 +295,6 @@ class VerificationResult_Attestation {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -324,57 +309,45 @@ class VerificationResult_Attestation {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The individual or organization attesting to information.
-  @HiveField(3)
   Reference who;
 
   //  When the who is asserting on behalf of another (organization or
   // individual).
-  @HiveField(4)
   Reference onBehalfOf;
 
   //  The method by which attested information was submitted/retrieved
   // (manual; API; Push).
-  @HiveField(5)
   CodeableConcept communicationMethod;
 
   //  The date the information was attested to.
-  @HiveField(6)
   String date;
 
   //  Extensions for date
-  @HiveField(7)
   Element elementDate;
 
   //  A digital identity certificate associated with the attestation source.
-  @HiveField(8)
   String sourceIdentityCertificate;
 
   //  Extensions for sourceIdentityCertificate
-  @HiveField(9)
   Element elementSourceIdentityCertificate;
 
   //  A digital identity certificate associated with the proxy entity
   // submitting attested information on behalf of the attestation source.
-  @HiveField(10)
   String proxyIdentityCertificate;
 
   //  Extensions for proxyIdentityCertificate
-  @HiveField(11)
   Element elementProxyIdentityCertificate;
 
   //  Signed assertion by the proxy entity indicating that they have the
   // right to submit attested information on behalf of the attestation
   // source.
-  @HiveField(12)
   Signature proxySignature;
 
   //  Signed assertion by the attestation source that they have attested to
   // the information.
-  @HiveField(13)
   Signature sourceSignature;
 
 VerificationResult_Attestation(
@@ -399,12 +372,10 @@ VerificationResult_Attestation(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 655)
 class VerificationResult_Validator {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -413,7 +384,6 @@ class VerificationResult_Validator {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -428,24 +398,19 @@ class VerificationResult_Validator {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Reference to the organization validating information.
-  @HiveField(3)
   Reference organization;
 
   //  A digital identity certificate associated with the validator.
-  @HiveField(4)
   String identityCertificate;
 
   //  Extensions for identityCertificate
-  @HiveField(5)
   Element elementIdentityCertificate;
 
   //  Signed assertion by the validator that they have validated the
   // information.
-  @HiveField(6)
   Signature attestationSignature;
 
 VerificationResult_Validator(
@@ -576,168 +541,6 @@ class VerificationResultAdapter extends TypeAdapter<VerificationResult> {
       ..write(obj.attestation)
       ..writeByte(29)
       ..write(obj.validator);
-  }
-}
-
-class VerificationResult_PrimarySourceAdapter
-    extends TypeAdapter<VerificationResult_PrimarySource> {
-  @override
-  final typeId = 653;
-
-  @override
-  VerificationResult_PrimarySource read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return VerificationResult_PrimarySource(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      who: fields[3] as Reference,
-      type: (fields[4] as List)?.cast<CodeableConcept>(),
-      communicationMethod: (fields[5] as List)?.cast<CodeableConcept>(),
-      validationStatus: fields[6] as CodeableConcept,
-      validationDate: fields[7] as DateTime,
-      elementValidationDate: fields[8] as Element,
-      canPushUpdates: fields[9] as CodeableConcept,
-      pushTypeAvailable: (fields[10] as List)?.cast<CodeableConcept>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, VerificationResult_PrimarySource obj) {
-    writer
-      ..writeByte(11)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.who)
-      ..writeByte(4)
-      ..write(obj.type)
-      ..writeByte(5)
-      ..write(obj.communicationMethod)
-      ..writeByte(6)
-      ..write(obj.validationStatus)
-      ..writeByte(7)
-      ..write(obj.validationDate)
-      ..writeByte(8)
-      ..write(obj.elementValidationDate)
-      ..writeByte(9)
-      ..write(obj.canPushUpdates)
-      ..writeByte(10)
-      ..write(obj.pushTypeAvailable);
-  }
-}
-
-class VerificationResult_AttestationAdapter
-    extends TypeAdapter<VerificationResult_Attestation> {
-  @override
-  final typeId = 654;
-
-  @override
-  VerificationResult_Attestation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return VerificationResult_Attestation(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      who: fields[3] as Reference,
-      onBehalfOf: fields[4] as Reference,
-      communicationMethod: fields[5] as CodeableConcept,
-      date: fields[6] as String,
-      elementDate: fields[7] as Element,
-      sourceIdentityCertificate: fields[8] as String,
-      elementSourceIdentityCertificate: fields[9] as Element,
-      proxyIdentityCertificate: fields[10] as String,
-      elementProxyIdentityCertificate: fields[11] as Element,
-      proxySignature: fields[12] as Signature,
-      sourceSignature: fields[13] as Signature,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, VerificationResult_Attestation obj) {
-    writer
-      ..writeByte(14)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.who)
-      ..writeByte(4)
-      ..write(obj.onBehalfOf)
-      ..writeByte(5)
-      ..write(obj.communicationMethod)
-      ..writeByte(6)
-      ..write(obj.date)
-      ..writeByte(7)
-      ..write(obj.elementDate)
-      ..writeByte(8)
-      ..write(obj.sourceIdentityCertificate)
-      ..writeByte(9)
-      ..write(obj.elementSourceIdentityCertificate)
-      ..writeByte(10)
-      ..write(obj.proxyIdentityCertificate)
-      ..writeByte(11)
-      ..write(obj.elementProxyIdentityCertificate)
-      ..writeByte(12)
-      ..write(obj.proxySignature)
-      ..writeByte(13)
-      ..write(obj.sourceSignature);
-  }
-}
-
-class VerificationResult_ValidatorAdapter
-    extends TypeAdapter<VerificationResult_Validator> {
-  @override
-  final typeId = 655;
-
-  @override
-  VerificationResult_Validator read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return VerificationResult_Validator(
-      fields[3] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      identityCertificate: fields[4] as String,
-      elementIdentityCertificate: fields[5] as Element,
-      attestationSignature: fields[6] as Signature,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, VerificationResult_Validator obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.organization)
-      ..writeByte(4)
-      ..write(obj.identityCertificate)
-      ..writeByte(5)
-      ..write(obj.elementIdentityCertificate)
-      ..writeByte(6)
-      ..write(obj.attestationSignature);
   }
 }
 

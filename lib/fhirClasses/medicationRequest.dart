@@ -375,12 +375,10 @@ MedicationRequest(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 393)
 class MedicationRequest_DispenseRequest {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -389,7 +387,6 @@ class MedicationRequest_DispenseRequest {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -404,22 +401,18 @@ class MedicationRequest_DispenseRequest {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Indicates the quantity or duration for the first dispense of the
   // medication.
-  @HiveField(3)
   MedicationRequest_InitialFill initialFill;
 
   //  The minimum period of time that must occur between dispenses of the
   // medication.
-  @HiveField(4)
   Duration dispenseInterval;
 
   //  This indicates the validity period of a prescription (stale dating the
   // Prescription).
-  @HiveField(5)
   Period validityPeriod;
 
   //  An integer indicating the number of times, in addition to the original
@@ -430,25 +423,20 @@ class MedicationRequest_DispenseRequest {
   // 4 times and the patient can receive a total of 120 tablets.  A
   // prescriber may explicitly say that zero refills are permitted after the
   // initial dispense.
-  @HiveField(6)
   int numberOfRepeatsAllowed;
 
   //  Extensions for numberOfRepeatsAllowed
-  @HiveField(7)
   Element elementNumberOfRepeatsAllowed;
 
   //  The amount that is to be dispensed for one fill.
-  @HiveField(8)
   Quantity quantity;
 
   //  Identifies the period time over which the supplied product is expected
   // to be used, or the length of time the dispense is expected to last.
-  @HiveField(9)
   Duration expectedSupplyDuration;
 
   //  Indicates the intended dispensing Organization specified by the
   // prescriber.
-  @HiveField(10)
   Reference performer;
 
 MedicationRequest_DispenseRequest(
@@ -470,12 +458,10 @@ MedicationRequest_DispenseRequest(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 394)
 class MedicationRequest_InitialFill {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -484,7 +470,6 @@ class MedicationRequest_InitialFill {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -499,15 +484,12 @@ class MedicationRequest_InitialFill {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The amount or quantity to provide as part of the first dispense.
-  @HiveField(3)
   Quantity quantity;
 
   //  The length of time that the first dispense is expected to last.
-  @HiveField(4)
   Duration duration;
 
 MedicationRequest_InitialFill(
@@ -523,12 +505,10 @@ MedicationRequest_InitialFill(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 395)
 class MedicationRequest_Substitution {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -537,7 +517,6 @@ class MedicationRequest_Substitution {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -552,26 +531,21 @@ class MedicationRequest_Substitution {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  True if the prescriber allows a different drug to be dispensed from
   // what was prescribed.
-  @HiveField(3)
   bool allowedBoolean; //  pattern: ^true|false$
 
   //  Extensions for allowedBoolean
-  @HiveField(4)
   Element elementAllowedBoolean;
 
   //  True if the prescriber allows a different drug to be dispensed from
   // what was prescribed.
-  @HiveField(5)
   CodeableConcept allowedCodeableConcept;
 
   //  Indicates the reason for the substitution, or why substitution must or
   // must not be performed.
-  @HiveField(6)
   CodeableConcept reason;
 
 MedicationRequest_Substitution(
@@ -770,141 +744,6 @@ class MedicationRequestAdapter extends TypeAdapter<MedicationRequest> {
       ..write(obj.detectedIssue)
       ..writeByte(52)
       ..write(obj.eventHistory);
-  }
-}
-
-class MedicationRequest_DispenseRequestAdapter
-    extends TypeAdapter<MedicationRequest_DispenseRequest> {
-  @override
-  final typeId = 393;
-
-  @override
-  MedicationRequest_DispenseRequest read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicationRequest_DispenseRequest(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      initialFill: fields[3] as MedicationRequest_InitialFill,
-      dispenseInterval: fields[4] as Duration,
-      validityPeriod: fields[5] as Period,
-      numberOfRepeatsAllowed: fields[6] as int,
-      elementNumberOfRepeatsAllowed: fields[7] as Element,
-      quantity: fields[8] as Quantity,
-      expectedSupplyDuration: fields[9] as Duration,
-      performer: fields[10] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicationRequest_DispenseRequest obj) {
-    writer
-      ..writeByte(11)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.initialFill)
-      ..writeByte(4)
-      ..write(obj.dispenseInterval)
-      ..writeByte(5)
-      ..write(obj.validityPeriod)
-      ..writeByte(6)
-      ..write(obj.numberOfRepeatsAllowed)
-      ..writeByte(7)
-      ..write(obj.elementNumberOfRepeatsAllowed)
-      ..writeByte(8)
-      ..write(obj.quantity)
-      ..writeByte(9)
-      ..write(obj.expectedSupplyDuration)
-      ..writeByte(10)
-      ..write(obj.performer);
-  }
-}
-
-class MedicationRequest_InitialFillAdapter
-    extends TypeAdapter<MedicationRequest_InitialFill> {
-  @override
-  final typeId = 394;
-
-  @override
-  MedicationRequest_InitialFill read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicationRequest_InitialFill(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      quantity: fields[3] as Quantity,
-      duration: fields[4] as Duration,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicationRequest_InitialFill obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.quantity)
-      ..writeByte(4)
-      ..write(obj.duration);
-  }
-}
-
-class MedicationRequest_SubstitutionAdapter
-    extends TypeAdapter<MedicationRequest_Substitution> {
-  @override
-  final typeId = 395;
-
-  @override
-  MedicationRequest_Substitution read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicationRequest_Substitution(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      allowedBoolean: fields[3] as bool,
-      elementAllowedBoolean: fields[4] as Element,
-      allowedCodeableConcept: fields[5] as CodeableConcept,
-      reason: fields[6] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicationRequest_Substitution obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.allowedBoolean)
-      ..writeByte(4)
-      ..write(obj.elementAllowedBoolean)
-      ..writeByte(5)
-      ..write(obj.allowedCodeableConcept)
-      ..writeByte(6)
-      ..write(obj.reason);
   }
 }
 

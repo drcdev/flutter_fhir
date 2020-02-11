@@ -342,12 +342,10 @@ MessageDefinition(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 428)
 class MessageDefinition_Focus {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -356,7 +354,6 @@ class MessageDefinition_Focus {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -371,40 +368,32 @@ class MessageDefinition_Focus {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The kind of resource that must be the focus for this message.
-  @HiveField(3)
   String code;
 
   //  Extensions for code
-  @HiveField(4)
   Element elementCode;
 
   //  A profile that reflects constraints for the focal resource (and
   // potentially for related resources).
-  @HiveField(5)
   String profile;
 
   //  Identifies the minimum number of resources of this type that must be
   // pointed to by a message in order for it to be valid against this
   // MessageDefinition.
-  @HiveField(6)
   int min;
 
   //  Extensions for min
-  @HiveField(7)
   Element elementMin;
 
   //  Identifies the maximum number of resources of this type that must be
   // pointed to by a message in order for it to be valid against this
   // MessageDefinition.
-  @HiveField(8)
   String max;
 
   //  Extensions for max
-  @HiveField(9)
   Element elementMax;
 
 MessageDefinition_Focus(
@@ -425,12 +414,10 @@ MessageDefinition_Focus(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 429)
 class MessageDefinition_AllowedResponse {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -439,7 +426,6 @@ class MessageDefinition_AllowedResponse {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -454,21 +440,17 @@ class MessageDefinition_AllowedResponse {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A reference to the message definition that must be adhered to by this
   // supported response.
-  @HiveField(3)
   String message;
 
   //  Provides a description of the circumstances in which this response
   // should be used (as opposed to one of the alternative responses).
-  @HiveField(4)
   String situation;
 
   //  Extensions for situation
-  @HiveField(5)
   Element elementSituation;
 
 MessageDefinition_AllowedResponse(
@@ -658,98 +640,6 @@ class MessageDefinitionAdapter extends TypeAdapter<MessageDefinition> {
       ..write(obj.allowedResponse)
       ..writeByte(49)
       ..write(obj.graph);
-  }
-}
-
-class MessageDefinition_FocusAdapter
-    extends TypeAdapter<MessageDefinition_Focus> {
-  @override
-  final typeId = 428;
-
-  @override
-  MessageDefinition_Focus read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MessageDefinition_Focus(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as String,
-      elementCode: fields[4] as Element,
-      profile: fields[5] as String,
-      min: fields[6] as int,
-      elementMin: fields[7] as Element,
-      max: fields[8] as String,
-      elementMax: fields[9] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MessageDefinition_Focus obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.elementCode)
-      ..writeByte(5)
-      ..write(obj.profile)
-      ..writeByte(6)
-      ..write(obj.min)
-      ..writeByte(7)
-      ..write(obj.elementMin)
-      ..writeByte(8)
-      ..write(obj.max)
-      ..writeByte(9)
-      ..write(obj.elementMax);
-  }
-}
-
-class MessageDefinition_AllowedResponseAdapter
-    extends TypeAdapter<MessageDefinition_AllowedResponse> {
-  @override
-  final typeId = 429;
-
-  @override
-  MessageDefinition_AllowedResponse read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MessageDefinition_AllowedResponse(
-      fields[3] as String,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      situation: fields[4] as String,
-      elementSituation: fields[5] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MessageDefinition_AllowedResponse obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.message)
-      ..writeByte(4)
-      ..write(obj.situation)
-      ..writeByte(5)
-      ..write(obj.elementSituation);
   }
 }
 

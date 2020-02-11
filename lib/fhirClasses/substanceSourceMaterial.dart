@@ -210,12 +210,10 @@ SubstanceSourceMaterial(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 580)
 class SubstanceSourceMaterial_FractionDescription {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -224,7 +222,6 @@ class SubstanceSourceMaterial_FractionDescription {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -239,22 +236,18 @@ class SubstanceSourceMaterial_FractionDescription {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  This element is capturing information about the fraction of a plant
   // part, or human plasma for fractionation.
-  @HiveField(3)
   String fraction;
 
   //  Extensions for fraction
-  @HiveField(4)
   Element elementFraction;
 
   //  The specific type of the material constituting the component. For
   // Herbal preparations the particulars of the extracts (liquid/dry) is
   // described in Specified Substance Group 1.
-  @HiveField(5)
   CodeableConcept materialType;
 
 SubstanceSourceMaterial_FractionDescription(
@@ -271,12 +264,10 @@ SubstanceSourceMaterial_FractionDescription(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 581)
 class SubstanceSourceMaterial_Organism {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -285,7 +276,6 @@ class SubstanceSourceMaterial_Organism {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -300,50 +290,40 @@ class SubstanceSourceMaterial_Organism {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The family of an organism shall be specified.
-  @HiveField(3)
   CodeableConcept family;
 
   //  The genus of an organism shall be specified; refers to the Latin
   // epithet of the genus element of the plant/animal scientific name; it is
   // present in names for genera, species and infraspecies.
-  @HiveField(4)
   CodeableConcept genus;
 
   //  The species of an organism shall be specified; refers to the Latin
   // epithet of the species of the plant/animal; it is present in names for
   // species and infraspecies.
-  @HiveField(5)
   CodeableConcept species;
 
   //  The Intraspecific type of an organism shall be specified.
-  @HiveField(6)
   CodeableConcept intraspecificType;
 
   //  The intraspecific description of an organism shall be specified based
   // on a controlled vocabulary. For Influenza Vaccine, the intraspecific
   // description shall contain the syntax of the antigen in line with the
   // WHO convention.
-  @HiveField(7)
   String intraspecificDescription;
 
   //  Extensions for intraspecificDescription
-  @HiveField(8)
   Element elementIntraspecificDescription;
 
   //  4.9.13.6.1 Author type (Conditional).
-  @HiveField(9)
   List<SubstanceSourceMaterial_Author> author;
 
   //  4.9.13.8.1 Hybrid species maternal organism ID (Optional).
-  @HiveField(10)
   SubstanceSourceMaterial_Hybrid hybrid;
 
   //  4.9.13.7.1 Kingdom (Conditional).
-  @HiveField(11)
   SubstanceSourceMaterial_OrganismGeneral organismGeneral;
 
 SubstanceSourceMaterial_Organism(
@@ -366,12 +346,10 @@ SubstanceSourceMaterial_Organism(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 582)
 class SubstanceSourceMaterial_Author {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -380,7 +358,6 @@ class SubstanceSourceMaterial_Author {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -395,7 +372,6 @@ class SubstanceSourceMaterial_Author {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The type of author of an organism species shall be specified. The
@@ -403,18 +379,15 @@ class SubstanceSourceMaterial_Author {
   // who published the plant/animal name (of any rank). The primary author
   // of an organism species refers to the first author(s), who validly
   // published the plant/animal name.
-  @HiveField(3)
   CodeableConcept authorType;
 
   //  The author of an organism species shall be specified. The author year
   // of an organism shall also be specified when applicable; refers to the
   // year in which the first author(s) published the infraspecific
   // plant/animal name (of any rank).
-  @HiveField(4)
   String authorDescription;
 
   //  Extensions for authorDescription
-  @HiveField(5)
   Element elementAuthorDescription;
 
 SubstanceSourceMaterial_Author(
@@ -431,12 +404,10 @@ SubstanceSourceMaterial_Author(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 583)
 class SubstanceSourceMaterial_Hybrid {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -445,7 +416,6 @@ class SubstanceSourceMaterial_Hybrid {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -460,51 +430,41 @@ class SubstanceSourceMaterial_Hybrid {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The identifier of the maternal species constituting the hybrid
   // organism shall be specified based on a controlled vocabulary. For
   // plants, the parents aren’t always known, and it is unlikely that it
   // will be known which is maternal and which is paternal.
-  @HiveField(3)
   String maternalOrganismId;
 
   //  Extensions for maternalOrganismId
-  @HiveField(4)
   Element elementMaternalOrganismId;
 
   //  The name of the maternal species constituting the hybrid organism
   // shall be specified. For plants, the parents aren’t always known, and it
   // is unlikely that it will be known which is maternal and which is
   // paternal.
-  @HiveField(5)
   String maternalOrganismName;
 
   //  Extensions for maternalOrganismName
-  @HiveField(6)
   Element elementMaternalOrganismName;
 
   //  The identifier of the paternal species constituting the hybrid
   // organism shall be specified based on a controlled vocabulary.
-  @HiveField(7)
   String paternalOrganismId;
 
   //  Extensions for paternalOrganismId
-  @HiveField(8)
   Element elementPaternalOrganismId;
 
   //  The name of the paternal species constituting the hybrid organism
   // shall be specified.
-  @HiveField(9)
   String paternalOrganismName;
 
   //  Extensions for paternalOrganismName
-  @HiveField(10)
   Element elementPaternalOrganismName;
 
   //  The hybrid type of an organism shall be specified.
-  @HiveField(11)
   CodeableConcept hybridType;
 
 SubstanceSourceMaterial_Hybrid(
@@ -527,12 +487,10 @@ SubstanceSourceMaterial_Hybrid(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 584)
 class SubstanceSourceMaterial_OrganismGeneral {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -541,7 +499,6 @@ class SubstanceSourceMaterial_OrganismGeneral {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -556,23 +513,18 @@ class SubstanceSourceMaterial_OrganismGeneral {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The kingdom of an organism shall be specified.
-  @HiveField(3)
   CodeableConcept kingdom;
 
   //  The phylum of an organism shall be specified.
-  @HiveField(4)
   CodeableConcept phylum;
 
   //  The class of an organism shall be specified.
-  @HiveField(5)
   CodeableConcept classs;
 
   //  The order of an organism shall be specified,.
-  @HiveField(6)
   CodeableConcept order;
 
 SubstanceSourceMaterial_OrganismGeneral(
@@ -590,12 +542,10 @@ SubstanceSourceMaterial_OrganismGeneral(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 585)
 class SubstanceSourceMaterial_PartDescription {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -604,7 +554,6 @@ class SubstanceSourceMaterial_PartDescription {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -619,17 +568,14 @@ class SubstanceSourceMaterial_PartDescription {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Entity of anatomical origin of source material within an organism.
-  @HiveField(3)
   CodeableConcept part;
 
   //  The detailed anatomic location when the part can be extracted from
   // different anatomical locations of the organism. Multiple alternative
   // locations may apply.
-  @HiveField(4)
   CodeableConcept partLocation;
 
 SubstanceSourceMaterial_PartDescription(
@@ -751,283 +697,6 @@ class SubstanceSourceMaterialAdapter
       ..write(obj.organism)
       ..writeByte(26)
       ..write(obj.partDescription);
-  }
-}
-
-class SubstanceSourceMaterial_FractionDescriptionAdapter
-    extends TypeAdapter<SubstanceSourceMaterial_FractionDescription> {
-  @override
-  final typeId = 580;
-
-  @override
-  SubstanceSourceMaterial_FractionDescription read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstanceSourceMaterial_FractionDescription(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      fraction: fields[3] as String,
-      elementFraction: fields[4] as Element,
-      materialType: fields[5] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(
-      BinaryWriter writer, SubstanceSourceMaterial_FractionDescription obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.fraction)
-      ..writeByte(4)
-      ..write(obj.elementFraction)
-      ..writeByte(5)
-      ..write(obj.materialType);
-  }
-}
-
-class SubstanceSourceMaterial_OrganismAdapter
-    extends TypeAdapter<SubstanceSourceMaterial_Organism> {
-  @override
-  final typeId = 581;
-
-  @override
-  SubstanceSourceMaterial_Organism read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstanceSourceMaterial_Organism(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      family: fields[3] as CodeableConcept,
-      genus: fields[4] as CodeableConcept,
-      species: fields[5] as CodeableConcept,
-      intraspecificType: fields[6] as CodeableConcept,
-      intraspecificDescription: fields[7] as String,
-      elementIntraspecificDescription: fields[8] as Element,
-      author: (fields[9] as List)?.cast<SubstanceSourceMaterial_Author>(),
-      hybrid: fields[10] as SubstanceSourceMaterial_Hybrid,
-      organismGeneral: fields[11] as SubstanceSourceMaterial_OrganismGeneral,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SubstanceSourceMaterial_Organism obj) {
-    writer
-      ..writeByte(12)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.family)
-      ..writeByte(4)
-      ..write(obj.genus)
-      ..writeByte(5)
-      ..write(obj.species)
-      ..writeByte(6)
-      ..write(obj.intraspecificType)
-      ..writeByte(7)
-      ..write(obj.intraspecificDescription)
-      ..writeByte(8)
-      ..write(obj.elementIntraspecificDescription)
-      ..writeByte(9)
-      ..write(obj.author)
-      ..writeByte(10)
-      ..write(obj.hybrid)
-      ..writeByte(11)
-      ..write(obj.organismGeneral);
-  }
-}
-
-class SubstanceSourceMaterial_AuthorAdapter
-    extends TypeAdapter<SubstanceSourceMaterial_Author> {
-  @override
-  final typeId = 582;
-
-  @override
-  SubstanceSourceMaterial_Author read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstanceSourceMaterial_Author(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      authorType: fields[3] as CodeableConcept,
-      authorDescription: fields[4] as String,
-      elementAuthorDescription: fields[5] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SubstanceSourceMaterial_Author obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.authorType)
-      ..writeByte(4)
-      ..write(obj.authorDescription)
-      ..writeByte(5)
-      ..write(obj.elementAuthorDescription);
-  }
-}
-
-class SubstanceSourceMaterial_HybridAdapter
-    extends TypeAdapter<SubstanceSourceMaterial_Hybrid> {
-  @override
-  final typeId = 583;
-
-  @override
-  SubstanceSourceMaterial_Hybrid read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstanceSourceMaterial_Hybrid(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      maternalOrganismId: fields[3] as String,
-      elementMaternalOrganismId: fields[4] as Element,
-      maternalOrganismName: fields[5] as String,
-      elementMaternalOrganismName: fields[6] as Element,
-      paternalOrganismId: fields[7] as String,
-      elementPaternalOrganismId: fields[8] as Element,
-      paternalOrganismName: fields[9] as String,
-      elementPaternalOrganismName: fields[10] as Element,
-      hybridType: fields[11] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SubstanceSourceMaterial_Hybrid obj) {
-    writer
-      ..writeByte(12)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.maternalOrganismId)
-      ..writeByte(4)
-      ..write(obj.elementMaternalOrganismId)
-      ..writeByte(5)
-      ..write(obj.maternalOrganismName)
-      ..writeByte(6)
-      ..write(obj.elementMaternalOrganismName)
-      ..writeByte(7)
-      ..write(obj.paternalOrganismId)
-      ..writeByte(8)
-      ..write(obj.elementPaternalOrganismId)
-      ..writeByte(9)
-      ..write(obj.paternalOrganismName)
-      ..writeByte(10)
-      ..write(obj.elementPaternalOrganismName)
-      ..writeByte(11)
-      ..write(obj.hybridType);
-  }
-}
-
-class SubstanceSourceMaterial_OrganismGeneralAdapter
-    extends TypeAdapter<SubstanceSourceMaterial_OrganismGeneral> {
-  @override
-  final typeId = 584;
-
-  @override
-  SubstanceSourceMaterial_OrganismGeneral read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstanceSourceMaterial_OrganismGeneral(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      kingdom: fields[3] as CodeableConcept,
-      phylum: fields[4] as CodeableConcept,
-      classs: fields[5] as CodeableConcept,
-      order: fields[6] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SubstanceSourceMaterial_OrganismGeneral obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.kingdom)
-      ..writeByte(4)
-      ..write(obj.phylum)
-      ..writeByte(5)
-      ..write(obj.classs)
-      ..writeByte(6)
-      ..write(obj.order);
-  }
-}
-
-class SubstanceSourceMaterial_PartDescriptionAdapter
-    extends TypeAdapter<SubstanceSourceMaterial_PartDescription> {
-  @override
-  final typeId = 585;
-
-  @override
-  SubstanceSourceMaterial_PartDescription read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstanceSourceMaterial_PartDescription(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      part: fields[3] as CodeableConcept,
-      partLocation: fields[4] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SubstanceSourceMaterial_PartDescription obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.part)
-      ..writeByte(4)
-      ..write(obj.partLocation);
   }
 }
 

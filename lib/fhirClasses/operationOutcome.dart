@@ -110,12 +110,10 @@ OperationOutcome(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 464)
 class OperationOutcome_Issue {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -124,7 +122,6 @@ class OperationOutcome_Issue {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -139,40 +136,32 @@ class OperationOutcome_Issue {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Indicates whether the issue indicates a variation from successful
   // processing.
-  @HiveField(3)
   String severity; // <code> enum: fatal/error/warning/information;
 
   //  Extensions for severity
-  @HiveField(4)
   Element elementSeverity;
 
   //  Describes the type of the issue. The system that creates an
   // OperationOutcome SHALL choose the most applicable code from the
   // IssueType value set, and may additional provide its own code for the
   // error in the details element.
-  @HiveField(5)
   String code; // <code> enum: invalid/structure/required/value/invariant/security/login/unknown/expired/forbidden/suppressed/processing/not-supported/duplicate/multiple-matches/not-found/deleted/too-long/code-invalid/extension/too-costly/business-rule/conflict/transient/lock-error/no-store/exception/timeout/incomplete/throttled/informational;
 
   //  Extensions for code
-  @HiveField(6)
   Element elementCode;
 
   //  Additional details about the error. This may be a text description of
   // the error or a system code that identifies the error.
-  @HiveField(7)
   CodeableConcept details;
 
   //  Additional diagnostic information about the issue.
-  @HiveField(8)
   String diagnostics;
 
   //  Extensions for diagnostics
-  @HiveField(9)
   Element elementDiagnostics;
 
   //  This element is deprecated because it is XML specific. It is replaced
@@ -181,22 +170,18 @@ class OperationOutcome_Issue {
   // names, repetition indicators and the default child accessor that
   // identifies one of the elements in the resource that caused this issue
   // to be raised.  For HTTP errors, will be "http." + the parameter name.
-  @HiveField(10)
   List<String> location;
 
   //  Extensions for location
-  @HiveField(11)
   List<Element> elementLocation;
 
   //  A [simple subset of FHIRPath](fhirpath.html#simple) limited to element
   // names, repetition indicators and the default child accessor that
   // identifies one of the elements in the resource that caused this issue
   // to be raised.
-  @HiveField(12)
   List<String> expression;
 
   //  Extensions for expression
-  @HiveField(13)
   List<Element> elementExpression;
 
 OperationOutcome_Issue(
@@ -279,70 +264,6 @@ class OperationOutcomeAdapter extends TypeAdapter<OperationOutcome> {
       ..write(obj.modifierExtension)
       ..writeByte(11)
       ..write(obj.issue);
-  }
-}
-
-class OperationOutcome_IssueAdapter
-    extends TypeAdapter<OperationOutcome_Issue> {
-  @override
-  final typeId = 464;
-
-  @override
-  OperationOutcome_Issue read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return OperationOutcome_Issue(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      severity: fields[3] as String,
-      elementSeverity: fields[4] as Element,
-      code: fields[5] as String,
-      elementCode: fields[6] as Element,
-      details: fields[7] as CodeableConcept,
-      diagnostics: fields[8] as String,
-      elementDiagnostics: fields[9] as Element,
-      location: (fields[10] as List)?.cast<String>(),
-      elementLocation: (fields[11] as List)?.cast<Element>(),
-      expression: (fields[12] as List)?.cast<String>(),
-      elementExpression: (fields[13] as List)?.cast<Element>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, OperationOutcome_Issue obj) {
-    writer
-      ..writeByte(14)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.severity)
-      ..writeByte(4)
-      ..write(obj.elementSeverity)
-      ..writeByte(5)
-      ..write(obj.code)
-      ..writeByte(6)
-      ..write(obj.elementCode)
-      ..writeByte(7)
-      ..write(obj.details)
-      ..writeByte(8)
-      ..write(obj.diagnostics)
-      ..writeByte(9)
-      ..write(obj.elementDiagnostics)
-      ..writeByte(10)
-      ..write(obj.location)
-      ..writeByte(11)
-      ..write(obj.elementLocation)
-      ..writeByte(12)
-      ..write(obj.expression)
-      ..writeByte(13)
-      ..write(obj.elementExpression);
   }
 }
 

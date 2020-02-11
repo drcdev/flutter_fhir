@@ -2467,12 +2467,10 @@ ElementDefinition(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 46)
 class ElementDefinition_Slicing {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -2481,7 +2479,6 @@ class ElementDefinition_Slicing {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -2496,7 +2493,6 @@ class ElementDefinition_Slicing {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Designates which child elements are used to discriminate between the
@@ -2504,36 +2500,29 @@ class ElementDefinition_Slicing {
   // provided, the value of the child elements in the instance data SHALL
   // completely distinguish which slice the element in the resource matches
   // based on the allowed values for those elements in each of the slices.
-  @HiveField(3)
   List<ElementDefinition_Discriminator> discriminator;
 
   //  A human-readable text description of how the slicing works. If there
   // is no discriminator, this is required to be present to provide whatever
   // information is possible about how the slices can be differentiated.
-  @HiveField(4)
   String description;
 
   //  Extensions for description
-  @HiveField(5)
   Element elementDescription;
 
   //  If the matching elements have to occur in the same order as defined in
   // the profile.
-  @HiveField(6)
   bool ordered;
 
   //  Extensions for ordered
-  @HiveField(7)
   Element elementOrdered;
 
   //  Whether additional slices are allowed or not. When the slices are
   // ordered, profile authors can also say that additional slices are only
   // allowed at the end.
-  @HiveField(8)
   String rules; // <code> enum: closed/open/openAtEnd;
 
   //  Extensions for rules
-  @HiveField(9)
   Element elementRules;
 
 ElementDefinition_Slicing(
@@ -2554,12 +2543,10 @@ ElementDefinition_Slicing(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 47)
 class ElementDefinition_Discriminator {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -2568,7 +2555,6 @@ class ElementDefinition_Discriminator {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -2583,25 +2569,20 @@ class ElementDefinition_Discriminator {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  How the element value is interpreted when discrimination is evaluated.
-  @HiveField(3)
   String type; // <code> enum: value/exists/pattern/type/profile;
 
   //  Extensions for type
-  @HiveField(4)
   Element elementType;
 
   //  A FHIRPath expression, using [the simple subset of
   // FHIRPath](fhirpath.html#simple), that is used to identify the element
   // on which discrimination is based.
-  @HiveField(5)
   String path;
 
   //  Extensions for path
-  @HiveField(6)
   Element elementPath;
 
 ElementDefinition_Discriminator(
@@ -2619,12 +2600,10 @@ ElementDefinition_Discriminator(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 48)
 class ElementDefinition_Base {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -2633,7 +2612,6 @@ class ElementDefinition_Base {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -2648,34 +2626,27 @@ class ElementDefinition_Base {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The Path that identifies the base element - this matches the
   // ElementDefinition.path for that element. Across FHIR, there is only one
   // base definition of any element - that is, an element definition on a
   // [[[StructureDefinition]]] without a StructureDefinition.base.
-  @HiveField(3)
   String path;
 
   //  Extensions for path
-  @HiveField(4)
   Element elementPath;
 
   //  Minimum cardinality of the base element identified by the path.
-  @HiveField(5)
   int min;
 
   //  Extensions for min
-  @HiveField(6)
   Element elementMin;
 
   //  Maximum cardinality of the base element identified by the path.
-  @HiveField(7)
   String max;
 
   //  Extensions for max
-  @HiveField(8)
   Element elementMax;
 
 ElementDefinition_Base(
@@ -2695,12 +2666,10 @@ ElementDefinition_Base(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 49)
 class ElementDefinition_Type {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -2709,7 +2678,6 @@ class ElementDefinition_Type {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -2724,7 +2692,6 @@ class ElementDefinition_Type {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  URL of Data type or Resource that is a(or the) type used for this
@@ -2732,11 +2699,9 @@ class ElementDefinition_Type {
   // http://hl7.org/fhir/StructureDefinition e.g. "string" is a reference to
   // http://hl7.org/fhir/StructureDefinition/string. Absolute URLs are only
   // allowed in logical models.
-  @HiveField(3)
   String code;
 
   //  Extensions for code
-  @HiveField(4)
   Element elementCode;
 
   //  Identifies a profile structure or implementation Guide that applies to
@@ -2746,7 +2711,6 @@ class ElementDefinition_Type {
   // another StructureDefinition or Implementation Guide by a canonical URL.
   // When an implementation guide is specified, the type SHALL conform to at
   // least one profile defined in the implementation guide.
-  @HiveField(5)
   List<String> profile;
 
   //  Used when the type is "Reference" or "canonical", and identifies a
@@ -2757,26 +2721,21 @@ class ElementDefinition_Type {
   // another StructureDefinition or Implementation Guide by a canonical URL.
   // When an implementation guide is specified, the target resource SHALL
   // conform to at least one profile defined in the implementation guide.
-  @HiveField(6)
   List<String> targetProfile;
 
   //  If the type is a reference to another resource, how the resource is or
   // can be aggregated - is it a contained resource, or a reference, and if
   // the context is a bundle, is it included in the bundle.
-  @HiveField(7)
   List<String> aggregation; // <code> enum: contained/referenced/bundled> aggregation;
 
   //  Extensions for aggregation
-  @HiveField(8)
   List<Element> elementAggregation;
 
   //  Whether this reference needs to be version specific or version
   // independent, or whether either can be used.
-  @HiveField(9)
   String versioning; // <code> enum: either/independent/specific;
 
   //  Extensions for versioning
-  @HiveField(10)
   Element elementVersioning;
 
 ElementDefinition_Type(
@@ -2798,12 +2757,10 @@ ElementDefinition_Type(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 50)
 class ElementDefinition_Example {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -2812,7 +2769,6 @@ class ElementDefinition_Example {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -2827,69 +2783,54 @@ class ElementDefinition_Example {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Describes the purpose of this example amoung the set of examples.
-  @HiveField(3)
   String label;
 
   //  Extensions for label
-  @HiveField(4)
   Element elementLabel;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(5)
   String valueBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
 
   //  Extensions for valueBase64Binary
-  @HiveField(6)
   Element elementValueBase64Binary;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(7)
   bool valueBoolean; //  pattern: ^true|false$
 
   //  Extensions for valueBoolean
-  @HiveField(8)
   Element elementValueBoolean;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(9)
   String valueCanonical; //  pattern: ^\S*$
 
   //  Extensions for valueCanonical
-  @HiveField(10)
   Element elementValueCanonical;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(11)
   String valueCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
 
   //  Extensions for valueCode
-  @HiveField(12)
   Element elementValueCode;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(13)
   String valueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for valueDate
-  @HiveField(14)
   Element elementValueDate;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(15)
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for valueDateTime
-  @HiveField(16)
   Element elementValueDateTime;
 
   //  The actual value for the element, which must be one of the types
@@ -2897,25 +2838,20 @@ class ElementDefinition_Example {
   double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
 
   //  Extensions for valueDecimal
-  @HiveField(18)
   Element elementValueDecimal;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(19)
   String valueId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
 
   //  Extensions for valueId
-  @HiveField(20)
   Element elementValueId;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(21)
   String valueInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
 
   //  Extensions for valueInstant
-  @HiveField(22)
   Element elementValueInstant;
 
   //  The actual value for the element, which must be one of the types
@@ -2923,25 +2859,20 @@ class ElementDefinition_Example {
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
 
   //  Extensions for valueInteger
-  @HiveField(24)
   Element elementValueInteger;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(25)
   String valueMarkdown; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for valueMarkdown
-  @HiveField(26)
   Element elementValueMarkdown;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(27)
   String valueOid; //  pattern: ^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$
 
   //  Extensions for valueOid
-  @HiveField(28)
   Element elementValueOid;
 
   //  The actual value for the element, which must be one of the types
@@ -2949,25 +2880,20 @@ class ElementDefinition_Example {
   int valuePositiveInt; //  pattern: ^[1-9][0-9]*$
 
   //  Extensions for valuePositiveInt
-  @HiveField(30)
   Element elementValuePositiveInt;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(31)
   String valueString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for valueString
-  @HiveField(32)
   Element elementValueString;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(33)
   String valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
 
   //  Extensions for valueTime
-  @HiveField(34)
   Element elementValueTime;
 
   //  The actual value for the element, which must be one of the types
@@ -2975,189 +2901,151 @@ class ElementDefinition_Example {
   int valueUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
 
   //  Extensions for valueUnsignedInt
-  @HiveField(36)
   Element elementValueUnsignedInt;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(37)
   String valueUri; //  pattern: ^\S*$
 
   //  Extensions for valueUri
-  @HiveField(38)
   Element elementValueUri;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(39)
   String valueUrl; //  pattern: ^\S*$
 
   //  Extensions for valueUrl
-  @HiveField(40)
   Element elementValueUrl;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(41)
   String valueUuid; //  pattern: ^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
 
   //  Extensions for valueUuid
-  @HiveField(42)
   Element elementValueUuid;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(43)
   Address valueAddress;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(44)
   Age valueAge;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(45)
   Annotation valueAnnotation;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(46)
   Attachment valueAttachment;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(47)
   CodeableConcept valueCodeableConcept;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(48)
   Coding valueCoding;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(49)
   ContactPoint valueContactPoint;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(50)
   Count valueCount;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(51)
   Distance valueDistance;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(52)
   Duration valueDuration;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(53)
   HumanName valueHumanName;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(54)
   Identifier valueIdentifier;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(55)
   Money valueMoney;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(56)
   Period valuePeriod;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(57)
   Quantity valueQuantity;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(58)
   Range valueRange;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(59)
   Ratio valueRatio;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(60)
   Reference valueReference;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(61)
   SampledData valueSampledData;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(62)
   Signature valueSignature;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(63)
   Timing valueTiming;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(64)
   ContactDetail valueContactDetail;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(65)
   Contributor valueContributor;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(66)
   DataRequirement valueDataRequirement;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(67)
   Expression valueExpression;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(68)
   ParameterDefinition valueParameterDefinition;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(69)
   RelatedArtifact valueRelatedArtifact;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(70)
   TriggerDefinition valueTriggerDefinition;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(71)
   UsageContext valueUsageContext;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(72)
   Dosage valueDosage;
 
   //  The actual value for the element, which must be one of the types
   // allowed for this element.
-  @HiveField(73)
   Meta valueMeta;
 
 ElementDefinition_Example(
@@ -3242,12 +3130,10 @@ ElementDefinition_Example(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 51)
 class ElementDefinition_Constraint {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -3256,7 +3142,6 @@ class ElementDefinition_Constraint {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -3271,66 +3156,52 @@ class ElementDefinition_Constraint {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Allows identification of which elements have their cardinalities
   // impacted by the constraint.  Will not be referenced for constraints
   // that do not affect cardinality.
-  @HiveField(3)
   String key;
 
   //  Extensions for key
-  @HiveField(4)
   Element elementKey;
 
   //  Description of why this constraint is necessary or appropriate.
-  @HiveField(5)
   String requirements;
 
   //  Extensions for requirements
-  @HiveField(6)
   Element elementRequirements;
 
   //  Identifies the impact constraint violation has on the conformance of
   // the instance.
-  @HiveField(7)
   String severity; // <code> enum: error/warning;
 
   //  Extensions for severity
-  @HiveField(8)
   Element elementSeverity;
 
   //  Text that can be used to describe the constraint in messages
   // identifying that the constraint has been violated.
-  @HiveField(9)
   String human;
 
   //  Extensions for human
-  @HiveField(10)
   Element elementHuman;
 
   //  A [FHIRPath](fhirpath.html) expression of constraint that can be
   // executed to see if this constraint is met.
-  @HiveField(11)
   String expression;
 
   //  Extensions for expression
-  @HiveField(12)
   Element elementExpression;
 
   //  An XPath expression of constraint that can be executed to see if this
   // constraint is met.
-  @HiveField(13)
   String xpath;
 
   //  Extensions for xpath
-  @HiveField(14)
   Element elementXpath;
 
   //  A reference to the original source of the constraint, for traceability
   // purposes.
-  @HiveField(15)
   String source;
 
 ElementDefinition_Constraint(
@@ -3357,12 +3228,10 @@ ElementDefinition_Constraint(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 52)
 class ElementDefinition_Binding {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -3371,7 +3240,6 @@ class ElementDefinition_Binding {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -3386,30 +3254,24 @@ class ElementDefinition_Binding {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Indicates the degree of conformance expectations associated with this
   // binding - that is, the degree to which the provided value set must be
   // adhered to in the instances.
-  @HiveField(3)
   String strength; // <code> enum: required/extensible/preferred/example;
 
   //  Extensions for strength
-  @HiveField(4)
   Element elementStrength;
 
   //  Describes the intended use of this particular set of codes.
-  @HiveField(5)
   String description;
 
   //  Extensions for description
-  @HiveField(6)
   Element elementDescription;
 
   //  Refers to the value set that identifies the set of codes the binding
   // refers to.
-  @HiveField(7)
   String valueSet;
 
 ElementDefinition_Binding(
@@ -3428,12 +3290,10 @@ ElementDefinition_Binding(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 53)
 class ElementDefinition_Mapping {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -3442,7 +3302,6 @@ class ElementDefinition_Mapping {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -3457,40 +3316,31 @@ class ElementDefinition_Mapping {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  An internal reference to the definition of a mapping.
-  @HiveField(3)
   String identity;
 
   //  Extensions for identity
-  @HiveField(4)
   Element elementIdentity;
 
   //  Identifies the computable language in which mapping.map is expressed.
-  @HiveField(5)
   String language;
 
   //  Extensions for language
-  @HiveField(6)
   Element elementLanguage;
 
   //  Expresses what part of the target specification corresponds to this
   // element.
-  @HiveField(7)
   String map;
 
   //  Extensions for map
-  @HiveField(8)
   Element elementMap;
 
   //  Comments that provide information about the mapping or its use.
-  @HiveField(9)
   String comment;
 
   //  Extensions for comment
-  @HiveField(10)
   Element elementComment;
 
 ElementDefinition_Mapping(
@@ -4357,609 +4207,6 @@ class ElementDefinitionAdapter extends TypeAdapter<ElementDefinition> {
       ..write(obj.binding)
       ..writeByte(293)
       ..write(obj.mapping);
-  }
-}
-
-class ElementDefinition_SlicingAdapter
-    extends TypeAdapter<ElementDefinition_Slicing> {
-  @override
-  final typeId = 46;
-
-  @override
-  ElementDefinition_Slicing read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ElementDefinition_Slicing(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      discriminator:
-          (fields[3] as List)?.cast<ElementDefinition_Discriminator>(),
-      description: fields[4] as String,
-      elementDescription: fields[5] as Element,
-      ordered: fields[6] as bool,
-      elementOrdered: fields[7] as Element,
-      rules: fields[8] as String,
-      elementRules: fields[9] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ElementDefinition_Slicing obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.discriminator)
-      ..writeByte(4)
-      ..write(obj.description)
-      ..writeByte(5)
-      ..write(obj.elementDescription)
-      ..writeByte(6)
-      ..write(obj.ordered)
-      ..writeByte(7)
-      ..write(obj.elementOrdered)
-      ..writeByte(8)
-      ..write(obj.rules)
-      ..writeByte(9)
-      ..write(obj.elementRules);
-  }
-}
-
-class ElementDefinition_DiscriminatorAdapter
-    extends TypeAdapter<ElementDefinition_Discriminator> {
-  @override
-  final typeId = 47;
-
-  @override
-  ElementDefinition_Discriminator read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ElementDefinition_Discriminator(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as String,
-      elementType: fields[4] as Element,
-      path: fields[5] as String,
-      elementPath: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ElementDefinition_Discriminator obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.elementType)
-      ..writeByte(5)
-      ..write(obj.path)
-      ..writeByte(6)
-      ..write(obj.elementPath);
-  }
-}
-
-class ElementDefinition_BaseAdapter
-    extends TypeAdapter<ElementDefinition_Base> {
-  @override
-  final typeId = 48;
-
-  @override
-  ElementDefinition_Base read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ElementDefinition_Base(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      path: fields[3] as String,
-      elementPath: fields[4] as Element,
-      min: fields[5] as int,
-      elementMin: fields[6] as Element,
-      max: fields[7] as String,
-      elementMax: fields[8] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ElementDefinition_Base obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.path)
-      ..writeByte(4)
-      ..write(obj.elementPath)
-      ..writeByte(5)
-      ..write(obj.min)
-      ..writeByte(6)
-      ..write(obj.elementMin)
-      ..writeByte(7)
-      ..write(obj.max)
-      ..writeByte(8)
-      ..write(obj.elementMax);
-  }
-}
-
-class ElementDefinition_TypeAdapter
-    extends TypeAdapter<ElementDefinition_Type> {
-  @override
-  final typeId = 49;
-
-  @override
-  ElementDefinition_Type read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ElementDefinition_Type(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as String,
-      elementCode: fields[4] as Element,
-      profile: (fields[5] as List)?.cast<String>(),
-      targetProfile: (fields[6] as List)?.cast<String>(),
-      aggregation: (fields[7] as List)?.cast<String>(),
-      elementAggregation: (fields[8] as List)?.cast<Element>(),
-      versioning: fields[9] as String,
-      elementVersioning: fields[10] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ElementDefinition_Type obj) {
-    writer
-      ..writeByte(11)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.elementCode)
-      ..writeByte(5)
-      ..write(obj.profile)
-      ..writeByte(6)
-      ..write(obj.targetProfile)
-      ..writeByte(7)
-      ..write(obj.aggregation)
-      ..writeByte(8)
-      ..write(obj.elementAggregation)
-      ..writeByte(9)
-      ..write(obj.versioning)
-      ..writeByte(10)
-      ..write(obj.elementVersioning);
-  }
-}
-
-class ElementDefinition_ExampleAdapter
-    extends TypeAdapter<ElementDefinition_Example> {
-  @override
-  final typeId = 50;
-
-  @override
-  ElementDefinition_Example read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ElementDefinition_Example(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      label: fields[3] as String,
-      elementLabel: fields[4] as Element,
-      valueBase64Binary: fields[5] as String,
-      elementValueBase64Binary: fields[6] as Element,
-      valueBoolean: fields[7] as bool,
-      elementValueBoolean: fields[8] as Element,
-      valueCanonical: fields[9] as String,
-      elementValueCanonical: fields[10] as Element,
-      valueCode: fields[11] as String,
-      elementValueCode: fields[12] as Element,
-      valueDate: fields[13] as String,
-      elementValueDate: fields[14] as Element,
-      valueDateTime: fields[15] as String,
-      elementValueDateTime: fields[16] as Element,
-      elementValueDecimal: fields[18] as Element,
-      valueId: fields[19] as String,
-      elementValueId: fields[20] as Element,
-      valueInstant: fields[21] as String,
-      elementValueInstant: fields[22] as Element,
-      elementValueInteger: fields[24] as Element,
-      valueMarkdown: fields[25] as String,
-      elementValueMarkdown: fields[26] as Element,
-      valueOid: fields[27] as String,
-      elementValueOid: fields[28] as Element,
-      elementValuePositiveInt: fields[30] as Element,
-      valueString: fields[31] as String,
-      elementValueString: fields[32] as Element,
-      valueTime: fields[33] as String,
-      elementValueTime: fields[34] as Element,
-      elementValueUnsignedInt: fields[36] as Element,
-      valueUri: fields[37] as String,
-      elementValueUri: fields[38] as Element,
-      valueUrl: fields[39] as String,
-      elementValueUrl: fields[40] as Element,
-      valueUuid: fields[41] as String,
-      elementValueUuid: fields[42] as Element,
-      valueAddress: fields[43] as Address,
-      valueAge: fields[44] as Age,
-      valueAnnotation: fields[45] as Annotation,
-      valueAttachment: fields[46] as Attachment,
-      valueCodeableConcept: fields[47] as CodeableConcept,
-      valueCoding: fields[48] as Coding,
-      valueContactPoint: fields[49] as ContactPoint,
-      valueCount: fields[50] as Count,
-      valueDistance: fields[51] as Distance,
-      valueDuration: fields[52] as Duration,
-      valueHumanName: fields[53] as HumanName,
-      valueIdentifier: fields[54] as Identifier,
-      valueMoney: fields[55] as Money,
-      valuePeriod: fields[56] as Period,
-      valueQuantity: fields[57] as Quantity,
-      valueRange: fields[58] as Range,
-      valueRatio: fields[59] as Ratio,
-      valueReference: fields[60] as Reference,
-      valueSampledData: fields[61] as SampledData,
-      valueSignature: fields[62] as Signature,
-      valueTiming: fields[63] as Timing,
-      valueContactDetail: fields[64] as ContactDetail,
-      valueContributor: fields[65] as Contributor,
-      valueDataRequirement: fields[66] as DataRequirement,
-      valueExpression: fields[67] as Expression,
-      valueParameterDefinition: fields[68] as ParameterDefinition,
-      valueRelatedArtifact: fields[69] as RelatedArtifact,
-      valueTriggerDefinition: fields[70] as TriggerDefinition,
-      valueUsageContext: fields[71] as UsageContext,
-      valueDosage: fields[72] as Dosage,
-      valueMeta: fields[73] as Meta,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ElementDefinition_Example obj) {
-    writer
-      ..writeByte(70)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.label)
-      ..writeByte(4)
-      ..write(obj.elementLabel)
-      ..writeByte(5)
-      ..write(obj.valueBase64Binary)
-      ..writeByte(6)
-      ..write(obj.elementValueBase64Binary)
-      ..writeByte(7)
-      ..write(obj.valueBoolean)
-      ..writeByte(8)
-      ..write(obj.elementValueBoolean)
-      ..writeByte(9)
-      ..write(obj.valueCanonical)
-      ..writeByte(10)
-      ..write(obj.elementValueCanonical)
-      ..writeByte(11)
-      ..write(obj.valueCode)
-      ..writeByte(12)
-      ..write(obj.elementValueCode)
-      ..writeByte(13)
-      ..write(obj.valueDate)
-      ..writeByte(14)
-      ..write(obj.elementValueDate)
-      ..writeByte(15)
-      ..write(obj.valueDateTime)
-      ..writeByte(16)
-      ..write(obj.elementValueDateTime)
-      ..writeByte(18)
-      ..write(obj.elementValueDecimal)
-      ..writeByte(19)
-      ..write(obj.valueId)
-      ..writeByte(20)
-      ..write(obj.elementValueId)
-      ..writeByte(21)
-      ..write(obj.valueInstant)
-      ..writeByte(22)
-      ..write(obj.elementValueInstant)
-      ..writeByte(24)
-      ..write(obj.elementValueInteger)
-      ..writeByte(25)
-      ..write(obj.valueMarkdown)
-      ..writeByte(26)
-      ..write(obj.elementValueMarkdown)
-      ..writeByte(27)
-      ..write(obj.valueOid)
-      ..writeByte(28)
-      ..write(obj.elementValueOid)
-      ..writeByte(30)
-      ..write(obj.elementValuePositiveInt)
-      ..writeByte(31)
-      ..write(obj.valueString)
-      ..writeByte(32)
-      ..write(obj.elementValueString)
-      ..writeByte(33)
-      ..write(obj.valueTime)
-      ..writeByte(34)
-      ..write(obj.elementValueTime)
-      ..writeByte(36)
-      ..write(obj.elementValueUnsignedInt)
-      ..writeByte(37)
-      ..write(obj.valueUri)
-      ..writeByte(38)
-      ..write(obj.elementValueUri)
-      ..writeByte(39)
-      ..write(obj.valueUrl)
-      ..writeByte(40)
-      ..write(obj.elementValueUrl)
-      ..writeByte(41)
-      ..write(obj.valueUuid)
-      ..writeByte(42)
-      ..write(obj.elementValueUuid)
-      ..writeByte(43)
-      ..write(obj.valueAddress)
-      ..writeByte(44)
-      ..write(obj.valueAge)
-      ..writeByte(45)
-      ..write(obj.valueAnnotation)
-      ..writeByte(46)
-      ..write(obj.valueAttachment)
-      ..writeByte(47)
-      ..write(obj.valueCodeableConcept)
-      ..writeByte(48)
-      ..write(obj.valueCoding)
-      ..writeByte(49)
-      ..write(obj.valueContactPoint)
-      ..writeByte(50)
-      ..write(obj.valueCount)
-      ..writeByte(51)
-      ..write(obj.valueDistance)
-      ..writeByte(52)
-      ..write(obj.valueDuration)
-      ..writeByte(53)
-      ..write(obj.valueHumanName)
-      ..writeByte(54)
-      ..write(obj.valueIdentifier)
-      ..writeByte(55)
-      ..write(obj.valueMoney)
-      ..writeByte(56)
-      ..write(obj.valuePeriod)
-      ..writeByte(57)
-      ..write(obj.valueQuantity)
-      ..writeByte(58)
-      ..write(obj.valueRange)
-      ..writeByte(59)
-      ..write(obj.valueRatio)
-      ..writeByte(60)
-      ..write(obj.valueReference)
-      ..writeByte(61)
-      ..write(obj.valueSampledData)
-      ..writeByte(62)
-      ..write(obj.valueSignature)
-      ..writeByte(63)
-      ..write(obj.valueTiming)
-      ..writeByte(64)
-      ..write(obj.valueContactDetail)
-      ..writeByte(65)
-      ..write(obj.valueContributor)
-      ..writeByte(66)
-      ..write(obj.valueDataRequirement)
-      ..writeByte(67)
-      ..write(obj.valueExpression)
-      ..writeByte(68)
-      ..write(obj.valueParameterDefinition)
-      ..writeByte(69)
-      ..write(obj.valueRelatedArtifact)
-      ..writeByte(70)
-      ..write(obj.valueTriggerDefinition)
-      ..writeByte(71)
-      ..write(obj.valueUsageContext)
-      ..writeByte(72)
-      ..write(obj.valueDosage)
-      ..writeByte(73)
-      ..write(obj.valueMeta);
-  }
-}
-
-class ElementDefinition_ConstraintAdapter
-    extends TypeAdapter<ElementDefinition_Constraint> {
-  @override
-  final typeId = 51;
-
-  @override
-  ElementDefinition_Constraint read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ElementDefinition_Constraint(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      key: fields[3] as String,
-      elementKey: fields[4] as Element,
-      requirements: fields[5] as String,
-      elementRequirements: fields[6] as Element,
-      severity: fields[7] as String,
-      elementSeverity: fields[8] as Element,
-      human: fields[9] as String,
-      elementHuman: fields[10] as Element,
-      expression: fields[11] as String,
-      elementExpression: fields[12] as Element,
-      xpath: fields[13] as String,
-      elementXpath: fields[14] as Element,
-      source: fields[15] as String,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ElementDefinition_Constraint obj) {
-    writer
-      ..writeByte(16)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.key)
-      ..writeByte(4)
-      ..write(obj.elementKey)
-      ..writeByte(5)
-      ..write(obj.requirements)
-      ..writeByte(6)
-      ..write(obj.elementRequirements)
-      ..writeByte(7)
-      ..write(obj.severity)
-      ..writeByte(8)
-      ..write(obj.elementSeverity)
-      ..writeByte(9)
-      ..write(obj.human)
-      ..writeByte(10)
-      ..write(obj.elementHuman)
-      ..writeByte(11)
-      ..write(obj.expression)
-      ..writeByte(12)
-      ..write(obj.elementExpression)
-      ..writeByte(13)
-      ..write(obj.xpath)
-      ..writeByte(14)
-      ..write(obj.elementXpath)
-      ..writeByte(15)
-      ..write(obj.source);
-  }
-}
-
-class ElementDefinition_BindingAdapter
-    extends TypeAdapter<ElementDefinition_Binding> {
-  @override
-  final typeId = 52;
-
-  @override
-  ElementDefinition_Binding read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ElementDefinition_Binding(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      strength: fields[3] as String,
-      elementStrength: fields[4] as Element,
-      description: fields[5] as String,
-      elementDescription: fields[6] as Element,
-      valueSet: fields[7] as String,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ElementDefinition_Binding obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.strength)
-      ..writeByte(4)
-      ..write(obj.elementStrength)
-      ..writeByte(5)
-      ..write(obj.description)
-      ..writeByte(6)
-      ..write(obj.elementDescription)
-      ..writeByte(7)
-      ..write(obj.valueSet);
-  }
-}
-
-class ElementDefinition_MappingAdapter
-    extends TypeAdapter<ElementDefinition_Mapping> {
-  @override
-  final typeId = 53;
-
-  @override
-  ElementDefinition_Mapping read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ElementDefinition_Mapping(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      identity: fields[3] as String,
-      elementIdentity: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      map: fields[7] as String,
-      elementMap: fields[8] as Element,
-      comment: fields[9] as String,
-      elementComment: fields[10] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ElementDefinition_Mapping obj) {
-    writer
-      ..writeByte(11)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.identity)
-      ..writeByte(4)
-      ..write(obj.elementIdentity)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.map)
-      ..writeByte(8)
-      ..write(obj.elementMap)
-      ..writeByte(9)
-      ..write(obj.comment)
-      ..writeByte(10)
-      ..write(obj.elementComment);
   }
 }
 

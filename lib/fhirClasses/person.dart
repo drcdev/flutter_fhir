@@ -176,12 +176,10 @@ Person(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 479)
 class Person_Link {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -190,7 +188,6 @@ class Person_Link {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -205,20 +202,16 @@ class Person_Link {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The resource to which this actual person is associated.
-  @HiveField(3)
   Reference target;
 
   //  Level of assurance that this link is associated with the target
   // resource.
-  @HiveField(4)
   String assurance; // <code> enum: level1/level2/level3/level4;
 
   //  Extensions for assurance
-  @HiveField(5)
   Element elementAssurance;
 
 Person_Link(
@@ -329,45 +322,6 @@ class PersonAdapter extends TypeAdapter<Person> {
       ..write(obj.elementActive)
       ..writeByte(23)
       ..write(obj.link);
-  }
-}
-
-class Person_LinkAdapter extends TypeAdapter<Person_Link> {
-  @override
-  final typeId = 479;
-
-  @override
-  Person_Link read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Person_Link(
-      fields[3] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      assurance: fields[4] as String,
-      elementAssurance: fields[5] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Person_Link obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.target)
-      ..writeByte(4)
-      ..write(obj.assurance)
-      ..writeByte(5)
-      ..write(obj.elementAssurance);
   }
 }
 

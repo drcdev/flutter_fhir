@@ -200,12 +200,10 @@ DocumentManifest(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 229)
 class DocumentManifest_Related {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -214,7 +212,6 @@ class DocumentManifest_Related {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -229,17 +226,14 @@ class DocumentManifest_Related {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Related identifier to this DocumentManifest.  For example, Order
   // numbers, accession numbers, XDW workflow numbers.
-  @HiveField(3)
   Identifier identifier;
 
   //  Related Resource to this DocumentManifest. For example, Order,
   // ServiceRequest,  Procedure, EligibilityRequest, etc.
-  @HiveField(4)
   Reference ref;
 
 DocumentManifest_Related(
@@ -358,43 +352,6 @@ class DocumentManifestAdapter extends TypeAdapter<DocumentManifest> {
       ..write(obj.content)
       ..writeByte(26)
       ..write(obj.related);
-  }
-}
-
-class DocumentManifest_RelatedAdapter
-    extends TypeAdapter<DocumentManifest_Related> {
-  @override
-  final typeId = 229;
-
-  @override
-  DocumentManifest_Related read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return DocumentManifest_Related(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      identifier: fields[3] as Identifier,
-      ref: fields[4] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, DocumentManifest_Related obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.identifier)
-      ..writeByte(4)
-      ..write(obj.ref);
   }
 }
 

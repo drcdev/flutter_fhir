@@ -93,9 +93,8 @@ for objects in definitions:
         HiveType += 1
         dartCode = ''.join([dartCode, 
                             '@JsonSerializable(explicitToJson: true)\n', 
-                            '@HiveType(typeId: ',
-                            str(HiveType),
-                            ')\nclass ',
+                            ('@HiveType(typeId: ' + str(HiveType) + ')\n') if '_' not in objects else '',
+                            'class ',
                             objected, 
                             ' {\n'])
         
@@ -126,9 +125,7 @@ for objects in definitions:
                     ref = properties[field]['$ref']
                     ref = ref.split('/definitions/')[1]
                     dartCode = ''.join([dartCode, 
-                                        '  @HiveField(',
-                                        str(HiveField),
-                                        ')\n',
+                                        ('  @HiveField(' + str(HiveField) + ')\n') if '_' not in objects else '',
                                         '  ',
                                         primitiveDart(ref), 
                                         ' ', 
@@ -149,9 +146,7 @@ for objects in definitions:
                         
                     #if it's resourceType it's a final string
                     dartCode = ''.join([dartCode,
-                                        '  @HiveField(',
-                                        str(HiveField),
-                                        ')\n',
+                                        ('  @HiveField(' + str(HiveField) + ')\n') if '_' not in objects else '',
                                         '  ',
                                         primitiveDart(value2), 
                                         ' ', 
@@ -176,12 +171,10 @@ for objects in definitions:
                             dartCode = ''.join([dartCode, '  int '])
                     else:
                         dartCode = ''.join([dartCode, 
-                                            '  @HiveField(',
-                                            str(HiveField),
-                                            ')\n',
-                                            '  ',
-                                            primitiveDart(value['type']), 
-                                            ' '])
+                                        ('  @HiveField(' + str(HiveField) + ')\n') if '_' not in objects else '',
+                                        '  ',
+                                        primitiveDart(value['type']), 
+                                        ' '])
                         
                     # include the pattern as a comment
                     dartCode = ''.join([dartCode, 
@@ -199,9 +192,7 @@ for objects in definitions:
                 elif('enum' in properties[field]):
 
                     dartCode = ''.join([dartCode, 
-                                        '  @HiveField(',
-                                        str(HiveField),
-                                        ')\n',
+                                        ('  @HiveField(' + str(HiveField) + ')\n') if '_' not in objects else '',
                                         '  ',
                                         'String ', 
                                         rem_(field), 
@@ -216,9 +207,7 @@ for objects in definitions:
                 
                 #make the item a list since it's an array in json
                 dartCode = ''.join([dartCode,  
-                                    '  @HiveField(',
-                                    str(HiveField),
-                                    ')\n',
+                                    ('  @HiveField(' + str(HiveField) + ')\n') if '_' not in objects else '',
                                     '  ',
                                     'List<', 
                                     primitiveDart(value), 
@@ -234,9 +223,7 @@ for objects in definitions:
                 
                 #make the item a list since it's an array in json
                 dartCode = ''.join([dartCode, 
-                                    '  @HiveField(',
-                                    str(HiveField),
-                                    ')\n',
+                                    ('  @HiveField(' + str(HiveField) + ')\n') if '_' not in objects else '',
                                     '  ',
                                     'List<String> ', 
                                     rem_(field), 

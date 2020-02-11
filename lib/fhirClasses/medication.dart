@@ -162,12 +162,10 @@ Medication(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 367)
 class Medication_Ingredient {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -176,7 +174,6 @@ class Medication_Ingredient {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -191,32 +188,26 @@ class Medication_Ingredient {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The actual ingredient - either a substance (simple ingredient) or
   // another medication of a medication.
-  @HiveField(3)
   CodeableConcept itemCodeableConcept;
 
   //  The actual ingredient - either a substance (simple ingredient) or
   // another medication of a medication.
-  @HiveField(4)
   Reference itemReference;
 
   //  Indication of whether this ingredient affects the therapeutic action
   // of the drug.
-  @HiveField(5)
   bool isActive;
 
   //  Extensions for isActive
-  @HiveField(6)
   Element elementIsActive;
 
   //  Specifies how many (or how much) of the items there are in this
   // Medication.  For example, 250 mg per tablet.  This is expressed as a
   // ratio where the numerator is 250mg and the denominator is 1 tablet.
-  @HiveField(7)
   Ratio strength;
 
 Medication_Ingredient(
@@ -235,12 +226,10 @@ Medication_Ingredient(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 368)
 class Medication_Batch {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -249,7 +238,6 @@ class Medication_Batch {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -264,23 +252,18 @@ class Medication_Batch {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The assigned lot number of a batch of the specified product.
-  @HiveField(3)
   String lotNumber;
 
   //  Extensions for lotNumber
-  @HiveField(4)
   Element elementLotNumber;
 
   //  When this specific batch of product will expire.
-  @HiveField(5)
   DateTime expirationDate;
 
   //  Extensions for expirationDate
-  @HiveField(6)
   Element elementExpirationDate;
 
 Medication_Batch(
@@ -380,93 +363,6 @@ class MedicationAdapter extends TypeAdapter<Medication> {
       ..write(obj.ingredient)
       ..writeByte(19)
       ..write(obj.batch);
-  }
-}
-
-class Medication_IngredientAdapter extends TypeAdapter<Medication_Ingredient> {
-  @override
-  final typeId = 367;
-
-  @override
-  Medication_Ingredient read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Medication_Ingredient(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      itemCodeableConcept: fields[3] as CodeableConcept,
-      itemReference: fields[4] as Reference,
-      isActive: fields[5] as bool,
-      elementIsActive: fields[6] as Element,
-      strength: fields[7] as Ratio,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Medication_Ingredient obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.itemCodeableConcept)
-      ..writeByte(4)
-      ..write(obj.itemReference)
-      ..writeByte(5)
-      ..write(obj.isActive)
-      ..writeByte(6)
-      ..write(obj.elementIsActive)
-      ..writeByte(7)
-      ..write(obj.strength);
-  }
-}
-
-class Medication_BatchAdapter extends TypeAdapter<Medication_Batch> {
-  @override
-  final typeId = 368;
-
-  @override
-  Medication_Batch read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Medication_Batch(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      lotNumber: fields[3] as String,
-      elementLotNumber: fields[4] as Element,
-      expirationDate: fields[5] as DateTime,
-      elementExpirationDate: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Medication_Batch obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.lotNumber)
-      ..writeByte(4)
-      ..write(obj.elementLotNumber)
-      ..writeByte(5)
-      ..write(obj.expirationDate)
-      ..writeByte(6)
-      ..write(obj.elementExpirationDate);
   }
 }
 

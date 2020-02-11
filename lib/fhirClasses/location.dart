@@ -240,12 +240,10 @@ Location(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 350)
 class Location_Position {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -254,7 +252,6 @@ class Location_Position {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -269,34 +266,27 @@ class Location_Position {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Longitude. The value domain and the interpretation are the same as for
   // the text of the longitude element in KML (see notes below).
-  @HiveField(3)
   double longitude;
 
   //  Extensions for longitude
-  @HiveField(4)
   Element elementLongitude;
 
   //  Latitude. The value domain and the interpretation are the same as for
   // the text of the latitude element in KML (see notes below).
-  @HiveField(5)
   double latitude;
 
   //  Extensions for latitude
-  @HiveField(6)
   Element elementLatitude;
 
   //  Altitude. The value domain and the interpretation are the same as for
   // the text of the altitude element in KML (see notes below).
-  @HiveField(7)
   double altitude;
 
   //  Extensions for altitude
-  @HiveField(8)
   Element elementAltitude;
 
 Location_Position(
@@ -316,12 +306,10 @@ Location_Position(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 351)
 class Location_HoursOfOperation {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -330,7 +318,6 @@ class Location_HoursOfOperation {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -345,40 +332,31 @@ class Location_HoursOfOperation {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Indicates which days of the week are available between the start and
   // end Times.
-  @HiveField(3)
   List<String> daysOfWeek;
 
   //  Extensions for daysOfWeek
-  @HiveField(4)
   List<Element> elementDaysOfWeek;
 
   //  The Location is open all day.
-  @HiveField(5)
   bool allDay;
 
   //  Extensions for allDay
-  @HiveField(6)
   Element elementAllDay;
 
   //  Time that the Location opens.
-  @HiveField(7)
   String openingTime;
 
   //  Extensions for openingTime
-  @HiveField(8)
   Element elementOpeningTime;
 
   //  Time that the Location closes.
-  @HiveField(9)
   String closingTime;
 
   //  Extensions for closingTime
-  @HiveField(10)
   Element elementClosingTime;
 
 Location_HoursOfOperation(
@@ -524,109 +502,6 @@ class LocationAdapter extends TypeAdapter<Location> {
       ..write(obj.elementAvailabilityExceptions)
       ..writeByte(33)
       ..write(obj.endpoint);
-  }
-}
-
-class Location_PositionAdapter extends TypeAdapter<Location_Position> {
-  @override
-  final typeId = 350;
-
-  @override
-  Location_Position read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Location_Position(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      longitude: fields[3] as double,
-      elementLongitude: fields[4] as Element,
-      latitude: fields[5] as double,
-      elementLatitude: fields[6] as Element,
-      altitude: fields[7] as double,
-      elementAltitude: fields[8] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Location_Position obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.longitude)
-      ..writeByte(4)
-      ..write(obj.elementLongitude)
-      ..writeByte(5)
-      ..write(obj.latitude)
-      ..writeByte(6)
-      ..write(obj.elementLatitude)
-      ..writeByte(7)
-      ..write(obj.altitude)
-      ..writeByte(8)
-      ..write(obj.elementAltitude);
-  }
-}
-
-class Location_HoursOfOperationAdapter
-    extends TypeAdapter<Location_HoursOfOperation> {
-  @override
-  final typeId = 351;
-
-  @override
-  Location_HoursOfOperation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Location_HoursOfOperation(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      daysOfWeek: (fields[3] as List)?.cast<String>(),
-      elementDaysOfWeek: (fields[4] as List)?.cast<Element>(),
-      allDay: fields[5] as bool,
-      elementAllDay: fields[6] as Element,
-      openingTime: fields[7] as String,
-      elementOpeningTime: fields[8] as Element,
-      closingTime: fields[9] as String,
-      elementClosingTime: fields[10] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Location_HoursOfOperation obj) {
-    writer
-      ..writeByte(11)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.daysOfWeek)
-      ..writeByte(4)
-      ..write(obj.elementDaysOfWeek)
-      ..writeByte(5)
-      ..write(obj.allDay)
-      ..writeByte(6)
-      ..write(obj.elementAllDay)
-      ..writeByte(7)
-      ..write(obj.openingTime)
-      ..writeByte(8)
-      ..write(obj.elementOpeningTime)
-      ..writeByte(9)
-      ..write(obj.closingTime)
-      ..writeByte(10)
-      ..write(obj.elementClosingTime);
   }
 }
 

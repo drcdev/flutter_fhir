@@ -259,12 +259,10 @@ CompartmentDefinition(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 154)
 class CompartmentDefinition_Resource {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -273,7 +271,6 @@ class CompartmentDefinition_Resource {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -288,33 +285,26 @@ class CompartmentDefinition_Resource {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The name of a resource supported by the server.
-  @HiveField(3)
   String code;
 
   //  Extensions for code
-  @HiveField(4)
   Element elementCode;
 
   //  The name of a search parameter that represents the link to the
   // compartment. More than one may be listed because a resource may be
   // linked to a compartment in more than one way,.
-  @HiveField(5)
   List<String> param;
 
   //  Extensions for param
-  @HiveField(6)
   List<Element> elementParam;
 
   //  Additional documentation about the resource and compartment.
-  @HiveField(7)
   String documentation;
 
   //  Extensions for documentation
-  @HiveField(8)
   Element elementDocumentation;
 
 CompartmentDefinition_Resource(
@@ -464,55 +454,6 @@ class CompartmentDefinitionAdapter extends TypeAdapter<CompartmentDefinition> {
       ..write(obj.elementSearch)
       ..writeByte(35)
       ..write(obj.resource);
-  }
-}
-
-class CompartmentDefinition_ResourceAdapter
-    extends TypeAdapter<CompartmentDefinition_Resource> {
-  @override
-  final typeId = 154;
-
-  @override
-  CompartmentDefinition_Resource read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CompartmentDefinition_Resource(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as String,
-      elementCode: fields[4] as Element,
-      param: (fields[5] as List)?.cast<String>(),
-      elementParam: (fields[6] as List)?.cast<Element>(),
-      documentation: fields[7] as String,
-      elementDocumentation: fields[8] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CompartmentDefinition_Resource obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.elementCode)
-      ..writeByte(5)
-      ..write(obj.param)
-      ..writeByte(6)
-      ..write(obj.elementParam)
-      ..writeByte(7)
-      ..write(obj.documentation)
-      ..writeByte(8)
-      ..write(obj.elementDocumentation);
   }
 }
 

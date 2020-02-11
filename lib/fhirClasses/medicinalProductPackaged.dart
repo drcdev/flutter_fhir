@@ -162,12 +162,10 @@ MedicinalProductPackaged(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 419)
 class MedicinalProductPackaged_BatchIdentifier {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -176,7 +174,6 @@ class MedicinalProductPackaged_BatchIdentifier {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -191,16 +188,13 @@ class MedicinalProductPackaged_BatchIdentifier {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A number appearing on the outer packaging of a specific batch.
-  @HiveField(3)
   Identifier outerPackaging;
 
   //  A number appearing on the immediate packaging (and not the outer
   // packaging).
-  @HiveField(4)
   Identifier immediatePackaging;
 
 MedicinalProductPackaged_BatchIdentifier(
@@ -216,12 +210,10 @@ MedicinalProductPackaged_BatchIdentifier(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 420)
 class MedicinalProductPackaged_PackageItem {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -230,7 +222,6 @@ class MedicinalProductPackaged_PackageItem {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -245,56 +236,43 @@ class MedicinalProductPackaged_PackageItem {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Including possibly Data Carrier Identifier.
-  @HiveField(3)
   List<Identifier> identifier;
 
   //  The physical type of the container of the medicine.
-  @HiveField(4)
   CodeableConcept type;
 
   //  The quantity of this package in the medicinal product, at the current
   // level of packaging. The outermost is always 1.
-  @HiveField(5)
   Quantity quantity;
 
   //  Material type of the package item.
-  @HiveField(6)
   List<CodeableConcept> material;
 
   //  A possible alternate material for the packaging.
-  @HiveField(7)
   List<CodeableConcept> alternateMaterial;
 
   //  A device accompanying a medicinal product.
-  @HiveField(8)
   List<Reference> device;
 
   //  The manufactured item as contained in the packaged medicinal product.
-  @HiveField(9)
   List<Reference> manufacturedItem;
 
   //  Allows containers within containers.
-  @HiveField(10)
   List<MedicinalProductPackaged_PackageItem> packageItem;
 
   //  Dimensions, color etc.
-  @HiveField(11)
   ProdCharacteristic physicalCharacteristics;
 
   //  Other codeable characteristics.
-  @HiveField(12)
   List<CodeableConcept> otherCharacteristics;
 
   //  Shelf Life and storage information.
-  @HiveField(13)
   List<ProductShelfLife> shelfLifeStorage;
 
   //  Manufacturer of this Package Item.
-  @HiveField(14)
   List<Reference> manufacturer;
 
 MedicinalProductPackaged_PackageItem(
@@ -407,112 +385,6 @@ class MedicinalProductPackagedAdapter
       ..write(obj.batchIdentifier)
       ..writeByte(20)
       ..write(obj.packageItem);
-  }
-}
-
-class MedicinalProductPackaged_BatchIdentifierAdapter
-    extends TypeAdapter<MedicinalProductPackaged_BatchIdentifier> {
-  @override
-  final typeId = 419;
-
-  @override
-  MedicinalProductPackaged_BatchIdentifier read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProductPackaged_BatchIdentifier(
-      fields[3] as Identifier,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      immediatePackaging: fields[4] as Identifier,
-    );
-  }
-
-  @override
-  void write(
-      BinaryWriter writer, MedicinalProductPackaged_BatchIdentifier obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.outerPackaging)
-      ..writeByte(4)
-      ..write(obj.immediatePackaging);
-  }
-}
-
-class MedicinalProductPackaged_PackageItemAdapter
-    extends TypeAdapter<MedicinalProductPackaged_PackageItem> {
-  @override
-  final typeId = 420;
-
-  @override
-  MedicinalProductPackaged_PackageItem read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProductPackaged_PackageItem(
-      fields[4] as CodeableConcept,
-      fields[5] as Quantity,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      identifier: (fields[3] as List)?.cast<Identifier>(),
-      material: (fields[6] as List)?.cast<CodeableConcept>(),
-      alternateMaterial: (fields[7] as List)?.cast<CodeableConcept>(),
-      device: (fields[8] as List)?.cast<Reference>(),
-      manufacturedItem: (fields[9] as List)?.cast<Reference>(),
-      packageItem:
-          (fields[10] as List)?.cast<MedicinalProductPackaged_PackageItem>(),
-      physicalCharacteristics: fields[11] as ProdCharacteristic,
-      otherCharacteristics: (fields[12] as List)?.cast<CodeableConcept>(),
-      shelfLifeStorage: (fields[13] as List)?.cast<ProductShelfLife>(),
-      manufacturer: (fields[14] as List)?.cast<Reference>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicinalProductPackaged_PackageItem obj) {
-    writer
-      ..writeByte(15)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.identifier)
-      ..writeByte(4)
-      ..write(obj.type)
-      ..writeByte(5)
-      ..write(obj.quantity)
-      ..writeByte(6)
-      ..write(obj.material)
-      ..writeByte(7)
-      ..write(obj.alternateMaterial)
-      ..writeByte(8)
-      ..write(obj.device)
-      ..writeByte(9)
-      ..write(obj.manufacturedItem)
-      ..writeByte(10)
-      ..write(obj.packageItem)
-      ..writeByte(11)
-      ..write(obj.physicalCharacteristics)
-      ..writeByte(12)
-      ..write(obj.otherCharacteristics)
-      ..writeByte(13)
-      ..write(obj.shelfLifeStorage)
-      ..writeByte(14)
-      ..write(obj.manufacturer);
   }
 }
 

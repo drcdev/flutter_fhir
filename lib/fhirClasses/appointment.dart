@@ -301,12 +301,10 @@ Appointment(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 66)
 class Appointment_Participant {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -315,7 +313,6 @@ class Appointment_Participant {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -330,39 +327,31 @@ class Appointment_Participant {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Role of participant in the appointment.
-  @HiveField(3)
   List<CodeableConcept> type;
 
   //  A Person, Location/HealthcareService or Device that is participating
   // in the appointment.
-  @HiveField(4)
   Reference actor;
 
   //  Whether this participant is required to be present at the meeting.
   // This covers a use-case where two doctors need to meet to discuss the
   // results for a specific patient, and the patient is not required to be
   // present.
-  @HiveField(5)
   String required; // <code> enum: required/optional/information-only;
 
   //  Extensions for required
-  @HiveField(6)
   Element elementRequired;
 
   //  Participation status of the actor.
-  @HiveField(7)
   String status; // <code> enum: accepted/declined/tentative/needs-action;
 
   //  Extensions for status
-  @HiveField(8)
   Element elementStatus;
 
   //  Participation period of the actor.
-  @HiveField(9)
   Period period;
 
 Appointment_Participant(
@@ -531,58 +520,6 @@ class AppointmentAdapter extends TypeAdapter<Appointment> {
       ..write(obj.participant)
       ..writeByte(41)
       ..write(obj.requestedPeriod);
-  }
-}
-
-class Appointment_ParticipantAdapter
-    extends TypeAdapter<Appointment_Participant> {
-  @override
-  final typeId = 66;
-
-  @override
-  Appointment_Participant read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Appointment_Participant(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: (fields[3] as List)?.cast<CodeableConcept>(),
-      actor: fields[4] as Reference,
-      required: fields[5] as String,
-      elementRequired: fields[6] as Element,
-      status: fields[7] as String,
-      elementStatus: fields[8] as Element,
-      period: fields[9] as Period,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Appointment_Participant obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.actor)
-      ..writeByte(5)
-      ..write(obj.required)
-      ..writeByte(6)
-      ..write(obj.elementRequired)
-      ..writeByte(7)
-      ..write(obj.status)
-      ..writeByte(8)
-      ..write(obj.elementStatus)
-      ..writeByte(9)
-      ..write(obj.period);
   }
 }
 

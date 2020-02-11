@@ -333,12 +333,10 @@ Procedure(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 494)
 class Procedure_Performer {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -347,7 +345,6 @@ class Procedure_Performer {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -362,20 +359,16 @@ class Procedure_Performer {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Distinguishes the type of involvement of the performer in the
   // procedure. For example, surgeon, anaesthetist, endoscopist.
-  @HiveField(3)
   CodeableConcept function;
 
   //  The practitioner who was involved in the procedure.
-  @HiveField(4)
   Reference actor;
 
   //  The organization the device or practitioner was acting on behalf of.
-  @HiveField(5)
   Reference onBehalfOf;
 
 Procedure_Performer(
@@ -392,12 +385,10 @@ Procedure_Performer(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 495)
 class Procedure_FocalDevice {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -406,7 +397,6 @@ class Procedure_FocalDevice {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -421,15 +411,12 @@ class Procedure_FocalDevice {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The kind of change that happened to the device during the procedure.
-  @HiveField(3)
   CodeableConcept action;
 
   //  The device that was manipulated (changed) during the procedure.
-  @HiveField(4)
   Reference manipulated;
 
 Procedure_FocalDevice(
@@ -608,81 +595,6 @@ class ProcedureAdapter extends TypeAdapter<Procedure> {
       ..write(obj.usedReference)
       ..writeByte(46)
       ..write(obj.usedCode);
-  }
-}
-
-class Procedure_PerformerAdapter extends TypeAdapter<Procedure_Performer> {
-  @override
-  final typeId = 494;
-
-  @override
-  Procedure_Performer read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Procedure_Performer(
-      fields[4] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      function: fields[3] as CodeableConcept,
-      onBehalfOf: fields[5] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Procedure_Performer obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.function)
-      ..writeByte(4)
-      ..write(obj.actor)
-      ..writeByte(5)
-      ..write(obj.onBehalfOf);
-  }
-}
-
-class Procedure_FocalDeviceAdapter extends TypeAdapter<Procedure_FocalDevice> {
-  @override
-  final typeId = 495;
-
-  @override
-  Procedure_FocalDevice read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Procedure_FocalDevice(
-      fields[4] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      action: fields[3] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Procedure_FocalDevice obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.action)
-      ..writeByte(4)
-      ..write(obj.manipulated);
   }
 }
 

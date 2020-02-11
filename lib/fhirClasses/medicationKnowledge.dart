@@ -258,12 +258,10 @@ MedicationKnowledge(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 376)
 class MedicationKnowledge_RelatedMedicationKnowledge {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -272,7 +270,6 @@ class MedicationKnowledge_RelatedMedicationKnowledge {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -287,15 +284,12 @@ class MedicationKnowledge_RelatedMedicationKnowledge {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The category of the associated medication knowledge reference.
-  @HiveField(3)
   CodeableConcept type;
 
   //  Associated documentation about the associated medication knowledge.
-  @HiveField(4)
   List<Reference> reference;
 
 MedicationKnowledge_RelatedMedicationKnowledge(
@@ -311,12 +305,10 @@ MedicationKnowledge_RelatedMedicationKnowledge(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 377)
 class MedicationKnowledge_Monograph {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -325,7 +317,6 @@ class MedicationKnowledge_Monograph {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -340,16 +331,13 @@ class MedicationKnowledge_Monograph {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The category of documentation about the medication. (e.g. professional
   // monograph, patient education monograph).
-  @HiveField(3)
   CodeableConcept type;
 
   //  Associated documentation about the medication.
-  @HiveField(4)
   Reference source;
 
 MedicationKnowledge_Monograph(
@@ -365,12 +353,10 @@ MedicationKnowledge_Monograph(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 378)
 class MedicationKnowledge_Ingredient {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -379,7 +365,6 @@ class MedicationKnowledge_Ingredient {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -394,32 +379,26 @@ class MedicationKnowledge_Ingredient {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The actual ingredient - either a substance (simple ingredient) or
   // another medication.
-  @HiveField(3)
   CodeableConcept itemCodeableConcept;
 
   //  The actual ingredient - either a substance (simple ingredient) or
   // another medication.
-  @HiveField(4)
   Reference itemReference;
 
   //  Indication of whether this ingredient affects the therapeutic action
   // of the drug.
-  @HiveField(5)
   bool isActive;
 
   //  Extensions for isActive
-  @HiveField(6)
   Element elementIsActive;
 
   //  Specifies how many (or how much) of the items there are in this
   // Medication.  For example, 250 mg per tablet.  This is expressed as a
   // ratio where the numerator is 250mg and the denominator is 1 tablet.
-  @HiveField(7)
   Ratio strength;
 
 MedicationKnowledge_Ingredient(
@@ -438,12 +417,10 @@ MedicationKnowledge_Ingredient(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 379)
 class MedicationKnowledge_Cost {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -452,7 +429,6 @@ class MedicationKnowledge_Cost {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -467,24 +443,19 @@ class MedicationKnowledge_Cost {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The category of the cost information.  For example, manufacturers'
   // cost, patient cost, claim reimbursement cost, actual acquisition cost.
-  @HiveField(3)
   CodeableConcept type;
 
   //  The source or owner that assigns the price to the medication.
-  @HiveField(4)
   String source;
 
   //  Extensions for source
-  @HiveField(5)
   Element elementSource;
 
   //  The price of the medication.
-  @HiveField(6)
   Money cost;
 
 MedicationKnowledge_Cost(
@@ -502,12 +473,10 @@ MedicationKnowledge_Cost(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 380)
 class MedicationKnowledge_MonitoringProgram {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -516,7 +485,6 @@ class MedicationKnowledge_MonitoringProgram {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -531,19 +499,15 @@ class MedicationKnowledge_MonitoringProgram {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Type of program under which the medication is monitored.
-  @HiveField(3)
   CodeableConcept type;
 
   //  Name of the reviewing program.
-  @HiveField(4)
   String name;
 
   //  Extensions for name
-  @HiveField(5)
   Element elementName;
 
 MedicationKnowledge_MonitoringProgram(
@@ -560,12 +524,10 @@ MedicationKnowledge_MonitoringProgram(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 381)
 class MedicationKnowledge_AdministrationGuidelines {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -574,7 +536,6 @@ class MedicationKnowledge_AdministrationGuidelines {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -589,26 +550,21 @@ class MedicationKnowledge_AdministrationGuidelines {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Dosage for the medication for the specific guidelines.
-  @HiveField(3)
   List<MedicationKnowledge_Dosage> dosage;
 
   //  Indication for use that apply to the specific administration
   // guidelines.
-  @HiveField(4)
   CodeableConcept indicationCodeableConcept;
 
   //  Indication for use that apply to the specific administration
   // guidelines.
-  @HiveField(5)
   Reference indicationReference;
 
   //  Characteristics of the patient that are relevant to the administration
   // guidelines (for example, height, weight, gender, etc.).
-  @HiveField(6)
   List<MedicationKnowledge_PatientCharacteristics> patientCharacteristics;
 
 MedicationKnowledge_AdministrationGuidelines(
@@ -626,12 +582,10 @@ MedicationKnowledge_AdministrationGuidelines(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 382)
 class MedicationKnowledge_Dosage {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -640,7 +594,6 @@ class MedicationKnowledge_Dosage {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -655,16 +608,13 @@ class MedicationKnowledge_Dosage {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The type of dosage (for example, prophylaxis, maintenance,
   // therapeutic, etc.).
-  @HiveField(3)
   CodeableConcept type;
 
   //  Dosage for the medication for the specific guidelines.
-  @HiveField(4)
   List<Dosage> dosage;
 
 MedicationKnowledge_Dosage(
@@ -680,12 +630,10 @@ MedicationKnowledge_Dosage(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 383)
 class MedicationKnowledge_PatientCharacteristics {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -694,7 +642,6 @@ class MedicationKnowledge_PatientCharacteristics {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -709,25 +656,20 @@ class MedicationKnowledge_PatientCharacteristics {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Specific characteristic that is relevant to the administration
   // guideline (e.g. height, weight, gender).
-  @HiveField(3)
   CodeableConcept characteristicCodeableConcept;
 
   //  Specific characteristic that is relevant to the administration
   // guideline (e.g. height, weight, gender).
-  @HiveField(4)
   Quantity characteristicQuantity;
 
   //  The specific characteristic (e.g. height, weight, gender, etc.).
-  @HiveField(5)
   List<String> value;
 
   //  Extensions for value
-  @HiveField(6)
   List<Element> elementValue;
 
 MedicationKnowledge_PatientCharacteristics(
@@ -745,12 +687,10 @@ MedicationKnowledge_PatientCharacteristics(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 384)
 class MedicationKnowledge_MedicineClassification {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -759,7 +699,6 @@ class MedicationKnowledge_MedicineClassification {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -774,17 +713,14 @@ class MedicationKnowledge_MedicineClassification {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The type of category for the medication (for example, therapeutic
   // classification, therapeutic sub-classification).
-  @HiveField(3)
   CodeableConcept type;
 
   //  Specific category assigned to the medication (e.g. anti-infective,
   // anti-hypertensive, antibiotic, etc.).
-  @HiveField(4)
   List<CodeableConcept> classification;
 
 MedicationKnowledge_MedicineClassification(
@@ -800,12 +736,10 @@ MedicationKnowledge_MedicineClassification(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 385)
 class MedicationKnowledge_Packaging {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -814,7 +748,6 @@ class MedicationKnowledge_Packaging {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -829,16 +762,13 @@ class MedicationKnowledge_Packaging {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A code that defines the specific type of packaging that the medication
   // can be found in (e.g. blister sleeve, tube, bottle).
-  @HiveField(3)
   CodeableConcept type;
 
   //  The number of product units the package would contain if fully loaded.
-  @HiveField(4)
   Quantity quantity;
 
 MedicationKnowledge_Packaging(
@@ -854,12 +784,10 @@ MedicationKnowledge_Packaging(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 386)
 class MedicationKnowledge_DrugCharacteristic {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -868,7 +796,6 @@ class MedicationKnowledge_DrugCharacteristic {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -883,36 +810,28 @@ class MedicationKnowledge_DrugCharacteristic {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A code specifying which characteristic of the medicine is being
   // described (for example, colour, shape, imprint).
-  @HiveField(3)
   CodeableConcept type;
 
   //  Description of the characteristic.
-  @HiveField(4)
   CodeableConcept valueCodeableConcept;
 
   //  Description of the characteristic.
-  @HiveField(5)
   String valueString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for valueString
-  @HiveField(6)
   Element elementValueString;
 
   //  Description of the characteristic.
-  @HiveField(7)
   Quantity valueQuantity;
 
   //  Description of the characteristic.
-  @HiveField(8)
   String valueBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
 
   //  Extensions for valueBase64Binary
-  @HiveField(9)
   Element elementValueBase64Binary;
 
 MedicationKnowledge_DrugCharacteristic(
@@ -933,12 +852,10 @@ MedicationKnowledge_DrugCharacteristic(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 387)
 class MedicationKnowledge_Regulatory {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -947,7 +864,6 @@ class MedicationKnowledge_Regulatory {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -962,25 +878,20 @@ class MedicationKnowledge_Regulatory {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The authority that is specifying the regulations.
-  @HiveField(3)
   Reference regulatoryAuthority;
 
   //  Specifies if changes are allowed when dispensing a medication from a
   // regulatory perspective.
-  @HiveField(4)
   List<MedicationKnowledge_Substitution> substitution;
 
   //  Specifies the schedule of a medication in jurisdiction.
-  @HiveField(5)
   List<MedicationKnowledge_Schedule> schedule;
 
   //  The maximum number of units of the medication that can be dispensed in
   // a period.
-  @HiveField(6)
   MedicationKnowledge_MaxDispense maxDispense;
 
 MedicationKnowledge_Regulatory(
@@ -998,12 +909,10 @@ MedicationKnowledge_Regulatory(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 388)
 class MedicationKnowledge_Substitution {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -1012,7 +921,6 @@ class MedicationKnowledge_Substitution {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -1027,20 +935,16 @@ class MedicationKnowledge_Substitution {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Specifies the type of substitution allowed.
-  @HiveField(3)
   CodeableConcept type;
 
   //  Specifies if regulation allows for changes in the medication when
   // dispensing.
-  @HiveField(4)
   bool allowed;
 
   //  Extensions for allowed
-  @HiveField(5)
   Element elementAllowed;
 
 MedicationKnowledge_Substitution(
@@ -1057,12 +961,10 @@ MedicationKnowledge_Substitution(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 389)
 class MedicationKnowledge_Schedule {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -1071,7 +973,6 @@ class MedicationKnowledge_Schedule {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -1086,11 +987,9 @@ class MedicationKnowledge_Schedule {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Specifies the specific drug schedule.
-  @HiveField(3)
   CodeableConcept schedule;
 
 MedicationKnowledge_Schedule(
@@ -1105,12 +1004,10 @@ MedicationKnowledge_Schedule(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 390)
 class MedicationKnowledge_MaxDispense {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -1119,7 +1016,6 @@ class MedicationKnowledge_MaxDispense {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -1134,15 +1030,12 @@ class MedicationKnowledge_MaxDispense {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The maximum number of units of the medication that can be dispensed.
-  @HiveField(3)
   Quantity quantity;
 
   //  The period that applies to the maximum number of units.
-  @HiveField(4)
   Duration period;
 
 MedicationKnowledge_MaxDispense(
@@ -1158,12 +1051,10 @@ MedicationKnowledge_MaxDispense(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 391)
 class MedicationKnowledge_Kinetics {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -1172,7 +1063,6 @@ class MedicationKnowledge_Kinetics {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -1187,20 +1077,16 @@ class MedicationKnowledge_Kinetics {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The drug concentration measured at certain discrete points in time.
-  @HiveField(3)
   List<Quantity> areaUnderCurve;
 
   //  The median lethal dose of a drug.
-  @HiveField(4)
   List<Quantity> lethalDose50;
 
   //  The time required for any specified property (e.g., the concentration
   // of a substance in the body) to decrease by half.
-  @HiveField(5)
   Duration halfLifePeriod;
 
 MedicationKnowledge_Kinetics(
@@ -1352,658 +1238,6 @@ class MedicationKnowledgeAdapter extends TypeAdapter<MedicationKnowledge> {
       ..write(obj.regulatory)
       ..writeByte(35)
       ..write(obj.kinetics);
-  }
-}
-
-class MedicationKnowledge_RelatedMedicationKnowledgeAdapter
-    extends TypeAdapter<MedicationKnowledge_RelatedMedicationKnowledge> {
-  @override
-  final typeId = 376;
-
-  @override
-  MedicationKnowledge_RelatedMedicationKnowledge read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicationKnowledge_RelatedMedicationKnowledge(
-      fields[3] as CodeableConcept,
-      (fields[4] as List)?.cast<Reference>(),
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-    );
-  }
-
-  @override
-  void write(
-      BinaryWriter writer, MedicationKnowledge_RelatedMedicationKnowledge obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.reference);
-  }
-}
-
-class MedicationKnowledge_MonographAdapter
-    extends TypeAdapter<MedicationKnowledge_Monograph> {
-  @override
-  final typeId = 377;
-
-  @override
-  MedicationKnowledge_Monograph read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicationKnowledge_Monograph(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as CodeableConcept,
-      source: fields[4] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicationKnowledge_Monograph obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.source);
-  }
-}
-
-class MedicationKnowledge_IngredientAdapter
-    extends TypeAdapter<MedicationKnowledge_Ingredient> {
-  @override
-  final typeId = 378;
-
-  @override
-  MedicationKnowledge_Ingredient read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicationKnowledge_Ingredient(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      itemCodeableConcept: fields[3] as CodeableConcept,
-      itemReference: fields[4] as Reference,
-      isActive: fields[5] as bool,
-      elementIsActive: fields[6] as Element,
-      strength: fields[7] as Ratio,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicationKnowledge_Ingredient obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.itemCodeableConcept)
-      ..writeByte(4)
-      ..write(obj.itemReference)
-      ..writeByte(5)
-      ..write(obj.isActive)
-      ..writeByte(6)
-      ..write(obj.elementIsActive)
-      ..writeByte(7)
-      ..write(obj.strength);
-  }
-}
-
-class MedicationKnowledge_CostAdapter
-    extends TypeAdapter<MedicationKnowledge_Cost> {
-  @override
-  final typeId = 379;
-
-  @override
-  MedicationKnowledge_Cost read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicationKnowledge_Cost(
-      fields[3] as CodeableConcept,
-      fields[6] as Money,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      source: fields[4] as String,
-      elementSource: fields[5] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicationKnowledge_Cost obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.source)
-      ..writeByte(5)
-      ..write(obj.elementSource)
-      ..writeByte(6)
-      ..write(obj.cost);
-  }
-}
-
-class MedicationKnowledge_MonitoringProgramAdapter
-    extends TypeAdapter<MedicationKnowledge_MonitoringProgram> {
-  @override
-  final typeId = 380;
-
-  @override
-  MedicationKnowledge_MonitoringProgram read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicationKnowledge_MonitoringProgram(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as CodeableConcept,
-      name: fields[4] as String,
-      elementName: fields[5] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicationKnowledge_MonitoringProgram obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.name)
-      ..writeByte(5)
-      ..write(obj.elementName);
-  }
-}
-
-class MedicationKnowledge_AdministrationGuidelinesAdapter
-    extends TypeAdapter<MedicationKnowledge_AdministrationGuidelines> {
-  @override
-  final typeId = 381;
-
-  @override
-  MedicationKnowledge_AdministrationGuidelines read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicationKnowledge_AdministrationGuidelines(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      dosage: (fields[3] as List)?.cast<MedicationKnowledge_Dosage>(),
-      indicationCodeableConcept: fields[4] as CodeableConcept,
-      indicationReference: fields[5] as Reference,
-      patientCharacteristics: (fields[6] as List)
-          ?.cast<MedicationKnowledge_PatientCharacteristics>(),
-    );
-  }
-
-  @override
-  void write(
-      BinaryWriter writer, MedicationKnowledge_AdministrationGuidelines obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.dosage)
-      ..writeByte(4)
-      ..write(obj.indicationCodeableConcept)
-      ..writeByte(5)
-      ..write(obj.indicationReference)
-      ..writeByte(6)
-      ..write(obj.patientCharacteristics);
-  }
-}
-
-class MedicationKnowledge_DosageAdapter
-    extends TypeAdapter<MedicationKnowledge_Dosage> {
-  @override
-  final typeId = 382;
-
-  @override
-  MedicationKnowledge_Dosage read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicationKnowledge_Dosage(
-      fields[3] as CodeableConcept,
-      (fields[4] as List)?.cast<Dosage>(),
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicationKnowledge_Dosage obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.dosage);
-  }
-}
-
-class MedicationKnowledge_PatientCharacteristicsAdapter
-    extends TypeAdapter<MedicationKnowledge_PatientCharacteristics> {
-  @override
-  final typeId = 383;
-
-  @override
-  MedicationKnowledge_PatientCharacteristics read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicationKnowledge_PatientCharacteristics(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      characteristicCodeableConcept: fields[3] as CodeableConcept,
-      characteristicQuantity: fields[4] as Quantity,
-      value: (fields[5] as List)?.cast<String>(),
-      elementValue: (fields[6] as List)?.cast<Element>(),
-    );
-  }
-
-  @override
-  void write(
-      BinaryWriter writer, MedicationKnowledge_PatientCharacteristics obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.characteristicCodeableConcept)
-      ..writeByte(4)
-      ..write(obj.characteristicQuantity)
-      ..writeByte(5)
-      ..write(obj.value)
-      ..writeByte(6)
-      ..write(obj.elementValue);
-  }
-}
-
-class MedicationKnowledge_MedicineClassificationAdapter
-    extends TypeAdapter<MedicationKnowledge_MedicineClassification> {
-  @override
-  final typeId = 384;
-
-  @override
-  MedicationKnowledge_MedicineClassification read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicationKnowledge_MedicineClassification(
-      fields[3] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      classification: (fields[4] as List)?.cast<CodeableConcept>(),
-    );
-  }
-
-  @override
-  void write(
-      BinaryWriter writer, MedicationKnowledge_MedicineClassification obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.classification);
-  }
-}
-
-class MedicationKnowledge_PackagingAdapter
-    extends TypeAdapter<MedicationKnowledge_Packaging> {
-  @override
-  final typeId = 385;
-
-  @override
-  MedicationKnowledge_Packaging read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicationKnowledge_Packaging(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as CodeableConcept,
-      quantity: fields[4] as Quantity,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicationKnowledge_Packaging obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.quantity);
-  }
-}
-
-class MedicationKnowledge_DrugCharacteristicAdapter
-    extends TypeAdapter<MedicationKnowledge_DrugCharacteristic> {
-  @override
-  final typeId = 386;
-
-  @override
-  MedicationKnowledge_DrugCharacteristic read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicationKnowledge_DrugCharacteristic(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as CodeableConcept,
-      valueCodeableConcept: fields[4] as CodeableConcept,
-      valueString: fields[5] as String,
-      elementValueString: fields[6] as Element,
-      valueQuantity: fields[7] as Quantity,
-      valueBase64Binary: fields[8] as String,
-      elementValueBase64Binary: fields[9] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicationKnowledge_DrugCharacteristic obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.valueCodeableConcept)
-      ..writeByte(5)
-      ..write(obj.valueString)
-      ..writeByte(6)
-      ..write(obj.elementValueString)
-      ..writeByte(7)
-      ..write(obj.valueQuantity)
-      ..writeByte(8)
-      ..write(obj.valueBase64Binary)
-      ..writeByte(9)
-      ..write(obj.elementValueBase64Binary);
-  }
-}
-
-class MedicationKnowledge_RegulatoryAdapter
-    extends TypeAdapter<MedicationKnowledge_Regulatory> {
-  @override
-  final typeId = 387;
-
-  @override
-  MedicationKnowledge_Regulatory read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicationKnowledge_Regulatory(
-      fields[3] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      substitution:
-          (fields[4] as List)?.cast<MedicationKnowledge_Substitution>(),
-      schedule: (fields[5] as List)?.cast<MedicationKnowledge_Schedule>(),
-      maxDispense: fields[6] as MedicationKnowledge_MaxDispense,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicationKnowledge_Regulatory obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.regulatoryAuthority)
-      ..writeByte(4)
-      ..write(obj.substitution)
-      ..writeByte(5)
-      ..write(obj.schedule)
-      ..writeByte(6)
-      ..write(obj.maxDispense);
-  }
-}
-
-class MedicationKnowledge_SubstitutionAdapter
-    extends TypeAdapter<MedicationKnowledge_Substitution> {
-  @override
-  final typeId = 388;
-
-  @override
-  MedicationKnowledge_Substitution read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicationKnowledge_Substitution(
-      fields[3] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      allowed: fields[4] as bool,
-      elementAllowed: fields[5] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicationKnowledge_Substitution obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.allowed)
-      ..writeByte(5)
-      ..write(obj.elementAllowed);
-  }
-}
-
-class MedicationKnowledge_ScheduleAdapter
-    extends TypeAdapter<MedicationKnowledge_Schedule> {
-  @override
-  final typeId = 389;
-
-  @override
-  MedicationKnowledge_Schedule read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicationKnowledge_Schedule(
-      fields[3] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicationKnowledge_Schedule obj) {
-    writer
-      ..writeByte(4)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.schedule);
-  }
-}
-
-class MedicationKnowledge_MaxDispenseAdapter
-    extends TypeAdapter<MedicationKnowledge_MaxDispense> {
-  @override
-  final typeId = 390;
-
-  @override
-  MedicationKnowledge_MaxDispense read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicationKnowledge_MaxDispense(
-      fields[3] as Quantity,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      period: fields[4] as Duration,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicationKnowledge_MaxDispense obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.quantity)
-      ..writeByte(4)
-      ..write(obj.period);
-  }
-}
-
-class MedicationKnowledge_KineticsAdapter
-    extends TypeAdapter<MedicationKnowledge_Kinetics> {
-  @override
-  final typeId = 391;
-
-  @override
-  MedicationKnowledge_Kinetics read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicationKnowledge_Kinetics(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      areaUnderCurve: (fields[3] as List)?.cast<Quantity>(),
-      lethalDose50: (fields[4] as List)?.cast<Quantity>(),
-      halfLifePeriod: fields[5] as Duration,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicationKnowledge_Kinetics obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.areaUnderCurve)
-      ..writeByte(4)
-      ..write(obj.lethalDose50)
-      ..writeByte(5)
-      ..write(obj.halfLifePeriod);
   }
 }
 

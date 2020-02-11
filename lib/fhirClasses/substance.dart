@@ -156,12 +156,10 @@ Substance(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 559)
 class Substance_Instance {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -170,7 +168,6 @@ class Substance_Instance {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -185,25 +182,20 @@ class Substance_Instance {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Identifier associated with the package/container (usually a label
   // affixed directly).
-  @HiveField(3)
   Identifier identifier;
 
   //  When the substance is no longer valid to use. For some substances, a
   // single arbitrary date is used for expiry.
-  @HiveField(4)
   DateTime expiry;
 
   //  Extensions for expiry
-  @HiveField(5)
   Element elementExpiry;
 
   //  The amount of the substance.
-  @HiveField(6)
   Quantity quantity;
 
 Substance_Instance(
@@ -221,12 +213,10 @@ Substance_Instance(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 560)
 class Substance_Ingredient {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -235,7 +225,6 @@ class Substance_Ingredient {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -250,19 +239,15 @@ class Substance_Ingredient {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The amount of the ingredient in the substance - a concentration ratio.
-  @HiveField(3)
   Ratio quantity;
 
   //  Another substance that is a component of this substance.
-  @HiveField(4)
   CodeableConcept substanceCodeableConcept;
 
   //  Another substance that is a component of this substance.
-  @HiveField(5)
   Reference substanceReference;
 
 Substance_Ingredient(
@@ -361,87 +346,6 @@ class SubstanceAdapter extends TypeAdapter<Substance> {
       ..write(obj.instance)
       ..writeByte(19)
       ..write(obj.ingredient);
-  }
-}
-
-class Substance_InstanceAdapter extends TypeAdapter<Substance_Instance> {
-  @override
-  final typeId = 559;
-
-  @override
-  Substance_Instance read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Substance_Instance(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      identifier: fields[3] as Identifier,
-      expiry: fields[4] as DateTime,
-      elementExpiry: fields[5] as Element,
-      quantity: fields[6] as Quantity,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Substance_Instance obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.identifier)
-      ..writeByte(4)
-      ..write(obj.expiry)
-      ..writeByte(5)
-      ..write(obj.elementExpiry)
-      ..writeByte(6)
-      ..write(obj.quantity);
-  }
-}
-
-class Substance_IngredientAdapter extends TypeAdapter<Substance_Ingredient> {
-  @override
-  final typeId = 560;
-
-  @override
-  Substance_Ingredient read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Substance_Ingredient(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      quantity: fields[3] as Ratio,
-      substanceCodeableConcept: fields[4] as CodeableConcept,
-      substanceReference: fields[5] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Substance_Ingredient obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.quantity)
-      ..writeByte(4)
-      ..write(obj.substanceCodeableConcept)
-      ..writeByte(5)
-      ..write(obj.substanceReference);
   }
 }
 

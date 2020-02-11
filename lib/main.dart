@@ -4,12 +4,8 @@ import 'package:flutter_fhir/util/appLocalizations.dart';
 import 'package:flutter_fhir/mainMenu/mainMenu.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:hive/hive.dart';
-import 'package:path_provider/path_provider.dart' as path_provider;
 
 void main() async {
-  final appDocumentDir = await path_provider.getApplicationDocumentsDirectory();
-  Hive.init(appDocumentDir.path);
   runApp(MaterialApp(
       home: _Main(),
       supportedLocales: [Locale('en', 'US'), Locale('es', 'AR')],

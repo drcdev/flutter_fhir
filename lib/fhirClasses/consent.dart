@@ -207,12 +207,10 @@ Consent(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 170)
 class Consent_Policy {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -221,7 +219,6 @@ class Consent_Policy {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -236,27 +233,22 @@ class Consent_Policy {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Entity or Organization having regulatory jurisdiction or
   // accountability for  enforcing policies pertaining to Consent
   // Directives.
-  @HiveField(3)
   String authority;
 
   //  Extensions for authority
-  @HiveField(4)
   Element elementAuthority;
 
   //  The references to the policies that are included in this consent
   // scope. Policies may be organizational, but are often defined
   // jurisdictionally, or in law.
-  @HiveField(5)
   String uri;
 
   //  Extensions for uri
-  @HiveField(6)
   Element elementUri;
 
 Consent_Policy(
@@ -274,12 +266,10 @@ Consent_Policy(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 171)
 class Consent_Verification {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -288,7 +278,6 @@ class Consent_Verification {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -303,28 +292,22 @@ class Consent_Verification {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Has the instruction been verified.
-  @HiveField(3)
   bool verified;
 
   //  Extensions for verified
-  @HiveField(4)
   Element elementVerified;
 
   //  Who verified the instruction (Patient, Relative or other Authorized
   // Person).
-  @HiveField(5)
   Reference verifiedWith;
 
   //  Date verification was collected.
-  @HiveField(6)
   DateTime verificationDate;
 
   //  Extensions for verificationDate
-  @HiveField(7)
   Element elementVerificationDate;
 
 Consent_Verification(
@@ -343,12 +326,10 @@ Consent_Verification(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 172)
 class Consent_Provision {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -357,7 +338,6 @@ class Consent_Provision {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -372,63 +352,50 @@ class Consent_Provision {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Action  to take - permit or deny - when the rule conditions are met. 
   // Not permitted in root rule, required in all nested rules.
-  @HiveField(3)
   String type; // <code> enum: deny/permit;
 
   //  Extensions for type
-  @HiveField(4)
   Element elementType;
 
   //  The timeframe in this rule is valid.
-  @HiveField(5)
   Period period;
 
   //  Who or what is controlled by this rule. Use group to identify a set of
   // actors by some property they share (e.g. 'admitting officers').
-  @HiveField(6)
   List<Consent_Actor> actor;
 
   //  Actions controlled by this Rule.
-  @HiveField(7)
   List<CodeableConcept> action;
 
   //  A security label, comprised of 0..* security label fields (Privacy
   // tags), which define which resources are controlled by this exception.
-  @HiveField(8)
   List<Coding> securityLabel;
 
   //  The context of the activities a user is taking - why the user is
   // accessing the data - that are controlled by this rule.
-  @HiveField(9)
   List<Coding> purpose;
 
   //  The class of information covered by this rule. The type can be a FHIR
   // resource type, a profile on a type, or a CDA document, or some other
   // type that indicates what sort of information the consent relates to.
-  @HiveField(10)
   List<Coding> classs;
 
   //  If this code is found in an instance, then the rule applies.
-  @HiveField(11)
   List<CodeableConcept> code;
 
   //  Clinical or Operational Relevant period of time that bounds the data
   // controlled by this rule.
-  @HiveField(12)
   Period dataPeriod;
 
   //  The resources controlled by this rule if specific resources are
   // referenced.
-  @HiveField(13)
   List<Consent_Data> data;
 
   //  Rules which provide exceptions to the base rule or subrules.
-  @HiveField(14)
   List<Consent_Provision> provision;
 
 Consent_Provision(
@@ -454,12 +421,10 @@ Consent_Provision(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 173)
 class Consent_Actor {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -468,7 +433,6 @@ class Consent_Actor {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -483,18 +447,15 @@ class Consent_Actor {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  How the individual is involved in the resources content that is
   // described in the exception.
-  @HiveField(3)
   CodeableConcept role;
 
   //  The resource that identifies the actor. To identify actors by type,
   // use group to identify a set of actors by some property they share (e.g.
   // 'admitting officers').
-  @HiveField(4)
   Reference reference;
 
 Consent_Actor(
@@ -510,12 +471,10 @@ Consent_Actor(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 174)
 class Consent_Data {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -524,7 +483,6 @@ class Consent_Data {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -539,21 +497,17 @@ class Consent_Data {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  How the resource reference is interpreted when testing consent
   // restrictions.
-  @HiveField(3)
   String meaning; // <code> enum: instance/related/dependents/authoredby;
 
   //  Extensions for meaning
-  @HiveField(4)
   Element elementMeaning;
 
   //  A reference to a specific resource that defines which resources are
   // covered by this consent.
-  @HiveField(5)
   Reference reference;
 
 Consent_Data(
@@ -673,234 +627,6 @@ class ConsentAdapter extends TypeAdapter<Consent> {
       ..write(obj.verification)
       ..writeByte(26)
       ..write(obj.provision);
-  }
-}
-
-class Consent_PolicyAdapter extends TypeAdapter<Consent_Policy> {
-  @override
-  final typeId = 170;
-
-  @override
-  Consent_Policy read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Consent_Policy(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      authority: fields[3] as String,
-      elementAuthority: fields[4] as Element,
-      uri: fields[5] as String,
-      elementUri: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Consent_Policy obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.authority)
-      ..writeByte(4)
-      ..write(obj.elementAuthority)
-      ..writeByte(5)
-      ..write(obj.uri)
-      ..writeByte(6)
-      ..write(obj.elementUri);
-  }
-}
-
-class Consent_VerificationAdapter extends TypeAdapter<Consent_Verification> {
-  @override
-  final typeId = 171;
-
-  @override
-  Consent_Verification read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Consent_Verification(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      verified: fields[3] as bool,
-      elementVerified: fields[4] as Element,
-      verifiedWith: fields[5] as Reference,
-      verificationDate: fields[6] as DateTime,
-      elementVerificationDate: fields[7] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Consent_Verification obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.verified)
-      ..writeByte(4)
-      ..write(obj.elementVerified)
-      ..writeByte(5)
-      ..write(obj.verifiedWith)
-      ..writeByte(6)
-      ..write(obj.verificationDate)
-      ..writeByte(7)
-      ..write(obj.elementVerificationDate);
-  }
-}
-
-class Consent_ProvisionAdapter extends TypeAdapter<Consent_Provision> {
-  @override
-  final typeId = 172;
-
-  @override
-  Consent_Provision read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Consent_Provision(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as String,
-      elementType: fields[4] as Element,
-      period: fields[5] as Period,
-      actor: (fields[6] as List)?.cast<Consent_Actor>(),
-      action: (fields[7] as List)?.cast<CodeableConcept>(),
-      securityLabel: (fields[8] as List)?.cast<Coding>(),
-      purpose: (fields[9] as List)?.cast<Coding>(),
-      classs: (fields[10] as List)?.cast<Coding>(),
-      code: (fields[11] as List)?.cast<CodeableConcept>(),
-      dataPeriod: fields[12] as Period,
-      data: (fields[13] as List)?.cast<Consent_Data>(),
-      provision: (fields[14] as List)?.cast<Consent_Provision>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Consent_Provision obj) {
-    writer
-      ..writeByte(15)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.elementType)
-      ..writeByte(5)
-      ..write(obj.period)
-      ..writeByte(6)
-      ..write(obj.actor)
-      ..writeByte(7)
-      ..write(obj.action)
-      ..writeByte(8)
-      ..write(obj.securityLabel)
-      ..writeByte(9)
-      ..write(obj.purpose)
-      ..writeByte(10)
-      ..write(obj.classs)
-      ..writeByte(11)
-      ..write(obj.code)
-      ..writeByte(12)
-      ..write(obj.dataPeriod)
-      ..writeByte(13)
-      ..write(obj.data)
-      ..writeByte(14)
-      ..write(obj.provision);
-  }
-}
-
-class Consent_ActorAdapter extends TypeAdapter<Consent_Actor> {
-  @override
-  final typeId = 173;
-
-  @override
-  Consent_Actor read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Consent_Actor(
-      fields[3] as CodeableConcept,
-      fields[4] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Consent_Actor obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.role)
-      ..writeByte(4)
-      ..write(obj.reference);
-  }
-}
-
-class Consent_DataAdapter extends TypeAdapter<Consent_Data> {
-  @override
-  final typeId = 174;
-
-  @override
-  Consent_Data read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Consent_Data(
-      fields[5] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      meaning: fields[3] as String,
-      elementMeaning: fields[4] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Consent_Data obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.meaning)
-      ..writeByte(4)
-      ..write(obj.elementMeaning)
-      ..writeByte(5)
-      ..write(obj.reference);
   }
 }
 

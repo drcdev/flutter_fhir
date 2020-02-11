@@ -221,12 +221,10 @@ Invoice(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 341)
 class Invoice_Participant {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -235,7 +233,6 @@ class Invoice_Participant {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -250,18 +247,15 @@ class Invoice_Participant {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Describes the type of involvement (e.g. transcriptionist, creator
   // etc.). If the invoice has been created automatically, the Participant
   // may be a billing engine or another kind of device.
-  @HiveField(3)
   CodeableConcept role;
 
   //  The device, practitioner, etc. who performed or participated in the
   // service.
-  @HiveField(4)
   Reference actor;
 
 Invoice_Participant(
@@ -277,12 +271,10 @@ Invoice_Participant(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 342)
 class Invoice_LineItem {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -291,7 +283,6 @@ class Invoice_LineItem {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -306,29 +297,24 @@ class Invoice_LineItem {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Sequence in which the items appear on the invoice.
-  @HiveField(3)
   int sequence;
 
   //  Extensions for sequence
-  @HiveField(4)
   Element elementSequence;
 
   //  The ChargeItem contains information such as the billing code, date,
   // amount etc. If no further details are required for the lineItem, inline
   // billing codes can be added using the CodeableConcept data type instead
   // of the Reference.
-  @HiveField(5)
   Reference chargeItemReference;
 
   //  The ChargeItem contains information such as the billing code, date,
   // amount etc. If no further details are required for the lineItem, inline
   // billing codes can be added using the CodeableConcept data type instead
   // of the Reference.
-  @HiveField(6)
   CodeableConcept chargeItemCodeableConcept;
 
   //  The price for a ChargeItem may be calculated as a base price with
@@ -337,7 +323,6 @@ class Invoice_LineItem {
   // conditions that apply to a billing code is currently under development.
   // The priceComponent element can be used to offer transparency to the
   // recipient of the Invoice as to how the prices have been calculated.
-  @HiveField(7)
   List<Invoice_PriceComponent> priceComponent;
 
 Invoice_LineItem(
@@ -356,12 +341,10 @@ Invoice_LineItem(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 343)
 class Invoice_PriceComponent {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -370,7 +353,6 @@ class Invoice_PriceComponent {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -385,33 +367,26 @@ class Invoice_PriceComponent {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  This code identifies the type of the component.
-  @HiveField(3)
   String type; // <code> enum: base/surcharge/deduction/discount/tax/informational;
 
   //  Extensions for type
-  @HiveField(4)
   Element elementType;
 
   //  A code that identifies the component. Codes may be used to
   // differentiate between kinds of taxes, surcharges, discounts etc.
-  @HiveField(5)
   CodeableConcept code;
 
   //  The factor that has been applied on the base price for calculating
   // this component.
-  @HiveField(6)
   double factor;
 
   //  Extensions for factor
-  @HiveField(7)
   Element elementFactor;
 
   //  The amount calculated for this component.
-  @HiveField(8)
   Money amount;
 
 Invoice_PriceComponent(
@@ -546,136 +521,6 @@ class InvoiceAdapter extends TypeAdapter<Invoice> {
       ..write(obj.elementPaymentTerms)
       ..writeByte(30)
       ..write(obj.note);
-  }
-}
-
-class Invoice_ParticipantAdapter extends TypeAdapter<Invoice_Participant> {
-  @override
-  final typeId = 341;
-
-  @override
-  Invoice_Participant read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Invoice_Participant(
-      fields[4] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      role: fields[3] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Invoice_Participant obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.role)
-      ..writeByte(4)
-      ..write(obj.actor);
-  }
-}
-
-class Invoice_LineItemAdapter extends TypeAdapter<Invoice_LineItem> {
-  @override
-  final typeId = 342;
-
-  @override
-  Invoice_LineItem read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Invoice_LineItem(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      sequence: fields[3] as int,
-      elementSequence: fields[4] as Element,
-      chargeItemReference: fields[5] as Reference,
-      chargeItemCodeableConcept: fields[6] as CodeableConcept,
-      priceComponent: (fields[7] as List)?.cast<Invoice_PriceComponent>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Invoice_LineItem obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.sequence)
-      ..writeByte(4)
-      ..write(obj.elementSequence)
-      ..writeByte(5)
-      ..write(obj.chargeItemReference)
-      ..writeByte(6)
-      ..write(obj.chargeItemCodeableConcept)
-      ..writeByte(7)
-      ..write(obj.priceComponent);
-  }
-}
-
-class Invoice_PriceComponentAdapter
-    extends TypeAdapter<Invoice_PriceComponent> {
-  @override
-  final typeId = 343;
-
-  @override
-  Invoice_PriceComponent read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Invoice_PriceComponent(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as String,
-      elementType: fields[4] as Element,
-      code: fields[5] as CodeableConcept,
-      factor: fields[6] as double,
-      elementFactor: fields[7] as Element,
-      amount: fields[8] as Money,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Invoice_PriceComponent obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.elementType)
-      ..writeByte(5)
-      ..write(obj.code)
-      ..writeByte(6)
-      ..write(obj.factor)
-      ..writeByte(7)
-      ..write(obj.elementFactor)
-      ..writeByte(8)
-      ..write(obj.amount);
   }
 }
 

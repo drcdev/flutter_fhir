@@ -169,12 +169,10 @@ Subscription(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 557)
 class Subscription_Channel {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -183,7 +181,6 @@ class Subscription_Channel {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -198,42 +195,33 @@ class Subscription_Channel {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The type of channel to send notifications on.
-  @HiveField(3)
   String type; // <code> enum: rest-hook/websocket/email/sms/message;
 
   //  Extensions for type
-  @HiveField(4)
   Element elementType;
 
   //  The url that describes the actual end-point to send messages to.
-  @HiveField(5)
   String endpoint;
 
   //  Extensions for endpoint
-  @HiveField(6)
   Element elementEndpoint;
 
   //  The mime type to send the payload in - either application/fhir+xml, or
   // application/fhir+json. If the payload is not present, then there is no
   // payload in the notification, just a notification. The mime type
   // "text/plain" may also be used for Email and SMS subscriptions.
-  @HiveField(7)
   String payload;
 
   //  Extensions for payload
-  @HiveField(8)
   Element elementPayload;
 
   //  Additional headers / information to send as part of the notification.
-  @HiveField(9)
   List<String> header;
 
   //  Extensions for header
-  @HiveField(10)
   List<Element> elementHeader;
 
 Subscription_Channel(
@@ -346,60 +334,6 @@ class SubscriptionAdapter extends TypeAdapter<Subscription> {
       ..write(obj.elementError)
       ..writeByte(22)
       ..write(obj.channel);
-  }
-}
-
-class Subscription_ChannelAdapter extends TypeAdapter<Subscription_Channel> {
-  @override
-  final typeId = 557;
-
-  @override
-  Subscription_Channel read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Subscription_Channel(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as String,
-      elementType: fields[4] as Element,
-      endpoint: fields[5] as String,
-      elementEndpoint: fields[6] as Element,
-      payload: fields[7] as String,
-      elementPayload: fields[8] as Element,
-      header: (fields[9] as List)?.cast<String>(),
-      elementHeader: (fields[10] as List)?.cast<Element>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Subscription_Channel obj) {
-    writer
-      ..writeByte(11)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.elementType)
-      ..writeByte(5)
-      ..write(obj.endpoint)
-      ..writeByte(6)
-      ..write(obj.elementEndpoint)
-      ..writeByte(7)
-      ..write(obj.payload)
-      ..writeByte(8)
-      ..write(obj.elementPayload)
-      ..writeByte(9)
-      ..write(obj.header)
-      ..writeByte(10)
-      ..write(obj.elementHeader);
   }
 }
 

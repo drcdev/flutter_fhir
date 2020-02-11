@@ -199,12 +199,10 @@ Lists(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 348)
 class List_Entry {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -213,7 +211,6 @@ class List_Entry {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -228,32 +225,25 @@ class List_Entry {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The flag allows the system constructing the list to indicate the role
   // and significance of the item in the list.
-  @HiveField(3)
   CodeableConcept flag;
 
   //  True if this item is marked as deleted in the list.
-  @HiveField(4)
   bool deleted;
 
   //  Extensions for deleted
-  @HiveField(5)
   Element elementDeleted;
 
   //  When this item was added to the list.
-  @HiveField(6)
   DateTime date;
 
   //  Extensions for date
-  @HiveField(7)
   Element elementDate;
 
   //  A reference to the actual resource from which data was derived.
-  @HiveField(8)
   Reference item;
 
 List_Entry(
@@ -379,54 +369,6 @@ class ListsAdapter extends TypeAdapter<Lists> {
       ..write(obj.entry)
       ..writeByte(27)
       ..write(obj.emptyReason);
-  }
-}
-
-class List_EntryAdapter extends TypeAdapter<List_Entry> {
-  @override
-  final typeId = 348;
-
-  @override
-  List_Entry read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return List_Entry(
-      fields[8] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      flag: fields[3] as CodeableConcept,
-      deleted: fields[4] as bool,
-      elementDeleted: fields[5] as Element,
-      date: fields[6] as DateTime,
-      elementDate: fields[7] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, List_Entry obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.flag)
-      ..writeByte(4)
-      ..write(obj.deleted)
-      ..writeByte(5)
-      ..write(obj.elementDeleted)
-      ..writeByte(6)
-      ..write(obj.date)
-      ..writeByte(7)
-      ..write(obj.elementDate)
-      ..writeByte(8)
-      ..write(obj.item);
   }
 }
 

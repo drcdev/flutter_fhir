@@ -383,12 +383,10 @@ EffectEvidenceSynthesis(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 235)
 class EffectEvidenceSynthesis_SampleSize {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -397,7 +395,6 @@ class EffectEvidenceSynthesis_SampleSize {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -412,31 +409,24 @@ class EffectEvidenceSynthesis_SampleSize {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Human-readable summary of sample size.
-  @HiveField(3)
   String description;
 
   //  Extensions for description
-  @HiveField(4)
   Element elementDescription;
 
   //  Number of studies included in this evidence synthesis.
-  @HiveField(5)
   int numberOfStudies;
 
   //  Extensions for numberOfStudies
-  @HiveField(6)
   Element elementNumberOfStudies;
 
   //  Number of participants included in this evidence synthesis.
-  @HiveField(7)
   int numberOfParticipants;
 
   //  Extensions for numberOfParticipants
-  @HiveField(8)
   Element elementNumberOfParticipants;
 
 EffectEvidenceSynthesis_SampleSize(
@@ -456,12 +446,10 @@ EffectEvidenceSynthesis_SampleSize(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 236)
 class EffectEvidenceSynthesis_ResultsByExposure {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -470,7 +458,6 @@ class EffectEvidenceSynthesis_ResultsByExposure {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -485,32 +472,25 @@ class EffectEvidenceSynthesis_ResultsByExposure {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Human-readable summary of results by exposure state.
-  @HiveField(3)
   String description;
 
   //  Extensions for description
-  @HiveField(4)
   Element elementDescription;
 
   //  Whether these results are for the exposure state or alternative
   // exposure state.
-  @HiveField(5)
   String exposureState; // <code> enum: exposure/exposure-alternative;
 
   //  Extensions for exposureState
-  @HiveField(6)
   Element elementExposureState;
 
   //  Used to define variant exposure states such as low-risk state.
-  @HiveField(7)
   CodeableConcept variantState;
 
   //  Reference to a RiskEvidenceSynthesis resource.
-  @HiveField(8)
   Reference riskEvidenceSynthesis;
 
 EffectEvidenceSynthesis_ResultsByExposure(
@@ -530,12 +510,10 @@ EffectEvidenceSynthesis_ResultsByExposure(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 237)
 class EffectEvidenceSynthesis_EffectEstimate {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -544,7 +522,6 @@ class EffectEvidenceSynthesis_EffectEstimate {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -559,39 +536,30 @@ class EffectEvidenceSynthesis_EffectEstimate {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Human-readable summary of effect estimate.
-  @HiveField(3)
   String description;
 
   //  Extensions for description
-  @HiveField(4)
   Element elementDescription;
 
   //  Examples include relative risk and mean difference.
-  @HiveField(5)
   CodeableConcept type;
 
   //  Used to define variant exposure states such as low-risk state.
-  @HiveField(6)
   CodeableConcept variantState;
 
   //  The point estimate of the effect estimate.
-  @HiveField(7)
   double value;
 
   //  Extensions for value
-  @HiveField(8)
   Element elementValue;
 
   //  Specifies the UCUM unit for the outcome.
-  @HiveField(9)
   CodeableConcept unitOfMeasure;
 
   //  A description of the precision of the estimate for the effect.
-  @HiveField(10)
   List<EffectEvidenceSynthesis_PrecisionEstimate> precisionEstimate;
 
 EffectEvidenceSynthesis_EffectEstimate(
@@ -613,12 +581,10 @@ EffectEvidenceSynthesis_EffectEstimate(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 238)
 class EffectEvidenceSynthesis_PrecisionEstimate {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -627,7 +593,6 @@ class EffectEvidenceSynthesis_PrecisionEstimate {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -642,35 +607,27 @@ class EffectEvidenceSynthesis_PrecisionEstimate {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Examples include confidence interval and interquartile range.
-  @HiveField(3)
   CodeableConcept type;
 
   //  Use 95 for a 95% confidence interval.
-  @HiveField(4)
   double level;
 
   //  Extensions for level
-  @HiveField(5)
   Element elementLevel;
 
   //  Lower bound of confidence interval.
-  @HiveField(6)
   double from;
 
   //  Extensions for from
-  @HiveField(7)
   Element elementFrom;
 
   //  Upper bound of confidence interval.
-  @HiveField(8)
   double to;
 
   //  Extensions for to
-  @HiveField(9)
   Element elementTo;
 
 EffectEvidenceSynthesis_PrecisionEstimate(
@@ -691,12 +648,10 @@ EffectEvidenceSynthesis_PrecisionEstimate(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 239)
 class EffectEvidenceSynthesis_Certainty {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -705,7 +660,6 @@ class EffectEvidenceSynthesis_Certainty {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -720,20 +674,16 @@ class EffectEvidenceSynthesis_Certainty {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A rating of the certainty of the effect estimate.
-  @HiveField(3)
   List<CodeableConcept> rating;
 
   //  A human-readable string to clarify or explain concepts about the
   // resource.
-  @HiveField(4)
   List<Annotation> note;
 
   //  A description of a component of the overall certainty.
-  @HiveField(5)
   List<EffectEvidenceSynthesis_CertaintySubcomponent> certaintySubcomponent;
 
 EffectEvidenceSynthesis_Certainty(
@@ -750,12 +700,10 @@ EffectEvidenceSynthesis_Certainty(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 240)
 class EffectEvidenceSynthesis_CertaintySubcomponent {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -764,7 +712,6 @@ class EffectEvidenceSynthesis_CertaintySubcomponent {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -779,20 +726,16 @@ class EffectEvidenceSynthesis_CertaintySubcomponent {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Type of subcomponent of certainty rating.
-  @HiveField(3)
   CodeableConcept type;
 
   //  A rating of a subcomponent of rating certainty.
-  @HiveField(4)
   List<CodeableConcept> rating;
 
   //  A human-readable string to clarify or explain concepts about the
   // resource.
-  @HiveField(5)
   List<Annotation> note;
 
 EffectEvidenceSynthesis_CertaintySubcomponent(
@@ -1000,296 +943,6 @@ class EffectEvidenceSynthesisAdapter
       ..write(obj.effectEstimate)
       ..writeByte(54)
       ..write(obj.certainty);
-  }
-}
-
-class EffectEvidenceSynthesis_SampleSizeAdapter
-    extends TypeAdapter<EffectEvidenceSynthesis_SampleSize> {
-  @override
-  final typeId = 235;
-
-  @override
-  EffectEvidenceSynthesis_SampleSize read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return EffectEvidenceSynthesis_SampleSize(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      description: fields[3] as String,
-      elementDescription: fields[4] as Element,
-      numberOfStudies: fields[5] as int,
-      elementNumberOfStudies: fields[6] as Element,
-      numberOfParticipants: fields[7] as int,
-      elementNumberOfParticipants: fields[8] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, EffectEvidenceSynthesis_SampleSize obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.description)
-      ..writeByte(4)
-      ..write(obj.elementDescription)
-      ..writeByte(5)
-      ..write(obj.numberOfStudies)
-      ..writeByte(6)
-      ..write(obj.elementNumberOfStudies)
-      ..writeByte(7)
-      ..write(obj.numberOfParticipants)
-      ..writeByte(8)
-      ..write(obj.elementNumberOfParticipants);
-  }
-}
-
-class EffectEvidenceSynthesis_ResultsByExposureAdapter
-    extends TypeAdapter<EffectEvidenceSynthesis_ResultsByExposure> {
-  @override
-  final typeId = 236;
-
-  @override
-  EffectEvidenceSynthesis_ResultsByExposure read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return EffectEvidenceSynthesis_ResultsByExposure(
-      fields[8] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      description: fields[3] as String,
-      elementDescription: fields[4] as Element,
-      exposureState: fields[5] as String,
-      elementExposureState: fields[6] as Element,
-      variantState: fields[7] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(
-      BinaryWriter writer, EffectEvidenceSynthesis_ResultsByExposure obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.description)
-      ..writeByte(4)
-      ..write(obj.elementDescription)
-      ..writeByte(5)
-      ..write(obj.exposureState)
-      ..writeByte(6)
-      ..write(obj.elementExposureState)
-      ..writeByte(7)
-      ..write(obj.variantState)
-      ..writeByte(8)
-      ..write(obj.riskEvidenceSynthesis);
-  }
-}
-
-class EffectEvidenceSynthesis_EffectEstimateAdapter
-    extends TypeAdapter<EffectEvidenceSynthesis_EffectEstimate> {
-  @override
-  final typeId = 237;
-
-  @override
-  EffectEvidenceSynthesis_EffectEstimate read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return EffectEvidenceSynthesis_EffectEstimate(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      description: fields[3] as String,
-      elementDescription: fields[4] as Element,
-      type: fields[5] as CodeableConcept,
-      variantState: fields[6] as CodeableConcept,
-      value: fields[7] as double,
-      elementValue: fields[8] as Element,
-      unitOfMeasure: fields[9] as CodeableConcept,
-      precisionEstimate: (fields[10] as List)
-          ?.cast<EffectEvidenceSynthesis_PrecisionEstimate>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, EffectEvidenceSynthesis_EffectEstimate obj) {
-    writer
-      ..writeByte(11)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.description)
-      ..writeByte(4)
-      ..write(obj.elementDescription)
-      ..writeByte(5)
-      ..write(obj.type)
-      ..writeByte(6)
-      ..write(obj.variantState)
-      ..writeByte(7)
-      ..write(obj.value)
-      ..writeByte(8)
-      ..write(obj.elementValue)
-      ..writeByte(9)
-      ..write(obj.unitOfMeasure)
-      ..writeByte(10)
-      ..write(obj.precisionEstimate);
-  }
-}
-
-class EffectEvidenceSynthesis_PrecisionEstimateAdapter
-    extends TypeAdapter<EffectEvidenceSynthesis_PrecisionEstimate> {
-  @override
-  final typeId = 238;
-
-  @override
-  EffectEvidenceSynthesis_PrecisionEstimate read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return EffectEvidenceSynthesis_PrecisionEstimate(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as CodeableConcept,
-      level: fields[4] as double,
-      elementLevel: fields[5] as Element,
-      from: fields[6] as double,
-      elementFrom: fields[7] as Element,
-      to: fields[8] as double,
-      elementTo: fields[9] as Element,
-    );
-  }
-
-  @override
-  void write(
-      BinaryWriter writer, EffectEvidenceSynthesis_PrecisionEstimate obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.level)
-      ..writeByte(5)
-      ..write(obj.elementLevel)
-      ..writeByte(6)
-      ..write(obj.from)
-      ..writeByte(7)
-      ..write(obj.elementFrom)
-      ..writeByte(8)
-      ..write(obj.to)
-      ..writeByte(9)
-      ..write(obj.elementTo);
-  }
-}
-
-class EffectEvidenceSynthesis_CertaintyAdapter
-    extends TypeAdapter<EffectEvidenceSynthesis_Certainty> {
-  @override
-  final typeId = 239;
-
-  @override
-  EffectEvidenceSynthesis_Certainty read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return EffectEvidenceSynthesis_Certainty(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      rating: (fields[3] as List)?.cast<CodeableConcept>(),
-      note: (fields[4] as List)?.cast<Annotation>(),
-      certaintySubcomponent: (fields[5] as List)
-          ?.cast<EffectEvidenceSynthesis_CertaintySubcomponent>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, EffectEvidenceSynthesis_Certainty obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.rating)
-      ..writeByte(4)
-      ..write(obj.note)
-      ..writeByte(5)
-      ..write(obj.certaintySubcomponent);
-  }
-}
-
-class EffectEvidenceSynthesis_CertaintySubcomponentAdapter
-    extends TypeAdapter<EffectEvidenceSynthesis_CertaintySubcomponent> {
-  @override
-  final typeId = 240;
-
-  @override
-  EffectEvidenceSynthesis_CertaintySubcomponent read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return EffectEvidenceSynthesis_CertaintySubcomponent(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as CodeableConcept,
-      rating: (fields[4] as List)?.cast<CodeableConcept>(),
-      note: (fields[5] as List)?.cast<Annotation>(),
-    );
-  }
-
-  @override
-  void write(
-      BinaryWriter writer, EffectEvidenceSynthesis_CertaintySubcomponent obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.rating)
-      ..writeByte(5)
-      ..write(obj.note);
   }
 }
 

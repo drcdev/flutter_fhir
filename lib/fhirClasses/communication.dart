@@ -270,12 +270,10 @@ Communication(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 150)
 class Communication_Payload {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -284,7 +282,6 @@ class Communication_Payload {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -299,26 +296,21 @@ class Communication_Payload {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A communicated content (or for multi-part communications, one portion
   // of the communication).
-  @HiveField(3)
   String contentString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for contentString
-  @HiveField(4)
   Element elementContentString;
 
   //  A communicated content (or for multi-part communications, one portion
   // of the communication).
-  @HiveField(5)
   Attachment contentAttachment;
 
   //  A communicated content (or for multi-part communications, one portion
   // of the communication).
-  @HiveField(6)
   Reference contentReference;
 
 Communication_Payload(
@@ -475,48 +467,6 @@ class CommunicationAdapter extends TypeAdapter<Communication> {
       ..write(obj.payload)
       ..writeByte(38)
       ..write(obj.note);
-  }
-}
-
-class Communication_PayloadAdapter extends TypeAdapter<Communication_Payload> {
-  @override
-  final typeId = 150;
-
-  @override
-  Communication_Payload read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Communication_Payload(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      contentString: fields[3] as String,
-      elementContentString: fields[4] as Element,
-      contentAttachment: fields[5] as Attachment,
-      contentReference: fields[6] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Communication_Payload obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.contentString)
-      ..writeByte(4)
-      ..write(obj.elementContentString)
-      ..writeByte(5)
-      ..write(obj.contentAttachment)
-      ..writeByte(6)
-      ..write(obj.contentReference);
   }
 }
 

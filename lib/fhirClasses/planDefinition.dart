@@ -411,12 +411,10 @@ PlanDefinition(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 481)
 class PlanDefinition_Goal {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -425,7 +423,6 @@ class PlanDefinition_Goal {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -440,42 +437,34 @@ class PlanDefinition_Goal {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Indicates a category the goal falls within.
-  @HiveField(3)
   CodeableConcept category;
 
   //  Human-readable and/or coded description of a specific desired
   // objective of care, such as "control blood pressure" or "negotiate an
   // obstacle course" or "dance with child at wedding".
-  @HiveField(4)
   CodeableConcept description;
 
   //  Identifies the expected level of importance associated with
   // reaching/sustaining the defined goal.
-  @HiveField(5)
   CodeableConcept priority;
 
   //  The event after which the goal should begin being pursued.
-  @HiveField(6)
   CodeableConcept start;
 
   //  Identifies problems, conditions, issues, or concerns the goal is
   // intended to address.
-  @HiveField(7)
   List<CodeableConcept> addresses;
 
   //  Didactic or other informational resources associated with the goal
   // that provide further supporting information about the goal. Information
   // resources can include inline text commentary and links to web
   // resources.
-  @HiveField(8)
   List<RelatedArtifact> documentation;
 
   //  Indicates what should be done and within what timeframe.
-  @HiveField(9)
   List<PlanDefinition_Target> target;
 
 PlanDefinition_Goal(
@@ -496,12 +485,10 @@ PlanDefinition_Goal(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 482)
 class PlanDefinition_Target {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -510,7 +497,6 @@ class PlanDefinition_Target {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -525,12 +511,10 @@ class PlanDefinition_Target {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The parameter whose value is to be tracked, e.g. body weight, blood
   // pressure, or hemoglobin A1c level.
-  @HiveField(3)
   CodeableConcept measure;
 
   //  The target value of the measure to be achieved to signify fulfillment
@@ -539,7 +523,6 @@ class PlanDefinition_Target {
   // indicates that the goal is achieved at any value at or below the high
   // value. Similarly, if the high value is missing, it indicates that the
   // goal is achieved at any value at or above the low value.
-  @HiveField(4)
   Quantity detailQuantity;
 
   //  The target value of the measure to be achieved to signify fulfillment
@@ -548,7 +531,6 @@ class PlanDefinition_Target {
   // indicates that the goal is achieved at any value at or below the high
   // value. Similarly, if the high value is missing, it indicates that the
   // goal is achieved at any value at or above the low value.
-  @HiveField(5)
   Range detailRange;
 
   //  The target value of the measure to be achieved to signify fulfillment
@@ -557,12 +539,10 @@ class PlanDefinition_Target {
   // indicates that the goal is achieved at any value at or below the high
   // value. Similarly, if the high value is missing, it indicates that the
   // goal is achieved at any value at or above the low value.
-  @HiveField(6)
   CodeableConcept detailCodeableConcept;
 
   //  Indicates the timeframe after the start of the goal in which the goal
   // should be met.
-  @HiveField(7)
   Duration due;
 
 PlanDefinition_Target(
@@ -581,12 +561,10 @@ PlanDefinition_Target(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 483)
 class PlanDefinition_Action {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -595,7 +573,6 @@ class PlanDefinition_Action {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -610,211 +587,164 @@ class PlanDefinition_Action {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A user-visible prefix for the action.
-  @HiveField(3)
   String prefix;
 
   //  Extensions for prefix
-  @HiveField(4)
   Element elementPrefix;
 
   //  The title of the action displayed to a user.
-  @HiveField(5)
   String title;
 
   //  Extensions for title
-  @HiveField(6)
   Element elementTitle;
 
   //  A brief description of the action used to provide a summary to display
   // to the user.
-  @HiveField(7)
   String description;
 
   //  Extensions for description
-  @HiveField(8)
   Element elementDescription;
 
   //  A text equivalent of the action to be performed. This provides a
   // human-interpretable description of the action when the definition is
   // consumed by a system that might not be capable of interpreting it
   // dynamically.
-  @HiveField(9)
   String textEquivalent;
 
   //  Extensions for textEquivalent
-  @HiveField(10)
   Element elementTextEquivalent;
 
   //  Indicates how quickly the action should be addressed with respect to
   // other actions.
-  @HiveField(11)
   String priority;
 
   //  Extensions for priority
-  @HiveField(12)
   Element elementPriority;
 
   //  A code that provides meaning for the action or action group. For
   // example, a section may have a LOINC code for the section of a
   // documentation template.
-  @HiveField(13)
   List<CodeableConcept> code;
 
   //  A description of why this action is necessary or appropriate.
-  @HiveField(14)
   List<CodeableConcept> reason;
 
   //  Didactic or other informational resources associated with the action
   // that can be provided to the CDS recipient. Information resources can
   // include inline text commentary and links to web resources.
-  @HiveField(15)
   List<RelatedArtifact> documentation;
 
   //  Identifies goals that this action supports. The reference must be to a
   // goal element defined within this plan definition.
-  @HiveField(16)
   List<String> goalId;
 
   //  Extensions for goalId
-  @HiveField(17)
   List<Element> elementGoalId;
 
   //  A code or group definition that describes the intended subject of the
   // action and its children, if any.
-  @HiveField(18)
   CodeableConcept subjectCodeableConcept;
 
   //  A code or group definition that describes the intended subject of the
   // action and its children, if any.
-  @HiveField(19)
   Reference subjectReference;
 
   //  A description of when the action should be triggered.
-  @HiveField(20)
   List<TriggerDefinition> trigger;
 
   //  An expression that describes applicability criteria or start/stop
   // conditions for the action.
-  @HiveField(21)
   List<PlanDefinition_Condition> condition;
 
   //  Defines input data requirements for the action.
-  @HiveField(22)
   List<DataRequirement> input;
 
   //  Defines the outputs of the action, if any.
-  @HiveField(23)
   List<DataRequirement> output;
 
   //  A relationship to another action such as "before" or "30-60 minutes
   // after start of".
-  @HiveField(24)
   List<PlanDefinition_RelatedAction> relatedAction;
 
   //  An optional value describing when the action should be performed.
-  @HiveField(25)
   String timingDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for timingDateTime
-  @HiveField(26)
   Element elementTimingDateTime;
 
   //  An optional value describing when the action should be performed.
-  @HiveField(27)
   Age timingAge;
 
   //  An optional value describing when the action should be performed.
-  @HiveField(28)
   Period timingPeriod;
 
   //  An optional value describing when the action should be performed.
-  @HiveField(29)
   Duration timingDuration;
 
   //  An optional value describing when the action should be performed.
-  @HiveField(30)
   Range timingRange;
 
   //  An optional value describing when the action should be performed.
-  @HiveField(31)
   Timing timingTiming;
 
   //  Indicates who should participate in performing the action described.
-  @HiveField(32)
   List<PlanDefinition_Participant> participant;
 
   //  The type of action to perform (create, update, remove).
-  @HiveField(33)
   CodeableConcept type;
 
   //  Defines the grouping behavior for the action and its children.
-  @HiveField(34)
   String groupingBehavior; // <code> enum: visual-group/logical-group/sentence-group;
 
   //  Extensions for groupingBehavior
-  @HiveField(35)
   Element elementGroupingBehavior;
 
   //  Defines the selection behavior for the action and its children.
-  @HiveField(36)
   String selectionBehavior; // <code> enum: any/all/all-or-none/exactly-one/at-most-one/one-or-more;
 
   //  Extensions for selectionBehavior
-  @HiveField(37)
   Element elementSelectionBehavior;
 
   //  Defines the required behavior for the action.
-  @HiveField(38)
   String requiredBehavior; // <code> enum: must/could/must-unless-documented;
 
   //  Extensions for requiredBehavior
-  @HiveField(39)
   Element elementRequiredBehavior;
 
   //  Defines whether the action should usually be preselected.
-  @HiveField(40)
   String precheckBehavior; // <code> enum: yes/no;
 
   //  Extensions for precheckBehavior
-  @HiveField(41)
   Element elementPrecheckBehavior;
 
   //  Defines whether the action can be selected multiple times.
-  @HiveField(42)
   String cardinalityBehavior; // <code> enum: single/multiple;
 
   //  Extensions for cardinalityBehavior
-  @HiveField(43)
   Element elementCardinalityBehavior;
 
   //  A reference to an ActivityDefinition that describes the action to be
   // taken in detail, or a PlanDefinition that describes a series of actions
   // to be taken.
-  @HiveField(44)
   String definitionCanonical; //  pattern: ^\S*$
 
   //  Extensions for definitionCanonical
-  @HiveField(45)
   Element elementDefinitionCanonical;
 
   //  A reference to an ActivityDefinition that describes the action to be
   // taken in detail, or a PlanDefinition that describes a series of actions
   // to be taken.
-  @HiveField(46)
   String definitionUri; //  pattern: ^\S*$
 
   //  Extensions for definitionUri
-  @HiveField(47)
   Element elementDefinitionUri;
 
   //  A reference to a StructureMap resource that defines a transform that
   // can be executed to produce the intent resource using the
   // ActivityDefinition instance as the input.
-  @HiveField(48)
   String transform;
 
   //  Customizations that should be applied to the statically defined
@@ -822,14 +752,12 @@ class PlanDefinition_Action {
   // based on the patient's weight, a customization would be used to specify
   // an expression that calculated the weight, and the path on the resource
   // that would contain the result.
-  @HiveField(49)
   List<PlanDefinition_DynamicValue> dynamicValue;
 
   //  Sub actions that are contained within the action. The behavior of this
   // action determines the functionality of the sub-actions. For example, a
   // selection behavior of at-most-one indicates that of the sub-actions, at
   // most one may be chosen as part of realizing the action definition.
-  @HiveField(50)
   List<PlanDefinition_Action> action;
 
 PlanDefinition_Action(
@@ -891,12 +819,10 @@ PlanDefinition_Action(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 484)
 class PlanDefinition_Condition {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -905,7 +831,6 @@ class PlanDefinition_Condition {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -920,20 +845,16 @@ class PlanDefinition_Condition {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The kind of condition.
-  @HiveField(3)
   String kind; // <code> enum: applicability/start/stop;
 
   //  Extensions for kind
-  @HiveField(4)
   Element elementKind;
 
   //  An expression that returns true or false, indicating whether the
   // condition is satisfied.
-  @HiveField(5)
   Expression expression;
 
 PlanDefinition_Condition(
@@ -950,12 +871,10 @@ PlanDefinition_Condition(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 485)
 class PlanDefinition_RelatedAction {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -964,7 +883,6 @@ class PlanDefinition_RelatedAction {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -979,33 +897,26 @@ class PlanDefinition_RelatedAction {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The element id of the related action.
-  @HiveField(3)
   String actionId;
 
   //  Extensions for actionId
-  @HiveField(4)
   Element elementActionId;
 
   //  The relationship of this action to the related action.
-  @HiveField(5)
   String relationship; // <code> enum: before-start/before/before-end/concurrent-with-start/concurrent/concurrent-with-end/after-start/after/after-end;
 
   //  Extensions for relationship
-  @HiveField(6)
   Element elementRelationship;
 
   //  A duration or range of durations to apply to the relationship. For
   // example, 30-60 minutes before.
-  @HiveField(7)
   Duration offsetDuration;
 
   //  A duration or range of durations to apply to the relationship. For
   // example, 30-60 minutes before.
-  @HiveField(8)
   Range offsetRange;
 
 PlanDefinition_RelatedAction(
@@ -1025,12 +936,10 @@ PlanDefinition_RelatedAction(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 486)
 class PlanDefinition_Participant {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -1039,7 +948,6 @@ class PlanDefinition_Participant {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -1054,20 +962,16 @@ class PlanDefinition_Participant {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The type of participant in the action.
-  @HiveField(3)
   String type; // <code> enum: patient/practitioner/related-person/device;
 
   //  Extensions for type
-  @HiveField(4)
   Element elementType;
 
   //  The role the participant should play in performing the described
   // action.
-  @HiveField(5)
   CodeableConcept role;
 
 PlanDefinition_Participant(
@@ -1084,12 +988,10 @@ PlanDefinition_Participant(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 487)
 class PlanDefinition_DynamicValue {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -1098,7 +1000,6 @@ class PlanDefinition_DynamicValue {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -1113,7 +1014,6 @@ class PlanDefinition_DynamicValue {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The path to the element to be customized. This is the path on the
@@ -1125,15 +1025,12 @@ class PlanDefinition_DynamicValue {
   // sub-elements, as well as indexers ([x]) to traverse
   // multiple-cardinality sub-elements (see the [Simple FHIRPath
   // Profile](fhirpath.html#simple) for full details).
-  @HiveField(3)
   String path;
 
   //  Extensions for path
-  @HiveField(4)
   Element elementPath;
 
   //  An expression specifying the value of the customized element.
-  @HiveField(5)
   Expression expression;
 
 PlanDefinition_DynamicValue(
@@ -1346,445 +1243,6 @@ class PlanDefinitionAdapter extends TypeAdapter<PlanDefinition> {
       ..write(obj.goal)
       ..writeByte(57)
       ..write(obj.action);
-  }
-}
-
-class PlanDefinition_GoalAdapter extends TypeAdapter<PlanDefinition_Goal> {
-  @override
-  final typeId = 481;
-
-  @override
-  PlanDefinition_Goal read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return PlanDefinition_Goal(
-      fields[4] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      category: fields[3] as CodeableConcept,
-      priority: fields[5] as CodeableConcept,
-      start: fields[6] as CodeableConcept,
-      addresses: (fields[7] as List)?.cast<CodeableConcept>(),
-      documentation: (fields[8] as List)?.cast<RelatedArtifact>(),
-      target: (fields[9] as List)?.cast<PlanDefinition_Target>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, PlanDefinition_Goal obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.category)
-      ..writeByte(4)
-      ..write(obj.description)
-      ..writeByte(5)
-      ..write(obj.priority)
-      ..writeByte(6)
-      ..write(obj.start)
-      ..writeByte(7)
-      ..write(obj.addresses)
-      ..writeByte(8)
-      ..write(obj.documentation)
-      ..writeByte(9)
-      ..write(obj.target);
-  }
-}
-
-class PlanDefinition_TargetAdapter extends TypeAdapter<PlanDefinition_Target> {
-  @override
-  final typeId = 482;
-
-  @override
-  PlanDefinition_Target read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return PlanDefinition_Target(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      measure: fields[3] as CodeableConcept,
-      detailQuantity: fields[4] as Quantity,
-      detailRange: fields[5] as Range,
-      detailCodeableConcept: fields[6] as CodeableConcept,
-      due: fields[7] as Duration,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, PlanDefinition_Target obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.measure)
-      ..writeByte(4)
-      ..write(obj.detailQuantity)
-      ..writeByte(5)
-      ..write(obj.detailRange)
-      ..writeByte(6)
-      ..write(obj.detailCodeableConcept)
-      ..writeByte(7)
-      ..write(obj.due);
-  }
-}
-
-class PlanDefinition_ActionAdapter extends TypeAdapter<PlanDefinition_Action> {
-  @override
-  final typeId = 483;
-
-  @override
-  PlanDefinition_Action read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return PlanDefinition_Action(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      prefix: fields[3] as String,
-      elementPrefix: fields[4] as Element,
-      title: fields[5] as String,
-      elementTitle: fields[6] as Element,
-      description: fields[7] as String,
-      elementDescription: fields[8] as Element,
-      textEquivalent: fields[9] as String,
-      elementTextEquivalent: fields[10] as Element,
-      priority: fields[11] as String,
-      elementPriority: fields[12] as Element,
-      code: (fields[13] as List)?.cast<CodeableConcept>(),
-      reason: (fields[14] as List)?.cast<CodeableConcept>(),
-      documentation: (fields[15] as List)?.cast<RelatedArtifact>(),
-      goalId: (fields[16] as List)?.cast<String>(),
-      elementGoalId: (fields[17] as List)?.cast<Element>(),
-      subjectCodeableConcept: fields[18] as CodeableConcept,
-      subjectReference: fields[19] as Reference,
-      trigger: (fields[20] as List)?.cast<TriggerDefinition>(),
-      condition: (fields[21] as List)?.cast<PlanDefinition_Condition>(),
-      input: (fields[22] as List)?.cast<DataRequirement>(),
-      output: (fields[23] as List)?.cast<DataRequirement>(),
-      relatedAction: (fields[24] as List)?.cast<PlanDefinition_RelatedAction>(),
-      timingDateTime: fields[25] as String,
-      elementTimingDateTime: fields[26] as Element,
-      timingAge: fields[27] as Age,
-      timingPeriod: fields[28] as Period,
-      timingDuration: fields[29] as Duration,
-      timingRange: fields[30] as Range,
-      timingTiming: fields[31] as Timing,
-      participant: (fields[32] as List)?.cast<PlanDefinition_Participant>(),
-      type: fields[33] as CodeableConcept,
-      groupingBehavior: fields[34] as String,
-      elementGroupingBehavior: fields[35] as Element,
-      selectionBehavior: fields[36] as String,
-      elementSelectionBehavior: fields[37] as Element,
-      requiredBehavior: fields[38] as String,
-      elementRequiredBehavior: fields[39] as Element,
-      precheckBehavior: fields[40] as String,
-      elementPrecheckBehavior: fields[41] as Element,
-      cardinalityBehavior: fields[42] as String,
-      elementCardinalityBehavior: fields[43] as Element,
-      definitionCanonical: fields[44] as String,
-      elementDefinitionCanonical: fields[45] as Element,
-      definitionUri: fields[46] as String,
-      elementDefinitionUri: fields[47] as Element,
-      transform: fields[48] as String,
-      dynamicValue: (fields[49] as List)?.cast<PlanDefinition_DynamicValue>(),
-      action: (fields[50] as List)?.cast<PlanDefinition_Action>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, PlanDefinition_Action obj) {
-    writer
-      ..writeByte(51)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.prefix)
-      ..writeByte(4)
-      ..write(obj.elementPrefix)
-      ..writeByte(5)
-      ..write(obj.title)
-      ..writeByte(6)
-      ..write(obj.elementTitle)
-      ..writeByte(7)
-      ..write(obj.description)
-      ..writeByte(8)
-      ..write(obj.elementDescription)
-      ..writeByte(9)
-      ..write(obj.textEquivalent)
-      ..writeByte(10)
-      ..write(obj.elementTextEquivalent)
-      ..writeByte(11)
-      ..write(obj.priority)
-      ..writeByte(12)
-      ..write(obj.elementPriority)
-      ..writeByte(13)
-      ..write(obj.code)
-      ..writeByte(14)
-      ..write(obj.reason)
-      ..writeByte(15)
-      ..write(obj.documentation)
-      ..writeByte(16)
-      ..write(obj.goalId)
-      ..writeByte(17)
-      ..write(obj.elementGoalId)
-      ..writeByte(18)
-      ..write(obj.subjectCodeableConcept)
-      ..writeByte(19)
-      ..write(obj.subjectReference)
-      ..writeByte(20)
-      ..write(obj.trigger)
-      ..writeByte(21)
-      ..write(obj.condition)
-      ..writeByte(22)
-      ..write(obj.input)
-      ..writeByte(23)
-      ..write(obj.output)
-      ..writeByte(24)
-      ..write(obj.relatedAction)
-      ..writeByte(25)
-      ..write(obj.timingDateTime)
-      ..writeByte(26)
-      ..write(obj.elementTimingDateTime)
-      ..writeByte(27)
-      ..write(obj.timingAge)
-      ..writeByte(28)
-      ..write(obj.timingPeriod)
-      ..writeByte(29)
-      ..write(obj.timingDuration)
-      ..writeByte(30)
-      ..write(obj.timingRange)
-      ..writeByte(31)
-      ..write(obj.timingTiming)
-      ..writeByte(32)
-      ..write(obj.participant)
-      ..writeByte(33)
-      ..write(obj.type)
-      ..writeByte(34)
-      ..write(obj.groupingBehavior)
-      ..writeByte(35)
-      ..write(obj.elementGroupingBehavior)
-      ..writeByte(36)
-      ..write(obj.selectionBehavior)
-      ..writeByte(37)
-      ..write(obj.elementSelectionBehavior)
-      ..writeByte(38)
-      ..write(obj.requiredBehavior)
-      ..writeByte(39)
-      ..write(obj.elementRequiredBehavior)
-      ..writeByte(40)
-      ..write(obj.precheckBehavior)
-      ..writeByte(41)
-      ..write(obj.elementPrecheckBehavior)
-      ..writeByte(42)
-      ..write(obj.cardinalityBehavior)
-      ..writeByte(43)
-      ..write(obj.elementCardinalityBehavior)
-      ..writeByte(44)
-      ..write(obj.definitionCanonical)
-      ..writeByte(45)
-      ..write(obj.elementDefinitionCanonical)
-      ..writeByte(46)
-      ..write(obj.definitionUri)
-      ..writeByte(47)
-      ..write(obj.elementDefinitionUri)
-      ..writeByte(48)
-      ..write(obj.transform)
-      ..writeByte(49)
-      ..write(obj.dynamicValue)
-      ..writeByte(50)
-      ..write(obj.action);
-  }
-}
-
-class PlanDefinition_ConditionAdapter
-    extends TypeAdapter<PlanDefinition_Condition> {
-  @override
-  final typeId = 484;
-
-  @override
-  PlanDefinition_Condition read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return PlanDefinition_Condition(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      kind: fields[3] as String,
-      elementKind: fields[4] as Element,
-      expression: fields[5] as Expression,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, PlanDefinition_Condition obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.kind)
-      ..writeByte(4)
-      ..write(obj.elementKind)
-      ..writeByte(5)
-      ..write(obj.expression);
-  }
-}
-
-class PlanDefinition_RelatedActionAdapter
-    extends TypeAdapter<PlanDefinition_RelatedAction> {
-  @override
-  final typeId = 485;
-
-  @override
-  PlanDefinition_RelatedAction read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return PlanDefinition_RelatedAction(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      actionId: fields[3] as String,
-      elementActionId: fields[4] as Element,
-      relationship: fields[5] as String,
-      elementRelationship: fields[6] as Element,
-      offsetDuration: fields[7] as Duration,
-      offsetRange: fields[8] as Range,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, PlanDefinition_RelatedAction obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.actionId)
-      ..writeByte(4)
-      ..write(obj.elementActionId)
-      ..writeByte(5)
-      ..write(obj.relationship)
-      ..writeByte(6)
-      ..write(obj.elementRelationship)
-      ..writeByte(7)
-      ..write(obj.offsetDuration)
-      ..writeByte(8)
-      ..write(obj.offsetRange);
-  }
-}
-
-class PlanDefinition_ParticipantAdapter
-    extends TypeAdapter<PlanDefinition_Participant> {
-  @override
-  final typeId = 486;
-
-  @override
-  PlanDefinition_Participant read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return PlanDefinition_Participant(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as String,
-      elementType: fields[4] as Element,
-      role: fields[5] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, PlanDefinition_Participant obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.elementType)
-      ..writeByte(5)
-      ..write(obj.role);
-  }
-}
-
-class PlanDefinition_DynamicValueAdapter
-    extends TypeAdapter<PlanDefinition_DynamicValue> {
-  @override
-  final typeId = 487;
-
-  @override
-  PlanDefinition_DynamicValue read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return PlanDefinition_DynamicValue(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      path: fields[3] as String,
-      elementPath: fields[4] as Element,
-      expression: fields[5] as Expression,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, PlanDefinition_DynamicValue obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.path)
-      ..writeByte(4)
-      ..write(obj.elementPath)
-      ..writeByte(5)
-      ..write(obj.expression);
   }
 }
 

@@ -277,12 +277,10 @@ AllergyIntolerance(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 64)
 class AllergyIntolerance_Reaction {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -291,7 +289,6 @@ class AllergyIntolerance_Reaction {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -306,7 +303,6 @@ class AllergyIntolerance_Reaction {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Identification of the specific substance (or pharmaceutical product)
@@ -320,48 +316,38 @@ class AllergyIntolerance_Reaction {
   // confirm that AllergyIntolerance.reaction.substance falls within the
   // semantic scope of AllergyIntolerance.code, then the receiving system
   // should ignore AllergyIntolerance.reaction.substance.
-  @HiveField(3)
   CodeableConcept substance;
 
   //  Clinical symptoms and/or signs that are observed or associated with
   // the adverse reaction event.
-  @HiveField(4)
   List<CodeableConcept> manifestation;
 
   //  Text description about the reaction as a whole, including details of
   // the manifestation if required.
-  @HiveField(5)
   String description;
 
   //  Extensions for description
-  @HiveField(6)
   Element elementDescription;
 
   //  Record of the date and/or time of the onset of the Reaction.
-  @HiveField(7)
   DateTime onset;
 
   //  Extensions for onset
-  @HiveField(8)
   Element elementOnset;
 
   //  Clinical assessment of the severity of the reaction event as a whole,
   // potentially considering multiple different manifestations.
-  @HiveField(9)
   String severity; // <code> enum: mild/moderate/severe;
 
   //  Extensions for severity
-  @HiveField(10)
   Element elementSeverity;
 
   //  Identification of the route by which the subject was exposed to the
   // substance.
-  @HiveField(11)
   CodeableConcept exposureRoute;
 
   //  Additional text about the adverse reaction event not captured in other
   // fields.
-  @HiveField(12)
   List<Annotation> note;
 
 AllergyIntolerance_Reaction(
@@ -521,67 +507,6 @@ class AllergyIntoleranceAdapter extends TypeAdapter<AllergyIntolerance> {
       ..write(obj.note)
       ..writeByte(37)
       ..write(obj.reaction);
-  }
-}
-
-class AllergyIntolerance_ReactionAdapter
-    extends TypeAdapter<AllergyIntolerance_Reaction> {
-  @override
-  final typeId = 64;
-
-  @override
-  AllergyIntolerance_Reaction read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return AllergyIntolerance_Reaction(
-      (fields[4] as List)?.cast<CodeableConcept>(),
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      substance: fields[3] as CodeableConcept,
-      description: fields[5] as String,
-      elementDescription: fields[6] as Element,
-      onset: fields[7] as DateTime,
-      elementOnset: fields[8] as Element,
-      severity: fields[9] as String,
-      elementSeverity: fields[10] as Element,
-      exposureRoute: fields[11] as CodeableConcept,
-      note: (fields[12] as List)?.cast<Annotation>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, AllergyIntolerance_Reaction obj) {
-    writer
-      ..writeByte(13)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.substance)
-      ..writeByte(4)
-      ..write(obj.manifestation)
-      ..writeByte(5)
-      ..write(obj.description)
-      ..writeByte(6)
-      ..write(obj.elementDescription)
-      ..writeByte(7)
-      ..write(obj.onset)
-      ..writeByte(8)
-      ..write(obj.elementOnset)
-      ..writeByte(9)
-      ..write(obj.severity)
-      ..writeByte(10)
-      ..write(obj.elementSeverity)
-      ..writeByte(11)
-      ..write(obj.exposureRoute)
-      ..writeByte(12)
-      ..write(obj.note);
   }
 }
 

@@ -272,12 +272,10 @@ ResearchStudy(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 517)
 class ResearchStudy_Arm {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -286,7 +284,6 @@ class ResearchStudy_Arm {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -301,29 +298,23 @@ class ResearchStudy_Arm {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Unique, human-readable label for this arm of the study.
-  @HiveField(3)
   String name;
 
   //  Extensions for name
-  @HiveField(4)
   Element elementName;
 
   //  Categorization of study arm, e.g. experimental, active comparator,
   // placebo comparater.
-  @HiveField(5)
   CodeableConcept type;
 
   //  A succinct description of the path through the study that would be
   // followed by a subject adhering to this arm.
-  @HiveField(6)
   String description;
 
   //  Extensions for description
-  @HiveField(7)
   Element elementDescription;
 
 ResearchStudy_Arm(
@@ -342,12 +333,10 @@ ResearchStudy_Arm(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 518)
 class ResearchStudy_Objective {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -356,7 +345,6 @@ class ResearchStudy_Objective {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -371,19 +359,15 @@ class ResearchStudy_Objective {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Unique, human-readable label for this objective of the study.
-  @HiveField(3)
   String name;
 
   //  Extensions for name
-  @HiveField(4)
   Element elementName;
 
   //  The kind of study objective.
-  @HiveField(5)
   CodeableConcept type;
 
 ResearchStudy_Objective(
@@ -536,91 +520,6 @@ class ResearchStudyAdapter extends TypeAdapter<ResearchStudy> {
       ..write(obj.arm)
       ..writeByte(37)
       ..write(obj.objective);
-  }
-}
-
-class ResearchStudy_ArmAdapter extends TypeAdapter<ResearchStudy_Arm> {
-  @override
-  final typeId = 517;
-
-  @override
-  ResearchStudy_Arm read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ResearchStudy_Arm(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      name: fields[3] as String,
-      elementName: fields[4] as Element,
-      type: fields[5] as CodeableConcept,
-      description: fields[6] as String,
-      elementDescription: fields[7] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ResearchStudy_Arm obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.name)
-      ..writeByte(4)
-      ..write(obj.elementName)
-      ..writeByte(5)
-      ..write(obj.type)
-      ..writeByte(6)
-      ..write(obj.description)
-      ..writeByte(7)
-      ..write(obj.elementDescription);
-  }
-}
-
-class ResearchStudy_ObjectiveAdapter
-    extends TypeAdapter<ResearchStudy_Objective> {
-  @override
-  final typeId = 518;
-
-  @override
-  ResearchStudy_Objective read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ResearchStudy_Objective(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      name: fields[3] as String,
-      elementName: fields[4] as Element,
-      type: fields[5] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ResearchStudy_Objective obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.name)
-      ..writeByte(4)
-      ..write(obj.elementName)
-      ..writeByte(5)
-      ..write(obj.type);
   }
 }
 

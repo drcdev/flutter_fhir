@@ -370,12 +370,10 @@ OperationDefinition(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 459)
 class OperationDefinition_Parameter {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -384,7 +382,6 @@ class OperationDefinition_Parameter {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -399,57 +396,44 @@ class OperationDefinition_Parameter {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The name of used to identify the parameter.
-  @HiveField(3)
   String name;
 
   //  Extensions for name
-  @HiveField(4)
   Element elementName;
 
   //  Whether this is an input or an output parameter.
-  @HiveField(5)
   String use; // <code> enum: in/out;
 
   //  Extensions for use
-  @HiveField(6)
   Element elementUse;
 
   //  The minimum number of times this parameter SHALL appear in the request
   // or response.
-  @HiveField(7)
   int min;
 
   //  Extensions for min
-  @HiveField(8)
   Element elementMin;
 
   //  The maximum number of times this element is permitted to appear in the
   // request or response.
-  @HiveField(9)
   String max;
 
   //  Extensions for max
-  @HiveField(10)
   Element elementMax;
 
   //  Describes the meaning or use of this parameter.
-  @HiveField(11)
   String documentation;
 
   //  Extensions for documentation
-  @HiveField(12)
   Element elementDocumentation;
 
   //  The type for this parameter.
-  @HiveField(13)
   String type;
 
   //  Extensions for type
-  @HiveField(14)
   Element elementType;
 
   //  Used when the type is "Reference" or "canonical", and identifies a
@@ -460,30 +444,24 @@ class OperationDefinition_Parameter {
   // another StructureDefinition or Implementation Guide by a canonical URL.
   // When an implementation guide is specified, the target resource SHALL
   // conform to at least one profile defined in the implementation guide.
-  @HiveField(15)
   List<String> targetProfile;
 
   //  How the parameter is understood as a search parameter. This is only
   // used if the parameter type is 'string'.
-  @HiveField(16)
   String searchType; // <code> enum: number/date/string/token/reference/composite/quantity/uri/special;
 
   //  Extensions for searchType
-  @HiveField(17)
   Element elementSearchType;
 
   //  Binds to a value set if this parameter is coded (code, Coding,
   // CodeableConcept).
-  @HiveField(18)
   OperationDefinition_Binding binding;
 
   //  Identifies other resource parameters within the operation invocation
   // that are expected to resolve to this resource.
-  @HiveField(19)
   List<OperationDefinition_ReferencedFrom> referencedFrom;
 
   //  The parts of a nested Parameter.
-  @HiveField(20)
   List<OperationDefinition_Parameter> part;
 
 OperationDefinition_Parameter(
@@ -515,12 +493,10 @@ OperationDefinition_Parameter(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 460)
 class OperationDefinition_Binding {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -529,7 +505,6 @@ class OperationDefinition_Binding {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -544,22 +519,18 @@ class OperationDefinition_Binding {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Indicates the degree of conformance expectations associated with this
   // binding - that is, the degree to which the provided value set must be
   // adhered to in the instances.
-  @HiveField(3)
   String strength; // <code> enum: required/extensible/preferred/example;
 
   //  Extensions for strength
-  @HiveField(4)
   Element elementStrength;
 
   //  Points to the value set or external definition (e.g. implicit value
   // set) that identifies the set of codes to be used.
-  @HiveField(5)
   String valueSet;
 
 OperationDefinition_Binding(
@@ -576,12 +547,10 @@ OperationDefinition_Binding(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 461)
 class OperationDefinition_ReferencedFrom {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -590,7 +559,6 @@ class OperationDefinition_ReferencedFrom {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -605,26 +573,21 @@ class OperationDefinition_ReferencedFrom {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The name of the parameter or dot-separated path of parameter names
   // pointing to the resource parameter that is expected to contain a
   // reference to this resource.
-  @HiveField(3)
   String source;
 
   //  Extensions for source
-  @HiveField(4)
   Element elementSource;
 
   //  The id of the element in the referencing resource that is expected to
   // resolve to this resource.
-  @HiveField(5)
   String sourceId;
 
   //  Extensions for sourceId
-  @HiveField(6)
   Element elementSourceId;
 
 OperationDefinition_ReferencedFrom(
@@ -642,12 +605,10 @@ OperationDefinition_ReferencedFrom(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 462)
 class OperationDefinition_Overload {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -656,7 +617,6 @@ class OperationDefinition_Overload {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -671,23 +631,18 @@ class OperationDefinition_Overload {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Name of parameter to include in overload.
-  @HiveField(3)
   List<String> parameterName;
 
   //  Extensions for parameterName
-  @HiveField(4)
   List<Element> elementParameterName;
 
   //  Comments to go on overload.
-  @HiveField(5)
   String comment;
 
   //  Extensions for comment
-  @HiveField(6)
   Element elementComment;
 
 OperationDefinition_Overload(
@@ -892,218 +847,6 @@ class OperationDefinitionAdapter extends TypeAdapter<OperationDefinition> {
       ..write(obj.parameter)
       ..writeByte(54)
       ..write(obj.overload);
-  }
-}
-
-class OperationDefinition_ParameterAdapter
-    extends TypeAdapter<OperationDefinition_Parameter> {
-  @override
-  final typeId = 459;
-
-  @override
-  OperationDefinition_Parameter read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return OperationDefinition_Parameter(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      name: fields[3] as String,
-      elementName: fields[4] as Element,
-      use: fields[5] as String,
-      elementUse: fields[6] as Element,
-      min: fields[7] as int,
-      elementMin: fields[8] as Element,
-      max: fields[9] as String,
-      elementMax: fields[10] as Element,
-      documentation: fields[11] as String,
-      elementDocumentation: fields[12] as Element,
-      type: fields[13] as String,
-      elementType: fields[14] as Element,
-      targetProfile: (fields[15] as List)?.cast<String>(),
-      searchType: fields[16] as String,
-      elementSearchType: fields[17] as Element,
-      binding: fields[18] as OperationDefinition_Binding,
-      referencedFrom:
-          (fields[19] as List)?.cast<OperationDefinition_ReferencedFrom>(),
-      part: (fields[20] as List)?.cast<OperationDefinition_Parameter>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, OperationDefinition_Parameter obj) {
-    writer
-      ..writeByte(21)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.name)
-      ..writeByte(4)
-      ..write(obj.elementName)
-      ..writeByte(5)
-      ..write(obj.use)
-      ..writeByte(6)
-      ..write(obj.elementUse)
-      ..writeByte(7)
-      ..write(obj.min)
-      ..writeByte(8)
-      ..write(obj.elementMin)
-      ..writeByte(9)
-      ..write(obj.max)
-      ..writeByte(10)
-      ..write(obj.elementMax)
-      ..writeByte(11)
-      ..write(obj.documentation)
-      ..writeByte(12)
-      ..write(obj.elementDocumentation)
-      ..writeByte(13)
-      ..write(obj.type)
-      ..writeByte(14)
-      ..write(obj.elementType)
-      ..writeByte(15)
-      ..write(obj.targetProfile)
-      ..writeByte(16)
-      ..write(obj.searchType)
-      ..writeByte(17)
-      ..write(obj.elementSearchType)
-      ..writeByte(18)
-      ..write(obj.binding)
-      ..writeByte(19)
-      ..write(obj.referencedFrom)
-      ..writeByte(20)
-      ..write(obj.part);
-  }
-}
-
-class OperationDefinition_BindingAdapter
-    extends TypeAdapter<OperationDefinition_Binding> {
-  @override
-  final typeId = 460;
-
-  @override
-  OperationDefinition_Binding read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return OperationDefinition_Binding(
-      fields[5] as String,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      strength: fields[3] as String,
-      elementStrength: fields[4] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, OperationDefinition_Binding obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.strength)
-      ..writeByte(4)
-      ..write(obj.elementStrength)
-      ..writeByte(5)
-      ..write(obj.valueSet);
-  }
-}
-
-class OperationDefinition_ReferencedFromAdapter
-    extends TypeAdapter<OperationDefinition_ReferencedFrom> {
-  @override
-  final typeId = 461;
-
-  @override
-  OperationDefinition_ReferencedFrom read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return OperationDefinition_ReferencedFrom(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      source: fields[3] as String,
-      elementSource: fields[4] as Element,
-      sourceId: fields[5] as String,
-      elementSourceId: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, OperationDefinition_ReferencedFrom obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.source)
-      ..writeByte(4)
-      ..write(obj.elementSource)
-      ..writeByte(5)
-      ..write(obj.sourceId)
-      ..writeByte(6)
-      ..write(obj.elementSourceId);
-  }
-}
-
-class OperationDefinition_OverloadAdapter
-    extends TypeAdapter<OperationDefinition_Overload> {
-  @override
-  final typeId = 462;
-
-  @override
-  OperationDefinition_Overload read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return OperationDefinition_Overload(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      parameterName: (fields[3] as List)?.cast<String>(),
-      elementParameterName: (fields[4] as List)?.cast<Element>(),
-      comment: fields[5] as String,
-      elementComment: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, OperationDefinition_Overload obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.parameterName)
-      ..writeByte(4)
-      ..write(obj.elementParameterName)
-      ..writeByte(5)
-      ..write(obj.comment)
-      ..writeByte(6)
-      ..write(obj.elementComment);
   }
 }
 

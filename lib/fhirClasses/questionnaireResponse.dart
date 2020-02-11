@@ -186,12 +186,10 @@ QuestionnaireResponse(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 505)
 class QuestionnaireResponse_Item {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -200,7 +198,6 @@ class QuestionnaireResponse_Item {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -215,42 +212,33 @@ class QuestionnaireResponse_Item {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The item from the Questionnaire that corresponds to this item in the
   // QuestionnaireResponse resource.
-  @HiveField(3)
   String linkId;
 
   //  Extensions for linkId
-  @HiveField(4)
   Element elementLinkId;
 
   //  A reference to an [[[ElementDefinition]]] that provides the details
   // for the item.
-  @HiveField(5)
   String definition;
 
   //  Extensions for definition
-  @HiveField(6)
   Element elementDefinition;
 
   //  Text that is displayed above the contents of the group or as the text
   // of the question being answered.
-  @HiveField(7)
   String text;
 
   //  Extensions for text
-  @HiveField(8)
   Element elementText;
 
   //  The respondent's answer(s) to the question.
-  @HiveField(9)
   List<QuestionnaireResponse_Answer> answer;
 
   //  Questions or sub-groups nested beneath a question or group.
-  @HiveField(10)
   List<QuestionnaireResponse_Item> item;
 
 QuestionnaireResponse_Item(
@@ -272,12 +260,10 @@ QuestionnaireResponse_Item(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 506)
 class QuestionnaireResponse_Answer {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -286,7 +272,6 @@ class QuestionnaireResponse_Answer {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -301,16 +286,13 @@ class QuestionnaireResponse_Answer {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The answer (or one of the answers) provided by the respondent to the
   // question.
-  @HiveField(3)
   bool valueBoolean; //  pattern: ^true|false$
 
   //  Extensions for valueBoolean
-  @HiveField(4)
   Element elementValueBoolean;
 
   //  The answer (or one of the answers) provided by the respondent to the
@@ -318,7 +300,6 @@ class QuestionnaireResponse_Answer {
   double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
 
   //  Extensions for valueDecimal
-  @HiveField(6)
   Element elementValueDecimal;
 
   //  The answer (or one of the answers) provided by the respondent to the
@@ -326,76 +307,60 @@ class QuestionnaireResponse_Answer {
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
 
   //  Extensions for valueInteger
-  @HiveField(8)
   Element elementValueInteger;
 
   //  The answer (or one of the answers) provided by the respondent to the
   // question.
-  @HiveField(9)
   String valueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for valueDate
-  @HiveField(10)
   Element elementValueDate;
 
   //  The answer (or one of the answers) provided by the respondent to the
   // question.
-  @HiveField(11)
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for valueDateTime
-  @HiveField(12)
   Element elementValueDateTime;
 
   //  The answer (or one of the answers) provided by the respondent to the
   // question.
-  @HiveField(13)
   String valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
 
   //  Extensions for valueTime
-  @HiveField(14)
   Element elementValueTime;
 
   //  The answer (or one of the answers) provided by the respondent to the
   // question.
-  @HiveField(15)
   String valueString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for valueString
-  @HiveField(16)
   Element elementValueString;
 
   //  The answer (or one of the answers) provided by the respondent to the
   // question.
-  @HiveField(17)
   String valueUri; //  pattern: ^\S*$
 
   //  Extensions for valueUri
-  @HiveField(18)
   Element elementValueUri;
 
   //  The answer (or one of the answers) provided by the respondent to the
   // question.
-  @HiveField(19)
   Attachment valueAttachment;
 
   //  The answer (or one of the answers) provided by the respondent to the
   // question.
-  @HiveField(20)
   Coding valueCoding;
 
   //  The answer (or one of the answers) provided by the respondent to the
   // question.
-  @HiveField(21)
   Quantity valueQuantity;
 
   //  The answer (or one of the answers) provided by the respondent to the
   // question.
-  @HiveField(22)
   Reference valueReference;
 
   //  Nested groups and/or questions found within this particular answer.
-  @HiveField(23)
   List<QuestionnaireResponse_Item> item;
 
 QuestionnaireResponse_Answer(
@@ -522,149 +487,6 @@ class QuestionnaireResponseAdapter extends TypeAdapter<QuestionnaireResponse> {
       ..write(obj.author)
       ..writeByte(22)
       ..write(obj.source)
-      ..writeByte(23)
-      ..write(obj.item);
-  }
-}
-
-class QuestionnaireResponse_ItemAdapter
-    extends TypeAdapter<QuestionnaireResponse_Item> {
-  @override
-  final typeId = 505;
-
-  @override
-  QuestionnaireResponse_Item read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return QuestionnaireResponse_Item(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      linkId: fields[3] as String,
-      elementLinkId: fields[4] as Element,
-      definition: fields[5] as String,
-      elementDefinition: fields[6] as Element,
-      text: fields[7] as String,
-      elementText: fields[8] as Element,
-      answer: (fields[9] as List)?.cast<QuestionnaireResponse_Answer>(),
-      item: (fields[10] as List)?.cast<QuestionnaireResponse_Item>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, QuestionnaireResponse_Item obj) {
-    writer
-      ..writeByte(11)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.linkId)
-      ..writeByte(4)
-      ..write(obj.elementLinkId)
-      ..writeByte(5)
-      ..write(obj.definition)
-      ..writeByte(6)
-      ..write(obj.elementDefinition)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.elementText)
-      ..writeByte(9)
-      ..write(obj.answer)
-      ..writeByte(10)
-      ..write(obj.item);
-  }
-}
-
-class QuestionnaireResponse_AnswerAdapter
-    extends TypeAdapter<QuestionnaireResponse_Answer> {
-  @override
-  final typeId = 506;
-
-  @override
-  QuestionnaireResponse_Answer read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return QuestionnaireResponse_Answer(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      valueBoolean: fields[3] as bool,
-      elementValueBoolean: fields[4] as Element,
-      elementValueDecimal: fields[6] as Element,
-      elementValueInteger: fields[8] as Element,
-      valueDate: fields[9] as String,
-      elementValueDate: fields[10] as Element,
-      valueDateTime: fields[11] as String,
-      elementValueDateTime: fields[12] as Element,
-      valueTime: fields[13] as String,
-      elementValueTime: fields[14] as Element,
-      valueString: fields[15] as String,
-      elementValueString: fields[16] as Element,
-      valueUri: fields[17] as String,
-      elementValueUri: fields[18] as Element,
-      valueAttachment: fields[19] as Attachment,
-      valueCoding: fields[20] as Coding,
-      valueQuantity: fields[21] as Quantity,
-      valueReference: fields[22] as Reference,
-      item: (fields[23] as List)?.cast<QuestionnaireResponse_Item>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, QuestionnaireResponse_Answer obj) {
-    writer
-      ..writeByte(22)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.valueBoolean)
-      ..writeByte(4)
-      ..write(obj.elementValueBoolean)
-      ..writeByte(6)
-      ..write(obj.elementValueDecimal)
-      ..writeByte(8)
-      ..write(obj.elementValueInteger)
-      ..writeByte(9)
-      ..write(obj.valueDate)
-      ..writeByte(10)
-      ..write(obj.elementValueDate)
-      ..writeByte(11)
-      ..write(obj.valueDateTime)
-      ..writeByte(12)
-      ..write(obj.elementValueDateTime)
-      ..writeByte(13)
-      ..write(obj.valueTime)
-      ..writeByte(14)
-      ..write(obj.elementValueTime)
-      ..writeByte(15)
-      ..write(obj.valueString)
-      ..writeByte(16)
-      ..write(obj.elementValueString)
-      ..writeByte(17)
-      ..write(obj.valueUri)
-      ..writeByte(18)
-      ..write(obj.elementValueUri)
-      ..writeByte(19)
-      ..write(obj.valueAttachment)
-      ..writeByte(20)
-      ..write(obj.valueCoding)
-      ..writeByte(21)
-      ..write(obj.valueQuantity)
-      ..writeByte(22)
-      ..write(obj.valueReference)
       ..writeByte(23)
       ..write(obj.item);
   }

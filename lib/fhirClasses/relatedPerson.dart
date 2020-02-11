@@ -191,12 +191,10 @@ RelatedPerson(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 508)
 class RelatedPerson_Communication {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -205,7 +203,6 @@ class RelatedPerson_Communication {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -220,23 +217,19 @@ class RelatedPerson_Communication {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The ISO-639-1 alpha 2 code in lower case for the language, optionally
   // followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in
   // upper case; e.g. "en" for English, or "en-US" for American English
   // versus "en-EN" for England English.
-  @HiveField(3)
   CodeableConcept language;
 
   //  Indicates whether or not the patient prefers this language (over other
   // languages he masters up a certain level).
-  @HiveField(4)
   bool preferred;
 
   //  Extensions for preferred
-  @HiveField(5)
   Element elementPreferred;
 
 RelatedPerson_Communication(
@@ -353,46 +346,6 @@ class RelatedPersonAdapter extends TypeAdapter<RelatedPerson> {
       ..write(obj.period)
       ..writeByte(25)
       ..write(obj.communication);
-  }
-}
-
-class RelatedPerson_CommunicationAdapter
-    extends TypeAdapter<RelatedPerson_Communication> {
-  @override
-  final typeId = 508;
-
-  @override
-  RelatedPerson_Communication read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return RelatedPerson_Communication(
-      fields[3] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      preferred: fields[4] as bool,
-      elementPreferred: fields[5] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, RelatedPerson_Communication obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.language)
-      ..writeByte(4)
-      ..write(obj.preferred)
-      ..writeByte(5)
-      ..write(obj.elementPreferred);
   }
 }
 

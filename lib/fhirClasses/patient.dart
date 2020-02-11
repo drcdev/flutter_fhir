@@ -275,12 +275,10 @@ Future<List<Patient>> readPtList() async {
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 471)
 class Patient_Contact {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -289,7 +287,6 @@ class Patient_Contact {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -304,44 +301,35 @@ class Patient_Contact {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The nature of the relationship between the patient and the contact
   // person.
-  @HiveField(3)
   List<CodeableConcept> relationship;
 
   //  A name associated with the contact person.
-  @HiveField(4)
   HumanName name;
 
   //  A contact detail for the person, e.g. a telephone number or an email
   // address.
-  @HiveField(5)
   List<ContactPoint> telecom;
 
   //  Address for the contact person.
-  @HiveField(6)
   Address address;
 
   //  Administrative Gender - the gender that the contact person is
   // considered to have for administration and record keeping purposes.
-  @HiveField(7)
   String gender; // <code> enum: male/female/other/unknown;
 
   //  Extensions for gender
-  @HiveField(8)
   Element elementGender;
 
   //  Organization on behalf of which the contact is acting or for which the
   // contact is working.
-  @HiveField(9)
   Reference organization;
 
   //  The period during which this contact person or organization is valid
   // to be contacted relating to this patient.
-  @HiveField(10)
   Period period;
 
 Patient_Contact(
@@ -363,12 +351,10 @@ Patient_Contact(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 472)
 class Patient_Communication {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -377,7 +363,6 @@ class Patient_Communication {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -392,23 +377,19 @@ class Patient_Communication {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The ISO-639-1 alpha 2 code in lower case for the language, optionally
   // followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in
   // upper case; e.g. "en" for English, or "en-US" for American English
   // versus "en-EN" for England English.
-  @HiveField(3)
   CodeableConcept language;
 
   //  Indicates whether or not the patient prefers this language (over other
   // languages he masters up a certain level).
-  @HiveField(4)
   bool preferred;
 
   //  Extensions for preferred
-  @HiveField(5)
   Element elementPreferred;
 
 Patient_Communication(
@@ -425,12 +406,10 @@ Patient_Communication(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 473)
 class Patient_Link {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -439,7 +418,6 @@ class Patient_Link {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -454,20 +432,16 @@ class Patient_Link {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The other patient resource that the link refers to.
-  @HiveField(3)
   Reference other;
 
   //  The type of link between this patient resource and another patient
   // resource.
-  @HiveField(4)
   String type; // <code> enum: replaced-by/replaces/refer/seealso;
 
   //  Extensions for type
-  @HiveField(5)
   Element elementType;
 
 Patient_Link(
@@ -611,138 +585,6 @@ class PatientAdapter extends TypeAdapter<Patient> {
       ..write(obj.managingOrganization)
       ..writeByte(35)
       ..write(obj.link);
-  }
-}
-
-class Patient_ContactAdapter extends TypeAdapter<Patient_Contact> {
-  @override
-  final typeId = 471;
-
-  @override
-  Patient_Contact read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Patient_Contact(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      relationship: (fields[3] as List)?.cast<CodeableConcept>(),
-      name: fields[4] as HumanName,
-      telecom: (fields[5] as List)?.cast<ContactPoint>(),
-      address: fields[6] as Address,
-      gender: fields[7] as String,
-      elementGender: fields[8] as Element,
-      organization: fields[9] as Reference,
-      period: fields[10] as Period,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Patient_Contact obj) {
-    writer
-      ..writeByte(11)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.relationship)
-      ..writeByte(4)
-      ..write(obj.name)
-      ..writeByte(5)
-      ..write(obj.telecom)
-      ..writeByte(6)
-      ..write(obj.address)
-      ..writeByte(7)
-      ..write(obj.gender)
-      ..writeByte(8)
-      ..write(obj.elementGender)
-      ..writeByte(9)
-      ..write(obj.organization)
-      ..writeByte(10)
-      ..write(obj.period);
-  }
-}
-
-class Patient_CommunicationAdapter extends TypeAdapter<Patient_Communication> {
-  @override
-  final typeId = 472;
-
-  @override
-  Patient_Communication read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Patient_Communication(
-      fields[3] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      preferred: fields[4] as bool,
-      elementPreferred: fields[5] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Patient_Communication obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.language)
-      ..writeByte(4)
-      ..write(obj.preferred)
-      ..writeByte(5)
-      ..write(obj.elementPreferred);
-  }
-}
-
-class Patient_LinkAdapter extends TypeAdapter<Patient_Link> {
-  @override
-  final typeId = 473;
-
-  @override
-  Patient_Link read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Patient_Link(
-      fields[3] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[4] as String,
-      elementType: fields[5] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Patient_Link obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.other)
-      ..writeByte(4)
-      ..write(obj.type)
-      ..writeByte(5)
-      ..write(obj.elementType);
   }
 }
 

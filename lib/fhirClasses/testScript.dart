@@ -323,12 +323,10 @@ TestScript(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 627)
 class TestScript_Origin {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -337,7 +335,6 @@ class TestScript_Origin {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -352,20 +349,16 @@ class TestScript_Origin {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Abstract name given to an origin server in this test script.  The name
   // is provided as a number starting at 1.
-  @HiveField(3)
   int index;
 
   //  Extensions for index
-  @HiveField(4)
   Element elementIndex;
 
   //  The type of origin profile the test system supports.
-  @HiveField(5)
   Coding profile;
 
 TestScript_Origin(
@@ -382,12 +375,10 @@ TestScript_Origin(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 628)
 class TestScript_Destination {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -396,7 +387,6 @@ class TestScript_Destination {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -411,20 +401,16 @@ class TestScript_Destination {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Abstract name given to a destination server in this test script.  The
   // name is provided as a number starting at 1.
-  @HiveField(3)
   int index;
 
   //  Extensions for index
-  @HiveField(4)
   Element elementIndex;
 
   //  The type of destination profile the test system supports.
-  @HiveField(5)
   Coding profile;
 
 TestScript_Destination(
@@ -441,12 +427,10 @@ TestScript_Destination(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 629)
 class TestScript_Metadata {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -455,7 +439,6 @@ class TestScript_Metadata {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -470,16 +453,13 @@ class TestScript_Metadata {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A link to the FHIR specification that this test is covering.
-  @HiveField(3)
   List<TestScript_Link> link;
 
   //  Capabilities that must exist and are assumed to function correctly on
   // the FHIR server being tested.
-  @HiveField(4)
   List<TestScript_Capability> capability;
 
 TestScript_Metadata(
@@ -495,12 +475,10 @@ TestScript_Metadata(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 630)
 class TestScript_Link {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -509,7 +487,6 @@ class TestScript_Link {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -524,24 +501,19 @@ class TestScript_Link {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  URL to a particular requirement or feature within the FHIR
   // specification.
-  @HiveField(3)
   String url;
 
   //  Extensions for url
-  @HiveField(4)
   Element elementUrl;
 
   //  Short description of the link.
-  @HiveField(5)
   String description;
 
   //  Extensions for description
-  @HiveField(6)
   Element elementDescription;
 
 TestScript_Link(
@@ -559,12 +531,10 @@ TestScript_Link(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 631)
 class TestScript_Capability {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -573,7 +543,6 @@ class TestScript_Capability {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -588,65 +557,51 @@ class TestScript_Capability {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Whether or not the test execution will require the given capabilities
   // of the server in order for this test script to execute.
-  @HiveField(3)
   bool required;
 
   //  Extensions for required
-  @HiveField(4)
   Element elementRequired;
 
   //  Whether or not the test execution will validate the given capabilities
   // of the server in order for this test script to execute.
-  @HiveField(5)
   bool validated;
 
   //  Extensions for validated
-  @HiveField(6)
   Element elementValidated;
 
   //  Description of the capabilities that this test script is requiring the
   // server to support.
-  @HiveField(7)
   String description;
 
   //  Extensions for description
-  @HiveField(8)
   Element elementDescription;
 
   //  Which origin server these requirements apply to.
-  @HiveField(9)
   List<int> origin;
 
   //  Extensions for origin
-  @HiveField(10)
   List<Element> elementOrigin;
 
   //  Which server these requirements apply to.
-  @HiveField(11)
   int destination;
 
   //  Extensions for destination
-  @HiveField(12)
   Element elementDestination;
 
   //  Links to the FHIR specification that describes this interaction and
   // the resources involved in more detail.
-  @HiveField(13)
   List<String> link;
 
   //  Extensions for link
-  @HiveField(14)
   List<Element> elementLink;
 
   //  Minimum capabilities required of server for test script to execute
   // successfully.   If server does not meet at a minimum the referenced
   // capability statement, then all tests in this script are skipped.
-  @HiveField(15)
   String capabilities;
 
 TestScript_Capability(
@@ -673,12 +628,10 @@ TestScript_Capability(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 632)
 class TestScript_Fixture {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -687,7 +640,6 @@ class TestScript_Fixture {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -702,34 +654,28 @@ class TestScript_Fixture {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Whether or not to implicitly create the fixture during setup. If true,
   // the fixture is automatically created on each server being tested during
   // setup, therefore no create operation is required for this fixture in
   // the TestScript.setup section.
-  @HiveField(3)
   bool autocreate;
 
   //  Extensions for autocreate
-  @HiveField(4)
   Element elementAutocreate;
 
   //  Whether or not to implicitly delete the fixture during teardown. If
   // true, the fixture is automatically deleted on each server being tested
   // during teardown, therefore no delete operation is required for this
   // fixture in the TestScript.teardown section.
-  @HiveField(5)
   bool autodelete;
 
   //  Extensions for autodelete
-  @HiveField(6)
   Element elementAutodelete;
 
   //  Reference to the resource (containing the contents of the resource
   // needed for operations).
-  @HiveField(7)
   Reference resource;
 
 TestScript_Fixture(
@@ -748,12 +694,10 @@ TestScript_Fixture(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 633)
 class TestScript_Variable {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -762,7 +706,6 @@ class TestScript_Variable {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -777,79 +720,62 @@ class TestScript_Variable {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Descriptive name for this variable.
-  @HiveField(3)
   String name;
 
   //  Extensions for name
-  @HiveField(4)
   Element elementName;
 
   //  A default, hard-coded, or user-defined value for this variable.
-  @HiveField(5)
   String defaultValue;
 
   //  Extensions for defaultValue
-  @HiveField(6)
   Element elementDefaultValue;
 
   //  A free text natural language description of the variable and its
   // purpose.
-  @HiveField(7)
   String description;
 
   //  Extensions for description
-  @HiveField(8)
   Element elementDescription;
 
   //  The FHIRPath expression to evaluate against the fixture body. When
   // variables are defined, only one of either expression, headerField or
   // path must be specified.
-  @HiveField(9)
   String expression;
 
   //  Extensions for expression
-  @HiveField(10)
   Element elementExpression;
 
   //  Will be used to grab the HTTP header field value from the headers that
   // sourceId is pointing to.
-  @HiveField(11)
   String headerField;
 
   //  Extensions for headerField
-  @HiveField(12)
   Element elementHeaderField;
 
   //  Displayable text string with hint help information to the user when
   // entering a default value.
-  @HiveField(13)
   String hint;
 
   //  Extensions for hint
-  @HiveField(14)
   Element elementHint;
 
   //  XPath or JSONPath to evaluate against the fixture body.  When
   // variables are defined, only one of either expression, headerField or
   // path must be specified.
-  @HiveField(15)
   String path;
 
   //  Extensions for path
-  @HiveField(16)
   Element elementPath;
 
   //  Fixture to evaluate the XPath/JSONPath expression or the headerField 
   // against within this variable.
-  @HiveField(17)
   String sourceId;
 
   //  Extensions for sourceId
-  @HiveField(18)
   Element elementSourceId;
 
 TestScript_Variable(
@@ -879,12 +805,10 @@ TestScript_Variable(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 634)
 class TestScript_Setup {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -893,7 +817,6 @@ class TestScript_Setup {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -908,11 +831,9 @@ class TestScript_Setup {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Action would contain either an operation or an assertion.
-  @HiveField(3)
   List<TestScript_Action> action;
 
 TestScript_Setup(
@@ -927,12 +848,10 @@ TestScript_Setup(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 635)
 class TestScript_Action {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -941,7 +860,6 @@ class TestScript_Action {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -956,16 +874,13 @@ class TestScript_Action {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The operation to perform.
-  @HiveField(3)
   TestScript_Operation operation;
 
   //  Evaluates the results of previous operations to determine if the
   // server under test behaves appropriately.
-  @HiveField(4)
   TestScript_Assert asserts;
 
 TestScript_Action(
@@ -981,12 +896,10 @@ TestScript_Action(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 636)
 class TestScript_Operation {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -995,7 +908,6 @@ class TestScript_Operation {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -1010,146 +922,113 @@ class TestScript_Operation {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Server interaction or operation type.
-  @HiveField(3)
   Coding type;
 
   //  The type of the resource.  See
   // http://build.fhir.org/resourcelist.html.
-  @HiveField(4)
   String resource;
 
   //  Extensions for resource
-  @HiveField(5)
   Element elementResource;
 
   //  The label would be used for tracking/logging purposes by test engines.
-  @HiveField(6)
   String label;
 
   //  Extensions for label
-  @HiveField(7)
   Element elementLabel;
 
   //  The description would be used by test engines for tracking and
   // reporting purposes.
-  @HiveField(8)
   String description;
 
   //  Extensions for description
-  @HiveField(9)
   Element elementDescription;
 
   //  The mime-type to use for RESTful operation in the 'Accept' header.
-  @HiveField(10)
   String accept;
 
   //  Extensions for accept
-  @HiveField(11)
   Element elementAccept;
 
   //  The mime-type to use for RESTful operation in the 'Content-Type'
   // header.
-  @HiveField(12)
   String contentType;
 
   //  Extensions for contentType
-  @HiveField(13)
   Element elementContentType;
 
   //  The server where the request message is destined for.  Must be one of
   // the server numbers listed in TestScript.destination section.
-  @HiveField(14)
   int destination;
 
   //  Extensions for destination
-  @HiveField(15)
   Element elementDestination;
 
   //  Whether or not to implicitly send the request url in encoded format.
   // The default is true to match the standard RESTful client behavior. Set
   // to false when communicating with a server that does not support encoded
   // url paths.
-  @HiveField(16)
   bool encodeRequestUrl;
 
   //  Extensions for encodeRequestUrl
-  @HiveField(17)
   Element elementEncodeRequestUrl;
 
   //  The HTTP method the test engine MUST use for this operation regardless
   // of any other operation details.
-  @HiveField(18)
   String method; // <code> enum: delete/get/options/patch/post/put/head;
 
   //  Extensions for method
-  @HiveField(19)
   Element elementMethod;
 
   //  The server where the request message originates from.  Must be one of
   // the server numbers listed in TestScript.origin section.
-  @HiveField(20)
   int origin;
 
   //  Extensions for origin
-  @HiveField(21)
   Element elementOrigin;
 
   //  Path plus parameters after [type].  Used to set parts of the request
   // URL explicitly.
-  @HiveField(22)
   String params;
 
   //  Extensions for params
-  @HiveField(23)
   Element elementParams;
 
   //  Header elements would be used to set HTTP headers.
-  @HiveField(24)
   List<TestScript_RequestHeader> requestHeader;
 
   //  The fixture id (maybe new) to map to the request.
-  @HiveField(25)
   String requestId;
 
   //  Extensions for requestId
-  @HiveField(26)
   Element elementRequestId;
 
   //  The fixture id (maybe new) to map to the response.
-  @HiveField(27)
   String responseId;
 
   //  Extensions for responseId
-  @HiveField(28)
   Element elementResponseId;
 
   //  The id of the fixture used as the body of a PUT or POST request.
-  @HiveField(29)
   String sourceId;
 
   //  Extensions for sourceId
-  @HiveField(30)
   Element elementSourceId;
 
   //  Id of fixture used for extracting the [id],  [type], and [vid] for GET
   // requests.
-  @HiveField(31)
   String targetId;
 
   //  Extensions for targetId
-  @HiveField(32)
   Element elementTargetId;
 
   //  Complete request URL.
-  @HiveField(33)
   String url;
 
   //  Extensions for url
-  @HiveField(34)
   Element elementUrl;
 
 TestScript_Operation(
@@ -1195,12 +1074,10 @@ TestScript_Operation(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 637)
 class TestScript_RequestHeader {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -1209,7 +1086,6 @@ class TestScript_RequestHeader {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -1224,23 +1100,18 @@ class TestScript_RequestHeader {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The HTTP header field e.g. "Accept".
-  @HiveField(3)
   String field;
 
   //  Extensions for field
-  @HiveField(4)
   Element elementField;
 
   //  The value of the header e.g. "application/fhir+xml".
-  @HiveField(5)
   String value;
 
   //  Extensions for value
-  @HiveField(6)
   Element elementValue;
 
 TestScript_RequestHeader(
@@ -1258,12 +1129,10 @@ TestScript_RequestHeader(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 638)
 class TestScript_Assert {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -1272,7 +1141,6 @@ class TestScript_Assert {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -1287,201 +1155,156 @@ class TestScript_Assert {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The label would be used for tracking/logging purposes by test engines.
-  @HiveField(3)
   String label;
 
   //  Extensions for label
-  @HiveField(4)
   Element elementLabel;
 
   //  The description would be used by test engines for tracking and
   // reporting purposes.
-  @HiveField(5)
   String description;
 
   //  Extensions for description
-  @HiveField(6)
   Element elementDescription;
 
   //  The direction to use for the assertion.
-  @HiveField(7)
   String direction; // <code> enum: response/request;
 
   //  Extensions for direction
-  @HiveField(8)
   Element elementDirection;
 
   //  Id of the source fixture used as the contents to be evaluated by
   // either the "source/expression" or "sourceId/path" definition.
-  @HiveField(9)
   String compareToSourceId;
 
   //  Extensions for compareToSourceId
-  @HiveField(10)
   Element elementCompareToSourceId;
 
   //  The FHIRPath expression to evaluate against the source fixture. When
   // compareToSourceId is defined, either compareToSourceExpression or
   // compareToSourcePath must be defined, but not both.
-  @HiveField(11)
   String compareToSourceExpression;
 
   //  Extensions for compareToSourceExpression
-  @HiveField(12)
   Element elementCompareToSourceExpression;
 
   //  XPath or JSONPath expression to evaluate against the source fixture.
   // When compareToSourceId is defined, either compareToSourceExpression or
   // compareToSourcePath must be defined, but not both.
-  @HiveField(13)
   String compareToSourcePath;
 
   //  Extensions for compareToSourcePath
-  @HiveField(14)
   Element elementCompareToSourcePath;
 
   //  The mime-type contents to compare against the request or response
   // message 'Content-Type' header.
-  @HiveField(15)
   String contentType;
 
   //  Extensions for contentType
-  @HiveField(16)
   Element elementContentType;
 
   //  The FHIRPath expression to be evaluated against the request or
   // response message contents - HTTP headers and payload.
-  @HiveField(17)
   String expression;
 
   //  Extensions for expression
-  @HiveField(18)
   Element elementExpression;
 
   //  The HTTP header field name e.g. 'Location'.
-  @HiveField(19)
   String headerField;
 
   //  Extensions for headerField
-  @HiveField(20)
   Element elementHeaderField;
 
   //  The ID of a fixture.  Asserts that the response contains at a minimum
   // the fixture specified by minimumId.
-  @HiveField(21)
   String minimumId;
 
   //  Extensions for minimumId
-  @HiveField(22)
   Element elementMinimumId;
 
   //  Whether or not the test execution performs validation on the bundle
   // navigation links.
-  @HiveField(23)
   bool navigationLinks;
 
   //  Extensions for navigationLinks
-  @HiveField(24)
   Element elementNavigationLinks;
 
   //  The operator type defines the conditional behavior of the assert. If
   // not defined, the default is equals.
-  @HiveField(25)
   String operator; // <code> enum: equals/notEquals/in/notIn/greaterThan/lessThan/empty/notEmpty/contains/notContains/eval;
 
   //  Extensions for operator
-  @HiveField(26)
   Element elementOperator;
 
   //  The XPath or JSONPath expression to be evaluated against the fixture
   // representing the response received from server.
-  @HiveField(27)
   String path;
 
   //  Extensions for path
-  @HiveField(28)
   Element elementPath;
 
   //  The request method or HTTP operation code to compare against that used
   // by the client system under test.
-  @HiveField(29)
   String requestMethod; // <code> enum: delete/get/options/patch/post/put/head;
 
   //  Extensions for requestMethod
-  @HiveField(30)
   Element elementRequestMethod;
 
   //  The value to use in a comparison against the request URL path string.
-  @HiveField(31)
   String requestURL;
 
   //  Extensions for requestURL
-  @HiveField(32)
   Element elementRequestURL;
 
   //  The type of the resource.  See
   // http://build.fhir.org/resourcelist.html.
-  @HiveField(33)
   String resource;
 
   //  Extensions for resource
-  @HiveField(34)
   Element elementResource;
 
   //  okay | created | noContent | notModified | bad | forbidden | notFound
   // | methodNotAllowed | conflict | gone | preconditionFailed |
   // unprocessable.
-  @HiveField(35)
   String response; // <code> enum: okay/created/noContent/notModified/bad/forbidden/notFound/methodNotAllowed/conflict/gone/preconditionFailed/unprocessable;
 
   //  Extensions for response
-  @HiveField(36)
   Element elementResponse;
 
   //  The value of the HTTP response code to be tested.
-  @HiveField(37)
   String responseCode;
 
   //  Extensions for responseCode
-  @HiveField(38)
   Element elementResponseCode;
 
   //  Fixture to evaluate the XPath/JSONPath expression or the headerField 
   // against.
-  @HiveField(39)
   String sourceId;
 
   //  Extensions for sourceId
-  @HiveField(40)
   Element elementSourceId;
 
   //  The ID of the Profile to validate against.
-  @HiveField(41)
   String validateProfileId;
 
   //  Extensions for validateProfileId
-  @HiveField(42)
   Element elementValidateProfileId;
 
   //  The value to compare to.
-  @HiveField(43)
   String value;
 
   //  Extensions for value
-  @HiveField(44)
   Element elementValue;
 
   //  Whether or not the test execution will produce a warning only on error
   // for this assert.
-  @HiveField(45)
   bool warningOnly;
 
   //  Extensions for warningOnly
-  @HiveField(46)
   Element elementWarningOnly;
 
 TestScript_Assert(
@@ -1539,12 +1362,10 @@ TestScript_Assert(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 639)
 class TestScript_Test {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -1553,7 +1374,6 @@ class TestScript_Test {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -1568,29 +1388,23 @@ class TestScript_Test {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The name of this test used for tracking/logging purposes by test
   // engines.
-  @HiveField(3)
   String name;
 
   //  Extensions for name
-  @HiveField(4)
   Element elementName;
 
   //  A short description of the test used by test engines for tracking and
   // reporting purposes.
-  @HiveField(5)
   String description;
 
   //  Extensions for description
-  @HiveField(6)
   Element elementDescription;
 
   //  Action would contain either an operation or an assertion.
-  @HiveField(7)
   List<TestScript_Action1> action;
 
 TestScript_Test(
@@ -1609,12 +1423,10 @@ TestScript_Test(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 640)
 class TestScript_Action1 {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -1623,7 +1435,6 @@ class TestScript_Action1 {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -1638,16 +1449,13 @@ class TestScript_Action1 {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  An operation would involve a REST request to a server.
-  @HiveField(3)
   TestScript_Operation operation;
 
   //  Evaluates the results of previous operations to determine if the
   // server under test behaves appropriately.
-  @HiveField(4)
   TestScript_Assert asserts;
 
 TestScript_Action1(
@@ -1663,12 +1471,10 @@ TestScript_Action1(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 641)
 class TestScript_Teardown {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -1677,7 +1483,6 @@ class TestScript_Teardown {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -1692,11 +1497,9 @@ class TestScript_Teardown {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The teardown action will only contain an operation.
-  @HiveField(3)
   List<TestScript_Action2> action;
 
 TestScript_Teardown(
@@ -1711,12 +1514,10 @@ TestScript_Teardown(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 642)
 class TestScript_Action2 {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -1725,7 +1526,6 @@ class TestScript_Action2 {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -1740,11 +1540,9 @@ class TestScript_Action2 {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  An operation would involve a REST request to a server.
-  @HiveField(3)
   TestScript_Operation operation;
 
 TestScript_Action2(
@@ -1919,902 +1717,6 @@ class TestScriptAdapter extends TypeAdapter<TestScript> {
       ..write(obj.test)
       ..writeByte(45)
       ..write(obj.teardown);
-  }
-}
-
-class TestScript_OriginAdapter extends TypeAdapter<TestScript_Origin> {
-  @override
-  final typeId = 627;
-
-  @override
-  TestScript_Origin read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Origin(
-      fields[5] as Coding,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      index: fields[3] as int,
-      elementIndex: fields[4] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Origin obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.index)
-      ..writeByte(4)
-      ..write(obj.elementIndex)
-      ..writeByte(5)
-      ..write(obj.profile);
-  }
-}
-
-class TestScript_DestinationAdapter
-    extends TypeAdapter<TestScript_Destination> {
-  @override
-  final typeId = 628;
-
-  @override
-  TestScript_Destination read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Destination(
-      fields[5] as Coding,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      index: fields[3] as int,
-      elementIndex: fields[4] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Destination obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.index)
-      ..writeByte(4)
-      ..write(obj.elementIndex)
-      ..writeByte(5)
-      ..write(obj.profile);
-  }
-}
-
-class TestScript_MetadataAdapter extends TypeAdapter<TestScript_Metadata> {
-  @override
-  final typeId = 629;
-
-  @override
-  TestScript_Metadata read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Metadata(
-      (fields[4] as List)?.cast<TestScript_Capability>(),
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      link: (fields[3] as List)?.cast<TestScript_Link>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Metadata obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.link)
-      ..writeByte(4)
-      ..write(obj.capability);
-  }
-}
-
-class TestScript_LinkAdapter extends TypeAdapter<TestScript_Link> {
-  @override
-  final typeId = 630;
-
-  @override
-  TestScript_Link read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Link(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      url: fields[3] as String,
-      elementUrl: fields[4] as Element,
-      description: fields[5] as String,
-      elementDescription: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Link obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.url)
-      ..writeByte(4)
-      ..write(obj.elementUrl)
-      ..writeByte(5)
-      ..write(obj.description)
-      ..writeByte(6)
-      ..write(obj.elementDescription);
-  }
-}
-
-class TestScript_CapabilityAdapter extends TypeAdapter<TestScript_Capability> {
-  @override
-  final typeId = 631;
-
-  @override
-  TestScript_Capability read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Capability(
-      fields[15] as String,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      required: fields[3] as bool,
-      elementRequired: fields[4] as Element,
-      validated: fields[5] as bool,
-      elementValidated: fields[6] as Element,
-      description: fields[7] as String,
-      elementDescription: fields[8] as Element,
-      origin: (fields[9] as List)?.cast<int>(),
-      elementOrigin: (fields[10] as List)?.cast<Element>(),
-      destination: fields[11] as int,
-      elementDestination: fields[12] as Element,
-      link: (fields[13] as List)?.cast<String>(),
-      elementLink: (fields[14] as List)?.cast<Element>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Capability obj) {
-    writer
-      ..writeByte(16)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.required)
-      ..writeByte(4)
-      ..write(obj.elementRequired)
-      ..writeByte(5)
-      ..write(obj.validated)
-      ..writeByte(6)
-      ..write(obj.elementValidated)
-      ..writeByte(7)
-      ..write(obj.description)
-      ..writeByte(8)
-      ..write(obj.elementDescription)
-      ..writeByte(9)
-      ..write(obj.origin)
-      ..writeByte(10)
-      ..write(obj.elementOrigin)
-      ..writeByte(11)
-      ..write(obj.destination)
-      ..writeByte(12)
-      ..write(obj.elementDestination)
-      ..writeByte(13)
-      ..write(obj.link)
-      ..writeByte(14)
-      ..write(obj.elementLink)
-      ..writeByte(15)
-      ..write(obj.capabilities);
-  }
-}
-
-class TestScript_FixtureAdapter extends TypeAdapter<TestScript_Fixture> {
-  @override
-  final typeId = 632;
-
-  @override
-  TestScript_Fixture read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Fixture(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      autocreate: fields[3] as bool,
-      elementAutocreate: fields[4] as Element,
-      autodelete: fields[5] as bool,
-      elementAutodelete: fields[6] as Element,
-      resource: fields[7] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Fixture obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.autocreate)
-      ..writeByte(4)
-      ..write(obj.elementAutocreate)
-      ..writeByte(5)
-      ..write(obj.autodelete)
-      ..writeByte(6)
-      ..write(obj.elementAutodelete)
-      ..writeByte(7)
-      ..write(obj.resource);
-  }
-}
-
-class TestScript_VariableAdapter extends TypeAdapter<TestScript_Variable> {
-  @override
-  final typeId = 633;
-
-  @override
-  TestScript_Variable read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Variable(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      name: fields[3] as String,
-      elementName: fields[4] as Element,
-      defaultValue: fields[5] as String,
-      elementDefaultValue: fields[6] as Element,
-      description: fields[7] as String,
-      elementDescription: fields[8] as Element,
-      expression: fields[9] as String,
-      elementExpression: fields[10] as Element,
-      headerField: fields[11] as String,
-      elementHeaderField: fields[12] as Element,
-      hint: fields[13] as String,
-      elementHint: fields[14] as Element,
-      path: fields[15] as String,
-      elementPath: fields[16] as Element,
-      sourceId: fields[17] as String,
-      elementSourceId: fields[18] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Variable obj) {
-    writer
-      ..writeByte(19)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.name)
-      ..writeByte(4)
-      ..write(obj.elementName)
-      ..writeByte(5)
-      ..write(obj.defaultValue)
-      ..writeByte(6)
-      ..write(obj.elementDefaultValue)
-      ..writeByte(7)
-      ..write(obj.description)
-      ..writeByte(8)
-      ..write(obj.elementDescription)
-      ..writeByte(9)
-      ..write(obj.expression)
-      ..writeByte(10)
-      ..write(obj.elementExpression)
-      ..writeByte(11)
-      ..write(obj.headerField)
-      ..writeByte(12)
-      ..write(obj.elementHeaderField)
-      ..writeByte(13)
-      ..write(obj.hint)
-      ..writeByte(14)
-      ..write(obj.elementHint)
-      ..writeByte(15)
-      ..write(obj.path)
-      ..writeByte(16)
-      ..write(obj.elementPath)
-      ..writeByte(17)
-      ..write(obj.sourceId)
-      ..writeByte(18)
-      ..write(obj.elementSourceId);
-  }
-}
-
-class TestScript_SetupAdapter extends TypeAdapter<TestScript_Setup> {
-  @override
-  final typeId = 634;
-
-  @override
-  TestScript_Setup read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Setup(
-      (fields[3] as List)?.cast<TestScript_Action>(),
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Setup obj) {
-    writer
-      ..writeByte(4)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.action);
-  }
-}
-
-class TestScript_ActionAdapter extends TypeAdapter<TestScript_Action> {
-  @override
-  final typeId = 635;
-
-  @override
-  TestScript_Action read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Action(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      operation: fields[3] as TestScript_Operation,
-      asserts: fields[4] as TestScript_Assert,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Action obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.operation)
-      ..writeByte(4)
-      ..write(obj.asserts);
-  }
-}
-
-class TestScript_OperationAdapter extends TypeAdapter<TestScript_Operation> {
-  @override
-  final typeId = 636;
-
-  @override
-  TestScript_Operation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Operation(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as Coding,
-      resource: fields[4] as String,
-      elementResource: fields[5] as Element,
-      label: fields[6] as String,
-      elementLabel: fields[7] as Element,
-      description: fields[8] as String,
-      elementDescription: fields[9] as Element,
-      accept: fields[10] as String,
-      elementAccept: fields[11] as Element,
-      contentType: fields[12] as String,
-      elementContentType: fields[13] as Element,
-      destination: fields[14] as int,
-      elementDestination: fields[15] as Element,
-      encodeRequestUrl: fields[16] as bool,
-      elementEncodeRequestUrl: fields[17] as Element,
-      method: fields[18] as String,
-      elementMethod: fields[19] as Element,
-      origin: fields[20] as int,
-      elementOrigin: fields[21] as Element,
-      params: fields[22] as String,
-      elementParams: fields[23] as Element,
-      requestHeader: (fields[24] as List)?.cast<TestScript_RequestHeader>(),
-      requestId: fields[25] as String,
-      elementRequestId: fields[26] as Element,
-      responseId: fields[27] as String,
-      elementResponseId: fields[28] as Element,
-      sourceId: fields[29] as String,
-      elementSourceId: fields[30] as Element,
-      targetId: fields[31] as String,
-      elementTargetId: fields[32] as Element,
-      url: fields[33] as String,
-      elementUrl: fields[34] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Operation obj) {
-    writer
-      ..writeByte(35)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.resource)
-      ..writeByte(5)
-      ..write(obj.elementResource)
-      ..writeByte(6)
-      ..write(obj.label)
-      ..writeByte(7)
-      ..write(obj.elementLabel)
-      ..writeByte(8)
-      ..write(obj.description)
-      ..writeByte(9)
-      ..write(obj.elementDescription)
-      ..writeByte(10)
-      ..write(obj.accept)
-      ..writeByte(11)
-      ..write(obj.elementAccept)
-      ..writeByte(12)
-      ..write(obj.contentType)
-      ..writeByte(13)
-      ..write(obj.elementContentType)
-      ..writeByte(14)
-      ..write(obj.destination)
-      ..writeByte(15)
-      ..write(obj.elementDestination)
-      ..writeByte(16)
-      ..write(obj.encodeRequestUrl)
-      ..writeByte(17)
-      ..write(obj.elementEncodeRequestUrl)
-      ..writeByte(18)
-      ..write(obj.method)
-      ..writeByte(19)
-      ..write(obj.elementMethod)
-      ..writeByte(20)
-      ..write(obj.origin)
-      ..writeByte(21)
-      ..write(obj.elementOrigin)
-      ..writeByte(22)
-      ..write(obj.params)
-      ..writeByte(23)
-      ..write(obj.elementParams)
-      ..writeByte(24)
-      ..write(obj.requestHeader)
-      ..writeByte(25)
-      ..write(obj.requestId)
-      ..writeByte(26)
-      ..write(obj.elementRequestId)
-      ..writeByte(27)
-      ..write(obj.responseId)
-      ..writeByte(28)
-      ..write(obj.elementResponseId)
-      ..writeByte(29)
-      ..write(obj.sourceId)
-      ..writeByte(30)
-      ..write(obj.elementSourceId)
-      ..writeByte(31)
-      ..write(obj.targetId)
-      ..writeByte(32)
-      ..write(obj.elementTargetId)
-      ..writeByte(33)
-      ..write(obj.url)
-      ..writeByte(34)
-      ..write(obj.elementUrl);
-  }
-}
-
-class TestScript_RequestHeaderAdapter
-    extends TypeAdapter<TestScript_RequestHeader> {
-  @override
-  final typeId = 637;
-
-  @override
-  TestScript_RequestHeader read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_RequestHeader(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      field: fields[3] as String,
-      elementField: fields[4] as Element,
-      value: fields[5] as String,
-      elementValue: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_RequestHeader obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.field)
-      ..writeByte(4)
-      ..write(obj.elementField)
-      ..writeByte(5)
-      ..write(obj.value)
-      ..writeByte(6)
-      ..write(obj.elementValue);
-  }
-}
-
-class TestScript_AssertAdapter extends TypeAdapter<TestScript_Assert> {
-  @override
-  final typeId = 638;
-
-  @override
-  TestScript_Assert read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Assert(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      label: fields[3] as String,
-      elementLabel: fields[4] as Element,
-      description: fields[5] as String,
-      elementDescription: fields[6] as Element,
-      direction: fields[7] as String,
-      elementDirection: fields[8] as Element,
-      compareToSourceId: fields[9] as String,
-      elementCompareToSourceId: fields[10] as Element,
-      compareToSourceExpression: fields[11] as String,
-      elementCompareToSourceExpression: fields[12] as Element,
-      compareToSourcePath: fields[13] as String,
-      elementCompareToSourcePath: fields[14] as Element,
-      contentType: fields[15] as String,
-      elementContentType: fields[16] as Element,
-      expression: fields[17] as String,
-      elementExpression: fields[18] as Element,
-      headerField: fields[19] as String,
-      elementHeaderField: fields[20] as Element,
-      minimumId: fields[21] as String,
-      elementMinimumId: fields[22] as Element,
-      navigationLinks: fields[23] as bool,
-      elementNavigationLinks: fields[24] as Element,
-      operator: fields[25] as String,
-      elementOperator: fields[26] as Element,
-      path: fields[27] as String,
-      elementPath: fields[28] as Element,
-      requestMethod: fields[29] as String,
-      elementRequestMethod: fields[30] as Element,
-      requestURL: fields[31] as String,
-      elementRequestURL: fields[32] as Element,
-      resource: fields[33] as String,
-      elementResource: fields[34] as Element,
-      response: fields[35] as String,
-      elementResponse: fields[36] as Element,
-      responseCode: fields[37] as String,
-      elementResponseCode: fields[38] as Element,
-      sourceId: fields[39] as String,
-      elementSourceId: fields[40] as Element,
-      validateProfileId: fields[41] as String,
-      elementValidateProfileId: fields[42] as Element,
-      value: fields[43] as String,
-      elementValue: fields[44] as Element,
-      warningOnly: fields[45] as bool,
-      elementWarningOnly: fields[46] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Assert obj) {
-    writer
-      ..writeByte(47)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.label)
-      ..writeByte(4)
-      ..write(obj.elementLabel)
-      ..writeByte(5)
-      ..write(obj.description)
-      ..writeByte(6)
-      ..write(obj.elementDescription)
-      ..writeByte(7)
-      ..write(obj.direction)
-      ..writeByte(8)
-      ..write(obj.elementDirection)
-      ..writeByte(9)
-      ..write(obj.compareToSourceId)
-      ..writeByte(10)
-      ..write(obj.elementCompareToSourceId)
-      ..writeByte(11)
-      ..write(obj.compareToSourceExpression)
-      ..writeByte(12)
-      ..write(obj.elementCompareToSourceExpression)
-      ..writeByte(13)
-      ..write(obj.compareToSourcePath)
-      ..writeByte(14)
-      ..write(obj.elementCompareToSourcePath)
-      ..writeByte(15)
-      ..write(obj.contentType)
-      ..writeByte(16)
-      ..write(obj.elementContentType)
-      ..writeByte(17)
-      ..write(obj.expression)
-      ..writeByte(18)
-      ..write(obj.elementExpression)
-      ..writeByte(19)
-      ..write(obj.headerField)
-      ..writeByte(20)
-      ..write(obj.elementHeaderField)
-      ..writeByte(21)
-      ..write(obj.minimumId)
-      ..writeByte(22)
-      ..write(obj.elementMinimumId)
-      ..writeByte(23)
-      ..write(obj.navigationLinks)
-      ..writeByte(24)
-      ..write(obj.elementNavigationLinks)
-      ..writeByte(25)
-      ..write(obj.operator)
-      ..writeByte(26)
-      ..write(obj.elementOperator)
-      ..writeByte(27)
-      ..write(obj.path)
-      ..writeByte(28)
-      ..write(obj.elementPath)
-      ..writeByte(29)
-      ..write(obj.requestMethod)
-      ..writeByte(30)
-      ..write(obj.elementRequestMethod)
-      ..writeByte(31)
-      ..write(obj.requestURL)
-      ..writeByte(32)
-      ..write(obj.elementRequestURL)
-      ..writeByte(33)
-      ..write(obj.resource)
-      ..writeByte(34)
-      ..write(obj.elementResource)
-      ..writeByte(35)
-      ..write(obj.response)
-      ..writeByte(36)
-      ..write(obj.elementResponse)
-      ..writeByte(37)
-      ..write(obj.responseCode)
-      ..writeByte(38)
-      ..write(obj.elementResponseCode)
-      ..writeByte(39)
-      ..write(obj.sourceId)
-      ..writeByte(40)
-      ..write(obj.elementSourceId)
-      ..writeByte(41)
-      ..write(obj.validateProfileId)
-      ..writeByte(42)
-      ..write(obj.elementValidateProfileId)
-      ..writeByte(43)
-      ..write(obj.value)
-      ..writeByte(44)
-      ..write(obj.elementValue)
-      ..writeByte(45)
-      ..write(obj.warningOnly)
-      ..writeByte(46)
-      ..write(obj.elementWarningOnly);
-  }
-}
-
-class TestScript_TestAdapter extends TypeAdapter<TestScript_Test> {
-  @override
-  final typeId = 639;
-
-  @override
-  TestScript_Test read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Test(
-      (fields[7] as List)?.cast<TestScript_Action1>(),
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      name: fields[3] as String,
-      elementName: fields[4] as Element,
-      description: fields[5] as String,
-      elementDescription: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Test obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.name)
-      ..writeByte(4)
-      ..write(obj.elementName)
-      ..writeByte(5)
-      ..write(obj.description)
-      ..writeByte(6)
-      ..write(obj.elementDescription)
-      ..writeByte(7)
-      ..write(obj.action);
-  }
-}
-
-class TestScript_Action1Adapter extends TypeAdapter<TestScript_Action1> {
-  @override
-  final typeId = 640;
-
-  @override
-  TestScript_Action1 read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Action1(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      operation: fields[3] as TestScript_Operation,
-      asserts: fields[4] as TestScript_Assert,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Action1 obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.operation)
-      ..writeByte(4)
-      ..write(obj.asserts);
-  }
-}
-
-class TestScript_TeardownAdapter extends TypeAdapter<TestScript_Teardown> {
-  @override
-  final typeId = 641;
-
-  @override
-  TestScript_Teardown read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Teardown(
-      (fields[3] as List)?.cast<TestScript_Action2>(),
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Teardown obj) {
-    writer
-      ..writeByte(4)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.action);
-  }
-}
-
-class TestScript_Action2Adapter extends TypeAdapter<TestScript_Action2> {
-  @override
-  final typeId = 642;
-
-  @override
-  TestScript_Action2 read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestScript_Action2(
-      fields[3] as TestScript_Operation,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestScript_Action2 obj) {
-    writer
-      ..writeByte(4)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.operation);
   }
 }
 

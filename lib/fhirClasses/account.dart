@@ -186,12 +186,10 @@ Account(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 55)
 class Account_Coverage {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -200,7 +198,6 @@ class Account_Coverage {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -215,22 +212,18 @@ class Account_Coverage {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The party(s) that contribute to payment (or part of) of the charges
   // applied to this account (including self-pay). A coverage may only be
   // responsible for specific types of charges, and the sequence of the
   // coverages in the account could be important when processing billing.
-  @HiveField(3)
   Reference coverage;
 
   //  The priority of the coverage in the context of this account.
-  @HiveField(4)
   int priority;
 
   //  Extensions for priority
-  @HiveField(5)
   Element elementPriority;
 
 Account_Coverage(
@@ -247,12 +240,10 @@ Account_Coverage(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 56)
 class Account_Guarantor {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -261,7 +252,6 @@ class Account_Guarantor {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -276,25 +266,20 @@ class Account_Guarantor {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The entity who is responsible.
-  @HiveField(3)
   Reference party;
 
   //  A guarantor may be placed on credit hold or otherwise have their role
   // temporarily suspended.
-  @HiveField(4)
   bool onHold;
 
   //  Extensions for onHold
-  @HiveField(5)
   Element elementOnHold;
 
   //  The timeframe during which the guarantor accepts responsibility for
   // the account.
-  @HiveField(6)
   Period period;
 
 Account_Guarantor(
@@ -409,87 +394,6 @@ class AccountAdapter extends TypeAdapter<Account> {
       ..write(obj.guarantor)
       ..writeByte(24)
       ..write(obj.partOf);
-  }
-}
-
-class Account_CoverageAdapter extends TypeAdapter<Account_Coverage> {
-  @override
-  final typeId = 55;
-
-  @override
-  Account_Coverage read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Account_Coverage(
-      fields[3] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      priority: fields[4] as int,
-      elementPriority: fields[5] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Account_Coverage obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.coverage)
-      ..writeByte(4)
-      ..write(obj.priority)
-      ..writeByte(5)
-      ..write(obj.elementPriority);
-  }
-}
-
-class Account_GuarantorAdapter extends TypeAdapter<Account_Guarantor> {
-  @override
-  final typeId = 56;
-
-  @override
-  Account_Guarantor read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Account_Guarantor(
-      fields[3] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      onHold: fields[4] as bool,
-      elementOnHold: fields[5] as Element,
-      period: fields[6] as Period,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Account_Guarantor obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.party)
-      ..writeByte(4)
-      ..write(obj.onHold)
-      ..writeByte(5)
-      ..write(obj.elementOnHold)
-      ..writeByte(6)
-      ..write(obj.period);
   }
 }
 

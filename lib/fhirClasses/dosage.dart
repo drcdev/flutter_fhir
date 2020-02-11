@@ -151,12 +151,10 @@ Dosage(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 37)
 class Dosage_DoseAndRate {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -165,7 +163,6 @@ class Dosage_DoseAndRate {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -180,32 +177,25 @@ class Dosage_DoseAndRate {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The kind of dose or rate specified, for example, ordered or
   // calculated.
-  @HiveField(3)
   CodeableConcept type;
 
   //  Amount of medication per dose.
-  @HiveField(4)
   Range doseRange;
 
   //  Amount of medication per dose.
-  @HiveField(5)
   Quantity doseQuantity;
 
   //  Amount of medication per unit of time.
-  @HiveField(6)
   Ratio rateRatio;
 
   //  Amount of medication per unit of time.
-  @HiveField(7)
   Range rateRange;
 
   //  Amount of medication per unit of time.
-  @HiveField(8)
   Quantity rateQuantity;
 
 Dosage_DoseAndRate(
@@ -311,54 +301,6 @@ class DosageAdapter extends TypeAdapter<Dosage> {
       ..write(obj.maxDosePerAdministration)
       ..writeByte(20)
       ..write(obj.maxDosePerLifetime);
-  }
-}
-
-class Dosage_DoseAndRateAdapter extends TypeAdapter<Dosage_DoseAndRate> {
-  @override
-  final typeId = 37;
-
-  @override
-  Dosage_DoseAndRate read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Dosage_DoseAndRate(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as CodeableConcept,
-      doseRange: fields[4] as Range,
-      doseQuantity: fields[5] as Quantity,
-      rateRatio: fields[6] as Ratio,
-      rateRange: fields[7] as Range,
-      rateQuantity: fields[8] as Quantity,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Dosage_DoseAndRate obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.doseRange)
-      ..writeByte(5)
-      ..write(obj.doseQuantity)
-      ..writeByte(6)
-      ..write(obj.rateRatio)
-      ..writeByte(7)
-      ..write(obj.rateRange)
-      ..writeByte(8)
-      ..write(obj.rateQuantity);
   }
 }
 

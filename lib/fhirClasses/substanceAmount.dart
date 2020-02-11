@@ -106,12 +106,10 @@ SubstanceAmount(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 43)
 class SubstanceAmount_ReferenceRange {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -120,7 +118,6 @@ class SubstanceAmount_ReferenceRange {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -135,15 +132,12 @@ class SubstanceAmount_ReferenceRange {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Lower limit possible or expected.
-  @HiveField(3)
   Quantity lowLimit;
 
   //  Upper limit possible or expected.
-  @HiveField(4)
   Quantity highLimit;
 
 SubstanceAmount_ReferenceRange(
@@ -215,43 +209,6 @@ class SubstanceAmountAdapter extends TypeAdapter<SubstanceAmount> {
       ..write(obj.elementAmountText)
       ..writeByte(10)
       ..write(obj.referenceRange);
-  }
-}
-
-class SubstanceAmount_ReferenceRangeAdapter
-    extends TypeAdapter<SubstanceAmount_ReferenceRange> {
-  @override
-  final typeId = 43;
-
-  @override
-  SubstanceAmount_ReferenceRange read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstanceAmount_ReferenceRange(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      lowLimit: fields[3] as Quantity,
-      highLimit: fields[4] as Quantity,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SubstanceAmount_ReferenceRange obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.lowLimit)
-      ..writeByte(4)
-      ..write(obj.highLimit);
   }
 }
 

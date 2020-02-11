@@ -143,12 +143,10 @@ MedicinalProductContraindication(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 407)
 class MedicinalProductContraindication_OtherTherapy {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -157,7 +155,6 @@ class MedicinalProductContraindication_OtherTherapy {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -172,24 +169,20 @@ class MedicinalProductContraindication_OtherTherapy {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The type of relationship between the medicinal product indication or
   // contraindication and another therapy.
-  @HiveField(3)
   CodeableConcept therapyRelationshipType;
 
   //  Reference to a specific medication (active substance, medicinal
   // product or class of products) as part of an indication or
   // contraindication.
-  @HiveField(4)
   CodeableConcept medicationCodeableConcept;
 
   //  Reference to a specific medication (active substance, medicinal
   // product or class of products) as part of an indication or
   // contraindication.
-  @HiveField(5)
   Reference medicationReference;
 
 MedicinalProductContraindication_OtherTherapy(
@@ -284,47 +277,6 @@ class MedicinalProductContraindicationAdapter
       ..write(obj.otherTherapy)
       ..writeByte(17)
       ..write(obj.population);
-  }
-}
-
-class MedicinalProductContraindication_OtherTherapyAdapter
-    extends TypeAdapter<MedicinalProductContraindication_OtherTherapy> {
-  @override
-  final typeId = 407;
-
-  @override
-  MedicinalProductContraindication_OtherTherapy read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProductContraindication_OtherTherapy(
-      fields[3] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      medicationCodeableConcept: fields[4] as CodeableConcept,
-      medicationReference: fields[5] as Reference,
-    );
-  }
-
-  @override
-  void write(
-      BinaryWriter writer, MedicinalProductContraindication_OtherTherapy obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.therapyRelationshipType)
-      ..writeByte(4)
-      ..write(obj.medicationCodeableConcept)
-      ..writeByte(5)
-      ..write(obj.medicationReference);
   }
 }
 

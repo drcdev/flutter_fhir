@@ -168,12 +168,10 @@ VisionPrescription(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 657)
 class VisionPrescription_LensSpecification {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -182,7 +180,6 @@ class VisionPrescription_LensSpecification {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -197,105 +194,80 @@ class VisionPrescription_LensSpecification {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Identifies the type of vision correction product which is required for
   // the patient.
-  @HiveField(3)
   CodeableConcept product;
 
   //  The eye for which the lens specification applies.
-  @HiveField(4)
   String eye; // <code> enum: right/left;
 
   //  Extensions for eye
-  @HiveField(5)
   Element elementEye;
 
   //  Lens power measured in dioptres (0.25 units).
-  @HiveField(6)
   double sphere;
 
   //  Extensions for sphere
-  @HiveField(7)
   Element elementSphere;
 
   //  Power adjustment for astigmatism measured in dioptres (0.25 units).
-  @HiveField(8)
   double cylinder;
 
   //  Extensions for cylinder
-  @HiveField(9)
   Element elementCylinder;
 
   //  Adjustment for astigmatism measured in integer degrees.
-  @HiveField(10)
   int axis;
 
   //  Extensions for axis
-  @HiveField(11)
   Element elementAxis;
 
   //  Allows for adjustment on two axis.
-  @HiveField(12)
   List<VisionPrescription_Prism> prism;
 
   //  Power adjustment for multifocal lenses measured in dioptres (0.25
   // units).
-  @HiveField(13)
   double add;
 
   //  Extensions for add
-  @HiveField(14)
   Element elementAdd;
 
   //  Contact lens power measured in dioptres (0.25 units).
-  @HiveField(15)
   double power;
 
   //  Extensions for power
-  @HiveField(16)
   Element elementPower;
 
   //  Back curvature measured in millimetres.
-  @HiveField(17)
   double backCurve;
 
   //  Extensions for backCurve
-  @HiveField(18)
   Element elementBackCurve;
 
   //  Contact lens diameter measured in millimetres.
-  @HiveField(19)
   double diameter;
 
   //  Extensions for diameter
-  @HiveField(20)
   Element elementDiameter;
 
   //  The recommended maximum wear period for the lens.
-  @HiveField(21)
   Quantity duration;
 
   //  Special color or pattern.
-  @HiveField(22)
   String color;
 
   //  Extensions for color
-  @HiveField(23)
   Element elementColor;
 
   //  Brand recommendations or restrictions.
-  @HiveField(24)
   String brand;
 
   //  Extensions for brand
-  @HiveField(25)
   Element elementBrand;
 
   //  Notes for special requirements such as coatings and lens materials.
-  @HiveField(26)
   List<Annotation> note;
 
 VisionPrescription_LensSpecification(
@@ -333,12 +305,10 @@ VisionPrescription_LensSpecification(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 658)
 class VisionPrescription_Prism {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -347,7 +317,6 @@ class VisionPrescription_Prism {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -362,23 +331,18 @@ class VisionPrescription_Prism {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Amount of prism to compensate for eye alignment in fractional units.
-  @HiveField(3)
   double amount;
 
   //  Extensions for amount
-  @HiveField(4)
   Element elementAmount;
 
   //  The relative base, or reference lens edge, for the prism.
-  @HiveField(5)
   String base; // <code> enum: up/down/in/out;
 
   //  Extensions for base
-  @HiveField(6)
   Element elementBase;
 
 VisionPrescription_Prism(
@@ -484,152 +448,6 @@ class VisionPrescriptionAdapter extends TypeAdapter<VisionPrescription> {
       ..write(obj.prescriber)
       ..writeByte(21)
       ..write(obj.lensSpecification);
-  }
-}
-
-class VisionPrescription_LensSpecificationAdapter
-    extends TypeAdapter<VisionPrescription_LensSpecification> {
-  @override
-  final typeId = 657;
-
-  @override
-  VisionPrescription_LensSpecification read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return VisionPrescription_LensSpecification(
-      fields[3] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      eye: fields[4] as String,
-      elementEye: fields[5] as Element,
-      sphere: fields[6] as double,
-      elementSphere: fields[7] as Element,
-      cylinder: fields[8] as double,
-      elementCylinder: fields[9] as Element,
-      axis: fields[10] as int,
-      elementAxis: fields[11] as Element,
-      prism: (fields[12] as List)?.cast<VisionPrescription_Prism>(),
-      add: fields[13] as double,
-      elementAdd: fields[14] as Element,
-      power: fields[15] as double,
-      elementPower: fields[16] as Element,
-      backCurve: fields[17] as double,
-      elementBackCurve: fields[18] as Element,
-      diameter: fields[19] as double,
-      elementDiameter: fields[20] as Element,
-      duration: fields[21] as Quantity,
-      color: fields[22] as String,
-      elementColor: fields[23] as Element,
-      brand: fields[24] as String,
-      elementBrand: fields[25] as Element,
-      note: (fields[26] as List)?.cast<Annotation>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, VisionPrescription_LensSpecification obj) {
-    writer
-      ..writeByte(27)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.product)
-      ..writeByte(4)
-      ..write(obj.eye)
-      ..writeByte(5)
-      ..write(obj.elementEye)
-      ..writeByte(6)
-      ..write(obj.sphere)
-      ..writeByte(7)
-      ..write(obj.elementSphere)
-      ..writeByte(8)
-      ..write(obj.cylinder)
-      ..writeByte(9)
-      ..write(obj.elementCylinder)
-      ..writeByte(10)
-      ..write(obj.axis)
-      ..writeByte(11)
-      ..write(obj.elementAxis)
-      ..writeByte(12)
-      ..write(obj.prism)
-      ..writeByte(13)
-      ..write(obj.add)
-      ..writeByte(14)
-      ..write(obj.elementAdd)
-      ..writeByte(15)
-      ..write(obj.power)
-      ..writeByte(16)
-      ..write(obj.elementPower)
-      ..writeByte(17)
-      ..write(obj.backCurve)
-      ..writeByte(18)
-      ..write(obj.elementBackCurve)
-      ..writeByte(19)
-      ..write(obj.diameter)
-      ..writeByte(20)
-      ..write(obj.elementDiameter)
-      ..writeByte(21)
-      ..write(obj.duration)
-      ..writeByte(22)
-      ..write(obj.color)
-      ..writeByte(23)
-      ..write(obj.elementColor)
-      ..writeByte(24)
-      ..write(obj.brand)
-      ..writeByte(25)
-      ..write(obj.elementBrand)
-      ..writeByte(26)
-      ..write(obj.note);
-  }
-}
-
-class VisionPrescription_PrismAdapter
-    extends TypeAdapter<VisionPrescription_Prism> {
-  @override
-  final typeId = 658;
-
-  @override
-  VisionPrescription_Prism read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return VisionPrescription_Prism(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      amount: fields[3] as double,
-      elementAmount: fields[4] as Element,
-      base: fields[5] as String,
-      elementBase: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, VisionPrescription_Prism obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.amount)
-      ..writeByte(4)
-      ..write(obj.elementAmount)
-      ..writeByte(5)
-      ..write(obj.base)
-      ..writeByte(6)
-      ..write(obj.elementBase);
   }
 }
 

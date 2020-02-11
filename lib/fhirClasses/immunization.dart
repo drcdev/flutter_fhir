@@ -309,12 +309,10 @@ Immunization(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 310)
 class Immunization_Performer {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -323,7 +321,6 @@ class Immunization_Performer {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -338,16 +335,13 @@ class Immunization_Performer {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Describes the type of performance (e.g. ordering provider,
   // administering provider, etc.).
-  @HiveField(3)
   CodeableConcept function;
 
   //  The practitioner or organization who performed the action.
-  @HiveField(4)
   Reference actor;
 
 Immunization_Performer(
@@ -363,12 +357,10 @@ Immunization_Performer(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 311)
 class Immunization_Education {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -377,7 +369,6 @@ class Immunization_Education {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -392,40 +383,31 @@ class Immunization_Education {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Identifier of the material presented to the patient.
-  @HiveField(3)
   String documentType;
 
   //  Extensions for documentType
-  @HiveField(4)
   Element elementDocumentType;
 
   //  Reference pointer to the educational material given to the patient if
   // the information was on line.
-  @HiveField(5)
   String reference;
 
   //  Extensions for reference
-  @HiveField(6)
   Element elementReference;
 
   //  Date the educational material was published.
-  @HiveField(7)
   DateTime publicationDate;
 
   //  Extensions for publicationDate
-  @HiveField(8)
   Element elementPublicationDate;
 
   //  Date the educational material was given to the patient.
-  @HiveField(9)
   DateTime presentationDate;
 
   //  Extensions for presentationDate
-  @HiveField(10)
   Element elementPresentationDate;
 
 Immunization_Education(
@@ -447,12 +429,10 @@ Immunization_Education(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 312)
 class Immunization_Reaction {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -461,7 +441,6 @@ class Immunization_Reaction {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -476,27 +455,21 @@ class Immunization_Reaction {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Date of reaction to the immunization.
-  @HiveField(3)
   DateTime date;
 
   //  Extensions for date
-  @HiveField(4)
   Element elementDate;
 
   //  Details of the reaction.
-  @HiveField(5)
   Reference detail;
 
   //  Self-reported indicator.
-  @HiveField(6)
   bool reported;
 
   //  Extensions for reported
-  @HiveField(7)
   Element elementReported;
 
 Immunization_Reaction(
@@ -515,12 +488,10 @@ Immunization_Reaction(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 313)
 class Immunization_ProtocolApplied {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -529,7 +500,6 @@ class Immunization_ProtocolApplied {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -544,56 +514,45 @@ class Immunization_ProtocolApplied {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  One possible path to achieve presumed immunity against a disease -
   // within the context of an authority.
-  @HiveField(3)
   String series;
 
   //  Extensions for series
-  @HiveField(4)
   Element elementSeries;
 
   //  Indicates the authority who published the protocol (e.g. ACIP) that is
   // being followed.
-  @HiveField(5)
   Reference authority;
 
   //  The vaccine preventable disease the dose is being administered
   // against.
-  @HiveField(6)
   List<CodeableConcept> targetDisease;
 
   //  Nominal position in a series.
   int doseNumberPositiveInt; //  pattern: ^[1-9][0-9]*$
 
   //  Extensions for doseNumberPositiveInt
-  @HiveField(8)
   Element elementDoseNumberPositiveInt;
 
   //  Nominal position in a series.
-  @HiveField(9)
   String doseNumberString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for doseNumberString
-  @HiveField(10)
   Element elementDoseNumberString;
 
   //  The recommended number of doses to achieve immunity.
   int seriesDosesPositiveInt; //  pattern: ^[1-9][0-9]*$
 
   //  Extensions for seriesDosesPositiveInt
-  @HiveField(12)
   Element elementSeriesDosesPositiveInt;
 
   //  The recommended number of doses to achieve immunity.
-  @HiveField(13)
   String seriesDosesString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for seriesDosesString
-  @HiveField(14)
   Element elementSeriesDosesString;
 
 Immunization_ProtocolApplied(
@@ -786,204 +745,6 @@ class ImmunizationAdapter extends TypeAdapter<Immunization> {
       ..write(obj.reaction)
       ..writeByte(47)
       ..write(obj.protocolApplied);
-  }
-}
-
-class Immunization_PerformerAdapter
-    extends TypeAdapter<Immunization_Performer> {
-  @override
-  final typeId = 310;
-
-  @override
-  Immunization_Performer read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Immunization_Performer(
-      fields[4] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      function: fields[3] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Immunization_Performer obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.function)
-      ..writeByte(4)
-      ..write(obj.actor);
-  }
-}
-
-class Immunization_EducationAdapter
-    extends TypeAdapter<Immunization_Education> {
-  @override
-  final typeId = 311;
-
-  @override
-  Immunization_Education read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Immunization_Education(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      documentType: fields[3] as String,
-      elementDocumentType: fields[4] as Element,
-      reference: fields[5] as String,
-      elementReference: fields[6] as Element,
-      publicationDate: fields[7] as DateTime,
-      elementPublicationDate: fields[8] as Element,
-      presentationDate: fields[9] as DateTime,
-      elementPresentationDate: fields[10] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Immunization_Education obj) {
-    writer
-      ..writeByte(11)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.documentType)
-      ..writeByte(4)
-      ..write(obj.elementDocumentType)
-      ..writeByte(5)
-      ..write(obj.reference)
-      ..writeByte(6)
-      ..write(obj.elementReference)
-      ..writeByte(7)
-      ..write(obj.publicationDate)
-      ..writeByte(8)
-      ..write(obj.elementPublicationDate)
-      ..writeByte(9)
-      ..write(obj.presentationDate)
-      ..writeByte(10)
-      ..write(obj.elementPresentationDate);
-  }
-}
-
-class Immunization_ReactionAdapter extends TypeAdapter<Immunization_Reaction> {
-  @override
-  final typeId = 312;
-
-  @override
-  Immunization_Reaction read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Immunization_Reaction(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      date: fields[3] as DateTime,
-      elementDate: fields[4] as Element,
-      detail: fields[5] as Reference,
-      reported: fields[6] as bool,
-      elementReported: fields[7] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Immunization_Reaction obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.date)
-      ..writeByte(4)
-      ..write(obj.elementDate)
-      ..writeByte(5)
-      ..write(obj.detail)
-      ..writeByte(6)
-      ..write(obj.reported)
-      ..writeByte(7)
-      ..write(obj.elementReported);
-  }
-}
-
-class Immunization_ProtocolAppliedAdapter
-    extends TypeAdapter<Immunization_ProtocolApplied> {
-  @override
-  final typeId = 313;
-
-  @override
-  Immunization_ProtocolApplied read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Immunization_ProtocolApplied(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      series: fields[3] as String,
-      elementSeries: fields[4] as Element,
-      authority: fields[5] as Reference,
-      targetDisease: (fields[6] as List)?.cast<CodeableConcept>(),
-      elementDoseNumberPositiveInt: fields[8] as Element,
-      doseNumberString: fields[9] as String,
-      elementDoseNumberString: fields[10] as Element,
-      elementSeriesDosesPositiveInt: fields[12] as Element,
-      seriesDosesString: fields[13] as String,
-      elementSeriesDosesString: fields[14] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Immunization_ProtocolApplied obj) {
-    writer
-      ..writeByte(13)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.series)
-      ..writeByte(4)
-      ..write(obj.elementSeries)
-      ..writeByte(5)
-      ..write(obj.authority)
-      ..writeByte(6)
-      ..write(obj.targetDisease)
-      ..writeByte(8)
-      ..write(obj.elementDoseNumberPositiveInt)
-      ..writeByte(9)
-      ..write(obj.doseNumberString)
-      ..writeByte(10)
-      ..write(obj.elementDoseNumberString)
-      ..writeByte(12)
-      ..write(obj.elementSeriesDosesPositiveInt)
-      ..writeByte(13)
-      ..write(obj.seriesDosesString)
-      ..writeByte(14)
-      ..write(obj.elementSeriesDosesString);
   }
 }
 

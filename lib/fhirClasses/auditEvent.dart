@@ -187,12 +187,10 @@ AuditEvent(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 69)
 class AuditEvent_Agent {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -201,7 +199,6 @@ class AuditEvent_Agent {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -216,80 +213,64 @@ class AuditEvent_Agent {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Specification of the participation type the user plays when performing
   // the event.
-  @HiveField(3)
   CodeableConcept type;
 
   //  The security role that the user was acting under, that come from local
   // codes defined by the access control security system (e.g. RBAC, ABAC)
   // used in the local context.
-  @HiveField(4)
   List<CodeableConcept> role;
 
   //  Reference to who this agent is that was involved in the event.
-  @HiveField(5)
   Reference who;
 
   //  Alternative agent Identifier. For a human, this should be a user
   // identifier text string from authentication system. This identifier
   // would be one known to a common authentication system (e.g. single
   // sign-on), if available.
-  @HiveField(6)
   String altId;
 
   //  Extensions for altId
-  @HiveField(7)
   Element elementAltId;
 
   //  Human-meaningful name for the agent.
-  @HiveField(8)
   String name;
 
   //  Extensions for name
-  @HiveField(9)
   Element elementName;
 
   //  Indicator that the user is or is not the requestor, or initiator, for
   // the event being audited.
-  @HiveField(10)
   bool requestor;
 
   //  Extensions for requestor
-  @HiveField(11)
   Element elementRequestor;
 
   //  Where the event occurred.
-  @HiveField(12)
   Reference location;
 
   //  The policy or plan that authorized the activity being recorded.
   // Typically, a single activity may have multiple applicable policies,
   // such as patient consent, guarantor funding, etc. The policy would also
   // indicate the security token used.
-  @HiveField(13)
   List<String> policy;
 
   //  Extensions for policy
-  @HiveField(14)
   List<Element> elementPolicy;
 
   //  Type of media involved. Used when the event is about
   // exporting/importing onto media.
-  @HiveField(15)
   Coding media;
 
   //  Logical network location for application activity, if the activity has
   // a network location.
-  @HiveField(16)
   AuditEvent_Network network;
 
   //  The reason (purpose of use), specific to this agent, that was used
   // during the event being recorded.
-  @HiveField(17)
   List<CodeableConcept> purposeOfUse;
 
 AuditEvent_Agent(
@@ -318,12 +299,10 @@ AuditEvent_Agent(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 70)
 class AuditEvent_Network {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -332,7 +311,6 @@ class AuditEvent_Network {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -347,25 +325,20 @@ class AuditEvent_Network {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  An identifier for the network access point of the user device for the
   // audit event.
-  @HiveField(3)
   String address;
 
   //  Extensions for address
-  @HiveField(4)
   Element elementAddress;
 
   //  An identifier for the type of network access point that originated the
   // audit event.
-  @HiveField(5)
   String type; // <code> enum: 1/2/3/4/5;
 
   //  Extensions for type
-  @HiveField(6)
   Element elementType;
 
 AuditEvent_Network(
@@ -383,12 +356,10 @@ AuditEvent_Network(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 71)
 class AuditEvent_Source {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -397,7 +368,6 @@ class AuditEvent_Source {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -412,25 +382,20 @@ class AuditEvent_Source {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Logical source location within the healthcare enterprise network.  For
   // example, a hospital or other provider location within a multi-entity
   // provider group.
-  @HiveField(3)
   String site;
 
   //  Extensions for site
-  @HiveField(4)
   Element elementSite;
 
   //  Identifier of the source where the event was detected.
-  @HiveField(5)
   Reference observer;
 
   //  Code specifying the type of source where event originated.
-  @HiveField(6)
   List<Coding> type;
 
 AuditEvent_Source(
@@ -448,12 +413,10 @@ AuditEvent_Source(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 72)
 class AuditEvent_Entity {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -462,7 +425,6 @@ class AuditEvent_Entity {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -477,58 +439,45 @@ class AuditEvent_Entity {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Identifies a specific instance of the entity. The reference should be
   // version specific.
-  @HiveField(3)
   Reference what;
 
   //  The type of the object that was involved in this audit event.
-  @HiveField(4)
   Coding type;
 
   //  Code representing the role the entity played in the event being
   // audited.
-  @HiveField(5)
   Coding role;
 
   //  Identifier for the data life-cycle stage for the entity.
-  @HiveField(6)
   Coding lifecycle;
 
   //  Security labels for the identified entity.
-  @HiveField(7)
   List<Coding> securityLabel;
 
   //  A name of the entity in the audit event.
-  @HiveField(8)
   String name;
 
   //  Extensions for name
-  @HiveField(9)
   Element elementName;
 
   //  Text that describes the entity in more detail.
-  @HiveField(10)
   String description;
 
   //  Extensions for description
-  @HiveField(11)
   Element elementDescription;
 
   //  The query parameters for a query-type entities.
-  @HiveField(12)
   String query;
 
   //  Extensions for query
-  @HiveField(13)
   Element elementQuery;
 
   //  Tagged value pairs for conveying additional information about the
   // entity.
-  @HiveField(14)
   List<AuditEvent_Detail> detail;
 
 AuditEvent_Entity(
@@ -554,12 +503,10 @@ AuditEvent_Entity(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 73)
 class AuditEvent_Detail {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -568,7 +515,6 @@ class AuditEvent_Detail {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -583,31 +529,24 @@ class AuditEvent_Detail {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The type of extra detail provided in the value.
-  @HiveField(3)
   String type;
 
   //  Extensions for type
-  @HiveField(4)
   Element elementType;
 
   //  The  value of the extra detail.
-  @HiveField(5)
   String valueString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for valueString
-  @HiveField(6)
   Element elementValueString;
 
   //  The  value of the extra detail.
-  @HiveField(7)
   String valueBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
 
   //  Extensions for valueBase64Binary
-  @HiveField(8)
   Element elementValueBase64Binary;
 
 AuditEvent_Detail(
@@ -727,279 +666,6 @@ class AuditEventAdapter extends TypeAdapter<AuditEvent> {
       ..write(obj.source)
       ..writeByte(25)
       ..write(obj.entity);
-  }
-}
-
-class AuditEvent_AgentAdapter extends TypeAdapter<AuditEvent_Agent> {
-  @override
-  final typeId = 69;
-
-  @override
-  AuditEvent_Agent read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return AuditEvent_Agent(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as CodeableConcept,
-      role: (fields[4] as List)?.cast<CodeableConcept>(),
-      who: fields[5] as Reference,
-      altId: fields[6] as String,
-      elementAltId: fields[7] as Element,
-      name: fields[8] as String,
-      elementName: fields[9] as Element,
-      requestor: fields[10] as bool,
-      elementRequestor: fields[11] as Element,
-      location: fields[12] as Reference,
-      policy: (fields[13] as List)?.cast<String>(),
-      elementPolicy: (fields[14] as List)?.cast<Element>(),
-      media: fields[15] as Coding,
-      network: fields[16] as AuditEvent_Network,
-      purposeOfUse: (fields[17] as List)?.cast<CodeableConcept>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, AuditEvent_Agent obj) {
-    writer
-      ..writeByte(18)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.role)
-      ..writeByte(5)
-      ..write(obj.who)
-      ..writeByte(6)
-      ..write(obj.altId)
-      ..writeByte(7)
-      ..write(obj.elementAltId)
-      ..writeByte(8)
-      ..write(obj.name)
-      ..writeByte(9)
-      ..write(obj.elementName)
-      ..writeByte(10)
-      ..write(obj.requestor)
-      ..writeByte(11)
-      ..write(obj.elementRequestor)
-      ..writeByte(12)
-      ..write(obj.location)
-      ..writeByte(13)
-      ..write(obj.policy)
-      ..writeByte(14)
-      ..write(obj.elementPolicy)
-      ..writeByte(15)
-      ..write(obj.media)
-      ..writeByte(16)
-      ..write(obj.network)
-      ..writeByte(17)
-      ..write(obj.purposeOfUse);
-  }
-}
-
-class AuditEvent_NetworkAdapter extends TypeAdapter<AuditEvent_Network> {
-  @override
-  final typeId = 70;
-
-  @override
-  AuditEvent_Network read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return AuditEvent_Network(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      address: fields[3] as String,
-      elementAddress: fields[4] as Element,
-      type: fields[5] as String,
-      elementType: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, AuditEvent_Network obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.address)
-      ..writeByte(4)
-      ..write(obj.elementAddress)
-      ..writeByte(5)
-      ..write(obj.type)
-      ..writeByte(6)
-      ..write(obj.elementType);
-  }
-}
-
-class AuditEvent_SourceAdapter extends TypeAdapter<AuditEvent_Source> {
-  @override
-  final typeId = 71;
-
-  @override
-  AuditEvent_Source read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return AuditEvent_Source(
-      fields[5] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      site: fields[3] as String,
-      elementSite: fields[4] as Element,
-      type: (fields[6] as List)?.cast<Coding>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, AuditEvent_Source obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.site)
-      ..writeByte(4)
-      ..write(obj.elementSite)
-      ..writeByte(5)
-      ..write(obj.observer)
-      ..writeByte(6)
-      ..write(obj.type);
-  }
-}
-
-class AuditEvent_EntityAdapter extends TypeAdapter<AuditEvent_Entity> {
-  @override
-  final typeId = 72;
-
-  @override
-  AuditEvent_Entity read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return AuditEvent_Entity(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      what: fields[3] as Reference,
-      type: fields[4] as Coding,
-      role: fields[5] as Coding,
-      lifecycle: fields[6] as Coding,
-      securityLabel: (fields[7] as List)?.cast<Coding>(),
-      name: fields[8] as String,
-      elementName: fields[9] as Element,
-      description: fields[10] as String,
-      elementDescription: fields[11] as Element,
-      query: fields[12] as String,
-      elementQuery: fields[13] as Element,
-      detail: (fields[14] as List)?.cast<AuditEvent_Detail>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, AuditEvent_Entity obj) {
-    writer
-      ..writeByte(15)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.what)
-      ..writeByte(4)
-      ..write(obj.type)
-      ..writeByte(5)
-      ..write(obj.role)
-      ..writeByte(6)
-      ..write(obj.lifecycle)
-      ..writeByte(7)
-      ..write(obj.securityLabel)
-      ..writeByte(8)
-      ..write(obj.name)
-      ..writeByte(9)
-      ..write(obj.elementName)
-      ..writeByte(10)
-      ..write(obj.description)
-      ..writeByte(11)
-      ..write(obj.elementDescription)
-      ..writeByte(12)
-      ..write(obj.query)
-      ..writeByte(13)
-      ..write(obj.elementQuery)
-      ..writeByte(14)
-      ..write(obj.detail);
-  }
-}
-
-class AuditEvent_DetailAdapter extends TypeAdapter<AuditEvent_Detail> {
-  @override
-  final typeId = 73;
-
-  @override
-  AuditEvent_Detail read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return AuditEvent_Detail(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as String,
-      elementType: fields[4] as Element,
-      valueString: fields[5] as String,
-      elementValueString: fields[6] as Element,
-      valueBase64Binary: fields[7] as String,
-      elementValueBase64Binary: fields[8] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, AuditEvent_Detail obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.elementType)
-      ..writeByte(5)
-      ..write(obj.valueString)
-      ..writeByte(6)
-      ..write(obj.elementValueString)
-      ..writeByte(7)
-      ..write(obj.valueBase64Binary)
-      ..writeByte(8)
-      ..write(obj.elementValueBase64Binary);
   }
 }
 

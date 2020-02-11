@@ -147,12 +147,10 @@ MedicinalProductInteraction(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 416)
 class MedicinalProductInteraction_Interactant {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -161,7 +159,6 @@ class MedicinalProductInteraction_Interactant {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -176,15 +173,12 @@ class MedicinalProductInteraction_Interactant {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The specific medication, food or laboratory test that interacts.
-  @HiveField(3)
   Reference itemReference;
 
   //  The specific medication, food or laboratory test that interacts.
-  @HiveField(4)
   CodeableConcept itemCodeableConcept;
 
 MedicinalProductInteraction_Interactant(
@@ -281,43 +275,6 @@ class MedicinalProductInteractionAdapter
       ..write(obj.incidence)
       ..writeByte(18)
       ..write(obj.management);
-  }
-}
-
-class MedicinalProductInteraction_InteractantAdapter
-    extends TypeAdapter<MedicinalProductInteraction_Interactant> {
-  @override
-  final typeId = 416;
-
-  @override
-  MedicinalProductInteraction_Interactant read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProductInteraction_Interactant(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      itemReference: fields[3] as Reference,
-      itemCodeableConcept: fields[4] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicinalProductInteraction_Interactant obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.itemReference)
-      ..writeByte(4)
-      ..write(obj.itemCodeableConcept);
   }
 }
 

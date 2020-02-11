@@ -568,12 +568,10 @@ ActivityDefinition(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 58)
 class ActivityDefinition_Participant {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -582,7 +580,6 @@ class ActivityDefinition_Participant {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -597,20 +594,16 @@ class ActivityDefinition_Participant {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The type of participant in the action.
-  @HiveField(3)
   String type;
 
   //  Extensions for type
-  @HiveField(4)
   Element elementType;
 
   //  The role the participant should play in performing the described
   // action.
-  @HiveField(5)
   CodeableConcept role;
 
 ActivityDefinition_Participant(
@@ -627,12 +620,10 @@ ActivityDefinition_Participant(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 59)
 class ActivityDefinition_DynamicValue {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -641,7 +632,6 @@ class ActivityDefinition_DynamicValue {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -656,7 +646,6 @@ class ActivityDefinition_DynamicValue {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The path to the element to be customized. This is the path on the
@@ -668,15 +657,12 @@ class ActivityDefinition_DynamicValue {
   // sub-elements, as well as indexers ([x]) to traverse
   // multiple-cardinality sub-elements (see the [Simple FHIRPath
   // Profile](fhirpath.html#simple) for full details).
-  @HiveField(3)
   String path;
 
   //  Extensions for path
-  @HiveField(4)
   Element elementPath;
 
   //  An expression specifying the value of the customized element.
-  @HiveField(5)
   Expression expression;
 
 ActivityDefinition_DynamicValue(
@@ -968,86 +954,6 @@ class ActivityDefinitionAdapter extends TypeAdapter<ActivityDefinition> {
       ..write(obj.transform)
       ..writeByte(83)
       ..write(obj.dynamicValue);
-  }
-}
-
-class ActivityDefinition_ParticipantAdapter
-    extends TypeAdapter<ActivityDefinition_Participant> {
-  @override
-  final typeId = 58;
-
-  @override
-  ActivityDefinition_Participant read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ActivityDefinition_Participant(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as String,
-      elementType: fields[4] as Element,
-      role: fields[5] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ActivityDefinition_Participant obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.elementType)
-      ..writeByte(5)
-      ..write(obj.role);
-  }
-}
-
-class ActivityDefinition_DynamicValueAdapter
-    extends TypeAdapter<ActivityDefinition_DynamicValue> {
-  @override
-  final typeId = 59;
-
-  @override
-  ActivityDefinition_DynamicValue read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ActivityDefinition_DynamicValue(
-      fields[5] as Expression,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      path: fields[3] as String,
-      elementPath: fields[4] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ActivityDefinition_DynamicValue obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.path)
-      ..writeByte(4)
-      ..write(obj.elementPath)
-      ..writeByte(5)
-      ..write(obj.expression);
   }
 }
 

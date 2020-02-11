@@ -260,12 +260,10 @@ Encounter(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 242)
 class Encounter_StatusHistory {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -274,7 +272,6 @@ class Encounter_StatusHistory {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -289,20 +286,16 @@ class Encounter_StatusHistory {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  planned | arrived | triaged | in-progress | onleave | finished |
   // cancelled +.
-  @HiveField(3)
   String status; // <code> enum: planned/arrived/triaged/in-progress/onleave/finished/cancelled/entered-in-error/unknown;
 
   //  Extensions for status
-  @HiveField(4)
   Element elementStatus;
 
   //  The time that the episode was in the specified status.
-  @HiveField(5)
   Period period;
 
 Encounter_StatusHistory(
@@ -319,12 +312,10 @@ Encounter_StatusHistory(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 243)
 class Encounter_ClassHistory {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -333,7 +324,6 @@ class Encounter_ClassHistory {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -348,15 +338,12 @@ class Encounter_ClassHistory {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  inpatient | outpatient | ambulatory | emergency +.
-  @HiveField(3)
   Coding classs;
 
   //  The time that the episode was in the specified class.
-  @HiveField(4)
   Period period;
 
 Encounter_ClassHistory(
@@ -372,12 +359,10 @@ Encounter_ClassHistory(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 244)
 class Encounter_Participant {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -386,7 +371,6 @@ class Encounter_Participant {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -401,21 +385,17 @@ class Encounter_Participant {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Role of participant in encounter.
-  @HiveField(3)
   List<CodeableConcept> type;
 
   //  The period of time that the specified participant participated in the
   // encounter. These can overlap or be sub-sets of the overall encounter's
   // period.
-  @HiveField(4)
   Period period;
 
   //  Persons involved in the encounter other than the patient.
-  @HiveField(5)
   Reference individual;
 
 Encounter_Participant(
@@ -432,12 +412,10 @@ Encounter_Participant(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 245)
 class Encounter_Diagnosis {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -446,7 +424,6 @@ class Encounter_Diagnosis {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -461,27 +438,22 @@ class Encounter_Diagnosis {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Reason the encounter takes place, as specified using information from
   // another resource. For admissions, this is the admission diagnosis. The
   // indication will typically be a Condition (with other resources
   // referenced in the evidence.detail), or a Procedure.
-  @HiveField(3)
   Reference condition;
 
   //  Role that this diagnosis has within the encounter (e.g. admission,
   // billing, discharge …).
-  @HiveField(4)
   CodeableConcept use;
 
   //  Ranking of the diagnosis (for each role type).
-  @HiveField(5)
   int rank;
 
   //  Extensions for rank
-  @HiveField(6)
   Element elementRank;
 
 Encounter_Diagnosis(
@@ -499,12 +471,10 @@ Encounter_Diagnosis(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 246)
 class Encounter_Hospitalization {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -513,7 +483,6 @@ class Encounter_Hospitalization {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -528,45 +497,35 @@ class Encounter_Hospitalization {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Pre-admission identifier.
-  @HiveField(3)
   Identifier preAdmissionIdentifier;
 
   //  The location/organization from which the patient came before
   // admission.
-  @HiveField(4)
   Reference origin;
 
   //  From where patient was admitted (physician referral, transfer).
-  @HiveField(5)
   CodeableConcept admitSource;
 
   //  Whether this hospitalization is a readmission and why if known.
-  @HiveField(6)
   CodeableConcept reAdmission;
 
   //  Diet preferences reported by the patient.
-  @HiveField(7)
   List<CodeableConcept> dietPreference;
 
   //  Special courtesies (VIP, board member).
-  @HiveField(8)
   List<CodeableConcept> specialCourtesy;
 
   //  Any special requests that have been made for this hospitalization
   // encounter, such as the provision of specific equipment or other things.
-  @HiveField(9)
   List<CodeableConcept> specialArrangement;
 
   //  Location/organization to which the patient is discharged.
-  @HiveField(10)
   Reference destination;
 
   //  Category or kind of location after discharge.
-  @HiveField(11)
   CodeableConcept dischargeDisposition;
 
 Encounter_Hospitalization(
@@ -589,12 +548,10 @@ Encounter_Hospitalization(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 247)
 class Encounter_Location {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -603,7 +560,6 @@ class Encounter_Location {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -618,30 +574,24 @@ class Encounter_Location {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The location where the encounter takes place.
-  @HiveField(3)
   Reference location;
 
   //  The status of the participants' presence at the specified location
   // during the period specified. If the participant is no longer at the
   // location, then the period will have an end date/time.
-  @HiveField(4)
   String status; // <code> enum: planned/active/reserved/completed;
 
   //  Extensions for status
-  @HiveField(5)
   Element elementStatus;
 
   //  This will be used to specify the required levels (bed/ward/room/etc.)
   // desired to be recorded to simplify either messaging or query.
-  @HiveField(6)
   CodeableConcept physicalType;
 
   //  Time period during which the patient was present at the location.
-  @HiveField(7)
   Period period;
 
 Encounter_Location(
@@ -787,267 +737,6 @@ class EncounterAdapter extends TypeAdapter<Encounter> {
       ..write(obj.serviceProvider)
       ..writeByte(34)
       ..write(obj.partOf);
-  }
-}
-
-class Encounter_StatusHistoryAdapter
-    extends TypeAdapter<Encounter_StatusHistory> {
-  @override
-  final typeId = 242;
-
-  @override
-  Encounter_StatusHistory read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Encounter_StatusHistory(
-      fields[5] as Period,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      status: fields[3] as String,
-      elementStatus: fields[4] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Encounter_StatusHistory obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.status)
-      ..writeByte(4)
-      ..write(obj.elementStatus)
-      ..writeByte(5)
-      ..write(obj.period);
-  }
-}
-
-class Encounter_ClassHistoryAdapter
-    extends TypeAdapter<Encounter_ClassHistory> {
-  @override
-  final typeId = 243;
-
-  @override
-  Encounter_ClassHistory read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Encounter_ClassHistory(
-      fields[3] as Coding,
-      fields[4] as Period,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Encounter_ClassHistory obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.classs)
-      ..writeByte(4)
-      ..write(obj.period);
-  }
-}
-
-class Encounter_ParticipantAdapter extends TypeAdapter<Encounter_Participant> {
-  @override
-  final typeId = 244;
-
-  @override
-  Encounter_Participant read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Encounter_Participant(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: (fields[3] as List)?.cast<CodeableConcept>(),
-      period: fields[4] as Period,
-      individual: fields[5] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Encounter_Participant obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.period)
-      ..writeByte(5)
-      ..write(obj.individual);
-  }
-}
-
-class Encounter_DiagnosisAdapter extends TypeAdapter<Encounter_Diagnosis> {
-  @override
-  final typeId = 245;
-
-  @override
-  Encounter_Diagnosis read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Encounter_Diagnosis(
-      fields[3] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      use: fields[4] as CodeableConcept,
-      rank: fields[5] as int,
-      elementRank: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Encounter_Diagnosis obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.condition)
-      ..writeByte(4)
-      ..write(obj.use)
-      ..writeByte(5)
-      ..write(obj.rank)
-      ..writeByte(6)
-      ..write(obj.elementRank);
-  }
-}
-
-class Encounter_HospitalizationAdapter
-    extends TypeAdapter<Encounter_Hospitalization> {
-  @override
-  final typeId = 246;
-
-  @override
-  Encounter_Hospitalization read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Encounter_Hospitalization(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      preAdmissionIdentifier: fields[3] as Identifier,
-      origin: fields[4] as Reference,
-      admitSource: fields[5] as CodeableConcept,
-      reAdmission: fields[6] as CodeableConcept,
-      dietPreference: (fields[7] as List)?.cast<CodeableConcept>(),
-      specialCourtesy: (fields[8] as List)?.cast<CodeableConcept>(),
-      specialArrangement: (fields[9] as List)?.cast<CodeableConcept>(),
-      destination: fields[10] as Reference,
-      dischargeDisposition: fields[11] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Encounter_Hospitalization obj) {
-    writer
-      ..writeByte(12)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.preAdmissionIdentifier)
-      ..writeByte(4)
-      ..write(obj.origin)
-      ..writeByte(5)
-      ..write(obj.admitSource)
-      ..writeByte(6)
-      ..write(obj.reAdmission)
-      ..writeByte(7)
-      ..write(obj.dietPreference)
-      ..writeByte(8)
-      ..write(obj.specialCourtesy)
-      ..writeByte(9)
-      ..write(obj.specialArrangement)
-      ..writeByte(10)
-      ..write(obj.destination)
-      ..writeByte(11)
-      ..write(obj.dischargeDisposition);
-  }
-}
-
-class Encounter_LocationAdapter extends TypeAdapter<Encounter_Location> {
-  @override
-  final typeId = 247;
-
-  @override
-  Encounter_Location read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Encounter_Location(
-      fields[3] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      status: fields[4] as String,
-      elementStatus: fields[5] as Element,
-      physicalType: fields[6] as CodeableConcept,
-      period: fields[7] as Period,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Encounter_Location obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.location)
-      ..writeByte(4)
-      ..write(obj.status)
-      ..writeByte(5)
-      ..write(obj.elementStatus)
-      ..writeByte(6)
-      ..write(obj.physicalType)
-      ..writeByte(7)
-      ..write(obj.period);
   }
 }
 

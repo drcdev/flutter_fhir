@@ -196,12 +196,10 @@ CatalogEntry(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 108)
 class CatalogEntry_RelatedEntry {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -210,7 +208,6 @@ class CatalogEntry_RelatedEntry {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -225,20 +222,16 @@ class CatalogEntry_RelatedEntry {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The type of relation to the related item: child, parent,
   // packageContent, containerPackage, usedIn, uses, requires, etc.
-  @HiveField(3)
   String relationtype; // <code> enum: triggers/is-replaced-by;
 
   //  Extensions for relationtype
-  @HiveField(4)
   Element elementRelationtype;
 
   //  The reference to the related item.
-  @HiveField(5)
   Reference item;
 
 CatalogEntry_RelatedEntry(
@@ -361,46 +354,6 @@ class CatalogEntryAdapter extends TypeAdapter<CatalogEntry> {
       ..write(obj.additionalClassification)
       ..writeByte(27)
       ..write(obj.relatedEntry);
-  }
-}
-
-class CatalogEntry_RelatedEntryAdapter
-    extends TypeAdapter<CatalogEntry_RelatedEntry> {
-  @override
-  final typeId = 108;
-
-  @override
-  CatalogEntry_RelatedEntry read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CatalogEntry_RelatedEntry(
-      fields[5] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      relationtype: fields[3] as String,
-      elementRelationtype: fields[4] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CatalogEntry_RelatedEntry obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.relationtype)
-      ..writeByte(4)
-      ..write(obj.elementRelationtype)
-      ..writeByte(5)
-      ..write(obj.item);
   }
 }
 

@@ -247,12 +247,10 @@ DiagnosticReport(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 227)
 class DiagnosticReport_Media {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -261,7 +259,6 @@ class DiagnosticReport_Media {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -276,21 +273,17 @@ class DiagnosticReport_Media {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A comment about the image. Typically, this is used to provide an
   // explanation for why the image is included, or to draw the viewer's
   // attention to important features.
-  @HiveField(3)
   String comment;
 
   //  Extensions for comment
-  @HiveField(4)
   Element elementComment;
 
   //  Reference to the image source.
-  @HiveField(5)
   Reference link;
 
 DiagnosticReport_Media(
@@ -431,46 +424,6 @@ class DiagnosticReportAdapter extends TypeAdapter<DiagnosticReport> {
       ..write(obj.conclusionCode)
       ..writeByte(33)
       ..write(obj.presentedForm);
-  }
-}
-
-class DiagnosticReport_MediaAdapter
-    extends TypeAdapter<DiagnosticReport_Media> {
-  @override
-  final typeId = 227;
-
-  @override
-  DiagnosticReport_Media read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return DiagnosticReport_Media(
-      fields[5] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      comment: fields[3] as String,
-      elementComment: fields[4] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, DiagnosticReport_Media obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.comment)
-      ..writeByte(4)
-      ..write(obj.elementComment)
-      ..writeByte(5)
-      ..write(obj.link);
   }
 }
 

@@ -145,12 +145,10 @@ MedicinalProductPharmaceutical(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 422)
 class MedicinalProductPharmaceutical_Characteristics {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -159,7 +157,6 @@ class MedicinalProductPharmaceutical_Characteristics {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -174,15 +171,12 @@ class MedicinalProductPharmaceutical_Characteristics {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A coded characteristic.
-  @HiveField(3)
   CodeableConcept code;
 
   //  The status of characteristic e.g. assigned or pending.
-  @HiveField(4)
   CodeableConcept status;
 
 MedicinalProductPharmaceutical_Characteristics(
@@ -198,12 +192,10 @@ MedicinalProductPharmaceutical_Characteristics(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 423)
 class MedicinalProductPharmaceutical_RouteOfAdministration {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -212,7 +204,6 @@ class MedicinalProductPharmaceutical_RouteOfAdministration {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -227,44 +218,36 @@ class MedicinalProductPharmaceutical_RouteOfAdministration {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Coded expression for the route.
-  @HiveField(3)
   CodeableConcept code;
 
   //  The first dose (dose quantity) administered in humans can be
   // specified, for a product under investigation, using a numerical value
   // and its unit of measurement.
-  @HiveField(4)
   Quantity firstDose;
 
   //  The maximum single dose that can be administered as per the protocol
   // of a clinical trial can be specified using a numerical value and its
   // unit of measurement.
-  @HiveField(5)
   Quantity maxSingleDose;
 
   //  The maximum dose per day (maximum dose quantity to be administered in
   // any one 24-h period) that can be administered as per the protocol
   // referenced in the clinical trial authorisation.
-  @HiveField(6)
   Quantity maxDosePerDay;
 
   //  The maximum dose per treatment period that can be administered as per
   // the protocol referenced in the clinical trial authorisation.
-  @HiveField(7)
   Ratio maxDosePerTreatmentPeriod;
 
   //  The maximum treatment period during which an Investigational Medicinal
   // Product can be administered as per the protocol referenced in the
   // clinical trial authorisation.
-  @HiveField(8)
   Duration maxTreatmentPeriod;
 
   //  A species for which this route applies.
-  @HiveField(9)
   List<MedicinalProductPharmaceutical_TargetSpecies> targetSpecies;
 
 MedicinalProductPharmaceutical_RouteOfAdministration(
@@ -285,12 +268,10 @@ MedicinalProductPharmaceutical_RouteOfAdministration(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 424)
 class MedicinalProductPharmaceutical_TargetSpecies {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -299,7 +280,6 @@ class MedicinalProductPharmaceutical_TargetSpecies {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -314,16 +294,13 @@ class MedicinalProductPharmaceutical_TargetSpecies {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Coded expression for the species.
-  @HiveField(3)
   CodeableConcept code;
 
   //  A species specific time during which consumption of animal product is
   // not appropriate.
-  @HiveField(4)
   List<MedicinalProductPharmaceutical_WithdrawalPeriod> withdrawalPeriod;
 
 MedicinalProductPharmaceutical_TargetSpecies(
@@ -339,12 +316,10 @@ MedicinalProductPharmaceutical_TargetSpecies(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 425)
 class MedicinalProductPharmaceutical_WithdrawalPeriod {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -353,7 +328,6 @@ class MedicinalProductPharmaceutical_WithdrawalPeriod {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -368,24 +342,19 @@ class MedicinalProductPharmaceutical_WithdrawalPeriod {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Coded expression for the type of tissue for which the withdrawal
   // period applues, e.g. meat, milk.
-  @HiveField(3)
   CodeableConcept tissue;
 
   //  A value for the time.
-  @HiveField(4)
   Quantity value;
 
   //  Extra information about the withdrawal period.
-  @HiveField(5)
   String supportingInformation;
 
   //  Extensions for supportingInformation
-  @HiveField(6)
   Element elementSupportingInformation;
 
 MedicinalProductPharmaceutical_WithdrawalPeriod(
@@ -482,182 +451,6 @@ class MedicinalProductPharmaceuticalAdapter
       ..write(obj.characteristics)
       ..writeByte(17)
       ..write(obj.routeOfAdministration);
-  }
-}
-
-class MedicinalProductPharmaceutical_CharacteristicsAdapter
-    extends TypeAdapter<MedicinalProductPharmaceutical_Characteristics> {
-  @override
-  final typeId = 422;
-
-  @override
-  MedicinalProductPharmaceutical_Characteristics read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProductPharmaceutical_Characteristics(
-      fields[3] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      status: fields[4] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(
-      BinaryWriter writer, MedicinalProductPharmaceutical_Characteristics obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.status);
-  }
-}
-
-class MedicinalProductPharmaceutical_RouteOfAdministrationAdapter
-    extends TypeAdapter<MedicinalProductPharmaceutical_RouteOfAdministration> {
-  @override
-  final typeId = 423;
-
-  @override
-  MedicinalProductPharmaceutical_RouteOfAdministration read(
-      BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProductPharmaceutical_RouteOfAdministration(
-      fields[3] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      firstDose: fields[4] as Quantity,
-      maxSingleDose: fields[5] as Quantity,
-      maxDosePerDay: fields[6] as Quantity,
-      maxDosePerTreatmentPeriod: fields[7] as Ratio,
-      maxTreatmentPeriod: fields[8] as Duration,
-      targetSpecies: (fields[9] as List)
-          ?.cast<MedicinalProductPharmaceutical_TargetSpecies>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer,
-      MedicinalProductPharmaceutical_RouteOfAdministration obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.firstDose)
-      ..writeByte(5)
-      ..write(obj.maxSingleDose)
-      ..writeByte(6)
-      ..write(obj.maxDosePerDay)
-      ..writeByte(7)
-      ..write(obj.maxDosePerTreatmentPeriod)
-      ..writeByte(8)
-      ..write(obj.maxTreatmentPeriod)
-      ..writeByte(9)
-      ..write(obj.targetSpecies);
-  }
-}
-
-class MedicinalProductPharmaceutical_TargetSpeciesAdapter
-    extends TypeAdapter<MedicinalProductPharmaceutical_TargetSpecies> {
-  @override
-  final typeId = 424;
-
-  @override
-  MedicinalProductPharmaceutical_TargetSpecies read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProductPharmaceutical_TargetSpecies(
-      fields[3] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      withdrawalPeriod: (fields[4] as List)
-          ?.cast<MedicinalProductPharmaceutical_WithdrawalPeriod>(),
-    );
-  }
-
-  @override
-  void write(
-      BinaryWriter writer, MedicinalProductPharmaceutical_TargetSpecies obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.withdrawalPeriod);
-  }
-}
-
-class MedicinalProductPharmaceutical_WithdrawalPeriodAdapter
-    extends TypeAdapter<MedicinalProductPharmaceutical_WithdrawalPeriod> {
-  @override
-  final typeId = 425;
-
-  @override
-  MedicinalProductPharmaceutical_WithdrawalPeriod read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProductPharmaceutical_WithdrawalPeriod(
-      fields[3] as CodeableConcept,
-      fields[4] as Quantity,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      supportingInformation: fields[5] as String,
-      elementSupportingInformation: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer,
-      MedicinalProductPharmaceutical_WithdrawalPeriod obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.tissue)
-      ..writeByte(4)
-      ..write(obj.value)
-      ..writeByte(5)
-      ..write(obj.supportingInformation)
-      ..writeByte(6)
-      ..write(obj.elementSupportingInformation);
   }
 }
 

@@ -271,12 +271,10 @@ ExampleScenario(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 259)
 class ExampleScenario_Actor {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -285,7 +283,6 @@ class ExampleScenario_Actor {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -300,39 +297,30 @@ class ExampleScenario_Actor {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  ID or acronym of actor.
-  @HiveField(3)
   String actorId;
 
   //  Extensions for actorId
-  @HiveField(4)
   Element elementActorId;
 
   //  The type of actor - person or system.
-  @HiveField(5)
   String type; // <code> enum: person/entity;
 
   //  Extensions for type
-  @HiveField(6)
   Element elementType;
 
   //  The name of the actor as shown in the page.
-  @HiveField(7)
   String name;
 
   //  Extensions for name
-  @HiveField(8)
   Element elementName;
 
   //  The description of the actor.
-  @HiveField(9)
   String description;
 
   //  Extensions for description
-  @HiveField(10)
   Element elementDescription;
 
 ExampleScenario_Actor(
@@ -354,12 +342,10 @@ ExampleScenario_Actor(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 260)
 class ExampleScenario_Instance {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -368,7 +354,6 @@ class ExampleScenario_Instance {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -383,48 +368,37 @@ class ExampleScenario_Instance {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The id of the resource for referencing.
-  @HiveField(3)
   String resourceId;
 
   //  Extensions for resourceId
-  @HiveField(4)
   Element elementResourceId;
 
   //  The type of the resource.
-  @HiveField(5)
   String resourceType;
 
   //  Extensions for resourceType
-  @HiveField(6)
   Element elementResourceType;
 
   //  A short name for the resource instance.
-  @HiveField(7)
   String name;
 
   //  Extensions for name
-  @HiveField(8)
   Element elementName;
 
   //  Human-friendly description of the resource instance.
-  @HiveField(9)
   String description;
 
   //  Extensions for description
-  @HiveField(10)
   Element elementDescription;
 
   //  A specific version of the resource.
-  @HiveField(11)
   List<ExampleScenario_Version> version;
 
   //  Resources contained in the instance (e.g. the observations contained
   // in a bundle).
-  @HiveField(12)
   List<ExampleScenario_ContainedInstance> containedInstance;
 
 ExampleScenario_Instance(
@@ -447,12 +421,10 @@ ExampleScenario_Instance(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 261)
 class ExampleScenario_Version {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -461,7 +433,6 @@ class ExampleScenario_Version {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -476,23 +447,18 @@ class ExampleScenario_Version {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The identifier of a specific version of a resource.
-  @HiveField(3)
   String versionId;
 
   //  Extensions for versionId
-  @HiveField(4)
   Element elementVersionId;
 
   //  The description of the resource version.
-  @HiveField(5)
   String description;
 
   //  Extensions for description
-  @HiveField(6)
   Element elementDescription;
 
 ExampleScenario_Version(
@@ -510,12 +476,10 @@ ExampleScenario_Version(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 262)
 class ExampleScenario_ContainedInstance {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -524,7 +488,6 @@ class ExampleScenario_ContainedInstance {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -539,23 +502,18 @@ class ExampleScenario_ContainedInstance {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Each resource contained in the instance.
-  @HiveField(3)
   String resourceId;
 
   //  Extensions for resourceId
-  @HiveField(4)
   Element elementResourceId;
 
   //  A specific version of a resource contained in the instance.
-  @HiveField(5)
   String versionId;
 
   //  Extensions for versionId
-  @HiveField(6)
   Element elementVersionId;
 
 ExampleScenario_ContainedInstance(
@@ -573,12 +531,10 @@ ExampleScenario_ContainedInstance(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 263)
 class ExampleScenario_Process {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -587,7 +543,6 @@ class ExampleScenario_Process {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -602,43 +557,33 @@ class ExampleScenario_Process {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The diagram title of the group of operations.
-  @HiveField(3)
   String title;
 
   //  Extensions for title
-  @HiveField(4)
   Element elementTitle;
 
   //  A longer description of the group of operations.
-  @HiveField(5)
   String description;
 
   //  Extensions for description
-  @HiveField(6)
   Element elementDescription;
 
   //  Description of initial status before the process starts.
-  @HiveField(7)
   String preConditions;
 
   //  Extensions for preConditions
-  @HiveField(8)
   Element elementPreConditions;
 
   //  Description of final status after the process ends.
-  @HiveField(9)
   String postConditions;
 
   //  Extensions for postConditions
-  @HiveField(10)
   Element elementPostConditions;
 
   //  Each step of the process.
-  @HiveField(11)
   List<ExampleScenario_Step> step;
 
 ExampleScenario_Process(
@@ -661,12 +606,10 @@ ExampleScenario_Process(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 264)
 class ExampleScenario_Step {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -675,7 +618,6 @@ class ExampleScenario_Step {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -690,28 +632,22 @@ class ExampleScenario_Step {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Nested process.
-  @HiveField(3)
   List<ExampleScenario_Process> process;
 
   //  If there is a pause in the flow.
-  @HiveField(4)
   bool pause;
 
   //  Extensions for pause
-  @HiveField(5)
   Element elementPause;
 
   //  Each interaction or action.
-  @HiveField(6)
   ExampleScenario_Operation operation;
 
   //  Indicates an alternative step that can be taken instead of the
   // operations on the base step in exceptional/atypical circumstances.
-  @HiveField(7)
   List<ExampleScenario_Alternative> alternative;
 
 ExampleScenario_Step(
@@ -730,12 +666,10 @@ ExampleScenario_Step(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 265)
 class ExampleScenario_Operation {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -744,7 +678,6 @@ class ExampleScenario_Operation {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -759,79 +692,60 @@ class ExampleScenario_Operation {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The sequential number of the interaction, e.g. 1.2.5.
-  @HiveField(3)
   String number;
 
   //  Extensions for number
-  @HiveField(4)
   Element elementNumber;
 
   //  The type of operation - CRUD.
-  @HiveField(5)
   String type;
 
   //  Extensions for type
-  @HiveField(6)
   Element elementType;
 
   //  The human-friendly name of the interaction.
-  @HiveField(7)
   String name;
 
   //  Extensions for name
-  @HiveField(8)
   Element elementName;
 
   //  Who starts the transaction.
-  @HiveField(9)
   String initiator;
 
   //  Extensions for initiator
-  @HiveField(10)
   Element elementInitiator;
 
   //  Who receives the transaction.
-  @HiveField(11)
   String receiver;
 
   //  Extensions for receiver
-  @HiveField(12)
   Element elementReceiver;
 
   //  A comment to be inserted in the diagram.
-  @HiveField(13)
   String description;
 
   //  Extensions for description
-  @HiveField(14)
   Element elementDescription;
 
   //  Whether the initiator is deactivated right after the transaction.
-  @HiveField(15)
   bool initiatorActive;
 
   //  Extensions for initiatorActive
-  @HiveField(16)
   Element elementInitiatorActive;
 
   //  Whether the receiver is deactivated right after the transaction.
-  @HiveField(17)
   bool receiverActive;
 
   //  Extensions for receiverActive
-  @HiveField(18)
   Element elementReceiverActive;
 
   //  Each resource instance used by the initiator.
-  @HiveField(19)
   ExampleScenario_ContainedInstance request;
 
   //  Each resource instance used by the responder.
-  @HiveField(20)
   ExampleScenario_ContainedInstance response;
 
 ExampleScenario_Operation(
@@ -863,12 +777,10 @@ ExampleScenario_Operation(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 266)
 class ExampleScenario_Alternative {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -877,7 +789,6 @@ class ExampleScenario_Alternative {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -892,29 +803,23 @@ class ExampleScenario_Alternative {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The label to display for the alternative that gives a sense of the
   // circumstance in which the alternative should be invoked.
-  @HiveField(3)
   String title;
 
   //  Extensions for title
-  @HiveField(4)
   Element elementTitle;
 
   //  A human-readable description of the alternative explaining when the
   // alternative should occur rather than the base step.
-  @HiveField(5)
   String description;
 
   //  Extensions for description
-  @HiveField(6)
   Element elementDescription;
 
   //  What happens in each alternative option.
-  @HiveField(7)
   List<ExampleScenario_Step> step;
 
 ExampleScenario_Alternative(
@@ -1066,441 +971,6 @@ class ExampleScenarioAdapter extends TypeAdapter<ExampleScenario> {
       ..write(obj.process)
       ..writeByte(36)
       ..write(obj.workflow);
-  }
-}
-
-class ExampleScenario_ActorAdapter extends TypeAdapter<ExampleScenario_Actor> {
-  @override
-  final typeId = 259;
-
-  @override
-  ExampleScenario_Actor read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExampleScenario_Actor(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      actorId: fields[3] as String,
-      elementActorId: fields[4] as Element,
-      type: fields[5] as String,
-      elementType: fields[6] as Element,
-      name: fields[7] as String,
-      elementName: fields[8] as Element,
-      description: fields[9] as String,
-      elementDescription: fields[10] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExampleScenario_Actor obj) {
-    writer
-      ..writeByte(11)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.actorId)
-      ..writeByte(4)
-      ..write(obj.elementActorId)
-      ..writeByte(5)
-      ..write(obj.type)
-      ..writeByte(6)
-      ..write(obj.elementType)
-      ..writeByte(7)
-      ..write(obj.name)
-      ..writeByte(8)
-      ..write(obj.elementName)
-      ..writeByte(9)
-      ..write(obj.description)
-      ..writeByte(10)
-      ..write(obj.elementDescription);
-  }
-}
-
-class ExampleScenario_InstanceAdapter
-    extends TypeAdapter<ExampleScenario_Instance> {
-  @override
-  final typeId = 260;
-
-  @override
-  ExampleScenario_Instance read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExampleScenario_Instance(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      resourceId: fields[3] as String,
-      elementResourceId: fields[4] as Element,
-      elementResourceType: fields[6] as Element,
-      name: fields[7] as String,
-      elementName: fields[8] as Element,
-      description: fields[9] as String,
-      elementDescription: fields[10] as Element,
-      version: (fields[11] as List)?.cast<ExampleScenario_Version>(),
-      containedInstance:
-          (fields[12] as List)?.cast<ExampleScenario_ContainedInstance>(),
-    )..resourceType = fields[5] as String;
-  }
-
-  @override
-  void write(BinaryWriter writer, ExampleScenario_Instance obj) {
-    writer
-      ..writeByte(13)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.resourceId)
-      ..writeByte(4)
-      ..write(obj.elementResourceId)
-      ..writeByte(5)
-      ..write(obj.resourceType)
-      ..writeByte(6)
-      ..write(obj.elementResourceType)
-      ..writeByte(7)
-      ..write(obj.name)
-      ..writeByte(8)
-      ..write(obj.elementName)
-      ..writeByte(9)
-      ..write(obj.description)
-      ..writeByte(10)
-      ..write(obj.elementDescription)
-      ..writeByte(11)
-      ..write(obj.version)
-      ..writeByte(12)
-      ..write(obj.containedInstance);
-  }
-}
-
-class ExampleScenario_VersionAdapter
-    extends TypeAdapter<ExampleScenario_Version> {
-  @override
-  final typeId = 261;
-
-  @override
-  ExampleScenario_Version read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExampleScenario_Version(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      versionId: fields[3] as String,
-      elementVersionId: fields[4] as Element,
-      description: fields[5] as String,
-      elementDescription: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExampleScenario_Version obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.versionId)
-      ..writeByte(4)
-      ..write(obj.elementVersionId)
-      ..writeByte(5)
-      ..write(obj.description)
-      ..writeByte(6)
-      ..write(obj.elementDescription);
-  }
-}
-
-class ExampleScenario_ContainedInstanceAdapter
-    extends TypeAdapter<ExampleScenario_ContainedInstance> {
-  @override
-  final typeId = 262;
-
-  @override
-  ExampleScenario_ContainedInstance read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExampleScenario_ContainedInstance(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      resourceId: fields[3] as String,
-      elementResourceId: fields[4] as Element,
-      versionId: fields[5] as String,
-      elementVersionId: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExampleScenario_ContainedInstance obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.resourceId)
-      ..writeByte(4)
-      ..write(obj.elementResourceId)
-      ..writeByte(5)
-      ..write(obj.versionId)
-      ..writeByte(6)
-      ..write(obj.elementVersionId);
-  }
-}
-
-class ExampleScenario_ProcessAdapter
-    extends TypeAdapter<ExampleScenario_Process> {
-  @override
-  final typeId = 263;
-
-  @override
-  ExampleScenario_Process read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExampleScenario_Process(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      title: fields[3] as String,
-      elementTitle: fields[4] as Element,
-      description: fields[5] as String,
-      elementDescription: fields[6] as Element,
-      preConditions: fields[7] as String,
-      elementPreConditions: fields[8] as Element,
-      postConditions: fields[9] as String,
-      elementPostConditions: fields[10] as Element,
-      step: (fields[11] as List)?.cast<ExampleScenario_Step>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExampleScenario_Process obj) {
-    writer
-      ..writeByte(12)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.title)
-      ..writeByte(4)
-      ..write(obj.elementTitle)
-      ..writeByte(5)
-      ..write(obj.description)
-      ..writeByte(6)
-      ..write(obj.elementDescription)
-      ..writeByte(7)
-      ..write(obj.preConditions)
-      ..writeByte(8)
-      ..write(obj.elementPreConditions)
-      ..writeByte(9)
-      ..write(obj.postConditions)
-      ..writeByte(10)
-      ..write(obj.elementPostConditions)
-      ..writeByte(11)
-      ..write(obj.step);
-  }
-}
-
-class ExampleScenario_StepAdapter extends TypeAdapter<ExampleScenario_Step> {
-  @override
-  final typeId = 264;
-
-  @override
-  ExampleScenario_Step read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExampleScenario_Step(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      process: (fields[3] as List)?.cast<ExampleScenario_Process>(),
-      pause: fields[4] as bool,
-      elementPause: fields[5] as Element,
-      operation: fields[6] as ExampleScenario_Operation,
-      alternative: (fields[7] as List)?.cast<ExampleScenario_Alternative>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExampleScenario_Step obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.process)
-      ..writeByte(4)
-      ..write(obj.pause)
-      ..writeByte(5)
-      ..write(obj.elementPause)
-      ..writeByte(6)
-      ..write(obj.operation)
-      ..writeByte(7)
-      ..write(obj.alternative);
-  }
-}
-
-class ExampleScenario_OperationAdapter
-    extends TypeAdapter<ExampleScenario_Operation> {
-  @override
-  final typeId = 265;
-
-  @override
-  ExampleScenario_Operation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExampleScenario_Operation(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      number: fields[3] as String,
-      elementNumber: fields[4] as Element,
-      type: fields[5] as String,
-      elementType: fields[6] as Element,
-      name: fields[7] as String,
-      elementName: fields[8] as Element,
-      initiator: fields[9] as String,
-      elementInitiator: fields[10] as Element,
-      receiver: fields[11] as String,
-      elementReceiver: fields[12] as Element,
-      description: fields[13] as String,
-      elementDescription: fields[14] as Element,
-      initiatorActive: fields[15] as bool,
-      elementInitiatorActive: fields[16] as Element,
-      receiverActive: fields[17] as bool,
-      elementReceiverActive: fields[18] as Element,
-      request: fields[19] as ExampleScenario_ContainedInstance,
-      response: fields[20] as ExampleScenario_ContainedInstance,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExampleScenario_Operation obj) {
-    writer
-      ..writeByte(21)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.number)
-      ..writeByte(4)
-      ..write(obj.elementNumber)
-      ..writeByte(5)
-      ..write(obj.type)
-      ..writeByte(6)
-      ..write(obj.elementType)
-      ..writeByte(7)
-      ..write(obj.name)
-      ..writeByte(8)
-      ..write(obj.elementName)
-      ..writeByte(9)
-      ..write(obj.initiator)
-      ..writeByte(10)
-      ..write(obj.elementInitiator)
-      ..writeByte(11)
-      ..write(obj.receiver)
-      ..writeByte(12)
-      ..write(obj.elementReceiver)
-      ..writeByte(13)
-      ..write(obj.description)
-      ..writeByte(14)
-      ..write(obj.elementDescription)
-      ..writeByte(15)
-      ..write(obj.initiatorActive)
-      ..writeByte(16)
-      ..write(obj.elementInitiatorActive)
-      ..writeByte(17)
-      ..write(obj.receiverActive)
-      ..writeByte(18)
-      ..write(obj.elementReceiverActive)
-      ..writeByte(19)
-      ..write(obj.request)
-      ..writeByte(20)
-      ..write(obj.response);
-  }
-}
-
-class ExampleScenario_AlternativeAdapter
-    extends TypeAdapter<ExampleScenario_Alternative> {
-  @override
-  final typeId = 266;
-
-  @override
-  ExampleScenario_Alternative read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExampleScenario_Alternative(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      title: fields[3] as String,
-      elementTitle: fields[4] as Element,
-      description: fields[5] as String,
-      elementDescription: fields[6] as Element,
-      step: (fields[7] as List)?.cast<ExampleScenario_Step>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExampleScenario_Alternative obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.title)
-      ..writeByte(4)
-      ..write(obj.elementTitle)
-      ..writeByte(5)
-      ..write(obj.description)
-      ..writeByte(6)
-      ..write(obj.elementDescription)
-      ..writeByte(7)
-      ..write(obj.step);
   }
 }
 

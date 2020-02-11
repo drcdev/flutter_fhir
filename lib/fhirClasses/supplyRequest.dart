@@ -229,12 +229,10 @@ SupplyRequest(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 600)
 class SupplyRequest_Parameter {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -243,7 +241,6 @@ class SupplyRequest_Parameter {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -258,31 +255,24 @@ class SupplyRequest_Parameter {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A code or string that identifies the device detail being asserted.
-  @HiveField(3)
   CodeableConcept code;
 
   //  The value of the device detail.
-  @HiveField(4)
   CodeableConcept valueCodeableConcept;
 
   //  The value of the device detail.
-  @HiveField(5)
   Quantity valueQuantity;
 
   //  The value of the device detail.
-  @HiveField(6)
   Range valueRange;
 
   //  The value of the device detail.
-  @HiveField(7)
   bool valueBoolean; //  pattern: ^true|false$
 
   //  Extensions for valueBoolean
-  @HiveField(8)
   Element elementValueBoolean;
 
 SupplyRequest_Parameter(
@@ -423,55 +413,6 @@ class SupplyRequestAdapter extends TypeAdapter<SupplyRequest> {
       ..write(obj.deliverFrom)
       ..writeByte(32)
       ..write(obj.deliverTo);
-  }
-}
-
-class SupplyRequest_ParameterAdapter
-    extends TypeAdapter<SupplyRequest_Parameter> {
-  @override
-  final typeId = 600;
-
-  @override
-  SupplyRequest_Parameter read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SupplyRequest_Parameter(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as CodeableConcept,
-      valueCodeableConcept: fields[4] as CodeableConcept,
-      valueQuantity: fields[5] as Quantity,
-      valueRange: fields[6] as Range,
-      valueBoolean: fields[7] as bool,
-      elementValueBoolean: fields[8] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SupplyRequest_Parameter obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.valueCodeableConcept)
-      ..writeByte(5)
-      ..write(obj.valueQuantity)
-      ..writeByte(6)
-      ..write(obj.valueRange)
-      ..writeByte(7)
-      ..write(obj.valueBoolean)
-      ..writeByte(8)
-      ..write(obj.elementValueBoolean);
   }
 }
 

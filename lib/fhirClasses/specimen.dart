@@ -194,12 +194,10 @@ Specimen(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 534)
 class Specimen_Collection {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -208,7 +206,6 @@ class Specimen_Collection {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -223,55 +220,44 @@ class Specimen_Collection {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Person who collected the specimen.
-  @HiveField(3)
   Reference collector;
 
   //  Time when specimen was collected from subject - the physiologically
   // relevant time.
-  @HiveField(4)
   String collectedDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for collectedDateTime
-  @HiveField(5)
   Element elementCollectedDateTime;
 
   //  Time when specimen was collected from subject - the physiologically
   // relevant time.
-  @HiveField(6)
   Period collectedPeriod;
 
   //  The span of time over which the collection of a specimen occurred.
-  @HiveField(7)
   Duration duration;
 
   //  The quantity of specimen collected; for instance the volume of a blood
   // sample, or the physical measurement of an anatomic pathology sample.
-  @HiveField(8)
   Quantity quantity;
 
   //  A coded value specifying the technique that is used to perform the
   // procedure.
-  @HiveField(9)
   CodeableConcept method;
 
   //  Anatomical location from which the specimen was collected (if subject
   // is a patient). This is the target site.  This element is not used for
   // environmental specimens.
-  @HiveField(10)
   CodeableConcept bodySite;
 
   //  Abstinence or reduction from some or all food, drink, or both, for a
   // period of time prior to sample collection.
-  @HiveField(11)
   CodeableConcept fastingStatusCodeableConcept;
 
   //  Abstinence or reduction from some or all food, drink, or both, for a
   // period of time prior to sample collection.
-  @HiveField(12)
   Duration fastingStatusDuration;
 
 Specimen_Collection(
@@ -295,12 +281,10 @@ Specimen_Collection(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 535)
 class Specimen_Processing {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -309,7 +293,6 @@ class Specimen_Processing {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -324,39 +307,31 @@ class Specimen_Processing {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Textual description of procedure.
-  @HiveField(3)
   String description;
 
   //  Extensions for description
-  @HiveField(4)
   Element elementDescription;
 
   //  A coded value specifying the procedure used to process the specimen.
-  @HiveField(5)
   CodeableConcept procedure;
 
   //  Material used in the processing step.
-  @HiveField(6)
   List<Reference> additive;
 
   //  A record of the time or period when the specimen processing occurred. 
   // For example the time of sample fixation or the period of time the
   // sample was in formalin.
-  @HiveField(7)
   String timeDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for timeDateTime
-  @HiveField(8)
   Element elementTimeDateTime;
 
   //  A record of the time or period when the specimen processing occurred. 
   // For example the time of sample fixation or the period of time the
   // sample was in formalin.
-  @HiveField(9)
   Period timePeriod;
 
 Specimen_Processing(
@@ -377,12 +352,10 @@ Specimen_Processing(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 536)
 class Specimen_Container {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -391,7 +364,6 @@ class Specimen_Container {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -406,45 +378,36 @@ class Specimen_Container {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Id for container. There may be multiple; a manufacturer's bar code,
   // lab assigned identifier, etc. The container ID may differ from the
   // specimen id in some circumstances.
-  @HiveField(3)
   List<Identifier> identifier;
 
   //  Textual description of the container.
-  @HiveField(4)
   String description;
 
   //  Extensions for description
-  @HiveField(5)
   Element elementDescription;
 
   //  The type of container associated with the specimen (e.g. slide,
   // aliquot, etc.).
-  @HiveField(6)
   CodeableConcept type;
 
   //  The capacity (volume or other measure) the container may contain.
-  @HiveField(7)
   Quantity capacity;
 
   //  The quantity of specimen in the container; may be volume, dimensions,
   // or other appropriate measurements, depending on the specimen type.
-  @HiveField(8)
   Quantity specimenQuantity;
 
   //  Introduced substance to preserve, maintain or enhance the specimen.
   // Examples: Formalin, Citrate, EDTA.
-  @HiveField(9)
   CodeableConcept additiveCodeableConcept;
 
   //  Introduced substance to preserve, maintain or enhance the specimen.
   // Examples: Formalin, Citrate, EDTA.
-  @HiveField(10)
   Reference additiveReference;
 
 Specimen_Container(
@@ -566,171 +529,6 @@ class SpecimenAdapter extends TypeAdapter<Specimen> {
       ..write(obj.condition)
       ..writeByte(25)
       ..write(obj.note);
-  }
-}
-
-class Specimen_CollectionAdapter extends TypeAdapter<Specimen_Collection> {
-  @override
-  final typeId = 534;
-
-  @override
-  Specimen_Collection read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Specimen_Collection(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      collector: fields[3] as Reference,
-      collectedDateTime: fields[4] as String,
-      elementCollectedDateTime: fields[5] as Element,
-      collectedPeriod: fields[6] as Period,
-      duration: fields[7] as Duration,
-      quantity: fields[8] as Quantity,
-      method: fields[9] as CodeableConcept,
-      bodySite: fields[10] as CodeableConcept,
-      fastingStatusCodeableConcept: fields[11] as CodeableConcept,
-      fastingStatusDuration: fields[12] as Duration,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Specimen_Collection obj) {
-    writer
-      ..writeByte(13)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.collector)
-      ..writeByte(4)
-      ..write(obj.collectedDateTime)
-      ..writeByte(5)
-      ..write(obj.elementCollectedDateTime)
-      ..writeByte(6)
-      ..write(obj.collectedPeriod)
-      ..writeByte(7)
-      ..write(obj.duration)
-      ..writeByte(8)
-      ..write(obj.quantity)
-      ..writeByte(9)
-      ..write(obj.method)
-      ..writeByte(10)
-      ..write(obj.bodySite)
-      ..writeByte(11)
-      ..write(obj.fastingStatusCodeableConcept)
-      ..writeByte(12)
-      ..write(obj.fastingStatusDuration);
-  }
-}
-
-class Specimen_ProcessingAdapter extends TypeAdapter<Specimen_Processing> {
-  @override
-  final typeId = 535;
-
-  @override
-  Specimen_Processing read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Specimen_Processing(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      description: fields[3] as String,
-      elementDescription: fields[4] as Element,
-      procedure: fields[5] as CodeableConcept,
-      additive: (fields[6] as List)?.cast<Reference>(),
-      timeDateTime: fields[7] as String,
-      elementTimeDateTime: fields[8] as Element,
-      timePeriod: fields[9] as Period,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Specimen_Processing obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.description)
-      ..writeByte(4)
-      ..write(obj.elementDescription)
-      ..writeByte(5)
-      ..write(obj.procedure)
-      ..writeByte(6)
-      ..write(obj.additive)
-      ..writeByte(7)
-      ..write(obj.timeDateTime)
-      ..writeByte(8)
-      ..write(obj.elementTimeDateTime)
-      ..writeByte(9)
-      ..write(obj.timePeriod);
-  }
-}
-
-class Specimen_ContainerAdapter extends TypeAdapter<Specimen_Container> {
-  @override
-  final typeId = 536;
-
-  @override
-  Specimen_Container read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Specimen_Container(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      identifier: (fields[3] as List)?.cast<Identifier>(),
-      description: fields[4] as String,
-      elementDescription: fields[5] as Element,
-      type: fields[6] as CodeableConcept,
-      capacity: fields[7] as Quantity,
-      specimenQuantity: fields[8] as Quantity,
-      additiveCodeableConcept: fields[9] as CodeableConcept,
-      additiveReference: fields[10] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Specimen_Container obj) {
-    writer
-      ..writeByte(11)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.identifier)
-      ..writeByte(4)
-      ..write(obj.description)
-      ..writeByte(5)
-      ..write(obj.elementDescription)
-      ..writeByte(6)
-      ..write(obj.type)
-      ..writeByte(7)
-      ..write(obj.capacity)
-      ..writeByte(8)
-      ..write(obj.specimenQuantity)
-      ..writeByte(9)
-      ..write(obj.additiveCodeableConcept)
-      ..writeByte(10)
-      ..write(obj.additiveReference);
   }
 }
 

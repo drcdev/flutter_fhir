@@ -261,12 +261,10 @@ MedicationAdministration(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 370)
 class MedicationAdministration_Performer {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -275,7 +273,6 @@ class MedicationAdministration_Performer {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -290,16 +287,13 @@ class MedicationAdministration_Performer {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Distinguishes the type of involvement of the performer in the
   // medication administration.
-  @HiveField(3)
   CodeableConcept function;
 
   //  Indicates who or what performed the medication administration.
-  @HiveField(4)
   Reference actor;
 
 MedicationAdministration_Performer(
@@ -315,12 +309,10 @@ MedicationAdministration_Performer(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 371)
 class MedicationAdministration_Dosage {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -329,7 +321,6 @@ class MedicationAdministration_Dosage {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -344,7 +335,6 @@ class MedicationAdministration_Dosage {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Free text dosage can be used for cases where the dosage administered
@@ -352,35 +342,29 @@ class MedicationAdministration_Dosage {
   // dosage may still be present for display to humans.  The dosage
   // instructions should reflect the dosage of the medication that was
   // administered.
-  @HiveField(3)
   String text;
 
   //  Extensions for text
-  @HiveField(4)
   Element elementText;
 
   //  A coded specification of the anatomic site where the medication first
   // entered the body.  For example, "left arm".
-  @HiveField(5)
   CodeableConcept site;
 
   //  A code specifying the route or physiological path of administration of
   // a therapeutic agent into or onto the patient.  For example, topical,
   // intravenous, etc.
-  @HiveField(6)
   CodeableConcept route;
 
   //  A coded value indicating the method by which the medication is
   // intended to be or was introduced into or on the body.  This attribute
   // will most often NOT be populated.  It is most commonly used for
   // injections.  For example, Slow Push, Deep IV.
-  @HiveField(7)
   CodeableConcept method;
 
   //  The amount of the medication given at one administration event.   Use
   // this value when the administration is essentially an instantaneous
   // event such as a swallowing a tablet or giving an injection.
-  @HiveField(8)
   Quantity dose;
 
   //  Identifies the speed with which the medication was or will be
@@ -388,7 +372,6 @@ class MedicationAdministration_Dosage {
   // 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per
   // unit of time, e.g. 500 ml per 2 hours.  Other examples:  200 mcg/min or
   // 200 mcg/1 minute; 1 liter/8 hours.
-  @HiveField(9)
   Ratio rateRatio;
 
   //  Identifies the speed with which the medication was or will be
@@ -396,7 +379,6 @@ class MedicationAdministration_Dosage {
   // 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per
   // unit of time, e.g. 500 ml per 2 hours.  Other examples:  200 mcg/min or
   // 200 mcg/1 minute; 1 liter/8 hours.
-  @HiveField(10)
   Quantity rateQuantity;
 
 MedicationAdministration_Dosage(
@@ -547,98 +529,6 @@ class MedicationAdministrationAdapter
       ..write(obj.dosage)
       ..writeByte(34)
       ..write(obj.eventHistory);
-  }
-}
-
-class MedicationAdministration_PerformerAdapter
-    extends TypeAdapter<MedicationAdministration_Performer> {
-  @override
-  final typeId = 370;
-
-  @override
-  MedicationAdministration_Performer read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicationAdministration_Performer(
-      fields[4] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      function: fields[3] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicationAdministration_Performer obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.function)
-      ..writeByte(4)
-      ..write(obj.actor);
-  }
-}
-
-class MedicationAdministration_DosageAdapter
-    extends TypeAdapter<MedicationAdministration_Dosage> {
-  @override
-  final typeId = 371;
-
-  @override
-  MedicationAdministration_Dosage read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicationAdministration_Dosage(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      text: fields[3] as String,
-      elementText: fields[4] as Element,
-      site: fields[5] as CodeableConcept,
-      route: fields[6] as CodeableConcept,
-      method: fields[7] as CodeableConcept,
-      dose: fields[8] as Quantity,
-      rateRatio: fields[9] as Ratio,
-      rateQuantity: fields[10] as Quantity,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicationAdministration_Dosage obj) {
-    writer
-      ..writeByte(11)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.text)
-      ..writeByte(4)
-      ..write(obj.elementText)
-      ..writeByte(5)
-      ..write(obj.site)
-      ..writeByte(6)
-      ..write(obj.route)
-      ..writeByte(7)
-      ..write(obj.method)
-      ..writeByte(8)
-      ..write(obj.dose)
-      ..writeByte(9)
-      ..write(obj.rateRatio)
-      ..writeByte(10)
-      ..write(obj.rateQuantity);
   }
 }
 

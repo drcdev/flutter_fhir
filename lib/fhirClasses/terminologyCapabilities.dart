@@ -347,12 +347,10 @@ TerminologyCapabilities(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 606)
 class TerminologyCapabilities_Software {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -361,7 +359,6 @@ class TerminologyCapabilities_Software {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -376,23 +373,18 @@ class TerminologyCapabilities_Software {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Name the software is known by.
-  @HiveField(3)
   String name;
 
   //  Extensions for name
-  @HiveField(4)
   Element elementName;
 
   //  The version identifier for the software covered by this statement.
-  @HiveField(5)
   String version;
 
   //  Extensions for version
-  @HiveField(6)
   Element elementVersion;
 
 TerminologyCapabilities_Software(
@@ -410,12 +402,10 @@ TerminologyCapabilities_Software(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 607)
 class TerminologyCapabilities_Implementation {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -424,7 +414,6 @@ class TerminologyCapabilities_Implementation {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -439,24 +428,19 @@ class TerminologyCapabilities_Implementation {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Information about the specific installation that this terminology
   // capability statement relates to.
-  @HiveField(3)
   String description;
 
   //  Extensions for description
-  @HiveField(4)
   Element elementDescription;
 
   //  An absolute base URL for the implementation.
-  @HiveField(5)
   String url;
 
   //  Extensions for url
-  @HiveField(6)
   Element elementUrl;
 
 TerminologyCapabilities_Implementation(
@@ -474,12 +458,10 @@ TerminologyCapabilities_Implementation(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 608)
 class TerminologyCapabilities_CodeSystem {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -488,7 +470,6 @@ class TerminologyCapabilities_CodeSystem {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -503,24 +484,19 @@ class TerminologyCapabilities_CodeSystem {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  URI for the Code System.
-  @HiveField(3)
   String uri;
 
   //  For the code system, a list of versions that are supported by the
   // server.
-  @HiveField(4)
   List<TerminologyCapabilities_Version> version;
 
   //  True if subsumption is supported for this version of the code system.
-  @HiveField(5)
   bool subsumption;
 
   //  Extensions for subsumption
-  @HiveField(6)
   Element elementSubsumption;
 
 TerminologyCapabilities_CodeSystem(
@@ -538,12 +514,10 @@ TerminologyCapabilities_CodeSystem(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 609)
 class TerminologyCapabilities_Version {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -552,7 +526,6 @@ class TerminologyCapabilities_Version {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -567,52 +540,40 @@ class TerminologyCapabilities_Version {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  For version-less code systems, there should be a single version with
   // no identifier.
-  @HiveField(3)
   String code;
 
   //  Extensions for code
-  @HiveField(4)
   Element elementCode;
 
   //  If this is the default version for this code system.
-  @HiveField(5)
   bool isDefault;
 
   //  Extensions for isDefault
-  @HiveField(6)
   Element elementIsDefault;
 
   //  If the compositional grammar defined by the code system is supported.
-  @HiveField(7)
   bool compositional;
 
   //  Extensions for compositional
-  @HiveField(8)
   Element elementCompositional;
 
   //  Language Displays supported.
-  @HiveField(9)
   List<String> language;
 
   //  Extensions for language
-  @HiveField(10)
   List<Element> elementLanguage;
 
   //  Filter Properties supported.
-  @HiveField(11)
   List<TerminologyCapabilities_Filter> filter;
 
   //  Properties supported for $lookup.
-  @HiveField(12)
   List<String> property;
 
   //  Extensions for property
-  @HiveField(13)
   List<Element> elementProperty;
 
 TerminologyCapabilities_Version(
@@ -637,12 +598,10 @@ TerminologyCapabilities_Version(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 610)
 class TerminologyCapabilities_Filter {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -651,7 +610,6 @@ class TerminologyCapabilities_Filter {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -666,23 +624,18 @@ class TerminologyCapabilities_Filter {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Code of the property supported.
-  @HiveField(3)
   String code;
 
   //  Extensions for code
-  @HiveField(4)
   Element elementCode;
 
   //  Operations supported for the property.
-  @HiveField(5)
   List<String> op;
 
   //  Extensions for op
-  @HiveField(6)
   List<Element> elementOp;
 
 TerminologyCapabilities_Filter(
@@ -700,12 +653,10 @@ TerminologyCapabilities_Filter(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 611)
 class TerminologyCapabilities_Expansion {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -714,7 +665,6 @@ class TerminologyCapabilities_Expansion {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -729,43 +679,33 @@ class TerminologyCapabilities_Expansion {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Whether the server can return nested value sets.
-  @HiveField(3)
   bool hierarchical;
 
   //  Extensions for hierarchical
-  @HiveField(4)
   Element elementHierarchical;
 
   //  Whether the server supports paging on expansion.
-  @HiveField(5)
   bool paging;
 
   //  Extensions for paging
-  @HiveField(6)
   Element elementPaging;
 
   //  Allow request for incomplete expansions?
-  @HiveField(7)
   bool incomplete;
 
   //  Extensions for incomplete
-  @HiveField(8)
   Element elementIncomplete;
 
   //  Supported expansion parameter.
-  @HiveField(9)
   List<TerminologyCapabilities_Parameter> parameter;
 
   //  Documentation about text searching works.
-  @HiveField(10)
   String textFilter;
 
   //  Extensions for textFilter
-  @HiveField(11)
   Element elementTextFilter;
 
 TerminologyCapabilities_Expansion(
@@ -788,12 +728,10 @@ TerminologyCapabilities_Expansion(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 612)
 class TerminologyCapabilities_Parameter {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -802,7 +740,6 @@ class TerminologyCapabilities_Parameter {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -817,23 +754,18 @@ class TerminologyCapabilities_Parameter {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Expansion Parameter name.
-  @HiveField(3)
   String name;
 
   //  Extensions for name
-  @HiveField(4)
   Element elementName;
 
   //  Description of support for parameter.
-  @HiveField(5)
   String documentation;
 
   //  Extensions for documentation
-  @HiveField(6)
   Element elementDocumentation;
 
 TerminologyCapabilities_Parameter(
@@ -851,12 +783,10 @@ TerminologyCapabilities_Parameter(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 613)
 class TerminologyCapabilities_ValidateCode {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -865,7 +795,6 @@ class TerminologyCapabilities_ValidateCode {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -880,15 +809,12 @@ class TerminologyCapabilities_ValidateCode {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Whether translations are validated.
-  @HiveField(3)
   bool translations;
 
   //  Extensions for translations
-  @HiveField(4)
   Element elementTranslations;
 
 TerminologyCapabilities_ValidateCode(
@@ -904,12 +830,10 @@ TerminologyCapabilities_ValidateCode(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 614)
 class TerminologyCapabilities_Translation {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -918,7 +842,6 @@ class TerminologyCapabilities_Translation {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -933,15 +856,12 @@ class TerminologyCapabilities_Translation {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Whether the client must identify the map.
-  @HiveField(3)
   bool needsMap;
 
   //  Extensions for needsMap
-  @HiveField(4)
   Element elementNeedsMap;
 
 TerminologyCapabilities_Translation(
@@ -957,12 +877,10 @@ TerminologyCapabilities_Translation(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 615)
 class TerminologyCapabilities_Closure {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -971,7 +889,6 @@ class TerminologyCapabilities_Closure {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -986,15 +903,12 @@ class TerminologyCapabilities_Closure {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  If cross-system closure is supported.
-  @HiveField(3)
   bool translation;
 
   //  Extensions for translation
-  @HiveField(4)
   Element elementTranslation;
 
 TerminologyCapabilities_Closure(
@@ -1181,454 +1095,6 @@ class TerminologyCapabilitiesAdapter
       ..write(obj.translation)
       ..writeByte(48)
       ..write(obj.closure);
-  }
-}
-
-class TerminologyCapabilities_SoftwareAdapter
-    extends TypeAdapter<TerminologyCapabilities_Software> {
-  @override
-  final typeId = 606;
-
-  @override
-  TerminologyCapabilities_Software read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TerminologyCapabilities_Software(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      name: fields[3] as String,
-      elementName: fields[4] as Element,
-      version: fields[5] as String,
-      elementVersion: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TerminologyCapabilities_Software obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.name)
-      ..writeByte(4)
-      ..write(obj.elementName)
-      ..writeByte(5)
-      ..write(obj.version)
-      ..writeByte(6)
-      ..write(obj.elementVersion);
-  }
-}
-
-class TerminologyCapabilities_ImplementationAdapter
-    extends TypeAdapter<TerminologyCapabilities_Implementation> {
-  @override
-  final typeId = 607;
-
-  @override
-  TerminologyCapabilities_Implementation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TerminologyCapabilities_Implementation(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      description: fields[3] as String,
-      elementDescription: fields[4] as Element,
-      url: fields[5] as String,
-      elementUrl: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TerminologyCapabilities_Implementation obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.description)
-      ..writeByte(4)
-      ..write(obj.elementDescription)
-      ..writeByte(5)
-      ..write(obj.url)
-      ..writeByte(6)
-      ..write(obj.elementUrl);
-  }
-}
-
-class TerminologyCapabilities_CodeSystemAdapter
-    extends TypeAdapter<TerminologyCapabilities_CodeSystem> {
-  @override
-  final typeId = 608;
-
-  @override
-  TerminologyCapabilities_CodeSystem read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TerminologyCapabilities_CodeSystem(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      uri: fields[3] as String,
-      version: (fields[4] as List)?.cast<TerminologyCapabilities_Version>(),
-      subsumption: fields[5] as bool,
-      elementSubsumption: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TerminologyCapabilities_CodeSystem obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.uri)
-      ..writeByte(4)
-      ..write(obj.version)
-      ..writeByte(5)
-      ..write(obj.subsumption)
-      ..writeByte(6)
-      ..write(obj.elementSubsumption);
-  }
-}
-
-class TerminologyCapabilities_VersionAdapter
-    extends TypeAdapter<TerminologyCapabilities_Version> {
-  @override
-  final typeId = 609;
-
-  @override
-  TerminologyCapabilities_Version read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TerminologyCapabilities_Version(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as String,
-      elementCode: fields[4] as Element,
-      isDefault: fields[5] as bool,
-      elementIsDefault: fields[6] as Element,
-      compositional: fields[7] as bool,
-      elementCompositional: fields[8] as Element,
-      language: (fields[9] as List)?.cast<String>(),
-      elementLanguage: (fields[10] as List)?.cast<Element>(),
-      filter: (fields[11] as List)?.cast<TerminologyCapabilities_Filter>(),
-      property: (fields[12] as List)?.cast<String>(),
-      elementProperty: (fields[13] as List)?.cast<Element>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TerminologyCapabilities_Version obj) {
-    writer
-      ..writeByte(14)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.elementCode)
-      ..writeByte(5)
-      ..write(obj.isDefault)
-      ..writeByte(6)
-      ..write(obj.elementIsDefault)
-      ..writeByte(7)
-      ..write(obj.compositional)
-      ..writeByte(8)
-      ..write(obj.elementCompositional)
-      ..writeByte(9)
-      ..write(obj.language)
-      ..writeByte(10)
-      ..write(obj.elementLanguage)
-      ..writeByte(11)
-      ..write(obj.filter)
-      ..writeByte(12)
-      ..write(obj.property)
-      ..writeByte(13)
-      ..write(obj.elementProperty);
-  }
-}
-
-class TerminologyCapabilities_FilterAdapter
-    extends TypeAdapter<TerminologyCapabilities_Filter> {
-  @override
-  final typeId = 610;
-
-  @override
-  TerminologyCapabilities_Filter read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TerminologyCapabilities_Filter(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as String,
-      elementCode: fields[4] as Element,
-      op: (fields[5] as List)?.cast<String>(),
-      elementOp: (fields[6] as List)?.cast<Element>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TerminologyCapabilities_Filter obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.elementCode)
-      ..writeByte(5)
-      ..write(obj.op)
-      ..writeByte(6)
-      ..write(obj.elementOp);
-  }
-}
-
-class TerminologyCapabilities_ExpansionAdapter
-    extends TypeAdapter<TerminologyCapabilities_Expansion> {
-  @override
-  final typeId = 611;
-
-  @override
-  TerminologyCapabilities_Expansion read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TerminologyCapabilities_Expansion(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      hierarchical: fields[3] as bool,
-      elementHierarchical: fields[4] as Element,
-      paging: fields[5] as bool,
-      elementPaging: fields[6] as Element,
-      incomplete: fields[7] as bool,
-      elementIncomplete: fields[8] as Element,
-      parameter: (fields[9] as List)?.cast<TerminologyCapabilities_Parameter>(),
-      textFilter: fields[10] as String,
-      elementTextFilter: fields[11] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TerminologyCapabilities_Expansion obj) {
-    writer
-      ..writeByte(12)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.hierarchical)
-      ..writeByte(4)
-      ..write(obj.elementHierarchical)
-      ..writeByte(5)
-      ..write(obj.paging)
-      ..writeByte(6)
-      ..write(obj.elementPaging)
-      ..writeByte(7)
-      ..write(obj.incomplete)
-      ..writeByte(8)
-      ..write(obj.elementIncomplete)
-      ..writeByte(9)
-      ..write(obj.parameter)
-      ..writeByte(10)
-      ..write(obj.textFilter)
-      ..writeByte(11)
-      ..write(obj.elementTextFilter);
-  }
-}
-
-class TerminologyCapabilities_ParameterAdapter
-    extends TypeAdapter<TerminologyCapabilities_Parameter> {
-  @override
-  final typeId = 612;
-
-  @override
-  TerminologyCapabilities_Parameter read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TerminologyCapabilities_Parameter(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      name: fields[3] as String,
-      elementName: fields[4] as Element,
-      documentation: fields[5] as String,
-      elementDocumentation: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TerminologyCapabilities_Parameter obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.name)
-      ..writeByte(4)
-      ..write(obj.elementName)
-      ..writeByte(5)
-      ..write(obj.documentation)
-      ..writeByte(6)
-      ..write(obj.elementDocumentation);
-  }
-}
-
-class TerminologyCapabilities_ValidateCodeAdapter
-    extends TypeAdapter<TerminologyCapabilities_ValidateCode> {
-  @override
-  final typeId = 613;
-
-  @override
-  TerminologyCapabilities_ValidateCode read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TerminologyCapabilities_ValidateCode(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      translations: fields[3] as bool,
-      elementTranslations: fields[4] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TerminologyCapabilities_ValidateCode obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.translations)
-      ..writeByte(4)
-      ..write(obj.elementTranslations);
-  }
-}
-
-class TerminologyCapabilities_TranslationAdapter
-    extends TypeAdapter<TerminologyCapabilities_Translation> {
-  @override
-  final typeId = 614;
-
-  @override
-  TerminologyCapabilities_Translation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TerminologyCapabilities_Translation(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      needsMap: fields[3] as bool,
-      elementNeedsMap: fields[4] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TerminologyCapabilities_Translation obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.needsMap)
-      ..writeByte(4)
-      ..write(obj.elementNeedsMap);
-  }
-}
-
-class TerminologyCapabilities_ClosureAdapter
-    extends TypeAdapter<TerminologyCapabilities_Closure> {
-  @override
-  final typeId = 615;
-
-  @override
-  TerminologyCapabilities_Closure read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TerminologyCapabilities_Closure(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      translation: fields[3] as bool,
-      elementTranslation: fields[4] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TerminologyCapabilities_Closure obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.translation)
-      ..writeByte(4)
-      ..write(obj.elementTranslation);
   }
 }
 

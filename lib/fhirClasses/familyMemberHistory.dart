@@ -320,12 +320,10 @@ FamilyMemberHistory(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 289)
 class FamilyMemberHistory_Condition {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -334,7 +332,6 @@ class FamilyMemberHistory_Condition {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -349,61 +346,50 @@ class FamilyMemberHistory_Condition {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The actual condition specified. Could be a coded condition (like MI or
   // Diabetes) or a less specific string like 'cancer' depending on how much
   // is known about the condition and the capabilities of the creating
   // system.
-  @HiveField(3)
   CodeableConcept code;
 
   //  Indicates what happened following the condition.  If the condition
   // resulted in death, deceased date is captured on the relation.
-  @HiveField(4)
   CodeableConcept outcome;
 
   //  This condition contributed to the cause of death of the related
   // person. If contributedToDeath is not populated, then it is unknown.
-  @HiveField(5)
   bool contributedToDeath;
 
   //  Extensions for contributedToDeath
-  @HiveField(6)
   Element elementContributedToDeath;
 
   //  Either the age of onset, range of approximate age or descriptive
   // string can be recorded.  For conditions with multiple occurrences, this
   // describes the first known occurrence.
-  @HiveField(7)
   Age onsetAge;
 
   //  Either the age of onset, range of approximate age or descriptive
   // string can be recorded.  For conditions with multiple occurrences, this
   // describes the first known occurrence.
-  @HiveField(8)
   Range onsetRange;
 
   //  Either the age of onset, range of approximate age or descriptive
   // string can be recorded.  For conditions with multiple occurrences, this
   // describes the first known occurrence.
-  @HiveField(9)
   Period onsetPeriod;
 
   //  Either the age of onset, range of approximate age or descriptive
   // string can be recorded.  For conditions with multiple occurrences, this
   // describes the first known occurrence.
-  @HiveField(10)
   String onsetString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for onsetString
-  @HiveField(11)
   Element elementOnsetString;
 
   //  An area where general notes can be placed about this specific
   // condition.
-  @HiveField(12)
   List<Annotation> note;
 
 FamilyMemberHistory_Condition(
@@ -593,67 +579,6 @@ class FamilyMemberHistoryAdapter extends TypeAdapter<FamilyMemberHistory> {
       ..write(obj.note)
       ..writeByte(47)
       ..write(obj.condition);
-  }
-}
-
-class FamilyMemberHistory_ConditionAdapter
-    extends TypeAdapter<FamilyMemberHistory_Condition> {
-  @override
-  final typeId = 289;
-
-  @override
-  FamilyMemberHistory_Condition read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return FamilyMemberHistory_Condition(
-      fields[3] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      outcome: fields[4] as CodeableConcept,
-      contributedToDeath: fields[5] as bool,
-      elementContributedToDeath: fields[6] as Element,
-      onsetAge: fields[7] as Age,
-      onsetRange: fields[8] as Range,
-      onsetPeriod: fields[9] as Period,
-      onsetString: fields[10] as String,
-      elementOnsetString: fields[11] as Element,
-      note: (fields[12] as List)?.cast<Annotation>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, FamilyMemberHistory_Condition obj) {
-    writer
-      ..writeByte(13)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.outcome)
-      ..writeByte(5)
-      ..write(obj.contributedToDeath)
-      ..writeByte(6)
-      ..write(obj.elementContributedToDeath)
-      ..writeByte(7)
-      ..write(obj.onsetAge)
-      ..writeByte(8)
-      ..write(obj.onsetRange)
-      ..writeByte(9)
-      ..write(obj.onsetPeriod)
-      ..writeByte(10)
-      ..write(obj.onsetString)
-      ..writeByte(11)
-      ..write(obj.elementOnsetString)
-      ..writeByte(12)
-      ..write(obj.note);
   }
 }
 

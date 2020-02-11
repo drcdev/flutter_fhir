@@ -333,12 +333,10 @@ Questionnaire(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 500)
 class Questionnaire_Item {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -347,7 +345,6 @@ class Questionnaire_Item {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -362,16 +359,13 @@ class Questionnaire_Item {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  An identifier that is unique within the Questionnaire allowing linkage
   // to the equivalent item in a QuestionnaireResponse resource.
-  @HiveField(3)
   String linkId;
 
   //  Extensions for linkId
-  @HiveField(4)
   Element elementLinkId;
 
   //  This element is a URI that refers to an [[[ElementDefinition]]] that
@@ -385,117 +379,93 @@ class Questionnaire_Item {
   // (ElementDefinition.min)  * repeats (ElementDefinition.max)  * maxLength
   // (ElementDefinition.maxLength)  * answerValueSet
   // (ElementDefinition.binding) * options (ElementDefinition.binding).
-  @HiveField(5)
   String definition;
 
   //  Extensions for definition
-  @HiveField(6)
   Element elementDefinition;
 
   //  A terminology code that corresponds to this group or question (e.g. a
   // code from LOINC, which defines many questions and answers).
-  @HiveField(7)
   List<Coding> code;
 
   //  A short label for a particular group, question or set of display text
   // within the questionnaire used for reference by the individual
   // completing the questionnaire.
-  @HiveField(8)
   String prefix;
 
   //  Extensions for prefix
-  @HiveField(9)
   Element elementPrefix;
 
   //  The name of a section, the text of a question or text content for a
   // display item.
-  @HiveField(10)
   String text;
 
   //  Extensions for text
-  @HiveField(11)
   Element elementText;
 
   //  The type of questionnaire item this is - whether text for display, a
   // grouping of other items or a particular type of data to be captured
   // (string, integer, coded choice, etc.).
-  @HiveField(12)
   String type; // <code> enum: group/display/boolean/decimal/integer/date/dateTime/time/string/text/url/choice/open-choice/attachment/reference/quantity;
 
   //  Extensions for type
-  @HiveField(13)
   Element elementType;
 
   //  A constraint indicating that this item should only be enabled
   // (displayed/allow answers to be captured) when the specified condition
   // is true.
-  @HiveField(14)
   List<Questionnaire_EnableWhen> enableWhen;
 
   //  Controls how multiple enableWhen values are interpreted -  whether all
   // or any must be true.
-  @HiveField(15)
   String enableBehavior; // <code> enum: all/any;
 
   //  Extensions for enableBehavior
-  @HiveField(16)
   Element elementEnableBehavior;
 
   //  An indication, if true, that the item must be present in a "completed"
   // QuestionnaireResponse.  If false, the item may be skipped when
   // answering the questionnaire.
-  @HiveField(17)
   bool required;
 
   //  Extensions for required
-  @HiveField(18)
   Element elementRequired;
 
   //  An indication, if true, that the item may occur multiple times in the
   // response, collecting multiple answers for questions or multiple sets of
   // answers for groups.
-  @HiveField(19)
   bool repeats;
 
   //  Extensions for repeats
-  @HiveField(20)
   Element elementRepeats;
 
   //  An indication, when true, that the value cannot be changed by a human
   // respondent to the Questionnaire.
-  @HiveField(21)
   bool readOnly;
 
   //  Extensions for readOnly
-  @HiveField(22)
   Element elementReadOnly;
 
   //  The maximum number of characters that are permitted in the answer to
   // be considered a "valid" QuestionnaireResponse.
-  @HiveField(23)
   int maxLength;
 
   //  Extensions for maxLength
-  @HiveField(24)
   Element elementMaxLength;
 
   //  A reference to a value set containing a list of codes representing
   // permitted answers for a "choice" or "open-choice" question.
-  @HiveField(25)
   String answerValueSet;
 
   //  One of the permitted answers for a "choice" or "open-choice" question.
-  @HiveField(26)
   List<Questionnaire_AnswerOption> answerOption;
 
   //  One or more values that should be pre-populated in the answer when
   // initially rendering the questionnaire for user input.
-  @HiveField(27)
   List<Questionnaire_Initial> initial;
 
   //  Text, questions and other groups to be nested beneath a question or
   // group.
-  @HiveField(28)
   List<Questionnaire_Item> item;
 
 Questionnaire_Item(
@@ -535,12 +505,10 @@ Questionnaire_Item(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 501)
 class Questionnaire_EnableWhen {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -549,7 +517,6 @@ class Questionnaire_EnableWhen {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -564,33 +531,26 @@ class Questionnaire_EnableWhen {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The linkId for the question whose answer (or lack of answer) governs
   // whether this item is enabled.
-  @HiveField(3)
   String question;
 
   //  Extensions for question
-  @HiveField(4)
   Element elementQuestion;
 
   //  Specifies the criteria by which the question is enabled.
-  @HiveField(5)
   String operator; // <code> enum: exists/=/!=/>/</>=/<=;
 
   //  Extensions for operator
-  @HiveField(6)
   Element elementOperator;
 
   //  A value that the referenced question is tested using the specified
   // operator in order for the item to be enabled.
-  @HiveField(7)
   bool answerBoolean; //  pattern: ^true|false$
 
   //  Extensions for answerBoolean
-  @HiveField(8)
   Element elementAnswerBoolean;
 
   //  A value that the referenced question is tested using the specified
@@ -598,7 +558,6 @@ class Questionnaire_EnableWhen {
   double answerDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
 
   //  Extensions for answerDecimal
-  @HiveField(10)
   Element elementAnswerDecimal;
 
   //  A value that the referenced question is tested using the specified
@@ -606,58 +565,46 @@ class Questionnaire_EnableWhen {
   int answerInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
 
   //  Extensions for answerInteger
-  @HiveField(12)
   Element elementAnswerInteger;
 
   //  A value that the referenced question is tested using the specified
   // operator in order for the item to be enabled.
-  @HiveField(13)
   String answerDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for answerDate
-  @HiveField(14)
   Element elementAnswerDate;
 
   //  A value that the referenced question is tested using the specified
   // operator in order for the item to be enabled.
-  @HiveField(15)
   String answerDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for answerDateTime
-  @HiveField(16)
   Element elementAnswerDateTime;
 
   //  A value that the referenced question is tested using the specified
   // operator in order for the item to be enabled.
-  @HiveField(17)
   String answerTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
 
   //  Extensions for answerTime
-  @HiveField(18)
   Element elementAnswerTime;
 
   //  A value that the referenced question is tested using the specified
   // operator in order for the item to be enabled.
-  @HiveField(19)
   String answerString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for answerString
-  @HiveField(20)
   Element elementAnswerString;
 
   //  A value that the referenced question is tested using the specified
   // operator in order for the item to be enabled.
-  @HiveField(21)
   Coding answerCoding;
 
   //  A value that the referenced question is tested using the specified
   // operator in order for the item to be enabled.
-  @HiveField(22)
   Quantity answerQuantity;
 
   //  A value that the referenced question is tested using the specified
   // operator in order for the item to be enabled.
-  @HiveField(23)
   Reference answerReference;
 
 Questionnaire_EnableWhen(
@@ -692,12 +639,10 @@ Questionnaire_EnableWhen(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 502)
 class Questionnaire_AnswerOption {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -706,7 +651,6 @@ class Questionnaire_AnswerOption {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -721,55 +665,43 @@ class Questionnaire_AnswerOption {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A potential answer that's allowed as the answer to this question.
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
 
   //  Extensions for valueInteger
-  @HiveField(4)
   Element elementValueInteger;
 
   //  A potential answer that's allowed as the answer to this question.
-  @HiveField(5)
   String valueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for valueDate
-  @HiveField(6)
   Element elementValueDate;
 
   //  A potential answer that's allowed as the answer to this question.
-  @HiveField(7)
   String valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
 
   //  Extensions for valueTime
-  @HiveField(8)
   Element elementValueTime;
 
   //  A potential answer that's allowed as the answer to this question.
-  @HiveField(9)
   String valueString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for valueString
-  @HiveField(10)
   Element elementValueString;
 
   //  A potential answer that's allowed as the answer to this question.
-  @HiveField(11)
   Coding valueCoding;
 
   //  A potential answer that's allowed as the answer to this question.
-  @HiveField(12)
   Reference valueReference;
 
   //  Indicates whether the answer value is selected when the list of
   // possible answers is initially shown.
-  @HiveField(13)
   bool initialSelected;
 
   //  Extensions for initialSelected
-  @HiveField(14)
   Element elementInitialSelected;
 
 Questionnaire_AnswerOption(
@@ -795,12 +727,10 @@ Questionnaire_AnswerOption(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 503)
 class Questionnaire_Initial {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -809,7 +739,6 @@ class Questionnaire_Initial {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -824,85 +753,66 @@ class Questionnaire_Initial {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The actual value to for an initial answer.
-  @HiveField(3)
   bool valueBoolean; //  pattern: ^true|false$
 
   //  Extensions for valueBoolean
-  @HiveField(4)
   Element elementValueBoolean;
 
   //  The actual value to for an initial answer.
   double valueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
 
   //  Extensions for valueDecimal
-  @HiveField(6)
   Element elementValueDecimal;
 
   //  The actual value to for an initial answer.
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
 
   //  Extensions for valueInteger
-  @HiveField(8)
   Element elementValueInteger;
 
   //  The actual value to for an initial answer.
-  @HiveField(9)
   String valueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
 
   //  Extensions for valueDate
-  @HiveField(10)
   Element elementValueDate;
 
   //  The actual value to for an initial answer.
-  @HiveField(11)
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for valueDateTime
-  @HiveField(12)
   Element elementValueDateTime;
 
   //  The actual value to for an initial answer.
-  @HiveField(13)
   String valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
 
   //  Extensions for valueTime
-  @HiveField(14)
   Element elementValueTime;
 
   //  The actual value to for an initial answer.
-  @HiveField(15)
   String valueString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for valueString
-  @HiveField(16)
   Element elementValueString;
 
   //  The actual value to for an initial answer.
-  @HiveField(17)
   String valueUri; //  pattern: ^\S*$
 
   //  Extensions for valueUri
-  @HiveField(18)
   Element elementValueUri;
 
   //  The actual value to for an initial answer.
-  @HiveField(19)
   Attachment valueAttachment;
 
   //  The actual value to for an initial answer.
-  @HiveField(20)
   Coding valueCoding;
 
   //  The actual value to for an initial answer.
-  @HiveField(21)
   Quantity valueQuantity;
 
   //  The actual value to for an initial answer.
-  @HiveField(22)
   Reference valueReference;
 
 Questionnaire_Initial(
@@ -1099,350 +1009,6 @@ class QuestionnaireAdapter extends TypeAdapter<Questionnaire> {
       ..write(obj.code)
       ..writeByte(46)
       ..write(obj.item);
-  }
-}
-
-class Questionnaire_ItemAdapter extends TypeAdapter<Questionnaire_Item> {
-  @override
-  final typeId = 500;
-
-  @override
-  Questionnaire_Item read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Questionnaire_Item(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      linkId: fields[3] as String,
-      elementLinkId: fields[4] as Element,
-      definition: fields[5] as String,
-      elementDefinition: fields[6] as Element,
-      code: (fields[7] as List)?.cast<Coding>(),
-      prefix: fields[8] as String,
-      elementPrefix: fields[9] as Element,
-      text: fields[10] as String,
-      elementText: fields[11] as Element,
-      type: fields[12] as String,
-      elementType: fields[13] as Element,
-      enableWhen: (fields[14] as List)?.cast<Questionnaire_EnableWhen>(),
-      enableBehavior: fields[15] as String,
-      elementEnableBehavior: fields[16] as Element,
-      required: fields[17] as bool,
-      elementRequired: fields[18] as Element,
-      repeats: fields[19] as bool,
-      elementRepeats: fields[20] as Element,
-      readOnly: fields[21] as bool,
-      elementReadOnly: fields[22] as Element,
-      maxLength: fields[23] as int,
-      elementMaxLength: fields[24] as Element,
-      answerValueSet: fields[25] as String,
-      answerOption: (fields[26] as List)?.cast<Questionnaire_AnswerOption>(),
-      initial: (fields[27] as List)?.cast<Questionnaire_Initial>(),
-      item: (fields[28] as List)?.cast<Questionnaire_Item>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Questionnaire_Item obj) {
-    writer
-      ..writeByte(29)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.linkId)
-      ..writeByte(4)
-      ..write(obj.elementLinkId)
-      ..writeByte(5)
-      ..write(obj.definition)
-      ..writeByte(6)
-      ..write(obj.elementDefinition)
-      ..writeByte(7)
-      ..write(obj.code)
-      ..writeByte(8)
-      ..write(obj.prefix)
-      ..writeByte(9)
-      ..write(obj.elementPrefix)
-      ..writeByte(10)
-      ..write(obj.text)
-      ..writeByte(11)
-      ..write(obj.elementText)
-      ..writeByte(12)
-      ..write(obj.type)
-      ..writeByte(13)
-      ..write(obj.elementType)
-      ..writeByte(14)
-      ..write(obj.enableWhen)
-      ..writeByte(15)
-      ..write(obj.enableBehavior)
-      ..writeByte(16)
-      ..write(obj.elementEnableBehavior)
-      ..writeByte(17)
-      ..write(obj.required)
-      ..writeByte(18)
-      ..write(obj.elementRequired)
-      ..writeByte(19)
-      ..write(obj.repeats)
-      ..writeByte(20)
-      ..write(obj.elementRepeats)
-      ..writeByte(21)
-      ..write(obj.readOnly)
-      ..writeByte(22)
-      ..write(obj.elementReadOnly)
-      ..writeByte(23)
-      ..write(obj.maxLength)
-      ..writeByte(24)
-      ..write(obj.elementMaxLength)
-      ..writeByte(25)
-      ..write(obj.answerValueSet)
-      ..writeByte(26)
-      ..write(obj.answerOption)
-      ..writeByte(27)
-      ..write(obj.initial)
-      ..writeByte(28)
-      ..write(obj.item);
-  }
-}
-
-class Questionnaire_EnableWhenAdapter
-    extends TypeAdapter<Questionnaire_EnableWhen> {
-  @override
-  final typeId = 501;
-
-  @override
-  Questionnaire_EnableWhen read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Questionnaire_EnableWhen(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      question: fields[3] as String,
-      elementQuestion: fields[4] as Element,
-      operator: fields[5] as String,
-      elementOperator: fields[6] as Element,
-      answerBoolean: fields[7] as bool,
-      elementAnswerBoolean: fields[8] as Element,
-      elementAnswerDecimal: fields[10] as Element,
-      elementAnswerInteger: fields[12] as Element,
-      answerDate: fields[13] as String,
-      elementAnswerDate: fields[14] as Element,
-      answerDateTime: fields[15] as String,
-      elementAnswerDateTime: fields[16] as Element,
-      answerTime: fields[17] as String,
-      elementAnswerTime: fields[18] as Element,
-      answerString: fields[19] as String,
-      elementAnswerString: fields[20] as Element,
-      answerCoding: fields[21] as Coding,
-      answerQuantity: fields[22] as Quantity,
-      answerReference: fields[23] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Questionnaire_EnableWhen obj) {
-    writer
-      ..writeByte(22)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.question)
-      ..writeByte(4)
-      ..write(obj.elementQuestion)
-      ..writeByte(5)
-      ..write(obj.operator)
-      ..writeByte(6)
-      ..write(obj.elementOperator)
-      ..writeByte(7)
-      ..write(obj.answerBoolean)
-      ..writeByte(8)
-      ..write(obj.elementAnswerBoolean)
-      ..writeByte(10)
-      ..write(obj.elementAnswerDecimal)
-      ..writeByte(12)
-      ..write(obj.elementAnswerInteger)
-      ..writeByte(13)
-      ..write(obj.answerDate)
-      ..writeByte(14)
-      ..write(obj.elementAnswerDate)
-      ..writeByte(15)
-      ..write(obj.answerDateTime)
-      ..writeByte(16)
-      ..write(obj.elementAnswerDateTime)
-      ..writeByte(17)
-      ..write(obj.answerTime)
-      ..writeByte(18)
-      ..write(obj.elementAnswerTime)
-      ..writeByte(19)
-      ..write(obj.answerString)
-      ..writeByte(20)
-      ..write(obj.elementAnswerString)
-      ..writeByte(21)
-      ..write(obj.answerCoding)
-      ..writeByte(22)
-      ..write(obj.answerQuantity)
-      ..writeByte(23)
-      ..write(obj.answerReference);
-  }
-}
-
-class Questionnaire_AnswerOptionAdapter
-    extends TypeAdapter<Questionnaire_AnswerOption> {
-  @override
-  final typeId = 502;
-
-  @override
-  Questionnaire_AnswerOption read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Questionnaire_AnswerOption(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      elementValueInteger: fields[4] as Element,
-      valueDate: fields[5] as String,
-      elementValueDate: fields[6] as Element,
-      valueTime: fields[7] as String,
-      elementValueTime: fields[8] as Element,
-      valueString: fields[9] as String,
-      elementValueString: fields[10] as Element,
-      valueCoding: fields[11] as Coding,
-      valueReference: fields[12] as Reference,
-      initialSelected: fields[13] as bool,
-      elementInitialSelected: fields[14] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Questionnaire_AnswerOption obj) {
-    writer
-      ..writeByte(14)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(4)
-      ..write(obj.elementValueInteger)
-      ..writeByte(5)
-      ..write(obj.valueDate)
-      ..writeByte(6)
-      ..write(obj.elementValueDate)
-      ..writeByte(7)
-      ..write(obj.valueTime)
-      ..writeByte(8)
-      ..write(obj.elementValueTime)
-      ..writeByte(9)
-      ..write(obj.valueString)
-      ..writeByte(10)
-      ..write(obj.elementValueString)
-      ..writeByte(11)
-      ..write(obj.valueCoding)
-      ..writeByte(12)
-      ..write(obj.valueReference)
-      ..writeByte(13)
-      ..write(obj.initialSelected)
-      ..writeByte(14)
-      ..write(obj.elementInitialSelected);
-  }
-}
-
-class Questionnaire_InitialAdapter extends TypeAdapter<Questionnaire_Initial> {
-  @override
-  final typeId = 503;
-
-  @override
-  Questionnaire_Initial read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Questionnaire_Initial(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      valueBoolean: fields[3] as bool,
-      elementValueBoolean: fields[4] as Element,
-      elementValueDecimal: fields[6] as Element,
-      elementValueInteger: fields[8] as Element,
-      valueDate: fields[9] as String,
-      elementValueDate: fields[10] as Element,
-      valueDateTime: fields[11] as String,
-      elementValueDateTime: fields[12] as Element,
-      valueTime: fields[13] as String,
-      elementValueTime: fields[14] as Element,
-      valueString: fields[15] as String,
-      elementValueString: fields[16] as Element,
-      valueUri: fields[17] as String,
-      elementValueUri: fields[18] as Element,
-      valueAttachment: fields[19] as Attachment,
-      valueCoding: fields[20] as Coding,
-      valueQuantity: fields[21] as Quantity,
-      valueReference: fields[22] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Questionnaire_Initial obj) {
-    writer
-      ..writeByte(21)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.valueBoolean)
-      ..writeByte(4)
-      ..write(obj.elementValueBoolean)
-      ..writeByte(6)
-      ..write(obj.elementValueDecimal)
-      ..writeByte(8)
-      ..write(obj.elementValueInteger)
-      ..writeByte(9)
-      ..write(obj.valueDate)
-      ..writeByte(10)
-      ..write(obj.elementValueDate)
-      ..writeByte(11)
-      ..write(obj.valueDateTime)
-      ..writeByte(12)
-      ..write(obj.elementValueDateTime)
-      ..writeByte(13)
-      ..write(obj.valueTime)
-      ..writeByte(14)
-      ..write(obj.elementValueTime)
-      ..writeByte(15)
-      ..write(obj.valueString)
-      ..writeByte(16)
-      ..write(obj.elementValueString)
-      ..writeByte(17)
-      ..write(obj.valueUri)
-      ..writeByte(18)
-      ..write(obj.elementValueUri)
-      ..writeByte(19)
-      ..write(obj.valueAttachment)
-      ..writeByte(20)
-      ..write(obj.valueCoding)
-      ..writeByte(21)
-      ..write(obj.valueQuantity)
-      ..writeByte(22)
-      ..write(obj.valueReference);
   }
 }
 

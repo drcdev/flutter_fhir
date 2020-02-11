@@ -144,12 +144,10 @@ MedicinalProductIngredient(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 411)
 class MedicinalProductIngredient_SpecifiedSubstance {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -158,7 +156,6 @@ class MedicinalProductIngredient_SpecifiedSubstance {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -173,24 +170,19 @@ class MedicinalProductIngredient_SpecifiedSubstance {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The specified substance.
-  @HiveField(3)
   CodeableConcept code;
 
   //  The group of specified substance, e.g. group 1 to 4.
-  @HiveField(4)
   CodeableConcept group;
 
   //  Confidentiality level of the specified substance as the ingredient.
-  @HiveField(5)
   CodeableConcept confidentiality;
 
   //  Quantity of the substance or specified substance present in the
   // manufactured item or pharmaceutical product.
-  @HiveField(6)
   List<MedicinalProductIngredient_Strength> strength;
 
 MedicinalProductIngredient_SpecifiedSubstance(
@@ -208,12 +200,10 @@ MedicinalProductIngredient_SpecifiedSubstance(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 412)
 class MedicinalProductIngredient_Strength {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -222,7 +212,6 @@ class MedicinalProductIngredient_Strength {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -237,45 +226,36 @@ class MedicinalProductIngredient_Strength {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The quantity of substance in the unit of presentation, or in the
   // volume (or mass) of the single pharmaceutical product or manufactured
   // item.
-  @HiveField(3)
   Ratio presentation;
 
   //  A lower limit for the quantity of substance in the unit of
   // presentation. For use when there is a range of strengths, this is the
   // lower limit, with the presentation attribute becoming the upper limit.
-  @HiveField(4)
   Ratio presentationLowLimit;
 
   //  The strength per unitary volume (or mass).
-  @HiveField(5)
   Ratio concentration;
 
   //  A lower limit for the strength per unitary volume (or mass), for when
   // there is a range. The concentration attribute then becomes the upper
   // limit.
-  @HiveField(6)
   Ratio concentrationLowLimit;
 
   //  For when strength is measured at a particular point or distance.
-  @HiveField(7)
   String measurementPoint;
 
   //  Extensions for measurementPoint
-  @HiveField(8)
   Element elementMeasurementPoint;
 
   //  The country or countries for which the strength range applies.
-  @HiveField(9)
   List<CodeableConcept> country;
 
   //  Strength expressed in terms of a reference substance.
-  @HiveField(10)
   List<MedicinalProductIngredient_ReferenceStrength> referenceStrength;
 
 MedicinalProductIngredient_Strength(
@@ -297,12 +277,10 @@ MedicinalProductIngredient_Strength(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 413)
 class MedicinalProductIngredient_ReferenceStrength {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -311,7 +289,6 @@ class MedicinalProductIngredient_ReferenceStrength {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -326,31 +303,24 @@ class MedicinalProductIngredient_ReferenceStrength {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Relevant reference substance.
-  @HiveField(3)
   CodeableConcept substance;
 
   //  Strength expressed in terms of a reference substance.
-  @HiveField(4)
   Ratio strength;
 
   //  Strength expressed in terms of a reference substance.
-  @HiveField(5)
   Ratio strengthLowLimit;
 
   //  For when strength is measured at a particular point or distance.
-  @HiveField(6)
   String measurementPoint;
 
   //  Extensions for measurementPoint
-  @HiveField(7)
   Element elementMeasurementPoint;
 
   //  The country or countries for which the strength range applies.
-  @HiveField(8)
   List<CodeableConcept> country;
 
 MedicinalProductIngredient_ReferenceStrength(
@@ -370,12 +340,10 @@ MedicinalProductIngredient_ReferenceStrength(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 414)
 class MedicinalProductIngredient_Substance {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -384,7 +352,6 @@ class MedicinalProductIngredient_Substance {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -399,16 +366,13 @@ class MedicinalProductIngredient_Substance {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The ingredient substance.
-  @HiveField(3)
   CodeableConcept code;
 
   //  Quantity of the substance or specified substance present in the
   // manufactured item or pharmaceutical product.
-  @HiveField(4)
   List<MedicinalProductIngredient_Strength> strength;
 
 MedicinalProductIngredient_Substance(
@@ -502,195 +466,6 @@ class MedicinalProductIngredientAdapter
       ..write(obj.specifiedSubstance)
       ..writeByte(17)
       ..write(obj.substance);
-  }
-}
-
-class MedicinalProductIngredient_SpecifiedSubstanceAdapter
-    extends TypeAdapter<MedicinalProductIngredient_SpecifiedSubstance> {
-  @override
-  final typeId = 411;
-
-  @override
-  MedicinalProductIngredient_SpecifiedSubstance read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProductIngredient_SpecifiedSubstance(
-      fields[3] as CodeableConcept,
-      fields[4] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      confidentiality: fields[5] as CodeableConcept,
-      strength:
-          (fields[6] as List)?.cast<MedicinalProductIngredient_Strength>(),
-    );
-  }
-
-  @override
-  void write(
-      BinaryWriter writer, MedicinalProductIngredient_SpecifiedSubstance obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.group)
-      ..writeByte(5)
-      ..write(obj.confidentiality)
-      ..writeByte(6)
-      ..write(obj.strength);
-  }
-}
-
-class MedicinalProductIngredient_StrengthAdapter
-    extends TypeAdapter<MedicinalProductIngredient_Strength> {
-  @override
-  final typeId = 412;
-
-  @override
-  MedicinalProductIngredient_Strength read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProductIngredient_Strength(
-      fields[3] as Ratio,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      presentationLowLimit: fields[4] as Ratio,
-      concentration: fields[5] as Ratio,
-      concentrationLowLimit: fields[6] as Ratio,
-      measurementPoint: fields[7] as String,
-      elementMeasurementPoint: fields[8] as Element,
-      country: (fields[9] as List)?.cast<CodeableConcept>(),
-      referenceStrength: (fields[10] as List)
-          ?.cast<MedicinalProductIngredient_ReferenceStrength>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicinalProductIngredient_Strength obj) {
-    writer
-      ..writeByte(11)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.presentation)
-      ..writeByte(4)
-      ..write(obj.presentationLowLimit)
-      ..writeByte(5)
-      ..write(obj.concentration)
-      ..writeByte(6)
-      ..write(obj.concentrationLowLimit)
-      ..writeByte(7)
-      ..write(obj.measurementPoint)
-      ..writeByte(8)
-      ..write(obj.elementMeasurementPoint)
-      ..writeByte(9)
-      ..write(obj.country)
-      ..writeByte(10)
-      ..write(obj.referenceStrength);
-  }
-}
-
-class MedicinalProductIngredient_ReferenceStrengthAdapter
-    extends TypeAdapter<MedicinalProductIngredient_ReferenceStrength> {
-  @override
-  final typeId = 413;
-
-  @override
-  MedicinalProductIngredient_ReferenceStrength read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProductIngredient_ReferenceStrength(
-      fields[4] as Ratio,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      substance: fields[3] as CodeableConcept,
-      strengthLowLimit: fields[5] as Ratio,
-      measurementPoint: fields[6] as String,
-      elementMeasurementPoint: fields[7] as Element,
-      country: (fields[8] as List)?.cast<CodeableConcept>(),
-    );
-  }
-
-  @override
-  void write(
-      BinaryWriter writer, MedicinalProductIngredient_ReferenceStrength obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.substance)
-      ..writeByte(4)
-      ..write(obj.strength)
-      ..writeByte(5)
-      ..write(obj.strengthLowLimit)
-      ..writeByte(6)
-      ..write(obj.measurementPoint)
-      ..writeByte(7)
-      ..write(obj.elementMeasurementPoint)
-      ..writeByte(8)
-      ..write(obj.country);
-  }
-}
-
-class MedicinalProductIngredient_SubstanceAdapter
-    extends TypeAdapter<MedicinalProductIngredient_Substance> {
-  @override
-  final typeId = 414;
-
-  @override
-  MedicinalProductIngredient_Substance read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProductIngredient_Substance(
-      fields[3] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      strength:
-          (fields[4] as List)?.cast<MedicinalProductIngredient_Strength>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicinalProductIngredient_Substance obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.strength);
   }
 }
 

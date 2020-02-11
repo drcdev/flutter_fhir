@@ -284,12 +284,10 @@ MedicationDispense(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 373)
 class MedicationDispense_Performer {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -298,7 +296,6 @@ class MedicationDispense_Performer {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -313,17 +310,14 @@ class MedicationDispense_Performer {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Distinguishes the type of performer in the dispense.  For example,
   // date enterer, packager, final checker.
-  @HiveField(3)
   CodeableConcept function;
 
   //  The device, practitioner, etc. who performed the action.  It should be
   // assumed that the actor is the dispenser of the medication.
-  @HiveField(4)
   Reference actor;
 
 MedicationDispense_Performer(
@@ -339,12 +333,10 @@ MedicationDispense_Performer(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 374)
 class MedicationDispense_Substitution {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -353,7 +345,6 @@ class MedicationDispense_Substitution {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -368,31 +359,25 @@ class MedicationDispense_Substitution {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  True if the dispenser dispensed a different drug or product from what
   // was prescribed.
-  @HiveField(3)
   bool wasSubstituted;
 
   //  Extensions for wasSubstituted
-  @HiveField(4)
   Element elementWasSubstituted;
 
   //  A code signifying whether a different drug was dispensed from what was
   // prescribed.
-  @HiveField(5)
   CodeableConcept type;
 
   //  Indicates the reason for the substitution (or lack of substitution)
   // from what was prescribed.
-  @HiveField(6)
   List<CodeableConcept> reason;
 
   //  The person or organization that has primary responsibility for the
   // substitution.
-  @HiveField(7)
   List<Reference> responsibleParty;
 
 MedicationDispense_Substitution(
@@ -553,89 +538,6 @@ class MedicationDispenseAdapter extends TypeAdapter<MedicationDispense> {
       ..write(obj.detectedIssue)
       ..writeByte(39)
       ..write(obj.eventHistory);
-  }
-}
-
-class MedicationDispense_PerformerAdapter
-    extends TypeAdapter<MedicationDispense_Performer> {
-  @override
-  final typeId = 373;
-
-  @override
-  MedicationDispense_Performer read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicationDispense_Performer(
-      fields[4] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      function: fields[3] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicationDispense_Performer obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.function)
-      ..writeByte(4)
-      ..write(obj.actor);
-  }
-}
-
-class MedicationDispense_SubstitutionAdapter
-    extends TypeAdapter<MedicationDispense_Substitution> {
-  @override
-  final typeId = 374;
-
-  @override
-  MedicationDispense_Substitution read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicationDispense_Substitution(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      wasSubstituted: fields[3] as bool,
-      elementWasSubstituted: fields[4] as Element,
-      type: fields[5] as CodeableConcept,
-      reason: (fields[6] as List)?.cast<CodeableConcept>(),
-      responsibleParty: (fields[7] as List)?.cast<Reference>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicationDispense_Substitution obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.wasSubstituted)
-      ..writeByte(4)
-      ..write(obj.elementWasSubstituted)
-      ..writeByte(5)
-      ..write(obj.type)
-      ..writeByte(6)
-      ..write(obj.reason)
-      ..writeByte(7)
-      ..write(obj.responsibleParty);
   }
 }
 

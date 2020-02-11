@@ -233,12 +233,10 @@ NamingSystem(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 444)
 class NamingSystem_UniqueId {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -247,7 +245,6 @@ class NamingSystem_UniqueId {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -262,48 +259,38 @@ class NamingSystem_UniqueId {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Identifies the unique identifier scheme used for this particular
   // identifier.
-  @HiveField(3)
   String type; // <code> enum: oid/uuid/uri/other;
 
   //  Extensions for type
-  @HiveField(4)
   Element elementType;
 
   //  The string that should be sent over the wire to identify the code
   // system or identifier system.
-  @HiveField(5)
   String value;
 
   //  Extensions for value
-  @HiveField(6)
   Element elementValue;
 
   //  Indicates whether this identifier is the "preferred" identifier of
   // this type.
-  @HiveField(7)
   bool preferred;
 
   //  Extensions for preferred
-  @HiveField(8)
   Element elementPreferred;
 
   //  Notes about the past or intended usage of this identifier.
-  @HiveField(9)
   String comment;
 
   //  Extensions for comment
-  @HiveField(10)
   Element elementComment;
 
   //  Identifies the period of time over which this identifier is considered
   // appropriate to refer to the naming system.  Outside of this window, the
   // identifier might be non-deterministic.
-  @HiveField(11)
   Period period;
 
 NamingSystem_UniqueId(
@@ -444,63 +431,6 @@ class NamingSystemAdapter extends TypeAdapter<NamingSystem> {
       ..write(obj.elementUsage)
       ..writeByte(31)
       ..write(obj.uniqueId);
-  }
-}
-
-class NamingSystem_UniqueIdAdapter extends TypeAdapter<NamingSystem_UniqueId> {
-  @override
-  final typeId = 444;
-
-  @override
-  NamingSystem_UniqueId read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return NamingSystem_UniqueId(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as String,
-      elementType: fields[4] as Element,
-      value: fields[5] as String,
-      elementValue: fields[6] as Element,
-      preferred: fields[7] as bool,
-      elementPreferred: fields[8] as Element,
-      comment: fields[9] as String,
-      elementComment: fields[10] as Element,
-      period: fields[11] as Period,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, NamingSystem_UniqueId obj) {
-    writer
-      ..writeByte(12)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.elementType)
-      ..writeByte(5)
-      ..write(obj.value)
-      ..writeByte(6)
-      ..write(obj.elementValue)
-      ..writeByte(7)
-      ..write(obj.preferred)
-      ..writeByte(8)
-      ..write(obj.elementPreferred)
-      ..writeByte(9)
-      ..write(obj.comment)
-      ..writeByte(10)
-      ..write(obj.elementComment)
-      ..writeByte(11)
-      ..write(obj.period);
   }
 }
 

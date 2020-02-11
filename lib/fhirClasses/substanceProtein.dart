@@ -154,12 +154,10 @@ SubstanceProtein(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 573)
 class SubstanceProtein_Subunit {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -168,7 +166,6 @@ class SubstanceProtein_Subunit {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -183,18 +180,15 @@ class SubstanceProtein_Subunit {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Index of primary sequences of amino acids linked through peptide bonds
   // in order of decreasing length. Sequences of the same length will be
   // ordered by molecular weight. Subunits that have identical sequences
   // will be repeated and have sequential subscripts.
-  @HiveField(3)
   int subunit;
 
   //  Extensions for subunit
-  @HiveField(4)
   Element elementSubunit;
 
   //  The sequence information shall be provided enumerating the amino acids
@@ -205,19 +199,15 @@ class SubstanceProtein_Subunit {
   // acids that are not represented with a single letter code an X should be
   // used within the sequence. The modified amino acids will be
   // distinguished by their position in the sequence.
-  @HiveField(5)
   String sequence;
 
   //  Extensions for sequence
-  @HiveField(6)
   Element elementSequence;
 
   //  Length of linear sequences of amino acids contained in the subunit.
-  @HiveField(7)
   int length;
 
   //  Extensions for length
-  @HiveField(8)
   Element elementLength;
 
   //  The sequence information shall be provided enumerating the amino acids
@@ -228,34 +218,27 @@ class SubstanceProtein_Subunit {
   // acids that are not represented with a single letter code an X should be
   // used within the sequence. The modified amino acids will be
   // distinguished by their position in the sequence.
-  @HiveField(9)
   Attachment sequenceAttachment;
 
   //  Unique identifier for molecular fragment modification based on the ISO
   // 11238 Substance ID.
-  @HiveField(10)
   Identifier nTerminalModificationId;
 
   //  The name of the fragment modified at the N-terminal of the
   // SubstanceProtein shall be specified.
-  @HiveField(11)
   String nTerminalModification;
 
   //  Extensions for nTerminalModification
-  @HiveField(12)
   Element elementNTerminalModification;
 
   //  Unique identifier for molecular fragment modification based on the ISO
   // 11238 Substance ID.
-  @HiveField(13)
   Identifier cTerminalModificationId;
 
   //  The modification at the C-terminal shall be specified.
-  @HiveField(14)
   String cTerminalModification;
 
   //  Extensions for cTerminalModification
-  @HiveField(15)
   Element elementCTerminalModification;
 
 SubstanceProtein_Subunit(
@@ -355,76 +338,6 @@ class SubstanceProteinAdapter extends TypeAdapter<SubstanceProtein> {
       ..write(obj.elementDisulfideLinkage)
       ..writeByte(16)
       ..write(obj.subunit);
-  }
-}
-
-class SubstanceProtein_SubunitAdapter
-    extends TypeAdapter<SubstanceProtein_Subunit> {
-  @override
-  final typeId = 573;
-
-  @override
-  SubstanceProtein_Subunit read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstanceProtein_Subunit(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      subunit: fields[3] as int,
-      elementSubunit: fields[4] as Element,
-      sequence: fields[5] as String,
-      elementSequence: fields[6] as Element,
-      length: fields[7] as int,
-      elementLength: fields[8] as Element,
-      sequenceAttachment: fields[9] as Attachment,
-      nTerminalModificationId: fields[10] as Identifier,
-      nTerminalModification: fields[11] as String,
-      elementNTerminalModification: fields[12] as Element,
-      cTerminalModificationId: fields[13] as Identifier,
-      cTerminalModification: fields[14] as String,
-      elementCTerminalModification: fields[15] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SubstanceProtein_Subunit obj) {
-    writer
-      ..writeByte(16)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.subunit)
-      ..writeByte(4)
-      ..write(obj.elementSubunit)
-      ..writeByte(5)
-      ..write(obj.sequence)
-      ..writeByte(6)
-      ..write(obj.elementSequence)
-      ..writeByte(7)
-      ..write(obj.length)
-      ..writeByte(8)
-      ..write(obj.elementLength)
-      ..writeByte(9)
-      ..write(obj.sequenceAttachment)
-      ..writeByte(10)
-      ..write(obj.nTerminalModificationId)
-      ..writeByte(11)
-      ..write(obj.nTerminalModification)
-      ..writeByte(12)
-      ..write(obj.elementNTerminalModification)
-      ..writeByte(13)
-      ..write(obj.cTerminalModificationId)
-      ..writeByte(14)
-      ..write(obj.cTerminalModification)
-      ..writeByte(15)
-      ..write(obj.elementCTerminalModification);
   }
 }
 

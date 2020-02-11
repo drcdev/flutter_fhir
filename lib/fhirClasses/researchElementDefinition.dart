@@ -446,12 +446,10 @@ ResearchElementDefinition(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 515)
 class ResearchElementDefinition_Characteristic {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -460,7 +458,6 @@ class ResearchElementDefinition_Characteristic {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -475,139 +472,109 @@ class ResearchElementDefinition_Characteristic {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Define members of the research element using Codes (such as condition,
   // medication, or observation), Expressions ( using an expression language
   // such as FHIRPath or CQL) or DataRequirements (such as Diabetes
   // diagnosis onset in the last year).
-  @HiveField(3)
   CodeableConcept definitionCodeableConcept;
 
   //  Define members of the research element using Codes (such as condition,
   // medication, or observation), Expressions ( using an expression language
   // such as FHIRPath or CQL) or DataRequirements (such as Diabetes
   // diagnosis onset in the last year).
-  @HiveField(4)
   String definitionCanonical; //  pattern: ^\S*$
 
   //  Extensions for definitionCanonical
-  @HiveField(5)
   Element elementDefinitionCanonical;
 
   //  Define members of the research element using Codes (such as condition,
   // medication, or observation), Expressions ( using an expression language
   // such as FHIRPath or CQL) or DataRequirements (such as Diabetes
   // diagnosis onset in the last year).
-  @HiveField(6)
   Expression definitionExpression;
 
   //  Define members of the research element using Codes (such as condition,
   // medication, or observation), Expressions ( using an expression language
   // such as FHIRPath or CQL) or DataRequirements (such as Diabetes
   // diagnosis onset in the last year).
-  @HiveField(7)
   DataRequirement definitionDataRequirement;
 
   //  Use UsageContext to define the members of the population, such as Age
   // Ranges, Genders, Settings.
-  @HiveField(8)
   List<UsageContext> usageContext;
 
   //  When true, members with this characteristic are excluded from the
   // element.
-  @HiveField(9)
   bool exclude;
 
   //  Extensions for exclude
-  @HiveField(10)
   Element elementExclude;
 
   //  Specifies the UCUM unit for the outcome.
-  @HiveField(11)
   CodeableConcept unitOfMeasure;
 
   //  A narrative description of the time period the study covers.
-  @HiveField(12)
   String studyEffectiveDescription;
 
   //  Extensions for studyEffectiveDescription
-  @HiveField(13)
   Element elementStudyEffectiveDescription;
 
   //  Indicates what effective period the study covers.
-  @HiveField(14)
   String studyEffectiveDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for studyEffectiveDateTime
-  @HiveField(15)
   Element elementStudyEffectiveDateTime;
 
   //  Indicates what effective period the study covers.
-  @HiveField(16)
   Period studyEffectivePeriod;
 
   //  Indicates what effective period the study covers.
-  @HiveField(17)
   Duration studyEffectiveDuration;
 
   //  Indicates what effective period the study covers.
-  @HiveField(18)
   Timing studyEffectiveTiming;
 
   //  Indicates duration from the study initiation.
-  @HiveField(19)
   Duration studyEffectiveTimeFromStart;
 
   //  Indicates how elements are aggregated within the study effective
   // period.
-  @HiveField(20)
   String studyEffectiveGroupMeasure; // <code> enum: mean/median/mean-of-mean/mean-of-median/median-of-mean/median-of-median;
 
   //  Extensions for studyEffectiveGroupMeasure
-  @HiveField(21)
   Element elementStudyEffectiveGroupMeasure;
 
   //  A narrative description of the time period the study covers.
-  @HiveField(22)
   String participantEffectiveDescription;
 
   //  Extensions for participantEffectiveDescription
-  @HiveField(23)
   Element elementParticipantEffectiveDescription;
 
   //  Indicates what effective period the study covers.
-  @HiveField(24)
   String participantEffectiveDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for participantEffectiveDateTime
-  @HiveField(25)
   Element elementParticipantEffectiveDateTime;
 
   //  Indicates what effective period the study covers.
-  @HiveField(26)
   Period participantEffectivePeriod;
 
   //  Indicates what effective period the study covers.
-  @HiveField(27)
   Duration participantEffectiveDuration;
 
   //  Indicates what effective period the study covers.
-  @HiveField(28)
   Timing participantEffectiveTiming;
 
   //  Indicates duration from the participant's study entry.
-  @HiveField(29)
   Duration participantEffectiveTimeFromStart;
 
   //  Indicates how elements are aggregated within the study effective
   // period.
-  @HiveField(30)
   String participantEffectiveGroupMeasure; // <code> enum: mean/median/mean-of-mean/mean-of-median/median-of-mean/median-of-median;
 
   //  Extensions for participantEffectiveGroupMeasure
-  @HiveField(31)
   Element elementParticipantEffectiveGroupMeasure;
 
 ResearchElementDefinition_Characteristic(
@@ -865,125 +832,6 @@ class ResearchElementDefinitionAdapter
       ..write(obj.elementVariableType)
       ..writeByte(63)
       ..write(obj.characteristic);
-  }
-}
-
-class ResearchElementDefinition_CharacteristicAdapter
-    extends TypeAdapter<ResearchElementDefinition_Characteristic> {
-  @override
-  final typeId = 515;
-
-  @override
-  ResearchElementDefinition_Characteristic read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ResearchElementDefinition_Characteristic(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      definitionCodeableConcept: fields[3] as CodeableConcept,
-      definitionCanonical: fields[4] as String,
-      elementDefinitionCanonical: fields[5] as Element,
-      definitionExpression: fields[6] as Expression,
-      definitionDataRequirement: fields[7] as DataRequirement,
-      usageContext: (fields[8] as List)?.cast<UsageContext>(),
-      exclude: fields[9] as bool,
-      elementExclude: fields[10] as Element,
-      unitOfMeasure: fields[11] as CodeableConcept,
-      studyEffectiveDescription: fields[12] as String,
-      elementStudyEffectiveDescription: fields[13] as Element,
-      studyEffectiveDateTime: fields[14] as String,
-      elementStudyEffectiveDateTime: fields[15] as Element,
-      studyEffectivePeriod: fields[16] as Period,
-      studyEffectiveDuration: fields[17] as Duration,
-      studyEffectiveTiming: fields[18] as Timing,
-      studyEffectiveTimeFromStart: fields[19] as Duration,
-      studyEffectiveGroupMeasure: fields[20] as String,
-      elementStudyEffectiveGroupMeasure: fields[21] as Element,
-      participantEffectiveDescription: fields[22] as String,
-      elementParticipantEffectiveDescription: fields[23] as Element,
-      participantEffectiveDateTime: fields[24] as String,
-      elementParticipantEffectiveDateTime: fields[25] as Element,
-      participantEffectivePeriod: fields[26] as Period,
-      participantEffectiveDuration: fields[27] as Duration,
-      participantEffectiveTiming: fields[28] as Timing,
-      participantEffectiveTimeFromStart: fields[29] as Duration,
-      participantEffectiveGroupMeasure: fields[30] as String,
-      elementParticipantEffectiveGroupMeasure: fields[31] as Element,
-    );
-  }
-
-  @override
-  void write(
-      BinaryWriter writer, ResearchElementDefinition_Characteristic obj) {
-    writer
-      ..writeByte(32)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.definitionCodeableConcept)
-      ..writeByte(4)
-      ..write(obj.definitionCanonical)
-      ..writeByte(5)
-      ..write(obj.elementDefinitionCanonical)
-      ..writeByte(6)
-      ..write(obj.definitionExpression)
-      ..writeByte(7)
-      ..write(obj.definitionDataRequirement)
-      ..writeByte(8)
-      ..write(obj.usageContext)
-      ..writeByte(9)
-      ..write(obj.exclude)
-      ..writeByte(10)
-      ..write(obj.elementExclude)
-      ..writeByte(11)
-      ..write(obj.unitOfMeasure)
-      ..writeByte(12)
-      ..write(obj.studyEffectiveDescription)
-      ..writeByte(13)
-      ..write(obj.elementStudyEffectiveDescription)
-      ..writeByte(14)
-      ..write(obj.studyEffectiveDateTime)
-      ..writeByte(15)
-      ..write(obj.elementStudyEffectiveDateTime)
-      ..writeByte(16)
-      ..write(obj.studyEffectivePeriod)
-      ..writeByte(17)
-      ..write(obj.studyEffectiveDuration)
-      ..writeByte(18)
-      ..write(obj.studyEffectiveTiming)
-      ..writeByte(19)
-      ..write(obj.studyEffectiveTimeFromStart)
-      ..writeByte(20)
-      ..write(obj.studyEffectiveGroupMeasure)
-      ..writeByte(21)
-      ..write(obj.elementStudyEffectiveGroupMeasure)
-      ..writeByte(22)
-      ..write(obj.participantEffectiveDescription)
-      ..writeByte(23)
-      ..write(obj.elementParticipantEffectiveDescription)
-      ..writeByte(24)
-      ..write(obj.participantEffectiveDateTime)
-      ..writeByte(25)
-      ..write(obj.elementParticipantEffectiveDateTime)
-      ..writeByte(26)
-      ..write(obj.participantEffectivePeriod)
-      ..writeByte(27)
-      ..write(obj.participantEffectiveDuration)
-      ..writeByte(28)
-      ..write(obj.participantEffectiveTiming)
-      ..writeByte(29)
-      ..write(obj.participantEffectiveTimeFromStart)
-      ..writeByte(30)
-      ..write(obj.participantEffectiveGroupMeasure)
-      ..writeByte(31)
-      ..write(obj.elementParticipantEffectiveGroupMeasure);
   }
 }
 

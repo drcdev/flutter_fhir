@@ -191,12 +191,10 @@ MessageHeader(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 431)
 class MessageHeader_Destination {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -205,7 +203,6 @@ class MessageHeader_Destination {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -220,34 +217,27 @@ class MessageHeader_Destination {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Human-readable name for the target system.
-  @HiveField(3)
   String name;
 
   //  Extensions for name
-  @HiveField(4)
   Element elementName;
 
   //  Identifies the target end system in situations where the initial
   // message transmission is to an intermediary system.
-  @HiveField(5)
   Reference target;
 
   //  Indicates where the message should be routed to.
-  @HiveField(6)
   String endpoint;
 
   //  Extensions for endpoint
-  @HiveField(7)
   Element elementEndpoint;
 
   //  Allows data conveyed by a message to be addressed to a particular
   // person or department when routing to a specific application isn't
   // sufficient.
-  @HiveField(8)
   Reference receiver;
 
 MessageHeader_Destination(
@@ -267,12 +257,10 @@ MessageHeader_Destination(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 432)
 class MessageHeader_Source {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -281,7 +269,6 @@ class MessageHeader_Source {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -296,45 +283,35 @@ class MessageHeader_Source {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Human-readable name for the source system.
-  @HiveField(3)
   String name;
 
   //  Extensions for name
-  @HiveField(4)
   Element elementName;
 
   //  May include configuration or other information useful in debugging.
-  @HiveField(5)
   String software;
 
   //  Extensions for software
-  @HiveField(6)
   Element elementSoftware;
 
   //  Can convey versions of multiple systems in situations where a message
   // passes through multiple hands.
-  @HiveField(7)
   String version;
 
   //  Extensions for version
-  @HiveField(8)
   Element elementVersion;
 
   //  An e-mail, phone, website or other contact point to use to resolve
   // issues with message communications.
-  @HiveField(9)
   ContactPoint contact;
 
   //  Identifies the routing target to send acknowledgements to.
-  @HiveField(10)
   String endpoint;
 
   //  Extensions for endpoint
-  @HiveField(11)
   Element elementEndpoint;
 
 MessageHeader_Source(
@@ -357,12 +334,10 @@ MessageHeader_Source(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 433)
 class MessageHeader_Response {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -371,7 +346,6 @@ class MessageHeader_Response {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -386,29 +360,23 @@ class MessageHeader_Response {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The MessageHeader.id of the message to which this message is a
   // response.
-  @HiveField(3)
   String identifier;
 
   //  Extensions for identifier
-  @HiveField(4)
   Element elementIdentifier;
 
   //  Code that identifies the type of response to the message - whether it
   // was successful or not, and whether it should be resent or not.
-  @HiveField(5)
   String code; // <code> enum: ok/transient-error/fatal-error;
 
   //  Extensions for code
-  @HiveField(6)
   Element elementCode;
 
   //  Full details of any issues found in the message.
-  @HiveField(7)
   Reference details;
 
 MessageHeader_Response(
@@ -521,158 +489,6 @@ class MessageHeaderAdapter extends TypeAdapter<MessageHeader> {
       ..write(obj.focus)
       ..writeByte(23)
       ..write(obj.definition);
-  }
-}
-
-class MessageHeader_DestinationAdapter
-    extends TypeAdapter<MessageHeader_Destination> {
-  @override
-  final typeId = 431;
-
-  @override
-  MessageHeader_Destination read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MessageHeader_Destination(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      name: fields[3] as String,
-      elementName: fields[4] as Element,
-      target: fields[5] as Reference,
-      endpoint: fields[6] as String,
-      elementEndpoint: fields[7] as Element,
-      receiver: fields[8] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MessageHeader_Destination obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.name)
-      ..writeByte(4)
-      ..write(obj.elementName)
-      ..writeByte(5)
-      ..write(obj.target)
-      ..writeByte(6)
-      ..write(obj.endpoint)
-      ..writeByte(7)
-      ..write(obj.elementEndpoint)
-      ..writeByte(8)
-      ..write(obj.receiver);
-  }
-}
-
-class MessageHeader_SourceAdapter extends TypeAdapter<MessageHeader_Source> {
-  @override
-  final typeId = 432;
-
-  @override
-  MessageHeader_Source read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MessageHeader_Source(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      name: fields[3] as String,
-      elementName: fields[4] as Element,
-      software: fields[5] as String,
-      elementSoftware: fields[6] as Element,
-      version: fields[7] as String,
-      elementVersion: fields[8] as Element,
-      contact: fields[9] as ContactPoint,
-      endpoint: fields[10] as String,
-      elementEndpoint: fields[11] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MessageHeader_Source obj) {
-    writer
-      ..writeByte(12)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.name)
-      ..writeByte(4)
-      ..write(obj.elementName)
-      ..writeByte(5)
-      ..write(obj.software)
-      ..writeByte(6)
-      ..write(obj.elementSoftware)
-      ..writeByte(7)
-      ..write(obj.version)
-      ..writeByte(8)
-      ..write(obj.elementVersion)
-      ..writeByte(9)
-      ..write(obj.contact)
-      ..writeByte(10)
-      ..write(obj.endpoint)
-      ..writeByte(11)
-      ..write(obj.elementEndpoint);
-  }
-}
-
-class MessageHeader_ResponseAdapter
-    extends TypeAdapter<MessageHeader_Response> {
-  @override
-  final typeId = 433;
-
-  @override
-  MessageHeader_Response read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MessageHeader_Response(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      identifier: fields[3] as String,
-      elementIdentifier: fields[4] as Element,
-      code: fields[5] as String,
-      elementCode: fields[6] as Element,
-      details: fields[7] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MessageHeader_Response obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.identifier)
-      ..writeByte(4)
-      ..write(obj.elementIdentifier)
-      ..writeByte(5)
-      ..write(obj.code)
-      ..writeByte(6)
-      ..write(obj.elementCode)
-      ..writeByte(7)
-      ..write(obj.details);
   }
 }
 

@@ -216,12 +216,10 @@ CoverageEligibilityRequest(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 196)
 class CoverageEligibilityRequest_SupportingInfo {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -230,7 +228,6 @@ class CoverageEligibilityRequest_SupportingInfo {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -245,30 +242,24 @@ class CoverageEligibilityRequest_SupportingInfo {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A number to uniquely identify supporting information entries.
-  @HiveField(3)
   int sequence;
 
   //  Extensions for sequence
-  @HiveField(4)
   Element elementSequence;
 
   //  Additional data or information such as resources, documents, images
   // etc. including references to the data or the actual inclusion of the
   // data.
-  @HiveField(5)
   Reference information;
 
   //  The supporting materials are applicable for all detail items,
   // product/servce categories and specific billing codes.
-  @HiveField(6)
   bool appliesToAll;
 
   //  Extensions for appliesToAll
-  @HiveField(7)
   Element elementAppliesToAll;
 
 CoverageEligibilityRequest_SupportingInfo(
@@ -287,12 +278,10 @@ CoverageEligibilityRequest_SupportingInfo(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 197)
 class CoverageEligibilityRequest_Insurance {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -301,7 +290,6 @@ class CoverageEligibilityRequest_Insurance {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -316,32 +304,26 @@ class CoverageEligibilityRequest_Insurance {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A flag to indicate that this Coverage is to be used for evaluation of
   // this request when set to true.
-  @HiveField(3)
   bool focal;
 
   //  Extensions for focal
-  @HiveField(4)
   Element elementFocal;
 
   //  Reference to the insurance card level information contained in the
   // Coverage resource. The coverage issuing insurer will use these details
   // to locate the patient's actual coverage within the insurer's
   // information system.
-  @HiveField(5)
   Reference coverage;
 
   //  A business agreement number established between the provider and the
   // insurer for special business processing purposes.
-  @HiveField(6)
   String businessArrangement;
 
   //  Extensions for businessArrangement
-  @HiveField(7)
   Element elementBusinessArrangement;
 
 CoverageEligibilityRequest_Insurance(
@@ -360,12 +342,10 @@ CoverageEligibilityRequest_Insurance(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 198)
 class CoverageEligibilityRequest_Item {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -374,7 +354,6 @@ class CoverageEligibilityRequest_Item {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -389,56 +368,44 @@ class CoverageEligibilityRequest_Item {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Exceptions, special conditions and supporting information applicable
   // for this service or product line.
-  @HiveField(3)
   List<int> supportingInfoSequence;
 
   //  Extensions for supportingInfoSequence
-  @HiveField(4)
   List<Element> elementSupportingInfoSequence;
 
   //  Code to identify the general type of benefits under which products and
   // services are provided.
-  @HiveField(5)
   CodeableConcept category;
 
   //  This contains the product, service, drug or other billing code for the
   // item.
-  @HiveField(6)
   CodeableConcept productOrService;
 
   //  Item typification or modifiers codes to convey additional context for
   // the product or service.
-  @HiveField(7)
   List<CodeableConcept> modifier;
 
   //  The practitioner who is responsible for the product or service to be
   // rendered to the patient.
-  @HiveField(8)
   Reference provider;
 
   //  The number of repetitions of a service or product.
-  @HiveField(9)
   Quantity quantity;
 
   //  The amount charged to the patient by the provider for a single unit.
-  @HiveField(10)
   Money unitPrice;
 
   //  Facility where the services will be provided.
-  @HiveField(11)
   Reference facility;
 
   //  Patient diagnosis for which care is sought.
-  @HiveField(12)
   List<CoverageEligibilityRequest_Diagnosis> diagnosis;
 
   //  The plan/proposal/order describing the proposed service in detail.
-  @HiveField(13)
   List<Reference> detail;
 
 CoverageEligibilityRequest_Item(
@@ -463,12 +430,10 @@ CoverageEligibilityRequest_Item(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 199)
 class CoverageEligibilityRequest_Diagnosis {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -477,7 +442,6 @@ class CoverageEligibilityRequest_Diagnosis {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -492,17 +456,14 @@ class CoverageEligibilityRequest_Diagnosis {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The nature of illness or problem in a coded form or as a reference to
   // an external defined Condition.
-  @HiveField(3)
   CodeableConcept diagnosisCodeableConcept;
 
   //  The nature of illness or problem in a coded form or as a reference to
   // an external defined Condition.
-  @HiveField(4)
   Reference diagnosisReference;
 
 CoverageEligibilityRequest_Diagnosis(
@@ -633,201 +594,6 @@ class CoverageEligibilityRequestAdapter
       ..write(obj.insurance)
       ..writeByte(29)
       ..write(obj.item);
-  }
-}
-
-class CoverageEligibilityRequest_SupportingInfoAdapter
-    extends TypeAdapter<CoverageEligibilityRequest_SupportingInfo> {
-  @override
-  final typeId = 196;
-
-  @override
-  CoverageEligibilityRequest_SupportingInfo read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CoverageEligibilityRequest_SupportingInfo(
-      fields[5] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      sequence: fields[3] as int,
-      elementSequence: fields[4] as Element,
-      appliesToAll: fields[6] as bool,
-      elementAppliesToAll: fields[7] as Element,
-    );
-  }
-
-  @override
-  void write(
-      BinaryWriter writer, CoverageEligibilityRequest_SupportingInfo obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.sequence)
-      ..writeByte(4)
-      ..write(obj.elementSequence)
-      ..writeByte(5)
-      ..write(obj.information)
-      ..writeByte(6)
-      ..write(obj.appliesToAll)
-      ..writeByte(7)
-      ..write(obj.elementAppliesToAll);
-  }
-}
-
-class CoverageEligibilityRequest_InsuranceAdapter
-    extends TypeAdapter<CoverageEligibilityRequest_Insurance> {
-  @override
-  final typeId = 197;
-
-  @override
-  CoverageEligibilityRequest_Insurance read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CoverageEligibilityRequest_Insurance(
-      fields[5] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      focal: fields[3] as bool,
-      elementFocal: fields[4] as Element,
-      businessArrangement: fields[6] as String,
-      elementBusinessArrangement: fields[7] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CoverageEligibilityRequest_Insurance obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.focal)
-      ..writeByte(4)
-      ..write(obj.elementFocal)
-      ..writeByte(5)
-      ..write(obj.coverage)
-      ..writeByte(6)
-      ..write(obj.businessArrangement)
-      ..writeByte(7)
-      ..write(obj.elementBusinessArrangement);
-  }
-}
-
-class CoverageEligibilityRequest_ItemAdapter
-    extends TypeAdapter<CoverageEligibilityRequest_Item> {
-  @override
-  final typeId = 198;
-
-  @override
-  CoverageEligibilityRequest_Item read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CoverageEligibilityRequest_Item(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      supportingInfoSequence: (fields[3] as List)?.cast<int>(),
-      elementSupportingInfoSequence: (fields[4] as List)?.cast<Element>(),
-      category: fields[5] as CodeableConcept,
-      productOrService: fields[6] as CodeableConcept,
-      modifier: (fields[7] as List)?.cast<CodeableConcept>(),
-      provider: fields[8] as Reference,
-      quantity: fields[9] as Quantity,
-      unitPrice: fields[10] as Money,
-      facility: fields[11] as Reference,
-      diagnosis:
-          (fields[12] as List)?.cast<CoverageEligibilityRequest_Diagnosis>(),
-      detail: (fields[13] as List)?.cast<Reference>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CoverageEligibilityRequest_Item obj) {
-    writer
-      ..writeByte(14)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.supportingInfoSequence)
-      ..writeByte(4)
-      ..write(obj.elementSupportingInfoSequence)
-      ..writeByte(5)
-      ..write(obj.category)
-      ..writeByte(6)
-      ..write(obj.productOrService)
-      ..writeByte(7)
-      ..write(obj.modifier)
-      ..writeByte(8)
-      ..write(obj.provider)
-      ..writeByte(9)
-      ..write(obj.quantity)
-      ..writeByte(10)
-      ..write(obj.unitPrice)
-      ..writeByte(11)
-      ..write(obj.facility)
-      ..writeByte(12)
-      ..write(obj.diagnosis)
-      ..writeByte(13)
-      ..write(obj.detail);
-  }
-}
-
-class CoverageEligibilityRequest_DiagnosisAdapter
-    extends TypeAdapter<CoverageEligibilityRequest_Diagnosis> {
-  @override
-  final typeId = 199;
-
-  @override
-  CoverageEligibilityRequest_Diagnosis read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CoverageEligibilityRequest_Diagnosis(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      diagnosisCodeableConcept: fields[3] as CodeableConcept,
-      diagnosisReference: fields[4] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CoverageEligibilityRequest_Diagnosis obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.diagnosisCodeableConcept)
-      ..writeByte(4)
-      ..write(obj.diagnosisReference);
   }
 }
 

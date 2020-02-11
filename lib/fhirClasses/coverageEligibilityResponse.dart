@@ -233,12 +233,10 @@ CoverageEligibilityResponse(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 201)
 class CoverageEligibilityResponse_Insurance {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -247,7 +245,6 @@ class CoverageEligibilityResponse_Insurance {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -262,33 +259,27 @@ class CoverageEligibilityResponse_Insurance {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Reference to the insurance card level information contained in the
   // Coverage resource. The coverage issuing insurer will use these details
   // to locate the patient's actual coverage within the insurer's
   // information system.
-  @HiveField(3)
   Reference coverage;
 
   //  Flag indicating if the coverage provided is inforce currently if no
   // service date(s) specified or for the whole duration of the service
   // dates.
-  @HiveField(4)
   bool inforce;
 
   //  Extensions for inforce
-  @HiveField(5)
   Element elementInforce;
 
   //  The term of the benefits documented in this response.
-  @HiveField(6)
   Period benefitPeriod;
 
   //  Benefits and optionally current balances, and authorization details by
   // category or service.
-  @HiveField(7)
   List<CoverageEligibilityResponse_Item> item;
 
 CoverageEligibilityResponse_Insurance(
@@ -307,12 +298,10 @@ CoverageEligibilityResponse_Insurance(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 202)
 class CoverageEligibilityResponse_Item {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -321,7 +310,6 @@ class CoverageEligibilityResponse_Item {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -336,94 +324,74 @@ class CoverageEligibilityResponse_Item {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Code to identify the general type of benefits under which products and
   // services are provided.
-  @HiveField(3)
   CodeableConcept category;
 
   //  This contains the product, service, drug or other billing code for the
   // item.
-  @HiveField(4)
   CodeableConcept productOrService;
 
   //  Item typification or modifiers codes to convey additional context for
   // the product or service.
-  @HiveField(5)
   List<CodeableConcept> modifier;
 
   //  The practitioner who is eligible for the provision of the product or
   // service.
-  @HiveField(6)
   Reference provider;
 
   //  True if the indicated class of service is excluded from the plan,
   // missing or False indicates the product or service is included in the
   // coverage.
-  @HiveField(7)
   bool excluded;
 
   //  Extensions for excluded
-  @HiveField(8)
   Element elementExcluded;
 
   //  A short name or tag for the benefit.
-  @HiveField(9)
   String name;
 
   //  Extensions for name
-  @HiveField(10)
   Element elementName;
 
   //  A richer description of the benefit or services covered.
-  @HiveField(11)
   String description;
 
   //  Extensions for description
-  @HiveField(12)
   Element elementDescription;
 
   //  Is a flag to indicate whether the benefits refer to in-network
   // providers or out-of-network providers.
-  @HiveField(13)
   CodeableConcept network;
 
   //  Indicates if the benefits apply to an individual or to the family.
-  @HiveField(14)
   CodeableConcept unit;
 
   //  The term or period of the values such as 'maximum lifetime benefit' or
   // 'maximum annual visits'.
-  @HiveField(15)
   CodeableConcept term;
 
   //  Benefits used to date.
-  @HiveField(16)
   List<CoverageEligibilityResponse_Benefit> benefit;
 
   //  A boolean flag indicating whether a preauthorization is required prior
   // to actual service delivery.
-  @HiveField(17)
   bool authorizationRequired;
 
   //  Extensions for authorizationRequired
-  @HiveField(18)
   Element elementAuthorizationRequired;
 
   //  Codes or comments regarding information or actions associated with the
   // preauthorization.
-  @HiveField(19)
   List<CodeableConcept> authorizationSupporting;
 
   //  A web location for obtaining requirements or descriptive information
   // regarding the preauthorization.
-  @HiveField(20)
   String authorizationUrl;
 
   //  Extensions for authorizationUrl
-  @HiveField(21)
   Element elementAuthorizationUrl;
 
 CoverageEligibilityResponse_Item(
@@ -456,12 +424,10 @@ CoverageEligibilityResponse_Item(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 203)
 class CoverageEligibilityResponse_Benefit {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -470,7 +436,6 @@ class CoverageEligibilityResponse_Benefit {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -485,49 +450,39 @@ class CoverageEligibilityResponse_Benefit {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Classification of benefit being provided.
-  @HiveField(3)
   CodeableConcept type;
 
   //  The quantity of the benefit which is permitted under the coverage.
   int allowedUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
 
   //  Extensions for allowedUnsignedInt
-  @HiveField(5)
   Element elementAllowedUnsignedInt;
 
   //  The quantity of the benefit which is permitted under the coverage.
-  @HiveField(6)
   String allowedString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for allowedString
-  @HiveField(7)
   Element elementAllowedString;
 
   //  The quantity of the benefit which is permitted under the coverage.
-  @HiveField(8)
   Money allowedMoney;
 
   //  The quantity of the benefit which have been consumed to date.
   int usedUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
 
   //  Extensions for usedUnsignedInt
-  @HiveField(10)
   Element elementUsedUnsignedInt;
 
   //  The quantity of the benefit which have been consumed to date.
-  @HiveField(11)
   String usedString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for usedString
-  @HiveField(12)
   Element elementUsedString;
 
   //  The quantity of the benefit which have been consumed to date.
-  @HiveField(13)
   Money usedMoney;
 
 CoverageEligibilityResponse_Benefit(
@@ -552,12 +507,10 @@ CoverageEligibilityResponse_Benefit(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 204)
 class CoverageEligibilityResponse_Error {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -566,7 +519,6 @@ class CoverageEligibilityResponse_Error {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -581,12 +533,10 @@ class CoverageEligibilityResponse_Error {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  An error code,from a specified code system, which details why the
   // eligibility check could not be performed.
-  @HiveField(3)
   CodeableConcept code;
 
 CoverageEligibilityResponse_Error(
@@ -727,233 +677,6 @@ class CoverageEligibilityResponseAdapter
       ..write(obj.form)
       ..writeByte(33)
       ..write(obj.error);
-  }
-}
-
-class CoverageEligibilityResponse_InsuranceAdapter
-    extends TypeAdapter<CoverageEligibilityResponse_Insurance> {
-  @override
-  final typeId = 201;
-
-  @override
-  CoverageEligibilityResponse_Insurance read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CoverageEligibilityResponse_Insurance(
-      fields[3] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      inforce: fields[4] as bool,
-      elementInforce: fields[5] as Element,
-      benefitPeriod: fields[6] as Period,
-      item: (fields[7] as List)?.cast<CoverageEligibilityResponse_Item>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CoverageEligibilityResponse_Insurance obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.coverage)
-      ..writeByte(4)
-      ..write(obj.inforce)
-      ..writeByte(5)
-      ..write(obj.elementInforce)
-      ..writeByte(6)
-      ..write(obj.benefitPeriod)
-      ..writeByte(7)
-      ..write(obj.item);
-  }
-}
-
-class CoverageEligibilityResponse_ItemAdapter
-    extends TypeAdapter<CoverageEligibilityResponse_Item> {
-  @override
-  final typeId = 202;
-
-  @override
-  CoverageEligibilityResponse_Item read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CoverageEligibilityResponse_Item(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      category: fields[3] as CodeableConcept,
-      productOrService: fields[4] as CodeableConcept,
-      modifier: (fields[5] as List)?.cast<CodeableConcept>(),
-      provider: fields[6] as Reference,
-      excluded: fields[7] as bool,
-      elementExcluded: fields[8] as Element,
-      name: fields[9] as String,
-      elementName: fields[10] as Element,
-      description: fields[11] as String,
-      elementDescription: fields[12] as Element,
-      network: fields[13] as CodeableConcept,
-      unit: fields[14] as CodeableConcept,
-      term: fields[15] as CodeableConcept,
-      benefit:
-          (fields[16] as List)?.cast<CoverageEligibilityResponse_Benefit>(),
-      authorizationRequired: fields[17] as bool,
-      elementAuthorizationRequired: fields[18] as Element,
-      authorizationSupporting: (fields[19] as List)?.cast<CodeableConcept>(),
-      authorizationUrl: fields[20] as String,
-      elementAuthorizationUrl: fields[21] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CoverageEligibilityResponse_Item obj) {
-    writer
-      ..writeByte(22)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.category)
-      ..writeByte(4)
-      ..write(obj.productOrService)
-      ..writeByte(5)
-      ..write(obj.modifier)
-      ..writeByte(6)
-      ..write(obj.provider)
-      ..writeByte(7)
-      ..write(obj.excluded)
-      ..writeByte(8)
-      ..write(obj.elementExcluded)
-      ..writeByte(9)
-      ..write(obj.name)
-      ..writeByte(10)
-      ..write(obj.elementName)
-      ..writeByte(11)
-      ..write(obj.description)
-      ..writeByte(12)
-      ..write(obj.elementDescription)
-      ..writeByte(13)
-      ..write(obj.network)
-      ..writeByte(14)
-      ..write(obj.unit)
-      ..writeByte(15)
-      ..write(obj.term)
-      ..writeByte(16)
-      ..write(obj.benefit)
-      ..writeByte(17)
-      ..write(obj.authorizationRequired)
-      ..writeByte(18)
-      ..write(obj.elementAuthorizationRequired)
-      ..writeByte(19)
-      ..write(obj.authorizationSupporting)
-      ..writeByte(20)
-      ..write(obj.authorizationUrl)
-      ..writeByte(21)
-      ..write(obj.elementAuthorizationUrl);
-  }
-}
-
-class CoverageEligibilityResponse_BenefitAdapter
-    extends TypeAdapter<CoverageEligibilityResponse_Benefit> {
-  @override
-  final typeId = 203;
-
-  @override
-  CoverageEligibilityResponse_Benefit read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CoverageEligibilityResponse_Benefit(
-      fields[3] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      elementAllowedUnsignedInt: fields[5] as Element,
-      allowedString: fields[6] as String,
-      elementAllowedString: fields[7] as Element,
-      allowedMoney: fields[8] as Money,
-      elementUsedUnsignedInt: fields[10] as Element,
-      usedString: fields[11] as String,
-      elementUsedString: fields[12] as Element,
-      usedMoney: fields[13] as Money,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CoverageEligibilityResponse_Benefit obj) {
-    writer
-      ..writeByte(12)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(5)
-      ..write(obj.elementAllowedUnsignedInt)
-      ..writeByte(6)
-      ..write(obj.allowedString)
-      ..writeByte(7)
-      ..write(obj.elementAllowedString)
-      ..writeByte(8)
-      ..write(obj.allowedMoney)
-      ..writeByte(10)
-      ..write(obj.elementUsedUnsignedInt)
-      ..writeByte(11)
-      ..write(obj.usedString)
-      ..writeByte(12)
-      ..write(obj.elementUsedString)
-      ..writeByte(13)
-      ..write(obj.usedMoney);
-  }
-}
-
-class CoverageEligibilityResponse_ErrorAdapter
-    extends TypeAdapter<CoverageEligibilityResponse_Error> {
-  @override
-  final typeId = 204;
-
-  @override
-  CoverageEligibilityResponse_Error read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CoverageEligibilityResponse_Error(
-      fields[3] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CoverageEligibilityResponse_Error obj) {
-    writer
-      ..writeByte(4)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code);
   }
 }
 

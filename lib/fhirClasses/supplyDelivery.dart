@@ -191,12 +191,10 @@ SupplyDelivery(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 598)
 class SupplyDelivery_SuppliedItem {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -205,7 +203,6 @@ class SupplyDelivery_SuppliedItem {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -220,24 +217,20 @@ class SupplyDelivery_SuppliedItem {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The amount of supply that has been dispensed. Includes unit of
   // measure.
-  @HiveField(3)
   Quantity quantity;
 
   //  Identifies the medication, substance or device being dispensed. This
   // is either a link to a resource representing the details of the item or
   // a code that identifies the item from a known list.
-  @HiveField(4)
   CodeableConcept itemCodeableConcept;
 
   //  Identifies the medication, substance or device being dispensed. This
   // is either a link to a resource representing the details of the item or
   // a code that identifies the item from a known list.
-  @HiveField(5)
   Reference itemReference;
 
 SupplyDelivery_SuppliedItem(
@@ -354,46 +347,6 @@ class SupplyDeliveryAdapter extends TypeAdapter<SupplyDelivery> {
       ..write(obj.destination)
       ..writeByte(25)
       ..write(obj.receiver);
-  }
-}
-
-class SupplyDelivery_SuppliedItemAdapter
-    extends TypeAdapter<SupplyDelivery_SuppliedItem> {
-  @override
-  final typeId = 598;
-
-  @override
-  SupplyDelivery_SuppliedItem read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SupplyDelivery_SuppliedItem(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      quantity: fields[3] as Quantity,
-      itemCodeableConcept: fields[4] as CodeableConcept,
-      itemReference: fields[5] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SupplyDelivery_SuppliedItem obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.quantity)
-      ..writeByte(4)
-      ..write(obj.itemCodeableConcept)
-      ..writeByte(5)
-      ..write(obj.itemReference);
   }
 }
 

@@ -183,12 +183,10 @@ Practitioner(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 489)
 class Practitioner_Qualification {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -197,7 +195,6 @@ class Practitioner_Qualification {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -212,24 +209,19 @@ class Practitioner_Qualification {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  An identifier that applies to this person's qualification in this
   // role.
-  @HiveField(3)
   List<Identifier> identifier;
 
   //  Coded representation of the qualification.
-  @HiveField(4)
   CodeableConcept code;
 
   //  Period during which the qualification is valid.
-  @HiveField(5)
   Period period;
 
   //  Organization that regulates and issues the qualification.
-  @HiveField(6)
   Reference issuer;
 
 Practitioner_Qualification(
@@ -341,49 +333,6 @@ class PractitionerAdapter extends TypeAdapter<Practitioner> {
       ..write(obj.qualification)
       ..writeByte(23)
       ..write(obj.communication);
-  }
-}
-
-class Practitioner_QualificationAdapter
-    extends TypeAdapter<Practitioner_Qualification> {
-  @override
-  final typeId = 489;
-
-  @override
-  Practitioner_Qualification read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Practitioner_Qualification(
-      fields[4] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      identifier: (fields[3] as List)?.cast<Identifier>(),
-      period: fields[5] as Period,
-      issuer: fields[6] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Practitioner_Qualification obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.identifier)
-      ..writeByte(4)
-      ..write(obj.code)
-      ..writeByte(5)
-      ..write(obj.period)
-      ..writeByte(6)
-      ..write(obj.issuer);
   }
 }
 

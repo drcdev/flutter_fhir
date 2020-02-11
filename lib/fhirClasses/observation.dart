@@ -403,12 +403,10 @@ Observation(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 453)
 class Observation_ReferenceRange {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -417,7 +415,6 @@ class Observation_ReferenceRange {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -432,26 +429,22 @@ class Observation_ReferenceRange {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The value of the low bound of the reference range.  The low bound of
   // the reference range endpoint is inclusive of the value (e.g.  reference
   // range is >=5 - <=9). If the low bound is omitted,  it is assumed to be
   // meaningless (e.g. reference range is <=2.3).
-  @HiveField(3)
   Quantity low;
 
   //  The value of the high bound of the reference range.  The high bound of
   // the reference range endpoint is inclusive of the value (e.g.  reference
   // range is >=5 - <=9). If the high bound is omitted,  it is assumed to be
   // meaningless (e.g. reference range is >= 2.3).
-  @HiveField(4)
   Quantity high;
 
   //  Codes to indicate the what part of the targeted reference population
   // it applies to. For example, the normal or therapeutic range.
-  @HiveField(5)
   CodeableConcept type;
 
   //  Codes to indicate the target population this reference range applies
@@ -460,23 +453,19 @@ class Observation_ReferenceRange {
   // interpreted as an "AND" of the target populations.  For example, to
   // represent a target population of African American females, both a code
   // of female and a code for African American would be used.
-  @HiveField(6)
   List<CodeableConcept> appliesTo;
 
   //  The age at which this reference range is applicable. This is a
   // neonatal age (e.g. number of weeks at term) if the meaning says so.
-  @HiveField(7)
   Range age;
 
   //  Text based reference range in an observation which may be used when a
   // quantitative range is not appropriate for an observation.  An example
   // would be a reference value of "Negative" or a list or table of
   // "normals".
-  @HiveField(8)
   String text;
 
   //  Extensions for text
-  @HiveField(9)
   Element elementText;
 
 Observation_ReferenceRange(
@@ -497,12 +486,10 @@ Observation_ReferenceRange(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 454)
 class Observation_Component {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -511,7 +498,6 @@ class Observation_Component {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -526,40 +512,32 @@ class Observation_Component {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Describes what was observed. Sometimes this is called the observation
   // "code".
-  @HiveField(3)
   CodeableConcept code;
 
   //  The information determined as a result of making the observation, if
   // the information has a simple value.
-  @HiveField(4)
   Quantity valueQuantity;
 
   //  The information determined as a result of making the observation, if
   // the information has a simple value.
-  @HiveField(5)
   CodeableConcept valueCodeableConcept;
 
   //  The information determined as a result of making the observation, if
   // the information has a simple value.
-  @HiveField(6)
   String valueString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for valueString
-  @HiveField(7)
   Element elementValueString;
 
   //  The information determined as a result of making the observation, if
   // the information has a simple value.
-  @HiveField(8)
   bool valueBoolean; //  pattern: ^true|false$
 
   //  Extensions for valueBoolean
-  @HiveField(9)
   Element elementValueBoolean;
 
   //  The information determined as a result of making the observation, if
@@ -567,60 +545,48 @@ class Observation_Component {
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
 
   //  Extensions for valueInteger
-  @HiveField(11)
   Element elementValueInteger;
 
   //  The information determined as a result of making the observation, if
   // the information has a simple value.
-  @HiveField(12)
   Range valueRange;
 
   //  The information determined as a result of making the observation, if
   // the information has a simple value.
-  @HiveField(13)
   Ratio valueRatio;
 
   //  The information determined as a result of making the observation, if
   // the information has a simple value.
-  @HiveField(14)
   SampledData valueSampledData;
 
   //  The information determined as a result of making the observation, if
   // the information has a simple value.
-  @HiveField(15)
   String valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
 
   //  Extensions for valueTime
-  @HiveField(16)
   Element elementValueTime;
 
   //  The information determined as a result of making the observation, if
   // the information has a simple value.
-  @HiveField(17)
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
 
   //  Extensions for valueDateTime
-  @HiveField(18)
   Element elementValueDateTime;
 
   //  The information determined as a result of making the observation, if
   // the information has a simple value.
-  @HiveField(19)
   Period valuePeriod;
 
   //  Provides a reason why the expected value in the element
   // Observation.component.value[x] is missing.
-  @HiveField(20)
   CodeableConcept dataAbsentReason;
 
   //  A categorical assessment of an observation value.  For example, high,
   // low, normal.
-  @HiveField(21)
   List<CodeableConcept> interpretation;
 
   //  Guidance on how to interpret the value by comparison to a normal or
   // recommended range.
-  @HiveField(22)
   List<Observation_ReferenceRange> referenceRange;
 
 Observation_Component(
@@ -844,145 +810,6 @@ class ObservationAdapter extends TypeAdapter<Observation> {
       ..write(obj.derivedFrom)
       ..writeByte(56)
       ..write(obj.component);
-  }
-}
-
-class Observation_ReferenceRangeAdapter
-    extends TypeAdapter<Observation_ReferenceRange> {
-  @override
-  final typeId = 453;
-
-  @override
-  Observation_ReferenceRange read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Observation_ReferenceRange(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      low: fields[3] as Quantity,
-      high: fields[4] as Quantity,
-      type: fields[5] as CodeableConcept,
-      appliesTo: (fields[6] as List)?.cast<CodeableConcept>(),
-      age: fields[7] as Range,
-      text: fields[8] as String,
-      elementText: fields[9] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Observation_ReferenceRange obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.low)
-      ..writeByte(4)
-      ..write(obj.high)
-      ..writeByte(5)
-      ..write(obj.type)
-      ..writeByte(6)
-      ..write(obj.appliesTo)
-      ..writeByte(7)
-      ..write(obj.age)
-      ..writeByte(8)
-      ..write(obj.text)
-      ..writeByte(9)
-      ..write(obj.elementText);
-  }
-}
-
-class Observation_ComponentAdapter extends TypeAdapter<Observation_Component> {
-  @override
-  final typeId = 454;
-
-  @override
-  Observation_Component read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Observation_Component(
-      fields[3] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      valueQuantity: fields[4] as Quantity,
-      valueCodeableConcept: fields[5] as CodeableConcept,
-      valueString: fields[6] as String,
-      elementValueString: fields[7] as Element,
-      valueBoolean: fields[8] as bool,
-      elementValueBoolean: fields[9] as Element,
-      elementValueInteger: fields[11] as Element,
-      valueRange: fields[12] as Range,
-      valueRatio: fields[13] as Ratio,
-      valueSampledData: fields[14] as SampledData,
-      valueTime: fields[15] as String,
-      elementValueTime: fields[16] as Element,
-      valueDateTime: fields[17] as String,
-      elementValueDateTime: fields[18] as Element,
-      valuePeriod: fields[19] as Period,
-      dataAbsentReason: fields[20] as CodeableConcept,
-      interpretation: (fields[21] as List)?.cast<CodeableConcept>(),
-      referenceRange: (fields[22] as List)?.cast<Observation_ReferenceRange>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Observation_Component obj) {
-    writer
-      ..writeByte(22)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.valueQuantity)
-      ..writeByte(5)
-      ..write(obj.valueCodeableConcept)
-      ..writeByte(6)
-      ..write(obj.valueString)
-      ..writeByte(7)
-      ..write(obj.elementValueString)
-      ..writeByte(8)
-      ..write(obj.valueBoolean)
-      ..writeByte(9)
-      ..write(obj.elementValueBoolean)
-      ..writeByte(11)
-      ..write(obj.elementValueInteger)
-      ..writeByte(12)
-      ..write(obj.valueRange)
-      ..writeByte(13)
-      ..write(obj.valueRatio)
-      ..writeByte(14)
-      ..write(obj.valueSampledData)
-      ..writeByte(15)
-      ..write(obj.valueTime)
-      ..writeByte(16)
-      ..write(obj.elementValueTime)
-      ..writeByte(17)
-      ..write(obj.valueDateTime)
-      ..writeByte(18)
-      ..write(obj.elementValueDateTime)
-      ..writeByte(19)
-      ..write(obj.valuePeriod)
-      ..writeByte(20)
-      ..write(obj.dataAbsentReason)
-      ..writeByte(21)
-      ..write(obj.interpretation)
-      ..writeByte(22)
-      ..write(obj.referenceRange);
   }
 }
 

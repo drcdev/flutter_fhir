@@ -208,12 +208,10 @@ InsurancePlan(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 331)
 class InsurancePlan_Contact {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -222,7 +220,6 @@ class InsurancePlan_Contact {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -237,24 +234,19 @@ class InsurancePlan_Contact {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Indicates a purpose for which the contact can be reached.
-  @HiveField(3)
   CodeableConcept purpose;
 
   //  A name associated with the contact.
-  @HiveField(4)
   HumanName name;
 
   //  A contact detail (e.g. a telephone number or an email address) by
   // which the party may be contacted.
-  @HiveField(5)
   List<ContactPoint> telecom;
 
   //  Visiting or postal addresses for the contact.
-  @HiveField(6)
   Address address;
 
 InsurancePlan_Contact(
@@ -272,12 +264,10 @@ InsurancePlan_Contact(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 332)
 class InsurancePlan_Coverage {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -286,7 +276,6 @@ class InsurancePlan_Coverage {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -301,20 +290,16 @@ class InsurancePlan_Coverage {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Type of coverage  (Medical; Dental; Mental Health; Substance Abuse;
   // Vision; Drug; Short Term; Long Term Care; Hospice; Home Health).
-  @HiveField(3)
   CodeableConcept type;
 
   //  Reference to the network that providing the type of coverage.
-  @HiveField(4)
   List<Reference> network;
 
   //  Specific benefits under this type of coverage.
-  @HiveField(5)
   List<InsurancePlan_Benefit> benefit;
 
 InsurancePlan_Coverage(
@@ -331,12 +316,10 @@ InsurancePlan_Coverage(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 333)
 class InsurancePlan_Benefit {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -345,7 +328,6 @@ class InsurancePlan_Benefit {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -360,24 +342,19 @@ class InsurancePlan_Benefit {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Type of benefit (primary care; speciality care; inpatient;
   // outpatient).
-  @HiveField(3)
   CodeableConcept type;
 
   //  The referral requirements to have access/coverage for this benefit.
-  @HiveField(4)
   String requirement;
 
   //  Extensions for requirement
-  @HiveField(5)
   Element elementRequirement;
 
   //  The specific limits on the benefit.
-  @HiveField(6)
   List<InsurancePlan_Limit> limit;
 
 InsurancePlan_Benefit(
@@ -395,12 +372,10 @@ InsurancePlan_Benefit(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 334)
 class InsurancePlan_Limit {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -409,7 +384,6 @@ class InsurancePlan_Limit {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -424,16 +398,13 @@ class InsurancePlan_Limit {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The maximum amount of a service item a plan will pay for a covered
   // benefit.  For examples. wellness visits, or eyeglasses.
-  @HiveField(3)
   Quantity value;
 
   //  The specific limit on the benefit.
-  @HiveField(4)
   CodeableConcept code;
 
 InsurancePlan_Limit(
@@ -449,12 +420,10 @@ InsurancePlan_Limit(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 335)
 class InsurancePlan_Plan {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -463,7 +432,6 @@ class InsurancePlan_Plan {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -478,34 +446,27 @@ class InsurancePlan_Plan {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Business identifiers assigned to this health insurance plan which
   // remain constant as the resource is updated and propagates from server
   // to server.
-  @HiveField(3)
   List<Identifier> identifier;
 
   //  Type of plan. For example, "Platinum" or "High Deductable".
-  @HiveField(4)
   CodeableConcept type;
 
   //  The geographic region in which a health insurance plan's benefits
   // apply.
-  @HiveField(5)
   List<Reference> coverageArea;
 
   //  Reference to the network that providing the type of coverage.
-  @HiveField(6)
   List<Reference> network;
 
   //  Overall costs associated with the plan.
-  @HiveField(7)
   List<InsurancePlan_GeneralCost> generalCost;
 
   //  Costs associated with the coverage provided by the product.
-  @HiveField(8)
   List<InsurancePlan_SpecificCost> specificCost;
 
 InsurancePlan_Plan(
@@ -525,12 +486,10 @@ InsurancePlan_Plan(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 336)
 class InsurancePlan_GeneralCost {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -539,7 +498,6 @@ class InsurancePlan_GeneralCost {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -554,32 +512,25 @@ class InsurancePlan_GeneralCost {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Type of cost.
-  @HiveField(3)
   CodeableConcept type;
 
   //  Number of participants enrolled in the plan.
-  @HiveField(4)
   int groupSize;
 
   //  Extensions for groupSize
-  @HiveField(5)
   Element elementGroupSize;
 
   //  Value of the cost.
-  @HiveField(6)
   Money cost;
 
   //  Additional information about the general costs associated with this
   // plan.
-  @HiveField(7)
   String comment;
 
   //  Extensions for comment
-  @HiveField(8)
   Element elementComment;
 
 InsurancePlan_GeneralCost(
@@ -599,12 +550,10 @@ InsurancePlan_GeneralCost(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 337)
 class InsurancePlan_SpecificCost {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -613,7 +562,6 @@ class InsurancePlan_SpecificCost {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -628,16 +576,13 @@ class InsurancePlan_SpecificCost {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  General category of benefit (Medical; Dental; Vision; Drug; Mental
   // Health; Substance Abuse; Hospice, Home Health).
-  @HiveField(3)
   CodeableConcept category;
 
   //  List of the specific benefits under this category of benefit.
-  @HiveField(4)
   List<InsurancePlan_Benefit1> benefit;
 
 InsurancePlan_SpecificCost(
@@ -653,12 +598,10 @@ InsurancePlan_SpecificCost(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 338)
 class InsurancePlan_Benefit1 {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -667,7 +610,6 @@ class InsurancePlan_Benefit1 {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -682,16 +624,13 @@ class InsurancePlan_Benefit1 {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Type of specific benefit (preventative; primary care office visit;
   // speciality office visit; hospitalization; emergency room; urgent care).
-  @HiveField(3)
   CodeableConcept type;
 
   //  List of the costs associated with a specific benefit.
-  @HiveField(4)
   List<InsurancePlan_Cost> cost;
 
 InsurancePlan_Benefit1(
@@ -707,12 +646,10 @@ InsurancePlan_Benefit1(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 339)
 class InsurancePlan_Cost {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -721,7 +658,6 @@ class InsurancePlan_Cost {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -736,27 +672,22 @@ class InsurancePlan_Cost {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Type of cost (copay; individual cap; family cap; coinsurance;
   // deductible).
-  @HiveField(3)
   CodeableConcept type;
 
   //  Whether the cost applies to in-network or out-of-network providers
   // (in-network; out-of-network; other).
-  @HiveField(4)
   CodeableConcept applicability;
 
   //  Additional information about the cost, such as information about
   // funding sources (e.g. HSA, HRA, FSA, RRA).
-  @HiveField(5)
   List<CodeableConcept> qualifiers;
 
   //  The actual cost value. (some of the costs may be represented as
   // percentages rather than currency, e.g. 10% coinsurance).
-  @HiveField(6)
   Quantity value;
 
 InsurancePlan_Cost(
@@ -880,379 +811,6 @@ class InsurancePlanAdapter extends TypeAdapter<InsurancePlan> {
       ..write(obj.coverage)
       ..writeByte(27)
       ..write(obj.plan);
-  }
-}
-
-class InsurancePlan_ContactAdapter extends TypeAdapter<InsurancePlan_Contact> {
-  @override
-  final typeId = 331;
-
-  @override
-  InsurancePlan_Contact read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return InsurancePlan_Contact(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      purpose: fields[3] as CodeableConcept,
-      name: fields[4] as HumanName,
-      telecom: (fields[5] as List)?.cast<ContactPoint>(),
-      address: fields[6] as Address,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, InsurancePlan_Contact obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.purpose)
-      ..writeByte(4)
-      ..write(obj.name)
-      ..writeByte(5)
-      ..write(obj.telecom)
-      ..writeByte(6)
-      ..write(obj.address);
-  }
-}
-
-class InsurancePlan_CoverageAdapter
-    extends TypeAdapter<InsurancePlan_Coverage> {
-  @override
-  final typeId = 332;
-
-  @override
-  InsurancePlan_Coverage read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return InsurancePlan_Coverage(
-      fields[3] as CodeableConcept,
-      (fields[5] as List)?.cast<InsurancePlan_Benefit>(),
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      network: (fields[4] as List)?.cast<Reference>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, InsurancePlan_Coverage obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.network)
-      ..writeByte(5)
-      ..write(obj.benefit);
-  }
-}
-
-class InsurancePlan_BenefitAdapter extends TypeAdapter<InsurancePlan_Benefit> {
-  @override
-  final typeId = 333;
-
-  @override
-  InsurancePlan_Benefit read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return InsurancePlan_Benefit(
-      fields[3] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      requirement: fields[4] as String,
-      elementRequirement: fields[5] as Element,
-      limit: (fields[6] as List)?.cast<InsurancePlan_Limit>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, InsurancePlan_Benefit obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.requirement)
-      ..writeByte(5)
-      ..write(obj.elementRequirement)
-      ..writeByte(6)
-      ..write(obj.limit);
-  }
-}
-
-class InsurancePlan_LimitAdapter extends TypeAdapter<InsurancePlan_Limit> {
-  @override
-  final typeId = 334;
-
-  @override
-  InsurancePlan_Limit read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return InsurancePlan_Limit(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      value: fields[3] as Quantity,
-      code: fields[4] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, InsurancePlan_Limit obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.value)
-      ..writeByte(4)
-      ..write(obj.code);
-  }
-}
-
-class InsurancePlan_PlanAdapter extends TypeAdapter<InsurancePlan_Plan> {
-  @override
-  final typeId = 335;
-
-  @override
-  InsurancePlan_Plan read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return InsurancePlan_Plan(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      identifier: (fields[3] as List)?.cast<Identifier>(),
-      type: fields[4] as CodeableConcept,
-      coverageArea: (fields[5] as List)?.cast<Reference>(),
-      network: (fields[6] as List)?.cast<Reference>(),
-      generalCost: (fields[7] as List)?.cast<InsurancePlan_GeneralCost>(),
-      specificCost: (fields[8] as List)?.cast<InsurancePlan_SpecificCost>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, InsurancePlan_Plan obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.identifier)
-      ..writeByte(4)
-      ..write(obj.type)
-      ..writeByte(5)
-      ..write(obj.coverageArea)
-      ..writeByte(6)
-      ..write(obj.network)
-      ..writeByte(7)
-      ..write(obj.generalCost)
-      ..writeByte(8)
-      ..write(obj.specificCost);
-  }
-}
-
-class InsurancePlan_GeneralCostAdapter
-    extends TypeAdapter<InsurancePlan_GeneralCost> {
-  @override
-  final typeId = 336;
-
-  @override
-  InsurancePlan_GeneralCost read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return InsurancePlan_GeneralCost(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as CodeableConcept,
-      groupSize: fields[4] as int,
-      elementGroupSize: fields[5] as Element,
-      cost: fields[6] as Money,
-      comment: fields[7] as String,
-      elementComment: fields[8] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, InsurancePlan_GeneralCost obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.groupSize)
-      ..writeByte(5)
-      ..write(obj.elementGroupSize)
-      ..writeByte(6)
-      ..write(obj.cost)
-      ..writeByte(7)
-      ..write(obj.comment)
-      ..writeByte(8)
-      ..write(obj.elementComment);
-  }
-}
-
-class InsurancePlan_SpecificCostAdapter
-    extends TypeAdapter<InsurancePlan_SpecificCost> {
-  @override
-  final typeId = 337;
-
-  @override
-  InsurancePlan_SpecificCost read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return InsurancePlan_SpecificCost(
-      fields[3] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      benefit: (fields[4] as List)?.cast<InsurancePlan_Benefit1>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, InsurancePlan_SpecificCost obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.category)
-      ..writeByte(4)
-      ..write(obj.benefit);
-  }
-}
-
-class InsurancePlan_Benefit1Adapter
-    extends TypeAdapter<InsurancePlan_Benefit1> {
-  @override
-  final typeId = 338;
-
-  @override
-  InsurancePlan_Benefit1 read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return InsurancePlan_Benefit1(
-      fields[3] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      cost: (fields[4] as List)?.cast<InsurancePlan_Cost>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, InsurancePlan_Benefit1 obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.cost);
-  }
-}
-
-class InsurancePlan_CostAdapter extends TypeAdapter<InsurancePlan_Cost> {
-  @override
-  final typeId = 339;
-
-  @override
-  InsurancePlan_Cost read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return InsurancePlan_Cost(
-      fields[3] as CodeableConcept,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      applicability: fields[4] as CodeableConcept,
-      qualifiers: (fields[5] as List)?.cast<CodeableConcept>(),
-      value: fields[6] as Quantity,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, InsurancePlan_Cost obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.applicability)
-      ..writeByte(5)
-      ..write(obj.qualifiers)
-      ..writeByte(6)
-      ..write(obj.value);
   }
 }
 

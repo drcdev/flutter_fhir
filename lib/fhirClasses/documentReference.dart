@@ -229,12 +229,10 @@ DocumentReference(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 231)
 class DocumentReference_RelatesTo {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -243,7 +241,6 @@ class DocumentReference_RelatesTo {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -258,19 +255,15 @@ class DocumentReference_RelatesTo {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The type of relationship that this document has with anther document.
-  @HiveField(3)
   String code; // <code> enum: replaces/transforms/signs/appends;
 
   //  Extensions for code
-  @HiveField(4)
   Element elementCode;
 
   //  The target document of this relationship.
-  @HiveField(5)
   Reference target;
 
 DocumentReference_RelatesTo(
@@ -287,12 +280,10 @@ DocumentReference_RelatesTo(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 232)
 class DocumentReference_Content {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -301,7 +292,6 @@ class DocumentReference_Content {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -316,18 +306,15 @@ class DocumentReference_Content {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The document or URL of the document along with critical metadata to
   // prove content has integrity.
-  @HiveField(3)
   Attachment attachment;
 
   //  An identifier of the document encoding, structure, and template that
   // the document conforms to beyond the base format indicated in the
   // mimeType.
-  @HiveField(4)
   Coding format;
 
 DocumentReference_Content(
@@ -343,12 +330,10 @@ DocumentReference_Content(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 233)
 class DocumentReference_Context {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -357,7 +342,6 @@ class DocumentReference_Context {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -372,12 +356,10 @@ class DocumentReference_Context {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Describes the clinical encounter or type of care that the document
   // content is associated with.
-  @HiveField(3)
   List<Reference> encounter;
 
   //  This list of codes represents the main clinical acts, such as a
@@ -385,31 +367,25 @@ class DocumentReference_Context {
   // event is inherent in the type Code, such as a "History and Physical
   // Report" in which the procedure being documented is necessarily a
   // "History and Physical" act.
-  @HiveField(4)
   List<CodeableConcept> event;
 
   //  The time period over which the service that is described by the
   // document was provided.
-  @HiveField(5)
   Period period;
 
   //  The kind of facility where the patient was seen.
-  @HiveField(6)
   CodeableConcept facilityType;
 
   //  This property may convey specifics about the practice setting where
   // the content was created, often reflecting the clinical specialty.
-  @HiveField(7)
   CodeableConcept practiceSetting;
 
   //  The Patient Information as known when the document was published. May
   // be a reference to a version specific, or contained.
-  @HiveField(8)
   Reference sourcePatientInfo;
 
   //  Related identifiers or resources associated with the
   // DocumentReference.
-  @HiveField(9)
   List<Reference> related;
 
 DocumentReference_Context(
@@ -545,135 +521,6 @@ class DocumentReferenceAdapter extends TypeAdapter<DocumentReference> {
       ..write(obj.content)
       ..writeByte(30)
       ..write(obj.context);
-  }
-}
-
-class DocumentReference_RelatesToAdapter
-    extends TypeAdapter<DocumentReference_RelatesTo> {
-  @override
-  final typeId = 231;
-
-  @override
-  DocumentReference_RelatesTo read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return DocumentReference_RelatesTo(
-      fields[5] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      code: fields[3] as String,
-      elementCode: fields[4] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, DocumentReference_RelatesTo obj) {
-    writer
-      ..writeByte(6)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.code)
-      ..writeByte(4)
-      ..write(obj.elementCode)
-      ..writeByte(5)
-      ..write(obj.target);
-  }
-}
-
-class DocumentReference_ContentAdapter
-    extends TypeAdapter<DocumentReference_Content> {
-  @override
-  final typeId = 232;
-
-  @override
-  DocumentReference_Content read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return DocumentReference_Content(
-      fields[3] as Attachment,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      format: fields[4] as Coding,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, DocumentReference_Content obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.attachment)
-      ..writeByte(4)
-      ..write(obj.format);
-  }
-}
-
-class DocumentReference_ContextAdapter
-    extends TypeAdapter<DocumentReference_Context> {
-  @override
-  final typeId = 233;
-
-  @override
-  DocumentReference_Context read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return DocumentReference_Context(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      encounter: (fields[3] as List)?.cast<Reference>(),
-      event: (fields[4] as List)?.cast<CodeableConcept>(),
-      period: fields[5] as Period,
-      facilityType: fields[6] as CodeableConcept,
-      practiceSetting: fields[7] as CodeableConcept,
-      sourcePatientInfo: fields[8] as Reference,
-      related: (fields[9] as List)?.cast<Reference>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, DocumentReference_Context obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.encounter)
-      ..writeByte(4)
-      ..write(obj.event)
-      ..writeByte(5)
-      ..write(obj.period)
-      ..writeByte(6)
-      ..write(obj.facilityType)
-      ..writeByte(7)
-      ..write(obj.practiceSetting)
-      ..writeByte(8)
-      ..write(obj.sourcePatientInfo)
-      ..writeByte(9)
-      ..write(obj.related);
   }
 }
 

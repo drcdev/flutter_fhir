@@ -221,12 +221,10 @@ MolecularSequence(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 435)
 class MolecularSequence_ReferenceSeq {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -235,7 +233,6 @@ class MolecularSequence_ReferenceSeq {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -250,85 +247,69 @@ class MolecularSequence_ReferenceSeq {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Structural unit composed of a nucleic acid molecule which controls its
   // own replication through the interaction of specific proteins at one or
   // more origins of replication
   // ([SO:0000340](http://www.sequenceontology.org/browser/current_svn/term/SO:0000340)).
-  @HiveField(3)
   CodeableConcept chromosome;
 
   //  The Genome Build used for reference, following GRCh build versions
   // e.g. 'GRCh 37'.  Version number must be included if a versioned release
   // of a primary build was used.
-  @HiveField(4)
   String genomeBuild;
 
   //  Extensions for genomeBuild
-  @HiveField(5)
   Element elementGenomeBuild;
 
   //  A relative reference to a DNA strand based on gene orientation. The
   // strand that contains the open reading frame of the gene is the "sense"
   // strand, and the opposite complementary strand is the "antisense"
   // strand.
-  @HiveField(6)
   String orientation; // <code> enum: sense/antisense;
 
   //  Extensions for orientation
-  @HiveField(7)
   Element elementOrientation;
 
   //  Reference identifier of reference sequence submitted to NCBI. It must
   // match the type in the MolecularSequence.type field. For example, the
   // prefix, “NG_” identifies reference sequence for genes, “NM_” for
   // messenger RNA transcripts, and “NP_” for amino acid sequences.
-  @HiveField(8)
   CodeableConcept referenceSeqId;
 
   //  A pointer to another MolecularSequence entity as reference sequence.
-  @HiveField(9)
   Reference referenceSeqPointer;
 
   //  A string like "ACGT".
-  @HiveField(10)
   String referenceSeqString;
 
   //  Extensions for referenceSeqString
-  @HiveField(11)
   Element elementReferenceSeqString;
 
   //  An absolute reference to a strand. The Watson strand is the strand
   // whose 5'-end is on the short arm of the chromosome, and the Crick
   // strand as the one whose 5'-end is on the long arm.
-  @HiveField(12)
   String strand; // <code> enum: watson/crick;
 
   //  Extensions for strand
-  @HiveField(13)
   Element elementStrand;
 
   //  Start position of the window on the reference sequence. If the
   // coordinate system is either 0-based or 1-based, then start position is
   // inclusive.
-  @HiveField(14)
   int windowStart;
 
   //  Extensions for windowStart
-  @HiveField(15)
   Element elementWindowStart;
 
   //  End position of the window on the reference sequence. If the
   // coordinate system is 0-based then end is exclusive and does not include
   // the last position. If the coordinate system is 1-base, then end is
   // inclusive and includes the last position.
-  @HiveField(16)
   int windowEnd;
 
   //  Extensions for windowEnd
-  @HiveField(17)
   Element elementWindowEnd;
 
 MolecularSequence_ReferenceSeq(
@@ -357,12 +338,10 @@ MolecularSequence_ReferenceSeq(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 436)
 class MolecularSequence_Variant {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -371,7 +350,6 @@ class MolecularSequence_Variant {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -386,28 +364,23 @@ class MolecularSequence_Variant {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Start position of the variant on the  reference sequence. If the
   // coordinate system is either 0-based or 1-based, then start position is
   // inclusive.
-  @HiveField(3)
   int start;
 
   //  Extensions for start
-  @HiveField(4)
   Element elementStart;
 
   //  End position of the variant on the reference sequence. If the
   // coordinate system is 0-based then end is exclusive and does not include
   // the last position. If the coordinate system is 1-base, then end is
   // inclusive and includes the last position.
-  @HiveField(5)
   int end;
 
   //  Extensions for end
-  @HiveField(6)
   Element elementEnd;
 
   //  An allele is one of a set of coexisting sequence variants of a gene
@@ -417,11 +390,9 @@ class MolecularSequence_Variant {
   // sequence. When the sequence  type is DNA, it should be the sequence on
   // the positive (+) strand. This will lay in the range between
   // variant.start and variant.end.
-  @HiveField(7)
   String observedAllele;
 
   //  Extensions for observedAllele
-  @HiveField(8)
   Element elementObservedAllele;
 
   //  An allele is one of a set of coexisting sequence variants of a gene
@@ -431,25 +402,20 @@ class MolecularSequence_Variant {
   // sequence. When the sequence  type is DNA, it should be the sequence on
   // the positive (+) strand. This will lay in the range between
   // variant.start and variant.end.
-  @HiveField(9)
   String referenceAllele;
 
   //  Extensions for referenceAllele
-  @HiveField(10)
   Element elementReferenceAllele;
 
   //  Extended CIGAR string for aligning the sequence with reference bases.
   // See detailed documentation
   // [here](http://support.illumina.com/help/SequencingAnalysisWorkflow/Content/Vault/Informatics/Sequencing_Analysis/CASAVA/swSEQ_mCA_ExtendedCIGARFormat.htm).
-  @HiveField(11)
   String cigar;
 
   //  Extensions for cigar
-  @HiveField(12)
   Element elementCigar;
 
   //  A pointer to an Observation containing variant information.
-  @HiveField(13)
   Reference variantPointer;
 
 MolecularSequence_Variant(
@@ -474,12 +440,10 @@ MolecularSequence_Variant(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 437)
 class MolecularSequence_Quality {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -488,7 +452,6 @@ class MolecularSequence_Quality {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -503,70 +466,56 @@ class MolecularSequence_Quality {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  INDEL / SNP / Undefined variant.
-  @HiveField(3)
   String type; // <code> enum: indel/snp/unknown;
 
   //  Extensions for type
-  @HiveField(4)
   Element elementType;
 
   //  Gold standard sequence used for comparing against.
-  @HiveField(5)
   CodeableConcept standardSequence;
 
   //  Start position of the sequence. If the coordinate system is either
   // 0-based or 1-based, then start position is inclusive.
-  @HiveField(6)
   int start;
 
   //  Extensions for start
-  @HiveField(7)
   Element elementStart;
 
   //  End position of the sequence. If the coordinate system is 0-based then
   // end is exclusive and does not include the last position. If the
   // coordinate system is 1-base, then end is inclusive and includes the
   // last position.
-  @HiveField(8)
   int end;
 
   //  Extensions for end
-  @HiveField(9)
   Element elementEnd;
 
   //  The score of an experimentally derived feature such as a p-value
   // ([SO:0001685](http://www.sequenceontology.org/browser/current_svn/term/SO:0001685)).
-  @HiveField(10)
   Quantity score;
 
   //  Which method is used to get sequence quality.
-  @HiveField(11)
   CodeableConcept method;
 
   //  True positives, from the perspective of the truth data, i.e. the
   // number of sites in the Truth Call Set for which there are paths through
   // the Query Call Set that are consistent with all of the alleles at this
   // site, and for which there is an accurate genotype call for the event.
-  @HiveField(12)
   double truthTP;
 
   //  Extensions for truthTP
-  @HiveField(13)
   Element elementTruthTP;
 
   //  True positives, from the perspective of the query data, i.e. the
   // number of sites in the Query Call Set for which there are paths through
   // the Truth Call Set that are consistent with all of the alleles at this
   // site, and for which there is an accurate genotype call for the event.
-  @HiveField(14)
   double queryTP;
 
   //  Extensions for queryTP
-  @HiveField(15)
   Element elementQueryTP;
 
   //  False negatives, i.e. the number of sites in the Truth Call Set for
@@ -574,62 +523,49 @@ class MolecularSequence_Quality {
   // with all of the alleles at this site, or sites for which there is an
   // inaccurate genotype call for the event. Sites with correct variant but
   // incorrect genotype are counted here.
-  @HiveField(16)
   double truthFN;
 
   //  Extensions for truthFN
-  @HiveField(17)
   Element elementTruthFN;
 
   //  False positives, i.e. the number of sites in the Query Call Set for
   // which there is no path through the Truth Call Set that is consistent
   // with this site. Sites with correct variant but incorrect genotype are
   // counted here.
-  @HiveField(18)
   double queryFP;
 
   //  Extensions for queryFP
-  @HiveField(19)
   Element elementQueryFP;
 
   //  The number of false positives where the non-REF alleles in the Truth
   // and Query Call Sets match (i.e. cases where the truth is 1/1 and the
   // query is 0/1 or similar).
-  @HiveField(20)
   double gtFP;
 
   //  Extensions for gtFP
-  @HiveField(21)
   Element elementGtFP;
 
   //  QUERY.TP / (QUERY.TP + QUERY.FP).
-  @HiveField(22)
   double precision;
 
   //  Extensions for precision
-  @HiveField(23)
   Element elementPrecision;
 
   //  TRUTH.TP / (TRUTH.TP + TRUTH.FN).
-  @HiveField(24)
   double recall;
 
   //  Extensions for recall
-  @HiveField(25)
   Element elementRecall;
 
   //  Harmonic mean of Recall and Precision, computed as: 2 * precision *
   // recall / (precision + recall).
-  @HiveField(26)
   double fScore;
 
   //  Extensions for fScore
-  @HiveField(27)
   Element elementFScore;
 
   //  Receiver Operator Characteristic (ROC) Curve  to give
   // sensitivity/specificity tradeoff.
-  @HiveField(28)
   MolecularSequence_Roc roc;
 
 MolecularSequence_Quality(
@@ -669,12 +605,10 @@ MolecularSequence_Quality(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 438)
 class MolecularSequence_Roc {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -683,7 +617,6 @@ class MolecularSequence_Roc {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -698,70 +631,55 @@ class MolecularSequence_Roc {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Invidual data point representing the GQ (genotype quality) score
   // threshold.
-  @HiveField(3)
   List<int> score;
 
   //  Extensions for score
-  @HiveField(4)
   List<Element> elementScore;
 
   //  The number of true positives if the GQ score threshold was set to
   // "score" field value.
-  @HiveField(5)
   List<int> numTP;
 
   //  Extensions for numTP
-  @HiveField(6)
   List<Element> elementNumTP;
 
   //  The number of false positives if the GQ score threshold was set to
   // "score" field value.
-  @HiveField(7)
   List<int> numFP;
 
   //  Extensions for numFP
-  @HiveField(8)
   List<Element> elementNumFP;
 
   //  The number of false negatives if the GQ score threshold was set to
   // "score" field value.
-  @HiveField(9)
   List<int> numFN;
 
   //  Extensions for numFN
-  @HiveField(10)
   List<Element> elementNumFN;
 
   //  Calculated precision if the GQ score threshold was set to "score"
   // field value.
-  @HiveField(11)
   List<double> precision;
 
   //  Extensions for precision
-  @HiveField(12)
   List<Element> elementPrecision;
 
   //  Calculated sensitivity if the GQ score threshold was set to "score"
   // field value.
-  @HiveField(13)
   List<double> sensitivity;
 
   //  Extensions for sensitivity
-  @HiveField(14)
   List<Element> elementSensitivity;
 
   //  Calculated fScore if the GQ score threshold was set to "score" field
   // value.
-  @HiveField(15)
   List<double> fMeasure;
 
   //  Extensions for fMeasure
-  @HiveField(16)
   List<Element> elementFMeasure;
 
 MolecularSequence_Roc(
@@ -789,12 +707,10 @@ MolecularSequence_Roc(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 439)
 class MolecularSequence_Repository {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -803,7 +719,6 @@ class MolecularSequence_Repository {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -818,62 +733,49 @@ class MolecularSequence_Repository {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Click and see / RESTful API / Need login to see / RESTful API with
   // authentication / Other ways to see resource.
-  @HiveField(3)
   String type; // <code> enum: directlink/openapi/login/oauth/other;
 
   //  Extensions for type
-  @HiveField(4)
   Element elementType;
 
   //  URI of an external repository which contains further details about the
   // genetics data.
-  @HiveField(5)
   String url;
 
   //  Extensions for url
-  @HiveField(6)
   Element elementUrl;
 
   //  URI of an external repository which contains further details about the
   // genetics data.
-  @HiveField(7)
   String name;
 
   //  Extensions for name
-  @HiveField(8)
   Element elementName;
 
   //  Id of the variant in this external repository. The server will
   // understand how to use this id to call for more info about datasets in
   // external repository.
-  @HiveField(9)
   String datasetId;
 
   //  Extensions for datasetId
-  @HiveField(10)
   Element elementDatasetId;
 
   //  Id of the variantset in this external repository. The server will
   // understand how to use this id to call for more info about variantsets
   // in external repository.
-  @HiveField(11)
   String variantsetId;
 
   //  Extensions for variantsetId
-  @HiveField(12)
   Element elementVariantsetId;
 
   //  Id of the read in this external repository.
-  @HiveField(13)
   String readsetId;
 
   //  Extensions for readsetId
-  @HiveField(14)
   Element elementReadsetId;
 
 MolecularSequence_Repository(
@@ -899,12 +801,10 @@ MolecularSequence_Repository(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 440)
 class MolecularSequence_StructureVariant {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -913,7 +813,6 @@ class MolecularSequence_StructureVariant {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -928,36 +827,28 @@ class MolecularSequence_StructureVariant {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Information about chromosome structure variation DNA change type.
-  @HiveField(3)
   CodeableConcept variantType;
 
   //  Used to indicate if the outer and inner start-end values have the same
   // meaning.
-  @HiveField(4)
   bool exact;
 
   //  Extensions for exact
-  @HiveField(5)
   Element elementExact;
 
   //  Length of the variant chromosome.
-  @HiveField(6)
   int length;
 
   //  Extensions for length
-  @HiveField(7)
   Element elementLength;
 
   //  Structural variant outer.
-  @HiveField(8)
   MolecularSequence_Outer outer;
 
   //  Structural variant inner.
-  @HiveField(9)
   MolecularSequence_Inner inner;
 
 MolecularSequence_StructureVariant(
@@ -978,12 +869,10 @@ MolecularSequence_StructureVariant(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 441)
 class MolecularSequence_Outer {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -992,7 +881,6 @@ class MolecularSequence_Outer {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -1007,27 +895,22 @@ class MolecularSequence_Outer {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Structural variant outer start. If the coordinate system is either
   // 0-based or 1-based, then start position is inclusive.
-  @HiveField(3)
   int start;
 
   //  Extensions for start
-  @HiveField(4)
   Element elementStart;
 
   //  Structural variant outer end. If the coordinate system is 0-based then
   // end is exclusive and does not include the last position. If the
   // coordinate system is 1-base, then end is inclusive and includes the
   // last position.
-  @HiveField(5)
   int end;
 
   //  Extensions for end
-  @HiveField(6)
   Element elementEnd;
 
 MolecularSequence_Outer(
@@ -1045,12 +928,10 @@ MolecularSequence_Outer(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 442)
 class MolecularSequence_Inner {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -1059,7 +940,6 @@ class MolecularSequence_Inner {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -1074,27 +954,22 @@ class MolecularSequence_Inner {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Structural variant inner start. If the coordinate system is either
   // 0-based or 1-based, then start position is inclusive.
-  @HiveField(3)
   int start;
 
   //  Extensions for start
-  @HiveField(4)
   Element elementStart;
 
   //  Structural variant inner end. If the coordinate system is 0-based then
   // end is exclusive and does not include the last position. If the
   // coordinate system is 1-base, then end is inclusive and includes the
   // last position.
-  @HiveField(5)
   int end;
 
   //  Extensions for end
-  @HiveField(6)
   Element elementEnd;
 
 MolecularSequence_Inner(
@@ -1228,532 +1103,6 @@ class MolecularSequenceAdapter extends TypeAdapter<MolecularSequence> {
       ..write(obj.pointer)
       ..writeByte(30)
       ..write(obj.structureVariant);
-  }
-}
-
-class MolecularSequence_ReferenceSeqAdapter
-    extends TypeAdapter<MolecularSequence_ReferenceSeq> {
-  @override
-  final typeId = 435;
-
-  @override
-  MolecularSequence_ReferenceSeq read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MolecularSequence_ReferenceSeq(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      chromosome: fields[3] as CodeableConcept,
-      genomeBuild: fields[4] as String,
-      elementGenomeBuild: fields[5] as Element,
-      orientation: fields[6] as String,
-      elementOrientation: fields[7] as Element,
-      referenceSeqId: fields[8] as CodeableConcept,
-      referenceSeqPointer: fields[9] as Reference,
-      referenceSeqString: fields[10] as String,
-      elementReferenceSeqString: fields[11] as Element,
-      strand: fields[12] as String,
-      elementStrand: fields[13] as Element,
-      windowStart: fields[14] as int,
-      elementWindowStart: fields[15] as Element,
-      windowEnd: fields[16] as int,
-      elementWindowEnd: fields[17] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MolecularSequence_ReferenceSeq obj) {
-    writer
-      ..writeByte(18)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.chromosome)
-      ..writeByte(4)
-      ..write(obj.genomeBuild)
-      ..writeByte(5)
-      ..write(obj.elementGenomeBuild)
-      ..writeByte(6)
-      ..write(obj.orientation)
-      ..writeByte(7)
-      ..write(obj.elementOrientation)
-      ..writeByte(8)
-      ..write(obj.referenceSeqId)
-      ..writeByte(9)
-      ..write(obj.referenceSeqPointer)
-      ..writeByte(10)
-      ..write(obj.referenceSeqString)
-      ..writeByte(11)
-      ..write(obj.elementReferenceSeqString)
-      ..writeByte(12)
-      ..write(obj.strand)
-      ..writeByte(13)
-      ..write(obj.elementStrand)
-      ..writeByte(14)
-      ..write(obj.windowStart)
-      ..writeByte(15)
-      ..write(obj.elementWindowStart)
-      ..writeByte(16)
-      ..write(obj.windowEnd)
-      ..writeByte(17)
-      ..write(obj.elementWindowEnd);
-  }
-}
-
-class MolecularSequence_VariantAdapter
-    extends TypeAdapter<MolecularSequence_Variant> {
-  @override
-  final typeId = 436;
-
-  @override
-  MolecularSequence_Variant read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MolecularSequence_Variant(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      start: fields[3] as int,
-      elementStart: fields[4] as Element,
-      end: fields[5] as int,
-      elementEnd: fields[6] as Element,
-      observedAllele: fields[7] as String,
-      elementObservedAllele: fields[8] as Element,
-      referenceAllele: fields[9] as String,
-      elementReferenceAllele: fields[10] as Element,
-      cigar: fields[11] as String,
-      elementCigar: fields[12] as Element,
-      variantPointer: fields[13] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MolecularSequence_Variant obj) {
-    writer
-      ..writeByte(14)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.start)
-      ..writeByte(4)
-      ..write(obj.elementStart)
-      ..writeByte(5)
-      ..write(obj.end)
-      ..writeByte(6)
-      ..write(obj.elementEnd)
-      ..writeByte(7)
-      ..write(obj.observedAllele)
-      ..writeByte(8)
-      ..write(obj.elementObservedAllele)
-      ..writeByte(9)
-      ..write(obj.referenceAllele)
-      ..writeByte(10)
-      ..write(obj.elementReferenceAllele)
-      ..writeByte(11)
-      ..write(obj.cigar)
-      ..writeByte(12)
-      ..write(obj.elementCigar)
-      ..writeByte(13)
-      ..write(obj.variantPointer);
-  }
-}
-
-class MolecularSequence_QualityAdapter
-    extends TypeAdapter<MolecularSequence_Quality> {
-  @override
-  final typeId = 437;
-
-  @override
-  MolecularSequence_Quality read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MolecularSequence_Quality(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as String,
-      elementType: fields[4] as Element,
-      standardSequence: fields[5] as CodeableConcept,
-      start: fields[6] as int,
-      elementStart: fields[7] as Element,
-      end: fields[8] as int,
-      elementEnd: fields[9] as Element,
-      score: fields[10] as Quantity,
-      method: fields[11] as CodeableConcept,
-      truthTP: fields[12] as double,
-      elementTruthTP: fields[13] as Element,
-      queryTP: fields[14] as double,
-      elementQueryTP: fields[15] as Element,
-      truthFN: fields[16] as double,
-      elementTruthFN: fields[17] as Element,
-      queryFP: fields[18] as double,
-      elementQueryFP: fields[19] as Element,
-      gtFP: fields[20] as double,
-      elementGtFP: fields[21] as Element,
-      precision: fields[22] as double,
-      elementPrecision: fields[23] as Element,
-      recall: fields[24] as double,
-      elementRecall: fields[25] as Element,
-      fScore: fields[26] as double,
-      elementFScore: fields[27] as Element,
-      roc: fields[28] as MolecularSequence_Roc,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MolecularSequence_Quality obj) {
-    writer
-      ..writeByte(29)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.elementType)
-      ..writeByte(5)
-      ..write(obj.standardSequence)
-      ..writeByte(6)
-      ..write(obj.start)
-      ..writeByte(7)
-      ..write(obj.elementStart)
-      ..writeByte(8)
-      ..write(obj.end)
-      ..writeByte(9)
-      ..write(obj.elementEnd)
-      ..writeByte(10)
-      ..write(obj.score)
-      ..writeByte(11)
-      ..write(obj.method)
-      ..writeByte(12)
-      ..write(obj.truthTP)
-      ..writeByte(13)
-      ..write(obj.elementTruthTP)
-      ..writeByte(14)
-      ..write(obj.queryTP)
-      ..writeByte(15)
-      ..write(obj.elementQueryTP)
-      ..writeByte(16)
-      ..write(obj.truthFN)
-      ..writeByte(17)
-      ..write(obj.elementTruthFN)
-      ..writeByte(18)
-      ..write(obj.queryFP)
-      ..writeByte(19)
-      ..write(obj.elementQueryFP)
-      ..writeByte(20)
-      ..write(obj.gtFP)
-      ..writeByte(21)
-      ..write(obj.elementGtFP)
-      ..writeByte(22)
-      ..write(obj.precision)
-      ..writeByte(23)
-      ..write(obj.elementPrecision)
-      ..writeByte(24)
-      ..write(obj.recall)
-      ..writeByte(25)
-      ..write(obj.elementRecall)
-      ..writeByte(26)
-      ..write(obj.fScore)
-      ..writeByte(27)
-      ..write(obj.elementFScore)
-      ..writeByte(28)
-      ..write(obj.roc);
-  }
-}
-
-class MolecularSequence_RocAdapter extends TypeAdapter<MolecularSequence_Roc> {
-  @override
-  final typeId = 438;
-
-  @override
-  MolecularSequence_Roc read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MolecularSequence_Roc(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      score: (fields[3] as List)?.cast<int>(),
-      elementScore: (fields[4] as List)?.cast<Element>(),
-      numTP: (fields[5] as List)?.cast<int>(),
-      elementNumTP: (fields[6] as List)?.cast<Element>(),
-      numFP: (fields[7] as List)?.cast<int>(),
-      elementNumFP: (fields[8] as List)?.cast<Element>(),
-      numFN: (fields[9] as List)?.cast<int>(),
-      elementNumFN: (fields[10] as List)?.cast<Element>(),
-      precision: (fields[11] as List)?.cast<double>(),
-      elementPrecision: (fields[12] as List)?.cast<Element>(),
-      sensitivity: (fields[13] as List)?.cast<double>(),
-      elementSensitivity: (fields[14] as List)?.cast<Element>(),
-      fMeasure: (fields[15] as List)?.cast<double>(),
-      elementFMeasure: (fields[16] as List)?.cast<Element>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MolecularSequence_Roc obj) {
-    writer
-      ..writeByte(17)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.score)
-      ..writeByte(4)
-      ..write(obj.elementScore)
-      ..writeByte(5)
-      ..write(obj.numTP)
-      ..writeByte(6)
-      ..write(obj.elementNumTP)
-      ..writeByte(7)
-      ..write(obj.numFP)
-      ..writeByte(8)
-      ..write(obj.elementNumFP)
-      ..writeByte(9)
-      ..write(obj.numFN)
-      ..writeByte(10)
-      ..write(obj.elementNumFN)
-      ..writeByte(11)
-      ..write(obj.precision)
-      ..writeByte(12)
-      ..write(obj.elementPrecision)
-      ..writeByte(13)
-      ..write(obj.sensitivity)
-      ..writeByte(14)
-      ..write(obj.elementSensitivity)
-      ..writeByte(15)
-      ..write(obj.fMeasure)
-      ..writeByte(16)
-      ..write(obj.elementFMeasure);
-  }
-}
-
-class MolecularSequence_RepositoryAdapter
-    extends TypeAdapter<MolecularSequence_Repository> {
-  @override
-  final typeId = 439;
-
-  @override
-  MolecularSequence_Repository read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MolecularSequence_Repository(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as String,
-      elementType: fields[4] as Element,
-      url: fields[5] as String,
-      elementUrl: fields[6] as Element,
-      name: fields[7] as String,
-      elementName: fields[8] as Element,
-      datasetId: fields[9] as String,
-      elementDatasetId: fields[10] as Element,
-      variantsetId: fields[11] as String,
-      elementVariantsetId: fields[12] as Element,
-      readsetId: fields[13] as String,
-      elementReadsetId: fields[14] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MolecularSequence_Repository obj) {
-    writer
-      ..writeByte(15)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.elementType)
-      ..writeByte(5)
-      ..write(obj.url)
-      ..writeByte(6)
-      ..write(obj.elementUrl)
-      ..writeByte(7)
-      ..write(obj.name)
-      ..writeByte(8)
-      ..write(obj.elementName)
-      ..writeByte(9)
-      ..write(obj.datasetId)
-      ..writeByte(10)
-      ..write(obj.elementDatasetId)
-      ..writeByte(11)
-      ..write(obj.variantsetId)
-      ..writeByte(12)
-      ..write(obj.elementVariantsetId)
-      ..writeByte(13)
-      ..write(obj.readsetId)
-      ..writeByte(14)
-      ..write(obj.elementReadsetId);
-  }
-}
-
-class MolecularSequence_StructureVariantAdapter
-    extends TypeAdapter<MolecularSequence_StructureVariant> {
-  @override
-  final typeId = 440;
-
-  @override
-  MolecularSequence_StructureVariant read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MolecularSequence_StructureVariant(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      variantType: fields[3] as CodeableConcept,
-      exact: fields[4] as bool,
-      elementExact: fields[5] as Element,
-      length: fields[6] as int,
-      elementLength: fields[7] as Element,
-      outer: fields[8] as MolecularSequence_Outer,
-      inner: fields[9] as MolecularSequence_Inner,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MolecularSequence_StructureVariant obj) {
-    writer
-      ..writeByte(10)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.variantType)
-      ..writeByte(4)
-      ..write(obj.exact)
-      ..writeByte(5)
-      ..write(obj.elementExact)
-      ..writeByte(6)
-      ..write(obj.length)
-      ..writeByte(7)
-      ..write(obj.elementLength)
-      ..writeByte(8)
-      ..write(obj.outer)
-      ..writeByte(9)
-      ..write(obj.inner);
-  }
-}
-
-class MolecularSequence_OuterAdapter
-    extends TypeAdapter<MolecularSequence_Outer> {
-  @override
-  final typeId = 441;
-
-  @override
-  MolecularSequence_Outer read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MolecularSequence_Outer(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      start: fields[3] as int,
-      elementStart: fields[4] as Element,
-      end: fields[5] as int,
-      elementEnd: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MolecularSequence_Outer obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.start)
-      ..writeByte(4)
-      ..write(obj.elementStart)
-      ..writeByte(5)
-      ..write(obj.end)
-      ..writeByte(6)
-      ..write(obj.elementEnd);
-  }
-}
-
-class MolecularSequence_InnerAdapter
-    extends TypeAdapter<MolecularSequence_Inner> {
-  @override
-  final typeId = 442;
-
-  @override
-  MolecularSequence_Inner read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MolecularSequence_Inner(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      start: fields[3] as int,
-      elementStart: fields[4] as Element,
-      end: fields[5] as int,
-      elementEnd: fields[6] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MolecularSequence_Inner obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.start)
-      ..writeByte(4)
-      ..write(obj.elementStart)
-      ..writeByte(5)
-      ..write(obj.end)
-      ..writeByte(6)
-      ..write(obj.elementEnd);
   }
 }
 

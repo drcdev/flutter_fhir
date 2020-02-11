@@ -145,12 +145,10 @@ SpecimenDefinition(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 538)
 class SpecimenDefinition_TypeTested {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -159,7 +157,6 @@ class SpecimenDefinition_TypeTested {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -174,55 +171,43 @@ class SpecimenDefinition_TypeTested {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Primary of secondary specimen.
-  @HiveField(3)
   bool isDerived;
 
   //  Extensions for isDerived
-  @HiveField(4)
   Element elementIsDerived;
 
   //  The kind of specimen conditioned for testing expected by lab.
-  @HiveField(5)
   CodeableConcept type;
 
   //  The preference for this type of conditioned specimen.
-  @HiveField(6)
   String preference; // <code> enum: preferred/alternate;
 
   //  Extensions for preference
-  @HiveField(7)
   Element elementPreference;
 
   //  The specimen's container.
-  @HiveField(8)
   SpecimenDefinition_Container container;
 
   //  Requirements for delivery and special handling of this kind of
   // conditioned specimen.
-  @HiveField(9)
   String requirement;
 
   //  Extensions for requirement
-  @HiveField(10)
   Element elementRequirement;
 
   //  The usual time that a specimen of this kind is retained after the
   // ordered tests are completed, for the purpose of additional testing.
-  @HiveField(11)
   Duration retentionTime;
 
   //  Criterion for rejection of the specimen in its container by the
   // laboratory.
-  @HiveField(12)
   List<CodeableConcept> rejectionCriterion;
 
   //  Set of instructions for preservation/transport of the specimen at a
   // defined temperature interval, prior the testing process.
-  @HiveField(13)
   List<SpecimenDefinition_Handling> handling;
 
 SpecimenDefinition_TypeTested(
@@ -247,12 +232,10 @@ SpecimenDefinition_TypeTested(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 539)
 class SpecimenDefinition_Container {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -261,7 +244,6 @@ class SpecimenDefinition_Container {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -276,57 +258,44 @@ class SpecimenDefinition_Container {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  The type of material of the container.
-  @HiveField(3)
   CodeableConcept material;
 
   //  The type of container used to contain this kind of specimen.
-  @HiveField(4)
   CodeableConcept type;
 
   //  Color of container cap.
-  @HiveField(5)
   CodeableConcept cap;
 
   //  The textual description of the kind of container.
-  @HiveField(6)
   String description;
 
   //  Extensions for description
-  @HiveField(7)
   Element elementDescription;
 
   //  The capacity (volume or other measure) of this kind of container.
-  @HiveField(8)
   Quantity capacity;
 
   //  The minimum volume to be conditioned in the container.
-  @HiveField(9)
   Quantity minimumVolumeQuantity;
 
   //  The minimum volume to be conditioned in the container.
-  @HiveField(10)
   String minimumVolumeString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for minimumVolumeString
-  @HiveField(11)
   Element elementMinimumVolumeString;
 
   //  Substance introduced in the kind of container to preserve, maintain or
   // enhance the specimen. Examples: Formalin, Citrate, EDTA.
-  @HiveField(12)
   List<SpecimenDefinition_Additive> additive;
 
   //  Special processing that should be applied to the container for this
   // kind of specimen.
-  @HiveField(13)
   String preparation;
 
   //  Extensions for preparation
-  @HiveField(14)
   Element elementPreparation;
 
 SpecimenDefinition_Container(
@@ -352,12 +321,10 @@ SpecimenDefinition_Container(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 540)
 class SpecimenDefinition_Additive {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -366,7 +333,6 @@ class SpecimenDefinition_Additive {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -381,17 +347,14 @@ class SpecimenDefinition_Additive {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Substance introduced in the kind of container to preserve, maintain or
   // enhance the specimen. Examples: Formalin, Citrate, EDTA.
-  @HiveField(3)
   CodeableConcept additiveCodeableConcept;
 
   //  Substance introduced in the kind of container to preserve, maintain or
   // enhance the specimen. Examples: Formalin, Citrate, EDTA.
-  @HiveField(4)
   Reference additiveReference;
 
 SpecimenDefinition_Additive(
@@ -407,12 +370,10 @@ SpecimenDefinition_Additive(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 541)
 class SpecimenDefinition_Handling {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -421,7 +382,6 @@ class SpecimenDefinition_Handling {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -436,31 +396,25 @@ class SpecimenDefinition_Handling {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  It qualifies the interval of temperature, which characterizes an
   // occurrence of handling. Conditions that are not related to temperature
   // may be handled in the instruction element.
-  @HiveField(3)
   CodeableConcept temperatureQualifier;
 
   //  The temperature interval for this set of handling instructions.
-  @HiveField(4)
   Range temperatureRange;
 
   //  The maximum time interval of preservation of the specimen with these
   // conditions.
-  @HiveField(5)
   Duration maxDuration;
 
   //  Additional textual instructions for the preservation or transport of
   // the specimen. For instance, 'Protect from light exposure'.
-  @HiveField(6)
   String instruction;
 
   //  Extensions for instruction
-  @HiveField(7)
   Element elementInstruction;
 
 SpecimenDefinition_Handling(
@@ -555,220 +509,6 @@ class SpecimenDefinitionAdapter extends TypeAdapter<SpecimenDefinition> {
       ..write(obj.collection)
       ..writeByte(17)
       ..write(obj.typeTested);
-  }
-}
-
-class SpecimenDefinition_TypeTestedAdapter
-    extends TypeAdapter<SpecimenDefinition_TypeTested> {
-  @override
-  final typeId = 538;
-
-  @override
-  SpecimenDefinition_TypeTested read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SpecimenDefinition_TypeTested(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      isDerived: fields[3] as bool,
-      elementIsDerived: fields[4] as Element,
-      type: fields[5] as CodeableConcept,
-      preference: fields[6] as String,
-      elementPreference: fields[7] as Element,
-      container: fields[8] as SpecimenDefinition_Container,
-      requirement: fields[9] as String,
-      elementRequirement: fields[10] as Element,
-      retentionTime: fields[11] as Duration,
-      rejectionCriterion: (fields[12] as List)?.cast<CodeableConcept>(),
-      handling: (fields[13] as List)?.cast<SpecimenDefinition_Handling>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SpecimenDefinition_TypeTested obj) {
-    writer
-      ..writeByte(14)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.isDerived)
-      ..writeByte(4)
-      ..write(obj.elementIsDerived)
-      ..writeByte(5)
-      ..write(obj.type)
-      ..writeByte(6)
-      ..write(obj.preference)
-      ..writeByte(7)
-      ..write(obj.elementPreference)
-      ..writeByte(8)
-      ..write(obj.container)
-      ..writeByte(9)
-      ..write(obj.requirement)
-      ..writeByte(10)
-      ..write(obj.elementRequirement)
-      ..writeByte(11)
-      ..write(obj.retentionTime)
-      ..writeByte(12)
-      ..write(obj.rejectionCriterion)
-      ..writeByte(13)
-      ..write(obj.handling);
-  }
-}
-
-class SpecimenDefinition_ContainerAdapter
-    extends TypeAdapter<SpecimenDefinition_Container> {
-  @override
-  final typeId = 539;
-
-  @override
-  SpecimenDefinition_Container read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SpecimenDefinition_Container(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      material: fields[3] as CodeableConcept,
-      type: fields[4] as CodeableConcept,
-      cap: fields[5] as CodeableConcept,
-      description: fields[6] as String,
-      elementDescription: fields[7] as Element,
-      capacity: fields[8] as Quantity,
-      minimumVolumeQuantity: fields[9] as Quantity,
-      minimumVolumeString: fields[10] as String,
-      elementMinimumVolumeString: fields[11] as Element,
-      additive: (fields[12] as List)?.cast<SpecimenDefinition_Additive>(),
-      preparation: fields[13] as String,
-      elementPreparation: fields[14] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SpecimenDefinition_Container obj) {
-    writer
-      ..writeByte(15)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.material)
-      ..writeByte(4)
-      ..write(obj.type)
-      ..writeByte(5)
-      ..write(obj.cap)
-      ..writeByte(6)
-      ..write(obj.description)
-      ..writeByte(7)
-      ..write(obj.elementDescription)
-      ..writeByte(8)
-      ..write(obj.capacity)
-      ..writeByte(9)
-      ..write(obj.minimumVolumeQuantity)
-      ..writeByte(10)
-      ..write(obj.minimumVolumeString)
-      ..writeByte(11)
-      ..write(obj.elementMinimumVolumeString)
-      ..writeByte(12)
-      ..write(obj.additive)
-      ..writeByte(13)
-      ..write(obj.preparation)
-      ..writeByte(14)
-      ..write(obj.elementPreparation);
-  }
-}
-
-class SpecimenDefinition_AdditiveAdapter
-    extends TypeAdapter<SpecimenDefinition_Additive> {
-  @override
-  final typeId = 540;
-
-  @override
-  SpecimenDefinition_Additive read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SpecimenDefinition_Additive(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      additiveCodeableConcept: fields[3] as CodeableConcept,
-      additiveReference: fields[4] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SpecimenDefinition_Additive obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.additiveCodeableConcept)
-      ..writeByte(4)
-      ..write(obj.additiveReference);
-  }
-}
-
-class SpecimenDefinition_HandlingAdapter
-    extends TypeAdapter<SpecimenDefinition_Handling> {
-  @override
-  final typeId = 541;
-
-  @override
-  SpecimenDefinition_Handling read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SpecimenDefinition_Handling(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      temperatureQualifier: fields[3] as CodeableConcept,
-      temperatureRange: fields[4] as Range,
-      maxDuration: fields[5] as Duration,
-      instruction: fields[6] as String,
-      elementInstruction: fields[7] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SpecimenDefinition_Handling obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.temperatureQualifier)
-      ..writeByte(4)
-      ..write(obj.temperatureRange)
-      ..writeByte(5)
-      ..write(obj.maxDuration)
-      ..writeByte(6)
-      ..write(obj.instruction)
-      ..writeByte(7)
-      ..write(obj.elementInstruction);
   }
 }
 

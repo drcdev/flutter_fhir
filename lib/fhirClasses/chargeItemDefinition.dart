@@ -332,12 +332,10 @@ ChargeItemDefinition(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 112)
 class ChargeItemDefinition_Applicability {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -346,7 +344,6 @@ class ChargeItemDefinition_Applicability {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -361,37 +358,30 @@ class ChargeItemDefinition_Applicability {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A brief, natural language description of the condition that
   // effectively communicates the intended semantics.
-  @HiveField(3)
   String description;
 
   //  Extensions for description
-  @HiveField(4)
   Element elementDescription;
 
   //  The media type of the language for the expression, e.g. "text/cql" for
   // Clinical Query Language expressions or "text/fhirpath" for FHIRPath
   // expressions.
-  @HiveField(5)
   String language;
 
   //  Extensions for language
-  @HiveField(6)
   Element elementLanguage;
 
   //  An expression that returns true or false, indicating whether the
   // condition is satisfied. When using FHIRPath expressions, the %context
   // environment variable must be replaced at runtime with the ChargeItem
   // resource to which this definition is applied.
-  @HiveField(7)
   String expression;
 
   //  Extensions for expression
-  @HiveField(8)
   Element elementExpression;
 
 ChargeItemDefinition_Applicability(
@@ -411,12 +401,10 @@ ChargeItemDefinition_Applicability(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 113)
 class ChargeItemDefinition_PropertyGroup {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -425,7 +413,6 @@ class ChargeItemDefinition_PropertyGroup {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -440,12 +427,10 @@ class ChargeItemDefinition_PropertyGroup {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Expressions that describe applicability criteria for the
   // priceComponent.
-  @HiveField(3)
   List<ChargeItemDefinition_Applicability> applicability;
 
   //  The price for a ChargeItem may be calculated as a base price with
@@ -454,7 +439,6 @@ class ChargeItemDefinition_PropertyGroup {
   // conditions that apply to a billing code is currently under development.
   // The priceComponent element can be used to offer transparency to the
   // recipient of the Invoice of how the prices have been calculated.
-  @HiveField(4)
   List<ChargeItemDefinition_PriceComponent> priceComponent;
 
 ChargeItemDefinition_PropertyGroup(
@@ -470,12 +454,10 @@ ChargeItemDefinition_PropertyGroup(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 114)
 class ChargeItemDefinition_PriceComponent {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -484,7 +466,6 @@ class ChargeItemDefinition_PriceComponent {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -499,33 +480,26 @@ class ChargeItemDefinition_PriceComponent {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  This code identifies the type of the component.
-  @HiveField(3)
   String type;
 
   //  Extensions for type
-  @HiveField(4)
   Element elementType;
 
   //  A code that identifies the component. Codes may be used to
   // differentiate between kinds of taxes, surcharges, discounts etc.
-  @HiveField(5)
   CodeableConcept code;
 
   //  The factor that has been applied on the base price for calculating
   // this component.
-  @HiveField(6)
   double factor;
 
   //  Extensions for factor
-  @HiveField(7)
   Element elementFactor;
 
   //  The amount calculated for this component.
-  @HiveField(8)
   Money amount;
 
 ChargeItemDefinition_PriceComponent(
@@ -707,143 +681,6 @@ class ChargeItemDefinitionAdapter extends TypeAdapter<ChargeItemDefinition> {
       ..write(obj.applicability)
       ..writeByte(45)
       ..write(obj.propertyGroup);
-  }
-}
-
-class ChargeItemDefinition_ApplicabilityAdapter
-    extends TypeAdapter<ChargeItemDefinition_Applicability> {
-  @override
-  final typeId = 112;
-
-  @override
-  ChargeItemDefinition_Applicability read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ChargeItemDefinition_Applicability(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      description: fields[3] as String,
-      elementDescription: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      expression: fields[7] as String,
-      elementExpression: fields[8] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ChargeItemDefinition_Applicability obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.description)
-      ..writeByte(4)
-      ..write(obj.elementDescription)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.expression)
-      ..writeByte(8)
-      ..write(obj.elementExpression);
-  }
-}
-
-class ChargeItemDefinition_PropertyGroupAdapter
-    extends TypeAdapter<ChargeItemDefinition_PropertyGroup> {
-  @override
-  final typeId = 113;
-
-  @override
-  ChargeItemDefinition_PropertyGroup read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ChargeItemDefinition_PropertyGroup(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      applicability:
-          (fields[3] as List)?.cast<ChargeItemDefinition_Applicability>(),
-      priceComponent:
-          (fields[4] as List)?.cast<ChargeItemDefinition_PriceComponent>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ChargeItemDefinition_PropertyGroup obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.applicability)
-      ..writeByte(4)
-      ..write(obj.priceComponent);
-  }
-}
-
-class ChargeItemDefinition_PriceComponentAdapter
-    extends TypeAdapter<ChargeItemDefinition_PriceComponent> {
-  @override
-  final typeId = 114;
-
-  @override
-  ChargeItemDefinition_PriceComponent read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ChargeItemDefinition_PriceComponent(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      type: fields[3] as String,
-      elementType: fields[4] as Element,
-      code: fields[5] as CodeableConcept,
-      factor: fields[6] as double,
-      elementFactor: fields[7] as Element,
-      amount: fields[8] as Money,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ChargeItemDefinition_PriceComponent obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.type)
-      ..writeByte(4)
-      ..write(obj.elementType)
-      ..writeByte(5)
-      ..write(obj.code)
-      ..writeByte(6)
-      ..write(obj.factor)
-      ..writeByte(7)
-      ..write(obj.elementFactor)
-      ..writeByte(8)
-      ..write(obj.amount);
   }
 }
 

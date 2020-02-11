@@ -279,12 +279,10 @@ CarePlan(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 103)
 class CarePlan_Activity {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -293,7 +291,6 @@ class CarePlan_Activity {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -308,13 +305,11 @@ class CarePlan_Activity {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Identifies the outcome at the point when the status of the activity is
   // assessed.  For example, the outcome of an education activity could be
   // patient understands (or not).
-  @HiveField(3)
   List<CodeableConcept> outcomeCodeableConcept;
 
   //  Details of the outcome or action resulting from the activity.  The
@@ -322,22 +317,18 @@ class CarePlan_Activity {
   // Observation, is the result/outcome of the activity itself.  The
   // activity can be conveyed using CarePlan.activity.detail OR using the
   // CarePlan.activity.reference (a reference to a “request” resource).
-  @HiveField(4)
   List<Reference> outcomeReference;
 
   //  Notes about the adherence/status/progress of the activity.
-  @HiveField(5)
   List<Annotation> progress;
 
   //  The details of the proposed activity represented in a specific
   // resource.
-  @HiveField(6)
   Reference reference;
 
   //  A simple summary of a planned activity suitable for a general care
   // plan system (e.g. form driven) that doesn't know about specific
   // resources such as procedure etc.
-  @HiveField(7)
   CarePlan_Detail detail;
 
 CarePlan_Activity(
@@ -356,12 +347,10 @@ CarePlan_Activity(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 104)
 class CarePlan_Detail {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -370,7 +359,6 @@ class CarePlan_Detail {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -385,7 +373,6 @@ class CarePlan_Detail {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  A description of the kind of resource the in-line definition of a care
@@ -393,120 +380,96 @@ class CarePlan_Detail {
   // in-line definition when a resource is not referenced using
   // CarePlan.activity.reference.  For example, a MedicationRequest, a
   // ServiceRequest, or a CommunicationRequest.
-  @HiveField(3)
   String kind;
 
   //  Extensions for kind
-  @HiveField(4)
   Element elementKind;
 
   //  The URL pointing to a FHIR-defined protocol, guideline, questionnaire
   // or other definition that is adhered to in whole or in part by this
   // CarePlan activity.
-  @HiveField(5)
   List<String> instantiatesCanonical;
 
   //  The URL pointing to an externally maintained protocol, guideline,
   // questionnaire or other definition that is adhered to in whole or in
   // part by this CarePlan activity.
-  @HiveField(6)
   List<String> instantiatesUri;
 
   //  Extensions for instantiatesUri
-  @HiveField(7)
   List<Element> elementInstantiatesUri;
 
   //  Detailed description of the type of planned activity; e.g. what lab
   // test, what procedure, what kind of encounter.
-  @HiveField(8)
   CodeableConcept code;
 
   //  Provides the rationale that drove the inclusion of this particular
   // activity as part of the plan or the reason why the activity was
   // prohibited.
-  @HiveField(9)
   List<CodeableConcept> reasonCode;
 
   //  Indicates another resource, such as the health condition(s), whose
   // existence justifies this request and drove the inclusion of this
   // particular activity as part of the plan.
-  @HiveField(10)
   List<Reference> reasonReference;
 
   //  Internal reference that identifies the goals that this activity is
   // intended to contribute towards meeting.
-  @HiveField(11)
   List<Reference> goal;
 
   //  Identifies what progress is being made for the specific activity.
-  @HiveField(12)
   String status; // <code> enum: not-started/scheduled/in-progress/on-hold/completed/cancelled/stopped/unknown/entered-in-error;
 
   //  Extensions for status
-  @HiveField(13)
   Element elementStatus;
 
   //  Provides reason why the activity isn't yet started, is on hold, was
   // cancelled, etc.
-  @HiveField(14)
   CodeableConcept statusReason;
 
   //  If true, indicates that the described activity is one that must NOT be
   // engaged in when following the plan.  If false, or missing, indicates
   // that the described activity is one that should be engaged in when
   // following the plan.
-  @HiveField(15)
   bool doNotPerform;
 
   //  Extensions for doNotPerform
-  @HiveField(16)
   Element elementDoNotPerform;
 
   //  The period, timing or frequency upon which the described activity is
   // to occur.
-  @HiveField(17)
   Timing scheduledTiming;
 
   //  The period, timing or frequency upon which the described activity is
   // to occur.
-  @HiveField(18)
   Period scheduledPeriod;
 
   //  The period, timing or frequency upon which the described activity is
   // to occur.
-  @HiveField(19)
   String scheduledString; //  pattern: ^[ \r\n\t\S]+$
 
   //  Extensions for scheduledString
-  @HiveField(20)
   Element elementScheduledString;
 
   //  Identifies the facility where the activity will occur; e.g. home,
   // hospital, specific clinic, etc.
-  @HiveField(21)
   Reference location;
 
   //  Identifies who's expected to be involved in the activity.
-  @HiveField(22)
   List<Reference> performer;
 
   //  Identifies the food, drug or other product to be consumed or supplied
   // in the activity.
-  @HiveField(23)
   CodeableConcept productCodeableConcept;
 
   //  Identifies the food, drug or other product to be consumed or supplied
   // in the activity.
-  @HiveField(24)
   Reference productReference;
 
   //  Identifies the quantity expected to be consumed in a given day.
-  @HiveField(25)
   Quantity dailyAmount;
 
   //  Identifies the quantity expected to be supplied, administered or
   // consumed by the subject.
-  @HiveField(26)
   Quantity quantity;
 
   //  This provides a textual description of constraints on the intended
@@ -514,11 +477,9 @@ class CarePlan_Detail {
   // also include objectives, pre-conditions and end-conditions.  Finally,
   // it may convey specifics about the activity such as body site, method,
   // route, etc.
-  @HiveField(27)
   String description;
 
   //  Extensions for description
-  @HiveField(28)
   Element elementDescription;
 
 CarePlan_Detail(
@@ -700,159 +661,6 @@ class CarePlanAdapter extends TypeAdapter<CarePlan> {
       ..write(obj.activity)
       ..writeByte(39)
       ..write(obj.note);
-  }
-}
-
-class CarePlan_ActivityAdapter extends TypeAdapter<CarePlan_Activity> {
-  @override
-  final typeId = 103;
-
-  @override
-  CarePlan_Activity read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CarePlan_Activity(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      outcomeCodeableConcept: (fields[3] as List)?.cast<CodeableConcept>(),
-      outcomeReference: (fields[4] as List)?.cast<Reference>(),
-      progress: (fields[5] as List)?.cast<Annotation>(),
-      reference: fields[6] as Reference,
-      detail: fields[7] as CarePlan_Detail,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CarePlan_Activity obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.outcomeCodeableConcept)
-      ..writeByte(4)
-      ..write(obj.outcomeReference)
-      ..writeByte(5)
-      ..write(obj.progress)
-      ..writeByte(6)
-      ..write(obj.reference)
-      ..writeByte(7)
-      ..write(obj.detail);
-  }
-}
-
-class CarePlan_DetailAdapter extends TypeAdapter<CarePlan_Detail> {
-  @override
-  final typeId = 104;
-
-  @override
-  CarePlan_Detail read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CarePlan_Detail(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      kind: fields[3] as String,
-      elementKind: fields[4] as Element,
-      instantiatesCanonical: (fields[5] as List)?.cast<String>(),
-      instantiatesUri: (fields[6] as List)?.cast<String>(),
-      elementInstantiatesUri: (fields[7] as List)?.cast<Element>(),
-      code: fields[8] as CodeableConcept,
-      reasonCode: (fields[9] as List)?.cast<CodeableConcept>(),
-      reasonReference: (fields[10] as List)?.cast<Reference>(),
-      goal: (fields[11] as List)?.cast<Reference>(),
-      status: fields[12] as String,
-      elementStatus: fields[13] as Element,
-      statusReason: fields[14] as CodeableConcept,
-      doNotPerform: fields[15] as bool,
-      elementDoNotPerform: fields[16] as Element,
-      scheduledTiming: fields[17] as Timing,
-      scheduledPeriod: fields[18] as Period,
-      scheduledString: fields[19] as String,
-      elementScheduledString: fields[20] as Element,
-      location: fields[21] as Reference,
-      performer: (fields[22] as List)?.cast<Reference>(),
-      productCodeableConcept: fields[23] as CodeableConcept,
-      productReference: fields[24] as Reference,
-      dailyAmount: fields[25] as Quantity,
-      quantity: fields[26] as Quantity,
-      description: fields[27] as String,
-      elementDescription: fields[28] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CarePlan_Detail obj) {
-    writer
-      ..writeByte(29)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.kind)
-      ..writeByte(4)
-      ..write(obj.elementKind)
-      ..writeByte(5)
-      ..write(obj.instantiatesCanonical)
-      ..writeByte(6)
-      ..write(obj.instantiatesUri)
-      ..writeByte(7)
-      ..write(obj.elementInstantiatesUri)
-      ..writeByte(8)
-      ..write(obj.code)
-      ..writeByte(9)
-      ..write(obj.reasonCode)
-      ..writeByte(10)
-      ..write(obj.reasonReference)
-      ..writeByte(11)
-      ..write(obj.goal)
-      ..writeByte(12)
-      ..write(obj.status)
-      ..writeByte(13)
-      ..write(obj.elementStatus)
-      ..writeByte(14)
-      ..write(obj.statusReason)
-      ..writeByte(15)
-      ..write(obj.doNotPerform)
-      ..writeByte(16)
-      ..write(obj.elementDoNotPerform)
-      ..writeByte(17)
-      ..write(obj.scheduledTiming)
-      ..writeByte(18)
-      ..write(obj.scheduledPeriod)
-      ..writeByte(19)
-      ..write(obj.scheduledString)
-      ..writeByte(20)
-      ..write(obj.elementScheduledString)
-      ..writeByte(21)
-      ..write(obj.location)
-      ..writeByte(22)
-      ..write(obj.performer)
-      ..writeByte(23)
-      ..write(obj.productCodeableConcept)
-      ..writeByte(24)
-      ..write(obj.productReference)
-      ..writeByte(25)
-      ..write(obj.dailyAmount)
-      ..writeByte(26)
-      ..write(obj.quantity)
-      ..writeByte(27)
-      ..write(obj.description)
-      ..writeByte(28)
-      ..write(obj.elementDescription);
   }
 }
 

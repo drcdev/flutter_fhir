@@ -299,12 +299,10 @@ ChargeItem(
 }
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 110)
 class ChargeItem_Performer {
 
   //  Unique id for the element within a resource (for internal references).
   // This may be any string value that does not contain spaces.
-  @HiveField(0)
   String id;
 
   //  May be used to represent additional information that is not part of
@@ -313,7 +311,6 @@ class ChargeItem_Performer {
   // definition and use of extensions. Though any implementer can define an
   // extension, there is a set of requirements that SHALL be met as part of
   // the definition of the extension.
-  @HiveField(1)
   List<Extension> extension;
 
   //  May be used to represent additional information that is not part of
@@ -328,17 +325,14 @@ class ChargeItem_Performer {
   // required to check for modifier extensions. Modifier extensions SHALL
   // NOT change the meaning of any elements on Resource or DomainResource
   // (including cannot change the meaning of modifierExtension itself).
-  @HiveField(2)
   List<Extension> modifierExtension;
 
   //  Describes the type of performance or participation(e.g. primary
   // surgeon, anesthesiologiest, etc.).
-  @HiveField(3)
   CodeableConcept function;
 
   //  The device, practitioner, etc. who performed or participated in the
   // service.
-  @HiveField(4)
   Reference actor;
 
 ChargeItem_Performer(
@@ -514,42 +508,6 @@ class ChargeItemAdapter extends TypeAdapter<ChargeItem> {
       ..write(obj.note)
       ..writeByte(45)
       ..write(obj.supportingInformation);
-  }
-}
-
-class ChargeItem_PerformerAdapter extends TypeAdapter<ChargeItem_Performer> {
-  @override
-  final typeId = 110;
-
-  @override
-  ChargeItem_Performer read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ChargeItem_Performer(
-      fields[4] as Reference,
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      function: fields[3] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ChargeItem_Performer obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.function)
-      ..writeByte(4)
-      ..write(obj.actor);
   }
 }
 
