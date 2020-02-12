@@ -15,7 +15,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 117)
 class Immunization {
 
 	static Future<Immunization> newInstance({
@@ -118,101 +117,53 @@ class Immunization {
 	immunizationBox.put(newImmunization.id, newImmunization);
 	return newImmunization;
 }
-  @HiveField(0)
   final String resourceType= 'Immunization';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String status;
-  @HiveField(13)
   Element elementStatus;
-  @HiveField(14)
   CodeableConcept statusReason;
-  @HiveField(15)
   CodeableConcept vaccineCode;
-  @HiveField(16)
   Reference patient;
-  @HiveField(17)
   Reference encounter;
-  @HiveField(18)
   String occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-  @HiveField(19)
   Element elementOccurrenceDateTime;
-  @HiveField(20)
   String occurrenceString; //  pattern: ^[ \r\n\t\S]+$
-  @HiveField(21)
   Element elementOccurrenceString;
-  @HiveField(22)
   DateTime recorded;
-  @HiveField(23)
   Element elementRecorded;
-  @HiveField(24)
   bool primarySource;
-  @HiveField(25)
   Element elementPrimarySource;
-  @HiveField(26)
   CodeableConcept reportOrigin;
-  @HiveField(27)
   Reference location;
-  @HiveField(28)
   Reference manufacturer;
-  @HiveField(29)
   String lotNumber;
-  @HiveField(30)
   Element elementLotNumber;
-  @HiveField(31)
   String expirationDate;
-  @HiveField(32)
   Element elementExpirationDate;
-  @HiveField(33)
   CodeableConcept site;
-  @HiveField(34)
   CodeableConcept route;
-  @HiveField(35)
   Quantity doseQuantity;
-  @HiveField(36)
   List<Immunization_Performer> performer;
-  @HiveField(37)
   List<Annotation> note;
-  @HiveField(38)
   List<CodeableConcept> reasonCode;
-  @HiveField(39)
   List<Reference> reasonReference;
-  @HiveField(40)
   bool isSubpotent;
-  @HiveField(41)
   Element elementIsSubpotent;
-  @HiveField(42)
   List<CodeableConcept> subpotentReason;
-  @HiveField(43)
   List<Immunization_Education> education;
-  @HiveField(44)
   List<CodeableConcept> programEligibility;
-  @HiveField(45)
   CodeableConcept fundingSource;
-  @HiveField(46)
   List<Immunization_Reaction> reaction;
-  @HiveField(47)
   List<Immunization_ProtocolApplied> protocolApplied;
 
 Immunization(
@@ -495,175 +446,6 @@ Immunization_ProtocolApplied(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ImmunizationAdapter extends TypeAdapter<Immunization> {
-  @override
-  final typeId = 117;
-
-  @override
-  Immunization read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Immunization(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      status: fields[12] as String,
-      elementStatus: fields[13] as Element,
-      statusReason: fields[14] as CodeableConcept,
-      vaccineCode: fields[15] as CodeableConcept,
-      patient: fields[16] as Reference,
-      encounter: fields[17] as Reference,
-      occurrenceDateTime: fields[18] as String,
-      elementOccurrenceDateTime: fields[19] as Element,
-      occurrenceString: fields[20] as String,
-      elementOccurrenceString: fields[21] as Element,
-      recorded: fields[22] as DateTime,
-      elementRecorded: fields[23] as Element,
-      primarySource: fields[24] as bool,
-      elementPrimarySource: fields[25] as Element,
-      reportOrigin: fields[26] as CodeableConcept,
-      location: fields[27] as Reference,
-      manufacturer: fields[28] as Reference,
-      lotNumber: fields[29] as String,
-      elementLotNumber: fields[30] as Element,
-      expirationDate: fields[31] as String,
-      elementExpirationDate: fields[32] as Element,
-      site: fields[33] as CodeableConcept,
-      route: fields[34] as CodeableConcept,
-      doseQuantity: fields[35] as Quantity,
-      performer: (fields[36] as List)?.cast<Immunization_Performer>(),
-      note: (fields[37] as List)?.cast<Annotation>(),
-      reasonCode: (fields[38] as List)?.cast<CodeableConcept>(),
-      reasonReference: (fields[39] as List)?.cast<Reference>(),
-      isSubpotent: fields[40] as bool,
-      elementIsSubpotent: fields[41] as Element,
-      subpotentReason: (fields[42] as List)?.cast<CodeableConcept>(),
-      education: (fields[43] as List)?.cast<Immunization_Education>(),
-      programEligibility: (fields[44] as List)?.cast<CodeableConcept>(),
-      fundingSource: fields[45] as CodeableConcept,
-      reaction: (fields[46] as List)?.cast<Immunization_Reaction>(),
-      protocolApplied:
-          (fields[47] as List)?.cast<Immunization_ProtocolApplied>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Immunization obj) {
-    writer
-      ..writeByte(48)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.status)
-      ..writeByte(13)
-      ..write(obj.elementStatus)
-      ..writeByte(14)
-      ..write(obj.statusReason)
-      ..writeByte(15)
-      ..write(obj.vaccineCode)
-      ..writeByte(16)
-      ..write(obj.patient)
-      ..writeByte(17)
-      ..write(obj.encounter)
-      ..writeByte(18)
-      ..write(obj.occurrenceDateTime)
-      ..writeByte(19)
-      ..write(obj.elementOccurrenceDateTime)
-      ..writeByte(20)
-      ..write(obj.occurrenceString)
-      ..writeByte(21)
-      ..write(obj.elementOccurrenceString)
-      ..writeByte(22)
-      ..write(obj.recorded)
-      ..writeByte(23)
-      ..write(obj.elementRecorded)
-      ..writeByte(24)
-      ..write(obj.primarySource)
-      ..writeByte(25)
-      ..write(obj.elementPrimarySource)
-      ..writeByte(26)
-      ..write(obj.reportOrigin)
-      ..writeByte(27)
-      ..write(obj.location)
-      ..writeByte(28)
-      ..write(obj.manufacturer)
-      ..writeByte(29)
-      ..write(obj.lotNumber)
-      ..writeByte(30)
-      ..write(obj.elementLotNumber)
-      ..writeByte(31)
-      ..write(obj.expirationDate)
-      ..writeByte(32)
-      ..write(obj.elementExpirationDate)
-      ..writeByte(33)
-      ..write(obj.site)
-      ..writeByte(34)
-      ..write(obj.route)
-      ..writeByte(35)
-      ..write(obj.doseQuantity)
-      ..writeByte(36)
-      ..write(obj.performer)
-      ..writeByte(37)
-      ..write(obj.note)
-      ..writeByte(38)
-      ..write(obj.reasonCode)
-      ..writeByte(39)
-      ..write(obj.reasonReference)
-      ..writeByte(40)
-      ..write(obj.isSubpotent)
-      ..writeByte(41)
-      ..write(obj.elementIsSubpotent)
-      ..writeByte(42)
-      ..write(obj.subpotentReason)
-      ..writeByte(43)
-      ..write(obj.education)
-      ..writeByte(44)
-      ..write(obj.programEligibility)
-      ..writeByte(45)
-      ..write(obj.fundingSource)
-      ..writeByte(46)
-      ..write(obj.reaction)
-      ..writeByte(47)
-      ..write(obj.protocolApplied);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

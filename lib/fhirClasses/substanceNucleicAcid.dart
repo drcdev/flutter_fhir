@@ -12,7 +12,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 187)
 class SubstanceNucleicAcid {
 
 	static Future<SubstanceNucleicAcid> newInstance({
@@ -55,41 +54,23 @@ class SubstanceNucleicAcid {
 	substanceNucleicAcidBox.put(newSubstanceNucleicAcid.id, newSubstanceNucleicAcid);
 	return newSubstanceNucleicAcid;
 }
-  @HiveField(0)
   final String resourceType= 'SubstanceNucleicAcid';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   CodeableConcept sequenceType;
-  @HiveField(12)
   int numberOfSubunits;
-  @HiveField(13)
   Element elementNumberOfSubunits;
-  @HiveField(14)
   String areaOfHybridisation;
-  @HiveField(15)
   Element elementAreaOfHybridisation;
-  @HiveField(16)
   CodeableConcept oligoNucleotideType;
-  @HiveField(17)
   List<SubstanceNucleicAcid_Subunit> subunit;
 
 SubstanceNucleicAcid(
@@ -297,84 +278,6 @@ SubstanceNucleicAcid_Sugar(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class SubstanceNucleicAcidAdapter extends TypeAdapter<SubstanceNucleicAcid> {
-  @override
-  final typeId = 187;
-
-  @override
-  SubstanceNucleicAcid read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstanceNucleicAcid(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      sequenceType: fields[11] as CodeableConcept,
-      numberOfSubunits: fields[12] as int,
-      elementNumberOfSubunits: fields[13] as Element,
-      areaOfHybridisation: fields[14] as String,
-      elementAreaOfHybridisation: fields[15] as Element,
-      oligoNucleotideType: fields[16] as CodeableConcept,
-      subunit: (fields[17] as List)?.cast<SubstanceNucleicAcid_Subunit>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SubstanceNucleicAcid obj) {
-    writer
-      ..writeByte(18)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.sequenceType)
-      ..writeByte(12)
-      ..write(obj.numberOfSubunits)
-      ..writeByte(13)
-      ..write(obj.elementNumberOfSubunits)
-      ..writeByte(14)
-      ..write(obj.areaOfHybridisation)
-      ..writeByte(15)
-      ..write(obj.elementAreaOfHybridisation)
-      ..writeByte(16)
-      ..write(obj.oligoNucleotideType)
-      ..writeByte(17)
-      ..write(obj.subunit);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

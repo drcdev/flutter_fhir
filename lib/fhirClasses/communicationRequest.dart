@@ -15,7 +15,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 79)
 class CommunicationRequest {
 
 	static Future<CommunicationRequest> newInstance({
@@ -100,83 +99,44 @@ class CommunicationRequest {
 	communicationRequestBox.put(newCommunicationRequest.id, newCommunicationRequest);
 	return newCommunicationRequest;
 }
-  @HiveField(0)
   final String resourceType= 'CommunicationRequest';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   List<Reference> basedOn;
-  @HiveField(13)
   List<Reference> replaces;
-  @HiveField(14)
   Identifier groupIdentifier;
-  @HiveField(15)
   String status;
-  @HiveField(16)
   Element elementStatus;
-  @HiveField(17)
   CodeableConcept statusReason;
-  @HiveField(18)
   List<CodeableConcept> category;
-  @HiveField(19)
   String priority;
-  @HiveField(20)
   Element elementPriority;
-  @HiveField(21)
   bool doNotPerform;
-  @HiveField(22)
   Element elementDoNotPerform;
-  @HiveField(23)
   List<CodeableConcept> medium;
-  @HiveField(24)
   Reference subject;
-  @HiveField(25)
   List<Reference> about;
-  @HiveField(26)
   Reference encounter;
-  @HiveField(27)
   List<CommunicationRequest_Payload> payload;
-  @HiveField(28)
   String occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-  @HiveField(29)
   Element elementOccurrenceDateTime;
-  @HiveField(30)
   Period occurrencePeriod;
-  @HiveField(31)
   DateTime authoredOn;
-  @HiveField(32)
   Element elementAuthoredOn;
-  @HiveField(33)
   Reference requester;
-  @HiveField(34)
   List<Reference> recipient;
-  @HiveField(35)
   Reference sender;
-  @HiveField(36)
   List<CodeableConcept> reasonCode;
-  @HiveField(37)
   List<Reference> reasonReference;
-  @HiveField(38)
   List<Annotation> note;
 
 CommunicationRequest(
@@ -271,147 +231,6 @@ CommunicationRequest_Payload(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class CommunicationRequestAdapter extends TypeAdapter<CommunicationRequest> {
-  @override
-  final typeId = 79;
-
-  @override
-  CommunicationRequest read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CommunicationRequest(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      basedOn: (fields[12] as List)?.cast<Reference>(),
-      replaces: (fields[13] as List)?.cast<Reference>(),
-      groupIdentifier: fields[14] as Identifier,
-      status: fields[15] as String,
-      elementStatus: fields[16] as Element,
-      statusReason: fields[17] as CodeableConcept,
-      category: (fields[18] as List)?.cast<CodeableConcept>(),
-      priority: fields[19] as String,
-      elementPriority: fields[20] as Element,
-      doNotPerform: fields[21] as bool,
-      elementDoNotPerform: fields[22] as Element,
-      medium: (fields[23] as List)?.cast<CodeableConcept>(),
-      subject: fields[24] as Reference,
-      about: (fields[25] as List)?.cast<Reference>(),
-      encounter: fields[26] as Reference,
-      payload: (fields[27] as List)?.cast<CommunicationRequest_Payload>(),
-      occurrenceDateTime: fields[28] as String,
-      elementOccurrenceDateTime: fields[29] as Element,
-      occurrencePeriod: fields[30] as Period,
-      authoredOn: fields[31] as DateTime,
-      elementAuthoredOn: fields[32] as Element,
-      requester: fields[33] as Reference,
-      recipient: (fields[34] as List)?.cast<Reference>(),
-      sender: fields[35] as Reference,
-      reasonCode: (fields[36] as List)?.cast<CodeableConcept>(),
-      reasonReference: (fields[37] as List)?.cast<Reference>(),
-      note: (fields[38] as List)?.cast<Annotation>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CommunicationRequest obj) {
-    writer
-      ..writeByte(39)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.basedOn)
-      ..writeByte(13)
-      ..write(obj.replaces)
-      ..writeByte(14)
-      ..write(obj.groupIdentifier)
-      ..writeByte(15)
-      ..write(obj.status)
-      ..writeByte(16)
-      ..write(obj.elementStatus)
-      ..writeByte(17)
-      ..write(obj.statusReason)
-      ..writeByte(18)
-      ..write(obj.category)
-      ..writeByte(19)
-      ..write(obj.priority)
-      ..writeByte(20)
-      ..write(obj.elementPriority)
-      ..writeByte(21)
-      ..write(obj.doNotPerform)
-      ..writeByte(22)
-      ..write(obj.elementDoNotPerform)
-      ..writeByte(23)
-      ..write(obj.medium)
-      ..writeByte(24)
-      ..write(obj.subject)
-      ..writeByte(25)
-      ..write(obj.about)
-      ..writeByte(26)
-      ..write(obj.encounter)
-      ..writeByte(27)
-      ..write(obj.payload)
-      ..writeByte(28)
-      ..write(obj.occurrenceDateTime)
-      ..writeByte(29)
-      ..write(obj.elementOccurrenceDateTime)
-      ..writeByte(30)
-      ..write(obj.occurrencePeriod)
-      ..writeByte(31)
-      ..write(obj.authoredOn)
-      ..writeByte(32)
-      ..write(obj.elementAuthoredOn)
-      ..writeByte(33)
-      ..write(obj.requester)
-      ..writeByte(34)
-      ..write(obj.recipient)
-      ..writeByte(35)
-      ..write(obj.sender)
-      ..writeByte(36)
-      ..write(obj.reasonCode)
-      ..writeByte(37)
-      ..write(obj.reasonReference)
-      ..writeByte(38)
-      ..write(obj.note);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

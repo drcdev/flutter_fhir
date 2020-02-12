@@ -7,7 +7,6 @@ import 'package:flutter_fhir/fhirClasses/range.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 49)
 class Population {
 
 	static Future<Population> newInstance({
@@ -32,21 +31,13 @@ class Population {
 	populationBox.put(newPopulation.id, newPopulation);
 	return newPopulation;
 }
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   Range ageRange;
-  @HiveField(4)
   CodeableConcept ageCodeableConcept;
-  @HiveField(5)
   CodeableConcept gender;
-  @HiveField(6)
   CodeableConcept race;
-  @HiveField(7)
   CodeableConcept physiologicalCondition;
 
 Population(
@@ -66,55 +57,6 @@ Population(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class PopulationAdapter extends TypeAdapter<Population> {
-  @override
-  final typeId = 49;
-
-  @override
-  Population read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Population(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      ageRange: fields[3] as Range,
-      ageCodeableConcept: fields[4] as CodeableConcept,
-      gender: fields[5] as CodeableConcept,
-      race: fields[6] as CodeableConcept,
-      physiologicalCondition: fields[7] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Population obj) {
-    writer
-      ..writeByte(8)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.ageRange)
-      ..writeByte(4)
-      ..write(obj.ageCodeableConcept)
-      ..writeByte(5)
-      ..write(obj.gender)
-      ..writeByte(6)
-      ..write(obj.race)
-      ..writeByte(7)
-      ..write(obj.physiologicalCondition);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

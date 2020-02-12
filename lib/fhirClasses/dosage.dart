@@ -11,7 +11,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 48)
 class Dosage {
 
 	static Future<Dosage> newInstance({
@@ -62,47 +61,26 @@ class Dosage {
 	dosageBox.put(newDosage.id, newDosage);
 	return newDosage;
 }
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   int sequence;
-  @HiveField(4)
   Element elementSequence;
-  @HiveField(5)
   String text;
-  @HiveField(6)
   Element elementText;
-  @HiveField(7)
   List<CodeableConcept> additionalInstruction;
-  @HiveField(8)
   String patientInstruction;
-  @HiveField(9)
   Element elementPatientInstruction;
-  @HiveField(10)
   Timing timing;
-  @HiveField(11)
   bool asNeededBoolean; //  pattern: ^true|false$
-  @HiveField(12)
   Element elementAsNeededBoolean;
-  @HiveField(13)
   CodeableConcept asNeededCodeableConcept;
-  @HiveField(14)
   CodeableConcept site;
-  @HiveField(15)
   CodeableConcept route;
-  @HiveField(16)
   CodeableConcept method;
-  @HiveField(17)
   List<Dosage_DoseAndRate> doseAndRate;
-  @HiveField(18)
   Ratio maxDosePerPeriod;
-  @HiveField(19)
   Quantity maxDosePerAdministration;
-  @HiveField(20)
   Quantity maxDosePerLifetime;
 
 Dosage(
@@ -188,94 +166,6 @@ Dosage_DoseAndRate(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class DosageAdapter extends TypeAdapter<Dosage> {
-  @override
-  final typeId = 48;
-
-  @override
-  Dosage read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Dosage(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      sequence: fields[3] as int,
-      elementSequence: fields[4] as Element,
-      text: fields[5] as String,
-      elementText: fields[6] as Element,
-      additionalInstruction: (fields[7] as List)?.cast<CodeableConcept>(),
-      patientInstruction: fields[8] as String,
-      elementPatientInstruction: fields[9] as Element,
-      timing: fields[10] as Timing,
-      asNeededBoolean: fields[11] as bool,
-      elementAsNeededBoolean: fields[12] as Element,
-      asNeededCodeableConcept: fields[13] as CodeableConcept,
-      site: fields[14] as CodeableConcept,
-      route: fields[15] as CodeableConcept,
-      method: fields[16] as CodeableConcept,
-      doseAndRate: (fields[17] as List)?.cast<Dosage_DoseAndRate>(),
-      maxDosePerPeriod: fields[18] as Ratio,
-      maxDosePerAdministration: fields[19] as Quantity,
-      maxDosePerLifetime: fields[20] as Quantity,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Dosage obj) {
-    writer
-      ..writeByte(21)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.sequence)
-      ..writeByte(4)
-      ..write(obj.elementSequence)
-      ..writeByte(5)
-      ..write(obj.text)
-      ..writeByte(6)
-      ..write(obj.elementText)
-      ..writeByte(7)
-      ..write(obj.additionalInstruction)
-      ..writeByte(8)
-      ..write(obj.patientInstruction)
-      ..writeByte(9)
-      ..write(obj.elementPatientInstruction)
-      ..writeByte(10)
-      ..write(obj.timing)
-      ..writeByte(11)
-      ..write(obj.asNeededBoolean)
-      ..writeByte(12)
-      ..write(obj.elementAsNeededBoolean)
-      ..writeByte(13)
-      ..write(obj.asNeededCodeableConcept)
-      ..writeByte(14)
-      ..write(obj.site)
-      ..writeByte(15)
-      ..write(obj.route)
-      ..writeByte(16)
-      ..write(obj.method)
-      ..writeByte(17)
-      ..write(obj.doseAndRate)
-      ..writeByte(18)
-      ..write(obj.maxDosePerPeriod)
-      ..writeByte(19)
-      ..write(obj.maxDosePerAdministration)
-      ..writeByte(20)
-      ..write(obj.maxDosePerLifetime);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

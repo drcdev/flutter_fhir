@@ -14,7 +14,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 62)
 class AuditEvent {
 
 	static Future<AuditEvent> newInstance({
@@ -73,57 +72,31 @@ class AuditEvent {
 	auditEventBox.put(newAuditEvent.id, newAuditEvent);
 	return newAuditEvent;
 }
-  @HiveField(0)
   final String resourceType= 'AuditEvent';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   Coding type;
-  @HiveField(12)
   List<Coding> subtype;
-  @HiveField(13)
   String action; // <code> enum: C/R/U/D/E;
-  @HiveField(14)
   Element elementAction;
-  @HiveField(15)
   Period period;
-  @HiveField(16)
   DateTime recorded;
-  @HiveField(17)
   Element elementRecorded;
-  @HiveField(18)
   String outcome; // <code> enum: 0/4/8/12;
-  @HiveField(19)
   Element elementOutcome;
-  @HiveField(20)
   String outcomeDesc;
-  @HiveField(21)
   Element elementOutcomeDesc;
-  @HiveField(22)
   List<CodeableConcept> purposeOfEvent;
-  @HiveField(23)
   List<AuditEvent_Agent> agent;
-  @HiveField(24)
   AuditEvent_Source source;
-  @HiveField(25)
   List<AuditEvent_Entity> entity;
 
 AuditEvent(
@@ -469,108 +442,6 @@ AuditEvent_Detail(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class AuditEventAdapter extends TypeAdapter<AuditEvent> {
-  @override
-  final typeId = 62;
-
-  @override
-  AuditEvent read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return AuditEvent(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      type: fields[11] as Coding,
-      subtype: (fields[12] as List)?.cast<Coding>(),
-      action: fields[13] as String,
-      elementAction: fields[14] as Element,
-      period: fields[15] as Period,
-      recorded: fields[16] as DateTime,
-      elementRecorded: fields[17] as Element,
-      outcome: fields[18] as String,
-      elementOutcome: fields[19] as Element,
-      outcomeDesc: fields[20] as String,
-      elementOutcomeDesc: fields[21] as Element,
-      purposeOfEvent: (fields[22] as List)?.cast<CodeableConcept>(),
-      agent: (fields[23] as List)?.cast<AuditEvent_Agent>(),
-      source: fields[24] as AuditEvent_Source,
-      entity: (fields[25] as List)?.cast<AuditEvent_Entity>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, AuditEvent obj) {
-    writer
-      ..writeByte(26)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.type)
-      ..writeByte(12)
-      ..write(obj.subtype)
-      ..writeByte(13)
-      ..write(obj.action)
-      ..writeByte(14)
-      ..write(obj.elementAction)
-      ..writeByte(15)
-      ..write(obj.period)
-      ..writeByte(16)
-      ..write(obj.recorded)
-      ..writeByte(17)
-      ..write(obj.elementRecorded)
-      ..writeByte(18)
-      ..write(obj.outcome)
-      ..writeByte(19)
-      ..write(obj.elementOutcome)
-      ..writeByte(20)
-      ..write(obj.outcomeDesc)
-      ..writeByte(21)
-      ..write(obj.elementOutcomeDesc)
-      ..writeByte(22)
-      ..write(obj.purposeOfEvent)
-      ..writeByte(23)
-      ..write(obj.agent)
-      ..writeByte(24)
-      ..write(obj.source)
-      ..writeByte(25)
-      ..write(obj.entity);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

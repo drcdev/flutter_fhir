@@ -1,7 +1,6 @@
 import 'dart:core';
 
 import 'package:device_info/device_info.dart';
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_fhir/fhirClasses/element.dart';
@@ -190,6 +189,7 @@ import 'package:flutter_fhir/fhirClasses/testScript.dart';
 import 'package:flutter_fhir/fhirClasses/valueSet.dart';
 import 'package:flutter_fhir/fhirClasses/verificationResult.dart';
 import 'package:flutter_fhir/fhirClasses/visionPrescription.dart';
+import 'package:sqflite/sqflite.dart';
 
 classesSetup() async {
   List<String> types = [
@@ -853,232 +853,31 @@ classesSetup() async {
 	'VisionPrescription_LensSpecification',
 	'VisionPrescription_Prism'];
 
-  Hive.registerAdapter(ElementAdapter());
-  Hive.registerAdapter(ExtensionAdapter());
-  Hive.registerAdapter(NarrativeAdapter());
-  Hive.registerAdapter(AnnotationAdapter());
-  Hive.registerAdapter(AttachmentAdapter());
-  Hive.registerAdapter(IdentifierAdapter());
-  Hive.registerAdapter(CodeableConceptAdapter());
-  Hive.registerAdapter(CodingAdapter());
-  Hive.registerAdapter(QuantityAdapter());
-  Hive.registerAdapter(DurationAdapter());
-  Hive.registerAdapter(DistanceAdapter());
-  Hive.registerAdapter(CountAdapter());
-  Hive.registerAdapter(MoneyAdapter());
-  Hive.registerAdapter(AgeAdapter());
-  Hive.registerAdapter(RangeAdapter());
-  Hive.registerAdapter(PeriodAdapter());
-  Hive.registerAdapter(RatioAdapter());
-  Hive.registerAdapter(ReferenceAdapter());
-  Hive.registerAdapter(SampledDataAdapter());
-  Hive.registerAdapter(SignatureAdapter());
-  Hive.registerAdapter(HumanNameAdapter());
-  Hive.registerAdapter(AddressAdapter());
-  Hive.registerAdapter(ContactPointAdapter());
-  Hive.registerAdapter(TimingAdapter());
-  Hive.registerAdapter(MetaAdapter());
-  Hive.registerAdapter(ContactDetailAdapter());
-  Hive.registerAdapter(ContributorAdapter());
-  Hive.registerAdapter(DataRequirementAdapter());
-  Hive.registerAdapter(ParameterDefinitionAdapter());
-  Hive.registerAdapter(RelatedArtifactAdapter());
-  Hive.registerAdapter(TriggerDefinitionAdapter());
-  Hive.registerAdapter(UsageContextAdapter());
-  Hive.registerAdapter(DosageAdapter());
-  Hive.registerAdapter(PopulationAdapter());
-  Hive.registerAdapter(ProductShelfLifeAdapter());
-  Hive.registerAdapter(ProdCharacteristicAdapter());
-  Hive.registerAdapter(MarketingStatusAdapter());
-  Hive.registerAdapter(SubstanceAmountAdapter());
-  Hive.registerAdapter(ExpressionAdapter());
-  Hive.registerAdapter(ElementDefinitionAdapter());
-  Hive.registerAdapter(AccountAdapter());
-  Hive.registerAdapter(ActivityDefinitionAdapter());
-  Hive.registerAdapter(AdverseEventAdapter());
-  Hive.registerAdapter(AllergyIntoleranceAdapter());
-  Hive.registerAdapter(AppointmentAdapter());
-  Hive.registerAdapter(AppointmentResponseAdapter());
-  Hive.registerAdapter(AuditEventAdapter());
-  Hive.registerAdapter(BasicAdapter());
-  Hive.registerAdapter(BinaryAdapter());
-  Hive.registerAdapter(BiologicallyDerivedProductAdapter());
-  Hive.registerAdapter(BodyStructureAdapter());
-  Hive.registerAdapter(BundleAdapter());
-  Hive.registerAdapter(CapabilityStatementAdapter());
-  Hive.registerAdapter(CarePlanAdapter());
-  Hive.registerAdapter(CareTeamAdapter());
-  Hive.registerAdapter(CatalogEntryAdapter());
-  Hive.registerAdapter(ChargeItemAdapter());
-  Hive.registerAdapter(ChargeItemDefinitionAdapter());
-  Hive.registerAdapter(ClaimAdapter());
-  Hive.registerAdapter(ClaimResponseAdapter());
-  Hive.registerAdapter(ClinicalImpressionAdapter());
-  Hive.registerAdapter(CodeSystemAdapter());
-  Hive.registerAdapter(CommunicationAdapter());
-  Hive.registerAdapter(CommunicationRequestAdapter());
-  Hive.registerAdapter(CompartmentDefinitionAdapter());
-  Hive.registerAdapter(CompositionAdapter());
-  Hive.registerAdapter(ConceptMapAdapter());
-  Hive.registerAdapter(ConditionAdapter());
-  Hive.registerAdapter(ConsentAdapter());
-  Hive.registerAdapter(ContractAdapter());
-  Hive.registerAdapter(CoverageAdapter());
-  Hive.registerAdapter(CoverageEligibilityRequestAdapter());
-  Hive.registerAdapter(CoverageEligibilityResponseAdapter());
-  Hive.registerAdapter(DetectedIssueAdapter());
-  Hive.registerAdapter(DeviceAdapter());
-  Hive.registerAdapter(DeviceDefinitionAdapter());
-  Hive.registerAdapter(DeviceMetricAdapter());
-  Hive.registerAdapter(DeviceRequestAdapter());
-  Hive.registerAdapter(DeviceUseStatementAdapter());
-  Hive.registerAdapter(DiagnosticReportAdapter());
-  Hive.registerAdapter(DocumentManifestAdapter());
-  Hive.registerAdapter(DocumentReferenceAdapter());
-  Hive.registerAdapter(EffectEvidenceSynthesisAdapter());
-  Hive.registerAdapter(EncounterAdapter());
-  Hive.registerAdapter(EndpointAdapter());
-  Hive.registerAdapter(EnrollmentRequestAdapter());
-  Hive.registerAdapter(EnrollmentResponseAdapter());
-  Hive.registerAdapter(EpisodeOfCareAdapter());
-  Hive.registerAdapter(EventDefinitionAdapter());
-  Hive.registerAdapter(EvidenceAdapter());
-  Hive.registerAdapter(EvidenceVariableAdapter());
-  Hive.registerAdapter(ExampleScenarioAdapter());
-  Hive.registerAdapter(ExplanationOfBenefitAdapter());
-  Hive.registerAdapter(FamilyMemberHistoryAdapter());
-  Hive.registerAdapter(FlagAdapter());
-  Hive.registerAdapter(GoalAdapter());
-  Hive.registerAdapter(GraphDefinitionAdapter());
-  Hive.registerAdapter(GroupAdapter());
-  Hive.registerAdapter(GuidanceResponseAdapter());
-  Hive.registerAdapter(HealthcareServiceAdapter());
-  Hive.registerAdapter(ImagingStudyAdapter());
-  Hive.registerAdapter(ImmunizationAdapter());
-  Hive.registerAdapter(ImmunizationEvaluationAdapter());
-  Hive.registerAdapter(ImmunizationRecommendationAdapter());
-  Hive.registerAdapter(ImplementationGuideAdapter());
-  Hive.registerAdapter(InsurancePlanAdapter());
-  Hive.registerAdapter(InvoiceAdapter());
-  Hive.registerAdapter(LibraryAdapter());
-  Hive.registerAdapter(LinkageAdapter());
-  Hive.registerAdapter(ListsAdapter());
-  Hive.registerAdapter(LocationAdapter());
-  Hive.registerAdapter(MeasureAdapter());
-  Hive.registerAdapter(MeasureReportAdapter());
-  Hive.registerAdapter(MediaAdapter());
-  Hive.registerAdapter(MedicationAdapter());
-  Hive.registerAdapter(MedicationAdministrationAdapter());
-  Hive.registerAdapter(MedicationDispenseAdapter());
-  Hive.registerAdapter(MedicationKnowledgeAdapter());
-  Hive.registerAdapter(MedicationRequestAdapter());
-  Hive.registerAdapter(MedicationStatementAdapter());
-  Hive.registerAdapter(MedicinalProductAdapter());
-  Hive.registerAdapter(MedicinalProductAuthorizationAdapter());
-  Hive.registerAdapter(MedicinalProductContraindicationAdapter());
-  Hive.registerAdapter(MedicinalProductIndicationAdapter());
-  Hive.registerAdapter(MedicinalProductIngredientAdapter());
-  Hive.registerAdapter(MedicinalProductInteractionAdapter());
-  Hive.registerAdapter(MedicinalProductManufacturedAdapter());
-  Hive.registerAdapter(MedicinalProductPackagedAdapter());
-  Hive.registerAdapter(MedicinalProductPharmaceuticalAdapter());
-  Hive.registerAdapter(MedicinalProductUndesirableEffectAdapter());
-  Hive.registerAdapter(MessageDefinitionAdapter());
-  Hive.registerAdapter(MessageHeaderAdapter());
-  Hive.registerAdapter(MolecularSequenceAdapter());
-  Hive.registerAdapter(NamingSystemAdapter());
-  Hive.registerAdapter(NutritionOrderAdapter());
-  Hive.registerAdapter(ObservationAdapter());
-  Hive.registerAdapter(ObservationDefinitionAdapter());
-  Hive.registerAdapter(OperationDefinitionAdapter());
-  Hive.registerAdapter(OperationOutcomeAdapter());
-  Hive.registerAdapter(OrganizationAdapter());
-  Hive.registerAdapter(OrganizationAffiliationAdapter());
-  Hive.registerAdapter(ParametersAdapter());
-  Hive.registerAdapter(PatientAdapter());
-  Hive.registerAdapter(PaymentNoticeAdapter());
-  Hive.registerAdapter(PaymentReconciliationAdapter());
-  Hive.registerAdapter(PersonAdapter());
-  Hive.registerAdapter(PlanDefinitionAdapter());
-  Hive.registerAdapter(PractitionerAdapter());
-  Hive.registerAdapter(PractitionerRoleAdapter());
-  Hive.registerAdapter(ProcedureAdapter());
-  Hive.registerAdapter(ProvenanceAdapter());
-  Hive.registerAdapter(QuestionnaireAdapter());
-  Hive.registerAdapter(QuestionnaireResponseAdapter());
-  Hive.registerAdapter(RelatedPersonAdapter());
-  Hive.registerAdapter(RequestGroupAdapter());
-  Hive.registerAdapter(ResearchDefinitionAdapter());
-  Hive.registerAdapter(ResearchElementDefinitionAdapter());
-  Hive.registerAdapter(ResearchStudyAdapter());
-  Hive.registerAdapter(ResearchSubjectAdapter());
-  Hive.registerAdapter(RiskAssessmentAdapter());
-  Hive.registerAdapter(RiskEvidenceSynthesisAdapter());
-  Hive.registerAdapter(ScheduleAdapter());
-  Hive.registerAdapter(SearchParameterAdapter());
-  Hive.registerAdapter(ServiceRequestAdapter());
-  Hive.registerAdapter(SlotAdapter());
-  Hive.registerAdapter(SpecimenAdapter());
-  Hive.registerAdapter(SpecimenDefinitionAdapter());
-  Hive.registerAdapter(StructureDefinitionAdapter());
-  Hive.registerAdapter(StructureMapAdapter());
-  Hive.registerAdapter(SubscriptionAdapter());
-  Hive.registerAdapter(SubstanceAdapter());
-  Hive.registerAdapter(SubstanceNucleicAcidAdapter());
-  Hive.registerAdapter(SubstancePolymerAdapter());
-  Hive.registerAdapter(SubstanceProteinAdapter());
-  Hive.registerAdapter(SubstanceReferenceInformationAdapter());
-  Hive.registerAdapter(SubstanceSourceMaterialAdapter());
-  Hive.registerAdapter(SubstanceSpecificationAdapter());
-  Hive.registerAdapter(SupplyDeliveryAdapter());
-  Hive.registerAdapter(SupplyRequestAdapter());
-  Hive.registerAdapter(TaskAdapter());
-  Hive.registerAdapter(TerminologyCapabilitiesAdapter());
-  Hive.registerAdapter(TestReportAdapter());
-  Hive.registerAdapter(TestScriptAdapter());
-  Hive.registerAdapter(ValueSetAdapter());
-  Hive.registerAdapter(VerificationResultAdapter());
-//  Hive.registerAdapter(VisionPrescription());
-
-  Hive.registerAdapter(ClassesAdapter());
-  final appDocumentDir = await getApplicationDocumentsDirectory();
-  Hive.init(appDocumentDir.path);
-  var classesBox = await Hive.openBox<Classes>('ClassesBox');
-  DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-  AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
   int tableId = 16;
 
-  for (String type in types) {
-    if(classesBox.get(type) == null) {
-      classesBox.put(
-          type,
-          Classes(type, tableId.toRadixString(16).padLeft(3, '0').toString(),
-              (androidInfo.id.hashCode % 10000).abs().toString(), '0000'));
-      tableId += 1;
-    }
-  }
+  String _path = await getDatabasesPath() + 'test';
+  _db = await openDatabase(_path);
+  final Future<Database> database = openDatabase(
+
+
+
 }
 
 Future<String> newId(String resource) async {
-  var classesBox = await Hive.openBox<Classes>('ClassesBox');
-  var tempResource = classesBox.get(resource);
-  tempResource.lastId = (int.parse(tempResource.lastId) + 1).toString().padLeft(4, '0');
-  classesBox.put(resource, tempResource);
-  return tempResource.lastId;
+  return '001';
 }
 
-@HiveType(typeId: 0)
 class Classes {
-  @HiveField(0)
+
   final String resourceType;
 
-  @HiveField(1)
+
   final String id;
 
-  @HiveField(2)
+
   final String deviceId;
 
-  @HiveField(3)
+
   String lastId;
 
   Classes(this.resourceType, this.id, this.deviceId, this.lastId);
@@ -1089,44 +888,6 @@ class Classes {
 }
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ClassesAdapter extends TypeAdapter<Classes> {
-  @override
-  final typeId = 0;
-
-  @override
-  Classes read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Classes(
-      fields[0] as String,
-      fields[1] as String,
-      fields[2] as String,
-      fields[3] as String,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Classes obj) {
-    writer
-      ..writeByte(4)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.deviceId)
-      ..writeByte(3)
-      ..write(obj.lastId);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

@@ -10,7 +10,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 67)
 class Bundle {
 
 	static Future<Bundle> newInstance({
@@ -51,39 +50,22 @@ class Bundle {
 	bundleBox.put(newBundle.id, newBundle);
 	return newBundle;
 }
-  @HiveField(0)
   final String resourceType= 'Bundle';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Identifier identifier;
-  @HiveField(8)
   String type; // <code> enum: document/message/transaction/transaction-response/batch/batch-response/history/searchset/collection;
-  @HiveField(9)
   Element elementType;
-  @HiveField(10)
   DateTime timestamp;
-  @HiveField(11)
   Element elementTimestamp;
-  @HiveField(12)
   int total;
-  @HiveField(13)
   Element elementTotal;
-  @HiveField(14)
   List<Bundle_Link> link;
-  @HiveField(15)
   List<Bundle_Entry> entry;
-  @HiveField(16)
   Signature signature;
 
 Bundle(
@@ -400,81 +382,6 @@ Bundle_Response(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class BundleAdapter extends TypeAdapter<Bundle> {
-  @override
-  final typeId = 67;
-
-  @override
-  Bundle read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Bundle(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      identifier: fields[7] as Identifier,
-      type: fields[8] as String,
-      elementType: fields[9] as Element,
-      timestamp: fields[10] as DateTime,
-      elementTimestamp: fields[11] as Element,
-      total: fields[12] as int,
-      elementTotal: fields[13] as Element,
-      link: (fields[14] as List)?.cast<Bundle_Link>(),
-      entry: (fields[15] as List)?.cast<Bundle_Entry>(),
-      signature: fields[16] as Signature,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Bundle obj) {
-    writer
-      ..writeByte(17)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.identifier)
-      ..writeByte(8)
-      ..write(obj.type)
-      ..writeByte(9)
-      ..write(obj.elementType)
-      ..writeByte(10)
-      ..write(obj.timestamp)
-      ..writeByte(11)
-      ..write(obj.elementTimestamp)
-      ..writeByte(12)
-      ..write(obj.total)
-      ..writeByte(13)
-      ..write(obj.elementTotal)
-      ..writeByte(14)
-      ..write(obj.link)
-      ..writeByte(15)
-      ..write(obj.entry)
-      ..writeByte(16)
-      ..write(obj.signature);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

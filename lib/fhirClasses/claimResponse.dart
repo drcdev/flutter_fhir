@@ -18,7 +18,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 75)
 class ClaimResponse {
 
 	static Future<ClaimResponse> newInstance({
@@ -113,93 +112,49 @@ class ClaimResponse {
 	claimResponseBox.put(newClaimResponse.id, newClaimResponse);
 	return newClaimResponse;
 }
-  @HiveField(0)
   final String resourceType= 'ClaimResponse';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String status;
-  @HiveField(13)
   Element elementStatus;
-  @HiveField(14)
   CodeableConcept type;
-  @HiveField(15)
   CodeableConcept subType;
-  @HiveField(16)
   String use;
-  @HiveField(17)
   Element elementUse;
-  @HiveField(18)
   Reference patient;
-  @HiveField(19)
   DateTime created;
-  @HiveField(20)
   Element elementCreated;
-  @HiveField(21)
   Reference insurer;
-  @HiveField(22)
   Reference requestor;
-  @HiveField(23)
   Reference request;
-  @HiveField(24)
   String outcome;
-  @HiveField(25)
   Element elementOutcome;
-  @HiveField(26)
   String disposition;
-  @HiveField(27)
   Element elementDisposition;
-  @HiveField(28)
   String preAuthRef;
-  @HiveField(29)
   Element elementPreAuthRef;
-  @HiveField(30)
   Period preAuthPeriod;
-  @HiveField(31)
   CodeableConcept payeeType;
-  @HiveField(32)
   List<ClaimResponse_Item> item;
-  @HiveField(33)
   List<ClaimResponse_AddItem> addItem;
-  @HiveField(34)
   List<ClaimResponse_Adjudication> adjudication;
-  @HiveField(35)
   List<ClaimResponse_Total> total;
-  @HiveField(36)
   ClaimResponse_Payment payment;
-  @HiveField(37)
   CodeableConcept fundsReserve;
-  @HiveField(38)
   CodeableConcept formCode;
-  @HiveField(39)
   Attachment form;
-  @HiveField(40)
   List<ClaimResponse_ProcessNote> processNote;
-  @HiveField(41)
   List<Reference> communicationRequest;
-  @HiveField(42)
   List<ClaimResponse_Insurance> insurance;
-  @HiveField(43)
   List<ClaimResponse_Error> error;
 
 ClaimResponse(
@@ -1006,162 +961,6 @@ ClaimResponse_Error(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ClaimResponseAdapter extends TypeAdapter<ClaimResponse> {
-  @override
-  final typeId = 75;
-
-  @override
-  ClaimResponse read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ClaimResponse(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      status: fields[12] as String,
-      elementStatus: fields[13] as Element,
-      type: fields[14] as CodeableConcept,
-      subType: fields[15] as CodeableConcept,
-      use: fields[16] as String,
-      elementUse: fields[17] as Element,
-      patient: fields[18] as Reference,
-      created: fields[19] as DateTime,
-      elementCreated: fields[20] as Element,
-      insurer: fields[21] as Reference,
-      requestor: fields[22] as Reference,
-      request: fields[23] as Reference,
-      outcome: fields[24] as String,
-      elementOutcome: fields[25] as Element,
-      disposition: fields[26] as String,
-      elementDisposition: fields[27] as Element,
-      preAuthRef: fields[28] as String,
-      elementPreAuthRef: fields[29] as Element,
-      preAuthPeriod: fields[30] as Period,
-      payeeType: fields[31] as CodeableConcept,
-      item: (fields[32] as List)?.cast<ClaimResponse_Item>(),
-      addItem: (fields[33] as List)?.cast<ClaimResponse_AddItem>(),
-      adjudication: (fields[34] as List)?.cast<ClaimResponse_Adjudication>(),
-      total: (fields[35] as List)?.cast<ClaimResponse_Total>(),
-      payment: fields[36] as ClaimResponse_Payment,
-      fundsReserve: fields[37] as CodeableConcept,
-      formCode: fields[38] as CodeableConcept,
-      form: fields[39] as Attachment,
-      processNote: (fields[40] as List)?.cast<ClaimResponse_ProcessNote>(),
-      communicationRequest: (fields[41] as List)?.cast<Reference>(),
-      insurance: (fields[42] as List)?.cast<ClaimResponse_Insurance>(),
-      error: (fields[43] as List)?.cast<ClaimResponse_Error>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ClaimResponse obj) {
-    writer
-      ..writeByte(44)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.status)
-      ..writeByte(13)
-      ..write(obj.elementStatus)
-      ..writeByte(14)
-      ..write(obj.type)
-      ..writeByte(15)
-      ..write(obj.subType)
-      ..writeByte(16)
-      ..write(obj.use)
-      ..writeByte(17)
-      ..write(obj.elementUse)
-      ..writeByte(18)
-      ..write(obj.patient)
-      ..writeByte(19)
-      ..write(obj.created)
-      ..writeByte(20)
-      ..write(obj.elementCreated)
-      ..writeByte(21)
-      ..write(obj.insurer)
-      ..writeByte(22)
-      ..write(obj.requestor)
-      ..writeByte(23)
-      ..write(obj.request)
-      ..writeByte(24)
-      ..write(obj.outcome)
-      ..writeByte(25)
-      ..write(obj.elementOutcome)
-      ..writeByte(26)
-      ..write(obj.disposition)
-      ..writeByte(27)
-      ..write(obj.elementDisposition)
-      ..writeByte(28)
-      ..write(obj.preAuthRef)
-      ..writeByte(29)
-      ..write(obj.elementPreAuthRef)
-      ..writeByte(30)
-      ..write(obj.preAuthPeriod)
-      ..writeByte(31)
-      ..write(obj.payeeType)
-      ..writeByte(32)
-      ..write(obj.item)
-      ..writeByte(33)
-      ..write(obj.addItem)
-      ..writeByte(34)
-      ..write(obj.adjudication)
-      ..writeByte(35)
-      ..write(obj.total)
-      ..writeByte(36)
-      ..write(obj.payment)
-      ..writeByte(37)
-      ..write(obj.fundsReserve)
-      ..writeByte(38)
-      ..write(obj.formCode)
-      ..writeByte(39)
-      ..write(obj.form)
-      ..writeByte(40)
-      ..write(obj.processNote)
-      ..writeByte(41)
-      ..write(obj.communicationRequest)
-      ..writeByte(42)
-      ..write(obj.insurance)
-      ..writeByte(43)
-      ..write(obj.error);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

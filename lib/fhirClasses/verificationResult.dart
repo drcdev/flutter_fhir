@@ -14,7 +14,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 200)
 class VerificationResult {
 
 	static Future<VerificationResult> newInstance({
@@ -81,65 +80,35 @@ class VerificationResult {
 	verificationResultBox.put(newVerificationResult.id, newVerificationResult);
 	return newVerificationResult;
 }
-  @HiveField(0)
   final String resourceType= 'VerificationResult';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Reference> target;
-  @HiveField(12)
   List<String> targetLocation;
-  @HiveField(13)
   List<Element> elementTargetLocation;
-  @HiveField(14)
   CodeableConcept need;
-  @HiveField(15)
   String status;
-  @HiveField(16)
   Element elementStatus;
-  @HiveField(17)
   DateTime statusDate;
-  @HiveField(18)
   Element elementStatusDate;
-  @HiveField(19)
   CodeableConcept validationType;
-  @HiveField(20)
   List<CodeableConcept> validationProcess;
-  @HiveField(21)
   Timing frequency;
-  @HiveField(22)
   DateTime lastPerformed;
-  @HiveField(23)
   Element elementLastPerformed;
-  @HiveField(24)
   String nextScheduled;
-  @HiveField(25)
   Element elementNextScheduled;
-  @HiveField(26)
   CodeableConcept failureAction;
-  @HiveField(27)
   List<VerificationResult_PrimarySource> primarySource;
-  @HiveField(28)
   VerificationResult_Attestation attestation;
-  @HiveField(29)
   List<VerificationResult_Validator> validator;
 
 VerificationResult(
@@ -359,121 +328,6 @@ VerificationResult_Validator(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class VerificationResultAdapter extends TypeAdapter<VerificationResult> {
-  @override
-  final typeId = 200;
-
-  @override
-  VerificationResult read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return VerificationResult(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      target: (fields[11] as List)?.cast<Reference>(),
-      targetLocation: (fields[12] as List)?.cast<String>(),
-      elementTargetLocation: (fields[13] as List)?.cast<Element>(),
-      need: fields[14] as CodeableConcept,
-      status: fields[15] as String,
-      elementStatus: fields[16] as Element,
-      statusDate: fields[17] as DateTime,
-      elementStatusDate: fields[18] as Element,
-      validationType: fields[19] as CodeableConcept,
-      validationProcess: (fields[20] as List)?.cast<CodeableConcept>(),
-      frequency: fields[21] as Timing,
-      lastPerformed: fields[22] as DateTime,
-      elementLastPerformed: fields[23] as Element,
-      nextScheduled: fields[24] as String,
-      elementNextScheduled: fields[25] as Element,
-      failureAction: fields[26] as CodeableConcept,
-      primarySource:
-          (fields[27] as List)?.cast<VerificationResult_PrimarySource>(),
-      attestation: fields[28] as VerificationResult_Attestation,
-      validator: (fields[29] as List)?.cast<VerificationResult_Validator>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, VerificationResult obj) {
-    writer
-      ..writeByte(30)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.target)
-      ..writeByte(12)
-      ..write(obj.targetLocation)
-      ..writeByte(13)
-      ..write(obj.elementTargetLocation)
-      ..writeByte(14)
-      ..write(obj.need)
-      ..writeByte(15)
-      ..write(obj.status)
-      ..writeByte(16)
-      ..write(obj.elementStatus)
-      ..writeByte(17)
-      ..write(obj.statusDate)
-      ..writeByte(18)
-      ..write(obj.elementStatusDate)
-      ..writeByte(19)
-      ..write(obj.validationType)
-      ..writeByte(20)
-      ..write(obj.validationProcess)
-      ..writeByte(21)
-      ..write(obj.frequency)
-      ..writeByte(22)
-      ..write(obj.lastPerformed)
-      ..writeByte(23)
-      ..write(obj.elementLastPerformed)
-      ..writeByte(24)
-      ..write(obj.nextScheduled)
-      ..writeByte(25)
-      ..write(obj.elementNextScheduled)
-      ..writeByte(26)
-      ..write(obj.failureAction)
-      ..writeByte(27)
-      ..write(obj.primarySource)
-      ..writeByte(28)
-      ..write(obj.attestation)
-      ..writeByte(29)
-      ..write(obj.validator);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

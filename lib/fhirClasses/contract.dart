@@ -21,7 +21,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 85)
 class Contract {
 
 	static Future<Contract> newInstance({
@@ -138,115 +137,60 @@ class Contract {
 	contractBox.put(newContract.id, newContract);
 	return newContract;
 }
-  @HiveField(0)
   final String resourceType= 'Contract';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String url;
-  @HiveField(13)
   Element elementUrl;
-  @HiveField(14)
   String version;
-  @HiveField(15)
   Element elementVersion;
-  @HiveField(16)
   String status;
-  @HiveField(17)
   Element elementStatus;
-  @HiveField(18)
   CodeableConcept legalState;
-  @HiveField(19)
   Reference instantiatesCanonical;
-  @HiveField(20)
   String instantiatesUri;
-  @HiveField(21)
   Element elementInstantiatesUri;
-  @HiveField(22)
   CodeableConcept contentDerivative;
-  @HiveField(23)
   DateTime issued;
-  @HiveField(24)
   Element elementIssued;
-  @HiveField(25)
   Period applies;
-  @HiveField(26)
   CodeableConcept expirationType;
-  @HiveField(27)
   List<Reference> subject;
-  @HiveField(28)
   List<Reference> authority;
-  @HiveField(29)
   List<Reference> domain;
-  @HiveField(30)
   List<Reference> site;
-  @HiveField(31)
   String name;
-  @HiveField(32)
   Element elementName;
-  @HiveField(33)
   String title;
-  @HiveField(34)
   Element elementTitle;
-  @HiveField(35)
   String subtitle;
-  @HiveField(36)
   Element elementSubtitle;
-  @HiveField(37)
   List<String> alias;
-  @HiveField(38)
   List<Element> elementAlias;
-  @HiveField(39)
   Reference author;
-  @HiveField(40)
   CodeableConcept scope;
-  @HiveField(41)
   CodeableConcept topicCodeableConcept;
-  @HiveField(42)
   Reference topicReference;
-  @HiveField(43)
   CodeableConcept type;
-  @HiveField(44)
   List<CodeableConcept> subType;
-  @HiveField(45)
   Contract_ContentDefinition contentDefinition;
-  @HiveField(46)
   List<Contract_Term> term;
-  @HiveField(47)
   List<Reference> supportingInfo;
-  @HiveField(48)
   List<Reference> relevantHistory;
-  @HiveField(49)
   List<Contract_Signer> signer;
-  @HiveField(50)
   List<Contract_Friendly> friendly;
-  @HiveField(51)
   List<Contract_Legal> legal;
-  @HiveField(52)
   List<Contract_Rule> rule;
-  @HiveField(53)
   Attachment legallyBindingAttachment;
-  @HiveField(54)
   Reference legallyBindingReference;
 
 Contract(
@@ -1355,195 +1299,6 @@ Contract_Rule(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ContractAdapter extends TypeAdapter<Contract> {
-  @override
-  final typeId = 85;
-
-  @override
-  Contract read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Contract(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      url: fields[12] as String,
-      elementUrl: fields[13] as Element,
-      version: fields[14] as String,
-      elementVersion: fields[15] as Element,
-      status: fields[16] as String,
-      elementStatus: fields[17] as Element,
-      legalState: fields[18] as CodeableConcept,
-      instantiatesCanonical: fields[19] as Reference,
-      instantiatesUri: fields[20] as String,
-      elementInstantiatesUri: fields[21] as Element,
-      contentDerivative: fields[22] as CodeableConcept,
-      issued: fields[23] as DateTime,
-      elementIssued: fields[24] as Element,
-      applies: fields[25] as Period,
-      expirationType: fields[26] as CodeableConcept,
-      subject: (fields[27] as List)?.cast<Reference>(),
-      authority: (fields[28] as List)?.cast<Reference>(),
-      domain: (fields[29] as List)?.cast<Reference>(),
-      site: (fields[30] as List)?.cast<Reference>(),
-      name: fields[31] as String,
-      elementName: fields[32] as Element,
-      title: fields[33] as String,
-      elementTitle: fields[34] as Element,
-      subtitle: fields[35] as String,
-      elementSubtitle: fields[36] as Element,
-      alias: (fields[37] as List)?.cast<String>(),
-      elementAlias: (fields[38] as List)?.cast<Element>(),
-      author: fields[39] as Reference,
-      scope: fields[40] as CodeableConcept,
-      topicCodeableConcept: fields[41] as CodeableConcept,
-      topicReference: fields[42] as Reference,
-      type: fields[43] as CodeableConcept,
-      subType: (fields[44] as List)?.cast<CodeableConcept>(),
-      contentDefinition: fields[45] as Contract_ContentDefinition,
-      term: (fields[46] as List)?.cast<Contract_Term>(),
-      supportingInfo: (fields[47] as List)?.cast<Reference>(),
-      relevantHistory: (fields[48] as List)?.cast<Reference>(),
-      signer: (fields[49] as List)?.cast<Contract_Signer>(),
-      friendly: (fields[50] as List)?.cast<Contract_Friendly>(),
-      legal: (fields[51] as List)?.cast<Contract_Legal>(),
-      rule: (fields[52] as List)?.cast<Contract_Rule>(),
-      legallyBindingAttachment: fields[53] as Attachment,
-      legallyBindingReference: fields[54] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Contract obj) {
-    writer
-      ..writeByte(55)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.url)
-      ..writeByte(13)
-      ..write(obj.elementUrl)
-      ..writeByte(14)
-      ..write(obj.version)
-      ..writeByte(15)
-      ..write(obj.elementVersion)
-      ..writeByte(16)
-      ..write(obj.status)
-      ..writeByte(17)
-      ..write(obj.elementStatus)
-      ..writeByte(18)
-      ..write(obj.legalState)
-      ..writeByte(19)
-      ..write(obj.instantiatesCanonical)
-      ..writeByte(20)
-      ..write(obj.instantiatesUri)
-      ..writeByte(21)
-      ..write(obj.elementInstantiatesUri)
-      ..writeByte(22)
-      ..write(obj.contentDerivative)
-      ..writeByte(23)
-      ..write(obj.issued)
-      ..writeByte(24)
-      ..write(obj.elementIssued)
-      ..writeByte(25)
-      ..write(obj.applies)
-      ..writeByte(26)
-      ..write(obj.expirationType)
-      ..writeByte(27)
-      ..write(obj.subject)
-      ..writeByte(28)
-      ..write(obj.authority)
-      ..writeByte(29)
-      ..write(obj.domain)
-      ..writeByte(30)
-      ..write(obj.site)
-      ..writeByte(31)
-      ..write(obj.name)
-      ..writeByte(32)
-      ..write(obj.elementName)
-      ..writeByte(33)
-      ..write(obj.title)
-      ..writeByte(34)
-      ..write(obj.elementTitle)
-      ..writeByte(35)
-      ..write(obj.subtitle)
-      ..writeByte(36)
-      ..write(obj.elementSubtitle)
-      ..writeByte(37)
-      ..write(obj.alias)
-      ..writeByte(38)
-      ..write(obj.elementAlias)
-      ..writeByte(39)
-      ..write(obj.author)
-      ..writeByte(40)
-      ..write(obj.scope)
-      ..writeByte(41)
-      ..write(obj.topicCodeableConcept)
-      ..writeByte(42)
-      ..write(obj.topicReference)
-      ..writeByte(43)
-      ..write(obj.type)
-      ..writeByte(44)
-      ..write(obj.subType)
-      ..writeByte(45)
-      ..write(obj.contentDefinition)
-      ..writeByte(46)
-      ..write(obj.term)
-      ..writeByte(47)
-      ..write(obj.supportingInfo)
-      ..writeByte(48)
-      ..write(obj.relevantHistory)
-      ..writeByte(49)
-      ..write(obj.signer)
-      ..writeByte(50)
-      ..write(obj.friendly)
-      ..writeByte(51)
-      ..write(obj.legal)
-      ..writeByte(52)
-      ..write(obj.rule)
-      ..writeByte(53)
-      ..write(obj.legallyBindingAttachment)
-      ..writeByte(54)
-      ..write(obj.legallyBindingReference);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

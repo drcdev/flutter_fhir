@@ -18,7 +18,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 72)
 class ChargeItem {
 
 	static Future<ChargeItem> newInstance({
@@ -117,97 +116,51 @@ class ChargeItem {
 	chargeItemBox.put(newChargeItem.id, newChargeItem);
 	return newChargeItem;
 }
-  @HiveField(0)
   final String resourceType= 'ChargeItem';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   List<String> definitionUri;
-  @HiveField(13)
   List<Element> elementDefinitionUri;
-  @HiveField(14)
   List<String> definitionCanonical;
-  @HiveField(15)
   String status; // <code> enum: planned/billable/not-billable/aborted/billed/entered-in-error/unknown;
-  @HiveField(16)
   Element elementStatus;
-  @HiveField(17)
   List<Reference> partOf;
-  @HiveField(18)
   CodeableConcept code;
-  @HiveField(19)
   Reference subject;
-  @HiveField(20)
   Reference context;
-  @HiveField(21)
   String occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-  @HiveField(22)
   Element elementOccurrenceDateTime;
-  @HiveField(23)
   Period occurrencePeriod;
-  @HiveField(24)
   Timing occurrenceTiming;
-  @HiveField(25)
   List<ChargeItem_Performer> performer;
-  @HiveField(26)
   Reference performingOrganization;
-  @HiveField(27)
   Reference requestingOrganization;
-  @HiveField(28)
   Reference costCenter;
-  @HiveField(29)
   Quantity quantity;
-  @HiveField(30)
   List<CodeableConcept> bodysite;
-  @HiveField(31)
   double factorOverride;
-  @HiveField(32)
   Element elementFactorOverride;
-  @HiveField(33)
   Money priceOverride;
-  @HiveField(34)
   String overrideReason;
-  @HiveField(35)
   Element elementOverrideReason;
-  @HiveField(36)
   Reference enterer;
-  @HiveField(37)
   DateTime enteredDate;
-  @HiveField(38)
   Element elementEnteredDate;
-  @HiveField(39)
   List<CodeableConcept> reason;
-  @HiveField(40)
   List<Reference> service;
-  @HiveField(41)
   Reference productReference;
-  @HiveField(42)
   CodeableConcept productCodeableConcept;
-  @HiveField(43)
   List<Reference> account;
-  @HiveField(44)
   List<Annotation> note;
-  @HiveField(45)
   List<Reference> supportingInformation;
 
 ChargeItem(
@@ -301,168 +254,6 @@ ChargeItem_Performer(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ChargeItemAdapter extends TypeAdapter<ChargeItem> {
-  @override
-  final typeId = 72;
-
-  @override
-  ChargeItem read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ChargeItem(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      definitionUri: (fields[12] as List)?.cast<String>(),
-      elementDefinitionUri: (fields[13] as List)?.cast<Element>(),
-      definitionCanonical: (fields[14] as List)?.cast<String>(),
-      status: fields[15] as String,
-      elementStatus: fields[16] as Element,
-      partOf: (fields[17] as List)?.cast<Reference>(),
-      code: fields[18] as CodeableConcept,
-      subject: fields[19] as Reference,
-      context: fields[20] as Reference,
-      occurrenceDateTime: fields[21] as String,
-      elementOccurrenceDateTime: fields[22] as Element,
-      occurrencePeriod: fields[23] as Period,
-      occurrenceTiming: fields[24] as Timing,
-      performer: (fields[25] as List)?.cast<ChargeItem_Performer>(),
-      performingOrganization: fields[26] as Reference,
-      requestingOrganization: fields[27] as Reference,
-      costCenter: fields[28] as Reference,
-      quantity: fields[29] as Quantity,
-      bodysite: (fields[30] as List)?.cast<CodeableConcept>(),
-      factorOverride: fields[31] as double,
-      elementFactorOverride: fields[32] as Element,
-      priceOverride: fields[33] as Money,
-      overrideReason: fields[34] as String,
-      elementOverrideReason: fields[35] as Element,
-      enterer: fields[36] as Reference,
-      enteredDate: fields[37] as DateTime,
-      elementEnteredDate: fields[38] as Element,
-      reason: (fields[39] as List)?.cast<CodeableConcept>(),
-      service: (fields[40] as List)?.cast<Reference>(),
-      productReference: fields[41] as Reference,
-      productCodeableConcept: fields[42] as CodeableConcept,
-      account: (fields[43] as List)?.cast<Reference>(),
-      note: (fields[44] as List)?.cast<Annotation>(),
-      supportingInformation: (fields[45] as List)?.cast<Reference>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ChargeItem obj) {
-    writer
-      ..writeByte(46)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.definitionUri)
-      ..writeByte(13)
-      ..write(obj.elementDefinitionUri)
-      ..writeByte(14)
-      ..write(obj.definitionCanonical)
-      ..writeByte(15)
-      ..write(obj.status)
-      ..writeByte(16)
-      ..write(obj.elementStatus)
-      ..writeByte(17)
-      ..write(obj.partOf)
-      ..writeByte(18)
-      ..write(obj.code)
-      ..writeByte(19)
-      ..write(obj.subject)
-      ..writeByte(20)
-      ..write(obj.context)
-      ..writeByte(21)
-      ..write(obj.occurrenceDateTime)
-      ..writeByte(22)
-      ..write(obj.elementOccurrenceDateTime)
-      ..writeByte(23)
-      ..write(obj.occurrencePeriod)
-      ..writeByte(24)
-      ..write(obj.occurrenceTiming)
-      ..writeByte(25)
-      ..write(obj.performer)
-      ..writeByte(26)
-      ..write(obj.performingOrganization)
-      ..writeByte(27)
-      ..write(obj.requestingOrganization)
-      ..writeByte(28)
-      ..write(obj.costCenter)
-      ..writeByte(29)
-      ..write(obj.quantity)
-      ..writeByte(30)
-      ..write(obj.bodysite)
-      ..writeByte(31)
-      ..write(obj.factorOverride)
-      ..writeByte(32)
-      ..write(obj.elementFactorOverride)
-      ..writeByte(33)
-      ..write(obj.priceOverride)
-      ..writeByte(34)
-      ..write(obj.overrideReason)
-      ..writeByte(35)
-      ..write(obj.elementOverrideReason)
-      ..writeByte(36)
-      ..write(obj.enterer)
-      ..writeByte(37)
-      ..write(obj.enteredDate)
-      ..writeByte(38)
-      ..write(obj.elementEnteredDate)
-      ..writeByte(39)
-      ..write(obj.reason)
-      ..writeByte(40)
-      ..write(obj.service)
-      ..writeByte(41)
-      ..write(obj.productReference)
-      ..writeByte(42)
-      ..write(obj.productCodeableConcept)
-      ..writeByte(43)
-      ..write(obj.account)
-      ..writeByte(44)
-      ..write(obj.note)
-      ..writeByte(45)
-      ..write(obj.supportingInformation);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

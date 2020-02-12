@@ -7,7 +7,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 41)
 class ContactDetail {
 
 	static Future<ContactDetail> newInstance({
@@ -26,15 +25,10 @@ class ContactDetail {
 	contactDetailBox.put(newContactDetail.id, newContactDetail);
 	return newContactDetail;
 }
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   String name;
-  @HiveField(3)
   Element elementName;
-  @HiveField(4)
   List<ContactPoint> telecom;
 
 ContactDetail(
@@ -51,46 +45,6 @@ ContactDetail(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ContactDetailAdapter extends TypeAdapter<ContactDetail> {
-  @override
-  final typeId = 41;
-
-  @override
-  ContactDetail read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ContactDetail(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      name: fields[2] as String,
-      elementName: fields[3] as Element,
-      telecom: (fields[4] as List)?.cast<ContactPoint>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ContactDetail obj) {
-    writer
-      ..writeByte(5)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.name)
-      ..writeByte(3)
-      ..write(obj.elementName)
-      ..writeByte(4)
-      ..write(obj.telecom);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

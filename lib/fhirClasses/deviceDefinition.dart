@@ -18,7 +18,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 91)
 class DeviceDefinition {
 
 	static Future<DeviceDefinition> newInstance({
@@ -103,83 +102,44 @@ class DeviceDefinition {
 	deviceDefinitionBox.put(newDeviceDefinition.id, newDeviceDefinition);
 	return newDeviceDefinition;
 }
-  @HiveField(0)
   final String resourceType= 'DeviceDefinition';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   List<DeviceDefinition_UdiDeviceIdentifier> udiDeviceIdentifier;
-  @HiveField(13)
   String manufacturerString; //  pattern: ^[ \r\n\t\S]+$
-  @HiveField(14)
   Element elementManufacturerString;
-  @HiveField(15)
   Reference manufacturerReference;
-  @HiveField(16)
   List<DeviceDefinition_DeviceName> deviceName;
-  @HiveField(17)
   String modelNumber;
-  @HiveField(18)
   Element elementModelNumber;
-  @HiveField(19)
   CodeableConcept type;
-  @HiveField(20)
   List<DeviceDefinition_Specialization> specialization;
-  @HiveField(21)
   List<String> version;
-  @HiveField(22)
   List<Element> elementVersion;
-  @HiveField(23)
   List<CodeableConcept> safety;
-  @HiveField(24)
   List<ProductShelfLife> shelfLifeStorage;
-  @HiveField(25)
   ProdCharacteristic physicalCharacteristics;
-  @HiveField(26)
   List<CodeableConcept> languageCode;
-  @HiveField(27)
   List<DeviceDefinition_Capability> capability;
-  @HiveField(28)
   List<DeviceDefinition_Property> property;
-  @HiveField(29)
   Reference owner;
-  @HiveField(30)
   List<ContactPoint> contact;
-  @HiveField(31)
   String url;
-  @HiveField(32)
   Element elementUrl;
-  @HiveField(33)
   String onlineInformation;
-  @HiveField(34)
   Element elementOnlineInformation;
-  @HiveField(35)
   List<Annotation> note;
-  @HiveField(36)
   Quantity quantity;
-  @HiveField(37)
   Reference parentDevice;
-  @HiveField(38)
   List<DeviceDefinition_Material> material;
 
 DeviceDefinition(
@@ -499,149 +459,6 @@ DeviceDefinition_Material(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class DeviceDefinitionAdapter extends TypeAdapter<DeviceDefinition> {
-  @override
-  final typeId = 91;
-
-  @override
-  DeviceDefinition read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return DeviceDefinition(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      udiDeviceIdentifier:
-          (fields[12] as List)?.cast<DeviceDefinition_UdiDeviceIdentifier>(),
-      manufacturerString: fields[13] as String,
-      elementManufacturerString: fields[14] as Element,
-      manufacturerReference: fields[15] as Reference,
-      deviceName: (fields[16] as List)?.cast<DeviceDefinition_DeviceName>(),
-      modelNumber: fields[17] as String,
-      elementModelNumber: fields[18] as Element,
-      type: fields[19] as CodeableConcept,
-      specialization:
-          (fields[20] as List)?.cast<DeviceDefinition_Specialization>(),
-      version: (fields[21] as List)?.cast<String>(),
-      elementVersion: (fields[22] as List)?.cast<Element>(),
-      safety: (fields[23] as List)?.cast<CodeableConcept>(),
-      shelfLifeStorage: (fields[24] as List)?.cast<ProductShelfLife>(),
-      physicalCharacteristics: fields[25] as ProdCharacteristic,
-      languageCode: (fields[26] as List)?.cast<CodeableConcept>(),
-      capability: (fields[27] as List)?.cast<DeviceDefinition_Capability>(),
-      property: (fields[28] as List)?.cast<DeviceDefinition_Property>(),
-      owner: fields[29] as Reference,
-      contact: (fields[30] as List)?.cast<ContactPoint>(),
-      url: fields[31] as String,
-      elementUrl: fields[32] as Element,
-      onlineInformation: fields[33] as String,
-      elementOnlineInformation: fields[34] as Element,
-      note: (fields[35] as List)?.cast<Annotation>(),
-      quantity: fields[36] as Quantity,
-      parentDevice: fields[37] as Reference,
-      material: (fields[38] as List)?.cast<DeviceDefinition_Material>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, DeviceDefinition obj) {
-    writer
-      ..writeByte(39)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.udiDeviceIdentifier)
-      ..writeByte(13)
-      ..write(obj.manufacturerString)
-      ..writeByte(14)
-      ..write(obj.elementManufacturerString)
-      ..writeByte(15)
-      ..write(obj.manufacturerReference)
-      ..writeByte(16)
-      ..write(obj.deviceName)
-      ..writeByte(17)
-      ..write(obj.modelNumber)
-      ..writeByte(18)
-      ..write(obj.elementModelNumber)
-      ..writeByte(19)
-      ..write(obj.type)
-      ..writeByte(20)
-      ..write(obj.specialization)
-      ..writeByte(21)
-      ..write(obj.version)
-      ..writeByte(22)
-      ..write(obj.elementVersion)
-      ..writeByte(23)
-      ..write(obj.safety)
-      ..writeByte(24)
-      ..write(obj.shelfLifeStorage)
-      ..writeByte(25)
-      ..write(obj.physicalCharacteristics)
-      ..writeByte(26)
-      ..write(obj.languageCode)
-      ..writeByte(27)
-      ..write(obj.capability)
-      ..writeByte(28)
-      ..write(obj.property)
-      ..writeByte(29)
-      ..write(obj.owner)
-      ..writeByte(30)
-      ..write(obj.contact)
-      ..writeByte(31)
-      ..write(obj.url)
-      ..writeByte(32)
-      ..write(obj.elementUrl)
-      ..writeByte(33)
-      ..write(obj.onlineInformation)
-      ..writeByte(34)
-      ..write(obj.elementOnlineInformation)
-      ..writeByte(35)
-      ..write(obj.note)
-      ..writeByte(36)
-      ..write(obj.quantity)
-      ..writeByte(37)
-      ..write(obj.parentDevice)
-      ..writeByte(38)
-      ..write(obj.material);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

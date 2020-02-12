@@ -15,7 +15,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 95)
 class DiagnosticReport {
 
 	static Future<DiagnosticReport> newInstance({
@@ -90,73 +89,39 @@ class DiagnosticReport {
 	diagnosticReportBox.put(newDiagnosticReport.id, newDiagnosticReport);
 	return newDiagnosticReport;
 }
-  @HiveField(0)
   final String resourceType= 'DiagnosticReport';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   List<Reference> basedOn;
-  @HiveField(13)
   String status; // <code> enum: registered/partial/preliminary/final/amended/corrected/appended/cancelled/entered-in-error/unknown;
-  @HiveField(14)
   Element elementStatus;
-  @HiveField(15)
   List<CodeableConcept> category;
-  @HiveField(16)
   CodeableConcept code;
-  @HiveField(17)
   Reference subject;
-  @HiveField(18)
   Reference encounter;
-  @HiveField(19)
   String effectiveDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-  @HiveField(20)
   Element elementEffectiveDateTime;
-  @HiveField(21)
   Period effectivePeriod;
-  @HiveField(22)
   DateTime issued;
-  @HiveField(23)
   Element elementIssued;
-  @HiveField(24)
   List<Reference> performer;
-  @HiveField(25)
   List<Reference> resultsInterpreter;
-  @HiveField(26)
   List<Reference> specimen;
-  @HiveField(27)
   List<Reference> result;
-  @HiveField(28)
   List<Reference> imagingStudy;
-  @HiveField(29)
   List<DiagnosticReport_Media> media;
-  @HiveField(30)
   String conclusion;
-  @HiveField(31)
   Element elementConclusion;
-  @HiveField(32)
   List<CodeableConcept> conclusionCode;
-  @HiveField(33)
   List<Attachment> presentedForm;
 
 DiagnosticReport(
@@ -242,132 +207,6 @@ DiagnosticReport_Media(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class DiagnosticReportAdapter extends TypeAdapter<DiagnosticReport> {
-  @override
-  final typeId = 95;
-
-  @override
-  DiagnosticReport read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return DiagnosticReport(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      basedOn: (fields[12] as List)?.cast<Reference>(),
-      status: fields[13] as String,
-      elementStatus: fields[14] as Element,
-      category: (fields[15] as List)?.cast<CodeableConcept>(),
-      code: fields[16] as CodeableConcept,
-      subject: fields[17] as Reference,
-      encounter: fields[18] as Reference,
-      effectiveDateTime: fields[19] as String,
-      elementEffectiveDateTime: fields[20] as Element,
-      effectivePeriod: fields[21] as Period,
-      issued: fields[22] as DateTime,
-      elementIssued: fields[23] as Element,
-      performer: (fields[24] as List)?.cast<Reference>(),
-      resultsInterpreter: (fields[25] as List)?.cast<Reference>(),
-      specimen: (fields[26] as List)?.cast<Reference>(),
-      result: (fields[27] as List)?.cast<Reference>(),
-      imagingStudy: (fields[28] as List)?.cast<Reference>(),
-      media: (fields[29] as List)?.cast<DiagnosticReport_Media>(),
-      conclusion: fields[30] as String,
-      elementConclusion: fields[31] as Element,
-      conclusionCode: (fields[32] as List)?.cast<CodeableConcept>(),
-      presentedForm: (fields[33] as List)?.cast<Attachment>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, DiagnosticReport obj) {
-    writer
-      ..writeByte(34)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.basedOn)
-      ..writeByte(13)
-      ..write(obj.status)
-      ..writeByte(14)
-      ..write(obj.elementStatus)
-      ..writeByte(15)
-      ..write(obj.category)
-      ..writeByte(16)
-      ..write(obj.code)
-      ..writeByte(17)
-      ..write(obj.subject)
-      ..writeByte(18)
-      ..write(obj.encounter)
-      ..writeByte(19)
-      ..write(obj.effectiveDateTime)
-      ..writeByte(20)
-      ..write(obj.elementEffectiveDateTime)
-      ..writeByte(21)
-      ..write(obj.effectivePeriod)
-      ..writeByte(22)
-      ..write(obj.issued)
-      ..writeByte(23)
-      ..write(obj.elementIssued)
-      ..writeByte(24)
-      ..write(obj.performer)
-      ..writeByte(25)
-      ..write(obj.resultsInterpreter)
-      ..writeByte(26)
-      ..write(obj.specimen)
-      ..writeByte(27)
-      ..write(obj.result)
-      ..writeByte(28)
-      ..write(obj.imagingStudy)
-      ..writeByte(29)
-      ..write(obj.media)
-      ..writeByte(30)
-      ..write(obj.conclusion)
-      ..writeByte(31)
-      ..write(obj.elementConclusion)
-      ..writeByte(32)
-      ..write(obj.conclusionCode)
-      ..writeByte(33)
-      ..write(obj.presentedForm);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

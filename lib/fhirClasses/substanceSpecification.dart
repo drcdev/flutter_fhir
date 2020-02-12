@@ -16,7 +16,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 192)
 class SubstanceSpecification {
 
 	static Future<SubstanceSpecification> newInstance({
@@ -87,69 +86,37 @@ class SubstanceSpecification {
 	substanceSpecificationBox.put(newSubstanceSpecification.id, newSubstanceSpecification);
 	return newSubstanceSpecification;
 }
-  @HiveField(0)
   final String resourceType= 'SubstanceSpecification';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   Identifier identifier;
-  @HiveField(12)
   CodeableConcept type;
-  @HiveField(13)
   CodeableConcept status;
-  @HiveField(14)
   CodeableConcept domain;
-  @HiveField(15)
   String description;
-  @HiveField(16)
   Element elementDescription;
-  @HiveField(17)
   List<Reference> source;
-  @HiveField(18)
   String comment;
-  @HiveField(19)
   Element elementComment;
-  @HiveField(20)
   List<SubstanceSpecification_Moiety> moiety;
-  @HiveField(21)
   List<SubstanceSpecification_Property> property;
-  @HiveField(22)
   Reference referenceInformation;
-  @HiveField(23)
   SubstanceSpecification_Structure structure;
-  @HiveField(24)
   List<SubstanceSpecification_Code> code;
-  @HiveField(25)
   List<SubstanceSpecification_Name> name;
-  @HiveField(26)
   List<SubstanceSpecification_MolecularWeight> molecularWeight;
-  @HiveField(27)
   List<SubstanceSpecification_Relationship> relationship;
-  @HiveField(28)
   Reference nucleicAcid;
-  @HiveField(29)
   Reference polymer;
-  @HiveField(30)
   Reference protein;
-  @HiveField(31)
   Reference sourceMaterial;
 
 SubstanceSpecification(
@@ -798,129 +765,6 @@ SubstanceSpecification_Relationship(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class SubstanceSpecificationAdapter
-    extends TypeAdapter<SubstanceSpecification> {
-  @override
-  final typeId = 192;
-
-  @override
-  SubstanceSpecification read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstanceSpecification(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: fields[11] as Identifier,
-      type: fields[12] as CodeableConcept,
-      status: fields[13] as CodeableConcept,
-      domain: fields[14] as CodeableConcept,
-      description: fields[15] as String,
-      elementDescription: fields[16] as Element,
-      source: (fields[17] as List)?.cast<Reference>(),
-      comment: fields[18] as String,
-      elementComment: fields[19] as Element,
-      moiety: (fields[20] as List)?.cast<SubstanceSpecification_Moiety>(),
-      property: (fields[21] as List)?.cast<SubstanceSpecification_Property>(),
-      referenceInformation: fields[22] as Reference,
-      structure: fields[23] as SubstanceSpecification_Structure,
-      code: (fields[24] as List)?.cast<SubstanceSpecification_Code>(),
-      name: (fields[25] as List)?.cast<SubstanceSpecification_Name>(),
-      molecularWeight:
-          (fields[26] as List)?.cast<SubstanceSpecification_MolecularWeight>(),
-      relationship:
-          (fields[27] as List)?.cast<SubstanceSpecification_Relationship>(),
-      nucleicAcid: fields[28] as Reference,
-      polymer: fields[29] as Reference,
-      protein: fields[30] as Reference,
-      sourceMaterial: fields[31] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SubstanceSpecification obj) {
-    writer
-      ..writeByte(32)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.type)
-      ..writeByte(13)
-      ..write(obj.status)
-      ..writeByte(14)
-      ..write(obj.domain)
-      ..writeByte(15)
-      ..write(obj.description)
-      ..writeByte(16)
-      ..write(obj.elementDescription)
-      ..writeByte(17)
-      ..write(obj.source)
-      ..writeByte(18)
-      ..write(obj.comment)
-      ..writeByte(19)
-      ..write(obj.elementComment)
-      ..writeByte(20)
-      ..write(obj.moiety)
-      ..writeByte(21)
-      ..write(obj.property)
-      ..writeByte(22)
-      ..write(obj.referenceInformation)
-      ..writeByte(23)
-      ..write(obj.structure)
-      ..writeByte(24)
-      ..write(obj.code)
-      ..writeByte(25)
-      ..write(obj.name)
-      ..writeByte(26)
-      ..write(obj.molecularWeight)
-      ..writeByte(27)
-      ..write(obj.relationship)
-      ..writeByte(28)
-      ..write(obj.nucleicAcid)
-      ..writeByte(29)
-      ..write(obj.polymer)
-      ..writeByte(30)
-      ..write(obj.protein)
-      ..writeByte(31)
-      ..write(obj.sourceMaterial);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

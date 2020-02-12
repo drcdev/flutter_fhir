@@ -10,7 +10,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 46)
 class TriggerDefinition {
 
 	static Future<TriggerDefinition> newInstance({
@@ -47,33 +46,19 @@ class TriggerDefinition {
 	triggerDefinitionBox.put(newTriggerDefinition.id, newTriggerDefinition);
 	return newTriggerDefinition;
 }
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   String type; // <code> enum: named-event/periodic/data-changed/data-added/data-modified/data-removed/data-accessed/data-access-ended;
-  @HiveField(3)
   Element elementType;
-  @HiveField(4)
   String name;
-  @HiveField(5)
   Element elementName;
-  @HiveField(6)
   Timing timingTiming;
-  @HiveField(7)
   Reference timingReference;
-  @HiveField(8)
   String timingDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
-  @HiveField(9)
   Element elementTimingDate;
-  @HiveField(10)
   String timingDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-  @HiveField(11)
   Element elementTimingDateTime;
-  @HiveField(12)
   List<DataRequirement> data;
-  @HiveField(13)
   Expression condition;
 
 TriggerDefinition(
@@ -99,73 +84,6 @@ TriggerDefinition(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class TriggerDefinitionAdapter extends TypeAdapter<TriggerDefinition> {
-  @override
-  final typeId = 46;
-
-  @override
-  TriggerDefinition read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TriggerDefinition(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      type: fields[2] as String,
-      elementType: fields[3] as Element,
-      name: fields[4] as String,
-      elementName: fields[5] as Element,
-      timingTiming: fields[6] as Timing,
-      timingReference: fields[7] as Reference,
-      timingDate: fields[8] as String,
-      elementTimingDate: fields[9] as Element,
-      timingDateTime: fields[10] as String,
-      elementTimingDateTime: fields[11] as Element,
-      data: (fields[12] as List)?.cast<DataRequirement>(),
-      condition: fields[13] as Expression,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TriggerDefinition obj) {
-    writer
-      ..writeByte(14)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.type)
-      ..writeByte(3)
-      ..write(obj.elementType)
-      ..writeByte(4)
-      ..write(obj.name)
-      ..writeByte(5)
-      ..write(obj.elementName)
-      ..writeByte(6)
-      ..write(obj.timingTiming)
-      ..writeByte(7)
-      ..write(obj.timingReference)
-      ..writeByte(8)
-      ..write(obj.timingDate)
-      ..writeByte(9)
-      ..write(obj.elementTimingDate)
-      ..writeByte(10)
-      ..write(obj.timingDateTime)
-      ..writeByte(11)
-      ..write(obj.elementTimingDateTime)
-      ..writeByte(12)
-      ..write(obj.data)
-      ..writeByte(13)
-      ..write(obj.condition);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

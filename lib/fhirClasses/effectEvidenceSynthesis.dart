@@ -18,7 +18,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 98)
 class EffectEvidenceSynthesis {
 
 	static Future<EffectEvidenceSynthesis> newInstance({
@@ -135,115 +134,60 @@ class EffectEvidenceSynthesis {
 	effectEvidenceSynthesisBox.put(newEffectEvidenceSynthesis.id, newEffectEvidenceSynthesis);
 	return newEffectEvidenceSynthesis;
 }
-  @HiveField(0)
   final String resourceType= 'EffectEvidenceSynthesis';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   String url;
-  @HiveField(12)
   Element elementUrl;
-  @HiveField(13)
   List<Identifier> identifier;
-  @HiveField(14)
   String version;
-  @HiveField(15)
   Element elementVersion;
-  @HiveField(16)
   String name;
-  @HiveField(17)
   Element elementName;
-  @HiveField(18)
   String title;
-  @HiveField(19)
   Element elementTitle;
-  @HiveField(20)
   String status; // <code> enum: draft/active/retired/unknown;
-  @HiveField(21)
   Element elementStatus;
-  @HiveField(22)
   DateTime date;
-  @HiveField(23)
   Element elementDate;
-  @HiveField(24)
   String publisher;
-  @HiveField(25)
   Element elementPublisher;
-  @HiveField(26)
   List<ContactDetail> contact;
-  @HiveField(27)
   String description;
-  @HiveField(28)
   Element elementDescription;
-  @HiveField(29)
   List<Annotation> note;
-  @HiveField(30)
   List<UsageContext> useContext;
-  @HiveField(31)
   List<CodeableConcept> jurisdiction;
-  @HiveField(32)
   String copyright;
-  @HiveField(33)
   Element elementCopyright;
-  @HiveField(34)
   String approvalDate;
-  @HiveField(35)
   Element elementApprovalDate;
-  @HiveField(36)
   String lastReviewDate;
-  @HiveField(37)
   Element elementLastReviewDate;
-  @HiveField(38)
   Period effectivePeriod;
-  @HiveField(39)
   List<CodeableConcept> topic;
-  @HiveField(40)
   List<ContactDetail> author;
-  @HiveField(41)
   List<ContactDetail> editor;
-  @HiveField(42)
   List<ContactDetail> reviewer;
-  @HiveField(43)
   List<ContactDetail> endorser;
-  @HiveField(44)
   List<RelatedArtifact> relatedArtifact;
-  @HiveField(45)
   CodeableConcept synthesisType;
-  @HiveField(46)
   CodeableConcept studyType;
-  @HiveField(47)
   Reference population;
-  @HiveField(48)
   Reference exposure;
-  @HiveField(49)
   Reference exposureAlternative;
-  @HiveField(50)
   Reference outcome;
-  @HiveField(51)
   EffectEvidenceSynthesis_SampleSize sampleSize;
-  @HiveField(52)
   List<EffectEvidenceSynthesis_ResultsByExposure> resultsByExposure;
-  @HiveField(53)
   List<EffectEvidenceSynthesis_EffectEstimate> effectEstimate;
-  @HiveField(54)
   List<EffectEvidenceSynthesis_Certainty> certainty;
 
 EffectEvidenceSynthesis(
@@ -615,199 +559,6 @@ EffectEvidenceSynthesis_CertaintySubcomponent(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class EffectEvidenceSynthesisAdapter
-    extends TypeAdapter<EffectEvidenceSynthesis> {
-  @override
-  final typeId = 98;
-
-  @override
-  EffectEvidenceSynthesis read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return EffectEvidenceSynthesis(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      url: fields[11] as String,
-      elementUrl: fields[12] as Element,
-      identifier: (fields[13] as List)?.cast<Identifier>(),
-      version: fields[14] as String,
-      elementVersion: fields[15] as Element,
-      name: fields[16] as String,
-      elementName: fields[17] as Element,
-      title: fields[18] as String,
-      elementTitle: fields[19] as Element,
-      status: fields[20] as String,
-      elementStatus: fields[21] as Element,
-      date: fields[22] as DateTime,
-      elementDate: fields[23] as Element,
-      publisher: fields[24] as String,
-      elementPublisher: fields[25] as Element,
-      contact: (fields[26] as List)?.cast<ContactDetail>(),
-      description: fields[27] as String,
-      elementDescription: fields[28] as Element,
-      note: (fields[29] as List)?.cast<Annotation>(),
-      useContext: (fields[30] as List)?.cast<UsageContext>(),
-      jurisdiction: (fields[31] as List)?.cast<CodeableConcept>(),
-      copyright: fields[32] as String,
-      elementCopyright: fields[33] as Element,
-      approvalDate: fields[34] as String,
-      elementApprovalDate: fields[35] as Element,
-      lastReviewDate: fields[36] as String,
-      elementLastReviewDate: fields[37] as Element,
-      effectivePeriod: fields[38] as Period,
-      topic: (fields[39] as List)?.cast<CodeableConcept>(),
-      author: (fields[40] as List)?.cast<ContactDetail>(),
-      editor: (fields[41] as List)?.cast<ContactDetail>(),
-      reviewer: (fields[42] as List)?.cast<ContactDetail>(),
-      endorser: (fields[43] as List)?.cast<ContactDetail>(),
-      relatedArtifact: (fields[44] as List)?.cast<RelatedArtifact>(),
-      synthesisType: fields[45] as CodeableConcept,
-      studyType: fields[46] as CodeableConcept,
-      population: fields[47] as Reference,
-      exposure: fields[48] as Reference,
-      exposureAlternative: fields[49] as Reference,
-      outcome: fields[50] as Reference,
-      sampleSize: fields[51] as EffectEvidenceSynthesis_SampleSize,
-      resultsByExposure: (fields[52] as List)
-          ?.cast<EffectEvidenceSynthesis_ResultsByExposure>(),
-      effectEstimate:
-          (fields[53] as List)?.cast<EffectEvidenceSynthesis_EffectEstimate>(),
-      certainty:
-          (fields[54] as List)?.cast<EffectEvidenceSynthesis_Certainty>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, EffectEvidenceSynthesis obj) {
-    writer
-      ..writeByte(55)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.url)
-      ..writeByte(12)
-      ..write(obj.elementUrl)
-      ..writeByte(13)
-      ..write(obj.identifier)
-      ..writeByte(14)
-      ..write(obj.version)
-      ..writeByte(15)
-      ..write(obj.elementVersion)
-      ..writeByte(16)
-      ..write(obj.name)
-      ..writeByte(17)
-      ..write(obj.elementName)
-      ..writeByte(18)
-      ..write(obj.title)
-      ..writeByte(19)
-      ..write(obj.elementTitle)
-      ..writeByte(20)
-      ..write(obj.status)
-      ..writeByte(21)
-      ..write(obj.elementStatus)
-      ..writeByte(22)
-      ..write(obj.date)
-      ..writeByte(23)
-      ..write(obj.elementDate)
-      ..writeByte(24)
-      ..write(obj.publisher)
-      ..writeByte(25)
-      ..write(obj.elementPublisher)
-      ..writeByte(26)
-      ..write(obj.contact)
-      ..writeByte(27)
-      ..write(obj.description)
-      ..writeByte(28)
-      ..write(obj.elementDescription)
-      ..writeByte(29)
-      ..write(obj.note)
-      ..writeByte(30)
-      ..write(obj.useContext)
-      ..writeByte(31)
-      ..write(obj.jurisdiction)
-      ..writeByte(32)
-      ..write(obj.copyright)
-      ..writeByte(33)
-      ..write(obj.elementCopyright)
-      ..writeByte(34)
-      ..write(obj.approvalDate)
-      ..writeByte(35)
-      ..write(obj.elementApprovalDate)
-      ..writeByte(36)
-      ..write(obj.lastReviewDate)
-      ..writeByte(37)
-      ..write(obj.elementLastReviewDate)
-      ..writeByte(38)
-      ..write(obj.effectivePeriod)
-      ..writeByte(39)
-      ..write(obj.topic)
-      ..writeByte(40)
-      ..write(obj.author)
-      ..writeByte(41)
-      ..write(obj.editor)
-      ..writeByte(42)
-      ..write(obj.reviewer)
-      ..writeByte(43)
-      ..write(obj.endorser)
-      ..writeByte(44)
-      ..write(obj.relatedArtifact)
-      ..writeByte(45)
-      ..write(obj.synthesisType)
-      ..writeByte(46)
-      ..write(obj.studyType)
-      ..writeByte(47)
-      ..write(obj.population)
-      ..writeByte(48)
-      ..write(obj.exposure)
-      ..writeByte(49)
-      ..write(obj.exposureAlternative)
-      ..writeByte(50)
-      ..write(obj.outcome)
-      ..writeByte(51)
-      ..write(obj.sampleSize)
-      ..writeByte(52)
-      ..write(obj.resultsByExposure)
-      ..writeByte(53)
-      ..write(obj.effectEstimate)
-      ..writeByte(54)
-      ..write(obj.certainty);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

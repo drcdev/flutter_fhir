@@ -16,7 +16,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 84)
 class Consent {
 
 	static Future<Consent> newInstance({
@@ -77,59 +76,32 @@ class Consent {
 	consentBox.put(newConsent.id, newConsent);
 	return newConsent;
 }
-  @HiveField(0)
   final String resourceType= 'Consent';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String status; // <code> enum: draft/proposed/active/rejected/inactive/entered-in-error;
-  @HiveField(13)
   Element elementStatus;
-  @HiveField(14)
   CodeableConcept scope;
-  @HiveField(15)
   List<CodeableConcept> category;
-  @HiveField(16)
   Reference patient;
-  @HiveField(17)
   DateTime dateTime;
-  @HiveField(18)
   Element elementDateTime;
-  @HiveField(19)
   List<Reference> performer;
-  @HiveField(20)
   List<Reference> organization;
-  @HiveField(21)
   Attachment sourceAttachment;
-  @HiveField(22)
   Reference sourceReference;
-  @HiveField(23)
   List<Consent_Policy> policy;
-  @HiveField(24)
   CodeableConcept policyRule;
-  @HiveField(25)
   List<Consent_Verification> verification;
-  @HiveField(26)
   Consent_Provision provision;
 
 Consent(
@@ -416,111 +388,6 @@ Consent_Data(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ConsentAdapter extends TypeAdapter<Consent> {
-  @override
-  final typeId = 84;
-
-  @override
-  Consent read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Consent(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      status: fields[12] as String,
-      elementStatus: fields[13] as Element,
-      scope: fields[14] as CodeableConcept,
-      category: (fields[15] as List)?.cast<CodeableConcept>(),
-      patient: fields[16] as Reference,
-      dateTime: fields[17] as DateTime,
-      elementDateTime: fields[18] as Element,
-      performer: (fields[19] as List)?.cast<Reference>(),
-      organization: (fields[20] as List)?.cast<Reference>(),
-      sourceAttachment: fields[21] as Attachment,
-      sourceReference: fields[22] as Reference,
-      policy: (fields[23] as List)?.cast<Consent_Policy>(),
-      policyRule: fields[24] as CodeableConcept,
-      verification: (fields[25] as List)?.cast<Consent_Verification>(),
-      provision: fields[26] as Consent_Provision,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Consent obj) {
-    writer
-      ..writeByte(27)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.status)
-      ..writeByte(13)
-      ..write(obj.elementStatus)
-      ..writeByte(14)
-      ..write(obj.scope)
-      ..writeByte(15)
-      ..write(obj.category)
-      ..writeByte(16)
-      ..write(obj.patient)
-      ..writeByte(17)
-      ..write(obj.dateTime)
-      ..writeByte(18)
-      ..write(obj.elementDateTime)
-      ..writeByte(19)
-      ..write(obj.performer)
-      ..writeByte(20)
-      ..write(obj.organization)
-      ..writeByte(21)
-      ..write(obj.sourceAttachment)
-      ..writeByte(22)
-      ..write(obj.sourceReference)
-      ..writeByte(23)
-      ..write(obj.policy)
-      ..writeByte(24)
-      ..write(obj.policyRule)
-      ..writeByte(25)
-      ..write(obj.verification)
-      ..writeByte(26)
-      ..write(obj.provision);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

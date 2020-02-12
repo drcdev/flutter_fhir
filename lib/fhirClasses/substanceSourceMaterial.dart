@@ -11,7 +11,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 191)
 class SubstanceSourceMaterial {
 
 	static Future<SubstanceSourceMaterial> newInstance({
@@ -72,59 +71,32 @@ class SubstanceSourceMaterial {
 	substanceSourceMaterialBox.put(newSubstanceSourceMaterial.id, newSubstanceSourceMaterial);
 	return newSubstanceSourceMaterial;
 }
-  @HiveField(0)
   final String resourceType= 'SubstanceSourceMaterial';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   CodeableConcept sourceMaterialClass;
-  @HiveField(12)
   CodeableConcept sourceMaterialType;
-  @HiveField(13)
   CodeableConcept sourceMaterialState;
-  @HiveField(14)
   Identifier organismId;
-  @HiveField(15)
   String organismName;
-  @HiveField(16)
   Element elementOrganismName;
-  @HiveField(17)
   List<Identifier> parentSubstanceId;
-  @HiveField(18)
   List<String> parentSubstanceName;
-  @HiveField(19)
   List<Element> elementParentSubstanceName;
-  @HiveField(20)
   List<CodeableConcept> countryOfOrigin;
-  @HiveField(21)
   List<String> geographicalLocation;
-  @HiveField(22)
   List<Element> elementGeographicalLocation;
-  @HiveField(23)
   CodeableConcept developmentStage;
-  @HiveField(24)
   List<SubstanceSourceMaterial_FractionDescription> fractionDescription;
-  @HiveField(25)
   SubstanceSourceMaterial_Organism organism;
-  @HiveField(26)
   List<SubstanceSourceMaterial_PartDescription> partDescription;
 
 SubstanceSourceMaterial(
@@ -456,114 +428,6 @@ SubstanceSourceMaterial_PartDescription(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class SubstanceSourceMaterialAdapter
-    extends TypeAdapter<SubstanceSourceMaterial> {
-  @override
-  final typeId = 191;
-
-  @override
-  SubstanceSourceMaterial read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstanceSourceMaterial(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      sourceMaterialClass: fields[11] as CodeableConcept,
-      sourceMaterialType: fields[12] as CodeableConcept,
-      sourceMaterialState: fields[13] as CodeableConcept,
-      organismId: fields[14] as Identifier,
-      organismName: fields[15] as String,
-      elementOrganismName: fields[16] as Element,
-      parentSubstanceId: (fields[17] as List)?.cast<Identifier>(),
-      parentSubstanceName: (fields[18] as List)?.cast<String>(),
-      elementParentSubstanceName: (fields[19] as List)?.cast<Element>(),
-      countryOfOrigin: (fields[20] as List)?.cast<CodeableConcept>(),
-      geographicalLocation: (fields[21] as List)?.cast<String>(),
-      elementGeographicalLocation: (fields[22] as List)?.cast<Element>(),
-      developmentStage: fields[23] as CodeableConcept,
-      fractionDescription: (fields[24] as List)
-          ?.cast<SubstanceSourceMaterial_FractionDescription>(),
-      organism: fields[25] as SubstanceSourceMaterial_Organism,
-      partDescription:
-          (fields[26] as List)?.cast<SubstanceSourceMaterial_PartDescription>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SubstanceSourceMaterial obj) {
-    writer
-      ..writeByte(27)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.sourceMaterialClass)
-      ..writeByte(12)
-      ..write(obj.sourceMaterialType)
-      ..writeByte(13)
-      ..write(obj.sourceMaterialState)
-      ..writeByte(14)
-      ..write(obj.organismId)
-      ..writeByte(15)
-      ..write(obj.organismName)
-      ..writeByte(16)
-      ..write(obj.elementOrganismName)
-      ..writeByte(17)
-      ..write(obj.parentSubstanceId)
-      ..writeByte(18)
-      ..write(obj.parentSubstanceName)
-      ..writeByte(19)
-      ..write(obj.elementParentSubstanceName)
-      ..writeByte(20)
-      ..write(obj.countryOfOrigin)
-      ..writeByte(21)
-      ..write(obj.geographicalLocation)
-      ..writeByte(22)
-      ..write(obj.elementGeographicalLocation)
-      ..writeByte(23)
-      ..write(obj.developmentStage)
-      ..writeByte(24)
-      ..write(obj.fractionDescription)
-      ..writeByte(25)
-      ..write(obj.organism)
-      ..writeByte(26)
-      ..write(obj.partDescription);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

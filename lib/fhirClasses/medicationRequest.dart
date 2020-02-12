@@ -18,7 +18,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 134)
 class MedicationRequest {
 
 	static Future<MedicationRequest> newInstance({
@@ -131,111 +130,58 @@ class MedicationRequest {
 	medicationRequestBox.put(newMedicationRequest.id, newMedicationRequest);
 	return newMedicationRequest;
 }
-  @HiveField(0)
   final String resourceType= 'MedicationRequest';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String status;
-  @HiveField(13)
   Element elementStatus;
-  @HiveField(14)
   CodeableConcept statusReason;
-  @HiveField(15)
   String intent;
-  @HiveField(16)
   Element elementIntent;
-  @HiveField(17)
   List<CodeableConcept> category;
-  @HiveField(18)
   String priority;
-  @HiveField(19)
   Element elementPriority;
-  @HiveField(20)
   bool doNotPerform;
-  @HiveField(21)
   Element elementDoNotPerform;
-  @HiveField(22)
   bool reportedBoolean; //  pattern: ^true|false$
-  @HiveField(23)
   Element elementReportedBoolean;
-  @HiveField(24)
   Reference reportedReference;
-  @HiveField(25)
   CodeableConcept medicationCodeableConcept;
-  @HiveField(26)
   Reference medicationReference;
-  @HiveField(27)
   Reference subject;
-  @HiveField(28)
   Reference encounter;
-  @HiveField(29)
   List<Reference> supportingInformation;
-  @HiveField(30)
   DateTime authoredOn;
-  @HiveField(31)
   Element elementAuthoredOn;
-  @HiveField(32)
   Reference requester;
-  @HiveField(33)
   Reference performer;
-  @HiveField(34)
   CodeableConcept performerType;
-  @HiveField(35)
   Reference recorder;
-  @HiveField(36)
   List<CodeableConcept> reasonCode;
-  @HiveField(37)
   List<Reference> reasonReference;
-  @HiveField(38)
   List<String> instantiatesCanonical;
-  @HiveField(39)
   List<Element> elementInstantiatesCanonical;
-  @HiveField(40)
   List<String> instantiatesUri;
-  @HiveField(41)
   List<Element> elementInstantiatesUri;
-  @HiveField(42)
   List<Reference> basedOn;
-  @HiveField(43)
   Identifier groupIdentifier;
-  @HiveField(44)
   CodeableConcept courseOfTherapyType;
-  @HiveField(45)
   List<Reference> insurance;
-  @HiveField(46)
   List<Annotation> note;
-  @HiveField(47)
   List<Dosage> dosageInstruction;
-  @HiveField(48)
   MedicationRequest_DispenseRequest dispenseRequest;
-  @HiveField(49)
   MedicationRequest_Substitution substitution;
-  @HiveField(50)
   Reference priorPrescription;
-  @HiveField(51)
   List<Reference> detectedIssue;
-  @HiveField(52)
   List<Reference> eventHistory;
 
 MedicationRequest(
@@ -442,189 +388,6 @@ MedicationRequest_Substitution(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class MedicationRequestAdapter extends TypeAdapter<MedicationRequest> {
-  @override
-  final typeId = 134;
-
-  @override
-  MedicationRequest read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicationRequest(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      status: fields[12] as String,
-      elementStatus: fields[13] as Element,
-      statusReason: fields[14] as CodeableConcept,
-      intent: fields[15] as String,
-      elementIntent: fields[16] as Element,
-      category: (fields[17] as List)?.cast<CodeableConcept>(),
-      priority: fields[18] as String,
-      elementPriority: fields[19] as Element,
-      doNotPerform: fields[20] as bool,
-      elementDoNotPerform: fields[21] as Element,
-      reportedBoolean: fields[22] as bool,
-      elementReportedBoolean: fields[23] as Element,
-      reportedReference: fields[24] as Reference,
-      medicationCodeableConcept: fields[25] as CodeableConcept,
-      medicationReference: fields[26] as Reference,
-      subject: fields[27] as Reference,
-      encounter: fields[28] as Reference,
-      supportingInformation: (fields[29] as List)?.cast<Reference>(),
-      authoredOn: fields[30] as DateTime,
-      elementAuthoredOn: fields[31] as Element,
-      requester: fields[32] as Reference,
-      performer: fields[33] as Reference,
-      performerType: fields[34] as CodeableConcept,
-      recorder: fields[35] as Reference,
-      reasonCode: (fields[36] as List)?.cast<CodeableConcept>(),
-      reasonReference: (fields[37] as List)?.cast<Reference>(),
-      instantiatesCanonical: (fields[38] as List)?.cast<String>(),
-      elementInstantiatesCanonical: (fields[39] as List)?.cast<Element>(),
-      instantiatesUri: (fields[40] as List)?.cast<String>(),
-      elementInstantiatesUri: (fields[41] as List)?.cast<Element>(),
-      basedOn: (fields[42] as List)?.cast<Reference>(),
-      groupIdentifier: fields[43] as Identifier,
-      courseOfTherapyType: fields[44] as CodeableConcept,
-      insurance: (fields[45] as List)?.cast<Reference>(),
-      note: (fields[46] as List)?.cast<Annotation>(),
-      dosageInstruction: (fields[47] as List)?.cast<Dosage>(),
-      dispenseRequest: fields[48] as MedicationRequest_DispenseRequest,
-      substitution: fields[49] as MedicationRequest_Substitution,
-      priorPrescription: fields[50] as Reference,
-      detectedIssue: (fields[51] as List)?.cast<Reference>(),
-      eventHistory: (fields[52] as List)?.cast<Reference>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicationRequest obj) {
-    writer
-      ..writeByte(53)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.status)
-      ..writeByte(13)
-      ..write(obj.elementStatus)
-      ..writeByte(14)
-      ..write(obj.statusReason)
-      ..writeByte(15)
-      ..write(obj.intent)
-      ..writeByte(16)
-      ..write(obj.elementIntent)
-      ..writeByte(17)
-      ..write(obj.category)
-      ..writeByte(18)
-      ..write(obj.priority)
-      ..writeByte(19)
-      ..write(obj.elementPriority)
-      ..writeByte(20)
-      ..write(obj.doNotPerform)
-      ..writeByte(21)
-      ..write(obj.elementDoNotPerform)
-      ..writeByte(22)
-      ..write(obj.reportedBoolean)
-      ..writeByte(23)
-      ..write(obj.elementReportedBoolean)
-      ..writeByte(24)
-      ..write(obj.reportedReference)
-      ..writeByte(25)
-      ..write(obj.medicationCodeableConcept)
-      ..writeByte(26)
-      ..write(obj.medicationReference)
-      ..writeByte(27)
-      ..write(obj.subject)
-      ..writeByte(28)
-      ..write(obj.encounter)
-      ..writeByte(29)
-      ..write(obj.supportingInformation)
-      ..writeByte(30)
-      ..write(obj.authoredOn)
-      ..writeByte(31)
-      ..write(obj.elementAuthoredOn)
-      ..writeByte(32)
-      ..write(obj.requester)
-      ..writeByte(33)
-      ..write(obj.performer)
-      ..writeByte(34)
-      ..write(obj.performerType)
-      ..writeByte(35)
-      ..write(obj.recorder)
-      ..writeByte(36)
-      ..write(obj.reasonCode)
-      ..writeByte(37)
-      ..write(obj.reasonReference)
-      ..writeByte(38)
-      ..write(obj.instantiatesCanonical)
-      ..writeByte(39)
-      ..write(obj.elementInstantiatesCanonical)
-      ..writeByte(40)
-      ..write(obj.instantiatesUri)
-      ..writeByte(41)
-      ..write(obj.elementInstantiatesUri)
-      ..writeByte(42)
-      ..write(obj.basedOn)
-      ..writeByte(43)
-      ..write(obj.groupIdentifier)
-      ..writeByte(44)
-      ..write(obj.courseOfTherapyType)
-      ..writeByte(45)
-      ..write(obj.insurance)
-      ..writeByte(46)
-      ..write(obj.note)
-      ..writeByte(47)
-      ..write(obj.dosageInstruction)
-      ..writeByte(48)
-      ..write(obj.dispenseRequest)
-      ..writeByte(49)
-      ..write(obj.substitution)
-      ..writeByte(50)
-      ..write(obj.priorPrescription)
-      ..writeByte(51)
-      ..write(obj.detectedIssue)
-      ..writeByte(52)
-      ..write(obj.eventHistory);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

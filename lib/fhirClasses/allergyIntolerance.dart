@@ -17,7 +17,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 59)
 class AllergyIntolerance {
 
 	static Future<AllergyIntolerance> newInstance({
@@ -100,81 +99,43 @@ class AllergyIntolerance {
 	allergyIntoleranceBox.put(newAllergyIntolerance.id, newAllergyIntolerance);
 	return newAllergyIntolerance;
 }
-  @HiveField(0)
   final String resourceType= 'AllergyIntolerance';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   CodeableConcept clinicalStatus;
-  @HiveField(13)
   CodeableConcept verificationStatus;
-  @HiveField(14)
   String type; // <code> enum: allergy/intolerance;
-  @HiveField(15)
   Element elementType;
-  @HiveField(16)
   List<String> category; // <code> enum: food/medication/environment/biologic> category;
-  @HiveField(17)
   List<Element> elementCategory;
-  @HiveField(18)
   String criticality; // <code> enum: low/high/unable-to-assess;
-  @HiveField(19)
   Element elementCriticality;
-  @HiveField(20)
   CodeableConcept code;
-  @HiveField(21)
   Reference patient;
-  @HiveField(22)
   Reference encounter;
-  @HiveField(23)
   String onsetDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-  @HiveField(24)
   Element elementOnsetDateTime;
-  @HiveField(25)
   Age onsetAge;
-  @HiveField(26)
   Period onsetPeriod;
-  @HiveField(27)
   Range onsetRange;
-  @HiveField(28)
   String onsetString; //  pattern: ^[ \r\n\t\S]+$
-  @HiveField(29)
   Element elementOnsetString;
-  @HiveField(30)
   DateTime recordedDate;
-  @HiveField(31)
   Element elementRecordedDate;
-  @HiveField(32)
   Reference recorder;
-  @HiveField(33)
   Reference asserter;
-  @HiveField(34)
   DateTime lastOccurrence;
-  @HiveField(35)
   Element elementLastOccurrence;
-  @HiveField(36)
   List<Annotation> note;
-  @HiveField(37)
   List<AllergyIntolerance_Reaction> reaction;
 
 AllergyIntolerance(
@@ -292,144 +253,6 @@ AllergyIntolerance_Reaction(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class AllergyIntoleranceAdapter extends TypeAdapter<AllergyIntolerance> {
-  @override
-  final typeId = 59;
-
-  @override
-  AllergyIntolerance read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return AllergyIntolerance(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      clinicalStatus: fields[12] as CodeableConcept,
-      verificationStatus: fields[13] as CodeableConcept,
-      type: fields[14] as String,
-      elementType: fields[15] as Element,
-      category: (fields[16] as List)?.cast<String>(),
-      elementCategory: (fields[17] as List)?.cast<Element>(),
-      criticality: fields[18] as String,
-      elementCriticality: fields[19] as Element,
-      code: fields[20] as CodeableConcept,
-      patient: fields[21] as Reference,
-      encounter: fields[22] as Reference,
-      onsetDateTime: fields[23] as String,
-      elementOnsetDateTime: fields[24] as Element,
-      onsetAge: fields[25] as Age,
-      onsetPeriod: fields[26] as Period,
-      onsetRange: fields[27] as Range,
-      onsetString: fields[28] as String,
-      elementOnsetString: fields[29] as Element,
-      recordedDate: fields[30] as DateTime,
-      elementRecordedDate: fields[31] as Element,
-      recorder: fields[32] as Reference,
-      asserter: fields[33] as Reference,
-      lastOccurrence: fields[34] as DateTime,
-      elementLastOccurrence: fields[35] as Element,
-      note: (fields[36] as List)?.cast<Annotation>(),
-      reaction: (fields[37] as List)?.cast<AllergyIntolerance_Reaction>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, AllergyIntolerance obj) {
-    writer
-      ..writeByte(38)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.clinicalStatus)
-      ..writeByte(13)
-      ..write(obj.verificationStatus)
-      ..writeByte(14)
-      ..write(obj.type)
-      ..writeByte(15)
-      ..write(obj.elementType)
-      ..writeByte(16)
-      ..write(obj.category)
-      ..writeByte(17)
-      ..write(obj.elementCategory)
-      ..writeByte(18)
-      ..write(obj.criticality)
-      ..writeByte(19)
-      ..write(obj.elementCriticality)
-      ..writeByte(20)
-      ..write(obj.code)
-      ..writeByte(21)
-      ..write(obj.patient)
-      ..writeByte(22)
-      ..write(obj.encounter)
-      ..writeByte(23)
-      ..write(obj.onsetDateTime)
-      ..writeByte(24)
-      ..write(obj.elementOnsetDateTime)
-      ..writeByte(25)
-      ..write(obj.onsetAge)
-      ..writeByte(26)
-      ..write(obj.onsetPeriod)
-      ..writeByte(27)
-      ..write(obj.onsetRange)
-      ..writeByte(28)
-      ..write(obj.onsetString)
-      ..writeByte(29)
-      ..write(obj.elementOnsetString)
-      ..writeByte(30)
-      ..write(obj.recordedDate)
-      ..writeByte(31)
-      ..write(obj.elementRecordedDate)
-      ..writeByte(32)
-      ..write(obj.recorder)
-      ..writeByte(33)
-      ..write(obj.asserter)
-      ..writeByte(34)
-      ..write(obj.lastOccurrence)
-      ..writeByte(35)
-      ..write(obj.elementLastOccurrence)
-      ..writeByte(36)
-      ..write(obj.note)
-      ..writeByte(37)
-      ..write(obj.reaction);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

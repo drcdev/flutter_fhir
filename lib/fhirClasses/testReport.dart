@@ -12,7 +12,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 197)
 class TestReport {
 
 	static Future<TestReport> newInstance({
@@ -77,63 +76,34 @@ class TestReport {
 	testReportBox.put(newTestReport.id, newTestReport);
 	return newTestReport;
 }
-  @HiveField(0)
   final String resourceType= 'TestReport';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   Identifier identifier;
-  @HiveField(12)
   String name;
-  @HiveField(13)
   Element elementName;
-  @HiveField(14)
   String status; // <code> enum: completed/in-progress/waiting/stopped/entered-in-error;
-  @HiveField(15)
   Element elementStatus;
-  @HiveField(16)
   Reference testScript;
-  @HiveField(17)
   String result; // <code> enum: pass/fail/pending;
-  @HiveField(18)
   Element elementResult;
-  @HiveField(19)
   double score;
-  @HiveField(20)
   Element elementScore;
-  @HiveField(21)
   String tester;
-  @HiveField(22)
   Element elementTester;
-  @HiveField(23)
   DateTime issued;
-  @HiveField(24)
   Element elementIssued;
-  @HiveField(25)
   List<TestReport_Participant> participant;
-  @HiveField(26)
   TestReport_Setup setup;
-  @HiveField(27)
   List<TestReport_Test> test;
-  @HiveField(28)
   TestReport_Teardown teardown;
 
 TestReport(
@@ -554,117 +524,6 @@ TestReport_Action2(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class TestReportAdapter extends TypeAdapter<TestReport> {
-  @override
-  final typeId = 197;
-
-  @override
-  TestReport read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return TestReport(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: fields[11] as Identifier,
-      name: fields[12] as String,
-      elementName: fields[13] as Element,
-      status: fields[14] as String,
-      elementStatus: fields[15] as Element,
-      testScript: fields[16] as Reference,
-      result: fields[17] as String,
-      elementResult: fields[18] as Element,
-      score: fields[19] as double,
-      elementScore: fields[20] as Element,
-      tester: fields[21] as String,
-      elementTester: fields[22] as Element,
-      issued: fields[23] as DateTime,
-      elementIssued: fields[24] as Element,
-      participant: (fields[25] as List)?.cast<TestReport_Participant>(),
-      setup: fields[26] as TestReport_Setup,
-      test: (fields[27] as List)?.cast<TestReport_Test>(),
-      teardown: fields[28] as TestReport_Teardown,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, TestReport obj) {
-    writer
-      ..writeByte(29)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.name)
-      ..writeByte(13)
-      ..write(obj.elementName)
-      ..writeByte(14)
-      ..write(obj.status)
-      ..writeByte(15)
-      ..write(obj.elementStatus)
-      ..writeByte(16)
-      ..write(obj.testScript)
-      ..writeByte(17)
-      ..write(obj.result)
-      ..writeByte(18)
-      ..write(obj.elementResult)
-      ..writeByte(19)
-      ..write(obj.score)
-      ..writeByte(20)
-      ..write(obj.elementScore)
-      ..writeByte(21)
-      ..write(obj.tester)
-      ..writeByte(22)
-      ..write(obj.elementTester)
-      ..writeByte(23)
-      ..write(obj.issued)
-      ..writeByte(24)
-      ..write(obj.elementIssued)
-      ..writeByte(25)
-      ..write(obj.participant)
-      ..writeByte(26)
-      ..write(obj.setup)
-      ..writeByte(27)
-      ..write(obj.test)
-      ..writeByte(28)
-      ..write(obj.teardown);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

@@ -37,7 +37,6 @@ class _RegistrationFormState extends State<RegistrationForm> {
     givenNameController.dispose();
     familyNameController.dispose();
     super.dispose();
-    Hive.close();
   }
 
   //select birthdate async function
@@ -173,19 +172,13 @@ class _RegistrationFormState extends State<RegistrationForm> {
                         given: [givenNameController.text],
                         family: familyNameController.text)
                   ], birthDate: _birthDate.toString());
-                  var patientBox = await Hive.openBox<Patient>('PatientBox');
-                  print(patientBox.getAt(patientBox.length-1).toJson().toString());
-                  print(pt.id);
-                  print(patientBox.get(pt.id).printName());
-//                              pt.id = await ObjectId(pt.runtimeType.toString());
-                  //Write(pt);
-//                              Navigator.push(
-//                                context,
-//                                MaterialPageRoute(
-//                                    builder: (context) => RegisterFamily(
-//                                          pt: pt,
-//                                        )),
-//                              );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => RegisterFamily(
+                              pt: pt,
+                            )),
+                  );
                 },
                 child: Text('Press to Create Patient'),
               ),

@@ -14,7 +14,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 164)
 class PractitionerRole {
 
 	static Future<PractitionerRole> newInstance({
@@ -75,59 +74,32 @@ class PractitionerRole {
 	practitionerRoleBox.put(newPractitionerRole.id, newPractitionerRole);
 	return newPractitionerRole;
 }
-  @HiveField(0)
   final String resourceType= 'PractitionerRole';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   bool active;
-  @HiveField(13)
   Element elementActive;
-  @HiveField(14)
   Period period;
-  @HiveField(15)
   Reference practitioner;
-  @HiveField(16)
   Reference organization;
-  @HiveField(17)
   List<CodeableConcept> code;
-  @HiveField(18)
   List<CodeableConcept> specialty;
-  @HiveField(19)
   List<Reference> location;
-  @HiveField(20)
   List<Reference> healthcareService;
-  @HiveField(21)
   List<ContactPoint> telecom;
-  @HiveField(22)
   List<PractitionerRole_AvailableTime> availableTime;
-  @HiveField(23)
   List<PractitionerRole_NotAvailable> notAvailable;
-  @HiveField(24)
   String availabilityExceptions;
-  @HiveField(25)
   Element elementAvailabilityExceptions;
-  @HiveField(26)
   List<Reference> endpoint;
 
 PractitionerRole(
@@ -267,112 +239,6 @@ PractitionerRole_NotAvailable(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class PractitionerRoleAdapter extends TypeAdapter<PractitionerRole> {
-  @override
-  final typeId = 164;
-
-  @override
-  PractitionerRole read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return PractitionerRole(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      active: fields[12] as bool,
-      elementActive: fields[13] as Element,
-      period: fields[14] as Period,
-      practitioner: fields[15] as Reference,
-      organization: fields[16] as Reference,
-      code: (fields[17] as List)?.cast<CodeableConcept>(),
-      specialty: (fields[18] as List)?.cast<CodeableConcept>(),
-      location: (fields[19] as List)?.cast<Reference>(),
-      healthcareService: (fields[20] as List)?.cast<Reference>(),
-      telecom: (fields[21] as List)?.cast<ContactPoint>(),
-      availableTime:
-          (fields[22] as List)?.cast<PractitionerRole_AvailableTime>(),
-      notAvailable: (fields[23] as List)?.cast<PractitionerRole_NotAvailable>(),
-      availabilityExceptions: fields[24] as String,
-      elementAvailabilityExceptions: fields[25] as Element,
-      endpoint: (fields[26] as List)?.cast<Reference>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, PractitionerRole obj) {
-    writer
-      ..writeByte(27)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.active)
-      ..writeByte(13)
-      ..write(obj.elementActive)
-      ..writeByte(14)
-      ..write(obj.period)
-      ..writeByte(15)
-      ..write(obj.practitioner)
-      ..writeByte(16)
-      ..write(obj.organization)
-      ..writeByte(17)
-      ..write(obj.code)
-      ..writeByte(18)
-      ..write(obj.specialty)
-      ..writeByte(19)
-      ..write(obj.location)
-      ..writeByte(20)
-      ..write(obj.healthcareService)
-      ..writeByte(21)
-      ..write(obj.telecom)
-      ..writeByte(22)
-      ..write(obj.availableTime)
-      ..writeByte(23)
-      ..write(obj.notAvailable)
-      ..writeByte(24)
-      ..write(obj.availabilityExceptions)
-      ..writeByte(25)
-      ..write(obj.elementAvailabilityExceptions)
-      ..writeByte(26)
-      ..write(obj.endpoint);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

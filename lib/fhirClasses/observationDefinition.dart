@@ -14,7 +14,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 152)
 class ObservationDefinition {
 
 	static Future<ObservationDefinition> newInstance({
@@ -75,59 +74,32 @@ class ObservationDefinition {
 	observationDefinitionBox.put(newObservationDefinition.id, newObservationDefinition);
 	return newObservationDefinition;
 }
-  @HiveField(0)
   final String resourceType= 'ObservationDefinition';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<CodeableConcept> category;
-  @HiveField(12)
   CodeableConcept code;
-  @HiveField(13)
   List<Identifier> identifier;
-  @HiveField(14)
   List<String> permittedDataType; // <code> enum: Quantity/CodeableConcept/string/boolean/integer/Range/Ratio/SampledData/time/dateTime/Period> permittedDataType;
-  @HiveField(15)
   List<Element> elementPermittedDataType;
-  @HiveField(16)
   bool multipleResultsAllowed;
-  @HiveField(17)
   Element elementMultipleResultsAllowed;
-  @HiveField(18)
   CodeableConcept method;
-  @HiveField(19)
   String preferredReportName;
-  @HiveField(20)
   Element elementPreferredReportName;
-  @HiveField(21)
   ObservationDefinition_QuantitativeDetails quantitativeDetails;
-  @HiveField(22)
   List<ObservationDefinition_QualifiedInterval> qualifiedInterval;
-  @HiveField(23)
   Reference validCodedValueSet;
-  @HiveField(24)
   Reference normalCodedValueSet;
-  @HiveField(25)
   Reference abnormalCodedValueSet;
-  @HiveField(26)
   Reference criticalCodedValueSet;
 
 ObservationDefinition(
@@ -291,113 +263,6 @@ ObservationDefinition_QualifiedInterval(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ObservationDefinitionAdapter extends TypeAdapter<ObservationDefinition> {
-  @override
-  final typeId = 152;
-
-  @override
-  ObservationDefinition read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ObservationDefinition(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      category: (fields[11] as List)?.cast<CodeableConcept>(),
-      code: fields[12] as CodeableConcept,
-      identifier: (fields[13] as List)?.cast<Identifier>(),
-      permittedDataType: (fields[14] as List)?.cast<String>(),
-      elementPermittedDataType: (fields[15] as List)?.cast<Element>(),
-      multipleResultsAllowed: fields[16] as bool,
-      elementMultipleResultsAllowed: fields[17] as Element,
-      method: fields[18] as CodeableConcept,
-      preferredReportName: fields[19] as String,
-      elementPreferredReportName: fields[20] as Element,
-      quantitativeDetails:
-          fields[21] as ObservationDefinition_QuantitativeDetails,
-      qualifiedInterval:
-          (fields[22] as List)?.cast<ObservationDefinition_QualifiedInterval>(),
-      validCodedValueSet: fields[23] as Reference,
-      normalCodedValueSet: fields[24] as Reference,
-      abnormalCodedValueSet: fields[25] as Reference,
-      criticalCodedValueSet: fields[26] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ObservationDefinition obj) {
-    writer
-      ..writeByte(27)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.category)
-      ..writeByte(12)
-      ..write(obj.code)
-      ..writeByte(13)
-      ..write(obj.identifier)
-      ..writeByte(14)
-      ..write(obj.permittedDataType)
-      ..writeByte(15)
-      ..write(obj.elementPermittedDataType)
-      ..writeByte(16)
-      ..write(obj.multipleResultsAllowed)
-      ..writeByte(17)
-      ..write(obj.elementMultipleResultsAllowed)
-      ..writeByte(18)
-      ..write(obj.method)
-      ..writeByte(19)
-      ..write(obj.preferredReportName)
-      ..writeByte(20)
-      ..write(obj.elementPreferredReportName)
-      ..writeByte(21)
-      ..write(obj.quantitativeDetails)
-      ..writeByte(22)
-      ..write(obj.qualifiedInterval)
-      ..writeByte(23)
-      ..write(obj.validCodedValueSet)
-      ..writeByte(24)
-      ..write(obj.normalCodedValueSet)
-      ..writeByte(25)
-      ..write(obj.abnormalCodedValueSet)
-      ..writeByte(26)
-      ..write(obj.criticalCodedValueSet);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

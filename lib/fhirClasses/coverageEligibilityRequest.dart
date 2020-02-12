@@ -16,7 +16,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 87)
 class CoverageEligibilityRequest {
 
 	static Future<CoverageEligibilityRequest> newInstance({
@@ -83,65 +82,35 @@ class CoverageEligibilityRequest {
 	coverageEligibilityRequestBox.put(newCoverageEligibilityRequest.id, newCoverageEligibilityRequest);
 	return newCoverageEligibilityRequest;
 }
-  @HiveField(0)
   final String resourceType= 'CoverageEligibilityRequest';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String status;
-  @HiveField(13)
   Element elementStatus;
-  @HiveField(14)
   CodeableConcept priority;
-  @HiveField(15)
   List<String> purpose; // <code> enum: auth-requirements/benefits/discovery/validation> purpose;
-  @HiveField(16)
   List<Element> elementPurpose;
-  @HiveField(17)
   Reference patient;
-  @HiveField(18)
   String servicedDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
-  @HiveField(19)
   Element elementServicedDate;
-  @HiveField(20)
   Period servicedPeriod;
-  @HiveField(21)
   DateTime created;
-  @HiveField(22)
   Element elementCreated;
-  @HiveField(23)
   Reference enterer;
-  @HiveField(24)
   Reference provider;
-  @HiveField(25)
   Reference insurer;
-  @HiveField(26)
   Reference facility;
-  @HiveField(27)
   List<CoverageEligibilityRequest_SupportingInfo> supportingInfo;
-  @HiveField(28)
   List<CoverageEligibilityRequest_Insurance> insurance;
-  @HiveField(29)
   List<CoverageEligibilityRequest_Item> item;
 
 CoverageEligibilityRequest(
@@ -390,123 +359,6 @@ CoverageEligibilityRequest_Diagnosis(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class CoverageEligibilityRequestAdapter
-    extends TypeAdapter<CoverageEligibilityRequest> {
-  @override
-  final typeId = 87;
-
-  @override
-  CoverageEligibilityRequest read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CoverageEligibilityRequest(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      status: fields[12] as String,
-      elementStatus: fields[13] as Element,
-      priority: fields[14] as CodeableConcept,
-      purpose: (fields[15] as List)?.cast<String>(),
-      elementPurpose: (fields[16] as List)?.cast<Element>(),
-      patient: fields[17] as Reference,
-      servicedDate: fields[18] as String,
-      elementServicedDate: fields[19] as Element,
-      servicedPeriod: fields[20] as Period,
-      created: fields[21] as DateTime,
-      elementCreated: fields[22] as Element,
-      enterer: fields[23] as Reference,
-      provider: fields[24] as Reference,
-      insurer: fields[25] as Reference,
-      facility: fields[26] as Reference,
-      supportingInfo: (fields[27] as List)
-          ?.cast<CoverageEligibilityRequest_SupportingInfo>(),
-      insurance:
-          (fields[28] as List)?.cast<CoverageEligibilityRequest_Insurance>(),
-      item: (fields[29] as List)?.cast<CoverageEligibilityRequest_Item>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CoverageEligibilityRequest obj) {
-    writer
-      ..writeByte(30)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.status)
-      ..writeByte(13)
-      ..write(obj.elementStatus)
-      ..writeByte(14)
-      ..write(obj.priority)
-      ..writeByte(15)
-      ..write(obj.purpose)
-      ..writeByte(16)
-      ..write(obj.elementPurpose)
-      ..writeByte(17)
-      ..write(obj.patient)
-      ..writeByte(18)
-      ..write(obj.servicedDate)
-      ..writeByte(19)
-      ..write(obj.elementServicedDate)
-      ..writeByte(20)
-      ..write(obj.servicedPeriod)
-      ..writeByte(21)
-      ..write(obj.created)
-      ..writeByte(22)
-      ..write(obj.elementCreated)
-      ..writeByte(23)
-      ..write(obj.enterer)
-      ..writeByte(24)
-      ..write(obj.provider)
-      ..writeByte(25)
-      ..write(obj.insurer)
-      ..writeByte(26)
-      ..write(obj.facility)
-      ..writeByte(27)
-      ..write(obj.supportingInfo)
-      ..writeByte(28)
-      ..write(obj.insurance)
-      ..writeByte(29)
-      ..write(obj.item);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

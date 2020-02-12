@@ -17,7 +17,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 150)
 class NutritionOrder {
 
 	static Future<NutritionOrder> newInstance({
@@ -90,71 +89,38 @@ class NutritionOrder {
 	nutritionOrderBox.put(newNutritionOrder.id, newNutritionOrder);
 	return newNutritionOrder;
 }
-  @HiveField(0)
   final String resourceType= 'NutritionOrder';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   List<String> instantiatesCanonical;
-  @HiveField(13)
   List<String> instantiatesUri;
-  @HiveField(14)
   List<Element> elementInstantiatesUri;
-  @HiveField(15)
   List<String> instantiates;
-  @HiveField(16)
   List<Element> elementInstantiates;
-  @HiveField(17)
   String status;
-  @HiveField(18)
   Element elementStatus;
-  @HiveField(19)
   String intent;
-  @HiveField(20)
   Element elementIntent;
-  @HiveField(21)
   Reference patient;
-  @HiveField(22)
   Reference encounter;
-  @HiveField(23)
   DateTime dateTime;
-  @HiveField(24)
   Element elementDateTime;
-  @HiveField(25)
   Reference orderer;
-  @HiveField(26)
   List<Reference> allergyIntolerance;
-  @HiveField(27)
   List<CodeableConcept> foodPreferenceModifier;
-  @HiveField(28)
   List<CodeableConcept> excludeFoodModifier;
-  @HiveField(29)
   NutritionOrder_OralDiet oralDiet;
-  @HiveField(30)
   List<NutritionOrder_Supplement> supplement;
-  @HiveField(31)
   NutritionOrder_EnteralFormula enteralFormula;
-  @HiveField(32)
   List<Annotation> note;
 
 NutritionOrder(
@@ -508,129 +474,6 @@ NutritionOrder_Administration(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class NutritionOrderAdapter extends TypeAdapter<NutritionOrder> {
-  @override
-  final typeId = 150;
-
-  @override
-  NutritionOrder read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return NutritionOrder(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      instantiatesCanonical: (fields[12] as List)?.cast<String>(),
-      instantiatesUri: (fields[13] as List)?.cast<String>(),
-      elementInstantiatesUri: (fields[14] as List)?.cast<Element>(),
-      instantiates: (fields[15] as List)?.cast<String>(),
-      elementInstantiates: (fields[16] as List)?.cast<Element>(),
-      status: fields[17] as String,
-      elementStatus: fields[18] as Element,
-      intent: fields[19] as String,
-      elementIntent: fields[20] as Element,
-      patient: fields[21] as Reference,
-      encounter: fields[22] as Reference,
-      dateTime: fields[23] as DateTime,
-      elementDateTime: fields[24] as Element,
-      orderer: fields[25] as Reference,
-      allergyIntolerance: (fields[26] as List)?.cast<Reference>(),
-      foodPreferenceModifier: (fields[27] as List)?.cast<CodeableConcept>(),
-      excludeFoodModifier: (fields[28] as List)?.cast<CodeableConcept>(),
-      oralDiet: fields[29] as NutritionOrder_OralDiet,
-      supplement: (fields[30] as List)?.cast<NutritionOrder_Supplement>(),
-      enteralFormula: fields[31] as NutritionOrder_EnteralFormula,
-      note: (fields[32] as List)?.cast<Annotation>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, NutritionOrder obj) {
-    writer
-      ..writeByte(33)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.instantiatesCanonical)
-      ..writeByte(13)
-      ..write(obj.instantiatesUri)
-      ..writeByte(14)
-      ..write(obj.elementInstantiatesUri)
-      ..writeByte(15)
-      ..write(obj.instantiates)
-      ..writeByte(16)
-      ..write(obj.elementInstantiates)
-      ..writeByte(17)
-      ..write(obj.status)
-      ..writeByte(18)
-      ..write(obj.elementStatus)
-      ..writeByte(19)
-      ..write(obj.intent)
-      ..writeByte(20)
-      ..write(obj.elementIntent)
-      ..writeByte(21)
-      ..write(obj.patient)
-      ..writeByte(22)
-      ..write(obj.encounter)
-      ..writeByte(23)
-      ..write(obj.dateTime)
-      ..writeByte(24)
-      ..write(obj.elementDateTime)
-      ..writeByte(25)
-      ..write(obj.orderer)
-      ..writeByte(26)
-      ..write(obj.allergyIntolerance)
-      ..writeByte(27)
-      ..write(obj.foodPreferenceModifier)
-      ..writeByte(28)
-      ..write(obj.excludeFoodModifier)
-      ..writeByte(29)
-      ..write(obj.oralDiet)
-      ..writeByte(30)
-      ..write(obj.supplement)
-      ..writeByte(31)
-      ..write(obj.enteralFormula)
-      ..writeByte(32)
-      ..write(obj.note);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

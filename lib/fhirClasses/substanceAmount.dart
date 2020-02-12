@@ -9,7 +9,6 @@ import 'package:flutter_fhir/fhirClasses/quantity.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 53)
 class SubstanceAmount {
 
 	static Future<SubstanceAmount> newInstance({
@@ -40,27 +39,16 @@ class SubstanceAmount {
 	substanceAmountBox.put(newSubstanceAmount.id, newSubstanceAmount);
 	return newSubstanceAmount;
 }
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   Quantity amountQuantity;
-  @HiveField(4)
   Range amountRange;
-  @HiveField(5)
   String amountString; //  pattern: ^[ \r\n\t\S]+$
-  @HiveField(6)
   Element elementAmountString;
-  @HiveField(7)
   CodeableConcept amountType;
-  @HiveField(8)
   String amountText;
-  @HiveField(9)
   Element elementAmountText;
-  @HiveField(10)
   SubstanceAmount_ReferenceRange referenceRange;
 
 SubstanceAmount(
@@ -120,64 +108,6 @@ SubstanceAmount_ReferenceRange(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class SubstanceAmountAdapter extends TypeAdapter<SubstanceAmount> {
-  @override
-  final typeId = 53;
-
-  @override
-  SubstanceAmount read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstanceAmount(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      amountQuantity: fields[3] as Quantity,
-      amountRange: fields[4] as Range,
-      amountString: fields[5] as String,
-      elementAmountString: fields[6] as Element,
-      amountType: fields[7] as CodeableConcept,
-      amountText: fields[8] as String,
-      elementAmountText: fields[9] as Element,
-      referenceRange: fields[10] as SubstanceAmount_ReferenceRange,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SubstanceAmount obj) {
-    writer
-      ..writeByte(11)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.amountQuantity)
-      ..writeByte(4)
-      ..write(obj.amountRange)
-      ..writeByte(5)
-      ..write(obj.amountString)
-      ..writeByte(6)
-      ..write(obj.elementAmountString)
-      ..writeByte(7)
-      ..write(obj.amountType)
-      ..writeByte(8)
-      ..write(obj.amountText)
-      ..writeByte(9)
-      ..write(obj.elementAmountText)
-      ..writeByte(10)
-      ..write(obj.referenceRange);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

@@ -16,7 +16,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 113)
 class Group {
 
 	static Future<Group> newInstance({
@@ -75,57 +74,31 @@ class Group {
 	groupBox.put(newGroup.id, newGroup);
 	return newGroup;
 }
-  @HiveField(0)
   final String resourceType= 'Group';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   bool active;
-  @HiveField(13)
   Element elementActive;
-  @HiveField(14)
   String type; // <code> enum: person/animal/practitioner/device/medication/substance;
-  @HiveField(15)
   Element elementType;
-  @HiveField(16)
   bool actual;
-  @HiveField(17)
   Element elementActual;
-  @HiveField(18)
   CodeableConcept code;
-  @HiveField(19)
   String name;
-  @HiveField(20)
   Element elementName;
-  @HiveField(21)
   int quantity;
-  @HiveField(22)
   Element elementQuantity;
-  @HiveField(23)
   Reference managingEntity;
-  @HiveField(24)
   List<Group_Characteristic> characteristic;
-  @HiveField(25)
   List<Group_Member> member;
 
 Group(
@@ -276,108 +249,6 @@ Group_Member(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class GroupAdapter extends TypeAdapter<Group> {
-  @override
-  final typeId = 113;
-
-  @override
-  Group read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Group(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      active: fields[12] as bool,
-      elementActive: fields[13] as Element,
-      type: fields[14] as String,
-      elementType: fields[15] as Element,
-      actual: fields[16] as bool,
-      elementActual: fields[17] as Element,
-      code: fields[18] as CodeableConcept,
-      name: fields[19] as String,
-      elementName: fields[20] as Element,
-      quantity: fields[21] as int,
-      elementQuantity: fields[22] as Element,
-      managingEntity: fields[23] as Reference,
-      characteristic: (fields[24] as List)?.cast<Group_Characteristic>(),
-      member: (fields[25] as List)?.cast<Group_Member>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Group obj) {
-    writer
-      ..writeByte(26)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.active)
-      ..writeByte(13)
-      ..write(obj.elementActive)
-      ..writeByte(14)
-      ..write(obj.type)
-      ..writeByte(15)
-      ..write(obj.elementType)
-      ..writeByte(16)
-      ..write(obj.actual)
-      ..writeByte(17)
-      ..write(obj.elementActual)
-      ..writeByte(18)
-      ..write(obj.code)
-      ..writeByte(19)
-      ..write(obj.name)
-      ..writeByte(20)
-      ..write(obj.elementName)
-      ..writeByte(21)
-      ..write(obj.quantity)
-      ..writeByte(22)
-      ..write(obj.elementQuantity)
-      ..writeByte(23)
-      ..write(obj.managingEntity)
-      ..writeByte(24)
-      ..write(obj.characteristic)
-      ..writeByte(25)
-      ..write(obj.member);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

@@ -15,7 +15,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 116)
 class ImagingStudy {
 
 	static Future<ImagingStudy> newInstance({
@@ -94,77 +93,41 @@ class ImagingStudy {
 	imagingStudyBox.put(newImagingStudy.id, newImagingStudy);
 	return newImagingStudy;
 }
-  @HiveField(0)
   final String resourceType= 'ImagingStudy';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String status; // <code> enum: registered/available/cancelled/entered-in-error/unknown;
-  @HiveField(13)
   Element elementStatus;
-  @HiveField(14)
   List<Coding> modality;
-  @HiveField(15)
   Reference subject;
-  @HiveField(16)
   Reference encounter;
-  @HiveField(17)
   DateTime started;
-  @HiveField(18)
   Element elementStarted;
-  @HiveField(19)
   List<Reference> basedOn;
-  @HiveField(20)
   Reference referrer;
-  @HiveField(21)
   List<Reference> interpreter;
-  @HiveField(22)
   List<Reference> endpoint;
-  @HiveField(23)
   int numberOfSeries;
-  @HiveField(24)
   Element elementNumberOfSeries;
-  @HiveField(25)
   int numberOfInstances;
-  @HiveField(26)
   Element elementNumberOfInstances;
-  @HiveField(27)
   Reference procedureReference;
-  @HiveField(28)
   List<CodeableConcept> procedureCode;
-  @HiveField(29)
   Reference location;
-  @HiveField(30)
   List<CodeableConcept> reasonCode;
-  @HiveField(31)
   List<Reference> reasonReference;
-  @HiveField(32)
   List<Annotation> note;
-  @HiveField(33)
   String description;
-  @HiveField(34)
   Element elementDescription;
-  @HiveField(35)
   List<ImagingStudy_Series> series;
 
 ImagingStudy(
@@ -402,138 +365,6 @@ ImagingStudy_Instance(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ImagingStudyAdapter extends TypeAdapter<ImagingStudy> {
-  @override
-  final typeId = 116;
-
-  @override
-  ImagingStudy read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ImagingStudy(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      status: fields[12] as String,
-      elementStatus: fields[13] as Element,
-      modality: (fields[14] as List)?.cast<Coding>(),
-      subject: fields[15] as Reference,
-      encounter: fields[16] as Reference,
-      started: fields[17] as DateTime,
-      elementStarted: fields[18] as Element,
-      basedOn: (fields[19] as List)?.cast<Reference>(),
-      referrer: fields[20] as Reference,
-      interpreter: (fields[21] as List)?.cast<Reference>(),
-      endpoint: (fields[22] as List)?.cast<Reference>(),
-      numberOfSeries: fields[23] as int,
-      elementNumberOfSeries: fields[24] as Element,
-      numberOfInstances: fields[25] as int,
-      elementNumberOfInstances: fields[26] as Element,
-      procedureReference: fields[27] as Reference,
-      procedureCode: (fields[28] as List)?.cast<CodeableConcept>(),
-      location: fields[29] as Reference,
-      reasonCode: (fields[30] as List)?.cast<CodeableConcept>(),
-      reasonReference: (fields[31] as List)?.cast<Reference>(),
-      note: (fields[32] as List)?.cast<Annotation>(),
-      description: fields[33] as String,
-      elementDescription: fields[34] as Element,
-      series: (fields[35] as List)?.cast<ImagingStudy_Series>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ImagingStudy obj) {
-    writer
-      ..writeByte(36)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.status)
-      ..writeByte(13)
-      ..write(obj.elementStatus)
-      ..writeByte(14)
-      ..write(obj.modality)
-      ..writeByte(15)
-      ..write(obj.subject)
-      ..writeByte(16)
-      ..write(obj.encounter)
-      ..writeByte(17)
-      ..write(obj.started)
-      ..writeByte(18)
-      ..write(obj.elementStarted)
-      ..writeByte(19)
-      ..write(obj.basedOn)
-      ..writeByte(20)
-      ..write(obj.referrer)
-      ..writeByte(21)
-      ..write(obj.interpreter)
-      ..writeByte(22)
-      ..write(obj.endpoint)
-      ..writeByte(23)
-      ..write(obj.numberOfSeries)
-      ..writeByte(24)
-      ..write(obj.elementNumberOfSeries)
-      ..writeByte(25)
-      ..write(obj.numberOfInstances)
-      ..writeByte(26)
-      ..write(obj.elementNumberOfInstances)
-      ..writeByte(27)
-      ..write(obj.procedureReference)
-      ..writeByte(28)
-      ..write(obj.procedureCode)
-      ..writeByte(29)
-      ..write(obj.location)
-      ..writeByte(30)
-      ..write(obj.reasonCode)
-      ..writeByte(31)
-      ..write(obj.reasonReference)
-      ..writeByte(32)
-      ..write(obj.note)
-      ..writeByte(33)
-      ..write(obj.description)
-      ..writeByte(34)
-      ..write(obj.elementDescription)
-      ..writeByte(35)
-      ..write(obj.series);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

@@ -5,7 +5,6 @@ import 'package:flutter_fhir/fhirClasses/classes.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 16)
 class Element {
 
 	static Future<Element> newInstance({
@@ -18,9 +17,7 @@ class Element {
 	elementBox.put(newElement.id, newElement);
 	return newElement;
 }
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
 
 Element(
@@ -34,37 +31,6 @@ Element(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ElementAdapter extends TypeAdapter<Element> {
-  @override
-  final typeId = 16;
-
-  @override
-  Element read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Element(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Element obj) {
-    writer
-      ..writeByte(2)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

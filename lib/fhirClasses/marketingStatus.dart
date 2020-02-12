@@ -9,7 +9,6 @@ import 'package:flutter_fhir/fhirClasses/codeableConcept.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 52)
 class MarketingStatus {
 
 	static Future<MarketingStatus> newInstance({
@@ -36,23 +35,14 @@ class MarketingStatus {
 	marketingStatusBox.put(newMarketingStatus.id, newMarketingStatus);
 	return newMarketingStatus;
 }
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   CodeableConcept country;
-  @HiveField(4)
   CodeableConcept jurisdiction;
-  @HiveField(5)
   CodeableConcept status;
-  @HiveField(6)
   Period dateRange;
-  @HiveField(7)
   DateTime restoreDate;
-  @HiveField(8)
   Element elementRestoreDate;
 
 MarketingStatus(
@@ -73,58 +63,6 @@ MarketingStatus(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class MarketingStatusAdapter extends TypeAdapter<MarketingStatus> {
-  @override
-  final typeId = 52;
-
-  @override
-  MarketingStatus read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MarketingStatus(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      country: fields[3] as CodeableConcept,
-      jurisdiction: fields[4] as CodeableConcept,
-      status: fields[5] as CodeableConcept,
-      dateRange: fields[6] as Period,
-      restoreDate: fields[7] as DateTime,
-      elementRestoreDate: fields[8] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MarketingStatus obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.country)
-      ..writeByte(4)
-      ..write(obj.jurisdiction)
-      ..writeByte(5)
-      ..write(obj.status)
-      ..writeByte(6)
-      ..write(obj.dateRange)
-      ..writeByte(7)
-      ..write(obj.restoreDate)
-      ..writeByte(8)
-      ..write(obj.elementRestoreDate);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

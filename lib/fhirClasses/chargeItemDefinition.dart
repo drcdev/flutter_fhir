@@ -16,7 +16,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 73)
 class ChargeItemDefinition {
 
 	static Future<ChargeItemDefinition> newInstance({
@@ -115,97 +114,51 @@ class ChargeItemDefinition {
 	chargeItemDefinitionBox.put(newChargeItemDefinition.id, newChargeItemDefinition);
 	return newChargeItemDefinition;
 }
-  @HiveField(0)
   final String resourceType= 'ChargeItemDefinition';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   String url;
-  @HiveField(12)
   Element elementUrl;
-  @HiveField(13)
   List<Identifier> identifier;
-  @HiveField(14)
   String version;
-  @HiveField(15)
   Element elementVersion;
-  @HiveField(16)
   String title;
-  @HiveField(17)
   Element elementTitle;
-  @HiveField(18)
   List<String> derivedFromUri;
-  @HiveField(19)
   List<Element> elementDerivedFromUri;
-  @HiveField(20)
   List<String> partOf;
-  @HiveField(21)
   List<String> replaces;
-  @HiveField(22)
   String status; // <code> enum: draft/active/retired/unknown;
-  @HiveField(23)
   Element elementStatus;
-  @HiveField(24)
   bool experimental;
-  @HiveField(25)
   Element elementExperimental;
-  @HiveField(26)
   DateTime date;
-  @HiveField(27)
   Element elementDate;
-  @HiveField(28)
   String publisher;
-  @HiveField(29)
   Element elementPublisher;
-  @HiveField(30)
   List<ContactDetail> contact;
-  @HiveField(31)
   String description;
-  @HiveField(32)
   Element elementDescription;
-  @HiveField(33)
   List<UsageContext> useContext;
-  @HiveField(34)
   List<CodeableConcept> jurisdiction;
-  @HiveField(35)
   String copyright;
-  @HiveField(36)
   Element elementCopyright;
-  @HiveField(37)
   String approvalDate;
-  @HiveField(38)
   Element elementApprovalDate;
-  @HiveField(39)
   String lastReviewDate;
-  @HiveField(40)
   Element elementLastReviewDate;
-  @HiveField(41)
   Period effectivePeriod;
-  @HiveField(42)
   CodeableConcept code;
-  @HiveField(43)
   List<Reference> instance;
-  @HiveField(44)
   List<ChargeItemDefinition_Applicability> applicability;
-  @HiveField(45)
   List<ChargeItemDefinition_PropertyGroup> propertyGroup;
 
 ChargeItemDefinition(
@@ -405,170 +358,6 @@ ChargeItemDefinition_PriceComponent(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ChargeItemDefinitionAdapter extends TypeAdapter<ChargeItemDefinition> {
-  @override
-  final typeId = 73;
-
-  @override
-  ChargeItemDefinition read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ChargeItemDefinition(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      url: fields[11] as String,
-      elementUrl: fields[12] as Element,
-      identifier: (fields[13] as List)?.cast<Identifier>(),
-      version: fields[14] as String,
-      elementVersion: fields[15] as Element,
-      title: fields[16] as String,
-      elementTitle: fields[17] as Element,
-      derivedFromUri: (fields[18] as List)?.cast<String>(),
-      elementDerivedFromUri: (fields[19] as List)?.cast<Element>(),
-      partOf: (fields[20] as List)?.cast<String>(),
-      replaces: (fields[21] as List)?.cast<String>(),
-      status: fields[22] as String,
-      elementStatus: fields[23] as Element,
-      experimental: fields[24] as bool,
-      elementExperimental: fields[25] as Element,
-      date: fields[26] as DateTime,
-      elementDate: fields[27] as Element,
-      publisher: fields[28] as String,
-      elementPublisher: fields[29] as Element,
-      contact: (fields[30] as List)?.cast<ContactDetail>(),
-      description: fields[31] as String,
-      elementDescription: fields[32] as Element,
-      useContext: (fields[33] as List)?.cast<UsageContext>(),
-      jurisdiction: (fields[34] as List)?.cast<CodeableConcept>(),
-      copyright: fields[35] as String,
-      elementCopyright: fields[36] as Element,
-      approvalDate: fields[37] as String,
-      elementApprovalDate: fields[38] as Element,
-      lastReviewDate: fields[39] as String,
-      elementLastReviewDate: fields[40] as Element,
-      effectivePeriod: fields[41] as Period,
-      code: fields[42] as CodeableConcept,
-      instance: (fields[43] as List)?.cast<Reference>(),
-      applicability:
-          (fields[44] as List)?.cast<ChargeItemDefinition_Applicability>(),
-      propertyGroup:
-          (fields[45] as List)?.cast<ChargeItemDefinition_PropertyGroup>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ChargeItemDefinition obj) {
-    writer
-      ..writeByte(46)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.url)
-      ..writeByte(12)
-      ..write(obj.elementUrl)
-      ..writeByte(13)
-      ..write(obj.identifier)
-      ..writeByte(14)
-      ..write(obj.version)
-      ..writeByte(15)
-      ..write(obj.elementVersion)
-      ..writeByte(16)
-      ..write(obj.title)
-      ..writeByte(17)
-      ..write(obj.elementTitle)
-      ..writeByte(18)
-      ..write(obj.derivedFromUri)
-      ..writeByte(19)
-      ..write(obj.elementDerivedFromUri)
-      ..writeByte(20)
-      ..write(obj.partOf)
-      ..writeByte(21)
-      ..write(obj.replaces)
-      ..writeByte(22)
-      ..write(obj.status)
-      ..writeByte(23)
-      ..write(obj.elementStatus)
-      ..writeByte(24)
-      ..write(obj.experimental)
-      ..writeByte(25)
-      ..write(obj.elementExperimental)
-      ..writeByte(26)
-      ..write(obj.date)
-      ..writeByte(27)
-      ..write(obj.elementDate)
-      ..writeByte(28)
-      ..write(obj.publisher)
-      ..writeByte(29)
-      ..write(obj.elementPublisher)
-      ..writeByte(30)
-      ..write(obj.contact)
-      ..writeByte(31)
-      ..write(obj.description)
-      ..writeByte(32)
-      ..write(obj.elementDescription)
-      ..writeByte(33)
-      ..write(obj.useContext)
-      ..writeByte(34)
-      ..write(obj.jurisdiction)
-      ..writeByte(35)
-      ..write(obj.copyright)
-      ..writeByte(36)
-      ..write(obj.elementCopyright)
-      ..writeByte(37)
-      ..write(obj.approvalDate)
-      ..writeByte(38)
-      ..write(obj.elementApprovalDate)
-      ..writeByte(39)
-      ..write(obj.lastReviewDate)
-      ..writeByte(40)
-      ..write(obj.elementLastReviewDate)
-      ..writeByte(41)
-      ..write(obj.effectivePeriod)
-      ..writeByte(42)
-      ..write(obj.code)
-      ..writeByte(43)
-      ..write(obj.instance)
-      ..writeByte(44)
-      ..write(obj.applicability)
-      ..writeByte(45)
-      ..write(obj.propertyGroup);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

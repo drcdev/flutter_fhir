@@ -14,7 +14,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 81)
 class Composition {
 
 	static Future<Composition> newInstance({
@@ -81,65 +80,35 @@ class Composition {
 	compositionBox.put(newComposition.id, newComposition);
 	return newComposition;
 }
-  @HiveField(0)
   final String resourceType= 'Composition';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   Identifier identifier;
-  @HiveField(12)
   String status; // <code> enum: preliminary/final/amended/entered-in-error;
-  @HiveField(13)
   Element elementStatus;
-  @HiveField(14)
   CodeableConcept type;
-  @HiveField(15)
   List<CodeableConcept> category;
-  @HiveField(16)
   Reference subject;
-  @HiveField(17)
   Reference encounter;
-  @HiveField(18)
   DateTime date;
-  @HiveField(19)
   Element elementDate;
-  @HiveField(20)
   List<Reference> author;
-  @HiveField(21)
   String title;
-  @HiveField(22)
   Element elementTitle;
-  @HiveField(23)
   String confidentiality;
-  @HiveField(24)
   Element elementConfidentiality;
-  @HiveField(25)
   List<Composition_Attester> attester;
-  @HiveField(26)
   Reference custodian;
-  @HiveField(27)
   List<Composition_RelatesTo> relatesTo;
-  @HiveField(28)
   List<Composition_Event> event;
-  @HiveField(29)
   List<Composition_Section> section;
 
 Composition(
@@ -392,120 +361,6 @@ Composition_Section(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class CompositionAdapter extends TypeAdapter<Composition> {
-  @override
-  final typeId = 81;
-
-  @override
-  Composition read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Composition(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: fields[11] as Identifier,
-      status: fields[12] as String,
-      elementStatus: fields[13] as Element,
-      type: fields[14] as CodeableConcept,
-      category: (fields[15] as List)?.cast<CodeableConcept>(),
-      subject: fields[16] as Reference,
-      encounter: fields[17] as Reference,
-      date: fields[18] as DateTime,
-      elementDate: fields[19] as Element,
-      author: (fields[20] as List)?.cast<Reference>(),
-      title: fields[21] as String,
-      elementTitle: fields[22] as Element,
-      confidentiality: fields[23] as String,
-      elementConfidentiality: fields[24] as Element,
-      attester: (fields[25] as List)?.cast<Composition_Attester>(),
-      custodian: fields[26] as Reference,
-      relatesTo: (fields[27] as List)?.cast<Composition_RelatesTo>(),
-      event: (fields[28] as List)?.cast<Composition_Event>(),
-      section: (fields[29] as List)?.cast<Composition_Section>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Composition obj) {
-    writer
-      ..writeByte(30)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.status)
-      ..writeByte(13)
-      ..write(obj.elementStatus)
-      ..writeByte(14)
-      ..write(obj.type)
-      ..writeByte(15)
-      ..write(obj.category)
-      ..writeByte(16)
-      ..write(obj.subject)
-      ..writeByte(17)
-      ..write(obj.encounter)
-      ..writeByte(18)
-      ..write(obj.date)
-      ..writeByte(19)
-      ..write(obj.elementDate)
-      ..writeByte(20)
-      ..write(obj.author)
-      ..writeByte(21)
-      ..write(obj.title)
-      ..writeByte(22)
-      ..write(obj.elementTitle)
-      ..writeByte(23)
-      ..write(obj.confidentiality)
-      ..writeByte(24)
-      ..write(obj.elementConfidentiality)
-      ..writeByte(25)
-      ..write(obj.attester)
-      ..writeByte(26)
-      ..write(obj.custodian)
-      ..writeByte(27)
-      ..write(obj.relatesTo)
-      ..writeByte(28)
-      ..write(obj.event)
-      ..writeByte(29)
-      ..write(obj.section);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

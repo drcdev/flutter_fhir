@@ -20,7 +20,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 151)
 class Observation {
 
 	static Future<Observation> newInstance({
@@ -141,118 +140,62 @@ class Observation {
 	observationBox.put(newObservation.id, newObservation);
 	return newObservation;
 }
-  @HiveField(0)
   final String resourceType= 'Observation';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   List<Reference> basedOn;
-  @HiveField(13)
   List<Reference> partOf;
-  @HiveField(14)
   String status; // <code> enum: registered/preliminary/final/amended/corrected/cancelled/entered-in-error/unknown;
-  @HiveField(15)
   Element elementStatus;
-  @HiveField(16)
   List<CodeableConcept> category;
-  @HiveField(17)
   CodeableConcept code;
-  @HiveField(18)
   Reference subject;
-  @HiveField(19)
   List<Reference> focus;
-  @HiveField(20)
   Reference encounter;
-  @HiveField(21)
   String effectiveDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-  @HiveField(22)
   Element elementEffectiveDateTime;
-  @HiveField(23)
   Period effectivePeriod;
-  @HiveField(24)
   Timing effectiveTiming;
-  @HiveField(25)
   String effectiveInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
-  @HiveField(26)
   Element elementEffectiveInstant;
-  @HiveField(27)
   DateTime issued;
-  @HiveField(28)
   Element elementIssued;
-  @HiveField(29)
   List<Reference> performer;
-  @HiveField(30)
   Quantity valueQuantity;
-  @HiveField(31)
   CodeableConcept valueCodeableConcept;
-  @HiveField(32)
   String valueString; //  pattern: ^[ \r\n\t\S]+$
-  @HiveField(33)
   Element elementValueString;
-  @HiveField(34)
   bool valueBoolean; //  pattern: ^true|false$
-  @HiveField(35)
   Element elementValueBoolean;
   int valueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
-  @HiveField(37)
   Element elementValueInteger;
-  @HiveField(38)
   Range valueRange;
-  @HiveField(39)
   Ratio valueRatio;
-  @HiveField(40)
   SampledData valueSampledData;
-  @HiveField(41)
   String valueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
-  @HiveField(42)
   Element elementValueTime;
-  @HiveField(43)
   String valueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-  @HiveField(44)
   Element elementValueDateTime;
-  @HiveField(45)
   Period valuePeriod;
-  @HiveField(46)
   CodeableConcept dataAbsentReason;
-  @HiveField(47)
   List<CodeableConcept> interpretation;
-  @HiveField(48)
   List<Annotation> note;
-  @HiveField(49)
   CodeableConcept bodySite;
-  @HiveField(50)
   CodeableConcept method;
-  @HiveField(51)
   Reference specimen;
-  @HiveField(52)
   Reference device;
-  @HiveField(53)
   List<Observation_ReferenceRange> referenceRange;
-  @HiveField(54)
   List<Reference> hasMember;
-  @HiveField(55)
   List<Reference> derivedFrom;
-  @HiveField(56)
   List<Observation_Component> component;
 
 Observation(
@@ -486,198 +429,6 @@ Observation_Component(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ObservationAdapter extends TypeAdapter<Observation> {
-  @override
-  final typeId = 151;
-
-  @override
-  Observation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Observation(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      basedOn: (fields[12] as List)?.cast<Reference>(),
-      partOf: (fields[13] as List)?.cast<Reference>(),
-      status: fields[14] as String,
-      elementStatus: fields[15] as Element,
-      category: (fields[16] as List)?.cast<CodeableConcept>(),
-      code: fields[17] as CodeableConcept,
-      subject: fields[18] as Reference,
-      focus: (fields[19] as List)?.cast<Reference>(),
-      encounter: fields[20] as Reference,
-      effectiveDateTime: fields[21] as String,
-      elementEffectiveDateTime: fields[22] as Element,
-      effectivePeriod: fields[23] as Period,
-      effectiveTiming: fields[24] as Timing,
-      effectiveInstant: fields[25] as String,
-      elementEffectiveInstant: fields[26] as Element,
-      issued: fields[27] as DateTime,
-      elementIssued: fields[28] as Element,
-      performer: (fields[29] as List)?.cast<Reference>(),
-      valueQuantity: fields[30] as Quantity,
-      valueCodeableConcept: fields[31] as CodeableConcept,
-      valueString: fields[32] as String,
-      elementValueString: fields[33] as Element,
-      valueBoolean: fields[34] as bool,
-      elementValueBoolean: fields[35] as Element,
-      elementValueInteger: fields[37] as Element,
-      valueRange: fields[38] as Range,
-      valueRatio: fields[39] as Ratio,
-      valueSampledData: fields[40] as SampledData,
-      valueTime: fields[41] as String,
-      elementValueTime: fields[42] as Element,
-      valueDateTime: fields[43] as String,
-      elementValueDateTime: fields[44] as Element,
-      valuePeriod: fields[45] as Period,
-      dataAbsentReason: fields[46] as CodeableConcept,
-      interpretation: (fields[47] as List)?.cast<CodeableConcept>(),
-      note: (fields[48] as List)?.cast<Annotation>(),
-      bodySite: fields[49] as CodeableConcept,
-      method: fields[50] as CodeableConcept,
-      specimen: fields[51] as Reference,
-      device: fields[52] as Reference,
-      referenceRange: (fields[53] as List)?.cast<Observation_ReferenceRange>(),
-      hasMember: (fields[54] as List)?.cast<Reference>(),
-      derivedFrom: (fields[55] as List)?.cast<Reference>(),
-      component: (fields[56] as List)?.cast<Observation_Component>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Observation obj) {
-    writer
-      ..writeByte(56)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.basedOn)
-      ..writeByte(13)
-      ..write(obj.partOf)
-      ..writeByte(14)
-      ..write(obj.status)
-      ..writeByte(15)
-      ..write(obj.elementStatus)
-      ..writeByte(16)
-      ..write(obj.category)
-      ..writeByte(17)
-      ..write(obj.code)
-      ..writeByte(18)
-      ..write(obj.subject)
-      ..writeByte(19)
-      ..write(obj.focus)
-      ..writeByte(20)
-      ..write(obj.encounter)
-      ..writeByte(21)
-      ..write(obj.effectiveDateTime)
-      ..writeByte(22)
-      ..write(obj.elementEffectiveDateTime)
-      ..writeByte(23)
-      ..write(obj.effectivePeriod)
-      ..writeByte(24)
-      ..write(obj.effectiveTiming)
-      ..writeByte(25)
-      ..write(obj.effectiveInstant)
-      ..writeByte(26)
-      ..write(obj.elementEffectiveInstant)
-      ..writeByte(27)
-      ..write(obj.issued)
-      ..writeByte(28)
-      ..write(obj.elementIssued)
-      ..writeByte(29)
-      ..write(obj.performer)
-      ..writeByte(30)
-      ..write(obj.valueQuantity)
-      ..writeByte(31)
-      ..write(obj.valueCodeableConcept)
-      ..writeByte(32)
-      ..write(obj.valueString)
-      ..writeByte(33)
-      ..write(obj.elementValueString)
-      ..writeByte(34)
-      ..write(obj.valueBoolean)
-      ..writeByte(35)
-      ..write(obj.elementValueBoolean)
-      ..writeByte(37)
-      ..write(obj.elementValueInteger)
-      ..writeByte(38)
-      ..write(obj.valueRange)
-      ..writeByte(39)
-      ..write(obj.valueRatio)
-      ..writeByte(40)
-      ..write(obj.valueSampledData)
-      ..writeByte(41)
-      ..write(obj.valueTime)
-      ..writeByte(42)
-      ..write(obj.elementValueTime)
-      ..writeByte(43)
-      ..write(obj.valueDateTime)
-      ..writeByte(44)
-      ..write(obj.elementValueDateTime)
-      ..writeByte(45)
-      ..write(obj.valuePeriod)
-      ..writeByte(46)
-      ..write(obj.dataAbsentReason)
-      ..writeByte(47)
-      ..write(obj.interpretation)
-      ..writeByte(48)
-      ..write(obj.note)
-      ..writeByte(49)
-      ..write(obj.bodySite)
-      ..writeByte(50)
-      ..write(obj.method)
-      ..writeByte(51)
-      ..write(obj.specimen)
-      ..writeByte(52)
-      ..write(obj.device)
-      ..writeByte(53)
-      ..write(obj.referenceRange)
-      ..writeByte(54)
-      ..write(obj.hasMember)
-      ..writeByte(55)
-      ..write(obj.derivedFrom)
-      ..writeByte(56)
-      ..write(obj.component);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

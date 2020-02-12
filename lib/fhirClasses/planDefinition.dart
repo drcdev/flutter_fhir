@@ -25,7 +25,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 162)
 class PlanDefinition {
 
 	static Future<PlanDefinition> newInstance({
@@ -148,121 +147,63 @@ class PlanDefinition {
 	planDefinitionBox.put(newPlanDefinition.id, newPlanDefinition);
 	return newPlanDefinition;
 }
-  @HiveField(0)
   final String resourceType= 'PlanDefinition';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   String url;
-  @HiveField(12)
   Element elementUrl;
-  @HiveField(13)
   List<Identifier> identifier;
-  @HiveField(14)
   String version;
-  @HiveField(15)
   Element elementVersion;
-  @HiveField(16)
   String name;
-  @HiveField(17)
   Element elementName;
-  @HiveField(18)
   String title;
-  @HiveField(19)
   Element elementTitle;
-  @HiveField(20)
   String subtitle;
-  @HiveField(21)
   Element elementSubtitle;
-  @HiveField(22)
   CodeableConcept type;
-  @HiveField(23)
   String status; // <code> enum: draft/active/retired/unknown;
-  @HiveField(24)
   Element elementStatus;
-  @HiveField(25)
   bool experimental;
-  @HiveField(26)
   Element elementExperimental;
-  @HiveField(27)
   CodeableConcept subjectCodeableConcept;
-  @HiveField(28)
   Reference subjectReference;
-  @HiveField(29)
   DateTime date;
-  @HiveField(30)
   Element elementDate;
-  @HiveField(31)
   String publisher;
-  @HiveField(32)
   Element elementPublisher;
-  @HiveField(33)
   List<ContactDetail> contact;
-  @HiveField(34)
   String description;
-  @HiveField(35)
   Element elementDescription;
-  @HiveField(36)
   List<UsageContext> useContext;
-  @HiveField(37)
   List<CodeableConcept> jurisdiction;
-  @HiveField(38)
   String purpose;
-  @HiveField(39)
   Element elementPurpose;
-  @HiveField(40)
   String usage;
-  @HiveField(41)
   Element elementUsage;
-  @HiveField(42)
   String copyright;
-  @HiveField(43)
   Element elementCopyright;
-  @HiveField(44)
   String approvalDate;
-  @HiveField(45)
   Element elementApprovalDate;
-  @HiveField(46)
   String lastReviewDate;
-  @HiveField(47)
   Element elementLastReviewDate;
-  @HiveField(48)
   Period effectivePeriod;
-  @HiveField(49)
   List<CodeableConcept> topic;
-  @HiveField(50)
   List<ContactDetail> author;
-  @HiveField(51)
   List<ContactDetail> editor;
-  @HiveField(52)
   List<ContactDetail> reviewer;
-  @HiveField(53)
   List<ContactDetail> endorser;
-  @HiveField(54)
   List<RelatedArtifact> relatedArtifact;
-  @HiveField(55)
   List<String> library;
-  @HiveField(56)
   List<PlanDefinition_Goal> goal;
-  @HiveField(57)
   List<PlanDefinition_Action> action;
 
 PlanDefinition(
@@ -834,204 +775,6 @@ PlanDefinition_DynamicValue(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class PlanDefinitionAdapter extends TypeAdapter<PlanDefinition> {
-  @override
-  final typeId = 162;
-
-  @override
-  PlanDefinition read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return PlanDefinition(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      url: fields[11] as String,
-      elementUrl: fields[12] as Element,
-      identifier: (fields[13] as List)?.cast<Identifier>(),
-      version: fields[14] as String,
-      elementVersion: fields[15] as Element,
-      name: fields[16] as String,
-      elementName: fields[17] as Element,
-      title: fields[18] as String,
-      elementTitle: fields[19] as Element,
-      subtitle: fields[20] as String,
-      elementSubtitle: fields[21] as Element,
-      type: fields[22] as CodeableConcept,
-      status: fields[23] as String,
-      elementStatus: fields[24] as Element,
-      experimental: fields[25] as bool,
-      elementExperimental: fields[26] as Element,
-      subjectCodeableConcept: fields[27] as CodeableConcept,
-      subjectReference: fields[28] as Reference,
-      date: fields[29] as DateTime,
-      elementDate: fields[30] as Element,
-      publisher: fields[31] as String,
-      elementPublisher: fields[32] as Element,
-      contact: (fields[33] as List)?.cast<ContactDetail>(),
-      description: fields[34] as String,
-      elementDescription: fields[35] as Element,
-      useContext: (fields[36] as List)?.cast<UsageContext>(),
-      jurisdiction: (fields[37] as List)?.cast<CodeableConcept>(),
-      purpose: fields[38] as String,
-      elementPurpose: fields[39] as Element,
-      usage: fields[40] as String,
-      elementUsage: fields[41] as Element,
-      copyright: fields[42] as String,
-      elementCopyright: fields[43] as Element,
-      approvalDate: fields[44] as String,
-      elementApprovalDate: fields[45] as Element,
-      lastReviewDate: fields[46] as String,
-      elementLastReviewDate: fields[47] as Element,
-      effectivePeriod: fields[48] as Period,
-      topic: (fields[49] as List)?.cast<CodeableConcept>(),
-      author: (fields[50] as List)?.cast<ContactDetail>(),
-      editor: (fields[51] as List)?.cast<ContactDetail>(),
-      reviewer: (fields[52] as List)?.cast<ContactDetail>(),
-      endorser: (fields[53] as List)?.cast<ContactDetail>(),
-      relatedArtifact: (fields[54] as List)?.cast<RelatedArtifact>(),
-      library: (fields[55] as List)?.cast<String>(),
-      goal: (fields[56] as List)?.cast<PlanDefinition_Goal>(),
-      action: (fields[57] as List)?.cast<PlanDefinition_Action>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, PlanDefinition obj) {
-    writer
-      ..writeByte(58)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.url)
-      ..writeByte(12)
-      ..write(obj.elementUrl)
-      ..writeByte(13)
-      ..write(obj.identifier)
-      ..writeByte(14)
-      ..write(obj.version)
-      ..writeByte(15)
-      ..write(obj.elementVersion)
-      ..writeByte(16)
-      ..write(obj.name)
-      ..writeByte(17)
-      ..write(obj.elementName)
-      ..writeByte(18)
-      ..write(obj.title)
-      ..writeByte(19)
-      ..write(obj.elementTitle)
-      ..writeByte(20)
-      ..write(obj.subtitle)
-      ..writeByte(21)
-      ..write(obj.elementSubtitle)
-      ..writeByte(22)
-      ..write(obj.type)
-      ..writeByte(23)
-      ..write(obj.status)
-      ..writeByte(24)
-      ..write(obj.elementStatus)
-      ..writeByte(25)
-      ..write(obj.experimental)
-      ..writeByte(26)
-      ..write(obj.elementExperimental)
-      ..writeByte(27)
-      ..write(obj.subjectCodeableConcept)
-      ..writeByte(28)
-      ..write(obj.subjectReference)
-      ..writeByte(29)
-      ..write(obj.date)
-      ..writeByte(30)
-      ..write(obj.elementDate)
-      ..writeByte(31)
-      ..write(obj.publisher)
-      ..writeByte(32)
-      ..write(obj.elementPublisher)
-      ..writeByte(33)
-      ..write(obj.contact)
-      ..writeByte(34)
-      ..write(obj.description)
-      ..writeByte(35)
-      ..write(obj.elementDescription)
-      ..writeByte(36)
-      ..write(obj.useContext)
-      ..writeByte(37)
-      ..write(obj.jurisdiction)
-      ..writeByte(38)
-      ..write(obj.purpose)
-      ..writeByte(39)
-      ..write(obj.elementPurpose)
-      ..writeByte(40)
-      ..write(obj.usage)
-      ..writeByte(41)
-      ..write(obj.elementUsage)
-      ..writeByte(42)
-      ..write(obj.copyright)
-      ..writeByte(43)
-      ..write(obj.elementCopyright)
-      ..writeByte(44)
-      ..write(obj.approvalDate)
-      ..writeByte(45)
-      ..write(obj.elementApprovalDate)
-      ..writeByte(46)
-      ..write(obj.lastReviewDate)
-      ..writeByte(47)
-      ..write(obj.elementLastReviewDate)
-      ..writeByte(48)
-      ..write(obj.effectivePeriod)
-      ..writeByte(49)
-      ..write(obj.topic)
-      ..writeByte(50)
-      ..write(obj.author)
-      ..writeByte(51)
-      ..write(obj.editor)
-      ..writeByte(52)
-      ..write(obj.reviewer)
-      ..writeByte(53)
-      ..write(obj.endorser)
-      ..writeByte(54)
-      ..write(obj.relatedArtifact)
-      ..writeByte(55)
-      ..write(obj.library)
-      ..writeByte(56)
-      ..write(obj.goal)
-      ..writeByte(57)
-      ..write(obj.action);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

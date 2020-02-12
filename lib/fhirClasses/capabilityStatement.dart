@@ -15,7 +15,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 68)
 class CapabilityStatement {
 
 	static Future<CapabilityStatement> newInstance({
@@ -126,109 +125,57 @@ class CapabilityStatement {
 	capabilityStatementBox.put(newCapabilityStatement.id, newCapabilityStatement);
 	return newCapabilityStatement;
 }
-  @HiveField(0)
   final String resourceType= 'CapabilityStatement';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   String url;
-  @HiveField(12)
   Element elementUrl;
-  @HiveField(13)
   String version;
-  @HiveField(14)
   Element elementVersion;
-  @HiveField(15)
   String name;
-  @HiveField(16)
   Element elementName;
-  @HiveField(17)
   String title;
-  @HiveField(18)
   Element elementTitle;
-  @HiveField(19)
   String status; // <code> enum: draft/active/retired/unknown;
-  @HiveField(20)
   Element elementStatus;
-  @HiveField(21)
   bool experimental;
-  @HiveField(22)
   Element elementExperimental;
-  @HiveField(23)
   DateTime date;
-  @HiveField(24)
   Element elementDate;
-  @HiveField(25)
   String publisher;
-  @HiveField(26)
   Element elementPublisher;
-  @HiveField(27)
   List<ContactDetail> contact;
-  @HiveField(28)
   String description;
-  @HiveField(29)
   Element elementDescription;
-  @HiveField(30)
   List<UsageContext> useContext;
-  @HiveField(31)
   List<CodeableConcept> jurisdiction;
-  @HiveField(32)
   String purpose;
-  @HiveField(33)
   Element elementPurpose;
-  @HiveField(34)
   String copyright;
-  @HiveField(35)
   Element elementCopyright;
-  @HiveField(36)
   String kind; // <code> enum: instance/capability/requirements;
-  @HiveField(37)
   Element elementKind;
-  @HiveField(38)
   List<String> instantiates;
-  @HiveField(39)
   List<String> imports;
-  @HiveField(40)
   CapabilityStatement_Software software;
-  @HiveField(41)
   CapabilityStatement_Implementation implementation;
-  @HiveField(42)
   String fhirVersion; // <code> enum: 0.01/0.05/0.06/0.11/0.0.80/0.0.81/0.0.82/0.4.0/0.5.0/1.0.0/1.0.1/1.0.2/1.1.0/1.4.0/1.6.0/1.8.0/3.0.0/3.0.1/3.3.0/3.5.0/4.0.0/4.0.1;
-  @HiveField(43)
   Element elementFhirVersion;
-  @HiveField(44)
   List<String> format;
-  @HiveField(45)
   List<Element> elementFormat;
-  @HiveField(46)
   List<String> patchFormat;
-  @HiveField(47)
   List<Element> elementPatchFormat;
-  @HiveField(48)
   List<String> implementationGuide;
-  @HiveField(49)
   List<CapabilityStatement_Rest> rest;
-  @HiveField(50)
   List<CapabilityStatement_Messaging> messaging;
-  @HiveField(51)
   List<CapabilityStatement_Document> document;
 
 CapabilityStatement(
@@ -1036,186 +983,6 @@ CapabilityStatement_Document(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class CapabilityStatementAdapter extends TypeAdapter<CapabilityStatement> {
-  @override
-  final typeId = 68;
-
-  @override
-  CapabilityStatement read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CapabilityStatement(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      url: fields[11] as String,
-      elementUrl: fields[12] as Element,
-      version: fields[13] as String,
-      elementVersion: fields[14] as Element,
-      name: fields[15] as String,
-      elementName: fields[16] as Element,
-      title: fields[17] as String,
-      elementTitle: fields[18] as Element,
-      status: fields[19] as String,
-      elementStatus: fields[20] as Element,
-      experimental: fields[21] as bool,
-      elementExperimental: fields[22] as Element,
-      date: fields[23] as DateTime,
-      elementDate: fields[24] as Element,
-      publisher: fields[25] as String,
-      elementPublisher: fields[26] as Element,
-      contact: (fields[27] as List)?.cast<ContactDetail>(),
-      description: fields[28] as String,
-      elementDescription: fields[29] as Element,
-      useContext: (fields[30] as List)?.cast<UsageContext>(),
-      jurisdiction: (fields[31] as List)?.cast<CodeableConcept>(),
-      purpose: fields[32] as String,
-      elementPurpose: fields[33] as Element,
-      copyright: fields[34] as String,
-      elementCopyright: fields[35] as Element,
-      kind: fields[36] as String,
-      elementKind: fields[37] as Element,
-      instantiates: (fields[38] as List)?.cast<String>(),
-      imports: (fields[39] as List)?.cast<String>(),
-      software: fields[40] as CapabilityStatement_Software,
-      implementation: fields[41] as CapabilityStatement_Implementation,
-      fhirVersion: fields[42] as String,
-      elementFhirVersion: fields[43] as Element,
-      format: (fields[44] as List)?.cast<String>(),
-      elementFormat: (fields[45] as List)?.cast<Element>(),
-      patchFormat: (fields[46] as List)?.cast<String>(),
-      elementPatchFormat: (fields[47] as List)?.cast<Element>(),
-      implementationGuide: (fields[48] as List)?.cast<String>(),
-      rest: (fields[49] as List)?.cast<CapabilityStatement_Rest>(),
-      messaging: (fields[50] as List)?.cast<CapabilityStatement_Messaging>(),
-      document: (fields[51] as List)?.cast<CapabilityStatement_Document>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CapabilityStatement obj) {
-    writer
-      ..writeByte(52)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.url)
-      ..writeByte(12)
-      ..write(obj.elementUrl)
-      ..writeByte(13)
-      ..write(obj.version)
-      ..writeByte(14)
-      ..write(obj.elementVersion)
-      ..writeByte(15)
-      ..write(obj.name)
-      ..writeByte(16)
-      ..write(obj.elementName)
-      ..writeByte(17)
-      ..write(obj.title)
-      ..writeByte(18)
-      ..write(obj.elementTitle)
-      ..writeByte(19)
-      ..write(obj.status)
-      ..writeByte(20)
-      ..write(obj.elementStatus)
-      ..writeByte(21)
-      ..write(obj.experimental)
-      ..writeByte(22)
-      ..write(obj.elementExperimental)
-      ..writeByte(23)
-      ..write(obj.date)
-      ..writeByte(24)
-      ..write(obj.elementDate)
-      ..writeByte(25)
-      ..write(obj.publisher)
-      ..writeByte(26)
-      ..write(obj.elementPublisher)
-      ..writeByte(27)
-      ..write(obj.contact)
-      ..writeByte(28)
-      ..write(obj.description)
-      ..writeByte(29)
-      ..write(obj.elementDescription)
-      ..writeByte(30)
-      ..write(obj.useContext)
-      ..writeByte(31)
-      ..write(obj.jurisdiction)
-      ..writeByte(32)
-      ..write(obj.purpose)
-      ..writeByte(33)
-      ..write(obj.elementPurpose)
-      ..writeByte(34)
-      ..write(obj.copyright)
-      ..writeByte(35)
-      ..write(obj.elementCopyright)
-      ..writeByte(36)
-      ..write(obj.kind)
-      ..writeByte(37)
-      ..write(obj.elementKind)
-      ..writeByte(38)
-      ..write(obj.instantiates)
-      ..writeByte(39)
-      ..write(obj.imports)
-      ..writeByte(40)
-      ..write(obj.software)
-      ..writeByte(41)
-      ..write(obj.implementation)
-      ..writeByte(42)
-      ..write(obj.fhirVersion)
-      ..writeByte(43)
-      ..write(obj.elementFhirVersion)
-      ..writeByte(44)
-      ..write(obj.format)
-      ..writeByte(45)
-      ..write(obj.elementFormat)
-      ..writeByte(46)
-      ..write(obj.patchFormat)
-      ..writeByte(47)
-      ..write(obj.elementPatchFormat)
-      ..writeByte(48)
-      ..write(obj.implementationGuide)
-      ..writeByte(49)
-      ..write(obj.rest)
-      ..writeByte(50)
-      ..write(obj.messaging)
-      ..writeByte(51)
-      ..write(obj.document);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

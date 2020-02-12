@@ -17,7 +17,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 69)
 class CarePlan {
 
 	static Future<CarePlan> newInstance({
@@ -104,85 +103,45 @@ class CarePlan {
 	carePlanBox.put(newCarePlan.id, newCarePlan);
 	return newCarePlan;
 }
-  @HiveField(0)
   final String resourceType= 'CarePlan';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   List<String> instantiatesCanonical;
-  @HiveField(13)
   List<String> instantiatesUri;
-  @HiveField(14)
   List<Element> elementInstantiatesUri;
-  @HiveField(15)
   List<Reference> basedOn;
-  @HiveField(16)
   List<Reference> replaces;
-  @HiveField(17)
   List<Reference> partOf;
-  @HiveField(18)
   String status;
-  @HiveField(19)
   Element elementStatus;
-  @HiveField(20)
   String intent;
-  @HiveField(21)
   Element elementIntent;
-  @HiveField(22)
   List<CodeableConcept> category;
-  @HiveField(23)
   String title;
-  @HiveField(24)
   Element elementTitle;
-  @HiveField(25)
   String description;
-  @HiveField(26)
   Element elementDescription;
-  @HiveField(27)
   Reference subject;
-  @HiveField(28)
   Reference encounter;
-  @HiveField(29)
   Period period;
-  @HiveField(30)
   DateTime created;
-  @HiveField(31)
   Element elementCreated;
-  @HiveField(32)
   Reference author;
-  @HiveField(33)
   List<Reference> contributor;
-  @HiveField(34)
   List<Reference> careTeam;
-  @HiveField(35)
   List<Reference> addresses;
-  @HiveField(36)
   List<Reference> supportingInfo;
-  @HiveField(37)
   List<Reference> goal;
-  @HiveField(38)
   List<CarePlan_Activity> activity;
-  @HiveField(39)
   List<Annotation> note;
 
 CarePlan(
@@ -415,150 +374,6 @@ CarePlan_Detail(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class CarePlanAdapter extends TypeAdapter<CarePlan> {
-  @override
-  final typeId = 69;
-
-  @override
-  CarePlan read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CarePlan(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      instantiatesCanonical: (fields[12] as List)?.cast<String>(),
-      instantiatesUri: (fields[13] as List)?.cast<String>(),
-      elementInstantiatesUri: (fields[14] as List)?.cast<Element>(),
-      basedOn: (fields[15] as List)?.cast<Reference>(),
-      replaces: (fields[16] as List)?.cast<Reference>(),
-      partOf: (fields[17] as List)?.cast<Reference>(),
-      status: fields[18] as String,
-      elementStatus: fields[19] as Element,
-      intent: fields[20] as String,
-      elementIntent: fields[21] as Element,
-      category: (fields[22] as List)?.cast<CodeableConcept>(),
-      title: fields[23] as String,
-      elementTitle: fields[24] as Element,
-      description: fields[25] as String,
-      elementDescription: fields[26] as Element,
-      subject: fields[27] as Reference,
-      encounter: fields[28] as Reference,
-      period: fields[29] as Period,
-      created: fields[30] as DateTime,
-      elementCreated: fields[31] as Element,
-      author: fields[32] as Reference,
-      contributor: (fields[33] as List)?.cast<Reference>(),
-      careTeam: (fields[34] as List)?.cast<Reference>(),
-      addresses: (fields[35] as List)?.cast<Reference>(),
-      supportingInfo: (fields[36] as List)?.cast<Reference>(),
-      goal: (fields[37] as List)?.cast<Reference>(),
-      activity: (fields[38] as List)?.cast<CarePlan_Activity>(),
-      note: (fields[39] as List)?.cast<Annotation>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CarePlan obj) {
-    writer
-      ..writeByte(40)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.instantiatesCanonical)
-      ..writeByte(13)
-      ..write(obj.instantiatesUri)
-      ..writeByte(14)
-      ..write(obj.elementInstantiatesUri)
-      ..writeByte(15)
-      ..write(obj.basedOn)
-      ..writeByte(16)
-      ..write(obj.replaces)
-      ..writeByte(17)
-      ..write(obj.partOf)
-      ..writeByte(18)
-      ..write(obj.status)
-      ..writeByte(19)
-      ..write(obj.elementStatus)
-      ..writeByte(20)
-      ..write(obj.intent)
-      ..writeByte(21)
-      ..write(obj.elementIntent)
-      ..writeByte(22)
-      ..write(obj.category)
-      ..writeByte(23)
-      ..write(obj.title)
-      ..writeByte(24)
-      ..write(obj.elementTitle)
-      ..writeByte(25)
-      ..write(obj.description)
-      ..writeByte(26)
-      ..write(obj.elementDescription)
-      ..writeByte(27)
-      ..write(obj.subject)
-      ..writeByte(28)
-      ..write(obj.encounter)
-      ..writeByte(29)
-      ..write(obj.period)
-      ..writeByte(30)
-      ..write(obj.created)
-      ..writeByte(31)
-      ..write(obj.elementCreated)
-      ..writeByte(32)
-      ..write(obj.author)
-      ..writeByte(33)
-      ..write(obj.contributor)
-      ..writeByte(34)
-      ..write(obj.careTeam)
-      ..writeByte(35)
-      ..write(obj.addresses)
-      ..writeByte(36)
-      ..write(obj.supportingInfo)
-      ..writeByte(37)
-      ..write(obj.goal)
-      ..writeByte(38)
-      ..write(obj.activity)
-      ..writeByte(39)
-      ..write(obj.note);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

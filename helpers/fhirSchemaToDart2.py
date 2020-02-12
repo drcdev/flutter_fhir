@@ -33,7 +33,7 @@ for filename in os.listdir(fhirDir):
         with open(fhirDir + filename, "w", encoding="utf-8") as f:
             f.write(code1 + '\n' + code2)
         os.remove(fhirDir + filename.replace('.dart', '.g.dart'))
-f.close()
+        f.close()
 
 
 with open(fhirDir + 'resourceList.dart', "w", encoding="utf-8") as f:

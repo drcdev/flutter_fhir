@@ -15,7 +15,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 201)
 class VisionPrescription {
 
 	static Future<VisionPrescription> newInstance({
@@ -66,49 +65,27 @@ class VisionPrescription {
 	visionPrescriptionBox.put(newVisionPrescription.id, newVisionPrescription);
 	return newVisionPrescription;
 }
-  @HiveField(0)
   final String resourceType= 'VisionPrescription';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String status;
-  @HiveField(13)
   Element elementStatus;
-  @HiveField(14)
   DateTime created;
-  @HiveField(15)
   Element elementCreated;
-  @HiveField(16)
   Reference patient;
-  @HiveField(17)
   Reference encounter;
-  @HiveField(18)
   DateTime dateWritten;
-  @HiveField(19)
   Element elementDateWritten;
-  @HiveField(20)
   Reference prescriber;
-  @HiveField(21)
   List<VisionPrescription_LensSpecification> lensSpecification;
 
 VisionPrescription(
@@ -311,97 +288,6 @@ VisionPrescription_Prism(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class VisionPrescriptionAdapter extends TypeAdapter<VisionPrescription> {
-  @override
-  final typeId = 201;
-
-  @override
-  VisionPrescription read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return VisionPrescription(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      status: fields[12] as String,
-      elementStatus: fields[13] as Element,
-      created: fields[14] as DateTime,
-      elementCreated: fields[15] as Element,
-      patient: fields[16] as Reference,
-      encounter: fields[17] as Reference,
-      dateWritten: fields[18] as DateTime,
-      elementDateWritten: fields[19] as Element,
-      prescriber: fields[20] as Reference,
-      lensSpecification:
-          (fields[21] as List)?.cast<VisionPrescription_LensSpecification>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, VisionPrescription obj) {
-    writer
-      ..writeByte(22)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.status)
-      ..writeByte(13)
-      ..write(obj.elementStatus)
-      ..writeByte(14)
-      ..write(obj.created)
-      ..writeByte(15)
-      ..write(obj.elementCreated)
-      ..writeByte(16)
-      ..write(obj.patient)
-      ..writeByte(17)
-      ..write(obj.encounter)
-      ..writeByte(18)
-      ..write(obj.dateWritten)
-      ..writeByte(19)
-      ..write(obj.elementDateWritten)
-      ..writeByte(20)
-      ..write(obj.prescriber)
-      ..writeByte(21)
-      ..write(obj.lensSpecification);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

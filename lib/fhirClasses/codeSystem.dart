@@ -14,7 +14,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 77)
 class CodeSystem {
 
 	static Future<CodeSystem> newInstance({
@@ -129,113 +128,59 @@ class CodeSystem {
 	codeSystemBox.put(newCodeSystem.id, newCodeSystem);
 	return newCodeSystem;
 }
-  @HiveField(0)
   final String resourceType= 'CodeSystem';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   String url;
-  @HiveField(12)
   Element elementUrl;
-  @HiveField(13)
   List<Identifier> identifier;
-  @HiveField(14)
   String version;
-  @HiveField(15)
   Element elementVersion;
-  @HiveField(16)
   String name;
-  @HiveField(17)
   Element elementName;
-  @HiveField(18)
   String title;
-  @HiveField(19)
   Element elementTitle;
-  @HiveField(20)
   String status; // <code> enum: draft/active/retired/unknown;
-  @HiveField(21)
   Element elementStatus;
-  @HiveField(22)
   bool experimental;
-  @HiveField(23)
   Element elementExperimental;
-  @HiveField(24)
   DateTime date;
-  @HiveField(25)
   Element elementDate;
-  @HiveField(26)
   String publisher;
-  @HiveField(27)
   Element elementPublisher;
-  @HiveField(28)
   List<ContactDetail> contact;
-  @HiveField(29)
   String description;
-  @HiveField(30)
   Element elementDescription;
-  @HiveField(31)
   List<UsageContext> useContext;
-  @HiveField(32)
   List<CodeableConcept> jurisdiction;
-  @HiveField(33)
   String purpose;
-  @HiveField(34)
   Element elementPurpose;
-  @HiveField(35)
   String copyright;
-  @HiveField(36)
   Element elementCopyright;
-  @HiveField(37)
   bool caseSensitive;
-  @HiveField(38)
   Element elementCaseSensitive;
-  @HiveField(39)
   String valueSet;
-  @HiveField(40)
   String hierarchyMeaning; // <code> enum: grouped-by/is-a/part-of/classified-with;
-  @HiveField(41)
   Element elementHierarchyMeaning;
-  @HiveField(42)
   bool compositional;
-  @HiveField(43)
   Element elementCompositional;
-  @HiveField(44)
   bool versionNeeded;
-  @HiveField(45)
   Element elementVersionNeeded;
-  @HiveField(46)
   String content; // <code> enum: not-present/example/fragment/complete/supplement;
-  @HiveField(47)
   Element elementContent;
-  @HiveField(48)
   String supplements;
-  @HiveField(49)
   int count;
-  @HiveField(50)
   Element elementCount;
-  @HiveField(51)
   List<CodeSystem_Filter> filter;
-  @HiveField(52)
   List<CodeSystem_Property> property;
-  @HiveField(53)
   List<CodeSystem_Concept> concept;
 
 CodeSystem(
@@ -625,192 +570,6 @@ CodeSystem_Property1(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class CodeSystemAdapter extends TypeAdapter<CodeSystem> {
-  @override
-  final typeId = 77;
-
-  @override
-  CodeSystem read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CodeSystem(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      url: fields[11] as String,
-      elementUrl: fields[12] as Element,
-      identifier: (fields[13] as List)?.cast<Identifier>(),
-      version: fields[14] as String,
-      elementVersion: fields[15] as Element,
-      name: fields[16] as String,
-      elementName: fields[17] as Element,
-      title: fields[18] as String,
-      elementTitle: fields[19] as Element,
-      status: fields[20] as String,
-      elementStatus: fields[21] as Element,
-      experimental: fields[22] as bool,
-      elementExperimental: fields[23] as Element,
-      date: fields[24] as DateTime,
-      elementDate: fields[25] as Element,
-      publisher: fields[26] as String,
-      elementPublisher: fields[27] as Element,
-      contact: (fields[28] as List)?.cast<ContactDetail>(),
-      description: fields[29] as String,
-      elementDescription: fields[30] as Element,
-      useContext: (fields[31] as List)?.cast<UsageContext>(),
-      jurisdiction: (fields[32] as List)?.cast<CodeableConcept>(),
-      purpose: fields[33] as String,
-      elementPurpose: fields[34] as Element,
-      copyright: fields[35] as String,
-      elementCopyright: fields[36] as Element,
-      caseSensitive: fields[37] as bool,
-      elementCaseSensitive: fields[38] as Element,
-      valueSet: fields[39] as String,
-      hierarchyMeaning: fields[40] as String,
-      elementHierarchyMeaning: fields[41] as Element,
-      compositional: fields[42] as bool,
-      elementCompositional: fields[43] as Element,
-      versionNeeded: fields[44] as bool,
-      elementVersionNeeded: fields[45] as Element,
-      content: fields[46] as String,
-      elementContent: fields[47] as Element,
-      supplements: fields[48] as String,
-      count: fields[49] as int,
-      elementCount: fields[50] as Element,
-      filter: (fields[51] as List)?.cast<CodeSystem_Filter>(),
-      property: (fields[52] as List)?.cast<CodeSystem_Property>(),
-      concept: (fields[53] as List)?.cast<CodeSystem_Concept>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CodeSystem obj) {
-    writer
-      ..writeByte(54)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.url)
-      ..writeByte(12)
-      ..write(obj.elementUrl)
-      ..writeByte(13)
-      ..write(obj.identifier)
-      ..writeByte(14)
-      ..write(obj.version)
-      ..writeByte(15)
-      ..write(obj.elementVersion)
-      ..writeByte(16)
-      ..write(obj.name)
-      ..writeByte(17)
-      ..write(obj.elementName)
-      ..writeByte(18)
-      ..write(obj.title)
-      ..writeByte(19)
-      ..write(obj.elementTitle)
-      ..writeByte(20)
-      ..write(obj.status)
-      ..writeByte(21)
-      ..write(obj.elementStatus)
-      ..writeByte(22)
-      ..write(obj.experimental)
-      ..writeByte(23)
-      ..write(obj.elementExperimental)
-      ..writeByte(24)
-      ..write(obj.date)
-      ..writeByte(25)
-      ..write(obj.elementDate)
-      ..writeByte(26)
-      ..write(obj.publisher)
-      ..writeByte(27)
-      ..write(obj.elementPublisher)
-      ..writeByte(28)
-      ..write(obj.contact)
-      ..writeByte(29)
-      ..write(obj.description)
-      ..writeByte(30)
-      ..write(obj.elementDescription)
-      ..writeByte(31)
-      ..write(obj.useContext)
-      ..writeByte(32)
-      ..write(obj.jurisdiction)
-      ..writeByte(33)
-      ..write(obj.purpose)
-      ..writeByte(34)
-      ..write(obj.elementPurpose)
-      ..writeByte(35)
-      ..write(obj.copyright)
-      ..writeByte(36)
-      ..write(obj.elementCopyright)
-      ..writeByte(37)
-      ..write(obj.caseSensitive)
-      ..writeByte(38)
-      ..write(obj.elementCaseSensitive)
-      ..writeByte(39)
-      ..write(obj.valueSet)
-      ..writeByte(40)
-      ..write(obj.hierarchyMeaning)
-      ..writeByte(41)
-      ..write(obj.elementHierarchyMeaning)
-      ..writeByte(42)
-      ..write(obj.compositional)
-      ..writeByte(43)
-      ..write(obj.elementCompositional)
-      ..writeByte(44)
-      ..write(obj.versionNeeded)
-      ..writeByte(45)
-      ..write(obj.elementVersionNeeded)
-      ..writeByte(46)
-      ..write(obj.content)
-      ..writeByte(47)
-      ..write(obj.elementContent)
-      ..writeByte(48)
-      ..write(obj.supplements)
-      ..writeByte(49)
-      ..write(obj.count)
-      ..writeByte(50)
-      ..write(obj.elementCount)
-      ..writeByte(51)
-      ..write(obj.filter)
-      ..writeByte(52)
-      ..write(obj.property)
-      ..writeByte(53)
-      ..write(obj.concept);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

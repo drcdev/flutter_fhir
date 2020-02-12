@@ -15,7 +15,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 122)
 class Invoice {
 
 	static Future<Invoice> newInstance({
@@ -84,67 +83,36 @@ class Invoice {
 	invoiceBox.put(newInvoice.id, newInvoice);
 	return newInvoice;
 }
-  @HiveField(0)
   final String resourceType= 'Invoice';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String status; // <code> enum: draft/issued/balanced/cancelled/entered-in-error;
-  @HiveField(13)
   Element elementStatus;
-  @HiveField(14)
   String cancelledReason;
-  @HiveField(15)
   Element elementCancelledReason;
-  @HiveField(16)
   CodeableConcept type;
-  @HiveField(17)
   Reference subject;
-  @HiveField(18)
   Reference recipient;
-  @HiveField(19)
   DateTime date;
-  @HiveField(20)
   Element elementDate;
-  @HiveField(21)
   List<Invoice_Participant> participant;
-  @HiveField(22)
   Reference issuer;
-  @HiveField(23)
   Reference account;
-  @HiveField(24)
   List<Invoice_LineItem> lineItem;
-  @HiveField(25)
   List<Invoice_PriceComponent> totalPriceComponent;
-  @HiveField(26)
   Money totalNet;
-  @HiveField(27)
   Money totalGross;
-  @HiveField(28)
   String paymentTerms;
-  @HiveField(29)
   Element elementPaymentTerms;
-  @HiveField(30)
   List<Annotation> note;
 
 Invoice(
@@ -325,123 +293,6 @@ Invoice_PriceComponent(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class InvoiceAdapter extends TypeAdapter<Invoice> {
-  @override
-  final typeId = 122;
-
-  @override
-  Invoice read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Invoice(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      status: fields[12] as String,
-      elementStatus: fields[13] as Element,
-      cancelledReason: fields[14] as String,
-      elementCancelledReason: fields[15] as Element,
-      type: fields[16] as CodeableConcept,
-      subject: fields[17] as Reference,
-      recipient: fields[18] as Reference,
-      date: fields[19] as DateTime,
-      elementDate: fields[20] as Element,
-      participant: (fields[21] as List)?.cast<Invoice_Participant>(),
-      issuer: fields[22] as Reference,
-      account: fields[23] as Reference,
-      lineItem: (fields[24] as List)?.cast<Invoice_LineItem>(),
-      totalPriceComponent: (fields[25] as List)?.cast<Invoice_PriceComponent>(),
-      totalNet: fields[26] as Money,
-      totalGross: fields[27] as Money,
-      paymentTerms: fields[28] as String,
-      elementPaymentTerms: fields[29] as Element,
-      note: (fields[30] as List)?.cast<Annotation>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Invoice obj) {
-    writer
-      ..writeByte(31)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.status)
-      ..writeByte(13)
-      ..write(obj.elementStatus)
-      ..writeByte(14)
-      ..write(obj.cancelledReason)
-      ..writeByte(15)
-      ..write(obj.elementCancelledReason)
-      ..writeByte(16)
-      ..write(obj.type)
-      ..writeByte(17)
-      ..write(obj.subject)
-      ..writeByte(18)
-      ..write(obj.recipient)
-      ..writeByte(19)
-      ..write(obj.date)
-      ..writeByte(20)
-      ..write(obj.elementDate)
-      ..writeByte(21)
-      ..write(obj.participant)
-      ..writeByte(22)
-      ..write(obj.issuer)
-      ..writeByte(23)
-      ..write(obj.account)
-      ..writeByte(24)
-      ..write(obj.lineItem)
-      ..writeByte(25)
-      ..write(obj.totalPriceComponent)
-      ..writeByte(26)
-      ..write(obj.totalNet)
-      ..writeByte(27)
-      ..write(obj.totalGross)
-      ..writeByte(28)
-      ..write(obj.paymentTerms)
-      ..writeByte(29)
-      ..write(obj.elementPaymentTerms)
-      ..writeByte(30)
-      ..write(obj.note);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

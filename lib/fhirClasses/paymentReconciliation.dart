@@ -15,7 +15,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 160)
 class PaymentReconciliation {
 
 	static Future<PaymentReconciliation> newInstance({
@@ -84,67 +83,36 @@ class PaymentReconciliation {
 	paymentReconciliationBox.put(newPaymentReconciliation.id, newPaymentReconciliation);
 	return newPaymentReconciliation;
 }
-  @HiveField(0)
   final String resourceType= 'PaymentReconciliation';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String status;
-  @HiveField(13)
   Element elementStatus;
-  @HiveField(14)
   Period period;
-  @HiveField(15)
   DateTime created;
-  @HiveField(16)
   Element elementCreated;
-  @HiveField(17)
   Reference paymentIssuer;
-  @HiveField(18)
   Reference request;
-  @HiveField(19)
   Reference requestor;
-  @HiveField(20)
   String outcome; // <code> enum: queued/complete/error/partial;
-  @HiveField(21)
   Element elementOutcome;
-  @HiveField(22)
   String disposition;
-  @HiveField(23)
   Element elementDisposition;
-  @HiveField(24)
   String paymentDate;
-  @HiveField(25)
   Element elementPaymentDate;
-  @HiveField(26)
   Money paymentAmount;
-  @HiveField(27)
   Identifier paymentIdentifier;
-  @HiveField(28)
   List<PaymentReconciliation_Detail> detail;
-  @HiveField(29)
   CodeableConcept formCode;
-  @HiveField(30)
   List<PaymentReconciliation_ProcessNote> processNote;
 
 PaymentReconciliation(
@@ -304,124 +272,6 @@ PaymentReconciliation_ProcessNote(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class PaymentReconciliationAdapter extends TypeAdapter<PaymentReconciliation> {
-  @override
-  final typeId = 160;
-
-  @override
-  PaymentReconciliation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return PaymentReconciliation(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      status: fields[12] as String,
-      elementStatus: fields[13] as Element,
-      period: fields[14] as Period,
-      created: fields[15] as DateTime,
-      elementCreated: fields[16] as Element,
-      paymentIssuer: fields[17] as Reference,
-      request: fields[18] as Reference,
-      requestor: fields[19] as Reference,
-      outcome: fields[20] as String,
-      elementOutcome: fields[21] as Element,
-      disposition: fields[22] as String,
-      elementDisposition: fields[23] as Element,
-      paymentDate: fields[24] as String,
-      elementPaymentDate: fields[25] as Element,
-      paymentAmount: fields[26] as Money,
-      paymentIdentifier: fields[27] as Identifier,
-      detail: (fields[28] as List)?.cast<PaymentReconciliation_Detail>(),
-      formCode: fields[29] as CodeableConcept,
-      processNote:
-          (fields[30] as List)?.cast<PaymentReconciliation_ProcessNote>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, PaymentReconciliation obj) {
-    writer
-      ..writeByte(31)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.status)
-      ..writeByte(13)
-      ..write(obj.elementStatus)
-      ..writeByte(14)
-      ..write(obj.period)
-      ..writeByte(15)
-      ..write(obj.created)
-      ..writeByte(16)
-      ..write(obj.elementCreated)
-      ..writeByte(17)
-      ..write(obj.paymentIssuer)
-      ..writeByte(18)
-      ..write(obj.request)
-      ..writeByte(19)
-      ..write(obj.requestor)
-      ..writeByte(20)
-      ..write(obj.outcome)
-      ..writeByte(21)
-      ..write(obj.elementOutcome)
-      ..writeByte(22)
-      ..write(obj.disposition)
-      ..writeByte(23)
-      ..write(obj.elementDisposition)
-      ..writeByte(24)
-      ..write(obj.paymentDate)
-      ..writeByte(25)
-      ..write(obj.elementPaymentDate)
-      ..writeByte(26)
-      ..write(obj.paymentAmount)
-      ..writeByte(27)
-      ..write(obj.paymentIdentifier)
-      ..writeByte(28)
-      ..write(obj.detail)
-      ..writeByte(29)
-      ..write(obj.formCode)
-      ..writeByte(30)
-      ..write(obj.processNote);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

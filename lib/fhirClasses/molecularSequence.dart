@@ -13,7 +13,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 148)
 class MolecularSequence {
 
 	static Future<MolecularSequence> newInstance({
@@ -82,67 +81,36 @@ class MolecularSequence {
 	molecularSequenceBox.put(newMolecularSequence.id, newMolecularSequence);
 	return newMolecularSequence;
 }
-  @HiveField(0)
   final String resourceType= 'MolecularSequence';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String type; // <code> enum: aa/dna/rna;
-  @HiveField(13)
   Element elementType;
-  @HiveField(14)
   int coordinateSystem;
-  @HiveField(15)
   Element elementCoordinateSystem;
-  @HiveField(16)
   Reference patient;
-  @HiveField(17)
   Reference specimen;
-  @HiveField(18)
   Reference device;
-  @HiveField(19)
   Reference performer;
-  @HiveField(20)
   Quantity quantity;
-  @HiveField(21)
   MolecularSequence_ReferenceSeq referenceSeq;
-  @HiveField(22)
   List<MolecularSequence_Variant> variant;
-  @HiveField(23)
   String observedSeq;
-  @HiveField(24)
   Element elementObservedSeq;
-  @HiveField(25)
   List<MolecularSequence_Quality> quality;
-  @HiveField(26)
   int readCoverage;
-  @HiveField(27)
   Element elementReadCoverage;
-  @HiveField(28)
   List<MolecularSequence_Repository> repository;
-  @HiveField(29)
   List<Reference> pointer;
-  @HiveField(30)
   List<MolecularSequence_StructureVariant> structureVariant;
 
 MolecularSequence(
@@ -788,124 +756,6 @@ MolecularSequence_Inner(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class MolecularSequenceAdapter extends TypeAdapter<MolecularSequence> {
-  @override
-  final typeId = 148;
-
-  @override
-  MolecularSequence read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MolecularSequence(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      type: fields[12] as String,
-      elementType: fields[13] as Element,
-      coordinateSystem: fields[14] as int,
-      elementCoordinateSystem: fields[15] as Element,
-      patient: fields[16] as Reference,
-      specimen: fields[17] as Reference,
-      device: fields[18] as Reference,
-      performer: fields[19] as Reference,
-      quantity: fields[20] as Quantity,
-      referenceSeq: fields[21] as MolecularSequence_ReferenceSeq,
-      variant: (fields[22] as List)?.cast<MolecularSequence_Variant>(),
-      observedSeq: fields[23] as String,
-      elementObservedSeq: fields[24] as Element,
-      quality: (fields[25] as List)?.cast<MolecularSequence_Quality>(),
-      readCoverage: fields[26] as int,
-      elementReadCoverage: fields[27] as Element,
-      repository: (fields[28] as List)?.cast<MolecularSequence_Repository>(),
-      pointer: (fields[29] as List)?.cast<Reference>(),
-      structureVariant:
-          (fields[30] as List)?.cast<MolecularSequence_StructureVariant>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MolecularSequence obj) {
-    writer
-      ..writeByte(31)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.type)
-      ..writeByte(13)
-      ..write(obj.elementType)
-      ..writeByte(14)
-      ..write(obj.coordinateSystem)
-      ..writeByte(15)
-      ..write(obj.elementCoordinateSystem)
-      ..writeByte(16)
-      ..write(obj.patient)
-      ..writeByte(17)
-      ..write(obj.specimen)
-      ..writeByte(18)
-      ..write(obj.device)
-      ..writeByte(19)
-      ..write(obj.performer)
-      ..writeByte(20)
-      ..write(obj.quantity)
-      ..writeByte(21)
-      ..write(obj.referenceSeq)
-      ..writeByte(22)
-      ..write(obj.variant)
-      ..writeByte(23)
-      ..write(obj.observedSeq)
-      ..writeByte(24)
-      ..write(obj.elementObservedSeq)
-      ..writeByte(25)
-      ..write(obj.quality)
-      ..writeByte(26)
-      ..write(obj.readCoverage)
-      ..writeByte(27)
-      ..write(obj.elementReadCoverage)
-      ..writeByte(28)
-      ..write(obj.repository)
-      ..writeByte(29)
-      ..write(obj.pointer)
-      ..writeByte(30)
-      ..write(obj.structureVariant);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

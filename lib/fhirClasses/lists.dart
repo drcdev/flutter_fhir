@@ -14,7 +14,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 125)
 class Lists {
 
 	static Future<Lists> newInstance({
@@ -77,61 +76,33 @@ class Lists {
 	listsBox.put(newLists.id, newLists);
 	return newLists;
 }
-  @HiveField(0)
   final String resourceType= 'List';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String status; // <code> enum: current/retired/entered-in-error;
-  @HiveField(13)
   Element elementStatus;
-  @HiveField(14)
   String mode; // <code> enum: working/snapshot/changes;
-  @HiveField(15)
   Element elementMode;
-  @HiveField(16)
   String title;
-  @HiveField(17)
   Element elementTitle;
-  @HiveField(18)
   CodeableConcept code;
-  @HiveField(19)
   Reference subject;
-  @HiveField(20)
   Reference encounter;
-  @HiveField(21)
   DateTime date;
-  @HiveField(22)
   Element elementDate;
-  @HiveField(23)
   Reference source;
-  @HiveField(24)
   CodeableConcept orderedBy;
-  @HiveField(25)
   List<Annotation> note;
-  @HiveField(26)
   List<List_Entry> entry;
-  @HiveField(27)
   CodeableConcept emptyReason;
 
 Lists(
@@ -223,114 +194,6 @@ List_Entry(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ListsAdapter extends TypeAdapter<Lists> {
-  @override
-  final typeId = 125;
-
-  @override
-  Lists read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Lists(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      status: fields[12] as String,
-      elementStatus: fields[13] as Element,
-      mode: fields[14] as String,
-      elementMode: fields[15] as Element,
-      title: fields[16] as String,
-      elementTitle: fields[17] as Element,
-      code: fields[18] as CodeableConcept,
-      subject: fields[19] as Reference,
-      encounter: fields[20] as Reference,
-      date: fields[21] as DateTime,
-      elementDate: fields[22] as Element,
-      source: fields[23] as Reference,
-      orderedBy: fields[24] as CodeableConcept,
-      note: (fields[25] as List)?.cast<Annotation>(),
-      entry: (fields[26] as List)?.cast<List_Entry>(),
-      emptyReason: fields[27] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Lists obj) {
-    writer
-      ..writeByte(28)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.status)
-      ..writeByte(13)
-      ..write(obj.elementStatus)
-      ..writeByte(14)
-      ..write(obj.mode)
-      ..writeByte(15)
-      ..write(obj.elementMode)
-      ..writeByte(16)
-      ..write(obj.title)
-      ..writeByte(17)
-      ..write(obj.elementTitle)
-      ..writeByte(18)
-      ..write(obj.code)
-      ..writeByte(19)
-      ..write(obj.subject)
-      ..writeByte(20)
-      ..write(obj.encounter)
-      ..writeByte(21)
-      ..write(obj.date)
-      ..writeByte(22)
-      ..write(obj.elementDate)
-      ..writeByte(23)
-      ..write(obj.source)
-      ..writeByte(24)
-      ..write(obj.orderedBy)
-      ..writeByte(25)
-      ..write(obj.note)
-      ..writeByte(26)
-      ..write(obj.entry)
-      ..writeByte(27)
-      ..write(obj.emptyReason);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

@@ -14,7 +14,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 92)
 class DeviceMetric {
 
 	static Future<DeviceMetric> newInstance({
@@ -69,53 +68,29 @@ class DeviceMetric {
 	deviceMetricBox.put(newDeviceMetric.id, newDeviceMetric);
 	return newDeviceMetric;
 }
-  @HiveField(0)
   final String resourceType= 'DeviceMetric';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   CodeableConcept type;
-  @HiveField(13)
   CodeableConcept unit;
-  @HiveField(14)
   Reference source;
-  @HiveField(15)
   Reference parent;
-  @HiveField(16)
   String operationalStatus; // <code> enum: on/off/standby/entered-in-error;
-  @HiveField(17)
   Element elementOperationalStatus;
-  @HiveField(18)
   String color; // <code> enum: black/red/green/yellow/blue/magenta/cyan/white;
-  @HiveField(19)
   Element elementColor;
-  @HiveField(20)
   String category; // <code> enum: measurement/setting/calculation/unspecified;
-  @HiveField(21)
   Element elementCategory;
-  @HiveField(22)
   Timing measurementPeriod;
-  @HiveField(23)
   List<DeviceMetric_Calibration> calibration;
 
 DeviceMetric(
@@ -203,102 +178,6 @@ DeviceMetric_Calibration(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class DeviceMetricAdapter extends TypeAdapter<DeviceMetric> {
-  @override
-  final typeId = 92;
-
-  @override
-  DeviceMetric read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return DeviceMetric(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      type: fields[12] as CodeableConcept,
-      unit: fields[13] as CodeableConcept,
-      source: fields[14] as Reference,
-      parent: fields[15] as Reference,
-      operationalStatus: fields[16] as String,
-      elementOperationalStatus: fields[17] as Element,
-      color: fields[18] as String,
-      elementColor: fields[19] as Element,
-      category: fields[20] as String,
-      elementCategory: fields[21] as Element,
-      measurementPeriod: fields[22] as Timing,
-      calibration: (fields[23] as List)?.cast<DeviceMetric_Calibration>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, DeviceMetric obj) {
-    writer
-      ..writeByte(24)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.type)
-      ..writeByte(13)
-      ..write(obj.unit)
-      ..writeByte(14)
-      ..write(obj.source)
-      ..writeByte(15)
-      ..write(obj.parent)
-      ..writeByte(16)
-      ..write(obj.operationalStatus)
-      ..writeByte(17)
-      ..write(obj.elementOperationalStatus)
-      ..writeByte(18)
-      ..write(obj.color)
-      ..writeByte(19)
-      ..write(obj.elementColor)
-      ..writeByte(20)
-      ..write(obj.category)
-      ..writeByte(21)
-      ..write(obj.elementCategory)
-      ..writeByte(22)
-      ..write(obj.measurementPeriod)
-      ..writeByte(23)
-      ..write(obj.calibration);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

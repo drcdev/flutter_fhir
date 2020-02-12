@@ -15,7 +15,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 146)
 class MessageDefinition {
 
 	static Future<MessageDefinition> newInstance({
@@ -122,105 +121,55 @@ class MessageDefinition {
 	messageDefinitionBox.put(newMessageDefinition.id, newMessageDefinition);
 	return newMessageDefinition;
 }
-  @HiveField(0)
   final String resourceType= 'MessageDefinition';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   String url;
-  @HiveField(12)
   Element elementUrl;
-  @HiveField(13)
   List<Identifier> identifier;
-  @HiveField(14)
   String version;
-  @HiveField(15)
   Element elementVersion;
-  @HiveField(16)
   String name;
-  @HiveField(17)
   Element elementName;
-  @HiveField(18)
   String title;
-  @HiveField(19)
   Element elementTitle;
-  @HiveField(20)
   List<String> replaces;
-  @HiveField(21)
   String status; // <code> enum: draft/active/retired/unknown;
-  @HiveField(22)
   Element elementStatus;
-  @HiveField(23)
   bool experimental;
-  @HiveField(24)
   Element elementExperimental;
-  @HiveField(25)
   DateTime date;
-  @HiveField(26)
   Element elementDate;
-  @HiveField(27)
   String publisher;
-  @HiveField(28)
   Element elementPublisher;
-  @HiveField(29)
   List<ContactDetail> contact;
-  @HiveField(30)
   String description;
-  @HiveField(31)
   Element elementDescription;
-  @HiveField(32)
   List<UsageContext> useContext;
-  @HiveField(33)
   List<CodeableConcept> jurisdiction;
-  @HiveField(34)
   String purpose;
-  @HiveField(35)
   Element elementPurpose;
-  @HiveField(36)
   String copyright;
-  @HiveField(37)
   Element elementCopyright;
-  @HiveField(38)
   String base;
-  @HiveField(39)
   List<String> parent;
-  @HiveField(40)
   Coding eventCoding;
-  @HiveField(41)
   String eventUri; //  pattern: ^\S*$
-  @HiveField(42)
   Element elementEventUri;
-  @HiveField(43)
   String category; // <code> enum: consequence/currency/notification;
-  @HiveField(44)
   Element elementCategory;
-  @HiveField(45)
   List<MessageDefinition_Focus> focus;
-  @HiveField(46)
   String responseRequired; // <code> enum: always/on-error/never/on-success;
-  @HiveField(47)
   Element elementResponseRequired;
-  @HiveField(48)
   List<MessageDefinition_AllowedResponse> allowedResponse;
-  @HiveField(49)
   List<String> graph;
 
 MessageDefinition(
@@ -379,181 +328,6 @@ MessageDefinition_AllowedResponse(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class MessageDefinitionAdapter extends TypeAdapter<MessageDefinition> {
-  @override
-  final typeId = 146;
-
-  @override
-  MessageDefinition read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MessageDefinition(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      url: fields[11] as String,
-      elementUrl: fields[12] as Element,
-      identifier: (fields[13] as List)?.cast<Identifier>(),
-      version: fields[14] as String,
-      elementVersion: fields[15] as Element,
-      name: fields[16] as String,
-      elementName: fields[17] as Element,
-      title: fields[18] as String,
-      elementTitle: fields[19] as Element,
-      replaces: (fields[20] as List)?.cast<String>(),
-      status: fields[21] as String,
-      elementStatus: fields[22] as Element,
-      experimental: fields[23] as bool,
-      elementExperimental: fields[24] as Element,
-      date: fields[25] as DateTime,
-      elementDate: fields[26] as Element,
-      publisher: fields[27] as String,
-      elementPublisher: fields[28] as Element,
-      contact: (fields[29] as List)?.cast<ContactDetail>(),
-      description: fields[30] as String,
-      elementDescription: fields[31] as Element,
-      useContext: (fields[32] as List)?.cast<UsageContext>(),
-      jurisdiction: (fields[33] as List)?.cast<CodeableConcept>(),
-      purpose: fields[34] as String,
-      elementPurpose: fields[35] as Element,
-      copyright: fields[36] as String,
-      elementCopyright: fields[37] as Element,
-      base: fields[38] as String,
-      parent: (fields[39] as List)?.cast<String>(),
-      eventCoding: fields[40] as Coding,
-      eventUri: fields[41] as String,
-      elementEventUri: fields[42] as Element,
-      category: fields[43] as String,
-      elementCategory: fields[44] as Element,
-      focus: (fields[45] as List)?.cast<MessageDefinition_Focus>(),
-      responseRequired: fields[46] as String,
-      elementResponseRequired: fields[47] as Element,
-      allowedResponse:
-          (fields[48] as List)?.cast<MessageDefinition_AllowedResponse>(),
-      graph: (fields[49] as List)?.cast<String>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MessageDefinition obj) {
-    writer
-      ..writeByte(50)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.url)
-      ..writeByte(12)
-      ..write(obj.elementUrl)
-      ..writeByte(13)
-      ..write(obj.identifier)
-      ..writeByte(14)
-      ..write(obj.version)
-      ..writeByte(15)
-      ..write(obj.elementVersion)
-      ..writeByte(16)
-      ..write(obj.name)
-      ..writeByte(17)
-      ..write(obj.elementName)
-      ..writeByte(18)
-      ..write(obj.title)
-      ..writeByte(19)
-      ..write(obj.elementTitle)
-      ..writeByte(20)
-      ..write(obj.replaces)
-      ..writeByte(21)
-      ..write(obj.status)
-      ..writeByte(22)
-      ..write(obj.elementStatus)
-      ..writeByte(23)
-      ..write(obj.experimental)
-      ..writeByte(24)
-      ..write(obj.elementExperimental)
-      ..writeByte(25)
-      ..write(obj.date)
-      ..writeByte(26)
-      ..write(obj.elementDate)
-      ..writeByte(27)
-      ..write(obj.publisher)
-      ..writeByte(28)
-      ..write(obj.elementPublisher)
-      ..writeByte(29)
-      ..write(obj.contact)
-      ..writeByte(30)
-      ..write(obj.description)
-      ..writeByte(31)
-      ..write(obj.elementDescription)
-      ..writeByte(32)
-      ..write(obj.useContext)
-      ..writeByte(33)
-      ..write(obj.jurisdiction)
-      ..writeByte(34)
-      ..write(obj.purpose)
-      ..writeByte(35)
-      ..write(obj.elementPurpose)
-      ..writeByte(36)
-      ..write(obj.copyright)
-      ..writeByte(37)
-      ..write(obj.elementCopyright)
-      ..writeByte(38)
-      ..write(obj.base)
-      ..writeByte(39)
-      ..write(obj.parent)
-      ..writeByte(40)
-      ..write(obj.eventCoding)
-      ..writeByte(41)
-      ..write(obj.eventUri)
-      ..writeByte(42)
-      ..write(obj.elementEventUri)
-      ..writeByte(43)
-      ..write(obj.category)
-      ..writeByte(44)
-      ..write(obj.elementCategory)
-      ..writeByte(45)
-      ..write(obj.focus)
-      ..writeByte(46)
-      ..write(obj.responseRequired)
-      ..writeByte(47)
-      ..write(obj.elementResponseRequired)
-      ..writeByte(48)
-      ..write(obj.allowedResponse)
-      ..writeByte(49)
-      ..write(obj.graph);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

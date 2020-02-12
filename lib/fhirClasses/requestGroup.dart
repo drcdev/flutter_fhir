@@ -20,7 +20,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 170)
 class RequestGroup {
 
 	static Future<RequestGroup> newInstance({
@@ -97,75 +96,40 @@ class RequestGroup {
 	requestGroupBox.put(newRequestGroup.id, newRequestGroup);
 	return newRequestGroup;
 }
-  @HiveField(0)
   final String resourceType= 'RequestGroup';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   List<String> instantiatesCanonical;
-  @HiveField(13)
   List<Element> elementInstantiatesCanonical;
-  @HiveField(14)
   List<String> instantiatesUri;
-  @HiveField(15)
   List<Element> elementInstantiatesUri;
-  @HiveField(16)
   List<Reference> basedOn;
-  @HiveField(17)
   List<Reference> replaces;
-  @HiveField(18)
   Identifier groupIdentifier;
-  @HiveField(19)
   String status;
-  @HiveField(20)
   Element elementStatus;
-  @HiveField(21)
   String intent;
-  @HiveField(22)
   Element elementIntent;
-  @HiveField(23)
   String priority;
-  @HiveField(24)
   Element elementPriority;
-  @HiveField(25)
   CodeableConcept code;
-  @HiveField(26)
   Reference subject;
-  @HiveField(27)
   Reference encounter;
-  @HiveField(28)
   DateTime authoredOn;
-  @HiveField(29)
   Element elementAuthoredOn;
-  @HiveField(30)
   Reference author;
-  @HiveField(31)
   List<CodeableConcept> reasonCode;
-  @HiveField(32)
   List<Reference> reasonReference;
-  @HiveField(33)
   List<Annotation> note;
-  @HiveField(34)
   List<RequestGroup_Action> action;
 
 RequestGroup(
@@ -474,135 +438,6 @@ RequestGroup_RelatedAction(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class RequestGroupAdapter extends TypeAdapter<RequestGroup> {
-  @override
-  final typeId = 170;
-
-  @override
-  RequestGroup read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return RequestGroup(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      instantiatesCanonical: (fields[12] as List)?.cast<String>(),
-      elementInstantiatesCanonical: (fields[13] as List)?.cast<Element>(),
-      instantiatesUri: (fields[14] as List)?.cast<String>(),
-      elementInstantiatesUri: (fields[15] as List)?.cast<Element>(),
-      basedOn: (fields[16] as List)?.cast<Reference>(),
-      replaces: (fields[17] as List)?.cast<Reference>(),
-      groupIdentifier: fields[18] as Identifier,
-      status: fields[19] as String,
-      elementStatus: fields[20] as Element,
-      intent: fields[21] as String,
-      elementIntent: fields[22] as Element,
-      priority: fields[23] as String,
-      elementPriority: fields[24] as Element,
-      code: fields[25] as CodeableConcept,
-      subject: fields[26] as Reference,
-      encounter: fields[27] as Reference,
-      authoredOn: fields[28] as DateTime,
-      elementAuthoredOn: fields[29] as Element,
-      author: fields[30] as Reference,
-      reasonCode: (fields[31] as List)?.cast<CodeableConcept>(),
-      reasonReference: (fields[32] as List)?.cast<Reference>(),
-      note: (fields[33] as List)?.cast<Annotation>(),
-      action: (fields[34] as List)?.cast<RequestGroup_Action>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, RequestGroup obj) {
-    writer
-      ..writeByte(35)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.instantiatesCanonical)
-      ..writeByte(13)
-      ..write(obj.elementInstantiatesCanonical)
-      ..writeByte(14)
-      ..write(obj.instantiatesUri)
-      ..writeByte(15)
-      ..write(obj.elementInstantiatesUri)
-      ..writeByte(16)
-      ..write(obj.basedOn)
-      ..writeByte(17)
-      ..write(obj.replaces)
-      ..writeByte(18)
-      ..write(obj.groupIdentifier)
-      ..writeByte(19)
-      ..write(obj.status)
-      ..writeByte(20)
-      ..write(obj.elementStatus)
-      ..writeByte(21)
-      ..write(obj.intent)
-      ..writeByte(22)
-      ..write(obj.elementIntent)
-      ..writeByte(23)
-      ..write(obj.priority)
-      ..writeByte(24)
-      ..write(obj.elementPriority)
-      ..writeByte(25)
-      ..write(obj.code)
-      ..writeByte(26)
-      ..write(obj.subject)
-      ..writeByte(27)
-      ..write(obj.encounter)
-      ..writeByte(28)
-      ..write(obj.authoredOn)
-      ..writeByte(29)
-      ..write(obj.elementAuthoredOn)
-      ..writeByte(30)
-      ..write(obj.author)
-      ..writeByte(31)
-      ..write(obj.reasonCode)
-      ..writeByte(32)
-      ..write(obj.reasonReference)
-      ..writeByte(33)
-      ..write(obj.note)
-      ..writeByte(34)
-      ..write(obj.action);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

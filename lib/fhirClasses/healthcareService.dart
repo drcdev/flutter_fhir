@@ -15,7 +15,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 115)
 class HealthcareService {
 
 	static Future<HealthcareService> newInstance({
@@ -104,87 +103,46 @@ class HealthcareService {
 	healthcareServiceBox.put(newHealthcareService.id, newHealthcareService);
 	return newHealthcareService;
 }
-  @HiveField(0)
   final String resourceType= 'HealthcareService';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   bool active;
-  @HiveField(13)
   Element elementActive;
-  @HiveField(14)
   Reference providedBy;
-  @HiveField(15)
   List<CodeableConcept> category;
-  @HiveField(16)
   List<CodeableConcept> type;
-  @HiveField(17)
   List<CodeableConcept> specialty;
-  @HiveField(18)
   List<Reference> location;
-  @HiveField(19)
   String name;
-  @HiveField(20)
   Element elementName;
-  @HiveField(21)
   String comment;
-  @HiveField(22)
   Element elementComment;
-  @HiveField(23)
   String extraDetails;
-  @HiveField(24)
   Element elementExtraDetails;
-  @HiveField(25)
   Attachment photo;
-  @HiveField(26)
   List<ContactPoint> telecom;
-  @HiveField(27)
   List<Reference> coverageArea;
-  @HiveField(28)
   List<CodeableConcept> serviceProvisionCode;
-  @HiveField(29)
   List<HealthcareService_Eligibility> eligibility;
-  @HiveField(30)
   List<CodeableConcept> program;
-  @HiveField(31)
   List<CodeableConcept> characteristic;
-  @HiveField(32)
   List<CodeableConcept> communication;
-  @HiveField(33)
   List<CodeableConcept> referralMethod;
-  @HiveField(34)
   bool appointmentRequired;
-  @HiveField(35)
   Element elementAppointmentRequired;
-  @HiveField(36)
   List<HealthcareService_AvailableTime> availableTime;
-  @HiveField(37)
   List<HealthcareService_NotAvailable> notAvailable;
-  @HiveField(38)
   String availabilityExceptions;
-  @HiveField(39)
   Element elementAvailabilityExceptions;
-  @HiveField(40)
   List<Reference> endpoint;
 
 HealthcareService(
@@ -379,155 +337,6 @@ HealthcareService_NotAvailable(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class HealthcareServiceAdapter extends TypeAdapter<HealthcareService> {
-  @override
-  final typeId = 115;
-
-  @override
-  HealthcareService read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return HealthcareService(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      active: fields[12] as bool,
-      elementActive: fields[13] as Element,
-      providedBy: fields[14] as Reference,
-      category: (fields[15] as List)?.cast<CodeableConcept>(),
-      type: (fields[16] as List)?.cast<CodeableConcept>(),
-      specialty: (fields[17] as List)?.cast<CodeableConcept>(),
-      location: (fields[18] as List)?.cast<Reference>(),
-      name: fields[19] as String,
-      elementName: fields[20] as Element,
-      comment: fields[21] as String,
-      elementComment: fields[22] as Element,
-      extraDetails: fields[23] as String,
-      elementExtraDetails: fields[24] as Element,
-      photo: fields[25] as Attachment,
-      telecom: (fields[26] as List)?.cast<ContactPoint>(),
-      coverageArea: (fields[27] as List)?.cast<Reference>(),
-      serviceProvisionCode: (fields[28] as List)?.cast<CodeableConcept>(),
-      eligibility: (fields[29] as List)?.cast<HealthcareService_Eligibility>(),
-      program: (fields[30] as List)?.cast<CodeableConcept>(),
-      characteristic: (fields[31] as List)?.cast<CodeableConcept>(),
-      communication: (fields[32] as List)?.cast<CodeableConcept>(),
-      referralMethod: (fields[33] as List)?.cast<CodeableConcept>(),
-      appointmentRequired: fields[34] as bool,
-      elementAppointmentRequired: fields[35] as Element,
-      availableTime:
-          (fields[36] as List)?.cast<HealthcareService_AvailableTime>(),
-      notAvailable:
-          (fields[37] as List)?.cast<HealthcareService_NotAvailable>(),
-      availabilityExceptions: fields[38] as String,
-      elementAvailabilityExceptions: fields[39] as Element,
-      endpoint: (fields[40] as List)?.cast<Reference>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, HealthcareService obj) {
-    writer
-      ..writeByte(41)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.active)
-      ..writeByte(13)
-      ..write(obj.elementActive)
-      ..writeByte(14)
-      ..write(obj.providedBy)
-      ..writeByte(15)
-      ..write(obj.category)
-      ..writeByte(16)
-      ..write(obj.type)
-      ..writeByte(17)
-      ..write(obj.specialty)
-      ..writeByte(18)
-      ..write(obj.location)
-      ..writeByte(19)
-      ..write(obj.name)
-      ..writeByte(20)
-      ..write(obj.elementName)
-      ..writeByte(21)
-      ..write(obj.comment)
-      ..writeByte(22)
-      ..write(obj.elementComment)
-      ..writeByte(23)
-      ..write(obj.extraDetails)
-      ..writeByte(24)
-      ..write(obj.elementExtraDetails)
-      ..writeByte(25)
-      ..write(obj.photo)
-      ..writeByte(26)
-      ..write(obj.telecom)
-      ..writeByte(27)
-      ..write(obj.coverageArea)
-      ..writeByte(28)
-      ..write(obj.serviceProvisionCode)
-      ..writeByte(29)
-      ..write(obj.eligibility)
-      ..writeByte(30)
-      ..write(obj.program)
-      ..writeByte(31)
-      ..write(obj.characteristic)
-      ..writeByte(32)
-      ..write(obj.communication)
-      ..writeByte(33)
-      ..write(obj.referralMethod)
-      ..writeByte(34)
-      ..write(obj.appointmentRequired)
-      ..writeByte(35)
-      ..write(obj.elementAppointmentRequired)
-      ..writeByte(36)
-      ..write(obj.availableTime)
-      ..writeByte(37)
-      ..write(obj.notAvailable)
-      ..writeByte(38)
-      ..write(obj.availabilityExceptions)
-      ..writeByte(39)
-      ..write(obj.elementAvailabilityExceptions)
-      ..writeByte(40)
-      ..write(obj.endpoint);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

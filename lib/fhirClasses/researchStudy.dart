@@ -16,7 +16,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 173)
 class ResearchStudy {
 
 	static Future<ResearchStudy> newInstance({
@@ -99,81 +98,43 @@ class ResearchStudy {
 	researchStudyBox.put(newResearchStudy.id, newResearchStudy);
 	return newResearchStudy;
 }
-  @HiveField(0)
   final String resourceType= 'ResearchStudy';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String title;
-  @HiveField(13)
   Element elementTitle;
-  @HiveField(14)
   List<Reference> protocol;
-  @HiveField(15)
   List<Reference> partOf;
-  @HiveField(16)
   String status; // <code> enum: active/administratively-completed/approved/closed-to-accrual/closed-to-accrual-and-intervention/completed/disapproved/in-review/temporarily-closed-to-accrual/temporarily-closed-to-accrual-and-intervention/withdrawn;
-  @HiveField(17)
   Element elementStatus;
-  @HiveField(18)
   CodeableConcept primaryPurposeType;
-  @HiveField(19)
   CodeableConcept phase;
-  @HiveField(20)
   List<CodeableConcept> category;
-  @HiveField(21)
   List<CodeableConcept> focus;
-  @HiveField(22)
   List<CodeableConcept> condition;
-  @HiveField(23)
   List<ContactDetail> contact;
-  @HiveField(24)
   List<RelatedArtifact> relatedArtifact;
-  @HiveField(25)
   List<CodeableConcept> keyword;
-  @HiveField(26)
   List<CodeableConcept> location;
-  @HiveField(27)
   String description;
-  @HiveField(28)
   Element elementDescription;
-  @HiveField(29)
   List<Reference> enrollment;
-  @HiveField(30)
   Period period;
-  @HiveField(31)
   Reference sponsor;
-  @HiveField(32)
   Reference principalInvestigator;
-  @HiveField(33)
   List<Reference> site;
-  @HiveField(34)
   CodeableConcept reasonStopped;
-  @HiveField(35)
   List<Annotation> note;
-  @HiveField(36)
   List<ResearchStudy_Arm> arm;
-  @HiveField(37)
   List<ResearchStudy_Objective> objective;
 
 ResearchStudy(
@@ -312,144 +273,6 @@ ResearchStudy_Objective(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ResearchStudyAdapter extends TypeAdapter<ResearchStudy> {
-  @override
-  final typeId = 173;
-
-  @override
-  ResearchStudy read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ResearchStudy(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      title: fields[12] as String,
-      elementTitle: fields[13] as Element,
-      protocol: (fields[14] as List)?.cast<Reference>(),
-      partOf: (fields[15] as List)?.cast<Reference>(),
-      status: fields[16] as String,
-      elementStatus: fields[17] as Element,
-      primaryPurposeType: fields[18] as CodeableConcept,
-      phase: fields[19] as CodeableConcept,
-      category: (fields[20] as List)?.cast<CodeableConcept>(),
-      focus: (fields[21] as List)?.cast<CodeableConcept>(),
-      condition: (fields[22] as List)?.cast<CodeableConcept>(),
-      contact: (fields[23] as List)?.cast<ContactDetail>(),
-      relatedArtifact: (fields[24] as List)?.cast<RelatedArtifact>(),
-      keyword: (fields[25] as List)?.cast<CodeableConcept>(),
-      location: (fields[26] as List)?.cast<CodeableConcept>(),
-      description: fields[27] as String,
-      elementDescription: fields[28] as Element,
-      enrollment: (fields[29] as List)?.cast<Reference>(),
-      period: fields[30] as Period,
-      sponsor: fields[31] as Reference,
-      principalInvestigator: fields[32] as Reference,
-      site: (fields[33] as List)?.cast<Reference>(),
-      reasonStopped: fields[34] as CodeableConcept,
-      note: (fields[35] as List)?.cast<Annotation>(),
-      arm: (fields[36] as List)?.cast<ResearchStudy_Arm>(),
-      objective: (fields[37] as List)?.cast<ResearchStudy_Objective>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ResearchStudy obj) {
-    writer
-      ..writeByte(38)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.title)
-      ..writeByte(13)
-      ..write(obj.elementTitle)
-      ..writeByte(14)
-      ..write(obj.protocol)
-      ..writeByte(15)
-      ..write(obj.partOf)
-      ..writeByte(16)
-      ..write(obj.status)
-      ..writeByte(17)
-      ..write(obj.elementStatus)
-      ..writeByte(18)
-      ..write(obj.primaryPurposeType)
-      ..writeByte(19)
-      ..write(obj.phase)
-      ..writeByte(20)
-      ..write(obj.category)
-      ..writeByte(21)
-      ..write(obj.focus)
-      ..writeByte(22)
-      ..write(obj.condition)
-      ..writeByte(23)
-      ..write(obj.contact)
-      ..writeByte(24)
-      ..write(obj.relatedArtifact)
-      ..writeByte(25)
-      ..write(obj.keyword)
-      ..writeByte(26)
-      ..write(obj.location)
-      ..writeByte(27)
-      ..write(obj.description)
-      ..writeByte(28)
-      ..write(obj.elementDescription)
-      ..writeByte(29)
-      ..write(obj.enrollment)
-      ..writeByte(30)
-      ..write(obj.period)
-      ..writeByte(31)
-      ..write(obj.sponsor)
-      ..writeByte(32)
-      ..write(obj.principalInvestigator)
-      ..writeByte(33)
-      ..write(obj.site)
-      ..writeByte(34)
-      ..write(obj.reasonStopped)
-      ..writeByte(35)
-      ..write(obj.note)
-      ..writeByte(36)
-      ..write(obj.arm)
-      ..writeByte(37)
-      ..write(obj.objective);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

@@ -1117,7 +1117,6 @@ lister = ["Element'",
 classes1 = ''.join(["""import 'dart:core';
 
 import 'package:device_info/device_info.dart';
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:path_provider/path_provider.dart';"""])
 
@@ -1133,21 +1132,13 @@ classesSetup() async {
                         
     
 classes4 = ''.join([classes3, 
-                   '\n\n  Hive.registerAdapter(', 'Adapter());\n  Hive.registerAdapter('.join(resources),
+                   # '\n\n  Hive.registerAdapter(', 'Adapter());\n  Hive.registerAdapter('.join(resources),
                    '());\n\n']) 
 
-classes = ''.join([classes4,
-'''  Hive.registerAdapter(ClassesAdapter());
-  final appDocumentDir = await getApplicationDocumentsDirectory();
-  Hive.init(appDocumentDir.path);
-  var classesBox = await Hive.openBox<Classes>('ClassesBox');
-  DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-  AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
-  int tableId = 16;
+classes = ''.join([classes4.replace("'Adapter());", "Adapter());"),
+'''  int tableId = 16;
 
   for (String type in types) {
-    if(classesBox.get(type) == null) {
-      classesBox.put(
           type,
           Classes(type, tableId.toRadixString(16).padLeft(3, '0').toString(),
               (androidInfo.id.hashCode % 10000).abs().toString(), '0000'));
@@ -1157,25 +1148,20 @@ classes = ''.join([classes4,
 }
 
 Future<String> newId(String resource) async {
-  var classesBox = await Hive.openBox<Classes>('ClassesBox');
-  var tempResource = classesBox.get(resource);
-  tempResource.lastId = (int.parse(tempResource.lastId) + 1).toString().padLeft(4, '0');
-  classesBox.put(resource, tempResource);
-  return tempResource.lastId;
+  return '001';
 }
 
-@HiveType(typeId: 0)
 class Classes {
-  @HiveField(0)
+
   final String resourceType;
 
-  @HiveField(1)
+
   final String id;
 
-  @HiveField(2)
+
   final String deviceId;
 
-  @HiveField(3)
+
   String lastId;
 
   Classes(this.resourceType, this.id, this.deviceId, this.lastId);
@@ -1186,44 +1172,6 @@ class Classes {
 }
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ClassesAdapter extends TypeAdapter<Classes> {
-  @override
-  final typeId = 0;
-
-  @override
-  Classes read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Classes(
-      fields[0] as String,
-      fields[1] as String,
-      fields[2] as String,
-      fields[3] as String,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Classes obj) {
-    writer
-      ..writeByte(4)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.deviceId)
-      ..writeByte(3)
-      ..write(obj.lastId);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

@@ -11,7 +11,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 43)
 class DataRequirement {
 
 	static Future<DataRequirement> newInstance({
@@ -48,33 +47,19 @@ class DataRequirement {
 	dataRequirementBox.put(newDataRequirement.id, newDataRequirement);
 	return newDataRequirement;
 }
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   String type;
-  @HiveField(3)
   Element elementType;
-  @HiveField(4)
   List<String> profile;
-  @HiveField(5)
   CodeableConcept subjectCodeableConcept;
-  @HiveField(6)
   Reference subjectReference;
-  @HiveField(7)
   List<String> mustSupport;
-  @HiveField(8)
   List<Element> elementMustSupport;
-  @HiveField(9)
   List<DataRequirement_CodeFilter> codeFilter;
-  @HiveField(10)
   List<DataRequirement_DateFilter> dateFilter;
-  @HiveField(11)
   int limit;
-  @HiveField(12)
   Element elementLimit;
-  @HiveField(13)
   List<DataRequirement_Sort> sort;
 
 DataRequirement(
@@ -259,73 +244,6 @@ DataRequirement_Sort(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class DataRequirementAdapter extends TypeAdapter<DataRequirement> {
-  @override
-  final typeId = 43;
-
-  @override
-  DataRequirement read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return DataRequirement(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      type: fields[2] as String,
-      elementType: fields[3] as Element,
-      profile: (fields[4] as List)?.cast<String>(),
-      subjectCodeableConcept: fields[5] as CodeableConcept,
-      subjectReference: fields[6] as Reference,
-      mustSupport: (fields[7] as List)?.cast<String>(),
-      elementMustSupport: (fields[8] as List)?.cast<Element>(),
-      codeFilter: (fields[9] as List)?.cast<DataRequirement_CodeFilter>(),
-      dateFilter: (fields[10] as List)?.cast<DataRequirement_DateFilter>(),
-      limit: fields[11] as int,
-      elementLimit: fields[12] as Element,
-      sort: (fields[13] as List)?.cast<DataRequirement_Sort>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, DataRequirement obj) {
-    writer
-      ..writeByte(14)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.type)
-      ..writeByte(3)
-      ..write(obj.elementType)
-      ..writeByte(4)
-      ..write(obj.profile)
-      ..writeByte(5)
-      ..write(obj.subjectCodeableConcept)
-      ..writeByte(6)
-      ..write(obj.subjectReference)
-      ..writeByte(7)
-      ..write(obj.mustSupport)
-      ..writeByte(8)
-      ..write(obj.elementMustSupport)
-      ..writeByte(9)
-      ..write(obj.codeFilter)
-      ..writeByte(10)
-      ..write(obj.dateFilter)
-      ..writeByte(11)
-      ..write(obj.limit)
-      ..writeByte(12)
-      ..write(obj.elementLimit)
-      ..writeByte(13)
-      ..write(obj.sort);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

@@ -17,7 +17,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 133)
 class MedicationKnowledge {
 
 	static Future<MedicationKnowledge> newInstance({
@@ -96,77 +95,41 @@ class MedicationKnowledge {
 	medicationKnowledgeBox.put(newMedicationKnowledge.id, newMedicationKnowledge);
 	return newMedicationKnowledge;
 }
-  @HiveField(0)
   final String resourceType= 'MedicationKnowledge';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   CodeableConcept code;
-  @HiveField(12)
   String status;
-  @HiveField(13)
   Element elementStatus;
-  @HiveField(14)
   Reference manufacturer;
-  @HiveField(15)
   CodeableConcept doseForm;
-  @HiveField(16)
   Quantity amount;
-  @HiveField(17)
   List<String> synonym;
-  @HiveField(18)
   List<Element> elementSynonym;
-  @HiveField(19)
   List<MedicationKnowledge_RelatedMedicationKnowledge> relatedMedicationKnowledge;
-  @HiveField(20)
   List<Reference> associatedMedication;
-  @HiveField(21)
   List<CodeableConcept> productType;
-  @HiveField(22)
   List<MedicationKnowledge_Monograph> monograph;
-  @HiveField(23)
   List<MedicationKnowledge_Ingredient> ingredient;
-  @HiveField(24)
   String preparationInstruction;
-  @HiveField(25)
   Element elementPreparationInstruction;
-  @HiveField(26)
   List<CodeableConcept> intendedRoute;
-  @HiveField(27)
   List<MedicationKnowledge_Cost> cost;
-  @HiveField(28)
   List<MedicationKnowledge_MonitoringProgram> monitoringProgram;
-  @HiveField(29)
   List<MedicationKnowledge_AdministrationGuidelines> administrationGuidelines;
-  @HiveField(30)
   List<MedicationKnowledge_MedicineClassification> medicineClassification;
-  @HiveField(31)
   MedicationKnowledge_Packaging packaging;
-  @HiveField(32)
   List<MedicationKnowledge_DrugCharacteristic> drugCharacteristic;
-  @HiveField(33)
   List<Reference> contraindication;
-  @HiveField(34)
   List<MedicationKnowledge_Regulatory> regulatory;
-  @HiveField(35)
   List<MedicationKnowledge_Kinetics> kinetics;
 
 MedicationKnowledge(
@@ -877,143 +840,6 @@ MedicationKnowledge_Kinetics(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class MedicationKnowledgeAdapter extends TypeAdapter<MedicationKnowledge> {
-  @override
-  final typeId = 133;
-
-  @override
-  MedicationKnowledge read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicationKnowledge(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      code: fields[11] as CodeableConcept,
-      status: fields[12] as String,
-      elementStatus: fields[13] as Element,
-      manufacturer: fields[14] as Reference,
-      doseForm: fields[15] as CodeableConcept,
-      amount: fields[16] as Quantity,
-      synonym: (fields[17] as List)?.cast<String>(),
-      elementSynonym: (fields[18] as List)?.cast<Element>(),
-      relatedMedicationKnowledge: (fields[19] as List)
-          ?.cast<MedicationKnowledge_RelatedMedicationKnowledge>(),
-      associatedMedication: (fields[20] as List)?.cast<Reference>(),
-      productType: (fields[21] as List)?.cast<CodeableConcept>(),
-      monograph: (fields[22] as List)?.cast<MedicationKnowledge_Monograph>(),
-      ingredient: (fields[23] as List)?.cast<MedicationKnowledge_Ingredient>(),
-      preparationInstruction: fields[24] as String,
-      elementPreparationInstruction: fields[25] as Element,
-      intendedRoute: (fields[26] as List)?.cast<CodeableConcept>(),
-      cost: (fields[27] as List)?.cast<MedicationKnowledge_Cost>(),
-      monitoringProgram:
-          (fields[28] as List)?.cast<MedicationKnowledge_MonitoringProgram>(),
-      administrationGuidelines: (fields[29] as List)
-          ?.cast<MedicationKnowledge_AdministrationGuidelines>(),
-      medicineClassification: (fields[30] as List)
-          ?.cast<MedicationKnowledge_MedicineClassification>(),
-      packaging: fields[31] as MedicationKnowledge_Packaging,
-      drugCharacteristic:
-          (fields[32] as List)?.cast<MedicationKnowledge_DrugCharacteristic>(),
-      contraindication: (fields[33] as List)?.cast<Reference>(),
-      regulatory: (fields[34] as List)?.cast<MedicationKnowledge_Regulatory>(),
-      kinetics: (fields[35] as List)?.cast<MedicationKnowledge_Kinetics>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicationKnowledge obj) {
-    writer
-      ..writeByte(36)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.code)
-      ..writeByte(12)
-      ..write(obj.status)
-      ..writeByte(13)
-      ..write(obj.elementStatus)
-      ..writeByte(14)
-      ..write(obj.manufacturer)
-      ..writeByte(15)
-      ..write(obj.doseForm)
-      ..writeByte(16)
-      ..write(obj.amount)
-      ..writeByte(17)
-      ..write(obj.synonym)
-      ..writeByte(18)
-      ..write(obj.elementSynonym)
-      ..writeByte(19)
-      ..write(obj.relatedMedicationKnowledge)
-      ..writeByte(20)
-      ..write(obj.associatedMedication)
-      ..writeByte(21)
-      ..write(obj.productType)
-      ..writeByte(22)
-      ..write(obj.monograph)
-      ..writeByte(23)
-      ..write(obj.ingredient)
-      ..writeByte(24)
-      ..write(obj.preparationInstruction)
-      ..writeByte(25)
-      ..write(obj.elementPreparationInstruction)
-      ..writeByte(26)
-      ..write(obj.intendedRoute)
-      ..writeByte(27)
-      ..write(obj.cost)
-      ..writeByte(28)
-      ..write(obj.monitoringProgram)
-      ..writeByte(29)
-      ..write(obj.administrationGuidelines)
-      ..writeByte(30)
-      ..write(obj.medicineClassification)
-      ..writeByte(31)
-      ..write(obj.packaging)
-      ..writeByte(32)
-      ..write(obj.drugCharacteristic)
-      ..writeByte(33)
-      ..write(obj.contraindication)
-      ..writeByte(34)
-      ..write(obj.regulatory)
-      ..writeByte(35)
-      ..write(obj.kinetics);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

@@ -13,7 +13,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 65)
 class BiologicallyDerivedProduct {
 
 	static Future<BiologicallyDerivedProduct> newInstance({
@@ -70,55 +69,30 @@ class BiologicallyDerivedProduct {
 	biologicallyDerivedProductBox.put(newBiologicallyDerivedProduct.id, newBiologicallyDerivedProduct);
 	return newBiologicallyDerivedProduct;
 }
-  @HiveField(0)
   final String resourceType= 'BiologicallyDerivedProduct';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String productCategory; // <code> enum: organ/tissue/fluid/cells/biologicalAgent;
-  @HiveField(13)
   Element elementProductCategory;
-  @HiveField(14)
   CodeableConcept productCode;
-  @HiveField(15)
   String status; // <code> enum: available/unavailable;
-  @HiveField(16)
   Element elementStatus;
-  @HiveField(17)
   List<Reference> request;
-  @HiveField(18)
   int quantity;
-  @HiveField(19)
   Element elementQuantity;
-  @HiveField(20)
   List<Reference> parent;
-  @HiveField(21)
   BiologicallyDerivedProduct_Collection collection;
-  @HiveField(22)
   List<BiologicallyDerivedProduct_Processing> processing;
-  @HiveField(23)
   BiologicallyDerivedProduct_Manipulation manipulation;
-  @HiveField(24)
   List<BiologicallyDerivedProduct_Storage> storage;
 
 BiologicallyDerivedProduct(
@@ -366,107 +340,6 @@ BiologicallyDerivedProduct_Storage(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class BiologicallyDerivedProductAdapter
-    extends TypeAdapter<BiologicallyDerivedProduct> {
-  @override
-  final typeId = 65;
-
-  @override
-  BiologicallyDerivedProduct read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return BiologicallyDerivedProduct(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      productCategory: fields[12] as String,
-      elementProductCategory: fields[13] as Element,
-      productCode: fields[14] as CodeableConcept,
-      status: fields[15] as String,
-      elementStatus: fields[16] as Element,
-      request: (fields[17] as List)?.cast<Reference>(),
-      quantity: fields[18] as int,
-      elementQuantity: fields[19] as Element,
-      parent: (fields[20] as List)?.cast<Reference>(),
-      collection: fields[21] as BiologicallyDerivedProduct_Collection,
-      processing:
-          (fields[22] as List)?.cast<BiologicallyDerivedProduct_Processing>(),
-      manipulation: fields[23] as BiologicallyDerivedProduct_Manipulation,
-      storage: (fields[24] as List)?.cast<BiologicallyDerivedProduct_Storage>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, BiologicallyDerivedProduct obj) {
-    writer
-      ..writeByte(25)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.productCategory)
-      ..writeByte(13)
-      ..write(obj.elementProductCategory)
-      ..writeByte(14)
-      ..write(obj.productCode)
-      ..writeByte(15)
-      ..write(obj.status)
-      ..writeByte(16)
-      ..write(obj.elementStatus)
-      ..writeByte(17)
-      ..write(obj.request)
-      ..writeByte(18)
-      ..write(obj.quantity)
-      ..writeByte(19)
-      ..write(obj.elementQuantity)
-      ..writeByte(20)
-      ..write(obj.parent)
-      ..writeByte(21)
-      ..write(obj.collection)
-      ..writeByte(22)
-      ..write(obj.processing)
-      ..writeByte(23)
-      ..write(obj.manipulation)
-      ..writeByte(24)
-      ..write(obj.storage);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

@@ -11,7 +11,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 141)
 class MedicinalProductInteraction {
 
 	static Future<MedicinalProductInteraction> newInstance({
@@ -56,43 +55,24 @@ class MedicinalProductInteraction {
 	medicinalProductInteractionBox.put(newMedicinalProductInteraction.id, newMedicinalProductInteraction);
 	return newMedicinalProductInteraction;
 }
-  @HiveField(0)
   final String resourceType= 'MedicinalProductInteraction';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Reference> subject;
-  @HiveField(12)
   String description;
-  @HiveField(13)
   Element elementDescription;
-  @HiveField(14)
   List<MedicinalProductInteraction_Interactant> interactant;
-  @HiveField(15)
   CodeableConcept type;
-  @HiveField(16)
   CodeableConcept effect;
-  @HiveField(17)
   CodeableConcept incidence;
-  @HiveField(18)
   CodeableConcept management;
 
 MedicinalProductInteraction(
@@ -159,89 +139,6 @@ MedicinalProductInteraction_Interactant(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class MedicinalProductInteractionAdapter
-    extends TypeAdapter<MedicinalProductInteraction> {
-  @override
-  final typeId = 141;
-
-  @override
-  MedicinalProductInteraction read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProductInteraction(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      subject: (fields[11] as List)?.cast<Reference>(),
-      description: fields[12] as String,
-      elementDescription: fields[13] as Element,
-      interactant:
-          (fields[14] as List)?.cast<MedicinalProductInteraction_Interactant>(),
-      type: fields[15] as CodeableConcept,
-      effect: fields[16] as CodeableConcept,
-      incidence: fields[17] as CodeableConcept,
-      management: fields[18] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicinalProductInteraction obj) {
-    writer
-      ..writeByte(19)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.subject)
-      ..writeByte(12)
-      ..write(obj.description)
-      ..writeByte(13)
-      ..write(obj.elementDescription)
-      ..writeByte(14)
-      ..write(obj.interactant)
-      ..writeByte(15)
-      ..write(obj.type)
-      ..writeByte(16)
-      ..write(obj.effect)
-      ..writeByte(17)
-      ..write(obj.incidence)
-      ..writeByte(18)
-      ..write(obj.management);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

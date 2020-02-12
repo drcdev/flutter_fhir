@@ -18,7 +18,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 167)
 class Questionnaire {
 
 	static Future<Questionnaire> newInstance({
@@ -119,99 +118,52 @@ class Questionnaire {
 	questionnaireBox.put(newQuestionnaire.id, newQuestionnaire);
 	return newQuestionnaire;
 }
-  @HiveField(0)
   final String resourceType= 'Questionnaire';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   String url;
-  @HiveField(12)
   Element elementUrl;
-  @HiveField(13)
   List<Identifier> identifier;
-  @HiveField(14)
   String version;
-  @HiveField(15)
   Element elementVersion;
-  @HiveField(16)
   String name;
-  @HiveField(17)
   Element elementName;
-  @HiveField(18)
   String title;
-  @HiveField(19)
   Element elementTitle;
-  @HiveField(20)
   List<String> derivedFrom;
-  @HiveField(21)
   String status; // <code> enum: draft/active/retired/unknown;
-  @HiveField(22)
   Element elementStatus;
-  @HiveField(23)
   bool experimental;
-  @HiveField(24)
   Element elementExperimental;
-  @HiveField(25)
   List<String> subjectType;
-  @HiveField(26)
   List<Element> elementSubjectType;
-  @HiveField(27)
   DateTime date;
-  @HiveField(28)
   Element elementDate;
-  @HiveField(29)
   String publisher;
-  @HiveField(30)
   Element elementPublisher;
-  @HiveField(31)
   List<ContactDetail> contact;
-  @HiveField(32)
   String description;
-  @HiveField(33)
   Element elementDescription;
-  @HiveField(34)
   List<UsageContext> useContext;
-  @HiveField(35)
   List<CodeableConcept> jurisdiction;
-  @HiveField(36)
   String purpose;
-  @HiveField(37)
   Element elementPurpose;
-  @HiveField(38)
   String copyright;
-  @HiveField(39)
   Element elementCopyright;
-  @HiveField(40)
   String approvalDate;
-  @HiveField(41)
   Element elementApprovalDate;
-  @HiveField(42)
   String lastReviewDate;
-  @HiveField(43)
   Element elementLastReviewDate;
-  @HiveField(44)
   Period effectivePeriod;
-  @HiveField(45)
   List<Coding> code;
-  @HiveField(46)
   List<Questionnaire_Item> item;
 
 Questionnaire(
@@ -701,171 +653,6 @@ Questionnaire_Initial(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class QuestionnaireAdapter extends TypeAdapter<Questionnaire> {
-  @override
-  final typeId = 167;
-
-  @override
-  Questionnaire read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Questionnaire(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      url: fields[11] as String,
-      elementUrl: fields[12] as Element,
-      identifier: (fields[13] as List)?.cast<Identifier>(),
-      version: fields[14] as String,
-      elementVersion: fields[15] as Element,
-      name: fields[16] as String,
-      elementName: fields[17] as Element,
-      title: fields[18] as String,
-      elementTitle: fields[19] as Element,
-      derivedFrom: (fields[20] as List)?.cast<String>(),
-      status: fields[21] as String,
-      elementStatus: fields[22] as Element,
-      experimental: fields[23] as bool,
-      elementExperimental: fields[24] as Element,
-      subjectType: (fields[25] as List)?.cast<String>(),
-      elementSubjectType: (fields[26] as List)?.cast<Element>(),
-      date: fields[27] as DateTime,
-      elementDate: fields[28] as Element,
-      publisher: fields[29] as String,
-      elementPublisher: fields[30] as Element,
-      contact: (fields[31] as List)?.cast<ContactDetail>(),
-      description: fields[32] as String,
-      elementDescription: fields[33] as Element,
-      useContext: (fields[34] as List)?.cast<UsageContext>(),
-      jurisdiction: (fields[35] as List)?.cast<CodeableConcept>(),
-      purpose: fields[36] as String,
-      elementPurpose: fields[37] as Element,
-      copyright: fields[38] as String,
-      elementCopyright: fields[39] as Element,
-      approvalDate: fields[40] as String,
-      elementApprovalDate: fields[41] as Element,
-      lastReviewDate: fields[42] as String,
-      elementLastReviewDate: fields[43] as Element,
-      effectivePeriod: fields[44] as Period,
-      code: (fields[45] as List)?.cast<Coding>(),
-      item: (fields[46] as List)?.cast<Questionnaire_Item>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Questionnaire obj) {
-    writer
-      ..writeByte(47)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.url)
-      ..writeByte(12)
-      ..write(obj.elementUrl)
-      ..writeByte(13)
-      ..write(obj.identifier)
-      ..writeByte(14)
-      ..write(obj.version)
-      ..writeByte(15)
-      ..write(obj.elementVersion)
-      ..writeByte(16)
-      ..write(obj.name)
-      ..writeByte(17)
-      ..write(obj.elementName)
-      ..writeByte(18)
-      ..write(obj.title)
-      ..writeByte(19)
-      ..write(obj.elementTitle)
-      ..writeByte(20)
-      ..write(obj.derivedFrom)
-      ..writeByte(21)
-      ..write(obj.status)
-      ..writeByte(22)
-      ..write(obj.elementStatus)
-      ..writeByte(23)
-      ..write(obj.experimental)
-      ..writeByte(24)
-      ..write(obj.elementExperimental)
-      ..writeByte(25)
-      ..write(obj.subjectType)
-      ..writeByte(26)
-      ..write(obj.elementSubjectType)
-      ..writeByte(27)
-      ..write(obj.date)
-      ..writeByte(28)
-      ..write(obj.elementDate)
-      ..writeByte(29)
-      ..write(obj.publisher)
-      ..writeByte(30)
-      ..write(obj.elementPublisher)
-      ..writeByte(31)
-      ..write(obj.contact)
-      ..writeByte(32)
-      ..write(obj.description)
-      ..writeByte(33)
-      ..write(obj.elementDescription)
-      ..writeByte(34)
-      ..write(obj.useContext)
-      ..writeByte(35)
-      ..write(obj.jurisdiction)
-      ..writeByte(36)
-      ..write(obj.purpose)
-      ..writeByte(37)
-      ..write(obj.elementPurpose)
-      ..writeByte(38)
-      ..write(obj.copyright)
-      ..writeByte(39)
-      ..write(obj.elementCopyright)
-      ..writeByte(40)
-      ..write(obj.approvalDate)
-      ..writeByte(41)
-      ..write(obj.elementApprovalDate)
-      ..writeByte(42)
-      ..write(obj.lastReviewDate)
-      ..writeByte(43)
-      ..write(obj.elementLastReviewDate)
-      ..writeByte(44)
-      ..write(obj.effectivePeriod)
-      ..writeByte(45)
-      ..write(obj.code)
-      ..writeByte(46)
-      ..write(obj.item);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

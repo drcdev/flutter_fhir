@@ -13,7 +13,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 119)
 class ImmunizationRecommendation {
 
 	static Future<ImmunizationRecommendation> newInstance({
@@ -54,39 +53,22 @@ class ImmunizationRecommendation {
 	immunizationRecommendationBox.put(newImmunizationRecommendation.id, newImmunizationRecommendation);
 	return newImmunizationRecommendation;
 }
-  @HiveField(0)
   final String resourceType= 'ImmunizationRecommendation';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   Reference patient;
-  @HiveField(13)
   DateTime date;
-  @HiveField(14)
   Element elementDate;
-  @HiveField(15)
   Reference authority;
-  @HiveField(16)
   List<ImmunizationRecommendation_Recommendation> recommendation;
 
 ImmunizationRecommendation(
@@ -264,83 +246,6 @@ ImmunizationRecommendation_DateCriterion(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ImmunizationRecommendationAdapter
-    extends TypeAdapter<ImmunizationRecommendation> {
-  @override
-  final typeId = 119;
-
-  @override
-  ImmunizationRecommendation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ImmunizationRecommendation(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      patient: fields[12] as Reference,
-      date: fields[13] as DateTime,
-      elementDate: fields[14] as Element,
-      authority: fields[15] as Reference,
-      recommendation: (fields[16] as List)
-          ?.cast<ImmunizationRecommendation_Recommendation>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ImmunizationRecommendation obj) {
-    writer
-      ..writeByte(17)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.patient)
-      ..writeByte(13)
-      ..write(obj.date)
-      ..writeByte(14)
-      ..write(obj.elementDate)
-      ..writeByte(15)
-      ..write(obj.authority)
-      ..writeByte(16)
-      ..write(obj.recommendation);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

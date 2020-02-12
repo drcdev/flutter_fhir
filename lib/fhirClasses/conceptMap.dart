@@ -14,7 +14,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 82)
 class ConceptMap {
 
 	static Future<ConceptMap> newInstance({
@@ -113,97 +112,51 @@ class ConceptMap {
 	conceptMapBox.put(newConceptMap.id, newConceptMap);
 	return newConceptMap;
 }
-  @HiveField(0)
   final String resourceType= 'ConceptMap';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   String url;
-  @HiveField(12)
   Element elementUrl;
-  @HiveField(13)
   Identifier identifier;
-  @HiveField(14)
   String version;
-  @HiveField(15)
   Element elementVersion;
-  @HiveField(16)
   String name;
-  @HiveField(17)
   Element elementName;
-  @HiveField(18)
   String title;
-  @HiveField(19)
   Element elementTitle;
-  @HiveField(20)
   String status; // <code> enum: draft/active/retired/unknown;
-  @HiveField(21)
   Element elementStatus;
-  @HiveField(22)
   bool experimental;
-  @HiveField(23)
   Element elementExperimental;
-  @HiveField(24)
   DateTime date;
-  @HiveField(25)
   Element elementDate;
-  @HiveField(26)
   String publisher;
-  @HiveField(27)
   Element elementPublisher;
-  @HiveField(28)
   List<ContactDetail> contact;
-  @HiveField(29)
   String description;
-  @HiveField(30)
   Element elementDescription;
-  @HiveField(31)
   List<UsageContext> useContext;
-  @HiveField(32)
   List<CodeableConcept> jurisdiction;
-  @HiveField(33)
   String purpose;
-  @HiveField(34)
   Element elementPurpose;
-  @HiveField(35)
   String copyright;
-  @HiveField(36)
   Element elementCopyright;
-  @HiveField(37)
   String sourceUri; //  pattern: ^\S*$
-  @HiveField(38)
   Element elementSourceUri;
-  @HiveField(39)
   String sourceCanonical; //  pattern: ^\S*$
-  @HiveField(40)
   Element elementSourceCanonical;
-  @HiveField(41)
   String targetUri; //  pattern: ^\S*$
-  @HiveField(42)
   Element elementTargetUri;
-  @HiveField(43)
   String targetCanonical; //  pattern: ^\S*$
-  @HiveField(44)
   Element elementTargetCanonical;
-  @HiveField(45)
   List<ConceptMap_Group> group;
 
 ConceptMap(
@@ -561,168 +514,6 @@ ConceptMap_Unmapped(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ConceptMapAdapter extends TypeAdapter<ConceptMap> {
-  @override
-  final typeId = 82;
-
-  @override
-  ConceptMap read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ConceptMap(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      url: fields[11] as String,
-      elementUrl: fields[12] as Element,
-      identifier: fields[13] as Identifier,
-      version: fields[14] as String,
-      elementVersion: fields[15] as Element,
-      name: fields[16] as String,
-      elementName: fields[17] as Element,
-      title: fields[18] as String,
-      elementTitle: fields[19] as Element,
-      status: fields[20] as String,
-      elementStatus: fields[21] as Element,
-      experimental: fields[22] as bool,
-      elementExperimental: fields[23] as Element,
-      date: fields[24] as DateTime,
-      elementDate: fields[25] as Element,
-      publisher: fields[26] as String,
-      elementPublisher: fields[27] as Element,
-      contact: (fields[28] as List)?.cast<ContactDetail>(),
-      description: fields[29] as String,
-      elementDescription: fields[30] as Element,
-      useContext: (fields[31] as List)?.cast<UsageContext>(),
-      jurisdiction: (fields[32] as List)?.cast<CodeableConcept>(),
-      purpose: fields[33] as String,
-      elementPurpose: fields[34] as Element,
-      copyright: fields[35] as String,
-      elementCopyright: fields[36] as Element,
-      sourceUri: fields[37] as String,
-      elementSourceUri: fields[38] as Element,
-      sourceCanonical: fields[39] as String,
-      elementSourceCanonical: fields[40] as Element,
-      targetUri: fields[41] as String,
-      elementTargetUri: fields[42] as Element,
-      targetCanonical: fields[43] as String,
-      elementTargetCanonical: fields[44] as Element,
-      group: (fields[45] as List)?.cast<ConceptMap_Group>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ConceptMap obj) {
-    writer
-      ..writeByte(46)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.url)
-      ..writeByte(12)
-      ..write(obj.elementUrl)
-      ..writeByte(13)
-      ..write(obj.identifier)
-      ..writeByte(14)
-      ..write(obj.version)
-      ..writeByte(15)
-      ..write(obj.elementVersion)
-      ..writeByte(16)
-      ..write(obj.name)
-      ..writeByte(17)
-      ..write(obj.elementName)
-      ..writeByte(18)
-      ..write(obj.title)
-      ..writeByte(19)
-      ..write(obj.elementTitle)
-      ..writeByte(20)
-      ..write(obj.status)
-      ..writeByte(21)
-      ..write(obj.elementStatus)
-      ..writeByte(22)
-      ..write(obj.experimental)
-      ..writeByte(23)
-      ..write(obj.elementExperimental)
-      ..writeByte(24)
-      ..write(obj.date)
-      ..writeByte(25)
-      ..write(obj.elementDate)
-      ..writeByte(26)
-      ..write(obj.publisher)
-      ..writeByte(27)
-      ..write(obj.elementPublisher)
-      ..writeByte(28)
-      ..write(obj.contact)
-      ..writeByte(29)
-      ..write(obj.description)
-      ..writeByte(30)
-      ..write(obj.elementDescription)
-      ..writeByte(31)
-      ..write(obj.useContext)
-      ..writeByte(32)
-      ..write(obj.jurisdiction)
-      ..writeByte(33)
-      ..write(obj.purpose)
-      ..writeByte(34)
-      ..write(obj.elementPurpose)
-      ..writeByte(35)
-      ..write(obj.copyright)
-      ..writeByte(36)
-      ..write(obj.elementCopyright)
-      ..writeByte(37)
-      ..write(obj.sourceUri)
-      ..writeByte(38)
-      ..write(obj.elementSourceUri)
-      ..writeByte(39)
-      ..write(obj.sourceCanonical)
-      ..writeByte(40)
-      ..write(obj.elementSourceCanonical)
-      ..writeByte(41)
-      ..write(obj.targetUri)
-      ..writeByte(42)
-      ..write(obj.elementTargetUri)
-      ..writeByte(43)
-      ..write(obj.targetCanonical)
-      ..writeByte(44)
-      ..write(obj.elementTargetCanonical)
-      ..writeByte(45)
-      ..write(obj.group);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

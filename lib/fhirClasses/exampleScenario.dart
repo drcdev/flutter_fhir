@@ -13,7 +13,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 107)
 class ExampleScenario {
 
 	static Future<ExampleScenario> newInstance({
@@ -94,79 +93,42 @@ class ExampleScenario {
 	exampleScenarioBox.put(newExampleScenario.id, newExampleScenario);
 	return newExampleScenario;
 }
-  @HiveField(0)
   final String resourceType= 'ExampleScenario';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   String url;
-  @HiveField(12)
   Element elementUrl;
-  @HiveField(13)
   List<Identifier> identifier;
-  @HiveField(14)
   String version;
-  @HiveField(15)
   Element elementVersion;
-  @HiveField(16)
   String name;
-  @HiveField(17)
   Element elementName;
-  @HiveField(18)
   String status; // <code> enum: draft/active/retired/unknown;
-  @HiveField(19)
   Element elementStatus;
-  @HiveField(20)
   bool experimental;
-  @HiveField(21)
   Element elementExperimental;
-  @HiveField(22)
   DateTime date;
-  @HiveField(23)
   Element elementDate;
-  @HiveField(24)
   String publisher;
-  @HiveField(25)
   Element elementPublisher;
-  @HiveField(26)
   List<ContactDetail> contact;
-  @HiveField(27)
   List<UsageContext> useContext;
-  @HiveField(28)
   List<CodeableConcept> jurisdiction;
-  @HiveField(29)
   String copyright;
-  @HiveField(30)
   Element elementCopyright;
-  @HiveField(31)
   String purpose;
-  @HiveField(32)
   Element elementPurpose;
-  @HiveField(33)
   List<ExampleScenario_Actor> actor;
-  @HiveField(34)
   List<ExampleScenario_Instance> instance;
-  @HiveField(35)
   List<ExampleScenario_Process> process;
-  @HiveField(36)
   List<String> workflow;
 
 ExampleScenario(
@@ -696,141 +658,6 @@ ExampleScenario_Alternative(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ExampleScenarioAdapter extends TypeAdapter<ExampleScenario> {
-  @override
-  final typeId = 107;
-
-  @override
-  ExampleScenario read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExampleScenario(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      url: fields[11] as String,
-      elementUrl: fields[12] as Element,
-      identifier: (fields[13] as List)?.cast<Identifier>(),
-      version: fields[14] as String,
-      elementVersion: fields[15] as Element,
-      name: fields[16] as String,
-      elementName: fields[17] as Element,
-      status: fields[18] as String,
-      elementStatus: fields[19] as Element,
-      experimental: fields[20] as bool,
-      elementExperimental: fields[21] as Element,
-      date: fields[22] as DateTime,
-      elementDate: fields[23] as Element,
-      publisher: fields[24] as String,
-      elementPublisher: fields[25] as Element,
-      contact: (fields[26] as List)?.cast<ContactDetail>(),
-      useContext: (fields[27] as List)?.cast<UsageContext>(),
-      jurisdiction: (fields[28] as List)?.cast<CodeableConcept>(),
-      copyright: fields[29] as String,
-      elementCopyright: fields[30] as Element,
-      purpose: fields[31] as String,
-      elementPurpose: fields[32] as Element,
-      actor: (fields[33] as List)?.cast<ExampleScenario_Actor>(),
-      instance: (fields[34] as List)?.cast<ExampleScenario_Instance>(),
-      process: (fields[35] as List)?.cast<ExampleScenario_Process>(),
-      workflow: (fields[36] as List)?.cast<String>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExampleScenario obj) {
-    writer
-      ..writeByte(37)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.url)
-      ..writeByte(12)
-      ..write(obj.elementUrl)
-      ..writeByte(13)
-      ..write(obj.identifier)
-      ..writeByte(14)
-      ..write(obj.version)
-      ..writeByte(15)
-      ..write(obj.elementVersion)
-      ..writeByte(16)
-      ..write(obj.name)
-      ..writeByte(17)
-      ..write(obj.elementName)
-      ..writeByte(18)
-      ..write(obj.status)
-      ..writeByte(19)
-      ..write(obj.elementStatus)
-      ..writeByte(20)
-      ..write(obj.experimental)
-      ..writeByte(21)
-      ..write(obj.elementExperimental)
-      ..writeByte(22)
-      ..write(obj.date)
-      ..writeByte(23)
-      ..write(obj.elementDate)
-      ..writeByte(24)
-      ..write(obj.publisher)
-      ..writeByte(25)
-      ..write(obj.elementPublisher)
-      ..writeByte(26)
-      ..write(obj.contact)
-      ..writeByte(27)
-      ..write(obj.useContext)
-      ..writeByte(28)
-      ..write(obj.jurisdiction)
-      ..writeByte(29)
-      ..write(obj.copyright)
-      ..writeByte(30)
-      ..write(obj.elementCopyright)
-      ..writeByte(31)
-      ..write(obj.purpose)
-      ..writeByte(32)
-      ..write(obj.elementPurpose)
-      ..writeByte(33)
-      ..write(obj.actor)
-      ..writeByte(34)
-      ..write(obj.instance)
-      ..writeByte(35)
-      ..write(obj.process)
-      ..writeByte(36)
-      ..write(obj.workflow);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

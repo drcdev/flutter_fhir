@@ -14,7 +14,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 66)
 class BodyStructure {
 
 	static Future<BodyStructure> newInstance({
@@ -63,47 +62,26 @@ class BodyStructure {
 	bodyStructureBox.put(newBodyStructure.id, newBodyStructure);
 	return newBodyStructure;
 }
-  @HiveField(0)
   final String resourceType= 'BodyStructure';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   bool active;
-  @HiveField(13)
   Element elementActive;
-  @HiveField(14)
   CodeableConcept morphology;
-  @HiveField(15)
   CodeableConcept location;
-  @HiveField(16)
   List<CodeableConcept> locationQualifier;
-  @HiveField(17)
   String description;
-  @HiveField(18)
   Element elementDescription;
-  @HiveField(19)
   List<Attachment> image;
-  @HiveField(20)
   Reference patient;
 
 BodyStructure(
@@ -135,93 +113,6 @@ BodyStructure(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class BodyStructureAdapter extends TypeAdapter<BodyStructure> {
-  @override
-  final typeId = 66;
-
-  @override
-  BodyStructure read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return BodyStructure(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      active: fields[12] as bool,
-      elementActive: fields[13] as Element,
-      morphology: fields[14] as CodeableConcept,
-      location: fields[15] as CodeableConcept,
-      locationQualifier: (fields[16] as List)?.cast<CodeableConcept>(),
-      description: fields[17] as String,
-      elementDescription: fields[18] as Element,
-      image: (fields[19] as List)?.cast<Attachment>(),
-      patient: fields[20] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, BodyStructure obj) {
-    writer
-      ..writeByte(21)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.active)
-      ..writeByte(13)
-      ..write(obj.elementActive)
-      ..writeByte(14)
-      ..write(obj.morphology)
-      ..writeByte(15)
-      ..write(obj.location)
-      ..writeByte(16)
-      ..write(obj.locationQualifier)
-      ..writeByte(17)
-      ..write(obj.description)
-      ..writeByte(18)
-      ..write(obj.elementDescription)
-      ..writeByte(19)
-      ..write(obj.image)
-      ..writeByte(20)
-      ..write(obj.patient);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

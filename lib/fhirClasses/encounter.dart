@@ -16,7 +16,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 99)
 class Encounter {
 
 	static Future<Encounter> newInstance({
@@ -93,75 +92,40 @@ class Encounter {
 	encounterBox.put(newEncounter.id, newEncounter);
 	return newEncounter;
 }
-  @HiveField(0)
   final String resourceType= 'Encounter';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String status; // <code> enum: planned/arrived/triaged/in-progress/onleave/finished/cancelled/entered-in-error/unknown;
-  @HiveField(13)
   Element elementStatus;
-  @HiveField(14)
   List<Encounter_StatusHistory> statusHistory;
-  @HiveField(15)
   Coding classs;
-  @HiveField(16)
   List<Encounter_ClassHistory> classHistory;
-  @HiveField(17)
   List<CodeableConcept> type;
-  @HiveField(18)
   CodeableConcept serviceType;
-  @HiveField(19)
   CodeableConcept priority;
-  @HiveField(20)
   Reference subject;
-  @HiveField(21)
   List<Reference> episodeOfCare;
-  @HiveField(22)
   List<Reference> basedOn;
-  @HiveField(23)
   List<Encounter_Participant> participant;
-  @HiveField(24)
   List<Reference> appointment;
-  @HiveField(25)
   Period period;
-  @HiveField(26)
   Duration length;
-  @HiveField(27)
   List<CodeableConcept> reasonCode;
-  @HiveField(28)
   List<Reference> reasonReference;
-  @HiveField(29)
   List<Encounter_Diagnosis> diagnosis;
-  @HiveField(30)
   List<Reference> account;
-  @HiveField(31)
   Encounter_Hospitalization hospitalization;
-  @HiveField(32)
   List<Encounter_Location> location;
-  @HiveField(33)
   Reference serviceProvider;
-  @HiveField(34)
   Reference partOf;
 
 Encounter(
@@ -485,135 +449,6 @@ Encounter_Location(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class EncounterAdapter extends TypeAdapter<Encounter> {
-  @override
-  final typeId = 99;
-
-  @override
-  Encounter read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Encounter(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      status: fields[12] as String,
-      elementStatus: fields[13] as Element,
-      statusHistory: (fields[14] as List)?.cast<Encounter_StatusHistory>(),
-      classs: fields[15] as Coding,
-      classHistory: (fields[16] as List)?.cast<Encounter_ClassHistory>(),
-      type: (fields[17] as List)?.cast<CodeableConcept>(),
-      serviceType: fields[18] as CodeableConcept,
-      priority: fields[19] as CodeableConcept,
-      subject: fields[20] as Reference,
-      episodeOfCare: (fields[21] as List)?.cast<Reference>(),
-      basedOn: (fields[22] as List)?.cast<Reference>(),
-      participant: (fields[23] as List)?.cast<Encounter_Participant>(),
-      appointment: (fields[24] as List)?.cast<Reference>(),
-      period: fields[25] as Period,
-      length: fields[26] as Duration,
-      reasonCode: (fields[27] as List)?.cast<CodeableConcept>(),
-      reasonReference: (fields[28] as List)?.cast<Reference>(),
-      diagnosis: (fields[29] as List)?.cast<Encounter_Diagnosis>(),
-      account: (fields[30] as List)?.cast<Reference>(),
-      hospitalization: fields[31] as Encounter_Hospitalization,
-      location: (fields[32] as List)?.cast<Encounter_Location>(),
-      serviceProvider: fields[33] as Reference,
-      partOf: fields[34] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Encounter obj) {
-    writer
-      ..writeByte(35)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.status)
-      ..writeByte(13)
-      ..write(obj.elementStatus)
-      ..writeByte(14)
-      ..write(obj.statusHistory)
-      ..writeByte(15)
-      ..write(obj.classs)
-      ..writeByte(16)
-      ..write(obj.classHistory)
-      ..writeByte(17)
-      ..write(obj.type)
-      ..writeByte(18)
-      ..write(obj.serviceType)
-      ..writeByte(19)
-      ..write(obj.priority)
-      ..writeByte(20)
-      ..write(obj.subject)
-      ..writeByte(21)
-      ..write(obj.episodeOfCare)
-      ..writeByte(22)
-      ..write(obj.basedOn)
-      ..writeByte(23)
-      ..write(obj.participant)
-      ..writeByte(24)
-      ..write(obj.appointment)
-      ..writeByte(25)
-      ..write(obj.period)
-      ..writeByte(26)
-      ..write(obj.length)
-      ..writeByte(27)
-      ..write(obj.reasonCode)
-      ..writeByte(28)
-      ..write(obj.reasonReference)
-      ..writeByte(29)
-      ..write(obj.diagnosis)
-      ..writeByte(30)
-      ..write(obj.account)
-      ..writeByte(31)
-      ..write(obj.hospitalization)
-      ..writeByte(32)
-      ..write(obj.location)
-      ..writeByte(33)
-      ..write(obj.serviceProvider)
-      ..writeByte(34)
-      ..write(obj.partOf);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

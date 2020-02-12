@@ -16,7 +16,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 86)
 class Coverage {
 
 	static Future<Coverage> newInstance({
@@ -91,73 +90,39 @@ class Coverage {
 	coverageBox.put(newCoverage.id, newCoverage);
 	return newCoverage;
 }
-  @HiveField(0)
   final String resourceType= 'Coverage';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String status;
-  @HiveField(13)
   Element elementStatus;
-  @HiveField(14)
   CodeableConcept type;
-  @HiveField(15)
   Reference policyHolder;
-  @HiveField(16)
   Reference subscriber;
-  @HiveField(17)
   String subscriberId;
-  @HiveField(18)
   Element elementSubscriberId;
-  @HiveField(19)
   Reference beneficiary;
-  @HiveField(20)
   String dependent;
-  @HiveField(21)
   Element elementDependent;
-  @HiveField(22)
   CodeableConcept relationship;
-  @HiveField(23)
   Period period;
-  @HiveField(24)
   List<Reference> payor;
-  @HiveField(25)
   List<Coverage_Class> classs;
-  @HiveField(26)
   int order;
-  @HiveField(27)
   Element elementOrder;
-  @HiveField(28)
   String network;
-  @HiveField(29)
   Element elementNetwork;
-  @HiveField(30)
   List<Coverage_CostToBeneficiary> costToBeneficiary;
-  @HiveField(31)
   bool subrogation;
-  @HiveField(32)
   Element elementSubrogation;
-  @HiveField(33)
   List<Reference> contract;
 
 Coverage(
@@ -333,133 +298,6 @@ Coverage_Exception(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class CoverageAdapter extends TypeAdapter<Coverage> {
-  @override
-  final typeId = 86;
-
-  @override
-  Coverage read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Coverage(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      status: fields[12] as String,
-      elementStatus: fields[13] as Element,
-      type: fields[14] as CodeableConcept,
-      policyHolder: fields[15] as Reference,
-      subscriber: fields[16] as Reference,
-      subscriberId: fields[17] as String,
-      elementSubscriberId: fields[18] as Element,
-      beneficiary: fields[19] as Reference,
-      dependent: fields[20] as String,
-      elementDependent: fields[21] as Element,
-      relationship: fields[22] as CodeableConcept,
-      period: fields[23] as Period,
-      payor: (fields[24] as List)?.cast<Reference>(),
-      classs: (fields[25] as List)?.cast<Coverage_Class>(),
-      order: fields[26] as int,
-      elementOrder: fields[27] as Element,
-      network: fields[28] as String,
-      elementNetwork: fields[29] as Element,
-      costToBeneficiary:
-          (fields[30] as List)?.cast<Coverage_CostToBeneficiary>(),
-      subrogation: fields[31] as bool,
-      elementSubrogation: fields[32] as Element,
-      contract: (fields[33] as List)?.cast<Reference>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Coverage obj) {
-    writer
-      ..writeByte(34)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.status)
-      ..writeByte(13)
-      ..write(obj.elementStatus)
-      ..writeByte(14)
-      ..write(obj.type)
-      ..writeByte(15)
-      ..write(obj.policyHolder)
-      ..writeByte(16)
-      ..write(obj.subscriber)
-      ..writeByte(17)
-      ..write(obj.subscriberId)
-      ..writeByte(18)
-      ..write(obj.elementSubscriberId)
-      ..writeByte(19)
-      ..write(obj.beneficiary)
-      ..writeByte(20)
-      ..write(obj.dependent)
-      ..writeByte(21)
-      ..write(obj.elementDependent)
-      ..writeByte(22)
-      ..write(obj.relationship)
-      ..writeByte(23)
-      ..write(obj.period)
-      ..writeByte(24)
-      ..write(obj.payor)
-      ..writeByte(25)
-      ..write(obj.classs)
-      ..writeByte(26)
-      ..write(obj.order)
-      ..writeByte(27)
-      ..write(obj.elementOrder)
-      ..writeByte(28)
-      ..write(obj.network)
-      ..writeByte(29)
-      ..write(obj.elementNetwork)
-      ..writeByte(30)
-      ..write(obj.costToBeneficiary)
-      ..writeByte(31)
-      ..write(obj.subrogation)
-      ..writeByte(32)
-      ..write(obj.elementSubrogation)
-      ..writeByte(33)
-      ..write(obj.contract);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

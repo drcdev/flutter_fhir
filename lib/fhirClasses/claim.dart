@@ -18,7 +18,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 74)
 class Claim {
 
 	static Future<Claim> newInstance({
@@ -107,87 +106,46 @@ class Claim {
 	claimBox.put(newClaim.id, newClaim);
 	return newClaim;
 }
-  @HiveField(0)
   final String resourceType= 'Claim';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String status;
-  @HiveField(13)
   Element elementStatus;
-  @HiveField(14)
   CodeableConcept type;
-  @HiveField(15)
   CodeableConcept subType;
-  @HiveField(16)
   String use; // <code> enum: claim/preauthorization/predetermination;
-  @HiveField(17)
   Element elementUse;
-  @HiveField(18)
   Reference patient;
-  @HiveField(19)
   Period billablePeriod;
-  @HiveField(20)
   DateTime created;
-  @HiveField(21)
   Element elementCreated;
-  @HiveField(22)
   Reference enterer;
-  @HiveField(23)
   Reference insurer;
-  @HiveField(24)
   Reference provider;
-  @HiveField(25)
   CodeableConcept priority;
-  @HiveField(26)
   CodeableConcept fundsReserve;
-  @HiveField(27)
   List<Claim_Related> related;
-  @HiveField(28)
   Reference prescription;
-  @HiveField(29)
   Reference originalPrescription;
-  @HiveField(30)
   Claim_Payee payee;
-  @HiveField(31)
   Reference referral;
-  @HiveField(32)
   Reference facility;
-  @HiveField(33)
   List<Claim_CareTeam> careTeam;
-  @HiveField(34)
   List<Claim_SupportingInfo> supportingInfo;
-  @HiveField(35)
   List<Claim_Diagnosis> diagnosis;
-  @HiveField(36)
   List<Claim_Procedure> procedure;
-  @HiveField(37)
   List<Claim_Insurance> insurance;
-  @HiveField(38)
   Claim_Accident accident;
-  @HiveField(39)
   List<Claim_Item> item;
-  @HiveField(40)
   Money total;
 
 Claim(
@@ -1022,153 +980,6 @@ Claim_SubDetail(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ClaimAdapter extends TypeAdapter<Claim> {
-  @override
-  final typeId = 74;
-
-  @override
-  Claim read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Claim(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      status: fields[12] as String,
-      elementStatus: fields[13] as Element,
-      type: fields[14] as CodeableConcept,
-      subType: fields[15] as CodeableConcept,
-      use: fields[16] as String,
-      elementUse: fields[17] as Element,
-      patient: fields[18] as Reference,
-      billablePeriod: fields[19] as Period,
-      created: fields[20] as DateTime,
-      elementCreated: fields[21] as Element,
-      enterer: fields[22] as Reference,
-      insurer: fields[23] as Reference,
-      provider: fields[24] as Reference,
-      priority: fields[25] as CodeableConcept,
-      fundsReserve: fields[26] as CodeableConcept,
-      related: (fields[27] as List)?.cast<Claim_Related>(),
-      prescription: fields[28] as Reference,
-      originalPrescription: fields[29] as Reference,
-      payee: fields[30] as Claim_Payee,
-      referral: fields[31] as Reference,
-      facility: fields[32] as Reference,
-      careTeam: (fields[33] as List)?.cast<Claim_CareTeam>(),
-      supportingInfo: (fields[34] as List)?.cast<Claim_SupportingInfo>(),
-      diagnosis: (fields[35] as List)?.cast<Claim_Diagnosis>(),
-      procedure: (fields[36] as List)?.cast<Claim_Procedure>(),
-      insurance: (fields[37] as List)?.cast<Claim_Insurance>(),
-      accident: fields[38] as Claim_Accident,
-      item: (fields[39] as List)?.cast<Claim_Item>(),
-      total: fields[40] as Money,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Claim obj) {
-    writer
-      ..writeByte(41)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.status)
-      ..writeByte(13)
-      ..write(obj.elementStatus)
-      ..writeByte(14)
-      ..write(obj.type)
-      ..writeByte(15)
-      ..write(obj.subType)
-      ..writeByte(16)
-      ..write(obj.use)
-      ..writeByte(17)
-      ..write(obj.elementUse)
-      ..writeByte(18)
-      ..write(obj.patient)
-      ..writeByte(19)
-      ..write(obj.billablePeriod)
-      ..writeByte(20)
-      ..write(obj.created)
-      ..writeByte(21)
-      ..write(obj.elementCreated)
-      ..writeByte(22)
-      ..write(obj.enterer)
-      ..writeByte(23)
-      ..write(obj.insurer)
-      ..writeByte(24)
-      ..write(obj.provider)
-      ..writeByte(25)
-      ..write(obj.priority)
-      ..writeByte(26)
-      ..write(obj.fundsReserve)
-      ..writeByte(27)
-      ..write(obj.related)
-      ..writeByte(28)
-      ..write(obj.prescription)
-      ..writeByte(29)
-      ..write(obj.originalPrescription)
-      ..writeByte(30)
-      ..write(obj.payee)
-      ..writeByte(31)
-      ..write(obj.referral)
-      ..writeByte(32)
-      ..write(obj.facility)
-      ..writeByte(33)
-      ..write(obj.careTeam)
-      ..writeByte(34)
-      ..write(obj.supportingInfo)
-      ..writeByte(35)
-      ..write(obj.diagnosis)
-      ..writeByte(36)
-      ..write(obj.procedure)
-      ..writeByte(37)
-      ..write(obj.insurance)
-      ..writeByte(38)
-      ..write(obj.accident)
-      ..writeByte(39)
-      ..write(obj.item)
-      ..writeByte(40)
-      ..write(obj.total);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

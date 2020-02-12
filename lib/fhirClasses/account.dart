@@ -14,7 +14,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 56)
 class Account {
 
 	static Future<Account> newInstance({
@@ -71,55 +70,30 @@ class Account {
 	accountBox.put(newAccount.id, newAccount);
 	return newAccount;
 }
-  @HiveField(0)
   final String resourceType= 'Account';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String status; // <code> enum: active/inactive/entered-in-error/on-hold/unknown;
-  @HiveField(13)
   Element elementStatus;
-  @HiveField(14)
   CodeableConcept type;
-  @HiveField(15)
   String name;
-  @HiveField(16)
   Element elementName;
-  @HiveField(17)
   List<Reference> subject;
-  @HiveField(18)
   Period servicePeriod;
-  @HiveField(19)
   List<Account_Coverage> coverage;
-  @HiveField(20)
   Reference owner;
-  @HiveField(21)
   String description;
-  @HiveField(22)
   Element elementDescription;
-  @HiveField(23)
   List<Account_Guarantor> guarantor;
-  @HiveField(24)
   Reference partOf;
 
 Account(
@@ -241,105 +215,6 @@ Account_Guarantor(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class AccountAdapter extends TypeAdapter<Account> {
-  @override
-  final typeId = 56;
-
-  @override
-  Account read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Account(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      status: fields[12] as String,
-      elementStatus: fields[13] as Element,
-      type: fields[14] as CodeableConcept,
-      name: fields[15] as String,
-      elementName: fields[16] as Element,
-      subject: (fields[17] as List)?.cast<Reference>(),
-      servicePeriod: fields[18] as Period,
-      coverage: (fields[19] as List)?.cast<Account_Coverage>(),
-      owner: fields[20] as Reference,
-      description: fields[21] as String,
-      elementDescription: fields[22] as Element,
-      guarantor: (fields[23] as List)?.cast<Account_Guarantor>(),
-      partOf: fields[24] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Account obj) {
-    writer
-      ..writeByte(25)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.status)
-      ..writeByte(13)
-      ..write(obj.elementStatus)
-      ..writeByte(14)
-      ..write(obj.type)
-      ..writeByte(15)
-      ..write(obj.name)
-      ..writeByte(16)
-      ..write(obj.elementName)
-      ..writeByte(17)
-      ..write(obj.subject)
-      ..writeByte(18)
-      ..write(obj.servicePeriod)
-      ..writeByte(19)
-      ..write(obj.coverage)
-      ..writeByte(20)
-      ..write(obj.owner)
-      ..writeByte(21)
-      ..write(obj.description)
-      ..writeByte(22)
-      ..write(obj.elementDescription)
-      ..writeByte(23)
-      ..write(obj.guarantor)
-      ..writeByte(24)
-      ..write(obj.partOf);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

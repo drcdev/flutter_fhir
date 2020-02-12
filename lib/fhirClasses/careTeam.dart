@@ -15,7 +15,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 70)
 class CareTeam {
 
 	static Future<CareTeam> newInstance({
@@ -74,57 +73,31 @@ class CareTeam {
 	careTeamBox.put(newCareTeam.id, newCareTeam);
 	return newCareTeam;
 }
-  @HiveField(0)
   final String resourceType= 'CareTeam';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String status; // <code> enum: proposed/active/suspended/inactive/entered-in-error;
-  @HiveField(13)
   Element elementStatus;
-  @HiveField(14)
   List<CodeableConcept> category;
-  @HiveField(15)
   String name;
-  @HiveField(16)
   Element elementName;
-  @HiveField(17)
   Reference subject;
-  @HiveField(18)
   Reference encounter;
-  @HiveField(19)
   Period period;
-  @HiveField(20)
   List<CareTeam_Participant> participant;
-  @HiveField(21)
   List<CodeableConcept> reasonCode;
-  @HiveField(22)
   List<Reference> reasonReference;
-  @HiveField(23)
   List<Reference> managingOrganization;
-  @HiveField(24)
   List<ContactPoint> telecom;
-  @HiveField(25)
   List<Annotation> note;
 
 CareTeam(
@@ -206,108 +179,6 @@ CareTeam_Participant(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class CareTeamAdapter extends TypeAdapter<CareTeam> {
-  @override
-  final typeId = 70;
-
-  @override
-  CareTeam read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return CareTeam(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      status: fields[12] as String,
-      elementStatus: fields[13] as Element,
-      category: (fields[14] as List)?.cast<CodeableConcept>(),
-      name: fields[15] as String,
-      elementName: fields[16] as Element,
-      subject: fields[17] as Reference,
-      encounter: fields[18] as Reference,
-      period: fields[19] as Period,
-      participant: (fields[20] as List)?.cast<CareTeam_Participant>(),
-      reasonCode: (fields[21] as List)?.cast<CodeableConcept>(),
-      reasonReference: (fields[22] as List)?.cast<Reference>(),
-      managingOrganization: (fields[23] as List)?.cast<Reference>(),
-      telecom: (fields[24] as List)?.cast<ContactPoint>(),
-      note: (fields[25] as List)?.cast<Annotation>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, CareTeam obj) {
-    writer
-      ..writeByte(26)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.status)
-      ..writeByte(13)
-      ..write(obj.elementStatus)
-      ..writeByte(14)
-      ..write(obj.category)
-      ..writeByte(15)
-      ..write(obj.name)
-      ..writeByte(16)
-      ..write(obj.elementName)
-      ..writeByte(17)
-      ..write(obj.subject)
-      ..writeByte(18)
-      ..write(obj.encounter)
-      ..writeByte(19)
-      ..write(obj.period)
-      ..writeByte(20)
-      ..write(obj.participant)
-      ..writeByte(21)
-      ..write(obj.reasonCode)
-      ..writeByte(22)
-      ..write(obj.reasonReference)
-      ..writeByte(23)
-      ..write(obj.managingOrganization)
-      ..writeByte(24)
-      ..write(obj.telecom)
-      ..writeByte(25)
-      ..write(obj.note);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

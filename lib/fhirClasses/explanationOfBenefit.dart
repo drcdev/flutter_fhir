@@ -19,7 +19,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 108)
 class ExplanationOfBenefit {
 
 	static Future<ExplanationOfBenefit> newInstance({
@@ -148,127 +147,66 @@ class ExplanationOfBenefit {
 	explanationOfBenefitBox.put(newExplanationOfBenefit.id, newExplanationOfBenefit);
 	return newExplanationOfBenefit;
 }
-  @HiveField(0)
   final String resourceType= 'ExplanationOfBenefit';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String status; // <code> enum: active/cancelled/draft/entered-in-error;
-  @HiveField(13)
   Element elementStatus;
-  @HiveField(14)
   CodeableConcept type;
-  @HiveField(15)
   CodeableConcept subType;
-  @HiveField(16)
   String use;
-  @HiveField(17)
   Element elementUse;
-  @HiveField(18)
   Reference patient;
-  @HiveField(19)
   Period billablePeriod;
-  @HiveField(20)
   DateTime created;
-  @HiveField(21)
   Element elementCreated;
-  @HiveField(22)
   Reference enterer;
-  @HiveField(23)
   Reference insurer;
-  @HiveField(24)
   Reference provider;
-  @HiveField(25)
   CodeableConcept priority;
-  @HiveField(26)
   CodeableConcept fundsReserveRequested;
-  @HiveField(27)
   CodeableConcept fundsReserve;
-  @HiveField(28)
   List<ExplanationOfBenefit_Related> related;
-  @HiveField(29)
   Reference prescription;
-  @HiveField(30)
   Reference originalPrescription;
-  @HiveField(31)
   ExplanationOfBenefit_Payee payee;
-  @HiveField(32)
   Reference referral;
-  @HiveField(33)
   Reference facility;
-  @HiveField(34)
   Reference claim;
-  @HiveField(35)
   Reference claimResponse;
-  @HiveField(36)
   String outcome;
-  @HiveField(37)
   Element elementOutcome;
-  @HiveField(38)
   String disposition;
-  @HiveField(39)
   Element elementDisposition;
-  @HiveField(40)
   List<String> preAuthRef;
-  @HiveField(41)
   List<Element> elementPreAuthRef;
-  @HiveField(42)
   List<Period> preAuthRefPeriod;
-  @HiveField(43)
   List<ExplanationOfBenefit_CareTeam> careTeam;
-  @HiveField(44)
   List<ExplanationOfBenefit_SupportingInfo> supportingInfo;
-  @HiveField(45)
   List<ExplanationOfBenefit_Diagnosis> diagnosis;
-  @HiveField(46)
   List<ExplanationOfBenefit_Procedure> procedure;
-  @HiveField(47)
   int precedence;
-  @HiveField(48)
   Element elementPrecedence;
-  @HiveField(49)
   List<ExplanationOfBenefit_Insurance> insurance;
-  @HiveField(50)
   ExplanationOfBenefit_Accident accident;
-  @HiveField(51)
   List<ExplanationOfBenefit_Item> item;
-  @HiveField(52)
   List<ExplanationOfBenefit_AddItem> addItem;
-  @HiveField(53)
   List<ExplanationOfBenefit_Adjudication> adjudication;
-  @HiveField(54)
   List<ExplanationOfBenefit_Total> total;
-  @HiveField(55)
   ExplanationOfBenefit_Payment payment;
-  @HiveField(56)
   CodeableConcept formCode;
-  @HiveField(57)
   Attachment form;
-  @HiveField(58)
   List<ExplanationOfBenefit_ProcessNote> processNote;
-  @HiveField(59)
   Period benefitPeriod;
-  @HiveField(60)
   List<ExplanationOfBenefit_BenefitBalance> benefitBalance;
 
 ExplanationOfBenefit(
@@ -1752,217 +1690,6 @@ ExplanationOfBenefit_Financial(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ExplanationOfBenefitAdapter extends TypeAdapter<ExplanationOfBenefit> {
-  @override
-  final typeId = 108;
-
-  @override
-  ExplanationOfBenefit read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ExplanationOfBenefit(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      status: fields[12] as String,
-      elementStatus: fields[13] as Element,
-      type: fields[14] as CodeableConcept,
-      subType: fields[15] as CodeableConcept,
-      use: fields[16] as String,
-      elementUse: fields[17] as Element,
-      patient: fields[18] as Reference,
-      billablePeriod: fields[19] as Period,
-      created: fields[20] as DateTime,
-      elementCreated: fields[21] as Element,
-      enterer: fields[22] as Reference,
-      insurer: fields[23] as Reference,
-      provider: fields[24] as Reference,
-      priority: fields[25] as CodeableConcept,
-      fundsReserveRequested: fields[26] as CodeableConcept,
-      fundsReserve: fields[27] as CodeableConcept,
-      related: (fields[28] as List)?.cast<ExplanationOfBenefit_Related>(),
-      prescription: fields[29] as Reference,
-      originalPrescription: fields[30] as Reference,
-      payee: fields[31] as ExplanationOfBenefit_Payee,
-      referral: fields[32] as Reference,
-      facility: fields[33] as Reference,
-      claim: fields[34] as Reference,
-      claimResponse: fields[35] as Reference,
-      outcome: fields[36] as String,
-      elementOutcome: fields[37] as Element,
-      disposition: fields[38] as String,
-      elementDisposition: fields[39] as Element,
-      preAuthRef: (fields[40] as List)?.cast<String>(),
-      elementPreAuthRef: (fields[41] as List)?.cast<Element>(),
-      preAuthRefPeriod: (fields[42] as List)?.cast<Period>(),
-      careTeam: (fields[43] as List)?.cast<ExplanationOfBenefit_CareTeam>(),
-      supportingInfo:
-          (fields[44] as List)?.cast<ExplanationOfBenefit_SupportingInfo>(),
-      diagnosis: (fields[45] as List)?.cast<ExplanationOfBenefit_Diagnosis>(),
-      procedure: (fields[46] as List)?.cast<ExplanationOfBenefit_Procedure>(),
-      precedence: fields[47] as int,
-      elementPrecedence: fields[48] as Element,
-      insurance: (fields[49] as List)?.cast<ExplanationOfBenefit_Insurance>(),
-      accident: fields[50] as ExplanationOfBenefit_Accident,
-      item: (fields[51] as List)?.cast<ExplanationOfBenefit_Item>(),
-      addItem: (fields[52] as List)?.cast<ExplanationOfBenefit_AddItem>(),
-      adjudication:
-          (fields[53] as List)?.cast<ExplanationOfBenefit_Adjudication>(),
-      total: (fields[54] as List)?.cast<ExplanationOfBenefit_Total>(),
-      payment: fields[55] as ExplanationOfBenefit_Payment,
-      formCode: fields[56] as CodeableConcept,
-      form: fields[57] as Attachment,
-      processNote:
-          (fields[58] as List)?.cast<ExplanationOfBenefit_ProcessNote>(),
-      benefitPeriod: fields[59] as Period,
-      benefitBalance:
-          (fields[60] as List)?.cast<ExplanationOfBenefit_BenefitBalance>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ExplanationOfBenefit obj) {
-    writer
-      ..writeByte(61)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.status)
-      ..writeByte(13)
-      ..write(obj.elementStatus)
-      ..writeByte(14)
-      ..write(obj.type)
-      ..writeByte(15)
-      ..write(obj.subType)
-      ..writeByte(16)
-      ..write(obj.use)
-      ..writeByte(17)
-      ..write(obj.elementUse)
-      ..writeByte(18)
-      ..write(obj.patient)
-      ..writeByte(19)
-      ..write(obj.billablePeriod)
-      ..writeByte(20)
-      ..write(obj.created)
-      ..writeByte(21)
-      ..write(obj.elementCreated)
-      ..writeByte(22)
-      ..write(obj.enterer)
-      ..writeByte(23)
-      ..write(obj.insurer)
-      ..writeByte(24)
-      ..write(obj.provider)
-      ..writeByte(25)
-      ..write(obj.priority)
-      ..writeByte(26)
-      ..write(obj.fundsReserveRequested)
-      ..writeByte(27)
-      ..write(obj.fundsReserve)
-      ..writeByte(28)
-      ..write(obj.related)
-      ..writeByte(29)
-      ..write(obj.prescription)
-      ..writeByte(30)
-      ..write(obj.originalPrescription)
-      ..writeByte(31)
-      ..write(obj.payee)
-      ..writeByte(32)
-      ..write(obj.referral)
-      ..writeByte(33)
-      ..write(obj.facility)
-      ..writeByte(34)
-      ..write(obj.claim)
-      ..writeByte(35)
-      ..write(obj.claimResponse)
-      ..writeByte(36)
-      ..write(obj.outcome)
-      ..writeByte(37)
-      ..write(obj.elementOutcome)
-      ..writeByte(38)
-      ..write(obj.disposition)
-      ..writeByte(39)
-      ..write(obj.elementDisposition)
-      ..writeByte(40)
-      ..write(obj.preAuthRef)
-      ..writeByte(41)
-      ..write(obj.elementPreAuthRef)
-      ..writeByte(42)
-      ..write(obj.preAuthRefPeriod)
-      ..writeByte(43)
-      ..write(obj.careTeam)
-      ..writeByte(44)
-      ..write(obj.supportingInfo)
-      ..writeByte(45)
-      ..write(obj.diagnosis)
-      ..writeByte(46)
-      ..write(obj.procedure)
-      ..writeByte(47)
-      ..write(obj.precedence)
-      ..writeByte(48)
-      ..write(obj.elementPrecedence)
-      ..writeByte(49)
-      ..write(obj.insurance)
-      ..writeByte(50)
-      ..write(obj.accident)
-      ..writeByte(51)
-      ..write(obj.item)
-      ..writeByte(52)
-      ..write(obj.addItem)
-      ..writeByte(53)
-      ..write(obj.adjudication)
-      ..writeByte(54)
-      ..write(obj.total)
-      ..writeByte(55)
-      ..write(obj.payment)
-      ..writeByte(56)
-      ..write(obj.formCode)
-      ..writeByte(57)
-      ..write(obj.form)
-      ..writeByte(58)
-      ..write(obj.processNote)
-      ..writeByte(59)
-      ..write(obj.benefitPeriod)
-      ..writeByte(60)
-      ..write(obj.benefitBalance);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

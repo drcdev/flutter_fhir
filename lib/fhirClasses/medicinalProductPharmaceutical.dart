@@ -16,7 +16,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 144)
 class MedicinalProductPharmaceutical {
 
 	static Future<MedicinalProductPharmaceutical> newInstance({
@@ -59,41 +58,23 @@ class MedicinalProductPharmaceutical {
 	medicinalProductPharmaceuticalBox.put(newMedicinalProductPharmaceutical.id, newMedicinalProductPharmaceutical);
 	return newMedicinalProductPharmaceutical;
 }
-  @HiveField(0)
   final String resourceType= 'MedicinalProductPharmaceutical';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   CodeableConcept administrableDoseForm;
-  @HiveField(13)
   CodeableConcept unitOfPresentation;
-  @HiveField(14)
   List<Reference> ingredient;
-  @HiveField(15)
   List<Reference> device;
-  @HiveField(16)
   List<MedicinalProductPharmaceutical_Characteristics> characteristics;
-  @HiveField(17)
   List<MedicinalProductPharmaceutical_RouteOfAdministration> routeOfAdministration;
 
 MedicinalProductPharmaceutical(
@@ -298,87 +279,6 @@ MedicinalProductPharmaceutical_WithdrawalPeriod(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class MedicinalProductPharmaceuticalAdapter
-    extends TypeAdapter<MedicinalProductPharmaceutical> {
-  @override
-  final typeId = 144;
-
-  @override
-  MedicinalProductPharmaceutical read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProductPharmaceutical(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      administrableDoseForm: fields[12] as CodeableConcept,
-      unitOfPresentation: fields[13] as CodeableConcept,
-      ingredient: (fields[14] as List)?.cast<Reference>(),
-      device: (fields[15] as List)?.cast<Reference>(),
-      characteristics: (fields[16] as List)
-          ?.cast<MedicinalProductPharmaceutical_Characteristics>(),
-      routeOfAdministration: (fields[17] as List)
-          ?.cast<MedicinalProductPharmaceutical_RouteOfAdministration>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicinalProductPharmaceutical obj) {
-    writer
-      ..writeByte(18)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.administrableDoseForm)
-      ..writeByte(13)
-      ..write(obj.unitOfPresentation)
-      ..writeByte(14)
-      ..write(obj.ingredient)
-      ..writeByte(15)
-      ..write(obj.device)
-      ..writeByte(16)
-      ..write(obj.characteristics)
-      ..writeByte(17)
-      ..write(obj.routeOfAdministration);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

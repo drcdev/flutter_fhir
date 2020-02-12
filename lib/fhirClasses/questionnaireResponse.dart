@@ -14,7 +14,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 168)
 class QuestionnaireResponse {
 
 	static Future<QuestionnaireResponse> newInstance({
@@ -69,53 +68,29 @@ class QuestionnaireResponse {
 	questionnaireResponseBox.put(newQuestionnaireResponse.id, newQuestionnaireResponse);
 	return newQuestionnaireResponse;
 }
-  @HiveField(0)
   final String resourceType= 'QuestionnaireResponse';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   Identifier identifier;
-  @HiveField(12)
   List<Reference> basedOn;
-  @HiveField(13)
   List<Reference> partOf;
-  @HiveField(14)
   String questionnaire;
-  @HiveField(15)
   String status; // <code> enum: in-progress/completed/amended/entered-in-error/stopped;
-  @HiveField(16)
   Element elementStatus;
-  @HiveField(17)
   Reference subject;
-  @HiveField(18)
   Reference encounter;
-  @HiveField(19)
   DateTime authored;
-  @HiveField(20)
   Element elementAuthored;
-  @HiveField(21)
   Reference author;
-  @HiveField(22)
   Reference source;
-  @HiveField(23)
   List<QuestionnaireResponse_Item> item;
 
 QuestionnaireResponse(
@@ -324,102 +299,6 @@ QuestionnaireResponse_Answer(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class QuestionnaireResponseAdapter extends TypeAdapter<QuestionnaireResponse> {
-  @override
-  final typeId = 168;
-
-  @override
-  QuestionnaireResponse read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return QuestionnaireResponse(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: fields[11] as Identifier,
-      basedOn: (fields[12] as List)?.cast<Reference>(),
-      partOf: (fields[13] as List)?.cast<Reference>(),
-      questionnaire: fields[14] as String,
-      status: fields[15] as String,
-      elementStatus: fields[16] as Element,
-      subject: fields[17] as Reference,
-      encounter: fields[18] as Reference,
-      authored: fields[19] as DateTime,
-      elementAuthored: fields[20] as Element,
-      author: fields[21] as Reference,
-      source: fields[22] as Reference,
-      item: (fields[23] as List)?.cast<QuestionnaireResponse_Item>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, QuestionnaireResponse obj) {
-    writer
-      ..writeByte(24)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.basedOn)
-      ..writeByte(13)
-      ..write(obj.partOf)
-      ..writeByte(14)
-      ..write(obj.questionnaire)
-      ..writeByte(15)
-      ..write(obj.status)
-      ..writeByte(16)
-      ..write(obj.elementStatus)
-      ..writeByte(17)
-      ..write(obj.subject)
-      ..writeByte(18)
-      ..write(obj.encounter)
-      ..writeByte(19)
-      ..write(obj.authored)
-      ..writeByte(20)
-      ..write(obj.elementAuthored)
-      ..writeByte(21)
-      ..write(obj.author)
-      ..writeByte(22)
-      ..write(obj.source)
-      ..writeByte(23)
-      ..write(obj.item);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

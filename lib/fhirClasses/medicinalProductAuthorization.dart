@@ -14,7 +14,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 137)
 class MedicinalProductAuthorization {
 
 	static Future<MedicinalProductAuthorization> newInstance({
@@ -83,67 +82,36 @@ class MedicinalProductAuthorization {
 	medicinalProductAuthorizationBox.put(newMedicinalProductAuthorization.id, newMedicinalProductAuthorization);
 	return newMedicinalProductAuthorization;
 }
-  @HiveField(0)
   final String resourceType= 'MedicinalProductAuthorization';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   Reference subject;
-  @HiveField(13)
   List<CodeableConcept> country;
-  @HiveField(14)
   List<CodeableConcept> jurisdiction;
-  @HiveField(15)
   CodeableConcept status;
-  @HiveField(16)
   DateTime statusDate;
-  @HiveField(17)
   Element elementStatusDate;
-  @HiveField(18)
   DateTime restoreDate;
-  @HiveField(19)
   Element elementRestoreDate;
-  @HiveField(20)
   Period validityPeriod;
-  @HiveField(21)
   Period dataExclusivityPeriod;
-  @HiveField(22)
   DateTime dateOfFirstAuthorization;
-  @HiveField(23)
   Element elementDateOfFirstAuthorization;
-  @HiveField(24)
   DateTime internationalBirthDate;
-  @HiveField(25)
   Element elementInternationalBirthDate;
-  @HiveField(26)
   CodeableConcept legalBasis;
-  @HiveField(27)
   List<MedicinalProductAuthorization_JurisdictionalAuthorization> jurisdictionalAuthorization;
-  @HiveField(28)
   Reference holder;
-  @HiveField(29)
   Reference regulator;
-  @HiveField(30)
   MedicinalProductAuthorization_Procedure procedure;
 
 MedicinalProductAuthorization(
@@ -287,125 +255,6 @@ MedicinalProductAuthorization_Procedure(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class MedicinalProductAuthorizationAdapter
-    extends TypeAdapter<MedicinalProductAuthorization> {
-  @override
-  final typeId = 137;
-
-  @override
-  MedicinalProductAuthorization read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProductAuthorization(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      subject: fields[12] as Reference,
-      country: (fields[13] as List)?.cast<CodeableConcept>(),
-      jurisdiction: (fields[14] as List)?.cast<CodeableConcept>(),
-      status: fields[15] as CodeableConcept,
-      statusDate: fields[16] as DateTime,
-      elementStatusDate: fields[17] as Element,
-      restoreDate: fields[18] as DateTime,
-      elementRestoreDate: fields[19] as Element,
-      validityPeriod: fields[20] as Period,
-      dataExclusivityPeriod: fields[21] as Period,
-      dateOfFirstAuthorization: fields[22] as DateTime,
-      elementDateOfFirstAuthorization: fields[23] as Element,
-      internationalBirthDate: fields[24] as DateTime,
-      elementInternationalBirthDate: fields[25] as Element,
-      legalBasis: fields[26] as CodeableConcept,
-      jurisdictionalAuthorization: (fields[27] as List)
-          ?.cast<MedicinalProductAuthorization_JurisdictionalAuthorization>(),
-      holder: fields[28] as Reference,
-      regulator: fields[29] as Reference,
-      procedure: fields[30] as MedicinalProductAuthorization_Procedure,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicinalProductAuthorization obj) {
-    writer
-      ..writeByte(31)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.subject)
-      ..writeByte(13)
-      ..write(obj.country)
-      ..writeByte(14)
-      ..write(obj.jurisdiction)
-      ..writeByte(15)
-      ..write(obj.status)
-      ..writeByte(16)
-      ..write(obj.statusDate)
-      ..writeByte(17)
-      ..write(obj.elementStatusDate)
-      ..writeByte(18)
-      ..write(obj.restoreDate)
-      ..writeByte(19)
-      ..write(obj.elementRestoreDate)
-      ..writeByte(20)
-      ..write(obj.validityPeriod)
-      ..writeByte(21)
-      ..write(obj.dataExclusivityPeriod)
-      ..writeByte(22)
-      ..write(obj.dateOfFirstAuthorization)
-      ..writeByte(23)
-      ..write(obj.elementDateOfFirstAuthorization)
-      ..writeByte(24)
-      ..write(obj.internationalBirthDate)
-      ..writeByte(25)
-      ..write(obj.elementInternationalBirthDate)
-      ..writeByte(26)
-      ..write(obj.legalBasis)
-      ..writeByte(27)
-      ..write(obj.jurisdictionalAuthorization)
-      ..writeByte(28)
-      ..write(obj.holder)
-      ..writeByte(29)
-      ..write(obj.regulator)
-      ..writeByte(30)
-      ..write(obj.procedure);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

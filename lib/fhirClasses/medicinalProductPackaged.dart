@@ -17,7 +17,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 143)
 class MedicinalProductPackaged {
 
 	static Future<MedicinalProductPackaged> newInstance({
@@ -66,47 +65,26 @@ class MedicinalProductPackaged {
 	medicinalProductPackagedBox.put(newMedicinalProductPackaged.id, newMedicinalProductPackaged);
 	return newMedicinalProductPackaged;
 }
-  @HiveField(0)
   final String resourceType= 'MedicinalProductPackaged';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   List<Reference> subject;
-  @HiveField(13)
   String description;
-  @HiveField(14)
   Element elementDescription;
-  @HiveField(15)
   CodeableConcept legalStatusOfSupply;
-  @HiveField(16)
   List<MarketingStatus> marketingStatus;
-  @HiveField(17)
   Reference marketingAuthorization;
-  @HiveField(18)
   List<Reference> manufacturer;
-  @HiveField(19)
   List<MedicinalProductPackaged_BatchIdentifier> batchIdentifier;
-  @HiveField(20)
   List<MedicinalProductPackaged_PackageItem> packageItem;
 
 MedicinalProductPackaged(
@@ -252,96 +230,6 @@ MedicinalProductPackaged_PackageItem(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class MedicinalProductPackagedAdapter
-    extends TypeAdapter<MedicinalProductPackaged> {
-  @override
-  final typeId = 143;
-
-  @override
-  MedicinalProductPackaged read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProductPackaged(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      subject: (fields[12] as List)?.cast<Reference>(),
-      description: fields[13] as String,
-      elementDescription: fields[14] as Element,
-      legalStatusOfSupply: fields[15] as CodeableConcept,
-      marketingStatus: (fields[16] as List)?.cast<MarketingStatus>(),
-      marketingAuthorization: fields[17] as Reference,
-      manufacturer: (fields[18] as List)?.cast<Reference>(),
-      batchIdentifier: (fields[19] as List)
-          ?.cast<MedicinalProductPackaged_BatchIdentifier>(),
-      packageItem:
-          (fields[20] as List)?.cast<MedicinalProductPackaged_PackageItem>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicinalProductPackaged obj) {
-    writer
-      ..writeByte(21)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.subject)
-      ..writeByte(13)
-      ..write(obj.description)
-      ..writeByte(14)
-      ..write(obj.elementDescription)
-      ..writeByte(15)
-      ..write(obj.legalStatusOfSupply)
-      ..writeByte(16)
-      ..write(obj.marketingStatus)
-      ..writeByte(17)
-      ..write(obj.marketingAuthorization)
-      ..writeByte(18)
-      ..write(obj.manufacturer)
-      ..writeByte(19)
-      ..write(obj.batchIdentifier)
-      ..writeByte(20)
-      ..write(obj.packageItem);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

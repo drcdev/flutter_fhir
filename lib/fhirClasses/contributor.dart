@@ -7,7 +7,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 42)
 class Contributor {
 
 	static Future<Contributor> newInstance({
@@ -30,19 +29,12 @@ class Contributor {
 	contributorBox.put(newContributor.id, newContributor);
 	return newContributor;
 }
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   String type; // <code> enum: author/editor/reviewer/endorser;
-  @HiveField(3)
   Element elementType;
-  @HiveField(4)
   String name;
-  @HiveField(5)
   Element elementName;
-  @HiveField(6)
   List<ContactDetail> contact;
 
 Contributor(
@@ -61,52 +53,6 @@ Contributor(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ContributorAdapter extends TypeAdapter<Contributor> {
-  @override
-  final typeId = 42;
-
-  @override
-  Contributor read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Contributor(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      type: fields[2] as String,
-      elementType: fields[3] as Element,
-      name: fields[4] as String,
-      elementName: fields[5] as Element,
-      contact: (fields[6] as List)?.cast<ContactDetail>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Contributor obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.type)
-      ..writeByte(3)
-      ..write(obj.elementType)
-      ..writeByte(4)
-      ..write(obj.name)
-      ..writeByte(5)
-      ..write(obj.elementName)
-      ..writeByte(6)
-      ..write(obj.contact);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

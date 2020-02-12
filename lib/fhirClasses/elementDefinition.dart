@@ -37,7 +37,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 55)
 class ElementDefinition {
 
 	static Future<ElementDefinition> newInstance({
@@ -634,573 +633,299 @@ class ElementDefinition {
 	elementDefinitionBox.put(newElementDefinition.id, newElementDefinition);
 	return newElementDefinition;
 }
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   String path;
-  @HiveField(4)
   Element elementPath;
-  @HiveField(5)
   List<String> representation; // <code> enum: xmlAttr/xmlText/typeAttr/cdaText/xhtml> representation;
-  @HiveField(6)
   List<Element> elementRepresentation;
-  @HiveField(7)
   String sliceName;
-  @HiveField(8)
   Element elementSliceName;
-  @HiveField(9)
   bool sliceIsConstraining;
-  @HiveField(10)
   Element elementSliceIsConstraining;
-  @HiveField(11)
   String label;
-  @HiveField(12)
   Element elementLabel;
-  @HiveField(13)
   List<Coding> code;
-  @HiveField(14)
   ElementDefinition_Slicing slicing;
-  @HiveField(15)
   String short;
-  @HiveField(16)
   Element elementShort;
-  @HiveField(17)
   String definition;
-  @HiveField(18)
   Element elementDefinition;
-  @HiveField(19)
   String comment;
-  @HiveField(20)
   Element elementComment;
-  @HiveField(21)
   String requirements;
-  @HiveField(22)
   Element elementRequirements;
-  @HiveField(23)
   List<String> alias;
-  @HiveField(24)
   List<Element> elementAlias;
-  @HiveField(25)
   int min;
-  @HiveField(26)
   Element elementMin;
-  @HiveField(27)
   String max;
-  @HiveField(28)
   Element elementMax;
-  @HiveField(29)
   ElementDefinition_Base base;
-  @HiveField(30)
   String contentReference;
-  @HiveField(31)
   Element elementContentReference;
-  @HiveField(32)
   List<ElementDefinition_Type> type;
-  @HiveField(33)
   String defaultValueBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
-  @HiveField(34)
   Element elementDefaultValueBase64Binary;
-  @HiveField(35)
   bool defaultValueBoolean; //  pattern: ^true|false$
-  @HiveField(36)
   Element elementDefaultValueBoolean;
-  @HiveField(37)
   String defaultValueCanonical; //  pattern: ^\S*$
-  @HiveField(38)
   Element elementDefaultValueCanonical;
-  @HiveField(39)
   String defaultValueCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
-  @HiveField(40)
   Element elementDefaultValueCode;
-  @HiveField(41)
   String defaultValueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
-  @HiveField(42)
   Element elementDefaultValueDate;
-  @HiveField(43)
   String defaultValueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-  @HiveField(44)
   Element elementDefaultValueDateTime;
   int defaultValueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
-  @HiveField(46)
   Element elementDefaultValueDecimal;
-  @HiveField(47)
   String defaultValueId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
-  @HiveField(48)
   Element elementDefaultValueId;
-  @HiveField(49)
   String defaultValueInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
-  @HiveField(50)
   Element elementDefaultValueInstant;
   int defaultValueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
-  @HiveField(52)
   Element elementDefaultValueInteger;
-  @HiveField(53)
   String defaultValueMarkdown; //  pattern: ^[ \r\n\t\S]+$
-  @HiveField(54)
   Element elementDefaultValueMarkdown;
-  @HiveField(55)
   String defaultValueOid; //  pattern: ^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$
-  @HiveField(56)
   Element elementDefaultValueOid;
   int defaultValuePositiveInt; //  pattern: ^[1-9][0-9]*$
-  @HiveField(58)
   Element elementDefaultValuePositiveInt;
-  @HiveField(59)
   String defaultValueString; //  pattern: ^[ \r\n\t\S]+$
-  @HiveField(60)
   Element elementDefaultValueString;
-  @HiveField(61)
   String defaultValueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
-  @HiveField(62)
   Element elementDefaultValueTime;
   int defaultValueUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
-  @HiveField(64)
   Element elementDefaultValueUnsignedInt;
-  @HiveField(65)
   String defaultValueUri; //  pattern: ^\S*$
-  @HiveField(66)
   Element elementDefaultValueUri;
-  @HiveField(67)
   String defaultValueUrl; //  pattern: ^\S*$
-  @HiveField(68)
   Element elementDefaultValueUrl;
-  @HiveField(69)
   String defaultValueUuid; //  pattern: ^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
-  @HiveField(70)
   Element elementDefaultValueUuid;
-  @HiveField(71)
   Address defaultValueAddress;
-  @HiveField(72)
   Age defaultValueAge;
-  @HiveField(73)
   Annotation defaultValueAnnotation;
-  @HiveField(74)
   Attachment defaultValueAttachment;
-  @HiveField(75)
   CodeableConcept defaultValueCodeableConcept;
-  @HiveField(76)
   Coding defaultValueCoding;
-  @HiveField(77)
   ContactPoint defaultValueContactPoint;
-  @HiveField(78)
   Count defaultValueCount;
-  @HiveField(79)
   Distance defaultValueDistance;
-  @HiveField(80)
   Duration defaultValueDuration;
-  @HiveField(81)
   HumanName defaultValueHumanName;
-  @HiveField(82)
   Identifier defaultValueIdentifier;
-  @HiveField(83)
   Money defaultValueMoney;
-  @HiveField(84)
   Period defaultValuePeriod;
-  @HiveField(85)
   Quantity defaultValueQuantity;
-  @HiveField(86)
   Range defaultValueRange;
-  @HiveField(87)
   Ratio defaultValueRatio;
-  @HiveField(88)
   Reference defaultValueReference;
-  @HiveField(89)
   SampledData defaultValueSampledData;
-  @HiveField(90)
   Signature defaultValueSignature;
-  @HiveField(91)
   Timing defaultValueTiming;
-  @HiveField(92)
   ContactDetail defaultValueContactDetail;
-  @HiveField(93)
   Contributor defaultValueContributor;
-  @HiveField(94)
   DataRequirement defaultValueDataRequirement;
-  @HiveField(95)
   Expression defaultValueExpression;
-  @HiveField(96)
   ParameterDefinition defaultValueParameterDefinition;
-  @HiveField(97)
   RelatedArtifact defaultValueRelatedArtifact;
-  @HiveField(98)
   TriggerDefinition defaultValueTriggerDefinition;
-  @HiveField(99)
   UsageContext defaultValueUsageContext;
-  @HiveField(100)
   Dosage defaultValueDosage;
-  @HiveField(101)
   Meta defaultValueMeta;
-  @HiveField(102)
   String meaningWhenMissing;
-  @HiveField(103)
   Element elementMeaningWhenMissing;
-  @HiveField(104)
   String orderMeaning;
-  @HiveField(105)
   Element elementOrderMeaning;
-  @HiveField(106)
   String fixedBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
-  @HiveField(107)
   Element elementFixedBase64Binary;
-  @HiveField(108)
   bool fixedBoolean; //  pattern: ^true|false$
-  @HiveField(109)
   Element elementFixedBoolean;
-  @HiveField(110)
   String fixedCanonical; //  pattern: ^\S*$
-  @HiveField(111)
   Element elementFixedCanonical;
-  @HiveField(112)
   String fixedCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
-  @HiveField(113)
   Element elementFixedCode;
-  @HiveField(114)
   String fixedDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
-  @HiveField(115)
   Element elementFixedDate;
-  @HiveField(116)
   String fixedDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-  @HiveField(117)
   Element elementFixedDateTime;
   int fixedDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
-  @HiveField(119)
   Element elementFixedDecimal;
-  @HiveField(120)
   String fixedId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
-  @HiveField(121)
   Element elementFixedId;
-  @HiveField(122)
   String fixedInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
-  @HiveField(123)
   Element elementFixedInstant;
   int fixedInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
-  @HiveField(125)
   Element elementFixedInteger;
-  @HiveField(126)
   String fixedMarkdown; //  pattern: ^[ \r\n\t\S]+$
-  @HiveField(127)
   Element elementFixedMarkdown;
-  @HiveField(128)
   String fixedOid; //  pattern: ^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$
-  @HiveField(129)
   Element elementFixedOid;
   int fixedPositiveInt; //  pattern: ^[1-9][0-9]*$
-  @HiveField(131)
   Element elementFixedPositiveInt;
-  @HiveField(132)
   String fixedString; //  pattern: ^[ \r\n\t\S]+$
-  @HiveField(133)
   Element elementFixedString;
-  @HiveField(134)
   String fixedTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
-  @HiveField(135)
   Element elementFixedTime;
   int fixedUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
-  @HiveField(137)
   Element elementFixedUnsignedInt;
-  @HiveField(138)
   String fixedUri; //  pattern: ^\S*$
-  @HiveField(139)
   Element elementFixedUri;
-  @HiveField(140)
   String fixedUrl; //  pattern: ^\S*$
-  @HiveField(141)
   Element elementFixedUrl;
-  @HiveField(142)
   String fixedUuid; //  pattern: ^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
-  @HiveField(143)
   Element elementFixedUuid;
-  @HiveField(144)
   Address fixedAddress;
-  @HiveField(145)
   Age fixedAge;
-  @HiveField(146)
   Annotation fixedAnnotation;
-  @HiveField(147)
   Attachment fixedAttachment;
-  @HiveField(148)
   CodeableConcept fixedCodeableConcept;
-  @HiveField(149)
   Coding fixedCoding;
-  @HiveField(150)
   ContactPoint fixedContactPoint;
-  @HiveField(151)
   Count fixedCount;
-  @HiveField(152)
   Distance fixedDistance;
-  @HiveField(153)
   Duration fixedDuration;
-  @HiveField(154)
   HumanName fixedHumanName;
-  @HiveField(155)
   Identifier fixedIdentifier;
-  @HiveField(156)
   Money fixedMoney;
-  @HiveField(157)
   Period fixedPeriod;
-  @HiveField(158)
   Quantity fixedQuantity;
-  @HiveField(159)
   Range fixedRange;
-  @HiveField(160)
   Ratio fixedRatio;
-  @HiveField(161)
   Reference fixedReference;
-  @HiveField(162)
   SampledData fixedSampledData;
-  @HiveField(163)
   Signature fixedSignature;
-  @HiveField(164)
   Timing fixedTiming;
-  @HiveField(165)
   ContactDetail fixedContactDetail;
-  @HiveField(166)
   Contributor fixedContributor;
-  @HiveField(167)
   DataRequirement fixedDataRequirement;
-  @HiveField(168)
   Expression fixedExpression;
-  @HiveField(169)
   ParameterDefinition fixedParameterDefinition;
-  @HiveField(170)
   RelatedArtifact fixedRelatedArtifact;
-  @HiveField(171)
   TriggerDefinition fixedTriggerDefinition;
-  @HiveField(172)
   UsageContext fixedUsageContext;
-  @HiveField(173)
   Dosage fixedDosage;
-  @HiveField(174)
   Meta fixedMeta;
-  @HiveField(175)
   String patternBase64Binary; //  pattern: ^(\s*([0-9a-zA-Z\+/=]){4}\s*)+$
-  @HiveField(176)
   Element elementPatternBase64Binary;
-  @HiveField(177)
   bool patternBoolean; //  pattern: ^true|false$
-  @HiveField(178)
   Element elementPatternBoolean;
-  @HiveField(179)
   String patternCanonical; //  pattern: ^\S*$
-  @HiveField(180)
   Element elementPatternCanonical;
-  @HiveField(181)
   String patternCode; //  pattern: ^[^\s]+(\s[^\s]+)*$
-  @HiveField(182)
   Element elementPatternCode;
-  @HiveField(183)
   String patternDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
-  @HiveField(184)
   Element elementPatternDate;
-  @HiveField(185)
   String patternDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-  @HiveField(186)
   Element elementPatternDateTime;
   int patternDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
-  @HiveField(188)
   Element elementPatternDecimal;
-  @HiveField(189)
   String patternId; //  pattern: ^[A-Za-z0-9\-\.]{1,64}$
-  @HiveField(190)
   Element elementPatternId;
-  @HiveField(191)
   String patternInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
-  @HiveField(192)
   Element elementPatternInstant;
   int patternInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
-  @HiveField(194)
   Element elementPatternInteger;
-  @HiveField(195)
   String patternMarkdown; //  pattern: ^[ \r\n\t\S]+$
-  @HiveField(196)
   Element elementPatternMarkdown;
-  @HiveField(197)
   String patternOid; //  pattern: ^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$
-  @HiveField(198)
   Element elementPatternOid;
   int patternPositiveInt; //  pattern: ^[1-9][0-9]*$
-  @HiveField(200)
   Element elementPatternPositiveInt;
-  @HiveField(201)
   String patternString; //  pattern: ^[ \r\n\t\S]+$
-  @HiveField(202)
   Element elementPatternString;
-  @HiveField(203)
   String patternTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
-  @HiveField(204)
   Element elementPatternTime;
   int patternUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
-  @HiveField(206)
   Element elementPatternUnsignedInt;
-  @HiveField(207)
   String patternUri; //  pattern: ^\S*$
-  @HiveField(208)
   Element elementPatternUri;
-  @HiveField(209)
   String patternUrl; //  pattern: ^\S*$
-  @HiveField(210)
   Element elementPatternUrl;
-  @HiveField(211)
   String patternUuid; //  pattern: ^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
-  @HiveField(212)
   Element elementPatternUuid;
-  @HiveField(213)
   Address patternAddress;
-  @HiveField(214)
   Age patternAge;
-  @HiveField(215)
   Annotation patternAnnotation;
-  @HiveField(216)
   Attachment patternAttachment;
-  @HiveField(217)
   CodeableConcept patternCodeableConcept;
-  @HiveField(218)
   Coding patternCoding;
-  @HiveField(219)
   ContactPoint patternContactPoint;
-  @HiveField(220)
   Count patternCount;
-  @HiveField(221)
   Distance patternDistance;
-  @HiveField(222)
   Duration patternDuration;
-  @HiveField(223)
   HumanName patternHumanName;
-  @HiveField(224)
   Identifier patternIdentifier;
-  @HiveField(225)
   Money patternMoney;
-  @HiveField(226)
   Period patternPeriod;
-  @HiveField(227)
   Quantity patternQuantity;
-  @HiveField(228)
   Range patternRange;
-  @HiveField(229)
   Ratio patternRatio;
-  @HiveField(230)
   Reference patternReference;
-  @HiveField(231)
   SampledData patternSampledData;
-  @HiveField(232)
   Signature patternSignature;
-  @HiveField(233)
   Timing patternTiming;
-  @HiveField(234)
   ContactDetail patternContactDetail;
-  @HiveField(235)
   Contributor patternContributor;
-  @HiveField(236)
   DataRequirement patternDataRequirement;
-  @HiveField(237)
   Expression patternExpression;
-  @HiveField(238)
   ParameterDefinition patternParameterDefinition;
-  @HiveField(239)
   RelatedArtifact patternRelatedArtifact;
-  @HiveField(240)
   TriggerDefinition patternTriggerDefinition;
-  @HiveField(241)
   UsageContext patternUsageContext;
-  @HiveField(242)
   Dosage patternDosage;
-  @HiveField(243)
   Meta patternMeta;
-  @HiveField(244)
   List<ElementDefinition_Example> example;
-  @HiveField(245)
   String minValueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
-  @HiveField(246)
   Element elementMinValueDate;
-  @HiveField(247)
   String minValueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-  @HiveField(248)
   Element elementMinValueDateTime;
-  @HiveField(249)
   String minValueInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
-  @HiveField(250)
   Element elementMinValueInstant;
-  @HiveField(251)
   String minValueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
-  @HiveField(252)
   Element elementMinValueTime;
   int minValueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
-  @HiveField(254)
   Element elementMinValueDecimal;
   int minValueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
-  @HiveField(256)
   Element elementMinValueInteger;
   int minValuePositiveInt; //  pattern: ^[1-9][0-9]*$
-  @HiveField(258)
   Element elementMinValuePositiveInt;
   int minValueUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
-  @HiveField(260)
   Element elementMinValueUnsignedInt;
-  @HiveField(261)
   Quantity minValueQuantity;
-  @HiveField(262)
   String maxValueDate; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$
-  @HiveField(263)
   Element elementMaxValueDate;
-  @HiveField(264)
   String maxValueDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-  @HiveField(265)
   Element elementMaxValueDateTime;
-  @HiveField(266)
   String maxValueInstant; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))$
-  @HiveField(267)
   Element elementMaxValueInstant;
-  @HiveField(268)
   String maxValueTime; //  pattern: ^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?$
-  @HiveField(269)
   Element elementMaxValueTime;
   int maxValueDecimal; //  pattern: ^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$
-  @HiveField(271)
   Element elementMaxValueDecimal;
   int maxValueInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
-  @HiveField(273)
   Element elementMaxValueInteger;
   int maxValuePositiveInt; //  pattern: ^[1-9][0-9]*$
-  @HiveField(275)
   Element elementMaxValuePositiveInt;
   int maxValueUnsignedInt; //  pattern: ^[0]|([1-9][0-9]*)$
-  @HiveField(277)
   Element elementMaxValueUnsignedInt;
-  @HiveField(278)
   Quantity maxValueQuantity;
-  @HiveField(279)
   int maxLength;
-  @HiveField(280)
   Element elementMaxLength;
-  @HiveField(281)
   List<String> condition;
-  @HiveField(282)
   List<Element> elementCondition;
-  @HiveField(283)
   List<ElementDefinition_Constraint> constraint;
-  @HiveField(284)
   bool mustSupport;
-  @HiveField(285)
   Element elementMustSupport;
-  @HiveField(286)
   bool isModifier;
-  @HiveField(287)
   Element elementIsModifier;
-  @HiveField(288)
   String isModifierReason;
-  @HiveField(289)
   Element elementIsModifierReason;
-  @HiveField(290)
   bool isSummary;
-  @HiveField(291)
   Element elementIsSummary;
-  @HiveField(292)
   ElementDefinition_Binding binding;
-  @HiveField(293)
   List<ElementDefinition_Mapping> mapping;
 
 ElementDefinition(
@@ -2226,853 +1951,6 @@ ElementDefinition_Mapping(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class ElementDefinitionAdapter extends TypeAdapter<ElementDefinition> {
-  @override
-  final typeId = 55;
-
-  @override
-  ElementDefinition read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return ElementDefinition(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      path: fields[3] as String,
-      elementPath: fields[4] as Element,
-      representation: (fields[5] as List)?.cast<String>(),
-      elementRepresentation: (fields[6] as List)?.cast<Element>(),
-      sliceName: fields[7] as String,
-      elementSliceName: fields[8] as Element,
-      sliceIsConstraining: fields[9] as bool,
-      elementSliceIsConstraining: fields[10] as Element,
-      label: fields[11] as String,
-      elementLabel: fields[12] as Element,
-      code: (fields[13] as List)?.cast<Coding>(),
-      slicing: fields[14] as ElementDefinition_Slicing,
-      short: fields[15] as String,
-      elementShort: fields[16] as Element,
-      definition: fields[17] as String,
-      elementDefinition: fields[18] as Element,
-      comment: fields[19] as String,
-      elementComment: fields[20] as Element,
-      requirements: fields[21] as String,
-      elementRequirements: fields[22] as Element,
-      alias: (fields[23] as List)?.cast<String>(),
-      elementAlias: (fields[24] as List)?.cast<Element>(),
-      min: fields[25] as int,
-      elementMin: fields[26] as Element,
-      max: fields[27] as String,
-      elementMax: fields[28] as Element,
-      base: fields[29] as ElementDefinition_Base,
-      contentReference: fields[30] as String,
-      elementContentReference: fields[31] as Element,
-      type: (fields[32] as List)?.cast<ElementDefinition_Type>(),
-      defaultValueBase64Binary: fields[33] as String,
-      elementDefaultValueBase64Binary: fields[34] as Element,
-      defaultValueBoolean: fields[35] as bool,
-      elementDefaultValueBoolean: fields[36] as Element,
-      defaultValueCanonical: fields[37] as String,
-      elementDefaultValueCanonical: fields[38] as Element,
-      defaultValueCode: fields[39] as String,
-      elementDefaultValueCode: fields[40] as Element,
-      defaultValueDate: fields[41] as String,
-      elementDefaultValueDate: fields[42] as Element,
-      defaultValueDateTime: fields[43] as String,
-      elementDefaultValueDateTime: fields[44] as Element,
-      elementDefaultValueDecimal: fields[46] as Element,
-      defaultValueId: fields[47] as String,
-      elementDefaultValueId: fields[48] as Element,
-      defaultValueInstant: fields[49] as String,
-      elementDefaultValueInstant: fields[50] as Element,
-      elementDefaultValueInteger: fields[52] as Element,
-      defaultValueMarkdown: fields[53] as String,
-      elementDefaultValueMarkdown: fields[54] as Element,
-      defaultValueOid: fields[55] as String,
-      elementDefaultValueOid: fields[56] as Element,
-      elementDefaultValuePositiveInt: fields[58] as Element,
-      defaultValueString: fields[59] as String,
-      elementDefaultValueString: fields[60] as Element,
-      defaultValueTime: fields[61] as String,
-      elementDefaultValueTime: fields[62] as Element,
-      elementDefaultValueUnsignedInt: fields[64] as Element,
-      defaultValueUri: fields[65] as String,
-      elementDefaultValueUri: fields[66] as Element,
-      defaultValueUrl: fields[67] as String,
-      elementDefaultValueUrl: fields[68] as Element,
-      defaultValueUuid: fields[69] as String,
-      elementDefaultValueUuid: fields[70] as Element,
-      defaultValueAddress: fields[71] as Address,
-      defaultValueAge: fields[72] as Age,
-      defaultValueAnnotation: fields[73] as Annotation,
-      defaultValueAttachment: fields[74] as Attachment,
-      defaultValueCodeableConcept: fields[75] as CodeableConcept,
-      defaultValueCoding: fields[76] as Coding,
-      defaultValueContactPoint: fields[77] as ContactPoint,
-      defaultValueCount: fields[78] as Count,
-      defaultValueDistance: fields[79] as Distance,
-      defaultValueDuration: fields[80] as Duration,
-      defaultValueHumanName: fields[81] as HumanName,
-      defaultValueIdentifier: fields[82] as Identifier,
-      defaultValueMoney: fields[83] as Money,
-      defaultValuePeriod: fields[84] as Period,
-      defaultValueQuantity: fields[85] as Quantity,
-      defaultValueRange: fields[86] as Range,
-      defaultValueRatio: fields[87] as Ratio,
-      defaultValueReference: fields[88] as Reference,
-      defaultValueSampledData: fields[89] as SampledData,
-      defaultValueSignature: fields[90] as Signature,
-      defaultValueTiming: fields[91] as Timing,
-      defaultValueContactDetail: fields[92] as ContactDetail,
-      defaultValueContributor: fields[93] as Contributor,
-      defaultValueDataRequirement: fields[94] as DataRequirement,
-      defaultValueExpression: fields[95] as Expression,
-      defaultValueParameterDefinition: fields[96] as ParameterDefinition,
-      defaultValueRelatedArtifact: fields[97] as RelatedArtifact,
-      defaultValueTriggerDefinition: fields[98] as TriggerDefinition,
-      defaultValueUsageContext: fields[99] as UsageContext,
-      defaultValueDosage: fields[100] as Dosage,
-      defaultValueMeta: fields[101] as Meta,
-      meaningWhenMissing: fields[102] as String,
-      elementMeaningWhenMissing: fields[103] as Element,
-      orderMeaning: fields[104] as String,
-      elementOrderMeaning: fields[105] as Element,
-      fixedBase64Binary: fields[106] as String,
-      elementFixedBase64Binary: fields[107] as Element,
-      fixedBoolean: fields[108] as bool,
-      elementFixedBoolean: fields[109] as Element,
-      fixedCanonical: fields[110] as String,
-      elementFixedCanonical: fields[111] as Element,
-      fixedCode: fields[112] as String,
-      elementFixedCode: fields[113] as Element,
-      fixedDate: fields[114] as String,
-      elementFixedDate: fields[115] as Element,
-      fixedDateTime: fields[116] as String,
-      elementFixedDateTime: fields[117] as Element,
-      elementFixedDecimal: fields[119] as Element,
-      fixedId: fields[120] as String,
-      elementFixedId: fields[121] as Element,
-      fixedInstant: fields[122] as String,
-      elementFixedInstant: fields[123] as Element,
-      elementFixedInteger: fields[125] as Element,
-      fixedMarkdown: fields[126] as String,
-      elementFixedMarkdown: fields[127] as Element,
-      fixedOid: fields[128] as String,
-      elementFixedOid: fields[129] as Element,
-      elementFixedPositiveInt: fields[131] as Element,
-      fixedString: fields[132] as String,
-      elementFixedString: fields[133] as Element,
-      fixedTime: fields[134] as String,
-      elementFixedTime: fields[135] as Element,
-      elementFixedUnsignedInt: fields[137] as Element,
-      fixedUri: fields[138] as String,
-      elementFixedUri: fields[139] as Element,
-      fixedUrl: fields[140] as String,
-      elementFixedUrl: fields[141] as Element,
-      fixedUuid: fields[142] as String,
-      elementFixedUuid: fields[143] as Element,
-      fixedAddress: fields[144] as Address,
-      fixedAge: fields[145] as Age,
-      fixedAnnotation: fields[146] as Annotation,
-      fixedAttachment: fields[147] as Attachment,
-      fixedCodeableConcept: fields[148] as CodeableConcept,
-      fixedCoding: fields[149] as Coding,
-      fixedContactPoint: fields[150] as ContactPoint,
-      fixedCount: fields[151] as Count,
-      fixedDistance: fields[152] as Distance,
-      fixedDuration: fields[153] as Duration,
-      fixedHumanName: fields[154] as HumanName,
-      fixedIdentifier: fields[155] as Identifier,
-      fixedMoney: fields[156] as Money,
-      fixedPeriod: fields[157] as Period,
-      fixedQuantity: fields[158] as Quantity,
-      fixedRange: fields[159] as Range,
-      fixedRatio: fields[160] as Ratio,
-      fixedReference: fields[161] as Reference,
-      fixedSampledData: fields[162] as SampledData,
-      fixedSignature: fields[163] as Signature,
-      fixedTiming: fields[164] as Timing,
-      fixedContactDetail: fields[165] as ContactDetail,
-      fixedContributor: fields[166] as Contributor,
-      fixedDataRequirement: fields[167] as DataRequirement,
-      fixedExpression: fields[168] as Expression,
-      fixedParameterDefinition: fields[169] as ParameterDefinition,
-      fixedRelatedArtifact: fields[170] as RelatedArtifact,
-      fixedTriggerDefinition: fields[171] as TriggerDefinition,
-      fixedUsageContext: fields[172] as UsageContext,
-      fixedDosage: fields[173] as Dosage,
-      fixedMeta: fields[174] as Meta,
-      patternBase64Binary: fields[175] as String,
-      elementPatternBase64Binary: fields[176] as Element,
-      patternBoolean: fields[177] as bool,
-      elementPatternBoolean: fields[178] as Element,
-      patternCanonical: fields[179] as String,
-      elementPatternCanonical: fields[180] as Element,
-      patternCode: fields[181] as String,
-      elementPatternCode: fields[182] as Element,
-      patternDate: fields[183] as String,
-      elementPatternDate: fields[184] as Element,
-      patternDateTime: fields[185] as String,
-      elementPatternDateTime: fields[186] as Element,
-      elementPatternDecimal: fields[188] as Element,
-      patternId: fields[189] as String,
-      elementPatternId: fields[190] as Element,
-      patternInstant: fields[191] as String,
-      elementPatternInstant: fields[192] as Element,
-      elementPatternInteger: fields[194] as Element,
-      patternMarkdown: fields[195] as String,
-      elementPatternMarkdown: fields[196] as Element,
-      patternOid: fields[197] as String,
-      elementPatternOid: fields[198] as Element,
-      elementPatternPositiveInt: fields[200] as Element,
-      patternString: fields[201] as String,
-      elementPatternString: fields[202] as Element,
-      patternTime: fields[203] as String,
-      elementPatternTime: fields[204] as Element,
-      elementPatternUnsignedInt: fields[206] as Element,
-      patternUri: fields[207] as String,
-      elementPatternUri: fields[208] as Element,
-      patternUrl: fields[209] as String,
-      elementPatternUrl: fields[210] as Element,
-      patternUuid: fields[211] as String,
-      elementPatternUuid: fields[212] as Element,
-      patternAddress: fields[213] as Address,
-      patternAge: fields[214] as Age,
-      patternAnnotation: fields[215] as Annotation,
-      patternAttachment: fields[216] as Attachment,
-      patternCodeableConcept: fields[217] as CodeableConcept,
-      patternCoding: fields[218] as Coding,
-      patternContactPoint: fields[219] as ContactPoint,
-      patternCount: fields[220] as Count,
-      patternDistance: fields[221] as Distance,
-      patternDuration: fields[222] as Duration,
-      patternHumanName: fields[223] as HumanName,
-      patternIdentifier: fields[224] as Identifier,
-      patternMoney: fields[225] as Money,
-      patternPeriod: fields[226] as Period,
-      patternQuantity: fields[227] as Quantity,
-      patternRange: fields[228] as Range,
-      patternRatio: fields[229] as Ratio,
-      patternReference: fields[230] as Reference,
-      patternSampledData: fields[231] as SampledData,
-      patternSignature: fields[232] as Signature,
-      patternTiming: fields[233] as Timing,
-      patternContactDetail: fields[234] as ContactDetail,
-      patternContributor: fields[235] as Contributor,
-      patternDataRequirement: fields[236] as DataRequirement,
-      patternExpression: fields[237] as Expression,
-      patternParameterDefinition: fields[238] as ParameterDefinition,
-      patternRelatedArtifact: fields[239] as RelatedArtifact,
-      patternTriggerDefinition: fields[240] as TriggerDefinition,
-      patternUsageContext: fields[241] as UsageContext,
-      patternDosage: fields[242] as Dosage,
-      patternMeta: fields[243] as Meta,
-      example: (fields[244] as List)?.cast<ElementDefinition_Example>(),
-      minValueDate: fields[245] as String,
-      elementMinValueDate: fields[246] as Element,
-      minValueDateTime: fields[247] as String,
-      elementMinValueDateTime: fields[248] as Element,
-      minValueInstant: fields[249] as String,
-      elementMinValueInstant: fields[250] as Element,
-      minValueTime: fields[251] as String,
-      elementMinValueTime: fields[252] as Element,
-      elementMinValueDecimal: fields[254] as Element,
-      elementMinValueInteger: fields[256] as Element,
-      elementMinValuePositiveInt: fields[258] as Element,
-      elementMinValueUnsignedInt: fields[260] as Element,
-      minValueQuantity: fields[261] as Quantity,
-      maxValueDate: fields[262] as String,
-      elementMaxValueDate: fields[263] as Element,
-      maxValueDateTime: fields[264] as String,
-      elementMaxValueDateTime: fields[265] as Element,
-      maxValueInstant: fields[266] as String,
-      elementMaxValueInstant: fields[267] as Element,
-      maxValueTime: fields[268] as String,
-      elementMaxValueTime: fields[269] as Element,
-      elementMaxValueDecimal: fields[271] as Element,
-      elementMaxValueInteger: fields[273] as Element,
-      elementMaxValuePositiveInt: fields[275] as Element,
-      elementMaxValueUnsignedInt: fields[277] as Element,
-      maxValueQuantity: fields[278] as Quantity,
-      maxLength: fields[279] as int,
-      elementMaxLength: fields[280] as Element,
-      condition: (fields[281] as List)?.cast<String>(),
-      elementCondition: (fields[282] as List)?.cast<Element>(),
-      constraint: (fields[283] as List)?.cast<ElementDefinition_Constraint>(),
-      mustSupport: fields[284] as bool,
-      elementMustSupport: fields[285] as Element,
-      isModifier: fields[286] as bool,
-      elementIsModifier: fields[287] as Element,
-      isModifierReason: fields[288] as String,
-      elementIsModifierReason: fields[289] as Element,
-      isSummary: fields[290] as bool,
-      elementIsSummary: fields[291] as Element,
-      binding: fields[292] as ElementDefinition_Binding,
-      mapping: (fields[293] as List)?.cast<ElementDefinition_Mapping>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, ElementDefinition obj) {
-    writer
-      ..writeByte(274)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.path)
-      ..writeByte(4)
-      ..write(obj.elementPath)
-      ..writeByte(5)
-      ..write(obj.representation)
-      ..writeByte(6)
-      ..write(obj.elementRepresentation)
-      ..writeByte(7)
-      ..write(obj.sliceName)
-      ..writeByte(8)
-      ..write(obj.elementSliceName)
-      ..writeByte(9)
-      ..write(obj.sliceIsConstraining)
-      ..writeByte(10)
-      ..write(obj.elementSliceIsConstraining)
-      ..writeByte(11)
-      ..write(obj.label)
-      ..writeByte(12)
-      ..write(obj.elementLabel)
-      ..writeByte(13)
-      ..write(obj.code)
-      ..writeByte(14)
-      ..write(obj.slicing)
-      ..writeByte(15)
-      ..write(obj.short)
-      ..writeByte(16)
-      ..write(obj.elementShort)
-      ..writeByte(17)
-      ..write(obj.definition)
-      ..writeByte(18)
-      ..write(obj.elementDefinition)
-      ..writeByte(19)
-      ..write(obj.comment)
-      ..writeByte(20)
-      ..write(obj.elementComment)
-      ..writeByte(21)
-      ..write(obj.requirements)
-      ..writeByte(22)
-      ..write(obj.elementRequirements)
-      ..writeByte(23)
-      ..write(obj.alias)
-      ..writeByte(24)
-      ..write(obj.elementAlias)
-      ..writeByte(25)
-      ..write(obj.min)
-      ..writeByte(26)
-      ..write(obj.elementMin)
-      ..writeByte(27)
-      ..write(obj.max)
-      ..writeByte(28)
-      ..write(obj.elementMax)
-      ..writeByte(29)
-      ..write(obj.base)
-      ..writeByte(30)
-      ..write(obj.contentReference)
-      ..writeByte(31)
-      ..write(obj.elementContentReference)
-      ..writeByte(32)
-      ..write(obj.type)
-      ..writeByte(33)
-      ..write(obj.defaultValueBase64Binary)
-      ..writeByte(34)
-      ..write(obj.elementDefaultValueBase64Binary)
-      ..writeByte(35)
-      ..write(obj.defaultValueBoolean)
-      ..writeByte(36)
-      ..write(obj.elementDefaultValueBoolean)
-      ..writeByte(37)
-      ..write(obj.defaultValueCanonical)
-      ..writeByte(38)
-      ..write(obj.elementDefaultValueCanonical)
-      ..writeByte(39)
-      ..write(obj.defaultValueCode)
-      ..writeByte(40)
-      ..write(obj.elementDefaultValueCode)
-      ..writeByte(41)
-      ..write(obj.defaultValueDate)
-      ..writeByte(42)
-      ..write(obj.elementDefaultValueDate)
-      ..writeByte(43)
-      ..write(obj.defaultValueDateTime)
-      ..writeByte(44)
-      ..write(obj.elementDefaultValueDateTime)
-      ..writeByte(46)
-      ..write(obj.elementDefaultValueDecimal)
-      ..writeByte(47)
-      ..write(obj.defaultValueId)
-      ..writeByte(48)
-      ..write(obj.elementDefaultValueId)
-      ..writeByte(49)
-      ..write(obj.defaultValueInstant)
-      ..writeByte(50)
-      ..write(obj.elementDefaultValueInstant)
-      ..writeByte(52)
-      ..write(obj.elementDefaultValueInteger)
-      ..writeByte(53)
-      ..write(obj.defaultValueMarkdown)
-      ..writeByte(54)
-      ..write(obj.elementDefaultValueMarkdown)
-      ..writeByte(55)
-      ..write(obj.defaultValueOid)
-      ..writeByte(56)
-      ..write(obj.elementDefaultValueOid)
-      ..writeByte(58)
-      ..write(obj.elementDefaultValuePositiveInt)
-      ..writeByte(59)
-      ..write(obj.defaultValueString)
-      ..writeByte(60)
-      ..write(obj.elementDefaultValueString)
-      ..writeByte(61)
-      ..write(obj.defaultValueTime)
-      ..writeByte(62)
-      ..write(obj.elementDefaultValueTime)
-      ..writeByte(64)
-      ..write(obj.elementDefaultValueUnsignedInt)
-      ..writeByte(65)
-      ..write(obj.defaultValueUri)
-      ..writeByte(66)
-      ..write(obj.elementDefaultValueUri)
-      ..writeByte(67)
-      ..write(obj.defaultValueUrl)
-      ..writeByte(68)
-      ..write(obj.elementDefaultValueUrl)
-      ..writeByte(69)
-      ..write(obj.defaultValueUuid)
-      ..writeByte(70)
-      ..write(obj.elementDefaultValueUuid)
-      ..writeByte(71)
-      ..write(obj.defaultValueAddress)
-      ..writeByte(72)
-      ..write(obj.defaultValueAge)
-      ..writeByte(73)
-      ..write(obj.defaultValueAnnotation)
-      ..writeByte(74)
-      ..write(obj.defaultValueAttachment)
-      ..writeByte(75)
-      ..write(obj.defaultValueCodeableConcept)
-      ..writeByte(76)
-      ..write(obj.defaultValueCoding)
-      ..writeByte(77)
-      ..write(obj.defaultValueContactPoint)
-      ..writeByte(78)
-      ..write(obj.defaultValueCount)
-      ..writeByte(79)
-      ..write(obj.defaultValueDistance)
-      ..writeByte(80)
-      ..write(obj.defaultValueDuration)
-      ..writeByte(81)
-      ..write(obj.defaultValueHumanName)
-      ..writeByte(82)
-      ..write(obj.defaultValueIdentifier)
-      ..writeByte(83)
-      ..write(obj.defaultValueMoney)
-      ..writeByte(84)
-      ..write(obj.defaultValuePeriod)
-      ..writeByte(85)
-      ..write(obj.defaultValueQuantity)
-      ..writeByte(86)
-      ..write(obj.defaultValueRange)
-      ..writeByte(87)
-      ..write(obj.defaultValueRatio)
-      ..writeByte(88)
-      ..write(obj.defaultValueReference)
-      ..writeByte(89)
-      ..write(obj.defaultValueSampledData)
-      ..writeByte(90)
-      ..write(obj.defaultValueSignature)
-      ..writeByte(91)
-      ..write(obj.defaultValueTiming)
-      ..writeByte(92)
-      ..write(obj.defaultValueContactDetail)
-      ..writeByte(93)
-      ..write(obj.defaultValueContributor)
-      ..writeByte(94)
-      ..write(obj.defaultValueDataRequirement)
-      ..writeByte(95)
-      ..write(obj.defaultValueExpression)
-      ..writeByte(96)
-      ..write(obj.defaultValueParameterDefinition)
-      ..writeByte(97)
-      ..write(obj.defaultValueRelatedArtifact)
-      ..writeByte(98)
-      ..write(obj.defaultValueTriggerDefinition)
-      ..writeByte(99)
-      ..write(obj.defaultValueUsageContext)
-      ..writeByte(100)
-      ..write(obj.defaultValueDosage)
-      ..writeByte(101)
-      ..write(obj.defaultValueMeta)
-      ..writeByte(102)
-      ..write(obj.meaningWhenMissing)
-      ..writeByte(103)
-      ..write(obj.elementMeaningWhenMissing)
-      ..writeByte(104)
-      ..write(obj.orderMeaning)
-      ..writeByte(105)
-      ..write(obj.elementOrderMeaning)
-      ..writeByte(106)
-      ..write(obj.fixedBase64Binary)
-      ..writeByte(107)
-      ..write(obj.elementFixedBase64Binary)
-      ..writeByte(108)
-      ..write(obj.fixedBoolean)
-      ..writeByte(109)
-      ..write(obj.elementFixedBoolean)
-      ..writeByte(110)
-      ..write(obj.fixedCanonical)
-      ..writeByte(111)
-      ..write(obj.elementFixedCanonical)
-      ..writeByte(112)
-      ..write(obj.fixedCode)
-      ..writeByte(113)
-      ..write(obj.elementFixedCode)
-      ..writeByte(114)
-      ..write(obj.fixedDate)
-      ..writeByte(115)
-      ..write(obj.elementFixedDate)
-      ..writeByte(116)
-      ..write(obj.fixedDateTime)
-      ..writeByte(117)
-      ..write(obj.elementFixedDateTime)
-      ..writeByte(119)
-      ..write(obj.elementFixedDecimal)
-      ..writeByte(120)
-      ..write(obj.fixedId)
-      ..writeByte(121)
-      ..write(obj.elementFixedId)
-      ..writeByte(122)
-      ..write(obj.fixedInstant)
-      ..writeByte(123)
-      ..write(obj.elementFixedInstant)
-      ..writeByte(125)
-      ..write(obj.elementFixedInteger)
-      ..writeByte(126)
-      ..write(obj.fixedMarkdown)
-      ..writeByte(127)
-      ..write(obj.elementFixedMarkdown)
-      ..writeByte(128)
-      ..write(obj.fixedOid)
-      ..writeByte(129)
-      ..write(obj.elementFixedOid)
-      ..writeByte(131)
-      ..write(obj.elementFixedPositiveInt)
-      ..writeByte(132)
-      ..write(obj.fixedString)
-      ..writeByte(133)
-      ..write(obj.elementFixedString)
-      ..writeByte(134)
-      ..write(obj.fixedTime)
-      ..writeByte(135)
-      ..write(obj.elementFixedTime)
-      ..writeByte(137)
-      ..write(obj.elementFixedUnsignedInt)
-      ..writeByte(138)
-      ..write(obj.fixedUri)
-      ..writeByte(139)
-      ..write(obj.elementFixedUri)
-      ..writeByte(140)
-      ..write(obj.fixedUrl)
-      ..writeByte(141)
-      ..write(obj.elementFixedUrl)
-      ..writeByte(142)
-      ..write(obj.fixedUuid)
-      ..writeByte(143)
-      ..write(obj.elementFixedUuid)
-      ..writeByte(144)
-      ..write(obj.fixedAddress)
-      ..writeByte(145)
-      ..write(obj.fixedAge)
-      ..writeByte(146)
-      ..write(obj.fixedAnnotation)
-      ..writeByte(147)
-      ..write(obj.fixedAttachment)
-      ..writeByte(148)
-      ..write(obj.fixedCodeableConcept)
-      ..writeByte(149)
-      ..write(obj.fixedCoding)
-      ..writeByte(150)
-      ..write(obj.fixedContactPoint)
-      ..writeByte(151)
-      ..write(obj.fixedCount)
-      ..writeByte(152)
-      ..write(obj.fixedDistance)
-      ..writeByte(153)
-      ..write(obj.fixedDuration)
-      ..writeByte(154)
-      ..write(obj.fixedHumanName)
-      ..writeByte(155)
-      ..write(obj.fixedIdentifier)
-      ..writeByte(156)
-      ..write(obj.fixedMoney)
-      ..writeByte(157)
-      ..write(obj.fixedPeriod)
-      ..writeByte(158)
-      ..write(obj.fixedQuantity)
-      ..writeByte(159)
-      ..write(obj.fixedRange)
-      ..writeByte(160)
-      ..write(obj.fixedRatio)
-      ..writeByte(161)
-      ..write(obj.fixedReference)
-      ..writeByte(162)
-      ..write(obj.fixedSampledData)
-      ..writeByte(163)
-      ..write(obj.fixedSignature)
-      ..writeByte(164)
-      ..write(obj.fixedTiming)
-      ..writeByte(165)
-      ..write(obj.fixedContactDetail)
-      ..writeByte(166)
-      ..write(obj.fixedContributor)
-      ..writeByte(167)
-      ..write(obj.fixedDataRequirement)
-      ..writeByte(168)
-      ..write(obj.fixedExpression)
-      ..writeByte(169)
-      ..write(obj.fixedParameterDefinition)
-      ..writeByte(170)
-      ..write(obj.fixedRelatedArtifact)
-      ..writeByte(171)
-      ..write(obj.fixedTriggerDefinition)
-      ..writeByte(172)
-      ..write(obj.fixedUsageContext)
-      ..writeByte(173)
-      ..write(obj.fixedDosage)
-      ..writeByte(174)
-      ..write(obj.fixedMeta)
-      ..writeByte(175)
-      ..write(obj.patternBase64Binary)
-      ..writeByte(176)
-      ..write(obj.elementPatternBase64Binary)
-      ..writeByte(177)
-      ..write(obj.patternBoolean)
-      ..writeByte(178)
-      ..write(obj.elementPatternBoolean)
-      ..writeByte(179)
-      ..write(obj.patternCanonical)
-      ..writeByte(180)
-      ..write(obj.elementPatternCanonical)
-      ..writeByte(181)
-      ..write(obj.patternCode)
-      ..writeByte(182)
-      ..write(obj.elementPatternCode)
-      ..writeByte(183)
-      ..write(obj.patternDate)
-      ..writeByte(184)
-      ..write(obj.elementPatternDate)
-      ..writeByte(185)
-      ..write(obj.patternDateTime)
-      ..writeByte(186)
-      ..write(obj.elementPatternDateTime)
-      ..writeByte(188)
-      ..write(obj.elementPatternDecimal)
-      ..writeByte(189)
-      ..write(obj.patternId)
-      ..writeByte(190)
-      ..write(obj.elementPatternId)
-      ..writeByte(191)
-      ..write(obj.patternInstant)
-      ..writeByte(192)
-      ..write(obj.elementPatternInstant)
-      ..writeByte(194)
-      ..write(obj.elementPatternInteger)
-      ..writeByte(195)
-      ..write(obj.patternMarkdown)
-      ..writeByte(196)
-      ..write(obj.elementPatternMarkdown)
-      ..writeByte(197)
-      ..write(obj.patternOid)
-      ..writeByte(198)
-      ..write(obj.elementPatternOid)
-      ..writeByte(200)
-      ..write(obj.elementPatternPositiveInt)
-      ..writeByte(201)
-      ..write(obj.patternString)
-      ..writeByte(202)
-      ..write(obj.elementPatternString)
-      ..writeByte(203)
-      ..write(obj.patternTime)
-      ..writeByte(204)
-      ..write(obj.elementPatternTime)
-      ..writeByte(206)
-      ..write(obj.elementPatternUnsignedInt)
-      ..writeByte(207)
-      ..write(obj.patternUri)
-      ..writeByte(208)
-      ..write(obj.elementPatternUri)
-      ..writeByte(209)
-      ..write(obj.patternUrl)
-      ..writeByte(210)
-      ..write(obj.elementPatternUrl)
-      ..writeByte(211)
-      ..write(obj.patternUuid)
-      ..writeByte(212)
-      ..write(obj.elementPatternUuid)
-      ..writeByte(213)
-      ..write(obj.patternAddress)
-      ..writeByte(214)
-      ..write(obj.patternAge)
-      ..writeByte(215)
-      ..write(obj.patternAnnotation)
-      ..writeByte(216)
-      ..write(obj.patternAttachment)
-      ..writeByte(217)
-      ..write(obj.patternCodeableConcept)
-      ..writeByte(218)
-      ..write(obj.patternCoding)
-      ..writeByte(219)
-      ..write(obj.patternContactPoint)
-      ..writeByte(220)
-      ..write(obj.patternCount)
-      ..writeByte(221)
-      ..write(obj.patternDistance)
-      ..writeByte(222)
-      ..write(obj.patternDuration)
-      ..writeByte(223)
-      ..write(obj.patternHumanName)
-      ..writeByte(224)
-      ..write(obj.patternIdentifier)
-      ..writeByte(225)
-      ..write(obj.patternMoney)
-      ..writeByte(226)
-      ..write(obj.patternPeriod)
-      ..writeByte(227)
-      ..write(obj.patternQuantity)
-      ..writeByte(228)
-      ..write(obj.patternRange)
-      ..writeByte(229)
-      ..write(obj.patternRatio)
-      ..writeByte(230)
-      ..write(obj.patternReference)
-      ..writeByte(231)
-      ..write(obj.patternSampledData)
-      ..writeByte(232)
-      ..write(obj.patternSignature)
-      ..writeByte(233)
-      ..write(obj.patternTiming)
-      ..writeByte(234)
-      ..write(obj.patternContactDetail)
-      ..writeByte(235)
-      ..write(obj.patternContributor)
-      ..writeByte(236)
-      ..write(obj.patternDataRequirement)
-      ..writeByte(237)
-      ..write(obj.patternExpression)
-      ..writeByte(238)
-      ..write(obj.patternParameterDefinition)
-      ..writeByte(239)
-      ..write(obj.patternRelatedArtifact)
-      ..writeByte(240)
-      ..write(obj.patternTriggerDefinition)
-      ..writeByte(241)
-      ..write(obj.patternUsageContext)
-      ..writeByte(242)
-      ..write(obj.patternDosage)
-      ..writeByte(243)
-      ..write(obj.patternMeta)
-      ..writeByte(244)
-      ..write(obj.example)
-      ..writeByte(245)
-      ..write(obj.minValueDate)
-      ..writeByte(246)
-      ..write(obj.elementMinValueDate)
-      ..writeByte(247)
-      ..write(obj.minValueDateTime)
-      ..writeByte(248)
-      ..write(obj.elementMinValueDateTime)
-      ..writeByte(249)
-      ..write(obj.minValueInstant)
-      ..writeByte(250)
-      ..write(obj.elementMinValueInstant)
-      ..writeByte(251)
-      ..write(obj.minValueTime)
-      ..writeByte(252)
-      ..write(obj.elementMinValueTime)
-      ..writeByte(254)
-      ..write(obj.elementMinValueDecimal)
-      ..writeByte(256)
-      ..write(obj.elementMinValueInteger)
-      ..writeByte(258)
-      ..write(obj.elementMinValuePositiveInt)
-      ..writeByte(260)
-      ..write(obj.elementMinValueUnsignedInt)
-      ..writeByte(261)
-      ..write(obj.minValueQuantity)
-      ..writeByte(262)
-      ..write(obj.maxValueDate)
-      ..writeByte(263)
-      ..write(obj.elementMaxValueDate)
-      ..writeByte(264)
-      ..write(obj.maxValueDateTime)
-      ..writeByte(265)
-      ..write(obj.elementMaxValueDateTime)
-      ..writeByte(266)
-      ..write(obj.maxValueInstant)
-      ..writeByte(267)
-      ..write(obj.elementMaxValueInstant)
-      ..writeByte(268)
-      ..write(obj.maxValueTime)
-      ..writeByte(269)
-      ..write(obj.elementMaxValueTime)
-      ..writeByte(271)
-      ..write(obj.elementMaxValueDecimal)
-      ..writeByte(273)
-      ..write(obj.elementMaxValueInteger)
-      ..writeByte(275)
-      ..write(obj.elementMaxValuePositiveInt)
-      ..writeByte(277)
-      ..write(obj.elementMaxValueUnsignedInt)
-      ..writeByte(278)
-      ..write(obj.maxValueQuantity)
-      ..writeByte(279)
-      ..write(obj.maxLength)
-      ..writeByte(280)
-      ..write(obj.elementMaxLength)
-      ..writeByte(281)
-      ..write(obj.condition)
-      ..writeByte(282)
-      ..write(obj.elementCondition)
-      ..writeByte(283)
-      ..write(obj.constraint)
-      ..writeByte(284)
-      ..write(obj.mustSupport)
-      ..writeByte(285)
-      ..write(obj.elementMustSupport)
-      ..writeByte(286)
-      ..write(obj.isModifier)
-      ..writeByte(287)
-      ..write(obj.elementIsModifier)
-      ..writeByte(288)
-      ..write(obj.isModifierReason)
-      ..writeByte(289)
-      ..write(obj.elementIsModifierReason)
-      ..writeByte(290)
-      ..write(obj.isSummary)
-      ..writeByte(291)
-      ..write(obj.elementIsSummary)
-      ..writeByte(292)
-      ..write(obj.binding)
-      ..writeByte(293)
-      ..write(obj.mapping);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

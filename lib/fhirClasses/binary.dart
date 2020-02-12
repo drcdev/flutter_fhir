@@ -7,7 +7,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 64)
 class Binary {
 
 	static Future<Binary> newInstance({
@@ -38,29 +37,17 @@ class Binary {
 	binaryBox.put(newBinary.id, newBinary);
 	return newBinary;
 }
-  @HiveField(0)
   final String resourceType= 'Binary';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   String contentType;
-  @HiveField(8)
   Element elementContentType;
-  @HiveField(9)
   Reference securityContext;
-  @HiveField(10)
   String data;
-  @HiveField(11)
   Element elementData;
 
 Binary(
@@ -83,66 +70,6 @@ Binary(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class BinaryAdapter extends TypeAdapter<Binary> {
-  @override
-  final typeId = 64;
-
-  @override
-  Binary read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Binary(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      contentType: fields[7] as String,
-      elementContentType: fields[8] as Element,
-      securityContext: fields[9] as Reference,
-      data: fields[10] as String,
-      elementData: fields[11] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Binary obj) {
-    writer
-      ..writeByte(12)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.contentType)
-      ..writeByte(8)
-      ..write(obj.elementContentType)
-      ..writeByte(9)
-      ..write(obj.securityContext)
-      ..writeByte(10)
-      ..write(obj.data)
-      ..writeByte(11)
-      ..write(obj.elementData);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

@@ -13,7 +13,6 @@ os.remove('./lib/fhirClasses/classes.dart')
 
 dartCode = '' #where we will store our code
 importDict = {} #will store which other classes we will import
-HiveType = 15 #leave the first 16 hive boxes for administrative tasks
 
 # ****************************************************************************
 #iterates through the different entities in fhir.schema.json
@@ -30,26 +29,26 @@ for objects in definitions:
                                     ".g.dart';\n\n"])
                 importL = fhir.lowcc(fhir.lists(objects))
                 importDict[importL] = []
-                HiveType += 1
+                
             else:
                 importL = fhir.lowcc(fhir.lists(objects.split('_')[0]))
                 
             #add JsonSerializable code at top of Dart class
             dartCode = ''.join([dartCode, 
                                 '@JsonSerializable(explicitToJson: true)\n', 
-                                ('@HiveType(typeId: ' + str(HiveType) + ')\n') if '_' not in objects else '',
                                 'class ',
                                 fhir.lists(objects), 
                                 ' {\n'])
+            
+
             
             #Modifier description includes '\n\n' need to change it to a comment
             dartCode = dartCode.replace('\n\nModifier', '\n// Modifier')
             
             #HiveField for this paramateter
-            HiveField = 0
             properties = definitions[objects]['properties']
             dartCode = ''.join([dartCode, '\n', fhir.HiveCode(properties, objects), '\n'])
-            
+                        
             #look in the properties section of each resource to see what pattern
             #it fits and based on that, print out specific information
             for field in properties:      
@@ -70,7 +69,6 @@ for objects in definitions:
                     if('$ref' in properties[field]):
                         ref = (properties[field]['$ref']).split('/definitions/')[1]
                         dartCode = ''.join([dartCode, 
-                                            fhir.HiveField(HiveField, objects),
                                             '  ',
                                             fhir.refProperties(ref, ' ', field)
                                             ])
@@ -89,7 +87,6 @@ for objects in definitions:
                             
                         #if it's resourceType it's a final string
                         dartCode = ''.join([dartCode,
-                                            fhir.HiveField(HiveField, objects),
                                             '  ',
                                             fhir.primitiveDart(value2), 
                                             ' ', 
@@ -112,7 +109,6 @@ for objects in definitions:
                                                 '  double ' if ('decimal' or 'Decimal') in field else '  int '])
                         else:
                             dartCode = ''.join([dartCode, 
-                                            fhir.HiveField(HiveField, objects),
                                             '  ',
                                             fhir.primitiveDart(value['type']), 
                                             ' '])
@@ -133,7 +129,6 @@ for objects in definitions:
                     elif('enum' in properties[field]):
     
                         dartCode = ''.join([dartCode, 
-                                            fhir.HiveField(HiveField, objects),
                                             '  ',
                                             'String ', 
                                             fhir.rem_(field), 
@@ -148,7 +143,6 @@ for objects in definitions:
                     
                     #make the item a list since it's an array in json
                     dartCode = ''.join([dartCode,  
-                                        fhir.HiveField(HiveField, objects),
                                         '  ',
                                         'List<', 
                                         fhir.refProperties(fhir.primitiveDart(value), 
@@ -163,7 +157,6 @@ for objects in definitions:
                     
                     #make the item a list since it's an array in json
                     dartCode = ''.join([dartCode, 
-                                        fhir.HiveField(HiveField, objects),
                                         '  ',
                                         'List<String> ', 
                                         fhir.rem_(field), 
@@ -172,8 +165,7 @@ for objects in definitions:
                                         '/'.join(properties[field]['items']['enum']),
                                         '> ', 
                                         fhir.rem_(field), ';\n'])   
-                
-                HiveField += 1
+
                                       
             #add more constructor code
             dartCode = ''.join([dartCode, '\n', fhir.lists(objects), '(\n  '])

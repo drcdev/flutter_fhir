@@ -7,7 +7,6 @@ import 'package:flutter_fhir/fhirClasses/reference.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 19)
 class Annotation {
 
 	static Future<Annotation> newInstance({
@@ -34,23 +33,14 @@ class Annotation {
 	annotationBox.put(newAnnotation.id, newAnnotation);
 	return newAnnotation;
 }
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   Reference authorReference;
-  @HiveField(3)
   String authorString; //  pattern: ^[ \r\n\t\S]+$
-  @HiveField(4)
   Element elementAuthorString;
-  @HiveField(5)
   DateTime time;
-  @HiveField(6)
   Element elementTime;
-  @HiveField(7)
   String text;
-  @HiveField(8)
   Element elementText;
 
 Annotation(
@@ -71,58 +61,6 @@ Annotation(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class AnnotationAdapter extends TypeAdapter<Annotation> {
-  @override
-  final typeId = 19;
-
-  @override
-  Annotation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Annotation(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      authorReference: fields[2] as Reference,
-      authorString: fields[3] as String,
-      elementAuthorString: fields[4] as Element,
-      time: fields[5] as DateTime,
-      elementTime: fields[6] as Element,
-      text: fields[7] as String,
-      elementText: fields[8] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Annotation obj) {
-    writer
-      ..writeByte(9)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.authorReference)
-      ..writeByte(3)
-      ..write(obj.authorString)
-      ..writeByte(4)
-      ..write(obj.elementAuthorString)
-      ..writeByte(5)
-      ..write(obj.time)
-      ..writeByte(6)
-      ..write(obj.elementTime)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.elementText);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

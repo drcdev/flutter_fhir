@@ -15,7 +15,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 128)
 class MeasureReport {
 
 	static Future<MeasureReport> newInstance({
@@ -72,55 +71,30 @@ class MeasureReport {
 	measureReportBox.put(newMeasureReport.id, newMeasureReport);
 	return newMeasureReport;
 }
-  @HiveField(0)
   final String resourceType= 'MeasureReport';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String status; // <code> enum: complete/pending/error;
-  @HiveField(13)
   Element elementStatus;
-  @HiveField(14)
   String type; // <code> enum: individual/subject-list/summary/data-collection;
-  @HiveField(15)
   Element elementType;
-  @HiveField(16)
   String measure;
-  @HiveField(17)
   Reference subject;
-  @HiveField(18)
   DateTime date;
-  @HiveField(19)
   Element elementDate;
-  @HiveField(20)
   Reference reporter;
-  @HiveField(21)
   Period period;
-  @HiveField(22)
   CodeableConcept improvementNotation;
-  @HiveField(23)
   List<MeasureReport_Group> group;
-  @HiveField(24)
   List<Reference> evaluatedResource;
 
 MeasureReport(
@@ -410,105 +384,6 @@ MeasureReport_Population1(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class MeasureReportAdapter extends TypeAdapter<MeasureReport> {
-  @override
-  final typeId = 128;
-
-  @override
-  MeasureReport read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MeasureReport(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      status: fields[12] as String,
-      elementStatus: fields[13] as Element,
-      type: fields[14] as String,
-      elementType: fields[15] as Element,
-      measure: fields[16] as String,
-      subject: fields[17] as Reference,
-      date: fields[18] as DateTime,
-      elementDate: fields[19] as Element,
-      reporter: fields[20] as Reference,
-      period: fields[21] as Period,
-      improvementNotation: fields[22] as CodeableConcept,
-      group: (fields[23] as List)?.cast<MeasureReport_Group>(),
-      evaluatedResource: (fields[24] as List)?.cast<Reference>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MeasureReport obj) {
-    writer
-      ..writeByte(25)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.status)
-      ..writeByte(13)
-      ..write(obj.elementStatus)
-      ..writeByte(14)
-      ..write(obj.type)
-      ..writeByte(15)
-      ..write(obj.elementType)
-      ..writeByte(16)
-      ..write(obj.measure)
-      ..writeByte(17)
-      ..write(obj.subject)
-      ..writeByte(18)
-      ..write(obj.date)
-      ..writeByte(19)
-      ..write(obj.elementDate)
-      ..writeByte(20)
-      ..write(obj.reporter)
-      ..writeByte(21)
-      ..write(obj.period)
-      ..writeByte(22)
-      ..write(obj.improvementNotation)
-      ..writeByte(23)
-      ..write(obj.group)
-      ..writeByte(24)
-      ..write(obj.evaluatedResource);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

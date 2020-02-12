@@ -23,7 +23,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 158)
 class Patient {
 
 	static Future<Patient> newInstance({
@@ -102,76 +101,41 @@ class Patient {
 	patientBox.put(newPatient.id, newPatient);
 	return newPatient;
 }
-  @HiveField(0)
   final String resourceType= 'Patient';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   bool active;
-  @HiveField(13)
   Element elementActive;
-  @HiveField(14)
   List<HumanName> name;
-  @HiveField(15)
   List<ContactPoint> telecom;
-  @HiveField(16)
   String gender; // <code> enum: male/female/other/unknown;
-  @HiveField(17)
   Element elementGender;
-  @HiveField(18)
   String birthDate;
-  @HiveField(19)
   Element elementBirthDate;
-  @HiveField(20)
   bool deceasedBoolean; //  pattern: ^true|false$
-  @HiveField(21)
   Element elementDeceasedBoolean;
-  @HiveField(22)
   String deceasedDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-  @HiveField(23)
   Element elementDeceasedDateTime;
-  @HiveField(24)
   List<Address> address;
-  @HiveField(25)
   CodeableConcept maritalStatus;
-  @HiveField(26)
   bool multipleBirthBoolean; //  pattern: ^true|false$
-  @HiveField(27)
   Element elementMultipleBirthBoolean;
   int multipleBirthInteger; //  pattern: ^-?([0]|([1-9][0-9]*))$
-  @HiveField(29)
   Element elementMultipleBirthInteger;
-  @HiveField(30)
   List<Attachment> photo;
-  @HiveField(31)
   List<Patient_Contact> contact;
-  @HiveField(32)
   List<Patient_Communication> communication;
-  @HiveField(33)
   List<Reference> generalPractitioner;
-  @HiveField(34)
   Reference managingOrganization;
-  @HiveField(35)
   List<Patient_Link> link;
 
 Patient(
@@ -392,135 +356,6 @@ Patient_Link(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class PatientAdapter extends TypeAdapter<Patient> {
-  @override
-  final typeId = 158;
-
-  @override
-  Patient read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Patient(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      active: fields[12] as bool,
-      elementActive: fields[13] as Element,
-      name: (fields[14] as List)?.cast<HumanName>(),
-      telecom: (fields[15] as List)?.cast<ContactPoint>(),
-      gender: fields[16] as String,
-      elementGender: fields[17] as Element,
-      birthDate: fields[18] as String,
-      elementBirthDate: fields[19] as Element,
-      deceasedBoolean: fields[20] as bool,
-      elementDeceasedBoolean: fields[21] as Element,
-      deceasedDateTime: fields[22] as String,
-      elementDeceasedDateTime: fields[23] as Element,
-      address: (fields[24] as List)?.cast<Address>(),
-      maritalStatus: fields[25] as CodeableConcept,
-      multipleBirthBoolean: fields[26] as bool,
-      elementMultipleBirthBoolean: fields[27] as Element,
-      elementMultipleBirthInteger: fields[29] as Element,
-      photo: (fields[30] as List)?.cast<Attachment>(),
-      contact: (fields[31] as List)?.cast<Patient_Contact>(),
-      communication: (fields[32] as List)?.cast<Patient_Communication>(),
-      generalPractitioner: (fields[33] as List)?.cast<Reference>(),
-      managingOrganization: fields[34] as Reference,
-      link: (fields[35] as List)?.cast<Patient_Link>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Patient obj) {
-    writer
-      ..writeByte(35)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.active)
-      ..writeByte(13)
-      ..write(obj.elementActive)
-      ..writeByte(14)
-      ..write(obj.name)
-      ..writeByte(15)
-      ..write(obj.telecom)
-      ..writeByte(16)
-      ..write(obj.gender)
-      ..writeByte(17)
-      ..write(obj.elementGender)
-      ..writeByte(18)
-      ..write(obj.birthDate)
-      ..writeByte(19)
-      ..write(obj.elementBirthDate)
-      ..writeByte(20)
-      ..write(obj.deceasedBoolean)
-      ..writeByte(21)
-      ..write(obj.elementDeceasedBoolean)
-      ..writeByte(22)
-      ..write(obj.deceasedDateTime)
-      ..writeByte(23)
-      ..write(obj.elementDeceasedDateTime)
-      ..writeByte(24)
-      ..write(obj.address)
-      ..writeByte(25)
-      ..write(obj.maritalStatus)
-      ..writeByte(26)
-      ..write(obj.multipleBirthBoolean)
-      ..writeByte(27)
-      ..write(obj.elementMultipleBirthBoolean)
-      ..writeByte(29)
-      ..write(obj.elementMultipleBirthInteger)
-      ..writeByte(30)
-      ..write(obj.photo)
-      ..writeByte(31)
-      ..write(obj.contact)
-      ..writeByte(32)
-      ..write(obj.communication)
-      ..writeByte(33)
-      ..write(obj.generalPractitioner)
-      ..writeByte(34)
-      ..write(obj.managingOrganization)
-      ..writeByte(35)
-      ..write(obj.link);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

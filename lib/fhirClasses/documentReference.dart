@@ -16,7 +16,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 97)
 class DocumentReference {
 
 	static Future<DocumentReference> newInstance({
@@ -85,67 +84,36 @@ class DocumentReference {
 	documentReferenceBox.put(newDocumentReference.id, newDocumentReference);
 	return newDocumentReference;
 }
-  @HiveField(0)
   final String resourceType= 'DocumentReference';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   Identifier masterIdentifier;
-  @HiveField(12)
   List<Identifier> identifier;
-  @HiveField(13)
   String status; // <code> enum: current/superseded/entered-in-error;
-  @HiveField(14)
   Element elementStatus;
-  @HiveField(15)
   String docStatus;
-  @HiveField(16)
   Element elementDocStatus;
-  @HiveField(17)
   CodeableConcept type;
-  @HiveField(18)
   List<CodeableConcept> category;
-  @HiveField(19)
   Reference subject;
-  @HiveField(20)
   DateTime date;
-  @HiveField(21)
   Element elementDate;
-  @HiveField(22)
   List<Reference> author;
-  @HiveField(23)
   Reference authenticator;
-  @HiveField(24)
   Reference custodian;
-  @HiveField(25)
   List<DocumentReference_RelatesTo> relatesTo;
-  @HiveField(26)
   String description;
-  @HiveField(27)
   Element elementDescription;
-  @HiveField(28)
   List<CodeableConcept> securityLabel;
-  @HiveField(29)
   List<DocumentReference_Content> content;
-  @HiveField(30)
   DocumentReference_Context context;
 
 DocumentReference(
@@ -322,123 +290,6 @@ DocumentReference_Context(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class DocumentReferenceAdapter extends TypeAdapter<DocumentReference> {
-  @override
-  final typeId = 97;
-
-  @override
-  DocumentReference read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return DocumentReference(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      masterIdentifier: fields[11] as Identifier,
-      identifier: (fields[12] as List)?.cast<Identifier>(),
-      status: fields[13] as String,
-      elementStatus: fields[14] as Element,
-      docStatus: fields[15] as String,
-      elementDocStatus: fields[16] as Element,
-      type: fields[17] as CodeableConcept,
-      category: (fields[18] as List)?.cast<CodeableConcept>(),
-      subject: fields[19] as Reference,
-      date: fields[20] as DateTime,
-      elementDate: fields[21] as Element,
-      author: (fields[22] as List)?.cast<Reference>(),
-      authenticator: fields[23] as Reference,
-      custodian: fields[24] as Reference,
-      relatesTo: (fields[25] as List)?.cast<DocumentReference_RelatesTo>(),
-      description: fields[26] as String,
-      elementDescription: fields[27] as Element,
-      securityLabel: (fields[28] as List)?.cast<CodeableConcept>(),
-      content: (fields[29] as List)?.cast<DocumentReference_Content>(),
-      context: fields[30] as DocumentReference_Context,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, DocumentReference obj) {
-    writer
-      ..writeByte(31)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.masterIdentifier)
-      ..writeByte(12)
-      ..write(obj.identifier)
-      ..writeByte(13)
-      ..write(obj.status)
-      ..writeByte(14)
-      ..write(obj.elementStatus)
-      ..writeByte(15)
-      ..write(obj.docStatus)
-      ..writeByte(16)
-      ..write(obj.elementDocStatus)
-      ..writeByte(17)
-      ..write(obj.type)
-      ..writeByte(18)
-      ..write(obj.category)
-      ..writeByte(19)
-      ..write(obj.subject)
-      ..writeByte(20)
-      ..write(obj.date)
-      ..writeByte(21)
-      ..write(obj.elementDate)
-      ..writeByte(22)
-      ..write(obj.author)
-      ..writeByte(23)
-      ..write(obj.authenticator)
-      ..writeByte(24)
-      ..write(obj.custodian)
-      ..writeByte(25)
-      ..write(obj.relatesTo)
-      ..writeByte(26)
-      ..write(obj.description)
-      ..writeByte(27)
-      ..write(obj.elementDescription)
-      ..writeByte(28)
-      ..write(obj.securityLabel)
-      ..writeByte(29)
-      ..write(obj.content)
-      ..writeByte(30)
-      ..write(obj.context);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

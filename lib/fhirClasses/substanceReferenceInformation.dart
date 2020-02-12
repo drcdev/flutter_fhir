@@ -14,7 +14,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 190)
 class SubstanceReferenceInformation {
 
 	static Future<SubstanceReferenceInformation> newInstance({
@@ -55,39 +54,22 @@ class SubstanceReferenceInformation {
 	substanceReferenceInformationBox.put(newSubstanceReferenceInformation.id, newSubstanceReferenceInformation);
 	return newSubstanceReferenceInformation;
 }
-  @HiveField(0)
   final String resourceType= 'SubstanceReferenceInformation';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   String comment;
-  @HiveField(12)
   Element elementComment;
-  @HiveField(13)
   List<SubstanceReferenceInformation_Gene> gene;
-  @HiveField(14)
   List<SubstanceReferenceInformation_GeneElement> geneElement;
-  @HiveField(15)
   List<SubstanceReferenceInformation_Classification> classification;
-  @HiveField(16)
   List<SubstanceReferenceInformation_Target> target;
 
 SubstanceReferenceInformation(
@@ -315,85 +297,6 @@ SubstanceReferenceInformation_Target(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class SubstanceReferenceInformationAdapter
-    extends TypeAdapter<SubstanceReferenceInformation> {
-  @override
-  final typeId = 190;
-
-  @override
-  SubstanceReferenceInformation read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SubstanceReferenceInformation(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      comment: fields[11] as String,
-      elementComment: fields[12] as Element,
-      gene: (fields[13] as List)?.cast<SubstanceReferenceInformation_Gene>(),
-      geneElement: (fields[14] as List)
-          ?.cast<SubstanceReferenceInformation_GeneElement>(),
-      classification: (fields[15] as List)
-          ?.cast<SubstanceReferenceInformation_Classification>(),
-      target:
-          (fields[16] as List)?.cast<SubstanceReferenceInformation_Target>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SubstanceReferenceInformation obj) {
-    writer
-      ..writeByte(17)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.comment)
-      ..writeByte(12)
-      ..write(obj.elementComment)
-      ..writeByte(13)
-      ..write(obj.gene)
-      ..writeByte(14)
-      ..write(obj.geneElement)
-      ..writeByte(15)
-      ..write(obj.classification)
-      ..writeByte(16)
-      ..write(obj.target);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

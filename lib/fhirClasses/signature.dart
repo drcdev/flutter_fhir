@@ -9,7 +9,6 @@ import 'package:flutter_fhir/fhirClasses/coding.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 35)
 class Signature {
 
 	static Future<Signature> newInstance({
@@ -44,31 +43,18 @@ class Signature {
 	signatureBox.put(newSignature.id, newSignature);
 	return newSignature;
 }
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Coding> type;
-  @HiveField(3)
   DateTime when;
-  @HiveField(4)
   Element elementWhen;
-  @HiveField(5)
   Reference who;
-  @HiveField(6)
   Reference onBehalfOf;
-  @HiveField(7)
   String targetFormat;
-  @HiveField(8)
   Element elementTargetFormat;
-  @HiveField(9)
   String sigFormat;
-  @HiveField(10)
   Element elementSigFormat;
-  @HiveField(11)
   String data;
-  @HiveField(12)
   Element elementData;
 
 Signature(
@@ -93,70 +79,6 @@ Signature(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class SignatureAdapter extends TypeAdapter<Signature> {
-  @override
-  final typeId = 35;
-
-  @override
-  Signature read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Signature(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      type: (fields[2] as List)?.cast<Coding>(),
-      when: fields[3] as DateTime,
-      elementWhen: fields[4] as Element,
-      who: fields[5] as Reference,
-      onBehalfOf: fields[6] as Reference,
-      targetFormat: fields[7] as String,
-      elementTargetFormat: fields[8] as Element,
-      sigFormat: fields[9] as String,
-      elementSigFormat: fields[10] as Element,
-      data: fields[11] as String,
-      elementData: fields[12] as Element,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Signature obj) {
-    writer
-      ..writeByte(13)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.type)
-      ..writeByte(3)
-      ..write(obj.when)
-      ..writeByte(4)
-      ..write(obj.elementWhen)
-      ..writeByte(5)
-      ..write(obj.who)
-      ..writeByte(6)
-      ..write(obj.onBehalfOf)
-      ..writeByte(7)
-      ..write(obj.targetFormat)
-      ..writeByte(8)
-      ..write(obj.elementTargetFormat)
-      ..writeByte(9)
-      ..write(obj.sigFormat)
-      ..writeByte(10)
-      ..write(obj.elementSigFormat)
-      ..writeByte(11)
-      ..write(obj.data)
-      ..writeByte(12)
-      ..write(obj.elementData);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

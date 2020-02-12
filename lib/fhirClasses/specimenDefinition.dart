@@ -15,7 +15,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 182)
 class SpecimenDefinition {
 
 	static Future<SpecimenDefinition> newInstance({
@@ -58,41 +57,23 @@ class SpecimenDefinition {
 	specimenDefinitionBox.put(newSpecimenDefinition.id, newSpecimenDefinition);
 	return newSpecimenDefinition;
 }
-  @HiveField(0)
   final String resourceType= 'SpecimenDefinition';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   Identifier identifier;
-  @HiveField(12)
   CodeableConcept typeCollected;
-  @HiveField(13)
   List<CodeableConcept> patientPreparation;
-  @HiveField(14)
   String timeAspect;
-  @HiveField(15)
   Element elementTimeAspect;
-  @HiveField(16)
   List<CodeableConcept> collection;
-  @HiveField(17)
   List<SpecimenDefinition_TypeTested> typeTested;
 
 SpecimenDefinition(
@@ -357,84 +338,6 @@ SpecimenDefinition_Handling(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class SpecimenDefinitionAdapter extends TypeAdapter<SpecimenDefinition> {
-  @override
-  final typeId = 182;
-
-  @override
-  SpecimenDefinition read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SpecimenDefinition(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: fields[11] as Identifier,
-      typeCollected: fields[12] as CodeableConcept,
-      patientPreparation: (fields[13] as List)?.cast<CodeableConcept>(),
-      timeAspect: fields[14] as String,
-      elementTimeAspect: fields[15] as Element,
-      collection: (fields[16] as List)?.cast<CodeableConcept>(),
-      typeTested: (fields[17] as List)?.cast<SpecimenDefinition_TypeTested>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SpecimenDefinition obj) {
-    writer
-      ..writeByte(18)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.typeCollected)
-      ..writeByte(13)
-      ..write(obj.patientPreparation)
-      ..writeByte(14)
-      ..write(obj.timeAspect)
-      ..writeByte(15)
-      ..write(obj.elementTimeAspect)
-      ..writeByte(16)
-      ..write(obj.collection)
-      ..writeByte(17)
-      ..write(obj.typeTested);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

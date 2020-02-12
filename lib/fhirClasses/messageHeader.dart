@@ -14,7 +14,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 147)
 class MessageHeader {
 
 	static Future<MessageHeader> newInstance({
@@ -69,53 +68,29 @@ class MessageHeader {
 	messageHeaderBox.put(newMessageHeader.id, newMessageHeader);
 	return newMessageHeader;
 }
-  @HiveField(0)
   final String resourceType= 'MessageHeader';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   Coding eventCoding;
-  @HiveField(12)
   String eventUri; //  pattern: ^\S*$
-  @HiveField(13)
   Element elementEventUri;
-  @HiveField(14)
   List<MessageHeader_Destination> destination;
-  @HiveField(15)
   Reference sender;
-  @HiveField(16)
   Reference enterer;
-  @HiveField(17)
   Reference author;
-  @HiveField(18)
   MessageHeader_Source source;
-  @HiveField(19)
   Reference responsible;
-  @HiveField(20)
   CodeableConcept reason;
-  @HiveField(21)
   MessageHeader_Response response;
-  @HiveField(22)
   List<Reference> focus;
-  @HiveField(23)
   String definition;
 
 MessageHeader(
@@ -317,102 +292,6 @@ MessageHeader_Response(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class MessageHeaderAdapter extends TypeAdapter<MessageHeader> {
-  @override
-  final typeId = 147;
-
-  @override
-  MessageHeader read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MessageHeader(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      eventCoding: fields[11] as Coding,
-      eventUri: fields[12] as String,
-      elementEventUri: fields[13] as Element,
-      destination: (fields[14] as List)?.cast<MessageHeader_Destination>(),
-      sender: fields[15] as Reference,
-      enterer: fields[16] as Reference,
-      author: fields[17] as Reference,
-      source: fields[18] as MessageHeader_Source,
-      responsible: fields[19] as Reference,
-      reason: fields[20] as CodeableConcept,
-      response: fields[21] as MessageHeader_Response,
-      focus: (fields[22] as List)?.cast<Reference>(),
-      definition: fields[23] as String,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MessageHeader obj) {
-    writer
-      ..writeByte(24)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.eventCoding)
-      ..writeByte(12)
-      ..write(obj.eventUri)
-      ..writeByte(13)
-      ..write(obj.elementEventUri)
-      ..writeByte(14)
-      ..write(obj.destination)
-      ..writeByte(15)
-      ..write(obj.sender)
-      ..writeByte(16)
-      ..write(obj.enterer)
-      ..writeByte(17)
-      ..write(obj.author)
-      ..writeByte(18)
-      ..write(obj.source)
-      ..writeByte(19)
-      ..write(obj.responsible)
-      ..writeByte(20)
-      ..write(obj.reason)
-      ..writeByte(21)
-      ..write(obj.response)
-      ..writeByte(22)
-      ..write(obj.focus)
-      ..writeByte(23)
-      ..write(obj.definition);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

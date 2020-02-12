@@ -7,7 +7,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 40)
 class Meta {
 
 	static Future<Meta> newInstance({
@@ -38,27 +37,16 @@ class Meta {
 	metaBox.put(newMeta.id, newMeta);
 	return newMeta;
 }
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   String versionId;
-  @HiveField(3)
   Element elementVersionId;
-  @HiveField(4)
   DateTime lastUpdated;
-  @HiveField(5)
   Element elementLastUpdated;
-  @HiveField(6)
   String source;
-  @HiveField(7)
   Element elementSource;
-  @HiveField(8)
   List<String> profile;
-  @HiveField(9)
   List<Coding> security;
-  @HiveField(10)
   List<Coding> tag;
 
 Meta(
@@ -81,64 +69,6 @@ Meta(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class MetaAdapter extends TypeAdapter<Meta> {
-  @override
-  final typeId = 40;
-
-  @override
-  Meta read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Meta(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      versionId: fields[2] as String,
-      elementVersionId: fields[3] as Element,
-      lastUpdated: fields[4] as DateTime,
-      elementLastUpdated: fields[5] as Element,
-      source: fields[6] as String,
-      elementSource: fields[7] as Element,
-      profile: (fields[8] as List)?.cast<String>(),
-      security: (fields[9] as List)?.cast<Coding>(),
-      tag: (fields[10] as List)?.cast<Coding>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Meta obj) {
-    writer
-      ..writeByte(11)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.versionId)
-      ..writeByte(3)
-      ..write(obj.elementVersionId)
-      ..writeByte(4)
-      ..write(obj.lastUpdated)
-      ..writeByte(5)
-      ..write(obj.elementLastUpdated)
-      ..writeByte(6)
-      ..write(obj.source)
-      ..writeByte(7)
-      ..write(obj.elementSource)
-      ..writeByte(8)
-      ..write(obj.profile)
-      ..writeByte(9)
-      ..write(obj.security)
-      ..writeByte(10)
-      ..write(obj.tag);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

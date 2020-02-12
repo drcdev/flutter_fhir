@@ -10,7 +10,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/extension.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 39)
 class Timing {
 
 	static Future<Timing> newInstance({
@@ -33,19 +32,12 @@ class Timing {
 	timingBox.put(newTiming.id, newTiming);
 	return newTiming;
 }
-  @HiveField(0)
   String id;
-  @HiveField(1)
   List<Extension> extension;
-  @HiveField(2)
   List<Extension> modifierExtension;
-  @HiveField(3)
   List<DateTime> event;
-  @HiveField(4)
   List<Element> elementEvent;
-  @HiveField(5)
   Timing_Repeat repeat;
-  @HiveField(6)
   CodeableConcept code;
 
 Timing(
@@ -217,52 +209,6 @@ Timing_Repeat(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class TimingAdapter extends TypeAdapter<Timing> {
-  @override
-  final typeId = 39;
-
-  @override
-  Timing read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return Timing(
-      id: fields[0] as String,
-      extension: (fields[1] as List)?.cast<Extension>(),
-      modifierExtension: (fields[2] as List)?.cast<Extension>(),
-      event: (fields[3] as List)?.cast<DateTime>(),
-      elementEvent: (fields[4] as List)?.cast<Element>(),
-      repeat: fields[5] as Timing_Repeat,
-      code: fields[6] as CodeableConcept,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, Timing obj) {
-    writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.extension)
-      ..writeByte(2)
-      ..write(obj.modifierExtension)
-      ..writeByte(3)
-      ..write(obj.event)
-      ..writeByte(4)
-      ..write(obj.elementEvent)
-      ..writeByte(5)
-      ..write(obj.repeat)
-      ..writeByte(6)
-      ..write(obj.code);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

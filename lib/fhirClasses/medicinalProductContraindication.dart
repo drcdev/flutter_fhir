@@ -13,7 +13,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 138)
 class MedicinalProductContraindication {
 
 	static Future<MedicinalProductContraindication> newInstance({
@@ -56,41 +55,23 @@ class MedicinalProductContraindication {
 	medicinalProductContraindicationBox.put(newMedicinalProductContraindication.id, newMedicinalProductContraindication);
 	return newMedicinalProductContraindication;
 }
-  @HiveField(0)
   final String resourceType= 'MedicinalProductContraindication';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Reference> subject;
-  @HiveField(12)
   CodeableConcept disease;
-  @HiveField(13)
   CodeableConcept diseaseStatus;
-  @HiveField(14)
   List<CodeableConcept> comorbidity;
-  @HiveField(15)
   List<Reference> therapeuticIndication;
-  @HiveField(16)
   List<MedicinalProductContraindication_OtherTherapy> otherTherapy;
-  @HiveField(17)
   List<Population> population;
 
 MedicinalProductContraindication(
@@ -160,86 +141,6 @@ MedicinalProductContraindication_OtherTherapy(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class MedicinalProductContraindicationAdapter
-    extends TypeAdapter<MedicinalProductContraindication> {
-  @override
-  final typeId = 138;
-
-  @override
-  MedicinalProductContraindication read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return MedicinalProductContraindication(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      subject: (fields[11] as List)?.cast<Reference>(),
-      disease: fields[12] as CodeableConcept,
-      diseaseStatus: fields[13] as CodeableConcept,
-      comorbidity: (fields[14] as List)?.cast<CodeableConcept>(),
-      therapeuticIndication: (fields[15] as List)?.cast<Reference>(),
-      otherTherapy: (fields[16] as List)
-          ?.cast<MedicinalProductContraindication_OtherTherapy>(),
-      population: (fields[17] as List)?.cast<Population>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, MedicinalProductContraindication obj) {
-    writer
-      ..writeByte(18)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.subject)
-      ..writeByte(12)
-      ..write(obj.disease)
-      ..writeByte(13)
-      ..write(obj.diseaseStatus)
-      ..writeByte(14)
-      ..write(obj.comorbidity)
-      ..writeByte(15)
-      ..write(obj.therapeuticIndication)
-      ..writeByte(16)
-      ..write(obj.otherTherapy)
-      ..writeByte(17)
-      ..write(obj.population);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

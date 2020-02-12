@@ -17,7 +17,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 194)
 class SupplyRequest {
 
 	static Future<SupplyRequest> newInstance({
@@ -90,71 +89,38 @@ class SupplyRequest {
 	supplyRequestBox.put(newSupplyRequest.id, newSupplyRequest);
 	return newSupplyRequest;
 }
-  @HiveField(0)
   final String resourceType= 'SupplyRequest';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   List<Identifier> identifier;
-  @HiveField(12)
   String status; // <code> enum: draft/active/suspended/cancelled/completed/entered-in-error/unknown;
-  @HiveField(13)
   Element elementStatus;
-  @HiveField(14)
   CodeableConcept category;
-  @HiveField(15)
   String priority;
-  @HiveField(16)
   Element elementPriority;
-  @HiveField(17)
   CodeableConcept itemCodeableConcept;
-  @HiveField(18)
   Reference itemReference;
-  @HiveField(19)
   Quantity quantity;
-  @HiveField(20)
   List<SupplyRequest_Parameter> parameter;
-  @HiveField(21)
   String occurrenceDateTime; //  pattern: ^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$
-  @HiveField(22)
   Element elementOccurrenceDateTime;
-  @HiveField(23)
   Period occurrencePeriod;
-  @HiveField(24)
   Timing occurrenceTiming;
-  @HiveField(25)
   DateTime authoredOn;
-  @HiveField(26)
   Element elementAuthoredOn;
-  @HiveField(27)
   Reference requester;
-  @HiveField(28)
   List<Reference> supplier;
-  @HiveField(29)
   List<CodeableConcept> reasonCode;
-  @HiveField(30)
   List<Reference> reasonReference;
-  @HiveField(31)
   Reference deliverFrom;
-  @HiveField(32)
   Reference deliverTo;
 
 SupplyRequest(
@@ -251,129 +217,6 @@ SupplyRequest_Parameter(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class SupplyRequestAdapter extends TypeAdapter<SupplyRequest> {
-  @override
-  final typeId = 194;
-
-  @override
-  SupplyRequest read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return SupplyRequest(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      identifier: (fields[11] as List)?.cast<Identifier>(),
-      status: fields[12] as String,
-      elementStatus: fields[13] as Element,
-      category: fields[14] as CodeableConcept,
-      priority: fields[15] as String,
-      elementPriority: fields[16] as Element,
-      itemCodeableConcept: fields[17] as CodeableConcept,
-      itemReference: fields[18] as Reference,
-      quantity: fields[19] as Quantity,
-      parameter: (fields[20] as List)?.cast<SupplyRequest_Parameter>(),
-      occurrenceDateTime: fields[21] as String,
-      elementOccurrenceDateTime: fields[22] as Element,
-      occurrencePeriod: fields[23] as Period,
-      occurrenceTiming: fields[24] as Timing,
-      authoredOn: fields[25] as DateTime,
-      elementAuthoredOn: fields[26] as Element,
-      requester: fields[27] as Reference,
-      supplier: (fields[28] as List)?.cast<Reference>(),
-      reasonCode: (fields[29] as List)?.cast<CodeableConcept>(),
-      reasonReference: (fields[30] as List)?.cast<Reference>(),
-      deliverFrom: fields[31] as Reference,
-      deliverTo: fields[32] as Reference,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, SupplyRequest obj) {
-    writer
-      ..writeByte(33)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.identifier)
-      ..writeByte(12)
-      ..write(obj.status)
-      ..writeByte(13)
-      ..write(obj.elementStatus)
-      ..writeByte(14)
-      ..write(obj.category)
-      ..writeByte(15)
-      ..write(obj.priority)
-      ..writeByte(16)
-      ..write(obj.elementPriority)
-      ..writeByte(17)
-      ..write(obj.itemCodeableConcept)
-      ..writeByte(18)
-      ..write(obj.itemReference)
-      ..writeByte(19)
-      ..write(obj.quantity)
-      ..writeByte(20)
-      ..write(obj.parameter)
-      ..writeByte(21)
-      ..write(obj.occurrenceDateTime)
-      ..writeByte(22)
-      ..write(obj.elementOccurrenceDateTime)
-      ..writeByte(23)
-      ..write(obj.occurrencePeriod)
-      ..writeByte(24)
-      ..write(obj.occurrenceTiming)
-      ..writeByte(25)
-      ..write(obj.authoredOn)
-      ..writeByte(26)
-      ..write(obj.elementAuthoredOn)
-      ..writeByte(27)
-      ..write(obj.requester)
-      ..writeByte(28)
-      ..write(obj.supplier)
-      ..writeByte(29)
-      ..write(obj.reasonCode)
-      ..writeByte(30)
-      ..write(obj.reasonReference)
-      ..writeByte(31)
-      ..write(obj.deliverFrom)
-      ..writeByte(32)
-      ..write(obj.deliverTo);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************

@@ -13,7 +13,6 @@ import 'package:flutter_fhir/fhirClasses/element.dart';
 import 'package:flutter_fhir/fhirClasses/meta.dart';
 
 @JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 153)
 class OperationDefinition {
 
 	static Future<OperationDefinition> newInstance({
@@ -130,115 +129,60 @@ class OperationDefinition {
 	operationDefinitionBox.put(newOperationDefinition.id, newOperationDefinition);
 	return newOperationDefinition;
 }
-  @HiveField(0)
   final String resourceType= 'OperationDefinition';
-  @HiveField(1)
   String id;
-  @HiveField(2)
   Meta meta;
-  @HiveField(3)
   String implicitRules;
-  @HiveField(4)
   Element elementImplicitRules;
-  @HiveField(5)
   String language;
-  @HiveField(6)
   Element elementLanguage;
-  @HiveField(7)
   Narrative text;
-  @HiveField(8)
   List<dynamic> contained;
-  @HiveField(9)
   List<Extension> extension;
-  @HiveField(10)
   List<Extension> modifierExtension;
-  @HiveField(11)
   String url;
-  @HiveField(12)
   Element elementUrl;
-  @HiveField(13)
   String version;
-  @HiveField(14)
   Element elementVersion;
-  @HiveField(15)
   String name;
-  @HiveField(16)
   Element elementName;
-  @HiveField(17)
   String title;
-  @HiveField(18)
   Element elementTitle;
-  @HiveField(19)
   String status; // <code> enum: draft/active/retired/unknown;
-  @HiveField(20)
   Element elementStatus;
-  @HiveField(21)
   String kind; // <code> enum: operation/query;
-  @HiveField(22)
   Element elementKind;
-  @HiveField(23)
   bool experimental;
-  @HiveField(24)
   Element elementExperimental;
-  @HiveField(25)
   DateTime date;
-  @HiveField(26)
   Element elementDate;
-  @HiveField(27)
   String publisher;
-  @HiveField(28)
   Element elementPublisher;
-  @HiveField(29)
   List<ContactDetail> contact;
-  @HiveField(30)
   String description;
-  @HiveField(31)
   Element elementDescription;
-  @HiveField(32)
   List<UsageContext> useContext;
-  @HiveField(33)
   List<CodeableConcept> jurisdiction;
-  @HiveField(34)
   String purpose;
-  @HiveField(35)
   Element elementPurpose;
-  @HiveField(36)
   bool affectsState;
-  @HiveField(37)
   Element elementAffectsState;
-  @HiveField(38)
   String code;
-  @HiveField(39)
   Element elementCode;
-  @HiveField(40)
   String comment;
-  @HiveField(41)
   Element elementComment;
-  @HiveField(42)
   String base;
-  @HiveField(43)
   List<String> resource;
-  @HiveField(44)
   List<Element> elementResource;
-  @HiveField(45)
   bool system;
-  @HiveField(46)
   Element elementSystem;
-  @HiveField(47)
   bool type;
-  @HiveField(48)
   Element elementType;
-  @HiveField(49)
   bool instance;
-  @HiveField(50)
   Element elementInstance;
-  @HiveField(51)
   String inputProfile;
-  @HiveField(52)
   String outputProfile;
-  @HiveField(53)
   List<OperationDefinition_Parameter> parameter;
-  @HiveField(54)
   List<OperationDefinition_Overload> overload;
 
 OperationDefinition(
@@ -536,195 +480,6 @@ OperationDefinition_Overload(
 
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class OperationDefinitionAdapter extends TypeAdapter<OperationDefinition> {
-  @override
-  final typeId = 153;
-
-  @override
-  OperationDefinition read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
-      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return OperationDefinition(
-      id: fields[1] as String,
-      meta: fields[2] as Meta,
-      implicitRules: fields[3] as String,
-      elementImplicitRules: fields[4] as Element,
-      language: fields[5] as String,
-      elementLanguage: fields[6] as Element,
-      text: fields[7] as Narrative,
-      contained: (fields[8] as List)?.cast<dynamic>(),
-      extension: (fields[9] as List)?.cast<Extension>(),
-      modifierExtension: (fields[10] as List)?.cast<Extension>(),
-      url: fields[11] as String,
-      elementUrl: fields[12] as Element,
-      version: fields[13] as String,
-      elementVersion: fields[14] as Element,
-      name: fields[15] as String,
-      elementName: fields[16] as Element,
-      title: fields[17] as String,
-      elementTitle: fields[18] as Element,
-      status: fields[19] as String,
-      elementStatus: fields[20] as Element,
-      kind: fields[21] as String,
-      elementKind: fields[22] as Element,
-      experimental: fields[23] as bool,
-      elementExperimental: fields[24] as Element,
-      date: fields[25] as DateTime,
-      elementDate: fields[26] as Element,
-      publisher: fields[27] as String,
-      elementPublisher: fields[28] as Element,
-      contact: (fields[29] as List)?.cast<ContactDetail>(),
-      description: fields[30] as String,
-      elementDescription: fields[31] as Element,
-      useContext: (fields[32] as List)?.cast<UsageContext>(),
-      jurisdiction: (fields[33] as List)?.cast<CodeableConcept>(),
-      purpose: fields[34] as String,
-      elementPurpose: fields[35] as Element,
-      affectsState: fields[36] as bool,
-      elementAffectsState: fields[37] as Element,
-      code: fields[38] as String,
-      elementCode: fields[39] as Element,
-      comment: fields[40] as String,
-      elementComment: fields[41] as Element,
-      base: fields[42] as String,
-      resource: (fields[43] as List)?.cast<String>(),
-      elementResource: (fields[44] as List)?.cast<Element>(),
-      system: fields[45] as bool,
-      elementSystem: fields[46] as Element,
-      type: fields[47] as bool,
-      elementType: fields[48] as Element,
-      instance: fields[49] as bool,
-      elementInstance: fields[50] as Element,
-      inputProfile: fields[51] as String,
-      outputProfile: fields[52] as String,
-      parameter: (fields[53] as List)?.cast<OperationDefinition_Parameter>(),
-      overload: (fields[54] as List)?.cast<OperationDefinition_Overload>(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, OperationDefinition obj) {
-    writer
-      ..writeByte(55)
-      ..writeByte(0)
-      ..write(obj.resourceType)
-      ..writeByte(1)
-      ..write(obj.id)
-      ..writeByte(2)
-      ..write(obj.meta)
-      ..writeByte(3)
-      ..write(obj.implicitRules)
-      ..writeByte(4)
-      ..write(obj.elementImplicitRules)
-      ..writeByte(5)
-      ..write(obj.language)
-      ..writeByte(6)
-      ..write(obj.elementLanguage)
-      ..writeByte(7)
-      ..write(obj.text)
-      ..writeByte(8)
-      ..write(obj.contained)
-      ..writeByte(9)
-      ..write(obj.extension)
-      ..writeByte(10)
-      ..write(obj.modifierExtension)
-      ..writeByte(11)
-      ..write(obj.url)
-      ..writeByte(12)
-      ..write(obj.elementUrl)
-      ..writeByte(13)
-      ..write(obj.version)
-      ..writeByte(14)
-      ..write(obj.elementVersion)
-      ..writeByte(15)
-      ..write(obj.name)
-      ..writeByte(16)
-      ..write(obj.elementName)
-      ..writeByte(17)
-      ..write(obj.title)
-      ..writeByte(18)
-      ..write(obj.elementTitle)
-      ..writeByte(19)
-      ..write(obj.status)
-      ..writeByte(20)
-      ..write(obj.elementStatus)
-      ..writeByte(21)
-      ..write(obj.kind)
-      ..writeByte(22)
-      ..write(obj.elementKind)
-      ..writeByte(23)
-      ..write(obj.experimental)
-      ..writeByte(24)
-      ..write(obj.elementExperimental)
-      ..writeByte(25)
-      ..write(obj.date)
-      ..writeByte(26)
-      ..write(obj.elementDate)
-      ..writeByte(27)
-      ..write(obj.publisher)
-      ..writeByte(28)
-      ..write(obj.elementPublisher)
-      ..writeByte(29)
-      ..write(obj.contact)
-      ..writeByte(30)
-      ..write(obj.description)
-      ..writeByte(31)
-      ..write(obj.elementDescription)
-      ..writeByte(32)
-      ..write(obj.useContext)
-      ..writeByte(33)
-      ..write(obj.jurisdiction)
-      ..writeByte(34)
-      ..write(obj.purpose)
-      ..writeByte(35)
-      ..write(obj.elementPurpose)
-      ..writeByte(36)
-      ..write(obj.affectsState)
-      ..writeByte(37)
-      ..write(obj.elementAffectsState)
-      ..writeByte(38)
-      ..write(obj.code)
-      ..writeByte(39)
-      ..write(obj.elementCode)
-      ..writeByte(40)
-      ..write(obj.comment)
-      ..writeByte(41)
-      ..write(obj.elementComment)
-      ..writeByte(42)
-      ..write(obj.base)
-      ..writeByte(43)
-      ..write(obj.resource)
-      ..writeByte(44)
-      ..write(obj.elementResource)
-      ..writeByte(45)
-      ..write(obj.system)
-      ..writeByte(46)
-      ..write(obj.elementSystem)
-      ..writeByte(47)
-      ..write(obj.type)
-      ..writeByte(48)
-      ..write(obj.elementType)
-      ..writeByte(49)
-      ..write(obj.instance)
-      ..writeByte(50)
-      ..write(obj.elementInstance)
-      ..writeByte(51)
-      ..write(obj.inputProfile)
-      ..writeByte(52)
-      ..write(obj.outputProfile)
-      ..writeByte(53)
-      ..write(obj.parameter)
-      ..writeByte(54)
-      ..write(obj.overload);
-  }
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
