@@ -59,7 +59,7 @@ class Substance {
 			instance: instance,
 			ingredient: ingredient);
 	var substanceBox = await Hive.openBox<Substance>('SubstanceBox');
-	substanceBox.add(newSubstance);
+	substanceBox.put(newSubstance.id, newSubstance);
 	return newSubstance;
 }
   @HiveField(0)
@@ -149,7 +149,7 @@ class Substance_Instance {
 			elementExpiry: elementExpiry,
 			quantity: quantity);
 	var substance_InstanceBox = await Hive.openBox<Substance_Instance>('Substance_InstanceBox');
-	substance_InstanceBox.add(newSubstance_Instance);
+	substance_InstanceBox.put(newSubstance_Instance.id, newSubstance_Instance);
 	return newSubstance_Instance;
 }
   String id;
@@ -192,7 +192,7 @@ class Substance_Ingredient {
 			substanceCodeableConcept: substanceCodeableConcept,
 			substanceReference: substanceReference);
 	var substance_IngredientBox = await Hive.openBox<Substance_Ingredient>('Substance_IngredientBox');
-	substance_IngredientBox.add(newSubstance_Ingredient);
+	substance_IngredientBox.put(newSubstance_Ingredient.id, newSubstance_Ingredient);
 	return newSubstance_Ingredient;
 }
   String id;

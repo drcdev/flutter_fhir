@@ -37,7 +37,7 @@ class SubstanceAmount {
 			elementAmountText: elementAmountText,
 			referenceRange: referenceRange);
 	var substanceAmountBox = await Hive.openBox<SubstanceAmount>('SubstanceAmountBox');
-	substanceAmountBox.add(newSubstanceAmount);
+	substanceAmountBox.put(newSubstanceAmount.id, newSubstanceAmount);
 	return newSubstanceAmount;
 }
   @HiveField(0)
@@ -97,7 +97,7 @@ class SubstanceAmount_ReferenceRange {
 			lowLimit: lowLimit,
 			highLimit: highLimit);
 	var substanceAmount_ReferenceRangeBox = await Hive.openBox<SubstanceAmount_ReferenceRange>('SubstanceAmount_ReferenceRangeBox');
-	substanceAmount_ReferenceRangeBox.add(newSubstanceAmount_ReferenceRange);
+	substanceAmount_ReferenceRangeBox.put(newSubstanceAmount_ReferenceRange.id, newSubstanceAmount_ReferenceRange);
 	return newSubstanceAmount_ReferenceRange;
 }
   String id;

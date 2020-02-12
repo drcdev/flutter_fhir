@@ -91,7 +91,7 @@ class MedicationAdministration {
 			dosage: dosage,
 			eventHistory: eventHistory);
 	var medicationAdministrationBox = await Hive.openBox<MedicationAdministration>('MedicationAdministrationBox');
-	medicationAdministrationBox.add(newMedicationAdministration);
+	medicationAdministrationBox.put(newMedicationAdministration.id, newMedicationAdministration);
 	return newMedicationAdministration;
 }
   @HiveField(0)
@@ -222,7 +222,7 @@ class MedicationAdministration_Performer {
 			function: function,
 			actor: actor);
 	var medicationAdministration_PerformerBox = await Hive.openBox<MedicationAdministration_Performer>('MedicationAdministration_PerformerBox');
-	medicationAdministration_PerformerBox.add(newMedicationAdministration_Performer);
+	medicationAdministration_PerformerBox.put(newMedicationAdministration_Performer.id, newMedicationAdministration_Performer);
 	return newMedicationAdministration_Performer;
 }
   String id;
@@ -271,7 +271,7 @@ class MedicationAdministration_Dosage {
 			rateRatio: rateRatio,
 			rateQuantity: rateQuantity);
 	var medicationAdministration_DosageBox = await Hive.openBox<MedicationAdministration_Dosage>('MedicationAdministration_DosageBox');
-	medicationAdministration_DosageBox.add(newMedicationAdministration_Dosage);
+	medicationAdministration_DosageBox.put(newMedicationAdministration_Dosage.id, newMedicationAdministration_Dosage);
 	return newMedicationAdministration_Dosage;
 }
   String id;

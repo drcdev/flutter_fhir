@@ -45,7 +45,7 @@ class Linkage {
 			author: author,
 			item: item);
 	var linkageBox = await Hive.openBox<Linkage>('LinkageBox');
-	linkageBox.add(newLinkage);
+	linkageBox.put(newLinkage.id, newLinkage);
 	return newLinkage;
 }
   @HiveField(0)
@@ -118,7 +118,7 @@ class Linkage_Item {
 			elementType: elementType,
 			resource: resource);
 	var linkage_ItemBox = await Hive.openBox<Linkage_Item>('Linkage_ItemBox');
-	linkage_ItemBox.add(newLinkage_Item);
+	linkage_ItemBox.put(newLinkage_Item.id, newLinkage_Item);
 	return newLinkage_Item;
 }
   String id;

@@ -106,7 +106,7 @@ class ImplementationGuide {
 			definition: definition,
 			manifest: manifest);
 	var implementationGuideBox = await Hive.openBox<ImplementationGuide>('ImplementationGuideBox');
-	implementationGuideBox.add(newImplementationGuide);
+	implementationGuideBox.put(newImplementationGuide.id, newImplementationGuide);
 	return newImplementationGuide;
 }
   @HiveField(0)
@@ -270,7 +270,7 @@ class ImplementationGuide_DependsOn {
 			version: version,
 			elementVersion: elementVersion);
 	var implementationGuide_DependsOnBox = await Hive.openBox<ImplementationGuide_DependsOn>('ImplementationGuide_DependsOnBox');
-	implementationGuide_DependsOnBox.add(newImplementationGuide_DependsOn);
+	implementationGuide_DependsOnBox.put(newImplementationGuide_DependsOn.id, newImplementationGuide_DependsOn);
 	return newImplementationGuide_DependsOn;
 }
   String id;
@@ -315,7 +315,7 @@ class ImplementationGuide_Global {
 			elementType: elementType,
 			profile: profile);
 	var implementationGuide_GlobalBox = await Hive.openBox<ImplementationGuide_Global>('ImplementationGuide_GlobalBox');
-	implementationGuide_GlobalBox.add(newImplementationGuide_Global);
+	implementationGuide_GlobalBox.put(newImplementationGuide_Global.id, newImplementationGuide_Global);
 	return newImplementationGuide_Global;
 }
   String id;
@@ -360,7 +360,7 @@ class ImplementationGuide_Definition {
 			parameter: parameter,
 			template: template);
 	var implementationGuide_DefinitionBox = await Hive.openBox<ImplementationGuide_Definition>('ImplementationGuide_DefinitionBox');
-	implementationGuide_DefinitionBox.add(newImplementationGuide_Definition);
+	implementationGuide_DefinitionBox.put(newImplementationGuide_Definition.id, newImplementationGuide_Definition);
 	return newImplementationGuide_Definition;
 }
   String id;
@@ -407,7 +407,7 @@ class ImplementationGuide_Grouping {
 			description: description,
 			elementDescription: elementDescription);
 	var implementationGuide_GroupingBox = await Hive.openBox<ImplementationGuide_Grouping>('ImplementationGuide_GroupingBox');
-	implementationGuide_GroupingBox.add(newImplementationGuide_Grouping);
+	implementationGuide_GroupingBox.put(newImplementationGuide_Grouping.id, newImplementationGuide_Grouping);
 	return newImplementationGuide_Grouping;
 }
   String id;
@@ -470,7 +470,7 @@ class ImplementationGuide_Resource {
 			groupingId: groupingId,
 			elementGroupingId: elementGroupingId);
 	var implementationGuide_ResourceBox = await Hive.openBox<ImplementationGuide_Resource>('ImplementationGuide_ResourceBox');
-	implementationGuide_ResourceBox.add(newImplementationGuide_Resource);
+	implementationGuide_ResourceBox.put(newImplementationGuide_Resource.id, newImplementationGuide_Resource);
 	return newImplementationGuide_Resource;
 }
   String id;
@@ -541,7 +541,7 @@ class ImplementationGuide_Page {
 			elementGeneration: elementGeneration,
 			page: page);
 	var implementationGuide_PageBox = await Hive.openBox<ImplementationGuide_Page>('ImplementationGuide_PageBox');
-	implementationGuide_PageBox.add(newImplementationGuide_Page);
+	implementationGuide_PageBox.put(newImplementationGuide_Page.id, newImplementationGuide_Page);
 	return newImplementationGuide_Page;
 }
   String id;
@@ -594,7 +594,7 @@ class ImplementationGuide_Parameter {
 			value: value,
 			elementValue: elementValue);
 	var implementationGuide_ParameterBox = await Hive.openBox<ImplementationGuide_Parameter>('ImplementationGuide_ParameterBox');
-	implementationGuide_ParameterBox.add(newImplementationGuide_Parameter);
+	implementationGuide_ParameterBox.put(newImplementationGuide_Parameter.id, newImplementationGuide_Parameter);
 	return newImplementationGuide_Parameter;
 }
   String id;
@@ -643,7 +643,7 @@ class ImplementationGuide_Template {
 			scope: scope,
 			elementScope: elementScope);
 	var implementationGuide_TemplateBox = await Hive.openBox<ImplementationGuide_Template>('ImplementationGuide_TemplateBox');
-	implementationGuide_TemplateBox.add(newImplementationGuide_Template);
+	implementationGuide_TemplateBox.put(newImplementationGuide_Template.id, newImplementationGuide_Template);
 	return newImplementationGuide_Template;
 }
   String id;
@@ -700,7 +700,7 @@ class ImplementationGuide_Manifest {
 			other: other,
 			elementOther: elementOther);
 	var implementationGuide_ManifestBox = await Hive.openBox<ImplementationGuide_Manifest>('ImplementationGuide_ManifestBox');
-	implementationGuide_ManifestBox.add(newImplementationGuide_Manifest);
+	implementationGuide_ManifestBox.put(newImplementationGuide_Manifest.id, newImplementationGuide_Manifest);
 	return newImplementationGuide_Manifest;
 }
   String id;
@@ -759,7 +759,7 @@ class ImplementationGuide_Resource1 {
 			relativePath: relativePath,
 			elementRelativePath: elementRelativePath);
 	var implementationGuide_Resource1Box = await Hive.openBox<ImplementationGuide_Resource1>('ImplementationGuide_Resource1Box');
-	implementationGuide_Resource1Box.add(newImplementationGuide_Resource1);
+	implementationGuide_Resource1Box.put(newImplementationGuide_Resource1.id, newImplementationGuide_Resource1);
 	return newImplementationGuide_Resource1;
 }
   String id;
@@ -814,7 +814,7 @@ class ImplementationGuide_Page1 {
 			anchor: anchor,
 			elementAnchor: elementAnchor);
 	var implementationGuide_Page1Box = await Hive.openBox<ImplementationGuide_Page1>('ImplementationGuide_Page1Box');
-	implementationGuide_Page1Box.add(newImplementationGuide_Page1);
+	implementationGuide_Page1Box.put(newImplementationGuide_Page1.id, newImplementationGuide_Page1);
 	return newImplementationGuide_Page1;
 }
   String id;

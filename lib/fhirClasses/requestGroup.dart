@@ -94,7 +94,7 @@ class RequestGroup {
 			note: note,
 			action: action);
 	var requestGroupBox = await Hive.openBox<RequestGroup>('RequestGroupBox');
-	requestGroupBox.add(newRequestGroup);
+	requestGroupBox.put(newRequestGroup.id, newRequestGroup);
 	return newRequestGroup;
 }
   @HiveField(0)
@@ -291,7 +291,7 @@ class RequestGroup_Action {
 			resource: resource,
 			action: action);
 	var requestGroup_ActionBox = await Hive.openBox<RequestGroup_Action>('RequestGroup_ActionBox');
-	requestGroup_ActionBox.add(newRequestGroup_Action);
+	requestGroup_ActionBox.put(newRequestGroup_Action.id, newRequestGroup_Action);
 	return newRequestGroup_Action;
 }
   String id;
@@ -396,7 +396,7 @@ class RequestGroup_Condition {
 			elementKind: elementKind,
 			expression: expression);
 	var requestGroup_ConditionBox = await Hive.openBox<RequestGroup_Condition>('RequestGroup_ConditionBox');
-	requestGroup_ConditionBox.add(newRequestGroup_Condition);
+	requestGroup_ConditionBox.put(newRequestGroup_Condition.id, newRequestGroup_Condition);
 	return newRequestGroup_Condition;
 }
   String id;
@@ -443,7 +443,7 @@ class RequestGroup_RelatedAction {
 			offsetDuration: offsetDuration,
 			offsetRange: offsetRange);
 	var requestGroup_RelatedActionBox = await Hive.openBox<RequestGroup_RelatedAction>('RequestGroup_RelatedActionBox');
-	requestGroup_RelatedActionBox.add(newRequestGroup_RelatedAction);
+	requestGroup_RelatedActionBox.put(newRequestGroup_RelatedAction.id, newRequestGroup_RelatedAction);
 	return newRequestGroup_RelatedAction;
 }
   String id;

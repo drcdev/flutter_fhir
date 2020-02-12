@@ -130,7 +130,7 @@ class StructureDefinition {
 			snapshot: snapshot,
 			differential: differential);
 	var structureDefinitionBox = await Hive.openBox<StructureDefinition>('StructureDefinitionBox');
-	structureDefinitionBox.add(newStructureDefinition);
+	structureDefinitionBox.put(newStructureDefinition.id, newStructureDefinition);
 	return newStructureDefinition;
 }
   @HiveField(0)
@@ -333,7 +333,7 @@ class StructureDefinition_Mapping {
 			comment: comment,
 			elementComment: elementComment);
 	var structureDefinition_MappingBox = await Hive.openBox<StructureDefinition_Mapping>('StructureDefinition_MappingBox');
-	structureDefinition_MappingBox.add(newStructureDefinition_Mapping);
+	structureDefinition_MappingBox.put(newStructureDefinition_Mapping.id, newStructureDefinition_Mapping);
 	return newStructureDefinition_Mapping;
 }
   String id;
@@ -386,7 +386,7 @@ class StructureDefinition_Context {
 			expression: expression,
 			elementExpression: elementExpression);
 	var structureDefinition_ContextBox = await Hive.openBox<StructureDefinition_Context>('StructureDefinition_ContextBox');
-	structureDefinition_ContextBox.add(newStructureDefinition_Context);
+	structureDefinition_ContextBox.put(newStructureDefinition_Context.id, newStructureDefinition_Context);
 	return newStructureDefinition_Context;
 }
   String id;
@@ -425,7 +425,7 @@ class StructureDefinition_Snapshot {
 			modifierExtension: modifierExtension,
 			element: element);
 	var structureDefinition_SnapshotBox = await Hive.openBox<StructureDefinition_Snapshot>('StructureDefinition_SnapshotBox');
-	structureDefinition_SnapshotBox.add(newStructureDefinition_Snapshot);
+	structureDefinition_SnapshotBox.put(newStructureDefinition_Snapshot.id, newStructureDefinition_Snapshot);
 	return newStructureDefinition_Snapshot;
 }
   String id;
@@ -458,7 +458,7 @@ class StructureDefinition_Differential {
 			modifierExtension: modifierExtension,
 			element: element);
 	var structureDefinition_DifferentialBox = await Hive.openBox<StructureDefinition_Differential>('StructureDefinition_DifferentialBox');
-	structureDefinition_DifferentialBox.add(newStructureDefinition_Differential);
+	structureDefinition_DifferentialBox.put(newStructureDefinition_Differential.id, newStructureDefinition_Differential);
 	return newStructureDefinition_Differential;
 }
   String id;

@@ -71,7 +71,7 @@ class CareTeam {
 			telecom: telecom,
 			note: note);
 	var careTeamBox = await Hive.openBox<CareTeam>('CareTeamBox');
-	careTeamBox.add(newCareTeam);
+	careTeamBox.put(newCareTeam.id, newCareTeam);
 	return newCareTeam;
 }
   @HiveField(0)
@@ -179,7 +179,7 @@ class CareTeam_Participant {
 			onBehalfOf: onBehalfOf,
 			period: period);
 	var careTeam_ParticipantBox = await Hive.openBox<CareTeam_Participant>('CareTeam_ParticipantBox');
-	careTeam_ParticipantBox.add(newCareTeam_Participant);
+	careTeam_ParticipantBox.put(newCareTeam_Participant.id, newCareTeam_Participant);
 	return newCareTeam_Participant;
 }
   String id;

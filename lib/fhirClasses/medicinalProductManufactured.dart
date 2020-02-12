@@ -54,7 +54,7 @@ class MedicinalProductManufactured {
 			physicalCharacteristics: physicalCharacteristics,
 			otherCharacteristics: otherCharacteristics);
 	var medicinalProductManufacturedBox = await Hive.openBox<MedicinalProductManufactured>('MedicinalProductManufacturedBox');
-	medicinalProductManufacturedBox.add(newMedicinalProductManufactured);
+	medicinalProductManufacturedBox.put(newMedicinalProductManufactured.id, newMedicinalProductManufactured);
 	return newMedicinalProductManufactured;
 }
   @HiveField(0)

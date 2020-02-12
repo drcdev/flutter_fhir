@@ -35,7 +35,7 @@ class Binary {
 			data: data,
 			elementData: elementData);
 	var binaryBox = await Hive.openBox<Binary>('BinaryBox');
-	binaryBox.add(newBinary);
+	binaryBox.put(newBinary.id, newBinary);
 	return newBinary;
 }
   @HiveField(0)

@@ -23,7 +23,7 @@ class ContactDetail {
 			elementName: elementName,
 			telecom: telecom);
 	var contactDetailBox = await Hive.openBox<ContactDetail>('ContactDetailBox');
-	contactDetailBox.add(newContactDetail);
+	contactDetailBox.put(newContactDetail.id, newContactDetail);
 	return newContactDetail;
 }
   @HiveField(0)

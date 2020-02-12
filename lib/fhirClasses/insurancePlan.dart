@@ -79,7 +79,7 @@ class InsurancePlan {
 			coverage: coverage,
 			plan: plan);
 	var insurancePlanBox = await Hive.openBox<InsurancePlan>('InsurancePlanBox');
-	insurancePlanBox.add(newInsurancePlan);
+	insurancePlanBox.put(newInsurancePlan.id, newInsurancePlan);
 	return newInsurancePlan;
 }
   @HiveField(0)
@@ -193,7 +193,7 @@ class InsurancePlan_Contact {
 			telecom: telecom,
 			address: address);
 	var insurancePlan_ContactBox = await Hive.openBox<InsurancePlan_Contact>('InsurancePlan_ContactBox');
-	insurancePlan_ContactBox.add(newInsurancePlan_Contact);
+	insurancePlan_ContactBox.put(newInsurancePlan_Contact.id, newInsurancePlan_Contact);
 	return newInsurancePlan_Contact;
 }
   String id;
@@ -236,7 +236,7 @@ class InsurancePlan_Coverage {
 			network: network,
 			benefit: benefit);
 	var insurancePlan_CoverageBox = await Hive.openBox<InsurancePlan_Coverage>('InsurancePlan_CoverageBox');
-	insurancePlan_CoverageBox.add(newInsurancePlan_Coverage);
+	insurancePlan_CoverageBox.put(newInsurancePlan_Coverage.id, newInsurancePlan_Coverage);
 	return newInsurancePlan_Coverage;
 }
   String id;
@@ -279,7 +279,7 @@ class InsurancePlan_Benefit {
 			elementRequirement: elementRequirement,
 			limit: limit);
 	var insurancePlan_BenefitBox = await Hive.openBox<InsurancePlan_Benefit>('InsurancePlan_BenefitBox');
-	insurancePlan_BenefitBox.add(newInsurancePlan_Benefit);
+	insurancePlan_BenefitBox.put(newInsurancePlan_Benefit.id, newInsurancePlan_Benefit);
 	return newInsurancePlan_Benefit;
 }
   String id;
@@ -320,7 +320,7 @@ class InsurancePlan_Limit {
 			value: value,
 			code: code);
 	var insurancePlan_LimitBox = await Hive.openBox<InsurancePlan_Limit>('InsurancePlan_LimitBox');
-	insurancePlan_LimitBox.add(newInsurancePlan_Limit);
+	insurancePlan_LimitBox.put(newInsurancePlan_Limit.id, newInsurancePlan_Limit);
 	return newInsurancePlan_Limit;
 }
   String id;
@@ -365,7 +365,7 @@ class InsurancePlan_Plan {
 			generalCost: generalCost,
 			specificCost: specificCost);
 	var insurancePlan_PlanBox = await Hive.openBox<InsurancePlan_Plan>('InsurancePlan_PlanBox');
-	insurancePlan_PlanBox.add(newInsurancePlan_Plan);
+	insurancePlan_PlanBox.put(newInsurancePlan_Plan.id, newInsurancePlan_Plan);
 	return newInsurancePlan_Plan;
 }
   String id;
@@ -418,7 +418,7 @@ class InsurancePlan_GeneralCost {
 			comment: comment,
 			elementComment: elementComment);
 	var insurancePlan_GeneralCostBox = await Hive.openBox<InsurancePlan_GeneralCost>('InsurancePlan_GeneralCostBox');
-	insurancePlan_GeneralCostBox.add(newInsurancePlan_GeneralCost);
+	insurancePlan_GeneralCostBox.put(newInsurancePlan_GeneralCost.id, newInsurancePlan_GeneralCost);
 	return newInsurancePlan_GeneralCost;
 }
   String id;
@@ -463,7 +463,7 @@ class InsurancePlan_SpecificCost {
 			category: category,
 			benefit: benefit);
 	var insurancePlan_SpecificCostBox = await Hive.openBox<InsurancePlan_SpecificCost>('InsurancePlan_SpecificCostBox');
-	insurancePlan_SpecificCostBox.add(newInsurancePlan_SpecificCost);
+	insurancePlan_SpecificCostBox.put(newInsurancePlan_SpecificCost.id, newInsurancePlan_SpecificCost);
 	return newInsurancePlan_SpecificCost;
 }
   String id;
@@ -500,7 +500,7 @@ class InsurancePlan_Benefit1 {
 			type: type,
 			cost: cost);
 	var insurancePlan_Benefit1Box = await Hive.openBox<InsurancePlan_Benefit1>('InsurancePlan_Benefit1Box');
-	insurancePlan_Benefit1Box.add(newInsurancePlan_Benefit1);
+	insurancePlan_Benefit1Box.put(newInsurancePlan_Benefit1.id, newInsurancePlan_Benefit1);
 	return newInsurancePlan_Benefit1;
 }
   String id;
@@ -541,7 +541,7 @@ class InsurancePlan_Cost {
 			qualifiers: qualifiers,
 			value: value);
 	var insurancePlan_CostBox = await Hive.openBox<InsurancePlan_Cost>('InsurancePlan_CostBox');
-	insurancePlan_CostBox.add(newInsurancePlan_Cost);
+	insurancePlan_CostBox.put(newInsurancePlan_Cost.id, newInsurancePlan_Cost);
 	return newInsurancePlan_Cost;
 }
   String id;

@@ -39,7 +39,7 @@ class OperationOutcome {
 			modifierExtension: modifierExtension,
 			issue: issue);
 	var operationOutcomeBox = await Hive.openBox<OperationOutcome>('OperationOutcomeBox');
-	operationOutcomeBox.add(newOperationOutcome);
+	operationOutcomeBox.put(newOperationOutcome.id, newOperationOutcome);
 	return newOperationOutcome;
 }
   @HiveField(0)
@@ -119,7 +119,7 @@ class OperationOutcome_Issue {
 			expression: expression,
 			elementExpression: elementExpression);
 	var operationOutcome_IssueBox = await Hive.openBox<OperationOutcome_Issue>('OperationOutcome_IssueBox');
-	operationOutcome_IssueBox.add(newOperationOutcome_Issue);
+	operationOutcome_IssueBox.put(newOperationOutcome_Issue.id, newOperationOutcome_Issue);
 	return newOperationOutcome_Issue;
 }
   String id;

@@ -126,7 +126,7 @@ class CodeSystem {
 			property: property,
 			concept: concept);
 	var codeSystemBox = await Hive.openBox<CodeSystem>('CodeSystemBox');
-	codeSystemBox.add(newCodeSystem);
+	codeSystemBox.put(newCodeSystem.id, newCodeSystem);
 	return newCodeSystem;
 }
   @HiveField(0)
@@ -326,7 +326,7 @@ class CodeSystem_Filter {
 			value: value,
 			elementValue: elementValue);
 	var codeSystem_FilterBox = await Hive.openBox<CodeSystem_Filter>('CodeSystem_FilterBox');
-	codeSystem_FilterBox.add(newCodeSystem_Filter);
+	codeSystem_FilterBox.put(newCodeSystem_Filter.id, newCodeSystem_Filter);
 	return newCodeSystem_Filter;
 }
   String id;
@@ -387,7 +387,7 @@ class CodeSystem_Property {
 			type: type,
 			elementType: elementType);
 	var codeSystem_PropertyBox = await Hive.openBox<CodeSystem_Property>('CodeSystem_PropertyBox');
-	codeSystem_PropertyBox.add(newCodeSystem_Property);
+	codeSystem_PropertyBox.put(newCodeSystem_Property.id, newCodeSystem_Property);
 	return newCodeSystem_Property;
 }
   String id;
@@ -450,7 +450,7 @@ class CodeSystem_Concept {
 			property: property,
 			concept: concept);
 	var codeSystem_ConceptBox = await Hive.openBox<CodeSystem_Concept>('CodeSystem_ConceptBox');
-	codeSystem_ConceptBox.add(newCodeSystem_Concept);
+	codeSystem_ConceptBox.put(newCodeSystem_Concept.id, newCodeSystem_Concept);
 	return newCodeSystem_Concept;
 }
   String id;
@@ -507,7 +507,7 @@ class CodeSystem_Designation {
 			value: value,
 			elementValue: elementValue);
 	var codeSystem_DesignationBox = await Hive.openBox<CodeSystem_Designation>('CodeSystem_DesignationBox');
-	codeSystem_DesignationBox.add(newCodeSystem_Designation);
+	codeSystem_DesignationBox.put(newCodeSystem_Designation.id, newCodeSystem_Designation);
 	return newCodeSystem_Designation;
 }
   String id;
@@ -576,7 +576,7 @@ class CodeSystem_Property1 {
 			valueDecimal: valueDecimal,
 			elementValueDecimal: elementValueDecimal);
 	var codeSystem_Property1Box = await Hive.openBox<CodeSystem_Property1>('CodeSystem_Property1Box');
-	codeSystem_Property1Box.add(newCodeSystem_Property1);
+	codeSystem_Property1Box.put(newCodeSystem_Property1.id, newCodeSystem_Property1);
 	return newCodeSystem_Property1;
 }
   String id;

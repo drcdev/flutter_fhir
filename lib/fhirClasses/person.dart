@@ -68,7 +68,7 @@ class Person {
 			elementActive: elementActive,
 			link: link);
 	var personBox = await Hive.openBox<Person>('PersonBox');
-	personBox.add(newPerson);
+	personBox.put(newPerson.id, newPerson);
 	return newPerson;
 }
   @HiveField(0)
@@ -168,7 +168,7 @@ class Person_Link {
 			assurance: assurance,
 			elementAssurance: elementAssurance);
 	var person_LinkBox = await Hive.openBox<Person_Link>('Person_LinkBox');
-	person_LinkBox.add(newPerson_Link);
+	person_LinkBox.put(newPerson_Link.id, newPerson_Link);
 	return newPerson_Link;
 }
   String id;

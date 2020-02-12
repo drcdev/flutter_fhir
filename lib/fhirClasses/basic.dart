@@ -51,7 +51,7 @@ class Basic {
 			elementCreated: elementCreated,
 			author: author);
 	var basicBox = await Hive.openBox<Basic>('BasicBox');
-	basicBox.add(newBasic);
+	basicBox.put(newBasic.id, newBasic);
 	return newBasic;
 }
   @HiveField(0)

@@ -82,7 +82,7 @@ class NamingSystem {
 			elementUsage: elementUsage,
 			uniqueId: uniqueId);
 	var namingSystemBox = await Hive.openBox<NamingSystem>('NamingSystemBox');
-	namingSystemBox.add(newNamingSystem);
+	namingSystemBox.put(newNamingSystem.id, newNamingSystem);
 	return newNamingSystem;
 }
   @HiveField(0)
@@ -218,7 +218,7 @@ class NamingSystem_UniqueId {
 			elementComment: elementComment,
 			period: period);
 	var namingSystem_UniqueIdBox = await Hive.openBox<NamingSystem_UniqueId>('NamingSystem_UniqueIdBox');
-	namingSystem_UniqueIdBox.add(newNamingSystem_UniqueId);
+	namingSystem_UniqueIdBox.put(newNamingSystem_UniqueId.id, newNamingSystem_UniqueId);
 	return newNamingSystem_UniqueId;
 }
   String id;

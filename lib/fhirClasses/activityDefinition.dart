@@ -196,7 +196,7 @@ class ActivityDefinition {
 			transform: transform,
 			dynamicValue: dynamicValue);
 	var activityDefinitionBox = await Hive.openBox<ActivityDefinition>('ActivityDefinitionBox');
-	activityDefinitionBox.add(newActivityDefinition);
+	activityDefinitionBox.put(newActivityDefinition.id, newActivityDefinition);
 	return newActivityDefinition;
 }
   @HiveField(0)
@@ -476,7 +476,7 @@ class ActivityDefinition_Participant {
 			elementType: elementType,
 			role: role);
 	var activityDefinition_ParticipantBox = await Hive.openBox<ActivityDefinition_Participant>('ActivityDefinition_ParticipantBox');
-	activityDefinition_ParticipantBox.add(newActivityDefinition_Participant);
+	activityDefinition_ParticipantBox.put(newActivityDefinition_Participant.id, newActivityDefinition_Participant);
 	return newActivityDefinition_Participant;
 }
   String id;
@@ -517,7 +517,7 @@ class ActivityDefinition_DynamicValue {
 			elementPath: elementPath,
 			expression: expression);
 	var activityDefinition_DynamicValueBox = await Hive.openBox<ActivityDefinition_DynamicValue>('ActivityDefinition_DynamicValueBox');
-	activityDefinition_DynamicValueBox.add(newActivityDefinition_DynamicValue);
+	activityDefinition_DynamicValueBox.put(newActivityDefinition_DynamicValue.id, newActivityDefinition_DynamicValue);
 	return newActivityDefinition_DynamicValue;
 }
   String id;

@@ -15,7 +15,7 @@ class Element {
 			id: await newId('Element'),
 			extension: extension);
 	var elementBox = await Hive.openBox<Element>('ElementBox');
-	elementBox.add(newElement);
+	elementBox.put(newElement.id, newElement);
 	return newElement;
 }
   @HiveField(0)

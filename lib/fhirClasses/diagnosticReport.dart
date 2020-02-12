@@ -87,7 +87,7 @@ class DiagnosticReport {
 			conclusionCode: conclusionCode,
 			presentedForm: presentedForm);
 	var diagnosticReportBox = await Hive.openBox<DiagnosticReport>('DiagnosticReportBox');
-	diagnosticReportBox.add(newDiagnosticReport);
+	diagnosticReportBox.put(newDiagnosticReport.id, newDiagnosticReport);
 	return newDiagnosticReport;
 }
   @HiveField(0)
@@ -217,7 +217,7 @@ class DiagnosticReport_Media {
 			elementComment: elementComment,
 			link: link);
 	var diagnosticReport_MediaBox = await Hive.openBox<DiagnosticReport_Media>('DiagnosticReport_MediaBox');
-	diagnosticReport_MediaBox.add(newDiagnosticReport_Media);
+	diagnosticReport_MediaBox.put(newDiagnosticReport_Media.id, newDiagnosticReport_Media);
 	return newDiagnosticReport_Media;
 }
   String id;

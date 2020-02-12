@@ -29,7 +29,7 @@ class Population {
 			race: race,
 			physiologicalCondition: physiologicalCondition);
 	var populationBox = await Hive.openBox<Population>('PopulationBox');
-	populationBox.add(newPopulation);
+	populationBox.put(newPopulation.id, newPopulation);
 	return newPopulation;
 }
   @HiveField(0)

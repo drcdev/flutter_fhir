@@ -82,7 +82,7 @@ class DocumentReference {
 			content: content,
 			context: context);
 	var documentReferenceBox = await Hive.openBox<DocumentReference>('DocumentReferenceBox');
-	documentReferenceBox.add(newDocumentReference);
+	documentReferenceBox.put(newDocumentReference.id, newDocumentReference);
 	return newDocumentReference;
 }
   @HiveField(0)
@@ -203,7 +203,7 @@ class DocumentReference_RelatesTo {
 			elementCode: elementCode,
 			target: target);
 	var documentReference_RelatesToBox = await Hive.openBox<DocumentReference_RelatesTo>('DocumentReference_RelatesToBox');
-	documentReference_RelatesToBox.add(newDocumentReference_RelatesTo);
+	documentReference_RelatesToBox.put(newDocumentReference_RelatesTo.id, newDocumentReference_RelatesTo);
 	return newDocumentReference_RelatesTo;
 }
   String id;
@@ -242,7 +242,7 @@ class DocumentReference_Content {
 			attachment: attachment,
 			format: format);
 	var documentReference_ContentBox = await Hive.openBox<DocumentReference_Content>('DocumentReference_ContentBox');
-	documentReference_ContentBox.add(newDocumentReference_Content);
+	documentReference_ContentBox.put(newDocumentReference_Content.id, newDocumentReference_Content);
 	return newDocumentReference_Content;
 }
   String id;
@@ -289,7 +289,7 @@ class DocumentReference_Context {
 			sourcePatientInfo: sourcePatientInfo,
 			related: related);
 	var documentReference_ContextBox = await Hive.openBox<DocumentReference_Context>('DocumentReference_ContextBox');
-	documentReference_ContextBox.add(newDocumentReference_Context);
+	documentReference_ContextBox.put(newDocumentReference_Context.id, newDocumentReference_Context);
 	return newDocumentReference_Context;
 }
   String id;

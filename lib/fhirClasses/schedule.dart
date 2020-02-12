@@ -60,7 +60,7 @@ class Schedule {
 			comment: comment,
 			elementComment: elementComment);
 	var scheduleBox = await Hive.openBox<Schedule>('ScheduleBox');
-	scheduleBox.add(newSchedule);
+	scheduleBox.put(newSchedule.id, newSchedule);
 	return newSchedule;
 }
   @HiveField(0)

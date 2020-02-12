@@ -131,7 +131,7 @@ class EvidenceVariable {
 			elementType: elementType,
 			characteristic: characteristic);
 	var evidenceVariableBox = await Hive.openBox<EvidenceVariable>('EvidenceVariableBox');
-	evidenceVariableBox.add(newEvidenceVariable);
+	evidenceVariableBox.put(newEvidenceVariable.id, newEvidenceVariable);
 	return newEvidenceVariable;
 }
   @HiveField(0)
@@ -349,7 +349,7 @@ class EvidenceVariable_Characteristic {
 			groupMeasure: groupMeasure,
 			elementGroupMeasure: elementGroupMeasure);
 	var evidenceVariable_CharacteristicBox = await Hive.openBox<EvidenceVariable_Characteristic>('EvidenceVariable_CharacteristicBox');
-	evidenceVariable_CharacteristicBox.add(newEvidenceVariable_Characteristic);
+	evidenceVariable_CharacteristicBox.put(newEvidenceVariable_Characteristic.id, newEvidenceVariable_Characteristic);
 	return newEvidenceVariable_Characteristic;
 }
   String id;

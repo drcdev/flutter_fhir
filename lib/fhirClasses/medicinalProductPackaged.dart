@@ -63,7 +63,7 @@ class MedicinalProductPackaged {
 			batchIdentifier: batchIdentifier,
 			packageItem: packageItem);
 	var medicinalProductPackagedBox = await Hive.openBox<MedicinalProductPackaged>('MedicinalProductPackagedBox');
-	medicinalProductPackagedBox.add(newMedicinalProductPackaged);
+	medicinalProductPackagedBox.put(newMedicinalProductPackaged.id, newMedicinalProductPackaged);
 	return newMedicinalProductPackaged;
 }
   @HiveField(0)
@@ -152,7 +152,7 @@ class MedicinalProductPackaged_BatchIdentifier {
 			outerPackaging: outerPackaging,
 			immediatePackaging: immediatePackaging);
 	var medicinalProductPackaged_BatchIdentifierBox = await Hive.openBox<MedicinalProductPackaged_BatchIdentifier>('MedicinalProductPackaged_BatchIdentifierBox');
-	medicinalProductPackaged_BatchIdentifierBox.add(newMedicinalProductPackaged_BatchIdentifier);
+	medicinalProductPackaged_BatchIdentifierBox.put(newMedicinalProductPackaged_BatchIdentifier.id, newMedicinalProductPackaged_BatchIdentifier);
 	return newMedicinalProductPackaged_BatchIdentifier;
 }
   String id;
@@ -209,7 +209,7 @@ class MedicinalProductPackaged_PackageItem {
 			shelfLifeStorage: shelfLifeStorage,
 			manufacturer: manufacturer);
 	var medicinalProductPackaged_PackageItemBox = await Hive.openBox<MedicinalProductPackaged_PackageItem>('MedicinalProductPackaged_PackageItemBox');
-	medicinalProductPackaged_PackageItemBox.add(newMedicinalProductPackaged_PackageItem);
+	medicinalProductPackaged_PackageItemBox.put(newMedicinalProductPackaged_PackageItem.id, newMedicinalProductPackaged_PackageItem);
 	return newMedicinalProductPackaged_PackageItem;
 }
   String id;

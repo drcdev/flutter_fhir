@@ -87,7 +87,7 @@ class NutritionOrder {
 			enteralFormula: enteralFormula,
 			note: note);
 	var nutritionOrderBox = await Hive.openBox<NutritionOrder>('NutritionOrderBox');
-	nutritionOrderBox.add(newNutritionOrder);
+	nutritionOrderBox.put(newNutritionOrder.id, newNutritionOrder);
 	return newNutritionOrder;
 }
   @HiveField(0)
@@ -222,7 +222,7 @@ class NutritionOrder_OralDiet {
 			instruction: instruction,
 			elementInstruction: elementInstruction);
 	var nutritionOrder_OralDietBox = await Hive.openBox<NutritionOrder_OralDiet>('NutritionOrder_OralDietBox');
-	nutritionOrder_OralDietBox.add(newNutritionOrder_OralDiet);
+	nutritionOrder_OralDietBox.put(newNutritionOrder_OralDiet.id, newNutritionOrder_OralDiet);
 	return newNutritionOrder_OralDiet;
 }
   String id;
@@ -269,7 +269,7 @@ class NutritionOrder_Nutrient {
 			modifier: modifier,
 			amount: amount);
 	var nutritionOrder_NutrientBox = await Hive.openBox<NutritionOrder_Nutrient>('NutritionOrder_NutrientBox');
-	nutritionOrder_NutrientBox.add(newNutritionOrder_Nutrient);
+	nutritionOrder_NutrientBox.put(newNutritionOrder_Nutrient.id, newNutritionOrder_Nutrient);
 	return newNutritionOrder_Nutrient;
 }
   String id;
@@ -306,7 +306,7 @@ class NutritionOrder_Texture {
 			modifier: modifier,
 			foodType: foodType);
 	var nutritionOrder_TextureBox = await Hive.openBox<NutritionOrder_Texture>('NutritionOrder_TextureBox');
-	nutritionOrder_TextureBox.add(newNutritionOrder_Texture);
+	nutritionOrder_TextureBox.put(newNutritionOrder_Texture.id, newNutritionOrder_Texture);
 	return newNutritionOrder_Texture;
 }
   String id;
@@ -353,7 +353,7 @@ class NutritionOrder_Supplement {
 			instruction: instruction,
 			elementInstruction: elementInstruction);
 	var nutritionOrder_SupplementBox = await Hive.openBox<NutritionOrder_Supplement>('NutritionOrder_SupplementBox');
-	nutritionOrder_SupplementBox.add(newNutritionOrder_Supplement);
+	nutritionOrder_SupplementBox.put(newNutritionOrder_Supplement.id, newNutritionOrder_Supplement);
 	return newNutritionOrder_Supplement;
 }
   String id;
@@ -420,7 +420,7 @@ class NutritionOrder_EnteralFormula {
 			administrationInstruction: administrationInstruction,
 			elementAdministrationInstruction: elementAdministrationInstruction);
 	var nutritionOrder_EnteralFormulaBox = await Hive.openBox<NutritionOrder_EnteralFormula>('NutritionOrder_EnteralFormulaBox');
-	nutritionOrder_EnteralFormulaBox.add(newNutritionOrder_EnteralFormula);
+	nutritionOrder_EnteralFormulaBox.put(newNutritionOrder_EnteralFormula.id, newNutritionOrder_EnteralFormula);
 	return newNutritionOrder_EnteralFormula;
 }
   String id;
@@ -481,7 +481,7 @@ class NutritionOrder_Administration {
 			rateQuantity: rateQuantity,
 			rateRatio: rateRatio);
 	var nutritionOrder_AdministrationBox = await Hive.openBox<NutritionOrder_Administration>('NutritionOrder_AdministrationBox');
-	nutritionOrder_AdministrationBox.add(newNutritionOrder_Administration);
+	nutritionOrder_AdministrationBox.put(newNutritionOrder_Administration.id, newNutritionOrder_Administration);
 	return newNutritionOrder_Administration;
 }
   String id;

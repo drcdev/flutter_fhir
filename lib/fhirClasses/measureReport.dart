@@ -69,7 +69,7 @@ class MeasureReport {
 			group: group,
 			evaluatedResource: evaluatedResource);
 	var measureReportBox = await Hive.openBox<MeasureReport>('MeasureReportBox');
-	measureReportBox.add(newMeasureReport);
+	measureReportBox.put(newMeasureReport.id, newMeasureReport);
 	return newMeasureReport;
 }
   @HiveField(0)
@@ -174,7 +174,7 @@ class MeasureReport_Group {
 			measureScore: measureScore,
 			stratifier: stratifier);
 	var measureReport_GroupBox = await Hive.openBox<MeasureReport_Group>('MeasureReport_GroupBox');
-	measureReport_GroupBox.add(newMeasureReport_Group);
+	measureReport_GroupBox.put(newMeasureReport_Group.id, newMeasureReport_Group);
 	return newMeasureReport_Group;
 }
   String id;
@@ -219,7 +219,7 @@ class MeasureReport_Population {
 			elementCount: elementCount,
 			subjectResults: subjectResults);
 	var measureReport_PopulationBox = await Hive.openBox<MeasureReport_Population>('MeasureReport_PopulationBox');
-	measureReport_PopulationBox.add(newMeasureReport_Population);
+	measureReport_PopulationBox.put(newMeasureReport_Population.id, newMeasureReport_Population);
 	return newMeasureReport_Population;
 }
   String id;
@@ -260,7 +260,7 @@ class MeasureReport_Stratifier {
 			code: code,
 			stratum: stratum);
 	var measureReport_StratifierBox = await Hive.openBox<MeasureReport_Stratifier>('MeasureReport_StratifierBox');
-	measureReport_StratifierBox.add(newMeasureReport_Stratifier);
+	measureReport_StratifierBox.put(newMeasureReport_Stratifier.id, newMeasureReport_Stratifier);
 	return newMeasureReport_Stratifier;
 }
   String id;
@@ -301,7 +301,7 @@ class MeasureReport_Stratum {
 			population: population,
 			measureScore: measureScore);
 	var measureReport_StratumBox = await Hive.openBox<MeasureReport_Stratum>('MeasureReport_StratumBox');
-	measureReport_StratumBox.add(newMeasureReport_Stratum);
+	measureReport_StratumBox.put(newMeasureReport_Stratum.id, newMeasureReport_Stratum);
 	return newMeasureReport_Stratum;
 }
   String id;
@@ -342,7 +342,7 @@ class MeasureReport_Component {
 			code: code,
 			value: value);
 	var measureReport_ComponentBox = await Hive.openBox<MeasureReport_Component>('MeasureReport_ComponentBox');
-	measureReport_ComponentBox.add(newMeasureReport_Component);
+	measureReport_ComponentBox.put(newMeasureReport_Component.id, newMeasureReport_Component);
 	return newMeasureReport_Component;
 }
   String id;
@@ -383,7 +383,7 @@ class MeasureReport_Population1 {
 			elementCount: elementCount,
 			subjectResults: subjectResults);
 	var measureReport_Population1Box = await Hive.openBox<MeasureReport_Population1>('MeasureReport_Population1Box');
-	measureReport_Population1Box.add(newMeasureReport_Population1);
+	measureReport_Population1Box.put(newMeasureReport_Population1.id, newMeasureReport_Population1);
 	return newMeasureReport_Population1;
 }
   String id;

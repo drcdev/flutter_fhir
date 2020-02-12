@@ -43,7 +43,7 @@ class HumanName {
 			elementSuffix: elementSuffix,
 			period: period);
 	var humanNameBox = await Hive.openBox<HumanName>('HumanNameBox');
-	humanNameBox.add(newHumanName);
+	humanNameBox.put(newHumanName.id, newHumanName);
 	return newHumanName;
 }
   @HiveField(0)

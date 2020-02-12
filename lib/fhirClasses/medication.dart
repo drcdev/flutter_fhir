@@ -57,7 +57,7 @@ class Medication {
 			ingredient: ingredient,
 			batch: batch);
 	var medicationBox = await Hive.openBox<Medication>('MedicationBox');
-	medicationBox.add(newMedication);
+	medicationBox.put(newMedication.id, newMedication);
 	return newMedication;
 }
   @HiveField(0)
@@ -149,7 +149,7 @@ class Medication_Ingredient {
 			elementIsActive: elementIsActive,
 			strength: strength);
 	var medication_IngredientBox = await Hive.openBox<Medication_Ingredient>('Medication_IngredientBox');
-	medication_IngredientBox.add(newMedication_Ingredient);
+	medication_IngredientBox.put(newMedication_Ingredient.id, newMedication_Ingredient);
 	return newMedication_Ingredient;
 }
   String id;
@@ -196,7 +196,7 @@ class Medication_Batch {
 			expirationDate: expirationDate,
 			elementExpirationDate: elementExpirationDate);
 	var medication_BatchBox = await Hive.openBox<Medication_Batch>('Medication_BatchBox');
-	medication_BatchBox.add(newMedication_Batch);
+	medication_BatchBox.put(newMedication_Batch.id, newMedication_Batch);
 	return newMedication_Batch;
 }
   String id;

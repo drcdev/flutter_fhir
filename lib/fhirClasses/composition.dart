@@ -78,7 +78,7 @@ class Composition {
 			event: event,
 			section: section);
 	var compositionBox = await Hive.openBox<Composition>('CompositionBox');
-	compositionBox.add(newComposition);
+	compositionBox.put(newComposition.id, newComposition);
 	return newComposition;
 }
   @HiveField(0)
@@ -200,7 +200,7 @@ class Composition_Attester {
 			elementTime: elementTime,
 			party: party);
 	var composition_AttesterBox = await Hive.openBox<Composition_Attester>('Composition_AttesterBox');
-	composition_AttesterBox.add(newComposition_Attester);
+	composition_AttesterBox.put(newComposition_Attester.id, newComposition_Attester);
 	return newComposition_Attester;
 }
   String id;
@@ -247,7 +247,7 @@ class Composition_RelatesTo {
 			targetIdentifier: targetIdentifier,
 			targetReference: targetReference);
 	var composition_RelatesToBox = await Hive.openBox<Composition_RelatesTo>('Composition_RelatesToBox');
-	composition_RelatesToBox.add(newComposition_RelatesTo);
+	composition_RelatesToBox.put(newComposition_RelatesTo.id, newComposition_RelatesTo);
 	return newComposition_RelatesTo;
 }
   String id;
@@ -290,7 +290,7 @@ class Composition_Event {
 			period: period,
 			detail: detail);
 	var composition_EventBox = await Hive.openBox<Composition_Event>('Composition_EventBox');
-	composition_EventBox.add(newComposition_Event);
+	composition_EventBox.put(newComposition_Event.id, newComposition_Event);
 	return newComposition_Event;
 }
   String id;
@@ -349,7 +349,7 @@ class Composition_Section {
 			emptyReason: emptyReason,
 			section: section);
 	var composition_SectionBox = await Hive.openBox<Composition_Section>('Composition_SectionBox');
-	composition_SectionBox.add(newComposition_Section);
+	composition_SectionBox.put(newComposition_Section.id, newComposition_Section);
 	return newComposition_Section;
 }
   String id;

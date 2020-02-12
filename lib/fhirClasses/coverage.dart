@@ -88,7 +88,7 @@ class Coverage {
 			elementSubrogation: elementSubrogation,
 			contract: contract);
 	var coverageBox = await Hive.openBox<Coverage>('CoverageBox');
-	coverageBox.add(newCoverage);
+	coverageBox.put(newCoverage.id, newCoverage);
 	return newCoverage;
 }
   @HiveField(0)
@@ -222,7 +222,7 @@ class Coverage_Class {
 			name: name,
 			elementName: elementName);
 	var coverage_ClassBox = await Hive.openBox<Coverage_Class>('Coverage_ClassBox');
-	coverage_ClassBox.add(newCoverage_Class);
+	coverage_ClassBox.put(newCoverage_Class.id, newCoverage_Class);
 	return newCoverage_Class;
 }
   String id;
@@ -269,7 +269,7 @@ class Coverage_CostToBeneficiary {
 			valueMoney: valueMoney,
 			exception: exception);
 	var coverage_CostToBeneficiaryBox = await Hive.openBox<Coverage_CostToBeneficiary>('Coverage_CostToBeneficiaryBox');
-	coverage_CostToBeneficiaryBox.add(newCoverage_CostToBeneficiary);
+	coverage_CostToBeneficiaryBox.put(newCoverage_CostToBeneficiary.id, newCoverage_CostToBeneficiary);
 	return newCoverage_CostToBeneficiary;
 }
   String id;
@@ -310,7 +310,7 @@ class Coverage_Exception {
 			type: type,
 			period: period);
 	var coverage_ExceptionBox = await Hive.openBox<Coverage_Exception>('Coverage_ExceptionBox');
-	coverage_ExceptionBox.add(newCoverage_Exception);
+	coverage_ExceptionBox.put(newCoverage_Exception.id, newCoverage_Exception);
 	return newCoverage_Exception;
 }
   String id;

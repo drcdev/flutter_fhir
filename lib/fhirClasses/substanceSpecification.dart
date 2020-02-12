@@ -84,7 +84,7 @@ class SubstanceSpecification {
 			protein: protein,
 			sourceMaterial: sourceMaterial);
 	var substanceSpecificationBox = await Hive.openBox<SubstanceSpecification>('SubstanceSpecificationBox');
-	substanceSpecificationBox.add(newSubstanceSpecification);
+	substanceSpecificationBox.put(newSubstanceSpecification.id, newSubstanceSpecification);
 	return newSubstanceSpecification;
 }
   @HiveField(0)
@@ -224,7 +224,7 @@ class SubstanceSpecification_Moiety {
 			amountString: amountString,
 			elementAmountString: elementAmountString);
 	var substanceSpecification_MoietyBox = await Hive.openBox<SubstanceSpecification_Moiety>('SubstanceSpecification_MoietyBox');
-	substanceSpecification_MoietyBox.add(newSubstanceSpecification_Moiety);
+	substanceSpecification_MoietyBox.put(newSubstanceSpecification_Moiety.id, newSubstanceSpecification_Moiety);
 	return newSubstanceSpecification_Moiety;
 }
   String id;
@@ -293,7 +293,7 @@ class SubstanceSpecification_Property {
 			amountString: amountString,
 			elementAmountString: elementAmountString);
 	var substanceSpecification_PropertyBox = await Hive.openBox<SubstanceSpecification_Property>('SubstanceSpecification_PropertyBox');
-	substanceSpecification_PropertyBox.add(newSubstanceSpecification_Property);
+	substanceSpecification_PropertyBox.put(newSubstanceSpecification_Property.id, newSubstanceSpecification_Property);
 	return newSubstanceSpecification_Property;
 }
   String id;
@@ -360,7 +360,7 @@ class SubstanceSpecification_Structure {
 			source: source,
 			representation: representation);
 	var substanceSpecification_StructureBox = await Hive.openBox<SubstanceSpecification_Structure>('SubstanceSpecification_StructureBox');
-	substanceSpecification_StructureBox.add(newSubstanceSpecification_Structure);
+	substanceSpecification_StructureBox.put(newSubstanceSpecification_Structure.id, newSubstanceSpecification_Structure);
 	return newSubstanceSpecification_Structure;
 }
   String id;
@@ -419,7 +419,7 @@ class SubstanceSpecification_Isotope {
 			halfLife: halfLife,
 			molecularWeight: molecularWeight);
 	var substanceSpecification_IsotopeBox = await Hive.openBox<SubstanceSpecification_Isotope>('SubstanceSpecification_IsotopeBox');
-	substanceSpecification_IsotopeBox.add(newSubstanceSpecification_Isotope);
+	substanceSpecification_IsotopeBox.put(newSubstanceSpecification_Isotope.id, newSubstanceSpecification_Isotope);
 	return newSubstanceSpecification_Isotope;
 }
   String id;
@@ -464,7 +464,7 @@ class SubstanceSpecification_MolecularWeight {
 			type: type,
 			amount: amount);
 	var substanceSpecification_MolecularWeightBox = await Hive.openBox<SubstanceSpecification_MolecularWeight>('SubstanceSpecification_MolecularWeightBox');
-	substanceSpecification_MolecularWeightBox.add(newSubstanceSpecification_MolecularWeight);
+	substanceSpecification_MolecularWeightBox.put(newSubstanceSpecification_MolecularWeight.id, newSubstanceSpecification_MolecularWeight);
 	return newSubstanceSpecification_MolecularWeight;
 }
   String id;
@@ -507,7 +507,7 @@ class SubstanceSpecification_Representation {
 			elementRepresentation: elementRepresentation,
 			attachment: attachment);
 	var substanceSpecification_RepresentationBox = await Hive.openBox<SubstanceSpecification_Representation>('SubstanceSpecification_RepresentationBox');
-	substanceSpecification_RepresentationBox.add(newSubstanceSpecification_Representation);
+	substanceSpecification_RepresentationBox.put(newSubstanceSpecification_Representation.id, newSubstanceSpecification_Representation);
 	return newSubstanceSpecification_Representation;
 }
   String id;
@@ -558,7 +558,7 @@ class SubstanceSpecification_Code {
 			elementComment: elementComment,
 			source: source);
 	var substanceSpecification_CodeBox = await Hive.openBox<SubstanceSpecification_Code>('SubstanceSpecification_CodeBox');
-	substanceSpecification_CodeBox.add(newSubstanceSpecification_Code);
+	substanceSpecification_CodeBox.put(newSubstanceSpecification_Code.id, newSubstanceSpecification_Code);
 	return newSubstanceSpecification_Code;
 }
   String id;
@@ -627,7 +627,7 @@ class SubstanceSpecification_Name {
 			official: official,
 			source: source);
 	var substanceSpecification_NameBox = await Hive.openBox<SubstanceSpecification_Name>('SubstanceSpecification_NameBox');
-	substanceSpecification_NameBox.add(newSubstanceSpecification_Name);
+	substanceSpecification_NameBox.put(newSubstanceSpecification_Name.id, newSubstanceSpecification_Name);
 	return newSubstanceSpecification_Name;
 }
   String id;
@@ -690,7 +690,7 @@ class SubstanceSpecification_Official {
 			date: date,
 			elementDate: elementDate);
 	var substanceSpecification_OfficialBox = await Hive.openBox<SubstanceSpecification_Official>('SubstanceSpecification_OfficialBox');
-	substanceSpecification_OfficialBox.add(newSubstanceSpecification_Official);
+	substanceSpecification_OfficialBox.put(newSubstanceSpecification_Official.id, newSubstanceSpecification_Official);
 	return newSubstanceSpecification_Official;
 }
   String id;
@@ -753,7 +753,7 @@ class SubstanceSpecification_Relationship {
 			amountType: amountType,
 			source: source);
 	var substanceSpecification_RelationshipBox = await Hive.openBox<SubstanceSpecification_Relationship>('SubstanceSpecification_RelationshipBox');
-	substanceSpecification_RelationshipBox.add(newSubstanceSpecification_Relationship);
+	substanceSpecification_RelationshipBox.put(newSubstanceSpecification_Relationship.id, newSubstanceSpecification_Relationship);
 	return newSubstanceSpecification_Relationship;
 }
   String id;

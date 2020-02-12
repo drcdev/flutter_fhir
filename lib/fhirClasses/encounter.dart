@@ -90,7 +90,7 @@ class Encounter {
 			serviceProvider: serviceProvider,
 			partOf: partOf);
 	var encounterBox = await Hive.openBox<Encounter>('EncounterBox');
-	encounterBox.add(newEncounter);
+	encounterBox.put(newEncounter.id, newEncounter);
 	return newEncounter;
 }
   @HiveField(0)
@@ -223,7 +223,7 @@ class Encounter_StatusHistory {
 			elementStatus: elementStatus,
 			period: period);
 	var encounter_StatusHistoryBox = await Hive.openBox<Encounter_StatusHistory>('Encounter_StatusHistoryBox');
-	encounter_StatusHistoryBox.add(newEncounter_StatusHistory);
+	encounter_StatusHistoryBox.put(newEncounter_StatusHistory.id, newEncounter_StatusHistory);
 	return newEncounter_StatusHistory;
 }
   String id;
@@ -262,7 +262,7 @@ class Encounter_ClassHistory {
 			classs: classs,
 			period: period);
 	var encounter_ClassHistoryBox = await Hive.openBox<Encounter_ClassHistory>('Encounter_ClassHistoryBox');
-	encounter_ClassHistoryBox.add(newEncounter_ClassHistory);
+	encounter_ClassHistoryBox.put(newEncounter_ClassHistory.id, newEncounter_ClassHistory);
 	return newEncounter_ClassHistory;
 }
   String id;
@@ -301,7 +301,7 @@ class Encounter_Participant {
 			period: period,
 			individual: individual);
 	var encounter_ParticipantBox = await Hive.openBox<Encounter_Participant>('Encounter_ParticipantBox');
-	encounter_ParticipantBox.add(newEncounter_Participant);
+	encounter_ParticipantBox.put(newEncounter_Participant.id, newEncounter_Participant);
 	return newEncounter_Participant;
 }
   String id;
@@ -344,7 +344,7 @@ class Encounter_Diagnosis {
 			rank: rank,
 			elementRank: elementRank);
 	var encounter_DiagnosisBox = await Hive.openBox<Encounter_Diagnosis>('Encounter_DiagnosisBox');
-	encounter_DiagnosisBox.add(newEncounter_Diagnosis);
+	encounter_DiagnosisBox.put(newEncounter_Diagnosis.id, newEncounter_Diagnosis);
 	return newEncounter_Diagnosis;
 }
   String id;
@@ -399,7 +399,7 @@ class Encounter_Hospitalization {
 			destination: destination,
 			dischargeDisposition: dischargeDisposition);
 	var encounter_HospitalizationBox = await Hive.openBox<Encounter_Hospitalization>('Encounter_HospitalizationBox');
-	encounter_HospitalizationBox.add(newEncounter_Hospitalization);
+	encounter_HospitalizationBox.put(newEncounter_Hospitalization.id, newEncounter_Hospitalization);
 	return newEncounter_Hospitalization;
 }
   String id;
@@ -456,7 +456,7 @@ class Encounter_Location {
 			physicalType: physicalType,
 			period: period);
 	var encounter_LocationBox = await Hive.openBox<Encounter_Location>('Encounter_LocationBox');
-	encounter_LocationBox.add(newEncounter_Location);
+	encounter_LocationBox.put(newEncounter_Location.id, newEncounter_Location);
 	return newEncounter_Location;
 }
   String id;

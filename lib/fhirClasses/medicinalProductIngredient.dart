@@ -54,7 +54,7 @@ class MedicinalProductIngredient {
 			specifiedSubstance: specifiedSubstance,
 			substance: substance);
 	var medicinalProductIngredientBox = await Hive.openBox<MedicinalProductIngredient>('MedicinalProductIngredientBox');
-	medicinalProductIngredientBox.add(newMedicinalProductIngredient);
+	medicinalProductIngredientBox.put(newMedicinalProductIngredient.id, newMedicinalProductIngredient);
 	return newMedicinalProductIngredient;
 }
   @HiveField(0)
@@ -138,7 +138,7 @@ class MedicinalProductIngredient_SpecifiedSubstance {
 			confidentiality: confidentiality,
 			strength: strength);
 	var medicinalProductIngredient_SpecifiedSubstanceBox = await Hive.openBox<MedicinalProductIngredient_SpecifiedSubstance>('MedicinalProductIngredient_SpecifiedSubstanceBox');
-	medicinalProductIngredient_SpecifiedSubstanceBox.add(newMedicinalProductIngredient_SpecifiedSubstance);
+	medicinalProductIngredient_SpecifiedSubstanceBox.put(newMedicinalProductIngredient_SpecifiedSubstance.id, newMedicinalProductIngredient_SpecifiedSubstance);
 	return newMedicinalProductIngredient_SpecifiedSubstance;
 }
   String id;
@@ -191,7 +191,7 @@ class MedicinalProductIngredient_Strength {
 			country: country,
 			referenceStrength: referenceStrength);
 	var medicinalProductIngredient_StrengthBox = await Hive.openBox<MedicinalProductIngredient_Strength>('MedicinalProductIngredient_StrengthBox');
-	medicinalProductIngredient_StrengthBox.add(newMedicinalProductIngredient_Strength);
+	medicinalProductIngredient_StrengthBox.put(newMedicinalProductIngredient_Strength.id, newMedicinalProductIngredient_Strength);
 	return newMedicinalProductIngredient_Strength;
 }
   String id;
@@ -248,7 +248,7 @@ class MedicinalProductIngredient_ReferenceStrength {
 			elementMeasurementPoint: elementMeasurementPoint,
 			country: country);
 	var medicinalProductIngredient_ReferenceStrengthBox = await Hive.openBox<MedicinalProductIngredient_ReferenceStrength>('MedicinalProductIngredient_ReferenceStrengthBox');
-	medicinalProductIngredient_ReferenceStrengthBox.add(newMedicinalProductIngredient_ReferenceStrength);
+	medicinalProductIngredient_ReferenceStrengthBox.put(newMedicinalProductIngredient_ReferenceStrength.id, newMedicinalProductIngredient_ReferenceStrength);
 	return newMedicinalProductIngredient_ReferenceStrength;
 }
   String id;
@@ -293,7 +293,7 @@ class MedicinalProductIngredient_Substance {
 			code: code,
 			strength: strength);
 	var medicinalProductIngredient_SubstanceBox = await Hive.openBox<MedicinalProductIngredient_Substance>('MedicinalProductIngredient_SubstanceBox');
-	medicinalProductIngredient_SubstanceBox.add(newMedicinalProductIngredient_Substance);
+	medicinalProductIngredient_SubstanceBox.put(newMedicinalProductIngredient_Substance.id, newMedicinalProductIngredient_Substance);
 	return newMedicinalProductIngredient_Substance;
 }
   String id;

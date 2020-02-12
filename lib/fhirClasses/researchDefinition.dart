@@ -147,7 +147,7 @@ class ResearchDefinition {
 			exposureAlternative: exposureAlternative,
 			outcome: outcome);
 	var researchDefinitionBox = await Hive.openBox<ResearchDefinition>('ResearchDefinitionBox');
-	researchDefinitionBox.add(newResearchDefinition);
+	researchDefinitionBox.put(newResearchDefinition.id, newResearchDefinition);
 	return newResearchDefinition;
 }
   @HiveField(0)

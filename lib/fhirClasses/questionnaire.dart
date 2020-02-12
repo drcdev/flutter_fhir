@@ -116,7 +116,7 @@ class Questionnaire {
 			code: code,
 			item: item);
 	var questionnaireBox = await Hive.openBox<Questionnaire>('QuestionnaireBox');
-	questionnaireBox.add(newQuestionnaire);
+	questionnaireBox.put(newQuestionnaire.id, newQuestionnaire);
 	return newQuestionnaire;
 }
   @HiveField(0)
@@ -331,7 +331,7 @@ class Questionnaire_Item {
 			initial: initial,
 			item: item);
 	var questionnaire_ItemBox = await Hive.openBox<Questionnaire_Item>('Questionnaire_ItemBox');
-	questionnaire_ItemBox.add(newQuestionnaire_Item);
+	questionnaire_ItemBox.put(newQuestionnaire_Item.id, newQuestionnaire_Item);
 	return newQuestionnaire_Item;
 }
   String id;
@@ -454,7 +454,7 @@ class Questionnaire_EnableWhen {
 			answerQuantity: answerQuantity,
 			answerReference: answerReference);
 	var questionnaire_EnableWhenBox = await Hive.openBox<Questionnaire_EnableWhen>('Questionnaire_EnableWhenBox');
-	questionnaire_EnableWhenBox.add(newQuestionnaire_EnableWhen);
+	questionnaire_EnableWhenBox.put(newQuestionnaire_EnableWhen.id, newQuestionnaire_EnableWhen);
 	return newQuestionnaire_EnableWhen;
 }
   String id;
@@ -549,7 +549,7 @@ class Questionnaire_AnswerOption {
 			initialSelected: initialSelected,
 			elementInitialSelected: elementInitialSelected);
 	var questionnaire_AnswerOptionBox = await Hive.openBox<Questionnaire_AnswerOption>('Questionnaire_AnswerOptionBox');
-	questionnaire_AnswerOptionBox.add(newQuestionnaire_AnswerOption);
+	questionnaire_AnswerOptionBox.put(newQuestionnaire_AnswerOption.id, newQuestionnaire_AnswerOption);
 	return newQuestionnaire_AnswerOption;
 }
   String id;
@@ -642,7 +642,7 @@ class Questionnaire_Initial {
 			valueQuantity: valueQuantity,
 			valueReference: valueReference);
 	var questionnaire_InitialBox = await Hive.openBox<Questionnaire_Initial>('Questionnaire_InitialBox');
-	questionnaire_InitialBox.add(newQuestionnaire_Initial);
+	questionnaire_InitialBox.put(newQuestionnaire_Initial.id, newQuestionnaire_Initial);
 	return newQuestionnaire_Initial;
 }
   String id;

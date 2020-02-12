@@ -58,7 +58,7 @@ class Flag {
 			encounter: encounter,
 			author: author);
 	var flagBox = await Hive.openBox<Flag>('FlagBox');
-	flagBox.add(newFlag);
+	flagBox.put(newFlag.id, newFlag);
 	return newFlag;
 }
   @HiveField(0)

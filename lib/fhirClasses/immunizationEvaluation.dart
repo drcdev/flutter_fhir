@@ -85,7 +85,7 @@ class ImmunizationEvaluation {
 			seriesDosesString: seriesDosesString,
 			elementSeriesDosesString: elementSeriesDosesString);
 	var immunizationEvaluationBox = await Hive.openBox<ImmunizationEvaluation>('ImmunizationEvaluationBox');
-	immunizationEvaluationBox.add(newImmunizationEvaluation);
+	immunizationEvaluationBox.put(newImmunizationEvaluation.id, newImmunizationEvaluation);
 	return newImmunizationEvaluation;
 }
   @HiveField(0)

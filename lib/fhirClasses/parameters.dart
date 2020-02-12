@@ -58,7 +58,7 @@ class Parameters {
 			elementLanguage: elementLanguage,
 			parameter: parameter);
 	var parametersBox = await Hive.openBox<Parameters>('ParametersBox');
-	parametersBox.add(newParameters);
+	parametersBox.put(newParameters.id, newParameters);
 	return newParameters;
 }
   @HiveField(0)
@@ -250,7 +250,7 @@ class Parameters_Parameter {
 			resource: resource,
 			part: part);
 	var parameters_ParameterBox = await Hive.openBox<Parameters_Parameter>('Parameters_ParameterBox');
-	parameters_ParameterBox.add(newParameters_Parameter);
+	parameters_ParameterBox.put(newParameters_Parameter.id, newParameters_Parameter);
 	return newParameters_Parameter;
 }
   String id;

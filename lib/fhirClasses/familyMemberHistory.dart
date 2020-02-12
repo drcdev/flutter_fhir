@@ -117,7 +117,7 @@ class FamilyMemberHistory {
 			note: note,
 			condition: condition);
 	var familyMemberHistoryBox = await Hive.openBox<FamilyMemberHistory>('FamilyMemberHistoryBox');
-	familyMemberHistoryBox.add(newFamilyMemberHistory);
+	familyMemberHistoryBox.put(newFamilyMemberHistory.id, newFamilyMemberHistory);
 	return newFamilyMemberHistory;
 }
   @HiveField(0)
@@ -303,7 +303,7 @@ class FamilyMemberHistory_Condition {
 			elementOnsetString: elementOnsetString,
 			note: note);
 	var familyMemberHistory_ConditionBox = await Hive.openBox<FamilyMemberHistory_Condition>('FamilyMemberHistory_ConditionBox');
-	familyMemberHistory_ConditionBox.add(newFamilyMemberHistory_Condition);
+	familyMemberHistory_ConditionBox.put(newFamilyMemberHistory_Condition.id, newFamilyMemberHistory_Condition);
 	return newFamilyMemberHistory_Condition;
 }
   String id;

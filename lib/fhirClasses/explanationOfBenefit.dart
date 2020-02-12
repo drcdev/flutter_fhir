@@ -145,7 +145,7 @@ class ExplanationOfBenefit {
 			benefitPeriod: benefitPeriod,
 			benefitBalance: benefitBalance);
 	var explanationOfBenefitBox = await Hive.openBox<ExplanationOfBenefit>('ExplanationOfBenefitBox');
-	explanationOfBenefitBox.add(newExplanationOfBenefit);
+	explanationOfBenefitBox.put(newExplanationOfBenefit.id, newExplanationOfBenefit);
 	return newExplanationOfBenefit;
 }
   @HiveField(0)
@@ -356,7 +356,7 @@ class ExplanationOfBenefit_Related {
 			relationship: relationship,
 			reference: reference);
 	var explanationOfBenefit_RelatedBox = await Hive.openBox<ExplanationOfBenefit_Related>('ExplanationOfBenefit_RelatedBox');
-	explanationOfBenefit_RelatedBox.add(newExplanationOfBenefit_Related);
+	explanationOfBenefit_RelatedBox.put(newExplanationOfBenefit_Related.id, newExplanationOfBenefit_Related);
 	return newExplanationOfBenefit_Related;
 }
   String id;
@@ -395,7 +395,7 @@ class ExplanationOfBenefit_Payee {
 			type: type,
 			party: party);
 	var explanationOfBenefit_PayeeBox = await Hive.openBox<ExplanationOfBenefit_Payee>('ExplanationOfBenefit_PayeeBox');
-	explanationOfBenefit_PayeeBox.add(newExplanationOfBenefit_Payee);
+	explanationOfBenefit_PayeeBox.put(newExplanationOfBenefit_Payee.id, newExplanationOfBenefit_Payee);
 	return newExplanationOfBenefit_Payee;
 }
   String id;
@@ -442,7 +442,7 @@ class ExplanationOfBenefit_CareTeam {
 			role: role,
 			qualification: qualification);
 	var explanationOfBenefit_CareTeamBox = await Hive.openBox<ExplanationOfBenefit_CareTeam>('ExplanationOfBenefit_CareTeamBox');
-	explanationOfBenefit_CareTeamBox.add(newExplanationOfBenefit_CareTeam);
+	explanationOfBenefit_CareTeamBox.put(newExplanationOfBenefit_CareTeam.id, newExplanationOfBenefit_CareTeam);
 	return newExplanationOfBenefit_CareTeam;
 }
   String id;
@@ -515,7 +515,7 @@ class ExplanationOfBenefit_SupportingInfo {
 			valueReference: valueReference,
 			reason: reason);
 	var explanationOfBenefit_SupportingInfoBox = await Hive.openBox<ExplanationOfBenefit_SupportingInfo>('ExplanationOfBenefit_SupportingInfoBox');
-	explanationOfBenefit_SupportingInfoBox.add(newExplanationOfBenefit_SupportingInfo);
+	explanationOfBenefit_SupportingInfoBox.put(newExplanationOfBenefit_SupportingInfo.id, newExplanationOfBenefit_SupportingInfo);
 	return newExplanationOfBenefit_SupportingInfo;
 }
   String id;
@@ -588,7 +588,7 @@ class ExplanationOfBenefit_Diagnosis {
 			onAdmission: onAdmission,
 			packageCode: packageCode);
 	var explanationOfBenefit_DiagnosisBox = await Hive.openBox<ExplanationOfBenefit_Diagnosis>('ExplanationOfBenefit_DiagnosisBox');
-	explanationOfBenefit_DiagnosisBox.add(newExplanationOfBenefit_Diagnosis);
+	explanationOfBenefit_DiagnosisBox.put(newExplanationOfBenefit_Diagnosis.id, newExplanationOfBenefit_Diagnosis);
 	return newExplanationOfBenefit_Diagnosis;
 }
   String id;
@@ -647,7 +647,7 @@ class ExplanationOfBenefit_Procedure {
 			procedureReference: procedureReference,
 			udi: udi);
 	var explanationOfBenefit_ProcedureBox = await Hive.openBox<ExplanationOfBenefit_Procedure>('ExplanationOfBenefit_ProcedureBox');
-	explanationOfBenefit_ProcedureBox.add(newExplanationOfBenefit_Procedure);
+	explanationOfBenefit_ProcedureBox.put(newExplanationOfBenefit_Procedure.id, newExplanationOfBenefit_Procedure);
 	return newExplanationOfBenefit_Procedure;
 }
   String id;
@@ -702,7 +702,7 @@ class ExplanationOfBenefit_Insurance {
 			preAuthRef: preAuthRef,
 			elementPreAuthRef: elementPreAuthRef);
 	var explanationOfBenefit_InsuranceBox = await Hive.openBox<ExplanationOfBenefit_Insurance>('ExplanationOfBenefit_InsuranceBox');
-	explanationOfBenefit_InsuranceBox.add(newExplanationOfBenefit_Insurance);
+	explanationOfBenefit_InsuranceBox.put(newExplanationOfBenefit_Insurance.id, newExplanationOfBenefit_Insurance);
 	return newExplanationOfBenefit_Insurance;
 }
   String id;
@@ -751,7 +751,7 @@ class ExplanationOfBenefit_Accident {
 			locationAddress: locationAddress,
 			locationReference: locationReference);
 	var explanationOfBenefit_AccidentBox = await Hive.openBox<ExplanationOfBenefit_Accident>('ExplanationOfBenefit_AccidentBox');
-	explanationOfBenefit_AccidentBox.add(newExplanationOfBenefit_Accident);
+	explanationOfBenefit_AccidentBox.put(newExplanationOfBenefit_Accident.id, newExplanationOfBenefit_Accident);
 	return newExplanationOfBenefit_Accident;
 }
   String id;
@@ -858,7 +858,7 @@ class ExplanationOfBenefit_Item {
 			adjudication: adjudication,
 			detail: detail);
 	var explanationOfBenefit_ItemBox = await Hive.openBox<ExplanationOfBenefit_Item>('ExplanationOfBenefit_ItemBox');
-	explanationOfBenefit_ItemBox.add(newExplanationOfBenefit_Item);
+	explanationOfBenefit_ItemBox.put(newExplanationOfBenefit_Item.id, newExplanationOfBenefit_Item);
 	return newExplanationOfBenefit_Item;
 }
   String id;
@@ -965,7 +965,7 @@ class ExplanationOfBenefit_Adjudication {
 			value: value,
 			elementValue: elementValue);
 	var explanationOfBenefit_AdjudicationBox = await Hive.openBox<ExplanationOfBenefit_Adjudication>('ExplanationOfBenefit_AdjudicationBox');
-	explanationOfBenefit_AdjudicationBox.add(newExplanationOfBenefit_Adjudication);
+	explanationOfBenefit_AdjudicationBox.put(newExplanationOfBenefit_Adjudication.id, newExplanationOfBenefit_Adjudication);
 	return newExplanationOfBenefit_Adjudication;
 }
   String id;
@@ -1038,7 +1038,7 @@ class ExplanationOfBenefit_Detail {
 			adjudication: adjudication,
 			subDetail: subDetail);
 	var explanationOfBenefit_DetailBox = await Hive.openBox<ExplanationOfBenefit_Detail>('ExplanationOfBenefit_DetailBox');
-	explanationOfBenefit_DetailBox.add(newExplanationOfBenefit_Detail);
+	explanationOfBenefit_DetailBox.put(newExplanationOfBenefit_Detail.id, newExplanationOfBenefit_Detail);
 	return newExplanationOfBenefit_Detail;
 }
   String id;
@@ -1133,7 +1133,7 @@ class ExplanationOfBenefit_SubDetail {
 			elementNoteNumber: elementNoteNumber,
 			adjudication: adjudication);
 	var explanationOfBenefit_SubDetailBox = await Hive.openBox<ExplanationOfBenefit_SubDetail>('ExplanationOfBenefit_SubDetailBox');
-	explanationOfBenefit_SubDetailBox.add(newExplanationOfBenefit_SubDetail);
+	explanationOfBenefit_SubDetailBox.put(newExplanationOfBenefit_SubDetail.id, newExplanationOfBenefit_SubDetail);
 	return newExplanationOfBenefit_SubDetail;
 }
   String id;
@@ -1248,7 +1248,7 @@ class ExplanationOfBenefit_AddItem {
 			adjudication: adjudication,
 			detail: detail);
 	var explanationOfBenefit_AddItemBox = await Hive.openBox<ExplanationOfBenefit_AddItem>('ExplanationOfBenefit_AddItemBox');
-	explanationOfBenefit_AddItemBox.add(newExplanationOfBenefit_AddItem);
+	explanationOfBenefit_AddItemBox.put(newExplanationOfBenefit_AddItem.id, newExplanationOfBenefit_AddItem);
 	return newExplanationOfBenefit_AddItem;
 }
   String id;
@@ -1353,7 +1353,7 @@ class ExplanationOfBenefit_Detail1 {
 			adjudication: adjudication,
 			subDetail: subDetail);
 	var explanationOfBenefit_Detail1Box = await Hive.openBox<ExplanationOfBenefit_Detail1>('ExplanationOfBenefit_Detail1Box');
-	explanationOfBenefit_Detail1Box.add(newExplanationOfBenefit_Detail1);
+	explanationOfBenefit_Detail1Box.put(newExplanationOfBenefit_Detail1.id, newExplanationOfBenefit_Detail1);
 	return newExplanationOfBenefit_Detail1;
 }
   String id;
@@ -1424,7 +1424,7 @@ class ExplanationOfBenefit_SubDetail1 {
 			elementNoteNumber: elementNoteNumber,
 			adjudication: adjudication);
 	var explanationOfBenefit_SubDetail1Box = await Hive.openBox<ExplanationOfBenefit_SubDetail1>('ExplanationOfBenefit_SubDetail1Box');
-	explanationOfBenefit_SubDetail1Box.add(newExplanationOfBenefit_SubDetail1);
+	explanationOfBenefit_SubDetail1Box.put(newExplanationOfBenefit_SubDetail1.id, newExplanationOfBenefit_SubDetail1);
 	return newExplanationOfBenefit_SubDetail1;
 }
   String id;
@@ -1477,7 +1477,7 @@ class ExplanationOfBenefit_Total {
 			category: category,
 			amount: amount);
 	var explanationOfBenefit_TotalBox = await Hive.openBox<ExplanationOfBenefit_Total>('ExplanationOfBenefit_TotalBox');
-	explanationOfBenefit_TotalBox.add(newExplanationOfBenefit_Total);
+	explanationOfBenefit_TotalBox.put(newExplanationOfBenefit_Total.id, newExplanationOfBenefit_Total);
 	return newExplanationOfBenefit_Total;
 }
   String id;
@@ -1524,7 +1524,7 @@ class ExplanationOfBenefit_Payment {
 			amount: amount,
 			identifier: identifier);
 	var explanationOfBenefit_PaymentBox = await Hive.openBox<ExplanationOfBenefit_Payment>('ExplanationOfBenefit_PaymentBox');
-	explanationOfBenefit_PaymentBox.add(newExplanationOfBenefit_Payment);
+	explanationOfBenefit_PaymentBox.put(newExplanationOfBenefit_Payment.id, newExplanationOfBenefit_Payment);
 	return newExplanationOfBenefit_Payment;
 }
   String id;
@@ -1581,7 +1581,7 @@ class ExplanationOfBenefit_ProcessNote {
 			elementText: elementText,
 			language: language);
 	var explanationOfBenefit_ProcessNoteBox = await Hive.openBox<ExplanationOfBenefit_ProcessNote>('ExplanationOfBenefit_ProcessNoteBox');
-	explanationOfBenefit_ProcessNoteBox.add(newExplanationOfBenefit_ProcessNote);
+	explanationOfBenefit_ProcessNoteBox.put(newExplanationOfBenefit_ProcessNote.id, newExplanationOfBenefit_ProcessNote);
 	return newExplanationOfBenefit_ProcessNote;
 }
   String id;
@@ -1646,7 +1646,7 @@ class ExplanationOfBenefit_BenefitBalance {
 			term: term,
 			financial: financial);
 	var explanationOfBenefit_BenefitBalanceBox = await Hive.openBox<ExplanationOfBenefit_BenefitBalance>('ExplanationOfBenefit_BenefitBalanceBox');
-	explanationOfBenefit_BenefitBalanceBox.add(newExplanationOfBenefit_BenefitBalance);
+	explanationOfBenefit_BenefitBalanceBox.put(newExplanationOfBenefit_BenefitBalance.id, newExplanationOfBenefit_BenefitBalance);
 	return newExplanationOfBenefit_BenefitBalance;
 }
   String id;
@@ -1715,7 +1715,7 @@ class ExplanationOfBenefit_Financial {
 			elementUsedUnsignedInt: elementUsedUnsignedInt,
 			usedMoney: usedMoney);
 	var explanationOfBenefit_FinancialBox = await Hive.openBox<ExplanationOfBenefit_Financial>('ExplanationOfBenefit_FinancialBox');
-	explanationOfBenefit_FinancialBox.add(newExplanationOfBenefit_Financial);
+	explanationOfBenefit_FinancialBox.put(newExplanationOfBenefit_Financial.id, newExplanationOfBenefit_Financial);
 	return newExplanationOfBenefit_Financial;
 }
   String id;

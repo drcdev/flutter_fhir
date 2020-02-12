@@ -97,7 +97,7 @@ class CommunicationRequest {
 			reasonReference: reasonReference,
 			note: note);
 	var communicationRequestBox = await Hive.openBox<CommunicationRequest>('CommunicationRequestBox');
-	communicationRequestBox.add(newCommunicationRequest);
+	communicationRequestBox.put(newCommunicationRequest.id, newCommunicationRequest);
 	return newCommunicationRequest;
 }
   @HiveField(0)
@@ -244,7 +244,7 @@ class CommunicationRequest_Payload {
 			contentAttachment: contentAttachment,
 			contentReference: contentReference);
 	var communicationRequest_PayloadBox = await Hive.openBox<CommunicationRequest_Payload>('CommunicationRequest_PayloadBox');
-	communicationRequest_PayloadBox.add(newCommunicationRequest_Payload);
+	communicationRequest_PayloadBox.put(newCommunicationRequest_Payload.id, newCommunicationRequest_Payload);
 	return newCommunicationRequest_Payload;
 }
   String id;

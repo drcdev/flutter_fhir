@@ -112,7 +112,7 @@ class ChargeItemDefinition {
 			applicability: applicability,
 			propertyGroup: propertyGroup);
 	var chargeItemDefinitionBox = await Hive.openBox<ChargeItemDefinition>('ChargeItemDefinitionBox');
-	chargeItemDefinitionBox.add(newChargeItemDefinition);
+	chargeItemDefinitionBox.put(newChargeItemDefinition.id, newChargeItemDefinition);
 	return newChargeItemDefinition;
 }
   @HiveField(0)
@@ -284,7 +284,7 @@ class ChargeItemDefinition_Applicability {
 			expression: expression,
 			elementExpression: elementExpression);
 	var chargeItemDefinition_ApplicabilityBox = await Hive.openBox<ChargeItemDefinition_Applicability>('ChargeItemDefinition_ApplicabilityBox');
-	chargeItemDefinition_ApplicabilityBox.add(newChargeItemDefinition_Applicability);
+	chargeItemDefinition_ApplicabilityBox.put(newChargeItemDefinition_Applicability.id, newChargeItemDefinition_Applicability);
 	return newChargeItemDefinition_Applicability;
 }
   String id;
@@ -329,7 +329,7 @@ class ChargeItemDefinition_PropertyGroup {
 			applicability: applicability,
 			priceComponent: priceComponent);
 	var chargeItemDefinition_PropertyGroupBox = await Hive.openBox<ChargeItemDefinition_PropertyGroup>('ChargeItemDefinition_PropertyGroupBox');
-	chargeItemDefinition_PropertyGroupBox.add(newChargeItemDefinition_PropertyGroup);
+	chargeItemDefinition_PropertyGroupBox.put(newChargeItemDefinition_PropertyGroup.id, newChargeItemDefinition_PropertyGroup);
 	return newChargeItemDefinition_PropertyGroup;
 }
   String id;
@@ -374,7 +374,7 @@ class ChargeItemDefinition_PriceComponent {
 			elementFactor: elementFactor,
 			amount: amount);
 	var chargeItemDefinition_PriceComponentBox = await Hive.openBox<ChargeItemDefinition_PriceComponent>('ChargeItemDefinition_PriceComponentBox');
-	chargeItemDefinition_PriceComponentBox.add(newChargeItemDefinition_PriceComponent);
+	chargeItemDefinition_PriceComponentBox.put(newChargeItemDefinition_PriceComponent.id, newChargeItemDefinition_PriceComponent);
 	return newChargeItemDefinition_PriceComponent;
 }
   String id;

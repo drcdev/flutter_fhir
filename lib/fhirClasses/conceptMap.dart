@@ -110,7 +110,7 @@ class ConceptMap {
 			elementTargetCanonical: elementTargetCanonical,
 			group: group);
 	var conceptMapBox = await Hive.openBox<ConceptMap>('ConceptMapBox');
-	conceptMapBox.add(newConceptMap);
+	conceptMapBox.put(newConceptMap.id, newConceptMap);
 	return newConceptMap;
 }
   @HiveField(0)
@@ -290,7 +290,7 @@ class ConceptMap_Group {
 			element: element,
 			unmapped: unmapped);
 	var conceptMap_GroupBox = await Hive.openBox<ConceptMap_Group>('ConceptMap_GroupBox');
-	conceptMap_GroupBox.add(newConceptMap_Group);
+	conceptMap_GroupBox.put(newConceptMap_Group.id, newConceptMap_Group);
 	return newConceptMap_Group;
 }
   String id;
@@ -349,7 +349,7 @@ class ConceptMap_Element {
 			elementDisplay: elementDisplay,
 			target: target);
 	var conceptMap_ElementBox = await Hive.openBox<ConceptMap_Element>('ConceptMap_ElementBox');
-	conceptMap_ElementBox.add(newConceptMap_Element);
+	conceptMap_ElementBox.put(newConceptMap_Element.id, newConceptMap_Element);
 	return newConceptMap_Element;
 }
   String id;
@@ -408,7 +408,7 @@ class ConceptMap_Target {
 			dependsOn: dependsOn,
 			product: product);
 	var conceptMap_TargetBox = await Hive.openBox<ConceptMap_Target>('ConceptMap_TargetBox');
-	conceptMap_TargetBox.add(newConceptMap_Target);
+	conceptMap_TargetBox.put(newConceptMap_Target.id, newConceptMap_Target);
 	return newConceptMap_Target;
 }
   String id;
@@ -471,7 +471,7 @@ class ConceptMap_DependsOn {
 			display: display,
 			elementDisplay: elementDisplay);
 	var conceptMap_DependsOnBox = await Hive.openBox<ConceptMap_DependsOn>('ConceptMap_DependsOnBox');
-	conceptMap_DependsOnBox.add(newConceptMap_DependsOn);
+	conceptMap_DependsOnBox.put(newConceptMap_DependsOn.id, newConceptMap_DependsOn);
 	return newConceptMap_DependsOn;
 }
   String id;
@@ -528,7 +528,7 @@ class ConceptMap_Unmapped {
 			elementDisplay: elementDisplay,
 			url: url);
 	var conceptMap_UnmappedBox = await Hive.openBox<ConceptMap_Unmapped>('ConceptMap_UnmappedBox');
-	conceptMap_UnmappedBox.add(newConceptMap_Unmapped);
+	conceptMap_UnmappedBox.put(newConceptMap_Unmapped.id, newConceptMap_Unmapped);
 	return newConceptMap_Unmapped;
 }
   String id;

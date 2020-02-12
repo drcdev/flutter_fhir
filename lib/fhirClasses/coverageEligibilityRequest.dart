@@ -80,7 +80,7 @@ class CoverageEligibilityRequest {
 			insurance: insurance,
 			item: item);
 	var coverageEligibilityRequestBox = await Hive.openBox<CoverageEligibilityRequest>('CoverageEligibilityRequestBox');
-	coverageEligibilityRequestBox.add(newCoverageEligibilityRequest);
+	coverageEligibilityRequestBox.put(newCoverageEligibilityRequest.id, newCoverageEligibilityRequest);
 	return newCoverageEligibilityRequest;
 }
   @HiveField(0)
@@ -202,7 +202,7 @@ class CoverageEligibilityRequest_SupportingInfo {
 			appliesToAll: appliesToAll,
 			elementAppliesToAll: elementAppliesToAll);
 	var coverageEligibilityRequest_SupportingInfoBox = await Hive.openBox<CoverageEligibilityRequest_SupportingInfo>('CoverageEligibilityRequest_SupportingInfoBox');
-	coverageEligibilityRequest_SupportingInfoBox.add(newCoverageEligibilityRequest_SupportingInfo);
+	coverageEligibilityRequest_SupportingInfoBox.put(newCoverageEligibilityRequest_SupportingInfo.id, newCoverageEligibilityRequest_SupportingInfo);
 	return newCoverageEligibilityRequest_SupportingInfo;
 }
   String id;
@@ -251,7 +251,7 @@ class CoverageEligibilityRequest_Insurance {
 			businessArrangement: businessArrangement,
 			elementBusinessArrangement: elementBusinessArrangement);
 	var coverageEligibilityRequest_InsuranceBox = await Hive.openBox<CoverageEligibilityRequest_Insurance>('CoverageEligibilityRequest_InsuranceBox');
-	coverageEligibilityRequest_InsuranceBox.add(newCoverageEligibilityRequest_Insurance);
+	coverageEligibilityRequest_InsuranceBox.put(newCoverageEligibilityRequest_Insurance.id, newCoverageEligibilityRequest_Insurance);
 	return newCoverageEligibilityRequest_Insurance;
 }
   String id;
@@ -312,7 +312,7 @@ class CoverageEligibilityRequest_Item {
 			diagnosis: diagnosis,
 			detail: detail);
 	var coverageEligibilityRequest_ItemBox = await Hive.openBox<CoverageEligibilityRequest_Item>('CoverageEligibilityRequest_ItemBox');
-	coverageEligibilityRequest_ItemBox.add(newCoverageEligibilityRequest_Item);
+	coverageEligibilityRequest_ItemBox.put(newCoverageEligibilityRequest_Item.id, newCoverageEligibilityRequest_Item);
 	return newCoverageEligibilityRequest_Item;
 }
   String id;
@@ -367,7 +367,7 @@ class CoverageEligibilityRequest_Diagnosis {
 			diagnosisCodeableConcept: diagnosisCodeableConcept,
 			diagnosisReference: diagnosisReference);
 	var coverageEligibilityRequest_DiagnosisBox = await Hive.openBox<CoverageEligibilityRequest_Diagnosis>('CoverageEligibilityRequest_DiagnosisBox');
-	coverageEligibilityRequest_DiagnosisBox.add(newCoverageEligibilityRequest_Diagnosis);
+	coverageEligibilityRequest_DiagnosisBox.put(newCoverageEligibilityRequest_Diagnosis.id, newCoverageEligibilityRequest_Diagnosis);
 	return newCoverageEligibilityRequest_Diagnosis;
 }
   String id;

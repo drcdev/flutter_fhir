@@ -82,7 +82,7 @@ class GuidanceResponse {
 			result: result,
 			dataRequirement: dataRequirement);
 	var guidanceResponseBox = await Hive.openBox<GuidanceResponse>('GuidanceResponseBox');
-	guidanceResponseBox.add(newGuidanceResponse);
+	guidanceResponseBox.put(newGuidanceResponse.id, newGuidanceResponse);
 	return newGuidanceResponse;
 }
   @HiveField(0)

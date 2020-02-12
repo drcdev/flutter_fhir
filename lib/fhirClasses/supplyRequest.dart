@@ -87,7 +87,7 @@ class SupplyRequest {
 			deliverFrom: deliverFrom,
 			deliverTo: deliverTo);
 	var supplyRequestBox = await Hive.openBox<SupplyRequest>('SupplyRequestBox');
-	supplyRequestBox.add(newSupplyRequest);
+	supplyRequestBox.put(newSupplyRequest.id, newSupplyRequest);
 	return newSupplyRequest;
 }
   @HiveField(0)
@@ -220,7 +220,7 @@ class SupplyRequest_Parameter {
 			valueBoolean: valueBoolean,
 			elementValueBoolean: elementValueBoolean);
 	var supplyRequest_ParameterBox = await Hive.openBox<SupplyRequest_Parameter>('SupplyRequest_ParameterBox');
-	supplyRequest_ParameterBox.add(newSupplyRequest_Parameter);
+	supplyRequest_ParameterBox.put(newSupplyRequest_Parameter.id, newSupplyRequest_Parameter);
 	return newSupplyRequest_Parameter;
 }
   String id;

@@ -96,7 +96,7 @@ class ResearchStudy {
 			arm: arm,
 			objective: objective);
 	var researchStudyBox = await Hive.openBox<ResearchStudy>('ResearchStudyBox');
-	researchStudyBox.add(newResearchStudy);
+	researchStudyBox.put(newResearchStudy.id, newResearchStudy);
 	return newResearchStudy;
 }
   @HiveField(0)
@@ -242,7 +242,7 @@ class ResearchStudy_Arm {
 			description: description,
 			elementDescription: elementDescription);
 	var researchStudy_ArmBox = await Hive.openBox<ResearchStudy_Arm>('ResearchStudy_ArmBox');
-	researchStudy_ArmBox.add(newResearchStudy_Arm);
+	researchStudy_ArmBox.put(newResearchStudy_Arm.id, newResearchStudy_Arm);
 	return newResearchStudy_Arm;
 }
   String id;
@@ -287,7 +287,7 @@ class ResearchStudy_Objective {
 			elementName: elementName,
 			type: type);
 	var researchStudy_ObjectiveBox = await Hive.openBox<ResearchStudy_Objective>('ResearchStudy_ObjectiveBox');
-	researchStudy_ObjectiveBox.add(newResearchStudy_Objective);
+	researchStudy_ObjectiveBox.put(newResearchStudy_Objective.id, newResearchStudy_Objective);
 	return newResearchStudy_Objective;
 }
   String id;

@@ -71,7 +71,7 @@ class Slot {
 			comment: comment,
 			elementComment: elementComment);
 	var slotBox = await Hive.openBox<Slot>('SlotBox');
-	slotBox.add(newSlot);
+	slotBox.put(newSlot.id, newSlot);
 	return newSlot;
 }
   @HiveField(0)

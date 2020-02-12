@@ -31,7 +31,7 @@ class Annotation {
 			text: text,
 			elementText: elementText);
 	var annotationBox = await Hive.openBox<Annotation>('AnnotationBox');
-	annotationBox.add(newAnnotation);
+	annotationBox.put(newAnnotation.id, newAnnotation);
 	return newAnnotation;
 }
   @HiveField(0)

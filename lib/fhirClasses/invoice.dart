@@ -81,7 +81,7 @@ class Invoice {
 			elementPaymentTerms: elementPaymentTerms,
 			note: note);
 	var invoiceBox = await Hive.openBox<Invoice>('InvoiceBox');
-	invoiceBox.add(newInvoice);
+	invoiceBox.put(newInvoice.id, newInvoice);
 	return newInvoice;
 }
   @HiveField(0)
@@ -200,7 +200,7 @@ class Invoice_Participant {
 			role: role,
 			actor: actor);
 	var invoice_ParticipantBox = await Hive.openBox<Invoice_Participant>('Invoice_ParticipantBox');
-	invoice_ParticipantBox.add(newInvoice_Participant);
+	invoice_ParticipantBox.put(newInvoice_Participant.id, newInvoice_Participant);
 	return newInvoice_Participant;
 }
   String id;
@@ -243,7 +243,7 @@ class Invoice_LineItem {
 			chargeItemCodeableConcept: chargeItemCodeableConcept,
 			priceComponent: priceComponent);
 	var invoice_LineItemBox = await Hive.openBox<Invoice_LineItem>('Invoice_LineItemBox');
-	invoice_LineItemBox.add(newInvoice_LineItem);
+	invoice_LineItemBox.put(newInvoice_LineItem.id, newInvoice_LineItem);
 	return newInvoice_LineItem;
 }
   String id;
@@ -294,7 +294,7 @@ class Invoice_PriceComponent {
 			elementFactor: elementFactor,
 			amount: amount);
 	var invoice_PriceComponentBox = await Hive.openBox<Invoice_PriceComponent>('Invoice_PriceComponentBox');
-	invoice_PriceComponentBox.add(newInvoice_PriceComponent);
+	invoice_PriceComponentBox.put(newInvoice_PriceComponent.id, newInvoice_PriceComponent);
 	return newInvoice_PriceComponent;
 }
   String id;

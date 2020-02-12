@@ -63,7 +63,7 @@ class AppointmentResponse {
 			comment: comment,
 			elementComment: elementComment);
 	var appointmentResponseBox = await Hive.openBox<AppointmentResponse>('AppointmentResponseBox');
-	appointmentResponseBox.add(newAppointmentResponse);
+	appointmentResponseBox.put(newAppointmentResponse.id, newAppointmentResponse);
 	return newAppointmentResponse;
 }
   @HiveField(0)

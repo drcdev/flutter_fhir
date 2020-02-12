@@ -128,7 +128,7 @@ class MedicationRequest {
 			detectedIssue: detectedIssue,
 			eventHistory: eventHistory);
 	var medicationRequestBox = await Hive.openBox<MedicationRequest>('MedicationRequestBox');
-	medicationRequestBox.add(newMedicationRequest);
+	medicationRequestBox.put(newMedicationRequest.id, newMedicationRequest);
 	return newMedicationRequest;
 }
   @HiveField(0)
@@ -325,7 +325,7 @@ class MedicationRequest_DispenseRequest {
 			expectedSupplyDuration: expectedSupplyDuration,
 			performer: performer);
 	var medicationRequest_DispenseRequestBox = await Hive.openBox<MedicationRequest_DispenseRequest>('MedicationRequest_DispenseRequestBox');
-	medicationRequest_DispenseRequestBox.add(newMedicationRequest_DispenseRequest);
+	medicationRequest_DispenseRequestBox.put(newMedicationRequest_DispenseRequest.id, newMedicationRequest_DispenseRequest);
 	return newMedicationRequest_DispenseRequest;
 }
   String id;
@@ -374,7 +374,7 @@ class MedicationRequest_InitialFill {
 			quantity: quantity,
 			duration: duration);
 	var medicationRequest_InitialFillBox = await Hive.openBox<MedicationRequest_InitialFill>('MedicationRequest_InitialFillBox');
-	medicationRequest_InitialFillBox.add(newMedicationRequest_InitialFill);
+	medicationRequest_InitialFillBox.put(newMedicationRequest_InitialFill.id, newMedicationRequest_InitialFill);
 	return newMedicationRequest_InitialFill;
 }
   String id;
@@ -415,7 +415,7 @@ class MedicationRequest_Substitution {
 			allowedCodeableConcept: allowedCodeableConcept,
 			reason: reason);
 	var medicationRequest_SubstitutionBox = await Hive.openBox<MedicationRequest_Substitution>('MedicationRequest_SubstitutionBox');
-	medicationRequest_SubstitutionBox.add(newMedicationRequest_Substitution);
+	medicationRequest_SubstitutionBox.put(newMedicationRequest_Substitution.id, newMedicationRequest_Substitution);
 	return newMedicationRequest_Substitution;
 }
   String id;

@@ -24,7 +24,7 @@ class Money {
 			currency: currency,
 			elementCurrency: elementCurrency);
 	var moneyBox = await Hive.openBox<Money>('MoneyBox');
-	moneyBox.add(newMoney);
+	moneyBox.put(newMoney.id, newMoney);
 	return newMoney;
 }
   @HiveField(0)

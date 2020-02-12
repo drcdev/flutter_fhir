@@ -55,7 +55,7 @@ class Address {
 			elementCountry: elementCountry,
 			period: period);
 	var addressBox = await Hive.openBox<Address>('AddressBox');
-	addressBox.add(newAddress);
+	addressBox.put(newAddress.id, newAddress);
 	return newAddress;
 }
   @HiveField(0)

@@ -102,7 +102,7 @@ class Appointment {
 			participant: participant,
 			requestedPeriod: requestedPeriod);
 	var appointmentBox = await Hive.openBox<Appointment>('AppointmentBox');
-	appointmentBox.add(newAppointment);
+	appointmentBox.put(newAppointment.id, newAppointment);
 	return newAppointment;
 }
   @HiveField(0)
@@ -264,7 +264,7 @@ class Appointment_Participant {
 			elementStatus: elementStatus,
 			period: period);
 	var appointment_ParticipantBox = await Hive.openBox<Appointment_Participant>('Appointment_ParticipantBox');
-	appointment_ParticipantBox.add(newAppointment_Participant);
+	appointment_ParticipantBox.put(newAppointment_Participant.id, newAppointment_Participant);
 	return newAppointment_Participant;
 }
   String id;

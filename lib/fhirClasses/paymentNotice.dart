@@ -70,7 +70,7 @@ class PaymentNotice {
 			amount: amount,
 			paymentStatus: paymentStatus);
 	var paymentNoticeBox = await Hive.openBox<PaymentNotice>('PaymentNoticeBox');
-	paymentNoticeBox.add(newPaymentNotice);
+	paymentNoticeBox.put(newPaymentNotice.id, newPaymentNotice);
 	return newPaymentNotice;
 }
   @HiveField(0)

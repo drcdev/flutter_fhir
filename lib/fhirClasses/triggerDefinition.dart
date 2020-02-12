@@ -44,7 +44,7 @@ class TriggerDefinition {
 			data: data,
 			condition: condition);
 	var triggerDefinitionBox = await Hive.openBox<TriggerDefinition>('TriggerDefinitionBox');
-	triggerDefinitionBox.add(newTriggerDefinition);
+	triggerDefinitionBox.put(newTriggerDefinition.id, newTriggerDefinition);
 	return newTriggerDefinition;
 }
   @HiveField(0)

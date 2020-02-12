@@ -188,7 +188,7 @@ class Extension {
 			valueDosage: valueDosage,
 			valueMeta: valueMeta);
 	var extensionBox = await Hive.openBox<Extension>('ExtensionBox');
-	extensionBox.add(newExtension);
+	extensionBox.put(newExtension.id, newExtension);
 	return newExtension;
 }
   @HiveField(0)

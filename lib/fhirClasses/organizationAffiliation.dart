@@ -66,7 +66,7 @@ class OrganizationAffiliation {
 			telecom: telecom,
 			endpoint: endpoint);
 	var organizationAffiliationBox = await Hive.openBox<OrganizationAffiliation>('OrganizationAffiliationBox');
-	organizationAffiliationBox.add(newOrganizationAffiliation);
+	organizationAffiliationBox.put(newOrganizationAffiliation.id, newOrganizationAffiliation);
 	return newOrganizationAffiliation;
 }
   @HiveField(0)

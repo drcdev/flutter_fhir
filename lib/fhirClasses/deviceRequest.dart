@@ -110,7 +110,7 @@ class DeviceRequest {
 			note: note,
 			relevantHistory: relevantHistory);
 	var deviceRequestBox = await Hive.openBox<DeviceRequest>('DeviceRequestBox');
-	deviceRequestBox.add(newDeviceRequest);
+	deviceRequestBox.put(newDeviceRequest.id, newDeviceRequest);
 	return newDeviceRequest;
 }
   @HiveField(0)
@@ -276,7 +276,7 @@ class DeviceRequest_Parameter {
 			valueBoolean: valueBoolean,
 			elementValueBoolean: elementValueBoolean);
 	var deviceRequest_ParameterBox = await Hive.openBox<DeviceRequest_Parameter>('DeviceRequest_ParameterBox');
-	deviceRequest_ParameterBox.add(newDeviceRequest_Parameter);
+	deviceRequest_ParameterBox.put(newDeviceRequest_Parameter.id, newDeviceRequest_Parameter);
 	return newDeviceRequest_Parameter;
 }
   String id;

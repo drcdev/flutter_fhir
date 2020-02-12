@@ -81,7 +81,7 @@ class PaymentReconciliation {
 			formCode: formCode,
 			processNote: processNote);
 	var paymentReconciliationBox = await Hive.openBox<PaymentReconciliation>('PaymentReconciliationBox');
-	paymentReconciliationBox.add(newPaymentReconciliation);
+	paymentReconciliationBox.put(newPaymentReconciliation.id, newPaymentReconciliation);
 	return newPaymentReconciliation;
 }
   @HiveField(0)
@@ -218,7 +218,7 @@ class PaymentReconciliation_Detail {
 			payee: payee,
 			amount: amount);
 	var paymentReconciliation_DetailBox = await Hive.openBox<PaymentReconciliation_Detail>('PaymentReconciliation_DetailBox');
-	paymentReconciliation_DetailBox.add(newPaymentReconciliation_Detail);
+	paymentReconciliation_DetailBox.put(newPaymentReconciliation_Detail.id, newPaymentReconciliation_Detail);
 	return newPaymentReconciliation_Detail;
 }
   String id;
@@ -277,7 +277,7 @@ class PaymentReconciliation_ProcessNote {
 			text: text,
 			elementText: elementText);
 	var paymentReconciliation_ProcessNoteBox = await Hive.openBox<PaymentReconciliation_ProcessNote>('PaymentReconciliation_ProcessNoteBox');
-	paymentReconciliation_ProcessNoteBox.add(newPaymentReconciliation_ProcessNote);
+	paymentReconciliation_ProcessNoteBox.put(newPaymentReconciliation_ProcessNote.id, newPaymentReconciliation_ProcessNote);
 	return newPaymentReconciliation_ProcessNote;
 }
   String id;

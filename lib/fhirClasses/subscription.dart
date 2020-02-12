@@ -61,7 +61,7 @@ class Subscription {
 			elementError: elementError,
 			channel: channel);
 	var subscriptionBox = await Hive.openBox<Subscription>('SubscriptionBox');
-	subscriptionBox.add(newSubscription);
+	subscriptionBox.put(newSubscription.id, newSubscription);
 	return newSubscription;
 }
   @HiveField(0)
@@ -168,7 +168,7 @@ class Subscription_Channel {
 			header: header,
 			elementHeader: elementHeader);
 	var subscription_ChannelBox = await Hive.openBox<Subscription_Channel>('Subscription_ChannelBox');
-	subscription_ChannelBox.add(newSubscription_Channel);
+	subscription_ChannelBox.put(newSubscription_Channel.id, newSubscription_Channel);
 	return newSubscription_Channel;
 }
   String id;

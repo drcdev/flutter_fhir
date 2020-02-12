@@ -55,7 +55,7 @@ class SpecimenDefinition {
 			collection: collection,
 			typeTested: typeTested);
 	var specimenDefinitionBox = await Hive.openBox<SpecimenDefinition>('SpecimenDefinitionBox');
-	specimenDefinitionBox.add(newSpecimenDefinition);
+	specimenDefinitionBox.put(newSpecimenDefinition.id, newSpecimenDefinition);
 	return newSpecimenDefinition;
 }
   @HiveField(0)
@@ -153,7 +153,7 @@ class SpecimenDefinition_TypeTested {
 			rejectionCriterion: rejectionCriterion,
 			handling: handling);
 	var specimenDefinition_TypeTestedBox = await Hive.openBox<SpecimenDefinition_TypeTested>('SpecimenDefinition_TypeTestedBox');
-	specimenDefinition_TypeTestedBox.add(newSpecimenDefinition_TypeTested);
+	specimenDefinition_TypeTestedBox.put(newSpecimenDefinition_TypeTested.id, newSpecimenDefinition_TypeTested);
 	return newSpecimenDefinition_TypeTested;
 }
   String id;
@@ -228,7 +228,7 @@ class SpecimenDefinition_Container {
 			preparation: preparation,
 			elementPreparation: elementPreparation);
 	var specimenDefinition_ContainerBox = await Hive.openBox<SpecimenDefinition_Container>('SpecimenDefinition_ContainerBox');
-	specimenDefinition_ContainerBox.add(newSpecimenDefinition_Container);
+	specimenDefinition_ContainerBox.put(newSpecimenDefinition_Container.id, newSpecimenDefinition_Container);
 	return newSpecimenDefinition_Container;
 }
   String id;
@@ -285,7 +285,7 @@ class SpecimenDefinition_Additive {
 			additiveCodeableConcept: additiveCodeableConcept,
 			additiveReference: additiveReference);
 	var specimenDefinition_AdditiveBox = await Hive.openBox<SpecimenDefinition_Additive>('SpecimenDefinition_AdditiveBox');
-	specimenDefinition_AdditiveBox.add(newSpecimenDefinition_Additive);
+	specimenDefinition_AdditiveBox.put(newSpecimenDefinition_Additive.id, newSpecimenDefinition_Additive);
 	return newSpecimenDefinition_Additive;
 }
   String id;
@@ -328,7 +328,7 @@ class SpecimenDefinition_Handling {
 			instruction: instruction,
 			elementInstruction: elementInstruction);
 	var specimenDefinition_HandlingBox = await Hive.openBox<SpecimenDefinition_Handling>('SpecimenDefinition_HandlingBox');
-	specimenDefinition_HandlingBox.add(newSpecimenDefinition_Handling);
+	specimenDefinition_HandlingBox.put(newSpecimenDefinition_Handling.id, newSpecimenDefinition_Handling);
 	return newSpecimenDefinition_Handling;
 }
   String id;

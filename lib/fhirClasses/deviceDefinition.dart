@@ -100,7 +100,7 @@ class DeviceDefinition {
 			parentDevice: parentDevice,
 			material: material);
 	var deviceDefinitionBox = await Hive.openBox<DeviceDefinition>('DeviceDefinitionBox');
-	deviceDefinitionBox.add(newDeviceDefinition);
+	deviceDefinitionBox.put(newDeviceDefinition.id, newDeviceDefinition);
 	return newDeviceDefinition;
 }
   @HiveField(0)
@@ -251,7 +251,7 @@ class DeviceDefinition_UdiDeviceIdentifier {
 			jurisdiction: jurisdiction,
 			elementJurisdiction: elementJurisdiction);
 	var deviceDefinition_UdiDeviceIdentifierBox = await Hive.openBox<DeviceDefinition_UdiDeviceIdentifier>('DeviceDefinition_UdiDeviceIdentifierBox');
-	deviceDefinition_UdiDeviceIdentifierBox.add(newDeviceDefinition_UdiDeviceIdentifier);
+	deviceDefinition_UdiDeviceIdentifierBox.put(newDeviceDefinition_UdiDeviceIdentifier.id, newDeviceDefinition_UdiDeviceIdentifier);
 	return newDeviceDefinition_UdiDeviceIdentifier;
 }
   String id;
@@ -300,7 +300,7 @@ class DeviceDefinition_DeviceName {
 			type: type,
 			elementType: elementType);
 	var deviceDefinition_DeviceNameBox = await Hive.openBox<DeviceDefinition_DeviceName>('DeviceDefinition_DeviceNameBox');
-	deviceDefinition_DeviceNameBox.add(newDeviceDefinition_DeviceName);
+	deviceDefinition_DeviceNameBox.put(newDeviceDefinition_DeviceName.id, newDeviceDefinition_DeviceName);
 	return newDeviceDefinition_DeviceName;
 }
   String id;
@@ -345,7 +345,7 @@ class DeviceDefinition_Specialization {
 			version: version,
 			elementVersion: elementVersion);
 	var deviceDefinition_SpecializationBox = await Hive.openBox<DeviceDefinition_Specialization>('DeviceDefinition_SpecializationBox');
-	deviceDefinition_SpecializationBox.add(newDeviceDefinition_Specialization);
+	deviceDefinition_SpecializationBox.put(newDeviceDefinition_Specialization.id, newDeviceDefinition_Specialization);
 	return newDeviceDefinition_Specialization;
 }
   String id;
@@ -386,7 +386,7 @@ class DeviceDefinition_Capability {
 			type: type,
 			description: description);
 	var deviceDefinition_CapabilityBox = await Hive.openBox<DeviceDefinition_Capability>('DeviceDefinition_CapabilityBox');
-	deviceDefinition_CapabilityBox.add(newDeviceDefinition_Capability);
+	deviceDefinition_CapabilityBox.put(newDeviceDefinition_Capability.id, newDeviceDefinition_Capability);
 	return newDeviceDefinition_Capability;
 }
   String id;
@@ -425,7 +425,7 @@ class DeviceDefinition_Property {
 			valueQuantity: valueQuantity,
 			valueCode: valueCode);
 	var deviceDefinition_PropertyBox = await Hive.openBox<DeviceDefinition_Property>('DeviceDefinition_PropertyBox');
-	deviceDefinition_PropertyBox.add(newDeviceDefinition_Property);
+	deviceDefinition_PropertyBox.put(newDeviceDefinition_Property.id, newDeviceDefinition_Property);
 	return newDeviceDefinition_Property;
 }
   String id;
@@ -470,7 +470,7 @@ class DeviceDefinition_Material {
 			allergenicIndicator: allergenicIndicator,
 			elementAllergenicIndicator: elementAllergenicIndicator);
 	var deviceDefinition_MaterialBox = await Hive.openBox<DeviceDefinition_Material>('DeviceDefinition_MaterialBox');
-	deviceDefinition_MaterialBox.add(newDeviceDefinition_Material);
+	deviceDefinition_MaterialBox.put(newDeviceDefinition_Material.id, newDeviceDefinition_Material);
 	return newDeviceDefinition_Material;
 }
   String id;

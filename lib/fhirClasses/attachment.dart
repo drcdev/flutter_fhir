@@ -48,7 +48,7 @@ class Attachment {
 			creation: creation,
 			elementCreation: elementCreation);
 	var attachmentBox = await Hive.openBox<Attachment>('AttachmentBox');
-	attachmentBox.add(newAttachment);
+	attachmentBox.put(newAttachment.id, newAttachment);
 	return newAttachment;
 }
   @HiveField(0)

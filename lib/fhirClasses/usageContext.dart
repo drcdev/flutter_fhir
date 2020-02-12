@@ -31,7 +31,7 @@ class UsageContext {
 			valueRange: valueRange,
 			valueReference: valueReference);
 	var usageContextBox = await Hive.openBox<UsageContext>('UsageContextBox');
-	usageContextBox.add(newUsageContext);
+	usageContextBox.put(newUsageContext.id, newUsageContext);
 	return newUsageContext;
 }
   @HiveField(0)

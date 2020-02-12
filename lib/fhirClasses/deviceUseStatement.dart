@@ -78,7 +78,7 @@ class DeviceUseStatement {
 			bodySite: bodySite,
 			note: note);
 	var deviceUseStatementBox = await Hive.openBox<DeviceUseStatement>('DeviceUseStatementBox');
-	deviceUseStatementBox.add(newDeviceUseStatement);
+	deviceUseStatementBox.put(newDeviceUseStatement.id, newDeviceUseStatement);
 	return newDeviceUseStatement;
 }
   @HiveField(0)

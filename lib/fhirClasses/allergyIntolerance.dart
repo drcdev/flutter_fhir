@@ -97,7 +97,7 @@ class AllergyIntolerance {
 			note: note,
 			reaction: reaction);
 	var allergyIntoleranceBox = await Hive.openBox<AllergyIntolerance>('AllergyIntoleranceBox');
-	allergyIntoleranceBox.add(newAllergyIntolerance);
+	allergyIntoleranceBox.put(newAllergyIntolerance.id, newAllergyIntolerance);
 	return newAllergyIntolerance;
 }
   @HiveField(0)
@@ -253,7 +253,7 @@ class AllergyIntolerance_Reaction {
 			exposureRoute: exposureRoute,
 			note: note);
 	var allergyIntolerance_ReactionBox = await Hive.openBox<AllergyIntolerance_Reaction>('AllergyIntolerance_ReactionBox');
-	allergyIntolerance_ReactionBox.add(newAllergyIntolerance_Reaction);
+	allergyIntolerance_ReactionBox.put(newAllergyIntolerance_Reaction.id, newAllergyIntolerance_Reaction);
 	return newAllergyIntolerance_Reaction;
 }
   String id;

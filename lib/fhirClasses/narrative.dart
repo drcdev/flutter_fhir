@@ -23,7 +23,7 @@ class Narrative {
 			elementStatus: elementStatus,
 			div: div);
 	var narrativeBox = await Hive.openBox<Narrative>('NarrativeBox');
-	narrativeBox.add(newNarrative);
+	narrativeBox.put(newNarrative.id, newNarrative);
 	return newNarrative;
 }
   @HiveField(0)

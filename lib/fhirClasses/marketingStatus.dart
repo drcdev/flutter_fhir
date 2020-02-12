@@ -33,7 +33,7 @@ class MarketingStatus {
 			restoreDate: restoreDate,
 			elementRestoreDate: elementRestoreDate);
 	var marketingStatusBox = await Hive.openBox<MarketingStatus>('MarketingStatusBox');
-	marketingStatusBox.add(newMarketingStatus);
+	marketingStatusBox.put(newMarketingStatus.id, newMarketingStatus);
 	return newMarketingStatus;
 }
   @HiveField(0)

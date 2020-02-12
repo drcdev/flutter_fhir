@@ -74,7 +74,7 @@ class CatalogEntry {
 			additionalClassification: additionalClassification,
 			relatedEntry: relatedEntry);
 	var catalogEntryBox = await Hive.openBox<CatalogEntry>('CatalogEntryBox');
-	catalogEntryBox.add(newCatalogEntry);
+	catalogEntryBox.put(newCatalogEntry.id, newCatalogEntry);
 	return newCatalogEntry;
 }
   @HiveField(0)
@@ -186,7 +186,7 @@ class CatalogEntry_RelatedEntry {
 			elementRelationtype: elementRelationtype,
 			item: item);
 	var catalogEntry_RelatedEntryBox = await Hive.openBox<CatalogEntry_RelatedEntry>('CatalogEntry_RelatedEntryBox');
-	catalogEntry_RelatedEntryBox.add(newCatalogEntry_RelatedEntry);
+	catalogEntry_RelatedEntryBox.put(newCatalogEntry_RelatedEntry.id, newCatalogEntry_RelatedEntry);
 	return newCatalogEntry_RelatedEntry;
 }
   String id;

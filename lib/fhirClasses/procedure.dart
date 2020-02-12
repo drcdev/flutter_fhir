@@ -115,7 +115,7 @@ class Procedure {
 			usedReference: usedReference,
 			usedCode: usedCode);
 	var procedureBox = await Hive.openBox<Procedure>('ProcedureBox');
-	procedureBox.add(newProcedure);
+	procedureBox.put(newProcedure.id, newProcedure);
 	return newProcedure;
 }
   @HiveField(0)
@@ -284,7 +284,7 @@ class Procedure_Performer {
 			actor: actor,
 			onBehalfOf: onBehalfOf);
 	var procedure_PerformerBox = await Hive.openBox<Procedure_Performer>('Procedure_PerformerBox');
-	procedure_PerformerBox.add(newProcedure_Performer);
+	procedure_PerformerBox.put(newProcedure_Performer.id, newProcedure_Performer);
 	return newProcedure_Performer;
 }
   String id;
@@ -323,7 +323,7 @@ class Procedure_FocalDevice {
 			action: action,
 			manipulated: manipulated);
 	var procedure_FocalDeviceBox = await Hive.openBox<Procedure_FocalDevice>('Procedure_FocalDeviceBox');
-	procedure_FocalDeviceBox.add(newProcedure_FocalDevice);
+	procedure_FocalDeviceBox.put(newProcedure_FocalDevice.id, newProcedure_FocalDevice);
 	return newProcedure_FocalDevice;
 }
   String id;

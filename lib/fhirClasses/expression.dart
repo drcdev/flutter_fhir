@@ -36,7 +36,7 @@ class Expression {
 			reference: reference,
 			elementReference: elementReference);
 	var expressionBox = await Hive.openBox<Expression>('ExpressionBox');
-	expressionBox.add(newExpression);
+	expressionBox.put(newExpression.id, newExpression);
 	return newExpression;
 }
   @HiveField(0)

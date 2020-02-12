@@ -29,7 +29,7 @@ class ProductShelfLife {
 			period: period,
 			specialPrecautionsForStorage: specialPrecautionsForStorage);
 	var productShelfLifeBox = await Hive.openBox<ProductShelfLife>('ProductShelfLifeBox');
-	productShelfLifeBox.add(newProductShelfLife);
+	productShelfLifeBox.put(newProductShelfLife.id, newProductShelfLife);
 	return newProductShelfLife;
 }
   @HiveField(0)

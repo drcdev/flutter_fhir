@@ -104,7 +104,7 @@ class Media {
 			content: content,
 			note: note);
 	var mediaBox = await Hive.openBox<Media>('MediaBox');
-	mediaBox.add(newMedia);
+	mediaBox.put(newMedia.id, newMedia);
 	return newMedia;
 }
   @HiveField(0)

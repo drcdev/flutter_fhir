@@ -114,7 +114,7 @@ class Device {
 			safety: safety,
 			parent: parent);
 	var deviceBox = await Hive.openBox<Device>('DeviceBox');
-	deviceBox.add(newDevice);
+	deviceBox.put(newDevice.id, newDevice);
 	return newDevice;
 }
   @HiveField(0)
@@ -301,7 +301,7 @@ class Device_UdiCarrier {
 			entryType: entryType,
 			elementEntryType: elementEntryType);
 	var device_UdiCarrierBox = await Hive.openBox<Device_UdiCarrier>('Device_UdiCarrierBox');
-	device_UdiCarrierBox.add(newDevice_UdiCarrier);
+	device_UdiCarrierBox.put(newDevice_UdiCarrier.id, newDevice_UdiCarrier);
 	return newDevice_UdiCarrier;
 }
   String id;
@@ -362,7 +362,7 @@ class Device_DeviceName {
 			type: type,
 			elementType: elementType);
 	var device_DeviceNameBox = await Hive.openBox<Device_DeviceName>('Device_DeviceNameBox');
-	device_DeviceNameBox.add(newDevice_DeviceName);
+	device_DeviceNameBox.put(newDevice_DeviceName.id, newDevice_DeviceName);
 	return newDevice_DeviceName;
 }
   String id;
@@ -405,7 +405,7 @@ class Device_Specialization {
 			version: version,
 			elementVersion: elementVersion);
 	var device_SpecializationBox = await Hive.openBox<Device_Specialization>('Device_SpecializationBox');
-	device_SpecializationBox.add(newDevice_Specialization);
+	device_SpecializationBox.put(newDevice_Specialization.id, newDevice_Specialization);
 	return newDevice_Specialization;
 }
   String id;
@@ -448,7 +448,7 @@ class Device_Version {
 			value: value,
 			elementValue: elementValue);
 	var device_VersionBox = await Hive.openBox<Device_Version>('Device_VersionBox');
-	device_VersionBox.add(newDevice_Version);
+	device_VersionBox.put(newDevice_Version.id, newDevice_Version);
 	return newDevice_Version;
 }
   String id;
@@ -491,7 +491,7 @@ class Device_Property {
 			valueQuantity: valueQuantity,
 			valueCode: valueCode);
 	var device_PropertyBox = await Hive.openBox<Device_Property>('Device_PropertyBox');
-	device_PropertyBox.add(newDevice_Property);
+	device_PropertyBox.put(newDevice_Property.id, newDevice_Property);
 	return newDevice_Property;
 }
   String id;

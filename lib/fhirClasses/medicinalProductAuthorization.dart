@@ -80,7 +80,7 @@ class MedicinalProductAuthorization {
 			regulator: regulator,
 			procedure: procedure);
 	var medicinalProductAuthorizationBox = await Hive.openBox<MedicinalProductAuthorization>('MedicinalProductAuthorizationBox');
-	medicinalProductAuthorizationBox.add(newMedicinalProductAuthorization);
+	medicinalProductAuthorizationBox.put(newMedicinalProductAuthorization.id, newMedicinalProductAuthorization);
 	return newMedicinalProductAuthorization;
 }
   @HiveField(0)
@@ -205,7 +205,7 @@ class MedicinalProductAuthorization_JurisdictionalAuthorization {
 			legalStatusOfSupply: legalStatusOfSupply,
 			validityPeriod: validityPeriod);
 	var medicinalProductAuthorization_JurisdictionalAuthorizationBox = await Hive.openBox<MedicinalProductAuthorization_JurisdictionalAuthorization>('MedicinalProductAuthorization_JurisdictionalAuthorizationBox');
-	medicinalProductAuthorization_JurisdictionalAuthorizationBox.add(newMedicinalProductAuthorization_JurisdictionalAuthorization);
+	medicinalProductAuthorization_JurisdictionalAuthorizationBox.put(newMedicinalProductAuthorization_JurisdictionalAuthorization.id, newMedicinalProductAuthorization_JurisdictionalAuthorization);
 	return newMedicinalProductAuthorization_JurisdictionalAuthorization;
 }
   String id;
@@ -256,7 +256,7 @@ class MedicinalProductAuthorization_Procedure {
 			elementDateDateTime: elementDateDateTime,
 			application: application);
 	var medicinalProductAuthorization_ProcedureBox = await Hive.openBox<MedicinalProductAuthorization_Procedure>('MedicinalProductAuthorization_ProcedureBox');
-	medicinalProductAuthorization_ProcedureBox.add(newMedicinalProductAuthorization_Procedure);
+	medicinalProductAuthorization_ProcedureBox.put(newMedicinalProductAuthorization_Procedure.id, newMedicinalProductAuthorization_Procedure);
 	return newMedicinalProductAuthorization_Procedure;
 }
   String id;

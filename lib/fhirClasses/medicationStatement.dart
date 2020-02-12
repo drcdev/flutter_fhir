@@ -86,7 +86,7 @@ class MedicationStatement {
 			note: note,
 			dosage: dosage);
 	var medicationStatementBox = await Hive.openBox<MedicationStatement>('MedicationStatementBox');
-	medicationStatementBox.add(newMedicationStatement);
+	medicationStatementBox.put(newMedicationStatement.id, newMedicationStatement);
 	return newMedicationStatement;
 }
   @HiveField(0)

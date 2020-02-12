@@ -52,7 +52,7 @@ class SubstanceNucleicAcid {
 			oligoNucleotideType: oligoNucleotideType,
 			subunit: subunit);
 	var substanceNucleicAcidBox = await Hive.openBox<SubstanceNucleicAcid>('SubstanceNucleicAcidBox');
-	substanceNucleicAcidBox.add(newSubstanceNucleicAcid);
+	substanceNucleicAcidBox.put(newSubstanceNucleicAcid.id, newSubstanceNucleicAcid);
 	return newSubstanceNucleicAcid;
 }
   @HiveField(0)
@@ -150,7 +150,7 @@ class SubstanceNucleicAcid_Subunit {
 			linkage: linkage,
 			sugar: sugar);
 	var substanceNucleicAcid_SubunitBox = await Hive.openBox<SubstanceNucleicAcid_Subunit>('SubstanceNucleicAcid_SubunitBox');
-	substanceNucleicAcid_SubunitBox.add(newSubstanceNucleicAcid_Subunit);
+	substanceNucleicAcid_SubunitBox.put(newSubstanceNucleicAcid_Subunit.id, newSubstanceNucleicAcid_Subunit);
 	return newSubstanceNucleicAcid_Subunit;
 }
   String id;
@@ -215,7 +215,7 @@ class SubstanceNucleicAcid_Linkage {
 			residueSite: residueSite,
 			elementResidueSite: elementResidueSite);
 	var substanceNucleicAcid_LinkageBox = await Hive.openBox<SubstanceNucleicAcid_Linkage>('SubstanceNucleicAcid_LinkageBox');
-	substanceNucleicAcid_LinkageBox.add(newSubstanceNucleicAcid_Linkage);
+	substanceNucleicAcid_LinkageBox.put(newSubstanceNucleicAcid_Linkage.id, newSubstanceNucleicAcid_Linkage);
 	return newSubstanceNucleicAcid_Linkage;
 }
   String id;
@@ -268,7 +268,7 @@ class SubstanceNucleicAcid_Sugar {
 			residueSite: residueSite,
 			elementResidueSite: elementResidueSite);
 	var substanceNucleicAcid_SugarBox = await Hive.openBox<SubstanceNucleicAcid_Sugar>('SubstanceNucleicAcid_SugarBox');
-	substanceNucleicAcid_SugarBox.add(newSubstanceNucleicAcid_Sugar);
+	substanceNucleicAcid_SugarBox.put(newSubstanceNucleicAcid_Sugar.id, newSubstanceNucleicAcid_Sugar);
 	return newSubstanceNucleicAcid_Sugar;
 }
   String id;

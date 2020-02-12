@@ -36,7 +36,7 @@ class Duration {
 			code: code,
 			elementCode: elementCode);
 	var durationBox = await Hive.openBox<Duration>('DurationBox');
-	durationBox.add(newDuration);
+	durationBox.put(newDuration.id, newDuration);
 	return newDuration;
 }
   @HiveField(0)

@@ -70,7 +70,7 @@ class Practitioner {
 			qualification: qualification,
 			communication: communication);
 	var practitionerBox = await Hive.openBox<Practitioner>('PractitionerBox');
-	practitionerBox.add(newPractitioner);
+	practitionerBox.put(newPractitioner.id, newPractitioner);
 	return newPractitioner;
 }
   @HiveField(0)
@@ -172,7 +172,7 @@ class Practitioner_Qualification {
 			period: period,
 			issuer: issuer);
 	var practitioner_QualificationBox = await Hive.openBox<Practitioner_Qualification>('Practitioner_QualificationBox');
-	practitioner_QualificationBox.add(newPractitioner_Qualification);
+	practitioner_QualificationBox.put(newPractitioner_Qualification.id, newPractitioner_Qualification);
 	return newPractitioner_Qualification;
 }
   String id;

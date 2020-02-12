@@ -91,7 +91,7 @@ class ImagingStudy {
 			elementDescription: elementDescription,
 			series: series);
 	var imagingStudyBox = await Hive.openBox<ImagingStudy>('ImagingStudyBox');
-	imagingStudyBox.add(newImagingStudy);
+	imagingStudyBox.put(newImagingStudy.id, newImagingStudy);
 	return newImagingStudy;
 }
   @HiveField(0)
@@ -255,7 +255,7 @@ class ImagingStudy_Series {
 			performer: performer,
 			instance: instance);
 	var imagingStudy_SeriesBox = await Hive.openBox<ImagingStudy_Series>('ImagingStudy_SeriesBox');
-	imagingStudy_SeriesBox.add(newImagingStudy_Series);
+	imagingStudy_SeriesBox.put(newImagingStudy_Series.id, newImagingStudy_Series);
 	return newImagingStudy_Series;
 }
   String id;
@@ -322,7 +322,7 @@ class ImagingStudy_Performer {
 			function: function,
 			actor: actor);
 	var imagingStudy_PerformerBox = await Hive.openBox<ImagingStudy_Performer>('ImagingStudy_PerformerBox');
-	imagingStudy_PerformerBox.add(newImagingStudy_Performer);
+	imagingStudy_PerformerBox.put(newImagingStudy_Performer.id, newImagingStudy_Performer);
 	return newImagingStudy_Performer;
 }
   String id;
@@ -369,7 +369,7 @@ class ImagingStudy_Instance {
 			title: title,
 			elementTitle: elementTitle);
 	var imagingStudy_InstanceBox = await Hive.openBox<ImagingStudy_Instance>('ImagingStudy_InstanceBox');
-	imagingStudy_InstanceBox.add(newImagingStudy_Instance);
+	imagingStudy_InstanceBox.put(newImagingStudy_Instance.id, newImagingStudy_Instance);
 	return newImagingStudy_Instance;
 }
   String id;

@@ -1,0 +1,6 @@
+#!/bin/bash
+# fhirToDart
+
+python ./helpers/fhirSchemaToDart1.py
+flutter pub run build_runner build
+python ./helpers/fhirSchemaToDart2.py

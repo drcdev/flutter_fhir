@@ -61,7 +61,7 @@ class ResearchSubject {
 			elementActualArm: elementActualArm,
 			consent: consent);
 	var researchSubjectBox = await Hive.openBox<ResearchSubject>('ResearchSubjectBox');
-	researchSubjectBox.add(newResearchSubject);
+	researchSubjectBox.put(newResearchSubject.id, newResearchSubject);
 	return newResearchSubject;
 }
   @HiveField(0)

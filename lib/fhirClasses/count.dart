@@ -36,7 +36,7 @@ class Count {
 			code: code,
 			elementCode: elementCode);
 	var countBox = await Hive.openBox<Count>('CountBox');
-	countBox.add(newCount);
+	countBox.put(newCount.id, newCount);
 	return newCount;
 }
   @HiveField(0)

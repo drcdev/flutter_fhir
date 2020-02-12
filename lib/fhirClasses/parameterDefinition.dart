@@ -42,7 +42,7 @@ class ParameterDefinition {
 			elementType: elementType,
 			profile: profile);
 	var parameterDefinitionBox = await Hive.openBox<ParameterDefinition>('ParameterDefinitionBox');
-	parameterDefinitionBox.add(newParameterDefinition);
+	parameterDefinitionBox.put(newParameterDefinition.id, newParameterDefinition);
 	return newParameterDefinition;
 }
   @HiveField(0)

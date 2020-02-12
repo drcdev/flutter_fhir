@@ -172,7 +172,7 @@ class Measure {
 			group: group,
 			supplementalData: supplementalData);
 	var measureBox = await Hive.openBox<Measure>('MeasureBox');
-	measureBox.add(newMeasure);
+	measureBox.put(newMeasure.id, newMeasure);
 	return newMeasure;
 }
   @HiveField(0)
@@ -429,7 +429,7 @@ class Measure_Group {
 			population: population,
 			stratifier: stratifier);
 	var measure_GroupBox = await Hive.openBox<Measure_Group>('Measure_GroupBox');
-	measure_GroupBox.add(newMeasure_Group);
+	measure_GroupBox.put(newMeasure_Group.id, newMeasure_Group);
 	return newMeasure_Group;
 }
   String id;
@@ -476,7 +476,7 @@ class Measure_Population {
 			elementDescription: elementDescription,
 			criteria: criteria);
 	var measure_PopulationBox = await Hive.openBox<Measure_Population>('Measure_PopulationBox');
-	measure_PopulationBox.add(newMeasure_Population);
+	measure_PopulationBox.put(newMeasure_Population.id, newMeasure_Population);
 	return newMeasure_Population;
 }
   String id;
@@ -523,7 +523,7 @@ class Measure_Stratifier {
 			criteria: criteria,
 			component: component);
 	var measure_StratifierBox = await Hive.openBox<Measure_Stratifier>('Measure_StratifierBox');
-	measure_StratifierBox.add(newMeasure_Stratifier);
+	measure_StratifierBox.put(newMeasure_Stratifier.id, newMeasure_Stratifier);
 	return newMeasure_Stratifier;
 }
   String id;
@@ -570,7 +570,7 @@ class Measure_Component {
 			elementDescription: elementDescription,
 			criteria: criteria);
 	var measure_ComponentBox = await Hive.openBox<Measure_Component>('Measure_ComponentBox');
-	measure_ComponentBox.add(newMeasure_Component);
+	measure_ComponentBox.put(newMeasure_Component.id, newMeasure_Component);
 	return newMeasure_Component;
 }
   String id;
@@ -617,7 +617,7 @@ class Measure_SupplementalData {
 			elementDescription: elementDescription,
 			criteria: criteria);
 	var measure_SupplementalDataBox = await Hive.openBox<Measure_SupplementalData>('Measure_SupplementalDataBox');
-	measure_SupplementalDataBox.add(newMeasure_SupplementalData);
+	measure_SupplementalDataBox.put(newMeasure_SupplementalData.id, newMeasure_SupplementalData);
 	return newMeasure_SupplementalData;
 }
   String id;

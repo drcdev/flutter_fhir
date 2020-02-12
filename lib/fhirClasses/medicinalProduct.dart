@@ -83,7 +83,7 @@ class MedicinalProduct {
 			manufacturingBusinessOperation: manufacturingBusinessOperation,
 			specialDesignation: specialDesignation);
 	var medicinalProductBox = await Hive.openBox<MedicinalProduct>('MedicinalProductBox');
-	medicinalProductBox.add(newMedicinalProduct);
+	medicinalProductBox.put(newMedicinalProduct.id, newMedicinalProduct);
 	return newMedicinalProduct;
 }
   @HiveField(0)
@@ -209,7 +209,7 @@ class MedicinalProduct_Name {
 			namePart: namePart,
 			countryLanguage: countryLanguage);
 	var medicinalProduct_NameBox = await Hive.openBox<MedicinalProduct_Name>('MedicinalProduct_NameBox');
-	medicinalProduct_NameBox.add(newMedicinalProduct_Name);
+	medicinalProduct_NameBox.put(newMedicinalProduct_Name.id, newMedicinalProduct_Name);
 	return newMedicinalProduct_Name;
 }
   String id;
@@ -252,7 +252,7 @@ class MedicinalProduct_NamePart {
 			elementPart: elementPart,
 			type: type);
 	var medicinalProduct_NamePartBox = await Hive.openBox<MedicinalProduct_NamePart>('MedicinalProduct_NamePartBox');
-	medicinalProduct_NamePartBox.add(newMedicinalProduct_NamePart);
+	medicinalProduct_NamePartBox.put(newMedicinalProduct_NamePart.id, newMedicinalProduct_NamePart);
 	return newMedicinalProduct_NamePart;
 }
   String id;
@@ -293,7 +293,7 @@ class MedicinalProduct_CountryLanguage {
 			jurisdiction: jurisdiction,
 			language: language);
 	var medicinalProduct_CountryLanguageBox = await Hive.openBox<MedicinalProduct_CountryLanguage>('MedicinalProduct_CountryLanguageBox');
-	medicinalProduct_CountryLanguageBox.add(newMedicinalProduct_CountryLanguage);
+	medicinalProduct_CountryLanguageBox.put(newMedicinalProduct_CountryLanguage.id, newMedicinalProduct_CountryLanguage);
 	return newMedicinalProduct_CountryLanguage;
 }
   String id;
@@ -342,7 +342,7 @@ class MedicinalProduct_ManufacturingBusinessOperation {
 			manufacturer: manufacturer,
 			regulator: regulator);
 	var medicinalProduct_ManufacturingBusinessOperationBox = await Hive.openBox<MedicinalProduct_ManufacturingBusinessOperation>('MedicinalProduct_ManufacturingBusinessOperationBox');
-	medicinalProduct_ManufacturingBusinessOperationBox.add(newMedicinalProduct_ManufacturingBusinessOperation);
+	medicinalProduct_ManufacturingBusinessOperationBox.put(newMedicinalProduct_ManufacturingBusinessOperation.id, newMedicinalProduct_ManufacturingBusinessOperation);
 	return newMedicinalProduct_ManufacturingBusinessOperation;
 }
   String id;
@@ -403,7 +403,7 @@ class MedicinalProduct_SpecialDesignation {
 			elementDate: elementDate,
 			species: species);
 	var medicinalProduct_SpecialDesignationBox = await Hive.openBox<MedicinalProduct_SpecialDesignation>('MedicinalProduct_SpecialDesignationBox');
-	medicinalProduct_SpecialDesignationBox.add(newMedicinalProduct_SpecialDesignation);
+	medicinalProduct_SpecialDesignationBox.put(newMedicinalProduct_SpecialDesignation.id, newMedicinalProduct_SpecialDesignation);
 	return newMedicinalProduct_SpecialDesignation;
 }
   String id;

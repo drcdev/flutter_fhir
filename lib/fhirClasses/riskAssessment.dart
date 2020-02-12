@@ -84,7 +84,7 @@ class RiskAssessment {
 			elementMitigation: elementMitigation,
 			note: note);
 	var riskAssessmentBox = await Hive.openBox<RiskAssessment>('RiskAssessmentBox');
-	riskAssessmentBox.add(newRiskAssessment);
+	riskAssessmentBox.put(newRiskAssessment.id, newRiskAssessment);
 	return newRiskAssessment;
 }
   @HiveField(0)
@@ -224,7 +224,7 @@ class RiskAssessment_Prediction {
 			rationale: rationale,
 			elementRationale: elementRationale);
 	var riskAssessment_PredictionBox = await Hive.openBox<RiskAssessment_Prediction>('RiskAssessment_PredictionBox');
-	riskAssessment_PredictionBox.add(newRiskAssessment_Prediction);
+	riskAssessment_PredictionBox.put(newRiskAssessment_Prediction.id, newRiskAssessment_Prediction);
 	return newRiskAssessment_Prediction;
 }
   String id;

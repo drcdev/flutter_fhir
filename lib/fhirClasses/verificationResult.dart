@@ -78,7 +78,7 @@ class VerificationResult {
 			attestation: attestation,
 			validator: validator);
 	var verificationResultBox = await Hive.openBox<VerificationResult>('VerificationResultBox');
-	verificationResultBox.add(newVerificationResult);
+	verificationResultBox.put(newVerificationResult.id, newVerificationResult);
 	return newVerificationResult;
 }
   @HiveField(0)
@@ -206,7 +206,7 @@ class VerificationResult_PrimarySource {
 			canPushUpdates: canPushUpdates,
 			pushTypeAvailable: pushTypeAvailable);
 	var verificationResult_PrimarySourceBox = await Hive.openBox<VerificationResult_PrimarySource>('VerificationResult_PrimarySourceBox');
-	verificationResult_PrimarySourceBox.add(newVerificationResult_PrimarySource);
+	verificationResult_PrimarySourceBox.put(newVerificationResult_PrimarySource.id, newVerificationResult_PrimarySource);
 	return newVerificationResult_PrimarySource;
 }
   String id;
@@ -273,7 +273,7 @@ class VerificationResult_Attestation {
 			proxySignature: proxySignature,
 			sourceSignature: sourceSignature);
 	var verificationResult_AttestationBox = await Hive.openBox<VerificationResult_Attestation>('VerificationResult_AttestationBox');
-	verificationResult_AttestationBox.add(newVerificationResult_Attestation);
+	verificationResult_AttestationBox.put(newVerificationResult_Attestation.id, newVerificationResult_Attestation);
 	return newVerificationResult_Attestation;
 }
   String id;
@@ -332,7 +332,7 @@ class VerificationResult_Validator {
 			elementIdentityCertificate: elementIdentityCertificate,
 			attestationSignature: attestationSignature);
 	var verificationResult_ValidatorBox = await Hive.openBox<VerificationResult_Validator>('VerificationResult_ValidatorBox');
-	verificationResult_ValidatorBox.add(newVerificationResult_Validator);
+	verificationResult_ValidatorBox.put(newVerificationResult_Validator.id, newVerificationResult_Validator);
 	return newVerificationResult_Validator;
 }
   String id;

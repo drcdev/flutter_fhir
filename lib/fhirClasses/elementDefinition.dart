@@ -631,7 +631,7 @@ class ElementDefinition {
 			binding: binding,
 			mapping: mapping);
 	var elementDefinitionBox = await Hive.openBox<ElementDefinition>('ElementDefinitionBox');
-	elementDefinitionBox.add(newElementDefinition);
+	elementDefinitionBox.put(newElementDefinition.id, newElementDefinition);
 	return newElementDefinition;
 }
   @HiveField(0)
@@ -1530,7 +1530,7 @@ class ElementDefinition_Slicing {
 			rules: rules,
 			elementRules: elementRules);
 	var elementDefinition_SlicingBox = await Hive.openBox<ElementDefinition_Slicing>('ElementDefinition_SlicingBox');
-	elementDefinition_SlicingBox.add(newElementDefinition_Slicing);
+	elementDefinition_SlicingBox.put(newElementDefinition_Slicing.id, newElementDefinition_Slicing);
 	return newElementDefinition_Slicing;
 }
   String id;
@@ -1581,7 +1581,7 @@ class ElementDefinition_Discriminator {
 			path: path,
 			elementPath: elementPath);
 	var elementDefinition_DiscriminatorBox = await Hive.openBox<ElementDefinition_Discriminator>('ElementDefinition_DiscriminatorBox');
-	elementDefinition_DiscriminatorBox.add(newElementDefinition_Discriminator);
+	elementDefinition_DiscriminatorBox.put(newElementDefinition_Discriminator.id, newElementDefinition_Discriminator);
 	return newElementDefinition_Discriminator;
 }
   String id;
@@ -1630,7 +1630,7 @@ class ElementDefinition_Base {
 			max: max,
 			elementMax: elementMax);
 	var elementDefinition_BaseBox = await Hive.openBox<ElementDefinition_Base>('ElementDefinition_BaseBox');
-	elementDefinition_BaseBox.add(newElementDefinition_Base);
+	elementDefinition_BaseBox.put(newElementDefinition_Base.id, newElementDefinition_Base);
 	return newElementDefinition_Base;
 }
   String id;
@@ -1687,7 +1687,7 @@ class ElementDefinition_Type {
 			versioning: versioning,
 			elementVersioning: elementVersioning);
 	var elementDefinition_TypeBox = await Hive.openBox<ElementDefinition_Type>('ElementDefinition_TypeBox');
-	elementDefinition_TypeBox.add(newElementDefinition_Type);
+	elementDefinition_TypeBox.put(newElementDefinition_Type.id, newElementDefinition_Type);
 	return newElementDefinition_Type;
 }
   String id;
@@ -1874,7 +1874,7 @@ class ElementDefinition_Example {
 			valueDosage: valueDosage,
 			valueMeta: valueMeta);
 	var elementDefinition_ExampleBox = await Hive.openBox<ElementDefinition_Example>('ElementDefinition_ExampleBox');
-	elementDefinition_ExampleBox.add(newElementDefinition_Example);
+	elementDefinition_ExampleBox.put(newElementDefinition_Example.id, newElementDefinition_Example);
 	return newElementDefinition_Example;
 }
   String id;
@@ -2071,7 +2071,7 @@ class ElementDefinition_Constraint {
 			elementXpath: elementXpath,
 			source: source);
 	var elementDefinition_ConstraintBox = await Hive.openBox<ElementDefinition_Constraint>('ElementDefinition_ConstraintBox');
-	elementDefinition_ConstraintBox.add(newElementDefinition_Constraint);
+	elementDefinition_ConstraintBox.put(newElementDefinition_Constraint.id, newElementDefinition_Constraint);
 	return newElementDefinition_Constraint;
 }
   String id;
@@ -2136,7 +2136,7 @@ class ElementDefinition_Binding {
 			elementDescription: elementDescription,
 			valueSet: valueSet);
 	var elementDefinition_BindingBox = await Hive.openBox<ElementDefinition_Binding>('ElementDefinition_BindingBox');
-	elementDefinition_BindingBox.add(newElementDefinition_Binding);
+	elementDefinition_BindingBox.put(newElementDefinition_Binding.id, newElementDefinition_Binding);
 	return newElementDefinition_Binding;
 }
   String id;
@@ -2191,7 +2191,7 @@ class ElementDefinition_Mapping {
 			comment: comment,
 			elementComment: elementComment);
 	var elementDefinition_MappingBox = await Hive.openBox<ElementDefinition_Mapping>('ElementDefinition_MappingBox');
-	elementDefinition_MappingBox.add(newElementDefinition_Mapping);
+	elementDefinition_MappingBox.put(newElementDefinition_Mapping.id, newElementDefinition_Mapping);
 	return newElementDefinition_Mapping;
 }
   String id;

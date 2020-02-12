@@ -48,7 +48,7 @@ class Bundle {
 			entry: entry,
 			signature: signature);
 	var bundleBox = await Hive.openBox<Bundle>('BundleBox');
-	bundleBox.add(newBundle);
+	bundleBox.put(newBundle.id, newBundle);
 	return newBundle;
 }
   @HiveField(0)
@@ -129,7 +129,7 @@ class Bundle_Link {
 			url: url,
 			elementUrl: elementUrl);
 	var bundle_LinkBox = await Hive.openBox<Bundle_Link>('Bundle_LinkBox');
-	bundle_LinkBox.add(newBundle_Link);
+	bundle_LinkBox.put(newBundle_Link.id, newBundle_Link);
 	return newBundle_Link;
 }
   String id;
@@ -180,7 +180,7 @@ class Bundle_Entry {
 			request: request,
 			response: response);
 	var bundle_EntryBox = await Hive.openBox<Bundle_Entry>('Bundle_EntryBox');
-	bundle_EntryBox.add(newBundle_Entry);
+	bundle_EntryBox.put(newBundle_Entry.id, newBundle_Entry);
 	return newBundle_Entry;
 }
   String id;
@@ -231,7 +231,7 @@ class Bundle_Search {
 			score: score,
 			elementScore: elementScore);
 	var bundle_SearchBox = await Hive.openBox<Bundle_Search>('Bundle_SearchBox');
-	bundle_SearchBox.add(newBundle_Search);
+	bundle_SearchBox.put(newBundle_Search.id, newBundle_Search);
 	return newBundle_Search;
 }
   String id;
@@ -292,7 +292,7 @@ class Bundle_Request {
 			ifNoneExist: ifNoneExist,
 			elementIfNoneExist: elementIfNoneExist);
 	var bundle_RequestBox = await Hive.openBox<Bundle_Request>('Bundle_RequestBox');
-	bundle_RequestBox.add(newBundle_Request);
+	bundle_RequestBox.put(newBundle_Request.id, newBundle_Request);
 	return newBundle_Request;
 }
   String id;
@@ -363,7 +363,7 @@ class Bundle_Response {
 			elementLastModified: elementLastModified,
 			outcome: outcome);
 	var bundle_ResponseBox = await Hive.openBox<Bundle_Response>('Bundle_ResponseBox');
-	bundle_ResponseBox.add(newBundle_Response);
+	bundle_ResponseBox.put(newBundle_Response.id, newBundle_Response);
 	return newBundle_Response;
 }
   String id;

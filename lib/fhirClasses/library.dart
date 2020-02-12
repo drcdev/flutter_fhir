@@ -140,7 +140,7 @@ class Library {
 			dataRequirement: dataRequirement,
 			content: content);
 	var libraryBox = await Hive.openBox<Library>('LibraryBox');
-	libraryBox.add(newLibrary);
+	libraryBox.put(newLibrary.id, newLibrary);
 	return newLibrary;
 }
   @HiveField(0)

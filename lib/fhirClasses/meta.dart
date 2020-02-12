@@ -35,7 +35,7 @@ class Meta {
 			security: security,
 			tag: tag);
 	var metaBox = await Hive.openBox<Meta>('MetaBox');
-	metaBox.add(newMeta);
+	metaBox.put(newMeta.id, newMeta);
 	return newMeta;
 }
   @HiveField(0)

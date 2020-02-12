@@ -56,7 +56,7 @@ class MedicinalProductPharmaceutical {
 			characteristics: characteristics,
 			routeOfAdministration: routeOfAdministration);
 	var medicinalProductPharmaceuticalBox = await Hive.openBox<MedicinalProductPharmaceutical>('MedicinalProductPharmaceuticalBox');
-	medicinalProductPharmaceuticalBox.add(newMedicinalProductPharmaceutical);
+	medicinalProductPharmaceuticalBox.put(newMedicinalProductPharmaceutical.id, newMedicinalProductPharmaceutical);
 	return newMedicinalProductPharmaceutical;
 }
   @HiveField(0)
@@ -136,7 +136,7 @@ class MedicinalProductPharmaceutical_Characteristics {
 			code: code,
 			status: status);
 	var medicinalProductPharmaceutical_CharacteristicsBox = await Hive.openBox<MedicinalProductPharmaceutical_Characteristics>('MedicinalProductPharmaceutical_CharacteristicsBox');
-	medicinalProductPharmaceutical_CharacteristicsBox.add(newMedicinalProductPharmaceutical_Characteristics);
+	medicinalProductPharmaceutical_CharacteristicsBox.put(newMedicinalProductPharmaceutical_Characteristics.id, newMedicinalProductPharmaceutical_Characteristics);
 	return newMedicinalProductPharmaceutical_Characteristics;
 }
   String id;
@@ -183,7 +183,7 @@ class MedicinalProductPharmaceutical_RouteOfAdministration {
 			maxTreatmentPeriod: maxTreatmentPeriod,
 			targetSpecies: targetSpecies);
 	var medicinalProductPharmaceutical_RouteOfAdministrationBox = await Hive.openBox<MedicinalProductPharmaceutical_RouteOfAdministration>('MedicinalProductPharmaceutical_RouteOfAdministrationBox');
-	medicinalProductPharmaceutical_RouteOfAdministrationBox.add(newMedicinalProductPharmaceutical_RouteOfAdministration);
+	medicinalProductPharmaceutical_RouteOfAdministrationBox.put(newMedicinalProductPharmaceutical_RouteOfAdministration.id, newMedicinalProductPharmaceutical_RouteOfAdministration);
 	return newMedicinalProductPharmaceutical_RouteOfAdministration;
 }
   String id;
@@ -230,7 +230,7 @@ class MedicinalProductPharmaceutical_TargetSpecies {
 			code: code,
 			withdrawalPeriod: withdrawalPeriod);
 	var medicinalProductPharmaceutical_TargetSpeciesBox = await Hive.openBox<MedicinalProductPharmaceutical_TargetSpecies>('MedicinalProductPharmaceutical_TargetSpeciesBox');
-	medicinalProductPharmaceutical_TargetSpeciesBox.add(newMedicinalProductPharmaceutical_TargetSpecies);
+	medicinalProductPharmaceutical_TargetSpeciesBox.put(newMedicinalProductPharmaceutical_TargetSpecies.id, newMedicinalProductPharmaceutical_TargetSpecies);
 	return newMedicinalProductPharmaceutical_TargetSpecies;
 }
   String id;
@@ -271,7 +271,7 @@ class MedicinalProductPharmaceutical_WithdrawalPeriod {
 			supportingInformation: supportingInformation,
 			elementSupportingInformation: elementSupportingInformation);
 	var medicinalProductPharmaceutical_WithdrawalPeriodBox = await Hive.openBox<MedicinalProductPharmaceutical_WithdrawalPeriod>('MedicinalProductPharmaceutical_WithdrawalPeriodBox');
-	medicinalProductPharmaceutical_WithdrawalPeriodBox.add(newMedicinalProductPharmaceutical_WithdrawalPeriod);
+	medicinalProductPharmaceutical_WithdrawalPeriodBox.put(newMedicinalProductPharmaceutical_WithdrawalPeriod.id, newMedicinalProductPharmaceutical_WithdrawalPeriod);
 	return newMedicinalProductPharmaceutical_WithdrawalPeriod;
 }
   String id;

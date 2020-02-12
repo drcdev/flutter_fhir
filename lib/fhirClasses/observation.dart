@@ -138,7 +138,7 @@ class Observation {
 			derivedFrom: derivedFrom,
 			component: component);
 	var observationBox = await Hive.openBox<Observation>('ObservationBox');
-	observationBox.add(newObservation);
+	observationBox.put(newObservation.id, newObservation);
 	return newObservation;
 }
   @HiveField(0)
@@ -344,7 +344,7 @@ class Observation_ReferenceRange {
 			text: text,
 			elementText: elementText);
 	var observation_ReferenceRangeBox = await Hive.openBox<Observation_ReferenceRange>('Observation_ReferenceRangeBox');
-	observation_ReferenceRangeBox.add(newObservation_ReferenceRange);
+	observation_ReferenceRangeBox.put(newObservation_ReferenceRange.id, newObservation_ReferenceRange);
 	return newObservation_ReferenceRange;
 }
   String id;
@@ -427,7 +427,7 @@ class Observation_Component {
 			interpretation: interpretation,
 			referenceRange: referenceRange);
 	var observation_ComponentBox = await Hive.openBox<Observation_Component>('Observation_ComponentBox');
-	observation_ComponentBox.add(newObservation_Component);
+	observation_ComponentBox.put(newObservation_Component.id, newObservation_Component);
 	return newObservation_Component;
 }
   String id;

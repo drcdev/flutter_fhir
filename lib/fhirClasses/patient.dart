@@ -99,7 +99,7 @@ class Patient {
 			managingOrganization: managingOrganization,
 			link: link);
 	var patientBox = await Hive.openBox<Patient>('PatientBox');
-	patientBox.add(newPatient);
+	patientBox.put(newPatient.id, newPatient);
 	return newPatient;
 }
   @HiveField(0)
@@ -275,7 +275,7 @@ class Patient_Contact {
 			organization: organization,
 			period: period);
 	var patient_ContactBox = await Hive.openBox<Patient_Contact>('Patient_ContactBox');
-	patient_ContactBox.add(newPatient_Contact);
+	patient_ContactBox.put(newPatient_Contact.id, newPatient_Contact);
 	return newPatient_Contact;
 }
   String id;
@@ -326,7 +326,7 @@ class Patient_Communication {
 			preferred: preferred,
 			elementPreferred: elementPreferred);
 	var patient_CommunicationBox = await Hive.openBox<Patient_Communication>('Patient_CommunicationBox');
-	patient_CommunicationBox.add(newPatient_Communication);
+	patient_CommunicationBox.put(newPatient_Communication.id, newPatient_Communication);
 	return newPatient_Communication;
 }
   String id;
@@ -367,7 +367,7 @@ class Patient_Link {
 			type: type,
 			elementType: elementType);
 	var patient_LinkBox = await Hive.openBox<Patient_Link>('Patient_LinkBox');
-	patient_LinkBox.add(newPatient_Link);
+	patient_LinkBox.put(newPatient_Link.id, newPatient_Link);
 	return newPatient_Link;
 }
   String id;

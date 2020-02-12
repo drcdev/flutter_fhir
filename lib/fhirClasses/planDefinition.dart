@@ -145,7 +145,7 @@ class PlanDefinition {
 			goal: goal,
 			action: action);
 	var planDefinitionBox = await Hive.openBox<PlanDefinition>('PlanDefinitionBox');
-	planDefinitionBox.add(newPlanDefinition);
+	planDefinitionBox.put(newPlanDefinition.id, newPlanDefinition);
 	return newPlanDefinition;
 }
   @HiveField(0)
@@ -355,7 +355,7 @@ class PlanDefinition_Goal {
 			documentation: documentation,
 			target: target);
 	var planDefinition_GoalBox = await Hive.openBox<PlanDefinition_Goal>('PlanDefinition_GoalBox');
-	planDefinition_GoalBox.add(newPlanDefinition_Goal);
+	planDefinition_GoalBox.put(newPlanDefinition_Goal.id, newPlanDefinition_Goal);
 	return newPlanDefinition_Goal;
 }
   String id;
@@ -408,7 +408,7 @@ class PlanDefinition_Target {
 			detailCodeableConcept: detailCodeableConcept,
 			due: due);
 	var planDefinition_TargetBox = await Hive.openBox<PlanDefinition_Target>('PlanDefinition_TargetBox');
-	planDefinition_TargetBox.add(newPlanDefinition_Target);
+	planDefinition_TargetBox.put(newPlanDefinition_Target.id, newPlanDefinition_Target);
 	return newPlanDefinition_Target;
 }
   String id;
@@ -543,7 +543,7 @@ class PlanDefinition_Action {
 			dynamicValue: dynamicValue,
 			action: action);
 	var planDefinition_ActionBox = await Hive.openBox<PlanDefinition_Action>('PlanDefinition_ActionBox');
-	planDefinition_ActionBox.add(newPlanDefinition_Action);
+	planDefinition_ActionBox.put(newPlanDefinition_Action.id, newPlanDefinition_Action);
 	return newPlanDefinition_Action;
 }
   String id;
@@ -674,7 +674,7 @@ class PlanDefinition_Condition {
 			elementKind: elementKind,
 			expression: expression);
 	var planDefinition_ConditionBox = await Hive.openBox<PlanDefinition_Condition>('PlanDefinition_ConditionBox');
-	planDefinition_ConditionBox.add(newPlanDefinition_Condition);
+	planDefinition_ConditionBox.put(newPlanDefinition_Condition.id, newPlanDefinition_Condition);
 	return newPlanDefinition_Condition;
 }
   String id;
@@ -721,7 +721,7 @@ class PlanDefinition_RelatedAction {
 			offsetDuration: offsetDuration,
 			offsetRange: offsetRange);
 	var planDefinition_RelatedActionBox = await Hive.openBox<PlanDefinition_RelatedAction>('PlanDefinition_RelatedActionBox');
-	planDefinition_RelatedActionBox.add(newPlanDefinition_RelatedAction);
+	planDefinition_RelatedActionBox.put(newPlanDefinition_RelatedAction.id, newPlanDefinition_RelatedAction);
 	return newPlanDefinition_RelatedAction;
 }
   String id;
@@ -768,7 +768,7 @@ class PlanDefinition_Participant {
 			elementType: elementType,
 			role: role);
 	var planDefinition_ParticipantBox = await Hive.openBox<PlanDefinition_Participant>('PlanDefinition_ParticipantBox');
-	planDefinition_ParticipantBox.add(newPlanDefinition_Participant);
+	planDefinition_ParticipantBox.put(newPlanDefinition_Participant.id, newPlanDefinition_Participant);
 	return newPlanDefinition_Participant;
 }
   String id;
@@ -809,7 +809,7 @@ class PlanDefinition_DynamicValue {
 			elementPath: elementPath,
 			expression: expression);
 	var planDefinition_DynamicValueBox = await Hive.openBox<PlanDefinition_DynamicValue>('PlanDefinition_DynamicValueBox');
-	planDefinition_DynamicValueBox.add(newPlanDefinition_DynamicValue);
+	planDefinition_DynamicValueBox.put(newPlanDefinition_DynamicValue.id, newPlanDefinition_DynamicValue);
 	return newPlanDefinition_DynamicValue;
 }
   String id;

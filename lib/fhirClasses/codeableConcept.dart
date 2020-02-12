@@ -23,7 +23,7 @@ class CodeableConcept {
 			text: text,
 			elementText: elementText);
 	var codeableConceptBox = await Hive.openBox<CodeableConcept>('CodeableConceptBox');
-	codeableConceptBox.add(newCodeableConcept);
+	codeableConceptBox.put(newCodeableConcept.id, newCodeableConcept);
 	return newCodeableConcept;
 }
   @HiveField(0)

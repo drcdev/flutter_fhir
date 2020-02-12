@@ -74,7 +74,7 @@ class Lists {
 			entry: entry,
 			emptyReason: emptyReason);
 	var listsBox = await Hive.openBox<Lists>('ListsBox');
-	listsBox.add(newLists);
+	listsBox.put(newLists.id, newLists);
 	return newLists;
 }
   @HiveField(0)
@@ -192,7 +192,7 @@ class List_Entry {
 			elementDate: elementDate,
 			item: item);
 	var list_EntryBox = await Hive.openBox<List_Entry>('List_EntryBox');
-	list_EntryBox.add(newList_Entry);
+	list_EntryBox.put(newList_Entry.id, newList_Entry);
 	return newList_Entry;
 }
   String id;

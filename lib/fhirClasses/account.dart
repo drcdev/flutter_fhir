@@ -68,7 +68,7 @@ class Account {
 			guarantor: guarantor,
 			partOf: partOf);
 	var accountBox = await Hive.openBox<Account>('AccountBox');
-	accountBox.add(newAccount);
+	accountBox.put(newAccount.id, newAccount);
 	return newAccount;
 }
   @HiveField(0)
@@ -171,7 +171,7 @@ class Account_Coverage {
 			priority: priority,
 			elementPriority: elementPriority);
 	var account_CoverageBox = await Hive.openBox<Account_Coverage>('Account_CoverageBox');
-	account_CoverageBox.add(newAccount_Coverage);
+	account_CoverageBox.put(newAccount_Coverage.id, newAccount_Coverage);
 	return newAccount_Coverage;
 }
   String id;
@@ -214,7 +214,7 @@ class Account_Guarantor {
 			elementOnHold: elementOnHold,
 			period: period);
 	var account_GuarantorBox = await Hive.openBox<Account_Guarantor>('Account_GuarantorBox');
-	account_GuarantorBox.add(newAccount_Guarantor);
+	account_GuarantorBox.put(newAccount_Guarantor.id, newAccount_Guarantor);
 	return newAccount_Guarantor;
 }
   String id;

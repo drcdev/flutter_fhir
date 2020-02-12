@@ -87,7 +87,7 @@ class CompartmentDefinition {
 			elementSearch: elementSearch,
 			resource: resource);
 	var compartmentDefinitionBox = await Hive.openBox<CompartmentDefinition>('CompartmentDefinitionBox');
-	compartmentDefinitionBox.add(newCompartmentDefinition);
+	compartmentDefinitionBox.put(newCompartmentDefinition.id, newCompartmentDefinition);
 	return newCompartmentDefinition;
 }
   @HiveField(0)
@@ -229,7 +229,7 @@ class CompartmentDefinition_Resource {
 			documentation: documentation,
 			elementDocumentation: elementDocumentation);
 	var compartmentDefinition_ResourceBox = await Hive.openBox<CompartmentDefinition_Resource>('CompartmentDefinition_ResourceBox');
-	compartmentDefinition_ResourceBox.add(newCompartmentDefinition_Resource);
+	compartmentDefinition_ResourceBox.put(newCompartmentDefinition_Resource.id, newCompartmentDefinition_Resource);
 	return newCompartmentDefinition_Resource;
 }
   String id;

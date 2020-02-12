@@ -37,7 +37,7 @@ class Identifier {
 			period: period,
 			assigner: assigner);
 	var identifierBox = await Hive.openBox<Identifier>('IdentifierBox');
-	identifierBox.add(newIdentifier);
+	identifierBox.put(newIdentifier.id, newIdentifier);
 	return newIdentifier;
 }
   @HiveField(0)

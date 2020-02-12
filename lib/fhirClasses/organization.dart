@@ -67,7 +67,7 @@ class Organization {
 			contact: contact,
 			endpoint: endpoint);
 	var organizationBox = await Hive.openBox<Organization>('OrganizationBox');
-	organizationBox.add(newOrganization);
+	organizationBox.put(newOrganization.id, newOrganization);
 	return newOrganization;
 }
   @HiveField(0)
@@ -169,7 +169,7 @@ class Organization_Contact {
 			telecom: telecom,
 			address: address);
 	var organization_ContactBox = await Hive.openBox<Organization_Contact>('Organization_ContactBox');
-	organization_ContactBox.add(newOrganization_Contact);
+	organization_ContactBox.put(newOrganization_Contact.id, newOrganization_Contact);
 	return newOrganization_Contact;
 }
   String id;

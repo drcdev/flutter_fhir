@@ -101,7 +101,7 @@ class HealthcareService {
 			elementAvailabilityExceptions: elementAvailabilityExceptions,
 			endpoint: endpoint);
 	var healthcareServiceBox = await Hive.openBox<HealthcareService>('HealthcareServiceBox');
-	healthcareServiceBox.add(newHealthcareService);
+	healthcareServiceBox.put(newHealthcareService.id, newHealthcareService);
 	return newHealthcareService;
 }
   @HiveField(0)
@@ -252,7 +252,7 @@ class HealthcareService_Eligibility {
 			comment: comment,
 			elementComment: elementComment);
 	var healthcareService_EligibilityBox = await Hive.openBox<HealthcareService_Eligibility>('HealthcareService_EligibilityBox');
-	healthcareService_EligibilityBox.add(newHealthcareService_Eligibility);
+	healthcareService_EligibilityBox.put(newHealthcareService_Eligibility.id, newHealthcareService_Eligibility);
 	return newHealthcareService_Eligibility;
 }
   String id;
@@ -303,7 +303,7 @@ class HealthcareService_AvailableTime {
 			availableEndTime: availableEndTime,
 			elementAvailableEndTime: elementAvailableEndTime);
 	var healthcareService_AvailableTimeBox = await Hive.openBox<HealthcareService_AvailableTime>('HealthcareService_AvailableTimeBox');
-	healthcareService_AvailableTimeBox.add(newHealthcareService_AvailableTime);
+	healthcareService_AvailableTimeBox.put(newHealthcareService_AvailableTime.id, newHealthcareService_AvailableTime);
 	return newHealthcareService_AvailableTime;
 }
   String id;
@@ -354,7 +354,7 @@ class HealthcareService_NotAvailable {
 			elementDescription: elementDescription,
 			during: during);
 	var healthcareService_NotAvailableBox = await Hive.openBox<HealthcareService_NotAvailable>('HealthcareService_NotAvailableBox');
-	healthcareService_NotAvailableBox.add(newHealthcareService_NotAvailable);
+	healthcareService_NotAvailableBox.put(newHealthcareService_NotAvailable.id, newHealthcareService_NotAvailable);
 	return newHealthcareService_NotAvailable;
 }
   String id;

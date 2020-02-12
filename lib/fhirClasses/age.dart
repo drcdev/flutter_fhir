@@ -36,7 +36,7 @@ class Age {
 			code: code,
 			elementCode: elementCode);
 	var ageBox = await Hive.openBox<Age>('AgeBox');
-	ageBox.add(newAge);
+	ageBox.put(newAge.id, newAge);
 	return newAge;
 }
   @HiveField(0)

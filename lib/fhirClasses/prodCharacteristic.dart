@@ -49,7 +49,7 @@ class ProdCharacteristic {
 			image: image,
 			scoring: scoring);
 	var prodCharacteristicBox = await Hive.openBox<ProdCharacteristic>('ProdCharacteristicBox');
-	prodCharacteristicBox.add(newProdCharacteristic);
+	prodCharacteristicBox.put(newProdCharacteristic.id, newProdCharacteristic);
 	return newProdCharacteristic;
 }
   @HiveField(0)

@@ -119,7 +119,7 @@ class MessageDefinition {
 			allowedResponse: allowedResponse,
 			graph: graph);
 	var messageDefinitionBox = await Hive.openBox<MessageDefinition>('MessageDefinitionBox');
-	messageDefinitionBox.add(newMessageDefinition);
+	messageDefinitionBox.put(newMessageDefinition.id, newMessageDefinition);
 	return newMessageDefinition;
 }
   @HiveField(0)
@@ -305,7 +305,7 @@ class MessageDefinition_Focus {
 			max: max,
 			elementMax: elementMax);
 	var messageDefinition_FocusBox = await Hive.openBox<MessageDefinition_Focus>('MessageDefinition_FocusBox');
-	messageDefinition_FocusBox.add(newMessageDefinition_Focus);
+	messageDefinition_FocusBox.put(newMessageDefinition_Focus.id, newMessageDefinition_Focus);
 	return newMessageDefinition_Focus;
 }
   String id;
@@ -354,7 +354,7 @@ class MessageDefinition_AllowedResponse {
 			situation: situation,
 			elementSituation: elementSituation);
 	var messageDefinition_AllowedResponseBox = await Hive.openBox<MessageDefinition_AllowedResponse>('MessageDefinition_AllowedResponseBox');
-	messageDefinition_AllowedResponseBox.add(newMessageDefinition_AllowedResponse);
+	messageDefinition_AllowedResponseBox.put(newMessageDefinition_AllowedResponse.id, newMessageDefinition_AllowedResponse);
 	return newMessageDefinition_AllowedResponse;
 }
   String id;

@@ -70,7 +70,7 @@ class AuditEvent {
 			source: source,
 			entity: entity);
 	var auditEventBox = await Hive.openBox<AuditEvent>('AuditEventBox');
-	auditEventBox.add(newAuditEvent);
+	auditEventBox.put(newAuditEvent.id, newAuditEvent);
 	return newAuditEvent;
 }
   @HiveField(0)
@@ -200,7 +200,7 @@ class AuditEvent_Agent {
 			network: network,
 			purposeOfUse: purposeOfUse);
 	var auditEvent_AgentBox = await Hive.openBox<AuditEvent_Agent>('AuditEvent_AgentBox');
-	auditEvent_AgentBox.add(newAuditEvent_Agent);
+	auditEvent_AgentBox.put(newAuditEvent_Agent.id, newAuditEvent_Agent);
 	return newAuditEvent_Agent;
 }
   String id;
@@ -267,7 +267,7 @@ class AuditEvent_Network {
 			type: type,
 			elementType: elementType);
 	var auditEvent_NetworkBox = await Hive.openBox<AuditEvent_Network>('AuditEvent_NetworkBox');
-	auditEvent_NetworkBox.add(newAuditEvent_Network);
+	auditEvent_NetworkBox.put(newAuditEvent_Network.id, newAuditEvent_Network);
 	return newAuditEvent_Network;
 }
   String id;
@@ -312,7 +312,7 @@ class AuditEvent_Source {
 			observer: observer,
 			type: type);
 	var auditEvent_SourceBox = await Hive.openBox<AuditEvent_Source>('AuditEvent_SourceBox');
-	auditEvent_SourceBox.add(newAuditEvent_Source);
+	auditEvent_SourceBox.put(newAuditEvent_Source.id, newAuditEvent_Source);
 	return newAuditEvent_Source;
 }
   String id;
@@ -373,7 +373,7 @@ class AuditEvent_Entity {
 			elementQuery: elementQuery,
 			detail: detail);
 	var auditEvent_EntityBox = await Hive.openBox<AuditEvent_Entity>('AuditEvent_EntityBox');
-	auditEvent_EntityBox.add(newAuditEvent_Entity);
+	auditEvent_EntityBox.put(newAuditEvent_Entity.id, newAuditEvent_Entity);
 	return newAuditEvent_Entity;
 }
   String id;
@@ -438,7 +438,7 @@ class AuditEvent_Detail {
 			valueBase64Binary: valueBase64Binary,
 			elementValueBase64Binary: elementValueBase64Binary);
 	var auditEvent_DetailBox = await Hive.openBox<AuditEvent_Detail>('AuditEvent_DetailBox');
-	auditEvent_DetailBox.add(newAuditEvent_Detail);
+	auditEvent_DetailBox.put(newAuditEvent_Detail.id, newAuditEvent_Detail);
 	return newAuditEvent_Detail;
 }
   String id;

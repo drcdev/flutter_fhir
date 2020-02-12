@@ -74,7 +74,7 @@ class Endpoint {
 			header: header,
 			elementHeader: elementHeader);
 	var endpointBox = await Hive.openBox<Endpoint>('EndpointBox');
-	endpointBox.add(newEndpoint);
+	endpointBox.put(newEndpoint.id, newEndpoint);
 	return newEndpoint;
 }
   @HiveField(0)

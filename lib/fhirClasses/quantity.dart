@@ -36,7 +36,7 @@ class Quantity {
 			code: code,
 			elementCode: elementCode);
 	var quantityBox = await Hive.openBox<Quantity>('QuantityBox');
-	quantityBox.add(newQuantity);
+	quantityBox.put(newQuantity.id, newQuantity);
 	return newQuantity;
 }
   @HiveField(0)

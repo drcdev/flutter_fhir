@@ -4,12 +4,12 @@ import json
 import re
 import os
 import fhirToDartFunc as fhir
-                
+
 #open fhir json schema
 with open('./helpers/fhir.schema.json', encoding='utf8') as json_file:
     schema = json.load(json_file)
 
-# os.remove('./lib/fhirClasses/classes.dart')
+os.remove('./lib/fhirClasses/classes.dart')
 
 dartCode = '' #where we will store our code
 importDict = {} #will store which other classes we will import
@@ -245,4 +245,15 @@ patient = patient.replace(fhir.patientReplace1, fhir.patientReplace2)
 
 with open(fhirDir + 'patient.dart',"w", encoding="utf-8") as f:
     f.write(patient)
+    f.close()
+    
+with open(fhirDir + 'testScript.dart') as ts:
+            testScript = ts.read()
+            
+testScript = testScript.replace('required: required', 'require: require')
+testScript = testScript.replace('this.required', 'this.require')
+testScript = testScript.replace('bool required', 'bool require')
+
+with open(fhirDir + 'testScript.dart',"w", encoding="utf-8") as f:
+    f.write(testScript)
     f.close()

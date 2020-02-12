@@ -79,7 +79,7 @@ class MolecularSequence {
 			pointer: pointer,
 			structureVariant: structureVariant);
 	var molecularSequenceBox = await Hive.openBox<MolecularSequence>('MolecularSequenceBox');
-	molecularSequenceBox.add(newMolecularSequence);
+	molecularSequenceBox.put(newMolecularSequence.id, newMolecularSequence);
 	return newMolecularSequence;
 }
   @HiveField(0)
@@ -224,7 +224,7 @@ class MolecularSequence_ReferenceSeq {
 			windowEnd: windowEnd,
 			elementWindowEnd: elementWindowEnd);
 	var molecularSequence_ReferenceSeqBox = await Hive.openBox<MolecularSequence_ReferenceSeq>('MolecularSequence_ReferenceSeqBox');
-	molecularSequence_ReferenceSeqBox.add(newMolecularSequence_ReferenceSeq);
+	molecularSequence_ReferenceSeqBox.put(newMolecularSequence_ReferenceSeq.id, newMolecularSequence_ReferenceSeq);
 	return newMolecularSequence_ReferenceSeq;
 }
   String id;
@@ -305,7 +305,7 @@ class MolecularSequence_Variant {
 			elementCigar: elementCigar,
 			variantPointer: variantPointer);
 	var molecularSequence_VariantBox = await Hive.openBox<MolecularSequence_Variant>('MolecularSequence_VariantBox');
-	molecularSequence_VariantBox.add(newMolecularSequence_Variant);
+	molecularSequence_VariantBox.put(newMolecularSequence_Variant.id, newMolecularSequence_Variant);
 	return newMolecularSequence_Variant;
 }
   String id;
@@ -408,7 +408,7 @@ class MolecularSequence_Quality {
 			elementFScore: elementFScore,
 			roc: roc);
 	var molecularSequence_QualityBox = await Hive.openBox<MolecularSequence_Quality>('MolecularSequence_QualityBox');
-	molecularSequence_QualityBox.add(newMolecularSequence_Quality);
+	molecularSequence_QualityBox.put(newMolecularSequence_Quality.id, newMolecularSequence_Quality);
 	return newMolecularSequence_Quality;
 }
   String id;
@@ -517,7 +517,7 @@ class MolecularSequence_Roc {
 			fMeasure: fMeasure,
 			elementFMeasure: elementFMeasure);
 	var molecularSequence_RocBox = await Hive.openBox<MolecularSequence_Roc>('MolecularSequence_RocBox');
-	molecularSequence_RocBox.add(newMolecularSequence_Roc);
+	molecularSequence_RocBox.put(newMolecularSequence_Roc.id, newMolecularSequence_Roc);
 	return newMolecularSequence_Roc;
 }
   String id;
@@ -598,7 +598,7 @@ class MolecularSequence_Repository {
 			readsetId: readsetId,
 			elementReadsetId: elementReadsetId);
 	var molecularSequence_RepositoryBox = await Hive.openBox<MolecularSequence_Repository>('MolecularSequence_RepositoryBox');
-	molecularSequence_RepositoryBox.add(newMolecularSequence_Repository);
+	molecularSequence_RepositoryBox.put(newMolecularSequence_Repository.id, newMolecularSequence_Repository);
 	return newMolecularSequence_Repository;
 }
   String id;
@@ -665,7 +665,7 @@ class MolecularSequence_StructureVariant {
 			outer: outer,
 			inner: inner);
 	var molecularSequence_StructureVariantBox = await Hive.openBox<MolecularSequence_StructureVariant>('MolecularSequence_StructureVariantBox');
-	molecularSequence_StructureVariantBox.add(newMolecularSequence_StructureVariant);
+	molecularSequence_StructureVariantBox.put(newMolecularSequence_StructureVariant.id, newMolecularSequence_StructureVariant);
 	return newMolecularSequence_StructureVariant;
 }
   String id;
@@ -716,7 +716,7 @@ class MolecularSequence_Outer {
 			end: end,
 			elementEnd: elementEnd);
 	var molecularSequence_OuterBox = await Hive.openBox<MolecularSequence_Outer>('MolecularSequence_OuterBox');
-	molecularSequence_OuterBox.add(newMolecularSequence_Outer);
+	molecularSequence_OuterBox.put(newMolecularSequence_Outer.id, newMolecularSequence_Outer);
 	return newMolecularSequence_Outer;
 }
   String id;
@@ -761,7 +761,7 @@ class MolecularSequence_Inner {
 			end: end,
 			elementEnd: elementEnd);
 	var molecularSequence_InnerBox = await Hive.openBox<MolecularSequence_Inner>('MolecularSequence_InnerBox');
-	molecularSequence_InnerBox.add(newMolecularSequence_Inner);
+	molecularSequence_InnerBox.put(newMolecularSequence_Inner.id, newMolecularSequence_Inner);
 	return newMolecularSequence_Inner;
 }
   String id;

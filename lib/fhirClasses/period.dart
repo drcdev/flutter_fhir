@@ -24,7 +24,7 @@ class Period {
 			end: end,
 			elementEnd: elementEnd);
 	var periodBox = await Hive.openBox<Period>('PeriodBox');
-	periodBox.add(newPeriod);
+	periodBox.put(newPeriod.id, newPeriod);
 	return newPeriod;
 }
   @HiveField(0)

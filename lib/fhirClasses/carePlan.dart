@@ -101,7 +101,7 @@ class CarePlan {
 			activity: activity,
 			note: note);
 	var carePlanBox = await Hive.openBox<CarePlan>('CarePlanBox');
-	carePlanBox.add(newCarePlan);
+	carePlanBox.put(newCarePlan.id, newCarePlan);
 	return newCarePlan;
 }
   @HiveField(0)
@@ -253,7 +253,7 @@ class CarePlan_Activity {
 			reference: reference,
 			detail: detail);
 	var carePlan_ActivityBox = await Hive.openBox<CarePlan_Activity>('CarePlan_ActivityBox');
-	carePlan_ActivityBox.add(newCarePlan_Activity);
+	carePlan_ActivityBox.put(newCarePlan_Activity.id, newCarePlan_Activity);
 	return newCarePlan_Activity;
 }
   String id;
@@ -344,7 +344,7 @@ class CarePlan_Detail {
 			description: description,
 			elementDescription: elementDescription);
 	var carePlan_DetailBox = await Hive.openBox<CarePlan_Detail>('CarePlan_DetailBox');
-	carePlan_DetailBox.add(newCarePlan_Detail);
+	carePlan_DetailBox.put(newCarePlan_Detail.id, newCarePlan_Detail);
 	return newCarePlan_Detail;
 }
   String id;

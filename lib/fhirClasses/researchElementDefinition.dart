@@ -153,7 +153,7 @@ class ResearchElementDefinition {
 			elementVariableType: elementVariableType,
 			characteristic: characteristic);
 	var researchElementDefinitionBox = await Hive.openBox<ResearchElementDefinition>('ResearchElementDefinitionBox');
-	researchElementDefinitionBox.add(newResearchElementDefinition);
+	researchElementDefinitionBox.put(newResearchElementDefinition.id, newResearchElementDefinition);
 	return newResearchElementDefinition;
 }
   @HiveField(0)
@@ -425,7 +425,7 @@ class ResearchElementDefinition_Characteristic {
 			participantEffectiveGroupMeasure: participantEffectiveGroupMeasure,
 			elementParticipantEffectiveGroupMeasure: elementParticipantEffectiveGroupMeasure);
 	var researchElementDefinition_CharacteristicBox = await Hive.openBox<ResearchElementDefinition_Characteristic>('ResearchElementDefinition_CharacteristicBox');
-	researchElementDefinition_CharacteristicBox.add(newResearchElementDefinition_Characteristic);
+	researchElementDefinition_CharacteristicBox.put(newResearchElementDefinition_Characteristic.id, newResearchElementDefinition_Characteristic);
 	return newResearchElementDefinition_Characteristic;
 }
   String id;

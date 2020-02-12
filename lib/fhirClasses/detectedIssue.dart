@@ -76,7 +76,7 @@ class DetectedIssue {
 			elementReference: elementReference,
 			mitigation: mitigation);
 	var detectedIssueBox = await Hive.openBox<DetectedIssue>('DetectedIssueBox');
-	detectedIssueBox.add(newDetectedIssue);
+	detectedIssueBox.put(newDetectedIssue.id, newDetectedIssue);
 	return newDetectedIssue;
 }
   @HiveField(0)
@@ -189,7 +189,7 @@ class DetectedIssue_Evidence {
 			code: code,
 			detail: detail);
 	var detectedIssue_EvidenceBox = await Hive.openBox<DetectedIssue_Evidence>('DetectedIssue_EvidenceBox');
-	detectedIssue_EvidenceBox.add(newDetectedIssue_Evidence);
+	detectedIssue_EvidenceBox.put(newDetectedIssue_Evidence.id, newDetectedIssue_Evidence);
 	return newDetectedIssue_Evidence;
 }
   String id;
@@ -230,7 +230,7 @@ class DetectedIssue_Mitigation {
 			elementDate: elementDate,
 			author: author);
 	var detectedIssue_MitigationBox = await Hive.openBox<DetectedIssue_Mitigation>('DetectedIssue_MitigationBox');
-	detectedIssue_MitigationBox.add(newDetectedIssue_Mitigation);
+	detectedIssue_MitigationBox.put(newDetectedIssue_Mitigation.id, newDetectedIssue_Mitigation);
 	return newDetectedIssue_Mitigation;
 }
   String id;

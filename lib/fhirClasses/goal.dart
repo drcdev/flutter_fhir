@@ -86,7 +86,7 @@ class Goal {
 			outcomeCode: outcomeCode,
 			outcomeReference: outcomeReference);
 	var goalBox = await Hive.openBox<Goal>('GoalBox');
-	goalBox.add(newGoal);
+	goalBox.put(newGoal.id, newGoal);
 	return newGoal;
 }
   @HiveField(0)
@@ -232,7 +232,7 @@ class Goal_Target {
 			elementDueDate: elementDueDate,
 			dueDuration: dueDuration);
 	var goal_TargetBox = await Hive.openBox<Goal_Target>('Goal_TargetBox');
-	goal_TargetBox.add(newGoal_Target);
+	goal_TargetBox.put(newGoal_Target.id, newGoal_Target);
 	return newGoal_Target;
 }
   String id;

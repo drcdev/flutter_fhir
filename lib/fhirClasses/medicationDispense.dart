@@ -100,7 +100,7 @@ class MedicationDispense {
 			detectedIssue: detectedIssue,
 			eventHistory: eventHistory);
 	var medicationDispenseBox = await Hive.openBox<MedicationDispense>('MedicationDispenseBox');
-	medicationDispenseBox.add(newMedicationDispense);
+	medicationDispenseBox.put(newMedicationDispense.id, newMedicationDispense);
 	return newMedicationDispense;
 }
   @HiveField(0)
@@ -246,7 +246,7 @@ class MedicationDispense_Performer {
 			function: function,
 			actor: actor);
 	var medicationDispense_PerformerBox = await Hive.openBox<MedicationDispense_Performer>('MedicationDispense_PerformerBox');
-	medicationDispense_PerformerBox.add(newMedicationDispense_Performer);
+	medicationDispense_PerformerBox.put(newMedicationDispense_Performer.id, newMedicationDispense_Performer);
 	return newMedicationDispense_Performer;
 }
   String id;
@@ -289,7 +289,7 @@ class MedicationDispense_Substitution {
 			reason: reason,
 			responsibleParty: responsibleParty);
 	var medicationDispense_SubstitutionBox = await Hive.openBox<MedicationDispense_Substitution>('MedicationDispense_SubstitutionBox');
-	medicationDispense_SubstitutionBox.add(newMedicationDispense_Substitution);
+	medicationDispense_SubstitutionBox.put(newMedicationDispense_Substitution.id, newMedicationDispense_Substitution);
 	return newMedicationDispense_Substitution;
 }
   String id;

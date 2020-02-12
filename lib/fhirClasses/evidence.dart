@@ -126,7 +126,7 @@ class Evidence {
 			exposureVariant: exposureVariant,
 			outcome: outcome);
 	var evidenceBox = await Hive.openBox<Evidence>('EvidenceBox');
-	evidenceBox.add(newEvidence);
+	evidenceBox.put(newEvidence.id, newEvidence);
 	return newEvidence;
 }
   @HiveField(0)

@@ -58,7 +58,7 @@ class MedicinalProductIndication {
 			undesirableEffect: undesirableEffect,
 			population: population);
 	var medicinalProductIndicationBox = await Hive.openBox<MedicinalProductIndication>('MedicinalProductIndicationBox');
-	medicinalProductIndicationBox.add(newMedicinalProductIndication);
+	medicinalProductIndicationBox.put(newMedicinalProductIndication.id, newMedicinalProductIndication);
 	return newMedicinalProductIndication;
 }
   @HiveField(0)
@@ -146,7 +146,7 @@ class MedicinalProductIndication_OtherTherapy {
 			medicationCodeableConcept: medicationCodeableConcept,
 			medicationReference: medicationReference);
 	var medicinalProductIndication_OtherTherapyBox = await Hive.openBox<MedicinalProductIndication_OtherTherapy>('MedicinalProductIndication_OtherTherapyBox');
-	medicinalProductIndication_OtherTherapyBox.add(newMedicinalProductIndication_OtherTherapy);
+	medicinalProductIndication_OtherTherapyBox.put(newMedicinalProductIndication_OtherTherapy.id, newMedicinalProductIndication_OtherTherapy);
 	return newMedicinalProductIndication_OtherTherapy;
 }
   String id;

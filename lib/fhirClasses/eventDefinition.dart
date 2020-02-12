@@ -132,7 +132,7 @@ class EventDefinition {
 			relatedArtifact: relatedArtifact,
 			trigger: trigger);
 	var eventDefinitionBox = await Hive.openBox<EventDefinition>('EventDefinitionBox');
-	eventDefinitionBox.add(newEventDefinition);
+	eventDefinitionBox.put(newEventDefinition.id, newEventDefinition);
 	return newEventDefinition;
 }
   @HiveField(0)

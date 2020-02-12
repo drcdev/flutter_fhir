@@ -48,7 +48,7 @@ class MedicinalProductUndesirableEffect {
 			frequencyOfOccurrence: frequencyOfOccurrence,
 			population: population);
 	var medicinalProductUndesirableEffectBox = await Hive.openBox<MedicinalProductUndesirableEffect>('MedicinalProductUndesirableEffectBox');
-	medicinalProductUndesirableEffectBox.add(newMedicinalProductUndesirableEffect);
+	medicinalProductUndesirableEffectBox.put(newMedicinalProductUndesirableEffect.id, newMedicinalProductUndesirableEffect);
 	return newMedicinalProductUndesirableEffect;
 }
   @HiveField(0)

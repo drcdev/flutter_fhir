@@ -139,7 +139,7 @@ class ServiceRequest {
 			elementPatientInstruction: elementPatientInstruction,
 			relevantHistory: relevantHistory);
 	var serviceRequestBox = await Hive.openBox<ServiceRequest>('ServiceRequestBox');
-	serviceRequestBox.add(newServiceRequest);
+	serviceRequestBox.put(newServiceRequest.id, newServiceRequest);
 	return newServiceRequest;
 }
   @HiveField(0)

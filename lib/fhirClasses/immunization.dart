@@ -115,7 +115,7 @@ class Immunization {
 			reaction: reaction,
 			protocolApplied: protocolApplied);
 	var immunizationBox = await Hive.openBox<Immunization>('ImmunizationBox');
-	immunizationBox.add(newImmunization);
+	immunizationBox.put(newImmunization.id, newImmunization);
 	return newImmunization;
 }
   @HiveField(0)
@@ -285,7 +285,7 @@ class Immunization_Performer {
 			function: function,
 			actor: actor);
 	var immunization_PerformerBox = await Hive.openBox<Immunization_Performer>('Immunization_PerformerBox');
-	immunization_PerformerBox.add(newImmunization_Performer);
+	immunization_PerformerBox.put(newImmunization_Performer.id, newImmunization_Performer);
 	return newImmunization_Performer;
 }
   String id;
@@ -334,7 +334,7 @@ class Immunization_Education {
 			presentationDate: presentationDate,
 			elementPresentationDate: elementPresentationDate);
 	var immunization_EducationBox = await Hive.openBox<Immunization_Education>('Immunization_EducationBox');
-	immunization_EducationBox.add(newImmunization_Education);
+	immunization_EducationBox.put(newImmunization_Education.id, newImmunization_Education);
 	return newImmunization_Education;
 }
   String id;
@@ -389,7 +389,7 @@ class Immunization_Reaction {
 			reported: reported,
 			elementReported: elementReported);
 	var immunization_ReactionBox = await Hive.openBox<Immunization_Reaction>('Immunization_ReactionBox');
-	immunization_ReactionBox.add(newImmunization_Reaction);
+	immunization_ReactionBox.put(newImmunization_Reaction.id, newImmunization_Reaction);
 	return newImmunization_Reaction;
 }
   String id;
@@ -452,7 +452,7 @@ class Immunization_ProtocolApplied {
 			seriesDosesString: seriesDosesString,
 			elementSeriesDosesString: elementSeriesDosesString);
 	var immunization_ProtocolAppliedBox = await Hive.openBox<Immunization_ProtocolApplied>('Immunization_ProtocolAppliedBox');
-	immunization_ProtocolAppliedBox.add(newImmunization_ProtocolApplied);
+	immunization_ProtocolAppliedBox.put(newImmunization_ProtocolApplied.id, newImmunization_ProtocolApplied);
 	return newImmunization_ProtocolApplied;
 }
   String id;

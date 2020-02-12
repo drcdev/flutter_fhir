@@ -66,7 +66,7 @@ class EpisodeOfCare {
 			team: team,
 			account: account);
 	var episodeOfCareBox = await Hive.openBox<EpisodeOfCare>('EpisodeOfCareBox');
-	episodeOfCareBox.add(newEpisodeOfCare);
+	episodeOfCareBox.put(newEpisodeOfCare.id, newEpisodeOfCare);
 	return newEpisodeOfCare;
 }
   @HiveField(0)
@@ -166,7 +166,7 @@ class EpisodeOfCare_StatusHistory {
 			elementStatus: elementStatus,
 			period: period);
 	var episodeOfCare_StatusHistoryBox = await Hive.openBox<EpisodeOfCare_StatusHistory>('EpisodeOfCare_StatusHistoryBox');
-	episodeOfCare_StatusHistoryBox.add(newEpisodeOfCare_StatusHistory);
+	episodeOfCare_StatusHistoryBox.put(newEpisodeOfCare_StatusHistory.id, newEpisodeOfCare_StatusHistory);
 	return newEpisodeOfCare_StatusHistory;
 }
   String id;
@@ -209,7 +209,7 @@ class EpisodeOfCare_Diagnosis {
 			rank: rank,
 			elementRank: elementRank);
 	var episodeOfCare_DiagnosisBox = await Hive.openBox<EpisodeOfCare_Diagnosis>('EpisodeOfCare_DiagnosisBox');
-	episodeOfCare_DiagnosisBox.add(newEpisodeOfCare_Diagnosis);
+	episodeOfCare_DiagnosisBox.put(newEpisodeOfCare_Diagnosis.id, newEpisodeOfCare_Diagnosis);
 	return newEpisodeOfCare_Diagnosis;
 }
   String id;

@@ -71,7 +71,7 @@ class SupplyDelivery {
 			destination: destination,
 			receiver: receiver);
 	var supplyDeliveryBox = await Hive.openBox<SupplyDelivery>('SupplyDeliveryBox');
-	supplyDeliveryBox.add(newSupplyDelivery);
+	supplyDeliveryBox.put(newSupplyDelivery.id, newSupplyDelivery);
 	return newSupplyDelivery;
 }
   @HiveField(0)
@@ -177,7 +177,7 @@ class SupplyDelivery_SuppliedItem {
 			itemCodeableConcept: itemCodeableConcept,
 			itemReference: itemReference);
 	var supplyDelivery_SuppliedItemBox = await Hive.openBox<SupplyDelivery_SuppliedItem>('SupplyDelivery_SuppliedItemBox');
-	supplyDelivery_SuppliedItemBox.add(newSupplyDelivery_SuppliedItem);
+	supplyDelivery_SuppliedItemBox.put(newSupplyDelivery_SuppliedItem.id, newSupplyDelivery_SuppliedItem);
 	return newSupplyDelivery_SuppliedItem;
 }
   String id;

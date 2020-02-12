@@ -72,7 +72,7 @@ class Specimen {
 			condition: condition,
 			note: note);
 	var specimenBox = await Hive.openBox<Specimen>('SpecimenBox');
-	specimenBox.add(newSpecimen);
+	specimenBox.put(newSpecimen.id, newSpecimen);
 	return newSpecimen;
 }
   @HiveField(0)
@@ -192,7 +192,7 @@ class Specimen_Collection {
 			fastingStatusCodeableConcept: fastingStatusCodeableConcept,
 			fastingStatusDuration: fastingStatusDuration);
 	var specimen_CollectionBox = await Hive.openBox<Specimen_Collection>('Specimen_CollectionBox');
-	specimen_CollectionBox.add(newSpecimen_Collection);
+	specimen_CollectionBox.put(newSpecimen_Collection.id, newSpecimen_Collection);
 	return newSpecimen_Collection;
 }
   String id;
@@ -255,7 +255,7 @@ class Specimen_Processing {
 			elementTimeDateTime: elementTimeDateTime,
 			timePeriod: timePeriod);
 	var specimen_ProcessingBox = await Hive.openBox<Specimen_Processing>('Specimen_ProcessingBox');
-	specimen_ProcessingBox.add(newSpecimen_Processing);
+	specimen_ProcessingBox.put(newSpecimen_Processing.id, newSpecimen_Processing);
 	return newSpecimen_Processing;
 }
   String id;
@@ -314,7 +314,7 @@ class Specimen_Container {
 			additiveCodeableConcept: additiveCodeableConcept,
 			additiveReference: additiveReference);
 	var specimen_ContainerBox = await Hive.openBox<Specimen_Container>('Specimen_ContainerBox');
-	specimen_ContainerBox.add(newSpecimen_Container);
+	specimen_ContainerBox.put(newSpecimen_Container.id, newSpecimen_Container);
 	return newSpecimen_Container;
 }
   String id;

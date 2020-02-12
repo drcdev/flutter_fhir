@@ -50,7 +50,7 @@ class SubstanceProtein {
 			elementDisulfideLinkage: elementDisulfideLinkage,
 			subunit: subunit);
 	var substanceProteinBox = await Hive.openBox<SubstanceProtein>('SubstanceProteinBox');
-	substanceProteinBox.add(newSubstanceProtein);
+	substanceProteinBox.put(newSubstanceProtein.id, newSubstanceProtein);
 	return newSubstanceProtein;
 }
   @HiveField(0)
@@ -149,7 +149,7 @@ class SubstanceProtein_Subunit {
 			cTerminalModification: cTerminalModification,
 			elementCTerminalModification: elementCTerminalModification);
 	var substanceProtein_SubunitBox = await Hive.openBox<SubstanceProtein_Subunit>('SubstanceProtein_SubunitBox');
-	substanceProtein_SubunitBox.add(newSubstanceProtein_Subunit);
+	substanceProtein_SubunitBox.put(newSubstanceProtein_Subunit.id, newSubstanceProtein_Subunit);
 	return newSubstanceProtein_Subunit;
 }
   String id;

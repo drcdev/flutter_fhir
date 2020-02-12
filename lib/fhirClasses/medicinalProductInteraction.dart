@@ -53,7 +53,7 @@ class MedicinalProductInteraction {
 			incidence: incidence,
 			management: management);
 	var medicinalProductInteractionBox = await Hive.openBox<MedicinalProductInteraction>('MedicinalProductInteractionBox');
-	medicinalProductInteractionBox.add(newMedicinalProductInteraction);
+	medicinalProductInteractionBox.put(newMedicinalProductInteraction.id, newMedicinalProductInteraction);
 	return newMedicinalProductInteraction;
 }
   @HiveField(0)
@@ -136,7 +136,7 @@ class MedicinalProductInteraction_Interactant {
 			itemReference: itemReference,
 			itemCodeableConcept: itemCodeableConcept);
 	var medicinalProductInteraction_InteractantBox = await Hive.openBox<MedicinalProductInteraction_Interactant>('MedicinalProductInteraction_InteractantBox');
-	medicinalProductInteraction_InteractantBox.add(newMedicinalProductInteraction_Interactant);
+	medicinalProductInteraction_InteractantBox.put(newMedicinalProductInteraction_Interactant.id, newMedicinalProductInteraction_Interactant);
 	return newMedicinalProductInteraction_Interactant;
 }
   String id;

@@ -30,7 +30,7 @@ class Timing {
 			repeat: repeat,
 			code: code);
 	var timingBox = await Hive.openBox<Timing>('TimingBox');
-	timingBox.add(newTiming);
+	timingBox.put(newTiming.id, newTiming);
 	return newTiming;
 }
   @HiveField(0)
@@ -136,7 +136,7 @@ class Timing_Repeat {
 			offset: offset,
 			elementOffset: elementOffset);
 	var timing_RepeatBox = await Hive.openBox<Timing_Repeat>('Timing_RepeatBox');
-	timing_RepeatBox.add(newTiming_Repeat);
+	timing_RepeatBox.put(newTiming_Repeat.id, newTiming_Repeat);
 	return newTiming_Repeat;
 }
   String id;

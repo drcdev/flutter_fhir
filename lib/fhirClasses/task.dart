@@ -142,7 +142,7 @@ class Task {
 			input: input,
 			output: output);
 	var taskBox = await Hive.openBox<Task>('TaskBox');
-	taskBox.add(newTask);
+	taskBox.put(newTask.id, newTask);
 	return newTask;
 }
   @HiveField(0)
@@ -319,7 +319,7 @@ class Task_Restriction {
 			period: period,
 			recipient: recipient);
 	var task_RestrictionBox = await Hive.openBox<Task_Restriction>('Task_RestrictionBox');
-	task_RestrictionBox.add(newTask_Restriction);
+	task_RestrictionBox.put(newTask_Restriction.id, newTask_Restriction);
 	return newTask_Restriction;
 }
   String id;
@@ -496,7 +496,7 @@ class Task_Input {
 			valueDosage: valueDosage,
 			valueMeta: valueMeta);
 	var task_InputBox = await Hive.openBox<Task_Input>('Task_InputBox');
-	task_InputBox.add(newTask_Input);
+	task_InputBox.put(newTask_Input.id, newTask_Input);
 	return newTask_Input;
 }
   String id;
@@ -805,7 +805,7 @@ class Task_Output {
 			valueDosage: valueDosage,
 			valueMeta: valueMeta);
 	var task_OutputBox = await Hive.openBox<Task_Output>('Task_OutputBox');
-	task_OutputBox.add(newTask_Output);
+	task_OutputBox.put(newTask_Output.id, newTask_Output);
 	return newTask_Output;
 }
   String id;

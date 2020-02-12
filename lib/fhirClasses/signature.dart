@@ -41,7 +41,7 @@ class Signature {
 			data: data,
 			elementData: elementData);
 	var signatureBox = await Hive.openBox<Signature>('SignatureBox');
-	signatureBox.add(newSignature);
+	signatureBox.put(newSignature.id, newSignature);
 	return newSignature;
 }
   @HiveField(0)

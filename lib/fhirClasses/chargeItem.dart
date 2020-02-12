@@ -114,7 +114,7 @@ class ChargeItem {
 			note: note,
 			supportingInformation: supportingInformation);
 	var chargeItemBox = await Hive.openBox<ChargeItem>('ChargeItemBox');
-	chargeItemBox.add(newChargeItem);
+	chargeItemBox.put(newChargeItem.id, newChargeItem);
 	return newChargeItem;
 }
   @HiveField(0)
@@ -278,7 +278,7 @@ class ChargeItem_Performer {
 			function: function,
 			actor: actor);
 	var chargeItem_PerformerBox = await Hive.openBox<ChargeItem_Performer>('ChargeItem_PerformerBox');
-	chargeItem_PerformerBox.add(newChargeItem_Performer);
+	chargeItem_PerformerBox.put(newChargeItem_Performer.id, newChargeItem_Performer);
 	return newChargeItem_Performer;
 }
   String id;

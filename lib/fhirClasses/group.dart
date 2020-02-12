@@ -72,7 +72,7 @@ class Group {
 			characteristic: characteristic,
 			member: member);
 	var groupBox = await Hive.openBox<Group>('GroupBox');
-	groupBox.add(newGroup);
+	groupBox.put(newGroup.id, newGroup);
 	return newGroup;
 }
   @HiveField(0)
@@ -192,7 +192,7 @@ class Group_Characteristic {
 			elementExclude: elementExclude,
 			period: period);
 	var group_CharacteristicBox = await Hive.openBox<Group_Characteristic>('Group_CharacteristicBox');
-	group_CharacteristicBox.add(newGroup_Characteristic);
+	group_CharacteristicBox.put(newGroup_Characteristic.id, newGroup_Characteristic);
 	return newGroup_Characteristic;
 }
   String id;
@@ -249,7 +249,7 @@ class Group_Member {
 			inactive: inactive,
 			elementInactive: elementInactive);
 	var group_MemberBox = await Hive.openBox<Group_Member>('Group_MemberBox');
-	group_MemberBox.add(newGroup_Member);
+	group_MemberBox.put(newGroup_Member.id, newGroup_Member);
 	return newGroup_Member;
 }
   String id;

@@ -31,7 +31,7 @@ class Reference {
 			display: display,
 			elementDisplay: elementDisplay);
 	var referenceBox = await Hive.openBox<Reference>('ReferenceBox');
-	referenceBox.add(newReference);
+	referenceBox.put(newReference.id, newReference);
 	return newReference;
 }
   @HiveField(0)

@@ -133,7 +133,7 @@ class SearchParameter {
 			elementChain: elementChain,
 			component: component);
 	var searchParameterBox = await Hive.openBox<SearchParameter>('SearchParameterBox');
-	searchParameterBox.add(newSearchParameter);
+	searchParameterBox.put(newSearchParameter.id, newSearchParameter);
 	return newSearchParameter;
 }
   @HiveField(0)
@@ -335,7 +335,7 @@ class SearchParameter_Component {
 			expression: expression,
 			elementExpression: elementExpression);
 	var searchParameter_ComponentBox = await Hive.openBox<SearchParameter_Component>('SearchParameter_ComponentBox');
-	searchParameter_ComponentBox.add(newSearchParameter_Component);
+	searchParameter_ComponentBox.put(newSearchParameter_Component.id, newSearchParameter_Component);
 	return newSearchParameter_Component;
 }
   String id;

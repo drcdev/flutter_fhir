@@ -55,7 +55,7 @@ class EnrollmentRequest {
 			candidate: candidate,
 			coverage: coverage);
 	var enrollmentRequestBox = await Hive.openBox<EnrollmentRequest>('EnrollmentRequestBox');
-	enrollmentRequestBox.add(newEnrollmentRequest);
+	enrollmentRequestBox.put(newEnrollmentRequest.id, newEnrollmentRequest);
 	return newEnrollmentRequest;
 }
   @HiveField(0)

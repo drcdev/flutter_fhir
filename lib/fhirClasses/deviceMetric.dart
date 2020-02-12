@@ -66,7 +66,7 @@ class DeviceMetric {
 			measurementPeriod: measurementPeriod,
 			calibration: calibration);
 	var deviceMetricBox = await Hive.openBox<DeviceMetric>('DeviceMetricBox');
-	deviceMetricBox.add(newDeviceMetric);
+	deviceMetricBox.put(newDeviceMetric.id, newDeviceMetric);
 	return newDeviceMetric;
 }
   @HiveField(0)
@@ -172,7 +172,7 @@ class DeviceMetric_Calibration {
 			time: time,
 			elementTime: elementTime);
 	var deviceMetric_CalibrationBox = await Hive.openBox<DeviceMetric_Calibration>('DeviceMetric_CalibrationBox');
-	deviceMetric_CalibrationBox.add(newDeviceMetric_Calibration);
+	deviceMetric_CalibrationBox.put(newDeviceMetric_Calibration.id, newDeviceMetric_Calibration);
 	return newDeviceMetric_Calibration;
 }
   String id;

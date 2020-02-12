@@ -53,7 +53,7 @@ class MedicinalProductContraindication {
 			otherTherapy: otherTherapy,
 			population: population);
 	var medicinalProductContraindicationBox = await Hive.openBox<MedicinalProductContraindication>('MedicinalProductContraindicationBox');
-	medicinalProductContraindicationBox.add(newMedicinalProductContraindication);
+	medicinalProductContraindicationBox.put(newMedicinalProductContraindication.id, newMedicinalProductContraindication);
 	return newMedicinalProductContraindication;
 }
   @HiveField(0)
@@ -135,7 +135,7 @@ class MedicinalProductContraindication_OtherTherapy {
 			medicationCodeableConcept: medicationCodeableConcept,
 			medicationReference: medicationReference);
 	var medicinalProductContraindication_OtherTherapyBox = await Hive.openBox<MedicinalProductContraindication_OtherTherapy>('MedicinalProductContraindication_OtherTherapyBox');
-	medicinalProductContraindication_OtherTherapyBox.add(newMedicinalProductContraindication_OtherTherapy);
+	medicinalProductContraindication_OtherTherapyBox.put(newMedicinalProductContraindication_OtherTherapy.id, newMedicinalProductContraindication_OtherTherapy);
 	return newMedicinalProductContraindication_OtherTherapy;
 }
   String id;

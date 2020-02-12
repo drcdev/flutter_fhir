@@ -74,7 +74,7 @@ class TestReport {
 			test: test,
 			teardown: teardown);
 	var testReportBox = await Hive.openBox<TestReport>('TestReportBox');
-	testReportBox.add(newTestReport);
+	testReportBox.put(newTestReport.id, newTestReport);
 	return newTestReport;
 }
   @HiveField(0)
@@ -195,7 +195,7 @@ class TestReport_Participant {
 			display: display,
 			elementDisplay: elementDisplay);
 	var testReport_ParticipantBox = await Hive.openBox<TestReport_Participant>('TestReport_ParticipantBox');
-	testReport_ParticipantBox.add(newTestReport_Participant);
+	testReport_ParticipantBox.put(newTestReport_Participant.id, newTestReport_Participant);
 	return newTestReport_Participant;
 }
   String id;
@@ -238,7 +238,7 @@ class TestReport_Setup {
 			modifierExtension: modifierExtension,
 			action: action);
 	var testReport_SetupBox = await Hive.openBox<TestReport_Setup>('TestReport_SetupBox');
-	testReport_SetupBox.add(newTestReport_Setup);
+	testReport_SetupBox.put(newTestReport_Setup.id, newTestReport_Setup);
 	return newTestReport_Setup;
 }
   String id;
@@ -273,7 +273,7 @@ class TestReport_Action {
 			operation: operation,
 			asserts: asserts);
 	var testReport_ActionBox = await Hive.openBox<TestReport_Action>('TestReport_ActionBox');
-	testReport_ActionBox.add(newTestReport_Action);
+	testReport_ActionBox.put(newTestReport_Action.id, newTestReport_Action);
 	return newTestReport_Action;
 }
   String id;
@@ -318,7 +318,7 @@ class TestReport_Operation {
 			detail: detail,
 			elementDetail: elementDetail);
 	var testReport_OperationBox = await Hive.openBox<TestReport_Operation>('TestReport_OperationBox');
-	testReport_OperationBox.add(newTestReport_Operation);
+	testReport_OperationBox.put(newTestReport_Operation.id, newTestReport_Operation);
 	return newTestReport_Operation;
 }
   String id;
@@ -371,7 +371,7 @@ class TestReport_Assert {
 			detail: detail,
 			elementDetail: elementDetail);
 	var testReport_AssertBox = await Hive.openBox<TestReport_Assert>('TestReport_AssertBox');
-	testReport_AssertBox.add(newTestReport_Assert);
+	testReport_AssertBox.put(newTestReport_Assert.id, newTestReport_Assert);
 	return newTestReport_Assert;
 }
   String id;
@@ -422,7 +422,7 @@ class TestReport_Test {
 			elementDescription: elementDescription,
 			action: action);
 	var testReport_TestBox = await Hive.openBox<TestReport_Test>('TestReport_TestBox');
-	testReport_TestBox.add(newTestReport_Test);
+	testReport_TestBox.put(newTestReport_Test.id, newTestReport_Test);
 	return newTestReport_Test;
 }
   String id;
@@ -465,7 +465,7 @@ class TestReport_Action1 {
 			operation: operation,
 			asserts: asserts);
 	var testReport_Action1Box = await Hive.openBox<TestReport_Action1>('TestReport_Action1Box');
-	testReport_Action1Box.add(newTestReport_Action1);
+	testReport_Action1Box.put(newTestReport_Action1.id, newTestReport_Action1);
 	return newTestReport_Action1;
 }
   String id;
@@ -500,7 +500,7 @@ class TestReport_Teardown {
 			modifierExtension: modifierExtension,
 			action: action);
 	var testReport_TeardownBox = await Hive.openBox<TestReport_Teardown>('TestReport_TeardownBox');
-	testReport_TeardownBox.add(newTestReport_Teardown);
+	testReport_TeardownBox.put(newTestReport_Teardown.id, newTestReport_Teardown);
 	return newTestReport_Teardown;
 }
   String id;
@@ -533,7 +533,7 @@ class TestReport_Action2 {
 			modifierExtension: modifierExtension,
 			operation: operation);
 	var testReport_Action2Box = await Hive.openBox<TestReport_Action2>('TestReport_Action2Box');
-	testReport_Action2Box.add(newTestReport_Action2);
+	testReport_Action2Box.put(newTestReport_Action2.id, newTestReport_Action2);
 	return newTestReport_Action2;
 }
   String id;

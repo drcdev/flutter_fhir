@@ -20,7 +20,7 @@ class Range {
 			low: low,
 			high: high);
 	var rangeBox = await Hive.openBox<Range>('RangeBox');
-	rangeBox.add(newRange);
+	rangeBox.put(newRange.id, newRange);
 	return newRange;
 }
   @HiveField(0)

@@ -60,7 +60,7 @@ class BodyStructure {
 			image: image,
 			patient: patient);
 	var bodyStructureBox = await Hive.openBox<BodyStructure>('BodyStructureBox');
-	bodyStructureBox.add(newBodyStructure);
+	bodyStructureBox.put(newBodyStructure.id, newBodyStructure);
 	return newBodyStructure;
 }
   @HiveField(0)

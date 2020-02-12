@@ -41,7 +41,7 @@ class RelatedArtifact {
 			document: document,
 			resource: resource);
 	var relatedArtifactBox = await Hive.openBox<RelatedArtifact>('RelatedArtifactBox');
-	relatedArtifactBox.add(newRelatedArtifact);
+	relatedArtifactBox.put(newRelatedArtifact.id, newRelatedArtifact);
 	return newRelatedArtifact;
 }
   @HiveField(0)

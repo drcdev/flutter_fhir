@@ -87,7 +87,7 @@ class Location {
 			elementAvailabilityExceptions: elementAvailabilityExceptions,
 			endpoint: endpoint);
 	var locationBox = await Hive.openBox<Location>('LocationBox');
-	locationBox.add(newLocation);
+	locationBox.put(newLocation.id, newLocation);
 	return newLocation;
 }
   @HiveField(0)
@@ -223,7 +223,7 @@ class Location_Position {
 			altitude: altitude,
 			elementAltitude: elementAltitude);
 	var location_PositionBox = await Hive.openBox<Location_Position>('Location_PositionBox');
-	location_PositionBox.add(newLocation_Position);
+	location_PositionBox.put(newLocation_Position.id, newLocation_Position);
 	return newLocation_Position;
 }
   String id;
@@ -280,7 +280,7 @@ class Location_HoursOfOperation {
 			closingTime: closingTime,
 			elementClosingTime: elementClosingTime);
 	var location_HoursOfOperationBox = await Hive.openBox<Location_HoursOfOperation>('Location_HoursOfOperationBox');
-	location_HoursOfOperationBox.add(newLocation_HoursOfOperation);
+	location_HoursOfOperationBox.put(newLocation_HoursOfOperation.id, newLocation_HoursOfOperation);
 	return newLocation_HoursOfOperation;
 }
   String id;

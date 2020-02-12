@@ -52,7 +52,7 @@ class SubstanceReferenceInformation {
 			classification: classification,
 			target: target);
 	var substanceReferenceInformationBox = await Hive.openBox<SubstanceReferenceInformation>('SubstanceReferenceInformationBox');
-	substanceReferenceInformationBox.add(newSubstanceReferenceInformation);
+	substanceReferenceInformationBox.put(newSubstanceReferenceInformation.id, newSubstanceReferenceInformation);
 	return newSubstanceReferenceInformation;
 }
   @HiveField(0)
@@ -131,7 +131,7 @@ class SubstanceReferenceInformation_Gene {
 			gene: gene,
 			source: source);
 	var substanceReferenceInformation_GeneBox = await Hive.openBox<SubstanceReferenceInformation_Gene>('SubstanceReferenceInformation_GeneBox');
-	substanceReferenceInformation_GeneBox.add(newSubstanceReferenceInformation_Gene);
+	substanceReferenceInformation_GeneBox.put(newSubstanceReferenceInformation_Gene.id, newSubstanceReferenceInformation_Gene);
 	return newSubstanceReferenceInformation_Gene;
 }
   String id;
@@ -172,7 +172,7 @@ class SubstanceReferenceInformation_GeneElement {
 			element: element,
 			source: source);
 	var substanceReferenceInformation_GeneElementBox = await Hive.openBox<SubstanceReferenceInformation_GeneElement>('SubstanceReferenceInformation_GeneElementBox');
-	substanceReferenceInformation_GeneElementBox.add(newSubstanceReferenceInformation_GeneElement);
+	substanceReferenceInformation_GeneElementBox.put(newSubstanceReferenceInformation_GeneElement.id, newSubstanceReferenceInformation_GeneElement);
 	return newSubstanceReferenceInformation_GeneElement;
 }
   String id;
@@ -215,7 +215,7 @@ class SubstanceReferenceInformation_Classification {
 			subtype: subtype,
 			source: source);
 	var substanceReferenceInformation_ClassificationBox = await Hive.openBox<SubstanceReferenceInformation_Classification>('SubstanceReferenceInformation_ClassificationBox');
-	substanceReferenceInformation_ClassificationBox.add(newSubstanceReferenceInformation_Classification);
+	substanceReferenceInformation_ClassificationBox.put(newSubstanceReferenceInformation_Classification.id, newSubstanceReferenceInformation_Classification);
 	return newSubstanceReferenceInformation_Classification;
 }
   String id;
@@ -274,7 +274,7 @@ class SubstanceReferenceInformation_Target {
 			amountType: amountType,
 			source: source);
 	var substanceReferenceInformation_TargetBox = await Hive.openBox<SubstanceReferenceInformation_Target>('SubstanceReferenceInformation_TargetBox');
-	substanceReferenceInformation_TargetBox.add(newSubstanceReferenceInformation_Target);
+	substanceReferenceInformation_TargetBox.put(newSubstanceReferenceInformation_Target.id, newSubstanceReferenceInformation_Target);
 	return newSubstanceReferenceInformation_Target;
 }
   String id;

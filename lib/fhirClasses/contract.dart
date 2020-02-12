@@ -135,7 +135,7 @@ class Contract {
 			legallyBindingAttachment: legallyBindingAttachment,
 			legallyBindingReference: legallyBindingReference);
 	var contractBox = await Hive.openBox<Contract>('ContractBox');
-	contractBox.add(newContract);
+	contractBox.put(newContract.id, newContract);
 	return newContract;
 }
   @HiveField(0)
@@ -340,7 +340,7 @@ class Contract_ContentDefinition {
 			copyright: copyright,
 			elementCopyright: elementCopyright);
 	var contract_ContentDefinitionBox = await Hive.openBox<Contract_ContentDefinition>('Contract_ContentDefinitionBox');
-	contract_ContentDefinitionBox.add(newContract_ContentDefinition);
+	contract_ContentDefinitionBox.put(newContract_ContentDefinition.id, newContract_ContentDefinition);
 	return newContract_ContentDefinition;
 }
   String id;
@@ -417,7 +417,7 @@ class Contract_Term {
 			action: action,
 			group: group);
 	var contract_TermBox = await Hive.openBox<Contract_Term>('Contract_TermBox');
-	contract_TermBox.add(newContract_Term);
+	contract_TermBox.put(newContract_Term.id, newContract_Term);
 	return newContract_Term;
 }
   String id;
@@ -486,7 +486,7 @@ class Contract_SecurityLabel {
 			category: category,
 			control: control);
 	var contract_SecurityLabelBox = await Hive.openBox<Contract_SecurityLabel>('Contract_SecurityLabelBox');
-	contract_SecurityLabelBox.add(newContract_SecurityLabel);
+	contract_SecurityLabelBox.put(newContract_SecurityLabel.id, newContract_SecurityLabel);
 	return newContract_SecurityLabel;
 }
   String id;
@@ -551,7 +551,7 @@ class Contract_Offer {
 			securityLabelNumber: securityLabelNumber,
 			elementSecurityLabelNumber: elementSecurityLabelNumber);
 	var contract_OfferBox = await Hive.openBox<Contract_Offer>('Contract_OfferBox');
-	contract_OfferBox.add(newContract_Offer);
+	contract_OfferBox.put(newContract_Offer.id, newContract_Offer);
 	return newContract_Offer;
 }
   String id;
@@ -610,7 +610,7 @@ class Contract_Party {
 			reference: reference,
 			role: role);
 	var contract_PartyBox = await Hive.openBox<Contract_Party>('Contract_PartyBox');
-	contract_PartyBox.add(newContract_Party);
+	contract_PartyBox.put(newContract_Party.id, newContract_Party);
 	return newContract_Party;
 }
   String id;
@@ -683,7 +683,7 @@ class Contract_Answer {
 			valueQuantity: valueQuantity,
 			valueReference: valueReference);
 	var contract_AnswerBox = await Hive.openBox<Contract_Answer>('Contract_AnswerBox');
-	contract_AnswerBox.add(newContract_Answer);
+	contract_AnswerBox.put(newContract_Answer.id, newContract_Answer);
 	return newContract_Answer;
 }
   String id;
@@ -790,7 +790,7 @@ class Contract_Asset {
 			elementSecurityLabelNumber: elementSecurityLabelNumber,
 			valuedItem: valuedItem);
 	var contract_AssetBox = await Hive.openBox<Contract_Asset>('Contract_AssetBox');
-	contract_AssetBox.add(newContract_Asset);
+	contract_AssetBox.put(newContract_Asset.id, newContract_Asset);
 	return newContract_Asset;
 }
   String id;
@@ -865,7 +865,7 @@ class Contract_Context {
 			text: text,
 			elementText: elementText);
 	var contract_ContextBox = await Hive.openBox<Contract_Context>('Contract_ContextBox');
-	contract_ContextBox.add(newContract_Context);
+	contract_ContextBox.put(newContract_Context.id, newContract_Context);
 	return newContract_Context;
 }
   String id;
@@ -946,7 +946,7 @@ class Contract_ValuedItem {
 			securityLabelNumber: securityLabelNumber,
 			elementSecurityLabelNumber: elementSecurityLabelNumber);
 	var contract_ValuedItemBox = await Hive.openBox<Contract_ValuedItem>('Contract_ValuedItemBox');
-	contract_ValuedItemBox.add(newContract_ValuedItem);
+	contract_ValuedItemBox.put(newContract_ValuedItem.id, newContract_ValuedItem);
 	return newContract_ValuedItem;
 }
   String id;
@@ -1083,7 +1083,7 @@ class Contract_Action {
 			securityLabelNumber: securityLabelNumber,
 			elementSecurityLabelNumber: elementSecurityLabelNumber);
 	var contract_ActionBox = await Hive.openBox<Contract_Action>('Contract_ActionBox');
-	contract_ActionBox.add(newContract_Action);
+	contract_ActionBox.put(newContract_Action.id, newContract_Action);
 	return newContract_Action;
 }
   String id;
@@ -1180,7 +1180,7 @@ class Contract_Subject {
 			reference: reference,
 			role: role);
 	var contract_SubjectBox = await Hive.openBox<Contract_Subject>('Contract_SubjectBox');
-	contract_SubjectBox.add(newContract_Subject);
+	contract_SubjectBox.put(newContract_Subject.id, newContract_Subject);
 	return newContract_Subject;
 }
   String id;
@@ -1219,7 +1219,7 @@ class Contract_Signer {
 			party: party,
 			signature: signature);
 	var contract_SignerBox = await Hive.openBox<Contract_Signer>('Contract_SignerBox');
-	contract_SignerBox.add(newContract_Signer);
+	contract_SignerBox.put(newContract_Signer.id, newContract_Signer);
 	return newContract_Signer;
 }
   String id;
@@ -1258,7 +1258,7 @@ class Contract_Friendly {
 			contentAttachment: contentAttachment,
 			contentReference: contentReference);
 	var contract_FriendlyBox = await Hive.openBox<Contract_Friendly>('Contract_FriendlyBox');
-	contract_FriendlyBox.add(newContract_Friendly);
+	contract_FriendlyBox.put(newContract_Friendly.id, newContract_Friendly);
 	return newContract_Friendly;
 }
   String id;
@@ -1295,7 +1295,7 @@ class Contract_Legal {
 			contentAttachment: contentAttachment,
 			contentReference: contentReference);
 	var contract_LegalBox = await Hive.openBox<Contract_Legal>('Contract_LegalBox');
-	contract_LegalBox.add(newContract_Legal);
+	contract_LegalBox.put(newContract_Legal.id, newContract_Legal);
 	return newContract_Legal;
 }
   String id;
@@ -1332,7 +1332,7 @@ class Contract_Rule {
 			contentAttachment: contentAttachment,
 			contentReference: contentReference);
 	var contract_RuleBox = await Hive.openBox<Contract_Rule>('Contract_RuleBox');
-	contract_RuleBox.add(newContract_Rule);
+	contract_RuleBox.put(newContract_Rule.id, newContract_Rule);
 	return newContract_Rule;
 }
   String id;

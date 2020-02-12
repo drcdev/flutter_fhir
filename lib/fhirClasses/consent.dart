@@ -74,7 +74,7 @@ class Consent {
 			verification: verification,
 			provision: provision);
 	var consentBox = await Hive.openBox<Consent>('ConsentBox');
-	consentBox.add(newConsent);
+	consentBox.put(newConsent.id, newConsent);
 	return newConsent;
 }
   @HiveField(0)
@@ -185,7 +185,7 @@ class Consent_Policy {
 			uri: uri,
 			elementUri: elementUri);
 	var consent_PolicyBox = await Hive.openBox<Consent_Policy>('Consent_PolicyBox');
-	consent_PolicyBox.add(newConsent_Policy);
+	consent_PolicyBox.put(newConsent_Policy.id, newConsent_Policy);
 	return newConsent_Policy;
 }
   String id;
@@ -232,7 +232,7 @@ class Consent_Verification {
 			verificationDate: verificationDate,
 			elementVerificationDate: elementVerificationDate);
 	var consent_VerificationBox = await Hive.openBox<Consent_Verification>('Consent_VerificationBox');
-	consent_VerificationBox.add(newConsent_Verification);
+	consent_VerificationBox.put(newConsent_Verification.id, newConsent_Verification);
 	return newConsent_Verification;
 }
   String id;
@@ -295,7 +295,7 @@ class Consent_Provision {
 			data: data,
 			provision: provision);
 	var consent_ProvisionBox = await Hive.openBox<Consent_Provision>('Consent_ProvisionBox');
-	consent_ProvisionBox.add(newConsent_Provision);
+	consent_ProvisionBox.put(newConsent_Provision.id, newConsent_Provision);
 	return newConsent_Provision;
 }
   String id;
@@ -352,7 +352,7 @@ class Consent_Actor {
 			role: role,
 			reference: reference);
 	var consent_ActorBox = await Hive.openBox<Consent_Actor>('Consent_ActorBox');
-	consent_ActorBox.add(newConsent_Actor);
+	consent_ActorBox.put(newConsent_Actor.id, newConsent_Actor);
 	return newConsent_Actor;
 }
   String id;
@@ -391,7 +391,7 @@ class Consent_Data {
 			elementMeaning: elementMeaning,
 			reference: reference);
 	var consent_DataBox = await Hive.openBox<Consent_Data>('Consent_DataBox');
-	consent_DataBox.add(newConsent_Data);
+	consent_DataBox.put(newConsent_Data.id, newConsent_Data);
 	return newConsent_Data;
 }
   String id;

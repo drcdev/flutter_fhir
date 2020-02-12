@@ -69,7 +69,7 @@ class SubstanceSourceMaterial {
 			organism: organism,
 			partDescription: partDescription);
 	var substanceSourceMaterialBox = await Hive.openBox<SubstanceSourceMaterial>('SubstanceSourceMaterialBox');
-	substanceSourceMaterialBox.add(newSubstanceSourceMaterial);
+	substanceSourceMaterialBox.put(newSubstanceSourceMaterial.id, newSubstanceSourceMaterial);
 	return newSubstanceSourceMaterial;
 }
   @HiveField(0)
@@ -178,7 +178,7 @@ class SubstanceSourceMaterial_FractionDescription {
 			elementFraction: elementFraction,
 			materialType: materialType);
 	var substanceSourceMaterial_FractionDescriptionBox = await Hive.openBox<SubstanceSourceMaterial_FractionDescription>('SubstanceSourceMaterial_FractionDescriptionBox');
-	substanceSourceMaterial_FractionDescriptionBox.add(newSubstanceSourceMaterial_FractionDescription);
+	substanceSourceMaterial_FractionDescriptionBox.put(newSubstanceSourceMaterial_FractionDescription.id, newSubstanceSourceMaterial_FractionDescription);
 	return newSubstanceSourceMaterial_FractionDescription;
 }
   String id;
@@ -231,7 +231,7 @@ class SubstanceSourceMaterial_Organism {
 			hybrid: hybrid,
 			organismGeneral: organismGeneral);
 	var substanceSourceMaterial_OrganismBox = await Hive.openBox<SubstanceSourceMaterial_Organism>('SubstanceSourceMaterial_OrganismBox');
-	substanceSourceMaterial_OrganismBox.add(newSubstanceSourceMaterial_Organism);
+	substanceSourceMaterial_OrganismBox.put(newSubstanceSourceMaterial_Organism.id, newSubstanceSourceMaterial_Organism);
 	return newSubstanceSourceMaterial_Organism;
 }
   String id;
@@ -284,7 +284,7 @@ class SubstanceSourceMaterial_Author {
 			authorDescription: authorDescription,
 			elementAuthorDescription: elementAuthorDescription);
 	var substanceSourceMaterial_AuthorBox = await Hive.openBox<SubstanceSourceMaterial_Author>('SubstanceSourceMaterial_AuthorBox');
-	substanceSourceMaterial_AuthorBox.add(newSubstanceSourceMaterial_Author);
+	substanceSourceMaterial_AuthorBox.put(newSubstanceSourceMaterial_Author.id, newSubstanceSourceMaterial_Author);
 	return newSubstanceSourceMaterial_Author;
 }
   String id;
@@ -337,7 +337,7 @@ class SubstanceSourceMaterial_Hybrid {
 			elementPaternalOrganismName: elementPaternalOrganismName,
 			hybridType: hybridType);
 	var substanceSourceMaterial_HybridBox = await Hive.openBox<SubstanceSourceMaterial_Hybrid>('SubstanceSourceMaterial_HybridBox');
-	substanceSourceMaterial_HybridBox.add(newSubstanceSourceMaterial_Hybrid);
+	substanceSourceMaterial_HybridBox.put(newSubstanceSourceMaterial_Hybrid.id, newSubstanceSourceMaterial_Hybrid);
 	return newSubstanceSourceMaterial_Hybrid;
 }
   String id;
@@ -392,7 +392,7 @@ class SubstanceSourceMaterial_OrganismGeneral {
 			classs: classs,
 			order: order);
 	var substanceSourceMaterial_OrganismGeneralBox = await Hive.openBox<SubstanceSourceMaterial_OrganismGeneral>('SubstanceSourceMaterial_OrganismGeneralBox');
-	substanceSourceMaterial_OrganismGeneralBox.add(newSubstanceSourceMaterial_OrganismGeneral);
+	substanceSourceMaterial_OrganismGeneralBox.put(newSubstanceSourceMaterial_OrganismGeneral.id, newSubstanceSourceMaterial_OrganismGeneral);
 	return newSubstanceSourceMaterial_OrganismGeneral;
 }
   String id;
@@ -433,7 +433,7 @@ class SubstanceSourceMaterial_PartDescription {
 			part: part,
 			partLocation: partLocation);
 	var substanceSourceMaterial_PartDescriptionBox = await Hive.openBox<SubstanceSourceMaterial_PartDescription>('SubstanceSourceMaterial_PartDescriptionBox');
-	substanceSourceMaterial_PartDescriptionBox.add(newSubstanceSourceMaterial_PartDescription);
+	substanceSourceMaterial_PartDescriptionBox.put(newSubstanceSourceMaterial_PartDescription.id, newSubstanceSourceMaterial_PartDescription);
 	return newSubstanceSourceMaterial_PartDescription;
 }
   String id;

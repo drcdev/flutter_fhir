@@ -36,7 +36,7 @@ class Coding {
 			userSelected: userSelected,
 			elementUserSelected: elementUserSelected);
 	var codingBox = await Hive.openBox<Coding>('CodingBox');
-	codingBox.add(newCoding);
+	codingBox.put(newCoding.id, newCoding);
 	return newCoding;
 }
   @HiveField(0)

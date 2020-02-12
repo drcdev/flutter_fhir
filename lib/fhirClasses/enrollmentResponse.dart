@@ -61,7 +61,7 @@ class EnrollmentResponse {
 			organization: organization,
 			requestProvider: requestProvider);
 	var enrollmentResponseBox = await Hive.openBox<EnrollmentResponse>('EnrollmentResponseBox');
-	enrollmentResponseBox.add(newEnrollmentResponse);
+	enrollmentResponseBox.put(newEnrollmentResponse.id, newEnrollmentResponse);
 	return newEnrollmentResponse;
 }
   @HiveField(0)

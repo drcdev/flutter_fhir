@@ -74,7 +74,7 @@ class RelatedPerson {
 			period: period,
 			communication: communication);
 	var relatedPersonBox = await Hive.openBox<RelatedPerson>('RelatedPersonBox');
-	relatedPersonBox.add(newRelatedPerson);
+	relatedPersonBox.put(newRelatedPerson.id, newRelatedPerson);
 	return newRelatedPerson;
 }
   @HiveField(0)
@@ -180,7 +180,7 @@ class RelatedPerson_Communication {
 			preferred: preferred,
 			elementPreferred: elementPreferred);
 	var relatedPerson_CommunicationBox = await Hive.openBox<RelatedPerson_Communication>('RelatedPerson_CommunicationBox');
-	relatedPerson_CommunicationBox.add(newRelatedPerson_Communication);
+	relatedPerson_CommunicationBox.put(newRelatedPerson_Communication.id, newRelatedPerson_Communication);
 	return newRelatedPerson_Communication;
 }
   String id;

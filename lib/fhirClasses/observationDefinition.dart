@@ -72,7 +72,7 @@ class ObservationDefinition {
 			abnormalCodedValueSet: abnormalCodedValueSet,
 			criticalCodedValueSet: criticalCodedValueSet);
 	var observationDefinitionBox = await Hive.openBox<ObservationDefinition>('ObservationDefinitionBox');
-	observationDefinitionBox.add(newObservationDefinition);
+	observationDefinitionBox.put(newObservationDefinition.id, newObservationDefinition);
 	return newObservationDefinition;
 }
   @HiveField(0)
@@ -187,7 +187,7 @@ class ObservationDefinition_QuantitativeDetails {
 			decimalPrecision: decimalPrecision,
 			elementDecimalPrecision: elementDecimalPrecision);
 	var observationDefinition_QuantitativeDetailsBox = await Hive.openBox<ObservationDefinition_QuantitativeDetails>('ObservationDefinition_QuantitativeDetailsBox');
-	observationDefinition_QuantitativeDetailsBox.add(newObservationDefinition_QuantitativeDetails);
+	observationDefinition_QuantitativeDetailsBox.put(newObservationDefinition_QuantitativeDetails.id, newObservationDefinition_QuantitativeDetails);
 	return newObservationDefinition_QuantitativeDetails;
 }
   String id;
@@ -250,7 +250,7 @@ class ObservationDefinition_QualifiedInterval {
 			condition: condition,
 			elementCondition: elementCondition);
 	var observationDefinition_QualifiedIntervalBox = await Hive.openBox<ObservationDefinition_QualifiedInterval>('ObservationDefinition_QualifiedIntervalBox');
-	observationDefinition_QualifiedIntervalBox.add(newObservationDefinition_QualifiedInterval);
+	observationDefinition_QualifiedIntervalBox.put(newObservationDefinition_QualifiedInterval.id, newObservationDefinition_QualifiedInterval);
 	return newObservationDefinition_QualifiedInterval;
 }
   String id;

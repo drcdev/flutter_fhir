@@ -63,7 +63,7 @@ class VisionPrescription {
 			prescriber: prescriber,
 			lensSpecification: lensSpecification);
 	var visionPrescriptionBox = await Hive.openBox<VisionPrescription>('VisionPrescriptionBox');
-	visionPrescriptionBox.add(newVisionPrescription);
+	visionPrescriptionBox.put(newVisionPrescription.id, newVisionPrescription);
 	return newVisionPrescription;
 }
   @HiveField(0)
@@ -199,7 +199,7 @@ class VisionPrescription_LensSpecification {
 			elementBrand: elementBrand,
 			note: note);
 	var visionPrescription_LensSpecificationBox = await Hive.openBox<VisionPrescription_LensSpecification>('VisionPrescription_LensSpecificationBox');
-	visionPrescription_LensSpecificationBox.add(newVisionPrescription_LensSpecification);
+	visionPrescription_LensSpecificationBox.put(newVisionPrescription_LensSpecification.id, newVisionPrescription_LensSpecification);
 	return newVisionPrescription_LensSpecification;
 }
   String id;
@@ -284,7 +284,7 @@ class VisionPrescription_Prism {
 			base: base,
 			elementBase: elementBase);
 	var visionPrescription_PrismBox = await Hive.openBox<VisionPrescription_Prism>('VisionPrescription_PrismBox');
-	visionPrescription_PrismBox.add(newVisionPrescription_Prism);
+	visionPrescription_PrismBox.put(newVisionPrescription_Prism.id, newVisionPrescription_Prism);
 	return newVisionPrescription_Prism;
 }
   String id;

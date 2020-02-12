@@ -20,7 +20,7 @@ class Ratio {
 			numerator: numerator,
 			denominator: denominator);
 	var ratioBox = await Hive.openBox<Ratio>('RatioBox');
-	ratioBox.add(newRatio);
+	ratioBox.put(newRatio.id, newRatio);
 	return newRatio;
 }
   @HiveField(0)

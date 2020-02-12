@@ -71,7 +71,7 @@ class DocumentManifest {
 			content: content,
 			related: related);
 	var documentManifestBox = await Hive.openBox<DocumentManifest>('DocumentManifestBox');
-	documentManifestBox.add(newDocumentManifest);
+	documentManifestBox.put(newDocumentManifest.id, newDocumentManifest);
 	return newDocumentManifest;
 }
   @HiveField(0)
@@ -178,7 +178,7 @@ class DocumentManifest_Related {
 			identifier: identifier,
 			ref: ref);
 	var documentManifest_RelatedBox = await Hive.openBox<DocumentManifest_Related>('DocumentManifest_RelatedBox');
-	documentManifest_RelatedBox.add(newDocumentManifest_Related);
+	documentManifest_RelatedBox.put(newDocumentManifest_Related.id, newDocumentManifest_Related);
 	return newDocumentManifest_Related;
 }
   String id;

@@ -101,7 +101,7 @@ class ValueSet {
 			compose: compose,
 			expansion: expansion);
 	var valueSetBox = await Hive.openBox<ValueSet>('ValueSetBox');
-	valueSetBox.add(newValueSet);
+	valueSetBox.put(newValueSet.id, newValueSet);
 	return newValueSet;
 }
   @HiveField(0)
@@ -258,7 +258,7 @@ class ValueSet_Compose {
 			include: include,
 			exclude: exclude);
 	var valueSet_ComposeBox = await Hive.openBox<ValueSet_Compose>('ValueSet_ComposeBox');
-	valueSet_ComposeBox.add(newValueSet_Compose);
+	valueSet_ComposeBox.put(newValueSet_Compose.id, newValueSet_Compose);
 	return newValueSet_Compose;
 }
   String id;
@@ -313,7 +313,7 @@ class ValueSet_Include {
 			filter: filter,
 			valueSet: valueSet);
 	var valueSet_IncludeBox = await Hive.openBox<ValueSet_Include>('ValueSet_IncludeBox');
-	valueSet_IncludeBox.add(newValueSet_Include);
+	valueSet_IncludeBox.put(newValueSet_Include.id, newValueSet_Include);
 	return newValueSet_Include;
 }
   String id;
@@ -366,7 +366,7 @@ class ValueSet_Concept {
 			elementDisplay: elementDisplay,
 			designation: designation);
 	var valueSet_ConceptBox = await Hive.openBox<ValueSet_Concept>('ValueSet_ConceptBox');
-	valueSet_ConceptBox.add(newValueSet_Concept);
+	valueSet_ConceptBox.put(newValueSet_Concept.id, newValueSet_Concept);
 	return newValueSet_Concept;
 }
   String id;
@@ -415,7 +415,7 @@ class ValueSet_Designation {
 			value: value,
 			elementValue: elementValue);
 	var valueSet_DesignationBox = await Hive.openBox<ValueSet_Designation>('ValueSet_DesignationBox');
-	valueSet_DesignationBox.add(newValueSet_Designation);
+	valueSet_DesignationBox.put(newValueSet_Designation.id, newValueSet_Designation);
 	return newValueSet_Designation;
 }
   String id;
@@ -466,7 +466,7 @@ class ValueSet_Filter {
 			value: value,
 			elementValue: elementValue);
 	var valueSet_FilterBox = await Hive.openBox<ValueSet_Filter>('ValueSet_FilterBox');
-	valueSet_FilterBox.add(newValueSet_Filter);
+	valueSet_FilterBox.put(newValueSet_Filter.id, newValueSet_Filter);
 	return newValueSet_Filter;
 }
   String id;
@@ -527,7 +527,7 @@ class ValueSet_Expansion {
 			parameter: parameter,
 			contains: contains);
 	var valueSet_ExpansionBox = await Hive.openBox<ValueSet_Expansion>('ValueSet_ExpansionBox');
-	valueSet_ExpansionBox.add(newValueSet_Expansion);
+	valueSet_ExpansionBox.put(newValueSet_Expansion.id, newValueSet_Expansion);
 	return newValueSet_Expansion;
 }
   String id;
@@ -608,7 +608,7 @@ class ValueSet_Parameter {
 			valueDateTime: valueDateTime,
 			elementValueDateTime: elementValueDateTime);
 	var valueSet_ParameterBox = await Hive.openBox<ValueSet_Parameter>('ValueSet_ParameterBox');
-	valueSet_ParameterBox.add(newValueSet_Parameter);
+	valueSet_ParameterBox.put(newValueSet_Parameter.id, newValueSet_Parameter);
 	return newValueSet_Parameter;
 }
   String id;
@@ -697,7 +697,7 @@ class ValueSet_Contains {
 			designation: designation,
 			contains: contains);
 	var valueSet_ContainsBox = await Hive.openBox<ValueSet_Contains>('ValueSet_ContainsBox');
-	valueSet_ContainsBox.add(newValueSet_Contains);
+	valueSet_ContainsBox.put(newValueSet_Contains.id, newValueSet_Contains);
 	return newValueSet_Contains;
 }
   String id;

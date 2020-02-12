@@ -95,7 +95,7 @@ class ClinicalImpression {
 			supportingInfo: supportingInfo,
 			note: note);
 	var clinicalImpressionBox = await Hive.openBox<ClinicalImpression>('ClinicalImpressionBox');
-	clinicalImpressionBox.add(newClinicalImpression);
+	clinicalImpressionBox.put(newClinicalImpression.id, newClinicalImpression);
 	return newClinicalImpression;
 }
   @HiveField(0)
@@ -235,7 +235,7 @@ class ClinicalImpression_Investigation {
 			code: code,
 			item: item);
 	var clinicalImpression_InvestigationBox = await Hive.openBox<ClinicalImpression_Investigation>('ClinicalImpression_InvestigationBox');
-	clinicalImpression_InvestigationBox.add(newClinicalImpression_Investigation);
+	clinicalImpression_InvestigationBox.put(newClinicalImpression_Investigation.id, newClinicalImpression_Investigation);
 	return newClinicalImpression_Investigation;
 }
   String id;
@@ -276,7 +276,7 @@ class ClinicalImpression_Finding {
 			basis: basis,
 			elementBasis: elementBasis);
 	var clinicalImpression_FindingBox = await Hive.openBox<ClinicalImpression_Finding>('ClinicalImpression_FindingBox');
-	clinicalImpression_FindingBox.add(newClinicalImpression_Finding);
+	clinicalImpression_FindingBox.put(newClinicalImpression_Finding.id, newClinicalImpression_Finding);
 	return newClinicalImpression_Finding;
 }
   String id;

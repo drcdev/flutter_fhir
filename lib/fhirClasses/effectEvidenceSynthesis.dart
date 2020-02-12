@@ -132,7 +132,7 @@ class EffectEvidenceSynthesis {
 			effectEstimate: effectEstimate,
 			certainty: certainty);
 	var effectEvidenceSynthesisBox = await Hive.openBox<EffectEvidenceSynthesis>('EffectEvidenceSynthesisBox');
-	effectEvidenceSynthesisBox.add(newEffectEvidenceSynthesis);
+	effectEvidenceSynthesisBox.put(newEffectEvidenceSynthesis.id, newEffectEvidenceSynthesis);
 	return newEffectEvidenceSynthesis;
 }
   @HiveField(0)
@@ -331,7 +331,7 @@ class EffectEvidenceSynthesis_SampleSize {
 			numberOfParticipants: numberOfParticipants,
 			elementNumberOfParticipants: elementNumberOfParticipants);
 	var effectEvidenceSynthesis_SampleSizeBox = await Hive.openBox<EffectEvidenceSynthesis_SampleSize>('EffectEvidenceSynthesis_SampleSizeBox');
-	effectEvidenceSynthesis_SampleSizeBox.add(newEffectEvidenceSynthesis_SampleSize);
+	effectEvidenceSynthesis_SampleSizeBox.put(newEffectEvidenceSynthesis_SampleSize.id, newEffectEvidenceSynthesis_SampleSize);
 	return newEffectEvidenceSynthesis_SampleSize;
 }
   String id;
@@ -384,7 +384,7 @@ class EffectEvidenceSynthesis_ResultsByExposure {
 			variantState: variantState,
 			riskEvidenceSynthesis: riskEvidenceSynthesis);
 	var effectEvidenceSynthesis_ResultsByExposureBox = await Hive.openBox<EffectEvidenceSynthesis_ResultsByExposure>('EffectEvidenceSynthesis_ResultsByExposureBox');
-	effectEvidenceSynthesis_ResultsByExposureBox.add(newEffectEvidenceSynthesis_ResultsByExposure);
+	effectEvidenceSynthesis_ResultsByExposureBox.put(newEffectEvidenceSynthesis_ResultsByExposure.id, newEffectEvidenceSynthesis_ResultsByExposure);
 	return newEffectEvidenceSynthesis_ResultsByExposure;
 }
   String id;
@@ -441,7 +441,7 @@ class EffectEvidenceSynthesis_EffectEstimate {
 			unitOfMeasure: unitOfMeasure,
 			precisionEstimate: precisionEstimate);
 	var effectEvidenceSynthesis_EffectEstimateBox = await Hive.openBox<EffectEvidenceSynthesis_EffectEstimate>('EffectEvidenceSynthesis_EffectEstimateBox');
-	effectEvidenceSynthesis_EffectEstimateBox.add(newEffectEvidenceSynthesis_EffectEstimate);
+	effectEvidenceSynthesis_EffectEstimateBox.put(newEffectEvidenceSynthesis_EffectEstimate.id, newEffectEvidenceSynthesis_EffectEstimate);
 	return newEffectEvidenceSynthesis_EffectEstimate;
 }
   String id;
@@ -500,7 +500,7 @@ class EffectEvidenceSynthesis_PrecisionEstimate {
 			to: to,
 			elementTo: elementTo);
 	var effectEvidenceSynthesis_PrecisionEstimateBox = await Hive.openBox<EffectEvidenceSynthesis_PrecisionEstimate>('EffectEvidenceSynthesis_PrecisionEstimateBox');
-	effectEvidenceSynthesis_PrecisionEstimateBox.add(newEffectEvidenceSynthesis_PrecisionEstimate);
+	effectEvidenceSynthesis_PrecisionEstimateBox.put(newEffectEvidenceSynthesis_PrecisionEstimate.id, newEffectEvidenceSynthesis_PrecisionEstimate);
 	return newEffectEvidenceSynthesis_PrecisionEstimate;
 }
   String id;
@@ -549,7 +549,7 @@ class EffectEvidenceSynthesis_Certainty {
 			note: note,
 			certaintySubcomponent: certaintySubcomponent);
 	var effectEvidenceSynthesis_CertaintyBox = await Hive.openBox<EffectEvidenceSynthesis_Certainty>('EffectEvidenceSynthesis_CertaintyBox');
-	effectEvidenceSynthesis_CertaintyBox.add(newEffectEvidenceSynthesis_Certainty);
+	effectEvidenceSynthesis_CertaintyBox.put(newEffectEvidenceSynthesis_Certainty.id, newEffectEvidenceSynthesis_Certainty);
 	return newEffectEvidenceSynthesis_Certainty;
 }
   String id;
@@ -590,7 +590,7 @@ class EffectEvidenceSynthesis_CertaintySubcomponent {
 			rating: rating,
 			note: note);
 	var effectEvidenceSynthesis_CertaintySubcomponentBox = await Hive.openBox<EffectEvidenceSynthesis_CertaintySubcomponent>('EffectEvidenceSynthesis_CertaintySubcomponentBox');
-	effectEvidenceSynthesis_CertaintySubcomponentBox.add(newEffectEvidenceSynthesis_CertaintySubcomponent);
+	effectEvidenceSynthesis_CertaintySubcomponentBox.put(newEffectEvidenceSynthesis_CertaintySubcomponent.id, newEffectEvidenceSynthesis_CertaintySubcomponent);
 	return newEffectEvidenceSynthesis_CertaintySubcomponent;
 }
   String id;
